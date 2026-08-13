@@ -400,3 +400,9 @@ then prove its compatibility with flips, Cuts, and mapping-class summation.
 - Entry 49: hostile punctured-torus test of the resolved surface counit.
 - Entry 50: marked-handle state carrier and the now-superseded
   zero-projector-correction claim.
+
+## Successor note
+
+Entry 52 supplies the symbolic Gram-ring proof and the resolved
+flip/Cut/mapping-class descent requested in this entry.  The remaining scope
+items there are explicitly separated from those now-closed targets.
