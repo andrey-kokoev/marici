@@ -1,0 +1,855 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_6e7e4b5a0a35d79b",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Identify one established theorem-level result and the immediate next frontier in Marici.Nima.",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "model": "gpt-5.3-codex-spark",
+    "runtime": "codex",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "wait_timeout_ms": 120000,
+    "max_run_ms": 120000,
+    "max_concurrency": 1,
+    "max_retries": 0,
+    "required_mcp_tools": [],
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read",
+        "label": "project map"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md",
+        "access": "read",
+        "label": "theorem ledger"
+      }
+    ],
+    "overrides": {
+      "runtime": "codex",
+      "sandbox": "read-only",
+      "model": "gpt-5.3-codex-spark",
+      "reasoning_effort": "low"
+    }
+  },
+  "workflow": {
+    "title": "Marici delegated-task smoke test (explicit cognition)",
+    "purpose": "Verify orchestration and handoff without mutation.",
+    "result_policy": {
+      "include_diagnostics_by_default": true,
+      "expose_worker_refs": true,
+      "compact_completed_worker_refs": true,
+      "max_events": 32,
+      "max_worker_refs": 4,
+      "max_result_items": 64
+    },
+    "steps": [
+      {
+        "id": "audit",
+        "title": "Audit theorem and frontier",
+        "kind": "worker",
+        "write_set": [],
+        "instruction": "Read only README.md and src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md. State the established theorem-level result and immediate next frontier, cite both paths, and explicitly confirm no edits/tests.",
+        "constraints": {
+          "authority": "read",
+          "cwd": "C:\\Users\\andrey\\src\\marici",
+          "site_root": "C:\\Users\\andrey\\src\\marici",
+          "cognition": "low",
+          "model": "gpt-5.3-codex-spark",
+          "runtime": "codex",
+          "sandbox": "read-only",
+          "wait_for_completion": false,
+          "wait_timeout_ms": 120000,
+          "max_run_ms": 120000,
+          "max_concurrency": 1,
+          "max_retries": 0,
+          "required_mcp_tools": [],
+          "preflight_paths": [
+            {
+              "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "access": "read",
+              "label": "project map"
+            },
+            {
+              "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md",
+              "access": "read",
+              "label": "theorem ledger"
+            }
+          ],
+          "overrides": {
+            "runtime": "codex",
+            "sandbox": "read-only",
+            "model": "gpt-5.3-codex-spark",
+            "reasoning_effort": "low"
+          }
+        },
+        "label": null,
+        "profile": null,
+        "milestone_id": null,
+        "depends_on": [],
+        "imports": [],
+        "if": null,
+        "acceptance_scope": [],
+        "agent_slot": null,
+        "resume_from": null,
+        "session_affinity": {
+          "mode": "none",
+          "fallback": "fail",
+          "require_same_session": false,
+          "source_step_id": null
+        },
+        "authority_gate": {},
+        "output_schema": {}
+      }
+    ],
+    "work_order": {},
+    "milestones": [],
+    "authority_gates": {}
+  },
+  "acceptance": {
+    "residual_risk_policy": "allow",
+    "required_tests": [],
+    "focused_tests": []
+  },
+  "result_policy": {
+    "include_diagnostics_by_default": false,
+    "expose_worker_refs": true,
+    "compact_completed_worker_refs": false,
+    "max_events": 100,
+    "max_worker_refs": 50,
+    "max_result_items": 200
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": true,
+    "timeout_ms": 120000,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 1,
+    "max_retries": 0
+  },
+  "execution_binding": {
+    "workspace_root": "C:\\Users\\andrey\\src\\marici",
+    "executor_kind": "delegated_task",
+    "executor_profile": null,
+    "executor_id": null,
+    "repository_root": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "correlation_key": "marici-delegation-smoke-dag-explicit-20260813"
+  },
+  "idempotency_key": "marici-delegation-smoke-dag-explicit-20260813",
+  "request_fingerprint": "0a983fef61b4706e1cfa46fa7e979a8ceb379e8f15063791991ab2017e7ef7b6",
+  "created_at": "2026-08-13T16:39:15.949Z",
+  "updated_at": "2026-08-13T16:41:11.172Z",
+  "cancelled_at": null,
+  "summary": "delegated task completed; steps=1; acceptance=passed",
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "replacement_depth": 0,
+    "external_dependencies": {
+      "depends_on_task_ids": [],
+      "import_task_outputs": [],
+      "import_worker_refs": [],
+      "source_task_ref": {}
+    },
+    "changed_files": [],
+    "changed_file_refs": [],
+    "real_changed_files": [],
+    "affected_refs": [],
+    "parent_changed_files": [],
+    "worker_reported_changed_files": [],
+    "observed_files": [
+      "README.md",
+      "src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md"
+    ],
+    "nested_workflows": [],
+    "nested_workflow_changed_files": [],
+    "nested_workflow_verification": [],
+    "join_syntheses": [],
+    "verification": [
+      {
+        "tool": "functions.shell_command",
+        "command": "Get-Content README.md | Select-Object -First 300",
+        "status": "ok",
+        "summary": "Read README.md content and confirmed active Nima frontier statement.",
+        "command_classification": "focused"
+      },
+      {
+        "tool": "functions.shell_command",
+        "command": "Get-Content 'src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md' | Select-Object -First 400",
+        "status": "ok",
+        "summary": "Read ledger theorem file and captured the theorem and primary next frontier text.",
+        "command_classification": "focused"
+      },
+      {
+        "tool": "functions.shell_command",
+        "command": "findstr /n \"^\" README.md",
+        "status": "ok",
+        "summary": "Collected line-numbered evidence in README for citation.",
+        "command_classification": "focused"
+      },
+      {
+        "tool": "functions.shell_command",
+        "command": "findstr /n \"^\" .\\src\\ledger\\'20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md'",
+        "status": "ok",
+        "summary": "Collected line-numbered evidence in ledger entry for citations.",
+        "command_classification": "focused"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [
+      "README has a typographical encoding artifact in one occurrence of 'Möbius' in text rendering output; non-semantic."
+    ],
+    "worker_terminal_diagnostics": [],
+    "worker_terminal_diagnostic_count": 0,
+    "exit_interviews": [
+      {
+        "step_id": "audit",
+        "step_kind": "worker",
+        "run_id": "run-20260813T163916Z-4440b10f",
+        "worker_session_id": "019ffbfe-0386-7651-9b08-0b026b75df1e",
+        "status": "completed",
+        "exit_interview": {
+          "ergonomics_feedback": "Task executed under strict read-only scope with focused file reads.",
+          "friction_points": [
+            "Initial quoting issues required command fallback to `findstr` for line-number output."
+          ],
+          "missing_affordances": [
+            "Direct line-numbered read in a single cross-platform command"
+          ],
+          "observed_incoherencies": [
+            "README has a typographical encoding artifact in one occurrence of 'Möbius' in text rendering output; non-semantic."
+          ],
+          "suggested_improvements": [
+            "Use a single file-read command that outputs stable line-numbered content in UTF-8 directly."
+          ],
+          "observed_ergonomics": {
+            "clarity_before_acting": 4,
+            "confidence_in_writable_roots": 5,
+            "predictability_of_tool_behavior": 3,
+            "diagnostic_usefulness": 5,
+            "remaining_ceremony": 4,
+            "remaining_weaknesses": 4,
+            "non_scoring_observations": [
+              "Output encoding normalized some punctuation (e.g., en-dash) in shell display.",
+              "No filesystem edits required.",
+              "No tests were requested and not run."
+            ]
+          }
+        }
+      }
+    ],
+    "exit_interview_count": 1,
+    "exit_interview_feedback": {
+      "ergonomics_feedback": [
+        "Task executed under strict read-only scope with focused file reads."
+      ],
+      "friction_points": [
+        "Initial quoting issues required command fallback to `findstr` for line-number output."
+      ],
+      "missing_affordances": [
+        "Direct line-numbered read in a single cross-platform command"
+      ],
+      "observed_incoherencies": [
+        "README has a typographical encoding artifact in one occurrence of 'Möbius' in text rendering output; non-semantic."
+      ],
+      "suggested_improvements": [
+        "Use a single file-read command that outputs stable line-numbered content in UTF-8 directly."
+      ]
+    },
+    "worker_launch_failures": [],
+    "worker_refs": [
+      {
+        "step_id": "audit",
+        "step_title": "Audit theorem and frontier",
+        "step_label": null,
+        "step_kind": "worker",
+        "run_id": "run-20260813T163916Z-4440b10f",
+        "worker_session_id": "019ffbfe-0386-7651-9b08-0b026b75df1e",
+        "status": "completed",
+        "confidence": "complete",
+        "summary": "Edits_performed = false. Read-only audit completed on the two requested files; no edits/tests were run and target state was not changed.",
+        "run_dir": "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f",
+        "output_ref": null,
+        "result_ref": null,
+        "resolved_worker_config": {
+          "runtime": "codex",
+          "authority": "read",
+          "cognition": "low",
+          "command": "C:\\Users\\andrey\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.EXE",
+          "command_args": [],
+          "argv": [
+            "exec",
+            "--ignore-user-config",
+            "--ignore-rules",
+            "-C",
+            "C:\\Users\\andrey\\src\\marici",
+            "--sandbox",
+            "read-only",
+            "--json",
+            "--output-schema",
+            "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f\\worker_output.schema.json",
+            "-o",
+            "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f\\last_message.json",
+            "-c",
+            "model=\"gpt-5.3-codex-spark\"",
+            "-c",
+            "model_reasoning_effort=\"low\"",
+            "-"
+          ],
+          "cwd": "C:\\Users\\andrey\\src\\marici",
+          "provider": "codex-subscription",
+          "provider_source": "codex_runtime_default",
+          "required_mcp_tools": [],
+          "sandbox": "read-only",
+          "model": "gpt-5.3-codex-spark",
+          "reasoning_effort": "low",
+          "config": {
+            "model": "gpt-5.3-codex-spark",
+            "model_reasoning_effort": "low"
+          },
+          "skip_git_repo_check": false,
+          "resumable": true,
+          "ephemeral": false,
+          "json_events": true,
+          "implementation_identity": {
+            "schema": "narada.worker.implementation_identity.v4",
+            "surface_id": "worker-delegation-mcp",
+            "package_name": "@narada-core/worker-delegation-mcp",
+            "identity_algorithm": "sha256-tree-v1",
+            "implementation_graph_scope": "surface_artifact_plus_direct_runtime_dependencies",
+            "implementation_identity": "sha256:4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+            "observed_implementation_identity": "sha256:4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+            "module_file": "implementation-identity.js",
+            "artifact_kind": "compiled",
+            "artifact_root": "dist/src",
+            "materialized_at": "2026-08-13T16:33:31.602Z",
+            "observed_at": "2026-08-13T16:39:15.953Z",
+            "revalidation_interval_ms": 1000,
+            "materialized_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+            "materialized_artifact_file_count": 99,
+            "observed_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+            "observed_artifact_file_count": 99,
+            "runtime_dependencies": {
+              "status": "unchanged_since_materialization",
+              "materialized_graph_sha256": "828ad9fb8e23e5b2a31c21e8c72506b3eb6f5d6d7317947b5b24a7c334b377cf",
+              "observed_graph_sha256": "828ad9fb8e23e5b2a31c21e8c72506b3eb6f5d6d7317947b5b24a7c334b377cf",
+              "dependencies": [
+                {
+                  "name": "@narada-core/mcp-affordances",
+                  "package_version": "0.1.0",
+                  "runtime_tree_sha256": "a377792a886cf1551942ed9802da4ac8f0c46d468196f69b8474aca9cb14ed7d",
+                  "runtime_file_count": 2
+                },
+                {
+                  "name": "@narada-core/mcp-fabric-contracts",
+                  "package_version": "0.1.0",
+                  "runtime_tree_sha256": "d44b932ab560baaf8757d5de5ae88ab06714b6d22f16d89e07590e545ca10c9f",
+                  "runtime_file_count": 45
+                },
+                {
+                  "name": "@narada-core/mcp-transport",
+                  "package_version": "0.1.0",
+                  "runtime_tree_sha256": "863a5aba8648025f89a6e09d1f0e3547e85130811723ede57897c8c3e4ce5e7e",
+                  "runtime_file_count": 2
+                },
+                {
+                  "name": "@narada-core/sqlite",
+                  "package_version": "0.1.0",
+                  "runtime_tree_sha256": "d3cf61aa8083a65dbc83e5f074626c1e9765327cd8e356f54e496b1a09e01efc",
+                  "runtime_file_count": 7
+                },
+                {
+                  "name": "zod",
+                  "package_version": "4.4.3",
+                  "runtime_tree_sha256": "4dd0a51f89dfdca370e9dc108e21bcf1fdde132ddb232262e0bb8c0bd3d38cb6",
+                  "runtime_file_count": 220
+                }
+              ],
+              "drift": [],
+              "error_code": null
+            },
+            "expected_build": {
+              "status": "matched",
+              "manifest_path": "dist/worker-delegation-build-identity.json",
+              "expected_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+              "expected_source_tree_sha256": "7a9baf76e44a225e06bd4b1b7cf479070e6c7aa4658bf193688ff8102a431744",
+              "expected_implementation_graph_sha256": "4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+              "observed_source_tree_sha256": "7a9baf76e44a225e06bd4b1b7cf479070e6c7aa4658bf193688ff8102a431744",
+              "runtime_dependency_drift": []
+            },
+            "stale_server_risk": {
+              "status": "not_observed",
+              "evidence": {
+                "materialized_implementation_identity": "4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5"
+              }
+            }
+          },
+          "prompt_byte_length": 7647,
+          "max_output_bytes": 2097152,
+          "max_run_ms": 1800000,
+          "max_tool_rounds": 32,
+          "environment_keys": [
+            "PATH",
+            "USERPROFILE"
+          ]
+        },
+        "worker_output_state": "available",
+        "write_set": [],
+        "output_schema": {},
+        "agent_slot": null,
+        "resume_from": null,
+        "affinity": null,
+        "declarative": null,
+        "output": {
+          "summary": "Edits_performed = false. Read-only audit completed on the two requested files; no edits/tests were run and target state was not changed.",
+          "deliverables": [
+            {
+              "path": "README.md",
+              "description": "Established status line for the broader program and Nima frontier; used as global framing of the next target state."
+            },
+            {
+              "path": "src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md",
+              "description": "Primary source proving the established theorem and spelling out the immediate next frontier."
+            }
+          ],
+          "changes": [],
+          "changed_files": [],
+          "dependencies": [],
+          "files": [],
+          "behaviors": [],
+          "inputs": [],
+          "outputs": [],
+          "structured_outputs": {},
+          "output_schema": null,
+          "resolved_worker_config": {
+            "runtime": "codex",
+            "authority": "read",
+            "cognition": "low",
+            "command": "C:\\Users\\andrey\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.EXE",
+            "command_args": [],
+            "argv": [
+              "exec",
+              "--ignore-user-config",
+              "--ignore-rules",
+              "-C",
+              "C:\\Users\\andrey\\src\\marici",
+              "--sandbox",
+              "read-only",
+              "--json",
+              "--output-schema",
+              "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f\\worker_output.schema.json",
+              "-o",
+              "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f\\last_message.json",
+              "-c",
+              "model=\"gpt-5.3-codex-spark\"",
+              "-c",
+              "model_reasoning_effort=\"low\"",
+              "-"
+            ],
+            "cwd": "C:\\Users\\andrey\\src\\marici",
+            "provider": "codex-subscription",
+            "provider_source": "codex_runtime_default",
+            "required_mcp_tools": [],
+            "sandbox": "read-only",
+            "model": "gpt-5.3-codex-spark",
+            "reasoning_effort": "low",
+            "config": {
+              "model": "gpt-5.3-codex-spark",
+              "model_reasoning_effort": "low"
+            },
+            "skip_git_repo_check": false,
+            "resumable": true,
+            "ephemeral": false,
+            "json_events": true,
+            "implementation_identity": {
+              "schema": "narada.worker.implementation_identity.v4",
+              "surface_id": "worker-delegation-mcp",
+              "package_name": "@narada-core/worker-delegation-mcp",
+              "identity_algorithm": "sha256-tree-v1",
+              "implementation_graph_scope": "surface_artifact_plus_direct_runtime_dependencies",
+              "implementation_identity": "sha256:4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+              "observed_implementation_identity": "sha256:4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+              "module_file": "implementation-identity.js",
+              "artifact_kind": "compiled",
+              "artifact_root": "dist/src",
+              "materialized_at": "2026-08-13T16:33:31.602Z",
+              "observed_at": "2026-08-13T16:39:15.953Z",
+              "revalidation_interval_ms": 1000,
+              "materialized_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+              "materialized_artifact_file_count": 99,
+              "observed_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+              "observed_artifact_file_count": 99,
+              "runtime_dependencies": {
+                "status": "unchanged_since_materialization",
+                "materialized_graph_sha256": "828ad9fb8e23e5b2a31c21e8c72506b3eb6f5d6d7317947b5b24a7c334b377cf",
+                "observed_graph_sha256": "828ad9fb8e23e5b2a31c21e8c72506b3eb6f5d6d7317947b5b24a7c334b377cf",
+                "dependencies": [
+                  {
+                    "name": "@narada-core/mcp-affordances",
+                    "package_version": "0.1.0",
+                    "runtime_tree_sha256": "a377792a886cf1551942ed9802da4ac8f0c46d468196f69b8474aca9cb14ed7d",
+                    "runtime_file_count": 2
+                  },
+                  {
+                    "name": "@narada-core/mcp-fabric-contracts",
+                    "package_version": "0.1.0",
+                    "runtime_tree_sha256": "d44b932ab560baaf8757d5de5ae88ab06714b6d22f16d89e07590e545ca10c9f",
+                    "runtime_file_count": 45
+                  },
+                  {
+                    "name": "@narada-core/mcp-transport",
+                    "package_version": "0.1.0",
+                    "runtime_tree_sha256": "863a5aba8648025f89a6e09d1f0e3547e85130811723ede57897c8c3e4ce5e7e",
+                    "runtime_file_count": 2
+                  },
+                  {
+                    "name": "@narada-core/sqlite",
+                    "package_version": "0.1.0",
+                    "runtime_tree_sha256": "d3cf61aa8083a65dbc83e5f074626c1e9765327cd8e356f54e496b1a09e01efc",
+                    "runtime_file_count": 7
+                  },
+                  {
+                    "name": "zod",
+                    "package_version": "4.4.3",
+                    "runtime_tree_sha256": "4dd0a51f89dfdca370e9dc108e21bcf1fdde132ddb232262e0bb8c0bd3d38cb6",
+                    "runtime_file_count": 220
+                  }
+                ],
+                "drift": [],
+                "error_code": null
+              },
+              "expected_build": {
+                "status": "matched",
+                "manifest_path": "dist/worker-delegation-build-identity.json",
+                "expected_artifact_tree_sha256": "ef5bca3589129e5e37ec29f9625bc10c70f113368d8fc18bd69c758d320a3da8",
+                "expected_source_tree_sha256": "7a9baf76e44a225e06bd4b1b7cf479070e6c7aa4658bf193688ff8102a431744",
+                "expected_implementation_graph_sha256": "4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5",
+                "observed_source_tree_sha256": "7a9baf76e44a225e06bd4b1b7cf479070e6c7aa4658bf193688ff8102a431744",
+                "runtime_dependency_drift": []
+              },
+              "stale_server_risk": {
+                "status": "not_observed",
+                "evidence": {
+                  "materialized_implementation_identity": "4a72e248cc9ab5978231eb72bb39f6962896d57ecff2b20884fc6bce8dd798a5"
+                }
+              }
+            },
+            "prompt_byte_length": 7647,
+            "max_output_bytes": 2097152,
+            "max_run_ms": 1800000,
+            "max_tool_rounds": 32,
+            "environment_keys": [
+              "PATH",
+              "USERPROFILE"
+            ]
+          },
+          "worker_output_state": "available",
+          "nested_workflows": [],
+          "verification_results": [
+            {
+              "tool": "functions.shell_command",
+              "command": "Get-Content README.md | Select-Object -First 300",
+              "status": "ok",
+              "summary": "Read README.md content and confirmed active Nima frontier statement.",
+              "command_classification": "focused"
+            },
+            {
+              "tool": "functions.shell_command",
+              "command": "Get-Content 'src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md' | Select-Object -First 400",
+              "status": "ok",
+              "summary": "Read ledger theorem file and captured the theorem and primary next frontier text.",
+              "command_classification": "focused"
+            },
+            {
+              "tool": "functions.shell_command",
+              "command": "findstr /n \"^\" README.md",
+              "status": "ok",
+              "summary": "Collected line-numbered evidence in README for citation.",
+              "command_classification": "focused"
+            },
+            {
+              "tool": "functions.shell_command",
+              "command": "findstr /n \"^\" .\\src\\ledger\\'20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md'",
+              "status": "ok",
+              "summary": "Collected line-numbered evidence in ledger entry for citations.",
+              "command_classification": "focused"
+            }
+          ],
+          "residual_risks": [],
+          "observed_incoherencies": [],
+          "exit_interview": {
+            "ergonomics_feedback": "Task executed under strict read-only scope with focused file reads.",
+            "friction_points": [
+              "Initial quoting issues required command fallback to `findstr` for line-number output."
+            ],
+            "missing_affordances": [
+              "Direct line-numbered read in a single cross-platform command"
+            ],
+            "observed_incoherencies": [
+              "README has a typographical encoding artifact in one occurrence of 'Möbius' in text rendering output; non-semantic."
+            ],
+            "suggested_improvements": [
+              "Use a single file-read command that outputs stable line-numbered content in UTF-8 directly."
+            ],
+            "observed_ergonomics": {
+              "clarity_before_acting": 4,
+              "confidence_in_writable_roots": 5,
+              "predictability_of_tool_behavior": 3,
+              "diagnostic_usefulness": 5,
+              "remaining_ceremony": 4,
+              "remaining_weaknesses": 4,
+              "non_scoring_observations": [
+                "Output encoding normalized some punctuation (e.g., en-dash) in shell display.",
+                "No filesystem edits required.",
+                "No tests were requested and not run."
+              ]
+            }
+          },
+          "review_verdict": null,
+          "acceptance_verdict": null,
+          "verdict": null,
+          "error": null,
+          "error_classification": null,
+          "diagnostic_tail": null,
+          "runtime_warnings": [],
+          "completion_state": "complete"
+        },
+        "output_schema_validation": {
+          "status": "not_applicable"
+        }
+      }
+    ],
+    "worker_ref_count": 1,
+    "acceptance_status": "passed",
+    "acceptance_verdict": "passed",
+    "acceptance_precheck_verdict": "passed",
+    "acceptance_evidence": [],
+    "step_states": {
+      "audit": {
+        "step_id": "audit",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-20260813T163916Z-4440b10f"
+        ],
+        "current_run_id": null,
+        "worker_session_id": "019ffbfe-0386-7651-9b08-0b026b75df1e",
+        "started_at": "2026-08-13T16:39:16.024Z",
+        "finished_at": "2026-08-13T16:39:48.960Z",
+        "blocked_by": [],
+        "error": null,
+        "summary": "Edits_performed = false. Read-only audit completed on the two requested files; no edits/tests were run and target state was not changed.",
+        "affinity": null,
+        "active_posture": null
+      }
+    },
+    "work_order_lifecycle": {
+      "schema": "narada.delegation.work_order.lifecycle_state.v1",
+      "state": "completed",
+      "history": [
+        "requested",
+        "admitted",
+        "planned",
+        "dispatched",
+        "running",
+        "review",
+        "completed"
+      ]
+    },
+    "progress": {
+      "total": 1,
+      "completed": 1,
+      "running": 0,
+      "running_run_ids": [],
+      "historical_run_ids": [
+        "run-20260813T163916Z-4440b10f"
+      ],
+      "terminal_running_step_ids": [],
+      "liveness": "terminal_no_active_execution"
+    },
+    "summary": "delegated task completed; steps=1; acceptance=passed",
+    "workflow_status": "completed",
+    "steps_terminal": true,
+    "acceptance_terminal": true,
+    "pending_acceptance_items": [],
+    "pending_review_items": [],
+    "ownership": {
+      "owner_site_id": "marici",
+      "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+      "created_by_site_id": "marici",
+      "visibility_scope": "site",
+      "task_root_scope": "site_root",
+      "ownership_resolution": "explicit"
+    },
+    "target_state_changed": {
+      "repo_files_changed": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "target_repository"
+      },
+      "delegated_task_artifacts_created": {
+        "changed": true,
+        "paths": [
+          "C:\\Users\\andrey\\src\\marici\\tasks\\task_6e7e4b5a0a35d79b"
+        ],
+        "authority_owner": "delegated-task-mcp"
+      },
+      "worker_runtime_artifacts_created": {
+        "changed": true,
+        "paths": [
+          "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f"
+        ],
+        "authority_owner": "worker-delegation-mcp"
+      },
+      "worker_observed_changed_files": {
+        "changed": true,
+        "paths": [
+          "README.md",
+          "src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md"
+        ],
+        "authority_owner": "worker_report"
+      },
+      "nested_delegated_task_changed_files": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "nested_delegated_task_report"
+      },
+      "external_side_effects": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": null
+      }
+    },
+    "graph_execution_synthesis": {
+      "schema": "narada.delegated_task.graph_execution_synthesis.v1",
+      "parent_workflow_status": "completed",
+      "orchestration_success": true,
+      "task_acceptance_verdict": "passed",
+      "synthesized_verdict": "accepted",
+      "next_directive": "ready_for_closeout",
+      "steps_terminal": true,
+      "acceptance_terminal": true,
+      "step_status": [
+        {
+          "step_id": "audit",
+          "step_kind": "worker",
+          "status": "completed",
+          "run_ids": [
+            "run-20260813T163916Z-4440b10f"
+          ],
+          "current_run_id": null,
+          "worker_session_id": "019ffbfe-0386-7651-9b08-0b026b75df1e",
+          "affinity": null,
+          "summary": "Edits_performed = false. Read-only audit completed on the two requested files; no edits/tests were run and target state was not changed."
+        }
+      ],
+      "session_affinity_evidence": [],
+      "derived_topology": {
+        "shape": {
+          "dag": true,
+          "entry_step_ids": [
+            "audit"
+          ],
+          "terminal_step_ids": [
+            "audit"
+          ],
+          "edges": []
+        },
+        "declarative_expansion": null,
+        "write_set_scheduling": false,
+        "write_sets": []
+      },
+      "run_refs": [
+        {
+          "step_id": "audit",
+          "run_id": "run-20260813T163916Z-4440b10f",
+          "output_ref": null,
+          "result_ref": null,
+          "run_dir": "C:\\Users\\andrey\\src\\marici\\.narada\\runtime\\worker-delegation\\run-20260813T163916Z-4440b10f"
+        }
+      ],
+      "worker_summaries": [
+        {
+          "step_id": "audit",
+          "step_kind": "worker",
+          "run_id": "run-20260813T163916Z-4440b10f",
+          "worker_session_id": "019ffbfe-0386-7651-9b08-0b026b75df1e",
+          "status": "completed",
+          "confidence": "complete",
+          "summary": "Edits_performed = false. Read-only audit completed on the two requested files; no edits/tests were run and target state was not changed.",
+          "output_ref": null,
+          "result_ref": null,
+          "affinity": {},
+          "diagnostic_flags": {
+            "has_error": false,
+            "has_residual_risks": false,
+            "has_observed_incoherencies": false,
+            "has_nested_workflows": false,
+            "verification_count": 4
+          },
+          "changed_files_count_by_source": {
+            "worker_reported": 0,
+            "deliverables": 2,
+            "nested_workflows": 0
+          },
+          "manual_artifact_inspection_recommended": false,
+          "manual_artifact_inspection_reason": null
+        }
+      ],
+      "diagnostics": {
+        "failed_steps": [],
+        "pending_steps": [],
+        "pending_acceptance_items": [],
+        "pending_review_items": []
+      },
+      "worker_terminal_diagnostics": [],
+      "residual_risks": [],
+      "review_consensus": {
+        "schema": "narada.delegated_task.review_consensus.v1",
+        "consensus": "none",
+        "passed_step_ids": [],
+        "failed_step_ids": [],
+        "inconclusive_step_ids": [],
+        "disagreement": false
+      },
+      "changed_files_by_source": {
+        "parent": [],
+        "worker_reported": [],
+        "observed_deliverables": [
+          "README.md",
+          "src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md"
+        ],
+        "nested_workflows": [],
+        "real_files": [],
+        "affected_refs": []
+      },
+      "parent_owned_changed_files": [],
+      "worker_observed_changed_files": [],
+      "nested_delegated_task_calls": [],
+      "evidence_coverage": {
+        "step_count": 1,
+        "worker_ref_count": 1,
+        "verification_count": 4,
+        "residual_risk_count": 0
+      }
+    },
+    "lifecycle_acknowledgement": {
+      "acknowledged": true,
+      "acknowledged_at": "2026-08-13T16:41:11.172Z",
+      "acknowledged_by": "marici.Nima",
+      "note": "Read-only smoke test completed and accepted; worker-delegation child provenance and no-repository-change handoff verified."
+    }
+  }
+}
