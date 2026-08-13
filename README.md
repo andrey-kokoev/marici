@@ -32,7 +32,9 @@ The ledger currently keeps three frontiers separate:
   \(u^{\rm univ}(\ker q_{\rm YM})\subseteq\ker q_\phi\), yielding a unique
   operation on canonical surface functions. Thus \(3S\), \(6AS\), separating
   Cuts, and nonseparating Cuts all close after resolved augmentation, at every
-  topology. A single point-set all-loop differential operator on already-summed
+  topology. The first populated handle test now verifies this directly on the
+  punctured-torus theta graph and exhibits the pre-augmentation Cut defect
+  \(2(D-1)/9\). A single point-set all-loop differential operator on already-summed
   \(X_C\) functions and a metric jet adjoint remain undefined;
 - **YM:** verify index raising on the six-point Laurent/nearby-cycle channel quotient and keep
   ordering contraction distinct from physical-state sewing;
@@ -203,3 +205,7 @@ prohibited overclaims.
 - `20260813-48` proves that Cuts plus the ultraviolet boundary are conservative for polynomial
   surface functions, uses this to establish the kernel inclusion at full surface-function level,
   and thereby constructs the unique cyclic, all-topology, Cut-monoidal physical surface counit.
+- `20260813-49` performs the first populated handle test on the once-punctured torus: nine
+  resolved theta sewings give the scalar coefficient \(1/3\), their nonseparating Cut gives the
+  annulus coefficient \(1\), and premature circuit evaluation exhibits the exact obstruction
+  \(2(D-1)/9\) that the termwise \(D\mapsto1\) augmentation removes.
