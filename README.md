@@ -34,8 +34,15 @@ The ledger currently keeps three frontiers separate:
   Cuts, and nonseparating Cuts all close after resolved augmentation, at every
   topology. The first populated handle test now verifies this directly on the
   punctured-torus theta graph and exhibits the pre-augmentation Cut defect
-  \(2(D-1)/9\). A single point-set all-loop differential operator on already-summed
-  \(X_C\) functions and a metric jet adjoint remain undefined;
+  \(2(D-1)/9\). The marked-theta external-state refinement now gives an
+  explicit 150-variable open-path dictionary, its 5,616-monomial free surface
+  polynomial, and a symbolic physical-projector identity in thirteen
+  independent Gram variables across all 24 audited tree/reference
+  presentations. The resolved dictionary is flip natural, strictly
+  Cut-compatible before circuit evaluation, and satisfies the mapping-class
+  orbit Cut Equation. An all-topology physical-projector comparison, a single
+  point-set all-loop differential operator on already-summed \(X_C\)
+  functions, and a metric jet adjoint remain undefined;
 - **YM:** verify index raising on the six-point Laurent/nearby-cycle channel quotient and keep
   ordering contraction distinct from physical-state sewing;
 - **Frost:** construct, or obstruct, a canonical cyclic/BV lift of the pure-Einstein
@@ -84,6 +91,12 @@ rustc --edition=2021 -O research/nima/check_modular_envelope_counit.rs -o "$env:
 & "$env:TEMP\marici-modular-envelope-counit.exe"
 rustc --edition=2021 -O research/nima/check_cut_equation_descent.rs -o "$env:TEMP\marici-cut-equation-descent.exe"
 & "$env:TEMP\marici-cut-equation-descent.exe"
+rustc --edition=2021 -O research/nima/check_marked_handle_counit.rs -o "$env:TEMP\marici-marked-handle-counit.exe"
+& "$env:TEMP\marici-marked-handle-counit.exe"
+rustc --edition=2021 -O research/nima/check_marked_handle_x_dictionary.rs -o "$env:TEMP\marici-marked-handle-dictionary.exe"
+& "$env:TEMP\marici-marked-handle-dictionary.exe"
+rustc --edition=2021 -O research/nima/check_marked_handle_symbolic_identity.rs -o "$env:TEMP\marici-marked-handle-symbolic.exe"
+& "$env:TEMP\marici-marked-handle-symbolic.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -209,3 +222,12 @@ prohibited overclaims.
   resolved theta sewings give the scalar coefficient \(1/3\), their nonseparating Cut gives the
   annulus coefficient \(1\), and premature circuit evaluation exhibits the exact obstruction
   \(2(D-1)/9\) that the termwise \(D\mapsto1\) augmentation removes.
+- `20260813-50` adds three external scaffold states to the marked theta handle, verifies the
+  resolved state carrier and cyclic support balance, and records the first finite
+  physical-projector comparison together with its corrected longitudinal-sector scope.
+- `20260813-51` constructs the literal open-path endpoint-extension dictionary, retains 150
+  homotopy-sensitive curve variables and 5,616 surviving surface monomials, and matches the
+  complete marked-handle physical projector at four exact points and all twelve spanning trees.
+- `20260813-52` upgrades that comparison to an exact Gram-ring identity across 24
+  tree/reference presentations and proves that the resolved curve-cover construction is natural
+  under flips and Cuts and descends through mapping-class summation with the exact Cut Equation.
