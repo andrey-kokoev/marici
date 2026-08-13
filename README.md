@@ -21,8 +21,19 @@ The ledger currently keeps three frontiers separate:
   two-pair sector tensored with a separate all-odd annihilator, and the two
   gluing gauges are related by a deletion-simplex filler. Cyclic symmetry also
   exposes a real integral torsion class: a unit invariant representative needs
-  denominators or a new barycentric primitive. A metric jet adjoint and the
-  surface/loop lift remain undefined;
+  denominators or a new barycentric primitive. At the all-topology state layer,
+  closed polarization circuits now form a resolved Brauer category with a
+  cyclic monoidal scalar augmentation \(D\mapsto1\). This exactly passes the
+  one-loop one-point closed-circuit test. Applying the derived modular envelope
+  to this state augmentation and the resolved tree counit constructs a unique
+  cyclic, all-topology, strictly Cut-monoidal operation on the universal
+  ribbon-graph surface complex. The Cut Equation plus the cubic-scalar
+  ultraviolet boundary condition then proves the exact descent inclusion
+  \(u^{\rm univ}(\ker q_{\rm YM})\subseteq\ker q_\phi\), yielding a unique
+  operation on canonical surface functions. Thus \(3S\), \(6AS\), separating
+  Cuts, and nonseparating Cuts all close after resolved augmentation, at every
+  topology. A single point-set all-loop differential operator on already-summed
+  \(X_C\) functions and a metric jet adjoint remain undefined;
 - **YM:** verify index raising on the six-point Laurent/nearby-cycle channel quotient and keep
   ordering contraction distinct from physical-state sewing;
 - **Frost:** construct, or obstruct, a canonical cyclic/BV lift of the pure-Einstein
@@ -65,6 +76,12 @@ rustc --edition=2021 -O research/nima/check_transmutation_counit_all_arity.rs -o
 & "$env:TEMP\marici-transmutation-counit.exe"
 rustc --edition=2021 -O research/nima/check_transmutation_cut_coaction.rs -o "$env:TEMP\marici-transmutation-cut.exe"
 & "$env:TEMP\marici-transmutation-cut.exe"
+rustc --edition=2021 -O research/nima/check_surface_counit_brauer.rs -o "$env:TEMP\marici-surface-counit-brauer.exe"
+& "$env:TEMP\marici-surface-counit-brauer.exe"
+rustc --edition=2021 -O research/nima/check_modular_envelope_counit.rs -o "$env:TEMP\marici-modular-envelope-counit.exe"
+& "$env:TEMP\marici-modular-envelope-counit.exe"
+rustc --edition=2021 -O research/nima/check_cut_equation_descent.rs -o "$env:TEMP\marici-cut-equation-descent.exe"
+& "$env:TEMP\marici-cut-equation-descent.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -174,3 +191,15 @@ prohibited overclaims.
 - `20260813-45` proves the strict all-arity tree Cut formula for every retained pair and both
   scaffold gluing gauges: its sole correction factors through an all-odd lower annihilator, so
   the counit is group-like in the ordinary tensor product of lower amplitude quotients.
+- `20260813-46` constructs the cyclic monoidal Brauer-state augmentation for closed
+  polarization circuits, passes the exact one-loop one-point surface test, rules out a naive
+  global \(D^{-L}\) definition, and isolates the local \(3S\) and mixed \(6AS\) Hatcher cells
+  before the modular-envelope refinement.
+- `20260813-47` applies the derived modular envelope to construct the universal cyclic,
+  all-topology, strictly Cut-monoidal surface counit, proves exact Farey \(3S\) holonomy, and
+  isolates descent to physical \(X_C\) surface functions as the kernel inclusion
+  \(u^{\rm univ}(\ker q_{\rm YM})\subseteq\ker q_\phi\), already verified on the
+  arbitrary-topology maximal-Cut quotient.
+- `20260813-48` proves that Cuts plus the ultraviolet boundary are conservative for polynomial
+  surface functions, uses this to establish the kernel inclusion at full surface-function level,
+  and thereby constructs the unique cyclic, all-topology, Cut-monoidal physical surface counit.
