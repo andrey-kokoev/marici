@@ -11,6 +11,12 @@
 //! external Brauer matching, and counts closed polarization circuits before
 //! applying D -> 1.  It also opens every subset of internal edges and checks
 //! Cut naturality coefficient by coefficient after the augmentation.
+//!
+//! The completed graph-theoretic cycles are also checked to have mixed turn
+//! words.  This is only a topological diagnostic: it does not test the
+//! pre-gluing open paths that control longitudinal physical-projector terms.
+//! The complete tensor-network audit in `check_marked_handle_x_dictionary.rs`
+//! finds those corrections to be nonzero for some sewing histories.
 
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
@@ -488,7 +494,7 @@ fn turn_word(graph: &MarkedTheta, cycle_mask: u64) -> Vec<char> {
     turns
 }
 
-fn audit_physical_projector_paths() -> (usize, usize) {
+fn audit_completed_cycle_turn_words() -> (usize, usize) {
     let mut simple_cycles = 0;
     let mut closure_channels = 0;
     for inserted_roads in 0..=3 {
@@ -680,7 +686,7 @@ fn main() {
     let cut_atlas = audit_three_leg_cut_atlas();
     let external_support = audit_external_support();
     let cyclic_squares = audit_cyclic_covariance();
-    let (simple_cycles, closure_channels) = audit_physical_projector_paths();
+    let (simple_cycles, closure_channels) = audit_completed_cycle_turn_words();
 
     // Backus--Figueiredo's first two-loop units obstruction is the one-leg
     // member: four post-scaffolding graph propagators plus its scaffolding pole.
@@ -711,8 +717,8 @@ fn main() {
         external_support.len()
     );
     println!("  populated cyclic covariance squares: {cyclic_squares}");
-    println!("  mixed-turn simple cycles: {simple_cycles}");
-    println!("  mixed-turn loop-closure channels: {closure_channels}");
+    println!("  mixed-turn completed simple cycles: {simple_cycles}");
+    println!("  mixed-turn completed closure cycles: {closure_channels}");
     println!();
     println!("THREE-LEG FORMULAS");
     println!("  raw closed coefficient: (234+9D)/243 = (26+D)/27");
@@ -725,5 +731,6 @@ fn main() {
     println!("  every separating and nonseparating iterated Cut commutes after resolution");
     println!("  raw state evaluation has a nonzero Cut curvature proportional to D-1");
     println!("  external matching support is nonuniform but exactly cyclically balanced");
-    println!("  no theta cycle is purely left-turning, so the physical N-corrections vanish");
+    println!("  completed theta cycles are mixed-turn (a topology-only diagnostic)");
+    println!("  the separate physical-projector audit finds nonzero longitudinal terms");
 }
