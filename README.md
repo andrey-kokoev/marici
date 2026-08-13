@@ -1,0 +1,150 @@
+# Marici
+
+Research ledger and public map for the scalar master geometry program: intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web.
+
+The ledger currently keeps three frontiers separate:
+
+- **Nima:** the all-arity rooted-spine theorem now proves strict mixed Cut/refinement
+  naturality, and its scalar associated grade has a finite nonresonant
+  Pochhammer/Cousin lift. Derived index raising identifies the resulting
+  factorization-natural worldsheet class with \([({\rm Pf}'A)^2]\) before pairing,
+  closing the genus-zero three-generator web. The low-point operator-algebra audit
+  identifies the Backus--Figueiredo \(W\) operation as an amplitude-level
+  transmutation counit and the Dong--Su--Yang diagram derivatives as a sparse
+  Catalan coframe inside it. Their augmented classes agree for every cyclic
+  scaffold reference through five points. A metric jet adjoint remains undefined
+  until the full fusion map and physical gauge pairing are constructed;
+- **YM:** verify index raising on the six-point Laurent/nearby-cycle channel quotient and keep
+  ordering contraction distinct from physical-state sewing;
+- **Frost:** construct, or obstruct, a canonical cyclic/BV lift of the pure-Einstein
+  primitive-symmetric retract and the scalar-to-surface lift of \(\mathsf J\).
+
+## Commands
+
+```text
+pnpm install
+pnpm dev
+pnpm check
+pnpm build
+python research/nima/check_j_reconstruction.py
+python research/nima/check_qtds_lift.py
+python research/nima/check_qtds_descent.py
+python research/nima/check_surface_rees_carrier.py
+python research/nima/check_eight_point_transfer.py
+python research/nima/check_scalar_edge_transport.py
+python research/nima/check_ten_point_falsification.py
+python research/nima/check_twelve_point_qtds.py
+python research/nima/check_scalar_catalan_map.py
+python research/nima/check_scalar_sink_qtds.py
+python research/nima/check_qtds_vertex_cancellation.py
+python research/nima/check_core_filtered_transfer.py
+python research/nima/check_core_incidence_cells.py
+python research/nima/check_core_incidence_rank_three.py
+python research/nima/check_core_incidence_rank_four.py
+python research/nima/check_associahedral_envelope.py
+python research/nima/check_qtds_cut_coaction.py
+python research/nima/check_mixed_prism_squares.py
+python research/nima/check_mixed_prism_curvature.py
+python research/nima/check_mixed_prism_spectator_stability.py
+rustc --edition=2021 -O research/nima/check_mixed_prism_all_arity.rs -o "$env:TEMP\marici-mixed-prism.exe"
+& "$env:TEMP\marici-mixed-prism.exe"
+rustc --edition=2021 -O research/nima/check_twelve_point_scalar.rs -o "$env:TEMP\marici-check-twelve.exe"
+& "$env:TEMP\marici-check-twelve.exe"
+rustc --edition=2021 -O research/nima/check_low_point_transmutation.rs -o "$env:TEMP\marici-low-point-transmutation.exe"
+& "$env:TEMP\marici-low-point-transmutation.exe"
+```
+
+Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
+structure, independently checked results, strong inferences, open questions, falsifiers, and
+prohibited overclaims.
+
+## Ledger map
+
+- `20260812-01` records the gravity cyclic-lift problem.
+- `20260812-02` fixes the Nima charter and candidate operation algebra.
+- `20260812-03` records the three derived normal sectors and their epistemic boundaries.
+- `20260812-04` states the three-generator half-object conjecture and six-theory pairing table.
+- `20260812-05` defines the falsification protocol for the rank-jump half-object \(\mathsf J\).
+- `20260812-06` fixes the research order and interfaces with YM, Frost, and Cintamani.
+- `20260812-07` types candidate surface operations and records the non-conservativity of cuts.
+- `20260812-08` refines the Yang–Mills operation to a multi-normal fusion residue.
+- `20260812-09` tests the NLSM rank grade against curved cut completion and contact data.
+- `20260812-10` separates pure-state cut closure from full primitive-symmetric surface naturality.
+- `20260812-11` proves inverse-pairing reconstruction and identifies the resulting CHY class.
+- `20260812-12` records exact four-, six-, and eight-point scalar-grade, photon-decoupling, KK,
+  BCJ, and basis-change checks with a reproducible standard-library script.
+- `20260812-13` corrects boundary index raising to a nearby-cycle channel quotient and assigns the
+  scalar-to-surface comparison and cut-kernel primitive tests to YM and Frost.
+- `20260812-14` proves direct all-multiplicity scalar descent using residue induction,
+  soft-contact lemmas, and primary ordering relations.
+- `20260812-15` records the genus-zero three-generator closure verdict, remaining qualifications,
+  and the next Nima/YM/Frost ownership split.
+- `20260812-16` proves the symmetry and information-loss obstruction to absolute QTDS
+  strictification, constructs the correctly typed order-relative lift, and states the enriched
+  cyclic-resolution target.
+- `20260812-17` records exact quartic-recursion, polarity, scalar-grade, and rectangular-Jordan
+  checks with a reproducible standard-library script.
+- `20260812-18` identifies the alternating polarity torsor, distinguishes failure of a natural
+  section from descent of an all-fibers object, and types the required cyclic-operadic coherence.
+- `20260812-19` promotes the complete QTDS period family to a pointed cohomological factorization
+  lift, constructs the six-point local flip flow, and identifies the exact eight-point
+  projective-plane coherence complex and scalar-specialization target.
+- `20260812-20` proves the summed-amplitude underdetermination, then escapes it using the
+  cell-resolved scalar grade: the parity-core map derives the exact six-point QTDS contact
+  redistribution and canonically labels the eight-point triangles and squares.
+- `20260812-21` constructs the two canonical six-point scalar tripods, identifies the eight-point
+  scalar carrier as a Möbius band bounded by the missing octagon, and types the filtered
+  Pochhammer/Cousin comparison required for a genuine twisted-chain lift.
+- 20260812-22 shows that the unique sign local system has a spherical double cover and types the
+  first physical obstruction as a deck-odd, residue-free octagonal contact class, naturally
+  regulated at finite nonresonant \(\alpha'\).
+- `20260812-23` proves the exact eight-point core-stratified QTDS transfer, derives its closed
+  contact grammar, finds the unique conditional distance-two marked matching, and shows why a
+  genuine edge transport is necessary.
+- `20260813-24` removes the conditioning: alternating scalar coorientation uniquely derives the
+  marked matching, constructs its local deck-odd edge transport, identifies the integral route
+  torsor, and proves zero octagonal contact curvature.
+- `20260813-25` verifies the unchanged scalar rule through ten and twelve points, matches all
+  QTDS contacts independently at both arities, exposes the Catalan count law, and formulates the
+  all-arity discrete-Morse transfer theorem.
+- `20260813-26` proves that theorem by a direct marked Catalan bijection with explicit inverse,
+  identifies geodesics as linear extensions of disjoint flip chains, and proves the all-arity
+  unique-sink QTDS contact theorem from a vertex-local numerator identity.
+- `20260813-27` tensors the Catalan map over every partial physical core and proves all-arity,
+  occurrence-level equality of the complete core-filtered scalar grade and complete QTDS period.
+- `20260813-28` constructs the integral, deck-equivariant rank-two incidence carriers: squares
+  for independent flips and pentagons for dependent flips, with exact signed boundaries.
+- `20260813-29` falsifies naïve rank-three closure, classifies the missing scalar and physical
+  facets, and constructs the canonical integral rank-three associahedral saturation.
+- `20260813-30` repeats the falsification at rank four, closes all five product-associahedral
+  types, and identifies the full marked associahedral envelope as the correct scalar source.
+- `20260813-31` proves the all-rank dual-tree block-face lemma
+  \(F_{\mathbf r}\cong\prod_a K_{r_a}\), thereby constructing every higher scalar-source
+  coherence.
+- `20260813-32` constructs the strict occurrence-level physical cut coaction, proves all cut
+  orders agree with its closed product formula, and transports the physical-core cosheaf maps
+  through the regional Catalan bijection.
+- `20260813-33` splits the prism deficit into a Boolean physical square already closed by that
+  coaction and one genuinely mixed scalar-refinement/physical-cut Beck--Chevalley square.
+- `20260813-34` proves that mixed curvature vanishes termwise on every decorated occurrence
+  through twelve points: the cut of a scalar edge is a two-slot weighted sum of canonical upper
+  scalar edges.
+- `20260813-35` generates the mixed \(K_2\times I\) cell directly from rooted dependency
+  chains and independently extends the complete decorated audit to fourteen points in optimized
+  Rust.
+- `20260813-36` establishes the publication/claim DAG baseline and isolates scaffold lowering
+  operators and reverse surface recovery as high-information external nodes.
+- `20260813-37` proves the all-arity rooted-spine base-change theorem, replacing the bounded
+  mixed-prism audits by an exact two-slot chain identity.
+- `20260813-38` constructs the finite-nonresonant normal-torus Pochhammer/Cousin lift and proves
+  that its nearby-cycle unit has associated grade exactly \(1/X_e\).
+- `20260813-39` derives the scalar worldsheet half-class, identifies it with
+  \([({\rm Pf}'A)^2]\), and proves factorization in the Pochhammer/Cousin complex before
+  inverse-pairing reconstruction.
+- `20260813-40` falsifies literal adjunction between the fusion jet and individual scaffold
+  derivatives, reclassifies those derivatives as a Catalan cellular coframe, and states the
+  correctly typed augmented-transmutation matrix test.
+- `20260813-41` completes that test at four and five points: the full \(W\) transmuter and
+  augmented Catalan coframe agree modulo the annihilator of the canonical YM amplitude for
+  every cyclic reference, while the metric adjoint is provably underdetermined by the
+  published fusion-map and pairing data.

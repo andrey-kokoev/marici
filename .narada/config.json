@@ -1,0 +1,224 @@
+{
+  "site_id": "marici",
+  "site_kind": "project",
+  "workspace_root": "C:\\Users\\andrey\\src\\marici",
+  "site_root": "C:\\Users\\andrey\\src\\marici\\.narada",
+  "config_path": "C:\\Users\\andrey\\src\\marici\\.narada\\config.json",
+  "locus": {
+    "authority_locus": "project",
+    "project_workspace_root": "C:\\Users\\andrey\\src\\marici",
+    "governance_root": "C:\\Users\\andrey\\src\\marici\\.narada"
+  },
+  "sync": {
+    "posture": "git_backed_project_repo",
+    "git_initialized": true,
+    "repository_root": "C:\\Users\\andrey\\src\\marici"
+  },
+  "inbox": {
+    "drop_dir": "C:\\Users\\andrey\\src\\marici\\.narada\\.ai\\inbox-drop",
+    "envelope_export_dir": "C:\\Users\\andrey\\src\\marici\\.narada\\.ai\\inbox-envelopes",
+    "adapter": "canonical_file_drop"
+  },
+  "durability": {
+    "visible_workspace_preserved": true,
+    "governance_contained_in_dot_narada": true,
+    "project_artifacts_external_until_admitted": true
+  },
+  "governance": {
+    "governing_law_source": {
+      "source_site_id": "narada-proper",
+      "law_artifacts": [
+        "AGENTS.md",
+        "SEMANTICS.md",
+        "docs/product/site-factorization.md",
+        "docs/product/site-bootstrap-contract.md"
+      ],
+      "mode": "inherited",
+      "admission": "declared"
+    },
+    "law_admission_mode": "local_overlay",
+    "authority_locus": {
+      "locus_kind": "project",
+      "authority_site_id": "marici",
+      "mutation_policy": "direct_only_at_locus"
+    },
+    "embodiments": [
+      {
+        "embodiment_id": "contained-site-root",
+        "role": "authority",
+        "root": "C:\\Users\\andrey\\src\\marici\\.narada",
+        "substrate": "filesystem",
+        "mutation_policy": "may_mutate_at_authority_locus"
+      },
+      {
+        "embodiment_id": "visible-workspace",
+        "role": "read_only",
+        "root": "C:\\Users\\andrey\\src\\marici",
+        "substrate": "filesystem",
+        "mutation_policy": "read_only"
+      }
+    ],
+    "site_participant_roles": [
+      {
+        "role_id": "resident",
+        "role_class": "resident",
+        "status": "active",
+        "purpose": "Use the Site to produce its intended value and surface lived operational friction.",
+        "runtime_kind": "human",
+        "authority_posture": "value_use"
+      },
+      {
+        "role_id": "architect",
+        "role_class": "architect",
+        "status": "declared_pending_runtime_admission",
+        "purpose": "Specify governed work, preserve topology and doctrine, and frame review posture.",
+        "runtime_kind": "codex_cli",
+        "authority_posture": "specification"
+      },
+      {
+        "role_id": "builder",
+        "role_class": "builder",
+        "status": "declared_pending_runtime_admission",
+        "purpose": "Execute approved local construction work packages and report verification evidence.",
+        "runtime_kind": "codex_cli",
+        "authority_posture": "construction"
+      }
+    ],
+    "operator_surfaces": [],
+    "session_bindings": [],
+    "mutation_evidence_locus": {
+      "kind": "git",
+      "path": "C:\\Users\\andrey\\src\\marici\\.narada",
+      "required": true
+    },
+    "inbox_sources": [
+      {
+        "source_id": "canonical-file-drop",
+        "kind": "file_drop",
+        "path": "C:\\Users\\andrey\\src\\marici\\.narada\\.ai\\inbox-drop",
+        "admission": "inert_until_promoted"
+      }
+    ],
+    "outbox_targets": [
+      {
+        "target_id": "canonical-envelope-export",
+        "kind": "git_export",
+        "authority": "handoff_only"
+      }
+    ],
+    "effect_authority_policy": "metadata_only",
+    "capability_grants": [],
+    "doctrine_imports": [],
+    "lineage_source": {
+      "kind": "operator_declaration",
+      "path": "C:\\Users\\andrey\\src\\marici\\.narada\\config.json"
+    },
+    "readiness_phase": "bootstrap",
+    "operator_identity": {
+      "principal_id": "operator",
+      "role": "Operator"
+    },
+    "agent_identity_contract": {
+      "default_agent_name": "architect",
+      "operator_label": "Operator",
+      "contract_path": "C:\\Users\\andrey\\src\\marici\\.narada\\AGENTS.md",
+      "compatibility": "legacy shorthand for agent_role_contracts.architect"
+    },
+    "agent_role_contracts": {
+      "admitted_roles": [
+        "architect",
+        "builder",
+        "observer"
+      ],
+      "architect": {
+        "role_id": "architect",
+        "bootstrap_contract": {
+          "path": "C:\\Users\\andrey\\src\\marici\\.narada\\AGENTS.md",
+          "section": "Architect Thread Bootstrap"
+        },
+        "default_first_actions": [
+          "read_site_contract",
+          "identify_target_locus",
+          "inspect_task_inbox_evidence_posture",
+          "formulate_or_refine_spec_and_acceptance_criteria"
+        ],
+        "authority_limits": [
+          "does_not_inherit_operator_authority",
+          "does_not_execute_by_convenience",
+          "uses_sanctioned_mutation_surfaces_only"
+        ],
+        "handoff_obligations": [
+          "produce_governed_work_package",
+          "name_acceptance_criteria",
+          "review_or_admit_only_through_configured_evidence_path"
+        ]
+      },
+      "builder": {
+        "role_id": "builder",
+        "bootstrap_contract": {
+          "path": "C:\\Users\\andrey\\src\\marici\\.narada\\AGENTS.md",
+          "section": "Builder Thread Bootstrap"
+        },
+        "default_first_actions": [
+          "read_site_contract",
+          "confirm_assigned_task_and_acceptance_criteria",
+          "inspect_minimum_required_implementation_context",
+          "execute_approved_work_package",
+          "run_verification"
+        ],
+        "authority_limits": [
+          "does_not_redesign_by_convenience",
+          "does_not_admit_own_work_without_evidence",
+          "does_not_expand_active_role_set"
+        ],
+        "handoff_obligations": [
+          "report_changed_files",
+          "report_verification",
+          "report_residuals_and_blockers",
+          "return_field_conditions_to_architect_or_operator"
+        ]
+      },
+      "observer": {
+        "role_id": "observer",
+        "bootstrap_contract": {
+          "path": "C:\\Users\\andrey\\src\\marici\\.narada\\AGENTS.md",
+          "section": "Observer Thread Bootstrap"
+        },
+        "default_first_actions": [
+          "read_site_contract",
+          "identify_target_locus",
+          "inspect_inbox_workboard_coherence_posture_read_only",
+          "report_or_route_bounded_findings_without_lifecycle_review"
+        ],
+        "authority_limits": [
+          "does_not_build",
+          "does_not_lifecycle_review_tasks",
+          "does_not_assign_or_close_tasks",
+          "does_not_mutate_implementation_state"
+        ],
+        "handoff_obligations": [
+          "submit_observation_proposal_or_appeal_when_incoherence_is_detected",
+          "keep_observation_distinct_from_task_review",
+          "route_construction_need_to_architect_or_builder_path"
+        ]
+      }
+    },
+    "local_overlays": [
+      {
+        "overlay_id": "site-local-agents-contract",
+        "path": "C:\\Users\\andrey\\src\\marici\\.narada\\AGENTS.md",
+        "admission": "site_local"
+      }
+    ],
+    "federation_policy": {
+      "posture": "receive_only",
+      "admission": "local_admission_required"
+    },
+    "role_runtime_plane": {
+      "schema": "narada.site_role_runtime_plane.v1",
+      "contract_path": "C:\\Users\\andrey\\src\\marici\\.narada\\.ai\\agents\\role-plane.json",
+      "roles_are_obligation_targets": true,
+      "activation_rule": "role_is_active_only_when_roster_and_launcher_binding_are_admitted"
+    }
+  }
+}

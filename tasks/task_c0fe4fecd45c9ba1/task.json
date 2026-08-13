@@ -1,0 +1,392 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_c0fe4fecd45c9ba1",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Identify one established theorem-level result and the immediate next frontier in Marici.Nima.",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "runtime": "codex",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "wait_timeout_ms": 120000,
+    "max_run_ms": 120000,
+    "max_concurrency": 1,
+    "max_retries": 0,
+    "required_mcp_tools": [],
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read",
+        "label": "project map"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md",
+        "access": "read",
+        "label": "theorem ledger"
+      }
+    ],
+    "overrides": {
+      "runtime": "codex",
+      "sandbox": "read-only"
+    }
+  },
+  "workflow": {
+    "title": "Marici delegated-task smoke test",
+    "purpose": "Verify worker orchestration and result handoff without mutation.",
+    "result_policy": {
+      "include_diagnostics_by_default": true,
+      "expose_worker_refs": true,
+      "compact_completed_worker_refs": true,
+      "max_events": 32,
+      "max_worker_refs": 4,
+      "max_result_items": 64
+    },
+    "steps": [
+      {
+        "id": "audit",
+        "title": "Audit theorem and frontier",
+        "kind": "worker",
+        "instruction": "Read only README.md and src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md. State the established theorem-level result and immediate next frontier, cite both paths, and explicitly confirm no edits/tests.",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cwd": "C:\\Users\\andrey\\src\\marici",
+          "site_root": "C:\\Users\\andrey\\src\\marici",
+          "cognition": "low",
+          "runtime": "codex",
+          "sandbox": "read-only",
+          "wait_for_completion": false,
+          "wait_timeout_ms": 120000,
+          "max_run_ms": 120000,
+          "max_concurrency": 1,
+          "max_retries": 0,
+          "required_mcp_tools": [],
+          "preflight_paths": [
+            {
+              "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "access": "read",
+              "label": "project map"
+            },
+            {
+              "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md",
+              "access": "read",
+              "label": "theorem ledger"
+            }
+          ],
+          "overrides": {
+            "runtime": "codex",
+            "sandbox": "read-only"
+          }
+        },
+        "label": null,
+        "profile": null,
+        "milestone_id": null,
+        "depends_on": [],
+        "imports": [],
+        "if": null,
+        "acceptance_scope": [],
+        "agent_slot": null,
+        "resume_from": null,
+        "session_affinity": {
+          "mode": "none",
+          "fallback": "fail",
+          "require_same_session": false,
+          "source_step_id": null
+        },
+        "authority_gate": {},
+        "output_schema": {}
+      }
+    ],
+    "work_order": {},
+    "milestones": [],
+    "authority_gates": {}
+  },
+  "acceptance": {
+    "residual_risk_policy": "allow",
+    "review_questions": [
+      "Does the handoff distinguish the established coefficient theorem from the remaining chain-map frontier?",
+      "Does it confirm that no files were edited and no tests were run?"
+    ],
+    "required_tests": [],
+    "focused_tests": []
+  },
+  "result_policy": {
+    "include_diagnostics_by_default": false,
+    "expose_worker_refs": true,
+    "compact_completed_worker_refs": false,
+    "max_events": 100,
+    "max_worker_refs": 50,
+    "max_result_items": 200
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": true,
+    "timeout_ms": 120000,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 1,
+    "max_retries": 0
+  },
+  "execution_binding": {
+    "workspace_root": "C:\\Users\\andrey\\src\\marici",
+    "executor_kind": "delegated_task",
+    "executor_profile": null,
+    "executor_id": null,
+    "repository_root": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "correlation_key": "marici-delegation-smoke-dag-20260813"
+  },
+  "idempotency_key": "marici-delegation-smoke-dag-20260813",
+  "request_fingerprint": "5a7b173571e161e935930cc1b7ffe88140f6c0c7452ee5bb3b2de75cc79bed1e",
+  "created_at": "2026-08-13T16:38:25.415Z",
+  "updated_at": "2026-08-13T16:41:11.148Z",
+  "cancelled_at": null,
+  "summary": "delegated task failed; steps=1; acceptance=failed",
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "replacement_depth": 0,
+    "external_dependencies": {
+      "depends_on_task_ids": [],
+      "import_task_outputs": [],
+      "import_worker_refs": [],
+      "source_task_ref": {}
+    },
+    "changed_files": [],
+    "changed_file_refs": [],
+    "real_changed_files": [],
+    "affected_refs": [],
+    "parent_changed_files": [],
+    "worker_reported_changed_files": [],
+    "observed_files": [],
+    "nested_workflows": [],
+    "nested_workflow_changed_files": [],
+    "nested_workflow_verification": [],
+    "join_syntheses": [],
+    "verification": [],
+    "residual_risks": [],
+    "observed_incoherencies": [
+      "worker_launch_failed:audit:worker_cognition_defaults_unresolved"
+    ],
+    "worker_terminal_diagnostics": [],
+    "worker_terminal_diagnostic_count": 0,
+    "exit_interviews": [],
+    "exit_interview_count": 0,
+    "exit_interview_feedback": {
+      "ergonomics_feedback": [],
+      "friction_points": [],
+      "missing_affordances": [],
+      "observed_incoherencies": [],
+      "suggested_improvements": []
+    },
+    "worker_launch_failures": [
+      {
+        "schema": "narada.delegated_task.worker_launch_failure.v1",
+        "step_id": "audit",
+        "step_kind": "worker",
+        "tool_name": "worker_run",
+        "message": "worker_cognition_defaults_unresolved",
+        "cwd": "C:\\Users\\andrey\\src\\marici",
+        "authority": "read",
+        "constraints_keys": [
+          "authority",
+          "cognition",
+          "cwd",
+          "exit_interview",
+          "max_run_ms",
+          "overrides",
+          "preflight_paths",
+          "required_mcp_tools",
+          "resumable",
+          "site_root",
+          "wait_for_completion",
+          "wait_timeout_ms"
+        ],
+        "has_overrides": true,
+        "instruction_preview": "Delegated task objective: Identify one established theorem-level result and the immediate next frontier in Marici.Nima.\nExecution binding: {\"workspace_root\":\"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\"executor_kind\":\"delegated_task\",\"executor_profile"
+      }
+    ],
+    "worker_refs": [],
+    "worker_ref_count": 0,
+    "acceptance_status": "failed",
+    "acceptance_verdict": "failed",
+    "acceptance_precheck_verdict": "passed",
+    "acceptance_evidence": [],
+    "step_states": {
+      "audit": {
+        "step_id": "audit",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "worker_session_id": null,
+        "started_at": null,
+        "finished_at": "2026-08-13T16:38:25.486Z",
+        "blocked_by": [],
+        "error": "worker_cognition_defaults_unresolved",
+        "summary": "worker_cognition_defaults_unresolved",
+        "affinity": null,
+        "active_posture": null
+      }
+    },
+    "work_order_lifecycle": {
+      "schema": "narada.delegation.work_order.lifecycle_state.v1",
+      "state": "failed",
+      "history": [
+        "requested",
+        "admitted",
+        "planned",
+        "dispatched",
+        "running",
+        "failed"
+      ]
+    },
+    "progress": {
+      "total": 1,
+      "failed": 1,
+      "running": 0,
+      "running_run_ids": [],
+      "historical_run_ids": [],
+      "terminal_running_step_ids": [],
+      "liveness": "terminal_no_active_execution"
+    },
+    "summary": "delegated task failed; steps=1; acceptance=failed",
+    "workflow_status": "failed",
+    "steps_terminal": true,
+    "acceptance_terminal": true,
+    "pending_acceptance_items": [],
+    "pending_review_items": [],
+    "ownership": {
+      "owner_site_id": "marici",
+      "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+      "created_by_site_id": "marici",
+      "visibility_scope": "site",
+      "task_root_scope": "site_root",
+      "ownership_resolution": "explicit"
+    },
+    "target_state_changed": {
+      "repo_files_changed": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "target_repository"
+      },
+      "delegated_task_artifacts_created": {
+        "changed": true,
+        "paths": [
+          "C:\\Users\\andrey\\src\\marici\\tasks\\task_c0fe4fecd45c9ba1"
+        ],
+        "authority_owner": "delegated-task-mcp"
+      },
+      "worker_runtime_artifacts_created": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "worker-delegation-mcp"
+      },
+      "worker_observed_changed_files": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "worker_report"
+      },
+      "nested_delegated_task_changed_files": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": "nested_delegated_task_report"
+      },
+      "external_side_effects": {
+        "changed": false,
+        "paths": [],
+        "authority_owner": null
+      }
+    },
+    "graph_execution_synthesis": {
+      "schema": "narada.delegated_task.graph_execution_synthesis.v1",
+      "parent_workflow_status": "failed",
+      "orchestration_success": false,
+      "task_acceptance_verdict": "failed",
+      "synthesized_verdict": "orchestration_failed",
+      "next_directive": "repair_or_replan",
+      "steps_terminal": true,
+      "acceptance_terminal": true,
+      "step_status": [
+        {
+          "step_id": "audit",
+          "step_kind": "worker",
+          "status": "failed",
+          "run_ids": [],
+          "current_run_id": null,
+          "worker_session_id": null,
+          "affinity": null,
+          "summary": "worker_cognition_defaults_unresolved"
+        }
+      ],
+      "session_affinity_evidence": [],
+      "derived_topology": {
+        "shape": {
+          "dag": true,
+          "entry_step_ids": [
+            "audit"
+          ],
+          "terminal_step_ids": [
+            "audit"
+          ],
+          "edges": []
+        },
+        "declarative_expansion": null,
+        "write_set_scheduling": false,
+        "write_sets": []
+      },
+      "run_refs": [],
+      "worker_summaries": [],
+      "diagnostics": {
+        "failed_steps": [
+          "audit"
+        ],
+        "pending_steps": [],
+        "pending_acceptance_items": [],
+        "pending_review_items": []
+      },
+      "worker_terminal_diagnostics": [],
+      "residual_risks": [],
+      "review_consensus": {
+        "schema": "narada.delegated_task.review_consensus.v1",
+        "consensus": "none",
+        "passed_step_ids": [],
+        "failed_step_ids": [],
+        "inconclusive_step_ids": [],
+        "disagreement": false
+      },
+      "changed_files_by_source": {
+        "parent": [],
+        "worker_reported": [],
+        "observed_deliverables": [],
+        "nested_workflows": [],
+        "real_files": [],
+        "affected_refs": []
+      },
+      "parent_owned_changed_files": [],
+      "worker_observed_changed_files": [],
+      "nested_delegated_task_calls": [],
+      "evidence_coverage": {
+        "step_count": 1,
+        "worker_ref_count": 0,
+        "verification_count": 0,
+        "residual_risk_count": 0
+      }
+    },
+    "lifecycle_acknowledgement": {
+      "acknowledged": true,
+      "acknowledged_at": "2026-08-13T16:41:11.147Z",
+      "acknowledged_by": "marici.Nima",
+      "note": "Inspected terminal launch failure: effective cognition default lacked reasoning_effort. Superseded operationally by task_6e7e4b5a0a35d79b with explicit per-run model/reasoning override."
+    }
+  }
+}

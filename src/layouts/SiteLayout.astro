@@ -1,0 +1,45 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#071117" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ffae62' d='M32 4 58 19v30L32 64 6 49V19z'/%3E%3Cpath fill='%23071117' d='m32 15 15 9v17l-15 9-15-9V24z'/%3E%3C/svg%3E" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Marici home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Marici</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/#branches">Branches</a>
+        <a href="/#frontier">Frontier</a>
+        <a href="/#ledger">Ledger</a>
+      </nav>
+      <span class="header-mode">research map</span>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer">
+      <p><strong>Marici</strong> maps theory-producing operations in scalar master geometry.</p>
+      <p>Generalized-cut closure is established; a canonical off-shell cyclic lift remains open.</p>
+    </footer>
+  </body>
+</html>

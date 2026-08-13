@@ -1,0 +1,277 @@
+{
+  "schema": "marici.nima.publication_claim_dag.v1",
+  "version": "0.1.0",
+  "as_of": "2026-08-13",
+  "watcher_status": {
+    "sweep": "complete",
+    "recurring_automation": "unverified_blocked",
+    "blocker": "task_lifecycle_recurring_list: sqlite_error:no such column: definition_json"
+  },
+  "policy": {
+    "subject_author": "Nima Arkani-Hamed",
+    "alert_events": [
+      "NEW_NODE",
+      "NEW_EDGE",
+      "MERGE",
+      "REVERSE_EDGE",
+      "CLOSURE",
+      "FALSIFIER",
+      "STRICTIFY",
+      "LIFT",
+      "UNIQUENESS",
+      "VERSION_DELTA"
+    ],
+    "low_information_edges_suppressed": [
+      "bibliographic-citation-only"
+    ],
+    "evidence": "primary publication text or version-of-record metadata"
+  },
+  "publications": [
+    {
+      "id": "P-N26-01",
+      "arxiv": "2607.27315",
+      "title": "The Very Nearly Right Theory of Flavor",
+      "date": "2026-07-29",
+      "authored_by_nima": true,
+      "branch": "flavor"
+    },
+    {
+      "id": "P-N26-02",
+      "arxiv": "2606.28280",
+      "title": "Surface Water Wave Scattering and the Hydrotope",
+      "date": "2026-06-26",
+      "authored_by_nima": true,
+      "branch": "geometry-adjacent"
+    },
+    {
+      "id": "P-N26-03",
+      "arxiv": "2603.03425",
+      "title": "Combinatorics of the Cosmohedron",
+      "date": "2026-03-03",
+      "authored_by_nima": true,
+      "branch": "cosmology-geometry"
+    },
+    {
+      "id": "P-N26-04",
+      "arxiv": "2602.17754",
+      "title": "Generating the fermion mass hierarchy at the TeV scale",
+      "date": "2026-02-19",
+      "authored_by_nima": true,
+      "branch": "flavor"
+    },
+    {
+      "id": "V-N26-01",
+      "arxiv": "2512.23795v4",
+      "title": "Correlators are simpler than wavefunctions",
+      "date": "2026-07-09",
+      "authored_by_nima": true,
+      "branch": "cosmological-correlators",
+      "event": "VERSION_DELTA",
+      "claim_diff_status": "pending"
+    },
+    {
+      "id": "V-N26-02",
+      "arxiv": "2412.21027v2",
+      "title": "The Cut Equation",
+      "date": "2026-04-06",
+      "authored_by_nima": true,
+      "branch": "surfaceology",
+      "event": "VERSION_DELTA",
+      "claim_diff_status": "pending"
+    },
+    {
+      "id": "P-X01",
+      "arxiv": "2512.15882v2",
+      "title": "On differential operators for scalar-scaffolded gluons",
+      "date": "2026-07-18",
+      "authored_by_nima": false,
+      "branch": "scalar-scaffolding",
+      "event": "NEW_OPERATOR"
+    },
+    {
+      "id": "P-X02",
+      "arxiv": "2512.17019",
+      "doi": "10.1007/JHEP07(2026)101",
+      "title": "How gluon leading singularities discover curves on surfaces",
+      "date": "2026-07-10",
+      "authored_by_nima": false,
+      "branch": "surfaceology",
+      "event": "REVERSE_EDGE"
+    },
+    {
+      "id": "P-X03",
+      "arxiv": "2604.07195",
+      "title": "Can Locality, Unitarity, and Hidden Zeros Completely Determine Tree-Level Amplitudes?",
+      "date": "2026-04-08",
+      "authored_by_nima": false,
+      "branch": "hidden-zero-recognition",
+      "event": "UNIQUENESS_CONDITIONAL"
+    },
+    {
+      "id": "P-X04",
+      "arxiv": "2601.15088",
+      "doi": "10.1007/JHEP06(2026)092",
+      "title": "Five-point partial waves, splitting constraints and hidden zeros",
+      "date": "2026-01-21",
+      "authored_by_nima": false,
+      "branch": "hidden-zero-recognition",
+      "event": "FALSIFIER"
+    },
+    {
+      "id": "P-X05",
+      "arxiv": "2607.27300",
+      "title": "Analytic Boundaries of Infinite-Spin-Tower Amplitudes from Hidden Zero",
+      "date": "2026-07-29",
+      "authored_by_nima": false,
+      "branch": "hidden-zero-recognition",
+      "event": "DELIMITS"
+    },
+    {
+      "id": "P-X06",
+      "arxiv": "2608.02754",
+      "title": "A field-inspired derivation of open string amplitudes",
+      "date": "2026-08-03",
+      "authored_by_nima": false,
+      "branch": "open-string",
+      "event": "REDERIVES"
+    },
+    {
+      "id": "P-X07",
+      "arxiv": "2608.02719",
+      "title": "Partial Waves for Multipositivity",
+      "date": "2026-08-03",
+      "authored_by_nima": false,
+      "branch": "positivity",
+      "event": "EXTENDS"
+    },
+    {
+      "id": "P-X08",
+      "arxiv": "2608.01445",
+      "title": "The CKM sector of the exceptional-Jordan programme",
+      "date": "2026-08-02",
+      "authored_by_nima": false,
+      "branch": "flavor",
+      "event": "FAST_RESPONSE"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C-LOWERING",
+      "status": "established",
+      "text": "Differential operators in scalar-scaffold variables extract planar phi^3 diagrams and Catalan mixed-amplitude modules.",
+      "sources": [
+        "P-X01"
+      ]
+    },
+    {
+      "id": "C-REVERSE-LS",
+      "status": "established",
+      "text": "On-shell pure-gluon gluing recovers surface curve-covering combinatorics at leading singularities/maximal residues.",
+      "sources": [
+        "P-X02"
+      ]
+    },
+    {
+      "id": "C-HZ-CONDITIONAL",
+      "status": "established",
+      "text": "Hidden-zero reconstruction is conditional and does not by itself prove completeness for unknown theories.",
+      "sources": [
+        "P-X03"
+      ]
+    },
+    {
+      "id": "C-SPIN2-KERNEL",
+      "status": "established",
+      "text": "Two standard five-point splitting loci leave a genuine kernel once both channels allow spin-2 exchange.",
+      "sources": [
+        "P-X04"
+      ]
+    },
+    {
+      "id": "C-IST-FAMILY",
+      "status": "established",
+      "text": "Hidden-zero and splitting conditions admit infinite-spin-tower amplitude families under the studied analytic assumptions.",
+      "sources": [
+        "P-X05"
+      ]
+    },
+    {
+      "id": "L-OP-ALGEBRA",
+      "status": "conjectural",
+      "text": "The scalar surface theory carries a closed raising/lowering/sewing/pairing operator algebra.",
+      "sources": [
+        "P-X01",
+        "P-X02"
+      ]
+    },
+    {
+      "id": "L-TYPED-RECOGNITION",
+      "status": "conjectural",
+      "text": "Cuts, zeros and boundary behavior may determine amplitudes only after an explicit admissibility class is fixed.",
+      "sources": [
+        "P-X03",
+        "P-X04",
+        "P-X05"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "P-X01",
+      "to": "C-LOWERING",
+      "type": "establishes"
+    },
+    {
+      "from": "P-X02",
+      "to": "C-REVERSE-LS",
+      "type": "establishes"
+    },
+    {
+      "from": "P-X03",
+      "to": "C-HZ-CONDITIONAL",
+      "type": "delimits"
+    },
+    {
+      "from": "P-X04",
+      "to": "C-SPIN2-KERNEL",
+      "type": "establishes"
+    },
+    {
+      "from": "P-X05",
+      "to": "C-IST-FAMILY",
+      "type": "establishes"
+    },
+    {
+      "from": "C-LOWERING",
+      "to": "L-OP-ALGEBRA",
+      "type": "suggests"
+    },
+    {
+      "from": "C-REVERSE-LS",
+      "to": "L-OP-ALGEBRA",
+      "type": "suggests"
+    },
+    {
+      "from": "C-HZ-CONDITIONAL",
+      "to": "L-TYPED-RECOGNITION",
+      "type": "requires"
+    },
+    {
+      "from": "C-SPIN2-KERNEL",
+      "to": "L-TYPED-RECOGNITION",
+      "type": "requires"
+    },
+    {
+      "from": "C-IST-FAMILY",
+      "to": "L-TYPED-RECOGNITION",
+      "type": "requires"
+    }
+  ],
+  "open_tests": [
+    "pairing adjunction between J1 and the span of scaffold differential operators",
+    "Cut naturality of lowering operators",
+    "extension of reverse surface recovery beyond maximal residues",
+    "minimal admissibility class eliminating spin-2 kernels and IST alternatives",
+    "comparison of weak associativity with binary u-equations"
+  ]
+}

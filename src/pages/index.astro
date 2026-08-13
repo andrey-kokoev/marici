@@ -1,0 +1,80 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+
+const branches = [
+  { number: '01', name: 'NLSM', role: 'rank-jump associated grade', formula: 'gr_R(Scalar cells) → regional Catalan transfer → QTDS', status: 'all-core coefficients exact · chain assembly open' },
+  { number: '02', name: 'Yang–Mills', role: 'first normal jet', formula: 'H_gauge(J¹ Scalar)', status: 'working structure' },
+  { number: '03', name: 'Gravity', role: 'primitive symmetric retract', formula: 'PrimSym²_g(J¹ Scalar)', status: 'tree + cuts' },
+]
+---
+<SiteLayout
+  title="Marici · Scalar master geometry"
+  description="A research map for intrinsic theory-producing operations and the cyclic/BV lifting problem."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="eyebrow">Scalar master geometry · research ledger</p>
+      <h1 id="hero-title">One geometry.<br /><em>Several theories.</em></h1>
+      <p class="lede">
+        Marici studies whether normal layers, boundary operations, pairings, and sewing structures of a scalar surface intrinsically produce NLSM, Yang–Mills, and gravity.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-action" href="#frontier">Open the active frontier</a>
+        <a class="text-action" href="#ledger">Read the ledger boundary</a>
+      </div>
+    </div>
+    <aside class="coordinate-card" aria-label="Current research coordinates">
+      <p class="coordinate-kicker">Current bounded projection</p>
+      <dl class="metric-grid">
+        <div><dt>Branches</dt><dd>3</dd></div>
+        <div><dt>Tree selector</dt><dd>✓</dd></div>
+        <div><dt>Cut sewing</dt><dd>✓</dd></div>
+        <div><dt>BV lift</dt><dd>?</dd></div>
+      </dl>
+      <div class="coordinate-lines" aria-hidden="true"><span><i></i><b>J¹</b></span><span><i></i><b>Pₑ</b></span><span><i></i><b>Mod</b></span></div>
+      <p class="coordinate-note">Closure on cuts does not by itself select an off-shell integrand representative.</p>
+    </aside>
+  </section>
+
+  <section class="authority-strip" aria-label="Epistemic status">
+    <div><span class="status-light"></span><p><strong>Established</strong><br />Tree pairing and pure-state selector</p></div>
+    <div><span class="strip-index">∞</span><p><strong>Generalized cuts</strong><br />Closed under induced Einstein sewing</p></div>
+    <div><span class="strip-index">01</span><p><strong>Open obstruction</strong><br />Canonical chain-level trace lift</p></div>
+  </section>
+
+  <section class="section-shell" id="branches" aria-labelledby="branches-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Theory-producing operations</p><h2 id="branches-title">Three distinct mechanisms</h2></div>
+      <p>Rank jump, normal jet, and primitive symmetric sewing are kept distinct rather than collapsed into a single double-copy slogan.</p>
+    </div>
+    <ol class="dimension-grid">
+      {branches.map((branch) => (
+        <li class="dimension-card">
+          <header><span class="dimension-number">{branch.number}</span><div><p class="dimension-role">{branch.role}</p><h3>{branch.name}</h3></div></header>
+          <code class="formula">{branch.formula}</code>
+          <span class="status-pill">{branch.status}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="frontier-section" id="frontier" aria-labelledby="frontier-title">
+    <div class="section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Active Nima theorem target</p><h2 id="frontier-title">Assemble the regional transfer into one chain map</h2></div>
+        <p>The direct Catalan bijection and the directed-forest sink rule now identify every partial-core scalar sector with QTDS at all even arity. What remains is compatibility between different core strata before coefficient augmentation.</p>
+      </div>
+      <article class="frontier-card frontier-card--gap">
+        <header><p>Core-incidence / worldsheet assembly</p><span>open</span></header>
+        <h3>⊗<sub>R</sub> Φ<sub>R</sub> &nbsp; ⇝ &nbsp; Φ<sub>cell</sub> &nbsp; ⇝ &nbsp; Φ<sub>Poch/Cousin</sub></h3>
+        <p>Construct the higher homotopies relating regional Catalan maps when a physical core edge is added or removed. The resulting deck-equivariant cellular map must preserve cuts and then lift through the filtered Pochhammer/Cousin comparison to the worldsheet half-class.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="snapshot-callout" id="ledger" aria-labelledby="ledger-title">
+    <p class="eyebrow">Human-readable memory</p>
+    <h2 id="ledger-title">The ledger records claims with their perimeter.</h2>
+    <p>Entries live in <code>src/ledger</code> and explicitly distinguish established structure, strong inference, open questions, and prohibited overclaims.</p>
+  </section>
+</SiteLayout>
