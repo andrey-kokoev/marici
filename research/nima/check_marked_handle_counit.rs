@@ -359,6 +359,185 @@ fn cut_topology(graph: &MarkedTheta, cut_mask: u64) -> (usize, usize, usize) {
     (cut_mask.count_ones() as usize, components, betti)
 }
 
+fn graph_is_connected(graph: &MarkedTheta, edge_mask: u64) -> bool {
+    let mut adjacency = vec![Vec::new(); graph.vertices];
+    for (index, edge) in graph.edges.iter().enumerate() {
+        if edge_mask & (1 << index) == 0 {
+            continue;
+        }
+        let left = edge.left / 4;
+        let right = edge.right / 4;
+        adjacency[left].push(right);
+        adjacency[right].push(left);
+    }
+    let mut seen = BTreeSet::from([0]);
+    let mut queue = VecDeque::from([0]);
+    while let Some(vertex) = queue.pop_front() {
+        for &next in &adjacency[vertex] {
+            if seen.insert(next) {
+                queue.push_back(next);
+            }
+        }
+    }
+    seen.len() == graph.vertices
+}
+
+fn simple_cycle_masks(graph: &MarkedTheta) -> Vec<u64> {
+    let mut cycles = Vec::new();
+    for edge_mask in 1..(1_u64 << graph.edges.len()) {
+        let mut degree = vec![0; graph.vertices];
+        for (index, edge) in graph.edges.iter().enumerate() {
+            if edge_mask & (1 << index) != 0 {
+                degree[edge.left / 4] += 1;
+                degree[edge.right / 4] += 1;
+            }
+        }
+        let support: Vec<_> = degree
+            .iter()
+            .enumerate()
+            .filter_map(|(vertex, &value)| (value != 0).then_some(vertex))
+            .collect();
+        if support.is_empty() || support.iter().any(|&vertex| degree[vertex] != 2) {
+            continue;
+        }
+
+        let mut adjacency = vec![Vec::new(); graph.vertices];
+        for (index, edge) in graph.edges.iter().enumerate() {
+            if edge_mask & (1 << index) != 0 {
+                let left = edge.left / 4;
+                let right = edge.right / 4;
+                adjacency[left].push(right);
+                adjacency[right].push(left);
+            }
+        }
+        let mut seen = BTreeSet::from([support[0]]);
+        let mut queue = VecDeque::from([support[0]]);
+        while let Some(vertex) = queue.pop_front() {
+            for &next in &adjacency[vertex] {
+                if seen.insert(next) {
+                    queue.push_back(next);
+                }
+            }
+        }
+        if seen.len() == support.len() {
+            cycles.push(edge_mask);
+        }
+    }
+    cycles
+}
+
+fn turn_word(graph: &MarkedTheta, cycle_mask: u64) -> Vec<char> {
+    let mut incidence = vec![Vec::<(usize, usize)>::new(); graph.vertices];
+    for (index, edge) in graph.edges.iter().enumerate() {
+        if cycle_mask & (1 << index) == 0 {
+            continue;
+        }
+        incidence[edge.left / 4].push((index, edge.left));
+        incidence[edge.right / 4].push((index, edge.right));
+    }
+    for entries in &incidence {
+        assert!(entries.is_empty() || entries.len() == 2);
+    }
+
+    let start = incidence
+        .iter()
+        .position(|entries| !entries.is_empty())
+        .unwrap();
+    let first_edge = incidence[start][0].0;
+    let mut current_vertex = start;
+    let mut outgoing_edge = first_edge;
+    let mut turns = Vec::new();
+    loop {
+        let edge = graph.edges[outgoing_edge];
+        let next_vertex = if edge.left / 4 == current_vertex {
+            edge.right / 4
+        } else {
+            edge.left / 4
+        };
+        let incoming_endpoint = if edge.left / 4 == next_vertex {
+            edge.left
+        } else {
+            edge.right
+        };
+        let next_edge = incidence[next_vertex]
+            .iter()
+            .find_map(|&(index, _)| (index != outgoing_edge).then_some(index))
+            .unwrap();
+        let next = graph.edges[next_edge];
+        let outgoing_endpoint = if next.left / 4 == next_vertex {
+            next.left
+        } else {
+            next.right
+        };
+        let incoming_position = incoming_endpoint % 4;
+        let outgoing_position = outgoing_endpoint % 4;
+        assert!(incoming_position < 3 && outgoing_position < 3);
+        turns.push(if outgoing_position == (incoming_position + 1) % 3 {
+            'L'
+        } else {
+            assert_eq!(outgoing_position, (incoming_position + 2) % 3);
+            'R'
+        });
+
+        current_vertex = next_vertex;
+        outgoing_edge = next_edge;
+        if current_vertex == start && outgoing_edge == first_edge {
+            break;
+        }
+    }
+    turns
+}
+
+fn audit_physical_projector_paths() -> (usize, usize) {
+    let mut simple_cycles = 0;
+    let mut closure_channels = 0;
+    for inserted_roads in 0..=3 {
+        let graph = MarkedTheta::new(inserted_roads);
+        let cycles = simple_cycle_masks(&graph);
+        assert_eq!(cycles.len(), 3);
+        for &cycle in &cycles {
+            let turns = turn_word(&graph, cycle);
+            assert!(turns.contains(&'L'));
+            assert!(turns.contains(&'R'));
+            simple_cycles += 1;
+        }
+
+        let mut spanning_trees = 0;
+        for tree_mask in 0..(1_u64 << graph.edges.len()) {
+            if tree_mask.count_ones() as usize != graph.vertices - 1
+                || !graph_is_connected(&graph, tree_mask)
+            {
+                continue;
+            }
+            spanning_trees += 1;
+            for closing_edge in 0..graph.edges.len() {
+                if tree_mask & (1 << closing_edge) != 0 {
+                    continue;
+                }
+                let fundamental: Vec<_> = cycles
+                    .iter()
+                    .copied()
+                    .filter(|cycle| {
+                        cycle & (1 << closing_edge) != 0
+                            && cycle & !(tree_mask | (1 << closing_edge)) == 0
+                    })
+                    .collect();
+                assert_eq!(fundamental.len(), 1);
+                let turns = turn_word(&graph, fundamental[0]);
+                assert!(turns.contains(&'L') && turns.contains(&'R'));
+                closure_channels += 1;
+            }
+        }
+        let lengths: Vec<_> = (0..3)
+            .map(|road| if road < inserted_roads { 2 } else { 1 })
+            .collect();
+        let predicted_trees =
+            lengths[0] * lengths[1] + lengths[0] * lengths[2] + lengths[1] * lengths[2];
+        assert_eq!(spanning_trees, predicted_trees);
+    }
+    (simple_cycles, closure_channels)
+}
+
 fn audit_three_leg_cut_atlas() -> BTreeMap<(usize, usize, usize, usize), usize> {
     let graph = MarkedTheta::new(3);
     let mut atlas = BTreeMap::new();
@@ -501,6 +680,7 @@ fn main() {
     let cut_atlas = audit_three_leg_cut_atlas();
     let external_support = audit_external_support();
     let cyclic_squares = audit_cyclic_covariance();
+    let (simple_cycles, closure_channels) = audit_physical_projector_paths();
 
     // Backus--Figueiredo's first two-loop units obstruction is the one-leg
     // member: four post-scaffolding graph propagators plus its scaffolding pole.
@@ -531,6 +711,8 @@ fn main() {
         external_support.len()
     );
     println!("  populated cyclic covariance squares: {cyclic_squares}");
+    println!("  mixed-turn simple cycles: {simple_cycles}");
+    println!("  mixed-turn loop-closure channels: {closure_channels}");
     println!();
     println!("THREE-LEG FORMULAS");
     println!("  raw closed coefficient: (234+9D)/243 = (26+D)/27");
@@ -543,4 +725,5 @@ fn main() {
     println!("  every separating and nonseparating iterated Cut commutes after resolution");
     println!("  raw state evaluation has a nonzero Cut curvature proportional to D-1");
     println!("  external matching support is nonuniform but exactly cyclically balanced");
+    println!("  no theta cycle is purely left-turning, so the physical N-corrections vanish");
 }
