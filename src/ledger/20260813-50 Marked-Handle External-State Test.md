@@ -52,6 +52,43 @@ Reproducible certificate:
 research/nima/check_marked_handle_counit.rs
 ```
 
+### Correction from entry 51
+
+The claim later in this entry that every physical longitudinal projector
+correction vanishes is **superseded and false**.  The completed five-vertex
+calculation in entry 51 finds, at its primary exact test point,
+
+\[
+\mathrm{LS}_{\mathrm{metric}}=-2056,
+\qquad
+\mathrm{LS}_{\mathrm{physical}}=-2048,
+\]
+
+so the net correction is nonzero.  Four of the twelve spanning-tree sewing
+histories contain a nonzero nested longitudinal term.  The mistake here was to
+count the turns of the graph-theoretic fundamental cycle including the closure
+endpoints.  The projector criterion concerns the open path *before* gluing;
+those endpoint turns are not part of that path.
+
+The resolved carrier itself is unchanged and is in fact vindicated.  Both
+
+\[
+(\nu_\gamma,\Delta_\gamma)=(0,-D)
+\quad\text{and}\quad
+(1,1-D)
+\]
+
+give
+
+\[
+\nu_\gamma-\Delta_\gamma=D.
+\]
+
+All graph-cell counts, Cut identities, and counit statements in this entry
+remain valid.  Only the asserted vanishing and the turn test used to infer it
+are withdrawn.  See entry 51 and
+`research/nima/check_marked_handle_x_dictionary.rs` for the exact correction.
+
 ## The marked theta family
 
 Begin with two trivalent core vertices joined by three theta roads.  Choose
@@ -366,7 +403,11 @@ fixed-label asymmetry here would signal a convention error or an anomaly in the
 purported cyclic counit.  Nonuniform support across different matching types is
 the substantive information.
 
-## Physical polarization-projector audit
+## Physical polarization-projector audit (superseded in part)
+
+The no-correction conclusion in this subsection is retained as an audit trail,
+but it is not a current result.  Entry 51 supplies the complete tensor-network
+calculation and the correction stated near the top of this entry.
 
 The physical state sum on a loop-closing gluon edge is not always the naïve
 metric contraction.  Carrôlo and Figueiredo write it as
@@ -506,8 +547,8 @@ Proved in this entry:
 - all 64 connected and disconnected Cut patterns for the three-leg cell;
 - the exact raw Cut curvature and its annihilation by \(D\mapsto1\);
 - nontrivial open-end matching support and exact cyclic balance;
-- absence of all physical \(N\)-corrections, for every spanning-tree sewing
-  history, because all twelve simple cycles have mixed turns;
+- ~~absence of all physical \(N\)-corrections~~ — withdrawn by entry 51; the
+  closed-cycle turn test used here was not the physical pre-gluing path test;
 - the labelled momentum-space scalar specialization of \(\Gamma_3\).
 
 Not proved:
@@ -517,20 +558,18 @@ Not proved:
 - equality with the complete two-loop three-gluon surface function, rather
   than one marked maximal cell in its modular presentation;
 - derivation of the open coefficient-path monomials and their extension signs
-  directly from the full physical YM leading singularity, instead of from
-  modular extension of the verified local counits; the state-projector
-  \(N\)-corrections themselves are now proved absent on this cell;
+  directly from the full physical YM leading singularity — subsequently
+  completed for this marked graph cell in entry 51, where the projector
+  corrections are shown to be nonzero but exactly absorbed by the resolved
+  circuit carrier;
 - a scale-carrying four-point integrated test;
 - descent after summing all mapping-class-related cells and quotienting
   cut-invisible/scaleless terms.
 
-The next decisive comparison is to construct the explicit five-vertex YM
-leading singularity for \(\Gamma_3\), expand the open coefficient paths into
-surface \(X_C\) variables with their extension signs, and show that the
-resolved local counit selects precisely the 243-state carrier above.  The
-polarization-projector correction is no longer part of that gap.  This would
-turn the exact modular-carrier result into a direct physical-numerator
-comparison.
+The comparison proposed here is completed in entry 51.  Its outcome changes
+one premise: the polarization-projector correction is part of the calculation,
+but the same resolved value \(\nu-\Delta=D\) handles it without an additional
+surface rule.
 
 ## Primary sources
 
