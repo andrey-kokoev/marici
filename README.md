@@ -11,9 +11,18 @@ The ledger currently keeps three frontiers separate:
   closing the genus-zero three-generator web. The low-point operator-algebra audit
   identifies the Backus--Figueiredo \(W\) operation as an amplitude-level
   transmutation counit and the Dong--Su--Yang diagram derivatives as a sparse
-  Catalan coframe inside it. Their augmented classes agree for every cyclic
-  scaffold reference through five points. A metric jet adjoint remains undefined
-  until the full fusion map and physical gauge pairing are constructed;
+  Catalan coframe inside it. The all-arity pairwise trace operators now give a
+  manifestly cyclic counit and organize the lowering support as the vertex--edge
+  incidence algebra of the complete graph on scaffold labels. This graph is the
+  one-skeleton of a full semi-simplicial deletion object, whose integral
+  degree-zero descent proves coherent reference independence. The exact
+  one-bridge calculation now proves a strict tree physical-Cut coaction in the
+  tensor product of lower amplitude quotients: the only raw correction is a
+  two-pair sector tensored with a separate all-odd annihilator, and the two
+  gluing gauges are related by a deletion-simplex filler. Cyclic symmetry also
+  exposes a real integral torsion class: a unit invariant representative needs
+  denominators or a new barycentric primitive. A metric jet adjoint and the
+  surface/loop lift remain undefined;
 - **YM:** verify index raising on the six-point Laurent/nearby-cycle channel quotient and keep
   ordering contraction distinct from physical-state sewing;
 - **Frost:** construct, or obstruct, a canonical cyclic/BV lift of the pure-Einstein
@@ -52,6 +61,10 @@ rustc --edition=2021 -O research/nima/check_twelve_point_scalar.rs -o "$env:TEMP
 & "$env:TEMP\marici-check-twelve.exe"
 rustc --edition=2021 -O research/nima/check_low_point_transmutation.rs -o "$env:TEMP\marici-low-point-transmutation.exe"
 & "$env:TEMP\marici-low-point-transmutation.exe"
+rustc --edition=2021 -O research/nima/check_transmutation_counit_all_arity.rs -o "$env:TEMP\marici-transmutation-counit.exe"
+& "$env:TEMP\marici-transmutation-counit.exe"
+rustc --edition=2021 -O research/nima/check_transmutation_cut_coaction.rs -o "$env:TEMP\marici-transmutation-cut.exe"
+& "$env:TEMP\marici-transmutation-cut.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -148,3 +161,16 @@ prohibited overclaims.
   augmented Catalan coframe agree modulo the annihilator of the canonical YM amplitude for
   every cyclic reference, while the metric adjoint is provably underdetermined by the
   published fusion-map and pairing data.
+- `20260813-42` proves an all-arity pairwise trace counit, decomposes every full \(W\)
+  transmuter into one vertex sector and its incident complete-graph edge sectors, derives the
+  vertex weight \(-(n-2)\), and constructs manifestly cyclic reference-free representatives.
+- `20260813-43` promotes the complete graph to the full deletion simplex, proves its alternating
+  Koszul differential squares to zero and its scalar counit is integral \(H_0\)-descent, then
+  reduces physical-Cut compatibility to an exact one-bridge coevaluation problem.
+- `20260813-44` proves weak all-arity Cut descent in the Cut-evaluation quotient, identifies the
+  standard trace/insertion transmuter as a decomposable lift of the same counit class, and
+  computes the integral cyclic obstruction \(g_n=n\) for odd \(n\) and \(g_n=n/2\) for even
+  \(n\) in the reference-generator lattice.
+- `20260813-45` proves the strict all-arity tree Cut formula for every retained pair and both
+  scaffold gluing gauges: its sole correction factors through an all-odd lower annihilator, so
+  the counit is group-like in the ordinary tensor product of lower amplitude quotients.
