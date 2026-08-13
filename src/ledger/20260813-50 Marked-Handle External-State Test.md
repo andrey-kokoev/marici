@@ -366,6 +366,75 @@ fixed-label asymmetry here would signal a convention error or an anomaly in the
 purported cyclic counit.  Nonuniform support across different matching types is
 the substantive information.
 
+## Physical polarization-projector audit
+
+The physical state sum on a loop-closing gluon edge is not always the naïve
+metric contraction.  Carrôlo and Figueiredo write it as
+
+\[
+-\eta^{\mu\nu}
++
+\frac{p^\mu q^\nu+p^\nu q^\mu}{p\cdot q}.
+\]
+
+They prove that the second, \(N\)-type term is nonzero precisely when the two
+legs being sewn are joined inside the on-shell object by an exclusively
+left-turning path.  After sewing, this path is a purely left-turning closed
+curve, equivalently a curve homotopic to an internal boundary.
+
+No such curve occurs in the marked-theta family.  Every simple cycle in
+\(\Gamma_n\) uses two of the three theta roads.  With the cyclic orders fixed
+above, an orientation around such a cycle encounters both kinds of turn.  At
+the two core vertices the turns are opposite; marked subdivision vertices can
+add turns but cannot remove that mixed pair.  Reversing the orientation swaps
+left and right and therefore does not change the conclusion.
+
+Equivalently, the thickened graph has one boundary, whose boundary walk uses
+fatgraph edges more than once.  It is not one of the simple closed contraction
+curves allowed on a maximal residue.  The three simple theta cycles are all
+nonseparating and not boundary-homotopic.
+
+This can be made independent of the sewing history.  For road lengths
+\(\ell_r\in\{1,2\}\), the number of spanning trees is
+
+\[
+\tau(\Gamma_n)
+=
+\ell_0\ell_1+ell_0\ell_2+ell_1\ell_2.
+\]
+
+For every spanning tree and each of its two loop-closing edges, the fundamental
+cycle has both an \(L\) and an \(R\) turn.  The executable checks all twelve
+simple cycles in the four-member family and all 56 spanning-tree closure
+channels.  Therefore
+
+\[
+\boxed{N_{\Gamma_n}=0}
+\]
+
+at every loop-closing step, and the nested \(N\)-term vanishes a fortiori.
+
+For these cycles the physical closed-curve exponent is consequently
+
+\[
+\Delta_\gamma=-D,
+\qquad
+\nu_\gamma=0.
+\]
+
+The resolved state value used above is exactly
+
+\[
+\nu_\gamma-\Delta_\gamma=D.
+\]
+
+Thus the \(D\)-sectors in \(P_n(D)\) are the resolved form of the physical
+polarization-projector circuits, with the orientation/parity convention
+already isolated in entry 46.  There is no omitted gauge-reference correction
+on this graph.  What remains for a full numerator comparison is the global
+map from the open coefficient paths to surface \(X_C\) variables and the
+associated extension signs and cancellations.
+
 ## Marked momentum specialization
 
 For \(\Gamma_3\), orient each road from the left core to the right core.  Let
@@ -437,6 +506,8 @@ Proved in this entry:
 - all 64 connected and disconnected Cut patterns for the three-leg cell;
 - the exact raw Cut curvature and its annihilation by \(D\mapsto1\);
 - nontrivial open-end matching support and exact cyclic balance;
+- absence of all physical \(N\)-corrections, for every spanning-tree sewing
+  history, because all twelve simple cycles have mixed turns;
 - the labelled momentum-space scalar specialization of \(\Gamma_3\).
 
 Not proved:
@@ -445,18 +516,21 @@ Not proved:
   operator on an already-sewn two-loop YM integrand;
 - equality with the complete two-loop three-gluon surface function, rather
   than one marked maximal cell in its modular presentation;
-- derivation of every coefficient and sign directly from the full physical YM
-  leading singularity, including the nested \(N\)-corrections, instead of from
-  modular extension of the verified local counits;
+- derivation of the open coefficient-path monomials and their extension signs
+  directly from the full physical YM leading singularity, instead of from
+  modular extension of the verified local counits; the state-projector
+  \(N\)-corrections themselves are now proved absent on this cell;
 - a scale-carrying four-point integrated test;
 - descent after summing all mapping-class-related cells and quotienting
   cut-invisible/scaleless terms.
 
 The next decisive comparison is to construct the explicit five-vertex YM
-leading singularity for \(\Gamma_3\), retain the Carrôlo--Figueiredo correction
-terms and signs, and show that the resolved local counit selects precisely the
-243-state carrier above.  That would turn this exact modular-carrier result
-into a direct physical-numerator comparison.
+leading singularity for \(\Gamma_3\), expand the open coefficient paths into
+surface \(X_C\) variables with their extension signs, and show that the
+resolved local counit selects precisely the 243-state carrier above.  The
+polarization-projector correction is no longer part of that gap.  This would
+turn the exact modular-carrier result into a direct physical-numerator
+comparison.
 
 ## Primary sources
 
