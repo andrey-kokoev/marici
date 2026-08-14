@@ -2427,3 +2427,54 @@ the exchanged quotient cone as forced lower-face terms, and prove that the
 physical Cousin residues commute with the resulting total differential. This
 would complete the pre-pairing chain provenance of \(\mathsf J\), whose
 cohomological Pfaffian-square identification remains established already.
+
+### Occurrence support and cubical coherence boundary
+
+The route-face diagonal coefficient system is now exact at eight points.  On
+every one of the twenty-four route faces, the fibers in dimensions two, one,
+and zero have ranks \(3,4,5\), the specialization maps are labelled
+inclusions, and the system decomposes into rank-one extension-by-zero
+summands.  Common labels live on the whole face; every other label lives on
+one closed boundary edge.  This is a constructible cosheaf, not a local
+system.
+
+Every one of the twelve rank-two physical cores has an actual fixed-core
+associahedral fiber
+
+\[
+K_Q\cong I^3,
+\]
+
+obtained from the two scalar choices in each of its three quadrilateral
+regions.  Eight cores have four distinct \(P_\pm,S_\pm\) support facets.  They
+form the four-facet belt \(S^1\times I\), with cell census
+\((8,12,4,0)\), rather than a cover of the full cube.  The other four cores
+have only two distinct supported facets.
+
+For each four-chart core, the two omitted opposite facets cap the belt and the
+cube 3-cell compares the two fillings:
+
+\[
+\partial B_Q=-\partial(K_Q^++K_Q^-),
+\qquad
+B_Q+K_Q^++K_Q^-=\partial I_Q^3.
+\]
+
+The target homology changes from \(H_1(B_Q)=\mathbf Z\), to a contractible
+one-capped belt, to the boundary \(S^2\), and finally to the contractible
+filled cube.  This is the first explicit higher coherence cell in the scalar
+incidence calculus.
+
+A formal Čech--tube--normal totalization has been constructed.  Its
+differential squares to zero on 4512 basis symbols and its formal double
+residue commutes with that differential.  This is conditional on the
+undecorated facewise Pochhammer symbols of entry 38.
+
+The physical gap is narrower but still real.  Occurrence support fixes the
+target square facets but not the route-edge and route-face maps.  It admits
+forty pentagon-to-square cellular lifts, twenty per orientation.  The
+candidate which collapses the scalar flip edge is consistent but not
+intrinsically selected.  Therefore the cap/cube completion proves target
+exactness, not yet the finite-alpha-prime physical Gysin naturality.  The next
+experiment must derive that degree-shifted loaded map and verify residue
+commutation generator by generator.

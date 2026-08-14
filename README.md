@@ -180,6 +180,12 @@ rustc --edition=2021 -D warnings -O research/nima/check_eight_point_pentagon_tra
 & "$env:TEMP\marici-pentagon-transport.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_pentagon_incidence_span.rs -o "$env:TEMP\marici-pentagon-incidence-span.exe"
 & "$env:TEMP\marici-pentagon-incidence-span.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_occurrence_support_cosheaf.rs -o "$env:TEMP\marici-occurrence-support.exe"
+& "$env:TEMP\marici-occurrence-support.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_cubical_gysin_coherence.rs -o "$env:TEMP\marici-cubical-gysin.exe"
+& "$env:TEMP\marici-cubical-gysin.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_loaded_cech_totalization.rs -o "$env:TEMP\marici-loaded-cech.exe"
+& "$env:TEMP\marici-loaded-cech.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -381,3 +387,7 @@ prohibited overclaims.
   kills the exchanged scalar-flip quotients, polarity supports glue by a saturated
   \(2\to4+4\to6\) sequence, and each pentagon/companion-square pair glues by
   \(4\to6+6\to8\) to recover the entire rank-eight coefficient fiber integrally.
+- `20260813-73` proves the route-face coefficient is an extension-by-zero constructible cosheaf
+  and every rank-two core has an honest fixed-core cube.  On the eight four-chart cores the
+  charts form only the side belt; two caps and the cube give exact target coherence, while forty
+  support-compatible pentagon lifts leave the physical loaded Gysin naturality conditional.
