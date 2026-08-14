@@ -348,6 +348,13 @@ before gauge/BRST descent. This must be checked facewise and with the
 one-step-rotation orientation local system. Agreement only after summing the
 amplitude is not sufficient.
 
+Forward result: entry 70 proves the coefficient comparison on all sixteen
+transverse square routes and all 192 marked full-core basis factorizations.
+The remaining eight route faces are nontransverse pentagons whose initial
+same-core scalar edge has no coefficient/residue-line transport in the
+current occurrence cosheaf. The full twenty-four-face comparison is therefore
+precisely untyped at that map, rather than numerically violated.
+
 ## Reproducible certificate
 
 Run:

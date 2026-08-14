@@ -4,8 +4,9 @@
 
 Date: 2026-08-13
 
-Status: the scalar-derived Pochhammer/Cousin comparison of entry 38 produces, after taking its
-field-theory/nearby-cycle symbol and applying derived Verdier index raising, exactly the CHY class
+Status: corrected in part by entries 70--72. The complete Parke--Taylor
+period vector and derived Verdier perfectness still identify the
+representation-independent cohomology class
 
 \[
 \boxed{
@@ -15,10 +16,20 @@ field-theory/nearby-cycle symbol and applying derived Verdier index raising, exa
 }
 \]
 
-The equality is representation independent and is separated by a complete Parke--Taylor basis.
-The genuinely new result is not the period argument already recorded in entry 11. It is that the
-scalar-derived covector now factorizes in the facewise Pochhammer/Cousin complex before index
-raising and before pairing with a Parke--Taylor factor.
+The equality is representation independent and is separated by a complete
+Parke--Taylor basis. However, the stronger claim that a complete
+occurrence-decorated scalar covector already factorizes in the facewise
+Pochhammer/Cousin complex before index raising is conditional. Entry 38
+supplies that comparison on transverse cells; the eight nontransverse
+pentagons of entries 70--71 still lack their scalar-facet coefficient
+specialization.
+
+Thus this entry contains two logically distinct results:
+
+1. the cohomological half-class and its Pfaffian-square identification remain
+   established;
+2. its claimed intrinsic scalar chain provenance and pre-pairing coherent
+   factorization are proved only on the transverse subcomplex.
 
 The finite-\(\alpha'\) object is a regulator lift. Its full \(\alpha'\)-dependent class is not
 claimed to equal the undeformed Pfaffian square; the equality is for the normalized
@@ -91,14 +102,19 @@ C_*^{\rm cell}
 \bigl(\operatorname{AssEnv}_\alpha;\mathcal L_J\bigr)
 \]
 
-be the complete occurrence-resolved scalar associated-grade element. Apply the comparison of
-entry 38:
+be the complete occurrence-resolved scalar associated-grade element. On the
+transverse occurrence-decorated subcomplex, apply the comparison of entry 38:
 
 \[
 \Xi^{\rm PC}_{n,\alpha'}(\alpha)
 =
 \chi_{\alpha'}\Xi^{\rm sc}_{n,\alpha}.
 \]
+
+As a formula on the **complete** decorated complex, this line is now a target
+rather than a theorem. The missing components are the eight-point route
+pentagons and their higher-arity analogues. The undecorated Pochhammer face
+map exists there, but its scalar occurrence coefficient has not been lifted.
 
 Let
 
@@ -136,15 +152,18 @@ a_{R,n}(\alpha).
 }
 \]
 
-This equality is cell resolved: its summands are the scalar triangulations and marked regional
-contacts of entries 26 and 27. It is not inferred from one already-summed NLSM formula.
+The period equality is exact. Its interpretation as the period of one
+globally assembled cell-resolved Pochhammer chain is conditional on completing
+the nontransverse coefficient lift. Independently, entries 14 and 27 provide
+the order-indexed scalar grade and its marked regional summands, so the period
+vector itself does not depend on that unfinished assembly.
 
 The direct scalar descent theorem of entry 14 says that the family \(a_{R,n}(\alpha)\) annihilates
 the Parke--Taylor kernel. Hence these periods define a representation-independent derived
 covector
 
 \[
-A^{\rm PC}_{R,n}
+A_{R,n}
 \in
 (H_n^-)^*.
 \]
@@ -155,22 +174,23 @@ Define
 
 \[
 \boxed{
-\mathsf J^{\rm PC}_n
+\mathsf J_n
 =
-(I_n^\flat)^{-1}A^{\rm PC}_{R,n}
+(I_n^\flat)^{-1}A_{R,n}
 \in
 H_n^+.
 }
 \]
 
-Equivalently, this is the middle-cohomology image of derived Verdier index raising applied to the
-facewise Pochhammer/Cousin covector.
+Equivalently, this is the middle-cohomology index raising of the scalar period
+covector. Once the nontransverse lift is completed, it should also be the
+image of one globally assembled facewise Pochhammer/Cousin covector.
 
 Choose any genuine BCJ-sized Parke--Taylor bases \(B_-\subset H_n^-\) and
 \(B_+\subset H_n^+\). The coordinate expression is
 
 \[
-\mathsf J^{\rm PC}_n
+\mathsf J_n
 =
 \sum_{\beta\in B_+}
 \operatorname{PT}^+_\beta
@@ -208,7 +228,7 @@ for every even cyclic order, while both sides vanish at odd multiplicity. Theref
 \[
 I_n\!\left(
 \operatorname{PT}^-_\alpha,
-\mathsf J^{\rm PC}_n
+\mathsf J_n
 \right)
 =
 I_n\!\left(
@@ -221,16 +241,17 @@ Perfectness separates the two classes:
 
 \[
 \boxed{
-\mathsf J^{\rm PC}_n
+\mathsf J_n
 =
 [(\operatorname{Pf}'A_n)^2]
 \in H_n^+.
 }
 \]
 
-What has changed relative to entry 11 is the provenance. The covector on the left now arrives
-through an intrinsic scalar cell-to-worldsheet normal-cone comparison, rather than being supplied
-only as an order-indexed amplitude family.
+This cohomological conclusion is the sound part of the claimed provenance.
+Until the nontransverse coefficient lift is completed, the covector on the
+left is canonically specified by its scalar-derived Parke--Taylor periods,
+not yet by one complete occurrence-decorated worldsheet chain.
 
 ## Factorization before pairing
 
@@ -243,7 +264,7 @@ G_e(h)
 -\frac{X_{d_e^1}}{X_e}h_e^1.
 \]
 
-Entry 38 lifts it before any pairing:
+Entry 38 lifts it before any pairing on its proved transverse domain:
 
 \[
 d_{\rm PC}G_e^{\alpha'}
@@ -275,7 +296,8 @@ The right-hand side already contains:
 
 No Parke--Taylor factor and no inverse KLT kernel has entered.
 
-On the complete scalar element this gives
+On the transverse occurrence-decorated subcomplex this gives the local
+factorization law. The desired extension to the complete scalar element is
 
 \[
 \boxed{
@@ -302,7 +324,11 @@ A^{\rm PC}_{R,n}
 A^{\rm PC}_{R}.
 \]
 
-This is the required factorization naturality before pairing.
+These are the required factorization formulas, but their assertion on one
+globally assembled occurrence-decorated chain is conditional on the
+nontransverse Cousin lift. At cohomology level the same factorization follows
+independently from the identified Pfaffian-square class and its standard
+boundary degeneration.
 
 ## Index raising on the channel quotient
 
@@ -356,13 +382,15 @@ I_{\rm scalar}^{-1}
 
 was merely an amplitude reconstruction device.
 
-It is not. The construction now has the sequence
+At cohomology level it is not: the complete scalar-derived period covector
+determines a unique half-class. At chain level the stronger answer remains
+conditional. The intended sequence is
 
 \[
 \operatorname{gr}_R A_{\rm scalar}
 \longrightarrow
 \Xi^{\rm sc}
-\xrightarrow{\chi_{\alpha'}}
+\overset{\chi_{\alpha'}}{\dashrightarrow}
 \Xi^{\rm PC}
 \xrightarrow{\operatorname{FT}}
 A_R^{\rm PC}
@@ -370,10 +398,15 @@ A_R^{\rm PC}
 \mathsf J,
 \]
 
-and the factorization square already commutes at the \(\Xi^{\rm PC}\) stage.
+where the dashed arrow is proved on transverse cells and still requires the
+nontransverse scalar-facet lift. The factorization square commutes at the
+\(\Xi^{\rm PC}\) stage on that proved domain and after passing to the
+identified cohomology class. It has not yet been assembled as a globally
+coherent pre-pairing chain map.
 
-Thus the half-object exists as a derived normal symbol before pairing. Pairing identifies and
-uses it; pairing does not create its factorization law.
+Thus the half-object exists canonically in cohomology. The stronger statement
+that its complete factorization law is already intrinsic before pairing is
+the live pentagon/Cousin frontier.
 
 ## Consequences for the three-generator web
 
@@ -407,42 +440,56 @@ Therefore the standard scalar-derived pairings remain
 \mathrm{special\ Galileon}.
 \]
 
-The new result is that the \(\mathsf J\) entry is now supplied by a monoidal scalar
-normal-cone construction. No additional half-integrand or factorization datum is required.
+These pairings close the \(\mathsf J\) row at cohomology level. A complete
+monoidal scalar normal-cone representative still requires the dependent-face
+coefficient lift; no additional **cohomology class** is required, but
+additional chain-level specialization data is.
 
 ## Epistemic boundary
 
 Established:
 
-1. representation-independent scalar-derived worldsheet covector;
+1. representation-independent scalar-derived period covector;
 2. canonical derived index raising;
 3. equality of the resulting CHY class with \([(\operatorname{Pf}'A)^2]\);
-4. factorization in the Pochhammer/Cousin complex before pairing;
-5. nested-cut monoidality;
+4. factorization in the Pochhammer/Cousin complex on the transverse
+   occurrence-decorated subcomplex;
+5. nested-cut monoidality on normal-crossing/transverse channel strata;
 6. correct nearby-cycle channel quotient at resonance;
 7. agreement with reduced-Pfaffian degeneration;
-8. closure of the \(\mathsf J\) row in the genus-zero three-generator table.
+8. cohomology-level closure of the \(\mathsf J\) row in the genus-zero
+   three-generator table.
 
 Not established:
 
-1. equality of a preferred point-set chain or smooth form with the rational Pfaffian expression;
-2. uniqueness of the finite-\(\alpha'\) regulator lift as a string completion;
-3. a canonical dg inverse of the pairing outside the derived category;
-4. modular/all-topology completion of this surface half-object;
-5. the proposed adjunction between the scalar first jet and scalar-scaffold lowering operators.
+1. a complete occurrence-decorated scalar-to-Pochhammer chain map across
+   dependent/nontransverse faces;
+2. factorization naturality of one global scalar-derived half-chain before
+   pairing;
+3. equality of a preferred point-set chain or smooth form with the rational Pfaffian expression;
+4. uniqueness of the finite-\(\alpha'\) regulator lift as a string completion;
+5. a canonical dg inverse of the pairing outside the derived category;
+6. modular/all-topology completion of this surface half-object;
+7. the proposed adjunction between the scalar first jet and scalar-scaffold lowering operators.
 
 ## Decision
 
 Promote:
 
-> The rank-jump/Jordan primitive is an intrinsic, factorization-natural derived half-object of the
-> scalar master. Its scalar cellular symbol has a monoidal finite-nonresonant
-> Pochhammer/Cousin lift; its physical nearby-cycle symbol factorizes before pairing; and derived
-> Verdier index raising identifies the resulting worldsheet class uniquely with
-> \([(\operatorname{Pf}'A)^2]\).
+> The rank-jump/Jordan primitive is an intrinsic cohomological half-object of
+> the scalar master: its complete scalar-derived period vector and derived
+> Verdier index raising identify it uniquely with
+> \([(\operatorname{Pf}'A)^2]\). Its finite-nonresonant
+> Pochhammer/Cousin lift and pre-pairing factorization are established on the
+> transverse subcomplex; the complete chain-level statement awaits the
+> nontransverse coefficient lift.
 
-The immediate Nima frontier is no longer existence or factorization of \(\mathsf J\). It is the
-operator-algebra question suggested by the new scalar-scaffolding literature:
+The immediate Nima frontier is again the strongest original one:
 
-> Is the gauge first-jet raising operation adjoint, under the scalar-derived pairing, to the span
-> of diagram-extracting differential lowering operators?
+> construct the loaded five-term Cousin identity on one route pentagon and
+> its companion square, using the two saturated incidence/Čech resolutions
+> of entry 72, and thereby complete—or falsify—the factorization-natural
+> scalar half-chain before pairing.
+
+Only after that closure should the lowering-operator adjunction return to the
+front of this branch.

@@ -2290,7 +2290,140 @@ global full-core roads suspend locally:
 \Gamma_D(q_E-q_F)\in H_1(K_{2,3}).
 \]
 
-The next falsifier is coefficient-level: decorate all 24 transverse route
-faces by scalar residue lines and polarity transport, and test whether this
-Gysin map intertwines the occurrence differential with the local Ward
-suspension before BRST descent.
+### Coefficient-level status of the marked Gysin square
+
+The coefficient audit now decorates all twelve full-core fibers and all
+twenty-four transverse route faces.  Each full-core fiber has rank eight and
+factors canonically on either marked channel:
+
+\[
+\mathcal L_8(\{D,E\})
+\cong
+\mathcal L_4(\varnothing)\boxtimes\mathcal L_6(q_E),
+\qquad 8=2\cdot4.
+\]
+
+All 192 basis factorizations and forty-eight center--road incidences pass.
+Occurrence-level physical maps commute, while the degree-one Gysin maps
+anticommute after adjoining the normal-orientation factors:
+
+\[
+G_EG_D=G_DG_E,
+\qquad
+\widetilde G_E\widetilde G_D
+=-\widetilde G_D\widetilde G_E.
+\]
+
+This closes all sixteen route squares with rank pattern \([0,1,2,1]\).
+It does not yet close the eight route pentagons with pattern
+\([0,0,1,2,1]\).  A pentagon begins with a same-core scalar flip, so its two
+physical routes start in different scalar occurrence fibers.  The present
+coefficient system defines no rank-preserving transport
+
+\[
+\tau_s:\mathcal L(T_0)\to\mathcal L(T_1)
+\]
+
+on that edge.  The all-24-face Gysin/suspension equation is therefore
+untyped, not falsified.
+
+The residual compatibility octagon does not acquire a rescuing sign twist.
+The normal, polarity, and tensor holonomies measured from the established
+maps are all \(+1\), and distinct deck-equivariant pointwise edge-sign
+extensions are nevertheless trivial on all five cycle generators.  The
+four-square-plus-octagon sublattice retains index two.
+
+The strict-transport falsifier has now been executed.  Each scalar edge
+exchanges one of five independent Laurent labels, so no label-and-weight
+preserving rank-five endpoint isomorphism exists.  After passage to the common
+rank-eight full-core fiber, all previously established data admit both
+
+\[
+\tau_s=+\operatorname{Id}
+\qquad\text{and}\qquad
+\tau_s=-\operatorname{Id}.
+\]
+
+They are central, involutive, and deck covariant, but their signed pentagon
+defects are respectively
+
+\[
+0
+\qquad\text{and}\qquad
+-2\operatorname{Id}.
+\]
+
+Thus the zero obtained from \(+\operatorname{Id}\) is a choice, not an
+intrinsic consequence.  The next object is the loaded Pochhammer/Cousin
+pentagon itself.  Its five oriented facet tubes, tangential loading, normal
+line, and forced lower-face terms must satisfy
+
+\[
+\operatorname{Res}^{\rm PC}_{D,E}\partial_{\rm PC}\mathcal P(F)
+=
+\partial_{\rm PC}\operatorname{Res}^{\rm PC}_{D,E}\mathcal P(F).
+\]
+
+One pentagon suffices before rotation because the eight faces form a single
+deck orbit.  This is the first place where the proposed
+six-functor/recollement calculus is forced to be genuinely derived rather
+than strict.
+
+### Constructible coefficient repair
+
+The attempted scalar-edge automorphism was the wrong categorical shape. For
+each of the eight nontransverse pentagons, the two rank-five endpoint modules
+share a canonical rank-four labelled submodule:
+
+\[
+M_0\xleftarrow{}M_s\xrightarrow{}M_1,
+\qquad
+(\operatorname{rank}M_0,\operatorname{rank}M_s,
+\operatorname{rank}M_1)=(5,4,5).
+\]
+
+The two rank-one endpoint quotients are the exchanged flip labels. Their
+mapping-cone generator augments to
+
+\[
+d h_s=X_x-X_y,
+\]
+
+but the span, not this augmented polynomial equation, is the intrinsic
+occurrence object. Every one of the sixteen polarity-supported double-Gysin
+sources lies in \(M_s\); the exchanged quotient labels are never selected.
+Thus physical Gysin is extension by zero on the flip quotient and agrees in
+the two cut orders on its supported common source.
+
+The supported full-core images satisfy two saturated integral Čech
+resolutions. Within a pentagon or its relevant companion square,
+
+\[
+0\to\mathbf Z^2
+\to\mathbf Z^4\oplus\mathbf Z^4
+\to\mathbf Z^6\to0.
+\]
+
+For a pentagon--companion-square pair at fixed full core,
+
+\[
+0\to\mathbf Z^4
+\to\mathbf Z^6\oplus\mathbf Z^6
+\to\mathbf Z^8\to0.
+\]
+
+All nonzero Smith factors are one. A pentagon alone sees six of eight
+occurrence lines; the companion square supplies the remaining two, and the
+pair covers the complete full-core fiber on all eight relevant cores.
+
+This is the coefficient counterpart of the two-axis topology: polarity
+descent is the first Čech layer and pentagon/square compatibility is the
+second. The scalar coefficient system is therefore a constructible cosheaf
+assembled by spans and colimits, not a local system with parallel transports.
+
+The finite-alpha-prime task is correspondingly sharper. Tensor these two
+incidence resolutions with the pentagon and square Pochhammer tubes, realize
+the exchanged quotient cone as forced lower-face terms, and prove that the
+physical Cousin residues commute with the resulting total differential. This
+would complete the pre-pairing chain provenance of \(\mathsf J\), whose
+cohomological Pfaffian-square identification remains established already.

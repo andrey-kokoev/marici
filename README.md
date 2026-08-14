@@ -174,6 +174,12 @@ rustc --edition=2021 -D warnings -O research/nima/check_global_polarity_incidenc
 & "$env:TEMP\marici-global-polarity.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_eight_point_rank_two_gysin.rs -o "$env:TEMP\marici-rank-two-gysin.exe"
 & "$env:TEMP\marici-rank-two-gysin.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_eight_point_coefficient_gysin.rs -o "$env:TEMP\marici-coefficient-gysin.exe"
+& "$env:TEMP\marici-coefficient-gysin.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_eight_point_pentagon_transport.rs -o "$env:TEMP\marici-pentagon-transport.exe"
+& "$env:TEMP\marici-pentagon-transport.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_pentagon_incidence_span.rs -o "$env:TEMP\marici-pentagon-incidence-span.exe"
+& "$env:TEMP\marici-pentagon-incidence-span.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -258,11 +264,13 @@ prohibited overclaims.
   operators and reverse surface recovery as high-information external nodes.
 - `20260813-37` proves the all-arity rooted-spine base-change theorem, replacing the bounded
   mixed-prism audits by an exact two-slot chain identity.
-- `20260813-38` constructs the finite-nonresonant normal-torus Pochhammer/Cousin lift and proves
-  that its nearby-cycle unit has associated grade exactly \(1/X_e\).
-- `20260813-39` derives the scalar worldsheet half-class, identifies it with
-  \([({\rm Pf}'A)^2]\), and proves factorization in the Pochhammer/Cousin complex before
-  inverse-pairing reconstruction.
+- `20260813-38` constructs the finite-nonresonant normal-torus Pochhammer/Cousin lift on
+  undecorated faces and the transverse occurrence complex, and proves that its nearby-cycle unit
+  has associated grade exactly \(1/X_e\); entries 70--71 delimit the still-missing dependent-face
+  coefficient lift.
+- `20260813-39` derives the scalar period half-class and identifies it with
+  \([({\rm Pf}'A)^2]\); its pre-pairing Pochhammer/Cousin factorization is exact on the
+  transverse subcomplex, while entries 70--71 reopen the complete dependent-face chain lift.
 - `20260813-40` falsifies literal adjunction between the fusion jet and individual scaffold
   derivatives, reclassifies those derivatives as a Catalan cellular coframe, and states the
   correctly typed augmented-transmutation matrix test.
@@ -361,3 +369,15 @@ prohibited overclaims.
   \(K_{2,12}=S^0*\operatorname{Quad}_8\), not the Möbius carrier; marked Cut is a
   degree-shifting Gysin map to local \(K_{2,3}\), and polarity descent separates from
   quadrangulation coherence for the first time.
+- `20260813-70` proves exact marked-Cut factorization on all rank-eight full-core coefficient
+  fibers and closes the sixteen transverse route squares, while isolating the eight dependent
+  pentagons' undefined same-core scalar transport as the first genuinely nontransverse Cousin
+  gap; existing sign lines leave the Möbius index-two class intact.
+- `20260813-71` falsifies an intrinsic edgewise repair of that gap: strict Laurent support
+  already obstructs endpoint transport, while the common full-core fiber admits both
+  \(\tau_s=+\mathrm{Id}\) and \(-\mathrm{Id}\), with defects zero and
+  \(-2\mathrm{Id}\); the canonical target is therefore the loaded five-facet Cousin identity.
+- `20260813-72` replaces endpoint transport by constructible incidence descent: physical Gysin
+  kills the exchanged scalar-flip quotients, polarity supports glue by a saturated
+  \(2\to4+4\to6\) sequence, and each pentagon/companion-square pair glues by
+  \(4\to6+6\to8\) to recover the entire rank-eight coefficient fiber integrally.

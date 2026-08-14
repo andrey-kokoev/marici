@@ -4,8 +4,13 @@
 
 Date: 2026-08-13
 
-Status: the all-arity cellular coaction of entry 37 has a canonical realization in the
-facewise generalized-Pochhammer/Cousin complex at finite, nonresonant \(\alpha'\).
+Status: corrected in part by entries 70--72. The undecorated associahedral
+face map and the all-arity **transverse** cellular coaction of entry 37 have a
+canonical realization in the facewise generalized-Pochhammer/Cousin complex
+at finite, nonresonant \(\alpha'\). The claim below that the
+occurrence-decorated comparison is already a chain map on the complete scalar
+envelope was too strong: eight-point dependent pentagons require a
+scalar-facet coefficient specialization which has not yet been constructed.
 
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted
@@ -311,11 +316,29 @@ d_{\rm PC}\chi_{\alpha'}
 }
 \]
 
-on the complete scalar envelope and on every physical face restriction for which the cellular
-coaction is defined. Nontransverse physical incidence is handled by the Cousin differential
-itself rather than by inventing an extra scalar square.
+on the transverse occurrence-decorated subcomplex and on every physical face
+restriction for which the cellular coaction is defined. The undecorated
+Pochhammer map remains a chain map on nontransverse cells, but tensoring it by
+scalar occurrence weights requires an additional coefficient specialization.
 
-This is the previously missing filtered scalar-to-Pochhammer/Cousin comparison.
+Entries 70--71 exhibit the first missing case. On each of eight route
+pentagons, the initial scalar edge exchanges one independent Laurent label;
+after passage to the common full-core fiber, both
+\(+\operatorname{Id}\) and \(-\operatorname{Id}\) satisfy every previously
+established fixed-core, physical, orientation, and deck constraint. Thus the
+statement that the Cousin differential handles nontransverse incidence is the
+correct target, but was not proved here for the decorated scalar complex.
+
+Entry 72 supplies the missing occurrence-level shape without yet loading it:
+the scalar facet is a rank-four incidence span, and two saturated Čech
+sequences glue its polarity images and companion-square image to the complete
+rank-eight full-core fiber. A corrected complete comparison must tensor that
+constructible diagram with the face-tube complex; it must not choose an
+edgewise transport.
+
+This is the filtered scalar-to-Pochhammer/Cousin comparison on the transverse
+domain. Its extension across dependent associahedral faces is the remaining
+coefficient-lift problem.
 
 ## Finite-\(\alpha'\) physical coaction
 
@@ -486,7 +509,8 @@ are Marici results.
 Established here:
 
 1. a finite nonresonant facewise Pochhammer/Cousin target;
-2. a canonical normal-cone comparison from the scalar cellular envelope;
+2. a canonical normal-cone comparison from undecorated associahedral cells
+   and from the transverse occurrence-decorated scalar subcomplex;
 3. strict lifting of the all-arity mixed-cell coaction;
 4. monoidality on physical boundary products;
 5. exact recovery of the scalar \(1/X_e\) coaction as the \(V_e\)-associated grade;
@@ -496,24 +520,36 @@ Established here:
 
 Not established here:
 
-1. a privileged smooth twisted-form representative;
-2. a canonical chain-level inverse of the global scalar intersection pairing;
-3. an off-shell representative;
-4. equality with \((\operatorname{Pf}'A)^2\) before passing to the derived/cohomological class;
-5. a claim that the finite-\(\alpha'\) regulator is uniquely abelian Z-theory or any other string
+1. the scalar-facet coefficient specialization on dependent/nontransverse
+   associahedral faces, hence a decorated chain map on the complete scalar
+   envelope;
+2. a privileged smooth twisted-form representative;
+3. a canonical chain-level inverse of the global scalar intersection pairing;
+4. an off-shell representative;
+5. equality with \((\operatorname{Pf}'A)^2\) before passing to the derived/cohomological class;
+6. a claim that the finite-\(\alpha'\) regulator is uniquely abelian Z-theory or any other string
    completion.
 
 ## Decision
 
 Promote:
 
-> After extracting the scalar normal grade, the decorated associahedral envelope has a canonical
-> image in the finite, nonresonant generalized-Pochhammer/Cousin complex. The physical normal
-> factor is \((2\pi i\alpha')/(e^{2\pi i\alpha'X_e}-1)\); it differs from \(1/X_e\) only by an
-> analytic unit. Hence the all-arity two-slot scalar coaction is exactly the physical
-> nearby-cycle associated grade of a monoidal loaded-worldsheet coaction.
+> After extracting the scalar normal grade, every undecorated associahedral
+> face and every transverse occurrence-decorated cell has a canonical image
+> in the finite, nonresonant generalized-Pochhammer/Cousin complex. The
+> physical normal factor is
+> \((2\pi i\alpha')/(e^{2\pi i\alpha'X_e}-1)\); it differs from \(1/X_e\)
+> only by an analytic unit. Hence the all-arity two-slot scalar coaction is
+> exactly the physical nearby-cycle associated grade of a monoidal
+> loaded-worldsheet coaction on its proved transverse domain.
 
-The next test is now sharply typed:
+The first missing extension is now sharply typed by entry 71:
+
+> construct the occurrence-decorated five-term Cousin identity on one
+> eight-point route pentagon, including its scalar-facet specialization and
+> lower-face terms, then rotate it through the single deck orbit.
+
+After that, the original pairing test remains:
 
 > apply derived Verdier index raising to this covector-valued comparison, prove that its complete
 > Parke--Taylor period vector is the scalar grade, and use perfectness to identify the resulting
