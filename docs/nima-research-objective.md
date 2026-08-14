@@ -1199,3 +1199,65 @@ supports of \(q_0,q_2\).  Its endpoint maps must retain the labelled
 road \(\operatorname{Tor}_1\) costalks.  The generic leg must factor through
 the cone-roof transgression \(e_3\leftrightarrow F_{03}\).  This is the
 smallest unfitted loaded Beck--Chevalley test.
+
+## Endpoint reduction after entry 117
+
+The source of that test is no longer ambiguous. Its minimal exact
+occurrence hull is
+
+\[
+R\langle e_3\rangle
+\xrightarrow{(-x_1,x_5)^T}
+R\langle q_0,q_2\rangle
+\xrightarrow{(x_5,x_1)}R\langle a\rangle
+\to R/(x_1,x_5),
+\qquad R=\mathbb Z[x_1,x_5].
+\]
+
+For
+
+\[
+d_{\rm road}F_{03}=b_0\tau_{q_0}+b_2\tau_{q_2},
+\]
+
+the normalized Cartier--PL square exists precisely when
+
+\[
+b_0\in(x_1),
+\qquad b_2\in(x_5),
+\]
+
+and then has unique endpoint coefficients
+
+\[
+a_0=-b_0/x_1,
+\qquad a_2=b_2/x_5.
+\]
+
+The coefficient lcm map is already canonical:
+
+\[
+(\alpha,b_0,b_2)=c(x_1x_5,x_5,x_1).
+\]
+
+What remains is spatial, not algebraic. Neither an external \([t_3]\)
+tensor nor the entry-86/97 marked \(F_{03}\) trace defines the Boolean
+endpoint maps. Passing to the central fibre makes the test vacuous.
+
+The immediate formula objective is consequently the single-endpoint class
+
+\[
+\boxed{
+\Gamma_0^{!,\rm mR}:
+\operatorname{Th}_{x_3}^{\rm mR}\otimes I_{x_1}q_0
+\longrightarrow [t_3]\tau_{q_0},
+}
+\]
+
+with nonzero generic \(Q\)-leg through \(e_3\leftrightarrow F_{03}\),
+special boundary \(-x_1q_0\), reciprocal-standard to
+original-Borel--Moore variance, image \([t_3]\mapsto\eta_{3,\rm mix}\), and
+independent \([dX_{03}]=+1\). Compute its road generization before central
+base change. If the correctly typed Hom class is absent or its
+Beck--Chevalley defect is nonzero, reject the endpoint locally. Construct
+\(q_2\), a common thimble, and the \(D_3\) orbit only after this test passes.
