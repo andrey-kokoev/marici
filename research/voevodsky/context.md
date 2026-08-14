@@ -1272,3 +1272,101 @@ compatibility is measured by
 The norm identity only proves \(3\omega=0\), not \(\omega=0\). If it
 vanishes, coherent realizations form a \(\mathbb Z/2\) torsor whose parity
 must be selected geometrically by the marked orientations.
+
+## 25. Boundary-triad Tate realization and the Cartier bicomplex
+
+The carrier part of the preceding obstruction is now closed. Set
+
+\[
+X=K_6,
+\qquad
+B=B_{\rm short},
+\qquad
+L=F_{14}\sqcup F_{03}\sqcup F_{25}.
+\]
+
+The relative \(Q\)-complex is literally
+
+\[
+C_*(X,B)=
+[\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}],
+\]
+
+so it retains a nonzero generic leg. The saturated filtration connector and
+complementary-boundary Poincare--Lefschetz duality give
+
+\[
+P_{\rm tag}\twoheadrightarrow H_2(X,B)
+\xrightarrow{\sim}H_1(B,v_+)
+\xrightarrow{\sim}\widetilde H_0(L)
+\hookrightarrow P_{\rm road}.
+\]
+
+With the fixed orientations this composite is \(1-r\). Hence the actual
+triad derives the complete Tate window and
+
+\[
+\omega_{\rm car}=0\in\mathbb Z/3.
+\]
+
+Only the \(\mathbb Z/2\) torsor of equivariant chain-level cap homotopies
+remains at carrier level.
+
+The coefficient conclusion is also stronger than entry 114 stated. For
+
+\[
+P_i=[A_i h_i\xrightarrow{t_ix_i}A_i p_i],
+\]
+
+the \(x_i\)-Cartier fibre has zero visible differential, but its filtered
+Bockstein is
+
+\[
+\beta_{x_i}([h_i])=t_i[p_i].
+\]
+
+After Verdier duality its first Rees symbol is
+\([t_i]\epsilon_i\). For three independent normals this gives
+
+\[
+b^\vee=\sum_i[t_i]\epsilon_i\wedge(-),
+\qquad
+(b^\vee)^2=0.
+\]
+
+The right object is therefore the bicomplex
+
+\[
+\mathcal T_+^{\rm mR}
+=\operatorname{Tot}\!\left(
+[\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow\epsilon\mathbb Z]
+\otimes\Lambda^\bullet N_{\rm Cart}^{\vee}
+\right),
+\]
+
+with total differential
+
+\[
+d=d_{\rm PL}+(-1)^p b^\vee.
+\]
+
+The formerly sought direct \(\lambda_{\rm ex}\) is a transferred shadow of
+this double complex, not an operation to insert into the split fibre.
+
+The loaded spatial realization is still missing. The multi-Rees support has
+eight coordinate components, and one must select the positive
+\(x_1=x_3=x_5=0\) component by an extraordinary-support construction while
+retaining all three \([t_i]\) lines. That construction must identify its
+pair strata with the whole Cartier galleries and its triple stratum with
+the actual \(F_0\) packet. The first exact test is
+
+\[
+-[n_{03}]
+\longmapsto
+[t_3](-\tau_{q_0}+\tau_{q_2}).
+\]
+
+The two terms must be induced by the adjacent-road generizations, not by
+copying a column of \(1-r\). Only then can the mixed block \(H_\Sigma\),
+Yoneda cone roof, residual parity, and physical-Cut naturality be tested.

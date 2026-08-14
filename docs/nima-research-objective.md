@@ -1042,7 +1042,7 @@ boundary of three distinct source exits. Only after \(\alpha_+\) is built
 should the negative sheet, full \(K_{\rm alt}\), and physical-cut
 Beck--Chevalley square be tested.
 
-## Marked-exit and multi-Rees correction after entries 113--114
+## Boundary-triad and multi-Rees correction after entries 113--115
 
 The marked-exit calculation changes the target of the source comparison.
 The generic class
@@ -1072,36 +1072,76 @@ q_i-1=t_i x_i,
 \]
 
 and retains every \([t_i]\) conormal and Cartier
-\(\operatorname{Tor}_1\) line. This constructs only the regular diagonal.
-It does not construct the required Tate off-diagonal.
+\(\operatorname{Tor}_1\) line. The filtered Cartier Bockstein is nonzero:
 
-The next formula objective is therefore
+\[
+\operatorname{gr}_{t_i}^1\beta_{x_i}^{\vee}
+=[t_i]\epsilon_i,
+\qquad
+b^\vee=\sum_i[t_i]\epsilon_i\wedge(-),
+\qquad
+(b^\vee)^2=0.
+\]
+
+Independently, the actual boundary triad
+
+\[
+(K_6;B_{\rm short},F_{14}\sqcup F_{03}\sqcup F_{25})
+\]
+
+derives, rather than merely classifies, the integral Poincare--Lefschetz
+carrier
+
+\[
+\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow\epsilon\mathbb Z.
+\]
+
+Consequently
+
+\[
+\omega_{\rm car}
+=\rho_{\rm PL}^{\rm car}(e_F)-\beta_\triangle=0
+\]
+
+in the carrier \(\mathbb Z/3\) obstruction group. The remaining carrier
+coherence is a \(\mathbb Z/2\) torsor.
+
+The direct map \(\lambda_{\rm ex}\) is therefore not primitive data. The
+next formula objective is the loaded realization of the canonical
+bicomplex
 
 \[
 \boxed{
-\lambda_{\rm ex}:
-P_{\rm Cart,H_0}\dashrightarrow
-P_{\rm Cart,\operatorname{Tor}_1},
-\qquad
-\operatorname{gr}_{\rm car}\lambda_{\rm ex}=1-r,
+\mathcal T_+^{\rm mR}
+=\operatorname{Tot}\!\left(
+[\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow\epsilon\mathbb Z]
+\otimes\Lambda^\bullet N_{\rm Cart}^{\vee}
+\right),
+\quad
+d=d_{\rm PL}+(-1)^p b^\vee.
 }
 \]
 
-as a marked spatial multi-Rees extraordinary pull--push compatible with the
-actual support filtration, entry-100 excess maps, and the Yoneda cone roof.
-Its first obstruction is
+Construct a positive relative-support multi-DNC/exit correspondence that
+identifies this object with the actual occurrence-resolved PC costalks. Its
+first discriminating column is
 
 \[
-\omega=\rho(e_F)-\beta_\triangle
-\in
-\operatorname{Ext}^2_{\mathbb Z[D_3]}
-(\mathbb Z,\mathbb Z_{\rm or})
-\simeq\mathbb Z/3.
+\boxed{
+-[n_{03}]
+\longmapsto
+[t_3](-\tau_{q_0}+\tau_{q_2}),
+}
 \]
 
-Only if \(\omega=0\) should the residual \(\mathbb Z/2\) parity coherence,
-negative sheet, and physical-Cut square be tested. Do not cancel
-\(q_\Sigma\), use a common Rees parameter, insert \(1-r\) into the split
-local packets, identify the two integral \(A_2\) lattices, or divide by
-three. Each of those operations erases precisely the extension data being
-sought.
+with both road terms derived from adjacent generizations. It must also
+retain the reciprocal/Borel--Moore variance, entry-100 excess trace,
+physical normal, mixed block \(H_\Sigma\), and Yoneda cone roof.
+
+Do not cancel \(q_\Sigma\), use a common Rees parameter, insert a bare
+\(1-r\) into split local packets, discard the \([t_i]\) conormals, identify
+the two integral \(A_2\) lattices, or divide by three. Test the residual
+\(\mathbb Z/2\) parity, negative sheet, and physical-Cut square only after
+the loaded extraordinary-costalk correspondence exists.
