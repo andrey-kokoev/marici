@@ -1,0 +1,289 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2961214e-e68a-4de1-9ec7-1b9228a63a5b",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "site_local_research_ledger",
+    "source": "src/ledger/20260813-81 Koszul Determinant, Not Rank-One Excess.md",
+    "scope": "append-only correction of entries 78-80 after exact Tor-typing certificate"
+  },
+  "idempotency_key": "nima-entry81-koszul-determinant-correction-v1",
+  "expected_ledger_head": "7178e06a0e448d5304e5743642781739294ec5ba4b425554170d915c21c3bc16",
+  "created_at": "2026-08-14T04:34:15.6601647Z",
+  "content_fingerprint": "7f95b69c4eb57bc725876e1fe1fb25de0f4a22fb0e918c9ac0cad6ae11a52e05",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260813-81",
+      "local_ref": "source81",
+      "kind": "source",
+      "title": "Koszul Determinant, Not Rank-One Excess",
+      "version": "2026-08-13-entry81-v1",
+      "locator": "src/ledger/20260813-81 Koszul Determinant, Not Rank-One Excess.md",
+      "summary": "Exact Tor-typing audit of the regional bridge and append-only replacement of the rank-one excess conjecture."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-overlap-bridge-is-rank-two-koszul-determinant",
+      "local_ref": "determinant_claim",
+      "kind": "claim",
+      "title": "Each regional overlap bridge is the primitive top determinant of a rank-two endpoint Koszul complex.",
+      "status": "proved",
+      "assumptions": [
+        "The fixed outer monomial C_e is localized.",
+        "The adjacent support overlap is p=(x,y) as proved in ledger entry 79."
+      ],
+      "evidence_refs": [
+        "research/nima/check_bridge_tor_typing.rs",
+        "src/ledger/20260813-81 Koszul Determinant, Not Rank-One Excess.md"
+      ],
+      "factorization_test": {
+        "local_resolution": "0 -> A -> A^2 -> (x,y) -> 0",
+        "self_intersection_tor_ranks": [
+          1,
+          2,
+          1
+        ]
+      },
+      "counterevidence": [],
+      "next_experiment": "Construct the corresponding loaded endpoint interval in the facewise Pochhammer/Cousin category."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-documented-scalar-t-square-is-tor-independent",
+      "local_ref": "transverse_claim",
+      "kind": "claim",
+      "title": "The documented scalar t-shift divisor and regional (x,y) incidence are Tor-independent and have excess rank zero.",
+      "status": "proved",
+      "assumptions": [
+        "The only documented scalar normal base is B=A[t].",
+        "The regional incidence ideal is (x,y)."
+      ],
+      "evidence_refs": [
+        "research/nima/check_bridge_tor_typing.rs",
+        "ledger entries 20, 21, and 81"
+      ],
+      "factorization_test": {
+        "regular_sequence": [
+          "t",
+          "x",
+          "y"
+        ],
+        "positive_tor_ranks": [
+          0,
+          0,
+          0
+        ],
+        "excess_rank": 0
+      },
+      "counterevidence": [],
+      "next_experiment": "Define any proposed alternative multi-normal scalar square explicitly before computing its cotangent complex."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-rank-one-tor1-excess-mistyping",
+      "local_ref": "mistyping_criticism",
+      "kind": "criticism",
+      "title": "The regional bridge cannot be called a rank-one Tor_1 excess-conormal class under the documented scalar typing.",
+      "summary": "For self-intersection Tor_1 has rank two and the rank-one class is Tor_2; for the documented t-square all positive Tor vanishes."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "local_ref": "successor_conjecture",
+      "kind": "conjecture",
+      "title": "A support-filtered loaded endpoint-determinant kernel realizes the four overlap bridges and the physical double-Gysin correspondence.",
+      "status": "conditional",
+      "assumptions": [
+        "Scalar X-coefficient resolutions remain separate from Pochhammer normal loading.",
+        "The two endpoint monodromies are retained in one Koszul interval.",
+        "Both collapsed H_s cones and all lower-face terms are included."
+      ],
+      "evidence_refs": [
+        "ledger entries 38, 79, 80, and 81"
+      ],
+      "factorization_test": {
+        "required": [
+          "five-term loaded pentagon identity",
+          "both ordered double residues",
+          "four-chart holonomy one"
+        ]
+      },
+      "counterevidence": [
+        "A nontrivial loaded holonomy or failure of the physical double-Gysin comparison falsifies the conjecture."
+      ],
+      "next_experiment": "Build one representative loaded route-pentagon kernel and compare it with physical double Gysin before rotating through the deck orbit."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-loaded-endpoint-kernel-double-gysin",
+      "local_ref": "successor_problem",
+      "kind": "problem",
+      "title": "Construct the loaded two-endpoint determinant kernel and compare its integral transform with physical double Gysin.",
+      "summary": "The problem replaces the mistyped excess-line Thom/Gysin objective while retaining the dependent-pentagon and finite-holonomy falsifiers."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-loaded-endpoint-determinant-pentagon-holonomy",
+      "local_ref": "successor_test",
+      "kind": "test",
+      "title": "Test the loaded endpoint determinant on one route pentagon, both residue orders, and the four-chart holonomy.",
+      "expected": "The full five-term Cousin boundary closes, ordered residues agree with physical double Gysin up to the Koszul sign, and holonomy is one."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "determinant_claim",
+      "target_ref": "source81",
+      "source_id": "claim:qtds-overlap-bridge-is-rank-two-koszul-determinant",
+      "target_id": "source:marici-ledger-20260813-81",
+      "relation_id": "rel:derived_from-ff477681d1f6106a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "transverse_claim",
+      "target_ref": "source81",
+      "source_id": "claim:qtds-documented-scalar-t-square-is-tor-independent",
+      "target_id": "source:marici-ledger-20260813-81",
+      "relation_id": "rel:derived_from-bcefea67c6966a71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "mistyping_criticism",
+      "target_ref": "source81",
+      "source_id": "criticism:qtds-rank-one-tor1-excess-mistyping",
+      "target_id": "source:marici-ledger-20260813-81",
+      "relation_id": "rel:derived_from-84a781d8cccdb0c4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "mistyping_criticism",
+      "target_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "source_id": "criticism:qtds-rank-one-tor1-excess-mistyping",
+      "relation_id": "rel:criticizes-70ea6061ac417157"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "mistyping_criticism",
+      "target_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "source_id": "criticism:qtds-rank-one-tor1-excess-mistyping",
+      "relation_id": "rel:criticizes-4013e79516f8f831"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "successor_conjecture",
+      "target_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "source_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "relation_id": "rel:supersedes-22670759f4beee8f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "successor_conjecture",
+      "target_ref": "determinant_claim",
+      "source_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "target_id": "claim:qtds-overlap-bridge-is-rank-two-koszul-determinant",
+      "relation_id": "rel:depends_on-ecbd4d69d468c9ef"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "successor_conjecture",
+      "target_ref": "transverse_claim",
+      "source_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "target_id": "claim:qtds-documented-scalar-t-square-is-tor-independent",
+      "relation_id": "rel:depends_on-043253e404240f2b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "successor_conjecture",
+      "target_ref": "successor_problem",
+      "source_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "target_id": "problem:qtds-loaded-endpoint-kernel-double-gysin",
+      "relation_id": "rel:addresses-51a84d34ccfedcde"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "successor_problem",
+      "target_id": "problem:qtds-mixed-beck-chevalley-square",
+      "source_id": "problem:qtds-loaded-endpoint-kernel-double-gysin",
+      "relation_id": "rel:depends_on-757a9bc01d4c4ebf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "successor_test",
+      "target_ref": "successor_conjecture",
+      "source_id": "test:qtds-loaded-endpoint-determinant-pentagon-holonomy",
+      "target_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "relation_id": "rel:tests-032d6b608d53f99e"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-overlap-excess-typing-falsified-entry81",
+      "subject_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "judgment": "falsified_under_documented_scalar_typings",
+      "actor": "marici.Nima",
+      "reason": "The local rank-one bridge is Tor_2 determinant data, not rank-one Tor_1, and the only documented scalar t-square has zero excess.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-81",
+          "locator": "sections Local overlap algebra; The quotient Koszul complex fixes the Tor degree; The documented scalar normal direction has zero excess",
+          "paraphrase": "The ideal resolution has one primitive syzygy, self-intersection Tor ranks are (1,2,1), and the documented (t) versus (x,y) square has no positive Tor."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-loaded-excess-line-falsified-entry81",
+      "subject_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "judgment": "falsified_under_documented_scalar_typings",
+      "actor": "marici.Nima",
+      "reason": "No established scalar square supplies a rank-one excess line, and the finite relation contains two endpoint monodromies in a rank-two determinant complex.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-81",
+          "locator": "section Correct finite-monodromy typing",
+          "paraphrase": "The finite relation is one interval differential with two endpoint q-1 factors, not a single excess Thom factor."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-overlap-conormal-test-entry81",
+      "test_id": "test:qtds-overlap-bridge-conormal-complex",
+      "actor": "marici.Nima",
+      "outcome": "failed_as_rank_one_Tor1_excess; passed_as_rank_two_Koszul_determinant",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-81",
+          "locator": "research/nima/check_bridge_tor_typing.rs sha256 f3500abeebad67d1d3ff467ccf712a7e3686d032cb8186fe03eaefcab1e5c6fb",
+          "paraphrase": "Exact polynomial checks certify the ideal syzygy, Tor ranks (1,2,1), determinant sign, and vanishing positive Tor for the documented scalar t-square."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-loaded-excess-test-premise-fails-entry81",
+      "test_id": "test:qtds-loaded-excess-line-pentagon-holonomy",
+      "actor": "marici.Nima",
+      "outcome": "premise_falsified_before_loaded_current_stage",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-81",
+          "locator": "sections The documented scalar normal direction has zero excess; Next formula objective",
+          "paraphrase": "The proposed excess line is absent; the pentagon and holonomy test must be reformulated for a loaded endpoint-determinant kernel."
+        }
+      ]
+    }
+  ],
+  "digest": "0fc9a0e5393c7d33fe87f8406b7656e71ef93b84766405d3e4cae5a31c671876"
+}

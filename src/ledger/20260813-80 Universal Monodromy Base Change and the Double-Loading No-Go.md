@@ -15,6 +15,13 @@ entry 38, the \(X_{ra}\) remain scalar occurrence coefficients while
 \(q_E-1\) belongs to a separate normal Koszul factor.  Applying both
 constructions to the same boundary direction would count its loading twice.
 
+Forward correction: entry 81 falsifies the proposed completion by a rank-one
+\(\operatorname{Tor}_1\) excess line.  The only documented scalar
+specialization square is Tor-independent and has excess rank zero.  Locally,
+the bridge is the determinant generator of a rank-two endpoint Koszul complex.
+The formal base-change theorem and the double-loading no-go below remain
+valid; the geometric frontier stated near the end of this entry is superseded.
+
 ## Epistemic-graph relation
 
 Entry 78 was admitted as the conjecture that the four overlap bridges are
@@ -30,6 +37,13 @@ next falsification test were subsequently admitted atomically as:
 That second event records the algebraic and formal-monodromy statements as
 claims, while retaining the geometric excess-line realization as a
 conjecture.  Its review gate explicitly records `certifies_truth: false`.
+
+Entry 81 executes the promised cotangent/Tor falsification test.  Its
+append-only graph event marks both excess-line conjectures false under every
+currently documented scalar typing and introduces the endpoint-determinant
+kernel as their successor.
+
+    ev-000000000019-9621a241-2d01-41ad-ac62-531728a19d74
 
 Entry 79 proves the algebraic rank, primitive
 \((X_{11},-X_{10})\) boundary, and saturated support-cycle gluing.  The
@@ -229,34 +243,50 @@ group-ring construction cannot be promoted by notation to
 
 The arrow in this formula remains the missing theorem.
 
-## Why algebraic rank one is not yet geometric excess
+## Why algebraic rank one is not geometric excess
 
-The primitive syzygy proves that the support-selected algebraic overlap has
-one relation.  It does not prove that an actual derived fiber product of
-scalar specialization strata has a locally free rank-one excess cotangent
-complex.
+Entry 81 supplies the exact calculation that was missing here.  After
+localizing the fixed outer monomial, the overlap ideal is
 
-To make the excess-intersection interpretation literal one needs:
+\[
+\mathfrak p=(x,y).
+\]
 
-1. a scalar parameter or incidence space on which both the rank-jump
-   specialization and the two physical cuts are defined;
-2. the multi-normal deformation square comparing
-   \(\operatorname{Cut}_{D,E}\operatorname{Sp}_R\) with
-   \(\operatorname{Sp}_{R|D,E}\operatorname{Cut}_{D,E}\);
-3. its relative cotangent triangle;
-4. a proof that the excess term is a line on every support-adjacent overlap;
-5. the corresponding monodromic Thom/Gysin class in the facewise
-   Pochhammer/Cousin category;
-6. compatibility of those four classes on the belt, both caps, and the cube.
+Its syzygy module is rank one, but the self-intersection groups are
 
-Only then may the boundary
+\[
+\operatorname{Tor}_i^A(A/\mathfrak p,A/\mathfrak p)
+\cong
+\bigwedge^i(\mathfrak p/\mathfrak p^2),
+\qquad
+(\operatorname{rank}\operatorname{Tor}_0,
+  \operatorname{rank}\operatorname{Tor}_1,
+  \operatorname{rank}\operatorname{Tor}_2)
+=(1,2,1).
+\]
+
+The bridge is the rank-one top determinant in degree two, not a rank-one
+\(\operatorname{Tor}_1\) class.  Moreover the only documented scalar normal
+base is \(B=A[t]\).  The ideals \((t)\) and \((x,y)\) form a regular sequence,
+so
+
+\[
+\operatorname{Tor}_{i>0}^{B}(B/(t),B/(x,y))=0.
+\]
+
+That square has excess rank zero.  A different multi-normal square could be
+defined, but it would be new data rather than a consequence of the existing
+scalar shift.
+
+Accordingly,
 
 \[
 (q_{11}-1)e_{v^1}-(q_{10}-1)e_{v^0}
 \]
 
-be interpreted as the unique normal factor of a physical excess line rather
-than as a formal coefficient substitution.
+is correctly read as one interval differential with two endpoint
+monodromies—the determinant relation in a rank-two Koszul complex.  It is not
+the single normal factor of an established excess line.
 
 ## Finite holonomy remains a real falsifier
 
@@ -300,7 +330,7 @@ Established:
 Not established:
 
 1. the actual scalar multi-normal deformation or specialization square;
-2. a locally free rank-one geometric excess conormal complex;
+2. any alternative derived scalar incidence square with nonzero excess;
 3. a Pochhammer/Cousin Thom or Gysin transition between the disjoint route
    faces and regional belt;
 4. tangential loading of the two scalar edges;
@@ -321,40 +351,20 @@ Also reject:
 > The rank-one algebraic overlap syzygy by itself proves a rank-one geometric
 > excess normal line.
 
+Entry 81 strengthens this rejection: the documented scalar square has zero
+excess, while the local rank-one object is the degree-two determinant of a
+rank-two conormal module.
+
 ## Next formula objective
 
-Construct the actual multi-normal square and its relative cotangent complex:
-
-\[
-\begin{CD}
-Z_{Q,R} @>>> Z_R\\
-@VVV       @VVV\\
-Z_Q @>>> Z,
-\end{CD}
-\qquad
-\mathcal E_e
-=
-H^{-1}\mathbb L_{Z_{Q,R}/(Z_Q\times_Z Z_R)}.
-\]
-
-Test
-
-\[
-\operatorname{rank}\mathcal E_e=1
-\]
-
-and construct its single monodromic Thom factor so that
-
-\[
-\operatorname{gr}_V\operatorname{Th}_{\alpha'}(\mathcal E_e)
-\simeq
-K_e^{\rm w}.
-\]
-
-For one representative route pentagon, include its tangential loading and all
-lower-face terms, verify the five-term Cousin identity, and compute the full
-four-transition holonomy.  Rotate the resulting class through the eight deck
-images only after this representative passes.
+Construct the loaded endpoint-determinant correspondence kernel proposed in
+entry 81.  Keep the scalar coefficient resolution and the Pochhammer normal
+complex as distinct factors, and prove that the induced integral transform
+agrees with physical double-Gysin sewing.  For one representative route
+pentagon, include both endpoint monodromies, its tangential loading, both
+\(H_s\) lower cones, and all lower-face terms; then verify the five-term
+Cousin identity and compute the full four-transition holonomy.  Rotate the
+class through the eight deck images only after this representative passes.
 
 ## Reproducible certificate
 
@@ -378,13 +388,15 @@ Promote:
 
 Retain as the immediate frontier:
 
-> Realize one and only one \(q-1\) normal factor as the Thom/Gysin class of a
-> rank-one excess line in an actual scalar multi-normal specialization square,
-> and test its dependent pentagon identity and finite holonomy.
+> Realize the two-endpoint Koszul determinant as a correctly typed loaded
+> correspondence kernel, compare it with physical double Gysin, and test its
+> dependent pentagon identity and finite holonomy.
 
 ## Internal dependencies
 
 - Entry 38: physical separation of scalar coefficients and normal loading.
 - Entries 76--79: regional cube, primitive half-line, carrier kernel, and
   resolved overlap theorem.
+- Entry 81: exact Tor typing, falsification of rank-one excess, and the
+  endpoint-determinant replacement.
 - research/nima/check_finite_loaded_relation.rs.

@@ -22,6 +22,11 @@ entry-79 relation algebra survives the formal substitution
 missing attachment: the present entry retains \(X_{ra}\) as scalar
 occurrence coefficients and puts \(q_E-1\) in a separate normal Koszul
 factor, so tensoring both loadings would double count the boundary direction.
+Entry 81 further proves that the proposed rank-one excess completion is
+mistyped: the documented scalar \(t\)-square has zero excess, and the local
+bridge is the determinant of a rank-two endpoint Koszul complex.  The missing
+attachment must therefore be constructed as a loaded correspondence kernel,
+not inferred from an existing excess-normal line.
 
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted

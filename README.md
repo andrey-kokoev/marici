@@ -97,10 +97,13 @@ The ledger currently keeps three frontiers separate:
   without division by two or eight. The complete relation algebra also has an
   exact universal \(X\mapsto q-1\) monodromy base change. This is not yet the
   finite-loaded scalar realization: the physical construction retains the
-  \(X\)-carrier and tensors one separate \(q-1\) normal Koszul factor, so the
-  formal substitution cannot be added without double loading. The remaining
-  eight-point datum is the actual rank-one excess Thom/Gysin transition, its
-  dependent pentagon identity, and its finite four-chart holonomy. A
+  \(X\)-carrier and tensors a separate Pochhammer normal complex, so the
+  formal substitution cannot be added without double loading. The proposed
+  rank-one excess completion is now exactly falsified: the documented scalar
+  \(t\)-square is Tor-independent, while each bridge is the top determinant
+  of a rank-two endpoint Koszul complex. The remaining eight-point datum is a
+  loaded endpoint-determinant correspondence kernel, its dependent pentagon
+  identity, and its finite four-chart holonomy. A
   BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
@@ -221,6 +224,8 @@ rustc --edition=2021 -D warnings -O research/nima/check_resolved_overlap_hyperce
 & "$env:TEMP\marici-resolved-overlap-hypercech.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_finite_loaded_relation.rs -o "$env:TEMP\marici-finite-loaded-relation.exe"
 & "$env:TEMP\marici-finite-loaded-relation.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_bridge_tor_typing.rs -o "$env:TEMP\marici-bridge-tor-typing.exe"
+& "$env:TEMP\marici-bridge-tor-typing.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -460,6 +465,10 @@ prohibited overclaims.
   the four bridges become \(d h=(q_{11}-1)e_1-(q_{10}-1)e_0\), the formal
   pentagon identities and deck/Koszul signs close, and formal cycle holonomy is one. It also proves
   the decisive typing warning: this substitution is not the physical Pochhammer/Cousin lift,
-  because entry 38 keeps scalar \(X\)-coefficients separate from its single normal \(q-1\) Koszul
-  factor. The next test is the actual excess-conormal Thom/Gysin transition and its finite
-  holonomy.
+  because entry 38 keeps scalar \(X\)-coefficients separate from the normal Pochhammer complex.
+- `20260813-81` falsifies the proposed rank-one excess interpretation. For the overlap
+  \(\mathfrak p=(x,y)\), self-intersection Tor has ranks \((1,2,1)\): the bridge is the
+  rank-one \(\operatorname{Tor}_2\) determinant, while \(\operatorname{Tor}_1\) has rank two.
+  The only documented scalar square, \((t)\) versus \((x,y)\), is Tor-independent and has
+  excess rank zero. The next test is a loaded two-endpoint determinant kernel compared directly
+  with physical double Gysin, including its five-term pentagon identity and finite holonomy.

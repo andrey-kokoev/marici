@@ -11,6 +11,9 @@ resolutions of the adjacent overlap ideals and the residual relation complex
 of the actual polygon-to-belt map.  Entry 80 proves their universal formal
 monodromy base change and shows that this does not by itself supply their
 finite-\(\alpha'\) scalar-geometric realization, which remains conditional.
+Entry 81 fixes their homological type: each bridge is the top determinant of
+a rank-two endpoint Koszul complex, not a rank-one
+\(\operatorname{Tor}_1\) excess class.
 
 The result has two independent parts:
 
@@ -32,8 +35,12 @@ the four overlap bridges are rank-one excess-intersection classes:
 The present result partially resolves that node.  Rank one, the primitive
 \((X_{11},-X_{10})\) weights, saturated cycle gluing, and occurrence in the
 actual carrier kernel are now proved algebraically.  Scalar/Cousin provenance
-at finite loading remains conjectural.  The graph should therefore retain the
-original admission and attach two children:
+at finite loading remains conjectural.  Here "rank one" means the unique
+syzygy module.  Entry 81 proves that \(\operatorname{Tor}_1\) has rank two,
+that the rank-one class is the degree-two determinant, and that the documented
+scalar \(t\)-square has zero excess.  The graph should therefore retain the
+original admission and its later falsifying successor rather than identify
+the algebraic bridge with an excess line.  The original split was:
 
 1. an evidence-backed algebraic theorem;
 2. a narrowed geometric-provenance conjecture.
@@ -453,8 +460,9 @@ Not established:
    whose associated grade is the certified polynomial kernel; entry 80 proves
    the formal \(X\mapsto q-1\) base change but also proves that it cannot be
    substituted for this geometric comparison without double loading;
-2. a deformation-to-the-normal-cone or specialization theorem deriving the
-   physical support selection itself;
+2. a correctly typed endpoint-determinant kernel implementing the physical
+   double-Gysin comparison; entry 81 falsifies the previously proposed
+   rank-one excess-line typing;
 3. the five-term loaded pentagon naturality identity;
 4. assembly of all quadrangulation charts and computation of the residual
    octagon/Jordan holonomy;
@@ -543,4 +551,6 @@ Retain as the immediate frontier:
 - Entry 76: actual regional cube, caps, and lcm resolution.
 - Entry 77: primitive boundary half-line.
 - Entry 78: unfiltered comparison and four-bridge support obstruction.
+- Entries 80--81: formal monodromy base change, double-loading no-go, and
+  exact replacement of rank-one excess by the rank-two Koszul determinant.
 - research/nima/check_resolved_overlap_hypercech.rs.
