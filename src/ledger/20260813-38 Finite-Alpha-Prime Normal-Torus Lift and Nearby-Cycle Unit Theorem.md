@@ -12,9 +12,11 @@ occurrence-decorated comparison is already a chain map on the complete scalar
 envelope was too strong: eight-point dependent pentagons require a
 scalar-facet coefficient specialization which is not supplied by this entry.
 Entries 74--75 construct its formal localized Cousin counit, weighted target,
-and unique normalized local derived class. What is still missing is the
-occurrence-decorated source cap/cube extension making those local equations a
-single natural transformation on the complete envelope.
+and unique normalized local derived class. Entry 76 identifies the weighted
+target, both caps, and the cube with actual scalar associahedral faces and
+closes their polynomial cellular extension. What is still missing is the
+loaded derived Beck--Chevalley attachment from the disjoint dependent route
+faces to the four-facet regional belt.
 
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted

@@ -2624,8 +2624,9 @@ after localization, with no torsion; polynomially both nonzero groups are
 \(I_Q\). The chart-gluing kernel is saturated rank one. Ordered normal
 orientation fixes its sign and the weighted vertex anchors fix its unit, so
 the degree-zero route class is uniquely normalized. The surviving degree-one
-class is the belt circle: it records the missing decorated cap extension, not
-a second map or a nonzero curvature.
+class is the belt circle. Entry 76 shows that actual scalar caps kill it, so
+it records the missing dependent route attachment rather than a second map,
+nonzero curvature, or absence of scalar cap cells.
 
 The exchanged labels \(15,37\) form the polynomial endpoint ideal
 \((X_{15},X_{37})\), becoming split rank one only after localization. Their
@@ -2658,8 +2659,58 @@ one derived Laurent class, and the QTDS numerator is their polarization.
 Internal physical-side terms still belong to adjacent core strata, so this
 does not yet prove horizontal Jordan coherence.
 
-The next exact test is to construct one occurrence-decorated source cap map,
-show that it kills the belt \(H^1\) without inverting two, then construct the
-second cap and cube and verify differential, ordered double residue, and deck
-naturality. Only after this vertical extension closes should the eight route
-kernels be assembled horizontally and compared with the Jordan defect.
+### Actual scalar caps and the dependent Beck--Chevalley gap
+
+The cap audit changes the diagnosis. For \(Q=\{03,05\}\), the exact-core
+scalar face is the actual associahedral cube
+
+\[
+K_Q=K_4^3,
+\qquad
+(02,13)\times(04,35)\times(06,57).
+\]
+
+Its missing side-belt caps are the literal faces \(Q+04\) and \(Q+35\), and
+\(K_Q\) is their unique scalar three-parent. Labeling a vertex \(v\) by the
+opposite monomial
+
+\[
+m_v=\prod_r X_{r,1-v_r}
+\]
+
+and every face by the lcm of its vertex labels turns the actual cube into the
+minimal polynomial cellular resolution of
+
+\[
+I_Q=\prod_r(X_{r0},X_{r1}).
+\]
+
+The map \(\chi_Q([F])=m_F\mathbb P(F)\) telescopes with the facewise
+Pochhammer/Cousin differential. The first cap kills the primitive belt
+\(H^1\) integrally, the second makes the sphere, and the scalar cube fills it;
+the relative coefficients are uniquely \(1,1,1\). No division by two or
+Laurent localization is needed.
+
+The remaining gap is not a cap. The dependent route pentagon
+\(P=\{13,35,57\}\) and companion square \(S=\{02,04,06\}\) are disjoint scalar
+faces with no common three-parent; each meets \(K_Q\) at only one opposite
+vertex, although physical double Gysin sends their marked charts to four
+entire belt facets. Their cross-chart overlaps are coefficient intersections,
+not source-face intersections. The endpoint cone on \(15,37\) maps to zero
+and is distinct from the regional \(04,35\) cap direction.
+
+The next exact object is therefore a loaded derived Beck--Chevalley
+attachment
+
+\[
+\beta_Q^{\alpha'}
+\in
+\operatorname{RHom}
+(\mathcal C_Q^{\rm route},B_Q^{\rm w}[-2]),
+\]
+
+compatible with the regional PC map, the four occurrence anchors,
+\(H_s\mapsto0\), ordered residues, and deck rotation. Once this belt
+attachment exists, the actual caps and cube extend it automatically. Only
+then should the eight route kernels be assembled horizontally and compared
+with the Jordan defect.
