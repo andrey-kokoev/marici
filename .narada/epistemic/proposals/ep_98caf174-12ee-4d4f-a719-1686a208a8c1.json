@@ -1,0 +1,128 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_98caf174-12ee-4d4f-a719-1686a208a8c1",
+  "status": "submitted",
+  "actor": "codex",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Second bounded Marici ledger capture and ergonomics pass using only the public MCP contract."
+  },
+  "idempotency_key": "marici-ledger-04-06-capture-v1",
+  "expected_ledger_head": "537c0e91d78016a5702e48ba29009ef4ef42b6fe669d732eb16981f4d8c58eba",
+  "created_at": "2026-08-14T00:18:31.5904873Z",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-04",
+      "kind": "source",
+      "title": "Primitive Half-Object Pairing Web",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-04 Primitive Half-Object Pairing Web.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-05",
+      "kind": "source",
+      "title": "J Half-Object Falsification Protocol",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-05 J Half-Object Falsification Protocol.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-06",
+      "kind": "source",
+      "title": "Research Sequence and Session Interfaces",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-06 Research Sequence and Session Interfaces.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:three-generator-pairing-web",
+      "kind": "conjecture",
+      "title": "Three intrinsic half-objects C, G, and J arise from common scalar provenance and close a symmetric pairing web through one scalar-derived kernel."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "kind": "conjecture",
+      "title": "J is an intrinsic, basis-independent, factorization-natural half-object with CHY class [(Pf' A)^2]."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:j-half-object-falsification-protocol",
+      "kind": "test",
+      "title": "Staged falsification protocol for the intrinsic J half-object from typing through surface lift."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:jordan-qtds-half-class-strictification",
+      "kind": "problem",
+      "title": "Can Jordan/QTDS strictification be constructed intrinsically on the J half-class, or is it obstructed?"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:pairing-web-derived-ledger-04",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:three-generator-pairing-web",
+      "target_id": "source:marici-ledger-20260812-04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:j-half-object-derived-ledger-04",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "target_id": "source:marici-ledger-20260812-04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:j-protocol-tests-j-half-object",
+      "relation_type": "tests",
+      "source_id": "test:j-half-object-falsification-protocol",
+      "target_id": "conjecture:j-intrinsic-factorization-natural-half-object"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:j-protocol-derived-ledger-05",
+      "relation_type": "derived_from",
+      "source_id": "test:j-half-object-falsification-protocol",
+      "target_id": "source:marici-ledger-20260812-05"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:qtds-problem-derived-ledger-05",
+      "relation_type": "derived_from",
+      "source_id": "problem:jordan-qtds-half-class-strictification",
+      "target_id": "source:marici-ledger-20260812-05"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:j-half-object-addresses-derived-sector",
+      "relation_type": "addresses",
+      "source_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "target_id": "conjecture:derived-normal-sector-principle"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:j-protocol-current-verdict-20260812",
+      "subject_id": "test:j-half-object-falsification-protocol",
+      "judgment": "conditional",
+      "actor": "marici-ledger",
+      "reason": "Stages 0–2 pass at all multiplicities with low-point audits through eight points; Stage 3 passes in genus-zero CHY/twisted cohomology on the stated quotient; Stage 4 passes in the CHY category; the stronger surface comparison and both Stage 5 questions remain open.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260812-05",
+          "locator": "Current status and Next action",
+          "paraphrase": "The entry records passes through the CHY-category gates while retaining surface comparison and Jordan/QTDS half-class strictification as open."
+        }
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:research-sequence-derived-ledger-06",
+      "relation_type": "derived_from",
+      "source_id": "problem:jordan-qtds-half-class-strictification",
+      "target_id": "source:marici-ledger-20260812-06"
+    }
+  ],
+  "digest": "9398702ad0aacaac4cfc8984f348c2c322ec752eb25a4c91c9ac488cf43c70de"
+}
