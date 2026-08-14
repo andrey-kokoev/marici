@@ -712,3 +712,70 @@ mixed excess vector \(\eta_{3,\rm mix}\), the simple-pole four-normal residue,
 unit endpoints, and the separate positive physical normal line without
 fitting. If it passes, rotate it by \(D_3\) and assemble
 \(\operatorname{Cone}(\alpha_+-\delta^F)[-1]\).
+
+## 15. Absolute support, local purity, and the central-flip obstruction
+
+Entry 105 constructs the absolute object hypothesized in Section 14. Its
+generators are \([S,H]\), where \(S\) is a scalar face and \(H\subseteq S\)
+records oriented normal circles. Over independent polynomial occurrence
+coefficients \(X_D\) and universal monodromy parameters \(u_D=q_D-1\),
+
+\[
+d[S,H]
+=\sum_{a\ {m addable}}\epsilon(S,a)X_a[S\cup a,H]
++(-1)^{3-|S|}
+\sum_{h\in H}(-1)^{\operatorname{pos}_H(h)}u_h[S,H\setminus h].
+\]
+
+The 215 generators have degree ranks \((14,63,93,45)\), the two summands
+anticommute, and the actual supports form strict \(D_3\)-stable subcomplexes
+
+\[
+F_0\subset F_1\subset F_2,
+\qquad
+\operatorname{rk}(F_0,F_1,F_2)=(8,208,215).
+\]
+
+No global Cech totalization is needed for this absolute differential. The
+localization terms remain local realizations of its supported normal packet.
+
+The positive costalk is exactly \(F_0=K(u_1,u_3,u_5)\). At fixed nonzero
+\(\beta\) in characteristic-zero Koba--Nielsen completion, the three-normal
+Verdier pairing, codimension-three Thom shift, and terminal degree-two
+normalization--Cech placement force
+
+\[
+\mathcal S_{+,\rm loc}^{\rm cond}
+=K(I_+^\vee)[-5]
+\simeq\mathbb D(F_0)[-2].
+\]
+
+This is one Kummer packet, not entry 99's exact augmented carrier tensored
+with another packet. The doubled model is acyclic, whereas
+\(H_0(F_0)=R/(u_1,u_3,u_5)\ne0\).
+
+The absolute complex also gives the decisive negative control. The literal
+\(D03\) road boundary factors through a strict subcomplex
+\(G_{03}\subset F_1\) disjoint from \(F_0\), hence
+
+\[
+\operatorname{pb}^{\rm lit}_{03}(e_F)=0.
+\]
+
+Entry 100's local trace instead sends the mixed excess generator to
+
+\[
+[1/(u_0u_1u_3u_5)]\ne0.
+\]
+
+Therefore the missing map is now a marked ringed-support correspondence
+across the non-face central flip
+
+\[
+\{D03,x_1,x_3\}\rightsquigarrow v_+=\{x_1,x_3,x_5\}.
+\]
+
+Its Beck--Chevalley composite must recover the mixed excess residue, unit
+endpoints, and the separate \([dX_{03}]\) line without using those outputs as
+its definition. Constructing this single correspondence is the immediate
+frontier; the full \(G_{03}^{\rm Cousin}\) remains conditional on it.
