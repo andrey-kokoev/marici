@@ -2912,9 +2912,29 @@ facewise Pochhammer/Cousin comparison, the \(X_{ra}\) are scalar occurrence
 coefficients and \(q_E-1\) is the differential of a separate normal Koszul
 factor. Substituting \(q-1\) for \(X\) and then tensoring that normal complex
 would load the same boundary direction twice. Thus the remaining theorem is
-geometric, not another coefficient calculation: construct the multi-normal
-specialization square, prove that its relative cotangent excess is a line,
-and realize its single Thom/Gysin factor as the loaded transition.
+geometric, not another coefficient calculation.
+
+The rank-one excess proposal has now failed its exact typing test. After
+localizing the fixed outer monomial, the middle overlap ideal is
+\(\mathfrak p=(x,y)\). Its interval is the unique first syzygy of
+\(\mathfrak p\), equivalently the top determinant generator of the rank-two
+Koszul resolution of \(A/\mathfrak p\). Self-intersection Tor has ranks
+\((1,2,1)\), so the rank-one class is \(\operatorname{Tor}_2\), not
+\(\operatorname{Tor}_1\). More decisively, the only documented scalar normal
+base is \(A[t]\); the ideals \((t)\) and \((x,y)\) are Tor-independent and
+have excess rank zero.
+
+The finite candidate must therefore retain the complete endpoint relation
+
+\[
+d h=(q_y-1)e_1-(q_x-1)e_0,
+\]
+
+as one determinant interval with two endpoint monodromies. It should enter as
+a bivariant loaded kernel between the route and regional carriers, not as a
+single Thom factor of a presently defined excess line. The new theorem target
+is to construct this kernel in the facewise Pochhammer/Cousin category and
+identify its integral transform with physical double Gysin.
 
 The formal grade also cannot exclude a residual unit holonomy
 
