@@ -336,6 +336,12 @@ rank-eight full-core fiber. A corrected complete comparison must tensor that
 constructible diagram with the face-tube complex; it must not choose an
 edgewise transport.
 
+Entry 73 constructs the resulting formal cellular/coefficient totalization
+and proves its differential squares to zero.  It also shows why this does not
+yet extend the physical theorem: the four support charts are a cubical belt,
+and support admits forty pentagon-to-square cellular lifts.  The physical
+finite-alpha-prime Gysin natural transformation has not selected one of them.
+
 This is the filtered scalar-to-Pochhammer/Cousin comparison on the transverse
 domain. Its extension across dependent associahedral faces is the remaining
 coefficient-lift problem.

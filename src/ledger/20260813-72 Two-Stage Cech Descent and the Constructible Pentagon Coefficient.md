@@ -26,6 +26,12 @@ This proves the coefficient descent which a loaded Pochhammer/Cousin lift
 must realize.  It does not yet construct tangential loading, scalar-facet
 tubes, or the forced lower-face terms of that lift.
 
+Entry 73 adds an essential geometric qualification.  These sequences recover
+the complete rank-eight vertex module, but the four physical charts form only
+the side belt of the fixed-core cube.  They omit two cap squares and the cube
+3-cell.  The coefficient theorem here remains exact; it is not by itself a
+geometric cover or a route-to-cube Gysin chain map.
+
 ## The wrong object and the right object
 
 Entry 71 proves that no intrinsic edge isomorphism
