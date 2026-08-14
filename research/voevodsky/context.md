@@ -1525,3 +1525,72 @@ whose associated grade is the marked interval map, whose endpoint value is
 the separate positive \([dX_{03}]\) line. It must include the excess
 \(\operatorname{Tor}_1\) copy rather than selecting one of the two central
 fibre lines by hand.
+
+## 29. Anti-circular ablation and the localization-zero theorem
+
+Entry 119 performs the derived-Hom test without beginning from the marked
+rank-one interval. Before applying the inherited \(x_3\) mark, the two
+saturated \(F_{03}\) routes give
+
+\[
+H_1(\operatorname{Gal}_{03},\partial;\mathbb Z)\cong\mathbb Z^2
+\]
+
+with a unit maximal boundary minor, hence no torsion or hidden index. The
+complete road square contracts integrally, so the shifted carrier
+correspondence group remains \(\mathbb Z^2\), while ordinary degree-zero Hom
+vanishes. Both routes have lcm \(x_1x_3\); coefficient labels do not reduce
+the rank. The established \(x_3\) sink mark is the primitive saturated
+coordinate inclusion \((0,1):\mathbb Z\to\mathbb Z^2\). This proves that the
+marked carrier line is geometrically selected rather than inferred from the
+desired answer.
+
+Independently, the graph-Cartier packet over \(u_3=t_3x_3\) gives
+
+\[
+d(q_3z)/x_3=t_3\eta_{3,\rm mix},
+\qquad
+\eta_{3,\rm mix}=(-q_3,-1),
+\]
+
+and the weighted middle slab gives
+
+\[
+d[J_3]=x_3(x_1x_5[v_+]-X_{03}[Z_3]).
+\]
+
+Their formal associated-grade bicomplex is square-zero and satisfies the
+coefficient Beck--Chevalley equation before base change. This still does not
+construct a spatial PC map.
+
+The decisive negative result is categorical and algebraic. The entry-97
+road trace lives after localizing \(x_1,x_3,u_3\). On that common base,
+
+\[
+K_0\simeq0,
+\qquad R/(x_3)=0,
+\qquad D_3\simeq0,
+\]
+
+so the loaded endpoint Hom is zero. Reusing entry 97 therefore cannot
+realize the marked line. Conversely, the unlocalized loaded Hom has not yet
+been defined: \(\tau_0\) is only a carrier symbol, and no ringed
+\(q\)-counit or relative-dualizing/Alexander--Whitney trace crosses the
+nontransverse central flip. Its rank must be reported as undefined; keeping
+only the \(\eta\)-Tor line would manufacture rank one by discarding the
+adjacent \(\operatorname{Tor}_0\) grade.
+
+The next object is thus an unlocalized lcm-labelled road-flag PC lattice on
+the actual flags \(F_{03}>Z_i>v_{10}\), followed by an iterated relative
+Thom costalk. Construct a ringed correspondence and trace
+
+\[
+p^*K_0^{\vee,\rm reg}\otimes
+q^!\mathcal Q_{03,\rm flag}^{\rm unloc}
+\longrightarrow
+\omega_{(\operatorname{Gal}_{03},\partial)}.
+\]
+
+It must retain the full \(\operatorname{Tor}_0\oplus\operatorname{Tor}_1\)
+packet and only then localize to the entry-97 trace. Do not rotate to the
+second endpoint until this unlocalized counit is constructed.
