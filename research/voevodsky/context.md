@@ -275,3 +275,58 @@ Executable: `research/voevodsky/check_n8_scalar_cd_site.rs`.
 
 External definition source: V. Voevodsky, *Homotopy theory of simplicial presheaves in
 completely decomposable topologies*, <https://arxiv.org/abs/0805.4578>.
+
+## 8. Weighted hexagon target and the first excess square
+
+Entry 98 removes the need to postulate a three-road relation object. Let
+\(K_6\) be the three-dimensional labelled-hexagon associahedron and let
+\(B_{\rm sc}\) be the union of its six short-diagonal pentagonal facets. The
+occurrence-weighted cellular differential
+
+\[
+d_X[S]=\sum_{a\text{ addable}}\epsilon(S,a)X_a[S\cup\{a\}]
+\]
+
+is conjugate, by the cell monomial \(\prod_{a\in S}X_a\), to ordinary
+cellular incidence. Its unique normalized reciprocal cocycle restricts to
+the three rotated entry-97 road traces. The relative complex has ranks
+
+\[
+\operatorname{rk}C_*(K_6,B_{\rm sc})=(1,3,0,0)
+\]
+
+and therefore supplies the target relation geometrically:
+
+\[
+d\mathcal K_{\rm rel}^{\rm PC}
+=\mathcal T_0^{\rm PC}+\mathcal T_1^{\rm PC}+\mathcal T_2^{\rm PC}.
+\]
+
+The first missing datum is now source-side. The conductor branch ideals
+
+\[
+I_+=(u_1,u_3,u_5),\qquad I_-=(u_0,u_2,u_4)
+\]
+
+meet each opposite pair ideal in exactly one generator. Each of the six
+branch/pair intersections has a rank-one \(\operatorname{Tor}_1\) excess
+class. Consequently these are derived-excess correspondence squares, not
+members of the transverse cd-skeleton of Section 2.
+
+The next test is one representative excess Beck--Chevalley comparison,
+starting with
+
+\[
+I_+=(u_1,u_3,u_5),\qquad I_{03}=(u_0,u_3),
+\]
+
+and requiring an independently constructed map \(a_+^{\rm ex}\) with
+
+\[
+\rho_{03}a_+^{\rm ex}
+=\operatorname{Tr}_{03,\partial}^{\rm PC}\partial_{+,03}.
+\]
+
+The excess orientation, occurrence pullback, reciprocal/Borel--Moore support
+pairing, lower Cousin terms, and physical normal line are part of the datum.
+The equation is a test, not a definition of the map.
