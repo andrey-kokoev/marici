@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--98 establish six
+At the first nontrivial boundary, \(D=03\), entries 93--99 establish seven
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -66,21 +66,34 @@ pieces of that construction:
 
    obtained relative to the six short-diagonal pentagonal facets rather than
    by adjoining a formal cone.
+7. two polarity-related integral global carrier maps from the suspended
+   central vertex figures to that relative target, together with the
+   canonical plus/\(D03\) excess sequence
+
+   \[
+   0\longrightarrow K(Q)[1]
+   \xrightarrow{(h_3^+-h_3^{03})\wedge-}
+   K(I_+)\otimes K(I_{03})
+   \longrightarrow K(Q)\longrightarrow0.
+   \]
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
 intrinsic integral gluing; it is not a reason to introduce a rational
 projector.
 
-The source carrier differential, first marked coefficient span, and its local
-trace are therefore no longer missing. Entry 95 rules out replacing the span
+The source carrier differential, its two global carrier maps, the first
+marked coefficient span, and its local trace are therefore no longer missing.
+Entry 95 rules out replacing the span
 by a strict fold of two independent normal characters into one supported
 rank-one target. Entry 96 shows that the span first produces the road-costalk
 class \(d_1^\vee\otimes\chi_N\); entry 97 constructs the arrow to its Verdier
 dual without identifying \(d_1\) with \(d_1^\vee\). Entry 98 rotates this
-trace, constructs the target relation geometrically, and isolates the first
-unproved arrow: the excess-one Beck--Chevalley comparison from a conductor
-top branch to a marked opposite-normal pair.
+trace and constructs the target relation geometrically. Entry 99 proves that
+the six carrier attachments are restrictions of two global maps and that the
+local excess orientation and shift are canonical. It isolates the first
+unproved arrow more sharply: an unlocalized, support-filtered augmented
+dual-block/Cousin can--var kernel lifting either global carrier map.
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -189,8 +202,16 @@ d\mathcal K_{\rm rel}^{\rm PC}
 }
 \]
 
-The target is therefore complete at this level. The unresolved operation is
-the source top map. With
+Entry 99 then proves the global source carrier maps
+
+\[
+A_\pm^{\rm car}:D_\pm^{\rm car}
+\longrightarrow C_*(K_6,B_{\rm short}),
+\]
+
+with \(f_+\mapsto K_{\rm rel}\), \(f_-\mapsto-K_{\rm rel}\), and the six
+link edges mapped with unit coefficients to their three matched road facets.
+The unresolved operation is the filtered lift of either global map. With
 
 \[
 I_+=(u_1,u_3,u_5),
@@ -198,21 +219,23 @@ I_+=(u_1,u_3,u_5),
 I_{03}=(u_0,u_3),
 \]
 
-the first formula objective is the excess-one comparison whose induced map
-\(a_+^{\rm ex}\) satisfies
+the first local restriction of that lift must satisfy
 
 \[
 \boxed{
-\rho_{03}a_+^{\rm ex}
+\rho_{03}A_+^{\rm Cous,PC}
 =
 \operatorname{Tr}_{03,\partial}^{\rm PC}\partial_{+,03}.
 }
 \]
 
-The map, its shift, and its excess orientation must be derived from the
-normalization--conductor/face-tube square. They may not be defined by this
-identity. Every branch/pair intersection has nonzero rank-one
-\(\operatorname{Tor}_1\), so treating the square as transverse is false.
+The candidate shift and excess orientation have now been derived rather than
+fitted: \(\eta=h_3^+-h_3^{03}\), and wedge by \(\eta\) is the canonical
+integral top-\(\operatorname{Tor}_1\) inclusion. What remains is the actual
+unlocalized can--var/Cousin kernel and all of its lower terms. It may not be
+defined by the displayed identity. Every branch/pair intersection has
+nonzero rank-one \(\operatorname{Tor}_1\), so treating the square as
+transverse is false.
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -240,10 +263,13 @@ and
 
 Entry 97 recovers entry 86's occurrence-resolved endpoint counit and
 entry 89's four unit road occurrences at the \(D=03\) physical cut. The
-entry-98 target relation preserves all three rotated local identities.
-Realizing the relation generator \(\Delta\) at carrier and target grade is
-therefore established. The source chain identity still depends on the six
-excess branch/pair comparisons.
+entry-98 target relation preserves all three rotated local identities, and
+entry 99 supplies the two global carrier maps and the unique local excess
+symbol. Realizing the relation generator \(\Delta\), its carrier source, and
+the source/road associated-grade square is therefore established. The source
+chain identity now depends on one global unlocalized augmented-dual-block
+lift; its six local excess squares must follow by restriction rather than be
+normalized independently.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -266,27 +292,31 @@ internal-state coevaluation retained.
 2. **Three-road target relation -- established in entry 98:** the weighted
    relative hexagon supplies \(\mathcal K_{\rm rel}^{\rm PC}\), its unique
    normalized reciprocal cocycle, and the three rotated boundary traces.
-3. **Source excess lift -- immediate frontier:** construct one excess-one
-   branch/pair Beck--Chevalley comparison, then rotate it and assemble the two
-   conductor top maps. This is the remaining local chain identity for
-   \(G_{03}^{\rm Cousin}\).
-4. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
+3. **Global source carrier -- established in entry 99:** the two central
+   vertex figures map integrally and equivariantly to the relative target;
+   the six carrier attachments are their road restrictions. The plus/\(D03\)
+   excess symbol and every already-typed boundary invariant are fixed.
+4. **Unlocalized source lift -- immediate frontier:** construct one global
+   augmented-dual-block/Cousin can--var kernel whose associated grade is
+   \(A_+^{\rm car}\). Its three road restrictions must be the established
+   excess symbols and entry-97 traces. Polarity then supplies the minus lift.
+5. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
-5. **Intrinsic half-object:** assemble the local perfect complexes and
+6. **Intrinsic half-object:** assemble the local perfect complexes and
    noninvertible Gysin correspondences into a cdh-local, factorization-natural
    object \(\mathsf J^{\rm PC}\).
-6. **CHY comparison:** construct a specialization-compatible comparison
+7. **CHY comparison:** construct a specialization-compatible comparison
    \(\Phi_{\rm CHY}(\mathsf J_n^{\rm PC})\simeq[({\rm Pf}'A_n)^2]\), rather than
    only matching paired amplitudes.
-7. **Higher coherence:** evaluate the residual twisted top class on a quartic
+8. **Higher coherence:** evaluate the residual twisted top class on a quartic
    grammar and test whether it is exactly the universal Jordan defect
 
    \[
    Q_{Q_xy}-Q_xQ_yQ_x.
    \]
 
-Stage 3 is the immediate frontier. Later stages should not be used to hide a
-failure of the excess source lift.
+Stage 4 is the immediate frontier. Later stages should not be used to hide a
+failure of the unlocalized source lift.
 
 ## Prohibited shortcuts
 
@@ -315,64 +345,47 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved arrow in the construction. The paired factorization-marked
-correspondence
+unproved arrow in the construction. The marked road spans, reciprocal-twist
+bivariant traces, three-road target, two global carrier maps, and the local
+top-\(\operatorname{Tor}_1\) symbols are now established. The current bounded
+target is one global plus-sheet lift
 
 \[
-Z_0\longleftarrow W_{03}\longrightarrow Z_3
-\]
-
-and its supported PC road-costalk diagram, reciprocal-twist bivariant trace,
-three rotations, and geometric target relation are now established. The
-current bounded target is one excess-one source comparison for
-
-\[
-I_+=(u_1,u_3,u_5),
-\qquad
-I_{03}=(u_0,u_3),
-\]
-
-producing an independently constructed \(a_+^{\rm ex}\) with
-
-\[
-\rho_{03}a_+^{\rm ex}
-=
-\operatorname{Tr}_{03,\partial}^{\rm PC}\partial_{+,03}.
-\]
-
-It must retain the rank-one excess orientation, occurrence pullback,
-reciprocal/Borel--Moore support pairing, lower Cousin terms, and physical
-normal line. A passing representative may then be rotated to the other two
-plus attachments and tested as the plus half of the chain map
-
-\[
-G_{03}^{(\leq2),\rm PC}:
-\mathcal C_{\rm link}^{(\leq2),\rm PC}
+A_+^{\rm Cous,PC}:
+\mathcal D_+^{\rm Cous,reg,\vee}
 \longrightarrow
-\mathcal C_{\triangle}^{(\leq2),\rm PC}
+\mathbb D\operatorname{PC}(K_6,B_{\rm short})\otimes\chi_N
 \]
 
-whose degree-one components are the three rotated local traces and whose top
-component eventually sends
+over the unlocalized universal monodromy ring, satisfying
 
 \[
-(f_+,f_-)
-\longmapsto
-(+1,-1)\mathcal K_{\rm rel}^{\rm PC}.
+\operatorname{gr}A_+^{\rm Cous,PC}=A_+^{\rm car}
 \]
 
-The target identity
+and, by restriction to all three roads,
+
+\[
+\rho_iA_+^{\rm Cous,PC}
+\simeq
+\operatorname{Tr}_{i,\partial}^{\rm PC}\partial_{+,i}^{\rm ex}.
+\]
+
+It must retain the rank-one excess orientations, occurrence pullbacks,
+reciprocal/Borel--Moore support pairings, lower Cousin terms, physical normal
+lines, and the integral dihedral action. In particular it must be constructed
+before inverting the \(u_j\). The target identity
 
 \[
 d\mathcal K_{\rm rel}^{\rm PC}
 =\mathcal T_0^{\rm PC}+\mathcal T_1^{\rm PC}+\mathcal T_2^{\rm PC},
 \]
 
-is already proved. The remaining source lift must prove
+and its global carrier preimage are already proved. The remaining lift must
+prove
 
 \[
-\operatorname{gr}G_{03}^{(\leq2),\rm PC}
-=(G_2,K_{\rm alt}).
+\operatorname{gr}A_+^{\rm Cous,PC}=A_+^{\rm car}.
 \]
 
 Its useful terminal outcomes are either:
@@ -381,6 +394,7 @@ Its useful terminal outcomes are either:
 - one sharp falsifier identifying the first geometric map, filtration, or
   Beck--Chevalley identity that cannot exist.
 
-Do not recompute the target relation, test \(\Delta\) on one pair alone, or
-expand to a new multiplicity, a fourth primitive, or another sign census
-while the first excess source comparison remains untyped.
+Do not recompute the target relation, construct the six road maps
+independently, test \(\Delta\) on one pair alone, or expand to a new
+multiplicity, a fourth primitive, or another sign census while the global
+unlocalized source lift remains untyped.
