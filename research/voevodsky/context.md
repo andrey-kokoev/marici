@@ -1643,3 +1643,67 @@ zero.  The next test is the target-side supported comparison
 performed only after the lcm cap has consumed the endpoint occurrence
 support.  It must retain the source support while producing the entry-100
 four-normal Cousin residue and the separate positive physical normal.
+
+## 31. Road-corner quotient and the double Cousin residue
+
+Entry 121 corrects the target of the preceding comparison.  In the full
+entry-97 road square, the opposite path
+
+\[
+B_{\rm opp}=\langle b,c,v_{00},v_{01},v_{11}\rangle
+\]
+
+is a subcomplex, and the quotient is precisely the entry-120 diamond:
+
+\[
+Q_{03}/B_{\rm opp}
+=
+[RF\xrightarrow{(x_3,-x_1)^T}
+R\langle Z_3,Z_1\rangle
+\xrightarrow{(x_1,x_3)}Rv].
+\]
+
+Finite-free duality produces a canonical extension by zero
+
+\[
+\mathbb D(Q_{03}/B_{\rm opp})\hookrightarrow\mathbb D(Q_{03}),
+\]
+
+with \(Z_3^*\mapsto a^*\), \(Z_1^*\mapsto-d^*\), and
+\(v^*\mapsto v_{10}^*\).  The full occurrence Koszul--Cech map, including
+its lower terms, has positive top residue
+
+\[
+F^*\longmapsto+1/(x_3x_1).
+\]
+
+Together with the established repeated-normal excess trace this gives the
+supported corner class
+
+\[
++\left[
+\frac1{x_1x_3u_0u_1u_3u_5}
+\right]\otimes[dX_{03}],
+\]
+
+which agrees with the `v10` Cousin component of entry 97.
+
+It does not equal the complete road trace.  Extension by zero vanishes on
+the opposite path, and global occurrence localization contracts the corner
+quotient while leaving the normalized road augmentation nonzero.  Thus the
+entry-120 full-trace comparison is falsified and replaced by the corner
+formula
+
+\[
+(\kappa_{\rm occ}\widehat\otimes\kappa_{\rm norm})
+\Theta_{03,\rm flag}^{\rm fil}
+=\operatorname{Res}^{\rm Cousin}_{v_{10}}
+(\Theta_{03}^{\rm loc}).
+\]
+
+The remaining target problem is to assemble all four corner quotients and
+their edge overlaps into a ringed PC Cousin descent object.  A successful
+totalization should recover the complete entry-97 trace; extra overlap
+cohomology or torsion is the next falsifier.  The cellular extension by zero
+still needs an occurrence-loaded six-functor purity/subdivision counit before
+it can be used as the actual PC extraordinary costalk.
