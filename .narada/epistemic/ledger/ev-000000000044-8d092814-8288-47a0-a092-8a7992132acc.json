@@ -1,0 +1,109 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 44,
+  "event_id": "ev-000000000044-8d092814-8288-47a0-a092-8a7992132acc",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2828bdabb80f33e575c6bb12532a5add0e1747d9382ceee7280b0e9474a575b1",
+  "proposal_id": "ep_42c2734a-1b89-42a5-96cc-cfd2da5985a2",
+  "proposal_digest": "57040fb43e2a62669d70fde3c5f95a93b51b4c32b0a96f59891f2facee4ef868",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-ledger-111",
+      "kind": "source",
+      "title": "Ledger 111: One-Sheet Rees–Cartier Symbol and the Missing Marked Conductor Lattice",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-111 One-Sheet Rees-Cartier Symbol and the Missing Marked Conductor Lattice.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-111-filtered-rees-cartier-symbol",
+      "kind": "claim",
+      "title": "The conditional one-sheet comparison has a unique integral pre-Cartier map whose first symbol retains the conductor conormal line",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-111 One-Sheet Rees-Cartier Symbol and the Missing Marked Conductor Lattice.md#claim"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:nima-111-uniform-target-and-segmentwise-anchor-no-go",
+      "kind": "criticism",
+      "title": "Neither a uniformly filtered free target nor the existing D03 labels supply the proposed segmentwise post-Cartier conductor map",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-111 One-Sheet Rees-Cartier Symbol and the Missing Marked Conductor Lattice.md#the-exact-no-go"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nima-111-rotated-whole-gallery-tag-gluing",
+      "kind": "test",
+      "title": "Construct whole-gallery Gysin maps to t1, t3, and t5 and test whether their tops glue to the conductor triangle with a geometric Rees lattice",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-111 One-Sheet Rees-Cartier Symbol and the Missing Marked Conductor Lattice.md#consequence"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-111-filtered-rees-cartier-symbol",
+      "target_id": "source:nima-ledger-111",
+      "relation_id": "rel:derived_from-e76e0e7a1295e7e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:nima-111-filtered-rees-cartier-symbol",
+      "target_id": "claim:nima-110-local-rank-jump-cartier-bockstein",
+      "relation_id": "rel:depends_on-0649234fed9aa38c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:nima-111-filtered-rees-cartier-symbol",
+      "target_id": "problem:nima-110-one-sheet-conductor-comparison",
+      "relation_id": "rel:addresses-ad39faf8648f82e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:nima-111-uniform-target-and-segmentwise-anchor-no-go",
+      "target_id": "source:nima-ledger-111",
+      "relation_id": "rel:derived_from-77fb016a552bdf51"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:nima-111-uniform-target-and-segmentwise-anchor-no-go",
+      "target_id": "problem:nima-110-one-sheet-conductor-comparison",
+      "relation_id": "rel:criticizes-f2ed21249935e12c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-111-rotated-whole-gallery-tag-gluing",
+      "target_id": "problem:nima-110-one-sheet-conductor-comparison",
+      "relation_id": "rel:tests-89d237a8d09bc052"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-110-cartier-to-positive-tags-20260814-111",
+      "test_id": "test:nima-110-cartier-to-positive-tags",
+      "actor": "marici.Nima",
+      "outcome": "Conditional partial pass. The residual occurrence diagram has a natural dual cap and, under an explicitly supplied segmentwise marking plus staggered target lattice, a unique strict map H↦-x3 f+ whose first Cartier symbol becomes -f+ after conormal evaluation. The full geometric comparison remains open: ordinary uniform associated grade is zero, Hom_R(R/(x3),R)=0 blocks a strict free-target shortcut, and existing D03 labels do not derive the segmentwise marking.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-111",
+          "locator": "src/ledger/20260814-111 One-Sheet Rees-Cartier Symbol and the Missing Marked Conductor Lattice.md",
+          "paraphrase": "Exact Rust certificate proves the lcm cap, conditional filtered map, conormal symbol, and no-go; label audit isolates whole-gallery rotation as the smaller next test."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "research_owner",
+    "session": "Nima",
+    "reason": "Primary Nima agent curating ledger 111 and its reproducible certificate under docs/research-lifecycle.md."
+  },
+  "idempotency_key": "auto-admission-910bf897c593393ec3c46a6e",
+  "occurred_at": "2026-08-14T15:47:49.2402536Z",
+  "certifies_truth": false,
+  "event_hash": "d6945caf534b07e325a45da30441f49ac59214439c2af6d5e9b02ee2774e6d41"
+}

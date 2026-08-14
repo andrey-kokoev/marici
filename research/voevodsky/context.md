@@ -982,3 +982,134 @@ literal \(Q\) coface and then derive \(\widetilde\xi\) as its special
 boundary. Only after those carrier tests pass should the reciprocal
 occurrence, can--var, repeated-normal excess, and physical-normal factors be
 attached.
+
+## 19. Closed dual-star no-go and secondary cobordism
+
+The natural closed dual-star pair is relatively acyclic, and adding the
+natural endpoint stars makes the proposed relative complex literally zero.
+Exact barycentric enumeration nevertheless finds a marked seven-triangle
+carrier in a restricted cone-per-gallery-edge ansatz. Its integral chain
+identity is
+
+\[
+dT_\nu=G-J_\nu,
+\qquad d^2T_\nu=0.
+\]
+
+Because \(G\subset\widetilde F_1\), the generic side \(J_\nu\) is exact in
+the ambient quotient. The carrier is therefore a secondary nullhomotopy,
+not a nonzero \(Q\)-class.
+
+The corrected design objective is to construct two trivializations of the
+same pulled-back Yoneda two-extension in one loaded mapping complex:
+
+\[
+dh_{\rm Morse}=q_J,
+\qquad
+dH_{\rm cond}=e_Fq_J,
+\qquad
+\Delta_J=H_{\rm cond}-e_Fh_{\rm Morse}.
+\]
+
+Then \([\Delta_J]\in\operatorname{Ext}^1(J,F_0)\), with explicit
+Toda/Baer indeterminacy. A separately constructed purity map may test
+whether it evaluates to entry 108's local unit
+\([1]\in R/(U_{03})\). Presently neither common mapping complex nor purity
+map exists. First construct the variance-correct
+\(\mathcal P_{\rm abs}\)-loaded seven-triangle differential and weighted
+\(d^2=0\); do not subtract the ordinary conductor contraction from the
+unlifted carrier.
+
+## 20. Occurrence Cartier Bockstein
+
+The full 1169-generator barycentric pullback of the absolute scalar
+occurrence complex is now constructed and satisfies \(d^2=0\). On the
+seven-triangle carrier its exact identity is
+
+\[
+dH_{\rm Morse}^{\rm abs}
+=q_J^{\rm abs}-x_3\widetilde\xi^{\rm abs}.
+\]
+
+The spectator \(x_3\) is unavoidable in ordinary scalar incidence. A plain
+ideal-dual evaluation cannot remove it globally because the generic chain
+is not \((x_3)\)-valued.
+
+After passing to the endpoint-and-generic-relative cone \(B\), the generic
+side is killed with the correct variance and
+
+\[
+d_B[H_{\rm Morse}]=-x_3[\widetilde\xi].
+\]
+
+The Cartier connecting map for \((x_3)\), followed by
+\(x_3^\vee(x_3)=1\), yields
+
+\[
+\beta_{x_3}[H_{\rm Morse}\bmod x_3]
+=-[\widetilde\xi].
+\]
+
+The class is nonzero and \(x_3\)-torsion in the certified relative complex.
+This supplies an intrinsic local associated-grade mechanism. It does not
+yet supply the global Yoneda specialization, PC factorization, or CHY
+half-object.
+
+Next construct a one-sheet comparison from the Cartier complex to the
+positive conductor tag complex. Only after its polarity conjugate exists
+should their alternating sum be compared with \(K_{\rm alt}\) and the
+primitive road counit.
+
+## 21. One-sheet Rees--Cartier symbol and simplified marking frontier
+
+The expanded-gallery lcm coefficient diagram has a natural integral dual
+cap, unique up to one common orientation. Conditional on a segmentwise map
+to the positive triangle, it gives the strict pre-Cartier formula
+
+\[
+H\mapsto-x_3f_+,
+\qquad
+\xi\mapsto t_1+t_3+t_5.
+\]
+
+The correct target is the staggered lattice
+
+\[
+[I_3f_+\to P_{\rm tag}],
+\]
+
+or equivalently the filtration
+
+\[
+F_T^p(Rf_+)=x_3^{p+1}Rf_+,
+\qquad
+F_T^p(P_{\rm tag})=x_3^pP_{\rm tag}.
+\]
+
+The first Rees symbol retains its conormal factor,
+
+\[
+\bar H\mapsto-[x_3]\otimes f_+,
+\]
+
+and oriented evaluation gives \(-f_+\). Ordinary associated grade with a
+uniformly filtered free target gives zero; a nonzero strict map
+\(R/(x_3)\to R\) does not exist.
+
+Neither the staggered lattice nor the segmentwise gallery-to-triangle map is
+present in entries 93--94. Moreover the obvious label argument is false:
+the three source edges are
+
+\[
+\{x_1,x_3\},\quad\{E,x_3\},\quad\{D03,x_3\},
+\]
+
+so \(x_3\) is a common spectator, and \(E\) is the exceptional ray of
+\((D03,x_1)\), not the \(dx_3\) normal. Cyclicity rotates the whole gallery;
+it does not rotate its three internal edges.
+
+The next construction should therefore map the whole \(D03\) Cartier
+gallery class to the single tag \(t_3\), rotate the whole construction to
+\(t_1,t_5\), and only afterward glue the three tops into the augmented
+triangle relation. This is smaller, better typed, and preserves the integral
+derived extension without a fitted segmentwise identification.
