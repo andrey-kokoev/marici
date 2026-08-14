@@ -1,0 +1,145 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_03570e48-c1a5-4886-a876-5d3b5d0f9ddf",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "workspace_research_primary",
+    "scope": "Marici Nima ledger 107, exact Rust certificate, objective and context updates"
+  },
+  "idempotency_key": "auto-proposal-3fed2316504393b90f151679",
+  "expected_ledger_head": "0a278b71bfba6d24cfb7204bb00b3a83d52905ff32848719bf27e093cca1ac63",
+  "created_at": "2026-08-14T14:00:28.8124166Z",
+  "content_fingerprint": "3fed2316504393b90f15167959b8722ddbec484f3d5fd8f315dc7da93dabd54c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-ledger-107",
+      "local_ref": "source107",
+      "kind": "source",
+      "title": "Ledger 107 — Integral Ambient Log-Blowup Invariance and the Persistent Bivariant Q-Leg Gap",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-107 Integral Ambient Log-Blowup Invariance and the Persistent Bivariant Q-Leg Gap.md",
+      "summary": "Primary record for the integral filtered stellar-subdivision theorem, literal Q invariance, Yoneda transport, and the surviving bivariant-Q-leg gap."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-107-log-blowup-invariance",
+      "local_ref": "claim107",
+      "kind": "claim",
+      "title": "The ambient D03 log blowup is an integral filtered resolution preserving Q and the Yoneda extension",
+      "summary": "The lcm occurrence and multiplicative-monodromy stellar subdivisions admit an integral filtered SDR; F0 and the seven-generator relative quotient Q are unchanged, so e_F transports canonically."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:nima-107-zero-exceptional-q-leg",
+      "local_ref": "crit107",
+      "kind": "criticism",
+      "title": "Ambient log-blowup invariance does not construct the marked Beck–Chevalley map",
+      "summary": "The exceptional divisor and expanded gallery lie wholly in F1, so their ordinary Q image is zero; a separately typed extraordinary pull-push kernel is still required."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim107",
+      "target_ref": "source107",
+      "source_id": "claim:nima-107-log-blowup-invariance",
+      "target_id": "source:nima-ledger-107",
+      "relation_id": "rel:derived_from-f41fd4143b0993c5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim107",
+      "target_id": "problem:6f41f07b769e74ec7dd8",
+      "source_id": "claim:nima-107-log-blowup-invariance",
+      "relation_id": "rel:addresses-245305a2a5f183fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim107",
+      "target_id": "claim:888a91faac9f3db54a81",
+      "source_id": "claim:nima-107-log-blowup-invariance",
+      "relation_id": "rel:depends_on-39eab2090156bfa5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit107",
+      "target_ref": "source107",
+      "source_id": "criticism:nima-107-zero-exceptional-q-leg",
+      "target_id": "source:nima-ledger-107",
+      "relation_id": "rel:derived_from-ff98846c3d89ef07"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "crit107",
+      "target_id": "problem:6f41f07b769e74ec7dd8",
+      "source_id": "criticism:nima-107-zero-exceptional-q-leg",
+      "relation_id": "rel:addresses-7f89049661899ebb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "crit107",
+      "target_id": "criticism:896e079a79c4abecdfa8",
+      "source_id": "criticism:nima-107-zero-exceptional-q-leg",
+      "relation_id": "rel:supersedes-4890d1b5b86e02c7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:9433b77fe7077afde23b",
+      "target_ref": "claim107",
+      "target_id": "claim:nima-107-log-blowup-invariance",
+      "relation_id": "rel:tests-688c09889aa3c151"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-107-log-blowup",
+      "subject_id": "claim:nima-107-log-blowup-invariance",
+      "judgment": "proved_scoped",
+      "actor": "marici.Nima",
+      "reason": "The exact 245-generator certificate proves the integral filtered SDR, literal seven-generator Q identity, and formal Yoneda transport while explicitly excluding the global Beck–Chevalley comparison.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-107",
+          "locator": "research/voevodsky/check_d03_global_log_blowup_relative_q.rs",
+          "paraphrase": "The checker verifies the face census, occurrence and normal contractions, filtration ranks, unchanged Q differential, and zero exceptional Q image without inversions."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-107-central-flip",
+      "subject_id": "problem:6f41f07b769e74ec7dd8",
+      "judgment": "advanced_not_closed",
+      "actor": "marici.Nima",
+      "reason": "The natural ambient modification and all local normalizations are now canonical, but its support forces zero ordinary Q image; the independently typed bivariant BC_log arrow remains missing.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-107",
+          "locator": "src/ledger/20260814-107 Integral Ambient Log-Blowup Invariance and the Persistent Bivariant Q-Leg Gap.md",
+          "paraphrase": "Entry 107 isolates the remaining datum as an extraordinary pull-push map from RHom(Q,F0[2]) to the normalized local Hom complex."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-107-d03-marked-bc",
+      "test_id": "test:9433b77fe7077afde23b",
+      "actor": "marici.Nima",
+      "outcome": "ambient_subdivision_pass_global_bc_unconstructed",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-107",
+          "locator": "research/voevodsky/check_d03_global_log_blowup_relative_q.rs",
+          "paraphrase": "The ambient subdivision and Yoneda transport pass integrally; the exceptional/gallery support has zero Q image and does not evaluate e_F by the entry-100 local trace."
+        }
+      ]
+    }
+  ],
+  "digest": "2abe37970198907799e037b116150ad4523035d0309d5c01e1b45dbd716aff0b"
+}
