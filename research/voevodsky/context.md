@@ -1913,3 +1913,66 @@ is the genuine scalar specialization map with
 \(K_{\rm alt}\), the entry-131 \(x_3\) residue, and a nonzero generic
 \(Q\)-leg.  The last requirement still excludes every construction supported
 wholly inside \(F_1\).
+
+## 36. Off-diagonal reduction of the scalar specialization problem
+
+Entry 132 proves that the current obstruction is not an unknown diagonal
+differential.  The normalization--conductor/Tate--Cartier object
+
+\[
+\mathcal C_{\rm nc}^{\rm mR}
+=\operatorname{Tot}
+\left(C_{\rm PL}^{\rm Tate}\otimes
+\Lambda^\bullet N_{\rm Cart}^{\vee}\right)
+\]
+
+already has \(d_C^2=0\) and the first symbol
+\(K_{\rm alt}\otimes L_{\rm pol}\).  Separately, the absolute mixed block
+
+\[
+d_MH_\Sigma
+=q_\Sigma-\sum_{i=1,3,5}x_i\widetilde\xi_i
+\]
+
+already has \(d_M^2=0\) and a genuine nonzero \(Q\)-leg.
+
+After extension to one occurrence/multi-Rees coefficient category, fix the
+split filtered carrier with \(\mathcal M_F\) as subcomplex and
+\(\mathcal C_{{\rm nc},R}^{\rm mR}\) as quotient.  Its minimal connected
+totalization is controlled by one class
+
+\[
+\alpha_{\rm nc,abs}\in
+Z^1R\!\operatorname{Hom}
+(\mathcal C_{{\rm nc},R}^{\rm mR},\mathcal M_F),
+\]
+
+with the single equation
+
+\[
+d_M\alpha_{\rm nc,abs}
++\alpha_{\rm nc,abs}d_C=0.
+\]
+
+Every current comparison either factors through \(F_1\), or, when generated
+only by the support inclusions and quotients, has zero marked-exit composite.
+None gives a based carrier-shadow map with
+
+\[
+\operatorname{gr}_Q(\rho_\alpha)(N_{\rm road})=+[q_\Sigma].
+\]
+
+A formal \(dc=q_\Sigma\) top fails absolute \(d^2\), and the short-boundary
+quotient that makes \(q_\Sigma\) bound deletes the special galleries.  Entry
+131 fixes the target \(x_3\) boundary value but cannot choose this source
+map.
+
+The next bounded experiment is therefore singular: construct the positive
+extraordinary component of \(\alpha_{\rm nc,abs}\), construct its polarity
+conjugate, and test the cocycle equation before applying residues.  The
+result must preserve the full Tate window, send the based road norm to
+\(+[q_\Sigma]\), induce \(K_{\rm alt}\otimes L_{\rm pol}\), and restrict
+at \(x_3\) to the entry-131 purity map.  Until then,
+\(d_{\rm sp,sc}\) and \(G_{03}^{\rm Cousin}\) are not one typed object.
+The reduction is scoped to this fixed split carrier and does not classify
+arbitrary nonsplit extensions.

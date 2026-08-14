@@ -1759,10 +1759,98 @@ d_{\rm circ}^{\rm PC}G_{03}^{\rm Cousin}
 \operatorname{Res}_{x_3}G_{03}^{\rm Cousin}
 =\operatorname{pur}_{x_3,\partial}^{\rm PC},
 \qquad
-q_Q(G_{03}^{\rm Cousin})\ne0.
+\operatorname{gr}_Q(\rho_G)(N_{\rm road})=+[q_\Sigma].
 }
 \]
 
-The last condition prevents a return to correspondences supported wholly in
-\(F_1\).  Entry 131 supplies the required boundary value, but not the generic
-\(Q=F_2/F_1\) component or the scalar total-specialization differential.
+Here \(\rho_G\) is the based carrier-shadow comparison, with the established
+shift and orientation.  The last condition prevents a return to
+correspondences supported wholly in \(F_1\).  Entry 131 supplies the required
+boundary value, but not the generic \(Q=F_2/F_1\) component or the scalar
+total-specialization differential.
+
+## Minimal off-diagonal objective after entry 132
+
+Entry 132 removes one unnecessary degree of freedom from the source problem.
+The known diagonal pieces are already square-zero:
+
+\[
+\mathcal C_{\rm nc}^{\rm mR}
+=
+\operatorname{Tot}\!\left(
+C_{\rm PL}^{\rm Tate}\otimes\Lambda^\bullet N_{\rm Cart}^{\vee}
+\right),
+\qquad d_C^2=0,
+\]
+
+and
+
+\[
+\mathcal M_F\subset\mathcal P_{\rm abs},
+\qquad
+d_MH_\Sigma=q_\Sigma-\sum_{i=1,3,5}x_i\widetilde\xi_i,
+\qquad d_M^2=0.
+\]
+
+The first carries the canonical conductor/Tate--Cartier algebra and
+\(K_{\rm alt}\otimes L_{\rm pol}\).  The second carries the
+occurrence-resolved mixed boundary and the genuine nonzero \(Q\)-leg.
+
+First extend the two pieces into the same occurrence/multi-Rees coefficient
+category.  On the fixed split filtered carrier, with \(\mathcal M_F\) the
+subcomplex and \(\mathcal C_{{\rm nc},R}^{\rm mR}\) the quotient, do not
+search for a new diagonal “scalar BRST” differential.  The minimal unknown
+is one degree-one boundary-crossing cocycle
+
+\[
+\boxed{
+\alpha_{\rm nc,abs}:
+\mathcal C_{{\rm nc},R}^{\rm mR}\longrightarrow\mathcal M_F[1],
+\qquad
+d_M\alpha_{\rm nc,abs}+\alpha_{\rm nc,abs}d_C=0.
+}
+\]
+
+It defines the only new block of
+
+\[
+d_{\rm sp,sc}
+=
+\begin{pmatrix}
+d_C&0\\
+\alpha_{\rm nc,abs}&d_M
+\end{pmatrix}.
+\]
+
+The formula objective is now
+
+\[
+\boxed{
+\operatorname{gr}_{\mathfrak c}^1G_C
+=K_{\rm alt}\otimes L_{\rm pol},
+\qquad
+\operatorname{Res}_{x_3}G_M
+=\operatorname{pur}_{x_3,\partial}^{\rm PC},
+\qquad
+\operatorname{gr}_Q(\rho_\alpha)(N_{\rm road})
+=+[q_\Sigma],
+}
+\]
+
+with
+
+\[
+d_{\rm circ}^{\rm PC}G_M=G_Md_M,
+\qquad
+d_{\rm circ}^{\rm PC}G_C-G_Cd_C
+=G_M\alpha_{\rm nc,abs}.
+\]
+
+The zero off-diagonal merely juxtaposes the two complexes and is
+inadmissible as a solution.  Every presently constructed comparison either
+factors through \(F_1\) or has zero marked-exit composite; none provides the
+based identification \(N_{\rm road}\mapsto+[q_\Sigma]\).  The next
+experiment is therefore only the new two-sheet-compatible extraordinary
+off-diagonal, not another local residue, sign search, fitted top, or rational
+splitting.  This split-carrier reduction does not classify arbitrary
+nonsplit extensions or alternative filtrations.
