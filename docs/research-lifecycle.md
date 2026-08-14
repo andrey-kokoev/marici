@@ -28,6 +28,46 @@ A result is **material** when it does at least one of the following:
 Routine reruns, refactors, intermediate matrices, and confirming sign checks
 are not material by themselves.
 
+## Cross-sector core-promotion gate
+
+A construction claimed as universal Marici core machinery requires at least one structurally independent sector test whenever such an analogue exists.
+
+The lifecycle for a candidate core mechanism is:
+
+```text
+candidate universal mechanism
+  -> sector-local evidence
+  -> nearest cross-sector falsification
+  -> core promotion
+```
+
+Before the cross-sector test begins, freeze:
+
+- source carrier;
+- coefficient complexes;
+- support filtration;
+- normal orientations;
+- admissible homotopies;
+- normalization;
+- expected target class;
+- prohibited repairs.
+
+The comparison sector must be selected because it tests the same structural mechanism under materially different physical or geometric conditions, not because it is expected to reproduce the same formula.
+
+A candidate is promoted to core only if the relevant sector tests close without:
+
+- adding new cells after seeing the target;
+- adjoining coefficient summands solely to cancel an obstruction;
+- changing support conditions post hoc;
+- fitting normalization constants to the desired answer;
+- replacing a failed canonical map with an unmotivated splitting.
+
+Failure of the cross-sector test blocks universal promotion. It does not invalidate a sector-local theorem that remains correct in its stated scope.
+
+Program-level conjectures and promotion rules are documented in `docs/`. Cross-sector outcomes enter `src/ledger` only when they satisfy the material-result criteria below.
+
+See `docs/cross-sector-falsification.md` for the current conjecture, sector/layer distinction, and promotion protocol.
+
 ## Canonical result packet
 
 Delegated and local bounded investigations use the same structured summary:

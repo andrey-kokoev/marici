@@ -1765,3 +1765,61 @@ the oriented edge Gysin maps, insert the generic unit through the nonzero
 \(Q\)-leg, and compute the obstruction to a closed total cocycle.  Ordinary
 corner restriction, Laurent continuation of a top fraction, or omission of
 the diagonal/triple/quadruple coherence is now a certified wrong turn.
+
+## 33. Principal-line trace and the occurrence-level \(x_3\) Gysin
+
+Entry 129 makes two parts of the preceding recollement intrinsic.  In the
+principal-lcm bases, the complete road square resolves the principal Cartier
+ideal
+
+\[
+(M),\qquad M=x_0x_1x_3x_4.
+\]
+
+The normalized differential ranks are \((1,3)\) with unit Smith factors.
+Consequently the four occurrence coefficients of entry 97 are the local
+representatives
+
+\[
+\left(\frac1{x_0x_3},\frac1{x_1x_3},
+      \frac1{x_0x_4},\frac1{x_1x_4}\right)
+\]
+
+of one dual principal-line functional \(M\mapsto1\).  This removes any
+four-scalar fitting freedom after the generic unit is fixed, but it preserves
+the D03 four-corner entry's essential conclusion: the corner residues do not
+themselves determine that generic unit.
+
+The first edge Gysin is also now an actual occurrence-level chain map.  On
+\(S_3=(R/(x_3))|_U\), each endpoint divisor \(x_i=0\), \(i=0,1\), has
+
+\[
+R\!\operatorname{Hom}_{S_3}(S_3/(x_i),S_3)
+\simeq[S_3\xrightarrow{x_i}S_3],
+\]
+
+so its extraordinary class is a primitive \(\operatorname{Ext}^1\) line.
+The ordered Koszul--Cech comparison sends
+
+\[
+1\mapsto1,
+\quad e_i\mapsto(1/x_i,0),
+\quad e_3\mapsto(0,1/x_3),
+\quad e_i\wedge e_3\mapsto1/(x_ix_3),
+\]
+
+and gives the positive \(v_{00}\) and \(v_{10}\) occurrence residues with
+all lower terms included.  By contrast, the ordinary Cousin boundary of the
+regular generic unit is zero.  The generic-to-edge arrow is extraordinary,
+not coherent restriction.
+
+The exact next target is the promotion
+
+\[
+g_3^{!,\mathrm{occ}}\longrightarrow g_3^{!,\mathrm{PC}}
+\]
+
+with the previously proved normal-excess, support-variance, and physical-line
+data.  Both endpoint squares must commute before rotating to \(x_4\).  The
+generic source map with nonzero \(Q\)-leg remains a separate missing arrow;
+the principal-line theorem cannot manufacture it.

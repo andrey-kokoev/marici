@@ -1600,3 +1600,61 @@ corner residues or inserted after localization.  The next decisive result
 is the obstruction to extending that generic unit through the four road
 Gysin terms with the prescribed corner residues.  Zero gives the desired
 road trace, while a nonzero obstruction falsifies this local synthesis.
+
+## One-edge occurrence Gysin after entry 129
+
+Entry 129 resolves the first target-side step left open by the D03 ledger
+entry `Four-Corner Cellular Nerve and the Generic-Unit Obstruction`.  The
+four Laurent corner coefficients are not four choices.  After passing to the
+principal-lcm bases, the road square is a saturated cellular resolution of
+
+\[
+(M),\qquad M=x_0x_1x_3x_4,
+\]
+
+and the normalized road functional is the dual principal-line map
+\(M\mapsto1\).  Its four displayed fractions are local expressions of that
+one functional.  This determines the generic coefficient once its dense-open
+unit is independently fixed; it does not derive that unit from corner data.
+
+On the \(x_3\) road edge, the ordered Cartier pairs \((x_0,x_3)\) and
+\((x_1,x_3)\) now give genuine occurrence-level Koszul--Cech Gysin maps.  In
+particular,
+
+\[
+e_i\wedge e_3\longmapsto\frac1{x_ix_3},
+\qquad i=0,1,
+\]
+
+with all lower Cech terms retained.  The two endpoint classes are primitive
+\(\operatorname{Ext}^1\) generators and carry no integer torsion.  This is an
+extraordinary Cartier map; the ordinary coherent Cousin boundary of a regular
+generic section is zero.
+
+The immediate objective is therefore no longer an all-edge descent.  It is
+the single promotion
+
+\[
+\boxed{
+g_3^{!,\mathrm{occ}}\longrightarrow g_3^{!,\mathrm{PC}}
+}
+\]
+
+with the independently established reciprocal/Borel--Moore variance,
+repeated-normal excess packet, and physical line \([dX_{03}]\).  It must make
+both the \(v_{00}\) and \(v_{10}\) endpoint squares commute, including lower
+Cech terms.  Only after that test passes may the \(x_4\) edge and four-edge
+coherence be assembled.
+
+This target theorem still cannot create the source specialization.  The
+first source-side obstruction remains a canonically normalized generic road
+map with a genuinely nonzero \(Q\)-leg.  Nor is entry 129 Marici-core
+machinery: cross-sector promotion still requires an independently constructed
+cosmological extraordinary boundary class.
+
+The homogeneous three-site cosmology result currently strengthens the
+coefficient-system interpretation, not a first-jet no-go.  Its elliptic
+discriminant vanishes generically to first order at \(E_T=0\), while only the
+separate algebraic-letter quartic is stationary to first order.  Thus the
+claim that the complete elliptic coefficient system first appears at second
+normal order remains an open second-Rees test.

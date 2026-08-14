@@ -1,0 +1,158 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2a7a044a-7321-4db1-be79-a926cb30ff6d",
+  "status": "submitted",
+  "actor": "codex-root",
+  "authority_basis": {
+    "kind": "user-authorized-research-lifecycle",
+    "scope": "Admit the verified fixed-D03 occurrence theorem and its exact blocker without promoting it to loaded PC or Marici core.",
+    "evidence": "Primary read and independently ran rustfmt, rustc -D warnings, and the executable certificate."
+  },
+  "idempotency_key": "auto-proposal-a4659918759895d98a76f598",
+  "expected_ledger_head": "8aa646b65e4a6b5a9600a210cb817ee39946c10abffec7ca952eccbed42373b0",
+  "created_at": "2026-08-14T20:35:43.4704129Z",
+  "content_fingerprint": "a4659918759895d98a76f59850fde767c46eadf407a389170708ce9a2a6ebe43",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src_entry129",
+      "kind": "source",
+      "title": "Cox Principal-Line Trace and the Extraordinary Cousin Boundary",
+      "version": "sha256:3c1a14d9c139539df5ce953be446054bb54de1a6af81edd252342435f0c68d53",
+      "locator": "src/ledger/20260814-129 Cox Principal-Line Trace and the Extraordinary Cousin Boundary.md",
+      "evidence_artifact": "research/voevodsky/check_d03_toric_cox_cousin_trace.rs sha256:852652cbe3f8d20076c526e3adb493857e7859d6f33ad9cc2daede03750bfce4",
+      "entity_id": "source:33a15da7931b319d16ce"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "occ_gysin_claim",
+      "kind": "claim",
+      "title": "The D03 road occurrence coefficients form one principal Cartier-line functional and the x3 edge has a primitive occurrence Koszul-Cech Gysin",
+      "status": "proved_in_fixed_occurrence_model",
+      "summary": "The principal-lcm road complex resolves (x0 x1 x3 x4); the product-Cartier unit gives both endpoint classes with oriented incidence and no integer torsion.",
+      "entity_id": "claim:a65014712ff21b1ac1f7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "bare_cousin_conj",
+      "kind": "conjecture",
+      "title": "The generic regular Cox principal-line section produces the D03 corner poles by ordinary coherent Cousin boundary",
+      "status": "falsified",
+      "entity_id": "conjecture:3c4a3e2453c30bc0231f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "variance_crit",
+      "kind": "criticism",
+      "title": "Ordinary coherent restriction has the wrong variance for the D03 road residue",
+      "status": "proved_negative_control",
+      "summary": "A regular O or O(D) section maps to zero in the ordinary Cousin quotient; the nonzero pole is an extraordinary Cartier class.",
+      "entity_id": "criticism:4c216674fb4e9c148960"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "pc_promotion_problem",
+      "kind": "problem",
+      "title": "Promote the x3 occurrence Gysin to the loaded D03 PC extraordinary map with both endpoint squares",
+      "status": "open",
+      "summary": "Retain reciprocal/BM variance, repeated-normal excess, lower Cech terms, and [dX03].",
+      "entity_id": "problem:15e983c891b88ee98c59"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "pc_promotion_conj",
+      "kind": "conjecture",
+      "title": "The canonical x3 occurrence Gysin admits a support-preserving loaded PC promotion compatible with v00 and v10",
+      "status": "open",
+      "entity_id": "conjecture:87ce731d4cf9bf85fe6b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "pc_endpoint_test",
+      "kind": "test",
+      "title": "Test the loaded x3 Gysin at both D03 road endpoints before any all-edge assembly",
+      "status": "proposed",
+      "falsifier": "Any support change, fitted coefficient or sign, chosen splitting, or deletion of lower Cech terms.",
+      "entity_id": "test:01dbaa5951d7bb023dec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "occ_gysin_claim",
+      "target_ref": "src_entry129",
+      "source_id": "claim:a65014712ff21b1ac1f7",
+      "target_id": "source:33a15da7931b319d16ce",
+      "relation_id": "rel:derived_from-56b42ceafc533712"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "variance_crit",
+      "target_ref": "src_entry129",
+      "source_id": "criticism:4c216674fb4e9c148960",
+      "target_id": "source:33a15da7931b319d16ce",
+      "relation_id": "rel:derived_from-0e9c560f85beaf0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "variance_crit",
+      "target_ref": "bare_cousin_conj",
+      "source_id": "criticism:4c216674fb4e9c148960",
+      "target_id": "conjecture:3c4a3e2453c30bc0231f",
+      "relation_id": "rel:criticizes-c6f7686b2f023356"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "pc_promotion_problem",
+      "target_ref": "pc_promotion_conj",
+      "source_id": "problem:15e983c891b88ee98c59",
+      "target_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "relation_id": "rel:addresses-aa258545b530c340"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "pc_endpoint_test",
+      "target_ref": "pc_promotion_conj",
+      "source_id": "test:01dbaa5951d7bb023dec",
+      "target_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "relation_id": "rel:tests-d41781bb54249f92"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "pc_promotion_conj",
+      "target_ref": "occ_gysin_claim",
+      "source_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "target_id": "claim:a65014712ff21b1ac1f7",
+      "relation_id": "rel:depends_on-97a5af8ec5054ad0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "occ_gysin_claim",
+      "target_id": "claim:ab20e7b1718fdc4076d5",
+      "source_id": "claim:a65014712ff21b1ac1f7",
+      "relation_id": "rel:depends_on-e8793c3ecd701a7b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "pc_promotion_problem",
+      "target_id": "problem:1ff5e58afa86c9481bd5",
+      "source_id": "problem:15e983c891b88ee98c59",
+      "relation_id": "rel:maricirefines-b3a21daa7420ba47"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "test:c8fcc677ffbc669512bd",
+      "target_ref": "pc_endpoint_test",
+      "target_id": "test:01dbaa5951d7bb023dec",
+      "relation_id": "rel:depends_on-d3ebe1e2d9ac6192"
+    }
+  ],
+  "digest": "cbfc5d5cf8ee6401ff73e6380b8dc4c73c3688ecb2bfa26067b5020a84cdc30f"
+}
