@@ -8,7 +8,10 @@ Status: exact eight-point derived-selector theorem and exact formal localized
 route-cube equations; global occurrence-decorated Pochhammer/Cousin
 naturality remains conditional. Entry 75 computes the complete local
 derived-Hom groups, proves the normalized degree-zero class is unique and
-torsion-free, and identifies the remaining degree-one belt extension.
+torsion-free, and identifies the remaining degree-one belt extension. Entry
+76 proves that the two caps and cube are actual scalar faces carrying the
+polynomial weighted resolution. The surviving gap is the dependent
+route-to-belt Beck--Chevalley attachment, not a missing source cell.
 
 Entry 73 isolated forty strict cellular lifts from a nontransverse route
 pentagon to a fixed-core square.  The apparent ambiguity is now resolved at
@@ -411,9 +414,12 @@ K_Q^{\mathrm w}[-2]
 }
 \]
 
-where \(\mathcal R_Q\) is the complete route-face envelope containing
-\(P_\pm\), \(S_\pm\), their lower faces, and the source coherences
-corresponding to both caps and the cube.
+Entry 76 forward-corrects the intended domain.  The dependent route faces
+\(P_\pm,S_\pm\) do not belong to a common scalar parent containing the caps.
+The caps and cube instead live in the separate actual fixed-core face
+\(K_Q\).  The required kernel must therefore first attach the route Čech
+totalization to the four-facet belt \(B_Q^{\mathrm w}\subset K_Q^{\mathrm w}\),
+after which the intrinsic caps and cube extend it.
 
 It must satisfy:
 

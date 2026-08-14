@@ -6,7 +6,9 @@ Date: 2026-08-13
 
 Status: exact local derived-Hom and coefficient-module theorem, conditional on
 the four-facet belt being the occurrence/Čech descent of the complete route
-envelope.  The occurrence-decorated cap and cube extension remains open.
+envelope.  Forward correction (entry 76): the actual scalar source caps and
+cube exist and close the belt integrally.  What remains open is the loaded
+derived Beck--Chevalley attachment from the disjoint route faces to that belt.
 
 Entry 74 identified a canonical oriented relative/Borel--Moore map class but
 left two questions unresolved:
@@ -17,8 +19,10 @@ left two questions unresolved:
    intrinsically at the half-object level?
 
 Both questions now have exact answers.  The normalized degree-zero route
-class is unique and torsion-free.  A single degree-one belt class survives,
-pinpointing the still-missing decorated cap extension.  The two scalar
+class is unique and torsion-free.  A single degree-one belt class survives in
+the bare route-to-belt Hom.  Entry 76 shows that actual scalar caps kill it;
+the class therefore pinpoints a missing route attachment, not missing scalar
+cells.  The two scalar
 refinements in one quadrilateral become equal weighted classes after
 localization, so their QTDS sum is twice one primitive Laurent class.
 
@@ -378,11 +382,12 @@ Retain as conditional:
 > The four-facet belt is the complete occurrence/Čech and relative
 > Borel--Moore descent of the physical nontransverse route envelope.
 
-Retain as open:
+Forward correction (entry 76):
 
-> Construct occurrence-decorated source cap maps and a source cube, and prove
-> that they extend the normalized belt class to the full finite-
-> \(\alpha'\) Pochhammer/Cousin comparison.
+> The occurrence-decorated source caps and cube are actual faces of the
+> fixed-core scalar associahedron, and their weighted cellular resolution
+> extends the belt integrally.  The remaining open map is the dependent
+> route-to-belt Beck--Chevalley attachment.
 
 Reject:
 
@@ -396,26 +401,19 @@ Also reject:
 
 The weighted cube is vertical coherence inside one fixed quadrangulation.
 The Jordan defect remains a horizontal comparison among different
-quadrangulations and must be tested only after the decorated cap/cube
-extension is constructed.
+quadrangulations and must be tested only after the dependent route-to-belt
+attachment is constructed.
 
 ## Next executable theorem
 
-Construct, for one representative core, occurrence-decorated coefficient
-maps on one source cap and then on the second cap and cube.  Verify:
-
-1. restriction to the belt gives the normalized positive \(H^0\) class;
-2. the first cap kills the certified belt \(H^1\) class without inverting
-   \(2\);
-3. the two cap boundaries sum to the weighted target sphere;
-4. the source cube maps to
-   \(-\kappa_D\kappa_E h_0\otimes h_1\otimes h_2\);
-5. differential, ordered double residue, and the eight-step deck action all
-   commute.
-
-Only after this vertical extension closes should the eight horizontal route
-kernels be assembled around the quadrangulation compatibility complex and
-compared with the Jordan defect.
+Entry 76 completes the cap/cube experiment over the polynomial ring.  The
+next theorem is to construct the constrained derived map from the dependent
+pentagon/square Čech totalization to the four side facets of the actual
+regional cube.  It must realize the normalized positive \(H^0\) class, send
+the scalar-edge cone to zero, commute with ordered double residue and deck
+rotation, and compose with the regional Pochhammer/Cousin map.  Only after
+this Beck--Chevalley attachment closes should the eight horizontal route
+kernels be compared with the Jordan defect.
 
 ## Reproducible certificate
 
@@ -442,10 +440,10 @@ The eight-point local comparison now has the form
 \text{a primitive scalar polarization}.}
 \]
 
-The immediate frontier is no longer uniqueness of the route map.  It is the
-existence of the occurrence-decorated cap and cube extension.  Success would
-close the first genuinely nontransverse factorization coherence of
-\(\mathsf J\) before pairing.
+The immediate frontier is no longer uniqueness of the route map or existence
+of scalar caps.  It is the dependent route-to-belt Beck--Chevalley
+attachment.  Success would close the first genuinely nontransverse
+factorization coherence of \(\mathsf J\) before pairing.
 
 ## Internal dependencies
 

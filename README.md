@@ -83,9 +83,12 @@ The ledger currently keeps three frontiers separate:
   Ward--Brauer dictionary. At the first nontransverse octagon stratum, the
   physical four-chart belt now has one normalized, torsion-free degree-zero
   derived Gysin class into a weighted three-interval cube. Its full QTDS
-  polarization is eight times the primitive Laurent class, while one
-  degree-one belt class exactly locates the missing occurrence-decorated
-  source-cap extension. A BRST/kinetic realization of the conductor
+  polarization is eight times the primitive Laurent class. The weighted cube,
+  both caps, and its 3-cell are actual scalar associahedral faces forming a
+  minimal polynomial resolution; they kill the belt class integrally. The
+  remaining eight-point datum is a loaded derived Beck--Chevalley attachment
+  from the disjoint pentagon/square route Čech object to the regional belt. A
+  BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
   operator on already-summed \(X_C\) functions, and a metric jet adjoint
@@ -197,6 +200,8 @@ rustc --edition=2021 -D warnings -O research/nima/check_loaded_route_cube_gysin.
 & "$env:TEMP\marici-loaded-route-cube.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_route_kernel_hom_complex.rs -o "$env:TEMP\marici-route-hom.exe"
 & "$env:TEMP\marici-route-hom.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_decorated_source_cap.rs -o "$env:TEMP\marici-decorated-source-cap.exe"
+& "$env:TEMP\marici-decorated-source-cap.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -408,6 +413,12 @@ prohibited overclaims.
   scalar-edge Cousin counit and uniquely forces both caps and the cube coherence, while leaving
   the global occurrence-decorated Pochhammer/Cousin comparison theorem open.
 - `20260813-75` computes the complete local route-kernel derived Hom: the normalized degree-zero
-  class is unique and torsion-free, a single belt degree-one class locates the missing decorated
-  cap extension, the polynomial target is a nonfree occurrence ideal, and the full QTDS
-  polarization is eight times the primitive Laurent class rather than a torsion effect.
+  class is unique and torsion-free, a single belt degree-one class locates the then-unresolved
+  vertical extension, the polynomial target is a nonfree occurrence ideal, and the full QTDS
+  polarization is eight times the primitive Laurent class rather than a torsion effect. Entry 76
+  identifies the scalar cells that kill that class.
+- `20260813-76` identifies the weighted cube, both caps, and the 3-cell with actual fixed-core
+  scalar associahedral faces. Opposite monomials make this cube the minimal polynomial cellular
+  resolution of the occurrence ideal, so the cap/cube obstruction vanishes integrally. The
+  remaining nontransverse datum is a loaded derived Beck--Chevalley attachment from the disjoint
+  route Čech object to the four-facet regional belt.

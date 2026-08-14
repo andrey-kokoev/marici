@@ -23,8 +23,9 @@ Pochhammer/Cousin complex before index raising is conditional. Entry 38
 supplies that comparison on transverse cells. For the eight nontransverse
 pentagons, entries 74--75 now supply a formal scalar-edge Cousin counit, the
 correct weighted target cube, and one normalized torsion-free local derived
-class. Its occurrence-decorated extension across the source caps and cube is
-still missing.
+class. Entry 76 proves that the caps and cube are actual scalar faces and that
+their polynomial extension closes. The remaining chain-level datum is the
+dependent route-to-belt Beck--Chevalley attachment.
 
 Thus this entry contains two logically distinct results:
 

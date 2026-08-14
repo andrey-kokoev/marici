@@ -31,6 +31,13 @@ product of three weighted interval complexes, with degree ranks
 reduce to one oriented relative/Borel--Moore class, while no preferred strict
 representative follows from the existing typed data.
 
+Forward correction (entry 76): the two cap squares and cube are not merely
+target coherence cells.  They are the actual fixed-core scalar associahedral
+faces \(Q+04\), \(Q+35\), and \(K_Q\simeq I^3\), carrying the minimal
+polynomial resolution of the occurrence ideal.  Their extension closes
+integrally.  The remaining gap is the dependent route-to-belt
+Beck--Chevalley attachment.
+
 The four physical support charts recover every basis vector of the relevant
 rank-eight occurrence fiber, but they form only the four side facets of a
 cube.  The two missing cap squares and the cube 3-cell give the correct target
