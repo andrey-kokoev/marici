@@ -1261,3 +1261,66 @@ independent \([dX_{03}]=+1\). Compute its road generization before central
 base change. If the correctly typed Hom class is absent or its
 Beck--Chevalley defect is nonzero, reject the endpoint locally. Construct
 \(q_2\), a common thimble, and the \(D_3\) orbit only after this test passes.
+
+## Corrected endpoint objective after entry 118
+
+The boxed absolute single-\(q_0\) formula above is withdrawn. In the
+absolute scalar occurrence complex,
+
+\[
+dq_0=x_5a,
+\qquad d(-x_1q_0)=-x_1x_5a\ne0,
+\]
+
+and the \(q_2\) arm is required for cancellation. The smallest one-ended
+source with a generic leg is the endpoint-relative quotient
+
+\[
+\boxed{
+K_0:=K/[Rq_2\xrightarrow{x_1}Ra]
+\simeq[Re_3\xrightarrow{-x_1}Rq_0].
+}
+\]
+
+The scalar face poset now supplies the carrier rather than merely asking for
+one. With the inherited marks it is uniquely
+
+\[
+I_0:
+F_{03}>Z_3>v_{10}<e_c>v_+>e_3>q_0.
+\]
+
+Its selected road flag has occurrence product \(+x_3x_1\). Oriented
+\(x_3\)-Thom evaluation gives \(b_0=+x_1\), while the special boundary gives
+\(a_0=-1\). Hence its carrier map is
+
+\[
+\gamma^{\rm car}_0:
+[e_3\xrightarrow{-x_1}q_0]
+\longrightarrow
+[F_{03}\xrightarrow{+x_1}\tau^{\rm car}_0],
+\qquad(e_3,q_0)\longmapsto(F_{03},-\tau^{\rm car}_0).
+\]
+
+The immediate formula objective is no longer to discover an endpoint
+generization. It is to lift this already-normalized carrier map through the
+support variance:
+
+\[
+\boxed{
+\Gamma^{!,\rm PC}_{0,\rm rel}:
+\operatorname{Th}^{\rm mR}_{x_3}\otimes K_0^{\vee,\rm reg}
+\longrightarrow L_{0,\rm road}^{\rm BM,Tor},
+\qquad
+\operatorname{gr}_{\rm car}\Gamma^{!,\rm PC}_{0,\rm rel}
+=\gamma^{\rm car}_0.
+}
+\]
+
+The lift must preserve the endpoint coefficient \(-1\), send
+\([t_3]\mapsto\eta_{3,\rm mix}\), retain the independent physical orientation
+\([dX_{03}]=+1\), and include the full derived central-fibre
+\(H_0\oplus\operatorname{Tor}_1\) packet. A map obtained by choosing one of
+the two central-fibre lines, by identifying \(q_0\) with an \(F_{03}\)
+occurrence vertex, or by forgetting the endpoint-relative quotient is not a
+solution.

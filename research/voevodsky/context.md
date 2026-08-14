@@ -1466,3 +1466,62 @@ special boundary \(-x_1q_0\), external \([t_3]\), actual road
 \(\operatorname{Tor}_1\) target, repeated-normal excess, and separate
 \([dX_{03}]\). Do not construct both endpoints or rotate by \(D_3\) until
 this single derived-Hom/Beck--Chevalley class is shown to exist.
+
+## 28. Endpoint-relative correction and the marked exit interval
+
+Entry 118 corrects the last sentence above before attempting the derived
+Hom. The Boolean cell \(q_0\) is not closed in the absolute occurrence
+complex:
+
+\[
+dq_0=x_5a,
+\qquad d(-x_1q_0)=-x_1x_5a\ne0.
+\]
+
+The one-ended source that retains the generic \(e_3\) leg is therefore the
+explicit relative quotient
+
+\[
+K_0=K/[Rq_2\xrightarrow{x_1}Ra]
+\simeq[Re_3\xrightarrow{-x_1}Rq_0].
+\]
+
+For this corrected source, the actual hexagon face poset contains one
+canonically marked carrier interval
+
+\[
+F_{03}>\{D03,x_3\}>\{D03,x_1,x_3\}
+<\{x_1,x_3\}>\{x_1,x_3,x_5\}
+>\{x_1,x_5\}>\{x_5\}.
+\]
+
+The \(x_3\) sink mark uniquely selects the road flag and the \(x_1\) mark
+uniquely selects the Boolean flag. Its relative Borel--Moore class is
+primitive, and \(F_{03}\) is its sole non-short endpoint. The selected road
+incidences carry \(x_3\) and then \(x_1\), so \(x_3\)-Thom evaluation derives
+
+\[
+b_0=+x_1.
+\]
+
+The Boolean boundary gives \(a_0=-1\), and hence
+
+\[
+b_0=-x_1a_0.
+\]
+
+Thus the spatial carrier and its occurrence-level Beck--Chevalley square are
+now constructed without fitting. The remaining map is solely the
+variance-changing lift
+
+\[
+\Gamma^{!,\rm PC}_{0,\rm rel}:
+\operatorname{Th}^{\rm mR}_{x_3}\otimes K_0^{\vee,\rm reg}
+\longrightarrow L_{0,\rm road}^{\rm BM,Tor},
+\]
+
+whose associated grade is the marked interval map, whose endpoint value is
+\(-1\), and which must send \([t_3]\) to \(\eta_{3,\rm mix}\) while retaining
+the separate positive \([dX_{03}]\) line. It must include the excess
+\(\operatorname{Tor}_1\) copy rather than selecting one of the two central
+fibre lines by hand.
