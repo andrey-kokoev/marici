@@ -1160,3 +1160,59 @@ would be unique. The missing datum is a source-side comparison
 generic class while retaining the three loaded gallery symbols and excess
 normal data. This is now the first block of the scalar total-specialization
 differential \(d_{\rm sp,sc}\) that is not constructed.
+
+## 23. Marked-exit Tate detector and the mixed boundary-crossing correction
+
+Entry 113 corrects the last sentence above. The primitive generic class is
+not something the source differential should cancel by a newly adjoined
+cell. For
+
+\[
+E=\{v_+,c_{14},c_{03},c_{25}\},
+\]
+
+endpoint boundary identifies
+
+\[
+H_1(sd(K_6),E)\simeq P_{\rm road},
+\qquad
+q_\Sigma=N_{\rm road},
+\qquad
+\epsilon(q_\Sigma)=3.
+\]
+
+The natural support connector has zero composite into this marked-exit
+group. Thus \(q_\Sigma\) is not a canonical image of the Yoneda class
+\(e_F\); it is the road-norm detector in the same nonsplit Tate window
+
+\[
+0\to\mathbb Z_{\rm or}\xrightarrow{N_{\rm tag}}P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow\epsilon\mathbb Z\to0.
+\]
+
+The existing rotated Morse sum already supplies the correct occurrence-level
+boundary-crossing block:
+
+\[
+dH_\Sigma=q_\Sigma-
+(x_1\widetilde\xi_1+x_3\widetilde\xi_3+x_5\widetilde\xi_5),
+\qquad d^2=0.
+\]
+
+Its generic \(Q\)-leg is required and must be retained. A formal new cell
+with boundary \(q_\Sigma\) fails absolute \(d^2=0\); the endpoint-relative
+version has no geometric provenance.
+
+The frontier is therefore downstream. Construct one \(D_3\)-equivariant
+derived extraordinary-costalk/Beck--Chevalley lift of the three whole-gallery
+Cartier maps, including every
+
+\[
+R/(x_i)\otimes_R^L R/(x_1,x_3,x_5)\simeq[C\xrightarrow0C]
+\]
+
+\(\operatorname{Tor}_1\) copy and the reciprocal/Borel--Moore, excess, and
+physical-normal data. It must be compatible with
+\(\mathbb D(e_F)\circ\operatorname{pur}_+\) and retain the complete Tate
+shadow. This comparison, rather than a source filler, is the first missing
+block of the full \(d_{\rm sp,sc}\).
