@@ -5,9 +5,10 @@
 Date: 2026-08-13
 
 Status: exact eight-point regional source-carrier and polynomial cellular-
-resolution theorem.  The caps and cube are now intrinsic scalar faces.  The
-remaining nontransverse step is a loaded derived Beck--Chevalley attachment
-from the dependent route Čech object to their four-facet belt.
+resolution theorem.  The caps and cube are now intrinsic scalar faces.  Entry
+78 proves that the unfiltered route comparison exists; the remaining
+nontransverse step is the support-filtered, loaded Beck--Chevalley attachment
+carried by four presently absent overlap intervals.
 
 This entry forward-corrects the diagnosis in entries 73--75.  The surviving
 belt class did not mean that the scalar source lacked caps or a cube.  Those
@@ -308,7 +309,9 @@ This separates two operations that had been conflated:
 2. the dependent Beck--Chevalley map attaches route descent to the regional
    belt.
 
-The first is known formally.  The second is the remaining theorem.
+The first is known formally.  Entry 78 proves the second after forgetting
+support, but also proves that physical belt support requires four additional
+overlap-interval generators not present in the established Čech incidence.
 
 ## Corrected categorical target
 
@@ -369,6 +372,20 @@ Once this belt attachment exists, no further cap choice is needed.  The
 actual scalar faces \(K_Q^-,K_Q^+\) and \(K_Q\), together with \(\chi_Q\),
 extend it with the uniquely normalized coefficients \(1,1,1\).
 
+Entry 78 computes the underlying comparison problem.  The polynomial
+augmentation
+
+\[
+c_{i,v}\longmapsto m_v
+\]
+
+surjects onto \(I_Q\), so an unfiltered lift into \(K_Q^{\mathrm w}\) exists
+and is unique up to homotopy.  However, the eight established Čech columns
+only identify duplicate copies of the same occurrence.  Each of the four
+belt overlaps additionally needs a middle-interval generator joining two
+different occurrences.  Thus \(\beta_Q^{\alpha'}\) must be understood as a
+support-filtered enhancement of an already existing derived morphism.
+
 ## Consequence for the QTDS polarization
 
 Entry 75 showed, after Laurent localization, that
@@ -405,17 +422,22 @@ Established:
 6. the second cap and cube close the sphere with unique coefficient \(+1\);
 7. all statements respect ordered residues and the eight-step deck action;
 8. the dependent \(P/S\) route faces are not subfaces of a common scalar
-   carrier.
+   carrier;
+9. the unfiltered polynomial route augmentation and comparison lift exist;
+10. the established source incidence lacks exactly four primitive
+    overlap-interval bridges required by belt support.
 
 Open:
 
-1. the occurrence-decorated derived Beck--Chevalley attachment
+1. intrinsic scalar-chain provenance for the four overlap-interval bridges
+   and the resulting support-filtered Beck--Chevalley attachment
    \(\beta_Q^{\alpha'}\);
 2. its finite-
    \(\alpha'\) realization as one loaded Pochhammer/Cousin natural
    transformation;
-3. identification of the opposite-monomial complement with the restriction
-   of \(I_{\rm scalar}^{-1}\);
+3. a global chain-level identification of the opposite-monomial complement
+   with \(I_{\rm scalar}^{-1}\).  Entry 77 proves the restricted
+   identification on every maximally factorized channel quotient;
 4. horizontal assembly around the quadrangulation compatibility complex and
    comparison with the Jordan defect.
 
@@ -431,26 +453,21 @@ Also reject:
 
 ## Next executable theorem
 
-Construct the complete Hom complex for
+Entry 78 completes the unfiltered Hom calculation.  The smallest remaining
+test is now to construct, rather than freely adjoin, four relative
+degree-one generators \(b_e\), one for each nonempty chart-pair overlap, whose
+primitive polynomial relation is
 
 \[
-\operatorname{RHom}
-(\mathcal C_Q^{\rm route},B_Q^{\mathrm w}[-2])
+X_{11}m_{v^1}-X_{10}m_{v^0}=0
 \]
 
-using the actual extension-by-zero route coefficient systems and the actual
-regional lcm resolution.  Impose the known vertex anchors, \(H_s\mapsto0\),
-ordered residues, and deck covariance.  Compute:
-
-1. whether the constrained degree-zero cycle exists over the polynomial
-   ring;
-2. whether its obstruction class vanishes before Laurent localization;
-3. whether the normalized solution is unique up to homotopy;
-4. whether composing it with the regional \(\chi_Q\) gives the five-term
-   loaded Cousin identity on one route pentagon.
-
-This is the smallest exact test that can close or falsify the first dependent
-factorization coherence of the scalar half-object before pairing.
+and whose loaded double-Gysin image is the corresponding middle interval of
+the regional belt.  The construction must arise from the scalar multi-normal
+or Pochhammer/Cousin specialization, rotate through the deck orbit, and close
+the five-term pentagon identity.  Failure of scalar geometry to supply these
+four generators would falsify factorization naturality without contradicting
+the already proved abstract derived comparison.
 
 ## Reproducible certificate
 
@@ -459,6 +476,10 @@ Run:
     rustfmt --check research/nima/check_decorated_source_cap.rs
     rustc --edition=2021 -D warnings -O research/nima/check_decorated_source_cap.rs -o "$env:TEMP\\marici-decorated-source-cap.exe"
     & "$env:TEMP\\marici-decorated-source-cap.exe"
+
+    rustfmt --check research/nima/check_dependent_beck_chevalley_hom.rs
+    rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\\marici-dependent-bc.exe"
+    & "$env:TEMP\\marici-dependent-bc.exe"
 
 Certificate SHA-256:
 
@@ -475,8 +496,9 @@ Promote:
 
 Retain as the immediate frontier:
 
-> Construct the loaded derived Beck--Chevalley attachment from the dependent
-> route Čech object to the four-facet boundary of this regional resolution.
+> Derive the four missing occurrence-overlap intervals from scalar loaded
+> boundary geometry, thereby refining the existing unfiltered comparison to
+> a support-compatible Beck--Chevalley attachment.
 
 ## Internal dependencies
 
@@ -484,4 +506,6 @@ Retain as the immediate frontier:
 - Entry 38: undecorated facewise Pochhammer/Cousin map.
 - Entries 72--73: constructible route descent and four-facet belt.
 - Entries 74--75: normalized derived route class and weighted Hom theorem.
+- Entries 77--78: primitive boundary half-line, unfiltered comparison, and
+  the four-bridge support obstruction.
 - research/nima/check_decorated_source_cap.rs.
