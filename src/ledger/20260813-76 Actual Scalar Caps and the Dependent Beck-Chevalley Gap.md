@@ -6,9 +6,10 @@ Date: 2026-08-13
 
 Status: exact eight-point regional source-carrier and polynomial cellular-
 resolution theorem.  The caps and cube are now intrinsic scalar faces.  Entry
-78 proves that the unfiltered route comparison exists; the remaining
-nontransverse step is the support-filtered, loaded Beck--Chevalley attachment
-carried by four presently absent overlap intervals.
+78 proves that the unfiltered route comparison exists, and entry 79 resolves
+the support-filtered polynomial overlap complex canonically.  The remaining
+nontransverse step is its finite-\(\alpha'\), loaded Beck--Chevalley
+realization.
 
 This entry forward-corrects the diagnosis in entries 73--75.  The surviving
 belt class did not mean that the scalar source lacked caps or a cube.  Those
@@ -429,12 +430,11 @@ Established:
 
 Open:
 
-1. intrinsic scalar-chain provenance for the four overlap-interval bridges
-   and the resulting support-filtered Beck--Chevalley attachment
-   \(\beta_Q^{\alpha'}\);
-2. its finite-
-   \(\alpha'\) realization as one loaded Pochhammer/Cousin natural
-   transformation;
+1. a finite-\(\alpha'\) scalar-geometric realization of the polynomial
+   overlap-relation complex proved in entry 79 and the resulting loaded
+   Beck--Chevalley attachment \(\beta_Q^{\alpha'}\);
+2. the five-term loaded pentagon identity and its eight-step deck
+   covariance;
 3. a global chain-level identification of the opposite-monomial complement
    with \(I_{\rm scalar}^{-1}\).  Entry 77 proves the restricted
    identification on every maximally factorized channel quotient;
@@ -453,21 +453,21 @@ Also reject:
 
 ## Next executable theorem
 
-Entry 78 completes the unfiltered Hom calculation.  The smallest remaining
-test is now to construct, rather than freely adjoin, four relative
-degree-one generators \(b_e\), one for each nonempty chart-pair overlap, whose
-primitive polynomial relation is
+Entries 78--79 complete the unfiltered Hom calculation and the polynomial
+support descent.  The four relative degree-one generators \(b_e\) are the
+canonical residual kernel of the actual polygon carrier, and their primitive
+polynomial relation is
 
 \[
 X_{11}m_{v^1}-X_{10}m_{v^0}=0
 \]
 
-and whose loaded double-Gysin image is the corresponding middle interval of
-the regional belt.  The construction must arise from the scalar multi-normal
-or Pochhammer/Cousin specialization, rotate through the deck orbit, and close
-the five-term pentagon identity.  Failure of scalar geometry to supply these
-four generators would falsify factorization naturality without contradicting
-the already proved abstract derived comparison.
+The smallest remaining test is to lift this certified kernel to the scalar
+multi-normal or Pochhammer/Cousin specialization, rotate it through the deck
+orbit, and close the five-term pentagon identity.  Failure of finite-loading
+geometry to realize the polynomial kernel would falsify loaded factorization
+naturality without contradicting the already proved associated-grade
+descent.
 
 ## Reproducible certificate
 
@@ -481,9 +481,18 @@ Run:
     rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\\marici-dependent-bc.exe"
     & "$env:TEMP\\marici-dependent-bc.exe"
 
-Certificate SHA-256:
+    rustfmt --check research/nima/check_resolved_overlap_hypercech.rs
+    rustc --edition=2021 -D warnings -O research/nima/check_resolved_overlap_hypercech.rs -o "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+    & "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+
+Primary entry-76 certificate SHA-256:
 
     81828d55d754cb25acac89ef42abf02e709e2f3e67c1ede16a0e0fe714998556
+
+Forward-comparison certificate SHA-256 values:
+
+    21624eaf9e32a5eed00a2e0f79ce1c06e8bd60520bbc8a81db9d08dadc37a33b
+    54294778b90b634c4bc542d93a1bc7273e52008a34da37ea06becd65ab554acf
 
 ## Decision
 
@@ -497,8 +506,8 @@ Promote:
 Retain as the immediate frontier:
 
 > Derive the four missing occurrence-overlap intervals from scalar loaded
-> boundary geometry, thereby refining the existing unfiltered comparison to
-> a support-compatible Beck--Chevalley attachment.
+> boundary geometry at finite loading, thereby promoting the polynomial
+> effective descent of entry 79 to a loaded Beck--Chevalley attachment.
 
 ## Internal dependencies
 
@@ -508,4 +517,5 @@ Retain as the immediate frontier:
 - Entries 74--75: normalized derived route class and weighted Hom theorem.
 - Entries 77--78: primitive boundary half-line, unfiltered comparison, and
   the four-bridge support obstruction.
+- Entry 79: resolved support overlaps and the canonical relation kernel.
 - research/nima/check_decorated_source_cap.rs.

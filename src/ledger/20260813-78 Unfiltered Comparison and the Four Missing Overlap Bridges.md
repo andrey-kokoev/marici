@@ -6,10 +6,12 @@ Date: 2026-08-13
 
 Status: exact polynomial comparison theorem and exact support obstruction at
 eight points.  The ordinary derived comparison exists and is unique up to
-homotopy.  The established route Čech source does not carry the four interval
-generators required to make that comparison land in the physical four-facet
-belt.  A loaded, support-filtered Beck--Chevalley lift therefore remains
-conditional.
+homotopy.  The occurrence-only route Čech source does not carry the four
+interval generators required to make that comparison land in the physical
+four-facet belt.  Entry 79 proves that resolving the support-selected overlap
+ideals, or equivalently taking the residual kernel of the actual polygon map,
+supplies those generators canonically.  Only their finite-\(\alpha'\) loaded
+scalar realization remains conditional.
 
 This entry resolves the Hom-complex question posed in entries 76--77.  It
 also changes the diagnosis of the remaining problem:
@@ -289,8 +291,32 @@ X_{11}c_{e,v^1}-X_{10}c_{e,v^0},
 \]
 
 This formula describes the required filtered comparison.  It is not a
-license to adjoin \(b_e\) formally: scalar provenance requires these four
-generators to arise from the loaded Cousin or multi-normal boundary geometry.
+license to adjoin \(b_e\) formally.  Entry 79 subsequently proves that the
+four generators are forced algebraically: they are the minimal resolutions
+of the adjacent overlap ideals \(C_e(X_{10},X_{11})\) and the residual
+saturated kernel of the actual polygon-to-belt map.  Scalar provenance now
+means lifting that canonical polynomial relation complex to the loaded
+Cousin or multi-normal boundary geometry.
+
+## Forward correction: the resolved relation complex
+
+Entry 79 constructs the minimal support-selected enhancement.  If
+\(K_{F_i}^{\rm w}\) are the four facet resolutions and \(K_e^{\rm w}\) the
+four adjacent interval resolutions, then
+
+\[
+0\to\bigoplus_eK_e^{\rm w}
+\to\bigoplus_iK_{F_i}^{\rm w}
+\to B_Q^{\rm w}\to0
+\]
+
+is split exact cell by cell over the polynomial ring.  Independently, the
+actual polygon carrier has kernel ranks \((10,6,0)\); two interval summands
+are the internal \(H_s\) cones, and their quotient is exactly the four
+primitive bridge intervals.  All relation lattices are saturated.
+
+Thus the four bridges are absent only from the occurrence-generator
+truncation.  They are present canonically in the resolved support overlap.
 
 ## Uniqueness if the bridges exist
 
@@ -380,10 +406,13 @@ Established:
    determinant \(\pm1\);
 8. \(H_s(15,37)\) maps to zero and is not one of these bridges;
 9. all statements are deck covariant and respect ordered-normal signs.
+10. Entry 79 proves that the four bridges form the canonical resolved
+    support-overlap relation complex, with no division by \(2\) or \(8\).
 
 Not established:
 
-1. intrinsic scalar-chain generators \(b_e\) realizing the four syzygies;
+1. a finite-\(\alpha'\) scalar-geometric lift of the now-canonical
+   polynomial generators \(b_e\);
 2. a loaded, support-filtered Beck--Chevalley transformation
    \(\widehat\beta_Q^{\alpha'}\);
 3. finite-\(\alpha'\) Pochhammer/Cousin naturality on the dependent
@@ -403,33 +432,38 @@ Also reject:
 
 ## Next formula objective
 
-Construct an intrinsic loaded overlap complex
+Entry 79 constructs the polynomial resolved overlap complex.  The next object
+is its loaded lift
 
 \[
-\mathcal C_{Q,\rm ex}^{\rm route}
+\mathcal K_Q^{\alpha'}
+=
+\operatorname{hofib}\!\left[
+\bigoplus_i\operatorname{PC}_{\alpha'}(\mathcal U_i;\mathcal L_i)
 \longrightarrow
-\mathcal C_Q^{\rm route}
+\operatorname{PC}_{\alpha'}(B_Q;I_Q)
+\right]
 \]
 
-whose relative degree-one part contains exactly the four generators \(b_e\)
-and no new scalar parameter.  For one representative overlap, prove from the
-scalar specialization geometry that
+with associated grade
 
 \[
-d b_e
-\mapsto
-X_{11}m_{v^1}-X_{10}m_{v^0}=0
+\operatorname{gr}\mathcal K_Q^{\alpha'}
+\simeq
+(H_{s,+}\oplus H_{s,-})
+\oplus\bigoplus_eK_e^{\rm w}.
 \]
 
-and that its loaded double-Gysin image is the raw-weighted middle interval of
-the regional cube.  Then rotate the construction through the deck orbit and
+For one representative overlap, derive the primitive relation from the
+loaded scalar specialization itself, rotate through the deck orbit, and
 verify the five-term pentagon Cousin identity.
 
 The falsification criterion is now sharp:
 
-> If the scalar multi-normal or loaded Cousin geometry supplies no such
-> overlap intervals, then the local half-lines possess an abstract derived
-> comparison but do not form a factorization-natural scalar half-object.
+> If the scalar multi-normal or loaded Cousin geometry does not lift the
+> certified polynomial relation complex, then the local half-lines possess
+> polynomial effective descent but not a loaded factorization-natural scalar
+> half-object.
 
 ## Reproducible certificate
 
@@ -439,9 +473,14 @@ Run:
     rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\\marici-dependent-bc.exe"
     & "$env:TEMP\\marici-dependent-bc.exe"
 
+    rustfmt --check research/nima/check_resolved_overlap_hypercech.rs
+    rustc --edition=2021 -D warnings -O research/nima/check_resolved_overlap_hypercech.rs -o "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+    & "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+
 Certificate SHA-256:
 
     21624eaf9e32a5eed00a2e0f79ce1c06e8bd60520bbc8a81db9d08dadc37a33b
+    54294778b90b634c4bc542d93a1bc7273e52008a34da37ea06becd65ab554acf
 
 ## Decision
 
@@ -453,10 +492,9 @@ Promote:
 
 Retain as the immediate frontier:
 
-> Derive the four primitive overlap-interval bridges from intrinsic scalar
-> loaded boundary geometry.  These bridges, not another numerical amplitude
-> identity, are the minimal missing data for factorization naturality of
-> \(\mathsf J\) at eight points.
+> Lift the canonical polynomial overlap-relation complex of entry 79 to
+> intrinsic loaded scalar boundary geometry and prove the five-term
+> pentagon naturality identity.
 
 ## Internal dependencies
 
@@ -464,4 +502,5 @@ Retain as the immediate frontier:
 - Entries 72--75: constructible route charts, belt support, and derived Hom.
 - Entry 76: the actual regional cube, caps, and polynomial resolution.
 - Entry 77: Alexander complement and the primitive boundary half-line.
+- Entry 79: resolved overlap ideals and the effective relation groupoid.
 - research/nima/check_dependent_beck_chevalley_hom.rs.

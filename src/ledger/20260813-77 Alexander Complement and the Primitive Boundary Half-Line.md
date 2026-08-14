@@ -7,9 +7,9 @@ Date: 2026-08-13
 Status: exact monomial-resolution and maximal-boundary pairing theorem.  The
 primitive generator of every quadrangulation chart is the factorized
 restriction of the scalar-derived half-class \(\mathsf J\), up to its fixed
-normal-orientation sign.  Entry 78 proves the unfiltered derived comparison
-between adjacent charts and isolates four missing overlap intervals needed
-for the support-filtered Beck--Chevalley attachment.
+normal-orientation sign.  Entry 78 proves the unfiltered derived comparison;
+entry 79 resolves its four support overlaps canonically over the polynomial
+ring.  Finite-loading and global quadrangulation gluing remain open.
 
 Entry 76 identified the weighted interval cube with an actual scalar
 associahedral face.  This entry identifies its primitive homology class with
@@ -389,8 +389,8 @@ Not established:
 
 1. a global chain-level identification of the complement map with
    \(I_{\rm scalar}^{-1}\) away from the factorized channel quotient;
-2. intrinsic scalar provenance for the four bridges and the resulting
-   support-filtered Beck--Chevalley transition between local
+2. a finite-\(\alpha'\) scalar-geometric lift of the polynomial
+   support-filtered transition of entry 79 between local
    \(\mathcal J_Q^{\rm loc}\) charts;
 3. a geometric excess-intersection theorem for the scalar rank-jump
    specialization;
@@ -440,10 +440,11 @@ overlap complex.  Four such generators are required.  Their compatibility
 matrix has determinant \(\pm1\), so existence would give a uniquely
 normalized saturated completion.
 
-The next objective is therefore geometric rather than linear algebraic:
-derive the \(b_e\) from scalar multi-normal or Pochhammer/Cousin
-specialization and verify the five-term pentagon identity.  Freely adjoining
-them would not prove scalar provenance.
+Entry 79 proves that these \(b_e\) are not freely adjoined: they are the
+minimal adjacent overlap resolutions and the residual saturated kernel of
+the actual polygon carrier.  The next objective is therefore to lift this
+canonical polynomial relation groupoid to scalar multi-normal or
+Pochhammer/Cousin specialization and verify the five-term pentagon identity.
 
 ## Reproducible inputs
 
@@ -463,9 +464,13 @@ Run:
     rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\\marici-dependent-bc.exe"
     & "$env:TEMP\\marici-dependent-bc.exe"
 
+    rustfmt --check research/nima/check_resolved_overlap_hypercech.rs
+    rustc --edition=2021 -D warnings -O research/nima/check_resolved_overlap_hypercech.rs -o "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+    & "$env:TEMP\\marici-resolved-overlap-hypercech.exe"
+
 The four-point normalization and inverse-BAS reconstruction are certified by
 the first script.  The primitive weighted class and polynomial resolution
-are certified by the two Rust audits.
+and their resolved support descent are certified by the Rust audits.
 
 ## External mathematical references
 
@@ -487,9 +492,9 @@ Promote:
 
 Retain as the immediate frontier:
 
-> Derive the four missing overlap-interval generators from scalar loaded
-> boundary geometry and use them to refine the now-established unfiltered
-> comparison into a factorization-natural transition.
+> Lift the canonical polynomial overlap relation groupoid of entry 79 to a
+> finite-\(\alpha'\) scalar specialization, then assemble its deck images and
+> test the residual octagon/Jordan holonomy.
 
 ## Internal dependencies
 
@@ -497,7 +502,9 @@ Retain as the immediate frontier:
 - Entry 39: channel-quotient factorization of \(\mathsf J\).
 - Entries 74--76: weighted route cube, derived Hom, and actual scalar caps.
 - Entry 78: unfiltered comparison and the four-bridge support obstruction.
+- Entry 79: resolved overlap ideals and polynomial effective belt descent.
 - research/nima/check_j_reconstruction.py.
 - research/nima/check_route_kernel_hom_complex.rs.
 - research/nima/check_decorated_source_cap.rs.
 - research/nima/check_dependent_beck_chevalley_hom.rs.
+- research/nima/check_resolved_overlap_hypercech.rs.
