@@ -779,3 +779,84 @@ Its Beck--Chevalley composite must recover the mixed excess residue, unit
 endpoints, and the separate \([dX_{03}]\) line without using those outputs as
 its definition. Constructing this single correspondence is the immediate
 frontier; the full \(G_{03}^{\rm Cousin}\) remains conditional on it.
+
+## 16. Marked log gallery and the remaining global comparison
+
+Entry 106 replaces the nonexistent ordinary central-flip map by the correct
+filtered object. The actual path
+
+\[
+a=\{x_1,x_3,x_5\}
+\longrightarrow b=\{D03,x_1,x_3\}
+\longrightarrow c=\{D03,x_0,x_3\}
+\]
+
+is a strict 32-generator loaded subcomplex. Its primitive occurrence chain
+
+\[
+\xi=x_1e_{ab}+X_{03}e_{bc}
+\]
+
+has endpoint boundary
+
+\[
+d\xi=X_{03}x_0c-x_1x_5a,
+\]
+
+and its endpoint-relative loaded complex forces
+
+\[
+d_2(X_{03}x_1,-U_{03}x_1,-u_1X_{03})=u_1U_{03}\xi.
+\]
+
+The full gallery also has the primitive closed maximal-minor kernel
+
+\[
+\kappa=u_5u_0\xi+x_1x_5u_0\ell_5^a
+-X_{03}x_0u_5\ell_0^c.
+\]
+
+Thus the scalar geometry supplies a canonical filtered extension kernel and
+secondary class, although every ordinary degree-zero source-to-road cocycle
+still evaluates to zero.
+
+The two path edges are adjacent in the actual \(x_3\) pentagon. The middle
+log blowup inserts \(\mathbb P(L_{D03}\oplus L_1)\) and forces
+
+\[
+q_{\rm exc}=q_{03}q_1,
+\qquad
+u_{\rm exc}=U_{03}+u_1+U_{03}u_1.
+\]
+
+Its quadratic correction is the coefficient of the gallery secondary
+relation. In the fixed-beta completed Koba--Nielsen ring,
+\(U_{03}=\beta X_{03}v(X_{03})\), and the forced cycle
+
+\[
+\zeta=(1,0,-\beta v,0)
+\]
+
+generates the relevant \(u_1\)-supported full-path summand. Cartier log
+purity then gives
+
+\[
+\operatorname{Res}_{U_{03}}(dU_{03}/U_{03})
+=\operatorname{Res}_{X_{03}}(dX_{03}/X_{03})=1,
+\]
+
+so the local physical trace is closed with coefficient
+\([1/(u_0u_1u_3u_5)]\otimes[dX_{03}]\).
+
+The remaining obstruction is global rather than local. Every gallery face
+lies in \(F_1\), hence the gallery maps to zero in \(Q=F_2/F_1\). It contains
+no representative of
+
+\[
+e_F\in\operatorname{Ext}^2(Q,F_0).
+\]
+
+The immediate frontier is an explicit filtered pull--push map or homotopy
+showing that the proved log-gallery \(k\)-invariant is the Beck--Chevalley
+pullback of \(e_F\). Equality of their associated-grade coefficient is
+necessary evidence, not that theorem.
