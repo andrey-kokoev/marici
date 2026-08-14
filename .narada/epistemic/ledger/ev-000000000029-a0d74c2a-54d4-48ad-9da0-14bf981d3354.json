@@ -1,0 +1,164 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 29,
+  "event_id": "ev-000000000029-a0d74c2a-54d4-48ad-9da0-14bf981d3354",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6216f1bb6409607cc1c58e10a4deddd4f67cc1b61a86da0bc7f18f8381e1342e",
+  "proposal_id": "ep_eae9b9bc-4478-4e02-a2cb-acc9b18b5bd6",
+  "proposal_digest": "b14e3bfab1e344dcd67ce7f1d3ef3d00740ba246d11facfb1844795cbae49b78",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260814-92",
+      "kind": "source",
+      "title": "Character Match and the Vanishing Star-Costalk Map",
+      "version": "481a7743ccead19f487f26ce25e4c9bc13792128561508e891bf52f18364f095",
+      "locator": "src/ledger/20260814-92 Character Match and the Vanishing Star-Costalk Map.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-n8-orientation-costalk",
+      "kind": "source",
+      "title": "Exact n=8 global-orientation to D03-costalk audit",
+      "version": "e451d7dc14502b1608d1ad121419d848142d7e5aeeb27b5886a1f9ac8290b26e",
+      "locator": "research/voevodsky/check_n8_orientation_costalk.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-loaded-global-orientation-character-matches-chi-n",
+      "kind": "claim",
+      "title": "The global orientation line tensored with the independent polarity deck line has the abstract local character chi_N=(+1,-1,-1)."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-local-square-restriction-spans-a2",
+      "kind": "claim",
+      "title": "At D=03 the four global local-square boundaries restrict onto the full saturated local A2 road-difference lattice."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-global-star-restriction-counit-zero",
+      "kind": "criticism",
+      "title": "Ordinary graph-star restriction neither descends to a road-valued map from the global orientation quotient nor induces a primitive road counit; its quotient-to-quotient map is zero."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-character-does-not-determine-six-conductor-supports",
+      "kind": "criticism",
+      "title": "Character agreement does not determine the six alternating-conductor supports: representatives of one global primitive class give distinct local A2 and six-term vectors."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-n8-orientation-costalk-audit",
+      "kind": "test",
+      "title": "Compute the primitive orientation quotient, polarity-loaded character, D03 stabilizer, star restriction, quotient map, and six-support ambiguity."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-loaded-global-orientation-character-matches-chi-n",
+      "target_id": "source:marici-check-n8-orientation-costalk",
+      "relation_id": "rel:derived_from-cfbe252417c2416b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-local-square-restriction-spans-a2",
+      "target_id": "source:marici-check-n8-orientation-costalk",
+      "relation_id": "rel:derived_from-23779cb4dcf9cb31"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-global-star-restriction-counit-zero",
+      "target_id": "source:marici-ledger-20260814-92",
+      "relation_id": "rel:derived_from-6f5e13b1eba3fb35"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:qtds-n8-orientation-costalk-audit",
+      "target_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "relation_id": "rel:tests-d3640477be8bc4ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-global-star-restriction-counit-zero",
+      "target_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "relation_id": "rel:criticizes-ff119cd44923e16c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-character-does-not-determine-six-conductor-supports",
+      "target_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "relation_id": "rel:criticizes-6d8075233ff45458"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-local-square-restriction-spans-a2",
+      "target_id": "problem:qtds-jordan-half-line-atlas-coherence",
+      "relation_id": "rel:addresses-0c5b49ea8e94838d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-n8-orientation-costalk-audit-20260814",
+      "test_id": "test:qtds-n8-orientation-costalk-audit",
+      "actor": "marici.Nima",
+      "outcome": "Proved: the polarity-loaded character matches chi_N abstractly, but D03 stabilizer sees only the composite sign; res_D(S)=A2, raw restriction is representative-dependent, the induced L_or to P_D/A2 map is zero, and six conductor supports remain ambiguous.",
+      "evidence": [
+        {
+          "source_id": "source:marici-check-n8-orientation-costalk",
+          "locator": "research/voevodsky/check_n8_orientation_costalk.rs",
+          "paraphrase": "Exact integral quotient, character, stabilizer, restriction, and support-ambiguity certificate."
+        },
+        {
+          "source_id": "source:marici-ledger-20260814-92",
+          "locator": "src/ledger/20260814-92 Character Match and the Vanishing Star-Costalk Map.md",
+          "paraphrase": "Variance interpretation and corrected two-stage formula objective."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-twisted-verdier-road-counit-20260814-star-zero",
+      "subject_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "judgment": "character_supported_ordinary_restriction_falsified_loaded_gysin_still_open",
+      "actor": "marici.Nima",
+      "reason": "The required orientation/polarity character exists, but ordinary star restriction maps cycles into A2 and gives zero on primitive quotients; only an extraordinary coefficient-loaded duality map remains viable.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-92",
+          "locator": "src/ledger/20260814-92 Character Match and the Vanishing Star-Costalk Map.md",
+          "paraphrase": "Exact zero-map theorem and surviving Cousin/Gysin–Verdier formula."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:alternating-conductor-contact-cousin-20260814-support-ambiguity",
+      "subject_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "judgment": "requires_new_loaded_map_character_and_cellular_restriction_insufficient",
+      "actor": "marici.Nima",
+      "reason": "Two representatives of one global class give different local A2 and six-term supports, and the physical stabilizer cannot separate road-reflection from polarity signs.",
+      "evidence": [
+        {
+          "source_id": "source:marici-check-n8-orientation-costalk",
+          "locator": "research/voevodsky/check_n8_orientation_costalk.rs",
+          "paraphrase": "Representative and six-support witnesses plus stabilizer audit."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_authorization",
+    "statement": "The Operator directed Marici.Nima to continue, document, and use the epistemic graph for the primary frontier."
+  },
+  "idempotency_key": "auto-admission-39fbf3a319c9d81374f427fb",
+  "occurred_at": "2026-08-14T07:36:54.570798Z",
+  "certifies_truth": false,
+  "event_hash": "5df6451272aed89dd02da3f74ddef854672ef1324bd5f8c370f0212b02033962"
+}
