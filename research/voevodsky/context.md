@@ -517,8 +517,11 @@ factor as
 C_*^{\rm BM}(K_6)/C_*^{\rm BM}(B_{\rm short}).
 \]
 
-The last two arrows are the canonical dual-block counit and cellular relative
-map.  The one missing theorem is the filtered comparison
+This factorization was the entry-101 schematic target. Entry 103 shows that
+its middle arrow cannot be the literal dual-block inclusion: the actual road
+map is the inverse/dual of the peripheral connecting transgression described
+in Section 13. The one missing theorem was therefore retyped from the direct
+comparison
 
 \[
 \alpha_+:
@@ -526,9 +529,10 @@ map.  The one missing theorem is the filtered comparison
 \xrightarrow{\sim}R\Gamma_{v_+}^{F}(P_{\rm abs}).
 \]
 
-The filtration must retain dual-block depth, unlocalized normal support,
-normalization--conductor occurrence degree, support direction, and all
-orientation lines.  Its Rees parameter, the \(u_j\), and \(3\) remain
+to the peripheral cospan of Section 13. Its filtration must retain dual-block
+depth, unlocalized normal support, normalization--conductor occurrence
+degree, support direction, and all orientation lines. Its Rees parameter,
+the \(u_j\), and \(3\) remain
 uninverted.  The ordinary absolute-to-relative composite is zero because
 \(v_+\) is removed; its associated grade is entry 99's nonzero carrier and
 entry 101's weighted coefficients.  This is therefore a secondary filtered
@@ -573,3 +577,66 @@ coefficient grade and \(\beta_\triangle\) as its constant carrier shadow.
 Tate theory diagnoses the cyclic nonsplitting; it does not construct the
 scalar specialization, can--var, occurrence, excess, or physical-normal
 maps.
+
+## 13. Peripheral transgression, not literal dual-block inclusion
+
+Entry 103 corrects the carrier provenance assumed schematically in Section
+11. The barycentric coface block of the all-odd central vertex \(v_+\) stays
+inside its star. It contains none of the three long-road facets, so its
+literal cellular inclusion cannot be entry 99's map.
+
+The actual scalar geometry instead supplies the filtered triple
+
+\[
+v_+\subset B_{\rm short}\subset K_6.
+\]
+
+Its first exact-couple connecting map is
+
+\[
+\delta_1:H_2(K_6,B_{\rm short})
+\xrightarrow{\sim}H_1(B_{\rm short},v_+).
+\]
+
+Both sides are the integral \(A_2\) lattice. The three road facets map to
+their actual peripheral boundary cycles; their sum is the short-facet
+boundary; and any two give a saturated basis. The three unique flips out of
+\(v_+\) mark the roads \((F_{14},F_{03},F_{25})\) without reference to the
+desired target matrix.
+
+Entry 99's plus carrier is the inverse/dual variance of this transgression.
+The distinction is essential:
+
+\[
+\delta_1:\text{roads}\longrightarrow\text{periphery},
+\qquad
+A_+^{\rm car}:\text{dual link}\longrightarrow\text{roads}.
+\]
+
+Symmetry alone would leave the integral family
+
+\[
+M(a,b)=aI+b(J-I),\qquad c=a+2b.
+\]
+
+For positive top normalization, its action on the peripheral \(A_2\) quotient
+is \(1-3b\). Requiring the saturated inverse of \(\delta_1\) forces \(b=0\)
+and derives the identity road matching. This is the missing non-fitting
+criterion.
+
+The loaded objective should therefore be a correspondence, not a direct
+transition:
+
+\[
+\mathcal S_+^{\rm cond}
+\xrightarrow{\alpha_+^{\rm per}}
+\mathcal P_+^{F,\rm PC}
+\xleftarrow{\delta_1^{F,\rm PC}}
+\mathcal R_{\rm road}^{F,\rm PC}.
+\]
+
+Only the associated-grade carrier of \(\delta_1^{F,\rm PC}\) is currently
+proved invertible. The next theorem must construct both loaded arrows, retain
+the entry-100 local excess traces, recover entry 101's weighted star, and
+have entry 102's Tate class as its constant carrier shadow. No strict global
+inverse, literal dual-block inclusion, or rational splitting is required.
