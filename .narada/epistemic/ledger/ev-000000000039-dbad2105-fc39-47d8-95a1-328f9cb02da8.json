@@ -1,0 +1,237 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 39,
+  "event_id": "ev-000000000039-dbad2105-fc39-47d8-95a1-328f9cb02da8",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5508db5348f3021b0cff0297ad66cb187ce2c2a40912a0e437a7b0b4a71cb109",
+  "proposal_id": "ep_850aa3cc-46d1-4e99-b0d5-95c1063a9e84",
+  "proposal_digest": "76cbace6b2e20c23728b912b88d036ba6ad77057e8a46a68995d8904faf58bc6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:arxiv-2606.28052v1",
+      "local_ref": "p7",
+      "kind": "source",
+      "title": "Zhu–He–Han — Planar loop integrands from cuts in (D) dimensions",
+      "version": "arXiv:2606.28052v1 (2026-06-26)",
+      "locator": "https://arxiv.org/abs/2606.28052",
+      "summary": "Primary source proving universal Möbius reconstruction of planar colored loop integrands from canonical non-scaleless cut data."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:planar-cut-mobius-reconstruction",
+      "local_ref": "mobius",
+      "kind": "claim",
+      "title": "Planar colored loop reconstruction is Möbius inversion on the admissible cut-refinement poset",
+      "summary": "For the finite poset P of admissible non-scaleless planar topologies, canonical cuts are the zeta transform of irreducible numerator data; the inverse Möbius element reconstructs the integrand, with theory-independent coefficients and theory dependence confined to cut functions."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:minimal-cut-refinement-intertwining",
+      "local_ref": "j1mobius",
+      "kind": "conjecture",
+      "title": "Intertwining minimal spanning cuts and generating refinements suffices to intertwine planar Möbius reconstruction",
+      "summary": "If a theory-producing operation E, especially J1, preserves the admissible/scaleless quotient, tree gluing and internal-state descent, and commutes with every generating residue from minimal spanning cuts, then E commutes with the complete planar reconstructed integrand."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:derived-incidence-modular-completion",
+      "local_ref": "derivedinc",
+      "kind": "conjecture",
+      "title": "The cut-refinement incidence algebra is the Euler shadow of a derived incidence category of scalar degenerations",
+      "summary": "The coefficients gamma=1-chi(CW) should arise from shifted reduced cellular complexes and their refinement correspondences; modular completion is then derived incidence assembly, with ordinary Möbius inversion its decategorification."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:mobius-reconstruction-needs-admissible-quotient",
+      "local_ref": "scope",
+      "kind": "criticism",
+      "title": "Möbius reconstruction does not make raw Cut data conservative before the admissible quotient",
+      "summary": "The theorem is planar and organized after excluding scaleless sectors; it does not recover Cut-invisible contact/UV classes or prove nonplanar, uncolored, scalar-scaffolded, or chain-level compatibility."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:j1-minimal-cut-mobius-naturality",
+      "local_ref": "testj1",
+      "kind": "test",
+      "title": "Minimal-cut and refinement-edge naturality test for J1",
+      "summary": "On one fixed planar (n,L) poset, verify J1 on every minimal spanning cut and every single-propagator refinement edge, including scaleless-ideal preservation and internal-state gluing, then compare the two Möbius-reconstructed integrands."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:categorified-mobius-cousin-comparison",
+      "local_ref": "testcat",
+      "kind": "test",
+      "title": "Categorified Möbius versus scalar Cousin-totalization test",
+      "summary": "Replace gamma(Gamma)=1-chi(CW(Gamma)) by the shifted reduced cellular complex of CW(Gamma), test functorial composition under refinement, and compare its Euler shadow and orientation/torsion data with the scalar surface Cousin complex."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "mobius",
+      "target_ref": "p7",
+      "source_id": "claim:planar-cut-mobius-reconstruction",
+      "target_id": "source:arxiv-2606.28052v1",
+      "relation_id": "rel:derived_from-c81aa60ffa84db9d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "mobius",
+      "target_id": "conjecture:derived-normal-sector-principle",
+      "source_id": "claim:planar-cut-mobius-reconstruction",
+      "relation_id": "rel:addresses-a0294541643e7bd2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "j1mobius",
+      "target_ref": "mobius",
+      "source_id": "conjecture:minimal-cut-refinement-intertwining",
+      "target_id": "claim:planar-cut-mobius-reconstruction",
+      "relation_id": "rel:depends_on-9d447a13cd3a39f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "transforms",
+      "source_ref": "j1mobius",
+      "target_id": "conjecture:derived-normal-sector-principle",
+      "source_id": "conjecture:minimal-cut-refinement-intertwining",
+      "relation_id": "rel:transforms-4a4cf94ee8001bbf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "derivedinc",
+      "target_ref": "mobius",
+      "source_id": "conjecture:derived-incidence-modular-completion",
+      "target_id": "claim:planar-cut-mobius-reconstruction",
+      "relation_id": "rel:derived_from-74b162121cd38630"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "transforms",
+      "source_ref": "derivedinc",
+      "target_id": "conjecture:derived-normal-sector-principle",
+      "source_id": "conjecture:derived-incidence-modular-completion",
+      "relation_id": "rel:transforms-087f36d932f9c7e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "scope",
+      "target_ref": "j1mobius",
+      "source_id": "criticism:mobius-reconstruction-needs-admissible-quotient",
+      "target_id": "conjecture:minimal-cut-refinement-intertwining",
+      "relation_id": "rel:criticizes-396b638282acd16c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "scope",
+      "target_ref": "derivedinc",
+      "source_id": "criticism:mobius-reconstruction-needs-admissible-quotient",
+      "target_id": "conjecture:derived-incidence-modular-completion",
+      "relation_id": "rel:criticizes-b71ae65c71c4b1c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "scope",
+      "target_ref": "p7",
+      "source_id": "criticism:mobius-reconstruction-needs-admissible-quotient",
+      "target_id": "source:arxiv-2606.28052v1",
+      "relation_id": "rel:derived_from-758cccf541667ecb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "testj1",
+      "target_ref": "j1mobius",
+      "source_id": "test:j1-minimal-cut-mobius-naturality",
+      "target_id": "conjecture:minimal-cut-refinement-intertwining",
+      "relation_id": "rel:tests-c95c4c57c8bb67a8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "testj1",
+      "target_ref": "p7",
+      "source_id": "test:j1-minimal-cut-mobius-naturality",
+      "target_id": "source:arxiv-2606.28052v1",
+      "relation_id": "rel:derived_from-6fc0d379cac5c452"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "testcat",
+      "target_ref": "derivedinc",
+      "source_id": "test:categorified-mobius-cousin-comparison",
+      "target_id": "conjecture:derived-incidence-modular-completion",
+      "relation_id": "rel:tests-6eb13c71e09731e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "testcat",
+      "target_ref": "p7",
+      "source_id": "test:categorified-mobius-cousin-comparison",
+      "target_id": "source:arxiv-2606.28052v1",
+      "relation_id": "rel:derived_from-d39fb220c6237878"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-p7-mobius",
+      "subject_id": "claim:planar-cut-mobius-reconstruction",
+      "judgment": "proved_in_planar_colored_non_scaleless_scope",
+      "actor": "marici.Nima",
+      "reason": "The primary paper derives the cut relation as a zeta transform on a finite refinement poset and reconstructs the canonical planar integrand by the inverse Möbius function.",
+      "evidence": [
+        {
+          "source_id": "source:arxiv-2606.28052v1",
+          "locator": "https://arxiv.org/html/2606.28052v1#S2.SS3",
+          "paraphrase": "Equations 13–17 derive the universal Möbius coefficients; the abstract and section 3 separate universal reconstruction from theory-dependent D-dimensional tree gluing."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-p7-j1-inference",
+      "subject_id": "conjecture:minimal-cut-refinement-intertwining",
+      "judgment": "conditional_untested_inference",
+      "actor": "marici.Nima",
+      "reason": "Möbius naturality would propagate a correctly typed transformation of cut diagrams, but no scalar-scaffolding theorem yet proves J1 compatibility with generating refinements, the scaleless quotient, and internal-state descent.",
+      "evidence": [
+        {
+          "source_id": "source:arxiv-2606.28052v1",
+          "locator": "https://arxiv.org/html/2606.28052v1#S2.SS3",
+          "paraphrase": "The paper states that minimal spanning cuts generate higher cuts by further residues, but does not study J1 or scalar-derived normal operations."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-p7-derived-incidence",
+      "subject_id": "conjecture:derived-incidence-modular-completion",
+      "judgment": "plausible_structural_upgrade",
+      "actor": "marici.Nima",
+      "reason": "The equality gamma=1-chi(CW) gives a canonical Euler-characteristic shadow, while Marici's orientation, torsion and secondary classes require a chain-level refinement rather than scalar coefficients alone.",
+      "evidence": [
+        {
+          "source_id": "source:arxiv-2606.28052v1",
+          "locator": "https://arxiv.org/html/2606.28052v1#S2.SS2",
+          "paraphrase": "The reconstruction coefficient is one minus the Euler characteristic of a topology-dependent CW complex assembled from refinement intervals."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "primary_literature_synthesis",
+    "scope": "Verified arXiv:2606.28052v1 and its scoped implications for Marici modular completion"
+  },
+  "idempotency_key": "auto-admission-e3a977ad3659a1800484ecb8",
+  "occurred_at": "2026-08-14T14:05:35.7491871Z",
+  "certifies_truth": false,
+  "event_hash": "4cb1b81c13269ab5dc2f6985ccf38edbed30d4e1db57aaa614de3e00d513c11a"
+}
