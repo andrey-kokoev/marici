@@ -1,0 +1,258 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 30,
+  "event_id": "ev-000000000030-e2d269c2-04f6-4b50-8267-73a9b504d7cf",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5df6451272aed89dd02da3f74ddef854672ef1324bd5f8c370f0212b02033962",
+  "proposal_id": "ep_7ad4e364-18e9-4d69-a115-3453f1619d66",
+  "proposal_digest": "d25ef768b40dbf3df158792d9e66b9940df578a21635430ccfa0732bec4470ce",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260814-93",
+      "local_ref": "src93",
+      "kind": "source",
+      "title": "Alternating Fusion Normalization-Conductor Square",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-93 Alternating Fusion Normalization-Conductor Square.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-alternating-conductor-square",
+      "local_ref": "check93",
+      "kind": "source",
+      "title": "Exact alternating-fusion conductor-square certificate",
+      "version": "sha256:9cc13a160afe2e6d8895274a33ef43c45ccc40f51eaa6fab78209aee897ad6dd",
+      "locator": "research/voevodsky/check_alternating_conductor_square.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-alternating-fusion-is-conductor-cdh-square",
+      "local_ref": "cdhclaim",
+      "kind": "claim",
+      "title": "The two alternating fusion sheets form a finite normalization-conductor abstract blow-up square, hence a cdh distinguished square.",
+      "status": "proved",
+      "assumptions": [
+        "R=Z[y0,y1,y2] and the alternating short-variable zero sections of entry 66."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-93",
+        "source:marici-check-alternating-conductor-square"
+      ],
+      "factorization_test": {
+        "ring": "B=B+ times_C B- is R[x0,...,x5]/(x_even x_odd)",
+        "conductor": "J+ direct_sum J- with upper conductor Z+ disjoint_union Z-",
+        "descent": "0 to B to B+ direct_sum B- to C to 0 is exact"
+      },
+      "counterevidence": [
+        "This is conductor/cdh descent, not physical Cut coverage."
+      ],
+      "next_experiment": "Lift the conductor associated grade through the actual scalar PC/kinetic differential."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-six-support-symbol-is-polarity-odd-conductor-grade",
+      "local_ref": "symbolclaim",
+      "kind": "claim",
+      "title": "The six supported coefficients of sigma_alt are the canonical polarity-odd first associated grade of the normalization-conductor square.",
+      "status": "proved",
+      "assumptions": [
+        "The upper conductor retains its two sheet occurrences and the polarity orientation line."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-93",
+        "source:marici-check-alternating-conductor-square"
+      ],
+      "factorization_test": {
+        "coefficients": "(-y1,+y2,-y0,+y1,-y2,+y0) in (dx0,...,dx5)",
+        "rotation": "raw sign -1 and polarity-loaded sign +1"
+      },
+      "counterevidence": [
+        "Forgetting the two upper-conductor sheets loses the six occurrence supports."
+      ],
+      "next_experiment": "Compare the pre-incidence tag symbol with the Verdier-dual road counit."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-conductor-grade-does-not-supply-chain-lift",
+      "local_ref": "chaincrit",
+      "kind": "criticism",
+      "title": "A normalization-conductor cdh square does not by itself supply the scalar kinetic/BRST or loaded PC chain lift.",
+      "status": "open_obstruction",
+      "assumptions": [],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-93"
+      ],
+      "factorization_test": {
+        "missing": [
+          "filtration-preserving scalar differential",
+          "Cech differential compatibility",
+          "physical Cut Gysin naturality",
+          "internal-state coevaluation"
+        ]
+      },
+      "counterevidence": [],
+      "next_experiment": "Specify the admitted scalar differential and test d_target sigma = sigma d_scalar."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-cdh-recollement-cut-transfer-calculus",
+      "local_ref": "newproblem",
+      "kind": "problem",
+      "title": "Construct the scalar correspondence calculus with cdh conductor descent, contact/Cut recollement, and physical Cuts as Gysin transfers.",
+      "status": "open",
+      "assumptions": [
+        "Physical Cut faces are closed boundary strata rather than a covering family."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-90",
+        "source:marici-ledger-20260814-91",
+        "source:marici-ledger-20260814-93"
+      ],
+      "factorization_test": {
+        "cdh": "normalization-conductor squares",
+        "recollement": "contact relative complex versus Cut boundary",
+        "transfers": "Cut/Gysin maps with Beck-Chevalley and excess data"
+      },
+      "counterevidence": [
+        "No all-arity six-functor construction is yet proved."
+      ],
+      "next_experiment": "Construct the loaded D=03 conductor-to-circuit Gysin map and verify one separating Cut."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-alternating-conductor-cdh-audit",
+      "local_ref": "test93",
+      "kind": "test",
+      "title": "Audit the alternating fiber product, normalization conductor, exact sequence, six supports, and polarity rotation integrally."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "cdhclaim",
+      "target_ref": "src93",
+      "source_id": "claim:qtds-alternating-fusion-is-conductor-cdh-square",
+      "target_id": "source:marici-ledger-20260814-93",
+      "relation_id": "rel:derived_from-1d32f3aa3bdb06f4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "cdhclaim",
+      "target_ref": "check93",
+      "source_id": "claim:qtds-alternating-fusion-is-conductor-cdh-square",
+      "target_id": "source:marici-check-alternating-conductor-square",
+      "relation_id": "rel:derived_from-94938ac19c605da3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "symbolclaim",
+      "target_ref": "src93",
+      "source_id": "claim:qtds-six-support-symbol-is-polarity-odd-conductor-grade",
+      "target_id": "source:marici-ledger-20260814-93",
+      "relation_id": "rel:derived_from-27a3af66e5edc7c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test93",
+      "target_ref": "cdhclaim",
+      "source_id": "test:qtds-alternating-conductor-cdh-audit",
+      "target_id": "claim:qtds-alternating-fusion-is-conductor-cdh-square",
+      "relation_id": "rel:tests-d7ad230c9a3306c1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test93",
+      "target_ref": "symbolclaim",
+      "source_id": "test:qtds-alternating-conductor-cdh-audit",
+      "target_id": "claim:qtds-six-support-symbol-is-polarity-odd-conductor-grade",
+      "relation_id": "rel:tests-e589e76ab4253a71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "symbolclaim",
+      "target_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "source_id": "claim:qtds-six-support-symbol-is-polarity-odd-conductor-grade",
+      "relation_id": "rel:addresses-f779cae832ab817a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "chaincrit",
+      "target_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "source_id": "criticism:qtds-conductor-grade-does-not-supply-chain-lift",
+      "relation_id": "rel:criticizes-80379d87479edbcc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "newproblem",
+      "target_id": "problem:scalar-cut-cd-structure",
+      "source_id": "problem:qtds-cdh-recollement-cut-transfer-calculus",
+      "relation_id": "rel:supersedes-45f0cf6192cb7265"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "newproblem",
+      "target_id": "claim:qtds-alternating-fusion-is-conductor-cdh-square",
+      "source_id": "problem:qtds-cdh-recollement-cut-transfer-calculus",
+      "relation_id": "rel:depends_on-37447d55f53cf458"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "newproblem",
+      "target_id": "conjecture:scalar-master-localized-sheaf-with-transfers",
+      "source_id": "problem:qtds-cdh-recollement-cut-transfer-calculus",
+      "relation_id": "rel:maricirefines-67388f8740ae0d10"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-alternating-conductor-cdh-audit-20260814",
+      "test_id": "test:qtds-alternating-conductor-cdh-audit",
+      "actor": "marici.Nima",
+      "outcome": "passed: exact integral fiber-product, conductor, support, and polarity checks; no chain-lift claim",
+      "evidence": [
+        {
+          "source_id": "source:marici-check-alternating-conductor-square",
+          "locator": "research/voevodsky/check_alternating_conductor_square.rs",
+          "paraphrase": "Rust certificate passes with the recorded SHA-256."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:scalar-master-site-20260814-cdh-recollement-correction",
+      "subject_id": "conjecture:scalar-master-localized-sheaf-with-transfers",
+      "judgment": "refine_tau_cut_to_cdh_descent_plus_cut_transfers_and_contact_recollement",
+      "actor": "marici.Nima",
+      "reason": "The n=8 Cut family is not conservative on the physical occurrence object, while the alternating fusion normalization square is an actual cdh distinguished square with canonical sheet-resolved descent.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-93",
+          "locator": "src/ledger/20260814-93 Alternating Fusion Normalization-Conductor Square.md",
+          "paraphrase": "Proves the conductor cdh square and canonical polarity-odd first grade."
+        },
+        {
+          "source_id": "source:marici-ledger-20260814-90",
+          "locator": "src/ledger/20260814-90 Transverse Incidence Skeleton and the Cut-Only Descent Falsifier.md",
+          "paraphrase": "Shows physical Cut-only descent is non-separated on the scalar occurrence object."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "direct_operator_authorization",
+    "request": "Continue the primary frontier and use the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-3101b95cf487fec4dc3888b9",
+  "occurred_at": "2026-08-14T07:51:45.9969196Z",
+  "certifies_truth": false,
+  "event_hash": "c5e1d1872ddc96970a9fc74d586ab0dd3ca974f2e0b8ca061a0f4b0f35fba006"
+}

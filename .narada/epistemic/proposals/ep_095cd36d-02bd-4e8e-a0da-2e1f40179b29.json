@@ -1,0 +1,256 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_095cd36d-02bd-4e8e-a0da-2e1f40179b29",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "direct_operator_authorization",
+    "request": "Continue the primary frontier and use the epistemic graph."
+  },
+  "idempotency_key": "nima-entry94-augmented-triangle-d03-cousin-20260814-v1",
+  "expected_ledger_head": "c5e1d1872ddc96970a9fc74d586ab0dd3ca974f2e0b8ca061a0f4b0f35fba006",
+  "created_at": "2026-08-14T07:54:07.4154653Z",
+  "content_fingerprint": "5858bc594242ee9e720e1c809c44281aa76a53a384ffc905cec9c89f7eb71bd0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260814-94",
+      "local_ref": "src94",
+      "kind": "source",
+      "title": "Augmented Triangle Resolution and the D03 Primitive Cousin Symbol",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-94 Augmented Triangle Resolution and the D03 Primitive Cousin Symbol.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-d03-loaded-cousin-boundary",
+      "local_ref": "check94",
+      "kind": "source",
+      "title": "Exact D03 loaded Cousin/Gysin associated-grade certificate",
+      "version": "sha256:b4367cede237fdd81b0f0cbb2615b6e47951aaa8783eb519ba69724caeea9a79",
+      "locator": "research/voevodsky/check_d03_loaded_cousin_gysin_boundary.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-augmented-triangle-verdier-self-dual-resolution",
+      "local_ref": "triangle",
+      "kind": "claim",
+      "title": "The local tag/road carrier is the exact integral Verdier-self-dual augmented triangle resolution 0→1_or→P_tag→P_road→1→0.",
+      "status": "proved",
+      "assumptions": [
+        "The oriented triangle bases and normal-line conventions of entries 59, 64, and 89."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-94",
+        "source:marici-check-d03-loaded-cousin-boundary"
+      ],
+      "factorization_test": {
+        "exactness": "ker partial=im Delta and im partial=ker epsilon integrally",
+        "duality": "Delta dual equals epsilon and partial dual equals minus partial",
+        "smith": "The combined primitive/contact map has Smith factors (1,1,3)."
+      },
+      "counterevidence": [
+        "The resolution is not an integral direct sum of primitive and A2 sectors."
+      ],
+      "next_experiment": "Lift this carrier resolution to the loaded PC category."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "local_ref": "forkclaim",
+      "kind": "claim",
+      "title": "The pre-incidence alternating-conductor tag symbol has two intrinsic branches: its triangle boundary is the QTDS contact symbol, while its polarity-loaded dual relation counit is the primitive half-line symbol.",
+      "status": "proved_at_associated_grade",
+      "assumptions": [
+        "The sheet-resolved conductor square of entry 93 and the associated-grade road/circuit pairing of entry 89."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-94",
+        "source:marici-check-d03-loaded-cousin-boundary"
+      ],
+      "factorization_test": {
+        "incidence": "partial_triangle K_alt=C_QTDS",
+        "primitive": "(Delta dual tensor L_pol) K_alt=(1,1,1,1,1,1)",
+        "order": "Incidence first lands in A2 and has zero primitive augmentation."
+      },
+      "counterevidence": [
+        "Ordinary global graph-star restriction lands post-incidence in A2 and cannot produce this primitive branch."
+      ],
+      "next_experiment": "Construct the chain-level conductor-to-tag map before incidence."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-d03-associated-grade-primitive-cousin-symbol",
+      "local_ref": "d03claim",
+      "kind": "claim",
+      "title": "At D=03, the sheet-resolved conductor and endpoint Cousin data determine the primitive boundary cocycle with four unit occurrences and polarized value four.",
+      "status": "proved_at_associated_grade",
+      "assumptions": [
+        "Entry 86 endpoint Cousin signs and entry 89 Laurent occurrence pairing."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-94",
+        "source:marici-check-d03-loaded-cousin-boundary"
+      ],
+      "factorization_test": {
+        "occurrences": "four unit road corners",
+        "polarized_value": 4,
+        "polarity_residue_difference": 0,
+        "ordered_character": 1
+      },
+      "counterevidence": [
+        "Full PC Cut naturality remains untyped."
+      ],
+      "next_experiment": "Add the filtered source differential and test the complete Cut square."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-associated-symbol-does-not-determine-pc-chain-map",
+      "local_ref": "diffcrit",
+      "kind": "criticism",
+      "title": "The associated conductor symbol, Ward closure, and endpoint signs do not determine a full PC chain map without the actual filtered scalar differential.",
+      "status": "proved_underdetermination",
+      "assumptions": [],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-94",
+        "source:marici-check-d03-loaded-cousin-boundary"
+      ],
+      "factorization_test": {
+        "witness": "The same coefficient symbol is a chain map for the zero square-zero source differential and not for d(e1)=e0."
+      },
+      "counterevidence": [],
+      "next_experiment": "Construct the scalar first-jet/BRST differential rather than infer it from the symbol."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-d03-loaded-cousin-associated-grade-audit",
+      "local_ref": "test94",
+      "kind": "test",
+      "title": "Audit the augmented triangle, index-three gluing, conductor fork, D03 endpoint occurrences, and associated-grade Cut identities."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "triangle",
+      "target_ref": "src94",
+      "source_id": "claim:qtds-augmented-triangle-verdier-self-dual-resolution",
+      "target_id": "source:marici-ledger-20260814-94",
+      "relation_id": "rel:derived_from-52cdafc4c16123d5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "forkclaim",
+      "target_ref": "src94",
+      "source_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "target_id": "source:marici-ledger-20260814-94",
+      "relation_id": "rel:derived_from-e036741a1afb14ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "d03claim",
+      "target_ref": "src94",
+      "source_id": "claim:qtds-d03-associated-grade-primitive-cousin-symbol",
+      "target_id": "source:marici-ledger-20260814-94",
+      "relation_id": "rel:derived_from-3e5f106608b751eb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test94",
+      "target_ref": "triangle",
+      "source_id": "test:qtds-d03-loaded-cousin-associated-grade-audit",
+      "target_id": "claim:qtds-augmented-triangle-verdier-self-dual-resolution",
+      "relation_id": "rel:tests-7db853a5b0cf149d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test94",
+      "target_ref": "forkclaim",
+      "source_id": "test:qtds-d03-loaded-cousin-associated-grade-audit",
+      "target_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "relation_id": "rel:tests-14cd531d0e81e29a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test94",
+      "target_ref": "d03claim",
+      "source_id": "test:qtds-d03-loaded-cousin-associated-grade-audit",
+      "target_id": "claim:qtds-d03-associated-grade-primitive-cousin-symbol",
+      "relation_id": "rel:tests-e8107b6c8e2b878a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "forkclaim",
+      "target_id": "claim:qtds-six-support-symbol-is-polarity-odd-conductor-grade",
+      "source_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "relation_id": "rel:depends_on-ea248f3cf650a8f9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "forkclaim",
+      "target_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "source_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "relation_id": "rel:addresses-c3a083b042e9b19d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "d03claim",
+      "target_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "source_id": "claim:qtds-d03-associated-grade-primitive-cousin-symbol",
+      "relation_id": "rel:addresses-524af2071c19e8ec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "diffcrit",
+      "target_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "source_id": "criticism:qtds-associated-symbol-does-not-determine-pc-chain-map",
+      "relation_id": "rel:criticizes-ddbc7e963ec85ee7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "forkclaim",
+      "target_id": "problem:jordan-qtds-half-class-strictification",
+      "source_id": "claim:qtds-conductor-symbol-forks-to-primitive-and-qtds",
+      "relation_id": "rel:maricirefines-c409e3b97af6ce71"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-d03-loaded-cousin-associated-grade-20260814",
+      "test_id": "test:qtds-d03-loaded-cousin-associated-grade-audit",
+      "actor": "marici.Nima",
+      "outcome": "passed at associated grade; full PC chain map untyped",
+      "evidence": [
+        {
+          "source_id": "source:marici-check-d03-loaded-cousin-boundary",
+          "locator": "research/voevodsky/check_d03_loaded_cousin_gysin_boundary.rs",
+          "paraphrase": "Exact Rust audit with Smith, occurrence, sign, Cut, and underdetermination checks."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:alternating-conductor-contact-cousin-20260814-preincidence",
+      "subject_id": "conjecture:alternating-conductor-contact-cousin-connecting",
+      "judgment": "associated_grade_source_and_primitive_composite_proved_full_chain_untyped",
+      "actor": "marici.Nima",
+      "reason": "The cdh conductor symbol canonically lands in raw circuit tags, and its polarity-loaded Verdier-dual counit yields the D03 primitive boundary cocycle before incidence; the missing datum is now exactly the filtered source differential and relation lift.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-94",
+          "locator": "src/ledger/20260814-94 Augmented Triangle Resolution and the D03 Primitive Cousin Symbol.md",
+          "paraphrase": "Proves the local associated-grade fork and isolates the chain-level gap."
+        }
+      ]
+    }
+  ],
+  "digest": "84701867dcb3d02870113651e0153074cd75b468c82e6d99ba74ae20c7da4551"
+}
