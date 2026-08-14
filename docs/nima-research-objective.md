@@ -823,3 +823,144 @@ The work order is strict:
 Do not infer a kernel-level \(Q\)-leg from the ambient quotient, identify a
 quotient with a chosen subobject, or turn a local rank-one uniqueness theorem
 into existence of \(\operatorname{sp}_G\).
+
+## Secondary-cobordism refinement after entry 109
+
+The natural closed dual-star candidate is acyclic, and the natural
+endpoint-star repair has zero relative complex. A smaller marked
+seven-triangle carrier does exist, but it satisfies
+
+\[
+dT_\nu=G-J_\nu,
+\qquad
+[J_\nu]=0\text{ in }H_*(\widetilde F_2,\widetilde F_1).
+\]
+
+It is therefore a secondary cobordism, not a surviving primitive
+\(Q\)-class. The corrected aspirational formula is a Baer/Toda difference.
+In a common loaded dg mapping complex one must construct
+
+\[
+dh_{\rm Morse}=q_J,
+\qquad
+dH_{\rm cond}=e_Fq_J,
+\]
+
+and only then form
+
+\[
+\Delta_J=H_{\rm cond}-e_Fh_{\rm Morse}
+\in\operatorname{Ext}^1(J,F_0).
+\]
+
+An independent purity map
+
+\[
+\Phi_{J,+}:R\!\operatorname{Hom}(J,F_0)\to C_{03}^{\rm exit}
+\]
+
+would make the bounded objective
+
+\[
+\boxed{\Phi_{J,+}([\Delta_J])\stackrel?=[1]\in R/(U_{03}).}
+\]
+
+This is not yet a construction. The next executable task is first to derive
+the \(\mathcal P_{\rm abs}\)-loaded seven-triangle differential and its
+weighted \(d^2=0\) through a variance-correct barycentric
+incidence/Verdier kernel. The conductor comparison comes only after both
+homotopies live in the same complex.
+
+## Local Cartier-Bockstein theorem after entry 110
+
+The variance-correct pullback of the absolute scalar occurrence complex to
+the seven-triangle carrier exists integrally and has a full differential
+with \(d^2=0\). Its boundary is
+
+\[
+dH_{\rm Morse}^{\rm abs}
+=q_J^{\rm abs}-x_3\widetilde\xi^{\rm abs},
+\]
+
+not the unweighted formula. The common \(x_3\) is forced by scalar incidence
+and cannot be removed by an absolute \(R\)-linear map.
+
+In the endpoint-and-generic-relative complex \(B\), however,
+
+\[
+d_B[H_{\rm Morse}]=-x_3[\widetilde\xi].
+\]
+
+The Cartier triangle for \(I_3=(x_3)\), followed by the legitimate ideal
+evaluation \(x_3^\vee(x_3)=1\), gives
+
+\[
+\boxed{
+\beta_{x_3}[H_{\rm Morse}\bmod x_3]
+=-[\widetilde\xi].
+}
+\]
+
+The output is a certified nonzero \(x_3\)-torsion class in the minimal
+relative complex. This is the first intrinsic chain model for the local
+rank-jump symbol:
+
+\[
+\operatorname{gr}_{x_3}^{\rm local}
+\simeq\beta_{x_3}^{\rm Cartier}.
+\]
+
+The next bounded objective is not yet the full Baer/Toda comparison. First
+construct a one-sheet conductor map from this Cartier complex to the
+positive three-tag normal-link complex and derive its shift, incidence, and
+orientation. Then rotate/polarize and test whether the two sheet maps form
+\(K_{\rm alt}\). Occurrence \(x_3\) and monodromy \(u_3\) must remain
+separate throughout.
+
+## Rees--Cartier refinement after entry 111
+
+The residual occurrence-line system has a natural integral dual cap, unique
+up to its global orientation. If one inputs a segmentwise map from the
+expanded gallery to the positive triangle, the only strict pre-Cartier top
+map is
+
+\[
+H\longmapsto-x_3f_+.
+\]
+
+Its honest first symbol is
+
+\[
+\bar H\longmapsto-[x_3]\otimes f_+
+\in(I_3/I_3^2)\otimes f_+,
+\]
+
+and it becomes \(-f_+\) only after oriented conormal evaluation. A plain
+associated-grade map to the uniformly filtered free target is zero, and a
+strict post-Cartier map is ruled out by
+
+\[
+\operatorname{Hom}_R(R/(x_3),R)=0.
+\]
+
+The staggered target lattice \(I_3f_+\) is therefore the correct algebraic
+receptacle, but entries 93--94 do not construct it geometrically.
+
+The proposed segmentwise geometric anchor is also invalid: \(x_3\) occurs on
+all three expanded-gallery edges, while the exceptional ray belongs to the
+blowup of \((D03,x_1)\), not to the conductor normal \(dx_3\). Entry 94 labels
+the whole \(D03\) road by \(d_1\); it does not label the middle subdivision
+edge by \(d_1\).
+
+The simplified frontier is consequently two-stage:
+
+1. construct a Gysin/cosheaf map from the **whole** \(D03\) Cartier gallery
+   class to the single positive tag \(t_3\), and rotate it to the whole
+   \(F_{14}\) and \(F_{25}\) roads;
+2. prove that the three rotated source tops glue to a single conductor
+   two-cell with boundary \(t_1+t_3+t_5\), deriving its Rees lattice rather
+   than assigning it.
+
+This retains the full effect of the one-sheet comparison while removing the
+unsupported claim that one stellar subdivision already carries all three
+conductor directions.
