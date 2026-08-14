@@ -85,9 +85,14 @@ The ledger currently keeps three frontiers separate:
   derived Gysin class into a weighted three-interval cube. Its full QTDS
   polarization is eight times the primitive Laurent class. The weighted cube,
   both caps, and its 3-cell are actual scalar associahedral faces forming a
-  minimal polynomial resolution; they kill the belt class integrally. The
-  remaining eight-point datum is a loaded derived Beck--Chevalley attachment
-  from the disjoint pentagon/square route Čech object to the regional belt. A
+  minimal polynomial resolution; they kill the belt class integrally. Its
+  primitive generator is exactly the maximally factorized boundary value of
+  \(\mathsf J\), up to the ordered normal sign. The route source already has
+  a surjective polynomial augmentation onto the regional occurrence ideal,
+  so its unfiltered comparison exists and is unique up to homotopy. What it
+  lacks are four middle-interval overlap generators needed to preserve the
+  belt support filtration. The remaining eight-point datum is therefore the
+  scalar loaded-boundary provenance of those four Beck--Chevalley bridges. A
   BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
@@ -202,6 +207,8 @@ rustc --edition=2021 -D warnings -O research/nima/check_route_kernel_hom_complex
 & "$env:TEMP\marici-route-hom.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_decorated_source_cap.rs -o "$env:TEMP\marici-decorated-source-cap.exe"
 & "$env:TEMP\marici-decorated-source-cap.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\marici-dependent-bc.exe"
+& "$env:TEMP\marici-dependent-bc.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -422,3 +429,13 @@ prohibited overclaims.
   resolution of the occurrence ideal, so the cap/cube obstruction vanishes integrally. The
   remaining nontransverse datum is a loaded derived Beck--Chevalley attachment from the disjoint
   route Čech object to the four-facet regional belt.
+- `20260813-77` identifies the occurrence ideal as squarefree and the opposite labels as
+  Alexander complements. The primitive weighted-interval generator equals the exact four-point
+  inverse-pairing half-class, so its tensor product is the factorized boundary restriction of
+  \(\mathsf J\) on every maximal quadrangulation chart. The global problem is now gluing these
+  local half-lines by a filtered Beck--Chevalley transition.
+- `20260813-78` proves that the route Čech source already augments polynomially onto the regional
+  occurrence ideal, so the unfiltered comparison exists and is unique up to homotopy. It also
+  proves that the established duplicate-occurrence overlaps cannot reach the four interval
+  overlaps of the belt. Each missing bridge has one primitive polynomial syzygy and the normalized
+  four-cycle has determinant \(\pm1\); only their intrinsic loaded scalar provenance remains open.
