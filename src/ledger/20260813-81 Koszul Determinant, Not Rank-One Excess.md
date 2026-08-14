@@ -20,6 +20,12 @@ The universal monodromy base-change theorem and the double-loading warning of
 entry 80 remain valid.  What is withdrawn is their proposed geometric
 completion by a rank-one excess line.
 
+Forward correction (entry 82): the local loaded completion is the target-first
+composite \(\chi_Q^{\rm PC}j_Qq_Q\).  It uses the determinant intervals inside
+scalar support descent and applies one PC loading only after that descent.
+The stronger route-first comparison is not required for the local physical
+normal symbol.
+
 ## Epistemic correction
 
 The Marici epistemic graph contains two deliberately conjectural ancestors:
@@ -325,6 +331,10 @@ Also reject:
 It contains one determinant interval and two endpoint monodromy factors.
 
 ## Next formula objective
+
+Forward correction: entry 82 completes this objective in the target-first
+derived PC category.  The next unresolved test is horizontal assembly around
+the residual quadrangulation octagon.
 
 Construct a support-filtered loaded correspondence
 

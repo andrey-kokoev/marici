@@ -10,6 +10,11 @@ envelope.  Forward correction (entry 76): the actual scalar source caps and
 cube exist and close the belt integrally.  What remains open is the loaded
 derived Beck--Chevalley attachment from the disjoint route faces to that belt.
 
+Forward correction (entry 82): the attachment remains open only as a
+comparison with an independently loaded route-first presentation.  It is not
+needed to define the target-first normal symbol, because scalar support
+descent precedes the single facewise PC loading.
+
 Entry 74 identified a canonical oriented relative/Borel--Moore map class but
 left two questions unresolved:
 

@@ -2946,3 +2946,41 @@ from tangential loading, collars, or the orientation local system. The
 representative eight-point test must compute the product of the four actual
 PC transitions and prove it is one, while simultaneously verifying the full
 five-term dependent pentagon Cousin identity.
+
+### Descent before loading closes the local PC symbol
+
+The preceding last sentence asked for more than the physical target-first
+construction requires. Entry 38 already fixes the operation order
+
+\[
+\operatorname{Poch}_{\alpha'}\circ\operatorname{gr}_R.
+\]
+
+Entry 79 now completes the support-derived scalar route-to-belt descent
+\(q_Q\), and entry 76 identifies the belt with actual facets of the regional
+scalar cube. Therefore the correctly typed local object is simply
+
+\[
+\boxed{
+\mathsf J_Q^{\rm PC}
+=
+\chi_Q^{\rm PC}\circ j_Q\circ q_Q.
+}
+\]
+
+The three factors are chain maps. Their composite gives the loaded five-term
+pentagon identity, sends both internal \(H_s\) cones to zero before loading,
+descends through the four determinant-overlap relations, and inherits the
+ordered double-residue sign and deck covariance. Since \(\chi_Q^{\rm PC}\) is
+applied once on the single regional cube, target-first four-chart holonomy is
+exactly one; there are no independent loaded transition units to multiply.
+
+This does not construct an occurrence-decorated PC functor on the dependent
+route charts or a comparison homotopy with such a route-first object. Those
+would be stronger presentation-comparison data. They are not prerequisites
+for the normal symbol because scalar extraction and descent must occur first.
+
+The remaining local-to-global problem is horizontal: rotate the target-first
+maps through the eight route-pentagon deck images, assemble them over the
+quadrangulation compatibility complex, and compute the residual octagon/Jordan
+holonomy.

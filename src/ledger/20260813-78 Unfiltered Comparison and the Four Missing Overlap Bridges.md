@@ -13,6 +13,11 @@ ideals, or equivalently taking the residual kernel of the actual polygon map,
 supplies those generators canonically.  Only their finite-\(\alpha'\) loaded
 scalar realization remains conditional.
 
+Forward correction (entry 82): their target-first finite-loaded realization
+is the composite of the completed scalar descent with the facewise PC map on
+the actual regional cube.  What remains conditional is the stronger
+route-first PC presentation and a comparison between the two orders.
+
 This entry resolves the Hom-complex question posed in entries 76--77.  It
 also changes the diagnosis of the remaining problem:
 

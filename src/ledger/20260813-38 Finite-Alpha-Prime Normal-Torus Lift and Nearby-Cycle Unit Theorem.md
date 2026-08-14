@@ -28,6 +28,13 @@ bridge is the determinant of a rank-two endpoint Koszul complex.  The missing
 attachment must therefore be constructed as a loaded correspondence kernel,
 not inferred from an existing excess-normal line.
 
+Forward correction (entry 82): for the physical target-first normal symbol,
+the stronger route-first attachment is not required.  Entry 79 performs the
+support-derived scalar descent first; the present facewise PC map is then
+applied once to the actual regional cube.  This composite closes the local
+loaded pentagon and double-residue identities.  An independently loaded route
+presentation and its comparison homotopy remain optional stronger data.
+
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted
 form. This is the correct strength: the earlier collar/Thom ambiguity disappears in the derived

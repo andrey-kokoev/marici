@@ -1,0 +1,329 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 20,
+  "event_id": "ev-000000000020-f7127d13-9401-4da3-ad85-3fc3b2b988a2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "341f56b35ee4fea904a39168844ee8a4a5d002eb91052d0b2aa8132b1cfdb836",
+  "proposal_id": "ep_112534b2-103a-43f5-9d70-33452bd63901",
+  "proposal_digest": "3541a812b0bb39b1f3e8e3ef48fd7301e8eaa0b3dba1f8e086f0a9b78b6c205e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260813-82",
+      "local_ref": "entry82_source",
+      "kind": "source",
+      "title": "Marici ledger entry 82: Descent Before Loading and the Target-First PC Theorem",
+      "version": "2026-08-13-entry-82",
+      "locator": "src/ledger/20260813-82 Descent Before Loading and the Target-First PC Theorem.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-target-first-local-pc-symbol",
+      "local_ref": "local_pc_claim",
+      "kind": "claim",
+      "title": "Descent before one facewise Pochhammer/Cousin loading defines a canonical local eight-point scalar normal symbol.",
+      "status": "proved",
+      "assumptions": [
+        "The support-derived route-to-belt quotient q_Q is the split exact descent of entry 79.",
+        "The belt embeds in the actual fixed-core regional scalar cube of entry 76.",
+        "The facewise Pochhammer/Cousin map of entry 38 is applied only after scalar descent."
+      ],
+      "evidence_refs": [
+        "ledger entry 82",
+        "research/nima/check_resolved_overlap_hypercech.rs sha256:54294778b90b634c4bc542d93a1bc7273e52008a34da37ea06becd65ab554acf",
+        "research/nima/check_decorated_source_cap.rs sha256:81828d55d754cb25acac89ef42abf02e709e2f3e67c1ede16a0e0fe714998556",
+        "research/nima/check_loaded_route_cube_gysin.rs sha256:f3489edc4e5017e4f39ecfcb9fc982e7af8c6234094ec22e219343d6661288ad"
+      ],
+      "factorization_test": {
+        "object": "J_Q^PC = chi_Q^PC o j_Q o q_Q",
+        "result": "Each factor is a chain map; scalar X weights and Pochhammer normal factors remain separately typed."
+      },
+      "counterevidence": [
+        "This does not construct a route-first occurrence-decorated PC current or a comparison homotopy.",
+        "The theorem is local to the representative rank-two n=8 core and its deck orbit."
+      ],
+      "next_experiment": "Assemble the local target-first symbols over the full compatibility complex and compute the residual octagon holonomy."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-target-first-pentagon-residue-holonomy",
+      "local_ref": "local_naturality_claim",
+      "kind": "claim",
+      "title": "The local target-first symbol satisfies the loaded five-term pentagon identity, ordered double-residue Koszul naturality, deck covariance, and unit target holonomy.",
+      "status": "proved",
+      "assumptions": [
+        "The two H_s cones and four determinant overlap intervals lie in the kernel of scalar descent.",
+        "Physical normal lines are ordered and the facewise PC map is strongly monoidal on transverse physical boundaries."
+      ],
+      "evidence_refs": [
+        "ledger entry 82 sections Loaded five-term pentagon identity, Physical residues, and Holonomy",
+        "the three exact Rust certificates cited by entry 82"
+      ],
+      "factorization_test": {
+        "pentagon": "d_PC J_Q^PC(P) = sum_a epsilon_a J_Q^PC(e_a)",
+        "residues": "Res_E,D J_Q^PC = - Res_D,E J_Q^PC",
+        "holonomy": "H_Q^target-first = 1"
+      },
+      "counterevidence": [
+        "No claim is made about transition holonomy in a hypothetical independently loaded route-first current model."
+      ],
+      "next_experiment": "Compute H_oct^PC = T_7 T_6 ... T_0 for the residual compatibility octagon."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-route-first-pc-comparison-not-prerequisite",
+      "local_ref": "order_criticism",
+      "kind": "criticism",
+      "title": "Requiring a route-first Pochhammer comparison to define the local symbol reverses the established operation order.",
+      "status": "established",
+      "assumptions": [
+        "Associated-grade scalar descent precedes exponentiated worldsheet loading."
+      ],
+      "evidence_refs": [
+        "ledger entries 38 and 82"
+      ],
+      "factorization_test": {
+        "corrected_order": "Poch_alpha' o gr_R",
+        "local_composite": "chi_Q^PC o j_Q o q_Q"
+      },
+      "counterevidence": [
+        "A route-first construction may still exist and may provide a scientifically useful comparison theorem."
+      ],
+      "next_experiment": "Treat route-first loading only as an optional comparison after an occurrence-decorated current model is independently defined."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "local_ref": "octagon_problem",
+      "kind": "problem",
+      "title": "Determine whether the eight local target-first symbols close around the residual compatibility octagon.",
+      "status": "open",
+      "assumptions": [
+        "The local target-first symbol exists on each deck-rotated rank-two core."
+      ],
+      "evidence_refs": [
+        "ledger entry 82 next formula objective"
+      ],
+      "factorization_test": {
+        "objective": "H_oct^PC = T_7 T_6 ... T_0"
+      },
+      "counterevidence": [
+        "A nontrivial cohomology class of H_oct^PC - 1 is a global eight-point obstruction."
+      ],
+      "next_experiment": "Construct the eight horizontal transition maps in the regional PC targets and multiply them in cyclic order."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "local_ref": "octagon_conjecture",
+      "kind": "conjecture",
+      "title": "The deck-rotated target-first local PC symbols close globally around the eight-point compatibility octagon.",
+      "status": "conditional",
+      "assumptions": [
+        "Horizontal regional transition maps are defined in one common derived PC target.",
+        "Their restrictions agree with the proved local double-residue and deck data."
+      ],
+      "evidence_refs": [
+        "ledger entry 82 local theorem"
+      ],
+      "factorization_test": {
+        "strict_closure": "H_oct^PC = 1",
+        "homotopy_closure": "H_oct^PC - 1 = dK + Kd"
+      },
+      "counterevidence": [
+        "A nonzero class [H_oct^PC - 1] falsifies global closure."
+      ],
+      "next_experiment": "Compute the residual octagon holonomy before evaluating the global Parke-Taylor period vector."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-global-target-first-octagon-holonomy",
+      "local_ref": "octagon_test",
+      "kind": "test",
+      "title": "Compute the cyclic product of the eight target-first regional transition maps and classify its defect.",
+      "status": "pending",
+      "assumptions": [
+        "All transitions are represented in the same filtered facewise PC/Cousin category."
+      ],
+      "evidence_refs": [
+        "ledger entry 82"
+      ],
+      "factorization_test": {
+        "pass": "H_oct^PC = 1 or H_oct^PC - 1 is explicitly null-homotopic",
+        "fail": "[H_oct^PC - 1] is nonzero"
+      },
+      "counterevidence": [
+        "Pairwise local agreement alone is not a substitute for the cyclic product."
+      ],
+      "next_experiment": "Build the horizontal compatibility matrix on the residual octagon and compute its integral/filtered holonomy."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "local_pc_claim",
+      "target_ref": "entry82_source",
+      "source_id": "claim:qtds-target-first-local-pc-symbol",
+      "target_id": "source:marici-ledger-20260813-82",
+      "relation_id": "rel:derived_from-ff395e50c56cbd0e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "local_pc_claim",
+      "target_id": "claim:qtds-overlap-bridge-is-rank-two-koszul-determinant",
+      "source_id": "claim:qtds-target-first-local-pc-symbol",
+      "relation_id": "rel:depends_on-2443740dd1204351"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "local_pc_claim",
+      "target_id": "problem:qtds-loaded-endpoint-kernel-double-gysin",
+      "source_id": "claim:qtds-target-first-local-pc-symbol",
+      "relation_id": "rel:addresses-58e2a386fa1a1faf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "local_naturality_claim",
+      "target_ref": "entry82_source",
+      "source_id": "claim:qtds-target-first-pentagon-residue-holonomy",
+      "target_id": "source:marici-ledger-20260813-82",
+      "relation_id": "rel:derived_from-6e962f4dbac00c13"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "local_naturality_claim",
+      "target_ref": "local_pc_claim",
+      "source_id": "claim:qtds-target-first-pentagon-residue-holonomy",
+      "target_id": "claim:qtds-target-first-local-pc-symbol",
+      "relation_id": "rel:depends_on-b65a583f3f712edd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "order_criticism",
+      "target_ref": "entry82_source",
+      "source_id": "criticism:qtds-route-first-pc-comparison-not-prerequisite",
+      "target_id": "source:marici-ledger-20260813-82",
+      "relation_id": "rel:derived_from-763037491c8fcaee"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "order_criticism",
+      "target_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "source_id": "criticism:qtds-route-first-pc-comparison-not-prerequisite",
+      "relation_id": "rel:criticizes-633358f6e1d9fd3a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "octagon_problem",
+      "target_ref": "entry82_source",
+      "source_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "target_id": "source:marici-ledger-20260813-82",
+      "relation_id": "rel:derived_from-f57e287204aa1d47"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "octagon_conjecture",
+      "target_ref": "octagon_problem",
+      "source_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "target_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "relation_id": "rel:addresses-9e0377826fa878df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "octagon_conjecture",
+      "target_ref": "local_pc_claim",
+      "source_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "target_id": "claim:qtds-target-first-local-pc-symbol",
+      "relation_id": "rel:depends_on-492d5ba7959990b7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "octagon_test",
+      "target_ref": "octagon_conjecture",
+      "source_id": "test:qtds-global-target-first-octagon-holonomy",
+      "target_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "relation_id": "rel:tests-0bf3cd222285bba0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "octagon_test",
+      "target_ref": "entry82_source",
+      "source_id": "test:qtds-global-target-first-octagon-holonomy",
+      "target_id": "source:marici-ledger-20260813-82",
+      "relation_id": "rel:derived_from-09a0d2c29a13ee46"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "octagon_problem",
+      "target_id": "problem:qtds-mixed-beck-chevalley-square",
+      "source_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "relation_id": "rel:depends_on-3a82bbc1f2892ec5"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-loaded-endpoint-determinant-target-first-local-20260813",
+      "subject_id": "conjecture:qtds-loaded-endpoint-determinant-kernel",
+      "judgment": "proved_locally_for_the_correctly_ordered_target_first_realization",
+      "actor": "marici.Nima",
+      "reason": "The physical local objective is realized by chi_Q^PC o j_Q o q_Q after scalar support descent. The literal route-first occurrence-decorated PC kernel remains undefined and is not required.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-82",
+          "locator": "Record; Chain-map theorem; Loaded five-term pentagon identity; Physical residues; Holonomy",
+          "paraphrase": "The target-first composite is a canonical local chain map and passes the pentagon, residue, deck, and target-holonomy tests."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-loaded-endpoint-double-gysin-problem-local-20260813",
+      "subject_id": "problem:qtds-loaded-endpoint-kernel-double-gysin",
+      "judgment": "resolved_locally_by_descent_before_loading_route_first_comparison_remains_optional",
+      "actor": "marici.Nima",
+      "reason": "The correctly ordered construction compares with physical double Gysin in the transverse regional target after scalar descent, so no dependent route-first loaded square is needed locally.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-82",
+          "locator": "The operation-order correction; Physical residues; Representation independence",
+          "paraphrase": "The local double-Gysin objective closes in the target-first category while the stronger opposite-order comparison is explicitly left unproved."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-loaded-endpoint-determinant-target-first-20260813",
+      "test_id": "test:qtds-loaded-endpoint-determinant-pentagon-holonomy",
+      "actor": "marici.Nima",
+      "outcome": "passed_for_the_target_first_local_construction; literal_route_first_kernel_not_constructed",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-82",
+          "locator": "Loaded five-term pentagon identity; Physical residues; Holonomy",
+          "paraphrase": "The descended-and-once-loaded local symbol satisfies the five-term identity, both ordered double residues, deck covariance, and unit target holonomy."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "site_ledger_curator",
+    "site_root": "C:/Users/andrey/src/marici",
+    "source": "ledger entry 82 and its exact local certificates",
+    "scope": "Nima scalar-normal-geometry research"
+  },
+  "idempotency_key": "auto-admission-185289b314c9fbad922ef642",
+  "occurred_at": "2026-08-14T04:46:09.3837665Z",
+  "certifies_truth": false,
+  "event_hash": "35bf33e65200c3901ba5139614168ff6222e20d68c6d07ee9cff90bb397b57fa"
+}
