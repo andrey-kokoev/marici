@@ -636,7 +636,79 @@ transition:
 \]
 
 Only the associated-grade carrier of \(\delta_1^{F,\rm PC}\) is currently
-proved invertible. The next theorem must construct both loaded arrows, retain
-the entry-100 local excess traces, recover entry 101's weighted star, and
-have entry 102's Tate class as its constant carrier shadow. No strict global
-inverse, literal dual-block inclusion, or rational splitting is required.
+proved invertible. No strict global inverse, literal dual-block inclusion, or
+rational splitting is required.
+
+## 14. Formal peripheral roof and the purity boundary
+
+Entry 104 simplifies the loaded problem. Suppose an absolute unlocalized
+facewise support--PC object has actually been constructed on the strict
+filtration
+
+\[
+F_0=PC_{\rm supp}(v_+)
+\subset F_1=PC_{\rm supp}(B_{\rm short})
+\subset F_2=PC_{\rm supp}(K_6).
+\]
+
+With
+
+\[
+P=F_1/F_0,\qquad E=F_2/F_0,\qquad R=F_2/F_1,
+\]
+
+the short exact sequence \(0\to P\to E\to R\to0\) forces the peripheral
+arrow as the off-diagonal differential, equivalently the canonical roof
+
+\[
+R\xleftarrow{\sim}\operatorname{Cone}(P\to E)
+\longrightarrow P[-1].
+\]
+
+The occurrence-loaded cellular realization, Rees degrees, \(D_3\) action,
+ordered orientations, and entry-103 saturated carrier are exact and
+integral. Thus the peripheral arrow is no longer an independently fitted
+construction.
+
+The scope boundary is equally exact. Entry 38 realizes the facewise PC model
+only after finite-nonresonant localization. Entry 100 supplies local
+unlocalized packets but not the absolute complex \(F_2\) and all its Cousin
+gluing maps. Existence of the global unlocalized filtration remains open.
+
+The filtration canonically defines
+
+\[
+e_F=[0\to F_0\to F_1\to F_2/F_0\to F_2/F_1\to0]
+\in\operatorname{Ext}^2(R,F_0).
+\]
+
+After Verdier duality, the only genuinely cross-geometry arrow still needed
+is the purity equivalence
+
+\[
+\operatorname{pur}_+:
+\mathcal S_+^{\rm cond}\xrightarrow{\sim}\mathbb D(F_0)[-2].
+\]
+
+The candidate global half-symbol is therefore
+
+\[
+\boxed{
+A_+^{\rm sec}=\mathbb D(e_F)\circ\operatorname{pur}_+:
+\mathcal S_+^{\rm cond}\longrightarrow\mathbb D(R).
+}
+\]
+
+This is a Verdier-dual Yoneda two-extension, not a literal spectral-sequence
+\(d_2\): the carrier \(d_1:H_2(K_6,B_{\rm short})\to
+H_1(B_{\rm short},v_+)\) is already an isomorphism. Nor are entry 100's local
+traces literal restrictions of the peripheral arrow. Their source contains
+the additional reciprocal conductor factor and repeated-normal excess line,
+so they must be recovered as derived Beck--Chevalley two-cells after purity.
+
+The smallest next theorem is one actual formal-support purity square on the
+eight-cell \(v_+\) costalk and the marked \(D03\) face. It must produce the
+mixed excess vector \(\eta_{3,\rm mix}\), the simple-pole four-normal residue,
+unit endpoints, and the separate positive physical normal line without
+fitting. If it passes, rotate it by \(D_3\) and assemble
+\(\operatorname{Cone}(\alpha_+-\delta^F)[-1]\).

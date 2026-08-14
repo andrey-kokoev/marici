@@ -1,0 +1,240 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 35,
+  "event_id": "ev-000000000035-3afaaac3-9636-43c4-bfd2-432acab0a9df",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0a8973f6eae40c73fd57e3f57a21afe6f476a3a3c34387c92d173cb02fa2901e",
+  "proposal_id": "ep_22247223-b9bc-4d21-b440-4e63b97604f4",
+  "proposal_digest": "825f6c04861d22a94e2e3eca6657e90c56167f4e0f029020e33c45c1ab5fdc8b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:ledger-entry-104-peripheral-roof-purity-gap",
+      "local_ref": "src104",
+      "title": "Ledger entry 104: Canonical Peripheral Roof and the Cross-Geometry Purity Gap",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-104 Canonical Peripheral Roof and the Cross-Geometry Purity Gap.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:checker-loaded-peripheral-transgression",
+      "local_ref": "checker104",
+      "title": "Exact loaded peripheral transgression Rust certificate",
+      "version": "sha256:0668e9335babe2c9e9de1b728bcafb5f1b4fcb5d3d97c540859025e9481a5fc8",
+      "locator": "research/voevodsky/check_loaded_peripheral_transgression.rs"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:conductor-vertex-purity-audit",
+      "local_ref": "purityaudit",
+      "title": "Conductor-to-central-vertex purity audit",
+      "version": "sha256:98a42f3dddcaa8bd14a456ef7f9fc30bf3ca548bbc75557d69424364064f6d45",
+      "locator": "research/voevodsky/conductor_vertex_purity_audit.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "local_ref": "roofclaim",
+      "title": "Any strict global unlocalized support-PC filtration of v+ subset B_short subset K6 canonically forces the peripheral arrow as a cone roof and Yoneda two-extension; its occurrence/carrier realization is exact.",
+      "status": "proved_in_stated_formal_and_occurrence_scope; conditional_on_global_loaded_filtration"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "problem",
+      "entity_id": "problem:cross-geometry-conductor-vertex-purity",
+      "local_ref": "purityproblem",
+      "title": "Construct the global unlocalized support-PC filtration and a conductor-to-central-vertex Verdier purity equivalence whose D03 pullback yields the established mixed excess trace."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "criticism",
+      "entity_id": "criticism:entry38-purity-and-literal-d2-shortcuts",
+      "local_ref": "shortcutcrit",
+      "title": "Entry 38 does not supply scalar conductor-to-vertex purity, and the half-symbol is not a literal spectral-sequence d2 because the carrier d1 is already an isomorphism."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:loaded-peripheral-roof-certificate",
+      "local_ref": "rooftest",
+      "title": "Verify the formal cone roof, Yoneda extension, occurrence loading, Rees degree, D3 covariance, orientations, and saturated carrier shadow."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:vplus-d03-formal-support-purity-square",
+      "local_ref": "puritytest",
+      "title": "Construct one v+ to D03 formal-support purity square and test eta_3,mix, the simple-pole residue, unit endpoints, and the positive physical normal line."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "roofclaim",
+      "target_ref": "src104",
+      "source_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "target_id": "source:ledger-entry-104-peripheral-roof-purity-gap",
+      "relation_id": "rel:derived_from-72c99e6d8bd2ac3c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "roofclaim",
+      "target_ref": "checker104",
+      "source_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "target_id": "source:checker-loaded-peripheral-transgression",
+      "relation_id": "rel:derived_from-55dc0dbe87267e8e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "roofclaim",
+      "target_id": "claim:peripheral-transgression-derives-global-carrier",
+      "source_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "relation_id": "rel:depends_on-64e516a928fa8bad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "roofclaim",
+      "target_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "source_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "relation_id": "rel:addresses-ce565d2108fc1297"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "purityproblem",
+      "target_id": "problem:filtered-conductor-dual-block-comparison",
+      "source_id": "problem:cross-geometry-conductor-vertex-purity",
+      "relation_id": "rel:supersedes-5a40e92ffd7fdc35"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "purityproblem",
+      "target_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "source_id": "problem:cross-geometry-conductor-vertex-purity",
+      "relation_id": "rel:addresses-82b6e32fe3c89dfb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "purityproblem",
+      "target_ref": "purityaudit",
+      "source_id": "problem:cross-geometry-conductor-vertex-purity",
+      "target_id": "source:conductor-vertex-purity-audit",
+      "relation_id": "rel:derived_from-2a6865b5232e9865"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "shortcutcrit",
+      "target_id": "problem:filtered-conductor-dual-block-comparison",
+      "source_id": "criticism:entry38-purity-and-literal-d2-shortcuts",
+      "relation_id": "rel:criticizes-1a75e97ed2c27680"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "shortcutcrit",
+      "target_ref": "src104",
+      "source_id": "criticism:entry38-purity-and-literal-d2-shortcuts",
+      "target_id": "source:ledger-entry-104-peripheral-roof-purity-gap",
+      "relation_id": "rel:derived_from-4c2d978f1cf6f1f2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "rooftest",
+      "target_ref": "roofclaim",
+      "source_id": "test:loaded-peripheral-roof-certificate",
+      "target_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "relation_id": "rel:tests-874a16569d1a3dd5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "rooftest",
+      "target_ref": "checker104",
+      "source_id": "test:loaded-peripheral-roof-certificate",
+      "target_id": "source:checker-loaded-peripheral-transgression",
+      "relation_id": "rel:derived_from-083f7a02d76f4f62"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "puritytest",
+      "target_ref": "purityproblem",
+      "source_id": "test:vplus-d03-formal-support-purity-square",
+      "target_id": "problem:cross-geometry-conductor-vertex-purity",
+      "relation_id": "rel:tests-ff69a9c8c4a60542"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "puritytest",
+      "target_ref": "roofclaim",
+      "source_id": "test:vplus-d03-formal-support-purity-square",
+      "target_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "relation_id": "rel:depends_on-1c5a476083defb4f"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:peripheral-roof-scope-20260814",
+      "subject_id": "claim:peripheral-roof-formal-from-support-filtration",
+      "judgment": "proved in the formal filtration and exact occurrence/carrier scope; conditional as a global unlocalized loaded theorem",
+      "actor": "marici.Nima",
+      "reason": "The roof and Yoneda class are forced once the strict filtration exists, and the exact occurrence model passes; no global unlocalized PC_supp(K6) with all Cousin maps has yet been constructed.",
+      "evidence": [
+        {
+          "source_id": "source:ledger-entry-104-peripheral-roof-purity-gap",
+          "locator": "Claim, Exact realization and scope, and Remaining arrow sections",
+          "paraphrase": "Separates the formal theorem from the missing global filtration and purity comparison."
+        },
+        {
+          "source_id": "source:checker-loaded-peripheral-transgression",
+          "locator": "structured JSON output",
+          "paraphrase": "Checks the block differential, roof, Yoneda extension, occurrence weights, D3 action, orientations, and carrier shadow."
+        },
+        {
+          "source_id": "source:conductor-vertex-purity-audit",
+          "locator": "Verdict and minimal missing theorem",
+          "paraphrase": "Shows that entry 38 does not supply the cross-geometry purity equivalence and that the literal d2 interpretation fails."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:loaded-peripheral-roof-certificate-20260814",
+      "test_id": "test:loaded-peripheral-roof-certificate",
+      "actor": "marici.Nima",
+      "outcome": "passed in the exact formal filtration and unlocalized occurrence/carrier model; global unlocalized support-PC existence remains untested",
+      "evidence": [
+        {
+          "source_id": "source:checker-loaded-peripheral-transgression",
+          "locator": "SHA-256 0668e9335babe2c9e9de1b728bcafb5f1b4fcb5d3d97c540859025e9481a5fc8",
+          "paraphrase": "Rust formatting, warning-free compilation, execution, and structured-output validation pass."
+        },
+        {
+          "source_id": "source:ledger-entry-104-peripheral-roof-purity-gap",
+          "locator": "Outcome contract",
+          "paraphrase": "Records the passed identities and the unconstructed global inputs without truth overreach."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "research_session",
+    "session": "Nima",
+    "basis": "Ledger entry 104, an exact Rust certificate, and a scoped primary audit under docs/research-lifecycle.md."
+  },
+  "idempotency_key": "auto-admission-ca8ff15e840b811ce6c614a3",
+  "occurred_at": "2026-08-14T12:17:57.9333116Z",
+  "certifies_truth": false,
+  "event_hash": "946f66c085aa0f78bb8183f7b731d024fefe269551f19aea34963fc8d71b6d3b"
+}
