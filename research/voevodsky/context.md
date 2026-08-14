@@ -1421,3 +1421,48 @@ and then pushed to the reciprocal/Borel--Moore road
 be given artificial \(h_3\) generators.  Next derive these two endpoint
 pushforwards, including the \(x_1,x_5\) occurrence ideal lines, and test the
 Cartier--PL Beck--Chevalley square.
+
+## 27. Exact endpoint hull and the road-generization criterion
+
+Entry 117 turns the formal Thom column into a precise local test. Over
+\(R=\mathbb Z[x_1,x_5]\), its minimal exact source is
+
+\[
+R\langle e_3\rangle
+\xrightarrow{(-x_1,x_5)^T}
+R\langle q_0,q_2\rangle
+\xrightarrow{(x_5,x_1)}R\langle a\rangle
+\to R/(x_1,x_5).
+\]
+
+The coefficient-only map to an abstract road interval is uniquely the lcm
+map up to one scalar:
+
+\[
+(\alpha,b_0,b_2)=c(x_1x_5,x_5,x_1).
+\]
+
+For an actual road boundary
+\(dF_{03}=b_0\tau_{q_0}+b_2\tau_{q_2}\), generic normalization \(g=1\),
+and endpoint values \(a_0,a_2\), the loaded two-path condition is
+
+\[
+b_0=-x_1a_0,
+\qquad b_2=x_5a_2.
+\]
+
+The endpoint maps are unique once geometry supplies divisible road
+generizations, but the external Thom tensor does not supply those
+generizations. Entries 86 and 97 do not close the gap: their marked trace
+lives on the \(F_{03}\) vertices
+\(x_0x_3,x_1x_3,x_0x_4,x_1x_4\), while the source cells are the distinct
+Boolean lines \(q_0=\{x_5\}\) and \(q_2=\{x_1\}\).
+
+After base change to \(R/(x_1,x_5)\), the Cartier packets become
+\([C\xrightarrow0 C]\), so Beck--Chevalley reduces to \(0=0\) and cannot
+recover the lost ideal inclusions. The smallest next experiment is one
+endpoint kernel \(\Gamma_0^{!,\rm mR}\), with a nonzero generic \(Q\)-leg,
+special boundary \(-x_1q_0\), external \([t_3]\), actual road
+\(\operatorname{Tor}_1\) target, repeated-normal excess, and separate
+\([dX_{03}]\). Do not construct both endpoints or rotate by \(D_3\) until
+this single derived-Hom/Beck--Chevalley class is shown to exist.
