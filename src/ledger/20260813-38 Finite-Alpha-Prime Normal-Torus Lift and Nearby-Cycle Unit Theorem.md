@@ -16,7 +16,12 @@ and unique normalized local derived class. Entry 76 identifies the weighted
 target, both caps, and the cube with actual scalar associahedral faces and
 closes their polynomial cellular extension. What is still missing is the
 loaded derived Beck--Chevalley attachment from the disjoint dependent route
-faces to the four-facet regional belt.
+faces to the four-facet regional belt. Entry 80 proves that the complete
+entry-79 relation algebra survives the formal substitution
+\(X_{ra}\mapsto q_{ra}-1\), but also shows why that substitution is not the
+missing attachment: the present entry retains \(X_{ra}\) as scalar
+occurrence coefficients and puts \(q_E-1\) in a separate normal Koszul
+factor, so tensoring both loadings would double count the boundary direction.
 
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted

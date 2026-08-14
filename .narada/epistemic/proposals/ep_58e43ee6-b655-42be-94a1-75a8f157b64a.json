@@ -1,0 +1,198 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_58e43ee6-b655-42be-94a1-75a8f157b64a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the primary Nima frontier, document the path, and preserve the distinction between algebraic evidence and unresolved geometric provenance."
+  },
+  "idempotency_key": "auto-proposal-faf570aab11330f9865d0fed",
+  "expected_ledger_head": "0e9d493b9a63864341bcdccb391d79bfe2197d401c7c3c6cce67766d3dce8ccf",
+  "created_at": "2026-08-14T04:21:22.9646024Z",
+  "content_fingerprint": "faf570aab11330f9865d0fed049df978346e0acd5c79402c51a45caa371cd2ee",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260813-79",
+      "kind": "source",
+      "title": "Resolved Overlap Ideals and Effective Belt Descent",
+      "version": "1",
+      "locator": "src/ledger/20260813-79 Resolved Overlap Ideals and Effective Belt Descent.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260813-80",
+      "kind": "source",
+      "title": "Universal Monodromy Base Change and the Double-Loading No-Go",
+      "version": "1",
+      "locator": "src/ledger/20260813-80 Universal Monodromy Base Change and the Double-Loading No-Go.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-overlap-bridges-algebraically-resolved",
+      "kind": "claim",
+      "title": "The four support-selected overlap bridges are canonical primitive syzygies and saturated carrier-kernel summands.",
+      "summary": "Each adjacent overlap ideal is C_e(X_10,X_11), its minimal resolution is one weighted interval, and the actual polygon carrier kernel leaves exactly these four intervals after removing the two internal H_s cones; all normalizations are unimodular."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-overlap-bridges-algebraically-resolved",
+      "target_id": "source:marici-ledger-20260813-79",
+      "relation_id": "rel:derived_from-8d8ae97afc7680e3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:partial_resolution_of",
+      "source_id": "claim:qtds-overlap-bridges-algebraically-resolved",
+      "target_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "relation_id": "rel:maricipartial_resolution_of-0f1bbc55e5fd1cd2"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-universal-monodromy-relation-base-change",
+      "kind": "claim",
+      "title": "The resolved overlap relation algebra has an exact universal X-to-(q-1) monodromy base change.",
+      "summary": "Over Z[u_ra] with u_ra=q_ra-1, the support hyper-Cech resolution, four bridge intervals, two H_s cones, polygon boundary identities, deck covariance, ordered-normal sign, and formal C4 holonomy all close; flat local-system localization preserves the identities."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-universal-monodromy-relation-base-change",
+      "target_id": "source:marici-ledger-20260813-80",
+      "relation_id": "rel:derived_from-69af8ff678826556"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:qtds-universal-monodromy-relation-base-change",
+      "target_id": "claim:qtds-overlap-bridges-algebraically-resolved",
+      "relation_id": "rel:depends_on-9bd7f79d08267c96"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-formal-monodromy-double-loading",
+      "kind": "criticism",
+      "title": "Formal X-to-(q-1) substitution does not establish physical Pochhammer/Cousin provenance.",
+      "summary": "Entry 38 retains X as the scalar occurrence coefficient and places q_E-1 in a separate normal Koszul factor. Substituting q-1 into the scalar carrier and tensoring the physical normal factor would double-load the boundary direction."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-formal-monodromy-double-loading",
+      "target_id": "source:marici-ledger-20260813-80",
+      "relation_id": "rel:derived_from-c9cc46c8333d02e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-formal-monodromy-double-loading",
+      "target_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "relation_id": "rel:criticizes-232f8cd3de9e832e"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-loaded-excess-thom-gysin-holonomy",
+      "kind": "problem",
+      "title": "Construct the actual loaded excess Thom/Gysin transition and compute its dependent-pentagon and four-chart holonomy.",
+      "summary": "Build the scalar multi-normal specialization square, compute its relative cotangent triangle, prove or falsify a locally free rank-one excess line, construct its single monodromic PC transition, and test the full five-term identity and finite holonomy."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "problem:qtds-loaded-excess-thom-gysin-holonomy",
+      "target_id": "problem:qtds-mixed-beck-chevalley-square",
+      "relation_id": "rel:maricirefines-5906bf0fdf13d7ab"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "kind": "conjecture",
+      "title": "A rank-one geometric excess line realizes each algebraic overlap bridge with exactly one Pochhammer normal factor.",
+      "summary": "In the actual scalar specialization/physical-cut square, the excess cotangent complex is conjecturally a line whose monodromic Thom boundary is (q_11-1)e_(v1)-(q_10-1)e_(v0), whose V-grade is the entry-79 bridge, and whose four transitions have trivial finite holonomy."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "target_id": "source:marici-ledger-20260813-80",
+      "relation_id": "rel:derived_from-f8dd5a516a3abe66"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "target_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "relation_id": "rel:maricirefines-e68d8eff1cee2d50"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "target_id": "problem:qtds-loaded-excess-thom-gysin-holonomy",
+      "relation_id": "rel:addresses-5528e845ebea9ebe"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-loaded-excess-line-pentagon-holonomy",
+      "kind": "test",
+      "title": "Compute one actual excess cotangent complex, its loaded five-term pentagon current, and the four-transition holonomy.",
+      "summary": "Falsify the conjecture if the excess rank is not one, its Thom boundary has different weights, tangential/lower-face terms fail the five-term identity, or the product of the four oriented PC transitions is not the identity."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:qtds-loaded-excess-line-pentagon-holonomy",
+      "target_id": "conjecture:qtds-loaded-excess-line-realizes-bridges",
+      "relation_id": "rel:tests-fe2cc3bdf7c4575f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:qtds-loaded-excess-line-pentagon-holonomy",
+      "target_id": "source:marici-ledger-20260813-80",
+      "relation_id": "rel:derived_from-66097f07cbe7124b"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-overlap-excess-conjecture-after-entry-80",
+      "subject_id": "conjecture:qtds-overlap-bridges-as-excess-intersection-classes",
+      "judgment": "partially_supported_algebraically_geometric_provenance_open",
+      "actor": "marici.Nima",
+      "reason": "The predicted rank-one primitive bridge and cycle gluing are proved in the support-selected algebraic carrier, and a universal formal monodromy base change exists. Neither result constructs the actual derived scalar fiber product, excess cotangent line, or Pochhammer/Cousin transition.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-79",
+          "locator": "Epistemic boundary and resolved support hyper-Cech theorem",
+          "paraphrase": "All four adjacent overlaps have one primitive interval resolution and occur as the saturated residual kernel of the actual polygon carrier."
+        },
+        {
+          "source_id": "source:marici-ledger-20260813-80",
+          "locator": "Double-loading no-go and epistemic boundary",
+          "paraphrase": "Formal q-1 substitution closes algebraically but is differently typed from the physical X-decorated carrier tensored with one normal Pochhammer Koszul factor."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-overlap-conormal-test-entry-79-80",
+      "test_id": "test:qtds-overlap-bridge-conormal-complex",
+      "actor": "marici.Nima",
+      "outcome": "algebraic_proxy_passed_geometric_conormal_test_not_yet_executed",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-79",
+          "locator": "Support-adjacent intersections",
+          "paraphrase": "The algebraic overlap has rank-one primitive syzygy with boundary weights X_11 and -X_10."
+        },
+        {
+          "source_id": "source:marici-ledger-20260813-80",
+          "locator": "Why algebraic rank one is not yet geometric excess",
+          "paraphrase": "The actual relative cotangent complex and its locally free excess line have not been constructed."
+        }
+      ]
+    }
+  ],
+  "digest": "226911992737308fe47b51b2c7808989f1edb4dd39a317ba1e34fc8795294e80"
+}

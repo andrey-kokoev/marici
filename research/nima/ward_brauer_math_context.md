@@ -2884,3 +2884,45 @@ construct the same relation groupoid in finite-\(\alpha'\) loaded
 Pochhammer/Cousin or multi-normal geometry and prove the five-term pentagon
 identity. After that, the next obstruction is global: assemble the eight deck
 images and compute the residual octagon/Jordan holonomy.
+
+### Universal monodromy base change versus physical loading
+
+The complete relation algebra admits an exact formal monodromy deformation.
+With \(u_{ra}=q_{ra}-1\), base change
+
+\[
+X_{ra}\longmapsto u_{ra}
+\]
+
+over \(\mathbf Z[u_{00},\ldots,u_{21}]\) preserves the weighted cube, all four
+support-overlap intervals, both collapsed pentagon cones, the full pentagon
+and square carrier identities, deck covariance, and the ordered-normal
+Koszul sign. The formal bridge is
+
+\[
+d h_e=u_{11}e_{v^1}-u_{10}e_{v^0}.
+\]
+
+The support hyper--Čech sequence remains split exact after passage to the
+universal local-system group ring. Its formal four-transition holonomy is
+exactly one.
+
+This is not yet the physical finite-loaded relation groupoid. In the
+facewise Pochhammer/Cousin comparison, the \(X_{ra}\) are scalar occurrence
+coefficients and \(q_E-1\) is the differential of a separate normal Koszul
+factor. Substituting \(q-1\) for \(X\) and then tensoring that normal complex
+would load the same boundary direction twice. Thus the remaining theorem is
+geometric, not another coefficient calculation: construct the multi-normal
+specialization square, prove that its relative cotangent excess is a line,
+and realize its single Thom/Gysin factor as the loaded transition.
+
+The formal grade also cannot exclude a residual unit holonomy
+
+\[
+H(\alpha')=1+O(\alpha')
+\]
+
+from tangential loading, collars, or the orientation local system. The
+representative eight-point test must compute the product of the four actual
+PC transitions and prove it is one, while simultaneously verifying the full
+five-term dependent pentagon Cousin identity.
