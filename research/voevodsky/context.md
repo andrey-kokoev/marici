@@ -860,3 +860,70 @@ The immediate frontier is an explicit filtered pull--push map or homotopy
 showing that the proved log-gallery \(k\)-invariant is the Beck--Chevalley
 pullback of \(e_F\). Equality of their associated-grade coefficient is
 necessary evidence, not that theorem.
+
+## 17. Ambient log-blowup invariance and its exact limit
+
+Entry 107 globalizes the middle expansion without closing the final
+comparison. Blow up the actual codimension-two face
+
+\[
+C=\{D03,x_1\}\subset K_6.
+\]
+
+The face census changes from \((1,9,21,14)\) to \((1,10,24,16)\), and the
+loaded complex from 215 to 245 generators. The occurrence and normal layers
+must be kept separate. Occurrence uses the lcm cellular resolution,
+
+\[
+de_c'=X_{03}b_1-x_5a,
+\quad dh_E=b_D-b_1,
+\quad de_r'=x_0c-x_1b_D,
+\]
+
+with primitive chain
+
+\[
+\widetilde\xi=x_1e_c'+X_{03}x_1h_E+X_{03}e_r'.
+\]
+
+Only the Kummer layer has
+
+\[
+q_E=q_{03}q_1,
+\qquad u_E=u_{03}+q_{03}u_1.
+\]
+
+Both layers have saturated integral contractions. Extending them over all
+spectator cells gives a filtered strong deformation retract which is the
+identity on \(F_0\) and on the relative quotient. In fact
+
+\[
+\widetilde Q=\widetilde F_2/\widetilde F_1=Q
+\]
+
+as the same seven-generator loaded chain complex. The global Yoneda class
+therefore transports canonically under the blowup.
+
+This theorem also fixes the obstruction. Because the center lies in the
+short boundary, the exceptional divisor and expanded gallery lie wholly in
+\(\widetilde F_1\). Their \(Q\)-image is strictly zero. The new path is a
+canonical secondary trivialization of the zero literal restriction, not a
+new representative of \(e_F\).
+
+The remaining arrow is consequently bivariant:
+
+\[
+\operatorname{BC}^{\log}_{+;03}:
+R\!\operatorname{Hom}(\widetilde Q,\widetilde F_0[2])
+\longrightarrow\mathcal H^{\rm loc}_{+;03}.
+\]
+
+It must independently supply a nonzero \(Q\)-leg, the repeated-normal excess
+packet, and the extraordinary support variance. Once a closed normalized
+class exists in the target, entry 97 identifies it uniquely with
+\(\Theta_{03}^{\rm loc}\). The uniqueness theorem does not construct this
+source operation.
+
+An additive exceptional occurrence variable \(X_E=X_{03}+x_1\) is now a
+certified wrong turn: it leaves a noncontractible \(K(X_E)\) quotient. The
+multiplicative exceptional rule belongs only to monodromy.

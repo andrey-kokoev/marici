@@ -660,60 +660,99 @@ it must remain explicit.
 
 ## Bounded long-run objective
 
-A long or overnight investigation should attempt exactly the first canonical
-unproved comparison in the construction. Entries 105--106 now supply the
-absolute unlocalized support complex, local conductor purity, the marked
-loaded gallery, its logarithmic expansion, and its physical trace. The
-current bounded target is therefore the global promotion
+Entry 107 proves that the natural ambient log blowup is an integral filtered
+resolution, not the missing comparison. For
+
+\[
+p:\widetilde K_6=\operatorname{Bl}_{\{D03,x_1\}}K_6\to K_6,
+\]
+
+the lcm occurrence complex and multiplicative monodromy packet admit a
+filtered strong deformation retract which is the identity on
+
+\[
+F_0
+\qquad\text{and}\qquad
+Q=F_2/F_1.
+\]
+
+Hence \(p^*e_F\) is canonically the original Yoneda class. But the complete
+exceptional divisor and expanded marked gallery lie in \(\widetilde F_1\),
+so their ordinary \(Q\)-image is zero. Do not repeat the blowup-invariance
+calculation or infer the desired map from it.
+
+The current bounded target is the independently constructed bivariant arrow
 
 \[
 \boxed{
-\widetilde\Gamma_{+;03}^{\rm log}:
-\bigl(Q\xrightarrow{e_F}F_0[2]\bigr)
-\dashrightarrow
-\mathcal G_{+;03}^{\rm log},
-\qquad Q=F_2/F_1,
+\operatorname{BC}^{\log}_{+;03}:
+R\!\operatorname{Hom}(\widetilde Q,\widetilde F_0[2])
+\longrightarrow
+\mathcal H^{\rm loc}_{+;03},
 }
 \]
 
-or an equivalent explicit filtered homotopy/pull--push kernel. It must prove
-that the local gallery \(k\)-invariant is the restriction of \(e_F\), rather
-than merely sharing its associated-grade coefficient. The Rees parameter
-\(t\), the normal variables \(u_j\), and \(3\) must remain uninverted.
-Occurrence pullbacks, reciprocal/Borel--Moore support directions, the
-repeated-normal excess line, lower-Cousin maps, physical normal line,
-determinant orientation, polarity, and \(\chi_N\) must remain visible.
+where
 
-The resulting formula objective is
+\[
+\mathcal H^{\rm loc}_{+;03}
+=R\!\operatorname{Hom}
+\left(
+\mathcal S_{+,03}^{\vee,\rm reg},
+\mathbb D\mathcal Q_{03,\partial}^{\rm PC}\otimes\chi_N
+\right)
+\]
+
+is the normalized local Hom complex certified in entries 97 and 100. This
+arrow must arise from a genuine extraordinary pull--push, deformation, or
+cohomological-correspondence kernel. It may not be defined by assigning its
+desired value.
+
+The formula objective is
 
 \[
 \boxed{
-\operatorname{BC}_{+;03}(\widetilde\Gamma_{+;03}^{\rm log},e_F)
-(\eta_{3,\rm mix})
+\operatorname{BC}^{\log}_{+;03}(p^*e_F)
+=\Theta_{03}^{\rm loc},
+\qquad
+\Theta_{03}^{\rm loc}(\eta_{3,\rm mix})
 =\left[\frac1{u_0u_1u_3u_5}\right]\otimes[dX_{03}],
 \qquad
-\operatorname{pb}_{03}^{\rm lit}(e_F)=0.
+\operatorname{pb}_{03}^{\rm lit}(p^*e_F)=0.
 }
 \]
 
-The local right-hand side is already proved independently; the equality is a
-test of the global pull--push map, not its definition. The comparison must
-also produce the two unit endpoints and have entry 99's carrier, entry 101's
-weighted star, and entry 106's secondary gallery relation as its supported
-associated grades. After forgetting supported coefficients, the assembled
-orbit must recover entry 102's class \(\beta_\triangle\).
+The middle and final equalities are already proved independently. They are
+tests of the first arrow, not its definition. A successful construction must
+simultaneously exhibit:
 
-Its useful terminal outcomes are either:
+- a nonzero input leg from the literal seven-generator \(Q\);
+- the expanded lcm-labelled carrier
+  \(\widetilde\xi=x_1e_c'+X_{03}x_1h_E+X_{03}e_r'\);
+- the two labelled copies of the shared normal and their primitive excess
+  class \(\eta_{3,\rm mix}\);
+- reciprocal-regular versus original-Borel--Moore support variance;
+- the lower-Cousin terms, two positive endpoint units, determinant line,
+  polarity, \(\chi_N\), and separate positive \([dX_{03}]\) line;
+- compatibility with the global Yoneda extension before invoking entry 97's
+  rank-one uniqueness theorem.
 
-- one filtered pull--push comparison proving that the log-gallery
-  \(k\)-invariant is the pullback of \(e_F\), with a reproducible certificate;
-  or
-- one sharp falsifier showing that every filtration-compatible promotion of
-  the proved gallery class has zero or incorrect \(Q\)-leg.
+The Rees parameter, occurrence coefficients, universal normal variables,
+and integers remain uninverted. In particular, never introduce an additive
+exceptional occurrence variable \(X_E=X_{03}+x_1\): entry 107 proves that
+occurrence uses lcm labels, while only monodromy satisfies
+\(q_E=q_{03}q_1\).
 
-Do not recompute the absolute differential, purity shift, gallery class, or
-Cartier residue; replace the correspondence by the already-falsified literal
-pullback; construct the six road maps independently; resurrect a pairwise
-\(q\)-vertex transition; test \(\Delta\) on one pair alone; or expand to a
-new multiplicity, a fourth primitive, or another sign census while this one
-global Yoneda comparison remains unconstructed.
+Useful terminal outcomes are either:
+
+- one explicit, correctly typed bivariant kernel proving the displayed
+  equality, together with an exact certificate; or
+- one no-go theorem for all natural extraordinary-pullback constructions
+  satisfying the stated support, filtration, and normalization conditions.
+
+Do not recompute the absolute differential, local purity, gallery class,
+Cartier residue, or ambient blowup SDR; replace the bivariant arrow by the
+already-zero literal restriction; fit a representative from the desired
+residue; rationally split the triangle; construct six road maps separately;
+or expand to another multiplicity while this single global-to-local arrow
+remains unconstructed.
