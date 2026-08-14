@@ -23,6 +23,14 @@ different statements:
 
 The first two are established exactly.  The third is not.
 
+Forward correction (entry 74): the formal totalization below deliberately
+used an overlarge target, copying the rank-eight occurrence module over all
+twenty-seven cube cells.  The support-compatible target is instead the tensor
+product of three weighted interval complexes, with degree ranks
+\((8,12,6,1)\).  Entry 74 also proves that the forty strict pentagon lifts
+reduce to one oriented relative/Borel--Moore class, while no preferred strict
+representative follows from the existing typed data.
+
 The four physical support charts recover every basis vector of the relevant
 rank-eight occurrence fiber, but they form only the four side facets of a
 cube.  The two missing cap squares and the cube 3-cell give the correct target

@@ -4,20 +4,17 @@ Temporary working log. Update after each Marici graph pass; remove items when ve
 
 ## Active
 
-1. **Semantic duplicate checks are single-query only**
-   - A pass with several candidate concepts requires repeated `epistemic_graph_query` calls.
-   - Desired: one bounded batch-query accepting multiple search terms and returning compact grouped matches.
-
-2. **Ledger extraction still requires manual section discovery**
-   - Each source needs a headings search followed by selected range reads.
-   - Desired: a bounded source-inspection helper returning title, status, epistemic-boundary, decision, and exact line locators without attempting semantic admission.
-
-3. **Loader-wrapped child results duplicate representations**
-   - Child data is commonly present in both textual `content` and `structuredContent` inside the loader result.
-   - This wastes context even when the caller uses only the structured projection.
-   - Desired: a compact structured-result mode that preserves errors, paging references, and typed summaries.
+- None from this pass. Continue recording newly observed friction here.
 
 ## Resolved and verified
+
+- Batch duplicate discovery is available through `epistemic_graph_query_batch` and was verified live with three grouped queries.
+- Bounded structural ledger inspection is available through `epistemic_graph_source_inspect`; live verification returned all relevant sections with exact line ranges and explicit truncation.
+- Loader-wrapped structured results no longer duplicate textual content; the compact structured envelope was verified live.
+- Immutable correction is available through `epistemic_graph_proposal_resubmit`; live verification removed one named relation from a 31-operation proposal without paging and the verification draft was rejected.
+- Compact capture receipts now remain compact through the loader boundary; detailed proposal reads remain explicitly paged.
+- The `mcp-surfaces` Site is explicitly admitted by the carrier contract, preserving Site isolation while making its Git MCP available after restart.
+- Native Registrar advertises all 14 epistemic tools, and native release refreshes canonical Site sidecar artifact pins before rebuilding admission metadata. The complete release and carrier transaction passed.
 
 - Source declarations can be batched with `epistemic_graph_capture_sources`.
 - Capture reports exact existing-identity collisions.
