@@ -12,8 +12,8 @@
 //! * Derived/Borel--Moore class: C_*(F, boundary F) is rank one in degree two,
 //!   so all twenty representatives of a fixed orientation induce the same
 //!   relative map.  The normal orientation chooses the positive class.
-//! * Loaded geometry: the localized identity d h_d=(q_d-1) gives unique
-//!   quotient lower terms.  Together with the six weighted coordinate
+//! * Loaded geometry: the localized raw-circle identity
+//!   d ell_d=(q_d-1)e_d gives unique quotient lower terms.  Together with the six weighted coordinate
 //!   facets of the exact-core cube this solves the formal PC equations.  It
 //!   does not manufacture a global tubular-current natural transformation.
 
@@ -761,7 +761,7 @@ fn main() {
     println!("  extra Boolean core labels select a conditional strict lift: [0,D,DE,E,0]");
     println!("  strict chain-map solution dimensions: pentagon 1, square 1");
     println!("  ordered residue normalization fixes both overall scalars");
-    println!("  quotient solution: H_s=(X15/u15)h15-(X37/u37)h37");
+    println!("  quotient solution: H_s=(X15/u15)ell15-(X37/u37)ell37");
     println!("  d H_s=X15-X37; supported double Gysin kills both quotient lines");
     println!("  normal factor: -kappa_D kappa_E, kappa_d=beta/u_d");
     println!("  target is the 27-generator weighted cubical incidence complex");
@@ -772,5 +772,5 @@ fn main() {
     println!("  all formulas rotate through the eight-element deck orbit");
     println!();
     println!("VERDICT: PROVED (FORMAL LOCALIZED/DERIVED EQUATIONS)");
-    println!("  geometric global loaded-current naturality is not certified here");
+    println!("  global occurrence-decorated PC naturality is not certified here");
 }
