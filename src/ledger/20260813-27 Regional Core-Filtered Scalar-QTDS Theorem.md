@@ -14,6 +14,12 @@ This closes the complete coefficient-level transfer. It does not yet give one ce
 twisted-chain map compatible with incidence between different cores. That assembly problem, and
 the subsequent filtered Pochhammer/Cousin comparison, are the remaining Nima frontier.
 
+Forward status: entries 28--75 construct the complete scalar incidence
+envelope, close every transverse mixed square, and reduce the first
+nontransverse eight-point comparison to one normalized torsion-free derived
+route class. The remaining local datum is its occurrence-decorated extension
+from the physical four-facet belt across the two source caps and source cube.
+
 ## Setup
 
 Let \(n=2m\geq 4\), with the vertices of the cyclic polygon colored alternately. A diagonal is

@@ -5,7 +5,10 @@
 Date: 2026-08-13
 
 Status: exact eight-point derived-selector theorem and exact formal localized
-route-cube equations; global loaded-current naturality remains conditional.
+route-cube equations; global occurrence-decorated Pochhammer/Cousin
+naturality remains conditional. Entry 75 computes the complete local
+derived-Hom groups, proves the normalized degree-zero class is unique and
+torsion-free, and identifies the remaining degree-one belt extension.
 
 Entry 73 isolated forty strict cellular lifts from a nontransverse route
 pentagon to a fixed-core square.  The apparent ambiguity is now resolved at
@@ -272,9 +275,9 @@ Let \(x=15\) and \(y=37\) be the two exchanged scalar labels on the
 representative pentagon.  In the localized endpoint-tube complexes,
 
 \[
-d h_x=u_xe_x,
+d\ell_x=u_xe_x,
 \qquad
-d h_y=u_ye_y.
+d\ell_y=u_ye_y.
 \]
 
 The unique typed localized lower term is
@@ -283,9 +286,9 @@ The unique typed localized lower term is
 \boxed{
 H_s
 =
-\frac{X_x}{u_x}h_x
+\frac{X_x}{u_x}\ell_x
 -
-\frac{X_y}{u_y}h_y.
+\frac{X_y}{u_y}\ell_y.
 }
 \]
 
@@ -304,6 +307,10 @@ physical double-Gysin map kills both exchanged endpoint quotient lines, so
 \[
 G_{D,E}(dH_s)=0=d\,G_{D,E}(H_s).
 \]
+
+Thus \(H_s=X_xh_x^{\rm PC}-X_yh_y^{\rm PC}\) in the notation
+\(h_e^{\rm PC}=\ell_e/u_e\) of entry 38.  These normal contractions must not
+be confused with the regional weighted-cube edges \(h_r\).
 
 This solves the coefficient equation formally after localization.  It does
 not yet prove that \(H_s\) is a component of one natural transformation of
@@ -474,7 +481,7 @@ Certificate SHA-256 values:
     1da3140e3b8d560d72766f64aba296f149b2bd38cb279dc5bab24524ee116229
 
     check_loaded_route_cube_gysin.rs
-    c68e88274d169c4a7503dfc71b81be53de10dbab910b15e28a623b154254f22c
+    f3489edc4e5017e4f39ecfcb9fc982e7af8c6234094ec22e219343d6661288ad
 
 ## Decision
 

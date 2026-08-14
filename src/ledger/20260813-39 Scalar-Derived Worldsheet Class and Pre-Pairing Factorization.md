@@ -4,7 +4,7 @@
 
 Date: 2026-08-13
 
-Status: corrected in part by entries 70--72. The complete Parke--Taylor
+Status: corrected in part by entries 70--75. The complete Parke--Taylor
 period vector and derived Verdier perfectness still identify the
 representation-independent cohomology class
 
@@ -20,9 +20,11 @@ The equality is representation independent and is separated by a complete
 Parke--Taylor basis. However, the stronger claim that a complete
 occurrence-decorated scalar covector already factorizes in the facewise
 Pochhammer/Cousin complex before index raising is conditional. Entry 38
-supplies that comparison on transverse cells; the eight nontransverse
-pentagons of entries 70--71 still lack their scalar-facet coefficient
-specialization.
+supplies that comparison on transverse cells. For the eight nontransverse
+pentagons, entries 74--75 now supply a formal scalar-edge Cousin counit, the
+correct weighted target cube, and one normalized torsion-free local derived
+class. Its occurrence-decorated extension across the source caps and cube is
+still missing.
 
 Thus this entry contains two logically distinct results:
 

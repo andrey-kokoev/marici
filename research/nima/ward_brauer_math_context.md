@@ -2542,9 +2542,9 @@ For the representative exchanged labels \(15,37\), the localized lower term
 \[
 H_s
 =
-\frac{X_{15}}{u_{15}}h_{15}
+\frac{X_{15}}{u_{15}}\ell_{15}
 -
-\frac{X_{37}}{u_{37}}h_{37},
+\frac{X_{37}}{u_{37}}\ell_{37},
 \qquad
 dH_s=X_{15}e_{15}-X_{37}e_{37},
 \]
@@ -2553,7 +2553,11 @@ supplies exactly the missing rank-one counit, and supported double Gysin kills
 both quotient lines.  This proves the formal localized/derived equations.  It
 does not yet assemble the counit with all occurrence charts into the
 bivariant Pochhammer/Cousin natural transformation.  Literal collar choices
-are already auxiliary for the underlying facewise class by entry 38.
+are already auxiliary for the underlying facewise class by entry 38.  Here
+\(d\ell_e=(q_e-1)e_e\); equivalently
+\(H_s=X_{15}h_{15}^{\rm PC}-X_{37}h_{37}^{\rm PC}\) with
+\(h_e^{\rm PC}=\ell_e/(q_e-1)\).  These are normal Pochhammer contractions,
+not the regional weighted-cube edges \(h_r\).
 
 The formula objective is now a derived kernel
 
@@ -2569,3 +2573,93 @@ K_Q^{\mathrm w}[-2]
 on the complete route envelope, commuting with the PC differential, physical
 double residue, and deck rotation.  Strict collars and cellular
 parametrizations may vary; the invariant to construct is its derived class.
+
+### Derived route Hom and primitive QTDS polarization
+
+The complete cellular Hom audit now separates uniqueness of the local route
+class from existence of its higher source extension. After occurrence/Čech
+descent and relative Borel--Moore identification, the four physical charts
+form
+
+\[
+B=\partial I^2\times I\simeq S^1.
+\]
+
+For one region over \(A_r=\mathbf Z[X_{r0},X_{r1}]\), the weighted interval
+complex resolves the ideal
+
+\[
+H_0(K_r^{\rm w})\simeq(X_{r0},X_{r1}),
+\qquad
+e_{r0}\mapsto X_{r1},
+\quad
+e_{r1}\mapsto X_{r0}.
+\]
+
+It is torsion-free and generically rank one, but nonfree at the joint
+coordinate zero. For the three octagon regions,
+
+\[
+H_0(K_Q^{\rm w})
+\simeq
+I_Q=\prod_{r=0}^{2}(X_{r0},X_{r1}),
+\]
+
+with no higher homology. Full Laurent localization turns this ideal into the
+free rank-one module \(R\).
+
+The integral Hom complex has dimensions
+\((8,60,172,232,144,32)\) and differential ranks
+\((8,52,120,111,32)\). Integral contractions prove
+
+\[
+H^{-1}=0,
+\qquad
+H^0=R,
+\qquad
+H^1=R
+\]
+
+after localization, with no torsion; polynomially both nonzero groups are
+\(I_Q\). The chart-gluing kernel is saturated rank one. Ordered normal
+orientation fixes its sign and the weighted vertex anchors fix its unit, so
+the degree-zero route class is uniquely normalized. The surviving degree-one
+class is the belt circle: it records the missing decorated cap extension, not
+a second map or a nonzero curvature.
+
+The exchanged labels \(15,37\) form the polynomial endpoint ideal
+\((X_{15},X_{37})\), becoming split rank one only after localization. Their
+Cousin relation is internal to the source, and both endpoint lines and its
+handle map to target zero. No companion-square line is being identified with
+either endpoint.
+
+Finally, in Laurent homology
+
+\[
+g_r=[X_{r0}e_{r0}]=[X_{r1}e_{r1}],
+\qquad
+[c_r]
+=
+[X_{r0}e_{r0}+X_{r1}e_{r1}]
+=2g_r.
+\]
+
+Thus the eight-point full polarization is
+
+\[
+[c_0\otimes c_1\otimes c_2]
+=8g_0\otimes g_1\otimes g_2.
+\]
+
+This factor is an index/normalization effect, not Hom torsion. It gives the
+first intrinsic half-object interpretation of the QTDS coefficient two: the
+two scalar resolutions of a quadrilateral are endpoint representatives of
+one derived Laurent class, and the QTDS numerator is their polarization.
+Internal physical-side terms still belong to adjacent core strata, so this
+does not yet prove horizontal Jordan coherence.
+
+The next exact test is to construct one occurrence-decorated source cap map,
+show that it kills the belt \(H^1\) without inverting two, then construct the
+second cap and cube and verify differential, ordered double residue, and deck
+naturality. Only after this vertical extension closes should the eight route
+kernels be assembled horizontally and compared with the Jordan defect.

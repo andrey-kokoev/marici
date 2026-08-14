@@ -80,7 +80,12 @@ The ledger currently keeps three frontiers separate:
   diagram whose higher strata must supply the transgression. The next carrier
   is therefore an oriented relation complex plus a Brauer--skein
   crossing/smoothing cell for multiplicative coherence inside a cyclic
-  Ward--Brauer dictionary. A BRST/kinetic realization of the conductor
+  Ward--Brauer dictionary. At the first nontransverse octagon stratum, the
+  physical four-chart belt now has one normalized, torsion-free degree-zero
+  derived Gysin class into a weighted three-interval cube. Its full QTDS
+  polarization is eight times the primitive Laurent class, while one
+  degree-one belt class exactly locates the missing occurrence-decorated
+  source-cap extension. A BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
   operator on already-summed \(X_C\) functions, and a metric jet adjoint
@@ -186,6 +191,12 @@ rustc --edition=2021 -D warnings -O research/nima/check_cubical_gysin_coherence.
 & "$env:TEMP\marici-cubical-gysin.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_loaded_cech_totalization.rs -o "$env:TEMP\marici-loaded-cech.exe"
 & "$env:TEMP\marici-loaded-cech.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_filtered_gysin_selector.rs -o "$env:TEMP\marici-filtered-gysin.exe"
+& "$env:TEMP\marici-filtered-gysin.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_loaded_route_cube_gysin.rs -o "$env:TEMP\marici-loaded-route-cube.exe"
+& "$env:TEMP\marici-loaded-route-cube.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_route_kernel_hom_complex.rs -o "$env:TEMP\marici-route-hom.exe"
+& "$env:TEMP\marici-route-hom.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -396,3 +407,7 @@ prohibited overclaims.
   overlarge constant-coefficient cube by a 27-generator weighted interval cube, derives the
   scalar-edge Cousin counit and uniquely forces both caps and the cube coherence, while leaving
   the global occurrence-decorated Pochhammer/Cousin comparison theorem open.
+- `20260813-75` computes the complete local route-kernel derived Hom: the normalized degree-zero
+  class is unique and torsion-free, a single belt degree-one class locates the missing decorated
+  cap extension, the polynomial target is a nonfree occurrence ideal, and the full QTDS
+  polarization is eight times the primitive Laurent class rather than a torsion effect.

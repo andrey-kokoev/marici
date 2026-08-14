@@ -4,13 +4,17 @@
 
 Date: 2026-08-13
 
-Status: corrected in part by entries 70--72. The undecorated associahedral
+Status: corrected in part by entries 70--75. The undecorated associahedral
 face map and the all-arity **transverse** cellular coaction of entry 37 have a
 canonical realization in the facewise generalized-Pochhammer/Cousin complex
 at finite, nonresonant \(\alpha'\). The claim below that the
 occurrence-decorated comparison is already a chain map on the complete scalar
 envelope was too strong: eight-point dependent pentagons require a
-scalar-facet coefficient specialization which has not yet been constructed.
+scalar-facet coefficient specialization which is not supplied by this entry.
+Entries 74--75 construct its formal localized Cousin counit, weighted target,
+and unique normalized local derived class. What is still missing is the
+occurrence-decorated source cap/cube extension making those local equations a
+single natural transformation on the complete envelope.
 
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted
