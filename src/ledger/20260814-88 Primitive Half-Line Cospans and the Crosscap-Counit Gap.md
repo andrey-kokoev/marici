@@ -416,12 +416,21 @@ group elements.  This proves the bounded verdict
 \]
 
 It does not prove that no physical orientation line can supply \(\chi_N\): the
-missing tensor-order/twist-reversal line is precisely the unresolved datum.
+required non-normal orientation factor is unresolved at this stage.
 A falsifiable construction of \(\Phi_{03}^{\rm PC}\) must preserve the Laurent
 weight inversion, satisfy the chain-pairing identity including endpoint
 Cousin terms, and have signs \(+,-,-\) under one road rotation, one road
 reflection, and core exchange.  No \(D_8\) extension is made before these
 three representative tests pass.
+
+Forward outcome (entry 89): the actual Borel--Moore/tangential orientation
+system of the two-interval road faces is gauge-isomorphic to
+\(\operatorname{sgn}_{\rm polarity}\otimes\operatorname{or}(C_3)=\chi_N\).
+Thus the normal-line-only adjoint tested here remains false, but the complete
+associated-grade pairing has the required character.  Its first missing PC
+datum is entry 66's chain lift \(\boldsymbol\sigma_{\rm alt}\), and the result
+is a boundary-costalk pairing rather than a quotient of the full lower
+\(\mathsf J_6\) contact sector.
 
 ## The candidate medial Möbius hypercover carrier
 

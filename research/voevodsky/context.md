@@ -101,7 +101,10 @@ No complete/regular/bounded cd-structure is presently proved:
   all-arity union being unbounded in absolute dimension is not fatal if boundedness is proved
   objectwise.
 
-Thus \(P_{\rm tr}\) is a concrete candidate basis, not an established topology.
+Thus \(P_{\rm tr}\) is a concrete Cartesian/excision skeleton, not yet a basis for the natural
+scalar topology. The exact audit below shows that its proper face pairs do not cover ambient
+triangulation support; a coverage must either be deliberately non-spatial or include the
+interior/contact sector.
 
 ## 3. The dependent pentagon/square is not cdh data
 
@@ -200,10 +203,75 @@ not the primitive quotient line.
    and test their cofibers in \(\mathcal D^{\rm tr}_{\rm sc}\). A surviving matching cofiber is the
    precise obstruction; bare Möbius \(H_1\) is not.
 
+## 7. Exact \(n=8\) base-site audit
+
+`check_n8_scalar_cd_site.rs` implements the closed face category
+
+\[
+X_S=\{T:S\subseteq T\}
+\]
+
+for every noncrossing octagon dissection \(S\), plus the empty object. It finds 903 nonempty
+faces with associahedral face vector
+
+\[
+(f_0,f_1,f_2,f_3,f_4,f_5)=(132,330,300,120,20,1).
+\]
+
+All 408,156 unordered face intersections agree exactly with union of compatible constraints or
+the empty object. The three transverse families contain 2,008 undeformed squares:
+
+\[
+324\ \text{physical/physical},\qquad
+1012\ \text{independent scalar/scalar},\qquad
+672\ \text{independent scalar/physical}.
+\]
+
+Saturation along every face inclusion performs 91,488 base-change checks and leaves 17,964
+distinct supported square classes. All are pullbacks with monomorphic legs. The well-typed
+monic self-intersection identities pass 365,952 checks. Of the base changes, 6,800 remain
+nondegenerate, 20,400 become degenerate, and 64,288 acquire an empty leg.
+
+This proves a finite **Cartesian/excision skeleton**, not a cd-topology. The natural cellular
+coverage fails sharply: none of the 2,008 proper face pairs covers its ambient triangulation
+support. More decisively, the union of all eight physical Cut faces sees only 128 of the 132
+octagon triangulations. The four omitted vertices are exactly the zero-core/contact
+triangulations, so restriction of the free occurrence module to all Cuts has a rank-four
+kernel.
+
+There is a useful distinction. In the abstract face poset the two axes have categorical join
+equal to the ambient face, and all 1,813,224 representable square-descent tests pass. Thus one
+could *declare* a non-spatial subcanonical cd-topology on the incidence poset. But the physical
+occurrence/coefficient object is not separated for that coverage: Cut restriction forgets the
+contact kernel. Sheafifying it would erase information that the scalar master retains.
+
+The naive statement
+
+\[
+\text{transverse Cut squares alone define the scalar descent site}
+\]
+
+is therefore falsified. The smallest corrected alternatives are:
+
+1. enlarge \(\mathcal C_{\rm sc}\) by a locally closed interior/contact object and use a
+   recollement/Cousin triangle between it and the Cut boundary; or
+2. localize only after supplying ultraviolet/contact boundary data that kills the kernel.
+
+Entry 48's conservativity theorem has exactly this form: Cuts alone are not conservative, while
+Cuts plus ultraviolet boundary data are. No simple-cover or boundedness verdict is available
+until one of these cover/recollement choices and an explicit density structure \(D_i\) are
+declared. The raw codimension profile \((d,d-1,d-1,d-2)\) passes for every undeformed square,
+but that profile is not a Voevodsky density structure by itself.
+
+The same checker confirms that the dependent route pentagon and square are disjoint, meet the
+fixed-core cube at one opposite vertex each, and remain transfer data rather than base cdh
+squares.
+
 ## Evidence boundary
 
 Internal: ledger entries 31, 32, 37, 48, 76, 82, 83, and 88.
 
+Executable: `research/voevodsky/check_n8_scalar_cd_site.rs`.
+
 External definition source: V. Voevodsky, *Homotopy theory of simplicial presheaves in
 completely decomposable topologies*, <https://arxiv.org/abs/0805.4578>.
-
