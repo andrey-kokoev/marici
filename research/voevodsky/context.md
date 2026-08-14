@@ -1370,3 +1370,54 @@ the actual \(F_0\) packet. The first exact test is
 The two terms must be induced by the adjacent-road generizations, not by
 copying a column of \(1-r\). Only then can the mixed block \(H_\Sigma\),
 Yoneda cone roof, residual parity, and physical-Cut naturality be tested.
+
+## 26. D03 exit carrier and the external-Thom correction
+
+The first carrier column is now exact.  In the reversed Boolean interval of
+\(v_+=\{x_1,x_3,x_5\}\),
+
+\[
+e_3=101,\qquad q_0=100,\qquad q_2=001,
+\]
+
+and
+
+\[
+d_{\rm PL}e_3=-q_0+q_2,
+\qquad
+d_{\rm occ}e_3=-x_1q_0+x_5q_2.
+\]
+
+The exact-couple boundary for
+\(\{v_+\}\subset B_{\rm short}\subset K_6\) is saturated.  Requiring a
+\(D_3\)-equivariant inverse to remain unimodular on the \(A_2\) quotient
+uniquely selects \(e_3\leftrightarrow F_{03}\).  This is a cone-roof
+transgression, not a literal inclusion.
+
+Entry 116 falsifies the most economical-looking loaded shortcut.  Under
+\(u_3=t_3x_3\), the absolute Bockstein is
+
+\[
+B_3=\delta_3^{\rm rad}+t_3\delta_3^{\rm nor}.
+\]
+
+However, \(e_3,q_0,q_2\) all omit \(x_3\), and the absolute complex permits
+an \(h_3\) circle only when \(x_3\) belongs to the face support.  Hence the
+normal block cannot place \([t_3]\) on either lower cell.  The established
+carrier also maps those lower source cells to zero rather than to the actual
+road costalks.  The formal tensor bicomplex has the right symbol, but is not
+the restriction of this existing scalar differential.
+
+The missing line is therefore bivariant.  It should be carried by a
+Thom-decorated incidence correspondence
+
+\[
+\operatorname{Th}^{\rm mR}_{x_3}\otimes
+[e_3\to q_0\oplus q_2]
+\]
+
+and then pushed to the reciprocal/Borel--Moore road
+\(\operatorname{Tor}_1\) costalks.  The endpoint cells need not and must not
+be given artificial \(h_3\) generators.  Next derive these two endpoint
+pushforwards, including the \(x_1,x_5\) occurrence ideal lines, and test the
+Cartier--PL Beck--Chevalley square.
