@@ -1,0 +1,136 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ff7f2ed1-c706-44ad-8d6d-93280ca358f1",
+  "status": "submitted",
+  "actor": "/root",
+  "authority_basis": {
+    "kind": "user_directed_research_lifecycle",
+    "summary": "The user instructed continued mathematical research and active use of the epistemic-graph MCP."
+  },
+  "idempotency_key": "marici-nima-entry131-cartier-purity-v1",
+  "expected_ledger_head": "b678ee9458ad72749e351e6b3f53eed4206aa08678aee2a4645874309aaf342f",
+  "created_at": "2026-08-14T23:15:19.6774236Z",
+  "content_fingerprint": "1e30cbecf950a8a613176510e2335fa7ab3093d69759bb29ced00b4338174715",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-entry131-cartier-edge-purity",
+      "local_ref": "src131",
+      "kind": "source",
+      "title": "D03 Cartier Edge Purity and the Scoped PC Promotion",
+      "version": "sha256:f68d45a7b62615a1b359f9df75f005a0599e8bdf7c588c6193012abc3fe107a3",
+      "locator": "src/ledger/20260814-131 D03 Cartier Edge Purity and the Scoped PC Promotion.md",
+      "verification_status": "exact_algebraic_proof_with_inherited_certificates"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-entry131-scoped-cartier-purity",
+      "local_ref": "claim131",
+      "kind": "claim",
+      "title": "The D03 x3 Thom-plus-BM packet is the finite Cartier edge costalk and has one normalized Bockstein-compatible purity map",
+      "status": "proved_in_definitionally_scoped_cellular_model",
+      "summary": "The raw costalk has one free line plus B/(u3) and larger endomorphism space; the independently derived graph Bockstein removes both torsion ambiguities, leaving one positively normalized scalar map whose endpoint restrictions are entry 130."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim131",
+      "target_ref": "src131",
+      "source_id": "claim:nima-entry131-scoped-cartier-purity",
+      "target_id": "source:nima-entry131-cartier-edge-purity",
+      "relation_id": "rel:derived_from-3fb1988d383970f6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim131",
+      "target_id": "claim:3d976e636d3be1fdb3fe",
+      "source_id": "claim:nima-entry131-scoped-cartier-purity",
+      "relation_id": "rel:depends_on-0e23031a1b432ff2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:scoped_resolves",
+      "source_ref": "claim131",
+      "target_id": "problem:02228eaf4fe717c9f4f7",
+      "source_id": "claim:nima-entry131-scoped-cartier-purity",
+      "relation_id": "rel:mariciscoped_resolves-6aedba0c712a5b34"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:scoped_supports",
+      "source_ref": "claim131",
+      "target_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "source_id": "claim:nima-entry131-scoped-cartier-purity",
+      "relation_id": "rel:mariciscoped_supports-2c391be8ab23a4f9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:boundary_condition_for",
+      "source_ref": "claim131",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "source_id": "claim:nima-entry131-scoped-cartier-purity",
+      "relation_id": "rel:mariciboundary_condition_for-bbf39d1b2540cee2"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-entry131-purity-problem-scope",
+      "subject_id": "problem:02228eaf4fe717c9f4f7",
+      "judgment": "resolved_in_definitionally_scoped_entry105_cellular_model",
+      "actor": "/root",
+      "reason": "The missing source is independently Thom-plus-BM, finite Cartier duality gives the edge costalk, and Bockstein compatibility selects its unique normalized map. A separately intended analytic six-functor enlargement is outside the claim.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry131-cartier-edge-purity",
+          "locator": "src/ledger/20260814-131 D03 Cartier Edge Purity and the Scoped PC Promotion.md",
+          "paraphrase": "Entry 131 derives the actual P3 packet, independently assembles the source, proves Cartier purity, and computes the admissible map module."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-entry131-pc-promotion-conjecture",
+      "subject_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "judgment": "proved_for_the_established_road_face_pc_model__global_scalar_realization_open",
+      "actor": "/root",
+      "reason": "Both endpoint squares follow by Cartier transitivity from one edge map, but no scalar total-specialization differential or nonzero generic Q leg is constructed.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry131-cartier-edge-purity",
+          "locator": "src/ledger/20260814-131 D03 Cartier Edge Purity and the Scoped PC Promotion.md",
+          "paraphrase": "The theorem closes the local target promotion and states the surviving nonzero-Q-leg formula objective."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-entry131-entry130-criticism",
+      "subject_id": "criticism:bc5dc5ffed22158a7bd9",
+      "judgment": "superseded_in_the_definitionally_scoped_cellular_model__retained_as_scope_warning",
+      "actor": "/root",
+      "reason": "Entry 131 supplies the product-Cartier costalk comparison missing in entry 130; the criticism remains valid against an unconstructed unrestricted analytic or sheaf-theoretic comparison.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry131-cartier-edge-purity",
+          "locator": "src/ledger/20260814-131 D03 Cartier Edge Purity and the Scoped PC Promotion.md",
+          "paraphrase": "The source is retyped independently and the cellular purity map is constructed without inferring it from endpoint residues."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:d03-x3-cartier-purity-entry131",
+      "test_id": "test:01dbaa5951d7bb023dec",
+      "actor": "/root",
+      "outcome": "passed in the definitionally scoped cellular road-face model: the unconstrained costalk is larger than rank one, while the independently derived graph Bockstein reduces admissible maps to one torsion-free scalar line; positive orientation fixes the unit and Cartier transitivity gives both endpoints. The global scalar specialization and generic Q leg remain untested.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry131-cartier-edge-purity",
+          "locator": "src/ledger/20260814-131 D03 Cartier Edge Purity and the Scoped PC Promotion.md",
+          "paraphrase": "The explicit two-by-two endomorphism and Bockstein computation supplies the anti-circular rank-one test and both endpoint restrictions."
+        }
+      ]
+    }
+  ],
+  "digest": "8f3f4cf050bd9311edb7703563c0cc82263acd9e6efc85c1b1b6d26ab1b36363"
+}

@@ -1709,3 +1709,60 @@ independent endpoint maps and not an all-edge atlas.  The \(x_4\) rotation is
 postponed until this arrow exists.  The scalar-source differential,
 \(G_{03}^{\rm Cousin}\), and its genuinely nonzero generic \(Q\)-leg remain a
 separate source-side objective.
+
+## Scoped PC edge purity after entry 131
+
+Entry 131 closes the target-side \(x_3\) purity in the definitionally scoped
+entry-105 road-face model.  The target packet is
+
+\[
+P_3=[A\langle g_3,h_3\rangle\xrightarrow{(x_3,u_3)}
+A\langle p_3\rangle].
+\]
+
+Independently, entry 129's \(x_3\)-Thom line plus entry 100's original/BM
+can--var packet give
+
+\[
+E_{3,\rm src}
+=
+B\langle g_3\rangle[1]\oplus
+[B\langle h_3\rangle\xrightarrow{u_3}B\langle p_3\rangle],
+\qquad B=A/(x_3).
+\]
+
+Finite Cartier duality identifies
+\(E_{3,\rm src}\otimes\operatorname{or}(x_3)[-1]\) with
+\(i_{x_3}^{!}P_3\).
+The costalk is not rank one: it contains a free radial line and a
+\(B/(u_3)\) normal line.  The independent graph Bockstein
+
+\[
+\beta(g_3)=p_3,\qquad\beta(h_3)=t_3p_3
+\]
+
+removes the extra ambiguity.  Its compatible maps form one torsion-free
+scalar line, and positive orientation fixes the unit.  Regular-sequence
+transitivity then gives both entry-130 endpoint maps with every lower Cech
+term.
+
+The economical target problem is therefore finished at this scope.  The
+next formula objective returns to the actual scalar source:
+
+\[
+\boxed{
+d_{\rm circ}^{\rm PC}G_{03}^{\rm Cousin}
+=G_{03}^{\rm Cousin}d_{\rm sp,sc},
+\qquad
+\operatorname{gr}(G_{03}^{\rm Cousin})=K_{\rm alt},
+\qquad
+\operatorname{Res}_{x_3}G_{03}^{\rm Cousin}
+=\operatorname{pur}_{x_3,\partial}^{\rm PC},
+\qquad
+q_Q(G_{03}^{\rm Cousin})\ne0.
+}
+\]
+
+The last condition prevents a return to correspondences supported wholly in
+\(F_1\).  Entry 131 supplies the required boundary value, but not the generic
+\(Q=F_2/F_1\) component or the scalar total-specialization differential.
