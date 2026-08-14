@@ -465,3 +465,71 @@ This must be tested in a common Cech refinement with all occurrence, support,
 twist, and physical-normal data retained.  Its existence would reduce the
 global lift to the rotated vertex coherences and one top augmentation; its
 failure would be the first intrinsic obstruction rather than a missing sign.
+
+## 11. Correction: weighted star, not pairwise road transport
+
+Entry 101 falsifies the last paragraph of Section 10 as a well-typed next
+objective.  The \(F_{03}\) and \(F_{25}\) roads are disjoint scalar facets.
+Their source label \(q_2\) belongs to the dual normal link, not to a common
+scalar stratum, and entries 93--100 define no physical maps
+\(\rho_{q_2}^{03},\rho_{q_2}^{25}\).
+
+The canonical common coefficient support is the reducible union
+
+\[
+V(u_1,u_3,u_5,u_0u_2),
+\]
+
+where the two local residues have nonzero difference
+\((u_2-u_0)/(u_0u_1u_2u_3u_5)\).  Sending them to the deeper conductor makes
+that difference a Cech boundary only after adjoining new oriented Gysin
+maps.  Such a calculation would assume the missing correspondence rather
+than test it.
+
+The relative target has no cells below its three roads.  Its correct source
+skeleton is therefore the weighted packet \(K(u_4,u_0,u_2)\), with the exact
+conditional star
+
+\[
+f\mapsto\tau_AK_{\rm rel},\qquad
+(e_1,e_3,e_5)\mapsto
+\left(\frac{\tau_A}{u_4}T_2,
+      \frac{\tau_A}{u_0}T_1,
+      \frac{\tau_A}{u_2}T_0\right),
+\qquad q_i,a\mapsto0,
+\]
+
+where \(\tau_A=1/(u_1u_3u_5)\) lives in its named Cech summand.  The raw
+Koszul differential, all chain identities, and integral \(D_3\) covariance
+are certified.  What is not certified is the intrinsic top value or its
+attachment to the already established excess, occurrence, and physical-line
+data.
+
+The safest categorical simplification uses the absolute loaded associahedron
+first.  Let \(v_+\subset B_{\rm short}\subset K_6\).  The desired map should
+factor as
+
+\[
+\mathcal S_+^{\rm cond}
+\xrightarrow{\alpha_+}C_{\rm abs}^{v_+}
+\xrightarrow{\epsilon_{\rm cell}}C_*^{\rm BM}(K_6)
+\xrightarrow{q_{\rm cell}}
+C_*^{\rm BM}(K_6)/C_*^{\rm BM}(B_{\rm short}).
+\]
+
+The last two arrows are the canonical dual-block counit and cellular relative
+map.  The one missing theorem is the filtered comparison
+
+\[
+\alpha_+:
+\mathcal S_+^{\rm cond}
+\xrightarrow{\sim}R\Gamma_{v_+}^{F}(P_{\rm abs}).
+\]
+
+The filtration must retain dual-block depth, unlocalized normal support,
+normalization--conductor occurrence degree, support direction, and all
+orientation lines.  Its Rees parameter, the \(u_j\), and \(3\) remain
+uninverted.  The ordinary absolute-to-relative composite is zero because
+\(v_+\) is removed; its associated grade is entry 99's nonzero carrier and
+entry 101's weighted coefficients.  This is therefore a secondary filtered
+class, not a strict operator between ordinary amplitude complexes.
