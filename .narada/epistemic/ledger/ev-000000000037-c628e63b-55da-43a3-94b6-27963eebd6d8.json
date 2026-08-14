@@ -1,0 +1,110 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 37,
+  "event_id": "ev-000000000037-c628e63b-55da-43a3-94b6-27963eebd6d8",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f8518ae454aa5b7a6271fb303a86cd32d74f66b2802372883ad0efdd29a92fd9",
+  "proposal_id": "ep_dccdc723-bf62-4fb9-9fb9-5baa8eb91869",
+  "proposal_digest": "6ac25b58df0ba9199c4cc79475fd137496732bba2cd4ca48c609140cd984d82f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-ledger-106",
+      "local_ref": "source106",
+      "kind": "source",
+      "title": "Ledger 106 — Marked Log Gallery Secondary Class and the Global Yoneda Gap",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-106 Marked Log Gallery Secondary Class and the Global Yoneda Gap.md",
+      "summary": "Primary record for the strict loaded gallery, filtered secondary class, log expansion, Cartier trace, and remaining global e_F compatibility gap."
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim106",
+      "kind": "claim",
+      "title": "The D03 marked log gallery carries a canonical filtered secondary half-symbol",
+      "summary": "The actual two-edge gallery has a primitive loaded extension kernel and secondary class; fixed-beta Cartier purity closes the local physical trace, while the ordinary H0 map remains zero.",
+      "status": "conditional_global",
+      "entity_id": "claim:888a91faac9f3db54a81"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit106",
+      "kind": "criticism",
+      "title": "The local gallery does not by itself pull back the global Yoneda class",
+      "summary": "Every gallery face lies in F1, so the gallery has zero Q=F2/F1 leg and cannot alone prove Beck-Chevalley compatibility with e_F.",
+      "entity_id": "criticism:896e079a79c4abecdfa8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim106",
+      "target_id": "problem:6f41f07b769e74ec7dd8",
+      "source_id": "claim:888a91faac9f3db54a81",
+      "relation_id": "rel:addresses-09f4116e875bd043"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim106",
+      "target_ref": "source106",
+      "source_id": "claim:888a91faac9f3db54a81",
+      "target_id": "source:nima-ledger-106",
+      "relation_id": "rel:derived_from-ec9170eb043f969f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit106",
+      "target_ref": "claim106",
+      "source_id": "criticism:896e079a79c4abecdfa8",
+      "target_id": "claim:888a91faac9f3db54a81",
+      "relation_id": "rel:criticizes-cdadc9a8fdd9d96c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:9433b77fe7077afde23b",
+      "target_ref": "claim106",
+      "target_id": "claim:888a91faac9f3db54a81",
+      "relation_id": "rel:tests-65e2e8db60647126"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-106-d03-marked-bc",
+      "test_id": "test:9433b77fe7077afde23b",
+      "actor": "marici.Nima",
+      "outcome": "local_pass_global_inconclusive",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-106",
+          "locator": "research/voevodsky/check_d03_central_flip_derived_hom.rs; research/voevodsky/check_d03_central_flip_dnc_obstruction.rs",
+          "paraphrase": "The loaded gallery, primitive kernel, secondary relation, log expansion, and local Cartier trace pass; the Q leg and e_F pull-push homotopy remain unconstructed."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-106-central-flip",
+      "subject_id": "problem:6f41f07b769e74ec7dd8",
+      "judgment": "advanced_not_closed",
+      "actor": "marici.Nima",
+      "reason": "The local correspondence object and coefficient evaluation are canonical, but global Beck-Chevalley naturality with the Yoneda extension is still missing.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-106",
+          "locator": "src/ledger/20260814-106 Marked Log Gallery Secondary Class and the Global Yoneda Gap.md",
+          "paraphrase": "Entry 106 isolates the remaining datum as a filtered pull-push map from Q through the log-expanded gallery."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "primary_research_audit",
+    "summary": "Ledger entry 106 and its two exact Rust certificates passed primary verification under docs/research-lifecycle.md."
+  },
+  "idempotency_key": "auto-admission-813adf74580a38ecd0e8e857",
+  "occurred_at": "2026-08-14T13:35:05.7962396Z",
+  "certifies_truth": false,
+  "event_hash": "0a278b71bfba6d24cfb7204bb00b3a83d52905ff32848719bf27e093cca1ac63"
+}

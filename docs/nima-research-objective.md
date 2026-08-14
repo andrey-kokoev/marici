@@ -104,6 +104,12 @@ pieces of that construction:
     \(K(I_+^\vee)[-5]\simeq\mathbb D(F_0)[-2]\). The literal \(D03\)
     pullback of its Yoneda class is zero, so the nonzero local Cousin trace
     requires a marked ringed correspondence across the central flip.
+14. the actual 32-generator marked two-edge gallery, its primitive loaded
+    extension kernel, its canonical filtered secondary class, and the middle
+    logarithmic expansion. The fixed-\(\beta\) Cartier comparison now closes
+    the local physical-normal trace. The remaining gap is solely the
+    pull--push compatibility of that local class with the global Yoneda
+    extension \(e_F\).
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -184,6 +190,37 @@ Koba--Nielsen completion. It also gives the decisive negative control:
 Hence the remaining map is neither another scalar differential nor a road
 restriction. It is a marked ringed-support correspondence across the central
 flip \(\{D03,x_1,x_3\}\rightsquigarrow v_+=\{x_1,x_3,x_5\}\).
+
+Entry 106 constructs the local derived replacement. The full marked path
+
+\[
+v_+\longrightarrow\{D03,x_1,x_3\}
+\longrightarrow\{D03,x_0,x_3\}
+\]
+
+is a strict loaded subcomplex, and its relative differential has the forced
+secondary relation
+
+\[
+d_2(X_{03}x_1,-U_{03}x_1,-u_1X_{03})
+=u_1U_{03}\,\xi_{+;03}.
+\]
+
+The middle corner has an actual logarithmic expansion inside the \(x_3\)
+pentagon, with
+
+\[
+q_{\rm exc}=q_{03}q_1,
+\qquad
+u_{\rm exc}=U_{03}+u_1+U_{03}u_1.
+\]
+
+The quadratic term is the secondary gallery coefficient. After the already
+admitted completed Koba--Nielsen base change, Cartier log purity canonically
+turns the long-normal residue into the positive physical line \([dX_{03}]\).
+Thus the local coefficient formula is proved. The unresolved issue is now
+global: the whole gallery lies in \(F_1\), so it has zero image in
+\(Q=F_2/F_1\) and does not yet carry a representative of \(e_F\).
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -526,11 +563,12 @@ internal-state coevaluation retained.
    and the fixed-\(\beta\), characteristic-zero local source has the forced
    placement \(K(I_+^\vee)[-5]\simeq\mathbb D(F_0)[-2]\). The stronger
    universal integral purity statement is not claimed.
-6. **Marked central-flip correspondence -- immediate frontier:** construct
-   the ringed support correspondence joining the conductor vertex to one
-   marked road and prove its excess Beck--Chevalley two-cell. It must recover
-   entry 100's nonzero trace even though the literal road pullback of \(e_F\)
-   is zero. Rotate only after the \(D03\) representative passes.
+6. **Marked central-flip local correspondence -- established in entry 106;
+   global promotion is the immediate frontier:** the loaded gallery,
+   filtered secondary class, log expansion, and local physical trace are
+   canonical. Construct the pull--push homotopy proving that this local
+   \(k\)-invariant is the Beck--Chevalley pullback of the global class \(e_F\).
+   Rotate only after the \(D03\) representative passes this global test.
 7. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
 8. **Intrinsic half-object:** assemble the local perfect complexes and
@@ -546,9 +584,9 @@ internal-state coevaluation retained.
    Q_{Q_xy}-Q_xQ_yQ_x.
    \]
 
-Stage 6 is the immediate frontier. Later stages should not be used to hide a
-failure of the marked central-flip correspondence or its excess
-Beck--Chevalley square.
+The global part of Stage 6 is the immediate frontier. Later stages should not
+be used to hide a failure of the log-expanded gallery's compatibility with
+the absolute Yoneda class.
 
 ## Prohibited shortcuts
 
@@ -607,6 +645,14 @@ The objective is not met by:
 - duplicating the normal fibre by tensoring entry 99's exact augmented
   carrier with a second reciprocal Kummer packet. Entry 105 proves that this
   double-loaded model is acyclic.
+- replacing the full two-edge gallery by its central edge. The endpoint
+  derived intersection of that edge is zero; the genuine common expansion
+  occurs only at the middle corner of the two-edge path.
+- calling the canonical gallery secondary class an ordinary degree-zero
+  morphism. Its ordinary \(H^0\) shadow is zero.
+- inferring global Beck--Chevalley naturality from the equality of the
+  quadratic associated-grade coefficient \(U_{03}u_1\). The gallery lies in
+  \(F_1\), whereas \(e_F\) essentially involves \(F_2/F_1\).
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -615,32 +661,34 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved comparison in the construction. Entry 105 now supplies the absolute
-unlocalized support complex and fixes the local conductor purity placement.
-The current bounded target is therefore the single marked correspondence
+unproved comparison in the construction. Entries 105--106 now supply the
+absolute unlocalized support complex, local conductor purity, the marked
+loaded gallery, its logarithmic expansion, and its physical trace. The
+current bounded target is therefore the global promotion
 
 \[
 \boxed{
-\Gamma_{+;03}^{\rm mark}:
-\mathcal S_{+,\rm loc}^{\rm cond}
+\widetilde\Gamma_{+;03}^{\rm log}:
+\bigl(Q\xrightarrow{e_F}F_0[2]\bigr)
 \dashrightarrow
-\mathbb D(F_2/F_1)
+\mathcal G_{+;03}^{\rm log},
+\qquad Q=F_2/F_1,
 }
 \]
 
-across \(\{D03,x_1,x_3\}\rightsquigarrow v_+=\{x_1,x_3,x_5\}\). Construct
-it from the factorization-marked normalization--conductor geometry and the
-ringed central flip, not from the desired residue. The Rees parameter \(t\),
-the normal variables \(u_j\), and \(3\) must remain uninverted. Occurrence
-pullbacks, reciprocal/Borel--Moore support directions, the repeated-normal
-excess line, lower-Cousin maps, physical normal line, determinant
-orientation, polarity, and \(\chi_N\) must remain visible.
+or an equivalent explicit filtered homotopy/pull--push kernel. It must prove
+that the local gallery \(k\)-invariant is the restriction of \(e_F\), rather
+than merely sharing its associated-grade coefficient. The Rees parameter
+\(t\), the normal variables \(u_j\), and \(3\) must remain uninverted.
+Occurrence pullbacks, reciprocal/Borel--Moore support directions, the
+repeated-normal excess line, lower-Cousin maps, physical normal line,
+determinant orientation, polarity, and \(\chi_N\) must remain visible.
 
 The resulting formula objective is
 
 \[
 \boxed{
-\operatorname{BC}_{+;03}(\Gamma_{+;03}^{\rm mark},e_F)
+\operatorname{BC}_{+;03}(\widetilde\Gamma_{+;03}^{\rm log},e_F)
 (\eta_{3,\rm mix})
 =\left[\frac1{u_0u_1u_3u_5}\right]\otimes[dX_{03}],
 \qquad
@@ -648,23 +696,24 @@ The resulting formula objective is
 }
 \]
 
-The first equality is a test, not the definition of \(\Gamma_{+;03}^{\rm
-mark}\). The comparison must also produce the two unit endpoints and have
-entry 99's carrier and entry 101's weighted star as its supported associated
-grade. After forgetting supported coefficients, the assembled orbit must
-recover entry 102's class \(\beta_\triangle\).
+The local right-hand side is already proved independently; the equality is a
+test of the global pull--push map, not its definition. The comparison must
+also produce the two unit endpoints and have entry 99's carrier, entry 101's
+weighted star, and entry 106's secondary gallery relation as its supported
+associated grades. After forgetting supported coefficients, the assembled
+orbit must recover entry 102's class \(\beta_\triangle\).
 
 Its useful terminal outcomes are either:
 
-- one geometrically constructed marked ringed-support correspondence and
-  derived Beck--Chevalley square, with a reproducible certificate; or
-- one sharp falsifier showing that every geometrically admissible central-flip
-  correspondence maps the mixed excess class away from the established
-  Cousin residue, endpoint counit, or physical normal line.
+- one filtered pull--push comparison proving that the log-gallery
+  \(k\)-invariant is the pullback of \(e_F\), with a reproducible certificate;
+  or
+- one sharp falsifier showing that every filtration-compatible promotion of
+  the proved gallery class has zero or incorrect \(Q\)-leg.
 
-Do not recompute the absolute differential or purity shift, replace the
-marked correspondence by the already-falsified literal pullback, construct
-the six road maps independently, resurrect a pairwise \(q\)-vertex
-transition, test \(\Delta\) on one pair alone, or expand to a new
-multiplicity, a fourth primitive, or another sign census while this one
-central-flip square remains unconstructed.
+Do not recompute the absolute differential, purity shift, gallery class, or
+Cartier residue; replace the correspondence by the already-falsified literal
+pullback; construct the six road maps independently; resurrect a pairwise
+\(q\)-vertex transition; test \(\Delta\) on one pair alone; or expand to a
+new multiplicity, a fourth primitive, or another sign census while this one
+global Yoneda comparison remains unconstructed.
