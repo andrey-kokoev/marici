@@ -18,7 +18,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--94 establish two
+At the first nontrivial boundary, \(D=03\), entries 93--95 establish three
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -32,11 +32,20 @@ pieces of that construction:
    \xrightarrow{\epsilon}\mathbf 1
    \longrightarrow0.
    \]
+3. the canonical first conductor normal-link carrier differential and its
+   exact integral fold onto that augmented triangle.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
 intrinsic integral gluing; it is not a reason to introduce a rational
 projector.
+
+The source carrier differential is therefore no longer missing. The first
+unproved arrow is the occurrence-loaded Pochhammer--Cousin/Gysin trace. Entry
+95 also rules out replacing it by a strict fold of each pair of independent
+normal characters into one supported rank-one target over the identity
+monodromy base. The intended map must be a genuine correspondence with
+specified character pullbacks and top-cell coherence.
 
 ## North-star construction
 
@@ -94,6 +103,23 @@ and its primitive composite
 \circ G_{03}^{\rm Cousin}.
 }
 \]
+
+Its first unresolved local component can now be isolated as
+
+\[
+\boxed{
+\operatorname{Tr}_{\rm occ}^{\rm PC}:
+\operatorname{PC}(L_+;\mathcal L_+)
+\underset{P_{\rm road}}{\sqcup^{\mathbb L}}
+\operatorname{PC}(L_-;\mathcal L_-)
+\longrightarrow
+\mathcal R_{03}^{\rm circ,PC},
+}
+\]
+
+where \(L_\pm=\mathbb P_+(N_{Z/F_\pm})\). This trace must be induced by an
+actual factorization-marked Gysin correspondence; it may not be defined by
+declaring a common target local system.
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -170,6 +196,8 @@ The objective is not met by:
   terms;
 - proving only equality after pairing or only at generic cohomology;
 - adding generators solely to force a desired commutative square.
+- folding two independent universal monodromy characters strictly into one
+  supported rank-one target over the identity base.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -178,7 +206,14 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved arrow in the construction. Its useful terminal outcomes are either:
+unproved arrow in the construction. At present this is the paired
+factorization-marked correspondence
+
+\[
+Z_0\longleftarrow W_{03}\longrightarrow Z_3
+\]
+
+and its occurrence-loaded PC trace. Its useful terminal outcomes are either:
 
 - one proved local chain identity, with a reproducible certificate; or
 - one sharp falsifier identifying the first geometric map, filtration, or
