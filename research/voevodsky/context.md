@@ -395,3 +395,73 @@ It must be built before the \(u_j=q_j-1\) are inverted, have associated grade
 symbols followed by the entry-97 bivariant traces.  The missing datum is the
 augmented dual-block/Cousin can--var kernel and its lower terms.  Entry 38's
 face tubes for actual faces do not supply that kernel automatically.
+
+## 10. Support-directed can--var packet and the first coherence
+
+Entry 100 resolves the local coefficient ambiguity and rules out one false
+global model.  Over \(R=\mathbb Z[q^{\pm1}]\), with \(u=q-1\) and
+\(u^\vee=-q^{-1}u\), the original locally finite road and reciprocal regular
+branch use paired support conventions:
+
+\[
+Rj_*:\ (\operatorname{can},\operatorname{var})=(u,1),
+\qquad
+j_!\mathbb D:\ (\operatorname{can},\operatorname{var})=(1,u^\vee).
+\]
+
+Their finite support complexes pair perfectly,
+
+\[
+K(u)\otimes K(u^\vee)\longrightarrow R[1],
+\qquad
+\beta(p,\ell^\vee)=1,
+\quad
+\beta(\ell,p^\vee)=-q.
+\]
+
+The literal simple pole belongs to the Cech realization
+
+\[
+[R\xrightarrow{u}R]
+\xrightarrow{(1,u^{-1})}
+[R\longrightarrow R[u^{-1}]],
+\]
+
+not to a globally localized finite complex.  This distinction retains the
+supported class at \(u=0\).
+
+For the repeated plus/road normal, twist reversal gives the canonical mixed
+excess generator
+
+\[
+\eta_{\rm mix}=(-q,-1),
+\]
+
+which becomes the entry-99 generator \((1,-1)\) after the forced
+\(p^\vee\mapsto-qp\) normalization, without changing the positive top
+orientation.  Tensoring the other normals and applying Koszul--Cech local
+duality produces a labelled local trace on each of
+\(F_{03},F_{25},F_{14}\).  It sends the excess generator to the corresponding
+top local-cohomology residue, gives endpoint values \((1,1)\), and kills the
+marked interval boundary.
+
+A strict map \(K(I_+)\to K(I_i)\) with unit degree-zero coefficient cannot
+exist: modulo \(I_i\), either unshared branch normal is a non-zero-divisor and
+forces the coefficient to vanish.  This falsifies a finite-stalk lift, not a
+derived kernel.  The global problem is now precisely to glue the three local
+correspondences through the lower augmented triangle.
+
+The first comparison is at \(q_2\), shared by the \(F_{03}\) and \(F_{25}\)
+incidence terms:
+
+\[
+\rho_{q_2}^{03}\Theta_{03}^{\rm loc}
+-\rho_{q_2}^{25}\Theta_{25}^{\rm loc}
+\overset{?}{=}
+d_{\rm Cous}H_{q_2}+H_{q_2}d.
+\]
+
+This must be tested in a common Cech refinement with all occurrence, support,
+twist, and physical-normal data retained.  Its existence would reduce the
+global lift to the rotated vertex coherences and one top augmentation; its
+failure would be the first intrinsic obstruction rather than a missing sign.
