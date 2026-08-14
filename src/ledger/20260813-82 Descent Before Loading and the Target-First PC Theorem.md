@@ -31,6 +31,14 @@ No route-first occurrence-decorated Pochhammer map, ambient comparison
 homotopy, \(X\mapsto q-1\) substitution, or excess-normal line is required for
 this theorem.
 
+Forward correction (entry 83): the marked contact symbols close additively
+around the residual octagon after the facewise PC map. The multiplicative
+transition product proposed at the end of this entry is not intrinsically
+typed: adjacent exact-core cubes are disjoint and are connected only by
+noninvertible residue/Gysin spans through their shared rank-one core. The
+surviving global problem is the additive correspondence totalization of the
+unmarked/full-symbol summands.
+
 ## The operation-order correction
 
 Entry 38 fixed the order
@@ -358,26 +366,31 @@ Also reject:
 
 ## Next formula objective
 
-Rotate the local maps through the eight route-pentagon deck images and
-assemble them over the complete quadrangulation compatibility complex.  If
-\(T_i\) denotes the derived transition between consecutive regional target
-models on the residual compatibility octagon, compute
+Entry 83 supersedes the transition-product objective. For adjacent cores
+\(Q_i,Q_{i+1}\) sharing \(d_{i+1}\), retain the correspondence
+
+\[
+\operatorname{PC}(K_{Q_i})
+\longrightarrow
+\operatorname{PC}(K_{d_{i+1}})
+\longleftarrow
+\operatorname{PC}(K_{Q_{i+1}})
+\]
+
+with its occurrence coefficients, Gysin degrees, and normal orientation
+lines. Assemble these spans over the Möbius compatibility carrier and compute
+the additive full-symbol class
 
 \[
 \boxed{
-H_{\rm oct}^{\rm PC}
-=
-T_7T_6\cdots T_1T_0.
+[\Theta_{O,\rm full}^{\rm PC}]
+\in
+H^\bullet(\mathcal T_O^{\rm PC}).
 }
 \]
 
-The next alternatives are sharp:
-
-1. \(H_{\rm oct}^{\rm PC}=1\): the local target-first symbols close globally;
-2. \(H_{\rm oct}^{\rm PC}-1=dK+Kd\): a genuine higher Jordan/coherence cell
-   is required;
-3. \([H_{\rm oct}^{\rm PC}-1]\neq0\): the scalar half-object has a global
-   eight-point obstruction.
+Its marked projection is zero by entry 83. The unmarked projection is the
+remaining strict/null-homotopic/obstructed trichotomy.
 
 Only after this horizontal test should the complete Parke--Taylor period
 vector be evaluated and compared globally with

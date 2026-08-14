@@ -11,6 +11,15 @@ nontrivial double cover of the projective-plane coherence complex is a sphere. T
 potential obstruction is instead a deck-odd, residue-free octagonal class in the actual
 scalar-derived worldsheet coefficient complex.
 
+Forward correction (entry 83): this class now vanishes exactly in the marked contact summand.
+Every marked scalar path stays in a fixed-mark associahedral face, so entry 38's facewise
+Pochhammer/Cousin chain map acts on the complete marked transport and preserves its zero
+octagonal restriction. The formula below involving transported edge primitives remains a valid
+conditional model when genuine transition maps exist, but the established regional data form
+noninvertible residue/Gysin correspondences. The unresolved obstruction is therefore the
+additive class of the **unmarked/full-symbol** correspondence totalization, not a product of
+eight transition automorphisms.
+
 The “Maldacena” perspective in this entry is an explicitly simulated methodological
 reconstruction, not Juan Maldacena's opinion.
 

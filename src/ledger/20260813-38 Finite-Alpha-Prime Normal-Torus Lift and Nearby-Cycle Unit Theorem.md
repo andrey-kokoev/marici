@@ -35,6 +35,14 @@ applied once to the actual regional cube.  This composite closes the local
 loaded pentagon and double-residue identities.  An independently loaded route
 presentation and its comparison homotopy remain optional stronger data.
 
+Forward completion (entry 83): the marked contact chain of entry 24 is also
+already in the proved domain of the present map. Every path with coefficient
+\(X_d\) lies entirely in the fixed-mark face \(K_\alpha^{(d)}\), where that
+coefficient is constant. Its facewise PC image is residue free, deck odd, and
+has zero ordinary and sign-twisted octagonal restriction. This statement is
+specific to the marked summand and does not construct the full unmarked
+horizontal correspondence.
+
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted
 form. This is the correct strength: the earlier collar/Thom ambiguity disappears in the derived
