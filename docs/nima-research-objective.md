@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--101 establish nine
+At the first nontrivial boundary, \(D=03\), entries 93--102 establish ten
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -83,6 +83,12 @@ pieces of that construction:
    the falsification of a pairwise \(q_2\) road transition as the next
    intrinsic objective. The remaining datum is one filtered
    conductor-to-dual-block comparison.
+10. the identification of the augmented triangle as the
+    orientation-twisted integral \(C_3\)-Tate periodicity window representing
+    the generator of
+    \(\operatorname{Ext}^2_{\mathbb Z[D_3]}(\mathbb Z,\mathbb Z_{\rm or})
+    \cong\mathbb Z/3\), together with the proof that the weighted normal
+    packet is not this window over the unlocalized base.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -106,6 +112,15 @@ pairwise lower-vertex comparison proposed there was not canonically typed:
 the roads are disjoint correspondence targets, not overlapping charts. It
 replaces that objective by a single weighted star and isolates one filtered
 comparison \(\alpha_+\) as the first unproved arrow.
+
+Entry 102 explains the index-three gluing without adding a new geometric
+map: the augmented triangle is the norm/\((1-r)\)/augmentation window of the
+\(C_3\)-Tate resolution, with the reflection orientation twist making its
+order-three class \(D_3\)-invariant. This is the integral carrier shadow of
+the construction. It is not a replacement for the weighted normal/Rees
+packet: the latter has supported homology and cannot be identified with the
+exact Tate window without globally inverting the very normals whose support
+must be retained.
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -309,6 +324,22 @@ traces. Every branch/pair intersection still has nonzero rank-one
 \(\operatorname{Tor}_1\), so treating an edge attachment as transverse
 remains false.
 
+Its carrier-forgetting shadow must also reproduce the exact two-extension
+
+\[
+\beta_\triangle=
+\left[
+0\to\mathbb Z_{\rm or}\xrightarrow{N}P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow{\epsilon}\mathbb Z\to0
+\right]
+\in\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})\cong\mathbb Z/3.
+\]
+
+This is a compatibility test, not an instruction to construct \(\alpha_+\)
+in a Tate-localized category. The weighted and Tate shadows are deliberately
+not identified over the unlocalized coefficient ring.
+
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
 Gauge BRST belongs downstream in Yang--Mills descent.
@@ -378,7 +409,9 @@ internal-state coevaluation retained.
    \(\alpha_+:\mathcal S_+^{\rm cond}\simeq C_{\rm abs}^{v_+}\) in the
    integral \(D_3\)-equivariant Rees category. Its associated grade must be
    entry 101's weighted star and its three Cousin residues must be the local
-   traces of entry 100. Polarity then supplies the minus lift.
+   traces of entry 100. Its carrier shadow must be entry 102's integral Tate
+   two-extension, without replacing the weighted complex by that exact
+   window. Polarity then supplies the minus lift.
 6. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
 7. **Intrinsic half-object:** assemble the local perfect complexes and
@@ -427,6 +460,13 @@ The objective is not met by:
 - taking the ordinary costalk directly in the relative object. The central
   vertex is removed there and the desired morphism is ordinary-null; its
   information survives only in the filtered absolute-to-relative composite.
+- replacing the supported weighted/Rees packet by the exact constant Tate
+  window, or globally inverting \(u_4,u_0,u_2\) to make their incidence
+  matrices conjugate. Entry 102 proves that their unlocalized homology
+  differs.
+- treating the order-three Tate class as the missing \(\alpha_+\). It
+  explains the carrier's integral nonsplitting but supplies none of the
+  geometric support, occurrence, excess, or Cousin data.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -478,6 +518,11 @@ with the entry-101 weighted coefficients. Its three edge residues must be
 exactly \(\Theta_{14}^{\rm loc},\Theta_{03}^{\rm loc},\Theta_{25}^{\rm loc}\),
 while their total road restriction contracts because the source is supported
 at the removed central vertex.
+
+After forgetting supported coefficients, the same filtered construction must
+recover entry 102's class \(\beta_\triangle\). This is a second acceptance
+test on one \(\alpha_+\), not a proposed chain isomorphism between the
+weighted packet and the Tate window.
 
 Its useful terminal outcomes are either:
 

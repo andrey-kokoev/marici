@@ -533,3 +533,43 @@ uninverted.  The ordinary absolute-to-relative composite is zero because
 \(v_+\) is removed; its associated grade is entry 99's nonzero carrier and
 entry 101's weighted coefficients.  This is therefore a secondary filtered
 class, not a strict operator between ordinary amplitude complexes.
+
+## 12. Tate shadow of the augmented triangle
+
+Entry 102 identifies the constant incidence resolution exactly. With
+\(C_3=\langle r\rangle\), road basis \((1,r,r^2)\), the shifted tag basis of
+entry 94, and the orientation-twisted reflection action, it is
+
+\[
+0\to\mathbb Z_{\rm or}\xrightarrow{1+r+r^2}P_{\rm tag}
+\xrightarrow{1-r}P_{\rm road}\xrightarrow{\epsilon}\mathbb Z\to0.
+\]
+
+It is therefore a finite window of the complete \(C_3\)-Tate resolution and
+represents the generator
+
+\[
+\beta_\triangle\in
+\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})\cong\mathbb Z/3.
+\]
+
+The orientation twist is essential: reflection negates both the cyclic
+degree-two generator and the coefficient line, so the class survives as a
+\(D_3\)-invariant. This explains the Smith index three, the failure of an
+integral equivariant section, and the self-duality of the primitive/contact
+resolution from one standard structure.
+
+The weighted packet \(K(u_4,u_0,u_2)\) is not the same object over the
+unlocalized base. It has supported zeroth homology
+\(R_0/(u_4,u_0,u_2)\), while the Tate window is exact. Simultaneous normal
+localization makes the matrices conjugate only by deleting this support.
+Separate Cech poles retain a legal top/road half-map but do not restore the
+lower Tate window.
+
+The operational rule is **Rees first, Tate shadow second**. The future
+filtered comparison \(\alpha_+\) must have the weighted star as its supported
+coefficient grade and \(\beta_\triangle\) as its constant carrier shadow.
+Tate theory diagnoses the cyclic nonsplitting; it does not construct the
+scalar specialization, can--var, occurrence, excess, or physical-normal
+maps.
