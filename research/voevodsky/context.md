@@ -1707,3 +1707,61 @@ totalization should recover the complete entry-97 trace; extra overlap
 cohomology or torsion is the next falsifier.  The cellular extension by zero
 still needs an occurrence-loaded six-functor purity/subdivision counit before
 it can be used as the actual PC extraordinary costalk.
+
+## 32. Four-corner nerve theorem and the generic-unit obstruction
+
+Entry 128 resolves the proposed four-corner descent in two different
+categories.  Before Koszul--Cech realization, the four finite-free corner
+duals and all fifteen nonempty intersections form a split-exact cellular
+nerve.  The face row is the augmented three-simplex
+
+\[
+\mathbb Z\to\mathbb Z^4\to\mathbb Z^6\to\mathbb Z^4\to\mathbb Z,
+\]
+
+with Smith ranks \((1,3,3,1)\).  The complete normalized totalization has
+ranks \((1,12,14,4)\), differential ranks \((1,10,4)\), and homology
+\((0,\mathbb Z,0,0)\).  There is no torsion.  Adjacent pairs alone leave the
+primitive face-row cycle \(a+d-b-c\) and lose the generic total class; all
+six pairs without triples and the quadruple retain two total \(H^1\)
+classes.  Higher intersections are forced.
+
+After supported Koszul--Cech realization, however, this is not a
+Mayer--Vietoris cover.  The corner supports have union
+
+\[
+V(x_0x_1,x_3x_4),
+\]
+
+and adjacent road-edge maps have extraordinary Gysin variance.  Thus the
+supported total reconstructs at most local cohomology on this proper closed
+set and vanishes on the Laurent torus, while the complete road trace has a
+nonzero generic augmentation.  The corner residues cannot determine that
+unit.
+
+A distinct positive result survives on the open side.  The four principal
+lines with labels
+
+\[
+x_0x_3,\quad x_1x_3,\quad x_0x_4,\quad x_1x_4
+\]
+
+have a coherent full-nerve lcm descent and normalize to one on
+\(U_{\rm lcm}\).  This is generic principal-line data, not a supported
+corner class.
+
+The corrected local object is therefore the generic--edge--corner Cousin
+recollement
+
+\[
+\mathcal C_{03}^{\rm occ}
+=\operatorname{Tot}[\mathbf1_T\to
+\bigoplus_e\mathcal C_e[1]\to
+\bigoplus_v\mathcal C_v[2]].
+\]
+
+Entry 121 supplies the \(v_{10}\) corner value.  The next test must construct
+the oriented edge Gysin maps, insert the generic unit through the nonzero
+\(Q\)-leg, and compute the obstruction to a closed total cocycle.  Ordinary
+corner restriction, Laurent continuation of a top fraction, or omission of
+the diagonal/triple/quadruple coherence is now a certified wrong turn.

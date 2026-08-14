@@ -1526,3 +1526,77 @@ purity/subdivision counits.  Test whether their totalization reconstructs
 the full road trace without extra cohomology or torsion.  Only after that
 target descent is established should the local corner comparison be used in
 the global conductor and physical-Cut square.
+
+## Generic--edge--corner correction after entry 128
+
+The proposed corner-only descent is now falsified, although its underlying
+finite cellular nerve is exact.  For the four corner duals
+
+\[
+A_v=\mathbb D(Q_{03}/B_v),
+\]
+
+the complete fifteen-intersection nerve is split exact over \(\mathbb Z\).
+Its normalized total has ranks \((1,12,14,4)\), differential ranks
+\((1,10,4)\), homology \((0,\mathbb Z,0,0)\), and no torsion.  All diagonal,
+triple, and quadruple intersections are essential.
+
+This theorem does not survive as ordinary Mayer--Vietoris descent after the
+corner Koszul--Cech realization.  The four support ideals satisfy
+
+\[
+\bigcup_vV(I_v)=V(x_0x_1,x_3x_4)\subsetneq\operatorname{Spec}R,
+\]
+
+and an adjacent road support such as \(V(x_3)\) is neither the intersection
+nor the union of its two corner supports.  The road-to-corner arrows are
+oriented Gysin/residue maps, not restrictions.  A supported corner
+totalization therefore dies after Laurent localization, whereas the
+entry-97 road trace retains its normalized generic unit.
+
+Keep three constructions separate:
+
+1. the split-exact finite cellular corner nerve, which reconstructs
+   \(\mathbb D(Q_{03})\);
+2. the supported corner Cousin diagram, which sees at most
+   \(R\Gamma_{(x_0x_1,x_3x_4)}\mathbb D(Q_{03})\); and
+3. the dual principal-lcm line on the open
+   \(U_{\rm lcm}=\operatorname{Spec}R\setminus
+   (V(x_0,x_1)\cup V(x_3,x_4))\), which carries the generic unit but not the
+   supported residues.
+
+The simpler correct target is the intrinsic stratified recollement
+
+\[
+\boxed{
+\mathcal C_{03}^{\rm occ}
+=\operatorname{Tot}\!\left[
+\mathbf1_T
+\xrightarrow{\operatorname{can/var}}
+\bigoplus_{e\subset F_{03}}\mathcal C_e[1]
+\xrightarrow{\operatorname{Res}}
+\bigoplus_{v\subset F_{03}}\mathcal C_v[2]
+\right].
+}
+\]
+
+Construct its occurrence-loaded edge Gysin maps and their full corner
+coherence, then solve
+
+\[
+\boxed{
+d_{\rm Cousin}\Theta_{03}=0,
+\qquad
+\Theta_{03}|_T=\mathbf1_T,
+\qquad
+\operatorname{Res}^{\rm Cousin}_{v_{10}}\Theta_{03}
+=\Theta_{03,v_{10}}^{\rm corner}.
+}
+\]
+
+The last condition is entry 121.  The generic normalization is independent
+data carried by the nonzero \(Q\)-leg; it may not be inferred from the
+corner residues or inserted after localization.  The next decisive result
+is the obstruction to extending that generic unit through the four road
+Gysin terms with the prescribed corner residues.  Zero gives the desired
+road trace, while a nonzero obstruction falsifies this local synthesis.
