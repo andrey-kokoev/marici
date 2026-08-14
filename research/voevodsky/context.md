@@ -1594,3 +1594,52 @@ q^!\mathcal Q_{03,\rm flag}^{\rm unloc}
 It must retain the full \(\operatorname{Tor}_0\oplus\operatorname{Tor}_1\)
 packet and only then localize to the entry-97 trace. Do not rotate to the
 second endpoint until this unlocalized counit is constructed.
+
+## 30. Unlocalized road-flag diamond and filtered trace
+
+Entry 120 constructs the finite algebraic object demanded above.  Before
+marking, the road flag is the complete weighted diamond
+
+\[
+R F_{03}\xrightarrow{(x_3,-x_1)^T}
+R\langle Z_3,Z_1\rangle
+\xrightarrow{(x_1,x_3)}Rv_{10}.
+\]
+
+The two routes are jointly necessary for \(d^2=0\).  Principal-lcm
+coefficient lines turn every radial multiplier into unit incidence and give
+an integral line-valued Alexander--Whitney cap.  After the positive
+\(x_3\)-Thom evaluation it yields
+
+\[
+[e_3\xrightarrow{-x_1}q_0]
+\longrightarrow[F_{03}\xrightarrow{+x_1}\tau_0],
+\qquad(e_3,q_0)\mapsto(F_{03},-\tau_0).
+\]
+
+The full formal derived profile is torsion-free with ranks \((1,2,1)\).
+The two middle directions are the occurrence extension and repeated-normal
+excess.  With entry 100's quotient and marked excess retraction, the graph
+Bockstein closes the filtered extension square:
+
+\[
+\Theta^{(0)}=C_{\rm AW}^{\rm lcm}\otimes\pi,
+\qquad
+\Theta^{(1)}=C_{\rm AW}^{\rm lcm}\otimes
+\operatorname{tr}^{\rm ex},
+\qquad
+\Theta^{(1)}B_{D_3}=B_W\Theta^{(0)}.
+\]
+
+This is a proved cellular/recollement normal form, not yet a ringed
+six-functor PC correspondence.  Literal common-base localization remains
+zero.  The next test is the target-side supported comparison
+
+\[
+\kappa_{Q_{03}}\Theta_{03,\rm flag}^{\rm fil}
+\stackrel?\simeq\Theta_{03}^{\rm loc},
+\]
+
+performed only after the lcm cap has consumed the endpoint occurrence
+support.  It must retain the source support while producing the entry-100
+four-normal Cousin residue and the separate positive physical normal.

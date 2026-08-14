@@ -1393,3 +1393,77 @@ central flip. It must:
 Until this object exists, the rank of the full loaded endpoint Hom is
 undefined. Reporting rank one by discarding \(\operatorname{Tor}_0\), or
 reporting the carrier rank as the loaded rank, is prohibited.
+
+## Filtered road-flag refinement after entry 120
+
+The finite unlocalized road-flag model is now constructed at its exact
+algebraic scope.  The road flag is the full two-route Koszul diamond
+
+\[
+R F_{03}\xrightarrow{(x_3,-x_1)^T}
+R\langle Z_3,Z_1\rangle
+\xrightarrow{(x_1,x_3)}Rv_{10},
+\]
+
+not one selected route.  Principal-lcm lines conjugate its weighted radial
+differential to ordinary incidence without inverting occurrence variables,
+and the inherited \(x_3\) mark induces the normalized endpoint cap
+
+\[
+C_{\rm AW}^{\rm lcm}:
+[e_3\xrightarrow{-x_1}q_0]
+\longrightarrow[F_{03}\xrightarrow{+x_1}\tau_0],
+\qquad(e_3,q_0)\mapsto(F_{03},-\tau_0).
+\]
+
+The anti-circular derived-Hom test gives the torsion-free profile
+
+\[
+H^\bullet=(E,E^{\oplus2},E).
+\]
+
+Its two middle generators are the occurrence extension and
+\(\eta_{3,\rm mix}\operatorname{Tor}_1\); neither is removed.  Entry 100's
+quotient \(\pi\), marked excess retraction \(\operatorname{tr}^{\rm ex}\),
+and the graph Bockstein assemble them into the filtered cellular map
+
+\[
+\boxed{
+\Theta_{03,\rm flag}^{\rm fil}
+=\left(
+C_{\rm AW}^{\rm lcm}\otimes\pi,
+C_{\rm AW}^{\rm lcm}\otimes\operatorname{tr}^{\rm ex}
+\right),
+}
+\]
+
+because
+
+\[
+\operatorname{tr}^{\rm ex}
+\beta_{x_3}(q_3z)
+=\operatorname{tr}^{\rm ex}([t_3]\eta_{3,\rm mix})
+=[t_3].
+\]
+
+This closes the minimal filtered carrier/coefficient extension square.  It
+does not yet construct the ringed six-functor correspondence or a global
+block of \(d_{\rm sp,sc}\).
+
+The immediate objective is now a one-sided supported comparison, not literal
+localization of the whole endpoint kernel:
+
+\[
+\boxed{
+\kappa_{Q_{03}}\circ
+\Theta_{03,\rm flag}^{\rm fil}
+\stackrel?\simeq\Theta_{03}^{\rm loc}.
+}
+\]
+
+The source, endpoint, and excess supports remain unlocalized while the road
+normal packet is sent to its Koszul--Cech/Cousin realization.  The comparison
+must reproduce the four-normal residue, reciprocal-standard/original-BM
+variance, occurrence endpoints, and the independent positive
+\([dX_{03}]\) line.  Tensoring the whole endpoint correspondence with the
+entry-97 Laurent ring is prohibited because it is contractible.
