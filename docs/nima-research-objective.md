@@ -1145,3 +1145,57 @@ Do not cancel \(q_\Sigma\), use a common Rees parameter, insert a bare
 the two integral \(A_2\) lattices, or divide by three. Test the residual
 \(\mathbb Z/2\) parity, negative sheet, and physical-Cut square only after
 the loaded extraordinary-costalk correspondence exists.
+
+## D03 support correction after entry 116
+
+The carrier half of the first column is now completely local and canonical.
+In the reversed positive Boolean coface interval,
+
+\[
+e_3=\{x_1,x_5\},
+\qquad q_0=\{x_5\},
+\qquad q_2=\{x_1\},
+\]
+
+and saturated inverse peripheral transgression identifies
+\(e_3\leftrightarrow F_{03}\).  The oriented boundaries are
+
+\[
+d_{\rm PL}e_3=-q_0+q_2,
+\qquad
+d_{\rm occ}e_3=-x_1q_0+x_5q_2.
+\]
+
+The tempting promotion through the existing absolute scalar Bockstein is
+false.  After \(u_3=t_3x_3\),
+
+\[
+B_3=\delta_3^{\rm rad}+t_3\delta_3^{\rm nor},
+\]
+
+but \(e_3,q_0,q_2\) all omit \(x_3\).  Since absolute normal generators
+satisfy \(H\subseteq S\), none carries \(h_3\).  The radial block is
+\(e_3\leftrightarrow f_+\), the normal block stays on
+\(x_3\)-containing supports, and the lower source \(q\)-cells have zero
+established map to the actual road costalks.
+
+Therefore the next object is not another enlargement of the endpoint
+stalks.  Construct a Thom-decorated extraordinary correspondence
+
+\[
+\boxed{
+\operatorname{Th}^{\rm mR}_{x_3}\otimes
+\left[
+e_3\xrightarrow{(-1,+1)}q_0\oplus q_2
+\right]
+\longrightarrow
+[t_3](\tau_{q_0}\oplus\tau_{q_2}).
+}
+\]
+
+The Rees conormal \([t_3]\) belongs to the correspondence, not to the face
+supports of \(q_0,q_2\).  Its endpoint maps must retain the labelled
+\(x_1,x_5\) occurrence lines and land in the actual reciprocal/Borel--Moore
+road \(\operatorname{Tor}_1\) costalks.  The generic leg must factor through
+the cone-roof transgression \(e_3\leftrightarrow F_{03}\).  This is the
+smallest unfitted loaded Beck--Chevalley test.
