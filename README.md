@@ -249,6 +249,9 @@ Material results follow the concise documentation and epistemic-graph lifecycle 
 lightweight; full ledger and graph publication is reserved for results that change the research
 DAG.
 
+The current Nima mathematical target, decisive formulas, success ladder, and prohibited shortcuts
+are fixed in [`docs/nima-research-objective.md`](docs/nima-research-objective.md).
+
 ## Ledger map
 
 - `20260812-01` records the gravity cyclic-lift problem.
