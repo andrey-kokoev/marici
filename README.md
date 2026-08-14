@@ -105,9 +105,17 @@ The ledger currently keeps three frontiers separate:
   the local finite-loaded theorem: scalar route-to-belt descent occurs first,
   followed by one facewise PC loading on the actual regional cube. The loaded
   pentagon, ordered double residues, determinant-overlap descent, deck action,
-  and target holonomy all follow exactly. The remaining eight-point datum is
-  horizontal assembly around the residual quadrangulation octagon and its
-  Jordan/coherence obstruction. A
+  and target holonomy all follow exactly. Pole-grade exhaustion now proves
+  that the eight-point polarity difference has no additional unmarked
+  octagonal coefficient sector: double poles cancel pointwise, single poles
+  are exhausted by the eight factorization triangles, and regular terms are
+  the marked contact transport. The six-point presentation tripod requires a
+  unique rational dihedral saturation into codimension-one flags before PC
+  loading; its boundary is correct, but one core-changing physical-residue
+  counit remains open. The invariant obstruction is not literal residue zero:
+  it is one scalar multiplying the primitive \(K_4\times K_4\) line, whose
+  vanishing is equivalent to a PC null-homotopy. Global gluing of primitive
+  regional half-lines and its Jordan higher-coherence cell is a distinct atlas problem. A
   BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
@@ -486,5 +494,16 @@ prohibited overclaims.
   marked distance-two scalar path remains in its fixed-mark associahedral face, so the facewise
   PC map applies directly and preserves zero ordinary and sign-twisted octagonal circulation.
   It also corrects the proposed multiplicative holonomy: adjacent regional cubes are joined by
-  noninvertible residue/Gysin correspondences, not transition automorphisms. The remaining
-  frontier is the additive horizontal totalization of the unmarked/full-symbol summands.
+  noninvertible residue/Gysin correspondences, not transition automorphisms.
+- `20260814-84` corrects the presumed unmarked remainder. Entry 23's \(G/R/K\) decomposition is
+  exhaustive, so no fourth coefficient sector survives in the polarity difference. It also
+  falsifies the naïve maximal-face map on all barycentric simplices: the six tripod tails jump
+  from vertices to square facets. Replacing each by the uniquely forced half-sum of its two
+  saturated flags gives the correct \(D_6\)-equivariant PC boundary. The immediate bounded
+  frontier is now one occurrence-decorated residue calculation for the core-changing entry edge;
+  the Möbius/Jordan question survives only as a separate global half-line gluing problem.
+- `20260814-85` proves that strict residue zero is representative-dependent. The saturated and
+  radial tripod routes differ by explicit two-chain boundaries, while the invariant residue class
+  is \([r_D^\epsilon]=\lambda_D^\epsilon[g_4\boxtimes g_4]\). Existing coaction and transverse
+  base-change maps neither force nor exclude \(\lambda_D^\epsilon=0\); constructing the missing
+  core-entry counit and evaluating this single period is the next decisive experiment.

@@ -41,6 +41,17 @@ remaining chain-level qualification in item 2 concerns global horizontal
 assembly of the **unmarked/full-symbol** coefficient summands. It is not a
 remaining obstruction in the marked contact sector.
 
+Forward correction (entry 84): pole-grade exhaustion shows that there is no
+unmarked/full-symbol remainder in the eight-point **polarity difference**.
+The double-pole sector cancels pointwise, the single-pole sector is exhausted
+by lower-point factorization triangles, and the regular sector is the marked
+transport of entry 83. The complete PC polarity homotopy is still conditional,
+but for a different reason: the saturated six-point tripod has one
+core-changing occurrence/Gysin entry counit not covered by the transverse
+comparison theorem. Entry 85 reduces the resulting closed residue class to one
+undetermined scalar multiplying the primitive factorized line. Global gluing of the primitive local half-lines remains a
+separate higher-coherence problem rather than an omitted coefficient sector.
+
 The finite-\(\alpha'\) object is a regulator lift. Its full \(\alpha'\)-dependent class is not
 claimed to equal the undeformed Pfaffian square; the equality is for the normalized
 field-theory/nearby-cycle class that defines the CHY half-object.
