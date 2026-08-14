@@ -8,8 +8,9 @@ Status: exact eight-point polynomial support-hyper-Čech and carrier-kernel
 theorem.  The four interval bridges isolated in entry 78 are canonical in
 the support-selected algebraic carrier.  They are simultaneously the minimal
 resolutions of the adjacent overlap ideals and the residual relation complex
-of the actual polygon-to-belt map.  Their finite-\(\alpha'\) scalar-geometric
-realization remains conditional.
+of the actual polygon-to-belt map.  Entry 80 proves their universal formal
+monodromy base change and shows that this does not by itself supply their
+finite-\(\alpha'\) scalar-geometric realization, which remains conditional.
 
 The result has two independent parts:
 
@@ -448,8 +449,10 @@ Established:
 
 Not established:
 
-1. a finite-\(\alpha'\) loaded Pochhammer/Cousin relation groupoid whose
-   associated grade is the certified polynomial kernel;
+1. a physical finite-\(\alpha'\) loaded Pochhammer/Cousin relation groupoid
+   whose associated grade is the certified polynomial kernel; entry 80 proves
+   the formal \(X\mapsto q-1\) base change but also proves that it cannot be
+   substituted for this geometric comparison without double loading;
 2. a deformation-to-the-normal-cone or specialization theorem deriving the
    physical support selection itself;
 3. the five-term loaded pentagon naturality identity;
