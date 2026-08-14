@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--100 establish eight
+At the first nontrivial boundary, \(D=03\), entries 93--101 establish nine
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -78,8 +78,11 @@ pieces of that construction:
    \]
 8. the support-directed one-normal can--var packet, its Koszul--Cech
    realization, and the three labelled local excess traces. A strict
-   finite-free stalk map is now ruled out; the remaining datum is the
-   homotopy-coherent gluing of the three derived local correspondences.
+   finite-free stalk map is now ruled out.
+9. the exact weighted three-road star at coefficient level, together with
+   the falsification of a pairwise \(q_2\) road transition as the next
+   intrinsic objective. The remaining datum is one filtered
+   conductor-to-dual-block comparison.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -98,8 +101,11 @@ the six carrier attachments are restrictions of two global maps and that the
 local excess orientation and shift are canonical. Entry 100 constructs the
 paired can--var/Koszul--Cech coefficient packet and all three labelled local
 derived traces. It also proves that no strict finite-free map of branch and
-road stalks can carry the unit coefficient. The first unproved arrow is now a
-lower-vertex homotopy coherence among those local correspondences.
+road stalks can carry the unit coefficient. Entry 101 proves that the
+pairwise lower-vertex comparison proposed there was not canonically typed:
+the roads are disjoint correspondence targets, not overlapping charts. It
+replaces that objective by a single weighted star and isolates one filtered
+comparison \(\alpha_+\) as the first unproved arrow.
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -257,21 +263,51 @@ normalization, now satisfies
 
 and the two rotated roads satisfy the analogous identities. A strict
 finite-free map \(K(I_+^\vee)\to K(I_i)\) with unit carrier coefficient is now
-falsified. What remains is not another local arrow but the first coherence
-between adjacent local correspondences. At their shared lower vertex
-\(q_2\), construct or falsify
+falsified.
+
+Entry 101 corrects the next operation. The long-road facets are disjoint, so
+there is no intrinsic pairwise transition at their shared dual-link label
+\(q_2\). The unlocalized residual normal packet is instead
+
+\[
+K_E=K(u_4,u_0,u_2),
+\]
+
+and its exact formal star is
 
 \[
 \boxed{
-\rho_{q_2}^{03}\Theta_{03}^{\rm loc}
--\rho_{q_2}^{25}\Theta_{25}^{\rm loc}
-=d_{\rm Cous}H_{q_2}+H_{q_2}d.
+f\mapsto\tau_AK_{\rm rel},\quad
+e_1\mapsto\frac{\tau_A}{u_4}T_2,\quad
+e_3\mapsto\frac{\tau_A}{u_0}T_1,\quad
+e_5\mapsto\frac{\tau_A}{u_2}T_0,\quad
+q_i,a\mapsto0,
 }
 \]
 
-Every branch/pair intersection has nonzero rank-one
-\(\operatorname{Tor}_1\), so treating the square as transverse remains
-false.
+where \(\tau_A=[1/(u_1u_3u_5)]\). This is a proved coefficient identity but
+not yet an intrinsic PC morphism. The canonical formulation starts with the
+absolute loaded associahedron, applies the filtered central dual-block
+counit, and only then passes to the relative object:
+
+\[
+\boxed{
+A_+^{\rm Cous,PC}
+=q_{\rm cell}\epsilon_{\rm cell}\alpha_+,
+\qquad
+\alpha_+:
+\mathcal S_+^{\rm cond}
+\xrightarrow{\sim}C_{\rm abs}^{v_+}.
+}
+\]
+
+The counit and cellular relative map are canonical. The comparison
+\(\alpha_+\), in an integral \(D_3\)-equivariant filtered/Rees category, is
+the single missing construction. Its associated grade must be the displayed
+weighted star and its three Cousin edge terms must be the established local
+traces. Every branch/pair intersection still has nonzero rank-one
+\(\operatorname{Tor}_1\), so treating an edge attachment as transverse
+remains false.
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -304,8 +340,9 @@ entry-98 target relation preserves all three rotated local identities, entry
 and entry 100 supplies the paired one-normal packet and all three local Cech
 residues. Realizing the relation generator \(\Delta\), its carrier source,
 and the three local source/road derived correspondences is therefore
-established. The source chain identity now depends first on one lower-vertex
-homotopy, followed by its dihedral orbit and the top augmented coherence.
+established. Entry 101 shows that no lower-vertex transition should be added.
+The source chain identity now depends on the single filtered comparison
+\(\alpha_+\); its associated grade is already forced by the weighted star.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -336,10 +373,12 @@ internal-state coevaluation retained.
    support-directed can--var objects, Koszul--Cech comparison, mixed excess
    line, and three labelled road residues are explicit. A strict finite-free
    stalk map is falsified.
-5. **Lower-vertex coherence -- immediate frontier:** solve the first chain
-   homotopy between the \(F_{03}\) and \(F_{25}\) local residues at \(q_2\).
-   If it exists, obtain the other two by rotation and test the top augmented
-   coherence. Polarity then supplies the minus lift.
+5. **Filtered global assembly -- immediate frontier:** construct the
+   normalization--conductor comparison
+   \(\alpha_+:\mathcal S_+^{\rm cond}\simeq C_{\rm abs}^{v_+}\) in the
+   integral \(D_3\)-equivariant Rees category. Its associated grade must be
+   entry 101's weighted star and its three Cousin residues must be the local
+   traces of entry 100. Polarity then supplies the minus lift.
 6. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
 7. **Intrinsic half-object:** assemble the local perfect complexes and
@@ -356,7 +395,7 @@ internal-state coevaluation retained.
    \]
 
 Stage 5 is the immediate frontier. Later stages should not be used to hide a
-failure of the lower-vertex Cousin coherence.
+failure of the filtered absolute-to-relative assembly.
 
 ## Prohibited shortcuts
 
@@ -381,6 +420,13 @@ The objective is not met by:
   stalk map; entry 100 proves that such a unit lift cannot exist.
 - calling \(R\to R[u^{-1}]\) itself a two-way can--var quiver, or globally
   inverting \(u\) and thereby erasing its supported class.
+- comparing disjoint road facets through an invented common \(q\)-vertex
+  transition; entry 101 shows that the canonical union target gives a
+  nonzero difference while the deeper conductor requires the missing Gysin
+  map by definition.
+- taking the ordinary costalk directly in the relative object. The central
+  vertex is removed there and the desired morphism is ordinary-null; its
+  information survives only in the filtered absolute-to-relative composite.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -389,38 +435,59 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved coherence in the construction. The marked road spans,
+unproved comparison in the construction. The marked road spans,
 reciprocal-twist bivariant traces, three-road target, two global carrier maps,
 local top-\(\operatorname{Tor}_1\) symbols, paired one-normal can--var packet,
-and all three labelled Cech residues are now established. The current bounded
-target is the single shared-vertex homotopy
+all three labelled Cech residues, and the exact weighted star are now
+established. The current bounded target is
 
 \[
 \boxed{
-\rho_{q_2}^{03}\Theta_{03}^{\rm loc}
--\rho_{q_2}^{25}\Theta_{25}^{\rm loc}
-=d_{\rm Cous}H_{q_2}+H_{q_2}d.
+A_+^{\rm Cous,PC}
+=q_{\rm cell}\epsilon_{\rm cell}\alpha_+,
+\qquad
+\alpha_+:
+\mathcal S_+^{\rm cond}
+\xrightarrow{\sim}C_{\rm abs}^{v_+}
 }
 \]
 
-Both sides must first be placed in one explicitly defined common Cech
-refinement. The comparison must retain occurrence pullbacks, the paired
-reciprocal/Borel--Moore support directions, every localization summand, the
-marked lower-Cousin maps, and the physical normal line. No \(u_j\) or integer
-may be inverted in the base ring. A solution may use the localization terms
-inside the Cech complex.
+in a bounded, exhaustive, separated, integral, \(D_3\)-stable filtered/Rees
+category. Construct \(\alpha_+\) from the actual normalization--conductor and
+absolute loaded dual-block geometry, not from the target equation. The Rees
+parameter \(t\), the normal variables \(u_j\), and \(3\) must remain
+uninverted. Occurrence pullbacks, reciprocal/Borel--Moore support directions,
+all localization summands, repeated-normal excess lines, lower-Cousin maps,
+physical normal lines, and \(\chi_N\) must remain visible.
 
-Only after this one homotopy exists should it be rotated to the other two
-vertices. Their cyclic composite must then supply, rather than assume, the
-top augmented coherence whose associated grade is \(A_+^{\rm car}\).
+The decisive specialization tests are
+
+\[
+\operatorname{Rees}(A_+)/(t-1)\simeq0
+\]
+
+in the ordinary relative derived object, and
+
+\[
+\operatorname{Rees}(A_+)/(t)
+=\operatorname{gr}(A_+)
+=A_+^{\rm car}
+\]
+
+with the entry-101 weighted coefficients. Its three edge residues must be
+exactly \(\Theta_{14}^{\rm loc},\Theta_{03}^{\rm loc},\Theta_{25}^{\rm loc}\),
+while their total road restriction contracts because the source is supported
+at the removed central vertex.
 
 Its useful terminal outcomes are either:
 
-- one proved local chain identity, with a reproducible certificate; or
-- one sharp falsifier identifying the first geometric map, filtration, or
-  Beck--Chevalley identity that cannot exist.
+- one proved filtered comparison and absolute-to-relative chain identity,
+  with a reproducible certificate; or
+- one sharp falsifier showing that the normalization--conductor source cannot
+  be the filtered central dual-block costalk, or that one established local
+  trace is incompatible with its Cousin boundary.
 
 Do not recompute the target relation, construct the six road maps
-independently, test \(\Delta\) on one pair alone, or expand to a new
-multiplicity, a fourth primitive, or another sign census while the first
-lower-vertex Cousin homotopy remains untyped.
+independently, resurrect a pairwise \(q\)-vertex transition, test \(\Delta\)
+on one pair alone, or expand to a new multiplicity, a fourth primitive, or
+another sign census while \(\alpha_+\) remains unconstructed.
