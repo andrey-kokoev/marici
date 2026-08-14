@@ -244,6 +244,11 @@ Human-readable research records live in `src/ledger`. Ledger entries separate in
 structure, independently checked results, strong inferences, open questions, falsifiers, and
 prohibited overclaims.
 
+Material results follow the concise documentation and epistemic-graph lifecycle in
+[`docs/research-lifecycle.md`](docs/research-lifecycle.md). Exploratory checkpoints remain
+lightweight; full ledger and graph publication is reserved for results that change the research
+DAG.
+
 ## Ledger map
 
 - `20260812-01` records the gravity cyclic-lift problem.
