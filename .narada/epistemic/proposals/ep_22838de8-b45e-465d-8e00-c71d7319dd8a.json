@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_22838de8-b45e-465d-8e00-c71d7319dd8a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "user_authorized_research_curation",
+    "request": "The user explicitly asked Marici.Nima to use the epistemic graph and continue the documented research lifecycle."
+  },
+  "idempotency_key": "auto-proposal-cbfc05d5673a037a357e85c6",
+  "expected_ledger_head": "c6d1db1e9f553ecc190447b65b70c6597621b537c02e9f22455bc411e2b38fbd",
+  "created_at": "2026-08-14T11:31:07.5943149Z",
+  "content_fingerprint": "cbfc05d5673a037a357e85c651b7a0dba4c4637a0c299c64f6b926a17f59627f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:ledger-entry-102-integral-tate-class",
+      "kind": "source",
+      "title": "Ledger entry 102: The Augmented Triangle as an Integral Tate Class",
+      "version": "sha256:434bc0007576df1bb96357eb10d42c230e703a2514dca29752eb9b13721de6b7",
+      "locator": "src/ledger/20260814-102 The Augmented Triangle as an Integral Tate Class.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:checker-weighted-three-road-star-tate-version",
+      "kind": "source",
+      "title": "Extended weighted three-road and integral Tate-window Rust certificate",
+      "version": "sha256:92bfd8b2b2bc058fa70c49af4c69ca80f460b175882211621928c3d93377e008",
+      "locator": "research/voevodsky/check_weighted_three_road_star.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:augmented-triangle-integral-tate-class",
+      "kind": "claim",
+      "title": "The augmented triangle is the orientation-twisted integral C3 Tate periodicity window of exact order three, while the weighted normal packet is not its unlocalized realization."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:augmented-triangle-tate-and-unlocalized-boundary",
+      "kind": "test",
+      "title": "Identify the based norm/(1-r)/augmentation window, verify D3 orientation covariance and order three, and compare its homology with the unlocalized weighted Koszul packet."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:augmented-triangle-integral-tate-class",
+      "target_id": "source:ledger-entry-102-integral-tate-class",
+      "relation_id": "rel:derived_from-4ad2f5d43daadaff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:augmented-triangle-integral-tate-class",
+      "target_id": "source:checker-weighted-three-road-star-tate-version",
+      "relation_id": "rel:derived_from-75970f60d65b89df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:augmented-triangle-tate-and-unlocalized-boundary",
+      "target_id": "source:checker-weighted-three-road-star-tate-version",
+      "relation_id": "rel:derived_from-4d78143f71eca75f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:augmented-triangle-tate-and-unlocalized-boundary",
+      "target_id": "claim:augmented-triangle-integral-tate-class",
+      "relation_id": "rel:tests-e61e9af39598d0e7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "claim:augmented-triangle-integral-tate-class",
+      "target_id": "claim:weighted-three-road-star-and-pairwise-typing-correction",
+      "relation_id": "rel:maricirefines-91bfe5d43fe8d36c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:augmented-triangle-integral-tate-class",
+      "target_id": "problem:filtered-conductor-dual-block-comparison",
+      "relation_id": "rel:addresses-b73fbbb49029c825"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:augmented-triangle-integral-tate-class",
+      "target_id": "conjecture:j-intrinsic-factorization-natural-half-object",
+      "relation_id": "rel:addresses-c9fd17ac57f6d132"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:augmented-triangle-tate-and-unlocalized-boundary-20260814",
+      "test_id": "test:augmented-triangle-tate-and-unlocalized-boundary",
+      "actor": "marici.Nima",
+      "outcome": "Passed for the exact integral Tate-window identification, D3 orientation action, self-duality, Smith index, and order-three class. The unlocalized weighted realization failed by supported H0; alpha_plus remains unconstructed.",
+      "evidence": [
+        {
+          "source_id": "source:checker-weighted-three-road-star-tate-version",
+          "locator": "research/voevodsky/check_weighted_three_road_star.rs",
+          "paraphrase": "The extended checker verifies the based C3 Tate window and its D3 action, then distinguishes it from K(u4,u0,u2) over the unlocalized base."
+        },
+        {
+          "source_id": "source:ledger-entry-102-integral-tate-class",
+          "locator": "src/ledger/20260814-102 The Augmented Triangle as an Integral Tate Class.md",
+          "paraphrase": "The ledger scopes the exact Tate theorem, the unlocalized no-go, and the unchanged filtered alpha_plus frontier."
+        }
+      ]
+    }
+  ],
+  "digest": "55aef55dc8b37c6219075b566a1b85645f5cbf8a6e520c668080e802aa307831"
+}
