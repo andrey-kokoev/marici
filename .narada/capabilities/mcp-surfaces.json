@@ -3,7 +3,7 @@
   "artifact_role": "site_capability_surface_registry_not_mcp_client_config",
   "site_id": "marici",
   "generated_by": "mcp-registrar",
-  "generated_at": "2026-08-14T02:17:34.5131374Z",
+  "generated_at": "2026-08-14T02:51:35.7823994Z",
   "generation_policy": {
     "source": ".ai/mcp + registrar surface catalog",
     "mode": "enabled_surface_tool_authority",
@@ -3484,7 +3484,7 @@
       "runtime_binding": {
         "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -3494,20 +3494,18 @@
             "--surface-id",
             "artifacts",
             "--child-command",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--child-invocation-kind",
             "native_entrypoint",
             "--",
             "--surface-id",
-            "artifacts",
-            "--site-root",
-            "C:\\Users\\andrey\\src\\marici"
+            "artifacts"
           ]
         }
       },
@@ -9151,9 +9149,9 @@
       "display_name": "narada-marici-delegated-task",
       "server_name": "narada-marici-delegated-task",
       "runtime_binding": {
-        "runtime_kind": "node-stdio",
+        "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:\\Users\\andrey\\src\\mcp-surfaces\\packages\\delegated-task-mcp\\dist\\src\\main.js",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -9163,14 +9161,18 @@
             "--surface-id",
             "delegated-task",
             "--child-command",
-            "C:/Users/andrey/AppData/Local/fnm_multishells/5372_1786638559090/node.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:\\Users\\andrey\\src\\mcp-surfaces\\packages\\delegated-task-mcp\\dist\\src\\main.js",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
+            "--child-invocation-kind",
+            "native_entrypoint",
             "--",
+            "--surface-id",
+            "delegated-task",
             "--site-root",
             "C:\\Users\\andrey\\src\\marici",
             "--task-root",
@@ -9266,8 +9268,13 @@
           "epistemic_graph_guidance",
           "epistemic_graph_status",
           "epistemic_graph_query",
+          "epistemic_graph_query_batch",
+          "epistemic_graph_source_inspect",
           "epistemic_graph_neighborhood",
           "epistemic_graph_proposal_submit",
+          "epistemic_graph_capture_sources",
+          "epistemic_graph_proposal_read",
+          "epistemic_graph_proposal_resubmit",
           "epistemic_graph_proposal_review",
           "epistemic_graph_proposal_admit",
           "epistemic_graph_proposal_reject",
@@ -9278,8 +9285,8 @@
           "tenancy": "session_isolated",
           "replacement": "manual"
         },
-        "descriptor_digest": "d9fd10820283fe9bd2089b62819501f4310317528c54185cdcab112a992b0221",
-        "tool_contract_digest": "fea937311d0fc22669a0cbedde27488dbd3e3dbc3fe8d52d082116389c372ab2",
+        "descriptor_digest": "cbc21be8129d3d50fb5dbe8de889c2ebb809b3bd929d6f48fe513b54cd582a60",
+        "tool_contract_digest": "a69c110a376deaaf917d8009d1c2c4974d58ee52cd0f3fef807ba84e0ce1e1cd",
         "surface_descriptor": {
           "schema_version": "2.0",
           "source": "native",
@@ -9361,6 +9368,54 @@
               }
             },
             {
+              "name": "epistemic_graph_query_batch",
+              "description": "Native epistemic graph operation: epistemic_graph_query_batch.",
+              "input_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "epistemic_graph_query_batch",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "epistemic_graph_source_inspect",
+              "description": "Native epistemic graph operation: epistemic_graph_source_inspect.",
+              "input_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "epistemic_graph_source_inspect",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "policy"
+              }
+            },
+            {
               "name": "epistemic_graph_neighborhood",
               "description": "Native epistemic graph operation: epistemic_graph_neighborhood.",
               "input_schema": {
@@ -9397,6 +9452,78 @@
               },
               "annotations": {
                 "title": "epistemic_graph_proposal_submit",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": false
+              },
+              "effect": {
+                "class": "local_write",
+                "idempotency": "idempotent_with_key",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "epistemic_graph_capture_sources",
+              "description": "Native epistemic graph operation: epistemic_graph_capture_sources.",
+              "input_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "epistemic_graph_capture_sources",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": false
+              },
+              "effect": {
+                "class": "local_write",
+                "idempotency": "idempotent_with_key",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "epistemic_graph_proposal_read",
+              "description": "Native epistemic graph operation: epistemic_graph_proposal_read.",
+              "input_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "epistemic_graph_proposal_read",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "epistemic_graph_proposal_resubmit",
+              "description": "Native epistemic graph operation: epistemic_graph_proposal_resubmit.",
+              "input_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "epistemic_graph_proposal_resubmit",
                 "readOnlyHint": false,
                 "destructiveHint": false,
                 "idempotentHint": false,
@@ -9547,7 +9674,7 @@
       "runtime_binding": {
         "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -9557,13 +9684,13 @@
             "--surface-id",
             "epistemic-graph",
             "--child-command",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--child-invocation-kind",
             "native_entrypoint",
             "--",
@@ -9589,8 +9716,13 @@
           "epistemic_graph_guidance",
           "epistemic_graph_status",
           "epistemic_graph_query",
+          "epistemic_graph_query_batch",
+          "epistemic_graph_source_inspect",
           "epistemic_graph_neighborhood",
           "epistemic_graph_proposal_submit",
+          "epistemic_graph_capture_sources",
+          "epistemic_graph_proposal_read",
+          "epistemic_graph_proposal_resubmit",
           "epistemic_graph_proposal_review",
           "epistemic_graph_proposal_admit",
           "epistemic_graph_proposal_reject",
@@ -9602,11 +9734,16 @@
           "epistemic_graph_guidance",
           "epistemic_graph_status",
           "epistemic_graph_query",
+          "epistemic_graph_query_batch",
+          "epistemic_graph_source_inspect",
           "epistemic_graph_neighborhood",
+          "epistemic_graph_proposal_read",
           "epistemic_graph_export"
         ],
         "mutating_tools": [
           "epistemic_graph_proposal_submit",
+          "epistemic_graph_capture_sources",
+          "epistemic_graph_proposal_resubmit",
           "epistemic_graph_proposal_review",
           "epistemic_graph_proposal_admit",
           "epistemic_graph_proposal_reject"
@@ -9617,8 +9754,13 @@
         "epistemic_graph_guidance",
         "epistemic_graph_status",
         "epistemic_graph_query",
+        "epistemic_graph_query_batch",
+        "epistemic_graph_source_inspect",
         "epistemic_graph_neighborhood",
         "epistemic_graph_proposal_submit",
+        "epistemic_graph_capture_sources",
+        "epistemic_graph_proposal_read",
+        "epistemic_graph_proposal_resubmit",
         "epistemic_graph_proposal_review",
         "epistemic_graph_proposal_admit",
         "epistemic_graph_proposal_reject",
@@ -12458,7 +12600,7 @@
       "runtime_binding": {
         "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -12468,13 +12610,13 @@
             "--surface-id",
             "mailbox",
             "--child-command",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--child-invocation-kind",
             "native_entrypoint",
             "--",
@@ -13986,7 +14128,7 @@
       "runtime_binding": {
         "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -13996,13 +14138,13 @@
             "--surface-id",
             "scheduler",
             "--child-command",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--child-invocation-kind",
             "native_entrypoint",
             "--",
@@ -27464,7 +27606,7 @@
       "runtime_binding": {
         "runtime_kind": "rust-stdio",
         "proxy_implementation": "native",
-        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
         "owner_site_id": "marici",
         "transport": {
           "type": "stdio",
@@ -27474,13 +27616,13 @@
             "--surface-id",
             "worker-delegation",
             "--child-command",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--artifact-manifest",
             "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
             "--runtime-contract-version",
             "8",
             "--entrypoint",
-            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/478cb87bdd613e8a94b87c3e933ac0a5572a9a9febbcec4408a9369ceb5dbb6e/narada-mcp-surfaces.exe",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-surfaces-native/dist/native/versions/0f35cf54f74f03607344b87ba7440b16f283294b0826d73d702d63f4828eec7a/narada-mcp-surfaces.exe",
             "--child-invocation-kind",
             "native_entrypoint",
             "--",

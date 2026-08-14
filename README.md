@@ -391,3 +391,8 @@ prohibited overclaims.
   and every rank-two core has an honest fixed-core cube.  On the eight four-chart cores the
   charts form only the side belt; two caps and the cube give exact target coherence, while forty
   support-compatible pentagon lifts leave the physical loaded Gysin naturality conditional.
+- `20260813-74` resolves the forty-lift ambiguity in the derived category: existing data select
+  one oriented relative/Borel--Moore class but no preferred strict map.  It replaces the
+  overlarge constant-coefficient cube by a 27-generator weighted interval cube, derives the
+  scalar-edge Cousin counit and uniquely forces both caps and the cube coherence, while leaving
+  the global occurrence-decorated Pochhammer/Cousin comparison theorem open.

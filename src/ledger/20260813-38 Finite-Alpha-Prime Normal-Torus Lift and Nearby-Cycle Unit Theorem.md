@@ -342,6 +342,16 @@ yet extend the physical theorem: the four support charts are a cubical belt,
 and support admits forty pentagon-to-square cellular lifts.  The physical
 finite-alpha-prime Gysin natural transformation has not selected one of them.
 
+Entry 74 sharpens the remaining statement.  The forty strict lifts give only
+two maps in relative/Borel--Moore chains, distinguished by orientation; the
+ordered normal line selects the positive class.  Thus the physical invariant
+to construct is a derived bivariant kernel, not a preferred point-set map.
+It also replaces entry 73's overlarge constant-coefficient cube by the tensor
+of three weighted interval complexes and derives the unique localized
+rank-one Cousin counit.  What remains open here is its assembly into a global
+occurrence-decorated natural transformation.  Collar independence of the
+underlying undecorated Pochhammer/Cousin class is already established above.
+
 This is the filtered scalar-to-Pochhammer/Cousin comparison on the transverse
 domain. Its extension across dependent associahedral faces is the remaining
 coefficient-lift problem.

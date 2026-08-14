@@ -2478,3 +2478,94 @@ intrinsically selected.  Therefore the cap/cube completion proves target
 exactness, not yet the finite-alpha-prime physical Gysin naturality.  The next
 experiment must derive that degree-shifted loaded map and verify residue
 commutation generator by generator.
+
+### Derived Gysin class and weighted route cube
+
+The forty-lift ambiguity is now resolved at the level actually seen by an
+open Pochhammer/Cousin face.  A pentagon and its target square are oriented
+disks, so their Borel--Moore complexes are the relative complexes
+\(C_*(F,\partial F)\simeq\mathbf Z[-2]\).  All twenty strict lifts of fixed
+orientation are chain homotopic as maps of pairs; 800 ordered equal-degree
+pairs were checked exactly.  The ordered normal line therefore selects one
+positive derived Gysin class, although existing support and deck data still
+leave four cyclic strict origins in that class.
+
+A Boolean-labelled partial-core square
+\((\varnothing,D,DE,E)\) would select the scalar-edge collapse uniquely after
+choosing orientation, but this is extra target data.  Moreover the
+constructible pushout on that edge has rank \(5+5-4=6\), while the target
+vertex has rank five.  The missing datum is one loaded Cousin counit relating
+the exchanged endpoint labels.
+
+The fixed-core target has also been corrected.  It is not the rank-eight
+occurrence module tensored with all cube cells.  If \(d_{r0},d_{r1}\) are the
+two scalar refinements in quadrilateral region \(r\), define
+
+\[
+K_r^{\mathrm w}
+=
+\left[
+Rh_r\xrightarrow{d}
+Re_{r0}\oplus Re_{r1}
+\right],
+\qquad
+d h_r
+=
+X_{d_{r1}}e_{r1}-X_{d_{r0}}e_{r0}.
+\]
+
+Then
+
+\[
+K_Q^{\mathrm w}
+=
+K_0^{\mathrm w}\otimes K_1^{\mathrm w}\otimes K_2^{\mathrm w}
+\]
+
+has degree ranks \((8,12,6,1)\).  Its eight vertices are the full occurrence
+fiber and its higher cells are the scalar-flip homotopies and coherences.  The
+four physical charts are coordinate-facet restrictions of
+
+\[
+-\kappa_D\kappa_E
+\bigotimes_{r=0}^2
+\left(
+X_{d_{r0}}e_{r0}+X_{d_{r1}}e_{r1}
+\right).
+\]
+
+The remaining two facets are the caps, and the weighted boundary equations
+force both cap coefficients and the top cube coefficient to \(+1\).
+
+For the representative exchanged labels \(15,37\), the localized lower term
+
+\[
+H_s
+=
+\frac{X_{15}}{u_{15}}h_{15}
+-
+\frac{X_{37}}{u_{37}}h_{37},
+\qquad
+dH_s=X_{15}e_{15}-X_{37}e_{37},
+\]
+
+supplies exactly the missing rank-one counit, and supported double Gysin kills
+both quotient lines.  This proves the formal localized/derived equations.  It
+does not yet assemble the counit with all occurrence charts into the
+bivariant Pochhammer/Cousin natural transformation.  Literal collar choices
+are already auxiliary for the underlying facewise class by entry 38.
+
+The formula objective is now a derived kernel
+
+\[
+\mathscr G_Q^{\alpha'}
+\in
+\operatorname{RHom}\!\left(
+\operatorname{PC}_{\alpha'}(\mathcal R_Q;\mathcal L),
+K_Q^{\mathrm w}[-2]
+\right)
+\]
+
+on the complete route envelope, commuting with the PC differential, physical
+double residue, and deck rotation.  Strict collars and cellular
+parametrizations may vary; the invariant to construct is its derived class.
