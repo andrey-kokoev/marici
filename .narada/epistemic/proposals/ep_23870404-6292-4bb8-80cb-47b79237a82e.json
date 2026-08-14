@@ -1,0 +1,82 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_23870404-6292-4bb8-80cb-47b79237a82e",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator instructed Nima to continue research and use the epistemic graph; this contribution records the audited material result from ledger entry 108."
+  },
+  "idempotency_key": "auto-proposal-553d33521c895623b0ed2f5c",
+  "expected_ledger_head": "cf8a9300d2472c3fc218d1cb278f611bec5b0a48816c6a7eca09192e076b9e11",
+  "created_at": "2026-08-14T14:34:39.7303135Z",
+  "content_fingerprint": "553d33521c895623b0ed2f5cf52375e809d6311ab89dea8ebee261279f053f4a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-ledger-108",
+      "kind": "source",
+      "title": "Local D03 Exit Class and the Generic-Q Kernel Criterion",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-108 Local D03 Exit Class and the Generic-Q Kernel Criterion.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-108-local-exit-generic-q-kernel-criterion",
+      "kind": "claim",
+      "title": "The D03 local exit complex has a canonical shifted unit, but any specialization source contained generically in F1 has zero Q-leg",
+      "summary": "The finite exit complex is [R --U03--> R] with H1=R/(U03); principal-ideal duality normalizes the raw X03 class to [1] without base localization. A Rees/DNC kernel can realize the global boundary crossing only if its own generic fiber projects nontrivially to Q. The expanded gallery multi-Rees fails this necessary condition."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-108-local-exit-generic-q-kernel-criterion",
+      "target_id": "source:nima-ledger-108",
+      "relation_id": "rel:derived_from-2a98bef7466dc670"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:nima-108-local-exit-generic-q-kernel-criterion",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "relation_id": "rel:addresses-7693de28ec9d35ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "claim:nima-108-local-exit-generic-q-kernel-criterion",
+      "target_id": "criticism:8a545d27a80c1893f8d5",
+      "relation_id": "rel:maricirefines-eb0c2d84d9c6d56e"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-d03-generic-q-leg-after-108",
+      "test_id": "test:713ff522bfc26aad4af5",
+      "actor": "marici.Nima",
+      "outcome": "partial failure with a sharpened target: the canonical expanded-gallery Rees and multi-Rees sources have zero generic Q projection, while the independently computed local exit target contains the normalized shifted class [1]; the required specialization sp_G remains undefined",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-108",
+          "locator": "Claim, Evidence, and Boundary sections",
+          "paraphrase": "Exact cellular enumeration puts all seven gallery supports in F1, proves their quotient map to Q is zero, and separately computes the local exit complex and principal-ideal dual normalization."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-boundary-crossing-kernel-after-108",
+      "subject_id": "problem:0a424d79ea347d691fb5",
+      "judgment": "open with a necessary kernel-level generic-support criterion and a fixed local target class",
+      "actor": "marici.Nima",
+      "reason": "Entry 108 rules out the canonical gallery Rees shortcut and identifies the exact missing arrow sp_G(e_F)=[1]. A relative dual-star or normal-Morse thimble whose own generic fiber meets Q is the smallest next candidate.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-108",
+          "locator": "Consequence section",
+          "paraphrase": "The next test must first exhibit a literal Q coface and derive the expanded gallery as special boundary before attaching excess and physical-orientation data."
+        }
+      ]
+    }
+  ],
+  "digest": "77ccf3a9d2a05ee1aa6bd242e8717f66afd01363caa12dc75b88599de043ae56"
+}
