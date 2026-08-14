@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--102 establish ten
+At the first nontrivial boundary, \(D=03\), entries 93--103 establish eleven
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -89,6 +89,11 @@ pieces of that construction:
     \(\operatorname{Ext}^2_{\mathbb Z[D_3]}(\mathbb Z,\mathbb Z_{\rm or})
     \cong\mathbb Z/3\), together with the proof that the weighted normal
     packet is not this window over the unlocalized base.
+11. the derivation of entry 99's global plus carrier as the unique normalized
+    inverse/dual lift of the saturated connecting transgression for the
+    actual cellular triple
+    \(v_+\subset B_{\rm short}\subset K_6\). The literal barycentric
+    dual-block inclusion is not that map.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -111,7 +116,7 @@ road stalks can carry the unit coefficient. Entry 101 proves that the
 pairwise lower-vertex comparison proposed there was not canonically typed:
 the roads are disjoint correspondence targets, not overlapping charts. It
 replaces that objective by a single weighted star and isolates one filtered
-comparison \(\alpha_+\) as the first unproved arrow.
+peripheral cospan as the first unproved construction.
 
 Entry 102 explains the index-three gluing without adding a new geometric
 map: the augmented triangle is the norm/\((1-r)\)/augmentation window of the
@@ -121,6 +126,20 @@ the construction. It is not a replacement for the weighted normal/Rees
 packet: the latter has supported homology and cannot be identified with the
 exact Tate window without globally inverting the very normals whose support
 must be retained.
+
+Entry 103 then removes the remaining carrier-level fitting ambiguity. For
+the actual scalar triple, the connecting map
+
+\[
+\delta_1:H_2(K_6,B_{\rm short})
+\xrightarrow{\sim}H_1(B_{\rm short},v_+)
+\]
+
+is a saturated integral isomorphism. Its inverse/dual variance, together
+with the three unique central flips, selects entry 99's road matching
+uniquely. The literal dual-block inclusion stays in the star of \(v_+\) and
+does not reach a road. Thus the loaded frontier should be formulated through
+a peripheral transgression correspondence, not as a direct chart map.
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -301,26 +320,43 @@ q_i,a\mapsto0,
 \]
 
 where \(\tau_A=[1/(u_1u_3u_5)]\). This is a proved coefficient identity but
-not yet an intrinsic PC morphism. The canonical formulation starts with the
-absolute loaded associahedron, applies the filtered central dual-block
-counit, and only then passes to the relative object:
+not yet an intrinsic PC morphism. Entry 103 shows that the earlier direct
+dual-block-counit formula was only schematic: the literal dual block contains
+no road. The canonical carrier passes through the peripheral exact-couple
+term. The loaded objective is therefore the cospan
 
 \[
 \boxed{
-A_+^{\rm Cous,PC}
-=q_{\rm cell}\epsilon_{\rm cell}\alpha_+,
-\qquad
-\alpha_+:
 \mathcal S_+^{\rm cond}
-\xrightarrow{\sim}C_{\rm abs}^{v_+}.
+\xrightarrow{\alpha_+^{\rm per}}
+\mathcal P_+^{F,\rm PC}
+\xleftarrow{\delta_1^{F,\rm PC}}
+\mathcal R_{\rm road}^{F,\rm PC}.
 }
 \]
 
-The counit and cellular relative map are canonical. The comparison
-\(\alpha_+\), in an integral \(D_3\)-equivariant filtered/Rees category, is
-the single missing construction. Its associated grade must be the displayed
-weighted star and its three Cousin edge terms must be the established local
-traces. Every branch/pair intersection still has nonzero rank-one
+Here \(\mathcal P_+^{F,\rm PC}\) is the loaded peripheral object and
+\(\mathcal R_{\rm road}^{F,\rm PC}\) is the loaded relative road object.
+Entry 103 proves only
+
+\[
+\operatorname{gr}(\delta_1^{F,\rm PC})=\delta_1
+\]
+
+at the integral carrier level. The desired composite
+
+\[
+A_+^{\rm Cous,PC}
+\simeq
+(\delta_1^{F,\rm PC})^{-1}\alpha_+^{\rm per}
+\]
+
+uses the inverse only on the saturated associated-grade sector; no strict
+global inverse is assumed. Constructing both loaded arrows in the same
+integral \(D_3\)-equivariant filtered/Rees category is the single missing
+task. Their associated grade must be the displayed weighted star and their
+three Cousin edge terms must be the established local traces. Every
+branch/pair intersection still has nonzero rank-one
 \(\operatorname{Tor}_1\), so treating an edge attachment as transverse
 remains false.
 
@@ -336,9 +372,9 @@ Its carrier-forgetting shadow must also reproduce the exact two-extension
 (\mathbb Z,\mathbb Z_{\rm or})\cong\mathbb Z/3.
 \]
 
-This is a compatibility test, not an instruction to construct \(\alpha_+\)
-in a Tate-localized category. The weighted and Tate shadows are deliberately
-not identified over the unlocalized coefficient ring.
+This is a compatibility test, not an instruction to construct the cospan in
+a Tate-localized category. The weighted and Tate shadows are deliberately not
+identified over the unlocalized coefficient ring.
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -371,9 +407,11 @@ entry-98 target relation preserves all three rotated local identities, entry
 and entry 100 supplies the paired one-normal packet and all three local Cech
 residues. Realizing the relation generator \(\Delta\), its carrier source,
 and the three local source/road derived correspondences is therefore
-established. Entry 101 shows that no lower-vertex transition should be added.
-The source chain identity now depends on the single filtered comparison
-\(\alpha_+\); its associated grade is already forced by the weighted star.
+established. Entry 101 shows that no lower-vertex transition should be added,
+and entry 103 derives the carrier map from the saturated peripheral
+transgression. The source chain identity now depends on lifting that actual
+transgression and the conductor-to-peripheral comparison; their associated
+grade is already forced by the weighted star.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -396,22 +434,24 @@ internal-state coevaluation retained.
 2. **Three-road target relation -- established in entry 98:** the weighted
    relative hexagon supplies \(\mathcal K_{\rm rel}^{\rm PC}\), its unique
    normalized reciprocal cocycle, and the three rotated boundary traces.
-3. **Global source carrier -- established in entry 99:** the two central
-   vertex figures map integrally and equivariantly to the relative target;
+3. **Global source carrier -- established in entry 99, derived in entry 103:**
+   the two central vertex figures map integrally and equivariantly to the relative target;
    the six carrier attachments are their road restrictions. The plus/\(D03\)
-   excess symbol and every already-typed boundary invariant are fixed.
+   excess symbol and every already-typed boundary invariant are fixed. The
+   plus map is the unique normalized inverse/dual lift of the actual
+   saturated peripheral transgression, not a literal dual-block inclusion.
 4. **Local unlocalized packet -- established in entry 100:** the paired
    support-directed can--var objects, Koszul--Cech comparison, mixed excess
    line, and three labelled road residues are explicit. A strict finite-free
    stalk map is falsified.
-5. **Filtered global assembly -- immediate frontier:** construct the
-   normalization--conductor comparison
-   \(\alpha_+:\mathcal S_+^{\rm cond}\simeq C_{\rm abs}^{v_+}\) in the
-   integral \(D_3\)-equivariant Rees category. Its associated grade must be
-   entry 101's weighted star and its three Cousin residues must be the local
-   traces of entry 100. Its carrier shadow must be entry 102's integral Tate
-   two-extension, without replacing the weighted complex by that exact
-   window. Polarity then supplies the minus lift.
+5. **Filtered peripheral assembly -- immediate frontier:** construct
+   \(\alpha_+^{\rm per}\) and \(\delta_1^{F,\rm PC}\) in the displayed
+   cospan. Their associated-grade correspondence must be entry 103's inverse
+   transgression, their supported grade must be entry 101's weighted star,
+   and their three Cousin residues must be the local traces of entry 100.
+   Their carrier shadow must be entry 102's integral Tate two-extension,
+   without replacing the weighted complex by that exact window. Polarity
+   then supplies the minus lift.
 6. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
 7. **Intrinsic half-object:** assemble the local perfect complexes and
@@ -428,7 +468,7 @@ internal-state coevaluation retained.
    \]
 
 Stage 5 is the immediate frontier. Later stages should not be used to hide a
-failure of the filtered absolute-to-relative assembly.
+failure of the filtered peripheral correspondence.
 
 ## Prohibited shortcuts
 
@@ -464,9 +504,14 @@ The objective is not met by:
   window, or globally inverting \(u_4,u_0,u_2\) to make their incidence
   matrices conjugate. Entry 102 proves that their unlocalized homology
   differs.
-- treating the order-three Tate class as the missing \(\alpha_+\). It
+- treating the order-three Tate class as the missing peripheral cospan. It
   explains the carrier's integral nonsplitting but supplies none of the
   geometric support, occurrence, excess, or Cousin data.
+- identifying entry 99 with the literal barycentric dual-block inclusion.
+  Entry 103 proves that the latter contains no road; the carrier is the
+  inverse/dual of a peripheral connecting transgression.
+- demanding a strict global inverse to \(\delta_1^{F,\rm PC}\). Only its
+  saturated associated-grade carrier has been proved invertible.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -478,23 +523,24 @@ A long or overnight investigation should attempt exactly the first canonical
 unproved comparison in the construction. The marked road spans,
 reciprocal-twist bivariant traces, three-road target, two global carrier maps,
 local top-\(\operatorname{Tor}_1\) symbols, paired one-normal can--var packet,
-all three labelled Cech residues, and the exact weighted star are now
-established. The current bounded target is
+all three labelled Cech residues, the exact weighted star, and the saturated
+carrier transgression are now established. The current bounded target is
 
 \[
 \boxed{
-A_+^{\rm Cous,PC}
-=q_{\rm cell}\epsilon_{\rm cell}\alpha_+,
-\qquad
-\alpha_+:
 \mathcal S_+^{\rm cond}
-\xrightarrow{\sim}C_{\rm abs}^{v_+}
+\xrightarrow{\alpha_+^{\rm per}}
+\mathcal P_+^{F,\rm PC}
+\xleftarrow{\delta_1^{F,\rm PC}}
+\mathcal R_{\rm road}^{F,\rm PC}
 }
 \]
 
 in a bounded, exhaustive, separated, integral, \(D_3\)-stable filtered/Rees
-category. Construct \(\alpha_+\) from the actual normalization--conductor and
-absolute loaded dual-block geometry, not from the target equation. The Rees
+category. Construct \(\alpha_+^{\rm per}\) from the actual
+normalization--conductor geometry and construct
+\(\delta_1^{F,\rm PC}\) from the actual triple
+\(v_+\subset B_{\rm short}\subset K_6\), not from the target equation. The Rees
 parameter \(t\), the normal variables \(u_j\), and \(3\) must remain
 uninverted. Occurrence pullbacks, reciprocal/Borel--Moore support directions,
 all localization summands, repeated-normal excess lines, lower-Cousin maps,
@@ -514,25 +560,27 @@ in the ordinary relative derived object, and
 =A_+^{\rm car}
 \]
 
-with the entry-101 weighted coefficients. Its three edge residues must be
+with entry 103's inverse-transgression carrier and entry 101's weighted
+coefficients. Its three edge residues must be
 exactly \(\Theta_{14}^{\rm loc},\Theta_{03}^{\rm loc},\Theta_{25}^{\rm loc}\),
 while their total road restriction contracts because the source is supported
 at the removed central vertex.
 
 After forgetting supported coefficients, the same filtered construction must
 recover entry 102's class \(\beta_\triangle\). This is a second acceptance
-test on one \(\alpha_+\), not a proposed chain isomorphism between the
-weighted packet and the Tate window.
+test on the cospan, not a proposed chain isomorphism between the weighted
+packet and the Tate window.
 
 Its useful terminal outcomes are either:
 
-- one proved filtered comparison and absolute-to-relative chain identity,
+- one proved loaded peripheral cospan and associated-grade chain identity,
   with a reproducible certificate; or
 - one sharp falsifier showing that the normalization--conductor source cannot
-  be the filtered central dual-block costalk, or that one established local
-  trace is incompatible with its Cousin boundary.
+  map to the loaded peripheral object, that the actual connecting
+  transgression cannot be lifted, or that one established local trace is
+  incompatible with its Cousin boundary.
 
 Do not recompute the target relation, construct the six road maps
 independently, resurrect a pairwise \(q\)-vertex transition, test \(\Delta\)
 on one pair alone, or expand to a new multiplicity, a fourth primitive, or
-another sign census while \(\alpha_+\) remains unconstructed.
+another sign census while the peripheral cospan remains unconstructed.
