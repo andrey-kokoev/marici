@@ -1467,3 +1467,62 @@ must reproduce the four-normal residue, reciprocal-standard/original-BM
 variance, occurrence endpoints, and the independent positive
 \([dX_{03}]\) line.  Tensoring the whole endpoint correspondence with the
 entry-97 Laurent ring is prohibited because it is contractible.
+
+## Corner-Cousin correction after entry 121
+
+The entry-120 comparison with the complete road trace is too strong.  In the
+full weighted road square \(Q_{03}\), the cells opposite the marked corner
+form a closed subcomplex
+
+\[
+B_{\rm opp}=\langle b,c,v_{00},v_{01},v_{11}\rangle.
+\]
+
+The quotient is exactly the occurrence diamond of entry 120, and
+finite-free duality gives the variance-correct arrow
+
+\[
+\mathbb D(Q_{03}/B_{\rm opp})
+\hookrightarrow\mathbb D(Q_{03}).
+\]
+
+Its occurrence Koszul--Cech map is the full chain map
+
+\[
+v^*\mapsto1,
+\qquad Z_3^*\mapsto(1/x_1,0),
+\qquad Z_1^*\mapsto(0,1/x_3),
+\qquad F^*\mapsto1/(x_3x_1).
+\]
+
+After the normal excess trace, the corrected formula objective is therefore
+
+\[
+\boxed{
+(\kappa_{\rm occ}\widehat\otimes\kappa_{\rm norm})
+\Theta_{03,\rm flag}^{\rm fil}
+=\operatorname{Res}^{\rm Cousin}_{v_{10}}
+(\Theta_{03}^{\rm loc}),
+}
+\]
+
+with value
+
+\[
++\left[
+\frac1{x_1x_3u_0u_1u_3u_5}
+\right]\otimes[dX_{03}].
+\]
+
+This is a supported corner residue, not the global road class.  The corner
+quotient becomes contractible after inverting \(x_1,x_3\), while the full
+entry-97 trace remains nonzero on all four normalized road vertices.  The
+lower one-variable Cech terms are indispensable; passing only the top
+fraction is not a chain map.
+
+The next objective is the four-corner descent problem.  Construct the four
+corner quotients, their edge-overlap Cech maps, and the occurrence-loaded PC
+purity/subdivision counits.  Test whether their totalization reconstructs
+the full road trace without extra cohomology or torsion.  Only after that
+target descent is established should the local corner comparison be used in
+the global conductor and physical-Cut square.
