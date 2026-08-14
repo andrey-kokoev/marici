@@ -12,6 +12,18 @@ specialization. Its ordinary and sign-twisted loaded octagonal contact classes v
 This closes the marked-contact part of the eight-point worldsheet problem. It does **not** close
 the unmarked coefficient summands of the full half-object.
 
+Forward correction (entry 84): the final sentence above was too broad for the **polarity
+comparison**. Entry 23's pole-grade decomposition is exhaustive: the double-pole sector is
+polarity independent, the single-pole difference is entirely supported on the eight physical
+factorization triangles, and the regular difference is exactly the marked contact sector closed
+here. Hence there is no fourth unmarked coefficient remainder in
+\(q^+-q^-\). The additive correspondence totalization below remains meaningful only as a
+separately posed global atlas/gluing problem for the local primitive half-lines; it is not a
+missing amplitude sector. Entry 84 also shows that lifting the triangle part to the PC complex
+still requires one six-point occurrence/Gysin entry counit. Entry 85 reduces its invariant
+obstruction to a single factorized residue scalar; strict chain-level zero is
+representative-dependent.
+
 It also corrects the final objective of entry 82. Consecutive regional cubes are related by
 noninvertible residue/Gysin spans, not by canonical transition automorphisms. Thus
 
@@ -265,6 +277,11 @@ This is the same lesson already visible in entry 69: the vertical full-core susp
 horizontal Möbius compatibility carrier are different axes.
 
 ## The surviving global problem
+
+Forward retyping (entry 84): this section does not describe a surviving summand of the
+eight-point polarity difference. Its object may still govern coherent gluing of regional
+half-lines or a Jordan-valued atlas, but \(\Theta_{O,\rm full}^{\rm PC}\) cannot be inferred from
+pole-grade exhaustion alone and is withdrawn as a polarity-descent obstruction.
 
 The marked contact summand is now closed. The full half-symbol contains additional coefficient
 summands not represented by \(\widehat H_{\rm ct}\). Their horizontal assembly should be defined

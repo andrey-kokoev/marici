@@ -1,0 +1,361 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 22,
+  "event_id": "ev-000000000022-fee2a075-f030-4f1a-875a-5dd2f44bfded",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5d55558dae4aef369386e6451ffb9ba0e80a087337e56c4e9559ad492f360b8c",
+  "proposal_id": "ep_8bd1c861-3e74-4452-80f1-173f45f87862",
+  "proposal_digest": "8de37cd92cbd7b529278e587280394cd8748ab3f22a5cc714087e6b0caffdf10",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260814-84",
+      "kind": "source",
+      "title": "Saturated Six-Point Tripods and the Subdivision–PC Gap",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-84 Saturated Six-Point Tripods and the Subdivision-PC Gap.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-six-point-subdivision-pc",
+      "kind": "source",
+      "title": "Exact six-point subdivision/PC incidence audit",
+      "version": "sha256:edfd99fc73629b6d3beddc69121e056fff1dc706ad0ae534c64aabac1a2a13ca",
+      "locator": "research/nima/check_six_point_subdivision_pc.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-eight-point-pole-grade-exhaustion",
+      "kind": "claim",
+      "title": "The eight-point QTDS polarity difference has no additional unmarked coefficient sector beyond the exhaustive G/R/K decomposition.",
+      "status": "proved",
+      "assumptions": [
+        "The diagramwise Laurent decomposition of ledger entry 23 is retained.",
+        "Polarity comparison is performed before forgetting quadrangulation provenance."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260812-23",
+        "source:marici-ledger-20260814-84"
+      ],
+      "factorization_test": {
+        "double_pole": "G_Q is polarity independent pointwise.",
+        "single_pole": "Every R difference lies in one of eight physical factorization triangles and has zero triangle augmentation.",
+        "regular": "Every K difference is the marked contact boundary closed by entries 24 and 83.",
+        "remainder": "No fourth pole grade or coefficient summand exists."
+      },
+      "counterevidence": [
+        "This does not construct the PC primitive for the triangle sector.",
+        "It does not solve global gluing of primitive local half-lines."
+      ],
+      "next_experiment": "Prove the occurrence-decorated physical residue identity for the saturated six-point tripod."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-six-point-saturated-tripod",
+      "kind": "claim",
+      "title": "Each six-point scalar polarity tripod has a unique rational D6-equivariant refinement into codimension-one face flags.",
+      "status": "proved",
+      "assumptions": [
+        "Characteristic-zero coefficients are allowed.",
+        "The entry-21 corner-to-facet segment is replaced only within its square facet.",
+        "Dihedral covariance and unit endpoint boundary are required."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84",
+        "source:marici-check-six-point-subdivision-pc"
+      ],
+      "factorization_test": {
+        "census": "14 triangulations, two parity centers, three physical square facets, six nonsaturated jumps.",
+        "repair": "Each jump is the half-sum of its two vertex-edge-facet flags.",
+        "uniqueness": "Reflection gives a=b and endpoint boundary gives a+b=1, hence a=b=1/2.",
+        "covariance": "All twelve D6 elements pass exactly.",
+        "boundary": "The doubled repaired tripod has the exact entry-21 boundary."
+      },
+      "counterevidence": [
+        "There is no integral equivariant downstairs choice.",
+        "The repair does not prove physical residue cancellation."
+      ],
+      "next_experiment": "Compute one repaired leg's occurrence/Gysin residue with all lower Cousin and normal-Koszul terms."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-naive-maximal-face-subdivision-pc-map",
+      "kind": "criticism",
+      "title": "Assigning every barycentric simplex directly to the PC summand of its maximal face is not a chain map when the face flag is nonsaturated.",
+      "status": "established",
+      "assumptions": [
+        "Entry 38's Cousin differential contains codimension-one face arrows only."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84",
+        "source:marici-check-six-point-subdivision-pc"
+      ],
+      "factorization_test": {
+        "falsifier": "The six tripod edges from a vertex directly to a square facet skip codimension one.",
+        "forbidden_move": "Their last simplicial face would require an undeclared codimension-two exit-path specialization."
+      },
+      "counterevidence": [
+        "A future flag/exit-path PC resolution could define a larger source and compare it to entry 38 up to filtered quasi-isomorphism."
+      ],
+      "next_experiment": "Construct that full flag resolution only if all-arity subdivision naturality becomes necessary."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-six-point-saturated-tripod-residue",
+      "kind": "problem",
+      "title": "Compute the occurrence-decorated physical PC residue of the saturated six-point polarity tripod.",
+      "status": "open",
+      "assumptions": [
+        "Scalar X weights and Pochhammer q-1 factors remain separate.",
+        "The physical-core entry edge, saturated facet paths, Cousin lower terms, normal contraction, and orientation line are all retained."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84"
+      ],
+      "factorization_test": {
+        "pass": "Res_D^PC P_sat(eta_6)=0 strictly for all three channels and both sheets.",
+        "coherent_pass": "A canonical occurrence-decorated null-homotopy is constructed and shown compatible with coaction.",
+        "fail": "A nonzero residue class survives and identifies a missing correction object."
+      },
+      "counterevidence": [
+        "Nonzero support inside the physical square facet prevents a support-only proof.",
+        "Entries 32 and 37 do not type the core-changing entry edge."
+      ],
+      "next_experiment": "Calculate one channel exactly and rotate by D6."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-saturated-tripod-pc-residue-vanishes",
+      "kind": "conjecture",
+      "title": "The fully occurrence-decorated PC residue of the saturated six-point polarity tripod vanishes strictly before cohomology.",
+      "status": "conditional",
+      "assumptions": [
+        "All entry-face Cousin and normal-Koszul terms are included.",
+        "The scalar contact coefficients are loaded in the order prescribed by entry 38."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84"
+      ],
+      "factorization_test": {
+        "strict": "Res_D^PC P_sat(eta_6)=0.",
+        "weaker": "The residue is canonically exact.",
+        "falsified": "A nonzero nonexact occurrence class remains."
+      },
+      "counterevidence": [
+        "Every repaired leg has four nonzero edge terms within its physical facet."
+      ],
+      "next_experiment": "Run the exact one-channel residue computation."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-saturated-tripod-pc-residue",
+      "kind": "test",
+      "title": "Evaluate the saturated six-point tripod residue with complete occurrence, Cousin, normal-Koszul, and orientation data.",
+      "status": "pending",
+      "assumptions": [
+        "The test is performed before taking cohomology or summing away occurrence labels."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84"
+      ],
+      "factorization_test": {
+        "pass": "Strict zero in each channel and sheet.",
+        "conditional": "Canonical null-homotopy with strict cut naturality.",
+        "fail": "Nonzero residue or missing coefficient map."
+      },
+      "counterevidence": [
+        "Declaring zero from the sum-zero contact vector alone is invalid."
+      ],
+      "next_experiment": "Compute a representative channel, then use exact D6 covariance."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-eight-point-pc-polarity-primitive",
+      "kind": "conjecture",
+      "title": "The saturated triangle primitives plus the marked contact primitive form a complete eight-point PC polarity homotopy.",
+      "status": "conditional",
+      "assumptions": [
+        "The saturated six-point residue conjecture holds.",
+        "Entry 38's physical PC coaction applies to the resulting lower-point primitive.",
+        "Entry 83's marked contact primitive is retained."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84",
+        "source:marici-ledger-20260813-83"
+      ],
+      "factorization_test": {
+        "formula": "H_8^PC = sum_D G_D^PC(eta_tilde_6^PC) + H_ct^PC.",
+        "boundary": "d_PC H_8^PC = sum_Q(q_Q^+ - q_Q^-).",
+        "coefficient_status": "Already exact by G/R/K exhaustion.",
+        "pc_status": "Conditional on the six-point residue theorem."
+      },
+      "counterevidence": [
+        "A nonzero saturated-tripod residue falsifies the displayed assembly without an added correction object."
+      ],
+      "next_experiment": "Resolve problem:qtds-six-point-saturated-tripod-residue."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-jordan-half-line-atlas-coherence",
+      "kind": "problem",
+      "title": "Glue the primitive regional half-lines and derive the global Jordan higher-coherence cell independently of the exhausted polarity coefficients.",
+      "status": "open",
+      "assumptions": [
+        "Regional objects are connected by noninvertible residue/Gysin correspondences, not transition automorphisms.",
+        "The bare Möbius H1 is carrier topology until a scalar-derived coefficient class is assigned to it."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-84"
+      ],
+      "factorization_test": {
+        "local": "Construct a scalar-derived square/edge syzygy whose universal Jordan evaluation is the Jordan defect.",
+        "global": "Assemble the twelve regional and eight boundary objects in a factorization-complete homotopy colimit.",
+        "all_arity": "Determine whether higher cells are generated by the Jordan relation or require new syzygies."
+      },
+      "counterevidence": [
+        "The naive alternating vertex-word sum is nonzero even in a special associative Jordan pair.",
+        "No polarity coefficient remains available to define the class automatically."
+      ],
+      "next_experiment": "Derive the coefficient-valued square filler and compare its universal evaluation with Q_{Q_x y}-Q_x Q_y Q_x."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-eight-point-pole-grade-exhaustion",
+      "target_id": "source:marici-ledger-20260814-84",
+      "relation_id": "rel:derived_from-e6b4c155f429a450"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-six-point-saturated-tripod",
+      "target_id": "source:marici-check-six-point-subdivision-pc",
+      "relation_id": "rel:derived_from-1edd1c1ec4b2dc96"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-naive-maximal-face-subdivision-pc-map",
+      "target_id": "source:marici-ledger-20260814-84",
+      "relation_id": "rel:derived_from-10eeb2c8f85de5f3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-six-point-saturated-tripod",
+      "target_id": "problem:qtds-six-point-saturated-tripod-residue",
+      "relation_id": "rel:addresses-59c7b7f201aaf94c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:qtds-saturated-tripod-pc-residue",
+      "target_id": "conjecture:qtds-saturated-tripod-pc-residue-vanishes",
+      "relation_id": "rel:tests-5d149f6c10e6e3e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:qtds-eight-point-pc-polarity-primitive",
+      "target_id": "conjecture:qtds-saturated-tripod-pc-residue-vanishes",
+      "relation_id": "rel:depends_on-600caa16c7f48815"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:qtds-eight-point-pc-polarity-primitive",
+      "target_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "relation_id": "rel:depends_on-a81186344e8cf9a1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:qtds-eight-point-pole-grade-exhaustion",
+      "target_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "relation_id": "rel:supersedes-127f32f90762a2ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-naive-maximal-face-subdivision-pc-map",
+      "target_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "relation_id": "rel:criticizes-c3d634d36b9b2635"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "transforms",
+      "source_id": "problem:qtds-jordan-half-line-atlas-coherence",
+      "target_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "relation_id": "rel:transforms-c78223c45367b0d6"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-full-symbol-octagon-premise-empty-20260814",
+      "subject_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "judgment": "withdrawn_as_a_polarity_descent_conjecture",
+      "actor": "marici-nima",
+      "reason": "The G/R/K decomposition is exhaustive, so no unmarked polarity coefficient class remains to vanish or survive.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-84",
+          "locator": "Consequence for the eight-point decomposition",
+          "paraphrase": "G cancels pointwise, R is exhausted by factorization triangles, and K is exactly the marked contact boundary."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-horizontal-totalization-retyped-20260814",
+      "subject_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "judgment": "retyped_as_a_distinct_global_half_line_atlas_problem",
+      "actor": "marici-nima",
+      "reason": "The correspondence diagram remains meaningful for coherent gluing, but it is not a missing sector of q-plus minus q-minus.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-84",
+          "locator": "Consequence for the eight-point decomposition",
+          "paraphrase": "The bare Möbius carrier may govern regional half-line gluing even though the polarity comparison has no unmarked remainder."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-residual-octagon-jordan-retyped-20260814",
+      "subject_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "judgment": "multiplicative_holonomy_withdrawn_and_additive_polarity_remainder_absent",
+      "actor": "marici-nima",
+      "reason": "Residue/Gysin legs are noninvertible and pole-grade exhaustion leaves no coefficient on the proposed residual polarity class.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-84",
+          "locator": "Consequence for the eight-point decomposition",
+          "paraphrase": "Any Jordan octagon must be defined as a separate atlas higher-coherence class."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-full-symbol-additive-octagon-premise-absent-20260814",
+      "test_id": "test:qtds-full-symbol-additive-octagon-class",
+      "actor": "marici-nima",
+      "outcome": "invalidated_as_a_polarity_test: the alleged unmarked coefficient summand is absent from the exhaustive G/R/K decomposition",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-84",
+          "locator": "Consequence for the eight-point decomposition",
+          "paraphrase": "There is no fourth coefficient sector on which the proposed test could act."
+        }
+      ]
+    }
+  ],
+  "actor": "marici-nima",
+  "authority_basis": {
+    "role": "architect",
+    "operator_authorization": "The Operator explicitly directed Marici.Nima to use the epistemic graph and continue the primary frontier.",
+    "evidence_path": "Ledger entry 84 plus exact Rust certificate; admission certifies graph validity, not truth."
+  },
+  "idempotency_key": "auto-admission-75d604408dfe4419c7f376e5",
+  "occurred_at": "2026-08-14T05:19:08.6236679Z",
+  "certifies_truth": false,
+  "event_hash": "6e46ed9a4fa170afa92394f09cbcc11837a42d6c0da2168bef9956f5b99b3ad4"
+}

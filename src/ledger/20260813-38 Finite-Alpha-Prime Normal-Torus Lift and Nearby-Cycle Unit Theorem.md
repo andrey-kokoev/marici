@@ -43,6 +43,17 @@ has zero ordinary and sign-twisted octagonal restriction. This statement is
 specific to the marked summand and does not construct the full unmarked
 horizontal correspondence.
 
+Forward boundary (entry 84): the six-point presentation tripods of entry 21 are not directly in
+the domain of the facewise map merely because they lie in \(\operatorname{sd}K_6\). Their final
+vertex-to-square edges skip one face dimension, while the present Cousin differential contains
+only codimension-one arrows. Each jump has a unique rational \(D_6\)-equivariant saturation, the
+half-sum of its two vertex--edge--facet flags, and the present local PC construction acts
+termwise on that repaired chain. Its boundary is correctly typed. What remains open is the
+occurrence-decorated physical residue of the core-changing entry edge; transverse base change
+does not by itself construct its entry counit or prove its class null-homotopic. Entry 85 further
+shows that literal residue zero depends on the flag/collar representative and is not the primary
+invariant.
+
 The construction is canonical in the normal-cone/Cousin model and canonical up to filtered chain
 homotopy after choosing actual tubular currents. It does not select a privileged smooth twisted
 form. This is the correct strength: the earlier collar/Thom ambiguity disappears in the derived

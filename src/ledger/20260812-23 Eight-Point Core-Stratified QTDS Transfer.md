@@ -265,3 +265,13 @@ Entry 24 completes this presentation-level target: alternating scalar coorientat
 matching without QTDS input, its local deck-odd edge transport has the required contact boundary,
 and its octagonal contact curvature vanishes. The remaining problem is its filtered worldsheet
 image.
+
+Forward completion (entry 84): the displayed \(G/R/K\) decomposition is also an exhaustion
+theorem for the polarity comparison. There is no additional unmarked coefficient sector:
+\(G_Q^+-G_Q^-=0\) pointwise, every \(R\)-difference belongs to one of the eight physical
+factorization triangles, and every \(K\)-difference belongs to the marked contact boundary of
+entries 24 and 83. The complete PC primitive is nevertheless conditional: the canonical
+six-point tripod must first be saturated into codimension-one flags, and its
+occurrence-decorated physical residue class has not yet been proved to vanish. Entry 85 reduces
+that class to one undetermined scalar on the primitive (K_4\times K_4) line; strict
+chain-level zero is not the invariant criterion.
