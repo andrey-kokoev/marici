@@ -2820,3 +2820,67 @@ derive the four interval generators from an intrinsic loaded Cousin or
 multi-normal scalar carrier. This is a filtered/excess Beck--Chevalley
 problem: ordinary derived comparison forgets exactly the paths that physical
 factorization must retain.
+
+### Resolved overlap ideals and effective belt descent
+
+The four bridges are now canonical at the polynomial associated grade. Write
+\(\mathfrak p_r=(X_{r0},X_{r1})\). The four facet ideals are
+
+\[
+X_{20}\mathfrak p_0\mathfrak p_1,
+\quad
+X_{00}\mathfrak p_1\mathfrak p_2,
+\quad
+X_{21}\mathfrak p_0\mathfrak p_1,
+\quad
+X_{01}\mathfrak p_1\mathfrak p_2.
+\]
+
+For every support-adjacent pair their intersection is
+
+\[
+J_e=C_e(X_{10},X_{11}),
+\]
+
+whose minimal resolution is the middle weighted interval with primitive
+syzygy
+
+\[
+X_{11}m_{v^1}-X_{10}m_{v^0}=0.
+\]
+
+The four facet resolutions and four interval resolutions form a
+support-selected hyper-Čech sequence
+
+\[
+0\to\bigoplus_eK_e^{\rm w}
+\to\bigoplus_iK_{F_i}^{\rm w}
+\to B_Q^{\rm w}\to0
+\]
+
+which is split exact cell by cell over the polynomial ring. Opposite facets
+also intersect as ideals but are disjoint in the belt; this proves that the
+face-support poset, not unrestricted module intersection, is essential.
+
+The actual raw-weighted polygon carrier gives an independent derivation. Its
+complete saturated kernel has ranks \((10,6,0)\). Two unit interval summands
+are exactly the collapsed pentagon \(H_s\) cones. Quotienting them leaves an
+\(8\times4\) incidence matrix consisting of four disjoint primitive interval
+complexes, precisely the four resolved overlaps above. All Smith factors and
+normalization determinants are units, so descent identifies occurrence
+representatives rather than averaging them: no division by \(2\) or \(8\) is
+needed.
+
+The local object is therefore an effective relation groupoid
+
+\[
+\mathcal K_Q\rightrightarrows\mathcal R_Q\to B_Q^{\rm w}.
+\]
+
+The belt is its polynomial homotopy colimit. This does not make the disjoint
+pentagon and square into ordinary intersecting scalar faces. It says the
+half-object is a derived image with descent. The immediate gap is now to
+construct the same relation groupoid in finite-\(\alpha'\) loaded
+Pochhammer/Cousin or multi-normal geometry and prove the five-term pentagon
+identity. After that, the next obstruction is global: assemble the eight deck
+images and compute the residual octagon/Jordan holonomy.

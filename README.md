@@ -90,9 +90,12 @@ The ledger currently keeps three frontiers separate:
   \(\mathsf J\), up to the ordered normal sign. The route source already has
   a surjective polynomial augmentation onto the regional occurrence ideal,
   so its unfiltered comparison exists and is unique up to homotopy. What it
-  lacks are four middle-interval overlap generators needed to preserve the
-  belt support filtration. The remaining eight-point datum is therefore the
-  scalar loaded-boundary provenance of those four Beck--Chevalley bridges. A
+  occurrence-only truncation lacks four middle-interval overlap generators.
+  Resolving the support-adjacent overlap ideals, or taking the saturated
+  residual kernel of the actual polygon map, supplies exactly those four
+  bridges and gives a strict polynomial hyper-Čech equivalence with the belt,
+  without division by two or eight. The remaining eight-point datum is the
+  finite-loaded scalar realization of this effective relation groupoid. A
   BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
@@ -209,6 +212,8 @@ rustc --edition=2021 -D warnings -O research/nima/check_decorated_source_cap.rs 
 & "$env:TEMP\marici-decorated-source-cap.exe"
 rustc --edition=2021 -D warnings -O research/nima/check_dependent_beck_chevalley_hom.rs -o "$env:TEMP\marici-dependent-bc.exe"
 & "$env:TEMP\marici-dependent-bc.exe"
+rustc --edition=2021 -D warnings -O research/nima/check_resolved_overlap_hypercech.rs -o "$env:TEMP\marici-resolved-overlap-hypercech.exe"
+& "$env:TEMP\marici-resolved-overlap-hypercech.exe"
 ```
 
 Human-readable research records live in `src/ledger`. Ledger entries separate inherited working
@@ -438,4 +443,9 @@ prohibited overclaims.
   occurrence ideal, so the unfiltered comparison exists and is unique up to homotopy. It also
   proves that the established duplicate-occurrence overlaps cannot reach the four interval
   overlaps of the belt. Each missing bridge has one primitive polynomial syzygy and the normalized
-  four-cycle has determinant \(\pm1\); only their intrinsic loaded scalar provenance remains open.
+  four-cycle has determinant \(\pm1\). Entry 79 resolves those bridges algebraically.
+- `20260813-79` proves that each support-adjacent overlap ideal has the missing interval as its
+  minimal resolution and that the resulting support hyper-Čech cone is strictly polynomially
+  equivalent to the belt. Independently, the actual polygon carrier has saturated kernel ranks
+  \((10,6,0)\); removing its two internal \(H_s\) cones leaves exactly four primitive interval
+  relations. Their finite-loaded scalar realization, followed by octagon/Jordan holonomy, is next.
