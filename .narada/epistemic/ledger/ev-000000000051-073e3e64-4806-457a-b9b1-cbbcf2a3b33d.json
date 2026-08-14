@@ -1,0 +1,142 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 51,
+  "event_id": "ev-000000000051-073e3e64-4806-457a-b9b1-cbbcf2a3b33d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "8d10f16c5bcb323fa06ab6b8ab6f49938cac7ae7d3bb7abe3850c16ab4a58a94",
+  "proposal_id": "ep_acbb7592-d357-4aef-8628-3c34e0bca2b8",
+  "proposal_digest": "b064cc192c07f1b85f6e66f87ee932a448502cc531e169cb4e3f16b4655e0f1b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:nima-ledger-118",
+      "title": "Ledger 118 — Endpoint-Relative D03 Exit Interval and the Remaining Tor Lift",
+      "version": "1",
+      "locator": "src/ledger/20260814-118 Endpoint-Relative D03 Exit Interval and the Remaining Tor Lift.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:nima-118-endpoint-relative-marked-interval",
+      "title": "The endpoint-relative D03 q0 sector has a unique marked carrier with derived coefficients b0=+x1 and a0=-1",
+      "summary": "For K0=K/[q2->a], the marked interval F03>Z3>v10<ec>v+>e3>q0 has primitive relative-BM class and satisfies the carrier Beck-Chevalley equation without fitted coefficients."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "criticism",
+      "entity_id": "criticism:nima-118-absolute-q0-gamma-mistyped",
+      "title": "The standalone absolute q0 Gamma is not a chain-level correspondence",
+      "summary": "Because dq0=x5*a, d(-x1*q0)=-x1*x5*a is nonzero; a one-endpoint generic source must be the explicit relative quotient K0 or retain the full two-ended Koszul diamond."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:nima-118-relative-extraordinary-tor-lift",
+      "title": "Lift the marked endpoint-relative D03 carrier to the reciprocal-standard/original-BM Tor1 correspondence",
+      "summary": "Construct Gamma_{0,rel}^{!,PC} with associated grade gamma_0^car, endpoint -1, [t3] to eta_{3,mix}, full excess Tor1, and independent [dX03]=+1."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-118-endpoint-relative-marked-interval",
+      "target_id": "source:nima-ledger-118",
+      "relation_id": "rel:derived_from-54db4c32673691e6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:nima-118-endpoint-relative-marked-interval",
+      "target_id": "claim:nima-117-d03-endpoint-koszul-hull",
+      "relation_id": "rel:depends_on-ccb266345ff10c36"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:nima-118-absolute-q0-gamma-mistyped",
+      "target_id": "source:nima-ledger-118",
+      "relation_id": "rel:derived_from-1f71ff9931164f59"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:nima-118-absolute-q0-gamma-mistyped",
+      "target_id": "test:nima-117-q0-extraordinary-endpoint",
+      "relation_id": "rel:criticizes-55d382fb46d7b15f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:nima-118-relative-extraordinary-tor-lift",
+      "target_id": "source:nima-ledger-118",
+      "relation_id": "rel:derived_from-5835247edae12089"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-118-relative-extraordinary-tor-lift",
+      "target_id": "claim:nima-118-endpoint-relative-marked-interval",
+      "relation_id": "rel:tests-1272d60c88a2b2b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "test:nima-118-relative-extraordinary-tor-lift",
+      "target_id": "test:nima-117-q0-extraordinary-endpoint",
+      "relation_id": "rel:supersedes-e7fb6944cbb7966d"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-118-carrier-scope-proved",
+      "subject_id": "claim:nima-118-endpoint-relative-marked-interval",
+      "judgment": "proved_at_carrier_and_occurrence_associated_grade",
+      "actor": "marici.Nima",
+      "reason": "Exact hexagon census, marked-flag uniqueness, relative homology, occurrence quotient, and sign checks pass; no PC Tor1 promotion is asserted.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-118",
+          "locator": "Sections The unique marked exit interval; Unfitted road coefficient and sign; Evidence",
+          "paraphrase": "The certified marked interval is unique after inherited marks and derives b0=+x1, a0=-1, and carrier Beck-Chevalley."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-118-absolute-domain-falsified",
+      "subject_id": "criticism:nima-118-absolute-q0-gamma-mistyped",
+      "judgment": "falsified_as_absolute_chain_level_formula",
+      "actor": "marici.Nima",
+      "reason": "The exact augmented Koszul differential gives dq0=x5*a and d(-x1*q0) nonzero; only the relative quotient or full diamond is typed.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-118",
+          "locator": "Sections The typing correction; Sharp falsifier",
+          "paraphrase": "The q0 arm is not an absolute dg summand; cancellation requires q2 unless the endpoint-relative quotient is declared."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-117-q0-test-corrected-by-118",
+      "test_id": "test:nima-117-q0-extraordinary-endpoint",
+      "actor": "marici.Nima",
+      "outcome": "falsified_as_absolute_domain_and_replaced_by_endpoint_relative_test",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-118",
+          "locator": "Sections The typing correction; What remains unproved",
+          "paraphrase": "The old test domain is mistyped, while the endpoint-relative carrier exists and leaves only the variance-changing Tor1 lift open."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "user_authorized_research_curation",
+    "summary": "The user requested continued Nima research, durable ledger documentation, and epistemic-graph lifecycle updates."
+  },
+  "idempotency_key": "auto-admission-b80391fc99d291cbb6a5b3e0",
+  "occurred_at": "2026-08-14T18:05:17.8351972Z",
+  "certifies_truth": false,
+  "event_hash": "ba97562340204126acbfa8ff23d9aaf85f8dd0eb6303673080cd468c1a7a7b4c"
+}
