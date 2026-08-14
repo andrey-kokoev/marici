@@ -1,0 +1,173 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c79a4f2c-9ddf-4cef-9200-eb76b1d01c53",
+  "status": "submitted",
+  "actor": "codex",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Third bounded Marici graph pass over ledger entries 07–09."
+  },
+  "idempotency_key": "marici-ledger-07-09-capture-v1",
+  "expected_ledger_head": "7f96357b0470a16c9899d0f982f21c22359b4ba60cc1c06d49eed2b8335e2e56",
+  "created_at": "2026-08-14T00:24:25.6147611Z",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-07",
+      "kind": "source",
+      "title": "Surface Operations and the Cut Kernel",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-07 Surface Operations and the Cut Kernel.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-08",
+      "kind": "source",
+      "title": "Yang-Mills as a Multi-Normal Residue",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-08 Yang-Mills as a Multi-Normal Residue.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260812-09",
+      "kind": "source",
+      "title": "NLSM as a Curved Cut Completion",
+      "version": "2026-08-12",
+      "locator": "src/ledger/20260812-09 NLSM as a Curved Cut Completion.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:cut-is-not-conservative",
+      "kind": "criticism",
+      "title": "Cut compatibility cannot establish equality or naturality because cuts annihilate local and contact data."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:enriched-surface-theory-operation-framework",
+      "kind": "conjecture",
+      "title": "A colored logarithmic cyclic modular surface framework enriched by deformation data, state duality, intersection structure, and primitive cut-kernel data supports the proposed theory operations."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:ym-multi-normal-residue",
+      "kind": "conjecture",
+      "title": "Yang–Mills arises by gauge descent from the multidegree-(1,…,1) fusion-normal residue, not the ordinary first jet of the total fusion ideal."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:untruncated-first-jet-cut-identity",
+      "kind": "criticism",
+      "title": "Cut ∘ J¹ = (J¹ ⊗ J¹) ∘ Cut is false without diagonal pullback and truncation to total first order."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:nlsm-curved-cut-completion",
+      "kind": "conjecture",
+      "title": "The canonical NLSM surface theory is a curved Cut completion whose primitive curvature data lie in the simultaneous cut kernel."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nlsm-one-puncture-two-point-primitive",
+      "kind": "test",
+      "title": "Compare the canonical scalar-deformation NLSM primitive with zero-boundary Cut completion on the one-puncture two-point disk."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:zero-boundary-nlsm-completion",
+      "kind": "criticism",
+      "title": "Zero higher-loop boundary conditions fail to define the canonical NLSM surface function."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-curved-modular-envelope",
+      "kind": "problem",
+      "title": "Does the curved modular envelope of QTDS generate every cut-kernel primitive selected by scalar rank degeneration?"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:cut-criticism-derived-ledger-07",
+      "relation_type": "derived_from",
+      "source_id": "criticism:cut-is-not-conservative",
+      "target_id": "source:marici-ledger-20260812-07"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:surface-framework-addresses-cut-criticism",
+      "relation_type": "addresses",
+      "source_id": "conjecture:enriched-surface-theory-operation-framework",
+      "target_id": "criticism:cut-is-not-conservative"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:surface-framework-derived-ledger-07",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:enriched-surface-theory-operation-framework",
+      "target_id": "source:marici-ledger-20260812-07"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:ym-multi-normal-derived-ledger-08",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:ym-multi-normal-residue",
+      "target_id": "source:marici-ledger-20260812-08"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:first-jet-criticism-criticizes-ym-descent",
+      "relation_type": "criticizes",
+      "source_id": "criticism:untruncated-first-jet-cut-identity",
+      "target_id": "conjecture:ym-first-jet-descent"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:first-jet-criticism-derived-ledger-08",
+      "relation_type": "derived_from",
+      "source_id": "criticism:untruncated-first-jet-cut-identity",
+      "target_id": "source:marici-ledger-20260812-08"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:nlsm-curved-derived-ledger-09",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:nlsm-curved-cut-completion",
+      "target_id": "source:marici-ledger-20260812-09"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:nlsm-puncture-test-tests-zero-boundary",
+      "relation_type": "tests",
+      "source_id": "test:nlsm-one-puncture-two-point-primitive",
+      "target_id": "criticism:zero-boundary-nlsm-completion"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:zero-boundary-criticism-criticizes-nlsm-rank-jump",
+      "relation_type": "criticizes",
+      "source_id": "criticism:zero-boundary-nlsm-completion",
+      "target_id": "conjecture:nlsm-rank-jump-grade"
+    },
+    {
+      "op": "relation.declare",
+      "relation_id": "rel:qtds-envelope-addresses-nlsm-curvature",
+      "relation_type": "addresses",
+      "source_id": "problem:qtds-curved-modular-envelope",
+      "target_id": "conjecture:nlsm-curved-cut-completion"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nlsm-zero-boundary-puncture-verdict-20260812",
+      "subject_id": "test:nlsm-one-puncture-two-point-primitive",
+      "judgment": "falsified",
+      "actor": "marici-ledger",
+      "reason": "The zero-boundary Cut completion differs from the canonical scalar-deformation surface function by the cut-invisible constant 2 on the one-puncture two-point disk.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260812-09",
+          "locator": "Punctured counterexample",
+          "paraphrase": "The ledger gives an explicit difference of 2, invisible to propagator cuts but required for the exact surface Adler zero."
+        }
+      ]
+    }
+  ],
+  "digest": "13ea13c814b864610172bc1466c86688d4b8657fcc4c7eaa1fb3ede5a6bd465e"
+}

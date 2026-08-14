@@ -202,9 +202,12 @@ H_L\mathbin{\cdot}H_R.
 \]
 
 Thus every four-extension factor is the polarization of one open contraction
-strand.  Multiplication over disjoint strands gives the metric-sector tensor
-contraction, while closed strands give the corresponding trace carrier.  This
-is the symbolic reason that the curve-cover polynomial and graphical tensor
+strand.  Multiplication over disjoint strands gives the **gauge-reduced
+graphical contraction network**, while closed strands give the corresponding
+trace carrier.  It does not give the naive full-handle all-metric cubic
+network: the physical projector supplies a nonzero longitudinal correction
+between that network and the reduced graphical one.  This is the symbolic
+reason that the curve-cover polynomial and the gauge-reduced graphical tensor
 network agree before numerical specialization.
 
 ## Symbolic marked-handle theorem
