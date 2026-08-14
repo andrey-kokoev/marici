@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--104 establish twelve
+At the first nontrivial boundary, \(D=03\), entries 93--105 establish thirteen
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -96,8 +96,14 @@ pieces of that construction:
     dual-block inclusion is not that map.
 12. the formal derivation of the loaded peripheral arrow from any strict
     global support--PC filtration of that triple. Its occurrence/carrier
-    realization is exact, but the absolute unlocalized support complex and
-    the cross-geometry conductor purity equivalence remain unconstructed.
+    realization is exact; at that stage the absolute unlocalized support
+    complex and cross-geometry conductor purity equivalence were left open.
+13. the integral 215-generator absolute support--PC complex with strict
+    \(F_0\subset F_1\subset F_2\), together with the fixed-\(\beta\),
+    characteristic-zero local purity placement
+    \(K(I_+^\vee)[-5]\simeq\mathbb D(F_0)[-2]\). The literal \(D03\)
+    pullback of its Yoneda class is zero, so the nonzero local Cousin trace
+    requires a marked ringed correspondence across the central flip.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -160,6 +166,24 @@ cross-geometry datum is a purity equivalence from the conductor source to
 filtration's Yoneda two-extension. It is not a literal spectral-sequence
 \(d_2\), and its local excess traces are Beck--Chevalley two-cells rather than
 literal restrictions of the peripheral arrow.
+
+Entry 105 discharges those two existence questions at their correct scopes.
+The absolute original-twist/Borel--Moore complex exists integrally and
+unlocalized, with generators \([S,H]\), strict support filtration, and a
+square-zero radial-plus-normal differential. The local conductor purity
+shift is forced after fixed-nonzero-\(\beta\), characteristic-zero
+Koba--Nielsen completion. It also gives the decisive negative control:
+
+\[
+\operatorname{pb}^{\rm lit}_{03}(e_F)=0,
+\qquad
+\Theta_{03}^{\rm loc}(\eta_{3,\rm mix})
+= [1/(u_0u_1u_3u_5)]\ne0.
+\]
+
+Hence the remaining map is neither another scalar differential nor a road
+restriction. It is a marked ringed-support correspondence across the central
+flip \(\{D03,x_1,x_3\}\rightsquigarrow v_+=\{x_1,x_3,x_5\}\).
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -459,11 +483,12 @@ and the three local source/road derived correspondences is therefore
 established. Entry 101 shows that no lower-vertex transition should be added,
 and entry 103 derives the carrier map from the saturated peripheral
 transgression. Entry 104 proves that the loaded transgression is the formal
-off-diagonal block of any strict support filtration. The source chain identity
-now depends on constructing that absolute unlocalized filtration and the
-conductor-to-vertex purity map; their associated grade is already forced by
-the weighted star. The local traces are then a naturality test on the derived
-pullback, not restrictions of the peripheral block alone.
+off-diagonal block of any strict support filtration. Entry 105 constructs
+that filtration and fixes the local purity shift. The source chain identity
+now depends on the marked central-flip correspondence which converts the
+zero literal road pullback into the independently established nonzero Cousin
+trace. This is a Beck--Chevalley test, not a restriction of the peripheral
+block alone.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -496,32 +521,34 @@ internal-state coevaluation retained.
    support-directed can--var objects, Koszul--Cech comparison, mixed excess
    line, and three labelled road residues are explicit. A strict finite-free
    stalk map is falsified.
-5. **Absolute support filtration and purity -- immediate frontier:** construct
-   the strict unlocalized complex
-   \(F_0\subset F_1\subset F_2\) and the independently sourced equivalence
-   \(\operatorname{pur}_+:\mathcal S_+^{\rm cond}\simeq\mathbb D(F_0)[-2]\).
-   Entry 104 then supplies \(\delta^F\) and \(e_F\) formally. The three local
-   traces of entry 100 must appear as excess Beck--Chevalley two-cells, the
-   supported grade must be entry 101's weighted star, and carrier forgetting
-   must be entry 102's integral Tate two-extension. Polarity then supplies
-   the minus lift.
-6. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
+5. **Absolute support filtration and local purity -- established in entry
+   105:** the strict integral complex \(F_0\subset F_1\subset F_2\) exists,
+   and the fixed-\(\beta\), characteristic-zero local source has the forced
+   placement \(K(I_+^\vee)[-5]\simeq\mathbb D(F_0)[-2]\). The stronger
+   universal integral purity statement is not claimed.
+6. **Marked central-flip correspondence -- immediate frontier:** construct
+   the ringed support correspondence joining the conductor vertex to one
+   marked road and prove its excess Beck--Chevalley two-cell. It must recover
+   entry 100's nonzero trace even though the literal road pullback of \(e_F\)
+   is zero. Rotate only after the \(D03\) representative passes.
+7. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
-7. **Intrinsic half-object:** assemble the local perfect complexes and
+8. **Intrinsic half-object:** assemble the local perfect complexes and
    noninvertible Gysin correspondences into a cdh-local, factorization-natural
    object \(\mathsf J^{\rm PC}\).
-8. **CHY comparison:** construct a specialization-compatible comparison
+9. **CHY comparison:** construct a specialization-compatible comparison
    \(\Phi_{\rm CHY}(\mathsf J_n^{\rm PC})\simeq[({\rm Pf}'A_n)^2]\), rather than
    only matching paired amplitudes.
-9. **Higher coherence:** evaluate the residual twisted top class on a quartic
+10. **Higher coherence:** evaluate the residual twisted top class on a quartic
    grammar and test whether it is exactly the universal Jordan defect
 
    \[
    Q_{Q_xy}-Q_xQ_yQ_x.
    \]
 
-Stage 5 is the immediate frontier. Later stages should not be used to hide a
-failure of the absolute support filtration or the conductor purity square.
+Stage 6 is the immediate frontier. Later stages should not be used to hide a
+failure of the marked central-flip correspondence or its excess
+Beck--Chevalley square.
 
 ## Prohibited shortcuts
 
@@ -574,6 +601,12 @@ The objective is not met by:
   Yoneda two-extension.
 - equating a literal road restriction of \(\delta^F\) with an entry-100 local
   trace before adjoining the reciprocal conductor and excess pullback.
+- treating the literal \(D03\) pullback as merely incomplete rather than
+  zero. Entry 105 proves that its Yoneda product vanishes, while the required
+  Cousin residue is nonzero.
+- duplicating the normal fibre by tensoring entry 99's exact augmented
+  carrier with a second reciprocal Kummer packet. Entry 105 proves that this
+  double-loaded model is acyclic.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -582,83 +615,56 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved comparison in the construction. The marked road spans,
-reciprocal-twist bivariant traces, three-road target, two global carrier maps,
-local top-\(\operatorname{Tor}_1\) symbols, paired one-normal can--var packet,
-all three labelled Cech residues, the exact weighted star, and the saturated
-carrier transgression are now established. Entry 104 also proves that any
-strict loaded support filtration supplies its peripheral arrow formally. The
-current bounded target is therefore the pair
+unproved comparison in the construction. Entry 105 now supplies the absolute
+unlocalized support complex and fixes the local conductor purity placement.
+The current bounded target is therefore the single marked correspondence
 
 \[
 \boxed{
-F_0=PC_{\rm supp}(v_+)
-\subset F_1=PC_{\rm supp}(B_{\rm short})
-\subset F_2=PC_{\rm supp}(K_6),
-\qquad
-\operatorname{pur}_+:
-\mathcal S_+^{\rm cond}\xrightarrow{\sim}\mathbb D(F_0)[-2].
+\Gamma_{+;03}^{\rm mark}:
+\mathcal S_{+,\rm loc}^{\rm cond}
+\dashrightarrow
+\mathbb D(F_2/F_1)
 }
 \]
 
-in a bounded, exhaustive, separated, integral, \(D_3\)-stable filtered/Rees
-category. Construct the absolute complexes and all their Cousin gluing maps,
-then derive \(\operatorname{pur}_+\) from the actual
-normalization--conductor formal-support geometry, not from the target
-equation. The Rees parameter \(t\), the normal variables \(u_j\), and \(3\)
-must remain uninverted. Occurrence pullbacks, reciprocal/Borel--Moore support
-directions, all localization summands, repeated-normal excess lines,
-lower-Cousin maps, physical normal lines, determinant orientation, polarity,
-and \(\chi_N\) must remain visible.
+across \(\{D03,x_1,x_3\}\rightsquigarrow v_+=\{x_1,x_3,x_5\}\). Construct
+it from the factorization-marked normalization--conductor geometry and the
+ringed central flip, not from the desired residue. The Rees parameter \(t\),
+the normal variables \(u_j\), and \(3\) must remain uninverted. Occurrence
+pullbacks, reciprocal/Borel--Moore support directions, the repeated-normal
+excess line, lower-Cousin maps, physical normal line, determinant
+orientation, polarity, and \(\chi_N\) must remain visible.
 
 The resulting formula objective is
 
 \[
 \boxed{
-e_F=[0\to F_0\to F_1\to F_2/F_0\to F_2/F_1\to0],
+\operatorname{BC}_{+;03}(\Gamma_{+;03}^{\rm mark},e_F)
+(\eta_{3,\rm mix})
+=\left[\frac1{u_0u_1u_3u_5}\right]\otimes[dX_{03}],
 \qquad
-A_+^{\rm sec}=\mathbb D(e_F)\circ\operatorname{pur}_+.
+\operatorname{pb}_{03}^{\rm lit}(e_F)=0.
 }
 \]
 
-The decisive specialization tests are
-
-\[
-\operatorname{Rees}(A_+)/(t-1)\simeq0
-\]
-
-in the ordinary relative derived object, and
-
-\[
-\operatorname{Rees}(A_+)/(t)
-=\operatorname{gr}(A_+)
-=A_+^{\rm car}
-\]
-
-with entry 103's inverse-transgression carrier and entry 101's weighted
-coefficients. Its three edge residues must be
-exactly \(\Theta_{14}^{\rm loc},\Theta_{03}^{\rm loc},\Theta_{25}^{\rm loc}\),
-as derived excess Beck--Chevalley two-cells. They must not be imposed as
-literal restrictions of the peripheral block. Their total road restriction
-contracts because the source is supported at the removed central vertex.
-
-After forgetting supported coefficients, the same filtered construction must
-recover entry 102's class \(\beta_\triangle\). This is a second acceptance
-test on the filtered secondary class, not a proposed chain isomorphism between the weighted
-packet and the Tate window.
+The first equality is a test, not the definition of \(\Gamma_{+;03}^{\rm
+mark}\). The comparison must also produce the two unit endpoints and have
+entry 99's carrier and entry 101's weighted star as its supported associated
+grade. After forgetting supported coefficients, the assembled orbit must
+recover entry 102's class \(\beta_\triangle\).
 
 Its useful terminal outcomes are either:
 
-- one proved absolute unlocalized support filtration, conductor purity
-  equivalence, and derived local naturality square, with a reproducible
-  certificate; or
-- one sharp falsifier showing that the normalization--conductor source cannot
-  satisfy vertex purity, that the absolute support filtration cannot be
-  formed, or that one established local trace is incompatible with the
-  derived Cousin boundary.
+- one geometrically constructed marked ringed-support correspondence and
+  derived Beck--Chevalley square, with a reproducible certificate; or
+- one sharp falsifier showing that every geometrically admissible central-flip
+  correspondence maps the mixed excess class away from the established
+  Cousin residue, endpoint counit, or physical normal line.
 
-Do not recompute the target relation, construct the six road maps
-independently, resurrect a pairwise \(q\)-vertex transition, test \(\Delta\)
-on one pair alone, or expand to a new multiplicity, a fourth primitive, or
-another sign census while the absolute support filtration and purity square
-remain unconstructed.
+Do not recompute the absolute differential or purity shift, replace the
+marked correspondence by the already-falsified literal pullback, construct
+the six road maps independently, resurrect a pairwise \(q\)-vertex
+transition, test \(\Delta\) on one pair alone, or expand to a new
+multiplicity, a fourth primitive, or another sign census while this one
+central-flip square remains unconstructed.
