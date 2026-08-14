@@ -20,7 +20,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--99 establish seven
+At the first nontrivial boundary, \(D=03\), entries 93--100 establish eight
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -76,6 +76,10 @@ pieces of that construction:
    K(I_+)\otimes K(I_{03})
    \longrightarrow K(Q)\longrightarrow0.
    \]
+8. the support-directed one-normal can--var packet, its Koszul--Cech
+   realization, and the three labelled local excess traces. A strict
+   finite-free stalk map is now ruled out; the remaining datum is the
+   homotopy-coherent gluing of the three derived local correspondences.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
@@ -91,9 +95,11 @@ class \(d_1^\vee\otimes\chi_N\); entry 97 constructs the arrow to its Verdier
 dual without identifying \(d_1\) with \(d_1^\vee\). Entry 98 rotates this
 trace and constructs the target relation geometrically. Entry 99 proves that
 the six carrier attachments are restrictions of two global maps and that the
-local excess orientation and shift are canonical. It isolates the first
-unproved arrow more sharply: an unlocalized, support-filtered augmented
-dual-block/Cousin can--var kernel lifting either global carrier map.
+local excess orientation and shift are canonical. Entry 100 constructs the
+paired can--var/Koszul--Cech coefficient packet and all three labelled local
+derived traces. It also proves that no strict finite-free map of branch and
+road stalks can carry the unit coefficient. The first unproved arrow is now a
+lower-vertex homotopy coherence among those local correspondences.
 
 Entry 96 also corrects the order of the relation test. A single pair has image
 in \(\mathbb Z d_1\) and therefore cannot realize
@@ -211,31 +217,61 @@ A_\pm^{\rm car}:D_\pm^{\rm car}
 
 with \(f_+\mapsto K_{\rm rel}\), \(f_-\mapsto-K_{\rm rel}\), and the six
 link edges mapped with unit coefficients to their three matched road facets.
-The unresolved operation is the filtered lift of either global map. With
+Entry 100 identifies the local coefficient object required to lift those
+maps. For one normal it is the packet
 
 \[
-I_+=(u_1,u_3,u_5),
+K_1(u)=[R\xrightarrow{u}R]
+\xrightarrow{(1,u^{-1})}
+C_u=[R\longrightarrow R[u^{-1}]],
+\]
+
+with paired support conventions
+
+\[
+Rj_*:\ (\operatorname{can},\operatorname{var})=(u,1),
+\qquad
+j_!\mathbb D:\ (\operatorname{can},\operatorname{var})=(1,u^\vee).
+\]
+
+The finite Koszul stage carries the perfect Verdier pairing; the Cech stage
+realizes the supported simple pole without globally inverting \(u\). For
+
+\[
+I_+^\vee=(u_1^\vee,u_3^\vee,u_5^\vee),
 \qquad
 I_{03}=(u_0,u_3),
 \]
 
-the first local restriction of that lift must satisfy
+the labelled \(D03\) correspondence, after the forced Laurent-unit twist
+normalization, now satisfies
 
 \[
 \boxed{
-\rho_{03}A_+^{\rm Cous,PC}
-=
-\operatorname{Tr}_{03,\partial}^{\rm PC}\partial_{+,03}.
+\eta_{03,\rm mix}
+\longmapsto
+\left[\frac{1}{u_0u_1u_3u_5}\right]
+\in H^4_{(u_0,u_1,u_3,u_5)}(R_0)
 }
 \]
 
-The candidate shift and excess orientation have now been derived rather than
-fitted: \(\eta=h_3^+-h_3^{03}\), and wedge by \(\eta\) is the canonical
-integral top-\(\operatorname{Tor}_1\) inclusion. What remains is the actual
-unlocalized can--var/Cousin kernel and all of its lower terms. It may not be
-defined by the displayed identity. Every branch/pair intersection has
-nonzero rank-one \(\operatorname{Tor}_1\), so treating the square as
-transverse is false.
+and the two rotated roads satisfy the analogous identities. A strict
+finite-free map \(K(I_+^\vee)\to K(I_i)\) with unit carrier coefficient is now
+falsified. What remains is not another local arrow but the first coherence
+between adjacent local correspondences. At their shared lower vertex
+\(q_2\), construct or falsify
+
+\[
+\boxed{
+\rho_{q_2}^{03}\Theta_{03}^{\rm loc}
+-\rho_{q_2}^{25}\Theta_{25}^{\rm loc}
+=d_{\rm Cous}H_{q_2}+H_{q_2}d.
+}
+\]
+
+Every branch/pair intersection has nonzero rank-one
+\(\operatorname{Tor}_1\), so treating the square as transverse remains
+false.
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -263,13 +299,13 @@ and
 
 Entry 97 recovers entry 86's occurrence-resolved endpoint counit and
 entry 89's four unit road occurrences at the \(D=03\) physical cut. The
-entry-98 target relation preserves all three rotated local identities, and
-entry 99 supplies the two global carrier maps and the unique local excess
-symbol. Realizing the relation generator \(\Delta\), its carrier source, and
-the source/road associated-grade square is therefore established. The source
-chain identity now depends on one global unlocalized augmented-dual-block
-lift; its six local excess squares must follow by restriction rather than be
-normalized independently.
+entry-98 target relation preserves all three rotated local identities, entry
+99 supplies the two global carrier maps and the unique local excess symbol,
+and entry 100 supplies the paired one-normal packet and all three local Cech
+residues. Realizing the relation generator \(\Delta\), its carrier source,
+and the three local source/road derived correspondences is therefore
+established. The source chain identity now depends first on one lower-vertex
+homotopy, followed by its dihedral orbit and the top augmented coherence.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -296,27 +332,31 @@ internal-state coevaluation retained.
    vertex figures map integrally and equivariantly to the relative target;
    the six carrier attachments are their road restrictions. The plus/\(D03\)
    excess symbol and every already-typed boundary invariant are fixed.
-4. **Unlocalized source lift -- immediate frontier:** construct one global
-   augmented-dual-block/Cousin can--var kernel whose associated grade is
-   \(A_+^{\rm car}\). Its three road restrictions must be the established
-   excess symbols and entry-97 traces. Polarity then supplies the minus lift.
-5. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
+4. **Local unlocalized packet -- established in entry 100:** the paired
+   support-directed can--var objects, Koszul--Cech comparison, mixed excess
+   line, and three labelled road residues are explicit. A strict finite-free
+   stalk map is falsified.
+5. **Lower-vertex coherence -- immediate frontier:** solve the first chain
+   homotopy between the \(F_{03}\) and \(F_{25}\) local residues at \(q_2\).
+   If it exists, obtain the other two by rotation and test the top augmented
+   coherence. Polarity then supplies the minus lift.
+6. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
-6. **Intrinsic half-object:** assemble the local perfect complexes and
+7. **Intrinsic half-object:** assemble the local perfect complexes and
    noninvertible Gysin correspondences into a cdh-local, factorization-natural
    object \(\mathsf J^{\rm PC}\).
-7. **CHY comparison:** construct a specialization-compatible comparison
+8. **CHY comparison:** construct a specialization-compatible comparison
    \(\Phi_{\rm CHY}(\mathsf J_n^{\rm PC})\simeq[({\rm Pf}'A_n)^2]\), rather than
    only matching paired amplitudes.
-8. **Higher coherence:** evaluate the residual twisted top class on a quartic
+9. **Higher coherence:** evaluate the residual twisted top class on a quartic
    grammar and test whether it is exactly the universal Jordan defect
 
    \[
    Q_{Q_xy}-Q_xQ_yQ_x.
    \]
 
-Stage 4 is the immediate frontier. Later stages should not be used to hide a
-failure of the unlocalized source lift.
+Stage 5 is the immediate frontier. Later stages should not be used to hide a
+failure of the lower-vertex Cousin coherence.
 
 ## Prohibited shortcuts
 
@@ -337,6 +377,10 @@ The objective is not met by:
 - treating a branch/pair intersection as transverse despite its nonzero
   excess \(\operatorname{Tor}_1\) line.
 - defining a source top map by the target relation it is meant to prove.
+- replacing a derived branch/road correspondence by a strict finite-free
+  stalk map; entry 100 proves that such a unit lift cannot exist.
+- calling \(R\to R[u^{-1}]\) itself a two-way can--var quiver, or globally
+  inverting \(u\) and thereby erasing its supported class.
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -345,48 +389,30 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved arrow in the construction. The marked road spans, reciprocal-twist
-bivariant traces, three-road target, two global carrier maps, and the local
-top-\(\operatorname{Tor}_1\) symbols are now established. The current bounded
-target is one global plus-sheet lift
+unproved coherence in the construction. The marked road spans,
+reciprocal-twist bivariant traces, three-road target, two global carrier maps,
+local top-\(\operatorname{Tor}_1\) symbols, paired one-normal can--var packet,
+and all three labelled Cech residues are now established. The current bounded
+target is the single shared-vertex homotopy
 
 \[
-A_+^{\rm Cous,PC}:
-\mathcal D_+^{\rm Cous,reg,\vee}
-\longrightarrow
-\mathbb D\operatorname{PC}(K_6,B_{\rm short})\otimes\chi_N
+\boxed{
+\rho_{q_2}^{03}\Theta_{03}^{\rm loc}
+-\rho_{q_2}^{25}\Theta_{25}^{\rm loc}
+=d_{\rm Cous}H_{q_2}+H_{q_2}d.
+}
 \]
 
-over the unlocalized universal monodromy ring, satisfying
+Both sides must first be placed in one explicitly defined common Cech
+refinement. The comparison must retain occurrence pullbacks, the paired
+reciprocal/Borel--Moore support directions, every localization summand, the
+marked lower-Cousin maps, and the physical normal line. No \(u_j\) or integer
+may be inverted in the base ring. A solution may use the localization terms
+inside the Cech complex.
 
-\[
-\operatorname{gr}A_+^{\rm Cous,PC}=A_+^{\rm car}
-\]
-
-and, by restriction to all three roads,
-
-\[
-\rho_iA_+^{\rm Cous,PC}
-\simeq
-\operatorname{Tr}_{i,\partial}^{\rm PC}\partial_{+,i}^{\rm ex}.
-\]
-
-It must retain the rank-one excess orientations, occurrence pullbacks,
-reciprocal/Borel--Moore support pairings, lower Cousin terms, physical normal
-lines, and the integral dihedral action. In particular it must be constructed
-before inverting the \(u_j\). The target identity
-
-\[
-d\mathcal K_{\rm rel}^{\rm PC}
-=\mathcal T_0^{\rm PC}+\mathcal T_1^{\rm PC}+\mathcal T_2^{\rm PC},
-\]
-
-and its global carrier preimage are already proved. The remaining lift must
-prove
-
-\[
-\operatorname{gr}A_+^{\rm Cous,PC}=A_+^{\rm car}.
-\]
+Only after this one homotopy exists should it be rotated to the other two
+vertices. Their cyclic composite must then supply, rather than assume, the
+top augmented coherence whose associated grade is \(A_+^{\rm car}\).
 
 Its useful terminal outcomes are either:
 
@@ -396,5 +422,5 @@ Its useful terminal outcomes are either:
 
 Do not recompute the target relation, construct the six road maps
 independently, test \(\Delta\) on one pair alone, or expand to a new
-multiplicity, a fourth primitive, or another sign census while the global
-unlocalized source lift remains untyped.
+multiplicity, a fourth primitive, or another sign census while the first
+lower-vertex Cousin homotopy remains untyped.
