@@ -13,6 +13,12 @@ torsion-free, and identifies the remaining degree-one belt extension. Entry
 polynomial weighted resolution. The surviving gap is the dependent
 route-to-belt Beck--Chevalley attachment, not a missing source cell.
 
+Forward correction (entry 82): that attachment is needed only for a stronger
+route-first worldsheet comparison.  The correctly ordered physical symbol
+first takes entry 79's scalar support descent and then applies entry 38's
+facewise PC map once on the actual regional target.  This target-first
+composite closes the local finite-loaded theorem.
+
 Entry 73 isolated forty strict cellular lifts from a nontransverse route
 pentagon to a fixed-core square.  The apparent ambiguity is now resolved at
 the correct categorical level:

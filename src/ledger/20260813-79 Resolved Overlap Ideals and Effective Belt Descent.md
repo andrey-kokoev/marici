@@ -14,6 +14,9 @@ finite-\(\alpha'\) scalar-geometric realization, which remains conditional.
 Entry 81 fixes their homological type: each bridge is the top determinant of
 a rank-two endpoint Koszul complex, not a rank-one
 \(\operatorname{Tor}_1\) excess class.
+Entry 82 then applies the required operation order: this scalar descent is
+formed first and the facewise PC functor is applied once to the actual
+regional target.  The resulting target-first local loaded symbol is exact.
 
 The result has two independent parts:
 

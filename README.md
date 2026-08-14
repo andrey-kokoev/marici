@@ -101,9 +101,13 @@ The ledger currently keeps three frontiers separate:
   formal substitution cannot be added without double loading. The proposed
   rank-one excess completion is now exactly falsified: the documented scalar
   \(t\)-square is Tor-independent, while each bridge is the top determinant
-  of a rank-two endpoint Koszul complex. The remaining eight-point datum is a
-  loaded endpoint-determinant correspondence kernel, its dependent pentagon
-  identity, and its finite four-chart holonomy. A
+  of a rank-two endpoint Koszul complex. Respecting operation order then closes
+  the local finite-loaded theorem: scalar route-to-belt descent occurs first,
+  followed by one facewise PC loading on the actual regional cube. The loaded
+  pentagon, ordered double residues, determinant-overlap descent, deck action,
+  and target holonomy all follow exactly. The remaining eight-point datum is
+  horizontal assembly around the residual quadrangulation octagon and its
+  Jordan/coherence obstruction. A
   BRST/kinetic realization of the conductor
   symbol, its higher-core Gysin comparison, an all-topology
   physical-projector comparison, a single point-set all-loop differential
@@ -472,3 +476,9 @@ prohibited overclaims.
   The only documented scalar square, \((t)\) versus \((x,y)\), is Tor-independent and has
   excess rank zero. The next test is a loaded two-endpoint determinant kernel compared directly
   with physical double Gysin, including its five-term pentagon identity and finite holonomy.
+- `20260813-82` observes that the correct operation order already closes that local test:
+  \(\mathsf J_Q^{\rm PC}=\chi_Q^{\rm PC}j_Qq_Q\) takes support-derived scalar descent before
+  applying one global PC loading on the actual regional cube. It gives the loaded five-term
+  identity, ordered residue sign, deck covariance, and target holonomy one. A route-first PC
+  comparison remains optional stronger data; the immediate obstruction is now the global
+  quadrangulation octagon/Jordan coherence.

@@ -21,6 +21,9 @@ specialization square is Tor-independent and has excess rank zero.  Locally,
 the bridge is the determinant generator of a rank-two endpoint Koszul complex.
 The formal base-change theorem and the double-loading no-go below remain
 valid; the geometric frontier stated near the end of this entry is superseded.
+Entry 82 closes the local physical construction without either substitution
+or excess geometry by descending the scalar carrier first and loading its
+single regional target afterward.
 
 ## Epistemic-graph relation
 
