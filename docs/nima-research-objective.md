@@ -1324,3 +1324,72 @@ The lift must preserve the endpoint coefficient \(-1\), send
 the two central-fibre lines, by identifying \(q_0\) with an \(F_{03}\)
 occurrence vertex, or by forgetting the endpoint-relative quotient is not a
 solution.
+
+## Unlocalized endpoint objective after entry 119
+
+The entry-118 carrier line is real but does not yet live in the existing
+loaded road category. Entry 119 applies the required anti-circularity test
+before imposing the mark:
+
+\[
+H_1(\operatorname{Gal}_{03},\partial;\mathbb Z)
+\cong\mathbb Z^2,
+\]
+
+torsion-free and saturated. Both routes have occurrence lcm \(x_1x_3\), so
+the coefficient system does not select one. The inherited \(x_3\) sink mark
+is a primitive saturated inclusion \(\mathbb Z\hookrightarrow\mathbb Z^2\);
+this is the legitimate rank-one carrier selection.
+
+The same audit falsifies the previously implicit choice of target. Entry 97
+works after inverting \(x_1,x_3,u_3\). On that common base the endpoint
+complex \(K_0\), the \(x_3\)-Cartier support, and the repeated-normal packet
+\(D_3\) are contractible. Therefore the loaded derived Hom obtained by
+reusing entry 97 is zero. This is not evidence against an unlocalized
+extraordinary realization; it proves that the support object must be
+constructed before its generic localization.
+
+The graph-Cartier part is already fixed independently:
+
+\[
+\boxed{
+\beta_{x_3}(q_3z)
+=[t_3]\eta_{3,\rm mix},
+\qquad
+\eta_{3,\rm mix}=(-q_3,-1).
+}
+\]
+
+The immediate formula objective is now the pair
+
+\[
+\boxed{
+\mathcal Q_{03,\rm flag}^{\rm unloc}
+\quad\text{and}\quad
+\Theta_{0,\rm rel}^{\rm unloc}:
+p^*K_0^{\vee,\rm reg}\otimes
+q^!\mathcal Q_{03,\rm flag}^{\rm unloc}
+\longrightarrow
+\omega_{(\operatorname{Gal}_{03},\partial)}.
+}
+\]
+
+Here \(q\) first lands on the actual spatial road flags
+\(F_{03}>Z_i>v_{10}\); the iterated relative Thom costalk is applied only
+afterward. The trace must be an occurrence-weighted
+Poincare--Lefschetz/Alexander--Whitney counit across the nontransverse
+central flip. It must:
+
+- retain both \(\operatorname{Tor}_0\) and
+  \(\eta_{3,\rm mix}\operatorname{Tor}_1\);
+- reproduce the primitive \(x_3\)-marked carrier without using that line as
+  a defining rank assumption;
+- derive the endpoint sign and lcm coefficients;
+- preserve reciprocal-standard/original-Borel--Moore variance and the
+  independent positive \([dX_{03}]\) line; and
+- recover the entry-97 trace only after supported construction and
+  localization.
+
+Until this object exists, the rank of the full loaded endpoint Hom is
+undefined. Reporting rank one by discarding \(\operatorname{Tor}_0\), or
+reporting the carrier rank as the loaded rank, is prohibited.
