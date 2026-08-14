@@ -1,0 +1,153 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 47,
+  "event_id": "ev-000000000047-b12afb89-8124-451f-863d-0c31bb8ee0e9",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e8505aa144002985104293e87f1cede4aa3374dd4281dedf4d4e7389f3dc815b",
+  "proposal_id": "ep_410ea720-a096-4af8-8e66-9eb3653cb433",
+  "proposal_digest": "cf3788a78bff4dc8c0ea6c84a2ca13aea6ba5de8ad533f182dddadaa12d395c0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:nima-ledger-114",
+      "local_ref": "source114",
+      "title": "Ledger 114 — Regular Multi-Rees Diagonal and the Missing Tate Off-Diagonal",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-114 Regular Multi-Rees Diagonal and the Missing Tate Off-Diagonal.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:nima-114-regular-multirees-diagonal",
+      "local_ref": "claim114",
+      "title": "Independent D3-permuted Rees parameters give the regular integral coefficient diagonal while retaining all Cartier Tor1 lines",
+      "status": "proved",
+      "scope": "Coefficient-level theorem only; it does not construct the spatial Beck-Chevalley off-diagonal."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "criticism",
+      "entity_id": "criticism:nima-114-tate-offdiagonal-unconstructed",
+      "local_ref": "crit114",
+      "title": "Neither a common Rees parameter nor the split local Cartier packets construct the Tate off-diagonal 1-r",
+      "status": "proved_no_go",
+      "detail": "The common parameter is nonregular; the local derived packets are split; and the excess-kernel-to-peripheral map has Smith factors (1,3)."
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:nima-114-spatial-multirees-lambda",
+      "local_ref": "test114",
+      "title": "Construct the marked spatial multi-Rees extraordinary class lambda_ex and compute the Z/3 obstruction omega",
+      "criterion": "Derive gr_car(lambda_ex)=1-r without fitting, retain every labelled conormal and Tor1 line plus q_Sigma, prove compatibility with the Yoneda cone roof, and compute omega=rho(e_F)-beta_triangle."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim114",
+      "target_ref": "source114",
+      "source_id": "claim:nima-114-regular-multirees-diagonal",
+      "target_id": "source:nima-ledger-114",
+      "relation_id": "rel:derived_from-5a8c87c12562eaa7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "claim114",
+      "target_id": "claim:nima-113-marked-exit-tate-detector",
+      "source_id": "claim:nima-114-regular-multirees-diagonal",
+      "relation_id": "rel:maricirefines-25f77837bed54915"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim114",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "source_id": "claim:nima-114-regular-multirees-diagonal",
+      "relation_id": "rel:addresses-9a0721d0c5581515"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit114",
+      "target_ref": "source114",
+      "source_id": "criticism:nima-114-tate-offdiagonal-unconstructed",
+      "target_id": "source:nima-ledger-114",
+      "relation_id": "rel:derived_from-de15f47517549ddd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit114",
+      "target_id": "conjecture:f4b3d9134b53a1512b50",
+      "source_id": "criticism:nima-114-tate-offdiagonal-unconstructed",
+      "relation_id": "rel:criticizes-d69ccde4be624fff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "crit114",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "source_id": "criticism:nima-114-tate-offdiagonal-unconstructed",
+      "relation_id": "rel:addresses-06cc34da0eac9bee"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test114",
+      "target_ref": "source114",
+      "source_id": "test:nima-114-spatial-multirees-lambda",
+      "target_id": "source:nima-ledger-114",
+      "relation_id": "rel:derived_from-c4461763eea2f1bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "test114",
+      "target_ref": "claim114",
+      "source_id": "test:nima-114-spatial-multirees-lambda",
+      "target_id": "claim:nima-114-regular-multirees-diagonal",
+      "relation_id": "rel:depends_on-0bcb80b82b3ab503"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test114",
+      "target_id": "conjecture:f4b3d9134b53a1512b50",
+      "source_id": "test:nima-114-spatial-multirees-lambda",
+      "relation_id": "rel:tests-26a759ff098065fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "test114",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "source_id": "test:nima-114-spatial-multirees-lambda",
+      "relation_id": "rel:addresses-7a99b74140781032"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-113-derived-costalk-bc-lift-entry114",
+      "test_id": "test:nima-113-derived-costalk-bc-lift",
+      "actor": "marici.Nima",
+      "outcome": "partial_inconclusive",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-114",
+          "locator": "src/ledger/20260814-114 Regular Multi-Rees Diagonal and the Missing Tate Off-Diagonal.md",
+          "paraphrase": "Independent labelled Rees parameters retain the complete coefficient-level Tor1 data, but the spatial off-diagonal lambda_ex and its Beck-Chevalley/Yoneda compatibility remain unconstructed."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "The user explicitly requested continued Nima research and use of the epistemic graph; ledger 114 is the verified bounded research packet."
+  },
+  "idempotency_key": "auto-admission-491e6672f25fa03d03dc2005",
+  "occurred_at": "2026-08-14T16:49:23.9019785Z",
+  "certifies_truth": false,
+  "event_hash": "ad93503d809e78bb646a8daf7db9507a681efb49962860ea0aaf786640490e38"
+}

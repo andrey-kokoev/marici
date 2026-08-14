@@ -1041,3 +1041,67 @@ The coefficient \(-3v_+\) is not evidence for a \(1/3\) repair; it records the
 boundary of three distinct source exits. Only after \(\alpha_+\) is built
 should the negative sheet, full \(K_{\rm alt}\), and physical-cut
 Beck--Chevalley square be tested.
+
+## Marked-exit and multi-Rees correction after entries 113--114
+
+The marked-exit calculation changes the target of the source comparison.
+The generic class
+
+\[
+q_\Sigma=N_{\rm road},
+\qquad
+\epsilon(q_\Sigma)=3,
+\]
+
+must be retained, not killed by adjoining a source filler. The canonical
+mixed block already has the required boundary-crossing form
+
+\[
+dH_\Sigma=q_\Sigma-
+(x_1\widetilde\xi_1+x_3\widetilde\xi_3+x_5\widetilde\xi_5).
+\]
+
+A common Rees parameter \(q_i-1=tx_i\) is rejected: the sequence
+\((tx_1,tx_3,tx_5)\) is nonregular and creates an extra vertical
+\(t\)-torsion component. The smallest viable coefficient deformation uses
+independent, \(D_3\)-permuted parameters
+
+\[
+q_i-1=t_i x_i,
+\qquad i\in\{1,3,5\},
+\]
+
+and retains every \([t_i]\) conormal and Cartier
+\(\operatorname{Tor}_1\) line. This constructs only the regular diagonal.
+It does not construct the required Tate off-diagonal.
+
+The next formula objective is therefore
+
+\[
+\boxed{
+\lambda_{\rm ex}:
+P_{\rm Cart,H_0}\dashrightarrow
+P_{\rm Cart,\operatorname{Tor}_1},
+\qquad
+\operatorname{gr}_{\rm car}\lambda_{\rm ex}=1-r,
+}
+\]
+
+as a marked spatial multi-Rees extraordinary pull--push compatible with the
+actual support filtration, entry-100 excess maps, and the Yoneda cone roof.
+Its first obstruction is
+
+\[
+\omega=\rho(e_F)-\beta_\triangle
+\in
+\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})
+\simeq\mathbb Z/3.
+\]
+
+Only if \(\omega=0\) should the residual \(\mathbb Z/2\) parity coherence,
+negative sheet, and physical-Cut square be tested. Do not cancel
+\(q_\Sigma\), use a common Rees parameter, insert \(1-r\) into the split
+local packets, identify the two integral \(A_2\) lattices, or divide by
+three. Each of those operations erases precisely the extension data being
+sought.
