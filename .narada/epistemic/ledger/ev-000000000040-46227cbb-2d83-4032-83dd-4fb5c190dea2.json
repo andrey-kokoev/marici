@@ -1,0 +1,129 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 40,
+  "event_id": "ev-000000000040-46227cbb-2d83-4032-83dd-4fb5c190dea2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "4cb1b81c13269ab5dc2f6985ccf38edbed30d4e1db57aaa614de3e00d513c11a",
+  "proposal_id": "ep_1c82347f-8701-4f85-a5de-25a474ce762c",
+  "proposal_digest": "f2075c3781aa0c80284c3db87601acaa08e7e3f39ef99a1ec3fdbe6d04079073",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "j_global",
+      "kind": "conjecture",
+      "title": "The NLSM half-object is the coherent boundary-realization system of a scalar Tate–Yoneda class under logarithmic bivariant specialization",
+      "summary": "Reserve J_partial,D for BC_D^log(e_F,Gamma_D^log). Define global J as e_F together with all boundary-crossing log correspondences, their extraordinary Beck–Chevalley transformations, and higher Cut coherences. The CHY class (Pf' A)^2 is conjecturally a realization/period of this system.",
+      "status": "conjectural",
+      "entity_id": "conjecture:f4b3d9134b53a1512b50"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "bc_problem",
+      "kind": "problem",
+      "title": "Construct a boundary-crossing logarithmic specialization correspondence with a genuine generic Q-leg",
+      "summary": "Construct Z_{+;03}^sp whose generic stratum meets Q=F2/F1 and whose special fibre contains the expanded marked gallery, then derive an extraordinary pull-push BC_{+;03}^log rather than defining it by its desired value.",
+      "entity_id": "problem:0a424d79ea347d691fb5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "bc_test",
+      "kind": "test",
+      "title": "D03 nonzero-Q-leg logarithmic specialization falsifier",
+      "protocol": [
+        "Verify the generic correspondence has nonzero Q-support before invoking local uniqueness.",
+        "Derive the special carrier [xi_tilde_{+;03}].",
+        "Derive the repeated-normal excess class eta_{3,mix}.",
+        "Derive the four-normal Cousin residue and positive [dX03] orientation without inserted normalization.",
+        "Check D3 rotation and compatibility with the integral Tate window."
+      ],
+      "success_condition": "A canonically constructed extraordinary pull-push sends e_F to Theta_{03}^{loc} with all carrier, excess, occurrence, twist, and orientation data derived.",
+      "failure_condition": "Every natural correspondence remains supported in F1, or the generic Q-leg is zero, or the local value must be stipulated.",
+      "entity_id": "test:713ff522bfc26aad4af5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "support_no_go",
+      "kind": "criticism",
+      "title": "Any proposed correspondence supported wholly in the short-boundary sector has zero ordinary Q-leg",
+      "summary": "Entries 105–107 prove that the marked gallery, its exceptional divisor, and blowups centered inside B_short remain in F1 and therefore map trivially to Q=F2/F1. Such constructions cannot by themselves produce BC_{+;03}^log.",
+      "entity_id": "criticism:8a545d27a80c1893f8d5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "j_global",
+      "target_id": "source:nima-ledger-106",
+      "source_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:derived_from-edb341b0deb12f50"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "j_global",
+      "target_id": "source:nima-ledger-107",
+      "source_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:derived_from-469c0579beaa60d9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "j_global",
+      "target_id": "claim:nima-107-log-blowup-invariance",
+      "source_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:depends_on-72664e42654f4463"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "bc_problem",
+      "target_ref": "j_global",
+      "source_id": "problem:0a424d79ea347d691fb5",
+      "target_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:addresses-84c976bf316902d6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "bc_test",
+      "target_ref": "j_global",
+      "source_id": "test:713ff522bfc26aad4af5",
+      "target_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:tests-41cd3a37c16c5feb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "bc_test",
+      "target_ref": "bc_problem",
+      "source_id": "test:713ff522bfc26aad4af5",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "relation_id": "rel:tests-eee2f4d15d5e930a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "support_no_go",
+      "target_ref": "j_global",
+      "source_id": "criticism:8a545d27a80c1893f8d5",
+      "target_id": "conjecture:f4b3d9134b53a1512b50",
+      "relation_id": "rel:criticizes-1c2126c61f449c62"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "bc_problem",
+      "target_id": "problem:6f41f07b769e74ec7dd8",
+      "source_id": "problem:0a424d79ea347d691fb5",
+      "relation_id": "rel:depends_on-82ee966fa84d624a"
+    }
+  ],
+  "actor": "marici.Scholze",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "User explicitly requested recording the current Nima/Voevodsky/Scholze synthesis in Marici's epistemic graph."
+  },
+  "idempotency_key": "auto-admission-61b4569a70535c7ca7a97517",
+  "occurred_at": "2026-08-14T14:18:29.8266149Z",
+  "certifies_truth": false,
+  "event_hash": "cf8a9300d2472c3fc218d1cb278f611bec5b0a48816c6a7eca09192e076b9e11"
+}

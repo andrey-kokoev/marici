@@ -756,3 +756,70 @@ already-zero literal restriction; fit a representative from the desired
 residue; rationally split the triangle; construct six road maps separately;
 or expand to another multiplicity while this single global-to-local arrow
 remains unconstructed.
+
+## Kernel-level refinement after entry 108
+
+The ambient pair-Rees deformation and a boundary-crossing source kernel must
+now be kept distinct. Entry 108 proves the local exit complex
+
+\[
+C_{03}^{\rm exit}=[R\xrightarrow{U_{03}}R],
+\qquad H^1=R/(U_{03}),
+\]
+
+and the legitimate principal-ideal dual evaluation
+
+\[
+(X_{03})^\vee\otimes(X_{03})\to R,
+\qquad X_{03}^\vee\otimes X_{03}\mapsto1.
+\]
+
+Thus the required local value \([1]\) is intrinsic. What is not intrinsic
+yet is the map receiving \(e_F\):
+
+\[
+\boxed{
+\operatorname{sp}_G:
+R\!\operatorname{Hom}(Q,F_0[2])
+\longrightarrow C_{03}^{\rm exit}[-1],
+\qquad
+\operatorname{sp}_G(e_F)\stackrel{?}{=}[1].
+}
+\]
+
+For any proposed deformation kernel \(\mathscr K\), test first
+
+\[
+\mathscr K_\eta\to Q[\mathbf t^{\pm1}]\ne0.
+\]
+
+If its generic fiber factors through \(F_1\), reject it before computing
+signs or residues. The canonical Rees and multi-Rees constructions of the
+expanded gallery fail this test because all seven gallery supports lie in
+\(F_1\). Extra normal gradings preserve this zero support map.
+
+The smallest new candidate is the relative barycentric dual-star, or normal-
+Morse thimble,
+
+\[
+\mathscr T_{+;03}
+=C_*^{\rm BM}\left(
+\operatorname{st}^\vee_{F_2}(\widetilde G),
+\operatorname{st}^\vee_{F_1}(\widetilde G);
+\mathcal P_{\rm abs}
+\right).
+\]
+
+The work order is strict:
+
+1. exhibit an actual relative coface in \(Q\);
+2. compute the integral carrier boundary and compare it with
+   \(\widetilde\xi\);
+3. construct the specialization map and compute
+   \(o_G=\operatorname{sp}_G(e_F)-[1]\in R/(U_{03})\);
+4. only if \(o_G=0\), attach the entry-100 excess/Cousin packet and physical
+   \([dX_{03}]\) orientation.
+
+Do not infer a kernel-level \(Q\)-leg from the ambient quotient, identify a
+quotient with a chosen subobject, or turn a local rank-one uniqueness theorem
+into existence of \(\operatorname{sp}_G\).

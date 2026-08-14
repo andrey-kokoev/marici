@@ -927,3 +927,58 @@ source operation.
 An additive exceptional occurrence variable \(X_E=X_{03}+x_1\) is now a
 certified wrong turn: it leaves a noncontractible \(K(X_E)\) quotient. The
 multiplicative exceptional rule belongs only to monodromy.
+
+## 18. Local exit class and the kernel-level Rees criterion
+
+Entry 108 separates two objects that had been conflated. The ambient
+pair-Rees deformation of \(F_1\subset F_2\) retains the seven-generator
+quotient \(Q\), and its \(D03\) exit block has raw attachment \(X_{03}\).
+After the integral contractions the local Hom complex is
+
+\[
+C_{03}^{\rm exit}=[R\xrightarrow{U_{03}}R],
+\qquad H^0=0,
+\qquad H^1=R/(U_{03}).
+\]
+
+The reciprocal occurrence operation is the module pairing
+
+\[
+\operatorname{Hom}_R((X_{03}),R)\otimes(X_{03})\to R,
+\]
+
+so it maps the raw class \([X_{03}]\) to the canonical shifted local
+generator \([1]\) without inverting \(X_{03}\) in the base.
+
+This does not construct the global specialization. Every support in the
+expanded gallery belongs to \(F_1\), hence the generic fiber of its canonical
+Rees or multi-Rees source has zero projection to \(Q\). The necessary
+criterion for any future kernel is
+
+\[
+\mathscr K_\eta\to Q[\mathbf t^{\pm1}]\ne0.
+\]
+
+The exact missing map is
+
+\[
+\operatorname{sp}_G:
+R\!\operatorname{Hom}(Q,F_0[2])
+\to C_{03}^{\rm exit}[-1],
+\qquad
+\operatorname{sp}_G(e_F)=[1].
+\]
+
+The first obstruction, once the map is constructed, is
+
+\[
+o_G=\operatorname{sp}_G(e_F)-[1]\in R/(U_{03}).
+\]
+
+The next minimal carrier candidate is a relative barycentric dual-star or
+normal-Morse thimble of the expanded gallery in the full blown-up
+associahedron, relative to its part in \(F_1\). It must first exhibit a
+literal \(Q\) coface and then derive \(\widetilde\xi\) as its special
+boundary. Only after those carrier tests pass should the reciprocal
+occurrence, can--var, repeated-normal excess, and physical-normal factors be
+attached.
