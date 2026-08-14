@@ -6,14 +6,23 @@
   "license": "Apache-2.0",
   "packageManager": "pnpm@10.34.0",
   "scripts": {
-    "dev": "astro dev",
-    "check": "astro check",
-    "build": "astro build",
-    "preview": "astro preview"
+    "source:assemble": "node scripts/assemble-narada-source.mjs",
+    "source:check": "node scripts/assemble-narada-source.mjs --check",
+    "bootstrap": "node scripts/assemble-narada-source.mjs && pnpm install",
+    "build:ui": "pnpm --filter @narada-core/ui build",
+    "dev": "pnpm run build:ui && astro dev",
+    "check": "pnpm run build:ui && astro check",
+    "build": "pnpm run build:ui && astro build",
+    "preview": "astro preview",
+    "ship": "pnpm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@narada-core/ui": "workspace:*"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "astro": "7.1.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "wrangler": "4.114.0"
   }
 }
