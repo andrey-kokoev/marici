@@ -18,7 +18,7 @@ The unresolved problem is not generic amplitude reconstruction. It is to make
 this class intrinsic on scalar boundary geometry and natural under physical
 factorization.
 
-At the first nontrivial boundary, \(D=03\), entries 93--95 establish three
+At the first nontrivial boundary, \(D=03\), entries 93--96 establish four
 pieces of that construction:
 
 1. a normalization--conductor cdh square whose first polarity-odd normal
@@ -34,18 +34,31 @@ pieces of that construction:
    \]
 3. the canonical first conductor normal-link carrier differential and its
    exact integral fold onto that augmented triangle.
+4. the actual factorization-marked transverse span
+
+   \[
+   Z_0\longleftarrow W_{03}\longrightarrow Z_3
+   \]
+
+   with minimal coefficient \(K(u_0,u_3)\), unique marked lower-Cousin
+   primitive, and its road-costalk PC realization.
 
 Its incidence branch gives the QTDS/contact sector, while its dual
 augmentation gives the primitive boundary symbol. Their Smith index three is
 intrinsic integral gluing; it is not a reason to introduce a rational
 projector.
 
-The source carrier differential is therefore no longer missing. The first
-unproved arrow is the occurrence-loaded Pochhammer--Cousin/Gysin trace. Entry
-95 also rules out replacing it by a strict fold of each pair of independent
-normal characters into one supported rank-one target over the identity
-monodromy base. The intended map must be a genuine correspondence with
-specified character pullbacks and top-cell coherence.
+The source carrier differential and the first marked coefficient span are
+therefore no longer missing. Entry 95 rules out replacing the span by a strict
+fold of two independent normal characters into one supported rank-one target.
+Entry 96 shows that the span canonically produces only the road-costalk class
+\(d_1^\vee\otimes\chi_N\). The first unproved arrow is now its bivariant
+Pochhammer--Cousin trace to the primal tag \(d_1\).
+
+Entry 96 also corrects the order of the relation test. A single pair has image
+in \(\mathbb Z d_1\) and therefore cannot realize
+\(\Delta=d_0+d_1+d_2\). The \(\Delta\) coherence belongs only after all three
+marked pairs have been assembled.
 
 ## North-star construction
 
@@ -104,22 +117,48 @@ and its primitive composite
 }
 \]
 
-Its first unresolved local component can now be isolated as
+Its first unresolved local component can now be isolated as a bivariant
+pairing. Let \(\mathcal S_1^{\rm mark}\) denote the entry-96 supported PC
+diagram on \(Z_0\leftarrow W_{03}\to Z_3\), and let
+\(\mathcal Q_{03}^{\rm PC}\) be the road costalk. The next formula is
 
 \[
 \boxed{
-\operatorname{Tr}_{\rm occ}^{\rm PC}:
-\operatorname{PC}(L_+;\mathcal L_+)
-\underset{P_{\rm road}}{\sqcup^{\mathbb L}}
-\operatorname{PC}(L_-;\mathcal L_-)
-\longrightarrow
-\mathcal R_{03}^{\rm circ,PC},
+\Theta_1^{\rm PC}:
+\mathcal S_1^{\rm mark}\boxtimes\mathcal Q_{03}^{\rm PC}
+\longrightarrow\mathbf1_{\chi_N}.
 }
 \]
 
-where \(L_\pm=\mathbb P_+(N_{Z/F_\pm})\). This trace must be induced by an
-actual factorization-marked Gysin correspondence; it may not be defined by
-declaring a common target local system.
+Its currying should give
+
+\[
+\boxed{
+\operatorname{Tr}_1^{\rm PC}:
+\mathcal S_1^{\rm mark}
+\longrightarrow
+\mathbb D(\mathcal Q_{03}^{\rm PC})\otimes\chi_N
+=:\mathcal T_1^{\rm PC}.
+}
+\]
+
+The target is typed by Verdier duality from the established road costalk; it
+is not a newly postulated common local system. The associated grade of
+\(\Theta_1^{\rm PC}\) must be entry 89's unit Laurent pairing, and its endpoint
+must be entry 86's occurrence counit.
+
+After rotating this construction to the two other existing pairs, the first
+relation-level formula is
+
+\[
+\boxed{
+d\mathcal K_{\rm rel}^{\rm PC}
+=\mathcal T_0^{\rm PC}+\mathcal T_1^{\rm PC}+\mathcal T_2^{\rm PC}.
+}
+\]
+
+Only this three-pair totalization is required to map the conductor top cells
+to \(\Delta\).
 
 Here \(d_{\rm sp,sc}\) denotes the canonical total scalar specialization
 differential to be constructed. It is **not** a scalar BRST differential.
@@ -145,9 +184,10 @@ and
 =K_{\rm alt}\otimes L_{\rm pol}.
 \]
 
-It must also recover entry 86's occurrence-resolved endpoint counit, realize
-the relation generator \(\Delta\), and reproduce the four unit road
-occurrences at the \(D=03\) physical cut.
+Locally it must recover entry 86's occurrence-resolved endpoint counit and
+entry 89's four unit road occurrences at the \(D=03\) physical cut. Realizing
+the relation generator \(\Delta\) is a subsequent three-pair identity, not a
+condition on the single \((u_0,u_3)\) span.
 
 The first global test is Beck--Chevalley/factorization naturality:
 
@@ -163,17 +203,21 @@ internal-state coevaluation retained.
 
 ## Success ladder
 
-1. **Local chain lift:** derive \(d_{\rm sp,sc}\) and prove the three displayed
-   \(D=03\) chain and grade identities.
-2. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
+1. **Local bivariant trace:** construct \(\Theta_1^{\rm PC}\), curry it to
+   \(\operatorname{Tr}_1^{\rm PC}\), and prove the endpoint and associated-grade
+   identities without identifying \(u_0\) and \(u_3\).
+2. **Three-pair chain lift:** rotate the local trace, assemble the three tag
+   objects and relation cell, and prove the displayed chain and grade
+   identities for \(G_{03}^{\rm Cousin}\).
+3. **Boundary naturality:** prove the physical-Cut square for one \(4+6\)
    channel, then obtain its orbit by \(D_8\)-equivariance.
-3. **Intrinsic half-object:** assemble the local perfect complexes and
+4. **Intrinsic half-object:** assemble the local perfect complexes and
    noninvertible Gysin correspondences into a cdh-local, factorization-natural
    object \(\mathsf J^{\rm PC}\).
-4. **CHY comparison:** construct a specialization-compatible comparison
+5. **CHY comparison:** construct a specialization-compatible comparison
    \(\Phi_{\rm CHY}(\mathsf J_n^{\rm PC})\simeq[({\rm Pf}'A_n)^2]\), rather than
    only matching paired amplitudes.
-5. **Higher coherence:** evaluate the residual twisted top class on a quartic
+6. **Higher coherence:** evaluate the residual twisted top class on a quartic
    grammar and test whether it is exactly the universal Jordan defect
 
    \[
@@ -198,6 +242,7 @@ The objective is not met by:
 - adding generators solely to force a desired commutative square.
 - folding two independent universal monodromy characters strictly into one
   supported rank-one target over the identity base.
+- requiring one tag pair to realize the three-tag relation \(\Delta\).
 
 The three-tag triangle belongs to factorization-marked scalar geometry, not
 to the bare one-parameter amplitude family. That enrichment is allowed, but
@@ -206,18 +251,29 @@ it must remain explicit.
 ## Bounded long-run objective
 
 A long or overnight investigation should attempt exactly the first canonical
-unproved arrow in the construction. At present this is the paired
-factorization-marked correspondence
+unproved arrow in the construction. The paired factorization-marked
+correspondence
 
 \[
 Z_0\longleftarrow W_{03}\longrightarrow Z_3
 \]
 
-and its occurrence-loaded PC trace. Its useful terminal outcomes are either:
+and its supported PC road-costalk diagram are now established. The current
+bounded target is the bivariant pairing
+
+\[
+\Theta_1^{\rm PC}:
+\mathcal S_1^{\rm mark}\boxtimes\mathcal Q_{03}^{\rm PC}
+\longrightarrow\mathbf1_{\chi_N}
+\]
+
+and its curried trace to the primal tag. Its useful terminal outcomes are
+either:
 
 - one proved local chain identity, with a reproducible certificate; or
 - one sharp falsifier identifying the first geometric map, filtration, or
   Beck--Chevalley identity that cannot exist.
 
-Do not expand to a new multiplicity, a fourth primitive, or another sign
-census while the \(D=03\) total-specialization lift remains untyped.
+Do not test \(\Delta\) on this pair alone. Do not expand to a new multiplicity,
+a fourth primitive, or another sign census while the local bivariant trace
+remains untyped.
