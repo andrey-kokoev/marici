@@ -1,0 +1,129 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f6c7eb8d-b438-4b26-8de4-d69e4e3bf33d",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "research_session_owner",
+    "summary": "Curating verified Marīci.Nima ledger-112 evidence under docs/research-lifecycle.md."
+  },
+  "idempotency_key": "nima-ledger-112-whole-gallery-and-three-top-obstruction-v1",
+  "expected_ledger_head": "d6945caf534b07e325a45da30441f49ac59214439c2af6d5e9b02ee2774e6d41",
+  "created_at": "2026-08-14T16:07:54.6146176Z",
+  "content_fingerprint": "cd789675a7018b0526a3572674053e3c06cff244bae5fe42cacbd83c4a6fc3bb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-ledger-112",
+      "local_ref": "ledger112",
+      "kind": "source",
+      "title": "Ledger 112: Whole-Gallery Cartier–Tag Gysin and the Primitive Three-Top Obstruction",
+      "version": "2026-08-14",
+      "locator": "src/ledger/20260814-112 Whole-Gallery Cartier-Tag Gysin and the Primitive Three-Top Obstruction.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-112-whole-gallery-cartier-tag-gysin",
+      "local_ref": "local_theorem",
+      "kind": "claim",
+      "title": "The supported D03 occurrence Cartier class has a canonical whole-gallery Gysin map to the positive conductor tag"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:nima-112-three-top-source-gluing-obstruction",
+      "local_ref": "top_obstruction",
+      "kind": "criticism",
+      "title": "The three rotated Morse tops do not glue in the existing scalar carrier because their generic sum is a primitive nonzero relative H1 class"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "local_theorem",
+      "target_ref": "ledger112",
+      "source_id": "claim:nima-112-whole-gallery-cartier-tag-gysin",
+      "target_id": "source:nima-ledger-112",
+      "relation_id": "rel:derived_from-a9630b5de42fcd8b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "local_theorem",
+      "target_id": "problem:nima-110-one-sheet-conductor-comparison",
+      "source_id": "claim:nima-112-whole-gallery-cartier-tag-gysin",
+      "relation_id": "rel:addresses-282b9ff5dfc9d7eb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "local_theorem",
+      "target_id": "claim:nima-110-local-rank-jump-cartier-bockstein",
+      "source_id": "claim:nima-112-whole-gallery-cartier-tag-gysin",
+      "relation_id": "rel:maricirefines-d12c35ad179d028a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "top_obstruction",
+      "target_ref": "ledger112",
+      "source_id": "criticism:nima-112-three-top-source-gluing-obstruction",
+      "target_id": "source:nima-ledger-112",
+      "relation_id": "rel:derived_from-00345e2b3df620d5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "top_obstruction",
+      "target_id": "problem:0a424d79ea347d691fb5",
+      "source_id": "criticism:nima-112-three-top-source-gluing-obstruction",
+      "relation_id": "rel:addresses-42774a1590292ff3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "top_obstruction",
+      "target_id": "test:nima-111-rotated-whole-gallery-tag-gluing",
+      "source_id": "criticism:nima-112-three-top-source-gluing-obstruction",
+      "relation_id": "rel:addresses-2729d116962fac31"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-112-one-sheet-conductor-comparison-narrowed",
+      "subject_id": "problem:nima-110-one-sheet-conductor-comparison",
+      "judgment": "partially resolved at ordinary supported associated grade; the full derived PC costalk and positive-sheet top remain open",
+      "actor": "marici.Nima",
+      "reason": "Whole-gallery BM/Cartier integration canonically sends the intrinsic D03 Bockstein class to t3, but derived base change retains an excess Tor1 copy and the three rotated source tops do not glue in the current carrier.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-112",
+          "locator": "research/voevodsky/check_d03_whole_gallery_tag_gysin.rs",
+          "paraphrase": "The exact relative gallery complex and road-costalk orientation give -xi_tilde to +t3 without division by x3 or 3."
+        },
+        {
+          "source_id": "source:nima-ledger-112",
+          "locator": "research/voevodsky/check_three_rotated_gallery_top_gluing.rs",
+          "paraphrase": "The rotated generic sum raises the boundary rank and represents the primitive class (1,1,1)."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-112-rotated-whole-gallery-tag-gluing",
+      "test_id": "test:nima-111-rotated-whole-gallery-tag-gluing",
+      "actor": "marici.Nima",
+      "outcome": "Split result: the D03 whole-gallery-to-tag component passes at supported associated grade; the three rotated source tops fail to glue in the existing absolute/barycentric carrier. Their generic sum is primitive and nonzero relative to the four endpoints, while the short-boundary quotient that kills it also kills all three special galleries.",
+      "evidence": [
+        {
+          "source_id": "source:nima-ledger-112",
+          "locator": "research/voevodsky/check_d03_whole_gallery_tag_gysin.rs",
+          "paraphrase": "Verified the local supported map, induced sign, and free-target no-go."
+        },
+        {
+          "source_id": "source:nima-ledger-112",
+          "locator": "research/voevodsky/check_three_rotated_gallery_top_gluing.rs",
+          "paraphrase": "Verified ranks 126 to 127 endpoint-relative and 64 to 64 only after removing the short boundary."
+        }
+      ]
+    }
+  ],
+  "digest": "9e7e85aec5ba808f0b126e78839ad67dfba7d7ef4fc76a64741472f73535d0d5"
+}

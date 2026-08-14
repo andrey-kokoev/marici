@@ -964,3 +964,80 @@ The simplified frontier is consequently two-stage:
 This retains the full effect of the one-sheet comparison while removing the
 unsupported claim that one stellar subdivision already carries all three
 conductor directions.
+
+## Whole-gallery theorem and source-top obstruction after entry 112
+
+The first stage of the entry-111 simplification is now established. For the
+positive \(D03\) sheet, whole-gallery relative Borel--Moore integration,
+Cartier base change, and the normalization-conductor conormal label give
+
+\[
+\boxed{
+\kappa^{\rm gr}_{+,03}:
+\beta_{x_3}^{\rm Cart}(B_{+,03})
+\longrightarrow C\,t_3,
+\qquad
+\kappa^{\rm gr}_{+,03}(-[\widetilde\xi])=+t_3,
+\quad C=R/(x_1,x_3,x_5).
+}
+\]
+
+The sign is induced rather than chosen: the positive road-costalk edge is
+opposite to the expanded-gallery orientation. Internal edge representatives
+are cohomologous, so no segmentwise tag matching and no division by three is
+used. This is an ordinary supported associated-grade theorem. The complete
+derived base change retains a second, excess \(\operatorname{Tor}_1\) copy and
+has not yet been identified with the full PC extraordinary costalk.
+
+The second stage is exactly obstructed in the current source carrier. The
+three rotated Morse identities have generic sum \(q_\Sigma\) with
+
+\[
+\partial q_\Sigma=c_{14}+c_{03}+c_{25}-3v_+,
+\]
+
+and
+
+\[
+[q_\Sigma]=(1,1,1)
+\in H_1\!\left(sd(K_6),
+\{v_+,c_{14},c_{03},c_{25}\};\mathbb Z\right)
+\simeq\mathbb Z^3.
+\]
+
+This class is primitive, nonzero, and \(D_3\)-invariant. Passing relative to
+the entire short boundary makes it bound only by removing all three special
+gallery chains. Therefore the existing absolute complex and its natural
+relative quotients do not supply a common positive-sheet top.
+
+The next bounded objective is no longer another local road computation. It
+is the source comparison
+
+\[
+\boxed{
+\alpha_+:
+\mathcal S_+^{\rm cond}
+\longrightarrow R\Gamma_{v_+}^{F}(\mathcal P_{\rm abs})
+}
+\]
+
+or an equivalent normalization--conductor/multi-Rees bivariant kernel. It
+must provide, without averaging,
+
+\[
+dH_+=-
+(x_1\widetilde\xi_1+x_3\widetilde\xi_3+x_5\widetilde\xi_5),
+\]
+
+retain the three gallery classes and their excess normal copies, and map at
+associated grade to
+
+\[
+df_+=t_1+t_3+t_5.
+\]
+
+The target norm attachment is already integral and unique if \(H_+\) exists.
+The coefficient \(-3v_+\) is not evidence for a \(1/3\) repair; it records the
+boundary of three distinct source exits. Only after \(\alpha_+\) is built
+should the negative sheet, full \(K_{\rm alt}\), and physical-cut
+Beck--Chevalley square be tested.

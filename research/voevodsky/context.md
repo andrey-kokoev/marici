@@ -1113,3 +1113,50 @@ gallery class to the single tag \(t_3\), rotate the whole construction to
 \(t_1,t_5\), and only afterward glue the three tops into the augmented
 triangle relation. This is smaller, better typed, and preserves the integral
 derived extension without a fitted segmentwise identification.
+
+## 22. Whole-gallery tag map and the three-top obstruction
+
+The whole-gallery step is now exact. After the natural lcm-line cap, the
+endpoint/generic-relative gallery complex has
+
+\[
+H_1=R/(x_3)\langle[e_c+h_E+e_r]\rangle.
+\]
+
+The positive \(D03\) road costalk is oppositely oriented to the final gallery
+edge, so its strict representative sends entry 110's negative Bockstein
+class to \(+1\). The quotient \(R/(x_3)\to R/(x_1,x_3,x_5)\), followed by
+\([x_3]\mapsto dx_3\mapsto t_3\), gives
+
+\[
+\kappa^{\rm gr}_{+,03}(-[\widetilde\xi])=+t_3.
+\]
+
+This is a whole-path BM/Gysin map; the three edge cochains are cohomologous
+and are not three independently labelled conductor maps. A free target is
+ruled out by \(\operatorname{Hom}_R(R/(x_3),R)=0\). The theorem is scoped to
+ordinary supported associated grade; the full derived base change retains a
+\(\operatorname{Tor}_1\) excess line.
+
+The three rotated source tops do not glue in the existing barycentric
+carrier. Their generic part has boundary
+
+\[
+c_{14}+c_{03}+c_{25}-3v_+,
+\]
+
+and represents the primitive invariant class
+
+\[
+(1,1,1)\in
+H_1(sd(K_6),\{v_+,c_{14},c_{03},c_{25}\};\mathbb Z)
+\simeq\mathbb Z^3.
+\]
+
+Quotienting by \(B_{\rm short}\) bounds the class but erases every special
+gallery. Thus the target norm relation is not the problem: it is integral and
+would be unique. The missing datum is a source-side comparison
+\(\alpha_+\), or equivalent bivariant multi-Rees kernel, which cancels the
+generic class while retaining the three loaded gallery symbols and excess
+normal data. This is now the first block of the scalar total-specialization
+differential \(d_{\rm sp,sc}\) that is not constructed.
