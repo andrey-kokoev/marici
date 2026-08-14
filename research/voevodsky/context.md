@@ -1216,3 +1216,59 @@ physical-normal data. It must be compatible with
 \(\mathbb D(e_F)\circ\operatorname{pur}_+\) and retain the complete Tate
 shadow. This comparison, rather than a source filler, is the first missing
 block of the full \(d_{\rm sp,sc}\).
+
+## 24. Regular multi-Rees diagonal and the Tate off-diagonal
+
+The common-parameter graph \(q_i-1=tx_i\) is not a valid supported model for
+the three positive normals. The sequence \((tx_1,tx_3,tx_5)\) is
+nonregular; for example \(z=x_3e_1-x_1e_3\) is nonzero Koszul homology with
+\(tz\) a boundary. Geometrically the pullback acquires the unwanted vertical
+component \(V(t)\).
+
+The independent multi-Rees graph
+
+\[
+q_i-1=t_i x_i,
+\qquad i\in\{1,3,5\},
+\]
+
+is regular and \(D_3\)-equivariant when the triples are permuted. Its
+reciprocal normalization gives the same diagonal \(t_i x_i\) and retains all
+three \([t_i]\) conormal and Cartier \(\operatorname{Tor}_1\) lines without
+inversion.
+
+This does not solve the extension problem. The actual local derived packets
+remain split \([C\xrightarrow0C]\), so their \(H_0\)-to-
+\(\operatorname{Tor}_1\) differential is zero. The unique possible carrier
+shadow is
+
+\[
+0\to\mathbb Z_{\rm or}\xrightarrow{N_{\rm tag}}P_{H_0}
+\xrightarrow{1-r}P_{\operatorname{Tor}_1}
+\xrightarrow\epsilon\mathbb Z\to0,
+\]
+
+but inserting \(1-r\) would fit the answer. Moreover, restricting
+\(1-r\) from the excess kernel to the peripheral \(A_2\) lattice has Smith
+factors \((1,3)\), so the two lattices cannot be identified integrally.
+
+The first missing map is
+
+\[
+\lambda_{\rm ex}:P_{\rm Cart,H_0}\dashrightarrow
+P_{\rm Cart,\operatorname{Tor}_1},
+\qquad \operatorname{gr}_{\rm car}\lambda_{\rm ex}=1-r,
+\]
+
+realized by a marked spatial multi-Rees extraordinary pull--push. Its global
+compatibility is measured by
+
+\[
+\omega=\rho(e_F)-\beta_\triangle
+\in\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})\simeq\mathbb Z/3.
+\]
+
+The norm identity only proves \(3\omega=0\), not \(\omega=0\). If it
+vanishes, coherent realizations form a \(\mathbb Z/2\) torsor whose parity
+must be selected geometrically by the marked orientations.
