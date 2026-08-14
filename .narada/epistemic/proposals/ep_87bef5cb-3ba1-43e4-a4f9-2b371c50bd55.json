@@ -1,0 +1,409 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_87bef5cb-3ba1-43e4-a4f9-2b371c50bd55",
+  "status": "submitted",
+  "actor": "marici-nima",
+  "authority_basis": {
+    "kind": "repository_research_continuation",
+    "summary": "User-authorized continuation of the Nima frontier, bounded by ledger entry 88, its exact Rust certificates, and the explicitly conditional marici.Voevodsky audit."
+  },
+  "idempotency_key": "marici-nima-entry88-voevodsky-20260814-v1",
+  "expected_ledger_head": "8bda8af7635e842c470fa75c88de5f07031b8c504c930cb365cb334cc335fa00",
+  "created_at": "2026-08-14T06:58:36.8717737Z",
+  "content_fingerprint": "ccc85b1ccd1225bcca6fd1518ea63c481294113c5924b7e3140decde7d92fda0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260814-88",
+      "kind": "source",
+      "title": "Primitive Half-Line Cospans and the Crosscap-Counit Gap",
+      "version": "sha256:20261f64ee04f1dacfdf067276ff249e17ec19bbbfb2e9ff8dbe3de5c0680f59",
+      "locator": "src/ledger/20260814-88 Primitive Half-Line Cospans and the Crosscap-Counit Gap.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-voevodsky-context-20260814",
+      "kind": "source",
+      "title": "Voevodsky audit: a site, transfers, and the eight-point excess problem",
+      "version": "sha256:ea0918fae825acad290b45bfce9c00b9eb40e8be666a643556a08280d184151e",
+      "locator": "research/voevodsky/context.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-eight-point-primitive-cospan-atlas",
+      "kind": "claim",
+      "title": "The twelve eight-point primitive regional half-lines form an exact additive Gysin-cospan carrier with three-road channel objects, not a transition atlas.",
+      "status": "proved",
+      "assumptions": [
+        "Occurrence marks, Laurent weights, and ordered normal lines are retained."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-88"
+      ],
+      "factorization_test": {
+        "charts": 12,
+        "strict_mismatches": 24,
+        "center_homotopies": 48,
+        "ward_ambiguities": 24
+      },
+      "counterevidence": [
+        "No occurrence-resolved PC quotient to a common primitive channel line is yet constructed."
+      ],
+      "next_experiment": "Construct the chi_N-valued occurrence-resolved road/circuit pairing for D=03."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-eight-point-primitive-cospan-atlas",
+      "target_id": "source:marici-ledger-20260814-88",
+      "relation_id": "rel:derived_from-28b850e70722a755"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-eight-point-primitive-cospan-atlas",
+      "target_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "relation_id": "rel:addresses-0c80b996f5e9a1e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-eight-point-primitive-cospan-atlas",
+      "target_id": "problem:qtds-jordan-half-line-atlas-coherence",
+      "relation_id": "rel:addresses-f8df507938a6c5f4"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-road-circuit-twisted-lattice-duality",
+      "kind": "claim",
+      "title": "The road augmentation is the chi_N-twisted integral lattice dual of the Ward circuit diagonal, with chi_N=(+1,-1,-1) on rotation, reflection, and core exchange.",
+      "status": "proved",
+      "assumptions": [
+        "The cyclic road/tag index shift and the standard perfect lattice pairing are used."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-88"
+      ],
+      "factorization_test": {
+        "character": {
+          "rotation": 1,
+          "reflection": -1,
+          "core_exchange": -1
+        },
+        "bare_normal_mismatches": "6/12",
+        "road_periods": [
+          4,
+          4,
+          4
+        ]
+      },
+      "counterevidence": [
+        "This lattice identity does not construct a Verdier pairing or PC chain map."
+      ],
+      "next_experiment": "Lift the circuit resolution and its chi_N pairing to occurrence-resolved PC complexes."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-road-circuit-twisted-lattice-duality",
+      "target_id": "source:marici-ledger-20260814-88",
+      "relation_id": "rel:derived_from-c3551d941a0600fb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "transforms",
+      "source_id": "claim:qtds-road-circuit-twisted-lattice-duality",
+      "target_id": "claim:marici-six-point-suspension-bridge",
+      "relation_id": "rel:transforms-9d105e85275a8bd8"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-outer-octagon-holonomy-nondiagnostic",
+      "kind": "criticism",
+      "title": "Outer-octagon holonomy cannot distinguish the trivial and orientation local systems and cannot replace the missing crosscap-valued PC counit.",
+      "status": "proved",
+      "assumptions": [
+        "The residual octagon represents twice the primitive Möbius core."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-88"
+      ],
+      "factorization_test": {
+        "outer_class": "[O]=2[gamma]",
+        "trivial_holonomy": 1,
+        "orientation_holonomy": 1
+      },
+      "counterevidence": [
+        "A typed crosscap transport from the primitive PC quotient could still select the orientation system."
+      ],
+      "next_experiment": "Compute the crosscap character after constructing Phi_03^PC."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-outer-octagon-holonomy-nondiagnostic",
+      "target_id": "source:marici-ledger-20260814-88",
+      "relation_id": "rel:derived_from-f0f4607dd31287e5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-outer-octagon-holonomy-nondiagnostic",
+      "target_id": "test:qtds-global-target-first-octagon-holonomy",
+      "relation_id": "rel:criticizes-3bdbbd1ccf12db04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-outer-octagon-holonomy-nondiagnostic",
+      "target_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "relation_id": "rel:criticizes-e563079e24b3189e"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "kind": "conjecture",
+      "title": "The primitive PC road counit is obtained from the Verdier dual of the occurrence-resolved circuit diagonal through a chi_N-valued twist-reversal pairing.",
+      "status": "conditional",
+      "assumptions": [
+        "An occurrence-resolved circuit PC complex exists.",
+        "The pairing reverses Laurent weights and includes endpoint Cousin and normal-orientation data."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260814-88"
+      ],
+      "factorization_test": {
+        "formula": "pi_D^PC=(D_Verdier Delta_D^circ tensor id_chi) o Phi_D^PC",
+        "representative": "D=03",
+        "required_character": {
+          "rotation": 1,
+          "reflection": -1,
+          "core_exchange": -1
+        }
+      },
+      "counterevidence": [
+        "Entry 86's recorded normal line is trivial and mismatches chi_N on six of twelve symmetry elements.",
+        "Entry 59 has no occurrence-resolved circuit PC lift."
+      ],
+      "next_experiment": "Construct Phi_03^PC and explain the descent of periods (4,4,4) to unit road values without division or a section."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "target_id": "claim:qtds-road-circuit-twisted-lattice-duality",
+      "relation_id": "rel:depends_on-b507bc66d02a7b05"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "target_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "relation_id": "rel:addresses-6695800f4dce23e1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-primitive-road-counit-adjoint-d03",
+      "kind": "test",
+      "title": "Construct and test the chi_N-valued occurrence-resolved Verdier road/circuit pairing at D=03.",
+      "protocol": [
+        "Reverse all Laurent weights.",
+        "Check the endpoint Cousin chain-pairing identity.",
+        "Check signs +1,-1,-1 under rotation, reflection, and core exchange.",
+        "Derive unit road normalization from the exact marked periods without division."
+      ],
+      "falsifier": "Any character, differential, weight, or normalization mismatch falsifies the proposed PC adjoint."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:qtds-primitive-road-counit-adjoint-d03",
+      "target_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "relation_id": "rel:tests-c84fffb04d1cdb8e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:qtds-primitive-road-counit-adjoint-d03",
+      "target_id": "source:marici-ledger-20260814-88",
+      "relation_id": "rel:derived_from-d64d89f0a080a1cb"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-primitive-road-counit-bare-audit-20260814",
+      "test_id": "test:qtds-primitive-road-counit-adjoint-d03",
+      "actor": "marici-nima",
+      "outcome": "The untwisted/bare adjoint fails by a 6-of-12 character mismatch; the chi_N-twisted occurrence-resolved PC pairing remains unconstructed.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-88",
+          "locator": "Bounded adjoint audit at D=(0,3)",
+          "paraphrase": "The lattice transpose needs chi_N, while the recorded normal transport is positive and disagrees on six symmetry elements."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:scalar-cut-cd-structure",
+      "kind": "problem",
+      "title": "Construct a complete, regular, bounded cut cd-structure on the base scalar-strata category and compatible derived transfers.",
+      "status": "open",
+      "assumptions": [
+        "The topology is placed on a pullback-stable base category C_sc, not directly on arbitrary spans.",
+        "Closed at-least-P support strata are used for pullbacks."
+      ],
+      "evidence_refs": [
+        "source:marici-voevodsky-context-20260814"
+      ],
+      "factorization_test": {
+        "transverse": "Saturate compatible-Cut, independent-refinement, and mixed Cut/refinement squares under base change.",
+        "regularity": "Audit the diagonal condition.",
+        "completeness": "Audit simple-cover refinement.",
+        "boundedness": "Audit reduction under cell-dimension density."
+      },
+      "counterevidence": [
+        "Dependent route pentagon/square overlap is coefficient-theoretic, not presently a scalar-stratum pullback or cdh blowup square."
+      ],
+      "next_experiment": "Enumerate C_sc(8), close the three transverse square families under base change, and run the finite cd-structure axioms."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "problem:scalar-cut-cd-structure",
+      "target_id": "source:marici-voevodsky-context-20260814",
+      "relation_id": "rel:derived_from-574256f91c602824"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "problem:scalar-cut-cd-structure",
+      "target_id": "conjecture:qtds-twisted-verdier-road-counit",
+      "relation_id": "rel:depends_on-3fc148db424e845c"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:scalar-master-localized-sheaf-with-transfers",
+      "kind": "conjecture",
+      "title": "The scalar master is a localized hypercomplete sheaf with transfers on a scalar-strata site, and physical half-objects are its derived descent sectors.",
+      "status": "conditional",
+      "assumptions": [
+        "A cut topology on C_sc and an associative derived correspondence category Corr_sc are constructed.",
+        "Normal-presentation localization and PC realization preserve the established order of operations."
+      ],
+      "evidence_refs": [
+        "source:marici-voevodsky-context-20260814"
+      ],
+      "factorization_test": {
+        "site": "C_sc with tau_cut",
+        "transfers": "Corr_sc",
+        "target": "additive Corr_sc^op-valued module sheaves whose restriction to C_sc is hypercomplete"
+      },
+      "counterevidence": [
+        "No complete/regular/bounded cd-structure or global hypercover is yet proved.",
+        "Calling the target motives would require additional interval-invariance/localization theorems."
+      ],
+      "next_experiment": "Prove the finite n=8 cd-structure axioms before making an all-arity or motivic claim."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:scalar-master-localized-sheaf-with-transfers",
+      "target_id": "problem:scalar-cut-cd-structure",
+      "relation_id": "rel:depends_on-b426fbb3c6ef1836"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "conjecture:scalar-master-localized-sheaf-with-transfers",
+      "target_id": "source:marici-voevodsky-context-20260814",
+      "relation_id": "rel:derived_from-131d13fecccbb4db"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-mobius-carrier-not-yet-hypercover",
+      "kind": "criticism",
+      "title": "The Möbius compatibility carrier is not yet a hypercover because no augmented object or effective degree-one/two matching maps have been constructed.",
+      "status": "proved",
+      "assumptions": [
+        "A hypercover claim requires explicit matching maps and effective-cover conditions."
+      ],
+      "evidence_refs": [
+        "source:marici-voevodsky-context-20260814",
+        "source:marici-ledger-20260814-88"
+      ],
+      "factorization_test": {
+        "missing": [
+          "augmentation U0->X",
+          "U1->M1(U)",
+          "U2->M2(U)",
+          "effective descent",
+          "coskeletal continuation"
+        ]
+      },
+      "counterevidence": [
+        "The exact carrier and its local correspondences remain valid as an indexing complex."
+      ],
+      "next_experiment": "Construct the primitive road counit, then type the matching maps."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-mobius-carrier-not-yet-hypercover",
+      "target_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "relation_id": "rel:criticizes-784d9e1c9b23efe5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-mobius-carrier-not-yet-hypercover",
+      "target_id": "source:marici-voevodsky-context-20260814",
+      "relation_id": "rel:derived_from-856dae078a12a90a"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-horizontal-totalization-after-entry88",
+      "subject_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "judgment": "carrier_cospan_atlas_computed_but_occurrence_pc_road_counit_and_matching_maps_remain",
+      "actor": "marici-nima",
+      "reason": "All twelve chart legs and local derived comparisons are exact, but their common target is a three-road complex and the chi_N-valued PC quotient is missing.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-88",
+          "locator": "Decision",
+          "paraphrase": "The exact additive cospan carrier is established while the occurrence-resolved twist-reversal pairing is the missing counit datum."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-octagon-holonomy-after-entry88",
+      "subject_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "judgment": "outer_octagon_holonomy_is_nondiagnostic_and_transition_product_remains_untyped",
+      "actor": "marici-nima",
+      "reason": "The octagon is twice the Möbius core, so both trivial and orientation systems have positive outer holonomy; transitions are undefined before the primitive quotient.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-88",
+          "locator": "Exact underdetermination",
+          "paraphrase": "Two inequivalent D8-equivariant systems obey the same outer holonomy and face equations."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-jordan-atlas-after-entry88",
+      "subject_id": "problem:qtds-jordan-half-line-atlas-coherence",
+      "judgment": "retyped_as_evaluation_of_a_conditional_twisted_top_cell_after_primitive_pc_descent",
+      "actor": "marici-nima",
+      "reason": "The correct carrier candidate is the orientation-twisted RP2 top class, but it is not scalar-derived until the PC road counit and coefficient-valued two-cell map exist.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260814-88",
+          "locator": "The residual octagon and the capped carrier",
+          "paraphrase": "Capping in the orientation system gives a twisted integral top class, explicitly retained only as a conditional carrier for the Jordan defect."
+        }
+      ]
+    }
+  ],
+  "digest": "b94cdd761160a293748a3528c02caf57a147d39a94761182e8fcf2e3f8984d1a"
+}
