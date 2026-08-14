@@ -1,0 +1,114 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2e4ddc21-89b2-4e3a-a3b5-6cedd792fc4c",
+  "status": "submitted",
+  "actor": "/root",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the D03 research program and record the bounded entry-130 theorem and its exact remaining blocker."
+  },
+  "idempotency_key": "auto-proposal-d79167f309e47985f5073893",
+  "expected_ledger_head": "71263602c8205a6e9763d5ee4c783e64a579016885aad2b153b35dfb1cc65d01",
+  "created_at": "2026-08-14T22:35:49.8752172Z",
+  "content_fingerprint": "d79167f309e47985f50738931da60e046975748f77bb6ca4f4cd23fa3ab7484b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src130",
+      "kind": "source",
+      "title": "Simultaneous D03 Endpoint Cousin Map and the PC Purity Boundary",
+      "version": "sha256:d076836bb0c29746dcf3e85f71b8d3120cab2bf18809357fd01d9d1fab4a944a",
+      "locator": "src/ledger/20260814-130 Simultaneous D03 Endpoint Cousin Map and the PC Purity Boundary.md",
+      "evidence_artifact": "research/voevodsky/check_d03_x3_loaded_pc_endpoint_boundary.rs sha256:8232278ae1344c212ca9baf5eab35d015396fee540be52004d9016f4258c834f",
+      "verification_status": "static_audit_only",
+      "entity_id": "source:e502dc601eeea171fa1d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "coeff_endpoint_claim",
+      "kind": "claim",
+      "title": "The frozen D03 coefficient-Cousin packet has one simultaneous filtered x3 endpoint map retaining both Tor grades",
+      "status": "proved_in_fixed_coefficient_model",
+      "summary": "The product-Cartier occurrence Gysin tensored with the frozen normal packet gives the required positive v00 and v10 residues, all lower Cech terms, reciprocal/BM variance, and separate physical orientation without a fitted coefficient or splitting.",
+      "entity_id": "claim:3d976e636d3be1fdb3fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "pc_purity_crit",
+      "kind": "criticism",
+      "title": "The coefficient endpoint map does not type the ringed PC extraordinary costalk without a product-Cartier purity comparison",
+      "status": "active",
+      "summary": "Entry 121 leaves the comparison unconstructed even at v10; the complete road trace has different support and ordinary coherent restriction is zero.",
+      "entity_id": "criticism:bc5dc5ffed22158a7bd9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "pc_edge_purity_problem",
+      "kind": "problem",
+      "title": "Construct the product-Cartier x3-edge purity map into the D03 ringed PC road costalk",
+      "status": "open",
+      "summary": "One edge-level purity arrow should restrict to the v00 and v10 maps and commute with pi, the excess trace, the graph-Cartier Bockstein, and every lower Cech term.",
+      "entity_id": "problem:02228eaf4fe717c9f4f7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "coeff_endpoint_claim",
+      "target_ref": "src130",
+      "source_id": "claim:3d976e636d3be1fdb3fe",
+      "target_id": "source:e502dc601eeea171fa1d",
+      "relation_id": "rel:derived_from-a04d350b2e5a99a9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "pc_purity_crit",
+      "target_ref": "src130",
+      "source_id": "criticism:bc5dc5ffed22158a7bd9",
+      "target_id": "source:e502dc601eeea171fa1d",
+      "relation_id": "rel:derived_from-9c4b1e8156425667"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "coeff_endpoint_claim",
+      "target_id": "claim:a65014712ff21b1ac1f7",
+      "source_id": "claim:3d976e636d3be1fdb3fe",
+      "relation_id": "rel:depends_on-13144043f3b5d16f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "pc_purity_crit",
+      "target_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "source_id": "criticism:bc5dc5ffed22158a7bd9",
+      "relation_id": "rel:criticizes-bca23d19938f8259"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "pc_edge_purity_problem",
+      "target_id": "conjecture:87ce731d4cf9bf85fe6b",
+      "source_id": "problem:02228eaf4fe717c9f4f7",
+      "relation_id": "rel:addresses-f17ac7ff6b038b7f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "pc_edge_purity_problem",
+      "target_id": "problem:15e983c891b88ee98c59",
+      "source_id": "problem:02228eaf4fe717c9f4f7",
+      "relation_id": "rel:maricirefines-15d0fc39d09e3b45"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "pc_edge_purity_problem",
+      "target_ref": "coeff_endpoint_claim",
+      "source_id": "problem:02228eaf4fe717c9f4f7",
+      "target_id": "claim:3d976e636d3be1fdb3fe",
+      "relation_id": "rel:depends_on-c26c336c0d3fbe12"
+    }
+  ],
+  "digest": "5d2bb8c300c8e086bfe67e3014dd8b3a970b29467d0a4aaf5486f388c558dae5"
+}

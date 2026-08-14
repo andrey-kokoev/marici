@@ -1658,3 +1658,54 @@ discriminant vanishes generically to first order at \(E_T=0\), while only the
 separate algebraic-letter quartic is stationary to first order.  Thus the
 claim that the complete elliptic coefficient system first appears at second
 normal order remains an open second-Rees test.
+
+## Two-endpoint coefficient closure after entry 130
+
+Entry 130 closes the algebraic part of the \(x_3\)-edge test simultaneously,
+without promoting it by notation.  For \(i=0,1\), the frozen
+coefficient/Cousin components are
+
+\[
+\Gamma_i^{(0)}
+=g_i^{!,\mathrm{occ}}\widehat\otimes
+(\kappa_{Q_{03}}\circ\pi),
+\qquad
+\Gamma_i^{(1)}
+=g_i^{!,\mathrm{occ}}\widehat\otimes
+(\kappa_{Q_{03}}\circ\operatorname{tr}^{\rm ex}).
+\]
+
+All lower occurrence-Cech terms, both Tor grades, the reciprocal/Borel--Moore
+variance, and the independent physical line are retained.  The two endpoint
+values are
+
+\[
++\left[\frac1{x_0x_3u_0u_1u_3u_5}\right]\otimes[dX_{03}],
+\qquad
++\left[\frac1{x_1x_3u_0u_1u_3u_5}\right]\otimes[dX_{03}].
+\]
+
+This removes coefficient, sign, and filtered-extension obstructions, but it
+does **not** prove the advertised PC promotion.  The immediate target is now
+one product-Cartier purity/costalk transformation
+
+\[
+\boxed{
+\operatorname{pur}_{x_3}^{\rm PC}:
+\mathcal C_{x_3\text{-edge}}^{\rm coeff/Cousin}
+\longrightarrow
+i_{x_3\text{-edge}}^!\mathcal Q_{03,\partial,\rm lf}^{\rm PC}
+}
+\]
+
+whose restrictions give the \(v_{00}\) and \(v_{10}\) maps and which commutes
+with \(\pi\), \(\operatorname{tr}^{\rm ex}\), the graph-Cartier Bockstein,
+and every lower Cech term.  Entry 121 proves only the associated-Cousin
+\(v_{10}\) shadow and explicitly does not supply this ringed purity map.
+Therefore the graph conjecture remains open rather than falsified.
+
+This is the economical next move: construct one edge purity arrow, not two
+independent endpoint maps and not an all-edge atlas.  The \(x_4\) rotation is
+postponed until this arrow exists.  The scalar-source differential,
+\(G_{03}^{\rm Cousin}\), and its genuinely nonzero generic \(Q\)-leg remain a
+separate source-side objective.

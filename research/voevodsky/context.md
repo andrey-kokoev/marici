@@ -1823,3 +1823,43 @@ with the previously proved normal-excess, support-variance, and physical-line
 data.  Both endpoint squares must commute before rotating to \(x_4\).  The
 generic source map with nonzero \(Q\)-leg remains a separate missing arrow;
 the principal-line theorem cannot manufacture it.
+
+## 34. Simultaneous endpoint coefficient closure and the purity boundary
+
+Entry 130 tensors entry 129's one-edge occurrence Gysin with the frozen
+entry-97/100 normal packet without identifying support variances.  The
+Tor-zero component uses \(\pi\); the Tor-one component uses the primitive
+excess retraction.  Their graph-Cartier square closes because
+
+\[
+\operatorname{tr}^{\rm ex}\iota([t_3])
+=[t_3]\,\pi(\mathrm{section}).
+\]
+
+The complete occurrence and normal Koszul--Cech maps then give
+
+\[
++\left[\frac1{x_0x_3u_0u_1u_3u_5}\right]\otimes[dX_{03}]
+\]
+
+at \(v_{00}\) and
+
+\[
++\left[\frac1{x_1x_3u_0u_1u_3u_5}\right]\otimes[dX_{03}]
+\]
+
+at \(v_{10}\).  The endpoint signs are restrictions of one oriented
+product-Cartier edge class.  No lower Cech term or Tor grade is discarded.
+
+This is a coefficient/Cousin theorem, not yet an actual PC Gysin.  The first
+untyped arrow is the occurrence-loaded purity comparison from the finite dual
+corner objects to
+\(i_{v_i}^!\mathcal Q_{03,\partial,\rm lf}^{\rm PC}\).  The complete road
+trace cannot replace it because it has different support, and ordinary
+coherent restriction is zero.  The next target is therefore one
+\(\operatorname{pur}_{x_3}^{\rm PC}\) whose two endpoint restrictions recover
+the displayed maps.  Only after that should the \(x_4\) edge be considered.
+
+The new Rust file is a static certificate with SHA-256
+\(8232278ae1344c212ca9baf5eab35d015396fee540be52004d9016f4258c834f\).
+Formatter/compiler/runtime verification has not completed and is not claimed.
