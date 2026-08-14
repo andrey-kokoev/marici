@@ -1,0 +1,176 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_16e31049-1b47-407f-a207-5f757342c056",
+  "status": "submitted",
+  "actor": "codex:/root",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "The user asked Codex to use the restored Marici epistemic graph; entry 128 is a committed material D03 result missing from the projection."
+  },
+  "idempotency_key": "auto-proposal-97e3fb0e7f756dfb9b5e82fb",
+  "expected_ledger_head": "275e41956f04cfd8ccf3486463fd67eb6c73badd0b2ee69930f580ca93ead6f1",
+  "created_at": "2026-08-14T20:10:11.0399737Z",
+  "content_fingerprint": "97e3fb0e7f756dfb9b5e82fb00020ade0305d72be4249934eeb32a1233e44193",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source128",
+      "kind": "source",
+      "title": "Four-Corner Cellular Nerve and the Generic-Unit Obstruction",
+      "version": "2026-08-14@sha256:2f7eaf37a515f5cd95d0cfb4843311369e53eb34fed34426d7fd877d6b1cb04b",
+      "locator": "src/ledger/20260814-128 Four-Corner Cellular Nerve and the Generic-Unit Obstruction.md",
+      "entity_id": "source:b8c43df142c79658ad9f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "cellular_claim",
+      "kind": "claim",
+      "title": "The complete four-corner finite cellular nerve reconstructs the D03 road dual integrally and without torsion",
+      "status": "proved_exact_finite",
+      "summary": "The full fifteen-intersection nerve is split exact; normalized total ranks are (1,12,14,4), differential ranks (1,10,4), and homology (0,Z,0,0).",
+      "entity_id": "claim:ab20e7b1718fdc4076d5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "corner_conj",
+      "kind": "conjecture",
+      "title": "The four supported corner Cousin objects reconstruct the full D03 road trace by Mayer-Vietoris descent",
+      "status": "falsified_in_entry_128",
+      "entity_id": "conjecture:87fe3a9fc119bcdecdf4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "generic_crit",
+      "kind": "criticism",
+      "title": "Corner-supported Cousin descent cannot recover the generic unit of the D03 road trace",
+      "status": "proved_falsifier",
+      "summary": "The corner supports cover only V(x0*x1,x3*x4) and die after Laurent localization, while the normalized road trace remains nonzero.",
+      "entity_id": "criticism:9035b7483f6431457646"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "recollement_problem",
+      "kind": "problem",
+      "title": "Construct the D03 generic-edge-corner occurrence Cousin recollement with an independent generic unit",
+      "status": "open",
+      "summary": "Construct edge Gysin maps and corner coherence, retaining the generic Q-leg rather than inferring it from supported residues.",
+      "entity_id": "problem:1ff5e58afa86c9481bd5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "generic_test",
+      "kind": "test",
+      "title": "D03 generic-unit extension through road Gysin terms with prescribed v10 corner residue",
+      "status": "open",
+      "summary": "Solve d_Cousin Theta_03=0 with dense-torus value one and the entry-121 v10 residue; zero obstruction passes, nonzero obstruction falsifies local synthesis.",
+      "entity_id": "test:355acfa00f21115d527f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "cellular_claim",
+      "target_ref": "source128",
+      "source_id": "claim:ab20e7b1718fdc4076d5",
+      "target_id": "source:b8c43df142c79658ad9f",
+      "relation_id": "rel:derived_from-0bc7b651901fe025"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "corner_conj",
+      "target_ref": "source128",
+      "source_id": "conjecture:87fe3a9fc119bcdecdf4",
+      "target_id": "source:b8c43df142c79658ad9f",
+      "relation_id": "rel:derived_from-1de4c0ccf2cd3a2b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "generic_crit",
+      "target_ref": "source128",
+      "source_id": "criticism:9035b7483f6431457646",
+      "target_id": "source:b8c43df142c79658ad9f",
+      "relation_id": "rel:derived_from-218fac6f4a3d1a5d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "recollement_problem",
+      "target_ref": "source128",
+      "source_id": "problem:1ff5e58afa86c9481bd5",
+      "target_id": "source:b8c43df142c79658ad9f",
+      "relation_id": "rel:derived_from-b2d380deac7ea4df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "generic_test",
+      "target_ref": "source128",
+      "source_id": "test:355acfa00f21115d527f",
+      "target_id": "source:b8c43df142c79658ad9f",
+      "relation_id": "rel:derived_from-e619f47f321d769f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "generic_crit",
+      "target_ref": "corner_conj",
+      "source_id": "criticism:9035b7483f6431457646",
+      "target_id": "conjecture:87fe3a9fc119bcdecdf4",
+      "relation_id": "rel:criticizes-15235fb60e93f9b8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "generic_test",
+      "target_ref": "corner_conj",
+      "source_id": "test:355acfa00f21115d527f",
+      "target_id": "conjecture:87fe3a9fc119bcdecdf4",
+      "relation_id": "rel:tests-187299006fdb415f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "generic_test",
+      "target_ref": "recollement_problem",
+      "source_id": "test:355acfa00f21115d527f",
+      "target_id": "problem:1ff5e58afa86c9481bd5",
+      "relation_id": "rel:tests-e9f0cf45d2a78438"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "recollement_problem",
+      "target_ref": "cellular_claim",
+      "source_id": "problem:1ff5e58afa86c9481bd5",
+      "target_id": "claim:ab20e7b1718fdc4076d5",
+      "relation_id": "rel:depends_on-dd63a03a5e8677f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "recollement_problem",
+      "target_ref": "generic_crit",
+      "source_id": "problem:1ff5e58afa86c9481bd5",
+      "target_id": "criticism:9035b7483f6431457646",
+      "relation_id": "rel:depends_on-1ae1f3b7159d5bc0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "recollement_problem",
+      "target_id": "conjecture:48ad668ef1647d4d5f5f",
+      "source_id": "problem:1ff5e58afa86c9481bd5",
+      "relation_id": "rel:addresses-a0dbbec4dd23bc30"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "recollement_problem",
+      "target_id": "problem:a92901c39dcccce5bbc1",
+      "source_id": "problem:1ff5e58afa86c9481bd5",
+      "relation_id": "rel:maricirefines-e74171c0f35f65ad"
+    }
+  ],
+  "digest": "3540c2475a0713b76f1662cdf26d389156cf198bd1cb504042b16281c9ae56f4"
+}

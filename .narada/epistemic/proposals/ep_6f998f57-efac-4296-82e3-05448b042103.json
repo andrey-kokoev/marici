@@ -1,0 +1,166 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6f998f57-efac-4296-82e3-05448b042103",
+  "status": "submitted",
+  "actor": "codex-root",
+  "authority_basis": {
+    "kind": "user-authorized-research-lifecycle",
+    "scope": "Review and graph the exact local ledger source without certifying truth; preserve conditional and falsified scopes.",
+    "request_context": "User instructed active use of epistemic-graph MCP and asked for critical assessment of the specified entry."
+  },
+  "idempotency_key": "auto-proposal-8c956bb1bf3fe01d2e6edd82",
+  "expected_ledger_head": "4ed8427d9517e41f64f5fd40fad0316ee35e02933588641e4084b83fb7943cf2",
+  "created_at": "2026-08-14T20:29:39.0223753Z",
+  "content_fingerprint": "8c956bb1bf3fe01d2e6edd82b99103ad08d5b6449a5726d163315ccce1bdbb7e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src_cosmo128",
+      "kind": "source",
+      "title": "Three-Site Elliptic Coefficient System and Nearby-Cycle Degeneration",
+      "version": "sha256:90c85f4bdf61fa21208c9b323e528ae6d16ccd2b845abe7e19a574c88d15c822",
+      "locator": "src/ledger/20260814-128 Three-Site Elliptic Coefficient System and Nearby-Cycle Degeneration.md",
+      "summary": "Homogeneous three-site elliptic coefficient-system analysis.",
+      "entity_id": "source:37ce986baf3c1e450e30"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "legendre_claim",
+      "kind": "claim",
+      "title": "The homogeneous rank-two three-site elliptic block is a Kummer-twisted pullback of the Legendre variation on the existing energy-divisor carrier",
+      "status": "conditional",
+      "summary": "The positive structural result separates a fixed signed-energy carrier from a nontrivial elliptic coefficient system.",
+      "entity_id": "claim:5142e6cb4152be919949"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "first_order_claim",
+      "kind": "claim",
+      "title": "The elliptic degeneration at total energy zero is already first-order",
+      "status": "proved_algebraically_in_the_homogeneous_model",
+      "summary": "With t=m^{-1}=B/A, t is linear in E_T generically, and Delta_E=16AB(A-B)^4 has order one along E_T=0 away from intersections.",
+      "entity_id": "claim:d88ceaf27e55c188c353"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "firstjet_conj",
+      "kind": "conjecture",
+      "title": "First ordinary normal-jet data are insufficient for the complete integrated three-site elliptic coefficient system",
+      "status": "not_established",
+      "summary": "The ledger proposes this from stationarity of one algebraic-letter quartic.",
+      "entity_id": "conjecture:801b0a291c361b9baa9b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "firstjet_crit",
+      "kind": "criticism",
+      "title": "Second-order stationarity of the algebraic-letter quartic does not imply first-order blindness of the elliptic Gauss-Manin system",
+      "status": "decisive_scope_correction",
+      "summary": "The inverse Legendre modulus and elliptic discriminant vary at first order; only the separate quartic Q has vanishing linear term.",
+      "entity_id": "criticism:1e14d6cf4c73cec34af3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "rees_problem",
+      "kind": "problem",
+      "title": "Separate nearby-cycle first-order data from genuinely independent second-Rees elliptic coefficient data",
+      "status": "open",
+      "summary": "Construct the Deligne extension and monodromy, then compute the second-Rees class of the algebraic-letter section.",
+      "entity_id": "problem:006e0296ca45ba5d17da"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "rees_test",
+      "kind": "test",
+      "title": "Compute the total-energy Deligne connection through second Rees order and test first-jet completeness",
+      "status": "proposed",
+      "outcome_schema": {
+        "residue": "nilpotent monodromy N",
+        "first_regular_term": "connection coefficient",
+        "second_rees": "class of Q",
+        "decision": "whether equal first specialization data can yield distinct physical period data"
+      },
+      "entity_id": "test:9d9b8d1de4bac61328b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "legendre_claim",
+      "target_ref": "src_cosmo128",
+      "source_id": "claim:5142e6cb4152be919949",
+      "target_id": "source:37ce986baf3c1e450e30",
+      "relation_id": "rel:derived_from-ccda60181511a6e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "first_order_claim",
+      "target_ref": "src_cosmo128",
+      "source_id": "claim:d88ceaf27e55c188c353",
+      "target_id": "source:37ce986baf3c1e450e30",
+      "relation_id": "rel:derived_from-f62f0cd4606e6e02"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "firstjet_conj",
+      "target_ref": "src_cosmo128",
+      "source_id": "conjecture:801b0a291c361b9baa9b",
+      "target_id": "source:37ce986baf3c1e450e30",
+      "relation_id": "rel:derived_from-8be8cd4715e187f9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "firstjet_crit",
+      "target_ref": "firstjet_conj",
+      "source_id": "criticism:1e14d6cf4c73cec34af3",
+      "target_id": "conjecture:801b0a291c361b9baa9b",
+      "relation_id": "rel:criticizes-d3c901b23df9601b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "rees_problem",
+      "target_ref": "firstjet_conj",
+      "source_id": "problem:006e0296ca45ba5d17da",
+      "target_id": "conjecture:801b0a291c361b9baa9b",
+      "relation_id": "rel:addresses-8e51a7be15cf4601"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "rees_test",
+      "target_ref": "firstjet_conj",
+      "source_id": "test:9d9b8d1de4bac61328b9",
+      "target_id": "conjecture:801b0a291c361b9baa9b",
+      "relation_id": "rel:tests-bad625176356737d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "rees_test",
+      "target_ref": "first_order_claim",
+      "source_id": "test:9d9b8d1de4bac61328b9",
+      "target_id": "claim:d88ceaf27e55c188c353",
+      "relation_id": "rel:depends_on-3897945ee3514737"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "legendre_claim",
+      "target_id": "conjecture:9885225b6af396486216",
+      "source_id": "claim:5142e6cb4152be919949",
+      "relation_id": "rel:maricisupports-df8e70d0e11dd100"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "test:c8fcc677ffbc669512bd",
+      "target_ref": "rees_test",
+      "target_id": "test:9d9b8d1de4bac61328b9",
+      "relation_id": "rel:depends_on-6eb9ac21666fadc1"
+    }
+  ],
+  "digest": "b3fbe7331a3a308fa7ba379bb8e20e3967e38b1e0e18c3d50c2eb6ed51f0fff6"
+}
