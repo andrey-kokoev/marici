@@ -1863,3 +1863,53 @@ the displayed maps.  Only after that should the \(x_4\) edge be considered.
 The new Rust file is a static certificate with SHA-256
 \(8232278ae1344c212ca9baf5eab35d015396fee540be52004d9016f4258c834f\).
 Formatter/compiler/runtime verification has not completed and is not claimed.
+
+## 35. Cartier edge purity and return to the scalar source
+
+Entry 131 reads the actual \(x_3\) packet from entry 105:
+
+\[
+P_3=[A\langle g_3,h_3\rangle\xrightarrow{(x_3,u_3)}
+A\langle p_3\rangle],
+\qquad z_3=u_3g_3-x_3h_3.
+\]
+
+The source is constructed independently from entry 129's Cartier Thom line
+and entry 100's original/BM can--var packet:
+
+\[
+E_{3,\rm src}
+=
+B\langle g_3\rangle[1]\oplus K_B(u_3),
+\qquad B=A/(x_3).
+\]
+
+Finite Cartier duality gives
+
+\[
+E_{3,\rm src}\otimes\operatorname{or}(x_3)[-1]
+\simeq i_{x_3}^{!}P_3
+\simeq
+[B\langle g_3,h_3\rangle\xrightarrow{(0,u_3)}
+B\langle p_3\rangle]\otimes\operatorname{or}(x_3)[-1].
+\]
+
+The costalk has a free line and a \(B/(u_3)\) line, so its rank-one map is
+not automatic.  A filtration-preserving endomorphism has
+
+\[
+f_1=\begin{pmatrix}a&b\\0&e\end{pmatrix},\qquad f_0=e.
+\]
+
+The graph Bockstein
+\(\beta(g_3)=p_3,\ \beta(h_3)=t_3p_3\) forces \(a=e,\ b=0\).
+Positive coorientation fixes the remaining unit.  This proves the unique
+scoped PC edge purity and, by regular-sequence transitivity, both entry-130
+endpoint maps.
+
+The local target problem is therefore no longer the frontier.  What remains
+is the genuine scalar specialization map with
+\(d_{\rm circ}^{\rm PC}G=Gd_{\rm sp,sc}\), associated symbol
+\(K_{\rm alt}\), the entry-131 \(x_3\) residue, and a nonzero generic
+\(Q\)-leg.  The last requirement still excludes every construction supported
+wholly inside \(F_1\).
