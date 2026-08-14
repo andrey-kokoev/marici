@@ -330,3 +330,68 @@ and requiring an independently constructed map \(a_+^{\rm ex}\) with
 The excess orientation, occurrence pullback, reciprocal/Borel--Moore support
 pairing, lower Cousin terms, and physical normal line are part of the datum.
 The equation is a test, not a definition of the map.
+
+## 9. Global carrier compression and the can--var frontier
+
+Entry 99 simplifies the source problem.  The suspended positive vertex
+figures at the two zero-road triangulations admit integral, polarity-related
+carrier maps
+
+\[
+A_\pm^{\rm car}:D_\pm^{\rm car}
+\longrightarrow C_*(K_6,B_{\rm short}).
+\]
+
+For the plus sheet,
+
+\[
+f_+\mapsto K_{\rm rel},
+\qquad
+(e_1,e_3,e_5)\mapsto(T_2,T_1,T_0),
+\]
+
+and polarity gives \(f_-\mapsto-K_{\rm rel}\) and the three negative even-edge
+images.  The top coefficients are forced by the unit road images and the
+injectivity of \(dK_{\rm rel}=(T_0,T_1,T_2)\).  Hence the six carrier
+attachments are restrictions of two global maps, not six independent
+normalizations.
+
+For the plus/\(D03\) restriction the actual marked flag uniquely produces
+
+\[
+I_+=(u_1,u_3,u_5),\qquad I_{03}=(u_0,u_3),
+\]
+
+and the shared normal gives the canonical exact excess sequence
+
+\[
+0\to K(u_0,u_1,u_3,u_5)[1]
+\xrightarrow{(h_3^+-h_3^{03})\wedge-}
+K(I_+)\otimes K(I_{03})
+\to K(u_0,u_1,u_3,u_5)\to0.
+\]
+
+This fixes the top-\(\operatorname{Tor}_1\) orientation, shift, occurrence
+pullback, and every boundary invariant visible to the established road trace.
+It does not construct a PC Beck--Chevalley map.
+
+The distinction is detected integrally.  The plus carrier map is
+null-homotopic after forgetting support and equivariance, whereas a
+\(D_3\)-equivariant contraction requires \(3a=1\).  Thus ordinary derived
+chains erase the class and rational equivariant chains split it.  The
+relevant target must retain integral equivariance and the support filtration.
+
+The next single construction is therefore global and unlocalized:
+
+\[
+A_+^{\rm Cous,PC}:
+\mathcal D_+^{\rm Cous,reg,\vee}
+\longrightarrow
+\mathbb D\operatorname{PC}(K_6,B_{\rm short})\otimes\chi_N.
+\]
+
+It must be built before the \(u_j=q_j-1\) are inverted, have associated grade
+\(A_+^{\rm car}\), and restrict on all three roads to the canonical excess
+symbols followed by the entry-97 bivariant traces.  The missing datum is the
+augmented dual-block/Cousin can--var kernel and its lower terms.  Entry 38's
+face tubes for actual faces do not supply that kernel automatically.
