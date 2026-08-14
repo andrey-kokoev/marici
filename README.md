@@ -482,3 +482,9 @@ prohibited overclaims.
   identity, ordered residue sign, deck covariance, and target holonomy one. A route-first PC
   comparison remains optional stronger data; the immediate obstruction is now the global
   quadrangulation octagon/Jordan coherence.
+- `20260813-83` proves that the marked contact part of that global problem already closes. Every
+  marked distance-two scalar path remains in its fixed-mark associahedral face, so the facewise
+  PC map applies directly and preserves zero ordinary and sign-twisted octagonal circulation.
+  It also corrects the proposed multiplicative holonomy: adjacent regional cubes are joined by
+  noninvertible residue/Gysin correspondences, not transition automorphisms. The remaining
+  frontier is the additive horizontal totalization of the unmarked/full-symbol summands.

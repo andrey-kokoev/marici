@@ -11,9 +11,13 @@ marked assignment. The induced local edge transport has exactly zero ordinary an
 orientation-twisted circulation on the octagon.
 
 The scalar presentation antecedent of the deck-odd octagonal contact class therefore vanishes.
-This does not yet prove vanishing of the worldsheet class
-\(\mathfrak o_8\in H^4(K^\bullet_{\rm ct})^-\), because the filtered scalar-to-Pochhammer
-comparison defining that class remains unconstructed.
+
+Forward completion (entry 83): every selected length-two path retains its mark at the middle
+vertex, so the entire chain lies in a direct sum of fixed-mark associahedral face complexes.
+Entry 38's facewise Pochhammer/Cousin map acts there without dependent occurrence
+specialization. It follows that the marked worldsheet class
+\(\mathfrak o_{8,\rm mark}^{\rm PC}\) vanishes exactly. Only the unmarked/full-symbol horizontal
+correspondence remains open.
 
 ## Alternating coorientation
 
@@ -309,7 +313,7 @@ Established:
 7. its cyclic half-sum and integral route torsor after core forgetting;
 8. zero ordinary and sign-twisted octagonal contact circulation.
 
-Not established:
+Not established at the time of this entry:
 
 1. a filtered facewise Pochhammer/Cousin image of this transport;
 2. a chain-level inverse scalar pairing at resonant boundaries;
@@ -317,6 +321,9 @@ Not established:
 4. uniqueness of a twisted-form primitive modulo residue-free exact terms;
 5. identification of the square transport or octagonal equation with the Jordan identity;
 6. an all-multiplicity construction of the directed-dual-tree transfer.
+
+Entry 83 completes items 1 and 3 in the marked contact sector. Items 2, 4, and 5 remain open at
+the stated stronger levels; full-symbol horizontal assembly is also still open.
 
 If a future filtered comparison is a genuine local chain map, it must send the zero scalar
 octagonal curvature to zero. A nonzero worldsheet \(\mathfrak o_8\) would therefore diagnose a
@@ -330,7 +337,8 @@ locally finite twisted homology to compact twisted homology and turns the ordere
 into a loaded associahedral cycle. It also organizes field-theory localization by associahedron
 faces.
 
-That established map is not yet the morphism required here. The new source is the marked
+At the time of this entry, that established map was not yet known to be the morphism required
+here. The new source is the marked
 one-chain \(\widehat H_{\rm ct}\), not merely the top-dimensional loaded chamber or its homology
 class. The missing comparison must assign a loaded current to every scalar flip edge and satisfy
 
@@ -357,6 +365,11 @@ and
 It must then commute with the selected scalar \(t\)-grade and the nearby-cycle/finite-part
 operation. Standard top-cycle regularization alone proves none of these marked-edge statements.
 
+Forward completion (entry 83): the fixed-mark path lemma puts every summand of
+\(\widehat H_{\rm ct}\) in \(X_dC_1(K_\alpha^{(d)})\). The facewise PC map of entry 38 therefore
+satisfies all three displayed equations on this chain. No dependent route coefficient
+specialization is needed for the marked summand.
+
 ## Reproducible audit
 
 Run:
@@ -375,11 +388,14 @@ Promote:
 > The eight-point marked contact transfer is intrinsic to alternating scalar flip geometry, and
 > its deck-odd octagonal curvature vanishes at presentation level.
 
-The primary frontier moves one categorical layer upward:
+The primary frontier at this point moved one categorical layer upward:
 
 > construct the filtered scalar-to-worldsheet comparison on this explicit edge transport and
 > test whether it preserves the proven zero octagonal curvature in the residue-free nearby-cycle
 > complex.
+
+Entry 83 completes this objective for the marked contact sector and replaces the surviving
+full-symbol objective by an additive residue/Gysin correspondence totalization.
 
 Forward update: entry 25 shows that the same scalar rule survives ten-point QTDS verification and
 a twelve-point scalar-only stress test. This promotes the all-arity Catalan/discrete-Morse
@@ -390,5 +406,5 @@ parallel worldsheet target.
 
 - [Mizera, *Combinatorics and Topology of Kawai--Lewellen--Tye Relations*](https://arxiv.org/abs/1706.08527)
   supplies the generic generalized-Pochhammer regularization of loaded associahedral twisted
-  cycles and their face localization. The marked scalar edge chain and the claim that this
-  regularization must be refined before it can act on \(\widehat H_{\rm ct}\) are Marici results.
+  cycles and their face localization. The marked scalar edge chain, the historical comparison
+  gap in this entry, and its fixed-mark resolution in entry 83 are Marici results.

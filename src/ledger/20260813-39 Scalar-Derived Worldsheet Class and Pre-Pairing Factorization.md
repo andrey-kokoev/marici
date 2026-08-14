@@ -34,6 +34,13 @@ Thus this entry contains two logically distinct results:
 2. its claimed intrinsic scalar chain provenance and pre-pairing coherent
    factorization are proved only on the transverse subcomplex.
 
+Forward refinement (entries 82--83): target-first support descent now closes
+the local dependent rank-two symbols, and the fixed-mark contact transport
+maps facewise to a loaded chain with vanishing octagonal contact class. The
+remaining chain-level qualification in item 2 concerns global horizontal
+assembly of the **unmarked/full-symbol** coefficient summands. It is not a
+remaining obstruction in the marked contact sector.
+
 The finite-\(\alpha'\) object is a regulator lift. Its full \(\alpha'\)-dependent class is not
 claimed to equal the undeformed Pfaffian square; the equality is for the normalized
 field-theory/nearby-cycle class that defines the CHY half-object.

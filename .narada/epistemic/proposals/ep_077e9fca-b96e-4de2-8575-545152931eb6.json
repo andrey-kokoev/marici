@@ -1,0 +1,384 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_077e9fca-b96e-4de2-8575-545152931eb6",
+  "status": "submitted",
+  "actor": "marici-nima",
+  "authority_basis": {
+    "kind": "workspace_research_contribution",
+    "scope": "Marici Nima ledger entry 83 and exact n=8 certificate",
+    "authorization": "User explicitly requested continued research and use of the epistemic-graph MCP."
+  },
+  "idempotency_key": "marici-nima-entry83-marked-octagon-pc-v1",
+  "expected_ledger_head": "35bf33e65200c3901ba5139614168ff6222e20d68c6d07ee9cff90bb397b57fa",
+  "created_at": "2026-08-14T05:00:40.8857772Z",
+  "content_fingerprint": "c6385850e7fd91f61e4f991ae24434667c4bd01b2f02605f41f04600de270292",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260813-83",
+      "kind": "source",
+      "title": "Marici ledger entry 83: Fixed-Mark PC Descent and the Vanishing Loaded Octagonal Contact Class",
+      "version": "20260813-83",
+      "locator": "src/ledger/20260813-83 Fixed-Mark PC Descent and the Vanishing Loaded Octagonal Contact Class.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-marked-octagon-pc-descent",
+      "kind": "source",
+      "title": "Exact Rust certificate for marked octagon PC descent",
+      "version": "sha256:cfac476a9a1ed17af92d9bb789b935feb4b57583d6975976904f731f068c0396",
+      "locator": "research/nima/check_marked_octagon_pc_descent.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "kind": "claim",
+      "title": "Every eight-point scalar marked contact path lies in a fixed-mark associahedral face and therefore admits the established facewise PC descent.",
+      "status": "proved",
+      "assumptions": [
+        "The entry-24 scalar-derived marked matching and distance-two prescription are retained.",
+        "Scalar X coefficients and Pochhammer q-1 normal factors remain separately typed.",
+        "The scalar grade is taken before finite-alpha-prime loading."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83",
+        "source:marici-check-marked-octagon-pc-descent"
+      ],
+      "factorization_test": {
+        "census": "132 triangulations, 12 quadrangulations, 4 zero-core sources, and two 20-occurrence matchings",
+        "fixed_mark": "Every selected source-middle-endpoint path contains its mark d.",
+        "chain_map": "chi_marked = direct_sum_d X_d P_alpha'|K_alpha^(d)"
+      },
+      "counterevidence": [
+        "A selected path whose middle vertex omits d would falsify fixed-mark typing.",
+        "Identifying X_d with q_d-1 would double-load the normal direction and would not prove this claim."
+      ],
+      "next_experiment": "Use the fixed-mark map as the marked summand of the full horizontal correspondence totalization."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "kind": "claim",
+      "title": "The ordinary and sign-twisted loaded octagonal contact classes vanish exactly in the marked target-first PC summand.",
+      "status": "proved",
+      "assumptions": [
+        "Entry 38's facewise PC map is support-filtered, A-linear, strongly monoidal on physical faces, and deck covariant.",
+        "The claim is restricted to the marked contact/polarity summand.",
+        "At resonance the filtered nearby-cycle object is retained rather than globally inverted."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83",
+        "source:marici-ledger-20260813-24",
+        "source:marici-ledger-20260813-38",
+        "source:marici-check-marked-octagon-pc-descent"
+      ],
+      "factorization_test": {
+        "support": "The marked transport support is disjoint from every residual-octagon edge.",
+        "ordinary_circulation": "zero exactly",
+        "sign_twisted_circulation": "zero exactly",
+        "physical_residues": "zero by scalar contact residue plus facewise PC monoidality",
+        "deck": "one-step rotation exchanges plus and minus matchings"
+      },
+      "counterevidence": [
+        "This does not prove that unmarked/full-symbol summands have zero horizontal class.",
+        "It does not select a privileged tubular-current or smooth-form representative."
+      ],
+      "next_experiment": "Compute the unmarked additive class in the full residue/Gysin correspondence totalization."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:qtds-multiplicative-octagon-holonomy-mistyped",
+      "kind": "criticism",
+      "title": "The cyclic product of eight regional PC transition maps is not typed because the established horizontal maps are noninvertible residue/Gysin correspondences.",
+      "status": "sustained",
+      "assumptions": [
+        "Only maps established by scalar face incidence, target-first descent, and PC residue/Gysin naturality may be used.",
+        "No unproved equivalence between adjacent exact-core cubes is adjoined."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83",
+        "source:marici-ledger-20260813-69",
+        "source:marici-check-marked-octagon-pc-descent"
+      ],
+      "factorization_test": {
+        "adjacent_cores": "Each pair shares one physical diagonal and its nonshared diagonals cross.",
+        "exact_core_intersection": "empty",
+        "available_datum": "PC(K_Qi) -> PC(K_D) <- PC(K_Qi+1)",
+        "rejected_datum": "canonical automorphism T_i"
+      },
+      "counterevidence": [
+        "A separately constructed derived equivalence with specified unit and coherence could make a multiplicative holonomy test meaningful."
+      ],
+      "next_experiment": "Replace transition products by the additive totalization of the residue/Gysin cospans."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "kind": "problem",
+      "title": "Assemble the unmarked/full-symbol regional PC complexes as an additive residue/Gysin correspondence on the eight-point Möbius carrier.",
+      "status": "open",
+      "assumptions": [
+        "Local target-first symbols of entry 82 are retained.",
+        "The marked contact summand is removed as an already-vanishing direct summand.",
+        "Occurrence support, Gysin degree, and normal orientation lines remain explicit."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83"
+      ],
+      "factorization_test": {
+        "object": "Tot[direct_sum_i PC(K_Qi) -> direct_sum_i PC(K_di) -> ...]",
+        "output": "Theta_O_full in the hypercohomology of the correspondence totalization"
+      },
+      "counterevidence": [
+        "Replacing a cospan by an arbitrary inverse or identity changes the problem.",
+        "Local pentagon closure alone does not decide the residual Möbius H1 class."
+      ],
+      "next_experiment": "Construct all eight shared-rank-one cospans cellwise and compute the unmarked horizontal differential."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "kind": "conjecture",
+      "title": "The unmarked full-symbol additive octagonal class vanishes or is canonically null-homotopic in the residue/Gysin correspondence totalization.",
+      "status": "conditional",
+      "assumptions": [
+        "The full occurrence-decorated horizontal correspondence is constructible and deck covariant.",
+        "Its local restrictions agree with entries 38 and 82."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83"
+      ],
+      "factorization_test": {
+        "strict": "Theta_O_full = 0",
+        "coherent": "Theta_O_full = dK + Kd",
+        "obstructed": "[Theta_O_full] is nonzero"
+      },
+      "counterevidence": [
+        "A nonzero component on the residual Möbius H1 class falsifies closure."
+      ],
+      "next_experiment": "Evaluate the full-symbol additive class after constructing the cospan totalization."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:qtds-full-symbol-additive-octagon-class",
+      "kind": "test",
+      "title": "Compute the unmarked additive octagonal class in the complete residue/Gysin correspondence totalization.",
+      "status": "pending",
+      "assumptions": [
+        "The totalization contains all regional, shared-cut, square, and orientation-local-system terms.",
+        "The marked summand is checked separately and maps to zero."
+      ],
+      "evidence_refs": [
+        "source:marici-ledger-20260813-83"
+      ],
+      "factorization_test": {
+        "pass": "The unmarked class is zero or an explicit canonical null-homotopy is constructed.",
+        "fail": "A nonzero hypercohomology class survives.",
+        "invalid": "A transition product is substituted for the correspondence totalization."
+      },
+      "counterevidence": [
+        "Vanishing after pairing with an incomplete set of periods is insufficient."
+      ],
+      "next_experiment": "Build the eight edge cospans and compute the cellular/hyper-Cech differential over the Möbius carrier."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "target_id": "source:marici-ledger-20260813-83",
+      "relation_id": "rel:derived_from-724c7f36921ad28a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "target_id": "source:marici-check-marked-octagon-pc-descent",
+      "relation_id": "rel:derived_from-4ea65a01ee494d22"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "target_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "relation_id": "rel:depends_on-e09ce60871840e75"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "target_id": "source:marici-ledger-20260813-83",
+      "relation_id": "rel:derived_from-dea78313018215ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-fixed-mark-facewise-pc-descent",
+      "target_id": "problem:qtds-filtered-marked-edge-worldsheet-comparison",
+      "relation_id": "rel:addresses-85827fcd2d3ec274"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "target_id": "problem:qtds-weighted-octagonal-filler-and-worldsheet-comparison",
+      "relation_id": "rel:addresses-0213584288192935"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:qtds-multiplicative-octagon-holonomy-mistyped",
+      "target_id": "test:qtds-global-target-first-octagon-holonomy",
+      "relation_id": "rel:criticizes-e70154fe6d9a1866"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:qtds-multiplicative-octagon-holonomy-mistyped",
+      "target_id": "source:marici-ledger-20260813-83",
+      "relation_id": "rel:derived_from-051f7ddf6c420db0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "transforms",
+      "source_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "target_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "relation_id": "rel:transforms-6d094cd06d07cc29"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "target_id": "claim:qtds-target-first-local-pc-symbol",
+      "relation_id": "rel:depends_on-9f124d73d4d25624"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "target_id": "claim:qtds-marked-loaded-octagonal-class-vanishes",
+      "relation_id": "rel:depends_on-4d0c918803245683"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "target_id": "problem:qtds-full-symbol-horizontal-correspondence-totalization",
+      "relation_id": "rel:addresses-ea2c0b88a2959d26"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:qtds-full-symbol-additive-octagon-class",
+      "target_id": "conjecture:qtds-full-symbol-additive-octagon-closure",
+      "relation_id": "rel:tests-9a23dc4cdc4edb8b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "test:qtds-full-symbol-additive-octagon-class",
+      "target_id": "test:qtds-global-target-first-octagon-holonomy",
+      "relation_id": "rel:supersedes-87828233b6630207"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:qtds-full-symbol-additive-octagon-class",
+      "target_id": "source:marici-ledger-20260813-83",
+      "relation_id": "rel:derived_from-539d120de26d08cd"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-fixed-mark-comparison-after-entry83",
+      "subject_id": "problem:qtds-filtered-marked-edge-worldsheet-comparison",
+      "judgment": "resolved_for_the_marked_contact_sector",
+      "actor": "marici-nima",
+      "reason": "Every selected path retains its scalar mark, so the existing A-linear facewise PC map applies without the dependent route specialization.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "Fixed-mark path lemma and Loaded contact primitive",
+          "paraphrase": "The marked chain belongs to a direct sum of fixed-mark face complexes and maps by the established PC chain map."
+        },
+        {
+          "source_id": "source:marici-check-marked-octagon-pc-descent",
+          "locator": "check_marked_paths_and_pc_typing",
+          "paraphrase": "The exhaustive n=8 census verifies that every source, middle, and endpoint contains its mark."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-global-target-first-octagon-after-entry83",
+      "subject_id": "conjecture:qtds-global-target-first-octagon-closure",
+      "judgment": "proved_only_for_the_marked_additive_projection_and_mistyped_as_a_transition_product",
+      "actor": "marici-nima",
+      "reason": "The marked additive class is zero, but the original conjecture assumes horizontal transition automorphisms not supplied by the regional residue/Gysin spans.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "Additive octagonal theorem",
+          "paraphrase": "The marked PC chain has zero restriction to all residual-octagon edges."
+        },
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "Why multiplicative holonomy is mistyped",
+          "paraphrase": "Adjacent exact-core cubes are disjoint and map noninvertibly to their shared rank-one cut target."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-global-target-first-transition-product-entry83",
+      "test_id": "test:qtds-global-target-first-octagon-holonomy",
+      "actor": "marici-nima",
+      "outcome": "mistyped: the canonical T_i do not exist in the established category, so their cyclic product is undefined",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "Why multiplicative holonomy is mistyped",
+          "paraphrase": "The horizontal datum is a residue/Gysin cospan, not an invertible map."
+        },
+        {
+          "source_id": "source:marici-check-marked-octagon-pc-descent",
+          "locator": "check_octagon_and_transition_typing",
+          "paraphrase": "Every adjacent pair has empty exact-core intersection because its nonshared diagonals cross."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:qtds-deck-odd-marked-pc-contact-entry83",
+      "test_id": "test:qtds-deck-odd-octagonal-contact-class",
+      "actor": "marici-nima",
+      "outcome": "passed in the marked target-first PC summand; the unmarked full-symbol summand remains untested",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "Additive octagonal theorem",
+          "paraphrase": "Both ordinary and sign-twisted marked PC octagonal circulations vanish exactly."
+        },
+        {
+          "source_id": "source:marici-check-marked-octagon-pc-descent",
+          "locator": "check_octagon_and_transition_typing",
+          "paraphrase": "The complete marked transport support is disjoint from every outer-octagon edge."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:qtds-residual-octagon-frontier-after-entry83",
+      "subject_id": "problem:qtds-residual-octagon-jordan-holonomy",
+      "judgment": "transformed_to_an_additive_full_symbol_correspondence_problem",
+      "actor": "marici-nima",
+      "reason": "The marked obstruction vanishes and multiplicative holonomy is untyped; only the unmarked additive correspondence class remains.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260813-83",
+          "locator": "The surviving global problem",
+          "paraphrase": "The new target is the hypercohomology class of the full residue/Gysin correspondence totalization."
+        }
+      ]
+    }
+  ],
+  "digest": "964a21679cde1881857e5467085c1a52d5d9d2f0567632dcb916e74af4d63b1c"
+}
