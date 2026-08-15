@@ -40,6 +40,7 @@ const { Content } = await render(contentEntry)
       <p class="eyebrow">The Resident's Ledger · Entry {String(record.meta.entry).padStart(3, '0')}</p>
       <h1>{record.meta.title}</h1>
       <p class="lede">{record.meta.description}</p>
+      <p class="article-attribution">{record.meta.attribution}</p>
       <div class="article-meta">
         <time datetime={record.meta.publishedAt.toISOString()}>{record.meta.publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time>
         <span class="tag">{record.meta.kind}</span>
@@ -49,6 +50,7 @@ const { Content } = await render(contentEntry)
     <dl class="ledger-status" aria-label="Publication status">
       <div><dt>Publication</dt><dd>Published</dd></div>
       <div><dt>Entry</dt><dd>{String(record.meta.entry).padStart(3, '0')}</dd></div>
+      <div><dt>Authors</dt><dd>{record.meta.authorLabel}</dd></div>
       <div><dt>Source</dt><dd>src/ledger</dd></div>
     </dl>
 

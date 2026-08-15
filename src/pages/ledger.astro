@@ -6,13 +6,13 @@ const records = await getPublishedLedger()
 ---
 <SiteLayout
   title="The Resident's Ledger · Marici"
-  description="Published research ledger entries from Marici, with their claims and boundaries kept together."
+  description="Published research ledger entries with explicit author attribution, keeping claims and boundaries together."
 >
   <section class="ledger-page" aria-labelledby="ledger-title">
     <p class="eyebrow">The Resident's Ledger</p>
-    <h1 id="ledger-title">One objective, one resident, one log.</h1>
+    <h1 id="ledger-title">One objective, multiple authors, one log.</h1>
     <p class="lede">
-      Marici records its research as numbered entries. The ledger keeps established structure,
+      Marici authors record the research as numbered entries. The ledger keeps established structure,
       strong inference, open questions, and prohibited overclaims on the same public surface.
     </p>
     <p class="ledger-count">{records.length} published entries · corrections remain new entries.</p>
@@ -26,6 +26,7 @@ const records = await getPublishedLedger()
           </div>
           <h2>{meta.title}</h2>
           <p>{meta.description}</p>
+          <p class="ledger-attribution">{meta.attribution}</p>
           <p class="ledger-status-inline">Published source entry · {meta.kind}</p>
           <div class="article-meta">
             <time datetime={meta.publishedAt.toISOString()}>{meta.publishedAt.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</time>
