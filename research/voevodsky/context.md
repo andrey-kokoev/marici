@@ -2218,3 +2218,44 @@ nonzero, the proposed synthesis fails at this stage.  The known zero carrier
 class lies in \(\mathbb Z/3\) and cannot be transferred to the loaded
 group.  The two loaded maps, and therefore \(\omega_{\rm load}\), remain
 unconstructed.  Do not select a carrier parity before this test.
+
+## 42. The physical reflection detects the loaded obstruction
+
+Entry 139 proves that the remaining binary class can be evaluated on one
+subgroup after, and only after, the two loaded extension points are typed.
+For \(H=\langle f_3\rangle\simeq C_2\),
+
+\[
+\operatorname{res}_{H}^{D_3}:
+H^2(D_3;\mathbb Z_{\chi_N})
+\xrightarrow{\sim}
+H^2(H;\mathbb Z)
+\]
+
+is an isomorphism.  If \(\varepsilon\) is reflection parity, the normalized
+generator
+
+\[
+c(g,h)=
+\frac{\varepsilon(g)+\varepsilon(h)-\varepsilon(gh)}2
+\]
+
+has \(c(f_3,f_3)=1\), while any integral coboundary changes that value by an
+even integer.  Thus
+
+\[
+\omega_{\rm load}=0
+\iff
+\omega_{\rm load}(f_3,f_3)\equiv0\pmod2.
+\]
+
+This gives a much smaller decisive experiment.  Construct one loaded,
+endpoint-coherent reflection connector pairing the \(x_3\) and \(x_4\)
+edge-costalk diagrams and compute the parity of its square.  Entry 120
+supplies the finite \(x_3\) road-flag trace and entry 131 its target purity,
+but \(f_3\) exchanges \(x_3\leftrightarrow x_4\) and
+\(x_0\leftrightarrow x_1\).  Treating the reflected unit as an already
+equivariant connector would assume the coherence being tested.  The missing
+map must still retain the nonzero \(Q\)-leg, relative polarity conductor,
+both Tor grades, lower Cousin terms, support variance, endpoints, and
+physical normal.
