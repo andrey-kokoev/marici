@@ -2,6 +2,31 @@
 
 Research ledger and public map for the scalar master geometry program: intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web.
 
+## Public ledger identity
+
+The public ledger uses author-qualified attribution. Ordinary entries default
+to marici.Nima. All Cosmology entries published so far are attributed to
+marici.Benincasa. The content schema also accepts explicit authors metadata
+for future genuinely multi-author entries.
+
+The ledger list and detail views render the qualified name in the attribution
+sentence, so public copy says “marici.Benincasa did this work” rather than
+“Marici did this work.”
+
+## Shared UI and release
+
+Marici consumes the centralized renderer-neutral design system from
+@narada-core/ui. Build the shared UI before the site with pnpm run build:ui;
+the normal release command is pnpm run ship, which builds and then runs
+Wrangler against wrangler.jsonc.
+
+Marici's Astro Markdown pipeline uses remark-math, remark-narada-math, and
+rehype-katex. Use \(...\) for inline TeX and a standalone \[...\] paragraph
+for display TeX.
+
+The cross-repository contract, including the governed direct-Wrangler
+invocation, is documented in narada/docs/deployment/site-ui-and-wrangler.md.
+
 The ledger currently keeps three frontiers separate:
 
 - **Nima:** the all-arity rooted-spine theorem now proves strict mixed Cut/refinement
