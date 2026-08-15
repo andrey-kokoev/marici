@@ -1922,3 +1922,67 @@ R\Rightarrow\text{unique up to orientation},\qquad
 Forgetting either the support/\(Q\) framing or the Tate-window framing must
 send any surviving class to zero.  A class that survives either ablation is
 not the sought secondary specialization datum.
+
+## Lift-space correction after entry 134
+
+Entry 134 corrects the order of the framed test.  The desired scalar
+off-diagonal compares two fixed two-extensions, so it is naturally a point
+of
+
+\[
+\boxed{
+\mathcal L_{\rm sp}
+=
+\operatorname{Path}
+\left(
+\rho_{\rm PL}^{!,{\rm PC}}(e_F),
+\Phi_{\rm nc}(\beta_\triangle)
+\right),
+}
+\]
+
+not canonically an element of an \(\operatorname{Ext}^1\) group.  Its
+existence is first controlled by
+
+\[
+\omega_{\rm sp}
+=
+\rho_{\rm PL}^{!,{\rm PC}}(e_F)
+-
+\Phi_{\rm nc}(\beta_\triangle)
+\in\operatorname{Ext}^2.
+\]
+
+If \(\omega_{\rm sp}\ne0\), the synthesis is falsified in the proposed
+category.  If \(\omega_{\rm sp}=0\), the connected components of
+\(\mathcal L_{\rm sp}\) form a torsor under \(\operatorname{Ext}^1\).
+Therefore \(\operatorname{Ext}^1=0\) means a unique lift component, not
+failure, while a rank-one \(\operatorname{Ext}^1\) means an affine family,
+not uniqueness.
+
+At carrier level,
+
+\[
+\omega_{\rm car}=0,
+\qquad
+\pi_0\mathcal L_{\rm car}
+\text{ is a nonempty }\mathbb Z/2\text{-torsor}.
+\]
+
+The existing labels and orientations do not select its parity.  The minimal
+next construction is an explicit \(D_3\)-equivariant relative
+Alexander--Whitney diagonal and chain-level PL cap for
+
+\[
+(K_6;B_{\rm short},F_{14}\sqcup F_{03}\sqcup F_{25}),
+\]
+
+followed by its occurrence/multi-Rees/PC extraordinary loading.  This finite
+model is sufficient; a complete abstract six-functor category need not be
+axiomatized first.
+
+The two separate ablations are likewise maps of lift spaces.  They must send
+a constructed geometric lift to specified trivializations.  Their domains
+and defect arrows are currently untyped, so their ranks are undefined.  Only
+the fully ordinary joint ablation is presently defined, and entry 133 proves
+it contractible.
