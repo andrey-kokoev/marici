@@ -37,21 +37,43 @@ With
 a=y_{23},\qquad b=y_{31},\qquad c=y_{12},
 \]
 
-the literal six-term triangle source uses
+the literal six-term triangle source contains ten distinct affine pole forms.
+Besides
 
 \[
-q_{\mathfrak g_1}=X_1+b+c,quad
-q_{\mathfrak g_2}=X_2+c+a,quad
+q_{\mathcal G}=E,
+\qquad
+q_{\mathfrak g_1}=X_1+b+c,
+\qquad
+q_{\mathfrak g_2}=X_2+c+a,
+\qquad
 q_{\mathfrak g_3}=X_3+a+b,
+\]
+
+it contains
+
+\[
+q_{\mathcal G_{12}}=E+c,
+\qquad
+q_{\mathcal G_{23}}=E+a,
+\qquad
+q_{\mathcal G_{31}}=E+b,
 \]
 
 and
 
 \[
-q_{\mathcal G_{12}}=E+c,quad
-q_{\mathcal G_{23}}=E+a,quad
-q_{\mathcal G_{31}}=E+b,
-\qquad E=X_1+X_2+X_3.
+q_{\mathfrak g_{12}}=X_1+X_2+a+b,
+\qquad
+q_{\mathfrak g_{23}}=X_2+X_3+b+c,
+\qquad
+q_{\mathfrak g_{31}}=X_3+X_1+c+a,
+\]
+
+where
+
+\[
+E=X_1+X_2+X_3.
 \]
 
 On the source physical chain,
@@ -173,7 +195,7 @@ Cayley--Menger boundary remains part of the soft/Gram audit.
 - `research/benincasa/verify_generic_lower_positive_chain_census.py`
   - dependency-free affine positivity verifier;
 - `research/benincasa/generic_lower_positive_chain_census_result.json`
-  - six source poles and four provenance classes;
+  - ten source poles and four provenance classes;
 - scheduler execution:
   - last result \(0\);
 - primary source:
@@ -209,7 +231,7 @@ distance variables from genuine physical monodromy.
 {
   "claim": "At least one frozen marked-pole collision radical is physically active on the generic positive Bunch-Davies chain.",
   "status": "falsified",
-  "source_poles_checked": 6,
+  "source_poles_checked": 10,
   "source_poles_strictly_positive": true,
   "collision_classes_exhausted": 4,
   "one_pole_factor_occurrences_covered": 76,
