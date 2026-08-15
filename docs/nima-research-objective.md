@@ -2444,3 +2444,95 @@ unique loaded component and parity one gives nonexistence. The conductor
 sequence determines this transgression but not the input parity. No local
 coefficient, target-purity, full bar-complex, or arbitrary-matrix search
 remains.
+
+## Degree-correct endpoint pullback after entry 142
+
+Entry 142 simplifies the coefficient architecture before the unresolved
+parity is chosen.  The conductor sequence
+\[
+0\to\mathbb Z\to P_{\rm sh}\xrightarrow{\operatorname{diff}}
+\mathbb Z_{\rm or}\to0
+\]
+and the road triangle, after tensoring by the road-orientation line,
+\[
+0\to\mathbb Z\to P_{\rm tag}^{\rm or}\xrightarrow{1-r}
+P_{\rm road}^{\rm or}\xrightarrow{\epsilon}\mathbb Z_{\rm or}\to0,
+\]
+are two integral resolutions of the same endpoint-orientation quotient.
+Their canonical mapping-fibre model is
+\[
+\boxed{
+\mathbb Z
+\longrightarrow
+\mathbb Z\oplus P_{\rm tag}^{\rm or}
+\longrightarrow
+P_{\rm sh}\oplus P_{\rm road}^{\rm or}
+\xrightarrow{\operatorname{diff}-\epsilon}
+\mathbb Z_{\rm or}.
+}
+\]
+Its only homology is a primitive torsion-free
+\(\mathbb Z_{\rm or}\) in degree one; tensoring the once-relative polarity
+line makes it trivial.  Explicit unimodular bases prove saturation.  The
+complex itself needs no division, although a strict equivariant cycle section
+would require both \(3c=1\) and \(2a=1\).
+
+This is the degree-correct unsplit coefficient object.  The tempting exact
+sequence
+\[
+0\to\mathbb Z\to P_{\rm sh}\to P_{\rm tag}\to
+P_{\rm road}\to\mathbb Z\to0
+\]
+is a splice of an \(\operatorname{Ext}^1\) conductor class with the full
+\(\operatorname{Ext}^2\) Tate class, hence belongs to
+\(\operatorname{Ext}^3\).  It is not the desired degree-two loaded
+obstruction.  The latter uses the conductor one-extension and the
+endpoint-defect one-extension.
+
+Accordingly, the next construction should not begin by selecting
+\(p_{\partial,Q}\) or a road-line section.  It should construct one
+independent filtered extraordinary endpoint object and the cospan
+\[
+\boxed{
+\mathcal S_{\rm sh}^{\rm norm}
+\longrightarrow
+\mathcal E_{\partial,Q}^{!,{\rm PC}}
+\longleftarrow
+\mathcal Q_{\rm road}^{\rm or}.
+}
+\]
+The coefficient shadows of the two arrows must be
+\(\operatorname{diff}\) and \(\epsilon\).  The candidate specialization
+source is then their derived pullback, with the once-relative polarity and
+the already proved occurrence/multi-Rees packets retained:
+\[
+\boxed{
+\mathcal S_F^{\rm sp}
+\stackrel?=
+\left(
+\mathcal S_{\rm sh}^{\rm norm}
+\mathop{\times}^{h}_{\mathcal E_{\partial,Q}^{!,{\rm PC}}}
+\mathcal Q_{\rm road}^{\rm or}
+\right)
+\otimes L_{\rm pol}.
+}
+\]
+This is a formula objective, not an established spatial identification.
+
+Only after that cospan exists should one:
+
+1. compute the spatial pullback rank and torsion;
+2. verify that forgetting endpoint/support framing contracts it as in
+   entry 133;
+3. test, rather than prescribe,
+   \(K_{\rm alt}\otimes L_{\rm pol}\), \(+[q_\Sigma]\), and the
+   entry-131 edge purity;
+4. read \(p_{\partial,Q}\) as the obstruction to realizing or pointing the
+   unsplit pullback, and then apply entry 141's Bockstein.
+
+Thus the current blocker is one object and two maps, not a new differential
+matrix: construct
+\(\mathcal E_{\partial,Q}^{!,{\rm PC}}\) with the based nonzero \(Q\)-leg,
+both endpoint connectors, full Tate window, positive multi-Rees support,
+reciprocal/Borel--Moore variance, and polarity exactly once.  Without that
+cospan, neither \(d_{\rm sp,sc}\) nor \(G_{03}^{\rm Cousin}\) is defined.

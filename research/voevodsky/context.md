@@ -2429,3 +2429,53 @@ Parity zero yields the unique loaded lift; parity one yields nonexistence.
 The conductor theorem does not choose that parity.  It proves only that once
 the endpoint defect is known, no further full-\(D_3\) cocycle calculation is
 needed.
+
+## 46. The unsplit endpoint pullback is degree-correct
+
+Entry 142 combines the coefficient results of entries 93, 94, 115, and 141
+without splitting either branch.  Twist the augmented road triangle by its
+orientation line so that its augmentation and the conductor difference both
+land in \(\mathbb Z_{\rm or}\).  Their mapping-fibre complex is
+\[
+\mathbb Z\to
+\mathbb Z\oplus P_{\rm tag}^{\rm or}\to
+P_{\rm sh}\oplus P_{\rm road}^{\rm or}\to
+\mathbb Z_{\rm or},
+\]
+with differentials
+\[
+d_3=(0,N),\qquad
+d_2=(\Delta_{\rm sh},1-r),\qquad
+d_1=\operatorname{diff}-\epsilon.
+\]
+It is strictly \(D_3\)-equivariant, has \(d^2=0\), and has only
+\[
+H_1=\mathbb Z_{\rm or}
+\]
+integrally.  Determinant-one bases prove that the line is primitive and that
+there is no torsion.  After the once-relative polarity factor it is the
+trivial physical line.
+
+There is no strict equivariant integral representative of its unit class:
+rotation gives \(3c=1\), and reflection plus the cycle equation gives
+\(2a=1\).  These fractions diagnose an attempted splitting, not a defect of
+the unsplit object.
+
+The degree audit is important.  Splicing the conductor one-extension with
+the complete triangle two-extension gives an \(\operatorname{Ext}^3\)
+class.  The physical obstruction is in \(\operatorname{Ext}^2\), obtained
+from the conductor extension and the endpoint-defect one-extension.
+
+The immediate spatial objective is therefore the cospan
+\[
+\mathcal S_{\rm sh}^{\rm norm}\to
+\mathcal E_{\partial,Q}^{!,{\rm PC}}\leftarrow
+\mathcal Q_{\rm road}^{\rm or}
+\]
+whose coefficient shadow is
+\(\operatorname{diff}:P_{\rm sh}\to\mathbb Z_{\rm or}\leftarrow
+P_{\rm road}^{\rm or}:\epsilon\).  No current entry constructs that common
+ringed endpoint object with the based \(Q\)-leg and both connector cells.
+Until it exists, entry 142 is a coefficient/carrier theorem only, and
+\(p_{\partial,Q}\), \(d_{\rm sp,sc}\), and
+\(G_{03}^{\rm Cousin}\) remain unconstructed.
