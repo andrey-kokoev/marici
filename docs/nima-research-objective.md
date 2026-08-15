@@ -2320,20 +2320,75 @@ where:
   those sheetwise lifts to descend through the conductor and endpoint
   recollement.
 
-Only after those three complexes and their arrows are constructed may one
-form the connecting class
+Entry 141 identifies the coefficient/character shadow of this sequence.
+If
+
+\[
+P_{\rm sh}=\mathbb Z\langle e_+,e_-\rangle
+\]
+
+is the two-sheet permutation module, then the constant
+normalization--conductor sequence is
+
+\[
+\boxed{
+0\longrightarrow\mathbb Z
+\xrightarrow{\Delta}P_{\rm sh}
+\xrightarrow{\operatorname{diff}}\mathbb Z_{\rm or}
+\longrightarrow0.
+}
+\]
+
+Its Bockstein is an isomorphism
+
+\[
+\boxed{
+\partial_{\rm pol}:
+H^1(D_3;\mathbb Z_{\rm or})
+\xrightarrow{\sim}H^2(D_3;\mathbb Z).
+}
+\]
+
+Thus the coefficient sequence is no longer hypothetical. What remains
+unconstructed is its endpoint/\(Q\)-preserving lift to the three mapping
+complexes above. Let
+
+\[
+r_{\partial,Q}:
+\operatorname{Map}_{\rm norm}
+\longrightarrow\operatorname{Map}_{\rm defect}
+\]
+
+denote that future restriction. Only after it is constructed may one form
+
+\[
+\partial_{\rm map}:
+H^\bullet(\operatorname{Map}_{\rm defect})
+\longrightarrow
+H^{\bullet+1}(\operatorname{Map}_{\rm adm}),
+\qquad
+\operatorname{gr}_{\chi}(\partial_{\rm map})
+=\partial_{\rm pol},
+\]
+
+and hence
 
 \[
 \boxed{
 [\alpha_{\rm nc,abs}]_{\rm adm}
 =
-\partial\,[\beta_{\widetilde F}]
-\in H^1(\operatorname{Map}_{\rm adm}),
+\partial_{\rm map}
+\bigl[r_{\partial,Q}(\beta_{\widetilde F})\bigr],
 \qquad
 \beta_{\widetilde F}
 =(\beta_+,-\beta_-)\otimes L_{\rm pol}.
 }
 \]
+
+The defect restriction is essential. The sheetwise pair belongs to the
+normalization term, not to the defect quotient; writing
+\(\partial[\beta_{\widetilde F}]\) without \(r_{\partial,Q}\) suppresses
+the only still-missing geometric arrow.
 
 The resulting differential would be
 
@@ -2342,16 +2397,16 @@ d_{\rm sp,sc}
 =
 \begin{pmatrix}
 d_C&0\\
-\partial\beta_{\widetilde F}&d_M
+\partial_{\rm map}r_{\partial,Q}\beta_{\widetilde F}&d_M
 \end{pmatrix},
 \]
 
 so \(d_{\rm sp,sc}^2=0\) follows from the connecting construction rather
-than from fitted entries.  Its three output tests remain, in this order,
+than from fitted entries. Its three output tests remain, in this order,
 
 \[
 \operatorname{gr}_{\mathfrak c}^1
-(\partial\beta_{\widetilde F})
+(\partial_{\rm map}r_{\partial,Q}\beta_{\widetilde F})
 \stackrel?=K_{\rm alt}\otimes L_{\rm pol},
 \qquad
 \operatorname{gr}_Q(\rho_{\partial\beta})(N_{\rm road})
@@ -2362,13 +2417,30 @@ than from fitted entries.  Its three output tests remain, in this order,
 \]
 
 None of these values may be used to define the mapping complexes or the
-connecting arrow.  Forgetting endpoint/support framing must make the class
+connecting arrow. Forgetting endpoint/support framing must make the class
 exact via \(\beta_{\rm gal}\), reproducing entry 133.
 
 The physical reflection acts strictly on the displayed ordinary shadow and,
-by entry 140, on the target purity packet.  Hence the remaining mod-two test
-has become even smaller: construct the endpoint defect complex and determine
-whether the class of \(\beta_{\widetilde F}\) is fixed by the paired
-\(f_3\) action or differs by the unique nontrivial endpoint loop.  This is
-the source of any possible odd reflection square; no local coefficient,
-target-purity, or arbitrary-matrix search remains.
+by entry 140, on the target purity packet. Hence the remaining mod-two test
+has become one bit before the Bockstein. Construct
+
+\[
+p_{\partial,Q}
+=
+\bigl[r_{\partial,Q}(\beta_{\widetilde F})\bigr]
+\in H^1(D_3;\mathbb Z_{\rm or}).
+\]
+
+Then
+
+\[
+\boxed{
+\omega_{\rm load}=\partial_{\rm pol}(p_{\partial,Q}).
+}
+\]
+
+Because \(\partial_{\rm pol}\) is an isomorphism, parity zero gives the
+unique loaded component and parity one gives nonexistence. The conductor
+sequence determines this transgression but not the input parity. No local
+coefficient, target-purity, full bar-complex, or arbitrary-matrix search
+remains.
