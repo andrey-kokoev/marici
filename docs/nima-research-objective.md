@@ -2162,3 +2162,42 @@ unpointed carrier roof; they do not yet place the two loaded endpoint maps in
 one support-PC mapping category.  Constructing those maps and evaluating
 \(\omega_{\rm load}\) is now the first formula objective before
 \(d_{\rm sp,sc}\) or \(G_{03}^{\rm Cousin}\) can be assembled.
+
+## Reflection-detector reduction after entry 139
+
+Entry 139 removes the need for a full \(D_3\) cocycle computation once the
+loaded extension points exist.  For the trivial once-loaded coefficient, the
+physical reflection subgroup
+
+\[
+\langle f_3\rangle=\langle\rho^3\sigma_0\rangle\simeq C_2
+\]
+
+detects the global class:
+
+\[
+\operatorname{res}:
+H^2(D_3;\mathbb Z)
+\xrightarrow{\sim}
+H^2(\langle f_3\rangle;\mathbb Z)
+\simeq\mathbb Z/2.
+\]
+
+For a normalized cocycle,
+
+\[
+\boxed{
+\omega_{\rm load}=0
+\quad\Longleftrightarrow\quad
+\omega_{\rm load}(f_3,f_3)=0\pmod2.
+}
+\]
+
+The next finite construction is therefore one endpoint-coherent loaded
+reflection connector and its square, not a global bar-resolution search.
+It must pair the opposite \(x_3\) and \(x_4\) \(D03\) edge-costalk diagrams:
+\(f_3\) exchanges those edges as well as the polarity sheets.  Entries 120
+and 131 prove the \(x_3\) filtered trace and target purity, but not the
+support/Yoneda-to-Tate connector whose reflection square defines the
+cocycle.  Restriction detects a globally typed class; an isolated local
+edge map does not manufacture it.
