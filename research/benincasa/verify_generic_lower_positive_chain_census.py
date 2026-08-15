@@ -8,12 +8,16 @@ from pathlib import Path
 
 # Coefficient vectors are ordered as (a,b,c,X1,X2,X3).
 source_poles = {
+    "q_G": {"form": "X1+X2+X3", "coefficients": (0, 0, 0, 1, 1, 1)},
     "q_g1": {"form": "X1+b+c", "coefficients": (0, 1, 1, 1, 0, 0)},
     "q_g2": {"form": "X2+c+a", "coefficients": (1, 0, 1, 0, 1, 0)},
     "q_g3": {"form": "X3+a+b", "coefficients": (1, 1, 0, 0, 0, 1)},
     "q_G12": {"form": "X1+X2+X3+c", "coefficients": (0, 0, 1, 1, 1, 1)},
     "q_G23": {"form": "X1+X2+X3+a", "coefficients": (1, 0, 0, 1, 1, 1)},
     "q_G31": {"form": "X1+X2+X3+b", "coefficients": (0, 1, 0, 1, 1, 1)},
+    "q_g12": {"form": "X1+X2+a+b", "coefficients": (1, 1, 0, 1, 1, 0)},
+    "q_g23": {"form": "X2+X3+b+c", "coefficients": (0, 1, 1, 0, 1, 1)},
+    "q_g31": {"form": "X3+X1+c+a", "coefficients": (1, 0, 1, 1, 0, 1)},
 }
 
 positivity = {}
