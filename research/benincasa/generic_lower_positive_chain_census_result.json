@@ -1,0 +1,128 @@
+{
+  "schema": "marici.benincasa.generic_lower_positive_chain_census.v1",
+  "status": "pass",
+  "source_pole_count": 6,
+  "source_poles": {
+    "q_g1": {
+      "form": "X1+b+c",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    },
+    "q_g2": {
+      "form": "X2+c+a",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    },
+    "q_g3": {
+      "form": "X3+a+b",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    },
+    "q_G12": {
+      "form": "X1+X2+X3+c",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    },
+    "q_G23": {
+      "form": "X1+X2+X3+a",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    },
+    "q_G31": {
+      "form": "X1+X2+X3+b",
+      "coefficient_vector_a_b_c_X1_X2_X3": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "all_coefficients_nonnegative": true,
+      "contains_strictly_positive_energy": true,
+      "strictly_positive_on_physical_chain": true
+    }
+  },
+  "positive_chain": [
+    "a>=0",
+    "b>=0",
+    "c>=0",
+    "X1>0",
+    "X2>0",
+    "X3>0"
+  ],
+  "pole_union_intersects_physical_chain": false,
+  "radicand_types": {
+    "Delta12minus": "-4*(P1^2-X1^2)*(P2^2-X2^2)*LambdaP*(P3^2-(X1-X2)^2)",
+    "Delta13minus": "-4*(P1^2-X1^2)*(P3^2-X3^2)*LambdaP*(P2^2-(X1-X3)^2)",
+    "Delta23minus": "-4*(P2^2-X2^2)*(P3^2-X3^2)*LambdaP*(P1^2-(X2-X3)^2)",
+    "Delta23plus": "-4*(P2^2-X2^2)*(P3^2-X3^2)*LambdaP*(P1^2-(X2+X3)^2)"
+  },
+  "stratum_classes": {
+    "two_pole_branch_collision": {
+      "minimum_marked_poles": 2,
+      "types": 4
+    },
+    "one_pole_branch_tangency": {
+      "minimum_marked_poles": 1,
+      "factor_occurrences": 76
+    },
+    "triple_marked_collision": {
+      "minimum_marked_poles": 3,
+      "types": 2
+    },
+    "parallel_pole_coincidence": {
+      "minimum_marked_poles": 2,
+      "types": 1
+    }
+  },
+  "generic_nonsoft_collision_strata_intersect_physical_chain": false,
+  "physical_PL_intersection_for_collision_thimbles": 0,
+  "classification": "analytic-sheet coefficient support for every frozen marked-pole collision",
+  "scope_boundary": "This proves the marked-pole collision contribution is inactive on the literal positive chain. Independent degeneration of the chain at soft or fixed-base Gram support requires a separate audit."
+}
