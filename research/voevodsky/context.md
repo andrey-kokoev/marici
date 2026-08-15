@@ -2294,3 +2294,70 @@ endpoint comparison cells. Once it exists, compare its square against the
 fixed target involution and use entry 139 to evaluate the resulting parity.
 An odd value must come from this source/endpoint comparison, not from local
 target purity.
+
+## 44. The off-diagonal as a conductor connecting class
+
+The coefficient shadow of the missing source map is now rigid.  Put
+
+\[
+z_i=q_i-x_i\widetilde\xi_i=dm_i,
+\qquad H_\Sigma=m_1+m_3+m_5.
+\]
+
+On the top/tag part
+\(C_{\rm tag}=[R\omega\xrightarrow N R\langle e_1,e_3,e_5\rangle]\),
+the unique sector-diagonal positive map is
+
+\[
+\alpha_0(\omega)=H_\Sigma,
+\qquad
+\alpha_0(e_i)=z_i,
+\qquad
+\alpha_0(P_{\rm road})=\alpha_0(\mathbf1)=0.
+\]
+
+It is a \(D_3\)-equivariant chain map, but it is also the ordinary
+commutator
+
+\[
+\alpha_0=[d,\beta_{\rm gal}],
+\qquad
+\beta_{\rm gal}(e_i)=m_i,
+\]
+
+with \(\beta_{\rm gal}\) zero on the remaining displayed generators.
+Thus it contains no ordinary-derived information, exactly as entry 133
+requires.
+
+The viable interpretation is relative.  Construct, independently of all
+desired residues, an exact sequence
+
+\[
+0\to\operatorname{Map}_{\rm adm}
+\to\operatorname{Map}_{\rm norm}
+\to\operatorname{Map}_{\rm defect}\to0.
+\]
+
+The middle term permits the marked-gallery lifts separately on the two
+normalization sheets.  The first term enforces endpoint recollement, the
+based nonzero \(Q\)-leg, the full Tate window, positive multi-Rees support,
+extraordinary variance, and the once-relative polarity line.  The quotient
+records their descent defect.  The aspirational intrinsic class is then
+
+\[
+[\alpha]_{\rm adm}
+=\partial[(\beta_+,-\beta_-)\otimes L_{\rm pol}],
+\]
+
+not an arbitrarily chosen element of the unrestricted Hom complex.  This
+formula makes the ordinary ablation automatic and would make
+\(d_{\rm sp,sc}^2=0\) formal from the connecting morphism.
+
+The first falsifiable construction is the mapping-complex sequence itself.
+After it exists, test—never prescribe—its conductor symbol
+\(K_{\rm alt}\otimes L_{\rm pol}\), its based image
+\(+[q_\Sigma]\), and the entry-131 edge purity.  Under \(f_3\), both the
+ordinary gallery shadow and the target packet have square one.  Therefore
+the remaining \(\mathbb Z/2\) obstruction is exactly the endpoint descent
+of the sheetwise gallery lift: whether its reflected pair closes or differs
+by the unique endpoint loop.

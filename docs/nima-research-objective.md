@@ -2244,3 +2244,131 @@ compare its square to the fixed strict target involution:
 Target strictness does not imply that this number is even. The source
 connector and its endpoint two-cells remain untyped, so the global loaded
 obstruction, \(d_{\rm sp,sc}\), and \(G_{03}^{\rm Cousin}\) remain open.
+
+## Connecting-class refinement after entry 140
+
+There is no longer a useful search over arbitrary off-diagonal matrices.  At
+the coefficient/carrier shadow the sector labels and the three inherited
+Morse identities force a single normalized candidate.  Write
+
+\[
+z_i=q_i-x_i\widetilde\xi_i=dm_i,
+\qquad
+H_\Sigma=m_1+m_3+m_5,
+\qquad i\in\{1,3,5\},
+\]
+
+and let
+
+\[
+C_{\rm tag}=
+[R\omega\xrightarrow{N}R\langle e_1,e_3,e_5\rangle]
+\]
+
+be the top/tag part of the Tate window.  The sector-diagonal, positively
+normalized map is necessarily
+
+\[
+\alpha_0(\omega)=H_\Sigma,
+\qquad
+\alpha_0(e_i)=z_i,
+\qquad
+\alpha_0(P_{\rm road})=\alpha_0(\mathbf1)=0.
+\]
+
+It is automatically a chain map and is strictly \(D_3\)-covariant.  More
+importantly, it is already an ordinary Hom boundary:
+
+\[
+\boxed{
+\beta_{\rm gal}(e_i)=m_i,
+\qquad
+\beta_{\rm gal}(\omega)
+=\beta_{\rm gal}(P_{\rm road})
+=\beta_{\rm gal}(\mathbf1)=0,
+\qquad
+\alpha_0=[d,\beta_{\rm gal}].
+}
+\]
+
+This is the small formula that entry 133's contraction was detecting.  It is
+not yet the scalar specialization class.  If
+\(\beta_{\rm gal}\) is admitted as an ordinary homotopy, it removes
+\(\alpha_0\) by a change of splitting.  Conversely, the only way for the
+same formula to be physical is for the sheetwise marked-gallery homotopy to
+exist on the normalization while failing the endpoint-pointed
+support/\(Q\) descent condition.
+
+The correct construction target is therefore an independently defined exact
+sequence of mapping complexes
+
+\[
+0\longrightarrow\operatorname{Map}_{\rm adm}
+\longrightarrow\operatorname{Map}_{\rm norm}
+\longrightarrow\operatorname{Map}_{\rm defect}
+\longrightarrow0,
+\]
+
+where:
+
+- \(\operatorname{Map}_{\rm norm}\) permits the two sheetwise marked
+  gallery lifts \(\beta_+\) and \(\beta_-\);
+- \(\operatorname{Map}_{\rm adm}\) retains the endpoint maps, nonzero
+  generic \(Q\)-leg, full Tate window, positive-support multi-Rees
+  component, reciprocal/Borel--Moore variance, and polarity exactly once;
+- \(\operatorname{Map}_{\rm defect}\) records precisely the failure of
+  those sheetwise lifts to descend through the conductor and endpoint
+  recollement.
+
+Only after those three complexes and their arrows are constructed may one
+form the connecting class
+
+\[
+\boxed{
+[\alpha_{\rm nc,abs}]_{\rm adm}
+=
+\partial\,[\beta_{\widetilde F}]
+\in H^1(\operatorname{Map}_{\rm adm}),
+\qquad
+\beta_{\widetilde F}
+=(\beta_+,-\beta_-)\otimes L_{\rm pol}.
+}
+\]
+
+The resulting differential would be
+
+\[
+d_{\rm sp,sc}
+=
+\begin{pmatrix}
+d_C&0\\
+\partial\beta_{\widetilde F}&d_M
+\end{pmatrix},
+\]
+
+so \(d_{\rm sp,sc}^2=0\) follows from the connecting construction rather
+than from fitted entries.  Its three output tests remain, in this order,
+
+\[
+\operatorname{gr}_{\mathfrak c}^1
+(\partial\beta_{\widetilde F})
+\stackrel?=K_{\rm alt}\otimes L_{\rm pol},
+\qquad
+\operatorname{gr}_Q(\rho_{\partial\beta})(N_{\rm road})
+\stackrel?=+[q_\Sigma],
+\qquad
+\operatorname{Res}_{x_3}
+\stackrel?=\operatorname{pur}_{x_3,\partial}^{\rm PC}.
+\]
+
+None of these values may be used to define the mapping complexes or the
+connecting arrow.  Forgetting endpoint/support framing must make the class
+exact via \(\beta_{\rm gal}\), reproducing entry 133.
+
+The physical reflection acts strictly on the displayed ordinary shadow and,
+by entry 140, on the target purity packet.  Hence the remaining mod-two test
+has become even smaller: construct the endpoint defect complex and determine
+whether the class of \(\beta_{\widetilde F}\) is fixed by the paired
+\(f_3\) action or differs by the unique nontrivial endpoint loop.  This is
+the source of any possible odd reflection square; no local coefficient,
+target-purity, or arbitrary-matrix search remains.
