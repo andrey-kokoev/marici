@@ -1976,3 +1976,59 @@ at \(x_3\) to the entry-131 purity map.  Until then,
 \(d_{\rm sp,sc}\) and \(G_{03}^{\rm Cousin}\) are not one typed object.
 The reduction is scoped to this fixed split carrier and does not classify
 arbitrary nonsplit extensions.
+
+## 37. Ordinary-derived ablation and the framed mapping problem
+
+Entry 133 proves that the provisional ordinary \(R\!\operatorname{Hom}\)
+language of entry 132 forgets exactly the data that could make the
+off-diagonal physical.  Over the common multi-Rees ring, the full three-Morse
+absolute block
+
+\[
+dm_i=q_i-x_i\xi_i,\qquad dq_i=x_ib_i,\qquad d\xi_i=b_i
+\]
+
+has the integral \(D_3\)-equivariant contraction
+
+\[
+h(b_i)=\xi_i,\qquad h(q_i)=m_i.
+\]
+
+Postcomposition contracts the full coefficientwise Hom complex and its
+strict \(D_3\)-equivariant subcomplex.  The minimal generated invariant block
+\(R H_\Sigma\to R\,dH_\Sigma\) is also contractible.  Hence ordinary
+\(H^1\) is zero, without free part or torsion; raw cocycles are changes of
+split presentation.
+
+This is an ablation theorem, not a no-go for extraordinary specialization.
+The contraction crosses the marked \(Q\)-filtration and erases endpoint
+support.  The missing class must instead lie in an independently constructed
+framed mapping complex retaining:
+
+- the exact \(N/(1-r)/\epsilon\) Tate diagram;
+- \(F_0\subset F_1\subset F_2\) and the based marked-exit \(Q\)-leg;
+- normalization--conductor endpoint recollement;
+- occurrence and independent multi-Rees filtrations;
+- regular/Borel--Moore variance and orientation lines.
+
+Thus the ordinary objective is ablated.  The next candidate objective is
+
+\[
+[\alpha]_{\rm adm}\in
+\operatorname{Ext}^1_{\mathscr D_{\rm PC,F}^{D_3}(R)}
+(\Phi_{\rm nc}\mathcal C_{\rm nc}^{\rm mR},\mathcal M_{\rm rel}^{!}),
+\]
+
+followed, not defined, by the conductor, \(Q\), and entry-131 residue
+evaluations.  Here the support realization \(\Phi_{\rm nc}\), the
+endpoint-relative extraordinary target \(\mathcal M_{\rm rel}^{!}\), and
+their PC/filtered derived category remain to be constructed.  The direct shortcut
+\(\alpha(N_{\rm road})=q_\Sigma\) is independently impossible modulo
+\((3,t_1,t_3,t_5)\); this does not test the induced cone-roof comparison
+\(\rho_\alpha\).
+
+The next exact experiment is to construct the ringed positive-support
+nearby-cycle category and compute this admissible \(H^1\) before imposing any
+normalization.  Zero falsifies the synthesis; a primitive rank-one module
+gives uniqueness up to orientation; higher rank or torsion demands additional
+coherence.  Forgetting support/\(Q\) or the Tate framing must kill the class.

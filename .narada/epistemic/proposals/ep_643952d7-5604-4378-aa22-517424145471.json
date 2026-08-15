@@ -1,0 +1,60 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_643952d7-5604-4378-aa22-517424145471",
+  "status": "submitted",
+  "actor": "codex:/root",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "The user requested active epistemic-graph use; this bounded delta records the verified final source revision without altering prior history."
+  },
+  "idempotency_key": "nima-entry133-verified-source-revision-v1",
+  "expected_ledger_head": "f80083a431e834843c40920cefb9f58b17b548756be9036a22363aa58aa9de90",
+  "created_at": "2026-08-15T00:12:53.2391583Z",
+  "content_fingerprint": "48d1cb58b62e0d593200e9187a677fe2141d0a3e2c9ec6afe5ddf85480596ae3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-entry133-ordinary-derived-ablation-verified",
+      "kind": "source",
+      "title": "Verified ledger entry 133: Ordinary-Derived Ablation and the Framed Off-Diagonal Objective",
+      "version": "sha256:d086d663c38b2e5cfb07914bf4bfc7958f9b443e8a3fcee3ca0aecbb02d60ca7",
+      "locator": "src/ledger/20260814-133 Ordinary-Derived Ablation and the Framed Off-Diagonal Objective.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_revision_of",
+      "source_id": "source:nima-entry133-ordinary-derived-ablation-verified",
+      "target_id": "source:nima-entry133-ordinary-derived-ablation",
+      "relation_id": "rel:mariciverified_revision_of-e49ac671ae175902"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-133-ordinary-hom-acyclic",
+      "target_id": "source:nima-entry133-ordinary-derived-ablation-verified",
+      "relation_id": "rel:derived_from-c53c0927e32da7c0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:nima-133-direct-norm-value-ideal-falsifier",
+      "target_id": "source:nima-entry133-ordinary-derived-ablation-verified",
+      "relation_id": "rel:derived_from-1c90c455d5fe3686"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-133-common-ring-hom-certificate-pass",
+      "test_id": "test:nima-133-direct-norm-value-ideal-falsifier",
+      "actor": "codex:/root",
+      "outcome": "passed_scoped: rustfmt, rustc -D warnings, executable assertions, and JSON parse all passed; formal H1 is zero and the direct norm-value assignment is falsified modulo the stated ideal",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry133-ordinary-derived-ablation-verified",
+          "locator": "Evidence and Verification",
+          "paraphrase": "Final certificate SHA a73a1209... passed formatting, warning-clean compilation, execution, and JSON validation."
+        }
+      ]
+    }
+  ],
+  "digest": "3c58834fbd52dc3ba30364a012544e23e58b754dac5cffc69085d79c49c75a6e"
+}
