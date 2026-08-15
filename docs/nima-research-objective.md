@@ -2201,3 +2201,46 @@ and 131 prove the \(x_3\) filtered trace and target purity, but not the
 support/Yoneda-to-Tate connector whose reflection square defines the
 cocycle.  Restriction detects a globally typed class; an isolated local
 edge map does not manufacture it.
+
+## Target-reflection reduction after entry 140
+
+Entry 140 proves that the target half of the reflection experiment is
+already strict. The physical reflection extends to the full 215-generator
+entry-105 absolute support-PC complex and exchanges the \(D03\)
+\(x_3\)- and \(x_4\)-Cartier packets. In their oriented local bases the
+action is \(-I\), so its square is the identity.
+
+This strictness includes the complete filtered coefficient packet:
+
+\[
+\eta_3=(-q_3,-1)\longmapsto\eta_4=(-q_4,-1),
+\qquad
+[t_3]\eta_3\longmapsto[t_4]\eta_4,
+\]
+
+both repeated-normal Tor grades, the reciprocal/original pairing
+\((1,-q_3)\mapsto(1,-q_4)\), both endpoint pairs, and every lower
+Koszul--Cech term. The road-orientation and once-retained polarity signs are
+both odd, hence their target-side product is \(+1\).
+
+Therefore the first formula objective is smaller again. Do not reconstruct
+or renormalize the target purity. Construct only the endpoint-coherent
+source/support-Yoneda reflection connector with its nonzero \(Q\)-leg, then
+compare its square to the fixed strict target involution:
+
+\[
+\boxed{
+\omega_{\rm load}(f_3,f_3)
+=
+\operatorname{defect}
+\left(
+\kappa^{\rm source}_{f_3},
+\kappa^{\rm target,strict}_{f_3}
+\right)
+\pmod 2.
+}
+\]
+
+Target strictness does not imply that this number is even. The source
+connector and its endpoint two-cells remain untyped, so the global loaded
+obstruction, \(d_{\rm sp,sc}\), and \(G_{03}^{\rm Cousin}\) remain open.

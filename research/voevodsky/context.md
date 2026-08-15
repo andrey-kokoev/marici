@@ -2259,3 +2259,38 @@ equivariant connector would assume the coherence being tested.  The missing
 map must still retain the nonzero \(Q\)-leg, relative polarity conductor,
 both Tor grades, lower Cousin terms, support variance, endpoints, and
 physical normal.
+
+## 43. Physical-reflection naturality of the target edge purity
+
+Entry 140 removes the target costalk from the list of possible sources of
+the binary obstruction. The physical reflection \(f_3\) acts strictly on
+all 215 generators of the entry-105 absolute support-PC complex, fixes the
+\(D03\) long channel, and exchanges the \(x_3\) and \(x_4\) Cartier edge
+packets. In their oriented bases its local action is \(-I\), with square
+one.
+
+The exact comparison retains rather than suppresses the loaded layers:
+
+\[
+\eta_3=(-q_3,-1)\mapsto\eta_4=(-q_4,-1),
+\qquad
+[t_3]\eta_3\mapsto[t_4]\eta_4,
+\]
+
+\[
+\beta_3=(1,-q_3)\mapsto\beta_4=(1,-q_4).
+\]
+
+Both Tor grades, all lower occurrence and normal Koszul--Cech terms, and
+the endpoint exchanges \(v_{00}\leftrightarrow v_{11}\) and
+\(v_{10}\leftrightarrow v_{01}\) commute with the involution. The separate
+road-orientation and polarity signs multiply to \(+1\). Hence the
+target-side reflection square is strictly trivial.
+
+This is not a computation of \(\omega_{\rm load}\). The missing datum is now
+entirely on the source/endpoint side: an \(f_3\)-paired
+support-Yoneda-to-Tate connector with nonzero generic \(Q\)-leg and both
+endpoint comparison cells. Once it exists, compare its square against the
+fixed target involution and use entry 139 to evaluate the resulting parity.
+An odd value must come from this source/endpoint comparison, not from local
+target purity.
