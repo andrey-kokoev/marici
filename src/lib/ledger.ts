@@ -2,6 +2,9 @@ import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
 export type LedgerEntry = CollectionEntry<'ledger'>
+export const DEFAULT_AUTHOR = 'marici.Nima' as const
+export const MARICI_AUTHORS = ['marici.Nima', 'marici.Benincasa'] as const
+export type MariciAuthor = (typeof MARICI_AUTHORS)[number]
 
 export interface LedgerMeta {
   dateKey: string
@@ -11,11 +14,28 @@ export interface LedgerMeta {
   publishedAt: Date
   slug: string
   kind: string
+  authors: MariciAuthor[]
+  authorLabel: string
+  attribution: string
 }
 
 export interface LedgerRecord {
   entry: LedgerEntry
   meta: LedgerMeta
+}
+
+function authorsFor(entry: LedgerEntry, title: string): MariciAuthor[] {
+  if (entry.data.authors?.length) return [...entry.data.authors]
+  if (/\bcosmolog(?:y|ical|ies)\b/i.test(title)) return [...MARICI_AUTHORS]
+  if (entry.data.author) return [entry.data.author]
+  return [DEFAULT_AUTHOR]
+}
+
+export function formatAuthorNames(authors: readonly MariciAuthor[]): string {
+  if (authors.length === 0) return DEFAULT_AUTHOR
+  if (authors.length === 1) return authors[0]
+  if (authors.length === 2) return `${authors[0]} and ${authors[1]}`
+  return `${authors.slice(0, -1).join(', ')}, and ${authors[authors.length - 1]}`
 }
 
 function stripMarkdown(value: string): string {
@@ -61,6 +81,8 @@ function toRecord(entry: LedgerEntry): LedgerRecord | null {
   const body = entry.body ?? ''
   const title = body.match(/^#\s+(.+)$/m)?.[1]?.trim() || filenameTitle
   const slug = (dateKey + '-' + entryNumber + '-' + filenameTitle).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  const authors = authorsFor(entry, title)
+  const authorLabel = formatAuthorNames(authors)
 
   return {
     entry,
@@ -72,6 +94,9 @@ function toRecord(entry: LedgerEntry): LedgerRecord | null {
       publishedAt: dateFromKey(dateKey),
       slug,
       kind: kindFor(title, body),
+      authors,
+      authorLabel,
+      attribution: `${authorLabel} did this work`,
     },
   }
 }

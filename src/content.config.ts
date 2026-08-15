@@ -9,6 +9,8 @@ const ledger = defineCollection({
   }),
   schema: z.object({
     draft: z.boolean().optional(),
+    author: z.enum(['marici.Nima', 'marici.Benincasa']).optional(),
+    authors: z.array(z.enum(['marici.Nima', 'marici.Benincasa'])).min(1).optional(),
   }).passthrough(),
 })
 
