@@ -58,7 +58,8 @@ function toRecord(entry: LedgerEntry): LedgerRecord | null {
   if (!match) return null
 
   const [, dateKey, entryNumber, filenameTitle] = match
-  const title = entry.body.match(/^#\s+(.+)$/m)?.[1]?.trim() || filenameTitle
+  const body = entry.body ?? ''
+  const title = body.match(/^#\s+(.+)$/m)?.[1]?.trim() || filenameTitle
   const slug = (dateKey + '-' + entryNumber + '-' + filenameTitle).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
   return {
@@ -67,10 +68,10 @@ function toRecord(entry: LedgerEntry): LedgerRecord | null {
       dateKey,
       entry: Number(entryNumber),
       title,
-      description: firstParagraph(entry.body, title),
+      description: firstParagraph(body, title),
       publishedAt: dateFromKey(dateKey),
       slug,
-      kind: kindFor(title, entry.body),
+      kind: kindFor(title, body),
     },
   }
 }

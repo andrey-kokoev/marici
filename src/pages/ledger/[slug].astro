@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { record, prev, next } = Astro.props
 const contentEntry = {
   ...record.entry,
-  body: record.entry.body.replace(/^#\s+[^\r\n]+(?:\r?\n)+/, ''),
+  body: (record.entry.body ?? '').replace(/^#\s+[^\r\n]+(?:\r?\n)+/, ''),
 } as typeof record.entry
 const { Content } = await render(contentEntry)
 ---
