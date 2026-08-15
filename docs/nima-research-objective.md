@@ -2029,43 +2029,62 @@ and the older displayed matrix is exactly its signed reversed-basis form,
 not a second convention. Only the extra endpoint-unit framing
 \(F_0(v_+)=1\) is excluded by \(3k=1\).
 
-The next formula objective is to select a distinguished integral point in
-this nonempty lift space from geometry:
+Entry 136 completes the relative AW/cap experiment at carrier level and
+changes the objective. AW/cap does not select a distinguished point of the
+rank-nine lift space. It canonically constructs the roof
 
 \[
 \boxed{
-a_{\rm AD}^{\rm AW}
-\in
-\operatorname{Lift}^{\mathbb Z}_{D_3}(U,T;M_{\rm AD}),
+\mathcal R_{\rm AD}^{\rm car}:
+\quad
+U\xleftarrow[\sim]{\,g_{\rm cap}\,}
+C_{\rm tag}
+\xrightarrow{\,M_{\rm AD}\,}
+T,
 \qquad
-a_{\rm AD}^{\rm AW}\text{ induced by relative AW/cap.}
+C_{\rm tag}=
+[\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}].
 }
 \]
 
-Equivalently, retain the full extensions and point their butterfly:
+The exact barycentric census has 84 oriented flag triangles. Its three
+front and three back cap cycles have eight edges each, and three
+16-triangle collars give a strict \(D_3\)-equivariant homotopy between the
+front and back roofs. The left leg is integrally saturated, and every
+frozen full-cone solution satisfies
+
+\[
+F\,g_{\rm cap}=M_{\rm AD}.
+\]
+
+The affine rank remains nine. Thus front/back convention and AW geometry
+fix the same unpointed roof and none of the remaining affine parameters.
+
+The next formula objective is therefore not a preferred matrix
+\(U\to T\). It is an endpoint-coherent lift of this roof in the
+arrow/two-extension category:
 
 \[
 \boxed{
-\mathcal B_{\rm AD}^{\rm car}
+\widehat{\mathcal R}_{\rm AD}^{\rm car}
 \in
-\operatorname{Butterfly}_{D_3}
-(\mathbb E_F,\mathbb E_\triangle),
-\qquad
-\ell_{\rm car}
-\in
-\operatorname{Path}
-(\rho_{\mathcal B}(e_F),\beta_\triangle).
+\operatorname{Lift}_{\operatorname{Arr}^2_{D_3}}
+\left(
+\mathcal R_{\rm AD}^{\rm car};
+\mathbb E_F,\mathbb E_\triangle
+\right).
 }
 \]
 
-The chosen lift, endpoint maps, and both connector coherences must come from
-the relative barycentric AW/cap construction. They may not be selected from
-the desired \(1-r\) output, chosen arbitrarily among the nine affine
-parameters, or normalized by imposing the impossible endpoint unit.
+Equivalently, construct a pointed butterfly whose underlying roof is
+\(\mathcal R_{\rm AD}^{\rm car}\), with endpoint identities and both
+connector 2-cells explicit. A strict endpoint-identity inverse is excluded
+by \(F_0(v_+)=3k\), so the endpoint identity must live in the butterfly
+coherence rather than in a fitted degree-zero component.
 
-Only after this pointed comparison is explicit is the carrier
-\(\mathbb Z/2\)-parity defined. The loaded objective is then to lift this
-same geometrically selected point—not an arbitrary full-cone solution and
-not a rational minimal projection—through occurrence,
-independent multi-Rees, reciprocal/Borel--Moore, and PC/Cousin data before
-testing \(K_{\rm alt}\), \(q_\Sigma\), or the entry-131 residue.
+Only after this pointing exists is the carrier \(\mathbb Z/2\)-parity
+defined. The loaded objective is then to lift this same pointed roof—not an
+arbitrary rank-nine solution and not a rational minimal projection—through
+occurrence, independent multi-Rees, reciprocal/Borel--Moore, and
+PC/Cousin data before testing \(K_{\rm alt}\), \(q_\Sigma\), or the
+entry-131 residue.

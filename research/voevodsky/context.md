@@ -2135,3 +2135,39 @@ arbitrary solution or a choice fitted to \(1-r\) is inadmissible. Only after
 this pointing is explicit is the reflection parity defined. Its loaded
 extraordinary lift is the candidate for the scalar specialization
 differential and \(G_{03}^{\rm Cousin}\).
+
+## 40. Canonical AW/cap roof and endpoint-connector gap
+
+Entry 136 completes the relative AW/cap computation but overturns the
+last sentence of section 39. The canonical output is not one point of the
+rank-nine strict lift space. It is the \(D_3\)-equivariant roof
+
+\[
+U\xleftarrow[\sim]{g_{\rm cap}}
+C_{\rm tag}
+\xrightarrow{M_{\rm AD}}
+T,
+\qquad
+C_{\rm tag}=[\mathbb Z_{\rm or}\xrightarrow N P_{\rm tag}].
+\]
+
+The oriented barycentric boundary contains 84 flag triangles. For each
+long facet, front and back cap give closed 8-edge cycles joined by a
+16-triangle collar. Rotation permutes the three packets and reflection
+changes their sign, so front and back are strictly \(D_3\)-homotopic.
+The left leg is saturated integrally, while the right leg induces the
+fixed Alexander map \(M_{\rm AD}=R-R^2\).
+
+Every frozen full-cone map \(F:U\to T\) obeys
+\(F g_{\rm cap}=M_{\rm AD}\), and imposing these nine equations leaves the
+same affine rank-nine family. AW/cap therefore fixes the common roof but
+no direct representative, affine parameter, endpoint connector, or
+reflection parity.
+
+The first missing datum is now an endpoint-compatible lift of this roof in
+the arrow/two-extension category: equivalently, a pointed butterfly with
+both connector 2-cells. The strict endpoint-unit inverse is excluded by
+\(F_0(v_+)=3k\), so endpoint identity must be homotopy-coherent. Do not
+choose an arbitrary contraction or one fitted to \(1-r\). Only after this
+pointing is intrinsic should the same object be loaded with occurrence,
+multi-Rees, reciprocal/BM, and PC/Cousin data.

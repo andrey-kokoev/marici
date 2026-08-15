@@ -23,6 +23,17 @@
 //! of rank nine; an explicit ell=-1 lift is checked below.  The equation 3c=1
 //! obstructs only the extra endpoint-unit framing F0(v_+)=1, not unframed
 //! full-cone lifts or a derived roof/butterfly.
+//!
+//! The relative barycentric Alexander--Whitney cap does canonically produce
+//! the latter roof.  Its intermediate complex is
+//!
+//!     C_tag = [Z_or --N--> P_tag].
+//!
+//! Front and back caps give D3-equivariantly homotopic quasi-isomorphisms
+//! C_tag -> U, while M_AD gives C_tag -> T.  Every one of the rank-nine
+//! full-cone lifts factors this same roof.  Consequently the cap proves the
+//! canonical roof but does not select a strict U -> T point, its endpoint
+//! connector, or its reflection parity.
 
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -36,6 +47,8 @@ const DIMENSION: usize = 3;
 struct Diagonal(u8, u8);
 
 type Dissection = BTreeSet<Diagonal>;
+type BarySimplex = Vec<Dissection>;
+type BaryChain = BTreeMap<BarySimplex, Int>;
 
 #[derive(Clone, Debug)]
 struct Equation {
@@ -409,6 +422,39 @@ fn subtract(left: &Matrix, right: &Matrix) -> Matrix {
                 .collect()
         })
         .collect()
+}
+
+fn determinant(value: &Matrix) -> i128 {
+    assert!(!value.is_empty());
+    assert!(value.iter().all(|row| row.len() == value.len()));
+    let size = value.len();
+    let mut work: Vec<Vec<i128>> = value
+        .iter()
+        .map(|row| row.iter().map(|&entry| i128::from(entry)).collect())
+        .collect();
+    let mut previous_pivot = 1_i128;
+    let mut sign = 1_i128;
+    for pivot_index in 0..size.saturating_sub(1) {
+        let Some(pivot_row) = (pivot_index..size).find(|&row| work[row][pivot_index] != 0) else {
+            return 0;
+        };
+        if pivot_row != pivot_index {
+            work.swap(pivot_row, pivot_index);
+            sign = -sign;
+        }
+        let pivot = work[pivot_index][pivot_index];
+        for row in pivot_index + 1..size {
+            for column in pivot_index + 1..size {
+                let numerator =
+                    work[row][column] * pivot - work[row][pivot_index] * work[pivot_index][column];
+                assert_eq!(numerator % previous_pivot, 0);
+                work[row][column] = numerator / previous_pivot;
+            }
+            work[row][pivot_index] = 0;
+        }
+        previous_pivot = pivot;
+    }
+    sign * work[size - 1][size - 1]
 }
 
 fn check_basis_dictionary(
@@ -965,6 +1011,382 @@ fn check_full_cone_lifts(
     check_forced_mod_three_value(equations, endpoint_difference, 2, "endpoint-difference");
 }
 
+fn add_barycentric_term(chain: &mut BaryChain, simplex: BarySimplex, coefficient: Int) {
+    if coefficient == 0 {
+        return;
+    }
+    let updated = chain.get(&simplex).copied().unwrap_or(0) + coefficient;
+    if updated == 0 {
+        chain.remove(&simplex);
+    } else {
+        chain.insert(simplex, updated);
+    }
+}
+
+fn add_barycentric_chain(target: &mut BaryChain, source: &BaryChain, scalar: Int) {
+    for (simplex, &coefficient) in source {
+        add_barycentric_term(target, simplex.clone(), scalar * coefficient);
+    }
+}
+
+fn scale_barycentric_chain(value: &BaryChain, scalar: Int) -> BaryChain {
+    let mut result = BaryChain::new();
+    add_barycentric_chain(&mut result, value, scalar);
+    result
+}
+
+fn barycentric_boundary(value: &BaryChain) -> BaryChain {
+    let mut result = BaryChain::new();
+    for (simplex, &coefficient) in value {
+        for omitted in 0..simplex.len() {
+            let face = simplex
+                .iter()
+                .enumerate()
+                .filter(|(index, _)| *index != omitted)
+                .map(|(_, cell)| cell.clone())
+                .collect();
+            let sign = if omitted % 2 == 0 { 1 } else { -1 };
+            add_barycentric_term(&mut result, face, sign * coefficient);
+        }
+    }
+    result
+}
+
+fn act_barycentric_chain(value: &BaryChain, permutation: fn(u8) -> u8) -> BaryChain {
+    let mut result = BaryChain::new();
+    for (simplex, &coefficient) in value {
+        let image = simplex
+            .iter()
+            .map(|cell| permute_face(cell, permutation))
+            .collect();
+        add_barycentric_term(&mut result, image, coefficient);
+    }
+    result
+}
+
+fn cover_incidence(
+    source: &Dissection,
+    target: &Dissection,
+    vertex_gauges: &BTreeMap<Dissection, Int>,
+) -> Int {
+    assert_eq!(target.len(), source.len() + 1);
+    assert!(source.is_subset(target));
+    let added: Vec<_> = target.difference(source).copied().collect();
+    assert_eq!(added.len(), 1);
+    incidence_sign(source, target, added[0], vertex_gauges)
+}
+
+fn subdivided_facet_boundary(
+    facet: &Dissection,
+    by_size: &[Vec<Dissection>],
+    vertex_gauges: &BTreeMap<Dissection, Int>,
+) -> BaryChain {
+    let mut result = BaryChain::new();
+    for edge in &by_size[2] {
+        if !facet.is_subset(edge) {
+            continue;
+        }
+        for vertex in &by_size[3] {
+            if !edge.is_subset(vertex) {
+                continue;
+            }
+            let coefficient = cover_incidence(facet, edge, vertex_gauges)
+                * cover_incidence(edge, vertex, vertex_gauges);
+            add_barycentric_term(&mut result, vec![edge.clone(), vertex.clone()], coefficient);
+        }
+    }
+    result
+}
+
+#[allow(clippy::too_many_arguments)]
+fn check_barycentric_aw_roof(
+    by_size: &[Vec<Dissection>],
+    vertex_gauges: &BTreeMap<Dissection, Int>,
+    d_b2: &Matrix,
+    d_b1: &Matrix,
+    road_cycles: &Matrix,
+    basis: &BasisDictionary,
+    full_equations: &[Equation],
+) {
+    let top = &by_size[0][0];
+    let roads = [diagonal(1, 4), diagonal(0, 3), diagonal(2, 5)];
+
+    // The barycentric boundary fundamental chain.  Flags are ordered
+    // facet < edge < vertex, equivalently from geometric dimension 2 to 0.
+    let mut boundary_fundamental = BaryChain::new();
+    for facet in &by_size[1] {
+        for edge in &by_size[2] {
+            if !facet.is_subset(edge) {
+                continue;
+            }
+            for vertex in &by_size[3] {
+                if !edge.is_subset(vertex) {
+                    continue;
+                }
+                let coefficient = cover_incidence(top, facet, vertex_gauges)
+                    * cover_incidence(facet, edge, vertex_gauges)
+                    * cover_incidence(edge, vertex, vertex_gauges);
+                add_barycentric_term(
+                    &mut boundary_fundamental,
+                    vec![facet.clone(), edge.clone(), vertex.clone()],
+                    coefficient,
+                );
+            }
+        }
+    }
+    assert_eq!(boundary_fundamental.len(), 84);
+    assert!(boundary_fundamental
+        .values()
+        .all(|coefficient| coefficient.abs() == 1));
+    assert!(barycentric_boundary(&boundary_fundamental).is_empty());
+    assert_eq!(
+        act_barycentric_chain(&boundary_fundamental, rotate_vertex),
+        boundary_fundamental
+    );
+    assert_eq!(
+        act_barycentric_chain(&boundary_fundamental, reflect_vertex),
+        scale_barycentric_chain(&boundary_fundamental, -1)
+    );
+
+    let mut short_surface = BaryChain::new();
+    for (simplex, &coefficient) in &boundary_fundamental {
+        let facet_diagonal = *simplex[0].iter().next().expect("facet diagonal");
+        if short_index(facet_diagonal).is_some() {
+            add_barycentric_term(&mut short_surface, simplex.clone(), coefficient);
+        }
+    }
+    assert_eq!(short_surface.len(), 60);
+
+    let mut front_cycles = Vec::new();
+    let mut back_cycles = Vec::new();
+    let mut collars = Vec::new();
+    for road in roads {
+        let characteristic = |cell: &Dissection| Int::from(cell.contains(&road));
+        let mut raw_front = BaryChain::new();
+        let mut back = BaryChain::new();
+        let mut collar = BaryChain::new();
+        for (simplex, &fundamental_coefficient) in &boundary_fundamental {
+            let facet = &simplex[0];
+            let edge = &simplex[1];
+            let vertex = &simplex[2];
+            let front_coboundary = characteristic(edge) - characteristic(facet);
+            let back_coboundary = characteristic(vertex) - characteristic(edge);
+            let collar_coefficient = characteristic(vertex) - characteristic(facet);
+            add_barycentric_term(
+                &mut raw_front,
+                vec![edge.clone(), vertex.clone()],
+                fundamental_coefficient * front_coboundary,
+            );
+            add_barycentric_term(
+                &mut back,
+                vec![facet.clone(), edge.clone()],
+                fundamental_coefficient * back_coboundary,
+            );
+            add_barycentric_term(
+                &mut collar,
+                simplex.clone(),
+                fundamental_coefficient * collar_coefficient,
+            );
+        }
+
+        // Positive normal orientation changes the raw front cap by -1.
+        // It is then literally the subdivision of the oriented long-facet
+        // boundary.  The back cap is the parallel B-side dual loop.
+        let front = scale_barycentric_chain(&raw_front, -1);
+        let facet = BTreeSet::from([road]);
+        assert_eq!(
+            front,
+            subdivided_facet_boundary(&facet, by_size, vertex_gauges)
+        );
+        assert_eq!(front.len(), 8);
+        assert_eq!(back.len(), 8);
+        assert_eq!(collar.len(), 16);
+        assert!(barycentric_boundary(&front).is_empty());
+        assert!(barycentric_boundary(&back).is_empty());
+        assert!(collar.keys().all(|simplex| {
+            let facet_diagonal = *simplex[0].iter().next().expect("facet diagonal");
+            short_index(facet_diagonal).is_some()
+        }));
+
+        let mut expected_collar_boundary = back.clone();
+        add_barycentric_chain(&mut expected_collar_boundary, &front, -1);
+        assert_eq!(barycentric_boundary(&collar), expected_collar_boundary);
+        front_cycles.push(front);
+        back_cycles.push(back);
+        collars.push(collar);
+    }
+
+    let reflected_indices = [0_usize, 2, 1];
+    for index in 0..3 {
+        let rotated = (index + 1) % 3;
+        assert_eq!(
+            act_barycentric_chain(&front_cycles[index], rotate_vertex),
+            front_cycles[rotated]
+        );
+        assert_eq!(
+            act_barycentric_chain(&back_cycles[index], rotate_vertex),
+            back_cycles[rotated]
+        );
+        assert_eq!(
+            act_barycentric_chain(&collars[index], rotate_vertex),
+            collars[rotated]
+        );
+        assert_eq!(
+            act_barycentric_chain(&front_cycles[index], reflect_vertex),
+            scale_barycentric_chain(&front_cycles[reflected_indices[index]], -1)
+        );
+        assert_eq!(
+            act_barycentric_chain(&back_cycles[index], reflect_vertex),
+            scale_barycentric_chain(&back_cycles[reflected_indices[index]], -1)
+        );
+        assert_eq!(
+            act_barycentric_chain(&collars[index], reflect_vertex),
+            scale_barycentric_chain(&collars[reflected_indices[index]], -1)
+        );
+    }
+
+    // C_tag=[Z_or --N--> P_tag].  The front cap sends its top generator
+    // to minus the six-short-facet surface and its tags to the three
+    // peripheral cycles.
+    let mut front_sum = BaryChain::new();
+    let mut back_sum = BaryChain::new();
+    let mut collar_sum = BaryChain::new();
+    for index in 0..3 {
+        add_barycentric_chain(&mut front_sum, &front_cycles[index], 1);
+        add_barycentric_chain(&mut back_sum, &back_cycles[index], 1);
+        add_barycentric_chain(&mut collar_sum, &collars[index], 1);
+    }
+    let front_top = scale_barycentric_chain(&short_surface, -1);
+    assert_eq!(barycentric_boundary(&front_top), front_sum);
+    let mut back_top = front_top.clone();
+    add_barycentric_chain(&mut back_top, &collar_sum, 1);
+    assert_eq!(barycentric_boundary(&back_top), back_sum);
+    assert_eq!(act_barycentric_chain(&front_top, rotate_vertex), front_top);
+    assert_eq!(
+        act_barycentric_chain(&front_top, reflect_vertex),
+        scale_barycentric_chain(&front_top, -1)
+    );
+    assert_eq!(act_barycentric_chain(&back_top, rotate_vertex), back_top);
+    assert_eq!(
+        act_barycentric_chain(&back_top, reflect_vertex),
+        scale_barycentric_chain(&back_top, -1)
+    );
+
+    // This is the complete front/back chain homotopy:
+    // g_back-g_front=dH+Hd, with H(e_i)=H_i and
+    // H(N omega)=sum_i H_i.
+    let mut top_homotopy_difference = back_top.clone();
+    add_barycentric_chain(&mut top_homotopy_difference, &front_top, -1);
+    assert_eq!(top_homotopy_difference, collar_sum);
+
+    // Recheck the cellular C_tag chain equation and the saturated integral
+    // quasi-isomorphism.  The selected 8-by-8 minor of
+    // [d_B2 | c14 | c03] is unimodular.
+    let norm = vec![vec![1], vec![1], vec![1]];
+    let minus_short_sum = vec![vec![-1]; 6];
+    assert_eq!(
+        multiply(d_b2, &minus_short_sum),
+        multiply(road_cycles, &norm)
+    );
+    assert_eq!(multiply(d_b1, road_cycles), zero(13, 3));
+    let augmented: Matrix = (0..21)
+        .map(|row| {
+            d_b2[row]
+                .iter()
+                .copied()
+                .chain([road_cycles[row][0], road_cycles[row][1]])
+                .collect()
+        })
+        .collect();
+    assert_eq!(rational_rank(&augmented), 8);
+    let unimodular_rows = [0_usize, 1, 2, 3, 4, 6, 9, 12];
+    let unimodular_minor: Matrix = unimodular_rows
+        .iter()
+        .map(|&row| augmented[row].clone())
+        .collect();
+    assert_eq!(determinant(&unimodular_minor), -1);
+    let with_all_cycles: Matrix = (0..21)
+        .map(|row| {
+            d_b2[row]
+                .iter()
+                .copied()
+                .chain([
+                    road_cycles[row][0],
+                    road_cycles[row][1],
+                    road_cycles[row][2],
+                ])
+                .collect()
+        })
+        .collect();
+    assert_eq!(rational_rank(&with_all_cycles), 8);
+    assert_eq!(21 - rational_rank(d_b2) - rational_rank(d_b1), 2);
+
+    // The right roof leg is m_1=M_AD in the actual boundary-cycle basis.
+    // It is (1-R)R relative to entry 115''s cyclically shifted tag basis.
+    let augmentation = vec![vec![1, 1, 1]];
+    assert_eq!(multiply(&basis.physical_homology, &norm), zero(3, 1));
+    assert_eq!(
+        multiply(&augmentation, &basis.physical_homology),
+        zero(1, 3)
+    );
+    assert_eq!(
+        multiply(&basis.physical_rotation, &basis.physical_homology),
+        multiply(&basis.physical_homology, &basis.physical_rotation)
+    );
+    assert_eq!(
+        multiply(&basis.physical_reflection, &basis.physical_homology),
+        multiply(
+            &basis.physical_homology,
+            &scale(&basis.physical_reflection, -1)
+        )
+    );
+    let induced_a2_matrix = vec![vec![0, -1], vec![1, 0]];
+    assert_eq!(determinant(&induced_a2_matrix), 1);
+
+    // In the frozen full-cone system the nine peripheral equations are
+    // exactly F g_cap=m.  They leave the already proved affine rank nine.
+    let roof_equations: Vec<_> = full_equations
+        .iter()
+        .filter(|equation| equation.label.starts_with("full-H1("))
+        .collect();
+    assert_eq!(roof_equations.len(), 9);
+    for target in 0..3 {
+        for cycle in 0..3 {
+            let label = format!("full-H1({target},{cycle})");
+            let equation = roof_equations
+                .iter()
+                .find(|equation| equation.label == label)
+                .expect("roof equation");
+            let mut expected = vec![0; 80];
+            for edge in 0..21 {
+                expected[full_degree_one_variable(target, edge)] = road_cycles[edge][cycle];
+            }
+            assert_eq!(equation.coefficients, expected);
+            assert_eq!(
+                equation.right_hand_side,
+                basis.physical_homology[target][cycle]
+            );
+        }
+    }
+    let full_coefficients: Matrix = full_equations
+        .iter()
+        .map(|equation| equation.coefficients.clone())
+        .collect();
+    assert_eq!(rational_rank(&full_coefficients), 71);
+    assert_eq!(rational_rank(&append_right_hand_side(full_equations)), 71);
+    assert_eq!(80 - rational_rank(&full_coefficients), 9);
+
+    // The enumeration proves the canonical D3 roof.  It deliberately does
+    // not assert that AW supplies a contraction of Cone(g_cap), a pointed
+    // endpoint connector, or an exhaustive no-go for other geometric SDRs.
+    let canonical_direct_point_constructed = false;
+    let endpoint_connector_constructed = false;
+    let reflection_parity_defined = false;
+    assert!(!canonical_direct_point_constructed);
+    assert!(!endpoint_connector_constructed);
+    assert!(!reflection_parity_defined);
+}
+
 fn main() {
     let by_size = faces_by_size();
     let vertex_gauges = vertex_orientation_gauges(&by_size);
@@ -1117,11 +1539,20 @@ fn main() {
         &basis,
     );
     check_full_cone_lifts(&full_equations, plus_vertex_index, minus_vertex_index);
+    check_barycentric_aw_roof(
+        &by_size,
+        &vertex_gauges,
+        &d_b2,
+        &d_b1,
+        &road_cycles,
+        &basis,
+        &full_equations,
+    );
 
     println!(
         "{}",
         concat!(
-            r#"{"claim":"For the actual labelled K6 cellular quotient P=C_*(B_short)/C_*(v_+), no integral strict D3-equivariant chain map P->ker(epsilon)[1] induces the fixed primitive Alexander-dual map. This direct-minimal no-go holds in the physical road basis with M_AD=R-R^2 and, equivalently, in the signed reversed target basis used by the frozen witness. In contrast, integral D3-equivariant maps from the full cone U to the augmented target T do exist.","status":"falsified","assumptions":["K6 incidence signs and D3 actions are reconstructed from the labelled face poset with the established ambient orientation","physical road order is F14,F03,F25, with R(q_i)=q_(i+1), physical reflection fixing q0, and M_AD=R-R^2","the historical matrix [[1,-1,0],[-1,0,1],[0,1,-1]] is expressed in qbar=(-q2,-q1,-q0), not in the physical road basis","D3 covariance is strict over Z and no 1/3 localization is allowed","the endpoint-unit equation F0(v_+)=1 is not part of either the minimal or unframed full-cone system"],"factorization_test":{"basis_dictionary":"J swaps 0 and 2; qbar=-Jq; Rbar=JRJ=R^-1; sbar=JsJ; M1=-J(R-R^2)=(R-R^2)J","entry115_reconciliation":"on the actual ordered long-facet boundary cycles, (1-R)R=R-R^2","P_chain_ranks":"C2/C1/C0 = 6/21/13","P_differential_ranks":"rank d2=6, rank d1=13, H1 rank=2","direct_strict_system":"174 equations in 63 variables","direct_rational_system":"coefficient rank=augmented rank=59; affine dimension=4","direct_mod3_system":"coefficient rank=58, augmented rank=59 in both physical and signed-reversed bases","explicit_witness":"32 frozen source equations sum over F3 to left side 0 and right side 1 in the signed-reversed basis","strict_integral_minimal_projection":"empty","full_cone_system":"209 equations in 80 variables; coefficient rank=augmented rank=71; nonempty integral affine lattice of rank 9","full_cone_example":"explicit integral lift with ell=-1, F0(v_+)=0, and F0(v_-)-F0(v_+)=-1","full_cone_endpoint_formulas":"F0(v_+)=3k and F0(v_-)-F0(v_+)=2+3ell","endpoint_unit_framing_ablation":"only the extra demand F0(v_+)=1 gives 3k=1; it does not obstruct unframed U->T lifts","derived_roof_or_butterfly":"not tested and not falsified"},"counterevidence":["The full augmented cone admits integral equivariant lifts; therefore the direct-minimal obstruction must not be promoted to a full-cone nonexistence claim.","The homological complementary-boundary Alexander duality and saturated first transgression remain integral isomorphisms.","The direct rational system is nonempty, so its failure is 3-primary rather than a rank obstruction.","Forgetting F0 and requiring every edge value to lie in ker(epsilon) is exactly the extra strict projection condition that distinguishes P->K[1] from U->T."],"sharp_blocker":"Select and compare a pointed relative AW/cap framing inside the nonempty rank-nine full-cone lift lattice; existence of an unframed full-cone lift is no longer a blocker.","next_experiment":"Construct the pointed D3-equivariant relative AW/cap roof or butterfly, identify its endpoint framing and cone-connector coherences inside the full-cone lift lattice, and only then compute the residual reflection parity."}"#
+            r#"{"claim":"For the actual labelled K6 cellular quotient P=C_*(B_short)/C_*(v_+), no integral strict D3-equivariant chain map P->ker(epsilon)[1] induces the fixed primitive Alexander-dual map. This direct-minimal no-go holds in the physical road basis with M_AD=R-R^2 and, equivalently, in the signed reversed target basis used by the frozen witness. In contrast, integral D3-equivariant maps from the full cone U to the augmented target T do exist. The labelled relative barycentric Alexander--Whitney cap canonically constructs the integral D3-equivariant roof U<-C_tag->T, but it does not select one strict full-cone point or its endpoint connector.","status":"falsified","assumptions":["K6 incidence signs and D3 actions are reconstructed from the labelled face poset with the established ambient orientation","physical road order is F14,F03,F25, with R(q_i)=q_(i+1), physical reflection fixing q0, and M_AD=R-R^2","the historical matrix [[1,-1,0],[-1,0,1],[0,1,-1]] is expressed in qbar=(-q2,-q1,-q0), not in the physical road basis","D3 covariance is strict over Z and no 1/3 localization is allowed","the endpoint-unit equation F0(v_+)=1 is not part of either the minimal or unframed full-cone system"],"factorization_test":{"basis_dictionary":"J swaps 0 and 2; qbar=-Jq; Rbar=JRJ=R^-1; sbar=JsJ; M1=-J(R-R^2)=(R-R^2)J","entry115_reconciliation":"on the actual ordered long-facet boundary cycles, (1-R)R=R-R^2","P_chain_ranks":"C2/C1/C0 = 6/21/13","P_differential_ranks":"rank d2=6, rank d1=13, H1 rank=2","direct_strict_system":"174 equations in 63 variables","direct_rational_system":"coefficient rank=augmented rank=59; affine dimension=4","direct_mod3_system":"coefficient rank=58, augmented rank=59 in both physical and signed-reversed bases","explicit_witness":"32 frozen source equations sum over F3 to left side 0 and right side 1 in the signed-reversed basis","strict_integral_minimal_projection":"empty","full_cone_system":"209 equations in 80 variables; coefficient rank=augmented rank=71; nonempty integral affine lattice of rank 9","full_cone_example":"explicit integral lift with ell=-1, F0(v_+)=0, and F0(v_-)-F0(v_+)=-1","full_cone_endpoint_formulas":"F0(v_+)=3k and F0(v_-)-F0(v_+)=2+3ell","endpoint_unit_framing_ablation":"only the extra demand F0(v_+)=1 gives 3k=1; it does not obstruct unframed U->T lifts","derived_roof_or_butterfly":"not tested and not falsified","C_tag":"degrees 2/1 are Z_or --N--> P_tag, with N=(1,1,1)^T and oriented tag reflection","barycentric_boundary":"84 oriented flag triangles; integral fundamental cycle","AW_front_caps":"three positive-normalized closed 8-edge cycles equal to the subdivisions of the oriented long-facet boundaries","AW_back_caps":"three closed 8-edge B-side dual loops","AW_front_back_homotopy":"three 16-triangle collars H_i with dH_i=z_i_back-z_i_front; top component differs by sum H_i","AW_D3_covariance":"front caps, back caps, collars, and top chains are strictly rotation-covariant and reflection-odd","g_cap_quasi_isomorphism":"integral and saturated; [d_B2|c14|c03] has an explicit 8-by-8 minor of determinant -1","roof_right_leg":"m_1=M_AD=R-R^2, m_2=m_0=0; mN=0 and epsilon*m=0","canonical_AW_roof":"proved: U <-~ C_tag -> T","AW_roof_factorization":"all nine frozen peripheral equations are exactly F*g_cap=m, while the full solution lattice remains affine rank 9","canonical_strict_U_to_T_point":"unconstructed; AW fixes no affine parameter beyond the already frozen roof restriction","endpoint_connector":"unconstructed; strict endpoint identity remains excluded by 3k=1","reflection_parity":"undefined until an endpoint-compatible connector/contraction is chosen"},"counterevidence":["The full augmented cone admits integral equivariant lifts; therefore the direct-minimal obstruction must not be promoted to a full-cone nonexistence claim.","The homological complementary-boundary Alexander duality and saturated first transgression remain integral isomorphisms.","The direct rational system is nonempty, so its failure is 3-primary rather than a rank obstruction.","Forgetting F0 and requiring every edge value to lie in ker(epsilon) is exactly the extra strict projection condition that distinguishes P->K[1] from U->T.","Front and back AW caps are D3-equivariantly chain-homotopic and every full lift factors their common roof, so changing AW convention does not select or toggle a strict point.","No exhaustive no-go for additional geometric strong-deformation-retract algorithms is claimed."],"sharp_blocker":"Construct an endpoint-compatible D3-equivariant contraction/connector for the acyclic complement of g_cap, or an equivalent pointed butterfly. The canonical unpointed AW roof is proved; a canonical strict U->T point and its reflection parity are not.","next_experiment":"Construct the endpoint connector and both butterfly coherence 2-cells over the proved AW roof, then test whether that extra geometry selects one integral member of the affine rank-nine full-cone lattice and determines its reflection parity."}"#
         )
     );
 }
