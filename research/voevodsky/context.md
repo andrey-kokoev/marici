@@ -2342,11 +2342,15 @@ The middle term permits the marked-gallery lifts separately on the two
 normalization sheets.  The first term enforces endpoint recollement, the
 based nonzero \(Q\)-leg, the full Tate window, positive multi-Rees support,
 extraordinary variance, and the once-relative polarity line.  The quotient
-records their descent defect.  The aspirational intrinsic class is then
+records their descent defect.  If
+\(r_{\partial,Q}:\operatorname{Map}_{\rm norm}\to
+\operatorname{Map}_{\rm defect}\) is the future endpoint/\(Q\) restriction,
+the aspirational intrinsic class is then
 
 \[
 [\alpha]_{\rm adm}
-=\partial[(\beta_+,-\beta_-)\otimes L_{\rm pol}],
+=\partial_{\rm map}
+\bigl[r_{\partial,Q}((\beta_+,-\beta_-)\otimes L_{\rm pol})\bigr],
 \]
 
 not an arbitrarily chosen element of the unrestricted Hom complex.  This
@@ -2361,3 +2365,67 @@ ordinary gallery shadow and the target packet have square one.  Therefore
 the remaining \(\mathbb Z/2\) obstruction is exactly the endpoint descent
 of the sheetwise gallery lift: whether its reflected pair closes or differs
 by the unique endpoint loop.
+
+## 45. The conductor Bockstein fixes the transgression, not its input
+
+Entry 141 constructs the coefficient shadow of the sequence in Section 44.
+For the physical \(D_3\) transport group, let
+\[
+P_{\rm sh}=\mathbb Z\langle e_+,e_-\rangle
+\]
+with rotations preserving the sheets and \(f_3\) exchanging them.  The
+constant part of entry 93's normalization--conductor sequence is
+\[
+\boxed{
+0\to\mathbb Z\xrightarrow{\Delta}P_{\rm sh}
+\xrightarrow{\operatorname{diff}}\mathbb Z_{\rm or}\to0.
+}
+\]
+It is nonsplit integrally: an equivariant section would require
+\(1\mapsto(a,-a)\) with \(2a=1\).
+
+Its connecting homomorphism is the isomorphism
+\[
+\boxed{
+\partial_{\rm pol}:
+H^1(D_3;\mathbb Z_{\rm or})
+\xrightarrow{\sim}H^2(D_3;\mathbb Z).
+}
+\]
+For reflection parity \(p(g)\), lift \(p\) to the positive sheet.  The
+coboundary of that lift is
+\[
+\Delta\,c(g,h),
+\qquad
+c(g,h)=\frac{p(g)+p(h)-p(gh)}2,
+\qquad
+c(f_3,f_3)=1.
+\]
+Thus entry 139's loaded obstruction generator is literally the conductor
+Bockstein of the carrier endpoint-parity generator.
+
+This \(\partial_{\rm pol}\) is the coefficient shadow of the future loaded
+mapping-complex connecting map \(\partial_{\rm map}\); it is not a substitute
+for constructing \(\partial_{\rm map}\) itself.
+
+The construction target is consequently smaller than a new arbitrary
+mapping complex.  The coefficient sequence and transgression are fixed.
+The only geometric datum still absent is
+\[
+r_{\partial,Q}
+\]
+on the actual sheetwise gallery correspondence, with the based \(Q\)-leg and
+both endpoint connector cells retained.  Put
+\[
+p_{\partial,Q}
+=
+\bigl[r_{\partial,Q}((\beta_+,-\beta_-)\otimes L_{\rm pol})\bigr].
+\]
+Then
+\[
+\omega_{\rm load}=\partial_{\rm pol}(p_{\partial,Q}).
+\]
+Parity zero yields the unique loaded lift; parity one yields nonexistence.
+The conductor theorem does not choose that parity.  It proves only that once
+the endpoint defect is known, no further full-\(D_3\) cocycle calculation is
+needed.
