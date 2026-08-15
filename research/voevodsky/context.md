@@ -2032,3 +2032,51 @@ nearby-cycle category and compute this admissible \(H^1\) before imposing any
 normalization.  Zero falsifies the synthesis; a primitive rank-one module
 gives uniqueness up to orientation; higher rank or torsion demands additional
 coherence.  Forgetting support/\(Q\) or the Tate framing must kill the class.
+
+## 38. Framed lift space and the relative AW reference-lift gap
+
+Entry 134 corrects the preceding rank test.  The support/Yoneda and Tate
+objects are fixed two-extensions.  Their comparison is therefore the path
+space
+
+\[
+\mathcal L_{\rm sp}
+=
+\operatorname{Path}
+\left(
+\rho_{\rm PL}^{!,{\rm PC}}(e_F),
+\Phi_{\rm nc}(\beta_\triangle)
+\right).
+\]
+
+Its nonemptiness is the degree-two equation
+
+\[
+\omega_{\rm sp}
+=
+\rho_{\rm PL}^{!,{\rm PC}}(e_F)
+-
+\Phi_{\rm nc}(\beta_\triangle)
+=0.
+\]
+
+Only after this equation holds do lift components form an
+\(\operatorname{Ext}^1\)-torsor.  Thus zero \(\operatorname{Ext}^1\) gives a
+unique component, while rank one gives an affine family.  Neither statement
+decides existence.
+
+At carrier level the obstruction already vanishes, but the lift space is an
+unpointed \(\mathbb Z/2\)-torsor.  The current labelled incidence and
+orientation data determine \(1-r\), not a chain homotopy comparing the two
+extensions.  The first finite missing datum is an explicit
+\(D_3\)-equivariant relative Alexander--Whitney diagonal and PL cap for the
+boundary triad, including the relative quotient and endpoint conventions.
+Its mod-two reflection defect would select or distinguish the two carrier
+parities.
+
+At loaded level the two maps are not yet points of one mapping space.  Hence
+\(\omega_{\rm sp}\), the lift torsor, and the separate support/\(Q\) and
+Tate ablations are undefined.  The fully ordinary joint ablation remains
+contractible.  Build the finite relative cap first, load that same comparison
+with the positive-support PC/Cousin data second, and only then test
+\(K_{\rm alt}\), \(q_\Sigma\), and the entry-131 residue.
