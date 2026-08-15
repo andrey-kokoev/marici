@@ -26,7 +26,7 @@ export interface LedgerRecord {
 
 function authorsFor(entry: LedgerEntry, title: string): MariciAuthor[] {
   if (entry.data.authors?.length) return [...entry.data.authors]
-  if (/\bcosmolog(?:y|ical|ies)\b/i.test(title)) return [...MARICI_AUTHORS]
+  if (/\bcosmolog(?:y|ical|ies)\b/i.test(title)) return [MARICI_AUTHORS[1]]
   if (entry.data.author) return [entry.data.author]
   return [DEFAULT_AUTHOR]
 }
