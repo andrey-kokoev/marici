@@ -2171,3 +2171,50 @@ both connector 2-cells. The strict endpoint-unit inverse is excluded by
 choose an arbitrary contraction or one fitted to \(1-r\). Only after this
 pointing is intrinsic should the same object be loaded with occurrence,
 multi-Rees, reciprocal/BM, and PC/Cousin data.
+
+## 41. Physical polarity loading changes the order of obstruction theory
+
+Entry 138 proves a coefficient-level simplification.  On the \(D_3\)
+transport orbit \((F_{14},F_{03},F_{25})\), take
+\(r=\rho^2\) and \(s=\rho^3\sigma_0\).  Both the road-orientation and
+polarity characters have values \((+1,-1)\) on \((r,s)\), so
+
+\[
+\chi_N=\chi_{\rm or}\chi_{\rm pol}=1
+\]
+
+on this triad group.  An exact normalized-bar and
+Lyndon--Hochschild--Serre calculation gives
+
+\[
+\begin{array}{c|cc}
+&H^1&H^2\\
+\hline
+\mathbb Z_{\rm or}&\mathbb Z/2&\mathbb Z/3\\
+\mathbb Z_{\chi_N}&0&\mathbb Z/2.
+\end{array}
+\]
+
+Hence a once-relatively-polarity-loaded butterfly has no residual choice of
+component if it exists, but it has a possible binary obstruction to
+existence.  This does not follow for symmetric loading of both mapping
+endpoints, where the polarity line cancels in internal Hom.  Nor does the
+actual \(D03\) stabilizer certify the separate factors; it sees only their
+product.
+
+The economical objective is now to load the unpointed roof itself and form
+
+\[
+\omega_{\rm load}
+\in
+\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\chi_N})
+\simeq\mathbb Z/2
+\]
+
+from two endpoint-coherent loaded two-extension maps.  If this class
+vanishes, the loaded path component is unique because \(H^1=0\); if it is
+nonzero, the proposed synthesis fails at this stage.  The known zero carrier
+class lies in \(\mathbb Z/3\) and cannot be transferred to the loaded
+group.  The two loaded maps, and therefore \(\omega_{\rm load}\), remain
+unconstructed.  Do not select a carrier parity before this test.

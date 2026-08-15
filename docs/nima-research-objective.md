@@ -2088,3 +2088,77 @@ arbitrary rank-nine solution and not a rational minimal projection—through
 occurrence, independent multi-Rees, reciprocal/Borel--Moore, and
 PC/Cousin data before testing \(K_{\rm alt}\), \(q_\Sigma\), or the
 entry-131 residue.
+
+## Physical-polarity ordering correction after entry 138
+
+Entry 138 shows that the last ordering is still stronger than necessary.
+For the \(D_3\) transport symmetry of the long-channel triad, generated on
+the six fusion labels by
+
+\[
+r=\rho^2,
+\qquad
+s=\rho^3\sigma_0,
+\]
+
+both the road-orientation line and the independent polarity line are
+reflection-sign modules:
+
+\[
+(\chi_{\rm or}(r),\chi_{\rm or}(s))=(+1,-1),
+\qquad
+(\chi_{\rm pol}(r),\chi_{\rm pol}(s))=(+1,-1).
+\]
+
+Their relative product is therefore trivial.  The exact integral
+cohomology changes from
+
+\[
+H^1(D_3;\mathbb Z_{\rm or})=\mathbb Z/2,
+\qquad
+H^2(D_3;\mathbb Z_{\rm or})=\mathbb Z/3
+\]
+
+to
+
+\[
+H^1(D_3;\mathbb Z_{\chi_N})=0,
+\qquad
+H^2(D_3;\mathbb Z_{\chi_N})=\mathbb Z/2.
+\]
+
+This is the triad transport group, not the literal two-element stabilizer of
+the single \(D03\) channel.  The conclusion also requires **relative**
+loading by \(L_{\rm pol}\) exactly once.  Symmetric loading of both mapping
+endpoints cancels in internal Hom and leaves the carrier torsor unchanged.
+
+The corrected order is therefore:
+
+1. retain the canonical unpointed roof
+   \(U\xleftarrow\sim C_{\rm tag}\to T\);
+2. construct both endpoint-coherent two-extension maps with the polarity
+   conductor already retained;
+3. compute their difference
+
+   \[
+   \boxed{
+   \omega_{\rm load}
+   \in
+   \operatorname{Ext}^2_{\mathbb Z[D_3]}
+   (\mathbb Z,\mathbb Z_{\chi_N})
+   \simeq\mathbb Z/2;
+   }
+   \]
+
+4. if \(\omega_{\rm load}=0\), use the unique loaded lift component,
+   since its acting \(H^1\) vanishes; if \(\omega_{\rm load}=1\), reject
+   the proposed loading.
+
+Do not choose the carrier reflection parity first.  The zero carrier
+obstruction belongs to a different \(\mathbb Z/3\) coefficient group and
+does not determine \(\omega_{\rm load}\).  Entries 92--94 prove the
+character and associated-grade symbol, while entries 134--136 prove the
+unpointed carrier roof; they do not yet place the two loaded endpoint maps in
+one support-PC mapping category.  Constructing those maps and evaluating
+\(\omega_{\rm load}\) is now the first formula objective before
+\(d_{\rm sp,sc}\) or \(G_{03}^{\rm Cousin}\) can be assembled.
