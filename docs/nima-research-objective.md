@@ -1986,3 +1986,86 @@ a constructed geometric lift to specified trivializations.  Their domains
 and defect arrows are currently untyped, so their ranks are undefined.  Only
 the fully ordinary joint ablation is presently defined, and entry 133 proves
 it contractible.
+
+## Minimal/full-cone correction after entry 135
+
+Entry 135 separates the minimal projection problem from the augmented cone
+problem. For
+
+\[
+P_\partial=C_*(B_{\rm short})/C_*(v_+),
+\qquad
+K=\ker(\epsilon:P_{\rm road}\to\mathbb Z),
+\]
+
+there is no integral strict \(D_3\)-equivariant chain map
+
+\[
+P_\partial\longrightarrow K[1]
+\]
+
+inducing the fixed saturated Alexander isomorphism. The exact 174-by-63
+system is rationally soluble, but its reduction modulo \(3\) is inconsistent.
+This is the chain-level form of the old warning against splitting the
+augmented triangle with \(1/3\).
+
+That no-go must not be promoted to the full augmented diagrams. For
+
+\[
+U=\operatorname{Cone}(C(v_+)\to C(B_{\rm short})),
+\qquad
+T=\operatorname{Cone}(P_{\rm road}\xrightarrow\epsilon\mathbb Z),
+\]
+
+the frozen 209-by-80 integral system has coefficient and augmented rank 71.
+It therefore has an affine rank-nine family of solutions, including an
+explicit integral lift. The physical peripheral map is
+
+\[
+M_{\rm AD}=R-R^2,
+\]
+
+and the older displayed matrix is exactly its signed reversed-basis form,
+not a second convention. Only the extra endpoint-unit framing
+\(F_0(v_+)=1\) is excluded by \(3k=1\).
+
+The next formula objective is to select a distinguished integral point in
+this nonempty lift space from geometry:
+
+\[
+\boxed{
+a_{\rm AD}^{\rm AW}
+\in
+\operatorname{Lift}^{\mathbb Z}_{D_3}(U,T;M_{\rm AD}),
+\qquad
+a_{\rm AD}^{\rm AW}\text{ induced by relative AW/cap.}
+}
+\]
+
+Equivalently, retain the full extensions and point their butterfly:
+
+\[
+\boxed{
+\mathcal B_{\rm AD}^{\rm car}
+\in
+\operatorname{Butterfly}_{D_3}
+(\mathbb E_F,\mathbb E_\triangle),
+\qquad
+\ell_{\rm car}
+\in
+\operatorname{Path}
+(\rho_{\mathcal B}(e_F),\beta_\triangle).
+}
+\]
+
+The chosen lift, endpoint maps, and both connector coherences must come from
+the relative barycentric AW/cap construction. They may not be selected from
+the desired \(1-r\) output, chosen arbitrarily among the nine affine
+parameters, or normalized by imposing the impossible endpoint unit.
+
+Only after this pointed comparison is explicit is the carrier
+\(\mathbb Z/2\)-parity defined. The loaded objective is then to lift this
+same geometrically selected point—not an arbitrary full-cone solution and
+not a rational minimal projection—through occurrence,
+independent multi-Rees, reciprocal/Borel--Moore, and PC/Cousin data before
+testing \(K_{\rm alt}\), \(q_\Sigma\), or the entry-131 residue.
