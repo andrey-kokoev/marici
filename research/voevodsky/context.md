@@ -2080,3 +2080,58 @@ Tate ablations are undefined.  The fully ordinary joint ablation remains
 contractible.  Build the finite relative cap first, load that same comparison
 with the positive-support PC/Cousin data second, and only then test
 \(K_{\rm alt}\), \(q_\Sigma\), and the entry-131 residue.
+
+## 39. Minimal Alexander no-go and integral full-cone lifts
+
+Entry 135 now distinguishes the minimal edge-only map from the full
+augmented cone. Put
+
+\[
+P_\partial=C_*(B_{\rm short})/C_*(v_+),
+\qquad
+K=\ker(P_{\rm road}\xrightarrow\epsilon\mathbb Z).
+\]
+
+The actual labelled complex has ranks \(6/21/13\), differential ranks
+\(6/13\), and \(H_1(P_\partial)=\mathbb Z^2\).  A strict map
+\(P_\partial\to K[1]\) is a \(3\times21\) matrix.  Chain compatibility,
+landing in \(K\), strict \(D_3\) covariance, and the frozen saturated
+Alexander values give 174 equations in 63 variables.
+
+Over \(\mathbb Q\) the system has rank 59 and affine dimension four.  Modulo
+three its coefficient rank is 58 while its augmented rank is 59.  An
+explicit 32-equation certificate gives \(0=1\). Thus the strict integral
+minimal projection does not exist. Homological Alexander duality survives.
+
+In the physical road basis its map is \(M_{\rm AD}=R-R^2\); the older
+displayed matrix is the signed reversed-basis form
+\(-J M_{\rm AD}=M_{\rm AD}J\). The basis issue therefore does not affect the
+no-go.
+
+For the augmented cones
+
+\[
+U=\operatorname{Cone}(C(v_+)\to C(B_{\rm short})),
+\qquad
+T=\operatorname{Cone}(P_{\rm road}\xrightarrow\epsilon\mathbb Z),
+\]
+
+the 209-by-80 strict system is integrally nonempty: both ranks are 71, so
+the solution space has affine rank nine, and an explicit \(\ell=-1\) lift
+exists. Its endpoint values satisfy
+
+\[
+F_0(v_+)=3k,\qquad
+F_0(v_-)-F_0(v_+)=2+3\ell.
+\]
+
+Thus \(3k=1\) obstructs only an added endpoint-unit framing. It is not a
+full-cone no-go.
+
+The immediate experiment is now sharper: construct the relative AW/cap map
+directly on \(U\to T\) and prove that it selects a distinguished integral
+point in this rank-nine lift space, with both connector coherences. An
+arbitrary solution or a choice fitted to \(1-r\) is inadmissible. Only after
+this pointing is explicit is the reflection parity defined. Its loaded
+extraordinary lift is the candidate for the scalar specialization
+differential and \(G_{03}^{\rm Cousin}\).

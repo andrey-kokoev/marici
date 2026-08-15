@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_97464610-48af-4e5a-8176-0c0de92722f0",
+  "status": "submitted",
+  "actor": "Codex",
+  "authority_basis": {
+    "kind": "user_authorized_research",
+    "summary": "The user asked to continue the Marici research program and explicitly requested use of the epistemic-graph MCP."
+  },
+  "idempotency_key": "marici-entry135-strict-ad-no-go-v1",
+  "expected_ledger_head": "0ee271b8936604c039efc3a078cae44e0727d4bffb40641b60d92a8aa0fb65cc",
+  "created_at": "2026-08-15T01:30:13.8940466Z",
+  "content_fingerprint": "a89cdc68ce86e4d134ddbeab4698b66203c547a76ea6dff4ae665cb575d2ca01",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-entry135-strict-alexander-no-go",
+      "kind": "source",
+      "title": "Ledger entry 135: Strict Alexander Projection No-Go and the Integral Butterfly Objective",
+      "version": "sha256:0c2d3b1c6b2982d9d4bfdcbd99535a09770e150c8dbba3dab207f10cefaebb71",
+      "locator": "src/ledger/20260814-135 Strict Alexander Projection No-Go and the Integral Butterfly Objective.md",
+      "summary": "Exact scoped falsifier for a minimal strict integral D3 Alexander projection, with the derived butterfly objective retained."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-135-strict-alexander-projection-no-go",
+      "kind": "claim",
+      "title": "The minimal integral D3-equivariant Alexander projection does not exist although the homological Alexander isomorphism survives",
+      "status": "proved_no_go",
+      "summary": "For P=C_*(B_short)/C_*(v_+) and K=ker epsilon, the strict chain-map system is rationally consistent but inconsistent modulo 3; only a roof or butterfly remains viable."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nima-135-integral-ad-system-mod3",
+      "kind": "test",
+      "title": "Solve the frozen 174-by-63 strict Alexander chain-map system over Q and F3",
+      "status": "completed",
+      "summary": "Require chain compatibility, landing in ker epsilon, strict D3 covariance, and the independently fixed saturated H1 map; reject on a mod-3 rank jump or explicit 0=1 certificate."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-135-strict-alexander-projection-no-go",
+      "target_id": "source:nima-entry135-strict-alexander-no-go",
+      "relation_id": "rel:derived_from-dc7dbce3ef5e3a6b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-135-integral-ad-system-mod3",
+      "target_id": "claim:nima-135-strict-alexander-projection-no-go",
+      "relation_id": "rel:tests-af1fa19700f189b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:nima-135-strict-alexander-projection-no-go",
+      "target_id": "problem:nima-134-relative-aw-reference-lift",
+      "relation_id": "rel:addresses-a70bf9aa716dddec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "claim:nima-135-strict-alexander-projection-no-go",
+      "target_id": "claim:nima-134-framed-lift-space-theorem",
+      "relation_id": "rel:maricirefines-f19cfffbd6145bc3"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-135-integral-ad-system-mod3",
+      "test_id": "test:nima-135-integral-ad-system-mod3",
+      "actor": "Codex",
+      "outcome": "falsified_strict_minimal_map",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry135-strict-alexander-no-go",
+          "locator": "research/voevodsky/check_k6_strict_ad_chain_map.rs#sha256=f82eeadad018d829f52c7bc1166550e54317ffa559c5b016b738bdd23e9616f6",
+          "paraphrase": "The exact system has rational rank 59 and affine dimension four, but modulo 3 its coefficient rank is 58 and its augmented rank is 59; a fixed 32-row combination proves 0=1."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:nima-134-aw-problem-refined-after-135",
+      "subject_id": "problem:nima-134-relative-aw-reference-lift",
+      "judgment": "open_refined_to_integral_butterfly",
+      "actor": "Codex",
+      "reason": "A direct projection on the minimal cellular quotient is impossible integrally; the remaining admissible construction is a geometrically forced roof or butterfly of the full augmented support and Tate two-extensions.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry135-strict-alexander-no-go",
+          "locator": "src/ledger/20260814-135 Strict Alexander Projection No-Go and the Integral Butterfly Objective.md",
+          "paraphrase": "Entry 135 isolates a 3-primary strictification obstruction while preserving the homological Alexander map and the derived lift-space objective."
+        }
+      ]
+    }
+  ],
+  "digest": "f8070e30e33039430bb88880a9be03999bec293cc67234a5147275bf3cc0615d"
+}
