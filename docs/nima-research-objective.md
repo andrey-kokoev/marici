@@ -1854,3 +1854,71 @@ experiment is therefore only the new two-sheet-compatible extraordinary
 off-diagonal, not another local residue, sign search, fitted top, or rational
 splitting.  This split-carrier reduction does not classify arbitrary
 nonsplit extensions or alternative filtrations.
+
+## Ordinary-derived ablation after entry 133
+
+Entry 133 adds a necessary correction to the preceding formula.  After the
+explicit common multi-Rees coefficient base change, the inherited absolute
+mixed target is integrally and \(D_3\)-equivariantly contractible.  For the
+three inherited Morse sectors,
+
+\[
+dm_i=q_i-x_i\xi_i,\qquad dq_i=x_ib_i,\qquad d\xi_i=b_i,
+\]
+
+the contraction is
+
+\[
+h(b_i)=\xi_i,\qquad h(q_i)=m_i,\qquad dh+hd=1.
+\]
+
+The minimal generated invariant block
+\(R H_\Sigma\to R\,dH_\Sigma\) is contractible as well.  Consequently,
+
+\[
+H^\bullet\underline{\operatorname{Hom}}_{R,D_3}^{\rm strict}
+(\mathcal C_{{\rm nc},R}^{\rm mR},\mathcal M_F)=0
+\]
+
+after forgetting support, endpoint recollement, and the based \(Q\)-leg.
+Thus a raw ordinary degree-one cocycle can make the displayed block matrix
+square to zero, but it is removable by a lower-triangular change of splitting
+and is not the intrinsic extension datum.
+
+The ordinary formula is therefore ruled out as an intrinsic class.  The next
+candidate objective is
+
+\[
+\boxed{
+[\alpha_{\rm nc,abs}]_{\rm adm}
+\in
+\operatorname{Ext}^1_{\mathscr D_{\rm PC,F}^{D_3}(R)}
+(\Phi_{\rm nc}\mathcal C_{{\rm nc},R}^{\rm mR},
+\mathcal M_{\rm rel}^{!}).
+}
+\]
+
+The support-realized PC/filtered category
+\(\mathscr D_{\rm PC,F}^{D_3}(R)\), the realization functor
+\(\Phi_{\rm nc}\), and the endpoint-relative extraordinary target
+\(\mathcal M_{\rm rel}^{!}\) must be constructed before this group is
+computed.  Their admissible maps and homotopies must retain the full Tate
+window, \(F_0\subset F_1\subset F_2\), the based marked-exit quotient,
+endpoint recollement, independent Rees conormal lines, extraordinary
+variance, and all orientation characters.  They must be defined
+independently of the desired \(K_{\rm alt}\), \(q_\Sigma\), and entry-131
+residue values.
+
+The next decisive test is the rank of this admissible \(H^1\) before any
+output normalization:
+
+\[
+0\Rightarrow\text{falsified},\qquad
+R\Rightarrow\text{unique up to orientation},\qquad
+\operatorname{rank}>1\text{ or torsion}\Rightarrow
+\text{missing coherence}.
+\]
+
+Forgetting either the support/\(Q\) framing or the Tate-window framing must
+send any surviving class to zero.  A class that survives either ablation is
+not the sought secondary specialization datum.
