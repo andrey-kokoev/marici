@@ -21,6 +21,7 @@ positive, positive_sha = load("generic_lower_positive_chain_census_result.json")
 gram, gram_sha = load("fixed_base_gram_orientation_cover_result.json")
 soft, soft_sha = load("soft_gram_overlap_census_result.json")
 unmarked, unmarked_sha = load("unmarked_cm_boundary_census_result.json")
+periods, periods_sha = load("all_lower_source_periods_result.json")
 
 assert collision["schema"] == "marici.benincasa.generic_lower_collision.v1"
 assert collision_sha == "58810c9a360b74a5bc5ed713f40879a4ef98e096bceaa3d9ea5cae2e0074a5ad"
@@ -31,6 +32,16 @@ assert gram["semisimple_monodromy"] == -1
 assert gram["unipotent_logarithm_N"] == 0
 assert soft["status"] == "pass" and soft["new_carrier_datum"] is False
 assert unmarked["status"] == "pass" and unmarked["new_carrier_datum"] is False
+assert periods["status"] == "pass"
+assert periods["finite_pairs_in_frozen_sector"] == 5
+assert periods["irreducible_component_occurrences_in_frozen_sector"] == 50
+assert periods["cyclic_irreducible_component_occurrences"] == 150
+assert periods["generic_period_status_counts_one_sector"] == {
+    "finite_nonzero": 50,
+    "endpoint_model_required": 0,
+    "source_weight_zero": 0,
+    "source_pole_overlap": 0,
+}
 
 site = {
     "P1 - X1", "P1 + X1",
@@ -199,6 +210,7 @@ result = {
         "fixed_base_gram_orientation_cover_result.json": gram_sha,
         "soft_gram_overlap_census_result.json": soft_sha,
         "unmarked_cm_boundary_census_result.json": unmarked_sha,
+        "all_lower_source_periods_result.json": periods_sha,
     },
     "cyclic_sector_count": 3,
     "unique_radicand_types_per_sector": 4,
@@ -209,6 +221,7 @@ result = {
     "parallel_coincidence_occurrences": parallel_coincidence_occurrences,
     "triple_marked_support_occurrences": triple_marked_support_occurrences,
     "all_marked_collision_PL_intersections": 0,
+    "all_marked_collision_local_periods": "finite_nonzero before PL projection",
     "only_generic_physically_active_radical_component": "fixed-base Gram orientation Kummer",
     "active_monodromy": {"T_s": -1, "T_u": 1, "N": 0},
     "unmarked_boundary_types": {
