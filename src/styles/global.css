@@ -75,3 +75,219 @@ h1 em { color: var(--ochre); font-family: Georgia, serif; font-weight: 500; }
 :focus-visible { outline: 2px solid var(--ochre); outline-offset: 4px; }
 @media (max-width: 860px) { .hero, .section-heading { grid-template-columns: 1fr; } .authority-strip, .dimension-grid { grid-template-columns: 1fr; } .hero { min-height: auto; } }
 @media (max-width: 520px) { .header-mode { display: none; } .site-header { grid-template-columns: 1fr; padding-block: 10px; } nav { justify-self: start; margin-top: 10px; } .hero, .section-shell, .snapshot-callout { width: min(100% - 28px, 1180px); } .site-footer { flex-direction: column; } }
+
+/* Resident's Ledger — shared structure with narada.space. */
+.ledger-page {
+  width: min(1060px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.ledger-page h1 {
+  max-width: 760px;
+}
+
+.ledger-count {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font: 650 0.72rem/1.3 Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.article-card {
+  display: block;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+
+.article-card:hover,
+.article-card:focus-visible {
+  border-color: var(--ochre);
+  background: var(--panel-raised);
+}
+
+.article-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.article-card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.entry-no {
+  color: var(--ochre);
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--ochre);
+  background: color-mix(in srgb, var(--ochre) 16%, transparent);
+  font-size: 0.78rem;
+}
+
+.ledger-status-inline {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.article {
+  width: min(820px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.article-nav-link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  max-width: 48%;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.article-nav-link:hover {
+  color: var(--ochre);
+}
+
+.article-nav-link .arrow {
+  font-size: 1rem;
+}
+
+.article-nav-link .nav-label {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-nav-link .nav-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article-nav-link.next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.article-nav-link.disabled {
+  visibility: hidden;
+}
+
+.article-header {
+  margin-bottom: 32px;
+}
+
+.article-header h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.article-body {
+  font-size: 1.05rem;
+}
+
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-body pre {
+  overflow-x: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-raised);
+}
+
+.article-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.article-body :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  background: var(--panel-raised);
+}
+
+.article-body blockquote {
+  margin: 1.4rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 3px solid var(--ochre);
+  color: var(--muted);
+}
+
+.ledger-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 0 0 24px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ochre);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.ledger-status dt {
+  color: var(--ochre);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ledger-status dd {
+  margin: 2px 0 0;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 520px) {
+  .article-card {
+    padding: 18px;
+  }
+
+  .article-nav-link {
+    max-width: 46%;
+  }
+}

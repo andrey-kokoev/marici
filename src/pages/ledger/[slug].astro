@@ -1,0 +1,59 @@
+---
+import { render } from 'astro:content'
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { getPublishedLedger } from '../../lib/ledger'
+
+export async function getStaticPaths() {
+  const records = await getPublishedLedger()
+  return records.map((record, index) => ({
+    params: { slug: record.meta.slug },
+    props: {
+      record,
+      prev: records[index - 1]?.meta,
+      next: records[index + 1]?.meta,
+    },
+  }))
+}
+
+const { record, prev, next } = Astro.props
+const contentEntry = {
+  ...record.entry,
+  body: record.entry.body.replace(/^#\s+[^\r\n]+(?:\r?\n)+/, ''),
+} as typeof record.entry
+const { Content } = await render(contentEntry)
+---
+<SiteLayout
+  title={record.meta.title + ' · Marici'}
+  description={record.meta.description}
+>
+  <article class="article ledger-entry">
+    <nav class="article-nav" aria-label="Ledger navigation">
+      {prev
+        ? <a class="article-nav-link prev" href={'/ledger/' + prev.slug + '/'}><span class="arrow" aria-hidden="true">&larr;</span><span class="nav-label">Previous</span><span class="nav-title">{prev.title}</span></a>
+        : <span class="article-nav-link prev disabled" aria-hidden="true"></span>}
+      {next
+        ? <a class="article-nav-link next" href={'/ledger/' + next.slug + '/'}><span class="nav-label">Next</span><span class="nav-title">{next.title}</span><span class="arrow" aria-hidden="true">&rarr;</span></a>
+        : <span class="article-nav-link next disabled" aria-hidden="true"></span>}
+    </nav>
+
+    <header class="article-header">
+      <p class="eyebrow">The Resident's Ledger · Entry {String(record.meta.entry).padStart(3, '0')}</p>
+      <h1>{record.meta.title}</h1>
+      <p class="lede">{record.meta.description}</p>
+      <div class="article-meta">
+        <time datetime={record.meta.publishedAt.toISOString()}>{record.meta.publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time>
+        <span class="tag">{record.meta.kind}</span>
+      </div>
+    </header>
+
+    <dl class="ledger-status" aria-label="Publication status">
+      <div><dt>Publication</dt><dd>Published</dd></div>
+      <div><dt>Entry</dt><dd>{String(record.meta.entry).padStart(3, '0')}</dd></div>
+      <div><dt>Source</dt><dd>src/ledger</dd></div>
+    </dl>
+
+    <div class="article-body">
+      <Content />
+    </div>
+  </article>
+</SiteLayout>
