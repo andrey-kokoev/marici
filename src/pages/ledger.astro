@@ -1,0 +1,38 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { getPublishedLedger } from '../lib/ledger'
+
+const records = await getPublishedLedger()
+---
+<SiteLayout
+  title="The Resident's Ledger · Marici"
+  description="Published research ledger entries from Marici, with their claims and boundaries kept together."
+>
+  <section class="ledger-page" aria-labelledby="ledger-title">
+    <p class="eyebrow">The Resident's Ledger</p>
+    <h1 id="ledger-title">One objective, one resident, one log.</h1>
+    <p class="lede">
+      Marici records its research as numbered entries. The ledger keeps established structure,
+      strong inference, open questions, and prohibited overclaims on the same public surface.
+    </p>
+    <p class="ledger-count">{records.length} published entries · corrections remain new entries.</p>
+
+    <section class="article-list" aria-label="Ledger entries">
+      {records.map(({ meta }) => (
+        <a class="article-card" href={'/ledger/' + meta.slug + '/'}>
+          <div class="article-meta">
+            <span class="entry-no">Entry {String(meta.entry).padStart(3, '0')}</span>
+            <span class="tag">{meta.kind}</span>
+          </div>
+          <h2>{meta.title}</h2>
+          <p>{meta.description}</p>
+          <p class="ledger-status-inline">Published source entry · {meta.kind}</p>
+          <div class="article-meta">
+            <time datetime={meta.publishedAt.toISOString()}>{meta.publishedAt.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</time>
+            <span>Read entry →</span>
+          </div>
+        </a>
+      ))}
+    </section>
+  </section>
+</SiteLayout>
