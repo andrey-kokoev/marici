@@ -1,0 +1,76 @@
+{
+  "schema": "marici.benincasa.unmarked_cm_boundary_census.v1",
+  "status": "pass",
+  "chart": {
+    "base_vertices": [
+      "(0,0,0)",
+      "(p,0,0)",
+      "(u,v,0)"
+    ],
+    "loop_point": "(x,y,z)",
+    "genericity": "p*v != 0"
+  },
+  "distance_map_jacobian": "8*p*v*z",
+  "tetrahedral_CM_branch": "-4*p^2*v^2*z^2",
+  "resolved_source_measure": "3*p*v*dxdydz",
+  "loop_face_identities": {
+    "face12": "-4*p^2*(y^2+z^2)",
+    "face13": "-4*((v*x-u*y)^2+(u^2+v^2)*z^2)",
+    "face23": "-4*((v*(x-p)-(u-p)*y)^2+((u-p)^2+v^2)*z^2)"
+  },
+  "pair_face_intersections": {
+    "face12_face13": "r1; c=0",
+    "face12_face23": "r2; a=0",
+    "face13_face23": "r3; b=0"
+  },
+  "triple_face_intersection_generic": false,
+  "triple_face_intersection_requires": "base Gram degeneration p*v=0",
+  "local_strata": {
+    "bulk_CM_fold": {
+      "resolved_equations": [
+        "z=0"
+      ],
+      "codimension": 1,
+      "radial_power": 0
+    },
+    "signed_face12": {
+      "resolved_equations": [
+        "z=0",
+        "y=0"
+      ],
+      "codimension": 2,
+      "radial_power": 1
+    },
+    "signed_face13": {
+      "resolved_equations": [
+        "z=0",
+        "v*x-u*y=0"
+      ],
+      "codimension": 2,
+      "radial_power": 1
+    },
+    "signed_face23": {
+      "resolved_equations": [
+        "z=0",
+        "v*(x-p)-(u-p)*y=0"
+      ],
+      "codimension": 2,
+      "radial_power": 1
+    },
+    "distance_zero_vertex": {
+      "resolved_equations": [
+        "three Cartesian normals=0"
+      ],
+      "codimension": 3,
+      "radial_power": 2
+    }
+  },
+  "source_pole_count": 10,
+  "marked_poles_intersect_generic_positive_chain": false,
+  "generic_marked_face_pinch": false,
+  "resolved_PL_transvection": false,
+  "unipotent_logarithm_N": 0,
+  "classification": "existing Cayley-Menger incidence; no new carrier datum",
+  "new_carrier_datum": false,
+  "scope_boundary": "Generic positive nonsoft energies and nondegenerate base triangle. Soft/base-Gram limits are classified separately in ledger 193."
+}
