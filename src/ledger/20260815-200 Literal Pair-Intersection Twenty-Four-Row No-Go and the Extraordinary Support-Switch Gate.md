@@ -64,10 +64,10 @@ primitive cone and double-Cech residues, constructs the global (R-I)
 boundary, proves a unit 5-by-5 minor, and checks rotation and reflection.
 
 Worker MCP run `run-db7c3be78cbc480ab123645c739c0c71` passed
-`rustfmt --edition 2021 --check` and warnings-denied metadata compilation
-with empty compiler output. It removed the temporary metadata artifact and
-confirmed its absence. Linked runtime execution remains unavailable because
-the inherited Windows worker environment has no MSVC linker.
+`rustfmt --edition 2021 --check` and warnings-denied metadata compilation.
+After the MSVC toolchain was initialized explicitly with `vcvars64.bat`, a
+warnings-denied optimized linked build and runtime execution also passed; its
+JSON parsed with the stated status, and the temporary executable was removed.
 
 ## Outcome contract
 
@@ -109,7 +109,9 @@ the inherited Windows worker environment has no MSVC linker.
     "filesystem_mcp_full_reread": "PASS",
     "rustfmt": "PASS via worker MCP run-db7c3be78cbc480ab123645c739c0c71",
     "rustc_metadata": "PASS via worker MCP run-db7c3be78cbc480ab123645c739c0c71; empty compiler output",
-    "runtime": "NOT EXECUTED: inherited MCP worker environment has no MSVC linker"
+    "linked_rustc": "PASS after explicit vcvars64 initialization; rustc --edition=2021 -D warnings -O",
+    "runtime": "PASS; JSON parsed with status falsified_scoped_literal_24_row_map__source_residues_derived",
+    "cleanup": "PASS; temporary executable absent"
   },
   "minimal_additional_geometry": "Adjoin six branch-selected extraordinary pair objects with log residues to both adjacent rays and a chain-valued support-switch/Gysin comparison to the complementary marked corridor, including all Boolean, Tor, Cech, endpoint, reflection, and D3 Beck-Chevalley data."
 }
