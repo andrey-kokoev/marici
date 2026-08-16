@@ -5,6 +5,16 @@ date: 2026-08-16
 ---
 # Relative Stokes Pairing Replaces Master-Coordinate Contraction
 
+> **Type correction (Entry 306).** The coordinate-contraction falsifier in
+> this entry remains valid, but the replacement below was stated in the wrong
+> cohomological type.  The source system is the complement
+> \(S_E\setminus W_E\), governed by logarithmic residue and Leray-tube
+> duality, not the ordinary relative pair \(H^\bullet(S_E,W_E)\).
+> The meromorphic \(\eta\)'s of Entries 296--297 are surface-complement
+> primitives, not forms on \(W_E\).  Read all claims below about a
+> mapping-cone boundary primitive through the corrected formulation of
+> Entry 306.
+
 ## Result
 
 The remaining comparison between the logarithmic marked-extension columns
@@ -24,7 +34,7 @@ Therefore a representative change that leaves the relative cohomology class
 fixed can change the naive coordinate contraction. No matrix obtained by
 dotting the displayed source vectors is canonical.
 
-The correct pairing is the mapping-cone/relative Stokes pairing
+The proposed ordinary mapping-cone pairing was
 
 \[
 \boxed{
@@ -41,23 +51,24 @@ The correct pairing is the mapping-cone/relative Stokes pairing
 }
 \]
 
-The boundary term is not optional. Entries 296--297 provide its
-central-fiber primitives, but not yet their normal/Rees lifts over the moving
-marked family. Entry 303 gives the finite distinction.
+This formula is valid for an ordinary relative pair, but it is not the
+complex that defines the frozen marked source system.  Entries 296--297
+provide exact gauges in the surface complement; they do not provide the
+\(\eta\)-component of this cone.
 
-Thus the missing global comparison has a determined geometric home:
+Entry 306 replaces this proposed home by
 
 \[
 \boxed{
-\text{relative de Rham--homology duality on the frozen marked pair},
+\text{logarithmic residue/Leray-tube duality on the frozen marked complement},
 }
 \]
 
 not a new coefficient direction or carrier stratum.
 
-## Frozen relative complex
+## Superseded ordinary-pair model
 
-For the marked pair
+The following ordinary-pair cone was used in the original argument:
 
 \[
 i:W_E\hookrightarrow S_E,
@@ -94,7 +105,18 @@ A relative cycle is represented by
 \partial\gamma=0.
 \]
 
-No compactification, wall, support summand, or pairing kernel is added.
+It is retained here only to expose the type error.  The complement instead
+uses the residue triangle
+
+\[
+0\longrightarrow\Omega^\bullet_{S_E}
+\longrightarrow\Omega^\bullet_{S_E}(\log W_E)
+\xrightarrow{\operatorname{Res}}
+\Omega^{\bullet-1}_{W_E}\longrightarrow0
+\]
+
+on a smooth wall, and the normalization/conductor totalization for the
+actual reducible wall.
 
 ## Gauge invariance
 
@@ -173,7 +195,7 @@ This is a finite linear-algebra falsifier:
 The same issue applies to the symmetric wall and to the primitive top lift,
 whose ordinary representative also carries exact-lift freedom.
 
-## Available central-fiber boundary data
+## Available central-fiber exact-gauge data
 
 Entry 296 gives explicit rational primitives
 
@@ -197,8 +219,7 @@ Entry 297 gives the assembled two-wall primitive
 
 while the filtered survivor is \(e_6/[8(x+y)]\).
 
-Therefore the required pairing does not need a newly fitted dual basis. Its
-central-fiber source objects are frozen:
+These are frozen exact gauges in the complement:
 
 \[
 (\Theta_{101}^{\rm fix},\eta_{101}),
@@ -208,26 +229,23 @@ central-fiber source objects are frozen:
 (\Theta_{111}^{\rm filt},\eta_{111}^{\rm rat}),
 \]
 
-and the four source-oriented enhanced relative chains.
+and the four source-oriented enhanced Leray-tube cycles.
 
-However, these primitives use the specialized walls \(b+x=0\) and
-\(a+y=0\). The moving source walls are \(b+x-E=0\) and \(a+y-E=0\).
-Their pullbacks to the weighted exceptional divisor differ already at
-leading Rees order. Consequently what remains is not direct evaluation of
-the displayed central formulas: one must first construct a normal/Rees lift
-whose specialization is the central primitive and whose poles follow the
-moving source walls.
+They are not forms on the wall and therefore are not directly integrated
+over a wall cycle.  The actual boundary/coefficient objects are the
+logarithmic residues on the moving source walls; Entry 304 computes their
+exceptional endpoint logarithms.
 
 ## Classification
 
 | Datum | Classification |
 |---|---|
-| enhanced functional on \(e_3,e_5,e_6\) | relative homology functional |
-| exact-lift variation | mapping-cone gauge |
+| enhanced functional on \(e_3,e_5,e_6\) | Leray-tube/exceptional functional |
+| exact-lift variation | complement exact gauge |
 | naive coordinate contraction | noncanonical; falsified |
-| central primitives \(\eta_{101},\eta_{110},\eta_{111}\) | central-fiber marked-wall coefficient data |
-| their moving-wall lifts | required higher-normal coefficient data; not yet constructed |
-| canonical pairing | relative Stokes/duality calculus |
+| central primitives \(\eta_{101},\eta_{110},\eta_{111}\) | meromorphic exact gauges on the central complement |
+| moving-wall residues | logarithmic coefficient data, computed in Entry 304 |
+| canonical pairing | logarithmic residue/Leray-tube duality |
 | new carrier datum | none |
 
 ## Deutsch--Popperian update M2.45
@@ -241,12 +259,12 @@ logarithmic algebraic layers}
 
 is falsified.
 
-The smaller surviving theorem is
+The smaller surviving theorem, corrected in Entry 306, is
 
 \[
 \boxed{
-\text{their canonical comparison is the relative Stokes pairing of the
-frozen marked pair, including its boundary primitive.}
+\text{their canonical comparison is logarithmic residue/Leray duality for
+the frozen marked complement.}
 }
 \]
 
@@ -255,26 +273,25 @@ basis-dependent shortcut.
 
 ## Scope boundary
 
-This entry identifies and proves the correct pairing mechanism. It does not
-yet evaluate the resulting \(3\times3\) matrix. Entry 303 shows that the
+This entry falsifies coordinate contraction; Entry 306 identifies the
+correct pairing mechanism. It does not yet evaluate the resulting
+\(3\times3\) matrix. Entry 303 shows that the
 central-fiber primitives cannot simply be restricted to the four moving
 source-oriented exceptional intervals.
 
 ## Next hostile test
 
-Construct moving-wall normal/Rees lifts of
+Compute the Gauss--Manin connection on the logarithmic residue triangle,
+using the normalization/conductor totalization and the orientation-twisted
+integral frame of Entry 305.  Verify
 
 \[
-\eta_{101},\qquad
-\eta_{110},\qquad
-\eta_{111}^{\rm rat}
+\operatorname{Res}\circ\nabla
+=
+\nabla_W\circ\operatorname{Res},
 \]
 
-whose poles follow \(b+x-E=0\) and \(a+y-E=0\). Then pull those lifted
-primitives to each sign-resolved weighted exceptional chart and evaluate
-their boundary integrals on the oriented interval \(p_-\to p_+\).
-
-Combine those values with the bulk periods from Entry 301. The resulting
-relative \(3\times3\) matrix must be independent of exact-lift gauge and
-have no support outside the frozen wall, soft, and conductor divisors.
-Failure of that relative cancellation is the next finite falsifier.
+then pair the wall classes of Entry 304 with the enhanced classes through
+Leray tubes.  A forced singular divisor outside the frozen energy,
+conductor, Cayley--Menger, soft, and \(\mathcal Q\) coefficient supports is
+the next carrier-level falsifier.
