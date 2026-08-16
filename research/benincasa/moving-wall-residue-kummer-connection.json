@@ -1,0 +1,31 @@
+{
+  "schema": "marici.benincasa.moving_wall_residue_kummer_connection.v1",
+  "date": "2026-08-16",
+  "wall_1": {
+    "denominator": "D1=E*x*r^2+2*x*y*r-2*x*y+E*(x+2*y-E)",
+    "discriminant": "Delta1=4*x*(x*y^2+2*E*x*y-E^2*(x+2*y-E))",
+    "connection": "-1/2*dlog(Delta1)",
+    "normal_connection": "-1/y+(3*x+2*y)/(x*y^2)*E+O(E^2)"
+  },
+  "wall_2": {
+    "denominator": "D2=E*y*r^2-2*x*y*r-2*x*y+E*(2*x+y-E)",
+    "discriminant": "Delta2=4*y*(x^2*y+2*E*x*y-E^2*(2*x+y-E))",
+    "connection": "-1/2*dlog(Delta2)",
+    "normal_connection": "-1/x+(2*x+3*y)/(x^2*y)*E+O(E^2)"
+  },
+  "identity": "dr/(a*r^2+b*r+c)=Delta^(-1/2)*dlog((2*a*r+b-sqrt(Delta))/(2*a*r+b+sqrt(Delta)))",
+  "residue_compatibility": "Res_W nabla = nabla_W Res_W modulo exact normalized-wall forms",
+  "verification": {
+    "quadratic_identity": "direct differentiation",
+    "discriminant_expansion": "exact coefficient expansion",
+    "normal_series": "exact logarithmic-series coefficients through first Rees correction",
+    "integer_specializations": 4
+  },
+  "singular_support": {
+    "soft": ["x=0", "y=0"],
+    "conductor_collision": ["Delta1=0", "Delta2=0"],
+    "regular_generic_total_energy": "E=0 with x*y nonzero",
+    "new_carrier_datum": false
+  },
+  "remaining": "primitive conductor top-class connection and off-diagonal extension after conjugation by J"
+}

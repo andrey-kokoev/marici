@@ -5,6 +5,12 @@ date: 2026-08-16
 ---
 # Moving-Wall Normalization Fixes the Exceptional Logarithms
 
+> **Type correction (Entries 306--307).** The wall-residue formulas and
+> endpoint logarithms in this entry are unchanged. References below to a
+> bulk relative primitive or relative Griffiths--Dwork lift are superseded:
+> the required continuation is the Gauss--Manin connection on the
+> logarithmic residue system, followed by Leray-tube duality.
+
 ## Result
 
 Although Entry 303 proves that the central-fiber primitives cannot be
@@ -182,11 +188,10 @@ pairing before any bulk lift is selected.
 
 ## What this does and does not solve
 
-The endpoint logarithms are now fixed. The remaining lifting problem is to
-construct a bulk one-form \(\eta_i(E)\) satisfying the moving-family relative
-cocycle equation and restricting to these wall-normalized boundary classes.
-Different bulk representatives may differ by relative exact gauge, but they
-cannot move the poles away from \(p_\pm\) or change their source
+The endpoint logarithms are now fixed. The remaining problem is to transport
+these wall classes by the residue-compatible Gauss--Manin connection.
+Different surface-complement representatives may differ by exact gauge, but
+they cannot move the residue poles away from \(p_\pm\) or change their source
 normalization.
 
 In particular, the central logarithm at \(r=0\) from Entry 303 is not a third
@@ -201,7 +206,7 @@ moving wall before performing the weighted blowup.
 | \(dr/(r-1),dr/(r+1)\) | occurrence-resolved boundary coefficient data |
 | \((-1,1)\) | existing integral Cut/Leray incidence |
 | \(r=0\) pole of the central primitive | noncommuting-specialization artifact |
-| compatible bulk primitive | still-uncomputed relative coefficient lift |
+| residue Gauss--Manin connection | computed for the two one-wall lines in Entry 307 |
 | new carrier datum | none |
 
 ## Deutsch--Popperian update M2.47
@@ -212,15 +217,15 @@ now stronger than mere existence:
 \[
 \boxed{
 \text{the frozen moving-wall normalization uniquely fixes the exceptional
-logarithmic boundary classes, while only their bulk relative lift remains
-to be computed.}
+logarithmic boundary classes, whose continuation is their canonical residue
+Gauss--Manin transport.}
 }
 \]
 
 ## Next hostile test
 
-Solve the relative Griffiths--Dwork lifting equation with these two boundary
-conditions. After quotienting exact gauge, its exceptional restriction must
-have no poles except \(r=\pm1\), soft support, and the predeclared
+Assemble the two Kummer residue lines of Entry 307 with the primitive
+conductor top extension of Entries 280 and 305. The resulting connection
+must have no poles except soft support and the predeclared
 Cayley--Menger/conductor strata. Any unavoidable additional pole is the next
 finite carrier-level falsifier.
