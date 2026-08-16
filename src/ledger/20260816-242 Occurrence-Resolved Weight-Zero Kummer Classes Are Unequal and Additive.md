@@ -5,6 +5,12 @@ date: 2026-08-16
 ---
 # Occurrence-Resolved Weight-Zero Kummer Classes Are Unequal and Additive
 
+> Correction (entry 243): the individual formulas originally recorded for
+> \(L_{31}\) and \(L_{23}\) were raw \(n^2\)-coefficients of
+> \(R_i=P_i/v^4\), not de Rham residues. Higher projective-infinity powers
+> contribute through the expansion of \(w^{-3}\). The corrected de Rham
+> formulas below are selected by the exact derivative cokernel.
+
 ## Record
 
 Status: the two literal lower-denominator terms have been expanded
@@ -122,35 +128,53 @@ v=a_0n^2-2(x+y),\qquad
 w^2=v.
 \]
 
-For either normalized residue \(R_i^{(0)}\), its \(n^2\) coefficient at
-projective infinity determines the coefficient of \([dn/w]\). Write that
-invariant as \(L_i\), so
+The original test attempted to identify the \(n^2\) coefficient of
+\(R_i^{(0)}\) with the coefficient of \([dn/w]\). Entry 243 shows that this
+shortcut is invalid before higher projective-infinity powers cancel. For
+the corrected de Rham invariant \(L_i\), write
 
 \[
 c_i=\frac{L_i}{8(xy)^{5/2}}.
 \]
 
-Exact interpolation after multiplication by \(v^4\) gives
+Exact interpolation after multiplication by \(v^4\) gives the raw
+\(n^2\)-coefficients
 
 \[
 \boxed{
-L_{31}=\frac{3x+5y}{2y},
+\operatorname{raw}_{n^2}R_{31}=\frac{3x+5y}{2y},
 \qquad
-L_{23}=-\frac{5x+3y}{2x}.
+\operatorname{raw}_{n^2}R_{23}=-\frac{5x+3y}{2x}.
 }
 \]
 
-Therefore
+These are not the Kummer residues because each split form has higher powers
+at projective infinity. Exact reduction modulo
+\(d(H/w^9)\) instead gives
+
+\[
+\boxed{
+L_{31}^{\rm dR}
+=
+-\frac{3x^2+7xy+6y^2}{2xy},
+\qquad
+L_{23}^{\rm dR}
+=
+\frac{6x^2+7xy+3y^2}{2xy}.
+}
+\]
+
+Therefore the corrected Kummer coefficients are
 
 \[
 \boxed{
 c_{31}
 =
-\frac{3x+5y}{16y(xy)^{5/2}},
+-\frac{3x^2+7xy+6y^2}{16xy(xy)^{5/2}},
 \qquad
 c_{23}
 =
--\frac{5x+3y}{16x(xy)^{5/2}}.
+\frac{6x^2+7xy+3y^2}{16xy(xy)^{5/2}}.
 }
 \]
 
@@ -261,8 +285,10 @@ unless a missing source incidence is independently derived.
 {
   "claim": "Occurrence forgetting at weight 0 is multiplication by two or cancellation of equal Kummer classes.",
   "status": "falsified",
-  "L31": "(3*x+5*y)/(2*y)",
-  "L23": "-(5*x+3*y)/(2*x)",
+  "raw_n2_R31": "(3*x+5*y)/(2*y)",
+  "raw_n2_R23": "-(5*x+3*y)/(2*x)",
+  "L31_de_rham": "-(3*x^2+7*x*y+6*y^2)/(2*x*y)",
+  "L23_de_rham": "(6*x^2+7*x*y+3*y^2)/(2*x*y)",
   "kummer_coefficient_rule": "c_i=L_i/(8*(x*y)^(5/2))",
   "sum": "3*(x-y)*(x+y)/(16*(x*y)^(7/2))*[dn/w]",
   "occurrence_forgetting": "additive_not_multiplicity_two",
