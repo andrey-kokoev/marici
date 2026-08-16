@@ -1,86 +1,74 @@
-# Rees Kato–Nakayama Corridor Pushforward and the Global Six-Functor Gate
+# Rees Kato–Nakayama Abstract Corridor Packet and the Literal Cell-Assignment Gate
 
-## Record
+## Correction
 
 Date: 2026-08-16
 
-Status: proved for the proper positive Kato–Nakayama realization of each
-multiplicity-sensitive product-branch Rees exceptional interval and its
-literal entry143 marked corridor. The six local spatial pushforwards are
-integral and symmetry-compatible. Their global attachment to the
-normalization/conductor source and generic (Q) target remains unconstructed.
-No graph admission is claimed.
+The checker proves the positive Kato–Nakayama five-cell packet of each
+multiplicity-sensitive product-branch Rees exceptional interval. It does not
+enumerate K6 faces or entry143 `[S,H]` generators. The earlier wording that
+called its declared five-cell basis a literal entry143 spatial pushforward
+was too strong and is retracted here.
 
-## Geometric realization
-
-For the Rees equation
+For the labelled Rees equation
 [
-cA-abB=0
+cA-abB=0,
 ]
-the exceptional (mathbf P^1) has positive KN locus an oriented closed
-interval. Its fixed sections ([1:0]) and ([0:1]) are the two adjacent
-long-facet restrictions. The labelled overlap ([1:1]) subdivides the
-interval into the two edges of the complementary marked corridor.
+the positive exceptional (mathbf P^1) is an oriented interval with fixed
+sections ([1:0]), ([0:1]), and intrinsic marked overlap ([1:1]).
+Preservation of the labelled equation forces any diagonal projective
+rescaling to be common, so it is projectively trivial.
 
-This subdivision is intrinsic. A diagonal projective rescaling
-([A:B]mapsto[alpha A:eta B]) preserving the labelled equation over the
-fixed base forces (alpha=eta); it is projectively the identity.
-Independent rescaling is not an automorphism of the labelled Rees object.
-
-The resulting proper cellular pushforward is
+The abstract packet has vertices (o,m,i), edges (e_L,e_R), and
 [
-e_Lmapsto(m-o),qquad e_Rmapsto(i-m),
+d e_L=m-o,qquad d e_R=i-m.
 ]
-with the three vertices mapping identically. Tensoring with the complete
-two-normal Boolean packet and both conductor Tor grades yields 240 literal
-cell/state rows. The map is the labelled identity, has rank 240, and has 240
-unit Smith factors. Ninety-six occurrence-line factors are cancelled by the
-tautological principal-dual evaluations; no base section is inverted.
+Tensoring with the complete two-normal Boolean packet and both conductor Tor
+grades gives 240 abstract labelled rows. The coefficient matrix is the
+identity, has rank 240, and has 240 unit Smith factors. Ninety-six
+occurrence-line factors cancel by principal-dual evaluation; no base section
+or integer is inverted. The total cellular–Boolean differential squares to
+zero, and rotation/reflection preserve the packet.
 
-The total cellular–Boolean differential squares to zero. Rotation permutes
-the six ordered Rees intervals. Reflection exchanges their endpoints and
-reverses both oriented edges, agreeing with the physical road-orientation
-twist.
+## Exact remaining gate
 
-## Scope boundary
+No function in the checker maps (o,m,i,e_L,e_R) to actual K6 faces or to
+entry143 generators. Consequently it proves neither literal endpoint/facet
+restrictions nor a spatial corestriction square.
 
-This constructs the previously missing **local spatial** KN/log-BM
-pair-to-corridor pushforward, including its endpoint and adjacent-facet
-restrictions. It does not yet construct one global correspondence over the
-normalization/conductor cdh groupoid. In particular, the comparison maps
-which identify the six local Rees sources on their conductor overlaps and
-attach the normalized (W_{012}	o q_Sigma) top have not been promoted to
-a single six-functor kernel.
+The first missing datum is a support-typed assignment from each Rees/KN
+packet to an actual marked K6 corridor, expanded on every occurrence,
+normal-circle, Tor, and Čech state. It must then be compared on overlaps and
+attached to the generic (Q) top. Entries 258–260 show that an ordinary
+face-poset assignment cannot provide the cross-sheet and maximal-cone cells;
+the eventual map must be extraordinary/mixed-variance.
 
-Therefore the pointed endpoint/(Q) mapping fiber, (p_{partial,Q}), its
-Bockstein, and the (D_8)/Jordan tests remain undefined. The next exact gate
-is global descent of these six proper KN intervals together with the already
-unique shifted top comparison.
+Until that assignment exists, the global normalization kernel, pointed
+endpoint/Q mapping fiber, (p_{partial,Q}), its Bockstein, and the
+(D_8)/Jordan tests remain undefined.
 
 ## Executable evidence
 
 Checker:
 `research/voevodsky/check_dp6_rees_kn_literal_corridor_pushforward.rs`
 
-SHA-256:
-`c45584948b419ec38cba59c86f8409c82763db22a6a552e35f5da48fa989464f`
-
-Rustfmt, warnings-denied optimized compilation, linked runtime assertions,
-and JSON emission passed. The temporary executable was removed.
+The current checker output explicitly records that K6 faces and entry143
+generators are not enumerated and that the literal cell assignment is
+unconstructed.
 
 ## Outcome contract
 
 ~~~json
 {
-  "claim": "The labelled product-branch Rees exceptional P1 has a canonical positive KN interval subdivision whose proper cellular pushforward is the complete literal entry143 marked corridor, compatibly with Boolean normals, both Tor grades, reflection, and D3.",
-  "status": "proved_scoped_local_spatial_Rees_KN_to_literal_corridor_pushforward",
-  "scope": "six local labelled Rees/KN correspondences; global normalization-conductor descent and Q attachment excluded",
+  "claim": "The labelled product-branch Rees exceptional P1 has a canonical positive KN five-cell subdivision with a saturated abstract corridor packet, compatibly with Boolean normals, both Tor grades, reflection, and D3.",
+  "status": "proved_scoped_positive_KN_Rees_abstract_corridor_packet",
+  "scope": "six local labelled Rees/KN abstract five-cell packets; literal K6/entry143 cell assignment, global normalization-conductor descent, and Q attachment excluded",
   "matrix": {
     "ordered_cones": 6,
     "corridor_cells_per_cone": 5,
     "boolean_states": 4,
-    "tor_grades": [0,1],
-    "literal_rows": 240,
+    "tor_grades": [0, 1],
+    "abstract_labelled_rows": 240,
     "occurrence_principal_dual_evaluations": 96,
     "rank": 240,
     "smith_unit_factors": 240,
@@ -89,13 +77,15 @@ and JSON emission passed. The temporary executable was removed.
   "geometry": {
     "intrinsic_marked_overlap": "[1:1]",
     "independent_Rees_rescaling_allowed": false,
-    "proper_positive_KN_pushforward": true,
-    "adjacent_facet_restrictions": true,
-    "endpoint_restrictions": true,
+    "proper_positive_KN_packet": true,
     "D3": true,
     "reflection": true
   },
+  "K6_faces_enumerated": false,
+  "entry143_generators_enumerated": false,
+  "literal_entry143_cell_assignment_constructed": false,
   "unconstructed": [
+    "literal K6 face and entry143 [S,H] cell assignment",
     "global normalization-conductor six-functor descent",
     "global W012/qSigma attachment inside the same kernel",
     "pointed endpoint/Q mapping fiber",
@@ -103,6 +93,6 @@ and JSON emission passed. The temporary executable was removed.
     "D8 and Jordan coherence"
   ],
   "checker": "research/voevodsky/check_dp6_rees_kn_literal_corridor_pushforward.rs",
-  "checker_sha256": "c45584948b419ec38cba59c86f8409c82763db22a6a552e35f5da48fa989464f"
+  "graph_admission_claimed": false
 }
 ~~~
