@@ -5,6 +5,10 @@ date: 2026-08-15
 ---
 # Vanishing Unsplit Wall Pairing and the Next-Grade Frontier
 
+> Correction: entry 234 replaces the incomplete connecting-form argument
+> below with the complete \(K_1/K^{3/2}\) calculation. The vanishing verdict
+> survives at the leading grade, and entry 234 also closes the next grade.
+
 ## Record
 
 Status: the relative connecting form of the canonical unsplit occurrence
