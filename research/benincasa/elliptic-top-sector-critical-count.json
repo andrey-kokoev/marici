@@ -1,0 +1,78 @@
+{
+  "schema": "marici.benincasa.elliptic_top_sector_rank_gate.v1",
+  "status": "top_rank_unresolved",
+  "frozen_source": {
+    "paper": "arXiv:2408.16386v2",
+    "source_file": "temp/arxiv-2408.16386-source/sections/applications.tex",
+    "source_sha256": "3e92460fe2e34dc21a537c784dab3b2fbcd9b7cfee9e7372f06971b50d8b6f9b",
+    "family_equation": "elliptic_subsec",
+    "canonical_denominators": [
+      "q_G12=E+y12",
+      "q_g1=X1+y12+y31",
+      "q_g2=X2+y12+y23"
+    ],
+    "specialization": {
+      "X1": 2,
+      "X2": 3,
+      "X3": 4,
+      "E": 9
+    }
+  },
+  "computation": {
+    "field": "GF(32003)",
+    "twist_factors_rule": "K and source denominator factors only; polynomial y_e numerators remain cocycle forms",
+    "saturation": "Rabinowitsch equation u*product(factors)-1",
+    "method": "sparse filtered Macaulay projection",
+    "cutoff_degree": 5,
+    "calibrations": [
+      {
+        "family": "K only",
+        "ambient_degree": 15,
+        "deletion_closed_rank": 7
+      },
+      {
+        "family": "K*q_G12",
+        "ambient_degrees": [
+          18,
+          20,
+          22
+        ],
+        "deletion_closed_rank": 16,
+        "proper_q_G12_grade": 9
+      }
+    ],
+    "lower_pair": {
+      "factors": [
+        "K",
+        "q_g1",
+        "q_g2"
+      ],
+      "ambient_degree_checks": [
+        20,
+        22
+      ],
+      "deletion_closed_rank": 9,
+      "stabilized": true
+    },
+    "top": {
+      "factors": [
+        "K",
+        "q_g1",
+        "q_g2",
+        "q_G12"
+      ],
+      "ambient_degree_20": 25,
+      "ambient_degree_22": 21,
+      "stabilized": false,
+      "claim": "rank not yet certified"
+    }
+  },
+  "interpretation": {
+    "source_nine_master_semantics": "proper q_G12 support grade; deletion closure has rank 7+9=16",
+    "lower_pair_increment_over_zero": 2,
+    "top_sector": "missing coefficient module remains the first open gluing vertex",
+    "carrier_classification": "no new carrier datum detected; rank growth is coefficient-level",
+    "prohibited_inference": "do not identify 21 as the top-sector rank"
+  },
+  "next_falsifier": "Replace the current Macaulay reducer by an incremental sparse elimination or saturation/colon implementation and certify stabilization of the full top-family Hilbert function; then compute its denominator-deletion maps."
+}
