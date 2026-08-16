@@ -97,9 +97,9 @@ l_2\sqrt K,
 \sqrt K.
 \]
 
-Polynomial vector fields of total degree at most four were used. No
-additional cohomology class, carrier cell, or fitted support term was
-adjoined.
+Polynomial vector fields of total degree at most four were used for the
+initial reduction and then enlarged to degree five. No additional
+cohomology class, carrier cell, or fitted support term was adjoined.
 
 ## First-jet falsification
 
@@ -133,14 +133,16 @@ Allow instead
 E^{-2}c_{-2}+E^{-1}c_{-1}+c_0+O(E).
 \]
 
-The resulting exact system has
+The degree-four exact system has
 
 \[
 222
 \]
 
 polynomial equations in \(396\) variables, rank \(157\), and no
-contradictory row.
+contradictory row. Enlarging to degree five gives 261 equations in 540
+variables, rank 194, and again no contradictory row. Every fixed
+second-order and first-order coordinate below is unchanged.
 
 At order \(E^{-2}\), the quotient coordinates are forced to vanish:
 
@@ -303,7 +305,8 @@ integrated-loop warning that first normal order is insufficient.
 The result is exact but deliberately narrow:
 
 1. it is computed at one generic rational fiber \((x,y)=(2,3)\);
-2. polynomial exact fields have degree at most four;
+2. degree-four and degree-five exact fields agree on every fixed Laurent
+   coordinate;
 3. the universal \(\mathbb Q(x,y)\) coefficient remains uncomputed;
 4. meromorphic Rees-gauge reduction to a logarithmic connection remains
    uncomputed;
