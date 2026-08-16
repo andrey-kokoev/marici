@@ -133,8 +133,73 @@ fn matrix_json(rows:&[Vec<F>])->String{
     for(i,r)in rows.iter().enumerate(){if i>0{out.push(',');}out.push('[');for(j,x)in r.iter().enumerate(){if j>0{out.push(',');}out.push_str(&x.v.to_string());}out.push(']');}
     out.push(']');out
 }
+fn total_monomials(deg:u8)->Vec<Mon>{
+    let mut r=Vec::new();for s in 0..=deg{for i in 0..=s{r.push((i,s-i));}}r
+}
+fn eval_monomials(ms:&[Mon],u:F,v:F)->Vec<F>{
+    ms.iter().map(|(i,j)|u.pow(*i as u64).mul(v.pow(*j as u64))).collect()
+}
+fn unique_solve(mut a:Vec<Vec<F>>,nvars:usize)->Option<Vec<F>>{
+    let rows=a.len();if rows==0{return None}let p=a[0][0].p;let mut piv=Vec::new();let mut r=0;
+    for c in 0..nvars{let mut q=r;while q<rows&&a[q][c].v==0{q+=1}if q==rows{continue}
+        a.swap(r,q);let z=a[r][c].inv();for j in c..=nvars{a[r][j]=a[r][j].mul(z);}
+        for i in 0..rows{if i!=r&&a[i][c].v!=0{let f=a[i][c];for j in c..=nvars{a[i][j]=a[i][j].sub(f.mul(a[r][j]));}}}
+        piv.push((r,c));r+=1;if r==rows{break}
+    }
+    for i in 0..rows{if (0..nvars).all(|j|a[i][j].v==0)&&a[i][nvars].v!=0{return None}}
+    if piv.len()!=nvars{return None}
+    let mut x=vec![F::z(p);nvars];for(row,col)in piv{x[col]=a[row][nvars];}Some(x)
+}
+#[derive(Clone)]
+struct RatFit{deg:u8,anchor:usize,num:Vec<F>,den:Vec<F>}
+fn rat_eval_opt(f:&RatFit,u:F,v:F)->Option<F>{
+    let ms=total_monomials(f.deg);let z=eval_monomials(&ms,u,v);let mut n=F::z(u.p);let mut d=F::z(u.p);
+    for i in 0..ms.len(){n=n.add(f.num[i].mul(z[i]));d=d.add(f.den[i].mul(z[i]));}if d.v==0{None}else{Some(n.div(d))}
+}
+fn rat_eval(f:&RatFit,u:F,v:F)->F{rat_eval_opt(f,u,v).expect("fit denominator vanished")}
+fn fit_entry(samples:&[(u64,u64,F)],maxdeg:u8)->Option<RatFit>{
+    let mut ordered=samples.to_vec();ordered.sort_by_key(|(u,v,_)|u.wrapping_mul(73_856_093)^v.wrapping_mul(19_349_663));
+    for deg in 0..=maxdeg{let ms=total_monomials(deg);let m=ms.len();if ordered.len()<2*m+8{continue}
+        for anchor in 0..m{let nvars=2*m-1;let mut mat=Vec::new();
+            for(uu,vv,f)in ordered.iter().take(nvars+3){let z=eval_monomials(&ms,F::new(*uu,PRIME),F::new(*vv,PRIME));let mut row=Vec::with_capacity(nvars+1);
+                row.extend(z.iter().copied());for(j,q)in z.iter().enumerate(){if j!=anchor{row.push(f.neg().mul(*q));}}row.push(f.mul(z[anchor]));mat.push(row);}
+            let Some(sol)=unique_solve(mat,nvars)else{continue};let mut den=vec![F::z(PRIME);m];den[anchor]=F::o(PRIME);let mut k=m;
+            for j in 0..m{if j!=anchor{den[j]=sol[k];k+=1;}}let fit=RatFit{deg,anchor,num:sol[..m].to_vec(),den};
+            if ordered.iter().skip(nvars+3).take(8).all(|(u,v,f)|rat_eval_opt(&fit,F::new(*u,PRIME),F::new(*v,PRIME))==Some(*f)){return Some(fit)}
+        }
+    }None
+}
+fn fit_json(f:&RatFit)->String{
+    let ms=total_monomials(f.deg);let terms=|cs:&[F]|{let mut s=String::from("[");let mut first=true;for((i,j),c)in ms.iter().zip(cs){if c.v!=0{if !first{s.push(',');}first=false;s.push_str(&format!("[{},{},{}]",i,j,c.v));}}s.push(']');s};
+    format!("{{\"degree\":{},\"anchor\":{},\"numerator\":{},\"denominator\":{}}}",f.deg,f.anchor,terms(&f.num),terms(&f.den))
+}
+fn rat_deriv(f:&RatFit,u:F,v:F,axis:usize)->F{
+    let ms=total_monomials(f.deg);let mut n=F::z(PRIME);let mut d=F::z(PRIME);let mut np=F::z(PRIME);let mut dp=F::z(PRIME);
+    for(k,(i,j))in ms.iter().enumerate(){let z=u.pow(*i as u64).mul(v.pow(*j as u64));n=n.add(f.num[k].mul(z));d=d.add(f.den[k].mul(z));
+        let e=if axis==0{*i}else{*j};if e>0{let dz=F::new(e as u64,PRIME).mul(if axis==0{u.pow((i-1)as u64).mul(v.pow(*j as u64))}else{u.pow(*i as u64).mul(v.pow((j-1)as u64))});np=np.add(f.num[k].mul(dz));dp=dp.add(f.den[k].mul(dz));}}
+    np.mul(d).sub(n.mul(dp)).div(d.mul(d))
+}
+fn fit_matrix_eval(fs:&[RatFit],u:F,v:F)->Vec<Vec<F>>{let mut a=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{a[i][j]=rat_eval(&fs[4*i+j],u,v);}}a}
+fn mat_mul(a:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let mut c=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{for k in 0..4{c[i][j]=c[i][j].add(a[i][k].mul(b[k][j]));}}}c}
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="reconstruct"{
+        let maxdeg=a[2].parse::<u8>().unwrap();let need=2*total_monomials(maxdeg).len()+20;let now=Instant::now();
+        let mut data:Vec<(u64,u64,Vec<Vec<F>>,Vec<Vec<F>>)>=Vec::new();let mut su=0x9e3779b97f4a7c15u64;let mut sv=0xd1b54a32d192ed03u64;
+        while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+1_442_695_040_888_963_407u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+3_037_000_493u128)%PRIME as u128)as u64;let u=su;let v=sv;let(au,_)=sample_rows(u,v,"u");let(av,_)=sample_rows(u,v,"v");data.push((u,v,au,av));}
+        let mut fits:Vec<Vec<RatFit>>=vec![Vec::new(),Vec::new()];let mut failures=0;let mut failed_entries=String::new();
+        for axis in 0..2{for row in 0..4{for col in 0..4{let samples:Vec<(u64,u64,F)>=data.iter().map(|(u,v,au,av)|(*u,*v,if axis==0{au[row][col]}else{av[row][col]})).collect();match fit_entry(&samples,maxdeg){Some(f)=>fits[axis].push(f),None=>{failures+=1;if !failed_entries.is_empty(){failed_entries.push(',');}failed_entries.push_str(&format!("{}:{}:{}",axis,row,col));}}}}}
+        if failures>0{fs::write(&a[3],format!("{{\"schema\":\"marici.gm.bivariate_reconstruction.v2\",\"prime\":{},\"max_degree\":{},\"sample_count\":{},\"failures\":{},\"failed_entries\":\"{}\",\"elapsed_ms\":{}}}",PRIME,maxdeg,data.len(),failures,failed_entries,now.elapsed().as_millis())).expect("write failed reconstruction");return}
+        let mut validation_mismatches=0;let mut curvature_plus_nonzero=0;let mut curvature_minus_nonzero=0;
+        if failures==0{let mut cu=0xa24baed4963ee407u64;let mut cv=0x9fb21c651e98df25u64;for _ in 0..32{cu=((cu as u128*3_202_034_522_624_059_733u128+1u128)%PRIME as u128)as u64;cv=((cv as u128*3_933_555_777_941_757u128+7u128)%PRIME as u128)as u64;let uu=cu;let vv=cv;let u=F::new(uu,PRIME);let v=F::new(vv,PRIME);let(au0,_)=sample_rows(uu,vv,"u");let(av0,_)=sample_rows(uu,vv,"v");let au=fit_matrix_eval(&fits[0],u,v);let av=fit_matrix_eval(&fits[1],u,v);
+            for i in 0..4{for j in 0..4{if au[i][j]!=au0[i][j]{validation_mismatches+=1}if av[i][j]!=av0[i][j]{validation_mismatches+=1}}}
+            let mut duav=vec![vec![F::z(PRIME);4];4];let mut dvau=duav.clone();for i in 0..4{for j in 0..4{duav[i][j]=rat_deriv(&fits[1][4*i+j],u,v,0);dvau[i][j]=rat_deriv(&fits[0][4*i+j],u,v,1);}}
+            let uv=mat_mul(&au,&av);let vu=mat_mul(&av,&au);for i in 0..4{for j in 0..4{let base=duav[i][j].sub(dvau[i][j]);if base.add(uv[i][j]).sub(vu[i][j]).v!=0{curvature_plus_nonzero+=1}if base.sub(uv[i][j]).add(vu[i][j]).v!=0{curvature_minus_nonzero+=1}}}
+        }}
+        let mut out=format!("{{\"schema\":\"marici.gm.bivariate_reconstruction.v2\",\"prime\":{},\"max_degree\":{},\"sample_count\":{},\"entries\":[",PRIME,maxdeg,data.len());let mut first=true;
+        for axis in 0..2{for row in 0..4{for col in 0..4{if !first{out.push(',');}first=false;let f=&fits[axis][4*row+col];out.push_str(&format!("{{\"axis\":\"{}\",\"row\":{},\"col\":{},\"fit\":{}}}",if axis==0{"u"}else{"v"},row,col,fit_json(f)));}}}
+        out.push_str(&format!("],\"failures\":{},\"independent_validation_points\":32,\"validation_mismatches\":{},\"curvature_plus_nonzero\":{},\"curvature_minus_nonzero\":{},\"elapsed_ms\":{}}}",failures,validation_mismatches,curvature_plus_nonzero,curvature_minus_nonzero,now.elapsed().as_millis()));fs::write(&a[3],out).expect("write reconstruction");return
+    }
     if a.len()>=2&&a[1]=="sample"{
         if a.len()!=5&&a.len()!=6{eprintln!("usage: marici-gm sample <u> <v> <u|v> [output.json]");std::process::exit(2)}
         let uu=a[2].parse::<u64>().unwrap();let vv=a[3].parse::<u64>().unwrap();let axis=&a[4];let now=Instant::now();
@@ -163,5 +228,10 @@ mod tests{
             [640083510918851506,1943496250622970620,234302514087206097,388778204774535347]];
         assert_eq!(degrees,vec![5,7,7,7]);
         for i in 0..4{for j in 0..4{assert_eq!(rows[i][j].v,want[i][j]);}}
+    }
+    #[test] fn reconstructs_synthetic_bivariate_rational_function(){
+        let mut s=Vec::new();let mut su=17u64;let mut sv=41u64;for _ in 0..64{su=((su as u128*6_364_136_223_846_793_005u128+1_442_695_040_888_963_407u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+3_037_000_493u128)%PRIME as u128)as u64;let u=su;let v=sv;let uf=F::new(u,PRIME);let vf=F::new(v,PRIME);s.push((u,v,uf.add(vf).div(F::o(PRIME).add(uf.mul(vf)))));}
+        let fit=fit_entry(&s,2).expect("synthetic fit");
+        assert!(s.iter().all(|(u,v,f)|rat_eval(&fit,F::new(*u,PRIME),F::new(*v,PRIME))==*f));
     }
 }
