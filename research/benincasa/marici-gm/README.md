@@ -15,6 +15,7 @@ Commands:
 - `algebraic-split-test <max-total-degree> <output.json>`
 - `other-block-reconstruct <max-total-degree> <output.json>`
 - `other-block-test <point-count> <output.json>`
+- `cargo run --release --bin et_intersection_census -- <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -38,3 +39,8 @@ predeclared dlog divisor basis including the source quartic `Q`.
 The split command searches a frozen rational gauge for the algebraic-plane
 extension. The other-block commands derive and validate the remaining
 `1+2+2` parity blocks of the rank-seven Gysin kernel.
+
+The total-energy census restricts every frozen signed-energy, elliptic, and
+algebraic-kernel divisor to `u=ell4=E_T=0`. It verifies exactly that every
+additional genuine intersection is one of the site-soft roots `v=0,2`;
+there is no additional nonsoft energy-carrier intersection.
