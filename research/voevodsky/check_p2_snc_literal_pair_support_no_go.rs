@@ -1,8 +1,9 @@
 //! Scoped falsifier for direct literal pair-support realization in entry143.
 //!
-//! The projective SNC/log source has three pair intersections. Including the
-//! two retained Tor grades and four Boolean normal states gives the necessary
-//! 3*2*4 = 24 source rows. Entry143 indexes only noncrossing K6 faces S with
+//! The projective SNC/log source has three pair intersections and their three
+//! reflected mates. Four Boolean normal states on each of these six labelled
+//! pair objects give the necessary 6*4 = 24 source rows. Entry143 indexes only
+//! noncrossing K6 faces S with
 //! H subset S. Every pair of physical long roads crosses, so none of these
 //! rows has a literal [S,H] target.
 //!
@@ -104,7 +105,7 @@ fn main() {
             .count();
         assert_eq!(containing, 0);
         legal_pair_faces += containing;
-        for _tor_grade in 0..2 {
+        for _polarity_copy in 0..2 {
             for _h_mask in 0u8..4 {
                 source_rows += 1;
                 legal_literal_rows += containing;
@@ -150,6 +151,6 @@ fn main() {
     }
 
     println!(
-        "{{\"status\":\"falsified_scoped_direct_literal_pair_support_realization\",\"k6_face_counts\":[1,9,21,14],\"crossing_long_pairs\":3,\"tor_grades\":2,\"boolean_states_per_pair\":4,\"required_pair_rows\":24,\"legal_literal_entry143_rows\":0,\"pair_incidence_rank\":2,\"pair_incidence_saturated\":true,\"normal_top_boundary_nonzero\":true,\"normal_square_d2_zero\":true,\"d3_reflection_stable\":true,\"two_top_bridge_repairs_support\":false,\"global_extraordinary_log_correspondence_no_go\":false,\"minimal_addition\":\"external W_ij/Gamma_ij^{{!,log}} objects with proper/log-BM legs, four Boolean states, Tor grades, adjacent-facet BC maps, and a support comparison to the complementary q_k corridor\"}}"
+        "{{\"status\":\"falsified_scoped_direct_literal_pair_support_realization\",\"k6_face_counts\":[1,9,21,14],\"crossing_long_pairs\":3,\"reflected_pair_objects\":6,\"boolean_states_per_pair_object\":4,\"required_pair_rows\":24,\"legal_literal_entry143_rows\":0,\"pair_incidence_rank\":2,\"pair_incidence_saturated\":true,\"normal_top_boundary_nonzero\":true,\"normal_square_d2_zero\":true,\"d3_reflection_stable\":true,\"two_top_bridge_repairs_support\":false,\"global_extraordinary_log_correspondence_no_go\":false,\"minimal_addition\":\"external W_ij/Gamma_ij^{{!,log}} objects with proper/log-BM legs, reflected pair objects, four Boolean states, multiplicity/Tor data, adjacent-facet BC maps, and a support comparison to the complementary q_k corridor\"}}"
     );
 }
