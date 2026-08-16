@@ -161,6 +161,14 @@ for(let c=0;c<shiftedExtended[0].length&&shiftedOddColumns.length<shiftedMod2Ran
  if(rankMod2(trial)>shiftedOddColumns.length){shiftedOddSquare=trial;shiftedOddColumns.push(c)}
 }
 const shiftedOddDet=detBareiss(shiftedOddSquare);
+const shiftedFreeColumns=Array.from({length:shiftedExtended[0].length},(_,i)=>i).filter(i=>!shiftedOddColumns.includes(i));
+const topNormalizationRow=Array(shiftedExtended[0].length).fill(0);
+if(shiftedFreeColumns.length===1)topNormalizationRow[shiftedFreeColumns[0]]=1;
+const topNormalizedSquare=[...shiftedOddRows.map(i=>shiftedExtended[i]),topNormalizationRow];
+const topNormalizedDet=detBareiss(topNormalizedSquare);
+const topNormalizedMatrix=[...shiftedExtended,topNormalizationRow];
+const topNormalizedRhs=[...bbrr,1];
+const topNormalizedAugmented=topNormalizedMatrix.map((row,index)=>[...row,topNormalizedRhs[index]]);
 const shiftedRows=[];let shiftedCurrent=[];
 for(let i=0;i<shiftedExtended.length&&shiftedRows.length<shiftedRank;i++){
  const trial=[...shiftedCurrent,shiftedExtended[i]];
@@ -190,6 +198,8 @@ if (correctionWeight !== 12) throw Error("odd-orbit correction support");
 if(oddRows.length!==12||shiftedRank!==35||shiftedAugmentedRank!==35)throw Error(`shifted cone ranks ${oddRows.length}/${shiftedRank}/${shiftedAugmentedRank}`);
 if(shiftedMod2Rank!==35||shiftedMod2AugmentedRank!==35)throw Error(`shifted cone mod2 ${shiftedMod2Rank}/${shiftedMod2AugmentedRank}`);
 if(shiftedOddDet%2n===0n)throw Error(`shifted cone odd minor ${shiftedOddDet}`);
+if(shiftedFreeColumns.length!==1||rank(topNormalizedMatrix)!==36||rank(topNormalizedAugmented)!==36)throw Error("top normalization ranks");
+if(topNormalizedDet!==1n&&topNormalizedDet!==-1n)throw Error(`top normalization minor ${topNormalizedDet}`);
 if (rank(naiveExtended)!==25||rank(naiveExtendedAugmented)!==25)throw Error("naive extension ranks");
 if (naiveSolution[24].toString()!=="0"||naiveSolution.every(x=>x.d===1n))throw Error("naive same-degree repair");
 if (naiveDet!==4n&&naiveDet!==-4n)throw Error("naive extension minor");
@@ -226,6 +236,7 @@ console.log(JSON.stringify({
   shifted_mapping_cone_selected_odd_minor:Number(shiftedOddDet),
   shifted_mapping_cone_smith_nonzero_all_ones:true,
   shifted_mapping_cone_integral_obstruction:false,
+  external_top_normalization:{free_classes:1,coefficient:1,rank:36,augmented_rank:36,unimodular_minor:Number(topNormalizedDet),integral_unique:true},
   naive_same_degree_odd_column_rank:25,
   naive_same_degree_odd_column_scalar:0,
   naive_same_degree_integral_solution:false,
@@ -235,6 +246,7 @@ console.log(JSON.stringify({
   literal_support_rule:"an edge may map only to the two target pair rows incident to its unique long-road label",
   general_derived_correspondence_no_go:false,
   derived_pair_facet_repair_constructed:true,
-  remaining_top_datum:"normalize the single free shifted-cone class by the external W012-to-qSigma top comparison",
+  finite_W012_qSigma_top_normalization_constructed:true,
+  remaining_geometric_datum:"normalization-provenanced six-functor realization into the literal entry143 BM-Cech complex",
   endpoint_Q_mapping_fiber_instantiated:false
 }));
