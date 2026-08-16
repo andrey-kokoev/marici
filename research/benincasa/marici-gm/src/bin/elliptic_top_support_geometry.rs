@@ -298,4 +298,39 @@ fn main() {
     assert_eq!(top.evaluate([2, 3, 4]), 18_225);
     println!("INCIDENCE_JACOBIAN={jacobian}");
     println!("TOP_RESIDUE_BOUNDARY_SIGNS=[1,-1,1]");
+
+    // Normalization graph for W1 union W2. Vertices are
+    // (C1+, C1-, C2+, C2-); edges are the two conductor nodes on each
+    // wall followed by the same-sheet intersections (P+, P-).
+    let boundary: [[i32; 6]; 4] = [
+        [-1, -1, 0, 0, -1, 0],
+        [1, 1, 0, 0, 0, -1],
+        [0, 0, -1, -1, 1, 0],
+        [0, 0, 1, 1, 0, 1],
+    ];
+    let cycles: [[i32; 3]; 6] = [
+        [1, 0, 1],
+        [-1, 0, 0],
+        [0, 1, 0],
+        [0, -1, -1],
+        [0, 0, -1],
+        [0, 0, 1],
+    ];
+    for vertex in 0..4 {
+        for cycle in 0..3 {
+            let value: i32 = (0..6)
+                .map(|edge| boundary[vertex][edge] * cycles[edge][cycle])
+                .sum();
+            assert_eq!(value, 0);
+        }
+    }
+    // Rows (e1,e3,e6) give an upper-triangular unit minor, so these three
+    // cycles form a primitive integral basis of the rank-three cycle lattice.
+    let unit_minor = cycles[0][0] * cycles[2][1] * cycles[5][2];
+    assert_eq!(unit_minor, 1);
+    println!("TWO_WALL_GRAPH_VERTICES=4");
+    println!("TWO_WALL_GRAPH_EDGES=6");
+    println!("TWO_WALL_GRAPH_B1=3");
+    println!("TWO_WALL_CYCLE_BASIS=[mixed_101,mixed_110,top_111_mod_mixed]");
+    println!("TWO_WALL_CYCLE_UNIT_MINOR={unit_minor}");
 }

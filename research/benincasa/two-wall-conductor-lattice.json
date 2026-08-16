@@ -1,0 +1,144 @@
+{
+  "schema": "marici.benincasa.two-wall-conductor-lattice.v1",
+  "date": "2026-08-16",
+  "vertices": [
+    "C1+",
+    "C1-",
+    "C2+",
+    "C2-"
+  ],
+  "edges": [
+    {
+      "name": "n1a",
+      "from": "C1+",
+      "to": "C1-"
+    },
+    {
+      "name": "n1b",
+      "from": "C1+",
+      "to": "C1-"
+    },
+    {
+      "name": "n2a",
+      "from": "C2+",
+      "to": "C2-"
+    },
+    {
+      "name": "n2b",
+      "from": "C2+",
+      "to": "C2-"
+    },
+    {
+      "name": "P+",
+      "from": "C1+",
+      "to": "C2+"
+    },
+    {
+      "name": "P-",
+      "from": "C1-",
+      "to": "C2-"
+    }
+  ],
+  "boundary_matrix_rows_vertices_columns_edges": [
+    [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      -1,
+      -1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1
+    ]
+  ],
+  "cycle_basis_columns": {
+    "mixed_101": [
+      1,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "mixed_110": [
+      0,
+      0,
+      1,
+      -1,
+      0,
+      0
+    ],
+    "top_111_representative": [
+      1,
+      0,
+      0,
+      -1,
+      -1,
+      1
+    ]
+  },
+  "certificates": {
+    "connected_components": 1,
+    "vertices": 4,
+    "edges": 6,
+    "boundary_rank": 3,
+    "cycle_rank": 3,
+    "cycle_matrix_unit_minor": {
+      "edge_rows": [
+        "n1a",
+        "n2a",
+        "P-"
+      ],
+      "determinant": 1
+    },
+    "integral_basis_primitive": true
+  },
+  "exact_sequence": "0 -> H1(W1) direct_sum H1(W2) -> H1(W1 union W2) -> Z_top -> 0",
+  "support_grade_match": {
+    "101": 1,
+    "110": 1,
+    "111": 1
+  },
+  "splitting": {
+    "fiberwise_abstract_split": true,
+    "canonical_split": false,
+    "reason": "A top cycle lift changes by either mixed cycle when a different conductor edge is chosen."
+  },
+  "interpretation": {
+    "common_home": "one integral normalization/conductor cycle lattice",
+    "coefficient_type": "Tate graph cohomology with occurrence-resolved nodes",
+    "new_carrier_datum": false,
+    "localization_boundary_to_H3": "uncomputed"
+  },
+  "evidence": {
+    "rust_certificate": "research/benincasa/marici-gm/src/bin/elliptic_top_support_geometry.rs",
+    "preceding_entries": [
+      263,
+      264,
+      265
+    ]
+  },
+  "next_falsifier": "Compute the geometric Gysin/localization image of this primitive rank-three cycle lattice in H3(S_E) and test whether the conductor square alone determines it."
+}
