@@ -104,15 +104,17 @@ fn main() {
     assert_eq!(literal_rows, 240);
     assert_eq!(occurrence_evaluations, 96);
 
-    // The positive KN interval, cut at [1:1], maps cellwise and bijectively to
-    // the marked literal corridor. Its matrix is therefore I_240.
+    // The positive KN interval, cut at [1:1], has the abstract five-cell
+    // shape required by a marked corridor. This checker does not enumerate
+    // K6 faces or [S,H] states, so the identity below is only the matrix in
+    // the declared labelled corridor basis, not a literal entry143 map.
     let rank = literal_rows;
     let smith_unit_factors = literal_rows;
     let reflection_exchanges_endpoints = true;
     let reflection_reverses_edges = true;
     let d3_permutes_ordered_cones = true;
 
-    println!("{{\"status\":\"proved_scoped_positive_KN_Rees_to_literal_corridor_pushforward\",\"rees_equation\":\"cA-abB=0\",\"positive_KN_interval\":true,\"intrinsic_marked_overlap\":\"[1:1]\",\"independent_rees_rescaling_allowed\":{},\"ordered_cones\":{},\"corridor_cells_per_cone\":{},\"boolean_states\":{},\"tor_grades\":[0,1],\"literal_rows\":{},\"occurrence_principal_dual_evaluations\":{},\"d_squared_checks\":{},\"matrix_rank\":{},\"smith_unit_factors\":{},\"reflection_exchanges_endpoints\":{},\"reflection_reverses_edges\":{},\"D3_permutes_ordered_cones\":{},\"base_inversions\":false,\"global_normalization_pushpull_constructed\":false,\"endpoint_Q_mapping_fiber_instantiated\":false}}",
+    println!("{{\"status\":\"proved_scoped_positive_KN_Rees_abstract_corridor_packet\",\"rees_equation\":\"cA-abB=0\",\"positive_KN_interval\":true,\"intrinsic_marked_overlap\":\"[1:1]\",\"independent_rees_rescaling_allowed\":{},\"ordered_cones\":{},\"corridor_cells_per_cone\":{},\"boolean_states\":{},\"tor_grades\":[0,1],\"abstract_labelled_rows\":{},\"occurrence_principal_dual_evaluations\":{},\"d_squared_checks\":{},\"matrix_rank\":{},\"smith_unit_factors\":{},\"reflection_exchanges_endpoints\":{},\"reflection_reverses_edges\":{},\"D3_permutes_ordered_cones\":{},\"base_inversions\":false,\"K6_faces_enumerated\":false,\"entry143_generators_enumerated\":false,\"literal_entry143_cell_assignment_constructed\":false,\"global_normalization_pushpull_constructed\":false,\"endpoint_Q_mapping_fiber_instantiated\":false}}",
         independent_rees_rescaling_allowed, ordered_cones, corridor_cells,
         boolean_states, literal_rows, occurrence_evaluations, d2_checks, rank,
         smith_unit_factors, reflection_exchanges_endpoints,
