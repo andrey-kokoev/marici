@@ -9,6 +9,9 @@ Commands:
 - `grid <u0> <nu> <v0> <nv> <u|v> <output.json>`
 - `reconstruct <max-total-degree> <output.json>`
 - `gysin-test <point-count> <output.json>`
+- `algebraic-test <point-count> <output.json>`
+- `algebraic-reconstruct <max-total-degree> <output.json>`
+- `algebraic-dlog-test <point-count> <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -24,3 +27,7 @@ tests all four sign conventions for its horizontal square. The committed
 certificate records zero residual for
 `dC + C*B - A*C` at 1,024 generic points (2,048 directions); the three
 alternative conventions fail.
+
+The algebraic commands restrict the reconstructed connection to the explicit
+Gysin kernel, reconstruct its diagonal rank-one quotient, and test a
+predeclared dlog divisor basis including the source quartic `Q`.
