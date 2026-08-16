@@ -16,7 +16,6 @@ export interface LedgerMeta {
   kind: string
   authors: MariciAuthor[]
   authorLabel: string
-  attribution: string
 }
 
 export interface LedgerRecord {
@@ -96,15 +95,26 @@ function toRecord(entry: LedgerEntry): LedgerRecord | null {
       kind: kindFor(title, body),
       authors,
       authorLabel,
-      attribution: `${authorLabel} did this work`,
     },
   }
 }
 
 export async function getPublishedLedger(includeDrafts = import.meta.env.DEV): Promise<LedgerRecord[]> {
   const entries = await getCollection('ledger', ({ data }) => includeDrafts || !data.draft)
-  return entries
+  const records = entries
     .map(toRecord)
     .filter((record): record is LedgerRecord => record !== null)
-    .sort((a, b) => a.meta.entry - b.meta.entry || a.meta.slug.localeCompare(b.meta.slug))
+
+  const idsByEntry = new Map<number, string>()
+  for (const record of records) {
+    const previousId = idsByEntry.get(record.meta.entry)
+    if (previousId) {
+      throw new Error(
+        `Duplicate ledger entry number ${record.meta.entry}: ${previousId} and ${record.entry.id}`,
+      )
+    }
+    idsByEntry.set(record.meta.entry, record.entry.id)
+  }
+
+  return records.sort((a, b) => a.meta.entry - b.meta.entry || a.meta.slug.localeCompare(b.meta.slug))
 }
