@@ -1,0 +1,38 @@
+{
+  "schema": "marici.benincasa.physical-enhanced-point-rees.v1",
+  "date": "2026-08-16",
+  "coordinates": {
+    "E": "x+y+z",
+    "a": "E-y+u",
+    "b": "E-x+v",
+    "walls": ["u=0", "v=0"],
+    "R0": "x*y*(x+y)-x*a^2-y*b^2"
+  },
+  "local_smoothing": {
+    "D": "K_E-R0^2",
+    "first_E_coefficient": "-2*(x+y)*u*v*(2*x-v)*(2*y-u)",
+    "classification": "frozen two-wall incidence times kinematic units"
+  },
+  "double_wall_section": {
+    "D_at_u_v_zero": "E^3*(E-(x+y))*(E^2-3*(x+y)*E+8*x*y)",
+    "Rees_grade_1": 0,
+    "Rees_grade_2": 0,
+    "Rees_grade_3": "-8*x*y*(x+y)"
+  },
+  "Q_comparison": {
+    "Q": "-16*p^2-8*p*E^2+8*s*E^3-5*E^4",
+    "Q_Rees_grade_2": "-8*p",
+    "conclusion": "Q is not the second-grade local smoothing discriminant at the physical enhanced point"
+  },
+  "remaining_Q_homes": [
+    "other sign-enhanced points",
+    "global gluing among enhanced points",
+    "algebraic T7/L1 connection",
+    "extension class between algebraic kernel and elliptic quotient"
+  ],
+  "classification": {
+    "carrier": "existing total-energy normal and two marked walls",
+    "local_support": "Tate incidence and soft/higher-order factors",
+    "new_carrier_datum": false
+  }
+}
