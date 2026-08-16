@@ -59,6 +59,25 @@ support-preserving top comparison. It proves that the six short-facet
 contractions cannot be derived as integral strict rows under the stated
 literal support and \(D_3\) requirements.
 
+## Why an ordinary odd column does not repair it
+
+Solving the non-reflection equations modulo two determines a unique
+reflection-defect vector. It has support on twelve reflection rows: four
+for each long road. This is exactly the expected size of the six oriented
+pair packets with two corridor boundary rows each.
+
+That numerical match does not authorize treating the pair packet as one
+additional degree-zero variable. Appending the twelve-row vector as an
+ordinary column gives a rank-25 rational system, but its unique solution
+sets the new scalar to zero and retains the original half-integral
+coefficients. A selected maximal minor has determinant \(4\), and the
+extended system still has no integral solution.
+
+Therefore the odd datum must enter through a genuine shifted
+mapping-cone differential and its homotopy equation. A same-degree
+stabilization—even with the correct twelve-row support—cannot absorb the
+obstruction.
+
 ## Minimal repair
 
 A derived correspondence can evade the no-go only by adding at least one
@@ -89,7 +108,7 @@ Checker:
 research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs
 
 SHA-256:
-8f0e30ef462755fe1ffbd88a7e14299ba145eb02d76ee35fa73eda87c4498fa7
+ff82fad19ac7d28216890399c2a81dd373569c8dc13d33a17ff17f2ae9330083
 
 The user-site structured-command MCP executed Node with exit code zero. The
 checker asserts the complete census, rational ranks, mod-two rank jump,
@@ -122,6 +141,14 @@ Narada site and correctly refused the Marici repository cwd.
     "smith": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
     "obstruction_group": "Z/2"
   },
+  "naive_odd_column_control": {
+    "unique_mod2_reflection_correction_rows": 12,
+    "ordinary_extended_rank": 25,
+    "ordinary_new_scalar": 0,
+    "ordinary_integral_solution": false,
+    "selected_minor_determinant": 4,
+    "shifted_mapping_cone_required": true
+  },
   "general_derived_correspondence_no_go": false,
   "minimal_additional_datum": "one geometrically derived reflection-odd pair/corridor homotopy generator with unit boundary into the mod-two defect row",
   "unconstructed": [
@@ -132,6 +159,6 @@ Narada site and correctly refused the Marici repository cwd.
     "D8 and Jordan coherence"
   ],
   "checker": "research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs",
-  "checker_sha256": "8f0e30ef462755fe1ffbd88a7e14299ba145eb02d76ee35fa73eda87c4498fa7"
+  "checker_sha256": "ff82fad19ac7d28216890399c2a81dd373569c8dc13d33a17ff17f2ae9330083"
 }
 ~~~
