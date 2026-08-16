@@ -1,0 +1,38 @@
+{
+  "schema": "marici.benincasa.a2-integral-eigensplitting.v1",
+  "date": "2026-08-16",
+  "physical_root_braid": {
+    "roots": ["t_minus", "t_zero", "t_plus"],
+    "action": "t_minus <-> t_plus; t_zero fixed",
+    "A2_interpretation": "reflection in the highest root theta=alpha+beta"
+  },
+  "A2_lattice": {
+    "basis": ["alpha", "beta"],
+    "cartan_gram": [[2, -1], [-1, 2]],
+    "monodromy_matrix_columns": [[0, -1], [-1, 0]],
+    "actions": ["T(alpha)=-beta", "T(beta)=-alpha"],
+    "plus_generator": "eta=alpha-beta",
+    "minus_generator": "theta=alpha+beta",
+    "norms": {"eta": 6, "theta": 2},
+    "orthogonal": true,
+    "index_of_eigenlattice": 2,
+    "quotient": "A2/(Z*eta direct_sum Z*theta) = Z/2"
+  },
+  "quadratic_base_change": {
+    "map": "lambda=mu^2",
+    "effect": "kills the order-two semisimple reflection",
+    "resolved_root_asymptotics": ["t_zero=O(mu^2)", "t_plus=+kappa*mu+O(mu^2)", "t_minus=-kappa*mu+O(mu^2)"],
+    "coefficient_type": "algebraic Tate lattice after simultaneous ADE resolution",
+    "deck_action": "separates eta (+) from theta (-)"
+  },
+  "extension_consequence": {
+    "rational": "finite A2 target splits canonically into plus and minus eigenlines",
+    "integral": "splitting has a forced mod-two defect",
+    "remaining_unknown": "whether the top conductor class has zero or nonzero variation into eta"
+  },
+  "classification": {
+    "carrier": "existing signed-energy normal lambda",
+    "coefficient_support": "A2 algebraic vanishing lattice with Kummer deck character",
+    "new_carrier_datum": false
+  }
+}
