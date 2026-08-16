@@ -1,0 +1,243 @@
+---
+authors:
+  - marici.Benincasa
+date: 2026-08-16
+---
+# Exact Top-Sector Rank and Denominator-Deletion Cube
+
+## Record
+
+The complete Boolean deletion cube of the canonical homogeneous family
+
+\[
+\{q_{\mathfrak g_1},q_{\mathfrak g_2},q_{\mathcal G_{12}}\}
+\]
+
+has now been computed exactly at two independent generic specializations.
+
+Use bit order
+
+\[
+(q_{\mathfrak g_1},q_{\mathfrak g_2},q_{\mathcal G_{12}})
+\]
+
+and let \(r_S\) denote the rank of the deletion-closed critical quotient for
+support \(S\). Both computations give
+
+\[
+\boxed{
+(r_{000},r_{001},r_{010},r_{011},r_{100},r_{101},r_{110},r_{111})
+=
+(7,8,8,9,16,18,18,21).
+}
+\]
+
+The two exact runs are
+
+\[
+\mathbf F_{32003},\qquad (X_1,X_2,X_3)=(2,3,4),
+\]
+
+and
+
+\[
+\mathbf F_{65521},\qquad (X_1,X_2,X_3)=(3,5,6).
+\]
+
+Thus the previously decreasing Macaulay values terminate at
+
+\[
+\boxed{r_{111}=21}.
+\]
+
+## Frozen source object
+
+The source family is equation elliptic_subsec of arXiv:2408.16386v2, with
+
+\[
+q_{\mathfrak g_1}=X_1+y_{12}+y_{31},
+\]
+
+\[
+q_{\mathfrak g_2}=X_2+y_{12}+y_{23},
+\]
+
+\[
+q_{\mathcal G_{12}}=X_1+X_2+X_3+y_{12}.
+\]
+
+The twist is
+
+\[
+K^\gamma\prod_{q\in S}q^{\tau_q},
+\]
+
+where \(K\) is the frozen Cayley--Menger polynomial. Polynomial \(y_e\)
+numerators remain cocycle forms and are not promoted to divisor factors.
+
+For every support \(S\), the logarithmic critical ideal is saturated by
+
+\[
+uK\prod_{q\in S}q-1.
+\]
+
+The quotient rank is the exact number of standard monomials of an
+auditable prime-field Gröbner basis.
+
+## Deutsch--Popperian conjecture tested
+
+The hard-to-vary claim was
+
+\[
+\boxed{
+\text{the full three-denominator top family contributes no proper support
+grade beyond its deletion faces.}
+}
+\]
+
+Perform Möbius inversion on the Boolean support lattice:
+
+\[
+m_S=r_S-\sum_{T\subsetneq S}m_T.
+\]
+
+The proper support grades are
+
+\[
+\boxed{
+(m_{000},m_{001},m_{010},m_{011},m_{100},m_{101},m_{110},m_{111})
+=
+(7,1,1,0,9,1,1,1).
+}
+\]
+
+In particular,
+
+\[
+\boxed{
+m_{111}
+=
+21-18-18-9+16+8+8-7
+=
+1.
+}
+\]
+
+The claim is falsified. There is exactly one proper top-support class in
+the tested generic fibers.
+
+## What this does and does not establish
+
+The rank identity establishes an associated support filtration:
+
+- zero support: rank \(7\);
+- each single lower pole: proper rank \(1\);
+- the joint lower pair: proper rank \(0\);
+- \(q_{\mathcal G_{12}}\)-only support: proper rank \(9\);
+- each mixed \(q_{\mathcal G_{12}}\)-lower support: proper rank \(1\);
+- full three-denominator support: proper rank \(1\).
+
+It does not establish a canonical direct-sum splitting
+
+\[
+\mathcal M_{\rm top}
+\simeq
+\bigoplus_S \operatorname{gr}_S\mathcal M_{\rm top}.
+\]
+
+Nor does rank determine the deletion, residue, or connecting morphisms.
+Those extension arrows remain the next geometric problem.
+
+## Carrier/coefficient classification
+
+Every divisor used in the calculation is already frozen:
+
+- the Cayley--Menger branch divisor \(K=0\);
+- the three source denominator hyperplanes;
+- their ordinary intersections.
+
+The unique proper top class therefore has a home in the relative
+coefficient geometry of the existing denominator arrangement. No new
+incidence generator, Cut cell, or cosmology-specific carrier stratum is
+required by its rank or support.
+
+Hence the result is a strong update for H2:
+
+\[
+\boxed{
+\text{shared carrier and calculus}
++
+\text{sector-specific filtered coefficient object}.
+}
+\]
+
+It is not yet the desired global decomposition, because the filtration may
+be a nontrivial extension.
+
+## Machinery audit
+
+The third-party groebner crate was rejected before use as evidence. On the
+calibration ideal it returned rank \(1\), despite the explicit critical
+point
+
+\[
+a=b=c=0,\qquad u=1/K(0,0,0).
+\]
+
+The final calculation uses the repository's own auditable sparse
+Buchberger implementation over exact prime fields. It reproduces the
+published zero grade \(7\), the \(q\)-only proper grade \(9\), and the
+independent Macaulay lower-face rank \(9\) before being admitted for the
+top mask.
+
+## Exact evidence
+
+- research/benincasa/marici-gm/src/bin/elliptic_top_sector_groebner_rank.rs;
+- research/benincasa/elliptic-top-sector-groebner-rank.json;
+- research/benincasa/elliptic-top-sector-critical-count.json;
+- primary source SHA-256
+  3e92460fe2e34dc21a537c784dab3b2fbcd9b7cfee9e7372f06971b50d8b6f9b.
+
+## Next hostile falsifier
+
+Freeze the support cube and construct the actual morphisms for the unique
+proper top class:
+
+\[
+\operatorname{gr}_{111}\mathcal M
+\longrightarrow
+\operatorname{gr}_{101}\mathcal M
+\oplus
+\operatorname{gr}_{110}\mathcal M
+\oplus
+\operatorname{gr}_{011}\mathcal M.
+\]
+
+Then descend to the \(q\)-only rank-nine module and the lower
+polylogarithmic module.
+
+The finite falsifier is now precise:
+
+- if the connecting maps are residues/Gysin maps generated by the frozen
+  Cayley--Menger and denominator arrangement, the top class is
+  sector-specific coefficient data over the shared carrier;
+- if defining one of those arrows requires a new incidence object not
+  present in the frozen carrier, H2 fails;
+- rank equality or a noncanonical vector-space splitting is not enough.
+
+## Outcome contract
+
+~~~json
+{
+  "claim": "The full three-denominator family has no proper top-support grade.",
+  "status": "falsified",
+  "deletion_closed_ranks": [7, 8, 8, 9, 16, 18, 18, 21],
+  "proper_support_grades": [7, 1, 1, 0, 9, 1, 1, 1],
+  "full_top_deletion_closed_rank": 21,
+  "proper_top_support_rank": 1,
+  "independent_exact_specializations": 2,
+  "new_carrier_datum": false,
+  "canonical_splitting_proved": false,
+  "remaining_problem": "Construct deletion/residue/connecting maps and classify the extension of the unique proper top class."
+}
+~~~
