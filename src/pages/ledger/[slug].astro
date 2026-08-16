@@ -1,7 +1,16 @@
 ---
-import { render } from 'astro:content'
+import { createMarkdownProcessor, markdownConfigDefaults } from '@astrojs/markdown-remark'
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { getPublishedLedger } from '../../lib/ledger'
+import remarkMath from 'remark-math'
+import remarkNaradaMath from '../../lib/remark-narada-math.mjs'
+import rehypeKatex from 'rehype-katex'
+
+const processor = await createMarkdownProcessor({
+  ...markdownConfigDefaults,
+  remarkPlugins: [remarkMath, remarkNaradaMath],
+  rehypePlugins: [rehypeKatex],
+})
 
 export async function getStaticPaths() {
   const records = await getPublishedLedger()
@@ -16,6 +25,8 @@ export async function getStaticPaths() {
 }
 
 const { record, prev, next } = Astro.props
+const allRecords = await getPublishedLedger()
+const slugByEntry = new Map(allRecords.map((r) => [r.meta.entry, r.meta.slug]))
 
 function stripH1(body: string) {
   return body.replace(/^#\s+[^\r\n]+(?:\r?\n)+/, '')
@@ -30,11 +41,29 @@ function convertTexMath(body: string) {
     .replace(/\\\((.*?)\\\)/g, '$$$1$$')
 }
 
-const contentEntry = {
-  ...record.entry,
-  body: convertTexMath(stripH1(record.entry.body ?? '')),
-} as typeof record.entry
-const { Content } = await render(contentEntry)
+function linkEntryRefs(body: string) {
+  // Evidence bullets refer to other ledger entries as "entry 93" or
+  // "entries 129--131". Turn those numbers into links.
+  return body.replace(
+    /\b(entry|entries)\s+(\d{1,3})(?:\s*--\s*(\d{1,3}))?\b/gi,
+    (match, word, start, end) => {
+      const startNum = Number(start)
+      const endNum = end ? Number(end) : startNum
+      const link = (n: number) => {
+        const slug = slugByEntry.get(n)
+        if (!slug) return String(n)
+        return `<a href="/ledger/${slug}/">${n}</a>`
+      }
+      if (endNum === startNum) {
+        return `${word} ${link(startNum)}`
+      }
+      return `${word} ${link(startNum)}--${link(endNum)}`
+    },
+  )
+}
+
+const transformedBody = linkEntryRefs(convertTexMath(stripH1(record.entry.body ?? '')))
+const { code: html } = await processor.render(transformedBody)
 ---
 <SiteLayout
   title={record.meta.title + ' · Marici'}
@@ -68,8 +97,6 @@ const { Content } = await render(contentEntry)
       <div><dt>Source</dt><dd>src/ledger</dd></div>
     </dl>
 
-    <div class="article-body">
-      <Content />
-    </div>
+    <div class="article-body" set:html={html} />
   </article>
 </SiteLayout>
