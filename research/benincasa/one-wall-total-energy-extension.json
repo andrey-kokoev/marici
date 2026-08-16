@@ -1,0 +1,152 @@
+{
+  "schema": "marici.benincasa.one-wall-total-energy-extension.v1",
+  "date": "2026-08-16",
+  "status": "finite_exact_reconstruction",
+  "frozen_geometry": {
+    "slice": "x,y fixed; z=E-x-y",
+    "surface": "w^2=K_E(a,b)",
+    "wall": "W1: l1=b+x-E=0",
+    "lift": "Omega_101=da wedge db/(l1 sqrt(K_E))",
+    "wall_residue": "Res_W1(Omega_101)=da/R1(a)",
+    "basis": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "e8",
+      "e9"
+    ]
+  },
+  "reduction": {
+    "cleared_denominator": "l1^2 K_E^(3/2)",
+    "derivative_numerator": "K_E-(l1/2) partial_E K_E",
+    "exact_fields": [
+      "d((-V_b da+V_a db)/(l1 sqrt(K_E)))",
+      "d((-U_b da+U_a db)/sqrt(K_E))"
+    ],
+    "polynomial_degree": 4,
+    "stabilization_check_degree": 5,
+    "total_energy_residue_conjecture": [
+      "0",
+      "0",
+      "0",
+      "-1/(4*x*y)",
+      "(5*x+4*y)/(4*(x+y)^2)",
+      "-(6*x+7*y)/(4*(x+y))",
+      "(y-x)/(4*x*y)",
+      "-1/(2*x*y*(x+y))",
+      "1/(2*x*y*(x+y))"
+    ],
+    "quotient_residue": "0"
+  },
+  "exact_samples": [
+    {
+      "x": 2,
+      "y": 3,
+      "residue": [
+        "0",
+        "0",
+        "0",
+        "-1/24",
+        "11/50",
+        "-33/20",
+        "1/24",
+        "-1/60",
+        "1/60"
+      ]
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "residue": [
+        "0",
+        "0",
+        "0",
+        "-1/24",
+        "23/100",
+        "-8/5",
+        "-1/24",
+        "-1/60",
+        "1/60"
+      ]
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "residue": [
+        "0",
+        "0",
+        "0",
+        "-1/40",
+        "15/98",
+        "-47/28",
+        "3/40",
+        "-1/140",
+        "1/140"
+      ]
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "residue": [
+        "0",
+        "0",
+        "0",
+        "-1/48",
+        "31/196",
+        "-23/14",
+        "1/48",
+        "-1/168",
+        "1/168"
+      ]
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "residue": [
+        "0",
+        "0",
+        "0",
+        "-1/80",
+        "10/81",
+        "-59/36",
+        "1/80",
+        "-1/360",
+        "1/360"
+      ]
+    }
+  ],
+  "exact_linear_system": {
+    "degree4": {
+      "polynomial_equations": 106,
+      "unknown_coefficient_jets": 140,
+      "rank": 73,
+      "inconsistent": false
+    },
+    "degree5_x2_y3": {
+      "polynomial_equations": 128,
+      "unknown_coefficient_jets": 188,
+      "rank": 93,
+      "inconsistent": false
+    },
+    "cohomology_residues_unique_in_reduction": true
+  },
+  "infinity_gysin": {
+    "e7_e8_e9_part": [
+      "(y-x)/(4*x*y)",
+      "-1/(2*x*y*(x+y))",
+      "1/(2*x*y*(x+y))"
+    ],
+    "omega0_image": "(y-x)/(4*x*y)+(x^2-y^2)/(4*x*y*(x+y))=0",
+    "omega2_image": "x^2/(4*x*y*(x+y))-x^2/(4*x*y*(x+y))=0",
+    "classification": "rank-seven algebraic kernel T7"
+  },
+  "limitations": [
+    "The displayed rational x,y formula is reconstructed from exact fibers; a universal cleared polynomial identity remains to be produced.",
+    "The column is a de Rham extension vector, not the entry-226 physical period functional.",
+    "Overall sign follows the chosen orientation of Omega_101 and g101."
+  ]
+}
