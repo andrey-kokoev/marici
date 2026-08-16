@@ -1,0 +1,62 @@
+{
+  "schema": "marici.benincasa.lambda-collision-normal-form.v1",
+  "date": "2026-08-16",
+  "frozen_family": {
+    "surface": "w^2=K_E(a,b)",
+    "residue_condition": "c=-E",
+    "marked_walls": ["q_g1=0", "q_g2=0"],
+    "wall_intersection": {
+      "a0": "x+z",
+      "b0": "y+z",
+      "w": ["+Lambda", "-Lambda"]
+    },
+    "Lambda": "E*(-x+y+z)*(x-y+z)=-ell1*ell2*ell4"
+  },
+  "ell1_component": {
+    "condition": "ell1=x-y-z=0",
+    "coordinates": ["u=a-(x+z)", "v=b-(y+z)"],
+    "abbreviations": ["d=2*x-y", "r=x-y"],
+    "fiber_quadratic_K2": "[2*x*(d*u-y*v)]^2",
+    "null_direction": ["u=y*tau", "v=d*tau"],
+    "fiber_cubic_on_null": "4*x*y^4*d*tau^3",
+    "central_surface_type": "A2 at generic nonsoft kinematics",
+    "moving_family_quadratic_matrix_for_K_in_(u,v,ell1)": [
+      ["4*x^2*d^2", "-4*x^2*y*d", "8*x^2*d*r"],
+      ["-4*x^2*y*d", "4*x^2*y^2", "8*x^2*y*r"],
+      ["8*x^2*d*r", "8*x^2*y*r", "16*x^2*r^2"]
+    ],
+    "matrix_determinant": "-1024*x^6*y^2*d^2*r^2",
+    "total_space_type": "ordinary double point for w^2-K=0 at the generic collision"
+  },
+  "ell2_component": {
+    "condition": "ell2=x-y+z=0",
+    "obtained_by": "x<->y and u<->v from ell1",
+    "central_surface_type": "A2 at generic nonsoft kinematics",
+    "moving_family_quadratic_determinant": "-1024*y^6*x^2*(2*y-x)^2*(y-x)^2",
+    "total_space_type": "ordinary double point for w^2-K=0 at the generic collision"
+  },
+  "ell4_component": {
+    "condition": "ell4=E=x+y+z=0",
+    "coordinates": ["u=a+y", "v=b+x"],
+    "exact_factorization": "K_E=[2*x*y*(u+v)-x*u^2-y*v^2]^2",
+    "central_surface": "reducible union w=+R and w=-R",
+    "singularity": "non-isolated double-curve degeneration",
+    "required_method": "global semistable/nearby-cycle analysis"
+  },
+  "marked_conductor_graph": {
+    "generic": {"component_vertices": 4, "incidence_edges": 6, "b1": 3},
+    "ell1_or_ell2_collision": {"component_vertices": 4, "singular_points": 3, "branch_edges": 8, "b1": 2},
+    "consequence": "one conductor graph cycle specializes to zero at the same existing signed-energy support"
+  },
+  "classification": {
+    "carrier": "existing signed-energy/Cut carrier",
+    "support": "Cayley-Menger surface plus frozen marked-wall coefficient geometry",
+    "new_carrier_datum": false
+  },
+  "unresolved": [
+    "joint nearby-cycle map for the pair (S_E,W)",
+    "top conductor extension column at ell1=0 and ell2=0",
+    "global nearby cycles of the split E=0 surface",
+    "integral and physical-relative-chain normalization"
+  ]
+}
