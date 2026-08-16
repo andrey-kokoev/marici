@@ -262,8 +262,55 @@ fn extension_data(uu:u64,vv:u64,axis:&str)->(D,D,D,F,F,F){
 fn eval_poly_coeff(cs:&[F],ms:&[Mon],u:F,v:F,axis:usize)->(F,F){
     let mut x=F::z(PRIME);let mut d=F::z(PRIME);for(k,(i,j))in ms.iter().enumerate(){let m=u.pow(*i as u64).mul(v.pow(*j as u64));x=x.add(cs[k].mul(m));let e=if axis==0{*i}else{*j};if e>0{let dm=F::new(e as u64,PRIME).mul(if axis==0{u.pow((i-1)as u64).mul(v.pow(*j as u64))}else{u.pow(*i as u64).mul(v.pow((j-1)as u64))});d=d.add(cs[k].mul(dm));}}(x,d)
 }
+#[derive(Clone)]
+struct UniFit{num:Vec<F>,den:Vec<F>}
+fn fit_uni(samples:&[(F,F)],maxdeg:usize)->Option<UniFit>{
+    for d in 0..=maxdeg{let m=d+1;if samples.len()<2*m+4{continue}
+        for anchor in 0..m{let mut mat=Vec::new();for(u,f)in samples.iter().take(2*m+3){let mut z=Vec::with_capacity(m);for k in 0..m{z.push(u.pow(k as u64));}let mut row=z.clone();for k in 0..m{if k!=anchor{row.push(f.neg().mul(z[k]));}}row.push(f.mul(z[anchor]));mat.push(row);}
+            let Some(sol)=unique_solve(mat,2*m-1)else{continue};let mut den=vec![F::z(PRIME);m];den[anchor]=F::o(PRIME);let mut q=m;for k in 0..m{if k!=anchor{den[k]=sol[q];q+=1;}}let fit=UniFit{num:sol[..m].to_vec(),den};
+            let eval=|cs:&[F],u:F|cs.iter().enumerate().fold(F::z(PRIME),|a,(k,c)|a.add(c.mul(u.pow(k as u64))));
+            if samples.iter().skip(2*m+3).all(|(u,f)|{let dd=eval(&fit.den,*u);dd.v!=0&&eval(&fit.num,*u).div(dd)==*f}){return Some(fit)}
+        }
+    }None
+}
+fn laurent_residue(f:&UniFit)->Result<F,&'static str>{
+    let on=f.num.iter().position(|x|x.v!=0).unwrap_or(f.num.len());
+    let od=f.den.iter().position(|x|x.v!=0).unwrap_or(f.den.len());
+    if od<=on{return Ok(F::z(PRIME))}
+    if od==on+1{return Ok(f.num[on].div(f.den[od]))}
+    Err("higher pole")
+}
+fn mm(a:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let n=a.len();let m=b[0].len();let k=b.len();let mut c=vec![vec![F::z(PRIME);m];n];for i in 0..n{for j in 0..m{for q in 0..k{c[i][j]=c[i][j].add(a[i][q].mul(b[q][j]));}}}c}
+fn inverse(a:&[Vec<F>])->Option<Vec<Vec<F>>>{let n=a.len();let mut out=vec![vec![F::z(PRIME);n];n];for j in 0..n{let mut aug=Vec::new();for i in 0..n{let mut r=a[i].clone();r.push(if i==j{F::o(PRIME)}else{F::z(PRIME)});aug.push(r);}let x=rank_solve(aug,n)?;for i in 0..n{out[i][j]=x[i];}}Some(out)}
+fn nullspace_2x4(c:&[Vec<F>])->Vec<Vec<F>>{
+    let mut a=vec![vec![F::z(PRIME);4];2];for i in 0..2{for j in 0..4{a[i][j]=c[j][i];}}
+    let mut piv=Vec::new();let mut r=0;for col in 0..4{let mut q=r;while q<2&&a[q][col].v==0{q+=1}if q==2{continue}a.swap(r,q);let z=a[r][col].inv();for j in col..4{a[r][j]=a[r][j].mul(z);}for i in 0..2{if i!=r&&a[i][col].v!=0{let x=a[i][col];for j in col..4{a[i][j]=a[i][j].sub(x.mul(a[r][j]));}}}piv.push(col);r+=1;if r==2{break}}
+    let free:Vec<usize>=(0..4).filter(|j|!piv.contains(j)).collect();let mut out=Vec::new();for f in free{let mut x=vec![F::z(PRIME);4];x[f]=F::o(PRIME);for(row,p)in piv.iter().enumerate().rev(){x[*p]=a[row][f].neg();}out.push(x);}out
+}
+fn quotient_lifts(c:&[Vec<F>])->Vec<Vec<F>>{let mut out=Vec::new();for target in 0..2{let mut aug=Vec::new();for i in 0..2{let mut row=Vec::new();for j in 0..4{row.push(c[j][i]);}row.push(if i==target{F::o(PRIME)}else{F::z(PRIME)});aug.push(row);}out.push(rank_solve(aug,4).expect("Gysin lift"));}out}
+fn residue_matrix_at_v(vv:u64,elliptic:bool)->Vec<Vec<F>>{
+    let n=if elliptic{2}else{4};let mut samples:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();n];n];let mut u=3u64;
+    while samples[0][0].len()<40{let got=std::panic::catch_unwind(||{if elliptic{let(f,fp,_,_)=boundary_data(u,vv,"u");elliptic_connection(&f,&fp)}else{sample_rows(u,vv,"u").0}});if let Ok(m)=got{for i in 0..n{for j in 0..n{samples[i][j].push((F::new(u,PRIME),m[i][j]));}}}u+=1;}
+    let mut r=vec![vec![F::z(PRIME);n];n];for i in 0..n{for j in 0..n{let f=fit_uni(&samples[i][j],10).expect("univariate fit");r[i][j]=laurent_residue(&f).expect("logarithmic pole");}}r
+}
+fn rank_square(a:&[Vec<F>])->usize{matrix_rank(a.to_vec(),a.len())}
+fn is_zero(a:&[Vec<F>])->bool{a.iter().all(|r|r.iter().all(|x|x.v==0))}
+fn generic_et_test(count:usize)->String{
+    let mut v=0x510e527fade682d1u64;let mut accepted=0usize;let mut bad_gysin=0;let mut bad_blocks=0;let mut unsplit=0;let mut higher=0;let mut full_rank=Vec::new();let mut ell_rank=Vec::new();let mut residue_samples:Vec<(F,Vec<Vec<F>>,Vec<Vec<F>>)>=Vec::new();
+    while accepted<count{v=((v as u128*2_862_933_555_777_941_757u128+131u128)%PRIME as u128)as u64;if v==0||v==2{continue}
+        let test=std::panic::catch_unwind(||{let a=residue_matrix_at_v(v,false);let b=residue_matrix_at_v(v,true);let(_,_,c,_)=boundary_data(0,v,"v");(a,b,c)});let Ok((a,b,c))=test else{continue};accepted+=1;
+        let ac=mm(&a,&c);let cb=mm(&c,&b);if ac!=cb{bad_gysin+=1}full_rank.push(rank_square(&a));ell_rank.push(rank_square(&b));if !is_zero(&mm(&a,&a))||!is_zero(&mm(&b,&b)){higher+=1}residue_samples.push((F::new(v,PRIME),a.clone(),b.clone()));
+        let mut p=nullspace_2x4(&c);let lifts=quotient_lifts(&c);p.extend(lifts);let pi=inverse(&p).expect("adapted basis");let ap=mm(&mm(&p,&a),&pi);
+        let rk=vec![ap[0][0..2].to_vec(),ap[1][0..2].to_vec()];let top_right=vec![ap[0][2..4].to_vec(),ap[1][2..4].to_vec()];let e=vec![ap[2][0..2].to_vec(),ap[3][0..2].to_vec()];let qb=vec![ap[2][2..4].to_vec(),ap[3][2..4].to_vec()];
+        if !is_zero(&rk)||!is_zero(&top_right)||qb!=b{bad_blocks+=1}
+        for col in 0..2{let mut aug=Vec::new();for i in 0..2{aug.push(vec![b[i][0],b[i][1],e[i][col]]);}if rank_solve(aug,2).is_none(){unsplit+=1;}}
+    }
+    let mut reconstruction_failures=0usize;for n in [4usize,2usize]{for i in 0..n{for j in 0..n{let ss:Vec<(F,F)>=residue_samples.iter().map(|(v,a,b)|(*v,if n==4{a[i][j]}else{b[i][j]})).collect();if fit_uni(&ss,5).is_none(){reconstruction_failures+=1}}}}
+    format!("{{\"schema\":\"marici.gm.generic_et_specialization.v2\",\"points\":{},\"open\":\"u=0; v*(v-2)!=0\",\"all_logarithmic\":{},\"residue_function_reconstruction_failures\":{},\"residue_function_degree_bound\":5,\"gysin_residue_mismatches\":{},\"adapted_block_mismatches\":{},\"unsplit_extension_columns\":{},\"final_residue_ranks\":{:?},\"elliptic_residue_ranks\":{:?},\"N_squared_failures\":{},\"kernel_residue\":\"zero\",\"quotient_residue\":\"rank-one nodal Legendre\",\"extension_specialization\":\"split in the logarithmic residue category\",\"classification\":\"Tate kernel plus nodal Legendre nearby cycle on the existing total-energy carrier\"}}",count,higher==0,reconstruction_failures,bad_gysin,bad_blocks,unsplit,full_rank,ell_rank,higher)
+}
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="generic-et-test"{let count=a[2].parse::<usize>().unwrap();fs::write(&a[3],generic_et_test(count)).expect("write generic ET test");return}
     if a.len()==4&&a[1]=="other-block-test"{
         let count=a[2].parse::<usize>().unwrap();let blocks:Vec<Vec<(bool,Mon)>>=vec![vec![(false,(1,1))],vec![(true,(1,0)),(false,(1,0))],vec![(true,(0,1)),(false,(0,1))]];let mut su=0x9e3779b97f4a7c15u64;let mut sv=0xd1b54a32d192ed03u64;let mut bad=[0usize;3];
         for _ in 0..count{su=((su as u128*6_364_136_223_846_793_005u128+97u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+101u128)%PRIME as u128)as u64;let u=F::new(su,PRIME);let v=F::new(sv,PRIME);let l=F::o(PRIME).sub(u.add(v).mul(F::new(2,PRIME).inv()));

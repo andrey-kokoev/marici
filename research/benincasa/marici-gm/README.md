@@ -16,6 +16,7 @@ Commands:
 - `other-block-reconstruct <max-total-degree> <output.json>`
 - `other-block-test <point-count> <output.json>`
 - `cargo run --release --bin et_intersection_census -- <output.json>`
+- `generic-et-test <point-count> <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -44,3 +45,9 @@ The total-energy census restricts every frozen signed-energy, elliptic, and
 algebraic-kernel divisor to `u=ell4=E_T=0`. It verifies exactly that every
 additional genuine intersection is one of the site-soft roots `v=0,2`;
 there is no additional nonsoft energy-carrier intersection.
+
+The generic total-energy test reconstructs the exact univariate Laurent
+residue of the full final block and its elliptic Gysin quotient at independent
+values of `v` on `u=E_T=0`. It verifies the residue-level horizontal Gysin
+square, adapts to kernel/quotient coordinates, and solves the logarithmic
+extension-splitting equation.
