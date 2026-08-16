@@ -1,0 +1,48 @@
+{
+  "schema": "marici.benincasa.rees_regularization.v1",
+  "date": "2026-08-16",
+  "frozen_input": {
+    "raw_connection": "nabla_E Omega111 = E^-2*(e6/8) + E^-1*Rraw + O(1)",
+    "e6_line": "nabla e6 = -(1/2)dlog(H) e6",
+    "H": "z^2*((E^2-y^2)*(E^2-x^2)+E^2*z^2)",
+    "total_energy_normal": "z=E-x-y; x,y fixed"
+  },
+  "symbolic_checks": {
+    "H_at_E0": "x^2*y^2*(x+y)^2",
+    "dE_H_at_E0": "-2*x^2*y^2*(x+y)",
+    "dE_log_H_at_E0": "-2/(x+y)",
+    "e6_connection_at_E0": "1/(x+y)",
+    "rees_lift": "Omega111_reg = Omega111 + e6/(8E)",
+    "double_pole_cancellation": "(+e6/(8E^2))+d_E(e6/(8E)) has E^-2 coefficient 0",
+    "induced_e6_residue": "e6/(8*(x+y))"
+  },
+  "finite_reconstruction": {
+    "fixed_residue": {
+      "Omega111": "1",
+      "Omega101": "-1/(2*y)",
+      "Omega110": "-1/(2*x)",
+      "e6": "1/(8*(x+y))",
+      "e7": "-(x-y)^2/(8*x^2*y^2)",
+      "e8": "(y-x)/(4*x^2*y^2*(x+y))",
+      "e9": "(x-y)/(4*x^2*y^2*(x+y))"
+    },
+    "source_fibers": [
+      "(x,y)=(2,3), degree 4 and 5",
+      "(x,y)=(3,2), degree 4",
+      "(x,y)=(2,5), degree 4"
+    ],
+    "caveat": "The e7-e9 formulas are exact rational reconstruction from these finite fibers, not yet a universal cleared polynomial identity."
+  },
+  "gysin_check": {
+    "omega0": "e7+(y^2/2)e8+(x^2/2)e9=0",
+    "omega2": "-(x^2/2)(e8+e9)=0",
+    "e6": "R_infinity(e6)=0",
+    "classification": "absolute tail lies in T7"
+  },
+  "result": {
+    "claim": "The unique source-normalized meromorphic correction along the invariant e6 line removes the raw E^-2 pole and yields a logarithmic candidate residue with no elliptic Gysin component.",
+    "carrier_change": false,
+    "Q_in_residue": false,
+    "remaining": "Prove the reconstructed rational residue universally and compute the regular E^0 extension term where Q may first occur."
+  }
+}
