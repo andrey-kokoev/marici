@@ -1,7 +1,7 @@
 {
-  "schema": "marici.benincasa.one-wall-total-energy-extension.v1",
+  "schema": "marici.benincasa.one-wall-total-energy-extension.v2",
   "date": "2026-08-16",
-  "status": "finite_exact_reconstruction",
+  "status": "finite_exact_extension_quotient_reconstruction",
   "frozen_geometry": {
     "slice": "x,y fixed; z=E-x-y",
     "surface": "w^2=K_E(a,b)",
@@ -29,7 +29,8 @@
     ],
     "polynomial_degree": 4,
     "stabilization_check_degree": 5,
-    "total_energy_residue_conjecture": [
+    "quotient_residue": "0",
+    "selected_gauge_residue": [
       "0",
       "0",
       "0",
@@ -40,7 +41,12 @@
       "-1/(2*x*y*(x+y))",
       "1/(2*x*y*(x+y))"
     ],
-    "quotient_residue": "0"
+    "canonical_fixed_coordinates": {
+      "e4": "-1/(4*x*y)",
+      "e7": "(y-x)/(4*x*y)",
+      "e8": "-1/(2*x*y*(x+y))",
+      "e9": "1/(2*x*y*(x+y))"
+    }
   },
   "exact_samples": [
     {
@@ -132,7 +138,26 @@
       "rank": 93,
       "inconsistent": false
     },
-    "cohomology_residues_unique_in_reduction": true
+    "cohomology_residues_unique_in_reduction": false,
+    "gauge_audit_x2_y3": {
+      "affine_solution_dimension": 67,
+      "residue_projection_variation_rank": 5,
+      "fixed_coordinates": [
+        "quotient coefficient",
+        "e4",
+        "e7",
+        "e8",
+        "e9"
+      ],
+      "gauge_dependent_coordinates": [
+        "e1",
+        "e2",
+        "e3",
+        "e5",
+        "e6"
+      ],
+      "note": "A pivot variable may still depend on free columns; the v1 uniqueness claim was incorrect."
+    }
   },
   "infinity_gysin": {
     "e7_e8_e9_part": [
@@ -142,9 +167,10 @@
     ],
     "omega0_image": "(y-x)/(4*x*y)+(x^2-y^2)/(4*x*y*(x+y))=0",
     "omega2_image": "x^2/(4*x*y*(x+y))-x^2/(4*x*y*(x+y))=0",
-    "classification": "rank-seven algebraic kernel T7"
+    "classification": "canonical extension class lands in the algebraic-kernel quotient; selected representative has zero Gysin image"
   },
   "limitations": [
+    "The e5 and e6 entries of the selected W1 representative are exact-lift-gauge dependent and are not canonical extension coordinates.",
     "The displayed rational x,y formula is reconstructed from exact fibers; a universal cleared polynomial identity remains to be produced.",
     "The column is a de Rham extension vector, not the entry-226 physical period functional.",
     "Overall sign follows the chosen orientation of Omega_101 and g101."
