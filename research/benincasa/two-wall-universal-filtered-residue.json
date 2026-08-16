@@ -1,0 +1,38 @@
+{
+  "schema": "marici.benincasa.two_wall_universal_filtered_residue.v1",
+  "date": "2026-08-16",
+  "open_locus": "x*y*(x+y)!=0",
+  "central": {
+    "s": "x+y",
+    "l1": "b+x",
+    "l2": "a+y",
+    "D": "l1*l2",
+    "R": "x*a^2+y*b^2-x*y*s",
+    "K0": "R^2"
+  },
+  "incidence_class": {
+    "G": "Omega111-Omega101/(2*y)-Omega110/(2*x)",
+    "Ainc": "b*(y^2-a^2)/(2*x*y)",
+    "Binc": "a*(x^2-b^2)/(2*x*y)",
+    "eta_inc": "(-Binc*da+Ainc*db)/(D*R)",
+    "identity": "d eta_inc=G da wedge db",
+    "remaining_terms": 0
+  },
+  "tail_relation": "T111-Omega coefficients induced tails = T111+q101*T101+q110*T110=0",
+  "composite_primitive": "eta111_rat=eta_inc+eta101/(2*y)+eta110/(2*x)",
+  "composite_differential": "d eta111_rat=G111+Theta101_fix/(2*y)+Theta110_fix/(2*x)",
+  "induced_gauge_coordinates": {
+    "e4": "-1/(8*x*y^2)",
+    "e2": "-1/(8*x^2*y)",
+    "status": "gauge-dependent top absolute coordinates; no new fixed extension datum"
+  },
+  "result": {
+    "ordinary_rational_residue": "exact",
+    "filtered_survivor": "e6/(8*(x+y))",
+    "home": "invariant algebraic Kummer line <e6> in A_--",
+    "elliptic_projection": "zero",
+    "Q_present": false,
+    "new_carrier_datum": false
+  },
+  "next": "compute Rees-shifted connection coefficients E^0 and E^1; Q can first be tested at E^1"
+}
