@@ -1,0 +1,91 @@
+{
+  "schema": "marici.benincasa.elliptic-top-support-geometry.v1",
+  "date": "2026-08-16",
+  "frozen_denominators": {
+    "q_g1": "x+c+b",
+    "q_g2": "y+c+a",
+    "q_G12": "E+c",
+    "E": "x+y+z",
+    "variables_order": [
+      "c",
+      "a",
+      "b"
+    ]
+  },
+  "triple_stratum": {
+    "point": {
+      "c": "-E",
+      "a": "x+z",
+      "b": "y+z"
+    },
+    "incidence_jacobian": -1,
+    "transverse": true
+  },
+  "cayley_menger_restrictions": {
+    "triple": "[(x+y+z)(-x+y+z)(x-y+z)]^2",
+    "lower_pair_line": {
+      "parametrization": {
+        "c": "t",
+        "a": "-y-t",
+        "b": "-x-t"
+      },
+      "restriction": "t^2[(-x+y+z)(x-y+z)]^2",
+      "marked_point_from_q_G12": "t=-E"
+    }
+  },
+  "canonical_class": {
+    "representative": "dlog(q_g1) wedge dlog(q_g2) wedge dlog(q_G12)",
+    "face_residue_signs_in_order": [
+      "q_g1",
+      "q_g2",
+      "q_G12"
+    ],
+    "signs": [
+      1,
+      -1,
+      1
+    ],
+    "triple_residue": 1,
+    "source_measure_exponent": "gamma=-1/2",
+    "restricted_coefficient": "K(P)^(-1/2)=±1/[E(-x+y+z)(x-y+z)]"
+  },
+  "classification": {
+    "proper_top_rank": 1,
+    "geometric_home": "triple-denominator Gysin/relative coefficient class",
+    "singular_support": [
+      "E=0",
+      "-x+y+z=0",
+      "x-y+z=0"
+    ],
+    "existing_energy_carrier": true,
+    "new_carrier_datum": false,
+    "coefficient_type": "rank-one Tate/Kummer after occurrence-sheet resolution",
+    "canonical_global_splitting_proved": false
+  },
+  "falsifier_outcome": {
+    "claim": "The unique proper top-support class requires an incidence datum beyond the frozen denominator and Cayley-Menger arrangement.",
+    "status": "falsified",
+    "evidence": "The class is the transverse triple-stratum logarithmic generator and K(P) factors only into frozen energy letters."
+  },
+  "qualifications": [
+    "Möbius-inverted ranks alone do not construct a support filtration or its maps.",
+    "The identification uses the frozen normal-crossing divisor geometry and Poincare residues.",
+    "This closes only the unique proper 111 grade, not the mixed-face, q-only, algebraic-kernel, or global extension problems.",
+    "Residue signs are for dlog(q_g1) wedge dlog(q_g2) wedge dlog(q_G12); the source dc wedge da wedge db orientation differs by an overall minus sign."
+  ],
+  "exact_checks": {
+    "specialization_A": {
+      "x": 2,
+      "y": 3,
+      "z": 4,
+      "K_at_P": 18225
+    },
+    "specialization_B": {
+      "x": 3,
+      "y": 5,
+      "z": 6,
+      "K_at_P": 200704
+    },
+    "rust_certificate": "research/benincasa/marici-gm/src/bin/elliptic_top_support_geometry.rs"
+  }
+}
