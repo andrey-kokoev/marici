@@ -21,6 +21,13 @@ The second carrier layer is therefore canonical after the unique-geodesic
 edge subdivision: two zero fillers and six unique minimal three-facet
 patches.
 
+With the coherent source orientation given by the determinant of the three
+signed rays, the sum of the eight fillers is twice the primitive oriented K6
+fundamental sphere. Thus the cellular map has absolute degree two. The
+checker derives the primitive rank-one facet kernel and verifies the factor
+two on all nine oriented facet coefficients; it is not inferred from
+unsigned occurrence counts.
+
 ## Remaining literal and geometric lift
 
 The checker certifies the complete cellular carrier matrix, but it does not
@@ -57,6 +64,8 @@ chain map.
   "facet_BC_equalities": 9,
   "facet_BC_rank": 9,
   "facet_BC_smith_unit_factors": 9,
+  "oriented_cellular_degree_abs": 2,
+  "primitive_K6_sphere_kernel_rank": 1,
   "integer_torsion": false,
   "literal_full_Boolean_facet_lift_constructed": false,
   "global_endpoint_Q_map_constructed": false,
