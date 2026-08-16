@@ -118,6 +118,31 @@ const selectedRows=[];let current=[];
 for(let i=0;i<Arr.length&&selectedRows.length<24;i++){const trial=[...current,Arr[i]];if(rank(trial)>current.length){current=trial;selectedRows.push(i)}}
 function detBareiss(M){M=M.map(r=>r.map(BigInt));let sign=1n,prev=1n;for(let k=0;k<M.length-1;k++){let p=k;while(p<M.length&&M[p][k]===0n)p++;if(p===M.length)return 0n;if(p!==k){[M[p],M[k]]=[M[k],M[p]];sign=-sign}const pivot=M[k][k];for(let i=k+1;i<M.length;i++)for(let j=k+1;j<M.length;j++)M[i][j]=(M[i][j]*pivot-M[i][k]*M[k][j])/prev;prev=pivot}return sign*M[M.length-1][M.length-1]}
 const selectedDet=detBareiss(selectedRows.map(i=>Arr[i]));
+function solveAffineMod2(M,b){
+ const X=M.map((r,i)=>[...r.map(x=>((x%2)+2)%2),((b[i]%2)+2)%2]);let rr=0;const piv=[];
+ for(let c=0;c<M[0].length&&rr<X.length;c++){let p=rr;while(p<X.length&&!X[p][c])p++;if(p===X.length)continue;[X[rr],X[p]]=[X[p],X[rr]];for(let i=0;i<X.length;i++)if(i!==rr&&X[i][c])for(let j=c;j<=M[0].length;j++)X[i][j]^=X[rr][j];piv.push(c);rr++;}
+ for(const row of X)if(row.slice(0,-1).every(x=>x===0)&&row.at(-1))return null;
+ const n=M[0].length,ps=new Set(piv),x=Array(n).fill(0);for(let i=0;i<piv.length;i++)x[piv[i]]=X[i][n];
+ const basis=[];for(let f=0;f<n;f++)if(!ps.has(f)){const v=Array(n).fill(0);v[f]=1;for(let i=piv.length-1;i>=0;i--){const c=piv[i];let z=0;for(let j=c+1;j<n;j++)z^=(X[i][j]&v[j]);v[c]=z;}basis.push(v);}
+ return{x,basis};
+}
+const nonreflectionSolution=solveAffineMod2(Ar,bbr);
+if(!nonreflectionSolution)throw Error("nonreflection system");
+const correctionVectors=[];
+for(let mask=0;mask<(1<<nonreflectionSolution.basis.length);mask++){
+ const x=[...nonreflectionSolution.x];
+ for(let k=0;k<nonreflectionSolution.basis.length;k++)if(mask>>k&1)for(let j=0;j<x.length;j++)x[j]^=nonreflectionSolution.basis[k][j];
+ correctionVectors.push(Arr.slice(Ar.length).map(row=>row.reduce((z,a,j)=>z^((((a%2)+2)%2)&x[j]),0)));
+}
+const correction=correctionVectors[0];
+if(!correctionVectors.every(value=>JSON.stringify(value)===JSON.stringify(correction)))throw Error("correction orbit not unique");
+const correctionWeight=correction.reduce((sum,value)=>sum+value,0);
+const naiveExtended=Arr.map((row,index)=>[...row,index<Ar.length?0:correction[index-Ar.length]]);
+const naiveExtendedAugmented=naiveExtended.map((row,index)=>[...row,bbrr[index]]);
+const naiveSolution=solveUnique(naiveExtended,bbrr);
+const naiveRows=[];let naiveCurrent=[];
+for(let i=0;i<naiveExtended.length&&naiveRows.length<25;i++){const trial=[...naiveCurrent,naiveExtended[i]];if(rank(trial)>naiveCurrent.length){naiveCurrent=trial;naiveRows.push(i)}}
+const naiveDet=detBareiss(naiveRows.map(index=>naiveExtended[index]));
 if (vars.length !== 24) throw Error("variable census");
 if (rank(A) !== 21 || rank(aug) !== 21) throw Error("supported system ranks");
 if (rank(Ar) !== 23 || rank(augr) !== 23) throw Error("rotation system ranks");
@@ -126,6 +151,10 @@ if (rankMod2(Arr) !== 23 || rankMod2(augrr) !== 24) throw Error("mod-2 obstructi
 if (selectedDet !== 2n && selectedDet !== -2n) throw Error("maximal minor");
 if (sol.some(x=>x.d!==1n&&x.d!==2n) || sol.every(x=>x.d===1n)) throw Error("half-integral solution");
 if (sol.filter(x=>!x.zero()).length !== 12) throw Error("solution support");
+if (correctionWeight !== 12) throw Error("odd-orbit correction support");
+if (rank(naiveExtended)!==25||rank(naiveExtendedAugmented)!==25)throw Error("naive extension ranks");
+if (naiveSolution[24].toString()!=="0"||naiveSolution.every(x=>x.d===1n))throw Error("naive same-degree repair");
+if (naiveDet!==4n&&naiveDet!==-4n)throw Error("naive extension minor");
 console.log(JSON.stringify({
   status:"falsified_scoped_strict_integral_K6_to_entry223_top_comparison",
   source_face_ranks:[1,9,21,14],
@@ -147,6 +176,13 @@ console.log(JSON.stringify({
   selected_maximal_minor_determinant:Number(selectedDet),
   smith_factors:[...Array(23).fill(1),2],
   obstruction_group:"Z/2",
+  minimal_mod2_reflection_correction_rows:12,
+  minimal_mod2_reflection_correction_unique:true,
+  naive_same_degree_odd_column_rank:25,
+  naive_same_degree_odd_column_scalar:0,
+  naive_same_degree_integral_solution:false,
+  naive_same_degree_selected_minor_determinant:Number(naiveDet),
+  shifted_mapping_cone_required:true,
   strict_top_map:{top:1,long_facets:"identity_with_cellular_sign",short_facets:0},
   literal_support_rule:"an edge may map only to the two target pair rows incident to its unique long-road label",
   general_derived_correspondence_no_go:false,
