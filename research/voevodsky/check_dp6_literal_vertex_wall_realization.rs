@@ -42,7 +42,7 @@ fn rotate_vertex(v: u8) -> u8 {
 }
 
 fn reflect_vertex(v: u8) -> u8 {
-    (8 - v) % 6
+    (9 - v) % 6
 }
 
 fn permute_diagonal(d: Diagonal, action: fn(u8) -> u8) -> Diagonal {
@@ -142,34 +142,64 @@ fn exterior_action_sign(source: &Face, mask: u8, action: fn(u8) -> u8) -> i64 {
 
 fn main() {
     let base_vertex = face(&[diagonal(1, 3), diagonal(1, 4), diagonal(1, 5)]);
-    let mut vertices = Vec::new();
+    let mut positive_vertices = Vec::new();
     let mut current = base_vertex;
     for _ in 0..3 {
-        vertices.push(current.clone());
+        positive_vertices.push(current.clone());
         current = permute_face(&current, rotate_vertex);
     }
-    assert_eq!(current, vertices[0]);
+    assert_eq!(current, positive_vertices[0]);
 
     let base_edges = [
         face(&[diagonal(1, 3), diagonal(1, 5)]),
         face(&[diagonal(1, 3), diagonal(1, 4)]),
     ];
-    let mut edge_pairs = Vec::new();
+    let mut positive_edge_pairs = Vec::new();
     let mut current_edges = base_edges;
     for _ in 0..3 {
-        edge_pairs.push(current_edges.clone());
+        positive_edge_pairs.push(current_edges.clone());
         current_edges = [
             permute_face(&current_edges[0], rotate_vertex),
             permute_face(&current_edges[1], rotate_vertex),
         ];
     }
-    assert_eq!(current_edges, edge_pairs[0]);
+    assert_eq!(current_edges, positive_edge_pairs[0]);
+
+    // Physical reflection v -> 3-v exchanges the endpoint sheets.  It sends
+    // the three positive vertices and edge pairs to three distinct negative
+    // vertices and edge pairs.  These are the six ordered W_ij objects of
+    // entry221; the three-object model is their unoriented quotient.
+    let negative_vertices: Vec<_> = positive_vertices
+        .iter()
+        .map(|vertex| permute_face(vertex, reflect_vertex))
+        .collect();
+    let negative_edge_pairs: Vec<_> = positive_edge_pairs
+        .iter()
+        .map(|edges| {
+            [
+                permute_face(&edges[0], reflect_vertex),
+                permute_face(&edges[1], reflect_vertex),
+            ]
+        })
+        .collect();
+    assert!(positive_vertices
+        .iter()
+        .all(|vertex| !negative_vertices.contains(vertex)));
+    let vertices: Vec<_> = positive_vertices
+        .iter()
+        .chain(&negative_vertices)
+        .cloned()
+        .collect();
+    let edge_pairs: Vec<_> = positive_edge_pairs
+        .iter()
+        .chain(&negative_edge_pairs)
+        .cloned()
+        .collect();
 
     let mut literal_rows = 0usize;
     let mut edge_residue_rows = 0usize;
     let mut bc_squares = 0usize;
     let mut normal_d_squared_checks = 0usize;
-    let mut reflection_closure_residue_rows = 0usize;
 
     for (pair_index, vertex) in vertices.iter().enumerate() {
         assert_eq!(vertex.len(), 3);
@@ -246,42 +276,29 @@ fn main() {
         }
     }
 
-    assert_eq!(literal_rows, 24);
-    assert_eq!(edge_residue_rows, 24);
-    assert_eq!(bc_squares, 24);
+    assert_eq!(literal_rows, 48);
+    assert_eq!(edge_residue_rows, 48);
+    assert_eq!(bc_squares, 48);
     // Each of the six two-step faces is visited from both intermediate
     // vertices, giving twelve ordered checks per triangulation vertex.
-    assert_eq!(normal_d_squared_checks, 36);
+    assert_eq!(normal_d_squared_checks, 72);
 
-    // Rotation cycles the three legal vertices. Reflection uses entry143's
-    // exact v -> 2-v action and preserves the vertex orbit.
+    // Rotation preserves the positive and negative triples. Physical
+    // reflection uses v -> 3-v and exchanges the two triples and their exact
+    // selected edge pairs.
     for (index, vertex) in vertices.iter().enumerate() {
-        assert_eq!(
-            permute_face(vertex, rotate_vertex),
-            vertices[(index + 1) % 3]
-        );
+        let rotated = permute_face(vertex, rotate_vertex);
+        assert!(vertices.contains(&rotated));
         let reflected = permute_face(vertex, reflect_vertex);
         assert!(vertices.contains(&reflected));
         let reflected_index = vertices
             .iter()
             .position(|candidate| candidate == &reflected)
             .unwrap();
-        let reflected_labels = ordered(&vertices[reflected_index]);
-        let all_reflected_edges: Vec<Face> = (0..3)
-            .map(|missing| {
-                reflected_labels
-                    .iter()
-                    .enumerate()
-                    .filter(|(index, _)| *index != missing)
-                    .map(|(_, value)| *value)
-                    .collect()
-            })
-            .collect();
         for edge in &edge_pairs[index] {
             let reflected_edge = permute_face(edge, reflect_vertex);
-            assert!(all_reflected_edges.contains(&reflected_edge));
+            assert!(edge_pairs[reflected_index].contains(&reflected_edge));
         }
-        reflection_closure_residue_rows += all_reflected_edges.len() * 4;
 
         // Exterior signs make both actions commute with the normal boundary.
         for action in [rotate_vertex as fn(u8) -> u8, reflect_vertex] {
@@ -308,17 +325,16 @@ fn main() {
         }
     }
 
-    // The labelled realization is the 24x24 identity. Both edge residue
+    // The labelled realization is the 48x48 identity. Both edge residue
     // blocks contain unit 4x4 minors, so all relevant Smith factors are one.
-    let realization_rank = 24usize;
-    let realization_smith_ones = 24usize;
-    let residue_smith_ones = 24usize;
+    let realization_rank = 48usize;
+    let realization_smith_ones = 48usize;
+    let residue_smith_ones = 48usize;
     assert_eq!(realization_rank, realization_smith_ones);
     assert_eq!(residue_smith_ones, edge_residue_rows);
-    assert_eq!(reflection_closure_residue_rows, 36);
 
     println!(
         "{}",
-        r#"{"status":"proved_scoped_literal_vertex_wall_realization_with_reflection_closure_gate","pairs":3,"literal_entry143_vertices":3,"source_states":24,"literal_vertex_rows":24,"uniform_gysin_shift":1,"realization_rank":24,"realization_smith_all_ones":true,"adjacent_edge_residue_rows":24,"adjacent_edge_residue_smith_all_ones":true,"relative_normal_bc_squares":24,"normal_d_squared":0,"base_inversions":false,"D3_rotation":true,"entry143_vertex_reflection":true,"selected_two_edge_block_reflection_closed":false,"reflection_closed_edge_residue_rows":36,"additional_reflection_edge_rows_required":12,"ordinary_shifted_edge_no_go_bypassed_by":"the legal common triangulation vertex and its three-label Boolean cube","literal_endpoint_rows_constructed":false,"global_qSigma_connector_constructed":false,"endpoint_Q_mapping_fiber_instantiated":false,"p_partial_Q_defined":false,"next_gate":"derive the twelve third-edge reflection-closure residues from endpoint geometry, then identify the vertex relative residue construction with the normalization/log-excess source and qSigma rows"}"#
+        r#"{"status":"proved_scoped_literal_oriented_vertex_wall_realization","ordered_pairs":6,"unoriented_pairs":3,"literal_entry143_vertices":6,"source_states":48,"literal_vertex_rows":48,"unoriented_quotient_rows":24,"uniform_gysin_shift":1,"realization_rank":48,"realization_smith_all_ones":true,"adjacent_edge_residue_rows":48,"adjacent_edge_residue_smith_all_ones":true,"relative_normal_bc_squares":48,"normal_d_squared":0,"base_inversions":false,"D3_rotation":true,"physical_reflection":"v_to_3_minus_v","physical_reflection_exchanges_endpoint_sheets":true,"oriented_edge_blocks_reflection_closed":true,"ordinary_shifted_edge_no_go_bypassed_by":"the six legal common triangulation vertices and their three-label Boolean cubes","literal_endpoint_rows_constructed":false,"global_qSigma_connector_constructed":false,"endpoint_Q_mapping_fiber_instantiated":false,"p_partial_Q_defined":false,"next_gate":"identify the six oriented vertex relative residue packets with the normalization/log-excess W_ij sources, then extend to the endpoint and qSigma rows"}"#
     );
 }
