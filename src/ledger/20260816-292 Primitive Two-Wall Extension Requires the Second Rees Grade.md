@@ -273,14 +273,38 @@ e_6^{(-2)}&=\frac18,\\
 c_{111}^{(-1)}&=1,\\
 c_{101}^{(-1)}&=-\frac1{2y},&
 c_{110}^{(-1)}&=-\frac1{2x},\\
-e_7^{(-1)}&=-\frac1{8x^2y^2},\\
+e_7^{(-1)}&=-\frac{(x-y)^2}{8x^2y^2},\\
 e_8^{(-1)}&=\frac{y-x}{4x^2y^2(x+y)},&
 e_9^{(-1)}&=\frac{x-y}{4x^2y^2(x+y)}.
 \end{aligned}
 \]
 
-Because the two fibers are exchanged rather than independently scaled,
-these formulas remain reconstructions, not universal identities.
+A third nonsymmetric scaling fiber,
+
+\[
+(x,y)=(2,5),
+\]
+
+gives
+
+\[
+e_6^{(-2)}=\frac18,\qquad
+(c_{111}^{(-1)},c_{101}^{(-1)},c_{110}^{(-1)})
+=
+\left(1,-\frac1{10},-\frac14\right),
+\]
+
+and
+
+\[
+(e_7^{(-1)},e_8^{(-1)},e_9^{(-1)})
+=
+\left(-\frac9{800},\frac3{2800},-\frac3{2800}\right).
+\]
+
+This fixes the missing \((x-y)^2\) factor in \(e_7\) and confirms every
+displayed candidate formula at a genuinely nonsymmetric scale. They remain
+finite exact reconstructions rather than universal cleared identities.
 
 ## Relation to the earlier second-Rees warning
 
