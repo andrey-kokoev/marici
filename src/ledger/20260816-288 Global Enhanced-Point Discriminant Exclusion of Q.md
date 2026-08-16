@@ -169,34 +169,42 @@ on the normalized central conic and therefore simultaneously tests:
 Thus the remaining possibility that the four pointwise jets combine into
 \(\mathcal Q\) through their global conic discriminant is falsified.
 
-This does not compute the Gauss--Manin connection on the algebraic kernel
-and does not exclude \(\mathcal Q\) from an extension class or from the
-physical relative integration chain.
+This calculation is an independent surface-family audit.  Entries 209--212
+already compute the generic algebraic connection, its extension, and the
+physical relative-chain variation.  They exclude \(\mathcal Q\) from all
+three.  Therefore the present result must not reopen those closed candidate
+homes.
 
 ## Provenance partition after the test
 
-The following homes of \(\mathcal Q\) are now excluded:
+Combining the earlier generic coefficient theorem with the present
+surface-family calculation excludes \(\mathcal Q\) from:
 
 1. the pure elliptic infinity-Gysin quotient;
-2. generic total-energy smoothing along the double conic;
-3. the physical enhanced point's second Rees smoothing;
-4. the combined projective collision discriminant of all four enhanced
+2. the cyclic algebraic line \(L_1\);
+3. the complete generic rank-seven algebraic kernel \(\mathcal T_7\);
+4. the generic algebraic-plane extension class;
+5. the generic physical relative-chain monodromy;
+6. generic total-energy smoothing along the double conic;
+7. the physical enhanced point's second Rees smoothing;
+8. the combined projective collision discriminant of all four enhanced
    points.
 
-The surviving source-generated homes are now:
+Thus entry 212's classification is independently strengthened:
 
 \[
 \boxed{
-\text{the algebraic }\mathcal T_7/L_1\text{ connection}
-\quad|\quad
-\text{the algebraic--elliptic extension class}
-\quad|\quad
-\text{the physical relative chain}.
+\mathcal Q
+\text{ is apparent cyclic/master-presentation alphabet data at generic}
+\text{ nonsoft homogeneous kinematics.}
 }
 \]
 
 The absolute surface-smoothing search is closed unless a later calculation
-exhibits a source datum absent from the frozen \(K_E\)-family.
+exhibits a source datum absent from the frozen \(K_E\)-family.  Remaining
+work concerns intersections of true support divisors, integral
+normalization, and the global marked rank-twelve extension—not another
+generic home for \(\mathcal Q\).
 
 ## Classification
 
@@ -206,6 +214,7 @@ exhibits a source datum absent from the frozen \(K_E\)-family.
 | four enhanced parameters | existing marked incidence |
 | \(\Delta_C=0\) | algebraic coefficient support |
 | \(\mathcal Q\) in \(\Delta_C\) | absent |
+| generic \(\mathcal Q\) provenance | apparent alphabet data |
 | new carrier datum | none |
 
 ## Deutsch--Popperian update M2.31
@@ -220,50 +229,59 @@ The hard-to-vary claim
 
 is falsified by an exact generic specialization.
 
-The smaller surviving conjecture is:
+The smaller surviving statement is:
 
 \[
 \boxed{
 \mathcal Q
-\text{ belongs to the connection or extension data of the frozen}
-q\text{-sector, not to its absolute surface-smoothing discriminant.}
+\text{ has no intrinsic generic home in the frozen absolute, marked,}
+\text{ algebraic, elliptic, extension, or physical-chain geometry tested.}
 }
 \]
 
-This sharpens H2.  Every surface singularity found so far remains
-coefficient geometry over the unchanged energy/Cut carrier, while the
-unexplained quartic has been forced into genuinely derived coefficient
-data.
+This strengthens H2 without inventing a new primitive.  Every actual
+surface singularity found remains coefficient geometry over the unchanged
+energy/Cut carrier, while the printed quartic remains an apparent
+presentation letter on the generic homogeneous locus.
+
+## Correction note
+
+The first committed version of this entry incorrectly listed
+\(\mathcal T_7/L_1\), the algebraic--elliptic extension, and the physical
+relative chain as surviving candidate homes.  Entries 209--212 had already
+excluded all three generically.  The exact resultant calculation was
+correct; only that historical interpretation and proposed next step were
+wrong.  This revision repairs the frontier without changing the
+calculation.
 
 ## Next hostile test
 
-Compute the Gauss--Manin connection on
+Use the split total-energy model of entry 286 and the finite collision
+monodromy of entries 282--285 to compute the remaining rank-twelve marked
+extension
 
 \[
-\mathcal A_{--}
-=
-\langle e_6,v_{\rm alg}\rangle
-\subset\ker R_\infty.
-\]
-
-Then extract the canonical rank-one flat subquotient selected by the
-last-three cyclic module and test, without choosing a projector from the
-published factorization,
-
-\[
-L_1
-\stackrel?{\sim}_{\rm rat}
-\partial-\frac12d\log(-\mathcal Q).
-\]
-
-If \(\mathcal Q\) is absent from that algebraic connection, compute the
-extension class of
-
-\[
-0\to\mathcal T_7
-\to\mathcal M_q^{(9)}
-\to\mathbb V_{\rm ell}(-1)
+0\to H^2(S_E)
+\to H^2(S_E\setminus W)
+\to H^1(W)(-1)
 \to0
 \]
 
-before invoking the physical relative chain.
+at \(E=0\).  In the rational conductor frame
+
+\[
+(g_{101},g_{110},g_{111}^{\rm inv}),
+\]
+
+derive the top-column nearby-cycle map and its integral lattice index.
+Separate:
+
+- the nodal elliptic rank-one nilpotent;
+- the four enhanced-point semistable classes;
+- the two conductor Kummer characters;
+- the known occurrence \(2\)-torsion gluing.
+
+The finite falsifier is a residual extension class whose support or
+integral incidence cannot be generated from the frozen conic, marked walls,
+and signed-energy degeneration.  Only that outcome can require a new
+carrier datum.
