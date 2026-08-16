@@ -157,8 +157,8 @@ two diagonal entries in the enhanced frame are now fixed:
 \mathcal K_{\Delta_2^{-1/2}}.
 \]
 
-The only uncomputed part of the rank-three conductor quotient is the
-connection/extension involving the primitive top class
+Entry 308 computes the remaining part of the rank-three conductor quotient:
+the connection/extension involving the primitive top class
 \(\widetilde g_{111}\).
 
 ## Classification
@@ -169,7 +169,7 @@ connection/extension involving the primitive top class
 | \(-\tfrac12d\log\Delta_i\) | Tate/Kummer coefficient connection |
 | \(x=0\), \(y=0\) | soft support |
 | orientation twist | existing occurrence coefficient line |
-| top-class extension | unresolved mixed coefficient datum |
+| top-class extension | forced half-Kummer extension, computed in Entry 308 |
 | new carrier datum | none |
 
 ## Deutsch--Popperian update M2.50
@@ -193,14 +193,13 @@ is falsified. The smaller surviving theorem is
 
 ## Next hostile test
 
-Compute the connection of the primitive conductor top class in the integral
-basis
+Entry 308 performs this test and finds that \(J\) diagonalizes the complete
+rank-three quotient connection without introducing any support. The next
+hostile test is therefore the ambient localization extension
 
 \[
-(g_{101},g_{110},\widetilde g_{111}),
+0\to H^2(S_E)\to H^2(S_E\setminus W_E)
+\to H^1(W_E)(-1)\to0,
 \]
 
-then conjugate by the exact intertwiner \(J\) of Entry 305. Determine
-whether its off-diagonal extension form has support only on the frozen
-conductor, soft, Cayley--Menger, and \(\mathcal Q\) coefficient divisors.
-A forced new divisor is the next carrier-level falsifier.
+not another internal conductor calculation.
