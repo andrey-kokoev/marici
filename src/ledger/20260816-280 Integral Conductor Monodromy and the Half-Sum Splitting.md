@@ -5,6 +5,13 @@ date: 2026-08-16
 ---
 # Integral Conductor Monodromy and the Half-Sum Splitting
 
+> **Connection normalization (Entries 307--308).** In the
+> source-normalized residue basis the two Kummer connection forms are
+> \(-\tfrac12d\log\Delta_{W_i}\).  The \(+\tfrac12\) representatives below
+> differ by the integral-residue gauge \(d\log\Delta_{W_i}\) and have the
+> same sign monodromy. Entry 308 fixes the source convention and computes
+> the primitive top column.
+
 ## Result
 
 Entry 279 constructs the canonical marked residue extension
@@ -221,7 +228,9 @@ connections may be represented as
 up to integral-residue gauge. The top quotient has trivial finite
 root-swap character.
 
-This rational decomposition does not split the larger sequence
+Entry 308 shows that conjugating this diagonal rational quotient connection
+back to the primitive integral frame gives the forced half-Kummer top
+column. This rational decomposition still does not split the larger sequence
 
 \[
 0\to H^2(S_E)\to H^2(S_E\setminus W)

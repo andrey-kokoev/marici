@@ -1,0 +1,45 @@
+{
+  "schema": "marici.benincasa.primitive_conductor_top_connection.v1",
+  "date": "2026-08-16",
+  "rational_frame": ["g101", "g110", "g111_inv"],
+  "primitive_frame": ["g101", "g110", "g111_tilde"],
+  "kummer_forms": {
+    "a1": "-1/2*dlog(Delta1)",
+    "a2": "-1/2*dlog(Delta2)"
+  },
+  "half_sum_matrix_Q": [
+    [1, 0, "1/2"],
+    [0, 1, "1/2"],
+    [0, 0, 1]
+  ],
+  "connection_rational": [
+    ["a1", 0, 0],
+    [0, "a2", 0],
+    [0, 0, 0]
+  ],
+  "connection_primitive": [
+    ["a1", 0, "a1/2"],
+    [0, "a2", "a2/2"],
+    [0, 0, 0]
+  ],
+  "top_connection": "nabla(g111_tilde)=a1/2*g101+a2/2*g110",
+  "monodromy_recovery": {
+    "M1": [[-1, 0, -1], [0, 1, 0], [0, 0, 1]],
+    "M2": [[1, 0, 0], [0, -1, -1], [0, 0, 1]]
+  },
+  "enhanced_intertwiner_J": [
+    [2, 0, 1],
+    [0, 2, 1],
+    [0, 0, 1]
+  ],
+  "verified": [
+    "Q^-1*diag(-1,1,1)*Q=M1",
+    "Q^-1*diag(1,-1,1)*Q=M2",
+    "A_exc*J=J*A_primitive",
+    "J*A_primitive*J^-1=diag(a1,a2,0)"
+  ],
+  "support": ["Delta1=0", "Delta2=0", "soft factors"],
+  "Q_present": false,
+  "new_carrier_datum": false,
+  "remaining": "ambient localization-extension class Theta from conductor quotient to H2(S_E)"
+}
