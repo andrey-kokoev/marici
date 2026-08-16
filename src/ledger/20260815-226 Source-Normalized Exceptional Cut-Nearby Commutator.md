@@ -160,6 +160,24 @@ normalization for a fully coupled wavefunction observable. No omitted common
 wavefunction prefactor can alter the carrier/coefficient classification or
 the master ratios.
 
+## Exceptional nearby monodromy
+
+A loop around (E=0) sends (	au=E^{1/2}) to (-	au). In the weighted
+chart this sends (n) to (-n). The signs of the Jacobian
+(	au^5dr\wedge dn) and the chosen (K^{3/2}\sim	au^9L^{3/2}) cancel,
+while (K_1\sim	au^4) is invariant. Therefore the normalized exceptional
+double-pole class returns to itself:
+
+\[
+T_{\rm exc}=1,
+\qquad
+N_{\rm exc}=0.
+\]
+
+Its nearby-cycle graded factor is consequently rank-one Tate/Kummer with
+trivial local character. The nontrivial rank-one nilpotent remains confined
+to the independent elliptic nodal quotient.
+
 ## Gysin, nearby, and Rees comparison
 
 The commutator has finite marked-corner support and

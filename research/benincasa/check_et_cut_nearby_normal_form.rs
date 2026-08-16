@@ -252,6 +252,8 @@ fn main() {
         "  \"source_numerator_times_I_loc\": \"+i*pi/(x*y)\",\n",
         "  \"leray_discontinuity_factor\": \"2*pi*i\",\n",
         "  \"normalized_cut_nearby_commutator_e1_to_e9\": [0,0,\"-2*pi^2/x\",0,\"-2*pi^2/y\",\"-2*pi^2/(x*y)\",0,0,0],\n",
+        "  \"exceptional_semisimple_monodromy\": \"+1\",\n",
+        "  \"exceptional_nilpotent_N\": 0,\n",
         "  \"overall_wavefunction_prefactor_status\": \"excluded: source equation (6) uses proportionality and omits coupling/alpha factors; result is in the frozen equation-(58) de Rham master normalization\",\n",
         "  \"full_nine_master_cut_nearby_commutator_computed\": true,\n",
         "  \"new_carrier_divisor\": false\n",
