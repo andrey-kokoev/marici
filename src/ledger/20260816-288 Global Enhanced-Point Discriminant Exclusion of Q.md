@@ -1,0 +1,269 @@
+---
+authors:
+  - marici.Benincasa
+date: 2026-08-16
+---
+# Global Enhanced-Point Discriminant Exclusion of Q
+
+## Result
+
+The four enhanced points of the total-energy central fiber do not generate
+the source quartic through their global collision discriminant on the
+normalized double conic.
+
+Let
+
+\[
+C:\qquad xa^2+yb^2=xy(x+y)
+\]
+
+be the affine double locus at \(E=0\).  Put
+
+\[
+A=\frac ay,\qquad B=\frac bx,
+\]
+
+so that
+
+\[
+yA^2+xB^2=x+y.
+\]
+
+The normalization through \((A,B)=(1,1)\) is
+
+\[
+d=y+xt^2,
+\]
+
+\[
+A(t)=\frac{xt^2-2xt-y}{d},
+\qquad
+B(t)=\frac{y-2yt-xt^2}{d}.
+\]
+
+The four enhanced points occur at
+
+\[
+t=0,\qquad t=1,\qquad t=\infty,\qquad t=-\frac yx.
+\]
+
+Restrict the frozen compact branch polynomial \(K_E\) to this normalized
+central conic and clear the fixed denominator:
+
+\[
+G_{x,y}(t,E)
+=
+d^4K_E\bigl(yA(t),xB(t)\bigr).
+\]
+
+Because \(K_0\) vanishes identically on \(C\), \(E\) divides \(G\).
+Define the source-fixed moving divisor polynomial
+
+\[
+H_{x,y}(t,E)=\frac{G_{x,y}(t,E)}{E}.
+\]
+
+It has degree eight in \(t\).  Its projective collision locus is detected
+by
+
+\[
+\Delta_C(x,y,E)
+=
+\operatorname{Res}_t
+\left(
+H_{x,y},
+\partial_tH_{x,y}
+\right).
+\]
+
+At the generic nonsoft specialization
+
+\[
+x=2,\qquad y=3,
+\]
+
+exact fraction-free elimination gives
+
+\[
+\deg_E\Delta_C(2,3,E)=51.
+\]
+
+The source quartic specializes to
+
+\[
+\mathcal Q_{2,3}(E)
+=
+-576-48E^2+40E^3-5E^4.
+\]
+
+Exact polynomial reduction gives a nonzero remainder.  A compact finite
+certificate is obtained modulo \(101\):
+
+\[
+\boxed{
+\Delta_C(2,3,E)
+\bmod
+\bigl(\mathcal Q_{2,3},101\bigr)
+=
+78+98E+77E^2+19E^3
+\neq0.
+}
+\]
+
+Therefore
+
+\[
+\mathcal Q_{2,3}\nmid\Delta_C(2,3,E).
+\]
+
+If the symbolic source quartic were a canonical factor of
+\(\Delta_C(x,y,E)\), divisibility would survive every specialization at
+which the frozen parametrization and source units remain defined.
+The point \((x,y)=(2,3)\) avoids
+
+\[
+xy(x+y)(x-y)=0
+\]
+
+and all four normalized marked parameters are distinct.  Hence this one
+exact generic specialization is a finite falsifier:
+
+\[
+\boxed{
+\mathcal Q
+\text{ is not the global collision discriminant of the four enhanced}
+\text{ points on the normalized total-energy double conic.}
+}
+\]
+
+## Frozen construction
+
+No section or carrier component was introduced after seeing
+\(\mathcal Q\).  The calculation uses only:
+
+1. the source branch polynomial \(K_E(a,b)\);
+2. the central double conic \(C\) derived in entry 286;
+3. its canonical rational normalization through a source point;
+4. the total-energy normal \(E\);
+5. the ordinary resultant of the resulting divisor with its fiber
+   derivative.
+
+The resultant is computed before comparison with \(\mathcal Q\).
+
+The ordinary degree-eight resultant also detects projective loss of degree:
+a root moving to \(t=\infty\) forces degeneration of the leading
+coefficient and is not omitted by the fixed-degree Sylvester determinant.
+
+## Relation to the local audit
+
+Entry 287 excluded \(\mathcal Q\) from the second Rees smoothing at the
+physical point \(P_{--}\).  The present calculation is stronger in a
+different direction.  It retains the complete degree-eight moving divisor
+on the normalized central conic and therefore simultaneously tests:
+
+- the other three sign-enhanced points;
+- collisions among all four enhanced loci;
+- their global projective gluing on \(C\);
+- the point at infinity of the normalization.
+
+Thus the remaining possibility that the four pointwise jets combine into
+\(\mathcal Q\) through their global conic discriminant is falsified.
+
+This does not compute the Gauss--Manin connection on the algebraic kernel
+and does not exclude \(\mathcal Q\) from an extension class or from the
+physical relative integration chain.
+
+## Provenance partition after the test
+
+The following homes of \(\mathcal Q\) are now excluded:
+
+1. the pure elliptic infinity-Gysin quotient;
+2. generic total-energy smoothing along the double conic;
+3. the physical enhanced point's second Rees smoothing;
+4. the combined projective collision discriminant of all four enhanced
+   points.
+
+The surviving source-generated homes are now:
+
+\[
+\boxed{
+\text{the algebraic }\mathcal T_7/L_1\text{ connection}
+\quad|\quad
+\text{the algebraic--elliptic extension class}
+\quad|\quad
+\text{the physical relative chain}.
+}
+\]
+
+The absolute surface-smoothing search is closed unless a later calculation
+exhibits a source datum absent from the frozen \(K_E\)-family.
+
+## Classification
+
+| Datum | Classification |
+|---|---|
+| normalized conic \(C\) | existing coefficient geometry |
+| four enhanced parameters | existing marked incidence |
+| \(\Delta_C=0\) | algebraic coefficient support |
+| \(\mathcal Q\) in \(\Delta_C\) | absent |
+| new carrier datum | none |
+
+## Deutsch--Popperian update M2.31
+
+The hard-to-vary claim
+
+\[
+\mathcal Q
+\text{ is generated by global collision of the four enhanced smoothing}
+\text{ points}
+\]
+
+is falsified by an exact generic specialization.
+
+The smaller surviving conjecture is:
+
+\[
+\boxed{
+\mathcal Q
+\text{ belongs to the connection or extension data of the frozen}
+q\text{-sector, not to its absolute surface-smoothing discriminant.}
+}
+\]
+
+This sharpens H2.  Every surface singularity found so far remains
+coefficient geometry over the unchanged energy/Cut carrier, while the
+unexplained quartic has been forced into genuinely derived coefficient
+data.
+
+## Next hostile test
+
+Compute the Gauss--Manin connection on
+
+\[
+\mathcal A_{--}
+=
+\langle e_6,v_{\rm alg}\rangle
+\subset\ker R_\infty.
+\]
+
+Then extract the canonical rank-one flat subquotient selected by the
+last-three cyclic module and test, without choosing a projector from the
+published factorization,
+
+\[
+L_1
+\stackrel?{\sim}_{\rm rat}
+\partial-\frac12d\log(-\mathcal Q).
+\]
+
+If \(\mathcal Q\) is absent from that algebraic connection, compute the
+extension class of
+
+\[
+0\to\mathcal T_7
+\to\mathcal M_q^{(9)}
+\to\mathbb V_{\rm ell}(-1)
+\to0
+\]
+
+before invoking the physical relative chain.
