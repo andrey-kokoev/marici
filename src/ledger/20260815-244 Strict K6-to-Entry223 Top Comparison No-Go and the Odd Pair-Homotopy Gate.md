@@ -78,7 +78,7 @@ mapping-cone differential and its homotopy equation. A same-degree
 stabilization—even with the correct twelve-row support—cannot absorb the
 obstruction.
 
-## Minimal repair
+## Shifted repair
 
 A derived correspondence can evade the no-go only by adding at least one
 reflection-odd pair/corridor homotopy generator whose boundary maps with an
@@ -87,7 +87,21 @@ coefficient is sufficient and minimal. Merely inserting halves, declaring
 a pair-intersection state, or choosing an AW contraction would fit the
 missing datum.
 
-Geometrically, the required generator must come from an actual
+Entry245 supplies the required generators in the finite labelled
+constructible category. Expanding its primitive loaded facet boundaries on
+the unique twelve-row reflection orbit gives twelve degree-\(-1\)
+mapping-cone columns. The combined exact system has 36 columns, rank 35,
+and augmented rank 35. Modulo two both ranks remain 35. A selected
+maximal minor has determinant \(-1\), so every nonzero Smith factor is
+\(1\): the strict \(\mathbb Z/2\) obstruction is genuinely removed.
+
+The repaired solution space has affine rank one. This is the expected
+global top class, not another parity defect. It must be normalized by the
+external entry223 \(W_{012}\)-to-\(q_\Sigma\) comparison before the
+endpoint/\(Q\) mapping fiber can be formed.
+
+Geometrically, a normalization-provenanced realization of these generators
+must still come from an actual
 multiplicity-sensitive log/excess overlap object
 \(\Gamma_{ij}^{!,\log}\), with a support-typed map to the complementary
 literal corridor \(C_\bullet(q_k)\subset F_B/F_V\). Its boundary must derive
@@ -97,9 +111,10 @@ framing, reflection, and \(D_3\).
 
 ## Downstream status
 
-The strict no-go does not instantiate the endpoint/\(Q\) mapping fiber.
-Until the odd derived overlap generator and its literal entry143
-corestrictions are constructed, \(p_{\partial,Q}\), its Bockstein, and the
+The finite shifted pair/facet repair does not yet instantiate the
+endpoint/\(Q\) mapping fiber. Until its single free top class is identified
+with the normalization-provenanced entry223 \(W_{012}\)/\(q_\Sigma\) row
+and the endpoint cells, \(p_{\partial,Q}\), its Bockstein, and the
 \(D_8\)/Jordan coherence tests remain undefined.
 
 ## Executable evidence
@@ -108,7 +123,7 @@ Checker:
 research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs
 
 SHA-256:
-ff82fad19ac7d28216890399c2a81dd373569c8dc13d33a17ff17f2ae9330083
+bf3962ba1db587f87e412bd2d450b866bef36e366d2b57f8c21f26efd66f86ea
 
 The user-site structured-command MCP executed Node with exit code zero. The
 checker asserts the complete census, rational ranks, mod-two rank jump,
@@ -149,16 +164,28 @@ Narada site and correctly refused the Marici repository cwd.
     "selected_minor_determinant": 4,
     "shifted_mapping_cone_required": true
   },
+  "shifted_pair_facet_repair": {
+    "columns": 12,
+    "rank": 35,
+    "augmented_rank": 35,
+    "affine_rank": 1,
+    "mod2_rank": 35,
+    "mod2_augmented_rank": 35,
+    "selected_unimodular_minor": -1,
+    "smith_nonzero_all_ones": true,
+    "integral_obstruction": false
+  },
   "general_derived_correspondence_no_go": false,
-  "minimal_additional_datum": "one geometrically derived reflection-odd pair/corridor homotopy generator with unit boundary into the mod-two defect row",
+  "derived_pair_facet_repair_constructed": true,
+  "remaining_top_datum": "normalize the single free shifted-cone class by the external W012-to-qSigma comparison",
   "unconstructed": [
-    "Gamma_ij exceptional/log overlap object",
-    "24 literal entry143 occurrence/normal/Tor/Cech corestriction rows",
+    "normalization-source six-functor realization of the finite Gamma_ij rows",
+    "shifted W012-to-qSigma top normalization",
     "endpoint/Q mapping fiber",
     "p_partial_Q and Bockstein",
     "D8 and Jordan coherence"
   ],
   "checker": "research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs",
-  "checker_sha256": "ff82fad19ac7d28216890399c2a81dd373569c8dc13d33a17ff17f2ae9330083"
+  "checker_sha256": "bf3962ba1db587f87e412bd2d450b866bef36e366d2b57f8c21f26efd66f86ea"
 }
 ~~~

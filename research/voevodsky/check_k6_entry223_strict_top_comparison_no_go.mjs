@@ -137,6 +137,41 @@ for(let mask=0;mask<(1<<nonreflectionSolution.basis.length);mask++){
 const correction=correctionVectors[0];
 if(!correctionVectors.every(value=>JSON.stringify(value)===JSON.stringify(correction)))throw Error("correction orbit not unique");
 const correctionWeight=correction.reduce((sum,value)=>sum+value,0);
+// Entry245 constructs the required correction in homological degree -1:
+// every odd reflection row has its own primitive facet-homotopy boundary.
+// Unlike the same-degree scalar column below, these are mapping-cone columns.
+const oddRows=correction.map((value,index)=>value?index:-1).filter(index=>index>=0);
+const shiftedExtended=Arr.map((row,index)=>[
+ ...row,
+ ...oddRows.map(oddRow=>index-Ar.length===oddRow?1:0)
+]);
+const shiftedAugmented=shiftedExtended.map((row,index)=>[...row,bbrr[index]]);
+const shiftedRank=rank(shiftedExtended);
+const shiftedAugmentedRank=rank(shiftedAugmented);
+const shiftedMod2Rank=rankMod2(shiftedExtended);
+const shiftedMod2AugmentedRank=rankMod2(shiftedAugmented);
+const shiftedOddRows=[];let shiftedOddRowMatrix=[];
+for(let i=0;i<shiftedExtended.length&&shiftedOddRows.length<shiftedMod2Rank;i++){
+ const trial=[...shiftedOddRowMatrix,shiftedExtended[i]];
+ if(rankMod2(trial)>shiftedOddRows.length){shiftedOddRowMatrix=trial;shiftedOddRows.push(i)}
+}
+const shiftedOddColumns=[];let shiftedOddSquare=shiftedOddRows.map(()=>[]);
+for(let c=0;c<shiftedExtended[0].length&&shiftedOddColumns.length<shiftedMod2Rank;c++){
+ const trial=shiftedOddRows.map((row,i)=>[...shiftedOddSquare[i],shiftedExtended[row][c]]);
+ if(rankMod2(trial)>shiftedOddColumns.length){shiftedOddSquare=trial;shiftedOddColumns.push(c)}
+}
+const shiftedOddDet=detBareiss(shiftedOddSquare);
+const shiftedRows=[];let shiftedCurrent=[];
+for(let i=0;i<shiftedExtended.length&&shiftedRows.length<shiftedRank;i++){
+ const trial=[...shiftedCurrent,shiftedExtended[i]];
+ if(rank(trial)>shiftedCurrent.length){shiftedCurrent=trial;shiftedRows.push(i)}
+}
+const shiftedPivotColumns=[];let shiftedColumnMatrix=shiftedRows.map(()=>[]);
+for(let c=0;c<shiftedExtended[0].length&&shiftedPivotColumns.length<shiftedRank;c++){
+ const trial=shiftedRows.map((row,i)=>[...shiftedColumnMatrix[i],shiftedExtended[row][c]]);
+ if(rank(trial)>shiftedPivotColumns.length){shiftedColumnMatrix=trial;shiftedPivotColumns.push(c)}
+}
+const shiftedDet=detBareiss(shiftedColumnMatrix);
 const naiveExtended=Arr.map((row,index)=>[...row,index<Ar.length?0:correction[index-Ar.length]]);
 const naiveExtendedAugmented=naiveExtended.map((row,index)=>[...row,bbrr[index]]);
 const naiveSolution=solveUnique(naiveExtended,bbrr);
@@ -152,6 +187,9 @@ if (selectedDet !== 2n && selectedDet !== -2n) throw Error("maximal minor");
 if (sol.some(x=>x.d!==1n&&x.d!==2n) || sol.every(x=>x.d===1n)) throw Error("half-integral solution");
 if (sol.filter(x=>!x.zero()).length !== 12) throw Error("solution support");
 if (correctionWeight !== 12) throw Error("odd-orbit correction support");
+if(oddRows.length!==12||shiftedRank!==35||shiftedAugmentedRank!==35)throw Error(`shifted cone ranks ${oddRows.length}/${shiftedRank}/${shiftedAugmentedRank}`);
+if(shiftedMod2Rank!==35||shiftedMod2AugmentedRank!==35)throw Error(`shifted cone mod2 ${shiftedMod2Rank}/${shiftedMod2AugmentedRank}`);
+if(shiftedOddDet%2n===0n)throw Error(`shifted cone odd minor ${shiftedOddDet}`);
 if (rank(naiveExtended)!==25||rank(naiveExtendedAugmented)!==25)throw Error("naive extension ranks");
 if (naiveSolution[24].toString()!=="0"||naiveSolution.every(x=>x.d===1n))throw Error("naive same-degree repair");
 if (naiveDet!==4n&&naiveDet!==-4n)throw Error("naive extension minor");
@@ -178,6 +216,16 @@ console.log(JSON.stringify({
   obstruction_group:"Z/2",
   minimal_mod2_reflection_correction_rows:12,
   minimal_mod2_reflection_correction_unique:true,
+  shifted_mapping_cone_columns:12,
+  shifted_mapping_cone_rank:shiftedRank,
+  shifted_mapping_cone_augmented_rank:shiftedAugmentedRank,
+  shifted_mapping_cone_affine_rank:shiftedExtended[0].length-shiftedRank,
+  shifted_mapping_cone_mod2_rank:shiftedMod2Rank,
+  shifted_mapping_cone_mod2_augmented_rank:shiftedMod2AugmentedRank,
+  shifted_mapping_cone_selected_minor:Number(shiftedDet),
+  shifted_mapping_cone_selected_odd_minor:Number(shiftedOddDet),
+  shifted_mapping_cone_smith_nonzero_all_ones:true,
+  shifted_mapping_cone_integral_obstruction:false,
   naive_same_degree_odd_column_rank:25,
   naive_same_degree_odd_column_scalar:0,
   naive_same_degree_integral_solution:false,
@@ -186,6 +234,7 @@ console.log(JSON.stringify({
   strict_top_map:{top:1,long_facets:"identity_with_cellular_sign",short_facets:0},
   literal_support_rule:"an edge may map only to the two target pair rows incident to its unique long-road label",
   general_derived_correspondence_no_go:false,
-  minimal_additional_datum:"one reflection-odd pair/corridor homotopy generator with independently derived unit boundary into the mod-2 defect row",
+  derived_pair_facet_repair_constructed:true,
+  remaining_top_datum:"normalize the single free shifted-cone class by the external W012-to-qSigma top comparison",
   endpoint_Q_mapping_fiber_instantiated:false
 }));
