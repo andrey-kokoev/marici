@@ -5,6 +5,11 @@ date: 2026-08-15
 ---
 # Unsplit Occurrence Pair and the Exact Relative Wall Class
 
+> Correction: entry 234 supersedes the claimed complete primitive below.
+> The displayed exactness applies to the lower-denominator factor before the
+> nonconstant Cayley--Menger/master factor is restored. The zero logarithmic
+> residue survives, but for the complete-integrand reason proved in entry 234.
+
 ## Record
 
 Status: the complete common lower-denominator factors have been restored at
