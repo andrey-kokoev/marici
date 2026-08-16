@@ -149,8 +149,9 @@ H^1_{\rm dR}\!
 must be detected at an eigenvalue-collision locus:
 
 1. \(\Lambda=0\), where the two same-sheet points defining the
-   trivial-character top quotient collide;
-2. an intersection with the elliptic/ambient discriminant;
+   trivial-character top quotient collide simultaneously with an ambient
+   elliptic degeneration;
+2. another intersection with the elliptic/ambient discriminant;
 3. soft or signed-energy support;
 4. simultaneous conductor support;
 5. \(\mathcal Q=0\), if the physical moving-chain extension—not the
@@ -238,9 +239,18 @@ Restrict to a generic transverse slice through
 \Lambda=E(-x+y+z)(x-y+z)=0
 \]
 
-with all conductor, elliptic, soft, and \(\mathcal Q\) factors nonzero
-except the selected factor of \(\Lambda\). Compute the local monodromy
-on the invariant top lift
+The signed-energy identities give
+
+\[
+\Lambda=-\ell_1\ell_2\ell_4=-A\ell_4.
+\]
+
+Thus every component of \(\Lambda=0\) is already an elliptic
+discriminant component: \(\ell_1\ell_2=0\) gives \(A=0\), while
+\(\ell_4=0\) gives \(B=\ell_3\ell_4=0\). Choose one component
+transversely, keep the other elliptic, conductor, soft, and
+\(\mathcal Q\) factors nonzero, and compute the joint local monodromy on
+the invariant top lift
 
 \[
 g_{111}^{\rm inv}
