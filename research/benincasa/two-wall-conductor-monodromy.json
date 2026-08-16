@@ -1,0 +1,33 @@
+{
+  "schema": "marici.benincasa.two_wall_conductor_monodromy.v1",
+  "basis": ["g101", "g110", "top_lift"],
+  "edge_order": ["n1a", "n1b", "n2a", "n2b", "Pplus", "Pminus"],
+  "cycles": {
+    "g101": [1, -1, 0, 0, 0, 0],
+    "g110": [0, 0, 1, -1, 0, 0],
+    "top_lift": [1, 0, 0, -1, -1, 1]
+  },
+  "root_swap_1": {
+    "images": {"g101": "-g101", "g110": "g110", "top_lift": "top_lift-g101"},
+    "matrix_columns_in_basis": [[-1, 0, 0], [0, 1, 0], [-1, 0, 1]]
+  },
+  "root_swap_2": {
+    "images": {"g101": "g101", "g110": "-g110", "top_lift": "top_lift-g110"},
+    "matrix_columns_in_basis": [[1, 0, 0], [0, -1, 0], [0, -1, 1]]
+  },
+  "checks": {
+    "both_involutions_square_to_identity": true,
+    "involutions_commute": true,
+    "integral_invariant_top_lift_exists": false,
+    "rational_invariant_top_lift": "top_lift-(g101+g110)/2",
+    "twice_rational_invariant_lift_edges": [1, 1, -1, -1, -2, 2],
+    "extension_class": ["1 mod 2", "1 mod 2"],
+    "extension_group": "(Z/2)^2"
+  },
+  "support": {
+    "g101_character_branch": "Delta_W1=-4*x*D1",
+    "g110_character_branch": "Delta_W2=-4*y*D2",
+    "top_quotient": "trivial on the labelled generic locus"
+  },
+  "new_carrier_datum": false
+}
