@@ -78,6 +78,39 @@ fn choose(n: usize, k: usize) -> i128 {
     (0..k).fold(1_i128, |z, i| z * (n - i) as i128 / (i + 1) as i128)
 }
 
+fn numerator_polynomial(x: i128, y: i128, which_31: bool) -> Vec<Rat> {
+    let a = x * y;
+    let s = x + y;
+    let start = 11_i128;
+    let count = 22_usize;
+    let values: Vec<_> = (0..count)
+        .map(|i| {
+            let n = start + i as i128;
+            let v = a * n * n - 2 * s;
+            let mut z = residue(x, y, n, which_31);
+            for _ in 0..4 {
+                z = z.scale(v, 1);
+            }
+            z
+        })
+        .collect();
+    let poly = polynomial_from_values(start, &values);
+    for offset in [1_i128, 2, 3, 5, 8] {
+        let test_n = start + count as i128 + offset;
+        let mut eval = Rat::Z;
+        for &c in poly.iter().rev() {
+            eval = eval.scale(test_n, 1).add(c);
+        }
+        let mut expected = residue(x, y, test_n, which_31);
+        let vv = a * test_n * test_n - 2 * s;
+        for _ in 0..4 {
+            expected = expected.scale(vv, 1);
+        }
+        assert_eq!(eval, expected);
+    }
+    poly
+}
+
 fn infinity_n2_coefficient(x: i128, y: i128, which_31: bool) -> Rat {
     let a = x * y;
     let s = x + y;
@@ -130,6 +163,195 @@ fn infinity_n2_coefficient(x: i128, y: i128, which_31: bool) -> Rat {
         return coefficient;
     }
     panic!("no rational denominator power found")
+}
+
+fn poly_add(left: &[Rat], right: &[Rat]) -> Vec<Rat> {
+    let mut out = vec![Rat::Z; left.len().max(right.len())];
+    for (i, &c) in left.iter().enumerate() {
+        out[i] = out[i].add(c);
+    }
+    for (i, &c) in right.iter().enumerate() {
+        out[i] = out[i].add(c);
+    }
+    while out.last() == Some(&Rat::Z) {
+        out.pop();
+    }
+    out
+}
+
+fn poly_mul(left: &[Rat], right: &[Rat]) -> Vec<Rat> {
+    let mut out = vec![Rat::Z; left.len() + right.len() - 1];
+    for (i, &a) in left.iter().enumerate() {
+        for (j, &b) in right.iter().enumerate() {
+            out[i + j] = out[i + j].add(a.mul(b));
+        }
+    }
+    while out.last() == Some(&Rat::Z) {
+        out.pop();
+    }
+    out
+}
+
+fn poly_scale(poly: &[Rat], q: Rat) -> Vec<Rat> {
+    poly.iter().map(|&c| c.mul(q)).collect()
+}
+
+fn poly_pow(poly: &[Rat], power: usize) -> Vec<Rat> {
+    let mut out = vec![Rat::O];
+    for _ in 0..power {
+        out = poly_mul(&out, poly);
+    }
+    out
+}
+
+fn primitive_polynomial(x: i128, y: i128, which_31: bool) -> (Rat, Vec<Rat>) {
+    let a = x * y;
+    let s = x + y;
+    let p = numerator_polynomial(x, y, which_31);
+    let v = [Rat::new(-2 * s, 1), Rat::Z, Rat::new(a, 1)];
+    let l_direction = poly_scale(&poly_pow(&v, 5), Rat::new(-1, a));
+    let rhs_degree = p.len().max(l_direction.len()).saturating_sub(1);
+    let unknowns = rhs_degree.max(10);
+    let rows = unknowns + 2;
+    let rhs_p = unknowns;
+    let rhs_l = unknowns + 1;
+    let mut matrix = vec![vec![Rat::Z; unknowns + 2]; rows];
+    for k in 0..unknowns {
+        if k + 1 < rows {
+            matrix[k + 1][k] = matrix[k + 1][k].add(Rat::new(a * (k as i128 - 9), 1));
+        }
+        if k >= 1 {
+            matrix[k - 1][k] = matrix[k - 1][k].add(Rat::new(-2 * s * k as i128, 1));
+        }
+    }
+    for row in 0..rows {
+        matrix[row][rhs_p] = p.get(row).copied().unwrap_or(Rat::Z);
+        matrix[row][rhs_l] = l_direction.get(row).copied().unwrap_or(Rat::Z);
+    }
+
+    let mut pivot_row = 0_usize;
+    let mut pivots = Vec::new();
+    for col in 0..unknowns {
+        let Some(found) = (pivot_row..rows).find(|&row| matrix[row][col] != Rat::Z) else {
+            continue;
+        };
+        matrix.swap(pivot_row, found);
+        let pivot = matrix[pivot_row][col];
+        for j in col..=rhs_l {
+            matrix[pivot_row][j] = matrix[pivot_row][j].mul(Rat::new(pivot.d, pivot.n));
+        }
+        for row in 0..rows {
+            if row == pivot_row {
+                continue;
+            }
+            let factor = matrix[row][col];
+            if factor == Rat::Z {
+                continue;
+            }
+            for j in col..=rhs_l {
+                matrix[row][j] = matrix[row][j].add(matrix[pivot_row][j].mul(factor).neg());
+            }
+        }
+        pivots.push((pivot_row, col));
+        pivot_row += 1;
+    }
+    let mut required_l = None;
+    for row in 0..rows {
+        let all_zero = (0..unknowns).all(|col| matrix[row][col] == Rat::Z);
+        if !all_zero {
+            continue;
+        }
+        let rp = matrix[row][rhs_p];
+        let rl = matrix[row][rhs_l];
+        if rl == Rat::Z {
+            assert_eq!(rp, Rat::Z);
+        } else {
+            let candidate = rp.neg().mul(Rat::new(rl.d, rl.n));
+            if let Some(previous) = required_l {
+                assert_eq!(candidate, previous);
+            }
+            required_l = Some(candidate);
+        }
+    }
+    let l = required_l.expect("Kummer cokernel row");
+    assert_eq!(pivots.len(), unknowns);
+    let mut h = vec![Rat::Z; unknowns];
+    for (row, col) in pivots {
+        h[col] = matrix[row][rhs_p].add(matrix[row][rhs_l].mul(l));
+    }
+    while h.last() == Some(&Rat::Z) {
+        h.pop();
+    }
+    (l, h)
+}
+
+fn expected_unsplit_primitive(x: i128, y: i128) -> Vec<Rat> {
+    let a = x * y;
+    let s = x + y;
+    let u_poly = [Rat::Z, Rat::Z, Rat::O];
+    let p0 = poly_add(
+        &poly_add(
+            &poly_scale(&poly_pow(&u_poly, 2), Rat::new(-4 * a * a, 6 * a)),
+            &poly_scale(&u_poly, Rat::new(23 * a * s, 6 * a)),
+        ),
+        &[Rat::new(-24 * s * s, 6 * a)],
+    );
+    let v = [Rat::new(-2 * s, 1), Rat::Z, Rat::new(a, 1)];
+    let n_poly = [Rat::Z, Rat::O];
+    poly_scale(
+        &poly_mul(&n_poly, &poly_mul(&p0, &poly_pow(&v, 2))),
+        Rat::new(3 * (x - y) * s, 2 * a),
+    )
+}
+
+fn write_endpoint_certificate(path: &str) {
+    let mut primitive_checks = 0_u64;
+    let mut even_cancellations = 0_u64;
+    let mut individual_even_nonzero = 0_u64;
+    for &(x, y) in &[(1, 2), (1, 3), (2, 3), (2, 5), (3, 4), (3, 5)] {
+        let (l31, h31) = primitive_polynomial(x, y, true);
+        let (l23, h23) = primitive_polynomial(x, y, false);
+        println!(
+            "COKERNEL x={x} y={y} L31={l31:?} L23={l23:?} sum={:?}",
+            l31.add(l23)
+        );
+        assert_eq!(
+            l31,
+            Rat::new(-(3 * x * x + 7 * x * y + 6 * y * y), 2 * x * y)
+        );
+        assert_eq!(l23, Rat::new(6 * x * x + 7 * x * y + 3 * y * y, 2 * x * y));
+        let sum = poly_add(&h31, &h23);
+        assert_eq!(sum, expected_unsplit_primitive(x, y));
+        primitive_checks += 1;
+        for degree in (0..sum.len()).step_by(2) {
+            assert_eq!(sum[degree], Rat::Z);
+            even_cancellations += 1;
+        }
+        individual_even_nonzero += h31.iter().step_by(2).filter(|&&c| c != Rat::Z).count() as u64;
+        individual_even_nonzero += h23.iter().step_by(2).filter(|&&c| c != Rat::Z).count() as u64;
+    }
+    let json = format!(
+        concat!(
+            "{{\n",
+            "  \"schema\": \"marici.split-occurrence-endpoint-jets.v1\",\n",
+            "  \"exact_primitive_sum_checks\": {},\n",
+            "  \"exact_even_endpoint_component_cancellations\": {},\n",
+            "  \"individual_even_primitive_coefficients_nonzero\": {},\n",
+            "  \"L31_de_rham\": \"-(3*x^2+7*x*y+6*y^2)/(2*x*y)\",\n",
+            "  \"L23_de_rham\": \"(6*x^2+7*x*y+3*y^2)/(2*x*y)\",\n",
+            "  \"primitive_denominator\": \"w^9\",\n",
+            "  \"individual_primitives\": \"H_i(n)/(8*(x*y)^(3/2)*w^9)\",\n",
+            "  \"reduction_equation\": \"H_i'*v-9*x*y*n*H_i=P_i-(L_i/(x*y))*v^5\",\n",
+            "  \"sum_primitive\": \"3*(x-y)*(x+y)/(2*x*y)*n*P0(n^2)*v^2/w^9\",\n",
+            "  \"even_endpoint_components\": \"zero_individually\",\n",
+            "  \"odd_endpoint_components\": \"sum_to_entry_240_opposite_jet\",\n",
+            "  \"regulator_hierarchy_used\": false,\n",
+            "  \"new_carrier_incidence\": false\n",
+            "}}\n"
+        ),
+        primitive_checks, even_cancellations, individual_even_nonzero
+    );
+    fs::write(path, json).expect("write endpoint certificate");
 }
 
 fn gcd(mut a: i128, mut b: i128) -> i128 {
@@ -352,6 +574,7 @@ fn residue(x: i128, y: i128, n: i128, which_31: bool) -> Rat {
 
 fn main() {
     let output = env::args().nth(1).expect("output path");
+    let endpoint_output = env::args().nth(2);
     let mut sum_checks = 0_u64;
     let mut infinity_checks = 0_u64;
     for x in 1_i128..=4 {
@@ -388,14 +611,17 @@ fn main() {
             "{{\n",
             "  \"schema\": \"marici.split-occurrence-weight-zero.v1\",\n",
             "  \"exact_unsplit_sum_checks\": {},\n",
-            "  \"exact_projective_infinity_checks\": {},\n",
+            "  \"exact_raw_asymptotic_checks\": {},\n",
             "  \"individual_denominator_power\": 4,\n",
-            "  \"L31\": \"(3*x+5*y)/(2*y)\",\n",
-            "  \"L23\": \"-(5*x+3*y)/(2*x)\",\n",
+            "  \"raw_n2_R31\": \"(3*x+5*y)/(2*y)\",\n",
+            "  \"raw_n2_R23\": \"-(5*x+3*y)/(2*x)\",\n",
+            "  \"L31_de_rham\": \"-(3*x^2+7*x*y+6*y^2)/(2*x*y)\",\n",
+            "  \"L23_de_rham\": \"(6*x^2+7*x*y+3*y^2)/(2*x*y)\",\n",
             "  \"kummer_coefficient_rule\": \"c_i=L_i/(8*(x*y)^(5/2))\",\n",
             "  \"sum_L\": \"3*(x-y)*(x+y)/(2*x*y)\",\n",
             "  \"sum_kummer_coefficient\": \"3*(x-y)*(x+y)/(16*(x*y)^(7/2))\",\n",
             "  \"occurrence_forgetting\": \"additive_not_multiplicity_two\",\n",
+            "  \"correction\": \"raw n^2 coefficient of R_i is not the de Rham residue when higher infinity powers are present\",\n",
             "  \"individual_endpoint_jets\": \"uncomputed\",\n",
             "  \"individual_physical_currents\": \"not_canonical_without_regulator_hierarchy\",\n",
             "  \"new_carrier_incidence\": false\n",
@@ -404,4 +630,7 @@ fn main() {
         sum_checks, infinity_checks
     );
     fs::write(output, json).expect("write certificate");
+    if let Some(path) = endpoint_output {
+        write_endpoint_certificate(&path);
+    }
 }
