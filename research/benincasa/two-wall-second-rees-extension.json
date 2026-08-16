@@ -130,6 +130,30 @@
         "e9": "1/720"
       },
       "comparison": "exact x<->y transform of the x=2,y=3 invariant data"
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "degree": 4,
+      "consistent": true,
+      "fixed_second_order": {
+        "quotient_top": "0",
+        "quotient_w1": "0",
+        "quotient_w2": "0",
+        "e6": "1/8",
+        "e7": "0",
+        "e8": "0",
+        "e9": "0"
+      },
+      "fixed_first_order": {
+        "quotient_top": "1",
+        "quotient_w1": "-1/10",
+        "quotient_w2": "-1/4",
+        "e7": "-9/800",
+        "e8": "3/2800",
+        "e9": "-3/2800"
+      },
+      "comparison": "nonsymmetric scaling fiber; fixes the missing (x-y)^2 factor in e7"
     }
   ],
   "candidate_universal_patterns": {
@@ -137,9 +161,13 @@
     "first_order_quotient_top": "1",
     "first_order_quotient_w1": "-1/(2*y)",
     "first_order_quotient_w2": "-1/(2*x)",
-    "first_order_e7": "-1/(8*x^2*y^2)",
+    "first_order_e7": "-(x-y)^2/(8*x^2*y^2)",
     "first_order_e8": "(y-x)/(4*x^2*y^2*(x+y))",
     "first_order_e9": "(x-y)/(4*x^2*y^2*(x+y))",
-    "status": "reconstructed from two exchanged fibers; nonsymmetric scaling fiber still required"
+    "status": "reconstructed from three exact generic fibers including one nonsymmetric scaling fiber; universal cleared identity still required",
+    "symbolic_gysin_cancellation": {
+      "omega0": "-(y-x)^2/(8*x^2*y^2) + (y^2-x^2)*(y-x)/(8*x^2*y^2*(x+y)) = 0",
+      "omega2": "-x^2*(e8+e9)/2 = 0"
+    }
   }
 }
