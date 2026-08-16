@@ -369,6 +369,32 @@ fn facet_boundary_chain(
         .collect()
 }
 
+fn facet_chain_boundary(
+    chain: &Chain,
+    by_size: &[Vec<Face>],
+    gauges: &BTreeMap<Face, Int>,
+) -> Chain {
+    let mut result = Chain::new();
+    for (facet, coefficient) in chain {
+        for (edge, boundary_coefficient) in facet_boundary_chain(facet, by_size, gauges) {
+            *result.entry(edge).or_default() += coefficient * boundary_coefficient;
+        }
+    }
+    result.retain(|_, coefficient| *coefficient != 0);
+    result
+}
+
+fn top_boundary_chain(by_size: &[Vec<Face>], gauges: &BTreeMap<Face, Int>) -> Chain {
+    let top = &by_size[0][0];
+    by_size[1]
+        .iter()
+        .map(|facet| {
+            let added = *facet.iter().next().unwrap();
+            (facet.clone(), incidence_sign(top, facet, added, gauges))
+        })
+        .collect()
+}
+
 fn main() {
     let by_size = faces_by_size();
     let gauges = vertex_orientation_gauges(&by_size);
@@ -462,6 +488,7 @@ fn main() {
     let mut long_reflection_failures = 0usize;
     let mut reflection_scalar_plus = 0usize;
     let mut reflection_scalar_minus = 0usize;
+    let mut reflection_homotopy_chain = Chain::new();
     for corridor in &corridors {
         let image_facet = permute_face(&corridor.facet, reflect_vertex);
         let image_start = permute_face(&corridor.end, reflect_vertex);
@@ -500,10 +527,20 @@ fn main() {
         }
         let discrepancy = subtract_chain(&reflected, &desired);
         let facet_boundary = facet_boundary_chain(&image_facet, &by_size, &gauges);
+        let homotopy_coefficient = if discrepancy == facet_boundary {
+            1
+        } else if discrepancy == scale_chain(&facet_boundary, -1) {
+            -1
+        } else {
+            0
+        };
         assert!(
-            discrepancy == facet_boundary || discrepancy == scale_chain(&facet_boundary, -1),
+            homotopy_coefficient != 0,
             "facet={image_facet:?} discrepancy={discrepancy:?} boundary={facet_boundary:?}"
         );
+        assert!(reflection_homotopy_chain
+            .insert(image_facet.clone(), homotopy_coefficient)
+            .is_none());
         facet_boundary_homotopies += 1;
         if corridor.short {
             short_reflection_failures += 1;
@@ -516,6 +553,20 @@ fn main() {
     assert_eq!(short_reflection_failures, 6);
     assert_eq!(long_reflection_failures, 3);
     assert_eq!(reflection_scalar_plus + reflection_scalar_minus, 9);
+    assert_eq!(reflection_homotopy_chain.len(), 9);
+
+    // The nine reflection homotopies themselves form a closed facet chain.
+    // Determine whether it is the primitive boundary of the unique K6 top.
+    assert!(facet_chain_boundary(&reflection_homotopy_chain, &by_size, &gauges).is_empty());
+    let top_boundary = top_boundary_chain(&by_size, &gauges);
+    let top_boundary_coefficient = if reflection_homotopy_chain == top_boundary {
+        1
+    } else if reflection_homotopy_chain == scale_chain(&top_boundary, -1) {
+        -1
+    } else {
+        0
+    };
+    assert_ne!(top_boundary_coefficient, 0);
 
     let total_edge_terms: usize = corridors.iter().map(|corridor| corridor.chain.len()).sum();
     let short_edge_terms: usize = corridors
@@ -538,7 +589,7 @@ fn main() {
     println!(
         "{}",
         format!(
-            r#"{{"status":"falsified_scoped_strict_reflection_equivariant_facet_arc_selection","literal_facets":9,"short_sheet_facets":6,"long_road_facets":3,"selected_vertices_per_facet":2,"oriented_corridors":9,"total_edge_terms":{total_edge_terms},"short_edge_terms":{short_edge_terms},"long_edge_terms":{long_edge_terms},"corridor_boundary_rank":9,"corridor_boundary_smith_all_ones":true,"short_facets_form_two_oriented_sheet_triangles":true,"long_facets_are_plus_to_minus_endpoint_framed":true,"D3_rotation":true,"strict_reflection_matches":0,"reflection_scalar_plus":{reflection_scalar_plus},"reflection_scalar_minus":{reflection_scalar_minus},"short_reflection_failures":6,"long_reflection_failures":3,"facet_boundary_homotopies_required":9,"reflection_discrepancy":"plus_or_minus_full_oriented_facet_boundary","path_choice":"positive directed arc of the inherited K6 facet boundary","shortest_path_choice_used":false,"base_inversions":false,"general_derived_corridor_no_go":false,"minimal_additional_datum":"one literal facet-supported 2-cell homotopy for each of the nine corridors, with D3/reflection coherence and source KN provenance","entry223_top_attachment_constructed":false,"rank_nine_homogeneous_ambiguity_computed":false,"endpoint_Q_mapping_fiber_instantiated":false,"next_gate":"adjoin the nine canonical facet 2-cell homotopies, compute their cyclic top obstruction, and compare it with the entry223 top and qSigma map"}}"#
+            r#"{{"status":"falsified_scoped_strict_reflection_equivariant_facet_arc_selection_with_primitive_top_obstruction","literal_facets":9,"short_sheet_facets":6,"long_road_facets":3,"selected_vertices_per_facet":2,"oriented_corridors":9,"total_edge_terms":{total_edge_terms},"short_edge_terms":{short_edge_terms},"long_edge_terms":{long_edge_terms},"corridor_boundary_rank":9,"corridor_boundary_smith_all_ones":true,"short_facets_form_two_oriented_sheet_triangles":true,"long_facets_are_plus_to_minus_endpoint_framed":true,"D3_rotation":true,"strict_reflection_matches":0,"reflection_scalar_plus":{reflection_scalar_plus},"reflection_scalar_minus":{reflection_scalar_minus},"short_reflection_failures":6,"long_reflection_failures":3,"facet_boundary_homotopies_required":9,"reflection_discrepancy":"plus_or_minus_full_oriented_facet_boundary","reflection_homotopy_chain_closed":true,"reflection_homotopy_chain_equals_top_boundary":true,"top_boundary_coefficient":{top_boundary_coefficient},"top_boundary_smith":[1],"path_choice":"positive directed arc of the inherited K6 facet boundary","shortest_path_choice_used":false,"base_inversions":false,"general_derived_corridor_no_go":false,"minimal_additional_datum":"a comparison of the primitive literal K6 top with the entry223 projectivized-conductor top, including its six short-facet contraction and three long-road residues","entry223_top_attachment_constructed":false,"rank_nine_homogeneous_ambiguity_computed":false,"endpoint_Q_mapping_fiber_instantiated":false,"next_gate":"construct the top comparison and prove that its six short-facet rows contract canonically while its three long-facet rows equal the entry223 qSigma residues"}}"#
         )
     );
 }
