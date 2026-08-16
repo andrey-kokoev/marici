@@ -145,7 +145,7 @@ fn main() {
     let mut scaling_checks = 0_u64;
     let mut interpolation_checks = 0_u64;
     for occurrence_31 in [true, false] {
-        for degree in [1_usize, 3, 5, 7, 9] {
+        for degree in [1_usize, 3, 5, 7, 9, 11] {
             let homogeneity = scaling_degree(degree);
             scaling_checks += 1; // exact source-dimensional grading assignment
             let (p, q, held_out) = rational_interpolate(occurrence_31, degree, homogeneity);

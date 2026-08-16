@@ -91,7 +91,7 @@ fn polynomial(x: D, y: D, terms: &[(i128, usize, usize)]) -> D {
     })
 }
 
-fn h31(x: D, y: D) -> [D; 5] {
+fn h31(x: D, y: D) -> [D; 6] {
     let h1 = polynomial(x, y, &[
         (1727,0,6),(9026,1,5),(19841,2,4),(23548,3,3),
         (16001,4,2),(5954,5,1),(959,6,0),
@@ -108,7 +108,8 @@ fn h31(x: D, y: D) -> [D; 5] {
     let h9 = x.pow(2).mul(y.pow(2)).mul(polynomial(x, y, &[
         (25,0,2),(41,1,1),(21,2,0),
     ])).div(D::c(4,1));
-    [h1,h3,h5,h7,h9]
+    let h11 = x.pow(3).mul(y.pow(3)).mul(x.add(y)).neg().div(D::c(2,1));
+    [h1,h3,h5,h7,h9,h11]
 }
 
 fn binomial_half(j: usize, k: usize) -> Q {
@@ -128,12 +129,12 @@ fn jets(xv: i128, yv: i128, occurrence_31: bool) -> [D; 5] {
         h31(x, y)
     } else {
         let swapped = h31(y, x);
-        [swapped[0].neg(), swapped[1].neg(), swapped[2].neg(), swapped[3].neg(), swapped[4].neg()]
+        [swapped[0].neg(), swapped[1].neg(), swapped[2].neg(), swapped[3].neg(), swapped[4].neg(), swapped[5].neg()]
     };
     let n2 = D::c(2,1).mul(s).div(a);
     std::array::from_fn(|k| {
         let mut z = D::c(0,1);
-        for j in 0..5 {
+        for j in 0..6 {
             z = z.add(hs[j].mul(n2.pow(j)).mul(D::c(binomial_half(j,k).n, binomial_half(j,k).d)));
         }
         z.div(D::c(2,1).mul(s).pow(k))
@@ -256,7 +257,7 @@ fn main() {
         .map(|&(x,y,rank)| format!("{{\"x\":{},\"y\":{},\"rank\":{}}}",x,y,rank))
         .collect::<Vec<_>>().join(",");
     let json = format!(
-        "{{\n  \"schema\": \"marici.occurrence-jet-closure.v1\",\n  \"normal_coordinate\": \"w^2=x*y*n^2-2*(x+y)\",\n  \"moving_endpoint_included\": true,\n  \"source_section_span_tests\": {},\n  \"closure_failures\": {},\n  \"rank_two_source_section_span_closed\": {},\n  \"sewn_jet_line_tests\": {},\n  \"sewn_jet_line_failures\": {},\n  \"sewn_jet_line_closed\": {},\n  \"sewn_first_escape_order\": \"w^-3\",\n  \"sewn_escape_formula\": \"17*(y^2-x^2)/(8*x^2*y^2)\",\n  \"sewn_escape_formula_checks\": {},\n  \"first_connection_saturation_min_rank\": {},\n  \"first_connection_saturation_max_rank\": {},\n  \"first_connection_saturation_ranks\": [{}],\n  \"failures\": [\n{}\n  ],\n  \"sewn_line_failure_details\": [\n{}\n  ],\n  \"new_carrier_incidence\": false\n}}\n",
+        "{{\n  \"schema\": \"marici.occurrence-jet-closure.v2\",\n  \"normal_coordinate\": \"w^2=x*y*n^2-2*(x+y)\",\n  \"moving_endpoint_included\": true,\n  \"highest_odd_primitive_degree\": 11,\n  \"degree_eleven_term_included\": true,\n  \"source_section_span_tests\": {},\n  \"closure_failures\": {},\n  \"rank_two_source_section_span_closed\": {},\n  \"sewn_jet_line_tests\": {},\n  \"sewn_jet_line_failures\": {},\n  \"sewn_jet_line_closed\": {},\n  \"sewn_first_escape_order\": \"w^-3\",\n  \"sewn_escape_formula\": \"17*(y^2-x^2)/(8*x^2*y^2)\",\n  \"sewn_escape_formula_checks\": {},\n  \"first_connection_saturation_min_rank\": {},\n  \"first_connection_saturation_max_rank\": {},\n  \"first_connection_saturation_ranks\": [{}],\n  \"failures\": [\n{}\n  ],\n  \"sewn_line_failure_details\": [\n{}\n  ],\n  \"new_carrier_incidence\": false\n}}\n",
         tests, failures.len(), failures.is_empty(),
         sewn_line_tests, sewn_line_failures.len(), sewn_line_failures.is_empty(),
         sewn_escape_formula_checks,

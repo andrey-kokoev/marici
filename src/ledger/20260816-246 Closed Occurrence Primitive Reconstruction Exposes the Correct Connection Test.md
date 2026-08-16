@@ -7,18 +7,21 @@ date: 2026-08-16
 
 ## Record
 
-Status: exact rational reconstruction produced closed homogeneous candidates
-for every coefficient of the two odd primitives \(H_{31}(n)\) and
-\(H_{23}(n)\). The candidates reproduce the frozen pointwise solves and
-pass 48 held-out exact evaluations. They obey
+Status: corrected exact rational reconstruction produced closed homogeneous
+candidates for every coefficient of the two odd primitives \(H_{31}(n)\)
+and \(H_{23}(n)\), including the previously omitted degree-eleven term.
+The candidates reproduce the frozen pointwise solves and pass 60 held-out
+exact evaluations. They obey
 
 \[
 \boxed{H_{23}(x,y,n)=-H_{31}(y,x,n).}
 \]
 
-This is a reconstructed closed formula with exact finite validation. It is
-not yet promoted to a symbolic source identity: substitution into the
-frozen derivative equation remains the next test.
+An independent frozen-source finite-field certificate subsequently tested
+the odd primitive against the even source-numerator projection at 1,582
+valid points in each of three prime fields. All 9,492 occurrence identities
+passed. This is strong finite validation, not a characteristic-zero symbolic
+identity proof.
 
 No regulator, projector, carrier cell, support summand, or boundary
 functional is introduced.
@@ -28,7 +31,7 @@ functional is introduced.
 The hard-to-vary candidate is
 
 \[
-H_{31}(x,y,n)=h_1n+h_3n^3+h_5n^5+h_7n^7+h_9n^9,
+H_{31}(x,y,n)=h_1n+h_3n^3+h_5n^5+h_7n^7+h_9n^9+h_{11}n^{11},
 \qquad
 H_{23}(x,y,n)=-H_{31}(y,x,n),
 \]
@@ -70,12 +73,20 @@ h_9=
 \left(25y^2+41xy+21x^2\right).
 \]
 
+and the source audit supplies the missing highest term
+
+\[
+\boxed{
+h_{11}=-\frac12x^3y^3(x+y).
+}
+\]
+
 The finite falsifier is exact substitution into
 
 \[
 H_i'v-9xynH_i
 =
-P_i-\frac{L_i}{xy}v^5.
+P_i^{\rm even}-\frac{L_i}{xy}v^5.
 \]
 
 Any nonzero coefficient falsifies the reconstruction without changing the
@@ -92,7 +103,7 @@ n_\sigma(w)=\sigma N
 \sqrt{1+\frac{w^2}{2(x+y)}}.
 \]
 
-Writing \(H_i=\sum_{j=0}^4h_{i,2j+1}n^{2j+1}\), the five polar
+Writing \(H_i=\sum_{j=0}^5h_{i,2j+1}n^{2j+1}\), the five polar
 coefficients of
 
 \[
@@ -106,7 +117,7 @@ are
 J_{i,\sigma}^{(-9+2k)}
 =
 \frac{\sigma N}{8(xy)^{3/2}}
-\sum_{j=0}^4
+\sum_{j=0}^5
 h_{i,2j+1}N^{2j}
 \binom{j+\tfrac12}{k}
 \frac1{[2(x+y)]^k},
@@ -148,7 +159,8 @@ source-section subconnection exists.
 ## Classification
 
 - existing carrier: unchanged occurrence wall and endpoint divisor;
-- coefficient data: two reconstructed odd relative primitives;
+- coefficient data: two reconstructed odd relative primitives through
+  degree eleven;
 - involution: occurrence exchange equals \(-(x\leftrightarrow y)\);
 - endpoint jets: closed binomial formula through all five polar levels;
 - formally stable object: kernel of the full addition morphism;
@@ -161,15 +173,17 @@ source-section subconnection exists.
 
 - \`research/benincasa/check_occurrence_jet_connection.rs\`;
 - \`research/benincasa/occurrence-jet-connection.json\`;
-- ten source-graded homogeneous coefficient reconstructions;
-- 48 exact held-out evaluations;
+- twelve source-graded homogeneous coefficient reconstructions;
+- 60 exact held-out evaluations;
+- independent three-prime frozen-source certificate over 4,746 valid
+  kinematic points and 9,492 occurrence identities;
 - warning-denied optimized Rust compilation.
 
 ## Next finite falsifier
 
-1. Substitute both closed candidates into the exact frozen derivative
-   equation coefficientwise.
-2. Expand the closed endpoint jets and compute their \(x,y\) derivatives,
+1. Promote the finite-field source identity to a characteristic-zero
+   coefficientwise proof if needed for global descent.
+2. Expand the corrected closed endpoint jets and compute their \(x,y\) derivatives,
    including the moving endpoint \(N(x,y)\).
 3. Test whether the two source-jet columns close under a rational
    \(2\times2\) connection matrix.
@@ -183,15 +197,17 @@ source-section subconnection exists.
 ~~~json
 {
   "claim": "Closed homogeneous occurrence primitives are reconstructed and the correct nontrivial connection test is source-section span closure.",
-  "status": "reconstructed_with_exact_held_out_validation",
+  "status": "corrected_and_finite_field_source_certified",
   "closed_H31": true,
   "H23_relation": "-H31(y,x,n)",
-  "held_out_exact_checks": 48,
+  "highest_odd_degree": 11,
+  "held_out_exact_checks": 60,
+  "finite_field_source_identity_checks": 9492,
   "symbolic_source_identity": "uncomputed",
   "closed_five_level_jet_formula": true,
   "full_addition_kernel_stability": "formal_by_naturality",
-  "source_section_span_connection_closure": "uncomputed",
+  "source_section_span_connection_closure": "falsified_in_entry_247",
   "new_carrier_incidence": false,
-  "next_experiment": "Symbolically verify the reconstructed H_i and test rank-two source-jet span closure under the moving-endpoint Gauss-Manin derivative."
+  "next_experiment": "Promote the source identity to characteristic zero and construct the global corrected endpoint-jet connection."
 }
 ~~~

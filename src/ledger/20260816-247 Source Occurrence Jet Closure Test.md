@@ -7,8 +7,9 @@ date: 2026-08-16
 
 ## Record
 
-Status: conditional on the closed occurrence primitives reconstructed in
-entry 246, the moving-endpoint Gauss--Manin test has been computed exactly.
+Status: recomputed after the source audit corrected the closed occurrence
+primitives by adding their degree-eleven term. The moving-endpoint
+Gauss--Manin test has been computed exactly from the corrected formulas.
 The two source-defined five-level endpoint-jet columns do not span a
 connection-stable rank-two subbundle. Their sewn jet does not span a flat
 rank-one relative line either.
@@ -50,7 +51,7 @@ w^2=xyn^2-2(x+y).
 Use the closed primitive
 
 \[
-H_i(n)=\sum_{j=0}^4h_{i,2j+1}n^{2j+1}
+H_i(n)=\sum_{j=0}^5h_{i,2j+1}n^{2j+1}
 \]
 
 and endpoint branches
@@ -62,7 +63,7 @@ n_\sigma(w)
 \sqrt{1+\frac{w^2}{2(x+y)}}.
 \]
 
-The exact certificate differentiates the five coefficients
+The exact certificate differentiates the five polar coefficients
 
 \[
 J_i=
@@ -71,7 +72,9 @@ J_i^{(-9)},J_i^{(-7)},J_i^{(-5)},J_i^{(-3)},J_i^{(-1)}
 \right)
 \]
 
-at fixed \(w\). It includes the moving endpoint and the common prefactor
+at fixed \(w\). Each coefficient now includes all six odd primitive terms
+through \(n^{11}\). The certificate includes the moving endpoint and the
+common prefactor
 
 \[
 C=\frac{N}{8(xy)^{3/2}},
@@ -260,12 +263,16 @@ No canonical global splitting has been obtained.
 - 12 exact checks of
   \(17(y^2-x^2)/(8x^2y^2)\);
 - six exact rank-five first-saturation checks;
+- corrected degree-eleven coefficient
+  \(h_{31,11}=-x^3y^3(x+y)/2\);
+- 9,492 independent finite-field source-identity checks;
 - optimized Rust compilation.
 
 ## Qualifications
 
-- The test is conditional on the entry-246 reconstructed formulas until
-  their independent source-polynomial substitution is complete.
+- The corrected formulas pass an independent frozen-source certificate at
+  1,582 valid points in each of three prime fields; a global
+  characteristic-zero polynomial identity remains unproved.
 - The connection is computed in the source-defined \(w\)-normal
   trivialization.
 - Failure of the selected source-section span does not imply failure of
@@ -303,7 +310,9 @@ unless a missing source incidence is independently derived.
 ~~~json
 {
   "claim": "The two source-defined occurrence jets span a flat rank-two subconnection, with a flat sewn rank-one relative line.",
-  "status": "falsified_conditionally_on_entry_246_reconstruction",
+  "status": "falsified_after_corrected_finite_field_source_certificate",
+  "highest_odd_primitive_degree": 11,
+  "finite_field_source_identity_checks": 9492,
   "source_span_tests": 24,
   "source_span_failures": 24,
   "individual_first_escape": "w^-7",
