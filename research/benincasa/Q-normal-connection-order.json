@@ -1,0 +1,27 @@
+{
+  "schema": "marici.benincasa.Q_normal_connection_order.v1",
+  "date": "2026-08-16",
+  "input": {
+    "Q": "-16*p^2-8*p*E^2+8*s*E^3-5*E^4",
+    "p": "x*y",
+    "s": "x+y",
+    "locus": "generic p!=0"
+  },
+  "series": {
+    "-Q/(16*p^2)": "1+E^2/(2*p)-s*E^3/(2*p^2)+5*E^4/(16*p^2)",
+    "log(-Q)-log(16*p^2)": "E^2/(2*p)-s*E^3/(2*p^2)+3*E^4/(16*p^2)+O(E^5)",
+    "dE_log(-Q)": "E/p-3*s*E^2/(2*p^2)+3*E^3/(4*p^2)+O(E^4)",
+    "half_dE_log(-Q)": "E/(2*p)-3*s*E^2/(4*p^2)+3*E^3/(8*p^2)+O(E^4)"
+  },
+  "conclusions": {
+    "constant_connection_term": "0",
+    "first_Q_varying_connection_order": "E^1",
+    "first_Q_coefficient_order": "E^2",
+    "regular_E0_can_prove_Q_provenance": false,
+    "next_required_jet": "connection through E^1 (equivalently coefficient system through second normal/Rees grade)"
+  },
+  "classification": {
+    "carrier_change": false,
+    "reason": "normal-order statement only"
+  }
+}
