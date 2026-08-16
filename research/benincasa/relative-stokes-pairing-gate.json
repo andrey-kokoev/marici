@@ -1,16 +1,16 @@
 {
   "schema": "marici.benincasa.relative_stokes_pairing_gate.v1",
   "date": "2026-08-16",
-  "pair": {
-    "space": "marked pair (S_E,W_E)",
-    "cochain": "(Omega,eta)",
-    "cycle": "(Gamma,gamma)",
-    "formula": "integral_Gamma Omega - integral_gamma eta",
-    "boundary": "partial Gamma = i_* gamma"
+  "type_correction": {
+    "superseded_space": "ordinary relative pair (S_E,W_E)",
+    "actual_space": "marked complement S_E minus W_E",
+    "actual_complex": "Omega(S_E) -> Omega(S_E)(log W_E) ->Res Omega(W_E)[-1], with normalization/conductor totalization",
+    "duality": "Leray tube: integral_T(gamma) Omega = 2*pi*i integral_gamma Res_W(Omega)"
   },
   "gauge": {
-    "change": "(Omega,eta) -> (Omega+d xi,eta+i^* xi)",
-    "variation": "integral_boundaryGamma xi - integral_i*gamma xi = 0"
+    "change": "Omega -> Omega + d xi on the marked complement",
+    "residue_effect": "Res_W(d xi) is exact on the normalized wall totalization",
+    "tube_invariance": "the Leray-tube pairing kills complement exact gauges by Stokes and residue compatibility"
   },
   "naive_contraction_falsifier": {
     "exact_lift_varying_coordinates": [
@@ -33,13 +33,13 @@
     ],
     "contraction_descends_to_relative_class": false
   },
-  "central_fiber_boundary_primitives": [
+  "central_fiber_complement_primitives": [
     "eta101",
     "eta110",
     "eta111_rat"
   ],
   "conclusion": {
-    "pairing_home": "relative de Rham-homology Stokes duality",
+    "pairing_home": "logarithmic residue/Leray-tube duality",
     "new_carrier_datum": false
   },
   "scope_correction": {
@@ -54,5 +54,5 @@
     "direct_exceptional_pullback_is_valid": false,
     "reason": "central walls meet the physical exceptional divisor at r=0, while moving walls meet it at r=1 and r=-1"
   },
-  "remaining": "construct moving-wall normal/Rees primitive lifts, then evaluate their boundary restrictions on four sign-resolved exceptional intervals"
+  "remaining": "compute the residue-compatible Gauss-Manin connection in the orientation-twisted conductor frame, then evaluate the Leray-tube pairing"
 }

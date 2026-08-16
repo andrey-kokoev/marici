@@ -127,21 +127,20 @@ has been corrected.
 
 ## Smaller surviving statement
 
-The relative Stokes pairing remains the canonical comparison mechanism, but
-its cochain input must be lifted through the total-energy normal direction:
+The central/moving-wall mismatch remains a valid finite result, but Entry 306
+corrects the cohomological type of the surviving comparison:
 
 \[
 \boxed{
-\text{central relative primitive}
+\text{moving-wall logarithmic residue}
 \longrightarrow
-\text{moving-wall normal/Rees primitive}
-\longrightarrow
-\text{exceptional boundary pairing}.
+\text{Leray-tube exceptional pairing}.
 }
 \]
 
-This missing object is higher-normal relative coefficient data on the
-already frozen marked family. It is not evidence for a new carrier stratum.
+The missing object is the residue-compatible Gauss--Manin connection on the
+already frozen marked complement. It is not evidence for a new carrier
+stratum.
 
 ## Classification
 
@@ -150,32 +149,34 @@ already frozen marked family. It is not evidence for a new carrier stratum.
 | \(r=0\) | specialization of the central walls |
 | \(r=\pm1\) | moving source-wall intersections with the exceptional divisor |
 | central primitive | established central-fiber coefficient datum |
-| moving-wall primitive | missing normal/Rees lift in the relative coefficient system |
+| moving-wall residue | logarithmic coefficient datum, derived in Entry 304 |
 | weighted exceptional divisor | existing higher-normal/Cut carrier |
 | new carrier datum | none |
 
 ## Deutsch--Popperian update M2.46
 
-The failure is narrow: central-fiber exactness does not furnish the
-exceptional boundary value of a moving relative cocycle. The next admissible
-object is fixed by a lifting problem, not by fitting a boundary answer.
+The failure is narrow: central-fiber exactness does not furnish the residue
+class of the moving logarithmic family. The next admissible object is fixed
+by the residue-compatible Gauss--Manin connection, not by fitting a boundary
+answer.
 
 ## Next hostile test
 
-Construct \(\eta_{101}(E)\), \(\eta_{110}(E)\), and the compatible two-wall
-primitive over the frozen moving denominators
+Compute the Gauss--Manin connection on the normalized logarithmic residue
+complex for the frozen moving denominators
 
 \[
 b+x-E,\qquad a+y-E
 \]
 
-with:
+and require:
 
 1. the source normalization unchanged;
-2. specialization to Entries 296--297 modulo relative exact gauge;
-3. the exact moving-family cocycle equation;
+2. compatibility \(\operatorname{Res}\nabla=\nabla_W\operatorname{Res}\);
+3. agreement with the endpoint logarithms of Entry 304 and the
+   orientation-twisted lattice of Entry 305;
 4. no poles outside the frozen marked, Cayley--Menger, soft, and conductor
    divisors.
 
-Then evaluate their exceptional boundary classes at \(r=\pm1\). A forced
-pole on any other divisor is the next finite carrier-level falsifier.
+Then evaluate the Leray-tube pairing at \(r=\pm1\). A forced pole on any
+other divisor is the next finite carrier-level falsifier.
