@@ -1,0 +1,29 @@
+{
+  "schema": "marici.benincasa.algebraic_tail_incidence.v1",
+  "date": "2026-08-16",
+  "definitions": {
+    "s": "x+y",
+    "v_alg_E0": "x^2*y^2*((x^2-y^2)*e7+2*e8-2*e9)",
+    "T101": "(y-x)/(4*x*y)*e7 - e8/(2*x*y*s) + e9/(2*x*y*s)",
+    "T110": "-T101",
+    "T111": "-(x-y)^2/(8*x^2*y^2)*e7 + (y-x)*e8/(4*x^2*y^2*s) + (x-y)*e9/(4*x^2*y^2*s)",
+    "q101": "-1/(2*y)",
+    "q110": "-1/(2*x)"
+  },
+  "identities": {
+    "T101": "-v0/(4*x^3*y^3*s)",
+    "T110": "+v0/(4*x^3*y^3*s)",
+    "T111": "-(x-y)*v0/(8*x^4*y^4*s)",
+    "incidence": "T111+q101*T101+q110*T110=0"
+  },
+  "classification": {
+    "home": "<v_alg(E=0)> inside A_-- inside T7",
+    "elliptic_projection": "zero",
+    "new_carrier_datum": false
+  },
+  "status": {
+    "identities": "exact after substitution",
+    "inputs": "finite exact rational reconstructions from entries 291-293",
+    "universal_GD_certificate": "open"
+  }
+}
