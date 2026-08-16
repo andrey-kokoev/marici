@@ -126,7 +126,10 @@ fn main() {
   ],
   "canonical_embedding_claim": "falsified_in_frozen_calculus",
   "endpoint_extension_home": "marked relative coefficient data",
-  "Q_home_updated": "not endpoint-to-A_-- morphism; physical relative-chain/discriminant extension or apparent alphabet remains",
+  "prior_Q_provenance_verdict": "apparent cyclic/master-presentation alphabet data at generic nonsoft homogeneous kinematics",
+  "prior_T_Q": "identity",
+  "prior_N_Q": 0,
+  "endpoint_gate_consistency": "adds no hidden relative-to-absolute Q lift",
   "new_carrier_incidence": false
 }}"#
     );

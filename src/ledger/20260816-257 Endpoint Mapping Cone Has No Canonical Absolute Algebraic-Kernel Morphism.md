@@ -113,55 +113,82 @@ the frame with an absolute algebraic-kernel target. The two objects are
 compatible outputs of the same carrier calculus, not canonically identified
 coefficient objects.
 
-## Update to the home of \(\mathcal Q\)
+## Consistency with the completed home of \(\mathcal Q\)
 
-The following homes are now excluded:
+This type gate does not reopen the provenance question already closed by
+entries 181, 183, and 212. Those entries froze the positive physical sheet,
+resolved every cyclic residue sector, rejected \(\mathcal Q\) from
+\(3\cdot1719=5157\) raw discriminant tests, and proved
 
-1. the pure elliptic infinity-Gysin quotient;
-2. the generic rank-seven algebraic connection and its internal extension;
-3. the intrinsic endpoint-jet connection;
-4. a canonical endpoint-to-\(\mathcal A_{--}\) comparison.
+\[
+T_{\mathcal Q}=1,
+\qquad
+N_{\mathcal Q}=0,
+\qquad
+\operatorname{Var}_{\mathcal Q}(\Gamma_{\rm phys})=0
+\]
 
-The surviving source-compatible alternatives are narrower:
+at generic nonsoft homogeneous kinematics. Entry 211 independently excludes
+\(\mathcal Q\) from the generic algebraic kernel and its internal
+extension.
+
+The present result adds one consistency statement:
 
 \[
 \boxed{
-\text{physical moving relative-chain/discriminant extension}
-\quad|\quad
-\text{apparent cyclic/alphabet singularity}.
+\text{the endpoint mapping cone supplies no hidden lift of }\mathcal Q
+\text{ into }\mathcal A_{--}.
 }
 \]
 
-This updates the shared-carrier conjecture positively but only narrowly:
-all tested endpoint complexity remains coefficient or chain data over the
-unchanged marked energy carrier.
+Combining the prior provenance theorem with this gate leaves the completed
+classification
+
+\[
+\boxed{
+\mathcal Q
+\text{ is apparent cyclic/master-presentation alphabet data in the frozen
+homogeneous system.}
+}
+\]
+
+It is neither carrier support, coefficient support, algebraic-extension
+support, nor physical relative-chain support on the generic locus. The
+shared carrier remains unchanged.
 
 ## Exact evidence
 
 - research/benincasa/marici-gm/src/bin/endpoint_to_algebraic_kernel_type_gate.rs;
 - research/benincasa/endpoint-to-algebraic-kernel-type-gate.json;
-- entries 211, 237, 245, 254, and 255;
+- entries 181, 183, 211, 212, 237, 245, 254, and 255;
 - warning-denied Rust compilation and execution.
 
 ## Next hostile falsifier
 
-Freeze the physical source chamber and its continuation prescription. At a
-generic smooth point of \(\mathcal Q=0\), compute whether the physical
-relative chain acquires a nonzero boundary variation while the absolute
-Gauss--Manin connection remains regular.
+Do not repeat the generic \(\mathcal Q\)-monodromy test. Instead construct
+the maximal generic-open decomposition of the complete homogeneous
+three-site coefficient system, including:
 
-The claim to test is
+1. the lower Tate/Kummer sector;
+2. the three cyclic nine-master residue sectors;
+3. each rank-seven algebraic kernel;
+4. each rank-two elliptic infinity-Gysin quotient;
+5. the marked relative endpoint/wall objects;
+6. every source-defined sewing and extension arrow.
+
+The hard-to-vary claim is
 
 \[
 \boxed{
-\mathcal Q=0\text{ is a genuine collision divisor of the source physical
-relative chain.}
+\text{over the maximal generic open base, every non-elliptic constituent is
+Tate/Kummer or marked-relative data, and all cross-layer arrows are generated
+by the frozen localization/Gysin/sewing calculus.}
+}
 \]
 
-A surviving claim must exhibit the colliding source-defined boundary
-components and a nonzero relative-homology monodromy class. If no such
-collision exists, \(\sqrt{\mathcal Q}\) is apparent alphabet/cyclic data,
-not coefficient support and not a carrier stratum.
+A finite falsifier is any source master, singular divisor, or extension arrow
+that cannot be placed in that inventory without a new carrier stratum or an
+unmotivated splitting.
 
 ## Outcome contract
 
@@ -176,10 +203,10 @@ not coefficient support and not a carrier stratum.
   "e6_ancestry_is_coordinate": false,
   "zero_infinity_image_selects_kernel_lift": false,
   "new_carrier_incidence": false,
-  "Q_remaining_homes": [
-    "physical moving relative-chain/discriminant extension",
-    "apparent cyclic or alphabet singularity"
-  ],
-  "next_experiment": "Compute source physical relative-chain monodromy around a generic smooth Q=0 point."
+  "prior_Q_verdict": "apparent_cyclic_master_presentation_alphabet_data",
+  "T_Q": "identity",
+  "N_Q": 0,
+  "endpoint_gate_adds_hidden_Q_lift": false,
+  "next_experiment": "Construct or finitely falsify the maximal generic-open decomposition of the complete homogeneous three-site coefficient system."
 }
 ~~~
