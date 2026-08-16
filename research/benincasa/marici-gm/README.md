@@ -51,3 +51,8 @@ residue of the full final block and its elliptic Gysin quotient at independent
 values of `v` on `u=E_T=0`. It verifies the residue-level horizontal Gysin
 square, adapts to kernel/quotient coordinates, and solves the logarithmic
 extension-splitting equation.
+
+`generic-et-nearby-synthesis.json` combines that certificate with the exact
+other-block connections and the total-energy intersection census. It records
+the complete generic nine-master Deligne nearby object, the second Rees datum,
+and the precise typing boundary of the still-unconstructed Cut--nearby square.
