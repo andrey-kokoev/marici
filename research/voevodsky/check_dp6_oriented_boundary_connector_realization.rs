@@ -14,6 +14,17 @@ struct Cone {
     positive: bool,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+struct Ray(i32, i32);
+
+fn add_ray(a: Ray, b: Ray) -> Ray {
+    Ray(a.0 + b.0, a.1 + b.1)
+}
+
+fn determinant(a: Ray, b: Ray) -> i32 {
+    a.0 * b.1 - a.1 * b.0
+}
+
 fn omitted(a: usize, b: usize) -> usize {
     3 - a - b
 }
@@ -51,41 +62,50 @@ fn add(left: [i32; 5], right: [i32; 5]) -> [i32; 5] {
 }
 
 fn main() {
-    // The labelled toric dP6 is the blowup of P(J/J^2)=P2 at its three
-    // coordinate points.  Its six maximal boundary cones occur cyclically.
-    let cones = [
-        Cone {
-            first: 0,
-            second: 1,
+    // Start from the labelled P2 fan.  Blowing up all three torus fixed
+    // points star-subdivides every two-cone by the sum of its primitive
+    // rays, deriving the smooth cyclic dP6 fan.
+    let p2 = [Ray(1, 0), Ray(0, 1), Ray(-1, -1)];
+    let mut dp6 = Vec::new();
+    for i in 0..3 {
+        dp6.push(p2[i]);
+        dp6.push(add_ray(p2[i], p2[(i + 1) % 3]));
+    }
+    assert_eq!(dp6.len(), 6);
+    for i in 0..6 {
+        assert_eq!(determinant(dp6[i], dp6[(i + 1) % 6]), 1);
+    }
+
+    // The two labelled contractions of each subdivided sector give the
+    // positive and negative ordered road pairs.  No cone list is supplied.
+    let mut cones = Vec::new();
+    for i in 0..3 {
+        cones.push(Cone {
+            first: i,
+            second: (i + 1) % 3,
             positive: true,
-        },
-        Cone {
-            first: 0,
-            second: 2,
+        });
+        cones.push(Cone {
+            first: i,
+            second: (i + 2) % 3,
             positive: false,
-        },
-        Cone {
-            first: 1,
-            second: 2,
-            positive: true,
-        },
-        Cone {
-            first: 1,
-            second: 0,
-            positive: false,
-        },
-        Cone {
-            first: 2,
-            second: 0,
-            positive: true,
-        },
-        Cone {
-            first: 2,
-            second: 1,
-            positive: false,
-        },
-    ];
-    let shared = [0_usize, 2, 1, 0, 2, 1];
+        });
+    }
+    assert_eq!(cones.len(), dp6.len());
+
+    // Adjacent cones share exactly one labelled road ray; derive it by set
+    // intersection instead of supplying the cyclic sequence.
+    let mut shared = Vec::new();
+    for i in 0..6 {
+        let left = [cones[i].first, cones[i].second];
+        let right = [cones[(i + 1) % 6].first, cones[(i + 1) % 6].second];
+        let common = left
+            .into_iter()
+            .filter(|x| right.contains(x))
+            .collect::<Vec<_>>();
+        assert_eq!(common.len(), 1);
+        shared.push(common[0]);
+    }
 
     // Real-oriented blowup of each boundary node separates its two germs.
     // Hence the positive KN boundary is a 12-gon alternating six local
@@ -152,11 +172,11 @@ fn main() {
 
     // The oriented disk filling the 12-gon supplies the single top
     // coherence.  Its cellular boundary coefficients are primitive.
-    let disk_boundary = [1_i32; 12];
+    let disk_boundary = vec![1_i32; 2 * dp6.len()];
     assert_eq!(disk_boundary.iter().fold(0_i32, |g, x| gcd(g, *x)), 1);
 
     println!(
-        "{{\"status\":\"proved_scoped_geometric_KN_connector_realization\",\"normalization_provenance\":\"Bl_3 P(J/J2)=dP6\",\"oriented_boundary_nodes\":6,\"KN_boundary_edges\":12,\"local_corridor_edges\":6,\"derived_endpoint_connectors\":{},\"derived_center_connectors\":{},\"target_vertices\":5,\"target_incidence_rank\":4,\"target_incidence_smith\":[1,1,1,1],\"top_disk_boundary_primitive\":true,\"D3\":true,\"reflection_reverses_boundary_orientation\":true,\"literal_local_entry143_maps\":true,\"global_six_functor_kernel_constructed\":false,\"mapping_fiber_instantiated\":false}}",
+        "{{\"status\":\"proved_scoped_geometric_KN_connector_realization\",\"normalization_provenance\":\"Bl_3 P(J/J2)=dP6\",\"P2_fan_rays\":3,\"star_subdivision_rays\":6,\"smooth_fan_determinants_all_one\":true,\"shared_road_rays_derived\":true,\"oriented_boundary_nodes\":6,\"KN_boundary_edges\":12,\"local_corridor_edges\":6,\"derived_endpoint_connectors\":{},\"derived_center_connectors\":{},\"target_vertices\":5,\"target_incidence_rank\":4,\"target_incidence_smith\":[1,1,1,1],\"top_disk_boundary_primitive\":true,\"D3\":true,\"reflection_reverses_boundary_orientation\":true,\"literal_local_entry143_maps\":true,\"global_six_functor_kernel_constructed\":false,\"mapping_fiber_instantiated\":false}}",
         endpoint_connectors, center_connectors
     );
 }

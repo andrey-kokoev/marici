@@ -17,6 +17,13 @@ coordinate points gives the toric del Pezzo surface (dP_6). This operation
 is canonical from the labelled conductor directions and uses neither a
 choice of road nor division by three.
 
+The certificate now derives this fan rather than supplying its six cones.
+It starts from the primitive (mathbf P^2) rays
+((1,0),(0,1),(-1,-1)), star-subdivides each adjacent two-cone by the sum
+of its rays, and verifies that all six successive determinants are (+1).
+The six ordered road sectors and their unique shared labels are then
+generated from the cyclic three-road indexing.
+
 Its toric boundary has six nodes. Real-oriented blowup of those nodes
 separates the two incident boundary germs and replaces each node by an
 oriented connector interval. Consequently the positive KN boundary is a
@@ -66,7 +73,7 @@ Checker:
 `research/voevodsky/check_dp6_oriented_boundary_connector_realization.rs`
 
 SHA-256:
-`9fb30dc4339aa8e440e5149654a41fbf81e6b829c6d28d3f36dcc72ef7bcdd61`
+`66a6bb5b6084ecce39d283dd49ebeaf2330450547fb3a0210246f154ca9262ca`
 
 Rustfmt, warnings-denied optimized compilation, linked runtime assertions,
 and JSON emission passed.
@@ -79,7 +86,11 @@ and JSON emission passed.
   "status": "proved_scoped_normalization_provenanced_constructible_KN_descent",
   "geometry": {
     "normal_cone": "P(J/J^2)=P2",
+    "P2_fan_rays": 3,
     "coordinate_blowups": 3,
+    "star_subdivision_rays": 6,
+    "smooth_fan_determinants_all_one": true,
+    "shared_road_rays_derived": true,
     "surface": "dP6",
     "oriented_boundary_nodes": 6,
     "KN_boundary_edges": 12,
@@ -108,6 +119,6 @@ and JSON emission passed.
     "Jordan coherence"
   ],
   "checker": "research/voevodsky/check_dp6_oriented_boundary_connector_realization.rs",
-  "checker_sha256": "9fb30dc4339aa8e440e5149654a41fbf81e6b829c6d28d3f36dcc72ef7bcdd61"
+  "checker_sha256": "66a6bb5b6084ecce39d283dd49ebeaf2330450547fb3a0210246f154ca9262ca"
 }
 ~~~
