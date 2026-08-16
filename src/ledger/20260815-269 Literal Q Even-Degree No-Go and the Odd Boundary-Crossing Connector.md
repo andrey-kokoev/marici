@@ -1,5 +1,12 @@
 # Literal Q Even-Degree No-Go and the Odd Boundary-Crossing Connector
 
+> **Superseded by entries 275--276.** The degree-two premise below applies
+> only to the sheet-summed full-log carrier. Entry 275 derives two labelled
+> hemispheres, each with primitive relative \(Q\)-coefficient one. Therefore
+> the historical conclusion that the admitted source has image \(2\mathbb Z\)
+> must not be cited as a current obstruction. The separate endpoint connector
+> torsor remains, as recorded in entry 276.
+
 ## Exact obstruction
 
 Entry266 computes that the coherently oriented full-log carrier reaches the
@@ -44,7 +51,8 @@ undefined.
 
 ~~~json
 {
-  "status": "falsified_scoped_literal_support_preserving_primitive_Q_map",
+  "status": "superseded_historical_sheet_summed_no_go",
+  "superseded_by": [275, 276],
   "carrier_Q_coefficient": 2,
   "existing_central_Q_coefficient": 0,
   "current_row": [2, 0],

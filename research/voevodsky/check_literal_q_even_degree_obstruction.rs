@@ -49,6 +49,6 @@ fn main() {
     );
 
     println!(
-        "{{\"status\":\"falsified_scoped_literal_support_preserving_primitive_Q_map\",\"carrier_Q_coefficient\":2,\"existing_central_Q_coefficient\":0,\"current_row\":[2,0],\"current_smith_factors\":[2],\"current_cokernel\":\"Z/2\",\"primitive_qSigma_reachable\":false,\"abstract_local_exceptional_coefficient\":1,\"abstract_coefficient_has_literal_Q_support_map\":false,\"repair_row\":\"[2,m]\",\"repair_iff_m_odd\":true,\"minimal_primitive_connector_coefficients\":[-1,1],\"mapping_fiber_instantiated\":false,\"physical_p_defined\":false}}"
+        "{{\"status\":\"superseded_historical_sheet_summed_no_go\",\"superseded_by\":[275,276],\"carrier_Q_coefficient\":2,\"existing_central_Q_coefficient\":0,\"current_row\":[2,0],\"current_smith_factors\":[2],\"current_cokernel\":\"Z/2\",\"primitive_qSigma_reachable_in_sheet_summed_truncation\":false,\"abstract_local_exceptional_coefficient\":1,\"abstract_coefficient_has_literal_Q_support_map\":false,\"repair_row\":\"[2,m]\",\"repair_iff_m_odd\":true,\"minimal_primitive_connector_coefficients\":[-1,1],\"mapping_fiber_instantiated\":false,\"physical_p_defined\":false}}"
     );
 }
