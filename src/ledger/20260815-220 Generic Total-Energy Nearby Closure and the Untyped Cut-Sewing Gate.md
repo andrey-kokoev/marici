@@ -3,12 +3,13 @@ authors:
   - marici.Benincasa
 date: 2026-08-15
 ---
-# Generic Total-Energy Nearby Closure and the Untyped Cut-Sewing Gate
+# Generic Total-Energy Nearby Closure and the Physical-Chain Cut-Sewing Gate
 
 ## Record
 
 Status: complete generic nonsoft nine-master nearby/Rees calculation; the
-cross-sector Cut comparison is not yet a typed diagram.
+algebraic Cut is source-defined, while its simultaneous total-energy nearby
+specialization on the physical chain remains open.
 
 This entry uses the frozen source integrand, the equation-(58) nine-master
 basis, the explicit infinity-Gysin sequence, the physical sheet, and the
@@ -145,28 +146,41 @@ The proposed Cut square
 \operatorname{Cut}_k\,\psi_{E_T=0}\,q_{\rm ell}
 \]
 
-cannot yet be evaluated. The scattering surface calculus supplies a
-nonseparating Cut on resolved surface states, but the frozen cosmological
-source does not supply a coefficient morphism
+cannot yet be evaluated on the physical relative chain. However, the source
+does supply the algebraic edge-opening morphism: the Poincare/Leray residue
 
 \[
-\operatorname{Cut}_k:
-\mathcal M_q^{(9)}\longrightarrow\mathcal M_{q,k}^{\rm open}
+\operatorname{Cut}_{12}
+=\operatorname{Res}_{q_{\mathcal G_{12}}=0},
+\qquad
+q_{\mathcal G_{12}}=E_T+y_{12},
+\qquad dq_{\mathcal G_{12}}=dy_{12}.
 \]
 
-or its restriction to the source rank-three cyclic module. Transport
-incidence alone does not define this map, and importing the scattering counit
-would assume the comparison being tested.
+It has source-fixed Jacobian one and lands in the equation-(58) nine-master
+residue module. Entry 180 also fixes its local physical Leray germ, sheet,
+orientation, and multiplicity.
 
-Thus the failure is one of typing, not a nonzero commutator. No new carrier
-datum is justified.
+The unresolved collision is instead
+
+\[
+E_T=0,
+\qquad q_{\mathcal G_{12}}=0
+\quad\Longrightarrow\quad y_{12}=0.
+\]
+
+At this boundary corner one must simultaneously transport the positive
+Cayley--Menger chain, its signed-minor boundary, and the Leray tube. The
+absolute nine-master residue connection does not determine that relative
+base-change map. Thus no nonzero commutator has been found, but chain-level
+commutation is not proved. No new carrier datum is justified.
 
 ## Narrow verdict
 
 \[
 \boxed{
-\text{The generic coefficient-side H2 conjecture survives, but the
-Cut--nearby compiler claim remains untested.}
+\text{The generic coefficient-side H2 conjecture survives; algebraic Cut is
+typed, but the physical-chain Cut--nearby claim remains untested.}
 }
 \]
 
@@ -180,20 +194,21 @@ Classification:
 - second-Rees data: \(-8p\), regular and coefficient-valued;
 - graph homology: no new class detected;
 - genuinely new carrier structure: none;
-- missing datum: a source-defined nonseparating Cut coefficient morphism and
-  the \(E_T\)-nearby specialization of its physical relative chain.
+- missing datum: simultaneous \(E_T\)-nearby specialization of the canonical
+  \(q_{\mathcal G_{12}}\) Leray chain at \(y_{12}=0\), followed by descent to
+  the cyclic/elliptic quotient.
 
 ## Next hostile falsifier
 
-Derive \(\operatorname{Cut}_k\) directly from the frozen three-site loop
-integrand by taking the source-prescribed nonseparating propagator residue and
-tracking its relative integration chain. Prove first that it preserves the
-native nine-master module and descends through the source cyclic quotient.
-Only then form the Cut--nearby commutator.
+Construct the simultaneous log model of
+\(E_T=0\), \(q_{\mathcal G_{12}}=0\), the Cayley--Menger boundary, and the
+source signed-minor boundary near \(y_{12}=0\). Transport the canonical Leray
+germ of entry 180 through this model, then test descent through the source
+cyclic and elliptic quotients and form the Cut--nearby commutator.
 
 The finite failure modes are:
 
-1. the residue leaves the native coefficient module;
+1. the physical Leray chain acquires an excess class at \(y_{12}=0\);
 2. the rank-three cyclic module or elliptic quotient is not preserved;
 3. nearby specialization does not preserve the resulting exact sequence;
 4. the commutator has a class outside soft support plus \(H_1(G)\).
