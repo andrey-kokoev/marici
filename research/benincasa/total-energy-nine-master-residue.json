@@ -1,0 +1,58 @@
+{
+  "schema": "marici.benincasa.total_energy_nine_master_residue.v1",
+  "date": "2026-08-16",
+  "source": {
+    "connection_file": "research/benincasa/nine_master_connection_results.json",
+    "connection_sha256": "f69556d9a675d05a43f61ef42e1c020c40de4852ffc7ed81e3efc192273860d4",
+    "slice": "X1=rho*lambda, X2=lambda, X3=1",
+    "total_energy": "E=(rho+1)*lambda+1",
+    "convention": "d_lambda e_i = sum_j A[i,j] e_j"
+  },
+  "residue": {
+    "definition": "Res_E(A d_lambda)=Res_{lambda=-1/(rho+1)}(A d_lambda)",
+    "basis": ["e1","e2","e3","e4","e5","e6","e7","e8","e9"],
+    "matrix": [
+      ["1","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","0","0","0"],
+      ["0","0","0","0","0","0","-1/2","(rho+1)/2","(rho+1)/(2*rho)"],
+      ["0","0","0","0","0","0","-1/(4*(rho+1))","1/4","1/(4*rho)"],
+      ["0","0","0","0","0","0","-rho/(4*(rho+1))","rho/4","1/4"]
+    ],
+    "e1_residue": "1 (integral apparent residue; local monodromy 1)",
+    "last_three_rank": 1,
+    "last_three_trace": 0,
+    "last_three_square_zero": true,
+    "other_residues_zero": true
+  },
+  "gysin_kernel_check": {
+    "e6_residue": 0,
+    "v_alg_at_E0_in_e7_e8_e9": ["(rho-1)/(rho+1)","2","-2"],
+    "v_alg_times_last_three_residue": ["0","0","0"],
+    "conclusion": "the nilpotent descends to the rank-two elliptic Gysin quotient and has zero algebraic-kernel component"
+  },
+  "monodromy": {
+    "semisimple_part": "identity in the source-normalized nine-master system",
+    "unipotent_log_rank": 1,
+    "N_squared": 0,
+    "algebraic_T7_monodromy": "identity at generic nonsoft E=0",
+    "elliptic_block": "one nodal rank-one nilpotent"
+  },
+  "validation": {
+    "method": "exact BigInt polynomial residue extraction after substituting each integer rho",
+    "rho_values": "2 through 65",
+    "generic_slices": 64,
+    "matrix_entries_per_slice": 81,
+    "exact_comparisons": 5184,
+    "mismatches": 0
+  },
+  "classification": {
+    "algebraic_nonelliptic_residue": "absent",
+    "elliptic_support": "existing total-energy/signed-energy divisor",
+    "new_carrier_datum": false,
+    "remaining_problem": "off-diagonal marked top-column residue in the canonical rank-twelve localization extension"
+  }
+}
