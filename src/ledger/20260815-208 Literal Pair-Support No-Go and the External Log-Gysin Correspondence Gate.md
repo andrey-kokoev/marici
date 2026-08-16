@@ -9,11 +9,11 @@ possible and are the required next geometry. No graph admission is claimed.
 ## Result
 
 Entry 206 constructs the canonical integral augmented SNC/Tate carrier bridge.
-Its middle degree has three pair-intersection generators. Including the
-two retained Tor grades and the four Boolean normal states produces the
-necessary
+Its middle degree has three pair-intersection generators. Including their
+three reflected mates gives six labelled pair objects. The four Boolean
+normal states on each object produce the necessary
 \[
-3\cdot 2\cdot 4=24
+6\cdot 4=24
 \]
 pair/normal rows.
 
@@ -68,8 +68,9 @@ with:
 
 1. proper/log-BM or nearby-cycle source legs carrying normalization and
    conductor provenance;
-2. four Boolean occurrence/normal states in each of the two Tor grades;
-3. the two Tor grades and their multiplicity-sensitive excess orientation;
+2. the reflected mate of every pair object, with the forced polarity action;
+3. four Boolean occurrence/normal states on every labelled pair object,
+   together with the independently retained multiplicity/Tor data;
 4. restriction maps to both adjacent long-facet packets;
 5. Beck--Chevalley maps realizing both nonzero SNC and normal boundaries;
 6. a support comparison to the complementary marked corridor \(q_k\);
@@ -84,7 +85,7 @@ remain undefined.
 
 - `research/voevodsky/check_p2_snc_literal_pair_support_no_go.rs`
 - SHA-256:
-  `29ca4d28d39700b6901240ced7e9721f350bc6e510cd22589de8f6168e6a042b`
+  `0562d912ed7c7eb9a78a9354a8f2cce39dd8a7e24be049f87fa0f643745af428`
 
 Validation:
 
@@ -98,14 +99,14 @@ Validation:
 
 ~~~json
 {
-  "claim": "The 24 pair/Tor/Boolean source rows required by the projective-SNC bridge have no legal direct target summands in entry143 because every pair of physical long roads crosses; the only direct support-preserving assignment is zero, which erases rather than realizes the nonzero SNC and Boolean boundary data.",
+  "claim": "The 24 reflected-pair/Boolean source rows required by the projective-SNC bridge have no legal direct target summands in entry143 because every pair of physical long roads crosses; the only direct support-preserving assignment is zero, which erases rather than realizes the nonzero SNC and Boolean boundary data.",
   "status": "falsified_scoped_direct_literal_pair_support_realization",
   "scope": "direct support-preserving maps into the existing entry143 [S,H] face-indexed complex only; external extraordinary, log-BM, cdh, or nearby-cycle overlap correspondences are not ruled out",
   "evidence": {
     "k6_face_counts": [1, 9, 21, 14],
     "crossing_long_pairs": 3,
-    "tor_grades": 2,
-    "boolean_states_per_pair": 4,
+    "reflected_pair_objects": 6,
+    "boolean_states_per_pair_object": 4,
     "required_pair_rows": 24,
     "legal_literal_entry143_rows": 0,
     "pair_incidence_rank": 2,
@@ -116,7 +117,7 @@ Validation:
     "two_top_bridge_repairs_support": false,
     "physical_mapping_fiber": "unconstructed"
   },
-  "checker_sha256": "29ca4d28d39700b6901240ced7e9721f350bc6e510cd22589de8f6168e6a042b",
-  "next_required_map": "Construct external W_ij/Gamma_ij^{!,log} objects with proper/log-BM provenance, four Boolean states, both Tor grades, adjacent-facet Beck-Chevalley maps, and a support comparison to the complementary q_k corridor."
+  "checker_sha256": "0562d912ed7c7eb9a78a9354a8f2cce39dd8a7e24be049f87fa0f643745af428",
+  "next_required_map": "Construct external W_ij/Gamma_ij^{!,log} objects with proper/log-BM provenance, reflected pair objects, four Boolean states, multiplicity/Tor data, adjacent-facet Beck-Chevalley maps, and a support comparison to the complementary q_k corridor."
 }
 ~~~
