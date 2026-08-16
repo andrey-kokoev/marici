@@ -206,6 +206,7 @@ fn main() {
     let mut zero_cones = 0;
     let mut mixed_cones = 0;
     let mut facet_occurrences = BTreeMap::<Diagonal, usize>::new();
+    let mut oriented_total = vec![0_i8; 9];
     for mask in 0_u8..8 {
         let signs =
             std::array::from_fn::<_, 3, _>(|axis| if mask & (1 << axis) == 0 { 1 } else { -1 });
@@ -285,6 +286,10 @@ fn main() {
                 .sum::<usize>(),
             3
         );
+        let source_orientation = signs.iter().product::<i8>();
+        for (total, coefficient) in oriented_total.iter_mut().zip(minimal[0]) {
+            *total += source_orientation * coefficient;
+        }
         for (label, coefficient) in labels.iter().zip(minimal[0]) {
             if *coefficient != 0 {
                 *facet_occurrences.entry(*label).or_default() += 1;
@@ -296,7 +301,53 @@ fn main() {
     assert_eq!(facet_occurrences.len(), 9);
     assert!(facet_occurrences.values().all(|count| *count == 2));
 
+    let mut sphere_candidates = Vec::<Vec<i8>>::new();
+    for code in 0..3_usize.pow(9) {
+        let mut value = code;
+        let coefficients = (0..9)
+            .map(|_| {
+                let coefficient = (value % 3) as i8 - 1;
+                value /= 3;
+                coefficient
+            })
+            .collect::<Vec<_>>();
+        if coefficients.iter().all(|coefficient| *coefficient == 0) {
+            continue;
+        }
+        let mut boundary_sum = vec![0_i8; edges.len()];
+        for (coefficient, facet) in coefficients.iter().zip(&facet_vectors) {
+            for (entry, value) in boundary_sum.iter_mut().zip(facet) {
+                *entry += coefficient * value;
+            }
+        }
+        if boundary_sum.iter().all(|entry| *entry == 0) {
+            sphere_candidates.push(coefficients);
+        }
+    }
+    assert_eq!(sphere_candidates.len(), 2);
+    let sphere = sphere_candidates
+        .into_iter()
+        .find(|candidate| candidate.iter().find(|value| **value != 0) == Some(&1))
+        .unwrap();
+    assert!(sphere.iter().all(|coefficient| coefficient.abs() == 1));
+    let degree: i8 = if oriented_total
+        .iter()
+        .zip(&sphere)
+        .all(|(total, primitive)| *total == 2 * primitive)
+    {
+        2
+    } else if oriented_total
+        .iter()
+        .zip(&sphere)
+        .all(|(total, primitive)| *total == -2 * primitive)
+    {
+        -2
+    } else {
+        panic!("oriented maximal-cone sum is not a scalar fundamental sphere");
+    };
+    assert_eq!(degree.abs(), 2);
+
     println!(
-        "{{\"status\":\"proved_scoped_full_log_maximal_cone_K6_fillers\",\"K6_vertices\":14,\"K6_edges\":21,\"K6_facets\":9,\"maximal_cones\":8,\"same_sheet_zero_fillers\":2,\"mixed_cones\":6,\"mixed_loop_edge_support\":8,\"minimal_facets_per_mixed_filler\":3,\"minimal_fillers_per_mixed_cone\":1,\"facet_occurrences\":18,\"distinct_facets\":9,\"occurrences_per_facet\":2,\"facet_BC_equalities\":9,\"facet_BC_rank\":9,\"facet_BC_smith_unit_factors\":9,\"integer_torsion\":false,\"literal_full_Boolean_facet_lift_constructed\":false,\"global_endpoint_Q_map_constructed\":false}}"
+        "{{\"status\":\"proved_scoped_full_log_maximal_cone_K6_fillers\",\"K6_vertices\":14,\"K6_edges\":21,\"K6_facets\":9,\"maximal_cones\":8,\"same_sheet_zero_fillers\":2,\"mixed_cones\":6,\"mixed_loop_edge_support\":8,\"minimal_facets_per_mixed_filler\":3,\"minimal_fillers_per_mixed_cone\":1,\"facet_occurrences\":18,\"distinct_facets\":9,\"occurrences_per_facet\":2,\"facet_BC_equalities\":9,\"facet_BC_rank\":9,\"facet_BC_smith_unit_factors\":9,\"oriented_cellular_degree_abs\":2,\"primitive_K6_sphere_kernel_rank\":1,\"integer_torsion\":false,\"literal_full_Boolean_facet_lift_constructed\":false,\"global_endpoint_Q_map_constructed\":false}}"
     );
 }
