@@ -5,6 +5,11 @@ date: 2026-08-16
 ---
 # Orientation Twist Identifies the Conductor and Enhanced Rees Lattices
 
+> **Type correction (Entries 306--307).** The integral intertwiner \(J\) and
+> all representation-theoretic conclusions below are unchanged. References
+> to a bulk relative Stokes or Griffiths--Dwork lift are superseded by the
+> logarithmic-residue Gauss--Manin connection and Leray-tube pairing.
+
 ## Result
 
 The integral conductor quotient of Entry 280 and the enhanced-point
@@ -259,8 +264,8 @@ Jacobian sign needed to compare their conductor cycles with the enhanced
 Leray functionals.
 
 Therefore the lattice-level physical-chain comparison is now fixed. What
-remains is the de Rham bulk scalar pairing and its support-sensitive
-extension, not an ambiguity in the integral occurrence lattice.
+remains is the residue Gauss--Manin top extension and its support-sensitive
+Leray pairing, not an ambiguity in the integral occurrence lattice.
 
 ## Classification
 
@@ -302,16 +307,16 @@ layer-specific coefficient twist already present in the source measure.
 This entry proves the integral representation/lattice comparison. It does
 not compute:
 
-- the bulk relative Stokes integrals;
+- the primitive top-class residue connection and Leray-tube integrals;
 - the rational kinematic scalar matrix multiplying \(J\);
 - extension through soft or simultaneous discriminant support;
 - cyclic sewing of the three \(q_{\mathcal G_{ij}}\) sectors.
 
 ## Next hostile test
 
-Compute the bulk relative Griffiths--Dwork lift in the orientation-twisted
-frame. After stripping the source scalars and the matrix \(J\), its
-relative Stokes pairing must be unimodular and have poles only on the frozen
+Compute the primitive top-class connection in the orientation-twisted frame.
+After stripping the two Kummer scalars of Entry 307 and the matrix \(J\), its
+Leray-tube pairing must be unimodular and have poles only on the frozen
 energy, conductor, Cayley--Menger, soft, and already admitted coefficient
 supports. Any residual lattice denominator or new divisor is the next
 finite falsifier.
