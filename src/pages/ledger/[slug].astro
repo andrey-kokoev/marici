@@ -62,7 +62,39 @@ function linkEntryRefs(body: string) {
   )
 }
 
-const transformedBody = linkEntryRefs(convertTexMath(stripH1(record.entry.body ?? '')))
+const GITHUB_REPO_ROOT = 'https://github.com/andrey-kokoev/marici/blob/main'
+
+function linkFileRefs(body: string) {
+  // Turn repo-relative file paths into GitHub links, but skip paths inside
+  // fenced code blocks where the literal path is part of the data.
+  const segments: { fenced: boolean; text: string }[] = []
+  let lastIndex = 0
+  const fenceRe = /^(?:```|~~~)[\s\S]*?^(?:```|~~~)/gm
+  let match: RegExpExecArray | null
+  while ((match = fenceRe.exec(body)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push({ fenced: false, text: body.slice(lastIndex, match.index) })
+    }
+    segments.push({ fenced: true, text: match[0] })
+    lastIndex = match.index + match[0].length
+  }
+  if (lastIndex < body.length) {
+    segments.push({ fenced: false, text: body.slice(lastIndex) })
+  }
+
+  const fileRefRe = /(`?)((?:research|src)\/[\w/.-]+?\.(?:rs|py|mjs|md))\1/g
+  return segments
+    .map(({ fenced, text }) => {
+      if (fenced) return text
+      return text.replace(fileRefRe, (_, backtick, filePath) => {
+        const url = `${GITHUB_REPO_ROOT}/${filePath}`
+        return `[${backtick}${filePath}${backtick}](${url})`
+      })
+    })
+    .join('')
+}
+
+const transformedBody = linkEntryRefs(linkFileRefs(convertTexMath(stripH1(record.entry.body ?? ''))))
 const { code: html } = await processor.render(transformedBody)
 ---
 <SiteLayout
