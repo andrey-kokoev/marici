@@ -100,6 +100,7 @@ fn rank_solve(mut a:Vec<Vec<F>>,nvars:usize)->Option<Vec<F>>{
     for i in 0..rows{if (0..nvars).all(|j|a[i][j].v==0)&&a[i][nvars].v!=0{return None}}
     let mut x=vec![F::z(p);nvars];for(row,col)in piv{x[col]=a[row][nvars];}Some(x)
 }
+fn matrix_rank(mut a:Vec<Vec<F>>,ncols:usize)->usize{let rows=a.len();let mut r=0;for c in 0..ncols{let mut q=r;while q<rows&&a[q][c].v==0{q+=1}if q==rows{continue}a.swap(r,q);let z=a[r][c].inv();for j in c..ncols{a[r][j]=a[r][j].mul(z);}for i in 0..rows{if i!=r&&a[i][c].v!=0{let x=a[i][c];for j in c..ncols{a[i][j]=a[i][j].sub(x.mul(a[r][j]));}}}r+=1;if r==rows{break}}r}
 fn reduce(g:&Geometry,master:usize,deg:u8)->Option<Vec<F>>{
     let p=g.k.p;let inv2=F::new(2,p).inv();let three2=F::new(3,p).mul(inv2);
     let one=Poly::mon(0,0,F::o(p));let a2=Poly::mon(2,0,F::o(p));let b2=Poly::mon(0,2,F::o(p));
@@ -204,8 +205,74 @@ fn elliptic_connection(f:&Poly,fp:&Poly)->Vec<Vec<F>>{
 fn mul_4x4_4x2(a:&[Vec<F>],c:&[Vec<F>])->Vec<Vec<F>>{let mut r=vec![vec![F::z(PRIME);2];4];for i in 0..4{for j in 0..2{for k in 0..4{r[i][j]=r[i][j].add(a[i][k].mul(c[k][j]));}}}r}
 fn mul_4x2_2x2(c:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let mut r=vec![vec![F::z(PRIME);2];4];for i in 0..4{for j in 0..2{for k in 0..2{r[i][j]=r[i][j].add(c[i][k].mul(b[k][j]));}}}r}
 fn rank_4x2(mut a:Vec<Vec<F>>)->usize{let mut r=0;for c in 0..2{let mut q=r;while q<4&&a[q][c].v==0{q+=1}if q==4{continue}a.swap(r,q);let z=a[r][c].inv();for j in c..2{a[r][j]=a[r][j].mul(z);}for i in 0..4{if i!=r&&a[i][c].v!=0{let x=a[i][c];for j in c..2{a[i][j]=a[i][j].sub(x.mul(a[r][j]));}}}r+=1;}r}
+fn algebraic_plane_test(uu:u64,vv:u64,axis:&str)->(usize,F,F,F,F,F){
+    let two=D::c(F::new(2,PRIME));let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
+    let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(half).sub(one);let y2=y.sq();let u2=u.sq();let u4=u2.sq();
+    let alpha=one.sub(y2).mul(y2.sub(u4));
+    let beta=two.mul(u2.add(y2));
+    let gamma=two.neg().mul(y2).mul(u2.add(one));
+    let kd=[[D::c(F::o(PRIME)),D::c(F::z(PRIME)),D::c(F::z(PRIME)),D::c(F::z(PRIME))],
+            [D::c(F::z(PRIME)),alpha,beta,gamma]];
+    assert!(alpha.x.v!=0,"degenerate algebraic basis");
+    let (a,_)=sample_rows(uu,vv,axis);let mut e=vec![vec![F::z(PRIME);4];2];
+    for r in 0..2{for j in 0..4{e[r][j]=kd[r][j].d;for k in 0..4{e[r][j]=e[r][j].add(kd[r][k].x.mul(a[k][j]));}}}
+    let g00=e[0][0];let g01=e[0][1].div(alpha.x);let g10=e[1][0];let g11=e[1][1].div(alpha.x);
+    let gs=[[g00,g01],[g10,g11]];let mut bad=0;
+    for r in 0..2{for j in 0..4{let rhs=gs[r][0].mul(kd[0][j].x).add(gs[r][1].mul(kd[1][j].x));if e[r][j]!=rhs{bad+=1}}}
+    let s=u.add(v).mul(half);let q=y2.mul(D::c(F::new(16,PRIME))).neg()
+        .sub(y.mul(u2).mul(D::c(F::new(8,PRIME))))
+        .add(s.mul(u2).mul(u).mul(D::c(F::new(8,PRIME))))
+        .sub(u4.mul(D::c(F::new(5,PRIME))));
+    let qlog=q.d.div(q.x).mul(F::new(2,PRIME).inv());
+    (bad,g00,g01,g10,g11,qlog)
+}
+fn algebraic_dlogs(uu:u64,vv:u64,axis:&str)->Vec<F>{
+    let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
+    let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(half).sub(one);let u2=u.sq();let s=u.add(v).mul(half);
+    let q=y.sq().mul(D::c(F::new(16,PRIME))).neg().sub(y.mul(u2).mul(D::c(F::new(8,PRIME))))
+        .add(s.mul(u2).mul(u).mul(D::c(F::new(8,PRIME)))).sub(u2.sq().mul(D::c(F::new(5,PRIME))));
+    [u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),q].iter().map(|z|z.d.div(z.x)).collect()
+}
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="algebraic-dlog-test"{
+        let count=a[2].parse::<usize>().unwrap();let mut su=0x510e527fade682d1u64;let mut sv=0x9b05688c2b3e6c1fu64;let mut mat=Vec::new();let mut points=Vec::new();
+        while points.len()<count{su=((su as u128*6_364_136_223_846_793_005u128+59u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+61u128)%PRIME as u128)as u64;
+            let mut rows=Vec::new();let mut ok=true;for axis in ["u","v"]{let q=std::panic::catch_unwind(||{let z=algebraic_plane_test(su,sv,axis);(algebraic_dlogs(su,sv,axis),z.4)});if let Ok(z)=q{rows.push(z)}else{ok=false;break}}if !ok{continue}
+            for(dl,t)in &rows{let mut row=dl.clone();row.push(*t);mat.push(row)}points.push((su,sv));
+        }
+        let factor_rank=matrix_rank(mat.iter().map(|r|r[..9].to_vec()).collect(),9);let weights=rank_solve(mat,9).expect("dlog solve");let mut bad=0usize;
+        for(uu,vv)in &points{for axis in ["u","v"]{let dl=algebraic_dlogs(*uu,*vv,axis);let target=algebraic_plane_test(*uu,*vv,axis).4;let mut z=F::z(PRIME);for k in 0..9{z=z.add(weights[k].mul(dl[k]));}if z!=target{bad+=1}}}
+        let vals:Vec<u64>=weights.iter().map(|z|z.v).collect();let out=format!("{{\"schema\":\"marici.gm.algebraic_dlog_test.v1\",\"prime\":{},\"points\":{},\"directions\":{},\"factor_matrix_rank\":{},\"factors\":[\"u\",\"v\",\"y\",\"1-y\",\"1+y\",\"v-u\",\"y-u^2\",\"y+u^2\",\"Q\"],\"weights\":{:?},\"validation_mismatches\":{}}}",PRIME,count,2*count,factor_rank,vals,bad);
+        fs::write(&a[3],out).expect("write algebraic dlog test");return
+    }
+    if a.len()==4&&a[1]=="algebraic-reconstruct"{
+        let maxdeg=a[2].parse::<u8>().unwrap();let need=2*total_monomials(maxdeg).len()+20;let now=Instant::now();
+        let mut samples:Vec<Vec<Vec<(u64,u64,F)>>>=vec![vec![Vec::new();6],vec![Vec::new();6]];
+        let mut su=0x3c6ef372fe94f82bu64;let mut sv=0xa54ff53a5f1d36f1u64;
+        while samples[0][0].len()<need{su=((su as u128*6_364_136_223_846_793_005u128+47u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+53u128)%PRIME as u128)as u64;
+            let mut z=Vec::new();let mut ok=true;for axis in ["u","v"]{if let Ok(q)=std::panic::catch_unwind(||algebraic_plane_test(su,sv,axis)){z.push(q)}else{ok=false;break}}if !ok{continue}
+            for axis in 0..2{let(_,g00,_g01,g10,g11,qlog)=z[axis];let vals=[g00,g10,g11,qlog,g11.sub(qlog),g11.add(qlog)];for k in 0..6{samples[axis][k].push((su,sv,vals[k]));}}
+        }
+        let names=["g00","g10","g11","half_dlog_Q","g11_minus_half_dlog_Q","g11_plus_half_dlog_Q"];let mut body=String::new();let mut failures=0usize;
+        for axis in 0..2{if axis>0{body.push(',')}body.push_str(if axis==0{"\"u\":{"}else{"\"v\":{"});for k in 0..6{if k>0{body.push(',')}body.push_str(&format!("\"{}\":",names[k]));if let Some(f)=fit_entry(&samples[axis][k],maxdeg){body.push_str(&fit_json(&f))}else{body.push_str("null");failures+=1}}body.push('}')}
+        let out=format!("{{\"schema\":\"marici.gm.algebraic_reconstruction.v1\",\"prime\":{},\"max_degree\":{},\"sample_count\":{},\"failures\":{},\"connections\":{{{}}},\"elapsed_ms\":{}}}",PRIME,maxdeg,need,failures,body,now.elapsed().as_millis());
+        fs::write(&a[3],out).expect("write algebraic reconstruction");return
+    }
+    if a.len()==4&&a[1]=="algebraic-test"{
+        let count=a[2].parse::<usize>().unwrap();let mut closure=0usize;let mut g00n=0usize;let mut g01n=0usize;let mut g10n=0usize;let mut minus=0usize;let mut plus=0usize;
+        let mut su=0x6a09e667f3bcc909u64;let mut sv=0xbb67ae8584caa73bu64;let now=Instant::now();let mut done=0usize;
+        while done<count{su=((su as u128*6_364_136_223_846_793_005u128+41u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+43u128)%PRIME as u128)as u64;
+            let mut accepted=true;let mut values=Vec::new();for axis in ["u","v"]{let r=std::panic::catch_unwind(||algebraic_plane_test(su,sv,axis));if let Ok(z)=r{values.push(z)}else{accepted=false;break}}
+            if !accepted{continue}done+=1;for(bad,g00,g01,g10,g11,qlog)in values{closure+=bad;if g00.v!=0{g00n+=1}if g01.v!=0{g01n+=1}if g10.v!=0{g10n+=1}if g11.sub(qlog).v!=0{minus+=1}if g11.add(qlog).v!=0{plus+=1}}
+        }
+        let out=format!("{{\"schema\":\"marici.gm.algebraic_plane_test.v1\",\"prime\":{},\"points\":{},\"directions\":{},\"closure_residual_entries\":{},\"g00_nonzero\":{},\"e6_to_valg_nonzero\":{},\"valg_to_e6_nonzero\":{},\"g11_minus_half_dlog_Q_nonzero\":{},\"g11_plus_half_dlog_Q_nonzero\":{},\"elapsed_ms\":{}}}",PRIME,count,2*count,closure,g00n,g01n,g10n,minus,plus,now.elapsed().as_millis());
+        fs::write(&a[3],out).expect("write algebraic test");return
+    }
     if a.len()==4&&a[1]=="gysin-test"{
         let count=a[2].parse::<usize>().unwrap();let signs=[(1i8,-1i8),(1,1),(-1,-1),(-1,1)];let mut nonzero=[0usize;4];let mut maxrank=[0usize;4];let mut rows=[[0usize;4];4];let mut su=0x243f6a8885a308d3u64;let mut sv=0x13198a2e03707344u64;let now=Instant::now();
         for _ in 0..count{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
