@@ -1,0 +1,213 @@
+---
+authors:
+  - marici.Benincasa
+date: 2026-08-16
+---
+# Canonical Elliptic Top-Sector Critical Count and Deletion Filtration
+
+## Record
+
+The first exact attack on the missing
+\(\{q_{\mathcal G_{12}},q_{\mathfrak g_1},q_{\mathfrak g_2}\}\)
+top family resolves the semantics of the source's nine-master statement and
+closes two deletion faces, but it does not yet certify the full top rank.
+
+Freeze homogeneous kinematics
+
+\[
+(X_1,X_2,X_3)=(2,3,4),\qquad E=9
+\]
+
+over \(\mathbf F_{32003}\), and the source denominators
+
+\[
+q_{\mathcal G_{12}}=E+y_{12},\qquad
+q_{\mathfrak g_1}=X_1+y_{12}+y_{31},\qquad
+q_{\mathfrak g_2}=X_2+y_{12}+y_{23}.
+\]
+
+The Cayley--Menger twist is the exact source-normalized polynomial
+\(K\) with \(D_{\rm CM}=-2K\).
+
+## Type correction
+
+The factors \(y_e\) multiplying \(dy_e\) in the physical integrand are
+polynomial cocycle numerators. They are not logarithmic factors of the
+twist used in the critical-point count. Treating
+\(y_{12}y_{23}y_{31}\) as an extra divisor produces a different
+very-affine problem and fails the published seven-master calibration.
+
+The admitted twist factors are therefore
+
+\[
+K^\gamma\prod_{q\in S}q^{\tau_q},
+\]
+
+where \(S\) is the selected source denominator support. Saturation is
+implemented by the Rabinowitsch equation
+
+\[
+uK\prod_{q\in S}q-1=0.
+\]
+
+## Deutsch--Popperian conjecture tested
+
+The hard-to-vary claim is
+
+\[
+\boxed{
+\text{the source's nine-master \(q_{\mathcal G_{12}}\) block is the
+deletion-closed rank of the \(q\)-only family.}
+}
+\]
+
+The finite test is the saturated critical quotient.
+
+For \(S=\varnothing\),
+
+\[
+\boxed{\nu_{\rm closed}(\varnothing)=7}.
+\]
+
+For \(S=\{q_{\mathcal G_{12}}\}\),
+
+\[
+\boxed{\nu_{\rm closed}(q_{\mathcal G_{12}})=16}.
+\]
+
+Therefore the proper support grade is
+
+\[
+\boxed{
+\nu_{\rm proper}(q_{\mathcal G_{12}})
+=
+16-7
+=
+9,
+}
+\]
+
+exactly the published nine-master block. The conjecture is falsified:
+the printed rank nine is the proper \(q\)-support grade, while its
+deletion closure contains the seven-dimensional zero sector as well.
+
+This is a support-filtration statement, not a direct-sum splitting theorem.
+
+## Closed lower face
+
+For the lower pair
+
+\[
+S=\{q_{\mathfrak g_1},q_{\mathfrak g_2}\},
+\]
+
+the filtered Macaulay quotient gives rank \(9\) at ambient degrees 20 and
+22:
+
+\[
+\boxed{
+\nu_{\rm closed}(q_{\mathfrak g_1},q_{\mathfrak g_2})=9.
+}
+\]
+
+Thus the total proper rank contributed above the zero sector is two.
+This agrees with the source's polylogarithmic master inventory, where the
+two single lower-pole grades contribute one class each and no additional
+class is forced on their joint intersection.
+
+## Full top-family gate remains open
+
+For
+
+\[
+S=
+\{q_{\mathfrak g_1},q_{\mathfrak g_2},q_{\mathcal G_{12}}\},
+\]
+
+the same exact filtered calculation gives
+
+\[
+\nu_{\le5}^{(20)}=25,\qquad
+\nu_{\le5}^{(22)}=21.
+\]
+
+The decrease proves that the Macaulay projection has not stabilized.
+Consequently
+
+\[
+\boxed{
+\operatorname{rank}
+\mathcal M^{\rm top}_{G_{12};g_1,g_2}
+\text{ is not yet certified.}
+}
+\]
+
+In particular, \(21\) is not promoted to a rank.
+
+The current sparse reducer becomes impractical before the next regularity
+grade. That is a performance defect in the certificate machinery, not an
+obstruction in the coefficient geometry and not evidence for a carrier
+cell.
+
+## Classification
+
+- \(K\): existing Cayley--Menger coefficient twist over the frozen carrier;
+- \(q_{\mathcal G_{12}},q_{\mathfrak g_1},q_{\mathfrak g_2}\): existing
+  source denominator arrangement;
+- rank \(7\): zero-support coefficient grade;
+- rank \(9\) published \(q\)-only block: proper
+  \(q_{\mathcal G_{12}}\)-support coefficient grade;
+- rank \(9\) lower-pair closure: polylogarithmic coefficient module;
+- unresolved full top rank and deletion arrows: coefficient-module/gluing
+  data;
+- new carrier datum: none.
+
+The shared-carrier hypothesis survives this test. The result sharpens H2:
+denominator deletion organizes a nontrivial coefficient filtration over
+the unchanged carrier.
+
+## Exact evidence
+
+- arXiv:2408.16386v2, source equation elliptic_subsec;
+- temp/arxiv-2408.16386-source/sections/applications.tex,
+  SHA-256
+  3e92460fe2e34dc21a537c784dab3b2fbcd9b7cfee9e7372f06971b50d8b6f9b;
+- research/benincasa/marici-gm/src/bin/elliptic_top_sector_critical_count.rs;
+- research/benincasa/elliptic-top-sector-critical-count.json.
+
+## Next hostile falsifier
+
+Replace the recomputed sparse Macaulay reduction by an incremental
+degree-by-degree reducer or an exact ideal-quotient/colon saturation
+implementation. Require:
+
+1. stabilization of the full top-family Hilbert function at two successive
+   ambient degrees;
+2. replication at a second good prime and a second generic homogeneous
+   kinematic point;
+3. Möbius inversion on the complete denominator-deletion cube;
+4. explicit maps from the proper top grade to the \(q\)-only and lower
+   deletion faces.
+
+A stabilized proper top class whose support cannot be generated by the
+frozen Cayley--Menger and denominator arrangement is the first finite
+carrier falsifier. Rank growth by itself remains coefficient complexity.
+
+## Outcome contract
+
+~~~json
+{
+  "claim": "The source nine-master q-only block is the deletion-closed family rank.",
+  "status": "falsified",
+  "zero_deletion_closed_rank": 7,
+  "q_only_deletion_closed_rank": 16,
+  "q_only_proper_support_rank": 9,
+  "lower_pair_deletion_closed_rank": 9,
+  "lower_pair_stabilized_degrees": [20, 22],
+  "top_filtered_dimension_degree_20": 25,
+  "top_filtered_dimension_degree_22": 21,
+  "top_rank_certified": false,
+  "new_carrier_datum": false,
+  "next_experiment": "Incremental exact saturation and complete deletion-cube Mobius inversion."
+}
+~~~
