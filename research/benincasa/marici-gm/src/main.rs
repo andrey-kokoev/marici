@@ -79,9 +79,6 @@ fn dual_geometry(uu:u64,vv:u64,axis:&str,p:u64)->Geometry{
     }
     Geometry{k,kp,k1,k1p}
 }
-trait DMul{fn mul(self,b:Self)->Self;}
-impl DMul for D{fn mul(self,b:Self)->Self{D::mul(self,b)}}
-
 fn monomials(deg:u8,par:(u8,u8))->Vec<Mon>{
     let mut r=Vec::new();for s in 0..=deg{for i in 0..=s{let j=s-i;if i%2==par.0&&j%2==par.1{r.push((i,j));}}}r
 }
@@ -124,6 +121,16 @@ fn reduce(g:&Geometry,master:usize,deg:u8)->Option<Vec<F>>{
     assert!(target.sub(&check).t.is_empty());
     Some(sol[..4].to_vec())
 }
+fn reduce_block(g:&Geometry,classes:&[(bool,Mon)],master:usize,deg:u8)->Option<Vec<F>>{
+    let p=g.k.p;let half=F::new(2,p).inv();let three2=F::new(3,p).mul(half);let (is_double,m)=classes[master];let pm=Poly::mon(m.0,m.1,F::o(p));
+    let basis:Vec<Poly>=classes.iter().map(|(d,n)|{let q=Poly::mon(n.0,n.1,F::o(p));if *d{q.mul(&g.k1).scale(half.neg()).mul(&g.k)}else{q.mul(&g.k.pow(2))}}).collect();
+    let target=if is_double{let d=pm.mul(&g.k1).scale(half.neg());let dp=pm.mul(&g.k1p).scale(half.neg());dp.mul(&g.k).sub(&d.mul(&g.kp).scale(three2))}else{pm.mul(&g.kp).mul(&g.k).scale(half.neg())};
+    let parity=(m.0%2,m.1%2);let um=monomials(deg,(1-parity.0,parity.1));let vm=monomials(deg,(parity.0,1-parity.1));let ka=g.k.da();let kb=g.k.db();let mut cols=basis.clone();
+    for n in &um{cols.push(exact_col(&g.k,&ka,&kb,*n,'U',three2));}for n in &vm{cols.push(exact_col(&g.k,&ka,&kb,*n,'V',three2));}
+    let mut mons=BTreeSet::new();for q in &cols{mons.extend(q.t.keys().copied());}mons.extend(target.t.keys().copied());let mut mat=Vec::new();for n in mons{let mut row:Vec<F>=cols.iter().map(|q|q.t.get(&n).copied().unwrap_or(F::z(p))).collect();row.push(target.t.get(&n).copied().unwrap_or(F::z(p)));mat.push(row);}
+    let sol=rank_solve(mat,cols.len())?;let mut check=Poly::zero(p);for(q,c)in cols.iter().zip(&sol){check=check.add(&q.scale(*c));}assert!(target.sub(&check).t.is_empty());Some(sol[..classes.len()].to_vec())
+}
+fn sample_block(uu:u64,vv:u64,axis:&str,classes:&[(bool,Mon)])->Vec<Vec<F>>{let g=dual_geometry(uu,vv,axis,PRIME);let mut rows=Vec::new();for m in 0..classes.len(){let mut got=None;for d in [3,5,7,9,11]{if let Some(x)=reduce_block(&g,classes,m,d){got=Some(x);break}}rows.push(got.expect("block reduction failed"));}rows}
 const PRIME:u64=2_305_843_009_213_693_951u64;
 
 fn sample_rows(uu:u64,vv:u64,axis:&str)->(Vec<Vec<F>>,Vec<u8>){
@@ -235,19 +242,61 @@ fn algebraic_dlogs(uu:u64,vv:u64,axis:&str)->Vec<F>{
     let y=u.add(v).mul(half).sub(one);let u2=u.sq();let s=u.add(v).mul(half);
     let q=y.sq().mul(D::c(F::new(16,PRIME))).neg().sub(y.mul(u2).mul(D::c(F::new(8,PRIME))))
         .add(s.mul(u2).mul(u).mul(D::c(F::new(8,PRIME)))).sub(u2.sq().mul(D::c(F::new(5,PRIME))));
-    [u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),q].iter().map(|z|z.d.div(z.x)).collect()
+    let quarter=half.mul(half);let seven_quarters=quarter.mul(D::c(F::new(7,PRIME)));
+    let p6=one.sub(u).sub(v).add(v.sq().mul(quarter)).add(u.mul(v).mul(half)).sub(u2.mul(seven_quarters))
+        .add(u2.mul(v)).add(u2.mul(u)).sub(u2.mul(u).mul(v)).add(u2.sq());
+    [u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),q,p6].iter().map(|z|z.d.div(z.x)).collect()
+}
+fn extension_data(uu:u64,vv:u64,axis:&str)->(D,D,D,F,F,F){
+    let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
+    let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(half).sub(one);let u2=u.sq();let s=u.add(v).mul(half);
+    let d1=v.sub(u).mul(y.sub(u2)).mul(y.add(u2));
+    let q=y.sq().mul(D::c(F::new(16,PRIME))).neg().sub(y.mul(u2).mul(D::c(F::new(8,PRIME))))
+        .add(s.mul(u2).mul(u).mul(D::c(F::new(8,PRIME)))).sub(u2.sq().mul(D::c(F::new(5,PRIME))));
+    let quarter=half.mul(half);let p6=one.sub(u).sub(v).add(v.sq().mul(quarter)).add(u.mul(v).mul(half))
+        .sub(u2.mul(quarter).mul(D::c(F::new(7,PRIME)))).add(u2.mul(v)).add(u2.mul(u)).sub(u2.mul(u).mul(v)).add(u2.sq());
+    let z=algebraic_plane_test(uu,vv,axis);(d1,p6,q,z.1,z.3,z.4)
+}
+fn eval_poly_coeff(cs:&[F],ms:&[Mon],u:F,v:F,axis:usize)->(F,F){
+    let mut x=F::z(PRIME);let mut d=F::z(PRIME);for(k,(i,j))in ms.iter().enumerate(){let m=u.pow(*i as u64).mul(v.pow(*j as u64));x=x.add(cs[k].mul(m));let e=if axis==0{*i}else{*j};if e>0{let dm=F::new(e as u64,PRIME).mul(if axis==0{u.pow((i-1)as u64).mul(v.pow(*j as u64))}else{u.pow(*i as u64).mul(v.pow((j-1)as u64))});d=d.add(cs[k].mul(dm));}}(x,d)
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
-    if a.len()==4&&a[1]=="algebraic-dlog-test"{
-        let count=a[2].parse::<usize>().unwrap();let mut su=0x510e527fade682d1u64;let mut sv=0x9b05688c2b3e6c1fu64;let mut mat=Vec::new();let mut points=Vec::new();
-        while points.len()<count{su=((su as u128*6_364_136_223_846_793_005u128+59u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+61u128)%PRIME as u128)as u64;
-            let mut rows=Vec::new();let mut ok=true;for axis in ["u","v"]{let q=std::panic::catch_unwind(||{let z=algebraic_plane_test(su,sv,axis);(algebraic_dlogs(su,sv,axis),z.4)});if let Ok(z)=q{rows.push(z)}else{ok=false;break}}if !ok{continue}
-            for(dl,t)in &rows{let mut row=dl.clone();row.push(*t);mat.push(row)}points.push((su,sv));
+    if a.len()==4&&a[1]=="other-block-test"{
+        let count=a[2].parse::<usize>().unwrap();let blocks:Vec<Vec<(bool,Mon)>>=vec![vec![(false,(1,1))],vec![(true,(1,0)),(false,(1,0))],vec![(true,(0,1)),(false,(0,1))]];let mut su=0x9e3779b97f4a7c15u64;let mut sv=0xd1b54a32d192ed03u64;let mut bad=[0usize;3];
+        for _ in 0..count{su=((su as u128*6_364_136_223_846_793_005u128+97u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+101u128)%PRIME as u128)as u64;let u=F::new(su,PRIME);let v=F::new(sv,PRIME);let l=F::o(PRIME).sub(u.add(v).mul(F::new(2,PRIME).inv()));
+            for(axisn,axis)in ["u","v"].iter().enumerate(){for bi in 0..3{let got=sample_block(su,sv,axis,&blocks[bi]);let mut want=vec![vec![F::z(PRIME);blocks[bi].len()];blocks[bi].len()];if bi==0&&axisn==0{want[0][0]=u.inv()}if bi==1&&axisn==0{want[1][0]=F::o(PRIME).neg()}if bi==2{want[0][0]=F::new(2,PRIME).inv().div(l);want[1][0]=if axisn==0{v.mul(F::new(2,PRIME).inv()).sub(F::o(PRIME)).div(l)}else{u.mul(F::new(2,PRIME).inv()).neg().div(l)}}for i in 0..got.len(){for j in 0..got.len(){if got[i][j]!=want[i][j]{bad[bi]+=1}}}}}
         }
-        let factor_rank=matrix_rank(mat.iter().map(|r|r[..9].to_vec()).collect(),9);let weights=rank_solve(mat,9).expect("dlog solve");let mut bad=0usize;
-        for(uu,vv)in &points{for axis in ["u","v"]{let dl=algebraic_dlogs(*uu,*vv,axis);let target=algebraic_plane_test(*uu,*vv,axis).4;let mut z=F::z(PRIME);for k in 0..9{z=z.add(weights[k].mul(dl[k]));}if z!=target{bad+=1}}}
-        let vals:Vec<u64>=weights.iter().map(|z|z.v).collect();let out=format!("{{\"schema\":\"marici.gm.algebraic_dlog_test.v1\",\"prime\":{},\"points\":{},\"directions\":{},\"factor_matrix_rank\":{},\"factors\":[\"u\",\"v\",\"y\",\"1-y\",\"1+y\",\"v-u\",\"y-u^2\",\"y+u^2\",\"Q\"],\"weights\":{:?},\"validation_mismatches\":{}}}",PRIME,count,2*count,factor_rank,vals,bad);
+        let out=format!("{{\"schema\":\"marici.gm.other_blocks_test.v1\",\"prime\":{},\"points\":{},\"directions\":{},\"block_mismatches\":{:?},\"Q_denominators\":0}}",PRIME,count,2*count,bad);fs::write(&a[3],out).expect("write other block test");return
+    }
+    if a.len()==4&&a[1]=="other-block-reconstruct"{
+        let maxdeg=a[2].parse::<u8>().unwrap();let blocks:Vec<Vec<(bool,Mon)>>=vec![vec![(false,(1,1))],vec![(true,(1,0)),(false,(1,0))],vec![(true,(0,1)),(false,(0,1))]];let need=2*total_monomials(maxdeg).len()+20;let mut su=0x6a09e667f3bcc909u64;let mut sv=0xbb67ae8584caa73bu64;let mut data=Vec::new();
+        while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+83u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+89u128)%PRIME as u128)as u64;let mut all=Vec::new();for axis in ["u","v"]{let mut z=Vec::new();for b in &blocks{z.push(sample_block(su,sv,axis,b));}all.push(z);}data.push((su,sv,all));}
+        let mut body=String::new();let mut failures=0;for bi in 0..3{if bi>0{body.push(',')}body.push_str(&format!("\"block{}\":{{",bi));for axis in 0..2{if axis>0{body.push(',')}body.push_str(if axis==0{"\"u\":["}else{"\"v\":["});let n=blocks[bi].len();let mut first=true;for i in 0..n{for j in 0..n{if !first{body.push(',')}first=false;let ss:Vec<(u64,u64,F)>=data.iter().map(|(u,v,z)|(*u,*v,z[axis][bi][i][j])).collect();if let Some(f)=fit_entry(&ss,maxdeg){body.push_str(&fit_json(&f))}else{body.push_str("null");failures+=1}}}body.push(']')}body.push('}')}
+        let out=format!("{{\"schema\":\"marici.gm.other_blocks_reconstruction.v1\",\"prime\":{},\"max_degree\":{},\"sample_count\":{},\"failures\":{},\"blocks\":{{{}}}}}",PRIME,maxdeg,need,failures,body);fs::write(&a[3],out).expect("write other blocks");return
+    }
+    if a.len()==4&&a[1]=="algebraic-split-test"{
+        let maxdeg=a[2].parse::<u8>().unwrap();let mut train=Vec::new();let mut su=0x1f83d9abfb41bd6bu64;let mut sv=0x5be0cd19137e2179u64;
+        while train.len()<96{su=((su as u128*6_364_136_223_846_793_005u128+67u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+71u128)%PRIME as u128)as u64;let mut z=Vec::new();let mut ok=true;for axis in ["u","v"]{if let Ok(q)=std::panic::catch_unwind(||extension_data(su,sv,axis)){z.push(q)}else{ok=false;break}}if ok{train.push((su,sv,z))}}
+        let mut found=None;
+        'search:for qpow in 0..=1u8{for p6pow in 0..=2u8{for d1pow in 0..=2u8{for deg in 0..=maxdeg{let ms=total_monomials(deg);if 2*train.len()<ms.len()+8{continue}let mut mat=Vec::new();
+            for(uu,vv,zs)in &train{for axis in 0..2{let(d1,p6,q,g00,g10,g11)=zs[axis];let factors=[d1,p6,q];let powers=[d1pow,p6pow,qpow];let mut sx=F::o(PRIME);let mut slog=F::z(PRIME);for k in 0..3{if powers[k]>0{sx=sx.mul(factors[k].x.pow(powers[k]as u64));slog=slog.add(F::new(powers[k]as u64,PRIME).mul(factors[k].d.div(factors[k].x)));}}let lambda=g00.sub(g11).sub(slog);let u=F::new(*uu,PRIME);let v=F::new(*vv,PRIME);let mut row=Vec::new();for(i,j)in &ms{let m=u.pow(*i as u64).mul(v.pow(*j as u64));let e=if axis==0{*i}else{*j};let dm=if e==0{F::z(PRIME)}else{F::new(e as u64,PRIME).mul(if axis==0{u.pow((i-1)as u64).mul(v.pow(*j as u64))}else{u.pow(*i as u64).mul(v.pow((j-1)as u64))})};row.push(dm.add(lambda.mul(m)));}row.push(g10.neg().mul(sx));mat.push(row);}}
+            if let Some(cs)=rank_solve(mat,ms.len()){let mut vu=0x428a2f98d728ae22u64;let mut vv=0x7137449123ef65cdu64;let mut bad=0;for _ in 0..1024{vu=((vu as u128*3_202_034_522_624_059_733u128+73u128)%PRIME as u128)as u64;vv=((vv as u128*3_933_555_777_941_757u128+79u128)%PRIME as u128)as u64;for axis in 0..2{let ax=if axis==0{"u"}else{"v"};let(d1,p6,q,g00,g10,g11)=extension_data(vu,vv,ax);let factors=[d1,p6,q];let powers=[d1pow,p6pow,qpow];let mut sx=F::o(PRIME);let mut slog=F::z(PRIME);for k in 0..3{if powers[k]>0{sx=sx.mul(factors[k].x.pow(powers[k]as u64));slog=slog.add(F::new(powers[k]as u64,PRIME).mul(factors[k].d.div(factors[k].x)));}}let(px,pd)=eval_poly_coeff(&cs,&ms,F::new(vu,PRIME),F::new(vv,PRIME),axis);if pd.add(g00.sub(g11).sub(slog).mul(px)).add(g10.mul(sx)).v!=0{bad+=1}}}if bad==0{found=Some((d1pow,p6pow,qpow,deg,cs,ms));break 'search}}}
+        }}}
+        let out=if let Some((d1p,p6p,qp,deg,cs,ms))=found{let mut terms=String::from("[");let mut first=true;for((i,j),c)in ms.iter().zip(&cs){if c.v!=0{if !first{terms.push(',')}first=false;terms.push_str(&format!("[{},{},{}]",i,j,c.v));}}terms.push(']');format!("{{\"schema\":\"marici.gm.algebraic_split_test.v1\",\"status\":\"split\",\"denominator_powers\":{{\"D1\":{},\"P6\":{},\"Q\":{}}},\"numerator_degree\":{},\"numerator_terms\":{},\"validation_points\":1024,\"validation_directions\":2048,\"validation_mismatches\":0}}",d1p,p6p,qp,deg,terms)}else{format!("{{\"schema\":\"marici.gm.algebraic_split_test.v1\",\"status\":\"not_found\",\"max_degree\":{}}}",maxdeg)};
+        fs::write(&a[3],out).expect("write algebraic split test");return
+    }
+    if a.len()==4&&a[1]=="algebraic-dlog-test"{
+        let count=a[2].parse::<usize>().unwrap();let mut su=0x510e527fade682d1u64;let mut sv=0x9b05688c2b3e6c1fu64;let mut mat0=Vec::new();let mut mat1=Vec::new();let mut points=Vec::new();
+        while points.len()<count{su=((su as u128*6_364_136_223_846_793_005u128+59u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+61u128)%PRIME as u128)as u64;
+            let mut rows=Vec::new();let mut ok=true;for axis in ["u","v"]{let q=std::panic::catch_unwind(||{let z=algebraic_plane_test(su,sv,axis);(algebraic_dlogs(su,sv,axis),z.1,z.4)});if let Ok(z)=q{rows.push(z)}else{ok=false;break}}if !ok{continue}
+            for(dl,t0,t1)in &rows{let mut row0=dl.clone();row0.push(*t0);mat0.push(row0);let mut row1=dl.clone();row1.push(*t1);mat1.push(row1)}points.push((su,sv));
+        }
+        let factor_rank=matrix_rank(mat0.iter().map(|r|r[..10].to_vec()).collect(),10);let weights0=rank_solve(mat0,10).expect("g00 dlog solve");let weights1=rank_solve(mat1,10).expect("g11 dlog solve");let mut bad0=0usize;let mut bad1=0usize;
+        for(uu,vv)in &points{for axis in ["u","v"]{let dl=algebraic_dlogs(*uu,*vv,axis);let z=algebraic_plane_test(*uu,*vv,axis);let mut q0=F::z(PRIME);let mut q1=F::z(PRIME);for k in 0..10{q0=q0.add(weights0[k].mul(dl[k]));q1=q1.add(weights1[k].mul(dl[k]));}if q0!=z.1{bad0+=1}if q1!=z.4{bad1+=1}}}
+        let vals0:Vec<u64>=weights0.iter().map(|z|z.v).collect();let vals1:Vec<u64>=weights1.iter().map(|z|z.v).collect();let out=format!("{{\"schema\":\"marici.gm.algebraic_dlog_test.v2\",\"prime\":{},\"points\":{},\"directions\":{},\"factor_matrix_rank\":{},\"factors\":[\"u\",\"v\",\"y\",\"1-y\",\"1+y\",\"v-u\",\"y-u^2\",\"y+u^2\",\"Q\",\"P6\"],\"g00_weights\":{:?},\"g11_weights\":{:?},\"g00_validation_mismatches\":{},\"g11_validation_mismatches\":{}}}",PRIME,count,2*count,factor_rank,vals0,vals1,bad0,bad1);
         fs::write(&a[3],out).expect("write algebraic dlog test");return
     }
     if a.len()==4&&a[1]=="algebraic-reconstruct"{

@@ -12,6 +12,9 @@ Commands:
 - `algebraic-test <point-count> <output.json>`
 - `algebraic-reconstruct <max-total-degree> <output.json>`
 - `algebraic-dlog-test <point-count> <output.json>`
+- `algebraic-split-test <max-total-degree> <output.json>`
+- `other-block-reconstruct <max-total-degree> <output.json>`
+- `other-block-test <point-count> <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -31,3 +34,7 @@ alternative conventions fail.
 The algebraic commands restrict the reconstructed connection to the explicit
 Gysin kernel, reconstruct its diagonal rank-one quotient, and test a
 predeclared dlog divisor basis including the source quartic `Q`.
+
+The split command searches a frozen rational gauge for the algebraic-plane
+extension. The other-block commands derive and validate the remaining
+`1+2+2` parity blocks of the rank-seven Gysin kernel.
