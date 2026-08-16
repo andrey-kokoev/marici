@@ -1,9 +1,15 @@
 # Admitted Log-Source Q Image Lattice and the Primitive Interior Correspondence Gate
 
 Date: 2026-08-15  
-Status: falsified primitive literal-Q surjectivity for the currently admitted
-normalization/Rees/KN source classes. This is not a no-go for an enlarged
-proper log-BM or nearby-cycle correspondence. No graph admission is claimed.
+Status: superseded by entry 275. The original conclusion omitted the two
+normalization-sheet hemispheres and was false. No graph admission is claimed.
+
+## Correction
+
+Entry 275 proves that each octahedral sheet hemisphere has primitive relative
+Q coefficient one. Their sum is the coefficient-two total. The corrected row
+is `[2,1,1,0,0,0,0,0,0]`, with Smith factor one. The `2Z` conclusion below is
+historical and must not be cited.
 
 ## Exact source image
 
