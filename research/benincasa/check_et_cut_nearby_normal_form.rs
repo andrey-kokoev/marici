@@ -77,8 +77,21 @@ fn main() {
                     let s = x + y;
                     let r = x * a * a + y * b * b - x * y * s;
                     let k1 = -2 * s * (a * a - y * y) * (b * b - x * x);
+                    let k2 = a * a * b * b
+                        - (3 * x * x + 2 * x * y) * a * a
+                        - (3 * y * y + 2 * x * y) * b * b
+                        + x * x * y * y
+                        + 2 * x * y * s * s;
+                    let k3 = 2 * s * (a * a + b * b - x * x - 4 * x * y - y * y);
+                    let k4 = -a * a - b * b + 6 * s * s + 2 * x * y;
                     assert_eq!(k.0[0], r * r, "central square");
                     assert_eq!(k.0[1], k1, "first normal factorization");
+                    assert_eq!(k.0[2], k2, "second normal coefficient");
+                    assert_eq!(k.0[3], k3, "third normal coefficient");
+                    assert_eq!(k.0[4], k4, "fourth normal coefficient");
+                    assert_eq!(k.0[5], -6 * s, "fifth normal coefficient");
+                    assert_eq!(k.0[6], 2, "sixth normal coefficient");
+                    assert!(k.0[7..].iter().all(|c| *c == 0), "global degree six");
                     if a * a == y * y && b * b == x * x {
                         assert_eq!(k.0[2], 0, "corner second coefficient");
                         assert_eq!(k.0[3], -8 * x * y * s, "corner third coefficient");
@@ -96,6 +109,14 @@ fn main() {
             }
         }
     }
+    // On the conductor tangent plane the minimal blowup has marked points
+    // p0=[1:0], p-=[-1:1], p+=[1:1]. In the integral basis
+    // e-=[p-]-[p0], e+=[p+]-[p0], the oriented moving interval from the
+    // negative to the positive branch has boundary e+-e-=(-1,1).
+    let leray_boundary = [-1i128, 1i128];
+    assert_eq!(leray_boundary[0] + leray_boundary[1], 0);
+    assert_ne!(leray_boundary, [0, 0]);
+
     let json = format!(
         concat!(
         "{{\n",
@@ -103,6 +124,10 @@ fn main() {
         "  \"exact_integer_points\": {},\n",
         "  \"central_fiber\": \"K_0=R^2; R=x*a^2+y*b^2-x*y*(x+y)\",\n",
         "  \"first_normal\": \"[E]K_E=-2*(x+y)*(a^2-y^2)*(b^2-x^2)\",\n",
+        "  \"complete_expansion\": \"K_E=R^2+E*K1+E^2*K2+E^3*K3+E^4*K4-6*(x+y)*E^5+2*E^6\",\n",
+        "  \"K2\": \"a^2*b^2-(3*x^2+2*x*y)*a^2-(3*y^2+2*x*y)*b^2+x^2*y^2+2*x*y*(x+y)^2\",\n",
+        "  \"K3\": \"2*(x+y)*(a^2+b^2-x^2-4*x*y-y^2)\",\n",
+        "  \"K4\": \"-a^2-b^2+6*(x+y)^2+2*x*y\",\n",
         "  \"generic_local_model\": \"U*V=E*unit+O(E^2) away from the four axial marked lines\",\n",
         "  \"excess_support\": [\"a=y\",\"a=-y\",\"b=x\",\"b=-x\"],\n",
         "  \"corner_second_coefficient\": 0,\n",
@@ -110,6 +135,17 @@ fn main() {
         "  \"corner_third_coefficient\": \"-8*x*y*(x+y)\",\n",
         "  \"corner_exact_tail\": \"E^3*(-8*x*y*(x+y)+(5*x^2+14*x*y+5*y^2)*E-6*(x+y)*E^2+2*E^3)\",\n",
         "  \"depth_two_comparison_sufficient_at_marked_corners\": false,\n",
+        "  \"corner_cubic_tangent_cone\": \"-8*x*y*(x+y)*E*(A*B+E*(A+B)/2+E^2)\",\n",
+        "  \"conductor_tangent_restriction\": \"8*x*y*(x+y)*E*(A-E)*(A+E)\",\n",
+        "  \"minimal_log_blowup\": \"Bl_(A,E)(A^2) with exceptional P1 and attachment points [1:0],[1:1],[-1:1]\",\n",
+        "  \"relative_exceptional_rank\": 2,\n",
+        "  \"blowup_chart\": \"r=A/E; p0=r=infinity, pminus=r=-1, pplus=r=1\",\n",
+        "  \"canonical_leray_interval\": \"oriented interval [pminus,pplus] fixed by the lower-half-plane E continuation and da wedge db orientation\",\n",
+        "  \"relative_basis\": [\"[pminus]-[p0]\",\"[pplus]-[p0]\"],\n",
+        "  \"canonical_boundary_vector\": [-1,1],\n",
+        "  \"physical_real_corner\": \"(a,b)=(y,x); the other sign corners are occurrence/deck companions\",\n",
+        "  \"carrier_level_third_rees_class_nonzero\": true,\n",
+        "  \"full_nine_master_cut_nearby_commutator_computed\": false,\n",
         "  \"new_carrier_divisor\": false\n",
         "}}\n"),
         points
