@@ -5,6 +5,13 @@ date: 2026-08-16
 ---
 # Source-Normalized Marked Top-Column E1 Coefficient Excludes Q at Generic Fibers
 
+> **Further update (Entry 310).** The exclusion below is no longer confined
+> to one projected top-column coefficient.  A direct reduction at a generic
+> finite-field point on \(\mathcal Q=0\) finds the complete frozen
+> \(4\times4\) block and its invariant algebraic plane regular.  Thus
+> \(\mathcal Q\) is not an unavoidable connection-support divisor in that
+> tested model.
+
 ## Narrow result
 
 The frozen rank-twelve marked relative reduction has now been continued through
