@@ -27,6 +27,8 @@ impl D {
     fn sub(self,b:Self)->Self{self.add(b.neg())}
     fn mul(self,b:Self)->Self{Self{x:self.x.mul(b.x),d:self.d.mul(b.x).add(self.x.mul(b.d))}}
     fn sq(self)->Self{self.mul(self)}
+    fn inv(self)->Self{let q=self.x.inv();Self{x:q,d:self.d.neg().mul(q).mul(q)}}
+    fn div(self,b:Self)->Self{self.mul(b.inv())}
 }
 
 type Mon=(u8,u8);
@@ -181,8 +183,39 @@ fn rat_deriv(f:&RatFit,u:F,v:F,axis:usize)->F{
 }
 fn fit_matrix_eval(fs:&[RatFit],u:F,v:F)->Vec<Vec<F>>{let mut a=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{a[i][j]=rat_eval(&fs[4*i+j],u,v);}}a}
 fn mat_mul(a:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let mut c=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{for k in 0..4{c[i][j]=c[i][j].add(a[i][k].mul(b[k][j]));}}}c}
+fn boundary_data(uu:u64,vv:u64,axis:&str)->(Poly,Poly,Vec<Vec<F>>,Vec<Vec<F>>){
+    let two=F::new(2,PRIME);let half=two.inv();let one=F::o(PRIME);
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
+    let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(D::c(half)).sub(D::c(one));let z=u.sub(v).mul(D::c(half));let h=D::c(one).add(y.sq()).sub(z.sq());
+    let mut f=Poly::zero(PRIME);let mut fp=Poly::zero(PRIME);for(m,q)in [((4,0),D::c(one)),((2,0),h.neg()),((0,0),y.sq())]{if q.x.v!=0{f.t.insert(m,q.x);}if q.d.v!=0{fp.t.insert(m,q.d);}}
+    let zero=D::c(F::z(PRIME));let a=u.sq().add(y.sq()).mul(D::c(half));let b=u.sq().add(D::c(one)).mul(D::c(half)).neg();let c=b.neg();let d=u.sq().add(y.sq()).div(y.sq().mul(D::c(two))).neg();
+    let q=[[zero,zero],[D::c(one),zero],[a,b],[c,d]];let mut cm=vec![vec![F::z(PRIME);2];4];let mut cp=cm.clone();for i in 0..4{for j in 0..2{cm[i][j]=q[i][j].x;cp[i][j]=q[i][j].d;}}(f,fp,cm,cp)
+}
+fn elliptic_connection(f:&Poly,fp:&Poly)->Vec<Vec<F>>{
+    let half=F::new(2,PRIME).inv();let t2=Poly::mon(2,0,F::o(PRIME));let basis=[f.clone(),t2.mul(f)];let ft=f.da();let mut out=vec![vec![F::z(PRIME);2];2];
+    for row in 0..2{let tp=Poly::mon((2*row)as u8,0,F::o(PRIME));let target=tp.mul(fp).scale(half.neg());let mut cols=basis.to_vec();
+        for k in [1u8,3u8]{let r=Poly::mon(k,0,F::o(PRIME));cols.push(f.mul(&r.da()).sub(&r.mul(&ft).scale(half)));}
+        let mut mons=BTreeSet::new();for q in &cols{mons.extend(q.t.keys().copied());}mons.extend(target.t.keys().copied());let mut mat=Vec::new();
+        for m in mons{let mut z:Vec<F>=cols.iter().map(|q|q.t.get(&m).copied().unwrap_or(F::z(PRIME))).collect();z.push(target.t.get(&m).copied().unwrap_or(F::z(PRIME)));mat.push(z);}
+        let sol=rank_solve(mat,cols.len()).expect("elliptic reduction");out[row][0]=sol[0];out[row][1]=sol[1];
+    }out
+}
+fn mul_4x4_4x2(a:&[Vec<F>],c:&[Vec<F>])->Vec<Vec<F>>{let mut r=vec![vec![F::z(PRIME);2];4];for i in 0..4{for j in 0..2{for k in 0..4{r[i][j]=r[i][j].add(a[i][k].mul(c[k][j]));}}}r}
+fn mul_4x2_2x2(c:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let mut r=vec![vec![F::z(PRIME);2];4];for i in 0..4{for j in 0..2{for k in 0..2{r[i][j]=r[i][j].add(c[i][k].mul(b[k][j]));}}}r}
+fn rank_4x2(mut a:Vec<Vec<F>>)->usize{let mut r=0;for c in 0..2{let mut q=r;while q<4&&a[q][c].v==0{q+=1}if q==4{continue}a.swap(r,q);let z=a[r][c].inv();for j in c..2{a[r][j]=a[r][j].mul(z);}for i in 0..4{if i!=r&&a[i][c].v!=0{let x=a[i][c];for j in c..2{a[i][j]=a[i][j].sub(x.mul(a[r][j]));}}}r+=1;}r}
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="gysin-test"{
+        let count=a[2].parse::<usize>().unwrap();let signs=[(1i8,-1i8),(1,1),(-1,-1),(-1,1)];let mut nonzero=[0usize;4];let mut maxrank=[0usize;4];let mut rows=[[0usize;4];4];let mut su=0x243f6a8885a308d3u64;let mut sv=0x13198a2e03707344u64;let now=Instant::now();
+        for _ in 0..count{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
+            for axis in ["u","v"]{let(am,_)=sample_rows(su,sv,axis);let(f,fp,c,cp)=boundary_data(su,sv,axis);let b=elliptic_connection(&f,&fp);let cb=mul_4x2_2x2(&c,&b);let ac=mul_4x4_4x2(&am,&c);
+                for(q,(sb,sa))in signs.iter().enumerate(){let mut z=vec![vec![F::z(PRIME);2];4];for i in 0..4{for j in 0..2{z[i][j]=cp[i][j].add(if *sb==1{cb[i][j]}else{cb[i][j].neg()}).add(if *sa==1{ac[i][j]}else{ac[i][j].neg()});if z[i][j].v!=0{nonzero[q]+=1;rows[q][i]+=1;}}}maxrank[q]=maxrank[q].max(rank_4x2(z));}
+            }
+        }
+        let out=format!("{{\"schema\":\"marici.gm.infinity_gysin_test.v1\",\"prime\":{},\"points\":{},\"directions\":{},\"variants\":[{{\"formula\":\"dC+C*B-A*C\",\"nonzero\":{},\"max_rank\":{},\"row_nonzero\":{:?}}},{{\"formula\":\"dC+C*B+A*C\",\"nonzero\":{},\"max_rank\":{},\"row_nonzero\":{:?}}},{{\"formula\":\"dC-C*B-A*C\",\"nonzero\":{},\"max_rank\":{},\"row_nonzero\":{:?}}},{{\"formula\":\"dC-C*B+A*C\",\"nonzero\":{},\"max_rank\":{},\"row_nonzero\":{:?}}}],\"elapsed_ms\":{}}}",PRIME,count,2*count,nonzero[0],maxrank[0],rows[0],nonzero[1],maxrank[1],rows[1],nonzero[2],maxrank[2],rows[2],nonzero[3],maxrank[3],rows[3],now.elapsed().as_millis());
+        fs::write(&a[3],out).expect("write gysin test");return
+    }
     if a.len()==4&&a[1]=="reconstruct"{
         let maxdeg=a[2].parse::<u8>().unwrap();let need=2*total_monomials(maxdeg).len()+20;let now=Instant::now();
         let mut data:Vec<(u64,u64,Vec<Vec<F>>,Vec<Vec<F>>)>=Vec::new();let mut su=0x9e3779b97f4a7c15u64;let mut sv=0xd1b54a32d192ed03u64;
@@ -233,5 +266,10 @@ mod tests{
         let mut s=Vec::new();let mut su=17u64;let mut sv=41u64;for _ in 0..64{su=((su as u128*6_364_136_223_846_793_005u128+1_442_695_040_888_963_407u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+3_037_000_493u128)%PRIME as u128)as u64;let u=su;let v=sv;let uf=F::new(u,PRIME);let vf=F::new(v,PRIME);s.push((u,v,uf.add(vf).div(F::o(PRIME).add(uf.mul(vf)))));}
         let fit=fit_entry(&s,2).expect("synthetic fit");
         assert!(s.iter().all(|(u,v,f)|rat_eval(&fit,F::new(*u,PRIME),F::new(*v,PRIME))==*f));
+    }
+    #[test] fn infinity_gysin_is_horizontal_at_generic_point(){
+        for axis in ["u","v"]{let(a,_)=sample_rows(37,113,axis);let(f,fp,c,cp)=boundary_data(37,113,axis);let b=elliptic_connection(&f,&fp);let cb=mul_4x2_2x2(&c,&b);let ac=mul_4x4_4x2(&a,&c);
+            for i in 0..4{for j in 0..2{assert_eq!(cp[i][j].add(cb[i][j]).sub(ac[i][j]).v,0);}}
+        }
     }
 }
