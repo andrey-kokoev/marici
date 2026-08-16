@@ -95,10 +95,10 @@ and augmented rank 35. Modulo two both ranks remain 35. A selected
 maximal minor has determinant \(-1\), so every nonzero Smith factor is
 \(1\): the strict \(\mathbb Z/2\) obstruction is genuinely removed.
 
-The repaired solution space has affine rank one. This is the expected
-global top class, not another parity defect. It must be normalized by the
-external entry223 \(W_{012}\)-to-\(q_\Sigma\) comparison before the
-endpoint/\(Q\) mapping fiber can be formed.
+The repaired solution space has affine rank one. Entry223 independently
+derives \(W_{012}\mapsto H_\Sigma\) with coefficient \(+1\). Adjoining that
+based row gives rank 36 and augmented rank 36; an explicit maximal minor is
+\(+1\). The finite shifted top comparison is therefore unique and integral.
 
 Geometrically, a normalization-provenanced realization of these generators
 must still come from an actual
@@ -111,10 +111,9 @@ framing, reflection, and \(D_3\).
 
 ## Downstream status
 
-The finite shifted pair/facet repair does not yet instantiate the
-endpoint/\(Q\) mapping fiber. Until its single free top class is identified
-with the normalization-provenanced entry223 \(W_{012}\)/\(q_\Sigma\) row
-and the endpoint cells, \(p_{\partial,Q}\), its Bockstein, and the
+The finite shifted top comparison does not yet instantiate the endpoint/\(Q\)
+mapping fiber. Until its normalization-provenanced six-functor realization
+and endpoint cells exist, \(p_{\partial,Q}\), its Bockstein, and the
 \(D_8\)/Jordan coherence tests remain undefined.
 
 ## Executable evidence
@@ -123,7 +122,7 @@ Checker:
 research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs
 
 SHA-256:
-bf3962ba1db587f87e412bd2d450b866bef36e366d2b57f8c21f26efd66f86ea
+56533e18eacf13e5e4f43a2fc558c5bf53d3d76cb46f9055ccd11f484cedc7d2
 
 The user-site structured-command MCP executed Node with exit code zero. The
 checker asserts the complete census, rational ranks, mod-two rank jump,
@@ -175,17 +174,25 @@ Narada site and correctly refused the Marici repository cwd.
     "smith_nonzero_all_ones": true,
     "integral_obstruction": false
   },
+  "external_top_normalization": {
+    "free_classes_before_normalization": 1,
+    "coefficient": 1,
+    "rank": 36,
+    "augmented_rank": 36,
+    "selected_unimodular_minor": 1,
+    "integral_unique": true
+  },
   "general_derived_correspondence_no_go": false,
   "derived_pair_facet_repair_constructed": true,
-  "remaining_top_datum": "normalize the single free shifted-cone class by the external W012-to-qSigma comparison",
+  "finite_W012_qSigma_top_normalization_constructed": true,
+  "remaining_geometric_datum": "normalization-provenanced six-functor realization into the literal entry143 BM-Cech complex",
   "unconstructed": [
     "normalization-source six-functor realization of the finite Gamma_ij rows",
-    "shifted W012-to-qSigma top normalization",
     "endpoint/Q mapping fiber",
     "p_partial_Q and Bockstein",
     "D8 and Jordan coherence"
   ],
   "checker": "research/voevodsky/check_k6_entry223_strict_top_comparison_no_go.mjs",
-  "checker_sha256": "bf3962ba1db587f87e412bd2d450b866bef36e366d2b57f8c21f26efd66f86ea"
+  "checker_sha256": "56533e18eacf13e5e4f43a2fc558c5bf53d3d76cb46f9055ccd11f484cedc7d2"
 }
 ~~~
