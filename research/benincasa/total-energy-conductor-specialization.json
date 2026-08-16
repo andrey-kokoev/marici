@@ -1,0 +1,79 @@
+{
+  "schema": "marici.benincasa.total_energy_conductor_specialization.v1",
+  "date": "2026-08-16",
+  "source": {
+    "wall_one": "R1(t)=x*t^2+D1(E)",
+    "wall_two": "R2(t)=y*t^2+D2(E)",
+    "lambda": "Lambda=E*(E-2*x)*(E-2*y)",
+    "generic_cycle_basis": [
+      "g101",
+      "g110",
+      "g111_top"
+    ]
+  },
+  "exact_wall_constants": {
+    "D1": "-E^3+(x+2*y)*E^2-2*x*y*E-x*y^2",
+    "D2": "-E^3+(2*x+y)*E^2-2*x*y*E-x^2*y",
+    "D1_at_E0": "-x*y^2",
+    "D2_at_E0": "-x^2*y",
+    "Delta_W1_at_E0": "4*x^2*y^2",
+    "Delta_W2_at_E0": "4*x^2*y^2",
+    "root_limits_W1": [
+      "+y",
+      "-y"
+    ],
+    "root_limits_W2": [
+      "+x",
+      "-x"
+    ]
+  },
+  "exact_validation": {
+    "integer_x_values": "1 through 7",
+    "integer_y_values": "1 through 7",
+    "integer_E_values": "-5 through 5",
+    "polynomial_identity_comparisons": 1078,
+    "mismatches": 0
+  },
+  "quotient_monodromy": {
+    "node_root_swaps": 0,
+    "same_sheet_label_swap": 0,
+    "T_W": "I_3",
+    "N_W": "0"
+  },
+  "specialization_graph": {
+    "generic_component_vertices": 4,
+    "generic_incidence_edges": 6,
+    "generic_b1": 3,
+    "central_component_vertices": 4,
+    "central_incidence_vertices": 3,
+    "central_half_edges": 8,
+    "central_b1": 2,
+    "specialization_matrix": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ]
+    ],
+    "primitive_kernel": "Z*g111_top",
+    "kernel_cokernel_torsion": 0
+  },
+  "extension_consequence": {
+    "quotient_vanishing_kernel": "Z*g111_top",
+    "persistent_quotient_subspace": "Z*g101 plus Z*g110",
+    "mixed_columns_status": "uncomputed: persistence in H1(W0) does not by itself construct invariant lifts in H2(S_E minus W_E)",
+    "top_column_status": "only column forced by quotient rank loss, but not the only algebraically possible extension column",
+    "warning": "quotient specialization is not a splitting theorem for the ambient marked localization extension"
+  },
+  "classification": {
+    "mixed_lines": "existing Tate conductor coefficient data",
+    "top_kernel": "existing two-wall occurrence quotient",
+    "new_carrier_datum": false,
+    "remaining_problem": "compute all three off-diagonal columns or construct geometric invariant lifts for the two mixed classes; then identify the top column and integral normalization"
+  }
+}
