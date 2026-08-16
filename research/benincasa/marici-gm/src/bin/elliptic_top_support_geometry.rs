@@ -4,12 +4,15 @@ use std::collections::BTreeMap;
 struct Poly<const N: usize>(BTreeMap<[u8; N], i128>);
 
 impl<const N: usize> Poly<N> {
-    fn constant(value: i128) -> Self {
+    fn term(exponent: [u8; N], coefficient: i128) -> Self {
         let mut out = Self::default();
-        if value != 0 {
-            out.0.insert([0; N], value);
+        if coefficient != 0 {
+            out.0.insert(exponent, coefficient);
         }
         out
+    }
+    fn constant(value: i128) -> Self {
+        Self::term([0; N], value)
     }
     fn variable(index: usize) -> Self {
         let mut exponent = [0; N];
@@ -128,6 +131,47 @@ fn sum<const N: usize>(terms: &[Poly<N>]) -> Poly<N> {
     terms.iter().fold(Poly::default(), |a, b| a.add(b))
 }
 
+fn coefficient_in_t(polynomial: &Poly<4>, degree: u8) -> Poly<3> {
+    let mut out = Poly::default();
+    for (monomial, coefficient) in &polynomial.0 {
+        if monomial[3] == degree {
+            out.0
+                .insert([monomial[0], monomial[1], monomial[2]], *coefficient);
+        }
+    }
+    out
+}
+
+fn divide_by_variable_and_scalar(polynomial: &Poly<3>, variable: usize, scalar: i128) -> Poly<3> {
+    let mut out = Poly::default();
+    for (monomial, coefficient) in &polynomial.0 {
+        assert!(monomial[variable] > 0);
+        assert_eq!(coefficient % scalar, 0);
+        let mut quotient = *monomial;
+        quotient[variable] -= 1;
+        out.0.insert(quotient, coefficient / scalar);
+    }
+    out
+}
+
+fn embed(polynomial: &Poly<3>) -> Poly<4> {
+    let mut out = Poly::default();
+    for (monomial, coefficient) in &polynomial.0 {
+        out.0
+            .insert([monomial[0], monomial[1], monomial[2], 0], *coefficient);
+    }
+    out
+}
+
+fn substitute_t(polynomial: &Poly<4>, replacement: &Poly<3>) -> Poly<3> {
+    let mut out = Poly::default();
+    for (monomial, coefficient) in &polynomial.0 {
+        let base = Poly::term([monomial[0], monomial[1], monomial[2]], *coefficient);
+        out = out.add(&base.mul(&replacement.pow(monomial[3])));
+    }
+    out
+}
+
 fn cayley_menger<const N: usize>(
     x: &Poly<N>,
     y: &Poly<N>,
@@ -188,10 +232,68 @@ fn main() {
     println!("K_FACE_011={}", kg1g2.format(["x", "y", "z", "t"]));
     println!("K_FACE_101={}", kg1g.format(["x", "y", "z", "t"]));
     println!("K_FACE_110={}", kg2g.format(["x", "y", "z", "t"]));
+    let mut mixed_roots = Vec::new();
+    for (label, face, leading_variable) in [("101", &kg1g, 0_usize), ("110", &kg2g, 1_usize)] {
+        assert_eq!(coefficient_in_t(face, 1), Poly::default());
+        assert_eq!(coefficient_in_t(face, 3), Poly::default());
+        let quartic = coefficient_in_t(face, 4);
+        let quadratic = coefficient_in_t(face, 2);
+        let constant = coefficient_in_t(face, 0);
+        let discriminant = quadratic.pow(2).sub(&quartic.mul(&constant).scale(4));
+        println!("FACE_{label}_T4={}", quartic.format(["x", "y", "z"]));
+        println!("FACE_{label}_T2={}", quadratic.format(["x", "y", "z"]));
+        println!("FACE_{label}_T0={}", constant.format(["x", "y", "z"]));
+        println!(
+            "FACE_{label}_U_DISCRIMINANT={}",
+            discriminant.format(["x", "y", "z"])
+        );
+        let root_constant = divide_by_variable_and_scalar(&quadratic, leading_variable, 2);
+        let leading_root = if leading_variable == 0 {
+            x.clone()
+        } else {
+            y.clone()
+        };
+        let root = leading_root.mul(&t.pow(2)).add(&embed(&root_constant));
+        assert_eq!(*face, root.pow(2));
+        println!(
+            "FACE_{label}_SQUARE_ROOT={}",
+            root.format(["x", "y", "z", "t"])
+        );
+        mixed_roots.push(root);
+    }
 
     let jacobian = -1_i128;
     let expected_011 = t.mul(&y.add(&z).sub(&x)).mul(&x.add(&z).sub(&y)).pow(2);
     assert_eq!(kg1g2, expected_011);
+    let lambda = sum(&[
+        Poly::<3>::variable(0),
+        Poly::<3>::variable(1),
+        Poly::<3>::variable(2),
+    ])
+    .mul(
+        &Poly::<3>::variable(1)
+            .add(&Poly::<3>::variable(2))
+            .sub(&Poly::<3>::variable(0)),
+    )
+    .mul(
+        &Poly::<3>::variable(0)
+            .add(&Poly::<3>::variable(2))
+            .sub(&Poly::<3>::variable(1)),
+    );
+    assert_eq!(
+        substitute_t(
+            &mixed_roots[0],
+            &Poly::<3>::variable(0).add(&Poly::<3>::variable(2))
+        ),
+        lambda.scale(-1)
+    );
+    assert_eq!(
+        substitute_t(
+            &mixed_roots[1],
+            &Poly::<3>::variable(1).add(&Poly::<3>::variable(2))
+        ),
+        lambda.scale(-1)
+    );
     assert_eq!(jacobian.abs(), 1);
     assert_eq!(top.evaluate([2, 3, 4]), 18_225);
     println!("INCIDENCE_JACOBIAN={jacobian}");
