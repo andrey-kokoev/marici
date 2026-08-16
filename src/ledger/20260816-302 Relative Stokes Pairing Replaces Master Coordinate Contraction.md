@@ -41,8 +41,9 @@ The correct pairing is the mapping-cone/relative Stokes pairing
 }
 \]
 
-The boundary term is not optional. It is exactly the datum carried by the
-universal one-wall and two-wall primitives of Entries 296--297.
+The boundary term is not optional. Entries 296--297 provide its
+central-fiber primitives, but not yet their normal/Rees lifts over the moving
+marked family. Entry 303 gives the finite distinction.
 
 Thus the missing global comparison has a determined geometric home:
 
@@ -172,7 +173,7 @@ This is a finite linear-algebra falsifier:
 The same issue applies to the symmetric wall and to the primitive top lift,
 whose ordinary representative also carries exact-lift freedom.
 
-## The already available boundary data
+## Available central-fiber boundary data
 
 Entry 296 gives explicit rational primitives
 
@@ -197,7 +198,7 @@ Entry 297 gives the assembled two-wall primitive
 while the filtered survivor is \(e_6/[8(x+y)]\).
 
 Therefore the required pairing does not need a newly fitted dual basis. Its
-source objects are already frozen:
+central-fiber source objects are frozen:
 
 \[
 (\Theta_{101}^{\rm fix},\eta_{101}),
@@ -209,7 +210,13 @@ source objects are already frozen:
 
 and the four source-oriented enhanced relative chains.
 
-What remains is evaluation, not definition.
+However, these primitives use the specialized walls \(b+x=0\) and
+\(a+y=0\). The moving source walls are \(b+x-E=0\) and \(a+y-E=0\).
+Their pullbacks to the weighted exceptional divisor differ already at
+leading Rees order. Consequently what remains is not direct evaluation of
+the displayed central formulas: one must first construct a normal/Rees lift
+whose specialization is the central primitive and whose poles follow the
+moving source walls.
 
 ## Classification
 
@@ -218,7 +225,8 @@ What remains is evaluation, not definition.
 | enhanced functional on \(e_3,e_5,e_6\) | relative homology functional |
 | exact-lift variation | mapping-cone gauge |
 | naive coordinate contraction | noncanonical; falsified |
-| boundary primitives \(\eta_{101},\eta_{110},\eta_{111}\) | existing marked-wall coefficient data |
+| central primitives \(\eta_{101},\eta_{110},\eta_{111}\) | central-fiber marked-wall coefficient data |
+| their moving-wall lifts | required higher-normal coefficient data; not yet constructed |
 | canonical pairing | relative Stokes/duality calculus |
 | new carrier datum | none |
 
@@ -248,13 +256,13 @@ basis-dependent shortcut.
 ## Scope boundary
 
 This entry identifies and proves the correct pairing mechanism. It does not
-yet evaluate the resulting \(3\times3\) matrix, because that requires the
-boundary restrictions of the universal primitives on the four
+yet evaluate the resulting \(3\times3\) matrix. Entry 303 shows that the
+central-fiber primitives cannot simply be restricted to the four moving
 source-oriented exceptional intervals.
 
 ## Next hostile test
 
-Pull back
+Construct moving-wall normal/Rees lifts of
 
 \[
 \eta_{101},\qquad
@@ -262,8 +270,9 @@ Pull back
 \eta_{111}^{\rm rat}
 \]
 
-to each sign-resolved weighted exceptional chart and evaluate their boundary
-integrals on the oriented interval \(p_-\to p_+\).
+whose poles follow \(b+x-E=0\) and \(a+y-E=0\). Then pull those lifted
+primitives to each sign-resolved weighted exceptional chart and evaluate
+their boundary integrals on the oriented interval \(p_-\to p_+\).
 
 Combine those values with the bulk periods from Entry 301. The resulting
 relative \(3\times3\) matrix must be independent of exact-lift gauge and
