@@ -1,0 +1,51 @@
+{
+  "schema": "marici.benincasa.a2-top-specialization.v1",
+  "date": "2026-08-16",
+  "central_model": {
+    "surface": "X*Y=t^3",
+    "blowup_t_chart": ["X=t*a", "Y=t*b", "a*b=t"],
+    "exceptional_chain": ["E1={a=0}", "E2={b=0}"],
+    "intersection": "E1 meets E2 transversely at a=b=0"
+  },
+  "marked_branches": {
+    "wall_u": ["C_X={X=t=0}", "C_Y={Y=t=0}"],
+    "wall_v_asymptotics": ["D_X: X~c*t^2, Y~c_inv*t", "D_Y: X~c_inv*t, Y~c*t^2"],
+    "attachments": {
+      "E1": ["C_X at the outer point", "D_X at a finite point"],
+      "E2": ["C_Y at the outer point", "D_Y at a finite point"]
+    }
+  },
+  "generic_local_graph": {
+    "edge_order": ["n1a", "n1b", "n2a", "n2b", "Pplus", "Pminus"],
+    "top_lift": [1, 0, 0, -1, -1, 1],
+    "collapsing_subgraph": "primitive four-cycle"
+  },
+  "specialization": {
+    "target": "L_plus=Z*(alpha-beta)",
+    "map": "sp(top_lift)=plus_or_minus_(alpha-beta)",
+    "absolute_coefficient": 1,
+    "orientation_dependence": "overall sign only",
+    "cokernel_on_the_rank_one_image": 0
+  },
+  "finite_relative_monodromy": {
+    "after_semisimple_separation": "N_rel(top_lift)=plus_or_minus_(alpha-beta)",
+    "rank": 1,
+    "N_squared": 0,
+    "anti_invariant_target": 0
+  },
+  "integral_consequence": {
+    "top_to_invariant_map": "primitive",
+    "A2_eigenlattice_index_two": "retained as a separate lattice-gluing datum",
+    "no_fitted_multiple": true
+  },
+  "classification": {
+    "carrier": "existing ell1 signed-energy divisor",
+    "coefficient_support": "primitive incidence in the resolved marked A2 pair",
+    "new_carrier_datum": false
+  },
+  "not_included": [
+    "elliptic unipotent contribution",
+    "global E=0 split degeneration",
+    "physical relative-chain normalization"
+  ]
+}
