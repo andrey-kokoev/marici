@@ -1,11 +1,12 @@
 //! Rees-Cech/Tor completion of the literal three-edge vertex star.
 //!
 //! The two standard product-Rees charts map to two edges of the legal common
-//! triangulation vertex.  The relative-Gm overlap, shifted by its Cech degree,
-//! is paired with contraction of the conductor Tor axis.  This produces the
-//! previously missing third edge with total degree zero.  The construction is
-//! canonical in the finite labelled derived Rees-Cech category.  A spatial
-//! proper/log six-functor realization remains outside this checker's scope.
+//! triangulation vertex.  Pairing the relative-Gm overlap with contraction of
+//! the conductor Tor axis produces the correct *graded third-edge packet*.
+//! However, the Rees Cech boundary is -U0+U1, while the literal entry143
+//! edge-summand quotient has no differential between distinct edge supports.
+//! Hence sending the overlap directly to the third edge is not a chain map.
+//! A vertex-supported cone/Beck-Chevalley homotopy is additionally required.
 
 use std::collections::BTreeSet;
 
@@ -248,6 +249,36 @@ fn main() {
     assert_eq!(overlap_cech_degree + tor_contraction_degree, 0);
     assert_eq!(cech_reflection_sign * tor_reflection_sign, 1);
 
+    // Decisive chain test.  Project the literal target to the direct sum of
+    // its three edge-support grades.  Entry143 has no differential between
+    // distinct edges in this quotient: radial maps go from an edge to its
+    // common vertex, not from one edge to another.  The proposed overlap
+    // image is the third edge, so its target differential projects to zero.
+    // The source Cech boundary remains the primitive nonzero vector
+    // -U0+U1.  Therefore the packet-level third-edge identification is not
+    // yet a morphism of total complexes.
+    let source_cech_boundary = [-1_i64, 1, 0];
+    let target_edge_quotient_differential = [[0_i64; 3]; 3];
+    let overlap_image = [0_i64, 0, 1];
+    let target_boundary_of_image: Vec<_> = target_edge_quotient_differential
+        .iter()
+        .map(|row| {
+            row.iter()
+                .zip(overlap_image)
+                .map(|(left, right)| left * right)
+                .sum::<i64>()
+        })
+        .collect();
+    assert_eq!(target_boundary_of_image, vec![0, 0, 0]);
+    assert_ne!(target_boundary_of_image, source_cech_boundary);
+    assert_eq!(
+        source_cech_boundary
+            .iter()
+            .map(|value| value.abs())
+            .sum::<i64>(),
+        2
+    );
+
     let mut role_changes_under_reflection = 0usize;
     for (index, vertex) in vertices.iter().enumerate() {
         for action in [
@@ -280,6 +311,6 @@ fn main() {
 
     println!(
         "{}",
-        r#"{"status":"proved_scoped_finite_rees_cech_tor_full_vertex_star","ordered_pairs":6,"literal_vertices":6,"edges_per_vertex_star":3,"post_cap_states_per_pair":8,"combined_residue_rows":72,"combined_residue_rank":42,"combined_residue_smith_all_ones":true,"third_edge_overlap_rows":24,"third_edge_overlap_rank":24,"third_edge_overlap_smith_all_ones":true,"normal_chain_squares":72,"overlap_cech_degree":1,"tor_contraction_degree":-1,"total_third_edge_degree":0,"reflection_cech_sign":-1,"reflection_tor_sign":-1,"reflection_loaded_sign":1,"D3_rotation_full_star":true,"physical_reflection_full_star":true,"reflection_mixes_chart_and_overlap_roles":true,"base_inversions":false,"spatial_six_functor_realization_constructed":false,"endpoint_extensions_constructed":false,"based_qSigma_connector_constructed":false,"endpoint_Q_mapping_fiber_instantiated":false,"next_gate":"construct the proper log-BM realization identifying the Rees overlap/Tor contraction with the literal third-edge costalk and prove endpoint and qSigma compatibility"}"#
+        r#"{"status":"falsified_scoped_overlap_to_third_edge_chain_map","ordered_pairs":6,"literal_vertices":6,"edges_per_vertex_star":3,"post_cap_states_per_pair":8,"combined_residue_rows":72,"combined_residue_rank":42,"combined_residue_smith_all_ones":true,"third_edge_packet_rows":24,"third_edge_packet_rank":24,"third_edge_packet_smith_all_ones":true,"normal_chain_squares":72,"overlap_cech_degree":1,"tor_contraction_degree":-1,"total_third_edge_degree":0,"reflection_cech_sign":-1,"reflection_tor_sign":-1,"reflection_loaded_sign":1,"D3_rotation_incidence_star":true,"physical_reflection_incidence_star":true,"reflection_mixes_chart_and_overlap_roles":true,"source_cech_boundary":[-1,1,0],"target_edge_quotient_differential_rank":0,"direct_overlap_to_third_edge_chain_equation":false,"base_inversions":false,"minimal_additional_datum":"a vertex-supported cone/Beck-Chevalley homotopy whose boundary realizes the primitive chart difference and whose occurrence-line Gysin evaluations match the literal radial maps","spatial_six_functor_realization_constructed":false,"endpoint_extensions_constructed":false,"based_qSigma_connector_constructed":false,"endpoint_Q_mapping_fiber_instantiated":false,"next_gate":"construct the vertex-supported log-BM cone and its principal-line radial evaluations before attaching endpoint and qSigma rows"}"#
     );
 }
