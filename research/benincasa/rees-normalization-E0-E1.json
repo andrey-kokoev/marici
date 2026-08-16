@@ -1,0 +1,37 @@
+{
+  "schema": "marici.benincasa.rees_normalization_E0_E1.v1",
+  "date": "2026-08-16",
+  "variables": {
+    "s": "x+y",
+    "p": "x*y",
+    "z": "E-s"
+  },
+  "e6_connection": {
+    "H": "(E-s)^2*(p^2+2*p*E^2-2*s*E^3+2*E^4)",
+    "c": "-1/2*d_E log(H)",
+    "exact": "1/(s-E)-(2*p*E-3*s*E^2+4*E^3)/(p^2+2*p*E^2-2*s*E^3+2*E^4)",
+    "series": {
+      "E0": "1/s",
+      "E1": "1/s^2-2/p",
+      "E2": "1/s^3+3*s/p^2"
+    }
+  },
+  "rees_correction": {
+    "expression": "nabla_E(e6/(8*E))=-e6/(8*E^2)+c(E)*e6/(8*E)",
+    "coefficients": {
+      "E^-2": "-1/8",
+      "E^-1": "1/(8*s)",
+      "E^0": "1/(8*s^2)-1/(4*p)",
+      "E^1": "1/(8*s^3)+3*s/(8*p^2)"
+    }
+  },
+  "Q_half_log_E1": "1/(2*p)",
+  "comparison": "normalization E^1 coefficient is not Q half-log E^1 coefficient or a source-independent constant multiple",
+  "result": {
+    "normalization_line_alone_houses_Q": false,
+    "full_primitive_column_Q_home": "open",
+    "required_missing_source": "regularized raw relative connection or mixing with v_alg",
+    "new_carrier_datum": false
+  },
+  "next": "reduce the raw shifted two-wall column through E^1 and project to <e6,v_alg>"
+}
