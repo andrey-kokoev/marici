@@ -1,6 +1,6 @@
 use std::{env, fs};
 
-const DEG: usize = 12;
+const DEG: usize = 20;
 
 #[derive(Clone, Copy)]
 struct P([i128; DEG]);
@@ -66,6 +66,57 @@ fn k_family(x: i128, y: i128, a: i128, b: i128) -> P {
     f.add(ga.mul(a2)).add(gb.mul(b2)).add(hh)
 }
 
+fn weighted_corner(x: i128, y: i128, r: i128, n: i128) -> (P, P) {
+    let tau = P::e();
+    let tau2 = tau.sq();
+    let tau3 = tau2.mul(tau);
+    let total = tau2;
+    let s = P::c(x + y);
+    let z = total.sub(s);
+    let cut = total.scale(-1);
+    let a = P::c(y).add(tau2.scale(r));
+    let b = P::c(x).sub(tau2.scale(r)).add(tau3.scale(n));
+    let x2 = P::c(x * x);
+    let y2 = P::c(y * y);
+    let a2 = a.sq();
+    let b2 = b.sq();
+    let z2 = z.sq();
+    let cut2 = cut.sq();
+    let h = x2.add(y2).sub(z2);
+    let f = x2
+        .mul(a2.sq())
+        .sub(h.mul(a2).mul(b2))
+        .add(y2.mul(b2.sq()));
+    let ga = x2
+        .sub(cut2)
+        .mul(x2.sub(y2).sub(z2))
+        .sub(cut2.mul(z2).scale(2));
+    let gb = y2
+        .sub(cut2)
+        .mul(y2.sub(x2).sub(z2))
+        .sub(cut2.mul(z2).scale(2));
+    let hh = z2.mul(cut2.sub(y2).mul(cut2.sub(x2)).add(cut2.mul(z2)));
+    let k = f.add(ga.mul(a2)).add(gb.mul(b2)).add(hh);
+
+    let bracket = x2
+        .sub(y2)
+        .add(z2)
+        .mul(a2)
+        .add(y2.sub(x2).add(z2).mul(b2))
+        .sub(
+            z2.mul(
+                total
+                    .sq()
+                    .scale(2)
+                    .sub(x2)
+                    .sub(y2)
+                    .add(z2),
+            ),
+        );
+    let k1 = total.mul(bracket).scale(2);
+    (k, k1)
+}
+
 fn main() {
     let out = env::args().nth(1).expect("output path");
     let mut points = 0usize;
@@ -117,6 +168,27 @@ fn main() {
     assert_eq!(leray_boundary[0] + leray_boundary[1], 0);
     assert_ne!(leray_boundary, [0, 0]);
 
+    let mut weighted_points = 0usize;
+    for x in 1i128..=5 {
+        for y in 1i128..=5 {
+            for r in -5i128..=5 {
+                for n in -5i128..=5 {
+                    let (k, k1) = weighted_corner(x, y, r, n);
+                    let s = x + y;
+                    assert!(k.0[..6].iter().all(|c| *c == 0));
+                    assert_eq!(
+                        k.0[6],
+                        4 * x * x * y * y * n * n + 8 * x * y * s * (r * r - 1),
+                        "weighted leading surface"
+                    );
+                    assert!(k1.0[..4].iter().all(|c| *c == 0));
+                    assert_eq!(k1.0[4], 16 * x * y * s, "weighted K1 numerator");
+                    weighted_points += 1;
+                }
+            }
+        }
+    }
+
     let json = format!(
         concat!(
         "{{\n",
@@ -143,12 +215,25 @@ fn main() {
         "  \"canonical_leray_interval\": \"oriented interval [pminus,pplus] fixed by the lower-half-plane E continuation and da wedge db orientation\",\n",
         "  \"relative_basis\": [\"[pminus]-[p0]\",\"[pplus]-[p0]\"],\n",
         "  \"canonical_boundary_vector\": [-1,1],\n",
+        "  \"weighted_substitution\": \"E=tau^2, A=tau^2*r, A+B=tau^3*n\",\n",
+        "  \"weighted_exact_integer_points\": 3025,\n",
+        "  \"weighted_surface_lead\": \"K=tau^6*(4*x^2*y^2*n^2+8*x*y*(x+y)*(r^2-1))+O(tau^7)\",\n",
+        "  \"weighted_source_K1_lead\": \"K1=16*x*y*(x+y)*tau^4+O(tau^5)\",\n",
+        "  \"simple_master_period_order\": \"tau^2=E\",\n",
+        "  \"double_master_period_order\": \"tau^0=1\",\n",
+        "  \"exceptional_period_functional_e1_to_e9\": [0,0,\"y\",0,\"x\",1,0,0,0],\n",
+        "  \"exceptional_functional_gysin_image\": 0,\n",
+        "  \"exceptional_functional_sector\": \"rank-seven algebraic Tate/Kummer kernel\",\n",
+        "  \"coefficient_level_common_factor\": \"-8*x*y*(x+y) times the universal local thimble functional\",\n",
         "  \"physical_real_corner\": \"(a,b)=(y,x); the other sign corners are occurrence/deck companions\",\n",
         "  \"carrier_level_third_rees_class_nonzero\": true,\n",
         "  \"full_nine_master_cut_nearby_commutator_computed\": false,\n",
         "  \"new_carrier_divisor\": false\n",
         "}}\n"),
-        points
+        {
+            assert_eq!(weighted_points, 3025);
+            points
+        }
     );
     fs::write(out, json).expect("write certificate");
 }
