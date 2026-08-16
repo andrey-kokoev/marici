@@ -239,8 +239,6 @@ end{gathered}
 
 ## Exact evidence
 
-- `research/benincasa/verify_all_lower_source_periods.py`
-  - exact termwise residue and component-witness verifier;
 - `research/benincasa/all_lower_source_periods_result.json`
   - SHA-256
     `343edba217ec8089726cc16f0c6eb6318f3651cdf716c4fc5c24997e5d375a62`;
