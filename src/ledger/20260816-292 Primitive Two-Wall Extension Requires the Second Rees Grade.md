@@ -230,6 +230,58 @@ in the \(\omega_0\) row and
 in the \(\omega_2\) row. The fixed first-order tail is therefore algebraic
 as well.
 
+## Independent exchanged fiber
+
+At the independent exact fiber
+
+\[
+(x,y)=(3,2),
+\]
+
+the degree-four reduction again gives
+
+\[
+e_6^{(-2)}=\frac18,
+\qquad
+c_{111}^{(-1)}=1.
+\]
+
+The mixed quotient residues exchange as
+
+\[
+c_{101}^{(-1)}=-\frac14=-\frac1{2y},
+\qquad
+c_{110}^{(-1)}=-\frac16=-\frac1{2x}.
+\]
+
+The fixed final-block tail is
+
+\[
+\left(
+-\frac1{288},
+-\frac1{720},
+\frac1{720}
+\right),
+\]
+
+the exact \(x\leftrightarrow y\) transform of the first fiber. These two
+fibers reconstruct the candidate pattern
+
+\[
+\begin{aligned}
+e_6^{(-2)}&=\frac18,\\
+c_{111}^{(-1)}&=1,\\
+c_{101}^{(-1)}&=-\frac1{2y},&
+c_{110}^{(-1)}&=-\frac1{2x},\\
+e_7^{(-1)}&=-\frac1{8x^2y^2},\\
+e_8^{(-1)}&=\frac{y-x}{4x^2y^2(x+y)},&
+e_9^{(-1)}&=\frac{x-y}{4x^2y^2(x+y)}.
+\end{aligned}
+\]
+
+Because the two fibers are exchanged rather than independently scaled,
+these formulas remain reconstructions, not universal identities.
+
 ## Relation to the earlier second-Rees warning
 
 Entry 128 established that the algebraic quartic begins at second ordinary
