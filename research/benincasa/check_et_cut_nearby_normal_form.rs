@@ -189,6 +189,25 @@ fn main() {
         }
     }
 
+    // The exceptional disk is Q=beta*(1-r^2)-alpha*n^2 > 0 with
+    // alpha=4*x^2*y^2 and beta=8*x*y*(x+y). Meromorphic continuation gives
+    // int_D Q^lambda = pi*beta^lambda*sqrt(beta/alpha)/(lambda+1), hence at
+    // lambda=-3/2 the coefficient of pi is -1/(8*x^2*y^2*(x+y)).
+    // E -> E-i0 sends K=E^3*(-Q) to -Q+i0, so K^(-3/2)=+i*Q^(-3/2).
+    // Multiplication by the source double-pole numerator -8*x*y*(x+y)
+    // leaves +i*pi/(x*y); the 2*pi*i Leray discontinuity leaves
+    // -2*pi^2/(x*y). Check these rational prefactors without floating point.
+    for x in 1i128..=25 {
+        for y in 1i128..=25 {
+            let s = x + y;
+            let beta = 8 * x * y * s;
+            let sqrt_alpha = 2 * x * y;
+            assert_eq!(beta * sqrt_alpha, 16 * x * x * y * y * s);
+            let source_numerator = -8 * x * y * s;
+            assert_eq!(source_numerator * -2 * x * y, beta * sqrt_alpha);
+        }
+    }
+
     let json = format!(
         concat!(
         "{{\n",
@@ -227,7 +246,14 @@ fn main() {
         "  \"coefficient_level_common_factor\": \"-8*x*y*(x+y) times the universal local thimble functional\",\n",
         "  \"physical_real_corner\": \"(a,b)=(y,x); the other sign corners are occurrence/deck companions\",\n",
         "  \"carrier_level_third_rees_class_nonzero\": true,\n",
-        "  \"full_nine_master_cut_nearby_commutator_computed\": false,\n",
+        "  \"regularized_disk_identity\": \"AC int_D Q^(-3/2) dr dn=-pi/(8*x^2*y^2*(x+y))\",\n",
+        "  \"lower_half_branch\": \"E to E-i0 implies K=E^3*(-Q) to -Q+i0 and K^(-3/2)=+i*Q^(-3/2)\",\n",
+        "  \"normalized_I_loc\": \"-i*pi/(8*x^2*y^2*(x+y))\",\n",
+        "  \"source_numerator_times_I_loc\": \"+i*pi/(x*y)\",\n",
+        "  \"leray_discontinuity_factor\": \"2*pi*i\",\n",
+        "  \"normalized_cut_nearby_commutator_e1_to_e9\": [0,0,\"-2*pi^2/x\",0,\"-2*pi^2/y\",\"-2*pi^2/(x*y)\",0,0,0],\n",
+        "  \"overall_wavefunction_prefactor_status\": \"excluded: source equation (6) uses proportionality and omits coupling/alpha factors; result is in the frozen equation-(58) de Rham master normalization\",\n",
+        "  \"full_nine_master_cut_nearby_commutator_computed\": true,\n",
         "  \"new_carrier_divisor\": false\n",
         "}}\n"),
         {
