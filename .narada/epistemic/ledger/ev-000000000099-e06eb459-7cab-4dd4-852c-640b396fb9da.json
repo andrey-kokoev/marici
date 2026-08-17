@@ -1,0 +1,158 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 99,
+  "event_id": "ev-000000000099-e06eb459-7cab-4dd4-852c-640b396fb9da",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3cdedad499973c49d28c5e9ff77f70ed8249daed1f58ce3e51e3402664be259a",
+  "proposal_id": "ep_80b2578b-b6a7-4e90-8abd-d955026b9700",
+  "proposal_digest": "b0ad593cad605b38b5db6ce34e4c7485050ae240c321ac3837112c589fa8146c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-entry380-one-road-target-cell",
+      "kind": "source",
+      "title": "The One-Road Target Cell Exists Coefficientwise and Leaves One Purity Comparison",
+      "version": "git:7cd2d8d7b712fd94b21fe8dbfc1715c83e8f0979",
+      "locator": "src/ledger/20260817-380 The One-Road Target Cell Exists Coefficientwise and Leaves One Purity Comparison.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-entry381-target-purity-frontier-correction",
+      "kind": "source",
+      "title": "Entry 131 Already Closes the One-Road Target Purity Comparison",
+      "version": "git:47b1ab3815fe38376082ef8f7c32fd9e46aefe16",
+      "locator": "src/ledger/20260817-381 Entry 131 Already Closes the One-Road Target Purity Comparison.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:marici-chronological-ledger-reopens-discharged-obligations",
+      "kind": "problem",
+      "title": "Chronological ledger traversal can falsely reopen already discharged mathematical obligations",
+      "summary": "A later synthesis may declare a datum missing even though an earlier scoped theorem already constructs it, because ledger chronology is not an obligation/dependency index."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-obligation-first-dependency-combing",
+      "kind": "claim",
+      "title": "New Marici research obligations require an obligation-first dependency sweep before declaration",
+      "summary": "Before declaring a mathematical datum open, search by its source type, target type, variance, support, filtration, boundary faces, and acceptance equations; inspect candidate neighborhoods; classify candidates as closing, partial, superseding, type-incompatible, or unrelated; declare only the residual obligation."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-residual-obligation-combing-protocol-v1",
+      "kind": "test",
+      "title": "Residual-obligation combing protocol v1",
+      "protocol_version": "1",
+      "steps": [
+        "State the apparent open obligation as a typed arrow or compatibility cell.",
+        "Query claims, problems, tests, sources, and supersession relations by mathematical type rather than ledger entry number.",
+        "Inspect one-hop neighborhoods of candidate results.",
+        "Build a type table covering source, target, variance, support, filtration, generic face, closed face, lower terms, endpoints, and symmetry.",
+        "Classify each candidate as closes, partially closes, supersedes, incompatible type, or unrelated.",
+        "Record a bounded search sweep with terms and coverage.",
+        "Declare a new problem only for the residual obligation.",
+        "Connect the residual problem to its prerequisites using depends_on, derived_from, and supersedes."
+      ],
+      "acceptance": [
+        "No candidate theorem with matching type and acceptance equations remains uninspected.",
+        "Every claimed-open component is distinguished from already proved local or scoped components.",
+        "The residual obligation is expressed as one minimal typed datum.",
+        "The sweep and dependency edges are durable in the epistemic graph."
+      ],
+      "negative_control": "Applying the protocol to Entry 380 must find Entry 131 and replace the alleged missing purity comparison with the residual mixed-variance realization map recorded by Entry 381."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "problem:marici-chronological-ledger-reopens-discharged-obligations",
+      "target_id": "source:nima-entry380-one-road-target-cell",
+      "relation_id": "rel:derived_from-fda53b185259240c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "problem:marici-chronological-ledger-reopens-discharged-obligations",
+      "target_id": "source:nima-entry381-target-purity-frontier-correction",
+      "relation_id": "rel:derived_from-3cb4b3391973fc8a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:marici-obligation-first-dependency-combing",
+      "target_id": "problem:marici-chronological-ledger-reopens-discharged-obligations",
+      "relation_id": "rel:addresses-1e1ec21d4fa3f331"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-obligation-first-dependency-combing",
+      "target_id": "source:nima-entry131-cartier-edge-purity",
+      "relation_id": "rel:derived_from-bdf0a2930c9970b3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-obligation-first-dependency-combing",
+      "target_id": "source:nima-entry381-target-purity-frontier-correction",
+      "relation_id": "rel:derived_from-23935ee772247513"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-residual-obligation-combing-protocol-v1",
+      "target_id": "claim:marici-obligation-first-dependency-combing",
+      "relation_id": "rel:tests-dad93b2abf36849e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:marici-residual-obligation-combing-protocol-v1",
+      "target_id": "source:nima-entry381-target-purity-frontier-correction",
+      "relation_id": "rel:derived_from-49df1c23cb36a9cd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "source:nima-entry381-target-purity-frontier-correction",
+      "target_id": "source:nima-entry380-one-road-target-cell",
+      "relation_id": "rel:supersedes-12db7ea0010730b6"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:marici-adopt-residual-obligation-combing-v1",
+      "subject_id": "test:marici-residual-obligation-combing-protocol-v1",
+      "judgment": "adopt_as_domain_research_workflow",
+      "actor": "marici.Nima",
+      "reason": "The Entry 380 to Entry 381 correction demonstrates that obligation-first dependency indexing prevents duplicate construction and concentrates the true frontier.",
+      "evidence": [
+        {
+          "source_id": "source:nima-entry131-cartier-edge-purity",
+          "locator": "Scoped purity theorem and endpoint transitivity",
+          "paraphrase": "Entry 131 already constructed the purity comparison later misidentified as open."
+        },
+        {
+          "source_id": "source:nima-entry381-target-purity-frontier-correction",
+          "locator": "Correction and meta-level consequence",
+          "paraphrase": "Entry 381 identifies the residual mixed-variance realization map after dependency-aware combing."
+        }
+      ]
+    },
+    {
+      "op": "sweep.record",
+      "sweep_id": "sweep:marici-methodical-combing-protocol-presence-20260817",
+      "interval_start": "2026-08-17T20:20:00-05:00",
+      "interval_end": "2026-08-17T20:26:00-05:00",
+      "method": "Queried the admitted Marici epistemic graph for methodical combing, obligation/dependency graph, prior-theorem duplicate detection, workflow knowledge indexing, and dependency-existing-theorem concepts; then resolved Entries 131, 380, and 381 by exact title.",
+      "result": "No existing workflow or protocol entity matched. Entry 131 existed as a source; Entries 380 and 381 and the residual-obligation protocol did not."
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator explicitly requested adding the methodical domain-space combing workflow to the Marici epistemic graph."
+  },
+  "idempotency_key": "auto-admission-7871ebef136394468fdb2573",
+  "occurred_at": "2026-08-17T20:25:19.2730374Z",
+  "certifies_truth": false,
+  "event_hash": "80757c0d13f3bffeca9c2b0b598c011ff3194f3b33e095a5cb60c92d518777b2"
+}
