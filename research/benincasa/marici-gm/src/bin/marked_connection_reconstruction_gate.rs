@@ -29,7 +29,8 @@ fn main() {
     println!("  \"one_wall_residue_variation_rank\": 5,");
     println!("  \"two_wall_degree5_nullity\": 346,");
     println!("  \"top_six_order_degree5_nullity\": 664,");
-    println!("  \"unknowns_per_degree4_layer\": 132,");
+    println!("  \"formal_single_power_degree4_unknowns\": 132,");
+    println!("  \"formal_count_is_complete_solver_shape\": false,");
     println!("  \"existing_packets_uniquely_determine_bivariate_rank12_connection\": false,");
     println!("  \"required_next_object\": \"source-normalized four-stratum relative de Rham reduction engine\",");
     println!("  \"post_hoc_flat_splitting_allowed\": false,");
