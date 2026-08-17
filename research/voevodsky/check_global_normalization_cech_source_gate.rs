@@ -5,6 +5,8 @@ use std::marker::PhantomData;
 struct OccurrenceRees;
 struct TorCech;
 struct SheetPair;
+struct GeometrizedTarget;
+struct SpanProjections;
 struct RingedSpan;
 struct PcExtraordinaryCostalk;
 struct EndpointPlus;
@@ -30,7 +32,9 @@ impl<From, To> MissingBlock<From, To> {
 struct MissingSourceBlocks {
     occurrence_rees: MissingBlock<OccurrenceRees, OccurrenceRees>,
     tor_cech: MissingBlock<TorCech, TorCech>,
-    central_flip_ringed_span: MissingBlock<SheetPair, RingedSpan>,
+    central_flip_target_geometrization: MissingBlock<PcExtraordinaryCostalk, GeometrizedTarget>,
+    central_flip_projections: MissingBlock<(SheetPair, GeometrizedTarget), SpanProjections>,
+    central_flip_dualizing_trace: MissingBlock<SpanProjections, RingedSpan>,
     central_flip_pc_purity: MissingBlock<RingedSpan, PcExtraordinaryCostalk>,
     endpoint_plus: MissingBlock<SheetPair, EndpointPlus>,
     endpoint_minus: MissingBlock<SheetPair, EndpointMinus>,
@@ -43,7 +47,11 @@ impl MissingSourceBlocks {
         Self {
             occurrence_rees: MissingBlock::new("d_occurrence_rees"),
             tor_cech: MissingBlock::new("d_tor_cech"),
-            central_flip_ringed_span: MissingBlock::new("d_central_flip_ringed_span"),
+            central_flip_target_geometrization: MissingBlock::new(
+                "d_central_flip_target_geometrization",
+            ),
+            central_flip_projections: MissingBlock::new("d_central_flip_projections"),
+            central_flip_dualizing_trace: MissingBlock::new("d_central_flip_dualizing_trace"),
             central_flip_pc_purity: MissingBlock::new("d_central_flip_pc_purity"),
             endpoint_plus: MissingBlock::new("d_endpoint_plus"),
             endpoint_minus: MissingBlock::new("d_endpoint_minus"),
@@ -52,11 +60,13 @@ impl MissingSourceBlocks {
         }
     }
 
-    fn ids(&self) -> [&'static str; 8] {
+    fn ids(&self) -> [&'static str; 10] {
         [
             self.occurrence_rees.id,
             self.tor_cech.id,
-            self.central_flip_ringed_span.id,
+            self.central_flip_target_geometrization.id,
+            self.central_flip_projections.id,
+            self.central_flip_dualizing_trace.id,
             self.central_flip_pc_purity.id,
             self.endpoint_plus.id,
             self.endpoint_minus.id,
@@ -133,6 +143,6 @@ fn main() {
         .join(",");
 
     println!(
-        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"first_geometric_obligation\":\"d_central_flip_ringed_span\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"NOT_CONSTRUCTED\"}}"
+        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"central_flip_rees_geometry\":\"PROVED_NOT_A_SPAN\",\"first_geometric_obligation\":\"d_central_flip_target_geometrization\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"NOT_CONSTRUCTED\"}}"
     );
 }
