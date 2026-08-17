@@ -806,6 +806,21 @@ fn smith_chart_invariant(c:F, reciprocal:bool, degree:u8, order:usize) -> (usize
     assert!(ve.len()>=re && vf.len()>=rf);
     (rf-re,vf[..rf].iter().sum::<usize>() as isize-ve[..re].iter().sum::<usize>() as isize)
 }
+fn smith_curved_chart_invariant(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (usize,isize,Vec<usize>,Vec<usize>) {
+    let (full,cols)=arc_series_matrix(c,d,reciprocal,degree,order);
+    let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..cols].to_vec()).collect();
+    let ve=smith_valuations(exact);
+    let vf=smith_valuations(full);
+    let t=F::n(37);
+    let curved=c.mul(t).add(d.mul(t.pow(2)));
+    let (u,x2)=if reciprocal {(curved,t)} else {(t,curved)};
+    let v=F::n(2).add(F::n(2).mul(x2)).sub(u);
+    let (_,point,_,_)=presentation(&geometry(u.0,v.0,'u'),8,degree);
+    let re=matrix_rank(point.iter().map(|r|r[12..].to_vec()).collect());
+    let rf=matrix_rank(point);
+    assert!(ve.len()>=re && vf.len()>=rf);
+    (rf-re,vf[..rf].iter().sum::<usize>() as isize-ve[..re].iter().sum::<usize>() as isize,ve[..re].to_vec(),vf[..rf].to_vec())
+}
 
 fn gauge_plucker(sol: &Sol) -> Vec<F> {
     assert_eq!(sol.gauge_rank, 2);
@@ -1382,6 +1397,20 @@ fn main() {
         let ordinary_ok=[8u8,10].into_iter().all(|degree|smith_chart_invariant(F::z(),false,degree,12)==(10,66));
         let reciprocal_ok=[8u8,10].into_iter().all(|degree|smith_chart_invariant(F::z(),true,degree,12)==(10,66));
         println!("{{\"schema\":\"marici.benincasa.dlog_smith_projective_boundary.v1\",\"field_modulus\":{},\"truncation_order\":12,\"generic_pair\":[10,66],\"ordinary_boundary_matches_generic\":{ordinary_ok},\"reciprocal_boundary_matches_generic\":{reciprocal_ok},\"results\":[{}]}}",P,rows.join(","));
+        return;
+    }
+    if mode == "dlog-smith-axis-saturation" {
+        let specs=[(false,"X2=0","E=t,X2=d*t^2"),(true,"E=0","X2=t,E=d*t^2")];
+        let mut rows=Vec::new();
+        for (reciprocal,boundary,arc) in specs {
+            for degree in [8u8,10,12] {
+                for d0 in [3u64] {
+                    let (rank,valuation,exact,combined)=smith_curved_chart_invariant(F::z(),F::n(d0),reciprocal,degree,24);
+                    rows.push(format!("{{\"boundary\":\"{boundary}\",\"arc\":\"{arc}\",\"d\":{d0},\"degree\":{degree},\"master_image_rank\":{rank},\"master_image_valuation\":{valuation},\"exact_invariants\":{exact:?},\"combined_invariants\":{combined:?}}}"));
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.dlog_smith_axis_saturation.v1\",\"field_modulus\":{},\"truncation_order\":24,\"generic_valuation\":66,\"results\":[{}]}}",P,rows.join(","));
         return;
     }
     if mode == "dlog-smith-quadratic" {

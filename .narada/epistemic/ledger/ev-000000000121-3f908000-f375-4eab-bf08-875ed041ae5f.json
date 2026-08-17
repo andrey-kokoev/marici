@@ -1,0 +1,122 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 121,
+  "event_id": "ev-000000000121-3f908000-f375-4eab-bf08-875ed041ae5f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e9b8e9c943fe66fb3d41d4393b7278730fdc54f81ed1c5ccebc450475f7c6812",
+  "proposal_id": "ep_007176c3-04ab-48f3-aca8-d55784ef9e37",
+  "proposal_digest": "fa5edfc8682034d64a963d546dc66357cc693d58c03ce4e4c9eb2aac851691b2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-439-axis-saturation-asymmetry",
+      "local_ref": "s",
+      "kind": "source",
+      "title": "Ledger 439: Total-Energy Axis Saturation Stabilizes but Soft-Axis Saturation Does Not",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-439 Total-Energy Axis Saturation Stabilizes but Soft-Axis Saturation Does Not.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:transverse-axis-smith-saturation",
+      "local_ref": "t",
+      "kind": "test",
+      "title": "Transverse-axis Smith saturation test",
+      "version": "1",
+      "locator": "research/benincasa/dlog-smith-axis-saturation-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:total-energy-axis-transverse-excess-27",
+      "local_ref": "c",
+      "kind": "claim",
+      "title": "The tested total-energy axis has stable transverse Smith excess 27"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:soft-axis-truncated-exact-form-nonstabilization",
+      "local_ref": "x",
+      "kind": "criticism",
+      "title": "The polynomial exact-form truncation does not define a cutoff-independent soft-axis saturation weight"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:completed-soft-axis-exact-quotient-stabilizes",
+      "local_ref": "n",
+      "kind": "conjecture",
+      "title": "A predeclared completed exact-form quotient yields a canonical soft-axis saturation weight"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "t",
+      "target_ref": "s",
+      "source_id": "marici:test:transverse-axis-smith-saturation",
+      "target_id": "marici:source:ledger-439-axis-saturation-asymmetry",
+      "relation_id": "rel:derived_from-4965ab5aed2d7c36"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t",
+      "target_id": "marici:conjecture:double-saturated-fitting-transition-degree-20",
+      "source_id": "marici:test:transverse-axis-smith-saturation",
+      "relation_id": "rel:tests-c899ff995c244296"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "x",
+      "target_id": "marici:conjecture:double-saturated-fitting-transition-degree-20",
+      "source_id": "marici:criticism:soft-axis-truncated-exact-form-nonstabilization",
+      "relation_id": "rel:criticizes-1768e6cd0e878584"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "n",
+      "target_ref": "x",
+      "source_id": "marici:conjecture:completed-soft-axis-exact-quotient-stabilizes",
+      "target_id": "marici:criticism:soft-axis-truncated-exact-form-nonstabilization",
+      "relation_id": "rel:depends_on-9e8a4e2407eb72d5"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:axis-saturation-asymmetry-20260817",
+      "test_id": "marici:test:transverse-axis-smith-saturation",
+      "actor": "marici.Benincasa",
+      "outcome": "For transverse unit 3, E=0 stabilizes at rank 10 and valuation 93 through exact-form degrees 8,10,12, while X2=0 has rank 10 but valuations 89,92,95 and does not stabilize.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-439-axis-saturation-asymmetry",
+          "locator": "Result",
+          "paraphrase": "The total-energy transverse excess is stably 27; the soft-axis excess drifts by 3 per two cutoff degrees."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:double-saturated-degree-20-after-axis-test-20260817",
+      "subject_id": "marici:conjecture:double-saturated-fitting-transition-degree-20",
+      "judgment": "blocked_by_noncanonical_soft_axis_presentation",
+      "actor": "marici.Benincasa",
+      "reason": "A degree-20 transition cannot be inferred until a degree-independent soft-axis quotient is constructed.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-439-axis-saturation-asymmetry",
+          "locator": "Interpretation",
+          "paraphrase": "The current presentation supplies no canonical soft-axis saturation weight and therefore no global transition degree."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-b086650be08b9e9f5d428106",
+  "occurred_at": "2026-08-17T23:57:55.6151556Z",
+  "certifies_truth": false,
+  "event_hash": "c77b5b6cee7802c70659bd4b9cabc8aba9c3dafd4fb01c5c91fd57326448227e"
+}
