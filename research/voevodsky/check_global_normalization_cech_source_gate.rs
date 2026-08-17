@@ -6,6 +6,8 @@ struct OccurrenceRees;
 struct TorCech;
 struct SheetPair;
 struct RingedTarget;
+struct PrequotientCorrespondence;
+struct ProjectionBeckChevalley;
 struct SpanProjections;
 struct RingedSpan;
 struct PcExtraordinaryCostalk;
@@ -32,7 +34,11 @@ impl<From, To> MissingBlock<From, To> {
 struct MissingSourceBlocks {
     occurrence_rees: MissingBlock<OccurrenceRees, OccurrenceRees>,
     tor_cech: MissingBlock<TorCech, TorCech>,
-    central_flip_projections: MissingBlock<(SheetPair, RingedTarget), SpanProjections>,
+    central_flip_prequotient_correspondence:
+        MissingBlock<(SheetPair, RingedTarget), PrequotientCorrespondence>,
+    central_flip_projection_beck_chevalley:
+        MissingBlock<PrequotientCorrespondence, ProjectionBeckChevalley>,
+    central_flip_projections: MissingBlock<ProjectionBeckChevalley, SpanProjections>,
     central_flip_dualizing_trace: MissingBlock<SpanProjections, RingedSpan>,
     central_flip_pc_purity: MissingBlock<RingedSpan, PcExtraordinaryCostalk>,
     endpoint_plus: MissingBlock<SheetPair, EndpointPlus>,
@@ -46,7 +52,13 @@ impl MissingSourceBlocks {
         Self {
             occurrence_rees: MissingBlock::new("d_occurrence_rees"),
             tor_cech: MissingBlock::new("d_tor_cech"),
-            central_flip_projections: MissingBlock::new("d_central_flip_projections"),
+            central_flip_prequotient_correspondence: MissingBlock::new(
+                "d_central_flip_prequotient_correspondence",
+            ),
+            central_flip_projection_beck_chevalley: MissingBlock::new(
+                "d_central_flip_projection_beck_chevalley",
+            ),
+            central_flip_projections: MissingBlock::new("d_central_flip_projections_assembled"),
             central_flip_dualizing_trace: MissingBlock::new("d_central_flip_dualizing_trace"),
             central_flip_pc_purity: MissingBlock::new("d_central_flip_pc_purity"),
             endpoint_plus: MissingBlock::new("d_endpoint_plus"),
@@ -56,10 +68,12 @@ impl MissingSourceBlocks {
         }
     }
 
-    fn ids(&self) -> [&'static str; 9] {
+    fn ids(&self) -> [&'static str; 11] {
         [
             self.occurrence_rees.id,
             self.tor_cech.id,
+            self.central_flip_prequotient_correspondence.id,
+            self.central_flip_projection_beck_chevalley.id,
             self.central_flip_projections.id,
             self.central_flip_dualizing_trace.id,
             self.central_flip_pc_purity.id,
@@ -138,6 +152,6 @@ fn main() {
         .join(",");
 
     println!(
-        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"central_flip_rees_geometry\":\"PROVED_NOT_A_SPAN\",\"target_cellular_cosheaf\":\"PROVED\",\"target_ringed_incidence_enhancement\":\"PROVED_Q_BANG_TYPED_NOT_COMPUTED\",\"first_geometric_obligation\":\"d_central_flip_projections\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"TYPED_TARGET_ONLY_NO_SPAN\"}}"
+        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"central_flip_rees_geometry\":\"PROVED_NOT_A_SPAN\",\"target_cellular_cosheaf\":\"PROVED\",\"target_ringed_incidence_enhancement\":\"PROVED_Q_BANG_TYPED_NOT_COMPUTED\",\"naive_incidence_projection\":\"FALSIFIED_X3_DIVISIBILITY\",\"first_geometric_obligation\":\"d_central_flip_prequotient_correspondence\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"TYPED_TARGET_ONLY_NO_SPAN\"}}"
     );
 }
