@@ -681,6 +681,19 @@ fn divide_linear(p: &[F], root: F) -> Vec<F> {
     q
 }
 
+fn small_rational(x: F) -> (i64, i64) {
+    for d in 1i64..=128 {
+        let fd = F::n(d as u64);
+        for n in -128i64..=128 {
+            let fnn = if n < 0 { F::n((-n) as u64).neg() } else { F::n(n as u64) };
+            if fnn.mul(fd.inv()) == x {
+                return (n, d);
+            }
+        }
+    }
+    panic!("residual tangent root has no bounded rational reconstruction: {}", x.0)
+}
+
 fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u32, u32) {
     let cols = [0usize, 1, 2, 8, 9, 10, 11];
     let cw = [1i32, 0, 0, 0, 0, 0, 0];
@@ -846,9 +859,9 @@ fn main() {
     let third = F::n(3).inv();
     let centers = [
         (F::o(), F::n(2), "(1,1/2)", "[1,2]"),
-        (F::n(2), F::o(), "(1/2,1)", "[2,1]"),
-        (F::n(2).mul(third), F::n(1).neg(), "(3/2,-1)", "[2/3,-1]"),
-        (F::n(1).neg(), F::n(2).mul(third), "(-1,3/2)", "[-1,2/3]"),
+        (F::n(2), F::n(4), "(1/2,1)", "[2,4]"),
+        (F::n(2).mul(third), F::z(), "(3/2,-1)", "[2/3,0]"),
+        (F::n(1).neg(), F::z(), "(-1,3/2)", "[-1,0]"),
     ];
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..3")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..3");
@@ -875,6 +888,8 @@ fn main() {
         }
     }
     let mut roots = BTreeSet::<i64>::new();
+    let mut residual_roots = BTreeSet::<(i64, i64)>::new();
+    let mut residual_occurrences = BTreeSet::<(String, usize, i64, i64)>::new();
     let mut maxrn = 0;
     let mut maxrd = 0;
     let mut maxtn = 0;
@@ -920,12 +935,21 @@ fn main() {
                 d = divide_linear(&d, rq);
                 trim(&mut d)
             }
+            while d.len() == 2 {
+                let qroot = d[0].neg().mul(d[1].inv());
+                let rroot = qroot.add(base);
+                let rr = small_rational(rroot);
+                residual_roots.insert(rr);
+                residual_occurrences.insert((name.to_string(), j, rr.0, rr.1));
+                d = divide_linear(&d, qroot);
+                trim(&mut d);
+            }
             trim(&mut d);
             assert_eq!(d.len(),1,"denominator outside frozen tangency direction in chart {name} coordinate {j}, degree {}",d.len()-1);
         }
     }
     println!("{{");
-    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v2\",");
+    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v3\",");
     println!("  \"center_index\": {center_index},");
     println!("  \"center_uv\": {center_uv},");
     println!("  \"source_center\": \"(r,s)={source_center}\",");
@@ -945,7 +969,15 @@ fn main() {
     println!("  \"tangent_bad_mask_decimal\": {tangent_bad_mask},");
     let roots_json = if roots.is_empty() { "[]" } else { "[0]" };
     println!("  \"denominator_roots\": {roots_json},");
-    println!("  \"all_denominators_generated_by_frozen_tangent_direction\": true,");
-    println!("  \"new_support_factor\": false");
+    let residual_roots_json = residual_roots.iter().map(|(n,d)| format!("[{n},{d}]")).collect::<Vec<_>>().join(",");
+    let residual_occurrences_json = residual_occurrences.iter().map(|(chart,j,n,d)| format!("{{\"chart\":\"{chart}\",\"coordinate\":{j},\"root\":[{n},{d}]}}")).collect::<Vec<_>>().join(",");
+    let residual_is_existing_cm_branch = center_index == 1 && residual_roots.iter().all(|r| *r == (1,1));
+    let unknown_residual = !residual_roots.is_empty() && !residual_is_existing_cm_branch;
+    println!("  \"residual_tangent_roots\": [{residual_roots_json}],");
+    println!("  \"residual_occurrences\": [{residual_occurrences_json}],");
+    println!("  \"residual_is_existing_cayley_menger_branch\": {residual_is_existing_cm_branch},");
+    println!("  \"all_denominators_generated_by_frozen_tangent_direction\": {},", residual_roots.is_empty());
+    println!("  \"all_denominators_generated_by_frozen_source_support\": {},", !unknown_residual);
+    println!("  \"new_support_factor\": {unknown_residual}");
     println!("}}");
 }
