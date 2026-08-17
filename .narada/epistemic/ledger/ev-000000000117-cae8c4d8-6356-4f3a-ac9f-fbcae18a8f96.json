@@ -1,0 +1,165 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 117,
+  "event_id": "ev-000000000117-cae8c4d8-6356-4f3a-ac9f-fbcae18a8f96",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b1c9f110ea039a64c787216ed81ff14582b7c6b9f5d31b546478e3b4883330a2",
+  "proposal_id": "ep_4b5e9b24-25e7-4abc-8109-121240003b85",
+  "proposal_digest": "366f7b95016381a4dc3b9791fc0434f2aafad5179d45157541364fc93032fc1a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+      "kind": "source",
+      "title": "Ledger 433: A Chosen Maximal Minor Does Not Define the Exceptional Fitting Divisor",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-433 A Chosen Maximal Minor Does Not Define the Exceptional Fitting Divisor.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:single-minor-exceptional-fitting-generator",
+      "kind": "conjecture",
+      "title": "One fixed maximal-minor quotient chart generates the intrinsic exceptional Fitting divisor"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:fixed-exceptional-maximal-minor",
+      "kind": "test",
+      "title": "Fixed maximal-minor exceptional-coordinate reconstruction test"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:fixed-minor-has-spurious-c5-zero",
+      "kind": "claim",
+      "title": "A fixed maximal-minor quotient has a spurious c=5 zero absent from the intrinsic Smith valuation"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:single-minor-not-intrinsic-fitting-generator",
+      "kind": "criticism",
+      "title": "A chosen maximal minor is not an intrinsic generator of the exceptional Fitting line"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "kind": "conjecture",
+      "title": "The saturated exceptional valuation divisor is 5[c=1]+15[c=1/2]"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:fixed-exceptional-maximal-minor",
+      "target_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+      "relation_id": "rel:derived_from-170e9a108639ebee"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:fixed-exceptional-maximal-minor",
+      "target_id": "marici:conjecture:single-minor-exceptional-fitting-generator",
+      "relation_id": "rel:tests-ad17505893bd34f4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:fixed-minor-has-spurious-c5-zero",
+      "target_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+      "relation_id": "rel:derived_from-81f7c1115575f832"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:fixed-minor-has-spurious-c5-zero",
+      "target_id": "marici:claim:generic-soft-total-smith-length-66",
+      "relation_id": "rel:depends_on-b8818aadc2c7969a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:criticism:single-minor-not-intrinsic-fitting-generator",
+      "target_id": "marici:conjecture:single-minor-exceptional-fitting-generator",
+      "relation_id": "rel:criticizes-4c4179d0d1263db4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:criticism:single-minor-not-intrinsic-fitting-generator",
+      "target_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+      "relation_id": "rel:derived_from-43f3997ae4181177"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "target_id": "marici:claim:first-soft-total-blowup-no-residual-direction",
+      "relation_id": "rel:depends_on-5c9d643cd403f106"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "target_id": "marici:claim:quadratic-soft-total-only-frozen-excess",
+      "relation_id": "rel:depends_on-28d0fbc74fe40d51"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "target_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+      "relation_id": "rel:derived_from-ae18c9bb6868569e"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:fixed-exceptional-maximal-minor-20260817",
+      "test_id": "marici:test:fixed-exceptional-maximal-minor",
+      "actor": "marici.Benincasa",
+      "outcome": "refuted: the fixed quotient minor jumps from intrinsic order 66 to order 67 at c=5",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+          "locator": "Result",
+          "paraphrase": "The intrinsic Smith minimum remains 66 at c=5 while the fixed-minor quotient has valuation 67."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:single-minor-generator-refuted-20260817",
+      "subject_id": "marici:conjecture:single-minor-exceptional-fitting-generator",
+      "judgment": "refuted_in_tested_presentation",
+      "actor": "marici.Benincasa",
+      "reason": "A zero of one chosen maximal minor need not be a zero of the determinantal minimum.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+          "locator": "Epistemic boundary",
+          "paraphrase": "The c=5 zero is a noncanonical minor-chart artifact and cannot be promoted to coefficient support."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:exceptional-valuation-divisor-supported-20260817",
+      "subject_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "judgment": "supported_not_proved",
+      "actor": "marici.Benincasa",
+      "reason": "The first-direction census finds no other support and quadratic tangent excesses are 5 and 15, but the saturated Fitting generator is not yet derived.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-433-noncanonical-exceptional-minor",
+          "locator": "Surviving invariant statement",
+          "paraphrase": "Entries 421 and 426 support the divisor 5[c=1]+15[c=1/2] up to an exceptional-chart unit."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator requires every new ledger entry to be reflected in the Marici epistemic graph."
+  },
+  "idempotency_key": "auto-admission-c27ee4a20da1d7afdb94e079",
+  "occurred_at": "2026-08-17T23:33:14.7603423Z",
+  "certifies_truth": false,
+  "event_hash": "65692b17b43cde445e10003bf56f27fc31b0ce18eb3d278568210a6223df2117"
+}
