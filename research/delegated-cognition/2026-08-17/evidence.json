@@ -1,0 +1,30 @@
+{
+  "schema": "marici.delegated_cognition.fixture.v1",
+  "coefficient_context": {
+    "ring": "R is an arbitrary commutative unital ring",
+    "lattice": "L is a free rank-one integral incidence lattice with primitive generator p",
+    "realization": "rho: L -> R is a specified additive realization; c = rho(p)",
+    "known_about_c": ["c is nonzero"],
+    "not_given_about_c": ["c is a unit", "R is a domain", "rho is multiplicative or unit-preserving"]
+  },
+  "graded_object": {
+    "degree_2": [
+      {"id": "x", "module": "R", "support": ["alpha", "beta"]},
+      {"id": "y", "module": "R", "support": ["beta"]}
+    ],
+    "degree_1": [
+      {"id": "z", "module": "R", "support": ["alpha"]}
+    ],
+    "other_degrees": []
+  },
+  "operation": {
+    "id": "delta",
+    "degree": -1,
+    "admissible_support": ["alpha"],
+    "constructed_values": [
+      {"input": "x", "output": "c*z", "status": "constructed"},
+      {"input": "y", "output": "0", "reason": "support beta is outside delta admissible support", "status": "constructed"}
+    ]
+  },
+  "question": "Determine the strongest justified reduction and homological conclusion. Identify the minimal quotient or restriction, residual matrix, hypotheses for rank or acyclicity, and the exact unresolved construction/falsifier. Do not assume facts absent from this packet."
+}
