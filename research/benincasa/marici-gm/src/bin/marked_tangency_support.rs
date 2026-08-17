@@ -789,13 +789,18 @@ fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<
     (out,cols)
 }
 fn smith_slope_invariant(c:F, degree:u8, order:usize) -> (usize,isize) {
-    let (full,cols)=arc_series_matrix(c,F::z(),false,degree,order);
+    smith_chart_invariant(c,false,degree,order)
+}
+fn smith_chart_invariant(c:F, reciprocal:bool, degree:u8, order:usize) -> (usize,isize) {
+    let (full,cols)=arc_series_matrix(c,F::z(),reciprocal,degree,order);
     let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..cols].to_vec()).collect();
     let ve=smith_valuations(exact);
     let vf=smith_valuations(full);
     let t=F::n(37);
-    let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
-    let (_,point,_,_)=presentation(&geometry(t.0,v.0,'u'),8,degree);
+    let curved=c.mul(t);
+    let (u,x2)=if reciprocal {(curved,t)} else {(t,curved)};
+    let v=F::n(2).add(F::n(2).mul(x2)).sub(u);
+    let (_,point,_,_)=presentation(&geometry(u.0,v.0,'u'),8,degree);
     let re=matrix_rank(point.iter().map(|r|r[12..].to_vec()).collect());
     let rf=matrix_rank(point);
     assert!(ve.len()>=re && vf.len()>=rf);
@@ -1366,6 +1371,17 @@ fn main() {
         let cross_ok=cross.iter().all(|(_,x)|*x==(10,66));
         println!("{{\"schema\":\"marici.benincasa.dlog_smith_slope_scan.v1\",\"field_modulus\":{},\"seed\":\"0x9e3779b97f4a7c15\",\"degree8_samples\":{},\"generic_rank10_valuation66\":{generic},\"residual_count\":{},\"residuals\":[{}],\"degree10_crosscheck_samples\":{},\"degree10_crosscheck_all_match\":{cross_ok}}}",
             P,rows.len(),residual.len(),residual.join(","),cross.len());
+        return;
+    }
+    if mode == "dlog-smith-projective-infinity" {
+        let specs=[(false,"E=t,X2=c*t","[E:X2]=[1:0]"),(true,"X2=t,E=c*t","[E:X2]=[0:1]")];
+        let rows=specs.into_iter().flat_map(|(reciprocal,chart,direction)|[8u8,10].into_iter().map(move |degree| {
+            let (rank,valuation)=smith_chart_invariant(F::z(),reciprocal,degree,12);
+            format!("{{\"degree\":{degree},\"chart\":\"{chart}\",\"c\":0,\"projective_direction\":\"{direction}\",\"master_image_rank\":{rank},\"master_image_valuation\":{valuation}}}")
+        })).collect::<Vec<_>>();
+        let ordinary_ok=[8u8,10].into_iter().all(|degree|smith_chart_invariant(F::z(),false,degree,12)==(10,66));
+        let reciprocal_ok=[8u8,10].into_iter().all(|degree|smith_chart_invariant(F::z(),true,degree,12)==(10,66));
+        println!("{{\"schema\":\"marici.benincasa.dlog_smith_projective_boundary.v1\",\"field_modulus\":{},\"truncation_order\":12,\"generic_pair\":[10,66],\"ordinary_boundary_matches_generic\":{ordinary_ok},\"reciprocal_boundary_matches_generic\":{reciprocal_ok},\"results\":[{}]}}",P,rows.join(","));
         return;
     }
     if mode == "dlog-smith-quadratic" {
