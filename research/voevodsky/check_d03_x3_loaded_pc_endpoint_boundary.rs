@@ -97,7 +97,7 @@ impl Laurent {
     fn support_variables_unlocalized(&self) -> bool {
         self.0.keys().all(|powers| {
             [X0, X1, X3, X4, U0, U1, U3, U5, T3]
-                .into_iter()
+                .iter().copied()
                 .all(|slot| powers[slot] >= 0)
         })
     }
@@ -527,7 +527,7 @@ fn check_normal_cech_all_degrees() -> Laurent {
     assert_eq!(determinant_end.coefficient, 1);
 
     [U0, U1, U3, U5]
-        .into_iter()
+        .iter().copied()
         .fold(Laurent::one(), |product, slot| {
             product.multiply(&Laurent::inverse_variable(slot))
         })
@@ -544,7 +544,7 @@ impl PhysicalOrientation {
 
 fn expected_loaded_residue(first_normal: usize) -> Laurent {
     [first_normal, X3, U0, U1, U3, U5]
-        .into_iter()
+        .iter().copied()
         .fold(Laurent::one(), |product, slot| {
             product.multiply(&Laurent::inverse_variable(slot))
         })
