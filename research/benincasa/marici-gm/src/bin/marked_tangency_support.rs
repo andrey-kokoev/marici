@@ -666,6 +666,127 @@ fn derivative_at_zero(values:&[F]) -> F {
     out
 }
 
+fn series_val(a:&[F]) -> usize {
+    a.iter().position(|x|x.0!=0).unwrap_or(a.len())
+}
+fn series_mul(a:&[F],b:&[F]) -> Vec<F> {
+    let n=a.len();
+    let mut z=vec![F::z();n];
+    for i in 0..n { for j in 0..n-i {
+        z[i+j]=z[i+j].add(a[i].mul(b[j]));
+    }}
+    z
+}
+fn series_submul(a:&mut [F],q:&[F],b:&[F]) {
+    let n=a.len();
+    for i in 0..n { for j in 0..n-i {
+        a[i+j]=a[i+j].sub(q[i].mul(b[j]));
+    }}
+}
+fn series_unit_inverse(a:&[F]) -> Vec<F> {
+    assert!(a[0].0!=0);
+    let n=a.len();
+    let mut z=vec![F::z();n];
+    z[0]=a[0].inv();
+    for k in 1..n {
+        let mut s=F::z();
+        for i in 1..=k { s=s.add(a[i].mul(z[k-i])); }
+        z[k]=s.neg().mul(z[0]);
+    }
+    z
+}
+fn smith_valuations(mut a:Vec<Vec<Vec<F>>>) -> Vec<usize> {
+    let rows=a.len(); let cols=a[0].len(); let n=a[0][0].len();
+    let mut out=Vec::new(); let mut k=0usize;
+    while k<rows && k<cols {
+        let mut best=None;
+        for i in k..rows { for j in k..cols {
+            let v=series_val(&a[i][j]);
+            if v<n && best.map(|x:(usize,usize,usize)|v<x.2).unwrap_or(true) {
+                best=Some((i,j,v));
+            }
+        }}
+        let Some((pi,pj,v))=best else { break };
+        a.swap(k,pi);
+        for row in &mut a { row.swap(k,pj); }
+        let unit=series_unit_inverse(&a[k][k][v..]);
+        let mut scale=vec![F::z();n]; scale[..unit.len()].copy_from_slice(&unit);
+        for j in k..cols { a[k][j]=series_mul(&a[k][j],&scale); }
+        for i in k+1..rows {
+            if series_val(&a[i][k])<n {
+                let mut q=vec![F::z();n];
+                for d in v..n { q[d-v]=a[i][k][d]; }
+                let pivot_row=a[k].clone();
+                for j in k..cols { series_submul(&mut a[i][j],&q,&pivot_row[j]); }
+            }
+        }
+        for j in k+1..cols {
+            if series_val(&a[k][j])<n {
+                let mut q=vec![F::z();n];
+                for d in v..n { q[d-v]=a[k][j][d]; }
+                for i in k..rows {
+                    let pivot=a[i][k].clone();
+                    series_submul(&mut a[i][j],&q,&pivot);
+                }
+            }
+        }
+        out.push(v); k+=1;
+    }
+    out
+}
+fn invert_square(mut a:Vec<Vec<F>>) -> Vec<Vec<F>> {
+    let n=a.len();
+    for i in 0..n {
+        a[i].extend((0..n).map(|j|if i==j {F::o()} else {F::z()}));
+    }
+    for c in 0..n {
+        let p=(c..n).find(|&i|a[i][c].0!=0).unwrap();
+        a.swap(c,p);
+        let z=a[c][c].inv();
+        for j in c..2*n { a[c][j]=a[c][j].mul(z); }
+        for i in 0..n { if i!=c && a[i][c].0!=0 {
+            let z=a[i][c];
+            for j in c..2*n { a[i][j]=a[i][j].sub(z.mul(a[c][j])); }
+        }}
+    }
+    a.into_iter().map(|r|r[n..].to_vec()).collect()
+}
+fn arc_series_matrix(c:F,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
+    let samples=24usize;
+    let mut vand=vec![vec![F::z();samples+1];samples+1];
+    for i in 0..=samples { for j in 0..=samples { vand[i][j]=F::n(i as u64).pow(j as u64); }}
+    let vinv=invert_square(vand);
+    let mut data=Vec::new();
+    let mut all_mons=BTreeSet::new();
+    for q in 0..=samples+2 {
+        let t=F::n(q as u64);
+        let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
+        let (mons,a,_,_)=presentation(&geometry(t.0,v.0,'u'),8,degree);
+        all_mons.extend(mons.iter().copied());
+        data.push((mons,a));
+    }
+    let rows:Vec<Mon>=all_mons.into_iter().collect();
+    let cols=data[0].1[0].len();
+    let mut out=vec![vec![vec![F::z();order];cols];rows.len()];
+    for (ri,m) in rows.iter().enumerate() { for j in 0..cols {
+        let vals:Vec<F>=(0..=samples).map(|q| {
+            let pos=data[q].0.iter().position(|x|x==m);
+            pos.map(|i|data[q].1[i][j]).unwrap_or(F::z())
+        }).collect();
+        let coeff:Vec<F>=(0..=samples).map(|d|
+            (0..=samples).fold(F::z(),|z,q|z.add(vinv[d][q].mul(vals[q])))
+        ).collect();
+        for d in 0..order { out[ri][j][d]=coeff[d]; }
+        for q in samples+1..=samples+2 {
+            let predicted=coeff.iter().rev().fold(F::z(),|z,x|z.mul(F::n(q as u64)).add(*x));
+            let pos=data[q].0.iter().position(|x|x==m);
+            let actual=pos.map(|i|data[q].1[i][j]).unwrap_or(F::z());
+            assert_eq!(predicted,actual,"arc interpolation degree bound failed");
+        }
+    }}
+    (out,cols)
+}
+
 fn gauge_plucker(sol: &Sol) -> Vec<F> {
     assert_eq!(sol.gauge_rank, 2);
     let cols = [3usize, 4, 5, 6, 7];
@@ -1206,6 +1327,34 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-smith" {
+        let order=12usize;
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for c0 in [1u64,2,3,5,7] {
+                let c=F::n(c0);
+                let (full,cols)=arc_series_matrix(c,degree,order);
+                assert!(cols>12);
+                let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..].to_vec()).collect();
+                let ve=smith_valuations(exact);
+                let vf=smith_valuations(full);
+                let t=F::n(37);
+                let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
+                let (_,point,_,_)=presentation(&geometry(t.0,v.0,'u'),8,degree);
+                let re=matrix_rank(point.iter().map(|r|r[12..].to_vec()).collect());
+                let rf=matrix_rank(point);
+                let qr=rf-re;
+                assert_eq!(qr,if c0==1 {8} else {10});
+                assert!(ve.len()>=re && vf.len()>=rf);
+                let de:usize=ve[..re].iter().sum();
+                let df:usize=vf[..rf].iter().sum();
+                let quotient=df as isize-de as isize;
+                results.push(format!("{{\"degree\":{degree},\"slope_c\":{c0},\"support\":\"{}\",\"exact_rank\":{re},\"combined_rank\":{rf},\"master_image_rank\":{qr},\"exact_determinantal_valuation\":{de},\"combined_determinantal_valuation\":{df},\"master_image_valuation\":{quotient},\"exact_invariants\":{:?},\"combined_invariants\":{:?}}}",if c0==1 {"E-X2=0"} else {"generic_blowup_direction"},&ve[..re],&vf[..rf]));
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.dlog_joint_arc_smith.v1\",\"ring\":\"F[t]/(t^12)\",\"arc\":\"E=t,X2=c*t\",\"invariant\":\"delta_(r+10)([E M])-delta_r(E)\",\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "dlog-blowup" {
         std::panic::set_hook(Box::new(|_| {}));
         let mut results=Vec::new();
