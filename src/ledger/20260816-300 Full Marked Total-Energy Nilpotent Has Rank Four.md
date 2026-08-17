@@ -205,7 +205,7 @@ The rank-four answer happens to match the number of enhanced points
 [\pm y:\pm x:1],
 \]
 
-but these objects have different types. Entries 224--226 compute the
+but these objects have different types. Entries 226, 319--320 compute the
 physical enhanced-point class and find
 
 \[

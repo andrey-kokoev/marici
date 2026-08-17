@@ -17,7 +17,7 @@ C_3^{(+)}\sqcup C_3^{(-)}.
 It has six vertices, six edges, degree two at every vertex, and two connected
 components.
 
-Entries 264--267 instead construct the six literal cross-sheet corridors.
+Entries 266, 341--343 instead construct the six literal cross-sheet corridors.
 Writing their endpoints as \(v_{i,\sigma}\), with
 \(i\in\mathbb Z/3\) and \(\sigma\in\{+,-\}\), their boundary is
 \[

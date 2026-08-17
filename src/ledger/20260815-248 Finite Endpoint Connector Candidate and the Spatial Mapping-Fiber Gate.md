@@ -12,7 +12,7 @@ admission is claimed.
 
 ## Finite connector presentation
 
-The ordinary six-chart KN corridor gluing obstruction of entry247 has three
+The ordinary six-chart KN corridor gluing obstruction of entry335 has three
 endpoint mismatches and three shifted-center mismatches. Adjoining one
 primitive candidate endpoint connector for each road, the three already
 available shifted-center homotopies, and the normalized W012 top filler gives

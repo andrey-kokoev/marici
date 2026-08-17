@@ -7,12 +7,12 @@ date: 2026-08-15
 
 ## Record
 
-Status: the weight-\(-1\) logarithmic wall class of entry 235 cannot be
+Status: the weight-\(-1\) logarithmic wall class of entry 324 cannot be
 assigned canonical coordinates in the absolute equation-(58) nine-master
 module using the frozen source maps. Its parent master is \(e_6\), but that
 is ancestry data, not an absolute cohomology coordinate.
 
-Entry 236's zero infinity-Gysin image remains valid. This entry sharpens its
+Entry 325's zero infinity-Gysin image remains valid. This entry sharpens its
 conditional phrase “whenever pushed”: the required pushforward is not among
 the frozen canonical arrows.
 
@@ -104,7 +104,7 @@ map. Choosing one after seeing the desired \(e_6\), \(v_{\rm alg}\), or
 
 ## What the \(e_6\) ancestry does and does not say
 
-The complete form used in entries 234--235 is
+The complete form used in entries 234, 324 is
 
 \[
 -\frac12\frac{K_1\,da\wedge db}{K^{3/2}}D_{\rm low},
@@ -133,7 +133,7 @@ Gauss--Manin connection does not resolve this type mismatch.
 
 ## Relation to infinity Gysin
 
-Entry 236 proved scheme-theoretic disjointness between the finite wall and
+Entry 325 proved scheme-theoretic disjointness between the finite wall and
 the anticanonical infinity divisor. Thus the supported class has zero direct
 elliptic boundary image:
 
@@ -156,7 +156,7 @@ absolute nine-master vector.}
 }
 \]
 
-This is a smaller surviving statement than entry 236's conditional kernel
+This is a smaller surviving statement than entry 325's conditional kernel
 placement. The class remains coefficient complexity over the existing
 marked carrier. No new carrier incidence is required.
 
@@ -177,7 +177,7 @@ marked carrier. No new carrier incidence is required.
 - `research/benincasa/check_wall_to_absolute_type_gate.rs`;
 - `research/benincasa/wall-to-absolute-type-gate.json`;
 - source master ordering and marked-denominator exclusion of entry 169;
-- complete \(e_6D_{\rm low}\) form of entries 234--235;
+- complete \(e_6D_{\rm low}\) form of entries 234, 324;
 - warnings-denied optimized Rust compilation and execution.
 
 ## Next finite falsifier

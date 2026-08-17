@@ -36,7 +36,7 @@ and an odd connecting form.
 
 ## Frozen exceptional wall
 
-Entries 225--226 derive the source exceptional disk
+Entries 226, 320 derive the source exceptional disk
 
 \[
 Q(r,n)
@@ -69,7 +69,7 @@ frozen Cayley--Menger boundary with \(r=0\).
 
 ## Relative connecting form
 
-Entry 232 gives the exact leading two-form
+Entry 322 gives the exact leading two-form
 
 \[
 \omega_{-3}
@@ -144,9 +144,9 @@ exceptional correction on the literal source chain.}
 }
 \]
 
-This is a genuine ablation of the projected result. Entry 229 established a
+This is a genuine ablation of the projected result. Entry 321 established a
 nonzero cyclic sewing only after forgetting the lower denominator.
-Entries 230--233 now show:
+Entries 230--231, 322--323 now show:
 
 \[
 \text{project}

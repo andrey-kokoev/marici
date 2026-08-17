@@ -16,7 +16,7 @@ Let
 \[
 P(t)=t+2t^2+t^3
 \]
-be the Boolean normal packet on one literal corridor edge. Entry224 proves
+be the Boolean normal packet on one literal corridor edge. Entry319 proves
 that two unshifted copies \(P\oplus P\) cannot retain the two source Tor
 grades under any fixed Gysin shift.
 

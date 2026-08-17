@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Result
 
-Entries 265 and 267 left open the localization boundary
+Entries 342--343 left open the localization boundary
 
 \[
 H^1(W_1\cup W_2)(-1)\longrightarrow H^3(S_E).
@@ -152,7 +152,7 @@ W=W_1\cup W_2
 \]
 
 It is connected because the two wall curves meet at the same-sheet points
-\(P_\pm\) of entries 264--267. Hence \(H^0(W)\) has rank one. The
+\(P_\pm\) of entries 266, 341--343. Hence \(H^0(W)\) has rank one. The
 degree-zero Gysin in the wall localization sequence sends its generator to
 the divisor class \([W]\), but
 
@@ -172,7 +172,7 @@ H^0(W)(-1)\longrightarrow H^2(S_E)
 
 reduces to the displayed short exact sequence.
 
-Entry 267 gives
+Entry 343 gives
 
 \[
 \operatorname{rank}H^1(W)=3

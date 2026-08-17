@@ -5,7 +5,7 @@
 Date: 2026-08-15
 
 Status: proved integral classification of the suspension-valued reflection
-required by entry225. The class is the nonzero element of
+required by entry320. The class is the nonzero element of
 (H^1(C_2;\mathbb Z_{\rm sign})\cong\mathbb Z/2). This does not construct
 the wall-supported geometric correspondence or the literal entry143 map. No
 graph admission is claimed.
@@ -37,7 +37,7 @@ cannot be removed by any integral change of boundary grading.
 ## Geometric consequence
 
 An ordinary reflection pullback has degree cocycle zero. It therefore cannot
-realize the entry225 exchange even after replacing a dualizing line by an
+realize the entry320 exchange even after replacing a dualizing line by an
 ungraded two-term wall complex. The wall correspondence must additionally
 carry a graded lift of the reflection action groupoid whose forward and
 reverse arrows have degrees (+1) and (-1).

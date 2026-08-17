@@ -96,7 +96,7 @@ fn main() {
     let endpoint_smith = [1, 1, 1];
 
     // The other three mismatches are the shifted center homotopies of
-    // entries244--245.  Their cyclic boundary has the unique normalized
+    // entries332--333.  Their cyclic boundary has the unique normalized
     // W012 top filler, so the complete descent correction is unimodular.
     let center_boundary = [[1_i32, 0, 0], [0, 1, 0], [0, 0, 1]];
     let top_boundary = [1_i32];

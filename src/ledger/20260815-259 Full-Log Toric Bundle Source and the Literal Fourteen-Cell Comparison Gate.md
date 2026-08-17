@@ -2,7 +2,7 @@
 
 ## Canonical logarithmic source
 
-The conductor cross-polytope of entries 255--258 has an intrinsic algebraic
+The conductor cross-polytope of entries 256, 258, 336--337 has an intrinsic algebraic
 log realization.  If the three labelled conductor-normal lines are
 \(L_{14},L_{03},L_{25}\), form
 
@@ -57,7 +57,7 @@ downstream parity and symmetry tests remain undefined.
 ## Evidence
 
 - `research/voevodsky/check_conductor_full_log_toric_bundle.rs`
-- entries 143, 245, 246, 249, 251, 255, 257, and 258.
+- entries 143, 249, 251, 333--334, 336--337, and 258.
 
 ~~~json
 {

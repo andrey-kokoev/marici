@@ -8,7 +8,7 @@ date: 2026-08-15
 ## Record
 
 Status: the nonconstant Cayley--Menger branch and source double-pole master
-factor omitted from the primitive argument of entries 232--233 have been
+factor omitted from the primitive argument of entries 322--323 have been
 restored. Their leading logarithmic wall residue still vanishes, and the
 next full coefficient also has zero logarithmic residue by an exact
 coefficient identity.
@@ -34,7 +34,7 @@ nonzero wall residue at weight }-3\text{ or }-2.
 The finite falsifier was exact vanishing of both logarithmic residue
 coefficients in the complete unsplit local form.
 
-## Correction to entries 232--233
+## Correction to entries 322--323
 
 Those entries correctly derived the restored lower-denominator factor, but
 then used
@@ -95,7 +95,7 @@ The Jacobian remains
 da\wedge db=\tau^5dr\wedge dn.
 \]
 
-Together with the unsplit lower factor of entry 232, these determine the
+Together with the unsplit lower factor of entry 322, these determine the
 complete coefficients at weights \(-3\) and \(-2\).
 
 ## Leading residue
@@ -117,7 +117,7 @@ double pole produces no logarithmic coefficient:
 \boxed{\operatorname{Res}_{r=0}F_{-3}=0.}
 \]
 
-This is the complete-integrand reason the leading verdict of entry 233
+This is the complete-integrand reason the leading verdict of entry 323
 survives.
 
 ## Next-grade residue
@@ -227,7 +227,7 @@ Another zero moves the frontier one grade higher.
 {
   "claim": "Restoring the complete master factor produces a nonzero wall residue at weight -3 or -2.",
   "status": "falsified",
-  "correction": "The primitive in entries 232-233 omitted the nonconstant K1/K^(3/2) factor.",
+  "correction": "The primitive in entries 322--323 omitted the nonconstant K1/K^(3/2) factor.",
   "complete_residues": {
     "-3": 0,
     "-2": 0

@@ -6,7 +6,7 @@ Date: 2026-08-15
 
 Status: proved in the finite labelled product-Rees/Čech/Tor
 totalization and literal entry143 incidence/Boolean complex. The
-vertex-supported cone repairs entry233's direct third-edge chain failure.
+vertex-supported cone repairs entry323's direct third-edge chain failure.
 Proper log-BM six-functor provenance and the literal occurrence-line radial
 comparison remain unconstructed. No graph admission is claimed.
 
@@ -36,7 +36,7 @@ exterior contractions anticommute,
 D^2=0.
 \]
 
-The unique axis dictionary of entry232 sends \(\tau\) to the persistent
+The unique axis dictionary of entry322 sends \(\tau\) to the persistent
 corridor label and \(n_0,n_1\) to the two moving labels. Therefore the
 cone has the literal entry143 three-label Boolean packet, while its three
 boundary terms land on exactly the three codimension-one faces of that
@@ -144,4 +144,3 @@ capable of invoking `rustc` is exposed.
   "checker_sha256": "60ed787ae2baf4e73aeeb983d35f39cb22737b631ec2bb13537b6fa3a13d71d1"
 }
 ~~~
-

@@ -4,7 +4,7 @@
 
 Date: 2026-08-15
 
-Status: the nine literal one-label facets below the six entry241 vertex
+Status: the nine literal one-label facets below the six entry329 vertex
 stars admit canonical integral oriented corridor chains with primitive
 endpoint boundaries. Rotation acts strictly. Physical reflection does not:
 it exchanges the selected directed arc with the complementary arc, and the
@@ -19,7 +19,7 @@ with ranks
 \[
 (1,9,21,14).
 \]
-The six vertex packets from entry241 determine nine distinct one-label
+The six vertex packets from entry329 determine nine distinct one-label
 facets:
 
 - six short facets, forming one oriented triangle on each normalization
@@ -68,7 +68,7 @@ no torsion.
 
 ## Consequence for the full-log correspondence
 
-The vertex/edge pushforward from entry241 extends to the facet grade only
+The vertex/edge pushforward from entry329 extends to the facet grade only
 after adjoining the nine facet-supported 2-cell homotopies. Their presence
 is derived by the literal \(K_6\) incidence matrix; it is not a fitted
 coefficient correction.

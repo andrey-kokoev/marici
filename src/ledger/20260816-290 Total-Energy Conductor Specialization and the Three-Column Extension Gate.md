@@ -201,7 +201,7 @@ This correction preserves the governing warning
 
 ## Relation to existing local evidence
 
-Entries 224--226 construct a source-selected exceptional interval at the
+Entries 226, 319--320 construct a source-selected exceptional interval at the
 physical total-energy corner and a nonzero algebraic Cut--nearby
 functional. This is direct evidence for a local top-column mechanism.
 
@@ -276,7 +276,7 @@ root sections, and a tubular logarithmic representative of the primitive
 wall cycle. Determine whether it extends invariantly through \(E=0\).
 
 Then repeat by symmetry for \(W_2\). Only after the mixed columns are
-settled should the two-wall top class be paired with the entry-224
+settled should the two-wall top class be paired with the entry-319
 exceptional basis.
 
 The finite outcomes are:

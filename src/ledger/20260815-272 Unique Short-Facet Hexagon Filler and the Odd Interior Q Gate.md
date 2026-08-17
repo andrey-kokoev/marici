@@ -11,7 +11,7 @@ Order the six cross-sheet sector rays as
 \[
 (0,+),(1,-),(2,+),(0,-),(1,+),(2,-).
 \]
-Entries 264--267 give the unique length-three K6 geodesic for every adjacent
+Entries 266, 341--343 give the unique length-three K6 geodesic for every adjacent
 pair. Their concatenation is a closed 18-edge chain, supported on 15 distinct
 oriented K6 edges.
 

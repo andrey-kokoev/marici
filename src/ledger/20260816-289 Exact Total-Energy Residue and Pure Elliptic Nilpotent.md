@@ -208,7 +208,7 @@ extension contains only:
 
 Thus the four enhanced points do not create an additional absolute
 nilpotent block. Their higher-Rees effects belong to marked
-Cut--nearby/excess data, as found in entries 224--225, rather than to a new
+Cut--nearby/excess data, as found in entries 319--320, rather than to a new
 absolute Gauss--Manin summand.
 
 ## Classification
@@ -259,7 +259,7 @@ determine the off-diagonal residue of the canonical marked extension
 \]
 
 In particular, it does not identify the total-energy specialization of the
-invariant top conductor lift with the entry-224 exceptional interval merely
+invariant top conductor lift with the entry-319 exceptional interval merely
 because both occur at the physical enhanced point.
 
 ## Next hostile test

@@ -2,7 +2,7 @@
 
 ## Exact obstruction after the local Boolean repair
 
-Entry262 constructs the full eight-state Boolean packet on each of the six
+Entry339 constructs the full eight-state Boolean packet on each of the six
 literal half-galleries.  This does not yet construct the six cross-sheet
 two-cones of the full-log toric source.
 
@@ -23,7 +23,7 @@ before coefficients, normal signs, Tor grades, or Smith reduction.
 
 ## Scoped no-go
 
-Within the literal K6 half-gallery objects of entries 246 and 262, the
+Within the literal K6 half-gallery objects of entries 334, 339, the
 cross-sheet part of the full-log source has no edge image.  Hence the eight
 maximal-cone compatibility equations cannot yet be written in one literal
 entry143 mapping complex.
@@ -41,13 +41,13 @@ and normal-circle lines and both Tor grades, and specify the Beck--Chevalley
 homotopy on its two endpoint restrictions.  Rotation and reflection may
 transport one seed only after its stabilizer square is proved.
 
-Only after these six bridges exist can the 24 local rows of entry262 be
+Only after these six bridges exist can the 24 local rows of entry339 be
 assembled around the eight maximal cones and tested by an integral SNF.
 
 ## Evidence
 
 - `research/voevodsky/check_full_log_cross_sheet_anchor_no_go.rs`
-- entries 143, 246, 259, 260, 261, and 262.
+- entries 143, 259--260, 334, 338, and 262.
 
 ~~~json
 {

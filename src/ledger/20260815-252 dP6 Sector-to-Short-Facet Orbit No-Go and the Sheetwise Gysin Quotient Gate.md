@@ -38,7 +38,7 @@ sector germs over a short facet must be integrated by a relative
 normal-circle/connector homotopy; the positive and negative quotients must
 then be clutched over the conductor with the physical polarity action.
 
-This is exactly where the shifted pair-facet maps of entry 245 must enter:
+This is exactly where the shifted pair-facet maps of entry 333 must enter:
 the two-to-one fibers cannot be collapsed by an ordinary degree-zero
 relabeling. The required global map must derive the unit Gysin coefficient,
 all normal-circle and Tor rows, and the reflected sheet clutching. Entry249's
@@ -52,7 +52,7 @@ additional geometric operation that the next matrix must encode.
 ## Evidence
 
 - research/voevodsky/check_dp6_short_facet_d3_orbit_no_go.rs
-- entries 143, 245, 249, 250, and 251.
+- entries 143, 249--250, 333, and 251.
 
 ~~~json
 {

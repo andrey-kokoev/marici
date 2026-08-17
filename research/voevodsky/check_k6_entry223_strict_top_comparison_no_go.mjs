@@ -137,7 +137,7 @@ for(let mask=0;mask<(1<<nonreflectionSolution.basis.length);mask++){
 const correction=correctionVectors[0];
 if(!correctionVectors.every(value=>JSON.stringify(value)===JSON.stringify(correction)))throw Error("correction orbit not unique");
 const correctionWeight=correction.reduce((sum,value)=>sum+value,0);
-// Entry245 constructs the required correction in homological degree -1:
+// Entry333 constructs the required correction in homological degree -1:
 // every odd reflection row has its own primitive facet-homotopy boundary.
 // Unlike the same-degree scalar column below, these are mapping-cone columns.
 const oddRows=correction.map((value,index)=>value?index:-1).filter(index=>index>=0);

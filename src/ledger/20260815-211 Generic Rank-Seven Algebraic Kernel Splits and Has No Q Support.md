@@ -13,7 +13,7 @@ Status: exact finite-field theorem for the generic bivariate
 \(q_{\mathcal G_{12}}\)-residue coefficient module. Discriminant extension,
 integral normalization, and the physical moving relative chain remain open.
 
-This entry continues entries 169, 199, 207, and 209. It adds no denominator,
+This entry continues entries 169, 207, 316, and 209. It adds no denominator,
 support summand, projector, or carrier cell.
 
 ## Deutsch--Popperian claim

@@ -11,7 +11,7 @@ Status: the exceptional carrier interval is mapped to a source-basis
 coefficient functional; its universal regularized Leray scalar remains to be
 evaluated before claiming the literal Cut--nearby commutator.
 
-This entry continues entry 224. It adds no denominator, carrier cell, support
+This entry continues entry 319. It adds no denominator, carrier cell, support
 summand, projector, or normalization.
 
 ## Deutsch--Popperian conjecture tested
@@ -37,7 +37,7 @@ At the positive real corner write
 a=y+A,\qquad b=x+B,\qquad E=E_T.
 \]
 
-The cubic tangent calculation of entries 222--224 requires the weights
+The cubic tangent calculation of entries 223, 318--319 requires the weights
 
 \[
 E=\tau^2,\qquad
@@ -62,7 +62,7 @@ K
 \]
 
 The source double-pole numerator is not the total-\(E\) derivative used in
-entry 222. It is independently frozen by equation (58):
+entry 318. It is independently frozen by equation (58):
 
 \[
 K_1=

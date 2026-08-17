@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Question
 
-Entries 263--264 left two proper mixed grades
+Entries 340--341 left two proper mixed grades
 
 \[
 m_{101}=m_{110}=1
@@ -212,7 +212,7 @@ C_1^-\cap C_2^-=\{P_-\},
 \]
 
 while the cross-sheet intersections are empty. The two points lie over the
-triple point of entry 264 with
+triple point of entry 341 with
 
 \[
 w(P_\pm)=\mp\Lambda.
@@ -262,7 +262,7 @@ H^1(W_i)(-1)\longrightarrow\mathcal M_q^{(9)}.
 }
 \]
 
-This agrees with entry 237. A direct arrow would require a splitting of
+This agrees with entry 326. A direct arrow would require a splitting of
 localization, a contracting homotopy, or a separately derived physical
 relative-realization map.
 
@@ -336,8 +336,8 @@ This result does not determine:
 - research/benincasa/elliptic-mixed-face-geometry.json;
 - entry 161 and research/benincasa/check_marked_relative_q.rs for the frozen
   signed-face census;
-- entry 237 for the localization type gate;
-- entries 263--264 for the exact ranks and top incidence.
+- entry 326 for the localization type gate;
+- entries 340--341 for the exact ranks and top incidence.
 
 ## Next hostile falsifier
 

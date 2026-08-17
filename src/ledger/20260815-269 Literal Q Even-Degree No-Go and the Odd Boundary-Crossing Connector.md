@@ -23,7 +23,7 @@ not [2,1]. Its Smith factor is 2 and its cokernel is Z/2. No integral source
 coordinate maps to the primitive value qSigma with coefficient one.
 
 This is the earliest global obstruction after the complete finite
-occurrence, Boolean, Tor, Cech, edge, and facet matrices of entries262-267.
+occurrence, Boolean, Tor, Cech, edge, and facet matrices of entries266, 339--343.
 It occurs at the boundary-crossing Q projection.
 
 ## Minimal additional datum

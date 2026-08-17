@@ -131,7 +131,7 @@ fn main() {
             "  \"next_complete_log_residue\": 0,\n",
             "  \"grades_closed\": [-3,-2],\n",
             "  \"next_possible_grade\": -1,\n",
-            "  \"supersedes_incomplete_primitive_in_entries\": [232,233],\n",
+            "  \"supersedes_incomplete_primitive_in_entries\": [322,323],\n",
             "  \"new_carrier_incidence\": false\n",
             "}}\n"
         ),

@@ -72,7 +72,7 @@ stratum.
 
 ## Frozen graph
 
-Use entry 267's edge order
+Use entry 343's edge order
 
 \[
 (n_{1a},n_{1b},n_{2a},n_{2b},P_+,P_-)
@@ -92,7 +92,7 @@ g_{110}=(0,0,1,-1,0,0),
 \widetilde g_{111}=(1,0,0,-1,-1,1).
 \]
 
-The root discriminants derived in entry 265 are
+The root discriminants derived in entry 342 are
 
 \[
 \Delta_{W_1}=-4xD_1,
@@ -309,8 +309,8 @@ system.
 
 ## Exact evidence
 
-- entry 265 for the two node discriminants;
-- entry 267 for the primitive cycle basis and saturated filtration;
+- entry 342 for the two node discriminants;
+- entry 343 for the primitive cycle basis and saturated filtration;
 - entry 279 for the rank-twelve localization extension;
 - research/benincasa/two-wall-conductor-monodromy.json.
 

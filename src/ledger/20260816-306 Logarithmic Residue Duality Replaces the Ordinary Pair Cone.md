@@ -31,7 +31,7 @@ For a smooth wall component the canonical sequence is
 \]
 
 For the reducible source wall, this is replaced by the
-normalization/conductor totalization already frozen in Entries 265--280.
+normalization/conductor totalization already frozen in Entries 266, 268--280, 342--343.
 
 ## Finite type falsifier
 

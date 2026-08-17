@@ -4,7 +4,7 @@
 
 Date: 2026-08-15
 
-Status: definitive scoped no-go. The shifted corridor packet of entry225
+Status: definitive scoped no-go. The shifted corridor packet of entry320
 cannot be the restriction of one relative-dualizing line on a connected
 perfect or log-smooth correspondence. This does not exclude a stratified
 two-term dualizing complex, a derived wall object, or a correspondence whose
@@ -13,7 +13,7 @@ claimed.
 
 ## Obstruction
 
-Entry225 proves that Tor-faithful realization requires the two boundary
+Entry320 proves that Tor-faithful realization requires the two boundary
 packets
 \[
 P\oplus P[1].
@@ -50,7 +50,7 @@ result with the literal entry143 normal/Cech corestrictions.
 
 ## Consequence for the main objective
 
-The finite (P\oplus P[1]) model remains correct, but entry225's proposed
+The finite (P\oplus P[1]) model remains correct, but entry320's proposed
 realization specifically as a single relative-dualizing line is falsified.
 The next construction must provide the two-term wall triangle. Until it is
 constructed, the endpoint/(Q) mapping fiber, (p_{\partial,Q}), its

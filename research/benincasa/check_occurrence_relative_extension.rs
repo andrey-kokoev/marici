@@ -44,7 +44,7 @@ fn main() {
     let mut cyclic_checks = 0_u64;
 
     // Remove the common factor i*pi/16. The Kummer interval is
-    // int_{-N}^{N} dn/w=-i*pi/sqrt(x*y), and entry 243 gives the two
+    // int_{-N}^{N} dn/w=-i*pi/sqrt(x*y), and entry 331 gives the two
     // occurrence coefficients. Thus the period numerators over (x*y)^4 are:
     //   p31 = +(3*x^2+7*x*y+6*y^2)
     //   p23 = -(6*x^2+7*x*y+3*y^2).

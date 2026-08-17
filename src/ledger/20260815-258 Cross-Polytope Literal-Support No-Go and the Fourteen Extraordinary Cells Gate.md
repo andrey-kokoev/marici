@@ -2,8 +2,8 @@
 
 ## Literal support census
 
-The six cross-polytope vertices already map to the six exact entry241
-triangulation vertices. The eight triangular faces of entry255 therefore
+The six cross-polytope vertices already map to the six exact entry329
+triangulation vertices. The eight triangular faces of entry336 therefore
 have a fully determined literal K6 support census.
 
 The two pure-sheet faces have three pairwise intersections, each a genuine
@@ -44,7 +44,7 @@ The minimal spatial enlargement has fourteen extraordinary cells:
    those cross edges with the six already supported sheetwise Gysin edges.
 
 The empty triple intersection explains why the interior Gysin class of
-entry257 cannot be sent to the literal generic top merely by a poset map.
+entry337 cannot be sent to the literal generic top merely by a poset map.
 The eight face maps must instead land through an extraordinary
 generic-costalk/nearby-cycle transformation and jointly identify their
 primitive boundary with entry251's six-term short-facet defect.
@@ -57,7 +57,7 @@ chain map and endpoint/Q mapping fiber remain uninstantiated.
 ## Evidence
 
 - research/voevodsky/check_cross_polytope_literal_support_no_go.rs
-- entries 143, 241, 245, 246, 249, 251, 253, 255, 256, and 257.
+- entries 143, 249, 251, 253, 256, 329, 333--334, 336, and 257.
 
 ~~~json
 {

@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Record
 
-Status: entry 244 falsified source-canonicity of the two individual physical
+Status: entry 332 falsified source-canonicity of the two individual physical
 occurrence periods. The surviving object has now been constructed at
 relative mapping-cone and period-line level. The endpoint polar jets form a
 boundary object; occurrence addition descends to a canonical sewn quotient;
@@ -23,7 +23,7 @@ summand, or normalization is added.
 
 ## Deutsch--Popperian conjecture tested
 
-After entry 244, the smaller hard-to-vary claim is
+After entry 332, the smaller hard-to-vary claim is
 
 \[
 \boxed{
@@ -38,7 +38,7 @@ rank-one flat connection.
 
 ## Frozen local normal-crossings model
 
-Use the weighted chart of entries 230--243:
+Use the weighted chart of entries 230--231, 234, 240, 322--331:
 
 \[
 E_T=\tau^2,\qquad
@@ -87,7 +87,7 @@ complex is the mapping-cone enlargement
 \right)[-1].
 \]
 
-Entry 243 gives
+Entry 331 gives
 
 \[
 \eta_i
@@ -112,7 +112,7 @@ evaluation additionally requires a functional
 \mathcal J_\partial^{(9)}\longrightarrow\mathbb C.
 \]
 
-Entry 244 proves that the source does not define
+Entry 332 proves that the source does not define
 \(\lambda_\partial\) occurrence by occurrence.
 
 ## Canonical sewing map
@@ -128,7 +128,7 @@ J_\partial\Phi_{31}+J_\partial\Phi_{23}
 \right).
 \]
 
-Entry 243 proves the polynomial identities
+Entry 331 proves the polynomial identities
 
 \[
 \eta_{31}+\eta_{23}=\eta_{\rm unsplit},
@@ -186,7 +186,7 @@ gives the exact period
 }
 \]
 
-Using the corrected coefficients of entry 243,
+Using the corrected coefficients of entry 331,
 
 \[
 \boxed{
@@ -275,9 +275,9 @@ jet extension with the absolute nine-master connection is not inferred.
 The admissible operations separate as follows.
 
 1. Boundary value before the exceptional grade retains one of the chamber
-   currents \(2,0,0,-2\) of entries 231 and 244.
+   currents \(2,0,0,-2\) of entries 231, 332.
 2. Exceptional grade before boundary value gives the canonical meromorphic
-   classes and endpoint jets of entries 242--243.
+   classes and endpoint jets of entries 330--331.
 3. Endpoint finite part requires \(\lambda_\partial\) and is noncanonical
    for either occurrence.
 4. Source sewing kills the anti-diagonal chamber allocation and yields the
@@ -296,7 +296,7 @@ occurrence-level canonical physical number is recovered.
 
 ## Infinity-Gysin and \(\mathcal T_7\)
 
-Entries 240--243 show that the wall Kummer class has zero direct image in
+Entries 240, 329--331 show that the wall Kummer class has zero direct image in
 the anticanonical Legendre quotient. Hence
 
 \[

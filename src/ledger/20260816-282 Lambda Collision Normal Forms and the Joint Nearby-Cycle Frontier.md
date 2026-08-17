@@ -251,7 +251,7 @@ b_1=8-7+1=2.
 \]
 
 Exactly one graph class specializes to zero. This is the top conductor
-class detected in entries 264 and 280, but the static rank drop does not
+class detected in entries 280, 341, but the static rank drop does not
 yet determine its logarithmic extension into the absolute surface system.
 
 ## Monodromy discipline

@@ -2,7 +2,7 @@
 
 ## Canonical two-dimensional carrier
 
-Entries264 and 265 fix the literal image of every edge in the full-log
+Entries341--342 fix the literal image of every edge in the full-log
 octahedral fan. The boundary of each of its eight maximal cones can therefore
 be evaluated in the complete 14-vertex, 21-edge K6 flip graph.
 
@@ -33,7 +33,7 @@ unsigned occurrence counts.
 The checker certifies the complete cellular carrier matrix, but it does not
 yet distribute each oriented facet through all literal entry143 Boolean,
 Tor, and Cech states. That full packet must restrict to the edge matrices of
-entry265 and prove the nine paired-facet BC equations state by state.
+entry342 and prove the nine paired-facet BC equations state by state.
 
 After that finite lift, the still-essential geometric arrow remains the
 proper/log-excess comparison from the product-branch Rees Cech carrier into
@@ -44,7 +44,7 @@ chain map.
 ## Evidence
 
 - research/voevodsky/check_full_log_maximal_cone_k6_fillers.rs
-- entries 143 and 259-265.
+- entries 143, 259--260, 338--342.
 
 ~~~json
 {

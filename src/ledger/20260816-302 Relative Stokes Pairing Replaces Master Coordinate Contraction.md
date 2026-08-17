@@ -27,7 +27,7 @@ The obstruction is source-visible:
 - Entry 291 proves that the one-wall class is defined modulo a
   five-dimensional exact-lift variation whose freely varying coordinates
   include \(e_3,e_5,e_6\);
-- Entries 225--226 prove that the exceptional functional is supported
+- Entries 226, 320 prove that the exceptional functional is supported
   precisely on \(e_3,e_5,e_6\).
 
 Therefore a representative change that leaves the relative cohomology class

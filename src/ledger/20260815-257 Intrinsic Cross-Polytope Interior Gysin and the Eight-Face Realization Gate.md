@@ -14,7 +14,7 @@ B_\Diamond=\operatorname{conv}
 \]
 
 This is a canonical three-ball in the direct sum of the three labelled
-conductor-normal lines. Its boundary is entry255's octahedral sphere. The
+conductor-normal lines. Its boundary is entry336's octahedral sphere. The
 cellular boundary of its single interior generator is the signed sum of the
 eight triangular faces,
 
@@ -85,7 +85,7 @@ six-functor correspondence.
 ## Evidence
 
 - research/voevodsky/check_conductor_cross_polytope_interior_gysin.rs
-- entries 93, 143, 245, 249, 251, 253, 255, and 256.
+- entries 93, 143, 249, 251, 253, 333, 336, and 256.
 
 ~~~json
 {

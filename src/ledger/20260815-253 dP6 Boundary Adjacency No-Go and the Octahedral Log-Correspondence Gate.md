@@ -2,7 +2,7 @@
 
 ## Exact adjacency comparison
 
-The entry241 labelled vertex dictionary determines, without an extra
+The entry329 labelled vertex dictionary determines, without an extra
 assignment, which two short facets meet each of the six ordered long-road
 sectors. It gives twelve sector--short incidences. Every short facet occurs
 twice, so these incidences determine six edges between sector vertices.
@@ -55,9 +55,9 @@ whose one-skeleton contains:
 2. the positive and negative sheetwise facet triangles; and
 3. eight Beck--Chevalley two-cells comparing their alternating composites.
 
-Its sheetwise edges must carry the shifted pair-facet Gysin maps of entry245,
+Its sheetwise edges must carry the shifted pair-facet Gysin maps of entry333,
 while its cross-sheet edges carry the Rees/KN endpoint and center connectors
-of entries246 and 249. Only such a two-dimensional comparison can map the
+of entries249, 334. Only such a two-dimensional comparison can map the
 interior top to entry251's canonical lift while deriving all six short
 defect rows.
 
@@ -69,7 +69,7 @@ geometric gate.
 ## Evidence
 
 - research/voevodsky/check_dp6_literal_facet_adjacency_obstruction.rs
-- entries 143, 241, 245, 246, 249, 250, 251, and 252.
+- entries 143, 249--251, 329, 333--334, and 252.
 
 ~~~json
 {

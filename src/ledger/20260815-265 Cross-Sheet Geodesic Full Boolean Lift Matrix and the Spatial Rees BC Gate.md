@@ -2,7 +2,7 @@
 
 ## Literal finite lift
 
-Entry264 gives six unique three-segment K6 geodesics. Pulling the literal
+Entry341 gives six unique three-segment K6 geodesics. Pulling the literal
 entry143 Boolean packets over their 18 flip segments determines the complete
 finite coefficient lift.
 
@@ -40,7 +40,7 @@ constructed; it does not supply that comparison.
 ## Evidence
 
 - research/voevodsky/check_cross_sheet_geodesic_full_boolean_lift.rs
-- entries 143, 216-219, 262-264.
+- entries 143, 216--219, 339--341.
 
 ~~~json
 {

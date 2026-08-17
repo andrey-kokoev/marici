@@ -7,7 +7,7 @@ date: 2026-08-15
 
 ## Record
 
-Status: the two endpoint principal parts left open in entry 238 agree
+Status: the two endpoint principal parts left open in entry 327 agree
 identically on the frozen square-root sheet. Their oriented difference in
 the source tangential relative cone is zero. Thus the complete weight-\(-1\)
 occurrence correction leaves neither a punctured-wall class nor an
@@ -32,7 +32,7 @@ in the source-fixed square-root coordinate.
 
 ## Frozen endpoint cover
 
-Retain entry 238's notation
+Retain entry 327's notation
 
 \[
 a=xy,
@@ -64,7 +64,7 @@ frozen branch and is not admissible.
 
 ## Complete principal parts
 
-The primitive of entry 238 is, up to its common source scalar,
+The primitive of entry 327 is, up to its common source scalar,
 
 \[
 \frac{3an^2-5s}{w^3}.
@@ -136,8 +136,8 @@ the interior form and its oriented endpoint jet:
 }
 \]
 
-This is stronger than the regularized-period statement of entries 235 and
-238. The result does not rely on discarding divergent terms; their complete
+This is stronger than the regularized-period statement of entries 324 and
+327. The result does not rely on discarding divergent terms; their complete
 coefficient vectors cancel.
 
 ## Verdict
@@ -150,7 +150,7 @@ The surviving-endpoint-jet conjecture is falsified:
 }
 \]
 
-The first nonzero Laurent coefficient in entry 235 is therefore an exact
+The first nonzero Laurent coefficient in entry 324 is therefore an exact
 representative with a diagonal endpoint germ, not a surviving relative
 coefficient class. No comparison with the absolute nine-master kernel,
 \(L_1\), or \(\mathcal Q\) is generated at this grade.

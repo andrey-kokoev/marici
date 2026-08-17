@@ -2,7 +2,7 @@
 
 ## Canonical repair of the local mismatch
 
-Entry261 shows that a half-gallery changes one exclusive normal label.  The
+Entry338 shows that a half-gallery changes one exclusive normal label.  The
 literal middle triangulation already supplies the canonical repair.  Write
 
 \[
@@ -44,7 +44,7 @@ The checker uses the actual K6 labels of every half-gallery.  It verifies:
 - no occurrence section, normal section, or integer is inverted outside its
   legal Cech summand.
 
-This closes the local constant-Boolean defect of entry261 at the finite
+This closes the local constant-Boolean defect of entry338 at the finite
 literal BM–Cech level.  It preserves both Tor grades and is automatically
 transported across the six halves by the established label action.
 
@@ -63,7 +63,7 @@ tests remain undefined.
 ## Evidence
 
 - `research/voevodsky/check_literal_half_gallery_full_boolean_replacement.rs`
-- entries 143, 245, 260, and 261.
+- entries 143, 260, 333, and 261.
 
 ~~~json
 {

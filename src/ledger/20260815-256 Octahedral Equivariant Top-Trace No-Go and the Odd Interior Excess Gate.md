@@ -2,7 +2,7 @@
 
 ## Scoped obstruction
 
-Entry255 supplies the canonical octahedral carrier. Its eight faces are
+Entry336 supplies the canonical octahedral carrier. Its eight faces are
 indexed by sign triples
 
 \[
@@ -75,7 +75,7 @@ kernel.
 ## Evidence
 
 - research/voevodsky/check_cross_polytope_equivariant_top_trace_no_go.rs
-- entries 143, 176, 245, 249, 251, 253, and 255.
+- entries 143, 176, 249, 251, 253, 333, and 255.
 
 ~~~json
 {

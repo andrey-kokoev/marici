@@ -161,7 +161,7 @@ The list is derived from frozen geometry. It is not a fitted pole ansatz.
 
 ## Relation to the exceptional-wall calculations
 
-Entries 235--239 found a nonzero weight-minus-one local coefficient on an
+Entries 324--328 found a nonzero weight-minus-one local coefficient on an
 exceptional wall, then proved it exact on the punctured wall and zero in
 the tangential endpoint cone. That representative therefore cannot define
 one of the rank-three conductor extension columns.
@@ -226,9 +226,9 @@ does not:
 
 ## Exact evidence
 
-- entries 265 and 280 for the conductor discriminants and characters;
+- entries 280, 342 for the conductor discriminants and characters;
 - entry 279 for the ambient rank-twelve extension;
-- entries 238--239 for exactness of the exceptional-wall candidate;
+- entries 327--328 for exactness of the exceptional-wall candidate;
 - research/benincasa/conductor-spectral-separation.json.
 
 ## Next hostile falsifier

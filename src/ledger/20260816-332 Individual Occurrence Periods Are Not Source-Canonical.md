@@ -99,7 +99,7 @@ frozen marked intersection.
 
 ## Endpoint-relative obstruction at weight zero
 
-Entry 243 gives exact reductions
+Entry 331 gives exact reductions
 
 \[
 \eta_i=c_i\frac{dn}{w}+d\Phi_i,
@@ -169,7 +169,7 @@ in sector-specific relative-chain/coefficient assembly, not incidence.
 - primary source arXiv:2305.19686v2, equations (4.15)--(4.20), especially
   the hierarchy statement between (4.15) and (4.16);
 - entry 231's exhaustive four-chamber current census;
-- entries 242--243's exact individual de Rham reductions and endpoint-jet
+- entries 330--331's exact individual de Rham reductions and endpoint-jet
   sewing;
 - `research/benincasa/occurrence-resolved-physical-period-no-go.md`.
 

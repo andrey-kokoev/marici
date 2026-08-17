@@ -63,7 +63,7 @@ primitive, but no physically reflection-equivariant realization can use
 only the current two-edge \(W_{ij}\) boundary data.
 
 This also pinpoints the convention mismatch: entry221's two-edge finite
-extraordinary objects and entry229's physically reflected literal vertex
+extraordinary objects and entry321's physically reflected literal vertex
 packets are each consistent in their stated scopes, but their selected
 adjacent-edge diagrams are not equivariantly identical.
 
@@ -137,4 +137,3 @@ capable of invoking `rustc` is exposed.
   "checker_sha256": "bdbf1a27122c40f9d800c3cba60ed2bc07b10cf5d5ba126dfddd108dd6f3b45a"
 }
 ~~~
-
