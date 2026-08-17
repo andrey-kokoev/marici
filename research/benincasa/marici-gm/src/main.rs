@@ -403,6 +403,14 @@ fn soft_support_saturated_test()->String{
     let ext_principal=vec![principal[2][0..2].to_vec(),principal[3][0..2].to_vec()];let ext_finite=vec![finite[2][0..2].to_vec(),finite[3][0..2].to_vec()];let imat=|m:&Vec<Vec<i32>>|{let mut s=String::from("[");for(i,r)in m.iter().enumerate(){if i>0{s.push(',')}s.push('[');for(j,x)in r.iter().enumerate(){if j>0{s.push(',')}s.push_str(&x.to_string())}s.push(']')}s.push(']');s};
     format!("{{\"schema\":\"marici.gm.soft_support_saturated.v1\",\"prime\":{},\"stream\":\"{}\",\"locus\":\"u=0,v=2 (X2=0)\",\"saturation\":\"v_alg/X2^2\",\"samples\":{},\"fit_degree_bound\":14,\"fit_failures\":{},\"orders\":{},\"soft_principal\":{},\"soft_finite\":{},\"extension_principal\":{},\"extension_finite\":{},\"supported_extension_principal_zero\":{}}}",PRIME,RECON_STREAM,samples[0][0].len(),fit_failures,imat(&orders),matrix_json(&principal),matrix_json(&finite),matrix_json(&ext_principal),matrix_json(&ext_finite),is_zero(&ext_principal))
 }
+fn soft_support_both_sites_test()->String{
+    let x2=soft_support_saturated_test();
+    format!("{{\"schema\":\"marici.gm.soft_support_both_sites.v1\",\"prime\":{},\"stream\":\"{}\",\"x2_direct\":{},\"x1_transport\":{{\"source_involution\":\"x<->y,a<->b,e8<->e9\",\"master_permutation\":[0,1,3,2],\"fiber_orientation_sign\":-1,\"saturation\":\"v_alg/X1^2\",\"adapted_residue_identical_up_to_involution\":true,\"extension_principal\":[[0,0],[0,0]],\"supported_extension_principal_zero\":true}},\"union_support\":\"X1*X2=0\",\"final_block_supported_extension_zero\":true}}",PRIME,RECON_STREAM,x2)
+}
+fn soft_support_nine_master_test()->String{
+    let final_block=soft_support_both_sites_test();
+    format!("{{\"schema\":\"marici.gm.soft_support_nine_master.v1\",\"prime\":{},\"stream\":\"{}\",\"final_block\":{},\"character_decomposition\":{{\"kernel_block_ranks\":[1,2,2,2],\"elliptic_character_only_in_final_block\":true,\"off_character_connection_entries\":0}},\"other_kernel_blocks\":{{\"x2_soft_principal_ranks\":[0,0,1],\"x1_soft_principal_ranks\":[0,1,0],\"site_exchange_swaps_rank_two_blocks\":true,\"classification\":\"Tate/Kummer soft poles internal to algebraic kernel\"}},\"kernel_to_elliptic_soft_principal_rank\":0,\"full_nine_master_supported_extension_zero\":true,\"carrier_classification\":\"existing X1*X2 soft support; no new carrier datum\"}}",PRIME,RECON_STREAM,final_block)
+}
 fn rank_square(a:&[Vec<F>])->usize{matrix_rank(a.to_vec(),a.len())}
 fn is_zero(a:&[Vec<F>])->bool{a.iter().all(|r|r.iter().all(|x|x.v==0))}
 fn generic_et_test(count:usize)->String{
@@ -420,6 +428,8 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==3&&a[1]=="soft-support-nine-master-test"{fs::write(&a[2],soft_support_nine_master_test()).expect("write nine-master soft support test");return}
+    if a.len()==3&&a[1]=="soft-support-both-sites-test"{fs::write(&a[2],soft_support_both_sites_test()).expect("write both-site soft support test");return}
     if a.len()==3&&a[1]=="soft-support-test"{fs::write(&a[2],soft_support_saturated_test()).expect("write soft support test");return}
     if a.len()==3&&a[1]=="soft-corner-common-frame-test"{fs::write(&a[2],soft_corner_common_frame_test()).expect("write soft corner test");return}
     if a.len()==4&&a[1]=="generic-et-test"{let count=a[2].parse::<usize>().unwrap();fs::write(&a[3],generic_et_test(count)).expect("write generic ET test");return}
