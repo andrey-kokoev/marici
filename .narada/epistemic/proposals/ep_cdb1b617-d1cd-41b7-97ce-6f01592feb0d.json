@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cdb1b617-d1cd-41b7-97ce-6f01592feb0d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "marici-ledger-390-simple-conic-multiplicity-admission-v1",
+  "expected_ledger_head": "4be73637b67e43a0e6f0a4634c3bd24edd34a67fe4d0145ad7543b9923613e76",
+  "created_at": "2026-08-17T22:31:52.9637233Z",
+  "content_fingerprint": "86a333b53d4e03572802324a95154a770394165e4d2d3ccfa1409ced50c28a05",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-390",
+      "kind": "source",
+      "title": "Ledger 390",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-390 The Gauge Fitting Conic Has Simple Transverse Multiplicity in the Tested Presentation.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-390",
+      "kind": "test",
+      "title": "Transverse kernel-cokernel pairing on the gauge Fitting conic",
+      "version": "1",
+      "locator": "research/benincasa/gauge-fitting-conic-transverse-jet.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-390",
+      "kind": "claim",
+      "title": "The gauge Fitting conic has simple transverse multiplicity in the tested presentation",
+      "version": "1",
+      "locator": "src/ledger/20260817-390 The Gauge Fitting Conic Has Simple Transverse Multiplicity in the Tested Presentation.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-390",
+      "target_id": "marici:claim:ledger-389",
+      "relation_id": "rel:depends_on-ledger390-ledger389"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-390",
+      "target_id": "marici:source:ledger-390",
+      "relation_id": "rel:derived_from-ledger390-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-390",
+      "target_id": "marici:claim:ledger-390",
+      "relation_id": "rel:tests-ledger390-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-390",
+      "test_id": "marici:test:ledger-390",
+      "actor": "marici.Benincasa",
+      "outcome": "supported narrowly: twelve frozen maximal minors have rank defect one and nonzero transverse kernel-cokernel pairing; interpolation orders twelve and sixteen agree",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-390",
+          "locator": "Frozen test and Result",
+          "paraphrase": "At six conic points and exact-form degrees eight and ten, every selected minor has a nonzero first normal jet."
+        }
+      ]
+    }
+  ],
+  "digest": "8bf6bb2c322438469a55a2567c93ad8f084e6c2f55bac99316e5cff1aa0f0977"
+}
