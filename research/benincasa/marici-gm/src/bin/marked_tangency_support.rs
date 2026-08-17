@@ -751,8 +751,8 @@ fn invert_square(mut a:Vec<Vec<F>>) -> Vec<Vec<F>> {
     }
     a.into_iter().map(|r|r[n..].to_vec()).collect()
 }
-fn arc_series_matrix(c:F,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
-    let samples=24usize;
+fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
+    let samples=48usize;
     let mut vand=vec![vec![F::z();samples+1];samples+1];
     for i in 0..=samples { for j in 0..=samples { vand[i][j]=F::n(i as u64).pow(j as u64); }}
     let vinv=invert_square(vand);
@@ -760,8 +760,10 @@ fn arc_series_matrix(c:F,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
     let mut all_mons=BTreeSet::new();
     for q in 0..=samples+2 {
         let t=F::n(q as u64);
-        let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
-        let (mons,a,_,_)=presentation(&geometry(t.0,v.0,'u'),8,degree);
+        let curved=c.mul(t).add(d.mul(t.pow(2)));
+        let (u,x2)=if reciprocal {(curved,t)} else {(t,curved)};
+        let v=F::n(2).add(F::n(2).mul(x2)).sub(u);
+        let (mons,a,_,_)=presentation(&geometry(u.0,v.0,'u'),8,degree);
         all_mons.extend(mons.iter().copied());
         data.push((mons,a));
     }
@@ -1327,13 +1329,47 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-smith-quadratic" {
+        let order=24usize;
+        let mut results=Vec::new();
+        let specs8=[(false,2u64,1u64),(false,2,3),(false,2,5),(false,3,2),(false,1,1),
+                    (true,2,1),(true,2,3),(true,3,2),(true,1,1)];
+        let specs10=[(false,2u64,3u64),(true,2,3),(false,1,1),(true,1,1)];
+        for (degree,specs) in [(8u8,&specs8[..]),(10u8,&specs10[..])] {
+            for &(reciprocal,c0,d0) in specs {
+                let c=F::n(c0); let d=F::n(d0);
+                let (full,cols)=arc_series_matrix(c,d,reciprocal,degree,order);
+                let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..cols].to_vec()).collect();
+                let ve=smith_valuations(exact);
+                let vf=smith_valuations(full);
+                let t=F::n(37);
+                let curved=c.mul(t).add(d.mul(t.pow(2)));
+                let (u,x2)=if reciprocal {(curved,t)} else {(t,curved)};
+                let v=F::n(2).add(F::n(2).mul(x2)).sub(u);
+                let (_,point,_,_)=presentation(&geometry(u.0,v.0,'u'),8,degree);
+                let re=matrix_rank(point.iter().map(|r|r[12..].to_vec()).collect());
+                let rf=matrix_rank(point);
+                let qr=rf-re;
+                assert_eq!(qr,10);
+                let de:usize=ve[..re].iter().sum();
+                let df:usize=vf[..rf].iter().sum();
+                let quotient=df as isize-de as isize;
+                results.push(format!("{{\"degree\":{degree},\"chart\":\"{}\",\"c\":{c0},\"d\":{d0},\"direction\":\"{}\",\"master_image_rank\":{qr},\"master_image_valuation\":{quotient},\"max_exact_invariant\":{},\"max_combined_invariant\":{}}}",
+                    if reciprocal {"X2=t"} else {"E=t"},
+                    if c0==1 {"tangent_to_(E-X2)=0"} else {"generic"},
+                    ve[re-1],vf[rf-1]));
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.dlog_joint_quadratic_arc_smith.v1\",\"ring\":\"F[t]/(t^24)\",\"ordinary_arc\":\"E=t,X2=c*t+d*t^2\",\"reciprocal_arc\":\"X2=t,E=c*t+d*t^2\",\"baseline_generic_valuation\":66,\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "dlog-smith" {
         let order=12usize;
         let mut results=Vec::new();
         for degree in [8u8,10] {
             for c0 in [1u64,2,3,5,7] {
                 let c=F::n(c0);
-                let (full,cols)=arc_series_matrix(c,degree,order);
+                let (full,cols)=arc_series_matrix(c,F::z(),false,degree,order);
                 assert!(cols>12);
                 let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..].to_vec()).collect();
                 let ve=smith_valuations(exact);
