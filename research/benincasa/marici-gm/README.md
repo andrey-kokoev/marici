@@ -65,3 +65,5 @@ principal part, removes that diagonal Deligne coboundary, and compares the
 finite algebraic--elliptic off-diagonal blocks. The committed certificate
 records zero antisymmetric difference and hence
 `epsilon_e6=epsilon_v_alg=0` on the generic finite-field de Rham locus.
+Build with `--features replication-prime` to repeat the same calculation at
+`p=2305843009213693921` with a disjoint deterministic reconstruction stream.
