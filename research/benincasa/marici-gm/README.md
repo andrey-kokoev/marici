@@ -61,6 +61,13 @@ checked with:
 cargo run --release --bin full_rank12_cut_nearby_layers
 ```
 
+The first joint total-energy/conductor/elliptic/soft cospan corner is checked
+with:
+
+```powershell
+cargo run --release --bin joint_soft_conductor_elliptic_cospan
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
