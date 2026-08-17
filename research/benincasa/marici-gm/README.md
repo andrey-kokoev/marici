@@ -68,6 +68,12 @@ with:
 cargo run --release --bin joint_soft_conductor_elliptic_cospan
 ```
 
+The genuine two-parameter total-energy/site-soft resolution is checked with:
+
+```powershell
+cargo run --release --bin two_parameter_et_nearby_resolution
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
