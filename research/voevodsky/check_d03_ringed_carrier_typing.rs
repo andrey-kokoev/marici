@@ -167,6 +167,83 @@ fn extend_target_chains(
     }
 }
 
+fn completion_sector(
+    target_points: &[(u16, u16)],
+    endpoint: (u16, u16),
+    unit: u16,
+) -> (usize, Vec<usize>, Vec<usize>, Vec<usize>, i64) {
+    let not_inverted: Vec<_> = target_points
+        .iter()
+        .copied()
+        .filter(|(face, normal)| (face & !normal) & unit == 0)
+        .collect();
+    let starts: Vec<_> = not_inverted
+        .iter()
+        .copied()
+        .filter(|point| target_reachable(*point, endpoint))
+        .collect();
+    let mut chains = Vec::new();
+    for start in &starts {
+        extend_target_chains(&not_inverted, &mut vec![*start], &mut chains);
+    }
+    chains.sort();
+    chains.dedup();
+    let max_length = chains.iter().map(Vec::len).max().unwrap();
+    let by_length: Vec<Vec<_>> = (1..=max_length)
+        .map(|length| {
+            chains
+                .iter()
+                .filter(|chain| chain.len() == length)
+                .cloned()
+                .collect()
+        })
+        .collect();
+    let mut boundary_ranks = vec![0_usize; max_length];
+    for degree in 1..max_length {
+        let rows = &by_length[degree - 1];
+        let columns = &by_length[degree];
+        let row_index: std::collections::BTreeMap<_, _> = rows
+            .iter()
+            .cloned()
+            .enumerate()
+            .map(|(index, chain)| (chain, index))
+            .collect();
+        let mut matrix = vec![vec![0_i64; columns.len()]; rows.len()];
+        for (column, chain) in columns.iter().enumerate() {
+            for removed in 0..chain.len() {
+                let mut face = chain.clone();
+                face.remove(removed);
+                if face.is_empty() || !target_reachable(face[0], endpoint) {
+                    continue;
+                }
+                if let Some(row) = row_index.get(&face) {
+                    matrix[*row][column] += if removed % 2 == 0 { 1 } else { -1 };
+                }
+            }
+        }
+        boundary_ranks[degree] = rank_mod(matrix, 101);
+    }
+    let homology: Vec<_> = (0..max_length)
+        .map(|degree| {
+            by_length[degree].len()
+                - boundary_ranks[degree]
+                - boundary_ranks.get(degree + 1).copied().unwrap_or(0)
+        })
+        .collect();
+    let euler = by_length
+        .iter()
+        .enumerate()
+        .map(|(degree, cells)| (if degree % 2 == 0 { 1 } else { -1 }) * cells.len() as i64)
+        .sum();
+    (
+        starts.len(),
+        by_length.iter().map(Vec::len).collect(),
+        boundary_ranks,
+        homology,
+        euler,
+    )
+}
+
 fn main() {
     let ds: Vec<_> = (0..N)
         .flat_map(|a| ((a + 1)..N).map(move |b| diagonal(a, b)))
@@ -525,6 +602,116 @@ fn main() {
     }
     assert_eq!(all_normal_sectors.len(), 9);
 
+    // Literal exceptional open-star: chains whose least face contains the
+    // new exceptional ray.  Record which old normal labels can still be
+    // introduced on this geometric restriction.
+    let exceptional_points: Vec<_> = corrected
+        .iter()
+        .enumerate()
+        .filter(|(_, (simplex, _))| simplex[0] & EXCEPTIONAL != 0)
+        .collect();
+    let exceptional_image_faces: BTreeSet<_> = exceptional_points
+        .iter()
+        .map(|(index, _)| images[*index].0)
+        .collect();
+    let exceptional_variable_mask = exceptional_image_faces
+        .iter()
+        .copied()
+        .fold(0_u16, |mask, face| mask | face);
+    let exceptional_labels: Vec<_> = ds
+        .iter()
+        .enumerate()
+        .filter(|(bit, _)| exceptional_variable_mask & (1 << bit) != 0)
+        .map(|(_, diagonal)| *diagonal)
+        .collect();
+    let exceptional_jumping_mask = exceptional_variable_mask;
+    assert_eq!(exceptional_jumping_mask.count_ones(), 4);
+    let mut exceptional_telescope_sectors = Vec::new();
+    for bit in 0..ds.len() {
+        let unit = 1_u16 << bit;
+        if exceptional_jumping_mask & unit == 0 {
+            continue;
+        }
+        let endpoint = (d03 | x1 | (unit & !(d03 | x1)), 0_u16);
+        assert!(exceptional_image_faces.contains(&endpoint.0));
+        let sources: Vec<_> = exceptional_points
+            .iter()
+            .filter(|(index, point)| cell_degree(point) == 0 && images[*index] == endpoint)
+            .collect();
+        assert_eq!(sources.len(), 3);
+        assert!(sources.iter().all(|(index, _)| greater[*index].is_empty()));
+        let sector = completion_sector(&target_points, endpoint, unit);
+        assert_eq!(sector.3.iter().sum::<usize>(), 0);
+        assert_eq!(sector.4, 0);
+        exceptional_telescope_sectors.push((ds[bit], sources.len(), sector));
+    }
+    assert_eq!(exceptional_telescope_sectors.len(), 4);
+
+    let mut exceptional_multinormal_sectors = Vec::new();
+    for endpoint_face in &exceptional_image_faces {
+        for unit_mask in subsets(*endpoint_face).filter(|mask| *mask != 0) {
+            let endpoint = (*endpoint_face, 0_u16);
+            let sector = completion_sector(&target_points, endpoint, unit_mask);
+            exceptional_multinormal_sectors.push((endpoint_face, unit_mask, sector));
+        }
+    }
+    let exceptional_survivors: Vec<_> = exceptional_multinormal_sectors
+        .iter()
+        .filter(|(_, _, sector)| sector.3.iter().sum::<usize>() != 0)
+        .map(|(face, mask, sector)| (**face, *mask, sector.3.clone(), sector.4))
+        .collect();
+    assert_eq!(
+        exceptional_survivors,
+        [
+            (d03 | x1, d03 | x1, vec![0, 1, 0, 0], -1),
+            (
+                d03 | x1 | (1 << ds.iter().position(|d| *d == diagonal(0, 4)).unwrap()),
+                d03 | x1 | (1 << ds.iter().position(|d| *d == diagonal(0, 4)).unwrap()),
+                vec![1, 0, 0, 0],
+                1,
+            ),
+            (
+                d03 | x1 | (1 << ds.iter().position(|d| *d == diagonal(3, 5)).unwrap()),
+                d03 | x1 | (1 << ds.iter().position(|d| *d == diagonal(3, 5)).unwrap()),
+                vec![1, 0, 0, 0],
+                1,
+            ),
+        ]
+    );
+
+    let exceptional_indices: BTreeSet<_> =
+        exceptional_points.iter().map(|(index, _)| *index).collect();
+    let mut exceptional_term_census = vec![vec![0_u64; 10]; max_degree + 1];
+    for start in &exceptional_indices {
+        let initial_units = images[*start].0 & !images[*start].1;
+        let mut paths = vec![vec![0_u64; corrected.len()]; max_degree + 1];
+        paths[0][*start] = 1;
+        for length in 0..max_degree {
+            for at in &exceptional_indices {
+                let count = paths[length][*at];
+                if count == 0 {
+                    continue;
+                }
+                for next in &greater[*at] {
+                    if exceptional_indices.contains(next) {
+                        paths[length + 1][*next] += count;
+                    }
+                }
+            }
+        }
+        for length in 0..=max_degree {
+            for end in &exceptional_indices {
+                let count = paths[length][*end];
+                if count == 0 {
+                    continue;
+                }
+                let final_units = images[*end].0 & !images[*end].1;
+                let jump = (final_units & !initial_units).count_ones() as usize;
+                exceptional_term_census[length][jump] += count;
+            }
+        }
+    }
+
     println!(
         "{{\"claim\":\"The corrected D03 dualizing complex has a rank-one one-normal telescope-dual sector and therefore no bounded finite-projective compression over the unlocalized target ring\",\"status\":\"omega_q_nonperfect\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\",\"representable_open_intersections\":{{\"empty\":{},\"unique_initial_over_x\":{},\"noninitial\":{},\"first_noninitial\":\"{:?}\"}},\"one_normal_witness\":{{\"source_index\":{},\"target_face_mask\":1,\"target_normal_mask\":0,\"source_open_is_singleton\":true}},\"one_normal_completion_sector\":{{\"starts\":{},\"chain_ranks\":{:?},\"boundary_ranks_mod_101\":{:?},\"homology_mod_101\":{:?},\"euler_characteristic\":{}}},\"standard_chain_term_census_by_degree_and_localization_jump\":[{}]}}",
         target.len(),
@@ -545,4 +732,12 @@ fn main() {
         term_census
     );
     println!("all_normal_telescope_sectors={all_normal_sectors:?}");
+    println!(
+        "exceptional_open_star={{points:{},image_faces:{},normal_labels:{exceptional_labels:?}}}",
+        exceptional_points.len(),
+        exceptional_image_faces.len()
+    );
+    println!("exceptional_telescope_sectors={exceptional_telescope_sectors:?}");
+    println!("exceptional_multinormal_sectors={exceptional_multinormal_sectors:?}");
+    println!("exceptional_term_census={exceptional_term_census:?}");
 }
