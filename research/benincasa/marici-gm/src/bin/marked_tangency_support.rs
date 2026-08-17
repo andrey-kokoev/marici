@@ -1206,6 +1206,59 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-divisors" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let mut counts=[0usize;4];
+        let mut failures=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in 3u64..=100 {
+                let u=F::n(u0);
+                let vm=u.pow(2).mul(F::n(2)).sub(u).add(F::n(2));
+                let vp=u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2));
+                let generic=solve(&geometry(u0,vm.add(F::n(17)).0,'u'),8,degree);
+                for (label,v,slot) in [("D_minus",vm,0usize),("D_plus",vp,2usize)] {
+                    let s=solve(&geometry(u0,v.0,'u'),8,degree);
+                    if s.rank+1==generic.rank && s.gauge_rank==generic.gauge_rank+1 { counts[slot]+=1; }
+                    else { failures.push(format!("{label}:d{degree}:u{u0}:rank{}:gauge{}",s.rank,s.gauge_rank)); }
+                    let mut ok=true;
+                    for vn in [v.sub(F::o()),v.add(F::o())] {
+                        let n=solve(&geometry(u0,vn.0,'u'),8,degree);
+                        ok &= n.rank==generic.rank && n.gauge_rank==generic.gauge_rank;
+                    }
+                    if ok { counts[slot+1]+=1; }
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_dlog_divisor_comparison.v1\",\"degrees\":[8,10],\"u_range\":[3,100],\"D_minus\":{{\"enhanced\":{},\"neighbors_generic\":{}}},\"D_plus\":{{\"enhanced\":{},\"neighbors_generic\":{}}},\"failures\":{:?}}}",counts[0],counts[1],counts[2],counts[3],failures);
+        return;
+    }
+    if mode == "dlog-jets" {
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in [3u64,5,7,11,19,37] {
+                let u=F::n(u0);
+                for (label,v) in [
+                    ("D_minus",u.pow(2).mul(F::n(2)).sub(u).add(F::n(2))),
+                    ("D_plus",u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2)))
+                ] {
+                    let (gm,ga,_,_)=presentation(&geometry(u0,v.add(F::o()).0,'u'),8,degree);
+                    let (generic_rank,pr,pc)=pivot_minor(ga);
+                    let row_mons:Vec<Mon>=pr.iter().map(|i|gm[*i]).collect();
+                    let m0=selected_minor(&geometry(u0,v.0,'u'),8,degree,&row_mons,&pc);
+                    let special_rank=matrix_rank(m0.clone());
+                    assert_eq!(special_rank+1,generic_rank);
+                    let right=null_line(m0.clone());
+                    let left=null_line(transpose(&m0));
+                    let vals:Vec<F>=(0..=16).map(|t|pairing(&selected_minor(&geometry(u0,v.add(F::n(t)).0,'u'),8,degree,&row_mons,&pc),&left,&right)).collect();
+                    let d12=derivative_at_zero(&vals[..=12]);
+                    let d16=derivative_at_zero(&vals);
+                    results.push(format!("{{\"divisor\":\"{label}\",\"degree\":{degree},\"u\":{u0},\"v\":{},\"minor_size\":{generic_rank},\"special_rank\":{special_rank},\"stable\":{},\"nonzero\":{}}}",v.0,d12==d16,d16.0!=0));
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_dlog_divisor_transverse_jets.v1\",\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "conic-jet" {
         let mut results=Vec::new();
         for degree in [8u8,10] {

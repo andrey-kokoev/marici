@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ff1cb983-cd3c-4205-8828-9aacccb5b1f4",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "marici-ledger-400-exact-lift-dlog-divisor-admission-v1",
+  "expected_ledger_head": "3050c8b312ac811e9b0272bbdeb9d4783cac518397e47e5e1308cd83540aa1c1",
+  "created_at": "2026-08-17T22:36:51.653539Z",
+  "content_fingerprint": "b8b1d784070c0b4842d740af348af5189c2922d80f96743fe5e6c6622b69e52e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-400",
+      "kind": "source",
+      "title": "Ledger 400",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-400 The Exact-Lift Rank-Jump Divisor Equals the Algebraic dlog Divisor.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-400",
+      "kind": "test",
+      "title": "Two-component exact-lift and algebraic dlog divisor comparison",
+      "version": "1",
+      "locator": "research/benincasa/exact-lift-dlog-divisor-identity.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-400",
+      "kind": "claim",
+      "title": "The exact-lift rank-jump support equals the algebraic dlog divisor",
+      "version": "1",
+      "locator": "src/ledger/20260817-400 The Exact-Lift Rank-Jump Divisor Equals the Algebraic dlog Divisor.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-400",
+      "target_id": "marici:claim:ledger-390",
+      "relation_id": "rel:depends_on-ledger400-ledger390"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-400",
+      "target_id": "marici:source:ledger-400",
+      "relation_id": "rel:derived_from-ledger400-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-400",
+      "target_id": "marici:claim:ledger-400",
+      "relation_id": "rel:tests-ledger400-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-400",
+      "test_id": "marici:test:ledger-400",
+      "actor": "marici.Benincasa",
+      "outcome": "supported narrowly: both factors E squared minus-or-plus X1 X2 produce uniform rank-one exact-lift enhancement and simple transverse jets, matching the full source-selected dlog divisor D",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-400",
+          "locator": "Frozen coordinate comparison and Two-component falsifier",
+          "paraphrase": "The coordinate identity is exact; 392 component-fiber tests, 392 neighbor controls, and 24 transverse jets match both factors of D."
+        }
+      ]
+    }
+  ],
+  "digest": "ca446015075181f76e4ce5848dbaecd4c18a13a37c9b94741ce4b710e0e2bce3"
+}
