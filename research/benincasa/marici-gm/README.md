@@ -54,6 +54,13 @@ Cyclic naturality of the six boundary-value Leray germs is checked with:
 cargo run --release --bin cyclic_leray_naturality
 ```
 
+The generic full-rank logarithmic versus Cut--nearby layer comparison is
+checked with:
+
+```powershell
+cargo run --release --bin full_rank12_cut_nearby_layers
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
