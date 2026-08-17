@@ -1,5 +1,15 @@
 # marici-gm
 
+The cross-sector marked-Cut overlap test is reproducible with:
+
+```powershell
+cargo run --release --bin cross_sector_overlap
+```
+
+It restricts the exact Cayley--Menger polynomial to
+`q_G12=q_G23=0`, records all induced affine marks, and audits the frozen
+six-term source for a joint marked-Cut pole.
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
