@@ -166,6 +166,11 @@ impl Poly {
         }
         r
     }
+    fn eval(&self, a: F, b: F) -> F {
+        self.0.iter().fold(F::z(), |z,((i,j),c)| {
+            z.add(c.mul(a.pow(*i as u64)).mul(b.pow(*j as u64)))
+        })
+    }
 }
 
 struct Geometry {
@@ -757,6 +762,147 @@ fn divide_linear(p: &[F], root: F) -> Vec<F> {
     q
 }
 
+fn vadd(a: &[F], b: &[F]) -> Vec<F> {
+    let mut r = vec![F::z(); a.len().max(b.len())];
+    for (i,q) in a.iter().enumerate() { r[i] = r[i].add(*q); }
+    for (i,q) in b.iter().enumerate() { r[i] = r[i].add(*q); }
+    trim(&mut r);
+    r
+}
+fn vscale(a: &[F], c: F) -> Vec<F> {
+    let mut r = a.iter().map(|q| q.mul(c)).collect::<Vec<_>>();
+    trim(&mut r);
+    r
+}
+fn vmul(a: &[F], b: &[F]) -> Vec<F> {
+    let mut r = vec![F::z(); a.len() + b.len() - 1];
+    for (i,q) in a.iter().enumerate() {
+        for (j,s) in b.iter().enumerate() { r[i+j] = r[i+j].add(q.mul(*s)); }
+    }
+    trim(&mut r);
+    r
+}
+fn vdivrem(a: &[F], b: &[F]) -> (Vec<F>,Vec<F>) {
+    let mut r = a.to_vec(); trim(&mut r);
+    let mut d = b.to_vec(); trim(&mut d);
+    assert!(d.last().unwrap().0 != 0);
+    if r.len() < d.len() { return (vec![F::z()],r); }
+    let mut q = vec![F::z();r.len()-d.len()+1];
+    while r.len() >= d.len() && !(r.len()==1 && r[0].0==0) {
+        let k=r.len()-d.len();
+        let c=r[r.len()-1].mul(d[d.len()-1].inv());
+        q[k]=c;
+        for j in 0..d.len() { r[k+j]=r[k+j].sub(c.mul(d[j])); }
+        trim(&mut r);
+    }
+    trim(&mut q);
+    (q,r)
+}
+fn vgcd(mut a: Vec<F>, mut b: Vec<F>) -> Vec<F> {
+    trim(&mut a); trim(&mut b);
+    while !(b.len()==1 && b[0].0==0) {
+        let (_,r)=vdivrem(&a,&b); a=b; b=r;
+    }
+    let z=a.last().unwrap().inv();
+    vscale(&a,z)
+}
+fn frozen_support_on_v(u: F) -> Vec<F> {
+    let one=vec![F::o()];
+    let vv=vec![F::z(),F::o()];
+    let half=F::n(2).inv();
+    let y=vadd(&vscale(&vadd(&vec![u],&vv),half),&vec![F::o().neg()]);
+    let z=vscale(&vadd(&vec![u],&vscale(&vv,F::o().neg())),half);
+    let signed=vadd(&vec![u],&vscale(&y,F::o().neg()));
+    let e=vec![u];
+    let x=one.clone();
+    let two=F::n(2);
+    let a=vmul(&vadd(&vscale(&x,two),&vscale(&e,F::o().neg())),
+               &vadd(&e,&vscale(&y,two.neg())));
+    let b=vmul(&e,&vadd(&vadd(&vscale(&x,two),&vscale(&y,two)),&vscale(&e,F::o().neg())));
+    let e2=vmul(&e,&e);
+    let delta1=vscale(&vmul(&x,&vadd(
+        &vadd(&vmul(&x,&vmul(&y,&y)),&vscale(&vmul(&e,&vmul(&x,&y)),two)),
+        &vscale(&vmul(&e2,&vadd(&vadd(&x,&vscale(&y,two)),&vscale(&e,F::o().neg()))),F::o().neg())
+    )),F::n(4));
+    let delta2=vscale(&vmul(&y,&vadd(
+        &vadd(&vmul(&vmul(&x,&x),&y),&vscale(&vmul(&e,&vmul(&x,&y)),two)),
+        &vscale(&vmul(&e2,&vadd(&vadd(&vscale(&x,two),&y),&vscale(&e,F::o().neg()))),F::o().neg())
+    )),F::n(4));
+    vmul(&vmul(&vmul(&vmul(&vmul(&vmul(&y,&z),&signed),&a),&b),&delta1),&delta2)
+}
+fn restricted_even_quartic_discriminant(k: &Poly, fixed: F, vary_a: bool) -> F {
+    let mut c=[F::z();5];
+    for ((i,j),q) in &k.0 {
+        let (vary,fixed_pow)=if vary_a { (*i,*j) } else { (*j,*i) };
+        c[vary as usize]=c[vary as usize].add(q.mul(fixed.pow(fixed_pow as u64)));
+    }
+    assert!(c[1].0==0 && c[3].0==0);
+    c[2].pow(2).sub(F::n(4).mul(c[4]).mul(c[0]))
+}
+fn remove_frozen_factors(mut d: Vec<F>, frozen: &[F]) -> Vec<F> {
+    trim(&mut d);
+    loop {
+        let g=vgcd(d.clone(),frozen.to_vec());
+        if g.len()==1 { break; }
+        let (q,r)=vdivrem(&d,&g);
+        assert!(r.len()==1 && r[0].0==0);
+        d=q;
+    }
+    let z=d.last().unwrap().inv();
+    vscale(&d,z)
+}
+fn divide_by_v_minus_f(p: &Poly, f: &Poly) -> Poly {
+    assert!(f.0.keys().all(|(_,j)| *j==0));
+    let divisor=Poly::mon(0,1,F::o()).sub(f);
+    let mut r=p.clone();
+    let mut q=Poly::zero();
+    loop {
+        let Some(maxj)=r.0.keys().map(|(_,j)|*j).max() else { break; };
+        if maxj==0 { break; }
+        let mut lead=Poly::zero();
+        for ((i,j),c) in &r.0 {
+            if *j==maxj { lead=lead.add(&Poly::mon(*i,maxj-1,*c)); }
+        }
+        q=q.add(&lead);
+        r=r.sub(&lead.mul(&divisor));
+    }
+    assert!(r.0.is_empty(),"nonzero remainder in v-factor division: {:?}",r.0);
+    q
+}
+fn proportional(a:&Poly,b:&Poly)->bool {
+    if a.0.is_empty() || b.0.is_empty() { return a.0.is_empty() && b.0.is_empty(); }
+    if a.0.keys().collect::<Vec<_>>()!=b.0.keys().collect::<Vec<_>>() { return false; }
+    let k=*a.0.keys().next().unwrap();
+    let z=a.0[&k].mul(b.0[&k].inv());
+    a.0.iter().all(|(m,c)| *c==b.0[m].mul(z))
+}
+fn symbolic_marked_discriminants() -> (Poly,Poly,Poly,Poly) {
+    let one=Poly::c(F::o());
+    let u=Poly::mon(1,0,F::o());
+    let v=Poly::mon(0,1,F::o());
+    let half=F::n(2).inv();
+    let two=F::n(2);
+    let y=u.add(&v).scale(half).sub(&one);
+    let z=u.sub(&v).scale(half);
+    let c=u.neg();
+    let h=one.add(&y.pow(2)).sub(&z.pow(2));
+    let ga=one.sub(&c.pow(2)).mul(&one.sub(&y.pow(2)).sub(&z.pow(2)))
+        .sub(&c.pow(2).mul(&z.pow(2)).scale(two));
+    let gb=y.pow(2).sub(&c.pow(2)).mul(&y.pow(2).sub(&one).sub(&z.pow(2)))
+        .sub(&c.pow(2).mul(&z.pow(2)).scale(two));
+    let hh=z.pow(2).mul(&c.pow(2).sub(&y.pow(2)).mul(&c.pow(2).sub(&one)).add(&c.pow(2).mul(&z.pow(2))));
+    let bm=u.sub(&one);
+    let am=one.add(&u.sub(&v).scale(half));
+    let d1=h.neg().mul(&bm.pow(2)).add(&ga).pow(2)
+        .sub(&y.pow(2).mul(&bm.pow(4)).add(&gb.mul(&bm.pow(2))).add(&hh).scale(F::n(4)));
+    let d2=h.neg().mul(&am.pow(2)).add(&gb).pow(2)
+        .sub(&y.pow(2).mul(&am.pow(4).add(&ga.mul(&am.pow(2))).add(&hh)).scale(F::n(4)));
+    let e=u.clone();
+    let delta1=one.mul(&y.pow(2).add(&e.mul(&y).scale(two)).sub(&e.pow(2).mul(&one.add(&y.scale(two)).sub(&e)))).scale(F::n(4));
+    let delta2=y.mul(&y.add(&e.mul(&y).scale(two)).sub(&e.pow(2).mul(&one.scale(two).add(&y).sub(&e)))).scale(F::n(4));
+    (d1,d2,delta1,delta2)
+}
+
 fn small_rational(x: F) -> (i64, i64) {
     if x.0 <= 10_000_000 {
         return (x.0 as i64, 1);
@@ -967,6 +1113,118 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "degree" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let points=[(5u64,47u64,"residual_R"),(7,93,"residual_R"),(5,5,"z_soft"),(5,7,"signed_energy"),(5,41,"generic")];
+        let mut out=Vec::<String>::new();
+        for (u0,v0,label) in points {
+            for degree in [6u8,8,10,12] {
+                let outcome=std::panic::catch_unwind(||solve(&geometry(u0,v0,'u'),8,degree));
+                match outcome {
+                    Err(_)=>out.push(format!("{{\"u\":{u0},\"v\":{v0},\"label\":\"{label}\",\"degree\":{degree},\"status\":\"inconsistent\"}}")),
+                    Ok(sol)=>out.push(format!("{{\"u\":{u0},\"v\":{v0},\"label\":\"{label}\",\"degree\":{degree},\"status\":\"ok\",\"gauge_rank\":{},\"pivot_mask\":{}}}",sol.gauge_rank,sol.gauge_pivot_mask)),
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_presentation_degree_stability.v1\",\"results\":[{}]}}",out.join(","));
+        return;
+    }
+    if mode == "factor" {
+        let (mut d1,mut d2,delta1,delta2)=symbolic_marked_discriminants();
+        let original_d1_terms=d1.0.len();
+        let original_d2_terms=d2.0.len();
+        let u=Poly::mon(1,0,F::o());
+        let factors=[
+            u.clone(),
+            u.add(&Poly::c(F::n(2))),
+            u.pow(2).scale(F::n(2)).sub(&u).add(&Poly::c(F::n(2))),
+        ];
+        for f in &factors {
+            d1=divide_by_v_minus_f(&d1,f);
+            d2=divide_by_v_minus_f(&d2,f);
+        }
+        println!("{{\"schema\":\"marici.benincasa.marked_branch_discriminant_factor_gate.v2\",\"original_d1_terms\":{original_d1_terms},\"original_d2_terms\":{original_d2_terms},\"diagnostic_identically_zero\":{},\"common_linear_factors\":[\"v-u\",\"v-u-2\",\"v-(2u^2-u+2)\"],\"d1_quotient_terms\":{},\"d2_quotient_terms\":{},\"d1_quotient_proportional_delta1\":{},\"d1_quotient_proportional_delta2\":{},\"d2_quotient_proportional_delta1\":{},\"d2_quotient_proportional_delta2\":{}}}",original_d1_terms==0&&original_d2_terms==0,d1.0.len(),d2.0.len(),proportional(&d1,&delta1),proportional(&d1,&delta2),proportional(&d2,&delta1),proportional(&d2,&delta2));
+        return;
+    }
+    if mode == "scan" {
+        let mut bad=Vec::<String>::new();
+        let mut frozen_bad=0usize;
+        let mut residual_bad=0usize;
+        std::panic::set_hook(Box::new(|_| {}));
+        for u0 in 3u64..=15 {
+            let frozen=frozen_support_on_v(F::n(u0));
+            for vi in 3u64..=200 {
+                let outcome=std::panic::catch_unwind(|| solve(&geometry(u0,vi,'u'),8,8));
+                let kind=match outcome {
+                    Err(_) => Some("inconsistent"),
+                    Ok(sol) if sol.gauge_rank!=2 || sol.gauge_pivot_mask!=24 => Some("rank_or_pivot"),
+                    _ => None,
+                };
+                if let Some(kind)=kind {
+                    let on_frozen=peval(&frozen,F::n(vi)).0==0;
+                    if on_frozen { frozen_bad+=1; } else { residual_bad+=1; }
+                    let guv=geometry(u0,vi,'u');
+                    let a_mark=F::o().add(F::n(u0).sub(F::n(vi)).mul(F::n(2).inv()));
+                    let b_mark=F::n(u0).sub(F::o());
+                    let marked_intersection_on_branch=guv.k.eval(a_mark,b_mark).0==0;
+                    let l1_branch_tangency=restricted_even_quartic_discriminant(&guv.k,b_mark,true).0==0;
+                    let l2_branch_tangency=restricted_even_quartic_discriminant(&guv.k,a_mark,false).0==0;
+                    bad.push(format!("{{\"u\":{u0},\"v\":{vi},\"kind\":\"{kind}\",\"on_frozen_support\":{on_frozen},\"marked_intersection_on_branch\":{marked_intersection_on_branch},\"l1_branch_tangency\":{l1_branch_tangency},\"l2_branch_tangency\":{l2_branch_tangency}}}"));
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_presentation_rank_scan.v1\",\"u_range\":[3,15],\"v_range\":[3,200],\"frozen_bad_count\":{frozen_bad},\"residual_bad_count\":{residual_bad},\"bad_points\":[{}]}}",bad.join(","));
+        return;
+    }
+    if mode == "global" {
+        let rows=[0usize,1,2,8];
+        let mut max_den_degree=0usize;
+        let mut max_residual_degree=0usize;
+        let mut residual_mask=0u128;
+        let mut entry=0u32;
+        let mut rank_or_pivot_failures=0usize;
+        let mut inconsistent_sample_count=0usize;
+        let mut unexplained_exception_count=0usize;
+        let mut exceptions=Vec::<String>::new();
+        std::panic::set_hook(Box::new(|_| {}));
+        for u0 in [3u64,5,7,11,13] {
+            let frozen=frozen_support_on_v(F::n(u0));
+            for row in rows {
+                for axis in ['u','v'] {
+                    let mut samples=vec![Vec::<(F,F)>::new();10];
+                    for vi in 31u64..=95 {
+                        let Ok(sol)=std::panic::catch_unwind(|| solve(&geometry(u0,vi,axis),row,8)) else {
+                            inconsistent_sample_count+=1;
+                            let on_frozen=peval(&frozen,F::n(vi)).0==0;
+                            if !on_frozen { unexplained_exception_count+=1; }
+                            exceptions.push(format!("{{\"u\":{u0},\"v\":{vi},\"row\":{row},\"axis\":\"{axis}\",\"kind\":\"inconsistent\",\"on_frozen_support\":{on_frozen}}}"));
+                            continue;
+                        };
+                        if sol.gauge_rank!=2 || sol.gauge_pivot_mask!=24 {
+                            rank_or_pivot_failures+=1;
+                            let on_frozen=peval(&frozen,F::n(vi)).0==0;
+                            if !on_frozen { unexplained_exception_count+=1; }
+                            exceptions.push(format!("{{\"u\":{u0},\"v\":{vi},\"row\":{row},\"axis\":\"{axis}\",\"kind\":\"rank_or_pivot\",\"on_frozen_support\":{on_frozen}}}"));
+                            continue;
+                        }
+                        for (k,q) in gauge_plucker(&sol).into_iter().enumerate() {
+                            samples[k].push((F::n(vi),q));
+                        }
+                    }
+                    for s in samples {
+                        let (_,d)=rational_fit(&s,20);
+                        max_den_degree=max_den_degree.max(d.len()-1);
+                        let residual=remove_frozen_factors(d,&frozen);
+                        max_residual_degree=max_residual_degree.max(residual.len()-1);
+                        if residual.len()>1 { residual_mask|=1u128<<entry; }
+                        entry+=1;
+                    }
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_plucker_generic_lines.v3\",\"u_slices\":[3,5,7,11,13],\"rows\":[0,1,2,8],\"axes\":[\"u\",\"v\"],\"plucker_order\":[\"p34\",\"p35\",\"p36\",\"p37\",\"p45\",\"p46\",\"p47\",\"p56\",\"p57\",\"p67\"],\"max_denominator_degree\":{max_den_degree},\"max_residual_degree_after_frozen_support\":{max_residual_degree},\"residual_mask\":{residual_mask},\"rank_or_pivot_failures\":{rank_or_pivot_failures},\"inconsistent_sample_count\":{inconsistent_sample_count},\"unexplained_exception_count\":{unexplained_exception_count},\"exceptions\":[{}]}}",exceptions.join(","));
+        return;
+    }
     let full_projection = mode == "full";
     let (center_u, center_v, source_center, center_uv) = centers[center_index];
     let marked_weights = if center_index >= 4 { [2i32,1,1] } else { [1i32,0,0] };
