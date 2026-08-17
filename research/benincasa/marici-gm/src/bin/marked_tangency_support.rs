@@ -1206,6 +1206,35 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-intersection" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let mut branch=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in [3u64,5,7,11,13,17,19] {
+                let u=F::n(u0);
+                for (label,v) in [
+                    ("D_minus",u.pow(2).mul(F::n(2)).sub(u).add(F::n(2))),
+                    ("D_plus",u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2)))
+                ] {
+                    let sol=solve(&geometry(u0,v.0,'u'),8,degree);
+                    let row=sol.gauge_rref.iter().find(|r|r[8].0!=0).unwrap();
+                    let ratio=row[11].mul(row[10].inv());
+                    let expected=u.pow(2).neg();
+                    branch.push(format!("{{\"degree\":{degree},\"branch\":\"{label}\",\"u\":{u0},\"e9_over_e8\":{},\"expected_minus_u2\":{},\"match\":{}}}",ratio.0,expected.0,ratio==expected));
+                }
+            }
+        }
+        let mut center=Vec::new();
+        for degree in [6u8,8,10,12] {
+            let outcome=std::panic::catch_unwind(||solve(&geometry(0,2,'u'),8,degree));
+            match outcome {
+                Ok(sol)=>center.push(format!("{{\"degree\":{degree},\"status\":\"ok\",\"rank\":{},\"unknowns\":{},\"gauge_rank\":{},\"pivot_mask\":{}}}",sol.rank,sol.unknowns,sol.gauge_rank,sol.gauge_pivot_mask)),
+                Err(_)=>center.push(format!("{{\"degree\":{degree},\"status\":\"inconsistent\"}}"))
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.dlog_soft_total_intersection.v1\",\"intersection\":\"u=0,v=2; E=0,X2=0\",\"branch_saturation\":\"v_alg/E^2\",\"expected_limit\":\"e8\",\"branch_results\":[{}],\"center_results\":[{}]}}",branch.join(","),center.join(","));
+        return;
+    }
     if mode == "dlog-line-map" {
         let mut tested=0usize;
         let mut aligned=0usize;

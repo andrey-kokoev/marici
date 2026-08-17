@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 113,
+  "event_id": "ev-000000000113-4a7d541d-a770-444a-95a2-d7049c975646",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "16f7d57da34dc71c94b38d540e376a43e76752c09197bdf5e7a6ebe80c0b4e92",
+  "proposal_id": "ep_27537236-99f7-4f8d-ba7f-b45fb915da88",
+  "proposal_digest": "4aa7411800e37c9542d95058331f87a9cb4ec36b304e07489bc8e17178945795",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-418-soft-total-limit",
+      "kind": "source",
+      "title": "Ledger 418: The Algebraic Fitting Line Has a Common Saturated Soft-Total Limit",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-418 The Algebraic Fitting Line Has a Common Saturated Soft-Total Limit.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:soft-total-saturated-fitting-limit",
+      "kind": "claim",
+      "title": "The branch-saturated algebraic Fitting line has common limit [e8] at E=X2=0"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-total-saturation-census",
+      "kind": "test",
+      "title": "Two-branch exact-lift saturation census at the soft-total intersection"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:soft-total-saturated-fitting-limit",
+      "target_id": "marici:source:ledger-418-soft-total-limit",
+      "relation_id": "rel:derived_from-0ec36a6ec084ca85"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:soft-total-saturation-census",
+      "target_id": "marici:claim:soft-total-saturated-fitting-limit",
+      "relation_id": "rel:tests-1426c5993abd6a1d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "benincasa-418-soft-total-saturation-outcome",
+      "test_id": "marici:test:soft-total-saturation-census",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed narrowly: 28/28 generic punctured branch fibers at degrees 8 and 10 satisfy e9/e8=-u^2; both saturated limits are [e8]. The raw exact-center presentation has gauge rank 12 at stable tested degrees and is classified as non-flat supported torsion.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-418-soft-total-limit",
+          "locator": "Result and Epistemic boundary",
+          "paraphrase": "Both dlog components share the saturated projective limit [e8], while the unsaturated center collapses all master directions and does not define that limit."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the cosmology attack and update the epistemic graph with new ledger entries."
+  },
+  "idempotency_key": "auto-admission-9baa9994233c8241bdfffe74",
+  "occurred_at": "2026-08-17T22:55:13.7073783Z",
+  "certifies_truth": false,
+  "event_hash": "55bcfdb8561660571170b2896407cacb08938bd53da1336fd139219f49b22751"
+}
