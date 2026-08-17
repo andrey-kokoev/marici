@@ -28,6 +28,12 @@ The local normal-specialization and Euler-class gate is reproducible with:
 cargo run --release --bin overlap_normal_specialization_gate
 ```
 
+The ordered two-Cut Cousin determinant gate is reproducible with:
+
+```powershell
+cargo run --release --bin two_cut_cousin_determinant_gate
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
