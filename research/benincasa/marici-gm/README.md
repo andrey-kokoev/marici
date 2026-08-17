@@ -19,6 +19,8 @@ Commands:
 - `generic-et-test <point-count> <output.json>`
 - `soft-corner-common-frame-test <output.json>`
 - `soft-support-test <output.json>`
+- `soft-support-both-sites-test <output.json>`
+- `soft-support-nine-master-test <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -75,3 +77,13 @@ the total-energy residue at `X2=0` (`u=0,v=2`). It distinguishes a genuinely
 supported logarithmic extension from regular finite mixing. The two committed
 prime-field certificates find a zero kernel-to-quotient principal part, while
 retaining the regular finite coefficient `-1/4`.
+
+The both-sites command transports the direct `X2=0` computation through the
+source involution `x<->y`, `a<->b`, `e8<->e9`, including its fiber-orientation
+sign. This tests the union `X1*X2=0` without treating the unavailable `X1=0`
+point of the `X1=1` affine chart as an ordinary finite specialization.
+
+The nine-master command combines the both-site result with the exact
+`1+2+2+4` character decomposition. It records the site-soft Kummer poles
+internal to the two algebraic rank-two blocks and checks that all
+off-character entries into the unique elliptic character remain zero.
