@@ -1130,6 +1130,33 @@ fn main() {
     assert_eq!(dot(&omega, &outer).abs(), 2);
     assert_eq!(dot(&primitive_voltage, &outer).rem_euclid(2), 0);
 
+    // Lift d[O]=2[gamma] to the actual twelve-face carrier for every D8 transport.
+    let free_face_minor = minor(&boundary_two, &free_rows, &face_columns);
+    let mut transported_cap_witnesses = 0;
+    for amount in 0..N {
+        for reflected in [false, true] {
+            let permutation: Vec<_> = quadrangulations.iter().map(|q| {
+                let mut image = [transform(q[0], amount, reflected), transform(q[1], amount, reflected)];
+                image.sort();
+                quadrangulations.iter().position(|&candidate| candidate == image).unwrap()
+            }).collect();
+            let vertices: Vec<_> = outer_vertices.iter().map(|&v| permutation[v]).collect();
+            let transported = oriented_cycle_vector(&vertices, &edge_index);
+            assert!(vector_boundary(&boundary_one, &transported).iter().all(|&x| x == 0));
+            let coefficient = dot(&omega, &transported);
+            assert_eq!(coefficient.abs(), 2);
+            let residual: Vec<_> = transported.iter().zip(&core)
+                .map(|(&x, &c)| x - coefficient * c).collect();
+            let target: Vec<_> = free_rows.iter().map(|&row| residual[row]).collect();
+            let solution = solve_unimodular(&free_face_minor, &target);
+            let mut witness = vec![0; faces.len()];
+            for (&face, value) in face_columns.iter().zip(solution) { witness[face] = value; }
+            assert_eq!(vector_boundary(&boundary_two, &witness), residual);
+            transported_cap_witnesses += 1;
+        }
+    }
+    assert_eq!(transported_cap_witnesses, 16);
+
     // The zero comparison and omega have identical endpoint data and obey
     // every one of the twelve face equations.  They are not gauge-equivalent
     // because omega pairs to one with the surviving core cycle.
@@ -1229,6 +1256,7 @@ fn main() {
     println!("  candidate hypercover carrier: (C0,C1,C2)=(12,24,8 triangles + 4 squares)");
     println!("  ordinary SNF: d1=1^11, d2=1^12; H=(Z,Z,0)");
     println!("  outer octagon is twice the primitive Mobius core");
+    println!("  all 16 D8 transports have explicit integral twelve-face cap witnesses");
     println!("  ordered-normal primitive-quotient voltage on the core: {primitive_core_holonomy}");
     println!("  conditionally, the unit road quotient selects the nontrivial orientation system");
     println!("  universal local system collapses to R --(u-1)--> R");
