@@ -1,0 +1,98 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_02796f73-9152-4924-aca1-60b0c9ddd3ff",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator instructed continued cosmology work and epistemic graph updates for new ledger entries."
+  },
+  "idempotency_key": "marici-ledger-386-exact-lift-gauge-admission-v1",
+  "expected_ledger_head": "01b5f19c8b080629756608b0462e627fa6fa55d6aefefa78dabf00e92acffe9a",
+  "created_at": "2026-08-17T21:57:00.3199743Z",
+  "content_fingerprint": "0feddf2b17559c40e1c7a45847ee5016cc4b1133cfb92f356780a9b2e0020e48",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-386",
+      "kind": "source",
+      "title": "Ledger 386: The Five Omitted Base-Point Coordinates Are Gauge Variables, Not Canonical Connection Entries",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-386 The Five Omitted Base-Point Coordinates Are Gauge Variables, Not Canonical Connection Entries.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-386",
+      "kind": "test",
+      "title": "Exact-lift fixed-coordinate census at elliptic base-point representatives",
+      "version": "2026-08-17",
+      "locator": "research/benincasa/exact-lift-gauge-noncanonicity-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-386",
+      "kind": "claim",
+      "title": "Columns 3 through 7 are exact-lift gauge variables while the seven-column quotient is the complete fixed coordinate subsystem in the tested reduction",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-386 The Five Omitted Base-Point Coordinates Are Gauge Variables, Not Canonical Connection Entries.md#verdict"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:ledger-386-coordinatewise-gauge-test",
+      "kind": "criticism",
+      "title": "Coordinatewise logarithmicity of exact-lift variables is ill-typed without a source-defined splitting",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-386 The Five Omitted Base-Point Coordinates Are Gauge Variables, Not Canonical Connection Entries.md#verdict"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:ledger-386",
+      "target_id": "marici:source:ledger-386",
+      "relation_id": "rel:derived_from-a11419b1f790dc1f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-386",
+      "target_id": "marici:claim:ledger-386",
+      "relation_id": "rel:tests-801e76a16474936e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-386",
+      "target_id": "marici:claim:ledger-385",
+      "relation_id": "rel:depends_on-bb6707e3f5f01370"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:criticism:ledger-386-coordinatewise-gauge-test",
+      "target_id": "marici:claim:ledger-385",
+      "relation_id": "rel:criticizes-3cf98387036fc496"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:criticism:ledger-386-coordinatewise-gauge-test",
+      "target_id": "marici:source:ledger-386",
+      "relation_id": "rel:derived_from-24e83db3df530bb7"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-386",
+      "test_id": "marici:test:ledger-386",
+      "actor": "marici.Benincasa",
+      "outcome": "At both base-point representatives and all sampled rows and derivative systems, the nonfixed mask is 248, exactly columns 3 through 7. The canonical seven-column complement remains fixed.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-386",
+          "locator": "Frozen diagnostic; Result; Verdict",
+          "paraphrase": "A bounded exact census establishes structural gauge dependence of the five omitted coordinates and rejects an arbitrary RREF splitting."
+        }
+      ]
+    }
+  ],
+  "digest": "e3f197aea3da96a00bef53f0316aee56c6a44b539c012d4ad5bac0531479f695"
+}
