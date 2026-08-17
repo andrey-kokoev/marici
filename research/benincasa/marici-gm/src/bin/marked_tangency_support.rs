@@ -752,7 +752,7 @@ fn invert_square(mut a:Vec<Vec<F>>) -> Vec<Vec<F>> {
     a.into_iter().map(|r|r[n..].to_vec()).collect()
 }
 fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
-    let samples=48usize;
+    let samples=if d.0==0 {24usize} else {48usize};
     let mut vand=vec![vec![F::z();samples+1];samples+1];
     for i in 0..=samples { for j in 0..=samples { vand[i][j]=F::n(i as u64).pow(j as u64); }}
     let vinv=invert_square(vand);
