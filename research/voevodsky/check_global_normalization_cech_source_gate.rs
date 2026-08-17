@@ -32,7 +32,6 @@ impl<From, To> MissingBlock<From, To> {
 struct MissingSourceBlocks {
     occurrence_rees: MissingBlock<OccurrenceRees, OccurrenceRees>,
     tor_cech: MissingBlock<TorCech, TorCech>,
-    central_flip_target_ringed_enhancement: MissingBlock<PcExtraordinaryCostalk, RingedTarget>,
     central_flip_projections: MissingBlock<(SheetPair, RingedTarget), SpanProjections>,
     central_flip_dualizing_trace: MissingBlock<SpanProjections, RingedSpan>,
     central_flip_pc_purity: MissingBlock<RingedSpan, PcExtraordinaryCostalk>,
@@ -47,9 +46,6 @@ impl MissingSourceBlocks {
         Self {
             occurrence_rees: MissingBlock::new("d_occurrence_rees"),
             tor_cech: MissingBlock::new("d_tor_cech"),
-            central_flip_target_ringed_enhancement: MissingBlock::new(
-                "d_central_flip_target_ringed_enhancement",
-            ),
             central_flip_projections: MissingBlock::new("d_central_flip_projections"),
             central_flip_dualizing_trace: MissingBlock::new("d_central_flip_dualizing_trace"),
             central_flip_pc_purity: MissingBlock::new("d_central_flip_pc_purity"),
@@ -60,11 +56,10 @@ impl MissingSourceBlocks {
         }
     }
 
-    fn ids(&self) -> [&'static str; 10] {
+    fn ids(&self) -> [&'static str; 9] {
         [
             self.occurrence_rees.id,
             self.tor_cech.id,
-            self.central_flip_target_ringed_enhancement.id,
             self.central_flip_projections.id,
             self.central_flip_dualizing_trace.id,
             self.central_flip_pc_purity.id,
@@ -143,6 +138,6 @@ fn main() {
         .join(",");
 
     println!(
-        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"central_flip_rees_geometry\":\"PROVED_NOT_A_SPAN\",\"target_cellular_cosheaf\":\"PROVED\",\"first_geometric_obligation\":\"d_central_flip_target_ringed_enhancement\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"NOT_CONSTRUCTED\"}}"
+        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"central_flip_rees_geometry\":\"PROVED_NOT_A_SPAN\",\"target_cellular_cosheaf\":\"PROVED\",\"target_ringed_incidence_enhancement\":\"PROVED_Q_BANG_TYPED_NOT_COMPUTED\",\"first_geometric_obligation\":\"d_central_flip_projections\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"TYPED_TARGET_ONLY_NO_SPAN\"}}"
     );
 }
