@@ -1206,6 +1206,52 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-blowup" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let mut results=Vec::new();
+        let mut tested=0usize;
+        let mut generic=0usize;
+        let mut exceptional=0usize;
+        let mut known_signed_energy=0usize;
+        let mut known_e_two=0usize;
+        let mut residual=0usize;
+        for degree in [8u8,10] {
+            for c0 in [1u64,2,3,5,7,11,13,17,19,23,29] {
+                let c=F::n(c0);
+                for t0 in [2u64,3,5,7,11,13,17,19,23,29,31] {
+                    let t=F::n(t0);
+                    if t==c || t==c.neg() { continue; }
+                    // Blow-up chart: E=t and X2=c*t, hence v=2-t+2*c*t.
+                    let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
+                    let outcome=std::panic::catch_unwind(||solve(&geometry(t0,v.0,'u'),8,degree));
+                    tested+=1;
+                    match outcome {
+                        Ok(sol) if sol.gauge_rank==2 => generic+=1,
+                        Ok(sol) => {
+                            exceptional+=1;
+                            let support=if c0==1 && t0==2 {
+                                known_signed_energy+=1; known_e_two+=1; "intersection:(E-X2)=0_and_(2-E)=0"
+                            } else if c0==1 {
+                                known_signed_energy+=1; "(E-X2)=0"
+                            } else if t0==2 {
+                                known_e_two+=1; "(2-E)=0"
+                            } else {
+                                residual+=1; "unclassified"
+                            };
+                            results.push(format!("{{\"degree\":{degree},\"slope_c\":{c0},\"t\":{t0},\"status\":\"rank_jump\",\"support\":\"{support}\",\"gauge_rank\":{},\"pivot_mask\":{}}}",sol.gauge_rank,sol.gauge_pivot_mask));
+                        },
+                        Err(_) => {
+                            exceptional+=1;
+                            residual+=1;
+                            results.push(format!("{{\"degree\":{degree},\"slope_c\":{c0},\"t\":{t0},\"status\":\"inconsistent\"}}"));
+                        }
+                    }
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.dlog_joint_blowup_direction_census.v1\",\"chart\":\"E=t,X2=c*t\",\"excluded\":\"c=0 and t=+-c\",\"tested\":{tested},\"generic_gauge_rank_two\":{generic},\"exceptional\":{exceptional},\"known_signed_energy_hits\":{known_signed_energy},\"known_E_equals_2_hits\":{known_e_two},\"residual_unclassified\":{residual},\"exceptions\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "dlog-intersection" {
         std::panic::set_hook(Box::new(|_| {}));
         let mut branch=Vec::new();
