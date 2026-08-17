@@ -17,6 +17,7 @@ Commands:
 - `other-block-test <point-count> <output.json>`
 - `cargo run --release --bin et_intersection_census -- <output.json>`
 - `generic-et-test <point-count> <output.json>`
+- `soft-corner-common-frame-test <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -56,3 +57,11 @@ extension-splitting equation.
 other-block connections and the total-energy intersection census. It records
 the complete generic nine-master Deligne nearby object, the second Rees datum,
 and the precise typing boundary of the still-unconstructed Cut--nearby square.
+
+The soft-corner command reconstructs the complete bivariate connection,
+moves it to one source-defined Gysin-adapted frame before specialization, and
+takes both normal residues at `u=v=0`. It extracts their common simple-pole
+principal part, removes that diagonal Deligne coboundary, and compares the
+finite algebraic--elliptic off-diagonal blocks. The committed certificate
+records zero antisymmetric difference and hence
+`epsilon_e6=epsilon_v_alg=0` on the generic finite-field de Rham locus.

@@ -280,6 +280,22 @@ fn laurent_residue(f:&UniFit)->Result<F,&'static str>{
     if od==on+1{return Ok(f.num[on].div(f.den[od]))}
     Err("higher pole")
 }
+fn value_at_zero(f:&UniFit)->Result<F,i32>{
+    let on=f.num.iter().position(|x|x.v!=0).unwrap_or(f.num.len());
+    let od=f.den.iter().position(|x|x.v!=0).unwrap_or(f.den.len());
+    let order=on as i32-od as i32;
+    if order<0{return Err(order)}
+    if order>0{return Ok(F::z(PRIME))}
+    if on==f.num.len()||od==f.den.len(){return Ok(F::z(PRIME))}
+    Ok(f.num[on].div(f.den[od]))
+}
+fn finite_part_at_zero(f:&UniFit)->Result<(i32,F,F),i32>{
+    let on=f.num.iter().position(|x|x.v!=0).unwrap_or(f.num.len());let od=f.den.iter().position(|x|x.v!=0).unwrap_or(f.den.len());let order=on as i32-od as i32;
+    if order>=0{return Ok((order,F::z(PRIME),value_at_zero(f).unwrap()))}
+    if order < -1{return Err(order)}
+    let a0=f.num[on];let a1=f.num.get(on+1).copied().unwrap_or(F::z(PRIME));let b0=f.den[od];let b1=f.den.get(od+1).copied().unwrap_or(F::z(PRIME));
+    let principal=a0.div(b0);let finite=a1.mul(b0).sub(a0.mul(b1)).div(b0.mul(b0));Ok((order,principal,finite))
+}
 fn mm(a:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let n=a.len();let m=b[0].len();let k=b.len();let mut c=vec![vec![F::z(PRIME);m];n];for i in 0..n{for j in 0..m{for q in 0..k{c[i][j]=c[i][j].add(a[i][q].mul(b[q][j]));}}}c}
 fn inverse(a:&[Vec<F>])->Option<Vec<Vec<F>>>{let n=a.len();let mut out=vec![vec![F::z(PRIME);n];n];for j in 0..n{let mut aug=Vec::new();for i in 0..n{let mut r=a[i].clone();r.push(if i==j{F::o(PRIME)}else{F::z(PRIME)});aug.push(r);}let x=rank_solve(aug,n)?;for i in 0..n{out[i][j]=x[i];}}Some(out)}
 fn nullspace_2x4(c:&[Vec<F>])->Vec<Vec<F>>{
@@ -292,6 +308,74 @@ fn residue_matrix_at_v(vv:u64,elliptic:bool)->Vec<Vec<F>>{
     let n=if elliptic{2}else{4};let mut samples:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();n];n];let mut u=3u64;
     while samples[0][0].len()<40{let got=std::panic::catch_unwind(||{if elliptic{let(f,fp,_,_)=boundary_data(u,vv,"u");elliptic_connection(&f,&fp)}else{sample_rows(u,vv,"u").0}});if let Ok(m)=got{for i in 0..n{for j in 0..n{samples[i][j].push((F::new(u,PRIME),m[i][j]));}}}u+=1;}
     let mut r=vec![vec![F::z(PRIME);n];n];for i in 0..n{for j in 0..n{let f=fit_uni(&samples[i][j],10).expect("univariate fit");r[i][j]=laurent_residue(&f).expect("logarithmic pole");}}r
+}
+fn gysin_adapted_rows(uu:u64,vv:u64,axis:&str)->Vec<Vec<F>>{
+    let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));let zero=D::c(F::z(PRIME));
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(half).sub(one);let y2=y.sq();let u2=u.sq();let alpha=one.sub(y2).mul(y2.sub(u2.sq()));let beta=D::c(F::new(2,PRIME)).mul(u2.add(y2));let gamma=D::c(F::new(2,PRIME)).neg().mul(y2).mul(u2.add(one));
+    let qa=u2.add(y2).mul(half);let qb=u2.add(one).mul(half).neg();let lift_a=qa.neg().div(qb);let lift_b=one.div(qb);
+    let pd=[[one,zero,zero,zero],[zero,alpha,beta,gamma],[zero,one,zero,zero],[zero,lift_a,lift_b,zero]];
+    let mut p=vec![vec![F::z(PRIME);4];4];let mut dp=p.clone();for i in 0..4{for j in 0..4{p[i][j]=pd[i][j].x;dp[i][j]=pd[i][j].d;}}
+    let(a,_)=sample_rows(uu,vv,axis);let mut lhs=mm(&p,&a);for i in 0..4{for j in 0..4{lhs[i][j]=lhs[i][j].add(dp[i][j]);}}mm(&lhs,&inverse(&p).expect("regular Gysin-adapted frame"))
+}
+fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
+    let need=2*total_monomials(maxdeg).len()+20;let mut su=0x243f6a8885a308d3u64;let mut sv=0x13198a2e03707344u64;let mut data=Vec::new();
+    while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
+        let got=std::panic::catch_unwind(||{if adapted{(gysin_adapted_rows(su,sv,"u"),gysin_adapted_rows(su,sv,"v"))}else{let(au,_)=sample_rows(su,sv,"u");let(av,_)=sample_rows(su,sv,"v");(au,av)}});if let Ok(z)=got{data.push((su,sv,z.0,z.1));}}
+    let mut fits:[Vec<RatFit>;2]=[Vec::new(),Vec::new()];for axis in 0..2{for i in 0..4{for j in 0..4{let ss:Vec<(u64,u64,F)>=data.iter().map(|(u,v,au,av)|(*u,*v,if axis==0{au[i][j]}else{av[i][j]})).collect();fits[axis].push(fit_entry(&ss,maxdeg).unwrap_or_else(||panic!("bivariate reconstruction failed at axis={axis}, row={i}, col={j}, maxdeg={maxdeg}")));}}}fits
+}
+fn rational_normal_residue(f:&RatFit,axis:usize)->Result<UniFit,i32>{
+    let ms=total_monomials(f.deg);let normal=|m:&Mon|if axis==0{m.0}else{m.1};let tangent=|m:&Mon|if axis==0{m.1}else{m.0};
+    let on=ms.iter().zip(&f.num).filter(|(_,c)|c.v!=0).map(|(m,_)|normal(m)).min().unwrap_or(0);
+    let od=ms.iter().zip(&f.den).filter(|(_,c)|c.v!=0).map(|(m,_)|normal(m)).min().unwrap_or(0);
+    if od<=on{return Ok(UniFit{num:vec![F::z(PRIME)],den:vec![F::o(PRIME)]})}
+    if od!=on+1{return Err(on as i32-od as i32)}
+    let degree=f.deg as usize;let mut num=vec![F::z(PRIME);degree+1];let mut den=vec![F::z(PRIME);degree+1];
+    for(m,c)in ms.iter().zip(&f.num){if normal(m)==on{num[tangent(m)as usize]=*c}}
+    for(m,c)in ms.iter().zip(&f.den){if normal(m)==od{den[tangent(m)as usize]=*c}}
+    Ok(UniFit{num,den})
+}
+fn corner_residues_from_fits(fits:&[Vec<RatFit>;2])->Result<[Vec<Vec<F>>;2],String>{
+    let mut out=[vec![vec![F::z(PRIME);4];4],vec![vec![F::z(PRIME);4];4]];
+    for axis in 0..2{for i in 0..4{for j in 0..4{let r=rational_normal_residue(&fits[axis][4*i+j],axis).map_err(|o|format!("normal:{}:{}:{}:{}",axis,i,j,o))?;out[axis][i][j]=value_at_zero(&r).map_err(|o|format!("corner:{}:{}:{}:{}",axis,i,j,o))?;}}}Ok(out)
+}
+fn corner_laurent_census(fits:&[Vec<RatFit>;2])->String{
+    let mut orders=[vec![vec![0i32;4];4],vec![vec![0i32;4];4]];let mut leads=[vec![vec![F::z(PRIME);4];4],vec![vec![F::z(PRIME);4];4]];
+    for axis in 0..2 {
+        for i in 0..4 {
+            for j in 0..4 {
+                match rational_normal_residue(&fits[axis][4*i+j],axis) {
+                    Err(o) => orders[axis][i][j]=o,
+                    Ok(r) => {
+                        let on=r.num.iter().position(|x|x.v!=0);
+                        let od=r.den.iter().position(|x|x.v!=0);
+                        match (on,od) {
+                            (Some(a),Some(b)) => {
+                                orders[axis][i][j]=a as i32-b as i32;
+                                leads[axis][i][j]=r.num[a].div(r.den[b]);
+                            },
+                            _ => orders[axis][i][j]=99,
+                        }
+                    }
+                }
+            }
+        }
+    }
+    let imat=|m:&Vec<Vec<i32>>|{let mut s=String::from("[");for(i,r)in m.iter().enumerate(){if i>0{s.push(',')}s.push('[');for(j,x)in r.iter().enumerate(){if j>0{s.push(',')}s.push_str(&x.to_string())}s.push(']')}s.push(']');s};
+    format!("{{\"u_orders\":{},\"u_leads\":{},\"v_orders\":{},\"v_leads\":{}}}",imat(&orders[0]),matrix_json(&leads[0]),imat(&orders[1]),matrix_json(&leads[1]))
+}
+fn deligne_finite_residues(fits:&[Vec<RatFit>;2])->Result<([Vec<Vec<F>>;2],Vec<Vec<F>>),String>{
+    let mut finite=[vec![vec![F::z(PRIME);4];4],vec![vec![F::z(PRIME);4];4]];let mut principal=[vec![vec![F::z(PRIME);4];4],vec![vec![F::z(PRIME);4];4]];
+    for axis in 0..2{for i in 0..4{for j in 0..4{let r=rational_normal_residue(&fits[axis][4*i+j],axis).map_err(|o|format!("normal:{axis}:{i}:{j}:{o}"))?;let(_,p,f)=finite_part_at_zero(&r).map_err(|o|format!("corner:{axis}:{i}:{j}:{o}"))?;principal[axis][i][j]=p;finite[axis][i][j]=f;}}}
+    if principal[0]!=principal[1]{return Err("non_diagonal_principal_part".to_string())}Ok((finite,principal[0].clone()))
+}
+fn soft_corner_common_frame_test()->String{
+    let source_fits=reconstruct_final_fits(7,false);let source_defect=corner_residues_from_fits(&source_fits).err().unwrap_or_else(||"none".to_string());
+    let fits=reconstruct_final_fits(12,true);let census=corner_laurent_census(&fits);let regularized=deligne_finite_residues(&fits);let Ok(([aru,arv],principal))=regularized else{let defect=regularized.err().unwrap();return format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v5\",\"prime\":{},\"status\":\"deligne_principal_part_failure\",\"source_frame_first_defect\":\"{}\",\"defect\":\"{}\",\"laurent_census\":{}}}",PRIME,source_defect,defect,census)};
+    let eu=vec![aru[2][0..2].to_vec(),aru[3][0..2].to_vec()];let ev=vec![arv[2][0..2].to_vec(),arv[3][0..2].to_vec()];
+    let mut delta=vec![vec![F::z(PRIME);2];2];for i in 0..2{for j in 0..2{delta[i][j]=ev[i][j].sub(eu[i][j]);}}
+    let qu=vec![aru[2][2..4].to_vec(),aru[3][2..4].to_vec()];let qv=vec![arv[2][2..4].to_vec(),arv[3][2..4].to_vec()];
+    format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v5\",\"prime\":{},\"status\":\"deligne_finite_parts_compared\",\"source_frame_first_defect\":\"{}\",\"reconstruction_degree\":12,\"common_principal_part\":{},\"finite_u_residue\":{},\"finite_v_residue\":{},\"finite_quotient_u\":{},\"finite_quotient_v\":{},\"off_diagonal_u\":{},\"off_diagonal_v\":{},\"antisymmetric_difference\":{},\"antisymmetric_rank\":{},\"epsilon_e6_zero\":{},\"epsilon_v_alg_zero\":{},\"laurent_census\":{}}}",PRIME,source_defect,matrix_json(&principal),matrix_json(&aru),matrix_json(&arv),matrix_json(&qu),matrix_json(&qv),matrix_json(&eu),matrix_json(&ev),matrix_json(&delta),rank_square(&delta),is_zero(&delta),is_zero(&delta),census)
 }
 fn rank_square(a:&[Vec<F>])->usize{matrix_rank(a.to_vec(),a.len())}
 fn is_zero(a:&[Vec<F>])->bool{a.iter().all(|r|r.iter().all(|x|x.v==0))}
@@ -310,6 +394,7 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==3&&a[1]=="soft-corner-common-frame-test"{fs::write(&a[2],soft_corner_common_frame_test()).expect("write soft corner test");return}
     if a.len()==4&&a[1]=="generic-et-test"{let count=a[2].parse::<usize>().unwrap();fs::write(&a[3],generic_et_test(count)).expect("write generic ET test");return}
     if a.len()==4&&a[1]=="other-block-test"{
         let count=a[2].parse::<usize>().unwrap();let blocks:Vec<Vec<(bool,Mon)>>=vec![vec![(false,(1,1))],vec![(true,(1,0)),(false,(1,0))],vec![(true,(0,1)),(false,(0,1))]];let mut su=0x9e3779b97f4a7c15u64;let mut sv=0xd1b54a32d192ed03u64;let mut bad=[0usize;3];
