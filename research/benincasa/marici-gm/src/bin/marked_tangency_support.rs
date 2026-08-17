@@ -1206,6 +1206,41 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-lambda" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let mut fits=Vec::new();
+        for (label,sign) in [("D_minus",1i8),("D_plus",-1i8)] {
+            let mut samples=Vec::new();
+            let mut degree_mismatches=0usize;
+            for u0 in 3u64..=170 {
+                let u=F::n(u0);
+                let v=if sign==1 { u.pow(2).mul(F::n(2)).sub(u).add(F::n(2)) }
+                    else { u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2)) };
+                let y=u.add(v).mul(F::n(2).inv()).sub(F::o());
+                let valg_e8=F::n(2).mul(u.pow(2).add(y.pow(2)));
+                if valg_e8.0==0 { continue }
+                let sol=solve(&geometry(u0,v.0,'u'),8,8);
+                let row=sol.gauge_rref.iter().find(|r|r[8].0!=0).unwrap();
+                let lambda=row[10].mul(valg_e8.inv());
+                if matches!(u0,3|5|7|11|19|37) {
+                    let check=solve(&geometry(u0,v.0,'u'),8,10);
+                    let check_row=check.gauge_rref.iter().find(|r|r[8].0!=0).unwrap();
+                    if lambda!=check_row[10].mul(valg_e8.inv()) { degree_mismatches+=1; }
+                }
+                samples.push((u,lambda));
+            }
+            let nonzero_count=samples.iter().filter(|(_,q)|q.0!=0).count();
+            match std::panic::catch_unwind(||rational_fit(&samples,70)) {
+                Ok((n,d)) => {
+                    let validation_failures=samples.iter().filter(|(u,q)|peval(&n,*u)!=q.mul(peval(&d,*u))).count();
+                    fits.push(format!("{{\"divisor\":\"{label}\",\"samples\":{},\"nonzero_count\":{nonzero_count},\"degree_mismatches\":{degree_mismatches},\"bounded_fit\":true,\"numerator\":{:?},\"denominator\":{:?},\"validation_failures\":{validation_failures}}}",samples.len(),n.iter().map(|q|q.0).collect::<Vec<_>>(),d.iter().map(|q|q.0).collect::<Vec<_>>()));
+                }
+                Err(_) => fits.push(format!("{{\"divisor\":\"{label}\",\"samples\":{},\"nonzero_count\":{nonzero_count},\"degree_mismatches\":{degree_mismatches},\"bounded_fit\":false,\"max_numerator_degree\":70,\"max_denominator_degree\":70}}",samples.len()))
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_dlog_lambda_reconstruction.v1\",\"fits\":[{}]}}",fits.join(","));
+        return;
+    }
     if mode == "dlog-vector" {
         let mut results=Vec::new();
         for degree in [8u8,10] {
