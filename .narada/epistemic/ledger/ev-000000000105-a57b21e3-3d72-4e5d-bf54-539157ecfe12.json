@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 105,
+  "event_id": "ev-000000000105-a57b21e3-3d72-4e5d-bf54-539157ecfe12",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "58bc103db90e26fc90583484a4b3e2d274c165c463b77496176efd88cc7819d3",
+  "proposal_id": "ep_8a833a92-87a1-43ae-a00c-a9d721a6fa81",
+  "proposal_digest": "7d68b4e71a60e5284455b4bdcf675c2c80c16476198863a60855b5e668ceea19",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-387",
+      "kind": "source",
+      "title": "Ledger 387",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-387 The Exact-Lift Gauge Plane Moves but Its Base-Point Pluecker Map Is Regular.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-387",
+      "kind": "test",
+      "title": "Gauge-plane Pluecker base-point regularity census",
+      "version": "1",
+      "locator": "research/benincasa/gauge-plucker-basepoint-census.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-387",
+      "kind": "claim",
+      "title": "The moving rank-two exact-lift gauge plane is Pluecker-regular at the tested elliptic base points",
+      "version": "1",
+      "locator": "src/ledger/20260817-387 The Exact-Lift Gauge Plane Moves but Its Base-Point Pluecker Map Is Regular.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-387",
+      "target_id": "marici:claim:ledger-386",
+      "relation_id": "rel:depends_on-cfb5416db98c1023"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-387",
+      "target_id": "marici:source:ledger-387",
+      "relation_id": "rel:derived_from-6b48eefff1b0245b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-387",
+      "target_id": "marici:claim:ledger-387",
+      "relation_id": "rel:tests-cbf7040f69080a3f"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-387",
+      "test_id": "marici:test:ledger-387",
+      "actor": "marici.Benincasa",
+      "outcome": "survived narrowly: rank two, stable p34 unit, zero normalized Pluecker pole masks at both tested elliptic base-point representatives",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-387",
+          "locator": "Result and Pluecker valuation result",
+          "paraphrase": "Exact finite-field census found a moving rank-two gauge plane with stable pivot columns 3,4 and nonnegative valuations for all ten normalized Pluecker coordinates."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the cosmology falsification program and graph updates."
+  },
+  "idempotency_key": "auto-admission-ca97f7bf297443ce338e8192",
+  "occurred_at": "2026-08-17T22:05:05.3341482Z",
+  "certifies_truth": false,
+  "event_hash": "16e1ac55018449ef9cf429800f52a994c08e9770716324b6c04d9c14ac3ff003"
+}

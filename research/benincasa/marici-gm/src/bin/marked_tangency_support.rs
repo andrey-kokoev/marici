@@ -433,6 +433,9 @@ struct Sol {
     residual_zero: bool,
     equations: usize,
     unknowns: usize,
+    gauge_rank: usize,
+    gauge_pivot_mask: u16,
+    gauge_rref: Vec<Vec<F>>,
 }
 fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
     let cs = classes(g);
@@ -509,6 +512,49 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
     for (q, c) in cols.iter().zip(x) {
         check = check.add(&q.scale(c))
     }
+    // Project the homogeneous solution space to the twelve master
+    // coordinates.  Its row space is independent of a choice of affine
+    // section, so rank and pivot columns are gauge-invariant Pluecker data.
+    let mut gauge = Vec::<Vec<F>>::new();
+    for j in &free {
+        let mut v = vec![F::z(); 12];
+        if *j < 12 {
+            v[*j] = F::o();
+        }
+        for (row, col) in &piv {
+            if *col < 12 {
+                v[*col] = a[*row][*j].neg();
+            }
+        }
+        if v.iter().any(|q| q.0 != 0) {
+            gauge.push(v);
+        }
+    }
+    let mut gr = 0usize;
+    let mut gauge_pivot_mask = 0u16;
+    for c in 0..12 {
+        let Some(p) = (gr..gauge.len()).find(|&i| gauge[i][c].0 != 0) else {
+            continue;
+        };
+        gauge.swap(gr, p);
+        let inv = gauge[gr][c].inv();
+        for k in c..12 {
+            gauge[gr][k] = gauge[gr][k].mul(inv);
+        }
+        for i in 0..gauge.len() {
+            if i != gr && gauge[i][c].0 != 0 {
+                let f = gauge[i][c];
+                for k in c..12 {
+                    gauge[i][k] = gauge[i][k].sub(f.mul(gauge[gr][k]));
+                }
+            }
+        }
+        gauge_pivot_mask |= 1u16 << c;
+        gr += 1;
+        if gr == gauge.len() {
+            break;
+        }
+    }
     Sol {
         rank: rr,
         fixed,
@@ -516,7 +562,27 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         residual_zero: check.sub(&rhs).0.is_empty(),
         equations: rows,
         unknowns: n,
+        gauge_rank: gr,
+        gauge_pivot_mask,
+        gauge_rref: gauge[..gr].to_vec(),
     }
+}
+
+fn gauge_plucker(sol: &Sol) -> Vec<F> {
+    assert_eq!(sol.gauge_rank, 2);
+    let cols = [3usize, 4, 5, 6, 7];
+    let mut out = Vec::new();
+    for i in 0..cols.len() {
+        for j in i + 1..cols.len() {
+            out.push(
+                sol.gauge_rref[0][cols[i]]
+                    .mul(sol.gauge_rref[1][cols[j]])
+                    .sub(sol.gauge_rref[0][cols[j]].mul(sol.gauge_rref[1][cols[i]])),
+            );
+        }
+    }
+    assert_eq!(out[0], F::o());
+    out
 }
 
 fn rational_jet(samples: &[(F, F)], max_degree: usize) -> Option<(F, F, usize, usize)> {
@@ -906,6 +972,11 @@ fn main() {
     let marked_weights = if center_index >= 4 { [2i32,1,1] } else { [1i32,0,0] };
     if mode == "diag" {
         let mut nonfixed = [0u16;4];
+        let mut gauge_ranks = [BTreeSet::<usize>::new(), BTreeSet::new(), BTreeSet::new(), BTreeSet::new()];
+        let mut gauge_pivot_masks = [BTreeSet::<u16>::new(), BTreeSet::new(), BTreeSet::new(), BTreeSet::new()];
+        let mut gauge_points = [BTreeSet::<Vec<u64>>::new(), BTreeSet::new(), BTreeSet::new(), BTreeSet::new()];
+        let mut plucker_min_valuation = [99i32;4];
+        let mut plucker_pole_masks = [0u16;4];
         let rows = [0usize,1,2,8];
         for name in ["U","V"] {
             for r0 in [2u64,3,7,13,21] {
@@ -922,6 +993,9 @@ fn main() {
                     for (ri,row) in rows.iter().enumerate() {
                         for sol in [solve(&gu,*row,8),solve(&gv,*row,8)] {
                             assert!(sol.residual_zero);
+                            gauge_ranks[ri].insert(sol.gauge_rank);
+                            gauge_pivot_masks[ri].insert(sol.gauge_pivot_mask);
+                            gauge_points[ri].insert(sol.gauge_rref.iter().flatten().map(|q| q.0).collect());
                             for c in 0..12 {
                                 if !sol.fixed[c] { nonfixed[ri] |= 1u16 << c; }
                             }
@@ -930,7 +1004,37 @@ fn main() {
                 }
             }
         }
-        println!("{{\"schema\":\"marici.benincasa.exact_lift_gauge_diag.v1\",\"center_index\":{center_index},\"rows\":[0,1,2,8],\"nonfixed_column_masks\":{:?},\"candidate_exact_lift_columns\":[3,4,5,6,7]}}",nonfixed);
+        for name in ["U","V"] {
+            for r0 in [2u64,3,7,13,21] {
+                let r = F::n(r0);
+                for (ri,row) in rows.iter().enumerate() {
+                    for axis in ['u','v'] {
+                        let mut samples = vec![Vec::<(F,F)>::new();10];
+                        for ti in 31u64..=55 {
+                            let t = F::n(ti);
+                            let (u,v) = if name == "U" {
+                                (center_u.add(t), center_v.add(t.mul(r)))
+                            } else {
+                                (center_u.add(t.mul(r)), center_v.add(t))
+                            };
+                            let sol = solve(&geometry(u.0,v.0,axis),*row,8);
+                            for (k,q) in gauge_plucker(&sol).into_iter().enumerate() {
+                                samples[k].push((t,q));
+                            }
+                        }
+                        for (k,s) in samples.iter().enumerate() {
+                            let (shift,jet) = shifted_rational_jet(s,10,8);
+                            let valuation = -(shift as i32)
+                                + if jet.0.0 != 0 { 0 } else if jet.1.0 != 0 { 1 } else { 2 };
+                            plucker_min_valuation[ri] = plucker_min_valuation[ri].min(valuation);
+                            if valuation < 0 { plucker_pole_masks[ri] |= 1u16 << k; }
+                        }
+                    }
+                }
+            }
+        }
+        let gauge_point_counts = gauge_points.map(|q| q.len());
+        println!("{{\"schema\":\"marici.benincasa.exact_lift_gauge_diag.v4\",\"center_index\":{center_index},\"rows\":[0,1,2,8],\"nonfixed_column_masks\":{:?},\"gauge_ranks\":{:?},\"gauge_pivot_masks\":{:?},\"gauge_point_counts\":{:?},\"plucker_min_valuation\":{:?},\"plucker_pole_masks\":{:?},\"candidate_exact_lift_columns\":[3,4,5,6,7]}}",nonfixed,gauge_ranks,gauge_pivot_masks,gauge_point_counts,plucker_min_valuation,plucker_pole_masks);
         return;
     }
     let base = F::n(1000);
