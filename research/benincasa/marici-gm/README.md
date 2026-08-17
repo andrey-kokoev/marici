@@ -48,6 +48,12 @@ audited with:
 cargo run --release --bin three_cut_relative_chain_pairing
 ```
 
+Cyclic naturality of the six boundary-value Leray germs is checked with:
+
+```powershell
+cargo run --release --bin cyclic_leray_naturality
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
