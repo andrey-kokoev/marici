@@ -307,6 +307,13 @@ fn finite_part_at_zero(f:&UniFit)->Result<(i32,F,F),i32>{
     let a0=f.num[on];let a1=f.num.get(on+1).copied().unwrap_or(F::z(PRIME));let b0=f.den[od];let b1=f.den.get(od+1).copied().unwrap_or(F::z(PRIME));
     let principal=a0.div(b0);let finite=a1.mul(b0).sub(a0.mul(b1)).div(b0.mul(b0));Ok((order,principal,finite))
 }
+fn uni_eval(f:&UniFit,x:F)->Option<F>{
+    let eval=|cs:&[F]|cs.iter().enumerate().fold(F::z(PRIME),|a,(k,c)|a.add(c.mul(x.pow(k as u64))));let d=eval(&f.den);if d.v==0{None}else{Some(eval(&f.num).div(d))}
+}
+fn shift_coeffs(cs:&[F],center:F)->Vec<F>{
+    let mut out=vec![F::z(PRIME);cs.len()];for i in 0..cs.len(){let mut bin=F::o(PRIME);for k in 0..=i{if k>0{bin=bin.mul(F::new((i+1-k)as u64,PRIME)).div(F::new(k as u64,PRIME));}out[k]=out[k].add(cs[i].mul(bin).mul(center.pow((i-k)as u64)));}}out
+}
+fn shift_uni(f:&UniFit,center:F)->UniFit{UniFit{num:shift_coeffs(&f.num,center),den:shift_coeffs(&f.den,center)}}
 fn mm(a:&[Vec<F>],b:&[Vec<F>])->Vec<Vec<F>>{let n=a.len();let m=b[0].len();let k=b.len();let mut c=vec![vec![F::z(PRIME);m];n];for i in 0..n{for j in 0..m{for q in 0..k{c[i][j]=c[i][j].add(a[i][q].mul(b[q][j]));}}}c}
 fn inverse(a:&[Vec<F>])->Option<Vec<Vec<F>>>{let n=a.len();let mut out=vec![vec![F::z(PRIME);n];n];for j in 0..n{let mut aug=Vec::new();for i in 0..n{let mut r=a[i].clone();r.push(if i==j{F::o(PRIME)}else{F::z(PRIME)});aug.push(r);}let x=rank_solve(aug,n)?;for i in 0..n{out[i][j]=x[i];}}Some(out)}
 fn nullspace_2x4(c:&[Vec<F>])->Vec<Vec<F>>{
@@ -388,6 +395,14 @@ fn soft_corner_common_frame_test()->String{
     let qu=vec![aru[2][2..4].to_vec(),aru[3][2..4].to_vec()];let qv=vec![arv[2][2..4].to_vec(),arv[3][2..4].to_vec()];
     format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v6\",\"prime\":{},\"stream\":\"{}\",\"status\":\"deligne_finite_parts_compared\",\"source_frame_first_defect\":\"{}\",\"reconstruction_degree\":12,\"common_principal_part\":{},\"finite_u_residue\":{},\"finite_v_residue\":{},\"finite_quotient_u\":{},\"finite_quotient_v\":{},\"off_diagonal_u\":{},\"off_diagonal_v\":{},\"antisymmetric_difference\":{},\"antisymmetric_rank\":{},\"epsilon_e6_zero\":{},\"epsilon_v_alg_zero\":{},\"laurent_census\":{}}}",PRIME,RECON_STREAM,source_defect,matrix_json(&principal),matrix_json(&aru),matrix_json(&arv),matrix_json(&qu),matrix_json(&qv),matrix_json(&eu),matrix_json(&ev),matrix_json(&delta),rank_square(&delta),is_zero(&delta),is_zero(&delta),census)
 }
+fn soft_support_saturated_test()->String{
+    let fits=reconstruct_final_fits(7,false);let mut normal=vec![vec![UniFit{num:vec![],den:vec![]};4];4];for i in 0..4{for j in 0..4{normal[i][j]=rational_normal_residue(&fits[0][4*i+j],0).expect("logarithmic total-energy residue")}}
+    let half=F::new(2,PRIME).inv();let mut samples:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();4];4];let mut vv=3u64;
+    while samples[0][0].len()<80{let v=F::new(vv,PRIME);vv+=1;if v.v==2{continue}let y=v.mul(half).sub(F::o(PRIME));let y2=y.mul(y);let p=vec![vec![F::o(PRIME),F::z(PRIME),F::z(PRIME),F::z(PRIME)],vec![F::z(PRIME),F::o(PRIME).sub(y2),F::new(2,PRIME),F::new(2,PRIME).neg()],vec![F::z(PRIME),F::o(PRIME),F::z(PRIME),F::z(PRIME)],vec![F::z(PRIME),y2,F::new(2,PRIME).neg(),F::z(PRIME)]];let Some(pi)=inverse(&p)else{continue};let mut r=vec![vec![F::z(PRIME);4];4];let mut ok=true;for i in 0..4{for j in 0..4{if let Some(z)=uni_eval(&normal[i][j],v){r[i][j]=z}else{ok=false}}}if !ok{continue}let a=mm(&mm(&p,&r),&pi);for i in 0..4{for j in 0..4{samples[i][j].push((v,a[i][j]));}}}
+    let center=F::new(2,PRIME);let mut orders=vec![vec![0i32;4];4];let mut principal=vec![vec![F::z(PRIME);4];4];let mut finite=principal.clone();let mut fit_failures=0usize;for i in 0..4{for j in 0..4{if let Some(f)=fit_uni(&samples[i][j],14){match finite_part_at_zero(&shift_uni(&f,center)){Ok((o,p,z))=>{orders[i][j]=o;principal[i][j]=p;finite[i][j]=z},Err(o)=>orders[i][j]=o}}else{fit_failures+=1}}}
+    let ext_principal=vec![principal[2][0..2].to_vec(),principal[3][0..2].to_vec()];let ext_finite=vec![finite[2][0..2].to_vec(),finite[3][0..2].to_vec()];let imat=|m:&Vec<Vec<i32>>|{let mut s=String::from("[");for(i,r)in m.iter().enumerate(){if i>0{s.push(',')}s.push('[');for(j,x)in r.iter().enumerate(){if j>0{s.push(',')}s.push_str(&x.to_string())}s.push(']')}s.push(']');s};
+    format!("{{\"schema\":\"marici.gm.soft_support_saturated.v1\",\"prime\":{},\"stream\":\"{}\",\"locus\":\"u=0,v=2 (X2=0)\",\"saturation\":\"v_alg/X2^2\",\"samples\":{},\"fit_degree_bound\":14,\"fit_failures\":{},\"orders\":{},\"soft_principal\":{},\"soft_finite\":{},\"extension_principal\":{},\"extension_finite\":{},\"supported_extension_principal_zero\":{}}}",PRIME,RECON_STREAM,samples[0][0].len(),fit_failures,imat(&orders),matrix_json(&principal),matrix_json(&finite),matrix_json(&ext_principal),matrix_json(&ext_finite),is_zero(&ext_principal))
+}
 fn rank_square(a:&[Vec<F>])->usize{matrix_rank(a.to_vec(),a.len())}
 fn is_zero(a:&[Vec<F>])->bool{a.iter().all(|r|r.iter().all(|x|x.v==0))}
 fn generic_et_test(count:usize)->String{
@@ -405,6 +420,7 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==3&&a[1]=="soft-support-test"{fs::write(&a[2],soft_support_saturated_test()).expect("write soft support test");return}
     if a.len()==3&&a[1]=="soft-corner-common-frame-test"{fs::write(&a[2],soft_corner_common_frame_test()).expect("write soft corner test");return}
     if a.len()==4&&a[1]=="generic-et-test"{let count=a[2].parse::<usize>().unwrap();fs::write(&a[3],generic_et_test(count)).expect("write generic ET test");return}
     if a.len()==4&&a[1]=="other-block-test"{
