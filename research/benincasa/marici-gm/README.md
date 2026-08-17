@@ -23,6 +23,7 @@ Commands:
 - `soft-support-nine-master-test <output.json>`
 - `cargo run --release --bin marked_soft_support -- <output.json>`
 - `cargo run --release --bin soft_rees_smith -- <output.json>`
+- `cargo run --release --bin double_soft_rees -- <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -101,3 +102,8 @@ enhanced/conductor comparison. It verifies the exact factorization
 `D_soft*Phi=(D_soft*J)*K` and computes Smith data `(1,2,2*t)`: two
 directions remain on the leading soft fiber and one moves to the next Rees
 grade, with no new torsion prime.
+
+The double-soft binary retains (x=X_1) and (y=X_2) independently. Since
+(mathbb Z[x,y]) is not a one-normal PID, it reports the exact diagonal
+presentation and Fitting ideals rather than inventing a one-variable Smith
+form.
