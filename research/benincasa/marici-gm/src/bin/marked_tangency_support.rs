@@ -1113,6 +1113,35 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "conic" {
+        std::panic::set_hook(Box::new(|_| {}));
+        let mut conic_rank_drop_one=0usize;
+        let mut conic_projected_gain_one=0usize;
+        let mut neighbor_generic=0usize;
+        let mut failures=Vec::<String>::new();
+        for degree in [8u8,10] {
+            for u0 in 3u64..=100 {
+                let u=F::n(u0);
+                let v=u.pow(2).mul(F::n(2)).sub(u).add(F::n(2));
+                let generic=solve(&geometry(u0,v.add(F::n(17)).0,'u'),8,degree);
+                let center=solve(&geometry(u0,v.0,'u'),8,degree);
+                if generic.rank==center.rank+1 { conic_rank_drop_one+=1; }
+                else { failures.push(format!("rank:d{degree}:u{u0}")); }
+                if center.gauge_rank==generic.gauge_rank+1 { conic_projected_gain_one+=1; }
+                else { failures.push(format!("gauge:d{degree}:u{u0}")); }
+                for vn in [v.sub(F::o()),v.add(F::o())] {
+                    let n=solve(&geometry(u0,vn.0,'u'),8,degree);
+                    if n.rank==generic.rank && n.gauge_rank==generic.gauge_rank && n.gauge_pivot_mask==generic.gauge_pivot_mask {
+                        neighbor_generic+=1;
+                    } else {
+                        failures.push(format!("neighbor:d{degree}:u{u0}:v{}",vn.0));
+                    }
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_fitting_conic_uniformity.v1\",\"u_range\":[3,100],\"degrees\":[8,10],\"tested_conic_fibers\":196,\"rank_drop_one_count\":{conic_rank_drop_one},\"projected_gain_one_count\":{conic_projected_gain_one},\"tested_neighbor_fibers\":392,\"neighbor_generic_count\":{neighbor_generic},\"failures\":{:?}}}",failures);
+        return;
+    }
     if mode == "degree" {
         std::panic::set_hook(Box::new(|_| {}));
         let points=[(5u64,47u64,"residual_R"),(7,93,"residual_R"),(5,5,"z_soft"),(5,7,"signed_energy"),(5,41,"generic")];
@@ -1122,7 +1151,7 @@ fn main() {
                 let outcome=std::panic::catch_unwind(||solve(&geometry(u0,v0,'u'),8,degree));
                 match outcome {
                     Err(_)=>out.push(format!("{{\"u\":{u0},\"v\":{v0},\"label\":\"{label}\",\"degree\":{degree},\"status\":\"inconsistent\"}}")),
-                    Ok(sol)=>out.push(format!("{{\"u\":{u0},\"v\":{v0},\"label\":\"{label}\",\"degree\":{degree},\"status\":\"ok\",\"gauge_rank\":{},\"pivot_mask\":{}}}",sol.gauge_rank,sol.gauge_pivot_mask)),
+                    Ok(sol)=>out.push(format!("{{\"u\":{u0},\"v\":{v0},\"label\":\"{label}\",\"degree\":{degree},\"status\":\"ok\",\"matrix_rank\":{},\"equations\":{},\"unknowns\":{},\"nullity\":{},\"gauge_rank\":{},\"pivot_mask\":{}}}",sol.rank,sol.equations,sol.unknowns,sol.unknowns-sol.rank,sol.gauge_rank,sol.gauge_pivot_mask)),
                 }
             }
         }
