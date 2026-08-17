@@ -21,6 +21,7 @@ Commands:
 - `soft-support-test <output.json>`
 - `soft-support-both-sites-test <output.json>`
 - `soft-support-nine-master-test <output.json>`
+- `cargo run --release --bin marked_soft_support -- <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -87,3 +88,9 @@ The nine-master command combines the both-site result with the exact
 `1+2+2+4` character decomposition. It records the site-soft Kummer poles
 internal to the two algebraic rank-two blocks and checks that all
 off-character entries into the unique elliptic character remain zero.
+
+The marked-soft-support binary adds the three conductor/top quotient classes
+of the canonical rank-twelve localization extension. It takes the actual
+soft principal parts of both wall columns and checks their infinity-Gysin
+images directly; the primitive top column is regular at either individual
+site-soft branch.
