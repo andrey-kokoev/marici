@@ -5,7 +5,8 @@ use std::marker::PhantomData;
 struct OccurrenceRees;
 struct TorCech;
 struct SheetPair;
-struct Conductor;
+struct RingedSpan;
+struct PcExtraordinaryCostalk;
 struct EndpointPlus;
 struct EndpointMinus;
 struct ExpandedCarrier;
@@ -29,7 +30,8 @@ impl<From, To> MissingBlock<From, To> {
 struct MissingSourceBlocks {
     occurrence_rees: MissingBlock<OccurrenceRees, OccurrenceRees>,
     tor_cech: MissingBlock<TorCech, TorCech>,
-    central_flip: MissingBlock<SheetPair, Conductor>,
+    central_flip_ringed_span: MissingBlock<SheetPair, RingedSpan>,
+    central_flip_pc_purity: MissingBlock<RingedSpan, PcExtraordinaryCostalk>,
     endpoint_plus: MissingBlock<SheetPair, EndpointPlus>,
     endpoint_minus: MissingBlock<SheetPair, EndpointMinus>,
     full_log: MissingBlock<SheetPair, ExpandedCarrier>,
@@ -41,7 +43,8 @@ impl MissingSourceBlocks {
         Self {
             occurrence_rees: MissingBlock::new("d_occurrence_rees"),
             tor_cech: MissingBlock::new("d_tor_cech"),
-            central_flip: MissingBlock::new("d_central_flip"),
+            central_flip_ringed_span: MissingBlock::new("d_central_flip_ringed_span"),
+            central_flip_pc_purity: MissingBlock::new("d_central_flip_pc_purity"),
             endpoint_plus: MissingBlock::new("d_endpoint_plus"),
             endpoint_minus: MissingBlock::new("d_endpoint_minus"),
             full_log: MissingBlock::new("d_full_log"),
@@ -49,11 +52,12 @@ impl MissingSourceBlocks {
         }
     }
 
-    fn ids(&self) -> [&'static str; 7] {
+    fn ids(&self) -> [&'static str; 8] {
         [
             self.occurrence_rees.id,
             self.tor_cech.id,
-            self.central_flip.id,
+            self.central_flip_ringed_span.id,
+            self.central_flip_pc_purity.id,
             self.endpoint_plus.id,
             self.endpoint_minus.id,
             self.full_log.id,
@@ -67,7 +71,7 @@ struct KnownPacket {
     ranks: &'static [usize],
 }
 
-const KNOWN_PACKETS: [KnownPacket; 8] = [
+const KNOWN_PACKETS: [KnownPacket; 9] = [
     KnownPacket {
         id: "koszul_sheet_plus",
         ranks: &[1, 3, 3, 1],
@@ -100,6 +104,10 @@ const KNOWN_PACKETS: [KnownPacket; 8] = [
         id: "expanded_target_carrier",
         ranks: &[9, 21, 14],
     },
+    KnownPacket {
+        id: "central_flip_finite_profile",
+        ranks: &[1, 2, 1],
+    },
 ];
 
 fn main() {
@@ -125,6 +133,6 @@ fn main() {
         .join(",");
 
     println!(
-        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"first_geometric_obligation\":\"d_central_flip\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"NOT_CONSTRUCTED\"}}"
+        "{{\"status\":\"derived_partial\",\"known_packets\":[{packets}],\"global_source_dimensions\":\"unknown\",\"central_flip_finite_normal_form\":\"PROVED\",\"first_geometric_obligation\":\"d_central_flip_ringed_span\",\"missing_blocks\":[{obligations}],\"global_totalization\":\"NOT_INSTANTIATED\",\"global_d_squared\":\"NOT_RUN\",\"smith_form\":\"PROHIBITED_UNTIL_ALL_BLOCKS_ARE_FILLED\",\"six_functor_kernel\":\"NOT_CONSTRUCTED\"}}"
     );
 }
