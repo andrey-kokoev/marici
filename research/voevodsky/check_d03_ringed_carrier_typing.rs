@@ -97,6 +97,14 @@ fn target_reachable(source: (u16, u16), target: (u16, u16)) -> bool {
     source.0 & target.0 == source.0 && target.1 & source.1 == target.1 && source.1 & !target.0 == 0
 }
 
+fn source_leq(left: &(Vec<u16>, u16), right: &(Vec<u16>, u16)) -> bool {
+    right.0.iter().all(|face| left.0.contains(face)) && right.1 & !left.1 == 0
+}
+
+fn cell_degree(point: &(Vec<u16>, u16)) -> usize {
+    point.0.len() - 1 + point.1.count_ones() as usize
+}
+
 fn main() {
     let ds: Vec<_> = (0..N)
         .flat_map(|a| ((a + 1)..N).map(move |b| diagonal(a, b)))
@@ -162,8 +170,76 @@ fn main() {
     assert_eq!(face_only_image_count, 45);
     assert_ne!(face_only_image_count, target.len());
 
+    // The standard-resolution dualizing bicomplex has one coefficient for
+    // every strict source chain.  Census it by chain length and by the
+    // number of new target localizations between its endpoints.
+    let max_degree = corrected.iter().map(cell_degree).max().unwrap();
+    assert_eq!(max_degree, 4);
+    let images: Vec<_> = corrected
+        .iter()
+        .map(|(simplex, normal)| (blowdown(simplex[0], d03, x1), *normal))
+        .collect();
+    let greater: Vec<Vec<_>> = (0..corrected.len())
+        .map(|i| {
+            (0..corrected.len())
+                .filter(|j| {
+                    cell_degree(&corrected[*j]) < cell_degree(&corrected[i])
+                        && source_leq(&corrected[i], &corrected[*j])
+                })
+                .collect()
+        })
+        .collect();
+    let mut term_census = vec![vec![0_u64; 10]; max_degree + 1];
+    for start in 0..corrected.len() {
+        let initial_units = images[start].0 & !images[start].1;
+        let mut paths = vec![vec![0_u64; corrected.len()]; max_degree + 1];
+        paths[0][start] = 1;
+        for length in 0..max_degree {
+            for at in 0..corrected.len() {
+                let count = paths[length][at];
+                if count == 0 {
+                    continue;
+                }
+                for next in &greater[at] {
+                    paths[length + 1][*next] += count;
+                }
+            }
+        }
+        for length in 0..=max_degree {
+            for end in 0..corrected.len() {
+                let count = paths[length][end];
+                if count == 0 {
+                    continue;
+                }
+                let final_units = images[end].0 & !images[end].1;
+                let jump = (final_units & !initial_units).count_ones() as usize;
+                term_census[length][jump] += count;
+            }
+        }
+    }
+    let term_census = term_census
+        .iter()
+        .map(|row| {
+            let last = row.iter().rposition(|value| *value != 0).unwrap_or(0);
+            format!(
+                "[{}]",
+                row[..=last]
+                    .iter()
+                    .map(u64::to_string)
+                    .collect::<Vec<_>>()
+                    .join(",")
+            )
+        })
+        .collect::<Vec<_>>()
+        .join(",");
+
     println!(
-        "{{\"claim\":\"The loaded D03 pullback is typed only on the normal-state Grothendieck carrier (sigma,H), not on the face-only barycentric carrier sigma\",\"status\":\"correspondence_repair_required\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\"}}",
-        target.len(), simplices.len(), corrected.len(), cover_count, face_only_image_count
+        "{{\"claim\":\"The loaded D03 pullback is typed only on the normal-state Grothendieck carrier (sigma,H), not on the face-only barycentric carrier sigma\",\"status\":\"correspondence_repaired_and_dualizing_terms_enumerated\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\",\"standard_chain_term_census_by_degree_and_localization_jump\":[{}]}}",
+        target.len(),
+        simplices.len(),
+        corrected.len(),
+        cover_count,
+        face_only_image_count,
+        term_census
     );
 }
