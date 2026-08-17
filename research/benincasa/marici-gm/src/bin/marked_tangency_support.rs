@@ -442,7 +442,7 @@ struct Sol {
     gauge_pivot_mask: u16,
     gauge_rref: Vec<Vec<F>>,
 }
-fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
+fn presentation(g: &Geometry, master: usize, degree: u8) -> (Vec<Mon>, Vec<Vec<F>>, Vec<Poly>, Poly) {
     let cs = classes(g);
     let mut cols: Vec<Poly> = cs.iter().map(|q| common(g, q)).collect();
     for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
@@ -457,18 +457,26 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         mons.extend(q.0.keys().copied())
     }
     mons.extend(rhs.0.keys().copied());
-    let n = cols.len();
-    let mut a: Vec<Vec<F>> = mons
+    let mon_list: Vec<Mon> = mons.into_iter().collect();
+    let a: Vec<Vec<F>> = mon_list
         .iter()
         .map(|m| {
-            let mut r: Vec<F> = cols
+            cols
                 .iter()
                 .map(|q| q.0.get(m).copied().unwrap_or(F::z()))
-                .collect();
-            r.push(rhs.0.get(m).copied().unwrap_or(F::z()));
-            r
+                .collect()
         })
         .collect();
+    (mon_list, a, cols, rhs)
+}
+fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
+    let (mons, coeff, cols, rhs) = presentation(g, master, degree);
+    let n = cols.len();
+    let mut a: Vec<Vec<F>> = mons.iter().enumerate().map(|(i,m)| {
+        let mut r=coeff[i].clone();
+        r.push(rhs.0.get(m).copied().unwrap_or(F::z()));
+        r
+    }).collect();
     let rows = a.len();
     let mut piv = Vec::new();
     let mut rr = 0;
@@ -571,6 +579,91 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         gauge_pivot_mask,
         gauge_rref: gauge[..gr].to_vec(),
     }
+}
+
+fn pivot_minor(mut a: Vec<Vec<F>>) -> (usize, Vec<usize>, Vec<usize>) {
+    let rows=a.len();
+    let cols=a.first().map_or(0,Vec::len);
+    let mut row_ids: Vec<usize>=(0..rows).collect();
+    let mut pr=Vec::new();
+    let mut pc=Vec::new();
+    let mut rr=0usize;
+    for c in 0..cols {
+        let Some(p)=(rr..rows).find(|&i|a[i][c].0!=0) else { continue };
+        a.swap(rr,p); row_ids.swap(rr,p);
+        let inv=a[rr][c].inv();
+        for j in c..cols { a[rr][j]=a[rr][j].mul(inv); }
+        for i in rr+1..rows {
+            if a[i][c].0!=0 {
+                let f=a[i][c];
+                for j in c..cols { a[i][j]=a[i][j].sub(f.mul(a[rr][j])); }
+            }
+        }
+        pr.push(row_ids[rr]); pc.push(c); rr+=1;
+        if rr==rows { break }
+    }
+    (rr,pr,pc)
+}
+
+fn matrix_rank(a: Vec<Vec<F>>) -> usize { pivot_minor(a).0 }
+
+fn null_line(mut a: Vec<Vec<F>>) -> Vec<F> {
+    let rows=a.len(); let cols=a[0].len();
+    let mut piv=Vec::new(); let mut rr=0usize;
+    for c in 0..cols {
+        let Some(p)=(rr..rows).find(|&i|a[i][c].0!=0) else { continue };
+        a.swap(rr,p);
+        let inv=a[rr][c].inv();
+        for j in c..cols { a[rr][j]=a[rr][j].mul(inv); }
+        for i in 0..rows {
+            if i!=rr && a[i][c].0!=0 {
+                let f=a[i][c];
+                for j in c..cols { a[i][j]=a[i][j].sub(f.mul(a[rr][j])); }
+            }
+        }
+        piv.push((rr,c)); rr+=1;
+    }
+    assert_eq!(rr+1,cols);
+    let pivot_cols:BTreeSet<usize>=piv.iter().map(|x|x.1).collect();
+    let free=(0..cols).find(|c|!pivot_cols.contains(c)).unwrap();
+    let mut v=vec![F::z();cols]; v[free]=F::o();
+    for (r,c) in piv { v[c]=a[r][free].neg(); }
+    v
+}
+
+fn transpose(a: &[Vec<F>]) -> Vec<Vec<F>> {
+    (0..a[0].len()).map(|j|(0..a.len()).map(|i|a[i][j]).collect()).collect()
+}
+
+fn selected_minor(g:&Geometry, master:usize, degree:u8, row_mons:&[Mon], cols:&[usize]) -> Vec<Vec<F>> {
+    let (mons,a,_,_)=presentation(g,master,degree);
+    let pos:BTreeMap<Mon,usize>=mons.iter().enumerate().map(|(i,m)|(*m,i)).collect();
+    row_mons.iter().map(|m| {
+        let i=*pos.get(m).expect("minor monomial absent after specialization");
+        cols.iter().map(|j|a[i][*j]).collect()
+    }).collect()
+}
+
+fn pairing(a:&[Vec<F>], left:&[F], right:&[F]) -> F {
+    let mut z=F::z();
+    for i in 0..a.len() { for j in 0..a[i].len() {
+        z=z.add(left[i].mul(a[i][j]).mul(right[j]));
+    }}
+    z
+}
+
+fn derivative_at_zero(values:&[F]) -> F {
+    let n=values.len()-1;
+    let mut harmonic=F::z();
+    for j in 1..=n { harmonic=harmonic.add(F::n(j as u64).inv()); }
+    let mut out=values[0].mul(harmonic.neg());
+    let mut choose=F::o();
+    for k in 1..=n {
+        choose=choose.mul(F::n((n+1-k) as u64)).mul(F::n(k as u64).inv());
+        let sign=if k%2==1 { F::o() } else { F::o().neg() };
+        out=out.add(values[k].mul(sign).mul(choose).mul(F::n(k as u64).inv()));
+    }
+    out
 }
 
 fn gauge_plucker(sol: &Sol) -> Vec<F> {
@@ -1113,6 +1206,33 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "conic-jet" {
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in [3u64,5,7,11,19,37] {
+                let u=F::n(u0);
+                let v=u.pow(2).mul(F::n(2)).sub(u).add(F::n(2));
+                let (gm,ga,_,_)=presentation(&geometry(u0,v.add(F::o()).0,'u'),8,degree);
+                let (generic_rank,pr,pc)=pivot_minor(ga);
+                let row_mons:Vec<Mon>=pr.iter().map(|i|gm[*i]).collect();
+                let m0=selected_minor(&geometry(u0,v.0,'u'),8,degree,&row_mons,&pc);
+                let special_rank=matrix_rank(m0.clone());
+                assert_eq!(special_rank+1,generic_rank);
+                let right=null_line(m0.clone());
+                let left=null_line(transpose(&m0));
+                let vals:Vec<F>=(0..=16).map(|t| {
+                    let mt=selected_minor(&geometry(u0,v.add(F::n(t)).0,'u'),8,degree,&row_mons,&pc);
+                    pairing(&mt,&left,&right)
+                }).collect();
+                assert_eq!(vals[0],F::z());
+                let d12=derivative_at_zero(&vals[..=12]);
+                let d16=derivative_at_zero(&vals);
+                results.push(format!("{{\"degree\":{degree},\"u\":{u0},\"v\":{},\"minor_size\":{generic_rank},\"special_rank\":{special_rank},\"pairing_d12\":{},\"pairing_d16\":{},\"stable\":{},\"nonzero\":{}}}",v.0,d12.0,d16.0,d12==d16,d16.0!=0));
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_fitting_conic_transverse_jet.v1\",\"transverse_coordinate\":\"v-v_conic(u)\",\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "conic" {
         std::panic::set_hook(Box::new(|_| {}));
         let mut conic_rank_drop_one=0usize;
