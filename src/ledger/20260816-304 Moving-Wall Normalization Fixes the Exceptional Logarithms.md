@@ -17,7 +17,7 @@ Although Entry 303 proves that the central-fiber primitives cannot be
 transplanted to the moving exceptional interval, the frozen source wall
 normalizations already determine the two endpoint logarithms canonically.
 
-For the two mixed walls, Entry 263 gives
+For the two mixed walls, Entry 340 gives
 
 \[
 K_E(t,E-x)=R_1(t)^2,

@@ -7,7 +7,7 @@ date: 2026-08-15
 
 ## Record
 
-Status: the generic nonzero logarithmic coefficient found in entry 235 is
+Status: the generic nonzero logarithmic coefficient found in entry 324 is
 an exact one-form on the punctured algebraic wall curve. Its vanishing
 symmetric source pairing is therefore stronger than an odd-integrand
 cancellation: no nonzero meromorphic de Rham class survives away from the
@@ -45,7 +45,7 @@ s=x+y,
 v=an^2-2s.
 \]
 
-Entry 235 gives, up to its frozen common branch scalar,
+Entry 324 gives, up to its frozen common branch scalar,
 
 \[
 \eta_{-1}
@@ -116,7 +116,7 @@ Therefore
 }
 \]
 
-This corrects the phrase “nonzero wall coefficient class” in entry 235:
+This corrects the phrase “nonzero wall coefficient class” in entry 324:
 the coefficient is generically nonzero, but its meromorphic cohomology
 class is zero.
 
@@ -151,10 +151,10 @@ This does not yet classify a Deligne extension carrying independently
 chosen endpoint principal parts. Such a choice would be extra relative
 data and is not inserted here.
 
-## Relation to entries 236--237
+## Relation to entries 325--326
 
-Entry 236's direct infinity-Gysin image remains zero by disjoint support.
-Entry 237's type obstruction remains correct: the wall residue does not
+Entry 325's direct infinity-Gysin image remains zero by disjoint support.
+Entry 326's type obstruction remains correct: the wall residue does not
 canonically map backward into absolute \(H^2(S)\).
 
 The new result is stronger inside the correctly typed wall object:

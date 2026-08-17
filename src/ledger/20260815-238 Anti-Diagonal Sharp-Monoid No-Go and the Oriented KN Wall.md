@@ -50,7 +50,7 @@ generic-\(Q\) connector.
 
 ## Consequence for the spatial kernel
 
-Entry237 already shows that the two ordinary Rees boundary sections cannot
+Entry326 already shows that the two ordinary Rees boundary sections cannot
 produce the third primitive wall face. The present theorem additionally
 shows that the missing wall cannot be repaired by adjoining one ordinary
 reflection-equivariant fs-log boundary divisor.
@@ -67,7 +67,7 @@ example:
 
 The remaining required arrow is a proper Beck--Chevalley realization from
 that oriented object to the literal entry143 wall costalk, with the two
-Rees-chart restrictions and entry236's principal-line evaluation. The
+Rees-chart restrictions and entry325's principal-line evaluation. The
 orientation sign is derived by the quotient lattice; it is not an
 additional scalar choice.
 

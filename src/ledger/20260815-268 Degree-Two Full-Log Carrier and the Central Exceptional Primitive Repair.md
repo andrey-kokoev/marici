@@ -38,7 +38,7 @@ here is a local augmented-top coordinate, not the physical
 p_partial_Q.
 
 The next required arrow is a support-typed proper/log-excess comparison that
-simultaneously realizes the facet lift of entry267 and transports the
+simultaneously realizes the facet lift of entry343 and transports the
 central exceptional unit into the literal generic-Q top. Only then can the
 pointed endpoint/Q mapping fiber be instantiated.
 

@@ -5,7 +5,7 @@ Status: proved in the finite labelled log/Kato--Nakayama model. The literal
 mixed-variance six-functor realization remains open. No graph admission is
 claimed.
 
-Entry 197 constructs one branch-selected log interval. At the positive
+Entry 315 constructs one branch-selected log interval. At the positive
 endpoint the three labelled branches are ordered \((1,3,5)\). Their tensor
 product is the full Boolean cube
 

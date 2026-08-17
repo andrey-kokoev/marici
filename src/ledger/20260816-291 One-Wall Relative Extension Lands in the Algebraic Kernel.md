@@ -315,4 +315,4 @@ Produce a universal \(\mathbb Q(x,y)\) cleared polynomial certificate for
 the quotient class \([\Theta_{101}]\), then certify the independently
 reduced class \([\Theta_{110}]\).  After both mixed columns are fixed, compute the primitive
 two-wall column \(\Theta_{111}\) and pair it—without type conversion by
-fiat—with the entry-224 exceptional interval.
+fiat—with the entry-319 exceptional interval.

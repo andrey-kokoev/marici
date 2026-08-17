@@ -12,7 +12,7 @@ Cut--nearby commutator are computed in the frozen equation-(58) de Rham
 master normalization. The result is nonzero, lies wholly in the rank-seven
 algebraic Tate/Kummer kernel, and introduces no carrier incidence.
 
-This entry continues entries 224--225. It adds no denominator, carrier cell,
+This entry continues entries 319--320. It adds no denominator, carrier cell,
 support summand, projector, or normalization.
 
 ## Deutsch--Popperian conjecture tested
@@ -100,7 +100,7 @@ I_{\rm loc}
 }
 \]
 
-The common source double-pole numerator from entry 225 is
+The common source double-pole numerator from entry 320 is
 \(-8xy(x+y)\), so
 
 \[
@@ -195,7 +195,7 @@ Hence it has:
 - no new carrier incidence.
 
 This is the source-normalized realization of the third-Rees interval found
-in entries 222--225. It does not repair the falsified depth-two bound:
+in entries 223, 318--320. It does not repair the falsified depth-two bound:
 the marked physical Cut comparison first appears at third normal order.
 
 The independent algebraic-letter identity remains

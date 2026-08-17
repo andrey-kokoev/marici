@@ -10,7 +10,7 @@ date: 2026-08-15
 Status: canonical carrier-level third-Rees interval derived; the induced
 nine-master Cut--nearby commutator remains uncomputed.
 
-This entry continues entry 222. It changes no denominator, normalization,
+This entry continues entry 318. It changes no denominator, normalization,
 marked section, support summand, projector, or carrier incidence.
 
 ## Deutsch--Popperian conjecture tested
@@ -38,7 +38,7 @@ x=X_1,\quad y=X_2,\quad E=E_T,
 \]
 
 at the positive real marked corner. The exact Cayley--Menger residue family
-verified in entry 222 has central conductor
+verified in entry 318 has central conductor
 
 \[
 K_0=R^2,

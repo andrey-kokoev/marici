@@ -44,7 +44,7 @@ Without these vertical maps, the 24 unit relations are not yet the requested
 ## Evidence
 
 - `research/voevodsky/check_full_log_maximal_cone_bc_rows.rs`
-- entries 143, 245, 251, 258, and 259.
+- entries 143, 251, 258, 333, and 259.
 
 ~~~json
 {

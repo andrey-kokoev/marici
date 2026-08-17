@@ -153,7 +153,7 @@ close under the parameter Gauss--Manin connection?}
 
 If it closes, one may ask whether its sewn rank-one quotient maps
 canonically into the algebraic \(\mathcal T_7\) kernel. If it does not
-close, the period-line result of entry 245 survives but no rank-two
+close, the period-line result of entry 333 survives but no rank-two
 source-section subconnection exists.
 
 ## Classification

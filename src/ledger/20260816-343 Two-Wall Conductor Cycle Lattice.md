@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Result
 
-Entry 265 identified each physical mixed wall as two rational
+Entry 342 identified each physical mixed wall as two rational
 normalization components meeting at two conductor nodes. Including both
 walls and their same-sheet intersections produces one integral graph whose
 cycle lattice contains all three nontrivial proper grades above the
@@ -37,7 +37,7 @@ There are six node occurrences:
 - \(P_-\) between \(C_1^-\) and \(C_2^-\).
 
 The last two are the occurrence-resolved lifts of the triple point from
-entry 264. Cross-sheet wall intersections are absent away from
+entry 341. Cross-sheet wall intersections are absent away from
 \(\Lambda=0\).
 
 With the displayed vertex and edge orders, the integral boundary matrix is
@@ -149,7 +149,7 @@ choosing the other conductor edge on either wall changes it by
 \(g_{101}\) or \(g_{110}\). Thus the sequence splits abstractly over
 \(\mathbb Z\), but the frozen graph does not select a preferred splitting.
 
-This is the geometric meaning of the warning from entry 263:
+This is the geometric meaning of the warning from entry 340:
 
 \[
 \text{associated support grades}
@@ -220,8 +220,8 @@ global splitting of the full 21-dimensional coefficient system.
 
 - research/benincasa/marici-gm/src/bin/elliptic_top_support_geometry.rs;
 - research/benincasa/two-wall-conductor-lattice.json;
-- entry 264 for the two same-sheet points \(P_\pm\);
-- entry 265 for the two individual wall normalizations.
+- entry 341 for the two same-sheet points \(P_\pm\);
+- entry 342 for the two individual wall normalizations.
 
 ## Next hostile falsifier
 

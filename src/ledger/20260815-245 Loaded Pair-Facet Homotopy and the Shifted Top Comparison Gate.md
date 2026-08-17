@@ -19,7 +19,7 @@ axes
 \[
 (\tau,n_0,n_1),
 \]
-which entry241 identifies with the three labels of one literal compatible
+which entry329 identifies with the three labels of one literal compatible
 \(K_6\) triangulation vertex. Retaining one axis and contracting the other
 two maps to the corresponding one-label facet.
 
@@ -59,7 +59,7 @@ occurrence-section inversion, and no division by two.
 
 The checker independently verifies 36 pairs of contraction paths and 144
 principal-line evaluations. The opposite path signs are the mapping-cone
-shift that the same-degree negative control in entry244 proved necessary.
+shift that the same-degree negative control in entry332 proved necessary.
 
 ## Remaining gate
 
@@ -73,7 +73,7 @@ constructible realization. The next chain equation must assemble:
 4. the two normalization-provenanced endpoint odd counits.
 
 That assembly must be a shifted mapping cone. Treating its odd orbit as an
-ordinary extra column is ruled out by entry244.
+ordinary extra column is ruled out by entry332.
 
 Until the shifted global top comparison is constructed in the literal
 BM–Čech mapping complex, the endpoint/\(Q\) mapping fiber,

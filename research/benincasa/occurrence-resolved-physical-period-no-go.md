@@ -65,7 +65,7 @@ term separately.
 
 ## Relative-cohomology obstruction
 
-At weight zero, entries 242--243 give
+At weight zero, entries 330--331 give
 
 \[
 \eta_i=c_i\frac{dn}{w}+d\Phi_i,
@@ -86,7 +86,7 @@ Changing the endpoint subtraction changes the individual finite part by the
 corresponding boundary value of \(\Phi_i\). The primary contour prescription
 does not provide that occurrence-by-occurrence trivialization.
 
-The sum is different. Entry 243 proves
+The sum is different. Entry 331 proves
 
 \[
 \eta_{31}+\eta_{23}=\eta_{\rm unsplit},
@@ -110,7 +110,7 @@ occurrence:
 \]
 
 Taking the rational weighted grade first gives the regulator-free de Rham
-class and endpoint jets of entries 242--243. Taking the boundary value first
+class and endpoint jets of entries 330--331. Taking the boundary value first
 retains one of the three chamber currents above. Endpoint finite-part
 subtraction supplies a second, independent relative-boundary choice. Soft
 or total-energy degeneration can enlarge the supported ambiguity but cannot
@@ -152,7 +152,7 @@ It is not a new carrier incidence.
 - extension data: possible packaging of endpoint jets with the unsplit
   relative class;
 - soft support: excluded in the generic counterexample;
-- Legendre/Gysin quotient: no direct image, as in entries 240--243;
+- Legendre/Gysin quotient: no direct image, as in entries 240, 329--331;
 - genuinely new carrier structure: none.
 
 ## Remaining frontier

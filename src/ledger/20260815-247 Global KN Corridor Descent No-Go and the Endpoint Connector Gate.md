@@ -20,11 +20,11 @@ sides of every shared fan ray gives zero matching restrictions.
 
 Three shared rays map to (v_+) from one incident cone and (v_-) from the
 other. The other three map to two distinct marked road centers. Consequently
-the six proper local maps of entry246 cannot be restrictions of one ordinary
+the six proper local maps of entry334 cannot be restrictions of one ordinary
 stratified map from the glued (dP_6) boundary.
 
 The three center mismatches are precisely the shifted pair/facet homotopies
-constructed in entries244–245. They are already integral and coherent with
+constructed in entries332--333. They are already integral and coherent with
 the normalized global top. The remaining mismatch is therefore the
 (D_3)-orbit of physical endpoint comparisons.
 
@@ -59,7 +59,7 @@ emission passed. The temporary executable was removed.
 {
   "claim": "The six local positive KN Rees-to-corridor maps do not glue as one ordinary stratified map: all six shared-ray restrictions disagree, split as three physical endpoint mismatches and three distinct-center mismatches.",
   "status": "falsified_scoped_ordinary_global_KN_corridor_descent",
-  "scope": "ordinary gluing of entry246 local maps; homotopy-coherent normalization/log-excess descent excluded",
+  "scope": "ordinary gluing of entry334 local maps; homotopy-coherent normalization/log-excess descent excluded",
   "census": {
     "maximal_cones": 6,
     "shared_ray_restriction_matches": 0,

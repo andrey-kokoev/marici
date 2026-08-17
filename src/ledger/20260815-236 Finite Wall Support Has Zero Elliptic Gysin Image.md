@@ -7,7 +7,7 @@ date: 2026-08-15
 
 ## Record
 
-Status: the first complete weight-\(-1\) wall class of entry 235 has zero
+Status: the first complete weight-\(-1\) wall class of entry 324 has zero
 image under the infinity-Gysin map for support reasons. Any pushforward of
 that class into the nine-master \(q_{\mathcal G_{12}}\)-sector lies in the
 rank-seven algebraic/Tate kernel of entry 150.
@@ -38,7 +38,7 @@ Let \(\overline S_E\) be the compactified residue surface used in entry
 D_\infty=\{s=0\}.
 \]
 
-The lower-divisor collision of entries 225--235 is a finite marked point in
+The lower-divisor collision of entries 226--228, 230--231, 234, 320--324 is a finite marked point in
 the affine chart \(s=1\). Let
 
 \[
@@ -143,7 +143,7 @@ The conjectured nonzero elliptic image is falsified:
 }
 \]
 
-The nonzero coefficient found in entry 235 is genuine, but its new
+The nonzero coefficient found in entry 324 is genuine, but its new
 complexity remains in the algebraic/relative coefficient sector over an
 existing carrier wall. Its literal symmetric source-wall period remains
 zero independently by oddness in \(n\).
@@ -155,7 +155,7 @@ zero independently by oddness in \(n\).
 - algebraic/Tate placement: rank-seven kernel \(\mathcal T_7\), after
   pushforward to the nine-master sector;
 - Legendre/Gauss--Manin image: zero by disjoint support;
-- physical relative-chain pairing: zero at this grade by entry 235;
+- physical relative-chain pairing: zero at this grade by entry 324;
 - genuinely new carrier datum: none.
 
 ## Exact evidence

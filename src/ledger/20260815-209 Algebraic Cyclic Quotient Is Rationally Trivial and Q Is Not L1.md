@@ -14,7 +14,7 @@ Gysin plane and its cyclic rank-one quotient. The off-diagonal extension,
 discriminant extension, integral normalization, and physical relative chain
 remain open.
 
-This entry continues entries 150, 169, 183, 199, and 207. It adds no
+This entry continues entries 150, 169, 183, 316, and 207. It adds no
 denominator, support component, fitted projector, splitting, or carrier cell.
 
 ## Deutsch--Popperian conjecture tested

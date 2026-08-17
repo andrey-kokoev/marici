@@ -7,14 +7,14 @@ date: 2026-08-16
 
 ## Record
 
-Status: the individual Kummer coefficients of entry 242 have been corrected
+Status: the individual Kummer coefficients of entry 330 have been corrected
 by an exact de Rham cokernel computation. The corresponding individual
 weight-\(0\) primitives exist, are odd in the wall coordinate \(n\), and
 sum exactly to entry 240's unsplit primitive. Hence each occurrence has
 opposite finite-endpoint jets and the two jet vectors sew additively.
 
 No physical current is assigned to either occurrence separately. The
-regulator-hierarchy qualification of entries 231--232 remains in force.
+regulator-hierarchy qualification of entries 231, 322 remains in force.
 No carrier datum or fitted support summand is added.
 
 ## Deutsch--Popperian conjecture tested
@@ -99,7 +99,7 @@ L_{31}^{\rm dR}+L_{23}^{\rm dR}
 \frac{3(x-y)(x+y)}{2xy}.
 \]
 
-Thus entry 240's unsplit Kummer class survives exactly, while entry 242's
+Thus entry 240's unsplit Kummer class survives exactly, while entry 330's
 individual allocation required correction.
 
 ## Why the raw infinity extraction failed
@@ -246,7 +246,7 @@ w^{-9},w^{-7},w^{-5},w^{-3},w^{-1}.
 Require:
 
 1. coefficientwise addition to entry 240's displayed endpoint jet;
-2. cyclic transport in both occurrence orbits of entry 242;
+2. cyclic transport in both occurrence orbits of entry 330;
 3. no regulator hierarchy in the algebraic jet map;
 4. no new support or carrier component.
 

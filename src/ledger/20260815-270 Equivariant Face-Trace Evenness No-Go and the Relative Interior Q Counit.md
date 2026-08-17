@@ -22,7 +22,7 @@ support and symmetry.
 
 ## Minimal symmetry-compatible enlargement
 
-Entries264-267 construct the finite literal images of the six cross-sheet
+Entries266, 341--343 construct the finite literal images of the six cross-sheet
 edges and eight triangular faces of the conductor cross-polytope. The
 smallest remaining class is its reflection-odd relative interior class.
 
@@ -42,7 +42,7 @@ edge maps, all eight facet BC cells, and endpoint framing.
 ## Evidence
 
 - research/voevodsky/check_equivariant_face_trace_evenness_no_go.rs
-- entries 143, 264-269.
+- entries 143, 266, 268--269, 341--343.
 
 ~~~json
 {

@@ -40,7 +40,7 @@ q_{\mathfrak g_{31}}=A,
 q_{\mathfrak g_{23}}=B.
 \]
 
-The weighted marked-corner model of entries 224--226 is
+The weighted marked-corner model of entries 226, 319--320 is
 
 \[
 E=\tau^2,
@@ -117,7 +117,7 @@ do not commute.}
 }
 \]
 
-Entry 229's factor two remains correct for its
+Entry 321's factor two remains correct for its
 \(q_{\mathcal G_{ij}}\)-only projection. It cannot be pulled back as a
 factor two in the literal four-pole nearby grade.
 

@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Question
 
-Ledger entry 263 found one proper full-support grade for the frozen
+Ledger entry 340 found one proper full-support grade for the frozen
 three-denominator family
 
 \[
@@ -138,7 +138,7 @@ Hence the oriented face vector is
 \]
 
 The iterated residue at \(P\) is a unit. The proper rank-one \(111\) grade
-from entry 263 therefore has a canonical geometric representative: it is
+from entry 340 therefore has a canonical geometric representative: it is
 the triple-denominator logarithmic class, equivalently the Gysin/Thom class
 of the transverse marked point \(P\).
 
@@ -235,7 +235,7 @@ normalization and the source \(K^{-1/2}\) measure.
 
 - research/benincasa/marici-gm/src/bin/elliptic_top_support_geometry.rs;
 - research/benincasa/elliptic-top-support-geometry.json;
-- ledger entry 263 for the exact support ranks.
+- ledger entry 340 for the exact support ranks.
 
 ## Next hostile falsifier
 

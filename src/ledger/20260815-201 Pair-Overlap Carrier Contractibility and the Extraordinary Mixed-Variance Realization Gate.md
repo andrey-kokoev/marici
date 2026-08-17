@@ -1,4 +1,4 @@
-# Pair-Overlap Carrier Contractibility and the Mixed-Variance Realization Gate
+# Pair-Overlap Carrier Contractibility and the Extraordinary Mixed-Variance Realization Gate
 
 Date: 2026-08-15  
 Status: proved at the integral homotopy-coherent carrier level.  

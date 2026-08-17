@@ -31,7 +31,7 @@ product-branch Rees Cech carrier into these literal entry143 generators.
 
 That transformation must realize the already certified 336 radial rows,
 36 normal rows, and 36 paired-facet BC equalities, restrict to the
-three-segment edge lift of entry265, and preserve endpoint framing. Until
+three-segment edge lift of entry342, and preserve endpoint framing. Until
 this pushforward is constructed, the generic Q top and pointed endpoint/Q
 mapping fiber remain uninstantiated.
 

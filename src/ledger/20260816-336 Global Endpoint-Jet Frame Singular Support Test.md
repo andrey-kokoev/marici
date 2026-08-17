@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Record
 
-The corrected occurrence jets of entries 254 and 247 generate the complete
+The corrected occurrence jets of entries 254, 335 generate the complete
 five-level endpoint-jet fiber after one Gauss--Manin derivative. This entry
 tests whether a natural source-derived five-column selection gives a
 canonical global frame and whether its connection introduces intrinsic

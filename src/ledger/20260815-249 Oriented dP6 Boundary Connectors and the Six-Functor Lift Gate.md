@@ -29,7 +29,7 @@ separates the two incident boundary germs and replaces each node by an
 oriented connector interval. Consequently the positive KN boundary is a
 12-gon alternating:
 
-- six proper Rees/KN corridor intervals from entry246; and
+- six proper Rees/KN corridor intervals from entry334; and
 - six node-connector intervals.
 
 The six connector boundaries are derived from the two incident germ images.
@@ -54,7 +54,7 @@ Rotation sends boundary cone (i) to (i+2). Reflection sends it to
 
 This constructs a canonical normalization-provenanced topological/log-KN
 source and derives its endpoint and center connector cells. Together with
-entry246, every boundary edge has a literal local entry143 corridor image.
+entry334, every boundary edge has a literal local entry143 corridor image.
 
 It does not yet produce a single algebraic six-functor kernel. The missing
 comparison must promote the constructible oriented-boundary pushforward to

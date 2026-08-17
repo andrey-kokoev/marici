@@ -2,7 +2,7 @@
 
 ## Canonical carrier repair
 
-Entry263 rules out gluing a cross-sheet edge by two existing half-gallery
+Entry340 rules out gluing a cross-sheet edge by two existing half-gallery
 arms. The full literal K6 flip graph nevertheless supplies a canonical
 replacement.
 
@@ -22,7 +22,7 @@ K6 incidences.
 The unique carrier paths do not by themselves construct the required
 full-log correspondence. Along each three-segment path the exchanged normal
 label changes at every flip. One must lift the subdivision through the full
-Boolean replacement of entry262, retain both Tor grades, and prove that the
+Boolean replacement of entry339, retain both Tor grades, and prove that the
 two internal-vertex restrictions agree as Beck--Chevalley maps.
 
 Equivalently, the minimal new geometric datum can now be reduced from six
@@ -36,7 +36,7 @@ endpoint/Q mapping fiber remain uninstantiated.
 ## Evidence
 
 - research/voevodsky/check_cross_sheet_unique_k6_geodesics.rs
-- entries 143, 259, 262, and 263.
+- entries 143, 259, 339, and 263.
 
 ~~~json
 {

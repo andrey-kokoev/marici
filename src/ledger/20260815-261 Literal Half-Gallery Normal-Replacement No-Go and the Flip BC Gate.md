@@ -2,7 +2,7 @@
 
 ## Exact literal audit
 
-The corrected entry246 packet has five abstract cells, but a literal marked
+The corrected entry334 packet has five abstract cells, but a literal marked
 half-gallery has three triangulation vertices and two K6 edge supports.  For
 each of the six road/sign halves, those two edge supports are distinct
 two-label faces.  They meet in exactly one persistent label and have one
@@ -45,7 +45,7 @@ endpoint/Q mapping fiber.
 ## Evidence
 
 - `research/voevodsky/check_rees_kn_literal_half_gallery_normal_replacement_no_go.rs`
-- entries 143, 245, 246, 258, 259, and 260.
+- entries 143, 258--259, 333--334, and 260.
 
 ~~~json
 {

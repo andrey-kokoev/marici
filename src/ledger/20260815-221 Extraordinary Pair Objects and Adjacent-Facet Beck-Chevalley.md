@@ -6,7 +6,7 @@ Date: 2026-08-15
 
 Status: proved inside the explicitly enlarged finite labelled
 bivariant/Rees--Čech correspondence category. This entry constructs the six
-external pair objects required by entry220 and certifies their coefficient,
+external pair objects required by entry317 and certifies their coefficient,
 Boolean, Tor, endpoint, and adjacent-facet matrices. It does not identify
 those external objects with literal entry143 six-functor stalks, and it does
 not yet supply triple generic-(Q) coherence. No graph admission is claimed.

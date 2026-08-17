@@ -38,7 +38,7 @@ e\longmapsto w-v_0+v_1,
 \]
 where \(w\) is the conductor-Tor wall output.
 
-Under the entry235 axis dictionary this is exactly
+Under the entry324 axis dictionary this is exactly
 \[
 \boxed{
 D=\iota_\tau+\iota_{n_0}-\iota_{n_1}.
@@ -67,9 +67,9 @@ Therefore
 \partial_{\rm aug}r(e)=r\partial_{\rm aug}(e)
 \]
 integrally. The two odd signs multiply to the loaded wall sign \(+1\),
-matching entry235. Rotation only relabels the six ordered pairs.
+matching entry324. Rotation only relabels the six ordered pairs.
 
-The principal occurrence-line factors from entry236 remain compatible:
+The principal occurrence-line factors from entry325 remain compatible:
 each section and its dual rescale inversely, so every radial evaluation
 stays primitive without localization.
 

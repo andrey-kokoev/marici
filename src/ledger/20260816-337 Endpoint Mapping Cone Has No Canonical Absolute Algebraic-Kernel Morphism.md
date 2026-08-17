@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Record
 
-The next comparison proposed in entry 255 is finitely falsified before
+The next comparison proposed in entry 336 is finitely falsified before
 coordinates are chosen. In the frozen coefficient calculus, the canonical
 sewn endpoint mapping cone has no morphism into
 
@@ -108,7 +108,7 @@ seeing \(e_6\), \(v_{\rm alg}\), or \(\mathcal Q\) is prohibited.
 - canonical endpoint-to-algebraic-kernel morphism: absent;
 - genuinely new carrier datum: none.
 
-Thus the source frame failure of entry 255 cannot be repaired by replacing
+Thus the source frame failure of entry 336 cannot be repaired by replacing
 the frame with an absolute algebraic-kernel target. The two objects are
 compatible outputs of the same carrier calculus, not canonically identified
 coefficient objects.
@@ -160,7 +160,7 @@ shared carrier remains unchanged.
 
 - research/benincasa/marici-gm/src/bin/endpoint_to_algebraic_kernel_type_gate.rs;
 - research/benincasa/endpoint-to-algebraic-kernel-type-gate.json;
-- entries 181, 183, 211, 212, 237, 245, 254, and 255;
+- entries 181, 183, 211--212, 254, 326, 333, and 255;
 - warning-denied Rust compilation and execution.
 
 ## Next hostile falsifier

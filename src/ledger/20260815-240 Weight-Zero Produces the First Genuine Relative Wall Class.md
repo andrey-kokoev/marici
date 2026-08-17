@@ -196,7 +196,7 @@ at generic \(x\ne y\).
 
 These infinity points belong to the projective completion of the existing
 exceptional wall. They are not the anticanonical infinity divisor
-\(D_\infty\) of the residue surface. Entry 236's direct elliptic Gysin
+\(D_\infty\) of the residue surface. Entry 325's direct elliptic Gysin
 vanishing is therefore unchanged.
 
 ## Endpoint relative data
@@ -255,7 +255,7 @@ parts. Therefore the generic regularized wall period is
 
 up to the common overall wavefunction normalization already omitted by the
 primary source. The sign uses the same positive sheet and lower-half-plane
-continuation as entries 225--226.
+continuation as entries 226, 320.
 
 ## Verdict
 

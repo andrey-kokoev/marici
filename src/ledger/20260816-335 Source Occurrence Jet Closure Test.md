@@ -14,7 +14,7 @@ The two source-defined five-level endpoint-jet columns do not span a
 connection-stable rank-two subbundle. Their sewn jet does not span a flat
 rank-one relative line either.
 
-The period-line theorem of entry 245 is unchanged. The failure occurs in
+The period-line theorem of entry 333 is unchanged. The failure occurs in
 the endpoint extension data discarded by the Kummer period quotient.
 
 No carrier stratum, endpoint counterterm, fitted summand, regulator, or

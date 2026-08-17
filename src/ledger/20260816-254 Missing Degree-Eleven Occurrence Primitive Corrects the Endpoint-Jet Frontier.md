@@ -7,7 +7,7 @@ date: 2026-08-16
 
 ## Record
 
-A frozen-source audit found that entries 246 and 247 had truncated the odd
+A frozen-source audit found that entries 334--335 had truncated the odd
 occurrence primitive at degree nine. The exact source solve has degree eleven:
 
 \[
@@ -95,7 +95,7 @@ characteristic-zero polynomial identity theorem.
 The moving-endpoint closure calculation was rerun with the \(n^{11}\) term
 included in every jet coefficient.
 
-The main conclusions of entry 247 survive:
+The main conclusions of entry 335 survive:
 
 \[
 24/24

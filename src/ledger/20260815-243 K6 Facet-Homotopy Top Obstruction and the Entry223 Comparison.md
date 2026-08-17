@@ -14,7 +14,7 @@ claimed.
 ## Exact top computation
 
 Let \(F_a\), for the nine diagonals \(a\), denote the oriented literal
-facets of \(K_6\). Entry242 derives a reflection homotopy coefficient
+facets of \(K_6\). Entry330 derives a reflection homotopy coefficient
 \(\epsilon_a=\pm1\) from
 \[
 r(c_a)-c_{ra}=\epsilon_a\,dF_{ra}.

@@ -87,7 +87,7 @@ coefficient is sufficient and minimal. Merely inserting halves, declaring
 a pair-intersection state, or choosing an AW contraction would fit the
 missing datum.
 
-Entry245 supplies the required generators in the finite labelled
+Entry333 supplies the required generators in the finite labelled
 constructible category. Expanding its primitive loaded facet boundaries on
 the unique twelve-row reflection orbit gives twelve degree-\(-1\)
 mapping-cone columns. The combined exact system has 36 columns, rank 35,

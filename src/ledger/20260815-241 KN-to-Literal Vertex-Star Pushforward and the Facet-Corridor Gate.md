@@ -12,7 +12,7 @@ endpoints, and generic \(Q\) remains open. No graph admission is claimed.
 
 ## Source and target incidence categories
 
-For each ordered long-road pair, entry239 supplies the oriented KN
+For each ordered long-road pair, entry328 supplies the oriented KN
 augmented boundary
 \[
 D=\iota_\tau+\iota_{n_0}-\iota_{n_1}.

@@ -5,7 +5,7 @@ date: 2026-08-16
 ---
 # Occurrence-Resolved Weight-Zero Kummer Classes Are Unequal and Additive
 
-> Correction (entry 243): the individual formulas originally recorded for
+> Correction (entry 331): the individual formulas originally recorded for
 > \(L_{31}\) and \(L_{23}\) were raw \(n^2\)-coefficients of
 > \(R_i=P_i/v^4\), not de Rham residues. Higher projective-infinity powers
 > contribute through the expansion of \(w^{-3}\). The corrected de Rham
@@ -20,7 +20,7 @@ sum reproduces entry 240 exactly.
 
 This is an algebraic occurrence-resolved Laurent/cohomology statement. The
 individual physical boundary currents remain noncanonical without a
-source-fixed regulator hierarchy, as established in entries 231--232.
+source-fixed regulator hierarchy, as established in entries 231, 322.
 Individual finite-endpoint polar jets are not computed here.
 
 No carrier cell, support summand, regulator choice, projector, or
@@ -129,7 +129,7 @@ w^2=v.
 \]
 
 The original test attempted to identify the \(n^2\) coefficient of
-\(R_i^{(0)}\) with the coefficient of \([dn/w]\). Entry 243 shows that this
+\(R_i^{(0)}\) with the coefficient of \([dn/w]\). Entry 331 shows that this
 shortcut is invalid before higher projective-infinity powers cancel. For
 the corrected de Rham invariant \(L_i\), write
 
@@ -210,7 +210,7 @@ and
 \]
 
 The formulas transport by ordered relabeling. Each orbit carries the
-Kummer sign monodromy of entry 241:
+Kummer sign monodromy of entry 329:
 
 \[
 T_s=-1,\qquad T_u=1,\qquad N=0.

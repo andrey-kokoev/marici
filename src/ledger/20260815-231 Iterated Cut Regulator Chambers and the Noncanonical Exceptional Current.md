@@ -175,7 +175,7 @@ This is a coefficient/chain-level underdetermination, not a failure of the
 shared carrier. Every possible current is supported on the already frozen
 intersection \(r=0\) of the two marked lower divisors.
 
-Entry 229 remains valid after occurrence forgetting, and entry 230 remains
+Entry 321 remains valid after occurrence forgetting, and entry 230 remains
 valid as the regulator-free rational weighted identity. Neither determines
 the missing iterated boundary-value functor.
 

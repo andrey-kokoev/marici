@@ -11,7 +11,7 @@ Status: exact frozen-polynomial normal-form theorem and finite falsification of
 depth-two Rees sufficiency for the physical Cut--nearby comparison at the
 nonsoft marked corners.
 
-This entry continues entries 161, 180, 199, and 220. It uses the literal
+This entry continues entries 161, 180, 316, and 220. It uses the literal
 source normalization
 
 \[

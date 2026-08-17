@@ -165,7 +165,7 @@ c_{ij}^2
 
 were checked under all three cyclic substitutions at 1,728 exact positive
 integer triples. The unsquared sign is fixed by the source pair order and
-the same \(da\wedge db\) orientation used in entries 225--240.
+the same \(da\wedge db\) orientation used in entries 226--228, 230--231, 234, 240, 320--328.
 
 Therefore the three unsplit sector classes sew as one cyclic family with a
 common total-energy sign character.

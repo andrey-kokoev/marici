@@ -36,7 +36,7 @@ A single independently constructed reflection-odd relative-interior column
 of coefficient \(+1\) changes the row to \([2,1]\), Smith factor one. It must
 come from a proper support-typed normalization/log-BM or nearby-cycle object
 whose boundary is the literal connected hexagon, whose chart restrictions are
-the entry 219/239 Rees/KN packets, and whose long boundary is the based entry143
+the entry 219, 328 Rees/KN packets, and whose long boundary is the based entry143
 \(q_\Sigma\) row.
 
 Until this column is geometric rather than declared, the endpoint/Q mapping

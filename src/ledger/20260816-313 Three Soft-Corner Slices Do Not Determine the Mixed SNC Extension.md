@@ -11,7 +11,7 @@ Status: exact finite common-frame falsifier and local extension-space theorem fo
 the frozen (q_{\mathcal G_{12}}) nine-master module. No carrier cell,
 denominator, source master, or normalization is added.
 
-This continues entries 199 and 312.
+This continues entries 312, 316.
 
 ## Deutsch--Popperian claim tested
 
@@ -21,7 +21,7 @@ Freeze
 u=\ell_4=E_T,\qquad v=\ell_3,\qquad B=uv.
 \]
 
-Entry 199 computed the (u)-normal, (v)-normal, and radial connections on
+Entry 316 computed the (u)-normal, (v)-normal, and radial connections on
 
 \[
 (u,v)=(\lambda,1),\qquad(1,\lambda),\qquad(\lambda,2\lambda).
@@ -103,7 +103,7 @@ class is
 
 Its radial restriction is also trivial because
 (operatorname{im}(T_M^2-1)=operatorname{im}D) for (N^2=0). Therefore
-all three tests in entry 199 can miss a genuine mixed codimension-two class.
+all three tests in entry 316 can miss a genuine mixed codimension-two class.
 
 ## Character refinement
 
@@ -154,7 +154,7 @@ It does not by itself justify a new carrier generator.
 
 - `research/benincasa/soft-corner-common-frame-falsifier.json`;
 - `research/benincasa/soft-corner-hidden-extension-space.json`;
-- the exact three-slice artifacts of entry 199.
+- the exact three-slice artifacts of entry 316.
 
 ## Next hostile falsifier
 

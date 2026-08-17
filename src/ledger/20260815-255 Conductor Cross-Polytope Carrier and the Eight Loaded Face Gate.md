@@ -57,8 +57,8 @@ This theorem constructs the canonical global carrier, not yet its loaded
 six-functor realization. Each of its eight triangular faces must receive a
 Beck--Chevalley two-cell whose boundary compares:
 
-1. the entry245 shifted same-sheet pair-facet Gysin edge;
-2. the entries246/249 cross-sheet Rees/KN connector edge; and
+1. the entry333 shifted same-sheet pair-facet Gysin edge;
+2. the entries249, 334 cross-sheet Rees/KN connector edge; and
 3. the third rotated edge.
 
 Those maps must be expanded on every literal entry143 occurrence,
@@ -74,7 +74,7 @@ uninstantiated.
 ## Evidence
 
 - research/voevodsky/check_conductor_cross_polytope_carrier.rs
-- entries 93, 143, 241, 245, 246, 249, 251, 252, and 253.
+- entries 93, 143, 249, 251--252, 329, 333--334, and 253.
 
 ~~~json
 {

@@ -67,7 +67,7 @@ E_{\partial,Q}^{\mathrm{BM},\check C}.
 \]
 Its extraordinary boundary must be \(\iota_\tau\), while its two
 chart comparisons must recover the already certified Čech signs. Its
-relative dualizing line must also realize entry236's matching
+relative dualizing line must also realize entry325's matching
 principal-line evaluation. Only such an added object can geometrically
 realize
 \[

@@ -28,7 +28,7 @@ rows:
  =\Phi_\partial(d[dP_6]).
 \]
 
-Entries 246 and 249 give each local interval and its carrier image. They do
+Entries 249, 334 give each local interval and its carrier image. They do
 not yet derive the global \(12\to6\) mixed-variance matrix on every
 occurrence, normal-circle, Tor, and Čech grade. Consequently this entry does
 not instantiate the endpoint/Q mapping fiber.
@@ -52,7 +52,7 @@ inserted merely from the carrier quotient.
 
 - research/voevodsky/check_entry143_generic_top_defect.rs
 - research/voevodsky/check_global_k6_koszul_cech_promotion.rs
-- entries 143, 246, 249, and 250.
+- entries 143, 249, 334, and 250.
 
 ~~~json
 {
