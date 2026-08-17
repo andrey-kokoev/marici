@@ -41,6 +41,13 @@ with:
 cargo run --release --bin three_cut_cousin_cocycle
 ```
 
+The pairing of that packet with the literal positive Bunch--Davies chain is
+audited with:
+
+```powershell
+cargo run --release --bin three_cut_relative_chain_pairing
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
