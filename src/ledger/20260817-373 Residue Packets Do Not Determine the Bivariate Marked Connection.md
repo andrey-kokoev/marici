@@ -44,7 +44,7 @@ choosing exact relative primitives and representatives. The source lifts fix
 the classes, but the surviving scalar residue coordinates do not encode the
 full bivariate reduction.
 
-## Solver shape forced by the source geometry
+## Formal degree-four count and correction
 
 The four frozen denominator strata are
 
