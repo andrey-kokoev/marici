@@ -34,6 +34,13 @@ The ordered two-Cut Cousin determinant gate is reproducible with:
 cargo run --release --bin two_cut_cousin_determinant_gate
 ```
 
+The full occurrence-resolved three-Cut Cousin cocycle test is reproducible
+with:
+
+```powershell
+cargo run --release --bin three_cut_cousin_cocycle
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
