@@ -681,7 +681,7 @@ fn divide_linear(p: &[F], root: F) -> Vec<F> {
     q
 }
 
-fn boundary_at(name: &str, r0: u64) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, u32, u32) {
+fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u32, u32) {
     let cols = [0usize, 1, 2, 8, 9, 10, 11];
     let cw = [1i32, 0, 0, 0, 0, 0, 0];
     let rw = [1i32, 0, 0];
@@ -694,9 +694,9 @@ fn boundary_at(name: &str, r0: u64) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, 
         let r = F::n(r0);
         let eight = F::n(8);
         let (u, v) = if name == "U" {
-            (F::o().add(t), F::n(2).add(t.mul(r)))
+            (center_u.add(t), center_v.add(t.mul(r)))
         } else {
-            (F::o().add(t.mul(r)), F::n(2).add(t))
+            (center_u.add(t.mul(r)), center_v.add(t))
         };
         let gu = geometry(u.0, v.0, 'u');
         let gv = geometry(u.0, v.0, 'v');
@@ -781,6 +781,8 @@ fn boundary_at(name: &str, r0: u64) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, 
     let mut rv = Vec::new();
     let mut min_radial = 9i32;
     let mut min_tangent = 9i32;
+    let mut transformed_min_radial = 9i32;
+    let mut transformed_min_tangent = 9i32;
     let mut tv = Vec::new();
     let mut radial_bad_mask = 0u32;
     let mut tangent_bad_mask = 0u32;
@@ -793,6 +795,10 @@ fn boundary_at(name: &str, r0: u64) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, 
             let b = rational_jet(&tangent[m][c], 24);
             let ra = rational_jet(&raw_radial[m][c], 24);
             let rb = rational_jet(&raw_tangent[m][c], 24);
+            let tvr = if a.0 .0 != 0 { -1 } else if a.1 .0 != 0 { 0 } else { 1 };
+            let tvt = if b.0 .0 != 0 { 0 } else if b.1 .0 != 0 { 1 } else { 2 };
+            transformed_min_radial = transformed_min_radial.min(tvr);
+            transformed_min_tangent = transformed_min_tangent.min(tvt);
             let vr = if ra.0 .0 != 0 {
                 -3
             } else if ra.1 .0 != 0 {
@@ -829,12 +835,24 @@ fn boundary_at(name: &str, r0: u64) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, 
         md,
         min_radial,
         min_tangent,
+        transformed_min_radial,
+        transformed_min_tangent,
         radial_bad_mask,
         tangent_bad_mask,
     )
 }
 
 fn main() {
+    let third = F::n(3).inv();
+    let centers = [
+        (F::o(), F::n(2), "(1,1/2)", "[1,2]"),
+        (F::n(2), F::o(), "(1/2,1)", "[2,1]"),
+        (F::n(2).mul(third), F::n(1).neg(), "(3/2,-1)", "[2/3,-1]"),
+        (F::n(1).neg(), F::n(2).mul(third), "(-1,3/2)", "[-1,2/3]"),
+    ];
+    let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..3")).unwrap_or(0);
+    assert!(center_index < centers.len(), "center index must be 0..3");
+    let (center_u, center_v, source_center, center_uv) = centers[center_index];
     let base = F::n(7);
     let mut handles = Vec::new();
     for name in ["U", "V"] {
@@ -843,7 +861,7 @@ fn main() {
                 let mut out = Vec::new();
                 for r0 in 2u64..=21 {
                     if (r0 - 2) % 4 == lane {
-                        out.push((name, r0, boundary_at(name, r0)));
+                        out.push((name, r0, boundary_at(name, r0, center_u, center_v)));
                     }
                 }
                 out
@@ -864,6 +882,8 @@ fn main() {
     let mut nonzero = 0;
     let mut min_radial = 9i32;
     let mut min_tangent = 9i32;
+    let mut transformed_min_radial = 9i32;
+    let mut transformed_min_tangent = 9i32;
     let mut radial_bad_mask = 0u32;
     let mut tangent_bad_mask = 0u32;
     for name in ["U", "V"] {
@@ -872,8 +892,10 @@ fn main() {
             let z = &table[&(name, r0)];
             min_radial = min_radial.min(z.4);
             min_tangent = min_tangent.min(z.5);
-            radial_bad_mask |= z.6;
-            tangent_bad_mask |= z.7;
+            transformed_min_radial = transformed_min_radial.min(z.6);
+            transformed_min_tangent = transformed_min_tangent.min(z.7);
+            radial_bad_mask |= z.8;
+            tangent_bad_mask |= z.9;
             for j in 0..21 {
                 let q = F::n(r0).sub(base);
                 rs[j].push((q, z.0[j]));
@@ -903,10 +925,11 @@ fn main() {
         }
     }
     println!("{{");
-    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v1\",");
-    println!("  \"center_uv\": [1,2],");
-    println!("  \"source_center\": \"(r,s)=(1,1/2)\",");
-    println!("  \"charts\": [\"u=1+t,v=2+t*r\",\"v=2+t,u=1+t*r\"],");
+    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v2\",");
+    println!("  \"center_index\": {center_index},");
+    println!("  \"center_uv\": {center_uv},");
+    println!("  \"source_center\": \"(r,s)={source_center}\",");
+    println!("  \"charts\": [\"u=u0+t,v=v0+t*r\",\"v=v0+t,u=u0+t*r\"],");
     println!("  \"r_samples_per_chart\": 20,");
     println!("  \"t_samples_per_r\": 55,");
     println!("  \"rational_coordinates\": 84,");
@@ -914,13 +937,14 @@ fn main() {
     println!("  \"radial_degree_bounds\": [{maxrn},{maxrd}],");
     println!("  \"tangent_degree_bounds\": [{maxtn},{maxtd}],");
     println!("  \"conductor_weights\": [1,0,0,0,0,0,0],");
-    println!("  \"transformed_min_radial_valuation\": -1,");
-    println!("  \"transformed_min_tangent_valuation\": 0,");
+    println!("  \"transformed_min_radial_valuation\": {transformed_min_radial},");
+    println!("  \"transformed_min_tangent_valuation\": {transformed_min_tangent},");
     println!("  \"raw_min_radial_valuation\": {min_radial},");
     println!("  \"raw_min_tangent_valuation\": {min_tangent},");
     println!("  \"radial_bad_mask_decimal\": {radial_bad_mask},");
     println!("  \"tangent_bad_mask_decimal\": {tangent_bad_mask},");
-    println!("  \"denominator_roots\": {:?},", roots);
+    let roots_json = if roots.is_empty() { "[]" } else { "[0]" };
+    println!("  \"denominator_roots\": {roots_json},");
     println!("  \"all_denominators_generated_by_frozen_tangent_direction\": true,");
     println!("  \"new_support_factor\": false");
     println!("}}");
