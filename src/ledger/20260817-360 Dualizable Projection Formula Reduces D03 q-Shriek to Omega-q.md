@@ -32,6 +32,52 @@ Lq^*\mathcal L^{\check C}
 This is the strongest computation justified by the current data. It does
 not identify \(\omega_q\) with Entry 176's exceptional cap.
 
+## Finite standard-resolution model
+
+The proof of Theorem 4.1 supplies an explicit incidence construction of
+the remaining object. For an \(\mathcal O_Z\)-module \(N\), let
+\(\mathcal C_Z^pN\) be the finite standard resolution
+
+\[
+(\mathcal C_Z^pN)(U)
+=\prod_{(z_0<\cdots<z_p)\in U}N_{z_p},
+\]
+
+with the alternating face differential, whose last face uses the
+restriction \(N_{z_{p-1}}\to N_{z_p}\). Put
+
+\[
+F_p=q_*\mathcal C_Z^p.
+\]
+
+For every \(\mathcal O_X\)-module \(J\), the exact filtered-colimit
+preserving functor
+
+\[
+N\longmapsto
+\operatorname{Hom}_X(F_pN,J)
+\]
+
+is represented by an \(\mathcal O_Z\)-module, denoted here by
+\(q^{-p}J\). If \(\mathcal O_X\to I^\bullet\) is a K-injective
+resolution, then the actual relative dualizing complex is
+
+\[
+\boxed{
+\omega_q\simeq
+\operatorname{Tot}_{-p+r}
+\bigl(q^{-p}I^r\bigr),
+\qquad 0\leq p\leq\dim Z_{03}^{\rm pre}.
+}
+\]
+
+This is a finite chain-indexed incidence-module algorithm using the actual
+order map \(q=b\circ\operatorname{pr}_G\), the actual stalk rings, and all
+restriction maps. It is therefore an explicit model of \(\omega_q\), not a
+new existence claim. What remains unknown is whether this total complex
+admits a bounded finite-projective compression, and whether that compression
+is Entry 176's rank-one cap.
+
 ## Formal proof
 
 Let \(M^\vee=R\mathcal Hom_X(M,\mathcal O_X)\). For every
