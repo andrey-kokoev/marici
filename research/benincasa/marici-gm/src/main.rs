@@ -131,7 +131,18 @@ fn reduce_block(g:&Geometry,classes:&[(bool,Mon)],master:usize,deg:u8)->Option<V
     let sol=rank_solve(mat,cols.len())?;let mut check=Poly::zero(p);for(q,c)in cols.iter().zip(&sol){check=check.add(&q.scale(*c));}assert!(target.sub(&check).t.is_empty());Some(sol[..classes.len()].to_vec())
 }
 fn sample_block(uu:u64,vv:u64,axis:&str,classes:&[(bool,Mon)])->Vec<Vec<F>>{let g=dual_geometry(uu,vv,axis,PRIME);let mut rows=Vec::new();for m in 0..classes.len(){let mut got=None;for d in [3,5,7,9,11]{if let Some(x)=reduce_block(&g,classes,m,d){got=Some(x);break}}rows.push(got.expect("block reduction failed"));}rows}
+#[cfg(not(feature="replication-prime"))]
 const PRIME:u64=2_305_843_009_213_693_951u64;
+#[cfg(feature="replication-prime")]
+const PRIME:u64=2_305_843_009_213_693_921u64;
+#[cfg(not(feature="replication-prime"))]
+const RECON_SEEDS:(u64,u64)=(0x243f6a8885a308d3u64,0x13198a2e03707344u64);
+#[cfg(feature="replication-prime")]
+const RECON_SEEDS:(u64,u64)=(0xa4093822299f31d0u64,0x082efa98ec4e6c89u64);
+#[cfg(not(feature="replication-prime"))]
+const RECON_STREAM:&str="primary";
+#[cfg(feature="replication-prime")]
+const RECON_STREAM:&str="replication";
 
 fn sample_rows(uu:u64,vv:u64,axis:&str)->(Vec<Vec<F>>,Vec<u8>){
     let g=dual_geometry(uu,vv,axis,PRIME);let mut rows=Vec::new();let mut degrees=Vec::new();
@@ -319,7 +330,7 @@ fn gysin_adapted_rows(uu:u64,vv:u64,axis:&str)->Vec<Vec<F>>{
     let(a,_)=sample_rows(uu,vv,axis);let mut lhs=mm(&p,&a);for i in 0..4{for j in 0..4{lhs[i][j]=lhs[i][j].add(dp[i][j]);}}mm(&lhs,&inverse(&p).expect("regular Gysin-adapted frame"))
 }
 fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
-    let need=2*total_monomials(maxdeg).len()+20;let mut su=0x243f6a8885a308d3u64;let mut sv=0x13198a2e03707344u64;let mut data=Vec::new();
+    let need=2*total_monomials(maxdeg).len()+20;let mut su=RECON_SEEDS.0;let mut sv=RECON_SEEDS.1;let mut data=Vec::new();
     while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
         let got=std::panic::catch_unwind(||{if adapted{(gysin_adapted_rows(su,sv,"u"),gysin_adapted_rows(su,sv,"v"))}else{let(au,_)=sample_rows(su,sv,"u");let(av,_)=sample_rows(su,sv,"v");(au,av)}});if let Ok(z)=got{data.push((su,sv,z.0,z.1));}}
     let mut fits:[Vec<RatFit>;2]=[Vec::new(),Vec::new()];for axis in 0..2{for i in 0..4{for j in 0..4{let ss:Vec<(u64,u64,F)>=data.iter().map(|(u,v,au,av)|(*u,*v,if axis==0{au[i][j]}else{av[i][j]})).collect();fits[axis].push(fit_entry(&ss,maxdeg).unwrap_or_else(||panic!("bivariate reconstruction failed at axis={axis}, row={i}, col={j}, maxdeg={maxdeg}")));}}}fits
@@ -371,11 +382,11 @@ fn deligne_finite_residues(fits:&[Vec<RatFit>;2])->Result<([Vec<Vec<F>>;2],Vec<V
 }
 fn soft_corner_common_frame_test()->String{
     let source_fits=reconstruct_final_fits(7,false);let source_defect=corner_residues_from_fits(&source_fits).err().unwrap_or_else(||"none".to_string());
-    let fits=reconstruct_final_fits(12,true);let census=corner_laurent_census(&fits);let regularized=deligne_finite_residues(&fits);let Ok(([aru,arv],principal))=regularized else{let defect=regularized.err().unwrap();return format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v5\",\"prime\":{},\"status\":\"deligne_principal_part_failure\",\"source_frame_first_defect\":\"{}\",\"defect\":\"{}\",\"laurent_census\":{}}}",PRIME,source_defect,defect,census)};
+    let fits=reconstruct_final_fits(12,true);let census=corner_laurent_census(&fits);let regularized=deligne_finite_residues(&fits);let Ok(([aru,arv],principal))=regularized else{let defect=regularized.err().unwrap();return format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v6\",\"prime\":{},\"stream\":\"{}\",\"status\":\"deligne_principal_part_failure\",\"source_frame_first_defect\":\"{}\",\"defect\":\"{}\",\"laurent_census\":{}}}",PRIME,RECON_STREAM,source_defect,defect,census)};
     let eu=vec![aru[2][0..2].to_vec(),aru[3][0..2].to_vec()];let ev=vec![arv[2][0..2].to_vec(),arv[3][0..2].to_vec()];
     let mut delta=vec![vec![F::z(PRIME);2];2];for i in 0..2{for j in 0..2{delta[i][j]=ev[i][j].sub(eu[i][j]);}}
     let qu=vec![aru[2][2..4].to_vec(),aru[3][2..4].to_vec()];let qv=vec![arv[2][2..4].to_vec(),arv[3][2..4].to_vec()];
-    format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v5\",\"prime\":{},\"status\":\"deligne_finite_parts_compared\",\"source_frame_first_defect\":\"{}\",\"reconstruction_degree\":12,\"common_principal_part\":{},\"finite_u_residue\":{},\"finite_v_residue\":{},\"finite_quotient_u\":{},\"finite_quotient_v\":{},\"off_diagonal_u\":{},\"off_diagonal_v\":{},\"antisymmetric_difference\":{},\"antisymmetric_rank\":{},\"epsilon_e6_zero\":{},\"epsilon_v_alg_zero\":{},\"laurent_census\":{}}}",PRIME,source_defect,matrix_json(&principal),matrix_json(&aru),matrix_json(&arv),matrix_json(&qu),matrix_json(&qv),matrix_json(&eu),matrix_json(&ev),matrix_json(&delta),rank_square(&delta),is_zero(&delta),is_zero(&delta),census)
+    format!("{{\"schema\":\"marici.gm.soft_corner_common_frame.v6\",\"prime\":{},\"stream\":\"{}\",\"status\":\"deligne_finite_parts_compared\",\"source_frame_first_defect\":\"{}\",\"reconstruction_degree\":12,\"common_principal_part\":{},\"finite_u_residue\":{},\"finite_v_residue\":{},\"finite_quotient_u\":{},\"finite_quotient_v\":{},\"off_diagonal_u\":{},\"off_diagonal_v\":{},\"antisymmetric_difference\":{},\"antisymmetric_rank\":{},\"epsilon_e6_zero\":{},\"epsilon_v_alg_zero\":{},\"laurent_census\":{}}}",PRIME,RECON_STREAM,source_defect,matrix_json(&principal),matrix_json(&aru),matrix_json(&arv),matrix_json(&qu),matrix_json(&qv),matrix_json(&eu),matrix_json(&ev),matrix_json(&delta),rank_square(&delta),is_zero(&delta),is_zero(&delta),census)
 }
 fn rank_square(a:&[Vec<F>])->usize{matrix_rank(a.to_vec(),a.len())}
 fn is_zero(a:&[Vec<F>])->bool{a.iter().all(|r|r.iter().all(|x|x.v==0))}
@@ -500,6 +511,7 @@ fn main(){
 #[cfg(test)]
 mod tests{
     use super::*;
+    #[cfg(not(feature="replication-prime"))]
     #[test] fn reproduces_total_slice_at_seven(){
         let(rows,degrees)=sample_rows(7,1,"u");
         let want:[[u64;4];4]=[
