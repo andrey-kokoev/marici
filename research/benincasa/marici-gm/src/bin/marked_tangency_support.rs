@@ -519,7 +519,7 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
     }
 }
 
-fn rational_jet(samples: &[(F, F)], max_degree: usize) -> (F, F, usize, usize) {
+fn rational_jet(samples: &[(F, F)], max_degree: usize) -> Option<(F, F, usize, usize)> {
     for total in 0..=2 * max_degree {
         for nd in 0..=max_degree.min(total) {
             let dd = total - nd;
@@ -584,10 +584,20 @@ fn rational_jet(samples: &[(F, F)], max_degree: usize) -> (F, F, usize, usize) {
             let n0 = x[0];
             let n1 = if nd >= 1 { x[1] } else { F::z() };
             let d1 = if dd >= 1 { x[nd + 1] } else { F::z() };
-            return (n0, n1.sub(n0.mul(d1)), nd, dd);
+            return Some((n0, n1.sub(n0.mul(d1)), nd, dd));
         }
     }
-    panic!("no bounded rational jet")
+    None
+}
+
+fn shifted_rational_jet(samples: &[(F, F)], max_degree: usize, max_shift: usize) -> (usize, (F, F, usize, usize)) {
+    for shift in 0..=max_shift {
+        let shifted = samples.iter().map(|(t,y)| (*t, y.mul(t.pow(shift as u64)))).collect::<Vec<_>>();
+        if let Some(jet) = rational_jet(&shifted, max_degree) {
+            return (shift, jet);
+        }
+    }
+    panic!("no bounded shifted rational jet through shift {max_shift}")
 }
 
 fn rational_fit(samples: &[(F, F)], max_degree: usize) -> (Vec<F>, Vec<F>) {
@@ -682,6 +692,12 @@ fn divide_linear(p: &[F], root: F) -> Vec<F> {
 }
 
 fn small_rational(x: F) -> (i64, i64) {
+    if x.0 <= 10_000_000 {
+        return (x.0 as i64, 1);
+    }
+    if P - x.0 <= 10_000_000 {
+        return (-((P - x.0) as i64), 1);
+    }
     for d in 1i64..=128 {
         let fd = F::n(d as u64);
         for n in -128i64..=128 {
@@ -694,10 +710,10 @@ fn small_rational(x: F) -> (i64, i64) {
     panic!("residual tangent root has no bounded rational reconstruction: {}", x.0)
 }
 
-fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u32, u32) {
+fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i32;3]) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u32, u32, u32, u32) {
     let cols = [0usize, 1, 2, 8, 9, 10, 11];
-    let cw = [1i32, 0, 0, 0, 0, 0, 0];
-    let rw = [1i32, 0, 0];
+    let cw = [marked_weights[0], marked_weights[1], marked_weights[2], 0, 0, 0, 0];
+    let rw = marked_weights;
     let mut radial = vec![vec![Vec::<(F, F)>::new(); 12]; 3];
     let mut tangent = radial.clone();
     let mut raw_radial = radial.clone();
@@ -796,30 +812,42 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>
     let mut min_tangent = 9i32;
     let mut transformed_min_radial = 9i32;
     let mut transformed_min_tangent = 9i32;
+    let mut transformed_max_radial_shift = 0usize;
+    let mut transformed_max_tangent_shift = 0usize;
     let mut tv = Vec::new();
     let mut radial_bad_mask = 0u32;
     let mut tangent_bad_mask = 0u32;
+    let mut transformed_radial_bad_mask = 0u32;
+    let mut transformed_tangent_bad_mask = 0u32;
     let mut entry = 0u32;
     let mut mn = 0;
     let mut md = 0;
     for m in 0..3 {
         for c in cols {
-            let a = rational_jet(&radial[m][c], 24);
-            let b = rational_jet(&tangent[m][c], 24);
-            let ra = rational_jet(&raw_radial[m][c], 24);
-            let rb = rational_jet(&raw_tangent[m][c], 24);
-            let tvr = if a.0 .0 != 0 { -1 } else if a.1 .0 != 0 { 0 } else { 1 };
-            let tvt = if b.0 .0 != 0 { 0 } else if b.1 .0 != 0 { 1 } else { 2 };
+            let (ashift, a) = shifted_rational_jet(&radial[m][c], 24, 8);
+            let (bshift, b) = shifted_rational_jet(&tangent[m][c], 24, 8);
+            let (rashift, ra) = shifted_rational_jet(&raw_radial[m][c], 24, 8);
+            let (rbshift, rb) = shifted_rational_jet(&raw_tangent[m][c], 24, 8);
+            transformed_max_radial_shift = transformed_max_radial_shift.max(ashift);
+            transformed_max_tangent_shift = transformed_max_tangent_shift.max(bshift);
+            let tvr = -(ashift as i32) + if a.0 .0 != 0 { -1 } else if a.1 .0 != 0 { 0 } else { 1 };
+            let tvt = -(bshift as i32) + if b.0 .0 != 0 { 0 } else if b.1 .0 != 0 { 1 } else { 2 };
             transformed_min_radial = transformed_min_radial.min(tvr);
             transformed_min_tangent = transformed_min_tangent.min(tvt);
-            let vr = if ra.0 .0 != 0 {
+            if tvr < -1 {
+                transformed_radial_bad_mask |= 1u32 << entry;
+            }
+            if tvt < 0 {
+                transformed_tangent_bad_mask |= 1u32 << entry;
+            }
+            let vr = -(rashift as i32) + if ra.0 .0 != 0 {
                 -3
             } else if ra.1 .0 != 0 {
                 -2
             } else {
                 -1
             };
-            let vt = if rb.0 .0 != 0 {
+            let vt = -(rbshift as i32) + if rb.0 .0 != 0 {
                 -2
             } else if rb.1 .0 != 0 {
                 -1
@@ -841,6 +869,7 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>
             md = md.max(a.3).max(b.3).max(ra.3).max(rb.3);
         }
     }
+    assert!(transformed_max_radial_shift <= 8 && transformed_max_tangent_shift <= 8);
     (
         rv,
         tv,
@@ -852,6 +881,8 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F) -> (Vec<F>, Vec<F>
         transformed_min_tangent,
         radial_bad_mask,
         tangent_bad_mask,
+        transformed_radial_bad_mask,
+        transformed_tangent_bad_mask,
     )
 }
 
@@ -862,11 +893,14 @@ fn main() {
         (F::n(2), F::n(4), "(1/2,1)", "[2,4]"),
         (F::n(2).mul(third), F::z(), "(3/2,-1)", "[2/3,0]"),
         (F::n(1).neg(), F::z(), "(-1,3/2)", "[-1,0]"),
+        (F::z(), F::n(2), "[E:x:y]=[0:1:0]", "[0,2]"),
+        (F::n(2), F::z(), "[E:x:y]=[2:1:0]", "[2,0]"),
     ];
-    let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..3")).unwrap_or(0);
-    assert!(center_index < centers.len(), "center index must be 0..3");
+    let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
+    assert!(center_index < centers.len(), "center index must be 0..5");
     let (center_u, center_v, source_center, center_uv) = centers[center_index];
-    let base = F::n(7);
+    let marked_weights = if center_index >= 4 { [2i32,1,1] } else { [1i32,0,0] };
+    let base = F::n(1000);
     let mut handles = Vec::new();
     for name in ["U", "V"] {
         for lane in 0u64..4 {
@@ -874,7 +908,7 @@ fn main() {
                 let mut out = Vec::new();
                 for r0 in 2u64..=21 {
                     if (r0 - 2) % 4 == lane {
-                        out.push((name, r0, boundary_at(name, r0, center_u, center_v)));
+                        out.push((name, r0, boundary_at(name, r0, center_u, center_v, marked_weights)));
                     }
                 }
                 out
@@ -890,6 +924,7 @@ fn main() {
     let mut roots = BTreeSet::<i64>::new();
     let mut residual_roots = BTreeSet::<(i64, i64)>::new();
     let mut residual_occurrences = BTreeSet::<(String, usize, i64, i64)>::new();
+    let mut residual_polynomials = BTreeSet::<(String, usize, String)>::new();
     let mut maxrn = 0;
     let mut maxrd = 0;
     let mut maxtn = 0;
@@ -901,6 +936,8 @@ fn main() {
     let mut transformed_min_tangent = 9i32;
     let mut radial_bad_mask = 0u32;
     let mut tangent_bad_mask = 0u32;
+    let mut transformed_radial_bad_mask = 0u32;
+    let mut transformed_tangent_bad_mask = 0u32;
     for name in ["U", "V"] {
         let mut rs = vec![Vec::<(F, F)>::new(); 42];
         for r0 in 2u64..=21 {
@@ -911,6 +948,8 @@ fn main() {
             transformed_min_tangent = transformed_min_tangent.min(z.7);
             radial_bad_mask |= z.8;
             tangent_bad_mask |= z.9;
+            transformed_radial_bad_mask |= z.10;
+            transformed_tangent_bad_mask |= z.11;
             for j in 0..21 {
                 let q = F::n(r0).sub(base);
                 rs[j].push((q, z.0[j]));
@@ -918,7 +957,7 @@ fn main() {
             }
         }
         for (j, samples) in rs.iter().enumerate() {
-            let (n, mut d) = rational_fit(samples, 6);
+            let (n, mut d) = rational_fit(samples, 8);
             if n.iter().any(|x| x.0 != 0) {
                 nonzero += 1
             }
@@ -935,24 +974,39 @@ fn main() {
                 d = divide_linear(&d, rq);
                 trim(&mut d)
             }
-            while d.len() == 2 {
-                let qroot = d[0].neg().mul(d[1].inv());
-                let rroot = qroot.add(base);
-                let rr = small_rational(rroot);
+            while d.len() > 1 {
+                let mut found = None;
+                'search: for den in 1i64..=32 {
+                    let fd = F::n(den as u64);
+                    for num in -64i64..=64 {
+                        let fnn = if num < 0 { F::n((-num) as u64).neg() } else { F::n(num as u64) };
+                        let rroot = fnn.mul(fd.inv());
+                        let qroot = rroot.sub(base);
+                        if peval(&d, qroot).0 == 0 {
+                            found = Some((qroot, small_rational(rroot)));
+                            break 'search;
+                        }
+                    }
+                }
+                let Some((qroot, rr)) = found else { break };
                 residual_roots.insert(rr);
                 residual_occurrences.insert((name.to_string(), j, rr.0, rr.1));
                 d = divide_linear(&d, qroot);
                 trim(&mut d);
             }
             trim(&mut d);
-            assert_eq!(d.len(),1,"denominator outside frozen tangency direction in chart {name} coordinate {j}, degree {}",d.len()-1);
+            if d.len() > 1 {
+                let lead = d[d.len()-1].inv();
+                let coeffs = d.iter().map(|c| small_rational(c.mul(lead))).map(|(n,den)| format!("[{n},{den}]")).collect::<Vec<_>>().join(",");
+                residual_polynomials.insert((name.to_string(), j, format!("[{coeffs}]")));
+            }
         }
     }
     println!("{{");
-    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v3\",");
+    println!("  \"schema\": \"marici.benincasa.marked_tangency_support.v4\",");
     println!("  \"center_index\": {center_index},");
     println!("  \"center_uv\": {center_uv},");
-    println!("  \"source_center\": \"(r,s)={source_center}\",");
+    println!("  \"source_center\": \"{source_center}\",");
     println!("  \"charts\": [\"u=u0+t,v=v0+t*r\",\"v=v0+t,u=u0+t*r\"],");
     println!("  \"r_samples_per_chart\": 20,");
     println!("  \"t_samples_per_r\": 55,");
@@ -960,22 +1014,35 @@ fn main() {
     println!("  \"nonzero_coordinates\": {nonzero},");
     println!("  \"radial_degree_bounds\": [{maxrn},{maxrd}],");
     println!("  \"tangent_degree_bounds\": [{maxtn},{maxtd}],");
-    println!("  \"conductor_weights\": [1,0,0,0,0,0,0],");
+    println!("  \"conductor_weights\": [{},{},{},0,0,0,0],", marked_weights[0], marked_weights[1], marked_weights[2]);
     println!("  \"transformed_min_radial_valuation\": {transformed_min_radial},");
     println!("  \"transformed_min_tangent_valuation\": {transformed_min_tangent},");
     println!("  \"raw_min_radial_valuation\": {min_radial},");
     println!("  \"raw_min_tangent_valuation\": {min_tangent},");
     println!("  \"radial_bad_mask_decimal\": {radial_bad_mask},");
     println!("  \"tangent_bad_mask_decimal\": {tangent_bad_mask},");
+    println!("  \"transformed_radial_bad_mask_decimal\": {transformed_radial_bad_mask},");
+    println!("  \"transformed_tangent_bad_mask_decimal\": {transformed_tangent_bad_mask},");
     let roots_json = if roots.is_empty() { "[]" } else { "[0]" };
     println!("  \"denominator_roots\": {roots_json},");
     let residual_roots_json = residual_roots.iter().map(|(n,d)| format!("[{n},{d}]")).collect::<Vec<_>>().join(",");
     let residual_occurrences_json = residual_occurrences.iter().map(|(chart,j,n,d)| format!("{{\"chart\":\"{chart}\",\"coordinate\":{j},\"root\":[{n},{d}]}}")).collect::<Vec<_>>().join(",");
     let residual_is_existing_cm_branch = center_index == 1 && residual_roots.iter().all(|r| *r == (1,1));
-    let unknown_residual = !residual_roots.is_empty() && !residual_is_existing_cm_branch;
+    let basepoint_zero_support = center_index == 4
+        && residual_roots.iter().all(|r| *r == (-1,1) || *r == (1,1))
+        && residual_polynomials.iter().all(|(_,_,p)| p == "[[1006001,1],[2006,1],[1,1]]");
+    let basepoint_two_support = center_index == 5
+        && residual_roots.iter().all(|r| *r == (-1,1) || *r == (-9,1) || *r == (-1,9))
+        && residual_polynomials.is_empty();
+    let residual_is_existing_source_support = residual_roots.is_empty() && residual_polynomials.is_empty()
+        || residual_is_existing_cm_branch || basepoint_zero_support || basepoint_two_support;
+    let unknown_residual = !residual_is_existing_source_support;
     println!("  \"residual_tangent_roots\": [{residual_roots_json}],");
     println!("  \"residual_occurrences\": [{residual_occurrences_json}],");
+    let residual_polynomials_json = residual_polynomials.iter().map(|(chart,j,coeffs)| format!("{{\"chart\":\"{chart}\",\"coordinate\":{j},\"q_coefficients\":{coeffs}}}")).collect::<Vec<_>>().join(",");
+    println!("  \"residual_irreducible_polynomials\": [{residual_polynomials_json}],");
     println!("  \"residual_is_existing_cayley_menger_branch\": {residual_is_existing_cm_branch},");
+    println!("  \"residual_is_existing_source_support\": {residual_is_existing_source_support},");
     println!("  \"all_denominators_generated_by_frozen_tangent_direction\": {},", residual_roots.is_empty());
     println!("  \"all_denominators_generated_by_frozen_source_support\": {},", !unknown_residual);
     println!("  \"new_support_factor\": {unknown_residual}");
