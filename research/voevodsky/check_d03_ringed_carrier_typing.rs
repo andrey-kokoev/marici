@@ -105,6 +105,68 @@ fn cell_degree(point: &(Vec<u16>, u16)) -> usize {
     point.0.len() - 1 + point.1.count_ones() as usize
 }
 
+fn rank_mod(mut matrix: Vec<Vec<i64>>, prime: i64) -> usize {
+    if matrix.is_empty() || matrix[0].is_empty() {
+        return 0;
+    }
+    let rows = matrix.len();
+    let columns = matrix[0].len();
+    let mut rank = 0;
+    for column in 0..columns {
+        let Some(pivot) = (rank..rows).find(|row| matrix[*row][column].rem_euclid(prime) != 0)
+        else {
+            continue;
+        };
+        matrix.swap(rank, pivot);
+        let mut inverse = 1;
+        let mut base = matrix[rank][column].rem_euclid(prime);
+        let mut exponent = prime - 2;
+        while exponent > 0 {
+            if exponent % 2 == 1 {
+                inverse = inverse * base % prime;
+            }
+            base = base * base % prime;
+            exponent /= 2;
+        }
+        for value in &mut matrix[rank] {
+            *value = value.rem_euclid(prime) * inverse % prime;
+        }
+        for row in 0..rows {
+            if row == rank {
+                continue;
+            }
+            let factor = matrix[row][column].rem_euclid(prime);
+            if factor != 0 {
+                for entry in column..columns {
+                    matrix[row][entry] =
+                        (matrix[row][entry] - factor * matrix[rank][entry]).rem_euclid(prime);
+                }
+            }
+        }
+        rank += 1;
+        if rank == rows {
+            break;
+        }
+    }
+    rank
+}
+
+fn extend_target_chains(
+    points: &[(u16, u16)],
+    present: &mut Vec<(u16, u16)>,
+    result: &mut Vec<Vec<(u16, u16)>>,
+) {
+    result.push(present.clone());
+    let last = *present.last().unwrap();
+    for next in points {
+        if last != *next && target_reachable(last, *next) {
+            present.push(*next);
+            extend_target_chains(points, present, result);
+            present.pop();
+        }
+    }
+}
+
 fn main() {
     let ds: Vec<_> = (0..N)
         .flat_map(|a| ((a + 1)..N).map(move |b| diagonal(a, b)))
@@ -189,6 +251,60 @@ fn main() {
                 .collect()
         })
         .collect();
+
+    // Compactness test for the pushforward of every source representable.
+    // For y and x, the relevant section space is U_y intersect f^{-1}(U_x).
+    // A unique initial point m with f(m)=x makes its loaded standard complex
+    // contract to A_x by unit faces, naturally for the pulled-back ring.
+    let target_points: Vec<_> = target.iter().copied().collect();
+    let mut empty_intersections = 0_usize;
+    let mut initial_intersections = 0_usize;
+    let mut noninitial_intersections = 0_usize;
+    let mut first_noninitial = None;
+    for y in 0..corrected.len() {
+        let open_y: Vec<_> = std::iter::once(y)
+            .chain(greater[y].iter().copied())
+            .collect();
+        for x in &target_points {
+            let intersection: Vec<_> = open_y
+                .iter()
+                .copied()
+                .filter(|z| target_reachable(*x, images[*z]))
+                .collect();
+            if intersection.is_empty() {
+                empty_intersections += 1;
+                continue;
+            }
+            let max_degree = intersection
+                .iter()
+                .map(|z| cell_degree(&corrected[*z]))
+                .max()
+                .unwrap();
+            let candidates: Vec<_> = intersection
+                .iter()
+                .copied()
+                .filter(|z| cell_degree(&corrected[*z]) == max_degree)
+                .collect();
+            let initial = (candidates.len() == 1)
+                .then_some(candidates[0])
+                .filter(|m| {
+                    images[*m] == *x
+                        && intersection
+                            .iter()
+                            .all(|z| source_leq(&corrected[*m], &corrected[*z]))
+                });
+            if initial.is_some() {
+                initial_intersections += 1;
+            } else {
+                noninitial_intersections += 1;
+                first_noninitial.get_or_insert((y, *x, intersection.len()));
+            }
+        }
+    }
+    assert_eq!(
+        empty_intersections + initial_intersections + noninitial_intersections,
+        corrected.len() * target.len()
+    );
     let mut term_census = vec![vec![0_u64; 10]; max_degree + 1];
     for start in 0..corrected.len() {
         let initial_units = images[start].0 & !images[start].1;
@@ -233,13 +349,106 @@ fn main() {
         .collect::<Vec<_>>()
         .join(",");
 
+    // One-normal completion sector.  Let a=({u},empty), so A_a=A[u^-1],
+    // and take the degree-zero source point over a.  The u-noninverted
+    // associated sector in the bar dual is indexed by target chains whose
+    // first point lies below a and whose last point still does not invert u.
+    let u = 1_u16;
+    let a = (u, 0_u16);
+    assert!(target.contains(&a));
+    let witness_sources: Vec<_> = corrected
+        .iter()
+        .enumerate()
+        .filter(|(_, point)| cell_degree(point) == 0)
+        .filter(|(index, _)| images[*index] == a)
+        .collect();
+    assert_eq!(witness_sources.len(), 1);
+    let witness_y = witness_sources[0].0;
+    assert!(greater[witness_y].is_empty());
+    let no_u: Vec<_> = target_points
+        .iter()
+        .copied()
+        .filter(|(face, normal)| (face & !normal) & u == 0)
+        .collect();
+    let starts: Vec<_> = no_u
+        .iter()
+        .copied()
+        .filter(|point| target_reachable(*point, a))
+        .collect();
+    assert_eq!(starts.len(), 2);
+    let mut completion_chains = Vec::new();
+    for start in &starts {
+        extend_target_chains(&no_u, &mut vec![*start], &mut completion_chains);
+    }
+    completion_chains.sort();
+    completion_chains.dedup();
+    let max_length = completion_chains.iter().map(Vec::len).max().unwrap();
+    let by_length: Vec<Vec<_>> = (1..=max_length)
+        .map(|length| {
+            completion_chains
+                .iter()
+                .filter(|chain| chain.len() == length)
+                .cloned()
+                .collect()
+        })
+        .collect();
+    let mut boundary_ranks = vec![0_usize; max_length];
+    for degree in 1..max_length {
+        let rows = &by_length[degree - 1];
+        let columns = &by_length[degree];
+        let row_index: std::collections::BTreeMap<_, _> = rows
+            .iter()
+            .cloned()
+            .enumerate()
+            .map(|(index, chain)| (chain, index))
+            .collect();
+        let mut matrix = vec![vec![0_i64; columns.len()]; rows.len()];
+        for (column, chain) in columns.iter().enumerate() {
+            for removed in 0..chain.len() {
+                let mut face = chain.clone();
+                face.remove(removed);
+                if face.is_empty() || !target_reachable(face[0], a) {
+                    continue;
+                }
+                if let Some(row) = row_index.get(&face) {
+                    matrix[*row][column] += if removed % 2 == 0 { 1 } else { -1 };
+                }
+            }
+        }
+        boundary_ranks[degree] = rank_mod(matrix, 101);
+    }
+    let completion_homology: Vec<_> = (0..max_length)
+        .map(|degree| {
+            by_length[degree].len()
+                - boundary_ranks[degree]
+                - boundary_ranks.get(degree + 1).copied().unwrap_or(0)
+        })
+        .collect();
+    let completion_euler: i64 = by_length
+        .iter()
+        .enumerate()
+        .map(|(degree, cells)| if degree % 2 == 0 { 1 } else { -1 } * cells.len() as i64)
+        .sum();
+    assert_eq!(completion_euler, 1);
+    assert_eq!(completion_homology, [0, 0, 1, 0]);
+
     println!(
-        "{{\"claim\":\"The loaded D03 pullback is typed only on the normal-state Grothendieck carrier (sigma,H), not on the face-only barycentric carrier sigma\",\"status\":\"correspondence_repaired_and_dualizing_terms_enumerated\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\",\"standard_chain_term_census_by_degree_and_localization_jump\":[{}]}}",
+        "{{\"claim\":\"The corrected D03 dualizing complex has a rank-one one-normal telescope-dual sector and therefore no bounded finite-projective compression over the unlocalized target ring\",\"status\":\"omega_q_nonperfect\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\",\"representable_open_intersections\":{{\"empty\":{},\"unique_initial_over_x\":{},\"noninitial\":{},\"first_noninitial\":\"{:?}\"}},\"one_normal_witness\":{{\"source_index\":{},\"target_face_mask\":1,\"target_normal_mask\":0,\"source_open_is_singleton\":true}},\"one_normal_completion_sector\":{{\"starts\":{},\"chain_ranks\":{:?},\"boundary_ranks_mod_101\":{:?},\"homology_mod_101\":{:?},\"euler_characteristic\":{}}},\"standard_chain_term_census_by_degree_and_localization_jump\":[{}]}}",
         target.len(),
         simplices.len(),
         corrected.len(),
         cover_count,
         face_only_image_count,
+        empty_intersections,
+        initial_intersections,
+        noninitial_intersections,
+        first_noninitial,
+        witness_y,
+        starts.len(),
+        by_length.iter().map(Vec::len).collect::<Vec<_>>(),
+        boundary_ranks,
+        completion_homology,
+        completion_euler,
         term_census
     );
 }
