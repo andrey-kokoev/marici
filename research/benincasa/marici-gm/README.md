@@ -22,6 +22,7 @@ Commands:
 - `soft-support-both-sites-test <output.json>`
 - `soft-support-nine-master-test <output.json>`
 - `cargo run --release --bin marked_soft_support -- <output.json>`
+- `cargo run --release --bin soft_rees_smith -- <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -94,3 +95,9 @@ of the canonical rank-twelve localization extension. It takes the actual
 soft principal parts of both wall columns and checks their infinity-Gysin
 images directly; the primitive top column is regular at either individual
 site-soft branch.
+
+The soft-Rees Smith binary keeps the site-soft normal (t) in the physical
+enhanced/conductor comparison. It verifies the exact factorization
+`D_soft*Phi=(D_soft*J)*K` and computes Smith data `(1,2,2*t)`: two
+directions remain on the leading soft fiber and one moves to the next Rees
+grade, with no new torsion prime.
