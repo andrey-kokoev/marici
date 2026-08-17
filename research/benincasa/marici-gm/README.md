@@ -18,6 +18,7 @@ Commands:
 - `cargo run --release --bin et_intersection_census -- <output.json>`
 - `generic-et-test <point-count> <output.json>`
 - `soft-corner-common-frame-test <output.json>`
+- `soft-support-test <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -67,3 +68,10 @@ records zero antisymmetric difference and hence
 `epsilon_e6=epsilon_v_alg=0` on the generic finite-field de Rham locus.
 Build with `--features replication-prime` to repeat the same calculation at
 `p=2305843009213693921` with a disjoint deterministic reconstruction stream.
+
+The soft-support command first saturates the degenerating algebraic generator
+by replacing `v_alg` with `v_alg/X2^2`, then extracts the Laurent expansion of
+the total-energy residue at `X2=0` (`u=0,v=2`). It distinguishes a genuinely
+supported logarithmic extension from regular finite mixing. The two committed
+prime-field certificates find a zero kernel-to-quotient principal part, while
+retaining the regular finite coefficient `-1/4`.
