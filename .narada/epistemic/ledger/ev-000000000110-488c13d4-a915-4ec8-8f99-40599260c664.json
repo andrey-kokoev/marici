@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 110,
+  "event_id": "ev-000000000110-488c13d4-a915-4ec8-8f99-40599260c664",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7f5606e8c95797014d0bf93652a5c3646e9baf99a04dd01e3f1adb418b517ff9",
+  "proposal_id": "ep_a344ad7f-98bc-4b8b-a448-fa1f82a547dc",
+  "proposal_digest": "c1b25ea0982a86c1b70272b1a3d75994b9567fa966dcce76210f6a89396a839d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-410",
+      "kind": "source",
+      "title": "Ledger 410",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-410 The Exact-Lift Special-Fiber Relation Is the Algebraic Gysin Relation.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-410",
+      "kind": "test",
+      "title": "Special-fiber exact-lift and v_alg vector comparison",
+      "version": "1",
+      "locator": "research/benincasa/exact-lift-valg-special-fiber-identity.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-410",
+      "kind": "claim",
+      "title": "The exact-lift special-fiber relation is the algebraic Gysin relation",
+      "version": "1",
+      "locator": "src/ledger/20260817-410 The Exact-Lift Special-Fiber Relation Is the Algebraic Gysin Relation.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-410",
+      "target_id": "marici:claim:ledger-400",
+      "relation_id": "rel:depends_on-ledger410-ledger400"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-410",
+      "target_id": "marici:source:ledger-410",
+      "relation_id": "rel:derived_from-ledger410-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-410",
+      "target_id": "marici:claim:ledger-410",
+      "relation_id": "rel:tests-ledger410-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-410",
+      "test_id": "marici:test:ledger-410",
+      "actor": "marici.Benincasa",
+      "outcome": "supported narrowly: all twenty-four special-fiber e6-pivot relations have nonzero tails proportional to the specialized v_alg vector and agree across exact-form degrees eight and ten",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-410",
+          "locator": "Frozen master map and Exact test",
+          "paraphrase": "On both D components at six fibers and two degree bounds, the additional relation is e6 plus a nonzero scalar times v_alg."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "auto-admission-50bde61f093ba02f6120e445",
+  "occurred_at": "2026-08-17T22:40:25.0117627Z",
+  "certifies_truth": false,
+  "event_hash": "20fc6695c5a0bc82d081ad4c2dc6f4c49d304dc60b19277af4973368789f8313"
+}

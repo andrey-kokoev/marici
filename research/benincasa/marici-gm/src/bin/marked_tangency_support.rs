@@ -1206,6 +1206,35 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-vector" {
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in [3u64,5,7,11,19,37] {
+                let u=F::n(u0);
+                for (label,v) in [
+                    ("D_minus",u.pow(2).mul(F::n(2)).sub(u).add(F::n(2))),
+                    ("D_plus",u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2)))
+                ] {
+                    let sol=solve(&geometry(u0,v.0,'u'),8,degree);
+                    let row=sol.gauge_rref.iter().find(|r|r[8].0!=0).expect("missing e6-pivot row");
+                    assert_eq!(row[8],F::o());
+                    let y=u.add(v).mul(F::n(2).inv()).sub(F::o());
+                    let valg=[
+                        F::o().sub(y.pow(2)).mul(y.pow(2).sub(u.pow(4))),
+                        F::n(2).mul(u.pow(2).add(y.pow(2))),
+                        F::n(2).neg().mul(y.pow(2)).mul(u.pow(2).add(F::o()))
+                    ];
+                    let tail=[row[9],row[10],row[11]];
+                    let proportional=(0..3).all(|i|(i+1..3).all(|j|tail[i].mul(valg[j])==tail[j].mul(valg[i])));
+                    let tail_nonzero=tail.iter().any(|q|q.0!=0);
+                    let valg_nonzero=valg.iter().any(|q|q.0!=0);
+                    results.push(format!("{{\"divisor\":\"{label}\",\"degree\":{degree},\"u\":{u0},\"v\":{},\"tail\":[{},{},{}],\"v_alg\":[{},{},{}],\"proportional\":{proportional},\"tail_nonzero\":{tail_nonzero},\"v_alg_nonzero\":{valg_nonzero}}}",v.0,tail[0].0,tail[1].0,tail[2].0,valg[0].0,valg[1].0,valg[2].0));
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_dlog_vector_comparison.v1\",\"master_map\":\"indices 8,9,10,11 = e6,e7,e8,e9\",\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "dlog-divisors" {
         std::panic::set_hook(Box::new(|_| {}));
         let mut counts=[0usize;4];
