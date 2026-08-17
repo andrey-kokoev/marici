@@ -102,28 +102,38 @@ p_{23}:C^\circ\to U_{23}
 \]
 
 is a canonical locally closed immersion. The support-sensitive calculus
-therefore types
+therefore types the two extraordinary restrictions and their separate
+extension-by-zero maps. It does **not** by itself type
 
 \[
 p_{23!}p_{12}^*:
 D(U_{12})\longrightarrow D(U_{23})
 \]
 
-and its reverse. On (C^\circ), the two Cayley--Menger/Kummer restrictions
-come from the same frozen pre-residue double cover. Their raw coefficient
-local systems are consequently identified, while exchanging the two normal
-directions contributes the already computed Koszul sign.
+as a degree-zero cohomological correspondence: the counit on the target
+requires (p_{23}^!), not (p_{23}^*). By codimension-one purity,
 
-This is the first source-derived candidate overlap span. It is not yet a
-Čech restriction map, a map of the rank-twelve Gauss--Manin connections, or
-a statement about the physical relative chain.
+\[
+p_{ij}^!\mathcal L_{ij}
+\simeq p_{ij}^*\mathcal L_{ij}[-2](-1).
+\]
+
+On (C^\circ), the two extraordinary restrictions come from the same frozen
+pre-residue double cover and are identified after the normal orientations
+and their Koszul sign are retained. The resulting object maps *into* each
+sector by the two localization counits. It is a common supported cospan, not
+a transition map between the full sector objects.
+
+This correction was forced by the subsequent coefficient type audit. It is
+not a Čech restriction map, a map of the rank-twelve Gauss--Manin
+connections, or a statement about the physical relative chain.
 
 ## Narrow result
 
 \[
 \boxed{
-\text{ordinary proper Gysin overlap fails, but the canonical locally closed
-overlap supports a }!\text{-correspondence.}
+\text{ordinary proper Gysin overlap fails, while the locally closed overlap
+supports a canonical extraordinary supported cospan.}
 }
 \]
 
@@ -140,7 +150,8 @@ coefficient boundaries.
 | (b=x) versus (b=z) | occurrence-resolved sector coefficient data |
 | union-open (C^\circ) | canonical source-boundary refinement |
 | closed Gysin span | falsified |
-| locally closed (!)-span | canonically typed candidate |
+| locally closed extraordinary cospan | canonically typed |
+| full-sector transition arrow | not supplied |
 | new carrier datum | none |
 
 ## Evidence
@@ -151,10 +162,10 @@ coefficient boundaries.
 
 ## Next falsifier
 
-Compute the induced map of the actual sector coefficient complexes. Pull the
-two rank-twelve marked Gauss--Manin objects to (C^\circ), identify their
-common Cayley--Menger/Kummer subquotients before choosing bases, and apply
-(p_!). Test whether the resulting correspondence:
+Determine whether the frozen source supplies a specialization or retraction
+from either full rank-twelve object to the common extraordinary supported
+object. Such a map, together with the opposite counit, would produce a
+transition. Test whether any candidate:
 
 1. has the frozen Koszul sign;
 2. respects the rank-nine algebraic/rank-three marked filtration;

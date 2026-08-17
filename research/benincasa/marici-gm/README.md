@@ -16,6 +16,12 @@ The corresponding relative-pair properness gate is reproducible with:
 cargo run --release --bin relative_pair_gysin_gate
 ```
 
+The purity and coefficient-arrow type audit is reproducible with:
+
+```powershell
+cargo run --release --bin overlap_coefficient_type_gate
+```
+
 Dependency-free Rust machinery for finite-field Griffiths--Dwork reduction of
 the final four-master Benincasa block.
 
