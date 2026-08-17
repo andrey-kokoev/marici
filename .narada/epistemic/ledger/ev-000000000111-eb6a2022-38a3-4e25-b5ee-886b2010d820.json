@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 111,
+  "event_id": "ev-000000000111-eb6a2022-38a3-4e25-b5ee-886b2010d820",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "20fc6695c5a0bc82d081ad4c2dc6f4c49d304dc60b19277af4973368789f8313",
+  "proposal_id": "ep_c76b233f-2f5d-4fac-9ea0-26b1dd3e42ee",
+  "proposal_digest": "453b3f9e3252cc380ead42179a4f9d7d807d548c473c8fd575d5d907e532f742",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-415",
+      "kind": "source",
+      "title": "Ledger 415",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-415 The Special-Fiber Scalar Is a Tested Unit but Not a Low-Degree Invariant.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-415",
+      "kind": "test",
+      "title": "Special-fiber scalar unit census and bounded rational reconstruction",
+      "version": "1",
+      "locator": "research/benincasa/exact-lift-valg-unit-census.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-415",
+      "kind": "claim",
+      "title": "The special-fiber scalar is a tested unit but not a low-degree invariant",
+      "version": "1",
+      "locator": "src/ledger/20260817-415 The Special-Fiber Scalar Is a Tested Unit but Not a Low-Degree Invariant.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-415",
+      "target_id": "marici:claim:ledger-410",
+      "relation_id": "rel:depends_on-ledger415-ledger410"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-415",
+      "target_id": "marici:source:ledger-415",
+      "relation_id": "rel:derived_from-ledger415-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-415",
+      "target_id": "marici:claim:ledger-415",
+      "relation_id": "rel:tests-ledger415-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-415",
+      "test_id": "marici:test:ledger-415",
+      "actor": "marici.Benincasa",
+      "outcome": "mixed narrow result: all 336 sampled component values are nonzero with no degree mismatches, while neither component admits a rational fit with numerator and denominator degrees at most seventy",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-415",
+          "locator": "Frozen test and Result",
+          "paraphrase": "The scalar behaves as a tested generic unit but its RREF normalization is not a compact intrinsic quotient coordinate."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "auto-admission-b6475ee21d0ddf63efe48fe4",
+  "occurred_at": "2026-08-17T22:45:42.3931806Z",
+  "certifies_truth": false,
+  "event_hash": "ca8aced9d418e691d6dd02cb231879abe3adf8304d39cd1ae6e6b5654c12955a"
+}
