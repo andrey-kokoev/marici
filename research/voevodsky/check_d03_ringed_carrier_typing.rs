@@ -432,6 +432,99 @@ fn main() {
     assert_eq!(completion_euler, 1);
     assert_eq!(completion_homology, [0, 0, 1, 0]);
 
+    // Repeat the same test for every normal label of the K_6 incidence
+    // carrier.  This distinguishes the full nine-normal ringed space from
+    // the four-normal physical residue sector used downstream.
+    let mut all_normal_sectors = Vec::new();
+    for bit in 0..ds.len() {
+        let normal_unit = 1_u16 << bit;
+        let singleton = (normal_unit, 0_u16);
+        assert!(target.contains(&singleton));
+        let singleton_sources: Vec<_> = corrected
+            .iter()
+            .enumerate()
+            .filter(|(_, point)| cell_degree(point) == 0)
+            .filter(|(index, _)| images[*index] == singleton)
+            .collect();
+        assert_eq!(singleton_sources.len(), 1);
+        assert!(greater[singleton_sources[0].0].is_empty());
+
+        let not_inverted: Vec<_> = target_points
+            .iter()
+            .copied()
+            .filter(|(face, normal)| (face & !normal) & normal_unit == 0)
+            .collect();
+        let sector_starts: Vec<_> = not_inverted
+            .iter()
+            .copied()
+            .filter(|point| target_reachable(*point, singleton))
+            .collect();
+        let mut sector_chains = Vec::new();
+        for start in &sector_starts {
+            extend_target_chains(&not_inverted, &mut vec![*start], &mut sector_chains);
+        }
+        sector_chains.sort();
+        sector_chains.dedup();
+        let sector_max_length = sector_chains.iter().map(Vec::len).max().unwrap();
+        let sector_by_length: Vec<Vec<_>> = (1..=sector_max_length)
+            .map(|length| {
+                sector_chains
+                    .iter()
+                    .filter(|chain| chain.len() == length)
+                    .cloned()
+                    .collect()
+            })
+            .collect();
+        let mut sector_boundary_ranks = vec![0_usize; sector_max_length];
+        for degree in 1..sector_max_length {
+            let rows = &sector_by_length[degree - 1];
+            let columns = &sector_by_length[degree];
+            let row_index: std::collections::BTreeMap<_, _> = rows
+                .iter()
+                .cloned()
+                .enumerate()
+                .map(|(index, chain)| (chain, index))
+                .collect();
+            let mut matrix = vec![vec![0_i64; columns.len()]; rows.len()];
+            for (column, chain) in columns.iter().enumerate() {
+                for removed in 0..chain.len() {
+                    let mut face = chain.clone();
+                    face.remove(removed);
+                    if face.is_empty() || !target_reachable(face[0], singleton) {
+                        continue;
+                    }
+                    if let Some(row) = row_index.get(&face) {
+                        matrix[*row][column] += if removed % 2 == 0 { 1 } else { -1 };
+                    }
+                }
+            }
+            sector_boundary_ranks[degree] = rank_mod(matrix, 101);
+        }
+        let sector_homology: Vec<_> = (0..sector_max_length)
+            .map(|degree| {
+                sector_by_length[degree].len()
+                    - sector_boundary_ranks[degree]
+                    - sector_boundary_ranks.get(degree + 1).copied().unwrap_or(0)
+            })
+            .collect();
+        let sector_euler: i64 = sector_by_length
+            .iter()
+            .enumerate()
+            .map(|(degree, cells)| (if degree % 2 == 0 { 1 } else { -1 }) * cells.len() as i64)
+            .sum();
+        assert_eq!(sector_euler, 1);
+        assert_eq!(sector_homology.iter().sum::<usize>(), 1);
+        all_normal_sectors.push((
+            ds[bit],
+            sector_starts.len(),
+            sector_by_length.iter().map(Vec::len).collect::<Vec<_>>(),
+            sector_boundary_ranks,
+            sector_homology,
+            sector_euler,
+        ));
+    }
+    assert_eq!(all_normal_sectors.len(), 9);
+
     println!(
         "{{\"claim\":\"The corrected D03 dualizing complex has a rank-one one-normal telescope-dual sector and therefore no bounded finite-projective compression over the unlocalized target ring\",\"status\":\"omega_q_nonperfect\",\"target_points\":{},\"face_only_domain_points\":{},\"corrected_domain_points\":{},\"verified_boundary_covers\":{},\"face_only_image_count\":{},\"corrected_map\":\"(sigma,H)->(blowdown(initial(sigma)),H)\",\"representable_open_intersections\":{{\"empty\":{},\"unique_initial_over_x\":{},\"noninitial\":{},\"first_noninitial\":\"{:?}\"}},\"one_normal_witness\":{{\"source_index\":{},\"target_face_mask\":1,\"target_normal_mask\":0,\"source_open_is_singleton\":true}},\"one_normal_completion_sector\":{{\"starts\":{},\"chain_ranks\":{:?},\"boundary_ranks_mod_101\":{:?},\"homology_mod_101\":{:?},\"euler_characteristic\":{}}},\"standard_chain_term_census_by_degree_and_localization_jump\":[{}]}}",
         target.len(),
@@ -451,4 +544,5 @@ fn main() {
         completion_euler,
         term_census
     );
+    println!("all_normal_telescope_sectors={all_normal_sectors:?}");
 }
