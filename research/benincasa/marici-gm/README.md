@@ -24,6 +24,7 @@ Commands:
 - `cargo run --release --bin marked_soft_support -- <output.json>`
 - `cargo run --release --bin soft_rees_smith -- <output.json>`
 - `cargo run --release --bin double_soft_rees -- <output.json>`
+- `cargo run --release --bin cyclic_occurrence_rees -- <output.json>`
 
 The reconstruction command uses deterministic independent pseudorandom field
 points, requires a full-rank interpolation system, validates on a disjoint
@@ -107,3 +108,9 @@ The double-soft binary retains (x=X_1) and (y=X_2) independently. Since
 (mathbb Z[x,y]) is not a one-normal PID, it reports the exact diagonal
 presentation and Fitting ideals rather than inventing a one-variable Smith
 form.
+
+The cyclic occurrence binary assembles the six literal source summands into
+their two (C_3)-orbits, verifies the saturated occurrence-forgetting
+kernel and multiplicity two, and transports the two-axis Rees presentations
+between sectors. It deliberately does not fabricate Čech transition maps
+between distinct residue surfaces.
