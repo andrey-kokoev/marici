@@ -710,9 +710,8 @@ fn small_rational(x: F) -> (i64, i64) {
     panic!("residual tangent root has no bounded rational reconstruction: {}", x.0)
 }
 
-fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i32;3]) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u32, u32, u32, u32) {
-    let cols = [0usize, 1, 2, 8, 9, 10, 11];
-    let cw = [marked_weights[0], marked_weights[1], marked_weights[2], 0, 0, 0, 0];
+fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i32;3], full_projection: bool) -> (Vec<F>, Vec<F>, usize, usize, i32, i32, i32, i32, u64, u64, u64, u64) {
+    let cols: Vec<usize> = if full_projection { (0usize..12).collect() } else { vec![0,1,2,8,9,10,11] };
     let rw = marked_weights;
     let mut radial = vec![vec![Vec::<(F, F)>::new(); 12]; 3];
     let mut tangent = radial.clone();
@@ -743,8 +742,10 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i
         for m in 0..3 {
             let su = solve(&gu, m, 8);
             let sv = solve(&gv, m, 8);
-            for (ci, col) in cols.iter().enumerate() {
-                assert!(su.fixed[*col] && sv.fixed[*col] && s6u.fixed[*col] && s6v.fixed[*col]);
+            for col in &cols {
+                assert!(su.fixed[*col] && sv.fixed[*col] && s6u.fixed[*col] && s6v.fixed[*col],
+                    "noncanonical lift coordinate: chart={name} direction={r0} row={m} col={col} fixed=[{},{},{},{}]",
+                    su.fixed[*col], sv.fixed[*col], s6u.fixed[*col], s6v.fixed[*col]);
                 let au = su.values[*col].neg();
                 let av = sv.values[*col].neg();
                 let a6u = s6u.values[*col].neg();
@@ -791,7 +792,8 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i
                 }
                 raw_radial[m][*col].push((t, at.mul(t.pow(3))));
                 raw_tangent[m][*col].push((t, ar.mul(t.pow(2))));
-                let delta = rw[m] - cw[ci];
+                let col_weight = if *col < 3 { marked_weights[*col] } else { 0 };
+                let delta = rw[m] - col_weight;
                 let tr = if delta + 1 >= 0 {
                     t.pow((delta + 1) as u64)
                 } else {
@@ -815,15 +817,15 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i
     let mut transformed_max_radial_shift = 0usize;
     let mut transformed_max_tangent_shift = 0usize;
     let mut tv = Vec::new();
-    let mut radial_bad_mask = 0u32;
-    let mut tangent_bad_mask = 0u32;
-    let mut transformed_radial_bad_mask = 0u32;
-    let mut transformed_tangent_bad_mask = 0u32;
-    let mut entry = 0u32;
+    let mut radial_bad_mask = 0u64;
+    let mut tangent_bad_mask = 0u64;
+    let mut transformed_radial_bad_mask = 0u64;
+    let mut transformed_tangent_bad_mask = 0u64;
+    let mut entry = 0u64;
     let mut mn = 0;
     let mut md = 0;
     for m in 0..3 {
-        for c in cols {
+        for &c in &cols {
             let (ashift, a) = shifted_rational_jet(&radial[m][c], 24, 8);
             let (bshift, b) = shifted_rational_jet(&tangent[m][c], 24, 8);
             let (rashift, ra) = shifted_rational_jet(&raw_radial[m][c], 24, 8);
@@ -835,10 +837,10 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i
             transformed_min_radial = transformed_min_radial.min(tvr);
             transformed_min_tangent = transformed_min_tangent.min(tvt);
             if tvr < -1 {
-                transformed_radial_bad_mask |= 1u32 << entry;
+                transformed_radial_bad_mask |= 1u64 << entry;
             }
             if tvt < 0 {
-                transformed_tangent_bad_mask |= 1u32 << entry;
+                transformed_tangent_bad_mask |= 1u64 << entry;
             }
             let vr = -(rashift as i32) + if ra.0 .0 != 0 {
                 -3
@@ -857,10 +859,10 @@ fn boundary_at(name: &str, r0: u64, center_u: F, center_v: F, marked_weights: [i
             min_radial = min_radial.min(vr);
             min_tangent = min_tangent.min(vt);
             if vr < -1 {
-                radial_bad_mask |= 1u32 << entry;
+                radial_bad_mask |= 1u64 << entry;
             }
             if vt < 0 {
-                tangent_bad_mask |= 1u32 << entry;
+                tangent_bad_mask |= 1u64 << entry;
             }
             entry += 1;
             rv.push(a.0);
@@ -898,8 +900,39 @@ fn main() {
     ];
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
+    let mode = std::env::args().nth(2).unwrap_or_default();
+    let full_projection = mode == "full";
     let (center_u, center_v, source_center, center_uv) = centers[center_index];
     let marked_weights = if center_index >= 4 { [2i32,1,1] } else { [1i32,0,0] };
+    if mode == "diag" {
+        let mut nonfixed = [0u16;4];
+        let rows = [0usize,1,2,8];
+        for name in ["U","V"] {
+            for r0 in [2u64,3,7,13,21] {
+                let r = F::n(r0);
+                for ti in [31u64,32,47,61,85] {
+                    let t = F::n(ti);
+                    let (u,v) = if name == "U" {
+                        (center_u.add(t), center_v.add(t.mul(r)))
+                    } else {
+                        (center_u.add(t.mul(r)), center_v.add(t))
+                    };
+                    let gu = geometry(u.0,v.0,'u');
+                    let gv = geometry(u.0,v.0,'v');
+                    for (ri,row) in rows.iter().enumerate() {
+                        for sol in [solve(&gu,*row,8),solve(&gv,*row,8)] {
+                            assert!(sol.residual_zero);
+                            for c in 0..12 {
+                                if !sol.fixed[c] { nonfixed[ri] |= 1u16 << c; }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.exact_lift_gauge_diag.v1\",\"center_index\":{center_index},\"rows\":[0,1,2,8],\"nonfixed_column_masks\":{:?},\"candidate_exact_lift_columns\":[3,4,5,6,7]}}",nonfixed);
+        return;
+    }
     let base = F::n(1000);
     let mut handles = Vec::new();
     for name in ["U", "V"] {
@@ -908,7 +941,7 @@ fn main() {
                 let mut out = Vec::new();
                 for r0 in 2u64..=21 {
                     if (r0 - 2) % 4 == lane {
-                        out.push((name, r0, boundary_at(name, r0, center_u, center_v, marked_weights)));
+                        out.push((name, r0, boundary_at(name, r0, center_u, center_v, marked_weights, full_projection)));
                     }
                 }
                 out
@@ -934,12 +967,14 @@ fn main() {
     let mut min_tangent = 9i32;
     let mut transformed_min_radial = 9i32;
     let mut transformed_min_tangent = 9i32;
-    let mut radial_bad_mask = 0u32;
-    let mut tangent_bad_mask = 0u32;
-    let mut transformed_radial_bad_mask = 0u32;
-    let mut transformed_tangent_bad_mask = 0u32;
+    let mut radial_bad_mask = 0u64;
+    let mut tangent_bad_mask = 0u64;
+    let mut transformed_radial_bad_mask = 0u64;
+    let mut transformed_tangent_bad_mask = 0u64;
+    let projection_columns: Vec<usize> = if full_projection { (0usize..12).collect() } else { vec![0,1,2,8,9,10,11] };
+    let entries_per_component = 3 * projection_columns.len();
     for name in ["U", "V"] {
-        let mut rs = vec![Vec::<(F, F)>::new(); 42];
+        let mut rs = vec![Vec::<(F, F)>::new(); 2 * entries_per_component];
         for r0 in 2u64..=21 {
             let z = &table[&(name, r0)];
             min_radial = min_radial.min(z.4);
@@ -950,10 +985,10 @@ fn main() {
             tangent_bad_mask |= z.9;
             transformed_radial_bad_mask |= z.10;
             transformed_tangent_bad_mask |= z.11;
-            for j in 0..21 {
+            for j in 0..entries_per_component {
                 let q = F::n(r0).sub(base);
                 rs[j].push((q, z.0[j]));
-                rs[21 + j].push((q, z.1[j]));
+                rs[entries_per_component + j].push((q, z.1[j]));
             }
         }
         for (j, samples) in rs.iter().enumerate() {
@@ -961,7 +996,7 @@ fn main() {
             if n.iter().any(|x| x.0 != 0) {
                 nonzero += 1
             }
-            if j < 21 {
+            if j < entries_per_component {
                 maxrn = maxrn.max(n.len() - 1);
                 maxrd = maxrd.max(d.len() - 1)
             } else {
@@ -1010,7 +1045,8 @@ fn main() {
     println!("  \"charts\": [\"u=u0+t,v=v0+t*r\",\"v=v0+t,u=u0+t*r\"],");
     println!("  \"r_samples_per_chart\": 20,");
     println!("  \"t_samples_per_r\": 55,");
-    println!("  \"rational_coordinates\": 84,");
+    println!("  \"projection_columns\": {:?},", projection_columns);
+    println!("  \"rational_coordinates\": {},", 4 * entries_per_component);
     println!("  \"nonzero_coordinates\": {nonzero},");
     println!("  \"radial_degree_bounds\": [{maxrn},{maxrd}],");
     println!("  \"tangent_degree_bounds\": [{maxtn},{maxtd}],");
