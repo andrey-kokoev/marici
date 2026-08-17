@@ -1,0 +1,108 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 102,
+  "event_id": "ev-000000000102-6658f8d3-1845-46e1-a2f9-e1046800ae12",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "629931540c294d05a2cd7d498f12bdc01f43ae1e1d70d09f9bd7d411dfc540c4",
+  "proposal_id": "ep_c1e03770-dd2c-4359-8600-61e1a22ee8db",
+  "proposal_digest": "2d75acd72a329333304e19b77bac6c835cc88d43a92328fcace2f4ac63563547",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-384",
+      "kind": "source",
+      "title": "Ledger 384: Correction to Entry 383 - the Second Tangency Meets an Existing Cayley-Menger Branch",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-384 Correction to Entry 383 - the Second Tangency Meets an Existing Cayley-Menger Branch.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-384",
+      "kind": "test",
+      "title": "Corrected four-center marked-conductor transport using u=1/r and v=(2r+2s-1)/r",
+      "version": "2026-08-17",
+      "locator": "research/benincasa/corrected-all-marked-tangencies-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:ledger-384-coordinate-map",
+      "kind": "criticism",
+      "title": "Entry 383 transported three centers with the false coordinate identity v=1/s",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-384 Correction to Entry 383 - the Second Tangency Meets an Existing Cayley-Menger Branch.md#retraction-boundary"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-384",
+      "kind": "claim",
+      "title": "The weight w111=1 is logarithmic at all four corrected finite tangencies and the only extra direction is the existing Cayley-Menger branch c+y=0",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-384 Correction to Entry 383 - the Second Tangency Meets an Existing Cayley-Menger Branch.md#corrected-verdict"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:ledger-384",
+      "target_id": "marici:source:ledger-384",
+      "relation_id": "rel:derived_from-0a57dbe980c8159d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-384",
+      "target_id": "marici:claim:ledger-384",
+      "relation_id": "rel:tests-ca1aa27469807752"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:criticism:ledger-384-coordinate-map",
+      "target_id": "marici:claim:ledger-383",
+      "relation_id": "rel:criticizes-3c6368af9ab9fed4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:criticism:ledger-384-coordinate-map",
+      "target_id": "marici:source:ledger-384",
+      "relation_id": "rel:derived_from-de42473bf377aef2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici:claim:ledger-384",
+      "target_id": "marici:claim:ledger-383",
+      "relation_id": "rel:supersedes-efbdd3902368be18"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-384",
+      "target_id": "marici:claim:ledger-382",
+      "relation_id": "rel:depends_on-bb19c8af5967f8e3"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-384",
+      "test_id": "marici:test:ledger-384",
+      "actor": "marici.Benincasa",
+      "outcome": "Corrected centers are logarithmic under w111=1. The second center has residual direction rho=1, derived exactly from the pre-existing Cayley-Menger factor c+y=(v-u-2)/2; no unknown support or new carrier datum occurs.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-384",
+          "locator": "Corrected centers; residual direction; Corrected verdict",
+          "paraphrase": "The corrected finite-field runs replace three invalid points and identify the sole extra exceptional direction with an immutable source branch factor."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator instructed continued cosmology work and required epistemic graph updates for new ledger entries."
+  },
+  "idempotency_key": "auto-admission-70fce6adc129e761742692f8",
+  "occurred_at": "2026-08-17T21:07:17.2225082Z",
+  "certifies_truth": false,
+  "event_hash": "bc1d02b0036ec904e99b09b3336c71b61b9ce91a57cd4aeda37974555ebec754"
+}
