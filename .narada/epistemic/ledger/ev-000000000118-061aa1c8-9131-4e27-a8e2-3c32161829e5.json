@@ -1,0 +1,105 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 118,
+  "event_id": "ev-000000000118-061aa1c8-9131-4e27-a8e2-3c32161829e5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "65692b17b43cde445e10003bf56f27fc31b0ce18eb3d278568210a6223df2117",
+  "proposal_id": "ep_d880856c-8736-4c9d-847c-a87822fb7c2f",
+  "proposal_digest": "304e7c47e9dc00e1e510fe8f1f9977e76e119d14f72ed8fee5ba1b96ac874fd2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-437-smith-slope-sweep",
+      "kind": "source",
+      "title": "Ledger 437: A 128-Slope Smith Sweep Finds No Residual Exceptional Direction",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-437 A 128-Slope Smith Sweep Finds No Residual Exceptional Direction.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:128-slope-intrinsic-smith-sweep",
+      "kind": "test",
+      "title": "128-slope intrinsic exceptional Smith sweep"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:128-slope-sweep-no-residual",
+      "kind": "claim",
+      "title": "The 128-slope intrinsic Smith sweep finds no residual exceptional direction"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:128-slope-intrinsic-smith-sweep",
+      "target_id": "marici:source:ledger-437-smith-slope-sweep",
+      "relation_id": "rel:derived_from-cd2cda677770a720"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:128-slope-intrinsic-smith-sweep",
+      "target_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "relation_id": "rel:tests-b729e09e2847a7fb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:128-slope-sweep-no-residual",
+      "target_id": "marici:source:ledger-437-smith-slope-sweep",
+      "relation_id": "rel:derived_from-a70625e0857feb80"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:128-slope-sweep-no-residual",
+      "target_id": "marici:claim:generic-soft-total-smith-length-66",
+      "relation_id": "rel:depends_on-dae316c4806cead4"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:128-slope-intrinsic-smith-sweep-20260817",
+      "test_id": "marici:test:128-slope-intrinsic-smith-sweep",
+      "actor": "marici.Benincasa",
+      "outcome": "128 of 128 degree-8 slopes have rank 10 and valuation 66; eight degree-10 cross-checks agree; no residual sampled support",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-437-smith-slope-sweep",
+          "locator": "Result",
+          "paraphrase": "Every sampled nonfrozen direction has the generic intrinsic Smith invariants and no residual sample was observed."
+        }
+      ]
+    },
+    {
+      "op": "sweep.record",
+      "sweep_id": "marici:sweep:128-pseudorandom-exceptional-slopes-20260817",
+      "interval_start": "LCG sample 1, seed 0x9e3779b97f4a7c15",
+      "interval_end": "LCG sample 128",
+      "method": "Intrinsic Smith determinantal minimum over F_2305843009213693951 with c=0,1,1/2 excluded; t-adic order 12",
+      "result": "128/128 generic rank 10 and valuation 66; 0 residuals; 8/8 degree-10 cross-checks agree"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:exceptional-valuation-divisor-supported-sweep-20260817",
+      "subject_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "judgment": "strengthened_but_unproved",
+      "actor": "marici.Benincasa",
+      "reason": "A broad intrinsic sweep found no residual direction, but no degree bound or symbolic saturated generator has been derived.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-437-smith-slope-sweep",
+          "locator": "Epistemic boundary",
+          "paraphrase": "The bounded finite-field sweep strengthens but cannot prove the complete exceptional divisor."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator requires each new Marici ledger result to be admitted to the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-1645e127419d65094014a395",
+  "occurred_at": "2026-08-17T23:42:01.2928871Z",
+  "certifies_truth": false,
+  "event_hash": "9391f59fecf5c89aef885950a97af8ae29de2109a9135d761c6dbbb19a349dd2"
+}

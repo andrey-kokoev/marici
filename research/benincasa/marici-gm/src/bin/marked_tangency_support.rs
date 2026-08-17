@@ -788,6 +788,19 @@ fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<
     }}
     (out,cols)
 }
+fn smith_slope_invariant(c:F, degree:u8, order:usize) -> (usize,isize) {
+    let (full,cols)=arc_series_matrix(c,F::z(),false,degree,order);
+    let exact:Vec<Vec<Vec<F>>>=full.iter().map(|r|r[12..cols].to_vec()).collect();
+    let ve=smith_valuations(exact);
+    let vf=smith_valuations(full);
+    let t=F::n(37);
+    let v=F::n(2).sub(t).add(F::n(2).mul(c).mul(t));
+    let (_,point,_,_)=presentation(&geometry(t.0,v.0,'u'),8,degree);
+    let re=matrix_rank(point.iter().map(|r|r[12..].to_vec()).collect());
+    let rf=matrix_rank(point);
+    assert!(ve.len()>=re && vf.len()>=rf);
+    (rf-re,vf[..rf].iter().sum::<usize>() as isize-ve[..re].iter().sum::<usize>() as isize)
+}
 
 fn gauge_plucker(sol: &Sol) -> Vec<F> {
     assert_eq!(sol.gauge_rank, 2);
@@ -1329,6 +1342,32 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-smith-slope-scan" {
+        let mut slopes=Vec::new();
+        let mut state=0x9e3779b97f4a7c15u64;
+        while slopes.len()<128 {
+            state=state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            let c=F::n(state);
+            if c!=F::z() && c!=F::o() && c!=F::n(2).inv() && !slopes.contains(&c) { slopes.push(c); }
+        }
+        let mut rows=Vec::new();
+        for chunk in slopes.chunks(8) {
+            let batch=std::thread::scope(|scope| {
+                chunk.iter().map(|&c|scope.spawn(move ||(c,smith_slope_invariant(c,8,12))))
+                    .collect::<Vec<_>>().into_iter().map(|h|h.join().unwrap()).collect::<Vec<_>>()
+            });
+            rows.extend(batch);
+        }
+        let generic=rows.iter().filter(|(_,x)|*x==(10,66)).count();
+        let residual=rows.iter().filter(|(_,x)|*x!=(10,66))
+            .map(|(c,(q,v))|format!("{{\"c\":{},\"rank\":{q},\"valuation\":{v}}}",c.0))
+            .collect::<Vec<_>>();
+        let cross=slopes.iter().take(8).map(|&c|(c,smith_slope_invariant(c,10,12))).collect::<Vec<_>>();
+        let cross_ok=cross.iter().all(|(_,x)|*x==(10,66));
+        println!("{{\"schema\":\"marici.benincasa.dlog_smith_slope_scan.v1\",\"field_modulus\":{},\"seed\":\"0x9e3779b97f4a7c15\",\"degree8_samples\":{},\"generic_rank10_valuation66\":{generic},\"residual_count\":{},\"residuals\":[{}],\"degree10_crosscheck_samples\":{},\"degree10_crosscheck_all_match\":{cross_ok}}}",
+            P,rows.len(),residual.len(),residual.join(","),cross.len());
+        return;
+    }
     if mode == "dlog-smith-quadratic" {
         let order=24usize;
         let mut results=Vec::new();
