@@ -1206,6 +1206,48 @@ fn main() {
     let center_index = std::env::args().nth(1).map(|s| s.parse::<usize>().expect("center index must be 0..5")).unwrap_or(0);
     assert!(center_index < centers.len(), "center index must be 0..5");
     let mode = std::env::args().nth(2).unwrap_or_default();
+    if mode == "dlog-line-map" {
+        let mut tested=0usize;
+        let mut aligned=0usize;
+        let mut transverse=0usize;
+        let mut both=0usize;
+        let mut failures=Vec::new();
+        for u0 in 3u64..=60 {
+            let u=F::n(u0);
+            for (label,v) in [
+                ("D_minus",u.pow(2).mul(F::n(2)).sub(u).add(F::n(2))),
+                ("D_plus",u.pow(2).mul(F::n(2)).neg().sub(u).add(F::n(2)))
+            ] {
+                tested+=1;
+                let sol=solve(&geometry(u0,v.0,'u'),8,8);
+                let row=sol.gauge_rref.iter().find(|r|r[8].0!=0).unwrap();
+                let y=u.add(v).mul(F::n(2).inv()).sub(F::o());
+                let valg=[
+                    F::o().sub(y.pow(2)).mul(y.pow(2).sub(u.pow(4))),
+                    F::n(2).mul(u.pow(2).add(y.pow(2))),
+                    F::n(2).neg().mul(y.pow(2)).mul(u.pow(2).add(F::o()))
+                ];
+                let tail=[row[9],row[10],row[11]];
+                let line_ok=tail.iter().any(|q|q.0!=0)
+                    && (0..3).all(|i|(i+1..3).all(|j|tail[i].mul(valg[j])==tail[j].mul(valg[i])));
+                if line_ok { aligned+=1; }
+                let (gm,ga,_,_)=presentation(&geometry(u0,v.add(F::o()).0,'u'),8,8);
+                let (rank,pr,pc)=pivot_minor(ga);
+                let row_mons:Vec<Mon>=pr.iter().map(|i|gm[*i]).collect();
+                let m0=selected_minor(&geometry(u0,v.0,'u'),8,8,&row_mons,&pc);
+                let rank_ok=matrix_rank(m0.clone())+1==rank;
+                let right=null_line(m0.clone());
+                let left=null_line(transpose(&m0));
+                let vals:Vec<F>=(0..=12).map(|t|pairing(&selected_minor(&geometry(u0,v.add(F::n(t)).0,'u'),8,8,&row_mons,&pc),&left,&right)).collect();
+                let normal_ok=rank_ok && derivative_at_zero(&vals).0!=0;
+                if normal_ok { transverse+=1; }
+                if line_ok && normal_ok { both+=1; }
+                else { failures.push(format!("{label}:u{u0}:line{line_ok}:normal{normal_ok}")); }
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.exact_lift_algebraic_line_map.v1\",\"u_range\":[3,60],\"degree\":8,\"tested\":{tested},\"projective_valg_alignment\":{aligned},\"nonzero_normal_pairing\":{transverse},\"simultaneous_isomorphism_count\":{both},\"failures\":{:?}}}",failures);
+        return;
+    }
     if mode == "dlog-lambda" {
         std::panic::set_hook(Box::new(|_| {}));
         let mut fits=Vec::new();

@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5f943b8d-3c57-446b-99f1-16e098986424",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "marici-ledger-416-normal-line-map-admission-v1",
+  "expected_ledger_head": "ca8aced9d418e691d6dd02cb231879abe3adf8304d39cd1ae6e6b5654c12955a",
+  "created_at": "2026-08-17T22:49:15.3345245Z",
+  "content_fingerprint": "f5a190be20c976c359d2ed993af677fa4ab8b0b6b4469485d56e73f498489526",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-416",
+      "kind": "source",
+      "title": "Ledger 416",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-416 The Fitting Normal Line Maps Isomorphically to the Algebraic Gysin Line.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-416",
+      "kind": "test",
+      "title": "Gauge-invariant Fitting-normal to algebraic-Gysin line-map census",
+      "version": "1",
+      "locator": "research/benincasa/exact-lift-algebraic-normal-line-map.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-416",
+      "kind": "claim",
+      "title": "The tested Fitting normal line maps isomorphically to the algebraic Gysin line",
+      "version": "1",
+      "locator": "src/ledger/20260817-416 The Fitting Normal Line Maps Isomorphically to the Algebraic Gysin Line.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-416",
+      "target_id": "marici:claim:ledger-415",
+      "relation_id": "rel:depends_on-ledger416-ledger415"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-416",
+      "target_id": "marici:source:ledger-416",
+      "relation_id": "rel:derived_from-ledger416-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-416",
+      "target_id": "marici:claim:ledger-416",
+      "relation_id": "rel:tests-ledger416-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-416",
+      "test_id": "marici:test:ledger-416",
+      "actor": "marici.Benincasa",
+      "outcome": "supported narrowly: all 116 tested fibers simultaneously have projective v_alg alignment and nonzero kernel-cokernel transverse pairing",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-416",
+          "locator": "Frozen construction and Result",
+          "paraphrase": "The gauge-invariant first Fitting normal map is nonzero on both components throughout the tested generic census."
+        }
+      ]
+    }
+  ],
+  "digest": "6c776787b6888365731044dc7bb5285a5bf0b47f22f8a1835a8495e261ad7c57"
+}
