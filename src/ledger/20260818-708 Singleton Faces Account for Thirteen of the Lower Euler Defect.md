@@ -5,6 +5,15 @@ date: 2026-08-18
 ---
 # 708 — Singleton Faces Account for Thirteen of the Lower Euler Defect
 
+## Concurrent-work correction
+
+Entries 706 and 707 were committed while this bounded replication was
+running. Entry 706 is authoritative for the complete homogeneous deletion
+cube, and Entry 707 is authoritative for the five-to-three pair-occurrence
+discriminant symbol. The present entry records an independent exact
+replication of the empty and singleton layers only; it does not define the
+current frontier.
+
 ## Exact partial homogeneous cube
 
 The checker `generic_lower_sector_groebner_rank.rs` already contains the
@@ -69,8 +78,10 @@ units remain available across all pair, triple, and fourfold support
 grades combined. Therefore any square-free second-normal contribution from
 \(N_2\) has Euler size at most six before derived cancellations.
 
-This is a filtration bound, not yet an identification of that residual six
-with \(N_2\). The complete homogeneous deletion cube is still required.
+This is a filtration bound, not an identification of that residual six
+with \(N_2\). Entry 706 subsequently computes the complete cube and splits
+the residual as five disappearing finite-pair grades plus one disappearing
+triple grade.
 
 ## Geometric reading
 
@@ -95,10 +106,11 @@ inferred here.
 
 ## Consequence for \(\mathcal Q\)
 
-The candidate square-free route has narrowed from a nineteen-unit sector to
-an unresolved higher-support remainder of at most six. No
-\(\mathcal Q\)-valuation is admissible until the pair and triple faces are
-computed and Möbius-inverted.
+The singleton calculation narrows the candidate square-free route from a
+nineteen-unit sector to a higher-support remainder of six. Entries 706--707
+then show that five units occupy finite-pair occurrences and derive their
+rank-three, two-relation discriminant symbol. No \(\mathcal Q\)-valuation is
+admissible until that symbol is lifted to the pair residue complexes.
 
 ## Evidence
 
@@ -110,8 +122,7 @@ computed and Möbius-inverted.
 
 ## Next falsifier
 
-Compute the six homogeneous pair faces individually with bounded runs and
-Möbius-invert them against \((7;8,8,8,11)\). If their cumulative proper
-loss exhausts the residual six without a square-free conormal initial form,
-the direct \(N_2\) route closes. Otherwise retain only the explicitly
-labelled surviving pair grades for the derived comparison.
+Use Entry 707's five-to-three discriminant symbol as the required associated
+symbol of the chain-level specialization maps on the five pair residue
+complexes. Test whether its two symbol relations lift to actual chain
+homotopies. Failure to lift places the missing datum in a derived extension.

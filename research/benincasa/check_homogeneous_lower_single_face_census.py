@@ -15,6 +15,7 @@ assert data["homogeneous_closed_ranks"] == [7, 8, 8, 8, 11]
 assert losses == data["single_face_losses"] == [0, 4, 4, 4, 1]
 assert sum(losses) == data["single_face_loss_total"] == 13
 assert data["full_lower_euler_loss"] - sum(losses) == data["unresolved_higher_support_loss"] == 6
-assert data["scope"] == "empty and singleton faces only"
+assert data["scope"].startswith("empty and singleton faces only")
+assert data["frontier_superseded_by"] == [706, 707]
 
 print("PASS: singleton faces account for 13 of the lower Euler loss 19")
