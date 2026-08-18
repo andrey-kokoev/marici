@@ -754,7 +754,7 @@ fn invert_square(mut a:Vec<Vec<F>>) -> Vec<Vec<F>> {
     }
     a.into_iter().map(|r|r[n..].to_vec()).collect()
 }
-fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
+fn arc_series_matrix_with_rows(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize,Vec<Mon>) {
     let samples=if d.0==0 {24usize} else {48usize};
     let mut vand=vec![vec![F::z();samples+1];samples+1];
     for i in 0..=samples { for j in 0..=samples { vand[i][j]=F::n(i as u64).pow(j as u64); }}
@@ -789,7 +789,11 @@ fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<
             assert_eq!(predicted,actual,"arc interpolation degree bound failed");
         }
     }}
-    (out,cols)
+    (out,cols,rows)
+}
+fn arc_series_matrix(c:F,d:F,reciprocal:bool,degree:u8,order:usize) -> (Vec<Vec<Vec<F>>>,usize) {
+    let (matrix,cols,_)=arc_series_matrix_with_rows(c,d,reciprocal,degree,order);
+    (matrix,cols)
 }
 fn smith_slope_invariant(c:F, degree:u8, order:usize) -> (usize,isize) {
     smith_chart_invariant(c,false,degree,order)
@@ -1458,6 +1462,59 @@ fn main() {
             if deficiency!=0 { eventual_full_from=None; }
         }
         println!("{{\"schema\":\"marici.benincasa.soft_axis_exact_symbol_shells.v1\",\"field_modulus\":{},\"soft_center\":\"E=X2=0\",\"leading_data\":{{\"K4\":\"a^4\",\"L1\":\"b\",\"L2\":\"a\"}},\"eventual_full_rank_from\":{},\"shells\":[{}]}}",P,eventual_full_from.map(|x|x.to_string()).unwrap_or_else(||"null".to_string()),rows.join(","));
+        return;
+    }
+    if mode == "dlog-soft-axis-dual-number-resonance" {
+        let mut results=Vec::new();
+        for degree in [16u8,20] {
+            // Physical soft arc: X2=t, E=0.  Keep the complete exact
+            // operators through first order, rather than multiplying
+            // representatives in the special-fiber cokernel.
+            let (full,cols,mons)=arc_series_matrix_with_rows(
+                F::z(),F::z(),true,degree,2
+            );
+            let exact_cols=cols-12;
+            let row_pos:BTreeMap<Mon,usize>=mons.iter().enumerate()
+                .map(|(i,m)|(*m,i)).collect();
+            let mut block=vec![vec![F::z();2*exact_cols];2*mons.len()];
+            for r in 0..mons.len() { for j in 0..exact_cols {
+                let d0=full[r][12+j][0];
+                let d1=full[r][12+j][1];
+                block[r][j]=d0;
+                block[mons.len()+r][j]=d1;
+                block[mons.len()+r][exact_cols+j]=d0;
+            }}
+            let rank=matrix_rank(block.clone());
+            let targets=[
+                ("a^4",vec![((4u8,0u8),F::o())]),
+                ("a^11*(b+1)",vec![
+                    ((11u8,0u8),F::o()),
+                    ((11u8,1u8),F::o())
+                ])
+            ];
+            let mut outcomes=Vec::new();
+            for (name,terms) in targets {
+                let mut augmented=block.clone();
+                for row in &mut augmented { row.push(F::z()); }
+                for (mon,coefficient) in terms {
+                    let r=*row_pos.get(&mon).expect("dual-number target monomial absent");
+                    augmented[mons.len()+r][2*exact_cols]=coefficient;
+                }
+                let augmented_rank=matrix_rank(augmented);
+                outcomes.push(format!(
+                    "{{\"class\":\"{name}\",\"system_consistent\":{},\"rank\":{rank},\"augmented_rank\":{augmented_rank}}}",
+                    augmented_rank==rank
+                ));
+            }
+            results.push(format!(
+                "{{\"degree\":{degree},\"rows\":{},\"exact_columns\":{exact_cols},\"block_rank\":{rank},\"classes\":[{}]}}",
+                mons.len(),outcomes.join(",")
+            ));
+        }
+        println!(
+            "{{\"schema\":\"marici.benincasa.soft_axis_dual_number_resonance.v1\",\"field_modulus\":{},\"arc\":\"X2=t,E=0\",\"ring\":\"F[t]/(t^2)\",\"torsion_equations\":[\"D0*x0=0\",\"D1*x0+D0*x1=y\"],\"interpretation\":\"system_consistent iff t*y is exact modulo t^2\",\"results\":[{}]}}",
+            P,results.join(",")
+        );
         return;
     }
     if mode == "dlog-soft-axis-filtered-module" {
