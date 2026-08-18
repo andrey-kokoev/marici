@@ -18,16 +18,16 @@ as the direct representative of the marked extension.  To test whether
 \(C= -\nabla_{\operatorname{Hom}}X\), use
 
 \[
-D_{m src}
+D_{\mathrm{src}}
 =uvy(1-y)(1+y)(v-u)(y-u^2)(y+u^2)P_6
 \]
 
 and the simultaneous-pole ansatz
 
 \[
-X=\frac{N(u,v)}{D_{m src}^{m}},
+X=\frac{N(u,v)}{D_{\mathrm{src}}^{m}},
 \qquad
-N\in\operatorname{Mat}_{2\times2},quad \deg N\le d.
+N\in\operatorname{Mat}_{2\times2},\quad \deg N\le d.
 \]
 
 The quartic \(\mathcal Q\) is absent.  Both \(u\)- and \(v\)-connection
@@ -99,7 +99,7 @@ projector test is still required.
 ## Next falsifier
 
 Run the horizontal-idempotent equations in the identical filtration.  Then
-replace the uniform power \(D_{m src}^m\) by a sparse pole vector on the
+replace the uniform power \(D_{\mathrm{src}}^m\) by a sparse pole vector on the
 three resonant divisors and ordinary localizations.  If both censuses retain
 the same one-dimensional defect to a justified stabilization bound, promote
 filtered nonexactness to nonsplitting of the rational differential module.
