@@ -39,7 +39,7 @@ and the infinity target-column shear
 
 ## Transported Gysin frame
 
-Let (P_i) be the adapted (T\oplus E) frame in chart (i).  The chart
+Let \(P_i\) be the adapted \(T\oplus E\) frame in chart \(i\).  The chart
 filtration must not be independently reset after each occurrence move.
 Instead define it recursively by
 
@@ -47,7 +47,7 @@ Instead define it recursively by
 \boxed{P_{i+1}=P_iD_i.}
 \]
 
-Since the raw frames obey (e_i=D_i e_{i+1}), the adapted transition is
+Since the raw frames obey \(e_i=D_i e_{i+1}\), the adapted transition is
 
 \[
 P_iD_iP_{i+1}^{-1}=1.
@@ -57,8 +57,8 @@ Exact tests at 24 generic points give zero adapted-transition failures and
 zero threefold frame failures.  Thus in the transported adapted frame,
 
 \[
-A_{T,i+1}=A_{T,i},qquad
-A_{E,i+1}=A_{E,i},qquad
+A_{T,i+1}=A_{T,i},\qquad
+A_{E,i+1}=A_{E,i},\qquad
 C_{i+1}=C_i.
 \]
 
@@ -80,7 +80,7 @@ Their degrees are
 (1,1,1,1,1,1,2,2,4,1,1,2),
 \]
 
-so the complete denominator degree remains (18).  The labelled factor
+so the complete denominator degree remains \(18\).  The labelled factor
 family and all twelve valuations return after three transports.  The exact
 audit gives zero threefold pole-lattice failures at 24 generic points.
 
@@ -114,7 +114,7 @@ fixed pair of ordinary-coordinate column degrees in every chart.  Its rule is
 \mathcal F_{i+1}=D_i^{-1}\mathcal F_i
 }
 
-in raw residue coordinates, or simply ((0,6)) in the recursively
+in raw residue coordinates, or simply \((0,6)\) in the recursively
 transported adapted frame.  After three steps,
 
 \[
@@ -122,7 +122,7 @@ transported adapted frame.  After three steps,
 \]
 
 Thus the degree-six shear is occurrence-covariant but is not a
-fixed-(G_{12}) filtration imposed separately on the other charts.
+fixed-\(G_{12}\) filtration imposed separately on the other charts.
 
 ## Evidence
 
