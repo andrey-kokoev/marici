@@ -5,39 +5,44 @@
     "research/nima/generic-finite-collision-cyclic-orbits.json",
     "research/benincasa/finite-sextic-coordinate-boundary-vanishing.json"
   ],
-  "generic_A3_collision_orbits": [
+  "movable_signed_A3_collision_orbits": [
     ["g1", "g2"],
     ["g1", "g3"],
     ["g2", "g3"]
   ],
-  "deeper_nonisolated_orbits": [
+  "coalesced_signed_A3_collision_orbits": [
     ["g1", "G23"],
     ["g2", "G31"],
     ["g3", "G23"],
     ["g3", "G31"],
     ["G23", "G31"]
   ],
-  "reason": "a marked coordinate equal to -E forces E=0 on the double boundary, so the signed condition also forces a soft momentum and leaves the generic A3 locus",
+  "reason": "a marked coordinate equal to -E forces E=0 on the double boundary. This coalesces E=+Pi and E=-Pi into Pi=0 but does not force Lambda=0 when the other momentum is nonzero, so the isolated A3 germ remains.",
   "count": {
-    "generic_collision_orbits": 3,
+    "movable_signed_collision_orbits": 3,
+    "coalesced_signed_collision_orbits": 5,
     "cyclic_occurrences_per_orbit": 3,
-    "signed_branches_per_occurrence": 4,
-    "labelled_A3_germs": 36
+    "signed_branches_per_movable_occurrence": 4,
+    "signed_branches_per_coalesced_occurrence": 2,
+    "movable_labelled_A3_germs": 36,
+    "coalesced_labelled_A3_germs": 30,
+    "labelled_A3_germs": 66
   },
   "cohomology": {
     "rank_per_germ": 3,
     "generic_kato_rank_per_germ": 1,
     "excess_rank_per_germ": 2,
-    "aggregate_A3_rank": 108,
-    "aggregate_generic_kato_rank": 36,
-    "aggregate_excess_rank": 72
+    "aggregate_A3_rank": 198,
+    "aggregate_generic_kato_rank": 66,
+    "aggregate_excess_rank": 132
   },
   "C3_characters": {
-    "A3_total": [108, 0, 0],
-    "generic_kato_subspace": [36, 0, 0],
-    "excess": [72, 0, 0]
+    "A3_total": [198, 0, 0],
+    "generic_kato_subspace": [66, 0, 0],
+    "excess": [132, 0, 0]
   },
-  "interpretation": "the excess is twelve copies of the regular C3 representation tensored with a rank-two local coefficient quotient; it is coefficient complexity on existing labelled soft-signed intersections",
+  "interpretation": "the excess is twenty-two copies of the regular C3 representation tensored with a rank-two local coefficient quotient; it is coefficient complexity on existing labelled soft-signed intersections",
   "next_falsifier": "construct one source-labelled iterated soft-signed nearby-cycle complex and determine whether its supported extension realizes the local rank-two quotient; cyclic naturality then transports the result",
-  "allocator_claim": "seqclaim-08bc2c6d4aa68947010c4ece"
+  "supersedes_entry": 815,
+  "allocator_claim": "seqclaim-a229b9d3f3cd16956daed41f"
 }

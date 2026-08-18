@@ -5,6 +5,12 @@ date: 2026-08-18
 ---
 # 815 — The Generic Soft-Signed A3 Excess Occupies Three Collision Orbits
 
+> **Superseded by Entry 816.** This entry incorrectly treated the five
+> occurrences with a marked coordinate (-E) as automatically lying on
+> (Lambda=0). They instead retain isolated (A_3) germs with coalesced
+> signed branches when the other momentum is nonzero. Its (36/108/72)
+> census is withdrawn.
+
 ## Question
 
 Entry 813 finds a local (A_3) singularity of rank three at a
