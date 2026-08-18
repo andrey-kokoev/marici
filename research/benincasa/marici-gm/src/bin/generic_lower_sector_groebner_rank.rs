@@ -263,7 +263,7 @@ fn groebner_basis(seed: Vec<Polynomial>) -> Vec<Polynomial> {
     basis
 }
 
-fn standard_monomial_count(basis: &[Polynomial]) -> usize {
+fn standard_monomials(basis: &[Polynomial]) -> BTreeSet<Monomial> {
     let leading: Vec<_> = basis
         .iter()
         .map(|polynomial| polynomial.leading_term().unwrap().0)
@@ -285,7 +285,11 @@ fn standard_monomial_count(basis: &[Polynomial]) -> usize {
             }
         }
     }
-    standard.len()
+    standard
+}
+
+fn standard_monomial_count(basis: &[Polynomial]) -> usize {
+    standard_monomials(basis).len()
 }
 
 fn sum(polynomials: &[Polynomial]) -> Polynomial {
@@ -351,6 +355,61 @@ fn deletion_closed_rank(k: &Polynomial, selected: &[Factor]) -> (usize, usize, u
     (rank, basis.len(), elapsed)
 }
 
+fn directional_derivative(polynomial: &Polynomial, direction: [i64; 3]) -> Polynomial {
+    (0..3).fold(Polynomial::default(), |sum, variable| {
+        sum.add(&polynomial.derivative(variable).scale(direction[variable]))
+    })
+}
+
+fn tangential_wall_basis(
+    k: &Polynomial,
+    wall: &Polynomial,
+    selected: &[Factor],
+) -> (BTreeSet<Monomial>, usize, u128) {
+    let mut factors = vec![Factor {
+        name: "K",
+        polynomial: k.clone(),
+        exponent: 5,
+    }];
+    factors.extend_from_slice(selected);
+    let divisor = product(
+        &factors
+            .iter()
+            .map(|factor| factor.polynomial.clone())
+            .collect::<Vec<_>>(),
+    );
+    let mut equations = vec![wall.clone()];
+    // q_g1=c+b+X1.  Tangent directions are d/da and d/db-d/dc.
+    for direction in [[0_i64, 1, 0], [-1_i64, 0, 1]] {
+        let mut terms = Vec::new();
+        for (index, factor) in factors.iter().enumerate() {
+            let complement = product(
+                &factors
+                    .iter()
+                    .enumerate()
+                    .filter(|(other, _)| *other != index)
+                    .map(|(_, other)| other.polynomial.clone())
+                    .collect::<Vec<_>>(),
+            );
+            terms.push(
+                complement
+                    .multiply(&directional_derivative(&factor.polynomial, direction))
+                    .scale(factor.exponent),
+            );
+        }
+        equations.push(sum(&terms));
+    }
+    equations.push(
+        Polynomial::variable(3)
+            .multiply(&divisor)
+            .subtract(&Polynomial::constant(1)),
+    );
+    let started = Instant::now();
+    let basis = groebner_basis(equations);
+    let elapsed = started.elapsed().as_millis();
+    (standard_monomials(&basis), basis.len(), elapsed)
+}
+
 fn main() {
     let c = Polynomial::variable(0);
     let a = Polynomial::variable(1);
@@ -362,7 +421,8 @@ fn main() {
     let (x1, x2, x3, p1, p2, p3) = match point.as_str() {
         "A" => (2_i64, 3_i64, 4_i64, 5_i64, 7_i64, 11_i64),
         "B" => (3_i64, 5_i64, 6_i64, 7_i64, 11_i64, 13_i64),
-        _ => panic!("KINEMATIC_POINT must be A or B"),
+        "SOFT1" => (0_i64, 3_i64, 4_i64, 5_i64, 7_i64, 11_i64),
+        _ => panic!("KINEMATIC_POINT must be A, B, or SOFT1"),
     };
     let p1s = p1 * p1;
     let p2s = p2 * p2;
@@ -407,6 +467,20 @@ fn main() {
             exponent: 29,
         },
     ];
+    if std::env::var("TANGENTIAL_WALL").ok().as_deref() == Some("q_g1") {
+        // q_g23 restricts to the nonzero constant X2+X3-X1 on q_g1, hence it
+        // contributes no tangential logarithmic derivative.
+        let selected = vec![denominators[1].clone(), denominators[2].clone()];
+        let (monomials, basis_size, elapsed_ms) =
+            tangential_wall_basis(&k, &denominators[0].polynomial, &selected);
+        assert_eq!(monomials.len(), 8);
+        println!(
+            "prime={} point={point} tangential_wall=q_g1 factors=[K,q_g2,q_g3] rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
+            prime(), monomials.len()
+        );
+        println!("STANDARD_MONOMIALS={:?}", monomials.into_iter().collect::<Vec<_>>());
+        return;
+    }
     let only = std::env::var("ONLY_MASK")
         .ok()
         .map(|raw| u8::from_str_radix(&raw, 2).expect("ONLY_MASK must be binary"));
