@@ -335,22 +335,48 @@ fn localization_map(row: &Row, lower: &Reduction, higher: &Reduction, bit: usize
     reduce(image, &higher.pivots)
 }
 
-fn parameter_derivative(row: &Row, explicit_dot: &Row, r: &Reduction, kd: &Poly, qd: &[Poly; 3]) -> Row {
+fn parameter_derivative_unreduced(row: &Row, explicit_dot: &Row, r: &Reduction, kd: &Poly, qd: &[Poly; 3]) -> Row {
     let mut out = explicit_dot.clone();
     for (&col, &coef) in row {
         let (kp, qps, mon) = r.labels[col];
-        if kp < 2 {
+        if r.cols.contains_key(&(kp + 1, qps, mon)) {
             add_poly(&mut out, &r.cols, kp + 1, qps, mon, kd, mm(coef, 5 - kp as i64));
         }
         for qi in 0..3 {
-            if qps[qi] > 0 && qps[qi] < 2 {
+            if qps[qi] > 0 {
                 let mut next = qps;
                 next[qi] += 1;
-                add_poly(&mut out, &r.cols, kp, next, mon, &qd[qi], -mm(coef, qps[qi] as i64));
+                if r.cols.contains_key(&(kp, next, mon)) {
+                    add_poly(&mut out, &r.cols, kp, next, mon, &qd[qi], -mm(coef, qps[qi] as i64));
+                }
             }
         }
     }
-    reduce(out, &r.pivots)
+    out
+}
+
+fn parameter_derivative(row: &Row, explicit_dot: &Row, r: &Reduction, kd: &Poly, qd: &[Poly; 3]) -> Row {
+    reduce(parameter_derivative_unreduced(row, explicit_dot, r, kd, qd), &r.pivots)
+}
+
+fn mixed_explicit_derivative(row: &Row, r: &Reduction, kxy: &Poly, qxy: &[Poly; 3]) -> Row {
+    let mut out = Row::new();
+    for (&col, &coef) in row {
+        let (kp, qps, mon) = r.labels[col];
+        if r.cols.contains_key(&(kp + 1, qps, mon)) {
+            add_poly(&mut out, &r.cols, kp + 1, qps, mon, kxy, mm(coef, 5 - kp as i64));
+        }
+        for qi in 0..3 {
+            if qps[qi] > 0 {
+                let mut next = qps;
+                next[qi] += 1;
+                if r.cols.contains_key(&(kp, next, mon)) {
+                    add_poly(&mut out, &r.cols, kp, next, mon, &qxy[qi], -mm(coef, qps[qi] as i64));
+                }
+            }
+        }
+    }
+    out
 }
 
 fn localized_jet(row: &Row, lower: &Reduction, higher: &Reduction, bit: usize, q: &Poly, qd: &Poly) -> (Row, Row) {
@@ -372,6 +398,22 @@ fn parameter_k_derivative(x: i64, y: i64, z: i64, axis: usize) -> Poly {
         out = out.add(&cayley_menger(point[0], point[1], point[2]).scale(weight));
     }
     out.scale(inv(12))
+}
+
+fn parameter_k_mixed_derivative(x: i64, y: i64, z: i64, first: usize, second: usize) -> Poly {
+    let mut out = Poly::default();
+    for (first_offset, first_weight) in [(-2_i64, 1_i64), (-1, -8), (1, 8), (2, -1)] {
+        for (second_offset, second_weight) in [(-2_i64, 1_i64), (-1, -8), (1, 8), (2, -1)] {
+            let mut point = [x, y, z];
+            point[first] += first_offset;
+            point[second] += second_offset;
+            out = out.add(
+                &cayley_menger(point[0], point[1], point[2])
+                    .scale(mm(first_weight, second_weight)),
+            );
+        }
+    }
+    out.scale(mm(inv(12), inv(12)))
 }
 
 fn localize_to_top(mut row: Row, mut mask: u8, reductions: &BTreeMap<u8, Reduction>, qs: &[Poly; 3]) -> Row {
@@ -614,6 +656,37 @@ fn main() {
         pivot(row, &mut extension_rank_pivots);
     }
     println!("top_two_direction_boundary_extension_rank={}", extension_rank_pivots.len());
+
+    if qmax >= 3 {
+        let kxy = parameter_k_mixed_derivative(x, y, z, 0, 1);
+        let qxy = [Poly::default(), Poly::default(), Poly::default()];
+        let (_, kx, qx) = &directions[0];
+        let (_, ky, qy) = &directions[1];
+        let mut nonzero_curvatures = 0_usize;
+        for &monomial in &top.survivors {
+            let source = Row::from([(top.cols[&(0, top.target_q, monomial)], 1)]);
+            let dx = parameter_derivative_unreduced(&source, &Row::new(), top, kx, qx);
+            let dy = parameter_derivative_unreduced(&source, &Row::new(), top, ky, qy);
+            let mixed_explicit = mixed_explicit_derivative(&source, top, &kxy, &qxy);
+            let dy_dx = parameter_derivative(&dx, &mixed_explicit, top, ky, qy);
+            let dx_dy = parameter_derivative(&dy, &mixed_explicit, top, kx, qx);
+            let mut curvature = dy_dx;
+            for (column, coefficient) in dx_dy {
+                add_term(&mut curvature, column, -coefficient);
+            }
+            if !reduce(curvature, &top.pivots).is_empty() {
+                nonzero_curvatures += 1;
+            }
+        }
+        println!(
+            "top_mixed_jet_generators_tested={} top_mixed_jet_nonzero_curvatures={} top_connection_flat={}",
+            top.survivors.len(),
+            nonzero_curvatures,
+            nonzero_curvatures == 0
+        );
+    } else {
+        println!("top_mixed_jet_skipped=true required_q_pole_depth=3 actual_q_pole_depth={qmax}");
+    }
 
     for (direction, kd, qd) in &directions {
         for lower_mask in 0_u8..8 {
