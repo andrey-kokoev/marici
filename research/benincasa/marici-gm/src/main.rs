@@ -438,6 +438,28 @@ fn extension_residue_operator(r:&[Vec<F>],m:u64)->(usize,usize){
     let mut a=vec![vec![F::z(PRIME);5];4];for q in 0..2{for k in 0..2{let col=2*q+k;for i in 0..2{for j in 0..2{let row=2*i+j;let mut z=F::z(PRIME);if q==i&&k==j{z=z.sub(F::new(m,PRIME))}if q==i{z=z.add(r[k][j])}if k==j{z=z.sub(r[i+2][q+2])}a[row][col]=z;}}}}
     for i in 0..2{for j in 0..2{a[2*i+j][4]=r[i+2][j].neg();}}let rank=matrix_rank(a.iter().map(|z|z[..4].to_vec()).collect(),4);let aug=matrix_rank(a,5);(rank,aug)
 }
+fn divisor_residue_limit(fi:usize,center:F)->Option<Vec<Vec<F>>>{
+    let mut ss:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();4];4];let mut t0=0u64;while ss[0][0].len()<40&&t0<256{t0+=1;let t=F::new(t0,PRIME);let Some(r)=parameterized_divisor_residue(fi,center.add(t).v)else{continue};for i in 0..4{for j in 0..4{ss[i][j].push((t,r[i][j]));}}}if ss[0][0].len()<36{return None}
+    let mut out=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{let f=fit_uni(&ss[i][j],16)?;out[i][j]=value_at_zero(&f).ok()?;}}Some(out)
+}
+fn divisor_residue_min_order(fi:usize,center:F)->Option<i32>{
+    let mut ss:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();4];4];let mut t0=0u64;while ss[0][0].len()<40&&t0<256{t0+=1;let t=F::new(t0,PRIME);let Some(r)=parameterized_divisor_residue(fi,center.add(t).v)else{continue};for i in 0..4{for j in 0..4{ss[i][j].push((t,r[i][j]));}}}if ss[0][0].len()<36{return None}
+    let mut order=0i32;for i in 0..4{for j in 0..4{let f=fit_uni(&ss[i][j],16)?;let z=finite_part_at_zero(&f).map(|x|x.0).unwrap_or_else(|x|x);order=order.min(z);}}Some(order)
+}
+fn indicial_matrix(r:&[Vec<F>],m:u64)->Vec<Vec<F>>{
+    let mut a=vec![vec![F::z(PRIME);4];4];for q in 0..2{for k in 0..2{let col=2*q+k;for i in 0..2{for j in 0..2{let row=2*i+j;let mut z=F::z(PRIME);if q==i&&k==j{z=z.sub(F::new(m,PRIME))}if q==i{z=z.add(r[k][j])}if k==j{z=z.sub(r[i+2][q+2])}a[row][col]=z;}}}}a
+}
+fn gysin_resonant_pair_compatibility()->String{
+    let sm3=F::new(PRIME-3,PRIME).pow((PRIME+1)/4);let s5=F::new(5,PRIME).pow((PRIME+1)/4);let half=F::new(2,PRIME).inv();
+    let cases=[("v-u__y-u2",5usize,6usize,F::o(PRIME).add(sm3).mul(half)),("v-u__y-u2",5,6,F::o(PRIME).sub(sm3).mul(half)),("v-u__y+u2",5,7,F::o(PRIME).neg().add(s5).mul(half)),("v-u__y+u2",5,7,F::o(PRIME).neg().sub(s5).mul(half)),("y-u2__y+u2",6,7,F::z(PRIME))];
+    let mut body=Vec::new();for(name,f,g,u)in cases{let Some(rf)=divisor_residue_limit(f,u)else{body.push(format!("{{\"pair\":\"{}\",\"u\":{},\"status\":\"limit_failed_f\"}}",name,u.v));continue};let Some(rg)=divisor_residue_limit(g,u)else{body.push(format!("{{\"pair\":\"{}\",\"u\":{},\"status\":\"limit_failed_g\"}}",name,u.v));continue};let af=indicial_matrix(&rf,1);let ag=indicial_matrix(&rg,1);let rf_rank=matrix_rank(af.clone(),4);let rg_rank=matrix_rank(ag.clone(),4);let mut both=af;both.extend(ag);let joint=4-matrix_rank(both,4);body.push(format!("{{\"pair\":\"{}\",\"u\":{},\"status\":\"ok\",\"kernel_dim_f\":{},\"kernel_dim_g\":{},\"common_kernel_dim\":{}}}",name,u.v,4-rf_rank,4-rg_rank,joint));}
+    format!("{{\"schema\":\"marici.gm.gysin_resonant_pair_compatibility.v1\",\"triple_intersection\":false,\"results\":[{}]}}",body.join(","))
+}
+fn gysin_resonant_pair_singularity()->String{
+    let sm3=F::new(PRIME-3,PRIME).pow((PRIME+1)/4);let s5=F::new(5,PRIME).pow((PRIME+1)/4);let half=F::new(2,PRIME).inv();
+    let cases=[("v-u__y-u2",5usize,6usize,F::o(PRIME).add(sm3).mul(half)),("v-u__y-u2",5,6,F::o(PRIME).sub(sm3).mul(half)),("v-u__y+u2",5,7,F::o(PRIME).neg().add(s5).mul(half)),("v-u__y+u2",5,7,F::o(PRIME).neg().sub(s5).mul(half)),("y-u2__y+u2",6,7,F::z(PRIME))];
+    let mut body=Vec::new();for(name,f,g,u)in cases{let of=divisor_residue_min_order(f,u);let og=divisor_residue_min_order(g,u);body.push(format!("{{\"pair\":\"{}\",\"u\":{},\"minimum_order_f\":{},\"minimum_order_g\":{}}}",name,u.v,of.map(|x|x.to_string()).unwrap_or_else(||"null".into()),og.map(|x|x.to_string()).unwrap_or_else(||"null".into())));}format!("{{\"schema\":\"marici.gm.gysin_resonant_pair_singularity.v1\",\"triple_intersection\":false,\"results\":[{}]}}",body.join(","))
+}
 fn gysin_local_residue_obstruction_test(points:usize)->String{
     let names=["u","v","y","1-y","1+y","v-u","y-u^2","y+u^2"];let mut out=Vec::new();for fi in 0..8{let mut accepted=0usize;let mut obstructed=0usize;let mut rank0=Vec::new();let mut kernels:Vec<Vec<usize>>=(0..10).map(|_|Vec::new()).collect();let mut p=11u64+fi as u64;while accepted<points{p=((p as u128*2_862_933_555_777_941_757u128+769u128)%PRIME as u128)as u64;let Some(r)=parameterized_divisor_residue(fi,p)else{continue};accepted+=1;let(a,b)=extension_residue_operator(&r,0);rank0.push(a);if b>a{obstructed+=1}for m in 1..=10u64{let(q,_)=extension_residue_operator(&r,m);kernels[(m-1)as usize].push(4-q);}}
         out.push(format!("{{\"factor\":\"{}\",\"points\":{},\"residue_obstructed\":{},\"rank_L0\":{:?},\"kernel_dimensions_L1_to_L10\":{:?}}}",names[fi],accepted,obstructed,rank0,kernels));}
@@ -448,6 +470,10 @@ fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
     while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
         let got=std::panic::catch_unwind(||{if adapted{(gysin_adapted_rows(su,sv,"u"),gysin_adapted_rows(su,sv,"v"))}else{let(au,_)=sample_rows(su,sv,"u");let(av,_)=sample_rows(su,sv,"v");(au,av)}});if let Ok(z)=got{data.push((su,sv,z.0,z.1));}}
     let mut fits:[Vec<RatFit>;2]=[Vec::new(),Vec::new()];for axis in 0..2{for i in 0..4{for j in 0..4{let ss:Vec<(u64,u64,F)>=data.iter().map(|(u,v,au,av)|(*u,*v,if axis==0{au[i][j]}else{av[i][j]})).collect();fits[axis].push(fit_entry(&ss,maxdeg).unwrap_or_else(||panic!("bivariate reconstruction failed at axis={axis}, row={i}, col={j}, maxdeg={maxdeg}")));}}}fits
+}
+fn adapted_reconstruction_json(maxdeg:u8)->String{
+    let fits=reconstruct_final_fits(maxdeg,true);let mut entries=Vec::new();for axis in 0..2{for row in 0..4{for col in 0..4{entries.push(format!("{{\"axis\":\"{}\",\"row\":{},\"col\":{},\"fit\":{}}}",if axis==0{"u"}else{"v"},row,col,fit_json(&fits[axis][4*row+col])));}}}
+    format!("{{\"schema\":\"marici.gm.gysin_adapted_reconstruction.v1\",\"prime\":{},\"max_degree\":{},\"entries\":[{}]}}",PRIME,maxdeg,entries.join(","))
 }
 fn rational_normal_residue(f:&RatFit,axis:usize)->Result<UniFit,i32>{
     let ms=total_monomials(f.deg);let normal=|m:&Mon|if axis==0{m.0}else{m.1};let tangent=|m:&Mon|if axis==0{m.1}else{m.0};
@@ -535,7 +561,10 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="gysin-adapted-reconstruct"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],adapted_reconstruction_json(maxdeg)).expect("write Gysin-adapted reconstruction");return}
     if a.len()==4&&a[1]=="gysin-local-residue-obstruction-test"{let points=a[2].parse::<usize>().unwrap();fs::write(&a[3],gysin_local_residue_obstruction_test(points)).expect("write Gysin local residue obstruction test");return}
+    if a.len()==3&&a[1]=="gysin-resonant-pair-compatibility"{fs::write(&a[2],gysin_resonant_pair_compatibility()).expect("write Gysin resonant-pair compatibility");return}
+    if a.len()==3&&a[1]=="gysin-resonant-pair-singularity"{fs::write(&a[2],gysin_resonant_pair_singularity()).expect("write Gysin resonant-pair singularity");return}
     if a.len()==4&&a[1]=="gysin-single-divisor-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_divisor_split_test(maxdeg)).expect("write Gysin divisor split test");return}
     if a.len()==4&&a[1]=="gysin-polynomial-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_polynomial_split_test(maxdeg)).expect("write Gysin polynomial split test");return}
     if a.len()==4&&a[1]=="gysin-single-pole-census"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_pole_census(maxdeg)).expect("write Gysin single-pole census");return}
