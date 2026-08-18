@@ -1,5 +1,5 @@
 ---
-id: 547
+id: 548
 date: 2026-08-18
 title: The Rank-Five Lower Grade Is a Log-Monodromic Residue Object
 authors:
@@ -8,7 +8,7 @@ authors:
 
 # The Rank-Five Lower Grade Is a Log-Monodromic Residue Object
 
-Entry 546 proves that the complete lower-sector deletion cube has exactly the
+Entry 547 proves that the complete lower-sector deletion cube has exactly the
 support incidence required by Entry 544's Kato kernel calculus.  This entry
 types its coefficient objects and connecting maps.
 
@@ -58,7 +58,7 @@ unique parallel pair (D_1,D_{23}), the fiber product is empty at generic
 kinematics, so the residue is zero geometrically.  Exactly the two transverse
 triple points have rank-one costalks; the other triples and the fourfold
 support are empty.  The ordered conormal determinant supplies the Boolean
-signs proved in Entry 546.  Hence the connecting maps have precisely Entry
+signs proved in Entry 547.  Hence the connecting maps have precisely Entry
 544's Cartier localization/Gysin kernel type, without fitted splittings.
 
 ## Coefficient-sector refinement

@@ -1,5 +1,5 @@
 ---
-id: 546
+id: 547
 date: 2026-08-18
 title: The Generic Lower Deletion Cube Has Exact Kato Support Typing
 authors:
@@ -8,7 +8,8 @@ authors:
 
 # The Generic Lower Deletion Cube Has Exact Kato Support Typing
 
-Entry 545 computes the complete rank-34 denominator-deletion cube.  This entry
+Entries 545--546 compute the complete rank-34 denominator-deletion cube and
+the single-wall boundary geometry. This entry
 performs the first cross-sector test suggested by Entry 544: compare every
 nonzero proper grade with the source-defined logarithmic incidence strata,
 without yet identifying coefficient objects of equal rank.
