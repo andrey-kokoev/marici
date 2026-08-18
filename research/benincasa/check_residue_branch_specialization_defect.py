@@ -97,7 +97,8 @@ result = {
     "total_residue_rank_loss": sum(losses.values()),
     "five_pole_rank_loss_decomposition": {"lower_deletion": 19, "q_G12_restriction": 6},
     "normal_label_assignment": expected_leading,
-    "square_free_N2_intersection": 0,
+    "discriminant_initial_forms_intersect_square_free_N2": False,
+    "nearby_cycle_class_embedding_computed": False,
 }
 
 out = Path(__file__).with_name("residue-branch-specialization-defect.json")
