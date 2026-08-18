@@ -1,0 +1,28 @@
+{
+  "schema": "marici.benincasa.cayley-menger-measure-current.v1",
+  "date": "2026-08-18",
+  "source": {
+    "paper": "Benincasa and Vazao, arXiv:2402.06558v3",
+    "equations": ["(3.6)-(3.10)", "(A.7)-(A.12)"],
+    "measure_density": "CM^((d-4)/2) / (-CM_external)^((d-3)/2)"
+  },
+  "weighted_chart": {
+    "P1": "1",
+    "P2": "u^2*t",
+    "P3": "u-1-u^2*t",
+    "resolved_loop_boundary": "A=B+u*xi"
+  },
+  "exact_initial_forms": {
+    "CM": "u^2*(-2*xi^2+4*xi*(B+1-C)-8*B)+O(u^3)",
+    "CM_external": "-4*u^2+O(u^3)",
+    "CM_next": "8*B-2*B*xi-4*B*xi*t+16*B*t-10*xi-4*xi*t+4*xi*t*C+2*xi*C+4*xi^2",
+    "CM_external_next": "4+8*t",
+    "scalar_density_normal_order": "(d-4)-(d-3)=-1",
+    "collision_normal_jacobian": "d(A-B)=u*d(xi) on a fixed-u fiber",
+    "resolved_current_normal_order": "-1+1=0",
+    "first_correction_denominators": ["Phi"]
+  },
+  "result": "After resolving the collapsed contour boundary, the source scalar density has universal normal order -1. The collision-normal Jacobian d(A-B)=u*d(xi) cancels it, so the strict-transformed integration current has order zero. Its leading coefficient depends on xi,B,C and d but not on the exceptional ratio t. The first correction depends polynomially on t, but its only new denominator is the t-independent exceptional branch polynomial Phi. Therefore the exceptional Cayley-Menger current introduces no finite t-puncture through first correction beyond the coefficient poles t=+1 and t=-1.",
+  "qualification": "This is the first exceptional current. It does not prove absence of higher-normal or distributional t-support, nor path independence of the transported relative-cycle class.",
+  "allocator_claim": "seqclaim-4bd1dcf00f54be67a7bfa4f6"
+}
