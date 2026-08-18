@@ -90,8 +90,35 @@ positive assignments
 \]
 
 both avoid \(J^{-1}(\Delta_{A_3})\), but have opposite signs of
-\(\operatorname{Im}t_2\). They therefore enter distinct labelled braid
-chambers.
+\(\operatorname{Im}t_2\).
+
+Entry 823 supplies the exact separation:
+
+\[
+\boxed{
+t_2^2-4P_1^2t_0
+=\delta^2\bigl((d+q)^2-4P_1^2q\bigr).
+}
+\]
+
+Moreover,
+
+\[
+\delta
+=-i(\epsilon_E-\epsilon_{P_1})
+\bigl(2P_1-i(\epsilon_E+\epsilon_{P_1})\bigr).
+\]
+
+At generic \(P_1\), the equal-regulator wall is therefore exactly
+\(\delta=0\), and it occurs in the pulled-back discriminant with
+multiplicity four. It separates the positive cone into the disconnected
+components
+
+\[
+\epsilon_E>\epsilon_{P_1},
+\qquad
+\epsilon_E<\epsilon_{P_1}.
+\]
 
 Hence
 
@@ -99,8 +126,9 @@ Hence
 \boxed{\text{the printed positive energy-regulator cone does not select one chamber}.}
 \]
 
-The equal-regulator wall is tangent at first order and would require a
-higher jet; selecting it would be an unauthorized hierarchy.
+The equal-regulator wall lies on the discriminant; it is not an admissible
+bridge between the two chambers. Selecting a side would require an
+unauthorized regulator hierarchy.
 
 ## Consequence for the coherence cell
 
