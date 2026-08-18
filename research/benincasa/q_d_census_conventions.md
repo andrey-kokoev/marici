@@ -29,6 +29,16 @@ This packet fixes the conventions used by `q_d_census.py` and its Rust port.
 - `Q_D/uQ_D`: specialize the same admitted columns to their `u^0` rows; do
   not independently regenerate a frozen source matrix.
 - Torsion count: `t_D=2 dim(Q_D/uQ_D)-dim(Q_D)`.
+- Koszul audit: use the frozen gradients
+  `(K_a,K_b,K_u)=(4a^3,0,a^2(1-b^2))` and the elementary columns
+  `s_ab=(-K_b,K_a,0)`, `s_bu=(0,-K_u,K_b)`,
+  `s_au=(-K_u,0,K_a)`.  Admit their monomial multiples by the same
+  whole-column cutoff and plus-character projection as the exact columns.
+- Cycle gate: before interpreting `S_0=<s_ab,s_bu>` or
+  `S_1=S_0+<s_au>` on `H(Q_D,u)`, require `uS_i` to lie in the exact image
+  `I_D`.  Failure is measured by `rank(I_D+uS_i)-rank(I_D)`.
+- Formal filtration ranks are printed only as a diagnostic shadow when the
+  cycle gate fails; they do not define subspaces of `H(Q_D,u)`.
 
 Required regression table:
 
@@ -38,3 +48,15 @@ Required regression table:
 | 16 | 155 | 106 | 57 |
 | 20 | 213 | 152 | 91 |
 | 24 | 279 | 206 | 133 |
+
+The frozen elementary-Koszul cycle gate fails:
+
+| D | cycle defect S0 | cycle defect S1 | formal F0 | formal F1/F0 | formal H/F1 |
+|---:|---:|---:|---:|---:|---:|
+| 12 | 15 | 22 | 5 | 20 | 6 |
+| 16 | 21 | 32 | 7 | 42 | 8 |
+| 20 | 27 | 42 | 9 | 72 | 10 |
+| 24 | 33 | 52 | 11 | 110 | 12 |
+
+Thus the proposed filtration is not typed on `H(Q_D,u)`.  Even its formal
+shadow has `dim(H/F1)=D/2`, rather than the required stable value one.

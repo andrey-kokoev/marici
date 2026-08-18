@@ -17,6 +17,12 @@ EXPECTED = {
     20: (213, 152, 91),
     24: (279, 206, 133),
 }
+EXPECTED_KOSZUL_AUDIT = {
+    12: ((15, 22), (5, 20, 6)),
+    16: ((21, 32), (7, 42, 8)),
+    20: ((27, 42), (9, 72, 10)),
+    24: ((33, 52), (11, 110, 12)),
+}
 
 dependency = Path(__file__).parents[1] / "voevodsky" / "check_soft_axis_deck_orbit_completion.py"
 spec = importlib.util.spec_from_file_location("deck", dependency)
@@ -63,7 +69,7 @@ def census(cutoff):
     position = {monomial: index for index, monomial in enumerate(rows)}
     columns = []
 
-    def emit(parts):
+    def emit(parts, target=columns):
         support = [monomial for part in parts for monomial in part]
         if not support:
             return
@@ -79,7 +85,7 @@ def census(cutoff):
                     column[row] = column.get(row, Q(0)) + coefficient
         column = {row: value for row, value in column.items() if value}
         if column:
-            columns.append(column)
+            target.append(column)
 
     euler = (
         deck.scale(deck.a, Q(1, 4)),
@@ -141,17 +147,82 @@ def census(cutoff):
             zero_columns.append(restricted)
     special_dimension = len(rows_zero) - rank(zero_columns)
     torsion_dimension = 2 * special_dimension - full_dimension
-    return full_dimension, special_dimension, torsion_dimension
+
+    # Compute the intrinsic Koszul filtration on H(Q_D,u).  Intersections are
+    # taken by ranks; in particular the relation among the three elementary
+    # syzygies is retained rather than assigning monomial families by hand.
+    u_columns = []
+    for row, (component, ud, ad, bd) in enumerate(rows):
+        if ud == 0:
+            shifted = position.get((component, 1, ad, bd))
+            if shifted is not None:
+                u_columns.append({shifted: Q(1)})
+
+    def frozen(poly):
+        return {monomial: value for monomial, value in poly.items() if monomial[0] == 0}
+
+    ka = frozen(deck.derivative(deck.K, 1))
+    kb = frozen(deck.derivative(deck.K, 2))
+    ku = frozen(deck.derivative(deck.K, 0))
+    s0_columns = []
+    sau_columns = []
+    for total in range(cutoff + 1):
+        for ad in range(total + 1):
+            multiplier = deck.mul(deck.power(deck.a, ad), deck.power(deck.b, total - ad))
+            emit(
+                [deck.scale(deck.mul(multiplier, kb), -1), deck.mul(multiplier, ka), {}],
+                s0_columns,
+            )
+            emit(
+                [{}, deck.scale(deck.mul(multiplier, ku), -1), deck.mul(multiplier, kb)],
+                s0_columns,
+            )
+            emit(
+                [deck.scale(deck.mul(multiplier, ku), -1), {}, deck.mul(multiplier, ka)],
+                sau_columns,
+            )
+
+    def multiply_column_by_u(column):
+        shifted = {}
+        for row, value in column.items():
+            component, ud, ad, bd = rows[row]
+            if ud == 0:
+                target = position[(component, 1, ad, bd)]
+                shifted[target] = shifted.get(target, Q(0)) + value
+        return {row: value for row, value in shifted.items() if value}
+
+    s1_columns = s0_columns + sau_columns
+    rank_i = rank(columns)
+    cycle_defects = (
+        rank(columns + [multiply_column_by_u(column) for column in s0_columns]) - rank_i,
+        rank(columns + [multiply_column_by_u(column) for column in s1_columns]) - rank_i,
+    )
+
+    b_columns = columns + u_columns
+    rank_b = rank(b_columns)
+    rank_b_s0 = rank(b_columns + s0_columns)
+    rank_b_s1 = rank(b_columns + s1_columns)
+    filtration = (
+        rank_b_s0 - rank_b,
+        rank_b_s1 - rank_b_s0,
+        torsion_dimension - (rank_b_s1 - rank_b),
+    )
+    return full_dimension, special_dimension, torsion_dimension, cycle_defects, filtration
 
 
 def main():
     results = {cutoff: census(cutoff) for cutoff in EXPECTED}
-    assert results == EXPECTED
-    for cutoff, triple in results.items():
-        print(f"D={cutoff}: dim_Q={triple[0]} dim_Q_mod_u={triple[1]} t={triple[2]}")
+    assert {cutoff: result[:3] for cutoff, result in results.items()} == EXPECTED
+    assert {cutoff: result[3:] for cutoff, result in results.items()} == EXPECTED_KOSZUL_AUDIT
+    for cutoff, result in results.items():
+        print(
+            f"D={cutoff}: dim_Q={result[0]} dim_Q_mod_u={result[1]} t={result[2]} "
+            f"cycle_defects={result[3]} "
+            f"formal_F0={result[4][0]} formal_F1/F0={result[4][1]} formal_H/F1={result[4][2]}"
+        )
     print(json.dumps({
         "schema": "marici.benincasa.q_d_census.v1",
-        "results": {str(k): list(v) for k, v in results.items()},
+        "results": {str(k): [*v[:3], list(v[3]), list(v[4])] for k, v in results.items()},
         "closed_form": "t_D=(D/2)^2-D/2+1",
     }, sort_keys=True))
 
