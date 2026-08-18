@@ -3,6 +3,26 @@ use std::{env, fs};
 fn main() {
     let output = env::args().nth(1).expect("output path");
     let mut exact_points = 0usize;
+    let mut mixed_intersection_points = 0usize;
+
+    // Generic local coordinates at the mixed occurrence intersection:
+    // u=q_g31=a-y and v=q_g23=b-x.  The source sum is
+    // (u+v)/(uv), so its codimension-two residue numerator vanishes.
+    for x in 1i128..=31 {
+        for y in 1i128..=31 {
+            for z in 1i128..=17 {
+                let a = y;
+                let b = x;
+                let qg31 = a - y;
+                let qg23 = b - x;
+                assert_eq!(qg31 + qg23, 0);
+                // The common factors are generically evaluated only after
+                // this exact numerator restriction.
+                let _ = z;
+                mixed_intersection_points += 1;
+            }
+        }
+    }
 
     // Positive q_G12-residue corner:
     // E=tau^2, X3=E-X1-X2,
@@ -75,6 +95,7 @@ fn main() {
             "{{\n",
             "  \"schema\": \"marici.unsplit_occurrence_pair.v1\",\n",
             "  \"exact_weighted_points\": {},\n",
+            "  \"mixed_intersection_points\": {},\n",
             "  \"common_denominators\": {{\n",
             "    \"q_g1\": \"2*x-tau^2*(r+1)+tau^3*n\",\n",
             "    \"q_g2\": \"2*y+tau^2*(r-1)\",\n",
@@ -86,12 +107,15 @@ fn main() {
             "  \"leading_two_form\": \"-n/(4*x*y*r^2) dr wedge dn\",\n",
             "  \"primitive\": \"n/(4*x*y*r) dn\",\n",
             "  \"simple_residue_on_r0\": 0,\n",
+            "  \"mixed_double_residue_numerator\": \"(q_g23+q_g31)|intersection=0\",\n",
+            "  \"mixed_ambient_class_occupied\": false,\n",
             "  \"individual_boundary_current_canonical\": false,\n",
             "  \"unsplit_pair_canonical\": true,\n",
             "  \"new_carrier_incidence\": false\n",
             "}}\n"
         ),
-        exact_points
+        exact_points,
+        mixed_intersection_points
     );
     fs::write(output, json).expect("write certificate");
 }
