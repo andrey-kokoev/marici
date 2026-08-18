@@ -17,15 +17,15 @@ characteristic monoid and form the Artin cone
 \mathcal A_{P_{S,H}}
 =
 [\operatorname{Spec}\mathbb Z[P_{S,H}]/
-  \operatorname{Spec}\mathbb Z[P_{S,H}^{\rm gp}]].
+  \operatorname{Spec}\mathbb Z[P_{S,H}^{\mathrm{gp}}]].
 \]
 
 The 522 cellular incidences are strict face localizations.  All 840 composable
 two-step routes induce the same target groupification, so the atlas cocycles
 commute strictly.  The Artin cones therefore glue to a global logarithmic
-Artin-cone stack (mathcal A_{m PC}).
+Artin-cone stack \(\mathcal A_{\mathrm{PC}}\).
 
-The full constructible category of (mathcal A_{m PC}) is larger than the
+The full constructible category of \(\mathcal A_{\mathrm{PC}}\) is larger than the
 finite PC category because it includes nontrivial chart-torus inertia
 characters.  The finite category is precisely the Kato-pulled sector with
 trivial inertia.  Entry 428 proves that every operation used by the connector
