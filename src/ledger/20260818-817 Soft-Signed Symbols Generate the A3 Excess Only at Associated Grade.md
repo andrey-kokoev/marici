@@ -96,34 +96,37 @@ Hence the full Betti differential and integral extension class are
 
 ## Independent support census
 
-Exactly
+Three representatives,
 
 \[
 (g_1,g_2),\qquad(g_1,g_3),\qquad(g_2,g_3)
 \]
 
-have two movable marked coordinates. In each other representative, one
-coordinate is exactly \(-E\); its double boundary forces \(E=0\), placing
-it on the deeper nonisolated soft--triangle corner.
+have two movable marked coordinates and contribute 36 germs. In each other
+representative, one coordinate is exactly \(-E\); its double boundary forces
+\(E=0\), but does not force \(\Lambda=0\). The two energy signs coalesce,
+leaving two reduced signed branches. These five orbits contribute 30 more
+germs.
 
 Therefore
 
 \[
-3\ {\rm orbits}\times3\ {\rm occurrences}\times4\ {\rm signs}=36
+\bigl(3\times3\times4\bigr)+\bigl(5\times3\times2\bigr)=66
 \]
 
 generic labelled germs, and
 
 \[
 \boxed{
-\dim V_{A_3}=108,\qquad
-\dim K_{\rm generic}=36,\qquad
-\dim V_{\rm exc}=72.
+\dim V_{A_3}=198,\qquad
+\dim K_{\rm generic}=66,\qquad
+\dim V_{\rm exc}=132.
 }
 \]
 
-The free cyclic action gives \(\chi_{\rm exc}=(72,0,0)\). This independently
-reproduces Entry 815's support count.
+The free cyclic action gives \(\chi_{\rm exc}=(132,0,0)\). This paragraph
+supersedes Entry 817's original repetition of Entry 815's withdrawn count
+and agrees with Entry 816.
 
 ## Result for H2
 
