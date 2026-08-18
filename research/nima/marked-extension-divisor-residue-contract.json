@@ -1,0 +1,27 @@
+{
+  "schema": "marici.marked-extension-divisor-residue-contract.v1",
+  "entry": 856,
+  "allocator_claim": "seqclaim-841c1048b1b919aeca8f5dcd",
+  "input": "B=B_u du+B_v dv with fixed flat diagonal connections A9 and A3",
+  "candidate_divisor": "q(u,v)=0, reduced and generically smooth",
+  "prerequisites": [
+    "gcd(q,den(A9))=1",
+    "gcd(q,den(A3))=1",
+    "B has at most a logarithmic pole along q"
+  ],
+  "logarithmic_normality_test": "q_v*(q B_u)-q_u*(q B_v)=0 modulo q",
+  "residue_definition": [
+    "q B_u=R q_u modulo q",
+    "q B_v=R q_v modulo q"
+  ],
+  "flatness_consequence": "d_q R+A9|q R-R A3|q=0 along tangent directions of q",
+  "regular_triangular_gauge": "B_mu'=B_mu+partial_mu h+A9_mu h-h A3_mu with h regular at q",
+  "gauge_invariant": "R is unchanged by every regular triangular gauge",
+  "outcomes": {
+    "R_nonzero": "q is intrinsic logarithmic support of the marked extension class",
+    "R_zero": "q is absent from the logarithmic extension residue",
+    "normality_failure": "the candidate is not a logarithmic connection pole in the frozen lattice",
+    "higher_pole": "irregular singularity; requires a separately justified lattice change"
+  },
+  "post_residue_typing": "compute R_inf composed with R to locate algebraic-kernel versus elliptic image"
+}
