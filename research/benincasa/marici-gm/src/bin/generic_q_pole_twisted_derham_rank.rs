@@ -144,6 +144,23 @@ fn pivot(mut row: Row, ps: &mut BTreeMap<usize, Row>) {
         }
     }
 }
+
+fn reduce(mut row: Row, ps: &BTreeMap<usize, Row>) -> Row {
+    let mut remainder = Row::new();
+    loop {
+        let Some((&col, &coefficient)) = row.iter().next_back() else {
+            return remainder;
+        };
+        if let Some(existing) = ps.get(&col) {
+            for (&column, &value) in existing {
+                add_term(&mut row, column, -mm(coefficient, value));
+            }
+        } else {
+            row.remove(&col);
+            remainder.insert(col, coefficient);
+        }
+    }
+}
 fn add_poly(
     row: &mut Row,
     cols: &HashMap<(usize, [usize; 3], Mon), usize>,
@@ -177,6 +194,15 @@ fn q_states(mask: u8, qmax: usize, include_boundary: bool) -> Vec<[usize; 3]> {
     states
 }
 
+struct Reduction {
+    rank: usize,
+    survivors: Vec<Mon>,
+    labels: Vec<(usize, [usize; 3], Mon)>,
+    cols: HashMap<(usize, [usize; 3], Mon), usize>,
+    pivots: BTreeMap<usize, Row>,
+    target_q: [usize; 3],
+}
+
 fn rank_for(
     k: &Poly,
     qs: &[Poly; 3],
@@ -185,7 +211,7 @@ fn rank_for(
     qmax: usize,
     ambient: usize,
     cutoff: usize,
-) -> usize {
+) -> Reduction {
     let column_degree = ambient + 3;
     let low = mons(cutoff);
     let all = mons(column_degree);
@@ -206,7 +232,6 @@ fn rank_for(
         }
     }
     let cols: HashMap<_, _> = labels.iter().enumerate().map(|(i, x)| (*x, i)).collect();
-    let low_count = low.len();
     let mut ps = BTreeMap::new();
     let gamma = 5_i64;
 
@@ -273,7 +298,41 @@ fn rank_for(
             }
         }
     }
-    low_count - ps.keys().filter(|&&x| x < low_count).count()
+    let survivors: Vec<_> = low
+        .iter()
+        .enumerate()
+        .filter(|(column, _)| !ps.contains_key(column))
+        .map(|(_, monomial)| *monomial)
+        .collect();
+    Reduction {
+        rank: survivors.len(),
+        survivors,
+        labels,
+        cols,
+        pivots: ps,
+        target_q,
+    }
+}
+
+fn localization_map(row: &Row, lower: &Reduction, higher: &Reduction, bit: usize, q: &Poly) -> Row {
+    let mut image = Row::new();
+    for (&column, &coefficient) in row {
+        let (kp, mut qps, monomial) = lower.labels[column];
+        qps[bit] = 1;
+        for (factor_monomial, factor_coefficient) in &q.0 {
+            let term = [
+                monomial[0] + factor_monomial[0],
+                monomial[1] + factor_monomial[1],
+                monomial[2] + factor_monomial[2],
+            ];
+            add_term(
+                &mut image,
+                higher.cols[&(kp, qps, term)],
+                mm(coefficient, *factor_coefficient),
+            );
+        }
+    }
+    reduce(image, &higher.pivots)
 }
 
 fn cayley_menger(x: i64, y: i64, z: i64) -> Poly {
@@ -315,6 +374,7 @@ fn main() {
         c.add(&Poly::con(x + y + z)),
     ];
     let families = [
+        ("empty", 0b000_u8, 7_usize),
         ("q_g1", 0b001_u8, 8_usize),
         ("q_g2", 0b010_u8, 8_usize),
         ("q_g1_q_g2", 0b011_u8, 9_usize),
@@ -333,10 +393,90 @@ fn main() {
         .ok()
         .map_or(12, |x| x.parse().unwrap());
     println!("schema=generic-q-pole-twisted-derham-rank-v1 gamma=5 point={point} xyz=({x},{y},{z}) k_pole={kmax} q_pole={qmax}");
+    let mut final_reductions = BTreeMap::new();
     for ambient in 7..=max_ambient {
         for (name, mask, target) in &families {
-            let rank = rank_for(&k, &qs, *mask, kmax, qmax, ambient, 5);
-            println!("ambient={ambient} mask={mask:03b} family={name} filtered_rank={rank} target={target}");
+            let reduction = rank_for(&k, &qs, *mask, kmax, qmax, ambient, 5);
+            println!(
+                "ambient={ambient} mask={mask:03b} family={name} filtered_rank={} target={target}",
+                reduction.rank
+            );
+            if ambient == max_ambient {
+                println!("basis mask={mask:03b} monomials={:?}", reduction.survivors);
+                final_reductions.insert(*mask, reduction);
+            }
+        }
+    }
+    for lower_mask in 0_u8..8 {
+        for bit in 0..3 {
+            if lower_mask & (1 << bit) != 0 {
+                continue;
+            }
+            let higher_mask = lower_mask | (1 << bit);
+            let lower = &final_reductions[&lower_mask];
+            let higher = &final_reductions[&higher_mask];
+            let mut image_pivots = BTreeMap::new();
+            for &monomial in &lower.survivors {
+                let source = Row::from([(lower.cols[&(0, lower.target_q, monomial)], 1)]);
+                let image = localization_map(&source, lower, higher, bit, &qs[bit]);
+                pivot(image, &mut image_pivots);
+            }
+            println!(
+                "edge={lower_mask:03b}->{higher_mask:03b} image_rank={} source_rank={} injective={}",
+                image_pivots.len(),
+                lower.rank,
+                image_pivots.len() == lower.rank
+            );
+        }
+    }
+    for base in 0_u8..8 {
+        let missing: Vec<_> = (0..3).filter(|bit| base & (1 << bit) == 0).collect();
+        for left_index in 0..missing.len() {
+            for right_index in left_index + 1..missing.len() {
+                let i = missing[left_index];
+                let j = missing[right_index];
+                let left_mask = base | (1 << i);
+                let right_mask = base | (1 << j);
+                let top_mask = base | (1 << i) | (1 << j);
+                let source_reduction = &final_reductions[&base];
+                let mut equal = true;
+                for &monomial in &source_reduction.survivors {
+                    let source = Row::from([(
+                        source_reduction.cols[&(0, source_reduction.target_q, monomial)],
+                        1,
+                    )]);
+                    let left = localization_map(
+                        &source,
+                        source_reduction,
+                        &final_reductions[&left_mask],
+                        i,
+                        &qs[i],
+                    );
+                    let left_top = localization_map(
+                        &left,
+                        &final_reductions[&left_mask],
+                        &final_reductions[&top_mask],
+                        j,
+                        &qs[j],
+                    );
+                    let right = localization_map(
+                        &source,
+                        source_reduction,
+                        &final_reductions[&right_mask],
+                        j,
+                        &qs[j],
+                    );
+                    let right_top = localization_map(
+                        &right,
+                        &final_reductions[&right_mask],
+                        &final_reductions[&top_mask],
+                        i,
+                        &qs[i],
+                    );
+                    equal &= left_top == right_top;
+                }
+                println!("square={base:03b} bits={i},{j} path_independent={equal}");
+            }
         }
     }
 }
