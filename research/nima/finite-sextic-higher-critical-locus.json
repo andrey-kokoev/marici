@@ -1,0 +1,219 @@
+{
+  "schema": "marici.nima.finite_sextic_higher_critical_locus.v1",
+  "source": "research/nima/generic-finite-marked-cm-collisions.json",
+  "universal_squared_edge_model": "K_CM(E,A=a^2,B=b^2;P1,P2,P3)",
+  "momentum_triangle": "(P1 - P2 - P3)*(P1 - P2 + P3)*(P1 + P2 - P3)*(P1 + P2 + P3)",
+  "hessian_determinant": "-(P1 - P2 - P3)*(P1 - P2 + P3)*(P1 + P2 - P3)*(P1 + P2 + P3)",
+  "interior": {
+    "open_conditions": [
+      "a0!=0",
+      "b0!=0",
+      "P1*P2*Lambda!=0"
+    ],
+    "critical_point": {
+      "A": "E^2+P2^2",
+      "B": "E^2+P1^2"
+    },
+    "critical_value": "E**2*(P1 - P2 - P3)*(P1 - P2 + P3)*(P1 + P2 - P3)*(P1 + P2 + P3)",
+    "support": [
+      "E=0",
+      "Lambda=0"
+    ]
+  },
+  "coordinate_boundary_A0": {
+    "critical_B": "-(E**2*P1**2 - E**2*P2**2 - E**2*P3**2 - P1**2*P2**2 + P2**4 - P2**2*P3**2)/(2*P2**2)",
+    "critical_value": "-(E - P2)**2*(E + P2)**2*(P1 - P2 - P3)*(P1 - P2 + P3)*(P1 + P2 - P3)*(P1 + P2 + P3)/(4*P2**2)",
+    "support_factors": [
+      "E-P2",
+      "E+P2",
+      "Lambda"
+    ]
+  },
+  "coordinate_boundary_B0": {
+    "critical_A": "(E**2*P1**2 - E**2*P2**2 + E**2*P3**2 - P1**4 + P1**2*P2**2 + P1**2*P3**2)/(2*P1**2)",
+    "critical_value": "-(E - P1)**2*(E + P1)**2*(P1 - P2 - P3)*(P1 - P2 + P3)*(P1 + P2 - P3)*(P1 + P2 + P3)/(4*P1**2)",
+    "support_factors": [
+      "E-P1",
+      "E+P1",
+      "Lambda"
+    ]
+  },
+  "double_coordinate_boundary": {
+    "critical_value": "P3**2*(E**4 - E**2*P1**2 - E**2*P2**2 + E**2*P3**2 + P1**2*P2**2)",
+    "classification": "P3^2 times the frozen Cayley-Menger restriction at A=B=0"
+  },
+  "representatives": [
+    {
+      "labels": [
+        "g1",
+        "g2"
+      ],
+      "marked_point": {
+        "a": "E - X2",
+        "b": "E - X1"
+      },
+      "interior_critical_equations": [
+        "(E - X2)^2=E^2+P2^2",
+        "(E - X1)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "E - X2=0",
+      "b_coordinate_boundary": "E - X1=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g1",
+        "g3"
+      ],
+      "marked_point": {
+        "a": "-E + X1 - X3",
+        "b": "E - X1"
+      },
+      "interior_critical_equations": [
+        "(-E + X1 - X3)^2=E^2+P2^2",
+        "(E - X1)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "-E + X1 - X3=0",
+      "b_coordinate_boundary": "E - X1=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g1",
+        "G23"
+      ],
+      "marked_point": {
+        "a": "-E",
+        "b": "E - X1"
+      },
+      "interior_critical_equations": [
+        "(-E)^2=E^2+P2^2",
+        "(E - X1)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "-E=0",
+      "b_coordinate_boundary": "E - X1=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g2",
+        "g3"
+      ],
+      "marked_point": {
+        "a": "E - X2",
+        "b": "-E + X2 - X3"
+      },
+      "interior_critical_equations": [
+        "(E - X2)^2=E^2+P2^2",
+        "(-E + X2 - X3)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "E - X2=0",
+      "b_coordinate_boundary": "-E + X2 - X3=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g2",
+        "G31"
+      ],
+      "marked_point": {
+        "a": "E - X2",
+        "b": "-E"
+      },
+      "interior_critical_equations": [
+        "(E - X2)^2=E^2+P2^2",
+        "(-E)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "E - X2=0",
+      "b_coordinate_boundary": "-E=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g3",
+        "G23"
+      ],
+      "marked_point": {
+        "a": "-E",
+        "b": "E - X3"
+      },
+      "interior_critical_equations": [
+        "(-E)^2=E^2+P2^2",
+        "(E - X3)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "-E=0",
+      "b_coordinate_boundary": "E - X3=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "g3",
+        "G31"
+      ],
+      "marked_point": {
+        "a": "E - X3",
+        "b": "-E"
+      },
+      "interior_critical_equations": [
+        "(E - X3)^2=E^2+P2^2",
+        "(-E)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "E - X3=0",
+      "b_coordinate_boundary": "-E=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    },
+    {
+      "labels": [
+        "G23",
+        "G31"
+      ],
+      "marked_point": {
+        "a": "-E",
+        "b": "-E"
+      },
+      "interior_critical_equations": [
+        "(-E)^2=E^2+P2^2",
+        "(-E)^2=E^2+P1^2"
+      ],
+      "interior_support_after_gradient": [
+        "E=0",
+        "Lambda(P1,P2,P3)=0"
+      ],
+      "a_coordinate_boundary": "-E=0",
+      "b_coordinate_boundary": "-E=0",
+      "classification": "existing marked-coordinate boundary plus total-energy, signed-energy, momentum-triangle, or restricted Cayley-Menger support"
+    }
+  ],
+  "new_higher_carrier_stratum": false,
+  "conclusion": "The nontransverse loci are generated by marked coordinate boundaries together with total-energy, signed-energy, momentum-triangle, and further frozen Cayley-Menger restrictions. No new unlabelled higher carrier stratum appears.",
+  "scope": "set-theoretic support classification; scheme multiplicities and intersections among the listed components are not a primary-decomposition claim",
+  "allocator_claim": "seqclaim-6f43d9839010f22ee2cc7d23"
+}
