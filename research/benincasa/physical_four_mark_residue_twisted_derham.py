@@ -289,13 +289,66 @@ def relative_top_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff
     }
 
 
+def unsplit_union_census(gamma: int, ambient: int, cutoff: int) -> dict:
+    names = ("g1", "g2", "g3", "g23", "g31")
+    low_labels, columns, pivots, free_low = presentation(
+        names, gamma, ambient, cutoff, minimum_q_level=1
+    )
+    _, q = fiber_data(2, 3, 4)
+    numerator: Polynomial = dict(q["g23"])
+    for exponent, coefficient in q["g31"].items():
+        numerator[exponent] = (numerator.get(exponent, 0) + coefficient) % PRIME
+    base = (0, *([1] * len(names)))
+    source: dict[int, int] = {}
+    for exponent, coefficient in numerator.items():
+        for column, value in quotient_coordinates(
+            (*base, exponent), columns, pivots, free_low
+        ).items():
+            add_value(source, column, coefficient * value)
+
+    first_span: dict[int, dict[int, int]] = {}
+    add_pivot(dict(source), first_span)
+    for axis in range(2):
+        image: dict[int, int] = {}
+        for exponent, coefficient in numerator.items():
+            label = (*base, exponent)
+            for column, value in connection_image(label, names, gamma, axis, columns).items():
+                add_value(image, column, coefficient * value)
+        _, q_derivatives = parameter_derivative_data(axis)
+        numerator_derivative: Polynomial = dict(q_derivatives["g23"])
+        for exponent, coefficient in q_derivatives["g31"].items():
+            numerator_derivative[exponent] = (
+                numerator_derivative.get(exponent, 0) + coefficient
+            ) % PRIME
+        for exponent, coefficient in numerator_derivative.items():
+            add_value(image, columns[(*base, exponent)], coefficient)
+        reduced = reduce_row(image, pivots)
+        quotient = {column: reduced[column] for column in free_low if column in reduced}
+        add_pivot(quotient, first_span)
+    return {
+        "relative_union_dimension": len(free_low),
+        "unsplit_source_nonzero": bool(source),
+        "unsplit_source_support": len(source),
+        "unsplit_source_first_jet_rank": len(first_span),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--partner", choices=("g23", "g31"), default="g23")
     parser.add_argument("--gamma", type=int, default=5)
     parser.add_argument("--ambient", type=int, default=8)
     parser.add_argument("--cutoff", type=int, default=5)
+    parser.add_argument("--union", action="store_true")
     args = parser.parse_args()
+    if args.union:
+        print(json.dumps({
+            "schema": "marici.physical-five-mark-relative-union.v1",
+            "prime": PRIME, "kinematics": [2, 3, 4], "gamma": args.gamma,
+            "ambient_degree": args.ambient, "cutoff_degree": args.cutoff,
+            **unsplit_union_census(args.gamma % PRIME, args.ambient, args.cutoff),
+        }, sort_keys=True))
+        return
     names = ("g1", "g2", "g3", args.partner)
     census = filtered_census(names, args.gamma % PRIME, args.ambient, args.cutoff)
     relative = relative_top_census(names, args.gamma % PRIME, args.ambient, args.cutoff)
