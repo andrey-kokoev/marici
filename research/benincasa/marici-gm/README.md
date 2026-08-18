@@ -140,6 +140,13 @@ pole-free polynomial gauge through a declared total-degree bound.  The
 committed degree-ten certificate finds no solution; this is a bounded ansatz
 no-go, not a proof that the differential-module extension is nonsplit.
 
+The `gysin-local-residue-obstruction-test` command takes transverse Laurent
+residues on eight explicitly parameterized source divisors.  It tests the
+residue extension equation and the indicial operators at positive pole orders.
+The committed sixteen-point certificate finds no residue-class obstruction;
+only `v-u`, `y-u^2`, and `y+u^2` resonate, and only at pole order one through the tested
+order ten.
+
 `generic-et-nearby-synthesis.json` combines that certificate with the exact
 other-block connections and the total-energy intersection census. It records
 the complete generic nine-master Deligne nearby object, the second Rees datum,
