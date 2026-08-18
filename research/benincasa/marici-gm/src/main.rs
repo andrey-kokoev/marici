@@ -427,6 +427,22 @@ fn gysin_single_divisor_split_test(maxdeg:u8)->String{
     }
     format!("{{\"schema\":\"marici.gm.gysin_single_divisor_split.v1\",\"denominator_power\":1,\"validation_points_per_candidate\":256,\"results\":[{}]}}",results.join(","))
 }
+fn parameterized_divisor_residue(fi:usize,param:u64)->Option<Vec<Vec<F>>>{
+    let p=F::new(param,PRIME);let two=F::new(2,PRIME);let (axis,base_u,base_v)=match fi{
+        0=>("u",F::z(PRIME),p),1=>("v",p,F::z(PRIME)),2=>("v",p,two.sub(p)),3=>("v",p,F::new(4,PRIME).sub(p)),
+        4=>("v",p,p.neg()),5=>("v",p,p),6=>("v",p,two.add(two.mul(p.mul(p))).sub(p)),7=>("v",p,two.sub(two.mul(p.mul(p))).sub(p)),_=>return None};
+    let mut ss:Vec<Vec<Vec<(F,F)>>>=vec![vec![Vec::new();4];4];for t0 in 1..=48u64{let t=F::new(t0,PRIME);let uu=if axis=="u"{t}else{base_u};let vv=if axis=="v"{base_v.add(t)}else{base_v};let got=std::panic::catch_unwind(||gysin_adapted_rows(uu.v,vv.v,axis));let Ok(a)=got else{continue};for i in 0..4{for j in 0..4{ss[i][j].push((t,a[i][j]));}}}
+    if ss[0][0].len()<36{return None}let mut r=vec![vec![F::z(PRIME);4];4];for i in 0..4{for j in 0..4{let f=fit_uni(&ss[i][j],16)?;r[i][j]=laurent_residue(&f).ok()?;}}Some(r)
+}
+fn extension_residue_operator(r:&[Vec<F>],m:u64)->(usize,usize){
+    let mut a=vec![vec![F::z(PRIME);5];4];for q in 0..2{for k in 0..2{let col=2*q+k;for i in 0..2{for j in 0..2{let row=2*i+j;let mut z=F::z(PRIME);if q==i&&k==j{z=z.sub(F::new(m,PRIME))}if q==i{z=z.add(r[k][j])}if k==j{z=z.sub(r[i+2][q+2])}a[row][col]=z;}}}}
+    for i in 0..2{for j in 0..2{a[2*i+j][4]=r[i+2][j].neg();}}let rank=matrix_rank(a.iter().map(|z|z[..4].to_vec()).collect(),4);let aug=matrix_rank(a,5);(rank,aug)
+}
+fn gysin_local_residue_obstruction_test(points:usize)->String{
+    let names=["u","v","y","1-y","1+y","v-u","y-u^2","y+u^2"];let mut out=Vec::new();for fi in 0..8{let mut accepted=0usize;let mut obstructed=0usize;let mut rank0=Vec::new();let mut kernels:Vec<Vec<usize>>=(0..10).map(|_|Vec::new()).collect();let mut p=11u64+fi as u64;while accepted<points{p=((p as u128*2_862_933_555_777_941_757u128+769u128)%PRIME as u128)as u64;let Some(r)=parameterized_divisor_residue(fi,p)else{continue};accepted+=1;let(a,b)=extension_residue_operator(&r,0);rank0.push(a);if b>a{obstructed+=1}for m in 1..=10u64{let(q,_)=extension_residue_operator(&r,m);kernels[(m-1)as usize].push(4-q);}}
+        out.push(format!("{{\"factor\":\"{}\",\"points\":{},\"residue_obstructed\":{},\"rank_L0\":{:?},\"kernel_dimensions_L1_to_L10\":{:?}}}",names[fi],accepted,obstructed,rank0,kernels));}
+    format!("{{\"schema\":\"marici.gm.gysin_local_residue_obstruction.v1\",\"results\":[{}]}}",out.join(","))
+}
 fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
     let need=2*total_monomials(maxdeg).len()+20;let mut su=RECON_SEEDS.0;let mut sv=RECON_SEEDS.1;let mut data=Vec::new();
     while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
@@ -519,6 +535,7 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="gysin-local-residue-obstruction-test"{let points=a[2].parse::<usize>().unwrap();fs::write(&a[3],gysin_local_residue_obstruction_test(points)).expect("write Gysin local residue obstruction test");return}
     if a.len()==4&&a[1]=="gysin-single-divisor-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_divisor_split_test(maxdeg)).expect("write Gysin divisor split test");return}
     if a.len()==4&&a[1]=="gysin-polynomial-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_polynomial_split_test(maxdeg)).expect("write Gysin polynomial split test");return}
     if a.len()==4&&a[1]=="gysin-single-pole-census"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_pole_census(maxdeg)).expect("write Gysin single-pole census");return}
