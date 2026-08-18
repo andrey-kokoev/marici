@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-18
 ---
-# 663 — The Occurrence-Divisor Intersection Is Not the Quartic Cover
+# 665 — The Occurrence-Divisor Intersection Is Not the Quartic Cover
 
 ## Hard-to-vary claim
 
