@@ -1,0 +1,39 @@
+{
+  "schema": "marici.nima.deeper_soft_triangle_occurrences.v1",
+  "sources": [
+    "research/nima/finite-sextic-higher-critical-locus.json",
+    "research/nima/generic-finite-collision-cyclic-orbits.json",
+    "research/benincasa/finite-sextic-coordinate-boundary-vanishing.json"
+  ],
+  "deeper_conditions": [
+    "a0=b0=0",
+    "P3=0",
+    "E^2=P1^2 or E^2=P2^2",
+    "P1^2=P2^2"
+  ],
+  "movable_sector": {
+    "collision_orbits": [["g1", "g2"], ["g1", "g3"], ["g2", "g3"]],
+    "reduced_branches_per_occurrence": 4,
+    "branch_equations": "P3=0, P2=s*P1, E=r*P1 with r,s in {+1,-1}",
+    "warning": "the original choice of signed condition relative to P1 or P2 gives duplicate reduced branches after P1^2=P2^2",
+    "cyclic_occurrences": 9,
+    "labelled_strata": 36
+  },
+  "forced_E_zero_sector": {
+    "collision_orbits": [["g1", "G23"], ["g2", "G31"], ["g3", "G23"], ["g3", "G31"], ["G23", "G31"]],
+    "reason": "a marked coordinate -E forces E=0; the signed and triangle conditions then force P1=P2=0, while P3=0 is already imposed",
+    "reduced_locus": "E=P1=P2=P3=0",
+    "reduced_branches_per_occurrence": 1,
+    "cyclic_occurrences": 15,
+    "labelled_strata": 15
+  },
+  "aggregate": {
+    "labelled_strata": 51,
+    "regular_C3_families": 17,
+    "support_permutation_character": [51, 0, 0]
+  },
+  "typing": "the 36 one-scale branches and 15 all-soft labelled points are different local-resolution problems and must not be assigned a common vanishing rank before calculation",
+  "next_falsifier": "compute one logarithmic transverse complex for each of the two local types, then transport by labelled cyclic naturality",
+  "scope": "reduced labelled support census only; no Milnor rank, Tor length, or coefficient multiplicity is inferred",
+  "allocator_claim": "seqclaim-6ee5d702fe835f4da6047a9d"
+}
