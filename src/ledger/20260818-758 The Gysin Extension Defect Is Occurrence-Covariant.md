@@ -24,9 +24,9 @@ and the filtered splitting census of Entry 757.
 The homogeneous base coordinates are
 
 \[
-X_1=1,qquad
-u=E_T,qquad
-X_2=\frac{u+v}{2}-1,qquad
+X_1=1,\qquad
+u=E_T,\qquad
+X_2=\frac{u+v}{2}-1,\qquad
 X_3=\frac{u-v}{2}.
 \]
 
@@ -173,17 +173,17 @@ Their target pullbacks are
 
 \[
 \left(
-u',,2-v',,\frac{u'-v'}2,,
-1-\frac{u'-v'}2,,
-1+\frac{u'-v'}2,,
+u',\,2-v',\,\frac{u'-v'}2,\,
+1-\frac{u'-v'}2,\,
+1+\frac{u'-v'}2,\,
 2-v'-u',
 \right.
 \]
 
 \[
 \left.
-\frac{u'-v'}2-u'^2,,
-\frac{u'-v'}2+u'^2,,
+\frac{u'-v'}2-u'^2,\,
+\frac{u'-v'}2+u'^2,\,
 P_6(u',2-v')
 \right).
 \]
