@@ -96,8 +96,8 @@ A_i=dS\,S^{-1}+S\rho^*A_{i+1}S^{-1}
 for all three edges
 
 \[
-G_{12}\to G_{23},qquad
-G_{23}\to G_{31},qquad
+G_{12}\to G_{23},\qquad
+G_{23}\to G_{31},\qquad
 G_{31}\to G_{12}.
 \]
 
