@@ -5,7 +5,7 @@ date: 2026-08-18
 ---
 # The Unique Elliptic Top Class Has a Canonical Residue Boundary
 
-> **Correction (Entry 574).**  The canonical geometric Cousin face vector is
+> **Correction (Entry 577).**  The canonical geometric Cousin face vector is
 > \((1,-1,1)\), as already proved in Entry 341.  The vector \((1,-1,0)\)
 > below incorrectly substitutes the zero proper Möbius grade for the existing
 > lower-pair stratum.  Retain the transverse-intersection and

@@ -5,7 +5,7 @@ date: 2026-08-18
 ---
 # The Elliptic Top Residues Satisfy the Cousin Identity
 
-> **Scope correction (Entry 574).**  This entry verifies the two paths through
+> **Scope correction (Entry 577).**  This entry verifies the two paths through
 > the mixed \(q_{\mathcal G_{12}}\)-lower faces.  It does not replace the full
 > geometric face vector \((1,-1,1)\) by \((1,-1,0)\); the lower-pair face from
 > Entry 341 remains part of the Cousin complex.
