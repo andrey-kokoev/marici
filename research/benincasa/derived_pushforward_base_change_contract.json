@@ -1,0 +1,55 @@
+{
+  "schema": "marici.derived-pushforward-base-change-contract.v1",
+  "entry": 701,
+  "status": "acceptance-contract-only",
+  "frozen_input": {
+    "generic_complex": "C_gen, the source-labelled generic five-pole twisted de Rham complex",
+    "normal_ideal": "I=(nu_1,nu_2,nu_3)",
+    "normal_grade": "I^2/I^3",
+    "labels": ["nu_1*nu_2", "nu_1*nu_3", "nu_2*nu_3"],
+    "localization_divisor": "q_G12=0",
+    "specialization": "i: P_i=X_i"
+  },
+  "closed_elementary_square": {
+    "result": "strictly_commutative",
+    "reason": "partial_(nu_i) q_G12 = 0",
+    "source": "Ledger Entry 700"
+  },
+  "open_square": {
+    "upper_route": "Li^* Rpi_* Loc_(q_G12)(C_gen)",
+    "lower_route": "Rpi_hom,* Loc_(i^*q_G12)(Li^* C_gen)",
+    "required_cell": "beta_GM: upper_route -> lower_route",
+    "commutator_type": "closed degree-zero morphism in the derived Hom complex"
+  },
+  "typing_requirements": [
+    "generic five-pole complex and differential are explicit",
+    "pi and i are explicit and form a Cartesian square on the stated locus",
+    "all four derived functors have declared source and target categories",
+    "normal labels remain distinct through I^2/I^3",
+    "comparison is formed before taking ranks, determinants, or Q-valuations",
+    "any nullhomotopy is an explicit source-derived homotopy compatible with the differential"
+  ],
+  "accepted_outcomes": {
+    "strict": "the two derived chain maps agree",
+    "homotopy": "their difference is d_Hom-exact with an explicit admissible homotopy",
+    "obstructed": "their difference represents a nonzero derived-Hom class with located support",
+    "untyped": "one of the complexes, functors, comparison maps, or categories is absent"
+  },
+  "inadmissible_inferences": [
+    "rank identity 35=15+20 defines the comparison",
+    "chain-level localization commutation implies derived proper base change",
+    "post-hoc saturation or fitted quotient supplies the missing cell",
+    "collapse of the three labelled normal directions before comparison",
+    "a Q factor in an arbitrary matrix coordinate is intrinsic support"
+  ],
+  "Q_gate": {
+    "open_only_after": "beta_GM is typed and its cone or obstruction class is computed",
+    "intrinsic_tests": [
+      "support or annihilator of the obstruction cohomology",
+      "Fitting ideals of a presentation proved independent of choices",
+      "valuation of invariant minors after bases and lattices are frozen"
+    ],
+    "distinguish": ["carrier support", "coefficient support", "extension support"]
+  },
+  "specialist_escalation": "Invoke a filtered-derived or nearby-cycle specialist only after the four corners and chain maps exist and the remaining ambiguity is realization of beta_GM."
+}
