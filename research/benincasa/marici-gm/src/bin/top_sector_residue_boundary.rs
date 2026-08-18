@@ -84,6 +84,29 @@ fn determinant_3(matrix: [[i64; 3]; 3]) -> i64 {
         + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0])
 }
 
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct LogForm {
+    coefficient: i64,
+    factors: Vec<usize>,
+}
+
+impl LogForm {
+    fn residue(&self, factor: usize) -> Self {
+        let position = self
+            .factors
+            .iter()
+            .position(|candidate| *candidate == factor)
+            .expect("residue factor must occur in the logarithmic form");
+        let mut factors = self.factors.clone();
+        factors.remove(position);
+        let sign = if position % 2 == 0 { 1 } else { -1 };
+        Self {
+            coefficient: sign * self.coefficient,
+            factors,
+        }
+    }
+}
+
 fn main() {
     let x = Polynomial::variable(0);
     let y = Polynomial::variable(1);
@@ -140,7 +163,21 @@ fn main() {
     assert_eq!(boundary[0].abs(), 1);
     assert_eq!(boundary[1].abs(), 1);
 
+    // Literal logarithmic representative
+    // dlog(q_g1) wedge dlog(q_g2) wedge dlog(q_G12).
+    let top = LogForm {
+        coefficient: 1,
+        factors: vec![0, 1, 2],
+    };
+    let via_g1 = top.residue(0).residue(1);
+    let via_g2 = top.residue(1).residue(0);
+    assert_eq!(via_g1.factors, vec![2]);
+    assert_eq!(via_g2.factors, vec![2]);
+    assert_eq!(via_g1.coefficient, 1);
+    assert_eq!(via_g2.coefficient, -1);
+    assert_eq!(via_g1.coefficient + via_g2.coefficient, 0);
+
     println!(
-        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v1\",\"status\":\"exact_symbolic_identity_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_proper_boundary\":[1,-1,0],\"new_carrier_datum\":false}}"
+        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v2\",\"status\":\"exact_symbolic_and_cousin_identity_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_proper_boundary\":[1,-1,0],\"second_residues\":[1,-1],\"cousin_sum\":0,\"new_carrier_datum\":false}}"
     );
 }
