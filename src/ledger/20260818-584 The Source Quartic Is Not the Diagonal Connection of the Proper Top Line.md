@@ -21,7 +21,7 @@ H_{111}/B
 The present checker independently reproduces
 
 \[
-\dim H_{111}=21,qquad
+\dim H_{111}=21,\qquad
 \dim B=20.
 \]
 
@@ -45,8 +45,8 @@ Use the frozen source expression
 with
 
 \[
-A=(x-y-z)(x-y+z),quad
-B=(x+y-z)(x+y+z),quad
+A=(x-y-z)(x-y+z),\quad
+B=(x+y-z)(x+y+z),\quad
 E=x+y+z.
 \]
 
