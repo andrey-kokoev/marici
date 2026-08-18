@@ -24,10 +24,10 @@ On \(P_2\ne0\), complete the \(B\)-square and call the translated coordinate
 
 \[
 \boxed{
-K_{m CM}
+K_{\rm CM}
 =P_2^2y^2+
 \frac{\Lambda}{4P_2^2}
-\left[4E^2P_2^2-igl(a^2-(E^2+P_2^2)\bigr)^2\right].
+\left[4E^2P_2^2-\bigl(a^2-(E^2+P_2^2)\bigr)^2\right].
 }
 \]
 
@@ -83,7 +83,7 @@ objects are not silently identified.
 At \(a=b=0\),
 
 \[
-K_{m CM}=P_3^2R_{00},
+K_{\rm CM}=P_3^2R_{00},
 \]
 
 where
