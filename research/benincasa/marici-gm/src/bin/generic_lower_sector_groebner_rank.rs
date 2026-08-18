@@ -439,6 +439,14 @@ fn main() {
                 .checked_sub(inherited)
                 .expect("nonnegative support grade");
         }
+        assert_eq!(
+            closed,
+            [7, 12, 12, 18, 12, 18, 18, 26, 12, 17, 18, 24, 18, 24, 26, 34]
+        );
+        assert_eq!(
+            proper,
+            [7, 5, 5, 1, 5, 1, 1, 1, 5, 0, 1, 0, 1, 0, 1, 0]
+        );
         println!("DELETION_CLOSED={closed:?}");
         println!("PROPER_SUPPORT_GRADES={proper:?}");
     }
