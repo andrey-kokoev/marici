@@ -7,7 +7,7 @@ date: 2026-08-18
 
 ## Frozen question
 
-Resolve the four simple crossings (D_1\cap D_2) and (D_1\cap D_3), pull
+Resolve the four simple crossings \(D_1\cap D_2\) and \(D_1\cap D_3\), pull
 back the full adapted rank-four Gysin connection, and determine its exceptional
 local type without treating conjugate geometric points as rationally
 independent.
@@ -21,7 +21,7 @@ D_1=(v-u),\qquad D_2=(y-u^2),\qquad D_3=(y+u^2),
 
 ## Ordinary charts and forced frame
 
-At a crossing ((u_0,u_0)), use
+At a crossing \((u_0,u_0)\), use
 
 \[
 U_u:\ u=u_0+e,\ v=u_0+et,
@@ -30,7 +30,7 @@ U_v:\ u=u_0+es,\ v=u_0+e.
 \]
 
 In the unmodified adapted frame the quotient-to-kernel block has exceptional
-order (-2).  Hence it is not logarithmic.  The existing Gysin block
+order \(-2\).  Hence it is not logarithmic.  The existing Gysin block
 filtration forces the elementary transform
 
 \[
@@ -70,7 +70,7 @@ and the first indicial operator has
 \boxed{\dim\ker L_1(R_E)=\dim\operatorname{coker}L_1(R_E)=2.}
 \]
 
-Both strict transforms remain logarithmic at their points on (E), and each
+Both strict transforms remain logarithmic at their points on \(E\), and each
 has a two-dimensional first resonant kernel.  These dimensions are invariant
 under exchange of the two ordinary charts.
 
@@ -95,7 +95,7 @@ u_0\mapsto-1-u_0.
 
 The chart construction, block shear, transition exponents, and rank packet are
 equivariant under these involutions.  Thus the two pairs descend as Weil
-restrictions over (mathbb Q(\sqrt{-3})) and (mathbb Q(\sqrt5)), in accord
+restrictions over \(\mathbb Q(\sqrt{-3})\) and \(\mathbb Q(\sqrt5)\), in accord
 with Entries 727–728.
 
 ## Narrow result
@@ -129,7 +129,7 @@ physical classes.
 ## Next falsifier
 
 Resolve the rational non-simple crossing (D_2\cap D_3=(0,2)).  Derive the
-weighted Newton charts from the unequal pole orders ((-3,-2)), then compare
+weighted Newton charts from the unequal pole orders \((-3,-2)\), then compare
 its exceptional coefficient object with the invariant incidence cycle
 
 \[
