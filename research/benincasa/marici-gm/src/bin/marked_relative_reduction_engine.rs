@@ -530,6 +530,7 @@ fn main() {
         for axis in ['u', 'v'] {
             let g = geometry(u, v, axis);
             let mut wall_block = vec![vec![F::z(); 3]; 3];
+            let mut fixed_extension_block = vec![vec![F::z(); 3]; 4];
             for master in 0..12 {
                 let s = solve(&g, master, 8);
                 assert!(s.residual_zero);
@@ -553,14 +554,24 @@ fn main() {
                     for row in 0..3 {
                         wall_block[row][master] = s.values[row];
                     }
+                    for (out_row, row) in (8..12).enumerate() {
+                        assert!(s.fixed[row]);
+                        fixed_extension_block[out_row][master] = s.values[row];
+                    }
                 }
             }
-            wall_blocks.push((u, v, axis, wall_block));
+            wall_blocks.push((u, v, axis, wall_block, fixed_extension_block));
         }
     }
     assert_eq!(unknowns, 372);
     assert_eq!(min_fixed, 7);
     assert_eq!(fixed_masks, BTreeSet::from([3847u16]));
+    let fixed_extension_nonzero = wall_blocks
+        .iter()
+        .flat_map(|(_, _, _, _, block)| block.iter().flatten())
+        .filter(|q| q.0 != 0)
+        .count();
+    assert_eq!(fixed_extension_nonzero, 72);
     println!("{{");
     println!("  \"schema\": \"marici.benincasa.marked_relative_reduction_engine.v1\",");
     println!("  \"prime\": {},", P);
@@ -575,18 +586,20 @@ fn main() {
     println!("  \"fixed_coordinate_masks_decimal\": [3847],");
     println!("  \"all_cleared_identities_zero\": true,");
     println!("  \"absolute_to_marked_block_zero\": true,");
+    println!("  \"fixed_extension_e6_e9_nonzero_entries\": {},", fixed_extension_nonzero);
     println!("  \"wall_quotient_blocks\": [");
-    for (sample_index, (u, v, axis, block)) in wall_blocks.iter().enumerate() {
+    for (sample_index, (u, v, axis, block, fixed_extension)) in wall_blocks.iter().enumerate() {
         let rows: Vec<String> = block
             .iter()
             .map(|row| format!("[{}]", row.iter().map(|q| q.0.to_string()).collect::<Vec<_>>().join(",")))
             .collect();
         println!(
-            "    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"matrix_mod_p\":[{}]}}{}",
+            "    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"matrix_mod_p\":[{}],\"fixed_extension_e6_e9_mod_p\":[{}]}}{}",
             u,
             v,
             axis,
             rows.join(","),
+            fixed_extension.iter().map(|row| format!("[{}]", row.iter().map(|q| q.0.to_string()).collect::<Vec<_>>().join(","))).collect::<Vec<_>>().join(","),
             if sample_index + 1 == wall_blocks.len() { "" } else { "," }
         );
     }
