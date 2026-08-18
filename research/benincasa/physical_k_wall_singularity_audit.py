@@ -62,9 +62,33 @@ def remainder(left, right):
 
 
 def gcd_degree(left, right):
+    return len(polynomial_gcd(left, right)) - 1
+
+
+def polynomial_gcd(left, right):
     while right:
         left, right = right, remainder(left, right)
-    return len(left) - 1
+    if left:
+        scale = left[-1]
+        left = [coefficient / scale for coefficient in left]
+    return left
+
+
+def normal_derivative_value(wall, t, x, y, z):
+    a, b = wall_point(wall, t, x, y, z)
+    axis = 1 if wall == "g1" else 0
+    point = [a, b, x, y, z]
+    return exact_polynomial_derivative(k_value, point, axis)
+
+
+def exact_polynomial_derivative(function, point, axis):
+    weights = (1, -8, 0, 8, -1)
+    total = 0
+    for offset, weight in zip((-2, -1, 0, 1, 2), weights):
+        shifted = list(point)
+        shifted[axis] += offset
+        total += weight * function(*shifted)
+    return Fraction(total, 12)
 
 
 def solve_pair(first, second, x, y, z):
@@ -83,10 +107,17 @@ def main():
         for wall in WALLS:
             values = [k_value(*wall_point(wall, t, x, y, z), x, y, z) for t in range(5)]
             polynomial = interpolate(values)
+            repeated_factor = polynomial_gcd(polynomial, derivative(polynomial))
             restrictions[wall] = {
                 "degree": len(polynomial) - 1,
-                "gcd_with_derivative_degree": gcd_degree(polynomial, derivative(polynomial)),
+                "gcd_with_derivative_degree": len(repeated_factor) - 1,
             }
+            if wall in ("g1", "g2", "g3"):
+                normal_values = [normal_derivative_value(wall, t, x, y, z) for t in range(5)]
+                normal_polynomial = interpolate(normal_values)
+                restrictions[wall]["repeated_factor_normal_derivative_gcd_degree"] = gcd_degree(
+                    repeated_factor, normal_polynomial
+                )
         collisions = []
         parallel = []
         for first, second in combinations(WALLS, 2):
@@ -110,12 +141,17 @@ def main():
     assert not any(
         row["K_E_zero"] for fiber in fibers for row in fiber["finite_pair_collisions"]
     )
+    assert all(
+        fiber["restrictions"][wall]["repeated_factor_normal_derivative_gcd_degree"] == 0
+        for fiber in fibers for wall in ("g1", "g2", "g3")
+    )
     print(json.dumps({
         "schema": "marici.physical-k-wall-singularity-audit.v1",
         "fibers": fibers,
         "restriction_gcd_degree_pattern": expected_gcd_degrees,
         "shared_wall_restrictions_squarefree": False,
         "occurrence_wall_restrictions_squarefree": True,
+        "shared_tangency_normal_coefficients_nonzero": True,
         "finite_marked_pair_K_collisions": 0,
     }, sort_keys=True))
 
