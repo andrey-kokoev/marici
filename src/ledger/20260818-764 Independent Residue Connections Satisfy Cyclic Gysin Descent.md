@@ -7,8 +7,8 @@ date: 2026-08-18
 
 ## Frozen chart geometries
 
-Let (K_{12}(x,y,z;a,b)) and (K_{1,12}) be the closed
-Cayley--Menger residue polynomials with (c=-E).  The other two charts were
+Let \(K_{12}(x,y,z;a,b)\) and \(K_{1,12}\) be the closed
+Cayley--Menger residue polynomials with \(c=-E\).  The other two charts were
 constructed directly from the labelled cyclic source data:
 
 \[
@@ -19,7 +19,7 @@ K_{23}(x,y,z;b,c)=K_{12}(y,z,x;a,b),
 K_{31}(x,y,z;c,a)=K_{12}(z,x,y;a,b),
 \]
 
-and likewise for (K_1).  Thus the retained coordinates are respectively
+and likewise for \(K_1\).  Thus the retained coordinates are respectively
 
 \[
 (a,b),\qquad(b,c),\qquad(c,a).
@@ -28,7 +28,7 @@ and likewise for (K_1).  Thus the retained coordinates are respectively
 For each chart and each base derivative, the four master derivatives were
 reduced independently modulo that chart's own Jacobian exact image.  Neither
 target connection was obtained by conjugating or transporting the existing
-(G_{12}) matrix.
+\(G_{12}\) matrix.
 
 ## Source-derived homogeneous gauge
 
@@ -40,7 +40,7 @@ K_0\mapsto z^6K_0,
 K_1\mapsto z^5K_1.
 \]
 
-Since (da\wedge db) has degree two, the raw master weights are
+Since \(da\wedge db\) has degree two, the raw master weights are
 
 \[
 \boxed{(-2,-1,1,1)}
@@ -49,9 +49,9 @@ Since (da\wedge db) has degree two, the raw master weights are
 for the double-pole class and the three simple-pole classes
 
 \[
-\frac{K_1,da\wedge db}{K_0^{3/2}},quad
-\frac{da\wedge db}{K_0^{1/2}},quad
-\frac{a^2da\wedge db}{K_0^{1/2}},quad
+\frac{K_1\,da\wedge db}{K_0^{3/2}},\quad
+\frac{da\wedge db}{K_0^{1/2}},\quad
+\frac{a^2da\wedge db}{K_0^{1/2}},\quad
 \frac{b^2da\wedge db}{K_0^{1/2}}.
 \]
 
@@ -69,15 +69,15 @@ For
 the normalized base map and scale are
 
 \[
-U=\frac{2u}{u-v},qquad
-V=\frac{2(2-v)}{u-v},qquad
+U=\frac{2u}{u-v},\qquad
+V=\frac{2(2-v)}{u-v},\qquad
 z=\frac{u-v}{2}.
 \]
 
 The cyclic residue orientations
 
 \[
-da\wedge db,quad db\wedge dc,quad dc\wedge da
+da\wedge db,\quad db\wedge dc,\quad dc\wedge da
 \]
 
 all transport with sign (+1).  With
@@ -90,7 +90,7 @@ the independently reduced connections satisfy
 
 \[
 \boxed{
-A_i=dS,S^{-1}+S\rho^*A_{i+1}S^{-1}
+A_i=dS\,S^{-1}+S\rho^*A_{i+1}S^{-1}
 }
 
 for all three edges
@@ -115,7 +115,7 @@ all 24 points.
 
 The rank-four Gysin extension is a genuine cyclic occurrence object at the
 generic connection level.  Entry 761's failure was caused by two type
-errors: reuse of the fixed (G_{12}) connection for the target charts and
+errors: reuse of the fixed \(G_{12}\) connection for the target charts and
 use of infinity-coordinate rather than physical-energy homogeneity.
 
 This does not split the extension.  Entry 763's complete-pole nonsplitting
