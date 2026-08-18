@@ -5,7 +5,10 @@ from __future__ import annotations
 import json
 from fractions import Fraction
 
-from physical_k_wall_singularity_audit import interpolate, k_value, wall_point
+from physical_k_wall_singularity_audit import (
+    gcd_degree, interpolate, k_value, polynomial_gcd, wall_point
+)
+from physical_bulk_wall_connection_residue import q_values
 
 
 def multiply(left, right):
@@ -84,20 +87,42 @@ def main():
     ]
     discriminant_samples = {wall: [] for wall in ("g1", "g2", "g3")}
     for x, y, z in points:
+        generic_energy_letters = all((x+y+z, x+y-z, x-y+z, -x+y+z))
         factors = {}
         for wall in ("g1", "g2", "g3"):
             factor = reduced_factor(wall, x, y, z)
             discriminant = factor[1] ** 2 - 4 * factor[2] * factor[0]
+            wall_mark = {"g1": "g1", "g2": "g2", "g3": "g3"}[wall]
+            numerator_values = []
+            denominator_values = []
+            for t in range(5):
+                a, b = wall_point(wall, t, x, y, z)
+                q = q_values(a, b, x, y, z)
+                numerator_values.append(q["g23"] + q["g31"])
+                denominator = 1
+                for name, value in q.items():
+                    if name != wall_mark:
+                        denominator *= value
+                denominator_values.append(denominator)
+            numerator_polynomial = interpolate(numerator_values)
+            denominator_polynomial = interpolate(denominator_values)
             factors[wall] = {
                 "coefficients_constant_to_quadratic": [str(value) for value in factor],
                 "discriminant": str(discriminant),
                 "discriminant_nonzero": discriminant != 0,
+                "physical_numerator_gcd_degree": gcd_degree(factor, numerator_polynomial),
+                "remaining_marked_denominator_gcd_degree": gcd_degree(factor, denominator_polynomial),
             }
             discriminant_samples[wall].append(((x, y, z), discriminant))
-        fibers.append({"kinematics": [x, y, z], "factors": factors})
+        fibers.append({"kinematics": [x, y, z], "generic_energy_letters": generic_energy_letters, "factors": factors})
     assert all(
         row["discriminant_nonzero"]
         for fiber in fibers for row in fiber["factors"].values()
+    )
+    assert all(
+        row["physical_numerator_gcd_degree"] == 0
+        and row["remaining_marked_denominator_gcd_degree"] == 0
+        for fiber in fibers if fiber["generic_energy_letters"] for row in fiber["factors"].values()
     )
     discriminant_polynomials = {
         wall: solve_homogeneous(samples) for wall, samples in discriminant_samples.items()
@@ -115,6 +140,10 @@ def main():
         "exact_square_identities_verified": len(fibers) * 3,
         "fibers": fibers,
         "all_reduced_factors_squarefree_on_sweep": True,
+        "generic_fibers_with_all_six_physical_tangency_residues_nonzero": sum(
+            fiber["generic_energy_letters"] for fiber in fibers
+        ),
+        "nonzero_residue_scope": "away from signed-energy conductor letters",
         "discriminant_polynomials": {
             wall: {f"x^{i}y^{j}z^{k}": str(value) for (i, j, k), value in polynomial.items() if value}
             for wall, polynomial in discriminant_polynomials.items()
