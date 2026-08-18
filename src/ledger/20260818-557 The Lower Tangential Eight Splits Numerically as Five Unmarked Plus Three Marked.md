@@ -4,6 +4,7 @@ date: 2026-08-18
 title: The Lower Tangential Eight Splits Numerically as Five Unmarked Plus Three Marked
 authors:
   - marici.Benincasa
+  - marici.Nima
 ---
 
 # The Lower Tangential Eight Splits Numerically as Five Unmarked Plus Three Marked
@@ -22,7 +23,7 @@ q_{g1}=0
 \]
 
 and the same tangent derivations and saturation convention as Entry 556.
-Compare only these two source-defined master functions:
+The endpoint comparison uses these two source-defined master functions:
 
 \[
 \Phi_{\rm unmarked}=K^5,
@@ -67,11 +68,34 @@ Therefore
 with the three-class excess appearing exactly when the two finite marked
 sections are loaded.
 
+Computing the two intermediate deletion faces gives the complete wall cube
+
+\[
+\boxed{
+\begin{array}{c|cccc}
+S&\varnothing&\{q_{g2}\}&\{q_{g3}\}&\{q_{g2},q_{g3}\}\\
+\hline
+r_S&5&6&6&8.
+\end{array}}
+\]
+
+Its Möbius dimensions are
+
+\[
+\boxed{m_S=(5,1,1,1).}
+\]
+
+Thus the numerical excess three is resolved more narrowly into one
+\(q_{g2}\) grade, one \(q_{g3}\) grade, and one transverse pair grade. This
+law replicates for all four faces at two primes, two generic fibers, and the
+\(X_1=0\) soft fiber: \(24\) exact runs in total.
+
 ## Typing boundary
 
-This is not yet a direct-sum theorem. The two critical ideals use different
-logarithmic differentials, so containment of their standard-monomial sets does
-not construct a chain map, submodule, or projector. The safe statement is:
+This is not yet a direct-sum theorem. The critical ideals on different
+deletion faces use different logarithmic differentials, so containment of
+their standard-monomial sets and Möbius inversion do not construct chain maps,
+submodules, projectors, or a direct sum. The safe statement is:
 
 \[
 \text{unmarked Cayley--Menger wall rank }5
@@ -92,4 +116,5 @@ rank-five object maps to Entry 549's resolved boundary packet.
 
 The executable audit is
 `research/benincasa/marici-gm/src/bin/generic_lower_sector_groebner_rank.rs`
-with `TANGENTIAL_WALL=q_g1` and `TANGENTIAL_MARKS=none|full`.
+with the tangential wall set to \(q_{g1}\) and the four marked selections
+\(\varnothing,q_{g2},q_{g3},\{q_{g2},q_{g3}\}\).
