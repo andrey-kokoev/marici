@@ -1460,6 +1460,68 @@ fn main() {
         println!("{{\"schema\":\"marici.benincasa.soft_axis_exact_symbol_shells.v1\",\"field_modulus\":{},\"soft_center\":\"E=X2=0\",\"leading_data\":{{\"K4\":\"a^4\",\"L1\":\"b\",\"L2\":\"a\"}},\"eventual_full_rank_from\":{},\"shells\":[{}]}}",P,eventual_full_from.map(|x|x.to_string()).unwrap_or_else(||"null".to_string()),rows.join(","));
         return;
     }
+    if mode == "dlog-soft-axis-filtered-module" {
+        let g=geometry(0,2,'u');
+        let sectors=[(1u8,1u8),(1,0),(0,1),(0,0)];
+        let mut rows=Vec::new();
+        let mut quotient_bases=Vec::new();
+        let mut all_divisible_by_a4=true;
+        let mut equality_from=None;
+        for cutoff in 5u8..=40 {
+            let target=monomials(cutoff);
+            let pos:BTreeMap<Mon,usize>=target.iter().enumerate().map(|(i,m)|(*m,i)).collect();
+            let mut cols=Vec::<Vec<F>>::new();
+            for (sa,sb) in sectors {
+                let shift=7-sa-sb;
+                if cutoff<shift { continue; }
+                for m in monomials(cutoff-shift) {
+                    for is_q in [false,true] {
+                        let q=exact(&g,sa,sb,m,is_q);
+                        all_divisible_by_a4 &= q.0.keys().all(|(i,_)|*i>=4);
+                        let mut col=vec![F::z();target.len()];
+                        for (mon,c) in q.0 {
+                            assert!(mon.0+mon.1<=cutoff);
+                            col[*pos.get(&mon).expect("filtered target monomial absent")]=c;
+                        }
+                        cols.push(col);
+                    }
+                }
+            }
+            let rank=matrix_rank(transpose(&cols));
+            let ideal_dim=if cutoff>=4 {
+                let d=(cutoff-4) as usize;
+                (d+1)*(d+2)/2
+            } else { 0 };
+            let quotient_dim=target.len()-ideal_dim;
+            let deficiency=target.len()-rank;
+            let image_equals_a4_ideal=all_divisible_by_a4 && rank==ideal_dim;
+            if cutoff==16 || cutoff==20 {
+                let mut augmented=cols.clone();
+                let mut current=rank;
+                let mut basis=Vec::new();
+                for (ri,mon) in target.iter().enumerate().filter(|(_,m)|m.0>=4) {
+                    let mut unit=vec![F::z();target.len()];
+                    unit[ri]=F::o();
+                    augmented.push(unit);
+                    let next=matrix_rank(transpose(&augmented));
+                    if next>current {
+                        basis.push(format!("[{},{}]",mon.0,mon.1));
+                        current=next;
+                    } else {
+                        augmented.pop();
+                    }
+                    if current==ideal_dim { break; }
+                }
+                assert_eq!(current,ideal_dim);
+                quotient_bases.push(format!("{{\"cutoff\":{cutoff},\"monomials\":[{}]}}",basis.join(",")));
+            }
+            rows.push(format!("{{\"cutoff\":{cutoff},\"rows\":{},\"columns\":{},\"rank\":{rank},\"ideal_a4_dimension\":{ideal_dim},\"cokernel_dimension\":{deficiency},\"expected_Fab_mod_a4_dimension\":{quotient_dim},\"image_equals_a4_ideal\":{image_equals_a4_ideal}}}",target.len(),cols.len()));
+            if image_equals_a4_ideal && equality_from.is_none() { equality_from=Some(cutoff); }
+            if !image_equals_a4_ideal { equality_from=None; }
+        }
+        println!("{{\"schema\":\"marici.benincasa.soft_axis_filtered_exact_module.v2\",\"field_modulus\":{},\"soft_center\":\"E=X2=0\",\"full_data\":{{\"K\":\"a^4\",\"L1\":\"b+1\",\"L2\":\"a\"}},\"all_exact_images_divisible_by_a4\":{all_divisible_by_a4},\"eventual_image_equals_a4_ideal_from\":{},\"finite_ideal_quotient_bases\":[{}],\"shells\":[{}]}}",P,equality_from.map(|x|x.to_string()).unwrap_or_else(||"null".to_string()),quotient_bases.join(","),rows.join(","));
+        return;
+    }
     if mode == "dlog-smith-quadratic" {
         let order=24usize;
         let mut results=Vec::new();
