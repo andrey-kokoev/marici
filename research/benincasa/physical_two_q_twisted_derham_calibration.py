@@ -35,14 +35,14 @@ PAIRS = {
 EXPECTED = {"lower": 9, "g1_G12": 18, "g2_G12": 18}
 
 
-def filtered_dimension(
+def filtered_presentation(
     q_polynomials,
     k_depth: int,
     q_depth: int,
     ambient_degree: int,
     cutoff_degree: int,
     gamma: int,
-) -> int:
+):
     q_count = len(q_polynomials)
     column_degree = ambient_degree + 4
     low_monomials = monomials_at_most(cutoff_degree)
@@ -154,6 +154,26 @@ def filtered_dimension(
                         )
                     add_pivot(row, pivots)
 
+    return ordered_columns, columns, low_labels, pivots
+
+
+def filtered_dimension(
+    q_polynomials,
+    k_depth: int,
+    q_depth: int,
+    ambient_degree: int,
+    cutoff_degree: int,
+    gamma: int,
+) -> int:
+    _, _, low_labels, pivots = filtered_presentation(
+        q_polynomials,
+        k_depth,
+        q_depth,
+        ambient_degree,
+        cutoff_degree,
+        gamma,
+    )
+    low_count = len(low_labels)
     killed_low = sum(pivot < low_count for pivot in pivots)
     return low_count - killed_low
 
