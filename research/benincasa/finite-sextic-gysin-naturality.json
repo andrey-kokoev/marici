@@ -1,0 +1,40 @@
+{
+  "schema": "marici.benincasa.finite-sextic-gysin-naturality.v1",
+  "date": "2026-08-18",
+  "inputs": [
+    "research/nima/generic-finite-collision-cyclic-orbits.json",
+    "research/benincasa/finite-sextic-local-kato-gysin.json"
+  ],
+  "cycle": "sigma:(a,b,c)->(b,c,a), (Xi,Pi)->(X_{i+1},P_{i+1})",
+  "source_three_form": "da wedge db wedge dc",
+  "cyclic_volume_sign": 1,
+  "residue_chart_orientations": {
+    "G12": "da wedge db",
+    "G23": "db wedge dc",
+    "G31": "dc wedge da",
+    "transition_unit_each_step": 1
+  },
+  "representative_orientation_signs": [
+    {"pair": ["g1", "g2"], "sign": -1},
+    {"pair": ["g1", "g3"], "sign": -1},
+    {"pair": ["g1", "G23"], "sign": -1},
+    {"pair": ["g2", "g3"], "sign": 1},
+    {"pair": ["g2", "G31"], "sign": 1},
+    {"pair": ["g3", "G23"], "sign": -1},
+    {"pair": ["g3", "G31"], "sign": 1},
+    {"pair": ["G23", "G31"], "sign": 1}
+  ],
+  "branch_transition": {
+    "mechanism": "simultaneous row-column permutation of the Cayley-Menger matrix",
+    "determinant_unit": 1,
+    "double_cover_map": "w_target=w_source",
+    "kummer_line_unit": 1
+  },
+  "orbit_count": 8,
+  "labelled_occurrence_count": 24,
+  "stabilizers": "trivial for every labelled occurrence",
+  "naturality": "For every representative, sigma transports the ordered double-residue generator, marked Jacobian sign, and anti-invariant 1/w line with total unit +1; all three-step squares close identically.",
+  "scalar_invariant_exception": "The (G23,G31) external sextic is scalar invariant, but its three labelled Gysin occurrences remain distinct and cycle with unit +1.",
+  "scope": "generic smooth loci of the eight sextics; higher vanishing cycles at singular subloci are excluded",
+  "allocator_claim": "seqclaim-0b443d09892c275140c21d36"
+}
