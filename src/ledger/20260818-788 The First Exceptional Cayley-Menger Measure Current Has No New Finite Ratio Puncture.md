@@ -34,7 +34,7 @@ and resolve the collapsed loop boundary from Entry 786 by
 
 \[
 A-B=u\xi,
-\qquad A=Y_{12}^2,quad B=Y_{23}^2,quad C=Y_{31}^2.
+\qquad A=Y_{12}^2,\quad B=Y_{23}^2,\quad C=Y_{31}^2.
 \]
 
 Exact determinant expansion gives
