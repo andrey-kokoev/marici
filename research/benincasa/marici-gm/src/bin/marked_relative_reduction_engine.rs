@@ -520,6 +520,7 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
 
 fn main() {
     let samples = [(7_u64, 11_u64), (13, 19), (23, 29)];
+    let mut wall_blocks = Vec::new();
     let mut min_fixed = 12;
     let mut rank_range = (usize::MAX, 0usize);
     let mut fixed_masks = BTreeSet::new();
@@ -528,6 +529,7 @@ fn main() {
     for (u, v) in samples {
         for axis in ['u', 'v'] {
             let g = geometry(u, v, axis);
+            let mut wall_block = vec![vec![F::z(); 3]; 3];
             for master in 0..12 {
                 let s = solve(&g, master, 8);
                 assert!(s.residual_zero);
@@ -546,8 +548,14 @@ fn main() {
                 unknowns = s.unknowns;
                 if master >= 3 {
                     assert!(s.values[..3].iter().all(|q| q.0 == 0));
+                } else {
+                    assert!(s.fixed[..3].iter().all(|q| *q));
+                    for row in 0..3 {
+                        wall_block[row][master] = s.values[row];
+                    }
                 }
             }
+            wall_blocks.push((u, v, axis, wall_block));
         }
     }
     assert_eq!(unknowns, 372);
@@ -567,6 +575,22 @@ fn main() {
     println!("  \"fixed_coordinate_masks_decimal\": [3847],");
     println!("  \"all_cleared_identities_zero\": true,");
     println!("  \"absolute_to_marked_block_zero\": true,");
+    println!("  \"wall_quotient_blocks\": [");
+    for (sample_index, (u, v, axis, block)) in wall_blocks.iter().enumerate() {
+        let rows: Vec<String> = block
+            .iter()
+            .map(|row| format!("[{}]", row.iter().map(|q| q.0.to_string()).collect::<Vec<_>>().join(",")))
+            .collect();
+        println!(
+            "    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"matrix_mod_p\":[{}]}}{}",
+            u,
+            v,
+            axis,
+            rows.join(","),
+            if sample_index + 1 == wall_blocks.len() { "" } else { "," }
+        );
+    }
+    println!("  ],");
     println!(
         "  \"status\": \"generic four-stratum engine passes; wall Laurent replication pending\""
     );
