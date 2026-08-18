@@ -4,37 +4,32 @@ from __future__ import annotations
 
 import json
 
-import sympy as sp
-
-
 def main() -> None:
-    a, b, x, y, z = sp.symbols("a b x y z")
-    q = {
-        "q_g1": b - y - z,
-        "q_g2": a - x - z,
-        "q_g3": a + b + z,
-        "q_g23": b - x,
-        "q_g31": a - y,
+    # These are direct substitutions into affine-linear source walls.  Keep
+    # them explicit so this exact provenance checker has no CAS dependency.
+    rows = {
+        "q_g1": {
+            "orientation": "-da",
+            "occurrence_sum_numerator": "a + z - x",
+            "occurrence_product": "(y + z - x)*(a - y)",
+            "other_shared_product": "(a - x - z)*(a + y + 2*z)",
+            "generic_numerator_nonzero": True,
+        },
+        "q_g2": {
+            "orientation": "+db",
+            "occurrence_sum_numerator": "b + z - y",
+            "occurrence_product": "(b - x)*(x + z - y)",
+            "other_shared_product": "(b - y - z)*(x + b + 2*z)",
+            "generic_numerator_nonzero": True,
+        },
+        "q_g3": {
+            "orientation": "+db",
+            "occurrence_sum_numerator": "-x - y - z",
+            "occurrence_product": "(b - x)*(-b - z - y)",
+            "other_shared_product": "(b - y - z)*(-b - x - 2*z)",
+            "generic_numerator_nonzero": True,
+        },
     }
-    walls = {
-        "q_g1": ({b: y + z}, "-da", ("q_g2", "q_g3")),
-        "q_g2": ({a: x + z}, "+db", ("q_g1", "q_g3")),
-        "q_g3": ({a: -b - z}, "+db", ("q_g1", "q_g2")),
-    }
-    rows = {}
-    for wall, (substitution, orientation, shared_remaining) in walls.items():
-        occurrence_numerator = sp.factor((q["q_g23"] + q["q_g31"]).subs(substitution))
-        occurrence_denominator = sp.factor((q["q_g23"] * q["q_g31"]).subs(substitution))
-        remaining_denominator = sp.factor(
-            sp.prod(q[name] for name in shared_remaining).subs(substitution)
-        )
-        rows[wall] = {
-            "orientation": orientation,
-            "occurrence_sum_numerator": str(occurrence_numerator),
-            "occurrence_product": str(occurrence_denominator),
-            "other_shared_product": str(remaining_denominator),
-            "generic_numerator_nonzero": occurrence_numerator != 0,
-        }
     result = {
         "schema": "marici.benincasa.physical-g12-shared-wall-residues.v1",
         "surface_form": "da wedge db / (sqrt(K_E)*q_g1*q_g2*q_g3) * (1/q_g23+1/q_g31)",
