@@ -335,6 +335,45 @@ fn localization_map(row: &Row, lower: &Reduction, higher: &Reduction, bit: usize
     reduce(image, &higher.pivots)
 }
 
+fn parameter_derivative(row: &Row, explicit_dot: &Row, r: &Reduction, kd: &Poly, qd: &[Poly; 3]) -> Row {
+    let mut out = explicit_dot.clone();
+    for (&col, &coef) in row {
+        let (kp, qps, mon) = r.labels[col];
+        if kp < 2 {
+            add_poly(&mut out, &r.cols, kp + 1, qps, mon, kd, mm(coef, 5 - kp as i64));
+        }
+        for qi in 0..3 {
+            if qps[qi] > 0 && qps[qi] < 2 {
+                let mut next = qps;
+                next[qi] += 1;
+                add_poly(&mut out, &r.cols, kp, next, mon, &qd[qi], -mm(coef, qps[qi] as i64));
+            }
+        }
+    }
+    reduce(out, &r.pivots)
+}
+
+fn localized_jet(row: &Row, lower: &Reduction, higher: &Reduction, bit: usize, q: &Poly, qd: &Poly) -> (Row, Row) {
+    let (mut value, mut dot) = (Row::new(), Row::new());
+    for (&col, &coef) in row {
+        let (kp, mut qps, mon) = lower.labels[col];
+        qps[bit] = 1;
+        add_poly(&mut value, &higher.cols, kp, qps, mon, q, coef);
+        add_poly(&mut dot, &higher.cols, kp, qps, mon, qd, coef);
+    }
+    (value, dot)
+}
+
+fn parameter_k_derivative(x: i64, y: i64, z: i64, axis: usize) -> Poly {
+    let mut out = Poly::default();
+    for (offset, weight) in [(-2_i64, 1_i64), (-1, -8), (1, 8), (2, -1)] {
+        let mut point = [x, y, z];
+        point[axis] += offset;
+        out = out.add(&cayley_menger(point[0], point[1], point[2]).scale(weight));
+    }
+    out.scale(inv(12))
+}
+
 fn cayley_menger(x: i64, y: i64, z: i64) -> Poly {
     let c = Poly::var(0);
     let a = Poly::var(1);
@@ -476,6 +515,30 @@ fn main() {
                     equal &= left_top == right_top;
                 }
                 println!("square={base:03b} bits={i},{j} path_independent={equal}");
+            }
+        }
+    }
+    let directions = [
+        ("x", parameter_k_derivative(x, y, z, 0), [Poly::con(1), Poly::default(), Poly::con(1)]),
+        ("y", parameter_k_derivative(x, y, z, 1), [Poly::default(), Poly::con(1), Poly::con(1)]),
+    ];
+    for (direction, kd, qd) in &directions {
+        for lower_mask in 0_u8..8 {
+            for bit in 0..3 {
+                if lower_mask & (1 << bit) != 0 { continue; }
+                let higher_mask = lower_mask | (1 << bit);
+                let lower = &final_reductions[&lower_mask];
+                let higher = &final_reductions[&higher_mask];
+                let mut natural = true;
+                for &mon in &lower.survivors {
+                    let source = Row::from([(lower.cols[&(0, lower.target_q, mon)], 1)]);
+                    let conn = parameter_derivative(&source, &Row::new(), lower, kd, qd);
+                    let right = localization_map(&conn, lower, higher, bit, &qs[bit]);
+                    let (localized, explicit_dot) = localized_jet(&source, lower, higher, bit, &qs[bit], &qd[bit]);
+                    let left = parameter_derivative(&localized, &explicit_dot, higher, kd, qd);
+                    natural &= left == right;
+                }
+                println!("connection_direction={direction} edge={lower_mask:03b}->{higher_mask:03b} natural={natural}");
             }
         }
     }
