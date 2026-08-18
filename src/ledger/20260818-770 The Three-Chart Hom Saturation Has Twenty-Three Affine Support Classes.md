@@ -86,6 +86,8 @@ local pole order on at least one of these 23 affine support classes.
 - `research/benincasa/hom-support-orbits-mod-chart-units.json`;
 - Entries 767--769;
 - allocator claim `seqclaim-033623dd8219e7dbc61ca443`.
+- epistemic event
+  `ev-000000000384-8fef3841-c146-4084-8260-fa0113a01a88`.
 
 ## Next falsifier
 
