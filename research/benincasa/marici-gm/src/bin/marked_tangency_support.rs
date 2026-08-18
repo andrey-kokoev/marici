@@ -1875,6 +1875,58 @@ fn main() {
         println!("{{\"schema\":\"marici.benincasa.gauge_dlog_divisor_transverse_jets.v1\",\"results\":[{}]}}",results.join(","));
         return;
     }
+    if mode == "conic-limit" {
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for u0 in [3u64,5,7,11,19,37] {
+                let u=F::n(u0);
+                let v=u.pow(2).mul(F::n(2)).sub(u).add(F::n(2));
+                let center=solve(&geometry(u0,v.0,'u'),8,degree);
+                assert_eq!(center.gauge_rank,3);
+
+                // Approach the conic transversely in the source coordinate
+                // v-v_conic(u).  The generic gauge plane has the stable
+                // pivot chart (3,4); reconstruct its actual limit rather
+                // than selecting two rows from the enhanced special fiber.
+                let samples:Vec<(F,Vec<Vec<F>>)>=
+                    (1u64..=65).map(|t| {
+                        let sol=solve(&geometry(u0,v.add(F::n(t)).0,'u'),8,degree);
+                        assert_eq!(sol.gauge_rank,2);
+                        assert_eq!(sol.gauge_pivot_mask,24);
+                        (F::n(t),sol.gauge_rref)
+                    }).collect();
+                let mut limit=vec![vec![F::z();12];2];
+                let mut regular=true;
+                let mut max_num_degree=0usize;
+                let mut max_den_degree=0usize;
+                for i in 0..2 { for j in 0..12 {
+                    let scalar:Vec<(F,F)>=samples.iter()
+                        .map(|(t,g)|(*t,g[i][j])).collect();
+                    let (n,d)=rational_fit(&scalar,20);
+                    max_num_degree=max_num_degree.max(n.len().saturating_sub(1));
+                    max_den_degree=max_den_degree.max(d.len().saturating_sub(1));
+                    if peval(&d,F::z()).0==0 { regular=false; }
+                    else { limit[i][j]=peval(&n,F::z()).mul(peval(&d,F::z()).inv()); }
+                }}
+                let limit_rank=matrix_rank(limit.clone());
+                let mut combined=limit.clone();
+                combined.extend(center.gauge_rref.clone());
+                let (combined_rank,_,combined_pivots)=pivot_minor(combined);
+                let (_,_,limit_pivots)=pivot_minor(limit.clone());
+                let extra_pivots:Vec<usize>=combined_pivots.iter()
+                    .copied().filter(|p|!limit_pivots.contains(p)).collect();
+                let extra=&center.gauge_rref[2];
+                let extra_support_mask=extra.iter().enumerate()
+                    .fold(0u16,|mask,(j,q)|if q.0!=0 { mask|(1u16<<j) } else { mask });
+                results.push(format!(
+                    "{{\"degree\":{degree},\"u\":{u0},\"v\":{},\"limit_regular\":{regular},\"limit_rank\":{limit_rank},\"special_rank\":{},\"combined_rank\":{combined_rank},\"quotient_rank\":{},\"limit_pivots\":{:?},\"extra_pivots\":{:?},\"extra_support_mask\":{extra_support_mask},\"extra_coordinates\":{:?},\"max_num_degree\":{max_num_degree},\"max_den_degree\":{max_den_degree}}}",
+                    v.0,center.gauge_rank,combined_rank-limit_rank,limit_pivots,extra_pivots,
+                    extra.iter().map(|q|q.0).collect::<Vec<_>>()));
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_fitting_conic_limit_line.v1\",\"transverse_coordinate\":\"v-v_conic(u)\",\"basis_order\":[\"Omega111\",\"Omega101\",\"Omega110\",\"e1\",\"e2\",\"e3\",\"e4\",\"e5\",\"e6\",\"e7\",\"e8\",\"e9\"],\"results\":[{}]}}",results.join(","));
+        return;
+    }
     if mode == "conic-jet" {
         let mut results=Vec::new();
         for degree in [8u8,10] {
