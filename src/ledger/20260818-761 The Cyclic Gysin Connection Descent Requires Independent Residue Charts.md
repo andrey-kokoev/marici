@@ -33,7 +33,7 @@ The raw final-block representatives have homogeneity weights
 (-1,0,2,2)
 \]
 
-for the double-pole class and the three simple-pole classes.  If (P(u,v))
+for the double-pole class and the three simple-pole classes.  If \(P(u,v)\)
 is the already derived Gysin-adapted frame, the only gauges induced by the
 two possible source/target homogeneity conventions are
 
@@ -57,7 +57,7 @@ internally coherent.
 ## Connection audit
 
 The only serialized rank-four connection presently available is the
-(q_{\mathcal G_{12}})-residue connection.  Reusing it as the target chart
+\(q_{\mathcal G_{12}}\)-residue connection.  Reusing it as the target chart
 would require
 
 \[
