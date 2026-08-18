@@ -28,6 +28,16 @@ fn k0(a: i64, b: i64, x: i64, y: i64, z: i64) -> i64 {
         mul(z2, mul(x2,y2)),
     ].into_iter().fold(0, add)
 }
+fn mixed_occurrence_formula(x:i64,y:i64,z:i64)->i64 {
+    let e=add(add(x,y),z);
+    let s=add(x,y);
+    let p=mul(x,y);
+    let cubic=add(
+        add(mul(2,mul(mul(e,e),e)),-mul(6,mul(s,mul(e,e)))),
+        add(mul(add(mul(5,mul(s,s)),mul(4,p)),e),-mul(8,mul(p,s)))
+    );
+    mul(mul(mul(e,e),e),cubic)
+}
 
 fn trim(mut f: Vec<i64>) -> Vec<i64> {
     while f.last() == Some(&0) { f.pop(); }
@@ -116,9 +126,42 @@ fn audit(x:i64,y:i64,z:i64,last_name:&'static str,last_line:[i64;3]) {
     }
     println!("point=({x},{y},{z}) partner={last_name} four_mark_residue_rank={rank} five_pole_rank={}",15+rank);
 }
+fn audit_union(x:i64,y:i64,z:i64) {
+    let lines=[
+        ("q_g1",[0,1,-(y+z)]),
+        ("q_g2",[1,0,-(x+z)]),
+        ("q_g3",[1,1,z]),
+        ("q_g23",[0,1,-x]),
+        ("q_g31",[1,0,-y]),
+    ];
+    let mut rank=9_usize;
+    for i in 0..lines.len() {
+        let branch=branch_punctures(lines[i].1,x,y,z);
+        let mut finite=BTreeSet::new();
+        for j in 0..i {
+            if let Some(point)=intersection(lines[i].1,lines[j].1) {
+                if k0(point.0,point.1,x,y,z)!=0 { finite.insert(point); }
+            }
+        }
+        let increment=branch+finite.len()-1;
+        rank+=increment;
+        println!("union point=({x},{y},{z}) line={} branch_punctures={branch} finite_new={} increment={increment}",lines[i].0,finite.len());
+    }
+    println!("union point=({x},{y},{z}) five_mark_residue_rank={rank}");
+}
 fn main(){
+    for x in 1..18 {
+        for y in 1..18 {
+            for z in 1..18 {
+                assert_eq!(k0(y,x,x,y,z),mixed_occurrence_formula(x,y,z));
+            }
+        }
+    }
     audit(2,3,4,"q_g23",[0,1,-2]);
     audit(3,5,6,"q_g23",[0,1,-3]);
     audit(2,3,4,"q_g31",[1,0,-3]);
     audit(3,5,6,"q_g31",[1,0,-5]);
+    audit_union(2,3,4);
+    audit_union(3,5,6);
+    println!("mixed_occurrence_identity_verified_points={} identity=K0(y,x)=E^3*(2E^3-6sE^2+(5s^2+4p)E-8ps)",17_usize.pow(3));
 }
