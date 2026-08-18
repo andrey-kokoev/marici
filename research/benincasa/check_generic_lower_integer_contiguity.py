@@ -35,8 +35,9 @@ def main():
     formal_alpha_has_algebraic_power = False
     assert not formal_alpha_has_algebraic_power
 
-    # The logarithmic normal complex is [k --alpha--> k]. At alpha=17 over
-    # either Q or the census field, its differential is invertible.
+    # Logarithmic-source control: [k --alpha--> k] is acyclic at alpha=17.
+    # This does not model the ordinary source lattice; Entry 558 computes its
+    # surviving q^(-alpha)dlog(q) quotient class.
     prime = 32_003
     alpha_inverse = pow(alpha, prime - 2, prime)
     assert alpha * alpha_inverse % prime == 1
@@ -46,11 +47,11 @@ def main():
     print("contiguity_chain_map: f -> q_g1^-17*f")
     print("chain_identity: PASS")
     print("integer_specialized_localization_cone: TYPED")
-    print("normal_log_complex_at_17: ACYCLIC")
-    print("supported_residue_at_17: ZERO")
+    print("logarithmic_source_normal_complex_at_17: ACYCLIC")
+    print("ordinary_source_normal_cone: NOT_MODELED_HERE")
     print("supported_resonance_divisor: alpha=0")
     print("formal_generic_alpha_algebraic_contiguity: NO")
-    print("rank_five_generic_increment_as_supported_cone: FALSIFIED")
+    print("ordinary_source_rank_five_cone: SEE_ENTRY_558")
 
 
 if __name__ == "__main__":

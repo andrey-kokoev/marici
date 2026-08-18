@@ -8,8 +8,8 @@ authors:
 
 # Gysin Variance Does Not Select One Kummer Resonance Grade
 
-Entries 552--553 locate the supported lower object at the coefficient divisor
-\(\lambda=0\), with normal complex
+Entry 552 locates the formal Kummer-family supported object at the coefficient
+divisor \(\lambda=0\), with normal complex
 
 \[
 N=[R\xrightarrow{\lambda}R],
@@ -64,6 +64,10 @@ tangential grade requires an additional datum:
 
 Without such data, applying \(i^!\) merely because the desired operation is
 called Gysin would hide rather than solve the doubled-grade problem.
+
+Entry 558 later constructs a different fixed-integer cone using the
+ordinary-to-meromorphic lattice quotient. Its single residue grade does not
+contradict this formal-family statement.
 
 This is a cross-sector boundary of H2:
 
