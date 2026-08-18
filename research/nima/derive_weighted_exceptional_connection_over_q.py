@@ -43,6 +43,9 @@ def main() -> None:
 
     residues = {}
     ell = sp.Matrix([0, 1, 0, -3])
+    ell_connection_action = exceptional_t * ell
+    ell_horizontal = sp.Matrix.hstack(ell, ell_connection_action).rank() <= 1
+    horizontal_closure_basis = sp.Matrix.hstack(ell, ell_connection_action).columnspace()
     for label, point in (("plus", 1), ("minus", -1)):
         residue = exceptional_t.applyfunc(
             lambda x: sp.cancel(sp.limit((t - point) * x, t, point))
@@ -76,6 +79,15 @@ def main() -> None:
         "exceptional_t_connection": [
             [sp.sstr(exceptional_t[i, j]) for j in range(4)] for i in range(4)
         ],
+        "constant_exceptional_line": {
+            "generator": [sp.sstr(x) for x in ell],
+            "connection_action": [sp.sstr(x) for x in ell_connection_action],
+            "horizontal": ell_horizontal,
+            "minimum_horizontal_closure_rank": len(horizontal_closure_basis),
+            "minimum_horizontal_closure_basis": [
+                [sp.sstr(x) for x in vector] for vector in horizontal_closure_basis
+            ],
+        },
         "residues": residues,
     }
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
