@@ -91,7 +91,9 @@ def reduce_row(row: dict[int, int], pivots: dict[int, dict[int, int]]) -> dict[i
     return row
 
 
-def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
+def presentation(
+    names: tuple[str, ...], gamma: int, ambient: int, cutoff: int, minimum_q_level: int = 0
+):
     k, all_q = fiber_data(2, 3, 4)
     q_polynomials = [all_q[name] for name in names]
     q_count = len(names)
@@ -100,14 +102,14 @@ def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
     low_monomials = monomials_at_most(cutoff)
     low_labels = [
         (0, *levels, monomial)
-        for levels in product(range(2), repeat=q_count)
+        for levels in product(range(minimum_q_level, 2), repeat=q_count)
         for monomial in low_monomials
     ]
     low_set = set(low_labels)
     ambient_monomials = monomials_at_most(column_degree)
     ordered_columns = list(low_labels)
     for k_pole in range(k_depth + 1):
-        for levels in product(range(q_depth + 1), repeat=q_count):
+        for levels in product(range(minimum_q_level, q_depth + 1), repeat=q_count):
             ordered_columns.extend(
                 label for monomial in ambient_monomials
                 if (label := (k_pole, *levels, monomial)) not in low_set
@@ -118,7 +120,7 @@ def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
     q_derivatives = [[derivative(q, axis) for axis in range(2)] for q in q_polynomials]
 
     for k_pole in range(k_depth):
-        for levels in product(range(q_depth + 1), repeat=q_count):
+        for levels in product(range(minimum_q_level, q_depth + 1), repeat=q_count):
             if any(level == q_depth for level in levels if level > 0):
                 continue
             for axis in range(2):
@@ -140,7 +142,7 @@ def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
                     add_pivot(row, pivots)
 
     for k_pole in range(k_depth):
-        for levels in product(range(q_depth + 1), repeat=q_count):
+        for levels in product(range(minimum_q_level, q_depth + 1), repeat=q_count):
             for exponent in monomials_at_most(ambient - 4):
                 row = {columns[(k_pole, *levels, exponent)]: 1}
                 for term, coefficient in multiply_monomial(k, exponent, -1):
@@ -149,7 +151,7 @@ def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
 
     for q_index, q_polynomial in enumerate(q_polynomials):
         for k_pole in range(k_depth + 1):
-            for levels in product(range(q_depth + 1), repeat=q_count):
+            for levels in product(range(minimum_q_level, q_depth + 1), repeat=q_count):
                 if levels[q_index] == q_depth:
                     continue
                 raised = list(levels)
@@ -192,6 +194,19 @@ def filtered_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: in
     }
 
 
+def relative_top_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int) -> dict:
+    low_labels, columns, low_pivots, free_low = presentation(
+        names, gamma, ambient, cutoff, minimum_q_level=1
+    )
+    source_label = (0, *([1] * len(names)), (0, 0))
+    source = quotient_coordinates(source_label, columns, low_pivots, free_low)
+    return {
+        "relative_top_dimension": len(free_low),
+        "relative_source_nonzero": bool(source),
+        "relative_source_support": len(source),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--partner", choices=("g23", "g31"), default="g23")
@@ -201,11 +216,12 @@ def main() -> None:
     args = parser.parse_args()
     names = ("g1", "g2", "g3", args.partner)
     census = filtered_census(names, args.gamma % PRIME, args.ambient, args.cutoff)
+    relative = relative_top_census(names, args.gamma % PRIME, args.ambient, args.cutoff)
     print(json.dumps({
         "schema": "marici.physical-four-mark-residue-twisted-derham.v1",
         "prime": PRIME, "kinematics": [2, 3, 4], "marks": names,
         "gamma": args.gamma, "ambient_degree": args.ambient,
-        "cutoff_degree": args.cutoff, **census,
+        "cutoff_degree": args.cutoff, **census, **relative,
         "expected_dimension": 20, "calibration_passed": census["dimension"] == 20,
     }, sort_keys=True))
 
