@@ -3,7 +3,7 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# The Physical Positive Chamber Avoids Every Five-Pole Wall
+# 599 — The Physical Positive Chamber Avoids Every Five-Pole Wall
 
 ## Hard-to-vary claim
 
