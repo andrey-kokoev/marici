@@ -5,6 +5,15 @@ date: 2026-08-18
 ---
 # 710 — The Disappearing Triple Cell Does Not Lift the Signed Pair Relation
 
+## Scope correction after Entry 711
+
+Entry 711 was committed concurrently and computes a mixed diagonal and
+square-free second-normal initial form for the disappearing triple. The
+argument below applies to the **reduced constant-coefficient incidence
+boundary after specialization**. It does not compute or exclude the
+pre-specialization second-Rees symbol of the coefficient-valued boundary.
+Accordingly, it is not yet a no-go for every lift carried by the triple.
+
 ## The only candidate cell
 
 Entry 709 shows that one of Entry 707's two symbol relations lifts strictly,
@@ -82,24 +91,26 @@ C_{23}^+[2,3]-C_{23}^-[2,23]
 }
 \]
 
-Together with Entry 709, this exhausts the direct pair and triple
-identifications available in the frozen lower deletion cube.
+Together with Entry 709, this exhausts the constant-coefficient pair and
+triple identifications visible after specialization. Entry 711 leaves one
+more typed possibility: a coefficient-valued second-Rees boundary whose
+mixed normal symbol disappears upon this early reduction.
 
 ## Scope boundary
 
-This is a no-go inside the ordered localization incidence complex after the
-strict plus-occurrence identification. It does not exclude a larger
-correspondence, a Kummer base change adjoining the nonsquare discriminant
-ratio, or an extension involving the five-pole/top-sector complex. Each of
-those would be additional derived data and must be constructed rather than
-inferred from the deletion ranks.
+This is a no-go inside the reduced ordered localization incidence complex
+after the strict plus-occurrence identification. It does not exclude Entry
+711's pre-specialization second-Rees boundary, a larger correspondence, a
+Kummer base change adjoining the nonsquare discriminant ratio, or an
+extension involving the five-pole/top-sector complex. Each must be
+constructed rather than inferred from deletion ranks.
 
 ## Consequence for \(\mathcal Q\)
 
-The obstruction minor is the signed-energy product \(C_{23}^-\), already
-known to be coprime to \(\mathcal Q\). Thus the failure of the triple lift is
-not supported on the homogeneous quartic. The direct lower pair/triple route
-does not produce \(\mathcal Q\).
+The obstruction minor of the reduced incidence test is the signed-energy
+product \(C_{23}^-\), already known to be coprime to \(\mathcal Q\). Thus
+this reduced failure is not supported on the homogeneous quartic. No claim
+about the second-Rees boundary's support is made here.
 
 ## Evidence
 
@@ -111,13 +122,7 @@ does not produce \(\mathcal Q\).
 
 ## Next falsifier
 
-Adjoin the minimal quadratic Kummer cover that trivializes
-
-\[
-\Delta_{23}^-/\Delta_{23}^+.
-\]
-
-Test whether the signed pair relation becomes a genuine chain isomorphism
-there and whether its descent obstruction is exactly the deck-odd Kummer
-character. If so, the residual datum is a coefficient-local-system
-extension, not a carrier or \(\mathcal Q\)-supported class.
+Compute the oriented triple-to-pair residue boundary before homogeneous
+specialization and take its second-Rees symbol. Only if that symbol fails to
+produce the signed relation should one adjoin the quadratic Kummer cover
+trivializing \(\Delta_{23}^-/\Delta_{23}^+\).
