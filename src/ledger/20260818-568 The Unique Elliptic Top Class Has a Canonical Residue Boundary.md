@@ -5,6 +5,12 @@ date: 2026-08-18
 ---
 # The Unique Elliptic Top Class Has a Canonical Residue Boundary
 
+> **Correction (Entry 574).**  The canonical geometric Cousin face vector is
+> \((1,-1,1)\), as already proved in Entry 341.  The vector \((1,-1,0)\)
+> below incorrectly substitutes the zero proper Möbius grade for the existing
+> lower-pair stratum.  Retain the transverse-intersection and
+> Cayley--Menger identities; disregard the claimed proper-grade boundary.
+
 ## Record
 
 Entry 340 found one proper support class for the frozen homogeneous family
@@ -98,7 +104,7 @@ the Cousin sign convention gives the proper-grade boundary
 
 \[
 \boxed{
-\partial_{111}^{\rm prop}=(1,-1,0):
+\partial_{111}^{\rm geom}=(1,-1,1):
 \operatorname{gr}_{111}\mathcal M
 \longrightarrow
 \operatorname{gr}_{110}\mathcal M
@@ -109,10 +115,9 @@ the Cousin sign convention gives the proper-grade boundary
 }
 \]
 
-The first two components are unit residue maps between rank-one grades.  The
-third component lands in the zero proper lower-pair grade; it vanishes only
-after passing to the proper associated filtration, not because the ordinary
-pair intersection is absent.
+All three components are geometric residues.  The lower-pair stratum remains
+present even though its proper Möbius grade is zero.  There is no canonical
+projection of the geometric Cousin boundary to the list of proper grades.
 
 ## Classification
 
@@ -161,7 +166,7 @@ frozen denominator intersections cannot supply the required homotopy.
   "status": "falsified_at_associated_grade",
   "triple_normal_jacobian": -1,
   "K_at_triple": "E^2 (X2+X3-X1)^2 (X1+X3-X2)^2",
-  "proper_boundary": [1, -1, 0],
+  "geometric_boundary": [1, -1, 1],
   "new_carrier_datum": false,
   "remaining_problem": "Lift the residue boundary through the rank-18 mixed modules and verify the Cousin homotopy in the rank-16 q-closed module."
 }

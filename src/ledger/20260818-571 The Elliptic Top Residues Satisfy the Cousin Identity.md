@@ -5,6 +5,11 @@ date: 2026-08-18
 ---
 # The Elliptic Top Residues Satisfy the Cousin Identity
 
+> **Scope correction (Entry 574).**  This entry verifies the two paths through
+> the mixed \(q_{\mathcal G_{12}}\)-lower faces.  It does not replace the full
+> geometric face vector \((1,-1,1)\) by \((1,-1,0)\); the lower-pair face from
+> Entry 341 remains part of the Cousin complex.
+
 ## Question
 
 Entry 568 constructed the associated-grade boundary of the unique proper
@@ -56,8 +61,8 @@ d\log q_{\mathfrak g_1}
 \wedge d\log q_{\mathcal G_{12}}.
 \]
 
-These are the literal representatives of Entry 568's unit boundary entries
-\((1,-1)\).
+These are the two mixed-face components of the full geometric boundary
+\((1,-1,1)\).
 
 ## Second residues
 
