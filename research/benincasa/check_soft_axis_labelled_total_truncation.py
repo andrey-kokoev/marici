@@ -26,6 +26,11 @@ def dot(left, right):
     return deck.add(*(deck.mul(x, y) for x, y in zip(left, right)))
 
 
+def rho_gradient(vector):
+    frame_characters = (-1, 1, 1)
+    return tuple(deck.scale(deck.rho(part), frame_characters[i]) for i, part in enumerate(vector))
+
+
 GRADIENT = tuple(deck.derivative(deck.K, coordinate) for coordinate in (1, 2, 0))
 EULER = (deck.scale(deck.a, Q(1, 4)), {}, deck.scale(deck.u, Q(1, 2)))
 assert dot(GRADIENT, EULER) == deck.K
@@ -69,6 +74,7 @@ def audit(cutoff):
     principal_generators = 0
     chain_checks = 0
     linearity_checks = 0
+    plus_checks = 0
 
     for sa, sb in SECTORS:
         ea, eb = 2 - sa, 2 - sb
@@ -88,6 +94,20 @@ def audit(cutoff):
                         source_generators += 1
                         chain_checks += 1
                         linearity_checks += 1
+
+                        if not conjugate:
+                            transport = (-1) ** (eb + (label == "q"))
+                            eigen_coefficient = transport * (-1) ** ad
+                            scalar_plus, lift_plus = labelled_map(f, sa, sb, True, label)
+                            scalar_eigen = deck.add(scalar, deck.scale(scalar_plus, eigen_coefficient))
+                            lift_eigen = tuple(
+                                deck.add(lift[i], deck.scale(lift_plus[i], eigen_coefficient))
+                                for i in range(3)
+                            )
+                            assert deck.rho(scalar_eigen) == scalar_eigen
+                            assert rho_gradient(lift_eigen) == lift_eigen
+                            assert deck.rho(deck.mul(deck.u, scalar_eigen)) == deck.mul(deck.u, scalar_eigen)
+                            plus_checks += 1
 
     principal_cutoff = cutoff - 4
     for total in range(principal_cutoff + 1):
@@ -111,6 +131,7 @@ def audit(cutoff):
         "G_cutoff": cutoff - 3,
         "chain_checks": chain_checks,
         "u_linearity_checks": linearity_checks,
+        "plus_eigenchecks": plus_checks,
     }
 
 
@@ -121,6 +142,7 @@ def main():
             f"D={result['D']}: rank_R(A)={result['A_rank_over_R']} "
             f"rank_R(P)={result['P_rank_over_R']} D0D-1={result['chain_checks']} "
             f"u-linear={result['u_linearity_checks']}"
+            f" plus={result['plus_eigenchecks']}"
         )
     print(json.dumps({
         "schema": "marici.benincasa.labelled_total_truncation.v1",
