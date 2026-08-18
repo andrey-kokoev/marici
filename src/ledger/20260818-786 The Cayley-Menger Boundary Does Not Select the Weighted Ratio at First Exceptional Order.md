@@ -24,9 +24,9 @@ On the homogeneous physical locus and normalized chart used by the resolved
 connection,
 
 \[
-P_1=X_1=1,qquad
-P_2=X_2=y,qquad
-P_3=X_3=u-1-y,qquad
+P_1=X_1=1,\qquad
+P_2=X_2=y,\qquad
+P_3=X_3=u-1-y,\qquad
 u=E_T.
 \]
 
@@ -40,7 +40,7 @@ Keep the loop-edge variables distinct from the external coordinate \(y\) and
 write
 
 \[
-A=Y_{12}^2,qquad B=Y_{23}^2,qquad C=Y_{31}^2.
+A=Y_{12}^2,\qquad B=Y_{23}^2,\qquad C=Y_{31}^2.
 \]
 
 Substitute these data into the source Cayley--Menger determinant (A.10) of
@@ -135,7 +135,7 @@ power, external \((2,2)\)-minor, orientation, and dimensional prefactor, and
 resolve simultaneously
 
 \[
-u=0,qquad A-B=0
+u=0,\qquad A-B=0
 \]
 
 and compute the first nonzero exceptional distribution/current, not merely the

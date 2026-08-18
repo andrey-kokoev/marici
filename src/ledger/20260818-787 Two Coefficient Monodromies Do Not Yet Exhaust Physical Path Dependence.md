@@ -7,7 +7,7 @@ date: 2026-08-18
 
 ## Coefficient continuation
 
-On the weighted exceptional coordinate (t), Entry 778 gives the coefficient
+On the weighted exceptional coordinate \(t\), Entry 778 gives the coefficient
 restriction
 
 \[
@@ -23,9 +23,9 @@ t=1,
 \]
 
 Consequently, on the coefficient side alone, continuation in
-\(mathbf C\setminus\{\pm1\}\) is controlled by two fundamental-group
+\(\mathbf C\setminus\{\pm1\}\) is controlled by two fundamental-group
 generators.  Path independence of a coefficient section can be tested by
-the two associated monodromy operators (M_+) and (M_-).
+the two associated monodromy operators \(M_+\) and \(M_-\).
 
 ## Physical continuation has a larger possible discriminant
 
@@ -35,10 +35,10 @@ coefficient poles: one must also remove the discriminant of the transported
 fiber pair and any singular support introduced by the normalized measure.
 
 Entry 786 proves that the first exceptional Cayley--Menger boundary equation
-is independent of (t).  This shows that no additional (t)-puncture is
+is independent of \(t\).  This shows that no additional \(t\)-puncture is
 visible at that first carrier layer.  It does **not** prove that the complete
 measure-valued relative cycle has no higher-order or distributional
-singularities in (t).
+singularities in \(t\).
 
 Therefore the two coefficient monodromies are necessary but not yet a
 complete physical path-independence test:
@@ -50,14 +50,14 @@ complete physical path-independence test:
 }
 \]
 
-where \(Delta_{\rm CM,current}\) must be derived from the simultaneous
+where \(\Delta_{\rm CM,current}\) must be derived from the simultaneous
 strict transform of the contour and its measure.
 
 ## Finite decision procedure
 
 1. Compute the first nonzero exceptional Cayley--Menger current with the
    complete source measure.
-2. Factor its (t)-dependent singular support.
+2. Factor its \(t\)-dependent singular support.
 3. Add those factors to \(\{t\pm1\}\).
 4. Compute monodromy of the source relative-cycle class around one generator
    for each resulting irreducible puncture.
@@ -77,6 +77,6 @@ descend independently of the continuation path.
 ## Next falsifier
 
 Complete Entry 786's measure-valued exceptional-current calculation and
-export the exact (t)-singular support.  If it is empty, the physical
-monodromy audit reduces to (M_+) and (M_-).  If it is nonempty, every new
+export the exact \(t\)-singular support.  If it is empty, the physical
+monodromy audit reduces to \(M_+\) and \(M_-\).  If it is nonempty, every new
 generator must be retained rather than hidden in a chosen continuation path.
