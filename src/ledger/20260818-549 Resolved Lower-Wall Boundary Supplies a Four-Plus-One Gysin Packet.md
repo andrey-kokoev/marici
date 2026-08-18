@@ -4,6 +4,7 @@ date: 2026-08-18
 title: Resolved Lower-Wall Boundary Supplies a Four-Plus-One Gysin Packet
 authors:
   - marici.Benincasa
+  - marici.Nima
 ---
 
 # Resolved Lower-Wall Boundary Supplies a Four-Plus-One Gysin Packet
@@ -41,11 +42,16 @@ I_D=
 \end{pmatrix}.
 \]
 
-It has full rank four. The dual graph has
+It has determinant \(-4\), hence full rank four and zero kernel. Thus the
+component lattice contributes four independent directions; its fifth direction
+cannot be obtained by treating \((1,1,1,1)\) as an intersection-matrix kernel.
+The dual graph instead has
 
 \[
-b_1=4-4+1=1.
+b_1=4-4+1=1,
 \]
+
+with primitive oriented edge cycle \((1,-1,-1,1)\).
 
 Consequently the first boundary weight packet has a canonical
 
