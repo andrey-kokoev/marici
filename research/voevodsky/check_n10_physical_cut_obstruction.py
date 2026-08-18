@@ -7,10 +7,10 @@ import check_n10_physical_cut_nerve as nerve
 import check_n8_framed_physical_line_rigidity as n8_rigidity
 
 
-def polygon_regions(diagonals):
-    points = {i: (cos(2 * pi * i / nerve.N), sin(2 * pi * i / nerve.N)) for i in range(nerve.N)}
-    edges = {tuple(sorted((i, (i + 1) % nerve.N))) for i in range(nerve.N)} | set(diagonals)
-    adjacency = {i: set() for i in range(nerve.N)}
+def polygon_regions(diagonals, n=nerve.N):
+    points = {i: (cos(2 * pi * i / n), sin(2 * pi * i / n)) for i in range(n)}
+    edges = {tuple(sorted((i, (i + 1) % n))) for i in range(n)} | set(diagonals)
+    adjacency = {i: set() for i in range(n)}
     for a, b in edges:
         adjacency[a].add(b)
         adjacency[b].add(a)
@@ -39,7 +39,7 @@ def polygon_regions(diagonals):
             directed = (v, w)
         faces.append(tuple(face))
     # The outer face is the unique clockwise ten-edge boundary walk.
-    bounded = tuple(face for face in faces if len(face) != nerve.N)
+    bounded = tuple(face for face in faces if len(face) != n)
     assert len(bounded) == len(diagonals) + 1
     return bounded
 
