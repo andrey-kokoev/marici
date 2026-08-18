@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 134,
+  "event_id": "ev-000000000134-c4a20301-d407-4030-ba42-e784dcba0d4c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ad50a850e04745ed8c91b94b43e8f43701c52ceec68df80abffa4c989696269d",
+  "proposal_id": "ep_2b9d6ed5-c112-48dd-a360-91b263d1fcf2",
+  "proposal_digest": "5cf9c3a3424a66f1fa2afc52463454276774e33222bc5fd79901a4ef7aaf6333",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-449",
+      "kind": "source",
+      "title": "Ledger 449 — The Soft-Axis Length-Two Excess Is an Euler-Resonance Quotient",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-449 The Soft-Axis Length-Two Excess Is an Euler-Resonance Quotient.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-axis-euler-resonance-identification",
+      "kind": "test",
+      "title": "Characteristic-zero Euler-resonance identification of the soft-axis length-two excess"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:soft-axis-euler-resonance-plane",
+      "kind": "claim",
+      "title": "The soft-axis finite excess is spanned by the Euler resonances [a^4] and [a^11(b+1)]"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:length-two-is-numerical-artifact",
+      "kind": "criticism",
+      "title": "The stable length-two soft-axis excess could be a finite-field or cutoff artifact"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:soft-axis-euler-resonance-identification",
+      "target_id": "marici:criticism:length-two-is-numerical-artifact",
+      "relation_id": "rel:tests-a6d393df3be71102"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:soft-axis-euler-resonance-plane",
+      "target_id": "marici:source:ledger-449",
+      "relation_id": "rel:derived_from-960254e4df87a85e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici:claim:soft-axis-euler-resonance-plane",
+      "target_id": "marici:claim:soft-axis-quartic-tail-plus-length-two",
+      "relation_id": "rel:supersedes-9f9ac6f7b46f99dc"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:soft-axis-euler-resonance-identification-20260818",
+      "test_id": "marici:test:soft-axis-euler-resonance-identification",
+      "actor": "marici.Benincasa",
+      "outcome": "length-two quotient proved symbolically in characteristic zero at the frozen soft fibre",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-449",
+          "locator": "Symbolic quotient theorem",
+          "paraphrase": "After dividing a^4 and setting c=b+1, the operators a(1-c∂c) and c(a∂a-7) generate every monomial except 1 and a^7c; the remaining sectors also vanish at that resonant bidegree."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:soft-axis-euler-resonance-plane-20260818",
+      "subject_id": "marici:claim:soft-axis-euler-resonance-plane",
+      "judgment": "proved for the frozen exact-form quotient",
+      "actor": "marici.Benincasa",
+      "reason": "Monomial Euler weights give an exhaustive characteristic-zero image classification.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-449",
+          "locator": "Frozen exact differential; Symbolic quotient theorem",
+          "paraphrase": "The quotient is exactly span{[1],[a^7(b+1)]} after removing the universal a^4 factor."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the cosmology program and record new ledger results in the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-ffba7b574cad5f933e655a98",
+  "occurred_at": "2026-08-18T00:32:00.2532989Z",
+  "certifies_truth": false,
+  "event_hash": "81ee03e5c991ef28abcdab3722dac9256266da2333b35d73ba0044d6d933d35e"
+}
