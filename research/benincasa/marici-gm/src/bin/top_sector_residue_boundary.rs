@@ -175,9 +175,9 @@ fn main() {
     let jacobian = determinant_3([[1, 0, 1], [1, 1, 0], [1, 0, 0]]);
     assert_eq!(jacobian, -1);
 
-    // Oriented Boolean-boundary signs for bit order (q_g1,q_g2,q_G12).
-    // Deleting q_G12 lands on the lower-pair proper grade, whose rank is zero.
-    let boundary = [1_i64, -1, 0];
+    // Oriented geometric Cousin boundary for bit order (q_g1,q_g2,q_G12).
+    // The lower-pair stratum remains present even though its proper Mobius grade is zero.
+    let boundary = [1_i64, -1, 1];
     assert_eq!(boundary[0].abs(), 1);
     assert_eq!(boundary[1].abs(), 1);
 
@@ -215,6 +215,6 @@ fn main() {
     }
 
     println!(
-        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v3\",\"status\":\"moving_normal_gauss_manin_naturality_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_proper_boundary\":[1,-1,0],\"second_residues\":[1,-1],\"cousin_sum\":0,\"horizontal_fiber_lifts\":[[-1,1,0],[-1,0,1],[-1,1,1]],\"all_q_horizontal\":true,\"twist_derivatives_commute\":true,\"new_carrier_datum\":false}}"
+        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v4\",\"status\":\"corrected_geometric_boundary_and_naturality_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_geometric_boundary\":[1,-1,1],\"mixed_to_q_second_residues\":[1,-1],\"mixed_to_q_cousin_sum\":0,\"horizontal_fiber_lifts\":[[-1,1,0],[-1,0,1],[-1,1,1]],\"all_q_horizontal\":true,\"twist_derivatives_commute\":true,\"new_carrier_datum\":false}}"
     );
 }
