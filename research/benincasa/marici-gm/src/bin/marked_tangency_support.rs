@@ -1875,6 +1875,47 @@ fn main() {
         println!("{{\"schema\":\"marici.benincasa.gauge_dlog_divisor_transverse_jets.v1\",\"results\":[{}]}}",results.join(","));
         return;
     }
+    if mode == "conic-q-fibers" {
+        // On C_fit one has X1=1, X2=u^2, hence
+        // Q|C_fit = u^3(8u^2-29u+8).  The working prime is 3 mod 4,
+        // so any square root is obtained by the fixed exponent below.
+        let disc=F::n(585);
+        let sqrt_disc=disc.pow((P+1)/4);
+        assert_eq!(sqrt_disc.mul(sqrt_disc),disc);
+        let inv16=F::n(16).inv();
+        let roots=[
+            F::n(29).add(sqrt_disc).mul(inv16),
+            F::n(29).sub(sqrt_disc).mul(inv16)
+        ];
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for (branch,u) in roots.iter().enumerate() {
+                let qfactor=F::n(8).mul(u.pow(2)).sub(F::n(29).mul(*u)).add(F::n(8));
+                assert_eq!(qfactor,F::z());
+                let v=F::n(2).mul(u.pow(2)).sub(*u).add(F::n(2));
+                let center=solve(&geometry(u.0,v.0,'u'),8,degree);
+                let mut neighbor_data=Vec::new();
+                for du in [F::o().neg(),F::o()] {
+                    let un=u.add(du);
+                    let vn=F::n(2).mul(un.pow(2)).sub(un).add(F::n(2));
+                    let s=solve(&geometry(un.0,vn.0,'u'),8,degree);
+                    neighbor_data.push(format!(
+                        "{{\"du\":{},\"rank\":{},\"gauge_rank\":{},\"pivot_mask\":{}}}",
+                        if du==F::o(){1}else{-1},s.rank,s.gauge_rank,s.gauge_pivot_mask));
+                }
+                let extra_support_mask=center.gauge_rref[2].iter().enumerate()
+                    .fold(0u16,|mask,(j,q)|if q.0!=0 {mask|(1u16<<j)}else{mask});
+                results.push(format!(
+                    "{{\"degree\":{degree},\"branch\":{branch},\"u\":{},\"v\":{},\"rank\":{},\"gauge_rank\":{},\"pivot_mask\":{},\"extra_support_mask\":{extra_support_mask},\"neighbors\":[{}]}}",
+                    u.0,v.0,center.rank,center.gauge_rank,center.gauge_pivot_mask,
+                    neighbor_data.join(",")));
+            }
+        }
+        println!(
+            "{{\"schema\":\"marici.benincasa.gauge_fitting_conic_q_fibers.v1\",\"q_restriction\":\"u^3*(8*u^2-29*u+8)\",\"sqrt_discriminant\":{},\"results\":[{}]}}",
+            sqrt_disc.0,results.join(","));
+        return;
+    }
     if mode == "conic-limit" {
         let mut results=Vec::new();
         for degree in [8u8,10] {
