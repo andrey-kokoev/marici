@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-18
 ---
-# 671 — The Complete Logarithmic Syzygy Module Has Constant Rank on Tested Quartic Fibers
+# 672 — The Complete Logarithmic Syzygy Module Has Constant Rank on Tested Quartic Fibers
 
 ## Hard-to-vary claim
 
