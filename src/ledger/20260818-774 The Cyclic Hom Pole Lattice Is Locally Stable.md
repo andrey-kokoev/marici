@@ -37,6 +37,21 @@ quadratic orbit \(u^2+1\) was evaluated over
 \(\mathbf F_{p^2}=\mathbf F_p[i]/(i^2+1)\).  Positive orders through sixteen
 give the same kernel census.
 
+### Convention bridge to Entry 775
+
+Entry 775 writes the dual Hom operator as
+
+\[
+dX+A_EX-XA_T.
+\]
+
+Its residue is the negative of the convention above.  Consequently the
+nonzero eigenvalue on \(v-u=0\) is \(-1\) there and \(+1\) here.  The present
+choice is the literal coefficient convention in the finite splitting matrix
+used by Entries 763 and 769.  This sign difference does not affect the
+stabilization claim: in either convention there is no admissible root above
+the already tested order one.
+
 Hence the only positive indicial resonance is
 
 \[
