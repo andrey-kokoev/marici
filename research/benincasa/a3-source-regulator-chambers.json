@@ -1,0 +1,35 @@
+{
+  "schema": "marici.benincasa.a3_source_regulator_chambers.v1",
+  "entry": 822,
+  "representative": "P3=0, E=P1, P1^2!=P2^2",
+  "source_prescription": {
+    "substitution": ["E -> E-i*epsilon_E", "P1 -> P1-i*epsilon_P1", "P3 -> -i*epsilon_P3"],
+    "conditions": ["epsilon_E>0", "epsilon_P1>0", "epsilon_P3>0"],
+    "hierarchy": "none",
+    "qualification": "the printed source fixes positive energy regulators but does not print the full contour-to-energy cone"
+  },
+  "local_parameters": {
+    "delta": "(P1-i*epsilon_E)^2-(P1-i*epsilon_P1)^2",
+    "q": "(-i*epsilon_P3)^2",
+    "d": "P1^2-P2^2",
+    "t2": "-d*delta-2*P1^2*q-delta*q",
+    "t1": "0",
+    "t0": "q*(delta^2+d*delta+delta*q+P1^2*q)"
+  },
+  "A3_discriminant_on_even_slice": "t0*(t2^2-4*P1^2*t0)^2=0 up to a unit",
+  "finite_falsifier": {
+    "kinematics": {"P1": 3, "P2": 2},
+    "assignment_1": {"epsilon_E": 0.02, "epsilon_P1": 0.01, "epsilon_P3": 0.005, "sign_Im_t2": 1},
+    "assignment_2": {"epsilon_E": 0.01, "epsilon_P1": 0.02, "epsilon_P3": 0.005, "sign_Im_t2": -1},
+    "both_off_discriminant": true
+  },
+  "conclusion": {
+    "energy_regulator_cone_chambers": "at least two",
+    "unique_labelled_thimble_system": false,
+    "mixed_coherence_differential": "not source-canonical at the printed energy-regulator level",
+    "physical_status": "unselected rather than zero",
+    "new_carrier_datum": false
+  },
+  "remaining_upstream_gate": "an explicit graph-level contour-to-energy regulator map could restrict the image; it is absent from the frozen primary source",
+  "allocator_claim": "seqclaim-565ff84229bee1038892dc23"
+}
