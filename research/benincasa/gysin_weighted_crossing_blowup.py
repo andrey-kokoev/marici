@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parent))
 from gysin_ordinary_crossing_blowup import (P,K,t,Z,O,ER,add,mul,scale,
     matrix_residue_e,matrix_finite_e,rank,indicial,residue_t,text_matrix,
-    shear_connection)
+    shear_connection,nullspace,mod_matrix)
 
 def power(a,n):
     out=[O]
@@ -71,9 +71,25 @@ def main():
                 for x in row:
                     z,q=residue_t(x,pt);ro.append(z);oo.append(q)
                 rr.append(ro);orders.append(oo)
+            cr=[];co=[]
+            for row in re:
+                cro=[];coo=[]
+                for x in row:
+                    z,q=residue_t(x,pt);cro.append(z);coo.append(q)
+                cr.append(cro);co.append(coo)
+            bs=nullspace(indicial(rr,1));lc=indicial(cr,0)
+            hom=[[sum(lc[i][k]*bs[j][k] for k in range(4)) for j in range(len(bs))] for i in range(4)]
+            sign=O if label=='D2' else -O
+            hom=[[sign*x for x in row] for row in hom]
+            ce=[sign*cr[2][0],sign*cr[2][1],sign*cr[3][0],sign*cr[3][1]]
+            aug=[hom[i]+[ce[i]] for i in range(4)]
             strict.append({'divisor':label,'point':pt,'minimum_order':min(map(min,orders)),
                 'residue_rank':rank(rr),'residue':text_matrix(rr),
-                'L1_kernel_dimension':4-rank(indicial(rr,1))})
+                'L1_kernel_dimension':4-rank(indicial(rr,1)),
+                'strict_L1_kernel_basis_mod_p':[mod_matrix([x])[0] for x in bs],
+                'corner_residue_mod_p':mod_matrix(cr),'corner_residue_rank':rank(cr),
+                'homogeneous_resonance_map_mod_p':mod_matrix(hom),
+                'augmented_corner_map_mod_p':mod_matrix(aug)})
         out.append({'chart':chart,'raw_exceptional_valuations':vals,'minimal_shear':w,
             'exceptional_residue':text_matrix(re),'exceptional_rank':rank(re),
             'exceptional_kernel_dimension':4-rank(re),
