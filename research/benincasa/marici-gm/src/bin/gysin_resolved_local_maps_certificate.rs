@@ -27,5 +27,24 @@ fn main() {
     // Both quadratic principal columns are nonzero in their number fields.
     assert_ne!(parse!("-3"), zero);
     assert_ne!(parse!("-2+d5"), zero);
-    println!("Symbolica: augmented corner maps, Galois involutions, and mu2 trace verified");
+
+    // At every corner the residue has block form [[0,0],[C_E,0]].  Hence
+    // the grade-zero internal extension operator L_0(C) is the zero 4x4
+    // matrix.  The nonzero C_E columns are cycles and cannot be boundaries
+    // at this grade.
+    for x in ["x00", "x01", "x10", "x11"] {
+        assert_eq!(Atom::parse(format!("{x}*0-0*{x}"), "marici", Default::default()).unwrap().expand(), zero);
+    }
+
+    // Vertex-shared horizontal principal map.  lambda=(1,-1,1) annihilates
+    // every column, while the 2x2 minor in rows (0,1), columns (1,2) is one.
+    for identity in ["1*0-1*0+1*0", "1*1-1*0+1*(-1)", "1*0-1*1+1*1"] {
+        assert_eq!(Atom::parse(identity, "marici", Default::default()).unwrap().expand(), zero);
+    }
+    assert_eq!(parse!("1*1-0*0").expand(), parse!("1"));
+    // Taking l=(1,-1,1), the determinant of [delta(p2),delta(p3),l]
+    // is three.  Thus l is outside delta(V), hence also outside
+    // delta(ker partial_V); L0 contributes no incoming image.
+    assert_eq!(parse!("1*(1*1-(-1)*1)+1*(0*1-(-1)*1)").expand(), parse!("3"));
+    println!("Symbolica: corner L0 vanishes and the principal horizontal grade has one non-boundary cycle");
 }
