@@ -15,11 +15,11 @@ types its coefficient objects and connecting maps.
 Let
 
 \[
-U=mathbb A^3\setminus V(K),qquad
+U=\mathbb A^3\setminus V(K),\qquad
 D_i=V(q_i)\cap U.
 \]
 
-The first deletion triangle for the Cartier divisor (D_i\hookrightarrow U)
+The first deletion triangle for the Cartier divisor \(D_i\hookrightarrow U\)
 identifies the proper single-pole object with the shifted twisted residue
 
 \[
@@ -91,7 +91,7 @@ equated without a realization functor.
 
 The next exact gate is to construct that coefficient realization, or more
 conservatively to compute one explicit residue/Gysin matrix in a
-source-defined basis of (mathcal R_i) and verify its compatibility with the
+source-defined basis of \(\mathcal R_i\) and verify its compatibility with the
 rank-one pair object and the Gauss--Manin connection.
 
 The executable audit is
