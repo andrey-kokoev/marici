@@ -73,6 +73,11 @@ coordinates. Nor does it make the raw packet a physical rank-five deck sector:
 Entry 559's character obstruction remains, and the physical anti-invariant
 boundary part is generated only by the two newly detected coordinates.
 
+Entry 562 adds the integral qualification: the completed rows have full rank
+over \(\mathbb Q\), but their integral row lattice has index two. Thus
+"complete" here means rational coordinate detection, not an integral
+isomorphism.
+
 The next finite gate is to apply \(r_{\rm norm}\) and \(r_{\rm cond}\) to
 source-defined residue representatives and verify that the resulting five-row
 map intertwines Gauss--Manin transport. Failure of either Čech functional to
