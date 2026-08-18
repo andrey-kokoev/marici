@@ -363,13 +363,14 @@ fn directional_derivative(polynomial: &Polynomial, direction: [i64; 3]) -> Polyn
 
 fn tangential_wall_basis(
     k: &Polynomial,
+    k_exponent: i64,
     wall: &Polynomial,
     selected: &[Factor],
 ) -> (BTreeSet<Monomial>, usize, u128) {
     let mut factors = vec![Factor {
         name: "K",
         polynomial: k.clone(),
-        exponent: 5,
+        exponent: k_exponent,
     }];
     factors.extend_from_slice(selected);
     let divisor = product(
@@ -490,8 +491,15 @@ fn main() {
             "none" => Vec::new(),
             _ => panic!("TANGENTIAL_MARKS must be none, q_g2, q_g3, or full"),
         };
+        let tangential_k_weight =
+            std::env::var("TANGENTIAL_K_WEIGHT").unwrap_or_else(|_| "generic".to_owned());
+        let k_exponent = match tangential_k_weight.as_str() {
+            "generic" => 5,
+            "half" => inverse(2),
+            _ => panic!("TANGENTIAL_K_WEIGHT must be generic or half"),
+        };
         let (monomials, basis_size, elapsed_ms) =
-            tangential_wall_basis(&k, &denominators[0].polynomial, &selected);
+            tangential_wall_basis(&k, k_exponent, &denominators[0].polynomial, &selected);
         let expected_rank = match tangential_marks.as_str() {
             "none" => 5,
             "q_g2" | "q_g3" => 6,
@@ -500,7 +508,7 @@ fn main() {
         };
         assert_eq!(monomials.len(), expected_rank);
         println!(
-            "prime={} point={point} tangential_wall=q_g1 marks={tangential_marks} rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
+            "prime={} point={point} tangential_wall=q_g1 k_weight={tangential_k_weight} marks={tangential_marks} rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
             prime(), monomials.len(),
         );
         println!("STANDARD_MONOMIALS={:?}", monomials.into_iter().collect::<Vec<_>>());
