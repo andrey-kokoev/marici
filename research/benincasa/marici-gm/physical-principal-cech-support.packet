@@ -1,0 +1,33 @@
+{
+  "schema": "marici.gm.physical_principal_cech_support.v1",
+  "normalized_energies": {
+    "X1": "1",
+    "X2": "y=(u+v)/2-1",
+    "X3": "z=(u-v)/2=u-y-1",
+    "ET": "u"
+  },
+  "physical_base_closure": ["u>=0", "y>=0", "z>=0"],
+  "divisor_intersections": {
+    "D1": "z=0; may meet the physical soft boundary",
+    "D2": "y=u^2 implies z=u-u^2-1<0; disjoint",
+    "D3": "y=-u^2 and y>=0 force u=y=0, then z=-1; disjoint"
+  },
+  "incidence_supports": {
+    "Z12": "u^2-u+1=0; no real points",
+    "Z13": "u^2+u-1=0 with z=0 and y=u-1; no point satisfies u,y>=0",
+    "Z23": "(u,y,z)=(0,0,-1); outside closure"
+  },
+  "literal_chain_maps": {
+    "to_D2": "zero by support disjointness",
+    "to_D3": "zero by support disjointness",
+    "to_Z12": "zero by support disjointness",
+    "to_Z13": "zero by support disjointness",
+    "to_Z23": "zero by support disjointness",
+    "to_D1": "requires soft nearby-cycle specialization; not an ordinary fiber boundary"
+  },
+  "D1_corner_maps": {"to_Z12": "zero", "to_Z13": "zero"},
+  "entry_740_line_image_from_literal_chain": "zero",
+  "analytic_continuation_status": "not supplied by the primary source",
+  "comparison_cone_point_support": ["Z12", "Z13", "Z23"],
+  "Q_on_point_support": {"Z12": "unit", "Z13": "unit", "Z23": "zero"}
+}
