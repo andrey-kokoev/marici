@@ -246,7 +246,7 @@ fn algebraic_plane_test(uu:u64,vv:u64,axis:&str)->(usize,F,F,F,F,F){
     let qlog=q.d.div(q.x).mul(F::new(2,PRIME).inv());
     (bad,g00,g01,g10,g11,qlog)
 }
-fn algebraic_dlogs(uu:u64,vv:u64,axis:&str)->Vec<F>{
+fn algebraic_factors(uu:u64,vv:u64,axis:&str)->Vec<D>{
     let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
     let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
     let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
@@ -256,7 +256,10 @@ fn algebraic_dlogs(uu:u64,vv:u64,axis:&str)->Vec<F>{
     let quarter=half.mul(half);let seven_quarters=quarter.mul(D::c(F::new(7,PRIME)));
     let p6=one.sub(u).sub(v).add(v.sq().mul(quarter)).add(u.mul(v).mul(half)).sub(u2.mul(seven_quarters))
         .add(u2.mul(v)).add(u2.mul(u)).sub(u2.mul(u).mul(v)).add(u2.sq());
-    [u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),q,p6].iter().map(|z|z.d.div(z.x)).collect()
+    vec![u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),q,p6]
+}
+fn algebraic_dlogs(uu:u64,vv:u64,axis:&str)->Vec<F>{
+    algebraic_factors(uu,vv,axis).iter().map(|z|z.d.div(z.x)).collect()
 }
 fn extension_data(uu:u64,vv:u64,axis:&str)->(D,D,D,F,F,F){
     let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
@@ -372,6 +375,58 @@ fn gysin_polynomial_split_test(maxdeg:u8)->String{
     }
     if let Some((deg,terms,_,_))=found{format!("{{\"schema\":\"marici.gm.gysin_polynomial_split.v1\",\"status\":\"split\",\"degree\":{},\"nonzero_coefficients\":{},\"validation_points\":256,\"validation_directions\":512,\"validation_mismatches\":0}}",deg,terms)}else{format!("{{\"schema\":\"marici.gm.gysin_polynomial_split.v1\",\"status\":\"not_found\",\"max_degree\":{}}}",maxdeg)}
 }
+fn gysin_single_pole_census(maxdeg:u8)->String{
+    let names=["u","v","y","1-y","1+y","v-u","y-u^2","y+u^2","Q","P6"];
+    let mut results=Vec::new();
+    for fi in 0..names.len(){
+        let mut found=None;
+        for deg in 0..=maxdeg{
+            let mons=total_monomials(deg);let nvar=4*mons.len();let need=(2*nvar+7)/8+12;
+            let mut mat=Vec::new();let mut su=0x6a09e667f3bcc909u64;let mut sv=0xbb67ae8584caa73bu64;
+            while mat.len()<8*need{
+                su=((su as u128*6_364_136_223_846_793_005u128+719u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+727u128)%PRIME as u128)as u64;
+                let got=std::panic::catch_unwind(||{(gysin_adapted_rows(su,sv,"u"),gysin_adapted_rows(su,sv,"v"))});let Ok((au,av))=got else{continue};
+                for(axis,a)in [(0usize,au),(1usize,av)]{let u=F::new(su,PRIME);let v=F::new(sv,PRIME);let f=algebraic_factors(su,sv,if axis==0{"u"}else{"v"})[fi];
+                    if f.x.v==0{continue}let dl=f.d.div(f.x);
+                    for i in 0..2{for j in 0..2{let mut row=vec![F::z(PRIME);nvar+1];
+                        for(q,k)in [(0usize,0usize),(0,1),(1,0),(1,1)]{for(mi,(du,dv))in mons.iter().enumerate(){let m=u.pow(*du as u64).mul(v.pow(*dv as u64));let e=if axis==0{*du}else{*dv};let dm=if e==0{F::z(PRIME)}else{F::new(e as u64,PRIME).mul(if axis==0{u.pow((du-1)as u64).mul(v.pow(*dv as u64))}else{u.pow(*du as u64).mul(v.pow((dv-1)as u64))})};let mut z=F::z(PRIME);if q==i&&k==j{z=z.add(dm).sub(dl.mul(m))}if q==i{z=z.add(m.mul(a[k][j]))}if k==j{z=z.sub(m.mul(a[i+2][q+2]))}row[(2*q+k)*mons.len()+mi]=z;}}
+                        row[nvar]=f.x.mul(a[i+2][j]).neg();mat.push(row);
+                    }}
+                }
+            }
+            if let Some(cs)=rank_solve(mat,nvar){let mut bad=0usize;let mut vu=0x428a2f98d728ae22u64;let mut vv=0x7137449123ef65cdu64;
+                for _ in 0..256{vu=((vu as u128*3_202_034_522_624_059_733u128+733u128)%PRIME as u128)as u64;vv=((vv as u128*3_933_555_777_941_757u128+739u128)%PRIME as u128)as u64;for(axis,ax)in [(0usize,"u"),(1usize,"v")]{let a=gysin_adapted_rows(vu,vv,ax);let f=algebraic_factors(vu,vv,ax)[fi];if f.x.v==0{continue}let dl=f.d.div(f.x);let u=F::new(vu,PRIME);let v=F::new(vv,PRIME);let mut n=vec![vec![F::z(PRIME);2];2];let mut dn=n.clone();for q in 0..2{for k in 0..2{let off=(2*q+k)*mons.len();let(z,dz)=eval_poly_coeff(&cs[off..off+mons.len()],&mons,u,v,axis);n[q][k]=z;dn[q][k]=dz;}}for i in 0..2{for j in 0..2{let mut z=dn[i][j].sub(dl.mul(n[i][j])).add(f.x.mul(a[i+2][j]));for k in 0..2{z=z.add(n[i][k].mul(a[k][j])).sub(a[i+2][k+2].mul(n[k][j]));}if z.v!=0{bad+=1}}}}}
+                if bad==0{found=Some((deg,cs.iter().filter(|z|z.v!=0).count()));break}
+            }
+        }
+        results.push(if let Some((d,t))=found{format!("{{\"factor\":\"{}\",\"status\":\"split\",\"pole_order\":1,\"numerator_degree\":{},\"nonzero_coefficients\":{}}}",names[fi],d,t)}else{format!("{{\"factor\":\"{}\",\"status\":\"not_found\",\"pole_order\":1,\"max_numerator_degree\":{}}}",names[fi],maxdeg)});
+    }
+    format!("{{\"schema\":\"marici.gm.gysin_single_pole_census.v1\",\"prime\":{},\"pole_order\":1,\"max_numerator_degree\":{},\"validation_points_per_factor\":256,\"validation_directions_per_factor\":512,\"results\":[{}]}}",PRIME,maxdeg,results.join(","))
+}
+fn split_factor_data(uu:u64,vv:u64,axis:&str)->Vec<D>{
+    let half=D::c(F::new(2,PRIME).inv());let one=D::c(F::o(PRIME));
+    let u=if axis=="u"{D::var(F::new(uu,PRIME))}else{D::c(F::new(uu,PRIME))};
+    let v=if axis=="v"{D::var(F::new(vv,PRIME))}else{D::c(F::new(vv,PRIME))};
+    let y=u.add(v).mul(half).sub(one);let u2=u.sq();let s=u.add(v).mul(half);
+    let q=y.sq().mul(D::c(F::new(16,PRIME))).neg().sub(y.mul(u2).mul(D::c(F::new(8,PRIME))))
+        .add(s.mul(u2).mul(u).mul(D::c(F::new(8,PRIME)))).sub(u2.sq().mul(D::c(F::new(5,PRIME))));
+    let quarter=half.mul(half);let p6=one.sub(u).sub(v).add(v.sq().mul(quarter)).add(u.mul(v).mul(half))
+        .sub(u2.mul(quarter).mul(D::c(F::new(7,PRIME)))).add(u2.mul(v)).add(u2.mul(u)).sub(u2.mul(u).mul(v)).add(u2.sq());
+    vec![u,v,y,one.sub(y),one.add(y),v.sub(u),y.sub(u2),y.add(u2),p6,q]
+}
+fn gysin_single_divisor_split_test(maxdeg:u8)->String{
+    let names=["u","v","y","1-y","1+y","v-u","y-u^2","y+u^2","P6","Q"];let mut results=Vec::new();
+    for fi in 0..names.len(){let mut answer=None;
+        for deg in 0..=maxdeg{let mons=total_monomials(deg);let nvar=4*mons.len();let need=(2*nvar+7)/8+12;let mut mat=Vec::new();let mut su=0x3c6ef372fe94f82bu64^(fi as u64);let mut sv=0xa54ff53a5f1d36f1u64^(fi as u64);
+            while mat.len()<8*need{su=((su as u128*6_364_136_223_846_793_005u128+743u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+751u128)%PRIME as u128)as u64;let got=std::panic::catch_unwind(||{let au=gysin_adapted_rows(su,sv,"u");let av=gysin_adapted_rows(su,sv,"v");let fu=split_factor_data(su,sv,"u")[fi];let fv=split_factor_data(su,sv,"v")[fi];(au,av,fu,fv)});let Ok((au,av,fu,fv))=got else{continue};if fu.x.v==0||fv.x.v==0{continue}
+                for(axis,a,f)in [(0usize,au,fu),(1usize,av,fv)]{let u=F::new(su,PRIME);let v=F::new(sv,PRIME);for i in 0..2{for j in 0..2{let mut row=vec![F::z(PRIME);nvar+1];for(qi,k)in [(0usize,0usize),(0,1),(1,0),(1,1)]{for(mi,(du,dv))in mons.iter().enumerate(){let m=u.pow(*du as u64).mul(v.pow(*dv as u64));let e=if axis==0{*du}else{*dv};let dm=if e==0{F::z(PRIME)}else{F::new(e as u64,PRIME).mul(if axis==0{u.pow((du-1)as u64).mul(v.pow(*dv as u64))}else{u.pow(*du as u64).mul(v.pow((dv-1)as u64))})};let mut z=F::z(PRIME);if qi==i&&k==j{z=z.add(f.x.mul(dm).sub(f.d.mul(m)))}if qi==i{z=z.add(f.x.mul(m).mul(a[k][j]))}if k==j{z=z.sub(f.x.mul(m).mul(a[i+2][qi+2]))}row[(2*qi+k)*mons.len()+mi]=z;}}row[nvar]=f.x.mul(f.x).mul(a[i+2][j]).neg();mat.push(row);}}}
+            }
+            if let Some(cs)=rank_solve(mat,nvar){let mut bad=0usize;let mut vu=0x510e527fade682d1u64^(fi as u64);let mut vv=0x9b05688c2b3e6c1fu64^(fi as u64);for _ in 0..256{vu=((vu as u128*3_202_034_522_624_059_733u128+757u128)%PRIME as u128)as u64;vv=((vv as u128*3_933_555_777_941_757u128+761u128)%PRIME as u128)as u64;for(axis,ax)in [(0usize,"u"),(1usize,"v")]{let a=gysin_adapted_rows(vu,vv,ax);let f=split_factor_data(vu,vv,ax)[fi];if f.x.v==0{bad+=1;continue}let u=F::new(vu,PRIME);let v=F::new(vv,PRIME);let mut n=vec![vec![F::z(PRIME);2];2];let mut dn=n.clone();for qi in 0..2{for k in 0..2{let off=(2*qi+k)*mons.len();let(z,dz)=eval_poly_coeff(&cs[off..off+mons.len()],&mons,u,v,axis);n[qi][k]=z;dn[qi][k]=dz;}}for i in 0..2{for j in 0..2{let mut z=f.x.mul(dn[i][j]).sub(f.d.mul(n[i][j])).add(f.x.mul(f.x).mul(a[i+2][j]));for k in 0..2{z=z.add(f.x.mul(n[i][k]).mul(a[k][j])).sub(f.x.mul(a[i+2][k+2]).mul(n[k][j]));}if z.v!=0{bad+=1}}}}}if bad==0{answer=Some((deg,cs.iter().filter(|z|z.v!=0).count()));break}}
+        }
+        results.push(if let Some((d,n))=answer{format!("{{\"factor\":\"{}\",\"status\":\"split\",\"degree\":{},\"nonzero_coefficients\":{}}}",names[fi],d,n)}else{format!("{{\"factor\":\"{}\",\"status\":\"not_found\",\"max_degree\":{}}}",names[fi],maxdeg)});
+    }
+    format!("{{\"schema\":\"marici.gm.gysin_single_divisor_split.v1\",\"denominator_power\":1,\"validation_points_per_candidate\":256,\"results\":[{}]}}",results.join(","))
+}
 fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
     let need=2*total_monomials(maxdeg).len()+20;let mut su=RECON_SEEDS.0;let mut sv=RECON_SEEDS.1;let mut data=Vec::new();
     while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
@@ -464,7 +519,9 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="gysin-single-divisor-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_divisor_split_test(maxdeg)).expect("write Gysin divisor split test");return}
     if a.len()==4&&a[1]=="gysin-polynomial-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_polynomial_split_test(maxdeg)).expect("write Gysin polynomial split test");return}
+    if a.len()==4&&a[1]=="gysin-single-pole-census"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_single_pole_census(maxdeg)).expect("write Gysin single-pole census");return}
     if a.len()==3&&a[1]=="soft-support-nine-master-test"{fs::write(&a[2],soft_support_nine_master_test()).expect("write nine-master soft support test");return}
     if a.len()==3&&a[1]=="soft-support-both-sites-test"{fs::write(&a[2],soft_support_both_sites_test()).expect("write both-site soft support test");return}
     if a.len()==3&&a[1]=="soft-support-test"{fs::write(&a[2],soft_support_saturated_test()).expect("write soft support test");return}
