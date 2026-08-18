@@ -1413,6 +1413,14 @@ fn main() {
         println!("{{\"schema\":\"marici.benincasa.dlog_smith_axis_saturation.v1\",\"field_modulus\":{},\"truncation_order\":24,\"generic_valuation\":66,\"results\":[{}]}}",P,rows.join(","));
         return;
     }
+    if mode == "dlog-smith-soft-axis-tail" {
+        let degree=16u8;
+        let (rank,valuation,exact,combined)=smith_curved_chart_invariant(F::z(),F::n(3),false,degree,24);
+        let exact_sum:usize=exact.iter().sum();
+        let combined_sum:usize=combined.iter().sum();
+        println!("{{\"schema\":\"marici.benincasa.dlog_smith_soft_axis_tail.v1\",\"field_modulus\":{},\"truncation_order\":24,\"arc\":\"E=t,X2=3*t^2\",\"degree\":{degree},\"master_image_rank\":{rank},\"master_image_valuation\":{valuation},\"exact_rank\":{},\"combined_rank\":{},\"exact_determinantal_valuation\":{exact_sum},\"combined_determinantal_valuation\":{combined_sum}}}",P,exact.len(),combined.len());
+        return;
+    }
     if mode == "dlog-smith-quadratic" {
         let order=24usize;
         let mut results=Vec::new();
