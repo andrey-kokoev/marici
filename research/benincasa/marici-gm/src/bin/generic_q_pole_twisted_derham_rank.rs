@@ -483,10 +483,16 @@ fn main() {
     let a = Poly::var(1);
     let b = Poly::var(2);
     let point = std::env::var("KINEMATIC_POINT").unwrap_or_else(|_| "A".to_owned());
-    let (x, y, z) = match point.as_str() {
-        "A" => (2_i64, 3_i64, 4_i64),
-        "B" => (3_i64, 5_i64, 6_i64),
-        _ => panic!("KINEMATIC_POINT must be A or B"),
+    let (x, y, z) = if let Ok(raw) = std::env::var("KINEMATIC_XYZ") {
+        let values: Vec<i64> = raw.split(',').map(|value| value.parse().unwrap()).collect();
+        assert_eq!(values.len(), 3, "KINEMATIC_XYZ must contain x,y,z");
+        (values[0], values[1], values[2])
+    } else {
+        match point.as_str() {
+            "A" => (2_i64, 3_i64, 4_i64),
+            "B" => (3_i64, 5_i64, 6_i64),
+            _ => panic!("KINEMATIC_POINT must be A or B"),
+        }
     };
     let k = cayley_menger(x, y, z);
     let qs = [
