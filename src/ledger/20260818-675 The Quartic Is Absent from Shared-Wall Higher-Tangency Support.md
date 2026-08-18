@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-18
 ---
-# 673 — The Quartic Is Absent from Shared-Wall Higher-Tangency Support
+# 675 — The Quartic Is Absent from Shared-Wall Higher-Tangency Support
 
 ## Hard-to-vary claim
 
