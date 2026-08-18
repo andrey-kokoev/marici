@@ -94,6 +94,28 @@ fn dimension_k_quotient_vanishes_on_all_corners(d:usize,k:&Poly,walls:&[Poly])->
  ncols-rank(matrix,ncols)-representation_kernel
 }
 
+fn dimension_k_quotient_vanishes_on_all_reduced_tangencies(d:usize,k:&Poly,walls:&[Poly],factors:&[Poly])->usize{
+ let vp=mons(d as isize);let vn=mons(d as isize-1);let mu=mons(d as isize-2);let nu=mons(d as isize-3);
+ let np=vp.len();let nn=vn.len();let block=mu.len()+nu.len();let m=factors.len();
+ let ncols=2*np+nn+walls.len()*nn+m*block;let ka=deriv(k,0);let kb=deriv(k,1);let one=poly(&[(0,0,1)]);
+ let mut rows:BTreeMap<(usize,Mon),Vec<i64>>=BTreeMap::new();
+ for (u,&mon) in vp.iter().enumerate(){add_block(&mut rows,0,u,&ka,mon,1,ncols);add_block(&mut rows,0,np+u,&kb,mon,1,ncols);
+  for (i,q) in walls.iter().enumerate(){let qa=deriv(q,0);let qb=deriv(q,1);add_block(&mut rows,1+i,u,&qa,mon,1,ncols);add_block(&mut rows,1+i,np+u,&qb,mon,1,ncols);}}
+ let n0=2*np;let lambdas=n0+nn;let extra=lambdas+walls.len()*nn;
+ for (u,&mon) in vn.iter().enumerate(){add_block(&mut rows,0,n0+u,k,mon,-1,ncols);for i in 0..m{add_block(&mut rows,1+walls.len()+i,n0+u,&one,mon,1,ncols);}}
+ for (i,q) in walls.iter().enumerate(){for (u,&mon) in vn.iter().enumerate(){add_block(&mut rows,1+i,lambdas+i*nn+u,q,mon,-1,ncols);}}
+ for i in 0..m{for (u,&mon) in mu.iter().enumerate(){add_block(&mut rows,1+walls.len()+i,extra+i*block+u,&walls[i],mon,-1,ncols);}
+  for (u,&mon) in nu.iter().enumerate(){add_block(&mut rows,1+walls.len()+i,extra+i*block+mu.len()+u,&factors[i],mon,-1,ncols);}}
+ let matrix:Vec<Vec<i64>>=rows.into_values().filter(|r|r.iter().any(|&x|x!=0)).collect();
+ let representation_kernel=(0..m).map(|i|{
+  let cols=mu.len()+nu.len();let mut rr:BTreeMap<(usize,Mon),Vec<i64>>=BTreeMap::new();
+  for (u,&mon) in mu.iter().enumerate(){add_block(&mut rr,0,u,&walls[i],mon,1,cols);}
+  for (u,&mon) in nu.iter().enumerate(){add_block(&mut rr,0,mu.len()+u,&factors[i],mon,1,cols);}
+  let mm:Vec<Vec<i64>>=rr.into_values().filter(|r|r.iter().any(|&x|x!=0)).collect();cols-rank(mm,cols)
+ }).sum::<usize>();
+ ncols-rank(matrix,ncols)-representation_kernel
+}
+
 fn fiber_census(x:i64,y:i64,z:i64)->String{
  let e=x+y+z;let (x2,y2,z2,e2)=(x*x,y*y,z*z,e*e);
  let k=poly(&[
@@ -108,8 +130,12 @@ fn fiber_census(x:i64,y:i64,z:i64)->String{
  let corner_mod_k=five.iter().enumerate().map(|(i,_)|dimension_k_quotient_vanishes_on_corner(7,&k,&five,i)).collect::<Vec<_>>();
  let all_corner=nullity_k_quotient_divisible_by(7,&k,&five,&q5,5);
  let all_corner_mod_k=dimension_k_quotient_vanishes_on_all_corners(7,&k,&five);
+ let reduced_factors=if (x,y,z)==(2,3,4){vec![poly(&[(2,0,2),(0,0,-207)]),poly(&[(0,2,3),(0,0,-282)]),poly(&[(2,0,4),(1,0,21),(0,0,-288)])]}
+  else if (x,y,z)==(3,5,7){vec![poly(&[(2,0,3),(0,0,-975)]),poly(&[(0,2,5),(0,0,-1395)]),poly(&[(2,0,7),(1,0,65),(0,0,-1400)])]}
+  else{panic!("unregistered tangency factor fiber")};
+ let reduced_tangency_kernel=dimension_k_quotient_vanishes_on_all_reduced_tangencies(7,&k,&five,&reduced_factors);
  let show=|rows:&[(usize,usize,usize,usize)]|rows.iter().map(|(d,f,q,a)|format!("{{\"degree\":{},\"full\":{},\"wall_product_divisible\":{},\"wall_active\":{}}}",d,f,q,a)).collect::<Vec<_>>().join(",");
- format!("{{\"fiber\":[{},{},{}],\"shared_three_rows\":[{}],\"complete_five_rows\":[{}],\"degree7_k_quotient_wall_divisible_nullities\":{:?},\"degree7_k_quotient_corner_vanishing_dimensions\":{:?},\"degree7_k_quotient_all_walls_divisible_nullity\":{},\"degree7_k_quotient_all_corner_vanishing_dimension\":{}}}",x,y,z,show(&rows3),show(&rows5),corner,corner_mod_k,all_corner,all_corner_mod_k)
+ format!("{{\"fiber\":[{},{},{}],\"shared_three_rows\":[{}],\"complete_five_rows\":[{}],\"degree7_k_quotient_wall_divisible_nullities\":{:?},\"degree7_k_quotient_corner_vanishing_dimensions\":{:?},\"degree7_k_quotient_all_walls_divisible_nullity\":{},\"degree7_k_quotient_all_corner_vanishing_dimension\":{},\"degree7_k_quotient_all_reduced_shared_tangency_kernel_dimension\":{}}}",x,y,z,show(&rows3),show(&rows5),corner,corner_mod_k,all_corner,all_corner_mod_k,reduced_tangency_kernel)
 }
 fn main(){
  let a=fiber_census(2,3,4);let b=fiber_census(3,5,7);
