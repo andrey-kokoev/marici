@@ -1,0 +1,65 @@
+{
+  "schema": "marici.marked-relative-extension-acceptance-contract.v1",
+  "entry": 850,
+  "allocator_claim": "seqclaim-071c32a5cf034641d2f5ae31",
+  "column_convention": "nabla=d+A acts on column sections",
+  "exact_sequence": {
+    "formula": "0 -> M9 --J--> M12 --P--> W3 -> 0",
+    "dimensions": {"M9": 9, "M12": 12, "W3": 3},
+    "required_identities": [
+      "rank(J)=9",
+      "rank(P)=3",
+      "P J=0",
+      "ker(P)=im(J)"
+    ]
+  },
+  "required_exports": [
+    "J",
+    "P_W1",
+    "P_W2",
+    "P_top",
+    "A_x^(12)",
+    "A_y^(12)",
+    "A_x^(9)",
+    "A_y^(9)",
+    "A_x^(3)",
+    "A_y^(3)",
+    "basis and exact-lift convention packet"
+  ],
+  "connection_identities": [
+    "dJ+A12 J-J A9=0",
+    "dP+A3 P-P A12=0",
+    "dA12+A12 wedge A12=0",
+    "dA9+A9 wedge A9=0",
+    "dA3+A3 wedge A3=0"
+  ],
+  "adapted_frame": {
+    "temporary_only": true,
+    "connection_block": "A12=[[A9,B],[0,A3]]",
+    "extension_block_shape": [9, 3],
+    "triangular_gauge": "G=[[I9,h],[0,I3]]",
+    "gauge_action": "B' = B + d h + A9 h - h A3",
+    "invariant": "[B] in the connection-extension quotient by D_Hom(h)"
+  },
+  "Q_test": {
+    "prerequisite": "Q is absent from the diagonal M9 and W3 connections at its generic point",
+    "allowed_gauges": "triangular gauges regular at the generic point of Q=0",
+    "positive_result": "the logarithmic polar part of B is nonzero modulo D_Hom of admissible gauges",
+    "negative_result": "the polar part is removable by an admissible triangular gauge",
+    "forbidden_inference": "a Q denominator in one chosen representative B"
+  },
+  "nested_infinity_checks": [
+    "R_inf has rank 2 and kernel rank 7 on M9",
+    "R_inf is horizontal for A9 and the elliptic connection",
+    "marked residue and infinity-Gysin squares use source-derived orientations",
+    "no splitting is selected by sparsity, denominator minimization, or Q"
+  ],
+  "acceptance_order": [
+    "exactness",
+    "horizontality of J and P",
+    "flatness",
+    "infinity-Gysin compatibility",
+    "triangular-gauge quotient",
+    "intrinsic support factorization"
+  ]
+}
