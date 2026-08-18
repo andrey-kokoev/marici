@@ -1,0 +1,25 @@
+{
+  "schema": "marici.benincasa.soft_axis_filtered_exact_module_certificate.v1",
+  "date": "2026-08-18",
+  "field_modulus": 2305843009213693951,
+  "soft_center": {"E": 0, "X2": 0},
+  "full_fiber_data": {"K": "a^4", "L1": "b+1", "L2": "a"},
+  "sectors": [[1,1],[1,0],[0,1],[0,0]],
+  "cutoff_range": [5,40],
+  "all_exact_images_divisible_by_a4": true,
+  "stable_range_tested": [12,40],
+  "stable_rank_formula": "rank(image_{<=D}) = dim((a^4)_{<=D}) - 2",
+  "stable_cokernel_formula": "dim(coker_{<=D}) = 4D",
+  "quartic_tail_formula": "dim((F[a,b]/(a^4))_{<=D}) = 4D-2",
+  "finite_excess_dimension": 2,
+  "greedy_ideal_quotient_bases": [
+    {"cutoff": 16, "monomials": [[4,0],[11,1]]},
+    {"cutoff": 20, "monomials": [[4,0],[11,1]]}
+  ],
+  "basis_warning": "The displayed monomials are stable greedy representatives, not a claimed canonical or horizontal basis.",
+  "interpretation": "The filtered cokernel contains the infinite quartic soft-boundary tail plus a stable two-dimensional finite exact-form resonance.",
+  "entry_447_comparison": "The special fibre of M_CM=Q[u,a,b]/(K) accounts for F[a,b]/(a^4) but is short by the tested length-two resonance if identified unextended with the full exact-form cokernel.",
+  "carrier_classification": "coefficient-boundary data over the existing Cayley-Menger degeneration; no new carrier incidence",
+  "checker": "research/benincasa/marici-gm/src/bin/marked_tangency_support.rs",
+  "command": "cargo run --release --bin marked_tangency_support -- 0 dlog-soft-axis-filtered-module"
+}
