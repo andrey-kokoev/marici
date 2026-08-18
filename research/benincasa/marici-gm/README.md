@@ -147,6 +147,12 @@ The committed sixteen-point certificate finds no residue-class obstruction;
 only `v-u`, `y-u^2`, and `y+u^2` resonate, and only at pole order one through the tested
 order ten.
 
+The `gysin-adapted-reconstruct` command serializes the validated exact
+bivariate rational connection in the Gysin-adapted frame.  The companion
+`gysin_function_field_residues.py` checker reduces it directly in
+`GF(p)(u)[v]/(P6)` and `GF(p)(u)[v]/(Q)`, with no sampling or fitting of points
+on either divisor.
+
 `generic-et-nearby-synthesis.json` combines that certificate with the exact
 other-block connections and the total-energy intersection census. It records
 the complete generic nine-master Deligne nearby object, the second Rees datum,
