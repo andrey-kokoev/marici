@@ -59,6 +59,44 @@ def multiply(left, right):
     ]
 
 
+def unit_smith_rank(matrix):
+    """Count diagonal unit factors using only unimodular row/column moves."""
+    if not matrix or not matrix[0]:
+        return 0, matrix
+    work = [row[:] for row in matrix]
+    rows, columns = len(work), len(work[0])
+    pivot = 0
+    while pivot < rows and pivot < columns:
+        position = next(
+            (
+                (r, c)
+                for r in range(pivot, rows)
+                for c in range(pivot, columns)
+                if abs(work[r][c]) == 1
+            ),
+            None,
+        )
+        if position is None:
+            break
+        r, c = position
+        work[pivot], work[r] = work[r], work[pivot]
+        for row in work:
+            row[pivot], row[c] = row[c], row[pivot]
+        if work[pivot][pivot] == -1:
+            work[pivot] = [-value for value in work[pivot]]
+        for r in range(rows):
+            if r != pivot and work[r][pivot]:
+                factor = work[r][pivot]
+                work[r] = [a - factor * b for a, b in zip(work[r], work[pivot])]
+        for c in range(columns):
+            if c != pivot and work[pivot][c]:
+                factor = work[pivot][c]
+                for r in range(rows):
+                    work[r][c] -= factor * work[r][pivot]
+        pivot += 1
+    return pivot, work
+
+
 def graph_data(vertices, ambient_edges):
     vertices = tuple(sorted(vertices))
     edges = tuple(edge for edge in ambient_edges if edge[0] in vertices and edge[1] in vertices)
@@ -174,6 +212,15 @@ def main():
         assert all(value == 0 for row in product for value in row)
 
     ranks = {degree: matrix_rank(matrices[degree]) for degree in range(1, 5)}
+    unit_ranks = {}
+    for degree in range(1, 5):
+        unit_ranks[degree], residual = unit_smith_rank(matrices[degree])
+        assert unit_ranks[degree] == ranks[degree]
+        assert all(
+            residual[r][c] == 0
+            for r in range(unit_ranks[degree], len(residual))
+            for c in range(unit_ranks[degree], len(residual[0]) if residual else 0)
+        )
     homology = {}
     for degree in range(5):
         dimension = len(basis_by_degree[degree])
@@ -203,12 +250,14 @@ def main():
 
     print("Cech_H1_carrier_chain_ranks: 0,4,32,72,49")
     print("Cech_H1_carrier_differential_ranks: " + ",".join(str(ranks[d]) for d in range(1, 5)))
+    print("Cech_H1_nonzero_Smith_factors: ALL_ONE")
     print("Cech_H1_carrier_homology_ranks: " + ",".join(str(homology[d]) for d in range(5)))
     print(f"distinct_loaded_carrier_arrows: {len(carrier_arrows)}")
     print("induced_carrier_d_squared: ZERO")
     print("rational_surviving_Cech_cycle_rank: " + str(sum(homology.values())))
     print(f"top_kernel_projection_to_empty_Wagner_rank: {empty_projection_rank}")
-    print("next_gate: COMPUTE_INTEGRAL_SMITH_TORSION_AND_PHYSICAL_LINE_EDGE_MAP")
+    print("integral_carrier_homology_torsion: NONE")
+    print("next_gate: COMPUTE_PRIMITIVE_TOP_LATTICE_PROJECTION_AND_PHYSICAL_LINE_EDGE_MAP")
 
 
 if __name__ == "__main__":
