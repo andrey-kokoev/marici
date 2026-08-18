@@ -31,14 +31,58 @@ def reduced_factor(wall, x, y, z):
     return factor
 
 
+def homogeneous_monomials(degree):
+    return [(i, j, degree - i - j) for i in range(degree + 1) for j in range(degree + 1 - i)]
+
+
+def solve_homogeneous(samples, degree=4):
+    monomials = homogeneous_monomials(degree)
+    matrix = []
+    for (x, y, z), value in samples:
+        matrix.append([Fraction(x**i * y**j * z**k) for i, j, k in monomials] + [value])
+    row = 0
+    pivots = {}
+    for column in range(len(monomials)):
+        pivot = next(index for index in range(row, len(matrix)) if matrix[index][column])
+        matrix[row], matrix[pivot] = matrix[pivot], matrix[row]
+        scale = matrix[row][column]
+        matrix[row] = [value / scale for value in matrix[row]]
+        for index in range(len(matrix)):
+            if index == row: continue
+            scale = matrix[index][column]
+            matrix[index] = [a - scale * b for a, b in zip(matrix[index], matrix[row])]
+        pivots[column] = row
+        row += 1
+    coefficients = {monomials[column]: matrix[index][-1] for column, index in pivots.items()}
+    assert all(
+        sum(coefficients[m] * x**m[0] * y**m[1] * z**m[2] for m in monomials) == value
+        for (x, y, z), value in samples
+    )
+    return coefficients
+
+
+def q_value(x, y, z):
+    energy = x + y + z
+    return -16*x*x*y*y - 8*x*y*energy*energy + 8*(x+y)*energy**3 - 5*energy**4
+
+
+def proportional(left, right):
+    keys = set(left) | set(right)
+    pivot = next((key for key in keys if right.get(key, 0)), None)
+    if pivot is None: return False
+    scale = left.get(pivot, 0) / right[pivot]
+    return all(left.get(key, 0) == scale * right.get(key, 0) for key in keys)
+
+
 def main():
     fibers = []
     points = [
         (x, y, z)
-        for x in (2, 3, 5)
-        for y in (4, 7)
-        for z in (6, 9)
+        for x in (1, 2, 3, 5)
+        for y in (1, 2, 4, 7)
+        for z in (1, 3, 6, 9)
     ]
+    discriminant_samples = {wall: [] for wall in ("g1", "g2", "g3")}
     for x, y, z in points:
         factors = {}
         for wall in ("g1", "g2", "g3"):
@@ -49,11 +93,21 @@ def main():
                 "discriminant": str(discriminant),
                 "discriminant_nonzero": discriminant != 0,
             }
+            discriminant_samples[wall].append(((x, y, z), discriminant))
         fibers.append({"kinematics": [x, y, z], "factors": factors})
     assert all(
         row["discriminant_nonzero"]
         for fiber in fibers for row in fiber["factors"].values()
     )
+    discriminant_polynomials = {
+        wall: solve_homogeneous(samples) for wall, samples in discriminant_samples.items()
+    }
+    q_polynomial = solve_homogeneous([((x, y, z), Fraction(q_value(x, y, z))) for x, y, z in points])
+    q_associates = {
+        wall: proportional(polynomial, q_polynomial)
+        for wall, polynomial in discriminant_polynomials.items()
+    }
+    assert not any(q_associates.values())
     print(json.dumps({
         "schema": "marici.physical-shared-wall-reduced-factors.v1",
         "chart": "x*y*z != 0",
@@ -61,6 +115,12 @@ def main():
         "exact_square_identities_verified": len(fibers) * 3,
         "fibers": fibers,
         "all_reduced_factors_squarefree_on_sweep": True,
+        "discriminant_polynomials": {
+            wall: {f"x^{i}y^{j}z^{k}": str(value) for (i, j, k), value in polynomial.items() if value}
+            for wall, polynomial in discriminant_polynomials.items()
+        },
+        "Q_associate_to_reduced_discriminant": q_associates,
+        "Q_divides_product_of_reduced_discriminants": False,
     }, sort_keys=True))
 
 
