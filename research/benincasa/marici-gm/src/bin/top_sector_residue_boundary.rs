@@ -70,6 +70,24 @@ impl Polynomial {
         }
         result
     }
+
+    fn derivative(&self, variable: usize) -> Self {
+        let mut result = Self::default();
+        for (monomial, coefficient) in &self.0 {
+            let exponent = monomial[variable];
+            if exponent == 0 {
+                continue;
+            }
+            let mut derived = *monomial;
+            derived[variable] -= 1;
+            let term = Self(BTreeMap::from([(
+                derived,
+                coefficient * i64::from(exponent),
+            )]));
+            result = result.add(&term);
+        }
+        result
+    }
 }
 
 fn sum(terms: &[Polynomial]) -> Polynomial {
@@ -177,7 +195,26 @@ fn main() {
     assert_eq!(via_g2.coefficient, -1);
     assert_eq!(via_g1.coefficient + via_g2.coefficient, 0);
 
+    // Horizontal lifts in fixed fiber order (c,a,b).  Each row records
+    // (dc,da,db) while differentiating x, y, or z with all q's fixed.
+    let horizontal_fiber = [[-1_i64, 1, 0], [-1, 0, 1], [-1, 1, 1]];
+    let parameter_q_derivatives = [[1_i64, 0, 1], [0, 1, 1], [0, 0, 1]];
+    let fiber_q_jacobian = [[1_i64, 0, 1], [1, 1, 0], [1, 0, 0]];
+    for direction in 0..3 {
+        for q in 0..3 {
+            let transported = parameter_q_derivatives[direction][q]
+                + (0..3)
+                    .map(|fiber| fiber_q_jacobian[q][fiber] * horizontal_fiber[direction][fiber])
+                    .sum::<i64>();
+            assert_eq!(transported, 0);
+        }
+        assert_eq!(
+            k_at_triple.derivative(direction),
+            expected.derivative(direction)
+        );
+    }
+
     println!(
-        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v2\",\"status\":\"exact_symbolic_and_cousin_identity_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_proper_boundary\":[1,-1,0],\"second_residues\":[1,-1],\"cousin_sum\":0,\"new_carrier_datum\":false}}"
+        "{{\"schema\":\"marici.benincasa.top_sector_residue_boundary.v3\",\"status\":\"moving_normal_gauss_manin_naturality_verified\",\"triple_section\":{{\"y12\":\"-E\",\"y23\":\"X1+X3\",\"y31\":\"X2+X3\"}},\"normal_jacobian\":{jacobian},\"K_at_triple\":\"E^2 (X2+X3-X1)^2 (X1+X3-X2)^2\",\"proper_face_ranks\":{{\"q_G12_q_g2\":1,\"q_G12_q_g1\":1,\"q_g1_q_g2\":0}},\"oriented_proper_boundary\":[1,-1,0],\"second_residues\":[1,-1],\"cousin_sum\":0,\"horizontal_fiber_lifts\":[[-1,1,0],[-1,0,1],[-1,1,1]],\"all_q_horizontal\":true,\"twist_derivatives_commute\":true,\"new_carrier_datum\":false}}"
     );
 }
