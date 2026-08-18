@@ -5,6 +5,11 @@ date: 2026-08-18
 ---
 # 843 — The Complete Four-Coordinate Polar Incidence Cube Has No Generic Corner Cohomology
 
+> **Correction (Entry 844).** The checker proves rank-two jet generation
+> on all sixteen strata, but does not compute the alternating cubical
+> differential. The claim of vanishing total corner cohomology is therefore
+> withdrawn pending that calculation.
+
 ## Labelled decomposition
 
 Write the two Entry 838 factors as
