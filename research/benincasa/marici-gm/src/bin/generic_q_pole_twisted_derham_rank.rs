@@ -146,30 +146,61 @@ fn pivot(mut row: Row, ps: &mut BTreeMap<usize, Row>) {
 }
 fn add_poly(
     row: &mut Row,
-    cols: &HashMap<(usize, usize, Mon), usize>,
+    cols: &HashMap<(usize, [usize; 3], Mon), usize>,
     kp: usize,
-    qp: usize,
+    qps: [usize; 3],
     base: Mon,
     poly: &Poly,
     scale: i64,
 ) {
     for (m, c) in &poly.0 {
         let term = [base[0] + m[0], base[1] + m[1], base[2] + m[2]];
-        add_term(row, cols[&(kp, qp, term)], mm(*c, scale));
+        add_term(row, cols[&(kp, qps, term)], mm(*c, scale));
     }
 }
 
-fn rank_for(k: &Poly, q: &Poly, kmax: usize, qmax: usize, ambient: usize, cutoff: usize) -> usize {
+fn q_states(mask: u8, qmax: usize, include_boundary: bool) -> Vec<[usize; 3]> {
+    let stop = if include_boundary { qmax } else { qmax - 1 };
+    let bounds = [
+        if mask & 1 != 0 { stop } else { 0 },
+        if mask & 2 != 0 { stop } else { 0 },
+        if mask & 4 != 0 { stop } else { 0 },
+    ];
+    let mut states = Vec::new();
+    for q0 in 0..=bounds[0] {
+        for q1 in 0..=bounds[1] {
+            for q2 in 0..=bounds[2] {
+                states.push([q0, q1, q2]);
+            }
+        }
+    }
+    states
+}
+
+fn rank_for(
+    k: &Poly,
+    qs: &[Poly; 3],
+    mask: u8,
+    kmax: usize,
+    qmax: usize,
+    ambient: usize,
+    cutoff: usize,
+) -> usize {
     let column_degree = ambient + 3;
     let low = mons(cutoff);
     let all = mons(column_degree);
+    let target_q = [
+        usize::from(mask & 1 != 0),
+        usize::from(mask & 2 != 0),
+        usize::from(mask & 4 != 0),
+    ];
     let mut labels = Vec::new();
-    labels.extend(low.iter().map(|m| (0, 1, *m)));
+    labels.extend(low.iter().map(|m| (0, target_q, *m)));
     for kp in 0..=kmax {
-        for qp in 0..=qmax {
+        for qps in q_states(mask, qmax, true) {
             for m in &all {
-                if !(kp == 0 && qp == 1 && low.contains(m)) {
-                    labels.push((kp, qp, *m));
+                if !(kp == 0 && qps == target_q && low.contains(m)) {
+                    labels.push((kp, qps, *m));
                 }
             }
         }
@@ -180,7 +211,7 @@ fn rank_for(k: &Poly, q: &Poly, kmax: usize, qmax: usize, ambient: usize, cutoff
     let gamma = 5_i64;
 
     for kp in 0..kmax {
-        for qp in 0..qmax {
+        for qps in q_states(mask, qmax, false) {
             for axis in 0..NV {
                 for m in mons(ambient) {
                     let mut row = Row::new();
@@ -188,35 +219,56 @@ fn rank_for(k: &Poly, q: &Poly, kmax: usize, qmax: usize, ambient: usize, cutoff
                         let mut d = m;
                         let e = d[axis];
                         d[axis] -= 1;
-                        add_term(&mut row, cols[&(kp, qp, d)], i64::from(e));
+                        add_term(&mut row, cols[&(kp, qps, d)], i64::from(e));
                     }
                     add_poly(
                         &mut row,
                         &cols,
                         kp + 1,
-                        qp,
+                        qps,
                         m,
                         &k.der(axis),
                         gamma - kp as i64,
                     );
-                    add_poly(&mut row, &cols, kp, qp + 1, m, &q.der(axis), -(qp as i64));
+                    for qi in 0..3 {
+                        if mask & (1 << qi) != 0 {
+                            let mut next = qps;
+                            next[qi] += 1;
+                            add_poly(
+                                &mut row,
+                                &cols,
+                                kp,
+                                next,
+                                m,
+                                &qs[qi].der(axis),
+                                -(qps[qi] as i64),
+                            );
+                        }
+                    }
                     pivot(row, &mut ps);
                 }
             }
             if ambient >= 4 {
                 for m in mons(ambient - 4) {
                     let mut row = Row::new();
-                    add_term(&mut row, cols[&(kp, qp, m)], 1);
-                    add_poly(&mut row, &cols, kp + 1, qp, m, k, -1);
+                    add_term(&mut row, cols[&(kp, qps, m)], 1);
+                    add_poly(&mut row, &cols, kp + 1, qps, m, k, -1);
                     pivot(row, &mut ps);
                 }
             }
             if ambient >= 1 {
-                for m in mons(ambient - 1) {
-                    let mut row = Row::new();
-                    add_term(&mut row, cols[&(kp, qp, m)], 1);
-                    add_poly(&mut row, &cols, kp, qp + 1, m, q, -1);
-                    pivot(row, &mut ps);
+                for qi in 0..3 {
+                    if mask & (1 << qi) == 0 {
+                        continue;
+                    }
+                    for m in mons(ambient - 1) {
+                        let mut row = Row::new();
+                        add_term(&mut row, cols[&(kp, qps, m)], 1);
+                        let mut next = qps;
+                        next[qi] += 1;
+                        add_poly(&mut row, &cols, kp, next, m, &qs[qi], -1);
+                        pivot(row, &mut ps);
+                    }
                 }
             }
         }
@@ -257,10 +309,19 @@ fn main() {
         _ => panic!("KINEMATIC_POINT must be A or B"),
     };
     let k = cayley_menger(x, y, z);
+    let qs = [
+        sum(&[c.clone(), b, Poly::con(x)]),
+        sum(&[c.clone(), a, Poly::con(y)]),
+        c.add(&Poly::con(x + y + z)),
+    ];
     let families = [
-        ("q_g1", sum(&[c.clone(), b, Poly::con(x)]), 8_usize),
-        ("q_g2", sum(&[c.clone(), a, Poly::con(y)]), 8_usize),
-        ("q_G12", c.add(&Poly::con(x + y + z)), 16_usize),
+        ("q_g1", 0b001_u8, 8_usize),
+        ("q_g2", 0b010_u8, 8_usize),
+        ("q_g1_q_g2", 0b011_u8, 9_usize),
+        ("q_G12", 0b100_u8, 16_usize),
+        ("q_g1_q_G12", 0b101_u8, 18_usize),
+        ("q_g2_q_G12", 0b110_u8, 18_usize),
+        ("q_g1_q_g2_q_G12", 0b111_u8, 21_usize),
     ];
     let kmax: usize = std::env::var("K_POLE")
         .ok()
@@ -273,9 +334,9 @@ fn main() {
         .map_or(12, |x| x.parse().unwrap());
     println!("schema=generic-q-pole-twisted-derham-rank-v1 gamma=5 point={point} xyz=({x},{y},{z}) k_pole={kmax} q_pole={qmax}");
     for ambient in 7..=max_ambient {
-        for (name, q, target) in &families {
-            let rank = rank_for(&k, q, kmax, qmax, ambient, 5);
-            println!("ambient={ambient} family={name} filtered_rank={rank} target={target}");
+        for (name, mask, target) in &families {
+            let rank = rank_for(&k, &qs, *mask, kmax, qmax, ambient, 5);
+            println!("ambient={ambient} mask={mask:03b} family={name} filtered_rank={rank} target={target}");
         }
     }
 }
