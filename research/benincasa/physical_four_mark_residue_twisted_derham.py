@@ -164,25 +164,25 @@ def presentation(
 
     low_pivots = {pivot: row for pivot, row in pivots.items() if pivot < len(low_labels)}
     free_low = [column for column in range(len(low_labels)) if column not in low_pivots]
-    return low_labels, columns, low_pivots, free_low
+    return low_labels, columns, pivots, free_low
 
 
 def quotient_coordinates(
-    label, columns: dict, low_pivots: dict[int, dict[int, int]], free_low: list[int]
+    label, columns: dict, pivots: dict[int, dict[int, int]], free_low: list[int]
 ) -> dict[int, int]:
-    reduced = reduce_row({columns[label]: 1}, low_pivots)
+    reduced = reduce_row({columns[label]: 1}, pivots)
     return {column: reduced[column] for column in free_low if column in reduced}
 
 
 def filtered_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int) -> dict:
-    low_labels, columns, low_pivots, free_low = presentation(names, gamma, ambient, cutoff)
+    low_labels, columns, pivots, free_low = presentation(names, gamma, ambient, cutoff)
     source_label = (0, *([1] * len(names)), (0, 0))
-    source = quotient_coordinates(source_label, columns, low_pivots, free_low)
+    source = quotient_coordinates(source_label, columns, pivots, free_low)
 
     face_pivots: dict[int, dict[int, int]] = {}
     for label in low_labels:
         if any(level == 0 for level in label[1:-1]):
-            add_pivot(quotient_coordinates(label, columns, low_pivots, free_low), face_pivots)
+            add_pivot(quotient_coordinates(label, columns, pivots, free_low), face_pivots)
     source_mod_faces = reduce_row(source, face_pivots)
     return {
         "dimension": len(free_low),
@@ -194,16 +194,98 @@ def filtered_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: in
     }
 
 
+def parameter_derivative_data(axis: int):
+    # The frozen coefficients have kinematic degree at most four, so the
+    # five-point stencil is the exact formal derivative over PRIME.
+    weights = (1, -8, 0, 8, -1)
+    inverse_twelve = pow(12, PRIME - 2, PRIME)
+    k_result: Polynomial = {}
+    q_result: dict[str, Polynomial] = {}
+    for offset, weight in zip((-2, -1, 0, 1, 2), weights):
+        point = [2, 3, 4]
+        point[axis] += offset
+        k, q = fiber_data(*point)
+        for exponent, coefficient in k.items():
+            k_result[exponent] = (k_result.get(exponent, 0) + weight * coefficient) % PRIME
+        for name, polynomial in q.items():
+            target = q_result.setdefault(name, {})
+            for exponent, coefficient in polynomial.items():
+                target[exponent] = (target.get(exponent, 0) + weight * coefficient) % PRIME
+    k_result = {e: c * inverse_twelve % PRIME for e, c in k_result.items() if c}
+    q_result = {
+        name: {e: c * inverse_twelve % PRIME for e, c in polynomial.items() if c}
+        for name, polynomial in q_result.items()
+    }
+    return k_result, q_result
+
+
+def connection_image(label, names: tuple[str, ...], gamma: int, axis: int, columns: dict):
+    k_pole, *rest = label
+    exponent = rest.pop()
+    levels = rest
+    k_derivative, q_derivatives = parameter_derivative_data(axis)
+    row: dict[int, int] = {}
+    if k_pole < 2:
+        for term, coefficient in multiply_monomial(k_derivative, exponent, gamma - k_pole):
+            target = (k_pole + 1, *levels, term)
+            if target in columns:
+                add_value(row, columns[target], coefficient)
+    for q_index, level in enumerate(levels):
+        if level >= 2:
+            continue
+        raised = list(levels)
+        raised[q_index] += 1
+        for term, coefficient in multiply_monomial(q_derivatives[names[q_index]], exponent, -level):
+            target = (k_pole, *raised, term)
+            if target in columns:
+                add_value(row, columns[target], coefficient)
+    return row
+
+
+def horizontal_saturation_rank(
+    names, gamma, source, low_labels, columns, pivots, free_low
+) -> tuple[int, int]:
+    label_by_column = {columns[label]: label for label in low_labels}
+    span: dict[int, dict[int, int]] = {}
+    first_span: dict[int, dict[int, int]] = {}
+    add_pivot(dict(source), first_span)
+    frontier = [source]
+    while frontier:
+        vector = frontier.pop()
+        before = len(span)
+        add_pivot(dict(vector), span)
+        if len(span) == before:
+            continue
+        for axis in range(2):
+            image: dict[int, int] = {}
+            for column, coefficient in vector.items():
+                label = label_by_column[column]
+                for target, value in connection_image(label, names, gamma, axis, columns).items():
+                    add_value(image, target, coefficient * value)
+            reduced = reduce_row(image, pivots)
+            quotient = {column: reduced[column] for column in free_low if column in reduced}
+            if quotient:
+                if vector is source:
+                    add_pivot(dict(quotient), first_span)
+                frontier.append(quotient)
+    return len(first_span), len(span)
+
+
 def relative_top_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int) -> dict:
-    low_labels, columns, low_pivots, free_low = presentation(
+    low_labels, columns, pivots, free_low = presentation(
         names, gamma, ambient, cutoff, minimum_q_level=1
     )
     source_label = (0, *([1] * len(names)), (0, 0))
-    source = quotient_coordinates(source_label, columns, low_pivots, free_low)
+    source = quotient_coordinates(source_label, columns, pivots, free_low)
+    first_jet_rank, saturation_rank = horizontal_saturation_rank(
+        names, gamma, source, low_labels, columns, pivots, free_low
+    )
     return {
         "relative_top_dimension": len(free_low),
         "relative_source_nonzero": bool(source),
         "relative_source_support": len(source),
+        "relative_source_first_jet_rank": first_jet_rank,
+        "relative_source_horizontal_saturation_rank": saturation_rank,
     }
 
 
