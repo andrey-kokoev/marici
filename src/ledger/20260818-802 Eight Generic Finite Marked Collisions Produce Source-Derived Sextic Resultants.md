@@ -52,7 +52,7 @@ After imposing the energy-sum relation, exact factorization over
 polynomials.  Their expanded term counts are
 
 \[
-37,\ 48,\ 16,\ 48,\ 16,\ 16,\ 16,\ 7.
+54,\ 50,\ 40,\ 50,\ 40,\ 40,\ 40,\ 37.
 \]
 
 The other two pairs are parallel.  They coincide only on
@@ -103,6 +103,13 @@ geometry can and here does generate new irreducible coefficient supports.
 substitutes \(E=X_1+X_2+X_3\), and factors the resulting polynomials exactly.
 The census and hashes of every expanded polynomial are in
 `research/nima/generic-finite-marked-cm-collisions.json`.
+
+Correction recorded with Entry 803: the first certificate used a simultaneous
+substitution in which \(E\) could remain inside the marked-point replacement
+while being omitted from the declared polynomial generators.  The repaired
+certificate substitutes \((a,b)\) first and only then imposes
+\(E=X_1+X_2+X_3\).  The irreducibility and degree-six conclusions are
+unchanged; the term counts and polynomial hashes above are the corrected ones.
 
 ## Next falsifier
 

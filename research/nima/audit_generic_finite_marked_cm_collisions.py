@@ -40,7 +40,11 @@ def main() -> None:
 
     rows = []
     for labels, (a0, b0) in points.items():
-        collision = sp.Poly(sp.expand(k.subs({a: a0, b: b0, e: energy_sum})), *parameters)
+        # Substitute the marked point first, then impose E=X1+X2+X3 also
+        # inside that replacement.  A single dict substitution can leave E
+        # in a0,b0 while Poly silently treats it as a coefficient.
+        collision_expr = k.subs({a: a0, b: b0}, simultaneous=True).subs(e, energy_sum)
+        collision = sp.Poly(sp.expand(collision_expr), *parameters)
         _, factors = sp.factor_list(collision.as_expr(), *parameters)
         text = sp.sstr(collision.as_expr())
         rows.append({
