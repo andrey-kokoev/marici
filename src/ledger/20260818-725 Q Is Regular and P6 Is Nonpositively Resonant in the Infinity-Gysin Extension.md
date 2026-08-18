@@ -34,7 +34,7 @@ For the (v)-connection, exact divisibility by (f) determines the pole
 order.  A simple residue is computed as
 
 \[
-R_f=left.\frac{fA_v}{\partial_vf}\right|_{f=0}.
+R_f=\left.\frac{fA_v}{\partial_vf}\right|_{f=0}.
 \]
 
 All matrix ranks and indicial polynomials are then computed inside the
