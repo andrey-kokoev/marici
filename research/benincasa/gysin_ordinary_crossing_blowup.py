@@ -66,6 +66,36 @@ def rank(a):
         r+=1
     return r
 
+def nullspace(a):
+    a=[row[:] for row in a]; rows=len(a); cols=len(a[0]); piv=[]; r=0
+    for c in range(cols):
+        p=next((i for i in range(r,rows) if a[i][c]),None)
+        if p is None: continue
+        a[r],a[p]=a[p],a[r]; z=1/a[r][c];a[r]=[z*x for x in a[r]]
+        for i in range(rows):
+            if i!=r and a[i][c]:
+                z=a[i][c];a[i]=[a[i][j]-z*a[r][j] for j in range(cols)]
+        piv.append(c);r+=1
+    out=[]
+    for f in [c for c in range(cols) if c not in piv]:
+        x=[Z]*cols;x[f]=O
+        for i,p in enumerate(piv):x[p]=-a[i][f]
+        out.append(x)
+    return out
+
+def const_int(x):
+    if not x:return 0
+    if x.denom.degree() or x.numer.degree():raise ValueError(f'nonconstant {x}')
+    return int(x.numer)/int(x.denom)
+
+def const_mod(x):
+    if not x:return 0
+    if x.denom.degree() or x.numer.degree():raise ValueError(f'nonconstant {x}')
+    n=int(x.numer.to_dict()[(0,)]);d=int(x.denom.to_dict()[(0,)])
+    return (n*pow(d,P-2,P))%P
+
+def mod_matrix(a):return [[const_mod(x) for x in row] for row in a]
+
 def indicial(r,m=1):
     a=[[Z]*4 for _ in range(4)]
     for q in range(2):
@@ -167,10 +197,33 @@ def main():
                 for x in row:
                     z,q=residue_t(x,pt);ro.append(z);oo.append(q)
                 rr.append(ro);orders.append(oo)
+            # The exceptional residue is itself meromorphic at the incident
+            # point.  Its t-residue is the corner coherence datum; direct
+            # restriction of an exceptional kernel is therefore untyped.
+            cr=[]; co=[]
+            for row in re:
+                cro=[];coo=[]
+                for x in row:
+                    z,q=residue_t(x,pt);cro.append(z);coo.append(q)
+                cr.append(cro);co.append(coo)
+            ls=indicial(rr,1); bs=nullspace(ls)
+            lc=indicial(cr,0)
+            incidence=[[sum(lc[i][k]*bs[j][k] for k in range(4)) for j in range(len(bs))] for i in range(4)]
+            if label!= 'D1': incidence=[[-x for x in row] for row in incidence]
+            ce=[cr[2][0],cr[2][1],cr[3][0],cr[3][1]]
+            if label!='D1':ce=[-x for x in ce]
+            augmented=[incidence[i]+[ce[i]] for i in range(4)]
             strict.append({'divisor':label,'coordinate':pt,'minimum_order':min(min(x) for x in orders),
                            'residue':text_matrix(rr),'residue_rank':rank(rr),
                            'residue_kernel_dimension':4-rank(rr),'residue_cokernel_dimension':4-rank(rr),
-                           'indicial_L1_kernel_dimension':4-rank(indicial(rr,1))})
+                           'indicial_L1_kernel_dimension':4-rank(indicial(rr,1)),
+                           'exceptional_corner_minimum_order':min(map(min,co)),
+                           'exceptional_corner_residue':text_matrix(cr),
+                           'exceptional_corner_residue_mod_p':mod_matrix(cr),
+                           'exceptional_corner_residue_rank':rank(cr),
+                           'strict_L1_kernel_basis_mod_p':[mod_matrix([x])[0] for x in bs],
+                           'oriented_corner_incidence_mod_p':mod_matrix(incidence),
+                           'oriented_augmented_corner_map_mod_p':mod_matrix(augmented)})
         charts.append({'chart':chart,'derived_exceptional_weights':weights,'exceptional_residue':text_matrix(re),'exceptional_residue_rank':rank(re),
                        'exceptional_kernel_dimension':4-rank(re),'exceptional_cokernel_dimension':4-rank(re),
                        'exceptional_indicial_L1_kernel_dimension':4-rank(l1),'exceptional_indicial_L1_cokernel_dimension':4-rank(l1),
