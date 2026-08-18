@@ -156,7 +156,54 @@ fn audit(d:usize,bv:i64) {
     assert_eq!((cokernel_dim,carrier_rank,relative_kernel_dim),(3,2,1));
     println!("b={bv},D={d}: cokernel={cokernel_dim}, carrier_image={carrier_rank}, relative_kernel={relative_kernel_dim}");
 }
+fn audit_even(d:usize,bv:i64) {
+    let rows:Vec<_>=(0..=1).flat_map(|u|(0..=d).step_by(2).map(move|a|(u,a))).collect();
+    let pos:HashMap<_,_>=rows.iter().enumerate().map(|(i,&m)|(m,i)).collect();
+    let mut columns=Vec::new();
+    for sector in [(1,1),(1,0),(0,1),(0,0)] {
+        for total in 0..=d {
+            for ad in 0..=total {
+                let f=mon(0,ad,total-ad,1);
+                for plus in [false,true] { for is_q in [false,true] {
+                    let e=evaluate(&exact(sector,&f,is_q,plus),bv);
+                    if e.keys().map(|m|m.1).max().unwrap_or(0)>d {continue;}
+                    let mut c=vec![0;rows.len()];
+                    let mut uc=vec![0;rows.len()];
+                    for (m,x) in e {
+                        if let Some(&i)=pos.get(&m) {c[i]=x;}
+                        if m.0==0 {if let Some(&i)=pos.get(&(1,m.1)){uc[i]=x;}}
+                    }
+                    if c.iter().any(|&x|x!=0){columns.push(c);}
+                    if uc.iter().any(|&x|x!=0){columns.push(uc);}
+                }}
+            }
+        }
+    }
+    let image_rank=rank(columns.clone());
+    // The generic even Jacobian quotient has basis [1], [u], [a^2].
+    // Here u[a^2]=0 follows from K-aK_a/4=(u(1-b^2)/2)a^2.
+    let mut carrier_columns=vec![vec![0;3];rows.len()];
+    for (i,&(u,a)) in rows.iter().enumerate() {
+        match (u,a) {
+            (0,0)=>carrier_columns[i][0]=1,
+            (1,0)=>carrier_columns[i][1]=1,
+            (0,2)=>carrier_columns[i][2]=1,
+            _=>{}
+        }
+    }
+    for col in &columns {
+        let mut y=[0,0,0];
+        for (i,&x) in col.iter().enumerate(){for k in 0..3{y[k]=add_mod(y[k],mul_mod(x,carrier_columns[i][k]));}}
+        assert_eq!(y,[0,0,0],"exact image must die in the even Jacobian quotient");
+    }
+    let carrier_rank=rank(carrier_columns);
+    let cokernel_dim=rows.len()-image_rank;
+    let relative_kernel_dim=rows.len()-carrier_rank-image_rank;
+    assert_eq!((cokernel_dim,carrier_rank,relative_kernel_dim),(4,3,1));
+    println!("even b={bv},D={d}: cokernel={cokernel_dim}, carrier_image={carrier_rank}, relative_kernel={relative_kernel_dim}");
+}
 fn main(){
     for b in [0,2,3] {for d in [12,16,20,24]{audit(d,b);}}
-    println!("{}", r#"{"schema":"marici.benincasa.soft_axis_generic_odd_jacobian_map.v1","generic_cokernel_type":"R+Q","derived_carrier_type":"R","induced_carrier_rank":2,"relative_kernel_dimension":1,"new_carrier_datum":false}"#);
+    for b in [0,2,3] {for d in [12,16,20,24]{audit_even(d,b);}}
+    println!("{}", r#"{"schema":"marici.benincasa.soft_axis_generic_jacobian_map.v2","odd":{"cokernel_dimension":3,"carrier_rank":2,"h0_kernel_dimension":1},"even":{"cokernel_dimension":4,"carrier_rank":3,"h0_kernel_dimension":1,"conormal_length":2,"h0_kernel_is_conormal":false},"full_derived_fiber_required":true,"new_carrier_datum":false}"#);
 }
