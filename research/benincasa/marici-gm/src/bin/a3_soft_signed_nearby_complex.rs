@@ -50,8 +50,12 @@ fn main() {
         .map(|(label, _, _)| *label)
         .collect();
     assert_eq!(eligible, ["g1,g2", "g1,g3", "g2,g3"]);
-    let germs = eligible.len() * 3 * 4;
-    assert_eq!(germs, 36);
+    let movable_germs = eligible.len() * 3 * 4;
+    let coalesced_germs = (representatives.len() - eligible.len()) * 3 * 2;
+    let germs = movable_germs + coalesced_germs;
+    assert_eq!(movable_germs, 36);
+    assert_eq!(coalesced_germs, 30);
+    assert_eq!(germs, 66);
 
     println!("complex_source_rank=3");
     println!("complex_target_rank=3");
@@ -64,6 +68,8 @@ fn main() {
     println!("excess_monodromy_polynomial=T^2+1");
     println!("a3_monodromy_polynomial=(T+1)*(T^2+1)");
     println!("eligible_orbits={}", eligible.len());
+    println!("movable_labelled_germs={movable_germs}");
+    println!("coalesced_labelled_germs={coalesced_germs}");
     println!("labelled_germs={germs}");
     println!("total_rank={}", 3 * germs);
     println!("generic_kato_rank={germs}");
