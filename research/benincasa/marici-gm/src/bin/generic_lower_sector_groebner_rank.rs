@@ -88,8 +88,7 @@ impl Polynomial {
             for (right_monomial, right_coefficient) in &other.0 {
                 let mut monomial = [0; VARIABLES];
                 for variable in 0..VARIABLES {
-                    monomial[variable] =
-                        left_monomial[variable] + right_monomial[variable];
+                    monomial[variable] = left_monomial[variable] + right_monomial[variable];
                 }
                 let next = add_mod(
                     *result.0.get(&monomial).unwrap_or(&0),
@@ -140,8 +139,10 @@ impl Polynomial {
             .map(|(monomial, coefficient)| (*monomial, *coefficient))
     }
     fn monic(&self) -> Self {
-        self.leading_term()
-            .map_or_else(|| self.clone(), |(_, coefficient)| self.scale(inverse(coefficient)))
+        self.leading_term().map_or_else(
+            || self.clone(),
+            |(_, coefficient)| self.scale(inverse(coefficient)),
+        )
     }
     fn is_zero(&self) -> bool {
         self.0.is_empty()
@@ -433,8 +434,10 @@ fn main() {
     let (x1, x2, x3, p1, p2, p3) = match point.as_str() {
         "A" => (2_i64, 3_i64, 4_i64, 5_i64, 7_i64, 11_i64),
         "B" => (3_i64, 5_i64, 6_i64, 7_i64, 11_i64, 13_i64),
+        "HOMA" => (2_i64, 3_i64, 4_i64, 2_i64, 3_i64, 4_i64),
+        "HOMB" => (3_i64, 5_i64, 6_i64, 3_i64, 5_i64, 6_i64),
         "SOFT1" => (0_i64, 3_i64, 4_i64, 5_i64, 7_i64, 11_i64),
-        _ => panic!("KINEMATIC_POINT must be A, B, or SOFT1"),
+        _ => panic!("KINEMATIC_POINT must be A, B, HOMA, HOMB, or SOFT1"),
     };
     let p1s = p1 * p1;
     let p2s = p2 * p2;
@@ -482,8 +485,8 @@ fn main() {
     if std::env::var("TANGENTIAL_WALL").ok().as_deref() == Some("q_g1") {
         // q_g23 restricts to the nonzero constant X2+X3-X1 on q_g1, hence it
         // contributes no tangential logarithmic derivative.
-        let tangential_marks = std::env::var("TANGENTIAL_MARKS")
-            .unwrap_or_else(|_| "full".to_owned());
+        let tangential_marks =
+            std::env::var("TANGENTIAL_MARKS").unwrap_or_else(|_| "full".to_owned());
         let selected = match tangential_marks.as_str() {
             "full" => vec![denominators[1].clone(), denominators[2].clone()],
             "q_g2" => vec![denominators[1].clone()],
@@ -511,7 +514,10 @@ fn main() {
             "prime={} point={point} tangential_wall=q_g1 k_weight={tangential_k_weight} marks={tangential_marks} rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
             prime(), monomials.len(),
         );
-        println!("STANDARD_MONOMIALS={:?}", monomials.into_iter().collect::<Vec<_>>());
+        println!(
+            "STANDARD_MONOMIALS={:?}",
+            monomials.into_iter().collect::<Vec<_>>()
+        );
         return;
     }
     let only = std::env::var("ONLY_MASK")
@@ -526,7 +532,10 @@ fn main() {
             .filter(|(index, _)| mask & (1 << index) != 0)
             .map(|(_, factor)| factor.clone())
             .collect();
-        let names = selected.iter().map(|factor| factor.name).collect::<Vec<_>>();
+        let names = selected
+            .iter()
+            .map(|factor| factor.name)
+            .collect::<Vec<_>>();
         let (rank, basis_size, elapsed_ms) = deletion_closed_rank(&k, &selected);
         closed_ranks[usize::from(mask)] = Some(rank);
         println!(
@@ -546,14 +555,19 @@ fn main() {
                 .checked_sub(inherited)
                 .expect("nonnegative support grade");
         }
-        assert_eq!(
-            closed,
-            [7, 12, 12, 18, 12, 18, 18, 26, 12, 17, 18, 24, 18, 24, 26, 34]
-        );
-        assert_eq!(
-            proper,
-            [7, 5, 5, 1, 5, 1, 1, 1, 5, 0, 1, 0, 1, 0, 1, 0]
-        );
+        if matches!(point.as_str(), "A" | "B") {
+            assert_eq!(
+                closed,
+                [7, 12, 12, 18, 12, 18, 18, 26, 12, 17, 18, 24, 18, 24, 26, 34]
+            );
+            assert_eq!(proper, [7, 5, 5, 1, 5, 1, 1, 1, 5, 0, 1, 0, 1, 0, 1, 0]);
+        } else if matches!(point.as_str(), "HOMA" | "HOMB") {
+            assert_eq!(
+                closed,
+                [7, 8, 8, 9, 8, 9, 9, 11, 11, 12, 12, 13, 12, 13, 13, 15]
+            );
+            assert_eq!(proper, [7, 1, 1, 0, 1, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0]);
+        }
         println!("DELETION_CLOSED={closed:?}");
         println!("PROPER_SUPPORT_GRADES={proper:?}");
     }
