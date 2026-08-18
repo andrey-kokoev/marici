@@ -1,0 +1,115 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 123,
+  "event_id": "ev-000000000123-292e8720-a1fb-49af-b431-f27109b387d3",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "01ffb128b8af1ed2cbab07710623c4476468153417835774c416520309c36d27",
+  "proposal_id": "ep_5cf70bfe-fd96-42fb-9c2b-12c44fad4d98",
+  "proposal_digest": "62af4f28d442ee3118e9924925a2d99700f3ecff2c39b5ec1c6280e274a0d2df",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-440-soft-axis-tail-nonaffine",
+      "local_ref": "s",
+      "kind": "source",
+      "title": "Ledger 440: The Soft-Axis Exact-Form Tail Is Neither Stable nor Affine Through Degree Sixteen",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-440 The Soft-Axis Exact-Form Tail Is Neither Stable nor Affine Through Degree Sixteen.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-axis-exact-form-tail-cutoff",
+      "local_ref": "t",
+      "kind": "test",
+      "title": "Soft-axis exact-form tail cutoff test through degree sixteen",
+      "version": "1",
+      "locator": "research/benincasa/dlog-smith-soft-axis-tail-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:soft-axis-affine-tail-subtraction-refuted",
+      "local_ref": "c",
+      "kind": "criticism",
+      "title": "One affine Hilbert-tail subtraction does not renormalize the tested soft-axis Smith sequence"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:soft-axis-eventual-tail-contractible-determinant-trivial",
+      "local_ref": "n",
+      "kind": "conjecture",
+      "title": "The graded soft-axis exact-form tail is eventually contractible with canonically trivial determinant"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "t",
+      "target_ref": "s",
+      "source_id": "marici:test:soft-axis-exact-form-tail-cutoff",
+      "target_id": "marici:source:ledger-440-soft-axis-tail-nonaffine",
+      "relation_id": "rel:derived_from-84152386814ce546"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t",
+      "target_id": "marici:conjecture:completed-soft-axis-exact-quotient-stabilizes",
+      "source_id": "marici:test:soft-axis-exact-form-tail-cutoff",
+      "relation_id": "rel:tests-af7474f13b2b8927"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "c",
+      "target_id": "marici:conjecture:completed-soft-axis-exact-quotient-stabilizes",
+      "source_id": "marici:criticism:soft-axis-affine-tail-subtraction-refuted",
+      "relation_id": "rel:criticizes-fe1cd8d69bc6625b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "n",
+      "target_ref": "c",
+      "source_id": "marici:conjecture:soft-axis-eventual-tail-contractible-determinant-trivial",
+      "target_id": "marici:criticism:soft-axis-affine-tail-subtraction-refuted",
+      "relation_id": "rel:depends_on-c36599ee3e01dd9a"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:soft-axis-tail-nonaffine-through-16",
+      "test_id": "marici:test:soft-axis-exact-form-tail-cutoff",
+      "actor": "marici.Benincasa",
+      "outcome": "The rank-ten soft-axis valuations at degrees 8,10,12,14,16 are 89,92,95,97,99. The sequence does not stabilize and its increments 3,3,2,2 refute the provisional affine correction.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-440-soft-axis-tail-nonaffine",
+          "locator": "Result",
+          "paraphrase": "Degree 14 refutes the affine prediction and degree 16 remains cutoff dependent."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:completed-soft-axis-after-tail-audit-20260818",
+      "subject_id": "marici:conjecture:completed-soft-axis-exact-quotient-stabilizes",
+      "judgment": "open_requires_structural_tail_construction",
+      "actor": "marici.Benincasa",
+      "reason": "Numerical cutoff extrapolation is noncanonical and the simplest affine-tail model is false. A graded contractibility or determinant-triviality theorem is required.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-440-soft-axis-tail-nonaffine",
+          "locator": "Interpretation",
+          "paraphrase": "The completion must be constructed algebraically rather than selected from the cutoff sequence."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-7c5a5c4b8b3fbf00da87591c",
+  "occurred_at": "2026-08-18T00:06:20.3563036Z",
+  "certifies_truth": false,
+  "event_hash": "c7bd4a527fc9c22f1d46c2d13fc33616fdc7cb5bd21f4269a8221108ff1d1c80"
+}
