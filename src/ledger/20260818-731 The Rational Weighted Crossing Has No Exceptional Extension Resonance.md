@@ -7,7 +7,7 @@ date: 2026-08-18
 
 ## Frozen crossing
 
-At the rational intersection (D_2\cap D_3), put
+At the rational intersection \(D_2\cap D_3\), put
 
 \[
 y=(u+v)/2-1,
@@ -15,13 +15,13 @@ y=(u+v)/2-1,
 \qquad D_3=(y+u^2).
 \]
 
-Entry 726 found unequal raw pole orders ((-3,-2)).  The Newton equality
+Entry 726 found unequal raw pole orders \((-3,-2)\).  The Newton equality
 
 \[
 \operatorname{wt}(y)=2\operatorname{wt}(u)
 \]
 
-therefore forces the weighted blowup with weights ((1,2)).
+therefore forces the weighted blowup with weights \((1,2)\).
 
 ## Charts
 
@@ -37,7 +37,7 @@ and the stack chart
 U_y:\quad u=es,\quad y=e^2,
 \]
 
-with its intrinsic (mu_2)-action.  On their overlap (t=s^{-2}).
+with its intrinsic \(\mu_2\)-action.  On their overlap \(t=s^{-2}\).
 
 ## Forced exceptional transform
 
@@ -66,7 +66,7 @@ The frame transition on the overlap is consequently
 \boxed{\operatorname{diag}(1,1,s^{-4},s^{-2}).}
 \]
 
-Its even exponents prove (mu_2)-descent; no square-root trivialization was
+Its even exponents prove \(\mu_2\)-descent; no square-root trivialization was
 chosen.
 
 ## Exceptional residue
@@ -97,7 +97,7 @@ The constant resolved dual graph has the invariant cycle
 \gamma_0=(e_{12}^++e_{12}^-)-(e_{13}^++e_{13}^-)+2e_{23}.
 \]
 
-The rational edge (e_{23}) does not acquire an exceptional
+The rational edge \(e_{23}\) does not acquire an exceptional
 algebraic--elliptic extension resonance from the weighted crossing.  This is a
 local coefficient statement, not yet a proof that the global invariant cycle
 is exact: that requires the actual restriction maps from vertex and edge
