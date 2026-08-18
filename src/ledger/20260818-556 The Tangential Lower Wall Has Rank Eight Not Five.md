@@ -55,8 +55,9 @@ The provisional expectation was rank five. Exact execution instead gives
 \]
 
 The result replicates over \(\mathbf F_{32003}\) and \(\mathbf F_{65521}\), at
-both generic kinematic points and at the soft fiber \(X_1=0\). The Gröbner
-basis has size \(35\) and the same eight standard monomials in all six runs.
+both generic kinematic points and at the soft fiber \(X_1=0\). The reduced
+tangential presentation has Gröbner-basis size \(34\) and the same eight
+standard monomials in all six full-mark runs.
 This rank is obtained directly on the wall and is not the subtraction
 \(12-7\).
 
