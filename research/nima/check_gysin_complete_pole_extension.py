@@ -49,7 +49,7 @@ def divisor_data(factors, weights, u: int, v: int, prime: int):
     return divisor, dlog_u, dlog_v
 
 
-def census(entries, factors, prime: int, weights, degree: int, seed: int):
+def census(entries, factors, prime: int, weights, degree: int, seed: int, return_matrix: bool = False):
     mons = monomials(degree)
     unknowns = 4 * len(mons)
     target_rows = unknowns + 32
@@ -98,6 +98,8 @@ def census(entries, factors, prime: int, weights, degree: int, seed: int):
                                 row[block + index] = coefficient % prime
                     row[-1] = (-divisor * a[i + 2][j]) % prime
                     matrix.append(row)
+    if return_matrix:
+        return matrix, unknowns, accepted
     coefficient_rank = rank([row[:-1] for row in matrix], unknowns, prime)
     augmented_rank = rank(matrix, unknowns + 1, prime)
     return {

@@ -29,7 +29,7 @@ no numerical fitting or polynomial-list identification was used.
 
 ## Closure
 
-For every labelled factor (f_a),
+For every labelled factor \(f_a\),
 
 \[
 \boxed{
@@ -55,7 +55,7 @@ orbits.
 
 ## Type qualification
 
-The number (36) counts marked rational sections, not proven distinct
+The number \(36\) counts marked rational sections, not proven distinct
 geometric support divisors.  Different sections can define the same divisor
 after quotienting by chart units or normalization-boundary factors.
 
@@ -82,7 +82,7 @@ filtration are retained.
 The resonant grades
 
 \[
-15,quad17,quad28,quad30
+15,\quad17,\quad28,\quad30
 \]
 
 return unchanged in the transported filtered frame.
