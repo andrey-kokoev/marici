@@ -43,18 +43,19 @@ def filtered_dimension(
     cutoff_degree: int,
     gamma: int,
 ) -> int:
+    q_count = len(q_polynomials)
     column_degree = ambient_degree + 4
     low_monomials = monomials_at_most(cutoff_degree)
     low_labels = [
         (0, *q_levels, monomial)
-        for q_levels in product(range(min(1, q_depth) + 1), repeat=2)
+        for q_levels in product(range(min(1, q_depth) + 1), repeat=q_count)
         for monomial in low_monomials
     ]
     low_set = set(low_labels)
     ambient_monomials = monomials_at_most(column_degree)
     ordered_columns = list(low_labels)
     for k_pole in range(k_depth + 1):
-        for q_levels in product(range(q_depth + 1), repeat=2):
+        for q_levels in product(range(q_depth + 1), repeat=q_count):
             ordered_columns.extend(
                 label
                 for monomial in ambient_monomials
@@ -79,7 +80,7 @@ def filtered_dimension(
 
     # Exact differentials on the full labelled product-pole lattice.
     for k_pole in range(k_depth):
-        for q_levels in product(range(q_depth + 1), repeat=2):
+        for q_levels in product(range(q_depth + 1), repeat=q_count):
             if any(level > 0 and level == q_depth for level in q_levels):
                 continue
             for axis in range(3):
@@ -126,7 +127,7 @@ def filtered_dimension(
 
     # Cayley--Menger localization transitions.
     for k_pole in range(k_depth):
-        for q_levels in product(range(q_depth + 1), repeat=2):
+        for q_levels in product(range(q_depth + 1), repeat=q_count):
             for exponent in monomials_at_most(ambient_degree - 4):
                 row = {columns[(k_pole, *q_levels, exponent)]: 1}
                 monomial = c ** exponent[0] * a ** exponent[1] * b ** exponent[2]
@@ -137,7 +138,7 @@ def filtered_dimension(
     # Independent localization transitions for each labelled denominator.
     for q_index, q_polynomial in enumerate(q_polynomials):
         for k_pole in range(k_depth + 1):
-            for q_levels in product(range(q_depth + 1), repeat=2):
+            for q_levels in product(range(q_depth + 1), repeat=q_count):
                 if q_levels[q_index] == q_depth:
                     continue
                 raised = list(q_levels)
