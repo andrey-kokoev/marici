@@ -1,0 +1,31 @@
+{
+  "schema": "marici.nima.all_soft_fiber_gysin_coherence.v1",
+  "sources": [
+    "research/nima/all-soft-relative-form-shift.json",
+    "research/nima/all-soft-projective-kummer-gluing.json",
+    "research/nima/all-soft-external-chart-form-gluing.json"
+  ],
+  "relative_form": "omega=da wedge db/w",
+  "fiber_Euler_field": "R_fib=a*partial_a+b*partial_b",
+  "radial_Gysin_form": "eta=iota_R_fib(omega)=(a*db-b*da)/w",
+  "U_a": {
+    "coordinate": "z=b/a",
+    "Kummer_coordinate": "W_a=w/a^3",
+    "form": "eta_a=a^-1*dz/W_a"
+  },
+  "U_b": {
+    "coordinate": "z_prime=a/b",
+    "Kummer_coordinate": "W_b=w/b^3",
+    "form": "eta_b=-b^-1*dz_prime/W_b"
+  },
+  "overlap": {
+    "substitutions": ["z_prime=z^-1", "dz_prime=-z^-2*dz", "b^-1=a^-1*z^-1", "W_b=z^-3*W_a"],
+    "identity": "eta_b=eta_a",
+    "orientation_sign": 1,
+    "homotopy_needed_for_form_gluing": false
+  },
+  "carrier_consequence": "the two fiber-normalized charts glue through the Euler-derived radial Gysin form without a new overlap divisor",
+  "remaining_gate": "verify that every labelled support restriction commutes with this Gysin comparison; form-level coherence alone does not prove support-map coherence",
+  "scope": "canonical Kummer residue form and fiber-chart overlap only; no physical-chain activation is inferred",
+  "allocator_claim": "seqclaim-a07611b5c7ced809028a9d19"
+}
