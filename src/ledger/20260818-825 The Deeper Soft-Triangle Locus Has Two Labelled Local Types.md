@@ -10,7 +10,7 @@ date: 2026-08-18
 The degeneration left open by Entries 813 and 824 lies on
 
 \[
-a_0=b_0=0,qquad
+a_0=b_0=0,\qquad
 P_3=0,qquad
 E^2=P_1^2\ \text{or}\ E^2=P_2^2,qquad
 P_1^2=P_2^2.
