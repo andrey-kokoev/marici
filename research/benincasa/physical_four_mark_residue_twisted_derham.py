@@ -306,30 +306,46 @@ def unsplit_union_census(gamma: int, ambient: int, cutoff: int) -> dict:
         ).items():
             add_value(source, column, coefficient * value)
 
-    first_span: dict[int, dict[int, int]] = {}
-    add_pivot(dict(source), first_span)
+    label_by_column = {columns[label]: label for label in low_labels}
+    numerator_derivatives: list[Polynomial] = []
     for axis in range(2):
-        image: dict[int, int] = {}
-        for exponent, coefficient in numerator.items():
-            label = (*base, exponent)
-            for column, value in connection_image(label, names, gamma, axis, columns).items():
-                add_value(image, column, coefficient * value)
         _, q_derivatives = parameter_derivative_data(axis)
-        numerator_derivative: Polynomial = dict(q_derivatives["g23"])
+        derivative: Polynomial = dict(q_derivatives["g23"])
         for exponent, coefficient in q_derivatives["g31"].items():
-            numerator_derivative[exponent] = (
-                numerator_derivative.get(exponent, 0) + coefficient
-            ) % PRIME
-        for exponent, coefficient in numerator_derivative.items():
-            add_value(image, columns[(*base, exponent)], coefficient)
-        reduced = reduce_row(image, pivots)
-        quotient = {column: reduced[column] for column in free_low if column in reduced}
-        add_pivot(quotient, first_span)
+            derivative[exponent] = (derivative.get(exponent, 0) + coefficient) % PRIME
+        numerator_derivatives.append(derivative)
+
+    first_span: dict[int, dict[int, int]] = {}
+    saturation: dict[int, dict[int, int]] = {}
+    add_pivot(dict(source), first_span)
+    frontier = [source]
+    while frontier:
+        vector = frontier.pop()
+        before = len(saturation)
+        add_pivot(dict(vector), saturation)
+        if len(saturation) == before:
+            continue
+        for axis in range(2):
+            image: dict[int, int] = {}
+            for column, coefficient in vector.items():
+                label = label_by_column[column]
+                for target, value in connection_image(label, names, gamma, axis, columns).items():
+                    add_value(image, target, coefficient * value)
+            if vector is source:
+                for exponent, coefficient in numerator_derivatives[axis].items():
+                    add_value(image, columns[(*base, exponent)], coefficient)
+            reduced = reduce_row(image, pivots)
+            quotient = {column: reduced[column] for column in free_low if column in reduced}
+            if quotient:
+                if vector is source:
+                    add_pivot(dict(quotient), first_span)
+                frontier.append(quotient)
     return {
         "relative_union_dimension": len(free_low),
         "unsplit_source_nonzero": bool(source),
         "unsplit_source_support": len(source),
         "unsplit_source_first_jet_rank": len(first_span),
+        "unsplit_source_horizontal_saturation_rank": len(saturation),
     }
 
 
