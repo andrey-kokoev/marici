@@ -79,7 +79,19 @@ def fiber_data(x: int, y: int, z: int) -> tuple[Polynomial, dict[str, Polynomial
     return k, {name: {e: c % PRIME for e, c in poly.items()} for name, poly in q.items()}
 
 
-def filtered_dimension(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int) -> int:
+def reduce_row(row: dict[int, int], pivots: dict[int, dict[int, int]]) -> dict[int, int]:
+    row = dict(row)
+    while row:
+        pivot = max(row)
+        if pivot not in pivots:
+            break
+        coefficient = row[pivot]
+        for column, value in pivots[pivot].items():
+            add_value(row, column, -coefficient * value)
+    return row
+
+
+def presentation(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int):
     k, all_q = fiber_data(2, 3, 4)
     q_polynomials = [all_q[name] for name in names]
     q_count = len(names)
@@ -148,8 +160,36 @@ def filtered_dimension(names: tuple[str, ...], gamma: int, ambient: int, cutoff:
                         add_value(row, columns[(k_pole, *raised, term)], coefficient)
                     add_pivot(row, pivots)
 
-    killed_low = sum(pivot < len(low_labels) for pivot in pivots)
-    return len(low_labels) - killed_low
+    low_pivots = {pivot: row for pivot, row in pivots.items() if pivot < len(low_labels)}
+    free_low = [column for column in range(len(low_labels)) if column not in low_pivots]
+    return low_labels, columns, low_pivots, free_low
+
+
+def quotient_coordinates(
+    label, columns: dict, low_pivots: dict[int, dict[int, int]], free_low: list[int]
+) -> dict[int, int]:
+    reduced = reduce_row({columns[label]: 1}, low_pivots)
+    return {column: reduced[column] for column in free_low if column in reduced}
+
+
+def filtered_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: int) -> dict:
+    low_labels, columns, low_pivots, free_low = presentation(names, gamma, ambient, cutoff)
+    source_label = (0, *([1] * len(names)), (0, 0))
+    source = quotient_coordinates(source_label, columns, low_pivots, free_low)
+
+    face_pivots: dict[int, dict[int, int]] = {}
+    for label in low_labels:
+        if any(level == 0 for level in label[1:-1]):
+            add_pivot(quotient_coordinates(label, columns, low_pivots, free_low), face_pivots)
+    source_mod_faces = reduce_row(source, face_pivots)
+    return {
+        "dimension": len(free_low),
+        "source_nonzero": bool(source),
+        "proper_face_rank": len(face_pivots),
+        "source_beyond_proper_faces": bool(source_mod_faces),
+        "source_quotient_support": len(source),
+        "source_mod_faces_support": len(source_mod_faces),
+    }
 
 
 def main() -> None:
@@ -160,13 +200,13 @@ def main() -> None:
     parser.add_argument("--cutoff", type=int, default=5)
     args = parser.parse_args()
     names = ("g1", "g2", "g3", args.partner)
-    dimension = filtered_dimension(names, args.gamma % PRIME, args.ambient, args.cutoff)
+    census = filtered_census(names, args.gamma % PRIME, args.ambient, args.cutoff)
     print(json.dumps({
         "schema": "marici.physical-four-mark-residue-twisted-derham.v1",
         "prime": PRIME, "kinematics": [2, 3, 4], "marks": names,
         "gamma": args.gamma, "ambient_degree": args.ambient,
-        "cutoff_degree": args.cutoff, "dimension": dimension,
-        "expected_dimension": 20, "calibration_passed": dimension == 20,
+        "cutoff_degree": args.cutoff, **census,
+        "expected_dimension": 20, "calibration_passed": census["dimension"] == 20,
     }, sort_keys=True))
 
 
