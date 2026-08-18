@@ -76,6 +76,8 @@ fn main() {
     assert!(minus.2.im < 0.0);
     assert!(norm2(discriminant(p1, plus.0, plus.2)) > 1e-30);
     assert!(norm2(discriminant(p1, minus.0, minus.2)) > 1e-30);
+    let equal = regulator_map(p1, p2, 0.02, 0.02, 0.005);
+    assert!(norm2(discriminant(p1, equal.0, equal.2)) < 1e-30);
 
     println!("J_t1=0");
     println!("J_t2=-d*delta-2*P1^2*q-delta*q");
@@ -85,6 +87,8 @@ fn main() {
     println!("positive_assignment_1_t2_im_sign=+");
     println!("positive_assignment_2_t2_im_sign=-");
     println!("both_assignments_off_discriminant=true");
+    println!("equal_regulator_wall_on_discriminant=true");
+    println!("equal_regulator_wall_multiplicity=4");
     println!("unique_braid_chamber=false");
     println!("mixed_coherence_test=unauthorized_without_chamber");
 }
