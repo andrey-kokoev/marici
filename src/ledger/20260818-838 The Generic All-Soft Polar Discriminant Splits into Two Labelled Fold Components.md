@@ -90,7 +90,7 @@ On \(Q_+=0\), the rational point
 satisfies
 
 \[
-\Lambda=45,qquad Q_-=16,qquad \partial_EQ_+=2.
+\Lambda=45,\qquad Q_-=16,\qquad \partial_EQ_+=2.
 \]
 
 Hence \(Q_+\) is a reduced transverse discriminant component there.  The
