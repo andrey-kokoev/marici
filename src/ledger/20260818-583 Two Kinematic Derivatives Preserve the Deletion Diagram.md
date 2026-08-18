@@ -9,8 +9,8 @@ The functorial deletion diagram of Entry 581 is preserved by the sourced top twi
 Retain
 
 \[
-\gamma=5,qquad \mathbb F_{32003},qquad
-\text{ambient degree }9,qquad
+\gamma=5,\qquad \mathbb F_{32003},\qquad
+\text{ambient degree }9,\qquad
 \text{pole depths }(2,2).
 \]
 
