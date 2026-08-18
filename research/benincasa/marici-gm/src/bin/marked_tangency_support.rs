@@ -610,6 +610,67 @@ fn pivot_minor(mut a: Vec<Vec<F>>) -> (usize, Vec<usize>, Vec<usize>) {
 
 fn matrix_rank(a: Vec<Vec<F>>) -> usize { pivot_minor(a).0 }
 
+fn affine_solution(mut a: Vec<Vec<F>>, b: Vec<F>) -> Option<Vec<F>> {
+    assert_eq!(a.len(),b.len());
+    let rows=a.len();
+    let cols=a.first().map_or(0,Vec::len);
+    for (row,rhs) in a.iter_mut().zip(b) { row.push(rhs); }
+    let mut piv=Vec::new();
+    let mut rr=0usize;
+    for c in 0..cols {
+        let Some(p)=(rr..rows).find(|&i|a[i][c]!=F::z()) else { continue };
+        a.swap(rr,p);
+        let inv=a[rr][c].inv();
+        for j in c..=cols { a[rr][j]=a[rr][j].mul(inv); }
+        for i in 0..rows {
+            if i!=rr && a[i][c]!=F::z() {
+                let f=a[i][c];
+                for j in c..=cols { a[i][j]=a[i][j].sub(f.mul(a[rr][j])); }
+            }
+        }
+        piv.push((rr,c)); rr+=1;
+        if rr==rows { break }
+    }
+    if (0..rows).any(|i|(0..cols).all(|j|a[i][j]==F::z()) && a[i][cols]!=F::z()) {
+        return None
+    }
+    let mut x=vec![F::z();cols];
+    for (r,c) in piv { x[c]=a[r][cols]; }
+    Some(x)
+}
+
+fn nullspace_basis(mut a: Vec<Vec<F>>) -> Vec<Vec<F>> {
+    let rows=a.len();
+    let cols=a.first().map_or(0,Vec::len);
+    let mut piv=Vec::new();
+    let mut rr=0usize;
+    for c in 0..cols {
+        let Some(p)=(rr..rows).find(|&i|a[i][c]!=F::z()) else { continue };
+        a.swap(rr,p);
+        let inv=a[rr][c].inv();
+        for j in c..cols { a[rr][j]=a[rr][j].mul(inv); }
+        for i in 0..rows {
+            if i!=rr && a[i][c]!=F::z() {
+                let f=a[i][c];
+                for j in c..cols { a[i][j]=a[i][j].sub(f.mul(a[rr][j])); }
+            }
+        }
+        piv.push((rr,c)); rr+=1;
+        if rr==rows { break }
+    }
+    let pivot_cols:BTreeSet<usize>=piv.iter().map(|x|x.1).collect();
+    (0..cols).filter(|c|!pivot_cols.contains(c)).map(|free| {
+        let mut v=vec![F::z();cols]; v[free]=F::o();
+        for (r,c) in &piv { v[*c]=a[*r][free].neg(); }
+        v
+    }).collect()
+}
+
+fn presentation_on_mons(g:&Geometry, master:usize, degree:u8, mons:&[Mon]) -> Vec<Vec<F>> {
+    let (_,_,cols,_)=presentation(g,master,degree);
+    mons.iter().map(|m|cols.iter().map(|q|q.0.get(m).copied().unwrap_or(F::z())).collect()).collect()
+}
+
 fn null_line(mut a: Vec<Vec<F>>) -> Vec<F> {
     let rows=a.len(); let cols=a[0].len();
     let mut piv=Vec::new(); let mut rr=0usize;
@@ -1873,6 +1934,121 @@ fn main() {
             }
         }
         println!("{{\"schema\":\"marici.benincasa.gauge_dlog_divisor_transverse_jets.v1\",\"results\":[{}]}}",results.join(","));
+        return;
+    }
+    if mode == "conic-primitive-transport" {
+        let disc=F::n(585);
+        let sqrt_disc=disc.pow((P+1)/4);
+        assert_eq!(sqrt_disc.mul(sqrt_disc),disc);
+        let inv16=F::n(16).inv();
+        let points=[
+            ("generic_3",F::n(3)),
+            ("generic_5",F::n(5)),
+            ("generic_7",F::n(7)),
+            ("Q_plus",F::n(29).add(sqrt_disc).mul(inv16)),
+            ("Q_minus",F::n(29).sub(sqrt_disc).mul(inv16)),
+        ];
+        let mut results=Vec::new();
+        for degree in [8u8,10] {
+            for (label,u) in points {
+                let v=F::n(2).mul(u.pow(2)).sub(u).add(F::n(2));
+                let g0=geometry(u.0,v.0,'u');
+                let (mons,a0,_,_)=presentation(&g0,8,degree);
+                let sol=solve(&g0,8,degree);
+                assert_eq!(sol.gauge_rank,3);
+                let extra=sol.gauge_rref.iter().find(|r|r[8]==F::o())
+                    .expect("missing e6 quotient representative");
+
+                let n=a0[0].len();
+                let exact_a:Vec<Vec<F>>=a0.iter().map(|row|row[12..].to_vec()).collect();
+                let exact_b:Vec<F>=a0.iter().map(|row|
+                    (0..12).fold(F::z(),|s,j|s.sub(row[j].mul(extra[j])))).collect();
+                let exact_lift=affine_solution(exact_a,exact_b)
+                    .expect("quotient representative has no primitive exact lift");
+                let mut r0=extra.clone(); r0.extend(exact_lift);
+                assert_eq!(r0.len(),n);
+                assert!((0..a0.len()).all(|i|
+                    (0..n).fold(F::z(),|s,j|s.add(a0[i][j].mul(r0[j])))==F::z()));
+
+                // Along C_fit, K has degree at most 12, so every homogeneous
+                // column has degree at most 30.  Orders 32 and 40 are
+                // independently sufficient; equality certifies A'.
+                let jets:Vec<Vec<Vec<F>>>=(0u64..=40).map(|t| {
+                    let ut=u.add(F::n(t));
+                    let vt=F::n(2).mul(ut.pow(2)).sub(ut).add(F::n(2));
+                    presentation_on_mons(&geometry(ut.0,vt.0,'u'),8,degree,&mons)
+                }).collect();
+                let derivative_matrix=|last:usize| -> Vec<Vec<F>> {
+                    (0..a0.len()).map(|i|(0..n).map(|j| {
+                        let vals:Vec<F>=(0..=last).map(|t|jets[t][i][j]).collect();
+                        derivative_at_zero(&vals)
+                    }).collect()).collect()
+                };
+                let ap32=derivative_matrix(32);
+                let ap40=derivative_matrix(40);
+                let derivative_stable=ap32==ap40;
+                assert!(derivative_stable,"presentation derivative exceeds degree-30 bound");
+                let rhs:Vec<F>=(0..a0.len()).map(|i|
+                    (0..n).fold(F::z(),|s,j|s.sub(ap40[i][j].mul(r0[j])))).collect();
+                let r1=affine_solution(a0.clone(),rhs);
+                let solvable=r1.is_some();
+                let mut augmented_rank=usize::MAX;
+                let mut persistent_augmented_rank=usize::MAX;
+                let mut master_support=0u16;
+                let mut lift_variations_tested=0usize;
+                let mut lift_delta_max_persistent_rank=0usize;
+                let mut lift_delta_max_gauge_rank=0usize;
+                let mut solver_variations_tested=0usize;
+                let mut solver_delta_max_persistent_rank=0usize;
+                let mut solver_delta_max_gauge_rank=0usize;
+                if let Some(x)=r1.as_ref() {
+                    let master=x[..12].to_vec();
+                    master_support=master.iter().enumerate().fold(0u16,|m,(j,q)|
+                        if *q==F::z(){m}else{m|(1u16<<j)});
+                    let mut augmented=sol.gauge_rref.clone(); augmented.push(master.clone());
+                    augmented_rank=matrix_rank(augmented);
+                    let mut persistent=sol.gauge_rref[..2].to_vec(); persistent.push(master);
+                    persistent_augmented_rank=matrix_rank(persistent);
+
+                    // Hold the twelve-master representative fixed and vary
+                    // only its primitive exact lift.  The induced master
+                    // transport must change by persistent gauge directions.
+                    for hexact in nullspace_basis(a0.iter().map(|row|row[12..].to_vec()).collect())
+                        .into_iter().take(4) {
+                        let mut h=vec![F::z();12]; h.extend(hexact);
+                        let r0_alt:Vec<F>=r0.iter().zip(&h).map(|(a,b)|a.add(*b)).collect();
+                        let rhs_alt:Vec<F>=(0..a0.len()).map(|i|
+                            (0..n).fold(F::z(),|s,j|s.sub(ap40[i][j].mul(r0_alt[j])))).collect();
+                        let x_alt=affine_solution(a0.clone(),rhs_alt)
+                            .expect("transport failed after exact-lift variation");
+                        let delta:Vec<F>=(0..12).map(|j|x_alt[j].sub(x[j])).collect();
+                        let mut p=sol.gauge_rref[..2].to_vec(); p.push(delta.clone());
+                        let mut g=sol.gauge_rref.clone(); g.push(delta);
+                        lift_delta_max_persistent_rank=lift_delta_max_persistent_rank.max(matrix_rank(p));
+                        lift_delta_max_gauge_rank=lift_delta_max_gauge_rank.max(matrix_rank(g));
+                        lift_variations_tested+=1;
+                    }
+
+                    // Any two solver sections differ by a homogeneous
+                    // primitive relation.  Test whether that ambiguity dies
+                    // already in the persistent plane or only after quotient
+                    // by the full rank-three special gauge plane.
+                    for h in nullspace_basis(a0.clone()).into_iter()
+                        .filter(|h|h[..12].iter().any(|q|*q!=F::z())).take(8) {
+                        let delta=h[..12].to_vec();
+                        let mut p=sol.gauge_rref[..2].to_vec(); p.push(delta.clone());
+                        let mut g=sol.gauge_rref.clone(); g.push(delta);
+                        solver_delta_max_persistent_rank=solver_delta_max_persistent_rank.max(matrix_rank(p));
+                        solver_delta_max_gauge_rank=solver_delta_max_gauge_rank.max(matrix_rank(g));
+                        solver_variations_tested+=1;
+                    }
+                }
+                results.push(format!(
+                    "{{\"degree\":{degree},\"point\":\"{label}\",\"u\":{},\"derivative_stable\":{derivative_stable},\"transport_solvable\":{solvable},\"gauge_rank\":{},\"augmented_rank\":{augmented_rank},\"persistent_augmented_rank\":{persistent_augmented_rank},\"master_support_mask\":{master_support},\"lift_variations_tested\":{lift_variations_tested},\"lift_delta_max_persistent_rank\":{lift_delta_max_persistent_rank},\"lift_delta_max_gauge_rank\":{lift_delta_max_gauge_rank},\"solver_variations_tested\":{solver_variations_tested},\"solver_delta_max_persistent_rank\":{solver_delta_max_persistent_rank},\"solver_delta_max_gauge_rank\":{solver_delta_max_gauge_rank}}}",
+                    u.0,sol.gauge_rank));
+            }
+        }
+        println!("{{\"schema\":\"marici.benincasa.gauge_fitting_conic_primitive_transport.v1\",\"equation\":\"A*r1=-A_prime*r0\",\"degree_bound\":30,\"derivative_orders\":[32,40],\"basis_scope\":\"complete primitive exact-form presentation\",\"results\":[{}]}}",results.join(","));
         return;
     }
     if mode == "conic-q-fibers" {
