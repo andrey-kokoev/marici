@@ -404,8 +404,19 @@ fn tangential_wall_basis(
             .multiply(&divisor)
             .subtract(&Polynomial::constant(1)),
     );
+    // Eliminate the redundant wall-normal coordinate before Buchberger.
+    // Keeping q_g1 as the first basis element preserves the quotient while
+    // preventing avoidable c-bearing S-polynomial growth.
+    let wall_basis = vec![wall.monic()];
+    let mut eliminated = vec![wall.monic()];
+    eliminated.extend(
+        equations
+            .into_iter()
+            .skip(1)
+            .map(|equation| normal_form(equation, &wall_basis)),
+    );
     let started = Instant::now();
-    let basis = groebner_basis(equations);
+    let basis = groebner_basis(eliminated);
     let elapsed = started.elapsed().as_millis();
     (standard_monomials(&basis), basis.len(), elapsed)
 }
@@ -470,13 +481,27 @@ fn main() {
     if std::env::var("TANGENTIAL_WALL").ok().as_deref() == Some("q_g1") {
         // q_g23 restricts to the nonzero constant X2+X3-X1 on q_g1, hence it
         // contributes no tangential logarithmic derivative.
-        let selected = vec![denominators[1].clone(), denominators[2].clone()];
+        let tangential_marks = std::env::var("TANGENTIAL_MARKS")
+            .unwrap_or_else(|_| "full".to_owned());
+        let selected = match tangential_marks.as_str() {
+            "full" => vec![denominators[1].clone(), denominators[2].clone()],
+            "q_g2" => vec![denominators[1].clone()],
+            "q_g3" => vec![denominators[2].clone()],
+            "none" => Vec::new(),
+            _ => panic!("TANGENTIAL_MARKS must be none, q_g2, q_g3, or full"),
+        };
         let (monomials, basis_size, elapsed_ms) =
             tangential_wall_basis(&k, &denominators[0].polynomial, &selected);
-        assert_eq!(monomials.len(), 8);
+        let expected_rank = match tangential_marks.as_str() {
+            "none" => 5,
+            "q_g2" | "q_g3" => 6,
+            "full" => 8,
+            _ => unreachable!(),
+        };
+        assert_eq!(monomials.len(), expected_rank);
         println!(
-            "prime={} point={point} tangential_wall=q_g1 factors=[K,q_g2,q_g3] rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
-            prime(), monomials.len()
+            "prime={} point={point} tangential_wall=q_g1 marks={tangential_marks} rank={} basis_size={basis_size} elapsed_ms={elapsed_ms}",
+            prime(), monomials.len(),
         );
         println!("STANDARD_MONOMIALS={:?}", monomials.into_iter().collect::<Vec<_>>());
         return;
