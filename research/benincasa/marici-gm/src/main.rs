@@ -336,6 +336,42 @@ fn gysin_adapted_rows(uu:u64,vv:u64,axis:&str)->Vec<Vec<F>>{
     let mut p=vec![vec![F::z(PRIME);4];4];let mut dp=p.clone();for i in 0..4{for j in 0..4{p[i][j]=pd[i][j].x;dp[i][j]=pd[i][j].d;}}
     let(a,_)=sample_rows(uu,vv,axis);let mut lhs=mm(&p,&a);for i in 0..4{for j in 0..4{lhs[i][j]=lhs[i][j].add(dp[i][j]);}}mm(&lhs,&inverse(&p).expect("regular Gysin-adapted frame"))
 }
+fn gysin_polynomial_split_test(maxdeg:u8)->String{
+    let mut found=None;
+    for deg in 0..=maxdeg{
+        let mons=total_monomials(deg);let nvar=4*mons.len();let need=(2*nvar+7)/8+12;
+        let mut mat=Vec::new();let mut su=0x6a09e667f3bcc909u64;let mut sv=0xbb67ae8584caa73bu64;
+        while mat.len()<8*need{
+            su=((su as u128*6_364_136_223_846_793_005u128+719u128)%PRIME as u128)as u64;
+            sv=((sv as u128*2_862_933_555_777_941_757u128+727u128)%PRIME as u128)as u64;
+            let got=std::panic::catch_unwind(||{
+                let au=gysin_adapted_rows(su,sv,"u");let av=gysin_adapted_rows(su,sv,"v");(au,av)
+            });let Ok((au,av))=got else{continue};
+            for(axis,a)in [(0usize,au),(1usize,av)]{
+                let u=F::new(su,PRIME);let v=F::new(sv,PRIME);
+                for i in 0..2{for j in 0..2{
+                    let mut row=vec![F::z(PRIME);nvar+1];
+                    for(q,k)in [(0usize,0usize),(0,1),(1,0),(1,1)]{
+                        for(mi,(du,dv))in mons.iter().enumerate(){
+                            let m=u.pow(*du as u64).mul(v.pow(*dv as u64));
+                            let e=if axis==0{*du}else{*dv};
+                            let dm=if e==0{F::z(PRIME)}else{F::new(e as u64,PRIME).mul(if axis==0{u.pow((du-1)as u64).mul(v.pow(*dv as u64))}else{u.pow(*du as u64).mul(v.pow((dv-1)as u64))})};
+                            let mut z=F::z(PRIME);if q==i&&k==j{z=z.add(dm)}if q==i{z=z.add(m.mul(a[k][j]))}if k==j{z=z.sub(m.mul(a[i+2][q+2]))}
+                            row[(2*q+k)*mons.len()+mi]=z;
+                        }
+                    }
+                    row[nvar]=a[i+2][j].neg();mat.push(row);
+                }}
+            }
+        }
+        if let Some(cs)=rank_solve(mat,nvar){
+            let mut bad=0usize;let mut vu=0x428a2f98d728ae22u64;let mut vv=0x7137449123ef65cdu64;
+            for _ in 0..256{vu=((vu as u128*3_202_034_522_624_059_733u128+733u128)%PRIME as u128)as u64;vv=((vv as u128*3_933_555_777_941_757u128+739u128)%PRIME as u128)as u64;for(axis,ax)in [(0usize,"u"),(1usize,"v")]{let a=gysin_adapted_rows(vu,vv,ax);let u=F::new(vu,PRIME);let v=F::new(vv,PRIME);let mut x=vec![vec![F::z(PRIME);2];2];let mut dx=x.clone();for q in 0..2{for k in 0..2{let off=(2*q+k)*mons.len();let(z,dz)=eval_poly_coeff(&cs[off..off+mons.len()],&mons,u,v,axis);x[q][k]=z;dx[q][k]=dz;}}for i in 0..2{for j in 0..2{let mut z=dx[i][j].add(a[i+2][j]);for k in 0..2{z=z.add(x[i][k].mul(a[k][j])).sub(a[i+2][k+2].mul(x[k][j]));}if z.v!=0{bad+=1}}}}}
+            if bad==0{let terms=cs.iter().filter(|z|z.v!=0).count();found=Some((deg,terms,cs,mons));break}
+        }
+    }
+    if let Some((deg,terms,_,_))=found{format!("{{\"schema\":\"marici.gm.gysin_polynomial_split.v1\",\"status\":\"split\",\"degree\":{},\"nonzero_coefficients\":{},\"validation_points\":256,\"validation_directions\":512,\"validation_mismatches\":0}}",deg,terms)}else{format!("{{\"schema\":\"marici.gm.gysin_polynomial_split.v1\",\"status\":\"not_found\",\"max_degree\":{}}}",maxdeg)}
+}
 fn reconstruct_final_fits(maxdeg:u8,adapted:bool)->[Vec<RatFit>;2]{
     let need=2*total_monomials(maxdeg).len()+20;let mut su=RECON_SEEDS.0;let mut sv=RECON_SEEDS.1;let mut data=Vec::new();
     while data.len()<need{su=((su as u128*6_364_136_223_846_793_005u128+17u128)%PRIME as u128)as u64;sv=((sv as u128*2_862_933_555_777_941_757u128+29u128)%PRIME as u128)as u64;
@@ -428,6 +464,7 @@ fn generic_et_test(count:usize)->String{
 }
 fn main(){
     let a:Vec<String>=env::args().collect();
+    if a.len()==4&&a[1]=="gysin-polynomial-split-test"{let maxdeg=a[2].parse::<u8>().unwrap();fs::write(&a[3],gysin_polynomial_split_test(maxdeg)).expect("write Gysin polynomial split test");return}
     if a.len()==3&&a[1]=="soft-support-nine-master-test"{fs::write(&a[2],soft_support_nine_master_test()).expect("write nine-master soft support test");return}
     if a.len()==3&&a[1]=="soft-support-both-sites-test"{fs::write(&a[2],soft_support_both_sites_test()).expect("write both-site soft support test");return}
     if a.len()==3&&a[1]=="soft-support-test"{fs::write(&a[2],soft_support_saturated_test()).expect("write soft support test");return}

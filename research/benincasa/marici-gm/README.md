@@ -134,6 +134,12 @@ values of `v` on `u=E_T=0`. It verifies the residue-level horizontal Gysin
 square, adapts to kernel/quotient coordinates, and solves the logarithmic
 extension-splitting equation.
 
+The `gysin-polynomial-split-test` command tests the complete simultaneous
+two-direction splitting equation in the same Gysin-adapted frame for a
+pole-free polynomial gauge through a declared total-degree bound.  The
+committed degree-ten certificate finds no solution; this is a bounded ansatz
+no-go, not a proof that the differential-module extension is nonsplit.
+
 `generic-et-nearby-synthesis.json` combines that certificate with the exact
 other-block connections and the total-energy intersection census. It records
 the complete generic nine-master Deligne nearby object, the second Rees datum,
