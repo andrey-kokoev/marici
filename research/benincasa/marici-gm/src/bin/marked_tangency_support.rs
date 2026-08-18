@@ -398,6 +398,9 @@ fn monomials(d: u8) -> Vec<Mon> {
     }
     z
 }
+fn homogeneous_monomials(d:u8) -> Vec<Mon> {
+    (0..=d).map(|i|(i,d-i)).collect()
+}
 fn exact(g: &Geometry, sa: u8, sb: u8, m: Mon, is_q: bool) -> Poly {
     let f = Poly::mon(m.0, m.1, F::o());
     let ea = 2 - sa;
@@ -1419,6 +1422,42 @@ fn main() {
         let exact_sum:usize=exact.iter().sum();
         let combined_sum:usize=combined.iter().sum();
         println!("{{\"schema\":\"marici.benincasa.dlog_smith_soft_axis_tail.v1\",\"field_modulus\":{},\"truncation_order\":24,\"arc\":\"E=t,X2=3*t^2\",\"degree\":{degree},\"master_image_rank\":{rank},\"master_image_valuation\":{valuation},\"exact_rank\":{},\"combined_rank\":{},\"exact_determinantal_valuation\":{exact_sum},\"combined_determinantal_valuation\":{combined_sum}}}",P,exact.len(),combined.len());
+        return;
+    }
+    if mode == "dlog-soft-axis-symbol" {
+        let g=geometry(0,2,'u');
+        let sectors=[(1u8,1u8),(1,0),(0,1),(0,0)];
+        let mut rows=Vec::new();
+        let mut eventual_full_from=None;
+        for target_degree in 5u8..=40 {
+            let target=homogeneous_monomials(target_degree);
+            let pos:BTreeMap<Mon,usize>=target.iter().enumerate().map(|(i,m)|(*m,i)).collect();
+            let mut cols=Vec::<Vec<F>>::new();
+            for (sa,sb) in sectors {
+                let shift=7-sa-sb;
+                if target_degree<shift { continue; }
+                let source_degree=target_degree-shift;
+                for m in homogeneous_monomials(source_degree) {
+                    for is_q in [false,true] {
+                        let q=exact(&g,sa,sb,m,is_q);
+                        let mut col=vec![F::z();target.len()];
+                        for (mon,c) in q.0 {
+                            if mon.0+mon.1==target_degree {
+                                col[*pos.get(&mon).expect("top symbol target monomial absent")]=c;
+                            }
+                        }
+                        cols.push(col);
+                    }
+                }
+            }
+            let matrix=transpose(&cols);
+            let rank=matrix_rank(matrix);
+            let deficiency=target.len()-rank;
+            rows.push(format!("{{\"target_degree\":{target_degree},\"rows\":{},\"columns\":{},\"rank\":{rank},\"deficiency\":{deficiency}}}",target.len(),cols.len()));
+            if deficiency==0 && eventual_full_from.is_none() { eventual_full_from=Some(target_degree); }
+            if deficiency!=0 { eventual_full_from=None; }
+        }
+        println!("{{\"schema\":\"marici.benincasa.soft_axis_exact_symbol_shells.v1\",\"field_modulus\":{},\"soft_center\":\"E=X2=0\",\"leading_data\":{{\"K4\":\"a^4\",\"L1\":\"b\",\"L2\":\"a\"}},\"eventual_full_rank_from\":{},\"shells\":[{}]}}",P,eventual_full_from.map(|x|x.to_string()).unwrap_or_else(||"null".to_string()),rows.join(","));
         return;
     }
     if mode == "dlog-smith-quadratic" {
