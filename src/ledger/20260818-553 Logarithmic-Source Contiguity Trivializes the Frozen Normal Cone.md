@@ -1,12 +1,12 @@
 ---
 id: 553
 date: 2026-08-18
-title: Integer Contiguity Trivializes the Frozen Lower Residue Cone
+title: Logarithmic-Source Contiguity Trivializes the Frozen Normal Cone
 authors:
   - marici.Nima
 ---
 
-# Integer Contiguity Trivializes the Frozen Lower Residue Cone
+# Logarithmic-Source Contiguity Trivializes the Frozen Normal Cone
 
 Entry 551 showed that the deletion census itself contains no morphism between
 its rank-seven and rank-twelve critical quotients. This entry asks whether the
@@ -61,22 +61,34 @@ j_*(\Omega_{U\setminus V(q_{g1})}^\bullet,\nabla_{17}),
 \omega\longmapsto q_{g1}^{-17}\omega.
 \]
 
-Its cone is legitimately typed, but Entry 552 supplies its decisive normal
-calculation. In the logarithmic normal direction it is governed by
+Its cone is legitimately typed. If the source lattice is enlarged to
+logarithmic normal forms, its normal calculation is governed by
 
 \[
 [k\xrightarrow{17}k].
 \]
 
 Since \(17\) is invertible over both \(\mathbb Q\) and the census field
-\(\mathbf F_{32003}\), this normal complex is acyclic. Integer contiguity
-therefore trivializes rather than realizes a supported residue at the frozen
-generic coefficient.
+\(\mathbf F_{32003}\), this logarithmic-source normal complex is acyclic.
+
+## Ordinary-source correction
+
+Entry 558 identifies the lattice distinction omitted in the original version
+of this entry. The actual source on the space containing the wall has ordinary
+one-forms. Its image does not contain
+
+\[
+q^{-17}\frac{dq}{q},
+\]
+
+so the ordinary-to-meromorphic cone has one-dimensional normal cohomology.
+The acyclicity theorem here applies only to the logarithmic-source control.
 
 ## Scope boundary
 
-Thus the rank difference \(12-7=5\) cannot be the supported hypercohomology of
-this generic integer-contiguity cone.
+Thus logarithmic-source contiguity cannot produce the supported class. The
+ordinary-source cone of Entry 558 can, after tensoring with the independently
+computed unmarked tangential rank-five object.
 
 Nor does integer contiguity construct the desired generic regulator family.
 For a formal or nonintegral exponent \(\alpha\), \(q_{g1}^{-\alpha}\) is not an
@@ -92,17 +104,14 @@ root-stack coefficient object. Therefore:
 \]
 
 This refines Entry 551 rather than reversing it: the missing morphism can be
-derived at the exact integer specialization, and its normal cone is zero. The
-nonzero supported object occurs only on Entry 552's coefficient-space
-resonance divisor \(\lambda=0\), where the derived special fiber has two
-adjacent grades.
+derived at the exact integer specialization, but its cone depends essentially
+on the chosen ordinary or logarithmic source lattice. Entry 552's formal
+coefficient-space resonance remains a distinct construction.
 
 ## Next finite gate
 
-Construct the tangential complex at \(\lambda=0\) independently and determine
-which, if either, of its two normal grades is selected by the physical
-relative-chain or perverse convention. Only that selected resonant grade can
-be compared with Entry 550's logarithmic boundary complex.
+Compare Entry 558's ordinary-source rank-five cone with Entry 549's resolved
+boundary packet, retaining the regulator connection and marked pair residues.
 
 The executable audit is
 \`research/benincasa/check_generic_lower_integer_contiguity.py\`.
