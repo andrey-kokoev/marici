@@ -26,9 +26,14 @@ This packet fixes the conventions used by `q_d_census.py` and its Rust port.
 - `Q_D`: the plus gradient target modulo the span of the admitted `Hhat` and
   principal Euler columns. No degree-two Koszul columns are included in this
   definition.
-- `Q_D/uQ_D`: specialize the same admitted columns to their `u^0` rows; do
-  not independently regenerate a frozen source matrix.
-- Torsion count: `t_D=2 dim(Q_D/uQ_D)-dim(Q_D)`.
+- Frozen specialization statistic: restrict the same admitted columns to
+  their `u^0` rows; do not independently regenerate a frozen source matrix.
+  The notation `Q_D/uQ_D` in the original table is retained for provenance,
+  but the module-stability audit below proves it is not literally such a
+  quotient at finite cutoff.
+- Rank statistic: `t_D=2 dim(frozen specialization)-dim(Q_D)`.  It must not
+  be interpreted as a torsion or `u`-homology dimension unless `uI_D subset
+  I_D` has first been verified.
 - Koszul audit: use the frozen gradients
   `(K_a,K_b,K_u)=(4a^3,0,a^2(1-b^2))` and the elementary columns
   `s_ab=(-K_b,K_a,0)`, `s_bu=(0,-K_u,K_b)`,
@@ -60,3 +65,17 @@ The frozen elementary-Koszul cycle gate fails:
 
 Thus the proposed filtration is not typed on `H(Q_D,u)`.  Even its formal
 shadow has `dim(H/F1)=D/2`, rather than the required stable value one.
+
+More fundamentally, the admitted exact image itself is not stable under
+multiplication by `u`:
+
+| D | `rank(I_D+uI_D)-rank(I_D)` |
+|---:|---:|
+| 12 | 16 |
+| 16 | 22 |
+| 20 | 28 |
+| 24 | 34 |
+
+Hence the finite `Q_D` is not a dual-number module.  All references above to
+`H(Q_D,u)` and its filtration are formal diagnostics only; a module-stable
+filtered completion must be constructed before homology is defined.

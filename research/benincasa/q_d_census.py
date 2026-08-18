@@ -18,10 +18,10 @@ EXPECTED = {
     24: (279, 206, 133),
 }
 EXPECTED_KOSZUL_AUDIT = {
-    12: ((15, 22), (5, 20, 6)),
-    16: ((21, 32), (7, 42, 8)),
-    20: ((27, 42), (9, 72, 10)),
-    24: ((33, 52), (11, 110, 12)),
+    12: (16, (15, 22), (5, 20, 6)),
+    16: (22, (21, 32), (7, 42, 8)),
+    20: (28, (27, 42), (9, 72, 10)),
+    24: (34, (33, 52), (11, 110, 12)),
 }
 
 dependency = Path(__file__).parents[1] / "voevodsky" / "check_soft_axis_deck_orbit_completion.py"
@@ -193,6 +193,9 @@ def census(cutoff):
 
     s1_columns = s0_columns + sau_columns
     rank_i = rank(columns)
+    module_defect = (
+        rank(columns + [multiply_column_by_u(column) for column in columns]) - rank_i
+    )
     cycle_defects = (
         rank(columns + [multiply_column_by_u(column) for column in s0_columns]) - rank_i,
         rank(columns + [multiply_column_by_u(column) for column in s1_columns]) - rank_i,
@@ -207,7 +210,14 @@ def census(cutoff):
         rank_b_s1 - rank_b_s0,
         torsion_dimension - (rank_b_s1 - rank_b),
     )
-    return full_dimension, special_dimension, torsion_dimension, cycle_defects, filtration
+    return (
+        full_dimension,
+        special_dimension,
+        torsion_dimension,
+        module_defect,
+        cycle_defects,
+        filtration,
+    )
 
 
 def main():
@@ -217,12 +227,12 @@ def main():
     for cutoff, result in results.items():
         print(
             f"D={cutoff}: dim_Q={result[0]} dim_Q_mod_u={result[1]} t={result[2]} "
-            f"cycle_defects={result[3]} "
-            f"formal_F0={result[4][0]} formal_F1/F0={result[4][1]} formal_H/F1={result[4][2]}"
+            f"module_defect={result[3]} cycle_defects={result[4]} "
+            f"formal_F0={result[5][0]} formal_F1/F0={result[5][1]} formal_H/F1={result[5][2]}"
         )
     print(json.dumps({
         "schema": "marici.benincasa.q_d_census.v1",
-        "results": {str(k): [*v[:3], list(v[3]), list(v[4])] for k, v in results.items()},
+        "results": {str(k): [*v[:4], list(v[4]), list(v[5])] for k, v in results.items()},
         "closed_form": "t_D=(D/2)^2-D/2+1",
     }, sort_keys=True))
 
