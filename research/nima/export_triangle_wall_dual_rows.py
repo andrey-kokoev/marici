@@ -70,6 +70,11 @@ parser.add_argument(
     type=lambda value: int(value, 0),
     help="retain exactly this five-bit subset of marked relation families",
 )
+parser.add_argument(
+    "--pole-extension-filtration",
+    action="store_true",
+    help="at k-depth 3, order the old depth-two complex first and then the seven new source-pole strata",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
@@ -200,7 +205,7 @@ family_bounds.extend(
 )
 if family_bounds[-1] != len(central_rows):
     raise RuntimeError("relation-family row census does not agree")
-if sum(value is not None for value in (args.marked_last, args.marked_mask)) + args.partner_first > 1:
+if sum(value is not None for value in (args.marked_last, args.marked_mask)) + args.partner_first + args.pole_extension_filtration > 1:
     raise RuntimeError("relation-family ordering/filter options are mutually exclusive")
 marked_start = family_bounds[1]
 marked_blocks = [
@@ -208,7 +213,29 @@ marked_blocks = [
     for index in range(5)
 ]
 order = list(range(len(central_rows)))
-if args.partner_first:
+stage_by_row = None
+if args.pole_extension_filtration:
+    if (args.k_depth, args.q_depth) != (3, 2):
+        raise RuntimeError("--pole-extension-filtration requires --k-depth 3 --q-depth 2")
+    monomial_de_rham = len(base.monomials_at_most(args.ambient))
+    monomial_principal = len(base.monomials_at_most(args.ambient - 4))
+    monomial_marked = len(base.monomials_at_most(args.ambient - 1))
+    de_rham_per_k = 2 * monomial_de_rham
+    principal_per_k = args.q_depth**5 * monomial_principal
+    marked_per_k = (args.q_depth - 1) * args.q_depth**4 * monomial_marked
+    old = list(range(0, 2 * de_rham_per_k))
+    old += list(range(de_rham_count, de_rham_count + 2 * principal_per_k))
+    new_stages = [list(range(2 * de_rham_per_k, 3 * de_rham_per_k))]
+    new_stages.append(list(range(de_rham_count + 2 * principal_per_k, de_rham_count + 3 * principal_per_k)))
+    for family_index in range(5):
+        start = marked_start + family_index * marked_count
+        old += list(range(start, start + 3 * marked_per_k))
+        new_stages.append(list(range(start + 3 * marked_per_k, start + 4 * marked_per_k)))
+    order = old + [row for stage in new_stages for row in stage]
+    stage_by_row = {row: 0 for row in old}
+    for stage_index, stage in enumerate(new_stages, start=1):
+        stage_by_row.update({row: stage_index for row in stage})
+elif args.partner_first:
     order = list(range(marked_start)) + marked_blocks[4] + [row for block in marked_blocks[:4] for row in block]
 elif args.marked_last is not None:
     marked_order = [index for index in range(5) if index != args.marked_last] + [args.marked_last]
@@ -225,7 +252,9 @@ with args.output.open("wb") as stream:
     stream.write(struct.pack("<IIIII", P, args.ambient, len(presentation["ordered_columns"]), len(order), 0))
     for output_index, index in enumerate(order):
         central, derivative, second = central_rows[index], derivative_rows[index], second_rows[index]
-        if (args.partner_first or args.marked_last is not None) and output_index >= family_bounds[1]:
+        if stage_by_row is not None:
+            family = stage_by_row[index]
+        elif (args.partner_first or args.marked_last is not None) and output_index >= family_bounds[1]:
             family = 2 + (output_index - family_bounds[1]) // marked_count
         elif args.marked_mask is not None and output_index >= marked_start:
             original_family = next(
