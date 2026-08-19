@@ -21,5 +21,4 @@ Substantive team requests, handoffs, results, objections, replies, and
 acknowledgments should be admitted to the Marici epistemic graph as
 `communication` entities. Communication records provenance and argumentative
 causality; it becomes scientific evidence only through a separately reviewed
-`promotes_to_evidence` relation. Mailbox delivery and read state remain
-separate.
+`promotes_to_evidence` relation.
