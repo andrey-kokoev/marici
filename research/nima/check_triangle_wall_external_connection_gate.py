@@ -79,27 +79,63 @@ def audit_tangent(tangent):
         derivative_rows.append(derivative)
 
     axes = (0, 2) if tangent == "x1" else (1, 2)
+    derivative_data = {
+        axis: connection.parameter_derivative_data(base.fiber_data, POINT, axis)
+        for axis in axes
+    }
+    image_cache = {}
+
+    def full_image(label, axis):
+        key = (label, axis)
+        if key in image_cache:
+            return image_cache[key]
+        k_pole, *rest = label
+        exponent = rest.pop()
+        levels = rest
+        kd, qd = derivative_data[axis]
+        image = {}
+        missing = 0
+        if k_pole < 2:
+            for term, coefficient in base.multiply_monomial(kd, exponent, charts.GAMMA - k_pole):
+                target = (k_pole + 1, *levels, term)
+                if target in presentation["columns"]:
+                    base.add_value(image, presentation["columns"][target], coefficient)
+                else:
+                    missing += 1
+        for qi, level in enumerate(levels):
+            if level >= 2:
+                continue
+            raised = list(levels)
+            raised[qi] += 1
+            for term, coefficient in base.multiply_monomial(qd[charts.SOURCE_NAMES[qi]], exponent, -level):
+                target = (k_pole, *raised, term)
+                if target in presentation["columns"]:
+                    base.add_value(image, presentation["columns"][target], coefficient)
+                else:
+                    missing += 1
+        image_cache[key] = image, missing
+        return image, missing
+
     family_bounds = [264, 2056, 4696, 7336, 9976, 12616, 15256]
     family_names = ["de_rham", "principal_K", "g1", "g2", "g3", "g23", "g31"]
     failures = {"plus": [], "minus": []}
+    boundary_safe_failures = {"plus": 0, "minus": 0}
+    boundary_touching_rows = 0
     failure_families = {
         sign: {name: 0 for name in family_names} for sign in ("plus", "minus")
     }
     for index, (row, derivative) in enumerate(zip(central_rows, derivative_rows)):
         connection_part = {}
+        missing_targets = 0
         for column, coefficient in row.items():
             label = presentation["ordered_columns"][column]
             for axis in axes:
-                image = connection.connection_image(
-                    label,
-                    charts.SOURCE_NAMES,
-                    axis,
-                    presentation["columns"],
-                    base.fiber_data,
-                    POINT,
-                )
+                image, missing = full_image(label, axis)
+                missing_targets += missing
                 for target, value in image.items():
                     base.add_value(connection_part, target, coefficient * value)
+        if missing_targets:
+            boundary_touching_rows += 1
         for sign, scalar in (("plus", 1), ("minus", -1)):
             covariant = dict(derivative)
             for target, value in connection_part.items():
@@ -107,6 +143,8 @@ def audit_tangent(tangent):
             residual = base.reduce_row(covariant, presentation["pivots"])
             if residual:
                 failures[sign].append({"row": index, "residual_terms": len(residual)})
+                if not missing_targets:
+                    boundary_safe_failures[sign] += 1
                 family = next(name for name, bound in zip(family_names, family_bounds) if index < bound)
                 failure_families[sign][family] += 1
 
@@ -115,6 +153,8 @@ def audit_tangent(tangent):
         "axes": list(axes),
         "raw_relation_count": len(central_rows),
         "covariant_relation_failures": {sign: len(items) for sign, items in failures.items()},
+        "rows_touching_omitted_connection_targets": boundary_touching_rows,
+        "boundary_safe_failures": boundary_safe_failures,
         "failure_families": failure_families,
         "first_failures": {sign: items[:10] for sign, items in failures.items()},
         "chain_connection_gate_passed": not failures["plus"],
