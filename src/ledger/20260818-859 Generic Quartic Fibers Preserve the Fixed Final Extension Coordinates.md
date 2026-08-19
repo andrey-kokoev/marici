@@ -77,4 +77,3 @@ Benincasa's reconstructed block remains pending.
   `cargo run --release --bin nima_marked_extension_q_fiber_gate` and
   `cargo run --release --features reconstruction-prime-3 --bin nima_marked_extension_q_fiber_gate`;
 - allocator claim: `seqclaim-5ea743438c420006271c3936`.
-
