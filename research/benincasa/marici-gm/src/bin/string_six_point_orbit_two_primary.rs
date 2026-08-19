@@ -100,6 +100,20 @@ fn main() {
     assert_eq!(smith,vec![1,1,2,2,2,4]);
     let primitive_index: i128=smith.iter().product();
     assert_eq!(primitive_index,32);
+    let mut minimal_chamber_lifts=Vec::new();
+    let mut minimal_lift_count=0usize;
+    'outer: for k in 0..=6 {
+        for subset in combinations(6,k) {
+            let mut augmented=matrix.clone();
+            for row in 0..6 {
+                for &lift in &subset { augmented[row].push(if row==lift {1} else {0}); }
+            }
+            let invariants=smith_invariants(&augmented,6);
+            if invariants.iter().all(|&x| x==1) { minimal_chamber_lifts.push(subset); }
+        }
+        if !minimal_chamber_lifts.is_empty() { minimal_lift_count=k; break 'outer; }
+    }
+    assert_eq!(minimal_lift_count,4);
 
     let packet = json!({
         "schema":"marici.benincasa.string_six_point_orbit_two_primary.v1",
@@ -113,6 +127,9 @@ fn main() {
         "index_divisibility_lower_bound":16,
         "primitive_normalized_smith_invariants":smith,
         "primitive_normalized_index":primitive_index.to_string(),
+        "minimal_labelled_chamber_lift_count":minimal_lift_count,
+        "minimal_saturating_label_subsets":minimal_chamber_lifts,
+        "saturated_by_frozen_chamber_lattice":true,
         "reason":"all four translates of each seed coincide modulo 2",
         "scope":"orbit lattice after localization away from the nonunit kinematic Fitting factors",
         "exact_smith_form_scope":"exact for the displayed primitive normalized two-seed orbit model; source even content is separate"
