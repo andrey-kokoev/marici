@@ -125,18 +125,32 @@ fn max_diff(a: &Matrix, b: &Matrix) -> f64 {
 fn norm(a: &Matrix) -> f64 {
     a.iter().flatten().map(|x| x * x).sum::<f64>().sqrt()
 }
+fn row_gram_determinant(a: &Matrix) -> f64 {
+    let g00: f64 = a[0].iter().map(|x| x * x).sum();
+    let g11: f64 = a[1].iter().map(|x| x * x).sum();
+    let g01: f64 = a[0].iter().zip(&a[1]).map(|(x, y)| x * y).sum();
+    g00 * g11 - g01 * g01
+}
 
-fn kinematics(epsilon: f64, delta: f64, seed: f64) -> [[f64; 7]; 7] {
+fn kinematics_mode(epsilon: f64, delta: f64, third: f64, seed: f64, mode: &str) -> [[f64; 7]; 7] {
     let mut s = [[0.0; 7]; 7];
+    let z_generic = 0.197 - 0.009 * seed;
+    let x_generic = 0.181 + 0.019 * seed;
+    let (x, y, z) = match mode {
+        "x" => (epsilon, delta - epsilon - z_generic, z_generic),
+        "y" => (delta - epsilon - z_generic, epsilon, z_generic),
+        "z" => (x_generic, delta - x_generic - epsilon, epsilon),
+        _ => panic!("unknown subchannel mode"),
+    };
     let values = [
         ((1, 2), 0.173 + 0.013 * seed),
         ((1, 3), -0.219 + 0.011 * seed),
-        ((1, 4), 0.287 - 0.017 * seed),
-        ((2, 3), epsilon),
+        ((1, 4), third),
+        ((2, 3), x),
         ((2, 4), -0.131 + 0.007 * seed),
-        ((2, 5), 0.197 - 0.009 * seed),
+        ((2, 5), z),
         ((3, 4), 0.241 + 0.019 * seed),
-        ((3, 5), delta - epsilon - (0.197 - 0.009 * seed)),
+        ((3, 5), y),
         ((4, 5), -0.163 - 0.005 * seed),
     ];
     for ((i, j), x) in values {
@@ -145,10 +159,19 @@ fn kinematics(epsilon: f64, delta: f64, seed: f64) -> [[f64; 7]; 7] {
     }
     s
 }
+fn kinematics(epsilon: f64, delta: f64, seed: f64) -> [[f64; 7]; 7] {
+    kinematics_mode(epsilon, delta, 0.287 - 0.017 * seed, seed, "x")
+}
 fn normalized_transition(epsilon: f64, delta: f64, seed: f64) -> Matrix {
     let s = kinematics(epsilon, delta, seed);
     let t = multiply(&block_kernel(&s), &transpose(&dense(&s)));
     scale(t, (PI * delta).sin())
+}
+
+fn normalized_three_normal(epsilon: f64, delta: f64, third: f64, seed: f64, mode: &str) -> Matrix {
+    let s = kinematics_mode(epsilon, delta, third, seed, mode);
+    let t = multiply(&block_kernel(&s), &transpose(&dense(&s)));
+    scale(t, (PI * delta).sin() * (PI * third).sin())
 }
 
 fn main() {
@@ -175,5 +198,15 @@ fn main() {
         let scale_norm = norm(route_a.last().unwrap()).max(norm(route_b.last().unwrap()));
         certificates.push(serde_json::json!({"seed":seed,"route_a_errors":a_errors,"route_b_errors":b_errors,"final_commutator":commutator,"relative_commutator":commutator/scale_norm,"richardson_commutator":extrapolated_commutator,"norm":scale_norm}));
     }
-    println!("{}",serde_json::to_string(&serde_json::json!({"schema":"marici.benincasa.string_six_point_mixed_corner.v1","corner":["s23","s235"],"normalization":"sin(pi*s235) T","certificates":certificates})).unwrap());
+    let mut maximal_flag_scan = Vec::new();
+    for mode in ["x", "y", "z"] {
+        let matrices: Vec<Matrix> = hs
+            .iter()
+            .map(|h| normalized_three_normal(*h, *h, *h, 0.0, mode))
+            .collect();
+        let norms: Vec<f64> = matrices.iter().map(norm).collect();
+        let gram_determinants: Vec<f64> = matrices.iter().map(row_gram_determinant).collect();
+        maximal_flag_scan.push(serde_json::json!({"subchannel":mode,"diagonal_norms":norms,"row_gram_determinants":gram_determinants}));
+    }
+    println!("{}",serde_json::to_string(&serde_json::json!({"schema":"marici.benincasa.string_six_point_mixed_corner.v2","corner":["s23","s235"],"normalization":"sin(pi*s235) T","certificates":certificates,"maximal_flag_discovery":{"normalization":"sin(pi*q) sin(pi*a) T","scan":maximal_flag_scan}})).unwrap());
 }
