@@ -62,6 +62,12 @@ def sample(point):
         if label[0] == 0 and all(level == 1 for level in label[1:-1]) and sum(label[-1]) <= 6:
             base.add_pivot(base.reduce_row({pres["columns"][label]: 1}, pres["pivots"]), numerator)
     basis = list(numerator.values())
+    presentation_stats = {
+        "relation_rank": len(pres["pivots"]),
+        "total_quotient_dimension": len(pres["ordered_columns"]) - len(pres["pivots"]),
+        "low_label_count": len(pres["low_labels"]),
+        "low_free_count": len(pres["free_low"]),
+    }
     moving_label = (0, 1, 1, 1, 1, 2, (0, 0))
     moving = base.reduce_row({pres["columns"][moving_label]: 1}, pres["pivots"])
     augmented = dict(numerator)
@@ -76,6 +82,7 @@ def sample(point):
             "moving_wall_quotient_rank": 0,
             "numerator_basis_labels": [pres["ordered_columns"][pivot] for pivot in numerator],
             "status": "moving_wall_class_collapses_into_numerator_space",
+            **presentation_stats,
         }
     quotient_pivot = next(iter(quotient))
     functionals = [
@@ -117,6 +124,7 @@ def sample(point):
             [i for i, value in enumerate(row) if value] for row in functionals
         ],
         "status": "generic_moving_wall_extension",
+        **presentation_stats,
     }
 
 

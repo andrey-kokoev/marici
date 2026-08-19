@@ -19,6 +19,9 @@ payload = {
             "numerator_rank": item["numerator_rank"],
             "augmented_rank": item["augmented_rank"],
             "moving_wall_quotient_rank": item["moving_wall_quotient_rank"],
+            "relation_rank": item["relation_rank"],
+            "total_quotient_dimension": item["total_quotient_dimension"],
+            "low_free_count": item["low_free_count"],
         }
         for item in wall
     ],
@@ -29,6 +32,9 @@ payload = {
             "augmented_rank": item["augmented_rank"],
             "moving_wall_quotient_rank": item["moving_wall_quotient_rank"],
             "second_fundamental_form_rank": item["second_fundamental_form_rank"],
+            "relation_rank": item["relation_rank"],
+            "total_quotient_dimension": item["total_quotient_dimension"],
+            "low_free_count": item["low_free_count"],
         }
         for item in nearby
     ],
