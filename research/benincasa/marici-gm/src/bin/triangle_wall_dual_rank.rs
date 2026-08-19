@@ -5,6 +5,7 @@ use std::io::{self, Read};
 
 const P: u32 = 32003;
 type Row = BTreeMap<usize, u32>;
+type Provenance = BTreeMap<usize, u32>;
 
 fn mul(a: u32, b: u32) -> u32 { ((a as u64 * b as u64) % P as u64) as u32 }
 fn pow(mut a: u32, mut n: u32) -> u32 {
@@ -31,6 +32,51 @@ fn insert(mut row: Row, pivots: &mut [Option<Row>]) -> bool {
             return true;
         }
     }
+}
+fn insert_pivot(mut row: Row, pivots: &mut [Option<Row>]) -> Option<usize> {
+    loop {
+        let Some((&pivot, &coefficient)) = row.last_key_value() else { return None; };
+        if let Some(existing) = &pivots[pivot] {
+            let terms: Vec<(usize, u32)> = existing.iter().map(|(&c, &v)| (c, v)).collect();
+            for (column, value) in terms {
+                add_value(&mut row, column, (P - mul(coefficient, value)) % P);
+            }
+        } else {
+            let inverse = pow(coefficient, P - 2);
+            for value in row.values_mut() { *value = mul(*value, inverse); }
+            pivots[pivot] = Some(row);
+            return Some(pivot);
+        }
+    }
+}
+fn insert_tracked(
+    mut row: Row,
+    mut provenance: Provenance,
+    pivots: &mut [Option<(Row, Provenance)>],
+) -> Option<(usize, Provenance)> {
+    loop {
+        let Some((&pivot, &coefficient)) = row.last_key_value() else { return None; };
+        if let Some((existing, existing_provenance)) = &pivots[pivot] {
+            let terms: Vec<(usize, u32)> = existing.iter().map(|(&c, &v)| (c, v)).collect();
+            let provenance_terms: Vec<(usize, u32)> = existing_provenance.iter().map(|(&c, &v)| (c, v)).collect();
+            for (column, value) in terms {
+                add_value(&mut row, column, (P - mul(coefficient, value)) % P);
+            }
+            for (source, value) in provenance_terms {
+                add_value(&mut provenance, source, (P - mul(coefficient, value)) % P);
+            }
+        } else {
+            let inverse = pow(coefficient, P - 2);
+            for value in row.values_mut() { *value = mul(*value, inverse); }
+            for value in provenance.values_mut() { *value = mul(*value, inverse); }
+            let result = provenance.clone();
+            pivots[pivot] = Some((row, provenance));
+            return Some((pivot, result));
+        }
+    }
+}
+fn shifted(row: &Row, offset: usize) -> Row {
+    row.iter().map(|(&column, &value)| (offset + column, value)).collect()
 }
 fn u32_at(bytes: &[u8], cursor: &mut usize) -> u32 {
     let out = u32::from_le_bytes(bytes[*cursor..*cursor + 4].try_into().unwrap());
@@ -63,6 +109,8 @@ fn main() -> io::Result<()> {
     let mut dual_rank = 0usize;
     let mut triple_rank = 0usize;
     let mut cumulative = Vec::new();
+    let mut records = Vec::with_capacity(rows);
+    let mut central_generators = Vec::new();
     let mut active_family = 0u32;
     for _ in 0..rows {
         let family = if version == b"MRCIDR03" { u32_at(&bytes, &mut cursor) } else { 0 };
@@ -73,7 +121,9 @@ fn main() -> io::Result<()> {
         let central = row_at(&bytes, &mut cursor);
         let derivative = row_at(&bytes, &mut cursor);
         let second = row_at(&bytes, &mut cursor);
-        insert(central.clone(), &mut central_pivots);
+        let row_index = records.len();
+        records.push((family, central.clone(), derivative.clone(), second.clone()));
+        if insert(central.clone(), &mut central_pivots) { central_generators.push(row_index); }
         let mut first = central.clone();
         for (column, value) in derivative { add_value(&mut first, columns + column, value); }
         dual_rank += insert(first.clone(), &mut dual_pivots) as usize;
@@ -96,11 +146,86 @@ fn main() -> io::Result<()> {
     cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
     let first_normal = dual_rank - 2 * central_rank;
     let second_normal = triple_rank - 3 * central_rank - 2 * first_normal;
+    assert_eq!(central_generators.len(), central_rank);
+
+    // Build the length-two module in a source-tracked basis.  The first two
+    // stages are the two shifts of a selected M0 basis.  Any later pivot is a
+    // genuine first-normal lift, with coefficients in U + Lambda U retained.
+    let mut tracked_dual: Vec<Option<(Row, Provenance)>> = vec![None; 2 * columns];
+    for &index in &central_generators {
+        let central = &records[index].1;
+        insert_tracked(shifted(central, columns), [(rows + index, 1)].into(), &mut tracked_dual);
+    }
+    for &index in &central_generators {
+        let (_, central, derivative, _) = &records[index];
+        let mut first = central.clone();
+        for (&column, &value) in derivative { add_value(&mut first, columns + column, value); }
+        insert_tracked(first, [(index, 1)].into(), &mut tracked_dual);
+    }
+    let mut first_lifts = Vec::new();
+    for (index, (_, central, derivative, _)) in records.iter().enumerate() {
+        let mut first = central.clone();
+        for (&column, &value) in derivative { add_value(&mut first, columns + column, value); }
+        if let Some((_, provenance)) = insert_tracked(first, [(index, 1)].into(), &mut tracked_dual) {
+            first_lifts.push(provenance);
+        }
+    }
+    assert_eq!(first_lifts.len(), first_normal);
+
+    let lift_to_length_three = |provenance: &Provenance| {
+        let mut out = Row::new();
+        for (&source, &coefficient) in provenance {
+            if source < rows {
+                let (_, central, derivative, second) = &records[source];
+                for (&column, &value) in central { add_value(&mut out, column, mul(coefficient, value)); }
+                for (&column, &value) in derivative { add_value(&mut out, columns + column, mul(coefficient, value)); }
+                for (&column, &value) in second { add_value(&mut out, 2 * columns + column, mul(coefficient, value)); }
+            } else {
+                let (_, central, derivative, _) = &records[source - rows];
+                for (&column, &value) in central { add_value(&mut out, columns + column, mul(coefficient, value)); }
+                for (&column, &value) in derivative { add_value(&mut out, 2 * columns + column, mul(coefficient, value)); }
+            }
+        }
+        out
+    };
+
+    // Seed precisely the valuation-zero and valuation-one length-three
+    // lifts.  The remaining grade-zero pivots are the valuation-two grade.
+    let mut filtered_triple: Vec<Option<Row>> = vec![None; 3 * columns];
+    for &index in &central_generators {
+        insert(shifted(&records[index].1, 2 * columns), &mut filtered_triple);
+    }
+    for (_, central, derivative, _) in &records {
+        let mut grade_one = shifted(central, columns);
+        for (&column, &value) in derivative { add_value(&mut grade_one, 2 * columns + column, value); }
+        insert(grade_one, &mut filtered_triple);
+    }
+    for &index in &central_generators {
+        insert(lift_to_length_three(&[(index, 1)].into()), &mut filtered_triple);
+    }
+    for provenance in &first_lifts {
+        insert(lift_to_length_three(provenance), &mut filtered_triple);
+    }
+    let baseline_rank = filtered_triple.iter().flatten().count();
+    assert_eq!(baseline_rank, 3 * central_rank + 2 * first_normal);
+    let mut quadratic_witnesses = Vec::new();
+    for (index, (_, central, derivative, second)) in records.iter().enumerate() {
+        let mut grade_zero = central.clone();
+        for (&column, &value) in derivative { add_value(&mut grade_zero, columns + column, value); }
+        for (&column, &value) in second { add_value(&mut grade_zero, 2 * columns + column, value); }
+        if let Some(pivot) = insert_pivot(grade_zero, &mut filtered_triple) {
+            quadratic_witnesses.push((index, records[index].0, pivot));
+        }
+    }
+    assert_eq!(quadratic_witnesses.len(), second_normal);
     let family_json = cumulative.iter().map(|(family, central, dual, triple)| {
         let first = dual - 2 * central;
         let second = triple - 3 * central - 2 * first;
         format!("{{\"family_through\":{family},\"central_rank\":{central},\"first_normal_rank\":{first},\"second_normal_rank\":{second}}}")
     }).collect::<Vec<_>>().join(",");
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v3\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}]}}");
+    let witness_json = quadratic_witnesses.iter().map(|(row, family, pivot)| {
+        format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot}}}")
+    }).collect::<Vec<_>>().join(",");
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v4\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}]}}", first_lifts.len());
     Ok(())
 }
