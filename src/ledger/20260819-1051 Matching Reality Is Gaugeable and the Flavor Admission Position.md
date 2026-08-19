@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1051 — Matching-Reality Is Gaugeable Presentation Data; the Second-Harmonic Toggle Map; the Flavor Admission Position
 
 ## Question

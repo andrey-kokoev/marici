@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1042 — The Nine-Link Loop Phase Is a Chart Invariant, Not a Physical Flavor Invariant
 
 ## Question

@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1048 — Only the First Harmonic Survives: \(\det[H_u,H_d]=2iF\sin\phi\) Exactly, and Where \(\pi/8\) Must Live
 
 ## Question

@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1047 — The Chart Phase Enters the Invariant Ring Only Through \(\sin\phi\) at Leading Order
 
 ## Question
