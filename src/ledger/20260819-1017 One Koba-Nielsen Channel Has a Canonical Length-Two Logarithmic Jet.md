@@ -1,5 +1,12 @@
 # 1017 — One Koba–Nielsen Channel Has a Canonical Length-Two Logarithmic Jet
 
+> **Fiber-complex qualification (Entry 1021).** The rank-two tensor-product
+> description below is valid for the external first-parameter jet and its
+> interaction with the cellular gauge. It is not the complete fiber de Rham
+> differential. In the logarithmic fiber extension,
+> (d\log(f_c)\wedge(-)) is a mandatory off-diagonal differential; Entry 1021
+> constructs it.
+
 ## Source derivative
 
 Entry 929 identifies the missing source operation.  For a channel (c), with
@@ -47,7 +54,8 @@ with (N):
 \boxed{[A_{\rm rel},N]=0.}
 \]
 
-The combined first-jet object is therefore the tensor product
+At the level of the external parameter jet and cellular transport, the
+combined object is therefore the tensor product
 
 \[
 C^\bullet_{\rm chamber,dual}
