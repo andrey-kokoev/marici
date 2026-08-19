@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 use std::env;
 use std::fs::File;
-use std::io::{self, Read};
+use std::io::{self, Read, Write};
 
 const P: u32 = 32003;
 type Row = BTreeMap<usize, u32>;
@@ -131,11 +131,24 @@ fn row_at(bytes: &[u8], cursor: &mut usize) -> Row {
     row
 }
 fn main() -> io::Result<()> {
-    let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet> [column:value,...]");
-    let second_argument = env::args().nth(2);
+    let arguments: Vec<String> = env::args().collect();
+    let path = arguments.get(1).expect("usage: triangle_wall_dual_rank <packet> [mode]");
+    let second_argument = arguments.get(2).cloned();
     let mixed_length3_only = second_argument.as_deref() == Some("--mixed-length3-only");
     let mixed_lower_only = second_argument.as_deref() == Some("--mixed-lower-only");
-    let probe = second_argument.filter(|_| !mixed_length3_only && !mixed_lower_only).map(|argument| {
+    let write_basis_path = if second_argument.as_deref() == Some("--write-quadratic-basis") {
+        Some(arguments.get(3).expect("--write-quadratic-basis requires a path").clone())
+    } else { None };
+    let transition_probe = if second_argument.as_deref() == Some("--probe-basis") {
+        Some((
+            arguments.get(3).expect("--probe-basis requires a path").clone(),
+            arguments.get(4).expect("--probe-basis requires old column count").parse::<usize>().unwrap(),
+        ))
+    } else { None };
+    let probe = second_argument.filter(|argument| {
+        !mixed_length3_only && !mixed_lower_only
+            && argument != "--write-quadratic-basis" && argument != "--probe-basis"
+    }).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
             (column.parse::<usize>().unwrap(), value.parse::<u32>().unwrap() % P)
@@ -336,6 +349,37 @@ fn main() -> io::Result<()> {
         }
     }
     assert_eq!(quadratic_witnesses.len(), second_normal);
+    if let Some(path) = write_basis_path {
+        let mut output = File::create(path)?;
+        for entry in quadratic_basis.iter().flatten() {
+            let line = entry.0.iter().map(|(column, value)| format!("{column}:{value}"))
+                .collect::<Vec<_>>().join(",");
+            writeln!(output, "{line}")?;
+        }
+    }
+    let transition_json = if let Some((path, old_columns)) = transition_probe {
+        let text = std::fs::read_to_string(path)?;
+        let mut coordinate_pivots: Vec<Option<Row>> = vec![None; second_normal];
+        let mut probe_count = 0usize;
+        let mut remainder_count = 0usize;
+        for line in text.lines().filter(|line| !line.trim().is_empty()) {
+            probe_count += 1;
+            let embedded = line.split(',').map(|term| {
+                let (old_column, value) = term.split_once(':').unwrap();
+                let old_column = old_column.parse::<usize>().unwrap();
+                let block = old_column / old_columns;
+                let within = old_column % old_columns;
+                (block * columns + within, value.parse::<u32>().unwrap() % P)
+            }).collect::<Row>();
+            let baseline_residual = reduce(embedded, &filtered_triple);
+            let (remainder, coefficients) = reduce_tracked(baseline_residual, &quadratic_basis);
+            if !remainder.is_empty() { remainder_count += 1; }
+            let coordinate_row = coefficients.into_iter().map(|(index, value)| (index, (P - value) % P)).collect();
+            insert(coordinate_row, &mut coordinate_pivots);
+        }
+        let rank = coordinate_pivots.iter().flatten().count();
+        format!("{{\"probe_count\":{probe_count},\"target_dimension\":{second_normal},\"transition_rank\":{rank},\"kernel_dimension\":{},\"cokernel_dimension\":{},\"nonzero_remainders\":{remainder_count}}}", probe_count - rank, second_normal - rank)
+    } else { "null".to_string() };
     let probe_json = if let Some(probe) = probe {
         let baseline_residual = reduce(probe, &filtered_triple);
         let (remainder, coefficients) = reduce_tracked(baseline_residual, &quadratic_basis);
@@ -355,6 +399,6 @@ fn main() -> io::Result<()> {
         } else { String::new() };
         format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot},\"residual\":[{residual_json}]}}")
     }).collect::<Vec<_>>().join(",");
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v6\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"tangential_jet\":{tangent_json},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json}}}", first_lifts.len());
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v6\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"tangential_jet\":{tangent_json},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json},\"basis_transition\":{transition_json}}}", first_lifts.len());
     Ok(())
 }
