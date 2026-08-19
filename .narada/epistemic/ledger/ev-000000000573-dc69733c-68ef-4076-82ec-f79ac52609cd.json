@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 573,
+  "event_id": "ev-000000000573-dc69733c-68ef-4076-82ec-f79ac52609cd",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1c1445a1f8e6b360d0cd5783b48920bd5073914fefbfc061eeaa015c329483e2",
+  "proposal_id": "ep_0bfae6cd-a2a9-461b-aa6a-4902f32abb1a",
+  "proposal_digest": "95926f3016919fc98852989063fe5e846db54e45b351f7f304a27c8822886e11",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-956",
+      "kind": "source",
+      "title": "Entry 956 — The Saturating Coordinate Lifts Are Not Yet Twisted Chambers",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-956 The Saturating Coordinate Lifts Are Not Yet Twisted Chambers.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:coordinate-lifts-not-twisted-chambers",
+      "kind": "claim",
+      "title": "Entry 946 proves abstract coordinate-lattice saturation but does not derive an integral twisted-chamber comparison"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:entry946-chamber-provenance-audit",
+      "kind": "test",
+      "title": "Source audit of six-point orbit saturation chamber lifts"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:coordinate-lifts-not-twisted-chambers",
+      "target_id": "marici:source:ledger-956",
+      "relation_id": "rel:derived_from-c77dcd66b01042e1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:entry946-chamber-provenance-audit",
+      "target_id": "marici:claim:coordinate-lifts-not-twisted-chambers",
+      "relation_id": "rel:tests-c0a540889c4ad354"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry956-provenance-outcome",
+      "test_id": "marici:test:entry946-chamber-provenance-audit",
+      "actor": "marici.Benincasa",
+      "outcome": "failed provenance gate: the six lifts are standard coordinate unit columns and carry no chamber facet incidence or orientation data",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-956",
+          "locator": "research/benincasa/marici-gm/src/bin/string_six_point_orbit_two_primary.rs",
+          "paraphrase": "The augmentation loop appends identity-basis columns selected by row index; no geometric chamber chain or boundary matrix is represented."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "detail": "Record provenance correction to six-point integral chamber-lattice claim"
+  },
+  "idempotency_key": "auto-admission-2b057f6934b02f0e2e37c687",
+  "occurred_at": "2026-08-19T15:08:36.6689965Z",
+  "certifies_truth": false,
+  "event_hash": "6e9b0199705a9219a48f039bdd366eca301367cc0bbcfa86d1c715c9fb6f13d1"
+}
