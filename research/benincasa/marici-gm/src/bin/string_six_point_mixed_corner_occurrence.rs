@@ -64,6 +64,7 @@ fn main() {
         vec![[1, 5, 2, 4, 6, 3], [1, 5, 4, 2, 6, 3]],
         vec![[1, 5, 2, 3, 6, 4], [1, 5, 3, 2, 6, 4]],
     ];
+    let third_normals = [[1, 2], [1, 3], [1, 4]];
 
     let dense_maps: Vec<Vec<usize>> = (0..3)
         .map(|i| permutation3(&dense[i], &dense[(i + 1) % 3]))
@@ -80,6 +81,15 @@ fn main() {
     assert_eq!(dense_cycle, vec![0, 1]);
     assert_eq!(sparse_cycle, vec![0, 1]);
 
+    let transported_normals: Vec<[usize; 2]> = third_normals
+        .iter()
+        .map(|normal| [sigma_label(normal[0]), sigma_label(normal[1])])
+        .collect();
+    assert_eq!(
+        transported_normals,
+        vec![third_normals[1], third_normals[2], third_normals[0]]
+    );
+
     // A transition matrix has variance B x D. Conjugating its rank-one
     // exceptional block therefore uses the sparse permutation on rows and
     // the inverse dense permutation on columns. At the first two moves both
@@ -95,8 +105,19 @@ fn main() {
     assert_eq!(signed_steps, vec![1, 1, 1]);
     assert_eq!(signed_steps.iter().product::<i32>(), 1);
 
+    // sigma acts by literal relabelling on U_12-1, U_13-1, U_14-1.
+    // It neither inverts nor negates a conormal generator, so the first
+    // associated grade has trivial normal-line character.
+    let normal_line_steps = vec![1, 1, 1];
+    let filtered_signed_steps: Vec<i32> = signed_steps
+        .iter()
+        .zip(&normal_line_steps)
+        .map(|(basis, normal)| basis * normal)
+        .collect();
+    assert_eq!(filtered_signed_steps.iter().product::<i32>(), 1);
+
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_mixed_corner_occurrence.v1\",\"corner_orbit\":[\"(s34,s345)\",\"(s24,s245)\",\"(s23,s235)\"],\"dense_permutations\":{:?},\"sparse_permutations\":{:?},\"signed_steps\":{:?},\"dense_cycle_identity\":true,\"sparse_cycle_identity\":true,\"signed_cyclic_composition\":1}}",
-        dense_maps, sparse_maps, signed_steps
+        "{{\"schema\":\"marici.benincasa.string_six_point_mixed_corner_occurrence.v2\",\"corner_orbit\":[\"(s34,s345)\",\"(s24,s245)\",\"(s23,s235)\"],\"third_normal_orbit\":[\"s12\",\"s13\",\"s14\"],\"dense_permutations\":{:?},\"sparse_permutations\":{:?},\"signed_steps\":{:?},\"normal_line_steps\":{:?},\"filtered_signed_steps\":{:?},\"dense_cycle_identity\":true,\"sparse_cycle_identity\":true,\"signed_cyclic_composition\":1,\"filtered_signed_cyclic_composition\":1}}",
+        dense_maps, sparse_maps, signed_steps, normal_line_steps, filtered_signed_steps
     );
 }
