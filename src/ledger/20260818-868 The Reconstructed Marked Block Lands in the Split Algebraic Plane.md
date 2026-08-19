@@ -31,7 +31,7 @@ Exact rational simplification gives
 \boxed{GB_u=GB_v=0.}
 \]
 
-All twelve candidate columns therefore land in the algebraic kernel.  The
+All six candidate columns (twenty-four scalar entries) therefore land in the algebraic kernel.  The
 candidate has no elliptic-quotient component.
 
 ## Split-line decomposition
