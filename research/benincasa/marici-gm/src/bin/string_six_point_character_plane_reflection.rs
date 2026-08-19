@@ -101,6 +101,27 @@ fn proportional_scalar(x: &[Atom], y: &[Atom]) -> Option<String> {
         None
     }
 }
+fn derivative_at(v: &[Atom], variable: &str, point: i32) -> Vec<Atom> {
+    v.iter()
+        .cloned()
+        .map(|x| {
+            let shifted = clean(
+                x.clone()
+                    .replace(a(variable).to_pattern())
+                    .with((a(&point.to_string()) + a("H")).to_pattern()),
+            );
+            let base = clean(
+                x.replace(a(variable).to_pattern())
+                    .with(a(&point.to_string()).to_pattern()),
+            );
+            clean(
+                ((shifted - base) / a("H"))
+                    .replace(a("H").to_pattern())
+                    .with(a("0").to_pattern()),
+            )
+        })
+        .collect()
+}
 fn coordinates(b0: &[Atom], b1: &[Atom], target: &[Atom]) -> (Atom, Atom, [usize; 2]) {
     for i in 0..b0.len() {
         for j in i + 1..b0.len() {
@@ -255,6 +276,46 @@ fn main() {
                 }
             }
         }
+        let (parametrized, q) = if label == "++" {
+            (
+                restrict_many(&corrected, &[("Z", "U/A2".into()), ("A3", "U*V/A2".into())]),
+                a("(1+A2^2)/(A2^2-1)"),
+            )
+        } else {
+            (
+                restrict_many(
+                    &corrected,
+                    &[
+                        ("Z", "U/(A2*B24)".into()),
+                        ("B34", "U*V/(A2*A3*B24)".into()),
+                    ],
+                ),
+                a("(1+A2^2*B24^2)/(A2^2*B24^2-1)"),
+            )
+        };
+        let normal_param = if label == "++" {
+            restrict_many(&b1, &[("Z", "U/A2".into()), ("A3", "U*V/A2".into())])
+        } else {
+            restrict_many(
+                &b1,
+                &[
+                    ("Z", "U/(A2*B24)".into()),
+                    ("B34", "U*V/(A2*A3*B24)".into()),
+                ],
+            )
+        };
+        let kernel = (0..6)
+            .map(|i| clean(parametrized[i].clone() - q.clone() * normal_param[i].clone()))
+            .collect::<Vec<_>>();
+        let mut conormal = Vec::new();
+        for s in [-1, 1] {
+            for t in [-1, 1] {
+                let du = restrict_many(&derivative_at(&kernel, "U", s), &[("V", t.to_string())]);
+                let dv = restrict_many(&derivative_at(&kernel, "V", t), &[("U", s.to_string())]);
+                let rank = projective_rank(&du, &dv);
+                conormal.push(json!({"signs":[s,t],"conormal_rank":rank}));
+            }
+        }
         records.push(json!({
             "character": label,
             "ordered_basis": ["loaded_occurrence_projector", "normal_symbol_projector"],
@@ -263,7 +324,8 @@ fn main() {
             "directions_separated": diagonal,
             "involution_verified_on_basis": true,
             "generic_boundary_specializations": boundary,
-            "generic_pairwise_intersections": pairwise
+            "generic_pairwise_intersections": pairwise,
+            "recombination_kernel_conormal": conormal
         }));
     }
     let separates = records.iter().all(|r| r["directions_separated"] == true);
