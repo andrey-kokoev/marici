@@ -139,6 +139,12 @@ fn main() {
         *(base[0].clone()*x_minus[2].clone()-base[2].clone()*x_minus[0].clone())
         *(base[4].clone()*x_minus[5].clone()-base[5].clone()*x_minus[4].clone())
     );
+    let source_block_determinants=[
+        clean(base[0].clone()*x_minus[2].clone()-base[2].clone()*x_minus[0].clone()),
+        clean(base[1].clone()),
+        clean(base[3].clone()),
+        clean(base[4].clone()*x_minus[5].clone()-base[5].clone()*x_minus[4].clone()),
+    ];
     assert!(source_fitting_minor != a("0"));
     let mut cube=Vec::new();
     for sa in [1,-1] { for sxv in [1,-1] { for sqv in [1,-1] {
@@ -183,6 +189,17 @@ fn main() {
         ,"tensor_saturation_rank":2*full_source_sheet_shift_rank
         ,"uncomputed_opposite_target_copies":new_character_directions
         ,"source_character_block_sizes":[2,1,1,2]
+        ,"source_character_supports":character_supports
+        ,"source_block_determinants":source_block_determinants.iter()
+            .map(ToString::to_string).collect::<Vec<_>>()
+        ,"source_plus_rows":[
+            base[0..6].iter().map(ToString::to_string).collect::<Vec<_>>(),
+            base[6..12].iter().map(ToString::to_string).collect::<Vec<_>>()
+        ]
+        ,"source_xminus_rows":[
+            x_minus[0..6].iter().map(ToString::to_string).collect::<Vec<_>>(),
+            x_minus[6..12].iter().map(ToString::to_string).collect::<Vec<_>>()
+        ]
         ,"source_fitting_minor":source_fitting_minor.to_string()
         ,"source_fitting_minor_is_unit":false
         ,"character_projector_denominator":4
