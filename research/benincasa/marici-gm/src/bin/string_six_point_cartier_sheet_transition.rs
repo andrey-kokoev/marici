@@ -130,6 +130,16 @@ fn main() {
         clean(base[i].clone()*x_minus[j].clone()-base[j].clone()*x_minus[i].clone())!=a("0")
     }).count();
     let full_source_sheet_shift_rank=4+new_character_directions;
+    // Over the frozen Laurent ring the six rational source directions split
+    // into character blocks of sizes 2,1,1,2.  The determinant below is the
+    // maximal minor in that labelled block basis.  No kinematic factor is
+    // inverted in forming it.
+    let source_fitting_minor=clean(
+        base[1].clone()*base[3].clone()
+        *(base[0].clone()*x_minus[2].clone()-base[2].clone()*x_minus[0].clone())
+        *(base[4].clone()*x_minus[5].clone()-base[5].clone()*x_minus[4].clone())
+    );
+    assert!(source_fitting_minor != a("0"));
     let mut cube=Vec::new();
     for sa in [1,-1] { for sxv in [1,-1] { for sqv in [1,-1] {
         let grade=signed_grade(sa,sxv,sqv);
@@ -172,6 +182,11 @@ fn main() {
         ,"computed_combined_module_rank":8+new_character_directions
         ,"tensor_saturation_rank":2*full_source_sheet_shift_rank
         ,"uncomputed_opposite_target_copies":new_character_directions
+        ,"source_character_block_sizes":[2,1,1,2]
+        ,"source_fitting_minor":source_fitting_minor.to_string()
+        ,"source_fitting_minor_is_unit":false
+        ,"character_projector_denominator":4
+        ,"integral_two_primary_saturation_unresolved":true
     });
     let text=serde_json::to_string_pretty(&packet).unwrap()+"\n";
     std::fs::write("../string-six-point-cartier-sheet-transition.json",&text).unwrap();
