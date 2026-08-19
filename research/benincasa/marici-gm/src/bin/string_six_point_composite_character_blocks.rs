@@ -111,6 +111,29 @@ fn main() {
     };
     let plus = signed_grade(1);
     let minus = signed_grade(-1);
+    let wall_substitutions = [
+        ("(ZA2)^2-1", ["1/A2", "-1/A2"]),
+        ("(ZA2B24)^2-1", ["1/(A2*B24)", "-1/(A2*B24)"]),
+        ("(A3/Z)^2-1", ["A3", "-A3"]),
+        ("(A3B34/Z)^2-1", ["A3*B34", "-A3*B34"]),
+    ];
+    let exceptional_zero_supports: Vec<_> = wall_substitutions
+        .iter()
+        .map(|(factor, values)| {
+            let columns: Vec<_> = (0..6)
+                .filter(|&j| {
+                    values
+                        .iter()
+                        .all(|value| at(plus[j].clone(), "Z", value) == a("0"))
+                })
+                .collect();
+            json!({"factor":factor,"dense_columns":columns})
+        })
+        .collect();
+    assert_eq!(exceptional_zero_supports[0]["dense_columns"], json!([4]));
+    assert_eq!(exceptional_zero_supports[1]["dense_columns"], json!([0, 1]));
+    assert_eq!(exceptional_zero_supports[2]["dense_columns"], json!([5]));
+    assert_eq!(exceptional_zero_supports[3]["dense_columns"], json!([2, 3]));
     let blocks = [
         (
             "chi_--",
@@ -155,6 +178,9 @@ fn main() {
         "schema":"marici.benincasa.string_six_point_composite_character_blocks.v1",
         "six_word_basis":["123456","124356","132456","134256","142356","143256"],
         "blocks":blocks.iter().map(|(name,support,minor)|json!({"character":name,"support":support,"source_block_minor":minor.to_string()})).collect::<Vec<_>>(),
+        "mixed_corner_exceptional_zero_supports":exceptional_zero_supports,
+        "source_derived_occurrence_to_dense_block_map":{"0":[4],"1,2":[0,1],"3":[5],"4,5":[2,3]},
+        "intertwiner_scope":"canonical on the four factor subquotients; GL(2) basis remains inside each repeated factor block",
         "profile_comparison":profile_comparison,
         "matching_profile_count":1,
         "classification":"determinant agreement does not identify localized character subquotients; the naive occurrence-index-to-six-word-character assignment fails on three of four composite walls"
