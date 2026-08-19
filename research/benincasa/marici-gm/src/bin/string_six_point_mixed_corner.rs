@@ -46,10 +46,13 @@ fn dense(s: &[[f64; 7]; 7]) -> Matrix {
 fn block(s: &[[f64; 7]; 7], p: [usize; 7]) -> [[f64; 2]; 2] {
     let v = |i: usize, j: usize| s[p[i]][p[j]];
     let (a, x, y, z) = (v(1, 2), v(3, 4), v(3, 5), v(4, 5));
-    let sn = |u: f64| (PI * u).sin();
+    let csc = |u: f64| 1.0 / (PI * u).sin();
+    let cot = |u: f64| (PI * u).cos() / (PI * u).sin();
+    let q = x + y + z;
+    let d = csc(a) * csc(x) * csc(q);
     [
-        [-sn(a) * sn(y) * sn(z), -sn(a) * sn(z) * sn(x + y)],
-        [-sn(a) * sn(y) * sn(x + z), -sn(a) * sn(y) * sn(z)],
+        [d, -csc(a) * csc(q) * (cot(x) + cot(y))],
+        [-csc(a) * csc(q) * (cot(x) + cot(z)), d],
     ]
 }
 
@@ -73,37 +76,6 @@ fn block_kernel(s: &[[f64; 7]; 7]) -> Matrix {
     result
 }
 
-fn inverse(mut a: Matrix) -> Matrix {
-    let n = a.len();
-    let mut r = vec![vec![0.0; n]; n];
-    for i in 0..n {
-        r[i][i] = 1.0;
-    }
-    for k in 0..n {
-        let pivot = (k..n)
-            .max_by(|i, j| a[*i][k].abs().partial_cmp(&a[*j][k].abs()).unwrap())
-            .unwrap();
-        a.swap(k, pivot);
-        r.swap(k, pivot);
-        let q = a[k][k];
-        assert!(q.abs() > 1e-30);
-        for j in 0..n {
-            a[k][j] /= q;
-            r[k][j] /= q;
-        }
-        for i in 0..n {
-            if i != k {
-                let q = a[i][k];
-                for j in 0..n {
-                    a[i][j] -= q * a[k][j];
-                    r[i][j] -= q * r[k][j];
-                }
-            }
-        }
-    }
-    r
-}
-
 fn multiply(a: &Matrix, b: &Matrix) -> Matrix {
     let mut r = vec![vec![0.0; b[0].len()]; a.len()];
     for i in 0..a.len() {
@@ -111,6 +83,15 @@ fn multiply(a: &Matrix, b: &Matrix) -> Matrix {
             for j in 0..b[0].len() {
                 r[i][j] += a[i][k] * b[k][j];
             }
+        }
+    }
+    r
+}
+fn transpose(a: &Matrix) -> Matrix {
+    let mut r = vec![vec![0.0; a.len()]; a[0].len()];
+    for i in 0..a.len() {
+        for j in 0..a[0].len() {
+            r[j][i] = a[i][j];
         }
     }
     r
@@ -166,7 +147,7 @@ fn kinematics(epsilon: f64, delta: f64, seed: f64) -> [[f64; 7]; 7] {
 }
 fn normalized_transition(epsilon: f64, delta: f64, seed: f64) -> Matrix {
     let s = kinematics(epsilon, delta, seed);
-    let t = multiply(&inverse(block_kernel(&s)), &dense(&s));
+    let t = multiply(&block_kernel(&s), &transpose(&dense(&s)));
     scale(t, (PI * delta).sin())
 }
 

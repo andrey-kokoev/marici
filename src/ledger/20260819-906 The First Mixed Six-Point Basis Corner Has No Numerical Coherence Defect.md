@@ -1,5 +1,7 @@
 # 906 — The First Mixed Six-Point Basis Corner Has No Numerical Coherence Defect
 
+> **Variance correction (Entry 908).** The original checker serialized both kernels as right-by-left matrices and multiplied them without transposing the dense kernel. Entry 908 repairs the map to \(T=M_{\rm block}K_{\rm dense}\) in contraction variance, equivalently \(M_{\rm block}\mathcal S^T\). The numerical conclusion survives with the corrected checker; Entry 908's values supersede the numbers below.
+
 ## Frozen comparison
 
 Retain Entry 905's canonical transition

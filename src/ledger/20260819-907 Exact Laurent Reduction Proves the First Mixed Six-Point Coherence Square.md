@@ -1,5 +1,7 @@
 # 907 — Exact Laurent Reduction Proves the First Mixed Six-Point Coherence Square
 
+> **Variance correction (Entry 908).** The first checker selected rows of the serialized momentum kernel instead of rows of its contraction transpose. Entry 908 corrects the selection to fixed right words and varying left words. All exact conclusions in this entry survive: ordered specialization equality, regularity, rank one, and \(\text{row}_2=-\text{row}_1\).
+
 ## Purpose
 
 Entry 906 found numerical agreement between the two specialization orders at
@@ -60,13 +62,13 @@ so that
 Y=e^{i\pi y}=\frac{Q}{XZ}.
 \]
 
-Every sine and cotangent in \(E\), and every sine in the last two rows of the dense momentum kernel, becomes a rational Laurent function. The checker forms the complete product
+Every sine and cotangent in \(E\), and every sine in the last two rows of the dense momentum kernel, becomes a rational Laurent function. In the source serialization \(\mathcal S[\gamma\mid\sigma]\), the contraction matrix is \(\mathcal S^T\). The corrected checker forms the complete product
 
 \[
 E(X,Q,Z)
 \begin{pmatrix}
-K_{423,*}\\
-K_{432,*}
+K_{*,423}\\
+K_{*,432}
 \end{pmatrix},
 \]
 
