@@ -36,9 +36,42 @@ def capture(z, ambient):
 parser = argparse.ArgumentParser()
 parser.add_argument("--ambient", type=int, required=True)
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument(
+    "--wall",
+    choices=("x3", "x2"),
+    default="x3",
+    help="normal wall: x3=x1+x2 or its X2/X3 occurrence-reflected mate",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
-packets = [capture(5 + offset, args.ambient) for offset in nodes]
+
+
+def normal_fiber(offset):
+    if args.wall == "x3":
+        return (2, 3, 5 + offset)
+    return (2, 5 + offset, 3)
+
+
+def capture_fiber(fiber, ambient):
+    rows = []
+    original = base.add_pivot
+
+    def hook(row, pivots):
+        rows.append(dict(row))
+        original(row, pivots)
+
+    old_ambient, old_cutoff = charts.AMBIENT, charts.CUTOFF
+    charts.AMBIENT, charts.CUTOFF = ambient, 6
+    base.add_pivot = hook
+    try:
+        presentation = charts.presentation(base.fiber_data, fiber, charts.SOURCE_NAMES)
+    finally:
+        base.add_pivot = original
+        charts.AMBIENT, charts.CUTOFF = old_ambient, old_cutoff
+    return presentation, rows
+
+
+packets = [capture_fiber(normal_fiber(offset), args.ambient) for offset in nodes]
 presentation, central_rows = packets[3]
 row_packets = [packet[1] for packet in packets]
 if len(set(map(len, row_packets))) != 1:
@@ -86,4 +119,4 @@ with args.output.open("wb") as stream:
             for column, value in sorted(row.items()):
                 stream.write(struct.pack("<II", column, value % P))
 
-print(f"ambient={args.ambient} columns={len(presentation['ordered_columns'])} rows={len(central_rows)} central_rank={len(presentation['pivots'])} output={args.output}")
+print(f"wall={args.wall} ambient={args.ambient} columns={len(presentation['ordered_columns'])} rows={len(central_rows)} central_rank={len(presentation['pivots'])} output={args.output}")
