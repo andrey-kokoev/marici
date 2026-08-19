@@ -310,10 +310,15 @@ fn main() {
         let mut conormal = Vec::new();
         for s in [-1, 1] {
             for t in [-1, 1] {
-                let du = restrict_many(&derivative_at(&kernel, "U", s), &[("V", t.to_string())]);
-                let dv = restrict_many(&derivative_at(&kernel, "V", t), &[("U", s.to_string())]);
+                let du_family = derivative_at(&kernel, "U", s);
+                let dv_family = derivative_at(&kernel, "V", t);
+                let du = restrict_many(&du_family, &[("V", t.to_string())]);
+                let dv = restrict_many(&dv_family, &[("U", s.to_string())]);
                 let rank = projective_rank(&du, &dv);
-                conormal.push(json!({"signs":[s,t],"conormal_rank":rank}));
+                let mixed_uv = derivative_at(&du_family, "V", t);
+                let mixed_vu = derivative_at(&dv_family, "U", s);
+                assert_eq!(mixed_uv, mixed_vu);
+                conormal.push(json!({"signs":[s,t],"conormal_rank":rank,"mixed_normal_derivatives_commute":true,"first_rees_grade_reconstructed_from_source_kernel":true}));
             }
         }
         records.push(json!({
