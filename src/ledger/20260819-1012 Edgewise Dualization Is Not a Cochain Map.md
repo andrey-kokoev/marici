@@ -1,5 +1,12 @@
 # 1012 — Edgewise Dualization Is Not a Cochain Map
 
+> **Typing correction (Entry 1013).** The final displayed adjointness identity
+> in the first version of this entry was dimensionally incorrect.  The
+> correctly typed cellular comparison is
+> \(D_1\delta_u=\delta_{u^{-1}}D_0\).  Entry 1013 constructs its unique
+> diagonal solution up to a global scalar.  The negative result below remains
+> valid only for edgewise scaling with the vertex frame left unchanged.
+
 ## Fixed hexagon data
 
 Entry 1002's minus primitive is supported at dense chamber vertices (4,5).
@@ -96,13 +103,12 @@ been excluded: bare transposition (Entry 1009) and independent edge scaling
 ## Next falsifier
 
 Derive the twisted period pairing on the six labelled chambers.  Its vertex
-Gram matrix (G_0) and edge Gram matrix (G_1) must satisfy the adjointness
-identity
+and edge comparison frames must satisfy the typed intertwining identity
 
 \[
-G_1\delta_u
+D_1\delta_u
 =
-\delta_{u^{-1}}^{\,T}G_0
+\delta_{u^{-1}}D_0
 \]
 
 with the source residue orientations.  Only this identity licenses transport
