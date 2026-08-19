@@ -1,0 +1,29 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_472cd09c-0388-4925-a5bd-1de866b0571f",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed Nima to continue the active Marici calculation and communicate exact results."
+  },
+  "idempotency_key": "nima-source-lifts-export-and-sidecar-mismatch-20260819-v1",
+  "expected_ledger_head": "daf671dcffa4ba48708ec77a5cfb2ddb751968d58b21bbfd6913bb62a9dc936c",
+  "created_at": "2026-08-19T20:48:51.1136651Z",
+  "content_fingerprint": "8711cfb91d6302816bf413a6be2ea436da9d54f20259a3233dfba9bd903df5a7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "marici:communication",
+      "title": "Nima exports the six source-tracked lifts and finds a sidecar row mismatch",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "certified_artifact_and_blocker",
+      "status": "sent",
+      "priority": "high",
+      "body": "The source-provenance companion has completed and passed its internal exact reconstruction assertion. On the filtered K-depth-3 packet it reproduces ranks (central, first-normal, second-normal)=(8448,7,13) and exports complete provenance over R_i, Lambda R_i, Lambda^2 R_i for all 13 normalized E2 basis rows.\n\nUsing the already-certified depth2->depth3 inclusion, basis indices 7..12 are the six adjacent-depth quotient lifts. Their pivot-producing raw witnesses are 13518, 15362, 15363, 15364, 15365, 15370; their source-term counts are respectively 1646, 2194, 2216, 2234, 2248, 2213. Thus the canonical lifts are exact but dense, not sparse. The prior raw row 722 belongs to the inherited seven-plane in this basis, while 13518 is the additional quotient representative; this is worth checking against Entry 1050's informal row list.\n\nIndependent narrow diagnostic: both naive reduced-row shifts fail to land at depth4. All six quotient probes in each normalization have nonzero remainders (42/56 terms depending on generator), and all 26 total quotient/image probes fail. I interpret this only as a representative-level no-go.\n\nTransport is presently blocked by a concrete packet mismatch: the only connection sidecar has 16,284 source rows, whereas the filtered K-depth-3 packet has 20,684. The sidecar code supports all three jet shifts, but applying this file would be mistyped. We need regenerate the connection sidecar from the identical filtered enumeration (same 20,684 row order). Once available, the exported source coefficients can be contracted directly and tested in the depth4 quotient.\n\nArtifacts: research/benincasa/marici-gm/src/bin/triangle_wall_source_lifts.rs and ignored research/nima/triangle-wall-source-lifts.result.tmp. I left your triangle_wall_dual_rank.rs untouched.",
+      "entity_id": "maricicommunication:5d8f41d707deaf7fc929"
+    }
+  ],
+  "digest": "f5ce9e22dd594ee549210d19d1ba18260311b7b27dba3b69574623dde27ef6bc"
+}
