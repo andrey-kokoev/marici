@@ -101,6 +101,11 @@ def sample(point):
         "second_fundamental_form_rank": len(functional_span),
         "common_kernel_rank": len(kernel_vectors),
         "kernel_derivative_closure_rank": len(closure),
+        "numerator_basis_labels": [pres["ordered_columns"][pivot] for pivot in numerator],
+        "second_fundamental_form_rows": functionals,
+        "second_fundamental_form_supports": [
+            [i for i, value in enumerate(row) if value] for row in functionals
+        ],
     }
 
 
@@ -111,6 +116,8 @@ payload = {
     "ambient_relation_degree": 12,
     "samples": samples,
     "common_signature": [25, 26, 3, 22, 26],
+    "common_basis": all(sample["numerator_basis_labels"] == samples[0]["numerator_basis_labels"] for sample in samples),
+    "common_support_pattern": all(sample["second_fundamental_form_supports"] == samples[0]["second_fundamental_form_supports"] for sample in samples),
     "status": "moving_wall_extension_signature_replicated_at_three_independent_fibers",
 }
 Path(__file__).with_name("rank26-multifiber-signature.json").write_text(
