@@ -14,7 +14,7 @@ base, charts = audit.base, audit.charts
 P = base.PRIME
 
 
-def capture(z, ambient):
+def capture_fiber(fiber, point, names, ambient):
     rows = []
     original = base.add_pivot
 
@@ -26,7 +26,7 @@ def capture(z, ambient):
     charts.AMBIENT, charts.CUTOFF = ambient, 6
     base.add_pivot = hook
     try:
-        presentation = charts.presentation(base.fiber_data, (2, 3, z), charts.SOURCE_NAMES)
+        presentation = charts.presentation(fiber, point, names)
     finally:
         base.add_pivot = original
         charts.AMBIENT, charts.CUTOFF = old_ambient, old_cutoff
@@ -38,7 +38,7 @@ parser.add_argument("--ambient", type=int, required=True)
 parser.add_argument("--output", type=Path, required=True)
 parser.add_argument(
     "--wall",
-    choices=("x3", "x2"),
+    choices=("x3", "x2", "x2_typed"),
     default="x3",
     help="normal wall: x3=x1+x2 or its X2/X3 occurrence-reflected mate",
 )
@@ -52,26 +52,18 @@ def normal_fiber(offset):
     return (2, 5 + offset, 3)
 
 
-def capture_fiber(fiber, ambient):
-    rows = []
-    original = base.add_pivot
-
-    def hook(row, pivots):
-        rows.append(dict(row))
-        original(row, pivots)
-
-    old_ambient, old_cutoff = charts.AMBIENT, charts.CUTOFF
-    charts.AMBIENT, charts.CUTOFF = ambient, 6
-    base.add_pivot = hook
-    try:
-        presentation = charts.presentation(base.fiber_data, fiber, charts.SOURCE_NAMES)
-    finally:
-        base.add_pivot = original
-        charts.AMBIENT, charts.CUTOFF = old_ambient, old_cutoff
-    return presentation, rows
-
-
-packets = [capture_fiber(normal_fiber(offset), args.ambient) for offset in nodes]
+if args.wall == "x2_typed":
+    packets = [
+        capture_fiber(
+            charts.g31_fiber_data, normal_fiber(offset), charts.TARGET_NAMES, args.ambient
+        )
+        for offset in nodes
+    ]
+else:
+    packets = [
+        capture_fiber(base.fiber_data, normal_fiber(offset), charts.SOURCE_NAMES, args.ambient)
+        for offset in nodes
+    ]
 presentation, central_rows = packets[3]
 row_packets = [packet[1] for packet in packets]
 if len(set(map(len, row_packets))) != 1:
