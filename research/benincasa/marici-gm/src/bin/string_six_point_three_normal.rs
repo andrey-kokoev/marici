@@ -416,6 +416,70 @@ fn main() {
             a("0")
         );
     }
+
+    // Signed X=-1 deeper corner.  Keep the same A4/Y/Q Rees chart; Q=1,
+    // Y=1, X=-1 forces Z=-1.  The diagonal lattice therefore uses Z+1.
+    let off_common_minus: Vec<Atom> = exceptional_a_chart
+        .iter()
+        .cloned()
+        .map(|entry| substitute_value(clean(u.clone() * entry), "X", a("-1")))
+        .collect();
+    let diagonal_xminus_grade: Vec<Atom> = transition
+        .iter()
+        .flatten()
+        .cloned()
+        .map(|entry| {
+            let entry = substitute_value(entry, "X", a("-1"));
+            let entry = substitute_value(entry, "Q", a("1"));
+            substitute_value(clean(entry / (a("A4") - a("1"))), "A4", a("1"))
+        })
+        .collect();
+    let diagonal_xminus_common: Vec<Atom> = diagonal_xminus_grade
+        .iter()
+        .cloned()
+        .map(|entry| substitute_value(clean((a("Z") + a("1")) * entry), "Z", a("-1")))
+        .collect();
+    let diag_minus_nonzero = diagonal_xminus_common.iter().filter(|x| **x != a("0")).count();
+    let off_minus_nonzero = off_common_minus.iter().filter(|x| **x != a("0")).count();
+    assert_eq!(diag_minus_nonzero, 12);
+    assert_eq!(off_minus_nonzero, 6);
+    let diag_minus_row_character = if (0..6).all(|j| {
+        clean(diagonal_xminus_common[j + 6].clone() - diagonal_xminus_common[j].clone()) == a("0")
+    }) { 1 } else if (0..6).all(|j| {
+        clean(diagonal_xminus_common[j + 6].clone() + diagonal_xminus_common[j].clone()) == a("0")
+    }) { -1 } else { 0 };
+    let off_minus_first_row_zero = (0..6).all(|j| off_common_minus[j] == a("0"));
+    let signed_source_projective = (0..6).all(|j| {
+        clean(
+            diagonal_xminus_common[0].clone() * off_common_minus[j + 6].clone()
+            - diagonal_xminus_common[j].clone() * off_common_minus[6].clone()
+        ) == a("0")
+    });
+    let signed_target_minor = clean(
+        diagonal_xminus_common[0].clone() * off_common_minus[6].clone()
+        - off_common_minus[0].clone() * diagonal_xminus_common[6].clone()
+    );
+    assert!(signed_source_projective);
+    assert!(signed_target_minor != a("0"));
+    let signed_packet = serde_json::json!({
+        "schema":"marici.benincasa.string_six_point_xminus_branches.v1",
+        "sheet":{"A4":1,"X":-1,"Y":1,"Q":1,"forced_Z":-1},
+        "diagonal_regularization":"multiply by Z+1",
+        "off_diagonal_regularization":"multiply by U",
+        "diagonal_nonzero_entries":diag_minus_nonzero,
+        "off_diagonal_nonzero_entries":off_minus_nonzero,
+        "diagonal_target_row_character":diag_minus_row_character,
+        "off_diagonal_target_direction":if off_minus_first_row_zero {"(0,1)"} else {"other"},
+        "common_projective_source_row":signed_source_projective,
+        "target_minor_nonzero":signed_target_minor != a("0"),
+        "joint_target_rank":2,
+        "fills_opposite_target_copies":true,
+        "signed_sheet_module_rank":12
+    });
+    std::fs::write(
+        "../string-six-point-xminus-branches.json",
+        serde_json::to_string_pretty(&signed_packet).unwrap() + "\n"
+    ).unwrap();
     println!(
         "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v7\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"common_face\":{{\"flag\":[\"s14\",\"s235\"],\"orders_checked\":[[\"A4\",\"Q\"],[\"Q\",\"A4\"]],\"orders_equal\":true,\"nonzero_entries\":{},\"rank\":{}}},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false,\"source_vector_rank\":1,\"source_nonzero_2x2_minors\":{},\"diagonal_to_off_diagonal_source_ratio\":\"{}\",\"common_projective_source_vector\":true}}}}",
         nonzero,
