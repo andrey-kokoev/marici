@@ -33,7 +33,7 @@ fn insert(mut row: Row, pivots: &mut [Option<Row>]) -> bool {
         }
     }
 }
-fn insert_pivot(mut row: Row, pivots: &mut [Option<Row>]) -> Option<usize> {
+fn insert_pivot(mut row: Row, pivots: &mut [Option<Row>]) -> Option<(usize, Row)> {
     loop {
         let Some((&pivot, &coefficient)) = row.last_key_value() else { return None; };
         if let Some(existing) = &pivots[pivot] {
@@ -44,8 +44,9 @@ fn insert_pivot(mut row: Row, pivots: &mut [Option<Row>]) -> Option<usize> {
         } else {
             let inverse = pow(coefficient, P - 2);
             for value in row.values_mut() { *value = mul(*value, inverse); }
+            let result = row.clone();
             pivots[pivot] = Some(row);
-            return Some(pivot);
+            return Some((pivot, result));
         }
     }
 }
@@ -213,8 +214,8 @@ fn main() -> io::Result<()> {
         let mut grade_zero = central.clone();
         for (&column, &value) in derivative { add_value(&mut grade_zero, columns + column, value); }
         for (&column, &value) in second { add_value(&mut grade_zero, 2 * columns + column, value); }
-        if let Some(pivot) = insert_pivot(grade_zero, &mut filtered_triple) {
-            quadratic_witnesses.push((index, records[index].0, pivot));
+        if let Some((pivot, residual)) = insert_pivot(grade_zero, &mut filtered_triple) {
+            quadratic_witnesses.push((index, records[index].0, pivot, residual));
         }
     }
     assert_eq!(quadratic_witnesses.len(), second_normal);
@@ -223,8 +224,11 @@ fn main() -> io::Result<()> {
         let second = triple - 3 * central - 2 * first;
         format!("{{\"family_through\":{family},\"central_rank\":{central},\"first_normal_rank\":{first},\"second_normal_rank\":{second}}}")
     }).collect::<Vec<_>>().join(",");
-    let witness_json = quadratic_witnesses.iter().map(|(row, family, pivot)| {
-        format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot}}}")
+    let witness_json = quadratic_witnesses.iter().map(|(row, family, pivot, residual)| {
+        let residual_json = if *family == 6 {
+            residual.iter().map(|(column, value)| format!("[{column},{value}]")).collect::<Vec<_>>().join(",")
+        } else { String::new() };
+        format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot},\"residual\":[{residual_json}]}}")
     }).collect::<Vec<_>>().join(",");
     println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v4\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}]}}", first_lifts.len());
     Ok(())
