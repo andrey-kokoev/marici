@@ -1,5 +1,9 @@
 # 1005 — The Minus Primitive Is Regular After Correct Basis Transport
 
+> **PARTIALLY RETRACTED by Entry 1007.** The dense-to-occurrence permutation correction is valid.  The subsequent Betti-regularity conclusion is not: Entry 949 regularizes relative chains, while \(P_{--}\lambda\) is a target chamber cochain.  The support permutation was explicitly certified for support ordering only and cannot replace the missing dual regularization/intersection pairing.
+
+Partial-retraction event: `ev-000000000626-92b98316-09b6-48d5-8131-6409b1b4f8b6`.
+
 ## Defect repaired
 
 Entry 1004 compared two index sets without transporting between their bases:
@@ -51,10 +55,10 @@ The \((--)\) recombination instead imposes
 
 At a generic point of this locus, neither \(m_0\) nor \(m_3\) vanishes.  The two half-monodromy regularization coefficients needed by the primitive are therefore regular.
 
-Hence Entry 1002's primitive remains admissible in the generic closed twisted-cycle lattice, and
+The following conclusion was asserted in the original entry but is withdrawn by Entry 1007 because its variance was not typed:
 
 \[
-\boxed{
+\boxed{\text{WITHDRAWN: }\quad
 [d_{--}|_{Z_{--}}]=0
 \quad\text{also after generic Betti regularization}.
 }
@@ -64,12 +68,12 @@ Hence Entry 1002's primitive remains admissible in the generic closed twisted-cy
 
 Entry 1004 is retracted.  Its proposed valuation-two resonance arose entirely from a mixed-basis identification.
 
-The corrected string-sector picture is:
+The corrected string-sector picture supported by this entry alone is:
 
 - the local \((--)\) normal modification is nonzero;
 - the restricted three-edge chamber arc is cellularly exact;
-- its primitive regularizes without a pole at generic \((--)\) recombination;
-- therefore the arc supplies no generic supported Betti class that could equal the normal modification.
+- the permutation sends its dense support labels to singleton source labels;
+- no Betti conclusion follows until the dual chain/cochain comparison is constructed.
 
 The two structures remain independent unless another source-derived comparison is constructed.
 

@@ -18,7 +18,7 @@ fn main(){
     assert!(factors.iter().all(|x|x["fitting_valuation"]==1));
     assert_eq!(boundary["closure_coefficient"],"1/(M-1)");
     let packet=json!({
-      "schema":"marici.benincasa.string_six_point_minus_twisted_cycle_lattice_gate.v2",
+      "schema":"marici.benincasa.string_six_point_minus_twisted_cycle_lattice_gate.v3",
       "relative_primitive_dense_support":[4,5],
       "dense_to_occurrence":dense_to_occurrence,
       "primitive_source_occurrences":[0,3],
@@ -27,10 +27,15 @@ fn main(){
       "relative_cellular_class":"exact",
       "minus_recombination_walls":["(Z*A2*B24)^2-1","(A3*B34/Z)^2-1"],
       "primitive_walls_vanish_generically_on_minus_recombination":false,
-      "closed_twisted_cycle_regularization":"regular at a generic minus recombination point",
-      "supported_nearby_class_determined":"zero generically: the relative primitive remains admissible",
-      "classification":"Entry 1004 mixed dense chamber indices with sparse occurrence indices; after the frozen permutation, the primitive lies on the two singleton walls and remains regular at generic minus recombination",
+      "chain_regularization_variance":"relative chamber chains -> closed twisted Betti cycles",
+      "primitive_variance":"target chamber cochain",
+      "support_permutation_scope":permutation["scope"],
+      "dual_regularization_map_present":false,
+      "supported_nearby_class_determined":false,
+      "classification":"Entry 1004 mixed dense and sparse indices; Entry 1005 corrected the label permutation but then applied a chain regularization statement to a target cochain. Betti exactness remains untyped until the dual regularization/intersection pairing is constructed",
       "entry_1004_status":"retracted",
+      "entry_1005_betti_conclusion_status":"retracted; basis-transport correction retained",
+      "required_next_datum":"source-normalized dual regularization or chamber-chain/cochain intersection pairing in the frozen bases",
       "new_carrier_divisor_required":false
     });
     let text=serde_json::to_string_pretty(&packet).unwrap()+"\n";
