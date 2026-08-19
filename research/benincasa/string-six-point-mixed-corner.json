@@ -1,0 +1,18 @@
+{
+  "schema": "marici.benincasa.string_six_point_mixed_corner.v1",
+  "corner": ["s23", "s235"],
+  "ordered_normalization": "sin(pi*s235) T",
+  "routes": {
+    "pole_then_zero": "s235=h^2, s23=h",
+    "zero_then_pole": "s23=h^2, s235=h"
+  },
+  "cutoffs": [0.01, 0.005, 0.0025, 0.00125, 0.000625],
+  "certificates": [
+    {"seed": 0, "raw_commutator": 0.006912133545682016, "richardson_commutator": 0.00008588248916848835},
+    {"seed": 1, "raw_commutator": 0.007873183722750742, "richardson_commutator": 0.0001258399615265255},
+    {"seed": 2, "raw_commutator": 0.009502881321254354, "richardson_commutator": 0.00020600725297167843}
+  ],
+  "convergence": "first order on both routes",
+  "result": "No numerical mixed-corner coherence obstruction was found; both ordered limits converge to the same normalized transition matrix.",
+  "scope": "Three generic tangential slices; not an exact symbolic identity."
+}
