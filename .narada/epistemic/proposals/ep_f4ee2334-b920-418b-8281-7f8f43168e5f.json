@@ -1,0 +1,132 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f4ee2334-b920-418b-8281-7f8f43168e5f",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Recording the a2 rank-one factorization, telescoping theorem, and mechanism taxonomy for ledger 1052."
+  },
+  "idempotency_key": "auto-proposal-4980c4671e76df4856124838",
+  "expected_ledger_head": "3b7ac8eed2f82d975551a9e22b795f84e57d213a4f456d1e585656cd8f7f70dc",
+  "created_at": "2026-08-19T20:52:07.3270242Z",
+  "content_fingerprint": "4980c4671e76df485612483826372a705a154df65b57fe5f15a30958eb6a2508",
+  "operations": [
+    {
+      "entity_id": "source:figueiredo-a2factor-results-1052",
+      "kind": "source",
+      "locator": "research/flavor/results/a2_factorization.json",
+      "op": "entity.declare",
+      "title": "a2 rank-one factorization verification results (22 rows)",
+      "version": "1"
+    },
+    {
+      "entity_id": "source:figueiredo-a2mech-results-1052",
+      "kind": "source",
+      "locator": "research/flavor/results/a2_mechanisms.json",
+      "op": "entity.declare",
+      "title": "a2 mechanism classification results: telescoping theorem, genericity splits, diagonality",
+      "version": "1"
+    },
+    {
+      "entity_id": "claim:figueiredo-a2-factorization-1052",
+      "kind": "claim",
+      "local_ref": "claim1",
+      "op": "entity.declare",
+      "title": "Ledger 1052: a2 factors exactly as (vHo u)(v{C0,Ho}u) - (vHo^2 u)(vC0 u) via rank-one nilpotent A; first-harmonic purity decomposes into mechanisms (telescoping / sandwich obstruction / one-sided / joint); S38 fully explained by the telescoping theorem; general graph criterion remains open"
+    },
+    {
+      "entity_id": "test:figueiredo-a2-factorization-20260819",
+      "kind": "test",
+      "local_ref": "test1",
+      "op": "entity.declare",
+      "title": "Exact verification of the rank-one factorization of a2 against direct determinant computation on 4 baselines + 18 toggle rows"
+    },
+    {
+      "entity_id": "test:figueiredo-a2-mechanisms-20260819",
+      "kind": "test",
+      "local_ref": "test2",
+      "op": "entity.declare",
+      "title": "Telescoping theorem (generic diagonal H, generic M) + per-texture genericity splits classifying S38/S43/S48/S53 vanishing mechanisms"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test1",
+      "target_ref": "claim1",
+      "source_id": "test:figueiredo-a2-factorization-20260819",
+      "target_id": "claim:figueiredo-a2-factorization-1052",
+      "relation_id": "rel:tests-0dc2e33b472b83d7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test2",
+      "target_ref": "claim1",
+      "source_id": "test:figueiredo-a2-mechanisms-20260819",
+      "target_id": "claim:figueiredo-a2-factorization-1052",
+      "relation_id": "rel:tests-6e3940480485ddbe"
+    },
+    {
+      "actor": "marici.Figueiredo",
+      "evidence": [
+        {
+          "locator": "research/flavor/results/a2_factorization.json",
+          "paraphrase": "factorization_exact true on all 22 rows; A^2=0 verified per row; sandwich vanishing table shows cancellation is a product identity except S48 (factor vanishing).",
+          "source_id": "source:figueiredo-a2factor-results-1052"
+        }
+      ],
+      "op": "test_outcome.record",
+      "outcome": "Factorization exact on all 22 configurations, zero failures",
+      "outcome_id": "outcome:figueiredo-a2factor-1052",
+      "test_id": "test:figueiredo-a2-factorization-20260819"
+    },
+    {
+      "actor": "marici.Figueiredo",
+      "evidence": [
+        {
+          "locator": "research/flavor/results/a2_mechanisms.json",
+          "paraphrase": "Telescoping identity exact with generic symbols. S38: diagonal stripped sector, survives generic Hd. S48: sandwich obstruction. S53: one-sided non-phase cancellation. S43: joint, fails both generic swaps.",
+          "source_id": "source:figueiredo-a2mech-results-1052"
+        }
+      ],
+      "op": "test_outcome.record",
+      "outcome": "Telescoping theorem proven generically; four baselines classified into distinct mechanisms; S38 toggle table derived a posteriori",
+      "outcome_id": "outcome:figueiredo-a2mech-1052",
+      "test_id": "test:figueiredo-a2-mechanisms-20260819"
+    },
+    {
+      "entity_id": "communication:figueiredo-a2-to-nima-1052",
+      "intent": "report",
+      "kind": "communication",
+      "op": "entity.declare",
+      "recipient": "team_member:aa2834674c8559a5dee0",
+      "sender": "team_member:7f11641564913e4417ff",
+      "sent_at": "2026-08-19T20:52:00Z",
+      "title": "a2 has an exact rank-one factorization; purity decomposes into mechanisms",
+      "body": "Ledger 1052. The residual from your first-harmonic test now has exact algebraic form. det C = (1/3) tr C^3 gives a2 = tr(C0 Y^2), and since the phase-in-one-entry perturbation A = u v-dagger is nilpotent, Y^2 collapses: a2 = (v+ Ho u)(v+ {C0,Ho} u) - (v+ Ho^2 u)(v+ C0 u), a 2x2 determinant of walk-sum scalars (verified exactly on all 22 configurations). Vanishing is not one theorem: S38 cancels by a telescoping identity that holds whenever the stripped phase-sector Gram matrix is diagonal (proven with generic symbols; explains the whole S38 toggle table: up additions collide a column and break it, down additions never touch it); S48 vanishes by walk obstruction (both Ho sandwiches identically zero); S53 is a one-sided non-phase-sector cancellation; S43 is genuinely joint and fails both genericity swaps. So the candidate sector theorem survives only in refined form: harmonic content is governed by identifiable graph-algebraic mechanisms, not by cycle rank. Open: classify the S43-type joint and S53-type configurations in graph terms. m>=3 absence remains universal (nilpotent mechanism)."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:figueiredo-a2-to-nima-1052",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "relation_id": "rel:sent_by-6611dc9906276792"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:figueiredo-a2-to-nima-1052",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-f5342946793a71c7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_id": "communication:figueiredo-a2-to-nima-1052",
+      "target_id": "maricicommunication:0a7c0b2be503997c7cbe",
+      "relation_id": "rel:replies_to-41ca64ec5c2227cb"
+    }
+  ],
+  "digest": "5807adff522975f37372a5a4b79786210b2e9213b69ba88ebb5d6d1604d7a9b1"
+}
