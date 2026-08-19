@@ -134,7 +134,8 @@ fn main() -> io::Result<()> {
     let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet> [column:value,...]");
     let second_argument = env::args().nth(2);
     let mixed_length3_only = second_argument.as_deref() == Some("--mixed-length3-only");
-    let probe = second_argument.filter(|_| !mixed_length3_only).map(|argument| {
+    let mixed_lower_only = second_argument.as_deref() == Some("--mixed-lower-only");
+    let probe = second_argument.filter(|_| !mixed_length3_only && !mixed_lower_only).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
             (column.parse::<usize>().unwrap(), value.parse::<u32>().unwrap() % P)
@@ -207,7 +208,13 @@ fn main() -> io::Result<()> {
     let tangent_json = if version == b"MRCIDR04" {
         let mut mixed_results = Vec::new();
         let base_ranks = [central_rank, dual_rank, triple_rank];
-        let lengths: Vec<usize> = if mixed_length3_only { vec![3] } else { (1..=3).collect() };
+        let lengths: Vec<usize> = if mixed_length3_only {
+            vec![3]
+        } else if mixed_lower_only {
+            vec![1, 2]
+        } else {
+            (1..=3).collect()
+        };
         for lambda_length in lengths {
             let width = lambda_length * columns;
             let mut pair_pivots: Vec<Option<(Row, Row)>> = vec![None; width];
