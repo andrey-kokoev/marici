@@ -393,8 +393,31 @@ fn main() {
         }
     }
     assert!(witness_column.is_some());
+
+    // A target-space relation is not a coefficient relation unless the
+    // six-component source vectors also agree projectively. Test their rank.
+    let mut source_nonzero_pair_count = 0usize;
+    for i in 0..6 {
+        for j in (i + 1)..6 {
+            let minor = clean(
+                diagonal_common[i].clone() * off_common[j + 6].clone()
+                    - diagonal_common[j].clone() * off_common[i + 6].clone(),
+            );
+            if minor != a("0") {
+                source_nonzero_pair_count += 1;
+            }
+        }
+    }
+    assert_eq!(source_nonzero_pair_count, 0);
+    let source_ratio = clean(diagonal_common[0].clone() / off_common[6].clone());
+    for j in 0..6 {
+        assert_eq!(
+            clean(diagonal_common[j].clone() - source_ratio.clone() * off_common[j + 6].clone()),
+            a("0")
+        );
+    }
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v6\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"common_face\":{{\"flag\":[\"s14\",\"s235\"],\"orders_checked\":[[\"A4\",\"Q\"],[\"Q\",\"A4\"]],\"orders_equal\":true,\"nonzero_entries\":{},\"rank\":{}}},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false}}}}",
+        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v7\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"common_face\":{{\"flag\":[\"s14\",\"s235\"],\"orders_checked\":[[\"A4\",\"Q\"],[\"Q\",\"A4\"]],\"orders_equal\":true,\"nonzero_entries\":{},\"rank\":{}}},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false,\"source_vector_rank\":1,\"source_nonzero_2x2_minors\":{},\"diagonal_to_off_diagonal_source_ratio\":\"{}\",\"common_projective_source_vector\":true}}}}",
         nonzero,
         if first_grade_nonzero > 0 { 1 } else { 0 },
         first_grade_nonzero,
@@ -413,6 +436,8 @@ fn main() {
         off_common_nonzero,
         diagonal_common_nonzero,
         witness_column.unwrap(),
-        witness_minor
+        witness_minor,
+        source_nonzero_pair_count,
+        source_ratio
     );
 }
