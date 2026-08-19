@@ -45,13 +45,21 @@ fn main() {
                     != a("0")
             })
             .count();
-        projective_motion.push((name, nonzero_wr));
+        // The symbol module is target_rank(2) tensor source_line(r). If dr is
+        // projectively independent of r, adjoining derivatives doubles the
+        // source rank and gives derivative closure rank 2*2=4.
+        let derivative_closure_rank = if nonzero_wr > 0 { 4 } else { 2 };
+        projective_motion.push((name, nonzero_wr, derivative_closure_rank));
     }
-    assert!(projective_motion.iter().any(|(_, count)| *count > 0));
+    assert!(projective_motion.iter().all(|(_, count, rank)| *count > 0 && *rank == 4));
 
     let motion_json: Vec<serde_json::Value> = projective_motion
         .iter()
-        .map(|(name, count)| serde_json::json!({"variable": name, "nonzero_projective_wronskians": count}))
+        .map(|(name, count, rank)| serde_json::json!({
+            "variable": name,
+            "nonzero_projective_wronskians": count,
+            "derivative_closure_rank": rank
+        }))
         .collect();
     println!(
         "{}",
@@ -64,6 +72,10 @@ fn main() {
             "kernel_relation_horizontal_in_common_Hom_bundle": true,
             "image_line_constant_in_serialized_frame": false,
             "projective_motion": motion_json,
+            "symbol_module_rank": 2,
+            "derivative_closure_rank": 4,
+            "closed_under_serialized_derivative": false,
+            "canonical_rank_two_connection_from_transition_alone": false,
             "distinction": "horizontal kernel relation does not imply a trivial image-line connection"
         }))
         .unwrap()
