@@ -1,5 +1,9 @@
 # 1004 — Cellular Exactness Does Not Descend Through the Resonant Betti Lattice
 
+> **RETRACTED by Entry 1005.** This entry incorrectly identified dense chamber coordinates \(4,5\) with sparse source occurrences \(4,5\).  The frozen occurrence-to-dense permutation sends dense coordinates \(4,5\) to source occurrences \(0,3\).  Consequently the primitive lies on the singleton walls \((ZA_2)^2=1\) and \((A_3/Z)^2=1\), which are generically nonresonant on the \((--)\) recombination locus.  The claimed resonant Betti obstruction is false.
+
+Retraction event: `ev-000000000624-53686c7e-25ab-4b20-a5df-113204dfda6f`.
+
 ## Lattice distinction
 
 Entry 1002 proves that the restricted \((--)\) three-edge arc is exact in the full relative chamber complex:
