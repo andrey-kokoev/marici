@@ -33,23 +33,6 @@ fn insert(mut row: Row, pivots: &mut [Option<Row>]) -> bool {
         }
     }
 }
-fn insert_pivot(mut row: Row, pivots: &mut [Option<Row>]) -> Option<(usize, Row)> {
-    loop {
-        let Some((&pivot, &coefficient)) = row.last_key_value() else { return None; };
-        if let Some(existing) = &pivots[pivot] {
-            let terms: Vec<(usize, u32)> = existing.iter().map(|(&c, &v)| (c, v)).collect();
-            for (column, value) in terms {
-                add_value(&mut row, column, (P - mul(coefficient, value)) % P);
-            }
-        } else {
-            let inverse = pow(coefficient, P - 2);
-            for value in row.values_mut() { *value = mul(*value, inverse); }
-            let result = row.clone();
-            pivots[pivot] = Some(row);
-            return Some((pivot, result));
-        }
-    }
-}
 fn insert_tracked(
     mut row: Row,
     mut provenance: Provenance,
@@ -79,6 +62,36 @@ fn insert_tracked(
 fn shifted(row: &Row, offset: usize) -> Row {
     row.iter().map(|(&column, &value)| (offset + column, value)).collect()
 }
+fn reduce(mut row: Row, pivots: &[Option<Row>]) -> Row {
+    loop {
+        let Some(pivot) = row.keys().rev().find(|&&column| pivots[column].is_some()).copied() else { return row; };
+        let coefficient = row[&pivot];
+        let existing = pivots[pivot].as_ref().unwrap();
+        let terms: Vec<(usize, u32)> = existing.iter().map(|(&c, &v)| (c, v)).collect();
+        for (column, value) in terms {
+            add_value(&mut row, column, (P - mul(coefficient, value)) % P);
+        }
+    }
+}
+fn reduce_tracked(
+    mut row: Row,
+    pivots: &[Option<(Row, Provenance)>],
+) -> (Row, Provenance) {
+    let mut provenance = Provenance::new();
+    loop {
+        let Some(pivot) = row.keys().rev().find(|&&column| pivots[column].is_some()).copied() else { return (row, provenance); };
+        let coefficient = row[&pivot];
+        let (existing, existing_provenance) = pivots[pivot].as_ref().unwrap();
+        let terms: Vec<(usize, u32)> = existing.iter().map(|(&c, &v)| (c, v)).collect();
+        let provenance_terms: Vec<(usize, u32)> = existing_provenance.iter().map(|(&c, &v)| (c, v)).collect();
+        for (column, value) in terms {
+            add_value(&mut row, column, (P - mul(coefficient, value)) % P);
+        }
+        for (source, value) in provenance_terms {
+            add_value(&mut provenance, source, (P - mul(coefficient, value)) % P);
+        }
+    }
+}
 fn u32_at(bytes: &[u8], cursor: &mut usize) -> u32 {
     let out = u32::from_le_bytes(bytes[*cursor..*cursor + 4].try_into().unwrap());
     *cursor += 4;
@@ -93,7 +106,13 @@ fn row_at(bytes: &[u8], cursor: &mut usize) -> Row {
     row
 }
 fn main() -> io::Result<()> {
-    let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet>");
+    let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet> [column:value,...]");
+    let probe = env::args().nth(2).map(|argument| {
+        argument.split(',').filter(|term| !term.is_empty()).map(|term| {
+            let (column, value) = term.split_once(':').expect("probe term must be column:value");
+            (column.parse::<usize>().unwrap(), value.parse::<u32>().unwrap() % P)
+        }).collect::<Row>()
+    });
     let mut bytes = Vec::new();
     File::open(path)?.read_to_end(&mut bytes)?;
     let version = &bytes[..8];
@@ -210,15 +229,27 @@ fn main() -> io::Result<()> {
     let baseline_rank = filtered_triple.iter().flatten().count();
     assert_eq!(baseline_rank, 3 * central_rank + 2 * first_normal);
     let mut quadratic_witnesses = Vec::new();
+    let mut quadratic_basis: Vec<Option<(Row, Provenance)>> = vec![None; 3 * columns];
     for (index, (_, central, derivative, second)) in records.iter().enumerate() {
         let mut grade_zero = central.clone();
         for (&column, &value) in derivative { add_value(&mut grade_zero, columns + column, value); }
         for (&column, &value) in second { add_value(&mut grade_zero, 2 * columns + column, value); }
-        if let Some((pivot, residual)) = insert_pivot(grade_zero, &mut filtered_triple) {
-            quadratic_witnesses.push((index, records[index].0, pivot, residual));
+        let residual = reduce(grade_zero, &filtered_triple);
+        let witness_index = quadratic_witnesses.len();
+        if let Some((pivot, _)) = insert_tracked(residual, [(witness_index, 1)].into(), &mut quadratic_basis) {
+            let normalized = quadratic_basis[pivot].as_ref().unwrap().0.clone();
+            quadratic_witnesses.push((index, records[index].0, pivot, normalized));
         }
     }
     assert_eq!(quadratic_witnesses.len(), second_normal);
+    let probe_json = if let Some(probe) = probe {
+        let baseline_residual = reduce(probe, &filtered_triple);
+        let (remainder, coefficients) = reduce_tracked(baseline_residual, &quadratic_basis);
+        let coordinates = coefficients.iter().map(|(index, value)| {
+            format!("[{index},{}]", (P - value) % P)
+        }).collect::<Vec<_>>().join(",");
+        format!("{{\"remainder_terms\":{},\"coordinates\":[{coordinates}]}}", remainder.len())
+    } else { "null".to_string() };
     let family_json = cumulative.iter().map(|(family, central, dual, triple)| {
         let first = dual - 2 * central;
         let second = triple - 3 * central - 2 * first;
@@ -230,6 +261,6 @@ fn main() -> io::Result<()> {
         } else { String::new() };
         format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot},\"residual\":[{residual_json}]}}")
     }).collect::<Vec<_>>().join(",");
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v4\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}]}}", first_lifts.len());
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v5\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json}}}", first_lifts.len());
     Ok(())
 }
