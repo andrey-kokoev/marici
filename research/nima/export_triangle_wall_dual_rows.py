@@ -42,6 +42,11 @@ parser.add_argument(
     default="x3",
     help="normal wall: x3=x1+x2 or its X2/X3 occurrence-reflected mate",
 )
+parser.add_argument(
+    "--partner-first",
+    action="store_true",
+    help="place the fifth marked-divisor relation family before the other four",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
@@ -103,9 +108,34 @@ for index in range(len(central_rows)):
     second_rows.append(second)
 
 with args.output.open("wb") as stream:
-    stream.write(b"MRCIDR02")
+    stream.write(b"MRCIDR03")
     stream.write(struct.pack("<IIIII", P, args.ambient, len(presentation["ordered_columns"]), len(central_rows), len(presentation["pivots"])))
-    for central, derivative, second in zip(central_rows, derivative_rows, second_rows):
+    de_rham_count = 4 * len(base.monomials_at_most(args.ambient))
+    principal_count = 64 * len(base.monomials_at_most(args.ambient - 4))
+    marked_count = 48 * len(base.monomials_at_most(args.ambient - 1))
+    family_bounds = [de_rham_count, de_rham_count + principal_count]
+    family_bounds.extend(
+        de_rham_count + principal_count + marked_count * (index + 1)
+        for index in range(5)
+    )
+    if family_bounds[-1] != len(central_rows):
+        raise RuntimeError("relation-family row census does not agree")
+    order = list(range(len(central_rows)))
+    if args.partner_first:
+        marked_start = family_bounds[1]
+        partner_start = marked_start + 4 * marked_count
+        order = (
+            list(range(marked_start))
+            + list(range(partner_start, partner_start + marked_count))
+            + list(range(marked_start, partner_start))
+        )
+    for output_index, index in enumerate(order):
+        central, derivative, second = central_rows[index], derivative_rows[index], second_rows[index]
+        if args.partner_first and output_index >= family_bounds[1]:
+            family = 2 + (output_index - family_bounds[1]) // marked_count
+        else:
+            family = next(i for i, bound in enumerate(family_bounds) if output_index < bound)
+        stream.write(struct.pack("<I", family))
         for row in (central, derivative, second):
             stream.write(struct.pack("<I", len(row)))
             for column, value in sorted(row.items()):
