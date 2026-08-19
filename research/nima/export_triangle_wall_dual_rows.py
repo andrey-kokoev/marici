@@ -36,6 +36,8 @@ def capture_fiber(fiber, point, names, ambient):
 parser = argparse.ArgumentParser()
 parser.add_argument("--ambient", type=int, required=True)
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument("--x1", type=int, default=2, help="first tangential wall coordinate")
+parser.add_argument("--x2", type=int, default=3, help="second tangential wall coordinate")
 parser.add_argument(
     "--wall",
     choices=("x3", "x2", "x2_typed"),
@@ -64,8 +66,8 @@ nodes = tuple(range(-3, 4))
 
 def normal_fiber(offset):
     if args.wall == "x3":
-        return (2, 3, 5 + offset)
-    return (2, 5 + offset, 3)
+        return (args.x1, args.x2, args.x1 + args.x2 + offset)
+    return (args.x1, args.x1 + args.x2 + offset, args.x2)
 
 
 if args.wall == "x2_typed":
