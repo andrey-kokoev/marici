@@ -297,8 +297,55 @@ fn main() {
         .iter()
         .map(ToString::to_string)
         .collect();
+
+    // Move toward the common deeper corner. Multiplication by U removes the
+    // off-diagonal Cartier pole. Since Q=XYZ, imposing X=Y=Q=1 also forces
+    // Z=1. The diagonal first grade has a simple pole there, so its inherited
+    // lattice requires the additional source divisor Z-1.
+    let off_common: Vec<Atom> = exceptional_a_chart
+        .iter()
+        .cloned()
+        .map(|entry| specialize(clean(u.clone() * entry), "X"))
+        .collect();
+    let off_common_nonzero = off_common.iter().filter(|entry| **entry != a("0")).count();
+    assert_eq!(off_common_nonzero, 6);
+    assert!((0..6).all(|j| off_common[j] == a("0")));
+
+    let diagonal_has_z_pole = first_a4_grade.iter().any(|entry| {
+        let text = entry.to_string();
+        text.contains("(-1+Z)") || text.contains("(1-Z)")
+    });
+    assert!(diagonal_has_z_pole);
+    let diagonal_common: Vec<Atom> = first_a4_grade
+        .iter()
+        .cloned()
+        .map(|entry| specialize(clean((a("Z") - a("1")) * entry), "Z"))
+        .collect();
+    let diagonal_common_nonzero = diagonal_common
+        .iter()
+        .filter(|entry| **entry != a("0"))
+        .count();
+    assert_eq!(diagonal_common_nonzero, 12);
+
+    // The x-line has target direction (1,-1), whereas the y-line has
+    // target direction (0,1).  A nonzero 2x2 minor proves that the identity
+    // target comparison does not identify them.
+    let mut witness_column = None;
+    let mut witness_minor = a("0");
+    for j in 0..6 {
+        let minor = clean(
+            diagonal_common[j].clone() * off_common[j + 6].clone()
+                - off_common[j].clone() * diagonal_common[j + 6].clone(),
+        );
+        if minor != a("0") {
+            witness_column = Some(j);
+            witness_minor = minor;
+            break;
+        }
+    }
+    assert!(witness_column.is_some());
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v4\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}}}}",
+        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v5\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false}}}}",
         nonzero,
         if first_grade_nonzero > 0 { 1 } else { 0 },
         first_grade_nonzero,
@@ -310,6 +357,11 @@ fn main() {
         exceptional_rank,
         exceptional_row_anti,
         exceptional_depends_on_ratios,
-        serde_json::to_string(&exceptional_representatives).unwrap()
+        serde_json::to_string(&exceptional_representatives).unwrap(),
+        diagonal_has_z_pole,
+        off_common_nonzero,
+        diagonal_common_nonzero,
+        witness_column.unwrap(),
+        witness_minor
     );
 }
