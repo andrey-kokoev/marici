@@ -1,5 +1,9 @@
 # 932 — Pair Shifts Commute but Reflection Leaves the Specialized Slice
 
+> **Superseded by Entry 933.** This entry conflated Entry 920's off-diagonal
+> reflection with Entry 914's distinct maximal-flag reflection. Its shift
+> commutator calculation remains valid; its reflection type gate is withdrawn.
+
 ## Coherence test
 
 Entry 931 derived the rank-eight integer-shift closure and proposed two tests:
