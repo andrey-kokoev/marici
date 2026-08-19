@@ -75,6 +75,12 @@ parser.add_argument(
     action="store_true",
     help="at k-depth 3, order the old depth-two complex first and then the seven new source-pole strata",
 )
+parser.add_argument(
+    "--pole-extension-stage",
+    type=int,
+    choices=range(8),
+    help="retain the cumulative pole-extension filtration through this stage (0 through 7)",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
@@ -205,7 +211,7 @@ family_bounds.extend(
 )
 if family_bounds[-1] != len(central_rows):
     raise RuntimeError("relation-family row census does not agree")
-if sum(value is not None for value in (args.marked_last, args.marked_mask)) + args.partner_first + args.pole_extension_filtration > 1:
+if sum(value is not None for value in (args.marked_last, args.marked_mask, args.pole_extension_stage)) + args.partner_first + args.pole_extension_filtration > 1:
     raise RuntimeError("relation-family ordering/filter options are mutually exclusive")
 marked_start = family_bounds[1]
 marked_blocks = [
@@ -214,7 +220,7 @@ marked_blocks = [
 ]
 order = list(range(len(central_rows)))
 stage_by_row = None
-if args.pole_extension_filtration:
+if args.pole_extension_filtration or args.pole_extension_stage is not None:
     if (args.k_depth, args.q_depth) != (3, 2):
         raise RuntimeError("--pole-extension-filtration requires --k-depth 3 --q-depth 2")
     monomial_de_rham = len(base.monomials_at_most(args.ambient))
@@ -235,6 +241,8 @@ if args.pole_extension_filtration:
     stage_by_row = {row: 0 for row in old}
     for stage_index, stage in enumerate(new_stages, start=1):
         stage_by_row.update({row: stage_index for row in stage})
+    if args.pole_extension_stage is not None:
+        order = [row for row in order if stage_by_row[row] <= args.pole_extension_stage]
 elif args.partner_first:
     order = list(range(marked_start)) + marked_blocks[4] + [row for block in marked_blocks[:4] for row in block]
 elif args.marked_last is not None:

@@ -138,8 +138,11 @@ fn main() -> io::Result<()> {
     let mixed_lower_only = second_argument.as_deref() == Some("--mixed-lower-only");
     let write_basis_path = if second_argument.as_deref() == Some("--write-quadratic-basis") {
         Some(arguments.get(3).expect("--write-quadratic-basis requires a path").clone())
+    } else if second_argument.as_deref() == Some("--probe-basis-and-write") {
+        Some(arguments.get(5).expect("--probe-basis-and-write requires an output path").clone())
     } else { None };
-    let transition_probe = if second_argument.as_deref() == Some("--probe-basis") {
+    let transition_probe = if second_argument.as_deref() == Some("--probe-basis")
+        || second_argument.as_deref() == Some("--probe-basis-and-write") {
         Some((
             arguments.get(3).expect("--probe-basis requires a path").clone(),
             arguments.get(4).expect("--probe-basis requires old column count").parse::<usize>().unwrap(),
@@ -148,6 +151,7 @@ fn main() -> io::Result<()> {
     let probe = second_argument.filter(|argument| {
         !mixed_length3_only && !mixed_lower_only
             && argument != "--write-quadratic-basis" && argument != "--probe-basis"
+            && argument != "--probe-basis-and-write"
     }).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
