@@ -38,6 +38,34 @@ fn main() {
     ];
     assert_eq!(commuting, expected);
 
+    let repeated_blocks = [
+        ("(ZA2B24)^2-1", ["124356", "142356"], ["123456", "124356"]),
+        ("(A3B34/Z)^2-1", ["134256", "143256"], ["132456", "134256"]),
+    ];
+    let labelled_normalizations: Vec<_> = repeated_blocks
+        .iter()
+        .map(|(factor, corner, dense)| {
+            let common: Vec<_> = corner
+                .iter()
+                .filter(|label| dense.contains(label))
+                .copied()
+                .collect();
+            assert_eq!(common.len(), 1);
+            let identity_matches = (0..2).filter(|&i| corner[i] == dense[i]).count();
+            let swap_matches = (0..2).filter(|&i| corner[i] == dense[1 - i]).count();
+            assert_eq!((identity_matches, swap_matches), (0, 1));
+            json!({
+                "factor":factor,
+                "corner_occurrence_order":corner,
+                "dense_support_order":dense,
+                "unique_common_label":common[0],
+                "identity_label_matches":identity_matches,
+                "swap_label_matches":swap_matches,
+                "selected_unsigned_gauge":"J"
+            })
+        })
+        .collect();
+
     let packet = json!({
         "schema":"marici.benincasa.string_six_point_repeated_block_gauge.v1",
         "occurrence_transport":"simultaneous swap J on sparse and dense rank-two bases",
@@ -46,8 +74,11 @@ fn main() {
         "solutions_up_to_overall_orientation":["I","J"],
         "independent_repeated_blocks":2,
         "residual_unsigned_gauge":"(Z/2)^2",
+        "labelled_normalizations":labelled_normalizations,
+        "source_label_selected_gauges":["J","J"],
+        "residual_unsigned_gauge_after_label_transport":"trivial",
         "cyclic_composition_for_every_solution":1,
-        "classification":"cyclic and reflection covariance preserve but do not select the internal ordering of either repeated wall block"
+        "classification":"covariance alone leaves two bits, but the source-labelled common occurrence uniquely selects the swap gauge in both repeated blocks"
     });
     let text = serde_json::to_string_pretty(&packet).unwrap() + "\n";
     std::fs::write("../string-six-point-repeated-block-gauge.json", &text).unwrap();
