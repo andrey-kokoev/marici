@@ -1,0 +1,103 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 685,
+  "event_id": "ev-000000000685-3ce0c4a9-881e-49f2-a8bc-4c6e156a52fb",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3ef2b404e534049c64032eb52429d4ff722a5042b7edf345c51bed77f60cb74d",
+  "proposal_id": "ep_3222a935-1631-465a-8f78-925ef9dd5a46",
+  "proposal_digest": "c4b8398a1b63a000ca1d4d79463774fe8e6c37f986f5546f407e7d64616f4136",
+  "operations": [
+    {
+      "entity_id": "source:figueiredo-wp5-results-1051",
+      "kind": "source",
+      "locator": "research/flavor/results/wp5_matching_reality.json",
+      "op": "entity.declare",
+      "title": "WP5 exact audit results: perfect matchings, determinant reality, gauge move, S3^3 transport",
+      "version": "1"
+    },
+    {
+      "entity_id": "source:figueiredo-m2-toggle-results-1051",
+      "kind": "source",
+      "locator": "research/flavor/results/m2_toggle_map.json",
+      "op": "entity.declare",
+      "title": "Second-harmonic toggle map results: tenth-edge probes on S38 and S43",
+      "version": "1"
+    },
+    {
+      "entity_id": "claim:figueiredo-flavor-wp5-toggle-1051",
+      "kind": "claim",
+      "local_ref": "claim1",
+      "op": "entity.declare",
+      "title": "Ledger 1051: matching-reality of det(YuYd) is a gaugeable presentation property, not a physical invariant; first-harmonic purity is a finer graph property than b1=1 (exact toggle map); flavor not admitted as a fourth Marici sector under the strong typing"
+    },
+    {
+      "entity_id": "test:figueiredo-wp5-matching-reality-20260819",
+      "kind": "test",
+      "local_ref": "test1",
+      "op": "entity.declare",
+      "title": "Exact WP5 checker: per-sector perfect matchings equal determinants; phase-edge matching membership per chart; Example I gauge move Yu_12 -> Yu_22 makes det Yu, det Yd real with loop phase preserved; S3^3 transport preserves membership mechanically"
+    },
+    {
+      "entity_id": "test:figueiredo-m2-toggle-map-20260819",
+      "kind": "test",
+      "local_ref": "test2",
+      "op": "entity.declare",
+      "title": "Exact symbolic toggle map: add one real tenth edge at each zero of S38/S43; record whether the m=2 Fourier coefficient of det[Hu,Hd] stays identically zero; cross-checked by eps=0.9 FFT against 1e-8 noise floor"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test1",
+      "target_ref": "claim1",
+      "source_id": "test:figueiredo-wp5-matching-reality-20260819",
+      "target_id": "claim:figueiredo-flavor-wp5-toggle-1051",
+      "relation_id": "rel:tests-bea037766d8d109c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test2",
+      "target_ref": "claim1",
+      "source_id": "test:figueiredo-m2-toggle-map-20260819",
+      "target_id": "claim:figueiredo-flavor-wp5-toggle-1051",
+      "relation_id": "rel:tests-fb35ec0017140f2a"
+    },
+    {
+      "actor": "marici.Figueiredo",
+      "evidence": [
+        {
+          "locator": "research/flavor/results/wp5_matching_reality.json",
+          "paraphrase": "All four charts: unique matching per sector, signed sum equals determinant. S38 phase edge in the unique up matching (det ratio -1 as placed); S43/S48/S53 phase edges in no matching (ratio 1). Gauge move makes Example I determinants real, loop phase preserved at pi/2. Permutation transport (u,1,2)->(u,3,2) preserves membership True->True.",
+          "source_id": "source:figueiredo-wp5-results-1051"
+        }
+      ],
+      "op": "test_outcome.record",
+      "outcome": "All checks green: matching sums equal determinants exactly; matching-reality holds in canonical gauge except Example I, where an exact diagonal rephasing achieves it; membership transports under the texture groupoid",
+      "outcome_id": "outcome:figueiredo-wp5-1051",
+      "test_id": "test:figueiredo-wp5-matching-reality-20260819"
+    },
+    {
+      "actor": "marici.Figueiredo",
+      "evidence": [
+        {
+          "locator": "research/flavor/results/m2_toggle_map.json",
+          "paraphrase": "Baselines reproduce support {1}. S38: all five up-sector tenth edges break a2=0, all four down-sector additions preserve it. S43: five of nine additions break (u12,u21,u23,u32,d22), four keep (u31,d12,d21,d31). No m>=3 harmonic ever appears, even at b1=2.",
+          "source_id": "source:figueiredo-m2-toggle-results-1051"
+        }
+      ],
+      "op": "test_outcome.record",
+      "outcome": "b1=2 is neither necessary nor sufficient for a second harmonic; the general graph criterion for first-harmonic purity remains open, now with an exact table; supersedes the epsilon-suppressed exploratory numeric probe that had suggested S43 was fully robust",
+      "outcome_id": "outcome:figueiredo-m2-1051",
+      "test_id": "test:figueiredo-m2-toggle-map-20260819"
+    }
+  ],
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Figueiredo owns the flavor admission test; recording WP5 outcome and m=2 toggle map for ledger 1051."
+  },
+  "idempotency_key": "auto-admission-feabc759ce565292e9caf988",
+  "occurred_at": "2026-08-19T20:31:55.7070109Z",
+  "certifies_truth": false,
+  "event_hash": "83641ccd4dfae74f2f55bb81ffc3ebd53a471b7d788279f2808e770089dc8470"
+}

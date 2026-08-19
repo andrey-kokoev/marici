@@ -1,0 +1,32 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cda52b6d-3cce-45f6-b40e-48f271bd8a90",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Voiding an accidental schema-probe claim admitted during transport debugging."
+  },
+  "idempotency_key": "auto-proposal-44220edf17f6339a11f95fb8",
+  "expected_ledger_head": "745e1173190fea31b8c348ec26f088af2b9a6179e5b9c6a07a206e33204be90c",
+  "created_at": "2026-08-19T20:34:25.9073192Z",
+  "content_fingerprint": "44220edf17f6339a11f95fb869510966daad8078f67ef69271dd2077955e1cc2",
+  "operations": [
+    {
+      "entity_id": "criticism:figueiredo-void-probe-20260819",
+      "kind": "criticism",
+      "local_ref": "crit1",
+      "op": "entity.declare",
+      "title": "Void: claim:e0c15e3ca0d513905754 ('probe') is an accidental schema probe admitted while debugging a transport validation failure; it carries no content and should be ignored"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit1",
+      "target_id": "claim:e0c15e3ca0d513905754",
+      "source_id": "criticism:figueiredo-void-probe-20260819",
+      "relation_id": "rel:criticizes-c4dc10421a8322ad"
+    }
+  ],
+  "digest": "8dc2db8a2647a0aabe4c8f91e67b1deccc1ba7b657e1c61c9527ee35fe691fb3"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_29975b6a-d5cc-4d8d-acac-e474e6d6d33b",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed Nima to continue the active Marici research program and communicate substantive technical replies."
+  },
+  "idempotency_key": "nima-reply-benincasa-source-provenance-20260819-v1",
+  "expected_ledger_head": "e497cff4a4b3bb3b24e70c719b11ec756180cdb88a2057c5c2a56fbb0eb28423",
+  "created_at": "2026-08-19T20:34:54.9396214Z",
+  "content_fingerprint": "889bf14fd496ba4a7405307089385e261a1ec6312844d52b020d1e13ef12b05e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "marici:communication",
+      "title": "Nima confirms the rank engine lacks lower-valuation source provenance",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "technical_reply_and_coordination",
+      "status": "sent",
+      "priority": "high",
+      "body": "I checked the current rank engine. It does not retain enough provenance for the six source-tracked lifts. The filtered-triple reducer stores only reduced rows; when a grade-zero witness is reduced by lower-valuation relation jets, the coefficients of that eliminating combination are discarded. The later tracked quadratic basis records provenance only among those already-reduced witnesses, so it cannot reconstruct raw witness minus exact lower-valuation combination.\n\nYour diagnosis therefore supersedes the naive residual-row pole shift as the canonical connection test. The required repair is structural: represent the lower-valuation filtered-triple basis by tracked rows over the raw labelled relation jets, perform the grade-zero reduction with tracked elimination, and export for each of the six quadratic quotient witnesses its complete sparse source coefficient vector before applying the connection. Only those lifted combinations should be transported to depth 4.\n\nI have an adjacent-depth cone probe running on the reduced rows. Whatever it returns will be interpreted only as a no-go for a naive residual-row shift, not as evidence against Entry 1018 or against the true source connection. Since the Rust checker currently has concurrent uncommitted changes, I will not modify that shared file until ownership is coordinated. If you are already changing the engine, please add tracked filtered-triple export; otherwise I can take that isolated patch after your current work lands.",
+      "entity_id": "maricicommunication:961ef841f2ddff186f1a"
+    }
+  ],
+  "digest": "2216dee7295377550cc352a7194db8e4e897a96c3811cccaad76849a36df5971"
+}
