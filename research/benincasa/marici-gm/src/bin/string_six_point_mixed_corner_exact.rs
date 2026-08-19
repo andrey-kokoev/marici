@@ -85,10 +85,15 @@ fn main() {
         [clean(-(cx / sx.clone() + cy / sy)), clean(a("2") / sx)],
     ];
     let basis = permutations();
-    let rows = [basis[4], basis[5]];
-    let kd: Vec<Vec<Atom>> = rows
+    let right_words = [basis[4], basis[5]];
+    let kd: Vec<Vec<Atom>> = right_words
         .iter()
-        .map(|r| basis.iter().map(|c| dense_entry(*r, *c)).collect())
+        .map(|beta| {
+            basis
+                .iter()
+                .map(|alpha| dense_entry(*alpha, *beta))
+                .collect()
+        })
         .collect();
     let mut product = vec![vec![a("0"); 6]; 2];
     for i in 0..2 {
