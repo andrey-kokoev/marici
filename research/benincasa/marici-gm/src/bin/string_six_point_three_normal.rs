@@ -63,6 +63,13 @@ fn specialize(x: Atom, name: &str) -> Atom {
         .cancel()
         .factor()
 }
+fn substitute_value(x: Atom, name: &str, value: Atom) -> Atom {
+    x.replace(a(name).to_pattern())
+        .with(value.to_pattern())
+        .together()
+        .cancel()
+        .factor()
+}
 fn route(x: Atom, order: &[&str]) -> Atom {
     order
         .iter()
@@ -244,14 +251,65 @@ fn main() {
             })
         })
         .collect();
+
+    // Ordinary Rees blowup of (A4-1,Y-1,Q-1), in the A4 chart.
+    let h = a("H");
+    let u = a("U");
+    let v = a("V");
+    let exceptional_a_chart: Vec<Atom> = transition_off
+        .iter()
+        .flatten()
+        .cloned()
+        .map(|entry| {
+            let pulled = substitute_value(entry, "A4", a("1") + h.clone());
+            let pulled = substitute_value(pulled, "Y", a("1") + u.clone() * h.clone());
+            let pulled = substitute_value(pulled, "Q", a("1") + v.clone() * h.clone());
+            substitute_value(pulled, "H", a("0"))
+        })
+        .collect();
+    let exceptional_nonzero = exceptional_a_chart
+        .iter()
+        .filter(|entry| **entry != a("0"))
+        .count();
+    let exceptional_row_anti = (0..6).all(|j| {
+        clean(exceptional_a_chart[j].clone() + exceptional_a_chart[j + 6].clone()) == a("0")
+    });
+    let exceptional_rank_two = (0..6).any(|i| {
+        ((i + 1)..6).any(|j| {
+            clean(
+                exceptional_a_chart[i].clone() * exceptional_a_chart[j + 6].clone()
+                    - exceptional_a_chart[j].clone() * exceptional_a_chart[i + 6].clone(),
+            ) != a("0")
+        })
+    });
+    let exceptional_rank = if exceptional_rank_two {
+        2
+    } else if exceptional_nonzero > 0 {
+        1
+    } else {
+        0
+    };
+    let exceptional_depends_on_ratios = exceptional_a_chart.iter().any(|entry| {
+        let text = entry.to_string();
+        text.contains('U') || text.contains('V')
+    });
+    let exceptional_representatives: Vec<String> = exceptional_a_chart
+        .iter()
+        .map(ToString::to_string)
+        .collect();
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v3\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{}}}",
+        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v4\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}}}}",
         nonzero,
         if first_grade_nonzero > 0 { 1 } else { 0 },
         first_grade_nonzero,
         off_all_equal,
         off_nonzero,
         off_row_anti,
-        serde_json::to_string(&off_route_summaries).unwrap()
+        serde_json::to_string(&off_route_summaries).unwrap(),
+        exceptional_nonzero,
+        exceptional_rank,
+        exceptional_row_anti,
+        exceptional_depends_on_ratios,
+        serde_json::to_string(&exceptional_representatives).unwrap()
     );
 }
