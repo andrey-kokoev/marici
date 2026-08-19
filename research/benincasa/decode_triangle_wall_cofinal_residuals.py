@@ -77,6 +77,7 @@ for probe_index, probe in enumerate(packet["probe_file"]):
             "tangent": "T1" if probe_index < 13 else "T2",
             "source_basis_index": probe_index % 13,
             "remainder_terms": probe["remainder_terms"],
+            "coordinates": probe.get("coordinates", []),
             "terms": terms,
         }
     )
