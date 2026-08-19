@@ -68,6 +68,17 @@ fn restrict(v: &[Atom], value: &str) -> Vec<Atom> {
         .map(|x| clean(x.replace(a("Z").to_pattern()).with(a(value).to_pattern())))
         .collect()
 }
+fn restrict_many(v: &[Atom], substitutions: &[(&str, String)]) -> Vec<Atom> {
+    v.iter()
+        .cloned()
+        .map(|mut x| {
+            for (name, value) in substitutions {
+                x = x.replace(a(name).to_pattern()).with(a(value).to_pattern());
+            }
+            clean(x)
+        })
+        .collect()
+}
 fn projective_rank(x: &[Atom], y: &[Atom]) -> usize {
     if x.iter().all(|z| *z == a("0")) && y.iter().all(|z| *z == a("0")) {
         return 0;
@@ -80,6 +91,15 @@ fn projective_rank(x: &[Atom], y: &[Atom]) -> usize {
         }
     }
     1
+}
+fn proportional_scalar(x: &[Atom], y: &[Atom]) -> Option<String> {
+    let i = (0..x.len()).find(|i| x[*i] != a("0"))?;
+    let q = clean(y[i].clone() / x[i].clone());
+    if (0..x.len()).all(|j| clean(y[j].clone() - q.clone() * x[j].clone()) == a("0")) {
+        Some(q.to_string())
+    } else {
+        None
+    }
 }
 fn coordinates(b0: &[Atom], b1: &[Atom], target: &[Atom]) -> (Atom, Atom, [usize; 2]) {
     for i in 0..b0.len() {
@@ -181,6 +201,60 @@ fn main() {
             json!({"wall":wall,"root":value,"specialized_rank":rank,"splitting_survives":rank==2})
         }).collect::<Vec<_>>();
         assert!(boundary.iter().all(|x| x["splitting_survives"] == true));
+        let mut pairwise = Vec::new();
+        for s in [-1, 1] {
+            for t in [-1, 1] {
+                let specs = [
+                    (
+                        "ZA2 & ZA2B24",
+                        vec![("Z", format!("{s}/A2")), ("B24", format!("{t}/{s}"))],
+                    ),
+                    (
+                        "A3/Z & A3B34/Z",
+                        vec![("Z", format!("{s}*A3")), ("B34", format!("{t}/{s}"))],
+                    ),
+                    (
+                        "ZA2 & A3/Z",
+                        vec![("Z", format!("{s}/A2")), ("A3", format!("{s}*{t}/A2"))],
+                    ),
+                    (
+                        "ZA2 & A3B34/Z",
+                        vec![
+                            ("Z", format!("{s}/A2")),
+                            ("B34", format!("{s}*{t}/(A2*A3)")),
+                        ],
+                    ),
+                    (
+                        "ZA2B24 & A3/Z",
+                        vec![
+                            ("Z", format!("{s}/(A2*B24)")),
+                            ("A3", format!("{s}*{t}/(A2*B24)")),
+                        ],
+                    ),
+                    (
+                        "ZA2B24 & A3B34/Z",
+                        vec![
+                            ("Z", format!("{s}/(A2*B24)")),
+                            ("B34", format!("{s}*{t}/(A2*A3*B24)")),
+                        ],
+                    ),
+                ];
+                for (intersection, substitutions) in specs {
+                    let rank = projective_rank(
+                        &restrict_many(&b1, &substitutions),
+                        &restrict_many(&corrected, &substitutions),
+                    );
+                    let normal_r = restrict_many(&b1, &substitutions);
+                    let corrected_r = restrict_many(&corrected, &substitutions);
+                    let scalar = if rank == 1 {
+                        proportional_scalar(&normal_r, &corrected_r)
+                    } else {
+                        None
+                    };
+                    pairwise.push(json!({"intersection":intersection,"signs":[s,t],"specialized_rank":rank,"splitting_survives":rank==2,"collapse_scalar_corrected_over_normal":scalar}));
+                }
+            }
+        }
         records.push(json!({
             "character": label,
             "ordered_basis": ["loaded_occurrence_projector", "normal_symbol_projector"],
@@ -188,7 +262,8 @@ fn main() {
             "coordinate_pivots": [pivot0, pivot1],
             "directions_separated": diagonal,
             "involution_verified_on_basis": true,
-            "generic_boundary_specializations": boundary
+            "generic_boundary_specializations": boundary,
+            "generic_pairwise_intersections": pairwise
         }));
     }
     let separates = records.iter().all(|r| r["directions_separated"] == true);
