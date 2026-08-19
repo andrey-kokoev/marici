@@ -1,5 +1,10 @@
 # 951 — The Branch-to-Dense Support Map Is Absent from the Frozen Packet
 
+> **Superseded by Entry 952.** This entry incorrectly required the sparse
+> variables to embed into the six-generator dense subring. Entry 905 already
+> constructs both presentations over the common nine-dimensional conserved
+> kinematic ring and defines the canonical transition there.
+
 ## Required comparison
 
 Entry 950 asks whether the branch Fitting divisor is the pullback of the full
