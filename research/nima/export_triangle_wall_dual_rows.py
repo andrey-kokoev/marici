@@ -73,7 +73,7 @@ parser.add_argument(
 parser.add_argument(
     "--pole-extension-filtration",
     action="store_true",
-    help="at k-depth 3, order the old depth-two complex first and then the seven new source-pole strata",
+    help="at k-depth d>=3, order the old depth-(d-1) complex first and then the seven new source-pole strata",
 )
 parser.add_argument(
     "--pole-extension-stage",
@@ -221,22 +221,23 @@ marked_blocks = [
 order = list(range(len(central_rows)))
 stage_by_row = None
 if args.pole_extension_filtration or args.pole_extension_stage is not None:
-    if (args.k_depth, args.q_depth) != (3, 2):
-        raise RuntimeError("--pole-extension-filtration requires --k-depth 3 --q-depth 2")
+    if args.k_depth < 3 or args.q_depth != 2:
+        raise RuntimeError("--pole-extension-filtration requires --k-depth >= 3 --q-depth 2")
     monomial_de_rham = len(base.monomials_at_most(args.ambient))
     monomial_principal = len(base.monomials_at_most(args.ambient - 4))
     monomial_marked = len(base.monomials_at_most(args.ambient - 1))
     de_rham_per_k = 2 * monomial_de_rham
     principal_per_k = args.q_depth**5 * monomial_principal
     marked_per_k = (args.q_depth - 1) * args.q_depth**4 * monomial_marked
-    old = list(range(0, 2 * de_rham_per_k))
-    old += list(range(de_rham_count, de_rham_count + 2 * principal_per_k))
-    new_stages = [list(range(2 * de_rham_per_k, 3 * de_rham_per_k))]
-    new_stages.append(list(range(de_rham_count + 2 * principal_per_k, de_rham_count + 3 * principal_per_k)))
+    old_depth = args.k_depth - 1
+    old = list(range(0, old_depth * de_rham_per_k))
+    old += list(range(de_rham_count, de_rham_count + old_depth * principal_per_k))
+    new_stages = [list(range(old_depth * de_rham_per_k, args.k_depth * de_rham_per_k))]
+    new_stages.append(list(range(de_rham_count + old_depth * principal_per_k, de_rham_count + args.k_depth * principal_per_k)))
     for family_index in range(5):
         start = marked_start + family_index * marked_count
-        old += list(range(start, start + 3 * marked_per_k))
-        new_stages.append(list(range(start + 3 * marked_per_k, start + 4 * marked_per_k)))
+        old += list(range(start, start + args.k_depth * marked_per_k))
+        new_stages.append(list(range(start + args.k_depth * marked_per_k, start + (args.k_depth + 1) * marked_per_k)))
     order = old + [row for stage in new_stages for row in stage]
     stage_by_row = {row: 0 for row in old}
     for stage_index, stage in enumerate(new_stages, start=1):
