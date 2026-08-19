@@ -49,7 +49,8 @@ fn main() -> io::Result<()> {
     let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet>");
     let mut bytes = Vec::new();
     File::open(path)?.read_to_end(&mut bytes)?;
-    assert_eq!(&bytes[..8], b"MRCIDR02");
+    let version = &bytes[..8];
+    assert!(version == b"MRCIDR02" || version == b"MRCIDR03");
     let mut cursor = 8;
     assert_eq!(u32_at(&bytes, &mut cursor), P);
     let ambient = u32_at(&bytes, &mut cursor);
@@ -58,12 +59,21 @@ fn main() -> io::Result<()> {
     let central_rank = u32_at(&bytes, &mut cursor) as usize;
     let mut dual_pivots: Vec<Option<Row>> = vec![None; 2 * columns];
     let mut triple_pivots: Vec<Option<Row>> = vec![None; 3 * columns];
+    let mut central_pivots: Vec<Option<Row>> = vec![None; columns];
     let mut dual_rank = 0usize;
     let mut triple_rank = 0usize;
+    let mut cumulative = Vec::new();
+    let mut active_family = 0u32;
     for _ in 0..rows {
+        let family = if version == b"MRCIDR03" { u32_at(&bytes, &mut cursor) } else { 0 };
+        if family != active_family {
+            cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
+            active_family = family;
+        }
         let central = row_at(&bytes, &mut cursor);
         let derivative = row_at(&bytes, &mut cursor);
         let second = row_at(&bytes, &mut cursor);
+        insert(central.clone(), &mut central_pivots);
         let mut first = central.clone();
         for (column, value) in derivative { add_value(&mut first, columns + column, value); }
         dual_rank += insert(first.clone(), &mut dual_pivots) as usize;
@@ -83,8 +93,14 @@ fn main() -> io::Result<()> {
         triple_rank += insert(grade_one, &mut triple_pivots) as usize;
         triple_rank += insert(grade_two, &mut triple_pivots) as usize;
     }
+    cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
     let first_normal = dual_rank - 2 * central_rank;
     let second_normal = triple_rank - 3 * central_rank - 2 * first_normal;
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v2\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal}}}");
+    let family_json = cumulative.iter().map(|(family, central, dual, triple)| {
+        let first = dual - 2 * central;
+        let second = triple - 3 * central - 2 * first;
+        format!("{{\"family_through\":{family},\"central_rank\":{central},\"first_normal_rank\":{first},\"second_normal_rank\":{second}}}")
+    }).collect::<Vec<_>>().join(",");
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v3\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}]}}");
     Ok(())
 }
