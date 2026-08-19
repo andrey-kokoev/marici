@@ -21,6 +21,8 @@ TARGET_NAMES = ("g1", "g3", "g2", "g23", "g12")
 GAMMA = 5
 AMBIENT = 10
 CUTOFF = 5
+K_DEPTH = 2
+Q_DEPTH = 2
 
 
 def clean(poly):
@@ -51,7 +53,7 @@ def presentation(fiber, point, names):
     k, all_q = fiber(*point)
     q_polynomials = [all_q[name] for name in names]
     q_count = len(names)
-    k_depth = q_depth = 2
+    k_depth, q_depth = K_DEPTH, Q_DEPTH
     column_degree = AMBIENT + 4
     low_monomials = base.monomials_at_most(CUTOFF)
     low_labels = [
