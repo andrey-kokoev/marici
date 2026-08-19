@@ -70,7 +70,7 @@ fn main() {
             +sparse[i][1].clone()*dense[1][j].clone()
         );
     }}
-    let mixed:Vec<Atom>=transition.into_iter().flatten().map(|entry| {
+    let mixed:Vec<Atom>=transition.iter().flatten().cloned().map(|entry| {
         at(at(entry,"X","1"),"Q","1")
     }).collect();
     let plus:Vec<Atom>=mixed.iter().cloned().map(|entry|
@@ -90,6 +90,58 @@ fn main() {
     }
     assert_eq!(other,0);
 
+    let signed_grade = |sa: i32, sxv: i32, sqv: i32| -> Vec<Atom> {
+        transition.iter().flatten().cloned().map(|entry| {
+            let entry=at(at(entry,"X",&sxv.to_string()),"Q",&sqv.to_string());
+            at(clean(entry/(a("A4")-a(&sa.to_string()))),"A4",&sa.to_string())
+        }).collect()
+    };
+    let base=signed_grade(1,1,1);
+    let x_minus=signed_grade(1,-1,1);
+    let matrix_rank_one = |flat: &[Atom]| -> bool {
+        (0..6).all(|i| (0..6).all(|j| {
+            clean(flat[i].clone()*flat[6+j].clone()-flat[j].clone()*flat[6+i].clone())==a("0")
+        }))
+    };
+    let plus_rank_one=matrix_rank_one(&base);
+    let x_minus_rank_one=matrix_rank_one(&x_minus);
+    let row_character = |flat: &[Atom]| -> i32 {
+        let same=(0..6).all(|j| clean(flat[6+j].clone()-flat[j].clone())==a("0"));
+        let opposite=(0..6).all(|j| clean(flat[6+j].clone()+flat[j].clone())==a("0"));
+        if same {1} else if opposite {-1} else {0}
+    };
+    let sheet_span_projectively_independent=(1..base.len()).any(|j| {
+        clean(base[0].clone()*x_minus[j].clone()-base[j].clone()*x_minus[0].clone())!=a("0")
+    });
+    let source_rows_same=(1..6).all(|j| {
+        clean(base[0].clone()*x_minus[j].clone()-base[j].clone()*x_minus[0].clone())==a("0")
+    });
+    let character_supports=[vec![0usize,2],vec![1],vec![3],vec![4,5]];
+    let xminus_in_shift_source_closure=character_supports.iter().all(|support| {
+        let pivot=support[0];
+        support.iter().skip(1).all(|j| {
+            clean(base[pivot].clone()*x_minus[*j].clone()
+                -base[*j].clone()*x_minus[pivot].clone())==a("0")
+        })
+    });
+    let new_character_directions=character_supports.iter().filter(|support| {
+        if support.len()<2 { return false; }
+        let i=support[0]; let j=support[1];
+        clean(base[i].clone()*x_minus[j].clone()-base[j].clone()*x_minus[i].clone())!=a("0")
+    }).count();
+    let full_source_sheet_shift_rank=4+new_character_directions;
+    let mut cube=Vec::new();
+    for sa in [1,-1] { for sxv in [1,-1] { for sqv in [1,-1] {
+        let grade=signed_grade(sa,sxv,sqv);
+        let is_same=grade.iter().zip(&base).all(|(g,b)| clean(g.clone()-b.clone())==a("0"));
+        let is_opposite=grade.iter().zip(&base).all(|(g,b)| clean(g.clone()+b.clone())==a("0"));
+        cube.push(serde_json::json!({
+            "sheet":[sa,sxv,sqv],
+            "native_scalar_to_plus":if is_same {1} else if is_opposite {-1} else {0},
+            "non_scalar":!is_same && !is_opposite
+        }));
+    }}}
+
     let packet=serde_json::json!({
         "schema":"marici.benincasa.string_six_point_cartier_sheet_transition.v1",
         "normal_coordinate":"A4",
@@ -104,7 +156,22 @@ fn main() {
         "native_sheet_frame_scalar": if same==plus.len() {1} else {0},
         "oriented_normal_character":-1,
         "unit_shift_inter_sheet_scalar": if same==plus.len() {-1} else {0},
-        "off_diagonal_mixing":false
+        "off_diagonal_mixing":false,
+        "typed_sheet_order":["A4 first grade","X regularized root","Q regularized root"],
+        "signed_cube":cube
+        ,"plus_matrix_rank_one":plus_rank_one
+        ,"x_minus_matrix_rank_one":x_minus_rank_one
+        ,"plus_target_row_character":row_character(&base)
+        ,"x_minus_target_row_character":row_character(&x_minus)
+        ,"plus_xminus_sheet_span_rank":if sheet_span_projectively_independent {2} else {1}
+        ,"plus_xminus_source_line_same":source_rows_same
+        ,"xminus_source_in_four_character_closure":xminus_in_shift_source_closure
+        ,"full_sheet_adds_rank_beyond_eight":!xminus_in_shift_source_closure
+        ,"new_character_directions_from_xminus":new_character_directions
+        ,"full_source_sheet_shift_rank":full_source_sheet_shift_rank
+        ,"computed_combined_module_rank":8+new_character_directions
+        ,"tensor_saturation_rank":2*full_source_sheet_shift_rank
+        ,"uncomputed_opposite_target_copies":new_character_directions
     });
     let text=serde_json::to_string_pretty(&packet).unwrap()+"\n";
     std::fs::write("../string-six-point-cartier-sheet-transition.json",&text).unwrap();
