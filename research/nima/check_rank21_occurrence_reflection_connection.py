@@ -17,6 +17,26 @@ import g12_g31_residue_chart_transition as charts
 P = base.PRIME
 
 
+def canonical_reduce(row, pivots):
+    """Eliminate every pivot column, including pivots below a free leader."""
+    row = dict(row)
+    while True:
+        active = [column for column in row if column in pivots]
+        if not active:
+            return row
+        pivot = max(active)
+        coefficient = row[pivot]
+        for column, value in pivots[pivot].items():
+            base.add_value(row, column, -coefficient * value)
+
+
+# The shared reducer stops at the first free leading column and can leave
+# lower pivot columns unresolved.  All quotient-coordinate calls in this
+# audit, including calls made by the imported chart-transition helpers, must
+# use a complete normal form.
+base.reduce_row = canonical_reduce
+
+
 def parameter_derivative_data(fiber, point, axis):
     weights = (1, -8, 0, 8, -1)
     inverse_twelve = pow(12, P - 2, P)
@@ -97,6 +117,52 @@ def connection_leakage(pres, names, fiber, point, axis):
     }
 
 
+def cutoff_closure(cutoff):
+    low_labels, columns, pivots, free_low = base.presentation(
+        charts.SOURCE_NAMES, 5, 10, cutoff, minimum_q_level=1
+    )
+    free = set(free_low)
+    label_by_column = {columns[label]: label for label in low_labels}
+    span = {}
+    frontier = []
+    for label in low_labels:
+        if sum(label[-1]) <= 5:
+            reduced = base.reduce_row({columns[label]: 1}, pivots)
+            quotient = {column: value for column, value in reduced.items() if column in free}
+            if quotient:
+                frontier.append(quotient)
+    outside_columns = set()
+    while frontier:
+        vector = frontier.pop()
+        before = len(span)
+        base.add_pivot(dict(vector), span)
+        if len(span) == before:
+            continue
+        for axis in range(3):
+            image = {}
+            for column, coefficient in vector.items():
+                label = label_by_column[column]
+                for target, value in connection_image(
+                    label, charts.SOURCE_NAMES, axis, columns,
+                    base.fiber_data, charts.SOURCE_POINT,
+                ).items():
+                    base.add_value(image, target, coefficient * value)
+            reduced = base.reduce_row(image, pivots)
+            outside_columns.update(set(reduced) - free)
+            quotient = {column: value for column, value in reduced.items() if column in free}
+            if quotient:
+                frontier.append(quotient)
+    ordered_columns = [None] * len(columns)
+    for label, column in columns.items():
+        ordered_columns[column] = label
+    return {
+        "cutoff": cutoff,
+        "quotient_dimension": len(free_low),
+        "degree_five_generated_closure_dimension": len(span),
+        "outside_labels": [ordered_columns[column] for column in sorted(outside_columns)],
+    }
+
+
 def matmul(left, right):
     rows, middle, cols = len(left), len(right), len(right[0])
     assert len(left[0]) == middle
@@ -136,6 +202,7 @@ target_leakage = [
     connection_leakage(target, charts.TARGET_NAMES, charts.g31_fiber_data, charts.TARGET_POINT, axis)
     for axis in range(3)
 ]
+cutoff_closures = [cutoff_closure(cutoff) for cutoff in range(5, 11)]
 
 axis_map = {0: 0, 1: 2, 2: 1}
 raw_derivative_checks = []
@@ -193,7 +260,7 @@ for source_axis, target_axis in axis_map.items():
     })
 
 payload = {
-    "schema": "marici.rank21-occurrence-reflection-connection.v1",
+    "schema": "marici.rank21-occurrence-reflection-connection.v2",
     "field": P,
     "source_chart": "G12 at (2,3,4)",
     "target_chart": "G31 at (2,4,3)",
@@ -205,6 +272,7 @@ payload = {
     "axis_map": {"X1": "X1", "X2": "X3", "X3": "X2"},
     "source_low_block_leakage": source_leakage,
     "target_low_block_leakage": target_leakage,
+    "source_cutoff_closures": cutoff_closures,
     "intertwining_checks": checks,
     "raw_derivative_checks": raw_derivative_checks,
     "chain_level_naturality": chain_level_failures,
