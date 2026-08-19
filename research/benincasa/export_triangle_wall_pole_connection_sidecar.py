@@ -47,6 +47,7 @@ def write_row(handle, row):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--ambient", type=int, default=10)
+parser.add_argument("--target-ambient", type=int)
 parser.add_argument("--limit", type=int)
 parser.add_argument("--output", type=Path, required=True)
 args = parser.parse_args()
@@ -54,7 +55,8 @@ args = parser.parse_args()
 ordered = module.descriptors(args.ambient)
 if args.limit is not None:
     ordered = ordered[: args.limit]
-columns = module.target_columns(args.ambient, (2, 3, 5))
+target_ambient = args.target_ambient or args.ambient
+columns = module.target_columns(target_ambient, (2, 3, 5))
 
 args.output.parent.mkdir(parents=True, exist_ok=True)
 with args.output.open("wb") as handle:
@@ -64,7 +66,7 @@ with args.output.open("wb") as handle:
         for tangent in ("T1", "T2"):
             write_row(
                 handle,
-                module.normal_image(descriptor, tangent, args.ambient, columns),
+                module.normal_image(descriptor, tangent, target_ambient, columns),
             )
         if (index + 1) % 1000 == 0:
             print(f"exported {index + 1}/{len(ordered)}", file=sys.stderr)
