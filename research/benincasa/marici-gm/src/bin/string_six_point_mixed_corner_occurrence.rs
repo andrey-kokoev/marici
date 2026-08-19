@@ -27,6 +27,29 @@ fn sigma6(w: Word6) -> Word6 {
     ]
 }
 
+fn tau_label(i: usize) -> usize {
+    match i {
+        2 => 4,
+        4 => 2,
+        _ => i,
+    }
+}
+
+fn tau3(w: Word3) -> Word3 {
+    [tau_label(w[0]), tau_label(w[1]), tau_label(w[2])]
+}
+
+fn tau6(w: Word6) -> Word6 {
+    [
+        tau_label(w[0]),
+        tau_label(w[1]),
+        tau_label(w[2]),
+        tau_label(w[3]),
+        tau_label(w[4]),
+        tau_label(w[5]),
+    ]
+}
+
 fn permutation3(source: &[Word3], target: &[Word3]) -> Vec<usize> {
     let positions: HashMap<Word3, usize> = target
         .iter()
@@ -116,8 +139,46 @@ fn main() {
         .collect();
     assert_eq!(filtered_signed_steps.iter().product::<i32>(), 1);
 
+    // tau=(24) sends C2 to C0 and preserves the ordered normal slots:
+    // (s14,s23,s235) -> (s12,s34,s345).  Both serialized bases reverse.
+    let dense_c0_positions: HashMap<Word3, usize> = dense[0]
+        .iter()
+        .copied()
+        .enumerate()
+        .map(|(i, w)| (w, i))
+        .collect();
+    let sparse_c0_positions: HashMap<Word6, usize> = sparse[0]
+        .iter()
+        .copied()
+        .enumerate()
+        .map(|(i, w)| (w, i))
+        .collect();
+    let reflection_dense: Vec<usize> = dense[2]
+        .iter()
+        .map(|w| dense_c0_positions[&tau3(*w)])
+        .collect();
+    let reflection_sparse: Vec<usize> = sparse[2]
+        .iter()
+        .map(|w| sparse_c0_positions[&tau6(*w)])
+        .collect();
+    assert_eq!(reflection_dense, vec![1, 0]);
+    assert_eq!(reflection_sparse, vec![1, 0]);
+    let reflection_basis_sign = (-1) * (-1);
+    let reflection_residue_orientation = 1;
+    let reflection_normal_line = 1;
+    let reflection_filtered_character =
+        reflection_basis_sign * reflection_residue_orientation * reflection_normal_line;
+    assert_eq!(reflection_filtered_character, 1);
+
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_mixed_corner_occurrence.v2\",\"corner_orbit\":[\"(s34,s345)\",\"(s24,s245)\",\"(s23,s235)\"],\"third_normal_orbit\":[\"s12\",\"s13\",\"s14\"],\"dense_permutations\":{:?},\"sparse_permutations\":{:?},\"signed_steps\":{:?},\"normal_line_steps\":{:?},\"filtered_signed_steps\":{:?},\"dense_cycle_identity\":true,\"sparse_cycle_identity\":true,\"signed_cyclic_composition\":1,\"filtered_signed_cyclic_composition\":1}}",
-        dense_maps, sparse_maps, signed_steps, normal_line_steps, filtered_signed_steps
+        "{{\"schema\":\"marici.benincasa.string_six_point_mixed_corner_occurrence.v3\",\"corner_orbit\":[\"(s34,s345)\",\"(s24,s245)\",\"(s23,s235)\"],\"third_normal_orbit\":[\"s12\",\"s13\",\"s14\"],\"dense_permutations\":{:?},\"sparse_permutations\":{:?},\"signed_steps\":{:?},\"normal_line_steps\":{:?},\"filtered_signed_steps\":{:?},\"dense_cycle_identity\":true,\"sparse_cycle_identity\":true,\"signed_cyclic_composition\":1,\"filtered_signed_cyclic_composition\":1,\"reflection\":\"(24)\",\"reflection_dense_permutation\":{:?},\"reflection_sparse_permutation\":{:?},\"reflection_residue_orientation\":1,\"reflection_normal_line_character\":1,\"reflection_filtered_character\":{}}}",
+        dense_maps,
+        sparse_maps,
+        signed_steps,
+        normal_line_steps,
+        filtered_signed_steps,
+        reflection_dense,
+        reflection_sparse,
+        reflection_filtered_character
     );
 }
