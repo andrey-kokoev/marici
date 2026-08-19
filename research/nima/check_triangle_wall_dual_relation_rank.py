@@ -33,13 +33,26 @@ def capture(z, ambient):
 
 
 def calculate(ambient):
-    packets = [capture(5 + offset, ambient) for offset in (-2, -1, 0, 1, 2)]
-    presentation, central_rows = packets[2]
+    nodes = tuple(range(-3, 4))
+    packets = [capture(5 + offset, ambient) for offset in nodes]
+    presentation, central_rows = packets[3]
     row_packets = [packet[1] for packet in packets]
     if len(set(map(len, row_packets))) != 1:
         raise RuntimeError("raw relation row counts do not agree")
-    weights = (1, -8, 0, 8, -1)
-    inverse_twelve = pow(12, P - 2, P)
+    weights = []
+    for node in nodes:
+        polynomial = [1]
+        denominator = 1
+        for other in nodes:
+            if other == node:
+                continue
+            next_polynomial = [0] * (len(polynomial) + 1)
+            for degree, coefficient in enumerate(polynomial):
+                next_polynomial[degree] = (next_polynomial[degree] - other * coefficient) % P
+                next_polynomial[degree + 1] = (next_polynomial[degree + 1] + coefficient) % P
+            polynomial = next_polynomial
+            denominator = denominator * (node - other) % P
+        weights.append(polynomial[1] * pow(denominator, P - 2, P) % P)
     column_count = len(presentation["ordered_columns"])
     block_pivots = {}
     original = base.add_pivot
@@ -47,7 +60,7 @@ def calculate(ambient):
         normal_derivative = {}
         for rows, weight in zip(row_packets, weights):
             for column, value in rows[index].items():
-                base.add_value(normal_derivative, column, weight * value * inverse_twelve)
+                base.add_value(normal_derivative, column, weight * value)
         first_row = dict(central)
         for column, value in normal_derivative.items():
             base.add_value(first_row, column_count + column, value)
