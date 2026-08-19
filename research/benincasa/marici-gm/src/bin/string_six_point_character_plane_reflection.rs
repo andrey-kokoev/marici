@@ -62,6 +62,25 @@ fn reflection(v: &[Atom]) -> Vec<Atom> {
     let tv: Vec<_> = v.iter().cloned().map(tau_atom).collect();
     pi.iter().map(|&i| tv[i].clone()).collect()
 }
+fn restrict(v: &[Atom], value: &str) -> Vec<Atom> {
+    v.iter()
+        .cloned()
+        .map(|x| clean(x.replace(a("Z").to_pattern()).with(a(value).to_pattern())))
+        .collect()
+}
+fn projective_rank(x: &[Atom], y: &[Atom]) -> usize {
+    if x.iter().all(|z| *z == a("0")) && y.iter().all(|z| *z == a("0")) {
+        return 0;
+    }
+    for i in 0..x.len() {
+        for j in i + 1..x.len() {
+            if clean(x[i].clone() * y[j].clone() - x[j].clone() * y[i].clone()) != a("0") {
+                return 2;
+            }
+        }
+    }
+    1
+}
 fn coordinates(b0: &[Atom], b1: &[Atom], target: &[Atom]) -> (Atom, Atom, [usize; 2]) {
     for i in 0..b0.len() {
         for j in i + 1..b0.len() {
@@ -139,13 +158,37 @@ fn main() {
         let (a00, a10, pivot0) = coordinates(&b0, &b1, &r0);
         let (a01, a11, pivot1) = coordinates(&b0, &b1, &r1);
         let diagonal = a10 == a("0") && a01 == a("0");
+        let corrected = (0..6)
+            .map(|i| {
+                clean(
+                    b0[i].clone()
+                        - (a("1") + a("Z") * a("Z")) / (a("Z") * a("Z") - a("1")) * b1[i].clone(),
+                )
+            })
+            .collect::<Vec<_>>();
+        let walls = [
+            ("ZA2", "1/A2"),
+            ("ZA2", "-1/A2"),
+            ("ZA2B24", "1/(A2*B24)"),
+            ("ZA2B24", "-1/(A2*B24)"),
+            ("A3/Z", "A3"),
+            ("A3/Z", "-A3"),
+            ("A3B34/Z", "A3*B34"),
+            ("A3B34/Z", "-A3*B34"),
+        ];
+        let boundary = walls.iter().map(|(wall,value)| {
+            let rank=projective_rank(&restrict(&b1,value),&restrict(&corrected,value));
+            json!({"wall":wall,"root":value,"specialized_rank":rank,"splitting_survives":rank==2})
+        }).collect::<Vec<_>>();
+        assert!(boundary.iter().all(|x| x["splitting_survives"] == true));
         records.push(json!({
             "character": label,
             "ordered_basis": ["loaded_occurrence_projector", "normal_symbol_projector"],
             "reflection_matrix_columns": [[a00.to_string(), a10.to_string()], [a01.to_string(), a11.to_string()]],
             "coordinate_pivots": [pivot0, pivot1],
             "directions_separated": diagonal,
-            "involution_verified_on_basis": true
+            "involution_verified_on_basis": true,
+            "generic_boundary_specializations": boundary
         }));
     }
     let separates = records.iter().all(|r| r["directions_separated"] == true);
