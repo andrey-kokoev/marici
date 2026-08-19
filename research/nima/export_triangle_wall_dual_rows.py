@@ -47,6 +47,12 @@ parser.add_argument(
     action="store_true",
     help="place the fifth marked-divisor relation family before the other four",
 )
+parser.add_argument(
+    "--marked-last",
+    type=int,
+    choices=range(5),
+    help="place the selected marked relation family last (0=g1,...,4=g31)",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
@@ -121,6 +127,8 @@ with args.output.open("wb") as stream:
     if family_bounds[-1] != len(central_rows):
         raise RuntimeError("relation-family row census does not agree")
     order = list(range(len(central_rows)))
+    if args.partner_first and args.marked_last is not None:
+        raise RuntimeError("--partner-first and --marked-last are mutually exclusive")
     if args.partner_first:
         marked_start = family_bounds[1]
         partner_start = marked_start + 4 * marked_count
@@ -129,9 +137,17 @@ with args.output.open("wb") as stream:
             + list(range(partner_start, partner_start + marked_count))
             + list(range(marked_start, partner_start))
         )
+    elif args.marked_last is not None:
+        marked_start = family_bounds[1]
+        marked_blocks = [
+            list(range(marked_start + index * marked_count, marked_start + (index + 1) * marked_count))
+            for index in range(5)
+        ]
+        marked_order = [index for index in range(5) if index != args.marked_last] + [args.marked_last]
+        order = list(range(marked_start)) + [row for index in marked_order for row in marked_blocks[index]]
     for output_index, index in enumerate(order):
         central, derivative, second = central_rows[index], derivative_rows[index], second_rows[index]
-        if args.partner_first and output_index >= family_bounds[1]:
+        if (args.partner_first or args.marked_last is not None) and output_index >= family_bounds[1]:
             family = 2 + (output_index - family_bounds[1]) // marked_count
         else:
             family = next(i for i, bound in enumerate(family_bounds) if output_index < bound)
