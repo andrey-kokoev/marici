@@ -21,7 +21,7 @@ as
 The source reflection
 
 \[
-\tau=(24)
+\tau_{\rm off}=(23)
 \]
 
 fixes (a=s_{14}) and (q=s_{235}), and exchanges
@@ -62,18 +62,18 @@ Both divisors have degree zero. The (q)-component remains zero.
 
 ## Orientation audit
 
-In the source-normalized transition, \(\tau\) reverses both serialized variance bases:
+In the source-normalized transition, \(\tau_{\rm off}\) reverses both serialized variance bases:
 
 \[
-\chi_{\rm sparse}(\tau)=-1,
+\chi_{\rm sparse}(\tau_{\rm off})=-1,
 \qquad
-\chi_{\rm dense}(\tau)=-1.
+\chi_{\rm dense}(\tau_{\rm off})=-1.
 \]
 
 It preserves the ordered residue orientation and the normal-line orientation. Hence
 
 \[
-\chi_{\rm total}(\tau)
+\chi_{\rm total}(\tau_{\rm off})
 =(-1)(-1)(+1)(+1)
 =+1.
 \]
