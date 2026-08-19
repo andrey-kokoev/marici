@@ -1,0 +1,58 @@
+load('research/nima/check_marked_candidate_algebraic_kernel.sage')
+
+import hashlib
+
+connection_path='research/benincasa/bivariate_soft_gram_connection.json'
+wall_path='research/benincasa/marked-wall-quotient-connection.json'
+connection_bytes=open(connection_path,'rb').read()
+wall_bytes=open(wall_path,'rb').read()
+connection=json.loads(connection_bytes)
+wall=json.loads(wall_bytes)
+
+Dwall=F(sage_eval(wall['D'],locals={'u':u,'v':v}))
+Hwall=F(sage_eval(wall['H'],locals={'u':u,'v':v}))
+
+def parse(s):
+    return F(sage_eval(s,locals={'u':u,'v':v,'D':Dwall,'H':Hwall}))
+
+def wall_matrix(axis):
+    d=wall[axis]
+    return matrix(F,[[parse(d['alpha']),0,0],
+                     [parse(d['beta1']),parse(d['gamma1']),0],
+                     [parse(d['beta2']),0,parse(d['gamma2'])]])
+
+def final_matrix(key):
+    A=matrix(F,[[parse(z) for z in row] for row in connection[key]])
+    return A.matrix_from_rows_and_columns([5,6,7,8],[5,6,7,8])
+
+Cu=B['u'].transpose()
+Cv=B['v'].transpose()
+Wu=wall_matrix('u').transpose()
+Wv=wall_matrix('v').transpose()
+A4u=final_matrix('connection_u').transpose()
+A4v=final_matrix('connection_v').transpose()
+
+# Both packets record basis derivatives.  On coefficient columns they act
+# by transpose, with the convention nabla=d-A.  This is the off-diagonal
+# mixed-curvature equation for the 3x4 block C=B^T.
+curvature=(Cv.derivative(u)-Cu.derivative(v)
+           -Wu*Cv-Cu*A4v+Wv*Cu+Cv*A4u)
+assert all(z==0 for z in curvature.list())
+
+result={
+    'schema':'marici.marked-candidate-flatness.v1',
+    'candidate_sha256':hashlib.sha256(candidate_bytes).hexdigest(),
+    'connection_sha256':hashlib.sha256(connection_bytes).hexdigest(),
+    'wall_connection_sha256':hashlib.sha256(wall_bytes).hexdigest(),
+    'coefficient_convention':'transpose packet matrices; nabla=d-A',
+    'mixed_curvature_zero_entries':int(sum(z==0 for z in curvature.list())),
+    'mixed_curvature_total_entries':int(len(curvature.list())),
+    'status':'exact_candidate_flatness_pass',
+    'source_identity_certified':False,
+}
+
+with open('research/nima/marked-candidate-flatness.json','w') as handle:
+    json.dump(result,handle,indent=2,sort_keys=True)
+    handle.write('\n')
+
+print(json.dumps(result,indent=2,sort_keys=True))
