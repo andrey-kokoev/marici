@@ -37,6 +37,12 @@ fn canonical(mask: u8) -> u8 {
     mask.min(complement)
 }
 
+fn compatible_splits(a: u8, b: u8) -> bool {
+    let full=0b11_1111u8;
+    let ac=full^a; let bc=full^b;
+    (a&b)==0 || (a&bc)==0 || (ac&b)==0 || (ac&bc)==0
+}
+
 fn gcd(mut a: i128, mut b: i128) -> i128 {
     a = a.abs(); b = b.abs();
     while b != 0 { let r = a % b; a = b; b = r; }
@@ -93,6 +99,8 @@ fn main() {
     let permutations=[[2,3,4],[2,4,3],[3,2,4],[3,4,2],[4,2,3],[4,3,2]];
     let mut chambers=BTreeMap::new();
     let mut all_facets=BTreeSet::new();
+    let mut compatible_pairs=BTreeSet::new();
+    let mut pair_occurrences:BTreeMap<(u8,u8),Vec<String>>=BTreeMap::new();
     for p in permutations {
         let word=[1,p[0],p[1],p[2],5,6];
         let mut facets=BTreeSet::new();
@@ -102,8 +110,16 @@ fn main() {
             facets.insert(canonical(mask));
         }}
         assert_eq!(facets.len(),9);
+        let word_label=word.iter().map(|x|x.to_string()).collect::<Vec<_>>().join("");
+        let fs=facets.iter().copied().collect::<Vec<_>>();
+        for i in 0..fs.len() { for j in i+1..fs.len() {
+            if compatible_splits(fs[i],fs[j]) {
+                compatible_pairs.insert((fs[i],fs[j]));
+                pair_occurrences.entry((fs[i],fs[j])).or_default().push(word_label.clone());
+            }
+        }}
         all_facets.extend(facets.iter().copied());
-        chambers.insert(word.iter().map(|x|x.to_string()).collect::<Vec<_>>().join(""),facets.iter().map(|&m|mask_label(m)).collect::<Vec<_>>());
+        chambers.insert(word_label,facets.iter().map(|&m|mask_label(m)).collect::<Vec<_>>());
     }
 
     let mut relations=Vec::new();
@@ -116,7 +132,7 @@ fn main() {
     relations.push(v(&[(1,2,3)]));
     relations.push(v(&[(1,2,3),(1,2,5),(1,3,5)]));
 
-    let factors=[
+    let factors=vec![
         ("A2",v(&[(1,1,2)])),
         ("A3",v(&[(1,1,3)])),
         ("A2*B24",v(&[(1,1,2),(1,2,4)])),
@@ -127,11 +143,25 @@ fn main() {
         ("A3*B34/Z",v(&[(1,1,3),(1,3,4),(-1,3,5)])),
     ];
     let mut matches=BTreeMap::new();
-    for (name,vector) in factors {
+    let mut pair_matches=BTreeMap::new();
+    for (name,vector) in &factors {
         let found=all_facets.iter().filter(|&&m|equivalent(&vector,&channel(m),&relations)).map(|&m|mask_label(m)).collect::<Vec<_>>();
-        matches.insert(name,found);
+        matches.insert(*name,found);
+        let mut pairs=Vec::new();
+        for &(p,q) in &compatible_pairs { for sp in [1i64,-1] { for sq in [1i64,-1] {
+            let cp=channel(p); let cq=channel(q);
+            let sum=cp.iter().zip(&cq).map(|(&x,&y)|sp*x+sq*y).collect::<Vec<_>>();
+            if equivalent(vector,&sum,&relations) {
+                pairs.push(format!("{}{}{}{}",if sp>0{"+"}else{"-"},mask_label(p),if sq>0{"+"}else{"-"},mask_label(q)));
+            }
+        }}}
+        pairs.sort(); pairs.dedup();
+        pair_matches.insert(*name,pairs);
     }
     let direct_count=matches.values().filter(|x|!x.is_empty()).count();
+    let labelled_pair_occurrences=pair_occurrences.iter().map(|(&(p,q),words)|
+        (format!("{}|{}",mask_label(p),mask_label(q)),words.clone())
+    ).collect::<BTreeMap<_,_>>();
     let packet=json!({
         "schema":"marici.benincasa.string_six_point_branch_chamber_facets.v1",
         "gauge":"six real chambers represented by cyclic words (1,sigma(2,3,4),5,6)",
@@ -140,6 +170,9 @@ fn main() {
         "branch_normals":["s14","s23","s23+s25+s35"],
         "momentum_conservation":"six row sums",
         "factor_facet_matches":matches,
+        "compatible_codimension_two_matches":pair_matches,
+        "compatible_pair_count":compatible_pairs.len(),
+        "compatible_pair_occurrences":labelled_pair_occurrences,
         "direct_facet_factor_count":direct_count,
         "all_eight_are_direct_facets":direct_count==8,
         "classification":"unmatched factors are composite transition resonances, not single chamber facets under the frozen relations"
