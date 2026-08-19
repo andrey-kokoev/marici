@@ -40,7 +40,7 @@ For each of the three external derivatives:
 
 - all 21 selected basis vectors have nonzero components outside the block;
 - the \(\mathcal G_{12}\) presentation uses five distinct outside columns;
-- the \(\mathcal G_{31}\) presentation uses seven distinct outside columns.
+- the \(\mathcal G_{31}\) presentation uses five distinct outside columns.
 
 Consequently the displayed \(21\times21\) matrices are obtained only after
 discarding those components.  Their failure to intertwine is maximal:
@@ -81,4 +81,6 @@ missing horizontal structure.
 - field: \(\mathbf F_{32003}\);
 - transport rank: 21;
 - all 63 full reduced-chain squares pass;
+- quotient coordinates use complete pivot elimination, including pivot
+  columns below a free leading column;
 - allocator claim: `seqclaim-83c47d2e5ddab25a60c44c55`.
