@@ -41,6 +41,34 @@ scatteringgravity
 cosmology
 ```
 
+Prospective sector expansion follows the provisional research-priority vector
+
+```text
+string
+< gravity
+< CFT
+< integrability
+< flavor
+```
+
+Here `<` means smaller expected conditional description length relative to the
+current Marici core, and therefore earlier research priority. It is not a claim
+of physical containment, importance, or evidential maturity.
+
+`string` is first because the current program already uses moduli-space
+compactification, Koba--Nielsen forms, twisted cohomology, intersection
+pairings, and Gauss--Manin transport. `gravity` is already represented inside
+the scattering family; its position refers to testing whether it closes as an
+independently typed sector rather than merely as a double-copy realization.
+The remaining entries are prospective sectors only.
+
+This ordering is a search policy, not an ontology. A candidate becomes a
+physical sector only after its source objects, coefficient objects, and at
+least one hostile cross-sector falsifier have been frozen independently. Until
+then it remains a related research program. The vector may be revised only by
+new evidence about the additional machinery required to type and close a
+sector.
+
 Realization and topology layers can include
 
 ```text
