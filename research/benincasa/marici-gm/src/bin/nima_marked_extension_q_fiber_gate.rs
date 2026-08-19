@@ -29,6 +29,7 @@ fn roots(u:u64,p:u64)->Vec<u64>{
 }
 fn main(){
     let p=source::prime();let mut records=Vec::new();
+    if let (Ok(us),Ok(vs))=(std::env::var("MARICI_GATE_U"),std::env::var("MARICI_GATE_V")){let u: u64=us.parse().unwrap();let v:u64=vs.parse().unwrap();assert_eq!(q(u,v,p),0);let mut gates=Vec::new();for axis in ['u','v']{for master in 0..3{let g=source::gate(u,v,axis,master);gates.push(format!("{{\"axis\":\"{}\",\"master\":{},\"rank\":{},\"mask\":{},\"pivot_hash\":{},\"residual_zero\":{},\"consistent\":{}}}",axis,master,g.rank,g.mask,g.pivot_hash,g.residual,g.consistent));}}println!("{{\"schema\":\"marici.nima.marked_extension_point_gate.v1\",\"prime\":{},\"u\":{},\"v\":{},\"gates\":[{}]}}",p,u,v,gates.join(","));return}
     'scan:for u in 2..200u64{for v in roots(u,p){assert_eq!(q(u,v,p),0,"u={u} v={v}");let mut gates=Vec::new();let mut accepted=true;for axis in ['u','v']{for master in 0..3{let g=source::gate(u,v,axis,master);accepted&=g.rank==117&&g.mask==3847&&g.fixed==vec![0,1,2,8,9,10,11]&&g.residual&&g.consistent;gates.push(format!("{{\"axis\":\"{}\",\"master\":{},\"rank\":{},\"mask\":{},\"pivot_hash\":{},\"residual_zero\":{},\"consistent\":{}}}",axis,master,g.rank,g.mask,g.pivot_hash,g.residual,g.consistent));}}
         records.push(format!("{{\"u\":{},\"v\":{},\"Q\":0,\"accepted\":{},\"gates\":[{}]}}",u,v,accepted,gates.join(",")));if records.len()==4{break 'scan}
     }}
