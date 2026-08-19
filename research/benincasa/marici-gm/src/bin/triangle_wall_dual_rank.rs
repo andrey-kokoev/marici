@@ -148,10 +148,13 @@ fn main() -> io::Result<()> {
             arguments.get(4).expect("--probe-basis requires old column count").parse::<usize>().unwrap(),
         ))
     } else { None };
+    let probe_file = if second_argument.as_deref() == Some("--probe-file") {
+        Some(arguments.get(3).expect("--probe-file requires a path").clone())
+    } else { None };
     let probe = second_argument.filter(|argument| {
         !mixed_length3_only && !mixed_lower_only
             && argument != "--write-quadratic-basis" && argument != "--probe-basis"
-            && argument != "--probe-basis-and-write"
+            && argument != "--probe-basis-and-write" && argument != "--probe-file"
     }).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
@@ -366,6 +369,7 @@ fn main() -> io::Result<()> {
         let mut coordinate_pivots: Vec<Option<Row>> = vec![None; second_normal];
         let mut probe_count = 0usize;
         let mut remainder_count = 0usize;
+        let mut coordinate_rows = Vec::new();
         for line in text.lines().filter(|line| !line.trim().is_empty()) {
             probe_count += 1;
             let embedded = line.split(',').map(|term| {
@@ -378,11 +382,24 @@ fn main() -> io::Result<()> {
             let baseline_residual = reduce(embedded, &filtered_triple);
             let (remainder, coefficients) = reduce_tracked(baseline_residual, &quadratic_basis);
             if !remainder.is_empty() { remainder_count += 1; }
-            let coordinate_row = coefficients.into_iter().map(|(index, value)| (index, (P - value) % P)).collect();
+            let coordinate_row: Row = coefficients.into_iter().map(|(index, value)| (index, (P - value) % P)).collect();
+            coordinate_rows.push(coordinate_row.clone());
             insert(coordinate_row, &mut coordinate_pivots);
         }
         let rank = coordinate_pivots.iter().flatten().count();
-        format!("{{\"probe_count\":{probe_count},\"target_dimension\":{second_normal},\"transition_rank\":{rank},\"kernel_dimension\":{},\"cokernel_dimension\":{},\"nonzero_remainders\":{remainder_count}}}", probe_count - rank, second_normal - rank)
+        let image_pivots = coordinate_pivots.iter().enumerate()
+            .filter_map(|(index, row)| row.as_ref().map(|_| index))
+            .collect::<Vec<_>>();
+        let quotient_columns = (0..second_normal)
+            .filter(|index| coordinate_pivots[*index].is_none())
+            .collect::<Vec<_>>();
+        let image_pivots_json = image_pivots.iter().map(usize::to_string).collect::<Vec<_>>().join(",");
+        let quotient_columns_json = quotient_columns.iter().map(usize::to_string).collect::<Vec<_>>().join(",");
+        let coordinates_json = coordinate_rows.iter().map(|row| {
+            let entries = row.iter().map(|(index, value)| format!("[{index},{value}]")).collect::<Vec<_>>().join(",");
+            format!("[{entries}]")
+        }).collect::<Vec<_>>().join(",");
+        format!("{{\"probe_count\":{probe_count},\"target_dimension\":{second_normal},\"transition_rank\":{rank},\"kernel_dimension\":{},\"cokernel_dimension\":{},\"nonzero_remainders\":{remainder_count},\"image_pivot_columns\":[{image_pivots_json}],\"quotient_coordinate_columns\":[{quotient_columns_json}],\"coordinate_rows\":[{coordinates_json}]}}", probe_count - rank, second_normal - rank)
     } else { "null".to_string() };
     let probe_json = if let Some(probe) = probe {
         let baseline_residual = reduce(probe, &filtered_triple);
@@ -391,6 +408,23 @@ fn main() -> io::Result<()> {
             format!("[{index},{}]", (P - value) % P)
         }).collect::<Vec<_>>().join(",");
         format!("{{\"remainder_terms\":{},\"coordinates\":[{coordinates}]}}", remainder.len())
+    } else { "null".to_string() };
+    let probe_file_json = if let Some(path) = probe_file {
+        let text = std::fs::read_to_string(path)?;
+        let mut results = Vec::new();
+        for line in text.lines().filter(|line| !line.trim().is_empty()) {
+            let probe = line.split(',').filter(|term| !term.is_empty()).map(|term| {
+                let (column, value) = term.split_once(':').expect("probe term must be column:value");
+                (column.parse::<usize>().unwrap(), value.parse::<u32>().unwrap() % P)
+            }).collect::<Row>();
+            let baseline_residual = reduce(probe, &filtered_triple);
+            let (remainder, coefficients) = reduce_tracked(baseline_residual, &quadratic_basis);
+            let coordinates = coefficients.iter().map(|(index, value)| {
+                format!("[{index},{}]", (P - value) % P)
+            }).collect::<Vec<_>>().join(",");
+            results.push(format!("{{\"remainder_terms\":{},\"coordinates\":[{coordinates}]}}", remainder.len()));
+        }
+        format!("[{}]", results.join(","))
     } else { "null".to_string() };
     let family_json = cumulative.iter().map(|(family, central, dual, triple)| {
         let first = dual - 2 * central;
@@ -403,6 +437,6 @@ fn main() -> io::Result<()> {
         } else { String::new() };
         format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot},\"residual\":[{residual_json}]}}")
     }).collect::<Vec<_>>().join(",");
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v6\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"tangential_jet\":{tangent_json},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json},\"basis_transition\":{transition_json}}}", first_lifts.len());
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v6\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"tangential_jet\":{tangent_json},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json},\"probe_file\":{probe_file_json},\"basis_transition\":{transition_json}}}", first_lifts.len());
     Ok(())
 }
