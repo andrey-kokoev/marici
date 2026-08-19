@@ -40,8 +40,22 @@ fn main() {
     let direct_incidence_degree = off_diagonal_degree as isize - diagonal_degree as isize;
     assert_eq!(direct_incidence_degree, 0);
 
+    // Deleting the incompatible middle cut from either ordered flag gives
+    // the same length-two coarsening (a,q), with the same simplicial sign.
+    let common_coarsening = vec![diagonal[0].clone(), diagonal[2].clone()];
+    assert_eq!(common_coarsening, vec![off_diagonal[0].clone(), off_diagonal[2].clone()]);
+    assert!(pairwise_compatible(&common_coarsening));
+    let deleted_index = 1usize;
+    let diagonal_incidence_sign = if deleted_index % 2 == 0 { 1 } else { -1 };
+    let off_diagonal_incidence_sign = if deleted_index % 2 == 0 { 1 } else { -1 };
+    assert_eq!(diagonal_incidence_sign, off_diagonal_incidence_sign);
+
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_flag_compatibility.v1\",\"diagonal_flag\":[\"s14\",\"s23\",\"s235\"],\"off_diagonal_flag\":[\"s14\",\"s35\",\"s235\"],\"diagonal_flag_compatible\":true,\"off_diagonal_flag_compatible\":true,\"differing_cuts\":[\"s23\",\"s35\"],\"cut_intersection\":[3],\"left_subset_right\":false,\"right_subset_left\":false,\"cuts_disjoint\":false,\"union_nested_set\":false,\"carrier_common_stratum\":false,\"diagonal_degree\":{},\"off_diagonal_degree\":{},\"direct_incidence_degree\":{},\"cellular_boundary_can_connect_directly\":false}}",
-        diagonal_degree, off_diagonal_degree, direct_incidence_degree
+        "{{\"schema\":\"marici.benincasa.string_six_point_flag_compatibility.v2\",\"diagonal_flag\":[\"s14\",\"s23\",\"s235\"],\"off_diagonal_flag\":[\"s14\",\"s35\",\"s235\"],\"diagonal_flag_compatible\":true,\"off_diagonal_flag_compatible\":true,\"differing_cuts\":[\"s23\",\"s35\"],\"cut_intersection\":[3],\"left_subset_right\":false,\"right_subset_left\":false,\"cuts_disjoint\":false,\"union_nested_set\":false,\"carrier_common_stratum\":false,\"diagonal_degree\":{},\"off_diagonal_degree\":{},\"direct_incidence_degree\":{},\"cellular_boundary_can_connect_directly\":false,\"common_coarsening\":[\"s14\",\"s235\"],\"deleted_slot\":1,\"diagonal_incidence_sign\":{},\"off_diagonal_incidence_sign\":{},\"signs_equal\":true}}",
+        diagonal_degree,
+        off_diagonal_degree,
+        direct_incidence_degree,
+        diagonal_incidence_sign,
+        off_diagonal_incidence_sign
     );
 }

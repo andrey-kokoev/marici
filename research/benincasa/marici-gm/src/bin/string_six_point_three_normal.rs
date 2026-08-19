@@ -165,6 +165,55 @@ fn main() {
             specialize(clean(mixed_grade / (a("A4") - a("1"))), "A4")
         })
         .collect();
+
+    // The two maximal flags obtained by inserting x or y have the common
+    // carrier coarsening (a,q). Audit its normalized coefficient matrix before
+    // inserting either incompatible middle cut.
+    let common_face_aq = ["A4", "Q"]
+        .iter()
+        .fold(transition.clone(), |matrix, variable| {
+            matrix
+                .into_iter()
+                .map(|row| {
+                    row.into_iter()
+                        .map(|entry| specialize(entry, variable))
+                        .collect()
+                })
+                .collect()
+        });
+    let common_face_qa = ["Q", "A4"]
+        .iter()
+        .fold(transition.clone(), |matrix, variable| {
+            matrix
+                .into_iter()
+                .map(|row| {
+                    row.into_iter()
+                        .map(|entry| specialize(entry, variable))
+                        .collect()
+                })
+                .collect()
+        });
+    assert_eq!(common_face_aq, common_face_qa);
+    let common_face_nonzero = common_face_aq
+        .iter()
+        .flatten()
+        .filter(|entry| **entry != a("0"))
+        .count();
+    let common_face_rank_two = (0..6).any(|i| {
+        ((i + 1)..6).any(|j| {
+            clean(
+                common_face_aq[0][i].clone() * common_face_aq[1][j].clone()
+                    - common_face_aq[0][j].clone() * common_face_aq[1][i].clone(),
+            ) != a("0")
+        })
+    });
+    let common_face_rank = if common_face_rank_two {
+        2
+    } else if common_face_nonzero > 0 {
+        1
+    } else {
+        0
+    };
     for j in 0..6 {
         assert_eq!(
             clean(first_a4_grade[j].clone() + first_a4_grade[j + 6].clone()),
@@ -345,10 +394,12 @@ fn main() {
     }
     assert!(witness_column.is_some());
     println!(
-        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v5\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false}}}}",
+        "{{\"schema\":\"marici.benincasa.string_six_point_three_normal.v6\",\"flag\":[\"s14\",\"s23\",\"s235\"],\"orders_checked\":6,\"all_orders_equal\":true,\"normal_variables_absent\":true,\"ordinary_exceptional_rank\":0,\"ordinary_nonzero_entries\":{},\"ordinary_tetrahedral_coherence\":\"trivial_zero\",\"first_A4_grade_rank\":{},\"first_A4_grade_nonzero_entries\":{},\"common_face\":{{\"flag\":[\"s14\",\"s235\"],\"orders_checked\":[[\"A4\",\"Q\"],[\"Q\",\"A4\"]],\"orders_equal\":true,\"nonzero_entries\":{},\"rank\":{}}},\"off_diagonal_representative\":\"s35\",\"off_diagonal_orders_checked\":6,\"off_diagonal_all_orders_equal\":{},\"off_diagonal_ordinary_object\":\"undefined_order_dependent\",\"off_diagonal_first_route_nonzero_entries\":{},\"off_diagonal_first_route_row_anti\":{},\"off_diagonal_routes\":{},\"rees_a_chart\":{{\"coordinates\":\"A4-1=H,Y-1=UH,Q-1=VH\",\"nonzero_entries\":{},\"rank\":{},\"row_anti\":{},\"depends_on_exceptional_ratios\":{},\"representatives\":{}}},\"common_deeper_corner\":{{\"constraint\":\"Q=XYZ forces Z=1 after X=Y=Q=1\",\"off_diagonal_regularization\":\"multiply by U\",\"diagonal_regularization\":\"multiply by Z-1\",\"diagonal_has_simple_Z_pole\":{},\"off_diagonal_nonzero_entries\":{},\"diagonal_nonzero_entries\":{},\"diagonal_target_direction\":\"(1,-1)\",\"off_diagonal_target_direction\":\"(0,1)\",\"joint_target_rank\":2,\"witness_column\":{},\"witness_minor\":\"{}\",\"identity_comparison_identifies_lines\":false}}}}",
         nonzero,
         if first_grade_nonzero > 0 { 1 } else { 0 },
         first_grade_nonzero,
+        common_face_nonzero,
+        common_face_rank,
         off_all_equal,
         off_nonzero,
         off_row_anti,
