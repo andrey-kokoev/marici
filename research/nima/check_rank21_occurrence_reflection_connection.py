@@ -38,11 +38,24 @@ base.reduce_row = canonical_reduce
 
 
 def parameter_derivative_data(fiber, point, axis):
-    weights = (1, -8, 0, 8, -1)
-    inverse_twelve = pow(12, P - 2, P)
+    nodes = tuple(range(-3, 4))
+    weights = []
+    for node in nodes:
+        polynomial = [1]
+        denominator = 1
+        for other in nodes:
+            if other == node:
+                continue
+            following = [0] * (len(polynomial) + 1)
+            for degree, coefficient in enumerate(polynomial):
+                following[degree] = (following[degree] - other * coefficient) % P
+                following[degree + 1] = (following[degree + 1] + coefficient) % P
+            polynomial = following
+            denominator = denominator * (node - other) % P
+        weights.append(polynomial[1] * pow(denominator, P - 2, P) % P)
     k_result = {}
     q_result = {}
-    for offset, weight in zip((-2, -1, 0, 1, 2), weights):
+    for offset, weight in zip(nodes, weights):
         shifted = list(point)
         shifted[axis] += offset
         k, q = fiber(*shifted)
@@ -52,9 +65,9 @@ def parameter_derivative_data(fiber, point, axis):
             target = q_result.setdefault(name, {})
             for exponent, coefficient in polynomial.items():
                 target[exponent] = (target.get(exponent, 0) + weight * coefficient) % P
-    k_result = {e: c * inverse_twelve % P for e, c in k_result.items() if c}
+    k_result = {e: c % P for e, c in k_result.items() if c % P}
     q_result = {
-        name: {e: c * inverse_twelve % P for e, c in polynomial.items() if c}
+        name: {e: c % P for e, c in polynomial.items() if c % P}
         for name, polynomial in q_result.items()
     }
     return k_result, q_result

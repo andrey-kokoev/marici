@@ -53,6 +53,21 @@ def coefficient_weights(order):
     return result
 
 
+def exact_parameter_derivative_data(point, axis):
+    k_result = {}
+    q_result = {name: {} for name in charts.SOURCE_NAMES}
+    for offset, weight in zip(NODES, coefficient_weights(1)):
+        shifted = list(point)
+        shifted[axis] += offset
+        k, q = base.fiber_data(*shifted)
+        for exponent, coefficient in k.items():
+            base.add_value(k_result, exponent, weight * coefficient)
+        for name in charts.SOURCE_NAMES:
+            for exponent, coefficient in q[name].items():
+                base.add_value(q_result[name], exponent, weight * coefficient)
+    return k_result, q_result
+
+
 def shifted_point(tangent, offset):
     x1, x2, _ = POINT
     if tangent == "x1":
@@ -79,10 +94,7 @@ def audit_tangent(tangent):
         derivative_rows.append(derivative)
 
     axes = (0, 2) if tangent == "x1" else (1, 2)
-    derivative_data = {
-        axis: connection.parameter_derivative_data(base.fiber_data, POINT, axis)
-        for axis in axes
-    }
+    derivative_data = {axis: exact_parameter_derivative_data(POINT, axis) for axis in axes}
     image_cache = {}
 
     def full_image(label, axis):
