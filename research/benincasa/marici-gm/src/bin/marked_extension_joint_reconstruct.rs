@@ -9,6 +9,7 @@ fn pow(mut a:u64,mut n:u64,p:u64)->u64{let mut r=1;while n>0{if n&1==1{r=mul(r,a
 fn inv(a:u64,p:u64)->u64{assert_ne!(a,0);pow(a,p-2,p)}
 
 fn mons(d:usize)->Vec<(usize,usize)>{
+    if std::env::var_os("MARICI_RECON_UNIVAR_U").is_some(){return(0..=d).map(|i|(i,0)).collect()}
     (0..=d).flat_map(|s|(0..=s).map(move|i|(i,s-i))).collect()
 }
 fn eval_mons(u:u64,v:u64,ms:&[(usize,usize)],p:u64)->Vec<u64>{
@@ -45,11 +46,19 @@ fn null_line(mut a:Vec<Vec<u64>>,n:usize,p:u64)->Option<Vec<u64>>{
 }
 
 #[derive(Clone)] struct Point{u:u64,v:u64,f:Vec<u64>}
-fn load(path:&str)->(u64,Vec<Point>){
+fn load(path:&str)->(u64,Vec<Point>,u8){
     let root:Value=serde_json::from_str(&fs::read_to_string(path).unwrap()).unwrap();let p=root["prime"].as_u64().unwrap();
+    if root["schema"].as_str().unwrap().contains("dual_sampler") {
+        let points=root["dual_rows"].as_array().unwrap().iter().map(|q|{let u=q["u"].as_u64().unwrap();let v=q["v"].as_u64().unwrap();let f=q["vectors"].as_array().unwrap().iter().flat_map(|r|r.as_array().unwrap().iter().map(|x|x.as_u64().unwrap())).collect();Point{u,v,f}}).collect();
+        return(p,points,1)
+    }
+    if root["schema"].as_str().unwrap().contains("primal_witness_sampler") {
+        let points=root["accepted_points"].as_array().unwrap().iter().map(|q|Point{u:q["u"].as_u64().unwrap(),v:q["v"].as_u64().unwrap(),f:q["values"].as_array().unwrap().iter().map(|x|x.as_u64().unwrap()).collect()}).collect();
+        return(p,points,2)
+    }
     let mut map:BTreeMap<(u64,u64),[Option<Vec<Vec<u64>>>;2]>=BTreeMap::new();
     for q in root["wall_quotient_blocks"].as_array().unwrap(){let u=q["u"].as_u64().unwrap();let v=q["v"].as_u64().unwrap();let axis=usize::from(q["axis"].as_str().unwrap()=="v");let m=q["fixed_extension_e6_e9_mod_p"].as_array().unwrap().iter().map(|r|r.as_array().unwrap().iter().map(|x|x.as_u64().unwrap()).collect()).collect();map.entry((u,v)).or_default()[axis]=Some(m)}
-    let points=map.into_iter().filter_map(|((u,v),axes)|{let[a,b]=axes;let(a,b)=(a?,b?);let mut f=Vec::new();for m in [a,b]{for row in m{f.extend(row)}}Some(Point{u,v,f})}).collect();(p,points)
+    let points=map.into_iter().filter_map(|((u,v),axes)|{let[a,b]=axes;let(a,b)=(a?,b?);let mut f=Vec::new();for m in [a,b]{for row in m{f.extend(row)}}Some(Point{u,v,f})}).collect();(p,points,0)
 }
 
 fn attempt(points:&[Point],p:u64,dn:usize,dd:usize,ks:&[usize])->Option<(Vec<u64>,Vec<Vec<u64>>)> {
@@ -65,8 +74,17 @@ fn attempt(points:&[Point],p:u64,dn:usize,dd:usize,ks:&[usize])->Option<(Vec<u64
 }
 
 fn main(){
-    let path=std::env::args().nth(1).expect("sample packet path");let(p,points)=load(&path);let max=std::env::var("MARICI_MAX_RECON_DEGREE").ok().and_then(|x|x.parse().ok()).unwrap_or(15usize);
+    let path=std::env::args().nth(1).expect("sample packet path");let(p,mut points,mode)=load(&path);let max=std::env::var("MARICI_MAX_RECON_DEGREE").ok().and_then(|x|x.parse().ok()).unwrap_or(15usize);
+    if let Some(n)=std::env::var("MARICI_RECON_TRAIN_POINTS").ok().and_then(|x|x.parse::<usize>().ok()){points.truncate(n.min(points.len()))}
     let mut out=Vec::new();
+    if mode==2 {
+        let ks:Vec<_>=(0..117).collect();let direct=std::env::var("MARICI_RECON_DEGREES").ok().map(|x|{let mut q=x.split(',').map(|z|z.parse::<usize>().expect("degree"));(q.next().unwrap(),q.next().unwrap())});let mut found=None;if let Some((dn,dd))=direct{if let Some((d,n))=attempt(&points,p,dn,dd,&ks){found=Some((dn,dd,d,n))}}else{let total_start=std::env::var("MARICI_RECON_TOTAL_START").ok().and_then(|x|x.parse().ok()).unwrap_or(0);for total in total_start..=2*max{for dd in 0..=max{let Some(dn)=total.checked_sub(dd)else{continue};if dn>max{continue}if let Some((d,n))=attempt(&points,p,dn,dd,&ks){found=Some((dn,dd,d,n));break}}if found.is_some(){break}}}let(dn,dd,d,n)=found.unwrap_or_else(||panic!("no primal witness reconstruction through degree {max}"));println!("{{\"schema\":\"marici.benincasa.marked_extension_primal_witness_reconstruct.v1\",\"prime\":{},\"points\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"denominator\":{:?},\"numerators\":{:?}}}",p,points.len(),dn,dd,d,n);return
+    }
+    if mode==1 {
+        let coordinates:Vec<usize>=std::env::var("MARICI_DUAL_COORDINATE").ok().map(|x|vec![x.parse::<usize>().expect("dual coordinate")-8]).unwrap_or_else(||(0..4).collect());
+        for coordinate in coordinates { let ks:Vec<_>=(coordinate*132..(coordinate+1)*132).collect();let direct=std::env::var("MARICI_RECON_DEGREES").ok().map(|x|{let mut q=x.split(',').map(|z|z.parse::<usize>().expect("degree"));(q.next().unwrap(),q.next().unwrap())});let mut found=None;if let Some((dn,dd))=direct{if let Some((d,n))=attempt(&points,p,dn,dd,&ks){found=Some((dn,dd,d,n))}}else{let total_start=std::env::var("MARICI_RECON_TOTAL_START").ok().and_then(|x|x.parse().ok()).unwrap_or(0);for total in total_start..=2*max{for dd in 0..=max{let Some(dn)=total.checked_sub(dd)else{continue};if dn>max{continue}if let Some((d,n))=attempt(&points,p,dn,dd,&ks){found=Some((dn,dd,d,n));break}}if found.is_some(){break}}}let(dn,dd,d,n)=found.unwrap_or_else(||panic!("no dual coordinate {} reconstruction through degree {max}",coordinate+8));out.push(format!("{{\"coordinate\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"denominator\":{:?},\"numerators\":{:?}}}",coordinate+8,dn,dd,d,n))}
+        println!("{{\"schema\":\"marici.benincasa.marked_extension_dual_reconstruct.v1\",\"prime\":{},\"points\":{},\"dual_rows\":[{}]}}",p,points.len(),out.join(","));return
+    }
     for k in 0..24{let axis=if k<12{"u"}else{"v"};let local=k%12;let row=local/3;let col=local%3;let mut found=None;for total in 0..=2*max{for dd in 0..=max{let Some(dn)=total.checked_sub(dd)else{continue};if dn>max{continue}if let Some((d,n))=attempt(&points,p,dn,dd,&[k]){found=Some((dn,dd,d,n));break}}if found.is_some(){break}}let(dn,dd,d,n)=found.unwrap_or_else(||panic!("no {axis}[{row},{col}] reconstruction through degree {max}"));out.push(format!("{{\"axis\":\"{}\",\"row\":{},\"column\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"denominator\":{:?},\"numerator\":{:?}}}",axis,row,col,dn,dd,d,n[0]))}
     println!("{{\"schema\":\"marici.benincasa.marked_extension_joint_reconstruct.v3\",\"prime\":{},\"points\":{},\"entries\":[{}]}}",p,points.len(),out.join(","))
 }

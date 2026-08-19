@@ -448,6 +448,7 @@ struct Sol {
     unknowns: usize,
     pivot_cols: Vec<usize>,
     consistent: bool,
+    witness: Vec<F>,
 }
 
 fn pivot_hash(columns: &[usize]) -> u64 {
@@ -533,8 +534,8 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         x[*col] = a[*row][n]
     }
     let mut check = Poly::zero();
-    for (q, c) in cols.iter().zip(x) {
-        check = check.add(&q.scale(c))
+    for (q, c) in cols.iter().zip(&x) {
+        check = check.add(&q.scale(*c))
     }
     Sol {
         rank: rr,
@@ -545,7 +546,191 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         unknowns: n,
         pivot_cols: piv.iter().map(|(_, c)| *c).collect(),
         consistent,
+        witness: x,
     }
+}
+
+fn run_primal_witness(samples: &[(u64, u64)]) {
+    let axis = std::env::var("MARICI_WITNESS_AXIS").ok().and_then(|x| x.chars().next()).unwrap_or('u');
+    let master: usize = std::env::var("MARICI_WITNESS_MASTER").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let mut accepted = Vec::new();
+    let mut rejected = Vec::new();
+    for (u, v) in samples {
+        let s = solve(&geometry(*u, *v, axis), master, 8);
+        let signature = fixed_signature(&s);
+        if s.consistent && s.residual_zero && s.rank == 117 && signature.0 == 3847 {
+            let values: Vec<u64> = s.pivot_cols.iter().map(|c| s.witness[*c].0).collect();
+            accepted.push((*u, *v, s.pivot_cols, values));
+        } else {
+            rejected.push((*u, *v, s.consistent, s.rank, signature.0));
+        }
+    }
+    println!("{{\"schema\":\"marici.benincasa.marked_relative_primal_witness_sampler.v1\",\"prime\":{},\"axis\":\"{}\",\"master\":{},\"primitive_degree\":8,\"unknowns\":372,\"equations\":132,\"accepted_points\":[{}],\"rejected_points\":[{}]}}",
+        P, axis, master,
+        accepted.iter().map(|(u,v,piv,x)| format!("{{\"u\":{},\"v\":{},\"pivot_columns\":{:?},\"values\":{:?}}}",u,v,piv,x)).collect::<Vec<_>>().join(","),
+        rejected.iter().map(|(u,v,c,r,m)| format!("{{\"u\":{},\"v\":{},\"consistent\":{},\"rank\":{},\"fixed_mask\":{}}}",u,v,c,r,m)).collect::<Vec<_>>().join(","));
+}
+
+#[derive(Default)]
+struct SparseRank { pivots: BTreeMap<usize, BTreeMap<usize, F>> }
+impl SparseRank {
+    fn insert(&mut self, mut row: BTreeMap<usize, F>) {
+        loop {
+            let Some((&pivot, &value)) = row.iter().next() else { return };
+            if let Some(base) = self.pivots.get(&pivot) {
+                let factor = value;
+                for (&column, &coefficient) in base {
+                    let next = row.get(&column).copied().unwrap_or(F::z()).sub(factor.mul(coefficient));
+                    if next == F::z() { row.remove(&column); } else { row.insert(column, next); }
+                }
+            } else {
+                let inverse = value.inv();
+                for coefficient in row.values_mut() { *coefficient = coefficient.mul(inverse); }
+                self.pivots.insert(pivot, row);
+                return;
+            }
+        }
+    }
+    fn rank(&self) -> usize { self.pivots.len() }
+}
+
+fn system_data(g: &Geometry, master: usize) -> (Vec<Mon>, Vec<Poly>, Poly) {
+    let cs = classes(g);
+    let mut columns: Vec<Poly> = cs.iter().map(|q| common(g, q)).collect();
+    for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
+        for m in monomials(8) {
+            columns.push(exact(g, sa, sb, m, false));
+            columns.push(exact(g, sa, sb, m, true));
+        }
+    }
+    let rhs = target(g, &cs[master]);
+    let mut support = BTreeSet::new();
+    for column in &columns { support.extend(column.0.keys().copied()); }
+    support.extend(rhs.0.keys().copied());
+    (support.into_iter().collect(), columns, rhs)
+}
+
+fn run_polynomial_module_gate(samples: &[(u64, u64)]) {
+    let axis = std::env::var("MARICI_WITNESS_AXIS").ok().and_then(|x| x.chars().next()).unwrap_or('u');
+    let master: usize = std::env::var("MARICI_WITNESS_MASTER").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let numerator_degree: u8 = std::env::var("MARICI_MODULE_NUMERATOR_DEGREE").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let denominator_degree: u8 = std::env::var("MARICI_MODULE_DENOMINATOR_DEGREE").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let numerator_monomials = monomials(numerator_degree);
+    let denominator_monomials = monomials(denominator_degree);
+    let numerator_unknowns = 372 * numerator_monomials.len();
+    let denominator_unknowns = denominator_monomials.len();
+    let mut numerator_rank = SparseRank::default();
+    let mut full_rank = SparseRank::default();
+    let mut accepted = 0usize;
+    for (u, v) in samples {
+        let g = geometry(*u, *v, axis);
+        let (support, columns, rhs) = system_data(&g, master);
+        if support.len() != 132 { continue }
+        let numerator_values: Vec<F> = numerator_monomials.iter().map(|(i,j)| F::n(*u).pow(*i as u64).mul(F::n(*v).pow(*j as u64))).collect();
+        let denominator_values: Vec<F> = denominator_monomials.iter().map(|(i,j)| F::n(*u).pow(*i as u64).mul(F::n(*v).pow(*j as u64))).collect();
+        for monomial in &support {
+            let mut numerator_row = BTreeMap::new();
+            for (column_index, column) in columns.iter().enumerate() {
+                let coefficient = column.0.get(monomial).copied().unwrap_or(F::z());
+                if coefficient == F::z() { continue }
+                for (term, value) in numerator_values.iter().enumerate() {
+                    let entry = coefficient.mul(*value);
+                    if entry != F::z() { numerator_row.insert(column_index * numerator_values.len() + term, entry); }
+                }
+            }
+            let mut full_row = numerator_row.clone();
+            let target = rhs.0.get(monomial).copied().unwrap_or(F::z()).neg();
+            if target != F::z() {
+                for (term, value) in denominator_values.iter().enumerate() {
+                    let entry = target.mul(*value);
+                    if entry != F::z() { full_row.insert(numerator_unknowns + term, entry); }
+                }
+            }
+            numerator_rank.insert(numerator_row);
+            full_rank.insert(full_row);
+        }
+        accepted += 1;
+    }
+    let excess = denominator_unknowns as isize - (full_rank.rank() as isize - numerator_rank.rank() as isize);
+    println!("{{\"schema\":\"marici.benincasa.marked_extension_polynomial_module_gate.v1\",\"prime\":{},\"axis\":\"{}\",\"master\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"samples\":{},\"numerator_unknowns\":{},\"denominator_unknowns\":{},\"numerator_rank\":{},\"full_rank\":{},\"denominator_kernel_excess\":{},\"nonzero_denominator_solution\":{}}}",
+        P, axis, master, numerator_degree, denominator_degree, accepted, numerator_unknowns, denominator_unknowns,
+        numerator_rank.rank(), full_rank.rank(), excess, excess > 0);
+}
+
+fn dual_rows(g: &Geometry, degree: u8) -> Option<(usize, Vec<usize>, Vec<usize>, Vec<Vec<F>>)> {
+    let cs = classes(g);
+    let mut cols: Vec<Poly> = cs.iter().map(|q| common(g, q)).collect();
+    for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
+        for m in monomials(degree) {
+            cols.push(exact(g, sa, sb, m, false));
+            cols.push(exact(g, sa, sb, m, true));
+        }
+    }
+    let mut mons = BTreeSet::new();
+    for q in &cols { mons.extend(q.0.keys().copied()) }
+    let n = cols.len();
+    let rows = mons.len();
+    let mut a: Vec<Vec<F>> = mons.iter().map(|m| cols.iter()
+        .map(|q| q.0.get(m).copied().unwrap_or(F::z())).collect()).collect();
+    let mut transform = vec![vec![F::z(); rows]; rows];
+    let mut row_labels: Vec<usize> = (0..rows).collect();
+    for (i, row) in transform.iter_mut().enumerate() { row[i] = F::o() }
+    let mut piv = Vec::new();
+    let mut rr = 0;
+    for c in 0..n {
+        let Some(p) = (rr..rows).find(|&i| a[i][c].0 != 0) else { continue };
+        a.swap(rr, p); transform.swap(rr, p); row_labels.swap(rr, p);
+        let z = a[rr][c].inv();
+        for j in c..n { a[rr][j] = a[rr][j].mul(z) }
+        for j in 0..rows { transform[rr][j] = transform[rr][j].mul(z) }
+        for i in 0..rows {
+            if i != rr && a[i][c].0 != 0 {
+                let z = a[i][c];
+                for j in c..n { a[i][j] = a[i][j].sub(z.mul(a[rr][j])) }
+                for j in 0..rows { transform[i][j] = transform[i][j].sub(z.mul(transform[rr][j])) }
+            }
+        }
+        piv.push((rr, c)); rr += 1;
+        if rr == rows { break }
+    }
+    if rr != 117 { return None }
+    let mut out = Vec::new();
+    for target in 8..12 {
+        let row = piv.iter().find_map(|(r, c)| (*c == target).then_some(*r))?;
+        if !(0..n).all(|c| a[row][c] == if c == target { F::o() } else { F::z() }) {
+            return None;
+        }
+        out.push(transform[row].clone());
+    }
+    Some((rows, piv.iter().map(|(_, c)| *c).collect(), row_labels[..rr].to_vec(), out))
+}
+
+fn run_dual(samples: &[(u64, u64)]) {
+    let mut accepted = Vec::new();
+    let mut rejected = Vec::new();
+    for (u, v) in samples {
+        let g = geometry(*u, *v, 'u');
+        match dual_rows(&g, 8) {
+            Some((equations, pivots, pivot_rows, rows)) => accepted.push((*u, *v, equations, pivots, pivot_rows, rows)),
+            None => rejected.push((*u, *v)),
+        }
+    }
+    println!("{{");
+    println!("  \"schema\": \"marici.benincasa.marked_relative_dual_sampler.v1\",");
+    println!("  \"prime\": {},", P);
+    println!("  \"requested_points\": {},", samples.len());
+    println!("  \"accepted_points\": {},", accepted.len());
+    println!("  \"rejected_points\": [{}],", rejected.iter().map(|(u,v)| format!("[{u},{v}]")).collect::<Vec<_>>().join(","));
+    println!("  \"dual_rows\": [");
+    for (i, (u, v, equations, pivots, pivot_rows, rows)) in accepted.iter().enumerate() {
+        let data = rows.iter().map(|row| format!("[{}]", row.iter()
+            .map(|x| x.0.to_string()).collect::<Vec<_>>().join(",")))
+            .collect::<Vec<_>>().join(",");
+        println!("    {{\"u\":{},\"v\":{},\"equations\":{},\"pivot_columns\":{:?},\"pivot_rows\":{:?},\"coordinates\":[8,9,10,11],\"vectors\":[{}]}}{}",
+            u, v, equations, pivots, pivot_rows, data, if i + 1 == accepted.len() { "" } else { "," });
+    }
+    println!("  ]");
+    println!("}}");
 }
 
 fn main() {
@@ -564,6 +749,18 @@ fn main() {
         })
         .unwrap_or_else(|| vec![(7, 11), (13, 19), (23, 29)]);
     let sample_count = samples.len();
+    if std::env::var_os("MARICI_DUAL_MODE").is_some() {
+        run_dual(&samples);
+        return;
+    }
+    if std::env::var_os("MARICI_PRIMAL_WITNESS_MODE").is_some() {
+        run_primal_witness(&samples);
+        return;
+    }
+    if std::env::var_os("MARICI_POLYNOMIAL_MODULE_MODE").is_some() {
+        run_polynomial_module_gate(&samples);
+        return;
+    }
     let mut wall_blocks = Vec::new();
     let mut min_fixed = 12;
     let mut rank_range = (usize::MAX, 0usize);
