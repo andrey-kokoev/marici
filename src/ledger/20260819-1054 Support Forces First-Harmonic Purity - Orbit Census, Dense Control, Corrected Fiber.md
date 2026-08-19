@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1054 — Support Forces First-Harmonic Purity: the Exhaustive Orbit Census, the Dense Control, and the Corrected Phase Fiber
 
 ## Question

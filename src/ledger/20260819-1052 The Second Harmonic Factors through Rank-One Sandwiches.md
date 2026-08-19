@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1052 — The Second-Harmonic Coefficient Factors through Rank-One Sandwiches; the Purity Theorem Decomposes into Mechanisms
 
 ## Question
