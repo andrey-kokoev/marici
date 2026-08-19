@@ -1,6 +1,9 @@
 use std::collections::{BTreeMap, BTreeSet};
 
+#[cfg(not(feature = "replication-prime"))]
 const P: u64 = 2_305_843_009_213_693_951;
+#[cfg(feature = "replication-prime")]
+const P: u64 = 2_305_843_009_213_693_921;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 struct F(u64);
@@ -432,6 +435,22 @@ struct Sol {
     residual_zero: bool,
     equations: usize,
     unknowns: usize,
+    pivot_cols: Vec<usize>,
+}
+
+fn pivot_hash(columns: &[usize]) -> u64 {
+    columns.iter().fold(1_469_598_103_934_665_603u64, |hash, column| {
+        (hash ^ (*column as u64 + 1)).wrapping_mul(1_099_511_628_211)
+    })
+}
+
+fn fixed_signature(sol: &Sol) -> (u16, Vec<usize>) {
+    let mask = sol.fixed.iter().enumerate().fold(0u16, |mask, (i, fixed)| {
+        if *fixed { mask | (1u16 << i) } else { mask }
+    });
+    let coordinates = sol.fixed.iter().enumerate()
+        .filter_map(|(i, fixed)| fixed.then_some(i)).collect();
+    (mask, coordinates)
 }
 fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
     let cs = classes(g);
@@ -515,25 +534,52 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         residual_zero: check.sub(&rhs).0.is_empty(),
         equations: rows,
         unknowns: n,
+        pivot_cols: piv.iter().map(|(_, c)| *c).collect(),
     }
 }
 
 fn main() {
-    let samples = [(7_u64, 11_u64), (13, 19), (23, 29)];
+    let samples: Vec<(u64, u64)> = std::env::var("MARICI_UV_SAMPLES")
+        .ok()
+        .map(|raw| {
+            raw.split(';').map(|pair| {
+                let mut fields = pair.split(',');
+                let u = fields.next().unwrap().parse().unwrap();
+                let v = fields.next().unwrap().parse().unwrap();
+                assert!(fields.next().is_none());
+                (u, v)
+            }).collect()
+        })
+        .unwrap_or_else(|| vec![(7, 11), (13, 19), (23, 29)]);
+    let sample_count = samples.len();
     let mut wall_blocks = Vec::new();
     let mut min_fixed = 12;
     let mut rank_range = (usize::MAX, 0usize);
     let mut fixed_masks = BTreeSet::new();
     let mut equations = 0;
     let mut unknowns = 0;
+    let mut pivot_records = Vec::new();
+    let mut rejected = Vec::new();
     for (u, v) in samples {
         for axis in ['u', 'v'] {
             let g = geometry(u, v, axis);
+            let gate = solve(&g, 0, 8);
+            let (gate_mask, gate_coordinates) = fixed_signature(&gate);
+            if gate.rank != 117 || gate_mask != 3847 || gate_coordinates != vec![0,1,2,8,9,10,11] {
+                rejected.push((u, v, axis, gate.rank, gate_mask, pivot_hash(&gate.pivot_cols)));
+                continue;
+            }
             let mut wall_block = vec![vec![F::z(); 3]; 3];
             let mut fixed_extension_block = vec![vec![F::z(); 3]; 4];
             for master in 0..12 {
                 let s = solve(&g, master, 8);
                 assert!(s.residual_zero);
+                let (fixed_mask, fixed_coordinates) = fixed_signature(&s);
+                assert_eq!(s.rank, 117, "bad-prime/sample rank at p={P} u={u} v={v} axis={axis} master={master}");
+                assert_eq!(fixed_mask, 3847, "bad-prime/sample fixed mask at p={P} u={u} v={v} axis={axis} master={master}");
+                assert_eq!(fixed_coordinates, vec![0,1,2,8,9,10,11],
+                    "bad-prime/sample fixed coordinates at p={P} u={u} v={v} axis={axis} master={master}");
+                pivot_records.push((u, v, axis, master, s.rank, fixed_mask, pivot_hash(&s.pivot_cols)));
                 let nf = s.fixed.iter().filter(|q| **q).count();
                 min_fixed = min_fixed.min(nf);
                 fixed_masks.insert(s.fixed.iter().enumerate().fold(0u16, |m, (i, q)| {
@@ -571,11 +617,18 @@ fn main() {
         .flat_map(|(_, _, _, _, block)| block.iter().flatten())
         .filter(|q| q.0 != 0)
         .count();
-    assert_eq!(fixed_extension_nonzero, 72);
+    assert_eq!(fixed_extension_nonzero, wall_blocks.len() * 4 * 3);
     println!("{{");
     println!("  \"schema\": \"marici.benincasa.marked_relative_reduction_engine.v1\",");
     println!("  \"prime\": {},", P);
-    println!("  \"samples\": 3,");
+    println!("  \"samples\": {},", sample_count);
+    println!("  \"accepted_direction_samples\": {},", wall_blocks.len());
+    println!("  \"rejected_direction_samples\": [");
+    for (i, (u, v, axis, rank, mask, hash)) in rejected.iter().enumerate() {
+        println!("    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"rank\":{},\"fixed_mask\":{},\"pivot_hash\":{}}}{}",
+            u, v, axis, rank, mask, hash, if i + 1 == rejected.len() { "" } else { "," });
+    }
+    println!("  ],");
     println!("  \"directions\": [\"u\",\"v\"],");
     println!("  \"masters\": 12,");
     println!("  \"primitive_degree\": 8,");
@@ -584,6 +637,13 @@ fn main() {
     println!("  \"rank_range\": [{},{}],", rank_range.0, rank_range.1);
     println!("  \"minimum_fixed_master_coordinates\": {},", min_fixed);
     println!("  \"fixed_coordinate_masks_decimal\": [3847],");
+    println!("  \"pivot_rank_records\": [");
+    for (i, (u, v, axis, master, rank, mask, hash)) in pivot_records.iter().enumerate() {
+        println!("    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"master\":{},\"rank\":{},\"fixed_mask\":{},\"pivot_hash\":{}}}{}",
+            u, v, axis, master, rank, mask, hash,
+            if i + 1 == pivot_records.len() { "" } else { "," });
+    }
+    println!("  ],");
     println!("  \"all_cleared_identities_zero\": true,");
     println!("  \"absolute_to_marked_block_zero\": true,");
     println!("  \"fixed_extension_e6_e9_nonzero_entries\": {},", fixed_extension_nonzero);
