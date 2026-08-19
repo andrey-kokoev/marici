@@ -23,13 +23,16 @@ def capture_fiber(fiber, point, names, ambient):
         original(row, pivots)
 
     old_ambient, old_cutoff = charts.AMBIENT, charts.CUTOFF
+    old_k_depth, old_q_depth = charts.K_DEPTH, charts.Q_DEPTH
     charts.AMBIENT, charts.CUTOFF = ambient, 6
+    charts.K_DEPTH, charts.Q_DEPTH = args.k_depth, args.q_depth
     base.add_pivot = hook
     try:
         presentation = charts.presentation(fiber, point, names)
     finally:
         base.add_pivot = original
         charts.AMBIENT, charts.CUTOFF = old_ambient, old_cutoff
+        charts.K_DEPTH, charts.Q_DEPTH = old_k_depth, old_q_depth
     return presentation, rows
 
 
@@ -38,6 +41,8 @@ parser.add_argument("--ambient", type=int, required=True)
 parser.add_argument("--output", type=Path, required=True)
 parser.add_argument("--x1", type=int, default=2, help="first tangential wall coordinate")
 parser.add_argument("--x2", type=int, default=3, help="second tangential wall coordinate")
+parser.add_argument("--k-depth", type=int, default=2, help="maximum retained Cayley-Menger pole level")
+parser.add_argument("--q-depth", type=int, default=2, help="maximum retained marked-divisor pole level")
 parser.add_argument(
     "--tangent-jet",
     choices=("x1", "x2"),
@@ -171,9 +176,23 @@ if args.tangent_jet:
                     base.add_value(coefficient, column, weight * value)
             output.append(coefficient)
 
-de_rham_count = 4 * len(base.monomials_at_most(args.ambient))
-principal_count = 64 * len(base.monomials_at_most(args.ambient - 4))
-marked_count = 48 * len(base.monomials_at_most(args.ambient - 1))
+de_rham_count = (
+    args.k_depth
+    * (args.q_depth - 1) ** 5
+    * 2
+    * len(base.monomials_at_most(args.ambient))
+)
+principal_count = (
+    args.k_depth
+    * args.q_depth**5
+    * len(base.monomials_at_most(args.ambient - 4))
+)
+marked_count = (
+    (args.k_depth + 1)
+    * (args.q_depth - 1)
+    * args.q_depth**4
+    * len(base.monomials_at_most(args.ambient - 1))
+)
 family_bounds = [de_rham_count, de_rham_count + principal_count]
 family_bounds.extend(
     de_rham_count + principal_count + marked_count * (index + 1)
@@ -226,4 +245,8 @@ with args.output.open("wb") as stream:
             for column, value in sorted(row.items()):
                 stream.write(struct.pack("<II", column, value % P))
 
-print(f"wall={args.wall} ambient={args.ambient} columns={len(presentation['ordered_columns'])} rows={len(order)} output={args.output}")
+print(
+    f"wall={args.wall} ambient={args.ambient} k_depth={args.k_depth} "
+    f"q_depth={args.q_depth} columns={len(presentation['ordered_columns'])} "
+    f"rows={len(order)} output={args.output}"
+)
