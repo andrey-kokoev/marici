@@ -130,6 +130,81 @@ functional_span = {}
 for functional in leakage_functionals:
     base.add_pivot({i: value for i, value in enumerate(functional) if value}, functional_span)
 
+
+def nullspace(rows, width):
+    matrix = [list(row) for row in rows if any(row)]
+    pivots, pivot_row = [], 0
+    for column in range(width):
+        selected = next((r for r in range(pivot_row, len(matrix)) if matrix[r][column]), None)
+        if selected is None:
+            continue
+        matrix[pivot_row], matrix[selected] = matrix[selected], matrix[pivot_row]
+        inverse = pow(matrix[pivot_row][column], base.PRIME - 2, base.PRIME)
+        matrix[pivot_row] = [value * inverse % base.PRIME for value in matrix[pivot_row]]
+        for r in range(len(matrix)):
+            if r != pivot_row and matrix[r][column]:
+                scale = matrix[r][column]
+                matrix[r] = [
+                    (left - scale * right) % base.PRIME
+                    for left, right in zip(matrix[r], matrix[pivot_row])
+                ]
+        pivots.append(column)
+        pivot_row += 1
+        if pivot_row == len(matrix):
+            break
+    free = [column for column in range(width) if column not in pivots]
+    basis = []
+    for column in free:
+        vector = [0] * width
+        vector[column] = 1
+        for r, pivot in enumerate(pivots):
+            vector[pivot] = (-matrix[r][column]) % base.PRIME
+        basis.append(vector)
+    return basis
+
+
+kernel_coordinates = nullspace(leakage_functionals, len(numerator_basis))
+kernel_vectors, kernel_span = [], {}
+for coordinates in kernel_coordinates:
+    vector = {}
+    for coefficient, basis_vector in zip(coordinates, numerator_basis):
+        for column, value in basis_vector.items():
+            base.add_value(vector, column, coefficient * value)
+    kernel_vectors.append(vector)
+    base.add_pivot(dict(vector), kernel_span)
+
+
+def derivative_image(vector, axis):
+    image = {}
+    for column, coefficient in vector.items():
+        for destination, value in audit.connection_image(
+            source["ordered_columns"][column], charts.SOURCE_NAMES, axis,
+            source["columns"], base.fiber_data, charts.SOURCE_POINT,
+        ).items():
+            base.add_value(image, destination, coefficient * value)
+    return base.reduce_row(image, source["pivots"])
+
+
+kernel_escape_ranks = []
+for axis in range(3):
+    escape = {}
+    for vector in kernel_vectors:
+        residual = base.reduce_row(derivative_image(vector, axis), kernel_span)
+        base.add_pivot(residual, escape)
+    kernel_escape_ranks.append(len(escape))
+
+kernel_closure, frontier = {}, list(kernel_vectors)
+while frontier:
+    vector = frontier.pop()
+    before = len(kernel_closure)
+    base.add_pivot(dict(vector), kernel_closure)
+    if len(kernel_closure) == before:
+        continue
+    for axis in range(3):
+        image = derivative_image(vector, axis)
+        if image:
+            frontier.append(image)
+
 target_numerator, _, target_quotient, target_quotient_pivots = numerator_and_quotient(target)
 target_quotient_pivot = next(iter(target_quotient_pivots))
 mapped_quotient = charts.map_row(
@@ -175,6 +250,9 @@ payload = {
         "numerator_to_double_pole_leakage_ranks": leakage_ranks,
         "second_fundamental_form_rank": len(functional_span),
         "common_kernel_dimension": len(numerator_span) - len(functional_span),
+        "frozen_kernel_escape_ranks": kernel_escape_ranks,
+        "frozen_kernel_derivative_closure_rank": len(kernel_closure),
+        "frozen_kernel_invariant": all(rank == 0 for rank in kernel_escape_ranks),
         "occurrence_reflection_quotient_scalar": reflection_scalar,
     },
     "interpretation": "degree-six simple-pole numerator space of rank 25 plus one moving-wall double-pole direction in the same Gauss-Manin degree",
