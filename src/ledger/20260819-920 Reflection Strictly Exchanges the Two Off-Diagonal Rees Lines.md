@@ -62,7 +62,7 @@ Both divisors have degree zero. The (q)-component remains zero.
 
 ## Orientation audit
 
-In the source-normalized transition, (	au) reverses both serialized variance bases:
+In the source-normalized transition, \(\tau\) reverses both serialized variance bases:
 
 \[
 \chi_{\rm sparse}(\tau)=-1,
