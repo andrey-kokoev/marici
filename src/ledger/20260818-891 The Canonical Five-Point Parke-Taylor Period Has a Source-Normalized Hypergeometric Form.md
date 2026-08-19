@@ -43,7 +43,7 @@ The ordered source orientation gives
 
 \[
 \operatorname{PT}(12345)
-=-rac{dx\wedge dy}{xy(1-x)(1-y)}.
+=-\frac{dx\wedge dy}{xy(1-x)(1-y)}.
 \]
 
 Therefore
