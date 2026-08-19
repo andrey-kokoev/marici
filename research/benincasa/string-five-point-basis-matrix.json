@@ -1,0 +1,27 @@
+{
+  "schema": "marici.string.five_point_basis_matrix.v1",
+  "status": "exact_leading_matrix_certificate",
+  "basis": ["12345", "13245"],
+  "physical_planar_coordinates": ["s12", "s23", "s34", "s45", "s51"],
+  "derived_coordinates": {
+    "s13": "s45-s12-s23",
+    "s24": "s51-s23-s34"
+  },
+  "matrix_structure": {
+    "M11": "self-intersection face sum for cyclic order 12345",
+    "M22": "self-intersection face sum for cyclic order 13245",
+    "M12=M21": "shared-facet reduction through s23 with Koba-Nielsen half-monodromy"
+  },
+  "exact_nonzero_witness": {
+    "planar_sample": [2, 3, 5, 11, 17],
+    "derived_sample": {"s13": 6, "s24": 9},
+    "meaning": "the field-theory leading determinant is a nonzero rational function"
+  },
+  "nonadjacent_control": {
+    "pair": ["12345", "13524"],
+    "common_faces": 0,
+    "intersection": 0
+  },
+  "conclusion": "generic matrix invertibility follows near alpha'=0; no new carrier cell is required, but branch transport is essential",
+  "scope": "leading determinant and topology control; not an exact closed-form determinant at arbitrary alpha'"
+}
