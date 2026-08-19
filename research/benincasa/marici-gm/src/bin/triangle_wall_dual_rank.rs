@@ -122,7 +122,7 @@ fn main() -> io::Result<()> {
     let ambient = u32_at(&bytes, &mut cursor);
     let columns = u32_at(&bytes, &mut cursor) as usize;
     let rows = u32_at(&bytes, &mut cursor) as usize;
-    let central_rank = u32_at(&bytes, &mut cursor) as usize;
+    let _declared_central_rank = u32_at(&bytes, &mut cursor) as usize;
     let mut dual_pivots: Vec<Option<Row>> = vec![None; 2 * columns];
     let mut triple_pivots: Vec<Option<Row>> = vec![None; 3 * columns];
     let mut central_pivots: Vec<Option<Row>> = vec![None; columns];
@@ -164,6 +164,7 @@ fn main() -> io::Result<()> {
         triple_rank += insert(grade_two, &mut triple_pivots) as usize;
     }
     cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
+    let central_rank = central_pivots.iter().flatten().count();
     let first_normal = dual_rank - 2 * central_rank;
     let second_normal = triple_rank - 3 * central_rank - 2 * first_normal;
     assert_eq!(central_generators.len(), central_rank);

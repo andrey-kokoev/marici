@@ -53,6 +53,11 @@ parser.add_argument(
     choices=range(5),
     help="place the selected marked relation family last (0=g1,...,4=g31)",
 )
+parser.add_argument(
+    "--marked-mask",
+    type=lambda value: int(value, 0),
+    help="retain exactly this five-bit subset of marked relation families",
+)
 args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
@@ -113,42 +118,50 @@ for index in range(len(central_rows)):
     derivative_rows.append(derivative)
     second_rows.append(second)
 
+de_rham_count = 4 * len(base.monomials_at_most(args.ambient))
+principal_count = 64 * len(base.monomials_at_most(args.ambient - 4))
+marked_count = 48 * len(base.monomials_at_most(args.ambient - 1))
+family_bounds = [de_rham_count, de_rham_count + principal_count]
+family_bounds.extend(
+    de_rham_count + principal_count + marked_count * (index + 1)
+    for index in range(5)
+)
+if family_bounds[-1] != len(central_rows):
+    raise RuntimeError("relation-family row census does not agree")
+if sum(value is not None for value in (args.marked_last, args.marked_mask)) + args.partner_first > 1:
+    raise RuntimeError("relation-family ordering/filter options are mutually exclusive")
+marked_start = family_bounds[1]
+marked_blocks = [
+    list(range(marked_start + index * marked_count, marked_start + (index + 1) * marked_count))
+    for index in range(5)
+]
+order = list(range(len(central_rows)))
+if args.partner_first:
+    order = list(range(marked_start)) + marked_blocks[4] + [row for block in marked_blocks[:4] for row in block]
+elif args.marked_last is not None:
+    marked_order = [index for index in range(5) if index != args.marked_last] + [args.marked_last]
+    order = list(range(marked_start)) + [row for index in marked_order for row in marked_blocks[index]]
+elif args.marked_mask is not None:
+    if not 0 <= args.marked_mask < 32:
+        raise RuntimeError("--marked-mask must be between 0 and 31")
+    order = list(range(marked_start)) + [
+        row for index, block in enumerate(marked_blocks) if args.marked_mask & (1 << index) for row in block
+    ]
+
 with args.output.open("wb") as stream:
     stream.write(b"MRCIDR03")
-    stream.write(struct.pack("<IIIII", P, args.ambient, len(presentation["ordered_columns"]), len(central_rows), len(presentation["pivots"])))
-    de_rham_count = 4 * len(base.monomials_at_most(args.ambient))
-    principal_count = 64 * len(base.monomials_at_most(args.ambient - 4))
-    marked_count = 48 * len(base.monomials_at_most(args.ambient - 1))
-    family_bounds = [de_rham_count, de_rham_count + principal_count]
-    family_bounds.extend(
-        de_rham_count + principal_count + marked_count * (index + 1)
-        for index in range(5)
-    )
-    if family_bounds[-1] != len(central_rows):
-        raise RuntimeError("relation-family row census does not agree")
-    order = list(range(len(central_rows)))
-    if args.partner_first and args.marked_last is not None:
-        raise RuntimeError("--partner-first and --marked-last are mutually exclusive")
-    if args.partner_first:
-        marked_start = family_bounds[1]
-        partner_start = marked_start + 4 * marked_count
-        order = (
-            list(range(marked_start))
-            + list(range(partner_start, partner_start + marked_count))
-            + list(range(marked_start, partner_start))
-        )
-    elif args.marked_last is not None:
-        marked_start = family_bounds[1]
-        marked_blocks = [
-            list(range(marked_start + index * marked_count, marked_start + (index + 1) * marked_count))
-            for index in range(5)
-        ]
-        marked_order = [index for index in range(5) if index != args.marked_last] + [args.marked_last]
-        order = list(range(marked_start)) + [row for index in marked_order for row in marked_blocks[index]]
+    stream.write(struct.pack("<IIIII", P, args.ambient, len(presentation["ordered_columns"]), len(order), 0))
     for output_index, index in enumerate(order):
         central, derivative, second = central_rows[index], derivative_rows[index], second_rows[index]
         if (args.partner_first or args.marked_last is not None) and output_index >= family_bounds[1]:
             family = 2 + (output_index - family_bounds[1]) // marked_count
+        elif args.marked_mask is not None and output_index >= marked_start:
+            original_family = next(
+                family_index
+                for family_index, block in enumerate(marked_blocks)
+                if block[0] <= index <= block[-1]
+            )
+            family = 2 + original_family
         else:
             family = next(i for i, bound in enumerate(family_bounds) if output_index < bound)
         stream.write(struct.pack("<I", family))
@@ -157,4 +170,4 @@ with args.output.open("wb") as stream:
             for column, value in sorted(row.items()):
                 stream.write(struct.pack("<II", column, value % P))
 
-print(f"wall={args.wall} ambient={args.ambient} columns={len(presentation['ordered_columns'])} rows={len(central_rows)} central_rank={len(presentation['pivots'])} output={args.output}")
+print(f"wall={args.wall} ambient={args.ambient} columns={len(presentation['ordered_columns'])} rows={len(order)} output={args.output}")
