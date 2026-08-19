@@ -33,6 +33,12 @@ Thus the moving-wall extension and the failure of the frozen kernel to reduce
 it are not peculiar to the original fiber \((2,3,4)\).  This is replicated
 generic-fiber evidence, not yet a symbolic function-field theorem.
 
+The three samples also have the identical 25-element source-labelled pivot
+basis and identical support pattern for the second fundamental form.  Each of
+its three rows is supported on all 25 coordinates.  Hence a single generic
+reconstruction chart exists, but the matrix is dense; the next step is
+rational interpolation rather than sparse support inference.
+
 The next high-value calculation is now justified: reconstruct the rank-three
 second fundamental form over the kinematic function field and test its
 differential kernel equations.  A smaller coefficient object must vary with
