@@ -1,9 +1,20 @@
 use std::collections::{BTreeMap, BTreeSet};
 
-#[cfg(not(feature = "replication-prime"))]
+#[cfg(all(not(feature = "replication-prime"), not(feature = "reconstruction-prime-3"), not(feature = "verification-prime-4")))]
 const P: u64 = 2_305_843_009_213_693_951;
-#[cfg(feature = "replication-prime")]
+#[cfg(all(feature = "replication-prime", not(feature = "reconstruction-prime-3"), not(feature = "verification-prime-4")))]
 const P: u64 = 2_305_843_009_213_693_921;
+#[cfg(all(feature = "reconstruction-prime-3", not(feature = "replication-prime"), not(feature = "verification-prime-4")))]
+const P: u64 = 2_305_843_009_213_693_723;
+#[cfg(all(feature = "verification-prime-4", not(feature = "replication-prime"), not(feature = "reconstruction-prime-3")))]
+const P: u64 = 2_305_843_009_213_693_561;
+
+#[cfg(any(
+    all(feature = "replication-prime", feature = "reconstruction-prime-3"),
+    all(feature = "replication-prime", feature = "verification-prime-4"),
+    all(feature = "reconstruction-prime-3", feature = "verification-prime-4")
+))]
+compile_error!("select exactly one reconstruction/verification-prime feature");
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 struct F(u64);
@@ -436,6 +447,7 @@ struct Sol {
     equations: usize,
     unknowns: usize,
     pivot_cols: Vec<usize>,
+    consistent: bool,
 }
 
 fn pivot_hash(columns: &[usize]) -> u64 {
@@ -505,10 +517,7 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
             break;
         }
     }
-    assert!(
-        (0..rows).all(|i| !(0..n).all(|j| a[i][j].0 == 0) || a[i][n].0 == 0),
-        "inconsistent master={master} degree={degree} equations={rows} unknowns={n}"
-    );
+    let consistent = (0..rows).all(|i| !(0..n).all(|j| a[i][j].0 == 0) || a[i][n].0 == 0);
     let pivot_cols: BTreeSet<usize> = piv.iter().map(|(_, c)| *c).collect();
     let free: Vec<usize> = (0..n).filter(|c| !pivot_cols.contains(c)).collect();
     let mut fixed = vec![false; 12];
@@ -535,10 +544,13 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         equations: rows,
         unknowns: n,
         pivot_cols: piv.iter().map(|(_, c)| *c).collect(),
+        consistent,
     }
 }
 
 fn main() {
+    let reconstruction_mode = std::env::var_os("MARICI_RECONSTRUCTION_MODE").is_some();
+    let master_count = if reconstruction_mode { 3 } else { 12 };
     let samples: Vec<(u64, u64)> = std::env::var("MARICI_UV_SAMPLES")
         .ok()
         .map(|raw| {
@@ -565,14 +577,15 @@ fn main() {
             let g = geometry(u, v, axis);
             let gate = solve(&g, 0, 8);
             let (gate_mask, gate_coordinates) = fixed_signature(&gate);
-            if gate.rank != 117 || gate_mask != 3847 || gate_coordinates != vec![0,1,2,8,9,10,11] {
-                rejected.push((u, v, axis, gate.rank, gate_mask, pivot_hash(&gate.pivot_cols)));
+            if !gate.consistent || gate.rank != 117 || gate_mask != 3847 || gate_coordinates != vec![0,1,2,8,9,10,11] {
+                rejected.push((u, v, axis, gate.consistent, gate.rank, gate_mask, pivot_hash(&gate.pivot_cols)));
                 continue;
             }
             let mut wall_block = vec![vec![F::z(); 3]; 3];
             let mut fixed_extension_block = vec![vec![F::z(); 3]; 4];
-            for master in 0..12 {
+            for master in 0..master_count {
                 let s = solve(&g, master, 8);
+                assert!(s.consistent);
                 assert!(s.residual_zero);
                 let (fixed_mask, fixed_coordinates) = fixed_signature(&s);
                 assert_eq!(s.rank, 117, "bad-prime/sample rank at p={P} u={u} v={v} axis={axis} master={master}");
@@ -624,13 +637,14 @@ fn main() {
     println!("  \"samples\": {},", sample_count);
     println!("  \"accepted_direction_samples\": {},", wall_blocks.len());
     println!("  \"rejected_direction_samples\": [");
-    for (i, (u, v, axis, rank, mask, hash)) in rejected.iter().enumerate() {
-        println!("    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"rank\":{},\"fixed_mask\":{},\"pivot_hash\":{}}}{}",
-            u, v, axis, rank, mask, hash, if i + 1 == rejected.len() { "" } else { "," });
+    for (i, (u, v, axis, consistent, rank, mask, hash)) in rejected.iter().enumerate() {
+        println!("    {{\"u\":{},\"v\":{},\"axis\":\"{}\",\"consistent\":{},\"rank\":{},\"fixed_mask\":{},\"pivot_hash\":{}}}{}",
+            u, v, axis, consistent, rank, mask, hash, if i + 1 == rejected.len() { "" } else { "," });
     }
     println!("  ],");
     println!("  \"directions\": [\"u\",\"v\"],");
-    println!("  \"masters\": 12,");
+    println!("  \"masters\": {},", master_count);
+    println!("  \"reconstruction_mode\": {},", reconstruction_mode);
     println!("  \"primitive_degree\": 8,");
     println!("  \"unknowns_per_reduction\": {},", unknowns);
     println!("  \"equations_per_reduction\": {},", equations);
