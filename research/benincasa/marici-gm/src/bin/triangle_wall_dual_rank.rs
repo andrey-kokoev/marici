@@ -92,6 +92,31 @@ fn reduce_tracked(
         }
     }
 }
+fn reduce_pair(
+    mut base: Row,
+    mut tangent: Row,
+    pivots: &mut [Option<(Row, Row)>],
+) -> Option<Row> {
+    loop {
+        let Some((&pivot, &coefficient)) = base.last_key_value() else { return Some(tangent); };
+        if let Some((existing_base, existing_tangent)) = &pivots[pivot] {
+            let base_terms: Vec<(usize, u32)> = existing_base.iter().map(|(&c, &v)| (c, v)).collect();
+            let tangent_terms: Vec<(usize, u32)> = existing_tangent.iter().map(|(&c, &v)| (c, v)).collect();
+            for (column, value) in base_terms {
+                add_value(&mut base, column, (P - mul(coefficient, value)) % P);
+            }
+            for (column, value) in tangent_terms {
+                add_value(&mut tangent, column, (P - mul(coefficient, value)) % P);
+            }
+        } else {
+            let inverse = pow(coefficient, P - 2);
+            for value in base.values_mut() { *value = mul(*value, inverse); }
+            for value in tangent.values_mut() { *value = mul(*value, inverse); }
+            pivots[pivot] = Some((base, tangent));
+            return None;
+        }
+    }
+}
 fn u32_at(bytes: &[u8], cursor: &mut usize) -> u32 {
     let out = u32::from_le_bytes(bytes[*cursor..*cursor + 4].try_into().unwrap());
     *cursor += 4;
@@ -107,7 +132,9 @@ fn row_at(bytes: &[u8], cursor: &mut usize) -> Row {
 }
 fn main() -> io::Result<()> {
     let path = env::args().nth(1).expect("usage: triangle_wall_dual_rank <packet> [column:value,...]");
-    let probe = env::args().nth(2).map(|argument| {
+    let second_argument = env::args().nth(2);
+    let mixed_length3_only = second_argument.as_deref() == Some("--mixed-length3-only");
+    let probe = second_argument.filter(|_| !mixed_length3_only).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
             (column.parse::<usize>().unwrap(), value.parse::<u32>().unwrap() % P)
@@ -116,7 +143,7 @@ fn main() -> io::Result<()> {
     let mut bytes = Vec::new();
     File::open(path)?.read_to_end(&mut bytes)?;
     let version = &bytes[..8];
-    assert!(version == b"MRCIDR02" || version == b"MRCIDR03");
+    assert!(version == b"MRCIDR02" || version == b"MRCIDR03" || version == b"MRCIDR04");
     let mut cursor = 8;
     assert_eq!(u32_at(&bytes, &mut cursor), P);
     let ambient = u32_at(&bytes, &mut cursor);
@@ -130,10 +157,11 @@ fn main() -> io::Result<()> {
     let mut triple_rank = 0usize;
     let mut cumulative = Vec::new();
     let mut records = Vec::with_capacity(rows);
+    let mut tangent_records = Vec::with_capacity(rows);
     let mut central_generators = Vec::new();
     let mut active_family = 0u32;
     for _ in 0..rows {
-        let family = if version == b"MRCIDR03" { u32_at(&bytes, &mut cursor) } else { 0 };
+        let family = if version == b"MRCIDR03" || version == b"MRCIDR04" { u32_at(&bytes, &mut cursor) } else { 0 };
         if family != active_family {
             cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
             active_family = family;
@@ -141,6 +169,13 @@ fn main() -> io::Result<()> {
         let central = row_at(&bytes, &mut cursor);
         let derivative = row_at(&bytes, &mut cursor);
         let second = row_at(&bytes, &mut cursor);
+        if version == b"MRCIDR04" {
+            tangent_records.push((
+                row_at(&bytes, &mut cursor),
+                row_at(&bytes, &mut cursor),
+                row_at(&bytes, &mut cursor),
+            ));
+        }
         let row_index = records.len();
         records.push((family, central.clone(), derivative.clone(), second.clone()));
         if insert(central.clone(), &mut central_pivots) { central_generators.push(row_index); }
@@ -168,6 +203,57 @@ fn main() -> io::Result<()> {
     let first_normal = dual_rank - 2 * central_rank;
     let second_normal = triple_rank - 3 * central_rank - 2 * first_normal;
     assert_eq!(central_generators.len(), central_rank);
+
+    let tangent_json = if version == b"MRCIDR04" {
+        let mut mixed_results = Vec::new();
+        let base_ranks = [central_rank, dual_rank, triple_rank];
+        let lengths: Vec<usize> = if mixed_length3_only { vec![3] } else { (1..=3).collect() };
+        for lambda_length in lengths {
+            let width = lambda_length * columns;
+            let mut pair_pivots: Vec<Option<(Row, Row)>> = vec![None; width];
+            let mut defect_candidates = Vec::new();
+            for (index, (_, central, derivative, second)) in records.iter().enumerate() {
+                let normal = [central, derivative, second];
+                let tangent = [&tangent_records[index].0, &tangent_records[index].1, &tangent_records[index].2];
+                for lambda_shift in 0..lambda_length {
+                    let mut base_row = Row::new();
+                    let mut tangent_row = Row::new();
+                    for order in 0..(lambda_length - lambda_shift) {
+                        let block = lambda_shift + order;
+                        for (&column, &value) in normal[order] {
+                            add_value(&mut base_row, block * columns + column, value);
+                        }
+                        for (&column, &value) in tangent[order] {
+                            add_value(&mut tangent_row, block * columns + column, value);
+                        }
+                    }
+                    if let Some(candidate) = reduce_pair(base_row, tangent_row, &mut pair_pivots) {
+                        if !candidate.is_empty() {
+                            defect_candidates.push(candidate);
+                        }
+                    }
+                }
+            }
+            let pair_rank = pair_pivots.iter().flatten().count();
+            assert_eq!(pair_rank, base_ranks[lambda_length - 1]);
+            let base_pivots: Vec<Option<Row>> = pair_pivots.iter().map(|entry| {
+                entry.as_ref().map(|(base, _)| base.clone())
+            }).collect();
+            let mut defect_pivots: Vec<Option<Row>> = vec![None; width];
+            let mut excess = 0usize;
+            for candidate in defect_candidates {
+                let residual = reduce(candidate, &base_pivots);
+                if insert(residual, &mut defect_pivots) {
+                    excess += 1;
+                }
+            }
+            mixed_results.push((lambda_length, 2 * pair_rank + excess, excess));
+        }
+        let levels = mixed_results.iter().map(|(length, rank, excess)| {
+            format!("{{\"normal_length\":{length},\"relation_rank\":{rank},\"flatness_excess\":{excess}}}")
+        }).collect::<Vec<_>>().join(",");
+        format!("{{\"levels\":[{levels}]}}")
+    } else { "null".to_string() };
 
     // Build the length-two module in a source-tracked basis.  The first two
     // stages are the two shifts of a selected M0 basis.  Any later pivot is a
@@ -262,6 +348,6 @@ fn main() -> io::Result<()> {
         } else { String::new() };
         format!("{{\"row_index\":{row},\"family\":{family},\"pivot_column\":{pivot},\"residual\":[{residual_json}]}}")
     }).collect::<Vec<_>>().join(",");
-    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v5\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json}}}", first_lifts.len());
+    println!("{{\"schema\":\"marici.triangle-wall-jet-rank-rust.v6\",\"ambient_relation_degree\":{ambient},\"column_count\":{columns},\"raw_relation_row_count\":{rows},\"central_relation_rank\":{central_rank},\"dual_block_rank\":{dual_rank},\"first_normal_rank\":{first_normal},\"triple_block_rank\":{triple_rank},\"second_normal_rank\":{second_normal},\"tangential_jet\":{tangent_json},\"family_filtration\":[{family_json}],\"tracked_first_lift_count\":{},\"filtered_baseline_rank\":{baseline_rank},\"quadratic_witnesses\":[{witness_json}],\"probe\":{probe_json}}}", first_lifts.len());
     Ok(())
 }

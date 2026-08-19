@@ -39,6 +39,11 @@ parser.add_argument("--output", type=Path, required=True)
 parser.add_argument("--x1", type=int, default=2, help="first tangential wall coordinate")
 parser.add_argument("--x2", type=int, default=3, help="second tangential wall coordinate")
 parser.add_argument(
+    "--tangent-jet",
+    choices=("x1", "x2"),
+    help="also export the first tangential jet while remaining on the wall",
+)
+parser.add_argument(
     "--wall",
     choices=("x3", "x2", "x2_typed"),
     default="x3",
@@ -64,24 +69,37 @@ args = parser.parse_args()
 nodes = tuple(range(-3, 4))
 
 
-def normal_fiber(offset):
+def normal_fiber(offset, tangent_offset=0):
+    x1 = args.x1 + (tangent_offset if args.tangent_jet == "x1" else 0)
+    x2 = args.x2 + (tangent_offset if args.tangent_jet == "x2" else 0)
     if args.wall == "x3":
-        return (args.x1, args.x2, args.x1 + args.x2 + offset)
-    return (args.x1, args.x1 + args.x2 + offset, args.x2)
+        return (x1, x2, x1 + x2 + offset)
+    return (x1, x1 + x2 + offset, x2)
 
 
-if args.wall == "x2_typed":
-    packets = [
+def packets_at(tangent_offset=0):
+    if args.wall == "x2_typed":
+        return [
+            capture_fiber(
+                charts.g31_fiber_data,
+                normal_fiber(offset, tangent_offset),
+                charts.TARGET_NAMES,
+                args.ambient,
+            )
+            for offset in nodes
+        ]
+    return [
         capture_fiber(
-            charts.g31_fiber_data, normal_fiber(offset), charts.TARGET_NAMES, args.ambient
+            base.fiber_data,
+            normal_fiber(offset, tangent_offset),
+            charts.SOURCE_NAMES,
+            args.ambient,
         )
         for offset in nodes
     ]
-else:
-    packets = [
-        capture_fiber(base.fiber_data, normal_fiber(offset), charts.SOURCE_NAMES, args.ambient)
-        for offset in nodes
-    ]
+
+
+packets = packets_at()
 presentation, central_rows = packets[3]
 row_packets = [packet[1] for packet in packets]
 if len(set(map(len, row_packets))) != 1:
@@ -120,6 +138,39 @@ for index in range(len(central_rows)):
     derivative_rows.append(derivative)
     second_rows.append(second)
 
+tangent_rows = []
+mixed_first_rows = []
+mixed_second_rows = []
+if args.tangent_jet:
+    tangent_packets = [packets_at(tangent_offset) for tangent_offset in nodes]
+    if any(len(packet[1]) != len(central_rows) for packets in tangent_packets for packet in packets):
+        raise RuntimeError("tangential raw relation row counts do not agree")
+    normal_coefficients = []
+    for tangent_packet in tangent_packets:
+        tangent_row_packets = [packet[1] for packet in tangent_packet]
+        coefficients = []
+        for normal_order in range(3):
+            weights = coefficient_weights(normal_order)
+            coefficient_rows = []
+            for index in range(len(central_rows)):
+                coefficient = {}
+                for rows, weight in zip(tangent_row_packets, weights):
+                    for column, value in rows[index].items():
+                        base.add_value(coefficient, column, weight * value)
+                coefficient_rows.append(coefficient)
+            coefficients.append(coefficient_rows)
+        normal_coefficients.append(coefficients)
+    tangent_weights = coefficient_weights(1)
+    for normal_order, output in zip(
+        range(3), (tangent_rows, mixed_first_rows, mixed_second_rows)
+    ):
+        for index in range(len(central_rows)):
+            coefficient = {}
+            for coefficients, weight in zip(normal_coefficients, tangent_weights):
+                for column, value in coefficients[normal_order][index].items():
+                    base.add_value(coefficient, column, weight * value)
+            output.append(coefficient)
+
 de_rham_count = 4 * len(base.monomials_at_most(args.ambient))
 principal_count = 64 * len(base.monomials_at_most(args.ambient - 4))
 marked_count = 48 * len(base.monomials_at_most(args.ambient - 1))
@@ -151,7 +202,7 @@ elif args.marked_mask is not None:
     ]
 
 with args.output.open("wb") as stream:
-    stream.write(b"MRCIDR03")
+    stream.write(b"MRCIDR04" if args.tangent_jet else b"MRCIDR03")
     stream.write(struct.pack("<IIIII", P, args.ambient, len(presentation["ordered_columns"]), len(order), 0))
     for output_index, index in enumerate(order):
         central, derivative, second = central_rows[index], derivative_rows[index], second_rows[index]
@@ -167,7 +218,10 @@ with args.output.open("wb") as stream:
         else:
             family = next(i for i, bound in enumerate(family_bounds) if output_index < bound)
         stream.write(struct.pack("<I", family))
-        for row in (central, derivative, second):
+        rows = [central, derivative, second]
+        if args.tangent_jet:
+            rows.extend((tangent_rows[index], mixed_first_rows[index], mixed_second_rows[index]))
+        for row in rows:
             stream.write(struct.pack("<I", len(row)))
             for column, value in sorted(row.items()):
                 stream.write(struct.pack("<II", column, value % P))
