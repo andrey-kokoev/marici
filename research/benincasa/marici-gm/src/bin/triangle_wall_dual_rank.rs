@@ -117,6 +117,21 @@ fn reduce_pair(
         }
     }
 }
+fn reduce_pair_fixed(
+    mut base: Row,
+    mut image: Row,
+    pivots: &[Option<(Row, Row)>],
+) -> (Row, Row) {
+    loop {
+        let Some(pivot) = base.keys().rev().find(|&&column| pivots[column].is_some()).copied() else {
+            return (base, image);
+        };
+        let coefficient = base[&pivot];
+        let (existing_base, existing_image) = pivots[pivot].as_ref().unwrap();
+        for (&column, &value) in existing_base { add_value(&mut base, column, (P - mul(coefficient, value)) % P); }
+        for (&column, &value) in existing_image { add_value(&mut image, column, (P - mul(coefficient, value)) % P); }
+    }
+}
 fn u32_at(bytes: &[u8], cursor: &mut usize) -> u32 {
     let out = u32::from_le_bytes(bytes[*cursor..*cursor + 4].try_into().unwrap());
     *cursor += 4;
@@ -148,6 +163,12 @@ fn main() -> io::Result<()> {
             arguments.get(4).expect("--probe-basis requires old column count").parse::<usize>().unwrap(),
         ))
     } else { None };
+    let connection_sidecar = if second_argument.as_deref() == Some("--transport-connection") {
+        Some((
+            arguments.get(3).expect("--transport-connection requires a sidecar path").clone(),
+            arguments.get(4).expect("--transport-connection requires an output path").clone(),
+        ))
+    } else { None };
     let probe_file = if second_argument.as_deref() == Some("--probe-file") {
         Some(arguments.get(3).expect("--probe-file requires a path").clone())
     } else { None };
@@ -155,6 +176,7 @@ fn main() -> io::Result<()> {
         !mixed_length3_only && !mixed_lower_only
             && argument != "--write-quadratic-basis" && argument != "--probe-basis"
             && argument != "--probe-basis-and-write" && argument != "--probe-file"
+            && argument != "--transport-connection"
     }).map(|argument| {
         argument.split(',').filter(|term| !term.is_empty()).map(|term| {
             let (column, value) = term.split_once(':').expect("probe term must be column:value");
@@ -220,6 +242,22 @@ fn main() -> io::Result<()> {
         triple_rank += insert(grade_two, &mut triple_pivots) as usize;
     }
     cumulative.push((active_family, central_pivots.iter().flatten().count(), dual_rank, triple_rank));
+
+    let connection_records = if let Some((sidecar_path, _)) = &connection_sidecar {
+        let mut sidecar = Vec::new();
+        File::open(sidecar_path)?.read_to_end(&mut sidecar)?;
+        assert_eq!(&sidecar[..8], b"MRCICON1");
+        let mut sidecar_cursor = 8;
+        assert_eq!(u32_at(&sidecar, &mut sidecar_cursor), P);
+        assert_eq!(u32_at(&sidecar, &mut sidecar_cursor), ambient);
+        assert_eq!(u32_at(&sidecar, &mut sidecar_cursor) as usize, rows);
+        let target_columns = u32_at(&sidecar, &mut sidecar_cursor) as usize;
+        let mut images = Vec::with_capacity(rows);
+        for _ in 0..rows {
+            images.push((row_at(&sidecar, &mut sidecar_cursor), row_at(&sidecar, &mut sidecar_cursor)));
+        }
+        Some((target_columns, images))
+    } else { None };
     let central_rank = central_pivots.iter().flatten().count();
     let first_normal = dual_rank - 2 * central_rank;
     let second_normal = triple_rank - 3 * central_rank - 2 * first_normal;
@@ -353,6 +391,82 @@ fn main() -> io::Result<()> {
         if let Some((pivot, _)) = insert_tracked(residual, [(witness_index, 1)].into(), &mut quadratic_basis) {
             let normalized = quadratic_basis[pivot].as_ref().unwrap().0.clone();
             quadratic_witnesses.push((index, records[index].0, pivot, normalized));
+        }
+    }
+
+    if let (Some((target_columns, connection_images)), Some((_, output_path))) = (&connection_records, &connection_sidecar) {
+        let shifted_connection = |row: &Row, shift: usize| -> Row {
+            row.iter().filter_map(|(&column, &value)| {
+                let block = column / target_columns;
+                let within = column % target_columns;
+                (block + shift < 3).then_some(((block + shift) * target_columns + within, value))
+            }).collect()
+        };
+        let connection_lift = |provenance: &Provenance, tangent: usize| -> Row {
+            let mut out = Row::new();
+            for (&source, &coefficient) in provenance {
+                let (t1, t2) = &connection_images[source % rows];
+                let image = if tangent == 0 { t1 } else { t2 };
+                let shifted_image = shifted_connection(image, source / rows);
+                for (column, value) in shifted_image { add_value(&mut out, column, mul(coefficient, value)); }
+            }
+            out
+        };
+        let mut outputs = vec![Vec::<Row>::new(), Vec::<Row>::new()];
+        for tangent in 0..2 {
+            let mut paired_baseline: Vec<Option<(Row, Row)>> = vec![None; 3 * columns];
+            for &index in &central_generators {
+                let base_row = shifted(&records[index].1, 2 * columns);
+                let image_row = shifted_connection(if tangent == 0 { &connection_images[index].0 } else { &connection_images[index].1 }, 2);
+                reduce_pair(base_row, image_row, &mut paired_baseline);
+            }
+            for (index, (_, central, derivative, _)) in records.iter().enumerate() {
+                let mut base_row = shifted(central, columns);
+                for (&column, &value) in derivative { add_value(&mut base_row, 2 * columns + column, value); }
+                let image_row = shifted_connection(if tangent == 0 { &connection_images[index].0 } else { &connection_images[index].1 }, 1);
+                reduce_pair(base_row, image_row, &mut paired_baseline);
+            }
+            for &index in &central_generators {
+                let provenance: Provenance = [(index, 1)].into();
+                reduce_pair(lift_to_length_three(&provenance), connection_lift(&provenance, tangent), &mut paired_baseline);
+            }
+            for provenance in &first_lifts {
+                reduce_pair(lift_to_length_three(provenance), connection_lift(provenance, tangent), &mut paired_baseline);
+            }
+            let mut paired_quadratic: Vec<Option<(Row, Row)>> = vec![None; 3 * columns];
+            for (index, (_, central, derivative, second)) in records.iter().enumerate() {
+                let mut base_row = central.clone();
+                for (&column, &value) in derivative { add_value(&mut base_row, columns + column, value); }
+                for (&column, &value) in second { add_value(&mut base_row, 2 * columns + column, value); }
+                let image_row = if tangent == 0 { connection_images[index].0.clone() } else { connection_images[index].1.clone() };
+                let (base_residual, image_residual) = reduce_pair_fixed(base_row, image_row, &paired_baseline);
+                if base_residual.is_empty() { continue; }
+                let pivot = *base_residual.keys().next_back().unwrap();
+                if paired_quadratic[pivot].is_none() {
+                    let inverse = pow(base_residual[&pivot], P - 2);
+                    let normalized_base: Row = base_residual.into_iter().map(|(column, value)| (column, mul(value, inverse))).collect();
+                    let normalized_image: Row = image_residual.into_iter().map(|(column, value)| (column, mul(value, inverse))).collect();
+                    paired_quadratic[pivot] = Some((normalized_base, normalized_image.clone()));
+                    outputs[tangent].push(normalized_image);
+                } else {
+                    let (reduced_base, reduced_image) = reduce_pair_fixed(base_residual, image_residual, &paired_quadratic);
+                    if !reduced_base.is_empty() {
+                        let pivot = *reduced_base.keys().next_back().unwrap();
+                        let inverse = pow(reduced_base[&pivot], P - 2);
+                        let normalized_base: Row = reduced_base.into_iter().map(|(column, value)| (column, mul(value, inverse))).collect();
+                        let normalized_image: Row = reduced_image.into_iter().map(|(column, value)| (column, mul(value, inverse))).collect();
+                        paired_quadratic[pivot] = Some((normalized_base, normalized_image.clone()));
+                        outputs[tangent].push(normalized_image);
+                    }
+                }
+            }
+        }
+        let mut output = File::create(output_path)?;
+        for tangent in 0..2 {
+            assert_eq!(outputs[tangent].len(), second_normal);
+            for row in &outputs[tangent] {
+                writeln!(output, "{}", row.iter().map(|(column, value)| format!("{column}:{value}")).collect::<Vec<_>>().join(","))?;
+            }
         }
     }
     assert_eq!(quadratic_witnesses.len(), second_normal);
