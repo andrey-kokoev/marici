@@ -5,7 +5,7 @@ use std::path::Path;
 
 fn require(ok: bool, label: &str, assertions: &mut usize) {
     *assertions += 1;
-    if !ok { panic!("FAILED: {label}"); }
+    if !ok { panic!("FAILED: {}", label); }
 }
 
 fn main() {
