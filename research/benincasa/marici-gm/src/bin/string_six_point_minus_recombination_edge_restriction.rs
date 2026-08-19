@@ -27,6 +27,7 @@ fn main() {
     let transport = [a("B34"),a("B24"),a("X"),a("1/B34"),a("1/B24"),a("1/X")];
     let defects: Vec<Atom> = (0..6).map(|k| clean(lm[cycle[(k+1)%6]].clone()-transport[k].clone()*lm[cycle[k]].clone())).collect();
     let sheets: Vec<Value> = [-1,1].into_iter().flat_map(|s| [-1,1].into_iter().map(move |t|(s,t))).map(|(s,t)| {
+        let restricted_primitive: Vec<Atom> = lm.iter().cloned().map(|x|restrict_sheet(x,s,t)).collect();
         let restricted: Vec<Atom> = defects.iter().cloned().map(|x|restrict_sheet(x,s,t)).collect();
         let nonzero: Vec<usize> = restricted.iter().enumerate().filter_map(|(i,x)|(*x!=a("0")).then_some(i)).collect();
         assert_eq!(nonzero, vec![1,2,3]);
@@ -38,7 +39,9 @@ fn main() {
         }
         let boundary=clean(boundary);
         assert_eq!(boundary,a("0"));
-        json!({"s":s,"t":t,"restricted_defects":restricted.iter().map(ToString::to_string).collect::<Vec<_>>(),"nonzero_indices":nonzero,"transported_boundary":boundary.to_string()})
+        let primitive_support: Vec<usize> = restricted_primitive.iter().enumerate().filter_map(|(i,x)|(*x!=a("0")).then_some(i)).collect();
+        assert_eq!(primitive_support,vec![4,5]);
+        json!({"s":s,"t":t,"restricted_primitive":restricted_primitive.iter().map(ToString::to_string).collect::<Vec<_>>(),"primitive_nonzero_indices":primitive_support,"restricted_defects":restricted.iter().map(ToString::to_string).collect::<Vec<_>>(),"nonzero_indices":nonzero,"transported_boundary":boundary.to_string(),"edge_class_in_image_of_delta":true})
     }).collect();
     let packet=json!({
         "schema":"marici.benincasa.string_six_point_minus_recombination_edge_restriction.v1",
@@ -50,6 +53,7 @@ fn main() {
         "sheet_restrictions":sheets,
         "classification":"on every signed recombination sheet the -- edge class is a closed three-edge arc, not the two-edge star of the unique incident chamber vertex",
         "local_vertex_cousin_image_matches":false,
+        "twisted_cellular_cohomology_class":"zero: the displayed restricted primitive maps exactly to the three-edge arc",
         "scope":"restriction of Entry 979's -- character edge cochain to Entry 999's recombination locus; no physical-cycle interpretation"
     });
     let text=serde_json::to_string_pretty(&packet).unwrap()+"\n";
