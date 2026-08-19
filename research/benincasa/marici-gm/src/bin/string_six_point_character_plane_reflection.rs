@@ -105,22 +105,64 @@ fn derivative_at(v: &[Atom], variable: &str, point: i32) -> Vec<Atom> {
     v.iter()
         .cloned()
         .map(|x| {
-            let shifted = clean(
-                x.clone()
-                    .replace(a(variable).to_pattern())
-                    .with((a(&point.to_string()) + a("H")).to_pattern()),
-            );
-            let base = clean(
-                x.replace(a(variable).to_pattern())
-                    .with(a(&point.to_string()).to_pattern()),
-            );
+            let d = match variable {
+                "U" => x.derivative(symbol!("marici::U")),
+                "V" => x.derivative(symbol!("marici::V")),
+                _ => panic!(),
+            };
             clean(
-                ((shifted - base) / a("H"))
-                    .replace(a("H").to_pattern())
-                    .with(a("0").to_pattern()),
+                d.replace(a(variable).to_pattern())
+                    .with(a(&point.to_string()).to_pattern()),
             )
         })
         .collect()
+}
+fn second_at(v: &[Atom], variable: &str, point: i32) -> Vec<Atom> {
+    v.iter()
+        .cloned()
+        .map(|x| {
+            let d = match variable {
+                "U" => x
+                    .derivative(symbol!("marici::U"))
+                    .derivative(symbol!("marici::U")),
+                "V" => x
+                    .derivative(symbol!("marici::V"))
+                    .derivative(symbol!("marici::V")),
+                _ => panic!(),
+            };
+            clean(
+                d.replace(a(variable).to_pattern())
+                    .with(a(&point.to_string()).to_pattern()),
+            )
+        })
+        .collect()
+}
+fn row_rank(mut rows: Vec<Vec<Atom>>) -> usize {
+    let mut rank = 0;
+    let cols = rows[0].len();
+    for col in 0..cols {
+        let Some(pivot_row) = (rank..rows.len()).find(|r| rows[*r][col] != a("0")) else {
+            continue;
+        };
+        rows.swap(rank, pivot_row);
+        let pivot = rows[rank][col].clone();
+        for r in rank + 1..rows.len() {
+            let entry = rows[r][col].clone();
+            if entry == a("0") {
+                continue;
+            }
+            for j in col..cols {
+                rows[r][j] = clean(
+                    rows[r][j].clone() * pivot.clone() - entry.clone() * rows[rank][j].clone(),
+                );
+            }
+        }
+        rank += 1;
+        if rank == rows.len() {
+            break;
+        }
+    }
+    rank
 }
 fn coordinates(b0: &[Atom], b1: &[Atom], target: &[Atom]) -> (Atom, Atom, [usize; 2]) {
     for i in 0..b0.len() {
@@ -318,7 +360,15 @@ fn main() {
                 let mixed_uv = derivative_at(&du_family, "V", t);
                 let mixed_vu = derivative_at(&dv_family, "U", s);
                 assert_eq!(mixed_uv, mixed_vu);
-                conormal.push(json!({"signs":[s,t],"conormal_rank":rank,"mixed_normal_derivatives_commute":true,"first_rees_grade_reconstructed_from_source_kernel":true}));
+                let huu = restrict_many(&second_at(&kernel, "U", s), &[("V", t.to_string())]);
+                let hvv = restrict_many(&second_at(&kernel, "V", t), &[("U", s.to_string())]);
+                let total_rank = row_rank(vec![du.clone(), dv.clone(), huu, mixed_uv.clone(), hvv]);
+                let conormal_scalar = if rank == 1 {
+                    proportional_scalar(&du, &dv)
+                } else {
+                    None
+                };
+                conormal.push(json!({"signs":[s,t],"conormal_rank":rank,"dv_over_du":conormal_scalar,"mixed_normal_derivatives_commute":true,"first_rees_grade_reconstructed_from_source_kernel":true,"rank_through_second_grade":total_rank,"second_grade_rank_mod_first":total_rank-rank}));
             }
         }
         records.push(json!({

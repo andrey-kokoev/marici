@@ -1,5 +1,7 @@
 # 992 — The Recombination Kernel Has Two Independent Conormal Directions
 
+> **Retracted by Entry 995.** The finite-difference helper substituted its auxiliary increment before taking the rational limit and produced a spurious second direction. Native exact differentiation gives conormal rank one on every signed sheet. The claims and next falsifier below are retained only as provenance of the failed audit.
+
 ## Elementary-modification test
 
 Entry 991 showed that the carrier residue square is exact, while the two coefficient eigendirections coincide on the intersection fiber.  Let

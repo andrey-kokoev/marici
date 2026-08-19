@@ -1,5 +1,7 @@
 # 993 — The Two-Normal Recombination Symbol Is Exact with Its Source Primitive
 
+> **Corrected by Entry 995.** The exactness conclusion survives, but Entry 992's input rank was wrong: the first conormal image has rank one, not two. All language below asserting two independent symbols is withdrawn. Native exact differentiation also shows that the second Rees grade adds no rank.
+
 ## Exactness gate
 
 Entry 992 found two independent conormal symbols
