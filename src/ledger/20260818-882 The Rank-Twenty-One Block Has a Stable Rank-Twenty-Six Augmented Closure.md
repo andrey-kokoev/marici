@@ -37,13 +37,13 @@ Thus the smallest supported candidate is not an absolute rank-twenty-one
 connection but a rank-twenty-six augmented object:
 
 \[
-\boxed{25\text{ numerator directions}+1\text{ principal coherence cell}.}
+\boxed{25\text{ numerator directions}+1\text{ moving-wall double-pole direction}.}
 \]
 
 This is precisely the source-labelled distinction that projected matrices
-erased.  The next test is occurrence-reflection transport of the full
-rank-twenty-six closure, followed by construction of its vertical differential;
-no physical or irreducibility claim is made yet.
+erased.  The extra direction is in the same Gauss--Manin degree: it is the
+moving-wall term of Entry 667, not by itself a principal cell in a vertical
+complex.  No physical, vertical-cohomology, or irreducibility claim is made.
 
 ## Durable verification
 

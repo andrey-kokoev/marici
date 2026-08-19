@@ -47,9 +47,11 @@ degree-six numerator directions and the labelled double-pole coherence cell
 before transport.
 
 The result establishes a natural augmented carrier for the connection, not
-yet its vertical cohomology or physical period.  The next calculation is the
-internal differential involving the principal double-pole cell and the rank-25
-numerator sector.
+yet a physical period.  The double-pole direction is the same-degree
+moving-wall correction of Entry 667; no internal differential from it to the
+rank-25 numerator sector is implied.  The next calculation is the filtered
+connection block between the simple-pole numerator space and this moving-wall
+direction.
 
 ## Durable verification
 
