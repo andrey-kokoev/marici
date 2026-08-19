@@ -1,5 +1,49 @@
 use serde_json::json;
 
+fn gcd(mut a: i128, mut b: i128) -> i128 {
+    a = a.abs(); b = b.abs();
+    while b != 0 { let r = a % b; a = b; b = r; }
+    a
+}
+
+fn combinations(n: usize, k: usize) -> Vec<Vec<usize>> {
+    fn rec(n: usize, k: usize, start: usize, cur: &mut Vec<usize>, out: &mut Vec<Vec<usize>>) {
+        if cur.len() == k { out.push(cur.clone()); return; }
+        for i in start..=n - (k - cur.len()) {
+            cur.push(i); rec(n, k, i + 1, cur, out); cur.pop();
+        }
+    }
+    let mut out=Vec::new(); rec(n,k,0,&mut Vec::new(),&mut out); out
+}
+
+fn determinant(mut m: Vec<Vec<i128>>) -> i128 {
+    let n=m.len(); if n==0 { return 1; }
+    let mut sign=1i128; let mut prev=1i128;
+    for k in 0..n-1 {
+        let Some(pivot)=(k..n).find(|&i| m[i][k]!=0) else { return 0 };
+        if pivot!=k { m.swap(pivot,k); sign=-sign; }
+        let p=m[k][k];
+        for i in k+1..n { for j in k+1..n {
+            m[i][j]=(m[i][j]*p-m[i][k]*m[k][j])/prev;
+        }}
+        prev=p;
+    }
+    sign*m[n-1][n-1]
+}
+
+fn smith_invariants(a: &[Vec<i64>], rank: usize) -> Vec<i128> {
+    let mut divisors=vec![1i128];
+    for k in 1..=rank {
+        let mut d=0i128;
+        for rs in combinations(a.len(),k) { for cs in combinations(a[0].len(),k) {
+            let minor=rs.iter().map(|&i| cs.iter().map(|&j| a[i][j] as i128).collect()).collect();
+            d=gcd(d,determinant(minor));
+        }}
+        divisors.push(d);
+    }
+    (1..=rank).map(|k| divisors[k]/divisors[k-1]).collect()
+}
+
 fn rank_mod(mut a: Vec<Vec<i64>>, p: i64) -> usize {
     let rows = a.len();
     let cols = a[0].len();
@@ -52,6 +96,10 @@ fn main() {
     assert_eq!(mod_two_rank, 2);
     let even_invariant_factor_lower_bound = rational_rank - mod_two_rank;
     assert_eq!(even_invariant_factor_lower_bound, 4);
+    let smith=smith_invariants(&matrix,rational_rank);
+    assert_eq!(smith,vec![1,1,2,2,2,4]);
+    let primitive_index: i128=smith.iter().product();
+    assert_eq!(primitive_index,32);
 
     let packet = json!({
         "schema":"marici.benincasa.string_six_point_orbit_two_primary.v1",
@@ -63,9 +111,11 @@ fn main() {
         "mod_two_rank":mod_two_rank,
         "even_invariant_factor_lower_bound":even_invariant_factor_lower_bound,
         "index_divisibility_lower_bound":16,
+        "primitive_normalized_smith_invariants":smith,
+        "primitive_normalized_index":primitive_index.to_string(),
         "reason":"all four translates of each seed coincide modulo 2",
         "scope":"orbit lattice after localization away from the nonunit kinematic Fitting factors",
-        "exact_smith_form":"not determined"
+        "exact_smith_form_scope":"exact for the displayed primitive normalized two-seed orbit model; source even content is separate"
     });
     let text = serde_json::to_string_pretty(&packet).unwrap() + "\n";
     std::fs::write("../string-six-point-orbit-two-primary.json", &text).unwrap();
