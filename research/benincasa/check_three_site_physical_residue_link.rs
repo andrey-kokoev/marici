@@ -25,6 +25,12 @@ fn gcd(mut a: i64, mut b: i64) -> i64 {
     a.abs()
 }
 
+fn det3(m: [[i64;3];3]) -> i64 {
+    m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])
+    -m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])
+    +m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0])
+}
+
 fn main() {
     let common = ["qG", "qg1", "qg2", "qg3"];
     let cycle = ["qG12", "qg23", "qG31", "qg12", "qG23", "qg31"];
@@ -66,8 +72,37 @@ fn main() {
         assert_eq!(sigma[v], cycle[(i+4)%6]);
     }
 
+    // Source orientation is dy12 ^ dy23 ^ dy31.  The first row is the
+    // deletion-pole normal, the second the paired connected-subgraph normal,
+    // and the third the coordinate along the edge internal to that subgraph.
+    // Positive rescalings of the deletion normals (the convention-dependent
+    // factor two) do not affect these signs.
+    let source_residue_signs = [
+        det3([[1,0,0],[1,0,1],[0,1,0]]), // G12,g23 ; y23
+        det3([[1,0,0],[1,1,0],[0,0,1]]), // G12,g31 ; y31
+        det3([[0,1,0],[1,1,0],[0,0,1]]), // G23,g31 ; y31
+        det3([[0,1,0],[0,1,1],[1,0,0]]), // G23,g12 ; y12
+        det3([[0,0,1],[0,1,1],[1,0,0]]), // G31,g12 ; y12
+        det3([[0,0,1],[1,0,1],[0,1,0]]), // G31,g23 ; y23
+    ];
+    assert_eq!(source_residue_signs, [-1,1,-1,1,-1,1]);
+
+    // Relative to the oriented hexagon, the second, fourth, and sixth source
+    // pairs are traversed backwards. Poincare-residue antisymmetry flips them.
+    let oriented_cycle_coefficients = [
+        source_residue_signs[0], -source_residue_signs[5],
+        source_residue_signs[4], -source_residue_signs[3],
+        source_residue_signs[2], -source_residue_signs[1],
+    ];
+    assert_eq!(oriented_cycle_coefficients, [-1,-1,-1,-1,-1,-1]);
+    for v in 0..6 {
+        let incoming=oriented_cycle_coefficients[(v+5)%6];
+        let outgoing=oriented_cycle_coefficients[v];
+        assert_eq!(incoming, outgoing); // boundary coefficient vanishes
+    }
+
     // Every maximal source term contains the common four-pole simplex, so any
     // one common vertex is a cone point for the complete nerve.
     assert!(!common.is_empty());
-    println!("source_maximal_terms=6 common_vertices=4 link_vertices=6 link_edges=6 rank_d1={rank_d1} link_h0={h0} link_h1={h1} full_nerve_cone=true cyclic_h1_character=+1");
+    println!("source_maximal_terms=6 common_vertices=4 link_vertices=6 link_edges=6 rank_d1={rank_d1} link_h0={h0} link_h1={h1} full_nerve_cone=true cyclic_h1_character=+1 source_residue_signs=-,+,-,+,-,+ oriented_cycle_coefficients=-,-,-,-,-,- cycle_boundary=0");
 }
