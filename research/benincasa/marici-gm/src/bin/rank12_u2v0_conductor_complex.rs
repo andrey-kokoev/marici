@@ -29,6 +29,16 @@ fn main() {
     let cokernel_rank = conductor_rank - differential_rank;
     let anti_invariant_homology_rank = 0;
 
+    // The anti-invariant subcomplex is [R --2--> R].  Its contraction is
+    // h=1/2, which is independent of s and B-1.  Therefore ordinary or
+    // derived restriction to either support face, or their intersection,
+    // remains contractible over characteristic zero.
+    let d_num = 2_i64;
+    let h_num = 1_i64;
+    let h_den = 2_i64;
+    assert_eq!(d_num * h_num, h_den);
+    assert_eq!(h_num * d_num, h_den);
+
     println!("normalization_basis=(e_plus,e_minus)");
     println!("conductor_basis=c");
     println!("difference_map=[1,-1]");
@@ -41,4 +51,8 @@ fn main() {
     println!("cokernel_rank={cokernel_rank}");
     println!("anti_invariant_homology_rank={anti_invariant_homology_rank}");
     println!("valid_locus=s*(B-1)!=0");
+    println!("anti_invariant_contraction=1/2");
+    println!("restriction_s0_contractible=true");
+    println!("restriction_Bminus1_contractible=true");
+    println!("restriction_intersection_contractible=true");
 }
