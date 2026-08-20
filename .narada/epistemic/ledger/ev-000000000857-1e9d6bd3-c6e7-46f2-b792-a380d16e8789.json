@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 857,
+  "event_id": "ev-000000000857-1e9d6bd3-c6e7-46f2-b792-a380d16e8789",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6e5714bae2cfa8f434c228063fac0e9a7b25baa225408daf2e640eb78cf3b077",
+  "proposal_id": "ep_7f7df252-468b-4d6e-8b2c-cf63b79266f3",
+  "proposal_digest": "74c6bb7b062fd90c757413a531c6afc25186aedb2a1cca5715a6569e3524f571",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:strominger-subsubleading-memory-candidate-v1",
+      "kind": "source",
+      "title": "Subsubleading memory candidate packet",
+      "version": "1",
+      "locator": "research/strominger/subsubleading-memory-candidate.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:strominger-subsubleading-memory-checker-v1",
+      "kind": "source",
+      "title": "Exact subsubleading-memory checker",
+      "version": "1",
+      "locator": "research/strominger/checkers/subsubleading_memory_exact_checks.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:strominger-subsubleading-memory-results-v1",
+      "kind": "source",
+      "title": "Exact subsubleading-memory checker results",
+      "version": "1",
+      "locator": "research/strominger/results/subsubleading_memory_exact_checks.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "kind": "test",
+      "title": "Exact linear-structure test for the finite-part second-moment ballistic-memory candidate",
+      "scope": "42 symbolic checks covering moments, Fourier projectors, curve deviation, parity, burst calculus, pseudo-flux order, spin weight, and normalization boundary"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-ballistic-memory-candidate-v1",
+      "kind": "claim",
+      "title": "The finite-part second news moment is a typed ballistic-memory candidate with verified linear structure, but the full memory–Ward comparison remains open",
+      "status": "candidate",
+      "verified": [
+        "finite-part and time-moment identities",
+        "Fourier/projector ladder",
+        "curve-deviation witness",
+        "electric/magnetic parity typing",
+        "burst moment calculus with inherited factor-1/2 residual",
+        "tree-level nonlinear pseudo-flux order",
+        "spin-weight and eth^4 grade"
+      ],
+      "open": [
+        "full source-derived memory–Ward comparison map",
+        "overall kappa normalization",
+        "nonlinear pseudo-flux/collinear completion",
+        "first-principles magnetic charge and antipodal matching"
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "target_id": "marici:source:strominger-subsubleading-memory-checker-v1",
+      "relation_id": "rel:derived_from-2221fd52dd11ec0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-ballistic-memory-candidate-v1",
+      "target_id": "marici:source:strominger-subsubleading-memory-candidate-v1",
+      "relation_id": "rel:derived_from-b1a9875c06d4cf60"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "target_id": "marici:claim:strominger-ballistic-memory-candidate-v1",
+      "relation_id": "rel:tests-c17b507625f92949"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:strominger-ballistic-memory-42-of-42-v1",
+      "test_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "actor": "marici.Nima",
+      "outcome": "42 of 42 exact symbolic checks pass; classification remains typed candidate with verified linear structure, full triangle open.",
+      "evidence": [
+        {
+          "source_id": "marici:source:strominger-subsubleading-memory-results-v1",
+          "locator": "summary",
+          "paraphrase": "The durable JSON reports total 42, passed 42, failed 0 and enumerates four open physical-comparison boundaries."
+        },
+        {
+          "source_id": "marici:source:strominger-subsubleading-memory-checker-v1",
+          "locator": "M1-M8",
+          "paraphrase": "The exact checker independently reproduced all declared symbolic identities under SymPy 1.14.0."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of the paused Strominger lane while its original agent is unavailable."
+  },
+  "idempotency_key": "auto-admission-91137d2f20923439c93a28fa",
+  "occurred_at": "2026-08-20T13:49:40.9799221Z",
+  "certifies_truth": false,
+  "event_hash": "48be89a7a20965f768d1b7c8a6846b6251453485158eb5e012990dd3f528486e"
+}

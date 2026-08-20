@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 874,
+  "event_id": "ev-000000000874-bd2584c1-d9d2-48a1-9095-d964e2d05432",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "73ee60ff98ef195ed61d8a4f41646d7eb631df8f4106214a27d922a79c067bec",
+  "proposal_id": "ep_438de39b-da4d-42f4-9b6a-d89707542ba8",
+  "proposal_digest": "c727e8df7d9ce3bbd2f9d95ea195a1c7188125937cf47519db8838bc80d1cc69",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:psz1502.06120-text-v1",
+      "kind": "source",
+      "title": "Pasterski–Strominger–Zhiboedov spin-memory source text",
+      "version": "arXiv:1502.06120",
+      "locator": "research/strominger/sources/psz1502.06120.txt"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:strominger-c2-stress-only-mistyped-v1",
+      "kind": "criticism",
+      "title": "A stress-only burst comparison cannot define the rung-three shear response",
+      "reason": "The exact PSZ curl constraint retains the angular-momentum aspect N_z; its u-weighted integral contains both corner and integrated-aspect terms in addition to the first T_uz moment."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-c2-augmented-aspect-flux-v1",
+      "kind": "claim",
+      "title": "The source-typed C2 comparison is an augmented angular-momentum-aspect plus flux map into the first shear moment",
+      "status": "source-derived correction",
+      "identity": "Im[∂bar Dz^3 ∫u Czz]=2 Im([u ∂bar Nz]_-^+ - ∫∂bar Nz + ∫u ∂bar Tuz)"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:criticism:strominger-c2-stress-only-mistyped-v1",
+      "target_id": "marici:claim:strominger-ballistic-memory-candidate-v1",
+      "relation_id": "rel:criticizes-fc4df6d8384486fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-c2-augmented-aspect-flux-v1",
+      "target_id": "marici:source:psz1502.06120-text-v1",
+      "locator": "equations (2.3) and (5.2)",
+      "relation_id": "rel:derived_from-05e49fb63b1c5680"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:strominger-c2-augmented-aspect-flux-v1",
+      "target_id": "marici:claim:strominger-ballistic-memory-candidate-v1",
+      "relation_id": "rel:maricirefines-34c7ef6226af72ff"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of the paused Strominger lane."
+  },
+  "idempotency_key": "auto-admission-423fd42e3d0e390f191d4427",
+  "occurred_at": "2026-08-20T14:19:53.1522569Z",
+  "certifies_truth": false,
+  "event_hash": "318cb000980f8d95d2075efae7d9abf96e162a5595cf02a11655581255e45552"
+}

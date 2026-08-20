@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 870,
+  "event_id": "ev-000000000870-37d16be5-e8c2-47ce-8b36-3aba7e232dd0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7eab4dfcf262263ba8e2459907b2ca0c76ccdbe9aa5a7327f3efbc53a5f3933d",
+  "proposal_id": "ep_1aa66fcc-4724-410d-b7f3-4628532423ce",
+  "proposal_digest": "168d223c4e212a5aaf482ecc1fc6f7a44a703a980a65fe6a67209174f35dadd2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:flavor-wp9-core-stratification-v1",
+      "kind": "test",
+      "title": "Stratify WP9 hierarchy-flow convergence by phase core and orbit chart"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:flavor-wp9-two-mixed-cores-v1",
+      "kind": "claim",
+      "title": "WP9 hierarchy-flow failure is usually core-controlled, but exactly two tested cores remain chart-dependent",
+      "status": "finite atlas result",
+      "mixed_cores": [
+        0.819271,
+        1.566129
+      ],
+      "counts": {
+        "representative_flows": 38,
+        "converged": 21
+      }
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:flavor-wp9-core-stratification-v1",
+      "target_id": "marici:claim:flavor-wp9-two-mixed-cores-v1",
+      "relation_id": "rel:tests-b7305db1d1519bbb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:test:flavor-wp9-core-stratification-v1",
+      "target_id": "marici:test:flavor-wp9-loop-atlas-v1",
+      "relation_id": "rel:depends_on-3d7ed1dfe7468972"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:flavor-wp9-core-stratification-v1",
+      "test_id": "marici:test:flavor-wp9-core-stratification-v1",
+      "actor": "marici.Nima",
+      "outcome": "Among 38 representative flows, 21 converge. All but two repeated cores have uniform convergence status across orbit charts; cores 0.819271 and 1.566129 are mixed and therefore require chart-transition data.",
+      "evidence": [
+        {
+          "source_id": "marici:source:flavor-wp9-atlas-results-v1",
+          "locator": "tau_flows",
+          "paraphrase": "Grouping the durable flow records by core yields mixed convergence only for 0.819271 and 1.566129; other repeated cores are uniform across their sampled orbits."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation and asked which paused lanes require continuation."
+  },
+  "idempotency_key": "auto-admission-934d85f25852acc301283615",
+  "occurred_at": "2026-08-20T14:16:40.821551Z",
+  "certifies_truth": false,
+  "event_hash": "9b8987351ad34cb1c342fd02e75d312311bccc3a37be382b23797870916ea73d"
+}

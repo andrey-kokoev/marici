@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 914,
+  "event_id": "ev-000000000914-e19ab61c-69c0-423e-9d95-0c2f431ee63e",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ec55443411614f898b191e640c298ac050b5f4d2190feddca1c8bd67d20260ed",
+  "proposal_id": "ep_fecaeb0d-9a47-4485-990c-51ef70dbe164",
+  "proposal_digest": "610950c4408e8688afd240209f2fa1bb1f94adebca2b909e3f01efaf22390e28",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1162 — Generic Four-Cycle Triple Points Are Mixed Tate",
+      "entry_number": 1162,
+      "path": "src/ledger/20260820-1162 Generic Four-Cycle Triple Points Are Mixed Tate.md",
+      "entity_id": "mariciledger_entry:cb78d05c832828f0318f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Every generic forced C4 triple point is an ordinary mixed-Tate three-line arrangement",
+      "status": "established",
+      "body": "The 196 pivots contain 296 labelled base triple points. Exact projective solving finds exactly three distinct lines at each, with no hidden four-line points. Away from B4=0 each has two deck-conjugate lifts; the local complement has Orlik-Solomon ranks (1,3,2), hence mixed Tate.",
+      "entity_id": "mariciclaim:63e893e8b5493801dcee"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact C4 triple-point and Orlik-Solomon audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/audit_four_cycle_triple_points.py",
+      "entity_id": "maricitest:52f854f2c81d00ee0c1a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:cb78d05c832828f0318f",
+      "target_id": "mariciclaim:63e893e8b5493801dcee",
+      "relation_id": "rel:maricirecords-9f6cb81832f51959"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:63e893e8b5493801dcee",
+      "target_id": "maricitest:52f854f2c81d00ee0c1a",
+      "relation_id": "rel:maricitested_by-0f0ed8d75dd26dc6"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified generic C4 triple-point resolution."
+  },
+  "idempotency_key": "auto-admission-1880dfc652fe59d08459ff14",
+  "occurred_at": "2026-08-20T15:14:41.6971596Z",
+  "certifies_truth": false,
+  "event_hash": "f19ee794b2fe2f6c251ef22226f49dfb074bd648adbef7b407b989df24e932de"
+}

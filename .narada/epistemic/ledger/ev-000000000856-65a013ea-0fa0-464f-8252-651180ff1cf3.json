@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 856,
+  "event_id": "ev-000000000856-65a013ea-0fa0-464f-8252-651180ff1cf3",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "8e080a783086ac9db3dd8368fd96cf4a5f5e257949a331d720d83bce3a61b781",
+  "proposal_id": "ep_b7baefd8-ef45-4bbc-a018-4ab2ff4b3cf6",
+  "proposal_digest": "d5e5ad0483101c746d8270cf9d4612b857284f25b0592b79bece91f2c64de0c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The e6 quarter-lattice quotient is preserved by nodal transport",
+      "status": "established",
+      "body": "For XY=p*s*(B-1), the primitive vanishing cycle eta and rho=eta/4 both have identity monodromy around p, s, and B-1. Their quotient D_e6=Z rho/Z eta is therefore a constant Z/4 local system on the labelled smoothing base. Deck acts by -1 modulo four. The integral three-face Gysin simplex remains a complex after extension to this quotient. This is a finite coefficient-lattice quotient, not physical cohomology torsion.",
+      "entity_id": "claim:36f015ac75b1bbbe9def"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Quarter-lattice transport and Gysin compatibility checker",
+      "status": "passed",
+      "body": "The checker verifies identity base monodromies, odd deck action modulo four, and d0*d1=d1*d2=0 for the labelled Gysin simplex.",
+      "entity_id": "test:f0fe65ca714e47ed2ceb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1142 — The e6 Quarter-Lattice Quotient Is Preserved by Nodal Transport",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1142 The e6 Quarter-Lattice Quotient Is Preserved by Nodal Transport.md",
+      "entity_id": "mariciledger_entry:bd61143eb1f02a374d23"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:36f015ac75b1bbbe9def",
+      "target_id": "test:f0fe65ca714e47ed2ceb",
+      "relation_id": "rel:maricitested_by-d5efe1941876d97f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:bd61143eb1f02a374d23",
+      "target_id": "claim:36f015ac75b1bbbe9def",
+      "relation_id": "rel:maricirecords-de51fa4b5aab1470"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified quarter-lattice transport result."
+  },
+  "idempotency_key": "auto-admission-52d696ee48cfb7d3b0ad7bc2",
+  "occurred_at": "2026-08-20T13:48:39.8216065Z",
+  "certifies_truth": false,
+  "event_hash": "6e5714bae2cfa8f434c228063fac0e9a7b25baa225408daf2e640eb78cf3b077"
+}

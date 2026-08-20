@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 885,
+  "event_id": "ev-000000000885-7988e903-d6dd-478d-bde9-64b0aa3f2dc9",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "40e4814bf4cf1efdb49a36392b45484fd584973460856b5d5bb29039b6e80b00",
+  "proposal_id": "ep_b206856e-faeb-4cfe-b994-9478bca27b44",
+  "proposal_digest": "839c5456a3fa3801107cf97ac6f4f203293b8f04acf248bd9cfb0daf65d77148",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1153 — The Frozen Source Does Not Select the Integral Cusp Extension",
+      "status": "source_provenance_gate",
+      "path": "src/ledger/20260820-1153 The Frozen Source Does Not Select the Integral Cusp Extension.md",
+      "entry_number": 1153,
+      "entity_id": "mariciledger_entry:857d4c87c2b3c0be9187"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The frozen primary construction leaves all four integral cusp extension classes open",
+      "status": "established_scope_boundary",
+      "body": "The one-loop paper supplies the positive Cayley-Menger contour, nine-master de Rham basis, and elliptic Picard-Fuchs degeneration, but explicitly requires independent boundary data. Its cited contour and asymptotic constructions do not supply an integral Betti/Gysin lift or the parity of twice an elliptic lift along (e6,v_alg). The visible full-lattice Z/2 is neither proved nor disproved.",
+      "entity_id": "mariciclaim:822d17923f57d61bee11"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Primary-source integral cusp provenance audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/integral_cusp_source_provenance_gate.py",
+      "entity_id": "maricitest:e87482174eb4f33b0c6e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:857d4c87c2b3c0be9187",
+      "target_id": "mariciclaim:822d17923f57d61bee11",
+      "relation_id": "rel:maricirecords-bff97c67db6e2708"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:822d17923f57d61bee11",
+      "target_id": "maricitest:e87482174eb4f33b0c6e",
+      "relation_id": "rel:maricitested_by-20969260a9819ba1"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the bounded primary-source provenance audit for the integral cusp extension and record the narrow stop condition."
+  },
+  "idempotency_key": "auto-admission-7b4bd7696618acad8b51387f",
+  "occurred_at": "2026-08-20T14:38:25.7396875Z",
+  "certifies_truth": false,
+  "event_hash": "2bcd0fa6053aba6348f4d91d37f0506eb0a6ab49ff346bf9c9c5816a957a54b1"
+}
