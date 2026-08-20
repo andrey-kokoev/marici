@@ -11,6 +11,10 @@ repository:
 - `marici.Figueiredo` (“Caroline”): flavor and
   presentation-versus-physics descent.
 - `marici.Strominger`: radiative GR, BMS charges, soft limits, and memory.
+- `marici.Grothendieck`: arithmetic geometry, emergence of
+  `Spec(Z)`, primes as irreducible loci, Frobenius/Euler products and
+  L-functions, and the audit that arithmetic is derived from—rather than
+  inserted into—the shared Carrier calculus.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
@@ -123,6 +127,7 @@ multi-call sessions here; use the binding-call route for every call.
   - `marici.Benincasa` — `team_member:bc28f30924d7df1af02a`
   - `marici.Figueiredo` — `team_member:7f11641564913e4417ff`
   - `marici.Strominger` — `team_member:4561aedd7f948b5ddee5`
+  - `marici.Grothendieck` — `team_member:7283d8c22c912c41664b`
 
 ## Epistemic graph: submitting records
 
@@ -156,7 +161,7 @@ unless you have a specific concurrency boundary.
 ## Research artifacts
 
 Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
-`research/strominger/`). Conventions:
+`research/strominger/`, `research/grothendieck/`). Conventions:
 
 - Long-form reasoning goes in markdown packets; claims that can be checked
   mechanically get an executable checker under `research/<name>/checkers/`
