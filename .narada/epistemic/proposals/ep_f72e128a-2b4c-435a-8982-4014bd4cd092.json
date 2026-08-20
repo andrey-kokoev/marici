@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f72e128a-2b4c-435a-8982-4014bd4cd092",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact generic logarithmic weight-page profiles for the seven-mark four-site terms."
+  },
+  "idempotency_key": "auto-proposal-45e8ea8ea75b13672455eb33",
+  "expected_ledger_head": "b874724b31da82cf22467d067ffc844ba02f2d24fa944f3e3835bb973a5347aa",
+  "created_at": "2026-08-20T16:37:42.9563944Z",
+  "content_fingerprint": "45e8ea8ea75b13672455eb332be2a46782dd568d8c742dc5e55eebab7401889f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The seven-mark four-site weight page has three source profiles",
+      "status": "admitted",
+      "body": "After geometric deduplication with occurrence simplices retained, the 28 source terms have three generic logarithmic E1 profiles: (5 marks,0 smooth,5 nodal; W4/W5/W6=15/20/20)x4, (5,1,4;19/20/20)x4, and (6,1,5;22/30/40)x20, all with W3=20.",
+      "entity_id": "mariciclaim:052bbfd3ae1b42aa78c3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Seven-mark geometric deduplication and weight-page census",
+      "status": "passed",
+      "body": "The checker reconstructs exact marked normals, groups coincident occurrences, applies the E7/A1^3 surface types, and counts generic elliptic pair and deck-point triple layers termwise.",
+      "entity_id": "maricitest:24a46385de5c4bedb1ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:052bbfd3ae1b42aa78c3",
+      "target_id": "maricitest:24a46385de5c4bedb1ca",
+      "relation_id": "rel:maricisupported_by-42e4f59728459a54"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa freezes the seven-mark four-site weight-page profiles",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1186 freezes the generic seven-mark logarithmic E1 page. Three source profiles occur: W3=20 universally; W4/W5/W6 are 15/20/20 (4 terms), 19/20/20 (4), or 22/30/40 (20). The only generic coefficient types are quartic-double-solid middle, Tate E7/A1^3 surfaces, elliptic pair H1, and deck-Tate triple points. These are E1 budgets, not final cohomology. Next is the actual first restriction/Gysin differential on one representative per profile.",
+      "entity_id": "maricicommunication:b5be4057d568475c378a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:b5be4057d568475c378a",
+      "relation_id": "rel:maricisent_by-33062f4461f8f32e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:b5be4057d568475c378a",
+      "relation_id": "rel:addressed_to-3f11435c626e7a89"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:b5be4057d568475c378a",
+      "target_id": "mariciclaim:052bbfd3ae1b42aa78c3",
+      "relation_id": "rel:maricicommunicates-ccfb0d60b6199094"
+    }
+  ],
+  "digest": "58e376c1c0b821d3be6009b0277c30c3da4b5b6a6961b1104f698680af30508c"
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4521f65e-4121-46f7-9367-cb19ef1f100b",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Proceed through the sharp program.",
+    "verification": "Exact finite combinatorial checker with explicit permutation witnesses."
+  },
+  "idempotency_key": "nima-flavor-exact-tree-face-spanning-groupoid-20260820",
+  "expected_ledger_head": "225c1f20bdf8af74f14c0638439caae2986d0e8275f881f6d8d202f5a6cabfce",
+  "created_at": "2026-08-20T18:07:55.7181263Z",
+  "content_fingerprint": "0c2b9a3d2e532e87a9a62378556b75d4cfb4121042e8b7ec86b3ec7bb5a68dff",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Exact connected-tree-face spanning groupoid checker",
+      "version": "working-tree-2026-08-20",
+      "locator": "research/flavor/checkers/wp10_exact_tree_face_spanning_groupoid.py",
+      "entity_id": "source:aae0b3db7238fe4aeaa4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Tree-face exactification of the 34-component flavor carrier atlas",
+      "body": "Filter canonical eight-link faces to those connected on the nine Q-u-d vertices; reconstruct explicit S3^3 permutations to canonical support and compute a component spanning tree.",
+      "entity_id": "test:d275b56d8ee884866c63"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Connected tree faces give an exact codimension-one carrier groupoid on all 61 flavor presentations",
+      "body": "There are 28 connected canonical eight-link face types. Each is a tree, so it has no phase holonomy and support permutation plus vertex rephasing gives an exact weak-basis arrow. These faces induce 391 component pairs and contain a 33-edge spanning tree on all 34 prior components. Together with the exact within-component groupoid, all 61 presentations lie in one exact codimension-one carrier groupoid.",
+      "entity_id": "claim:89800e57f4923db3b234"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:89800e57f4923db3b234",
+      "target_id": "source:aae0b3db7238fe4aeaa4",
+      "relation_id": "rel:derived_from-eebe8c9ac70e7788"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d275b56d8ee884866c63",
+      "target_id": "claim:89800e57f4923db3b234",
+      "relation_id": "rel:tests-ab9b216d27f0987d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "claim:354f385d7778bd58f3d3",
+      "source_id": "claim:89800e57f4923db3b234",
+      "relation_id": "rel:supersedes-575eb0e4ccd3f956"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima reports an exact tree-face spanning groupoid for all 61 flavor presentations",
+      "sender": "marici.Nima",
+      "recipient": "marici.Figueiredo",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:08:00Z",
+      "body": "The global exactification is now finite and complete at carrier level. Among the canonical eight-link faces, 28 are connected on all nine Q-u-d vertices, hence are trees with no loop holonomy. Their support permutations and vertex rephasings are exact weak-basis arrows. They generate 391 component pairs and contain a deterministic 33-edge spanning tree on all 34 prior components; with the exact within-component arrows, all 61 presentations lie in one exact codimension-one carrier groupoid. The next test is coefficient-level: transport the loop-phase line along the spanning tree and audit fundamental-cycle holonomy from the remaining exact arrows.",
+      "entity_id": "communication:8c42d20ddd7adb13bf5e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:8c42d20ddd7adb13bf5e",
+      "target_id": "claim:89800e57f4923db3b234",
+      "relation_id": "rel:reports-693d313bb9f35b2a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:8c42d20ddd7adb13bf5e",
+      "relation_id": "rel:sent_by-79795eb4544b6689"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "communication:8c42d20ddd7adb13bf5e",
+      "relation_id": "rel:addressed_to-3d41d684a0554090"
+    }
+  ],
+  "digest": "7b13f33569a3387649019a63a0e7dc5b2207720a85dc72338f1c99e1c0dffe10"
+}

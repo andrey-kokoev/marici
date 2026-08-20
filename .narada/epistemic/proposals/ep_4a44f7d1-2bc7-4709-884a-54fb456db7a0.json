@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4a44f7d1-2bc7-4709-884a-54fb456db7a0",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Operator directed Nima to continue the sharp Strominger and flavor programs and maintain the epistemic graph."
+  },
+  "idempotency_key": "nima-20260820-strominger-tail-jet-flavor-oriented-census",
+  "expected_ledger_head": "e6a894c431bda7213c1ae4de132bd20d52cb69c66621546ef69ed95079bdd995",
+  "created_at": "2026-08-20T16:11:16.8691341Z",
+  "content_fingerprint": "db3d75bce0db4f1ad4fb02dd33e2039d2c9591630e4bcdca5d174f89e35c590a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "strom_src",
+      "kind": "source",
+      "title": "Sub-subleading memory exact checker result, 65 of 65",
+      "version": "2026-08-20",
+      "locator": "research/strominger/results/subsubleading_memory_exact_checks.json",
+      "entity_id": "source:6005358f0523e99b5ef0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "strom_test",
+      "kind": "test",
+      "title": "Minimal logarithmic tail jet closure under scale and retarded-time changes",
+      "version": "1",
+      "entity_id": "test:711309160b52f5d474f9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "strom_claim",
+      "kind": "claim",
+      "title": "The minimal translation-closed logarithmic tail is a four-coefficient affine jet",
+      "version": "1",
+      "summary": "The three-coefficient (A,B,D) tail is not translation closed. Adding E log(u)/u^3 gives (A,B,E,D); exact scale and time-origin actions compose and commute.",
+      "entity_id": "claim:a51546942e5104dfc189"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "strom_test",
+      "target_ref": "strom_claim",
+      "source_id": "test:711309160b52f5d474f9",
+      "target_id": "claim:a51546942e5104dfc189",
+      "relation_id": "rel:tests-39dd216e580d7c29"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "strom_claim",
+      "target_ref": "strom_src",
+      "source_id": "claim:a51546942e5104dfc189",
+      "target_id": "source:6005358f0523e99b5ef0",
+      "relation_id": "rel:derived_from-1c9880d0acf96b61"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_src",
+      "kind": "source",
+      "title": "Complete sector-labelled flavor oriented pilot census",
+      "version": "2026-08-20",
+      "locator": "research/flavor/results/wp10_oriented_pilot_census.json",
+      "entity_id": "source:810dabbd53da17b4bcf1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_claim",
+      "kind": "claim",
+      "title": "The physically typed nine-link pilot census contains 36 oriented classes",
+      "version": "1",
+      "summary": "All 18 swapped orientations are now present. Exact or pilot witnesses exist for swapped orbits 0,2,4,5,6,7,9,10,11,13,14,15,16,17. Orbits 1,3,8,12 have no pilot witness but are not excluded.",
+      "entity_id": "claim:d89ea4fdf6e08332e386"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "flavor_claim",
+      "target_ref": "flavor_src",
+      "source_id": "claim:d89ea4fdf6e08332e386",
+      "target_id": "source:810dabbd53da17b4bcf1",
+      "relation_id": "rel:derived_from-5aef065fdafe8953"
+    }
+  ],
+  "digest": "d05500846bcb9a10fca7d7ed2886e3401ac99dc1b1eb7da75227b5ef457283e9"
+}

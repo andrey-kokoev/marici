@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_42f58747-220f-4dbb-bf33-510bb9ff9e08",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Proceed at will through the sharp flavor program",
+    "role": "active flavor research owner"
+  },
+  "idempotency_key": "nima-flavor-wb-groupoid-composition-v1",
+  "expected_ledger_head": "5909e22c4a7bfbf44ec6f8a70e73d7fc4735f80e7b05aaedc9151890d6927dcb",
+  "created_at": "2026-08-20T17:13:08.7276227Z",
+  "content_fingerprint": "8826097f2c90d25386c9e5c7961087cf148e8cafd9ec615427f2a72f57add8dc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Weak-basis groupoid composition checker and result packet",
+      "version": "2026-08-20",
+      "locator": "research/flavor/checkers/wp10_weak_basis_groupoid_composition.py; research/flavor/results/wp10_weak_basis_groupoid_composition.json; research/flavor/flavor-positive-gram-carrier-packet.md",
+      "entity_id": "source:db1f72bd7830dbe0fb74"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Three-object weak-basis composition modulo the common stabilizer",
+      "summary": "Passed with direct-versus-composed stabilizer-reduced chordal residual 1.453e-15; maximum pairwise Yukawa residual 1.288e-11.",
+      "entity_id": "test:bb43d201eae707992742"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Distinct sparse Gribov copies form a coherent weak-basis groupoid",
+      "summary": "A triple of distinct sparse representatives carries composable U(3)^3 transitions. Canonical sparse incidence generators remain unknown.",
+      "entity_id": "claim:914ddc9d36e27a60247c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next",
+      "kind": "problem",
+      "title": "Derive the source-defined sparse incidence graph and its minimal arrow generators",
+      "entity_id": "problem:81fdff9403e6ca373bb5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:914ddc9d36e27a60247c",
+      "target_id": "source:db1f72bd7830dbe0fb74",
+      "relation_id": "rel:derived_from-183335c0688d7da1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:bb43d201eae707992742",
+      "target_id": "claim:914ddc9d36e27a60247c",
+      "relation_id": "rel:tests-e21d3ed44a325a40"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next",
+      "target_ref": "claim",
+      "source_id": "problem:81fdff9403e6ca373bb5",
+      "target_id": "claim:914ddc9d36e27a60247c",
+      "relation_id": "rel:depends_on-3e32aae46be31e11"
+    }
+  ],
+  "digest": "f366a40f43ba91f4402e0f0fd7c5845cc825b384a32360c52df99a85158a956d"
+}

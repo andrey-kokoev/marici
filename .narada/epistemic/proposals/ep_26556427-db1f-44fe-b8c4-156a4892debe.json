@@ -1,0 +1,53 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_26556427-db1f-44fe-b8c4-156a4892debe",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the Strominger asymptotic-memory lane using primary sources."
+  },
+  "idempotency_key": "nima-strominger-tail-scale-sahoo-source-20260820-v1",
+  "expected_ledger_head": "c7d4bf4fab2d05c3fbcec92e13bbf9004a41405b6c43f61ebfff6db8cc69d0f7",
+  "created_at": "2026-08-20T15:43:41.2350165Z",
+  "content_fingerprint": "5ba0020f5d40ad61e3143ea8a069954412f12bab721e904f60c10f10054338c8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:sahoo-2008.04376-v3",
+      "kind": "source",
+      "title": "Classical Sub-subleading Soft Photon and Soft Graviton Theorems in Four Spacetime Dimensions",
+      "version": "arXiv:2008.04376v3",
+      "locator": "https://arxiv.org/abs/2008.04376"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:strominger-leading-log-scale-not-canonical",
+      "kind": "claim",
+      "title": "The universal leading logarithmic tail does not canonically fix the finite tail scale"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:strominger-leading-log-scale-not-canonical",
+      "target_id": "source:sahoo-2008.04376-v3",
+      "relation_id": "rel:derived_from-c038017fcda90898"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:strominger-tail-scale-sahoo-20260820",
+      "subject_id": "claim:strominger-leading-log-scale-not-canonical",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The source obtains the leading nonanalytic term from the ordered region omega << |ell| << L^{-1}, producing log(omega L), while explicitly discarding lower logarithmic orders and describing L only as larger than the object/scattering scale. Rescaling L preserves the leading log-squared coefficient and shifts precisely the subleading log and finite tail data. Thus the universal coefficient is source-defined, but the finite renormalized control is not fixed at this approximation order.",
+      "evidence": [
+        {
+          "source_id": "source:sahoo-2008.04376-v3",
+          "locator": "sub2_draft.tex lines 234,365,424-429,486,841",
+          "paraphrase": "The primary TeX source defines the ordered integration window using L, obtains one-half omega log-squared(omega L), and systematically neglects lower logarithmic orders."
+        }
+      ]
+    }
+  ],
+  "digest": "9ac685583a64548dd71dd692f5202cd6756068260c7898057602e0af00b16954"
+}

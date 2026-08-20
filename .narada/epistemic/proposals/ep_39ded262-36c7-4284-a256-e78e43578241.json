@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_39ded262-36c7-4284-a256-e78e43578241",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology research lane and record the canonical five-site endpoint Kummer gluing"
+  },
+  "idempotency_key": "auto-proposal-3b1d3eb1b8c0e62fae7bd72a",
+  "expected_ledger_head": "41be35a5eb0208b3f34ff248f1a985a6ce9e5fc4f9709af433459996a78eb861",
+  "created_at": "2026-08-20T17:42:19.4002976Z",
+  "content_fingerprint": "3b1d3eb1b8c0e62fae7bd72a8c9dd04c5fc46374c1461adb1e8412d651525d66",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1212 — The Two Radial Endpoint Frames Glue by a Kummer Transition",
+      "status": "active-supported-local-system",
+      "sector": "cosmology",
+      "entry_number": 1212,
+      "sequence_claim_id": "seqclaim-4c903dfb6cf8865b22965c6b",
+      "summary": "The finite and infinity local period frames satisfy p0=sqrt(K0/K4) p_infinity. Their squared transition is K0/K4, giving one canonical Kummer coefficient line with inertia -1 around each endpoint and +1 around both. Common orientation rescaling does not change the line.",
+      "entity_id": "mariciledger_entry:cdee803d33346b36025d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports canonical Kummer gluing of radial endpoint costalks",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_join_point",
+      "status": "sent",
+      "body": "Entry 1212 glues the two endpoint odd costalks. The local period frames obey p0=sqrt(K0/K4) p∞, so g^2=K0/K4. This defines one Kummer coefficient line with inertia -1 at K0=0 and K4=0, and +1 around both. A common residue-orientation sign does not affect the line. Thus the endpoint cells are not independent and no carrier cell is added. The remaining gate is physical current/chain activation.",
+      "entity_id": "maricicommunication:a9c2b998bfc77add3996"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "result",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:cdee803d33346b36025d",
+      "target_id": "maricicommunication:a9c2b998bfc77add3996",
+      "relation_id": "rel:maricidocuments-498fcb16247f74fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:a9c2b998bfc77add3996",
+      "relation_id": "rel:maricisent_by-d46fbc6e3c70f68e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:a9c2b998bfc77add3996",
+      "relation_id": "rel:mariciaddressed_to-167d9856a0cf327a"
+    }
+  ],
+  "digest": "19c10f35bdc161260576d82a5f4c66bb3791a24d0b811a975c36987e9eb2c84f"
+}

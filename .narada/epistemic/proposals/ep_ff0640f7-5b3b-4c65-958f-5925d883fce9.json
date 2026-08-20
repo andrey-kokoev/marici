@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ff0640f7-5b3b-4c65-958f-5925d883fce9",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Operator directed continuation of the sharp cross-sector program."
+  },
+  "idempotency_key": "auto-proposal-3a999e4576a9bac65ab187bf",
+  "expected_ledger_head": "278728a6702bb2b9b9f05ae66dd1f6515e0e6a6674cba122fce3c86d4620fbc9",
+  "created_at": "2026-08-20T19:12:12.5142318Z",
+  "content_fingerprint": "3a999e4576a9bac65ab187bf8693b0a4a0898f320899af616dcb61ab457bb9d3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "All-arity string disk-readout dihedral theorem",
+      "version": "2026-08-20",
+      "locator": "research/nima/string-disk-readout-dihedral-all-arity.md",
+      "entity_id": "source:11d26609b4b0c1924558"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The source-normalized string disk readout factors through dihedral abelianization at every arity",
+      "summary": "Under simultaneous source transport chi_n(r)=1 and chi_n(s)=(-1)^n. Hence every dihedral commutator is killed; D_n^ab is C2 for odd n and C2xC2 for even n.",
+      "status": "exact-source-character-theorem",
+      "entity_id": "claim:ae0ea6005cb5eb1c6281"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "All-arity finite dihedral readout controls",
+      "locator": "research/nima/check_string_disk_readout_dihedral_all_arity.py",
+      "result_locator": "research/nima/results/string-disk-readout-dihedral-all-arity.json",
+      "outcome": "passed for every D_n, 3<=n<=16",
+      "entity_id": "test:1ee07db67712ecfb6ebf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:ae0ea6005cb5eb1c6281",
+      "target_id": "source:11d26609b4b0c1924558",
+      "relation_id": "rel:derived_from-a2c9fd29ecab2d32"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:1ee07db67712ecfb6ebf",
+      "target_id": "claim:ae0ea6005cb5eb1c6281",
+      "relation_id": "rel:tests-1c5032c7347af63a"
+    }
+  ],
+  "digest": "b506e41743c2b0dbee5645748559e04e08342c2c1c2dc6402dce70491399565d"
+}

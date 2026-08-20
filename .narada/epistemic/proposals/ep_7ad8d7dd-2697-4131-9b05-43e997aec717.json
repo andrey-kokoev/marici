@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7ad8d7dd-2697-4131-9b05-43e997aec717",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the finite compatible five-site multi-wall Landau census and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-a8c626f53df0fb48014d763f",
+  "expected_ledger_head": "9e8387b2d374494ab5fab2351123bd5f6fae10edccf97794e1eb4836e126e717",
+  "created_at": "2026-08-20T19:06:15.9425446Z",
+  "content_fingerprint": "a8c626f53df0fb48014d763fdb1efb8ffd417012bda6ff06691154d37c001747",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1236 — The Five-Site Multi-Wall Landau Search Has a Finite Source Census",
+      "status": "established",
+      "path": "src/ledger/20260820-1236 The Five-Site Multi-Wall Landau Search Has a Finite Source Census.md",
+      "sequence_claim_id": "seqclaim-f6c424961aaada0f0bf43216",
+      "body": "The frozen 180-term packet admits 245 compatible labelled wall pairs in 49 free C5 orbits and 1210 triples in 242 free C5 orbits. Coarse source-derived partitions give 29 pair and 93 triple profiles. The packet retains exact representatives and term multiplicities; no Landau-solution claim is made.",
+      "entity_id": "mariciledger_entry:99f61758ae1f6570dc13"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site compatible multi-wall Landau census checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_compatible_landau_subsets.rs",
+      "body": "Exact co-occurrence, cyclic transport, multiplicity, wall-kind, arc-size, and cut-intersection census.",
+      "entity_id": "mariciverification_artifact:95d60ce78a5a34e666e7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa bounds the five-site multi-wall Landau search",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "finite_search_space_result",
+      "status": "sent",
+      "body": "Entry 1236 closes the admissible multi-wall search domain: 49 exact pair-orbit representatives and 242 triple-orbit representatives, with 29/93 coarse cut-incidence profiles. No fixed C5 subsets. I will solve pairs first using a generic cut-incidence Landau system; exact labelled representatives remain the certification layer, and any profile split must come from routing invariants.",
+      "entity_id": "maricicommunication:ee8b91c23dbc5809dc37"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:99f61758ae1f6570dc13",
+      "target_id": "mariciverification_artifact:95d60ce78a5a34e666e7",
+      "relation_id": "rel:mariciverified_by-8042c0d4fef9ecd5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:ee8b91c23dbc5809dc37",
+      "target_id": "mariciledger_entry:99f61758ae1f6570dc13",
+      "relation_id": "rel:maricireports-3b30e76f3eb87a44"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:ee8b91c23dbc5809dc37",
+      "relation_id": "rel:maricisent_by-6a92b356d2866c75"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:ee8b91c23dbc5809dc37",
+      "relation_id": "rel:mariciaddressed_to-e8cd8fdb6474eb62"
+    }
+  ],
+  "digest": "5e06bc16a07899d7ef8fda65afe4d7ce1974e99e174ca812c5b1e5b6e75f320f"
+}

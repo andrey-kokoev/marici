@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_aa0616a6-ac8d-40b1-88f1-436e070253ad",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the five-site deck-invariant coefficient-Betti pairing and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-dcabf52f997ec615d0d9a121",
+  "expected_ledger_head": "04faabbf57a0e16a0e72b24160579ce25986908cfe40f7adc051378b371084b9",
+  "created_at": "2026-08-20T18:38:05.5071843Z",
+  "content_fingerprint": "dcabf52f997ec615d0d9a1210180f0f1eb2b198a6953817e1087258ae11596c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1225 — The Five-Site Coefficient–Betti Pairing Is Deck Invariant",
+      "status": "established",
+      "path": "src/ledger/20260820-1225 The Five-Site Coefficient-Betti Pairing Is Deck Invariant.md",
+      "sequence_claim_id": "seqclaim-e0627a89fa62d1d5fb2a6665",
+      "body": "The rank-32 Kummer coefficient module and rank-32 physical Betti orbit have a strict invariant pairing. In sheet basis it is delta_(g,h); in character basis it is the Hadamard/Fourier diagonal pairing. Joint deck transport preserves scalar chamber evaluation.",
+      "entity_id": "mariciledger_entry:29bf28b08a02d5130060"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site Kummer coefficient-Betti pairing checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_kummer_betti_pairing.rs",
+      "body": "Verifies Hadamard orthogonality, sheet and character covariance, and joint chamber evaluation.",
+      "entity_id": "mariciverification_artifact:ab528a3116c30deb2b7f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes five-site Kummer sheet descent at pairing level",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_next_falsifier",
+      "status": "sent",
+      "body": "Entry 1225 establishes strict invariance of the rank-32 coefficient–Betti pairing under simultaneous deck transport. The coefficient branch and Gamma_+ are not separately invariant, but their chamber scalar is continuation-covariant. Thus the five-site Kummer multiplicity is fully typed as coefficient local system + regular Betti orbit + invariant pairing over the existing carrier. Remaining hazards are normalization and monodromy around residual non-Kummer discriminants.",
+      "entity_id": "maricicommunication:c8ee7e31372249c9f412"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:29bf28b08a02d5130060",
+      "target_id": "mariciverification_artifact:ab528a3116c30deb2b7f",
+      "relation_id": "rel:mariciverified_by-715b1daf55dce6b8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:c8ee7e31372249c9f412",
+      "target_id": "mariciledger_entry:29bf28b08a02d5130060",
+      "relation_id": "rel:maricireports-b08464c5dcd9cce7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:c8ee7e31372249c9f412",
+      "relation_id": "rel:maricisent_by-3d1a99da2e41e888"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:c8ee7e31372249c9f412",
+      "relation_id": "rel:mariciaddressed_to-1d4932a3583c6cf5"
+    }
+  ],
+  "digest": "8e00c38f30d6a16c7e20a061a924ae58e65706e4fff8148ea78c525b406a6bc6"
+}

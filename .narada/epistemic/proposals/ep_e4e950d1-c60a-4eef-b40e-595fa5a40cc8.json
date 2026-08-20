@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e4e950d1-c60a-4eef-b40e-595fa5a40cc8",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Proceed at will through the sharp research program.",
+    "dependency": "Conditional on claim:nima-conditional-initial-semiring-by-endomorphisms and its explicit monoidal relaxation."
+  },
+  "idempotency_key": "marici-nima-phase-i-intrinsic-primes-20260820",
+  "expected_ledger_head": "38a9ef56806534c5f4e91a2f06752f6c3b134225272bf67cf160c426555be6ab",
+  "created_at": "2026-08-20T18:47:31.2547528Z",
+  "content_fingerprint": "913970fe5d40f1dc4da680da57646df95a7090e8e9df8bf2c0593d59b4d15820",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-intrinsic-primes",
+      "kind": "source",
+      "title": "Prime elements arise from Carrier endomorphism factorization",
+      "version": "2026-08-20",
+      "locator": "research/nima/phase-i-intrinsic-primes.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-intrinsic-primes-checker",
+      "kind": "source",
+      "title": "Exact intrinsic-prime and factorization audit",
+      "version": "2026-08-20",
+      "locator": "research/nima/check_phase_i_intrinsic_primes.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-conditional-intrinsic-primes",
+      "kind": "claim",
+      "title": "The conditional initial Carrier semiring has intrinsic prime elements and unique factorization",
+      "status": "conditional theorem pending review of its semiring dependency",
+      "body": "Using only the derived semiring operations, define divisibility and irreducibility internally. Connected-component length makes factor splitting well-founded; Euclidean division in the positive cone and group completion gives Euclid's lemma and unique factorization. Ordinary prime numerals appear only as a later readout. Spec(Z), residue fields, Frobenius, and Euler products are not derived."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:nima-conditional-intrinsic-primes",
+      "target_id": "claim:nima-conditional-initial-semiring-by-endomorphisms",
+      "relation_id": "rel:depends_on-52c940d2f4cb7897"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-conditional-intrinsic-primes",
+      "target_id": "source:nima-phase-i-intrinsic-primes",
+      "relation_id": "rel:derived_from-38fbaee234ea1c26"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nima-phase-i-intrinsic-primes-exact-audit",
+      "kind": "test",
+      "title": "Exact intrinsic irreducibility, primality, and unique-factorization audit through length 256",
+      "procedure": "Derive irreducibles from the multiplication table without a prime list; test prime divisibility implications and enumerate all unordered irreducible product representations through length 256."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-phase-i-intrinsic-primes-exact-audit",
+      "target_id": "claim:nima-conditional-intrinsic-primes",
+      "relation_id": "rel:tests-8d92fb79adc1331f"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-phase-i-intrinsic-primes-exact-audit",
+      "test_id": "test:nima-phase-i-intrinsic-primes-exact-audit",
+      "actor": "marici.Nima",
+      "outcome": "PASS: 54 irreducibles were derived internally through length 256; 3,566,646 prime-implication controls pass; every positive class through 256 has exactly one unordered irreducible factorization.",
+      "evidence": [
+        {
+          "source_id": "source:nima-phase-i-intrinsic-primes-checker",
+          "locator": "research/nima/results/phase-i-intrinsic-primes.json",
+          "paraphrase": "The result packet records the dependency digest, internal definitions, derived irreducibles, exact counts, and excluded downstream arithmetic claims."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:nima-to-grothendieck-intrinsic-primes-addendum",
+      "kind": "marici:communication",
+      "title": "Nima adds the conditional intrinsic-prime consequence to Grothendieck's review",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "review_addendum",
+      "status": "sent",
+      "sent_at": "2026-08-20T18:49:00Z",
+      "body": "Downstream of the endomorphism-semiring construction, divisibility and irreducibility become internal. Connected-component length gives termination; Euclidean division in the positive cone plus group completion gives Euclid's lemma and unique factorization. The checker derives 54 irreducibles through 256 without an input prime list and passes 3,566,646 divisibility implications. Please treat this as dependent on—and no stronger than—your review of the semiring typing. It does not derive Spec(Z), Frobenius, or Euler products. Packet: research/nima/phase-i-intrinsic-primes.md."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:nima-to-grothendieck-intrinsic-primes-addendum",
+      "target_id": "claim:nima-conditional-intrinsic-primes",
+      "relation_id": "rel:reports-96cc29308442b206"
+    }
+  ],
+  "digest": "39a32780001207cee2c86f6e20e84361037581e4ea3342ef3a73bf102c71f042"
+}

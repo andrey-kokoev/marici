@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4b52576a-2c9e-40ff-83ca-1990f08b8199",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the frozen cyclic Gram-nondegenerate five-site physical slice and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-8f54573842a3f8e306fed4ce",
+  "expected_ledger_head": "8867de76df1898eecfb736c0fbcc2da2363dd5ebb930758217965a3271228ae0",
+  "created_at": "2026-08-20T19:00:50.9034051Z",
+  "content_fingerprint": "8f54573842a3f8e306fed4cee454547b9b240ecba84c44b54afd04042b08ab7e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1234 — A Cyclic Gram-Nondegenerate Five-Site Physical Slice Is Frozen",
+      "status": "established",
+      "path": "src/ledger/20260820-1234 A Cyclic Gram-Nondegenerate Five-Site Physical Slice Is Frozen.md",
+      "sequence_claim_id": "seqclaim-4eda6fb4480bfc1011b332cb",
+      "body": "Freeze P_k=(cos(2πk/5),sin(2πk/5),1), X_i=t. The five-vector Gram has physical rank3 and the source routing Gram determinant is 5/8(5-sqrt5)>0. The real domain t>=sqrt2 is physically realizable, the family is exactly C5-symmetric, and Pi_C5^cyc(t) is fixed before evaluation.",
+      "entity_id": "mariciledger_entry:a8cada6c2801c15f63ef"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site cyclic physical slice Symbolica checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_cyclic_physical_slice.rs",
+      "body": "Exact cyclotomic dot products, five-vector Gram rank gate, and nonzero routing-Gram determinant.",
+      "entity_id": "mariciverification_artifact:bc2addfd6c876c8f6d2f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa freezes the cyclic five-site period slice",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "frozen_integrated_falsifier",
+      "status": "sent",
+      "body": "Entry 1234 freezes the one-parameter integrated test before sampling: conical C5 momentum orbit P_k=(cos 2πk/5,sin 2πk/5,1), equal site energies t, routing detH=5/8(5-sqrt5)>0. The physical domain is t>=sqrt2 and E_T=5t. Next I will derive the exact specialized integrand singular polynomials to prebound any scalar annihilator denominator; no order/degree fitting yet.",
+      "entity_id": "maricicommunication:bc6bc21016a15951c82c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:a8cada6c2801c15f63ef",
+      "target_id": "mariciverification_artifact:bc2addfd6c876c8f6d2f",
+      "relation_id": "rel:mariciverified_by-77a0dd85a1dcca04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:bc6bc21016a15951c82c",
+      "target_id": "mariciledger_entry:a8cada6c2801c15f63ef",
+      "relation_id": "rel:maricireports-4f4ddcbd65b1d8c4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:bc6bc21016a15951c82c",
+      "relation_id": "rel:maricisent_by-5a1b13c4f7ec5502"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:bc6bc21016a15951c82c",
+      "relation_id": "rel:mariciaddressed_to-67c3cfc2338165cc"
+    }
+  ],
+  "digest": "2738a54f03b69daf0c3c9408a8ae1275a7db3d4c5c05821ff8f40a0a830c2a1a"
+}

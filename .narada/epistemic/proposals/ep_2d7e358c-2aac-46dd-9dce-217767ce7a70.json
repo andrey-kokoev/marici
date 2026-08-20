@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2d7e358c-2aac-46dd-9dce-217767ce7a70",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1168's local physical q_G node calculation."
+  },
+  "idempotency_key": "auto-proposal-1f5eb8ec4dee0010d88c3d8d",
+  "expected_ledger_head": "ea55279ab5cee09ff34cc6b0cf9e722f75ff934c4034d2c5403911faeb8c2e98",
+  "created_at": "2026-08-20T15:52:16.9358116Z",
+  "content_fingerprint": "1f5eb8ec4dee0010d88c3d8df898cbd42080f5ecf1f35d3716441f961e087025",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1168 — The Physical Four-Site Total-Energy Point Is a Threefold A1 Node",
+      "entry_number": 1168,
+      "path": "src/ledger/20260820-1168 The Physical Four-Site Total-Energy Point Is a Threefold A1 Node.md",
+      "status": "active",
+      "entity_id": "mariciledger_entry:16c19b4f7f6005809e36"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The physical C4 q_G infinity point is a rank-one threefold node",
+      "status": "tested",
+      "body": "In the y4=1 chart, dDelta/du has determinant -8. The branch quadratic has Hessian determinant -8 det(G)^2, so away from existing Gram support the quartic double solid has local form W^2=u1^2+u2^2+u3^2, Milnor number one, and a rank-one H3 vanishing cycle.",
+      "entity_id": "mariciclaim:e6f2e476ad26f33d16ed"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact physical q_G diagonal Hessian audit",
+      "status": "passed",
+      "body": "Exact rational matrix identities verify the difference-coordinate Jacobian, Hessian determinant, A1 local type, and deeper support det(G)=0.",
+      "entity_id": "maricitest:36518a87f47e281642d9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:16c19b4f7f6005809e36",
+      "target_id": "mariciclaim:e6f2e476ad26f33d16ed",
+      "relation_id": "rel:maricirecords-72fb2bea37f72d27"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:e6f2e476ad26f33d16ed",
+      "target_id": "maricitest:36518a87f47e281642d9",
+      "relation_id": "rel:maricitested_by-7579af5c10937aa3"
+    }
+  ],
+  "digest": "91e3240df8bd6865074830ee6f9e4393295b1190be528277ca56121c319bf75d"
+}

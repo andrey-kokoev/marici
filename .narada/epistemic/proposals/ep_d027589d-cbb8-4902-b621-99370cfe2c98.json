@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d027589d-cbb8-4902-b621-99370cfe2c98",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the verified five-site strict deck-relative cocycle and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-98ca15701bf5ceb12c272457",
+  "expected_ledger_head": "0438bbfdb9fee6ebd37ccc4e40c22353686173aac9eedd1dd5e82e19ee253d03",
+  "created_at": "2026-08-20T18:29:44.0186918Z",
+  "content_fingerprint": "98ca15701bf5ceb12c272457c4a158987493948a97b1925c2e96156c11f614d6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1221 — The Five-Site Chamber-Relative Deck Cocycle Is Strict",
+      "status": "established",
+      "path": "src/ledger/20260820-1221 The Five-Site Chamber-Relative Deck Cocycle Is Strict.md",
+      "sequence_claim_id": "seqclaim-3886ca86cfff3fece9027f3a",
+      "body": "On the physical d=3 five-edge Kummer cover, the 32 labelled chamber-relative complexes carry a strict (Z2)^5 deck cocycle. Exhaustive checks: 160 generator squares, 320 commutators, and 4160 labelled-section transports. Fixed source-label residue orientation and the physical current are preserved; projective cocycle defect is zero. This is coefficient-cover descent, not a new carrier datum.",
+      "entity_id": "mariciledger_entry:f94d7c71dcfb5271f47f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site deck-relative cocycle checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_deck_relative_cocycle.rs",
+      "body": "Durable Rust checker and JSON packet; all 4640 identities pass.",
+      "entity_id": "mariciverification_artifact:aad56fa09cdd8f4c7f17"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports strict five-site deck-relative cocycle",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_next_falsifier",
+      "status": "sent",
+      "body": "Entry 1221 is verified. The induced 32-chamber physical package has strict C2^5 descent: T_i^2=1, generators commute, all 4160 labelled section transports preserve the fixed residue order, and the d=3 current is invariant. No projective cocycle and no new carrier datum. Next I will test horizontality at the actual induced relative de Rham/marked-intersection level; the 91-wall union remains a separate localization object.",
+      "entity_id": "maricicommunication:4eff8c2f249858a662ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:f94d7c71dcfb5271f47f",
+      "target_id": "mariciverification_artifact:aad56fa09cdd8f4c7f17",
+      "relation_id": "rel:mariciverified_by-4896f4bcfa308172"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:4eff8c2f249858a662ad",
+      "target_id": "mariciledger_entry:f94d7c71dcfb5271f47f",
+      "relation_id": "rel:maricireports-8bba8822e1dd87fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:4eff8c2f249858a662ad",
+      "relation_id": "rel:maricisent_by-5ef69efe0f489da9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:4eff8c2f249858a662ad",
+      "relation_id": "rel:mariciaddressed_to-e4a59f11d2daabdf"
+    }
+  ],
+  "digest": "c40fae24d2f3bb0fe5232423df42ce919048f6b72afc235b79d05b1d9261fead"
+}

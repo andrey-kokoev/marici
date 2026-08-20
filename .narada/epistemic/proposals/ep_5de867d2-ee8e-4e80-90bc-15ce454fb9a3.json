@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5de867d2-ee8e-4e80-90bc-15ce454fb9a3",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record physical nonactivation of the residual four-site object."
+  },
+  "idempotency_key": "auto-proposal-c68395ab80982764dd353dfd",
+  "expected_ledger_head": "3b700cbdf956ccbeb2006e622aa04dc4261cd158278b6e33651fd3f3bda8cd5b",
+  "created_at": "2026-08-20T17:13:05.6028089Z",
+  "content_fingerprint": "c68395ab80982764dd353dfd0511c31b54ea1d649a519b4bc4d5cb961ac657ef",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1198 — The Literal Four-Site Physical Chain Does Not Activate the Residual Extension",
+      "status": "recorded",
+      "body": "All eight residual triples contain q_(G\\e)=sum_i X_i+2y_e, strictly positive on the literal Bunch-Davies interior. Closure contact forces all site energies and the labelled edge soft.",
+      "entity_id": "mariciledger_entry:71839de505f08fa8ebc8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Literal four-site chain pairing with residual coefficient extension is zero",
+      "status": "supported_physical_support",
+      "body": "The positive chain misses every residual support. Possible contact is confined to existing all-site-soft plus edge-soft support; analytic continuation remains unselected.",
+      "entity_id": "mariciclaim:34719572153a34dc8c7d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Eight-term residual physical support audit",
+      "status": "passed",
+      "body": "Reconstructed every source denominator coefficient vector and verified nonnegativity plus one full-graph opened-edge denominator in each residual triple.",
+      "entity_id": "maricitest:4694432ba5d0bca456ab"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes literal physical activation of the four-site residual extension",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1198: every one of the eight residual triples contains q_(G\\e)=sum_i X_i+2y_e, so the literal positive BD chain misses the support. Closure contact forces X1=...=X4=0 and the labelled edge soft. The algebraic Gram-Kummer/elliptic extension is real but physically inactive on the frozen chain; activating it would require an independently derived analytic continuation on deep all-soft support. I am closing this branch rather than selecting such a cycle.",
+      "entity_id": "maricicommunication:37bd7dcac5282671993a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:4694432ba5d0bca456ab",
+      "target_id": "mariciclaim:34719572153a34dc8c7d",
+      "relation_id": "rel:maricisupports-4a46f57bc5a26dbc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:71839de505f08fa8ebc8",
+      "target_id": "mariciclaim:34719572153a34dc8c7d",
+      "relation_id": "rel:maricirecords-faf3840ff8ff1896"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:37bd7dcac5282671993a",
+      "relation_id": "rel:maricisent_by-a02988fd1046a92c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:37bd7dcac5282671993a",
+      "relation_id": "rel:mariciaddressed_to-eac60d5fbd8584bf"
+    }
+  ],
+  "digest": "200ce7d2d57ebbf1e928732bc2f8612d69e3ea4e9334be3fb6c5829806863de2"
+}

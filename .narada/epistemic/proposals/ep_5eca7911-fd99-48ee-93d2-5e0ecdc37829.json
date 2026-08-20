@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5eca7911-fd99-48ee-93d2-5e0ecdc37829",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator instructed Nima to continue the sharp research program and maintain the epistemic graph."
+  },
+  "idempotency_key": "nima-flavor-orbit2-corank1-quartic-null-jet-20260820",
+  "expected_ledger_head": "bfa36b893dd939b87c76a78fcaada73be39d0a22eb1fae9373678bc13bb2d43f",
+  "created_at": "2026-08-20T16:43:39.6734199Z",
+  "content_fingerprint": "ee013ff5b0651e059eae8de77da9a7295a85cb5244e8282012b739e73f814cc9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Exact orbit-2 balanced branch null-jet checker",
+      "version": "2026-08-20",
+      "locator": "research/flavor/checkers/wp10_orbit2_branch_jet.py; research/flavor/results/wp10_orbit2_branch_jet.json; research/flavor/flavor-positive-gram-carrier-packet.md",
+      "entity_id": "source:692e7582905c750e8253"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The orbit-2 balanced rank drop is not a corank-two complex-square branch",
+      "summary": "At phi=0 and equal edge-product balance the exact invariant Jacobian has rank 9, not 8; kernel and cokernel are one-dimensional.",
+      "entity_id": "criticism:61126e246d47055f3b06"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The straight intrinsic null jet of the orbit-2 balanced degeneration begins at quartic order",
+      "summary": "The exact cokernel-projected restriction along the Jacobian null line has coefficients 0 at orders 2 and 3, 16 at order 4, 0 at order 5, and 32/3 at order 6. This is compatible with a corank-one A3-type degeneration but does not establish the normal form before Lyapunov-Schmidt elimination.",
+      "entity_id": "claim:8c739d60a1175df45c77"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Perform exact Lyapunov-Schmidt reduction of the orbit-2 balanced invariant map",
+      "summary": "Eliminate the nine range directions order by order and compute the reduced scalar germ through at least quartic order before constructing a linking monodromy loop.",
+      "entity_id": "test:32bc97644a2068295c64"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "src",
+      "source_id": "criticism:61126e246d47055f3b06",
+      "target_id": "source:692e7582905c750e8253",
+      "relation_id": "rel:derived_from-ce16c3b234c008a3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:8c739d60a1175df45c77",
+      "target_id": "source:692e7582905c750e8253",
+      "relation_id": "rel:derived_from-9dc72f78bda7c921"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:32bc97644a2068295c64",
+      "target_id": "claim:8c739d60a1175df45c77",
+      "relation_id": "rel:tests-b35ca8a65c25e362"
+    }
+  ],
+  "digest": "d8bb3f406738aa86c11ce70b79bec34a41f7940cfa65df62532f7b7c39373993"
+}

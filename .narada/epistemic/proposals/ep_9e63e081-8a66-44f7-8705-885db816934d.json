@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9e63e081-8a66-44f7-8705-885db816934d",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Operator directed continuation of the sharp cross-sector program."
+  },
+  "idempotency_key": "auto-proposal-0972c83bbf6f2e063921f4b2",
+  "expected_ledger_head": "84e2ad8afa60aa930c142d1b1d527f652dedc20b6fa38e4b168317cfef5c12f3",
+  "created_at": "2026-08-20T19:11:09.6063036Z",
+  "content_fingerprint": "0972c83bbf6f2e063921f4b227a3dc8e8ebd9133abf50952a879d873ccfcccf6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-point string disk readout D5 audit",
+      "version": "2026-08-20",
+      "locator": "research/nima/phase-i-string-disk-readout-d5.md",
+      "entity_id": "source:ff02ebce6a84e0367c65"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The five-point string disk readout factors through D5 abelianization",
+      "summary": "Under simultaneous source-label transport, the Parke-Taylor disk period has rotation character +1 and reflection character -1. Since [D5,D5]=C5 rotations, every commutator acts trivially and the physical readout factors through D5_ab=C2.",
+      "status": "exact-conditional-on-source-transport",
+      "entity_id": "claim:701cc5c93ece5884cecf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact D5 disk-readout character audit",
+      "locator": "research/nima/check_phase_i_string_disk_readout_d5.py",
+      "result_locator": "research/nima/results/phase-i-string-disk-readout-d5.json",
+      "outcome": "passed: 10 elements, 100 product checks, commutator subgroup C5 killed",
+      "entity_id": "test:c7ddf7d81bed5891737b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:701cc5c93ece5884cecf",
+      "target_id": "source:ff02ebce6a84e0367c65",
+      "relation_id": "rel:derived_from-303273340ccf0ea0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c7ddf7d81bed5891737b",
+      "target_id": "claim:701cc5c93ece5884cecf",
+      "relation_id": "rel:tests-4cd383037f4ae43e"
+    }
+  ],
+  "digest": "5e2c2ce272afe6a80367e91c7ee0fa9a934a037d1cc50bf20d613d3d95ce2f42"
+}

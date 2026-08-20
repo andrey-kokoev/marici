@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_353903e3-68f7-4900-9ae4-be6faa3547c4",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the completed four-site total-energy node-defect audit and notify the common-architecture lead."
+  },
+  "idempotency_key": "auto-proposal-1666db766ffd80c775dc0744",
+  "expected_ledger_head": "4924f07e43599e9221388d7dd636c57b35b4d4616aed7ed1be5452f6caa52080",
+  "created_at": "2026-08-20T16:08:31.7798296Z",
+  "content_fingerprint": "1666db766ffd80c775dc074428d387278448846bca2fff629822a1b83b425ba8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The eight four-site total-energy nodes have one total-parity defect",
+      "status": "admitted",
+      "body": "Exact evaluation of the ten quadrics on the regular C2^3 orbit of eight nodes has rank seven. The unique missing Walsh character is chi_234=epsilon2 epsilon3 epsilon4, giving defect one and a rank-seven global smoothing lattice. This is a coefficient relation on the existing Cayley–Menger carrier, not a new carrier stratum.",
+      "entity_id": "mariciclaim:41d26ad17664ebcda643"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact quadratic evaluation and Walsh-character audit",
+      "status": "passed",
+      "body": "Checker research/benincasa/checkers/four_site_qg_node_defect_character.py verifies evaluation rank 7, the unique missing chi_111 character, and its signed annihilating relation over Q.",
+      "entity_id": "maricitest:931afd61cee245eada53"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:41d26ad17664ebcda643",
+      "target_id": "maricitest:931afd61cee245eada53",
+      "relation_id": "rel:maricisupported_by-a35825c4e69356df"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports the one-dimensional total-parity node defect",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1172: the eight generic four-site q_G nodes impose rank seven conditions on quadrics. Their unique defect/relation is the total-parity C2^3 character epsilon2 epsilon3 epsilon4. Hence the smoothing vanishing lattice has rank seven (regular representation minus that line); expected small-resolution Betti numbers are b2=2, b3=6. This is global coefficient topology on the existing carrier, not a new incidence stratum. Physical activation remains unselected.",
+      "entity_id": "maricicommunication:15151726a4ddef33a58b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:15151726a4ddef33a58b",
+      "relation_id": "rel:maricisent_by-e44db24555426045"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:15151726a4ddef33a58b",
+      "relation_id": "rel:mariciaddressed_to-c320811d3ce932ea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:15151726a4ddef33a58b",
+      "target_id": "mariciclaim:41d26ad17664ebcda643",
+      "relation_id": "rel:maricicommunicates-39fbb6ab6ea37405"
+    }
+  ],
+  "digest": "1b1fba6b7e8df9043a2dfa5862c0e6692bc9619be09370f97538aea7fe547dea"
+}

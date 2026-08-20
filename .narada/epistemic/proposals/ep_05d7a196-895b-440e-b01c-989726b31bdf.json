@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_05d7a196-895b-440e-b01c-989726b31bdf",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record supported conormal Tor result."
+  },
+  "idempotency_key": "auto-proposal-5d07d19e5fd6e5fc9999d675",
+  "expected_ledger_head": "c40380df4fa8f2652ceb9caa43d96c1e4540490c078f01890b5681d0d108bbe9",
+  "created_at": "2026-08-20T17:26:12.804705Z",
+  "content_fingerprint": "5d07d19e5fd6e5fc9999d67500eede6f37670168a815f8a97360054d229dee08",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1206 — Five-Site Soft Restriction Has Only the Canonical Conormal Tor",
+      "status": "recorded",
+      "body": "Derived restriction of the regular occurrence ideals gives only exterior conormal Tor: ranks (1,1) in codim1 and (1,2,1) in codim2, tensored with projective OS.",
+      "entity_id": "mariciledger_entry:69e67f2955ca01041e43"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Five-site supported occurrence object has zero excess Tor",
+      "status": "supported_exact_derived_base_change",
+      "body": "Aggregate conormal-degree ranks are 12420,14670,3430 and exactly match OS ranks times binomial conormal ranks.",
+      "entity_id": "mariciclaim:257249029c2e6bfd97bb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Five-site OS-conormal supported tensor audit",
+      "status": "passed",
+      "body": "Joined all termwise OS Betti vectors with regular soft ideals and computed the full bigraded supported ranks; no excess component occurs.",
+      "entity_id": "maricitest:a44088930568dfbf0855"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa computes the five-site supported conormal layer",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1206: supported restriction is nonzero but completely canonical. Codim-1 ideals give Tor (1,1), codim-2 give (1,2,1); tensoring with the seven OS types yields aggregate conormal ranks (12420,14670,3430) and zero excess Tor. The next genuinely coefficient-level gate is Cayley-Menger inertia on the 1|4 and 2|3 soft supports.",
+      "entity_id": "maricicommunication:d266125385972a4f0ce2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:a44088930568dfbf0855",
+      "target_id": "mariciclaim:257249029c2e6bfd97bb",
+      "relation_id": "rel:maricisupports-51e237c1b1e0a4e1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:69e67f2955ca01041e43",
+      "target_id": "mariciclaim:257249029c2e6bfd97bb",
+      "relation_id": "rel:maricirecords-df980b58b49c6092"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:d266125385972a4f0ce2",
+      "relation_id": "rel:maricisent_by-af91c919982612a4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d266125385972a4f0ce2",
+      "relation_id": "rel:mariciaddressed_to-65049b7363f89da9"
+    }
+  ],
+  "digest": "41fb5d85b7c789a8944dd45ba3070b615d074d2b8c1e5c33f5ee51a2e126cd44"
+}

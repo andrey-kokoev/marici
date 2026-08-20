@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f6b01fda-e7d5-4c0a-b976-d514dec46622",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record five-site geometric occurrence profiles."
+  },
+  "idempotency_key": "auto-proposal-a6de927f2ccb9bd785cf6b57",
+  "expected_ledger_head": "e5a83bfb08075408195d35a4bd0e1e789365ce97dde363c19e5edebb602947aa",
+  "created_at": "2026-08-20T17:16:06.3750606Z",
+  "content_fingerprint": "a6de927f2ccb9bd785cf6b57b12d0c58721275c36ba7136985ae59329807f62d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1200 — Five-Site Marked Occurrences Collapse into Three Geometric Profiles",
+      "status": "recorded",
+      "body": "Nine marked occurrences per term collapse to geometric profiles: 7 marks with multiplicities 2,2,1^5 in 70 terms; 8 marks with 2,1^7 in 100; 9 distinct in 10.",
+      "entity_id": "mariciledger_entry:0e84c836a3e52ba600b6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Five-site marked carrier has three controlled occurrence profiles",
+      "status": "supported_exact_incidence",
+      "body": "The profiles form 14,20,2 free C5 orbits respectively. Complement labels cause only occurrence multiplicities over existing hyperplanes.",
+      "entity_id": "mariciclaim:4bddaf954bc4f8a267a3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Five-site marked hyperplane coincidence census",
+      "status": "passed",
+      "body": "Normalized all source edge forms termwise while retaining grouped labels; exact counts total 180 and are cyclicly closed.",
+      "entity_id": "maricitest:b012d386edac9757deb6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports the five-site marked occurrence profiles",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1200: the 180 five-cycle terms have three infinity-mark profiles—70 terms with 7 geometric marks and multiplicities (2,2,1^5), 100 with 8 and (2,1^7), 10 with 9 distinct. These are 14,20,2 free C5 orbits. No new carrier primitive appears, but occurrence labels must survive over coincident complement hyperplanes. Next I will freeze the exact intersection matroids/circuits before any coefficient page.",
+      "entity_id": "maricicommunication:ae175e878a6a19cd8e21"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:b012d386edac9757deb6",
+      "target_id": "mariciclaim:4bddaf954bc4f8a267a3",
+      "relation_id": "rel:maricisupports-05f77492418859eb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:0e84c836a3e52ba600b6",
+      "target_id": "mariciclaim:4bddaf954bc4f8a267a3",
+      "relation_id": "rel:maricirecords-89a0f8cc90f37029"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:ae175e878a6a19cd8e21",
+      "relation_id": "rel:maricisent_by-bebb1f22edb2d435"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:ae175e878a6a19cd8e21",
+      "relation_id": "rel:mariciaddressed_to-2a267fa7b016b8a0"
+    }
+  ],
+  "digest": "cd8095409ea9a15f84bfb159c5eb34308bd8117a82fa00159f9085bc567843af"
+}

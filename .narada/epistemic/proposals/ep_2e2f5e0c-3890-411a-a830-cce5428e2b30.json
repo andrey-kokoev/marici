@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2e2f5e0c-3890-411a-a830-cce5428e2b30",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the correction separating the q_G quartic-double-solid sector from edge-residue del Pezzo geometry."
+  },
+  "idempotency_key": "auto-proposal-55d31f5e2512bda871e627bf",
+  "expected_ledger_head": "1b112359113d2e80477e913e0bbfa0830606eeec347380994814eb53dd1298ca",
+  "created_at": "2026-08-20T15:49:11.715374Z",
+  "content_fingerprint": "55d31f5e2512bda871e627bf54c93e6305849da37f1e779b17f055d735735826",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1167 — The Four-Site Total-Energy Boundary Is a Quartic Double Solid",
+      "entry_number": 1167,
+      "path": "src/ledger/20260820-1167 The Four-Site Total-Energy Boundary Is a Quartic Double Solid.md",
+      "status": "active-correction",
+      "entity_id": "mariciledger_entry:26dc18e7788b12604047"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The four-site q_G infinity coefficient is a singular quartic double solid",
+      "status": "tested",
+      "body": "Because q_G=sum x_i has edge rank zero, its residue leaves four edge variables and a P3 infinity base. The quartic double cover is a quartic double solid; the smooth benchmark has b3=20 and h21=10. The actual branch is singular at the physical diagonal Delta=0. Entries 1154-1155 apply only after an edge-dependent residue.",
+      "entity_id": "mariciclaim:f909bb26482ab9989b57"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "correction",
+      "kind": "marici:correction",
+      "title": "Del Pezzo classification narrowed to edge-dependent residue sectors",
+      "status": "accepted",
+      "body": "Entries 1154-1155 do not classify the total-energy q_G sector because q_G eliminates no edge variable.",
+      "entity_id": "maricicorrection:049c6143e29dae164934"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:26dc18e7788b12604047",
+      "target_id": "mariciclaim:f909bb26482ab9989b57",
+      "relation_id": "rel:maricirecords-62dcf4c998dfcccc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "correction",
+      "source_id": "mariciledger_entry:26dc18e7788b12604047",
+      "target_id": "maricicorrection:049c6143e29dae164934",
+      "relation_id": "rel:maricirecords-3738339811f3cbfe"
+    }
+  ],
+  "digest": "b7fef8c20220681acddc51316e8b6aefbc2d332b3c58735c7a6c653a1f0e58cc"
+}

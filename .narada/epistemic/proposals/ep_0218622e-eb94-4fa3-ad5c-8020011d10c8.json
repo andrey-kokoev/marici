@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0218622e-eb94-4fa3-ad5c-8020011d10c8",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record generic five-site pair-collision resolution and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-519a0ef5c5961f4e97a225ba",
+  "expected_ledger_head": "877f10e791451d74c1f5a634b2fb64a2f3fbb5fbb6cc5ce0147b017cf2b80d29",
+  "created_at": "2026-08-20T18:43:38.8064986Z",
+  "content_fingerprint": "519a0ef5c5961f4e97a225ba101bcba4ced35d082986ee5fc38a66457302ea48",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1227 — Generic Five-Site Pair Collisions Are Regular Marked Intersections",
+      "status": "established",
+      "path": "src/ledger/20260820-1227 Generic Five-Site Pair Collisions Are Regular Marked Intersections.md",
+      "sequence_claim_id": "seqclaim-5a056be60871d8eada1c6cc2",
+      "body": "At generic F_i=F_j with detH and F_iF_j nonzero, epsilon=y_i-y_j=(R_i-R_j)/(y_i+y_j) is a linear local parameter. The colliding walls q±=X±epsilon have Jacobian -2 and an exact regular Koszul complex. Parameter inertia is trivial; label exchange acts by -1 only on the ordinary top wedge. No excess or carrier datum.",
+      "entity_id": "mariciledger_entry:095c6d3a0f2f3f166b01"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site generic pair-collision local Čech checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_pair_collision_local_cech.rs",
+      "body": "Exact difference-of-squares, Jacobian, Koszul-square, and occurrence-swap certificate.",
+      "entity_id": "mariciverification_artifact:51775f0e46ae9466836f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes generic five-site norm collision",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_corner_frontier",
+      "status": "sent",
+      "body": "Entry 1227 resolves the generic F_i=F_j norm collision. On the labelled Kummer chart, q±=X±epsilon with epsilon=(R_i-R_j)/(y_i+y_j); det Jacobian=-2. The local Koszul/Cech object is regular, parameter monodromy is trivial, and only the existing anti-invariant top-intersection line remains. Next frontier is the non-generic corners F_i=F_j=0 and their intersections with detH=0, tested as derived branch/incidence tensors.",
+      "entity_id": "maricicommunication:d1a3199be75d67578a06"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:095c6d3a0f2f3f166b01",
+      "target_id": "mariciverification_artifact:51775f0e46ae9466836f",
+      "relation_id": "rel:mariciverified_by-ad34817eb762c6af"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:d1a3199be75d67578a06",
+      "target_id": "mariciledger_entry:095c6d3a0f2f3f166b01",
+      "relation_id": "rel:maricireports-47988bc80c816454"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:d1a3199be75d67578a06",
+      "relation_id": "rel:maricisent_by-ad5e12225c0bf1b4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d1a3199be75d67578a06",
+      "relation_id": "rel:mariciaddressed_to-863c7ea209a7d53f"
+    }
+  ],
+  "digest": "688978233073a8d2db9a014908126983bc8bf7c3cdcd34ca8b0a456d4418e346"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7acb3093-1926-41e9-ae1b-8bb56df0ef22",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and record the distinction between deck chamber induction and orbit-union localization"
+  },
+  "idempotency_key": "auto-proposal-c62d1b5535c3981fafcc591b",
+  "expected_ledger_head": "3473b53ae5da5564a8caee3f1955141325b17ba106bf3e26532dbe8a68c654d2",
+  "created_at": "2026-08-20T18:26:32.3745297Z",
+  "content_fingerprint": "c62d1b5535c3981fafcc591be7329544e658fb40e83740aea190b8585e16d800",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1220 — Deck Chamber Induction Is Not Orbit-Union Localization",
+      "status": "active-supported-typing",
+      "sector": "cosmology",
+      "entry_number": 1220,
+      "sequence_claim_id": "seqclaim-2e3c63dd6fa9fe371ed39243",
+      "summary": "The C2^5 orbit of the 26-section physical divisor has 32 distinct chamber presentations and 832 section occurrences, while their union has 91 walls. The correct equivariant physical package is the induced direct sum of 32 transported chamber-relative objects; the 91-wall complement is a separate additional localization. Compatible invariants recover the identity physical chamber without averaging its divisor.",
+      "entity_id": "mariciledger_entry:bd4f883345a9c449e017"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa separates deck induction from 91-wall localization",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1220 corrects the next comparison. The positive divisor has trivial C2^5 stabilizer, hence 32 chamber presentations and 832 section occurrences; their union has 91 walls. The equivariant physical object is Ind_1^(C2^5) M_phys=⊕_g M_g. Its compatible invariants recover M_phys by evaluation at the identity chamber. Cohomology of the 91-wall complement is a distinct additional localization with only restriction maps from each chamber. Next is the labelled C2^5 transition/cocycle audit on the 32 relative complexes.",
+      "entity_id": "maricicommunication:a5e3b4e1977fcd0543a9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:a5e3b4e1977fcd0543a9",
+      "relation_id": "rel:maricisent_by-a255ba2529a5b043"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:a5e3b4e1977fcd0543a9",
+      "relation_id": "rel:mariciaddressed_to-398455274096cab0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "result",
+      "source_id": "maricicommunication:a5e3b4e1977fcd0543a9",
+      "target_id": "mariciledger_entry:bd4f883345a9c449e017",
+      "relation_id": "rel:maricireports-c1d16627324d397b"
+    }
+  ],
+  "digest": "d8dc1c7328469b115aee2eb1de696812754eaa7781ee80330629258c9265cf8b"
+}
