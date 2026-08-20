@@ -1,11 +1,39 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
+import katex from 'katex'
 
 const branches = [
-  { number: '01', name: 'NLSM', role: 'rank-jump associated grade', formula: 'gr_R(Scalar cells) → regional Catalan transfer → QTDS', status: 'all-core coefficients exact · chain assembly open' },
-  { number: '02', name: 'Yang–Mills', role: 'first normal jet', formula: 'H_gauge(J¹ Scalar)', status: 'working structure' },
-  { number: '03', name: 'Gravity', role: 'primitive symmetric retract', formula: 'PrimSym²_g(J¹ Scalar)', status: 'tree + cuts' },
-]
+  {
+    number: '01',
+    name: 'NLSM',
+    role: 'rank-jump associated grade',
+    formula: String.raw`\operatorname{gr}_{R}(\mathrm{Scalar\ cells}) \to \text{regional Catalan transfer} \to \mathrm{QTDS}`,
+    formulaLabel: 'gr_R(Scalar cells) → regional Catalan transfer → QTDS',
+    status: 'all-core coefficients exact · chain assembly open',
+  },
+  {
+    number: '02',
+    name: 'Yang–Mills',
+    role: 'first normal jet',
+    formula: String.raw`H_{\mathrm{gauge}}(J^{1}\mathrm{Scalar})`,
+    formulaLabel: 'H_gauge(J¹ Scalar)',
+    status: 'working structure',
+  },
+  {
+    number: '03',
+    name: 'Gravity',
+    role: 'primitive symmetric retract',
+    formula: String.raw`\operatorname{PrimSym}^{2}_{g}(J^{1}\mathrm{Scalar})`,
+    formulaLabel: 'PrimSym²_g(J¹ Scalar)',
+    status: 'tree + cuts',
+  },
+].map((branch) => ({
+  ...branch,
+  renderedFormula: katex.renderToString(branch.formula, {
+    displayMode: true,
+    throwOnError: false,
+  }),
+}))
 ---
 <SiteLayout
   title="Marici · Scalar master geometry"
@@ -16,7 +44,7 @@ const branches = [
       <p class="eyebrow">Scalar master geometry · research ledger</p>
       <h1 id="hero-title">One geometry.<br /><em>Several theories.</em></h1>
       <p class="lede">
-        Marici studies whether normal layers, boundary operations, pairings, and sewing structures of a scalar surface intrinsically produce NLSM, Yang–Mills, and gravity.
+        marici.Nima studies whether normal layers, boundary operations, pairings, and sewing structures of a scalar surface intrinsically produce NLSM, Yang–Mills, and gravity.
       </p>
       <div class="hero-actions">
         <a class="primary-action" href="#frontier">Open the active frontier</a>
@@ -51,7 +79,7 @@ const branches = [
       {branches.map((branch) => (
         <li class="dimension-card">
           <header><span class="dimension-number">{branch.number}</span><div><p class="dimension-role">{branch.role}</p><h3>{branch.name}</h3></div></header>
-          <code class="formula">{branch.formula}</code>
+          <div class="formula" aria-label={branch.formulaLabel} set:html={branch.renderedFormula}></div>
           <span class="status-pill">{branch.status}</span>
         </li>
       ))}
@@ -61,7 +89,7 @@ const branches = [
   <section class="frontier-section" id="frontier" aria-labelledby="frontier-title">
     <div class="section-shell">
       <div class="section-heading">
-        <div><p class="eyebrow">Active Nima theorem target</p><h2 id="frontier-title">Assemble the regional transfer into one chain map</h2></div>
+        <div><p class="eyebrow">Active marici.Nima theorem target</p><h2 id="frontier-title">Assemble the regional transfer into one chain map</h2></div>
         <p>The direct Catalan bijection and the directed-forest sink rule now identify every partial-core scalar sector with QTDS at all even arity. What remains is compatibility between different core strata before coefficient augmentation.</p>
       </div>
       <article class="frontier-card frontier-card--gap">
