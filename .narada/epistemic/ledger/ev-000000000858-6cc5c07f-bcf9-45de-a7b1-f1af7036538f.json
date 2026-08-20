@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 858,
+  "event_id": "ev-000000000858-6cc5c07f-bcf9-45de-a7b1-f1af7036538f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "48be89a7a20965f768d1b7c8a6846b6251453485158eb5e012990dd3f528486e",
+  "proposal_id": "ep_2d73a2d8-5be5-40fe-b080-f0655486019b",
+  "proposal_digest": "544b610ba028e7c6aac78a04ead2b327eb37ffa5cfdd3ea87907f4edc6d2c763",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The mod-four conductor carries two mod-two parity grades",
+      "status": "established",
+      "body": "On D_e6=Z/4, the anti-invariant normalization/conductor complex is [Z/4 --2--> Z/4]. Its kernel and cokernel are each Z/2. The rational contraction by 1/2 does not descend. Because the differential is constant, the same grades persist on s=0, B-1=0, and their corner. This is finite coefficient/Cartier data, not yet physical cohomology; its typed totalization with the separate Gysin simplex remains open.",
+      "entity_id": "claim:8bbe2f77758e97eecc32"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mod-four conductor cohomology checker",
+      "status": "passed",
+      "body": "Enumeration verifies kernel and image {0,2} modulo four, hence H0=H1=Z/2; modulo two the differential is zero.",
+      "entity_id": "test:28667625f762dcf18c95"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1143 — The Mod-Four Conductor Carries Two Mod-Two Parity Grades",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1143 The Mod-Four Conductor Carries Two Mod-Two Parity Grades.md",
+      "entity_id": "mariciledger_entry:d32e5d8450391a9046a9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:8bbe2f77758e97eecc32",
+      "target_id": "test:28667625f762dcf18c95",
+      "relation_id": "rel:maricitested_by-8f42de676454d006"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d32e5d8450391a9046a9",
+      "target_id": "claim:8bbe2f77758e97eecc32",
+      "relation_id": "rel:maricirecords-3221730d49f5aff4"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified mod-four conductor calculation."
+  },
+  "idempotency_key": "auto-admission-2d70315e5a1eae11faa4c424",
+  "occurred_at": "2026-08-20T13:50:43.062516Z",
+  "certifies_truth": false,
+  "event_hash": "72e0f64a049820d02b5969754161f3e264c1e5e09cfec31552e3321597df9911"
+}

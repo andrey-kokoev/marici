@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 907,
+  "event_id": "ev-000000000907-6ed355db-ed4a-4e44-abb6-ff40bc76778b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a6092108cbdca339825fb40362b97b1ce218a634ab8cf0227c0bdfeb066c491c",
+  "proposal_id": "ep_07716254-522d-4e9b-872a-ed74786ecd1e",
+  "proposal_digest": "6c03123982b69349f3ef729141d2c743fb80e6e5d940d3653a0b07db464c0a88",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1160 — Every Four-Cycle Term Has a Forced Infinity Coincidence",
+      "entry_number": 1160,
+      "path": "src/ledger/20260820-1160 Every Four-Cycle Term Has a Forced Infinity Coincidence.md",
+      "entity_id": "mariciledger_entry:5fab1b7bd13cf7f7dafc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Every C4 OFPT term has a forced complementary infinity-normal coincidence",
+      "status": "established",
+      "body": "Among the seven loop-dependent marks in each of 28 C4 terms, 20 have multiplicity profile (2,1,1,1,1,1) and 8 have (2,2,1,1,1). Across 196 residue pivots, 72 pivot on a duplicated normal class; forced triple concurrencies occur for 188 pivots.",
+      "entity_id": "mariciclaim:d9eafdffb327253c0be1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact four-cycle residue-incidence audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/audit_four_cycle_residue_incidence.py",
+      "entity_id": "maricitest:1745d198e30303c8d9ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:5fab1b7bd13cf7f7dafc",
+      "target_id": "mariciclaim:d9eafdffb327253c0be1",
+      "relation_id": "rel:maricirecords-332bc6ab0f2a1de3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:d9eafdffb327253c0be1",
+      "target_id": "maricitest:1745d198e30303c8d9ad",
+      "relation_id": "rel:maricitested_by-13946ac40438d5c8"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified four-cycle residue-incidence census."
+  },
+  "idempotency_key": "auto-admission-240b0c274388a82935517be4",
+  "occurred_at": "2026-08-20T15:08:30.6593203Z",
+  "certifies_truth": false,
+  "event_hash": "d9d44cb0ee2814865e81c91b8fad143f6dc574ee09f30324338733f86ea2791c"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 894,
+  "event_id": "ev-000000000894-f62a3ae1-fbb9-46cf-996e-3774ed46c071",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "fb8f3d63e177940ee103ebac50de5a4fc122e6fde7df775723970f014a5b6438",
+  "proposal_id": "ep_321c5729-3075-449c-a30d-aaf51978ddf2",
+  "proposal_digest": "e903b9a015007825ee6f77b5574fe05bb9aaf5fc03d77ad34e9801349b8a5346",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1156 — Generic Four-Site Marked Sections Are Elliptic Curves",
+      "status": "established",
+      "path": "src/ledger/20260820-1156 Generic Four-Site Marked Sections Are Elliptic Curves.md",
+      "entry_number": 1156,
+      "entity_id": "mariciledger_entry:16e088d06b727b050040"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Generic linear marked sections of the four-site del Pezzo boundary are elliptic curves",
+      "status": "established",
+      "body": "A source denominator is linear in edge variables and cuts a line L in the infinity P2. Its pullback under the quartic double cover is a degree-two cover of P1 branched at four points, hence genus one. Equivalently it is anticanonical. Relative residue therefore contributes rank-two H1(C_g)(-1) coefficient data without any new carrier stratum.",
+      "entity_id": "mariciclaim:1df6429088506aca9d44"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Four-site marked-section Riemann–Hurwitz and adjunction audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/four_site_marked_sections_elliptic.py",
+      "entity_id": "maricitest:eb1246880b73738ea575"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:16e088d06b727b050040",
+      "target_id": "mariciclaim:1df6429088506aca9d44",
+      "relation_id": "rel:maricirecords-44ec8612904ed64e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:1df6429088506aca9d44",
+      "target_id": "maricitest:eb1246880b73738ea575",
+      "relation_id": "rel:maricitested_by-e3268bf1f4c65538"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the four-site marked-relative cosmology calculation and record the generic marked-section genus."
+  },
+  "idempotency_key": "auto-admission-1eb2dd0bb341a4d4837fef33",
+  "occurred_at": "2026-08-20T14:50:47.4276042Z",
+  "certifies_truth": false,
+  "event_hash": "914d933c93d7d8155fa4d3e42e96907eb46ca0bb61dd356d410a90b5f2fd2d7b"
+}

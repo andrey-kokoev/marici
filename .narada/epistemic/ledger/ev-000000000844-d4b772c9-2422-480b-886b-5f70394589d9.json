@@ -1,0 +1,105 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 844,
+  "event_id": "ev-000000000844-d4b772c9-2422-480b-886b-5f70394589d9",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c8eae3b0c4d0e7d74756fbdf030f21a169ed8ca7c905bbd5cface50c56ddec85",
+  "proposal_id": "ep_ce4d2871-ff9d-49cc-b645-ce91e572b8eb",
+  "proposal_digest": "bbf0c75408ac4c6e6c4cbe27b65e91598a5bdf2a3afa6196d4c16795293ec5be",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1134 — The Physical Node Detects the First e6 Rees Class with Pairing One Quarter",
+      "status": "established-supported-rational",
+      "ledger_number": 1134,
+      "path": "src/ledger/20260820-1134 The Physical Node Detects the First e6 Rees Class with Pairing One Quarter.md",
+      "claim_id": "seqclaim-0ab79a55824704561b4fe4d7",
+      "entity_id": "mariciledger_entry:fb15113c12d88e5f39aa"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The physical second-center node pairs with the first-Rees e6 class by one quarter",
+      "status": "supported",
+      "body": "The ordered e6 covector (-1/8,+1/8) paired with the physical boundary e_minus-e_plus=(-1,+1) gives 1/4. Equal -1/8 restrictions on the p,s,B-1 faces make all edge differences zero, so the supported pairing is overlap-coherent.",
+      "entity_id": "claim:1254ad96e135d7b9d03d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact supported first-Rees e6 physical pairing",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_u2v0_e6_supported_pairing.py",
+      "evidence_path": "research/benincasa/results/rank12-u2v0-e6-supported-pairing.json",
+      "entity_id": "test:c5daef406ad70c0cffd5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:fb15113c12d88e5f39aa",
+      "target_id": "claim:1254ad96e135d7b9d03d",
+      "relation_id": "rel:maricirecords-a76d64ff690f3173"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:1254ad96e135d7b9d03d",
+      "target_id": "test:c5daef406ad70c0cffd5",
+      "relation_id": "rel:maricitested_by-970458f233746c19"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa derives the typed physical pairing with the first-Rees e6 class",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1134 pairs the correctly typed higher-Rees object: Sp^(1)(e6)=(-1/8,+1/8) against partial gamma_CM=e_minus-e_plus=(-1,+1), giving 1/4. On the labelled support simplex (p,s,B-1), every face carries coefficient -1/8, so all edge differences vanish; the s=0 and B-1=0 overlaps introduce no defect. This is a nonzero source-normalized rational supported pairing, not the retracted target-to-target arrow. Integral e6 lattice remains separate. Next: cyclic transport of this paired higher-Rees object.",
+      "entity_id": "maricicommunication:e0287d5e3fdc2db11a60"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e0287d5e3fdc2db11a60",
+      "relation_id": "rel:sent_by-fddb68684a408966"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e0287d5e3fdc2db11a60",
+      "relation_id": "rel:addressed_to-12b3bacbc1cbc065"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:e0287d5e3fdc2db11a60",
+      "target_id": "claim:1254ad96e135d7b9d03d",
+      "relation_id": "rel:reports-c96c9401acb02b07"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the corrected supported higher-Rees cosmology calculation, record verified results, and notify Nima."
+  },
+  "idempotency_key": "auto-admission-2e3f1802da00a077c8c93aea",
+  "occurred_at": "2026-08-20T13:18:07.2229734Z",
+  "certifies_truth": false,
+  "event_hash": "360d47702e90db52f2605aa9f88b6ba07d3314db1e02192cf0ae9774e959a142"
+}

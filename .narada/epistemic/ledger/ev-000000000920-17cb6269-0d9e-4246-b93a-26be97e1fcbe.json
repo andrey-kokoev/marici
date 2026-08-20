@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 920,
+  "event_id": "ev-000000000920-17cb6269-0d9e-4246-b93a-26be97e1fcbe",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c7b28546a3ae2c012bdb8b8a7f5b9466ba5e70e96ac7336250a54fca4be5fd89",
+  "proposal_id": "ep_0ffb18b8-779b-4cba-a09d-aff7441e136d",
+  "proposal_digest": "ecd1980b70d08a1aeb89def55d727cfbb9c8e1e725c6dea3cea053e9bfb72d34",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1164 — The Forced Four-Cycle Branch Enhancements Are A1 Nodes",
+      "entry_number": 1164,
+      "path": "src/ledger/20260820-1164 The Forced Four-Cycle Branch Enhancements Are A1 Nodes.md",
+      "status": "active",
+      "entity_id": "mariciledger_entry:44688fd129091810a6f3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Forced C4 branch enhancements are generically A1 nodes",
+      "status": "tested",
+      "body": "At projective infinity the correct quartic branch is 4B4=-Delta^T adj(G) Delta. Across all 296 labelled forced triple incidences, the activated branch is generically an A1 node. Normalization gives six deck-paired lines with OS ranks (1,6,5), hence mixed Tate plus quadratic Kummer coefficient data and no new carrier stratum.",
+      "entity_id": "mariciclaim:df465dd9eec9f1c53bbf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact audit of 296 forced C4 branch incidences",
+      "status": "passed",
+      "body": "Exact rational witnesses verify a nondegenerate restricted quadratic part for every labelled incidence record; the alternating point is universally branch singular in 144 occurrences.",
+      "entity_id": "maricitest:e766f7900b49bf7a91d3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "correction",
+      "kind": "marici:correction",
+      "title": "Entry 1163 degree-filtration inference retracted",
+      "status": "accepted",
+      "body": "Entry 1163 incorrectly retained the edge-degree-two term 4 det(G) z1 at projective infinity. Its smooth-branch order-six conclusion does not apply and is superseded by Entry 1164.",
+      "entity_id": "maricicorrection:aa9f97d8e20df4b8702d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:44688fd129091810a6f3",
+      "target_id": "mariciclaim:df465dd9eec9f1c53bbf",
+      "relation_id": "rel:maricirecords-9569492367d9f0af"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:df465dd9eec9f1c53bbf",
+      "target_id": "maricitest:e766f7900b49bf7a91d3",
+      "relation_id": "rel:maricitested_by-5bd9b218a2f32aa8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "correction",
+      "source_id": "mariciledger_entry:44688fd129091810a6f3",
+      "target_id": "maricicorrection:aa9f97d8e20df4b8702d",
+      "relation_id": "rel:maricirecords-4e82cc11293ee8e3"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the corrected C4 branch-node result and retract the superseded inference."
+  },
+  "idempotency_key": "auto-admission-0ab350fd66a799cea62b8722",
+  "occurred_at": "2026-08-20T15:27:29.9803401Z",
+  "certifies_truth": false,
+  "event_hash": "d1f1eadc24edc6a29f63b2b3ff5769c9f304bc38919478e7af82d74c49ab265e"
+}

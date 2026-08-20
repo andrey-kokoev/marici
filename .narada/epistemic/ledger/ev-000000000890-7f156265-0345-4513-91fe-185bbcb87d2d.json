@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 890,
+  "event_id": "ev-000000000890-7f156265-0345-4513-91fe-185bbcb87d2d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "926a84d2e7e38997e43ebf9bb224f386f2e7fc0c93a515244625c771132ae21a",
+  "proposal_id": "ep_6393983f-6a3e-4e08-954c-edab97af6f04",
+  "proposal_digest": "cea822c1e355a3097d82044537fed9ee48d30b9178b535e73726a4f21cbb33ba",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-s43-rephased-nlo-checker-v1",
+      "kind": "source",
+      "title": "Exact rephased S43 NLO beta-angle checker",
+      "version": "1",
+      "locator": "research/flavor/checkers/wp4_s43_rephased_nlo.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-s43-rephased-nlo-results-v1",
+      "kind": "source",
+      "title": "Exact rephased S43 NLO beta-angle results",
+      "version": "1",
+      "locator": "research/flavor/results/wp4_s43_rephased_nlo.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:flavor-s43-rephased-nlo-v1",
+      "kind": "test",
+      "title": "Derive the S43 invariant beta quartet through relative epsilon squared by exact phase conjugation and hierarchical eigenvectors"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:flavor-s43-s47-nlo-incompatible-v1",
+      "kind": "claim",
+      "title": "For S43 as printed, the invariant beta angle has no epsilon-squared correction, so S47's nonzero correction is incompatible with that texture",
+      "status": "exact source discrepancy",
+      "identity": "R_beta=e^{i phi} times a real series through relative epsilon^2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:flavor-s43-rephased-nlo-v1",
+      "target_id": "marici:claim:flavor-s43-s47-nlo-incompatible-v1",
+      "relation_id": "rel:tests-8fc70fcc2cfd5e61"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:flavor-s43-s47-nlo-incompatible-v1",
+      "target_id": "marici:source:flavor-s43-rephased-nlo-results-v1",
+      "relation_id": "rel:derived_from-0274e447561273c4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:flavor-s43-s47-nlo-incompatible-v1",
+      "target_id": "marici:claim:flavor-sparse-groupoid-not-quotient-atlas-v1",
+      "relation_id": "rel:maricirefines-9e1da558759df33d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:flavor-s43-rephased-nlo-v1",
+      "test_id": "marici:test:flavor-s43-rephased-nlo-v1",
+      "actor": "marici.Nima",
+      "outcome": "All five exact gates pass; the reduced quartet is real and its relative epsilon-squared phase coefficient vanishes.",
+      "evidence": [
+        {
+          "source_id": "marici:source:flavor-s43-rephased-nlo-results-v1",
+          "locator": "tests and R_beta_times_exp_minus_i_phi",
+          "paraphrase": "T1–T5 pass and removing e^{i phi} leaves a real rational expression in the edge magnitudes and epsilon squared."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of Figueiredo's paused flavor work."
+  },
+  "idempotency_key": "auto-admission-6021f4b3bdf9e9c85859db42",
+  "occurred_at": "2026-08-20T14:46:32.8888114Z",
+  "certifies_truth": false,
+  "event_hash": "1e605dcbe198f32922488091428cfddeb62a64200ed52e41d657eaa072ad1fab"
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 905,
+  "event_id": "ev-000000000905-8b047916-ab0f-424d-b133-ffb1390249c2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d896c50726980f9f97358a0556a7041846cb991d3a5fd9d20cddc115717ab816",
+  "proposal_id": "ep_2c9d5250-6546-4d45-a1e7-46270748ede7",
+  "proposal_digest": "a16fc01ada0b5a1bd344a509eda0f7aeb327d671ada29fcc0134e30c2e68c2a6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1159 — The Four-Cycle OFPT Packet Has Twenty-Eight Terms",
+      "entry_number": 1159,
+      "path": "src/ledger/20260820-1159 The Four-Cycle OFPT Packet Has Twenty-Eight Terms.md",
+      "entity_id": "mariciledger_entry:7f82466d800b5bedefdb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The source-derived C4 OFPT packet has 28 terms in seven free cyclic orbits",
+      "status": "established",
+      "body": "Exact cosmological-polytope vertex/facet incidence, with G and all singleton facets fixed, reproduces the six printed C3 terms and derives 28 C4 terms. Each adds three physical denominator facets; the terms form seven free C4 orbits.",
+      "entity_id": "mariciclaim:1cc645fc41dcd2661ac8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact polygon OFPT packet derivation",
+      "status": "passed",
+      "path": "research/benincasa/checkers/derive_polygon_ofpt_packet.py",
+      "entity_id": "maricitest:7a508ce06b746cce4dc0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:7f82466d800b5bedefdb",
+      "target_id": "mariciclaim:1cc645fc41dcd2661ac8",
+      "relation_id": "rel:maricirecords-7727e0c925d2da13"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:1cc645fc41dcd2661ac8",
+      "target_id": "maricitest:7a508ce06b746cce4dc0",
+      "relation_id": "rel:maricitested_by-c831b9bf2de41506"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified source-derived four-cycle OFPT packet."
+  },
+  "idempotency_key": "auto-admission-57d555e9d58bbceb21785059",
+  "occurred_at": "2026-08-20T15:05:14.873935Z",
+  "certifies_truth": false,
+  "event_hash": "a6390817ff60797d259addfe3c056552d46a2836d44fd013b847d65596470fa0"
+}

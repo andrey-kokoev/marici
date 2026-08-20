@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 868,
+  "event_id": "ev-000000000868-0a9bc0a0-103f-4052-bf10-16bd41970de5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "8d99cbdc2f70afa7fc8a9fb4fcdd2ad7d1d3233fb449f77d63426308992174f8",
+  "proposal_id": "ep_abe8c594-bcb7-4fe4-afab-feb5f60c49ed",
+  "proposal_digest": "2aae34405e203475cf2c7837d4bfcab757dd2f47a53d853d4b746e7e32860cb7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The total-energy Cut corner is transverse and unimodular",
+      "status": "established",
+      "body": "With q_G12=E_T+y12, the coordinate change (E_T,y12)->(E_T,q_G12) has matrix [[1,0],[1,1]] and determinant one. Thus E_T=0 and q_G12=0 form an integral regular pair with no excess Tor or mod-two carrier defect. The orientation identity dE_T wedge dq_G12=dE_T wedge dy12 leaves only the standard Koszul sign on swapped residues. Any activation of the width-two elliptic Z/2 coinvariant must come from the relative Cayley-Menger/Leray chain packet, not base incidence.",
+      "entity_id": "claim:9877d9a1728d69cd11fd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Total-energy/Cut corner unimodularity checker",
+      "status": "passed",
+      "body": "The checker verifies determinant one, transverse regular sequence, orientation identity, and absence of a mod-two carrier defect.",
+      "entity_id": "test:a8a5fa74ce6137f7ad55"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1148 — The Total-Energy Cut Corner Is Transverse and Unimodular",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1148 The Total-Energy Cut Corner Is Transverse and Unimodular.md",
+      "entity_id": "mariciledger_entry:ed4eb9fc07a65d0947b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:9877d9a1728d69cd11fd",
+      "target_id": "test:a8a5fa74ce6137f7ad55",
+      "relation_id": "rel:maricitested_by-a25b3b5376d8b377"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:ed4eb9fc07a65d0947b9",
+      "target_id": "claim:9877d9a1728d69cd11fd",
+      "relation_id": "rel:maricirecords-bb248d41df5134fc"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified total-energy/Cut corner audit."
+  },
+  "idempotency_key": "auto-admission-2a6af5f6c097498d1963eb50",
+  "occurred_at": "2026-08-20T14:06:50.5881371Z",
+  "certifies_truth": false,
+  "event_hash": "1269415a43b72ff6b4a6a52053f3d7a54a0f8f3a257d9abf07e6a6d44cc52a99"
+}
