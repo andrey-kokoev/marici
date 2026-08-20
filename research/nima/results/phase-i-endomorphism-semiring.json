@@ -1,0 +1,36 @@
+{
+  "schema": "marici.nima.phase_i_endomorphism_semiring.v1",
+  "status": "conditional_theorem",
+  "conditional_hypothesis": "Grothendieck's symmetric-monoidal disjoint-union relaxation, including the unbounded free commutative monoid theorem",
+  "inputs": {
+    "research/grothendieck/phase-i-monoidal-additive-completion.md": "10834a69fe6c2e9345ced24854aebefb1f63d268a8ed9fc0eb10ae0b6c87fa0c",
+    "research/grothendieck/results/phase-i-monoidal-additive-completion.json": "1f897b9a94a6fbd1636e9ae60789faf40771cca27b41d3457283e14baaf65701"
+  },
+  "construction": {
+    "additive_object": "pi_0(Surf_U^sqcup), free commutative monoid on U",
+    "classifier": "nU maps to the unique additive endomorphism f_n with f_n(U)=nU",
+    "multiplication": "n*m = f_n(mU)",
+    "multiplicative_unit": "U, whose classified endomorphism is identity",
+    "zero": "empty surface, whose classified endomorphism is zero",
+    "source_of_associativity": "composition of additive endomorphisms",
+    "source_of_distributivity": "additivity and pointwise addition of endomorphisms",
+    "second_surface_tensor_used": false,
+    "cardinality_used_as_carrier_input": false,
+    "initiality": "a unital semiring map must take U to the target unit; additive freeness makes that map unique and target distributivity makes it multiplicative"
+  },
+  "finite_controls": {
+    "element_cutoff": 24,
+    "endomorphism_additivity_checks": 15625,
+    "composition_checks": 625,
+    "candidate_uniqueness_checks": 625,
+    "semiring_triple_cutoff": 8
+  },
+  "verdict": {
+    "conditional_initial_semiring_on_pi0_derived": true,
+    "conditional_initial_ring_after_group_completion_derived": true,
+    "surface_level_distributive_tensor_derived": false,
+    "burnside_witt_structure_derived": false,
+    "euler_product_derived": false
+  },
+  "scope": "This corrects the claim that a second geometric tensor is necessary for the decategorified initial semiring. It does not construct that tensor or remove the explicit monoidal-relaxation hypothesis."
+}
