@@ -90,6 +90,37 @@ L_{uz}(z_k)\partial_{\bar z_k}G(z_k;z)
 +\tfrac{i}{2}h_k\,\partial_{z_k}\partial_{\bar z_k}G(z_k;z)\Big].
 \]
 
+**Derivation route of (6.8), grounded after the fact.** PSZ defers the
+(6.8) step to its ref [20], which is **KLPS = arXiv:1406.3312** (§6 of
+the Ward-corner paper, already grounded here — NOT [SZ]
+arXiv:1411.5745, which an earlier draft of this ledger cited in
+error; [SZ] is grounded at `sources/sz1411.5745.txt` but plays no role
+in this closure). The grounded KLPS §6 route, now checked exactly
+(checks S5.6–S5.9, S10): the per-leg stripped soft operator is exactly
+KLPS (6.6) once the Lorentz generator coefficients are contracted with
+RAISED indices, \(A^{mn}=-s^m s^n\beta_{mn}\) (checker S5.6a arbiter:
+the operator's pushforward on leg-momentum space is exactly
+\(W=(\varepsilon\cdot k)q-(q\cdot k)\varepsilon\)); the tetrad
+\(\partial_zX=b\varepsilon^++cX\), \(\partial_{\bar z}X=b\varepsilon^-
++\bar cX\) with \(b=\sqrt2/(1+z\bar z)\), \(c=-\bar z/(1+z\bar z)\)
+gives the mixing theorem
+\(\hat S^{(1)}_{zz}=b^2S^{(1)+}+\frac{bc}{\omega}\,\mathrm{op}
+(\varepsilon^+)\) (S5.8), whose second term is per leg the KLPS (6.4)
+first-type gauge response \(\varepsilon^\nu q^\lambda J_{k\nu\lambda}\).
+The per-leg bridge residual of (6.8) is exactly
+\(M=D_z^2\mathrm{mix}^--D_{\bar z}^2\mathrm{mix}^+\) (S5.9; closed forms
+in the checker), nonzero in the two angular channels, zero in the
+energy channel, and killed leg-summed by \(\sum_kJ_k=0\) (S10.1): the
+bridge closes per leg only in the \(E\)-channel and otherwise exactly
+modulo the KLPS (6.4) gauge mechanism. The KLPS (6.7)/(6.12) delta
+scaffold as printed is NOT an exact per-leg distributional identity
+under the declared prescription: computed deltas are uniformly half the
+printed ones (candidate \(\delta^2\)-normalization drift), and the
+energy/spin channels carry unprinted plain-\(\delta\) terms
+\(-2\pi E_k\bar z_k/(1+z_k\bar z_k)\) and
+\(+2\pi\bar z_k/(1+z_k\bar z_k)\,h_k\) (S10.2/S10.3); the endpoint
+KLPS (5.16) is unaffected (S4.3).
+
 ## 2. Check items (checker specification)
 
 - **S1 (projector).** \((1+\omega\partial_\omega)\) annihilates
@@ -117,6 +148,22 @@ L_{uz}(z_k)\partial_{\bar z_k}G(z_k;z)
   \(\frac{\kappa}{8\pi}[D_{\bar z}^2\hat S^{(1)}_{zz}
   -D_z^2\hat S^{(1)}_{\bar z\bar z}]\) when \(\hat S^{(1)}\) is built
   from [PSZ (6.5)] via [PSZ (6.7)]. Symbolic, generic \((z_k,E_k,h_k)\).
+  Outcome (checks S5.1–S5.9): the energy channel closes exactly per
+  leg; the angular channels equal the exactly named gauge-mixing
+  residual \(M=D_z^2\mathrm{mix}^--D_{\bar z}^2\mathrm{mix}^+\), which
+  closes only leg-summed via the [KLPS (6.4)] mechanism
+  \(\sum_kJ_k=0\) (S10.1). Includes the contraction arbiter S5.6a
+  (pushforward \(=\) the soft-factor vector field \(W\)), the exact
+  reproduction of [KLPS (6.6)] (S5.6b), and the tetrad mixing theorem
+  (S5.7/S5.8).
+- **S10 (KLPS §6 scaffold).** Two items: (i) the leg-summed closure
+  mechanism [KLPS (6.4)] as an abstract \(J\)-contraction identity
+  (S10.1); (ii) the [KLPS (6.7)/(6.12)] delta identities as per-leg
+  distributional statements under the declared prescription
+  \(\partial_{\bar z}(z-w)^{-1}=\pi\delta^2\) — outcome: uniform
+  factor-\(\tfrac12\) on the surviving deltas plus structural
+  plain-\(\delta\) contamination in the energy and spin channels
+  (S10.2/S10.3); the regular parts vanish identically (S10.2e).
 - **S6 (Green-kernel consistency).** [PSZ (5.4)]
   \(\partial_z\partial_{\bar z}G=2\pi\delta^2-\frac12\gamma_{z\bar z}\)
   against the leading packet's checked identities for

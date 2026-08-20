@@ -803,8 +803,14 @@ fn main() {
     let azb = mdot(&pk, &dxzb);
     let ql_soft = lower4(&qv);
 
-    /// Per-leg operator (c_zk, c_zbk, c_Ek) from v^nu J_{nu lam} q^lam:
-    /// antisymmetric beta^{r s} = v^r q^s - v^s q^r contracted with the leg J.
+    /// Per-leg operator (c_zk, c_zbk, c_Ek) from v^nu J_{nu lam} q^lam.
+    /// The soft-factor vector field on leg-momentum space is
+    /// W = (v.k) q - (q.k) v, so the generator coefficients must satisfy
+    /// A^{mn} k_n = W^m, i.e. A^{mn} = -(v^m q^n - q^m v^n) with RAISED
+    /// indices: A^{mn} = -s^m s^n beta_{mn}, s = (-1,1,1,1) — the three
+    /// pure-rotation generators carry a MINUS sign relative to the lowered
+    /// beta.  (Pre-repair this contracted beta_low directly; the
+    /// momentum-space arbiter S5.6a pins the correct contraction uniquely.)
     fn build_op(
         vvec: &V4,
         ql: &V4,
@@ -821,9 +827,10 @@ fn main() {
             let beta = clean(
                 &(vl[m].clone() * ql[n].clone() - vl[n].clone() * ql[m].clone()),
             );
-            cz = clean(&(cz + beta.clone() * dz_gen[gi].clone()));
-            czb = clean(&(czb + beta.clone() * dzb_gen[gi].clone()));
-            ce = clean(&(ce + beta * de_gen[gi].clone()));
+            let a = if m == 0 { beta } else { -beta }; // -s^m s^n beta_{mn}
+            cz = clean(&(cz + a.clone() * dz_gen[gi].clone()));
+            czb = clean(&(czb + a.clone() * dzb_gen[gi].clone()));
+            ce = clean(&(ce + a * de_gen[gi].clone()));
         }
         [cz, czb, ce]
     }
@@ -837,18 +844,18 @@ fn main() {
         clean(&(azb.clone() * op_zb[i].clone() / qdotp.clone()))
     });
 
-    let c_zk_decl = at("2*(1+zb*zk)^3/((z-zk)*(1+z*zb)^3)");
+    let c_zbk_decl = at("-2*(zb-zbk)^2*(1+zb*zk)/((z-zk)*(1+z*zb)^3)");
     let c_ek_decl = at("-2*Ek*(zb-zbk)*(1+zb*zk)^2/((z-zk)*(1+z*zb)^3*(1+zk*zbk))");
     let om_free = szz.iter().all(|c| !has_symbol(c, "om"));
     let ok51 = om_free
-        && is_zero(&(szz[0].clone() - c_zk_decl))
-        && is_zero(&szz[1])
+        && is_zero(&szz[0])
+        && is_zero(&(szz[1].clone() - c_zbk_decl))
         && is_zero(&(szz[2].clone() - c_ek_decl));
     push(
         &mut results,
         "S5.1",
         "S5",
-        "per-leg Shat^(1)_zz operator: om cancels exactly; components (c_zk, c_zbk, c_Ek) = (2(1+zb zk)^3/((z-zk)(1+z zb)^3), 0, -2 E (zb-zbk)(1+zb zk)^2/((z-zk)(1+z zb)^3(1+zk zbk)))",
+        "per-leg Shat^(1)_zz operator: om cancels exactly; with the repaired generator contraction (S5.6a) the components are (c_zk, c_zbk, c_Ek) = (0, -2(zb-zbk)^2(1+zb zk)/((z-zk)(1+z zb)^3), -2 E (zb-zbk)(1+zb zk)^2/((z-zk)(1+z zb)^3(1+zk zbk))) — the angular component now sits in the d_zbk slot, not d_zk",
         ok51,
         if ok51 {
             String::new()
@@ -962,17 +969,205 @@ fn main() {
         &mut results,
         "S5.5a",
         "S5",
-        "typed obstruction: (6.8) per-leg angular channel (d_zk) residual is nonzero (exact rational point)",
+        "typed obstruction: (6.8) per-leg angular channel (d_zk) residual is nonzero (exact rational point); with the repaired contraction it equals exactly the named gauge-mixing residual M (S5.9) and closes only leg-summed via KLPS (6.4) sum_k J_k = 0 (S10.1); PSZ ref [20] = KLPS arXiv:1406.3312 (grounded)",
         &pt1(&(lhs66[0].clone() - rhs68[0].clone())),
-        Some(&at("102500/483153")),
+        Some(&at("-102500/483153")),
     );
     check_nonzero(
         &mut results,
         "S5.5b",
         "S5",
-        "typed obstruction: (6.8) per-leg angular channel (d_zbk) residual is nonzero (exact rational point); closure route = leg-summed J-conservation form used for PSZ (6.9) and/or [SZ] arXiv:1411.5745 (ungrounded)",
+        "typed obstruction: (6.8) per-leg angular channel (d_zbk) residual is nonzero (exact rational point); the pre-repair zero in this channel was an artifact of the lowered-beta contraction defect (S5.6a); same leg-summed closure route as S5.5a",
         &pt1(&(lhs66[1].clone() - rhs68[1].clone())),
-        Some(&at("1671500/7891499")),
+        Some(&at("-1671500/7891499")),
+    );
+
+    // ---- S5.6 the KLPS (6.6) arbiter: which contraction is the faithful one
+    let dpk_dek: V4 = array::from_fn(|i| pk[i].derivative(symbol!("marici::Ek")).expand());
+    let dpk_dzk: V4 = array::from_fn(|i| pk[i].derivative(symbol!("marici::zk")).expand());
+    let dpk_dzbk: V4 = array::from_fn(|i| pk[i].derivative(symbol!("marici::zbk")).expand());
+    // sq2-symbol operator variants for standalone sqrt(2) comparisons
+    let op_ems = build_op(&eps_ms, &ql_soft, &gens, &dz_gen, &dzb_gen, &de_gen);
+    let op_eps = build_op(&eps_ps, &ql_soft, &gens, &dz_gen, &dzb_gen, &de_gen);
+    let p_eps_ms = mdot(&pk, &eps_ms);
+    let p_eps_ps = mdot(&pk, &eps_ps);
+    let w_soft: V4 = array::from_fn(|i| {
+        clean(&(p_eps_ms.clone() * qv[i].clone() - qdotp.clone() * eps_ms[i].clone()))
+    });
+    let push_m: V4 = array::from_fn(|i| {
+        clean(
+            &(op_ems[2].clone() * dpk_dek[i].clone()
+                + op_ems[0].clone() * dpk_dzk[i].clone()
+                + op_ems[1].clone() * dpk_dzbk[i].clone()),
+        )
+    });
+    let s56a: Vec<Atom> = (0..4)
+        .map(|i| norm_sq2(&(push_m[i].clone() - w_soft[i].clone())))
+        .collect();
+    check_all_zero(
+        &mut results,
+        "S5.6a",
+        "S5",
+        "generator-contraction arbiter: the per-leg operator's pushforward c_Ek d_pk/dEk + c_zk d_pk/dzk + c_zbk d_pk/dzbk equals exactly the soft-factor vector field W = (eps^-.k) q - (q.k) eps^-; this pins A^{mn} = -s^m s^n beta_{mn} (raised indices) and repairs the earlier lowered-beta contraction",
+        &s56a,
+        "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+    );
+
+    let k66_z = at("(z-zk)^2/(zbk-zb)");
+    let k66_e = at("Ek*(z-zk)*(1+z*zbk)/((zbk-zb)*(1+zk*zbk))");
+    let sminus: [Atom; 3] =
+        array::from_fn(|i| clean(&(p_eps_ms.clone() * op_ems[i].clone() / qdotp.clone())));
+    let s56b: Vec<Atom> = vec![
+        norm_sq2(&(sminus[0].clone() - k66_z)),
+        norm_sq2(&sminus[1]),
+        norm_sq2(&(sminus[2].clone() - k66_e)),
+    ];
+    check_all_zero(
+        &mut results,
+        "S5.6b",
+        "S5",
+        "the repaired per-leg stripped soft operator is exactly KLPS (6.6): (c_zk, c_zbk, c_Ek) = ((z-zk)^2/(zbk-zb), 0, Ek(z-zk)(1+z zbk)/((zbk-zb)(1+zk zbk))) (PSZ ref [20] = KLPS arXiv:1406.3312)",
+        &s56b,
+        "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+    );
+
+    let splus: [Atom; 3] =
+        array::from_fn(|i| clean(&(p_eps_ps.clone() * op_eps[i].clone() / qdotp.clone())));
+    let s56c: Vec<Atom> = vec![
+        norm_sq2(&splus[0]),
+        norm_sq2(&(splus[1].clone() - sigma(&sminus[0]))),
+        norm_sq2(&(splus[2].clone() - sigma(&sminus[2]))),
+    ];
+    check_all_zero(
+        &mut results,
+        "S5.6c",
+        "S5",
+        "the eps+ operator is the sigma-conjugate (slot-swapped) of the eps- operator",
+        &s56c,
+        "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+    );
+
+    // ---- S5.7 tetrad and gauge direction
+    let b_tet = sq2s.clone() / (at("1") + z.clone() * zb.clone());
+    let c_tet = -zb.clone() / (at("1") + z.clone() * zb.clone());
+    let cb_tet = -z.clone() / (at("1") + z.clone() * zb.clone());
+    let s57a: Vec<Atom> = (0..4)
+        .map(|i| {
+            norm_sq2(
+                &(dxz[i].clone()
+                    - b_tet.clone() * eps_ps[i].clone()
+                    - c_tet.clone() * x_soft[i].clone()),
+            )
+        })
+        .chain((0..4).map(|i| {
+            norm_sq2(
+                &(dxzb[i].clone()
+                    - b_tet.clone() * eps_ms[i].clone()
+                    - cb_tet.clone() * x_soft[i].clone()),
+            )
+        }))
+        .collect();
+    check_all_zero(
+        &mut results,
+        "S5.7a",
+        "S5",
+        "sphere tetrad: dX/dz = b eps+ + c X and dX/dzb = b eps- + cb X with b = sqrt(2)/(1+z zb), c = -zb/(1+z zb), cb = -z/(1+z zb)",
+        &s57a,
+        "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+    );
+    check_all_zero(
+        &mut results,
+        "S5.7b",
+        "S5",
+        "gauge direction: the soft-factor vector field annihilates q itself, op(q) = 0",
+        &build_op(&qv, &ql_soft, &gens, &dz_gen, &dzb_gen, &de_gen),
+        "",
+    );
+
+    // ---- S5.8 mixing theorem
+    let b2_tet = b_tet.clone() * b_tet.clone();
+    let mix_p: [Atom; 3] = array::from_fn(|i| {
+        clean(&(b_tet.clone() * c_tet.clone() / om.clone() * op_eps[i].clone()))
+    });
+    let mix_m: [Atom; 3] = array::from_fn(|i| {
+        clean(&(b_tet.clone() * cb_tet.clone() / om.clone() * op_ems[i].clone()))
+    });
+    let s58: Vec<Atom> = (0..3)
+        .map(|i| {
+            norm_sq2(
+                &(szz[i].clone() - b2_tet.clone() * splus[i].clone() - mix_p[i].clone()),
+            )
+        })
+        .chain((0..3).map(|i| {
+            norm_sq2(
+                &(szbb[i].clone() - b2_tet.clone() * sminus[i].clone() - mix_m[i].clone()),
+            )
+        }))
+        .collect();
+    check_all_zero(
+        &mut results,
+        "S5.8",
+        "S5",
+        "mixing theorem: Shat_zz = b^2 S+ + (b c/om) op(eps+) and Shat_zbzb = b^2 S- + (b cb/om) op(eps-) — the angular gauge components enter Shat only through the KLPS (6.4) first-type gauge-mixing term eps^nu q^lam J_{nu lam}",
+        &s58,
+        "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+    );
+
+    // ---- S5.9 the bridge residual, named exactly
+    let m_closed = [
+        at("-4*(2*z^2*zb^2*zk + 3*z^2*zb - 3*z*zb^2*zk^2 - 8*z*zb*zk - 3*z + 3*zb*zk^2 + 2*zk)/(1+z*zb)^5"),
+        at("4*(2*z^2*zb^2*zbk - 3*z^2*zb*zbk^2 + 3*z*zb^2 - 8*z*zb*zbk + 3*z*zbk^2 - 3*zb + 2*zbk)/(1+z*zb)^5"),
+        at("0"),
+    ];
+    let s59a: Vec<Atom> = (0..3)
+        .map(|i| lhs66[i].clone() - rhs68[i].clone() - m_closed[i].clone())
+        .collect();
+    check_all_zero(
+        &mut results,
+        "S5.9a",
+        "S5",
+        "the (6.8) per-leg bridge residual is named exactly: derived-LHS minus printed-RHS equals M := D_z^2 mix^- - D_zb^2 mix^+ in all three operator channels",
+        &s59a,
+        "",
+    );
+    let m_comp: Vec<Atom> = (0..3)
+        .map(|i| {
+            norm_sq2(
+                &(d2(&mix_m[i], symbol!("marici::z")) - d2(&mix_p[i], symbol!("marici::zb"))),
+            )
+        })
+        .collect();
+    let s59b: Vec<Atom> = (0..3)
+        .map(|i| m_comp[i].clone() - m_closed[i].clone())
+        .collect();
+    check_all_zero(
+        &mut results,
+        "S5.9b",
+        "S5",
+        "M computed from the mixing operators equals its closed forms (polynomial numerators over (1+z zb)^5)",
+        &s59b,
+        "",
+    );
+    check_zero(
+        &mut results,
+        "S5.9c",
+        "S5",
+        "the residual has no d_Ek component: M_E = 0, so the energy channel closes per leg (consistent with S5.4)",
+        &m_comp[2],
+    );
+    check_zero(
+        &mut results,
+        "S5.9d",
+        "S5",
+        "exact-value pinning: M_zk(PT1) = -102500/483153",
+        &(pt1(&m_closed[0]) + at("102500/483153")),
+    );
+    check_zero(
+        &mut results,
+        "S5.9e",
+        "S5",
+        "exact-value pinning: M_zbk(PT1) = -1671500/7891499",
+        &(pt1(&m_closed[1]) + at("1671500/7891499")),
     );
 
     // ================================================================ S6 Green kernel
@@ -1145,6 +1340,198 @@ fn main() {
         ok92,
     );
 
+    // ================================================================ S10 KLPS scaffold
+    // S10.1 the leg-summed closure mechanism (KLPS (6.4)): the mixing term is
+    // per leg the pure-gauge response eps^nu q^lam J_{k nu lam}; its leg sum
+    // vanishes under total angular momentum conservation sum_k J_k = 0.
+    let j1names = ["J1_01", "J1_02", "J1_03", "J1_12", "J1_13", "J1_23"];
+    let j2names = ["J2_01", "J2_02", "J2_03", "J2_12", "J2_13", "J2_23"];
+    let mut j1m: V4x4 = array::from_fn(|_| array::from_fn(|_| at("0")));
+    let mut j2m: V4x4 = array::from_fn(|_| array::from_fn(|_| at("0")));
+    {
+        let mut idx = 0;
+        for m in 0..4 {
+            for n in (m + 1)..4 {
+                let s1 = at(j1names[idx]);
+                let s2 = at(j2names[idx]);
+                j1m[m][n] = s1.clone();
+                j1m[n][m] = -s1;
+                j2m[m][n] = s2.clone();
+                j2m[n][m] = -s2;
+                idx += 1;
+            }
+        }
+    }
+    let mixing_c = |jm: &V4x4| {
+        let mut s = at("0");
+        for n in 0..4 {
+            for l in 0..4 {
+                s = (s + eps_p[n].clone() * qv[l].clone() * jm[n][l].clone()).expand();
+            }
+        }
+        clean(&s)
+    };
+    let c_j1 = mixing_c(&j1m);
+    let c_j2 = mixing_c(&j2m);
+    let mut c12 = c_j1.clone() + c_j2.clone();
+    for (nm1, nm2) in j1names.iter().zip(j2names.iter()) {
+        c12 = subs(&c12, &at(nm2), &-at(nm1));
+    }
+    check_zero(
+        &mut results,
+        "S10.1a",
+        "S10",
+        "leg-summed closure: C(J1) + C(J2) vanishes when J1 + J2 = 0 — the KLPS (6.4) sum_k J_k = 0 mechanism that kills the leg-summed gauge-mixing residual of S5.9 (the prefactor b c/om is k-independent)",
+        &c12,
+    );
+    check_nonzero(
+        &mut results,
+        "S10.1b",
+        "S10",
+        "typed obstruction: per leg the gauge-mixing contraction C(J) = eps^+_n q_l J^{n l} is nonzero",
+        &c_j1,
+        None,
+    );
+
+    // S10.2/S10.3 the KLPS (6.7)/(6.12) delta scaffold as a per-leg
+    // distributional identity, under the declared prescription
+    // d_zb (z-w)^{-1} = pi delta^2.  Covariant (0,2) weight sequence
+    // w = (0,1,2); for T = +/- G P, P = 1/(zb - zbk):
+    //   D^3(G P) = cP P + c0 delta + c1 D_z delta + c2 D_z^2 delta
+    //   cP = G''' - 3 Gam G'' + (2 Gam^2 - Gam') G'
+    //   c0 = pi (3 G'' - 6 Gam G' + (2 Gam^2 - Gam') G)
+    //   c1 = pi (3 G' - 3 Gam G),  c2 = pi G
+    // with products f D^n delta reduced at the pole by Leibniz.
+    let pi = at("pi");
+    let gam1 = gam().derivative(symbol!("marici::z")).expand();
+    let af = clean(&(at("2") * gam() * gam() - gam1));
+    let ginv = at("(1+z*zb)^2/2");
+    let at_pole = |e: &Atom| clean(&subs(&subs(e, &z, &zk), &zb, &zbk));
+    let delta_fold = |g: &Atom, sign: &Atom| -> (Atom, Atom, Atom, Atom) {
+        let g1 = g.derivative(symbol!("marici::z")).expand();
+        let g2 = g1.derivative(symbol!("marici::z")).expand();
+        let g3 = g2.derivative(symbol!("marici::z")).expand();
+        let fp = clean(
+            &(sign.clone()
+                * ginv.clone()
+                * (g3.clone() - at("3") * gam() * g2.clone() + af.clone() * g1.clone())),
+        );
+        let f0 = clean(
+            &(sign.clone()
+                * ginv.clone()
+                * pi.clone()
+                * (at("3") * g2.clone() - at("6") * gam() * g1.clone()
+                    + af.clone() * g.clone())),
+        );
+        let f1 = clean(
+            &(sign.clone()
+                * ginv.clone()
+                * pi.clone()
+                * (at("3") * g1.clone() - at("3") * gam() * g.clone())),
+        );
+        let f2 = clean(&(sign.clone() * ginv.clone() * pi.clone() * g.clone()));
+        let d0 = clean(
+            &(at_pole(&f0)
+                - at_pole(&f1.derivative(symbol!("marici::z")).expand())
+                + at_pole(
+                    &f2.derivative(symbol!("marici::z"))
+                        .expand()
+                        .derivative(symbol!("marici::z"))
+                        .expand(),
+                )),
+        );
+        let d1 = clean(
+            &(at_pole(&f1)
+                - at("2") * at_pole(&f2.derivative(symbol!("marici::z")).expand())),
+        );
+        let d2v = at_pole(&f2);
+        (fp, d0, d1, d2v)
+    };
+    // pole signs from eps-hat^+_{zb zb} S^{(1)-}: K66 denominators
+    // (zbk - zb) = -(zb - zbk) => minus; spin (6.11) flips the overall sign.
+    let g_ang = at("2*(z-zk)^2/(1+z*zb)^2");
+    let g_e = at("2*Ek*(z-zk)*(1+z*zbk)/((1+z*zb)^2*(1+zk*zbk))");
+    let g_sp = at("2*(z-zk)*(1+z*zbk)/((1+z*zb)^2*(1+zk*zbk))");
+    let (fpa, d0a, d1a, d2a) = delta_fold(&g_ang, &at("-1"));
+    let (fpe, d0e, d1e, d2e) = delta_fold(&g_e, &at("-1"));
+    let (fps, d0s, d1s, d2s) = delta_fold(&g_sp, &at("1"));
+
+    check_zero(
+        &mut results,
+        "S10.2a",
+        "S10",
+        "KLPS (6.7) angular channel: the computed leading delta is D0 = -2 pi per leg — exactly half the printed -4 pi",
+        &(d0a.clone() + at("2") * pi.clone()),
+    );
+    check_zero(
+        &mut results,
+        "S10.2b",
+        "S10",
+        "KLPS (6.7) energy channel: the computed D_z-delta coefficient is -pi Ek — exactly half the printed -2 pi Ek",
+        &(d1e.clone() + pi.clone() * ek.clone()),
+    );
+    check_zero(
+        &mut results,
+        "S10.2c",
+        "S10",
+        "KLPS (6.12) spin channel: the computed D_z-delta coefficient is +pi per unit h_k — exactly half the printed +2 pi",
+        &(d1s.clone() - pi.clone()),
+    );
+    check_all_zero(
+        &mut results,
+        "S10.2d",
+        "S10",
+        "channels printed as absent are absent: D1_ang = D2_ang = D2_E = D2_sp = 0",
+        &[d1a, d2a, d2e, d2s],
+        "",
+    );
+    check_all_zero(
+        &mut results,
+        "S10.2e",
+        "S10",
+        "the regular (non-distributional) parts of gamma^{zzb} D_z^3(eps-hat S) vanish identically in all three channels — no regular obstruction",
+        &[fpa, fpe, fps],
+        "",
+    );
+    check_zero(
+        &mut results,
+        "S10.3a",
+        "S10",
+        "structural obstruction, named: the energy channel carries an unprinted plain-delta term D0_E = -2 pi Ek zbk/(1+zk zbk)",
+        &(d0e.clone() + at("2*pi*Ek*zbk/(1+zk*zbk)")),
+    );
+    check_nonzero(
+        &mut results,
+        "S10.3b",
+        "S10",
+        "typed obstruction: printed (6.7) has NO plain-delta term in the d_Ek channel; the computed one is nonzero — no delta^2-normalization convention repairs this",
+        &d0e,
+        Some(&at("-2*pi*Ek*zbk/(1+zk*zbk)")),
+    );
+    check_zero(
+        &mut results,
+        "S10.3c",
+        "S10",
+        "structural obstruction, named: the spin channel carries an unprinted plain-delta term D0_sp = +2 pi zbk/(1+zk zbk) per unit h_k",
+        &(d0s.clone() - at("2*pi*zbk/(1+zk*zbk)")),
+    );
+    check_nonzero(
+        &mut results,
+        "S10.3d",
+        "S10",
+        "typed obstruction: printed (6.12) has NO plain-delta term at all; the computed one is nonzero",
+        &d0s,
+        Some(&at("2*pi*zbk/(1+zk*zbk)")),
+    );
+    check_nonzero(
+        &mut results,
+        "S10.3e",
+        "S10",
+        "typed residual: the uniform factor-1/2 gap (computed deltas are half the printed ones) is not explained away — candidate delta^2-normalization convention drift, same family as the S5.4 factor-2 note",
+        &(d0a + at("4") * pi.clone()),
+        Some(&at("2*pi")),
+    );
+
     // ================================================================ summary
     let n_pass = results
         .iter()
@@ -1172,8 +1559,8 @@ fn main() {
         "failed_ids": failed,
         "cross_validation": {
             "engine": "symbolica 2.2.0 (default-features = false, features = [\"no_gmp\"]), exact rational / complex-rational arithmetic, no floats",
-            "reference": "research/strominger/results/subleading_triangle_exact_checks.json (sympy, 30/30)",
-            "agreement": format!("{}/{} verdicts agree with the sympy reference; typed residuals compared exactly where declared (S2.3 a1, S4.3 det M6 = 2i + alpha = (-1/2, -i/2, 0, 0, 1/2, i/2), S5.5a 102500/483153, S5.5b 1671500/7891499, S7.4 -6 zb^4/(1+z zb)^4)", n_agree, results.len()),
+            "reference": "research/strominger/results/subleading_triangle_exact_checks.json (sympy, 53/53)",
+            "agreement": format!("{}/{} verdicts agree with the sympy reference; typed residuals compared exactly where declared (S2.3 a1, S4.3 det M6 = 2i + alpha = (-1/2, -i/2, 0, 0, 1/2, i/2), S5.5a -102500/483153, S5.5b -1671500/7891499, S7.4 -6 zb^4/(1+z zb)^4, S10.3b -2 pi Ek zbk/(1+zk zbk), S10.3d 2 pi zbk/(1+zk zbk), S10.3e 2 pi)", n_agree, results.len()),
             "disagreements": disagreed,
             "ported_core_only": [
                 "S6.1: the first log-derivative d_z log(u) = u'/u is encoded by hand (exact); the mixed second derivative is engine-computed",
@@ -1183,10 +1570,10 @@ fn main() {
         },
         "classification": {
             "carrier": "one sigma-odd field (the magnetic/curl part of N_z, equivalently the tower over C_zz) read at three derivative grades D_z, D_z^2, D_z^3 — NOT one operator (H2 confirmed as a typed refinement of the leading one-operator picture)",
-            "common_operation": "curl/magnetic projection (Im) of the C_zz tower; per-leg soft operator Shat^(1)_zz with components (c_zk, 0, c_Ek) built from PSZ (6.5)+(6.7)",
-            "verdict": "soft-memory bridge (PSZ 6.8) exact per leg in the energy channel; angular channels are a typed per-leg residual",
+            "common_operation": "curl/magnetic projection (Im) of the C_zz tower; per-leg soft operator Shat^(1)_zz with components (0, c_zbk, c_Ek) built from PSZ (6.5)+(6.7) with the repaired generator contraction (S5.1, S5.6a)",
+            "verdict": "soft-memory bridge (PSZ 6.8) exact per leg in the energy channel; the angular channels fail per leg by exactly the named gauge-mixing residual M = D_z^2 mix^- - D_zb^2 mix^+ (S5.9), which closes only leg-summed via the KLPS (6.4) mechanism sum_k J_k = 0 (S10.1) — verdict (ii)",
             "external_inputs": [
-                "J: global angular momentum conservation (CS (7); PSZ (6.9) derivation)",
+                "J: global angular momentum conservation (CS (7); KLPS (6.4); PSZ (6.9) derivation)",
                 "G_CS gauge prescription (conventions packet section 2)",
                 "antipodal matching + KLPS i^0 mode correspondence (packet section 3)",
                 "symmetric/hermitian zero-frequency limit (PSZ 6.1) = (1+om d_om) projection (KLPS 5.33)",
@@ -1195,11 +1582,13 @@ fn main() {
             "conventions_residuals": [
                 "CS (7) sign: with the declared shift dE = q Lam + Lam q the per-leg contraction gives dS^(1) = +i Lam q sum J vs printed -i (shift-sign convention; check S2.1)",
                 "S3: PSZ (6.5) / CS (6) ratio is exactly kap = sqrt(32 pi G) (check S3.1/S3.2)",
-                "S5: PSZ (6.8) holds per leg only in the d_Ek channel; the factor 2 between derived and printed sides is the (6.1) half-symmetric-limit vs (6.5) convention drift; angular-channel residuals S5.5a/b await the leg-summed J form and/or [SZ] arXiv:1411.5745 (PSZ ref [20], ungrounded: ar5iv extraction failed in the leading session)",
+                "S5: the generator contraction in build_op was repaired (raised indices A^{mn} = -s^m s^n beta_{mn}) and pinned by the momentum-space arbiter S5.6a; the repaired operator reproduces KLPS (6.6) exactly (S5.6b) — PSZ ref [20] = KLPS arXiv:1406.3312 (grounded); [SZ] arXiv:1411.5745 is grounded at sources/sz1411.5745.txt but not needed for this closure",
+                "S5: PSZ (6.8) holds per leg only in the d_Ek channel; the angular residual is exactly M = D_z^2 mix^- - D_zb^2 mix^+ (S5.9), the second derivative of the KLPS (6.4) gauge-mixing term, closing only leg-summed under sum_k J_k = 0 (S10.1)",
+                "S10: KLPS (6.7)/(6.12) as printed are NOT exact per-leg distributional identities under the declared prescription: the computed deltas carry a uniform factor 1/2 relative to print (candidate delta^2-normalization drift), and the energy/spin channels carry unprinted plain-delta terms D0_E = -2 pi Ek zbk/(1+zk zbk), D0_sp = +2 pi zbk/(1+zk zbk) h_k (S10.2/S10.3); the endpoint KLPS (5.16) is unaffected (S4.3)",
                 "S7: the formal kernel of D_z^3 exceeds the CKVs (zb, zb^2, z zb are killed but singular at the poles); the CKV-only quotient requires global smoothness — analytic input, same mechanism as S8.2 (checks S7.3/S7.4)",
                 "S8.2: the smoothness/corner-condition quotient removing the (1+z zb)^{-2s} x antiholomorphic ambiguity between derivative grades is an analytic note (declared input), not an exact check"
             ],
-            "outcome": "mixed: the subleading naturality square closes exactly at the level of the projector (S1), gauge variation (S2), normalization ratio kap (S3), hard-operator sphere reduction (S4), Green kernel (S6), and the D_z^3 CKV quotient (S7); the D^2 bridge (S5) closes exactly only in the energy channel per leg, with the angular channels recorded as typed residuals; the carrier question lands on one field with three derivative grades rather than one operator (S8, H2 refinement) — reproduced identically by the independent Symbolica engine"
+            "outcome": "mixed: the subleading naturality square closes exactly at the level of the projector (S1), gauge variation (S2), normalization ratio kap (S3), hard-operator sphere reduction (S4), Green kernel (S6), and the D_z^3 CKV quotient (S7); the D^2 bridge (S5) closes exactly per leg in the energy channel, with the angular channels equal to the exactly named gauge-mixing residual M (S5.9) that closes only leg-summed via KLPS (6.4) sum_k J_k = 0 (S10.1); the KLPS (6.7)/(6.12) delta scaffold holds only at half delta strength with structural plain-delta contamination (S10.2/S10.3); the carrier question lands on one field with three derivative grades rather than one operator (S8, H2 refinement) — reproduced identically by the independent Symbolica engine"
         }
     });
 
