@@ -1,0 +1,48 @@
+{
+  "schema": "marici.benincasa.rank12_u0_v2_exceptional_module_degree_gate.v1",
+  "status": "modular_degree_feasibility_only",
+  "center": { "u": 0, "v": 2 },
+  "primitive_degree": 8,
+  "samples": {
+    "chart_coordinates": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+    "count": 27
+  },
+  "primes": [2305843009213693951, 2305843009213693921],
+  "unknown_coefficients_per_primitive": 372,
+  "chart_results": [
+    {
+      "chart": "p_nonzero",
+      "coordinate": "s=q/p",
+      "master": 0,
+      "minimal_tested_feasible_bidegree": [6, 4],
+      "feasible_at_both_primes": true,
+      "denominator_kernel_excess": 1,
+      "adjacent_failures": [[5, 6], [6, 3]]
+    },
+    {
+      "chart": "q_nonzero",
+      "coordinate": "r=p/q",
+      "master": 0,
+      "minimal_tested_feasible_bidegree": [6, 5],
+      "feasible_at_both_primes": true,
+      "denominator_kernel_excess": 1,
+      "adjacent_failures": [[6, 4]]
+    }
+  ],
+  "same_prime_p_chart_checks": [
+    { "master": 1, "bidegree": [6, 4], "denominator_kernel_excess": 1 },
+    { "master": 2, "bidegree": [6, 4], "denominator_kernel_excess": 2 },
+    { "master": 6, "bidegree": [6, 4], "denominator_kernel_excess": 5 }
+  ],
+  "interpretation": {
+    "established": "The pilot primitive witness has a small replicated modular degree window in both exceptional charts.",
+    "not_established": [
+      "a characteristic-zero primitive witness",
+      "a common denominator for every quotient generator in both charts",
+      "an exact chartwise cocycle for the reconstructed primitive coefficients",
+      "a height bound sufficient for rational reconstruction"
+    ]
+  },
+  "checker": "research/benincasa/marici-gm/src/bin/marked_relative_reduction_engine.rs",
+  "mode": "MARICI_EXCEPTIONAL_MODULE_MODE"
+}
