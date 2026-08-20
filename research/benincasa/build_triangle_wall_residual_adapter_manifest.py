@@ -173,6 +173,10 @@ for probe, row in zip(probes, coordinate_rows):
     coordinate_rows_with_graph_value.append(augmented)
 
 coordinate_relations = row_relations(coordinate_rows)
+relation_graph_values = [
+    sum(relation.get(index, 0) * graph_values[index] for index in relation) % PRIME
+    for relation in coordinate_relations
+]
 non_descent_relation = next(
     relation
     for relation in coordinate_relations
@@ -221,6 +225,10 @@ result = {
         "rank_with_graph_value": rank(coordinate_rows_with_graph_value),
         "graph_functional_factors": rank(coordinate_rows)
         == rank(coordinate_rows_with_graph_value),
+        "coordinate_relation_dimension": len(coordinate_relations),
+        "graph_image_rank_on_relations": 1 if any(relation_graph_values) else 0,
+        "graph_zero_relation_dimension": len(coordinate_relations)
+        - (1 if any(relation_graph_values) else 0),
         "normalized_non_descent_relation": [
             {
                 "probe_index": index,
