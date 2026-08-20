@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_accdc233-86f3-47cf-abc7-c751cefb2bca",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording the verified reflected off-diagonal Rees-line result"
+  },
+  "idempotency_key": "marici-benincasa-entry-920-reflection-admit-v2",
+  "expected_ledger_head": "a80a1a4cb70872691605c324d6fe4618fce6dee04660b4ef18a1107edd38468e",
+  "created_at": "2026-08-19T13:24:35.2397764Z",
+  "content_fingerprint": "12981c3943fc4e702bb177db98581233f0c9d7c0898860f25a47b60b400058ae",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-920",
+      "kind": "source",
+      "title": "Entry 920 — Reflection Strictly Exchanges the Two Off-Diagonal Rees Lines",
+      "version": "20260819-920",
+      "locator": "src/ledger/20260819-920 Reflection Strictly Exchanges the Two Off-Diagonal Rees Lines.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-920-rees-reflection",
+      "kind": "claim",
+      "title": "Reflection strictly transports the off-diagonal Rees line and its degree-zero divisor",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-rees-reflection.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-920-rees-reflection",
+      "kind": "test",
+      "title": "Exact occurrence-reflection audit of off-diagonal Rees lines",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_rees_reflection.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-920-rees-reflection",
+      "target_id": "source-marici-ledger-920",
+      "relation_id": "rel:derived_from-1f1cbedd8230f4bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-920-rees-reflection",
+      "target_id": "claim-marici-920-rees-reflection",
+      "relation_id": "rel:tests-35beafb2b10c54a9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-920-reflection",
+      "test_id": "test-marici-920-rees-reflection",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: tau=(24) maps n_a/n_y to n_a/n_z, maps D_a-D_y to D_a-D_z, and the two basis reversals cancel so the extra transition unit is 1",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-920",
+          "locator": "Entry 920, Exceptional divisor transport and Orientation audit",
+          "paraphrase": "The exact Symbolica audit verifies strict reflection covariance of the projective line and Hecke divisor."
+        }
+      ]
+    }
+  ],
+  "digest": "35c64180326cc7bf6e946bdceec7bcd814dda4384bf82c7bf4cf6a1800e0ed99"
+}

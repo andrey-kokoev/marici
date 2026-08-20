@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 655,
+  "event_id": "ev-000000000655-5609554e-fc58-439b-b074-816a0e11b4d8",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a6da6ac563315013f090deea65c776dd7b6d251946f8a1fc7e7911a671b3a7b2",
+  "proposal_id": "ep_0905208d-8d66-4ce0-843d-2f9ec6a2113c",
+  "proposal_digest": "0e08e4942fbd8cbc79d12d7386ca97118ec3f3cea4b6554e42a123419b782c9e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-1036",
+      "kind": "source",
+      "title": "Ledger Entry 1036 — The Six Loaded Walls Are Not the Facets of One Associahedron",
+      "version": "20260819-1036",
+      "locator": "src/ledger/20260819-1036 The Six Loaded Walls Are Not the Facets of One Associahedron.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-1036-loaded-not-one-associahedron",
+      "kind": "claim",
+      "title": "The six loaded wall occurrences are not the facets of one associahedron"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-1036-loaded-monodromy-type",
+      "kind": "test",
+      "title": "Loaded versus hexagon monodromy type gate"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-1036-loaded-not-one-associahedron",
+      "target_id": "source:marici-ledger-1036",
+      "relation_id": "rel:derived_from-611fc0331d0098f0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-1036-loaded-monodromy-type",
+      "target_id": "claim:marici-1036-loaded-not-one-associahedron",
+      "relation_id": "rel:tests-faef123245b12015"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "claim:marici-1036-loaded-not-one-associahedron",
+      "target_id": "claim:marici-1034-hexagon-tautology",
+      "relation_id": "rel:criticizes-c06617865faf135f"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-1036",
+      "test_id": "test:marici-1036-loaded-monodromy-type",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: loaded total holonomy is generically M1 M2^2 M3 M4^2 and has no inverse pairs, unlike the native hexagon",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-1036",
+          "locator": "research/benincasa/string-six-point-loaded-monodromy-type-gate.json",
+          "paraphrase": "Exact symbolic comparison separates occurrence wall monodromies from the coherent facet local system of one hexagon."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue string-sector work and record coherent results."
+  },
+  "idempotency_key": "auto-admission-ba8ae300543fd15d00711d6b",
+  "occurred_at": "2026-08-19T18:31:20.9553346Z",
+  "certifies_truth": false,
+  "event_hash": "4a8e413d6d2fb2a75e1fb216f183ff9ebcc730bca5aa45ae52ccdd0acb8ace87"
+}

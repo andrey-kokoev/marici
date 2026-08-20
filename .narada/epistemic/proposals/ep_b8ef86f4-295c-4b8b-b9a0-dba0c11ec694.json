@@ -1,0 +1,100 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b8ef86f4-295c-4b8b-b9a0-dba0c11ec694",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "description": "Partially retract Entry 1005's variance-overreaching Betti conclusion and admit the dual-regularization gate"
+  },
+  "idempotency_key": "marici-benincasa-entry-1007-dual-regularization-gate-admit",
+  "expected_ledger_head": "5d6c45be46be7934dde2a880232d1d0d9ee96e72996b8ae1b4bf770eb6c23e35",
+  "created_at": "2026-08-19T17:32:13.9091083Z",
+  "content_fingerprint": "93ef6cc7591283aca33f2ba1cef7aff46337378b257c22c1a622a135ed8800c5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-1007",
+      "kind": "source",
+      "title": "Entry 1007 — Betti Exactness Requires the Dual Regularization Map",
+      "version": "20260819-1007",
+      "locator": "src/ledger/20260819-1007 Betti Exactness Requires the Dual Regularization Map.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-1007-dual-gate",
+      "kind": "claim",
+      "title": "Betti exactness of the minus cochain primitive is untyped without the dual regularization or intersection pairing"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-criticism-entry-1005-variance",
+      "kind": "criticism",
+      "title": "Entry 1005 applied a covariant chain regularization statement to a target cochain"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-1007-dual-gate",
+      "kind": "test",
+      "title": "Chain-cochain variance and support-permutation scope audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-1007-dual-gate",
+      "target_id": "marici-source-entry-1007",
+      "relation_id": "rel:derived_from-6adb7ca1d7cced54"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici-criticism-entry-1005-variance",
+      "target_id": "marici-claim-entry-1005-corrected-support",
+      "relation_id": "rel:criticizes-7e0149e19d8a0e57"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:qualifies",
+      "source_id": "marici-claim-entry-1007-dual-gate",
+      "target_id": "marici-claim-entry-1005-corrected-support",
+      "relation_id": "rel:mariciqualifies-36cc1d4ec80d3a13"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-1007-dual-gate",
+      "target_id": "marici-claim-entry-1007-dual-gate",
+      "relation_id": "rel:tests-10053a6877c24199"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-1007-test-outcome",
+      "test_id": "marici-test-entry-1007-dual-gate",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: frozen regularization is chain-covariant, the primitive is a target cochain, and the permutation packet disclaims rational transition authority",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1007",
+          "locator": "research/benincasa/string-six-point-minus-twisted-cycle-lattice-gate.json",
+          "paraphrase": "v3 packet records distinct variances, limited permutation scope, and absence of a dual regularization map."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-1005-partial-retraction",
+      "subject_id": "marici-claim-entry-1005-corrected-support",
+      "judgment": "partially_retracted",
+      "actor": "marici.Benincasa",
+      "reason": "The dense-to-occurrence permutation is valid, but the claimed Betti regularity used a chain statement on a cochain without a dual comparison.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1007",
+          "locator": "src/ledger/20260819-1007 Betti Exactness Requires the Dual Regularization Map.md",
+          "paraphrase": "The entry separates the valid label correction from the untyped Betti conclusion."
+        }
+      ]
+    }
+  ],
+  "digest": "c0491fb5dad0ddb950a8634a744de678742ed88f5aeef09d273ba3b86a82b9dd"
+}

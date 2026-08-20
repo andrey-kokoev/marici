@@ -1,0 +1,454 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007138643_seq2_a",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Stage A (extract), read only. Read only the frozen evidence packet. Return JSON with fields components, operation, constructed_facts, absent_assumptions. Extract the minimal typed representation: identifiers, degrees, modules/types, supports, coefficient typing, admissible operation support, and constructed values. Do not answer the final question, reduce the complex, or propose repairs. No prose outside JSON.",
+  "request_fingerprint": "976068dd58d0a7f4999db8cdec306d217f67e7fc7fbeaaec6014c5521d254950",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:52:19.0584851Z",
+  "created_at_ms": 1787007139058,
+  "started_at": "2026-08-17T22:52:19.0979499Z",
+  "started_at_ms": 1787007139097,
+  "finished_at": "2026-08-17T22:57:08.7481757Z",
+  "finished_at_ms": 1787007428748,
+  "duration_ms": 289651,
+  "updated_at": "2026-08-17T22:57:08.7481772Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007138643_seq2_a",
+  "constraints": {
+    "preflight_paths": [
+      {
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ],
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "queue_timeout_ms": 900000,
+    "max_retries": 0,
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "components",
+            "operation",
+            "constructed_facts",
+            "absent_assumptions"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "components",
+      "operation",
+      "constructed_facts",
+      "absent_assumptions"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-3eb6fca3ef9040a8bb2c508bf70d9aee"
+        ],
+        "current_run_id": "run-3eb6fca3ef9040a8bb2c508bf70d9aee",
+        "started_at": "2026-08-17T22:52:19.0979601Z",
+        "finished_at": "2026-08-17T22:57:08.7469057Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "components={5 fields}, operation={4 fields}, constructed_facts=[3 items], absent_assumptions=[4 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "components": {
+              "coefficient_ring": {
+                "id": "R",
+                "type": "arbitrary commutative unital ring"
+              },
+              "lattice": {
+                "id": "L",
+                "type": "free rank-one integral incidence lattice",
+                "generator": {
+                  "id": "p",
+                  "type": "primitive generator"
+                }
+              },
+              "realization": {
+                "id": "rho",
+                "type": "specified additive realization",
+                "source": "L",
+                "target": "R"
+              },
+              "coefficient": {
+                "id": "c",
+                "type": "element of R",
+                "definition": "rho(p)",
+                "known": "nonzero"
+              },
+              "graded_object": [
+                {
+                  "id": "x",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "alpha",
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "y",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "z",
+                  "degree": 1,
+                  "module": "R",
+                  "support": [
+                    "alpha"
+                  ]
+                }
+              ]
+            },
+            "operation": {
+              "id": "delta",
+              "degree": -1,
+              "admissible_support": [
+                "alpha"
+              ],
+              "constructed_values": [
+                {
+                  "input": "x",
+                  "output": "c*z",
+                  "coefficient": "c in R",
+                  "status": "constructed"
+                },
+                {
+                  "input": "y",
+                  "output": "0",
+                  "reason": "support beta is outside delta admissible support",
+                  "status": "constructed"
+                }
+              ]
+            },
+            "constructed_facts": [
+              "c=rho(p) is a nonzero element of R",
+              "delta(x)=c*z",
+              "delta(y)=0"
+            ],
+            "absent_assumptions": [
+              "c is a unit",
+              "R is a domain",
+              "rho is multiplicative",
+              "rho is unit-preserving"
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-3eb6fca3ef9040a8bb2c508bf70d9aee",
+        "status": "completed",
+        "finished_at": "2026-08-17T22:57:08.7468188Z",
+        "duration_ms": 287573,
+        "output": {
+          "summary_text": "components={5 fields}, operation={4 fields}, constructed_facts=[3 items], absent_assumptions=[4 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "components": {
+              "coefficient_ring": {
+                "id": "R",
+                "type": "arbitrary commutative unital ring"
+              },
+              "lattice": {
+                "id": "L",
+                "type": "free rank-one integral incidence lattice",
+                "generator": {
+                  "id": "p",
+                  "type": "primitive generator"
+                }
+              },
+              "realization": {
+                "id": "rho",
+                "type": "specified additive realization",
+                "source": "L",
+                "target": "R"
+              },
+              "coefficient": {
+                "id": "c",
+                "type": "element of R",
+                "definition": "rho(p)",
+                "known": "nonzero"
+              },
+              "graded_object": [
+                {
+                  "id": "x",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "alpha",
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "y",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "z",
+                  "degree": 1,
+                  "module": "R",
+                  "support": [
+                    "alpha"
+                  ]
+                }
+              ]
+            },
+            "operation": {
+              "id": "delta",
+              "degree": -1,
+              "admissible_support": [
+                "alpha"
+              ],
+              "constructed_values": [
+                {
+                  "input": "x",
+                  "output": "c*z",
+                  "coefficient": "c in R",
+                  "status": "constructed"
+                },
+                {
+                  "input": "y",
+                  "output": "0",
+                  "reason": "support beta is outside delta admissible support",
+                  "status": "constructed"
+                }
+              ]
+            },
+            "constructed_facts": [
+              "c=rho(p) is a nonzero element of R",
+              "delta(x)=c*z",
+              "delta(y)=0"
+            ],
+            "absent_assumptions": [
+              "c is a unit",
+              "R is a domain",
+              "rho is multiplicative",
+              "rho is unit-preserving"
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-3eb6fca3ef9040a8bb2c508bf70d9aee",
+        "status": "completed",
+        "output": {
+          "summary_text": "components={5 fields}, operation={4 fields}, constructed_facts=[3 items], absent_assumptions=[4 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "components": {
+              "coefficient_ring": {
+                "id": "R",
+                "type": "arbitrary commutative unital ring"
+              },
+              "lattice": {
+                "id": "L",
+                "type": "free rank-one integral incidence lattice",
+                "generator": {
+                  "id": "p",
+                  "type": "primitive generator"
+                }
+              },
+              "realization": {
+                "id": "rho",
+                "type": "specified additive realization",
+                "source": "L",
+                "target": "R"
+              },
+              "coefficient": {
+                "id": "c",
+                "type": "element of R",
+                "definition": "rho(p)",
+                "known": "nonzero"
+              },
+              "graded_object": [
+                {
+                  "id": "x",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "alpha",
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "y",
+                  "degree": 2,
+                  "module": "R",
+                  "support": [
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "z",
+                  "degree": 1,
+                  "module": "R",
+                  "support": [
+                    "alpha"
+                  ]
+                }
+              ]
+            },
+            "operation": {
+              "id": "delta",
+              "degree": -1,
+              "admissible_support": [
+                "alpha"
+              ],
+              "constructed_values": [
+                {
+                  "input": "x",
+                  "output": "c*z",
+                  "coefficient": "c in R",
+                  "status": "constructed"
+                },
+                {
+                  "input": "y",
+                  "output": "0",
+                  "reason": "support beta is outside delta admissible support",
+                  "status": "constructed"
+                }
+              ]
+            },
+            "constructed_facts": [
+              "c=rho(p) is a nonzero element of R",
+              "delta(x)=c*z",
+              "delta(y)=0"
+            ],
+            "absent_assumptions": [
+              "c is a unit",
+              "R is a domain",
+              "rho is multiplicative",
+              "rho is unit-preserving"
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "returned": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. components={5 fields}, operation={4 fields}, constructed_facts=[3 items], absent_assumptions=[4 items]"
+}

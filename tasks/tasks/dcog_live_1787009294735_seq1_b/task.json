@@ -1,0 +1,555 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787009294735_seq1_b",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Stage B (reduce), read only. Consume only the explicitly imported validated Stage-A output. Return JSON with fields compatible_map, untouchable_components, minimal_reduction, residual_complex, unconditional_homology, conditional_homology, construction_status, coefficient_assumption. Determine the strongest support- and degree-compatible map, what cannot be touched, the minimal quotient/restriction, residual matrix/complex, and homology under explicit assumptions. Distinguish a compatible map from a constructed map. Do not infer nonzero means invertible. No prose outside JSON.",
+  "request_fingerprint": "16d8d98cc1ca91fa42918ad0728b131c4a6a727051025a641a5fc11ff9b036bc",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T23:28:14.9420258Z",
+  "created_at_ms": 1787009294942,
+  "started_at": "2026-08-17T23:28:49.5695532Z",
+  "started_at_ms": 1787009329569,
+  "finished_at": "2026-08-17T23:31:24.7137192Z",
+  "finished_at_ms": 1787009484713,
+  "duration_ms": 155144,
+  "updated_at": "2026-08-17T23:31:24.7137275Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787009294735_seq1_b",
+  "constraints": {
+    "max_run_ms": 300000,
+    "max_retries": 0,
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "authority": "read",
+    "cognition": "low",
+    "queue_timeout_ms": 900000,
+    "cwd": "C:\\Users\\andrey\\src\\marici"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker",
+        "output_schema": {
+          "name": "primary",
+          "required": [
+            "compatible_map",
+            "untouchable_components",
+            "minimal_reduction",
+            "residual_complex",
+            "unconditional_homology",
+            "conditional_homology",
+            "construction_status",
+            "coefficient_assumption"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "compatible_map",
+      "untouchable_components",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_homology",
+      "construction_status",
+      "coefficient_assumption"
+    ]
+  },
+  "depends_on_task_ids": [
+    "dcog_live_1787009294735_seq1_a"
+  ],
+  "import_task_outputs": [
+    "dcog_live_1787009294735_seq1_a"
+  ],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": "2026-08-17T23:28:49.5426127Z",
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-0d2509e2abca4a4386798d9b6e5886ce"
+        ],
+        "current_run_id": "run-0d2509e2abca4a4386798d9b6e5886ce",
+        "started_at": "2026-08-17T23:28:49.5695843Z",
+        "finished_at": "2026-08-17T23:31:24.709954Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "compatible_map={7 fields}, untouchable_components={4 fields}, minimal_reduction={4 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "compatible_map": {
+              "source": "C2=R x ⊕ R y",
+              "target": "C1=R z",
+              "degree": -1,
+              "general_support_degree_compatible_form": "[a 0] for a in R",
+              "constructed_map": "[c 0]",
+              "generator_images": {
+                "x": "c z",
+                "y": "0"
+              },
+              "status": "constructed_map; not merely inferred from compatibility"
+            },
+            "untouchable_components": {
+              "source": [
+                "y"
+              ],
+              "reason": "support beta is outside delta's admissible alpha support",
+              "effect": "y cannot contribute to the image and cannot be cancelled using delta",
+              "target_note": "z is reachable only through the submodule cR z; surjectivity is not established"
+            },
+            "minimal_reduction": {
+              "operation": "split off the zero-differential summand R y, equivalently quotient C2 by R y",
+              "quotient_complex": "0 -> R x --[c]--> R z -> 0",
+              "full_decomposition": "(0 -> R x --[c]--> R z -> 0) ⊕ (R y in degree 2)",
+              "further_cancellation": "not justified unless c is a unit"
+            },
+            "residual_complex": {
+              "chain_groups": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "C0": "0"
+              },
+              "differentials": {
+                "delta_2": "[c 0]",
+                "delta_1": "0"
+              },
+              "active_matrix_after_quotient": "[c]",
+              "spectator": "R y in degree 2 with zero differential"
+            },
+            "unconditional_homology": {
+              "H2": "Ann_R(c) x ⊕ R y",
+              "H1": "R/(c)R",
+              "H0": "0",
+              "basis": "valid for arbitrary commutative unital R with c nonzero"
+            },
+            "conditional_homology": {
+              "if_c_is_a_non_zero_divisor": {
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_R_is_a_domain": {
+                "assumption": "c≠0",
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_c_is_a_unit": {
+                "H2": "R y",
+                "H1": "0",
+                "H0": "0",
+                "interpretation": "the R x -> R z pair is contractible"
+              }
+            },
+            "construction_status": {
+              "delta": "constructed on both listed degree-2 generators",
+              "differential_check": "delta_1 delta_2=0 because C0=0",
+              "unsupported_conclusions": [
+                "c is a unit",
+                "c is a non-zero-divisor",
+                "delta_2 is injective or surjective",
+                "the x-z pair can be cancelled unconditionally"
+              ]
+            },
+            "coefficient_assumption": {
+              "ring": "arbitrary commutative unital ring R",
+              "coefficient": "c=rho(p)",
+              "known": "c≠0",
+              "not_assumed": [
+                "unit",
+                "domain",
+                "non-zero-divisor",
+                "multiplicative or unit-preserving realization"
+              ]
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-0d2509e2abca4a4386798d9b6e5886ce",
+        "status": "completed",
+        "finished_at": "2026-08-17T23:31:24.7094113Z",
+        "duration_ms": 154421,
+        "output": {
+          "summary_text": "compatible_map={7 fields}, untouchable_components={4 fields}, minimal_reduction={4 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "compatible_map": {
+              "source": "C2=R x ⊕ R y",
+              "target": "C1=R z",
+              "degree": -1,
+              "general_support_degree_compatible_form": "[a 0] for a in R",
+              "constructed_map": "[c 0]",
+              "generator_images": {
+                "x": "c z",
+                "y": "0"
+              },
+              "status": "constructed_map; not merely inferred from compatibility"
+            },
+            "untouchable_components": {
+              "source": [
+                "y"
+              ],
+              "reason": "support beta is outside delta's admissible alpha support",
+              "effect": "y cannot contribute to the image and cannot be cancelled using delta",
+              "target_note": "z is reachable only through the submodule cR z; surjectivity is not established"
+            },
+            "minimal_reduction": {
+              "operation": "split off the zero-differential summand R y, equivalently quotient C2 by R y",
+              "quotient_complex": "0 -> R x --[c]--> R z -> 0",
+              "full_decomposition": "(0 -> R x --[c]--> R z -> 0) ⊕ (R y in degree 2)",
+              "further_cancellation": "not justified unless c is a unit"
+            },
+            "residual_complex": {
+              "chain_groups": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "C0": "0"
+              },
+              "differentials": {
+                "delta_2": "[c 0]",
+                "delta_1": "0"
+              },
+              "active_matrix_after_quotient": "[c]",
+              "spectator": "R y in degree 2 with zero differential"
+            },
+            "unconditional_homology": {
+              "H2": "Ann_R(c) x ⊕ R y",
+              "H1": "R/(c)R",
+              "H0": "0",
+              "basis": "valid for arbitrary commutative unital R with c nonzero"
+            },
+            "conditional_homology": {
+              "if_c_is_a_non_zero_divisor": {
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_R_is_a_domain": {
+                "assumption": "c≠0",
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_c_is_a_unit": {
+                "H2": "R y",
+                "H1": "0",
+                "H0": "0",
+                "interpretation": "the R x -> R z pair is contractible"
+              }
+            },
+            "construction_status": {
+              "delta": "constructed on both listed degree-2 generators",
+              "differential_check": "delta_1 delta_2=0 because C0=0",
+              "unsupported_conclusions": [
+                "c is a unit",
+                "c is a non-zero-divisor",
+                "delta_2 is injective or surjective",
+                "the x-z pair can be cancelled unconditionally"
+              ]
+            },
+            "coefficient_assumption": {
+              "ring": "arbitrary commutative unital ring R",
+              "coefficient": "c=rho(p)",
+              "known": "c≠0",
+              "not_assumed": [
+                "unit",
+                "domain",
+                "non-zero-divisor",
+                "multiplicative or unit-preserving realization"
+              ]
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-0d2509e2abca4a4386798d9b6e5886ce",
+        "status": "completed",
+        "output": {
+          "summary_text": "compatible_map={7 fields}, untouchable_components={4 fields}, minimal_reduction={4 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "compatible_map": {
+              "source": "C2=R x ⊕ R y",
+              "target": "C1=R z",
+              "degree": -1,
+              "general_support_degree_compatible_form": "[a 0] for a in R",
+              "constructed_map": "[c 0]",
+              "generator_images": {
+                "x": "c z",
+                "y": "0"
+              },
+              "status": "constructed_map; not merely inferred from compatibility"
+            },
+            "untouchable_components": {
+              "source": [
+                "y"
+              ],
+              "reason": "support beta is outside delta's admissible alpha support",
+              "effect": "y cannot contribute to the image and cannot be cancelled using delta",
+              "target_note": "z is reachable only through the submodule cR z; surjectivity is not established"
+            },
+            "minimal_reduction": {
+              "operation": "split off the zero-differential summand R y, equivalently quotient C2 by R y",
+              "quotient_complex": "0 -> R x --[c]--> R z -> 0",
+              "full_decomposition": "(0 -> R x --[c]--> R z -> 0) ⊕ (R y in degree 2)",
+              "further_cancellation": "not justified unless c is a unit"
+            },
+            "residual_complex": {
+              "chain_groups": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "C0": "0"
+              },
+              "differentials": {
+                "delta_2": "[c 0]",
+                "delta_1": "0"
+              },
+              "active_matrix_after_quotient": "[c]",
+              "spectator": "R y in degree 2 with zero differential"
+            },
+            "unconditional_homology": {
+              "H2": "Ann_R(c) x ⊕ R y",
+              "H1": "R/(c)R",
+              "H0": "0",
+              "basis": "valid for arbitrary commutative unital R with c nonzero"
+            },
+            "conditional_homology": {
+              "if_c_is_a_non_zero_divisor": {
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_R_is_a_domain": {
+                "assumption": "c≠0",
+                "H2": "R y",
+                "H1": "R/(c)R",
+                "H0": "0"
+              },
+              "if_c_is_a_unit": {
+                "H2": "R y",
+                "H1": "0",
+                "H0": "0",
+                "interpretation": "the R x -> R z pair is contractible"
+              }
+            },
+            "construction_status": {
+              "delta": "constructed on both listed degree-2 generators",
+              "differential_check": "delta_1 delta_2=0 because C0=0",
+              "unsupported_conclusions": [
+                "c is a unit",
+                "c is a non-zero-divisor",
+                "delta_2 is injective or surjective",
+                "the x-z pair can be cancelled unconditionally"
+              ]
+            },
+            "coefficient_assumption": {
+              "ring": "arbitrary commutative unital ring R",
+              "coefficient": "c=rho(p)",
+              "known": "c≠0",
+              "not_assumed": [
+                "unit",
+                "domain",
+                "non-zero-divisor",
+                "multiplicative or unit-preserving realization"
+              ]
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [
+      {
+        "task_id": "dcog_live_1787009294735_seq1_a",
+        "source_ref": "delegated-task://dcog_live_1787009294735_seq1_a/result#final_structured_output",
+        "structured_output": {
+          "components": {
+            "coefficient_ring": {
+              "symbol": "R",
+              "type": "arbitrary commutative unital ring"
+            },
+            "lattice": {
+              "symbol": "L",
+              "type": "free rank-one integral incidence lattice",
+              "generator": {
+                "symbol": "p",
+                "primitive": true
+              }
+            },
+            "realization": {
+              "symbol": "rho",
+              "type": "specified additive map",
+              "domain": "L",
+              "codomain": "R",
+              "coefficient": {
+                "symbol": "c",
+                "definition": "rho(p)",
+                "type": "R",
+                "known": "nonzero"
+              }
+            },
+            "graded_object": {
+              "degree_2": [
+                {
+                  "id": "x",
+                  "module": "R",
+                  "support": [
+                    "alpha",
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "y",
+                  "module": "R",
+                  "support": [
+                    "beta"
+                  ]
+                }
+              ],
+              "degree_1": [
+                {
+                  "id": "z",
+                  "module": "R",
+                  "support": [
+                    "alpha"
+                  ]
+                }
+              ],
+              "other_degrees": []
+            }
+          },
+          "operation": {
+            "id": "delta",
+            "degree": -1,
+            "admissible_support": [
+              "alpha"
+            ]
+          },
+          "constructed_facts": [
+            {
+              "input": "x",
+              "output": "c*z",
+              "status": "constructed"
+            },
+            {
+              "input": "y",
+              "output": "0",
+              "status": "constructed",
+              "reason": "support beta is outside delta admissible support"
+            }
+          ],
+          "absent_assumptions": [
+            "c is a unit",
+            "R is a domain",
+            "rho is multiplicative or unit-preserving"
+          ]
+        }
+      }
+    ],
+    "prior_step_outputs_ref": "delegated-task://dcog_live_1787009294735_seq1_b/imported-task-outputs",
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "imported_worker_refs": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "compatible_map",
+          "untouchable_components",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_homology",
+          "construction_status",
+          "coefficient_assumption"
+        ],
+        "returned": [
+          "compatible_map",
+          "untouchable_components",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_homology",
+          "construction_status",
+          "coefficient_assumption"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. compatible_map={7 fields}, untouchable_components={4 fields}, minimal_reduction={4 fields}, residual_complex={4 fields}"
+}

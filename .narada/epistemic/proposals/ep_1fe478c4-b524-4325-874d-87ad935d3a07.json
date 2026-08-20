@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1fe478c4-b524-4325-874d-87ad935d3a07",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "ledger_entry": "545",
+    "commit": "9213507917956287e8034927eec312e593d1abd1"
+  },
+  "idempotency_key": "marici-entry-545-complete-cube-v1",
+  "expected_ledger_head": "e5918fbc73c486fe7d57bd5d6cab3fc4d4b1c4dcd1a5621a8b57808e8b85ea92",
+  "created_at": "2026-08-18T05:27:19.3024709Z",
+  "content_fingerprint": "522488ca7a3bfae1a457bc9a3a921f38ccf54e6233fa794e96445ce0b25c7967",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-entry-545-complete-cube",
+      "kind": "source",
+      "title": "Entry 545 complete deletion-cube revision",
+      "version": "9213507917956287e8034927eec312e593d1abd1",
+      "locator": "src/ledger/20260818-545 Generic Lower-Sector Denominator-Deletion Cube.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:generic-lower-deletion-cube-incidence-grades",
+      "kind": "claim",
+      "title": "The generic lower deletion cube has nonzero pair and triple grades exactly on the frozen finite collision strata, with zero parallel-pair and full-support grades"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:entry-545-complete-boolean-cube",
+      "kind": "test",
+      "title": "Exact 16-face Boolean deletion-cube and Möbius inversion test"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:generic-lower-deletion-cube-incidence-grades",
+      "target_id": "source:marici-entry-545-complete-cube",
+      "relation_id": "rel:derived_from-3e3072440ee34361"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:entry-545-complete-boolean-cube",
+      "target_id": "claim:generic-lower-deletion-cube-incidence-grades",
+      "relation_id": "rel:tests-32c17d7643ea1ca5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:generic-lower-deletion-cube-incidence-grades",
+      "target_id": "claim:generic-lower-full-deletion-rank-34",
+      "relation_id": "rel:supersedes-c613f7cafd4b20b2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "entry545-complete-cube-outcome",
+      "test_id": "test:entry-545-complete-boolean-cube",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: closed ranks [7,12,12,18,12,18,18,26,12,17,18,24,18,24,26,34] and proper grades [7,5,5,1,5,1,1,1,5,0,1,0,1,0,1,0]",
+      "evidence": [
+        {
+          "source_id": "source:marici-entry-545-complete-cube",
+          "locator": "Entry 545, complete deletion cube",
+          "paraphrase": "All sixteen exact face ranks were computed; Möbius support agrees with the five finite pair collisions and two triple supports of Entry 185."
+        }
+      ]
+    }
+  ],
+  "digest": "727886de11c30cf1b1914b9dcc5a82d0dd03737c712fd91295e23134471c45fc"
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d67a12f3-0e0d-4186-a2f1-bd5f81c11e02",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the cosmology attack and update the epistemic graph."
+  },
+  "idempotency_key": "marici-benincasa-entry-423-smith-length-66-v1",
+  "expected_ledger_head": "2c3a7f3771f8225157a9aa36abe0a44e766ae079487b118110f5985fcd98c2da",
+  "created_at": "2026-08-17T23:06:10.986505Z",
+  "content_fingerprint": "c8d0b568e5263e4d50d863de5758efab9be4136ea24d40f62b3b8f66c94f4716",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-423-soft-total-smith",
+      "kind": "source",
+      "title": "Ledger 423: The Generic Soft-Total Master Image Has Slope-Independent Smith Length 66",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-423 The Generic Soft-Total Master Image Has Slope-Independent Smith Length 66.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:generic-soft-total-smith-length-66",
+      "kind": "claim",
+      "title": "The generic soft-total master image has slope-independent determinantal valuation 66"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-total-arc-smith",
+      "kind": "test",
+      "title": "Truncated-DVR Smith test of the master image modulo exact columns"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:generic-soft-total-smith-length-66",
+      "target_id": "marici:source:ledger-423-soft-total-smith",
+      "relation_id": "rel:derived_from-18bd62f1f9aefa15"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:soft-total-arc-smith",
+      "target_id": "marici:claim:generic-soft-total-smith-length-66",
+      "relation_id": "rel:tests-ae6b6d360e2a1ef5"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "benincasa-423-soft-total-smith-outcome",
+      "test_id": "marici:test:soft-total-arc-smith",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed narrowly: generic slopes 2,3,5,7 have master-image rank 10 and valuation 66 at degrees 8 and 10. The known supported slope c=1 has rank 8 and valuation 48. No generic slope-dependent residual factor was observed.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-423-soft-total-smith",
+          "locator": "Result and Epistemic boundary",
+          "paraphrase": "The arcwise determinantal difference is a stable 66 on tested generic directions, but finite arcs do not provide a full bivariate primary decomposition."
+        }
+      ]
+    }
+  ],
+  "digest": "a26dee7b6b503df71867593a0403d12790615a2e9e976edacd237e3115c77d81"
+}

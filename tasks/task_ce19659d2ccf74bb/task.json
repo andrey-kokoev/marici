@@ -1,0 +1,468 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_ce19659d2ccf74bb",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess, without changing files, whether adding a primary-navigation link from src/layouts/SiteLayout.astro to /research/ is currently executable given the repository state. Resolve referenced paths, map acceptance, identify decisions, and return the template's required structured assessment.",
+  "request_fingerprint": "94e521ca402f8ae6225f41748d9f9dd8cce274f55f489f27404a817f87f8f78e",
+  "validated_request_ref": "vr_a8d463e81bc9453486776f291ab58c38",
+  "created_at": "2026-08-16T20:48:10.5697342Z",
+  "updated_at": "2026-08-16T20:49:53.77466Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-final-retest2-complex-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+        "access": "read",
+        "label": "Navigation layout"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 300000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-c76bbd2373244de4a368dddc15429ea2"
+        ],
+        "current_run_id": "run-c76bbd2373244de4a368dddc15429ea2",
+        "started_at": "2026-08-16T20:48:10.5924578Z",
+        "finished_at": "2026-08-16T20:49:53.7732129Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions={4 fields}, first_actions=[3 items], reference_resolutions=[2 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’ll inspect only the relevant repository files and route/config evidence, using separate read-only probes, then return the required single JSON assessment.",
+          "structured_output": {
+            "dimensions": {
+              "assessment": "blocked",
+              "currently_executable": "not_demonstrable",
+              "mode": "read_only",
+              "write_performed": false
+            },
+            "first_actions": [
+              {
+                "action": "Read src/layouts/SiteLayout.astro",
+                "status": "refused"
+              },
+              {
+                "action": "Resolve the /research/ route",
+                "status": "not_attempted_after_refusal"
+              },
+              {
+                "action": "Inspect navigation conventions and validation configuration",
+                "status": "not_attempted_after_refusal"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "role": "edit source",
+                "resolution": "Path supplied, but existence and contents were not verified"
+              },
+              {
+                "reference": "/research/",
+                "role": "navigation destination",
+                "resolution": "Route ownership and availability unresolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation contains a link targeting /research/",
+                "status": "unverified",
+                "missing_evidence": "SiteLayout.astro contents"
+              },
+              {
+                "acceptance": "The destination resolves successfully",
+                "status": "unverified",
+                "missing_evidence": "Astro route/page and site URL configuration"
+              },
+              {
+                "acceptance": "The link follows existing label, placement, active-state, and accessibility conventions",
+                "status": "unverified",
+                "missing_evidence": "Existing navigation implementation"
+              },
+              {
+                "acceptance": "No files are changed",
+                "status": "satisfied"
+              }
+            ],
+            "required_decisions": [
+              "Confirm the canonical destination and trailing-slash behavior for /research/",
+              "Determine the navigation label and placement from existing conventions",
+              "Determine whether active-navigation styling or accessibility metadata is required",
+              "Choose an available read-only validation path after repository evidence is accessible"
+            ],
+            "findings": {
+              "narada.worker.refusal.v1": {
+                "tool": "shell_command",
+                "operation": "Read SiteLayout.astro with the mandated pwsh read-only probe",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "declared_capability": "read-only filesystem inspection",
+                "actual_refusal": "The probe command was rejected by execution policy as blocked; no file content was returned"
+              },
+              "conclusion": "The change cannot currently be assessed as executable from the available repository evidence."
+            },
+            "evaluator_provenance": {
+              "effective_mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "evidence_used": [
+                "User-supplied target path",
+                "User-supplied repository working directory",
+                "Observed command-policy refusal"
+              ],
+              "repository_content_observed": false,
+              "files_modified": false
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-c76bbd2373244de4a368dddc15429ea2",
+        "status": "completed",
+        "finished_at": "2026-08-16T20:49:53.7731129Z",
+        "output": {
+          "summary_text": "dimensions={4 fields}, first_actions=[3 items], reference_resolutions=[2 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’ll inspect only the relevant repository files and route/config evidence, using separate read-only probes, then return the required single JSON assessment.",
+          "structured_output": {
+            "dimensions": {
+              "assessment": "blocked",
+              "currently_executable": "not_demonstrable",
+              "mode": "read_only",
+              "write_performed": false
+            },
+            "first_actions": [
+              {
+                "action": "Read src/layouts/SiteLayout.astro",
+                "status": "refused"
+              },
+              {
+                "action": "Resolve the /research/ route",
+                "status": "not_attempted_after_refusal"
+              },
+              {
+                "action": "Inspect navigation conventions and validation configuration",
+                "status": "not_attempted_after_refusal"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "role": "edit source",
+                "resolution": "Path supplied, but existence and contents were not verified"
+              },
+              {
+                "reference": "/research/",
+                "role": "navigation destination",
+                "resolution": "Route ownership and availability unresolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation contains a link targeting /research/",
+                "status": "unverified",
+                "missing_evidence": "SiteLayout.astro contents"
+              },
+              {
+                "acceptance": "The destination resolves successfully",
+                "status": "unverified",
+                "missing_evidence": "Astro route/page and site URL configuration"
+              },
+              {
+                "acceptance": "The link follows existing label, placement, active-state, and accessibility conventions",
+                "status": "unverified",
+                "missing_evidence": "Existing navigation implementation"
+              },
+              {
+                "acceptance": "No files are changed",
+                "status": "satisfied"
+              }
+            ],
+            "required_decisions": [
+              "Confirm the canonical destination and trailing-slash behavior for /research/",
+              "Determine the navigation label and placement from existing conventions",
+              "Determine whether active-navigation styling or accessibility metadata is required",
+              "Choose an available read-only validation path after repository evidence is accessible"
+            ],
+            "findings": {
+              "narada.worker.refusal.v1": {
+                "tool": "shell_command",
+                "operation": "Read SiteLayout.astro with the mandated pwsh read-only probe",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "declared_capability": "read-only filesystem inspection",
+                "actual_refusal": "The probe command was rejected by execution policy as blocked; no file content was returned"
+              },
+              "conclusion": "The change cannot currently be assessed as executable from the available repository evidence."
+            },
+            "evaluator_provenance": {
+              "effective_mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "evidence_used": [
+                "User-supplied target path",
+                "User-supplied repository working directory",
+                "Observed command-policy refusal"
+              ],
+              "repository_content_observed": false,
+              "files_modified": false
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-c76bbd2373244de4a368dddc15429ea2",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions={4 fields}, first_actions=[3 items], reference_resolutions=[2 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’ll inspect only the relevant repository files and route/config evidence, using separate read-only probes, then return the required single JSON assessment.",
+          "structured_output": {
+            "dimensions": {
+              "assessment": "blocked",
+              "currently_executable": "not_demonstrable",
+              "mode": "read_only",
+              "write_performed": false
+            },
+            "first_actions": [
+              {
+                "action": "Read src/layouts/SiteLayout.astro",
+                "status": "refused"
+              },
+              {
+                "action": "Resolve the /research/ route",
+                "status": "not_attempted_after_refusal"
+              },
+              {
+                "action": "Inspect navigation conventions and validation configuration",
+                "status": "not_attempted_after_refusal"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "role": "edit source",
+                "resolution": "Path supplied, but existence and contents were not verified"
+              },
+              {
+                "reference": "/research/",
+                "role": "navigation destination",
+                "resolution": "Route ownership and availability unresolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation contains a link targeting /research/",
+                "status": "unverified",
+                "missing_evidence": "SiteLayout.astro contents"
+              },
+              {
+                "acceptance": "The destination resolves successfully",
+                "status": "unverified",
+                "missing_evidence": "Astro route/page and site URL configuration"
+              },
+              {
+                "acceptance": "The link follows existing label, placement, active-state, and accessibility conventions",
+                "status": "unverified",
+                "missing_evidence": "Existing navigation implementation"
+              },
+              {
+                "acceptance": "No files are changed",
+                "status": "satisfied"
+              }
+            ],
+            "required_decisions": [
+              "Confirm the canonical destination and trailing-slash behavior for /research/",
+              "Determine the navigation label and placement from existing conventions",
+              "Determine whether active-navigation styling or accessibility metadata is required",
+              "Choose an available read-only validation path after repository evidence is accessible"
+            ],
+            "findings": {
+              "narada.worker.refusal.v1": {
+                "tool": "shell_command",
+                "operation": "Read SiteLayout.astro with the mandated pwsh read-only probe",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "declared_capability": "read-only filesystem inspection",
+                "actual_refusal": "The probe command was rejected by execution policy as blocked; no file content was returned"
+              },
+              "conclusion": "The change cannot currently be assessed as executable from the available repository evidence."
+            },
+            "evaluator_provenance": {
+              "effective_mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "evidence_used": [
+                "User-supplied target path",
+                "User-supplied repository working directory",
+                "Observed command-policy refusal"
+              ],
+              "repository_content_observed": false,
+              "files_modified": false
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "dimensions={4 fields}, first_actions=[3 items], reference_resolutions=[2 items], acceptance_mappings=[4 items]"
+}

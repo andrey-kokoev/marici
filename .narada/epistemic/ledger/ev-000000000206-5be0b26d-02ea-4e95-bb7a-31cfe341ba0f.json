@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 206,
+  "event_id": "ev-000000000206-5be0b26d-02ea-4e95-bb7a-31cfe341ba0f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "231eef9b60d4123043fd4a31e40759fffef40c72a9b6d4bca070f36e9c98ea79",
+  "proposal_id": "ep_35cdad22-a59c-4552-8e0d-af68c064e3ae",
+  "proposal_digest": "39de59592a59d195643f50c278dd95ee53ad03a00d33d9b95371a6425a5a3926",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-508",
+      "kind": "source",
+      "title": "Entry 508 — The Principal Cell Strictifies the Even Cartier Action",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-508 The Principal Cell Strictifies the Even Cartier Action.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:principal-cell-strictifies-a2",
+      "kind": "claim",
+      "title": "The principal cell strictifies the corrected a^2 action",
+      "version": "1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:a2-principal-strictification-508",
+      "kind": "test",
+      "title": "Principal-cell strict chain identity audit",
+      "version": "1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:principal-cell-strictifies-a2",
+      "target_id": "marici:source:ledger-508",
+      "relation_id": "rel:derived_from-528bd892177638da"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:a2-principal-strictification-508",
+      "target_id": "marici:claim:principal-cell-strictifies-a2",
+      "relation_id": "rel:tests-4d05db125af1ea48"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:principal-cell-strictifies-a2",
+      "target_id": "marici:claim:a2-commutator-three-gradient-lift",
+      "relation_id": "rel:depends_on-9ad75c855b630a8e"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:a2-principal-strictification-508",
+      "test_id": "marici:test:a2-principal-strictification-508",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: (f,p)->(a^2f,a^2p-h(f)) commutes strictly with D(f,p)=d(f)+Kp",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-508",
+          "locator": "Evidence",
+          "paraphrase": "The Rust audit verifies the strict chain identity across bounded coefficient values."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue and record narrow chain mechanisms."
+  },
+  "idempotency_key": "auto-admission-145c5e22732b369aa45db714",
+  "occurred_at": "2026-08-18T03:09:59.5876478Z",
+  "certifies_truth": false,
+  "event_hash": "8fafc8c74ee0aa9d0457810a87842120d9812bbb637121656c48574765dc1080"
+}

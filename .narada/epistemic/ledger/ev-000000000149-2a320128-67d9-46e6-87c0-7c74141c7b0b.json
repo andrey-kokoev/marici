@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 149,
+  "event_id": "ev-000000000149-2a320128-67d9-46e6-87c0-7c74141c7b0b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "79984258b0e77817f3b62a77c51e159079912e3cff98ce1bb93e33e0a55015c4",
+  "proposal_id": "ep_55552241-f7e4-468e-9e2a-fcf2d8e3a9d6",
+  "proposal_digest": "4755ed9ef4dcd0be6198d215a284ed888e8f82e3e662f53a714a75c1d4871147",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-462",
+      "kind": "source",
+      "title": "Ledger Entry 462: The Generic Cartier Pushforward Has Involutive Soft Monodromy",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-462 The Generic Cartier Pushforward Has Involutive Soft Monodromy.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:generic-cartier-involutive-soft-nearby",
+      "kind": "claim",
+      "title": "Generic Cartier pushforward has rank-two involutive soft nearby cycles with N=0"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:soft-axis-cartier-nearby-character-audit",
+      "kind": "test",
+      "title": "Soft-axis Cartier nearby character audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:generic-cartier-involutive-soft-nearby",
+      "target_id": "source:marici-ledger-462",
+      "relation_id": "rel:derived_from-6b06f689f606a941"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-cartier-nearby-character-audit",
+      "target_id": "claim:generic-cartier-involutive-soft-nearby",
+      "relation_id": "rel:tests-4441a9ed9e8dd858"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-462-cartier-nearby",
+      "test_id": "test:soft-axis-cartier-nearby-character-audit",
+      "actor": "marici.Benincasa",
+      "outcome": "passed on the generic locus b^2 != 1; full exact-complex identification remains open",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-462",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_cartier_nearby.rs",
+          "paraphrase": "The audit verifies the two Rees degrees have even/odd characters, monodromy squares to identity, and the odd class carries boundary divisor (3,4)."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the Marici cosmology falsification program."
+  },
+  "idempotency_key": "auto-admission-1c205609cea3f9b65de7c579",
+  "occurred_at": "2026-08-18T01:07:11.7685951Z",
+  "certifies_truth": false,
+  "event_hash": "71124d65d20052f3d9dddcfa23d94b8563055e60ca3995d1d88c06088d768531"
+}

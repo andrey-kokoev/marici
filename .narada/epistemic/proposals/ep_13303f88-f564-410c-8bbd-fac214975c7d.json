@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_13303f88-f564-410c-8bbd-fac214975c7d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology program and record the verified second exceptional-center Newton result"
+  },
+  "idempotency_key": "auto-proposal-6441a96bbad88e5caf4801f9",
+  "expected_ledger_head": "52d81ad94e7f055f9f1a5dd10c93ccfaf755eab0348e97b095febbeb60500a8b",
+  "created_at": "2026-08-20T08:19:14.2874698Z",
+  "content_fingerprint": "6441a96bbad88e5caf4801f9aeb37f3cc8cb30dd3a1ce7fbf029ee1efac951cd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Rank-twelve u=2 v=0 joint Newton packet",
+      "version": "1",
+      "locator": "research/benincasa/rank12-u2-v0-joint-newton.json",
+      "entity_id": "source:8411f0e7dc160050c477"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact second exceptional-center Newton and smoothing test",
+      "status": "passed",
+      "body": "Symbolica gives in_J(K)=4(3p-q-2A)^2 and K3 on the doubled p-chart plane equals -16*s*(B-1).",
+      "entity_id": "test:681554a4303368fc967b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The second exceptional center begins as a doubled existing wall",
+      "status": "supported",
+      "body": "The initial branch is a doubled linear normal and its first smoothing factors only through the existing q=0 and L1 exceptional supports; no new carrier divisor is indicated.",
+      "entity_id": "claim:27944e1da8bee2f6e3d9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:681554a4303368fc967b",
+      "target_id": "claim:27944e1da8bee2f6e3d9",
+      "relation_id": "rel:tests-fd949a61a78817c1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:27944e1da8bee2f6e3d9",
+      "target_id": "source:8411f0e7dc160050c477",
+      "relation_id": "rel:derived_from-da62c4de9c4949f7"
+    }
+  ],
+  "digest": "d8779719247ebe7607460845926f2ab4ac9eff17b6f1e84b2b325ac7c779efd3"
+}

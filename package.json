@@ -8,6 +8,10 @@
   "scripts": {
     "source:assemble": "node scripts/assemble-narada-source.mjs",
     "source:check": "node scripts/assemble-narada-source.mjs --check",
+    "graph:project": "node scripts/project-public-epistemic-graph.mjs",
+    "graph:test": "node scripts/test-public-epistemic-graph.mjs",
+    "graph:test:e2e": "playwright test tests/graph.spec.mjs",
+    "graph:test:live": "playwright test tests/graph.spec.mjs --config playwright.live.config.mjs",
     "bootstrap": "node scripts/assemble-narada-source.mjs && pnpm install",
     "build:ui": "pnpm --filter @narada-core/ui build",
     "dev": "pnpm run build:ui && astro dev",
@@ -22,6 +26,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/markdown-remark": "7.2.1",
+    "@playwright/test": "^1.62.1",
     "astro": "7.1.3",
     "katex": "^0.16.47",
     "rehype-katex": "^7.0.1",

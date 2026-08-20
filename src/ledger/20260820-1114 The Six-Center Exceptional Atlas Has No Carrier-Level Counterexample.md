@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1114 — The Six-Center Exceptional Atlas Has No Carrier-Level Counterexample
 
 ## Frozen census

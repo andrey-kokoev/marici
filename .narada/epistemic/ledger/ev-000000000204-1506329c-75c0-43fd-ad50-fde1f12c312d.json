@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 204,
+  "event_id": "ev-000000000204-1506329c-75c0-43fd-ad50-fde1f12c312d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3ae931f9e190ce12c632f8fd6f49e4d743ec1eb3914658f8dc65f72e83b693d2",
+  "proposal_id": "ep_31c83894-12be-4d37-80c1-e9a29b9fee74",
+  "proposal_digest": "a82f4da88046049e386d71fbf0bf29da64479b310d7cbd11d62cf5e73c5f7fb9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-504",
+      "kind": "source",
+      "title": "Entry 504 — The Naive Even Cartier Action Does Not Descend",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-504 The Naive Even Cartier Action Does Not Descend.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:naive-a2-action-does-not-descend",
+      "kind": "claim",
+      "title": "Naive multiplication by a^2 does not descend to the complete exact cokernel",
+      "version": "1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:a2-exact-image-preservation-504",
+      "kind": "test",
+      "title": "Finite a^2 exact-image preservation audit",
+      "version": "1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:naive-a2-action-does-not-descend",
+      "target_id": "marici:source:ledger-504",
+      "relation_id": "rel:derived_from-e11a6cf246c252cb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:a2-exact-image-preservation-504",
+      "target_id": "marici:claim:naive-a2-action-does-not-descend",
+      "relation_id": "rel:tests-45ca07613525456b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:claim:naive-a2-action-does-not-descend",
+      "target_id": "source:7c3dad58f87e8767fce9",
+      "relation_id": "rel:criticizes-62f308c2f6f8d915"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:a2-exact-image-preservation-504",
+      "test_id": "marici:test:a2-exact-image-preservation-504",
+      "actor": "marici.Benincasa",
+      "outcome": "failed preservation: adjoining a^2 times exact columns raises rank by one at D=12,16,20,24,28",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-504",
+          "locator": "Evidence",
+          "paraphrase": "The Rust finite-field audit finds a stable rank-one multiplication commutator."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue and record narrow falsifiers."
+  },
+  "idempotency_key": "auto-admission-72a2cc26213541f529787427",
+  "occurred_at": "2026-08-18T03:02:32.8681064Z",
+  "certifies_truth": false,
+  "event_hash": "f462501e3fef26273116c11652f468ad220169aa293ea0a12e153bb36a258329"
+}

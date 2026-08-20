@@ -1,0 +1,187 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_6c06fa50967def21",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read README.md without changing files. Report whether it exists and is readable, summarize its project purpose in one sentence, and return structured fields file_status and purpose.",
+  "request_fingerprint": "fda2831a53d926c272da057f9d91e1bb1b3fbf7e606297331e0612d0a13d44c3",
+  "validated_request_ref": "vr_27cfe4306fd9458f82c09fde901b73fe",
+  "created_at": "2026-08-17T13:50:16.1834826Z",
+  "created_at_ms": 1786974616183,
+  "started_at": "2026-08-17T13:50:16.2089974Z",
+  "started_at_ms": 1786974616208,
+  "finished_at": "2026-08-17T13:50:26.3775838Z",
+  "finished_at_ms": 1786974626377,
+  "duration_ms": 10169,
+  "updated_at": "2026-08-17T13:50:26.3775855Z",
+  "cancelled_at": null,
+  "idempotency_key": "ergonomics-execute-readme-20260817-v1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "preflight_paths": [
+      {
+        "path": "README.md",
+        "access": "read",
+        "label": "project README"
+      }
+    ],
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "file_status",
+      "purpose"
+    ],
+    "no_writes": true,
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "not_applicable",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-186234a6fe614a33b76e6789d9f7efd2"
+        ],
+        "current_run_id": "run-186234a6fe614a33b76e6789d9f7efd2",
+        "started_at": "2026-08-17T13:50:16.2090031Z",
+        "finished_at": "2026-08-17T13:50:26.3762991Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-186234a6fe614a33b76e6789d9f7efd2",
+        "status": "completed",
+        "finished_at": "2026-08-17T13:50:26.3762703Z",
+        "output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-186234a6fe614a33b76e6789d9f7efd2",
+        "status": "completed",
+        "output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "file_status",
+          "purpose"
+        ],
+        "returned": [
+          "file_status",
+          "purpose"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "not_applicable",
+        "signal": null,
+        "status": "not_applicable"
+      }
+    ]
+  },
+  "summary": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program, documenting intrinsic operations producing NLSM, Yang–Mills, gravity, and the"
+}

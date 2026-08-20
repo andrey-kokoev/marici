@@ -1,0 +1,115 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_db5118dc-0732-4b43-98e0-6507e0c5775b",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Primary agent owns ledger wording and sparse graph admission."
+  },
+  "idempotency_key": "marici-ledger-169-sparse-delta-v2",
+  "expected_ledger_head": "7d0197b964c8db921a2f424dc5d53c757ed0ecb2a6893456e4ed0fec1dce0df2",
+  "created_at": "2026-08-15T20:02:12.223486Z",
+  "content_fingerprint": "1958f392e2e42ad4f5deb3cb0850712a0e546a579292dd44263622941180e023",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger169",
+      "local_ref": "source169",
+      "kind": "source",
+      "title": "Ledger 169 exact nine-master residue connection packet",
+      "version": "2026-08-15",
+      "locator": "src/ledger/20260815-169 Exact Nine-Master Residue Connection and the Generic-Q Regularity No-Go.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-ledger169-generic-q-regularity",
+      "local_ref": "test169",
+      "kind": "test",
+      "title": "Generic-Q regularity test for the source equation-(58) nine-master connection",
+      "version": "1",
+      "locator": "research/benincasa/derive_nine_master_slice_connection.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-ledger169-trivial-generic-q-monodromy",
+      "local_ref": "claim169",
+      "kind": "claim",
+      "title": "The source-selected algebraic quotient has trivial generic-Q monodromy on the frozen transverse slice",
+      "version": "1",
+      "locator": "research/benincasa/nine_master_slice_connection.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:marici-ledger169-q-sign-incompatibility",
+      "local_ref": "crit169",
+      "kind": "criticism",
+      "title": "Generic-Q regularity is incompatible with the proposed Q-sign/Kummer line",
+      "version": "1",
+      "locator": "src/ledger/20260815-169 Exact Nine-Master Residue Connection and the Generic-Q Regularity No-Go.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim169",
+      "target_ref": "source169",
+      "source_id": "claim:marici-ledger169-trivial-generic-q-monodromy",
+      "target_id": "source:marici-ledger169",
+      "relation_id": "rel:derived_from-22665351ac7e8dba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test169",
+      "target_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "source_id": "test:marici-ledger169-generic-q-regularity",
+      "relation_id": "rel:tests-7185be952646940e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit169",
+      "target_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "source_id": "criticism:marici-ledger169-q-sign-incompatibility",
+      "relation_id": "rel:criticizes-676176ab42442428"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim169",
+      "target_id": "conjecture:088e8900f0d60d0898c8",
+      "source_id": "claim:marici-ledger169-trivial-generic-q-monodromy",
+      "relation_id": "rel:addresses-dabc28dc79dc5ea8"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:marici-ledger169-m225-falsified-generic-slice",
+      "subject_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "judgment": "falsified_on_source_fixed_generic_transverse_slice",
+      "actor": "marici.Benincasa",
+      "reason": "Exact connection and algebraic quotient are regular at sliced squarefree Q roots; residue zero and monodromy identity.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger169",
+          "locator": "src/ledger/20260815-169 Exact Nine-Master Residue Connection and the Generic-Q Regularity No-Go.md#generic-mathcal-q-residue-and-monodromy",
+          "paraphrase": "Exact reductions and denominator gcd checks give zero generic-Q residue and identity monodromy."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "test-outcome:marici-ledger169-generic-q-regularity",
+      "test_id": "test:marici-ledger169-generic-q-regularity",
+      "actor": "marici.Benincasa",
+      "outcome": "M2.24/M2.25 Q-sign-line identification falsified on frozen generic transverse slice; no new carrier datum.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger169",
+          "locator": "research/benincasa/nine_master_slice_connection.json",
+          "paraphrase": "Exact certificate records Q regularity, published L2 match, invariant algebraic plane, and denominator coprimality."
+        }
+      ]
+    }
+  ],
+  "digest": "dfa47b0d41889c039b00c3a0e6980101af93ee13ddb136243f5cf7e79c99b1d8"
+}

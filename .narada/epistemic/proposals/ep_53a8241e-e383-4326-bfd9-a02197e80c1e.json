@@ -1,0 +1,52 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_53a8241e-e383-4326-bfd9-a02197e80c1e",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "description": "Correct the semantic scope of Entry 1002's relation to Entry 1001"
+  },
+  "idempotency_key": "marici-benincasa-entry-1002-relation-correction",
+  "expected_ledger_head": "b961c230ff7d50c85f493abda4c22a66d30e5bc5d8846b32cb4e26c1ce3544df",
+  "created_at": "2026-08-19T17:21:53.7541471Z",
+  "content_fingerprint": "2802104ee60ed2950c082ede3367dbe0235543742ec3ffee893e5287e5c69bca",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-criticism-entry-1002-supersedes-scope",
+      "kind": "criticism",
+      "title": "Entry 1002 refines rather than supersedes Entry 1001's support result"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici-claim-entry-1002-exact-arc",
+      "target_id": "marici-claim-entry-1001-three-edge-arc",
+      "relation_id": "rel:maricirefines-7fc54c41ce5d181b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici-criticism-entry-1002-supersedes-scope",
+      "target_id": "marici-claim-entry-1002-exact-arc",
+      "relation_id": "rel:criticizes-c9f978c21f8c8f54"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-1002-relation-correction",
+      "subject_id": "marici-claim-entry-1002-exact-arc",
+      "judgment": "relation_scope_corrected",
+      "actor": "marici.Benincasa",
+      "reason": "Cellular exactness adds a cohomological classification while preserving Entry 1001's exact support and non-locality result; the prior supersedes edge is overbroad and must not be read as retracting Entry 1001.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1002",
+          "locator": "src/ledger/20260819-1002 The Restricted Three-Edge Arc Is Cellularly Exact.md",
+          "paraphrase": "The ledger explicitly retains Entry 1001's three-edge support result and adds exactness in the full cellular complex."
+        }
+      ]
+    }
+  ],
+  "digest": "0d82e02fece1042464c1dba02a6e73412bd1095bdaedf396a3208db15d2ab2e8"
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 619,
+  "event_id": "ev-000000000619-6ee2a5bc-5130-4d2b-9b42-c5efb197981b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "dfb753e2eb3c5b814c5bc9c048f94476b0faaf2b67a704bf3e7abc79724db132",
+  "proposal_id": "ep_d4cce6cb-6afe-4404-b1da-90c5c6ba66a3",
+  "proposal_digest": "a84ca0194a9e902f3455a2d54d6305b32caa8f6fcf6d0ab89ae2ec72309ad401",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-1001",
+      "kind": "source",
+      "title": "Entry 1001 — The Minus Recombination Restricts to a Closed Three-Edge Arc",
+      "version": "20260819-1001",
+      "locator": "src/ledger/20260819-1001 The Minus Recombination Restricts to a Closed Three-Edge Arc.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-1001-three-edge-arc",
+      "kind": "claim",
+      "title": "The minus Pochhammer class restricts to a closed three-edge arc rather than the local recombination vertex image"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-1001-three-edge-arc",
+      "kind": "test",
+      "title": "Exact signed-sheet restriction of the minus chamber cochain"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-1001-three-edge-arc",
+      "target_id": "marici-source-entry-1001",
+      "relation_id": "rel:derived_from-10555316889d51fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-1001-three-edge-arc",
+      "target_id": "marici-claim-entry-1001-three-edge-arc",
+      "relation_id": "rel:tests-fb3463d0ea80f8ae"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici-claim-entry-1001-three-edge-arc",
+      "target_id": "marici-claim-entry-999-incidence",
+      "relation_id": "rel:depends_on-d78f769f40bbb4ea"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-1001-test-outcome",
+      "test_id": "marici-test-entry-1001-three-edge-arc",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: all four signed sheets have support indices 1,2,3 and zero transported boundary",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1001",
+          "locator": "research/benincasa/string-six-point-minus-recombination-edge-restriction.json",
+          "paraphrase": "Native Symbolica packet contains the exact projected cochain, sheet restrictions, support indices, and closure."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research_continuation",
+    "description": "Record verified Entry 1001 minus recombination edge-restriction test"
+  },
+  "idempotency_key": "auto-admission-c99b24498110e6fd6d37e282",
+  "occurred_at": "2026-08-19T17:19:08.9590729Z",
+  "certifies_truth": false,
+  "event_hash": "a66a3195d45d566091c55e2767721565d3befaa8713affe88d10e42ab8a96734"
+}

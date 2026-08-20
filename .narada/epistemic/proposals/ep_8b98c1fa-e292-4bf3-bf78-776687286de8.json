@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_8b98c1fa-e292-4bf3-bf78-776687286de8",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "user_goal",
+    "summary": "User requested exact cosmology falsification, ledger recording, and epistemic-graph admission."
+  },
+  "idempotency_key": "marici-ledger-178-sparse-delta-v1",
+  "expected_ledger_head": "85b20655becf17e60dc76ae1db28251af66add82ab21b3d5146943721ab5a3d9",
+  "created_at": "2026-08-15T20:34:31.799813Z",
+  "content_fingerprint": "0d1e22f54a5c1b46c610e4f59f8e642afe5e2383eb55550f1bf9d87ea0409484",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger178",
+      "kind": "source",
+      "title": "Ledger 178 generic algebraic dlog line and unresolved physical Q cycle",
+      "version": "sha256:8cb15861c7edc45914fcd46ad3f16bfc1b442cd5e77818780b0a5d497734d2dd",
+      "locator": "src/ledger/20260815-178 Generic Algebraic dlog Line and the Unresolved Physical Q Cycle.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-ledger178-generic-algebraic-line",
+      "kind": "test",
+      "title": "Generic algebraic Gysin-line provenance test",
+      "version": "v1",
+      "locator": "research/benincasa/generic_algebraic_line_provenance.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-ledger178-q-cycle-still-underdetermined",
+      "kind": "claim",
+      "title": "Q is absent from the generic algebraic Gysin line while physical Q-cycle variation remains underdetermined",
+      "version": "ledger178",
+      "locator": "src/ledger/20260815-178 Generic Algebraic dlog Line and the Unresolved Physical Q Cycle.md#classification"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:marici-ledger178-generic-algebraic-line",
+      "target_id": "source:marici-ledger178",
+      "relation_id": "rel:derived_from-a3699530fa0c20bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-ledger178-generic-algebraic-line",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:tests-2f09356380db95f0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:marici-ledger178-q-cycle-still-underdetermined",
+      "target_id": "claim:marici-ledger175-q-variation-underdetermined",
+      "relation_id": "rel:supersedes-dc1f025fa66cd85b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-ledger178-q-cycle-still-underdetermined",
+      "target_id": "source:marici-ledger178",
+      "relation_id": "rel:derived_from-16f4df6f57237f48"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-ledger178-generic-algebraic-line",
+      "test_id": "test:marici-ledger178-generic-algebraic-line",
+      "actor": "marici.Benincasa",
+      "outcome": "Exact generic coefficient-line test derives alpha_alg=dlog(E^4-X1^2 X2^2), excluding Q from that line. No source-defined sheeted physical relative cycle was recovered, so Var_Q(Gamma_phys) remains underdetermined and no new carrier datum is derived.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger178",
+          "locator": "Exact generic algebraic line",
+          "paraphrase": "Exact integer polynomial comparison identifies the selected rank-one connection as dlog D with D=E^4-X1^2 X2^2."
+        },
+        {
+          "source_id": "source:marici-ledger178",
+          "locator": "Physical relative-cycle gate",
+          "paraphrase": "The frozen primary package omits the sheet labels, Leray tube, resolved lift, and generic-Q transport required to define physical cycle variation."
+        }
+      ]
+    }
+  ],
+  "digest": "daa7f28497fa16e66fe003485d0361c14d53f6f73ce38bfc0789dc07e16f6b14"
+}

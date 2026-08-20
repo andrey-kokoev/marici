@@ -1,0 +1,205 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_98aa98da60892f91",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Assess, without changing files, whether adding a primary-navigation link from src/layouts/SiteLayout.astro to /research/ is currently executable given the repository state. Resolve referenced paths, map acceptance, identify decisions, and return the template's required structured assessment.",
+  "request_fingerprint": "589eb2e82ad1bab1ec0b2efcc542caacf867dd59e56ab85d6bf6f78b451a98e9",
+  "validated_request_ref": "vr_98ff4835235c4d748abeb531932ed796",
+  "created_at": "2026-08-16T18:00:19.1373389Z",
+  "updated_at": "2026-08-16T18:02:19.3488707Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-ergonomics-exec-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+        "access": "read",
+        "label": "Navigation layout"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 120000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-ae2678ceb65140dc90d06cbe38cf6a83"
+        ],
+        "current_run_id": "run-ae2678ceb65140dc90d06cbe38cf6a83",
+        "started_at": "2026-08-16T18:00:19.1592509Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed"
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-ae2678ceb65140dc90d06cbe38cf6a83",
+        "status": "failed",
+        "finished_at": "2026-08-16T18:02:19.3482535Z"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-ae2678ceb65140dc90d06cbe38cf6a83",
+        "status": "failed",
+        "output": null,
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [],
+        "missing": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": null
+}

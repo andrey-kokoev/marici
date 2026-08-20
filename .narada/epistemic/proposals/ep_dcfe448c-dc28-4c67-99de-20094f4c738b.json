@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_dcfe448c-dc28-4c67-99de-20094f4c738b",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "instruction": "Record the verified reflection covariance and full D3 character."
+  },
+  "idempotency_key": "marici-benincasa-entry-914-dihedral-event",
+  "expected_ledger_head": "97ec1e61e0a9b8081c423575e58bef6abe7bd7a9a87f08859a949e515a8accdc",
+  "created_at": "2026-08-19T12:43:37.8907212Z",
+  "content_fingerprint": "f1d830a7b0d43ceaaf9b9d0039c1463de62db94cf1fbd6e8b3a3f5d86aebb7bb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-914",
+      "kind": "source",
+      "title": "Entry 914 — The Three-Normal Associated-Grade Line Is Dihedrally Untwisted",
+      "version": "20260819-914",
+      "locator": "src/ledger/20260819-914 The Three-Normal Associated-Grade Line Is Dihedrally Untwisted.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-string-three-normal-dihedral-character",
+      "kind": "claim",
+      "title": "The first three-normal associated-grade line carries the trivial D3 character",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-mixed-corner-occurrence.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-string-three-normal-reflection",
+      "kind": "test",
+      "title": "Labelled maximal-flag reflection covariance test",
+      "version": "3",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_mixed_corner_occurrence.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-string-three-normal-dihedral-character",
+      "target_id": "source-marici-ledger-914",
+      "relation_id": "rel:derived_from-204e177e53ed3ded"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-string-three-normal-reflection",
+      "target_id": "claim-string-three-normal-dihedral-character",
+      "relation_id": "rel:tests-98f189397766fa66"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-three-normal-reflection-20260819",
+      "test_id": "test-string-three-normal-reflection",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: reflection reverses both matrix variances, preserves residue-slot order, and transports the conormal generator directly, yielding character +1",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-914",
+          "locator": "Entry 914, Basis variances through Result",
+          "paraphrase": "All four independently retained reflection sign contributions multiply to +1."
+        }
+      ]
+    }
+  ],
+  "digest": "16258ea69a7ccffcc04d236cae844f2f08b39be949cc0c150a0136f950c067fc"
+}

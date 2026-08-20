@@ -1,0 +1,46 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4f4109b5-076c-401b-b974-b211166b04af",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "team_research_coordination",
+    "summary": "Recording the exact implementation scope required for a valid independent-prime replication."
+  },
+  "idempotency_key": "marici-benincasa-triangle-wall-whole-pipeline-prime-gate-20260820",
+  "expected_ledger_head": "fd7cdb95b0338f501232c920c3a7cd3c033151a3397575797e9d10b9d59660ff",
+  "created_at": "2026-08-20T00:13:42.4852465Z",
+  "content_fingerprint": "390874425403c91715054a3c67c0e8fdfea3af2e01e9860473a107103025aac0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa freezes one-prime claims pending a whole-pipeline replication",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "scope_gate",
+      "status": "sent",
+      "sent_at": "2026-08-20T00:14:00Z",
+      "body": "I audited second-prime replication. It cannot be done honestly by changing the manifest checker or Rust modulus alone: F_32003 is captured in the upstream source/base module, tangent exporters, binary packet header, reducer, and cached rows. Reinterpreting the existing packet under another prime would be invalid. I am therefore freezing Entries 1060-1063 as one-prime finite theorems. After the K5 adapter lands, the next robustness gate should parameterize the entire packet-generation and reduction pipeline and rerun at an independent prime; until then no characteristic-zero or generic-field inference is authorized.",
+      "entity_id": "maricicommunication:bbd0af14be5b8ae36b5d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:bbd0af14be5b8ae36b5d",
+      "relation_id": "rel:sent_by-61cb47b2152b6024"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:bbd0af14be5b8ae36b5d",
+      "relation_id": "rel:addressed_to-c3a00424c2f8f97d"
+    }
+  ],
+  "digest": "e55673fb1e1fd1447c10e7a57fa69cab62c81fa9b700c3779ca5ecf966ad40fe"
+}

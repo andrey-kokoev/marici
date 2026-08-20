@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6a937cc9-0c49-4860-960e-2f49f6d5dc6d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Canonicalize the Marici team roster and research-role assignments supplied by the operator."
+  },
+  "idempotency_key": "marici-canonical-team-roster-20260819-v1",
+  "expected_ledger_head": "7c3637215c375ea56a55dafec5f7f0195e40c43a413b656e66e41bb31b0f960b",
+  "created_at": "2026-08-19T19:13:13.3585946Z",
+  "content_fingerprint": "4f81687c5fbfc4fc4a3cbda92901e203a15c82fbad8f74b0fc6a8b8dd9bc9caa",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "nima",
+      "kind": "team_member",
+      "title": "marici.Nima",
+      "agent_id": "marici.Nima",
+      "entity_id": "team_member:aa2834674c8559a5dee0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "figueiredo",
+      "kind": "team_member",
+      "title": "marici.Figueiredo",
+      "agent_id": "marici.Figueiredo",
+      "display_name": "Caroline",
+      "entity_id": "team_member:7f11641564913e4417ff"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "strominger",
+      "kind": "team_member",
+      "title": "marici.Strominger",
+      "agent_id": "marici.Strominger",
+      "entity_id": "team_member:4561aedd7f948b5ddee5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "role_nima",
+      "kind": "marici:research_role",
+      "title": "Common architecture and cosmology",
+      "entity_id": "mariciresearch_role:9e39f6f8774648c76fbe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "role_benincasa",
+      "kind": "marici:research_role",
+      "title": "Geometric/cohomological machinery and cross-sector localization",
+      "entity_id": "mariciresearch_role:f65370f233d8a913d337"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "role_figueiredo",
+      "kind": "marici:research_role",
+      "title": "Flavor and presentation-versus-physics descent",
+      "entity_id": "mariciresearch_role:a64de124891b3fd198e5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "role_strominger",
+      "kind": "marici:research_role",
+      "title": "Radiative GR, BMS charges, soft limits and memory",
+      "entity_id": "mariciresearch_role:3b917e1bb37911943311"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "figueiredo",
+      "target_id": "team_member:1a667defea1dfcedb121",
+      "source_id": "team_member:7f11641564913e4417ff",
+      "relation_id": "rel:supersedes-20358ca64c4e9e0c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:has_research_role",
+      "source_ref": "nima",
+      "target_ref": "role_nima",
+      "source_id": "team_member:aa2834674c8559a5dee0",
+      "target_id": "mariciresearch_role:9e39f6f8774648c76fbe",
+      "relation_id": "rel:maricihas_research_role-663eb3de62e5f3ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:has_research_role",
+      "source_id": "team_member:bc28f30924d7df1af02a",
+      "target_ref": "role_benincasa",
+      "target_id": "mariciresearch_role:f65370f233d8a913d337",
+      "relation_id": "rel:maricihas_research_role-8aa766fc678aefbb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:has_research_role",
+      "source_ref": "figueiredo",
+      "target_ref": "role_figueiredo",
+      "source_id": "team_member:7f11641564913e4417ff",
+      "target_id": "mariciresearch_role:a64de124891b3fd198e5",
+      "relation_id": "rel:maricihas_research_role-a087c9d1591a3af8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:has_research_role",
+      "source_ref": "strominger",
+      "target_ref": "role_strominger",
+      "source_id": "team_member:4561aedd7f948b5ddee5",
+      "target_id": "mariciresearch_role:3b917e1bb37911943311",
+      "relation_id": "rel:maricihas_research_role-7db1c7744b97ee43"
+    }
+  ],
+  "digest": "536cb6c4a988bc0c406b21e5ca043f2e8673b2d5c3466f0cefe5696604093a4f"
+}

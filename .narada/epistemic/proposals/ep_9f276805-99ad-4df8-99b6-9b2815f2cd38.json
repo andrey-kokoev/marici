@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9f276805-99ad-4df8-99b6-9b2815f2cd38",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue and record the verified string-sector monodromy mechanism."
+  },
+  "idempotency_key": "auto-proposal-409064f3bc6d4f9dce5416f2",
+  "expected_ledger_head": "acf35382472b9f319dd45da8c9f5dbadc5f583c18bf70bbdce6f077983efcfe6",
+  "created_at": "2026-08-19T04:24:25.6098882Z",
+  "content_fingerprint": "409064f3bc6d4f9dce5416f2d8aadb77b2b7a618e48658275cff7a867b7fe158",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-895",
+      "kind": "source",
+      "title": "Entry 895 — The String Sine Propagator Is a Half-Monodromy Pochhammer Cell",
+      "version": "20260818-895",
+      "locator": "src/ledger/20260818-895 The String Sine Propagator Is a Half-Monodromy Pochhammer Cell.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "kind": "claim",
+      "title": "The string sine propagator is the oriented half-monodromy occurrence divided by the full-loop Pochhammer boundary"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-string-half-monodromy-cell",
+      "kind": "test",
+      "title": "Source four-point half-monodromy and Pochhammer deformation-independence audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "target_id": "source:marici-ledger-895",
+      "relation_id": "rel:derived_from-66813de0510584ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "target_id": "source:mizera-1706.08527",
+      "relation_id": "rel:derived_from-3d143ec36581eb33"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-string-half-monodromy-cell",
+      "target_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "relation_id": "rel:tests-6d1388d5299bba5e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-five-point-finite-period-sine-circuit",
+      "target_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "relation_id": "rel:depends_on-60ce5b2f52607060"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-string-half-monodromy-cell-pass",
+      "test_id": "test:marici-string-half-monodromy-cell",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: half-monodromy quotient equals the sine form and all four source deformations agree",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-895",
+          "locator": "research/benincasa/string-half-monodromy-cell.json",
+          "paraphrase": "Packet records the adjacent-cell and deformation-independence errors at a generic nonresonant point."
+        }
+      ]
+    }
+  ],
+  "digest": "853a82aca822f92ce203ee5a6b621bd319d18ab0fb3077e841d4c50a5419ee62"
+}

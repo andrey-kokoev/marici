@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1901d151-e2c8-4f02-8323-c7e2ae0cf444",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the Marici mathematical research program and preserve the verified Thom-line cancellation."
+  },
+  "idempotency_key": "auto-proposal-8b1aefb9bb2be60f358ab917",
+  "expected_ledger_head": "d804013b5e3941ced517dc8ee4ac802be490ba1e1f5fa668cf2e7ae3752476e6",
+  "created_at": "2026-08-18T00:15:47.4604101Z",
+  "content_fingerprint": "8b1aefb9bb2be60f358ab9172d3f2c0f1fec383963a39ab2a3dc6e25122d8ee5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source445",
+      "kind": "source",
+      "title": "Entry 445 — The Native Thom Normal Line Cancels Cut Holonomy",
+      "version": "git:cede4e6a19c97171287c0d1d718f296a89739f48",
+      "locator": "src/ledger/20260817-445 The Native Thom Normal Line Cancels Cut Holonomy.md",
+      "entity_id": "source:a50553b2b4c2f2419aaa"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim445",
+      "kind": "claim",
+      "title": "The native degree-shifted marked-normal Thom line carries exactly the local system that cancels the physical Cut-nerve Koszul holonomy.",
+      "status": "proved",
+      "scope": "finite cellular graded Thom category",
+      "evidence_refs": [
+        "research/voevodsky/check_n8_thom_orientation_local_system.py"
+      ],
+      "combined_cycle_basis_holonomies": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "entity_id": "claim:be1e2957baac43e9b4ff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim445",
+      "target_ref": "source445",
+      "source_id": "claim:be1e2957baac43e9b4ff",
+      "target_id": "source:a50553b2b4c2f2419aaa",
+      "relation_id": "rel:derived_from-fdb2c49643504545"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim445",
+      "target_id": "problem:970443accb8275384892",
+      "source_id": "claim:be1e2957baac43e9b4ff",
+      "relation_id": "rel:addresses-87c78efaaabdf9a1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next446",
+      "kind": "problem",
+      "title": "Build the integral twisted Cech totalization over the physical Cut Wagner graph and identify its primitive global class.",
+      "status": "open",
+      "entity_id": "problem:768731517bf82d04e021"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next446",
+      "target_ref": "claim445",
+      "source_id": "problem:768731517bf82d04e021",
+      "target_id": "claim:be1e2957baac43e9b4ff",
+      "relation_id": "rel:depends_on-a737f3ab7c6d04cb"
+    }
+  ],
+  "digest": "6d3dc6c59882b846cde88cdfa9347fdaac3842c07a88bee7b1f5a364eab1cd44"
+}

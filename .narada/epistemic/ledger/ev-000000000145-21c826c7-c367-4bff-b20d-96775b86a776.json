@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 145,
+  "event_id": "ev-000000000145-21c826c7-c367-4bff-b20d-96775b86a776",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "37672ba5250cc646b0637eeedd26bf1e762561278c6f733fad92bf100edda7fe",
+  "proposal_id": "ep_d034cddd-eacd-4ea7-8fda-c12f80cf2ea1",
+  "proposal_digest": "bb0bb3c2e13ef752687adc6eededbb2ec745c54b6fa3c1250bb0e8b044556709",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source458",
+      "kind": "source",
+      "title": "Entry 458: The Exact Cross-Term Does Not Preserve the Twisted Cartier Lattice",
+      "version": "git:1a7d8f9117c239af879c71e79ea1679afce1a2dd",
+      "locator": "src/ledger/20260817-458 The Exact Cross-Term Does Not Preserve the Twisted Cartier Lattice.md",
+      "entity_id": "source:d6605fad15df283cc489"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit458",
+      "kind": "criticism",
+      "title": "The naive even-plus-odd logarithmic de Rham split is invalid because D_b(1)=a has coefficient 1/w in the twisted odd frame",
+      "version": "entry-458",
+      "entity_id": "criticism:359d2f8270c8967aadf3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test458",
+      "kind": "test",
+      "title": "Boundary pole audit for the exact off-diagonal Cartier cross-term",
+      "version": "git:1a7d8f9117c239af879c71e79ea1679afce1a2dd",
+      "locator": "research/voevodsky/check_soft_axis_twisted_cartier_cross_term.py",
+      "entity_id": "test:261b124cb6debe897c43"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem459",
+      "kind": "problem",
+      "title": "Derive separate source and target lattices making the off-diagonal exact map regular",
+      "version": "after-entry-458",
+      "entity_id": "problem:b683f488b43babab3434"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit458",
+      "target_ref": "source458",
+      "source_id": "criticism:359d2f8270c8967aadf3",
+      "target_id": "source:d6605fad15df283cc489",
+      "relation_id": "rel:derived_from-685f3f27907bcc81"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test458",
+      "target_ref": "crit458",
+      "source_id": "test:261b124cb6debe897c43",
+      "target_id": "criticism:359d2f8270c8967aadf3",
+      "relation_id": "rel:tests-eba71d91a69ac470"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem459",
+      "target_ref": "crit458",
+      "source_id": "problem:b683f488b43babab3434",
+      "target_id": "criticism:359d2f8270c8967aadf3",
+      "relation_id": "rel:depends_on-55cd92c7bc2e04d9"
+    }
+  ],
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "operator_instruction": "Continue the Marici soft-axis research line and record verified results.",
+    "evidence_commit": "1a7d8f9117c239af879c71e79ea1679afce1a2dd"
+  },
+  "idempotency_key": "auto-admission-393829892970fe15b73316db",
+  "occurred_at": "2026-08-18T00:57:52.7686614Z",
+  "certifies_truth": false,
+  "event_hash": "db8fd7c7584a2f09bf78bd18b1ebc32d1859964a4c05034b0e99ba453ebae905"
+}

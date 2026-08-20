@@ -1,0 +1,89 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ea0e287c-9620-4326-855e-d92e3189e2d9",
+  "status": "submitted",
+  "actor": "marici.Strominger",
+  "authority_basis": {
+    "kind": "operator_directed_sector_research",
+    "summary": "Operator directed continuation of the radiative-GR/BMS sector; subleading triangle proposed to Nima in ev-000000000702 and executed with the leading triangle's admission discipline."
+  },
+  "idempotency_key": "auto-proposal-4e1353beb951b08a8397f28e",
+  "expected_ledger_head": "55ddcd680ba27767138e71ba6a2c0d63df4eb58327c9be3249252b8dfd78de3a",
+  "created_at": "2026-08-20T00:51:20.4883258Z",
+  "content_fingerprint": "4e1353beb951b08a8397f28eadeadc3ce6082938126a5ec836158cc7c734f7b8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Subleading soft-BMS-spin-memory triangle exact admission test (dual-engine sympy+Symbolica)",
+      "date": "2026-08-20",
+      "description": "Exact symbolic admission test of the subleading triangle: CS 1404.4091 subleading soft graviton factor <-> KLPS 1406.3312 superrotation Ward identity <-> PSZ 1502.06120 spin memory. All three corners formula-grounded via PDF text extraction (research/strominger/sources/*.txt) after HTML/ar5iv conversion failed. 30 exact checks in research/strominger/checkers/subleading_triangle_exact_checks.py (sympy, 30/30 pass, exit 0) cross-validated by an independent Rust+Symbolica engine research/strominger/marici-triangle (30/30 pass, programmatic diff: zero verdict mismatches, rational witnesses match character-for-character). Results: research/strominger/results/subleading_triangle_exact_checks.json and subleading_triangle_symbolica_checks.json. Packets: subleading-triangle-conventions.md, subleading-triangle-source-boundary.md. Ledger entry: src/ledger/20260820-1072 (sequence claim seqclaim-5e7f0e28ffeea0174038c9d7).",
+      "entity_id": "test:794b16beca2c8f4f7d97"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The subleading radiative readouts factor through one sigma-odd carrier field read at three derivative grades, not one operator",
+      "date": "2026-08-20",
+      "description": "Mixed outcome of the subleading admission test. POSITIVE: one sigma-odd (magnetic/curl) field combination - Im D_z^2 C_zz, equivalently the curl part of N_z - carries all three corners, read at three derivative grades: D_z (memory contour PSZ 4.5), D_z^2 (soft-side master identity PSZ 6.9), D_z^3 (news shift law KLPS 5.5 / constraint PSZ 5.2). The leading-order one-operator picture (entry 1056) refines to one-field/three-grades; the Green kernel S=sin^2(Theta/2) is shared with the leading triangle. Gauge variation of S^(1) is killed exactly by global angular momentum conservation (CS 7), with the J-removal obstruction exhibited as a deliberate-failure test. Normalization PSZ(6.5)/CS(6) = kappa = sqrt(32 pi G) exact; CS (7) overall sign residual recorded. TYPED OBSTRUCTION: the PSZ (6.8) D^2-bridge closes exactly in the energy channel per leg but NOT in the angular channels per leg - exact nonzero rational witnesses 102500/483153 and 1671500/7891499, reproduced by both engines; closure presumably needs the leg-summed J-conservation form (PSZ ref [20] = SZ 1411.5745, still ungrounded). CORRECTION: the formal kernel of D_z^3 on the sphere is larger than the conformal Killing vectors (D_z^3 kills zb, zb^2, z zb as well); the CKV kernel is recovered only after a global-smoothness quotient. External inputs declared: angular momentum conservation J, G_CS gauge prescription, antipodal matching + KLPS i^0 mode correspondence, symmetric zero-frequency limit, distributional prescription.",
+      "entity_id": "claim:b6d71748e27ca8159d6d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:794b16beca2c8f4f7d97",
+      "target_id": "claim:b6d71748e27ca8159d6d",
+      "relation_id": "rel:tests-0160e3d36dce4006"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:088e8900f0d60d0898c8",
+      "source_id": "claim:b6d71748e27ca8159d6d",
+      "relation_id": "rel:addresses-24437fc834d011ae"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Report: subleading triangle admission test complete - one sigma-odd carrier field at three derivative grades (dual-engine verified)",
+      "sender": "marici.Strominger",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T00:50:30Z",
+      "body": "The subleading triangle you greenlit discussion of (my proposal ev-000000000702) is tested and admitted. Headline: the leading one-operator picture of entry 1056 does NOT survive verbatim - it refines to ONE sigma-odd carrier field (Im D_z^2 C_zz, the magnetic/curl partner of N) read at THREE derivative grades (D_z memory contour, D_z^2 soft side, D_z^3 news shift/constraint). The subleading analog of your external input P is angular momentum conservation J, which kills the gauge variation of S^(1) exactly (CS 7, obstruction exhibited when removed). One typed obstruction stands open: the PSZ (6.8) D^2-bridge fails to close in the angular channels per leg (exact rational witnesses, two independent engines agree); closure likely runs through the leg-summed J-conservation form and SZ 1411.5745, which remains ungrounded (HTML/ar5iv conversion still broken; PDF extraction worked for CS/PSZ/KLPS). Also corrected en route: ker D_z^3 is formally larger than the CKVs; the CKV kernel needs the global-smoothness quotient. Verification: sympy 30/30 and independent Rust+Symbolica 30/30 with programmatic zero-mismatch diff. Ledger entry 20260820-1072 (seqclaim-5e7f0e28ffeea0174038c9d7). Natural next step if you want it: ground SZ 1411.5745 by the PDF route and close the angular-channel obstruction.",
+      "entity_id": "communication:bed176091ab6df0ee6b5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:4561aedd7f948b5ddee5",
+      "source_id": "communication:bed176091ab6df0ee6b5",
+      "relation_id": "rel:sent_by-6758224284e0cd6f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:bed176091ab6df0ee6b5",
+      "relation_id": "rel:addressed_to-498b4003fc061d66"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:bed176091ab6df0ee6b5",
+      "target_id": "claim:b6d71748e27ca8159d6d",
+      "relation_id": "rel:reports-ea7973c37f9cf31a"
+    }
+  ],
+  "digest": "95298b6de1861c8164429250f908ab8f9a5f706838c1b9e091eee2120ddd95f8"
+}

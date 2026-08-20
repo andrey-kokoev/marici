@@ -1,0 +1,751 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_cd930fcca60e7739",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess, without changing files, whether adding a primary-navigation link from src/layouts/SiteLayout.astro to /research/ is currently executable given the repository state. Resolve referenced paths, map acceptance, identify decisions, and return the template's required structured assessment.",
+  "request_fingerprint": "5bf46bb901e0775fa6fddcc52eba01e14b67d1eaa20c19cc1ed501644859dfa2",
+  "validated_request_ref": "vr_af254f988049495ca45487f76a8496cb",
+  "created_at": "2026-08-16T21:21:33.0708511Z",
+  "updated_at": "2026-08-16T21:25:06.2794231Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-native-read-retest-complex-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+        "access": "read",
+        "label": "Navigation layout"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 300000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "assessment_result",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "assessment_result": "string: passed|blocked|undetermined|inconclusive",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "blocked",
+    "acceptance_verdict": "blocked",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-a14ce4ab1f2f4f02b95449343a38f956"
+        ],
+        "current_run_id": "run-a14ce4ab1f2f4f02b95449343a38f956",
+        "started_at": "2026-08-16T21:21:33.0940517Z",
+        "finished_at": "2026-08-16T21:25:06.2774106Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions=[4 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’m using the supplied `SiteLayout.astro` evidence and will perform only bounded, read-only repository probes needed to verify the `/research/` target, project routing, and acceptance criteria. No files will be changed.The repository already contains `src/pages/research/index.astro`, so the target route is present. The worktree is heavily dirty, including an existing modification to `SiteLayout.astro`; I’ll treat those edits as user-owned and only distinguish what the current evidence proves from what still needs a build check.A repository probe for tracked-file status was refused by the command policy; I’m not retrying it through another shell. The independent evidence is sufficient for path resolution, and I’m doing only one permitted bounded read of the route’s first line before finalizing the assessment.",
+          "structured_output": {
+            "dimensions": {
+              "scope": "Add one primary-navigation link",
+              "source": "src/layouts/SiteLayout.astro",
+              "target": "/research/",
+              "mode": "read_only",
+              "decision": "implementation feasibility"
+            },
+            "first_actions": [
+              {
+                "action": "Inspect supplied layout evidence",
+                "result": "Primary navigation exists and currently contains Branches, Frontier, Graph, and Ledger; no Research link is present."
+              },
+              {
+                "action": "Resolve target route",
+                "result": "src/pages/research/index.astro exists."
+              },
+              {
+                "action": "Inspect project configuration",
+                "result": "Astro is configured for static output; package.json exposes check and build scripts."
+              },
+              {
+                "action": "Inspect worktree state",
+                "result": "The worktree is dirty, including an existing modification to SiteLayout.astro."
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "source layout",
+                "path": "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "evidence": "Authoritative native file evidence"
+              },
+              {
+                "reference": "research route",
+                "path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                "url": "/research/",
+                "status": "resolved",
+                "evidence": "Listed by rg --files src"
+              },
+              {
+                "reference": "Astro configuration",
+                "path": "C:/Users/andrey/src/marici/astro.config.mjs",
+                "status": "resolved",
+                "evidence": "Static output configured; no base-path entry observed"
+              },
+              {
+                "reference": "validation scripts",
+                "path": "C:/Users/andrey/src/marici/package.json",
+                "status": "resolved",
+                "evidence": "pnpm run check and pnpm run build are defined"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "Link is placed inside the existing primary navigation",
+                "status": "executable",
+                "implementation": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Destination resolves to a project route",
+                "status": "satisfied",
+                "evidence": "src/pages/research/index.astro maps to /research/"
+              },
+              {
+                "criterion": "Existing navigation and unrelated edits are preserved",
+                "status": "required",
+                "evidence": "SiteLayout.astro already contains user modifications, including the Graph link and footer text change"
+              },
+              {
+                "criterion": "Project validation passes",
+                "status": "pending",
+                "evidence": "check/build scripts exist but were not run in read-only assessment mode"
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended_value": "Research",
+                "blocking": false
+              },
+              {
+                "decision": "Navigation order",
+                "recommended_value": "After Frontier and before Graph",
+                "blocking": false
+              },
+              {
+                "decision": "Handling existing worktree edits",
+                "recommended_value": "Patch the current file and preserve all existing changes",
+                "blocking": true
+              },
+              {
+                "decision": "Post-change validation",
+                "recommended_value": "Run pnpm run check or pnpm run build after write access is authorized",
+                "blocking": false
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is a single valid Astro/HTML anchor insertion."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route already exists, so no route creation is required."
+              },
+              {
+                "severity": "warning",
+                "finding": "The source file is modified in the current worktree; blindly replacing it could discard user changes."
+              },
+              {
+                "severity": "limitation",
+                "finding": "The build/check commands were not executed because this assessment is read-only."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "cwd": "C:/Users/andrey/src/marici",
+              "native_evidence_used": [
+                "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro"
+              ],
+              "bounded_probes": [
+                "rg --files src",
+                "rg -n \"/research/\" src",
+                "rg -n \"scripts|dev|build|check|astro\" package.json",
+                "rg -n \"base|site|output|adapter|defineConfig\" astro.config.mjs",
+                "git status --short",
+                "git diff -- src/layouts/SiteLayout.astro"
+              ],
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "git ls-files -- src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only repository metadata read",
+                  "actual_refusal": "Command rejected by provider policy"
+                },
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "bounded first-line read of src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only filesystem read",
+                  "actual_refusal": "Nested pwsh command rejected by provider policy"
+                }
+              ],
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": "not_lowered",
+                "basis": "Contained refusals did not change the assessment or require human intervention",
+                "non_scoring_observations": [
+                  "A later check/build would provide additional confirmation."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "confidence": "high",
+              "current_state": "not_applied",
+              "blockers": [],
+              "proposed_change": {
+                "file": "src/layouts/SiteLayout.astro",
+                "location": "Existing nav element",
+                "anchor": "<a href=\"/research/\">Research</a>"
+              },
+              "qualification": "Implement against the current dirty file while preserving its existing Graph and footer edits; validate after write access is available."
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-a14ce4ab1f2f4f02b95449343a38f956",
+        "status": "completed",
+        "finished_at": "2026-08-16T21:25:06.277124Z",
+        "output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions=[4 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’m using the supplied `SiteLayout.astro` evidence and will perform only bounded, read-only repository probes needed to verify the `/research/` target, project routing, and acceptance criteria. No files will be changed.The repository already contains `src/pages/research/index.astro`, so the target route is present. The worktree is heavily dirty, including an existing modification to `SiteLayout.astro`; I’ll treat those edits as user-owned and only distinguish what the current evidence proves from what still needs a build check.A repository probe for tracked-file status was refused by the command policy; I’m not retrying it through another shell. The independent evidence is sufficient for path resolution, and I’m doing only one permitted bounded read of the route’s first line before finalizing the assessment.",
+          "structured_output": {
+            "dimensions": {
+              "scope": "Add one primary-navigation link",
+              "source": "src/layouts/SiteLayout.astro",
+              "target": "/research/",
+              "mode": "read_only",
+              "decision": "implementation feasibility"
+            },
+            "first_actions": [
+              {
+                "action": "Inspect supplied layout evidence",
+                "result": "Primary navigation exists and currently contains Branches, Frontier, Graph, and Ledger; no Research link is present."
+              },
+              {
+                "action": "Resolve target route",
+                "result": "src/pages/research/index.astro exists."
+              },
+              {
+                "action": "Inspect project configuration",
+                "result": "Astro is configured for static output; package.json exposes check and build scripts."
+              },
+              {
+                "action": "Inspect worktree state",
+                "result": "The worktree is dirty, including an existing modification to SiteLayout.astro."
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "source layout",
+                "path": "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "evidence": "Authoritative native file evidence"
+              },
+              {
+                "reference": "research route",
+                "path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                "url": "/research/",
+                "status": "resolved",
+                "evidence": "Listed by rg --files src"
+              },
+              {
+                "reference": "Astro configuration",
+                "path": "C:/Users/andrey/src/marici/astro.config.mjs",
+                "status": "resolved",
+                "evidence": "Static output configured; no base-path entry observed"
+              },
+              {
+                "reference": "validation scripts",
+                "path": "C:/Users/andrey/src/marici/package.json",
+                "status": "resolved",
+                "evidence": "pnpm run check and pnpm run build are defined"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "Link is placed inside the existing primary navigation",
+                "status": "executable",
+                "implementation": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Destination resolves to a project route",
+                "status": "satisfied",
+                "evidence": "src/pages/research/index.astro maps to /research/"
+              },
+              {
+                "criterion": "Existing navigation and unrelated edits are preserved",
+                "status": "required",
+                "evidence": "SiteLayout.astro already contains user modifications, including the Graph link and footer text change"
+              },
+              {
+                "criterion": "Project validation passes",
+                "status": "pending",
+                "evidence": "check/build scripts exist but were not run in read-only assessment mode"
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended_value": "Research",
+                "blocking": false
+              },
+              {
+                "decision": "Navigation order",
+                "recommended_value": "After Frontier and before Graph",
+                "blocking": false
+              },
+              {
+                "decision": "Handling existing worktree edits",
+                "recommended_value": "Patch the current file and preserve all existing changes",
+                "blocking": true
+              },
+              {
+                "decision": "Post-change validation",
+                "recommended_value": "Run pnpm run check or pnpm run build after write access is authorized",
+                "blocking": false
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is a single valid Astro/HTML anchor insertion."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route already exists, so no route creation is required."
+              },
+              {
+                "severity": "warning",
+                "finding": "The source file is modified in the current worktree; blindly replacing it could discard user changes."
+              },
+              {
+                "severity": "limitation",
+                "finding": "The build/check commands were not executed because this assessment is read-only."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "cwd": "C:/Users/andrey/src/marici",
+              "native_evidence_used": [
+                "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro"
+              ],
+              "bounded_probes": [
+                "rg --files src",
+                "rg -n \"/research/\" src",
+                "rg -n \"scripts|dev|build|check|astro\" package.json",
+                "rg -n \"base|site|output|adapter|defineConfig\" astro.config.mjs",
+                "git status --short",
+                "git diff -- src/layouts/SiteLayout.astro"
+              ],
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "git ls-files -- src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only repository metadata read",
+                  "actual_refusal": "Command rejected by provider policy"
+                },
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "bounded first-line read of src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only filesystem read",
+                  "actual_refusal": "Nested pwsh command rejected by provider policy"
+                }
+              ],
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": "not_lowered",
+                "basis": "Contained refusals did not change the assessment or require human intervention",
+                "non_scoring_observations": [
+                  "A later check/build would provide additional confirmation."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "confidence": "high",
+              "current_state": "not_applied",
+              "blockers": [],
+              "proposed_change": {
+                "file": "src/layouts/SiteLayout.astro",
+                "location": "Existing nav element",
+                "anchor": "<a href=\"/research/\">Research</a>"
+              },
+              "qualification": "Implement against the current dirty file while preserving its existing Graph and footer edits; validate after write access is available."
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-a14ce4ab1f2f4f02b95449343a38f956",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions=[4 items], acceptance_mappings=[4 items]",
+          "diagnostics_text": "I’m using the supplied `SiteLayout.astro` evidence and will perform only bounded, read-only repository probes needed to verify the `/research/` target, project routing, and acceptance criteria. No files will be changed.The repository already contains `src/pages/research/index.astro`, so the target route is present. The worktree is heavily dirty, including an existing modification to `SiteLayout.astro`; I’ll treat those edits as user-owned and only distinguish what the current evidence proves from what still needs a build check.A repository probe for tracked-file status was refused by the command policy; I’m not retrying it through another shell. The independent evidence is sufficient for path resolution, and I’m doing only one permitted bounded read of the route’s first line before finalizing the assessment.",
+          "structured_output": {
+            "dimensions": {
+              "scope": "Add one primary-navigation link",
+              "source": "src/layouts/SiteLayout.astro",
+              "target": "/research/",
+              "mode": "read_only",
+              "decision": "implementation feasibility"
+            },
+            "first_actions": [
+              {
+                "action": "Inspect supplied layout evidence",
+                "result": "Primary navigation exists and currently contains Branches, Frontier, Graph, and Ledger; no Research link is present."
+              },
+              {
+                "action": "Resolve target route",
+                "result": "src/pages/research/index.astro exists."
+              },
+              {
+                "action": "Inspect project configuration",
+                "result": "Astro is configured for static output; package.json exposes check and build scripts."
+              },
+              {
+                "action": "Inspect worktree state",
+                "result": "The worktree is dirty, including an existing modification to SiteLayout.astro."
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "source layout",
+                "path": "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "evidence": "Authoritative native file evidence"
+              },
+              {
+                "reference": "research route",
+                "path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                "url": "/research/",
+                "status": "resolved",
+                "evidence": "Listed by rg --files src"
+              },
+              {
+                "reference": "Astro configuration",
+                "path": "C:/Users/andrey/src/marici/astro.config.mjs",
+                "status": "resolved",
+                "evidence": "Static output configured; no base-path entry observed"
+              },
+              {
+                "reference": "validation scripts",
+                "path": "C:/Users/andrey/src/marici/package.json",
+                "status": "resolved",
+                "evidence": "pnpm run check and pnpm run build are defined"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "Link is placed inside the existing primary navigation",
+                "status": "executable",
+                "implementation": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Destination resolves to a project route",
+                "status": "satisfied",
+                "evidence": "src/pages/research/index.astro maps to /research/"
+              },
+              {
+                "criterion": "Existing navigation and unrelated edits are preserved",
+                "status": "required",
+                "evidence": "SiteLayout.astro already contains user modifications, including the Graph link and footer text change"
+              },
+              {
+                "criterion": "Project validation passes",
+                "status": "pending",
+                "evidence": "check/build scripts exist but were not run in read-only assessment mode"
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended_value": "Research",
+                "blocking": false
+              },
+              {
+                "decision": "Navigation order",
+                "recommended_value": "After Frontier and before Graph",
+                "blocking": false
+              },
+              {
+                "decision": "Handling existing worktree edits",
+                "recommended_value": "Patch the current file and preserve all existing changes",
+                "blocking": true
+              },
+              {
+                "decision": "Post-change validation",
+                "recommended_value": "Run pnpm run check or pnpm run build after write access is authorized",
+                "blocking": false
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is a single valid Astro/HTML anchor insertion."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route already exists, so no route creation is required."
+              },
+              {
+                "severity": "warning",
+                "finding": "The source file is modified in the current worktree; blindly replacing it could discard user changes."
+              },
+              {
+                "severity": "limitation",
+                "finding": "The build/check commands were not executed because this assessment is read-only."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "cwd": "C:/Users/andrey/src/marici",
+              "native_evidence_used": [
+                "C:/Users/andrey/src/marici/src/layouts/SiteLayout.astro"
+              ],
+              "bounded_probes": [
+                "rg --files src",
+                "rg -n \"/research/\" src",
+                "rg -n \"scripts|dev|build|check|astro\" package.json",
+                "rg -n \"base|site|output|adapter|defineConfig\" astro.config.mjs",
+                "git status --short",
+                "git diff -- src/layouts/SiteLayout.astro"
+              ],
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "git ls-files -- src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only repository metadata read",
+                  "actual_refusal": "Command rejected by provider policy"
+                },
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "bounded first-line read of src/pages/research/index.astro",
+                  "cwd": "C:/Users/andrey/src/marici",
+                  "target_path": "C:/Users/andrey/src/marici/src/pages/research/index.astro",
+                  "declared_capability": "read-only filesystem read",
+                  "actual_refusal": "Nested pwsh command rejected by provider policy"
+                }
+              ],
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": "not_lowered",
+                "basis": "Contained refusals did not change the assessment or require human intervention",
+                "non_scoring_observations": [
+                  "A later check/build would provide additional confirmation."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "confidence": "high",
+              "current_state": "not_applied",
+              "blockers": [],
+              "proposed_change": {
+                "file": "src/layouts/SiteLayout.astro",
+                "location": "Existing nav element",
+                "anchor": "<a href=\"/research/\">Research</a>"
+              },
+              "qualification": "Implement against the current dirty file while preserving its existing Graph and footer edits; validate after write access is available."
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance",
+          "assessment_result"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "blocked",
+        "signal": "executable",
+        "status": "blocked"
+      }
+    ]
+  },
+  "summary": "assessment_result: blocked. dimensions={5 fields}, first_actions=[4 items], reference_resolutions=[4 items], acceptance_mappings=[4 items]"
+}

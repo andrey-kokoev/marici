@@ -1,0 +1,188 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_7bee00586c7887ef",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read README.md without changing files. Return structured fields file_status and purpose, where file_status states whether the file exists and is readable and purpose is one complete sentence describing the project.",
+  "request_fingerprint": "c638f9dec5c542f3f574ee4ce0e75c6733bdf8bf1edb9f2d8a4e878d7db735c4",
+  "validated_request_ref": "vr_f6bace479f07abe623cb15a2fa48aa8e",
+  "created_at": "2026-08-17T14:42:19.6357969Z",
+  "created_at_ms": 1786977739635,
+  "started_at": "2026-08-17T14:42:19.761721Z",
+  "started_at_ms": 1786977739761,
+  "finished_at": "2026-08-17T14:42:27.9053484Z",
+  "finished_at_ms": 1786977747905,
+  "duration_ms": 8144,
+  "updated_at": "2026-08-17T14:42:27.9053505Z",
+  "cancelled_at": null,
+  "idempotency_key": "ergonomics-comprehensive-retest-20260817-v3",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "preflight_paths": [
+      {
+        "path": "README.md",
+        "access": "read",
+        "label": "project README"
+      }
+    ],
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "file_status",
+      "purpose"
+    ],
+    "no_writes": true,
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-fff36073dda74f36825b578b67d1db6a"
+        ],
+        "current_run_id": "run-fff36073dda74f36825b578b67d1db6a",
+        "started_at": "2026-08-17T14:42:19.7617303Z",
+        "finished_at": "2026-08-17T14:42:27.903878Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program.",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-fff36073dda74f36825b578b67d1db6a",
+        "status": "completed",
+        "finished_at": "2026-08-17T14:42:27.9038504Z",
+        "duration_ms": 7976,
+        "output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program.",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-fff36073dda74f36825b578b67d1db6a",
+        "status": "completed",
+        "output": {
+          "summary_text": "file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program.",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "exists and is readable",
+            "purpose": "Marici is a research ledger and public map for the scalar master geometry program."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "file_status",
+          "purpose"
+        ],
+        "returned": [
+          "file_status",
+          "purpose"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. file_status=exists and is readable, purpose=Marici is a research ledger and public map for the scalar master geometry program."
+}

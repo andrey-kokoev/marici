@@ -1,0 +1,67 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6d838b3a-07b9-4695-912b-677a5fa20ab1",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Correct the degree and variance of the proposed physical wall Gysin map and identify the localization mapping cone as its proper home."
+  },
+  "idempotency_key": "auto-proposal-7136ae3a26ad66eb09579081",
+  "expected_ledger_head": "dad085fe3d08fcf4fb5e1342f5ee1bcc6eee66f8a9d2c39023dbeea171e8fc0a",
+  "created_at": "2026-08-18T15:59:53.0978931Z",
+  "content_fingerprint": "7136ae3a26ad66eb09579081b5fa0afccf9622d740b0baf58732df4133948b95",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "source",
+      "title": "Entry 693: The Physical Wall Gysin Boundary Does Not Land in the Algebraic Kernel",
+      "version": "1",
+      "locator": "src/ledger/20260818-693 The Physical Wall Gysin Boundary Does Not Land in the Algebraic Kernel.md",
+      "entity_id": "source:3eea425598a2b04b298b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Localization Gysin variance checker",
+      "version": "1",
+      "locator": "research/benincasa/check_localization_gysin_variance.py",
+      "entity_id": "source:8037b155d83141304aae"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The physical wall Gysin boundary targets H3 of the surface and cannot canonically select a vector in the rank-seven H2 Gysin kernel",
+      "entity_id": "criticism:ec3b48b5758f3b099acb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem",
+      "kind": "problem",
+      "title": "Compute the physical wall class in the localization mapping cone without choosing an absolute lift",
+      "entity_id": "problem:0813709db57504165f7c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "entry",
+      "source_id": "criticism:ec3b48b5758f3b099acb",
+      "target_id": "source:3eea425598a2b04b298b",
+      "relation_id": "rel:derived_from-d5e3dc57120de9ef"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "problem",
+      "target_ref": "crit",
+      "source_id": "problem:0813709db57504165f7c",
+      "target_id": "criticism:ec3b48b5758f3b099acb",
+      "relation_id": "rel:addresses-28c6748252ff6081"
+    }
+  ],
+  "digest": "45dfa358edcc50a8f0d95f5e42493ddeacf553bfc2b51166fd19299ee9a03936"
+}

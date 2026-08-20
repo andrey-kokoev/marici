@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 283,
+  "event_id": "ev-000000000283-5dc080ea-34b1-4df8-8454-3a66640449f6",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d2d3de85c2598bce7fff06d125f2de185e2ac471c7ed2b92ad536517d94f7678",
+  "proposal_id": "ep_e2bdf7a5-3347-4b07-bc58-25292d3bd4f2",
+  "proposal_digest": "a52f10fab1e9c9d24cb79f567a46674c607bf9b6f9ccb204bbc73c50ae8b7245",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-673",
+      "kind": "source",
+      "title": "Entry 673 — Quartic absent from shared-wall higher-tangency support",
+      "version": "20260818-673",
+      "locator": "src/ledger/20260818-673 The Quartic Is Absent from Shared-Wall Higher-Tangency Support.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:q-shared-wall-higher-tangency",
+      "kind": "claim",
+      "title": "Q is the degeneration divisor of the shared-wall quadratic tangency"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:shared-wall-higher-tangency-resultant",
+      "kind": "test",
+      "title": "Eliminate shared-wall tangent roots against wall-normal K derivatives"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:shared-wall-higher-tangency-resultant",
+      "target_id": "claim:q-shared-wall-higher-tangency",
+      "relation_id": "rel:tests-9f91b6deadf049b4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:shared-wall-higher-tangency-resultant",
+      "target_id": "source:marici-ledger-673",
+      "relation_id": "rel:derived_from-0b01ddc7f5fc61e9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:q-absent-shared-wall-higher-tangency",
+      "test_id": "test:shared-wall-higher-tangency-resultant",
+      "actor": "marici.Benincasa",
+      "outcome": "falsified",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-673",
+          "locator": "research/benincasa/shared-wall-higher-tangency-support.json",
+          "paraphrase": "All three symbolic normal resultants, and their product, are coprime to Q."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "instruction": "Continue the cosmology investigation and maintain the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-0b28ea691d98e8eda0b98ebe",
+  "occurred_at": "2026-08-18T15:16:36.2438226Z",
+  "certifies_truth": false,
+  "event_hash": "9be52ef5653edb86b1a4fec9cb8aaebf9c195303f4d59a19bd2228eebbebaa2e"
+}

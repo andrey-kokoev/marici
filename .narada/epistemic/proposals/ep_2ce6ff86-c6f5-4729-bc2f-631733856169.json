@@ -1,0 +1,61 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2ce6ff86-c6f5-4729-bc2f-631733856169",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue cosmology coefficient descent and record the exact q-chart solve"
+  },
+  "idempotency_key": "auto-proposal-9076cdf181ba74049f8500df",
+  "expected_ledger_head": "e46d57e818b1f216fbaca6ba22ddc846d5f6cd9ce43c8dbc7a5dc1f93ba1674d",
+  "created_at": "2026-08-20T11:18:00.4924453Z",
+  "content_fingerprint": "9076cdf181ba74049f8500dff99fbb6950f993b19d2ee4e0972e6e2441e7cafc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Exact q-chart exceptional pilot primitive",
+      "version": "2",
+      "locator": "research/benincasa/rank12-u0-v2-exceptional-q-pilot-rational-witness.json",
+      "entity_id": "source:3217b623188936db23b4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The pilot primitive exists exactly over Q in both exceptional charts",
+      "status": "supported",
+      "entity_id": "claim:3df80572d0261789f673"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Restricted-support q-chart characteristic-zero solve",
+      "status": "passed",
+      "body": "The stable 278-coordinate modular support gives 277 normalized unknowns and 480 exact coefficient equations. The unique rational solution has zero residual and D_q(r)=r^2(r-1)(r^2+6r+1). Together with D_p, D_q(r)=-r^6 D_p(r^-1).",
+      "entity_id": "test:67dbda21b4c92cfcbedc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:3df80572d0261789f673",
+      "target_id": "source:3217b623188936db23b4",
+      "relation_id": "rel:derived_from-54d8fe2d2caa98e2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:67dbda21b4c92cfcbedc",
+      "target_id": "claim:3df80572d0261789f673",
+      "relation_id": "rel:tests-953b0e8618c06e08"
+    }
+  ],
+  "digest": "dc0f56488ebdc3dc04a8fd820f7e42416182537cd99747848cd779b45f973603"
+}

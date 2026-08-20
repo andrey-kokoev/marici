@@ -1,0 +1,95 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_10e380d7-889d-447c-b9b9-462fc6cfabed",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directive",
+    "detail": "Operator instructed ongoing epistemic-graph maintenance for cosmology ledger work."
+  },
+  "idempotency_key": "auto-proposal-82fb12d1aebd88ffa08137fb",
+  "expected_ledger_head": "7b3707b5bed3bf90bbf1e7e4de2bc4945bdbc6799243bccb981d776156c3f25b",
+  "created_at": "2026-08-18T15:24:12.3179623Z",
+  "content_fingerprint": "82fb12d1aebd88ffa08137fbafa47a011c16bd3bbac48d38e2bc98da5125a4af",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-675",
+      "kind": "source",
+      "title": "Entry 675 — Quartic absent from shared-wall higher-tangency support",
+      "version": "3610829",
+      "locator": "src/ledger/20260818-675 The Quartic Is Absent from Shared-Wall Higher-Tangency Support.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-676",
+      "kind": "source",
+      "title": "Entry 676 — Complete logarithmic syzygy module has constant rank on tested quartic fibers",
+      "version": "3610829",
+      "locator": "src/ledger/20260818-676 The Complete Logarithmic Syzygy Module Has Constant Rank on Tested Quartic Fibers.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-677",
+      "kind": "source",
+      "title": "Entry 677 — Physical wall cocycle detects weighted exceptional quotient",
+      "version": "3610829",
+      "locator": "src/ledger/20260818-677 The Physical Wall Cocycle Detects the Weighted Exceptional Quotient.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "source:marici-ledger-675",
+      "target_id": "source:marici-ledger-673",
+      "relation_id": "rel:supersedes-78824e38c92699fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "source:marici-ledger-676",
+      "target_id": "source:marici-ledger-674",
+      "relation_id": "rel:supersedes-716fa1e2fc02dfa3"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:physical-exceptional-pairing-rank-one",
+      "kind": "claim",
+      "title": "The physical wall cocycle detects the weighted exceptional quotient with the same two-dimensional kernel"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:physical-residue-weighted-tangencies",
+      "kind": "test",
+      "title": "Eliminate physical residue numerators and denominators against the six reduced shared-wall tangencies"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:physical-residue-weighted-tangencies",
+      "target_id": "claim:physical-exceptional-pairing-rank-one",
+      "relation_id": "rel:tests-8644e50a77323043"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:physical-residue-weighted-tangencies",
+      "target_id": "source:marici-ledger-677",
+      "relation_id": "rel:derived_from-0bccf8d21ff6c667"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:physical-residue-weighted-tangencies-20260818",
+      "test_id": "test:physical-residue-weighted-tangencies",
+      "actor": "marici.Benincasa",
+      "outcome": "All physical tangency residues are generically regular and nonzero; numerator resultants are -R1, R2, and E^2, so invertible row weighting preserves the exceptional kernel and introduces no Q support.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-677",
+          "locator": "Exact resultant calculation",
+          "paraphrase": "The three physical numerator resultants equal the established conductor factors and all denominator resultants are nonzero."
+        }
+      ]
+    }
+  ],
+  "digest": "878ca476bd5830a132763856cfeef2f3053e90fee2acc2064cc21845e5e1b96b"
+}

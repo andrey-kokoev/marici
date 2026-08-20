@@ -1,0 +1,420 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_ee7aba4c9cb1fc0f",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess only whether README.md exists and is readable. Do not modify anything. Return the template's required structured assessment with concise arrays and evaluator provenance.",
+  "request_fingerprint": "7f74da9e41daffd5f89b8a9f04d378b5b3140a9dd26ac9bc5078af97644c2bf8",
+  "validated_request_ref": "vr_f54d21329d664639ae08b009e311896c",
+  "created_at": "2026-08-16T19:37:00.8261943Z",
+  "updated_at": "2026-08-16T19:38:50.128994Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-retest-exec-minimal-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read",
+        "label": "README"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 120000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-0668136aa9444fd9ab4d0da8b4aaa977"
+        ],
+        "current_run_id": "run-0668136aa9444fd9ab4d0da8b4aaa977",
+        "started_at": "2026-08-16T19:37:00.8521416Z",
+        "finished_at": "2026-08-16T19:38:50.1278248Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes—one for the file’s existence and one for opening it—then return the required JSON object only.The existence probe succeeded. The first content-read expression was blocked by the shell policy before execution, so I’m switching to a separate bounded `Get-Content` probe with an explicit byte encoding; no file was changed.",
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "existence",
+                "status": "confirmed",
+                "evidence": "Test-Path returned True."
+              },
+              {
+                "name": "readability",
+                "status": "confirmed",
+                "evidence": "Get-Content with byte encoding exited successfully and returned byte 35."
+              }
+            ],
+            "first_actions": [
+              "Resolved README.md to the workspace path.",
+              "Checked that it is a regular file.",
+              "Read one byte without modifying the file."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "met"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "met"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "summary": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "carrier_mcp_projection": "none",
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read README.md bytes",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "declared_capability": "read-only file-content probe",
+                "actual_refusal": "Initial IO.File read expression was rejected by shell policy before execution."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 4,
+                "scale": "1-5, higher is better",
+                "adjustment_reason": "One probe rejection required an alternate read-only probe.",
+                "human_intervention": false,
+                "non_scoring_observations": []
+              }
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-0668136aa9444fd9ab4d0da8b4aaa977",
+        "status": "completed",
+        "finished_at": "2026-08-16T19:38:50.1277438Z",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes—one for the file’s existence and one for opening it—then return the required JSON object only.The existence probe succeeded. The first content-read expression was blocked by the shell policy before execution, so I’m switching to a separate bounded `Get-Content` probe with an explicit byte encoding; no file was changed.",
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "existence",
+                "status": "confirmed",
+                "evidence": "Test-Path returned True."
+              },
+              {
+                "name": "readability",
+                "status": "confirmed",
+                "evidence": "Get-Content with byte encoding exited successfully and returned byte 35."
+              }
+            ],
+            "first_actions": [
+              "Resolved README.md to the workspace path.",
+              "Checked that it is a regular file.",
+              "Read one byte without modifying the file."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "met"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "met"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "summary": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "carrier_mcp_projection": "none",
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read README.md bytes",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "declared_capability": "read-only file-content probe",
+                "actual_refusal": "Initial IO.File read expression was rejected by shell policy before execution."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 4,
+                "scale": "1-5, higher is better",
+                "adjustment_reason": "One probe rejection required an alternate read-only probe.",
+                "human_intervention": false,
+                "non_scoring_observations": []
+              }
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-0668136aa9444fd9ab4d0da8b4aaa977",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes—one for the file’s existence and one for opening it—then return the required JSON object only.The existence probe succeeded. The first content-read expression was blocked by the shell policy before execution, so I’m switching to a separate bounded `Get-Content` probe with an explicit byte encoding; no file was changed.",
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "existence",
+                "status": "confirmed",
+                "evidence": "Test-Path returned True."
+              },
+              {
+                "name": "readability",
+                "status": "confirmed",
+                "evidence": "Get-Content with byte encoding exited successfully and returned byte 35."
+              }
+            ],
+            "first_actions": [
+              "Resolved README.md to the workspace path.",
+              "Checked that it is a regular file.",
+              "Read one byte without modifying the file."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "met"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "met"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "summary": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "carrier_mcp_projection": "none",
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read README.md bytes",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "declared_capability": "read-only file-content probe",
+                "actual_refusal": "Initial IO.File read expression was rejected by shell policy before execution."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 4,
+                "scale": "1-5, higher is better",
+                "adjustment_reason": "One probe rejection required an alternate read-only probe.",
+                "human_intervention": false,
+                "non_scoring_observations": []
+              }
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]"
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_65b21737-a934-4e18-b788-615be6e00553",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record verified results, and coordinate with marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-989944da804c551b95656255",
+  "expected_ledger_head": "8146e099a922a21a9a400e9d54bd9b72aeb7471462412d18b859bf39237e79c1",
+  "created_at": "2026-08-20T12:48:01.2200743Z",
+  "content_fingerprint": "989944da804c551b95656255125a1fa5405a5087ad5a36a0e439874a811a2d58",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1127 — The Second-Center Node Maps Canonically to the e6 Rees Line",
+      "status": "established-local",
+      "ledger_number": 1127,
+      "path": "src/ledger/20260820-1127 The Second-Center Node Maps Canonically to the e6 Rees Line.md",
+      "claim_id": "seqclaim-f5be6ca6e26b75ed5dc9882f",
+      "entity_id": "mariciledger_entry:8240933fea6e908c3e7b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The source-normalized second-center node maps to the e6 Rees line with scalar -1/2",
+      "status": "supported",
+      "body": "With ordered node sheets W=+2T,W=-2T and tau=e_plus-e_minus, the normalized top source form has residues (-1/4,+1/4), so Sp(g111_top)=(-1/4)tau. The frozen bridge gives g111_top to e6/8 at X1=1,X2=0. Therefore the commuting local comparison is tau to -(1/2)e6.",
+      "entity_id": "mariciclaim:b3be768e1ce6a791a392"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact second-center node-to-e6 residue checker",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_u2_v0_node_to_e6_gysin.py",
+      "evidence_path": "research/benincasa/results/rank12-u2-v0-node-to-e6-gysin.json",
+      "entity_id": "maricitest:07a119b0d564bf798466"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:8240933fea6e908c3e7b",
+      "target_id": "mariciclaim:b3be768e1ce6a791a392",
+      "relation_id": "rel:maricirecords-e272afb2788ad1da"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:b3be768e1ce6a791a392",
+      "target_id": "maricitest:07a119b0d564bf798466",
+      "relation_id": "rel:maricitested_by-e14d4e783764fc0c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports the source-normalized second-center node-to-e6 map",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_next_falsifier",
+      "status": "sent",
+      "body": "Entry 1127 derives the missing local comparison without using the uncertified multivariate B block. In the p-chart, p*Omega111 has ordered sheet residues (-1/4,+1/4), hence Sp(g111_top)=(-1/4)tau for tau=e_plus-e_minus. The frozen bridge is e6/8 at X1=1,X2=0, forcing tau -> -(1/2)e6. Exact checker and site build pass. Classification: existing soft-node coefficient line maps nontrivially to existing e6 second-Rees line; no new carrier datum. Next falsifier is full cyclic transport of source form, sheet order, residue orientation, and e6 bridge—constant coherent scalar versus a sign/unit obstruction.",
+      "entity_id": "maricicommunication:47d06b6fd847965b97fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:47d06b6fd847965b97fd",
+      "relation_id": "rel:maricisent_by-6b51a2ee833b0ba6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:47d06b6fd847965b97fd",
+      "relation_id": "rel:mariciaddressed_to-99050b1a8808868c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:47d06b6fd847965b97fd",
+      "target_id": "mariciclaim:b3be768e1ce6a791a392",
+      "relation_id": "rel:maricireports-3bda5db963f62422"
+    }
+  ],
+  "digest": "a17efe63e043e903e21ba4ff6a80213a20065bb95966b7928ae39f029ba6822e"
+}

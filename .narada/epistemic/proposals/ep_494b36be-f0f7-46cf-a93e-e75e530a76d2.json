@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_494b36be-f0f7-46cf-a93e-e75e530a76d2",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued string-sector research and epistemic graph maintenance."
+  },
+  "idempotency_key": "marici-benincasa-admit-five-point-full-string-circuit-20260818",
+  "expected_ledger_head": "bd061b4e18f95518efb236a2214eda9f23e6cd97f1400c9ea359bee1c7f08050",
+  "created_at": "2026-08-19T04:08:15.2673684Z",
+  "content_fingerprint": "a322ecb8b071556a90aca7f9aa9a900dcc7880ae08243f9e1915ed22cc95fe0f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-five-point-full-string-circuit-letter-ratio",
+      "kind": "claim",
+      "title": "The full five-point string circuit has determinant equal to a ratio of existing Koba-Nielsen letters"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-five-point-full-string-circuit",
+      "kind": "test",
+      "title": "Full two-by-two five-point string circuit determinant and inversion test"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-five-point-full-string-circuit-letter-ratio",
+      "target_id": "source:mizera-1610.04230",
+      "relation_id": "rel:derived_from-b0db22c1e0e86f14"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-five-point-full-string-circuit",
+      "target_id": "claim:marici-five-point-full-string-circuit-letter-ratio",
+      "relation_id": "rel:tests-9927e2bfc56ae3bb"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-five-point-full-string-circuit-20260818",
+      "test_id": "test:marici-five-point-full-string-circuit",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: source equation (5.4) and its labelled 3<->4 image form an invertible circuit whose determinant is -sin(pi alpha' s25)/sin(pi alpha' s12)",
+      "evidence": [
+        {
+          "source_id": "source:mizera-1610.04230",
+          "locator": "Section 5, equation (5.4)",
+          "paraphrase": "The first circuit row is source-derived; the second follows by simultaneous relabelling of target, basis, and kinematics."
+        },
+        {
+          "source_id": "source:mizera-1610.04230",
+          "locator": "src/ledger/20260818-888 The Full Five-Point String Circuit Has a Letter-Ratio Determinant.md",
+          "paraphrase": "The checker verifies the determinant identity and complete numerical inversion at generic nonresonant angles."
+        }
+      ]
+    }
+  ],
+  "digest": "d384ed64d415c73e6dd753b5f03355140cecf5d1a24490d1c0275fa04a658b76"
+}

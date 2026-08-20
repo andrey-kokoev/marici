@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a55c4ce8-f18d-44fa-bf1d-15057b0d521c",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research_continuation",
+    "description": "Record verified Entry 1002 cellular exactness result"
+  },
+  "idempotency_key": "marici-benincasa-entry-1002-cellular-exactness-admit",
+  "expected_ledger_head": "a66a3195d45d566091c55e2767721565d3befaa8713affe88d10e42ab8a96734",
+  "created_at": "2026-08-19T17:21:36.9558206Z",
+  "content_fingerprint": "4fa8866018f876be5a87c4c5aef7be7c8213d1a3a569a09116006119589321e4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-1002",
+      "kind": "source",
+      "title": "Entry 1002 — The Restricted Three-Edge Arc Is Cellularly Exact",
+      "version": "20260819-1002",
+      "locator": "src/ledger/20260819-1002 The Restricted Three-Edge Arc Is Cellularly Exact.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-1002-exact-arc",
+      "kind": "claim",
+      "title": "The restricted minus three-edge arc is exact in the full twisted chamber complex"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-1002-exact-arc",
+      "kind": "test",
+      "title": "Restricted primitive and twisted cellular differential audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-1002-exact-arc",
+      "target_id": "marici-source-entry-1002",
+      "relation_id": "rel:derived_from-766b9acda43870cc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-1002-exact-arc",
+      "target_id": "marici-claim-entry-1002-exact-arc",
+      "relation_id": "rel:tests-d7143575e183e22b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici-claim-entry-1002-exact-arc",
+      "target_id": "marici-claim-entry-1001-three-edge-arc",
+      "relation_id": "rel:supersedes-96d1459c526ea36c"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-1002-test-outcome",
+      "test_id": "marici-test-entry-1002-exact-arc",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: a two-coordinate primitive exists on every signed sheet and maps exactly to the three-edge arc",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1002",
+          "locator": "research/benincasa/string-six-point-minus-recombination-edge-restriction.json",
+          "paraphrase": "Packet exports restricted primitives, edge images, support, and zero transported boundary."
+        }
+      ]
+    }
+  ],
+  "digest": "328db881ceb3660a7acc2e9a8fc8f372d78b64b83e8cfcf32a452f4aa8401f8e"
+}

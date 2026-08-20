@@ -1,0 +1,188 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_2034534c7e08cf2c",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read README.md without changing files. Return structured fields file_status and topic, with topic as one complete sentence of at least 25 words so terminal-summary truncation behavior is auditable.",
+  "request_fingerprint": "0a59362a1d2a95187977ad9ab645fd24e08e82d10196ed8ccd6eb7cdb17c34c9",
+  "validated_request_ref": "vr_3bc117c8fe335492c6bd7f6f4794bb87",
+  "created_at": "2026-08-17T14:55:48.7442466Z",
+  "created_at_ms": 1786978548744,
+  "started_at": "2026-08-17T14:55:48.8663475Z",
+  "started_at_ms": 1786978548866,
+  "finished_at": "2026-08-17T14:55:58.0237299Z",
+  "finished_at_ms": 1786978558023,
+  "duration_ms": 9157,
+  "updated_at": "2026-08-17T14:55:58.0237319Z",
+  "cancelled_at": null,
+  "idempotency_key": "ergonomics-summary-retest-readme-20260817-v2",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "preflight_paths": [
+      {
+        "path": "README.md",
+        "access": "read",
+        "label": "README"
+      }
+    ],
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "file_status",
+      "topic"
+    ],
+    "no_writes": true,
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-7e9e809191f84c9f91b2fcc0b00850b7"
+        ],
+        "current_run_id": "run-7e9e809191f84c9f91b2fcc0b00850b7",
+        "started_at": "2026-08-17T14:55:48.8663558Z",
+        "finished_at": "2026-08-17T14:55:58.0220881Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "file_status=read_successfully, topic=README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph,…",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read_successfully",
+            "topic": "README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph, research frontiers, commands, and lifecycle."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-7e9e809191f84c9f91b2fcc0b00850b7",
+        "status": "completed",
+        "finished_at": "2026-08-17T14:55:58.0220552Z",
+        "duration_ms": 9027,
+        "output": {
+          "summary_text": "file_status=read_successfully, topic=README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph,…",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read_successfully",
+            "topic": "README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph, research frontiers, commands, and lifecycle."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-7e9e809191f84c9f91b2fcc0b00850b7",
+        "status": "completed",
+        "output": {
+          "summary_text": "file_status=read_successfully, topic=README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph,…",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read_successfully",
+            "topic": "README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph, research frontiers, commands, and lifecycle."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "file_status",
+          "topic"
+        ],
+        "returned": [
+          "file_status",
+          "topic"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. file_status=read_successfully, topic=README.md documents Marici as a research ledger and public map for scalar master geometry, its attribution rules, shared UI release process, epistemic graph,…"
+}

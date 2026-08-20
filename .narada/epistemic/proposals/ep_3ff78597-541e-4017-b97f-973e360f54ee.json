@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3ff78597-541e-4017-b97f-973e360f54ee",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "operator_instruction": "Continue the Marici cosmology attack and record new ledger results in the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-d7cb5af494d1c8d96cda64e1",
+  "expected_ledger_head": "ec49da3165289bccbd38575f176bc5cbb988c10a9037c03d52caa5ef26379834",
+  "created_at": "2026-08-18T02:21:40.3359719Z",
+  "content_fingerprint": "d7cb5af494d1c8d96cda64e18a3ae9c619bd580fc6508f2f7ec740c2fd21a86f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-489",
+      "kind": "source",
+      "title": "Entry 489 — The Generic Derived Carrier Map Separates the Odd Summands",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-489 The Generic Derived Carrier Map Separates the Odd Summands.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:generic-odd-jacobian-map-489",
+      "kind": "test",
+      "title": "Generic odd Jacobian carrier-map rank census",
+      "version": "2026-08-18",
+      "locator": "research/benincasa/marici-gm/src/bin/soft_axis_generic_odd_jacobian_map.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:generic-derived-carrier-kernel-489",
+      "kind": "claim",
+      "title": "The generic derived carrier map has a one-dimensional reduced odd relative kernel"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:generic-derived-carrier-kernel-489",
+      "target_id": "marici:source:ledger-489",
+      "relation_id": "rel:derived_from-f6b5e742ea4a8990"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:generic-odd-jacobian-map-489",
+      "target_id": "marici:claim:generic-derived-carrier-kernel-489",
+      "relation_id": "rel:tests-00fd658cabf2004f"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-489-generic-odd-jacobian-rank",
+      "test_id": "marici:test:generic-odd-jacobian-map-489",
+      "actor": "marici.Benincasa",
+      "outcome": "At b=0,2,3 and D=12,16,20,24 the complete odd cokernel has dimension 3, the induced Jacobian carrier map has rank 2, and its relative kernel has dimension 1.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-489",
+          "locator": "src/ledger/20260818-489 The Generic Derived Carrier Map Separates the Odd Summands.md",
+          "paraphrase": "The finite-field census verifies a surjection from the generic R plus Q odd cokernel to the free odd Jacobian R-line with one reduced kernel dimension."
+        }
+      ]
+    }
+  ],
+  "digest": "4c26a53a43e67857032c46535374c833e9e9811b19ba55ddd0a6b1840824c9be"
+}

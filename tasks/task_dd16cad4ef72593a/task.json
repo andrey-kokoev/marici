@@ -1,0 +1,253 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_dd16cad4ef72593a",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read-only repository audit. For the four-pole lower family ordered (q_g1,q_g2,q_g3,q_g23), locate any committed evidence for the complete homogeneous P_i=X_i 16-face deletion cube matching generic ranks [7,12,12,18,12,18,18,26,12,17,18,24,18,24,26,34] and homogeneous full rank 15. Distinguish exact computed ranks from inferred/source totals. If absent, identify the smallest existing checker implementation that can be specialized without changing basis/cutoff conventions, and list exact file/line locators. Do not edit files.",
+  "request_fingerprint": "2c20787a864ed85b791b78e63b8a9caa8da26814b022e769a92dfacb215b6efa",
+  "validated_request_ref": "vr_92e1ec5b450d7f90872c6af7d85d4a94",
+  "created_at": "2026-08-18T16:33:07.6398497Z",
+  "created_at_ms": 1787070787639,
+  "started_at": "2026-08-18T16:33:07.6701963Z",
+  "started_at_ms": 1787070787670,
+  "finished_at": "2026-08-18T16:38:10.962915Z",
+  "finished_at_ms": 1787071090962,
+  "duration_ms": 303292,
+  "updated_at": "2026-08-18T16:38:10.9629159Z",
+  "cancelled_at": null,
+  "idempotency_key": "nima-audit-homogeneous-lower-deletion-cube-20260818-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "src/ledger/20260818-545 Generic Lower-Sector Denominator-Deletion Cube.md",
+        "access": "read"
+      },
+      {
+        "path": "src/ledger/20260818-596 The Physical Five-Pole Families Have Rank Thirty-Five.md",
+        "access": "read"
+      },
+      {
+        "path": "src/ledger/20260818-698 Generic Lower Algebraic Letters Add Normal Directions Not Marked Sections.md",
+        "access": "read"
+      },
+      {
+        "path": "research/benincasa/marici-gm/src/bin/generic_lower_sector_groebner_rank.rs",
+        "access": "read"
+      },
+      {
+        "path": "research/benincasa/generic-lower-sector-groebner-rank.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "research_synthesize",
+    "steps": [
+      {
+        "id": "research",
+        "kind": "research",
+        "milestone_id": "research"
+      },
+      {
+        "id": "synthesize",
+        "kind": "worker",
+        "milestone_id": "synthesize",
+        "depends_on": [
+          "research"
+        ]
+      },
+      {
+        "id": "review",
+        "kind": "review",
+        "milestone_id": "synthesize",
+        "depends_on": [
+          "synthesize"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "State whether a complete homogeneous cube exists",
+      "List exact evidence and classify computed versus inferred values",
+      "Identify minimal faithful checker adaptation",
+      "Do not infer missing ranks"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "research": {
+        "step_id": "research",
+        "kind": "research",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-3ccc92ff66fd43b1b5b5af66e0fbbe18"
+        ],
+        "current_run_id": "run-3ccc92ff66fd43b1b5b5af66e0fbbe18",
+        "started_at": "2026-08-18T16:33:07.670204Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      },
+      "synthesize": {
+        "step_id": "synthesize",
+        "kind": "worker",
+        "status": "pending",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      },
+      "review": {
+        "step_id": "review",
+        "kind": "review",
+        "status": "pending",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "research",
+        "step_kind": "research",
+        "run_id": "run-3ccc92ff66fd43b1b5b5af66e0fbbe18",
+        "status": "failed",
+        "finished_at": "2026-08-18T16:38:10.9622297Z",
+        "duration_ms": 300060,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300058"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "research",
+        "run_id": "run-3ccc92ff66fd43b1b5b5af66e0fbbe18",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300058"
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "State whether a complete homogeneous cube exists",
+          "List exact evidence and classify computed versus inferred values",
+          "Identify minimal faithful checker adaptation",
+          "Do not infer missing ranks"
+        ],
+        "returned": [],
+        "missing": [
+          "State whether a complete homogeneous cube exists",
+          "List exact evidence and classify computed versus inferred values",
+          "Identify minimal faithful checker adaptation",
+          "Do not infer missing ranks"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "pending",
+        "status": "pending"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: failed. No substantive objective result was reported."
+}

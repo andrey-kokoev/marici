@@ -1,0 +1,169 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_0da28c698ccac476",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return repository_name, current_branch, and verification.",
+  "request_fingerprint": "016d7066ddc99366082db191a20d33e59d71bd813f35a188a73813d975bdc43c",
+  "validated_request_ref": "vr_50c26d226b984069a6108cba9d0c1d20",
+  "created_at": "2026-08-16T17:55:33.5992256Z",
+  "updated_at": "2026-08-16T17:56:17.0271361Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-delegation-structured-contract-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici",
+        "access": "read",
+        "label": "Marici repository"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "repository_name",
+      "current_branch",
+      "verification"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-639632f509df4d969307c9385bb97d82"
+        ],
+        "current_run_id": "run-639632f509df4d969307c9385bb97d82",
+        "started_at": "2026-08-16T17:55:33.6281363Z",
+        "finished_at": "2026-08-16T17:56:17.0260902Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "repository_name=marici, current_branch=main, verification=Read-only checks confirmed the directory name and .git/HEAD ref; no changes made.",
+          "diagnostics_text": "I’m checking the directory name and Git branch with read-only commands.The first read-only probe was rejected by the command policy before execution. I’m retrying with smaller read-only Git and filesystem checks.",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Read-only checks confirmed the directory name and .git/HEAD ref; no changes made."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-639632f509df4d969307c9385bb97d82",
+        "status": "completed",
+        "finished_at": "2026-08-16T17:56:17.0260775Z",
+        "output": {
+          "summary_text": "repository_name=marici, current_branch=main, verification=Read-only checks confirmed the directory name and .git/HEAD ref; no changes made.",
+          "diagnostics_text": "I’m checking the directory name and Git branch with read-only commands.The first read-only probe was rejected by the command policy before execution. I’m retrying with smaller read-only Git and filesystem checks.",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Read-only checks confirmed the directory name and .git/HEAD ref; no changes made."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-639632f509df4d969307c9385bb97d82",
+        "status": "completed",
+        "output": {
+          "summary_text": "repository_name=marici, current_branch=main, verification=Read-only checks confirmed the directory name and .git/HEAD ref; no changes made.",
+          "diagnostics_text": "I’m checking the directory name and Git branch with read-only commands.The first read-only probe was rejected by the command policy before execution. I’m retrying with smaller read-only Git and filesystem checks.",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Read-only checks confirmed the directory name and .git/HEAD ref; no changes made."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "repository_name",
+          "current_branch",
+          "verification"
+        ],
+        "returned": [
+          "repository_name",
+          "current_branch",
+          "verification"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "repository_name=marici, current_branch=main, verification=Read-only checks confirmed the directory name and .git/HEAD ref; no changes made."
+}

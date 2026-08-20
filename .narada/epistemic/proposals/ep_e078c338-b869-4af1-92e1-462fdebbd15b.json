@@ -1,0 +1,82 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e078c338-b869-4af1-92e1-462fdebbd15b",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the Marici research program and record verified results."
+  },
+  "idempotency_key": "auto-proposal-1e6e991ae112150c666e88ef",
+  "expected_ledger_head": "c77b5b6cee7802c70659bd4b9cabc8aba9c3dafd4fb01c5c91fd57326448227e",
+  "created_at": "2026-08-18T00:04:14.4609919Z",
+  "content_fingerprint": "1e6e991ae112150c666e88ef14d1dd608e02245a7e519f4550745c7b7ac23f70",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source441",
+      "kind": "source",
+      "title": "Marici ledger entry 441: Eight-Point Cut Naturality Holds in the Cellular Kato Sector",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-441 Eight-Point Cut Naturality Holds in the Cellular Kato Sector.md",
+      "entity_id": "source:185503546679d2c50559"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim441",
+      "kind": "claim",
+      "title": "The transformed Entry-87 eight-point class is Cut-natural on all eight physical six-by-four boundaries in the cellular fs/Kato sector.",
+      "status": "proved",
+      "scope": "finite cellular fs/Kato; generic nonresonant loading",
+      "counterevidence": [
+        "No raw global scheme-level six-functor span or resonant unfiltered statement is claimed."
+      ],
+      "evidence_refs": [
+        "research/voevodsky/check_n8_cut_naturality_after_sheet_transform.py"
+      ],
+      "entity_id": "claim:4ecfafe9b48c1f886cfe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next",
+      "kind": "problem",
+      "title": "Verify transformed codimension-two coherence for every compatible ordered pair of octagon cuts.",
+      "entity_id": "problem:71fce09081d48e305227"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim441",
+      "target_ref": "source441",
+      "source_id": "claim:4ecfafe9b48c1f886cfe",
+      "target_id": "source:185503546679d2c50559",
+      "relation_id": "rel:derived_from-3ae0eeceedfb5ad5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim441",
+      "target_id": "problem:761105ac294e77220e87",
+      "source_id": "claim:4ecfafe9b48c1f886cfe",
+      "relation_id": "rel:addresses-2706e7674f3f8370"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim441",
+      "target_id": "claim:qtds-eight-point-pc-polarity-homotopy-complete",
+      "source_id": "claim:4ecfafe9b48c1f886cfe",
+      "relation_id": "rel:depends_on-65cf55674f114e05"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next",
+      "target_ref": "claim441",
+      "source_id": "problem:71fce09081d48e305227",
+      "target_id": "claim:4ecfafe9b48c1f886cfe",
+      "relation_id": "rel:depends_on-b482604ee3946964"
+    }
+  ],
+  "digest": "0b17c066bc7b0b8051e7f84e652bc1c2800aa6fc3de53440304eb67b7276ad36"
+}

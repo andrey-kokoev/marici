@@ -1,0 +1,188 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_8d71f11f1307bf52",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read docs/research-lifecycle.md without changing files. Return structured fields file_status and topic, with topic as one complete sentence.",
+  "request_fingerprint": "43aa1f122c34da1fb68a0d3d0cb65c6e199f0f039aaa0239386f9866aaaac9c1",
+  "validated_request_ref": "vr_5b17621c89ef838bd458d20f461db11e",
+  "created_at": "2026-08-17T14:42:51.564715Z",
+  "created_at_ms": 1786977771564,
+  "started_at": "2026-08-17T14:42:51.614517Z",
+  "started_at_ms": 1786977771614,
+  "finished_at": "2026-08-17T14:42:59.7592511Z",
+  "finished_at_ms": 1786977779759,
+  "duration_ms": 8145,
+  "updated_at": "2026-08-17T14:42:59.7592532Z",
+  "cancelled_at": null,
+  "idempotency_key": "ergonomics-batch-lifecycle-20260817-v1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "preflight_paths": [
+      {
+        "path": "docs/research-lifecycle.md",
+        "access": "read",
+        "label": "research lifecycle"
+      }
+    ],
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "file_status",
+      "topic"
+    ],
+    "no_writes": true,
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-f7e6bc8c9d08472ea3c4f446127731cb"
+        ],
+        "current_run_id": "run-f7e6bc8c9d08472ea3c4f446127731cb",
+        "started_at": "2026-08-17T14:42:51.6145235Z",
+        "finished_at": "2026-08-17T14:42:59.757914Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "file_status=read, topic=The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsifi",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read",
+            "topic": "The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsification, delegated work, and completion criteria."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-f7e6bc8c9d08472ea3c4f446127731cb",
+        "status": "completed",
+        "finished_at": "2026-08-17T14:42:59.757887Z",
+        "duration_ms": 8087,
+        "output": {
+          "summary_text": "file_status=read, topic=The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsifi",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read",
+            "topic": "The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsification, delegated work, and completion criteria."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-f7e6bc8c9d08472ea3c4f446127731cb",
+        "status": "completed",
+        "output": {
+          "summary_text": "file_status=read, topic=The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsifi",
+          "diagnostics_text": null,
+          "structured_output": {
+            "file_status": "read",
+            "topic": "The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsification, delegated work, and completion criteria."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "file_status",
+          "topic"
+        ],
+        "returned": [
+          "file_status",
+          "topic"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. file_status=read, topic=The document defines a reproducible research lifecycle governing evidence packets, material-result ledger entries, epistemic-graph updates, cross-sector falsifi"
+}

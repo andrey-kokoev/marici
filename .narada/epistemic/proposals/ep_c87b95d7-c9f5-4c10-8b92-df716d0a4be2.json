@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c87b95d7-c9f5-4c10-8b92-df716d0a4be2",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the Marici string-sector research priority lane and record the verified next result."
+  },
+  "idempotency_key": "auto-proposal-1e53cabdd66f7f2c76ee547c",
+  "expected_ledger_head": "f395c579f0d195ecc6b717d1abead1de02b5ff70128038a167edebe2e7214b3e",
+  "created_at": "2026-08-19T04:14:34.6406129Z",
+  "content_fingerprint": "1e53cabdd66f7f2c76ee547cfa7904443641a8c6e2ab66b2241ece159b8d4267",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-891",
+      "kind": "source",
+      "title": "Entry 891 — The Canonical Five-Point Parke–Taylor Period Has a Source-Normalized Hypergeometric Form",
+      "version": "20260818-891",
+      "locator": "src/ledger/20260818-891 The Canonical Five-Point Parke-Taylor Period Has a Source-Normalized Hypergeometric Form.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-canonical-five-point-pt-period-hypergeometric",
+      "kind": "claim",
+      "title": "The canonical bounded five-point Parke–Taylor period equals its source-normalized beta-times-3F2 expression at finite alpha prime"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-five-point-finite-pt-period",
+      "kind": "test",
+      "title": "Independent Euler-quadrature and hypergeometric-series calibration of the canonical five-point period"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-canonical-five-point-pt-period-hypergeometric",
+      "target_id": "source:marici-ledger-891",
+      "relation_id": "rel:derived_from-45a41db849c6cea7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-five-point-finite-pt-period",
+      "target_id": "claim:marici-canonical-five-point-pt-period-hypergeometric",
+      "relation_id": "rel:tests-6c3ea4a3da0f71e0"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-five-point-finite-pt-period-pass",
+      "test_id": "test:marici-five-point-finite-pt-period",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: Euler quadrature and 3F2 recurrence agree to 6.17e-16 with the source orientation sign",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-891",
+          "locator": "research/benincasa/string-five-point-finite-pt-period.json",
+          "paraphrase": "Durable packet records both computations, tolerance, and passing result."
+        }
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-canonical-five-point-pt-period-hypergeometric",
+      "target_id": "source:mizera-1706.08527",
+      "relation_id": "rel:derived_from-0b327ab10535e7d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-canonical-five-point-pt-period-hypergeometric",
+      "target_id": "source:mizera-1610.04230",
+      "relation_id": "rel:derived_from-e3957d883babbafe"
+    }
+  ],
+  "digest": "942bfafc5da508c34685e59139e37f6cb6d6a9b2fd9bac5a0badcc875b4e10ad"
+}

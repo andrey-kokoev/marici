@@ -1,0 +1,391 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_aadd8797e8c56847",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess only whether README.md exists and is readable. Do not modify anything. Return the template's required structured assessment with concise arrays and evaluator provenance.",
+  "request_fingerprint": "703d648c43d4b18e811c7a9b1987339975db7c73cbe137bdb065535f2c0ea03f",
+  "validated_request_ref": "vr_ac5bc902414840749dbce1f77703952f",
+  "created_at": "2026-08-16T21:21:33.0181011Z",
+  "updated_at": "2026-08-16T21:22:03.4014451Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-native-read-retest-minimal-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read",
+        "label": "README"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 300000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "assessment_result",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "assessment_result": "string: passed|blocked|undetermined|inconclusive",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-5b631ef1f3464bff87ba010a98ad1216"
+        ],
+        "current_run_id": "run-5b631ef1f3464bff87ba010a98ad1216",
+        "started_at": "2026-08-16T21:21:33.0489159Z",
+        "finished_at": "2026-08-16T21:22:03.3999699Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "exists",
+                "status": "pass"
+              },
+              {
+                "name": "readable",
+                "status": "pass"
+              }
+            ],
+            "first_actions": [
+              "Used supplied authoritative native file evidence.",
+              "Skipped filesystem probing.",
+              "Made no modifications."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "result": "accepted",
+                "evidence": "Authoritative evidence supplied the target path and content."
+              },
+              {
+                "criterion": "README.md is readable",
+                "result": "accepted",
+                "evidence": "Bounded native content was supplied successfully."
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              "README.md exists.",
+              "README.md is readable."
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "evidence_source": "native_file_read_evidence",
+              "probe_performed": false,
+              "modifications_performed": false
+            },
+            "assessment_result": {
+              "status": "pass",
+              "scope": "README.md existence and readability only"
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-5b631ef1f3464bff87ba010a98ad1216",
+        "status": "completed",
+        "finished_at": "2026-08-16T21:22:03.399876Z",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "exists",
+                "status": "pass"
+              },
+              {
+                "name": "readable",
+                "status": "pass"
+              }
+            ],
+            "first_actions": [
+              "Used supplied authoritative native file evidence.",
+              "Skipped filesystem probing.",
+              "Made no modifications."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "result": "accepted",
+                "evidence": "Authoritative evidence supplied the target path and content."
+              },
+              {
+                "criterion": "README.md is readable",
+                "result": "accepted",
+                "evidence": "Bounded native content was supplied successfully."
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              "README.md exists.",
+              "README.md is readable."
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "evidence_source": "native_file_read_evidence",
+              "probe_performed": false,
+              "modifications_performed": false
+            },
+            "assessment_result": {
+              "status": "pass",
+              "scope": "README.md existence and readability only"
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-5b631ef1f3464bff87ba010a98ad1216",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              {
+                "name": "exists",
+                "status": "pass"
+              },
+              {
+                "name": "readable",
+                "status": "pass"
+              }
+            ],
+            "first_actions": [
+              "Used supplied authoritative native file evidence.",
+              "Skipped filesystem probing.",
+              "Made no modifications."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                "status": "resolved"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "result": "accepted",
+                "evidence": "Authoritative evidence supplied the target path and content."
+              },
+              {
+                "criterion": "README.md is readable",
+                "result": "accepted",
+                "evidence": "Bounded native content was supplied successfully."
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              "README.md exists.",
+              "README.md is readable."
+            ],
+            "evaluator_provenance": {
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "evidence_source": "native_file_read_evidence",
+              "probe_performed": false,
+              "modifications_performed": false
+            },
+            "assessment_result": {
+              "status": "pass",
+              "scope": "README.md existence and readability only"
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance",
+          "assessment_result"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": "pass",
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "assessment_result: passed. dimensions=[2 items], first_actions=[3 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]"
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_86d21954-3d5d-4ff1-9f07-6881f67510a9",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue string-sector work and record coherent results."
+  },
+  "idempotency_key": "marici-benincasa-entry-1038-loaded-cousin-bar-cells-20260819-v2",
+  "expected_ledger_head": "d4bcbe650139a8617a6134cc326ba1c8009a871b84e3c268c0aa29ee5428ccc7",
+  "created_at": "2026-08-19T18:38:24.7856046Z",
+  "content_fingerprint": "96ba775d241190045d9a5842f0c3ebd65f36ed45c4fe041f3408afe955ed4abf",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src1038",
+      "kind": "source",
+      "title": "Ledger Entry 1038",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-1038 The Two Source Bar Cells Fill the Loaded Cousin Cycles.md",
+      "entity_id": "source:a70a264ac2af7dae0981"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim1038",
+      "kind": "claim",
+      "title": "Two source bar cells fill the loaded Cousin cycles",
+      "version": "1",
+      "locator": "ledger:1038",
+      "entity_id": "claim:9ecb92ed8906b7f05a18"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test1038",
+      "kind": "test",
+      "title": "Loaded Cousin bar-cell incidence check",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_loaded_cousin_bar_cells.rs",
+      "entity_id": "test:68acd5706a40914201fb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test1038",
+      "target_ref": "claim1038",
+      "source_id": "test:68acd5706a40914201fb",
+      "target_id": "claim:9ecb92ed8906b7f05a18",
+      "relation_id": "rel:tests-ebdcb0d838b9263d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim1038",
+      "target_ref": "src1038",
+      "source_id": "claim:9ecb92ed8906b7f05a18",
+      "target_id": "source:a70a264ac2af7dae0981",
+      "relation_id": "rel:derived_from-c0db7d5aa6eb12a9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-loaded-cousin-bar-cells-1038",
+      "test_id": "test:string-loaded-cousin-bar-cells-1038",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: d1*d2=0, ranks d1=6 and d2=2, homology ranks H0=2, H1=0, H2=0",
+      "evidence": [
+        {
+          "source_id": "source:ledger-1038-loaded-cousin-bar-cells",
+          "locator": "research/benincasa/string-six-point-loaded-cousin-bar-cells.json",
+          "paraphrase": "The durable packet records the frozen vertices, edges, bar-cell boundaries, ranks, and homology."
+        }
+      ]
+    }
+  ],
+  "digest": "d3a23579a5785ca8d85276187075d762f7313e93b363b30ef05b7277d47e60ab"
+}

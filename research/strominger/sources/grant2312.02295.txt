@@ -1,0 +1,1375 @@
+Higher Memory Effects in Numerical Simulations of Binary Black Hole Mergers
+Alexander M. Grant 1, 2,∗ and Keefe Mitman 3,†
+1Department of Physics, University of Virginia, P.O. Box 400714, Charlottesville, Virginia 22904-4714, USA
+2School of Mathematical Sciences, University of Southampton, Southampton, SO17 1BJ, United Kingdom
+3Theoretical Astrophysics 350-17, California Institute of Technology, Pasadena, California 91125, USA
+Gravitational memory effects are predictions of general relativity that are characterized by an
+observable effect that persists after the passage of gravitational waves. In recent years, they have
+garnered particular interest, both due to their connection to asymptotic symmetries and soft theo-
+rems and because their observation would serve as a unique test of the nonlinear nature of general
+relativity. Apart from the more commonly known displacement and spin memories, however, there
+are other memory effects predicted by Einstein’s equations that are associated with more sublead-
+ing terms in the asymptotic expansion of the Bondi-Sachs metric. In this paper, we write explicit
+expressions for these higher memory effects in terms of their charge and flux contributions. Further,
+by using a numerical relativity simulation of a binary black hole merger, we compute the magnitude
+and morphology of these terms and compare them to those of the displacement and spin memory.
+We find that, although these terms are interesting from a theoretical perspective, due to their small
+magnitude they will be particularly challenging to observe with current and future detectors.
+CONTENTS
+I. Introduction 1
+II. Background 3
+A. Bondi-Sachs coordinates 3
+B. GHP formalism 3
+C. Bianchi identities 5
+D. Definition of our observables 5
+III. “Charge” and “Flux” Decomposition 5
+A. First three moments of the news 6
+B. Ambiguities 7
+C. The shear contributing to a moment 8
+IV. Results 8
+A. Numerical Data 8
+B. Evaluation of Charges and Fluxes 9
+V. Discussion 11
+Acknowledgments 12
+References 12
+I. INTRODUCTION
+The gravitational wave memory effect (now called “dis-
+placement memory” to avoid confusion with other, sim-
+ilar effects) arises as a permanent change in the separa-
+tion of two observers due to the passage of gravitational
+waves. This effect was first postulated in the linearized
+regime [1], but for bound systems, the predominant ef-
+fect is sourced by nonlinear effects in the propagation of
+∗ a.m.grant@soton.ac.uk
+† kmitman@caltech.edu
+gravitational waves [2, 3]. This effect is difficult to detect
+both because of its low-frequency nature and that it is
+simply smaller in amplitude than the predominantly os-
+cillatory part of the gravitational wave signal. However,
+there have been numerous proposals to measure it using
+both ground-based detectors (by stacking multiple sig-
+nals in current detectors [4–6], which has been performed
+explicitly in Refs. [7, 8]) or from single events in future
+detectors [6, 9]. It should also be seen by space-based de-
+tectors [10–12] and pulsar timing arrays, and the latter
+currently provide upper bounds on the memory coming
+from the stochastic background [13].
+In addition to the displacement memory, a variety of
+other effects have been considered in the literature which
+appear as permanent changes in some idealized detector
+(for a summary, see [14]). While this paper does not fo-
+cus on the observable nature of these effects, the “curve
+deviation” observable of [14] provides a motivation for
+studying the quantities of interest in this paper as a sim-
+ple generalization of the displacement memory effect. As
+shown in [15], the curve deviation near null infinity can
+be written in terms of the temporal moments1 of the
+Bondi news, a tensor which characterizes the presence of
+radiation at null infinity. Much like the moments of a
+probability distribution, these moments characterize the
+Bondi news as a function of time. The zeroth moment
+(that is, a single integral) of the news is exactly the dis-
+placement memory effect, but with each higher moment
+of the news one can recover additional observables. For
+example, the spin [16, 17] and center-of-mass [18] mem-
+ories form the electric- and magnetic-parity pieces of the
+“drift memory”2, which is related to the first moment of
+1 These temporal moments can be related to the integer values of
+the Mellin transform: see the discussion in Sec. IID below.
+2 Note that this effect was previous called the “subleading displace-
+ment memory” in [14]; see Ref. [19] for an explanation for the
+change in terminology.
+arXiv:2312.02295v3  [gr-qc]  29 Jul 2024
+2
+the news. Collectively, we refer to the infinite collection
+of moments of the news as “higher memory effects”.
+More relevantly for this paper, Ref. [15] showed that
+these moments of the news could be written in terms
+of a “charge” contribution and a “flux” contribution,
+which generalizes the usual linear/nonlinear or ordi-
+nary/null [20] splittings of the displacement memory.
+For the drift memory, such a decomposition was al-
+ready known [16, 18], but that such a splitting could
+be achieved for all higher memory effects was a novel
+result, and follows from the asymptotic form of the Ein-
+stein equations. We review this construction explicitly
+for the zeroth, first, and second moments in Sec. IIIA
+below.
+Asymptotic symmetries provide another formulationof
+the displacement memory that is frequently discussed in
+the literature (see, for example, [21] and the references
+therein). Here, for each spherical harmonic mode, the
+charge contribution can be thought of as the change in
+a charge constructed from a member of the supertrans-
+lation subalgebra of the Bondi-Metzner-Sachs (BMS)
+algebra—the symmetry algebra at null infinity. Un-
+derstanding the drift memory in this way, however, re-
+quires an extension of the BMS algebra into either of
+the “extended” [22] or “generalized” [23] BMS algebras,
+and many issues with these extensions have been pointed
+out in the literature [24–26]. Recently, an infinite set of
+charges were also defined which form a representation of
+the algebraLw1+∞ [27], and at linear order these charges
+can be shown [28] to be equivalent to those in Ref. [15].
+While these connections to symmetry algebras are inter-
+esting, we do not discuss them further in this paper, as
+everything that we present can be straightforwardly de-
+rived from the Einstein equations.
+An important question remains about the status of this
+split into charge and flux contributions: for a given sys-
+tem, which is larger? This is important for observing
+the memory effect, by the following argument [6]. For
+simplicity, we restrict to a discussion of the displacement
+memory, although similar arguments for higher memo-
+ries also apply. First, note that by “detecting the dis-
+placement memory”, one does not mean “measuring some
+finite offset in the detector”, as current ground-based de-
+tectors are only sensitive in some frequency range that
+does not include zero. Instead, one should try to detect
+a part of the signal which contributes to this finite offset,
+which one could call the time-dependent “memory sig-
+nal”. In the case of the displacement memory, it happens
+to be the case that, for binary mergers, it is the flux con-
+tribution which makes the largest contribution (for the
+m = 0 modes) to the zeroth moment of the news (see,
+for example, Ref. [29]). Moreover, since this contribution
+as a function of time is non-oscillatory and looks like a
+smoothed out step function, it is a reasonable choice for
+the time-dependent “displacement memory signal”.
+When considering higher memories, one is faced with
+another issue: current ground-based gravitational wave
+detectors are sensitive to theshear, and not any particu-
+lar integrals of the news. If one is given thenth moment
+of the news as a function of time, one can obtain the
+shear as a function of time (up to an arbitrary initial
+value) by differentiatingn times.3 As such, the question
+of which is the larger contribution should be asked of
+the nth derivative of the charge or flux. For the case of
+the spin memory (the magnetic part of the first moment
+of the news), it is once again the flux contribution that
+is larger. Furthermore, this contribution is again non-
+oscillatory [29] (in them = 0 modes) and resembles a
+single bump, i.e., a smoothed-out delta function.
+Motivated by these considerations, we seek to answer
+the following questions for the higher memory effects:
+(i) Which quantity contributes more significantly to
+the shear: charge or flux?
+(ii) Is it always the case that the charge contributions
+are primarily oscillatory, and the flux contributions
+are primarily non-oscillatory?
+(iii) What is the general morphology of these non-
+oscillatory contributions?
+As there are an infinite number of these higher memory
+effects, we restrict our attention to those associated with
+the zeroth, first, and second moments of the news: the
+displacement, drift, and “ballistic” [19] memory effects.
+To explore these questions, we will examine the wave-
+forms produced by numerical relativity simulations of bi-
+nary black hole mergers that have been run using the
+Simulating eXtreme Spacetimes (SXS) Collaboration’s
+SpEC code (to perform the Cauchy evolution) and SpEC-
+TRE code [to extract the asymptotic data via a Cauchy-
+characteristic evolution (CCE)] [30–32]. The code which
+we used to produce these waveforms is publicly available
+at [33].
+The structure of this paper is the following. In Sec. II,
+we review the necessary material for this paper: Bondi-
+Sachs coordinates, the tetrad variables that we will work
+with (the shearσ and modified Weyl scalarsψi), and the
+moments of the news. In Sec. III, we then show how one
+can (non-uniquely) define charges whose evolution gives
+these moments of the news, adapting the procedure in
+Ref. [15] to be in terms of tetrad variables, instead of
+tensorial quantities. We also discuss the procedure for
+inverting the moments of the news in order to recover
+the shear. Finally, in Sec. IV, we discuss our numerical
+results for binary black hole mergers, showing the hier-
+archy of the various contributions to the shear, as well as
+their morphology. We present our conclusions in Sec. V.
+In this paper, we setG =c = 1 and adopt the mostly
+plus metric signature. We use Latin characters from the
+beginning of the alphabet (a,b, etc.) for abstract indices
+and Latin characters from the middle of the alphabet (i,
+3 See Eq. (2.27) for the explicit relationship between the shear and
+the moments of the news.
+3
+j, etc.) in order to denote indices associated with coor-
+dinates on the two-sphere (for example, spherical coordi-
+nates{θ,ϕ}).
+II. BACKGROUND
+A. Bondi-Sachs coordinates
+In this paper, we work with asymptotic quantities de-
+fined with respect to a tetrad, and using the Geroch-
+Held-Penrose (GHP) formalism [34]. For concreteness,
+though, we begin with the form of the metric in Bondi-
+Sachs coordinates, which we denote withu, r, and two
+arbitrary angular coordinatesθi. In vacuum general rel-
+ativity, this metric takes the form (see, for example, [15])
+ds2 =−
+
+1− 2V
+r
+
+e2β/r 2
+du2− 2e2β/r 2
+dudr +r2
+
+γhij + 1
+rCij
+
+dθi−Ui
+r2 du
+
+dθj−Uj
+r2 du
+
+, (2.1)
+where hij is the metric on the two-sphere (which we use
+to raise and lowerθi indices). The scalarγ is given by
+γ =
+r
+1 +CijCij
+2r2 , (2.2)
+which enforces the Bondi condition that the determinant
+of the angular part of the metric is constant inr. There
+are six remaining metric functions that arise throughV,
+β,Ui, andCij (which is trace-free with respect tohij).
+For this paper,β is unimportant, but the remaining five
+have the following expansions:
+V =m +M/r, (2.3a)
+Cij =Cij + 1
+r2Eij, (2.3b)
+Ui =−1
+2 DjCij− 1
+r
+2
+3Ni− 1
+16 Di(CjkCjk)
+− 1
+2CijDkCjk
+
++ 1
+r2 Υi, (2.3c)
+where Di is the derivative on the sphere compatible with
+hij. Note that, in terms of theirr dependence,M,Eij,
+and Υi are allO(1) functions ofr, butm, Cij, andNi
+are all constants. Again,M and Υi are unimportant for
+the discussion in this paper, but we writeEij explicitly
+as a power series inr:
+Eij =
+∞X
+n=0
+1
+rnE
+(n)ij. (2.4)
+As a consequence of Einstein’s equations, the free data
+at null infinity in vacuum general relativity are the ini-
+tial values ofm, Ni, and each E
+(n)ij, together with the
+value ofCij at all times. Due to their importance, these
+quantities all have names:
+• m is the mass aspect, a generalization of the mass
+that is angle-dependent;
+• Ni is the angular momentum aspect , with a simi-
+larly intuitive explanation for its name;
+• Cij is the shear, since (as we discuss later, in
+Sec. IIB) it is related to the shear in the GHP for-
+malism; and
+• E
+(n)ij are the “higher Bondi aspects” [28].
+Moreover, the shear Cij, being the 1/r, traceless and
+transverse part of the metric, is related to the usual
+transverse-traceless metric that an observer will measure
+at large distances from a source. Finally, a quantity of
+great interest in these spacetimes is thenews Nij:
+Nij≡∂uCij. (2.5)
+This is the quantity which characterizes the presence of
+radiation in these spacetimes (see, for example, Refs. [35–
+37]).
+B. GHP formalism
+The GHP formalism involves writing the metric in
+terms of a null tetrad{la,na,ma, ¯ma}, satisfying
+lana =−1, m a ¯ma = 1, (2.6)
+with all other contractions vanishing. The metric can
+then be written as
+gab =−2l(anb) + 2m(a ¯mb). (2.7)
+The main quantities of interest are theWeyl scalars Ψi,
+for 0≤i≤ 4, defined by
+Ψ0≡Cabcdlamblcmd, (2.8a)
+Ψ1≡Cabcdlanblcmd, (2.8b)
+Ψ2≡Cabcdlamb ¯mcnd, (2.8c)
+Ψ3≡Cabcdlanb ¯mcnd, (2.8d)
+Ψ4≡Cabcdna ¯mbnc ¯md. (2.8e)
+4
+The conventions for these quantities are taken from
+Ref. [38].
+In terms of Bondi coordinates, the tetrad that is used
+by the SpECTRE code’s implementation of CCE is given
+by Eq. (81) of Refs. [31]:4
+la≡ 1√
+2(∂r)a, (2.10a)
+na≡
+√
+2e−2β/r
+
+(∂u)a + 1
+r2Ui(∂i)a
+− 1
+2
+
+1− 2V
+r
+
+(∂r)a
+
+, (2.10b)
+ma≡− 1√
+2r (∂i)aqj
+p
+1 +γhij− 1
+r√1 +γCij
+
+.
+(2.10c)
+This tetrad is defined in terms of a complex dyadqi on
+the sphere, defined (in spherical coordinates) by
+qi≡− 1√
+2
+
+(∂θ)i + i
+sinθ (∂ϕ)i
+
+. (2.11)
+Note that this differs by a factor of
+√
+2 from the conven-
+tions in Ref. [31].
+This dyad is also used to construct the spin-raising and
+-lowering operatorsð and ¯ð, as follows: suppose that one
+has a tensorvi1···ip+q on the sphere. One can then define
+a complex scalarv by
+v≡vi1·ipj1···jqqi1··· qip ¯qj1··· qjq; (2.12)
+under a dyad rotation qi → eiψqi, v → eisψv, where
+s =p−q is the spin weight of v. The operator ð is then
+defined by
+ðv≡qiqj1··· qjp ¯qk1··· ¯qkq Divj1···jpk1···kq, (2.13)
+while ¯ð is defined by¯ðv = ð¯v.
+Note that, if v has spin weight s, then ðv has spin
+weights+1 and ¯ðv has spin weights−1. As such, we can
+consider the eigenfunctions ofð¯ð (or, equivalently, ¯ðð),
+which are the spin-weighted spherical harmonics sYℓm.
+4 To translate between the various quantities in this paper and in
+Ref. [31] (in particular in their Eq. 10, where every quantity on
+the left-hand side has a˚), we have that
+˚β≡rβ, ˚W≡ 2V
+r2 , (2.9a)
+˚U≡
+√
+2r2qiUi, ˚Q≡
+√
+2r2e−2β/rqiHij
+∂
+∂r
+Uj
+r2
+
+, (2.9b)
+˚J≡ 1
+rqiqjCij, ˚K≡γ, (2.9c)
+where everything on the right-hand sides of these equations is
+defined using the conventions of this paper (relevant considering
+the differing definitions ofqi).
+In this paper, we will only need the following properties
+(using the conventions of thescri package [39]5):
+ðsYℓm =
+r
+(ℓ−s)(ℓ +s + 1)
+2 s+1Yℓm, (2.14a)
+¯ðsYℓm =−
+r
+(ℓ +s)(ℓ−s + 1)
+2 s−1Yℓm, (2.14b)
+from which it follows that
+ð¯ðsYℓm =−(ℓ +s)(ℓ−s + 1)
+2 sYℓm, (2.15a)
+¯ððsYℓm =−(ℓ−s)(ℓ +s + 1)
+2 sYℓm. (2.15b)
+As such, we can invert the action ofð or ¯ð on an indi-
+vidual spin-weighted spherical harmonic through a com-
+bination of applying ¯ð or ð (respectively) and dividing
+by an appropriateℓ- ands-dependent coefficient:
+ð−1
+sYℓm =− 2
+(ℓ +s)(ℓ−s + 1)
+¯ðsYℓm, (2.16a)
+¯ð−1
+sYℓm =− 2
+(ℓ−s)(ℓ +s + 1)ðsYℓm. (2.16b)
+Note that these equationsonly provide an expression for
+ð−1 and ¯ð−1 acting on individual spin-weighted spherical
+harmonics. As such, whenever we are invertingð or ¯ð,
+we will first expand on a basis of these functions.
+Finally, this dyad can be used to define the strain
+h [29]:
+h≡r¯qi¯qjCij. (2.17)
+This quantity is important, since the leading order piece
+of h, together with the leading order pieces of the Weyl
+scalars Ψi, form the output of the CCE code. In con-
+trast, the quantities that are output by thescri pack-
+age [39–42], which we use throughout the remainder of
+this paper, areψi and σ, which are defined in terms of
+these quantities by
+ψi≡ lim
+r→∞
+r5−i(−
+√
+2)2−iΨi, (2.18)
+σ≡ lim
+r→∞
+¯h
+2r. (2.19)
+Note that these could be defined as (coefficients in an ex-
+pansion in1/r of) the Weyl scalars (forψi) and shear (for
+σ), defined as in Ref. [34] with respect tosome tetrad,
+but this is not important for the discussion of this paper.
+There are simple relationships between theψi and σ
+and the functions appearing in the metric in Eq. (2.1).
+These are given by
+σ = 1
+2qiqjCij, (2.20)
+5 The scripackage is a module for constructing, transforming, and
+working with waveform data at future null infinity [39].
+5
+and using Eq. (94) of Ref. [31], we find that
+ψ0 =−3
+
+E
+(0)ijqiqj− 2σ|σ|2
+
+, (2.21a)
+ψ1 =−1
+2qiNi, (2.21b)
+ψ2 =−m−
+
+Im[ð2¯σ] +σ ˙¯σ
+
+, (2.21c)
+where dots denote partial derivatives with respect tou.
+C. Bianchi identities
+In Ref. [15], the evolution equations were given form,
+Ni, and all of theE
+(n)ij (at least schematically, forn> 1).
+These evolution equations arose through considering the
+vacuum Einstein equations. In contrast, here, these same
+equations (for each of theψi) are naturally derived from
+the differential Bianchi identity forRabcd, which implies
+a differential equation forCabcd and therefore each of the
+Ψi, from which one can derive differential equations for
+each of theψi. These take the form of the following six
+equations (see, for example, the equations at the end of
+Sec. 9.8 of Ref. [43]; we are explicitly using the conven-
+tions here of Ref. [39]):
+˙ψ0 = ðψ1 + 3σψ2, (2.22a)
+˙ψ1 = ðψ2 + 2σψ3, (2.22b)
+˙ψ2 = ðψ3 +σψ4, (2.22c)
+Im[ψ2] =− Im[ð2¯σ +σ ˙¯σ], (2.22d)
+ψ3 =−ð ˙¯σ, (2.22e)
+ψ4 =−¨¯σ. (2.22f)
+It is also natural to write these equations in terms of a
+shifted version ofψ2, defined in terms of the mass aspect
+by
+˜ψ2≡−m−i Im[ð2¯σ] =ψ2 +σ ˙¯σ, (2.23)
+since then Eq. (2.22d) becomes
+Im[ ˜ψ2] =− Im[ð2¯σ], (2.24)
+Combining Eqs. (2.22c), (2.22e), and (2.22f), we find that
+˙˜ψ2 =−ð2 ˙¯σ + ˙σ ˙¯σ. (2.25)
+Note that, as˙σ ˙¯σ is purely real, the imaginary part of this
+equation contains no new information, and the real part
+is simply
+˙m = Re[ð2 ˙¯σ]− ˙σ ˙¯σ. (2.26)
+D. Definition of our observables
+In Ref. [15], it was shown that the so-called “curve de-
+viation observable” of Ref. [14], an observable that a pair
+of observers could measure that was a natural generaliza-
+tion of the displacement memory effect, could be written
+in terms of (temporal) moments of the Bondi news. Here,
+we adopt the following notation in terms of˙¯σ:
+Nn(u1,u 0; ˜u)≡ 1
+n!
+Z u1
+u0
+(˜u−u)n ˙¯σ(u)du. (2.27)
+Here, we explicitly keep the “reference time”˜u unspeci-
+fied. In Ref. [15], these moments of the news could be re-
+latedtopiecesofthecurvedeviationobservableif ˜u =u0.
+We call such moments the “Mellin moments”, since, for
+u0 = 0 and u1 =∞, these moments are related to the
+Mellin transformM of ˙¯σ, which is defined by
+Mn{f}≡
+Z ∞
+0
+un−1f(u)du, (2.28)
+for some arbitrary functionf. The exact relation is
+Nn(∞, 0; 0) = (−1)nMn+1{ ˙¯σ}, (2.29)
+where the factor of (−1)n was absorbed into the defi-
+nition ofNn in Ref. [15]. This interpretation in terms
+of the Mellin transform arises in discussions of celestial
+holography [44].
+However, as it is more convenient for this paper, we
+use the convention for the moments that˜u =u1, and for
+brevity simply write
+Nn(u1,u 0)≡N n(u1,u 0;u1). (2.30)
+These we call the “Cauchy moments”, as they appear nat-
+urally in Cauchy’s formula for multiple integration:
+Nn(u1,u 0) =
+Z u1
+u0
+du2Nn−1(u2,u 0)
+=
+Z u1
+u0
+du2
+Z u2
+u0
+du3···
+Z un+1
+u0
+du ˙¯σ(u).
+(2.31)
+In Sec. III, all results hold regardless of the chosen
+value of ˜u, and so we adopt the “generic” definition of
+moments above, for an arbitrary ˜u. For our results in
+Sec. IV, however, we choose to use the Cauchy moments
+explicitly.
+III. “CHARGE” AND “FLUX”
+DECOMPOSITION
+In this section, we review the results of Ref. [15], which
+showed that one could write these moments of the news
+Nn(u1,u 0; ˜u) in terms of two contributions: a change in a
+“charge” and an integral of a “flux”. This is analogous to
+the split into “linear” and “nonlinear” memory of Ref. [1]
+6
+and Ref. [2], or of “ordinary” and “null” of Ref. [20], in
+the case of vacuum general relativity.6
+The general definition of a “charge” which we use here
+is that a charge is a quantity, such as the mass aspect
+m, which is constant in regions where the news van-
+ishes. In this sense, these are quasi-conserved quantities
+near null infinity. There are a variety of prescriptions
+to define charges near null infinity, in the sense of quasi-
+conservedquantitieswhichareconjugatetosomesymme-
+try[26,36,37,45]; however, followingRef.[15], wemerely
+provide a procedure by which one could construct these
+charges, and do not consider their relationship to (poten-
+tial) symmetries at null infinity. Note, however, that our
+charges for the zeroth and first moments of the news are
+consistent with those in previous works, like [36, 45].
+A. First three moments of the news
+Obtaining the zeroth moment of the news is the sim-
+plest case, as one can simply integrate Eq. (2.26) once in
+time and rearrange terms to obtain:
+Re
+
+ð2N0(u1,u 0; ˜u)
+
+= ∆m(u1,u 0) +
+Z u1
+u0
+F0(u)du,
+(3.1)
+where
+F0≡ ˙σ ˙¯σ, (3.2)
+and, for any functionf,
+∆f(u1,u 0)≡f(u1)−f(u0). (3.3)
+Here Eq. (3.1) does not give the entire zeroth moment of
+the news: we are missingIm[ð2N0(u1,u 0; ˜u)], and there
+is no equation analogous to Eq. (3.1) from which this
+quantity can be derived. For reasons discussed further
+in Refs. [24, 46], it is expected to be fairly subdominant,
+which is consistent with Fig. 2 and Fig. 4.7 Last, note
+that Eq. (3.1) canalsobe written without theð2 operator
+by simply inverting this operation via Eq. (2.16).
+For the first moment, we instead consider equa-
+tion (2.22b), which we write (in terms of˜ψ2) as
+˙ψ1 = ð ˜ψ2− ˙¯σðσ− 3σð ˙¯σ. (3.4)
+Note that ˜ψ2 is non-zero even when ˙σ = 0. As such,
+ψ1 is not a charge; to obtain a charge, we shiftψ1 by a
+quantity coming from ˜ψ2:
+˜ψ1≡ψ1 + (˜u−u)ð ˜ψ2, (3.5)
+6 In the case where there exist null matter fields, for example in
+Einstein-Maxwell theory, the stress-energy tensor of these fields
+is included in the “null” part defined by Ref. [20], whereas here
+we would place it in a third category in this splitting.
+7 This is primarily due to the fact that magnetic memory is not
+sourced in binary black hole mergers, and is only known to ap-
+pear for specific classes of spacetimes [47, 48].
+where (for brevity) we do not explicitly denote the de-
+pendence of tilded quantities on˜u, and all quantities on
+the right-hand side are evaluated atu. This quantity ˜ψ1
+is a charge, since
+˙˜ψ1 =−(˜u−u)ð3 ˙¯σ + (˜u−u)ðF0 +F1, (3.6)
+for
+F1≡− ˙¯σðσ− 3σð ˙¯σ, (3.7)
+which implies that ˙˜ψ1 = 0 when ˙σ = 0. Integrating as
+before, we find that
+ð3N1(u1,u 0; ˜u) =−∆ ˜ψ1(u1,u 0; ˜u) +
+Z u1
+u0
+F1(u)du
++ ð
+Z u1
+u0
+(˜u−u)F0(u)du,
+(3.8)
+where we write (for any function˜f of u and ˜u)
+∆ ˜f(u1,u 0; ˜u)≡ ˜f(u1, ˜u)− ˜f(u0, ˜u). (3.9)
+On the right-hand side of Eq. (3.8) we have three terms
+instead of the two terms which appear in Eq. (3.1). By
+an integration by parts, however, it can be shown that
+the term involvingF0 is (up to an integral) the same as
+the term involvingF0 in Eq. (3.1); as such, we do not
+consider it to be “new” information for determining the
+first moment of the news.
+Finally, for the second moment, we consider equa-
+tion (2.22a), which we write in terms of˜ψ2 and ˜ψ1 as
+˙ψ0 = ð ˜ψ1 + 3σ ˜ψ2− (˜u−u)ð2 ˜ψ2− 3σ2 ˙¯σ. (3.10)
+Since none of the first three terms vanish when˙σ = 0,
+ψ0 is not, by itself, a charge; the procedure we applied
+above for defining ˜ψ1 shows that one should define the
+true charge ˜ψ0 by
+˜ψ0≡ψ0 + (˜u−u)(ð ˜ψ1 + 3σ ˜ψ2)− 1
+2(˜u−u)2ð2 ˜ψ2. (3.11)
+Again, this quantityis a charge, since
+˙˜ψ1− 1
+2(˜u−u)ð ˙˜ψ2 =−1
+2(˜u−u)ð3 ˙¯σ (3.12)
++ 1
+2(˜u−u)ðF0 +F1,
+which implies
+˙˜ψ0 =−1
+2(˜u−u)2ð4 ˙¯σ + 1
+2(˜u−u)2ð2F0
++ (˜u−u)(ðF1 +F rad.
+2,1 +F nonrad.
+2,1 ) +F2,0,
+(3.13)
+where
+F nonrad.
+2,1 ≡− 3 d
+du(mσ), (3.14)
+F rad.
+2,1 ≡− 3i d
+du(σ Im[ð2¯σ]), (3.15)
+F2,0≡− 3σ2 ˙¯σ. (3.16)
+7
+This notation, with two subscripted numbers, is reminis-
+cent of that in Eqs. (4.29) and (4.30) of Ref. [15]. Here,
+the first number indicates the moment of the news in
+question. The second number reflects how the term arises
+in the equations of motion: if the second number is a zero
+(like forF2,0), then it comes entirely from the evolution
+equation. If the second number takes on some non-zero
+valuen, then it indicates that there needed to be a cor-
+rection to the function (in this caseψ0) in order to make
+it a charge, and that the flux term involvesn derivatives
+with respect tou of a term that came from the original
+evolution equation. In the case ofF rad./nonrad.
+2,1 , this can
+be seen in Eqs. (3.14) and (3.15) The distinction between
+F rad.
+2,1 andF nonrad.
+2,1 is that the former contains only radia-
+tive data (that is, the shearσ), whereas the latter also
+contains some nonradiative data (in this case, the mass
+aspect m).
+Finally, we integrate Eq. (3.13) to obtain an equation
+for the second moment of the news:
+ð4N2(u1,u 0; ˜u) =−∆ ˜ψ0(u0,u 1) + 1
+2
+Z u1
+u0
+(˜u−u)2ð2F0(u)du +
+Z u1
+u0
+(˜u−u)ðF1(u)du
++
+Z u1
+u0
+
+(˜u−u)[F rad.
+2,1 (u) +F nonrad.
+2,1 (u)] +F2,0(u)
+
+du.
+(3.17)
+B. Ambiguities
+Note that there exist non-trivial modifications of the
+“charges”m, ˜ψ1, and ˜ψ0, that still satisfy the requirement
+that they are charges, namely that their time derivatives
+vanish in the absence of news. By “non-trivial”, we mean
+that the modifications do not vanish in regions where the
+news vanishes, which eliminates any modifications using
+ψ3 or ψ4, as they vanish in such regions. In order for
+their time derivatives to vanish in the absence of news,
+any modifications must be constructed from quantities
+which themselves have that property, which eliminates
+all quantities other than˜ψ2, ˜ψ1, ˜ψ0, andσ.
+Next, note that any modifications need to have the
+correct dimensions, and the proper spin weights. The
+quantities of interest have the following dimensions:
+[σ] = [u] (3.18)
+and
+[ψi] = [u3−i]. (3.19)
+The spin weight ofσ is 2, and ð raises the spin weight
+by 1. In addition, we have that action of complex conju-
+gation flips the sign of the spin weight. Finally, we have
+that ψi has spin weight2−i.
+Finally, we note that we only allow quadratic and
+higher modifications—this follows from the fact that any
+linear modifications just change how the moments of˙σ
+are recovered. Similarly, we do not allow any fractional
+or non-positive powers. As such, form, we see that there
+are no possible non-trivial modifications that can arise,
+as any possible modifications will necessarily have higher
+dimensions. For ˜ψ1, the possible modifications can in-
+volve two factors of eitherσ, ˜ψ2, or a mixture of the two.
+In order to get the correct spin weight, one needs to ap-
+ply ð and ¯ð appropriately, or to use a¯σ instead of aσ.
+Similarly, for ˜ψ0, the possible modifications involve either
+some cubic term involvingσ and ˜ψ2, or a quadratic term
+involving one factor of ˜ψ1 and one factor of eitherσ or
+˜ψ2.
+The particular choice which we adopt for˜ψ1 is as fol-
+lows: consider instead
+ˆψ1≡ ˜ψ1 + 1
+2(¯σðσ + 3σð¯σ). (3.20)
+This is the so-called “Wald-Zoupas” choice for this
+charge [24, 36, 37]. From Eq. (3.6), this quantity has
+the property that
+˙ˆψ1 =−(˜u−u)ð3 ˙¯σ + (˜u−u)ðF0 + ˆF1, (3.21)
+where
+ˆF1 = 1
+2 (¯σð ˙σ + 3 ˙σð¯σ)− (σ←→ ˙σ). (3.22)
+As in Eq. (3.8), we can use this “modified” definition in
+order to write down an equation for the first moment of
+the news: the only change is that˜ψ1 is replaced with ˆψ1
+andF1 is replaced with ˆF1. Finally, when we modify
+˜ψ1 into ˆψ1, it makes sense to also modify ˜ψ0 into ˆψ0,
+which is defined as in Eq. (3.11), but withˆψ1 instead of
+˜ψ1. Once this modification is performed, it follows that
+Eq. (3.17) can be written in the same form, but with˜ψ0
+replaced with ˆψ0 andF1 replaced by ˆF1: there are no
+modifications to the other flux terms.
+To allow for easier comparison to the literature, we
+adopt the Wald-Zoupas convention for the charges and
+fluxes for the remainder of the paper. Note, however,
+that only the sum of the charge and flux contributions is
+invariant, and so any claims aboutthe relativemagnitude
+the contributions, or their morphology, will be affected
+by this choice. In particular, the particular shape of the
+flux contribution to the center-of-mass memory, as given
+in the left panel of Fig. 3, will be different in the case
+where one makes another choice, although the discrep-
+ancy appears to be small and the qualitative features the
+same.
+8
+C. The shear contributing to a moment
+So far, we have considered Eqs. (3.1), (3.8), and (3.17)
+to be equations for the moments of the news in terms
+of ψ0, ψ1, ψ2, and σ. However, they are best thought
+of as consistency conditions that must be satisfied byσ
+directly, as it appears on both sides of the equation (as it
+appears in the definition of the moments of the news). In
+the case where one could determine the shear from the
+moment, one could then ask the following question: in
+each of these equations, which parts of the shear come
+from which terms on the right-hand side? These are what
+we call the “shear contributing to a moment”.
+The simplest relation between the moment of the news
+Nn and the shearσ is given by the case where we use the
+“Cauchy moments” defined above in Eq. (2.30). From
+Eq. (2.31), it is apparent that
+Nn−1(u1,u 0) =∂u1Nn(u1,u 0). (3.23)
+Finally, we have that
+¯σ(u1)− ¯σ(u0) =N0(u1,u 0); (3.24)
+note that, since the moments of the news depend on the
+derivative ofσ, one cannot recover theentireσ. As such,
+we simply define the “shear contribution” from each term
+by thenth derivative of the corresponding term in the
+moment of the news.
+We now consider each moment: for the zeroth moment
+of the news, the charge and flux contributions are the
+change in the mass aspect ∆m and the integral of the
+fluxF0:
+Re{ð2[¯σ(u1)− ¯σ(u0)]} = ∆m(u1,u 0)
++
+Z u1
+u0
+F0(u)du. (3.25)
+In contrast, for the first moment, the charge contribu-
+tion to the shear is the derivative of∆ ˆψ1, and the flux
+contribution is ˆF1 (not its integral):
+ð3[¯σ(u1)− ¯σ(u0)] =− ∂
+∂u1
+∆ ˆψ1(u1,u 0;u1) + ˆF1(u1)
++ ð
+Z u1
+u0
+F0(u)du.
+(3.26)
+For the second moment, the charge contribution to the
+shear is the second derivative of∆ ˆψ0, and the flux con-
+tributions areF rad./nonrad.
+2,1 and ˙F2,0:
+ð4[¯σ(u1)− ¯σ(u0)] =− ∂2
+∂u2
+1
+∆ ˆψ0(u1,u 0;u1) + ˙F2,0(u1)
++F rad.
+2,1 (u1) +F nonrad.
+2,1 (u1)
++ ð ˆF1(u1) + ð2
+Z u1
+u0
+F0(u)du.
+(3.27)
+These are the quantities which we plot in Sec. IV.
+Note that, in order to determine the contributions to
+the shear, one must invert the angular operators that act
+on the left-hand sides of Eqs. (3.1), (3.8), and (3.17),
+which can be easily done mode-by-mode on a basis of
+spin-weighted spherical harmonics using Eq. (2.16).
+IV. RESULTS
+A. Numerical Data
+For our numerical analysis of the moments of the
+news, we examine a simulation of an equal-mass, non-
+spinning binary black hole system. This simulation
+comes from the SXS catalog and is identified by the ID
+SXS:BBH_ExtCCE:0001 [49]. Because we are interested
+in not only the strain, but also the Weyl scalars at fu-
+ture null infinity, to perform our computations we use
+the waveforms that are produced by SpECTRE’s CCE
+module [30–32]. Last, before using the waveform and the
+Weyl scalars that are output by CCE, we first map this
+asymptotic waveform data to the post-Newtonian (PN)
+BMS frame using a 3PN waveform, the routine outlined
+in Ref. [50], and the python codescri [39–42].
+To illustrate the success of CCE at extracting the
+asymptotic data for this system, in Fig. 1 we show the
+Bianchi identity violations and an estimate of the numer-
+ical error for the asymptotic data of this system. More
+specifically, in the left panel we plot theL2 norm of the
+difference in the right- and left-hand sides of Eqs. (2.22).
+Meanwhile, in the right panel we plot theL2 norm of
+the difference of the two highest-resolution simulations,
+after we map the lower-resolution simulation to the BMS
+frame of the higher-resolution simulation [50]. We define
+the L2 norm of a functionf (over the two-sphere) as
+||f||L2 =
+sZ
+|f|2dΩ. (4.1)
+We stress that the numerical error estimate that we
+provide is more an error estimate on the lower-resolution
+simulation, and that the errors for the simulation that we
+examine will be smaller than what is shown. With this in
+mind, we find that the violation of the Bianchi identities
+and the numerical error for the Weyl scalarsψ2,ψ3, and
+ψ4 are particularly low with absolute errors of≲ 0.001%,
+whereas for the Weyl scalarsψ0 andψ1 the Bianchi viola-
+tions are noticeably larger. We attribute this to the fact
+that both ψ0 and ψ1 are more influenced by backscat-
+tering physics, that is, the fact that information should
+be traveling back and forth between the Cauchy evo-
+lution and CCE, than the other Weyl scalars. In fact,
+this notion has even been confirmed by the recent imple-
+mentation of SpECTRE’s Cauchy-characteristic match-
+ing code, which shows that the violation of theψ0 andψ1
+Bianchi identities is much smaller than what CCE usu-
+ally yields, at least for problem of evolving a Teukolsky
+9
+−500 −400 −300 −200 −100 0
+(u− upeak) /M
+10−8
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+Absolute Error
+Bianchi Identity Violations
+˙ψ0/M2
+˙ψ1/M1
+˙ψ2
+ψ3
+ψ4M
+Im [ψ2] /M
+−500 −400 −300 −200 −100 0
+(u− upeak) /M
+Numerical Error
+FIG. 1. The absolute error of the Bianchi identity violations (left) and a conservative estimate of the numerical error (right).
+The violation of the Bianchi identities is computed by taking the difference of the terms on the left- and right-hand sides of
+Eqs. (2.22), while the numerical error is computed by taking the difference of the two highest-resolution simulations.
+wave [51].8 Nonetheless, because the violations of theψ0
+andψ1 Bianchi identities still correspond to absolute er-
+rors of≲ 1%, the results of Fig. 1 indicate that the errors
+on our asymptotic data are reasonable enough to perform
+the following analysis. Furthermore, we find that the re-
+sults drawn from the following analysis are unchanged if
+one uses the lower-resolution simulation instead of the
+higher-resolution simulation.
+B. Evaluation of Charges and Fluxes
+We now illustrate the hierarchy of the various charge
+and flux terms in terms of their contribution to the shear
+for our binary black hole simulation. In Fig. 2 we show
+the L2 norm of them = 0 modes of each term’s contri-
+bution to ð2¯σ. We organize the curves that are shown
+in descending order with respect to the magnitude of the
+retarded time integral of theirL2 norms:
+sZ
+||·|| 2
+L2du. (4.2)
+Ascanbeseen, F0 isthelargestcontributiontotheshear,
+followed by the various charge terms, and then the other
+8 In particular, see Fig. 7 of Ref. [51].
+flux terms, with ˆF1 being the second largest flux term.
+Note that we restrict our analysis of these terms to the
+m = 0 modes because these modes are the modes which
+typically are the most non-oscillatory [29]. Therefore, by
+focusing on these modes we have a better understanding
+of the hierarchy of the non-oscillatory contributions to
+the shear.
+With the hierarchy of these terms understood, we now
+turn to examining the contributions of the flux terms to
+the primary non-oscillatory modes: the real part of the
+(2, 0) mode and the imaginary part of the(3, 0) mode.
+We focus on the flux terms because, for binary systems,
+these terms should contribute more to net changes in
+the various moments of the news than the charge terms,
+which will dominate for unbound systems. In Fig. 3 we
+show the contributions from F0, ˆF1, and F2,0 to the
+real part of the (2, 0) mode and the imaginary part of
+the (3, 0) mode of the shear. As can be seen, theF0,
+Im[ ˆF1], and Im[F2,0] curves, i.e., the curves correspond-
+ing to the displacement, spin, and magnetic-parity first
+higher memories, exhibit morphologies that one would
+expect based on the moment of the news that they ap-
+pear in: a step-like function, a delta-like function, and
+the derivative of a delta-like function. TheRe[ ˆF1] and
+the Re[F2,0] curves, i.e., the curves corresponding to the
+center-of-mass and the electric-parity first higher mem-
+ory, however, instead appear to break from this “deriva-
+tives of step functions”-like behavior. We believe that the
+10
+10−1 10−1
+3 × 10−2
+4 × 10−2
+6 × 10−2
+||ð2¯σ||L2/M Re
+[
+ð2 ¯σ
+]
+∫
+F0 du
+10−9 10−9
+10−6 10−6
+10−3 10−3
+||ð2¯σ||L2/M ∆ m
+∂
+∂u ð−1∆ ˆψ1
+∂2
+∂u2 ð−2∆ ˆψ0
+Im
+[
+ð2 ¯σ
+]
+−200 −150 −100 −50 0 50
+(u− upeak) /M
+10−9 10−9
+10−6 10−6
+10−3 10−3
+||ð2¯σ||L2/M ð−1 ˆF1
+∂
+∂u ð−2F nonrad.
+2,1
+∂
+∂u ð−2F rad.
+2,1
+∂
+∂u ð−2F2,0
+hierarchy of m = 0 contributions
+FIG. 2. TheL2 norm of them = 0 modes of each charge and flux term’s contribution toð2¯σ, the spin-weight0 version of the
+shear. The curves are sorted by the magnitude of the time integral of theirL2 norm, that is, Eq. (4.2), with the largest being
+first. We also include the real and imaginary parts ofð2¯σ for comparison.
+−200 −150 −100 −50 0 50
+(u− upeak)/M
+−0.050
+−0.025
+0.000
+0.025
+0.050
+0.075
+0.100
+0.125
+contribution to ð2¯σ(𝓁,m)/M
+real part of ( 𝓁, m) = (2, 0)
+∫
+F0 du
+102 × ð−1 ˆF1
+104 × ∂
+∂u ð−2F2,0
+−200 −150 −100 −50 0 50
+(u− upeak)/M
+imaginary part of (3 , 0)×(2×101)
+ð−1 ˆF1
+102 × ∂
+∂u ð−2F2,0
+FIG. 3. The flux term contributions to the real part of the(2, 0) mode (left) and the imaginary part of the(3, 0) mode (right),
+which represent the dominant modes for the displacement and spin memories. In these plots, we scale the(3, 0) mode as well
+as the individual flux terms by varying amounts to make their shapes easier to compare.
+reason these terms do not exhibit the expected behavior
+is because of one of the following reasons. First, it could
+be that one simply needs to perform a correction—like
+the Wald-Zoupas correction discussed in Sec. IIIB. Or,
+and perhaps more likely, it may be that there are quasi-
+normal mode (QNM) oscillations that are obscuring the
+morphology. In particular, because these flux terms
+are second- and third-order combinations of the shear,
+there could be nonlinear combinations of co-rotating and
+counter-rotating QNMs that yield a nontrivial, oscilla-
+11
+−0.10
+−0.05
+0.00
+0.05
+0.10
+0.15
+real part of (2 , 0) Re
+[
+ð2 ¯σ
+]
+∫
+F0 du
+∆ m
+×(6×100)
+ð−1 ˆF1
+∂
+∂u ð−1∆ ˆψ1
+×(6×100)
+F2,n ﬂux terms
+∂2
+∂u2 ð−2∆ ˆψ0
+−200 −100 0
+(u− upeak)/M
+−0.0050
+−0.0025
+0.0000
+0.0025
+0.0050
+0.0075
+imaginary part of (3 , 0)
+Im
+[
+ð2 ¯σ
+]
+ð−1 ˆF1
+∂
+∂u ð−1∆ ˆψ1
+−200 −100 0
+(u− upeak)/M
+×(3×100)
+F2,n ﬂux terms
+∂2
+∂u2 ð−2∆ ˆψ0
+FIG. 4. Contribution from the fluxes and the charges to the real part of the(2, 0) mode (top row) and the imaginary part of
+the (3, 0) mode (bottom row) ofð2¯σ. Each column corresponds to the contribution from terms appearing in that moment of
+the news, e.g., the first column shows terms that appear in the balance law for the zeroth moment of the news. Certain panels
+are scaled by certain factors to make the comparison of each term more straightforward. For the second moment of the news,
+we show the sum of theF2,n fluxes, forn ∈ {0, 1}, since the individual fluxes are notably small.
+tory contribution to these terms which would otherwise
+look like derivatives of step functions [52, 53].9
+Finally, in Fig. 4 we show how the nonradiative fluxes
+and the charges contribute to these modes. As is shown,
+the main observation is that beyond the curves that
+correspond to the displacement and the spin memories,
+whichexhibitdominantcontributionsfromthefluxes, the
+remaining curves are dominated by contributions from
+the charges. This is expected because of the following
+heuristic argument.
+First, note that the total signal in Fig. 4 is predom-
+inantly non-oscillatory, for both the electric and mag-
+netic parts of the shear. Flux contributions, similarly,
+seem to mostly be non-oscillatory, whereas charge con-
+tributions appear to mostly be oscillatory. By comparing
+Eqs. (3.25), (3.26), and (3.27), it is apparent that (up to
+angular operators) the contribution to the shear from the
+ordernchargecanbewrittenasthesumoftheorder n+1
+charge and flux contributions (for a similar discussion,
+9 We thank David Nichols for bringing this observation to our at-
+tention.
+see Ref. [54]). Except for the case when these two contri-
+butions sum to the total (mostly non-oscillatory) signal,
+they are therefore summing to a piece which is mostly
+oscillatory. As such, the mostly oscillatory charge contri-
+bution of ordern + 1 must be dominant over the order
+n + 1 flux contribution, and this pattern should persist
+for all of the higher memory effects.
+V. DISCUSSION
+In this work we provide straightforward expressions for
+the first three moments of the news (that is, the displace-
+ment, drift, and ballistic memories) in terms of charges
+and radiative and non-radiative fluxes as well as the first
+numerical calculation of these terms in the context of
+a binary black hole merger. Besides providing a hier-
+archy for these terms in terms of how much they con-
+tribute to the various memory effects, we also explore
+how much the morphology of these contributions match
+“derivatives of step functions”, which is what they should
+resemble if one assumes that they predominantly source
+non-oscillatory memory effects. In particular, we find
+12
+that while theF0 andF1 flux contributions to the dis-
+placement and spin memory effects resemble step- and
+delta-like functions, the other fluxes break from this ex-
+pected behavior. A possible explanation for this, how-
+ever, could simply be that to make these terms exhibit
+this behavior, then one must perform a correction like
+the Wald-Zoupas correction that is used for the first mo-
+ment of the news [24, 36, 37] or remove the nontrivial
+QNM contributions that are sourced during the ringdown
+phase [52, 53].
+Apart from this, we also find that these higher memory
+contributions are particularly small, relative to their dis-
+placement and spin memory counterparts. Specifically,
+the contributions to the second moment of the news tend
+to be roughly two orders of magnitude smaller than the
+contributions to the zeroth moment of the news. Conse-
+quently, while these terms are interesting from a theoret-
+ical perspective because they represent certain nonlinear
+features of Einstein’s equations, this means that there is
+little hope to observe these effects until future detectors,
+like LISA, come online.
+ACKNOWLEDGMENTS
+We thank David Nichols and Siddhant Siddhant for
+comments on an earlier version of this manuscript. Com-
+putations for this work were performed with the Wheeler
+cluster at Caltech. K.M. acknowledges the support
+of the Sherman Fairchild Foundation and NSF Grants
+No. PHY-2011968, PHY-2011961, PHY-2309211, PHY-
+2309231, OAC-2209656 at Caltech. A.M.G. acknowl-
+edges the support of the Royal Society under grant
+number RF\ERE\221005.
+[1] Y. B. Zel’dovich and A. G. Polnarev, “Radiation of grav-
+itational waves by a cluster of superdense stars,” Sov.
+Astron. 18, 17 (1974).
+[2] D. Christodoulou, “Nonlinear nature of gravitation and
+gravitational-wave experiments,” Phys. Rev. Lett. 67,
+1486–1489 (1991).
+[3] K. S. Thorne, “Gravitational-wave bursts with memory:
+The Christodoulou effect,” Phys. Rev. D 45, 520–524
+(1992).
+[4] Paul D. Lasky, Eric Thrane, Yuri Levin, Jonathan Black-
+man, and Yanbei Chen, “Detecting gravitational-wave
+memory with LIGO: implications of GW150914,” Phys.
+Rev. Lett.117, 061102 (2016), arXiv:1605.01415 [astro-
+ph.HE].
+[5] Oliver M. Boersma, David A. Nichols, and Patricia
+Schmidt, “Forecasts for detecting the gravitational-wave
+memory effect with Advanced LIGO and Virgo,” Phys.
+Rev. D 101, 083026 (2020), arXiv:2002.01821 [astro-
+ph.HE].
+[6] Alexander M. Grant and David A. Nichols, “Outlook for
+detecting the gravitational-wave displacement and spin
+memory effects with current and future gravitational-
+wave detectors,” Phys. Rev. D107, 064056 (2023), [Erra-
+tum: Phys.Rev.D 108, 029901 (2023)], arXiv:2210.16266
+[gr-qc].
+[7] Moritz Hübner, Colm Talbot, Paul D. Lasky, and
+Eric Thrane, “Measuring gravitational-wave memory in
+the first LIGO/Virgo gravitational-wave transient cata-
+log,” Phys. Rev. D101, 023011 (2020), arXiv:1911.12496
+[astro-ph.HE].
+[8] Moritz Hübner, Paul Lasky, and Eric Thrane, “Mem-
+ory remains undetected: Updates from the second
+LIGO/Virgo gravitational-wave transient catalog,” Phys.
+Rev. D104, 023004 (2021), arXiv:2105.02879 [gr-qc].
+[9] Aaron D. Johnson, Shasvath J. Kapadia, Andrew Os-
+borne, Alex Hixon, and Daniel Kennefick, “Prospects
+of detecting the nonlinear gravitational wave memory,”
+Phys. Rev. D99, 044045 (2019), arXiv:1810.09563 [gr-
+qc].
+[10] Kristina Islo, Joseph Simon, Sarah Burke-Spolaor, and
+Xavier Siemens, “Prospects for Memory Detection with
+Low-Frequency Gravitational Wave Detectors,” (2019),
+arXiv:1906.11936 [astro-ph.HE].
+[11] Silvia Gasparotto, Rodrigo Vicente, Diego Blas, Alexan-
+der C. Jenkins, and Enrico Barausse, “Can gravitational-
+wave memory help constrain binary black-hole parame-
+ters? A LISA case study,” Phys. Rev. D 107, 124033
+(2023), arXiv:2301.13228 [gr-qc].
+[12] Sourath Ghosh, Alexander Weaver, Jose Sanjuan, Paul
+Fulda, and Guido Mueller, “Detection of the gravita-
+tional memory effect in LISA using triggers from ground-
+based detectors,” Phys. Rev. D 107, 084051 (2023),
+arXiv:2302.04396 [gr-qc].
+[13] Gabriella Agazie et al. (NANOGrav), “The NANOGrav
+12.5 yr Data Set: Search for Gravitational Wave Mem-
+ory,” Astrophys. J.963, 61 (2024), arXiv:2307.13797 [gr-
+qc].
+[14] É. É. Flanagan, A. M. Grant, A. I. Harte, and
+D. A. Nichols, “Persistent gravitational wave observables:
+general framework,” Phys. Rev. D 99, 084044 (2019),
+arXiv:1901.00021 [gr-qc].
+[15] Alexander M. Grant and David A. Nichols, “Persis-
+tent gravitational wave observables: Curve deviation
+in asymptotically flat spacetimes,” Phys. Rev. D 105,
+024056 (2022), arXiv:2109.03832 [gr-qc].
+[16] Sabrina Pasterski, Andrew Strominger, and Alexander
+Zhiboedov, “New Gravitational Memories,” J. High En-
+ergy Phys.12, 053 (2016), arXiv:1502.06120 [hep-th].
+[17] David A. Nichols, “Spin memory effect for compact bina-
+ries in the post-Newtonian approximation,” Phys. Rev.
+D95, 084048 (2017), arXiv:1702.03300 [gr-qc].
+[18] D. A. Nichols, “Center-of-mass angular momentum and
+memory effect in asymptotically flat spacetimes,” Phys.
+Rev. D98, 064032 (2018), arXiv:1807.08767 [gr-qc].
+[19] Alexander M. Grant, “Persistent gravitational wave ob-
+servables: Nonlinearities in (non-)geodesic deviation,”
+Class. Quant. Grav.41, 175004 (2024), arXiv:2401.00047
+[gr-qc].
+[20] L. Bieri and D. Garfinkle, “Perturbative and gauge in-
+variant treatment of gravitational wave memory,” Phys.
+Rev. D89, 084039 (2014), arXiv:1312.6871 [gr-qc].
+13
+[21] A. Strominger, Lectures on the Infrared Structure of
+Gravity and Gauge Theory (Princeton University Press,
+2018) arXiv:1703.05448 [hep-th].
+[22] Glenn Barnich and Cedric Troessaert, “Symmetries of
+asymptotically flat 4 dimensional spacetimes at null in-
+finity revisited,” Phys. Rev. Lett. 105, 111103 (2010),
+arXiv:0909.2617 [gr-qc].
+[23] Miguel Campiglia and Alok Laddha, “Asymptotic sym-
+metries and subleading soft graviton theorem,” Phys.
+Rev. D90, 124028 (2014), arXiv:1408.2228 [hep-th].
+[24] Éanna É. Flanagan and David A. Nichols, “Conserved
+charges of the extended Bondi-Metzner-Sachs algebra,”
+Phys. Rev. D95, 044002 (2017), arXiv:1510.03386 [hep-
+th].
+[25] Éanna É. Flanagan, Kartik Prabhu, and Ibrahim
+Shehzad, “Extensions of the asymptotic symmetry al-
+gebra of general relativity,” JHEP 01, 002 (2020),
+arXiv:1910.04557 [gr-qc].
+[26] Arwa Elhashash and David A. Nichols, “Definitions of
+angular momentum and super angular momentum in
+asymptotically flat spacetimes: Properties and applica-
+tions to compact-binary mergers,” Phys. Rev. D 104,
+024020 (2021), arXiv:2101.12228 [gr-qc].
+[27] Laurent Freidel, Daniele Pranzetti, and Ana-Maria
+Raclariu, “Higher spin dynamics in gravity and w1+∞
+celestial symmetries,” Phys. Rev. D106, 086013 (2022),
+arXiv:2112.15573 [hep-th].
+[28] Geoffrey Compère, Roberto Oliveri, and Ali Seraj, “Met-
+ric reconstruction from celestial multipoles,” JHEP11,
+001 (2022), arXiv:2206.12597 [hep-th].
+[29] Keefe Mitman, Jordan Moxon, Mark A. Scheel, Saul A.
+Teukolsky, Michael Boyle, Nils Deppe, Lawrence E. Kid-
+der, andWilliamThrowe,“Computationofdisplacement
+and spin gravitational memory in numerical relativity,”
+Phys. Rev. D102, 104007 (2020), arXiv:2007.11562 [gr-
+qc].
+[30] NilsDeppe, WilliamThrowe, LawrenceE.Kidder, NilsL.
+Vu, François Hébert, Jordan Moxon, Cristóbal Armaza,
+Marceline S. Bonilla, Yoonsoo Kim, Prayush Kumar,
+Geoffrey Lovelace, Alexandra Macedo, Kyle C. Nelli,
+Eamonn O’Shea, Harald P. Pfeiffer, Mark A. Scheel,
+Saul A. Teukolsky, Nikolas A. Wittek,et al., “SpECTRE
+v2023.06.19,” 10.5281/zenodo.8056569 (2023).
+[31] Jordan Moxon, Mark A. Scheel, and Saul A. Teukol-
+sky, “Improved Cauchy-characteristic evolution system
+for high-precision numerical relativity waveforms,” Phys.
+Rev. D102, 044052 (2020), arXiv:2007.01339 [gr-qc].
+[32] Jordan Moxon, Mark A. Scheel, Saul A. Teukolsky,
+Nils Deppe, Nils Fischer, Francois Hébert, Lawrence E.
+Kidder, and William Throwe, “SpECTRE Cauchy-
+characteristic evolution system for rapid, precise wave-
+form extraction,” Phys. Rev. D 107, 064013 (2023),
+arXiv:2110.08635 [gr-qc].
+[33] Keefe Mitman, “ HigherMemoryEffects,” https:
+//github.com/keefemitman/HigherMemoryEffects
+(2024).
+[34] Robert P. Geroch, A. Held, and R. Penrose, “A space-
+time calculus based on pairs of null directions,” J. Math.
+Phys. 14, 874–881 (1973).
+[35] Robert Geroch, “Asymptotic structure of space-time,” in
+Asymptotic structure of space-time , edited by F. Paul
+Esposito and Louis Witten (Plenum Press, New York,
+1977).
+[36] Robert M. Wald and Andreas Zoupas, “A general def-
+inition of ‘conserved quantities’ in general relativity
+and other theories of gravity,” Phys. Rev.D61, 084027
+(2000), arXiv:gr-qc/9911095 [gr-qc].
+[37] Alexander M. Grant, Kartik Prabhu, and Ibrahim
+Shehzad, “The Wald–Zoupas prescription for asymp-
+totic charges at null infinity in general relativity,” Class.
+Quant. Grav. 39, 085002 (2022), arXiv:2105.05919 [gr-
+qc].
+[38] Dante A. B. Iozzo, Michael Boyle, Nils Deppe, Jordan
+Moxon, Mark A. Scheel, Lawrence E. Kidder, Harald P.
+Pfeiffer, andSaulA.Teukolsky,“Extendinggravitational
+wave extraction using Weyl characteristic fields,” Phys.
+Rev. D103, 024039 (2021), arXiv:2010.15200 [gr-qc].
+[39] Michael Boyle, Dante Iozzo, Leo Stein, Aniket Khairnar,
+Hannes Rüter, Mark Scheel, Vijay Varma, and Keefe
+Mitman, “scri,” (2023).
+[40] Michael Boyle, “Angular velocity of gravitational radia-
+tion from precessing binaries and the corotating frame,”
+Phys. Rev. D87, 104006 (2013), arXiv:1302.2919 [gr-qc].
+[41] Michael Boyle, Lawrence E. Kidder, Serguei Ossokine,
+and Harald P. Pfeiffer, “Gravitational-wave modes from
+precessing black-hole binaries,” (2014), arXiv:1409.4431
+[gr-qc].
+[42] Michael Boyle, “Transformations of asymptotic
+gravitational-wave data,” Phys. Rev. D 93, 084031
+(2016), arXiv:1509.00862 [gr-qc].
+[43] R. Penrose and W. Rindler,Spinors and Space-Time Vol.
+2: Spinor and Twistor Methods in Space-Time Geometry
+(Cambridge University Press, 1988).
+[44] Laurent Freidel, Daniele Pranzetti, and Ana-Maria
+Raclariu, “A discrete basis for celestial holography,”
+JHEP 02, 176 (2024), arXiv:2212.12469 [hep-th].
+[45] Geoffrey Compère, Roberto Oliveri, and Ali Seraj, “The
+Poincaré and BMS flux-balance laws with application to
+binary systems,” J. High Energy Phys.10, 116 (2020),
+arXiv:1912.03164 [gr-qc].
+[46] Thomas Mädler and Jeffrey Winicour, “The sky pat-
+tern of the linearized gravitational memory effect,” Class.
+Quant. Grav. 33, 175006 (2016), arXiv:1605.01273 [gr-
+qc].
+[47] Lydia Bieri, “New Effects in Gravitational Waves
+and Memory,” Phys. Rev. D 103, 024043 (2021),
+arXiv:2010.09207 [gr-qc].
+[48] Gautam Satishchandran and Robert M. Wald, “Asymp-
+totic behavior of massless fields and the memory effect,”
+Phys. Rev. D99, 084007 (2019), arXiv:1901.05942 [gr-
+qc].
+[49] Michael Boyleet al., “The SXS Collaboration catalog of
+binary black hole simulations,” Class. Quant. Grav.36,
+195006 (2019), arXiv:1904.04831 [gr-qc].
+[50] Keefe Mitmanet al., “Fixing the BMS frame of numerical
+relativity waveforms with BMS charges,” Phys. Rev. D
+106, 084029 (2022), arXiv:2208.04356 [gr-qc].
+[51] Sizheng Ma et al. , “Fully relativistic three-dimensional
+Cauchy-characteristic matching for physical degrees
+of freedom,” Phys. Rev. D 109, 124027 (2024),
+arXiv:2308.10361 [gr-qc].
+[52] Keefe Mitman et al. , “Nonlinearities in Black Hole
+Ringdowns,” Phys. Rev. Lett. 130, 081402 (2023),
+arXiv:2208.07380 [gr-qc].
+[53] Mark Ho-Yeuk Cheunget al., “Nonlinear Effects in Black
+Hole Ringdown,” Phys. Rev. Lett.130, 081401 (2023),
+arXiv:2208.07374 [gr-qc].
+14
+[54] Siddhant Siddhant, Alexander M. Grant, and David A.
+Nichols, “Higher memory effects and the post-Newtonian
+calculation of their gravitational-wave signals,” (2024),
+arXiv:2403.13907 [gr-qc].

@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ca1ee7ad-055b-481b-a774-f5cf4d612763",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and record the exact exceptional rank-four residue result"
+  },
+  "idempotency_key": "auto-proposal-cc9f3bb044258004943d5692",
+  "expected_ledger_head": "e143ed2f022d6dfa338b638e51bc86e9cc00947d5bf9368474c03500f221cc28",
+  "created_at": "2026-08-20T11:43:31.5639557Z",
+  "content_fingerprint": "cc9f3bb044258004943d5692aa386e6f9b59f2cee27fe51d60656707c4db3ac6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1120 — The Exceptional Rank-Four Connection Has Only Existing-Support Residues",
+      "path": "src/ledger/20260820-1120 The Exceptional Rank-Four Connection Has Only Existing-Support Residues.md",
+      "status": "established",
+      "entity_id": "mariciledger_entry:c60bfbbe7c82f73fdf1a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Exceptional rank-four residues are supported only on frozen divisors",
+      "body": "The exact characteristic-zero quotient connection has denominator s(s-1)(s+1)(s^2+6s+1). Its residues have ranks 1,1,2,2 respectively. The quadratic residue has rank R=2 and rank R^2=1, hence non-semisimple coefficient-extension data, while no new carrier divisor occurs.",
+      "status": "established",
+      "entity_id": "mariciclaim:35581a73e9b8c665ebad"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact exceptional rank-four quotient residue audit",
+      "path": "research/benincasa/results/rank12-u0-v2-exact-quotient-residues.json",
+      "status": "passed",
+      "entity_id": "maricitest:57a04af1c1821a164c4b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:c60bfbbe7c82f73fdf1a",
+      "target_id": "mariciclaim:35581a73e9b8c665ebad",
+      "relation_id": "rel:maricirecords-76b70da2d7ec67bd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:35581a73e9b8c665ebad",
+      "target_id": "maricitest:57a04af1c1821a164c4b",
+      "relation_id": "rel:maricisupported_by-4c8ba15d11d509ea"
+    }
+  ],
+  "digest": "48ca693d82ec84170ae6e81cdd7f5809d7c36bb1b32c99a7ff91695603dc716b"
+}

@@ -1,0 +1,10 @@
+# Disabled script note
+
+Date: 2026-08-16
+Original: verify_all_lower_source_periods.py
+Renamed to: verify_all_lower_source_periods.py.bak
+
+Why:
+The script was running as a Python worker and caused severe memory pressure. At intervention, PID 43480 had approximately 284,498 MB of private commit and 524.8 MB resident memory; the machine had about 0.6 GB free RAM and the pagefile was heavily active. PID 39428 was its parent worker. Both processes were terminated.
+
+The source is retained as a .py.bak for review and is not executable as a Python module by its former filename. Do not restore the .py name until the memory behavior is understood and bounded.

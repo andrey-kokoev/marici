@@ -1,0 +1,478 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007138643_onepass_low",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside JSON.",
+  "request_fingerprint": "764868b5077e3503a652535ba99ed62eecc1b2072b50936978efaa01b0a1c824",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:52:18.6631542Z",
+  "created_at_ms": 1787007138663,
+  "started_at": "2026-08-17T22:52:18.7950257Z",
+  "started_at_ms": 1787007138795,
+  "finished_at": "2026-08-17T23:27:32.0501883Z",
+  "finished_at_ms": 1787009252050,
+  "duration_ms": 2113255,
+  "updated_at": "2026-08-17T23:27:32.0502011Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007138643_onepass_low",
+  "constraints": {
+    "preflight_paths": [
+      {
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ],
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "queue_timeout_ms": 900000,
+    "max_retries": 0,
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "typed_representation",
+            "decisive_representation",
+            "minimal_reduction",
+            "residual_complex",
+            "unconditional_homology",
+            "conditional_conclusions",
+            "coefficient_gate",
+            "constructed_vs_compatible",
+            "remaining_construction",
+            "falsifier"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-3cdf52bff3fa4358b1f6d2ffe71afc64"
+        ],
+        "current_run_id": "run-3cdf52bff3fa4358b1f6d2ffe71afc64",
+        "started_at": "2026-08-17T22:52:18.7950367Z",
+        "finished_at": "2026-08-17T23:27:32.0459504Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={4 fields}, residual_complex={5 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is arbitrary commutative unital",
+              "lattice_realization": "L = Zp, rho is additive, c = rho(p)",
+              "coefficient": {
+                "known": [
+                  "c != 0"
+                ],
+                "not_justified": [
+                  "c is a unit",
+                  "c is a non-zero-divisor",
+                  "R is a domain",
+                  "rho is multiplicative or unit-preserving"
+                ]
+              },
+              "graded_terms": {
+                "C2": "Rx direct_sum Ry",
+                "C1": "Rz",
+                "other_degrees": "0"
+              }
+            },
+            "decisive_representation": {
+              "formula": "delta(a x + b y) = (c a) z",
+              "matrix_from_C2_to_C1": "[c  0]",
+              "support_effect": "y is killed because its support is beta; x maps to the alpha-supported z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the inert subcomplex Ry in degree 2",
+              "restriction": "Equivalently restrict to the direct summand Rx in degree 2",
+              "result": "C2' = Rx, C1' = Rz",
+              "caution": "This removes the homology class represented by y and therefore is not the homology of the unreduced complex"
+            },
+            "residual_complex": {
+              "complex": "0 -> Rx --multiplication_by_c--> Rz -> 0",
+              "matrix": "[c]",
+              "kernel": "Ann_R(c) x",
+              "cokernel": "(R/(c)) z",
+              "acyclicity_criterion": "The residual complex is acyclic if and only if c is a unit"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x direct_sum Ry",
+                "H1": "(R/(c)) z",
+                "Hk": "0 for all other degrees"
+              },
+              "consequence": "The unreduced complex is never acyclic under the supplied grading because Ry is a nonzero degree-2 cycle with no possible incoming boundary"
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 vanishes and the residual H1 is (R/(c))z.",
+              "If c is a unit, the residual multiplication map is an isomorphism and the reduced complex is acyclic; the full complex still has H2 isomorphic to Ry.",
+              "If R is an integral domain, the given c != 0 yields fraction-field rank one for the residual matrix, but does not imply exactness over R.",
+              "If c is a nonzero zero divisor, the residual H2 is nonzero."
+            ],
+            "coefficient_gate": {
+              "given_gate": "c != 0 proves only that multiplication by c is a nonzero R-linear map",
+              "injectivity_gate": "c must be a non-zero-divisor",
+              "surjectivity_gate": "c must be a unit",
+              "rank_statement": "No intrinsic rank-one or split-free conclusion follows over an arbitrary ring from c != 0 alone",
+              "realization_limit": "Additivity of rho and primitiveness of p do not supply a unit or inverse for c"
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "The typed graded modules and support data",
+                "The values delta(x) = c z and delta(y) = 0",
+                "The residual matrix [c] and its kernel/cokernel formulas"
+              ],
+              "support_compatible": [
+                "The beta-supported y is excluded by the alpha admissibility condition",
+                "The recorded image of x lands in the alpha-supported z"
+              ],
+              "not_established": [
+                "c is invertible or regular",
+                "The residual map splits or is an isomorphism",
+                "The unreduced complex is acyclic"
+              ]
+            },
+            "remaining_construction": {
+              "reduced_acyclicity": "Construct an element d in R with dc = cd = 1, equivalently prove that c is a unit, to obtain an inverse or contracting homotopy for the residual map",
+              "full_acyclicity": "Additionally justify quotienting or restricting away Ry, or supply a degree-3 boundary onto y; no such boundary is present in the packet",
+              "status": "Unresolved by the supplied evidence"
+            },
+            "falsifier": {
+              "structural": "The y class itself falsifies full acyclicity of the displayed unreduced complex",
+              "nonzero_not_unit": "R = Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H1 = Z/2Z",
+              "nonzero_not_regular": "R = Z/4Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H2 = Ann_R(2)x, which is nonzero"
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-3cdf52bff3fa4358b1f6d2ffe71afc64",
+        "status": "completed",
+        "finished_at": "2026-08-17T23:27:32.0453876Z",
+        "duration_ms": 144469,
+        "output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={4 fields}, residual_complex={5 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is arbitrary commutative unital",
+              "lattice_realization": "L = Zp, rho is additive, c = rho(p)",
+              "coefficient": {
+                "known": [
+                  "c != 0"
+                ],
+                "not_justified": [
+                  "c is a unit",
+                  "c is a non-zero-divisor",
+                  "R is a domain",
+                  "rho is multiplicative or unit-preserving"
+                ]
+              },
+              "graded_terms": {
+                "C2": "Rx direct_sum Ry",
+                "C1": "Rz",
+                "other_degrees": "0"
+              }
+            },
+            "decisive_representation": {
+              "formula": "delta(a x + b y) = (c a) z",
+              "matrix_from_C2_to_C1": "[c  0]",
+              "support_effect": "y is killed because its support is beta; x maps to the alpha-supported z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the inert subcomplex Ry in degree 2",
+              "restriction": "Equivalently restrict to the direct summand Rx in degree 2",
+              "result": "C2' = Rx, C1' = Rz",
+              "caution": "This removes the homology class represented by y and therefore is not the homology of the unreduced complex"
+            },
+            "residual_complex": {
+              "complex": "0 -> Rx --multiplication_by_c--> Rz -> 0",
+              "matrix": "[c]",
+              "kernel": "Ann_R(c) x",
+              "cokernel": "(R/(c)) z",
+              "acyclicity_criterion": "The residual complex is acyclic if and only if c is a unit"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x direct_sum Ry",
+                "H1": "(R/(c)) z",
+                "Hk": "0 for all other degrees"
+              },
+              "consequence": "The unreduced complex is never acyclic under the supplied grading because Ry is a nonzero degree-2 cycle with no possible incoming boundary"
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 vanishes and the residual H1 is (R/(c))z.",
+              "If c is a unit, the residual multiplication map is an isomorphism and the reduced complex is acyclic; the full complex still has H2 isomorphic to Ry.",
+              "If R is an integral domain, the given c != 0 yields fraction-field rank one for the residual matrix, but does not imply exactness over R.",
+              "If c is a nonzero zero divisor, the residual H2 is nonzero."
+            ],
+            "coefficient_gate": {
+              "given_gate": "c != 0 proves only that multiplication by c is a nonzero R-linear map",
+              "injectivity_gate": "c must be a non-zero-divisor",
+              "surjectivity_gate": "c must be a unit",
+              "rank_statement": "No intrinsic rank-one or split-free conclusion follows over an arbitrary ring from c != 0 alone",
+              "realization_limit": "Additivity of rho and primitiveness of p do not supply a unit or inverse for c"
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "The typed graded modules and support data",
+                "The values delta(x) = c z and delta(y) = 0",
+                "The residual matrix [c] and its kernel/cokernel formulas"
+              ],
+              "support_compatible": [
+                "The beta-supported y is excluded by the alpha admissibility condition",
+                "The recorded image of x lands in the alpha-supported z"
+              ],
+              "not_established": [
+                "c is invertible or regular",
+                "The residual map splits or is an isomorphism",
+                "The unreduced complex is acyclic"
+              ]
+            },
+            "remaining_construction": {
+              "reduced_acyclicity": "Construct an element d in R with dc = cd = 1, equivalently prove that c is a unit, to obtain an inverse or contracting homotopy for the residual map",
+              "full_acyclicity": "Additionally justify quotienting or restricting away Ry, or supply a degree-3 boundary onto y; no such boundary is present in the packet",
+              "status": "Unresolved by the supplied evidence"
+            },
+            "falsifier": {
+              "structural": "The y class itself falsifies full acyclicity of the displayed unreduced complex",
+              "nonzero_not_unit": "R = Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H1 = Z/2Z",
+              "nonzero_not_regular": "R = Z/4Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H2 = Ann_R(2)x, which is nonzero"
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-3cdf52bff3fa4358b1f6d2ffe71afc64",
+        "status": "completed",
+        "output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={4 fields}, residual_complex={5 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is arbitrary commutative unital",
+              "lattice_realization": "L = Zp, rho is additive, c = rho(p)",
+              "coefficient": {
+                "known": [
+                  "c != 0"
+                ],
+                "not_justified": [
+                  "c is a unit",
+                  "c is a non-zero-divisor",
+                  "R is a domain",
+                  "rho is multiplicative or unit-preserving"
+                ]
+              },
+              "graded_terms": {
+                "C2": "Rx direct_sum Ry",
+                "C1": "Rz",
+                "other_degrees": "0"
+              }
+            },
+            "decisive_representation": {
+              "formula": "delta(a x + b y) = (c a) z",
+              "matrix_from_C2_to_C1": "[c  0]",
+              "support_effect": "y is killed because its support is beta; x maps to the alpha-supported z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the inert subcomplex Ry in degree 2",
+              "restriction": "Equivalently restrict to the direct summand Rx in degree 2",
+              "result": "C2' = Rx, C1' = Rz",
+              "caution": "This removes the homology class represented by y and therefore is not the homology of the unreduced complex"
+            },
+            "residual_complex": {
+              "complex": "0 -> Rx --multiplication_by_c--> Rz -> 0",
+              "matrix": "[c]",
+              "kernel": "Ann_R(c) x",
+              "cokernel": "(R/(c)) z",
+              "acyclicity_criterion": "The residual complex is acyclic if and only if c is a unit"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x direct_sum Ry",
+                "H1": "(R/(c)) z",
+                "Hk": "0 for all other degrees"
+              },
+              "consequence": "The unreduced complex is never acyclic under the supplied grading because Ry is a nonzero degree-2 cycle with no possible incoming boundary"
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 vanishes and the residual H1 is (R/(c))z.",
+              "If c is a unit, the residual multiplication map is an isomorphism and the reduced complex is acyclic; the full complex still has H2 isomorphic to Ry.",
+              "If R is an integral domain, the given c != 0 yields fraction-field rank one for the residual matrix, but does not imply exactness over R.",
+              "If c is a nonzero zero divisor, the residual H2 is nonzero."
+            ],
+            "coefficient_gate": {
+              "given_gate": "c != 0 proves only that multiplication by c is a nonzero R-linear map",
+              "injectivity_gate": "c must be a non-zero-divisor",
+              "surjectivity_gate": "c must be a unit",
+              "rank_statement": "No intrinsic rank-one or split-free conclusion follows over an arbitrary ring from c != 0 alone",
+              "realization_limit": "Additivity of rho and primitiveness of p do not supply a unit or inverse for c"
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "The typed graded modules and support data",
+                "The values delta(x) = c z and delta(y) = 0",
+                "The residual matrix [c] and its kernel/cokernel formulas"
+              ],
+              "support_compatible": [
+                "The beta-supported y is excluded by the alpha admissibility condition",
+                "The recorded image of x lands in the alpha-supported z"
+              ],
+              "not_established": [
+                "c is invertible or regular",
+                "The residual map splits or is an isomorphism",
+                "The unreduced complex is acyclic"
+              ]
+            },
+            "remaining_construction": {
+              "reduced_acyclicity": "Construct an element d in R with dc = cd = 1, equivalently prove that c is a unit, to obtain an inverse or contracting homotopy for the residual map",
+              "full_acyclicity": "Additionally justify quotienting or restricting away Ry, or supply a degree-3 boundary onto y; no such boundary is present in the packet",
+              "status": "Unresolved by the supplied evidence"
+            },
+            "falsifier": {
+              "structural": "The y class itself falsifies full acyclicity of the displayed unreduced complex",
+              "nonzero_not_unit": "R = Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H1 = Z/2Z",
+              "nonzero_not_regular": "R = Z/4Z, c = 2, rho(np) = 2n satisfies the packet but gives residual H2 = Ann_R(2)x, which is nonzero"
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={4 fields}, residual_complex={5 fields}"
+}

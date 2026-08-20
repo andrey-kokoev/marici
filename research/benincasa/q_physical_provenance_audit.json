@@ -1,0 +1,78 @@
+{
+  "schema": "marici.benincasa.q_physical_provenance_audit.v1",
+  "date": "2026-08-15",
+  "frozen_carrier_modified": false,
+  "second_slice": {
+    "X1": "3*lambda",
+    "X2": "lambda",
+    "X3": "1",
+    "Q_lambda": "240*lambda^4 + 64*lambda^3 - 120*lambda^2 - 48*lambda - 5",
+    "Q_squarefree": true,
+    "generic_Q_connection_regular": true,
+    "generic_Q_residue": "zero",
+    "generic_Q_monodromy": "identity",
+    "published_L2_parameter": "a1=3",
+    "published_L2_match": true,
+    "algebraic_quotient_denominator_Q_gcd": "1",
+    "certificate": "research/benincasa/derive_nine_master_second_slice_connection.py",
+    "certificate_sha256": "c4337478380ef7f5d8bd2987ee13644770394453e986d93d7a6e76ea1d936beb",
+    "result": "research/benincasa/nine_master_second_slice_connection.json",
+    "result_sha256": "fd5dfa6b38ee3dac5feb27784d46f2e09deb68a0fa8aebf2bcf3ef8087e7e3e3"
+  },
+  "primary_source_audit": {
+    "paper": "arXiv:2408.16386v2",
+    "applications_tex_sha256": "3e92460fe2e34dc21a537c784dab3b2fbcd9b7cfee9e7372f06971b50d8b6f9b",
+    "cosmologicalintegrals_tex_sha256": "aca93533c4c3fe25ec1428c269eb9c379ae30070e4d1d2e02f60f8e2b9193f9e",
+    "method_tex_sha256": "32c332c1139a87397bf2824f46c7c8eff3d7ce48f902bae392ed61dd07900159",
+    "full_triangle_integrand": "applications.tex lines 204-239, equation (51)",
+    "denominators": "applications.tex lines 243-253, equation (52)",
+    "nine_master_family": "applications.tex lines 370-410, equations (57)-(58)",
+    "algebraic_letter": "applications.tex lines 448-457",
+    "P_status": "symbol_used_but_not_defined",
+    "Q_status": "printed_explicitly",
+    "generic_L1_status": "not_printed",
+    "generic_9x9_connection_status": "not_printed",
+    "source_supplement_status": "Maple is cited only as software; no worksheet or ancillary algebraic-letter data is supplied"
+  },
+  "cited_primary_constructions": {
+    "arXiv_2305_19686": {
+      "derived_datum": "negative imaginary parts for all external and internal energies; equations (4.18)-(4.20)",
+      "does_not_supply": "a q_G12 Leray tube, residue-surface relative cycle, or generic-Q loop variation"
+    },
+    "arXiv_2402_06558": {
+      "derived_datum": "positive Cayley-Menger/Gram contour and statement that analytically continued q-hyperplanes can cross it; equations (3.1)-(3.7)",
+      "does_not_supply": "the detour/transport class after crossing or a residue-surface lift"
+    },
+    "arXiv_2401_05207": {
+      "derived_datum": "contour representations and weighted-polytope boundary data for correlators",
+      "does_not_supply": "the three-site q_G12 residue-sector moving chain or companion P"
+    }
+  },
+  "nonuniqueness": {
+    "claim": "Q alone cannot determine P",
+    "reason": "For every homogeneous quadratic R with the source dimensions, (R+sqrt(Q))/(R-sqrt(Q)) has the printed form. No source equation selects R.",
+    "tempting_candidate": "A+B-E^2",
+    "status": "prohibited_as_identification_without_an_independent source-derived letter or connection",
+    "sign_and_inverse_ambiguity": true
+  },
+  "relative_chain": {
+    "physical_chain": "positive loop-edge domain cut out by Cayley-Menger/Gram nonnegativity",
+    "q_G12_on_physical_chamber": "E+y12 > 0",
+    "residue_access": "requires analytic continuation and a Leray/residue construction",
+    "missing_first_datum": "source-fixed labelled and sheeted log divisor for each printed four-pole residue summand",
+    "missing_second_datum": "source-fixed lift/transport of the physical Borel-Moore chain to that resolved log pair",
+    "Var_Q_Gamma_phys": "undefined_from_frozen_source_data"
+  },
+  "raw_discriminant_evidence": {
+    "certificate": "research/benincasa/check_generic_q_log_smoothness.rs",
+    "candidate_count": 1719,
+    "Q_component_count": 0,
+    "scope": "maximal raw surface/line/pair/triple support census",
+    "limitation": "does not replace the missing labelled sheeted log pair"
+  },
+  "classification": "underdetermined",
+  "classification_detail": "Precisely identified companion-P and continuation/relative-homology data are absent. Zero physical variation is not inferred from regular coefficient monodromy.",
+  "new_carrier_datum": "none_derived",
+  "prohibited_repairs_observed": true,
+  "next_falsifier": "Acquire the authors' generic 9x9 connection/Maple worksheet or an explicit source-defined physical residue-cycle prescription; freeze it, then compute the sheeted relative discriminant and Var_Q without adding carrier strata."
+}

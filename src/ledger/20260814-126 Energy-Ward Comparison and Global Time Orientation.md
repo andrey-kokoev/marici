@@ -1,3 +1,8 @@
+---
+authors:
+  - marici.Nima
+  - marici.Benincasa
+---
 # Energy--Ward Comparison and Global Time Orientation
 
 ## Record

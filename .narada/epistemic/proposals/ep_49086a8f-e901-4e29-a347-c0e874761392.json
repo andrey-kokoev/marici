@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_49086a8f-e901-4e29-a347-c0e874761392",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator assigned the flavor admission program to marici.Figueiredo with proceed-at-will authority; recording WP8 fiber-classification claim, checker, and results."
+  },
+  "idempotency_key": "auto-proposal-3408aa7f0f7537d6c9c4315f",
+  "expected_ledger_head": "d6cc5de81b6a19c3d91862cbd3c7593b3abf38bb87120b8348c06307b60f8c71",
+  "created_at": "2026-08-20T05:05:10.2660032Z",
+  "content_fingerprint": "3408aa7f0f7537d6c9c4315f9b281377185b998f2a892bcc1b614d3f6ccf099d",
+  "operations": [
+    {
+      "kind": "source",
+      "local_ref": "s_wp8",
+      "locator": "research/flavor/results/wp8_fiber_classification.json",
+      "op": "entity.declare",
+      "title": "WP8 loop-phase fiber classification at the WP7 best-fit physical point (61 minima, 57 charts, 18 exact phase values, 4 same-chart doublets, cluster cores)",
+      "version": "1",
+      "entity_id": "source:d056ef39a8985ff5d905"
+    },
+    {
+      "kind": "test",
+      "local_ref": "t_wp8",
+      "locator": "research/flavor/checkers/wp8_fiber_classification.py",
+      "op": "entity.declare",
+      "title": "WP8 fiber classification checker: discreteness, same-chart multiplicity, UT-core matching of the loop-phase fiber",
+      "entity_id": "test:819e74bb4f3f92adc813"
+    },
+    {
+      "kind": "claim",
+      "local_ref": "c_wp8",
+      "locator": "src/ledger/20260820-1092 The Loop-Phase Fiber over One Physical Point Is Exactly Discrete (WP8 Fiber Classification).md",
+      "op": "entity.declare",
+      "title": "WP8: the loop-phase fiber over one physical flavor point is exactly discrete (18 values, within-spread <= 2.3e-8 vs min gap 2.9e-5), is two-valued even inside four single charts (flagship 0.817882 vs 0.819271 at 1.1e-7 sigma observable separation), and its WP4-motivated cores match beta, gamma, alpha, and pi-2gamma to <= 1.2 mrad while the 0.818 core matches no motivated UT core",
+      "version": "1",
+      "entity_id": "claim:7db3b744dc01f91c79fb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t_wp8",
+      "target_ref": "c_wp8",
+      "source_id": "test:819e74bb4f3f92adc813",
+      "target_id": "claim:7db3b744dc01f91c79fb",
+      "relation_id": "rel:tests-53df4b1d196edf1f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "c_wp8",
+      "target_id": "source:0b24ac2fa3458eb0592c",
+      "source_id": "claim:7db3b744dc01f91c79fb",
+      "relation_id": "rel:derived_from-4cee48e29f4e7fd2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "c_wp8",
+      "target_id": "claim:b89e01b0ebff68ade45b",
+      "source_id": "claim:7db3b744dc01f91c79fb",
+      "relation_id": "rel:maricirefines-53f6eee373e28483"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "c_wp8",
+      "target_ref": "s_wp8",
+      "source_id": "claim:7db3b744dc01f91c79fb",
+      "target_id": "source:d056ef39a8985ff5d905",
+      "relation_id": "rel:derived_from-1e1c9d3ad1863cf0"
+    }
+  ],
+  "digest": "bd420bf52024bdbb867af88fe5c04b2408181fb177042dda5c9ecbf9baf0c169"
+}

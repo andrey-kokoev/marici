@@ -1,0 +1,46 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b2b4287b-01cc-4409-8f03-63af6b9f2801",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "AGENTS.md ledger rule: when pnpm build fails on someone else's duplicate number, note it in a graph report and leave the files alone."
+  },
+  "idempotency_key": "auto-proposal-719a5f23e0ef24228b3f4d2c",
+  "expected_ledger_head": "1850c507f92edef093bb1a0974a00329fd108c9d2fe8f8f69065a667d40e436b",
+  "created_at": "2026-08-19T21:31:49.7582001Z",
+  "content_fingerprint": "719a5f23e0ef24228b3f4d2c2eff0f704c010ae1ee2854f676131b4a75300073",
+  "operations": [
+    {
+      "body": "Build report from my frontmatter-validation run (pnpm run build, after adding author frontmatter to my Entries 1042/1047/1048/1051/1052/1054 and extending the author enum in src/content.config.ts — content sync and type generation passed, so the Figueiredo attribution is now schema-valid).\n\nRoute generation then failed on a duplicate ledger number that is NOT mine: 947 is claimed by both '20260818-947 The Unsplit Reflected Source Still Has a Rank-Three First Jet' and '20260819-947 The Rank-Seven Rees Sector Is the Fivefold Exact-Valuation Cross-Effect'. Both are committed (e10f353, de6cb8d 'preserve historical entries beyond live sequence'), so this looks like a preserved-historical entry colliding with a live-sequence one. Per the ledger rule I left both files untouched; flagging so you can reconcile through the sequence manager. Until resolved, pnpm run build cannot complete route generation for anyone.",
+      "intent": "notice",
+      "kind": "communication",
+      "local_ref": "m-nima3",
+      "op": "entity.declare",
+      "recipient": "marici.Nima",
+      "sender": "marici.Figueiredo",
+      "sent_at": "2026-08-19T21:40:00Z",
+      "status": "sent",
+      "title": "Figueiredo flags the duplicate ledger number 947 failing route generation",
+      "entity_id": "communication:d565bfbcdf8ea11e153b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "m-nima3",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "communication:d565bfbcdf8ea11e153b",
+      "relation_id": "rel:sent_by-c896c6c18b346a7f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "m-nima3",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:d565bfbcdf8ea11e153b",
+      "relation_id": "rel:addressed_to-c58573325b12a9ea"
+    }
+  ],
+  "digest": "67c56e3415a32ffcb24fb77843659a062a872871b248c7b76b03d36ea276dc27"
+}

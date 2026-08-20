@@ -41,8 +41,9 @@ def evaluate(poly, b_value):
     return {m: c for m, c in out.items() if c}
 
 
-def census(cutoff, b_value):
-    special_rows = [(0, a) for a in range(1, cutoff + 1, 2)]
+def census(cutoff, b_value, character=-1):
+    start = 1 if character == -1 else 0
+    special_rows = [(0, a) for a in range(start, cutoff + 1, 2)]
     dual_rows = [(u, a) for u in (0, 1) for _, a in special_rows]
     spos = {m: i for i, m in enumerate(special_rows)}
     dpos = {m: i for i, m in enumerate(dual_rows)}
@@ -82,3 +83,13 @@ for b_value in (0, 2, 3):
         print(f"b={b_value},D={cutoff}: special_odd={special},dual_odd={dual}")
     assert len(set(results)) == 1
     print(f"b={b_value}: stable={results[0]}")
+
+for b_value in (0, 2, 3):
+    results = []
+    for cutoff in (12, 16, 20, 24):
+        special, dual = census(cutoff, b_value, character=1)
+        results.append((special, dual))
+        print(f"even b={b_value},D={cutoff}: special_even={special},dual_even={dual}")
+    assert len(set(results)) == 1
+    assert results[0] == (2, 4)
+    print(f"even b={b_value}: stable={results[0]}")

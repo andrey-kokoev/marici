@@ -1,0 +1,146 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_d26e24dd3e692629",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read only in C:\\Users\\andrey\\src\\marici: inspect the existing UI navigation and Research information architecture. Identify the exact files and established component/style conventions needed to add a second-level Research item named 'Related research programs', with an external/non-authoritative badge and typed relationship classifications. Do not edit files. Return structured_output with recommended_files (array), navigation_location, page_pattern, test_commands, and risks.",
+  "request_fingerprint": "55fc5c900fc9fac65b31ff8f85ff5d38b9187ee160bdae1fe502b0d646d8fe83",
+  "validated_request_ref": "vr_428e331f513249bf8ee0e18a54ca8c5f",
+  "created_at": "2026-08-16T17:29:13.0985981Z",
+  "updated_at": "2026-08-16T17:31:13.4827253Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-related-programs-ui-recon-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src",
+        "access": "read",
+        "label": "UI source"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "recommended_files",
+      "navigation_location",
+      "page_pattern",
+      "test_commands",
+      "risks"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-c0a76694e0604e699ebb688eb465e2a4"
+        ],
+        "current_run_id": "run-c0a76694e0604e699ebb688eb465e2a4",
+        "started_at": "2026-08-16T17:29:13.1410846Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed"
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-c0a76694e0604e699ebb688eb465e2a4",
+        "status": "failed",
+        "finished_at": "2026-08-16T17:31:13.4820987Z"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-c0a76694e0604e699ebb688eb465e2a4",
+        "status": "failed",
+        "output": null,
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "recommended_files",
+          "navigation_location",
+          "page_pattern",
+          "test_commands",
+          "risks"
+        ],
+        "returned": [],
+        "missing": [
+          "recommended_files",
+          "navigation_location",
+          "page_pattern",
+          "test_commands",
+          "risks"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": null
+}

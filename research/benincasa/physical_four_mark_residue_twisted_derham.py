@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from itertools import product
 
 
-PRIME = 32003
+PRIME = int(os.environ.get("MARICI_FIELD_PRIME", "32003"))
 Monomial = tuple[int, int]
 Polynomial = dict[Monomial, int]
 

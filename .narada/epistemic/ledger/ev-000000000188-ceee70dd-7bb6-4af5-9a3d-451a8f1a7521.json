@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 188,
+  "event_id": "ev-000000000188-ceee70dd-7bb6-4af5-9a3d-451a8f1a7521",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "dab675d418e482525e365f7c7b546670ba2d252f508ecc11f57512c7f4ec6393",
+  "proposal_id": "ep_06d1b37b-6364-4f1e-b619-394e7bac44ef",
+  "proposal_digest": "50b1663e6fbeec69b6ec48ecb33d84a8d5691c8edd20b46f24b1b38b0ecd36f7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-492",
+      "kind": "source",
+      "title": "Entry 492 — The Generic Invariant H0 Kernel Is Not the Conormal Cell",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-492 The Generic Invariant H0 Kernel Is Not the Conormal Cell.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:generic-even-jacobian-h0-492",
+      "kind": "test",
+      "title": "Generic invariant Jacobian H0 rank census",
+      "version": "2026-08-18",
+      "locator": "research/benincasa/marici-gm/src/bin/soft_axis_generic_odd_jacobian_map.rs"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:invariant-h0-kernel-not-conormal-492",
+      "kind": "claim",
+      "title": "The generic invariant H0 kernel is reduced length one and is not the length-two conormal cell"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:invariant-h0-kernel-not-conormal-492",
+      "target_id": "marici:source:ledger-492",
+      "relation_id": "rel:derived_from-7b99aed037427116"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:generic-even-jacobian-h0-492",
+      "target_id": "marici:claim:invariant-h0-kernel-not-conormal-492",
+      "relation_id": "rel:tests-e42250c6396155ba"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-492-even-h0-kernel",
+      "test_id": "marici:test:generic-even-jacobian-h0-492",
+      "actor": "marici.Benincasa",
+      "outcome": "At b=0,2,3 and D=12,16,20,24 the invariant cokernel has dimension 4, the even Jacobian map has rank 3, and its H0 kernel has dimension 1; therefore it is not the length-two conormal module.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-492",
+          "locator": "src/ledger/20260818-492 The Generic Invariant H0 Kernel Is Not the Conormal Cell.md",
+          "paraphrase": "The all-column census falsifies only the naive H0-kernel realization and directs the conormal class to the higher homology of the complete derived mapping fiber."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "operator_instruction": "Continue the invariant-sector falsification and record narrow results."
+  },
+  "idempotency_key": "auto-admission-8a7f90830ef13c8ce82a062a",
+  "occurred_at": "2026-08-18T02:41:00.0144855Z",
+  "certifies_truth": false,
+  "event_hash": "f00b506d2fb3f426e011b7bde037bf0ac0d442bf6fdb7308dace4fe1144c2148"
+}

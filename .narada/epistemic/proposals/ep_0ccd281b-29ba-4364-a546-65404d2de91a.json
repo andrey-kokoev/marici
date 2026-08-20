@@ -1,0 +1,42 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0ccd281b-29ba-4364-a546-65404d2de91a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "A concurrent ledger entry caused an Entry 598 collision. Commit d95e48f renumbers the positive-chamber source to Entry 599; append-only graph history requires an explicit successor."
+  },
+  "idempotency_key": "auto-proposal-28fcca7196533d1e844b59c2",
+  "expected_ledger_head": "9db894b870855f11da7039e3dac8eb7e8e853f6f1299ebbb1364fc7a20ed05e7",
+  "created_at": "2026-08-18T13:50:21.032976Z",
+  "content_fingerprint": "28fcca7196533d1e844b59c292f9edbe527eb149324b9fbd0fb9f576d7654eeb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src599",
+      "kind": "source",
+      "title": "Entry 599 — The Physical Positive Chamber Avoids Every Five-Pole Wall",
+      "version": "d95e48f",
+      "locator": "src/ledger/20260818-599 The Physical Positive Chamber Avoids Every Five-Pole Wall.md",
+      "entity_id": "source:d612fd7ee55ef3987adf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "src599",
+      "target_id": "source:79ae08d328598642e908",
+      "source_id": "source:d612fd7ee55ef3987adf",
+      "relation_id": "rel:supersedes-beb2f7f7ffc3c318"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:23a73ad34d6aaaac7591",
+      "target_ref": "src599",
+      "target_id": "source:d612fd7ee55ef3987adf",
+      "relation_id": "rel:derived_from-94017f2e9aa0f3f8"
+    }
+  ],
+  "digest": "5e4e949f3302dcd3df26d3e77ed97403b6e952afc851b282e8fcc4a501a25892"
+}

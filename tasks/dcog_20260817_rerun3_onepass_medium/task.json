@@ -1,0 +1,252 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_20260817_rerun3_onepass_medium",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside the structured result.",
+  "request_fingerprint": "e8942ecdade5498c028305364f1b5b66aa659d91ac7269ea4c2c9976accfc0fe",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T21:41:08.2079539Z",
+  "created_at_ms": 1787002868207,
+  "started_at": "2026-08-17T21:41:08.2724466Z",
+  "started_at_ms": 1787002868272,
+  "finished_at": "2026-08-17T21:45:55.7917084Z",
+  "finished_at_ms": 1787003155791,
+  "duration_ms": 287519,
+  "updated_at": "2026-08-17T21:45:55.7917102Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_20260817_rerun3_onepass_medium-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "medium",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "failed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-cc1ce0f7981844d083784288321d8173"
+        ],
+        "current_run_id": "run-cc1ce0f7981844d083784288321d8173",
+        "started_at": "2026-08-17T21:41:08.2724566Z",
+        "finished_at": "2026-08-17T21:45:55.7904075Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "complex=0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0, supports={3 fields}, differential=delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0",
+          "diagnostics_text": null,
+          "structured_output": {
+            "complex": "0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0",
+            "supports": {
+              "x": [
+                "alpha",
+                "beta"
+              ],
+              "y": [
+                "beta"
+              ],
+              "z": [
+                "alpha"
+              ]
+            },
+            "differential": "delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-cc1ce0f7981844d083784288321d8173",
+        "status": "completed",
+        "finished_at": "2026-08-17T21:45:55.7903492Z",
+        "duration_ms": 246354,
+        "output": {
+          "summary_text": "complex=0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0, supports={3 fields}, differential=delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0",
+          "diagnostics_text": null,
+          "structured_output": {
+            "complex": "0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0",
+            "supports": {
+              "x": [
+                "alpha",
+                "beta"
+              ],
+              "y": [
+                "beta"
+              ],
+              "z": [
+                "alpha"
+              ]
+            },
+            "differential": "delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0"
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-cc1ce0f7981844d083784288321d8173",
+        "status": "completed",
+        "output": {
+          "summary_text": "complex=0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0, supports={3 fields}, differential=delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0",
+          "diagnostics_text": null,
+          "structured_output": {
+            "complex": "0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0",
+            "supports": {
+              "x": [
+                "alpha",
+                "beta"
+              ],
+              "y": [
+                "beta"
+              ],
+              "z": [
+                "alpha"
+              ]
+            },
+            "differential": "delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0"
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [
+          "complex",
+          "supports",
+          "differential"
+        ],
+        "missing": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "failed",
+        "status": "failed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. complex=0 -> C_2=Rx direct_sum Ry --delta--> C_1=Rz -> 0, supports={3 fields}, differential=delta(x)=cz, delta(y)=0, and delta(z)=0 since C_0=0"
+}

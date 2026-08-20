@@ -1,0 +1,105 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 841,
+  "event_id": "ev-000000000841-e024fd59-7211-4e5f-b20e-6cba80e17025",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1cdbb3b6c03577cc774745ed8f2ced1dd7f03ee70bf96a79ae861e5b7d8a6d24",
+  "proposal_id": "ep_c4d96283-0f99-4386-b069-045474348a58",
+  "proposal_digest": "bb8e8c7b12d91f633bd469c446a65a45a71d646c312325cba72ab59eb08db693",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1131 — The Positive Cayley-Menger Sheet Lands in the Difference Lattice",
+      "status": "established-local-betti",
+      "ledger_number": 1131,
+      "path": "src/ledger/20260820-1131 The Positive Cayley-Menger Sheet Lands in the Difference Lattice.md",
+      "claim_id": "seqclaim-7f8ae5fc97d6e347443a2588",
+      "entity_id": "mariciledger_entry:b8761645af0d4a2a484c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The physical positive Cayley-Menger chamber has node boundary e_minus minus e_plus",
+      "status": "supported",
+      "body": "At W^2=4T^2 the positive sheet is W=2|T|. Splitting the increasingly oriented T-axis at zero places the negative half on e_minus with endpoint sign +1 and the positive half on e_plus with sign -1. Thus the physical boundary is primitive in the sheet-difference lattice and twice primitive in odd coinvariants.",
+      "entity_id": "mariciclaim:8ca2b7fb0231e0f80a3f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Oriented positive-sheet node boundary audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_positive_sheet_node_boundary.py",
+      "evidence_path": "research/benincasa/results/rank12-positive-sheet-node-boundary.json",
+      "entity_id": "maricitest:9c53e8cd61003ea102c4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:b8761645af0d4a2a484c",
+      "target_id": "mariciclaim:8ca2b7fb0231e0f80a3f",
+      "relation_id": "rel:maricirecords-604de9488c38950b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:8ca2b7fb0231e0f80a3f",
+      "target_id": "maricitest:9c53e8cd61003ea102c4",
+      "relation_id": "rel:maricitested_by-eeaa88d0c38dfeec"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa resolves the physical side of the node parity gate",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_remaining_target_gate",
+      "status": "sent",
+      "body": "Entry 1131 derives the physical normalization boundary. Since the positive source sheet is W=2|T|, the oriented T<0 and T>0 half-chains lie on e_minus and e_plus with endpoint signs +1 and -1. Hence partial gamma_CM=e_minus-e_plus: primitive in the sheet-difference lattice, mapping to -2[e_plus] in primitive odd coinvariants. The source therefore selects N^- and makes the factor two a real cover-boundary multiplicity. Only the target e6 Betti lattice remains unresolved; no carrier addition.",
+      "entity_id": "maricicommunication:505309dd549f45ffdb93"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:505309dd549f45ffdb93",
+      "relation_id": "rel:maricisent_by-e9aa5544769dd856"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:505309dd549f45ffdb93",
+      "relation_id": "rel:mariciaddressed_to-cdefb50782ce8038"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:505309dd549f45ffdb93",
+      "target_id": "mariciclaim:8ca2b7fb0231e0f80a3f",
+      "relation_id": "rel:maricireports-1a9a577241afb11b"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record verified results, and coordinate with marici.Nima."
+  },
+  "idempotency_key": "auto-admission-9234434169e9921abc233647",
+  "occurred_at": "2026-08-20T12:59:05.4817617Z",
+  "certifies_truth": false,
+  "event_hash": "14ad3be5f1de93a9debeadc3bd637e3ff71d20477f1f2e3ba7fe1210cdc24d30"
+}

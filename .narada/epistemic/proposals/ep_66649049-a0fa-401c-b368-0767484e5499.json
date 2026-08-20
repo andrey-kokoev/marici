@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_66649049-a0fa-401c-b368-0767484e5499",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the cosmology research program and update the epistemic graph with new ledger results."
+  },
+  "idempotency_key": "marici-ledger-443-soft-axis-filtered-cokernel",
+  "expected_ledger_head": "4369bae8fa132f9ff377f080ba69bdc9538f74a1aaf4fa884731723a1019ca60",
+  "created_at": "2026-08-18T00:25:36.155683Z",
+  "content_fingerprint": "a64b1b20d1491e4bedb9e7605642fbdf374adb0e668cfd14322e9a84a9e41156",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-443",
+      "kind": "source",
+      "title": "Ledger 443 — The Full Soft-Axis Filtered Cokernel Is Quartic Tail Plus a Two-Dimensional Resonance",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-443 The Full Soft-Axis Filtered Cokernel Is Quartic Tail Plus a Two-Dimensional Resonance.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-axis-full-filtered-cokernel",
+      "kind": "test",
+      "title": "Full filtered soft-axis exact-form cokernel test"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:lower-terms-contract-quartic-tail",
+      "kind": "conjecture",
+      "title": "Lower-order exact-form terms contract or finitely truncate the soft-axis quartic tail"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:soft-axis-quartic-tail-plus-length-two",
+      "kind": "claim",
+      "title": "The tested full filtered soft-axis cokernel is the quartic tail plus a stable length-two resonance"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:soft-axis-symbol-not-complete-filtered-object",
+      "kind": "criticism",
+      "title": "The quartic associated symbol omits a stable two-dimensional filtered exact-form resonance"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:soft-axis-full-filtered-cokernel",
+      "target_id": "marici:conjecture:lower-terms-contract-quartic-tail",
+      "relation_id": "rel:tests-9750ec1e9207b98d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:criticism:soft-axis-symbol-not-complete-filtered-object",
+      "target_id": "marici:claim:tested-cokernel-Fab-mod-a4",
+      "relation_id": "rel:criticizes-7d8e24a2865b3ee9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:soft-axis-quartic-tail-plus-length-two",
+      "target_id": "marici:source:ledger-443",
+      "relation_id": "rel:derived_from-d6c9617922594aab"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:soft-axis-full-filtered-cokernel-20260818",
+      "test_id": "marici:test:soft-axis-full-filtered-cokernel",
+      "actor": "marici.Benincasa",
+      "outcome": "quartic-tail contraction refuted; pure quartic-tail description also incomplete",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-443",
+          "locator": "Computed filtered result",
+          "paraphrase": "For every cutoff 12 through 40, the exact image has codimension two inside the truncated ideal (a^4), giving cumulative cokernel dimension 4D."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:soft-axis-quartic-tail-plus-length-two-20260818",
+      "subject_id": "marici:claim:soft-axis-quartic-tail-plus-length-two",
+      "judgment": "supported in the tested filtered finite-field range",
+      "actor": "marici.Benincasa",
+      "reason": "Full exact images remain divisible by a^4 and exhibit a stable length-two excess over the quartic quotient through cutoff 40.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-443",
+          "locator": "Exact divisibility; Computed filtered result",
+          "paraphrase": "The frozen full data K=a^4, L1=b+1, L2=a preserve the infinite quartic quotient and leave two additional filtered classes."
+        }
+      ]
+    }
+  ],
+  "digest": "b01e938ef07a420d1b996b1eec6254b560204bbae0bb961a01d36b0fee88ccd0"
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_df48955c-1afe-4c82-ac29-1eab506f9d1a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Operator directed continuation and recording of the derived joint K5/ambient16 test."
+  },
+  "idempotency_key": "auto-proposal-25b07b2d1f0faa3316999aa9",
+  "expected_ledger_head": "50027d1ff003d878a3729eab5e8a91a004d1c2512e87bcb2915055ee6628d419",
+  "created_at": "2026-08-20T01:05:51.7184906Z",
+  "content_fingerprint": "25b07b2d1f0faa3316999aa9ea1d7bac84bd9a0efb8ccc56accfc6d3d7abe798",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Triangle-wall ambient-16 K5 quotient-line audit packet",
+      "version": "working-tree-2026-08-19",
+      "locator": "research/nima/triangle-wall-kdepth5-ambient16-quotient-line-audit.json",
+      "entity_id": "source:40d11b64d2721cb70c47"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Test the canonical triangle-wall quotient line at the first source-derived joint target (16,5)",
+      "entity_id": "test:a3af7856cf2f69018465"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The canonical triangle-wall quotient line survives the first source-derived joint pole-degree step while its distinguished coordinate vanishes",
+      "entity_id": "claim:859fd611a83182fa4e95"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports invariant survival at the derived ambient-16 K5 target",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "status": "sent",
+      "body": "The strict source census derives (A,K)=(13,4)->(16,5): 27,580 requested labels; ambient 13 misses 240 labels of degrees 18-20; ambient 16 is first complete. Lossless embedding preserves 1,228/1,228 terms. At the ambient-16/K5 target, individual probes 6 and 19 vanish, but the invariant Entry-1063 quotient line survives: graph-zero image rank 7, augmented image rank 8, quotient image rank 1. Its normalized representative is rewritten to 36 block-zero terms, with no block-one or block-two term. Cache write/replay agree exactly. Thus loss of the distinguished degree-14 coordinate is a basis rewrite, not death of the class. No direct-limit or physical conclusion.",
+      "entity_id": "maricicommunication:4aceb5b85665dfa96c46"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:a3af7856cf2f69018465",
+      "target_id": "claim:859fd611a83182fa4e95",
+      "relation_id": "rel:tests-0df40545edf54522"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:859fd611a83182fa4e95",
+      "target_id": "source:40d11b64d2721cb70c47",
+      "relation_id": "rel:derived_from-26f9819e8adac4ab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:4aceb5b85665dfa96c46",
+      "relation_id": "rel:maricisent_by-694986cc7cacfa3f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:4aceb5b85665dfa96c46",
+      "relation_id": "rel:mariciaddressed_to-9b25eb3dcaf6349d"
+    }
+  ],
+  "digest": "96e57d85de0c782bde338c9b3086b9c4d385b7cd4fd7a19e1e2b9028bc783da9"
+}

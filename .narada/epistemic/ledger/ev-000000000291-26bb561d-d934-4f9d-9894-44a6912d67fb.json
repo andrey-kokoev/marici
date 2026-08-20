@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 291,
+  "event_id": "ev-000000000291-26bb561d-d934-4f9d-9894-44a6912d67fb",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f6bf0f1932a728f7e1130d450e060811eccb97482f1e7dcfae911897b25911ea",
+  "proposal_id": "ep_76b9c4c9-2cf4-436c-89f3-469c529baa89",
+  "proposal_digest": "9539f5b28891f14acf7e53098fd9b6e29804c33bcc69b68d5243ec7e999342e7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source_protocol",
+      "kind": "source",
+      "title": "Marici ledger-number sequence protocol",
+      "version": "1",
+      "locator": "docs/ledger-sequence.md",
+      "entity_id": "source:828fd33790777c837c87"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source_entry",
+      "kind": "source",
+      "title": "Entry 678: Shared Ledger Sequence Prevents Concurrent Number Collisions",
+      "version": "1",
+      "locator": "src/ledger/20260818-678 Shared Ledger Sequence Prevents Concurrent Number Collisions.md",
+      "entity_id": "source:2c7a7a5216b8b1e2799e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Marici ledger filenames require a prior claim from the shared site-owned sequence",
+      "entity_id": "claim:0fb447008adb53f7bb89"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source_protocol",
+      "source_id": "claim:0fb447008adb53f7bb89",
+      "target_id": "source:828fd33790777c837c87",
+      "relation_id": "rel:derived_from-53613bfb4c7c5768"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source_entry",
+      "source_id": "claim:0fb447008adb53f7bb89",
+      "target_id": "source:2c7a7a5216b8b1e2799e",
+      "relation_id": "rel:derived_from-074c69ecbc772a3e"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Set up the shared Marici ledger sequence so concurrent agents no longer collide on entry numbers."
+  },
+  "idempotency_key": "auto-admission-d1585f54c5d308a44e689af5",
+  "occurred_at": "2026-08-18T15:31:26.0512012Z",
+  "certifies_truth": false,
+  "event_hash": "0acb3120a369b302286a4fdccd42e986de215662f45b30b1955259fb54601e60"
+}

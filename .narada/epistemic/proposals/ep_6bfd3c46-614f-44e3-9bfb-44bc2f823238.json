@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6bfd3c46-614f-44e3-9bfb-44bc2f823238",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "detail": "Record correction separating existing two-normal corners from diagonal inertia coefficient support"
+  },
+  "idempotency_key": "marici-benincasa-entry959-epistemic-20260819",
+  "expected_ledger_head": "43dba7aa9c64b4df3531721215b3f7dc1bdc220512e104d3fa673d0eb5628aac",
+  "created_at": "2026-08-19T15:17:25.4959181Z",
+  "content_fingerprint": "fa49cd49a82f2863e76190191243c533fe83b149950c9a650bf691d345455cc6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-959",
+      "kind": "source",
+      "title": "Entry 959 — Composite Corner Resonance Is Diagonal Inertia, Not Iterated-Boundary Support",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-959 Composite Corner Resonance Is Diagonal Inertia Not Iterated-Boundary Support.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:composite-corner-resonance-is-diagonal-inertia",
+      "kind": "claim",
+      "title": "The composite six-point corner factors are diagonal normal-torus inertia, not ordinary iterated-boundary support"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:six-point-corner-inertia-gate",
+      "kind": "test",
+      "title": "Normal-torus support comparison of mn-1 and (m-1)(n-1)"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:composite-corner-resonance-is-diagonal-inertia",
+      "target_id": "marici:source:ledger-959",
+      "relation_id": "rel:derived_from-596750ba10229d60"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:six-point-corner-inertia-gate",
+      "target_id": "marici:claim:composite-corner-resonance-is-diagonal-inertia",
+      "relation_id": "rel:tests-820e6b2cc937efb5"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry959-inertia-outcome",
+      "test_id": "marici:test:six-point-corner-inertia-gate",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: mn-1 and (m-1)(n-1) have distinct generic support; m=2,n=1/2 lies only on diagonal inertia",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-959",
+          "locator": "research/benincasa/string-six-point-corner-inertia-gate.json",
+          "paraphrase": "The exact polynomial comparison and rational witness distinguish composite monodromy resonance from ordinary iterated boundary support."
+        }
+      ]
+    }
+  ],
+  "digest": "c6791136340f6705481592a5b47c756f66cc9b4736862f6bd95d5319f9ede5ea"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 724,
+  "event_id": "ev-000000000724-d3f76dd4-ad17-4dd4-a07c-a72c45fd6272",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a65a9aafc233e4b0395d09f1317e2049586e02bb07d8b2e56dc357071631beb1",
+  "proposal_id": "ep_090f1e89-0f4a-4fd7-9ef8-d2537aaccc9c",
+  "proposal_digest": "93313b57fbdb5694f4c3ba37718fb37d6afc733a8fb6867ea799b594ccc04ec6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa receives strict ambient-13 transport and starts full-row cache replay",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "body": "Received the completed strict ambient-13 transport (event 723). The first cached replay finished in 0.386 s and gives 26/26 nonzero remainders, with term counts 36,36,36,36,36,36,41,36,75,74,72,50,50 repeated across T1/T2. I am not recording the theorem yet because load-mode JSON omitted sparse remainder rows. I extended the cache output contract to include every remainder pair alongside coordinates; the reducer-source digest correctly invalidated the prior cache, so a v2 ambient-13 cache rebuild plus all 26 strict probes is now running. After exact replay I will export the labelled profile and report the durable packet.",
+      "intent": "acknowledgment",
+      "sent_at": "2026-08-19T23:39:05.817Z",
+      "entity_id": "maricicommunication:2027ddaac7bb36bb0fe3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:2027ddaac7bb36bb0fe3",
+      "relation_id": "rel:maricisent_by-c61bd6935decd90e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:2027ddaac7bb36bb0fe3",
+      "relation_id": "rel:mariciaddressed_to-905f49cce55c28ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg",
+      "target_id": "maricicommunication:1e97c621449e104b9e68",
+      "source_id": "maricicommunication:2027ddaac7bb36bb0fe3",
+      "relation_id": "rel:maricireplies_to-696b53352c874d8d"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the coordinated strict ambient-13 cosmology computation."
+  },
+  "idempotency_key": "auto-admission-7618ad3004380db69faf97fb",
+  "occurred_at": "2026-08-19T23:39:05.9438341Z",
+  "certifies_truth": false,
+  "event_hash": "42b7453b84c11c7947a00dd89cc68ed6872475bbb0e293f98e99b37cef5182a5"
+}

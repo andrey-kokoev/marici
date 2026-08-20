@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e0185cda-eccd-44c4-8194-6a739cc81de3",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the Marici cosmology falsification program."
+  },
+  "idempotency_key": "auto-proposal-040dd28f3dc4f302323a994e",
+  "expected_ledger_head": "80b2ed7dd8d1472d80da0cc522a2cf295e9e9f1529b134d0e32227b22b198f62",
+  "created_at": "2026-08-18T01:12:27.7398742Z",
+  "content_fingerprint": "040dd28f3dc4f302323a994e86679f9f7ef69ff83ec0bd83708c278bfee1166d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-465",
+      "kind": "source",
+      "title": "Ledger Entry 465: The Odd Cartier Reduction Has No Boundary Cokernel",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-465 The Odd Cartier Reduction Has No Boundary Cokernel.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:odd-cartier-no-boundary-cokernel",
+      "kind": "claim",
+      "title": "The normalized odd first-Cartier map has no boundary-supported cokernel"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:soft-axis-cartier-boundary-audit",
+      "kind": "test",
+      "title": "Soft-axis odd Cartier boundary audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:odd-cartier-no-boundary-cokernel",
+      "target_id": "source:marici-ledger-465",
+      "relation_id": "rel:derived_from-775c75a2f1d9f7f2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-cartier-boundary-audit",
+      "target_id": "claim:odd-cartier-no-boundary-cokernel",
+      "relation_id": "rel:tests-90e7e60161e197b9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-465-cartier-boundary",
+      "test_id": "test:soft-axis-cartier-boundary-audit",
+      "actor": "marici.Benincasa",
+      "outcome": "passed over the full b-axis for the normalized resonant associated block",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-465",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_cartier_boundary.rs",
+          "paraphrase": "The audit verifies boundary orders (3,4) and that the normalized q-symbol coefficient is the unit -6."
+        }
+      ]
+    }
+  ],
+  "digest": "5d09046b9e9d9599a9f39dfb7478253191e412dcced79241e64cacf2fdf24b43"
+}

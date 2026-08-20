@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 335,
+  "event_id": "ev-000000000335-7459f221-e46f-451c-aee2-2d4aab49d404",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2b9f3c1bc7a518a11fe072ceed85639e4eb37c08e1bdbdce9bda927846285db6",
+  "proposal_id": "ep_e94d3244-ecb0-4f73-bfcc-5208b66741ad",
+  "proposal_digest": "8cfee18d639b69168c2068b3a4dd53025739d32bb189c70be8daccc34693dcc3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-721",
+      "kind": "source",
+      "title": "Entry 721 — No Pole-Free Splitting of the Infinity-Gysin Extension Through Degree Ten",
+      "version": "20260818-721",
+      "locator": "src/ledger/20260818-721 No Pole-Free Splitting of the Infinity-Gysin Extension Through Degree Ten.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-721-gysin-polynomial-split",
+      "kind": "test",
+      "title": "Degree-ten pole-free infinity-Gysin splitting search"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-721-no-pole-free-split-degree-ten",
+      "kind": "claim",
+      "title": "The rank-four infinity-Gysin extension has no pole-free polynomial splitting through total degree ten"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-721-gysin-polynomial-split",
+      "target_id": "claim:marici-721-no-pole-free-split-degree-ten",
+      "relation_id": "rel:tests-283eb705462324f7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-721-no-pole-free-split-degree-ten",
+      "target_id": "source:marici-ledger-721",
+      "relation_id": "rel:derived_from-2bda81b14c979201"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-721-pole-free-split",
+      "test_id": "test:marici-721-gysin-polynomial-split",
+      "actor": "marici.Benincasa",
+      "outcome": "No simultaneous two-direction polynomial gauge solution exists at any total degree through ten over the frozen prime field.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-721",
+          "locator": "research/benincasa/marici-gm/gysin-polynomial-split-d10.json",
+          "paraphrase": "The exact collocation system returned status not_found through total degree ten; the command is covered by the release test suite."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "description": "Record verified cosmology research result and its bounded test"
+  },
+  "idempotency_key": "auto-admission-bdb482b8c9f44c64952d348a",
+  "occurred_at": "2026-08-18T17:13:48.0243457Z",
+  "certifies_truth": false,
+  "event_hash": "c985d757e89c5f1c5a0ba4c8c4788093a90a2a85eb1eeeb8ec885056a9fd5a86"
+}

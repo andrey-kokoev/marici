@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a3b5cd51-e3f1-461b-8840-5eb6cf1254d9",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue cosmology audit and update epistemic graph with new ledger entries."
+  },
+  "idempotency_key": "marici-benincasa-entry-451-dual-number-resonance-v2",
+  "expected_ledger_head": "95f99694b7662430f3132515a6489b8e693a9d3f42e1150dd0c4a611b3235689",
+  "created_at": "2026-08-18T00:38:03.0048746Z",
+  "content_fingerprint": "93adb75081405093aa173f344afbf960bdd76127af62c41af1a9a2306c317dad",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260818-451",
+      "kind": "source",
+      "title": "Ledger Entry 451 — Neither Euler Generator Is First-Order Soft Torsion",
+      "version": "20260818-451",
+      "locator": "src/ledger/20260818-451 Neither Euler Generator Is First-Order Soft Torsion.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:soft-axis-dual-number-euler-torsion",
+      "kind": "test",
+      "title": "Complete-exact-operator dual-number torsion test for the Euler generators",
+      "version": "v1",
+      "locator": "research/benincasa/soft-axis-dual-number-resonance-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:neither-euler-generator-first-order-soft-torsion",
+      "kind": "claim",
+      "title": "Neither canonical Euler-resonance generator is first-order soft torsion",
+      "version": "entry-451",
+      "locator": "src/ledger/20260818-451 Neither Euler Generator Is First-Order Soft Torsion.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:neither-euler-generator-first-order-soft-torsion",
+      "target_id": "source:marici-ledger-20260818-451",
+      "relation_id": "rel:derived_from-1d4b8c9e3a904c71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-dual-number-euler-torsion",
+      "target_id": "claim:neither-euler-generator-first-order-soft-torsion",
+      "relation_id": "rel:tests-208e7ea0b425ff6e"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-451-dual-number",
+      "test_id": "test:soft-axis-dual-number-euler-torsion",
+      "actor": "marici.Benincasa",
+      "outcome": "At degree cutoffs 16 and 20, both a^4 and a^11(b+1) raise the dual-number block-system rank by one; neither t times the class is exact modulo t^2.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260818-451",
+          "locator": "rank table and certificate",
+          "paraphrase": "Both augmented systems are inconsistent at two stable cutoffs."
+        }
+      ]
+    }
+  ],
+  "digest": "bf8664a7eb7e36ebfdfe434f813f6712ed222820c1512fe6d49b916947b0bd62"
+}

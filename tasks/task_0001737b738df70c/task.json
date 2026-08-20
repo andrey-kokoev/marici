@@ -1,0 +1,132 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_0001737b738df70c",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return a concise structured result with repository_name, current_branch, and verification.",
+  "request_fingerprint": "b9a61f47f6c54ed01a6c51b276c6c90e4d64ce71d114661e80094447c9c5728a",
+  "created_at": "2026-08-16T16:02:08.9106594Z",
+  "updated_at": "2026-08-16T16:02:41.6323367Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-delegation-smoke-test-20260816-2",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici",
+        "access": "read",
+        "label": "Marici repository"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "repository_name",
+      "current_branch",
+      "verification"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-c3189c764b334d8381f855c1adf94443"
+        ],
+        "current_run_id": "run-c3189c764b334d8381f855c1adf94443",
+        "started_at": "2026-08-16T16:02:08.939938Z",
+        "finished_at": "2026-08-16T16:02:41.6316387Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "I’ll perform a read-only Git inspection of the specified directory and return only the requested fields.The first read-only query was rejected by the command policy because it bundled two shell commands. I’m retrying with one Git invocation and no filesystem changes.{\n  \"repository_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": \"Confirmed via directory name and .git/HEAD; no changes made.\"\n}",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Confirmed via directory name and .git/HEAD; no changes made."
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-c3189c764b334d8381f855c1adf94443",
+        "status": "completed",
+        "finished_at": "2026-08-16T16:02:41.6316309Z",
+        "output": {
+          "summary_text": "I’ll perform a read-only Git inspection of the specified directory and return only the requested fields.The first read-only query was rejected by the command policy because it bundled two shell commands. I’m retrying with one Git invocation and no filesystem changes.{\n  \"repository_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": \"Confirmed via directory name and .git/HEAD; no changes made.\"\n}",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Confirmed via directory name and .git/HEAD; no changes made."
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-c3189c764b334d8381f855c1adf94443",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll perform a read-only Git inspection of the specified directory and return only the requested fields.The first read-only query was rejected by the command policy because it bundled two shell commands. I’m retrying with one Git invocation and no filesystem changes.{\n  \"repository_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": \"Confirmed via directory name and .git/HEAD; no changes made.\"\n}",
+          "structured_output": {
+            "repository_name": "marici",
+            "current_branch": "main",
+            "verification": "Confirmed via directory name and .git/HEAD; no changes made."
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

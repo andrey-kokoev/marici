@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 544,
+  "event_id": "ev-000000000544-b35f049b-2b46-4a41-950f-3410ddb48330",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c97f0d3ef62ab8a1d976e9dc8ed4bcdfbe3c64fd272fcce05f5ac88d193c9d10",
+  "proposal_id": "ep_a2acd575-6a16-4fc5-aa2c-59baca17e93a",
+  "proposal_digest": "40d439b74eb91972edf6a2bac676f76dcd9a4f074cc9b5089aaddc4a0e4a3450",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-927",
+      "kind": "source",
+      "title": "Entry 927 — The Normal-Symbol Syzygy Is Constant but Its Image Line Moves",
+      "version": "20260819-927",
+      "locator": "src/ledger/20260819-927 The Normal-Symbol Syzygy Is Constant but Its Image Line Moves.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-927-syzygy-horizontal-image-moving",
+      "kind": "claim",
+      "title": "The primitive normal-symbol syzygy is constant while the common source image line has tangential projective motion",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-normal-symbol-horizontality.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-927-normal-symbol-horizontality",
+      "kind": "test",
+      "title": "Tangential derivative and projective-Wronskian audit",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_normal_symbol_horizontality.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-927-syzygy-horizontal-image-moving",
+      "target_id": "source-marici-ledger-927",
+      "relation_id": "rel:derived_from-5e896a5501e7c29f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-927-normal-symbol-horizontality",
+      "target_id": "claim-marici-927-syzygy-horizontal-image-moving",
+      "relation_id": "rel:tests-8c9f7e1005302161"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-927-normal-symbol-horizontality",
+      "test_id": "test-marici-927-normal-symbol-horizontality",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: the differentiated exact syzygy vanishes, while three projective Wronskians are nonzero for each tangential variable",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-927",
+          "locator": "Entry 927, Constant kernel relation and Motion of the common image line",
+          "paraphrase": "Kernel horizontality survives, but the image line is not constant in the serialized frame."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording the verified syzygy-horizontality distinction"
+  },
+  "idempotency_key": "auto-admission-2adde475c2a2cf0957caa5f5",
+  "occurred_at": "2026-08-19T13:53:07.3645482Z",
+  "certifies_truth": false,
+  "event_hash": "654bb0e1d9461e63e393256be46f5082b49c79a10b00c4b2f42ae19613821aa1"
+}

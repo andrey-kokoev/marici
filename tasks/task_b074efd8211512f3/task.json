@@ -1,0 +1,138 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_b074efd8211512f3",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Within the read-only Marici repository, inspect only research/benincasa and ledger entries 150, 169, 279-313 as needed. Locate the smallest exact source/artifact set that contains or can derive the final four-master Gauss-Manin connection over Q(X1,u,v) needed by entry 313. Report concisely: exact file paths, what each contains, whether a bivariate final-four connection already exists, and the first missing executable computation. Do not modify files, browse externally, or perform the computation.",
+  "request_fingerprint": "dcf749e892148515328b15e135814ed8b263c18ca15b498265c5456a7f262573",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T16:28:29.5146428Z",
+  "created_at_ms": 1786984109514,
+  "started_at": "2026-08-17T16:28:29.5376221Z",
+  "started_at_ms": 1786984109537,
+  "finished_at": "2026-08-17T16:30:30.6828663Z",
+  "finished_at_ms": 1786984230682,
+  "duration_ms": 121145,
+  "updated_at": "2026-08-17T16:30:30.6828672Z",
+  "cancelled_at": null,
+  "idempotency_key": "cosmology-soft-corner-final-four-source-inventory-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-255f3e2eba4149338f48f3fb2d9703cd"
+        ],
+        "current_run_id": "run-255f3e2eba4149338f48f3fb2d9703cd",
+        "started_at": "2026-08-17T16:28:29.537628Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed"
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-255f3e2eba4149338f48f3fb2d9703cd",
+        "status": "failed",
+        "finished_at": "2026-08-17T16:30:30.6821587Z",
+        "duration_ms": 120052,
+        "error": "worker_runtime_timed_out:max_run_ms=120000:elapsed_ms=120048"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-255f3e2eba4149338f48f3fb2d9703cd",
+        "status": "failed",
+        "output": null,
+        "error": "worker_runtime_timed_out:max_run_ms=120000:elapsed_ms=120048"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": null,
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. No substantive objective result was reported."
+}

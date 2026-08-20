@@ -1,0 +1,245 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_20260817_rerun3_onepass_low",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside the structured result.",
+  "request_fingerprint": "62f9a2e9008c23edb3650782ba4f1537a642b0133a8363ada5763513557fd37e",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T21:41:07.9789724Z",
+  "created_at_ms": 1787002867978,
+  "started_at": "2026-08-17T21:41:08.1876213Z",
+  "started_at_ms": 1787002868187,
+  "finished_at": "2026-08-17T21:43:55.7038331Z",
+  "finished_at_ms": 1787003035703,
+  "duration_ms": 167516,
+  "updated_at": "2026-08-17T21:43:55.7038342Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_20260817_rerun3_onepass_low-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "failed",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-e419894824ed432d878a258633fd665e"
+        ],
+        "current_run_id": "run-e419894824ed432d878a258633fd665e",
+        "started_at": "2026-08-17T21:41:08.1876308Z",
+        "finished_at": "2026-08-17T21:43:55.7031236Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "failed",
+        "worker_output": {
+          "summary_text": "{\n  \"typed_representation\": {\n    \"coefficient_context\": \"L is rank-one with primitive generator p; rho is additive and c = rho(p) is nonzero.\",\n    \"coefficient_limits\": \"R is arbitrary commutative unital; c is not known to be a unit or non-zero-divisor.\",\n    \"modules\": {\n      \"degree_2\": \"C2 = R x direct_sum R y\",…",
+          "structured_output_required": true,
+          "structured_output_error": {
+            "code": "worker_structured_output_required",
+            "required_fields": [
+              "typed_representation",
+              "decisive_representation",
+              "minimal_reduction",
+              "residual_complex",
+              "unconditional_homology",
+              "conditional_conclusions",
+              "coefficient_gate",
+              "constructed_vs_compatible",
+              "remaining_construction",
+              "falsifier"
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-e419894824ed432d878a258633fd665e",
+        "status": "failed",
+        "finished_at": "2026-08-17T21:43:55.7030813Z",
+        "duration_ms": 167272,
+        "output": {
+          "summary_text": "{\n  \"typed_representation\": {\n    \"coefficient_context\": \"L is rank-one with primitive generator p; rho is additive and c = rho(p) is nonzero.\",\n    \"coefficient_limits\": \"R is arbitrary commutative unital; c is not known to be a unit or non-zero-divisor.\",\n    \"modules\": {\n      \"degree_2\": \"C2 = R x direct_sum R y\",…",
+          "structured_output_required": true,
+          "structured_output_error": {
+            "code": "worker_structured_output_required",
+            "required_fields": [
+              "typed_representation",
+              "decisive_representation",
+              "minimal_reduction",
+              "residual_complex",
+              "unconditional_homology",
+              "conditional_conclusions",
+              "coefficient_gate",
+              "constructed_vs_compatible",
+              "remaining_construction",
+              "falsifier"
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-e419894824ed432d878a258633fd665e",
+        "status": "failed",
+        "output": {
+          "summary_text": "{\n  \"typed_representation\": {\n    \"coefficient_context\": \"L is rank-one with primitive generator p; rho is additive and c = rho(p) is nonzero.\",\n    \"coefficient_limits\": \"R is arbitrary commutative unital; c is not known to be a unit or non-zero-divisor.\",\n    \"modules\": {\n      \"degree_2\": \"C2 = R x direct_sum R y\",…",
+          "structured_output_required": true,
+          "structured_output_error": {
+            "code": "worker_structured_output_required",
+            "required_fields": [
+              "typed_representation",
+              "decisive_representation",
+              "minimal_reduction",
+              "residual_complex",
+              "unconditional_homology",
+              "conditional_conclusions",
+              "coefficient_gate",
+              "constructed_vs_compatible",
+              "remaining_construction",
+              "falsifier"
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [],
+        "missing": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "failed",
+        "status": "failed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": null,
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. {\n  \"typed_representation\": {\n    \"coefficient_context\": \"L is rank-one with primitive generator p; rho is additive and c = rho(p) is nonzero.\",\n    \"coefficient_limits\": \"R is arbitrary commutative unital; c is not known to be a unit or non-zero-divisor.\",\n    \"modules\": {\n      \"degree_2\": \"C2 = R x direct_sum R y\",…"
+}

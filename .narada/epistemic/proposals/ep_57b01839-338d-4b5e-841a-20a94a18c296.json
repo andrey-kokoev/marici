@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_57b01839-338d-4b5e-841a-20a94a18c296",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "operator_instruction": "Continue the Marici soft-axis research line and record verified results.",
+    "evidence_commit": "7d19ee03bc0c9240f38eb2718167cc4b8314a896"
+  },
+  "idempotency_key": "auto-proposal-8a63ac47a27ee4bad0a18062",
+  "expected_ledger_head": "0152a5fe33cd89461424bdeb8e0965a31e2a39781d2e13c3110ffad7d665799a",
+  "created_at": "2026-08-18T01:11:24.6408141Z",
+  "content_fingerprint": "8a63ac47a27ee4bad0a180624ff369f833ad887be13af499ba27f47516035ee4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source464",
+      "kind": "source",
+      "title": "Entry 464: The Two Resonances Have Unequal Cartier Thickness",
+      "version": "git:7d19ee03bc0c9240f38eb2718167cc4b8314a896",
+      "locator": "src/ledger/20260817-464 The Two Resonances Have Unequal Cartier Thickness.md",
+      "entity_id": "source:093d984abdf3f57f921b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim464",
+      "kind": "claim",
+      "title": "The invariant resonance has Cartier length two while the anti-invariant resonance has length one, with reduced nearby-cycle rank two",
+      "version": "entry-464",
+      "entity_id": "claim:09a6f34dee2459cca839"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test464",
+      "kind": "test",
+      "title": "Degreewise normalization audit of first-Cartier symbols at both resonances",
+      "version": "git:7d19ee03bc0c9240f38eb2718167cc4b8314a896",
+      "locator": "research/voevodsky/check_soft_axis_normalized_cartier_resonance.py",
+      "entity_id": "test:3cf88a79a092cdbd250c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem465",
+      "kind": "problem",
+      "title": "Construct the global specialization map and verify the predicted length-three resonant extension at b=+/-1",
+      "version": "after-entry-464",
+      "entity_id": "problem:b1af07c53825c1359a1e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim464",
+      "target_ref": "source464",
+      "source_id": "claim:09a6f34dee2459cca839",
+      "target_id": "source:093d984abdf3f57f921b",
+      "relation_id": "rel:derived_from-251588d508a3a68e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test464",
+      "target_ref": "claim464",
+      "source_id": "test:3cf88a79a092cdbd250c",
+      "target_id": "claim:09a6f34dee2459cca839",
+      "relation_id": "rel:tests-f0d41487395082fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem465",
+      "target_ref": "claim464",
+      "source_id": "problem:b1af07c53825c1359a1e",
+      "target_id": "claim:09a6f34dee2459cca839",
+      "relation_id": "rel:depends_on-aa47258ee7fe8f72"
+    }
+  ],
+  "digest": "9470db29930f1343527d9f46481d49caa5e499ee90a6f948d9441888be3ee0c5"
+}

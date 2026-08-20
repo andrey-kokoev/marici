@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f9224bd5-1895-4fc4-b505-b04604b221ca",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the cosmology coefficient-descent calculation"
+  },
+  "idempotency_key": "auto-proposal-e1416d57f65e555210a370a1",
+  "expected_ledger_head": "52013b9ec8712f798f9aa8dd66938113437192f6f1c75f67f1272e6a58cc5e2d",
+  "created_at": "2026-08-20T11:12:07.3585345Z",
+  "content_fingerprint": "e1416d57f65e555210a370a1079e0a2111f89a710208c95c4e9e2d8b9ed21ad6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Exact exceptional pilot primitive witness packet",
+      "version": "1",
+      "locator": "research/benincasa/rank12-u0-v2-exceptional-pilot-rational-witness.json",
+      "entity_id": "source:ec3a781a2c69623f5a26"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "One exceptional pilot primitive exists exactly over Q in the p-chart",
+      "status": "supported",
+      "entity_id": "claim:0f7f49aea5c82de35bb2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Complete 372-column characteristic-zero polynomial identity",
+      "status": "passed",
+      "body": "The exact SymPy checker reconstructs the p-chart geometry and all 372 source columns. The cleared residual in Q[s,a,b] is identically zero; 47 numerator polynomials are nonzero and D=s(s-1)(s^2+6s+1).",
+      "entity_id": "test:38666e13db18a79d5671"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "criticism",
+      "kind": "criticism",
+      "title": "Independent modular pivot sections do not provide a bounded q-chart rational lattice",
+      "status": "open",
+      "body": "Four-prime CRT under independently chosen lexicographic modular pivots leaves 191 q-chart coefficients unreconstructed beyond a 74-digit modulus. This criticizes the pivot convention, not rational descent itself.",
+      "entity_id": "criticism:b0bf8b43d551f3e4fe48"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:0f7f49aea5c82de35bb2",
+      "target_id": "source:ec3a781a2c69623f5a26",
+      "relation_id": "rel:derived_from-aadd51ba0ab903c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:38666e13db18a79d5671",
+      "target_id": "claim:0f7f49aea5c82de35bb2",
+      "relation_id": "rel:tests-dd9a587e5c52091c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "criticism",
+      "target_ref": "claim",
+      "source_id": "criticism:b0bf8b43d551f3e4fe48",
+      "target_id": "claim:0f7f49aea5c82de35bb2",
+      "relation_id": "rel:criticizes-ec4e9690bd36b36b"
+    }
+  ],
+  "digest": "e2f14004d8d6096fcf82752e6d902826b83831847d2c9caa2088f1c60b7f9188"
+}

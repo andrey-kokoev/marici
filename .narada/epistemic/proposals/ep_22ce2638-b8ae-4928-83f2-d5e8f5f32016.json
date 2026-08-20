@@ -1,0 +1,74 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_22ce2638-b8ae-4928-83f2-d5e8f5f32016",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the cosmology attack and record narrow results."
+  },
+  "idempotency_key": "auto-proposal-bddbcc327f1611ae8737ee06",
+  "expected_ledger_head": "3b43cb5f8a8ac57fa2885eeeb66e3c5b978ed3ec4f95252cce3a87695bcd3ca4",
+  "created_at": "2026-08-18T02:55:17.6852645Z",
+  "content_fingerprint": "bddbcc327f1611ae8737ee065c79c2d7686fe71e64d42c40158e5ae8fc0e9530",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-500",
+      "kind": "source",
+      "title": "Entry 500 — The Endpoint Lifts Glue in the Source-Derived Hecke Lattice",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-500 The Endpoint Lifts Glue in the Source-Derived Hecke Lattice.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "kind": "claim",
+      "title": "The endpoint local lifts glue in the source-derived Hecke lattice",
+      "version": "1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:endpoint-hecke-transition-500",
+      "kind": "test",
+      "title": "Exact endpoint Hecke-transition audit",
+      "version": "1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "target_id": "marici:source:ledger-500",
+      "relation_id": "rel:derived_from-90998ea54bbc91c0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:endpoint-hecke-transition-500",
+      "target_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "relation_id": "rel:tests-6e651528916284aa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "target_id": "source:d61533e34e802c3574b4",
+      "relation_id": "rel:criticizes-9ffc4b8a72201fc1"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:endpoint-hecke-transition-500",
+      "test_id": "marici:test:endpoint-hecke-transition-500",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: tau=(b+1)/(1-b) makes the two local lifts compatible; the bare overlap difference is frame-dependent",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-500",
+          "locator": "Evidence",
+          "paraphrase": "The Rust audit verifies the forced transition, gluing identity, and endpoint divisor orders."
+        }
+      ]
+    }
+  ],
+  "digest": "e31657e733fa331b10b406e75a8cc29e215c07da9bb7de18f606a4b9d1a73c0e"
+}

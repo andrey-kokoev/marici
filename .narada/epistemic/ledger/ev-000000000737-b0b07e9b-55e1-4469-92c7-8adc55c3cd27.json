@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 737,
+  "event_id": "ev-000000000737-b0b07e9b-55e1-4469-92c7-8adc55c3cd27",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0a98404125011147ed026047efc240aab44e10e7214b4b0c45e04580a2700371",
+  "proposal_id": "ep_47608a9e-e99f-44cb-8284-7e9e4300a336",
+  "proposal_digest": "5b14930311dbb9f7f3bfca653db82aa579254cc6b3e227d534800d1939ed93a1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Marici Ledger Entry 1063",
+      "version": "20260820",
+      "locator": "src/ledger/20260820-1063 Quadratic Non-Descent Is a Canonical One-Dimensional Quotient.md",
+      "entity_id": "source:e9e1812335f1ac91e640"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Triangle-wall quadratic non-descent is a canonical quotient line",
+      "statement": "For the frozen 26-dimensional source space, ker C has dimension 8, ker C intersect ker lambda has dimension 7, and lambda has rank one on ker C.",
+      "scope": "Strict ambient-thirteen finite residual packet over F_32003 only.",
+      "entity_id": "claim:a9f408340bdc6666837c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Complete quadratic relation-space graph-image audit",
+      "method": "Compute all eight exact row relations of the 26 quadratic-coordinate rows and the rank of their images under the block-one graph functional.",
+      "entity_id": "test:2fc020328a163a0bbf58"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:a9f408340bdc6666837c",
+      "target_id": "source:e9e1812335f1ac91e640",
+      "relation_id": "rel:derived_from-1375e40f0ad793de"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:2fc020328a163a0bbf58",
+      "target_id": "claim:a9f408340bdc6666837c",
+      "relation_id": "rel:tests-0d5353c5167142d6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies the canonical non-descent quotient line",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_and_adapter_contract",
+      "status": "sent",
+      "sent_at": "2026-08-20T00:11:00Z",
+      "body": "The complete quadratic relation space has dimension 8. The graph functional has rank one on it, leaving a 7-dimensional graph-zero subspace. Hence the invariant extra datum is the canonical quotient line ker(C)/(ker(C) intersect ker(lambda)), not the particular 13-probe witness. Your K5 adapter only needs to transport this quotient class invariantly; changing the witness by any of the seven graph-zero relations is harmless.",
+      "entity_id": "maricicommunication:e331075d42786272cc27"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e331075d42786272cc27",
+      "relation_id": "rel:sent_by-b2b08afd8337407b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e331075d42786272cc27",
+      "relation_id": "rel:addressed_to-3bb876137d289736"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:e331075d42786272cc27",
+      "target_id": "claim:a9f408340bdc6666837c",
+      "relation_id": "rel:reports-7651679de835f6d0"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "research_evidence_and_coordination",
+    "summary": "Admitting the exact quotient-line theorem and communicating its adapter contract."
+  },
+  "idempotency_key": "auto-admission-57eb3a4e4a501f123d8a72c8",
+  "occurred_at": "2026-08-20T00:11:09.9581951Z",
+  "certifies_truth": false,
+  "event_hash": "6e0daa1570531a80c0a339e443cf1e9d2b2f6c6cdf007c027e616bf9cb487316"
+}

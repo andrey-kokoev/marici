@@ -1,0 +1,111 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_472aeb02-a4c5-491f-aef5-8f567c99ec5d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the Marici cosmology program and update the epistemic graph with new ledger entries."
+  },
+  "idempotency_key": "auto-proposal-dc415def8499b956ddbf68e7",
+  "expected_ledger_head": "9391f59fecf5c89aef885950a97af8ae29de2109a9135d761c6dbbb19a349dd2",
+  "created_at": "2026-08-17T23:48:25.3082621Z",
+  "content_fingerprint": "dc415def8499b956ddbf68e7b42d791665600e6e41335d78e7a1437b81c08a82",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-438-rank-ten-not-projectively-flat",
+      "local_ref": "source438",
+      "kind": "source",
+      "title": "Ledger 438: The Rank-Ten Exceptional Fitting Problem Is Not Projectively Flat at the Two Axes",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-438 The Rank-Ten Exceptional Fitting Problem Is Not Projectively Flat at the Two Axes.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:projective-boundary-smith-exceptional-rank-ten-master-image",
+      "local_ref": "test438",
+      "kind": "test",
+      "title": "Projective-boundary Smith test for the exceptional rank-ten master image",
+      "version": "1",
+      "locator": "research/benincasa/dlog-smith-projective-infinity-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:unsaturated-rank-ten-no-global-p1-degree",
+      "local_ref": "crit438",
+      "kind": "criticism",
+      "title": "The raw rank-ten presentation cannot supply a global exceptional P1 degree bound before boundary saturation"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:double-saturated-fitting-transition-degree-20",
+      "local_ref": "next438",
+      "kind": "conjecture",
+      "title": "Double saturation by E and X2 yields a compactified rank-ten Fitting line whose transition degree is 20"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test438",
+      "target_ref": "source438",
+      "source_id": "marici:test:projective-boundary-smith-exceptional-rank-ten-master-image",
+      "target_id": "marici:source:ledger-438-rank-ten-not-projectively-flat",
+      "relation_id": "rel:derived_from-c77b9f1a400c81ae"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test438",
+      "target_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "source_id": "marici:test:projective-boundary-smith-exceptional-rank-ten-master-image",
+      "relation_id": "rel:tests-5c812e0503cf486f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit438",
+      "target_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "source_id": "marici:criticism:unsaturated-rank-ten-no-global-p1-degree",
+      "relation_id": "rel:criticizes-8395b959d6dc862f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next438",
+      "target_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "source_id": "marici:conjecture:double-saturated-fitting-transition-degree-20",
+      "relation_id": "rel:depends_on-f430a6e1d80c040c"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:projective-boundary-rank-loss-20260817",
+      "test_id": "marici:test:projective-boundary-smith-exceptional-rank-ten-master-image",
+      "actor": "marici.Benincasa",
+      "outcome": "At [E:X2]=[1:0] the intrinsic pair is (7,55); at [0:1] it is (3,13), stable at exact-form degrees 8 and 10. Both refute unsaturated rank-ten projective flatness.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-438-rank-ten-not-projectively-flat",
+          "locator": "Result",
+          "paraphrase": "Both frozen boundary axes have stable rank loss relative to the generic pair (10,66)."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:exceptional-valuation-divisor-after-boundary-test-20260817",
+      "subject_id": "marici:conjecture:exceptional-valuation-divisor-5-15",
+      "judgment": "supported_not_proved_with_required_boundary_saturation",
+      "actor": "marici.Benincasa",
+      "reason": "The 128 finite-slope sweep remains supportive on the rank-ten open locus, but the two projective axes are lower-rank frozen supports. Hence the candidate cannot be completed by an unsaturated P1 degree count; a double-saturated transition must be constructed.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-438-rank-ten-not-projectively-flat",
+          "locator": "Interpretation",
+          "paraphrase": "The rank-ten presentation fails at both frozen projective axes, invalidating the naive global degree route without introducing new carrier support."
+        }
+      ]
+    }
+  ],
+  "digest": "72d8169d3f68992e7edca6769850c24765c1129616a0a50f3bbfd9608a176caa"
+}

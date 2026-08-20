@@ -1,0 +1,880 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import graph from '../data/epistemic-graph.json'
+
+const shortHead = graph.ledger_head.slice(0, 12)
+const graphJson = JSON.stringify(graph).replaceAll('<', '\\u003c')
+---
+<SiteLayout
+  title="Epistemic graph | Marici"
+  description="A public, read-only map of claims, problems, tests, sources, and their admitted relations."
+>
+  <section class="graph-shell">
+    <header class="graph-intro">
+      <div>
+        <p class="eyebrow">Admitted knowledge · ledger head {shortHead}</p>
+        <h1>Epistemic <em>graph</em></h1>
+      </div>
+      <p>
+        A read-only projection of Marici's admitted graph. Search and select a node to trace its
+        immediate neighborhood; proposals, reviews, and admission remain on the private operator surface.
+      </p>
+    </header>
+
+    <div class="graph-app" data-graph-app>
+      <div class="graph-toolbar">
+        <label>
+          <span>Find an entity</span>
+          <input type="search" placeholder="Search titles or IDs…" data-search />
+        </label>
+        <label>
+          <span>Kind</span>
+          <select data-kind>
+            <option value="">All kinds</option>
+            <option value="claim">Claims</option>
+            <option value="conjecture">Conjectures</option>
+            <option value="criticism">Criticisms</option>
+            <option value="problem">Problems</option>
+            <option value="source">Sources</option>
+            <option value="test">Tests</option>
+          </select>
+        </label>
+        <button type="button" data-reset>Reset view</button>
+        <p class="graph-count" aria-live="polite" data-count></p>
+      </div>
+
+      <section class="time-controls" aria-labelledby="time-controls-title">
+        <div class="time-heading">
+          <div><span class="eyebrow" id="time-controls-title">Ledger time</span><strong data-time-label>Now</strong></div>
+          <div class="time-modes" role="group" aria-label="Temporal view">
+            <button class="is-active" type="button" data-time-mode="now" aria-pressed="true">Now</button>
+            <button type="button" data-time-mode="at" aria-pressed="false">At entry</button>
+            <button type="button" data-time-mode="compare" aria-pressed="false">Compare</button>
+          </div>
+        </div>
+        <div class="time-scrubbers" data-time-scrubbers hidden>
+          <label data-from-control hidden><span>From <output data-from-output></output></span><input type="range" min="0" value="0" data-time-from /></label>
+          <label><span data-to-caption>Through <output data-to-output></output></span><input type="range" min="0" value="0" data-time-to /></label>
+        </div>
+        <div class="time-legend" data-time-legend hidden>
+          <span><i class="time-added"></i>Added in interval</span><span><i class="time-context"></i>Earlier context</span>
+          <small>All entities and relations use immutable graph-admission events, anchored or bounded to ledger entries.</small>
+        </div>
+      </section>
+
+      <div class="graph-workspace">
+        <div class="graph-canvas-wrap">
+          <svg
+            class="graph-canvas"
+            viewBox="0 0 1200 760"
+            role="img"
+            aria-labelledby="graph-title graph-description"
+            data-canvas
+          >
+            <title id="graph-title">Marici epistemic graph</title>
+            <desc id="graph-description">Interactive graph of admitted epistemic entities and relations.</desc>
+            <g data-viewport>
+              <g data-edges aria-hidden="true"></g>
+              <g data-nodes></g>
+            </g>
+          </svg>
+          <div class="graph-legend" data-legend></div>
+          <div class="graph-tooltip" role="tooltip" data-tooltip hidden></div>
+          <p class="canvas-help">Drag to pan · scroll to zoom · arrow keys move between nodes</p>
+        </div>
+
+        <aside class="graph-inspector" data-inspector>
+          <p class="inspector-empty">Select a node to inspect its admitted relations.</p>
+        </aside>
+      </div>
+      <p class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-selection-status></p>
+    </div>
+  </section>
+
+  <script id="epistemic-graph-data" type="application/json" set:html={graphJson}></script>
+  <script is:inline>
+    (() => {
+      const app = document.querySelector('[data-graph-app]')
+      const dataNode = document.querySelector('#epistemic-graph-data')
+      if (!app || !dataNode) return
+
+      const graph = JSON.parse(dataNode.textContent || '{}')
+      const svg = app.querySelector('[data-canvas]')
+      const viewport = app.querySelector('[data-viewport]')
+      const edgeLayer = app.querySelector('[data-edges]')
+      const nodeLayer = app.querySelector('[data-nodes]')
+      const inspector = app.querySelector('[data-inspector]')
+      const selectionStatus = app.querySelector('[data-selection-status]')
+      const search = app.querySelector('[data-search]')
+      const kind = app.querySelector('[data-kind]')
+      const count = app.querySelector('[data-count]')
+      const legend = app.querySelector('[data-legend]')
+      const tooltip = app.querySelector('[data-tooltip]')
+      const reset = app.querySelector('[data-reset]')
+      const timeLabel = app.querySelector('[data-time-label]')
+      const timeScrubbers = app.querySelector('[data-time-scrubbers]')
+      const timeLegend = app.querySelector('[data-time-legend]')
+      const fromControl = app.querySelector('[data-from-control]')
+      const fromOutput = app.querySelector('[data-from-output]')
+      const toOutput = app.querySelector('[data-to-output]')
+      const toCaption = app.querySelector('[data-to-caption]')
+      const timeFrom = app.querySelector('[data-time-from]')
+      const timeTo = app.querySelector('[data-time-to]')
+      const timeModeButtons = [...app.querySelectorAll('[data-time-mode]')]
+      const ns = 'http://www.w3.org/2000/svg'
+      if (window.matchMedia('(max-width: 560px)').matches) {
+        svg.setAttribute('viewBox', '140 20 820 700')
+      }
+      const colors = {
+        claim: '#ffae62',
+        conjecture: '#caa7ff',
+        criticism: '#e08ba8',
+        problem: '#ef7d7d',
+        source: '#72d6aa',
+        test: '#78b7e8',
+      }
+      const entities = graph.entities || []
+      const relations = graph.relations || []
+      const temporalEntries = Array.isArray(graph.ledger_entries) && graph.ledger_entries.length
+        ? graph.ledger_entries
+        : [...new Map(entities
+          .filter((entity) => Number.isFinite(entity.temporal?.entry))
+          .map((entity) => [entity.temporal.entry, {
+            entry: entity.temporal.entry,
+            date: entity.temporal.published_at || '',
+          }])).values()].sort((a, b) => a.entry - b.entry)
+      const lastTimeIndex = Math.max(0, temporalEntries.length - 1)
+      const byId = new Map(entities.map((entity) => [entity.entity_id, entity]))
+      const relationById = new Map(relations.map((relation) => [relation.relation_id, relation]))
+      const incident = new Map(entities.map((entity) => [entity.entity_id, []]))
+      relations.forEach((relation) => {
+        incident.get(relation.source_id)?.push(relation)
+        incident.get(relation.target_id)?.push(relation)
+      })
+
+      const groups = [...new Set(entities.map((entity) => entity.kind))].sort()
+      const positions = new Map()
+      groups.forEach((group, groupIndex) => {
+        const members = entities.filter((entity) => entity.kind === group)
+        const centerAngle = (groupIndex / groups.length) * Math.PI * 2 - Math.PI / 2
+        const centerRadius = groupIndex % 2 ? 245 : 315
+        const centerX = 600 + Math.cos(centerAngle) * centerRadius
+        const centerY = 380 + Math.sin(centerAngle) * centerRadius * 0.72
+        members.forEach((entity, index) => {
+          const ring = Math.floor(index / 24)
+          const inRing = Math.min(24, members.length - ring * 24)
+          const angle = (index % 24) / Math.max(1, inRing) * Math.PI * 2 + groupIndex * 0.31
+          const radius = 24 + ring * 17
+          positions.set(entity.entity_id, {
+            x: centerX + Math.cos(angle) * radius,
+            y: centerY + Math.sin(angle) * radius,
+          })
+        })
+      })
+
+      const edgeEls = new Map()
+      relations.forEach((relation) => {
+        const source = positions.get(relation.source_id)
+        const target = positions.get(relation.target_id)
+        if (!source || !target) return
+        const line = document.createElementNS(ns, 'line')
+        line.setAttribute('x1', source.x)
+        line.setAttribute('y1', source.y)
+        line.setAttribute('x2', target.x)
+        line.setAttribute('y2', target.y)
+        line.classList.add('graph-edge')
+        line.dataset.source = relation.source_id
+        line.dataset.target = relation.target_id
+        edgeLayer.append(line)
+        edgeEls.set(relation.relation_id, line)
+      })
+
+      const nodeEls = new Map()
+      entities.forEach((entity) => {
+        const position = positions.get(entity.entity_id)
+        const button = document.createElementNS(ns, 'g')
+        const circle = document.createElementNS(ns, 'circle')
+        const title = document.createElementNS(ns, 'title')
+        button.classList.add('graph-node')
+        button.setAttribute('role', 'button')
+        button.setAttribute('tabindex', '-1')
+        button.setAttribute('aria-label', `${entity.kind}: ${entity.title}`)
+        button.setAttribute('transform', `translate(${position.x} ${position.y})`)
+        button.dataset.id = entity.entity_id
+        circle.setAttribute('r', entity.kind === 'problem' ? '6.5' : '5')
+        circle.setAttribute('fill', colors[entity.kind] || '#aab9ba')
+        title.textContent = entity.title
+        button.append(circle, title)
+        button.addEventListener('pointerdown', (event) => event.stopPropagation())
+        button.addEventListener('pointerenter', () => showTooltip(entity))
+        button.addEventListener('pointerleave', hideTooltip)
+        button.addEventListener('focus', () => showTooltip(entity))
+        button.addEventListener('blur', hideTooltip)
+        button.addEventListener('click', () => selectEntity(entity.entity_id, { push: true }))
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            selectEntity(entity.entity_id, { push: true })
+          } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+            event.preventDefault()
+            const nextId = directionalNeighbor(entity.entity_id, event.key)
+            if (nextId) setRovingFocus(nextId, true)
+          } else if (event.key === 'Escape' && isolated) {
+            isolated = false
+            updateGraph()
+            renderInspector()
+            syncUrl('replace')
+          }
+        })
+        nodeLayer.append(button)
+        nodeEls.set(entity.entity_id, button)
+      })
+
+      groups.forEach((group) => {
+        const item = document.createElement('span')
+        item.innerHTML = `<i style="--legend-color:${colors[group] || '#aab9ba'}"></i>${group}`
+        legend.append(item)
+      })
+
+      let selectedId = null
+      let compareId = null
+      let isolated = false
+      let arrival = null
+      let timeMode = 'now'
+      let timeFromIndex = 0
+      let timeToIndex = lastTimeIndex
+      let filteredIds = new Set(entities.map((entity) => entity.entity_id))
+      const predicateDefinitions = {
+        derived_from: ['Sources', 'derived from'],
+        addresses: ['Resolution', 'addresses'],
+        supersedes: ['Revision', 'supersedes'],
+        depends_on: ['Dependency', 'depends on'],
+        transforms: ['Transformation', 'transforms'],
+        tests: ['Tests', 'tests'],
+        criticizes: ['Criticism', 'criticizes'],
+        'marici:supports': ['Support', 'supports'],
+        'marici:scoped_supports': ['Support', 'supports in scope'],
+        'marici:refines': ['Revision', 'refines'],
+        'marici:verified_revision_of': ['Revision', 'is a verified revision of'],
+        'marici:generalizes': ['Revision', 'generalizes'],
+        'marici:boundary_condition_for': ['Boundary', 'is a boundary condition for'],
+        'marici:partial_resolution_of': ['Resolution', 'partially resolves'],
+        'marici:scoped_resolves': ['Resolution', 'resolves in scope'],
+      }
+      const groupOrder = ['Support', 'Resolution', 'Criticism', 'Tests', 'Dependency', 'Revision', 'Transformation', 'Boundary', 'Sources', 'Other']
+      const escapeHtml = (value) => String(value ?? '')
+        .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;').replaceAll("'", '&#039;')
+      const humanize = (value) => String(value ?? '')
+        .replace(/^marici:/, '').replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+      const predicate = (type) => predicateDefinitions[type] ?? ['Other', humanize(type).toLowerCase()]
+      const neighborsFor = (id) => new Set((incident.get(id) || []).flatMap((relation) => [relation.source_id, relation.target_id]))
+
+      function showTooltip(entity) {
+        if (!tooltip || selectedId === entity.entity_id) return
+        tooltip.innerHTML = `<strong>${escapeHtml(entity.title)}</strong><span>${escapeHtml(humanize(entity.kind))}${entity.status ? ` · ${escapeHtml(humanize(entity.status))}` : ''} · ${(incident.get(entity.entity_id) || []).length} relations</span>`
+        tooltip.hidden = false
+        const point = positions.get(entity.entity_id)
+        const matrix = viewport.getCTM()
+        if (!point || !matrix) return
+        const svgPoint = new DOMPoint(point.x, point.y).matrixTransform(matrix)
+        tooltip.style.left = `${Math.max(12, Math.min(svg.clientWidth - 250, svgPoint.x + 12))}px`
+        tooltip.style.top = `${Math.max(56, Math.min(svg.clientHeight - 100, svgPoint.y - 14))}px`
+      }
+      function hideTooltip() { if (tooltip) tooltip.hidden = true }
+
+      function setRovingFocus(id, focus = false) {
+        nodeEls.forEach((element, nodeId) => element.setAttribute('tabindex', nodeId === id ? '0' : '-1'))
+        if (focus) nodeEls.get(id)?.focus({ preventScroll: true })
+      }
+
+      function syncUrl(mode = 'push') {
+        const url = new URL(window.location.href)
+        selectedId ? url.searchParams.set('entity', selectedId) : url.searchParams.delete('entity')
+        compareId ? url.searchParams.set('compare', compareId) : url.searchParams.delete('compare')
+        timeMode === 'now' ? url.searchParams.delete('time') : url.searchParams.set('time', timeMode)
+        timeMode === 'compare' ? url.searchParams.set('from', temporalEntries[timeFromIndex]?.entry || 0) : url.searchParams.delete('from')
+        timeMode === 'now' ? url.searchParams.delete('to') : url.searchParams.set('to', temporalEntries[timeToIndex]?.entry || 0)
+        const state = { selectedId, compareId, isolated, arrival, timeMode, timeFromIndex, timeToIndex }
+        window.history[mode === 'replace' ? 'replaceState' : 'pushState'](state, '', url)
+      }
+
+      const entryFor = (entity) => Number(entity?.temporal?.entry || entity?.provenance?.ledger_entry) || 0
+      const admittedByTime = (entity) => timeMode === 'now' || entryFor(entity) === 0 || entryFor(entity) <= timePoint(timeToIndex).entry
+      const timePoint = (index) => temporalEntries[Math.max(0, Math.min(lastTimeIndex, index))] || { entry: 0, date: 'baseline' }
+      function indexForEntry(entry, fallback) {
+        const index = temporalEntries.findIndex((point) => point.entry === Number(entry))
+        return index < 0 ? fallback : index
+      }
+      function indexAtOrBefore(entry) {
+        const numeric = Number(entry)
+        const index = temporalEntries.findLastIndex((point) => point.entry <= numeric)
+        return index < 0 ? 0 : index
+      }
+      function updateTimeControls() {
+        const from = timePoint(timeFromIndex)
+        const to = timePoint(timeToIndex)
+        timeModeButtons.forEach((button) => {
+          const active = button.dataset.timeMode === timeMode
+          button.classList.toggle('is-active', active)
+          button.setAttribute('aria-pressed', String(active))
+        })
+        timeScrubbers.hidden = timeMode === 'now'
+        timeLegend.hidden = timeMode !== 'compare'
+        fromControl.hidden = timeMode !== 'compare'
+        toCaption.firstChild.textContent = timeMode === 'compare' ? 'To ' : 'Through '
+        timeFrom.min = temporalEntries[0]?.entry || 0
+        timeTo.min = temporalEntries[0]?.entry || 0
+        timeFrom.max = temporalEntries[lastTimeIndex]?.entry || 0
+        timeTo.max = temporalEntries[lastTimeIndex]?.entry || 0
+        timeFrom.value = from.entry
+        timeTo.value = to.entry
+        fromOutput.textContent = `Entry ${from.entry} · ${from.date}`
+        toOutput.textContent = `Entry ${to.entry} · ${to.date}`
+        timeLabel.textContent = timeMode === 'now' ? 'Current admitted graph' : timeMode === 'at'
+          ? `Through entry ${to.entry}` : `Entries ${from.entry}–${to.entry}`
+      }
+      function applyTime(mode = 'replace') {
+        if (timeFromIndex > timeToIndex) timeFromIndex = timeToIndex
+        updateTimeControls()
+        applyFilter()
+        syncUrl(mode)
+        selectionStatus.textContent = timeLabel.textContent
+      }
+
+      function publicProvenance(entity) {
+        const provenance = entity.provenance
+        if (!provenance) return ''
+        const author = provenance.authors?.join(' and ')
+        const parts = [
+          provenance.ledger_entry ? `Entry ${String(provenance.ledger_entry).padStart(3, '0')}` : '',
+          author || '',
+          provenance.published_at || '',
+          provenance.version || '',
+        ].filter(Boolean)
+        return `<section class="entity-provenance"><h3>Provenance</h3>
+          <p>${parts.map(escapeHtml).join(' · ')}</p>
+          ${provenance.href ? `<a href="${escapeHtml(provenance.href)}">Open ledger entry →</a>` : ''}
+        </section>`
+      }
+
+      function entitySummary(entity, compact = false) {
+        return `<article class="entity-summary${compact ? ' entity-summary--compact' : ''}">
+          <p class="entity-badges"><span>${escapeHtml(entity.kind)}</span>${entity.status ? `<span>${escapeHtml(humanize(entity.status))}</span>` : ''}</p>
+          <h2 title="${escapeHtml(entity.title)}">${escapeHtml(entity.title)}</h2>
+          ${entity.summary ? `<p class="entity-description">${escapeHtml(entity.summary)}</p>` : ''}
+          ${compact ? '' : `${publicProvenance(entity)}<details class="technical-identity"><summary>Technical identity</summary><code>${escapeHtml(entity.entity_id)}</code></details>`}
+        </article>`
+      }
+
+      function relationHeading(group) {
+        const labels = {
+          Support: group.outgoing ? 'This entity supports' : 'Supported by',
+          Resolution: group.outgoing ? 'This entity resolves' : 'Resolved by',
+          Criticism: group.outgoing ? 'This entity criticizes' : 'Criticized by',
+          Tests: group.outgoing ? 'This entity tests' : 'Tested by',
+          Dependency: group.outgoing ? 'This entity depends on' : 'Entities depending on this',
+          Revision: group.outgoing ? 'This entity revises' : 'Revisions of this entity',
+          Transformation: group.outgoing ? 'This entity transforms' : 'Transformations into this entity',
+          Boundary: group.outgoing ? 'Boundary conditions supplied by this' : 'Boundary conditions for this',
+          Sources: group.outgoing ? 'Sources for this entity' : 'Entities derived from this',
+          Other: group.outgoing ? 'Related entities' : 'Entities relating to this',
+        }
+        return labels[group.group] || labels.Other
+      }
+
+      function relationGroups(id) {
+        const groups = new Map()
+        for (const relation of incident.get(id) || []) {
+          if (timeMode !== 'now' && Number(relation.temporal?.entry) > timePoint(timeToIndex).entry) continue
+          const outgoing = relation.source_id === id
+          const otherId = outgoing ? relation.target_id : relation.source_id
+          const other = byId.get(otherId)
+          if (!admittedByTime(other)) continue
+          const [group, phrase] = predicate(relation.relation_type)
+          const key = `${group}|${outgoing ? 'outgoing' : 'incoming'}`
+          if (!groups.has(key)) groups.set(key, { group, outgoing, rows: [] })
+          groups.get(key).rows.push({ relation, otherId, other, phrase })
+        }
+        return [...groups.values()].sort((a, b) =>
+          groupOrder.indexOf(a.group) - groupOrder.indexOf(b.group) || Number(b.outgoing) - Number(a.outgoing)
+        )
+      }
+
+      function renderRelations(entity) {
+        const groups = relationGroups(entity.entity_id)
+        if (!groups.length) return '<p class="inspector-empty">No immediate admitted relations.</p>'
+        return groups.map((group) => `<section class="relation-group">
+          <h3>${escapeHtml(relationHeading(group))} <b>${group.rows.length}</b></h3>
+          <ol class="relation-list">
+            ${group.rows.map(({ relation, otherId, other, phrase }) => {
+              return `<li><button type="button" data-navigate="${escapeHtml(otherId)}" data-relation="${escapeHtml(relation.relation_id)}">
+                <span>${escapeHtml(phrase)}</span>
+                <strong>${escapeHtml(other?.title || otherId)}</strong>
+                <small>${escapeHtml(humanize(other?.kind || 'entity'))}${other?.status ? ` · ${escapeHtml(humanize(other.status))}` : ''}</small>
+              </button></li>`
+            }).join('')}
+          </ol>
+        </section>`).join('')
+      }
+
+      function renderComparison(selected, pinned) {
+        const selectedNeighbors = neighborsFor(selected.entity_id)
+        const pinnedNeighbors = neighborsFor(pinned.entity_id)
+        const shared = [...selectedNeighbors].filter((id) => id !== selected.entity_id && id !== pinned.entity_id && pinnedNeighbors.has(id))
+        const direct = relations.filter((relation) =>
+          (relation.source_id === selected.entity_id && relation.target_id === pinned.entity_id)
+          || (relation.source_id === pinned.entity_id && relation.target_id === selected.entity_id)
+        )
+        const sharedKinds = [...new Set(shared.map((id) => byId.get(id)?.kind).filter(Boolean))]
+          .map((kindName) => `${shared.filter((id) => byId.get(id)?.kind === kindName).length} ${kindName}`)
+        const relationship = direct.length ? direct.map((relation) => predicate(relation.relation_type)[1]).join(', ') : 'No direct relation'
+        return `<div class="sheet-grip" aria-hidden="true"></div><div class="compare-header"><p>Comparing two admitted entities</p>
+          <div><button type="button" data-action="swap">Swap</button><button class="action-primary" type="button" data-action="show-both">Show both</button><button type="button" data-action="clear-compare">Clear comparison</button><button class="sheet-close" type="button" data-action="close-sheet" aria-label="Close details">×</button></div>
+        </div>
+        <dl class="compare-matrix">
+          <div><dt>Attribute</dt><dd>Pinned</dd><dd>Selected</dd></div>
+          <div><dt>Kind</dt><dd>${escapeHtml(humanize(pinned.kind))}</dd><dd>${escapeHtml(humanize(selected.kind))}</dd></div>
+          <div><dt>Status</dt><dd>${escapeHtml(humanize(pinned.status || 'Unspecified'))}</dd><dd>${escapeHtml(humanize(selected.status || 'Unspecified'))}</dd></div>
+          <div><dt>Relationship</dt><dd class="compare-span">${escapeHtml(relationship)}</dd></div>
+          <div><dt>Shared neighbors</dt><dd class="compare-span">${shared.length}${sharedKinds.length ? ` · ${escapeHtml(sharedKinds.join(', '))}` : ''}</dd></div>
+        </dl>
+        <div class="compare-grid">${entitySummary(pinned, true)}${entitySummary(selected, true)}</div>
+        `
+      }
+
+      function renderInspector() {
+        const entity = byId.get(selectedId)
+        if (!entity) {
+          inspector.innerHTML = '<p class="inspector-empty">Select a node to inspect its admitted relations.</p>'
+          return
+        }
+        const pinned = byId.get(compareId)
+        if (pinned && pinned.entity_id !== entity.entity_id) {
+          inspector.innerHTML = renderComparison(entity, pinned)
+          return
+        }
+        const sameKind = entities.filter((candidate) => candidate.kind === entity.kind && (filteredIds.has(candidate.entity_id) || candidate.entity_id === entity.entity_id))
+        const kindIndex = Math.max(0, sameKind.findIndex((candidate) => candidate.entity_id === entity.entity_id))
+        const previous = sameKind[(kindIndex - 1 + sameKind.length) % sameKind.length]
+        const next = sameKind[(kindIndex + 1) % sameKind.length]
+        const arrived = arrival?.relationId ? relations.find((relation) => relation.relation_id === arrival.relationId) : null
+        const from = arrival?.fromId ? byId.get(arrival.fromId) : null
+        const entityEntry = entryFor(entity)
+        const temporalBasis = entity.temporal?.basis
+        const temporalRange = entity.temporal?.entry_min === entity.temporal?.entry_max ? `entry ${entityEntry}` : `entries ${entity.temporal?.entry_min}–${entity.temporal?.entry_max}`
+        const temporalBasisLabel = temporalBasis === 'admission_event_bounded' ? 'bounded reconstruction' : temporalBasis === 'admission_event_batch' ? 'ledger batch anchor' : 'exact event anchor'
+        const temporalContext = entityEntry
+          ? `<p class="temporal-context${admittedByTime(entity) ? '' : ' is-future'}">${admittedByTime(entity) ? 'Admitted' : 'Not yet admitted'} in graph event ${entity.temporal?.event_sequence} · ${temporalRange}${entity.temporal?.published_at ? ` · ${escapeHtml(entity.temporal.published_at)}` : ''} · ${temporalBasisLabel}</p>`
+          : '<p class="temporal-context is-future">Admission event unavailable</p>'
+        inspector.innerHTML = `<div class="sheet-grip" aria-hidden="true"></div><div class="inspector-history">
+            <div><button type="button" data-action="back" aria-label="Back">←</button><button type="button" data-action="forward" aria-label="Forward">→</button></div>
+            <span>${kindIndex + 1} / ${sameKind.length} ${escapeHtml(entity.kind)}s</span>
+            <div><button type="button" data-step="${escapeHtml(previous?.entity_id || entity.entity_id)}" aria-label="Previous ${escapeHtml(entity.kind)}">‹</button><button type="button" data-step="${escapeHtml(next?.entity_id || entity.entity_id)}" aria-label="Next ${escapeHtml(entity.kind)}">›</button><button class="sheet-close" type="button" data-action="close-sheet" aria-label="Close details">×</button></div>
+          </div>
+          ${arrived && from ? `<p class="arrival-context">Arrived via <strong>${escapeHtml(from.title)}</strong> — ${escapeHtml(predicate(arrived.relation_type)[1])} →</p>` : ''}
+          ${timeMode === 'now' ? '' : temporalContext}
+          ${entitySummary(entity)}
+          <div class="inspector-actions">
+            <button class="action-primary" type="button" data-action="show">Show in graph</button>
+            <button class="action-secondary" type="button" data-action="isolate" aria-pressed="${isolated}">${isolated ? 'Show overview' : 'Isolate neighborhood'}</button>
+            <button type="button" data-action="pin">${compareId === entity.entity_id ? 'Pinned—choose another' : 'Pin to compare'}</button>
+            <details class="more-actions"><summary>More</summary><button type="button" data-action="copy-link">Copy link</button><button type="button" data-action="copy-id">Copy technical ID</button></details>
+          </div>
+          <h3 class="relations-heading">${(incident.get(entity.entity_id) || []).length} immediate relation${(incident.get(entity.entity_id) || []).length === 1 ? '' : 's'}</h3>
+          ${renderRelations(entity)}`
+      }
+
+      function updateGraph() {
+        app.classList.toggle('has-selection', Boolean(selectedId))
+        app.classList.toggle('is-comparing', Boolean(selectedId && compareId && selectedId !== compareId))
+        const context = selectedId ? neighborsFor(selectedId) : new Set()
+        if (selectedId) context.add(selectedId)
+        if (compareId) {
+          context.add(compareId)
+          for (const id of neighborsFor(compareId)) context.add(id)
+        }
+        nodeEls.forEach((element, id) => {
+          const entity = byId.get(id)
+          const entry = entryFor(entity)
+          const visible = filteredIds.has(id) || (timeMode === 'now' && (id === selectedId || id === compareId))
+          const added = timeMode === 'compare' && entry > timePoint(timeFromIndex).entry && entry <= timePoint(timeToIndex).entry
+          element.classList.toggle('is-hidden', !visible)
+          element.classList.toggle('is-selected', id === selectedId)
+          element.classList.toggle('is-compared', id === compareId)
+          element.classList.toggle('is-muted', isolated && !context.has(id))
+          element.classList.toggle('is-time-added', added)
+          element.classList.toggle('is-time-context', timeMode === 'compare' && visible && !added)
+        })
+        edgeEls.forEach((element, relationId) => {
+          const admissionEntry = relationById.get(relationId)?.temporal?.entry || Math.max(entryFor(byId.get(element.dataset.source)), entryFor(byId.get(element.dataset.target)))
+          const admitted = timeMode === 'now' || admissionEntry <= timePoint(timeToIndex).entry
+          const endpointsVisible = !nodeEls.get(element.dataset.source)?.classList.contains('is-hidden')
+            && !nodeEls.get(element.dataset.target)?.classList.contains('is-hidden')
+          const connected = element.dataset.source === selectedId || element.dataset.target === selectedId
+            || element.dataset.source === compareId || element.dataset.target === compareId
+          const added = timeMode === 'compare' && admissionEntry > timePoint(timeFromIndex).entry && admissionEntry <= timePoint(timeToIndex).entry
+          element.classList.toggle('is-hidden', !endpointsVisible || !admitted)
+          element.classList.toggle('is-active', connected)
+          element.classList.toggle('is-muted', isolated && !connected)
+          element.classList.toggle('is-time-added', added)
+          element.classList.toggle('is-time-context', timeMode === 'compare' && endpointsVisible && !added)
+        })
+      }
+
+      function selectEntity(id, options = {}) {
+        if (!byId.has(id)) return
+        const previousId = selectedId
+        selectedId = id
+        app.classList.add('sheet-open')
+        if (compareId === selectedId && previousId && previousId !== selectedId) compareId = previousId
+        arrival = options.relationId ? { relationId: options.relationId, fromId: previousId } : null
+        setRovingFocus(id, Boolean(options.focus))
+        updateGraph()
+        renderInspector()
+        selectionStatus.textContent = `Selected ${byId.get(id).kind}: ${byId.get(id).title}. ${(incident.get(id) || []).length} immediate relations.`
+        if (options.center) focusNode(id)
+        if (options.push) syncUrl('push')
+      }
+
+      function applyFilter() {
+        const term = search.value.trim().toLowerCase()
+        const selectedKind = kind.value
+        const cutoff = timePoint(timeToIndex).entry
+        filteredIds = new Set(entities.filter((entity) =>
+          (!term || entity.title.toLowerCase().includes(term) || entity.entity_id.toLowerCase().includes(term))
+          && (!selectedKind || entity.kind === selectedKind)
+          && (timeMode === 'now' || entryFor(entity) === 0 || entryFor(entity) <= cutoff)
+        ).map((entity) => entity.entity_id))
+        const visibleRelations = relations.filter((relation) => filteredIds.has(relation.source_id) && filteredIds.has(relation.target_id)
+          && (timeMode === 'now' || Number(relation.temporal?.entry) <= cutoff)).length
+        count.textContent = `${filteredIds.size} of ${entities.length} entities · ${visibleRelations} of ${relations.length} relations`
+        updateGraph()
+        renderInspector()
+        const focusId = selectedId && filteredIds.has(selectedId) ? selectedId : [...filteredIds][0]
+        if (focusId) setRovingFocus(focusId)
+      }
+
+      let transform = { x: 0, y: 0, scale: 1 }
+      let drag = null
+      function paintTransform() {
+        viewport.setAttribute('transform', `translate(${transform.x} ${transform.y}) scale(${transform.scale})`)
+      }
+      function focusNode(id) {
+        const position = positions.get(id)
+        if (!position) return
+        const compact = window.matchMedia('(max-width: 560px)').matches
+        const center = compact ? { x: 550, y: 370 } : { x: 600, y: 380 }
+        transform = {
+          x: center.x - position.x * 1.7,
+          y: center.y - position.y * 1.7,
+          scale: 1.7,
+        }
+        paintTransform()
+        nodeEls.get(id)?.focus({ preventScroll: true })
+      }
+      function focusBoth(firstId, secondId) {
+        const first = positions.get(firstId)
+        const second = positions.get(secondId)
+        if (!first || !second) return
+        const distance = Math.max(Math.abs(first.x - second.x), Math.abs(first.y - second.y), 180)
+        const scale = Math.max(0.7, Math.min(2.2, 620 / distance))
+        transform = {
+          x: 600 - ((first.x + second.x) / 2) * scale,
+          y: 380 - ((first.y + second.y) / 2) * scale,
+          scale,
+        }
+        paintTransform()
+      }
+      function directionalNeighbor(id, key) {
+        const origin = positions.get(id)
+        if (!origin) return null
+        const candidates = entities.filter((entity) => {
+          if (entity.entity_id === id || (!filteredIds.has(entity.entity_id) && entity.entity_id !== compareId)) return false
+          const position = positions.get(entity.entity_id)
+          const dx = position.x - origin.x
+          const dy = position.y - origin.y
+          return key === 'ArrowLeft' ? dx < 0 : key === 'ArrowRight' ? dx > 0 : key === 'ArrowUp' ? dy < 0 : dy > 0
+        })
+        candidates.sort((a, b) => {
+          const score = (candidate) => {
+            const position = positions.get(candidate.entity_id)
+            const dx = Math.abs(position.x - origin.x)
+            const dy = Math.abs(position.y - origin.y)
+            return key === 'ArrowLeft' || key === 'ArrowRight' ? dx + dy * 2 : dy + dx * 2
+          }
+          return score(a) - score(b)
+        })
+        return candidates[0]?.entity_id || null
+      }
+
+      inspector.addEventListener('click', async (event) => {
+        const control = event.target.closest('button')
+        if (!control) return
+        if (control.dataset.navigate) {
+          selectEntity(control.dataset.navigate, { push: true, relationId: control.dataset.relation, center: true, focus: true })
+          return
+        }
+        if (control.dataset.step) {
+          selectEntity(control.dataset.step, { push: true, center: true, focus: true })
+          return
+        }
+        const action = control.dataset.action
+        if (action === 'back') history.back()
+        if (action === 'forward') history.forward()
+        if (action === 'show' && selectedId) {
+          focusNode(selectedId)
+          if (window.matchMedia('(max-width: 900px)').matches) svg.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+        if (action === 'close-sheet') app.classList.remove('sheet-open')
+        if (action === 'isolate') {
+          isolated = !isolated
+          updateGraph()
+          renderInspector()
+          syncUrl('replace')
+        }
+        if (action === 'pin' && selectedId) {
+          compareId = selectedId
+          updateGraph()
+          renderInspector()
+          syncUrl('push')
+        }
+        if (action === 'clear-compare') {
+          compareId = null
+          updateGraph()
+          renderInspector()
+          syncUrl('push')
+        }
+        if (action === 'swap' && compareId && selectedId) {
+          const nextSelected = compareId
+          compareId = selectedId
+          selectedId = nextSelected
+          updateGraph()
+          renderInspector()
+          setRovingFocus(selectedId)
+          syncUrl('push')
+        }
+        if (action === 'show-both' && selectedId && compareId) focusBoth(selectedId, compareId)
+        if (action === 'copy-link' || action === 'copy-id') {
+          const value = action === 'copy-link' ? window.location.href : selectedId
+          try {
+            await navigator.clipboard.writeText(value)
+            selectionStatus.textContent = action === 'copy-link' ? 'Link copied.' : 'Entity ID copied.'
+          } catch { selectionStatus.textContent = 'Copy failed. Select the value and copy it manually.' }
+        }
+      })
+      svg.addEventListener('wheel', (event) => {
+        event.preventDefault()
+        transform.scale = Math.max(0.45, Math.min(4, transform.scale * (event.deltaY > 0 ? 0.9 : 1.1)))
+        paintTransform()
+      }, { passive: false })
+      svg.addEventListener('pointerdown', (event) => {
+        if (event.target.closest?.('.graph-node')) return
+        drag = { x: event.clientX, y: event.clientY, ox: transform.x, oy: transform.y }
+        svg.setPointerCapture(event.pointerId)
+      })
+      svg.addEventListener('pointermove', (event) => {
+        if (!drag) return
+        transform.x = drag.ox + (event.clientX - drag.x)
+        transform.y = drag.oy + (event.clientY - drag.y)
+        paintTransform()
+      })
+      svg.addEventListener('pointerup', () => { drag = null })
+      reset.addEventListener('click', () => {
+        transform = { x: 0, y: 0, scale: 1 }
+        paintTransform()
+        search.value = ''
+        kind.value = ''
+        selectedId = null
+        compareId = null
+        isolated = false
+        arrival = null
+        timeMode = 'now'
+        timeFromIndex = 0
+        timeToIndex = lastTimeIndex
+        updateTimeControls()
+        applyFilter()
+        syncUrl('push')
+      })
+      search.addEventListener('input', applyFilter)
+      kind.addEventListener('change', applyFilter)
+      timeModeButtons.forEach((button) => button.addEventListener('click', () => {
+        timeMode = button.dataset.timeMode
+        if (timeMode === 'compare' && timeFromIndex === 0) timeFromIndex = Math.max(0, timeToIndex - 14)
+        applyTime('push')
+      }))
+      timeFrom.addEventListener('input', () => {
+        timeFromIndex = Math.min(indexAtOrBefore(timeFrom.value), timeToIndex)
+        applyTime('replace')
+      })
+      timeTo.addEventListener('input', () => {
+        timeToIndex = indexAtOrBefore(timeTo.value)
+        if (timeFromIndex > timeToIndex) timeFromIndex = Math.max(0, timeToIndex - 14)
+        applyTime('replace')
+      })
+      timeFrom.addEventListener('change', () => syncUrl('push'))
+      timeTo.addEventListener('change', () => syncUrl('push'))
+      function restoreState(state) {
+        const params = new URLSearchParams(location.search)
+        selectedId = byId.has(state?.selectedId) ? state.selectedId : (byId.has(params.get('entity')) ? params.get('entity') : null)
+        compareId = byId.has(state?.compareId) ? state.compareId : (byId.has(params.get('compare')) ? params.get('compare') : null)
+        isolated = Boolean(state?.isolated)
+        arrival = state?.arrival || null
+        const requestedMode = state?.timeMode || params.get('time')
+        timeMode = ['at', 'compare'].includes(requestedMode) ? requestedMode : 'now'
+        timeToIndex = Number.isInteger(state?.timeToIndex) ? state.timeToIndex : indexForEntry(params.get('to'), lastTimeIndex)
+        timeFromIndex = Number.isInteger(state?.timeFromIndex) ? state.timeFromIndex : indexForEntry(params.get('from'), Math.max(0, timeToIndex - 14))
+        timeToIndex = Math.max(0, Math.min(lastTimeIndex, timeToIndex))
+        timeFromIndex = Math.max(0, Math.min(timeToIndex, timeFromIndex))
+        updateTimeControls()
+        applyFilter()
+        if (selectedId) {
+          setRovingFocus(selectedId)
+          app.classList.add('sheet-open')
+        }
+      }
+      window.addEventListener('popstate', (event) => restoreState(event.state))
+      restoreState(history.state)
+      syncUrl('replace')
+    })()
+  </script>
+</SiteLayout>
+
+<style>
+  .graph-shell { width: min(1440px, calc(100% - 40px)); margin: 0 auto; padding: 76px 0 110px; }
+  .graph-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .65fr); align-items: end; gap: 60px; margin-bottom: 42px; }
+  .graph-intro h1 { font-size: clamp(3rem, 7vw, 6.2rem); }
+  .graph-intro > p { margin: 0 0 8px; color: var(--muted); }
+  .graph-app { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: rgb(7 17 23 / 82%); box-shadow: var(--shadow); }
+  .graph-toolbar { display: grid; grid-template-columns: minmax(220px, 1fr) 180px auto auto; align-items: end; gap: 14px; padding: 18px; border-bottom: 1px solid var(--line-soft); }
+  .graph-toolbar label { display: grid; gap: 6px; color: var(--dim); font: 650 .65rem/1.2 Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .graph-toolbar input, .graph-toolbar select, .graph-toolbar button { min-height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--ink); background: var(--panel-raised); font: inherit; }
+  .graph-toolbar button { cursor: pointer; }
+  .graph-toolbar button:hover { border-color: var(--ochre); }
+  .graph-count { align-self: center; margin: 0; color: var(--dim); font: .72rem Consolas, monospace; white-space: nowrap; }
+  .time-controls { display: grid; gap: 14px; padding: 15px 18px; border-bottom: 1px solid var(--line-soft); background: rgb(10 24 31 / 72%); }
+  .time-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .time-heading > div:first-child { display: grid; gap: 3px; }
+  .time-heading strong { font-size: .86rem; }
+  .time-modes { display: flex; gap: 6px; }
+  .time-modes button { min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: var(--panel); cursor: pointer; }
+  .time-modes button.is-active { border-color: var(--ochre); color: #071117; background: var(--ochre); font-weight: 750; }
+  .time-scrubbers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .time-scrubbers[hidden], .time-legend[hidden], .time-scrubbers label[hidden] { display: none; }
+  .time-scrubbers label { display: grid; gap: 8px; color: var(--dim); font: .67rem Consolas, monospace; }
+  .time-scrubbers input { width: 100%; accent-color: var(--ochre); cursor: ew-resize; }
+  .time-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; color: var(--muted); font: .64rem Consolas, monospace; }
+  .time-legend span { display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; }
+  .time-legend i { width: 9px; height: 9px; border-radius: 50%; }
+  .time-legend .time-added { background: #72d6aa; box-shadow: 0 0 0 2px rgb(114 214 170 / 25%); }
+  .time-legend .time-context { background: #647477; opacity: .55; }
+  .time-legend small { margin-left: auto; color: var(--dim); }
+  .graph-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 480px); min-height: 680px; }
+  .graph-canvas-wrap { position: relative; min-width: 0; overflow: hidden; border-right: 1px solid var(--line-soft); background: radial-gradient(circle at 50% 48%, rgb(38 69 76 / 20%), transparent 55%); }
+  .graph-canvas { display: block; width: 100%; height: 680px; cursor: grab; touch-action: none; }
+  .graph-canvas:active { cursor: grabbing; }
+  .graph-canvas :global(.graph-edge) { stroke: rgb(119 151 155 / 13%); stroke-width: 1; transition: opacity .18s, stroke .18s; }
+  .graph-canvas :global(.graph-edge.is-active) { stroke: var(--ochre); stroke-width: 2; opacity: .8; }
+  .graph-canvas :global(.graph-edge.is-time-added) { stroke: #72d6aa; stroke-width: 1.6; opacity: .72; }
+  .graph-canvas :global(.graph-edge.is-time-context:not(.is-active)) { opacity: .08; }
+  .graph-canvas :global(.graph-edge.is-muted), .graph-canvas :global(.graph-node.is-muted) { opacity: .07; }
+  .graph-canvas :global(.is-hidden) { display: none; }
+  .graph-canvas :global(.graph-node) { cursor: pointer; transition: opacity .18s; }
+  .graph-canvas :global(.graph-node circle) { stroke: rgb(7 17 23 / 80%); stroke-width: 2; transition: r .15s, stroke .15s; }
+  .graph-canvas :global(.graph-node:hover circle), .graph-canvas :global(.graph-node:focus circle), .graph-canvas :global(.graph-node.is-selected circle) { r: 10; stroke: #fff2df; stroke-width: 3; }
+  .graph-canvas :global(.graph-node.is-compared circle) { r: 9; stroke: #78b7e8; stroke-width: 3; }
+  .graph-canvas :global(.graph-node.is-time-added circle) { stroke: #72d6aa; stroke-width: 3; filter: drop-shadow(0 0 4px rgb(114 214 170 / 55%)); }
+  .graph-canvas :global(.graph-node.is-time-context:not(.is-selected):not(.is-compared)) { opacity: .2; }
+  .graph-legend { position: absolute; top: 14px; left: 14px; display: flex; flex-wrap: wrap; gap: 8px 13px; max-width: calc(100% - 28px); padding: 9px 12px; border: 1px solid var(--line-soft); border-radius: 9px; background: rgb(7 17 23 / 82%); color: var(--muted); font: .65rem Consolas, monospace; text-transform: uppercase; backdrop-filter: blur(10px); }
+  .graph-legend :global(span) { display: inline-flex; align-items: center; gap: 6px; }
+  .graph-legend :global(i) { width: 8px; height: 8px; border-radius: 50%; background: var(--legend-color); }
+  .canvas-help { position: absolute; right: 14px; bottom: 10px; margin: 0; color: var(--dim); font: .64rem Consolas, monospace; }
+  .graph-tooltip { position: absolute; z-index: 4; display: grid; width: min(240px, calc(100% - 24px)); gap: 5px; padding: 10px 12px; border: 1px solid var(--ochre); border-radius: 9px; color: var(--ink); background: rgb(7 17 23 / 96%); box-shadow: var(--shadow); pointer-events: none; }
+  .graph-tooltip[hidden] { display: none; }
+  .graph-tooltip strong { font-size: .74rem; line-height: 1.35; }
+  .graph-tooltip span { color: var(--dim); font: .62rem Consolas, monospace; text-transform: uppercase; }
+  .graph-inspector { overflow: auto; max-height: 680px; padding: 26px; }
+  .graph-inspector :global(.inspector-empty) { color: var(--dim); }
+  .graph-inspector :global(button) { border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--panel-raised); cursor: pointer; }
+  .graph-inspector :global(button:hover), .graph-inspector :global(button:focus-visible) { border-color: var(--ochre); color: var(--ochre); }
+  .graph-inspector :global(.inspector-history) { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .graph-inspector :global(.inspector-history > div) { display: flex; gap: 5px; }
+  .graph-inspector :global(.inspector-history button) { width: 34px; height: 34px; font-size: 1.05rem; }
+  .graph-inspector :global(.inspector-history span) { color: var(--dim); font: 650 .65rem Consolas, monospace; text-align: center; text-transform: uppercase; }
+  .graph-inspector :global(.arrival-context) { padding: 9px 11px; border-left: 2px solid var(--ochre); color: var(--muted); background: rgb(255 174 98 / 7%); font-size: .72rem; }
+  .graph-inspector :global(.temporal-context) { margin: 0 0 14px; padding: 8px 10px; border: 1px solid rgb(114 214 170 / 35%); border-radius: 8px; color: #72d6aa; background: rgb(114 214 170 / 7%); font: .67rem Consolas, monospace; }
+  .graph-inspector :global(.temporal-context.is-future) { border-color: rgb(224 139 168 / 40%); color: #e08ba8; background: rgb(224 139 168 / 7%); }
+  .graph-inspector :global(.entity-summary) { padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+  .graph-inspector :global(.entity-badges) { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .graph-inspector :global(.entity-badges span) { padding: 3px 7px; border: 1px solid var(--line); border-radius: 99px; color: var(--ochre); font: 650 .62rem Consolas, monospace; text-transform: uppercase; }
+  .graph-inspector :global(.entity-description) { color: var(--muted); font-size: .86rem; }
+  .graph-inspector :global(.entity-summary > h2) { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+  .graph-inspector :global(.entity-provenance) { margin: 12px 0 0; color: var(--dim); font: .67rem/1.5 Consolas, monospace; }
+  .graph-inspector :global(.entity-provenance a) { color: var(--ochre); }
+  .graph-inspector :global(.technical-identity) { margin-top: 12px; color: var(--dim); font: .66rem Consolas, monospace; }
+  .graph-inspector :global(.technical-identity summary) { cursor: pointer; }
+  .graph-inspector :global(.technical-identity code) { margin-top: 8px; }
+  .graph-inspector :global(.inspector-actions) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; margin-top: 16px; }
+  .graph-inspector :global(.inspector-actions button) { min-height: 38px; padding: 7px; font-size: .7rem; }
+  .graph-inspector :global(.action-primary) { border-color: var(--ochre); color: #071117; background: var(--ochre); font-weight: 750; }
+  .graph-inspector :global(.action-primary:hover) { color: #071117; filter: brightness(1.08); }
+  .graph-inspector :global(.action-secondary[aria-pressed="true"]) { border-color: var(--ochre); color: var(--ochre); }
+  .graph-inspector :global(.more-actions) { position: relative; }
+  .graph-inspector :global(.more-actions summary) { display: grid; min-height: 38px; place-items: center; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; font-size: .7rem; list-style: none; }
+  .graph-inspector :global(.more-actions[open]) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .graph-inspector :global(.more-actions[open] summary) { grid-column: 1 / -1; }
+  .graph-inspector :global(h2) { margin: 0 0 14px; font-size: 1.45rem; line-height: 1.2; }
+  .graph-inspector :global(code) { display: block; overflow-wrap: anywhere; }
+  .graph-inspector :global(h3) { margin: 30px 0 12px; color: var(--muted); font-size: .78rem; text-transform: uppercase; }
+  .graph-inspector :global(.relation-group h3) { display: flex; justify-content: space-between; margin-top: 20px; }
+  .graph-inspector :global(.relation-group h3 b) { color: var(--dim); }
+  .graph-inspector :global(.relation-list) { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .graph-inspector :global(.relation-list button) { display: grid; width: 100%; gap: 5px; padding: 12px; border: 1px solid var(--line-soft); border-radius: 9px; color: inherit; background: var(--panel); text-align: left; cursor: pointer; }
+  .graph-inspector :global(.relation-list button:hover) { border-color: var(--ochre); }
+  .graph-inspector :global(.relation-list span) { color: var(--ochre); font: .64rem Consolas, monospace; }
+  .graph-inspector :global(.relation-list strong) { font-size: .78rem; line-height: 1.35; }
+  .graph-inspector :global(.relation-list small) { color: var(--dim); font-size: .65rem; line-height: 1.4; }
+  .graph-inspector :global(.compare-header) { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .graph-inspector :global(.compare-header p) { margin: 0; color: var(--ochre); font: 650 .67rem Consolas, monospace; text-transform: uppercase; }
+  .graph-inspector :global(.compare-header div) { display: flex; gap: 5px; }
+  .graph-inspector :global(.compare-header button) { padding: 6px 8px; font-size: .65rem; }
+  .graph-inspector :global(.compare-grid) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .graph-inspector :global(.compare-grid .entity-summary) { min-width: 0; padding: 13px; border: 1px solid var(--line-soft); border-radius: 10px; }
+  .graph-inspector :global(.compare-grid h2) { font-size: 1rem; overflow-wrap: anywhere; }
+  .graph-inspector :global(.compare-matrix) { display: grid; margin: 0 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; overflow: hidden; font-size: .69rem; }
+  .graph-inspector :global(.compare-matrix > div) { display: grid; grid-template-columns: .85fr 1fr 1fr; border-top: 1px solid var(--line-soft); }
+  .graph-inspector :global(.compare-matrix > div:first-child) { border-top: 0; color: var(--dim); font: 650 .6rem Consolas, monospace; text-transform: uppercase; }
+  .graph-inspector :global(.compare-matrix dt), .graph-inspector :global(.compare-matrix dd) { margin: 0; padding: 8px; border-left: 1px solid var(--line-soft); overflow-wrap: anywhere; }
+  .graph-inspector :global(.compare-matrix dt) { border-left: 0; color: var(--dim); }
+  .graph-inspector :global(.compare-matrix .compare-span) { grid-column: 2 / -1; }
+  .graph-inspector :global(.compare-links) { margin-top: 18px; padding: 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--panel); }
+  .graph-inspector :global(.compare-links h3) { margin-top: 0; }
+  .graph-inspector :global(.compare-links p) { color: var(--muted); font-size: .76rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .graph-inspector :global(.sheet-close), .graph-inspector :global(.sheet-grip) { display: none; }
+  @media (max-width: 900px) {
+    .graph-intro, .graph-workspace { grid-template-columns: 1fr; }
+    .graph-canvas-wrap { border-right: 0; border-bottom: 1px solid var(--line-soft); }
+    .graph-toolbar { grid-template-columns: 1fr 1fr; }
+    .graph-count { white-space: normal; }
+    .time-heading { align-items: flex-start; flex-direction: column; }
+    .time-scrubbers { grid-template-columns: 1fr; }
+    .time-legend small { width: 100%; margin-left: 0; }
+    .graph-inspector { position: fixed; z-index: 40; right: 12px; bottom: 12px; left: 12px; max-height: min(72vh, 680px); padding: 18px 22px 26px; border: 1px solid var(--line); border-radius: 18px; background: rgb(7 17 23 / 98%); box-shadow: 0 20px 70px rgb(0 0 0 / 70%); transform: translateY(calc(100% + 24px)); transition: transform .24s ease; pointer-events: none; }
+    .graph-app.sheet-open .graph-inspector { transform: translateY(0); pointer-events: auto; }
+    .graph-inspector :global(.sheet-grip) { display: block; width: 42px; height: 4px; margin: -7px auto 12px; border-radius: 99px; background: var(--line); }
+    .graph-inspector :global(.sheet-close) { display: inline-grid; place-items: center; }
+  }
+  @media (max-width: 560px) {
+    .graph-shell { width: min(100% - 24px, 1440px); padding-top: 48px; }
+    .graph-intro { gap: 24px; }
+    .graph-toolbar { grid-template-columns: 1fr; }
+    .time-modes { display: grid; width: 100%; grid-template-columns: repeat(3, 1fr); }
+    .time-modes button { padding: 0 7px; font-size: .72rem; }
+    .graph-canvas, .graph-workspace { min-height: 460px; }
+    .graph-canvas { height: 460px; }
+    .graph-inspector :global(.compare-grid) { grid-template-columns: 1fr; }
+    .graph-inspector :global(.inspector-actions) { grid-template-columns: 1fr 1fr; }
+    .graph-inspector :global(.compare-header) { align-items: flex-start; flex-direction: column; }
+  }
+</style>

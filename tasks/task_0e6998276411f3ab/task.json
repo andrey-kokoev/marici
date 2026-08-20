@@ -1,0 +1,721 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_0e6998276411f3ab",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Assess, without changing files, whether adding a primary-navigation link from src/layouts/SiteLayout.astro to /research/ is currently executable given the repository state. Resolve referenced paths, map acceptance, identify decisions, and return the template's required structured assessment.",
+  "request_fingerprint": "a682fec553021779957d323d7a05b73e00ce79d24d391aac240c327d99956082",
+  "validated_request_ref": "vr_8ec7e9a7b4bb4f7086177c2d9444bc2a",
+  "created_at": "2026-08-16T21:37:22.7757003Z",
+  "updated_at": "2026-08-16T21:39:57.2434099Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-verdict-consistency-retest-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+        "access": "read",
+        "label": "Navigation layout"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 300000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "assessment_result",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "assessment_result": "string: passed|blocked|undetermined|inconclusive OR object {status: executable|passed|blocked|undetermined|inconclusive, implementation_ready: boolean, blockers: array<object>}",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "failed",
+    "objective_verdict": "blocked",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-6b962090343e401bb2ff23b6e4563dc3"
+        ],
+        "current_run_id": "run-6b962090343e401bb2ff23b6e4563dc3",
+        "started_at": "2026-08-16T21:37:22.8089071Z",
+        "finished_at": "2026-08-16T21:39:57.2412102Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions={5 fields}, acceptance_mappings=[5 items]",
+          "diagnostics_text": "I’ll use the supplied authoritative layout evidence and make only the minimum separate read-only route probes needed to determine whether `/research/` resolves in the current repository.",
+          "structured_output": {
+            "dimensions": {
+              "source_file": "reachable from supplied authoritative evidence",
+              "target_route": "resolved by repository listing",
+              "navigation_gap": "present",
+              "implementation_scope": "one localized markup edit",
+              "read_only_compliance": "satisfied"
+            },
+            "first_actions": [
+              {
+                "action": "Used authoritative native evidence for SiteLayout.astro",
+                "result": "Primary navigation exists and currently lacks a Research link"
+              },
+              {
+                "action": "Listed src/pages",
+                "result": "research directory exists"
+              },
+              {
+                "action": "Listed src/pages/research",
+                "result": "index.astro exists, resolving the /research/ route"
+              },
+              {
+                "action": "Attempted the mandated bounded route-file read",
+                "result": "Refused by command policy; probe was not retried"
+              }
+            ],
+            "reference_resolutions": {
+              "source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "status": "confirmed",
+                "evidence": "authoritative native file evidence"
+              },
+              "target_url": {
+                "path": "/research/",
+                "status": "resolves"
+              },
+              "target_route_source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "status": "confirmed_present",
+                "evidence": "directory listing"
+              },
+              "existing_primary_navigation": [
+                "/#branches",
+                "/#frontier",
+                "/graph/",
+                "/ledger/"
+              ],
+              "layout_stylesheet": {
+                "reference": "../styles/global.css",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\src\\styles\\global.css",
+                "existence_verified": false,
+                "relevance": "not a blocker for adding the navigation link"
+              }
+            },
+            "acceptance_mappings": [
+              {
+                "criterion": "Modify the existing primary-navigation element",
+                "status": "met",
+                "evidence": "SiteLayout.astro contains nav[aria-label=\"Primary navigation\"]"
+              },
+              {
+                "criterion": "Add an anchor with the exact target /research/",
+                "status": "not_met_currently",
+                "required_change": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Target route must exist",
+                "status": "met",
+                "evidence": "src/pages/research/index.astro is present"
+              },
+              {
+                "criterion": "Link remains within the accessible primary-navigation landmark",
+                "status": "met_after_change",
+                "evidence": "Existing nav has aria-label=\"Primary navigation\""
+              },
+              {
+                "criterion": "Assessment must not modify files",
+                "status": "met",
+                "evidence": "No files were changed"
+              }
+            ],
+            "required_decisions": {
+              "blocking": [],
+              "implementation_assumptions": [
+                "Use visible link text Research",
+                "Place the link in the existing primary-navigation list; exact ordering is a presentation decision"
+              ],
+              "post_change_verification": [
+                "Confirm the rendered link has href /research/",
+                "Confirm the route remains reachable in the normal Astro build"
+              ]
+            },
+            "findings": [
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The requested source file is present and contains the navigation to edit."
+              },
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The /research/ route has a corresponding src/pages/research/index.astro source file."
+              },
+              {
+                "severity": "action_required",
+                "status": "current_gap",
+                "finding": "SiteLayout.astro currently has no primary-navigation link to /research/."
+              },
+              {
+                "severity": "caveat",
+                "status": "unverified",
+                "finding": "The route source contents were not inspected because the mandated bounded read probe was refused; route existence itself is confirmed."
+              }
+            ],
+            "evaluator_provenance": {
+              "authoritative_evidence": [
+                "Native bounded content for C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro"
+              ],
+              "successful_probes": [
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages",
+                  "result": "research directory present"
+                },
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research",
+                  "result": "index.astro and related-programs.astro present"
+                }
+              ],
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read first line of the research route source",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "declared_capability": "bounded read-only filesystem probe using pwsh with literal arguments",
+                "actual_refusal": "The command tool rejected the pwsh invocation by policy before execution; the probe was not retried."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 0.9,
+                "observed_deductions": [
+                  "One required route-content read probe was refused."
+                ],
+                "non_scoring_observations": [
+                  "No human intervention or retry occurred.",
+                  "The core assessment remained possible from authoritative layout evidence and route directory listings."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "confidence": "high",
+              "blockers": [],
+              "scope": "Add one anchor inside the existing primary-navigation element.",
+              "rationale": "The source layout is confirmed, the /research/ route source exists, and the only current acceptance gap is the missing navigation anchor.",
+              "recommended_change": "<a href=\"/research/\">Research</a>"
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-6b962090343e401bb2ff23b6e4563dc3",
+        "status": "completed",
+        "finished_at": "2026-08-16T21:39:57.2408691Z",
+        "output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions={5 fields}, acceptance_mappings=[5 items]",
+          "diagnostics_text": "I’ll use the supplied authoritative layout evidence and make only the minimum separate read-only route probes needed to determine whether `/research/` resolves in the current repository.",
+          "structured_output": {
+            "dimensions": {
+              "source_file": "reachable from supplied authoritative evidence",
+              "target_route": "resolved by repository listing",
+              "navigation_gap": "present",
+              "implementation_scope": "one localized markup edit",
+              "read_only_compliance": "satisfied"
+            },
+            "first_actions": [
+              {
+                "action": "Used authoritative native evidence for SiteLayout.astro",
+                "result": "Primary navigation exists and currently lacks a Research link"
+              },
+              {
+                "action": "Listed src/pages",
+                "result": "research directory exists"
+              },
+              {
+                "action": "Listed src/pages/research",
+                "result": "index.astro exists, resolving the /research/ route"
+              },
+              {
+                "action": "Attempted the mandated bounded route-file read",
+                "result": "Refused by command policy; probe was not retried"
+              }
+            ],
+            "reference_resolutions": {
+              "source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "status": "confirmed",
+                "evidence": "authoritative native file evidence"
+              },
+              "target_url": {
+                "path": "/research/",
+                "status": "resolves"
+              },
+              "target_route_source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "status": "confirmed_present",
+                "evidence": "directory listing"
+              },
+              "existing_primary_navigation": [
+                "/#branches",
+                "/#frontier",
+                "/graph/",
+                "/ledger/"
+              ],
+              "layout_stylesheet": {
+                "reference": "../styles/global.css",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\src\\styles\\global.css",
+                "existence_verified": false,
+                "relevance": "not a blocker for adding the navigation link"
+              }
+            },
+            "acceptance_mappings": [
+              {
+                "criterion": "Modify the existing primary-navigation element",
+                "status": "met",
+                "evidence": "SiteLayout.astro contains nav[aria-label=\"Primary navigation\"]"
+              },
+              {
+                "criterion": "Add an anchor with the exact target /research/",
+                "status": "not_met_currently",
+                "required_change": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Target route must exist",
+                "status": "met",
+                "evidence": "src/pages/research/index.astro is present"
+              },
+              {
+                "criterion": "Link remains within the accessible primary-navigation landmark",
+                "status": "met_after_change",
+                "evidence": "Existing nav has aria-label=\"Primary navigation\""
+              },
+              {
+                "criterion": "Assessment must not modify files",
+                "status": "met",
+                "evidence": "No files were changed"
+              }
+            ],
+            "required_decisions": {
+              "blocking": [],
+              "implementation_assumptions": [
+                "Use visible link text Research",
+                "Place the link in the existing primary-navigation list; exact ordering is a presentation decision"
+              ],
+              "post_change_verification": [
+                "Confirm the rendered link has href /research/",
+                "Confirm the route remains reachable in the normal Astro build"
+              ]
+            },
+            "findings": [
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The requested source file is present and contains the navigation to edit."
+              },
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The /research/ route has a corresponding src/pages/research/index.astro source file."
+              },
+              {
+                "severity": "action_required",
+                "status": "current_gap",
+                "finding": "SiteLayout.astro currently has no primary-navigation link to /research/."
+              },
+              {
+                "severity": "caveat",
+                "status": "unverified",
+                "finding": "The route source contents were not inspected because the mandated bounded read probe was refused; route existence itself is confirmed."
+              }
+            ],
+            "evaluator_provenance": {
+              "authoritative_evidence": [
+                "Native bounded content for C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro"
+              ],
+              "successful_probes": [
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages",
+                  "result": "research directory present"
+                },
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research",
+                  "result": "index.astro and related-programs.astro present"
+                }
+              ],
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read first line of the research route source",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "declared_capability": "bounded read-only filesystem probe using pwsh with literal arguments",
+                "actual_refusal": "The command tool rejected the pwsh invocation by policy before execution; the probe was not retried."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 0.9,
+                "observed_deductions": [
+                  "One required route-content read probe was refused."
+                ],
+                "non_scoring_observations": [
+                  "No human intervention or retry occurred.",
+                  "The core assessment remained possible from authoritative layout evidence and route directory listings."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "confidence": "high",
+              "blockers": [],
+              "scope": "Add one anchor inside the existing primary-navigation element.",
+              "rationale": "The source layout is confirmed, the /research/ route source exists, and the only current acceptance gap is the missing navigation anchor.",
+              "recommended_change": "<a href=\"/research/\">Research</a>"
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-6b962090343e401bb2ff23b6e4563dc3",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions={5 fields}, first_actions=[4 items], reference_resolutions={5 fields}, acceptance_mappings=[5 items]",
+          "diagnostics_text": "I’ll use the supplied authoritative layout evidence and make only the minimum separate read-only route probes needed to determine whether `/research/` resolves in the current repository.",
+          "structured_output": {
+            "dimensions": {
+              "source_file": "reachable from supplied authoritative evidence",
+              "target_route": "resolved by repository listing",
+              "navigation_gap": "present",
+              "implementation_scope": "one localized markup edit",
+              "read_only_compliance": "satisfied"
+            },
+            "first_actions": [
+              {
+                "action": "Used authoritative native evidence for SiteLayout.astro",
+                "result": "Primary navigation exists and currently lacks a Research link"
+              },
+              {
+                "action": "Listed src/pages",
+                "result": "research directory exists"
+              },
+              {
+                "action": "Listed src/pages/research",
+                "result": "index.astro exists, resolving the /research/ route"
+              },
+              {
+                "action": "Attempted the mandated bounded route-file read",
+                "result": "Refused by command policy; probe was not retried"
+              }
+            ],
+            "reference_resolutions": {
+              "source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+                "status": "confirmed",
+                "evidence": "authoritative native file evidence"
+              },
+              "target_url": {
+                "path": "/research/",
+                "status": "resolves"
+              },
+              "target_route_source": {
+                "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "status": "confirmed_present",
+                "evidence": "directory listing"
+              },
+              "existing_primary_navigation": [
+                "/#branches",
+                "/#frontier",
+                "/graph/",
+                "/ledger/"
+              ],
+              "layout_stylesheet": {
+                "reference": "../styles/global.css",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\src\\styles\\global.css",
+                "existence_verified": false,
+                "relevance": "not a blocker for adding the navigation link"
+              }
+            },
+            "acceptance_mappings": [
+              {
+                "criterion": "Modify the existing primary-navigation element",
+                "status": "met",
+                "evidence": "SiteLayout.astro contains nav[aria-label=\"Primary navigation\"]"
+              },
+              {
+                "criterion": "Add an anchor with the exact target /research/",
+                "status": "not_met_currently",
+                "required_change": "<a href=\"/research/\">Research</a>"
+              },
+              {
+                "criterion": "Target route must exist",
+                "status": "met",
+                "evidence": "src/pages/research/index.astro is present"
+              },
+              {
+                "criterion": "Link remains within the accessible primary-navigation landmark",
+                "status": "met_after_change",
+                "evidence": "Existing nav has aria-label=\"Primary navigation\""
+              },
+              {
+                "criterion": "Assessment must not modify files",
+                "status": "met",
+                "evidence": "No files were changed"
+              }
+            ],
+            "required_decisions": {
+              "blocking": [],
+              "implementation_assumptions": [
+                "Use visible link text Research",
+                "Place the link in the existing primary-navigation list; exact ordering is a presentation decision"
+              ],
+              "post_change_verification": [
+                "Confirm the rendered link has href /research/",
+                "Confirm the route remains reachable in the normal Astro build"
+              ]
+            },
+            "findings": [
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The requested source file is present and contains the navigation to edit."
+              },
+              {
+                "severity": "info",
+                "status": "confirmed",
+                "finding": "The /research/ route has a corresponding src/pages/research/index.astro source file."
+              },
+              {
+                "severity": "action_required",
+                "status": "current_gap",
+                "finding": "SiteLayout.astro currently has no primary-navigation link to /research/."
+              },
+              {
+                "severity": "caveat",
+                "status": "unverified",
+                "finding": "The route source contents were not inspected because the mandated bounded read probe was refused; route existence itself is confirmed."
+              }
+            ],
+            "evaluator_provenance": {
+              "authoritative_evidence": [
+                "Native bounded content for C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro"
+              ],
+              "successful_probes": [
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages",
+                  "result": "research directory present"
+                },
+                {
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research",
+                  "result": "index.astro and related-programs.astro present"
+                }
+              ],
+              "refusal": {
+                "schema": "narada.worker.refusal.v1",
+                "tool": "shell_command",
+                "operation": "read first line of the research route source",
+                "cwd": "C:\\Users\\andrey\\src\\marici",
+                "target_path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+                "declared_capability": "bounded read-only filesystem probe using pwsh with literal arguments",
+                "actual_refusal": "The command tool rejected the pwsh invocation by policy before execution; the probe was not retried."
+              },
+              "observed_ergonomics": {
+                "schema": "narada.worker.observed_ergonomics.v1",
+                "score": 0.9,
+                "observed_deductions": [
+                  "One required route-content read probe was refused."
+                ],
+                "non_scoring_observations": [
+                  "No human intervention or retry occurred.",
+                  "The core assessment remained possible from authoritative layout evidence and route directory listings."
+                ]
+              }
+            },
+            "assessment_result": {
+              "status": "executable",
+              "confidence": "high",
+              "blockers": [],
+              "scope": "Add one anchor inside the existing primary-navigation element.",
+              "rationale": "The source layout is confirmed, the /research/ route source exists, and the only current acceptance gap is the missing navigation anchor.",
+              "recommended_change": "<a href=\"/research/\">Research</a>"
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance",
+          "assessment_result"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "failed",
+        "status": "failed"
+      },
+      {
+        "kind": "assessment_consistency",
+        "status": "failed",
+        "verdict": "inconsistent",
+        "assessment_status": "executable",
+        "implementation_ready": null,
+        "blocker_count": 0,
+        "blocking_decision_count": 0,
+        "reasons": [
+          "executable_status_requires_implementation_ready_true"
+        ]
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "blocked",
+        "signal": "inconsistent",
+        "status": "blocked"
+      }
+    ]
+  },
+  "summary": "assessment_result: blocked. dimensions={5 fields}, first_actions=[4 items], reference_resolutions={5 fields}, acceptance_mappings=[5 items]"
+}

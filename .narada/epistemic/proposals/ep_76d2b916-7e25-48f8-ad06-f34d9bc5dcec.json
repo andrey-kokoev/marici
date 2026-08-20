@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_76d2b916-7e25-48f8-ad06-f34d9bc5dcec",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the cosmology attack and update the epistemic graph."
+  },
+  "idempotency_key": "marici-benincasa-entry-426-quadratic-smith-v1",
+  "expected_ledger_head": "4febdb231267cfebaab074689bace5d0fe9526d26facafb8828eec73aabbf9e4",
+  "created_at": "2026-08-17T23:14:29.0330313Z",
+  "content_fingerprint": "1da287f3ed99d0a9e6d36c0b6812e24846118a3df2d137d17e893509f4125c32",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-426-quadratic-soft-total",
+      "kind": "source",
+      "title": "Ledger 426: Quadratic Soft-Total Arcs Add Only Frozen Strict-Transform Excess",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-426 Quadratic Soft-Total Arcs Add Only Frozen Strict-Transform Excess.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:quadratic-soft-total-only-frozen-excess",
+      "kind": "claim",
+      "title": "Quadratic soft-total arcs add excess only on frozen strict transforms"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:quadratic-soft-total-smith",
+      "kind": "test",
+      "title": "Two-chart quadratic-arc Smith test at the soft-total center"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:quadratic-soft-total-only-frozen-excess",
+      "target_id": "marici:source:ledger-426-quadratic-soft-total",
+      "relation_id": "rel:derived_from-3fedd620c1e21475"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:quadratic-soft-total-smith",
+      "target_id": "marici:claim:quadratic-soft-total-only-frozen-excess",
+      "relation_id": "rel:tests-b6f661ceb9e24194"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "benincasa-426-quadratic-smith-outcome",
+      "test_id": "marici:test:quadratic-soft-total-smith",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed narrowly: generic quadratic arcs retain valuation 66. Excess 5 occurs only tangent to E-X2=0 and excess 15 only tangent to E-2X2=0; both are frozen energy strict transforms.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-426-quadratic-soft-total",
+          "locator": "Result and Epistemic boundary",
+          "paraphrase": "Both blow-up charts show no unclassified first infinitely-near excess, while a complete bivariate primary decomposition remains open."
+        }
+      ]
+    }
+  ],
+  "digest": "dbe49c160c64bdedd0886c7770d6ea53007c3314c88938d70050d985f05f3b21"
+}

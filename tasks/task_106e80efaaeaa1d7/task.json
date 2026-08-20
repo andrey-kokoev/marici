@@ -1,0 +1,484 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_106e80efaaeaa1d7",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only injected ledger entry 343. Extract its ordered vertex basis, ordered edge basis, 4x6 boundary matrix, and three primitive cycle vectors exactly. Verify by direct integer multiplication that each cycle lies in the kernel. Do not modify files or add interpretation. Return exactly four structured fields: vertex_basis, edge_basis, boundary_matrix, cycle_kernel_checks.",
+  "request_fingerprint": "b0ec15aa606b1a9aef360b3f8fa3276f0abcdf97965eab82a236780ec3c65617",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T15:48:43.7610693Z",
+  "created_at_ms": 1786981723761,
+  "started_at": "2026-08-17T15:48:43.7897269Z",
+  "started_at_ms": 1786981723789,
+  "finished_at": "2026-08-17T15:49:03.6153513Z",
+  "finished_at_ms": 1786981743615,
+  "duration_ms": 19826,
+  "updated_at": "2026-08-17T15:49:03.6153535Z",
+  "cancelled_at": null,
+  "idempotency_key": "cosmology-343-matrix-smoke-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-343 Two-Wall Conductor Cycle Lattice.md",
+        "access": "read",
+        "label": "entry_343"
+      }
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "vertex_basis",
+      "edge_basis",
+      "boundary_matrix",
+      "cycle_kernel_checks"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-7e384a0f4f55489f8143ac96bd9b0e71"
+        ],
+        "current_run_id": "run-7e384a0f4f55489f8143ac96bd9b0e71",
+        "started_at": "2026-08-17T15:48:43.7897334Z",
+        "finished_at": "2026-08-17T15:49:03.6136563Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "vertex_basis=[4 items], edge_basis=[6 items], boundary_matrix=[4 items], cycle_kernel_checks=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "vertex_basis": [
+              "C_1^+",
+              "C_1^-",
+              "C_2^+",
+              "C_2^-"
+            ],
+            "edge_basis": [
+              "n_{1a}",
+              "n_{1b}",
+              "n_{2a}",
+              "n_{2b}",
+              "P_+",
+              "P_-"
+            ],
+            "boundary_matrix": [
+              [
+                -1,
+                -1,
+                0,
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                1,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1,
+                -1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                1,
+                0,
+                1
+              ]
+            ],
+            "cycle_kernel_checks": [
+              {
+                "cycle": "g_{101}",
+                "vector": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "g_{110}",
+                "vector": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "\\widetilde{g}_{111}",
+                "vector": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-7e384a0f4f55489f8143ac96bd9b0e71",
+        "status": "completed",
+        "finished_at": "2026-08-17T15:49:03.6135629Z",
+        "duration_ms": 18973,
+        "output": {
+          "summary_text": "vertex_basis=[4 items], edge_basis=[6 items], boundary_matrix=[4 items], cycle_kernel_checks=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "vertex_basis": [
+              "C_1^+",
+              "C_1^-",
+              "C_2^+",
+              "C_2^-"
+            ],
+            "edge_basis": [
+              "n_{1a}",
+              "n_{1b}",
+              "n_{2a}",
+              "n_{2b}",
+              "P_+",
+              "P_-"
+            ],
+            "boundary_matrix": [
+              [
+                -1,
+                -1,
+                0,
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                1,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1,
+                -1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                1,
+                0,
+                1
+              ]
+            ],
+            "cycle_kernel_checks": [
+              {
+                "cycle": "g_{101}",
+                "vector": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "g_{110}",
+                "vector": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "\\widetilde{g}_{111}",
+                "vector": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-7e384a0f4f55489f8143ac96bd9b0e71",
+        "status": "completed",
+        "output": {
+          "summary_text": "vertex_basis=[4 items], edge_basis=[6 items], boundary_matrix=[4 items], cycle_kernel_checks=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "vertex_basis": [
+              "C_1^+",
+              "C_1^-",
+              "C_2^+",
+              "C_2^-"
+            ],
+            "edge_basis": [
+              "n_{1a}",
+              "n_{1b}",
+              "n_{2a}",
+              "n_{2b}",
+              "P_+",
+              "P_-"
+            ],
+            "boundary_matrix": [
+              [
+                -1,
+                -1,
+                0,
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                1,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1,
+                -1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                1,
+                0,
+                1
+              ]
+            ],
+            "cycle_kernel_checks": [
+              {
+                "cycle": "g_{101}",
+                "vector": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "g_{110}",
+                "vector": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "cycle": "\\widetilde{g}_{111}",
+                "vector": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ],
+                "boundary_product": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "vertex_basis",
+          "edge_basis",
+          "boundary_matrix",
+          "cycle_kernel_checks"
+        ],
+        "returned": [
+          "vertex_basis",
+          "edge_basis",
+          "boundary_matrix",
+          "cycle_kernel_checks"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. vertex_basis=[4 items], edge_basis=[6 items], boundary_matrix=[4 items], cycle_kernel_checks=[3 items]"
+}

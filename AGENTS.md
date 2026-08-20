@@ -19,23 +19,24 @@ only as immutable history and is superseded by `marici.Figueiredo`.
 
 Substantive team requests, handoffs, results, objections, replies, and
 acknowledgments should be admitted to the Marici epistemic graph as
-`communication` entities. Communication records provenance and argumentative
+`marici:communication` entities. Communication records provenance and argumentative
 causality; it becomes scientific evidence only through a separately reviewed
 `promotes_to_evidence` relation.
 
-`communication` is the canonical kind for new records. Do not create new
-`marici:communication` entities; that legacy kind remains queryable as
-immutable history.
+The live graph schema requires extension kinds and relations to be namespaced.
+Use `marici:communication` for new records. Unnamespaced `communication`
+records remain queryable as immutable history; do not copy their obsolete
+syntax into new submissions.
 
 ## Team communication is expected, not optional
 
 The graph is the team's shared memory across sessions and context
 compactions — if an idea stays in your chat, it is lost to everyone else.
 
-- **At session start**, check both canonical `communication` and legacy
-  `marici:communication` records, plus the neighborhood of your canonical
+- **At session start**, check both canonical `marici:communication` and legacy
+  `communication` records, plus the neighborhood of your canonical
   team-member id. A handoff or objection may redirect your work. Acknowledge
-  what you act on with `replies_to`.
+  what you act on with `marici:replies_to`.
 - **Keep up with the team's output.** Skim new ledger entries, packets,
   and graph claims from the other researchers as they land — at least at
   session start and before claiming overlap-prone work. Their checkers and
@@ -47,7 +48,7 @@ compactions — if an idea stays in your chat, it is lost to everyone else.
   an `objection` with counter-evidence, a suggestion for the next test, a
   noticed connection between their result and yours. Silence is the
   failure mode — an unremarked result might as well not exist for the
-  rest of the team. Use `replies_to` their report/claim so the thread is
+  rest of the team. Use `marici:replies_to` their report/claim so the thread is
   traceable.
 - **During work**, post early and informally when it helps: a question to
   the owner of an adjacent area, an intermediate result someone may be
@@ -111,12 +112,12 @@ multi-call sessions here; use the binding-call route for every call.
 - Read `epistemic_graph_guidance` first — it documents the entity kinds,
   relations, operation kinds, and the communication model. (There is no
   `epistemic_graph_doctor`.)
-- Handoffs arrive as `communication` entities addressed to you. Find yours
-  by querying both canonical `communication` and legacy
-  `marici:communication`, and by inspecting your team-member neighborhood
+- Handoffs arrive as `marici:communication` entities addressed to you. Find
+  yours by querying both canonical `marici:communication` and legacy
+  `communication`, and by inspecting your team-member neighborhood
   (`epistemic_graph_neighborhood` plus the query tools listed in the
   guidance). Then acknowledge with a reply communication carrying
-  `replies_to` the handoff entity id.
+  `marici:replies_to` the handoff entity id.
 - Team member graph ids (verify by query if a call rejects them):
   - `marici.Nima` — `team_member:aa2834674c8559a5dee0`
   - `marici.Benincasa` — `team_member:bc28f30924d7df1af02a`
@@ -139,12 +140,14 @@ unless you have a specific concurrency boundary.
   handoff you are executing).
 - A communication entity requires `sender`, `recipient`, `body`, `intent`
   (`request|handoff|result|notice|objection|reply|acknowledgment`), and
-  `sent_at` (fresh UTC ISO time). Add `sent_by` / `addressed_to` relations
-  to the team_member ids above and `replies_to` the message you answer.
+  `sent_at` (fresh UTC ISO time). Add `marici:sent_by` /
+  `marici:addressed_to` relations to the team_member ids above and
+  `marici:replies_to` the message you answer.
 - Use exactly one recipient per communication entity. The canonical packet is
   `sender`, `recipient`, `body`, `intent`, and `sent_at`; the canonical
-  provenance edges are `sent_by`, `addressed_to`, and, for a response,
-  `replies_to`. Broadcasts are separate records, one per recipient.
+  provenance edges are `marici:sent_by`, `marici:addressed_to`, and, for a
+  response, `marici:replies_to`. Broadcasts are separate records, one per
+  recipient.
 - Admission returns an event id like `ev-000000000695-…`; cite it in the
   ledger entry's verification section.
 - Graph admission records reviewed shared memory; it is not truth

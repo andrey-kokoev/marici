@@ -1,0 +1,150 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_745d139f2476e8af",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read only the two injected files: ledger entry 313 and research/benincasa/marici-gm/src/main.rs. Identify the minimal Rust implementation needed to compute entry 313's two invariants epsilon_e6 and epsilon_v_alg. Report no more than 700 words and include: reusable existing functions, exact missing mathematical operation, proposed CLI command signature, output JSON fields, and any formula not determined by the two files. Do not inspect other files, edit anything, or pretend an absent formula is known.",
+  "request_fingerprint": "b51c2bca917106301811ff57faafcc435bea83762cdf17817654e56d0969fadf",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T16:51:23.944494Z",
+  "created_at_ms": 1786985483944,
+  "started_at": "2026-08-17T16:51:23.9684019Z",
+  "started_at_ms": 1786985483968,
+  "finished_at": "2026-08-17T16:53:24.9290856Z",
+  "finished_at_ms": 1786985604929,
+  "duration_ms": 120961,
+  "updated_at": "2026-08-17T16:53:24.9290867Z",
+  "cancelled_at": null,
+  "idempotency_key": "cosmology-soft-corner-rust-command-design-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-313 Three Soft-Corner Slices Do Not Determine the Mixed SNC Extension.md",
+        "access": "read",
+        "label": "entry_313"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\benincasa\\marici-gm\\src\\main.rs",
+        "access": "read",
+        "label": "rust_main"
+      }
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-e9f145ad656c470fa759ae17ec3d03c3"
+        ],
+        "current_run_id": "run-e9f145ad656c470fa759ae17ec3d03c3",
+        "started_at": "2026-08-17T16:51:23.9684088Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed"
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-e9f145ad656c470fa759ae17ec3d03c3",
+        "status": "failed",
+        "finished_at": "2026-08-17T16:53:24.9284949Z",
+        "duration_ms": 120016,
+        "error": "worker_runtime_timed_out:max_run_ms=120000:elapsed_ms=120013"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-e9f145ad656c470fa759ae17ec3d03c3",
+        "status": "failed",
+        "output": null,
+        "error": "worker_runtime_timed_out:max_run_ms=120000:elapsed_ms=120013"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": null,
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. No substantive objective result was reported."
+}

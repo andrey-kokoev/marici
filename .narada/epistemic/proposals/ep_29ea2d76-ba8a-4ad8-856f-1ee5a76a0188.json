@@ -1,0 +1,93 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_29ea2d76-ba8a-4ad8-856f-1ee5a76a0188",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "marici-entry-877-admit-v1",
+  "expected_ledger_head": "2de68221125ef388cece6c6568575981c56874b9aa52ce6ecaca876d91294793",
+  "created_at": "2026-08-19T03:40:29.129711Z",
+  "content_fingerprint": "3437f2c606912fcab614e314a40328326a1024efb3d8973ad4db11b7dd927439",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-877",
+      "local_ref": "src877",
+      "kind": "source",
+      "title": "Ledger Entry 877",
+      "version": "85dcaaf",
+      "locator": "src/ledger/20260818-877 The Finite Linear Quartic Intersection Has No Rank or Indicial Excess.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-877",
+      "local_ref": "claim877",
+      "kind": "claim",
+      "title": "The finite linear quartic intersection has no rank or indicial excess"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-877",
+      "local_ref": "test877",
+      "kind": "test",
+      "title": "Linear-carrier source-rank and indicial comparison",
+      "locator": "research/nima/check_linear_quartic_intersection_indicial_excess.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim877",
+      "target_ref": "src877",
+      "source_id": "marici-claim-entry-877",
+      "target_id": "marici-source-entry-877",
+      "relation_id": "rel:derived_from-ce99dcec7f69cde9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test877",
+      "target_ref": "claim877",
+      "source_id": "marici-test-entry-877",
+      "target_id": "marici-claim-entry-877",
+      "relation_id": "rel:tests-6a8f5e5dc79d4f84"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-877",
+      "subject_id": "marici-claim-entry-877",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "Generic u+v-2 samples and its finite Q intersection have identical rank, mask, pivot hash, and exact residue characteristic polynomials.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-877",
+          "locator": "research/nima/marked-extension-linear-divisor-excess.json",
+          "paraphrase": "Two-prime source census gives rank 114, mask 3, and the same pivot hash generically and at (8/5,2/5)."
+        },
+        {
+          "source_id": "marici-source-entry-877",
+          "locator": "research/nima/linear-quartic-intersection-indicial-excess.json",
+          "paraphrase": "Exact generic carrier spectra match Entry 864's intersection spectra."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-877",
+      "test_id": "marici-test-entry-877",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-877",
+          "locator": "research/nima/linear-quartic-intersection-indicial-excess.json",
+          "paraphrase": "Rust replicated rank census and Sage exact indicial comparison both passed."
+        }
+      ]
+    }
+  ],
+  "digest": "b8107433dced696be1b0f6d9f9e849baeef1051bf024647bf5002c73c86e7773"
+}

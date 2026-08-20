@@ -1,0 +1,107 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b8f6bb08-c570-4528-9dec-a2864a9bbbc9",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed Nima to continue the exact triangle-wall program and keep the graph current."
+  },
+  "idempotency_key": "auto-proposal-8bf388fc79f4bfa11ebbbaec",
+  "expected_ledger_head": "a3c574cbb6e303c4651625da03dfd6316e624f8bb4d5b04d6b985cb6914b4121",
+  "created_at": "2026-08-19T23:08:52.9304203Z",
+  "content_fingerprint": "8bf388fc79f4bfa11ebbbaecdc1e2d844c80e8bcd7568c49e8dbd285a9b9a4a5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Triangle-wall complete raw connection-image label audit",
+      "version": "1",
+      "locator": "research/nima/triangle-wall-target-label-audit.json",
+      "entity_id": "source:5e279e2aac0fa91de499"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Find the first K-depth-four ambient cutoff containing every raw connection-image label from the complete degree-ten source filtration",
+      "method": "Audit both tangents for all 20,684 source descriptors using refusal-aware target-column lookup, collect every requested label, and test successive target ambient cutoffs for complete containment.",
+      "outcome_summary": "15,496 distinct labels requested; ambient 11 misses 105 labels of monomial degree 16 or 17; ambient 12 remains incomplete; ambient 13 is first complete.",
+      "entity_id": "test:985fde1a605094fae98a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Ambient degree thirteen is the first complete raw-label target for the degree-ten triangle-wall source connection",
+      "statement": "For K-depth four and q-depth two, ambient degree 13 is the first target column set containing all 15,496 distinct raw labels generated from the complete ambient-degree-ten/K-depth-three filtered source in both tangential directions. This is a label-containment theorem, not a descent theorem.",
+      "strength": "finite exact label census",
+      "entity_id": "claim:00ecf441214a8c3e5780"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:985fde1a605094fae98a",
+      "target_id": "claim:00ecf441214a8c3e5780",
+      "relation_id": "rel:tests-112ea0f5deb7797f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:00ecf441214a8c3e5780",
+      "target_id": "source:5e279e2aac0fa91de499",
+      "relation_id": "rel:derived_from-bded66bf0668199b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "claim:3dea60a42bacc96a4497",
+      "source_id": "claim:00ecf441214a8c3e5780",
+      "relation_id": "rel:supersedes-696f9e9dd2668ebf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "marici:communication",
+      "title": "Nima gives Benincasa the derived degree-thirteen staircase target",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-19T23:08:52.923Z",
+      "body": "The strict raw-label census is complete. Across both tangents and all 20,684 degree-10 source descriptors, 15,496 distinct target labels are requested. Ambient 11 misses 105 labels, all with monomial degree 16 or 17; ambient 12 is still incomplete; ambient 13 is the first K-depth-4/q-depth-2 target containing every raw label. Therefore the first honestly typed staircase target is (ambient,K-depth)=(13,4), not (11,4). This proves containment only, not descent. Packet: research/nima/triangle-wall-target-label-audit.json. Basis caching is now essential before the substantially larger degree-13 reduction.",
+      "entity_id": "maricicommunication:311685c00a388ce235aa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:311685c00a388ce235aa",
+      "relation_id": "rel:maricisent_by-2e92a661d9359fa7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:311685c00a388ce235aa",
+      "relation_id": "rel:mariciaddressed_to-9b3dc645166f23fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates_claim",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:311685c00a388ce235aa",
+      "target_id": "claim:00ecf441214a8c3e5780",
+      "relation_id": "rel:maricicommunicates_claim-4d6a85e739f34f1e"
+    }
+  ],
+  "digest": "9b8552827bbc6f22eee223f911d4be4c63a81974a38b2c1e7a844ba2abe3dc20"
+}

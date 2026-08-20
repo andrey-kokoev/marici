@@ -1,0 +1,173 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_a773f9016eddf48a",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Return exactly one structured field status with value ok. Perform no file reads, commands, or writes.",
+  "request_fingerprint": "4c1d75bb0d63903896853847f8c460cb18074d890e040da68da13bbeb8e0df7d",
+  "validated_request_ref": "vr_28f388dd36c43e11a1deb67a43dfa4e3",
+  "created_at": "2026-08-17T13:59:32.053518Z",
+  "created_at_ms": 1786975172053,
+  "started_at": "2026-08-17T13:59:32.164094Z",
+  "started_at_ms": 1786975172164,
+  "finished_at": "2026-08-17T13:59:37.1848925Z",
+  "finished_at_ms": 1786975177184,
+  "duration_ms": 5020,
+  "updated_at": "2026-08-17T13:59:37.1848945Z",
+  "cancelled_at": null,
+  "idempotency_key": "live-execute-retry-proof-20260817-v1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low"
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "status"
+    ],
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "not_applicable",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-ad92ea2791844acda63645c1ecf44cd7"
+        ],
+        "current_run_id": "run-ad92ea2791844acda63645c1ecf44cd7",
+        "started_at": "2026-08-17T13:59:32.1641015Z",
+        "finished_at": "2026-08-17T13:59:37.1834758Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "status=ok",
+          "diagnostics_text": null,
+          "structured_output": {
+            "status": "ok"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-ad92ea2791844acda63645c1ecf44cd7",
+        "status": "completed",
+        "finished_at": "2026-08-17T13:59:37.1834479Z",
+        "output": {
+          "summary_text": "status=ok",
+          "diagnostics_text": null,
+          "structured_output": {
+            "status": "ok"
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-ad92ea2791844acda63645c1ecf44cd7",
+        "status": "completed",
+        "output": {
+          "summary_text": "status=ok",
+          "diagnostics_text": null,
+          "structured_output": {
+            "status": "ok"
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "status"
+        ],
+        "returned": [
+          "status"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "not_applicable",
+        "signal": null,
+        "status": "not_applicable"
+      }
+    ]
+  },
+  "summary": "status=ok"
+}

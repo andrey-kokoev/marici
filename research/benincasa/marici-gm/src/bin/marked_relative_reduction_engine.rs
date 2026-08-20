@@ -733,6 +733,26 @@ impl SparseRank {
         }
     }
     fn rank(&self) -> usize { self.pivots.len() }
+
+    fn normalized_kernel_vector(&self, free_column: usize, columns: usize) -> Vec<F> {
+        assert!(!self.pivots.contains_key(&free_column));
+        let mut vector = vec![F::z(); columns];
+        vector[free_column] = F::o();
+        for (&pivot, row) in self.pivots.iter().rev() {
+            let tail = row.iter().filter(|(column, _)| **column > pivot)
+                .fold(F::z(), |sum, (column, coefficient)| {
+                    sum.add(coefficient.mul(vector[*column]))
+                });
+            vector[pivot] = tail.neg();
+        }
+        for row in self.pivots.values() {
+            let residual = row.iter().fold(F::z(), |sum, (column, coefficient)| {
+                sum.add(coefficient.mul(vector[*column]))
+            });
+            assert_eq!(residual, F::z());
+        }
+        vector
+    }
 }
 
 fn system_data(g: &Geometry, master: usize) -> (Vec<Mon>, Vec<Poly>, Poly) {
@@ -851,6 +871,25 @@ fn run_exceptional_polynomial_module_gate(samples: &[(u64, u64)], q_chart: bool)
         P, if q_chart { "q_nonzero" } else { "p_nonzero" }, if q_chart { "r=p/q" } else { "s=q/p" },
         master, numerator_degree, denominator_degree, accepted, numerator_unknowns, denominator_unknowns,
         numerator_rank.rank(), full_rank.rank(), excess, excess > 0);
+    if std::env::var_os("MARICI_EXCEPTIONAL_WITNESS_EXPORT").is_some() && excess > 0 {
+        let free_denominators: Vec<usize> = (numerator_unknowns..numerator_unknowns + denominator_unknowns)
+            .filter(|column| !full_rank.pivots.contains_key(column)).collect();
+        assert_eq!(free_denominators.len(), excess as usize);
+        let free_column = *free_denominators.last().unwrap();
+        let vector = full_rank.normalized_kernel_vector(
+            free_column, numerator_unknowns + denominator_unknowns);
+        let nonzero = vector.iter().enumerate().filter(|(_, value)| **value != F::z())
+            .map(|(column, value)| {
+                let rational = rational_reconstruction(*value)
+                    .map(|(numerator, denominator)| format!("\"{}/{}\"", numerator, denominator))
+                    .unwrap_or_else(|| "null".to_string());
+                format!("[{}, {}, {}]", column, value.0, rational)
+            })
+            .collect::<Vec<_>>().join(",");
+        println!("{{\"schema\":\"marici.benincasa.exceptional_primitive_witness.v1\",\"prime\":{},\"chart\":\"{}\",\"master\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"normalization\":{{\"kind\":\"lexicographic_free_denominator\",\"column\":{},\"value\":1}},\"nonzero_coordinates\":[{}],\"residual_zero\":true,\"epistemic_status\":\"modular_noncanonical_primitive_witness\"}}",
+            P, if q_chart { "q_nonzero" } else { "p_nonzero" }, master,
+            numerator_degree, denominator_degree, free_column, nonzero);
+    }
 }
 
 fn dual_rows(g: &Geometry, degree: u8) -> Option<(usize, Vec<usize>, Vec<usize>, Vec<Vec<F>>)> {

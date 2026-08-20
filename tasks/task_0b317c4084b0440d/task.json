@@ -1,0 +1,270 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_0b317c4084b0440d",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: inspect src/pages/research/index.astro and src/pages/research/related-programs.astro, then review whether the route hierarchy and non-authoritative labeling are coherent. Return route_count, external_entry_count, review_verdict, and concerns. Preserve Unicode punctuation in evidence. Make no changes.",
+  "request_fingerprint": "46e6d5cf8fb7acd935f39080c59df980ff81d82f894fc354046cbae63aedb25a",
+  "validated_request_ref": "vr_d1ed83def1d34f6eba6781eb75e24718",
+  "created_at": "2026-08-16T19:33:57.4766924Z",
+  "updated_at": "2026-08-16T19:36:45.6262178Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-retest-review-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 180000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+        "access": "read"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\related-programs.astro",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement_review",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      },
+      {
+        "id": "review",
+        "kind": "review",
+        "milestone_id": "review",
+        "depends_on": [
+          "implement"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "route_count",
+      "external_entry_count",
+      "review_verdict",
+      "concerns"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-22bf384721554bcb98d4dceac590ac0a"
+        ],
+        "current_run_id": "run-22bf384721554bcb98d4dceac590ac0a",
+        "started_at": "2026-08-16T19:33:57.4993375Z",
+        "finished_at": "2026-08-16T19:35:58.2406475Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict={2 fields}, concerns=[0 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files read-only, then compare their route structure and labeling before returning the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": {
+              "status": "coherent",
+              "evidence": [
+                "The research index links to /research/related-programs/ as its bounded external-comparisons child route.",
+                "The child route consistently uses “External / non-authoritative” labeling and states that comparisons are not Marici admissions.",
+                "Both entries define explicit relation types, finite comparisons, and prohibited imports."
+              ]
+            },
+            "concerns": []
+          },
+          "truncated": false
+        }
+      },
+      "review": {
+        "step_id": "review",
+        "kind": "review",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-59214f7079bb4d5095c1f601e5f6b3b0"
+        ],
+        "current_run_id": "run-59214f7079bb4d5095c1f601e5f6b3b0",
+        "started_at": "2026-08-16T19:35:58.2625933Z",
+        "finished_at": "2026-08-16T19:36:45.6252705Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes., concerns=[0 items]",
+          "diagnostics_text": "I’ll read the two requested Astro files separately, preserving their Unicode text, then return only the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes.",
+            "concerns": []
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-22bf384721554bcb98d4dceac590ac0a",
+        "status": "completed",
+        "finished_at": "2026-08-16T19:35:58.240624Z",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict={2 fields}, concerns=[0 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files read-only, then compare their route structure and labeling before returning the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": {
+              "status": "coherent",
+              "evidence": [
+                "The research index links to /research/related-programs/ as its bounded external-comparisons child route.",
+                "The child route consistently uses “External / non-authoritative” labeling and states that comparisons are not Marici admissions.",
+                "Both entries define explicit relation types, finite comparisons, and prohibited imports."
+              ]
+            },
+            "concerns": []
+          },
+          "truncated": false
+        }
+      },
+      {
+        "step_id": "review",
+        "step_kind": "review",
+        "run_id": "run-59214f7079bb4d5095c1f601e5f6b3b0",
+        "status": "completed",
+        "finished_at": "2026-08-16T19:36:45.6252388Z",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes., concerns=[0 items]",
+          "diagnostics_text": "I’ll read the two requested Astro files separately, preserving their Unicode text, then return only the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes.",
+            "concerns": []
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-22bf384721554bcb98d4dceac590ac0a",
+        "status": "completed",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict={2 fields}, concerns=[0 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files read-only, then compare their route structure and labeling before returning the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": {
+              "status": "coherent",
+              "evidence": [
+                "The research index links to /research/related-programs/ as its bounded external-comparisons child route.",
+                "The child route consistently uses “External / non-authoritative” labeling and states that comparisons are not Marici admissions.",
+                "Both entries define explicit relation types, finite comparisons, and prohibited imports."
+              ]
+            },
+            "concerns": []
+          },
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "review",
+        "run_id": "run-59214f7079bb4d5095c1f601e5f6b3b0",
+        "status": "completed",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes., concerns=[0 items]",
+          "diagnostics_text": "I’ll read the two requested Astro files separately, preserving their Unicode text, then return only the required JSON object.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes.",
+            "concerns": []
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "route_count",
+          "external_entry_count",
+          "review_verdict",
+          "concerns"
+        ],
+        "returned": [
+          "route_count",
+          "external_entry_count",
+          "review_verdict",
+          "concerns"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "route_count=2, external_entry_count=2, review_verdict=coherent; “Research · External / non-authoritative” and “External program” labels align across the parent and child routes., concerns=[0 items]"
+}

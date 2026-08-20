@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9bed2164-0940-4929-b7ab-f33239926975",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the geometry-first Marici research program through the dual-number exact complex."
+  },
+  "idempotency_key": "auto-proposal-5d31b1fa34e30976ed79758e",
+  "expected_ledger_head": "83410f5de8c298c7e9382ca1282cd8c1911941da60889f83eb69bf343f207e9d",
+  "created_at": "2026-08-18T00:36:28.7329826Z",
+  "content_fingerprint": "5d31b1fa34e30976ed79758ed1b4856e7bf0df9e9ce622e5b042b0cfee0a891d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source450",
+      "kind": "source",
+      "title": "Entry 450 — The First Soft Deformation Mixes the Euler Plane with the Quartic Tail",
+      "version": "git:05a9804583dd5a7cba21f40d9701816d06703bdd",
+      "locator": "src/ledger/20260817-450 The First Soft Deformation Mixes the Euler Plane with the Quartic Tail.md",
+      "entity_id": "source:69e0f04f0a197346d1bc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim450",
+      "kind": "claim",
+      "title": "In the frozen polynomial-degree filtration, the dual-number soft exact cokernel has tested dimension 7D+6 rather than the flat value 8D, so the Euler plane and quartic tail mix at first order.",
+      "status": "proved_finite_field_test",
+      "scope": "cutoffs 12,16,20,24,28 over the certificate field; unblown filtration",
+      "evidence_refs": [
+        "research/voevodsky/check_soft_axis_dual_number_exact_cokernel.py"
+      ],
+      "entity_id": "claim:af19e1d67987b0a7e904"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim450",
+      "target_ref": "source450",
+      "source_id": "claim:af19e1d67987b0a7e904",
+      "target_id": "source:69e0f04f0a197346d1bc",
+      "relation_id": "rel:derived_from-281555f46da84b25"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim450",
+      "target_id": "problem:74455a55a25cb1ef9cb3",
+      "source_id": "claim:af19e1d67987b0a7e904",
+      "relation_id": "rel:addresses-37e2832b743e1b4a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next451",
+      "kind": "problem",
+      "title": "Pull the complete dual-number soft exact complex to the blowup of (u,a), assign source-derived exceptional filtration shifts, and retest flatness.",
+      "status": "open",
+      "entity_id": "problem:8d7de09018db8e3fa469"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next451",
+      "target_ref": "claim450",
+      "source_id": "problem:8d7de09018db8e3fa469",
+      "target_id": "claim:af19e1d67987b0a7e904",
+      "relation_id": "rel:depends_on-355729e2a298951a"
+    }
+  ],
+  "digest": "ef8a6321c1c845b2ab31868df327b230022358c7b2e2f669ab07946e1bfb8bb9"
+}

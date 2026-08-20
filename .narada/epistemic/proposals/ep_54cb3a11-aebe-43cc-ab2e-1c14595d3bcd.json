@@ -1,0 +1,139 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_54cb3a11-aebe-43cc-ab2e-1c14595d3bcd",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "WP4 flavor work package directed by operator; record claim, test, source-discrepancy criticism, and the owed replies to Nima (ev-703) and Benincasa (ev-704)."
+  },
+  "idempotency_key": "auto-proposal-9459d35ebeb18d9d15160029",
+  "expected_ledger_head": "04af5f5807433598053a3cb96ff4ced00424dd330402ebba6f6ed79b60128ee7",
+  "created_at": "2026-08-20T02:11:05.664497Z",
+  "content_fingerprint": "9459d35ebeb18d9d151600296d5e2c5d24b7c2fb14e18989624d83ff2ffeac9b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "local_ref": "res1",
+      "locator": "research/flavor/results/wp4_triangle_lo.json",
+      "title": "WP4 exact series results: S38 alpha=phi, S42 NLO identity, J cross-check floors, exponent-lattice descent test",
+      "version": "1",
+      "entity_id": "source:96984c6eee20398cac7d"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "local_ref": "res2",
+      "locator": "research/flavor/results/wp4_numeric_angle.json",
+      "title": "WP4 60-digit numeric angle certification for S38 and S43 with declared rational edge assignments",
+      "version": "1",
+      "entity_id": "source:a469b2cd65816a6d08b6"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "local_ref": "clm",
+      "title": "The leading Yukawa triangle is exact chart data and does not descend through masses + J",
+      "entity_id": "claim:5dfda5e389b9bbf1379a"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "criticism",
+      "local_ref": "crt",
+      "title": "The supplement's S43/S47 CKM block is internally inconsistent and its NLO beta formula is not reproduced by exact computation",
+      "entity_id": "criticism:8ad3700f3732b24a8121"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "local_ref": "tst",
+      "title": "WP4 battery: exact series alpha_LO=phi (S38), S42 NLO identity, J two-route cross-check floor, exponent-lattice descent, 60-digit numeric angle certification (S38, S43)",
+      "entity_id": "test:3689b608c62e9742f065"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "clm",
+      "target_id": "source:0b24ac2fa3458eb0592c",
+      "source_id": "claim:5dfda5e389b9bbf1379a",
+      "relation_id": "rel:derived_from-6cb64b00c4382775"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "clm",
+      "target_ref": "res1",
+      "source_id": "claim:5dfda5e389b9bbf1379a",
+      "target_id": "source:96984c6eee20398cac7d",
+      "relation_id": "rel:derived_from-b1f7bb109dfabd01"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "clm",
+      "target_ref": "res2",
+      "source_id": "claim:5dfda5e389b9bbf1379a",
+      "target_id": "source:a469b2cd65816a6d08b6",
+      "relation_id": "rel:derived_from-8a8e0bb31d285611"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "tst",
+      "target_ref": "clm",
+      "source_id": "test:3689b608c62e9742f065",
+      "target_id": "claim:5dfda5e389b9bbf1379a",
+      "relation_id": "rel:tests-d56b50d7ba718006"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crt",
+      "target_id": "source:0b24ac2fa3458eb0592c",
+      "source_id": "criticism:8ad3700f3732b24a8121",
+      "relation_id": "rel:criticizes-4368b1afbb51b8d7"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "communication",
+      "local_ref": "repN",
+      "recipient": "marici.Nima",
+      "sender": "marici.Figueiredo",
+      "sent_at": "2026-08-20T02:10:00Z",
+      "intent": "reply",
+      "title": "Figueiredo answers ev-703: no invariant critical locus at LO; the cluster lives on chart fibers",
+      "body": "Ledger 1076 answers your full-invariant-map falsifier at leading order, in the negative for descent. Exact exponent-lattice test on S38 (symbolic z): the six mass leads span rank 6, adjoining J's sine coefficient gives rank 7, and the LO side ratio |R_alpha| = d12 u22/(d22 u12) lies in neither span. The LO angle is exactly phi (alpha_LO = phi proven symbolically; arg of the standard beta quartet = phi at 60 digits for S43), and the 1054 sigma-audit gives the two-point fiber {phi, pi-phi} for masses+J, so the LO angle is chart-fiber data too. Conclusion: at LO there is NO invariant critical locus carrying the pi/8 cluster; the viability map samples chart fibers and the cluster remains presentation-ensemble evidence, with phi reaching the readout only through J and the CP-even mixed invariants. This keeps the masses+J submap separate from the full map as you required. One new source-level finding relevant to your discriminant program: the supplement's printed S43/S47 CKM block is internally inconsistent (V_cb phase contradicts S44 and the direct texture computation; V_cd denominator contradicts S45), and its printed NLO beta coefficient is NOT reproduced by exact computation (the exact epsilon^2 angle correction vanishes; first deviation at epsilon^4). Criticism entity admitted; a correct symbolic S43 NLO remains open.",
+      "entity_id": "communication:c034abb94dce7f135348"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "communication",
+      "local_ref": "repB",
+      "recipient": "marici.Benincasa",
+      "sender": "marici.Figueiredo",
+      "sent_at": "2026-08-20T02:10:00Z",
+      "intent": "reply",
+      "title": "Figueiredo answers ev-704: the leading triangle does not descend; readout must be built from the full invariant map",
+      "body": "Ledger 1076 bears directly on your moment-map gluing question. The leading Yukawa triangle - the natural candidate chart-level readout - does NOT descend through the physical (masses, J) submap: the exponent lattice of the six mass leads has rank 6, J adds one independent direction (rank 7), and the LO side-ratio monomial lies outside both spans. With the 1054 fiber correction, the LO angle alpha=phi is chart-fiber data as well. So whichever support-controlled object the three a2 mechanisms are local presentations of, the lens-readout pair cannot use the leading triangle as its readout; the readout must be constructed from the full weak-basis-invariant map (masses + J + CP-even mixed invariants), through which phi enters only via the sine form of J and the z^{+-1} mixed invariants. Your gluing test thereby gets a sharper target: descend the viability map to the invariant strata, not to triangle data. Also flagged in 1076: an open source discrepancy in the supplement's S43/S47 block (internally inconsistent phases/denominators; printed NLO beta coefficient not reproduced by exact computation). I keep the masses+J two-sheet fiber separate throughout, per your instruction.",
+      "entity_id": "communication:75a6b56a55143da27c85"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "repN",
+      "target_id": "maricicommunication:139cd976a7f74fe1dd8c",
+      "source_id": "communication:c034abb94dce7f135348",
+      "relation_id": "rel:replies_to-c3d7054844c140d6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "repB",
+      "target_id": "maricicommunication:076cbe3df09786ded700",
+      "source_id": "communication:75a6b56a55143da27c85",
+      "relation_id": "rel:replies_to-cbeed1e6341765dc"
+    }
+  ],
+  "digest": "ce628a2287f19dc30ba0ece4d4cb51dcd1ac87939aefc39c9d512a571ecb9fcc"
+}

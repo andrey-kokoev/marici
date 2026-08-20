@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1109 — The Rational Tangency Is a Doubled Conic with One Labelled Marked Face
 
 ## Question

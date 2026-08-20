@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4e98360c-eddd-42a2-ae39-334d7e476798",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording the verified common deeper-corner comparison"
+  },
+  "idempotency_key": "marici-benincasa-entry-921-common-corner-admit",
+  "expected_ledger_head": "f1c1849629809a57ec6f9f09745cfa5a6d9a0760f05b5d5cc57669a7019dda10",
+  "created_at": "2026-08-19T13:29:36.1038856Z",
+  "content_fingerprint": "3bde4cdb3522d1b0343f2c09a4ee3954a7790a99a54c9dc020f7431e1a95a2f3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-921",
+      "kind": "source",
+      "title": "Entry 921 — The Diagonal and Off-Diagonal Lines Remain Independent at the Deeper Corner",
+      "version": "20260819-921",
+      "locator": "src/ledger/20260819-921 The Diagonal and Off-Diagonal Lines Remain Independent at the Deeper Corner.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-921-deeper-corner-rank-two",
+      "kind": "claim",
+      "title": "The regularized diagonal and off-diagonal coefficient lines span rank two at their common deeper corner",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-three-normal.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-921-deeper-corner",
+      "kind": "test",
+      "title": "Exact common-corner Cartier regularization and minor test",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_three_normal.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-921-deeper-corner-rank-two",
+      "target_id": "source-marici-ledger-921",
+      "relation_id": "rel:derived_from-58c787f41baf3720"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-921-deeper-corner",
+      "target_id": "claim-marici-921-deeper-corner-rank-two",
+      "relation_id": "rel:tests-a82ac78d38496163"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-921-deeper-corner",
+      "test_id": "test-marici-921-deeper-corner",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: after U and Z-1 Cartier regularization the two target directions are (0,1) and (1,-1), with a generically nonzero exact minor",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-921",
+          "locator": "Entry 921, Exact common-corner comparison",
+          "paraphrase": "The inherited source divisors regularize both lines and their joint target rank is two."
+        }
+      ]
+    }
+  ],
+  "digest": "826d6918ddd6713343acca4bd2c6482f08a587002966a7c0cd91fd6898dec1b5"
+}

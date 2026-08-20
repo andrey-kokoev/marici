@@ -1,0 +1,54 @@
+{
+  "schema": "marici.triangle-wall-joint-staircase-step1.v2",
+  "status": "finite-cutoff theorem",
+  "field_prime": 32003,
+  "typing_correction": {
+    "source_ambient_degree": 10,
+    "target_ambient_degree": 11,
+    "source_k_depth": 3,
+    "target_k_depth": 4,
+    "connection_images_generated_directly_in_target_columns": true,
+    "target_column_count": 21760,
+    "pre_elimination_target_truncation": false
+  },
+  "source_quotient": {
+    "raw_relation_row_count": 20684,
+    "central_relation_rank": 8448,
+    "first_normal_rank": 7,
+    "second_normal_rank": 13,
+    "tangent_count": 2,
+    "transported_probe_count": 26
+  },
+  "target_quotient": {
+    "raw_relation_row_count": 31632,
+    "central_relation_rank": 12521,
+    "first_normal_rank": 11,
+    "second_normal_rank": 19
+  },
+  "probe_reduction": {
+    "nonzero_remainder_count": 26,
+    "zero_remainder_count": 0,
+    "remainder_term_counts": [
+      36, 36, 36, 36, 36, 36, 82, 36, 75, 74, 72, 50, 50,
+      36, 36, 36, 36, 36, 36, 82, 36, 75, 74, 72, 50, 50
+    ]
+  },
+  "comparison_with_withdrawn_test": {
+    "remainder_term_counts_identical": true,
+    "interpretation": "The terms omitted by the mistyped ambient-ten sidecar do not alter the 26 final remainders after source-tracked elimination, but this was established only by the corrected direct-target computation."
+  },
+  "conclusion": "The honest first joint step (ambient degree 10, K-depth 3) to (ambient degree 11, K-depth 4) does not close either source-tracked tangential connection on the thirteen-dimensional second-normal grade.",
+  "scope": "This rejects only the one-step staircase. It does not reject closure in a larger or unbounded joint pole-degree colimit.",
+  "artifacts": {
+    "source_packet": "research/nima/triangle-wall-kdepth3-filtered.tmpbin",
+    "direct_target_sidecar": "research/nima/triangle-wall-kdepth3-filtered-connection-sidecar-target11.tmpbin",
+    "source_tracked_transport": "research/nima/triangle-wall-kdepth3-filtered-transport-target11.tmp",
+    "target_packet": "research/nima/triangle-wall-kdepth4-filtered-ambient11.tmpbin",
+    "sidecar_exporter": "research/nima/export_triangle_wall_filtered_connection_sidecar.py",
+    "reducer": "research/benincasa/marici-gm/target/release/triangle_wall_dual_rank.exe"
+  },
+  "runtime_seconds": {
+    "source_tracked_transport": 1263.6,
+    "target_reduction": 1497.3
+  }
+}

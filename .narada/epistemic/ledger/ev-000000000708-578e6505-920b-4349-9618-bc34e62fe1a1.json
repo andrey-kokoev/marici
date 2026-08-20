@@ -1,0 +1,43 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 708,
+  "event_id": "ev-000000000708-578e6505-920b-4349-9618-bc34e62fe1a1",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "567dfeec01e3ede7a4cab9e1045c58b90256d48dc46767cde57b3c3cf4a8c4c0",
+  "proposal_id": "ep_69e1a403-c8aa-4b8f-aab1-01eed4bc0320",
+  "proposal_digest": "5a4f5ee43c0d430808fde70993833762aab2462694589c3662ea886e8ddbd694",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The canonical Entry 1054 reply carries one erroneous supersedes edge",
+      "body": "In event 707, the canonical reply was accidentally linked as superseding maricicommunication:0a7c0b2be503997c7cbe. That target is unrelated. The intended predecessor is maricicommunication:076cbe3df09786ded700 from event 704. The erroneous immutable edge must be disregarded; the separately admitted correct edge is authoritative for this correction chain.",
+      "entity_id": "criticism:6b8b538257499328c2d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "maricicommunication:0ba157e237a9db7963e0",
+      "source_id": "criticism:6b8b538257499328c2d8",
+      "relation_id": "rel:criticizes-34fc154d4f19307f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "maricicommunication:0ba157e237a9db7963e0",
+      "target_id": "maricicommunication:076cbe3df09786ded700",
+      "relation_id": "rel:supersedes-93b104a40732f2fb"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Repair the graph-reference defect discovered while enforcing repository AGENTS.md."
+  },
+  "idempotency_key": "auto-admission-fbf4a4ff5a7004a406437860",
+  "occurred_at": "2026-08-19T22:16:20.9556368Z",
+  "certifies_truth": false,
+  "event_hash": "d0111e79a837c7bfc0b6f9c0a5a87293a099d540f7dc9345f412d64a5ac38fbb"
+}

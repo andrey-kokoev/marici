@@ -1,0 +1,126 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007138643_seq1_c",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Stage C (audit), read only. Consume the explicitly imported validated Stage-B output and the frozen audit evidence packet. Return JSON with fields audited_result, corrections, coefficient_verdict, rank_vs_quasi_isomorphism, existence_and_support_verdict, remaining_construction, falsifier. Audit nonzero versus invertible, primitive cellular coefficient versus typed module map, rank compatibility versus quasi-isomorphism, and constructed existence/support. Repair Stage B if needed and state the exact remaining construction and a concrete permitted falsifier. No prose outside JSON.",
+  "request_fingerprint": "23d282706321928df331c737ff81c68a78c100d48ed05835f96e141c4b6dc95a",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:52:19.0484017Z",
+  "created_at_ms": 1787007139048,
+  "started_at": null,
+  "started_at_ms": null,
+  "finished_at": "2026-08-17T23:24:16.7694581Z",
+  "finished_at_ms": 1787009056769,
+  "duration_ms": 1917721,
+  "updated_at": "2026-08-17T23:24:16.7694651Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007138643_seq1_c",
+  "constraints": {
+    "preflight_paths": [
+      {
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ],
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "queue_timeout_ms": 900000,
+    "max_retries": 0,
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "audited_result",
+            "corrections",
+            "coefficient_verdict",
+            "rank_vs_quasi_isomorphism",
+            "existence_and_support_verdict",
+            "remaining_construction",
+            "falsifier"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "audited_result",
+      "corrections",
+      "coefficient_verdict",
+      "rank_vs_quasi_isomorphism",
+      "existence_and_support_verdict",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [
+    "dcog_live_1787007138643_seq1_b"
+  ],
+  "import_task_outputs": [
+    "dcog_live_1787007138643_seq1_b"
+  ],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "blocked",
+    "resolved_at": null,
+    "blocked_by": [
+      "dcog_live_1787007138643_seq1_b"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "blocked",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": "2026-08-17T23:24:16.7690218Z",
+        "error": null,
+        "summary": null,
+        "blocked_by_external_tasks": [
+          "dcog_live_1787007138643_seq1_b"
+        ]
+      }
+    },
+    "worker_refs": [],
+    "worker_outputs": [],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": []
+  },
+  "summary": null
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 339,
+  "event_id": "ev-000000000339-4300e3a0-41a1-41be-9783-cbf50187c5d1",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "eda3beeefbcac87c19e97266fe1e08a8801dcab18381ac1345218d984757a160",
+  "proposal_id": "ep_adade44a-d871-4b0c-9fe2-cad311091c3d",
+  "proposal_digest": "d9bc45f45fb5bd03a5765bd0dce005c7cae1e3fa48c2aaccd248451a6d9e003b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-725",
+      "kind": "source",
+      "title": "Entry 725 — Q Is Regular and P6 Is Nonpositively Resonant in the Infinity-Gysin Extension",
+      "version": "20260818-725",
+      "locator": "src/ledger/20260818-725 Q Is Regular and P6 Is Nonpositively Resonant in the Infinity-Gysin Extension.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-725-function-field-residues",
+      "kind": "test",
+      "title": "Exact P6 and Q function-field infinity-Gysin residue calculation"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-725-Q-regular-P6-residue",
+      "kind": "claim",
+      "title": "Q is regular and P6 has residue diag(-1/2,0,0,0) in the infinity-Gysin extension"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-725-function-field-residues",
+      "target_id": "claim:marici-725-Q-regular-P6-residue",
+      "relation_id": "rel:tests-a2afbdbceba1cfb8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-725-Q-regular-P6-residue",
+      "target_id": "source:marici-ledger-725",
+      "relation_id": "rel:derived_from-35c31086385802ba"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-725-function-field-residues",
+      "test_id": "test:marici-725-function-field-residues",
+      "actor": "marici.Benincasa",
+      "outcome": "Exact reduction over GF(p)(u)[v]/(f) gives R_P6=diag(-1/2,0,0,0), R_Q=0, solvable L0 equations, and indicial polynomials lambda^2(lambda+1/2)^2 and lambda^4 respectively; neither has a positive integral resonance.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-725",
+          "locator": "research/benincasa/marici-gm/gysin-function-field-residues.json",
+          "paraphrase": "The serialized exact function-field matrices and characteristic coefficients certify the stated residues and resonance classification without divisor-point fitting."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "description": "Record exact function-field cosmology residue result"
+  },
+  "idempotency_key": "auto-admission-989c671a243e62597a5c3be5",
+  "occurred_at": "2026-08-18T17:35:03.0254607Z",
+  "certifies_truth": false,
+  "event_hash": "26340bf6083b43fbe61dd039dc3907fae11206a1e730e72f3b5c4fa971defaaf"
+}

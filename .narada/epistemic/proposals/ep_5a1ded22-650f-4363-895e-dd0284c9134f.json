@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5a1ded22-650f-4363-895e-dd0284c9134f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "instruction": "Record the corrected ordinary-Rees exceptional line for the off-diagonal six-point flag."
+  },
+  "idempotency_key": "marici-benincasa-entry-918-rees-line-event",
+  "expected_ledger_head": "fa117b5de0a28ca120372c5b7299a1ca4a66b0ce72a940779ce9e98db6680258",
+  "created_at": "2026-08-19T13:14:30.6700485Z",
+  "content_fingerprint": "ece070762329106d0ded14f08b1828b5e8e02e432418bb5a14ea568f8312d349",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-918",
+      "kind": "source",
+      "title": "Entry 918 — The Off-Diagonal Rees Exceptional Image Is a Cartier-Twisted Line",
+      "version": "20260819-918",
+      "locator": "src/ledger/20260819-918 The Off-Diagonal Rees Exceptional Image Is a Cartier-Twisted Line.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-string-off-diagonal-rees-line",
+      "kind": "claim",
+      "title": "The off-diagonal Rees exceptional image is a constant projective rank-one line with Cartier factor 1/U",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-three-normal.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-string-off-diagonal-rees-chart",
+      "kind": "test",
+      "title": "Exact ordinary-Rees a-chart exceptional restriction",
+      "version": "4",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_three_normal.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-string-off-diagonal-rees-line",
+      "target_id": "source-marici-ledger-918",
+      "relation_id": "rel:derived_from-21bc28b34729a352"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-string-off-diagonal-rees-chart",
+      "target_id": "claim-string-off-diagonal-rees-line",
+      "relation_id": "rel:tests-7ee7c71668a73afa"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-off-diagonal-rees-chart-20260819",
+      "test_id": "test-string-off-diagonal-rees-chart",
+      "actor": "marici.Benincasa",
+      "outcome": "passed after H=0 repair: exceptional matrix has rank one, six entries in one row, common factor 1/U, no V dependence, and constant projective image",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-918",
+          "locator": "Entry 918, Implementation repair through Cartier typing",
+          "paraphrase": "The corrected exceptional restriction distinguishes the canonical projective line and Cartier divisor from an affine normalization."
+        }
+      ]
+    }
+  ],
+  "digest": "8d1ff7df6d7f786f77bea7cba60383e8ba0bd96689e42356059953af6100e620"
+}

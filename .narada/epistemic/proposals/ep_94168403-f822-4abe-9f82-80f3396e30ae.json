@@ -1,0 +1,74 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_94168403-f822-4abe-9f82-80f3396e30ae",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the relative Gauss–Manin calculation and record the first-jet falsifier."
+  },
+  "idempotency_key": "auto-proposal-0c253f8e2a84d2316dc469d5",
+  "expected_ledger_head": "959d771c5a3dbe7d8c2a0c044ac3359f2f167b176d3faaab1e5b9f64a4df1cdf",
+  "created_at": "2026-08-18T14:46:02.0394262Z",
+  "content_fingerprint": "0c253f8e2a84d2316dc469d52d7718953263c283c7a02a08281ebdeca416fc52",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source664",
+      "kind": "source",
+      "title": "Entry 664 — The Relative Physical Source Is Not a Flat Line",
+      "version": "1",
+      "locator": "src/ledger/20260818-664 The Relative Physical Source Is Not a Flat Line.md",
+      "entity_id": "source:36ccb532d06ec6aa79df"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test664",
+      "kind": "test",
+      "title": "First-jet flat-line test for the physical source in each relative occurrence block",
+      "entity_id": "test:1f42f3ef2199e10352e0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test664",
+      "target_ref": "source664",
+      "source_id": "test:1f42f3ef2199e10352e0",
+      "target_id": "source:36ccb532d06ec6aa79df",
+      "relation_id": "rel:derived_from-6f88dc564fc9c56e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "criticism664",
+      "kind": "criticism",
+      "title": "A single occurrence source line has rank-three first jet and cannot be the flat physical coefficient line",
+      "entity_id": "criticism:17179735b341b520bcb8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test664",
+      "target_ref": "criticism664",
+      "source_id": "test:1f42f3ef2199e10352e0",
+      "target_id": "criticism:17179735b341b520bcb8",
+      "relation_id": "rel:tests-dbed0f953b4a2ed7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem664",
+      "kind": "problem",
+      "title": "Test first-derivative cancellation for the unsplit reflected source in a common relative target",
+      "entity_id": "problem:1c9b8d95b152e421d1f2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem664",
+      "target_ref": "criticism664",
+      "source_id": "problem:1c9b8d95b152e421d1f2",
+      "target_id": "criticism:17179735b341b520bcb8",
+      "relation_id": "rel:depends_on-eec206efd5154778"
+    }
+  ],
+  "digest": "7d94d33420e853853066f34a49d5edd2e15e7132b8f30a2e1f46b648b6ffed51"
+}

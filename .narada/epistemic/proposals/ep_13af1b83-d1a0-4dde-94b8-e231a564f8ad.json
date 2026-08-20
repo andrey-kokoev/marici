@@ -1,0 +1,58 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_13af1b83-d1a0-4dde-94b8-e231a564f8ad",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the codimension-two regulator audit and record the minimal-syzygy corner obstruction."
+  },
+  "idempotency_key": "auto-proposal-cb51309e1784a5da32f7006f",
+  "expected_ledger_head": "5293e8f34bdf3a60d3a461ea59992648939d8e921d6eac771a1ab0c013f4c495",
+  "created_at": "2026-08-18T15:02:36.4725742Z",
+  "content_fingerprint": "cb51309e1784a5da32f7006fbb4f9e8e00ceac15a8ccf820e973e35302900d40",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source669",
+      "kind": "source",
+      "title": "Entry 669 — No Minimal Source Syzygy Is Uniformly Improved at All Five K–Wall Corners",
+      "version": "1",
+      "locator": "src/ledger/20260818-669 No Minimal Source Syzygy Is Uniformly Improved at All Five K-Wall Corners.md",
+      "entity_id": "source:e990c8fcd4ffa69a53fb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "criticism669",
+      "kind": "criticism",
+      "title": "No nonzero minimal degree-seven syzygy removes the K-face marked pole at every K_E=q_i corner",
+      "entity_id": "criticism:c2ed3fbfb433d66809d9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "criticism669",
+      "target_ref": "source669",
+      "source_id": "criticism:c2ed3fbfb433d66809d9",
+      "target_id": "source:e990c8fcd4ffa69a53fb",
+      "relation_id": "rel:derived_from-762d7e7e18b9315d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem669",
+      "kind": "problem",
+      "title": "Compute the summed oriented two-face Stokes functional at every K_E=q_i corner",
+      "entity_id": "problem:0c612f29f2ff952c66c3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem669",
+      "target_ref": "criticism669",
+      "source_id": "problem:0c612f29f2ff952c66c3",
+      "target_id": "criticism:c2ed3fbfb433d66809d9",
+      "relation_id": "rel:depends_on-a16a14cf01cea136"
+    }
+  ],
+  "digest": "2e3ec2ddd81324c8c6a366312c06879088af891017e1e74092a0da7720b8550f"
+}

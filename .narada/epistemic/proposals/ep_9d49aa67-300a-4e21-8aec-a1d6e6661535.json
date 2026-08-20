@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9d49aa67-300a-4e21-8aec-a1d6e6661535",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed continuation; result is committed and reproducibly verified."
+  },
+  "idempotency_key": "entry-878-rank21-projection-typing-correction",
+  "expected_ledger_head": "5703daf3e8a34ff9ec4683e61a40defeccb1b0f304cb391a9a7fecb86aa06de2",
+  "created_at": "2026-08-19T03:48:31.7170909Z",
+  "content_fingerprint": "823dded10f693a288181b593ed757a5ac7f431a23c17ce48b0647c5ba033e495",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src878",
+      "kind": "source",
+      "title": "Entry 878 — The Rank-Twenty-One Projected Matrices Are Not Induced Connections",
+      "version": "c460f3b",
+      "locator": "src/ledger/20260818-878 The Rank-Twenty-One Projected Matrices Are Not Induced Connections.md",
+      "entity_id": "source:9dfae79324c9f04c9a46"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim878",
+      "kind": "claim",
+      "title": "The selected rank-twenty-one residue block is not preserved by the source-derived external derivatives",
+      "entity_id": "claim:d86fcde6e4f521c1e563"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test878",
+      "kind": "test",
+      "title": "Occurrence-reflection chain naturality and rank-twenty-one closure audit",
+      "entity_id": "test:3890ab804ff8b4f14d4c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim878",
+      "target_ref": "src878",
+      "source_id": "claim:d86fcde6e4f521c1e563",
+      "target_id": "source:9dfae79324c9f04c9a46",
+      "relation_id": "rel:derived_from-e3e5cd649ca5a2b1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test878",
+      "target_ref": "claim878",
+      "source_id": "test:3890ab804ff8b4f14d4c",
+      "target_id": "claim:d86fcde6e4f521c1e563",
+      "relation_id": "rel:tests-2ad3e9c3acbccd49"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "entry878-rank21-closure-outcome",
+      "test_id": "test878",
+      "actor": "marici.Nima",
+      "outcome": "All 63 full reduced-chain naturality squares pass, but every selected basis vector leaks outside the rank-twenty-one block for every derivative; the projected 21x21 matrices are not induced connections.",
+      "evidence": [
+        {
+          "source_id": "src878",
+          "locator": "research/nima/rank21-occurrence-reflection-connection.json",
+          "paraphrase": "The packet records zero chain-level failures, 21 leaking basis vectors per axis, five or seven outside columns, and complete projected intertwining failure."
+        }
+      ]
+    }
+  ],
+  "digest": "1788bd18583a0e13f3a1942fff1dd3b8c66f73924d45d0212c611bea38a80dff"
+}

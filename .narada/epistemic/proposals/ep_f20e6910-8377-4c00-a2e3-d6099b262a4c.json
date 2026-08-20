@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f20e6910-8377-4c00-a2e3-d6099b262a4c",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "operator_instruction": "Continue the Marici soft-axis research line and record verified results.",
+    "evidence_commit": "d09a1dc2f17c5e063822b1c4f85d1d0b10621b8a"
+  },
+  "idempotency_key": "auto-proposal-f823a4a71f8d6dd0e8a3011d",
+  "expected_ledger_head": "172824d0b8fe5377925b48e19c81b01289fcfee853544e2a65c560a32294bbce",
+  "created_at": "2026-08-18T00:53:37.0810232Z",
+  "content_fingerprint": "f823a4a71f8d6dd0e8a3011d5c10695eafeebbcf804efc2b4596c19c1eeda9a5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source456",
+      "kind": "source",
+      "title": "Entry 456: The Sevenfold Boundary Twist Is Source-Derived but Not Yet Cohomological",
+      "version": "git:d09a1dc2f17c5e063822b1c4f85d1d0b10621b8a",
+      "locator": "src/ledger/20260817-456 The Sevenfold Boundary Twist Is Source-Derived but Not Yet Cohomological.md",
+      "entity_id": "source:83629d135a9a3120fcd4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim456",
+      "kind": "claim",
+      "title": "The Euler-Cartier boundary divisor uniquely equals three tautological Rees divisors plus one L1 incidence divisor",
+      "version": "entry-456",
+      "entity_id": "claim:219064b7bbb3704a7249"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test456",
+      "kind": "test",
+      "title": "Audit of the unique source-derived decomposition of divisor (3,4)",
+      "version": "git:d09a1dc2f17c5e063822b1c4f85d1d0b10621b8a",
+      "locator": "research/voevodsky/check_soft_axis_boundary_twist_decomposition.py",
+      "entity_id": "test:dc7489a69e05cf7ab233"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem457",
+      "kind": "problem",
+      "title": "Derive the residual Euler differential on the twisted Cartier layer and compute its cohomology",
+      "version": "after-entry-456",
+      "entity_id": "problem:95ce83927a6803f72fd8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim456",
+      "target_ref": "source456",
+      "source_id": "claim:219064b7bbb3704a7249",
+      "target_id": "source:83629d135a9a3120fcd4",
+      "relation_id": "rel:derived_from-4236dac121977535"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test456",
+      "target_ref": "claim456",
+      "source_id": "test:dc7489a69e05cf7ab233",
+      "target_id": "claim:219064b7bbb3704a7249",
+      "relation_id": "rel:tests-2af0da42945592fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem457",
+      "target_ref": "claim456",
+      "source_id": "problem:95ce83927a6803f72fd8",
+      "target_id": "claim:219064b7bbb3704a7249",
+      "relation_id": "rel:depends_on-43edcdec99fa902c"
+    }
+  ],
+  "digest": "6d48f2153db56a1c1be870418c100acaf882514a6b291f75f7ee592fc87e95cd"
+}

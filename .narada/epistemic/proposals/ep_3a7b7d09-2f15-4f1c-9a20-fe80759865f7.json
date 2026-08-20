@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3a7b7d09-2f15-4f1c-9a20-fe80759865f7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "description": "Record verified cosmology research result and its bounded test"
+  },
+  "idempotency_key": "marici-benincasa-entry-721-graph-20260818",
+  "expected_ledger_head": "2b9f3c1bc7a518a11fe072ceed85639e4eb37c08e1bdbdce9bda927846285db6",
+  "created_at": "2026-08-18T17:13:34.7922998Z",
+  "content_fingerprint": "e89c8ecbc884954e8a87b0971ac5388509d33f8be918b21ab84bbf5d43ee40f3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src721",
+      "kind": "source",
+      "title": "Entry 721 — No Pole-Free Splitting of the Infinity-Gysin Extension Through Degree Ten",
+      "version": "20260818-721",
+      "locator": "src/ledger/20260818-721 No Pole-Free Splitting of the Infinity-Gysin Extension Through Degree Ten.md",
+      "entity_id": "source:04121be1d2dd1bcc762a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test721",
+      "kind": "test",
+      "title": "Degree-ten pole-free infinity-Gysin splitting search",
+      "entity_id": "test:30a3fefb8b5d855d655f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim721",
+      "kind": "claim",
+      "title": "The rank-four infinity-Gysin extension has no pole-free polynomial splitting through total degree ten",
+      "entity_id": "claim:db2aef94f13572f05e82"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test721",
+      "target_ref": "claim721",
+      "source_id": "test:30a3fefb8b5d855d655f",
+      "target_id": "claim:db2aef94f13572f05e82",
+      "relation_id": "rel:tests-e473a2167a300a09"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim721",
+      "target_ref": "src721",
+      "source_id": "claim:db2aef94f13572f05e82",
+      "target_id": "source:04121be1d2dd1bcc762a",
+      "relation_id": "rel:derived_from-05810af07a8d64a1"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-721-pole-free-split",
+      "test_id": "test:degree-ten-pole-free-infinity-gysin-splitting-search",
+      "actor": "marici.Benincasa",
+      "outcome": "No simultaneous two-direction polynomial gauge solution exists at any total degree through ten over the frozen prime field.",
+      "evidence": [
+        {
+          "source_id": "source:entry-721-no-pole-free-splitting-of-the-infinity-gysin-extension-through-degree-ten:20260818-721:src/ledger/20260818-721-no-pole-free-splitting-of-the-infinity-gysin-extension-through-degree-ten.md",
+          "locator": "research/benincasa/marici-gm/gysin-polynomial-split-d10.json",
+          "paraphrase": "The exact collocation system returned status not_found through total degree ten; the command is covered by the release test suite."
+        }
+      ]
+    }
+  ],
+  "digest": "6b3a4e5d5efe130a65ea5142d7b7da0951894ad3f741e66194920478e0af2219"
+}

@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1113 — Both Tangency Swap Squares Commute with the Complete Residue Orientation
 
 ## Correction to Entry 1112

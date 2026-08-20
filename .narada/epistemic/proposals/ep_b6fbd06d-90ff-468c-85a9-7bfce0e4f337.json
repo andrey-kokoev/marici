@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b6fbd06d-90ff-468c-85a9-7bfce0e4f337",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the cosmology attack and update the epistemic graph."
+  },
+  "idempotency_key": "marici-benincasa-entry-421-first-blowup-v1",
+  "expected_ledger_head": "55bcfdb8561660571170b2896407cacb08938bd53da1336fd139219f49b22751",
+  "created_at": "2026-08-17T23:00:55.6725547Z",
+  "content_fingerprint": "7011d0f2b2e0787f537ac62cb361e215645687afe5c9d34d034549198d52ffcd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-421-soft-total-blowup",
+      "kind": "source",
+      "title": "Ledger 421: The First Soft-Total Blowup Has No Unclassified Fitting Direction",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-421 The First Soft-Total Blowup Has No Unclassified Fitting Direction.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:first-soft-total-blowup-no-residual-direction",
+      "kind": "claim",
+      "title": "The sampled first soft-total blowup has no rank support outside the frozen energy arrangement"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-total-blowup-direction-census",
+      "kind": "test",
+      "title": "Exact-lift first exceptional-direction census at E=X2=0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:first-soft-total-blowup-no-residual-direction",
+      "target_id": "marici:source:ledger-421-soft-total-blowup",
+      "relation_id": "rel:derived_from-157a4536650c9f39"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:soft-total-blowup-direction-census",
+      "target_id": "marici:claim:first-soft-total-blowup-no-residual-direction",
+      "relation_id": "rel:tests-b0b9c97c0c9ac70b"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "benincasa-421-blowup-direction-outcome",
+      "test_id": "marici:test:soft-total-blowup-direction-census",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed narrowly: among 222 samples at exact-form degrees 8 and 10, all 40 rank jumps lie on the frozen divisors E-X2=0 or 2-E=0; residual unclassified count is zero.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-421-soft-total-blowup",
+          "locator": "Result and Epistemic boundary",
+          "paraphrase": "The first blow-up census finds no unclassified sampled direction but does not compute local Fitting length or exclude higher infinitely-near support."
+        }
+      ]
+    }
+  ],
+  "digest": "55b5decb2542d47ab0b7f15812dbe194523d90d59f019a622f3ab4faa15ad312"
+}

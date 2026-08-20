@@ -1,0 +1,48 @@
+{
+  "schema": "marici.benincasa.rank12_u0_v2_quadratic_regulator_chambers.v1",
+  "status": "passed",
+  "center": {
+    "X1": "1",
+    "X2": "0",
+    "X3": "-1",
+    "u": "0",
+    "v": "2"
+  },
+  "regulator_convention": "Xi -> Xi - i*epsilon_i with epsilon_i>0 independently",
+  "exceptional_slope": "(-epsilon_1 + epsilon_2 - epsilon_3)/(epsilon_1 + epsilon_2 + epsilon_3)",
+  "quadratic_roots": [
+    "-3 + 2*sqrt(2)",
+    "-3 - 2*sqrt(2)"
+  ],
+  "reachable_root": "-3 + 2*sqrt(2)",
+  "unreachable_root": "-3 - 2*sqrt(2)",
+  "pulled_back_collision_wall": "sqrt(2)*epsilon_2 = epsilon_1 + epsilon_3",
+  "factor_identity": "Eq((epsilon_1 + epsilon_2 + epsilon_3)*((-epsilon_1 + epsilon_2 - epsilon_3)/(epsilon_1 + epsilon_2 + epsilon_3) - 2*sqrt(2) + 3), (-2 + 2*sqrt(2))*(-epsilon_1 + sqrt(2)*epsilon_2 - epsilon_3))",
+  "positive_cone_witnesses": {
+    "below": {
+      "epsilon": [
+        "1",
+        "1",
+        "1"
+      ],
+      "s": "-1/3"
+    },
+    "above": {
+      "epsilon": [
+        "1",
+        "2",
+        "1"
+      ],
+      "s": "0"
+    },
+    "wall": {
+      "epsilon": [
+        "1",
+        "sqrt(2)",
+        "1"
+      ],
+      "s": "-3 + 2*sqrt(2)"
+    }
+  },
+  "conclusion": "The independent-positive regulator cone meets both chambers separated by the reachable quadratic collision. The frozen sign prescription does not select a Kummer sheet or a crossing class."
+}

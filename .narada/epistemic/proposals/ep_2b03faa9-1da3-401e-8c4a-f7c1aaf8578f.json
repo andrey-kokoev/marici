@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2b03faa9-1da3-401e-8c4a-f7c1aaf8578f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Record Entry 774 local Hom stabilization result"
+  },
+  "idempotency_key": "marici-benincasa-entry-774-local-hom-stabilization",
+  "expected_ledger_head": "30c13854fd89d594647a266cc7569a573f78cb5d39eabf0afc9f7ec2016e2ceb",
+  "created_at": "2026-08-18T20:07:43.4734721Z",
+  "content_fingerprint": "7b1ebe0b28aaf1cdde167fac2015f2faa44c841a36662dd1721b5ddaee25beba",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-774",
+      "kind": "source",
+      "title": "Entry 774 — The Cyclic Hom Pole Lattice Is Locally Stable",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-774 The Cyclic Hom Pole Lattice Is Locally Stable.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:cyclic-hom-local-indicial-stabilization",
+      "kind": "test",
+      "title": "Local Hom indicial stabilization on 23 affine support classes"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:cyclic-hom-rational-nonsplitting",
+      "kind": "claim",
+      "title": "The Hom extension is rationally nonsplit on the finite cyclic atlas"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:cyclic-hom-local-indicial-stabilization",
+      "target_id": "claim:cyclic-hom-rational-nonsplitting",
+      "relation_id": "rel:tests-035a274993ad5fc1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:cyclic-hom-local-indicial-stabilization",
+      "target_id": "source:marici-ledger-774",
+      "relation_id": "rel:derived_from-da640c32f8c9dcd4"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:cyclic-hom-local-indicial-stabilization-20260818",
+      "test_id": "test:cyclic-hom-local-indicial-stabilization",
+      "actor": "marici.Benincasa",
+      "outcome": "All 23 affine support classes stabilize at the transported complete pole vector; no excess positive-integer resonance exists, so Entry 769 promotes to rational nonsplitting on the finite cyclic atlas.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-774",
+          "locator": "Result and exceptional forcing-pole sections",
+          "paraphrase": "Only three order-one resonances occur; the u^2+1 double forcing fixes a simple principal part and admits no larger homogeneous pole."
+        }
+      ]
+    }
+  ],
+  "digest": "a444580b92cc051470eeaf1eb2f14cad1b2791ec7d8c0bbfe896448f9ec1fd9b"
+}

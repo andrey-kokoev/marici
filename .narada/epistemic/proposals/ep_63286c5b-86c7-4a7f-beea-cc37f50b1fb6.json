@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_63286c5b-86c7-4a7f-beea-cc37f50b1fb6",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User instructed marici.Nima to continue and maintain the epistemic graph."
+  },
+  "idempotency_key": "idem-marici-nima-entry-865-q-top-kummer-obstruction-v2",
+  "expected_ledger_head": "cf999f1fbec7a0c1543533cde9c7d318c0f0a5c01fb836abb6e59577767a1ae3",
+  "created_at": "2026-08-19T02:57:26.8615424Z",
+  "content_fingerprint": "7f6895e2ad8fa910e1a5deef072dbb798d00f7bc4e220b6a1fabb9273e61ac3c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry865",
+      "kind": "source",
+      "title": "Entry 865 — The Marked Top Channel Does Not Embed in the Known Algebraic Line",
+      "version": "588f5b1",
+      "locator": "src/ledger/20260818-865 The Marked Top Channel Does Not Embed in the Known Algebraic Line.md",
+      "entity_id": "source:ab1d0842c161d8eb4a11"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim865",
+      "kind": "claim",
+      "title": "Marked top has a Kummer obstruction to embedding in the known e6 line",
+      "entity_id": "claim:98139c7f630a2ef39263"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test865",
+      "kind": "test",
+      "title": "Exact norm test for the marked-top Kummer obstruction",
+      "entity_id": "test:81f65747f1a8992baaad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim865",
+      "target_ref": "entry865",
+      "source_id": "claim:98139c7f630a2ef39263",
+      "target_id": "source:ab1d0842c161d8eb4a11",
+      "relation_id": "rel:derived_from-5e93ddf975604519"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test865",
+      "target_ref": "claim865",
+      "source_id": "test:81f65747f1a8992baaad",
+      "target_id": "claim:98139c7f630a2ef39263",
+      "relation_id": "rel:tests-a6f9a9d0adf0f54e"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-nima-865-norm-pass",
+      "test_id": "test865",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "entry865",
+          "locator": "research/nima/q-marked-top-kummer-obstruction.json",
+          "paraphrase": "Exact Sage verification gives alpha_e6=-1/2 dlog D and Norm(D)=-9u^6(4u^2-13u+8)(4u^2+5u-8), so D is not square on Q."
+        }
+      ]
+    }
+  ],
+  "digest": "e2f87463b7574129053a2c176d3be6ffa3c41f23b4214e6e3a3f38ea5877de00"
+}

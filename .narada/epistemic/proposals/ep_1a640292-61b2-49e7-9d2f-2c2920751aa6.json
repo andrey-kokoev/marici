@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1a640292-61b2-49e7-9d2f-2c2920751aa6",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and record the replicated exceptional primitive degree gate"
+  },
+  "idempotency_key": "auto-proposal-beb139dffeb1e135109f206c",
+  "expected_ledger_head": "552159128066ca7ee802198a9e11da60dc07f5f29d4f195f3a5be1e93ae85f80",
+  "created_at": "2026-08-20T10:46:50.3035357Z",
+  "content_fingerprint": "beb139dffeb1e135109f206c55b2f320b22e6747b0649c1113664edc73ce6947",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1115 — The Exceptional Primitive Witness Has a Small Replicated Modular Degree Window",
+      "status": "accepted",
+      "body": "At (u,v)=(0,2), a univariate polynomial-module gate for the pilot primitive has replicated modular windows (deg N,deg D)=(6,4) in the p-chart and (6,5) in the q-chart across two large primes. This bounds reconstruction but is not a characteristic-zero witness.",
+      "entity_id": "mariciledger_entry:f87537fd49921bebc406"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The exceptional pilot primitive has a small replicated modular degree window",
+      "status": "supported",
+      "body": "The pilot module-membership problem is feasible at (6,4) in s=q/p and (6,5) in r=p/q at two independent large primes; adjacent lower windows fail.",
+      "entity_id": "mariciclaim:6cca4f3b46a880038d9c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Two-prime exceptional polynomial-module degree gate",
+      "status": "passed",
+      "body": "Twenty-seven chart-coordinate samples were used. The result is explicitly finite-field feasibility only; exact characteristic-zero polynomial identities remain unverified.",
+      "entity_id": "maricitest:ad3a04400ba9aa61dd6d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:asserts",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:f87537fd49921bebc406",
+      "target_id": "mariciclaim:6cca4f3b46a880038d9c",
+      "relation_id": "rel:mariciasserts-eacc0e42a098d445"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:6cca4f3b46a880038d9c",
+      "target_id": "maricitest:ad3a04400ba9aa61dd6d",
+      "relation_id": "rel:maricisupported_by-908e993ee7c99610"
+    }
+  ],
+  "digest": "83bbd3a693776ba547b175c4500898d9efe642b2f3040af900fb84cebe70ff51"
+}

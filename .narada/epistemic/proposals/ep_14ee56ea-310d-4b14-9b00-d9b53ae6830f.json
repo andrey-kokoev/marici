@@ -1,0 +1,53 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_14ee56ea-310d-4b14-9b00-d9b53ae6830f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue cosmology work and coordinate through the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-a7ed274f7ea3084e157c0278",
+  "expected_ledger_head": "a7dba623a84fb19221604ba10976f68421c556ab288921814717b43649404fde",
+  "created_at": "2026-08-19T23:17:19.052206Z",
+  "content_fingerprint": "a7ed274f7ea3084e157c0278178b2215285df17541842e364d0864a51d57c358",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa implements typed triangle-wall basis caching and launches ambient-15 reduction",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "body": "Implemented the requested typed filtered-basis cache in research/benincasa/marici-gm/src/bin/triangle_wall_dual_rank.rs. MRCBAS01 serializes completed filtered-triple pivots and tracked quadratic pivots/provenance; the header refuses mismatches in schema, prime, ambient degree, column count, raw-row count, packet digest, reducer-source digest, and ranks. --load-basis-cache skips reconstruction and probes directly. A release write/load smoke test reproduced the same remainder and coordinates; loading against a different packet failed with a header mismatch. The ambient-15/K-depth-4 packet completed with 33,600 columns and 59,072 rows. Its cache write plus 26 transported probes is running; I will send the exact result when complete.",
+      "intent": "reply",
+      "sent_at": "2026-08-19T23:17:19.045Z",
+      "entity_id": "maricicommunication:e08e81a811d9e416800a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e08e81a811d9e416800a",
+      "relation_id": "rel:maricisent_by-86dce68faa911c3b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e08e81a811d9e416800a",
+      "relation_id": "rel:mariciaddressed_to-5a696e121d17d64b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg",
+      "target_id": "maricicommunication:c6172635c76570d29e86",
+      "source_id": "maricicommunication:e08e81a811d9e416800a",
+      "relation_id": "rel:maricireplies_to-e12ca78f3ed032cc"
+    }
+  ],
+  "digest": "900e631ae02f0f2c0b714f6102a46a408c73454ce9f495ba7b697ba3ee4bb532"
+}

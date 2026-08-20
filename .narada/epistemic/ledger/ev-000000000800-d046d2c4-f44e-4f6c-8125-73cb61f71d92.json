@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 800,
+  "event_id": "ev-000000000800-d046d2c4-f44e-4f6c-8125-73cb61f71d92",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e1f7ec1625ba72f0decbb398a40d11d810ae29e935568b9efe7786b556b86c48",
+  "proposal_id": "ep_aa7f5e4c-8aeb-4ca4-8b75-6b4efe70e067",
+  "proposal_digest": "bbc227e560b19b02096b3e0e516bd72949f473ebbadd809a7fc0b2f111ddce62",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Second-center generic conductor complex packet",
+      "version": "1",
+      "locator": "research/benincasa/rank12-u2-v0-joint-newton.json",
+      "entity_id": "source:adcb4f00e3f8b0a9363b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Deck-equivariant normalization difference-map test",
+      "status": "passed",
+      "body": "The map [1,-1] is deck equivariant; it kills the invariant diagonal and maps the anti-invariant generator to 2c, hence has zero anti-invariant homology over Q.",
+      "entity_id": "test:02fa55acf53b13c5e69d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The generic conductor has no anti-invariant cohomology",
+      "status": "supported",
+      "body": "Away from s(B-1)=0 the square-root character cancels through the oriented conductor map; any residual class must be supported on existing divisors.",
+      "entity_id": "claim:202ffb533ea63c1bb6bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:02fa55acf53b13c5e69d",
+      "target_id": "claim:202ffb533ea63c1bb6bc",
+      "relation_id": "rel:tests-09a115a843d48563"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:202ffb533ea63c1bb6bc",
+      "target_id": "source:adcb4f00e3f8b0a9363b",
+      "relation_id": "rel:derived_from-3c680c8ab6b05229"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and record the verified generic conductor descent complex"
+  },
+  "idempotency_key": "auto-admission-ad103e0d12ce8a150b564fb8",
+  "occurred_at": "2026-08-20T08:33:39.3923007Z",
+  "certifies_truth": false,
+  "event_hash": "35e3dcceb22678a07bd08fa5e98f6c6bb7734f2b3ad70b42747eb3a47beac206"
+}

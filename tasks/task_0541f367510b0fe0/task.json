@@ -1,0 +1,95 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_0541f367510b0fe0",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return a concise structured result with the two values and verification evidence.",
+  "request_fingerprint": "2655d69bf6e1195ae1058b0a4938aa2a81bb3c5de9bfae586d0647be9e5b0faa",
+  "created_at": "2026-08-16T13:06:46.9093351Z",
+  "updated_at": "2026-08-16T13:07:33.9088872Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-delegation-smoke-test-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici",
+        "access": "read",
+        "label": "Marici repository"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "repository_name",
+      "current_branch",
+      "verification"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-7215d21c6ce544a28c0d631337336f36"
+        ],
+        "current_run_id": "run-7215d21c6ce544a28c0d631337336f36",
+        "started_at": "2026-08-16T13:06:47.1078759Z",
+        "finished_at": "2026-08-16T13:07:33.9079998Z",
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-7215d21c6ce544a28c0d631337336f36",
+        "status": "running"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

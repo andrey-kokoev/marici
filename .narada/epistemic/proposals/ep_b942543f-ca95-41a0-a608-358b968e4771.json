@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b942543f-ca95-41a0-a608-358b968e4771",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue and record the assembled five-point string twisted-boundary mechanism."
+  },
+  "idempotency_key": "auto-proposal-6e229100be473c32365e527a",
+  "expected_ledger_head": "d38eb6543b3b9b6e87f692a8fa6edcc115f284d053f68077c02db5d43a831cd9",
+  "created_at": "2026-08-19T04:27:05.0204808Z",
+  "content_fingerprint": "6e229100be473c32365e527a755ec5940ea441a37e6e73f9a7d358dd762ee93b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-896",
+      "kind": "source",
+      "title": "Entry 896 — The Five-Point Sine Circuit Is an Assembled Twisted Boundary",
+      "version": "20260818-896",
+      "locator": "src/ledger/20260818-896 The Five-Point Sine Circuit Is an Assembled Twisted Boundary.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-five-point-sine-circuit-twisted-boundary",
+      "kind": "claim",
+      "title": "The five-point sine circuit is assembled from source half-monodromy, Pochhammer endpoint, and common-vertex cells"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-five-point-twisted-boundary",
+      "kind": "test",
+      "title": "Complex-phase assembly audit of the five-point twisted boundary"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-five-point-sine-circuit-twisted-boundary",
+      "target_id": "source:marici-ledger-896",
+      "relation_id": "rel:derived_from-e50e40ef93dcd1b3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-five-point-sine-circuit-twisted-boundary",
+      "target_id": "source:mizera-1706.08527",
+      "relation_id": "rel:derived_from-0672a32f433b8a91"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-five-point-sine-circuit-twisted-boundary",
+      "target_id": "claim:marici-string-sine-half-monodromy-pochhammer",
+      "relation_id": "rel:depends_on-590c774cce27544c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-five-point-twisted-boundary",
+      "target_id": "claim:marici-five-point-sine-circuit-twisted-boundary",
+      "relation_id": "rel:tests-225b171761885186"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-five-point-twisted-boundary-pass",
+      "test_id": "test:marici-five-point-twisted-boundary",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: the source Pochhammer row times the diagonal common-vertex kernel equals both sine-circuit coefficients",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-896",
+          "locator": "research/benincasa/string-five-point-twisted-boundary.json",
+          "paraphrase": "Packet records local phase cells, source row, vertex kernel, assembled circuit, and errors."
+        }
+      ]
+    }
+  ],
+  "digest": "806fa059b73e4972a0a7b8e86b2adbe11925bb75cc4b6bb886bcdca36c2cd836"
+}

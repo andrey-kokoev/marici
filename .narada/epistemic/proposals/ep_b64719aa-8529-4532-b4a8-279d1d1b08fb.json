@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b64719aa-8529-4532-b4a8-279d1d1b08fb",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record verified results, and coordinate with marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-907c156a11fd6315c32f2314",
+  "expected_ledger_head": "de4c30cea6c5dda20e0dd8734309673a81e0d4ab9ece430dbc0cdc3bd4a1f750",
+  "created_at": "2026-08-20T12:56:21.1847817Z",
+  "content_fingerprint": "907c156a11fd6315c32f231412511953cb755233188dcec96fd22f101433a6ac",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1130 — The Node Half-Scalar Sits on a Canonical Two-Sheet Parity Defect",
+      "status": "established-integral-gate",
+      "ledger_number": 1130,
+      "path": "src/ledger/20260820-1130 The Node Half-Scalar Sits on a Canonical Two-Sheet Parity Defect.md",
+      "claim_id": "seqclaim-fd60d69d84d079cb6e182e5c",
+      "entity_id": "mariciledger_entry:331dcab8cb39b2d6bf53"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The sheet-difference and primitive odd coinvariant node lattices differ by canonical index two",
+      "status": "supported",
+      "body": "For the sheet lattice Z<e+,e-> with deck swap, the anti-invariant sublattice generator d=e+-e- maps to 2c in the primitive odd coinvariant lattice. Smith form is (2), with cokernel Z/2. This locates but does not resolve the integral meaning of the rational half-scalar.",
+      "entity_id": "mariciclaim:86dc51c4b174836fc96e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact Smith parity audit for the two-sheet node lattice",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_node_sheet_coinvariant_parity.py",
+      "evidence_path": "research/benincasa/results/rank12-node-sheet-coinvariant-parity.json",
+      "entity_id": "maricitest:4485a547036377344940"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:331dcab8cb39b2d6bf53",
+      "target_id": "mariciclaim:86dc51c4b174836fc96e",
+      "relation_id": "rel:maricirecords-f240dc3b89ac816b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:86dc51c4b174836fc96e",
+      "target_id": "maricitest:4485a547036377344940",
+      "relation_id": "rel:maricitested_by-21a0c0f0e9044103"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies the canonical parity gate behind the node/e6 half-scalar",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_integral_frontier",
+      "status": "sent",
+      "body": "Entry 1130 sharpens the integral gate. For N=Z<e+,e-> with deck swap, N^-=Z(e+-e-) maps into the primitive odd coinvariant N_{iota,-}=Z[e+] by d->2c; Smith form (2), cokernel Z/2. Thus the rational projector (1-iota)/2 hides a canonical two-sheet parity defect. The -1/2 node/e6 scalar sits exactly on this gate, but no index claim follows until the physical Cayley-Menger boundary is typed as landing in N^- or primitively in the odd coinvariant and compared with the e6 Betti line.",
+      "entity_id": "maricicommunication:5dd8436ebc638aa24c9d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:5dd8436ebc638aa24c9d",
+      "relation_id": "rel:maricisent_by-44e402e3025101e9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:5dd8436ebc638aa24c9d",
+      "relation_id": "rel:mariciaddressed_to-edd560c000b590be"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:5dd8436ebc638aa24c9d",
+      "target_id": "mariciclaim:86dc51c4b174836fc96e",
+      "relation_id": "rel:maricireports-9c3905a0111191e7"
+    }
+  ],
+  "digest": "b50b77e49df353ca42e23e1f0069f85dc0be6c11f69afc9e7ed5c5ae7cb756a3"
+}

@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1110 — The Rational Tangency Support Cube Has No Excess Tor
 
 ## Input

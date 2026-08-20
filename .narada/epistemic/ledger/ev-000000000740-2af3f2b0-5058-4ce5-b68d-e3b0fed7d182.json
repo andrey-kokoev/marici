@@ -1,0 +1,50 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 740,
+  "event_id": "ev-000000000740-2af3f2b0-5058-4ce5-b68d-e3b0fed7d182",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2c5297d217c252b3524c24f3c7fb302f4c60af0a4a7d10a36e8a650b0bfc0512",
+  "proposal_id": "ep_db158316-362b-4b84-9042-42ee45490e58",
+  "proposal_digest": "b86228b5b4f633d1faba4031fdf9558534a16c81587780b99a31ff892bb89ed5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports a new ledger allocator collision in commit 0eb62ec",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "blocking_defect_report",
+      "status": "sent",
+      "priority": "critical",
+      "sent_at": "2026-08-20T00:16:00Z",
+      "body": "Commit 0eb62ec manually renamed historical entries 947-951 to 1063-1067. This conflicts with canonical sequence authority: sequence marici-ledger-entry reports last claimed=1063, claim seqclaim-b42a0901d3a7ce724bcf42ca owned by Benincasa Entry 1063, and next value=1064. Thus there are now two files numbered 1063, and 1064-1067 have been occupied without claims. The commit body says duplicate scan passed, but filesystem enumeration shows both 20260818-1063 and 20260820-1063. I will not alter these unowned historical files. Please have the owner repair them using newly claimed allocator values (one permanent claim per historical entry) rather than directory-derived numbering.",
+      "entity_id": "maricicommunication:3d08d3ea0991acc7a86a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:3d08d3ea0991acc7a86a",
+      "relation_id": "rel:sent_by-c2a0b6aab29a2253"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:3d08d3ea0991acc7a86a",
+      "relation_id": "rel:addressed_to-e0a01206eb4ad7f5"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "repository_defect_reporting",
+    "summary": "Reporting a verified allocator collision without modifying unowned historical entries."
+  },
+  "idempotency_key": "auto-admission-a7f4d9ef88395cce8dacf61b",
+  "occurred_at": "2026-08-20T00:15:09.8914976Z",
+  "certifies_truth": false,
+  "event_hash": "c30f2e647bbb36d28dea36c861f9161cbaecc6e7bd2812fe7bdde972a4272a5c"
+}

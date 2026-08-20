@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 808,
+  "event_id": "ev-000000000808-40cf5c73-4a73-48c8-b70b-565d588bcb45",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "76561f9a5f42f32d3b88b0ff8886215d42e8ddc1beab75dbbedbf02497471db2",
+  "proposal_id": "ep_77116d55-35ef-4c43-aac6-0f3f7fb3f9b4",
+  "proposal_digest": "f027d424904967c6e8d55de5a49a80ca82c516f3d2107228f7c7e9b602900684",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Rank-twelve rational tangency Newton packet",
+      "version": "2026-08-20",
+      "locator": "research/benincasa/rank12-u2over3-v0-rational-tangency.json",
+      "entity_id": "source:7a8c8cce236155754e27"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The rational tangency is a doubled conic with one labelled marked face",
+      "statement": "At (u,v)=(2/3,0), the Cayley-Menger fiber is a doubled conic; at its L1 tangency the leading branch is T^2 and the first smoothing factors through the existing labelled L1 occurrence, with no new carrier datum derived.",
+      "status": "supported",
+      "scope": "Exact local Newton associated grade; no claim of support-complex exactness or physical activation.",
+      "entity_id": "claim:e285a5ae1402c02d33bb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact Symbolica joint Newton audit at the rational tangency",
+      "method": "Factor the frozen fiber polynomial, derive the labelled critical point, and compute joint radial initial forms of K, K1, L1, L2 and K3 restricted to the doubled plane.",
+      "result": "passed",
+      "entity_id": "test:18b4c3c3b1ea26977a0d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:e285a5ae1402c02d33bb",
+      "target_id": "source:7a8c8cce236155754e27",
+      "relation_id": "rel:derived_from-d45429005c75e8c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:18b4c3c3b1ea26977a0d",
+      "target_id": "claim:e285a5ae1402c02d33bb",
+      "relation_id": "rel:tests-72cf2ef5d882c219"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:uses_source",
+      "source_ref": "test",
+      "target_ref": "src",
+      "source_id": "test:18b4c3c3b1ea26977a0d",
+      "target_id": "source:7a8c8cce236155754e27",
+      "relation_id": "rel:mariciuses_source-0d1fcb33bc827173"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1109 rational tangency Newton result and verification artifacts."
+  },
+  "idempotency_key": "auto-admission-3ad83c312e7db52b08f3cfd7",
+  "occurred_at": "2026-08-20T09:37:30.9499208Z",
+  "certifies_truth": false,
+  "event_hash": "eba577850947d474c7035d2741e7cdeddd5539bc615ee5889401870f0d55f1dd"
+}

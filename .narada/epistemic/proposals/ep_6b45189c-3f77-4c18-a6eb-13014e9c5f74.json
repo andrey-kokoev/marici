@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6b45189c-3f77-4c18-a6eb-13014e9c5f74",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "marici-entry-876-admit-v1",
+  "expected_ledger_head": "1851fcfbc26154e8276386a6fa771d0abb6e848e15dde98cc741f35b38193715",
+  "created_at": "2026-08-19T03:36:20.4450422Z",
+  "content_fingerprint": "082e65b8f44540fd9cee5d8f9057401bde2e977813f529ebedc771ca271638f5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-876",
+      "local_ref": "src876",
+      "kind": "source",
+      "title": "Ledger Entry 876",
+      "version": "13daa45",
+      "locator": "src/ledger/20260818-876 The Deep Quartic Directions Are Regular Points of a Resonant Exceptional Family.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-876",
+      "local_ref": "claim876",
+      "kind": "claim",
+      "title": "The deep quartic directions are regular points of a resonant exceptional family"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-876",
+      "local_ref": "test876",
+      "kind": "test",
+      "title": "Deep quartic exceptional radial and tangential connection audit",
+      "locator": "research/nima/check_deep_quartic_exceptional_residue.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim876",
+      "target_ref": "src876",
+      "source_id": "marici-claim-entry-876",
+      "target_id": "marici-source-entry-876",
+      "relation_id": "rel:derived_from-7892d2260ff46533"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test876",
+      "target_ref": "claim876",
+      "source_id": "marici-test-entry-876",
+      "target_id": "marici-claim-entry-876",
+      "relation_id": "rel:tests-917b9a79f9db34db"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-876",
+      "subject_id": "marici-claim-entry-876",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "Both conjugate directions have identical integral radial resonance, while the exceptional tangential denominators t and t(t-1) are coprime to t^2-6t+1.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-876",
+          "locator": "research/nima/deep-quartic-exceptional-residue.json",
+          "paraphrase": "Exact spectra agree at both quadratic points and the tangential connection is regular at both."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-876",
+      "test_id": "marici-test-entry-876",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-876",
+          "locator": "research/nima/deep-quartic-exceptional-residue.json",
+          "paraphrase": "SageMath exact quadratic-field and generic exceptional-function-field checks passed."
+        }
+      ]
+    }
+  ],
+  "digest": "245d17591222d4df0a7cfb15c247944eb169670cf5a3e9e8a958ff678f124811"
+}

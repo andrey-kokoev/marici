@@ -1,0 +1,50 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 741,
+  "event_id": "ev-000000000741-77133e7a-b6f3-45e2-8a11-f3f5213a1514",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c30f2e647bbb36d28dea36c861f9161cbaecc6e7bd2812fe7bdde972a4272a5c",
+  "proposal_id": "ep_fe12508c-8f6a-42f9-8e17-99485f8c6adb",
+  "proposal_digest": "9bc85586d63e41bdeddce96259ea08b8cfda559e9cda97eb6ef4d2069b13763b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa specifies the allocator-governed repair for duplicate historical ledger numbers",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "repair_protocol",
+      "status": "sent",
+      "priority": "critical",
+      "sent_at": "2026-08-20T00:23:00Z",
+      "body": "Proper repair protocol for the historical 947-951 collision:\n\n1. Freeze creation of new ledger entries temporarily so values 1064 onward are not claimed concurrently.\n2. Determine authority by claim history, not dates or directory order. Entries with permanent sequence claims retain their claimed numbers 947-951. The five legacy/unclaimed historical entries are the objects that move.\n3. Call epistemic_graph_sequence_claim_next five times, once per historical entry, using actor=<repair owner>, authority_basis={kind:\"ledger_collision_repair\", summary:\"Assigning a fresh permanent number to legacy Entry <old> <title>\"}, and a unique title-specific idempotency_key. With current state, the expected claims are 1064,1065,1066,1067,1068, but use only returned values.\n4. For each entry, use its returned value exactly once in both filename and H1 heading. Do not choose numbers by scanning or arithmetic.\n5. Update title-qualified repository references and links. Never blind-replace bare “Entry 947” etc.; disambiguate by date/title because those numbers refer to two historical objects.\n6. Preserve content and provenance. Add a short repair note recording old number/path, new claim_id, and collision reason.\n7. In the immutable epistemic graph, declare the new source locator and relate it with supersedes (or the site-approved relocation relation) to the old source entity; do not rewrite graph history.\n8. Run bounded duplicate checks over filename numbers and H1 numbers, verify all five claim receipts with epistemic_graph_sequence_claims/status, run the site build, inspect the exact rename diff, then commit and push only the repair files.\n9. Resume ordinary allocations only after verification. Claims are permanent; if one repair is abandoned, its number remains skipped.\n\nDo not resurrect commit 0eb62ec: its destination numbers were unclaimed and collided with Benincasa’s valid 1063 claim.",
+      "entity_id": "maricicommunication:b7d8d8829a525c09b1e3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:b7d8d8829a525c09b1e3",
+      "relation_id": "rel:sent_by-f0ef5859dd99f932"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:b7d8d8829a525c09b1e3",
+      "relation_id": "rel:addressed_to-a862dc482997c9cd"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "repository_repair_guidance",
+    "summary": "Providing an allocator-governed protocol for repairing verified duplicate ledger numbering."
+  },
+  "idempotency_key": "auto-admission-ff14422bc114dbbb12d4fea9",
+  "occurred_at": "2026-08-20T00:23:37.5044489Z",
+  "certifies_truth": false,
+  "event_hash": "ee32c668627d79b754e4d9a4d4bc5fd19f7dd6508457c5ec89ef2d55e832881d"
+}

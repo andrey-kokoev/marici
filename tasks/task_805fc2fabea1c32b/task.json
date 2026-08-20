@@ -1,0 +1,125 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_805fc2fabea1c32b",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "running",
+  "objective": "Read-only diagnostic DAG for feedback task #2517: determine the smallest validated epistemic-envelope change across Marici ledger projections and the mcp-surfaces epistemic-graph authority. No file mutations, commits, pushes, or external changes.",
+  "request_fingerprint": "be0c3255a5502c95b8f8e161c05903ad0af91f1a70cff9def1dc97d89b688ada",
+  "created_at": "2026-08-15T15:44:14.1330189Z",
+  "updated_at": "2026-08-15T15:44:14.1774369Z",
+  "cancelled_at": null,
+  "idempotency_key": "feedback-dag-marici-2517-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "max_concurrency": 2,
+    "max_run_ms": 1800000,
+    "wait_for_completion": false
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "ledger-contract",
+        "kind": "research",
+        "instruction": "Inspect docs/research-lifecycle.md, ledger metadata extraction, author validation, and source identity handling. Report bounded evidence and a minimal envelope shape; do not edit."
+      },
+      {
+        "id": "graph-contract",
+        "kind": "research",
+        "instruction": "Inspect the Marici epistemic-graph projection and its public inspector/admission boundary. Report which fields can be added without duplicating Markdown reasoning; do not edit."
+      },
+      {
+        "id": "synthesis",
+        "kind": "research",
+        "depends_on": [
+          "ledger-contract",
+          "graph-contract"
+        ],
+        "instruction": "Synthesize a minimal implementation order and acceptance checks for task #2517, separating Marici-owned projection work from mcp-surfaces-owned protocol work. Do not edit."
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "ledger-contract": {
+        "step_id": "ledger-contract",
+        "kind": "research",
+        "status": "running",
+        "attempts": 1,
+        "run_ids": [
+          "run-0b3d11a2811641bca7170861f5b190f7"
+        ],
+        "current_run_id": "run-0b3d11a2811641bca7170861f5b190f7",
+        "started_at": "2026-08-15T15:44:14.1603705Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      },
+      "graph-contract": {
+        "step_id": "graph-contract",
+        "kind": "research",
+        "status": "running",
+        "attempts": 1,
+        "run_ids": [
+          "run-d82d206201b84e748dba3c684fa8e7ad"
+        ],
+        "current_run_id": "run-d82d206201b84e748dba3c684fa8e7ad",
+        "started_at": "2026-08-15T15:44:14.1771433Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      },
+      "synthesis": {
+        "step_id": "synthesis",
+        "kind": "research",
+        "status": "pending",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "ledger-contract",
+        "step_kind": "research",
+        "run_id": "run-0b3d11a2811641bca7170861f5b190f7",
+        "status": "running"
+      },
+      {
+        "step_id": "graph-contract",
+        "step_kind": "research",
+        "run_id": "run-d82d206201b84e748dba3c684fa8e7ad",
+        "status": "running"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

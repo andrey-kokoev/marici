@@ -1,0 +1,121 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_901ecb9b8c37922e",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Hostile-review the finite M2.25 falsifier only: check whether generic smooth extension of the absolute compactified pair across Q=0 is incompatible, up to rational gauge, with the sign line K_sqrt(-Q). Also check the stated reciprocal Legendre/Kummer normalization. Return pass/fail with one counterexample if invalid. Do not redo source discovery or propose marked-relative geometry.",
+  "request_fingerprint": "e2b940e7d1fbe052f5db320d58b99935c98845acd274a426d0c3e0d3e421ccb6",
+  "created_at": "2026-08-15T17:10:06.0649477Z",
+  "updated_at": "2026-08-15T17:15:39.1723709Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-m2-25-single-hostile-review-v2",
+  "constraints": {
+    "authority": "read",
+    "cognition": "high",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "runtime": "narada-agent-runtime-server",
+    "max_run_ms": 300000,
+    "max_concurrency": 1,
+    "max_retries": 0,
+    "wait_for_completion": false,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\benincasa\\check_q_smoothness_and_legendre_normalization.py",
+        "access": "read",
+        "label": "exact checker"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260815-152 Deutsch-Popperian Algebraic-Kernel Flat-Lift Conjecture.md",
+        "access": "read",
+        "label": "claim under test"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260815-150 Explicit Infinity-Gysin Projection and the Rank-Seven Algebraic Kernel.md",
+        "access": "read",
+        "label": "fixed theorem"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\temp\\arxiv-2408.16386-source\\sections\\applications.tex",
+        "access": "read",
+        "label": "primary operator source"
+      }
+    ]
+  },
+  "workflow": {
+    "strategy": "single_imported_evidence_review",
+    "milestones": [
+      {
+        "id": "review",
+        "title": "Hostile review",
+        "step_ids": [
+          "review"
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "id": "review",
+        "kind": "review",
+        "milestone_id": "review"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "criteria": [
+      "Verify or refute the smoothness-to-trivial-monodromy implication in the absolute family.",
+      "Verify or refute invariance of half-integral residue modulo integer rational gauges.",
+      "Verify or refute the two source-compatible Legendre/Kummer presentations.",
+      "Keep marked-relative provenance explicitly open."
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "review": {
+        "step_id": "review",
+        "kind": "review",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-6df80d7837274f81b979c4550d0e7f13"
+        ],
+        "current_run_id": "run-6df80d7837274f81b979c4550d0e7f13",
+        "started_at": "2026-08-15T17:10:06.0845141Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "review",
+        "step_kind": "review",
+        "run_id": "run-6df80d7837274f81b979c4550d0e7f13",
+        "status": "running"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

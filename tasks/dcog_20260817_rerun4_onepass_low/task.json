@@ -1,0 +1,530 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_20260817_rerun4_onepass_low",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside the structured result.",
+  "request_fingerprint": "93cdff0748cf83a2d1e5aa0e67f8e52b4aba00a97a0b502f1809840016219d5c",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T21:58:43.228871Z",
+  "created_at_ms": 1787003923228,
+  "started_at": "2026-08-17T21:58:43.3739281Z",
+  "started_at_ms": 1787003923373,
+  "finished_at": "2026-08-17T22:03:38.9403471Z",
+  "finished_at_ms": 1787004218940,
+  "duration_ms": 295567,
+  "updated_at": "2026-08-17T22:03:38.9403493Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_20260817_rerun4_onepass_low-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-c77ca3efe4ff4a539a7aef9b0c2a2fba"
+        ],
+        "current_run_id": "run-c77ca3efe4ff4a539a7aef9b0c2a2fba",
+        "started_at": "2026-08-17T21:58:43.3739374Z",
+        "finished_at": "2026-08-17T22:03:38.9379894Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is an arbitrary commutative unital ring",
+              "coefficient": "c = rho(p) != 0",
+              "complex": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "other_degrees": "0"
+              },
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c  0]: R x ⊕ R y -> R z",
+              "reduced_matrix": "[c]: R x -> R z",
+              "map": "a x + b y maps to c a z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the beta-only subcomplex B with B2 = R y and B1 = 0",
+              "result": "C/B has degree-2 module R x, degree-1 module R z, and differential multiplication by c",
+              "equivalent_view": "In the displayed basis, this is the restriction to the x-to-z summand"
+            },
+            "residual_complex": {
+              "complex": "0 -> R x --c--> R z -> 0",
+              "degree_2_homology": "Ann_R(c) x",
+              "degree_1_homology": "(R/cR) z",
+              "other_homology": "0"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x ⊕ R y",
+                "H1": "(R/cR) z",
+                "other": "0"
+              },
+              "reduced_complex": {
+                "H2": "Ann_R(c) x",
+                "H1": "(R/cR) z"
+              },
+              "conclusion": "Nonzero c alone implies neither Ann_R(c) = 0 nor cR = R. The full supplied complex is not acyclic because R y is a nonzero homology summand."
+            },
+            "conditional_conclusions": [
+              {
+                "hypothesis": "c is a non-zero-divisor",
+                "reduced_conclusion": "H2 = 0 and H1 = R/cR",
+                "full_conclusion": "H2 = R y and H1 = R/cR"
+              },
+              {
+                "hypothesis": "c is a unit",
+                "reduced_conclusion": "The residual map is an isomorphism and the reduced complex is acyclic",
+                "full_conclusion": "H2 = R y and H1 = 0; the full complex remains non-acyclic"
+              },
+              {
+                "hypothesis": "R is a domain",
+                "conclusion": "Since c != 0, c is a non-zero-divisor; this still does not imply reduced acyclicity unless c is also a unit"
+              }
+            ],
+            "coefficient_gate": {
+              "known": [
+                "c != 0"
+              ],
+              "not_justified": [
+                "c is a non-zero-divisor",
+                "c is a unit",
+                "R is a domain",
+                "rho is multiplicative or unit-preserving"
+              ],
+              "requirements": {
+                "injectivity": "c must be a non-zero-divisor",
+                "usual rank-one conclusion over a fraction field": "A suitable domain or rank-localization hypothesis is needed",
+                "reduced_acyclicity_or_cancellation": "c must be a unit"
+              },
+              "rank_warning": "The 1-by-1 matrix is dimensionally rank-compatible, but nonzero does not establish rank, injectivity, or invertibility over an arbitrary ring."
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "delta(x) = c z",
+                "delta(y) = 0"
+              ],
+              "compatible": [
+                "degree -1",
+                "admissible-support rule",
+                "delta squared is vacuously zero on the supplied degrees"
+              ],
+              "not_constructed": [
+                "a unit or inverse for c",
+                "regularity of c",
+                "a cancellation of y",
+                "any incoming differential that could remove the y-cycle"
+              ]
+            },
+            "remaining_construction": {
+              "unresolved": "Prove or construct the coefficient property required by the intended conclusion: regularity for injectivity or a unit inverse for reduced acyclicity.",
+              "full_complex_requirement": "To make the unreduced complex acyclic, y must be removed by the stated quotient/restriction or addressed by additional differential data not present in the packet."
+            },
+            "falsifier": {
+              "nonzero_does_not_imply_acyclic": "R = Z and c = 2 gives the reduced complex Z --2--> Z with H2 = 0 and H1 = Z/2.",
+              "nonzero_does_not_imply_injective": "R = Z/4Z and c = 2 gives Ann_R(c) = (2) != 0 and R/cR = Z/2.",
+              "full_acyclicity": "Regardless of c, the supplied full complex has the nonzero homology class R y because c != 0 guarantees R is nonzero."
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-c77ca3efe4ff4a539a7aef9b0c2a2fba",
+        "status": "completed",
+        "finished_at": "2026-08-17T22:03:38.9378301Z",
+        "duration_ms": 290715,
+        "output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is an arbitrary commutative unital ring",
+              "coefficient": "c = rho(p) != 0",
+              "complex": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "other_degrees": "0"
+              },
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c  0]: R x ⊕ R y -> R z",
+              "reduced_matrix": "[c]: R x -> R z",
+              "map": "a x + b y maps to c a z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the beta-only subcomplex B with B2 = R y and B1 = 0",
+              "result": "C/B has degree-2 module R x, degree-1 module R z, and differential multiplication by c",
+              "equivalent_view": "In the displayed basis, this is the restriction to the x-to-z summand"
+            },
+            "residual_complex": {
+              "complex": "0 -> R x --c--> R z -> 0",
+              "degree_2_homology": "Ann_R(c) x",
+              "degree_1_homology": "(R/cR) z",
+              "other_homology": "0"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x ⊕ R y",
+                "H1": "(R/cR) z",
+                "other": "0"
+              },
+              "reduced_complex": {
+                "H2": "Ann_R(c) x",
+                "H1": "(R/cR) z"
+              },
+              "conclusion": "Nonzero c alone implies neither Ann_R(c) = 0 nor cR = R. The full supplied complex is not acyclic because R y is a nonzero homology summand."
+            },
+            "conditional_conclusions": [
+              {
+                "hypothesis": "c is a non-zero-divisor",
+                "reduced_conclusion": "H2 = 0 and H1 = R/cR",
+                "full_conclusion": "H2 = R y and H1 = R/cR"
+              },
+              {
+                "hypothesis": "c is a unit",
+                "reduced_conclusion": "The residual map is an isomorphism and the reduced complex is acyclic",
+                "full_conclusion": "H2 = R y and H1 = 0; the full complex remains non-acyclic"
+              },
+              {
+                "hypothesis": "R is a domain",
+                "conclusion": "Since c != 0, c is a non-zero-divisor; this still does not imply reduced acyclicity unless c is also a unit"
+              }
+            ],
+            "coefficient_gate": {
+              "known": [
+                "c != 0"
+              ],
+              "not_justified": [
+                "c is a non-zero-divisor",
+                "c is a unit",
+                "R is a domain",
+                "rho is multiplicative or unit-preserving"
+              ],
+              "requirements": {
+                "injectivity": "c must be a non-zero-divisor",
+                "usual rank-one conclusion over a fraction field": "A suitable domain or rank-localization hypothesis is needed",
+                "reduced_acyclicity_or_cancellation": "c must be a unit"
+              },
+              "rank_warning": "The 1-by-1 matrix is dimensionally rank-compatible, but nonzero does not establish rank, injectivity, or invertibility over an arbitrary ring."
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "delta(x) = c z",
+                "delta(y) = 0"
+              ],
+              "compatible": [
+                "degree -1",
+                "admissible-support rule",
+                "delta squared is vacuously zero on the supplied degrees"
+              ],
+              "not_constructed": [
+                "a unit or inverse for c",
+                "regularity of c",
+                "a cancellation of y",
+                "any incoming differential that could remove the y-cycle"
+              ]
+            },
+            "remaining_construction": {
+              "unresolved": "Prove or construct the coefficient property required by the intended conclusion: regularity for injectivity or a unit inverse for reduced acyclicity.",
+              "full_complex_requirement": "To make the unreduced complex acyclic, y must be removed by the stated quotient/restriction or addressed by additional differential data not present in the packet."
+            },
+            "falsifier": {
+              "nonzero_does_not_imply_acyclic": "R = Z and c = 2 gives the reduced complex Z --2--> Z with H2 = 0 and H1 = Z/2.",
+              "nonzero_does_not_imply_injective": "R = Z/4Z and c = 2 gives Ann_R(c) = (2) != 0 and R/cR = Z/2.",
+              "full_acyclicity": "Regardless of c, the supplied full complex has the nonzero homology class R y because c != 0 guarantees R is nonzero."
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-c77ca3efe4ff4a539a7aef9b0c2a2fba",
+        "status": "completed",
+        "output": {
+          "summary_text": "typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={4 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "ring": "R is an arbitrary commutative unital ring",
+              "coefficient": "c = rho(p) != 0",
+              "complex": {
+                "C2": "R x ⊕ R y",
+                "C1": "R z",
+                "other_degrees": "0"
+              },
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c  0]: R x ⊕ R y -> R z",
+              "reduced_matrix": "[c]: R x -> R z",
+              "map": "a x + b y maps to c a z"
+            },
+            "minimal_reduction": {
+              "quotient": "Quotient by the beta-only subcomplex B with B2 = R y and B1 = 0",
+              "result": "C/B has degree-2 module R x, degree-1 module R z, and differential multiplication by c",
+              "equivalent_view": "In the displayed basis, this is the restriction to the x-to-z summand"
+            },
+            "residual_complex": {
+              "complex": "0 -> R x --c--> R z -> 0",
+              "degree_2_homology": "Ann_R(c) x",
+              "degree_1_homology": "(R/cR) z",
+              "other_homology": "0"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H2": "Ann_R(c) x ⊕ R y",
+                "H1": "(R/cR) z",
+                "other": "0"
+              },
+              "reduced_complex": {
+                "H2": "Ann_R(c) x",
+                "H1": "(R/cR) z"
+              },
+              "conclusion": "Nonzero c alone implies neither Ann_R(c) = 0 nor cR = R. The full supplied complex is not acyclic because R y is a nonzero homology summand."
+            },
+            "conditional_conclusions": [
+              {
+                "hypothesis": "c is a non-zero-divisor",
+                "reduced_conclusion": "H2 = 0 and H1 = R/cR",
+                "full_conclusion": "H2 = R y and H1 = R/cR"
+              },
+              {
+                "hypothesis": "c is a unit",
+                "reduced_conclusion": "The residual map is an isomorphism and the reduced complex is acyclic",
+                "full_conclusion": "H2 = R y and H1 = 0; the full complex remains non-acyclic"
+              },
+              {
+                "hypothesis": "R is a domain",
+                "conclusion": "Since c != 0, c is a non-zero-divisor; this still does not imply reduced acyclicity unless c is also a unit"
+              }
+            ],
+            "coefficient_gate": {
+              "known": [
+                "c != 0"
+              ],
+              "not_justified": [
+                "c is a non-zero-divisor",
+                "c is a unit",
+                "R is a domain",
+                "rho is multiplicative or unit-preserving"
+              ],
+              "requirements": {
+                "injectivity": "c must be a non-zero-divisor",
+                "usual rank-one conclusion over a fraction field": "A suitable domain or rank-localization hypothesis is needed",
+                "reduced_acyclicity_or_cancellation": "c must be a unit"
+              },
+              "rank_warning": "The 1-by-1 matrix is dimensionally rank-compatible, but nonzero does not establish rank, injectivity, or invertibility over an arbitrary ring."
+            },
+            "constructed_vs_compatible": {
+              "constructed": [
+                "delta(x) = c z",
+                "delta(y) = 0"
+              ],
+              "compatible": [
+                "degree -1",
+                "admissible-support rule",
+                "delta squared is vacuously zero on the supplied degrees"
+              ],
+              "not_constructed": [
+                "a unit or inverse for c",
+                "regularity of c",
+                "a cancellation of y",
+                "any incoming differential that could remove the y-cycle"
+              ]
+            },
+            "remaining_construction": {
+              "unresolved": "Prove or construct the coefficient property required by the intended conclusion: regularity for injectivity or a unit inverse for reduced acyclicity.",
+              "full_complex_requirement": "To make the unreduced complex acyclic, y must be removed by the stated quotient/restriction or addressed by additional differential data not present in the packet."
+            },
+            "falsifier": {
+              "nonzero_does_not_imply_acyclic": "R = Z and c = 2 gives the reduced complex Z --2--> Z with H2 = 0 and H1 = Z/2.",
+              "nonzero_does_not_imply_injective": "R = Z/4Z and c = 2 gives Ann_R(c) = (2) != 0 and R/cR = Z/2.",
+              "full_acyclicity": "Regardless of c, the supplied full complex has the nonzero homology class R y because c != 0 guarantees R is nonzero."
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. typed_representation={4 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={4 fields}"
+}

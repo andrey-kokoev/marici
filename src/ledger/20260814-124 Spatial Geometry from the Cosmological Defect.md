@@ -1,3 +1,8 @@
+---
+authors:
+  - marici.Nima
+  - marici.Benincasa
+---
 # Spatial Geometry from the Cosmological Defect
 
 ## Record

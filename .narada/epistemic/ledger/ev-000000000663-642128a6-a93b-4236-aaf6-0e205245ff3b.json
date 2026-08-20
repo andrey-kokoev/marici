@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 663,
+  "event_id": "ev-000000000663-642128a6-a93b-4236-aaf6-0e205245ff3b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7a0a6e05300cab5682e5ee75a0a01800c367812c034702925b111b00c9dfe70c",
+  "proposal_id": "ep_6a92b7f9-4fc4-48d7-a4eb-7d69ea6867f8",
+  "proposal_digest": "bcba2e004c0766e7ef727138774603db3ec21a281fea87d0763dda1546aa7797",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:ledger-1044-pochhammer-four-torsion",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Ledger Entry 1044",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-1044 Pochhammer Localization Does Not Kill the Four-Torsion Defect.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:string-pochhammer-four-torsion-1044",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Pochhammer localization does not automatically kill the four-torsion defect",
+      "version": "1",
+      "locator": "ledger:1044"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:string-pochhammer-four-torsion-1044",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite-field survival certificate after Pochhammer localization",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_pochhammer_four_torsion_survival.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:string-pochhammer-four-torsion-1044",
+      "target_id": "claim:string-pochhammer-four-torsion-1044",
+      "relation_id": "rel:tests-3d8c9f2ed7567515"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "claim:string-pochhammer-integral-gate-1043",
+      "source_id": "claim:string-pochhammer-four-torsion-1044",
+      "relation_id": "rel:supersedes-d43fc5ca57e1be45"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-pochhammer-four-torsion-1044",
+      "test_id": "test:string-pochhammer-four-torsion-1044",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: specialization M to alpha in F4 keeps both M and M-1 invertible, proving the localized mod-two ring is nonzero",
+      "evidence": [
+        {
+          "source_id": "source:ledger-1044-pochhammer-four-torsion",
+          "locator": "research/benincasa/string-six-point-pochhammer-four-torsion-survival.json",
+          "paraphrase": "The packet gives the explicit F4 specialization and inverses."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Repair a known defect in Entry 1043 and continue string-sector work."
+  },
+  "idempotency_key": "auto-admission-17bdf9aebbbd7fec772f57a2",
+  "occurred_at": "2026-08-19T18:50:56.4367928Z",
+  "certifies_truth": false,
+  "event_hash": "feff9e5c22cb618e18525110819e11e2543b97ee0947db51037e0bd3c6f72bbc"
+}

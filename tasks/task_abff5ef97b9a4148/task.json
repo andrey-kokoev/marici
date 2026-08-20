@@ -1,0 +1,518 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_abff5ef97b9a4148",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess, without changing files, whether adding a primary-navigation link from src/layouts/SiteLayout.astro to /research/ is currently executable given the repository state. Resolve referenced paths, map acceptance, identify decisions, and return the template's required structured assessment.",
+  "request_fingerprint": "3a6723650a9db33304be0ae204cad5775a444457909cdc9020290a81c16762f9",
+  "validated_request_ref": "vr_c8a580770b5542f4b9b687f2cd9de786",
+  "created_at": "2026-08-17T13:48:40.6028624Z",
+  "created_at_ms": 1786974520602,
+  "started_at": "2026-08-17T13:48:40.7334715Z",
+  "started_at_ms": 1786974520733,
+  "finished_at": "2026-08-17T13:49:04.8967871Z",
+  "finished_at_ms": 1786974544896,
+  "duration_ms": 24163,
+  "updated_at": "2026-08-17T13:49:04.8967886Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-observability-retest-20260817-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\layouts\\SiteLayout.astro",
+        "access": "read",
+        "label": "Navigation layout"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+        "access": "read",
+        "label": "Research route"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 300000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "assessment_result",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "assessment_result": "object {status: executable|blocked|not_executable, implementation_ready: boolean, blockers: array<object>, reason: string when not_executable}",
+            "evaluator_provenance": "object"
+          },
+          "conditional_rules": [
+            {
+              "when": "assessment_result.status=executable",
+              "requires": [
+                "assessment_result.implementation_ready=true",
+                "assessment_result.blockers=[]"
+              ]
+            },
+            {
+              "when": "assessment_result.status=blocked",
+              "requires": [
+                "assessment_result.implementation_ready=false",
+                "assessment_result.blockers nonempty"
+              ]
+            },
+            {
+              "when": "assessment_result.status=not_executable",
+              "requires": [
+                "assessment_result.implementation_ready=false",
+                "assessment_result.reason nonempty"
+              ]
+            }
+          ],
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true,
+    "strict_clean_run": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-7ab0eca35e6240a6a78d6126b5b651be"
+        ],
+        "current_run_id": "run-7ab0eca35e6240a6a78d6126b5b651be",
+        "started_at": "2026-08-17T13:48:40.7334817Z",
+        "finished_at": "2026-08-17T13:49:04.8948282Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions=[5 items], first_actions=[2 items], reference_resolutions=[2 items], acceptance_mappings=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              "Source layout",
+              "Primary navigation",
+              "Route resolution",
+              "Accessibility",
+              "Regression safety"
+            ],
+            "first_actions": [
+              "Add a primary-navigation anchor in SiteLayout.astro with href \"/research/\".",
+              "Preserve all existing navigation links and labels."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "role": "Shared site layout containing the primary navigation."
+              },
+              {
+                "reference": "src/pages/research/index.astro",
+                "status": "resolved",
+                "role": "Target page mapping to the /research/ route."
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation exposes a Research link.",
+                "evidence": "SiteLayout.astro contains the primary navigation and currently lacks a /research/ link.",
+                "implementation": "Add <a href=\"/research/\">Research</a>."
+              },
+              {
+                "acceptance": "The link resolves to the intended page.",
+                "evidence": "src/pages/research/index.astro exists and renders through SiteLayout.",
+                "implementation": "Use the exact href /research/."
+              },
+              {
+                "acceptance": "Existing navigation remains intact.",
+                "evidence": "Current Branches, Frontier, Graph, and Ledger links are present.",
+                "implementation": "Make an additive navigation-only change."
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended": "Research"
+              },
+              {
+                "decision": "Link placement",
+                "recommended": "Add alongside the existing primary-navigation links; exact ordering is non-blocking."
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is localized to the shared primary navigation."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route and its page implementation are already present."
+              },
+              {
+                "severity": "none",
+                "finding": "No repository-state blocker was identified."
+              }
+            ],
+            "evaluator_provenance": {
+              "mode": "read_only",
+              "evidence_source": "Authoritative native file-read evidence supplied at the worker boundary.",
+              "probes_performed": [],
+              "probe_policy": "No command probes were issued because authoritative native_read evidence was supplied for both referenced paths."
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "blockers": []
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-7ab0eca35e6240a6a78d6126b5b651be",
+        "status": "completed",
+        "finished_at": "2026-08-17T13:49:04.894648Z",
+        "output": {
+          "summary_text": "dimensions=[5 items], first_actions=[2 items], reference_resolutions=[2 items], acceptance_mappings=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              "Source layout",
+              "Primary navigation",
+              "Route resolution",
+              "Accessibility",
+              "Regression safety"
+            ],
+            "first_actions": [
+              "Add a primary-navigation anchor in SiteLayout.astro with href \"/research/\".",
+              "Preserve all existing navigation links and labels."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "role": "Shared site layout containing the primary navigation."
+              },
+              {
+                "reference": "src/pages/research/index.astro",
+                "status": "resolved",
+                "role": "Target page mapping to the /research/ route."
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation exposes a Research link.",
+                "evidence": "SiteLayout.astro contains the primary navigation and currently lacks a /research/ link.",
+                "implementation": "Add <a href=\"/research/\">Research</a>."
+              },
+              {
+                "acceptance": "The link resolves to the intended page.",
+                "evidence": "src/pages/research/index.astro exists and renders through SiteLayout.",
+                "implementation": "Use the exact href /research/."
+              },
+              {
+                "acceptance": "Existing navigation remains intact.",
+                "evidence": "Current Branches, Frontier, Graph, and Ledger links are present.",
+                "implementation": "Make an additive navigation-only change."
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended": "Research"
+              },
+              {
+                "decision": "Link placement",
+                "recommended": "Add alongside the existing primary-navigation links; exact ordering is non-blocking."
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is localized to the shared primary navigation."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route and its page implementation are already present."
+              },
+              {
+                "severity": "none",
+                "finding": "No repository-state blocker was identified."
+              }
+            ],
+            "evaluator_provenance": {
+              "mode": "read_only",
+              "evidence_source": "Authoritative native file-read evidence supplied at the worker boundary.",
+              "probes_performed": [],
+              "probe_policy": "No command probes were issued because authoritative native_read evidence was supplied for both referenced paths."
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "blockers": []
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-7ab0eca35e6240a6a78d6126b5b651be",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions=[5 items], first_actions=[2 items], reference_resolutions=[2 items], acceptance_mappings=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "dimensions": [
+              "Source layout",
+              "Primary navigation",
+              "Route resolution",
+              "Accessibility",
+              "Regression safety"
+            ],
+            "first_actions": [
+              "Add a primary-navigation anchor in SiteLayout.astro with href \"/research/\".",
+              "Preserve all existing navigation links and labels."
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "src/layouts/SiteLayout.astro",
+                "status": "resolved",
+                "role": "Shared site layout containing the primary navigation."
+              },
+              {
+                "reference": "src/pages/research/index.astro",
+                "status": "resolved",
+                "role": "Target page mapping to the /research/ route."
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "acceptance": "Primary navigation exposes a Research link.",
+                "evidence": "SiteLayout.astro contains the primary navigation and currently lacks a /research/ link.",
+                "implementation": "Add <a href=\"/research/\">Research</a>."
+              },
+              {
+                "acceptance": "The link resolves to the intended page.",
+                "evidence": "src/pages/research/index.astro exists and renders through SiteLayout.",
+                "implementation": "Use the exact href /research/."
+              },
+              {
+                "acceptance": "Existing navigation remains intact.",
+                "evidence": "Current Branches, Frontier, Graph, and Ledger links are present.",
+                "implementation": "Make an additive navigation-only change."
+              }
+            ],
+            "required_decisions": [
+              {
+                "decision": "Link label",
+                "recommended": "Research"
+              },
+              {
+                "decision": "Link placement",
+                "recommended": "Add alongside the existing primary-navigation links; exact ordering is non-blocking."
+              }
+            ],
+            "findings": [
+              {
+                "severity": "info",
+                "finding": "The requested change is localized to the shared primary navigation."
+              },
+              {
+                "severity": "info",
+                "finding": "The target route and its page implementation are already present."
+              },
+              {
+                "severity": "none",
+                "finding": "No repository-state blocker was identified."
+              }
+            ],
+            "evaluator_provenance": {
+              "mode": "read_only",
+              "evidence_source": "Authoritative native file-read evidence supplied at the worker boundary.",
+              "probes_performed": [],
+              "probe_policy": "No command probes were issued because authoritative native_read evidence was supplied for both referenced paths."
+            },
+            "assessment_result": {
+              "status": "executable",
+              "implementation_ready": true,
+              "blockers": []
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance",
+          "assessment_result"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "strict_clean_run",
+        "requested": true,
+        "attempts_at_most_one": true,
+        "no_step_errors": true,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "assessment_consistency",
+        "status": "passed",
+        "verdict": "consistent",
+        "assessment_status": "executable",
+        "implementation_ready": true,
+        "blocker_count": 0,
+        "blocking_decision_count": 0,
+        "reasons": []
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": "executable",
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "assessment_result: passed. dimensions=[5 items], first_actions=[2 items], reference_resolutions=[2 items], acceptance_mappings=[3 items]"
+}

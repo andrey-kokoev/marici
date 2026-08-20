@@ -1,0 +1,414 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_05a1588ab3ce5d27",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Assess only whether README.md exists and is readable. Do not modify anything. Return the template's required structured assessment with concise arrays and evaluator provenance.",
+  "request_fingerprint": "dcab301cdfab1b227c1ccd8c69a7ec257d491d8be2a64b434fc674a5cb732f8d",
+  "validated_request_ref": "vr_58431e41aefa47efaea7c8b97cd032d6",
+  "created_at": "2026-08-16T20:14:10.1286453Z",
+  "updated_at": "2026-08-16T20:15:18.4432672Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-final-retest-minimal-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read",
+        "label": "README"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "task_executability_assessment_v1",
+    "steps": [
+      {
+        "id": "assessment",
+        "kind": "worker",
+        "profile": "shoshin-task-executability-v1",
+        "milestone_id": "assessment",
+        "write_set": [],
+        "constraints": {
+          "authority": "read",
+          "cognition": "low",
+          "runtime": "narada-agent-runtime-server",
+          "max_run_ms": 120000,
+          "max_retries": 0,
+          "max_concurrency": 1,
+          "wait_for_completion": false,
+          "resumable": false,
+          "required_mcp_tools": [],
+          "preflight_paths": [],
+          "overrides": {
+            "skip_git_repo_check": true
+          }
+        },
+        "output_schema": {
+          "schema": "narada.delegated_task.output_schema.v1",
+          "name": "task_executability_assessment_v1",
+          "version": 1,
+          "required": [
+            "dimensions",
+            "first_actions",
+            "reference_resolutions",
+            "acceptance_mappings",
+            "required_decisions",
+            "findings",
+            "evaluator_provenance"
+          ],
+          "fields": {
+            "dimensions": "array<object>",
+            "first_actions": "array<object>",
+            "reference_resolutions": "array<object>",
+            "acceptance_mappings": "array<object>",
+            "required_decisions": "array<object>",
+            "findings": "array<object>",
+            "evaluator_provenance": "object"
+          },
+          "provenance_required": [
+            "runtime",
+            "provider",
+            "model",
+            "cognition",
+            "profile_version"
+          ],
+          "rejection_rules": [
+            "missing_required_field",
+            "prose_only",
+            "invalid_schema",
+            "invalid_provenance"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "dimensions",
+      "first_actions",
+      "reference_resolutions",
+      "acceptance_mappings",
+      "required_decisions",
+      "findings",
+      "evaluator_provenance"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "assessment": {
+        "step_id": "assessment",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-b8a24d3268204e52b5a1749d0d6f1f52"
+        ],
+        "current_run_id": "run-b8a24d3268204e52b5a1749d0d6f1f52",
+        "started_at": "2026-08-16T20:14:10.1635942Z",
+        "finished_at": "2026-08-16T20:15:18.4417347Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "dimensions=[2 items], first_actions=[2 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes: first the literal `README.md` path, then a direct readability check if it exists. I will not modify any files.The existence probe succeeded. The first direct .NET stream-open probe was rejected by the command policy before execution, so I’m using a permitted literal-path content read with explicit UTF-8 encoding as the readability probe; no file state changed.",
+          "structured_output": {
+            "dimensions": [
+              "README.md existence",
+              "README.md readability"
+            ],
+            "first_actions": [
+              {
+                "action": "Checked literal path",
+                "result": "passed",
+                "evidence": "Test-Path returned True"
+              },
+              {
+                "action": "Read file using explicit UTF-8",
+                "result": "passed",
+                "evidence": "Get-Content completed successfully"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "pass"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "pass"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "statement": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "observed_ergonomics": {
+                "score": 4,
+                "scale": 5,
+                "reason": "One policy rejection required a bounded retry; no human intervention or file modification occurred.",
+                "non_scoring_observations": []
+              },
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "Open README.md via .NET File.OpenRead",
+                  "cwd": "C:\\Users\\andrey\\src\\marici",
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                  "declared_capability": "read-only file access",
+                  "actual_refusal": "Command rejected by policy before execution."
+                }
+              ]
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "assessment",
+        "step_kind": "worker",
+        "run_id": "run-b8a24d3268204e52b5a1749d0d6f1f52",
+        "status": "completed",
+        "finished_at": "2026-08-16T20:15:18.441619Z",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[2 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes: first the literal `README.md` path, then a direct readability check if it exists. I will not modify any files.The existence probe succeeded. The first direct .NET stream-open probe was rejected by the command policy before execution, so I’m using a permitted literal-path content read with explicit UTF-8 encoding as the readability probe; no file state changed.",
+          "structured_output": {
+            "dimensions": [
+              "README.md existence",
+              "README.md readability"
+            ],
+            "first_actions": [
+              {
+                "action": "Checked literal path",
+                "result": "passed",
+                "evidence": "Test-Path returned True"
+              },
+              {
+                "action": "Read file using explicit UTF-8",
+                "result": "passed",
+                "evidence": "Get-Content completed successfully"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "pass"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "pass"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "statement": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "observed_ergonomics": {
+                "score": 4,
+                "scale": 5,
+                "reason": "One policy rejection required a bounded retry; no human intervention or file modification occurred.",
+                "non_scoring_observations": []
+              },
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "Open README.md via .NET File.OpenRead",
+                  "cwd": "C:\\Users\\andrey\\src\\marici",
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                  "declared_capability": "read-only file access",
+                  "actual_refusal": "Command rejected by policy before execution."
+                }
+              ]
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "assessment",
+        "run_id": "run-b8a24d3268204e52b5a1749d0d6f1f52",
+        "status": "completed",
+        "output": {
+          "summary_text": "dimensions=[2 items], first_actions=[2 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]",
+          "diagnostics_text": "I’ll perform two read-only probes: first the literal `README.md` path, then a direct readability check if it exists. I will not modify any files.The existence probe succeeded. The first direct .NET stream-open probe was rejected by the command policy before execution, so I’m using a permitted literal-path content read with explicit UTF-8 encoding as the readability probe; no file state changed.",
+          "structured_output": {
+            "dimensions": [
+              "README.md existence",
+              "README.md readability"
+            ],
+            "first_actions": [
+              {
+                "action": "Checked literal path",
+                "result": "passed",
+                "evidence": "Test-Path returned True"
+              },
+              {
+                "action": "Read file using explicit UTF-8",
+                "result": "passed",
+                "evidence": "Get-Content completed successfully"
+              }
+            ],
+            "reference_resolutions": [
+              {
+                "reference": "README.md",
+                "resolved_path": "C:\\Users\\andrey\\src\\marici\\README.md"
+              }
+            ],
+            "acceptance_mappings": [
+              {
+                "criterion": "README.md exists",
+                "status": "pass"
+              },
+              {
+                "criterion": "README.md is readable",
+                "status": "pass"
+              }
+            ],
+            "required_decisions": [],
+            "findings": [
+              {
+                "status": "pass",
+                "statement": "README.md exists and is readable."
+              }
+            ],
+            "evaluator_provenance": {
+              "schema": "narada.worker.observed_ergonomics.v1",
+              "evaluator": "Codex",
+              "mode": "read_only",
+              "cwd": "C:\\Users\\andrey\\src\\marici",
+              "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+              "observed_ergonomics": {
+                "score": 4,
+                "scale": 5,
+                "reason": "One policy rejection required a bounded retry; no human intervention or file modification occurred.",
+                "non_scoring_observations": []
+              },
+              "refusals": [
+                {
+                  "schema": "narada.worker.refusal.v1",
+                  "tool": "shell_command",
+                  "operation": "Open README.md via .NET File.OpenRead",
+                  "cwd": "C:\\Users\\andrey\\src\\marici",
+                  "target_path": "C:\\Users\\andrey\\src\\marici\\README.md",
+                  "declared_capability": "read-only file access",
+                  "actual_refusal": "Command rejected by policy before execution."
+                }
+              ]
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "returned": [
+          "dimensions",
+          "first_actions",
+          "reference_resolutions",
+          "acceptance_mappings",
+          "required_decisions",
+          "findings",
+          "evaluator_provenance"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "dimensions=[2 items], first_actions=[2 items], reference_resolutions=[1 items], acceptance_mappings=[2 items]"
+}

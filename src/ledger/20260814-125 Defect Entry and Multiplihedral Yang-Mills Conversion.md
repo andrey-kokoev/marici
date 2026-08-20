@@ -1,3 +1,8 @@
+---
+authors:
+  - marici.Nima
+  - marici.Benincasa
+---
 # Defect Entry and Multiplihedral Yang--Mills Conversion
 
 ## Record

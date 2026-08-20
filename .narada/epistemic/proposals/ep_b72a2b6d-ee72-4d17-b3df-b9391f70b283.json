@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b72a2b6d-ee72-4d17-b3df-b9391f70b283",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "instruction": "Continue the cosmology falsification program and update the epistemic graph."
+  },
+  "idempotency_key": "marici-benincasa-entry-667-unsplit-numerator-discriminant",
+  "expected_ledger_head": "70b28208e031f68e850897e276e219b4598ba19a30c670ce29921f81b33f20a8",
+  "created_at": "2026-08-18T14:52:22.3515957Z",
+  "content_fingerprint": "31992d8df17cc968fd6d481ca6c51475e9179417d6f855750eb08a79583f70e2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source667",
+      "kind": "source",
+      "title": "Ledger Entry 667 — The Unsplit Source Zero Divisor Does Not Generate the Quartic",
+      "version": "20260818-667",
+      "locator": "src/ledger/20260818-667 The Unsplit Source Zero Divisor Does Not Generate the Quartic.md",
+      "entity_id": "source:290710575ea35bd87db6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim667",
+      "kind": "claim",
+      "title": "The literal unsplit numerator-zero branch discriminant is coprime to Q",
+      "entity_id": "claim:e1a7002dc2eb389cf7e8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test667",
+      "kind": "test",
+      "title": "Exact discriminant and gcd test on K_E(a,x+y-a)",
+      "entity_id": "test:088b438937bccba73a92"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim667",
+      "target_ref": "source667",
+      "source_id": "claim:e1a7002dc2eb389cf7e8",
+      "target_id": "source:290710575ea35bd87db6",
+      "relation_id": "rel:derived_from-d567f006aa3cf0df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test667",
+      "target_ref": "claim667",
+      "source_id": "test:088b438937bccba73a92",
+      "target_id": "claim:e1a7002dc2eb389cf7e8",
+      "relation_id": "rel:tests-f360df8178f5c4c8"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-667",
+      "test_id": "test667",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: discriminant equals -16 ell1^2 ell2^2 ell3^4 ell4^7 P9 and has gcd 1 with Q",
+      "evidence": [
+        {
+          "source_id": "source667",
+          "locator": "research/benincasa/unsplit-numerator-branch-discriminant.json",
+          "paraphrase": "Exact symbolic elimination gives quartic_gcd_with_discriminant equal to 1."
+        }
+      ]
+    }
+  ],
+  "digest": "3f19f85824f04badcf10a17af90b9aedd1f244840a02260f7bfee3f25456fa6f"
+}
