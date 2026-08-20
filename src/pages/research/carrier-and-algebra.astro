@@ -1,7 +1,9 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 
-const rustCarrierExample = `enum Side { Plus, Minus }
+const rustCarrierExample = `use std::collections::HashMap;
+
+enum Side { Plus, Minus }
 
 struct OccurrenceId {
     edge: EdgeId,
@@ -16,9 +18,19 @@ struct Occurrence<T> {
     coarse_wall: WallId,
 }
 
+type CoarseCarrier<T> = HashMap<WallId, Vec<(i8, T)>>;
+
 fn glue<T>(resolved: Vec<Occurrence<T>>) -> CoarseCarrier<T> {
-    // Forget labels only through an explicit, typed map.
-    todo!()
+    let mut coarse = HashMap::new();
+
+    for occurrence in resolved {
+        coarse
+            .entry(occurrence.coarse_wall)
+            .or_insert_with(Vec::new)
+            .push((occurrence.orientation, occurrence.value));
+    }
+
+    coarse
 }`
 ---
 <SiteLayout
