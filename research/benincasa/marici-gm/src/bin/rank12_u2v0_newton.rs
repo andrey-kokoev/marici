@@ -106,6 +106,21 @@ fn main() {
         .expand()
         .factor();
     println!("p_chart_K3_on_double_plane={k3_on_double_plane}");
+    assert_eq!(
+        k3_on_double_plane.clone().expand(),
+        a("-16*qh*(-1+Bh)").expand()
+    );
+    let l1_on_conductor = a("Bh-1");
+    let l2_on_conductor = a("Ah+(qh-1)/2")
+        .replace(a("Ah").to_pattern())
+        .with(a("(3-qh)/2").to_pattern())
+        .expand();
+    assert_eq!(l2_on_conductor, a("1"));
+    println!("normalized_node_model=(W-2*T)*(W+2*T)=rho*U");
+    println!("T=3-qh-2*Ah");
+    println!("U_on_exceptional_conductor={k3_on_double_plane}");
+    println!("L1_on_conductor={l1_on_conductor}");
+    println!("L2_on_conductor={l2_on_conductor}");
     let form_orders = [-1_i32, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1];
     println!("relative_form_orders={form_orders:?}");
 }
