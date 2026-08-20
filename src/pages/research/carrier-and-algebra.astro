@@ -1,37 +1,5 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
-
-const rustCarrierExample = `use std::collections::HashMap;
-
-enum Side { Plus, Minus }
-
-struct OccurrenceId {
-    edge: EdgeId,
-    side: Side,
-    region: RegionId,
-}
-
-struct Occurrence<T> {
-    id: OccurrenceId,
-    orientation: i8,
-    value: T,
-    coarse_wall: WallId,
-}
-
-type CoarseCarrier<T> = HashMap<WallId, Vec<(i8, T)>>;
-
-fn glue<T>(resolved: Vec<Occurrence<T>>) -> CoarseCarrier<T> {
-    let mut coarse = HashMap::new();
-
-    for occurrence in resolved {
-        coarse
-            .entry(occurrence.coarse_wall)
-            .or_insert_with(Vec::new)
-            .push((occurrence.orientation, occurrence.value));
-    }
-
-    coarse
-}`
 ---
 <SiteLayout
   title="The stage, the rules, and what appears | Marici"
@@ -63,22 +31,25 @@ fn glue<T>(resolved: Vec<Occurrence<T>>) -> CoarseCarrier<T> {
         from different physical occurrences.
       </p>
 
-      <h2>If you are a programmer: think in Rust types</h2>
+      <h2>Two technical sketches</h2>
       <p>
-        A first approximation is the difference between <code>Vec&lt;T&gt;</code> and a keyed record:
-        the latter remembers which value is which. But a carrier needs stronger typing than
-        <code>HashMap&lt;String, T&gt;</code>. A labelled occurrence also remembers its provenance,
-        side, orientation, target wall, and the operations in which it may participate.
+        The transit-map analogy can be made more precise in two familiar technical languages.
+        A system architect can view the carrier as a typed topology of interfaces, operating
+        strata, and consistency constraints. A Rust programmer can view its labelled occurrences
+        as types whose provenance cannot be erased without an explicit map.
       </p>
-      <pre><code>{rustCarrierExample}</code></pre>
-      <p>
-        Two occurrences may carry equal numerical values and map to the same coarse wall while
-        remaining different inputs to residues, restrictions, or gluing. The labels are therefore
-        not comments or display names. They are part of the mathematical type. Passing to an
-        unlabelled description is an explicit <code>glue</code> or <code>forget</code> map, where
-        orientation signs, multiplicities, and sheet information can be checked rather than lost
-        silently.
-      </p>
+      <ul>
+        <li>
+          <a href="/research/carrier-for-system-architects/">
+            Carrier as a system-architecture model
+          </a>
+        </li>
+        <li>
+          <a href="/research/carrier-in-rust-types/">
+            Carrier through the Rust type system
+          </a>
+        </li>
+      </ul>
 
       <h2>The carrier is not the rules</h2>
       <p>
