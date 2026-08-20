@@ -130,27 +130,32 @@ def polygon(n):
     }
 
 
-triangle = polygon(3)
-assert triangle["facet_count"] == 10
-assert triangle["term_count"] == 6
-assert triangle["cyclic_orbit_sizes"] == [3, 3]
-assert {tuple(term) for term in triangle["terms"]} == {
-    ("G_minus_e12", "g_13"), ("G_minus_e12", "g_23"),
-    ("G_minus_e23", "g_12"), ("G_minus_e23", "g_13"),
-    ("G_minus_e31", "g_12"), ("G_minus_e31", "g_23"),
-}
+def main():
+    triangle = polygon(3)
+    assert triangle["facet_count"] == 10
+    assert triangle["term_count"] == 6
+    assert triangle["cyclic_orbit_sizes"] == [3, 3]
+    assert {tuple(term) for term in triangle["terms"]} == {
+        ("G_minus_e12", "g_13"), ("G_minus_e12", "g_23"),
+        ("G_minus_e23", "g_12"), ("G_minus_e23", "g_13"),
+        ("G_minus_e31", "g_12"), ("G_minus_e31", "g_23"),
+    }
 
-square = polygon(4)
-assert square["facet_count"] == 17
-assert all(len(term) == 3 for term in square["terms"])
-assert sum(square["cyclic_orbit_sizes"]) == square["term_count"]
+    square = polygon(4)
+    assert square["facet_count"] == 17
+    assert all(len(term) == 3 for term in square["terms"])
+    assert sum(square["cyclic_orbit_sizes"]) == square["term_count"]
 
-packet = {
-    "schema": "marici.benincasa.four_cycle_ofpt_packet.v1",
-    "method": "exact source-vertex/facet incidence with G plus all singleton facets fixed",
-    "triangle_replication": triangle,
-    "four_cycle": square,
-}
-OUT.parent.mkdir(parents=True, exist_ok=True)
-OUT.write_text(json.dumps(packet, indent=2) + "\n")
-print(json.dumps({"triangle_terms": triangle["term_count"], "four_cycle_terms": square["term_count"]}))
+    packet = {
+        "schema": "marici.benincasa.four_cycle_ofpt_packet.v1",
+        "method": "exact source-vertex/facet incidence with G plus all singleton facets fixed",
+        "triangle_replication": triangle,
+        "four_cycle": square,
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(packet, indent=2) + "\n")
+    print(json.dumps({"triangle_terms": triangle["term_count"], "four_cycle_terms": square["term_count"]}))
+
+
+if __name__ == "__main__":
+    main()
