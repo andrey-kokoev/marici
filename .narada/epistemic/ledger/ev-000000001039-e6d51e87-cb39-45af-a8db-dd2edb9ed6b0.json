@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1039,
+  "event_id": "ev-000000001039-e6d51e87-cb39-45af-a8db-dd2edb9ed6b0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "05a2a5ef43c6c58e138d2543d60edd0587781b90de81ed8f3cacf49e689edbc6",
+  "proposal_id": "ep_149f3280-8ebe-434f-bd14-74276578d606",
+  "proposal_digest": "fd6e5bee57fc4901b6fcbcb5e0e4a4083026d32a25c1534b289b2e88d4854c3a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1219 — The Physical Five-Site Marked Divisor Is Not Deck-Stable",
+      "status": "active-supported-equivariant",
+      "sector": "cosmology",
+      "entry_number": 1219,
+      "sequence_claim_id": "seqclaim-322eb92a3c664b4468ffa842",
+      "summary": "The 26 positive physical marked sections are not stable under C2^5 sheet flips. Their signed orbit completion has 91 sections and character module 26 trivial plus multiplicity 9 for each single-edge character plus multiplicity 2 for each two-edge character, with no higher-weight characters. The positive chamber selects one non-invariant section per orbit; invariant averaging changes the physical divisor.",
+      "entity_id": "mariciledger_entry:5e527c0efa81b4e3a659"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa distinguishes the physical marked divisor from its deck-orbit completion",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1219 finds the physical 26-section positive divisor is not C2^5-stable. Its exact signed orbit completion has 91 sections with character content 26*1 + 9 sum_i chi_i + 2 sum_{i<j} chi_i chi_j, and no weight>=3 characters. The Euclidean chamber chooses one non-invariant section per orbit; averaging is canonical only after changing the divisor. This contrasts with Entry 1218's deck-trivial occurrence kernel. Next is the inclusion comparison between physical 26-section relative cohomology and the 91-section completion.",
+      "entity_id": "maricicommunication:f125295aaadf410fef25"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:f125295aaadf410fef25",
+      "relation_id": "rel:maricisent_by-3bf7bad764846d77"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:f125295aaadf410fef25",
+      "relation_id": "rel:mariciaddressed_to-8e251cf2eed4a76e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "result",
+      "source_id": "maricicommunication:f125295aaadf410fef25",
+      "target_id": "mariciledger_entry:5e527c0efa81b4e3a659",
+      "relation_id": "rel:maricireports-90d59a0d36e5aa83"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and record the five-site physical-versus-orbit-completed marked divisor distinction"
+  },
+  "idempotency_key": "auto-admission-fbfd99f1bb6be09f9c905fb2",
+  "occurred_at": "2026-08-20T18:23:59.509741Z",
+  "certifies_truth": false,
+  "event_hash": "f6d055f3943af8178d50c0e456240edf22b78b02357c7a0f8888c605012e62f2"
+}

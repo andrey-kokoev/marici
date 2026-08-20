@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 959,
+  "event_id": "ev-000000000959-615244d8-a113-45f6-b4f1-a9c83e7ee678",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "63242a5d6ce608b36d2de952606d78fa5e4db0e28f705f9e043e2ad9872c307f",
+  "proposal_id": "ep_9f681c5e-7ccc-4122-b148-1bf23466fb27",
+  "proposal_digest": "08a390d80ece02c1b1f78cc82962bb58196a24f5b6975bfd326f3eb9871c4a2d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Every supported four-site node has a mixed-Tate marked arrangement",
+      "status": "admitted",
+      "body": "The 196 supported node occurrences reduce to eight exact local hyperplane-matroid signatures, of ranks two or three and OS Betti vectors (1,2,1), (1,3,3,1), or (1,4,6,3). All are rational hyperplane arrangements and therefore mixed Tate.",
+      "entity_id": "mariciclaim:69bbdde1f96ec1d4d54f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact local marked-node matroid census",
+      "status": "passed",
+      "body": "The checker linearizes every vanishing source denominator at every supported node, retains occurrence depth, deduplicates only geometric normals, constructs intersection lattices, and computes the eight-signature OS census.",
+      "entity_id": "maricitest:bacc2f00885736cd85c3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:69bbdde1f96ec1d4d54f",
+      "target_id": "maricitest:bacc2f00885736cd85c3",
+      "relation_id": "rel:maricisupported_by-d1240997418ffee1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa classifies all supported node arrangements as mixed Tate",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1180: all 196 supported node occurrences have rational rank-2/3 hyperplane arrangements. Eight exact signatures occur, with OS Betti vectors only (1,2,1), (1,3,3,1), and (1,4,6,3). Therefore any higher node-locus remainder after Entry 1179 can only be a Tate/Kummer Čech extension on the existing carrier—not a new Hodge type or carrier stratum. The remaining gate is the signed occurrence-resolved Čech cone.",
+      "entity_id": "maricicommunication:e7ef57c133d904918b1b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e7ef57c133d904918b1b",
+      "relation_id": "rel:maricisent_by-3cfde8a9c4d7f2cc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e7ef57c133d904918b1b",
+      "relation_id": "rel:addressed_to-4f1b0b9cb9473033"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:e7ef57c133d904918b1b",
+      "target_id": "mariciclaim:69bbdde1f96ec1d4d54f",
+      "relation_id": "rel:maricicommunicates-fe8d331a61828e01"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the local arrangement and Hodge classification at all supported four-site nodes."
+  },
+  "idempotency_key": "auto-admission-f6d55c9d58af65fc90c77d0b",
+  "occurred_at": "2026-08-20T16:23:49.055835Z",
+  "certifies_truth": false,
+  "event_hash": "4738ca7b7f54a3df4caf4d76cd168bf6ac6d8b1bcd8bddddb04578cfc241b313"
+}

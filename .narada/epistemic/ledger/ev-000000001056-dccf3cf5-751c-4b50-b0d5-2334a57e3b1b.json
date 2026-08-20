@@ -1,0 +1,220 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1056,
+  "event_id": "ev-000000001056-dccf3cf5-751c-4b50-b0d5-2334a57e3b1b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "bc1d1ec7a639aa8eeadcbe97ebf316cbf90a5704e70f699f028a698c40d74b40",
+  "proposal_id": "ep_ee458fff-34dc-43f3-ae63-d66a31899692",
+  "proposal_digest": "a99f98509a76d58893ce590e053c74e9760cea333590da258df802ea76dedbef",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Phase-I connected-sewing unit obstruction",
+      "version": "sha256:4409f6cd19496eea772ccc9f6b8cba49aab323ce5ab829663da3814e6e263b9c",
+      "locator": "research/grothendieck/phase-i-connected-sewing-unit-obstruction.md",
+      "entity_id": "source:050bfca41b241f066ce8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "source",
+      "title": "Phase-I connected-sewing unit obstruction result",
+      "version": "sha256:a819022db802f484830d5f86a86b7996781093b023b5989d57b70706d68b2c24",
+      "locator": "research/grothendieck/results/phase-i-connected-sewing-unit-obstruction.json",
+      "entity_id": "source:724c06ceace1cb569a7c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Connected edge sewing requires an absent arity-two Carrier unit",
+      "status": "established_for_stable_even_polygon_carrier_family",
+      "demonstrated_strength": [
+        "unbounded boundary-pushout theorem",
+        "exact all-even framed positive control"
+      ],
+      "body": "The framed fs/Kato certificates at arities 8, 10, and 12 and the general even-arity induction all pass: primitive four-point coefficient lines external-product coherently, so that positive result is retained. At Carrier level, sewing two marked polygon boundaries along one edge is the pushout of their boundary sets over the edge's two endpoints, hence its arity law is n_L star n_R = n_L+n_R-2. An object unit must solve n star e=n, uniquely forcing e=2. The admitted stable even family begins at arity 4, so the interface-only unit is absent. The four-point factor has residual (n star 4)-n=2 for every n and is therefore not a Carrier unit. Its 'primitive unit' role is the chosen +1 generator of a framed rank-one coefficient line, not an object-level unit law. Boundary excess n-2 is additive under sewing; no initial-semiring multiplication follows.",
+      "entity_id": "claim:5a2b6d3a611737304bfd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact connected-sewing boundary-pushout and unit-arity test",
+      "status": "passed",
+      "checker": "research/grothendieck/checkers/phase_i_connected_sewing_unit_obstruction.py",
+      "checker_sha256": "c78e2bcb52d1a839680d9f96860f839edf7523ff435c6fb7a9da3846b6d4fab5",
+      "result": "research/grothendieck/results/phase-i-connected-sewing-unit-obstruction.json",
+      "result_sha256": "a819022db802f484830d5f86a86b7996781093b023b5989d57b70706d68b2c24",
+      "command": "uv run --with sympy python research/grothendieck/checkers/phase_i_connected_sewing_unit_obstruction.py",
+      "deterministic_rerun": true,
+      "source_checker_reruns": 4,
+      "boundary_profile_count": 6,
+      "unique_unit_arity": 2,
+      "admitted_minimum_arity": 4,
+      "four_point_unit_arity_residual": 2,
+      "entity_id": "test:5e51705d7b9c4b31725e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_nima",
+      "kind": "marici:communication",
+      "title": "Grothendieck separates the all-even framed unit from a Carrier unit",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:47:13.390Z",
+      "body": "The strongest tensor/unit candidate has now been audited. Entries 537, 540, 541, and the general even-arity induction checker all pass: the four-point primitive +1 line external-products coherently on every framed Cut stratum. But Carrier edge sewing is a boundary pushout with arity law n_L star n_R=n_L+n_R-2. Its unit equation forces arity 2, while the stable family begins at 4; sewing with the four-point factor always changes arity by +2. Exact residual is 2 at every tested/formal even arity. Thus 'primitive unit' is correct for the framed coefficient line but not for a Carrier object. Packet/checker: research/grothendieck/phase-i-connected-sewing-unit-obstruction.md and research/grothendieck/checkers/phase_i_connected_sewing_unit_obstruction.py. The conditional additive N/Z branch still lacks a unital multiplication.",
+      "entity_id": "maricicommunication:d5949970d5ac22f0deed"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_benincasa",
+      "kind": "marici:communication",
+      "title": "Grothendieck finds the absent object unit beneath the framed coefficient unit",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:47:13.390Z",
+      "body": "All-even framed external-product coherence survives exact rerun, but it is coefficient-level. Edge sewing obeys n_L star n_R=n_L+n_R-2, so an object unit must have arity 2. The stable Carrier starts at arity 4, and the four-point primitive coefficient unit has Carrier arity residual +2. Consequently the additive N/Z relaxation still has no unital distributive multiplication and cannot enter Burnside-Witt. Packet: research/grothendieck/phase-i-connected-sewing-unit-obstruction.md.",
+      "entity_id": "maricicommunication:db7445f4f722779804a5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "problem:1d0761af2df6a73686a9",
+      "source_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:addresses-de20564cdf3e97fe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "claim",
+      "target_id": "claim:024f2ece848b6c857fe7",
+      "source_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:maricirefines-c5f7bf1d0499f6db"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "claim",
+      "target_id": "claim:9e93f7d63f7675fa6467",
+      "source_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:maricirefines-0170a56ad1ce8ca9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:5a2b6d3a611737304bfd",
+      "target_id": "source:050bfca41b241f066ce8",
+      "relation_id": "rel:derived_from-2f6cd41cd2e74540"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "result",
+      "source_id": "claim:5a2b6d3a611737304bfd",
+      "target_id": "source:724c06ceace1cb569a7c",
+      "relation_id": "rel:derived_from-a9cde0da0c1746dc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "result",
+      "source_id": "test:5e51705d7b9c4b31725e",
+      "target_id": "source:724c06ceace1cb569a7c",
+      "relation_id": "rel:derived_from-4ac5aecf43a9d14f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:5e51705d7b9c4b31725e",
+      "target_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:tests-55d4214bfcc39b64"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:d5949970d5ac22f0deed",
+      "relation_id": "rel:maricisent_by-121812ae6b768d2c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d5949970d5ac22f0deed",
+      "relation_id": "rel:mariciaddressed_to-ee1f79034e8efd1f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_nima",
+      "target_id": "maricicommunication:2f4115b7fd53847cc262",
+      "source_id": "maricicommunication:d5949970d5ac22f0deed",
+      "relation_id": "rel:maricireplies_to-2ed7c94c24554a75"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_nima",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:d5949970d5ac22f0deed",
+      "target_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:reports-bd801af333a05cab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:db7445f4f722779804a5",
+      "relation_id": "rel:maricisent_by-99af2a600251a46c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:db7445f4f722779804a5",
+      "relation_id": "rel:mariciaddressed_to-64fe763ba8ff217a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "maricicommunication:c0647c920ba5468cae47",
+      "source_id": "maricicommunication:db7445f4f722779804a5",
+      "relation_id": "rel:maricireplies_to-8cbdc02a94a07d36"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_benincasa",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:db7445f4f722779804a5",
+      "target_id": "claim:5a2b6d3a611737304bfd",
+      "relation_id": "rel:reports-13507bc7a2a61a77"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed marici.Grothendieck to continue the Phase-I Carrier derivation audit without commits or pushes."
+  },
+  "idempotency_key": "auto-admission-ad67287e4963b76a23e1cf27",
+  "occurred_at": "2026-08-20T18:47:13.5635301Z",
+  "certifies_truth": false,
+  "event_hash": "63dcfdac602c8117c47bcaa9cd941860aa8cd274dc514f65807151a538c2408a"
+}

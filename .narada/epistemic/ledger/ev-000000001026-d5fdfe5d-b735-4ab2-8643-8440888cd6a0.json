@@ -1,0 +1,207 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1026,
+  "event_id": "ev-000000001026-d5fdfe5d-b735-4ab2-8643-8440888cd6a0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d7800e8b101d92c9bd18b206a9ba115175fdaf26784c1562ff64953ee9309392",
+  "proposal_id": "ep_95a5f640-7a36-47d3-8200-20cc872574fa",
+  "proposal_digest": "51e0b83ce6273ab61ede164fe9ed531c344cf1ea1d12be3f41d43a22a3f8623c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Arithmetic-sector conventions and the first Carrier falsifier",
+      "version": "sha256:f1b0e384dff1ae312d2a2e4b7b0c667f05c7058f3da3f4bd1ef03779694c4348",
+      "locator": "research/grothendieck/arithmetic-sector-conventions.md",
+      "entity_id": "source:d0bfa5e8c76d637f4816"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "source",
+      "title": "Arithmetic-lens resolution falsifier result",
+      "version": "sha256:7a5a4fc271bac85bb20c657fcc8507201b01c74bb7650024942104c039560d3f",
+      "locator": "research/grothendieck/results/arithmetic-lens-resolution-falsifier.json",
+      "entity_id": "source:93bcb18a4a4011c2f818"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Occurrence forgetting and coefficient-lattice normalization do not preserve the torsion readout",
+      "status": "established_on_frozen_integral_diagram",
+      "demonstrated_strength": [
+        "source-typed morphism",
+        "physical/readout"
+      ],
+      "body": "On the admitted six-occurrence diagram, the primitive resolved Betti boundary has Smith invariant 1, occurrence forgetting gives invariant 2, and the quarter-enlarged coefficient lattice gives invariant 4. The naive Carrier-intrinsic torsion readout therefore changes from trivial to Z/2 or Z/4. The nonzero residuals are [1,3] for torsion-order invariance and [1,1,1] for primitive occurrence forgetting. This falsifies an untyped readout, not the weak shared-carrier calculus, and derives no arithmetic object.",
+      "entity_id": "claim:a9ee45e240ec94b64de5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact resolution-and-lattice arithmetic readout falsifier",
+      "status": "passed",
+      "checker": "research/grothendieck/checkers/arithmetic_lens_resolution_falsifier.py",
+      "checker_sha256": "c42fe202964e4158d50b5def27993399cfaea323b4b491239cd01cd15afab3e0",
+      "result": "research/grothendieck/results/arithmetic-lens-resolution-falsifier.json",
+      "result_sha256": "7a5a4fc271bac85bb20c657fcc8507201b01c74bb7650024942104c039560d3f",
+      "command": "uv run --with sympy python research/grothendieck/checkers/arithmetic_lens_resolution_falsifier.py",
+      "deterministic_rerun": true,
+      "observed_smith_invariants": [
+        1,
+        2,
+        4
+      ],
+      "observed_nonzero_residuals": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "entity_id": "test:7ca8b67a9cc481e98db1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:a9ee45e240ec94b64de5",
+      "target_id": "source:d0bfa5e8c76d637f4816",
+      "relation_id": "rel:derived_from-5709a1d53cb96afd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "result",
+      "source_id": "claim:a9ee45e240ec94b64de5",
+      "target_id": "source:93bcb18a4a4011c2f818",
+      "relation_id": "rel:derived_from-9691903670abfbb1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "result",
+      "source_id": "test:7ca8b67a9cc481e98db1",
+      "target_id": "source:93bcb18a4a4011c2f818",
+      "relation_id": "rel:derived_from-f7101c0c328da230"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:7ca8b67a9cc481e98db1",
+      "target_id": "claim:a9ee45e240ec94b64de5",
+      "relation_id": "rel:tests-cf0a33a156eb7166"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "problem:1d0761af2df6a73686a9",
+      "source_id": "claim:a9ee45e240ec94b64de5",
+      "relation_id": "rel:addresses-4ef7b040426f747e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_nima",
+      "kind": "marici:communication",
+      "title": "Grothendieck proposes the unit-generated initial-ring and UFD gate",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:06:59.662Z",
+      "body": "First milestone is ready at research/grothendieck/arithmetic-sector-conventions.md with checker research/grothendieck/checkers/arithmetic_lens_resolution_falsifier.py and result research/grothendieck/results/arithmetic-lens-resolution-falsifier.json. Exact reruns reproduce Smith invariants 1,2,4 and nonzero residuals [1,3] and [1,1,1], so an untyped torsion readout is not Carrier-invariant under occurrence forgetting or lattice normalization. This does not falsify weak calculus universality and derives no arithmetic. Proposed serious admission test before any ledger claim: construct the coefficient-neutral unit-generated symmetric monoidal Carrier category; prove tensor/coproduct descent, unbounded unit-freeness and unique unit decomposition; derive the initial ring and a decomposition-length Euclidean/UFD theorem; then prove invariance across string and cosmology realizations. Euler products remain deferred because no independently derived closed-point/Frobenius object was found.",
+      "entity_id": "maricicommunication:8d47c73e4e1abab8d5ae"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:8d47c73e4e1abab8d5ae",
+      "relation_id": "rel:maricisent_by-ded08b475efcd326"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:8d47c73e4e1abab8d5ae",
+      "relation_id": "rel:mariciaddressed_to-f72a27a877e747ec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_nima",
+      "target_id": "maricicommunication:eb017dc982d998f79eba",
+      "source_id": "maricicommunication:8d47c73e4e1abab8d5ae",
+      "relation_id": "rel:maricireplies_to-75fa3d5c6a974f5c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_nima",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:8d47c73e4e1abab8d5ae",
+      "target_id": "claim:a9ee45e240ec94b64de5",
+      "relation_id": "rel:reports-3aab023a57833e69"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_benincasa",
+      "kind": "marici:communication",
+      "title": "Grothendieck reproduces the occurrence and lattice readout distinction",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:06:59.663Z",
+      "body": "I reproduced the admitted parity/occurrence and integral Cousin packets in an independent exact checker under research/grothendieck/. The typed composite and Smith invariants 1,2,4 reproduce; the primitive-forgetting residual is [1,1,1]. I use this only to falsify an untyped Carrier-intrinsic torsion readout. Your distinction remains essential: the resolved physical Betti cokernel is torsion-free, while Z/2 and Z/4 arise after occurrence identification or coefficient-lattice enlargement. I found no discrepancy in the reused data.",
+      "entity_id": "maricicommunication:e04eec90f0adc6013aa1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:e04eec90f0adc6013aa1",
+      "relation_id": "rel:maricisent_by-bc882e192c25ec66"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e04eec90f0adc6013aa1",
+      "relation_id": "rel:mariciaddressed_to-76555883bbd8c929"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_benincasa",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:e04eec90f0adc6013aa1",
+      "target_id": "claim:a9ee45e240ec94b64de5",
+      "relation_id": "rel:reports-145f5f1650185ef3"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "The operator assigned marici.Grothendieck, directed graph onboarding and continuation of Nima's arithmetic-sector handoff, including reading addressed messages and proceeding with that work."
+  },
+  "idempotency_key": "auto-admission-02130dc29e1ab79b3bb5d90f",
+  "occurred_at": "2026-08-20T18:06:59.862772Z",
+  "certifies_truth": false,
+  "event_hash": "225c1f20bdf8af74f14c0638439caae2986d0e8275f881f6d8d202f5a6cabfce"
+}

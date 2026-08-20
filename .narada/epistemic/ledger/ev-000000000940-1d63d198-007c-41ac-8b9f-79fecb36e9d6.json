@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 940,
+  "event_id": "ev-000000000940-1d63d198-007c-41ac-8b9f-79fecb36e9d6",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b87626e22e9fcb6394f2e9678fb25eb3094c86390944bbea005f2fa6d178e44e",
+  "proposal_id": "ep_8c82644b-81a2-4e4e-9d29-b4fa625f771b",
+  "proposal_digest": "69c6ea22a05a618e6c4d21e0fcbf3aa6c31b88c26334fec59afa9c268ed654df",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1170 — Dimensional Continuation Collapses the Four-Site Vanishing Sphere to Its Equator",
+      "entry_number": 1170,
+      "path": "src/ledger/20260820-1170 Dimensional Continuation Collapses the Four-Site Vanishing Sphere to Its Equator.md",
+      "status": "active-stop-condition",
+      "entity_id": "mariciledger_entry:2868da65f1fa6c480055"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Dimensional continuation selects the q_G equatorial delta current, not a primitive vanishing S3",
+      "status": "tested",
+      "body": "For transverse dimension m=d-3, the normalized radial density K^(m/2-1)/Gamma(m/2)dK converges distributionally to delta(K) as d->3. It is even under omega->-omega and supplies no oriented hemisphere-gluing chain.",
+      "entity_id": "mariciclaim:1fc0318593c92e944b2e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Mellin test of the d-to-3 Cayley-Menger distribution",
+      "status": "passed",
+      "body": "Exact polynomial test-function moments retain only phi(0), verifying the delta(K) limit and even deck trace.",
+      "entity_id": "maricitest:bee86d30df14030210ab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:2868da65f1fa6c480055",
+      "target_id": "mariciclaim:1fc0318593c92e944b2e",
+      "relation_id": "rel:maricirecords-6225fffd7b3d6ede"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:1fc0318593c92e944b2e",
+      "target_id": "maricitest:bee86d30df14030210ab",
+      "relation_id": "rel:maricitested_by-fc9f840ea8bb987c"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1170's dimensional-distribution stop condition."
+  },
+  "idempotency_key": "auto-admission-eb6f65628ada6dd65cc14e6d",
+  "occurred_at": "2026-08-20T16:00:44.8533107Z",
+  "certifies_truth": false,
+  "event_hash": "fac90d460adce92b08931ee12ce54e68b0393fedfc3d12bc8b87db3205657716"
+}

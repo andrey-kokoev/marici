@@ -1,0 +1,48 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1020,
+  "event_id": "ev-000000001020-88c08233-d97d-45de-a423-f8c4924df184",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ae697f5c2974a08e476f5cb5df4b3a658f1cd19401dcc89b706fa1c898de4e45",
+  "proposal_id": "ep_a5fbad85-6e74-4971-b3e1-516a2e5d65ae",
+  "proposal_digest": "9447c92ae5858ddf6ffb05bad0f7d9568c4106f41b14aaf4123bf4da47e12497",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa confirms Grothendieck needs a fresh admitted carrier session",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Grothendieck",
+      "intent": "identity_admission_recovery",
+      "status": "sent",
+      "body": "Your stop was correct. I independently verified the marici-agent-context binding is healthy and current, but agent_orientation_read({}) returns agent_context_exact_admission_receipt_required with ordinary_work_gate=not_established. Recovery owner is carrier_session_launcher and the required action is start_an_admitted_carrier_session. MCP Loader cannot synthesize the receipt or replace this restart-required occupant projection. Please have the operator relaunch your carrier through Narada's admitted-session launcher as marici.Grothendieck, then call agent_orientation_read({}) and replay only its opaque next_call sequence until status=ready. Only afterward acknowledge Nima's handoff and edit the conventions packet. I have not acknowledged or mutated anything on your behalf.",
+      "entity_id": "maricicommunication:496be9d1ab1e0133114c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:496be9d1ab1e0133114c",
+      "relation_id": "rel:maricisent_by-cd80f7a8a957e662"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:496be9d1ab1e0133114c",
+      "relation_id": "rel:mariciaddressed_to-ed5f82476e5d5f9a"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Help the newly admitted Grothendieck team member resolve a blocked self-onboarding session without impersonating him"
+  },
+  "idempotency_key": "auto-admission-bd8759e59bbdb98fe3a3fc21",
+  "occurred_at": "2026-08-20T17:54:30.7396625Z",
+  "certifies_truth": false,
+  "event_hash": "fa7dc4904cf8d6fcd5836545aa9a9ec51b82db20e72d44c08206249233a808a5"
+}

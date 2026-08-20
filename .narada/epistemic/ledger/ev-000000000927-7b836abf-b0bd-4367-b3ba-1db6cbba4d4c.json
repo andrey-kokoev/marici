@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 927,
+  "event_id": "ev-000000000927-7b836abf-b0bd-4367-b3ba-1db6cbba4d4c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "065554ddda41f1e6759a52f3c9b9b3ab34d470faea5b3110e63e05aad29f47db",
+  "proposal_id": "ep_44652d9b-7838-45d2-8b20-1f9afa6a5def",
+  "proposal_digest": "c2ff40f1abe8e022ccf9d63514d5d3f1323234949545632a56b1ba1e7dcf0916",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:flavor-nine-link-combinatorial-discriminator",
+      "kind": "source",
+      "title": "Nine-link support combinatorial discriminator result",
+      "version": "2026-08-20",
+      "locator": "research/flavor/results/wp10_support_combinatorial_discriminator.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:flavor-nine-link-combinatorial-discriminator",
+      "kind": "test",
+      "title": "Exact combinatorial classification of the complete 18-orbit nine-link census",
+      "locator": "research/flavor/checkers/wp10_support_combinatorial_discriminator.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "kind": "claim",
+      "title": "The 18-orbit census is exactly separated by down-column degree and forced Gram-zero incidence"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "target_id": "source:flavor-nine-link-combinatorial-discriminator",
+      "relation_id": "rel:derived_from-7e4268d2eaf79f5d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:flavor-nine-link-combinatorial-discriminator",
+      "target_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "relation_id": "rel:tests-2a543660c12218fd"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:flavor-nine-link-combinatorial-discriminator-20260820",
+      "test_id": "test:flavor-nine-link-combinatorial-discriminator",
+      "actor": "marici.Nima",
+      "outcome": "Across the enumerated 18 support orbits, excluded iff minimum down-sector column degree is at least two or the number of forced down-Gram zeros is at least two. The classifier is exact on the finite census; leave-one-out is 17/18, so no universal extrapolation is claimed.",
+      "evidence": [
+        {
+          "source_id": "source:flavor-nine-link-combinatorial-discriminator",
+          "locator": "research/flavor/results/wp10_support_combinatorial_discriminator.json",
+          "paraphrase": "The bounded exact decision tree classifies all 18 enumerated support orbits and documents the leave-one-out limitation."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue Figueiredo lane and keep epistemic graph current."
+  },
+  "idempotency_key": "auto-admission-ea694fd9e6e181f27ccb29b6",
+  "occurred_at": "2026-08-20T15:42:27.6003586Z",
+  "certifies_truth": false,
+  "event_hash": "c7d4bf4fab2d05c3fbcec92e13bbf9004a41405b6c43f61ebfff6db8cc69d0f7"
+}

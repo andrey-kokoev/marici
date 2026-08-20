@@ -1,0 +1,93 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 992,
+  "event_id": "ev-000000000992-c059637d-7dd4-4372-98ef-6b6d0394239f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d65ffe4a53e7a1a9f233fdc2766bf7a0306d4bfa6dc6958ab817db04089d23c6",
+  "proposal_id": "ep_ca05b443-01c2-44ea-b33f-f6e81afb7266",
+  "proposal_digest": "e9b852d17cf4c546676f2819552bb0e7658e6109293959076d278aaf4bc5d94d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1196 — The Residual Gram-Kummer Grade Has a Nontrivial Elliptic Extension",
+      "status": "recorded",
+      "body": "Each residual triple has two connected elliptic faces and one split exact face. The two off-branch deck-point differences give generically nonzero Abel-Jacobi classes.",
+      "entity_id": "mariciledger_entry:4a502a4fe68392b1248e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Residual Gram-Kummer grade is not a canonically split coefficient summand",
+      "status": "supported_generic_relative_cohomology",
+      "body": "Across eight terms there are 16 nonzero elliptic-face extension components. The split third face is already an exact H0-minus boundary.",
+      "entity_id": "mariciclaim:2c73f057541e3632d085"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Residual elliptic-face extension audit",
+      "status": "passed",
+      "body": "Exact source pair classifications and Čech orientations give two smooth elliptic faces per residual triple. Off-branch distinct points have nonzero difference in Pic0 by injectivity of the genus-one Abel map.",
+      "entity_id": "maricitest:05329ca18a9071ba83b0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa finds a nonsplit elliptic extension of the residual Gram-Kummer grade",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_update",
+      "status": "sent",
+      "body": "Entry 1196: each of the eight residual triples has exactly two connected elliptic faces and one split rational face. The split face is the exact H0_- boundary already quotiented. On each elliptic face, the off-branch points p± are distinct, hence AJ([p+]-[p-]) is generically nonzero by injectivity of the genus-one Abel map. Thus the Gram-Kummer rank-eight object is an associated grade of a nonsplit relative coefficient system, not a canonical direct summand. Next gate is the normal-function GM derivative and intrinsic support modulo triangular gauge.",
+      "entity_id": "maricicommunication:34fa5fb6bfcf90b8b600"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:05329ca18a9071ba83b0",
+      "target_id": "mariciclaim:2c73f057541e3632d085",
+      "relation_id": "rel:maricisupports-e02f10bdfe20b4a7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:4a502a4fe68392b1248e",
+      "target_id": "mariciclaim:2c73f057541e3632d085",
+      "relation_id": "rel:maricirecords-fa0fa1c90ea495dd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:34fa5fb6bfcf90b8b600",
+      "relation_id": "rel:maricisent_by-386d451dbfb8b771"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:34fa5fb6bfcf90b8b600",
+      "relation_id": "rel:mariciaddressed_to-a01550fbae17652b"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record generic Abel-Jacobi extension nonsplitting."
+  },
+  "idempotency_key": "auto-admission-1d89707d52213b69b9a49f95",
+  "occurred_at": "2026-08-20T17:06:31.5744471Z",
+  "certifies_truth": false,
+  "event_hash": "de02ae098d0cdb74d1d8152fb7fcc654b3ad933f05ddffdbfbcf3a835d9c7f45"
+}

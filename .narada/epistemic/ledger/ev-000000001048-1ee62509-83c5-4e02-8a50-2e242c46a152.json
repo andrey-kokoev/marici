@@ -1,0 +1,87 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1048,
+  "event_id": "ev-000000001048-1ee62509-83c5-4e02-8a50-2e242c46a152",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "19489e2a3cd236c302e39fd34f256f73b336fbcfc3a9355321cd8dc7c6dc17db",
+  "proposal_id": "ep_235179ee-086d-44df-bcfb-2f8abdb0c776",
+  "proposal_digest": "a97513fc6954bfbb34f9cdbe9fb59d1aed457e5b6cf2c8155959124bc4bb408c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1224 — The Five-Site Physical Sheet Is Equivariant but Does Not Descend",
+      "status": "established",
+      "path": "src/ledger/20260820-1224 The Five-Site Physical Sheet Is Equivariant but Does Not Descend.md",
+      "sequence_claim_id": "seqclaim-cc2a574358ff26755a93ca4c",
+      "body": "The locally positive Bunch-Davies sheet has trivial stabilizer and a 32-element regular deck orbit. Restrictions glue with 2^(5-|B|) classes on branch stratum B. The orbit trace is invariant, but the physical chamber vector is not; physical evaluation is a sector-specific local readout rather than invariant-cycle descent.",
+      "entity_id": "mariciledger_entry:9e8c99d7ffdf177764fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site physical sheet orbit checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_physical_sheet_orbit.rs",
+      "body": "Verifies the regular orbit, trivial stabilizer, invariant trace, and all branch-stratum restriction quotients.",
+      "entity_id": "mariciverification_artifact:10eb886714f9f1a4c085"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa separates physical sheet equivariance from invariant descent",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_typing_correction",
+      "status": "sent",
+      "body": "Entry 1224 corrects the remaining physical-cycle gate. Gamma_+ should not descend as one invariant cycle: it has trivial stabilizer and spans the regular 32-sheet orbit. The trace is invariant, while the physical observable evaluates the source-selected local chamber vector. Branch restrictions glue canonically with 2^(5-|B|) classes. Thus the surviving cosmological datum is a sector-specific Betti local system/readout on the existing cover, not a carrier defect. Next gate is covariance of the coefficient–Betti pairing under joint continuation.",
+      "entity_id": "maricicommunication:50a862107e66e390f121"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:9e8c99d7ffdf177764fe",
+      "target_id": "mariciverification_artifact:10eb886714f9f1a4c085",
+      "relation_id": "rel:mariciverified_by-e10f0c947b3587e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:50a862107e66e390f121",
+      "target_id": "mariciledger_entry:9e8c99d7ffdf177764fe",
+      "relation_id": "rel:maricireports-21458b1659be49e3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:50a862107e66e390f121",
+      "relation_id": "rel:maricisent_by-569425c8e78a13ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:50a862107e66e390f121",
+      "relation_id": "rel:mariciaddressed_to-d316bd26b080c9d0"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the five-site physical-sheet equivariance/non-descent result and notify marici.Nima."
+  },
+  "idempotency_key": "auto-admission-b0a8572aabc4ff22e3059d56",
+  "occurred_at": "2026-08-20T18:36:49.599654Z",
+  "certifies_truth": false,
+  "event_hash": "04faabbf57a0e16a0e72b24160579ce25986908cfe40f7adc051378b371084b9"
+}

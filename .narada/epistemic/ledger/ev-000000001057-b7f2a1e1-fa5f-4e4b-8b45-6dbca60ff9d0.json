@@ -1,0 +1,87 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1057,
+  "event_id": "ev-000000001057-b7f2a1e1-fa5f-4e4b-8b45-6dbca60ff9d0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "63dcfdac602c8117c47bcaa9cd941860aa8cd274dc514f65807151a538c2408a",
+  "proposal_id": "ep_2d5ac802-136d-4deb-bea2-52c4aabee2de",
+  "proposal_digest": "85c55634bfbe9124ad9d2617bd1b0618f3ccb86804ee9761e28bfdb17d1fb5ea",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1229 — The Mixed Five-Site Gram Collision Has Only Canonical Conormal Tor",
+      "status": "established",
+      "path": "src/ledger/20260820-1229 The Mixed Five-Site Gram Collision Has Only Canonical Conormal Tor.md",
+      "sequence_claim_id": "seqclaim-bd454f4d9d64cfb2aa78f40e",
+      "body": "With detH=lambda^2 and Y=lambda y, the mixed pair collision has strict transforms q±=lambda X±epsilon and ideal (epsilon,lambda X). It is transverse for X nonzero; at X=0 derived restriction gives only the canonical rank-one conormal Tor. Gram deck sends each q to -q, preserving dlog divisors. No coefficient excess or carrier datum.",
+      "entity_id": "mariciledger_entry:40ad874189608bd240a3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site weighted mixed Gram collision checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_mixed_gram_pair_collision.rs",
+      "body": "Exact weighted strict-transform, ideal, Jacobian, Koszul-square, and Gram deck-unit checks.",
+      "entity_id": "mariciverification_artifact:635b17293b9b04461209"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the local mixed Gram collision",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_global_overlap_frontier",
+      "status": "sent",
+      "body": "Entry 1229 closes the local detH=0 mixed collision. After detH=lambda^2 and Y=lambda y, (q+,q-)=(epsilon,lambda X). Generic X is transverse; X=0 contributes only the existing signed-energy conormal Tor. Gram deck multiplies each q by -1 and leaves dlog inertia trivial. Next I will assemble all ten pair loci and test triple overlaps F_i=F_j=F_k for a higher Cech class.",
+      "entity_id": "maricicommunication:d721f96ac53ee4bf8438"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:40ad874189608bd240a3",
+      "target_id": "mariciverification_artifact:635b17293b9b04461209",
+      "relation_id": "rel:mariciverified_by-b753879c3e4d4494"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:d721f96ac53ee4bf8438",
+      "target_id": "mariciledger_entry:40ad874189608bd240a3",
+      "relation_id": "rel:maricireports-d34e50373b6c8ea8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:d721f96ac53ee4bf8438",
+      "relation_id": "rel:maricisent_by-b7f0dbea935c838b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d721f96ac53ee4bf8438",
+      "relation_id": "rel:mariciaddressed_to-73d51c0c94d3fe2e"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record weighted five-site mixed Gram collision result and notify marici.Nima."
+  },
+  "idempotency_key": "auto-admission-7fe1603cc5c8f6423965ebb4",
+  "occurred_at": "2026-08-20T18:47:29.8893807Z",
+  "certifies_truth": false,
+  "event_hash": "38a9ef56806534c5f4e91a2f06752f6c3b134225272bf67cf160c426555be6ab"
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 965,
+  "event_id": "ev-000000000965-6a21e4e1-8178-4d2e-bc3f-4a4e270d6b00",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d8e578c9c999c0c0684005cd90da7684a407d363aec4e2038d0ac42c4955d002",
+  "proposal_id": "ep_cf7b3b58-75c2-4e9c-a363-38729abc766f",
+  "proposal_digest": "cc2acb6b8f443a3cb295629ab1ca11fa354ecfeb50dcd59ac58e8c65daabc7c9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Boundary-sum marks are four-node two-conic sections",
+      "status": "admitted",
+      "body": "A boundary-sum mark forces one Delta coordinate to vanish, reducing the plane branch quartic to a binary quadratic in two squared differences; generically it factors into two conics meeting at four sign nodes. Single-edge marks miss all nodes. Four source terms have seven four-node marks; twenty-four have six plus one zero-node mark.",
+      "entity_id": "mariciclaim:41b528e8cb9988c9098d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Four-site source marked-section type census",
+      "status": "passed",
+      "body": "The checker classifies every mark in all 28 terms by exact node incidence, derives the representative binary-quadratic normal form, and verifies the two term profiles (0,7)x4 and (1,6)x24.",
+      "entity_id": "maricitest:4783a0584f78331c9558"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:41b528e8cb9988c9098d",
+      "target_id": "maricitest:4783a0584f78331c9558",
+      "relation_id": "rel:maricisupported_by-098f98713b0cc60f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa refines the four-site Gysin frontier to nodal two-conic sections",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1183 corrects the naive seven-E7 assembly. Boundary-sum marks force Delta_i=0, so their plane quartic is a binary quadratic in two squared differences: two conics meeting at four sign nodes. Single-edge marks avoid all nodes. Census: 4 terms have seven four-node marks; 24 terms have six plus one smooth mark. Next is the A1^4 root embedding inside resolved E7 and its primitive contraction/gluing with Entry 1181.",
+      "entity_id": "maricicommunication:b02f39f63c6a9d771472"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:b02f39f63c6a9d771472",
+      "relation_id": "rel:maricisent_by-0c4a055bbc35d01b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:b02f39f63c6a9d771472",
+      "relation_id": "rel:addressed_to-5f5ecf05abd6e097"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:b02f39f63c6a9d771472",
+      "target_id": "mariciclaim:41b528e8cb9988c9098d",
+      "relation_id": "rel:maricicommunicates-d292c34e18dd722e"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact source marked-section classification for the four-site quartic double solid."
+  },
+  "idempotency_key": "auto-admission-21387f8e209c2f9e766c0168",
+  "occurred_at": "2026-08-20T16:31:01.9080942Z",
+  "certifies_truth": false,
+  "event_hash": "0c629e8d2b1a4e4d7a34f4ebe3de50390842f95319ea455e986ff9108139b864"
+}

@@ -1,0 +1,115 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1003,
+  "event_id": "ev-000000001003-36d866d7-a3d3-4597-bafa-03f1aa07c822",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "027735cd3bafdf3faa565a03612e2cdc72c50197e0a605352d8bd22541815c4f",
+  "proposal_id": "ep_1261f62b-1a13-490d-ac9a-6596139d9a71",
+  "proposal_digest": "859c86379a73021bd1111ff2d9e7791ab469242bcc9bbff1ec462f5525b7d934",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Complete codimension-one sparse flavor-fiber face atlas",
+      "version": "2026-08-20",
+      "locator": "research/flavor/checkers/wp10_sparse_fiber_face_atlas.py; research/flavor/results/wp10_sparse_fiber_face_atlas.json; research/flavor/flavor-positive-gram-carrier-packet.md",
+      "entity_id": "source:a59ea4a53619852d4107"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Carrier-face connectivity of the 34 sparse-fiber components",
+      "summary": "549 deletions yield 67 canonical face types; 60 are shared, giving 442 eligible component pairs and one connected carrier-gate component.",
+      "entity_id": "test:34e2943197243fce95d0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Codimension-one sparse support is abundant but does not select the physical incidence groupoid",
+      "summary": "The support-face gate connects all 34 components, while actual arrows still require normalized boundary readout and continuation compatibility.",
+      "entity_id": "claim:8f063f443bb699f984ab"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next",
+      "kind": "problem",
+      "title": "Audit normalized boundary readout on the 33-edge maximum-support carrier spanning tree",
+      "entity_id": "problem:f88b93aafe520645cd74"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports the complete support-face gate to Figueiredo",
+      "sender": "marici.Nima",
+      "recipient": "marici.Figueiredo",
+      "intent": "result",
+      "sent_at": "2026-08-20T17:20:40.563Z",
+      "body": "The complete codimension-one carrier gate is now computed: 61 vertices x 9 deletions = 549 face occurrences, collapsing to 67 sector-preserving S3^3-canonical face types. Sixty are shared across the prior 34 components; 442 component pairs are carrier-eligible and the gate graph is connected. Thus support matching is abundant but nonselective. I extracted a deterministic maximum-support spanning tree with 33 explicit face witnesses. The next legitimate workload is normalized boundary-readout/continuation matching on those 33 only; none is yet an admitted incidence arrow.",
+      "entity_id": "maricicommunication:280ca4ff008d1412507e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:8f063f443bb699f984ab",
+      "target_id": "source:a59ea4a53619852d4107",
+      "relation_id": "rel:derived_from-35d8f6525ad9f918"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:34e2943197243fce95d0",
+      "target_id": "claim:8f063f443bb699f984ab",
+      "relation_id": "rel:tests-53938948d31066fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next",
+      "target_ref": "claim",
+      "source_id": "problem:f88b93aafe520645cd74",
+      "target_id": "claim:8f063f443bb699f984ab",
+      "relation_id": "rel:depends_on-b00a25f236bd4463"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:280ca4ff008d1412507e",
+      "relation_id": "rel:maricisent_by-cf130e5e31432cd4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "maricicommunication:280ca4ff008d1412507e",
+      "relation_id": "rel:mariciaddressed_to-ee00d55393496913"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:280ca4ff008d1412507e",
+      "target_id": "claim:8f063f443bb699f984ab",
+      "relation_id": "rel:reports-53818922d4dc6ac3"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_direct_instruction": "Continue the sharp flavor incidence program."
+  },
+  "idempotency_key": "auto-admission-d33da63ab10d225235b1e32b",
+  "occurred_at": "2026-08-20T17:20:40.7543247Z",
+  "certifies_truth": false,
+  "event_hash": "2125fe705d3721833f5ae49b2d472fa2b086124c16de7e0b6ac63657e9b30c72"
+}

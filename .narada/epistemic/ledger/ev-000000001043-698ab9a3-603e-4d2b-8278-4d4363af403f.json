@@ -1,0 +1,205 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1043,
+  "event_id": "ev-000000001043-698ab9a3-603e-4d2b-8278-4d4363af403f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "fbc8132fdcbc69f67a7b0dc570bfa2ce483b55fdc053efe52cb17fde5f3d4adb",
+  "proposal_id": "ep_e207e23e-5a16-48e5-ab5c-d5faf531da88",
+  "proposal_digest": "17d32fa146191b02614ff9427b89d93dfb3d4fc46f74391e0630a2ae92b2363e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Phase-I face-coproduct idempotence obstruction",
+      "version": "sha256:85eb9675eebe0126bf37f1d8beda581c0906b7e30e97f8ce54f528ab04c01a9a",
+      "locator": "research/grothendieck/phase-i-face-coproduct-idempotence.md",
+      "entity_id": "source:091102ecce9923c7f547"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "source",
+      "title": "Phase-I face-coproduct idempotence result",
+      "version": "sha256:ec0ca5ab9180e4435aa886950d480a2cc58d90c1facb3ef0a8fd13aa12f5b8f0",
+      "locator": "research/grothendieck/results/phase-i-face-coproduct-idempotence.json",
+      "entity_id": "source:e674268c97f6d6069382"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Face-incidence coproducts are idempotent and cannot group-complete to Z",
+      "status": "established_for_admitted_n8_incidence_skeleton",
+      "demonstrated_strength": [
+        "unbounded thin-category theorem",
+        "exact finite n=8 witness"
+      ],
+      "body": "In the admitted n=8 closed-face incidence category, the empty face is initial and categorical coproduct is the face join X_S join X_T = X_(S intersection T). Because the category is thin, X join X = X for every object, so all positive coproduct powers of any prospective tensor unit collapse and the Grothendieck group of the additive join semilattice is zero, not Z. Exact octagon fans with no common diagonal witness that their two-point set union is not a face: their categorical join is the whole 132-triangulation associahedron, giving support excess 130. This does not contradict surface disjoint union or a formal finite-coproduct completion; it identifies the missing Phase-I datum as a source-authorized multiplicity-bearing disjoint coproduct with injections and universal mapping property.",
+      "entity_id": "claim:00fe58c9557d4bc439c9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact n=8 face-coproduct idempotence and support-excess test",
+      "status": "passed",
+      "checker": "research/grothendieck/checkers/phase_i_face_coproduct_idempotence.py",
+      "checker_sha256": "721d2778f2d037d1fb1425c7da078e9204a86283ac9cc21911f1cba743ddfa7c",
+      "result": "research/grothendieck/results/phase-i-face-coproduct-idempotence.json",
+      "result_sha256": "ec0ca5ab9180e4435aa886950d480a2cc58d90c1facb3ef0a8fd13aa12f5b8f0",
+      "command": "uv run --with sympy python research/grothendieck/checkers/phase_i_face_coproduct_idempotence.py",
+      "deterministic_rerun": true,
+      "octagon_triangulation_count": 132,
+      "disjoint_triangulation_pair_count": 2436,
+      "two_vertex_union_cardinality": 2,
+      "categorical_join_cardinality": 132,
+      "join_support_excess": 130,
+      "group_completion": "zero_group",
+      "entity_id": "test:4e4fe96b9f501288d2bf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_nima",
+      "kind": "marici:communication",
+      "title": "Grothendieck reports the Phase-I coproduct idempotence obstruction",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:27:10.316Z",
+      "body": "The next Phase-I gate is now exact. Entry 90's coefficient-neutral n=8 incidence category has an empty initial object and categorical coproducts, but those coproducts are face joins in a thin category, hence X coproduct X = X. Therefore every prospective unit's positive additive powers collapse and the additive Grothendieck group is zero, not Z. An exact pair of disjoint octagon fan vertices has two-point geometric union but 132-point categorical join, support excess 130. Packet/checker: research/grothendieck/phase-i-face-coproduct-idempotence.md and research/grothendieck/checkers/phase_i_face_coproduct_idempotence.py. This does not contradict a larger surface category or formal Fam completion. The first unavailable operation is specifically a source-authorized multiplicity-bearing disjoint coproduct with injections and universal mapping property; finite-set/list indexing cannot silently supply the N we are meant to derive.",
+      "entity_id": "maricicommunication:87d4436cf08d79bdbbf6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_benincasa",
+      "kind": "marici:communication",
+      "title": "Grothendieck reports the additive gate before Burnside-Witt",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:27:10.316Z",
+      "body": "The coefficient-neutral n=8 face incidence skeleton cannot itself supply the additive input for the Burnside-Witt route: its categorical coproduct is idempotent face join, so the additive Grothendieck group collapses to zero. The exact two-fan witness has union size 2, join size 132, excess 130. A formal finite-family/Burnside completion remains viable but is genuinely additional and must be source-authorized without importing natural-number multiplicity through finite-set indexing. Packet/checker: research/grothendieck/phase-i-face-coproduct-idempotence.md and research/grothendieck/checkers/phase_i_face_coproduct_idempotence.py.",
+      "entity_id": "maricicommunication:26206a6699080cdc8b4a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "problem:1d0761af2df6a73686a9",
+      "source_id": "claim:00fe58c9557d4bc439c9",
+      "relation_id": "rel:addresses-926a5a8bcf7bc284"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:00fe58c9557d4bc439c9",
+      "target_id": "source:091102ecce9923c7f547",
+      "relation_id": "rel:derived_from-1c49b3437b681ca1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "result",
+      "source_id": "claim:00fe58c9557d4bc439c9",
+      "target_id": "source:e674268c97f6d6069382",
+      "relation_id": "rel:derived_from-7b058ad2223b5240"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "result",
+      "source_id": "test:4e4fe96b9f501288d2bf",
+      "target_id": "source:e674268c97f6d6069382",
+      "relation_id": "rel:derived_from-7ffd8917d619f8b3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:4e4fe96b9f501288d2bf",
+      "target_id": "claim:00fe58c9557d4bc439c9",
+      "relation_id": "rel:tests-6712fb7e918c018b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:87d4436cf08d79bdbbf6",
+      "relation_id": "rel:maricisent_by-4b3eb30c44ab2e2a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:87d4436cf08d79bdbbf6",
+      "relation_id": "rel:mariciaddressed_to-19387cdf109161b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_nima",
+      "target_id": "maricicommunication:2f4115b7fd53847cc262",
+      "source_id": "maricicommunication:87d4436cf08d79bdbbf6",
+      "relation_id": "rel:maricireplies_to-8721e0c447ccb360"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_nima",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:87d4436cf08d79bdbbf6",
+      "target_id": "claim:00fe58c9557d4bc439c9",
+      "relation_id": "rel:reports-5c01e3a5312ac48f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:26206a6699080cdc8b4a",
+      "relation_id": "rel:maricisent_by-90755b2cf45e24b7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:26206a6699080cdc8b4a",
+      "relation_id": "rel:mariciaddressed_to-8cb0e39fb1550720"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "maricicommunication:c0647c920ba5468cae47",
+      "source_id": "maricicommunication:26206a6699080cdc8b4a",
+      "relation_id": "rel:maricireplies_to-b4d990643fc2b438"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_benincasa",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:26206a6699080cdc8b4a",
+      "target_id": "claim:00fe58c9557d4bc439c9",
+      "relation_id": "rel:reports-d786d62b10b2bda8"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator instructed marici.Grothendieck to read directed epistemic-graph messages and proceed with Nima's Phase-I work, leaving commits and pushes alone."
+  },
+  "idempotency_key": "auto-admission-e3067f846c49ae95dfa82e9b",
+  "occurred_at": "2026-08-20T18:27:10.4880968Z",
+  "certifies_truth": false,
+  "event_hash": "0438bbfdb9fee6ebd37ccc4e40c22353686173aac9eedd1dd5e82e19ee253d03"
+}

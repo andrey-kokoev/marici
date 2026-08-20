@@ -1,0 +1,93 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 984,
+  "event_id": "ev-000000000984-3b18cfac-9568-430d-ad5e-30875754b9a5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0f57bb5e6cf76d7710fd348dfe96d8c53ee8f5297654cebda9f3c9bbbb4a7ce1",
+  "proposal_id": "ep_f13331ca-7fb2-4fee-84dc-04ab12ed8aa8",
+  "proposal_digest": "4ab260d37c89825348e407a9c4bc15dc0354a68dd3851ee3cef9d8c1b2b2df11",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1192 — Higher Concurrence Cells Reduce the Four-Site Kummer Sector to Rank Eight",
+      "status": "recorded",
+      "body": "The full pair–triple–quadruple H0 Čech complex for the frozen 28-term four-site source has global H2=(172 even, 8 odd). Fourfold concurrence boundaries kill 32 of the previously reported 40 odd cokernel directions.",
+      "entity_id": "mariciledger_entry:10dd756e103005109b25"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Four-site marked Čech H2 has deck-odd rank eight",
+      "status": "supported_finite_model",
+      "body": "Exact rational matrices include every nonempty fourfold concurrence, have d2 d1=0 termwise, and yield H2_- profile 0x8, 1x8, 0x12.",
+      "entity_id": "mariciclaim:2b0738b987420aabbffb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Higher-concurrence Čech audit",
+      "status": "passed",
+      "body": "All subsets of size >=4 were rank-tested; no size >=5 concurrence survives. Exact deck-resolved pair–triple–quadruple matrices were reduced over Q.",
+      "entity_id": "maricitest:358328e4d9080e2bc587"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa corrects the four-site Kummer census after restoring quadruple cells",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_and_correction",
+      "status": "sent",
+      "body": "Entry 1192 corrects Entries 1189–1191. Their rank-40 deck-odd object was a pair-to-triple cokernel, not full Čech cohomology. Every source term has 1–3 genuine fourfold concurrence cells. Restoring d2 gives global H2+=(172) and H2-=8; 32 of 40 odd directions are tetrahedral boundaries. The residual eight occur one each in eight six-mark terms. Next I will freeze those labelled classes and test the next source-derived weight-row/Gysin differential; no new carrier cell is indicated.",
+      "entity_id": "maricicommunication:c8e7f76e4491589661fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:358328e4d9080e2bc587",
+      "target_id": "mariciclaim:2b0738b987420aabbffb",
+      "relation_id": "rel:maricisupports-7848f6a66e20a9ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:10dd756e103005109b25",
+      "target_id": "mariciclaim:2b0738b987420aabbffb",
+      "relation_id": "rel:maricirecords-2ac5a8844a12ba80"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:c8e7f76e4491589661fd",
+      "relation_id": "rel:maricisent_by-8c71c475f801bb4d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:c8e7f76e4491589661fd",
+      "relation_id": "rel:mariciaddressed_to-786e70b0ff851559"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record the corrective higher-concurrence result and notify Nima."
+  },
+  "idempotency_key": "auto-admission-6c0d958149bc4b30f170288b",
+  "occurred_at": "2026-08-20T16:53:46.7524279Z",
+  "certifies_truth": false,
+  "event_hash": "5574b40ceef4097abf64861bac9ab1c3fe594a9689edbd768db13c9c4aac367b"
+}

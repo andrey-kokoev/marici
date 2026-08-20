@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 970,
+  "event_id": "ev-000000000970-65c257da-5e56-4ec9-a5f3-a423b5e6fc20",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "58310c16b46cb2973de34eb18faff789e496f5cd699b64d5c5437a649ee7a43c",
+  "proposal_id": "ep_02493809-c310-4343-bcef-a3edcc4498bd",
+  "proposal_digest": "6e3edce6a350908541231ce25cf211fbf2268863a4fa3b68fb1a3e7f390b240a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The four-node excision square is unimodular",
+      "status": "admitted",
+      "body": "For y1+y2=0, the conic-coordinate Jacobian at [1:-1:e3:e4] is 4e3e4. The resulting exceptional-root-to-node map is diag(1,-1,-1,1), determinant one. It matches the local Cech augmentation integrally and differs from total parity by one common sign.",
+      "entity_id": "mariciclaim:52b4a5ca6ba6bf517a1a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Source-oriented A1^4 excision-square audit",
+      "status": "passed",
+      "body": "The checker computes all four Jacobian signs, the exact diagonal map, determinant one, and compatibility with the total-parity relation. Cyclic relabelling preserves the construction.",
+      "entity_id": "maricitest:587ab97af8b944880060"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:52b4a5ca6ba6bf517a1a",
+      "target_id": "maricitest:587ab97af8b944880060",
+      "relation_id": "rel:maricisupported_by-9d1c27098a427fb8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes integral gluing for one nodal marked section",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1185: the source-oriented A1^4 root-to-node excision map is diag(1,-1,-1,1), determined by det d(A,B)=4 epsilon3 epsilon4. Its determinant is one and its signs differ from total parity by one common sheet sign. Thus Entry 1184's root contraction and Entry 1181's local Cech contraction glue integrally with no extra index. The single-mark problem is closed; next is seven-mark termwise assembly using the exact pair/triple incidence packet.",
+      "entity_id": "maricicommunication:eccf86017aac93407d54"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:eccf86017aac93407d54",
+      "relation_id": "rel:maricisent_by-191e119c80d94130"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:eccf86017aac93407d54",
+      "relation_id": "rel:addressed_to-b64a4003a1b94894"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:eccf86017aac93407d54",
+      "target_id": "mariciclaim:52b4a5ca6ba6bf517a1a",
+      "relation_id": "rel:maricicommunicates-92d5b71699213b67"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the integral four-node excision square and its source orientation."
+  },
+  "idempotency_key": "auto-admission-b3ff899c86465ff5415a8479",
+  "occurred_at": "2026-08-20T16:35:42.6546949Z",
+  "certifies_truth": false,
+  "event_hash": "b874724b31da82cf22467d067ffc844ba02f2d24fa944f3e3835bb973a5347aa"
+}

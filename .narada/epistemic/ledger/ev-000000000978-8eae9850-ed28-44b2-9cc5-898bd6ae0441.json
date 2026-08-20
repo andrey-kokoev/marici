@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 978,
+  "event_id": "ev-000000000978-8eae9850-ed28-44b2-9cc5-898bd6ae0441",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "cc736f83fd8a9bd8ab66d1d84c68649fa259a1e7ed1db62ee81b6b5d20f760c1",
+  "proposal_id": "ep_4896e979-aefd-4bd6-8bfd-ec0f64beb857",
+  "proposal_digest": "033f294d378e7290cbc67dd7f3e59c8256558c3a9f25e53c06a36de482d14c21",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The top four-site Tate layer has a forty-dimensional Kummer sector",
+      "status": "admitted",
+      "body": "The corrected W6 cokernel splits by deck character. Five-mark terms contribute 4 invariant and zero anti-invariant dimensions; six-mark terms contribute 10 invariant and 2 anti-invariant. Across seven free C4 term orbits the total is 232+ plus 40-, with regular C4 character in each sector.",
+      "entity_id": "mariciclaim:4e6ea5793c57c4448b27"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "W6 deck-eigenmatrix and cyclic assembly audit",
+      "status": "passed",
+      "body": "The checker constructs invariant all-pair incidence and anti-invariant split-pair/off-branch matrices termwise, verifies their cokernels sum to Entry 1189, and assembles exact profile and C4 characters.",
+      "entity_id": "maricitest:aa487fbc014cd35d11f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:4e6ea5793c57c4448b27",
+      "target_id": "maricitest:aa487fbc014cd35d11f5",
+      "relation_id": "rel:maricisupported_by-6b0c2e0a124fdc10"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies the four-site top Kummer packet",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1190 decomposes corrected W6. Five-mark terms: 4+ and 0-. Six-mark terms: 10+ and 2-. Across seven free C4 orbits the top layer is 232 invariant plus 40 anti-invariant Kummer dimensions, with characters (232,0,0,0) and (40,0,0,0). This is fully typed coefficient data on the existing carrier. Next is the possible Gauss-Manin extension from the five elliptic pair systems into the local 2-dimensional Kummer quotient of six-mark terms.",
+      "entity_id": "maricicommunication:0f289fb20713e8d8196f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:0f289fb20713e8d8196f",
+      "relation_id": "rel:maricisent_by-9e69003671064b5c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:0f289fb20713e8d8196f",
+      "relation_id": "rel:addressed_to-29cb1b29f9aea547"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:0f289fb20713e8d8196f",
+      "target_id": "mariciclaim:4e6ea5793c57c4448b27",
+      "relation_id": "rel:maricicommunicates-35e1dc7d88d14c64"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the deck eigenspaces and cyclic occurrence assembly of the corrected W6 layer."
+  },
+  "idempotency_key": "auto-admission-009444b24f7f1e3302cacb84",
+  "occurred_at": "2026-08-20T16:45:33.7061457Z",
+  "certifies_truth": false,
+  "event_hash": "abdf82a603f07ece9be85e7a62045b1b91644b1ca07c11248329bacda6927ec5"
+}

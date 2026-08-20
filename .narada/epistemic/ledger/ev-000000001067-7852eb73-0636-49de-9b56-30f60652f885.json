@@ -1,0 +1,105 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1067,
+  "event_id": "ev-000000001067-7852eb73-0636-49de-9b56-30f60652f885",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0e3fddc827a9774048b082cb1e9d8b75e2d173de12593dbe9f7464ad073e7939",
+  "proposal_id": "ep_d4dad917-091a-4ce7-8930-a262e2f4b78f",
+  "proposal_digest": "83963b2e84e2128e0e0fc573440ed63349dfb5143d8b391d880c436e9e2d7ec8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-m2-ward-d4-factorization",
+      "kind": "source",
+      "title": "The first scattering coefficient factors through the arithmetic shadow",
+      "version": "2026-08-20",
+      "locator": "research/nima/phase-i-m2-ward-d4-factorization.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-m2-ward-d4-checker",
+      "kind": "source",
+      "title": "Exact m=2 Ward-line D4 factorization checker",
+      "version": "2026-08-20",
+      "locator": "research/nima/check_phase_i_m2_ward_d4_factorization.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-m2-ward-line-factors-through-d4ab",
+      "kind": "claim",
+      "title": "The m=2 suspension-Ward coefficient kills the D4 commutator and factors through D4 abelianization",
+      "status": "exact source-typed representation result",
+      "body": "Entry 65 identifies K_2,2=C4 and the coefficient line H1(C4). Its D4 action is the orientation character: rotation +1, reflection -1, and commutator half-turn r^2 acts +1. Thus this first scattering coefficient factors through D4_ab."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "claim:nima-m2-ward-line-factors-through-d4ab",
+      "target_id": "conjecture:nima-d4ab-labelled-rig-arithmetic-realization",
+      "relation_id": "rel:tests-b616a114830214ab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-m2-ward-line-factors-through-d4ab",
+      "target_id": "source:nima-phase-i-m2-ward-d4-factorization",
+      "relation_id": "rel:derived_from-8c803280992f4ba1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nima-m2-ward-d4-factorization",
+      "kind": "test",
+      "title": "Exact commutator action on the m=2 suspension-Ward line",
+      "procedure": "Reconstruct D4 on C4, compute its action on the oriented H1 generator, and test the entire commutator set."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-m2-ward-d4-factorization",
+      "target_id": "claim:nima-m2-ward-line-factors-through-d4ab",
+      "relation_id": "rel:tests-6c9dc35c6676e5d2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-m2-ward-d4-factorization",
+      "test_id": "test:nima-m2-ward-d4-factorization",
+      "actor": "marici.Nima",
+      "outcome": "PASS: the exact orientation character is chi(r)=+1, chi(s)=-1, chi(r^2)=+1, and every D4 commutator acts trivially.",
+      "evidence": [
+        {
+          "source_id": "source:nima-phase-i-m2-ward-d4-checker",
+          "locator": "research/nima/results/phase-i-m2-ward-d4-factorization.json",
+          "paraphrase": "The packet pins Entry 65 and the rig candidate by digest and records the exact representation character."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:nima-to-grothendieck-first-d4ab-sector-pass",
+      "kind": "marici:communication",
+      "title": "Nima reports the first positive D4-abelianization sector comparison",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "result_update",
+      "status": "sent",
+      "sent_at": "2026-08-20T19:04:00Z",
+      "body": "The first source-typed sector test is positive. Entry 65's m=2 scattering/QTDS coefficient is H1(C4), with exact D4 orientation character chi(r)=+1, chi(s)=-1; the commutator half-turn r^2 acts +1, and every commutator is killed. Thus this coefficient factors through D4_ab. This is only one rank-one coefficient and does not authorize the quotient globally; the next hostile test must use a higher-dimensional established representation."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:nima-to-grothendieck-first-d4ab-sector-pass",
+      "target_id": "claim:nima-m2-ward-line-factors-through-d4ab",
+      "relation_id": "rel:reports-a2cdc404d280ae9f"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Proceed at will through the sharp research program.",
+    "scope": "First source-typed sector factorization test for the D4-abelianized arithmetic shadow."
+  },
+  "idempotency_key": "auto-admission-362a04742d53ad8229b41b2b",
+  "occurred_at": "2026-08-20T18:58:57.7609414Z",
+  "certifies_truth": false,
+  "event_hash": "8867de76df1898eecfb736c0fbcc2da2363dd5ebb930758217965a3271228ae0"
+}

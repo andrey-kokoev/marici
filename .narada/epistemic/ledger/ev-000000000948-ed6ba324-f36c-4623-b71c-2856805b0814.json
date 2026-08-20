@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 948,
+  "event_id": "ev-000000000948-ed6ba324-f36c-4623-b71c-2856805b0814",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b81942247a7baa6f38dccfed3887a43983afeef4f5d04a4f74eebc3625b4fd79",
+  "proposal_id": "ep_3c5145fd-9008-464e-bd42-2dbd6752acdd",
+  "proposal_digest": "9ebe35b92aa6e903c8ed172c93a95794bbfd0a4f42cd7febb4654d46652054cb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The total-parity defect does not select the positive physical cycle",
+      "status": "admitted",
+      "body": "For V_van=Q^8/<r> with r_epsilon=epsilon2 epsilon3 epsilon4, the literal positive-node coordinate functional has f_+(r)=1 and therefore does not descend. The deck-invariant orbit sum descends but is not supplied by the frozen positive contour.",
+      "entity_id": "mariciclaim:82b9643336f5532e769c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Positive-node functional descent audit",
+      "status": "passed",
+      "body": "Exact checker evaluates the positive coordinate and orbit-sum functionals on the total-parity relation, obtaining 1 and 0 respectively.",
+      "entity_id": "maricitest:7ad0392c317f69882d88"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:82b9643336f5532e769c",
+      "target_id": "maricitest:7ad0392c317f69882d88",
+      "relation_id": "rel:maricisupported_by-ff089aee2a047600"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports that the node defect does not activate the physical cycle",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1173: the canonical rank-seven node lattice does not repair physical activation. The literal positive-node functional evaluates to 1 on the total-parity relation, so it does not descend to Q^8/<r>. The deck-orbit sum does descend, but averaging over all eight nodes is not authorized by the frozen positive contour. This is a coefficient/physical-comparison gap, not a carrier failure.",
+      "entity_id": "maricicommunication:919a8aebab5b785bbbc6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:919a8aebab5b785bbbc6",
+      "relation_id": "rel:maricisent_by-34f035403cf00633"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:919a8aebab5b785bbbc6",
+      "relation_id": "rel:mariciaddressed_to-9332d29d8945ff9e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:919a8aebab5b785bbbc6",
+      "target_id": "mariciclaim:82b9643336f5532e769c",
+      "relation_id": "rel:maricicommunicates-693abda2da08bdf5"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the completed descent audit for the literal positive-node functional."
+  },
+  "idempotency_key": "auto-admission-0ec2c24c30600f2d22b4a0ad",
+  "occurred_at": "2026-08-20T16:10:44.7247102Z",
+  "certifies_truth": false,
+  "event_hash": "e6a894c431bda7213c1ae4de132bd20d52cb69c66621546ef69ed95079bdd995"
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1045,
+  "event_id": "ev-000000001045-067e8a3e-3156-4663-a222-ab959cce492f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "15b5b5e0445c7e65d0be19076a68bc4e00a1a1fd9916061974112d9a8a7b9261",
+  "proposal_id": "ep_50abfbdc-c8a6-4e36-b59f-9d9d1926530e",
+  "proposal_digest": "2c842cf220436e88004f90d6fd1d744963341571d1b66ea851ed74db5bd2fbaf",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1222 — Deck Transport Commutes with the Five-Site Marked Čech Differential",
+      "status": "established",
+      "path": "src/ledger/20260820-1222 Deck Transport Commutes with the Five-Site Marked Cech Differential.md",
+      "sequence_claim_id": "seqclaim-ba395026b51f74ae22d9c72f",
+      "body": "The complete labelled ten-section Cech cubes of all 180 five-site OFPT terms form a strict deck-equivariant complex across 32 chambers. 147,456,000 boundary transports and 2,073,600 d^2 sign checks pass. No projective chain cocycle; Gauss-Manin horizontality remains open.",
+      "entity_id": "mariciledger_entry:0e37125feb148f88394f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site deck-equivariant Čech checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_deck_cech_chain_map.rs",
+      "body": "Exhaustive Rust enumeration of all labelled subsets, incidence signs, chambers, and deck generators.",
+      "entity_id": "mariciverification_artifact:39fd50776b25fcbf00f1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the five-site marked-incidence deck obstruction",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_frontier",
+      "status": "sent",
+      "body": "Entry 1222 passes the full marked-intersection test: every T_i is a strict chain isomorphism on all 180 ten-section OFPT Cech cubes across all 32 sheets. The 147,456,000 transported boundary terms retain their source-order signs; d_Cech^2 checks independently pass. Thus any remaining descent defect must be in the coefficient connection or physical cycle, not the frozen incidence differential. Next gate is source-normalized Gauss-Manin horizontality.",
+      "entity_id": "maricicommunication:2ab8c6c1fffd890eab09"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:0e37125feb148f88394f",
+      "target_id": "mariciverification_artifact:39fd50776b25fcbf00f1",
+      "relation_id": "rel:mariciverified_by-ff40e9e87dde4986"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:2ab8c6c1fffd890eab09",
+      "target_id": "mariciledger_entry:0e37125feb148f88394f",
+      "relation_id": "rel:maricireports-09b6d5f413c148d4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:2ab8c6c1fffd890eab09",
+      "relation_id": "rel:maricisent_by-2949b26a8a52a344"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:2ab8c6c1fffd890eab09",
+      "relation_id": "rel:mariciaddressed_to-2fb62e14933266c2"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the verified five-site deck-equivariant marked Cech chain-map result and notify marici.Nima."
+  },
+  "idempotency_key": "auto-admission-1bb5e901274fd69022fec024",
+  "occurred_at": "2026-08-20T18:32:04.9178426Z",
+  "certifies_truth": false,
+  "event_hash": "9218607887932525dabd5633986bc082b3c814a800c7a78ec4ff02ade1e21f6c"
+}

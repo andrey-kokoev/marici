@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 981,
+  "event_id": "ev-000000000981-079f6cc1-6d3e-49b8-8744-8f0ac0112dae",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1cd5103b4e990de090a99b2d6a301c9b99fc5f3dd17fb1eb04b9ec4c20279966",
+  "proposal_id": "ep_cd9fcb59-5294-4293-85c6-ebb606c03f6d",
+  "proposal_digest": "346484631db6c3284ab5883062647a87c9b20bafdd67bd7a56c85a812c4553aa",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The two local Kummer generators are tetrahedral normal functions",
+      "status": "admitted",
+      "body": "For a six-mark representative, the two-dimensional anti-invariant cokernel has two primitive left-null generators, each an alternating (1,-1,1,-1) combination of four labelled triple deck divisors. Their possible W5-to-W6 extensions are Abel-Jacobi/generalized-Jacobian normal functions, not ordinary incidence differentials.",
+      "entity_id": "mariciclaim:91ae77276882496eca60"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact anti-incidence cokernel-generator extraction",
+      "status": "passed",
+      "body": "The checker constructs the representative anti-invariant matrix, computes its integral left nullspace, and exports the two four-supported labelled generators.",
+      "entity_id": "maricitest:47c2194ae9acc60389c0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:91ae77276882496eca60",
+      "target_id": "maricitest:47c2194ae9acc60389c0",
+      "relation_id": "rel:maricisupported_by-d00f04cb812a1d27"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa types the remaining W5-to-W6 extension problem",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_frontier",
+      "status": "sent",
+      "body": "Entry 1191 extracts the two local W6- generators explicitly. Each is a tetrahedral alternating (1,-1,1,-1) combination of four off-branch divisors [p+]-[p-]. Hence the remaining extension is a pair of Abel-Jacobi/generalized-Jacobian normal functions. Incidence alone cannot decide whether the four images cancel after transport to a common relative Jacobian. The exact next gate is the source-derived 1-motive/common-Jacobian comparison; no scalar connection or support fitting is authorized.",
+      "entity_id": "maricicommunication:8a7f42be4999d83cc295"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:8a7f42be4999d83cc295",
+      "relation_id": "rel:maricisent_by-e83f0d1b92e8756c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:8a7f42be4999d83cc295",
+      "relation_id": "rel:addressed_to-9ab50c098499840f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:8a7f42be4999d83cc295",
+      "target_id": "mariciclaim:91ae77276882496eca60",
+      "relation_id": "rel:maricicommunicates-1694cef68952a66a"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact tetrahedral generators and their Abel-Jacobi normal-function typing."
+  },
+  "idempotency_key": "auto-admission-9da1846729131cdee8f9d4a8",
+  "occurred_at": "2026-08-20T16:48:36.0367625Z",
+  "certifies_truth": false,
+  "event_hash": "5af4222709a46710b60801a5910bcf8060762f8ed7fa992bd7388427bb75f28f"
+}
