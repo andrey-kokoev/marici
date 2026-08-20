@@ -60,6 +60,15 @@ fn rank_mod(rows: &[Vec<i64>], p: i64) -> usize {
     rank
 }
 
+fn rows(matrix: &Mat) -> Vec<Vec<i64>> { matrix.iter().map(|r| r.to_vec()).collect() }
+
+fn preserves_kernel(constraint: &Mat, action: &Mat, p: i64) -> bool {
+    let base = rows(constraint);
+    let mut augmented = base.clone();
+    augmented.extend(rows(&mul(constraint, action)));
+    rank_mod(&base, p) == rank_mod(&augmented, p)
+}
+
 fn mod_pow(mut a: i64, mut n: i64, p: i64) -> i64 {
     let mut out = 1;
     while n > 0 { if n & 1 == 1 { out = out*a % p; } a = a*a % p; n >>= 1; }
@@ -96,5 +105,21 @@ fn main() {
     let spurious_rows: Vec<Vec<i64>> = [5usize,6,7].iter().flat_map(|i| m[*i].iter().map(|r| r.to_vec())).collect();
     let common_kernel_dimension = 6-rank_mod(&spurious_rows, 32003);
     assert_eq!(common_kernel_dimension, 6-rank_mod(&spurious_rows, 32009));
-    println!("rank_two_flats={} kohno_failures=0 residue_ranks={:?} spurious_common_kernel_dim={}", flats.len(), ranks, common_kernel_dimension);
+    let mut individual_failures = Vec::new();
+    let mut flat_sum_failures = Vec::new();
+    let spurious_flats: Vec<Vec<usize>> = flats.values().filter(|indices| indices.iter().any(|i| *i >= 5)).map(|indices| indices.iter().map(|i| i+1).collect()).collect();
+    for s in 5..8 {
+        for j in 0..5 {
+            let preserves = preserves_kernel(&m[s], &m[j], 32003);
+            assert_eq!(preserves, preserves_kernel(&m[s], &m[j], 32009));
+            if !preserves { individual_failures.push((s+1,j+1)); }
+        }
+        for indices in flats.values().filter(|indices| indices.contains(&s)) {
+            let sum_other = indices.iter().filter(|i| **i != s).fold([[0;6];6], |acc, i| add(&acc, &m[*i]));
+            let preserves = preserves_kernel(&m[s], &sum_other, 32003);
+            assert_eq!(preserves, preserves_kernel(&m[s], &sum_other, 32009));
+            if !preserves { flat_sum_failures.push((s+1,indices.iter().map(|i| i+1).collect::<Vec<_>>())); }
+        }
+    }
+    println!("rank_two_flats={} kohno_failures=0 residue_ranks={:?} spurious_common_kernel_dim={} individual_kernel_failures={:?} flat_sum_kernel_failures={:?} spurious_flats={:?}", flats.len(), ranks, common_kernel_dimension, individual_failures, flat_sum_failures, spurious_flats);
 }
