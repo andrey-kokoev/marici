@@ -72,6 +72,10 @@ fn stacked_rank(matrices: &[&Mat], p: i64) -> usize {
     )
 }
 
+fn annihilates(matrix: &Mat, vector: &[i64; 6]) -> bool {
+    (0..6).all(|i| (0..6).map(|j| matrix[i][j] * vector[j]).sum::<i64>() == 0)
+}
+
 fn audit(p: i64) -> (Vec<usize>, i64) {
     // Four times the published M_6,M_7,M_8 matrices.
     let m6: Mat = [
@@ -87,6 +91,19 @@ fn audit(p: i64) -> (Vec<usize>, i64) {
         [1,0,-2,4,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],
     ];
     let matrices = [&m6, &m7, &m8];
+    // Characteristic-zero basis of the single source boundary-value space.
+    let source_boundary_basis = [
+        [0, 0, 2, 1, 0, 0],
+        [-4, -2, -2, 0, 1, 0],
+        [8, 4, 4, 0, 0, 1],
+    ];
+    assert!(source_boundary_basis.iter().all(|v| {
+        matrices.iter().all(|m| annihilates(m, v))
+    }));
+    assert_eq!(
+        rank(source_boundary_basis.iter().map(|v| v.to_vec()).collect(), p),
+        3,
+    );
     let kernels: Vec<Vec<Vec<i64>>> = matrices.iter().map(|m| kernel_basis(m, p)).collect();
     let kernel_dims: Vec<usize> = kernels.iter().map(Vec::len).collect();
 
@@ -167,5 +184,9 @@ fn main() {
          difference_rank={} h0={} h1={} triple_residue_on_h1={}",
         &first.0[0..3], &first.0[3..6], first.0[6], first.0[7],
         first.0[8], first.0[9], first.1,
+    );
+    println!(
+        "source_boundary_basis=[[0,0,2,1,0,0],[-4,-2,-2,0,1,0],[8,4,4,0,0,1]] \
+         source_boundary_factors_through=h0 source_boundary_to_h1=0"
     );
 }
