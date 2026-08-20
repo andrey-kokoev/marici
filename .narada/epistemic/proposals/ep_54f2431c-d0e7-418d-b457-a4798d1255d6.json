@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_54f2431c-d0e7-418d-b457-a4798d1255d6",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology integral cyclic-sewing falsifier and record verified results."
+  },
+  "idempotency_key": "auto-proposal-3f353de402e279cb68d62aaf",
+  "expected_ledger_head": "318cb000980f8d95d2075efae7d9abf96e162a5595cf02a11655581255e45552",
+  "created_at": "2026-08-20T14:22:10.441128Z",
+  "content_fingerprint": "3f353de402e279cb68d62aaf63afe5f9a193c819e584fe156c76903944b23bed",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1150 — Cyclic Sewing Adds No Integral Index Beyond Occurrence Identification",
+      "status": "established",
+      "path": "src/ledger/20260820-1150 Cyclic Sewing Adds No Integral Index Beyond Occurrence Identification.md",
+      "entry_number": 1150,
+      "entity_id": "mariciledger_entry:1cc27aa98105302101f3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Occurrence-resolved cyclic sewing is saturated; only pair-sum occurrence forgetting contributes factors of two",
+      "status": "established",
+      "body": "The six-to-three occurrence-forgetting matrix has Smith invariants (1,1,1), while restriction to the three physical pair sums is 2I3. Each sector commutator vector is primitive due its unit e6 coordinate. No additional cyclic integral index or carrier datum appears.",
+      "entity_id": "mariciclaim:49938fc15f31ed691c79"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Integral cyclic occurrence-sewing Smith audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/cut_nearby_integral_cyclic_saturation.py",
+      "entity_id": "maricitest:47b9be886aab05fe8158"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:1cc27aa98105302101f3",
+      "target_id": "mariciclaim:49938fc15f31ed691c79",
+      "relation_id": "rel:maricirecords-3c031a4c14a73eac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:49938fc15f31ed691c79",
+      "target_id": "maricitest:47b9be886aab05fe8158",
+      "relation_id": "rel:maricitested_by-8780f8a959f379bc"
+    }
+  ],
+  "digest": "27caa2ab3b263b5e579c599ebe8f4a8d626d34c59a92f8f09022261340a30028"
+}

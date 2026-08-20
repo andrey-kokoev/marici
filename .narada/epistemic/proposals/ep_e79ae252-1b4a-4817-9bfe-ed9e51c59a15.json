@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e79ae252-1b4a-4817-9bfe-ed9e51c59a15",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified local integral Betti comparison."
+  },
+  "idempotency_key": "auto-proposal-d2b3fc61a66a4b88a392b037",
+  "expected_ledger_head": "c023e920941597471645ae8d4cb0408ea8c10ae36bc78270035cd4172692da82",
+  "created_at": "2026-08-20T13:42:34.1766208Z",
+  "content_fingerprint": "d2b3fc61a66a4b88a392b03711e34bcaaac9b78d412ebf209278a77c9bf9503c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The first-Rees e6 line is quarter-integral in the local node Betti lattice",
+      "status": "established",
+      "body": "For ordered node sheets (e_plus,e_minus), the physical boundary d=(-1,1) is primitive in reduced H_0. The primitive integral dual has symmetric representative eta=(-1/2,1/2), with eta(d)=1. The source-normalized first-Rees e6 covector rho=(-1/8,1/8) equals eta/4 and pairs with d as 1/4. Hence Z eta = 4 Z rho and Z rho/Z eta is Z/4. The topological node group remains torsion-free; this is a coefficient-lattice index defect.",
+      "entity_id": "claim:4271b82542abd0e79174"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Local node Betti lattice comparison checker",
+      "status": "passed",
+      "body": "Exact rational arithmetic verifies eta(d)=1, rho(d)=1/4, and rho=eta/4.",
+      "entity_id": "test:10b4fd786d60694c31b3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1140 — The First-Rees e6 Line Is Quarter-Integral in the Local Betti Lattice",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1140 The First-Rees e6 Line Is Quarter-Integral in the Local Betti Lattice.md",
+      "entity_id": "mariciledger_entry:805dfdf6d402974b08ac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:4271b82542abd0e79174",
+      "target_id": "test:10b4fd786d60694c31b3",
+      "relation_id": "rel:maricitested_by-d602a28cf8ea9c5d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:805dfdf6d402974b08ac",
+      "target_id": "claim:4271b82542abd0e79174",
+      "relation_id": "rel:maricirecords-2b12f7ef80a81f2a"
+    }
+  ],
+  "digest": "451e72cadd16dbf6b282214c5b62fb00753093c7dd3db8d6779006ef9a3788a0"
+}

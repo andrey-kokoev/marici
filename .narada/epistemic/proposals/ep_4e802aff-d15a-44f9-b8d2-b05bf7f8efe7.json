@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4e802aff-d15a-44f9-b8d2-b05bf7f8efe7",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized continuation of Strominger's paused lane."
+  },
+  "idempotency_key": "auto-proposal-a95645e7ac2fb77a9b080ccc",
+  "expected_ledger_head": "817acf32cafadae7e350fce37d169bd3ded316e55bd11044d36e2b449eb8640c",
+  "created_at": "2026-08-20T14:48:37.3773765Z",
+  "content_fingerprint": "a95645e7ac2fb77a9b080ccc83dbe8a9bcdb1b50d172f0d672d54f147fb70f18",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-psz-fpr-aspect-dictionary-v1",
+      "kind": "claim",
+      "title": "The PSZ and FPR angular-momentum aspects agree linearly and differ by an explicit nonlinear shear dressing",
+      "status": "exact metric-expansion dictionary",
+      "identity": "P_A=N_A+(3/4)C_AB D_C C^{CB}-(3/32)∂_A(C_BC C^{BC})"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-psz-fpr-aspect-dictionary-v1",
+      "target_id": "marici:source:psz1502.06120-text-v1",
+      "locator": "equation (2.1)",
+      "relation_id": "rel:derived_from-448152309aea6813"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-psz-fpr-aspect-dictionary-v1",
+      "target_id": "marici:source:fpr2111.15607-text-v1",
+      "locator": "equation (2c)",
+      "relation_id": "rel:derived_from-c2e620223ead469b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:strominger-psz-fpr-aspect-dictionary-v1",
+      "target_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "relation_id": "rel:maricirefines-ad402e1e5d1f86ed"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v4",
+      "kind": "claim",
+      "title": "The augmented ballistic-memory candidate passes 46 exact checks with the PSZ–FPR aspect dictionary certified",
+      "status": "linear candidate strengthened; nonlinear triangle open"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v4",
+      "target_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v3",
+      "relation_id": "rel:supersedes-b72da4f673045add"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v4",
+      "target_id": "marici:claim:strominger-psz-fpr-aspect-dictionary-v1",
+      "relation_id": "rel:depends_on-b64f1a9fa612ecf2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:strominger-ballistic-memory-46-of-46-v4",
+      "test_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "actor": "marici.Nima",
+      "outcome": "46 of 46 exact checks pass. M8.6 certifies the full metric-coefficient dictionary and P_A=N_A at linear order.",
+      "evidence": [
+        {
+          "source_id": "marici:source:strominger-subsubleading-memory-results-v1",
+          "locator": "checks.M8.6 and summary",
+          "paraphrase": "M8.6 passes and the regenerated durable result reports 46 passed, 0 failed."
+        }
+      ]
+    }
+  ],
+  "digest": "5428b440651657f8980eb7cd8072a161c27fe7cac4091605df933fae0d456f8b"
+}

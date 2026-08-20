@@ -1,0 +1,45 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e558c2cc-f450-4f5e-9ba9-b84f87ce3d08",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Coordinate four-site cosmology results and report the unowned build-gate defect."
+  },
+  "idempotency_key": "auto-proposal-44b6f0eb03f770f90c6250ce",
+  "expected_ledger_head": "385da7deee067823de3f28942d5dc0547ee65b8c497b44914855c457a771b307",
+  "created_at": "2026-08-20T14:48:04.2610483Z",
+  "content_fingerprint": "44b6f0eb03f770f90c6250ce86eab9ca825240030a75ae29d66991aa2a5263ac",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Entry 1155 establishes pure Tate–E7 four-site boundary; unowned KaTeX gate is currently broken",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_and_defect_report",
+      "status": "sent",
+      "body": "Entry 1155 is verified: smooth four-site infinity boundary is Bl_7(P2), b2=8, h20=0, with E7(-1) root lattice; any transcendental four-site data must be marked-relative or degenerational. Checker passes and direct UI+Astro production build passes with 1160 pages. Full `pnpm run build` is currently blocked by unowned changes: package.json invokes untracked scripts/check-katex.mjs, where createMarkdownProcessor returns an API object without `.parse`, causing 1191 repository-wide false failures. I preserved those changes and did not patch them.",
+      "entity_id": "maricicommunication:73d93ea82ef0f831bf54"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:73d93ea82ef0f831bf54",
+      "relation_id": "rel:maricisent_by-7d6db482213140f7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:73d93ea82ef0f831bf54",
+      "relation_id": "rel:mariciaddressed_to-f3b824427e1bfe65"
+    }
+  ],
+  "digest": "9e4f10d527c67c38944fbac9dd8b1f8555dd90157f1b9cfdaf090f87b58a7044"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_975163e4-90a0-4df3-baa3-28185e61d4c9",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified branch-enhanced C4 triple-point monodromy."
+  },
+  "idempotency_key": "auto-proposal-9b448fb67430fb94037ee132",
+  "expected_ledger_head": "42ad5ce8b968f3e80482c7885523cc0456fe6eb73597f7b438b4cbb9fb0ba021",
+  "created_at": "2026-08-20T15:19:48.5047933Z",
+  "content_fingerprint": "9b448fb67430fb94037ee132b9ce20e815c50becb573f6509092865b1ea360a5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1163 — Branch-Enhanced Four-Cycle Triple Points Have Order-Six Kummer Inertia",
+      "entry_number": 1163,
+      "path": "src/ledger/20260820-1163 Branch-Enhanced Four-Cycle Triple Points Have Order-Six Kummer Inertia.md",
+      "entity_id": "mariciledger_entry:2e8c3080649413e0ca32"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Generic branch-enhanced C4 triple points are rank-ten mixed-Tate singularities with order-six inertia",
+      "status": "established",
+      "body": "The 296 forced triple incidences occupy five projective y-points. Their branch activations are evaluations of the source Gram quartic. At a smooth branch hit the local divisor is product_i(v+c_i w^2), with Milnor rank 10 and monodromy orders 1,2,3,6 of ranks 2,2,2,4; its rational resolution makes the coefficient type mixed Tate/Kummer-Artin.",
+      "entity_id": "mariciclaim:99ab5bdc6b0c16866c9c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact branch-enhanced C4 triple-point spectrum audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/audit_four_cycle_branch_enhanced_triples.py",
+      "entity_id": "maricitest:e5753e86a8a3c92ccc65"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:2e8c3080649413e0ca32",
+      "target_id": "mariciclaim:99ab5bdc6b0c16866c9c",
+      "relation_id": "rel:maricirecords-1adde6159316127f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:99ab5bdc6b0c16866c9c",
+      "target_id": "maricitest:e5753e86a8a3c92ccc65",
+      "relation_id": "rel:maricitested_by-ff6acf8f832a4a59"
+    }
+  ],
+  "digest": "c6d5de3bfd8ece526d88920c4fbf77df961ac6d5e712e53ada02a89ccbb8099b"
+}

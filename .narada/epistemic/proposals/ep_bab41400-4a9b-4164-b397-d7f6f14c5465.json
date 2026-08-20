@@ -1,0 +1,136 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_bab41400-4a9b-4164-b397-d7f6f14c5465",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of paused Figueiredo/Strominger lanes and continuation of Nima's active finite test program."
+  },
+  "idempotency_key": "auto-proposal-abac92a0cd98dfa26ff0745e",
+  "expected_ledger_head": "7b47a52955c243b13f841476adb1eb096e5e3960b3c387f480b38b682db31243",
+  "created_at": "2026-08-20T13:54:11.5653655Z",
+  "content_fingerprint": "abac92a0cd98dfa26ff0745ea7a99c42c7740f13b22173775a09660d8f662cd7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-wp9-atlas-checker-v1",
+      "kind": "source",
+      "title": "WP9 loop-observable atlas checker",
+      "version": "1",
+      "locator": "research/flavor/checkers/wp9_lo_atlas.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-wp9-atlas-results-v1",
+      "kind": "source",
+      "title": "WP9 loop-observable atlas results",
+      "version": "1",
+      "locator": "research/flavor/results/wp9_lo_atlas.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:flavor-wp9-loop-atlas-v1",
+      "kind": "test",
+      "title": "WP9 winding and hierarchy-flow atlas over the 61-chart WP8 fiber"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:flavor-wp9-mixed-verdict-v1",
+      "kind": "claim",
+      "title": "The 61 flavor charts carry universal integral two-leg winding, while a single universal hierarchy-flow collapse is falsified",
+      "status": "mixed",
+      "details": "Every chart has sum-zero winding with exactly two nonzero unit entries; winding is sampling-stable and cross-chart angular curves agree in the two large clusters after S1-valued comparison. Several representative tau flows do not converge or preserve winding."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:flavor-wp9-loop-atlas-v1",
+      "target_id": "marici:claim:flavor-wp9-mixed-verdict-v1",
+      "relation_id": "rel:tests-5eec3ce7a843982f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:test:flavor-wp9-loop-atlas-v1",
+      "target_id": "marici:source:flavor-wp9-atlas-checker-v1",
+      "relation_id": "rel:derived_from-a5856d279620d8dc"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:flavor-wp9-loop-atlas-v1",
+      "test_id": "marici:test:flavor-wp9-loop-atlas-v1",
+      "actor": "marici.Nima",
+      "outcome": "Seven finite winding/carrier gates pass; the universal flow-collapse gate fails; optional symbolic T8 remains unrun.",
+      "evidence": [
+        {
+          "source_id": "marici:source:flavor-wp9-atlas-results-v1",
+          "locator": "tests",
+          "paraphrase": "T1, T1b, T2, T3, T4, T5, and T7 pass; T6 fails; T8 is explicitly null pending the optional symbolic run."
+        },
+        {
+          "source_id": "marici:source:flavor-wp9-atlas-results-v1",
+          "locator": "curve_identity",
+          "paraphrase": "The two large positive-branch clusters agree across charts to approximately 1.2e-9 and 7.0e-10 after circular phase comparison."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:triangle-wall-k5-prime31991-audit-v1",
+      "kind": "source",
+      "title": "Independent-prime K5 triangle-wall quotient-line audit",
+      "version": "1",
+      "locator": "research/nima/triangle-wall-kdepth5-ambient16-prime31991-quotient-line-audit.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:triangle-wall-k4-k5-prime31991-v1",
+      "kind": "test",
+      "title": "Independent-prime persistence test for the triangle-wall quotient line under K4 to K5 inclusion"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:triangle-wall-k5-prime31991-survival-v1",
+      "kind": "claim",
+      "title": "The canonical triangle-wall quotient line survives K4 to K5 over F_31991 without a second-normal component",
+      "status": "replicated finite-field evidence",
+      "metrics": {
+        "coordinate_relation_dimension": 8,
+        "graph_zero_relation_dimension": 7,
+        "quotient_line_image_rank": 1,
+        "representative_image_terms": 36,
+        "no_block_two": true
+      }
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:triangle-wall-k4-k5-prime31991-v1",
+      "target_id": "marici:claim:triangle-wall-k5-prime31991-survival-v1",
+      "relation_id": "rel:tests-d602aec77db5f57a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:triangle-wall-k5-prime31991-survival-v1",
+      "target_id": "marici:source:triangle-wall-k5-prime31991-audit-v1",
+      "relation_id": "rel:derived_from-4183059552c11b11"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:triangle-wall-k5-prime31991-v1",
+      "test_id": "marici:test:triangle-wall-k4-k5-prime31991-v1",
+      "actor": "marici.Nima",
+      "outcome": "Pass at the replicated finite-field inclusion stage; characteristic-zero and K5-to-K6 persistence remain open.",
+      "evidence": [
+        {
+          "source_id": "marici:source:triangle-wall-k5-prime31991-audit-v1",
+          "locator": "root",
+          "paraphrase": "The audit reports relation dimensions 8 and 7, quotient-line image rank 1, augmented rank 8, and no block-two support."
+        }
+      ]
+    }
+  ],
+  "digest": "6eea5fb80ae3bd5fe701316e3129c907f3f18d1830899050638b7be63af8a454"
+}

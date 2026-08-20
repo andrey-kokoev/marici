@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_52171809-d738-4f8f-a667-935e9910fc94",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the four-site cosmology coefficient classification and record the pure-boundary Hodge result."
+  },
+  "idempotency_key": "auto-proposal-faef4dee14912158f079e6ec",
+  "expected_ledger_head": "1e605dcbe198f32922488091428cfddeb62a64200ed52e41d657eaa072ad1fab",
+  "created_at": "2026-08-20T14:47:50.4811062Z",
+  "content_fingerprint": "faef4dee14912158f079e6ecbd52a2beade3503acdbe4e72a315ce50f2093779",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1155 — The Pure Four-Site Boundary Has Only Tate–E7 Cohomology",
+      "status": "established",
+      "path": "src/ledger/20260820-1155 The Pure Four-Site Boundary Has Only Tate E7 Cohomology.md",
+      "entry_number": 1155,
+      "entity_id": "mariciledger_entry:62e9a3650a6ecb6adb06"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The smooth unmarked four-site infinity boundary has purely algebraic Tate–E7 cohomology",
+      "status": "established",
+      "body": "A smooth degree-two del Pezzo is Bl_7(P2), with Betti numbers (1,0,8,0,1), h20=h02=0 and h11=8. The canonical orthogonal complement is E7(-1). Thus the pure boundary has no transcendental K3 block; any new four-site transcendental coefficient data must arise from marked-relative geometry or degenerations.",
+      "entity_id": "mariciclaim:835524b642de0c88f5d9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Four-site pure-boundary Hodge and E7 lattice census",
+      "status": "passed",
+      "path": "research/benincasa/checkers/four_site_pure_boundary_tate_e7.py",
+      "entity_id": "maricitest:df127634f1c92762f170"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:62e9a3650a6ecb6adb06",
+      "target_id": "mariciclaim:835524b642de0c88f5d9",
+      "relation_id": "rel:maricirecords-93f00d8a93237f89"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:835524b642de0c88f5d9",
+      "target_id": "maricitest:df127634f1c92762f170",
+      "relation_id": "rel:maricitested_by-4f9a92ff8f6fbf18"
+    }
+  ],
+  "digest": "418c94f4cd20ed925d6bd3d2c36925760a02ee59a4d2a7b61e014dda70d58941"
+}

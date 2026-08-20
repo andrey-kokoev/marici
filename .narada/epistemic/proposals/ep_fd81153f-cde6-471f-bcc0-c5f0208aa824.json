@@ -1,0 +1,110 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_fd81153f-cde6-471f-bcc0-c5f0208aa824",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the corrected higher-Rees cosmology calculation, record verified results, and notify Nima."
+  },
+  "idempotency_key": "auto-proposal-60bf02752f4cd524111ff1fe",
+  "expected_ledger_head": "f384ee362d7119024c5626bcfb00a3d1a44aa79721d59be73192c926f4808151",
+  "created_at": "2026-08-20T13:08:30.3099433Z",
+  "content_fingerprint": "60bf02752f4cd524111ff1fe6aee9224ef2e9a76daa9bf76b66a70fcaaf3c4a0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1133 — The First e6 Rees Correction Carries the Anti-Invariant Node Class",
+      "status": "established-higher-rees",
+      "ledger_number": 1133,
+      "path": "src/ledger/20260820-1133 The First e6 Rees Correction Carries the Anti-Invariant Node Class.md",
+      "claim_id": "seqclaim-8e039f71ec27a429fb059c49",
+      "entity_id": "mariciledger_entry:5c1d5c0bbba441415bc0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The first higher-Rees correction of e6 has anti-invariant node residue minus one eighth",
+      "status": "supported",
+      "body": "For K=p^2(F+pG+...), K1=p(J+pH+...), F=4T^2, J=-16T, exact reduction gives [T^2]H=2 and [T^3]G=-1. Thus the plus-sheet T^-1 residue is 1/32*2+3/16*(-1)=-1/8, while the minus sheet gives +1/8.",
+      "entity_id": "claim:6f3d0050675dafc9eb50"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact Symbolica first-Rees e6 node residue",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/rank12_u2v0_e6_first_rees_residue.rs",
+      "evidence_path": "research/benincasa/results/rank12-u2v0-e6-first-rees-residue.json",
+      "entity_id": "test:e96645ab5411d37f026a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:5c1d5c0bbba441415bc0",
+      "target_id": "claim:6f3d0050675dafc9eb50",
+      "relation_id": "rel:maricirecords-41f1fc0ad882ac99"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:6f3d0050675dafc9eb50",
+      "target_id": "test:e96645ab5411d37f026a",
+      "relation_id": "rel:maricitested_by-cb5ac23eeb3abc45"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:4ec7143832c45c6deb6c",
+      "source_id": "claim:6f3d0050675dafc9eb50",
+      "relation_id": "rel:depends_on-39ed6e4a31cef9fc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa finds the correctly typed first-Rees e6 node class",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "After Entry 1132's retraction, the complete O(p) calculation gives a genuine result: write K=p^2(F+pG+...), K1=p(J+pH+...), with F=4T^2,J=-16T. On W=+2T, the T^-1 coefficient is [T^2]H/32+3[T^3]G/16=2/32-3/16=-1/8; the opposite sheet gives +1/8. Thus Sp^(1)(e6)=-(1/8)(e_plus-e_minus). The leading grade is exact; the node class first appears at higher Rees order. This does not reinstate the mistyped node-to-e6 arrow. Next gate is the supported pairing with partial gamma_CM=e_minus-e_plus including s=0 and B-1=0 faces.",
+      "entity_id": "maricicommunication:d064dbff49171bc257ef"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:d064dbff49171bc257ef",
+      "relation_id": "rel:sent_by-bbdf9690aaeeb5ea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d064dbff49171bc257ef",
+      "relation_id": "rel:addressed_to-0ad55fa5c2955c85"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:d064dbff49171bc257ef",
+      "target_id": "claim:6f3d0050675dafc9eb50",
+      "relation_id": "rel:reports-58c8d8226cf420a9"
+    }
+  ],
+  "digest": "2127c89e139f1e290f11e30d2165d341167b9c2c44e179c32f11d780914c742e"
+}

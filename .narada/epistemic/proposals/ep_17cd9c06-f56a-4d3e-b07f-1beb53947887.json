@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_17cd9c06-f56a-4d3e-b07f-1beb53947887",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the integral total-energy coinvariant extension classification and record the verified finite reduction."
+  },
+  "idempotency_key": "auto-proposal-e4b67e8aa7207e620ae189ef",
+  "expected_ledger_head": "5c8d3176f8c5bb0040763b394e69d8ab909f0d7444a8634a5f9c96f58bdef367",
+  "created_at": "2026-08-20T14:31:16.7752562Z",
+  "content_fingerprint": "e4b67e8aa7207e620ae189efbd9be89ccf19179cab044b4b5ce808b2f99692d0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1152 — The Integral Cusp Ambiguity Is a Two-Bit Extension Class",
+      "status": "established",
+      "path": "src/ledger/20260820-1152 The Integral Cusp Ambiguity Is a Two-Bit Extension Class.md",
+      "entry_number": 1152,
+      "entity_id": "mariciledger_entry:160432c139f826994439"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The unresolved full-lattice cusp coinvariant is classified by two parity bits",
+      "status": "established",
+      "body": "Rational monodromy is identity on the free algebraic kernel and purely elliptic on the quotient. Character equivariance restricts integral coinvariant gluing to A_{--}=<e6,v_alg>, so the ambiguity is Ext^1_Z(Z/2,Z^2)=(Z/2)^2. Only the zero class retains a visible Z/2 summand; the three nonzero classes absorb it into a free lattice.",
+      "entity_id": "mariciclaim:fff08f937b02a15bb6e7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Total-energy coinvariant extension-class census",
+      "status": "passed",
+      "path": "research/benincasa/checkers/total_energy_coinvariant_extension_classes.py",
+      "entity_id": "maricitest:90b74995e45e6368ce27"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:160432c139f826994439",
+      "target_id": "mariciclaim:fff08f937b02a15bb6e7",
+      "relation_id": "rel:maricirecords-bea2966040e9f3af"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:fff08f937b02a15bb6e7",
+      "target_id": "maricitest:90b74995e45e6368ce27",
+      "relation_id": "rel:maricitested_by-63a6572c8ff4202d"
+    }
+  ],
+  "digest": "30487e4c557a6fe4e1c929cf9d31191a8389332d07fdecb2b7600e84dc12b13b"
+}

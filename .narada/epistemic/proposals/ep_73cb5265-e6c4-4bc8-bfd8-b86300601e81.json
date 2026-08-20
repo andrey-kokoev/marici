@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_73cb5265-e6c4-4bc8-bfd8-b86300601e81",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified primary-source boundary for the four-site branch."
+  },
+  "idempotency_key": "auto-proposal-bfc1ec67da0ac30882968d77",
+  "expected_ledger_head": "913533c13bdf0fee29f78d5d1a6adcb1d7c2413c5b2b6a9a09349666dcd05c83",
+  "created_at": "2026-08-20T14:58:58.5488005Z",
+  "content_fingerprint": "bfc1ec67da0ac30882968d774d1066cfe683a17eeccfde6dd65986748ed493e4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1158 — The Primary Loop Paper Does Not Freeze a Four-Site Term",
+      "entry_number": 1158,
+      "path": "src/ledger/20260820-1158 The Primary Loop Paper Does Not Freeze a Four-Site Term.md",
+      "entity_id": "mariciledger_entry:6d40ba115cee2c4ea801"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "arXiv 2408.16386 does not freeze an explicit four-site signed-triangulation term",
+      "status": "established",
+      "body": "The primary paper explicitly treats only the one-loop two- and three-site applications. Its general q_g/canonical-function formalism determines a four-site carrier arrangement but not a simultaneous labelled denominator subset for one physical four-site term.",
+      "entity_id": "mariciclaim:27766b71a3781cf57c99"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Primary-source four-site packet audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/audit_primary_four_site_packet.py",
+      "entity_id": "maricitest:1ceb3028adddd96660f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:6d40ba115cee2c4ea801",
+      "target_id": "mariciclaim:27766b71a3781cf57c99",
+      "relation_id": "rel:maricirecords-8169599445182986"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:27766b71a3781cf57c99",
+      "target_id": "maricitest:1ceb3028adddd96660f5",
+      "relation_id": "rel:maricitested_by-515d0c6c8bc23a7d"
+    }
+  ],
+  "digest": "edfad570222365296fe3acd4fc5ae2884648611f73bd66c170b9db15568dfbc7"
+}

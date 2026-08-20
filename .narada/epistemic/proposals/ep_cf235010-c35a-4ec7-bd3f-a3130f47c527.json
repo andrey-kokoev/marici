@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cf235010-c35a-4ec7-bd3f-a3130f47c527",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology research and record verified results in the ledger and epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-5b8c7a95f6e8a94b3ec38dbf",
+  "expected_ledger_head": "7fead92464cbed86bcd0d7b3f5fd392e9e76a46439e70aa06d9ec77fb2e6a952",
+  "created_at": "2026-08-20T14:19:33.5048275Z",
+  "content_fingerprint": "5b8c7a95f6e8a94b3ec38dbff0d31cc1cbfbd371dfd4dd1f93438214535c25c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1149 — The Physical Cut-Nearby Commutator Misses the Elliptic Width-Two Class",
+      "status": "established",
+      "path": "src/ledger/20260820-1149 The Physical Cut-Nearby Commutator Misses the Elliptic Width-Two Class.md",
+      "entry_number": 1149,
+      "entity_id": "mariciledger_entry:bea2ac03d17c6e644e9d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The source-normalized physical Cut-nearby commutator has zero image in the elliptic width-two coinvariant",
+      "status": "established",
+      "body": "Entry 226's nonzero commutator is supported on e3,e5,e6. Entry 150's infinity-Gysin map kills each component termwise, so the composite to the elliptic quotient and its Z/2 coinvariant is integrally zero. The commutator remains a third-Rees algebraic Tate/Kummer class; no new carrier datum appears.",
+      "entity_id": "mariciclaim:0e3942a351c5e6f3e79d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Termwise infinity-Gysin and mod-two projection checker",
+      "status": "passed",
+      "path": "research/benincasa/checkers/cut_nearby_elliptic_z2_exclusion.py",
+      "entity_id": "maricitest:db67f95c044b25b13285"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:bea2ac03d17c6e644e9d",
+      "target_id": "mariciclaim:0e3942a351c5e6f3e79d",
+      "relation_id": "rel:maricirecords-135fe329dd8e1914"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:0e3942a351c5e6f3e79d",
+      "target_id": "maricitest:db67f95c044b25b13285",
+      "relation_id": "rel:maricitested_by-b9ed2879d761d6cd"
+    }
+  ],
+  "digest": "7d667b03ef0cccbcdc1e53d6d7108d97e05859ee137a725af858a0a321964053"
+}

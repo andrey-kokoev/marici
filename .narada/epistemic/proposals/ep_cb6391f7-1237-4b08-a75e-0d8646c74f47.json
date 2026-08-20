@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cb6391f7-1237-4b08-a75e-0d8646c74f47",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology higher-polygon falsifier and record the source-derived four-site boundary classification."
+  },
+  "idempotency_key": "auto-proposal-83d389a5dd0258469f78d80d",
+  "expected_ledger_head": "876735404e3f83959da556503e997ba26830fc9b8a2c1f134eee138d46c2b946",
+  "created_at": "2026-08-20T14:44:14.7520996Z",
+  "content_fingerprint": "83d389a5dd0258469f78d80d362860818fc9a3228f7d01bc2a91f59d1337ef4e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1154 — The Four-Site Infinity Boundary Is Del Pezzo, Not K3",
+      "status": "established",
+      "path": "src/ledger/20260820-1154 The Four-Site Infinity Boundary Is Del Pezzo Not K3.md",
+      "entry_number": 1154,
+      "entity_id": "mariciledger_entry:d511d780f6c3f20b80f7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The pure four-site one-loop infinity boundary is generically degree-two del Pezzo, not K3",
+      "status": "established",
+      "body": "The general one-loop Baikov/Cayley-Menger polynomial is quadratic in squared edge variables and therefore quartic in edge variables. A linear marked-Cut residue preserves generic quartic degree. For four sites the infinity double cover of P2 is branched over a quartic, has K=-pi^*H and anticanonical square 2, hence is degree-two del Pezzo rather than K3.",
+      "entity_id": "mariciclaim:066c2cd946f548ba5be0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Four-site Baikov degree and canonical-class audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/four_site_infinity_boundary_not_k3.py",
+      "entity_id": "maricitest:3ee3f6c549bb1ba9f9b3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d511d780f6c3f20b80f7",
+      "target_id": "mariciclaim:066c2cd946f548ba5be0",
+      "relation_id": "rel:maricirecords-84e6fd2ef01da9f8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:066c2cd946f548ba5be0",
+      "target_id": "maricitest:3ee3f6c549bb1ba9f9b3",
+      "relation_id": "rel:maricitested_by-b8f4741a399894da"
+    }
+  ],
+  "digest": "3a164bf0260d717d85d95fb5bf385cfeb3fbc6d6e3c3377bb8b9229b65422338"
+}

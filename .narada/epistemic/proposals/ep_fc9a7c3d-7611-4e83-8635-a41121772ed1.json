@@ -1,0 +1,97 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_fc9a7c3d-7611-4e83-8635-a41121772ed1",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of the paused Figueiredo lane."
+  },
+  "idempotency_key": "auto-proposal-0ecb681c0b499bb0963a41f4",
+  "expected_ledger_head": "9b8987351ad34cb1c342fd02e75d312311bccc3a37be382b23797870916ea73d",
+  "created_at": "2026-08-20T14:18:26.1782957Z",
+  "content_fingerprint": "0ecb681c0b499bb0963a41f4558f41d2c35aba42cc6c358c9e9123c399cbb10d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-wp9-transition-checker-v1",
+      "kind": "source",
+      "title": "WP9 chart-transition naturality checker",
+      "version": "1",
+      "locator": "research/flavor/checkers/wp9_transition_naturality.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-wp9-transition-results-v1",
+      "kind": "source",
+      "title": "WP9 chart-transition naturality results",
+      "version": "1",
+      "locator": "research/flavor/results/wp9_transition_naturality.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:flavor-wp9-transition-naturality-v1",
+      "kind": "test",
+      "title": "Test commutation of sparse-chart transition with the WP9 hierarchy deformation"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:flavor-wp9-flow-mistyped-v1",
+      "kind": "claim",
+      "title": "The WP9 physical base transition is coherent, but sparse exponent rescaling does not descend to a natural flow on the physical quotient",
+      "status": "finite falsification of flow naturality",
+      "metrics": {
+        "mixed_cores": [
+          0.819271,
+          1.566129
+        ],
+        "base_spread_max": 6.078376912910244e-9,
+        "later_spreads": [
+          0.05692304139086679,
+          0.03959226711844899
+        ]
+      }
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:flavor-wp9-transition-naturality-v1",
+      "target_id": "marici:claim:flavor-wp9-flow-mistyped-v1",
+      "relation_id": "rel:tests-1e49baf7e35e8c08"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:flavor-wp9-flow-mistyped-v1",
+      "target_id": "marici:claim:flavor-wp9-two-mixed-cores-v1",
+      "relation_id": "rel:maricirefines-b76d04d47bef1542"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:flavor-wp9-flow-mistyped-v1",
+      "target_id": "marici:source:flavor-wp9-transition-results-v1",
+      "relation_id": "rel:derived_from-dea53ed2c53cd766"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:flavor-wp9-transition-naturality-v1",
+      "test_id": "marici:test:flavor-wp9-transition-naturality-v1",
+      "actor": "marici.Nima",
+      "outcome": "All four gates pass: repeated cores share the base readout; exactly two cores have mixed convergence; both exhibit nonnatural chartwise flow.",
+      "evidence": [
+        {
+          "source_id": "marici:source:flavor-wp9-transition-results-v1",
+          "locator": "tests",
+          "paraphrase": "T1 through T4 are true."
+        },
+        {
+          "source_id": "marici:source:flavor-wp9-transition-results-v1",
+          "locator": "records",
+          "paraphrase": "Base discrepancies are below 6.1e-9, whereas later common-tau discrepancies reach about 5.7e-2 and 4.0e-2."
+        }
+      ]
+    }
+  ],
+  "digest": "f385630bbf659aa1ba88b43303c0b653f796dbfb7ed9a3e69e27dfde5cdadf51"
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4515c00e-e28d-41ff-8efa-d606cf725aff",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology integral Gysin-lattice falsifier and record verified results."
+  },
+  "idempotency_key": "auto-proposal-f6d6be200344a4edaf04fbea",
+  "expected_ledger_head": "9f99e50662bfda41a4cb30884c2cead9b2c15fab4ee01dec4cda260cd99fb972",
+  "created_at": "2026-08-20T14:27:47.7688023Z",
+  "content_fingerprint": "f6d6be200344a4edaf04fbea195f38d36e56c8e160c3727b681dfc16f1b991f6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1151 — The Integral Infinity-Gysin Kernel Is Primitive",
+      "status": "established",
+      "path": "src/ledger/20260820-1151 The Integral Infinity-Gysin Kernel Is Primitive.md",
+      "entry_number": 1151,
+      "entity_id": "mariciledger_entry:6f43f10cccd06759c928"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The generic integral rank-seven infinity-Gysin kernel is primitive and torsion-free",
+      "status": "established",
+      "body": "For the degree-two del Pezzo surface, the anticanonical elliptic boundary has primitive class 3H-E1-...-E7. Integral localization gives 0 -> Z7 -> H2(S minus D) -> Z2(-1) -> 0. Thus static lattice torsion cannot identify algebraic conductor parities, occurrence-forgetting factors, and the elliptic width-two monodromy coinvariant.",
+      "entity_id": "mariciclaim:1ac59407b32ad1c5165a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Integral degree-two del Pezzo Gysin lattice audit",
+      "status": "passed",
+      "path": "research/benincasa/checkers/integral_del_pezzo2_gysin_lattice.py",
+      "entity_id": "maricitest:a7a41dbbd57ce1ede849"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:6f43f10cccd06759c928",
+      "target_id": "mariciclaim:1ac59407b32ad1c5165a",
+      "relation_id": "rel:maricirecords-d4a8cf0a80e271a1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:1ac59407b32ad1c5165a",
+      "target_id": "maricitest:a7a41dbbd57ce1ede849",
+      "relation_id": "rel:maricitested_by-5a7b3dba257a8817"
+    }
+  ],
+  "digest": "b806ee99a9bf5fb859e36dcd21a917cf5ad3d55cff47fe9831841970b2a04a78"
+}
