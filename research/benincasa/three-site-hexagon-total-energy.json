@@ -1,0 +1,33 @@
+{
+  "schema": "marici.three-site-hexagon-total-energy.v1",
+  "frozen_equations": {
+    "total_energy": "E=X1+X2+X3",
+    "marked_cuts": {
+      "qG12": "E+y12",
+      "qG23": "E+y23",
+      "qG31": "E+y31"
+    },
+    "lower_poles": {
+      "qg23": "X2+X3+y12+y31",
+      "qg12": "X1+X2+y23+y31",
+      "qg31": "X3+X1+y12+y23"
+    }
+  },
+  "specialized_oriented_edges": [
+    {"occurrence":"G12|g23","support":["y12=0","y31=X1"]},
+    {"occurrence":"G31|g23","support":["y31=0","y12=X1"]},
+    {"occurrence":"G31|g12","support":["y31=0","y23=X3"]},
+    {"occurrence":"G23|g12","support":["y23=0","y31=X3"]},
+    {"occurrence":"G23|g31","support":["y23=0","y12=X2"]},
+    {"occurrence":"G12|g31","support":["y12=0","y23=X2"]}
+  ],
+  "occurrence_forgetting_multiplicity": {"G12":2,"G23":2,"G31":2},
+  "classification": {
+    "generic_scattering_cut_flag": false,
+    "existing_coordinate_soft_carrier": true,
+    "occurrence_labels_survive": true,
+    "new_carrier_incidence": false,
+    "coefficient_target": "Entry 229 cyclic algebraic Tate/Kummer Cut-nearby sector",
+    "coefficient_map_status": "not yet constructed at full occurrence level"
+  }
+}
