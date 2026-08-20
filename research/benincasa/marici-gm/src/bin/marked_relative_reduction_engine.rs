@@ -273,7 +273,65 @@ fn exceptional_p_chart_geometry(ss: u64, differentiated: bool) -> Geometry {
     }
 }
 
+fn exceptional_q_chart_geometry(rr: u64, differentiated: bool) -> Geometry {
+    let one = F::o();
+    let two = F::n(2);
+    let half = two.inv();
+    let quarter = F::n(4).inv();
+    let sixteenth = F::n(16).inv();
+    let r = if differentiated { D::var(F::n(rr)) } else { D::c(F::n(rr)) };
+    let r2 = r.sq();
+    let r3 = r2.mul(r);
+    let r4 = r2.sq();
+
+    let a2b = D::c(two).mul(r.sub(D::c(one)));
+    let a2 = r.neg()
+        .sub(r2.mul(D::c(F::n(5).mul(half))))
+        .sub(D::c(half));
+    let b2 = r.add(D::c(one)).sq();
+    let b1 = D::c(half)
+        .add(r.mul(D::c(half)))
+        .add(r2.mul(D::c(F::n(3).mul(half))))
+        .sub(r3.mul(D::c(F::n(5).mul(half))));
+    let constant = r.mul(D::c(quarter))
+        .add(r2.mul(D::c(F::n(7).mul(F::n(8).inv()))))
+        .sub(r3.mul(D::c(F::n(11).mul(quarter))))
+        .add(r4.mul(D::c(F::n(25).mul(sixteenth))))
+        .add(D::c(sixteenth));
+    let mut k = Poly::zero();
+    let mut kp = Poly::zero();
+    for (monomial, coefficient) in [
+        ((4, 0), D::c(one)), ((2, 1), a2b), ((2, 0), a2),
+        ((0, 2), b2), ((0, 1), b1), ((0, 0), constant),
+    ] {
+        if coefficient.x.0 != 0 { k.0.insert(monomial, coefficient.x); }
+        if coefficient.d.0 != 0 { kp.0.insert(monomial, coefficient.d); }
+    }
+
+    let k1_a2 = r.mul(D::c(F::n(4)));
+    let k1_b = r.mul(r.sub(D::c(one))).mul(D::c(F::n(4)));
+    let k1_c = r.mul(
+        D::c(one.neg()).add(r.mul(D::c(F::n(6)))).sub(r2.mul(D::c(F::n(5)))));
+    let mut k1 = Poly::zero();
+    let mut k1p = Poly::zero();
+    for (monomial, coefficient) in [((2, 0), k1_a2), ((0, 1), k1_b), ((0, 0), k1_c)] {
+        if coefficient.x.0 != 0 { k1.0.insert(monomial, coefficient.x); }
+        if coefficient.d.0 != 0 { k1p.0.insert(monomial, coefficient.d); }
+    }
+
+    Geometry {
+        k, kp, k1, k1p,
+        l1: Poly::mon(0, 1, one).sub(&Poly::c(r.x)),
+        l2: Poly::mon(1, 0, one).add(&Poly::c(one.sub(r.x).mul(half))),
+        l1p: r.d.neg(),
+        l2p: r.d.neg().mul(half),
+    }
+}
+
 fn geometry(uu: u64, vv: u64, axis: char) -> Geometry {
+    if std::env::var_os("MARICI_EXCEPTIONAL_Q_CHART").is_some() {
+        return exceptional_q_chart_geometry(uu, axis == 'u');
+    }
     if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some() {
         return exceptional_p_chart_geometry(uu, axis == 'u');
     }
@@ -816,10 +874,14 @@ fn run_dual(samples: &[(u64, u64)]) {
     println!("}}");
 }
 
-fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
+fn run_exceptional_chart(samples: &[(u64, u64)], q_chart: bool) {
     let mut records = Vec::new();
     for (s, _) in samples {
-        let g = exceptional_p_chart_geometry(*s, true);
+        let g = if q_chart {
+            exceptional_q_chart_geometry(*s, true)
+        } else {
+            exceptional_p_chart_geometry(*s, true)
+        };
         let class_columns: Vec<Poly> = classes(&g).iter().map(|class| common(&g, class)).collect();
         let mut exact_columns = Vec::new();
         for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
@@ -862,8 +924,8 @@ fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
     println!("{{");
     println!("  \"schema\": \"marici.benincasa.rank12_u0_v2_exceptional_p_chart_reduction.v1\",");
     println!("  \"prime\": {},", P);
-    println!("  \"chart\": \"p_nonzero\",");
-    println!("  \"coordinate\": \"s=q/p\",");
+    println!("  \"chart\": \"{}_nonzero\",", if q_chart { "q" } else { "p" });
+    println!("  \"coordinate\": \"{}\",", if q_chart { "r=p/q" } else { "s=q/p" });
     println!("  \"primitive_degree\": 8,");
     println!("  \"records\": [");
     for (index, (s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension, increments, quotient_basis, quotient_coordinates, quotient_connection)) in records.iter().enumerate() {
@@ -906,10 +968,14 @@ fn quotient_derivative_matrix(
     }).collect()
 }
 
-fn run_exceptional_interpolation() {
+fn run_exceptional_interpolation(q_chart: bool) {
     let samples: Vec<(F, Vec<F>, Vec<Vec<F>>)> = (2_u64..=28)
         .map(|s| {
-            let geometry = exceptional_p_chart_geometry(s, true);
+            let geometry = if q_chart {
+                exceptional_q_chart_geometry(s, true)
+            } else {
+                exceptional_p_chart_geometry(s, true)
+            };
             let class_columns: Vec<Poly> = classes(&geometry).iter()
                 .map(|class| common(&geometry, class)).collect();
             let mut exact_columns = Vec::new();
@@ -931,6 +997,7 @@ fn run_exceptional_interpolation() {
     println!("{{");
     println!("  \"schema\": \"marici.benincasa.rank12_u0_v2_exceptional_line_interpolation.v1\",");
     println!("  \"prime\": {},", P);
+    println!("  \"chart\": \"{}_nonzero\",", if q_chart { "q" } else { "p" });
     println!("  \"basis\": [\"e4\"],");
     println!("  \"coordinates\": [");
     for coordinate in 0..6 {
@@ -1238,12 +1305,14 @@ fn main() {
         })
         .unwrap_or_else(|| vec![(7, 11), (13, 19), (23, 29)]);
     let sample_count = samples.len();
-    if std::env::var_os("MARICI_EXCEPTIONAL_INTERPOLATE").is_some() {
-        run_exceptional_interpolation();
+    if std::env::var_os("MARICI_EXCEPTIONAL_INTERPOLATE").is_some()
+        || std::env::var_os("MARICI_EXCEPTIONAL_Q_INTERPOLATE").is_some() {
+        run_exceptional_interpolation(std::env::var_os("MARICI_EXCEPTIONAL_Q_INTERPOLATE").is_some());
         return;
     }
-    if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some() {
-        run_exceptional_p_chart(&samples);
+    if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some()
+        || std::env::var_os("MARICI_EXCEPTIONAL_Q_CHART").is_some() {
+        run_exceptional_chart(&samples, std::env::var_os("MARICI_EXCEPTIONAL_Q_CHART").is_some());
         return;
     }
     if std::env::var_os("MARICI_DUAL_MODE").is_some() {
