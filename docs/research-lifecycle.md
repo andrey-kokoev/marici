@@ -215,3 +215,8 @@ Do not force a positive result by fitting a desired matrix, adjoining
 generators solely to make a square commute, or introducing an unmotivated
 rational splitting. A clean falsifier that identifies the first canonical
 identity to fail is a complete and valuable outcome.
+## Ledger numbering
+
+Ledger identity and collision repair follow the allocator-backed
+[ledger numbering protocol](ledger-numbering.md). Claim a number before
+creating a numbered entry; never infer it from the directory or Git history.

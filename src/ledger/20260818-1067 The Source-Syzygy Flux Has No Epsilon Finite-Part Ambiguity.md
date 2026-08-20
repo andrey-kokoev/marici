@@ -3,11 +3,15 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# 668 — The Source-Syzygy Flux Has No Epsilon Finite-Part Ambiguity
+# 1067 — The Source-Syzygy Flux Has No Epsilon Finite-Part Ambiguity
+
+> Numbering repair (2026-08-19): relocated from filename 950 and conflicting
+> heading 668 under allocator claim `seqclaim-918fef08e3fbf54763946c12`.
+> The evidential content and scope are unchanged.
 
 ## Correction to the frontier
 
-Entry 667 correctly excludes an ordinary algebraic
+Entry 1066 correctly excludes an ordinary algebraic
 connection--residue commutator, but its proposed return to Entry 649's
 finite-part test overlooked Entry 651's source-syzygy correction.  For the
 dimension-preserving source IBP subcomplex, the generic smooth
@@ -97,7 +101,7 @@ primitive-selection mechanism entirely.
 ## Evidence
 
 - `research/benincasa/physical_syzygy_flux_finite_part.py`;
-- Entries 649--652, 655, and 667.
+- Entries 649--652, 655, and 1066.
 
 ## Outcome contract
 

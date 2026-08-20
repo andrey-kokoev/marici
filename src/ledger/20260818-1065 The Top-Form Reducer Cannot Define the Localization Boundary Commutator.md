@@ -3,11 +3,15 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# 666 — The Top-Form Reducer Cannot Define the Localization Boundary Commutator
+# 1065 — The Top-Form Reducer Cannot Define the Localization Boundary Commutator
+
+> Numbering repair (2026-08-19): relocated from filename 948 and conflicting
+> heading 666 under allocator claim `seqclaim-02ea064fb3f727fe32ba6855`.
+> The evidential content and scope are unchanged.
 
 ## Hard-to-vary claim
 
-The finite product-pole reducer used in Entries 661--665 does not contain
+The finite product-pole reducer used in Entries 661--663, 1068, and 1064 does not contain
 enough homological data to compute the localization boundary
 \(\partial_W\), a boundary homotopy, or its kinematic commutator.  Doing so
 from its quotient pivots would be a type error.
@@ -23,7 +27,7 @@ This is sufficient for the finite top-degree quotient calculations:
 
 - the absolute rank-twenty census of Entry 661;
 - the failure of quotient-after-reduction in Entry 662;
-- the relative top-support ranks in Entries 663--665;
+- the relative top-support ranks in Entries 663, 1068, and 1064;
 - the first parameter images of explicitly represented top forms.
 
 It does not retain:
@@ -49,14 +53,14 @@ complex on the wall:
 \]
 
 These objects are related by a residue triangle, not by identifying
-proper-face top forms with wall one-forms.  Consequently Entry 665's proposed
+proper-face top forms with wall one-forms.  Consequently Entry 1064's proposed
 ``kinematic commutator of the source boundary homotopy'' cannot be evaluated
 inside the current matrix.
 
 ## Correction to scope
 
 The rank-nineteen and rank-twenty-one results remain valid as finite
-top-support quotient invariants.  Entry 664's and Entry 665's rank-three
+top-support quotient invariants.  Entry 1068's and Entry 1064's rank-three
 first-jet tests remain valid within those induced top-form quotients.  They
 do not determine how the canonical wall cocycle \(\rho_{\rm phys}\) changes
 the connection through the full localization triangle.
@@ -100,7 +104,7 @@ well-typed.
 
 - `research/benincasa/physical_four_mark_residue_twisted_derham.py`;
 - `research/benincasa/physical_g12_shared_wall_cech_cocycle.py`;
-- Entries 648--650, 658, and 661--665.
+- Entries 648--650, 658, 661--663, 1068, and 1064.
 
 ## Outcome contract
 
