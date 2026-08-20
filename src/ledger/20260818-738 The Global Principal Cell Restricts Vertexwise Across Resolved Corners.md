@@ -10,7 +10,7 @@ date: 2026-08-18
 Entry 736 writes a local augmented source as
 
 \[
-K_{L_1,i}\oplus \mathbbm 1_{\rm principal},
+K_{L_1,i}\oplus \mathbf{1}_{\rm principal},
 \]
 
 but that local notation alone does not say whether the principal summand is

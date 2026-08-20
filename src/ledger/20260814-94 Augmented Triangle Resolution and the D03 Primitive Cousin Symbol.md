@@ -286,7 +286,7 @@ factors:
 
 Two exact checks coexist without contradiction:
 
-1. before incidence, (\Delta^\vee K_{\rm alt}\) gives the nonzero primitive
+1. before incidence, \(\Delta^\vee K_{\rm alt}\) gives the nonzero primitive
    normalization;
 2. after incidence, every column of
    (C_{\rm QTDS}=\partial_\triangle K_{\rm alt}) lies in (A_2), hence has

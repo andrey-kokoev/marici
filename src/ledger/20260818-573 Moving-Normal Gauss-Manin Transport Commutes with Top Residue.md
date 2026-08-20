@@ -147,7 +147,7 @@ E=0,
 \]
 
 and compare its Kummer characters with the corresponding mixed-face and
-(q\)-only nearby cycles.  The first possible obstruction is no longer
+\(q\)-only nearby cycles.  The first possible obstruction is no longer
 failure of residue naturality; it is a nontrivial extension of this line by
 the remaining rank-20 top module at the energy boundaries.
 

@@ -92,6 +92,7 @@ the independently reduced connections satisfy
 \boxed{
 A_i=dS\,S^{-1}+S\rho^*A_{i+1}S^{-1}
 }
+\]
 
 for all three edges
 

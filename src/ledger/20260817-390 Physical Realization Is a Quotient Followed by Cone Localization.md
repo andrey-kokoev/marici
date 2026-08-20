@@ -50,7 +50,7 @@ geometrically supplied residue functor.
 The minimal physical realization has the form
 \[
  q^!_{\rm raw}
- \xrightarrow{\text{\(x_4\)-support quotient}}
+ \xrightarrow{x_4\text{-support quotient}}
  q^!_{\rm red}
  \xrightarrow{\text{localize/residue at }\lambda^\vee}
  Q^{PC/Rees}_{03,\partial}.

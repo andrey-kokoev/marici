@@ -58,6 +58,7 @@ while
 \boxed{
 d(e_+-e_-)=2c.
 }
+\]
 
 Over characteristic zero, the anti-invariant map is an isomorphism.  Hence
 
@@ -73,6 +74,7 @@ and
 \boxed{
 H^\bullet_{-}(d)=0.
 }
+\]
 
 The square-root coefficient character is anti-invariant, so it produces no
 generic conductor class.

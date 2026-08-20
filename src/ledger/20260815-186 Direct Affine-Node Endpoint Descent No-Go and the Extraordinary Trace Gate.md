@@ -64,7 +64,7 @@ After reduction modulo \(X_5\), this forces \(u_5=0\) in
 \(\mathbb Z[u_5]\), again a contradiction. Thus
 \[
 \boxed{
-\text{no normalized direct \(R\)-linear trace }t_5B\to R\text{ exists}.
+\text{no normalized direct }R\text{-linear trace }t_5B\to R\text{ exists}.
 }
 \]
 

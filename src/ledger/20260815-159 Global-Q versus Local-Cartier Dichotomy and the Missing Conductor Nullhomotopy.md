@@ -136,7 +136,7 @@ Entry 143 constructs the target-side extended Cech object
 
 \[
 \mathcal E_{\partial,Q}^{\rm BM,\check C}
-\quad\text{(also denoted \(E_{\rm partial,Q}^{\rm BM,Cech}\) in shorthand)}
+\quad\text{(also denoted }E_{\rm partial,Q}^{\rm BM,Cech}\text{ in shorthand)}
 \]
 
 with its genuine seven-generator \(Q\) quotient and retained nonzero generic

@@ -48,7 +48,7 @@ Equivalently, when a local generator is replaced by
 \[
 I_{t_5}^{\vee}\otimes I_{t_5}\longrightarrow\mathcal O,
 \qquad
-t_5^ee(t_5)=1,
+t_5^\vee(t_5)=1,
 \]
 
 is invariant. This is line evaluation, not a fitted scalar trivialization or
@@ -160,7 +160,7 @@ evaluation gives the same result:
 I_{t_5}^{\vee}\otimes I_{t_5}\langle p\rangle
 \longrightarrow\mathbb Z\langle p\rangle,
 \qquad
-t_5^ee(-t_5p)=-p.
+t_5^\vee(-t_5p)=-p.
 \]
 
 Thus the finite branch-selected log endpoint counit has coefficient

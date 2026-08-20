@@ -52,7 +52,7 @@ Their support census agrees exactly with the Möbius grades:
 
 \[
 \begin{array}{c|c|c}
-\text{support type}&\text{number}&\text{proper rank}\ \hline
+\text{support type}&\text{number}&\text{proper rank}\\ \hline
 \text{single plane}&4&5\\
 \text{finite transverse pair}&5&1\\
 \text{parallel pair}&1&0\\

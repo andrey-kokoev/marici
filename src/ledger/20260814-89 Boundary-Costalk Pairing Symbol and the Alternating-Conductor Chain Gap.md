@@ -314,7 +314,7 @@ exact (7\times6) Ward symbol and target Ward differential.  The symbol is
 closed.  On the same six source generators:
 
 1. the zero square-zero source differential makes it a chain map;
-2. the square-zero differential (e_1\mapsto e_0\) does not.
+2. the square-zero differential \(e_1\mapsto e_0\) does not.
 
 Both witnesses have the same modules and associated symbol.  Thus coefficient
 closure cannot decide the chain-map identity without the actual scalar

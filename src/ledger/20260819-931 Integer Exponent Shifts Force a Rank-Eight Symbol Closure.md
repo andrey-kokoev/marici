@@ -40,7 +40,7 @@ The pair-coordinate shifts behave differently:
 
 \[
 \begin{array}{c|c}
-\text{shift}&\text{nonzero projective minors}\
+\text{shift}&\text{nonzero projective minors}\\
 \hline
 B_{24}\mapsto-B_{24}&3\\
 B_{34}\mapsto-B_{34}&3.

@@ -63,6 +63,7 @@ family, but not yet the complex weighted specialization:
 \ne
 \text{canonically continued weighted relative current}.
 }
+\]
 
 This does not erase the source normalization.  It isolates the remaining
 ambiguity as monodromy/nearby-cycle transport rather than an arbitrary

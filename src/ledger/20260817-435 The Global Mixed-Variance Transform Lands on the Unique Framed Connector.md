@@ -46,7 +46,7 @@ The resulting image has frozen signature
 \text{generic }Q\text{ roof}&+1\\
 \text{generic Rees factor}&x_D\\
 \text{closed Cartier residue}&+1\\
-\text{endpoint matrix}&\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}\\
+\text{endpoint matrix}&\begin{pmatrix}0&1\\1&0\end{pmatrix}\\
 \text{Tor}_1\text{ orientation}&+1\\
 \text{Čech residual}&0\\
 \text{Cartier commutator}&0\\

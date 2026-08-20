@@ -122,7 +122,7 @@ On the Cut side,
 
 \[
 e_6
-=left(y e_3+x e_5+e_6\right)
+=\left(y e_3+x e_5+e_6\right)
 -\frac12(2y e_3)-\frac12(2x e_5).
 \]
 

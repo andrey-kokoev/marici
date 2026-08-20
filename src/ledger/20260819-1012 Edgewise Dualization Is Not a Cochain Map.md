@@ -27,7 +27,7 @@ is
 and the frozen edge transports are
 
 \[
-u=left(
+u=\left(
 \frac{tZ}{A_3},
 \frac{s}{ZA_2},
 X,

@@ -84,7 +84,7 @@ The parallel derivation proves the following independently of the conjectural em
 4. Consequently, the relative normal-function model produces a first-order gauge class
 
    \[
-   \\partial_\\lambda-\\frac{1}{2}\\partial_\\lambda\\log(-\\mathcal Q)
+   \partial_\lambda-\frac{1}{2}\partial_\lambda\log(-\mathcal Q)
    \]
 
    without fitting the unpublished source factor.

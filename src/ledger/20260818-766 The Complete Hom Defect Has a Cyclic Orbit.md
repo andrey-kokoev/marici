@@ -96,6 +96,7 @@ has a canonical occurrence orbit:
 [C_{12}]\longmapsto[C_{23}]\longmapsto[C_{31}]
 \longmapsto[C_{12}].
 }
+\]
 
 In the recursively transported frame the three representatives are
 literally identical.  No solver section or fitted projector is used.
@@ -113,6 +114,7 @@ fixed pair of ordinary-coordinate column degrees in every chart.  Its rule is
 \boxed{
 \mathcal F_{i+1}=D_i^{-1}\mathcal F_i
 }
+\]
 
 in raw residue coordinates, or simply \((0,6)\) in the recursively
 transported adapted frame.  After three steps,

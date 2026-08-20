@@ -6,7 +6,7 @@ For a loaded relative chamber chain (gamma) meeting a boundary component with
 local-system monodromy (M), the twisted boundary has the rank-one form
 
 \[
-\partialgamma=(M-1)e.
+\partial\gamma=(M-1)e.
 \]
 
 Closing the chamber into a twisted cycle therefore requires a regularization

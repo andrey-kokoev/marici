@@ -56,8 +56,8 @@ The hard-to-vary claim is
 
 \[
 \boxed{
-\text{the source's nine-master \(q_{\mathcal G_{12}}\) block is the
-deletion-closed rank of the \(q\)-only family.}
+\text{the source's nine-master }q_{\mathcal G_{12}}\text{ block is the
+deletion-closed rank of the }q\text{-only family.}
 }
 \]
 

@@ -30,7 +30,7 @@ and the canonical comparison is localization at (X).
 The retained boundary module
 
 \[
-C/(X)\congmathbb Z[u^{\pm1}]
+C/(X)\cong\mathbb Z[u^{\pm1}]
 \]
 
 is nonzero, but

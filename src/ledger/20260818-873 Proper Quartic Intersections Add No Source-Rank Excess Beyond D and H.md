@@ -21,7 +21,7 @@ an additional rank defect on either existing divisor.
 
 ## Generic divisor census
 
-Using the complete labelled (132\)-equation, (372\)-unknown source system,
+Using the complete labelled \(132\)-equation, \(372\)-unknown source system,
 we evaluated generic points of
 
 \[

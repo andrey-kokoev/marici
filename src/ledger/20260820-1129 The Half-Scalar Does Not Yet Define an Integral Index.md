@@ -27,7 +27,7 @@ prove that the physical soft-node lattice embeds with index two?
 ## Audit
 
 The node side is integral: the normalization--conductor difference row is
-primitive and (H_1(\mathbb C^*)\simeq\mathbb Z\) has a primitive generator
+primitive and \(H_1(\mathbb C^*)\simeq\mathbb Z\) has a primitive generator
 \(\tau\).
 
 The target packet is different.  The rank-twelve connection and (e_6)

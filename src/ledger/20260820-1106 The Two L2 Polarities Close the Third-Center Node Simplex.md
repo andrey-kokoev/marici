@@ -95,6 +95,7 @@ Thus the third center closes locally as
 +
 \text{one anti-invariant Tate coefficient}.
 }
+\]
 
 No new carrier or associated-grade coefficient excess survives.
 

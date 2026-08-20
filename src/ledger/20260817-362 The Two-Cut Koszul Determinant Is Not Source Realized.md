@@ -14,8 +14,8 @@ claim tested here is
 
 \[
 \boxed{
-\text{the frozen singly polar source realizes the top class of the
-}(q_{\mathcal G_{12}},q_{\mathcal G_{23}})\text{ Cousin complex}.}
+\text{the frozen singly polar source realizes the top class of the }
+(q_{\mathcal G_{12}},q_{\mathcal G_{23}})\text{ Cousin complex}.
 }
 \]
 
@@ -38,7 +38,7 @@ contain only nonnegative powers of (u,v). The frozen physical source is
 therefore locally of the form
 
 \[
-\frac{A(u,v)}u+rac{B(u,v)}v+C(u,v),
+\frac{A(u,v)}u+\frac{B(u,v)}v+C(u,v),
 \]
 
 with (A,B,C\in R[[u,v]]). Its negative Laurent support is contained in

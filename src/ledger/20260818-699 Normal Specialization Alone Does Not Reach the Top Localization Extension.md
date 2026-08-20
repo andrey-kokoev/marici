@@ -127,14 +127,14 @@ Any admissible comparison must separately supply localization at
 specialization. The smallest typed candidate is the Beck--Chevalley square
 
 \[
-\begin{CD}
+\begin{array}{ccc}
 i^*\operatorname{Loc}_{q_{\mathcal G_{12}}}\mathcal M_{\rm low}^{\rm gen}
-@>>> i^*\mathcal M_{\rm top}^{\rm gen}\\
-@VVV @VVV\\
+\longrightarrow i^*\mathcal M_{\rm top}^{\rm gen}\\
+\downarrow && \downarrow\\
 \operatorname{Loc}_{i^*q_{\mathcal G_{12}}}
 i^*\mathcal M_{\rm low}^{\rm gen}
-@>>> \mathcal M_{\rm top}^{\rm hom}.
-\end{CD}
+\longrightarrow \mathcal M_{\rm top}^{\rm hom}.
+\end{array}
 \]
 
 Only after constructing this square may one take \(\operatorname{gr}^2_I\)

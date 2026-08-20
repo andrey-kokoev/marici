@@ -4,12 +4,13 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { getPublishedLedger } from '../../lib/ledger'
 import remarkMath from 'remark-math'
 import remarkNaradaMath from '../../lib/remark-narada-math.mjs'
+import { convertTexMath, katexOptions } from '../../lib/ledger-math.mjs'
 import rehypeKatex from 'rehype-katex'
 
 const processor = await createMarkdownProcessor({
   ...markdownConfigDefaults,
   remarkPlugins: [remarkMath, remarkNaradaMath],
-  rehypePlugins: [rehypeKatex],
+  rehypePlugins: [[rehypeKatex, katexOptions]],
 })
 
 export async function getStaticPaths() {
@@ -30,15 +31,6 @@ const slugByEntry = new Map(allRecords.map((r) => [r.meta.entry, r.meta.slug]))
 
 function stripH1(body: string) {
   return body.replace(/^#\s+[^\r\n]+(?:\r?\n)+/, '')
-}
-
-function convertTexMath(body: string) {
-  // Source files use \( ... \) and \\[ ... \\] for math delimiters.
-  // remark-math understands $ ... $ and $$ ... $$, so convert before render.
-  return body
-    .replace(/^(\s*)\\\[[ \t]*$/gm, '$1$$')
-    .replace(/^(\s*)\\\][ \t]*$/gm, '$1$$')
-    .replace(/\\\((.*?)\\\)/g, '$$$1$$')
 }
 
 function linkEntryRefs(body: string) {
@@ -94,8 +86,21 @@ function linkFileRefs(body: string) {
     .join('')
 }
 
+function unwrapParagraph(html: string) {
+  return html.replace(/^<p>/, '').replace(/<\/p>\s*$/, '')
+}
+
+async function renderInlineMarkdown(value: string) {
+  const { code } = await processor.render(convertTexMath(value))
+  return unwrapParagraph(code)
+}
+
 const transformedBody = linkEntryRefs(linkFileRefs(convertTexMath(stripH1(record.entry.body ?? ''))))
 const { code: html } = await processor.render(transformedBody)
+const titleHtml = await renderInlineMarkdown(record.meta.title)
+const descriptionHtml = await renderInlineMarkdown(record.meta.description)
+const prevTitleHtml = prev ? await renderInlineMarkdown(prev.title) : ''
+const nextTitleHtml = next ? await renderInlineMarkdown(next.title) : ''
 ---
 <SiteLayout
   title={record.meta.title + ' · Marici'}
@@ -104,17 +109,17 @@ const { code: html } = await processor.render(transformedBody)
   <article class="article ledger-entry">
     <nav class="article-nav" aria-label="Ledger navigation">
       {prev
-        ? <a class="article-nav-link prev" href={'/ledger/' + prev.slug + '/'}><span class="arrow" aria-hidden="true">&larr;</span><span class="nav-label">Previous</span><span class="nav-title">{prev.title}</span></a>
+        ? <a class="article-nav-link prev" href={'/ledger/' + prev.slug + '/'}><span class="arrow" aria-hidden="true">&larr;</span><span class="nav-label">Previous</span><span class="nav-title" set:html={prevTitleHtml} /></a>
         : <span class="article-nav-link prev disabled" aria-hidden="true"></span>}
       {next
-        ? <a class="article-nav-link next" href={'/ledger/' + next.slug + '/'}><span class="nav-label">Next</span><span class="nav-title">{next.title}</span><span class="arrow" aria-hidden="true">&rarr;</span></a>
+        ? <a class="article-nav-link next" href={'/ledger/' + next.slug + '/'}><span class="nav-label">Next</span><span class="nav-title" set:html={nextTitleHtml} /><span class="arrow" aria-hidden="true">&rarr;</span></a>
         : <span class="article-nav-link next disabled" aria-hidden="true"></span>}
     </nav>
 
     <header class="article-header">
       <p class="eyebrow">The Resident's Ledger · Entry {String(record.meta.entry).padStart(3, '0')}</p>
-      <h1>{record.meta.title}</h1>
-      <p class="lede">{record.meta.description}</p>
+      <h1 set:html={titleHtml} />
+      <p class="lede" set:html={descriptionHtml} />
       <div class="article-meta">
         <time datetime={record.meta.publishedAt.toISOString()}>{record.meta.publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time>
         <span class="tag">{record.meta.kind}</span>

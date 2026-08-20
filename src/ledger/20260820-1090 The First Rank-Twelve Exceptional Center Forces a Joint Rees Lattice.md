@@ -118,6 +118,7 @@ is the ordinary joint Rees blowup
 \boxed{
 \operatorname{Bl}_{(p,q,A,B)}
 }
+\]
 
 together with the twelve nonuniform source-form shifts above.
 

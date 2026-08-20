@@ -251,7 +251,7 @@ Therefore
 
 \[
 \boxed{
-\lambda\ne\text{an existing entry-143 \(Q\) generator or physical
+\lambda\ne\text{an existing entry-143 }Q\text{ generator or physical
 Beck--Chevalley cell}.
 }
 \]

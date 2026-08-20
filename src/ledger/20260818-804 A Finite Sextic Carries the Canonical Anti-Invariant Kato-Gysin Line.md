@@ -144,12 +144,12 @@ fitted from the expanded sextic.
 The comparison with the Cayley--Menger carrier is tautologically typed:
 
 \[
-\begin{CD}
-V(x,y) @>>> V(x,y,w^2-K_{\rm CM})\\
-@VVV @VVV\\
+\begin{array}{ccc}
+V(x,y) & \longrightarrow & V(x,y,w^2-K_{\rm CM})\\
+\downarrow && \downarrow\\
 \operatorname{Spec}\mathbb Q[\text{kinematics}]
-@>{S=K_{\rm CM}(p)}>> V(w^2-S).
-\end{CD}
+\xrightarrow{S=K_{\rm CM}(p)} V(w^2-S).
+\end{array}
 \]
 
 Thus the Kummer line is obtained by restricting the frozen branch equation

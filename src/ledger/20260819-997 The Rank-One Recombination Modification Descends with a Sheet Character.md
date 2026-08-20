@@ -83,6 +83,7 @@ The labelled cycle transports (K_\chi), (U), and (V) to their corresponding obje
 \boxed{
 \operatorname{Hol}_{C_3}(E_\chi)=1.
 }
+\]
 
 ## Result
 

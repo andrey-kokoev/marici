@@ -191,6 +191,7 @@ Hence
 \boxed{
 [\eta_0]\ne0
 }
+\]
 
 at generic \(x\ne y\).
 

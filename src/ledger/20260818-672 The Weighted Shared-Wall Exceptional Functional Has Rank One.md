@@ -102,6 +102,7 @@ gives, on both exact syzygy fibers,
 \qquad
 \operatorname{rank}E_{\rm exc}=1.
 }
+\]
 
 The calculation explicitly removes presentation kernels in the ideal
 representations; the rank is a rank on the original three-dimensional

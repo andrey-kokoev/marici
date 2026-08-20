@@ -52,9 +52,9 @@ h<h_{D03},\qquad h<h_{x_1}.
 Its augmented cellular complex is
 \[
 \mathbb Z^2\xrightarrow{
-\begin{psmallmatrix}
+\begin{pmatrix}
 -1&-1\\1&0\\0&1
-\end{psmallmatrix}}
+\end{pmatrix}}
 \mathbb Z^3\xrightarrow{(1,1,1)}\mathbb Z.
 \]
 Coning to \(h\) gives an explicit integral contraction. Therefore every

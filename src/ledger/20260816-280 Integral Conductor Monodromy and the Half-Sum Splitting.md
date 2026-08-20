@@ -248,6 +248,7 @@ The hard-to-vary conjecture was
 \boxed{
 \text{the mixed and top grades are three independent integral
 Tate/Kummer summands.}
+}
 \]
 
 It is falsified. They form a nontrivial integral extension detected by the

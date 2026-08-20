@@ -50,7 +50,7 @@ This class is not fitted from the missing rank. It follows directly from the
 first-order term of
 
 \[
-L_2^-=a-rac u2.
+L_2^-=a-\frac u2.
 \]
 
 Indeed, in the \((1,1)\) \(q\)-operator the relevant contribution is

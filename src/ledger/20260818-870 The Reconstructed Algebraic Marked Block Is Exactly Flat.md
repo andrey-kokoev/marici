@@ -51,6 +51,7 @@ Substitution of all twenty-four reconstructed rational functions gives
 \boxed{
 \Theta_{\rm mix}=0_{3\times4}
 }
+\]
 
 identically in \(\mathbb Q(u,v)\).  All twelve scalar curvature identities
 vanish exactly.

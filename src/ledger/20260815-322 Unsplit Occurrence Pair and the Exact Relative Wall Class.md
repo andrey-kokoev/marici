@@ -42,7 +42,7 @@ equations (4.14)--(4.18), proves that reduced spurious poles can involve
 
 \[
 \alpha\epsilon_{hat b}-\beta\epsilon_{hat a},
-\qquad \alpha,eta>0,
+\qquad \alpha,\beta>0,
 \]
 
 whose sign requires an arbitrary regulator hierarchy. The corresponding

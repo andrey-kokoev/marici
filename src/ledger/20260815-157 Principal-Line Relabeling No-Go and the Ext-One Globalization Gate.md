@@ -127,6 +127,7 @@ two-sheet-compatible, mixed-variance kernel
 \boxed{
 \alpha_{\rm sh}^{!,\check C}
 }
+\]
 
 whose local \(x_i\)-restrictions are the proved Cartier classes and whose
 generic restriction retains

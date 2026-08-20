@@ -38,6 +38,7 @@ the complete local equation becomes
 \boxed{
 XY=pU,
 }
+\]
 
 where
 
@@ -59,6 +60,7 @@ L_1|_{T=0}=B-1,
 \qquad
 L_2|_{T=0}=1.
 }
+\]
 
 Thus the conductor meets the first marked wall, while the second marked wall
 is a unit.  The only failure of the generic node model occurs on
@@ -86,6 +88,7 @@ Therefore the second center currently has the typed local form
 \xleftarrow{\text{conductor}}
 \text{existing }(q=0)\cup(L_1=0)\text{ support}.
 }
+\]
 
 No new carrier incidence is required.
 
