@@ -36,6 +36,40 @@ def rank(rows: list[dict[int, int]]) -> int:
     return len(pivots)
 
 
+def row_relations(rows: list[dict[int, int]]) -> list[dict[int, int]]:
+    pivots: dict[int, tuple[dict[int, int], dict[int, int]]] = {}
+    relations = []
+    for index, original in enumerate(rows):
+        row = {column: value % PRIME for column, value in original.items() if value % PRIME}
+        provenance = {index: 1}
+        while row:
+            pivot = max(row)
+            if pivot not in pivots:
+                inverse = pow(row[pivot], PRIME - 2, PRIME)
+                pivots[pivot] = (
+                    {column: value * inverse % PRIME for column, value in row.items()},
+                    {source: value * inverse % PRIME for source, value in provenance.items()},
+                )
+                break
+            coefficient = row[pivot]
+            pivot_row, pivot_provenance = pivots[pivot]
+            for column, value in pivot_row.items():
+                updated = (row.get(column, 0) - coefficient * value) % PRIME
+                if updated:
+                    row[column] = updated
+                else:
+                    row.pop(column, None)
+            for source, value in pivot_provenance.items():
+                updated = (provenance.get(source, 0) - coefficient * value) % PRIME
+                if updated:
+                    provenance[source] = updated
+                else:
+                    provenance.pop(source, None)
+        if not row:
+            relations.append(provenance)
+    return relations
+
+
 def label(term: dict) -> tuple:
     return (
         term["normal_block"],
@@ -122,6 +156,7 @@ for left, right in zip(
 
 coordinate_rows = [dict(probe["coordinates"]) for probe in probes]
 coordinate_rows_with_graph_value = []
+graph_values = []
 for probe, row in zip(probes, coordinate_rows):
     augmented = dict(row)
     graph_value = next(
@@ -134,7 +169,23 @@ for probe, row in zip(probes, coordinate_rows):
     )
     if graph_value:
         augmented[1_000_000] = graph_value
+    graph_values.append(graph_value)
     coordinate_rows_with_graph_value.append(augmented)
+
+coordinate_relations = row_relations(coordinate_rows)
+non_descent_relation = next(
+    relation
+    for relation in coordinate_relations
+    if sum(relation.get(index, 0) * graph_values[index] for index in relation) % PRIME
+)
+non_descent_value = sum(
+    non_descent_relation.get(index, 0) * graph_values[index]
+    for index in non_descent_relation
+) % PRIME
+normalizer = pow(non_descent_value, PRIME - 2, PRIME)
+non_descent_relation = {
+    index: value * normalizer % PRIME for index, value in non_descent_relation.items()
+}
 
 result = {
     "schema": "marici.triangle-wall-residual-adapter-manifest.v1",
@@ -170,6 +221,17 @@ result = {
         "rank_with_graph_value": rank(coordinate_rows_with_graph_value),
         "graph_functional_factors": rank(coordinate_rows)
         == rank(coordinate_rows_with_graph_value),
+        "normalized_non_descent_relation": [
+            {
+                "probe_index": index,
+                "tangent": probes[index]["tangent"],
+                "source_basis_index": probes[index]["source_basis_index"],
+                "coefficient": coefficient,
+            }
+            for index, coefficient in sorted(non_descent_relation.items())
+        ],
+        "coordinate_sum": 0,
+        "graph_value_sum": 1,
     },
     "labels": manifest_labels,
     "acceptance_gate": (

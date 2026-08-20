@@ -51,6 +51,18 @@ Therefore no functional \(\bar\lambda\) on the quadratic image satisfies
 Equivalently, the tangentwise functionals disagree on the
 eight-dimensional overlap of the two quadratic-coordinate subspaces.
 
+The checker also exports a normalized thirteen-probe relation \(r\), mixing
+both tangents, for which
+
+\[
+C(r)=0,
+\qquad
+\lambda(r)=1.
+\]
+
+This supplies a concrete regression vector for the generalized adapter,
+rather than only a rank discrepancy.
+
 ## Narrow conclusion
 
 \[
@@ -79,3 +91,5 @@ only proves that its fate cannot be decided in the lower coordinate grade.
   ev-000000000734-ab398b2e-f18e-4bc1-85a3-a7bab4f3a6cc.
 - epistemic graph admission:
   ev-000000000735-72d9e4a0-e6cb-48e7-a0de-a56e5759793e.
+- explicit-relation coordination event:
+  ev-000000000736-6e64ed0b-0ec3-4d7a-83b9-4519bcfd988a.
