@@ -1,0 +1,54 @@
+"""Frozen-source provenance gate for the two-bit integral cusp extension."""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+OUT = ROOT / "research/benincasa/results/integral-cusp-source-provenance-gate.json"
+
+sources = [
+    {
+        "arxiv": "2408.16386",
+        "supplies": [
+            "positive Cayley-Menger contour from simplex-volume inequalities",
+            "equation-(58) nine-master de Rham basis",
+            "elliptic Picard-Fuchs operator and flat-space degeneration",
+        ],
+        "explicit_boundary_statement": "Boundary conditions have to be provided independently (page 6, around equations (28)-(29)).",
+        "does_not_supply": [
+            "integral Betti basis for H2(S minus D_infinity)",
+            "integral lift of an elliptic coinvariant through R_infinity",
+            "polarization or period normalization fixing twice that lift",
+        ],
+    },
+    {
+        "arxiv": "2401.05207",
+        "supplies": ["weighted cosmological-polytope contour and residue geometry"],
+        "does_not_supply": ["three-site elliptic Betti/Gysin lattice", "Picard-Lefschetz lift parity"],
+    },
+    {
+        "arxiv": "2402.06558",
+        "supplies": ["loop-measure contour positivity and asymptotic sector geometry"],
+        "does_not_supply": ["three-site elliptic Betti/Gysin lattice", "Picard-Lefschetz lift parity"],
+    },
+]
+
+missing = [
+    "a source-normalized integral elliptic cycle",
+    "its lift to the rank-nine complement lattice",
+    "the parity of 2m along (e6,v_alg)",
+]
+assert len(sources) == 3 and len(missing) == 3
+
+packet = {
+    "schema": "marici.benincasa.integral_cusp_source_provenance_gate.v1",
+    "audited_primary_sources": sources,
+    "missing_data": missing,
+    "entry_1152_class_selected": False,
+    "authorized_conclusion": "The frozen source leaves all four classes in (Z/2)^2 open. The visible full-lattice Z/2 is neither proved nor disproved.",
+    "required_upstream_construction": "An integral Picard-Lefschetz/Gysin comparison for the degree-two del Pezzo anticanonical complement, normalized against the physical Cayley-Menger contour.",
+    "new_carrier_datum": False,
+}
+
+OUT.parent.mkdir(parents=True, exist_ok=True)
+OUT.write_text(json.dumps(packet, indent=2) + "\n")
+print(json.dumps(packet))
