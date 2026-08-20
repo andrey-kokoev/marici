@@ -1,0 +1,490 @@
+{
+  "checker": "subsubleading_memory_exact_checks",
+  "author": "marici.Strominger; completed custodially by marici.Nima",
+  "checks": [
+    {
+      "id": "M1.1",
+      "group": "M1",
+      "statement": "antiderivative certificate: d/du I1i = F for the u^-3-tail witness F = (2+u)/(1+u^2)^2 (CL16 (17) integrand)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.2",
+      "group": "M1",
+      "statement": "antiderivative certificate: d/du M1i = u F (first-moment integrand of the CL16 double-u charge (17))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.3",
+      "group": "M1",
+      "statement": "zeroth news moment I1(oo) = int_{-inf}^{inf} F du = pi (real sympy integration, exact)",
+      "status": "pass",
+      "detail": "= pi"
+    },
+    {
+      "id": "M1.4",
+      "group": "M1",
+      "statement": "first news moment M1(oo) = int u F du = pi/2 (the rung-3 memory source moment)",
+      "status": "pass",
+      "detail": "= pi/2"
+    },
+    {
+      "id": "M1.5",
+      "group": "M1",
+      "statement": "double-primitive ramp identity: I2(U) = U I1(U) - M1(U) holds identically (int^u int F = U int F - int uF; the FPR repeated-primitive vs CL16 moment bridge)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.6",
+      "group": "M1",
+      "statement": "linear drift of the double primitive: I2(U) - U I1(oo) -> -pi/2 (nonzero finite part; the CL16 (30) t Q^(1) + Q^(0) subtraction structure at the double-u grade)",
+      "status": "pass",
+      "detail": "= -pi/2"
+    },
+    {
+      "id": "M1.7",
+      "group": "M1",
+      "statement": "falloff class: u^3 F -> 1 \u2014 the borderline u^-3 tail (CL16 footnote 2) forces the linear drift of M1.6",
+      "status": "pass",
+      "detail": "= 1"
+    },
+    {
+      "id": "M1.8",
+      "group": "M1",
+      "statement": "drift-free control: F0 = d/du[2u/(1+u^2)^2] has vanishing zeroth moment int F0 = 0 (total derivative)",
+      "status": "pass",
+      "detail": "= 0"
+    },
+    {
+      "id": "M1.9",
+      "group": "M1",
+      "statement": "all-rational primitive chain for the control: d/du[-1/(1+u^2)] = R0 and d/du R0 = F0 \u2014 the double primitive -1/(1+u^2) is bounded (no drift)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.10",
+      "group": "M1",
+      "statement": "control second moment int u^2 F0 du = -2 pi \u2014 finite with no subtraction once I1(oo) = 0",
+      "status": "pass",
+      "detail": "= -2*pi"
+    },
+    {
+      "id": "M1.11",
+      "group": "M1",
+      "statement": "logarithmic classical tail C~u^-2 log u makes the ballistic first moment grow as (log U)^2/2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.11a",
+      "group": "M1",
+      "statement": "the logarithmic-tail ballistic moment is unbounded and requires a new log-squared finite part",
+      "status": "pass",
+      "detail": "residual retained: oo"
+    },
+    {
+      "id": "M1.12",
+      "group": "M1",
+      "statement": "generic (A log u+B)/u^2 tail requires both log-squared and log counterterms; the renormalized finite part of the D/u^3 control tends to D",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.12a",
+      "group": "M1",
+      "statement": "under log(u/mu), the running coefficient B_mu=B+A log(mu) cancels every divergent grade",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.12b",
+      "group": "M1",
+      "statement": "tail-renormalized ballistic memory carries an unavoidable scale-dependent finite ambiguity unless the asymptotic prescription fixes mu",
+      "status": "pass",
+      "detail": "residual retained: (Atail*log(mu_tail) + Btail)/mu_tail"
+    },
+    {
+      "id": "M1.12c",
+      "group": "M1",
+      "statement": "tail finite-part scale changes obey the exact one-cocycle composition law Delta(3,1)=Delta(3,2)+Delta(2,1)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.12d",
+      "group": "M1",
+      "statement": "the scale transition is independent of the finite D/u^3 control and is therefore an affine torsor action",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.13",
+      "group": "M1",
+      "statement": "retarded-time translation shifts ballistic memory by minus a times the lower shear moment",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.13a",
+      "group": "M1",
+      "statement": "time-origin changes compose additively and define a second exact affine action",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.14",
+      "group": "M1",
+      "statement": "the minimal translation-closed logarithmic tail jet is (A,B,E,D), with E'=E-2aA and D'=D+aA-2aB",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.14a",
+      "group": "M1",
+      "statement": "the truncated (A,B,D) family is not translation closed when A is nonzero",
+      "status": "pass",
+      "detail": "residual retained: -2*Atail*a_tail"
+    },
+    {
+      "id": "M1.14b",
+      "group": "M1",
+      "statement": "scale and retarded-time-origin changes commute on the minimal four-coefficient tail jet",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.14c",
+      "group": "M1",
+      "statement": "the four-coefficient tail-jet translation law composes exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M2.1",
+      "group": "M2",
+      "statement": "Gaussian witness odd moments: mu_1 = sqrt(pi)/2, mu_3 = 3 sqrt(pi)/4, mu_5 = 15 sqrt(pi)/8 (exact)",
+      "status": "pass",
+      "detail": "mu_1=sqrt(pi)/2, mu_3=3*sqrt(pi)/4, mu_5=15*sqrt(pi)/8"
+    },
+    {
+      "id": "M2.2",
+      "group": "M2",
+      "statement": "Gaussian witness even moments vanish: mu_0 = mu_2 = mu_4 = 0",
+      "status": "pass",
+      "detail": "mu_0=0, mu_2=0, mu_4=0"
+    },
+    {
+      "id": "M2.3",
+      "group": "M2",
+      "statement": "moment/Fourier series match through om^5: sum (i om)^n mu_n/n! = i om sqrt(pi)/2 exp(-om^2/4) + O(om^6)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M2.4",
+      "group": "M2",
+      "statement": "packet projector (2+om d)(1+om d) kills the om^-2 and om^-1 poles: a om^-2 + b om^-1 + c0 + c1 om |-> 2 c0 + 6 c1 om",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M2.5",
+      "group": "M2",
+      "statement": "FPR projector d_om(1+om d_om) kills the om^-1 pole and the constant, extracting 2 c1 from c1 om",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M2.6",
+      "group": "M2",
+      "statement": "composite (packet then FPR) extracts exactly 12 c1 from c1 om and annihilates a om^-2 + b om^-1 + c0",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M3.1",
+      "group": "M3",
+      "statement": "candidate M3 identity on the bump shear: (1/2) int_0^1 u^2 dC/du du = -1/280 = -int_0^1 u C du",
+      "status": "pass",
+      "detail": "N^(2)=-1/280, -int uC=-1/280"
+    },
+    {
+      "id": "M3.2",
+      "group": "M3",
+      "statement": "bump moments: int_0^1 C du = 1/140 (shear impulse), first news moment int u N du = -1/140",
+      "status": "pass",
+      "detail": "int C=1/140, N^(1)=-1/140"
+    },
+    {
+      "id": "M3.3",
+      "group": "M3",
+      "statement": "GN22 (3.14) at n=0: Delta alpha^(0) = (1/2r)[3 N^(2) - (u1-u0) N^(1)] = -1/(560 r) on the bump witness (u0=0, u1=1)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M3.4",
+      "group": "M3",
+      "statement": "double shear primitive: I3(1) = 1/280, and for U >= 1 the ramp I3(U) = U/140 - 1/280 continues the exact integral",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M3.5",
+      "group": "M3",
+      "statement": "finite part of the ballistic (triple-news) integral: FP[I3(U) - U I2(1)] = -1/280 = N^(2) \u2014 the CL16 (30) finite part at rung 3 equals the second news moment",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.1",
+      "group": "M4",
+      "statement": "X^A = eps^{AB} d_B chi is divergence-free: D_A X^A = 0 for both scalar witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.2",
+      "group": "M4",
+      "statement": "reality under the declared conjugation: sigma(X^z) = X^zb for both witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.3",
+      "group": "M4",
+      "statement": "conjugation commutes with eth as sigma(eth_s f) = ethb_{-s} sigma(f) (s = 1 witness)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.4",
+      "group": "M4",
+      "statement": "electric parity: sigma(D_z X_z) = D_zb X_zb (sigma-even) for both witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.5",
+      "group": "M4",
+      "statement": "magnetic parity: sigma(i D_z X'_z) = -i D_zb X'_zb (sigma-odd) for the gradient X' = d chi, both witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.6",
+      "group": "M4",
+      "statement": "l-degeneracy and nontriviality: D_z D_z chi = 0 exactly for the l<=1 witness (eth^2 0Y_{1m} = 0 grade), while the electric and magnetic pieces are both nonzero for the l=2-containing witness",
+      "status": "pass",
+      "detail": "YM(l<=1)=0"
+    },
+    {
+      "id": "M5.1",
+      "group": "M5",
+      "statement": "formal delta-sift moments of the PSZ (5.10) burst F = sum c_k delta(u-u_k): int u^m F du = sum c_k u_k^m for m = 0, 1, 2 at exact rational burst kinematics (c=(2,-3,5), u_k=(1/4,1/2,3/4))",
+      "status": "pass",
+      "detail": "I1=4, M1=11/4"
+    },
+    {
+      "id": "M5.2",
+      "group": "M5",
+      "statement": "Heaviside ramp identity: the double primitive I2(U) = sum c_k (U-u_k) Theta(U-u_k) equals U I1(U) - M1(U) with node-restricted partial sums at the rational sample points U=0, 3/8, 2, and the sift rule (u-u_k) delta(u-u_k) = 0 holds",
+      "status": "pass",
+      "detail": "ramp(3/8)=1/4, ramp(2)=21/4"
+    },
+    {
+      "id": "M5.3",
+      "group": "M5",
+      "statement": "typed residual R-C2: the full D_z^4-grade shear response closure on the burst is NOT grounded (PSZ (5.10) gives T_uz but not the burst shear); the single-outgoing-insertion coefficient is half the charge coefficient \u2014 computed -3 pi/Ek sum(c_k u_k) vs printed CL16 (15) -6 pi/Ek sum(c_k u_k); FPR crossing doubling is checked separately in M8.5",
+      "status": "pass",
+      "detail": "residual retained: -33*pi/(4*Ek)"
+    },
+    {
+      "id": "M6.1",
+      "group": "M6",
+      "statement": "Im[eth^2 barsigma] is sigma-real and nonzero (G24 (3.15) building block, spin-0)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.2",
+      "group": "M6",
+      "statement": "F^rad_2,1 = -3i d/du(sigma Im[eth^2 barsigma]) is quadratic: eps^0 = eps^1 = 0, eps^2 != 0 (G24 (3.15))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.3",
+      "group": "M6",
+      "statement": "F^nonrad_2,1 = -3 d/du(m sigma) is bilinear in (m, sigma): eps^0 = eps^1 = 0, eps^2 != 0 (G24 (3.14))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.4",
+      "group": "M6",
+      "statement": "F_2,0 = -3 sigma^2 barsigma_dot is CUBIC: eps^0 = eps^1 = eps^2 = 0, eps^3 != 0 (G24 (3.16)) \u2014 one order higher than the F_2,1 pseudo-fluxes",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.5",
+      "group": "M6",
+      "statement": "radiative/non-radiative split (G24 after (3.16)): F^nonrad vanishes without the mass aspect m, F^rad is independent of m and nonzero",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.6",
+      "group": "M6",
+      "statement": "total-derivative structure of the F_2,1 fluxes (G24 footnote 7): int_0^1 F^rad du = 0 and int_0^1 F^nonrad du = -3 [m sigma]_0^1 = 0 on the compact-support witness",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.7",
+      "group": "M6",
+      "statement": "degree typing anti-test: G24 F^rad/nonrad_2,1 are quadratic, whereas FPR explicitly defines t^C as cubic; the quadratic pseudo-fluxes cannot be the collinear block",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M6.8",
+      "group": "M6",
+      "statement": "isolated local cubic F_2,0 functional cannot directly reproduce FPR (132)'s nonlocal collinear action; the full corrected charge and symplectic transgression are required",
+      "status": "pass",
+      "detail": "residual retained: 409/22394880"
+    },
+    {
+      "id": "M7.1",
+      "group": "M7",
+      "statement": "G24 (2.15a/b) spin-raising/lowering eigenvalue identities on l=1,2,3 harmonic witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M7.2",
+      "group": "M7",
+      "statement": "eth^4 maps spin -2 to spin +2 with eigenvalue (l-1)l(l+1)(l+2)/4 on l=2,3 witnesses",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M7.3",
+      "group": "M7",
+      "statement": "D_z^4 T_zz = P^6 eth^4(P^-2 T_zz) on a generic rational spin-two witness",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M7.4",
+      "group": "M7",
+      "statement": "FPR repeated-primitive bracket differentiates to u^2 N/2, the second-news-moment density",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.1",
+      "group": "M8",
+      "statement": "kappa^2=32 pi G converts the charge coefficient 1/(8 pi G) to 4/kappa^2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.2",
+      "group": "M8",
+      "statement": "FPR (103),(106) plus the vacuum-endpoint moment identity fix M_3=(3 kappa^2/4)t^S",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.2b",
+      "group": "M8",
+      "statement": "CL16 finite-part soft charge is -M_3, hence t^S=-4 Q_soft^FP/(3 kappa^2)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.2c",
+      "group": "M8",
+      "statement": "FPR (129) composed with M_3=(3 kappa^2/4)t^S fixes the outgoing soft-insertion coefficient to -kappa/(8 pi)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.3",
+      "group": "M8",
+      "statement": "u-weighted PSZ curl constraint closes only with the angular-momentum-aspect principal/corner cell",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.4",
+      "group": "M8",
+      "statement": "same-flux anti-test: T_uz=0 admits a nonzero first shear moment when N_z=u(1-u), so stress alone cannot define the ballistic-memory comparison",
+      "status": "pass",
+      "detail": "residual retained: -1/3"
+    },
+    {
+      "id": "M8.5",
+      "group": "M8",
+      "statement": "FPR crossing symmetry after (119): the conserved soft charge contains twice one outgoing soft insertion, exactly converting the T3.5c -3 pi coefficient to CL16's -6 pi coefficient",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.6",
+      "group": "M8",
+      "statement": "PSZ-to-FPR angular-momentum-aspect dictionary from the Bondi metric: P_A=N_A+3 C_AB D_C C^CB/4 -3 partial_A(C_BC C^BC)/32, hence P_A=N_A at linear order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.7",
+      "group": "M8",
+      "statement": "full angular u-weighted PSZ (5.2) square: d_zb commutes with the time integration and the principal aspect endpoint completes the flux map",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M8.7a",
+      "group": "M8",
+      "statement": "operator witness is nontrivial after the u-weighted angular projection",
+      "status": "pass",
+      "detail": "residual retained: z**3/10 - z**2/3 - 7*z*zb/15"
+    }
+  ],
+  "summary": {
+    "total": 65,
+    "passed": 65,
+    "failed": 0,
+    "failed_ids": [],
+    "classification": {
+      "candidate": "finite-part second-moment (ballistic) memory",
+      "verified": [
+        "finite-part and time-moment identities",
+        "Fourier/projector ladder",
+        "curve-deviation witness",
+        "electric/magnetic parity typing",
+        "burst moment calculus with insertion-to-charge crossing factor resolved",
+        "tree-level vanishing of nonlinear pseudo-fluxes",
+        "spin-weight and eth^4 grade",
+        "augmented angular-momentum-aspect plus flux identity",
+        "crossing-symmetry factor converting insertion to charge normalization",
+        "PSZ-to-FPR angular-momentum-aspect dictionary",
+        "operator-level augmented PSZ sphere square",
+        "FPR-to-ballistic-memory overall linear kappa normalization"
+      ],
+      "open": [
+        "full source-derived memory-Ward comparison map",
+        "nonlinear pseudo-flux/collinear completion",
+        "first-principles magnetic charge and antipodal matching"
+      ],
+      "verdict": "typed candidate with verified linear structure; full triangle open"
+    }
+  }
+}
