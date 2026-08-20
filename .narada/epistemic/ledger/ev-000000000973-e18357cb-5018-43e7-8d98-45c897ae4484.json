@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 973,
+  "event_id": "ev-000000000973-e18357cb-5018-43e7-8d98-45c897ae4484",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3d23984c981df64acb11e3936d34e7ce9dd0713509c55b1a4f4c2df77ca392a5",
+  "proposal_id": "ep_720ff042-286a-4034-a6e6-a0f583f30ceb",
+  "proposal_digest": "53e15c001cc0ab4f508e04de071c57f0e7419ccc4f488c47e68dd8054690b055",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Only the deck-point layer has a nonzero generic first differential",
+      "status": "admitted",
+      "body": "Primitive E7/A1^3 surface classes restrict with degree zero to anticanonical pair curves; surface H1 and triple-point H1 vanish. The only generic first differential is signed pair-H0 incidence followed by diagonal deck restriction. Its ranks are 6 for five marks and 10 for six marks, leaving W6 deck decompositions 10- plus 4+ and 20- plus 10+.",
+      "entity_id": "mariciclaim:759b7e368c01a34b77e3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact signed pair-to-deck-point incidence audit",
+      "status": "passed",
+      "body": "The checker constructs the full signed matrices for five and six geometric marks, computes exact ranks and deck eigencokernels, and updates all three source profiles to E2 ranks (20,15,20,14), (20,19,20,14), and (20,22,30,30).",
+      "entity_id": "maricitest:a30603993fa660c01ff9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:759b7e368c01a34b77e3",
+      "target_id": "maricitest:a30603993fa660c01ff9",
+      "relation_id": "rel:maricisupported_by-47484a2448e51cca"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa computes the generic seven-mark E2 page",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1187 derives the first generic differential. Primitive surface lattices restrict trivially by anticanonical orthogonality; elliptic pair H1 has no incoming/outgoing d1. Only pair H0→triple deck points is nonzero. E2 ranks are (20,15,20,14)x4, (20,19,20,14)x4, and (20,22,30,30)x20. W6 splits as one deck-minus line per triple plus invariant simplicial cokernel. Remaining work is only branch-collision-supported pair/triple maps.",
+      "entity_id": "maricicommunication:4936ab95b23c33fe2cd8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:4936ab95b23c33fe2cd8",
+      "relation_id": "rel:maricisent_by-2a537b73c8a5f042"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:4936ab95b23c33fe2cd8",
+      "relation_id": "rel:addressed_to-e169d8ef05d0f060"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:4936ab95b23c33fe2cd8",
+      "target_id": "mariciclaim:759b7e368c01a34b77e3",
+      "relation_id": "rel:maricicommunicates-e6360414a0480017"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact generic first logarithmic differential for the seven-mark four-site packet."
+  },
+  "idempotency_key": "auto-admission-a0cef227c8546ad9ac05affd",
+  "occurred_at": "2026-08-20T16:40:04.8806245Z",
+  "certifies_truth": false,
+  "event_hash": "9175fc868519da3a8ee0ca289d256b40aab89bced4d0ac14a1e291fa7d2dc4fa"
+}

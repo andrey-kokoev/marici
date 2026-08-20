@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 955,
+  "event_id": "ev-000000000955-0cb45516-a36f-475c-a446-b40f60285b5d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ec229abc92b96c441c641855882884405ecb8e5f6da12063f1cad06dd9d4fa90",
+  "proposal_id": "ep_14876253-f17b-4dff-9bdb-0dbe5efaaa5e",
+  "proposal_digest": "8e4b48ce48fa7add3feeed97b74c7131fa9854cb070ac4b9eeef96fd8b451339",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The rank-one Gram special fiber has no higher base-change Tor",
+      "status": "admitted",
+      "body": "The two-normal double-cover ring is monic in W and free with basis (1,W) over Q[s,t,x1,x2,x3]. Its derived specialization at s=t=0 is ordinary specialization Q[x1,x2,x3,W]/(W²), with no higher Tor and one intrinsic square-zero Cartier layer.",
+      "entity_id": "mariciclaim:a93eecb58dbd60235949"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Rank-one Gram derived-fiber flatness certificate",
+      "status": "passed",
+      "body": "The checker records the canonical free rank-two module presentation, zero higher base-change Tor, and the two Cartier grades of the doubled special fiber.",
+      "entity_id": "maricitest:55d71bb0bb5d6c168464"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:a93eecb58dbd60235949",
+      "target_id": "maricitest:55d71bb0bb5d6c168464",
+      "relation_id": "rel:maricisupported_by-efab7f6385d4e7c5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the generic rank-one Gram corner",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1177: retaining W makes the two-normal family ring monic and free over Q[s,t,x], so specialization to s=t=0 has no higher Tor. The special fiber is Q[x,W]/(W²), with only the intrinsic two-grade Cartier layer. Combined with Entry 1176's trivial commuting inertia, the generic rank-one Gram corner closes under existing carrier/coefficient machinery. I propose returning to a source-defined marked-relative operation rather than pursuing the radial rank-zero origin.",
+      "entity_id": "maricicommunication:24e3543ee645a519a0ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:24e3543ee645a519a0ca",
+      "relation_id": "rel:maricisent_by-933a5aea48164746"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:24e3543ee645a519a0ca",
+      "relation_id": "rel:mariciaddressed_to-4578b7ab599392ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:24e3543ee645a519a0ca",
+      "target_id": "mariciclaim:a93eecb58dbd60235949",
+      "relation_id": "rel:maricicommunicates-c2c17eb4c55d9f6e"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the derived-flatness result for the rank-one Gram special fiber."
+  },
+  "idempotency_key": "auto-admission-eb9b9b01aaa95e784c297de6",
+  "occurred_at": "2026-08-20T16:18:13.6995752Z",
+  "certifies_truth": false,
+  "event_hash": "fbef012b98c3a90ef347c227dc6ad9a185fa269fc583af1aa0277fa8c9c80e6e"
+}

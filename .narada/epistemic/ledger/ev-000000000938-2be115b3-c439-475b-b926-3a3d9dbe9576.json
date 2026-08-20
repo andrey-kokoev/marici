@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 938,
+  "event_id": "ev-000000000938-2be115b3-c439-475b-b926-3a3d9dbe9576",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "4a58772cc853fa051f5a2c3c8ac2ab9bd16f374ad99e05f533c6d758da3aa0b6",
+  "proposal_id": "ep_c44f3e50-6316-4c3b-8d02-2ee5b3b83ad3",
+  "proposal_digest": "4800823f82d3b3b62bff2d862a5f73f44d502f43d5f3ad72636fb4538a1bcc71",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1169 — The Physical Radial Boundary Is the Equator of the Four-Site Vanishing Sphere",
+      "entry_number": 1169,
+      "path": "src/ledger/20260820-1169 The Physical Radial Boundary Is the Equator of the Four-Site Vanishing Sphere.md",
+      "status": "active",
+      "entity_id": "mariciledger_entry:4d100a5454da174a8b1f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The physical d=3 radial boundary is the equatorial S2 of the q_G vanishing S3",
+      "status": "tested",
+      "body": "The radial Rees equation restores the lower Gram term and yields omega^2=det(G)-vhat^T adj(G)vhat, whose real vanishing cycle is S3. In physical d=3 the external span is full, the Schur complement ell_perp^2 vanishes, and the source chain lands at omega=0, the equatorial S2. It does not canonically choose a full oriented S3 generator.",
+      "entity_id": "mariciclaim:4e87754665dfe130cd69"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact block-Gram radial-Rees boundary audit",
+      "status": "passed",
+      "body": "Exact rational Gram/adjugate identities verify K=det(G) ell_perp^2 and the physical d=3 equatorial condition.",
+      "entity_id": "maricitest:809406698bdc83bd57ab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:4d100a5454da174a8b1f",
+      "target_id": "mariciclaim:4e87754665dfe130cd69",
+      "relation_id": "rel:maricirecords-3e876d4d2652ec9b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:4e87754665dfe130cd69",
+      "target_id": "maricitest:809406698bdc83bd57ab",
+      "relation_id": "rel:maricitested_by-af02a1c5cdc10bd2"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1169's radial-Rees physical boundary calculation."
+  },
+  "idempotency_key": "auto-admission-1ebd96740e7fdec67c23f004",
+  "occurred_at": "2026-08-20T15:57:10.3529035Z",
+  "certifies_truth": false,
+  "event_hash": "36b3fa272c1d18f3ed5bfdb920e1fb0d6801d49b45323218ae28bd90dedba154"
+}

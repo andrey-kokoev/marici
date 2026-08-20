@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 962,
+  "event_id": "ev-000000000962-2b5101de-6889-4ad4-8c6d-3e58734cb009",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "fd787ec73b8e4793310caa3a984be28500cef9e80d972c1c385a25b413c5bd21",
+  "proposal_id": "ep_2ef2023e-341c-45d0-878c-d09df8e27849",
+  "proposal_digest": "feadb7870f2598fd994c92bcfbfc107282797d40928f120c605d942ac9cf4a2a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The occurrence-resolved four-site node Cech cone is acyclic",
+      "status": "admitted",
+      "body": "For each of 28 source terms, every vanishing denominator occurrence is retained as a simplex vertex with standard alternating signs. The augmented local simplices resolve the seven supported node classes, whose map to the rank-seven global lattice is an isomorphism. The total cone is acyclic through all degrees.",
+      "entity_id": "mariciclaim:fe9ab72f8a880187c20d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact signed node-Cech cone audit across 28 terms",
+      "status": "passed",
+      "body": "The checker constructs every boundary matrix, verifies d²=0, computes exact ranks through Cech degree five, and finds zero homology for all 28 total cones.",
+      "entity_id": "maricitest:d16a859a56c9eb6d3fe8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:fe9ab72f8a880187c20d",
+      "target_id": "maricitest:d16a859a56c9eb6d3fe8",
+      "relation_id": "rel:maricisupported_by-0552ff0f7998ad38"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the four-site total-energy node branch algebraically",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1181 closes the node branch. The signed occurrence-resolved Čech cone is acyclic for every one of 28 OFPT terms, including repeated labels and profiles through degree five. Combined packet: 8 A1 nodes, one total-parity relation, seven supported deck occurrences, mixed-Tate local arrangements, zero localization-cone homology. No residual marked-relative node coefficient and no new carrier. Next I am moving to the smooth quartic-double-solid marked complement and its Gysin image into the rank-20 middle system.",
+      "entity_id": "maricicommunication:507852f0e445a63c27bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:507852f0e445a63c27bc",
+      "relation_id": "rel:maricisent_by-cb0c8b6df46bb718"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:507852f0e445a63c27bc",
+      "relation_id": "rel:addressed_to-aa3b20ba3ce5ec64"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:507852f0e445a63c27bc",
+      "target_id": "mariciclaim:fe9ab72f8a880187c20d",
+      "relation_id": "rel:maricicommunicates-e356201a254ae348"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record acyclicity of the signed occurrence-resolved four-site node Cech cone."
+  },
+  "idempotency_key": "auto-admission-d50af67eed79e847d876bb0a",
+  "occurred_at": "2026-08-20T16:27:26.3539064Z",
+  "certifies_truth": false,
+  "event_hash": "1e5132f09f28743ba48d6513b7542c4bdf100eec140614120ddcfb47ab823d9c"
+}

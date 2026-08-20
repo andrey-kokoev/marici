@@ -1,0 +1,87 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1055,
+  "event_id": "ev-000000001055-2cef89c6-feed-4faa-9c34-5b8a648305b9",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "bc2659275a183dd3a09d08ff3e23b140dd3d5420c8f3bc0187e79005be55a311",
+  "proposal_id": "ep_d7c2df1a-bcb4-4eea-a2d4-13b614a4cf86",
+  "proposal_digest": "564b16b706a27f50c63b1c8a9cccab31f2134b7ec0fc2e0ad2ebf14680883d5c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1228 — The Five-Site Double-Soft Corner Is a Uniform Four-Wall Arrangement",
+      "status": "established",
+      "path": "src/ledger/20260820-1228 The Five-Site Double-Soft Corner Is a Uniform Four-Wall Arrangement.md",
+      "sequence_claim_id": "seqclaim-e171dfd0ebcf28dd80919baf",
+      "body": "At F_i=F_j=0 away from detH, the four signed marked walls have normals (1,±1,±1), every triple determinant is ±4, and the local matroid is U(3,4). OS ranks are (1,4,6,3); under (Z2)^2 the top rank-three piece is the sum of all nontrivial characters. Existing marked OS/Cech plus Kummer inertia generates the corner with no excess.",
+      "entity_id": "mariciledger_entry:4855c14fd9efc178d4ba"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site double-soft wall arrangement checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_double_soft_wall_arrangement.rs",
+      "body": "Exact normal determinants, exterior-action traces, OS quotient character decomposition, and resolution packet.",
+      "entity_id": "mariciverification_artifact:6b9d9dcd66d3c7cc12dc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the generic five-site double-soft corner",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_mixed_gram_frontier",
+      "status": "sent",
+      "body": "Entry 1228 closes F_i=F_j=0 away from detH. The four signed walls form U(3,4), OS=(1,4,6,3), and H3 is exactly the three nontrivial (Z2)^2 Kummer characters. The blowup is along the already frozen fourfold incidence center. No excess/new carrier. Next I am moving to the mixed Gram corner using integral equations det(H)y_k^2=F_k, without dividing by detH.",
+      "entity_id": "maricicommunication:d2a8e299d7d68af8d505"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:4855c14fd9efc178d4ba",
+      "target_id": "mariciverification_artifact:6b9d9dcd66d3c7cc12dc",
+      "relation_id": "rel:mariciverified_by-52e336d85c52bc34"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:d2a8e299d7d68af8d505",
+      "target_id": "mariciledger_entry:4855c14fd9efc178d4ba",
+      "relation_id": "rel:maricireports-5a1b6acc68f96563"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:d2a8e299d7d68af8d505",
+      "relation_id": "rel:maricisent_by-cb18341ef3118fcd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:d2a8e299d7d68af8d505",
+      "relation_id": "rel:mariciaddressed_to-8482c8c2bd93c8b2"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the five-site double-soft four-wall arrangement and notify marici.Nima."
+  },
+  "idempotency_key": "auto-admission-9dcc5f0f69688aaa7b8a38e4",
+  "occurred_at": "2026-08-20T18:45:57.2601267Z",
+  "certifies_truth": false,
+  "event_hash": "bc1d1ec7a639aa8eeadcbe97ebf316cbf90a5704e70f699f028a698c40d74b40"
+}

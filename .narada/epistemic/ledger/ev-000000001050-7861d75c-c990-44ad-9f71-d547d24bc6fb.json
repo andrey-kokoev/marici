@@ -1,0 +1,93 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1050,
+  "event_id": "ev-000000001050-7861d75c-c990-44ad-9f71-d547d24bc6fb",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ab1ab53da40feb17d3c8a62435edefabf75ee1a94af2bfff46e9098aa53938b8",
+  "proposal_id": "ep_d80f5803-7718-4823-bb9e-29f6cafb41b6",
+  "proposal_digest": "875d1d41e36e4a6d99ea6298f0f6617607c1d23e1cdc749ea2af56ec29aeca08",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-frontier-atlas-v0.1.0",
+      "kind": "source",
+      "title": "Marici Frontier Atlas v0.1.0",
+      "version": "0.1.0",
+      "locator": "src/data/frontiers/0.1.0.json",
+      "summary": "Immutable historical cross-sector synthesis pinned through ledger Entry 1213."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-frontier-atlas-v0.2.0",
+      "kind": "source",
+      "title": "Marici Frontier Atlas v0.2.0",
+      "version": "0.2.0",
+      "locator": "src/data/frontiers/0.2.0.json",
+      "summary": "Immutable current interpretive snapshot separating carrier, coefficient, and physical-selection status by sector."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "source:marici-frontier-atlas-v0.2.0",
+      "target_id": "source:marici-frontier-atlas-v0.1.0",
+      "relation_id": "rel:supersedes-dec0b1e1ef3b6f90"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-frontier-atlas-version-contract-v0.2.0",
+      "kind": "claim",
+      "title": "The Frontier Atlas exposes immutable versioned cross-sector snapshots without replacing ledger or graph authority",
+      "summary": "The UI presents registered releases, deep-link version selection, and field-level comparison. Each release identifies its source Git baseline, evidence graph boundary, and ledger ceiling; mathematical authority remains in the ledger and epistemic graph.",
+      "status": "validated implementation claim"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-frontier-atlas-version-contract-v0.2.0",
+      "target_id": "source:marici-frontier-atlas-v0.2.0",
+      "relation_id": "rel:derived_from-89adeb8716e19a93"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-frontier-atlas-v0.2.0-validation",
+      "kind": "test",
+      "title": "Frontier Atlas manifest integrity and production-render validation",
+      "method": "Run pnpm run frontier:check, Astro type checking, and direct production site build; verify /frontier/index.html is emitted."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-frontier-atlas-v0.2.0-validation",
+      "target_id": "claim:marici-frontier-atlas-version-contract-v0.2.0",
+      "relation_id": "rel:tests-8ac3baf5a4d97a7c"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-frontier-atlas-v0.2.0-validation",
+      "test_id": "test:marici-frontier-atlas-v0.2.0-validation",
+      "actor": "marici.Nima",
+      "outcome": "PASS: integrity checker reports two immutable releases with current v0.2.0; Astro check reports zero errors; direct Astro production build emits /frontier/ among 1,231 pages. The full wrapper build remains blocked before Astro by an unrelated unpaired TeX delimiter in ledger Entry 1197.",
+      "evidence": [
+        {
+          "source_id": "source:marici-frontier-atlas-v0.2.0",
+          "locator": "scripts/check-frontier-atlas.mjs",
+          "paraphrase": "The standalone checker validates registry/file identity, supersession order, one current release, typed pins, required sector fields, and evidence presence."
+        },
+        {
+          "source_id": "source:marici-frontier-atlas-v0.2.0",
+          "locator": "dist/frontier/index.html",
+          "paraphrase": "The static production build emitted the Frontier Atlas route successfully."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Implement the standing versioned cross-sector Frontier Atlas with UI version hopping.",
+    "scope": "Site-local source artifact, validation evidence, and graph provenance."
+  },
+  "idempotency_key": "auto-admission-a13602486f640b187e8a6a0f",
+  "occurred_at": "2026-08-20T18:39:52.8232219Z",
+  "certifies_truth": false,
+  "event_hash": "632815df4ce6874287a8f95dd238392c34209a4078f405d2c548292fbeae4771"
+}

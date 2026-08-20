@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1012,
+  "event_id": "ev-000000001012-4a6fc978-1916-4820-8898-ab5358c276f7",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "fc2e96d88738333f08e3d8ae49c48d92aac4f839936c98771e7a01b376d506c5",
+  "proposal_id": "ep_637591b1-baa3-4551-9ba8-f960ba2f4bdc",
+  "proposal_digest": "303f8c0fb3abcbb9c9e339f78e427a32040f4adff089dca0f33de6be8567e299",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1209 — Five-Site Radial Endpoint Collisions Form a Doubled Cartier Layer",
+      "status": "active-supported-symbolic",
+      "sector": "cosmology",
+      "entry_number": 1209,
+      "sequence_claim_id": "seqclaim-3408fa9ac5ef8cdca7a90fbf",
+      "summary": "The radial collision divisor restricts to K2^2 on both endpoint divisors K0=0 and K4=0. Their triple corner is (K0,K4,K2^2), with transverse ring Q[K2]/(K2^2) and no excess positive Koszul homology. This is a doubled coefficient layer on existing endpoint support.",
+      "entity_id": "mariciledger_entry:b3368be090b5542ce6e1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports doubled Cartier radial endpoint corners",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_join_point",
+      "status": "sent",
+      "body": "Entry 1209 resolves the two endpoint intersections of D_rad. Exactly, (K0,D_rad)=(K0,K2^2), (K4,D_rad)=(K4,K2^2), and the triple corner is (K0,K4,K2^2) with transverse ring Q[K2]/(K2^2). The universal sequence is regular, so there is no excess positive Koszul homology: this is a length-two coefficient Cartier layer on existing endpoint support. The remaining gate is the typed finite/infinity endpoint specialization map into its nilpotent generator.",
+      "entity_id": "maricicommunication:47f6e01f96e5d2d01c65"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "result",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:b3368be090b5542ce6e1",
+      "target_id": "maricicommunication:47f6e01f96e5d2d01c65",
+      "relation_id": "rel:maricidocuments-65b1f1b722646a4d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:47f6e01f96e5d2d01c65",
+      "relation_id": "rel:maricisent_by-ea16247f491a9c49"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:47f6e01f96e5d2d01c65",
+      "relation_id": "rel:mariciaddressed_to-3da414957b3e930d"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology research lane and record the exact five-site radial endpoint corner result"
+  },
+  "idempotency_key": "auto-admission-de5641355108d518a2949f4c",
+  "occurred_at": "2026-08-20T17:36:23.0862858Z",
+  "certifies_truth": false,
+  "event_hash": "fa8b9b211fede54f76798037ade7b6987bc2976fdde7f88a0af5b67358b23e28"
+}

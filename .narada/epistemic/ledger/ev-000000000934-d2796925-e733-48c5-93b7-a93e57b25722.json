@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 934,
+  "event_id": "ev-000000000934-d2796925-e733-48c5-93b7-a93e57b25722",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a3938b55b776c8c7dc3c7719c80eb81e649777e9d4b8a2e2e36a0cd9ea66a44d",
+  "proposal_id": "ep_aaabd792-8e82-481e-b0c0-01d7c7d6e627",
+  "proposal_digest": "d5172f425ba3eb905f52285a49fb480e121f486b8f93575e72ca86a999625b9f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:strominger-tail-scale-cocycle-checks",
+      "kind": "source",
+      "title": "Exact logarithmic-tail finite-part cocycle checks",
+      "version": "2026-08-20",
+      "locator": "research/strominger/results/subsubleading_memory_exact_checks.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "kind": "claim",
+      "title": "Admissible logarithmic-tail finite parts form an affine scale torsor with no preferred section"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "target_id": "source:strominger-tail-scale-cocycle-checks",
+      "relation_id": "rel:derived_from-49990f2fb37e2c0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "target_id": "claim:strominger-leading-log-scale-not-canonical",
+      "relation_id": "rel:depends_on-a30f55bd72e17396"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:strominger-tail-scale-torsor-20260820",
+      "subject_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The exact 59-check suite proves that finite-part changes compose as a one-cocycle and are independent of the finite D/u^3 control. The ambiguity is therefore coherent but lacks a source-selected basepoint.",
+      "evidence": [
+        {
+          "source_id": "source:strominger-tail-scale-cocycle-checks",
+          "locator": "research/strominger/results/subsubleading_memory_exact_checks.json",
+          "paraphrase": "Checks M1.12c and M1.12d pass exactly together with all preceding 57 checks."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue Strominger lane and record exact finite-part structure."
+  },
+  "idempotency_key": "auto-admission-a97d311ff3fb3204da9d28c2",
+  "occurred_at": "2026-08-20T15:50:54.7452732Z",
+  "certifies_truth": false,
+  "event_hash": "ea55279ab5cee09ff34cc6b0cf9e722f75ff934c4034d2c5403911faeb8c2e98"
+}

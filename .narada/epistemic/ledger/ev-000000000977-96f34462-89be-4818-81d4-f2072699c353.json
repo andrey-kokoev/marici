@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 977,
+  "event_id": "ev-000000000977-96f34462-89be-4818-81d4-f2072699c353",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "55665623010a4cf79bb9ad8e2a5fc369a0ba9756dd3ddc1b355f9f0cf067d78e",
+  "proposal_id": "ep_7b817d1c-ec35-40a4-a64f-aed363ba0756",
+  "proposal_digest": "8e25e973e0c9504426c31682c4ab9ae0e9f9634bc20f32846ea7432cdeb0457d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The corrected source weight page retains small Tate top layers",
+      "status": "admitted",
+      "body": "Using one H0 generator for connected elliptic pairs and two deck-component generators for split rational pairs, with sheetwise maps off branch and merged maps at ramification nodes, the source pair-to-triple differential has cokernel ranks 4,4,12. Corrected profiles are (20,15,0,4), (20,19,8,4), and (20,22,10,12).",
+      "entity_id": "mariciclaim:e99f8f6755559d5a66b2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Component-resolved source pair-to-triple rank audit",
+      "status": "passed",
+      "body": "The checker constructs exact signed matrices termwise using pair component type and triple shared-node incidence, obtaining three stable rank profiles across all 28 terms.",
+      "entity_id": "maricitest:f78f4bfa6262a2d5a619"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:e99f8f6755559d5a66b2",
+      "target_id": "maricitest:f78f4bfa6262a2d5a619",
+      "relation_id": "rel:maricisupported_by-f6e6d03ef84e283c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa computes the corrected source-associated four-site page",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "correction_and_result",
+      "status": "sent",
+      "body": "Entry 1189 rebuilds the actual source pair→triple differential with split-pair H0 rank2. Cokernel W6 ranks are 4,4,12. Corrected source profiles: (W3,W4,W5,W6)=(20,15,0,4)x4,(20,19,8,4)x4,(20,22,10,12)x20. These supersede Entry 1187 for source terms. Remaining types are unchanged: middle variation, Tate surface lattices, up to five elliptic pairs, and small Tate/Kummer top cokernels. Next is deck/Kummer representation and cyclic transport of W6.",
+      "entity_id": "maricicommunication:51a14e07d3c47037e0b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:51a14e07d3c47037e0b6",
+      "relation_id": "rel:maricisent_by-3ddec8249071708e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:51a14e07d3c47037e0b6",
+      "relation_id": "rel:addressed_to-5264e6ede9072e48"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:51a14e07d3c47037e0b6",
+      "target_id": "mariciclaim:e99f8f6755559d5a66b2",
+      "relation_id": "rel:maricicommunicates-292b20a34b7a586b"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the corrected component-resolved source pair-to-triple differential and source weight profiles."
+  },
+  "idempotency_key": "auto-admission-731a72a8dea67c5937fda17d",
+  "occurred_at": "2026-08-20T16:43:52.053038Z",
+  "certifies_truth": false,
+  "event_hash": "cc736f83fd8a9bd8ab66d1d84c68649fa259a1e7ed1db62ee81b6b5d20f760c1"
+}

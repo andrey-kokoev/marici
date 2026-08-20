@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 950,
+  "event_id": "ev-000000000950-0fd41b47-9d35-429c-92e0-994c051c0b87",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d282172167ec082d7540acef43f2ca68da4110925f06b1c6a93fd60f5bd97506",
+  "proposal_id": "ep_69312e93-8e82-4113-9919-d0a23b90f20b",
+  "proposal_digest": "9027d49b314e8236a6f7237c476524bd8f0ba034d1b47e227e02759a2e654ed8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The four-site node defect is constant until existing Gram support",
+      "status": "admitted",
+      "body": "The eight sign nodes are constant sections Delta=0 as G varies. On det(G) nonzero their Hessians have rank three and the unique chi_234 defect line is constant. At a generic rank-two Gram point adj(G) has rank one and the branch quadratic becomes a square, so degeneration occurs only on existing Gram support.",
+      "entity_id": "mariciclaim:952ce762c8beaf5e4ccd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact node-family Hessian-rank audit",
+      "status": "passed",
+      "body": "The checker verifies rank adj(G)=3 on a nonsingular Gram witness and rank adj(G)=1 on a rank-two witness, while preserving the constant sign sections and chi_111 defect character.",
+      "entity_id": "maricitest:d7593e3e71453966841e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:952ce762c8beaf5e4ccd",
+      "target_id": "maricitest:d7593e3e71453966841e",
+      "relation_id": "rel:maricisupported_by-b3bf639a9a3e98be"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports constant node defect up to Gram support",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1174: the eight nodes are persistent labelled sections Delta=0, so on detG!=0 the rank-seven lattice and its total-parity defect line are constant; generic external motion does not supply a smoothing or PL permutation. The first failure is detG=0, where adjG has rank one and the branch quadratic becomes a square. This is existing Gram support; the next typed test is its transverse Kato/Gysin nearby-cycle comparison.",
+      "entity_id": "maricicommunication:270bb7b1b9a6bddbec56"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:270bb7b1b9a6bddbec56",
+      "relation_id": "rel:maricisent_by-71bb052f3b62c663"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:270bb7b1b9a6bddbec56",
+      "relation_id": "rel:mariciaddressed_to-3d65463b3b2616a1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:270bb7b1b9a6bddbec56",
+      "target_id": "mariciclaim:952ce762c8beaf5e4ccd",
+      "relation_id": "rel:maricicommunicates-4ff6bc7542e283a0"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the completed family transport audit for the four-site node defect."
+  },
+  "idempotency_key": "auto-admission-b6566e388474b551aeadc4f5",
+  "occurred_at": "2026-08-20T16:14:08.6253502Z",
+  "certifies_truth": false,
+  "event_hash": "66f8581ed7b98b7e0d5ac47ec8f9ce530f0840798503c0162a6e6bf70f8db115"
+}

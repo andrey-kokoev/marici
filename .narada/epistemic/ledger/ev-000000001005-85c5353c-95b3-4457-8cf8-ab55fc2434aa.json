@@ -1,0 +1,93 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1005,
+  "event_id": "ev-000000001005-85c5353c-95b3-4457-8cf8-ab55fc2434aa",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1c2478ec8d88cf9c94cd41f9a2e850c44af87ef4dda4671eab80c9d9b1068125",
+  "proposal_id": "ep_0eb13a11-390a-481b-88c0-1480d3b60c63",
+  "proposal_digest": "86d4e7c57e5adb38e9b8e3d95638001bbc4a53708f9542661389f9a25d3a3427",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1204 — Five-Site Occurrence Differences Begin in the First Rees Grade",
+      "status": "recorded",
+      "body": "Complement labels have identical infinity divisor but strict-transform difference 2 rho X_A on total energy zero. The 240 generators split into 40 regular C5 orbits of type 1|4 and 8 of type 2|3.",
+      "entity_id": "mariciledger_entry:3d81413af74c37bdeaa3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Five-site occurrence data is filtered normal information",
+      "status": "supported_exact_rees",
+      "body": "K_occ acts trivially on the leading branch restriction and nontrivially at first Rees order via 2X_i or 2(X_i+X_j).",
+      "entity_id": "mariciclaim:68f5fb39cf0956887877"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Five-site complement-pair Rees separation audit",
+      "status": "passed",
+      "body": "Verified all 240 paired labels are complementary partitions and computed their source strict-transform differences and cyclic type census.",
+      "entity_id": "maricitest:80df162f9ce189cb94aa"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies five-site occurrence data with first-Rees normals",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1204: complementary occurrence labels act identically on the grade-zero infinity branch, but qhat_A-qhat_Ac=2 rho X_A on E_T=0. The 240 differences split into 200 type 1|4 and 40 type 2|3 generators, i.e. 40+8 regular C5 orbits. Thus occurrence is filtered normal information rather than extra grade-zero geometry. Next gate is the first-Rees Koszul attachment and its soft-supported homology.",
+      "entity_id": "maricicommunication:88d9018959e0db084f81"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:80df162f9ce189cb94aa",
+      "target_id": "mariciclaim:68f5fb39cf0956887877",
+      "relation_id": "rel:maricisupports-7f92d7964510bfb9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:3d81413af74c37bdeaa3",
+      "target_id": "mariciclaim:68f5fb39cf0956887877",
+      "relation_id": "rel:maricirecords-116482b5418eeef1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:88d9018959e0db084f81",
+      "relation_id": "rel:maricisent_by-a13516b83549d4bd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:88d9018959e0db084f81",
+      "relation_id": "rel:mariciaddressed_to-da7b1ff0d79e4e40"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record filtered occurrence/Rees result."
+  },
+  "idempotency_key": "auto-admission-bea64d54a0ab38c4383ef780",
+  "occurred_at": "2026-08-20T17:22:55.2201668Z",
+  "certifies_truth": false,
+  "event_hash": "f87249c501861136378a4aa1cde0d048ce58d8c703d5786b70e7410f1109d5cc"
+}

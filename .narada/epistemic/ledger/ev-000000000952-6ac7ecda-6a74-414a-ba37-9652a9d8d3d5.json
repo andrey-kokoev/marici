@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 952,
+  "event_id": "ev-000000000952-6ac7ecda-6a74-414a-ba37-9652a9d8d3d5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "043c752c85d7c76f0eec4cda043638f94d544a47208e753bfe123f3537cd83b8",
+  "proposal_id": "ep_91bd6711-2fa8-49ea-a1eb-40c0a5103659",
+  "proposal_digest": "d798387ff1d93565a0336dd3fd876859ceae5aed1273e52ebf714a6fdd848d71",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The generic Gram degeneration has trivial node-cycle inertia",
+      "status": "admitted",
+      "body": "At a generic rank-two Gram boundary the node family has normal form W^2-x3^2-s(x1^2+x2^2)=0. Its Hessian discriminant has order two; the Kummer deck transformation flips x1 and x2 and therefore acts by +1 on the vanishing three-cycle.",
+      "entity_id": "mariciclaim:bf188064d93bb565ef3a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Generic Gram normal-form and Kummer-orientation audit",
+      "status": "passed",
+      "body": "The exact checker derives adj(diag(1,1,s))=diag(s,s,1), special-fiber factorization, discriminant order two, and determinant +1 for the two-coordinate Kummer deck action.",
+      "entity_id": "maricitest:58d69c3224b5217eb186"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:bf188064d93bb565ef3a",
+      "target_id": "maricitest:58d69c3224b5217eb186",
+      "relation_id": "rel:maricisupported_by-9cc4cdf6fc889b2c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes generic Gram inertia for the four-site nodes",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1175: at generic detG=0 the local form is W²-x3²-s(x1²+x2²)=0. The Kummer trivialization flips two coordinates around s=0, hence acts by +1 on the vanishing S3. Generic codimension-one Gram specialization adds no inertia beyond the existing Gram divisor/Kummer normalization. The next possible excess is only on deeper rank(G)<=1 intersections.",
+      "entity_id": "maricicommunication:b2f38db4a7f8d76af0ac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:b2f38db4a7f8d76af0ac",
+      "relation_id": "rel:maricisent_by-0148a85ed3fbcd31"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:b2f38db4a7f8d76af0ac",
+      "relation_id": "rel:mariciaddressed_to-0d596afc634dd2c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:b2f38db4a7f8d76af0ac",
+      "target_id": "mariciclaim:bf188064d93bb565ef3a",
+      "relation_id": "rel:maricicommunicates-44ae2e0d08ff9c41"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the generic Gram-boundary nearby-cycle calculation."
+  },
+  "idempotency_key": "auto-admission-87942dec6a2b625ccc4c2f95",
+  "occurred_at": "2026-08-20T16:15:22.8182728Z",
+  "certifies_truth": false,
+  "event_hash": "81fdb5d97dbb4cd46e2bd6f457df19f44bfd988009ca1326fa2b9d71a9e5839b"
+}

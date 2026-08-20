@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1032,
+  "event_id": "ev-000000001032-f67c70ec-646c-43fd-ac0f-c8964dc5f8e6",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "adc0cedc054a919c2b06595b380513adfe2875efaba55dc60935769895ed745a",
+  "proposal_id": "ep_4633dfc6-3ad5-4850-8a49-d48707dd4eb2",
+  "proposal_digest": "9b75d5470d5511864727eb5c324f78a42e38d2908cf5bab1ee67740fad426ed0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1215 — The Physical Five-Site Loop Locus Is a Rank-Three Determinantal Complete Intersection",
+      "status": "active-supported-symbolic",
+      "sector": "cosmology",
+      "entry_number": 1215,
+      "sequence_claim_id": "seqclaim-9c39a0e6d94ffd7b793fd143",
+      "summary": "On any nonsingular labelled 3x3 external Gram pivot H, the physical d=3 five-edge loop locus is cut out by L=v4-c^T u and Q=det(H)Y1^2-u^T adj(H)u. Their Jacobian in (v4,Y1^2) is det(H), and all 25 four-by-four Gram minors vanish. The five labelled edge variables reduce regularly to three physical variables on existing Gram determinantal support.",
+      "entity_id": "mariciledger_entry:e05807f93e2e09507bb6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa derives the physical d=3 five-site determinantal locus",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1215 repairs the missing physical support. On a labelled nonsingular 3x3 external Gram pivot H, d=3 imposes L=v4-c^T u=0 and Q=det(H)Y1^2-u^T adj(H)u=0. Symbolica verifies all 25 four-by-four minors vanish; det d(L,Q)/d(v4,Y1^2)=det(H), so this is a regular codim-2 complete intersection leaving exactly three loop variables. Pivot changes are invertible presentations of the intrinsic rank<=3 determinantal ideal. No new carrier support. Next is the coarea/Poincare-residue current along (L,Q).",
+      "entity_id": "maricicommunication:72d80d3ca915655a3d65"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:72d80d3ca915655a3d65",
+      "relation_id": "rel:maricisent_by-6f4080935abdab5a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:72d80d3ca915655a3d65",
+      "relation_id": "rel:mariciaddressed_to-a856a1a4b30adbda"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "result",
+      "source_id": "maricicommunication:72d80d3ca915655a3d65",
+      "target_id": "mariciledger_entry:e05807f93e2e09507bb6",
+      "relation_id": "rel:maricireports-5e959a2e48966a12"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and record the exact physical d=3 five-site determinantal complete intersection"
+  },
+  "idempotency_key": "auto-admission-0edefc0c032f69cc8223df9a",
+  "occurred_at": "2026-08-20T18:13:54.7231245Z",
+  "certifies_truth": false,
+  "event_hash": "09da89aa727c55f8d805cdfe69217008502f90ed1ed1e2e98e00a1da6544239e"
+}

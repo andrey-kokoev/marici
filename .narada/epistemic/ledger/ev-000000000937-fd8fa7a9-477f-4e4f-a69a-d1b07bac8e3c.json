@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 937,
+  "event_id": "ev-000000000937-fd8fa7a9-477f-4e4f-a69a-d1b07bac8e3c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7d5e86eb93b183a2e493f2c44427a7d95ae37c3aa301ec6131e907cac853c1a7",
+  "proposal_id": "ep_aaaa609a-97b7-4bdb-8e72-a92806813556",
+  "proposal_digest": "467524a5d00123a6ba3bde6f0e6cea2765e56ef652d3355f1446e30bf2ddb203",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:flavor-swapped-orbit4-pilot",
+      "kind": "source",
+      "title": "Sector-swapped orbit 4 physical-fit pilot",
+      "version": "2026-08-20",
+      "locator": "research/flavor/results/wp10_sector_swapped_orbit4_pilot.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:flavor-swapped-orbit4-remains-viable",
+      "kind": "claim",
+      "title": "The sector-exchanged orientation of orbit 4 contains the physical flavor point"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:flavor-swapped-orbit4-remains-viable",
+      "target_id": "source:flavor-swapped-orbit4-pilot",
+      "relation_id": "rel:derived_from-faa164229a5fc347"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "claim:flavor-swapped-orbit4-remains-viable",
+      "target_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "relation_id": "rel:criticizes-b4018538bd71041a"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:flavor-swapped-orbit4-pilot-20260820",
+      "subject_id": "claim:flavor-swapped-orbit4-remains-viable",
+      "judgment": "supported_numerically",
+      "actor": "marici.Nima",
+      "reason": "A four-restart S3-cubed member sweep found two viable minima for the sector-swapped orientation; the best has chi-squared 3.363. Therefore the old down-specific finite discriminator cannot be transported across sector exchange.",
+      "evidence": [
+        {
+          "source_id": "source:flavor-swapped-orbit4-pilot",
+          "locator": "research/flavor/results/wp10_sector_swapped_orbit4_pilot.json",
+          "paraphrase": "The persisted fit packet contains two viable minima and a best chi-squared of approximately 3.363."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue Figueiredo lane with oriented support tests."
+  },
+  "idempotency_key": "auto-admission-6234dce66b4e43049393785a",
+  "occurred_at": "2026-08-20T15:54:16.926055Z",
+  "certifies_truth": false,
+  "event_hash": "4a58772cc853fa051f5a2c3c8ac2ab9bd16f374ad99e05f533c6d758da3aa0b6"
+}

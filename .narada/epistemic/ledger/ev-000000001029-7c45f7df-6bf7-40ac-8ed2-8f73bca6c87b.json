@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1029,
+  "event_id": "ev-000000001029-7c45f7df-6bf7-40ac-8ed2-8f73bca6c87b",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "dd3beb9d8e3205c803f2ec118e8f7f97355957daddba200b67e8dfe4f5e13eb8",
+  "proposal_id": "ep_cd57ca92-2a6b-4dfc-8d60-63d63df8f91c",
+  "proposal_digest": "7240843a4a46f5445c1e8b0dfb55d84c4b804c979fad32f8673afe59f121931d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1214 — The Five-Site Endpoint Kummer Line Is the d=5 Coefficient Sector",
+      "status": "active-correction",
+      "sector": "cosmology",
+      "entry_number": 1214,
+      "sequence_claim_id": "seqclaim-2ac72d0355cf4e4ea1102090",
+      "summary": "Primary-source equation (3.10) gives the five-edge CM measure exponent (d-6)/2. The square-root endpoint period of Entries 1211-1212 is therefore the d=5 analytically continued coefficient sector. In physical d=3 the exponent is -3/2 and only three edge variables are independent, so the rank-constrained source current remains unconstructed. Generic branch geometry in Entries 1207-1210 survives.",
+      "entity_id": "mariciledger_entry:d1071676cd7cf522ec8e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:qualifies",
+      "source_ref": "result",
+      "target_id": "mariciledger_entry:442a70584db09402e5ba",
+      "source_id": "mariciledger_entry:d1071676cd7cf522ec8e",
+      "relation_id": "rel:mariciqualifies-21776ec2c5935e8a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:qualifies",
+      "source_ref": "result",
+      "target_id": "mariciledger_entry:cdee803d33346b36025d",
+      "source_id": "mariciledger_entry:d1071676cd7cf522ec8e",
+      "relation_id": "rel:mariciqualifies-b25413d985916080"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa corrects the five-site Kummer line to the d=5 coefficient sector",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "correction",
+      "status": "sent",
+      "body": "Primary-source audit of arXiv:2402.06558 eq. (3.10) forces a scope correction. For n_e=5 the CM exponent is (d-6)/2. Our dz/sqrt(P) endpoint period is d=5, not physical d=3. At d=3 the exponent is -3/2 and the source says only three of five edge variables are independent. Entries 1207-1210 remain valid generic coefficient geometry; Entries 1211-1212 are now explicitly restricted to the d=5 analytic coefficient sector. The next legitimate object is the source-derived rank-constrained d=3 five-site current with all five occurrence labels retained.",
+      "entity_id": "maricicommunication:b55f7c7b79ad9490dc37"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:b55f7c7b79ad9490dc37",
+      "relation_id": "rel:maricisent_by-af12ecdce88c3766"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:b55f7c7b79ad9490dc37",
+      "relation_id": "rel:mariciaddressed_to-c29825693036d43e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "result",
+      "source_id": "maricicommunication:b55f7c7b79ad9490dc37",
+      "target_id": "mariciledger_entry:d1071676cd7cf522ec8e",
+      "relation_id": "rel:maricireports-ec80c51267f71850"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and repair the discovered five-site coefficient/physical dimension mismatch"
+  },
+  "idempotency_key": "auto-admission-ffd5ce24889c1d73f79dc48a",
+  "occurred_at": "2026-08-20T18:12:02.3506765Z",
+  "certifies_truth": false,
+  "event_hash": "9c6f1a373b5047ab9a56aaa0e65b82d6711eac48cff07b3700b83ffa89ac5dba"
+}

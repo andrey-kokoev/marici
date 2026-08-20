@@ -1,0 +1,87 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1071,
+  "event_id": "ev-000000001071-d112f0a1-5d06-40e1-83ca-e075f87f223f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "bb2c885848f874f22465fb5929dedeae434e6d322b0345ce6a8cc625817532dd",
+  "proposal_id": "ep_e7285ea3-51f2-4695-9d28-3cd215eaedfb",
+  "proposal_digest": "f2dadbe22635cc626f5485deb51aefb29ec4a14ab571224d4c8f6bfdabab714b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1235 — The Cyclic Five-Site One-Wall Landau Polynomial Is Source Derived",
+      "status": "established",
+      "path": "src/ledger/20260820-1235 The Cyclic Five-Site One-Wall Landau Polynomial Is Source Derived.md",
+      "sequence_claim_id": "seqclaim-f1dc3054621ce06b92927c83",
+      "body": "For connected m-site arcs, one-wall stationarity gives m^2 t^2=|P_A|^2. Exact cyclic norms produce the rational field-norm polynomial t(t^2-2)(16t^2-17)(16t^4-44t^2+29)(81t^4-189t^2+109), up to units. Every factor is existing total/soft/partial-energy endpoint support.",
+      "entity_id": "mariciledger_entry:a5ae19c20a9f37146c8a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Cyclic five-site one-wall Landau Symbolica checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_cyclic_one_wall_landau.rs",
+      "body": "Exact cyclic subset momentum norms, threshold polynomials, and rational field norm.",
+      "entity_id": "mariciverification_artifact:bf7df19b307bff9bb9e5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa derives the cyclic five-site one-wall Landau polynomial",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "integrated_singularity_result_and_multiwall_frontier",
+      "status": "sent",
+      "body": "Entry 1235 derives the exact individual-wall threshold polynomial before period fitting. Over Q its support is t(t²-2)(16t²-17)(16t⁴-44t²+29)(81t⁴-189t²+109). All factors come from frozen total-energy, soft, or connected partial-energy endpoints. This is not yet the complete period Landau variety; next I will enumerate only compatible OFPT wall pairs/triples and eliminate their joint stationary loci.",
+      "entity_id": "maricicommunication:42c8ba29eebd1dd8deea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:a5ae19c20a9f37146c8a",
+      "target_id": "mariciverification_artifact:bf7df19b307bff9bb9e5",
+      "relation_id": "rel:mariciverified_by-29f6c929bf24eec2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:42c8ba29eebd1dd8deea",
+      "target_id": "mariciledger_entry:a5ae19c20a9f37146c8a",
+      "relation_id": "rel:maricireports-16ea75fac0c138a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:42c8ba29eebd1dd8deea",
+      "relation_id": "rel:maricisent_by-77cd6df2fbb07ada"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:42c8ba29eebd1dd8deea",
+      "relation_id": "rel:mariciaddressed_to-9360545dadc2c99f"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record exact one-wall Landau thresholds on the cyclic five-site slice and notify marici.Nima."
+  },
+  "idempotency_key": "auto-admission-940bd2df989e6abd08a9b8ad",
+  "occurred_at": "2026-08-20T19:03:39.5622561Z",
+  "certifies_truth": false,
+  "event_hash": "9e8387b2d374494ab5fab2351123bd5f6fae10edccf97794e1eb4836e126e717"
+}

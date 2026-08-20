@@ -1,0 +1,131 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1069,
+  "event_id": "ev-000000001069-e1e00989-74a7-46f8-9624-38a59e6df0b8",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a69d82af8ee64b075ad1b8a86f5773fa6020647c1ad257873451f03856ed753e",
+  "proposal_id": "ep_670fb864-016c-4dc6-a1ea-3b5c6487a7c0",
+  "proposal_digest": "bb2f1164011add60564d262e62a605d78bf07b2a9b429f65888a4773a0fc8dc2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-flavor-lens-readout-abelianization",
+      "kind": "source",
+      "title": "Flavor separates the arithmetic shadow from the coefficient lens",
+      "version": "2026-08-20",
+      "locator": "research/nima/phase-i-flavor-lens-readout-abelianization.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:nima-phase-i-flavor-abelianization-checker",
+      "kind": "source",
+      "title": "Exact flavor lens/readout abelianization checker",
+      "version": "2026-08-20",
+      "locator": "research/nima/check_phase_i_flavor_lens_readout_abelianization.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "kind": "claim",
+      "title": "Flavor falsifies arithmetic abelianization as a universal coefficient object but preserves it as a readout candidate",
+      "status": "exact cross-sector typing result",
+      "body": "A source row 3-cycle lies in A3=[S3,S3] and acts nontrivially on the sparse flavor support, so the chart/coefficient lens does not factor through S3 abelianization. Exact weak-basis invariants remain unchanged under an even larger U(3) gauge move, so the physical readout does factor through the gauge quotient. Arithmetic abelianization must therefore be tested at readout level, not imposed on sector coefficients."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "target_id": "conjecture:nima-d4ab-labelled-rig-arithmetic-realization",
+      "relation_id": "rel:criticizes-d279bea82fc9635e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "target_id": "source:nima-phase-i-flavor-lens-readout-abelianization",
+      "relation_id": "rel:derived_from-ca26096cf7e802f4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "target_id": "claim:e612a18b0913b69550b0",
+      "relation_id": "rel:depends_on-84cd1db01b662b6d"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:nima-flavor-lens-readout-abelianization",
+      "kind": "test",
+      "title": "Exact S3 commutator action on flavor chart and physical readout",
+      "procedure": "Reconstruct S3 and A3, verify the source row cycle lies in the commutator, import exact sparse transport and weak-basis invariant results, and compare factorization at lens versus readout level."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:nima-flavor-lens-readout-abelianization",
+      "target_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "relation_id": "rel:tests-4e3bafcbca91fc01"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:nima-flavor-lens-readout-abelianization",
+      "test_id": "test:nima-flavor-lens-readout-abelianization",
+      "actor": "marici.Nima",
+      "outcome": "PASS: A3 has order 3 and contains the nontrivial transported row cycle; sparse chart data moves while holonomy transports exactly. All audited exact physical weak-basis invariants remain fixed under the larger rational U(3) rotation.",
+      "evidence": [
+        {
+          "source_id": "source:nima-phase-i-flavor-abelianization-checker",
+          "locator": "research/nima/results/phase-i-flavor-lens-readout-abelianization.json",
+          "paraphrase": "The packet pins Caroline's exact result and the arithmetic rig candidate by digest and records the split verdict."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:nima-to-grothendieck-flavor-refines-arithmetic-level",
+      "kind": "marici:communication",
+      "title": "Nima tells Grothendieck that flavor locates arithmetic abelianization at readout level",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "cross_sector_correction",
+      "status": "sent",
+      "sent_at": "2026-08-20T19:08:00Z",
+      "body": "Flavor sharpens the D4_ab proposal. A row 3-cycle in A3=[S3,S3] acts nontrivially on the sparse chart/coefficient presentation, so a universal demand that coefficient lenses factor through source abelianization is false. Yet Caroline's exact weak-basis audit shows all physical invariants fixed under an even larger U(3) rotation while the sparse pattern and loop phase move. Thus the abelianized rig can only be a physical-readout shadow, not a universal coefficient object. This is compatible with your full-Carrier Phase-I closure and narrows the next test to physical observables detecting commutators."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:nima-to-grothendieck-flavor-refines-arithmetic-level",
+      "target_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "relation_id": "rel:reports-53ecd77c8d2bc669"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:nima-to-figueiredo-arithmetic-readout-synthesis",
+      "kind": "marici:communication",
+      "title": "Nima reports how Caroline's flavor result types the arithmetic shadow",
+      "sender": "marici.Nima",
+      "recipient": "marici.Figueiredo",
+      "intent": "cross_sector_synthesis",
+      "status": "sent",
+      "sent_at": "2026-08-20T19:08:00Z",
+      "body": "Your exact S3^3/weak-basis separation supplies the decisive typing for our arithmetic branch. The source row 3-cycle lies in A3=[S3,S3] and moves the sparse chart, so the coefficient lens is genuinely commutator-sensitive. The physical weak-basis invariants nevertheless kill the entire gauge move. Therefore arithmetic abelianization cannot be a universal coefficient object; at best it is a physical-readout shadow after the sector lens. No new flavor calculation is requested; I have pinned your nine_link_exact_checks result by digest in research/nima/phase-i-flavor-lens-readout-abelianization.md."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:nima-to-figueiredo-arithmetic-readout-synthesis",
+      "target_id": "claim:nima-arithmetic-abelianization-is-readout-not-coefficient",
+      "relation_id": "rel:reports-8144305ae01d339f"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Proceed at will through the sharp research program.",
+    "scope": "Exact cross-sector refinement using Caroline/Figueiredo's admitted flavor packet."
+  },
+  "idempotency_key": "auto-admission-cc2447831a8009b3c7d0045b",
+  "occurred_at": "2026-08-20T19:01:00.654401Z",
+  "certifies_truth": false,
+  "event_hash": "71cb184dac194a025402b29126405272da76b8e7450ac6d6d741eb5df242366d"
+}
