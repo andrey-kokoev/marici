@@ -51,9 +51,11 @@ probes = payload["probes"]
 labels: dict[tuple, dict] = {}
 incidence: dict[tuple, list[dict]] = defaultdict(list)
 rows_by_tangent_block: dict[tuple[str, int], list[dict[int, int]]] = defaultdict(list)
+full_rows_by_tangent: dict[str, list[dict[int, int]]] = defaultdict(list)
 
 for probe in probes:
     split_rows: dict[int, dict[int, int]] = defaultdict(dict)
+    full_row: dict[int, int] = {}
     for term in probe["terms"]:
         key = label(term)
         labels.setdefault(
@@ -75,6 +77,8 @@ for probe in probes:
             }
         )
         split_rows[term["normal_block"]][term["base_column"]] = term["value"]
+        full_row[term["column"]] = term["value"]
+    full_rows_by_tangent[probe["tangent"]].append(full_row)
     for block in range(3):
         rows_by_tangent_block[(probe["tangent"], block)].append(split_rows[block])
 
@@ -124,6 +128,27 @@ result = {
     "label_count": len(manifest_labels),
     "block_ranks": block_ranks,
     "block_one_paired_ratios_t2_over_t1": block_one_pair_ratios,
+    "projection_to_block_zero": {
+        "full_rank": rank(full_rows_by_tangent["T1"] + full_rows_by_tangent["T2"]),
+        "projected_rank": block_ranks["0"]["combined"],
+        "kernel_dimension": rank(
+            full_rows_by_tangent["T1"] + full_rows_by_tangent["T2"]
+        )
+        - block_ranks["0"]["combined"],
+        "graph_functional_support": [
+            {
+                "tangent": tangent,
+                "source_basis_index": source_basis_index,
+                "value": value,
+            }
+            for tangent, source_basis_index, value in (
+                (entry["tangent"], entry["source_basis_index"], entry["value"])
+                for entry in next(
+                    item for item in manifest_labels if item["normal_block"] == 1
+                )["incidence"]
+            )
+        ],
+    },
     "labels": manifest_labels,
     "acceptance_gate": (
         "A jet-level adapter must account for every label_id and preserve normal_block, "
