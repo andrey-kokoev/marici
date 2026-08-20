@@ -1,0 +1,101 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_1f9f2bc3d2a89c0d",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return a concise structured result with the two values and verification evidence.",
+  "request_fingerprint": "43e286abea4cbac4d0e899a3dbac9e9ec2fa0aa2af02ad644947b0d1c59df419",
+  "created_at": "2026-08-16T13:52:07.6162605Z",
+  "updated_at": "2026-08-16T13:52:29.6610136Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegated-roots-live-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "wait_for_completion": false,
+    "resumable": false
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-721f3ee45fb34fb993e7470bb5f17baa"
+        ],
+        "current_run_id": "run-721f3ee45fb34fb993e7470bb5f17baa",
+        "started_at": "2026-08-16T13:52:07.6598974Z",
+        "finished_at": "2026-08-16T13:52:29.6602759Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "I’ll perform two read-only checks in the provided working directory: resolve its directory name and query Git for the current branch.The first read-only probe was rejected by the command policy before execution. I’m narrowing it to simpler read-only queries and will report the evidence from the successful checks.{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"git_command\": \"git branch --show-current\",\n    \"git_output\": \"main\",\n    \"changes_made\": false\n  }\n}",
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-721f3ee45fb34fb993e7470bb5f17baa",
+        "status": "completed",
+        "finished_at": "2026-08-16T13:52:29.6602691Z",
+        "output": {
+          "summary_text": "I’ll perform two read-only checks in the provided working directory: resolve its directory name and query Git for the current branch.The first read-only probe was rejected by the command policy before execution. I’m narrowing it to simpler read-only queries and will report the evidence from the successful checks.{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"git_command\": \"git branch --show-current\",\n    \"git_output\": \"main\",\n    \"changes_made\": false\n  }\n}",
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-721f3ee45fb34fb993e7470bb5f17baa",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll perform two read-only checks in the provided working directory: resolve its directory name and query Git for the current branch.The first read-only probe was rejected by the command policy before execution. I’m narrowing it to simpler read-only queries and will report the evidence from the successful checks.{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"git_command\": \"git branch --show-current\",\n    \"git_output\": \"main\",\n    \"changes_made\": false\n  }\n}",
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

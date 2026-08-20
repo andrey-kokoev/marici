@@ -1,0 +1,97 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a2549a9f-bfe4-439f-b23e-6c9057300c88",
+  "status": "submitted",
+  "actor": "marici.Strominger",
+  "authority_basis": {
+    "kind": "operator_directed_sector_research",
+    "summary": "Operator directed this session to take the angular-channel obstruction of entry 1072 to a verdict ('we'll follow your lead')."
+  },
+  "idempotency_key": "auto-proposal-c1315f12813d83796a0354a2",
+  "expected_ledger_head": "20daa0b3b601ff091689c114a16734ce0b02a18347f86d78a55e8f08236b10fe",
+  "created_at": "2026-08-20T03:54:19.2309938Z",
+  "content_fingerprint": "c1315f12813d83796a0354a207987c9dfbda490d6d36fc64a4d8fc72a06138b0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Angular-channel obstruction verdict test: PSZ (6.8) bridge closes leg-summed under total angular momentum conservation (dual-engine)",
+      "date": "2026-08-20",
+      "description": "Extension of the subleading triangle admission test after grounding the correct derivation route: PSZ ref [20] = KLPS 1406.3312 section 6 (mis-citation of SZ 1411.5745 corrected; SZ now also grounded at sources/sz1411.5745.txt but plays no role). 53/53 exact sympy checks and 53/53 independent Rust+Symbolica checks, programmatic zero-mismatch diff. Load-bearing repair en route: the checker's build_op contracted the lowered beta; the faithful raised contraction A^mn = -s^m s^n beta_mn (sign flip on pure rotations) is proved by a momentum-space arbiter (operator pushforward must equal W = (eps.k)q - (q.k)eps). Deciding identities: KLPS (6.6) per-leg operator reproduced exactly (S5.6b/c); tetrad decomposition d_zX = b eps+ + c X with b = sqrt2/(1+z zb), c = -zb/(1+z zb) (S5.7); mixing theorem Shat_zz = b^2 S+ + (bc/om) op(eps+) (S5.8); the per-leg bridge residual named exactly as M = D_z^2 mix- - D_zb^2 mix+, the second derivative of the KLPS (6.4) gauge-mixing term, with M_E = 0 and closed forms pinned at the exact witnesses (S5.9); leg-summed closure mechanism C(J1)+C(J2) = 0 under J1+J2 = 0 (S10.1). New typed residual: the KLPS (6.7)/(6.12) distributional scaffold is NOT exact per leg under the declared delta prescription - computed deltas are uniformly half the printed ones plus structural plain-delta contamination that no convention repairs (S10.2/S10.3); regular parts vanish identically. Endpoint Ward identity KLPS (5.16) unaffected (S4.3).",
+      "entity_id": "test:ea37549a13dbfd26a304"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The soft-memory D^2 bridge closes exactly leg-summed under total angular momentum conservation; the per-leg angular residual is the second derivative of the KLPS (6.4) gauge-mixing term",
+      "date": "2026-08-20",
+      "description": "Verdict on the open obstruction of the subleading triangle claim (entry 1072). The PSZ (6.8) identity D_zb^2 Shat_zz - D_z^2 Shat_zbzb = (derived-from-(6.6)) D_zb^2 H_zbzb - D_z^2 H_zz holds per leg in the energy channel and FAILS per leg in the two angular channels by exactly M = D_z^2 mix- - D_zb^2 mix+, where mix is the KLPS (6.4) first-type gauge-mixing term eps^nu q^lam J_{k nu lam} entering Shat through the tetrad mixing coefficient bc/om. Since bc/om is leg-independent, the residual sums to zero under total angular momentum conservation sum_k J_k = 0 - so the bridge closes exactly at the level at which PSZ (6.9) uses it. The obstruction is thereby refined from 'unexplained non-closure' to a named theorem: the per-leg failure is precisely the gauge-mixing derivative, and angular momentum conservation is not merely the gauge-invariance basis of S^(1) but the load-bearing closure input of the soft-memory bridge. Consequence for the carrier picture: the one-sigma-odd-field/three-grades statement of 1072 stands, and its naturality now provably requires J at the D_z^2 grade. Corrections recorded: (1) prior mis-citation - the closure route is KLPS section 6, not SZ 1411.5745; (2) the KLPS (6.7)/(6.12) per-leg distributional scaffold fails exact verification (factor-1/2 delta gap plus convention-independent plain-delta contamination), a typed residual about KLPS's printed derivation, while the endpoint Ward identity (5.16) verifies exactly. Ledger entry: src/ledger/20260820-1079 (seqclaim-5e178658678085cac4fa38ae).",
+      "entity_id": "claim:86ea29b05af4df982483"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ea37549a13dbfd26a304",
+      "target_id": "claim:86ea29b05af4df982483",
+      "relation_id": "rel:tests-1f3a16cd907736c2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:088e8900f0d60d0898c8",
+      "source_id": "claim:86ea29b05af4df982483",
+      "relation_id": "rel:addresses-71509fc2fa983050"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "claim",
+      "target_id": "claim:b6d71748e27ca8159d6d",
+      "source_id": "claim:86ea29b05af4df982483",
+      "relation_id": "rel:maricirefines-f6f79912badd04c0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Report: angular-channel obstruction resolved to a verdict - bridge closes leg-summed under J conservation; per-leg residual named",
+      "sender": "marici.Strominger",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T03:53:30Z",
+      "body": "The open obstruction from my subleading report (ev-000000000748) is closed to a verdict. (1) The per-leg angular residual of the PSZ (6.8) bridge is named exactly: M = D_z^2 mix- - D_zb^2 mix+, the second derivative of the KLPS (6.4) gauge-mixing term, M_E = 0, pinned at the exact witnesses. (2) Because the mixing coefficient bc/om is leg-independent, the residual sums to zero under total angular momentum conservation - the bridge closes exactly in the leg-summed form in which PSZ (6.9) uses it. Angular momentum conservation is thus provably the closure input of the soft-memory bridge, not just the gauge-invariance basis of S^(1). (3) En route, a real repair: my checker's operator contraction had a sign defect on pure rotations, caught by a momentum-space arbiter; the faithful contraction is proved, not assumed. (4) Two corrections: the closure route is KLPS section 6 (PSZ ref [20]), not SZ 1411.5745 as I mis-cited; and KLPS's printed (6.7)/(6.12) distributional scaffold itself fails exact per-leg verification (uniform half-deltas plus plain-delta contamination) - a typed residual about KLPS, while the endpoint Ward identity (5.16) is exact. Dual-engine 53/53 with zero-mismatch diff. Ledger entry 20260820-1079 (seqclaim-5e178658678085cac4fa38ae). With this, the subleading triangle is as closed as the printed literature allows: remaining frontier is the sub-subleading ladder (CS S^(2) has no known symmetry input) whenever you want it.",
+      "entity_id": "communication:bf374af326030b4f7696"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:4561aedd7f948b5ddee5",
+      "source_id": "communication:bf374af326030b4f7696",
+      "relation_id": "rel:sent_by-0449b5ce23c2b0e1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:bf374af326030b4f7696",
+      "relation_id": "rel:addressed_to-c421b48587f56aba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:bf374af326030b4f7696",
+      "target_id": "claim:86ea29b05af4df982483",
+      "relation_id": "rel:reports-67d5ba423a726abb"
+    }
+  ],
+  "digest": "bc8943bf89c80d9379a017084b487ee0b28ff1f2028f7503088f283804e86a87"
+}

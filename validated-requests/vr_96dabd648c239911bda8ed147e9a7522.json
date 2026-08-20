@@ -1,0 +1,61 @@
+{
+  "schema": "narada.delegated_task.validated_request.v1",
+  "validated_request_ref": "vr_96dabd648c239911bda8ed147e9a7522",
+  "created_at": "2026-08-17T15:43:24.9923871Z",
+  "site_root": "C:\\Users\\andrey\\src\\marici",
+  "owner_site_id": "marici",
+  "request": {
+    "expected_owner_site_id": "marici",
+    "allow_cross_site": false,
+    "idempotency_key": "cosmology-343-conductor-extraction-v2",
+    "objective": "Read only the three injected Marici ledger entries 341, 342, and 343. Produce a source-faithful evidence packet reconstructing the normalization/conductor complex of W1 union W2 and the finite matrix skeleton required for the still-uncomputed localization/Gysin map H^1(W1 union W2;K)(-1) -> H^3(S_E;K). Do not use other sources, modify files, invent missing coefficients, or confuse the rank-three conductor lattice with the rank of its ambient Gysin image. Tag every datum source_explicit, mechanically_derived, or missing. Return exactly the required structured fields.",
+    "constraints": {
+      "authority": "read",
+      "cognition": "low",
+      "cwd": "C:\\Users\\andrey\\src\\marici",
+      "site_root": "C:\\Users\\andrey\\src\\marici",
+      "sandbox": "read-only",
+      "wait_for_completion": true,
+      "wait_timeout_ms": 180000,
+      "max_run_ms": 300000,
+      "max_retries": 0,
+      "preflight_paths": [
+        {
+          "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-341 Triple-Denominator Residue Geometry.md",
+          "access": "read",
+          "label": "entry_341"
+        },
+        {
+          "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-342 Mixed-Face Gysin Geometry.md",
+          "access": "read",
+          "label": "entry_342"
+        },
+        {
+          "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-343 Two-Wall Conductor Cycle Lattice.md",
+          "access": "read",
+          "label": "entry_343"
+        }
+      ]
+    },
+    "acceptance": {
+      "required_fields": [
+        "source_files",
+        "wall_inventory",
+        "normalization_components",
+        "node_occurrences",
+        "incidence_relations",
+        "cohomology_rank_claims",
+        "coefficient_twists_or_characters",
+        "finite_matrix_or_skeleton",
+        "missing_data_for_actual_gysin",
+        "prohibited_conclusions",
+        "evidence_classification",
+        "worker_self_audit"
+      ]
+    },
+    "timeout_ms": 180000,
+    "poll_ms": 3000
+  },
+  "request_digest": "96dabd648c239911bda8ed147e9a752242f1730e55028befa2cb1457a3d8db58",
+  "preflight_status": "deferred"
+}

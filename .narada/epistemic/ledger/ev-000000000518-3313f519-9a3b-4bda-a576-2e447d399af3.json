@@ -1,0 +1,82 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 518,
+  "event_id": "ev-000000000518-3313f519-9a3b-4bda-a576-2e447d399af3",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d8e952917d1c387273800fc4ccb6bac39ba6ac48b47e9a5b1b47d8b054b9f4a3",
+  "proposal_id": "ep_82ca717d-fb6b-4638-a683-5ceb7da390bd",
+  "proposal_digest": "1a991b9a137c18bb97d287ad6568cd0ce049a0da5af3ec617f2312162e88e3dc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-901",
+      "kind": "source",
+      "title": "Entry 901 — The Mixed Six-Point KLT Block Introduces No New Determinant Divisor",
+      "version": "20260818-901",
+      "locator": "src/ledger/20260818-901 The Mixed Six-Point KLT Block Introduces No New Determinant Divisor.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "kind": "claim",
+      "title": "The first mixed six-point KLT block inverts over the frozen sine letters without a new determinant divisor"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-six-point-klt-block",
+      "kind": "test",
+      "title": "Pochhammer reconstruction, determinant factorization, and inversion of the source six-point KLT block"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "target_id": "source:marici-ledger-901",
+      "relation_id": "rel:derived_from-ff167d42b144f44a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "target_id": "source:mizera-1610.04230",
+      "relation_id": "rel:derived_from-593eb8b52e7c3bdc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "target_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "relation_id": "rel:depends_on-0ea3ca148c6022d7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-six-point-klt-block",
+      "target_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "relation_id": "rel:tests-1fbe612f527e28b6"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-six-point-klt-block-pass",
+      "test_id": "test:marici-six-point-klt-block",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: reconstructed block matches the published inverse and its determinant has only frozen letter divisors",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-901",
+          "locator": "research/benincasa/string-six-point-klt-block.json",
+          "paraphrase": "Packet records inversion, identity, determinant-factorization errors and the exact determinant letter set."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue and record the mixed six-point string KLT block falsifier."
+  },
+  "idempotency_key": "auto-admission-10a8af261a0e7a2eadcf7a07",
+  "occurred_at": "2026-08-19T04:34:47.3800341Z",
+  "certifies_truth": false,
+  "event_hash": "4029c2568d499b2d1d7a0bf066a2d6bed5e5d568803f67425fbc17efb64cb8fb"
+}

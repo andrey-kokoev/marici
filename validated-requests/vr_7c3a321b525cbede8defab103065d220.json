@@ -1,0 +1,39 @@
+{
+  "schema": "narada.delegated_task.validated_request.v1",
+  "validated_request_ref": "vr_7c3a321b525cbede8defab103065d220",
+  "created_at": "2026-08-17T14:42:51.5563025Z",
+  "site_root": "C:\\Users\\andrey\\src\\marici",
+  "owner_site_id": "marici",
+  "request": {
+    "expected_owner_site_id": "marici",
+    "objective": "Read README.md without changing files. Return structured fields file_status and topic, with topic as one complete sentence.",
+    "idempotency_key": "ergonomics-batch-readme-20260817-v1",
+    "acceptance": {
+      "required_fields": [
+        "file_status",
+        "topic"
+      ],
+      "no_writes": true,
+      "strict_clean_run": true
+    },
+    "constraints": {
+      "authority": "read",
+      "cwd": "C:\\Users\\andrey\\src\\marici",
+      "site_root": "C:\\Users\\andrey\\src\\marici",
+      "cognition": "low",
+      "sandbox": "read-only",
+      "preflight_paths": [
+        {
+          "path": "README.md",
+          "access": "read",
+          "label": "README"
+        }
+      ],
+      "max_retries": 0
+    },
+    "timeout_ms": 180000,
+    "poll_ms": 500
+  },
+  "request_digest": "7c3a321b525cbede8defab103065d22050ccf7080941320f46f21ccae7071159",
+  "preflight_status": "deferred"
+}

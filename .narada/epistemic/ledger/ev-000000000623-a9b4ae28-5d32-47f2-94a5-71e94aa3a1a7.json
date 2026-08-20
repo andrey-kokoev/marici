@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 623,
+  "event_id": "ev-000000000623-a9b4ae28-5d32-47f2-94a5-71e94aa3a1a7",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "feac8ee1c3e6c7dcf7df54bf2c0c4988c2412e6a19e8bf58945cf45ec204ae36",
+  "proposal_id": "ep_1fa19bc8-0cf9-425d-8124-6d26930a520d",
+  "proposal_digest": "dfdc27dea4cb73bf9a954df4048623bedf19189646d1ff0fafead0c940421dc3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-1004",
+      "kind": "source",
+      "title": "Entry 1004 — Cellular Exactness Does Not Descend Through the Resonant Betti Lattice",
+      "version": "20260819-1004",
+      "locator": "src/ledger/20260819-1004 Cellular Exactness Does Not Descend Through the Resonant Betti Lattice.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-1004-betti-gate",
+      "kind": "claim",
+      "title": "Relative cellular exactness does not determine the supported class in the resonant closed twisted-cycle lattice"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-1004-betti-gate",
+      "kind": "test",
+      "title": "Repeated-wall primitive versus source Fitting-valuation audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-1004-betti-gate",
+      "target_id": "marici-source-entry-1004",
+      "relation_id": "rel:derived_from-2f3ae97fd06cafc7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-1004-betti-gate",
+      "target_id": "marici-claim-entry-1004-betti-gate",
+      "relation_id": "rel:tests-0c26f8d86c24f8b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:qualifies",
+      "source_id": "marici-claim-entry-1004-betti-gate",
+      "target_id": "marici-claim-entry-1002-exact-arc",
+      "relation_id": "rel:mariciqualifies-15c4bfd176485962"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-1004-test-outcome",
+      "test_id": "marici-test-entry-1004-betti-gate",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: primitive support 4,5 equals the valuation-two repeated monodromy wall, whose closed-cycle regularization requires 1/(M-1)",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1004",
+          "locator": "research/benincasa/string-six-point-minus-twisted-cycle-lattice-gate.json",
+          "paraphrase": "Checker cross-validates the primitive, occurrence block, boundary factor, valuation, and closure denominator."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research_continuation",
+    "description": "Record verified Entry 1004 resonant Betti-lattice gate"
+  },
+  "idempotency_key": "auto-admission-564d10dcf47f4b8c06f635ee",
+  "occurred_at": "2026-08-19T17:27:31.3731441Z",
+  "certifies_truth": false,
+  "event_hash": "264139f9717e8a62ba7e79d57a14ea250c858fbeab1fecac8757aae29b07f6cc"
+}

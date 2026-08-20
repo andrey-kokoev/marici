@@ -1,0 +1,47 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 823,
+  "event_id": "ev-000000000823-d98d68ea-4b2c-439c-a4a6-20019db0d86f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "38503246ab9e1459781dfd5ec90de4960691dc8d4f9fb480f2b6f53a6b009dc4",
+  "proposal_id": "ep_a75dbfe0-1b52-4b36-ab05-f2a57c6aada1",
+  "proposal_digest": "fd132a5c5be99c53748b74c6ba26b4c549c3622e2602cb35e5a3caf6be3714e1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "correction",
+      "kind": "marici:claim",
+      "title": "Correction to Entry 1120: the quadratic residue is rank one and semisimple",
+      "body": "The earlier rank-two report computed matrix rank over Q(s), not over Q[s]/(s^2+6s+1). A field-aware minor audit and full characteristic-zero rerun give rank R=rank R^2=1. The residue is semisimple with one -1/2 Kummer eigenline and a rank-three zero-residue sector. The existing-support conclusion is unchanged.",
+      "status": "established",
+      "entity_id": "mariciclaim:f2b42c22c20566ef32d2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Divisor-field rank and monodromy audit",
+      "path": "research/benincasa/results/rank12-u0-v2-residue-monodromy-complex.json",
+      "status": "passed",
+      "entity_id": "maricitest:67a4688e4b61276bc398"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "correction",
+      "target_ref": "test",
+      "source_id": "mariciclaim:f2b42c22c20566ef32d2",
+      "target_id": "maricitest:67a4688e4b61276bc398",
+      "relation_id": "rel:maricisupported_by-98bc9ac73ba4e38b"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "Correct the quadratic residue rank after enforcing the divisor-field quotient"
+  },
+  "idempotency_key": "auto-admission-597684c0a1a5578302c77994",
+  "occurred_at": "2026-08-20T11:50:45.7705649Z",
+  "certifies_truth": false,
+  "event_hash": "a459d542c393f89dc699e50db9bfa5ae1e5ec35878b507e2afd5cf1291aeda30"
+}

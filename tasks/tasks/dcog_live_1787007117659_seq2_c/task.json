@@ -1,0 +1,124 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007117659_seq2_c",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "accepted_for_execution",
+  "objective": "Stage C (audit), read only. Consume the explicitly imported validated Stage-B output and the frozen audit evidence packet. Return JSON with fields audited_result, corrections, coefficient_verdict, rank_vs_quasi_isomorphism, existence_and_support_verdict, remaining_construction, falsifier. Audit nonzero versus invertible, primitive cellular coefficient versus typed module map, rank compatibility versus quasi-isomorphism, and constructed existence/support. Repair Stage B if needed and state the exact remaining construction and a concrete permitted falsifier. No prose outside JSON.",
+  "request_fingerprint": "0d1711b276b361bd2df0bfa25579348938578fe4928e930db0a95b4ca7193547",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:51:58.0810358Z",
+  "created_at_ms": 1787007118081,
+  "started_at": null,
+  "started_at_ms": null,
+  "finished_at": null,
+  "finished_at_ms": null,
+  "duration_ms": null,
+  "updated_at": "2026-08-17T22:51:58.0834995Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007117659_seq2_c",
+  "constraints": {
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_retries": 0,
+    "authority": "read",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "preflight_paths": [
+      {
+        "access": "read",
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json"
+      }
+    ],
+    "max_run_ms": 300000,
+    "queue_timeout_ms": 900000
+  },
+  "workflow": {
+    "steps": [
+      {
+        "kind": "worker",
+        "id": "primary",
+        "output_schema": {
+          "name": "primary",
+          "required": [
+            "audited_result",
+            "corrections",
+            "coefficient_verdict",
+            "rank_vs_quasi_isomorphism",
+            "existence_and_support_verdict",
+            "remaining_construction",
+            "falsifier"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "audited_result",
+      "corrections",
+      "coefficient_verdict",
+      "rank_vs_quasi_isomorphism",
+      "existence_and_support_verdict",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [
+    "dcog_live_1787007117659_seq2_b"
+  ],
+  "import_task_outputs": [
+    "dcog_live_1787007117659_seq2_b"
+  ],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "waiting",
+    "resolved_at": null,
+    "waiting_for": [
+      "dcog_live_1787007117659_seq2_b"
+    ],
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "pending",
+    "acceptance_verdict": "pending",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "pending",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [],
+    "worker_outputs": [],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": []
+  },
+  "summary": null
+}

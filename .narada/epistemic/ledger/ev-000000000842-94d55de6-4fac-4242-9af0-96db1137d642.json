@@ -1,0 +1,146 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 842,
+  "event_id": "ev-000000000842-94d55de6-4fac-4242-9af0-96db1137d642",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "14ad3be5f1de93a9debeadc3bd637e3ff71d20477f1f2e3ba7fe1210cdc24d30",
+  "proposal_id": "ep_e624f9b1-947f-46b5-bfe8-0cf7a62d5d80",
+  "proposal_digest": "7a75f6c592e67a6c87163ffa5ab4b3194c209e60e444579fa48f38f4f2a2de7b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1132 — The Leading e6 Node Grade Is Exact and the Claimed Comparison Is Retracted",
+      "status": "correction-established",
+      "ledger_number": 1132,
+      "path": "src/ledger/20260820-1132 The Leading e6 Node Grade Is Exact and the Claimed Comparison Is Retracted.md",
+      "claim_id": "seqclaim-ca4f48d5a69cfbb3f5b0d103",
+      "entity_id": "mariciledger_entry:f735d2f60078ca74060f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The leading second-center nodal grade of e6 is exact",
+      "status": "supported",
+      "body": "Using K=4p^2T^2+O(p^3), K1=-16pT+O(p^2), da db=p^2 dA dB and dA=-dT/2 gives gr0(e6)=-4T dT dB/W^3=d_T(1/W) dB. Therefore the ordinary leading node class of e6 vanishes.",
+      "entity_id": "claim:52e69a877a82f85bcf74"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The claimed node-to-e6 map inferred a target comparison from a common source",
+      "status": "established",
+      "body": "Two arrows from g111_top do not define an arrow between their targets. The missing specialization/bridge square was assumed. Entries 1127-1129 are retracted or premise-superseded; Entry 1128 was conditional on the same untyped arrow.",
+      "entity_id": "criticism:7a4651fa747f26f32e94"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact leading-grade e6 node exactness check",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_u2_v0_e6_leading_exactness.py",
+      "evidence_path": "research/benincasa/results/rank12-u2-v0-e6-leading-exactness.json",
+      "entity_id": "test:60a1aceec73140947a15"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:f735d2f60078ca74060f",
+      "target_id": "claim:52e69a877a82f85bcf74",
+      "relation_id": "rel:maricirecords-3d94dd10087c1a40"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:52e69a877a82f85bcf74",
+      "target_id": "test:60a1aceec73140947a15",
+      "relation_id": "rel:maricitested_by-f14281049a246b72"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "mariciclaim:b3be768e1ce6a791a392",
+      "source_id": "criticism:7a4651fa747f26f32e94",
+      "relation_id": "rel:criticizes-1d240b06401af200"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "mariciclaim:038af705c1dd6d432448",
+      "source_id": "criticism:7a4651fa747f26f32e94",
+      "relation_id": "rel:criticizes-2cc80c7ce2b99924"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "mariciclaim:5373946a67e755294a24",
+      "source_id": "criticism:7a4651fa747f26f32e94",
+      "relation_id": "rel:criticizes-a53e5531928e647d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "mariciclaim:b3be768e1ce6a791a392",
+      "source_id": "claim:52e69a877a82f85bcf74",
+      "relation_id": "rel:supersedes-4508c90fa61d9f19"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa retracts the mistyped node-to-e6 comparison",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "objection",
+      "status": "sent",
+      "body": "Correction: Entries 1127-1129 relied on an invalid inference. Two maps out of g111_top do not define a node-to-e6 arrow; the required square was precisely unconstructed. Exact local audit gives gr0(e6)=d_T(1/W) wedge dB, so the leading ordinary nodal e6 class is exact. Entry 1132 retracts 1127-1128 and supersedes 1129's premise. Entries 1124-1125 survive; Entry 1130's abstract lattice Smith form and Entry 1131's physical difference boundary survive but are not tied to e6. Correct frontier: compute the O(p) e6 class modulo exact forms with the moving conductor boundary.",
+      "entity_id": "maricicommunication:ec233eefcf37ea1e0f12"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:ec233eefcf37ea1e0f12",
+      "relation_id": "rel:sent_by-e1f09cab001245c9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:ec233eefcf37ea1e0f12",
+      "relation_id": "rel:addressed_to-a60c45354007c9e1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "crit",
+      "source_id": "maricicommunication:ec233eefcf37ea1e0f12",
+      "target_id": "criticism:7a4651fa747f26f32e94",
+      "relation_id": "rel:reports-02a06b09b1ce5098"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Repair and verify the discovered mistyped node-to-e6 inference and notify collaborators."
+  },
+  "idempotency_key": "auto-admission-0ab5d5d010ea327f5d4a79f4",
+  "occurred_at": "2026-08-20T13:04:22.5034151Z",
+  "certifies_truth": false,
+  "event_hash": "f384ee362d7119024c5626bcfb00a3d1a44aa79721d59be73192c926f4808151"
+}

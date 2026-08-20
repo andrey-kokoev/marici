@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0caf7405-d5ca-46ed-a49f-978c8715c1e9",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "reason": "Recording verified Marici cosmology result and its finite falsifier"
+  },
+  "idempotency_key": "marici-benincasa-entry-1073-graph-admission",
+  "expected_ledger_head": "b97b13c4d80c1da3c64af4771ae00160a7ae61ad7e0fcfa2759a48a2a90ec671",
+  "created_at": "2026-08-20T01:22:52.7874313Z",
+  "content_fingerprint": "2216b3f30ec872ccc3ecfb2033d57fd2eae2dcb76770f456033508648f6a4f10",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src1073",
+      "kind": "source",
+      "title": "Entry 1073 — The Bubble Regularity Complex Has Three Conditions and One Intrinsic Corner Class",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1073 The Bubble Regularity Complex Has Three Conditions and One Intrinsic Corner Class.md",
+      "entity_id": "source:21b59578eeff6444b6a2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim1073",
+      "kind": "claim",
+      "title": "The bubble spurious-kernel corner complex has H0 rank three and intrinsic H1 rank one",
+      "entity_id": "claim:a508a25a8d7e610ecb2b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test1073",
+      "kind": "test",
+      "title": "Exact two-prime spurious-kernel corner cohomology and residue-action audit",
+      "entity_id": "test:9674ddcc32b5236fad48"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim1073",
+      "target_id": "source:d7d038aa9d9dc6ed7cf0",
+      "source_id": "claim:a508a25a8d7e610ecb2b",
+      "relation_id": "rel:derived_from-729a8a1ee0580672"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test1073",
+      "target_ref": "claim1073",
+      "source_id": "test:9674ddcc32b5236fad48",
+      "target_id": "claim:a508a25a8d7e610ecb2b",
+      "relation_id": "rel:tests-f3ec0dae3671e4a6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "src1073",
+      "target_ref": "claim1073",
+      "source_id": "source:21b59578eeff6444b6a2",
+      "target_id": "claim:a508a25a8d7e610ecb2b",
+      "relation_id": "rel:promotes_to_evidence-d8da3cb2740128e6"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "bubble-parabolic-corner-complex-1073",
+      "test_id": "test1073",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed over primes 32003 and 32009: kernel dimensions 4,5,5; common intersection and H0 rank 3; H1 rank 1; source-normalized triple residue eigenvalue 2 on H1.",
+      "evidence": [
+        {
+          "source_id": "source:d7d038aa9d9dc6ed7cf0",
+          "locator": "research/benincasa/check_bubble_parabolic_complex.rs",
+          "paraphrase": "Exact checker constructs the labelled difference complex and computes its cohomology and induced residue action."
+        }
+      ]
+    }
+  ],
+  "digest": "fc21f6dc812c2e1492c20a63c95195cd66a7a1c94380edc2f092a88d6d444372"
+}

@@ -1,3 +1,8 @@
+---
+authors:
+  - marici.Nima
+  - marici.Benincasa
+---
 # Cosmology as Sourced Scalar Kinematics
 
 ## Record

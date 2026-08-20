@@ -1,0 +1,405 @@
+# Paired-Incidence Descent and the Reduced cdh Vertex Connector
+
+## Record
+
+Date: 2026-08-15
+
+Status: theorem proved for the integral paired-incidence and reduced
+normalization--conductor vertex/connector complexes. The construction does
+not supply a ringed support correspondence, an edge-overlap Gysin map, a
+physical Beck--Chevalley cell, or the endpoint-pointed global mapping fiber.
+No graph admission is claimed.
+
+## Frozen normalization--conductor base
+
+Use entry 93's actual cdh distinguished square
+
+\[
+\begin{matrix}
+\widetilde Z=Z_+\sqcup Z_-&\longrightarrow&\widetilde F=F_+\sqcup F_-\\
+\downarrow&&\downarrow\nu\\
+Z&\longrightarrow&F,
+\end{matrix}
+\]
+
+and its exact coefficient row
+
+\[
+0\longrightarrow B\longrightarrow B_+\oplus B_-
+\xrightarrow{\varepsilon_+-\varepsilon_-}C\longrightarrow0.
+\]
+
+The reduced endpoint line is
+
+\[
+\mathbb Z_{\rm or}\langle\delta\rangle
+=\ker\!\left(
+\epsilon:\mathbb Z\langle v_+,v_-\rangle\longrightarrow\mathbb Z
+\right),
+\qquad
+\delta=v_--v_+.
+\]
+
+Thus \(\delta=(-1,+1)\) is primitive. This kernel is not the diagonal
+coinvariant quotient; confusing those two constructions introduces the
+factor-two defect below.
+
+## Global paired-incidence descent
+
+The paired coefficient labels are
+
+\[
+z_0=(x_5,x_2),\qquad
+z_1=(x_3,x_0),\qquad
+z_2=(x_1,x_4).
+\]
+
+They are not the cdh connector cells \(c_i\) introduced below. Rotation acts
+on the paired labels by \([2,0,1]\), reflection by \([1,0,2]\), and polarity
+exchanges the two branch restrictions and squares to the identity. For a
+common projective coordinate \(G\), branch coordinates \(H_i\), and base
+coordinates \(y_i\), the exact incidence equations are
+
+\[
+y_iG=z_iH_i.
+\]
+
+On the two sheets they restrict to
+
+\[
+y_iG=x_{5-2i\ ({\rm mod}\ 6)}H_i,
+\qquad
+y_iG=x_{2-2i\ ({\rm mod}\ 6)}H_i,
+\]
+
+respectively; explicitly the paired odd/even coordinates are exactly those
+listed in \(z_0,z_1,z_2\). This proves descent of the three paired labels,
+the \(D_3\) action, polarity, and branch incidence over the common entry-93
+coefficient base. It does not identify the coefficient labels with endpoint
+connector chains.
+
+On the conductor, generic nonzero \(y_i\) forces \(G=0\) and leaves the
+coordinate-stratified projective plane \(\mathbb P^2\), with face ranks
+\((1,3,3)\). At the deeper locus \(x_i=y_i=0\), all three incidence
+equations vanish and the fibre enlarges to \(\mathbb P^3\).
+
+The abstract first radial/normal quotient has three degree-two and four
+degree-three generators, with boundary matrix
+
+\[
+\left[y\mid I_3\right]
+=
+\begin{bmatrix}
+y_0&1&0&0\\
+y_1&0&1&0\\
+y_2&0&0&1
+\end{bmatrix}.
+\]
+
+Its kernel is the primitive line
+
+\[
+\ker[\,y\mid I_3\,]
+=\mathbb Z[y_0,y_1,y_2]
+\left(1,-y_0,-y_1,-y_2\right),
+\]
+
+and the identity minor shows that the cokernel has no integer torsion. This
+finite theorem does not prove saturation over the full fibre-product ring,
+a Rees normalization or its universal property, a global cdh base change,
+or a ringed support/Gysin map to the actual endpoint/\(Q\) filtration.
+## The road target and connector classification
+
+Use entry 143's unsplit road augmentation truncation
+
+\[
+T=\left[
+P_{\rm road}=\mathbb Z\langle q_0,q_1,q_2\rangle
+\xrightarrow{\epsilon}\mathbb Z
+\right],
+\qquad
+\epsilon(q_i)=1.
+\]
+
+A strict \(D_3\)-equivariant vertex connector \(F:C\to T\) has degree-one
+matrix
+
+\[
+F_1=aI+b(R+R^2)
+=
+\begin{pmatrix}
+a&b&b\\
+b&a&b\\
+b&b&a
+\end{pmatrix}
+\]
+
+and degree-zero value \(F_0(\delta)=t\). The chain equation is exactly
+
+\[
+\boxed{a+2b=t.}
+\]
+
+For the positive primitive orientation \(t=1\), all equivariant connectors
+form the integral affine line \(a=1-2b\). If matched-label locality is
+independently imposed---\(z_i\) may map only to the road with the same
+label---then \(b=0\), so
+
+\[
+F_1=I,
+\qquad
+F_0(\delta)=1.
+\]
+
+This is the unique positive label-local connector. Reversing the declared
+orientation gives \(-I\). The checker establishes this classification; it
+does not geometrically prove matched-label locality or identify this map
+with a spatial corridor.
+
+## Preservation of the unsplit norm
+
+Put
+
+\[
+N_C=c_0+c_1+c_2,
+\qquad
+N_T=q_0+q_1+q_2.
+\]
+
+Then
+
+\[
+dN_C=3\delta,
+\qquad
+\epsilon(N_T)=3,
+\qquad
+F_1(N_C)=N_T.
+\]
+
+Hence the connector preserves \(\epsilon N=3\) integrally. The index-three
+extension remains unsplit: no division by \(3\), averaging, or rational
+section enters the construction.
+
+## The factor-two trap for separate endpoints
+
+Suppose instead that endpoint values are retained separately as \(A\) and
+\(B\). Sheet-exchanging reflection into \(\mathbb Z_{\rm or}\) forces
+
+\[
+B=-A.
+\]
+
+Their difference is therefore
+
+\[
+B-A=-2A,
+\]
+
+which can never be the primitive value \(\pm1\). The diagonal quotient has
+the same defect: after imposing \(v_++v_-=0\), the class
+\(v_--v_+\) is twice a quotient generator. The primitive construction is
+the reduced kernel line generated by \((-1,+1)\), not either of these
+separate-endpoint substitutes.
+
+This no-go is scoped. It does not forbid future individual endpoint
+comparison cells in an enlarged two-extension category; it says only that
+they cannot be manufactured by replacing the reduced line with separate
+sign-related scalar values or diagonal coinvariants.
+
+## Why full incidence does not give the Gysin overlap
+
+The full paired incidence supplies cellular restriction maps and the
+projectively descended \(z_i\). It does not induce the required oriented
+edge-overlap Gysin/counit
+
+\[
+\gamma_e:
+\mathcal A^{\rm pre\text{-}KC}_{e,!}
+\longrightarrow
+\mathcal C^{\rm supp,KC}_{e},
+\]
+
+from the pre-Koszul--Cech extension-by-zero/intersection diagram to the
+supported Koszul--Cech local-cohomology diagram. There is no established
+ringed Cartesian support square whose extraordinary base change defines
+\(\gamma_e\), and no normal-cone or specialization morphism between the two
+support problems has been constructed.
+
+Moreover entry 143's quotient \(Q=F_K/F_B\) has ranks \((0,0,3,4)\): it
+retains the long-facet top and radial terms but omits the vertex terms on
+which the reduced cdh connector is defined. Thus the composite
+
+\[
+C\xrightarrow{F}T\longrightarrow Q
+\]
+
+is not a defined chain map supplied by the existing data. Projective
+descent on the normalization--conductor base cannot be renamed cdh base
+change into a different endpoint/\(Q\) support diagram.
+
+The first missing arrow is therefore \(\gamma_e\), including its oriented
+overlap counit. Triple and quadruple overlap coherence is required
+immediately afterward. Its global assembly would have to produce the
+generic branch-to-\(Q\) component; only then can one test the entry-160
+Beck--Chevalley homotopy.
+
+## Mapping-fiber boundary
+
+Let
+
+\[
+\mathcal S_{\rm cdh}
+=\operatorname{fib}\!\left(
+\mathcal S_{\widetilde F}\oplus\mathcal S_Z
+\longrightarrow\mathcal S_{\widetilde Z}
+\right)
+\]
+
+denote the conditional global source obtained from the cdh cone only after
+all ringed and variance data exist. With entry 143's
+\(E=F_K/F_V\), the desired framed object would be
+
+\[
+\mathcal M_{\partial,Q}^{\rm cdh}
+=\operatorname{hofib}_{c}
+\left[
+R\!\operatorname{Hom}^{\rm fr}_{D_3}
+(\mathcal S_{\rm cdh}\otimes^L E,\mathbf1_{\chi_N})
+\longrightarrow
+\operatorname{Tot}(\mathcal C_{\rm loc,\partial,Q})
+\right],
+\]
+
+where \(c\) consists of independently constructed local traces, both
+endpoint comparison cells, and the based nonzero \(Q\) comparison.
+
+This homotopy fiber is not instantiated. The source ringed correspondence,
+\(\gamma_e\), its higher coherences, the branch-to-\(Q\) component, the two
+endpoint cells, and the physical Beck--Chevalley cell remain unconstructed.
+Consequently the loaded reflection obstruction and its parity are undefined.
+
+## Anti-circularity controls
+
+- Do not infer \(\gamma_e\) from equality of paired incidence labels.
+- Do not treat the entry-93 cdh square as Cartesian over the endpoint/\(Q\)
+  support problem without a ringed support morphism.
+- Do not extend the reduced connector through the omitted \(Q\)-vertices by
+  zero and call the result a generic comparison.
+- Do not impose separate endpoint values to recover the primitive reduced
+  line; this triggers the factor-two obstruction.
+- Do not infer graph admission, a DNC correspondence, endpoint pointing,
+  Beck--Chevalley, or parity from the coefficient connector.
+- Do not invert \(2\), \(3\), an occurrence variable, or a monodromy
+  parameter.
+
+## Falsifiers and scope
+
+The vertex theorem would be falsified by a non-circulant strict
+\(D_3\)-equivariant connector, failure of \(a+2b=t\), failure of the
+label-local positive solution to be \(I\), or failure of
+\(dN_C=3\delta\) to match \(\epsilon(N_T)=3\).
+
+The boundary would be falsified by an independently constructed ringed
+Cartesian support square or normal-cone correspondence that canonically
+produces \(\gamma_e\), all higher overlap coherences, and a nonzero based
+map to the fixed \(Q\) quotient. A cellular label match alone is not such a
+falsifier.
+
+No global nonexistence theorem is asserted. The result leaves open a future
+relative-support/DNC construction with genuine endpoint connector cells.
+
+## Exact certificate
+
+The exact checkers are
+
+- `research/voevodsky/check_d03_cdh_vertex_connector.rs`; and
+- `research/voevodsky/check_paired_incidence_fibre_product.rs`.
+
+Their SHA-256 hashes are, respectively,
+
+- `15258ea42572298efe0c2134c4a6e622b7b479bacfd5d292b3cad6adad92feb0`;
+  and
+- `3061d92a43e7ac0750fbc9827e9203d21f8a555e45d4bbf9b8a7222e7e440a2e`.
+
+The first verifies the equivariant map module, chain equation, primitive
+orientation, label-local classification, norm boundary, road augmentation,
+factor-two endpoint obstruction, diagonal-quotient obstruction, primitive
+reduced line, and absence of integer torsion. The second verifies the exact
+\(z_i\) labels and symmetries, polarity exchange, branch incidence,
+generic \(\mathbb P^2\), deep \(\mathbb P^3\), and the primitive torsion-free
+kernel of \([y\mid I_3]\), while explicitly leaving Rees normalization,
+global cdh base change, and the ringed support/Gysin map unconstructed.
+## Next experiment
+
+Construct the oriented edge-overlap Gysin/counit \(\gamma_e\) over the
+unlocalized ring from a genuine ringed support or specialization square.
+Then verify the full edge, triple, and quadruple Cech coherence, retain both
+Tor grades and all lower Cousin terms, and test whether its assembly gives a
+primitive nonzero \(Q\) component and the entry-160 one-road
+Beck--Chevalley cell. Only after both endpoint cells exist should the framed
+mapping fiber and reflection parity be evaluated.
+
+## Outcome contract
+
+~~~json
+{
+  "claim": "The paired incidence generators descend over the entry-93 normalization-conductor base, and on the reduced primitive endpoint line every D3-equivariant connector to the road augmentation is a circulant with a+2b=t; positive matched-label locality uniquely gives the identity and preserves the unsplit norm epsilon(N)=3.",
+  "status": "proved",
+  "scope": "integral paired-incidence descent and reduced cdh vertex/connector coefficient complex only; no graph admission, ringed support Gysin, global endpoint/Q mapping fiber, or parity",
+  "assumptions": [
+    "The entry-93 normalization-conductor cdh square and polarity orientation are fixed.",
+    "The reduced endpoint line is ker(epsilon: Z<v_plus,v_minus> -> Z), generated primitively by delta=v_minus-v_plus.",
+    "Matched-label locality is independently imposed at the coefficient connector level and is not claimed as a geometric theorem.",
+    "The entry-143 road augmentation and Q quotient remain fixed."
+  ],
+  "factorization": {
+    "paired_z_i_descent": "proved on the entry-93 coefficient base",
+    "paired_labels": "z0=(x5,x2), z1=(x3,x0), z2=(x1,x4)",
+    "paired_D3_and_polarity": "proved",
+    "branch_incidence": "y_i*G=z_i*H_i with exact odd/even sheet restrictions",
+    "generic_conductor_fibre": "P2 coordinate strata with ranks (1,3,3)",
+    "deep_fibre": "P3 when x_i=y_i=0",
+    "seven_generator_boundary": "[y|I3]",
+    "seven_generator_kernel": "primitive (1,-y0,-y1,-y2)",
+    "seven_generator_torsion": "none",
+    "Rees_normalization": "unconstructed",
+    "global_cdh_base_change": "unconstructed",
+    "equivariant_connector_module": "a*I+b*(R+R^2)",
+    "chain_equation": "a+2b=t",
+    "positive_primitive_orientation": "t=1",
+    "matched_label_connector": "I",
+    "norm_boundary": "dN=3*delta",
+    "road_augmentation": "epsilon(Nq)=3",
+    "index_three_extension": "retained_unsplit",
+    "separate_endpoint_values": "falsified_for_primitive_difference_by_factor_two",
+    "diagonal_coinvariants": "falsified_for_primitive_difference_by_factor_two",
+    "edge_overlap_Gysin": "unconstructed",
+    "ringed_Cartesian_support_square": "unconstructed",
+    "normal_cone_map": "unconstructed",
+    "Q_vertex_terms": "absent",
+    "endpoint_Q_mapping_fiber": "uninstantiated",
+    "reflection_parity": "undefined"
+  },
+  "evidence_refs": [
+    "research/voevodsky/check_d03_cdh_vertex_connector.rs",
+    "research/voevodsky/check_paired_incidence_fibre_product.rs",
+    "src/ledger/20260814-93 Alternating Fusion Normalization-Conductor Square.md",
+    "src/ledger/20260814-94 Augmented Triangle Resolution and the D03 Primitive Cousin Symbol.md",
+    "src/ledger/20260814-128 Four-Corner Cellular Nerve and the Generic-Unit Obstruction.md",
+    "src/ledger/20260814-135 Strict Alexander Projection No-Go and the Integral Butterfly Objective.md",
+    "src/ledger/20260815-143 Two-Endpoint Road Carrier and the Loaded Conductor Cospan Blocker.md",
+    "src/ledger/20260815-158 Local Gysin Sufficiency No-Go and the Global Mapping-Fiber Definition Gate.md",
+    "src/ledger/20260815-160 Primal Localization-Triangle Obstruction and the One-Road Beck-Chevalley Cell.md",
+    "src/ledger/20260815-163 Koszul Gluing Cell and the Mixed-Ideal Blowup Provenance Boundary.md"
+  ],
+  "checker_sha256": "15258ea42572298efe0c2134c4a6e622b7b479bacfd5d292b3cad6adad92feb0",
+  "paired_incidence_checker_sha256": "3061d92a43e7ac0750fbc9827e9203d21f8a555e45d4bbf9b8a7222e7e440a2e",
+  "counterevidence": [
+    "Separate sheet endpoint values force an even difference under sheet-exchanging reflection.",
+    "The diagonal quotient makes delta twice its quotient generator.",
+    "No ringed Cartesian support square or normal-cone map defines the edge-overlap Gysin.",
+    "The fixed Q quotient omits the vertex terms carrying the reduced connector."
+  ],
+  "next_experiment": "Construct the oriented edge-overlap Gysin/counit from a genuine unlocalized ringed support or specialization square, prove full Cech coherence, and only then test the nonzero Q component, Beck-Chevalley cell, endpoint pointing, framed mapping fiber, and parity."
+}
+~~~

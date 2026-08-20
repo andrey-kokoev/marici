@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 661,
+  "event_id": "ev-000000000661-0cbaf05e-6141-46be-a717-360acaf3b9e2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2fe7476f7d12ba11274fb68c23afbf24783941c8a86dca811a80f14f4355367e",
+  "proposal_id": "ep_d8484c6e-017c-4da2-8f06-595855e0d307",
+  "proposal_digest": "f727ecbb34a7cf835f2967881e94dd3b8c43601a414e75d96c2d185177fcf62f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:ledger-1043-pochhammer-integral-gate",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Ledger Entry 1043",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-1043 Pochhammer Regularization Cannot Resolve the Integral Component Defect.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:string-pochhammer-integral-gate-1043",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Pochhammer regularization cannot resolve the integral component defect",
+      "version": "1",
+      "locator": "ledger:1043"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:string-pochhammer-integral-gate-1043",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Pochhammer Laurent-unit type gate",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_pochhammer_integral_type_gate.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:string-pochhammer-integral-gate-1043",
+      "target_id": "claim:string-pochhammer-integral-gate-1043",
+      "relation_id": "rel:tests-5fb09fb9f6006b75"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:string-pochhammer-integral-gate-1043",
+      "target_id": "source:ledger-1043-pochhammer-integral-gate",
+      "relation_id": "rel:derived_from-29cc502211c10ae3"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-pochhammer-integral-gate-1043",
+      "test_id": "test:string-pochhammer-integral-gate-1043",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: M_F-1 is a nonunit in the integral Laurent group ring, while the primary Pochhammer formula requires its inverse",
+      "evidence": [
+        {
+          "source_id": "source:ledger-1043-pochhammer-integral-gate",
+          "locator": "research/benincasa/string-six-point-pochhammer-integral-type-gate.json",
+          "paraphrase": "The packet records the primary formula, base ring, required localization, and the absence of an integral saturation map."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue string-sector work and record coherent results."
+  },
+  "idempotency_key": "auto-admission-ec2ff1f4ffce420d4efa34f0",
+  "occurred_at": "2026-08-19T18:45:52.3751092Z",
+  "certifies_truth": false,
+  "event_hash": "7cca881c7fd6c21ddc2d548f9d01c82433c7775e004fd7d1273d62196ea67435"
+}

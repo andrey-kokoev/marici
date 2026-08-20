@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0cd5f7d4-f503-4a19-913d-8a50ba24f98d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the orbit-completed cosmology comparison."
+  },
+  "idempotency_key": "auto-proposal-b00fb4b4f8d62845aa02bb72",
+  "expected_ledger_head": "3be5399f13beab89b158efa2de95b40d718cfa416cd96d1997752550fb1e7f4b",
+  "created_at": "2026-08-18T01:40:26.3603641Z",
+  "content_fingerprint": "b00fb4b4f8d62845aa02bb72be8b37b70b4833506e7dfb49e8bcbe39c503c015",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:marici-ledger-474",
+      "title": "The Odd First-Order Defect Is the Lost Higher a-Cubed Tail",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-474 The Odd First-Order Defect Is the Lost Higher a-Cubed Tail.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:odd-defect-higher-a3-tail-normal-form",
+      "title": "In stable degree-lex normal form the odd first-order defect is the higher a-cubed tail plus the odd resonance endpoint"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:soft-axis-orbit-completed-rank-and-basis",
+      "title": "Rust orbit-completed character rank and quotient-basis scan"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:odd-defect-higher-a3-tail-normal-form",
+      "target_id": "source:marici-ledger-474",
+      "relation_id": "rel:derived_from-f86a4d4b84882046"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-orbit-completed-rank-and-basis",
+      "target_id": "claim:odd-defect-higher-a3-tail-normal-form",
+      "relation_id": "rel:tests-0a13e201a8d26c49"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:soft-axis-orbit-completed-basis-20260818",
+      "test_id": "test:soft-axis-orbit-completed-rank-and-basis",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed for D=16,20,24,28: one-sided 7D+6 control reproduced; orbit dimensions are (4D+1,3D); the first-order odd quotient basis is u<a b^0..D-1,a^3>.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-474",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_orbit_completed_rank.rs",
+          "paraphrase": "Finite-field exact-rank and greedy quotient reduction establishes the stable declared normal form."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:odd-defect-higher-a3-tail-normal-form",
+      "subject_id": "claim:odd-defect-higher-a3-tail-normal-form",
+      "judgment": "survives bounded stable-filtration tests; canonical module interpretation remains open",
+      "actor": "marici.Benincasa",
+      "reason": "The basis pattern is stable across four cutoffs but depends on the declared monomial order; the anti-invariant Bockstein must establish canonical generation by a^3 b.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-474",
+          "locator": "Entry 474, Next falsifier",
+          "paraphrase": "Compute the orbit-lattice Bockstein before identifying a canonical odd-tail complex."
+        }
+      ]
+    }
+  ],
+  "digest": "accb41137233f2e0c26078716ea4f082c4b2eb48811b8efc6db8672e0383837f"
+}

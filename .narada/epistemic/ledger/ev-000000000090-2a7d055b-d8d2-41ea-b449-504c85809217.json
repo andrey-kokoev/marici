@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 90,
+  "event_id": "ev-000000000090-2a7d055b-d8d2-41ea-b449-504c85809217",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "18ac1e770c0734980644d322e1fa3da37be16c5160545f527e686b54204ebf2b",
+  "proposal_id": "ep_6a2db91b-a5b3-4d69-a404-c6f4aa4526b4",
+  "proposal_digest": "b326e46dfc06b6c7863451cf8fb48b72d4a6d8c255e8b2436d43998afa85ebf3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger181-final",
+      "kind": "source",
+      "title": "Ledger 181 positive-sheet resolution and vanishing generic-Q physical variation",
+      "version": "sha256:f7a6bf08af3a05e217ec2e1dc52a0650a7ab79401b7d90d7d17afac3ab58feac",
+      "locator": "src/ledger/20260815-181 Positive-Sheet Resolution and Vanishing Generic-Q Physical Variation.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-ledger181-sheet-resolution",
+      "kind": "test",
+      "title": "Generic-Q sheet-level simultaneous-resolution falsifier",
+      "summary": "Tests every possible split-component incidence change against the frozen 1,719-condition discriminant census."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-ledger181-q-variation-zero",
+      "kind": "claim",
+      "title": "The canonical q_G12 physical residue germ has zero generic-Q variation",
+      "summary": "Positive-sheet labels are segmentwise D_L^{sign R_L}; sheet switches occur only at frozen branch strata, yielding a simultaneous SNC resolution and identity Q monodromy."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-ledger181-q-variation-zero",
+      "target_id": "source:marici-ledger181-final",
+      "relation_id": "rel:derived_from-7e63cdef66831f76"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-ledger181-sheet-resolution",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:tests-227b88a42d5a231d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:marici-ledger181-q-variation-zero",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:addresses-bb09ab74ff8f9f82"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-ledger181-q-variation-zero",
+      "target_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "relation_id": "rel:depends_on-b552feffb08635e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "claim:marici-ledger181-q-variation-zero",
+      "target_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "relation_id": "rel:maricirefines-66182f2aecda3d8d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-ledger181-sheet-resolution",
+      "test_id": "test:marici-ledger181-sheet-resolution",
+      "actor": "marici.Benincasa",
+      "outcome": "survived; simultaneous resolution exists and Var_Q(Gamma_phys^res)=0 generically",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger181-final",
+          "locator": "Sheet-switch closure lemma; Simultaneous resolution; Monodromy and variation",
+          "paraphrase": "Sheet incidence can switch only on frozen branch-at-pair support; Q divides none of the exhaustive discriminants, so the resolved relative pair extends across a generic Q disk with identity monodromy."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "research_ledger_author",
+    "summary": "Author of ledger 181 and the frozen sheet-resolution proof packet."
+  },
+  "idempotency_key": "auto-admission-fd676e72a5b19d02a0bfe5dd",
+  "occurred_at": "2026-08-15T20:56:41.5697726Z",
+  "certifies_truth": false,
+  "event_hash": "712f0e4e5476c3590bf97ede0593300a6ce39944d781ec201e1a4691329b1b84"
+}

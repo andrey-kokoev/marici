@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_32024260-3bdd-45b6-b1d3-6966583efe9d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue and record the six-point codimension-three string coherence test."
+  },
+  "idempotency_key": "auto-proposal-87a613d1459da6cf6d4c9ac0",
+  "expected_ledger_head": "454d8f3519f41994d5e62a0a0120d921481ac9de7c94f62ba9cb30acccd56d81",
+  "created_at": "2026-08-19T04:32:09.0834822Z",
+  "content_fingerprint": "87a613d1459da6cf6d4c9ac0d8da0897027d5c12bf9da74e3ebf96d6fffb8c2f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-900",
+      "kind": "source",
+      "title": "Entry 900 — The Trivalent Six-Point Vertex Has No Residual Braid Associator",
+      "version": "20260818-900",
+      "locator": "src/ledger/20260818-900 The Trivalent Six-Point Vertex Has No Residual Braid Associator.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "kind": "claim",
+      "title": "All six residue histories at the source trivalent six-point vertex agree and have no residual braid associator"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-six-point-vertex-braid",
+      "kind": "test",
+      "title": "Six-point codimension-three vertex permutation and braid-coherence audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "target_id": "source:marici-ledger-900",
+      "relation_id": "rel:derived_from-4bba410536718f4a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "target_id": "source:mizera-1610.04230",
+      "relation_id": "rel:derived_from-2a7dc9b408c25197"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "target_id": "claim:marici-six-point-first-boundary-order-koszul-coherence",
+      "relation_id": "rel:depends_on-9f94e517ff7ac820"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-six-point-vertex-braid",
+      "target_id": "claim:marici-six-point-trivalent-vertex-no-braid-associator",
+      "relation_id": "rel:tests-b660eb5867292b98"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-six-point-vertex-braid-pass",
+      "test_id": "test:marici-six-point-vertex-braid",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: all six normal orders have total transition one and the two braid words coincide",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-900",
+          "locator": "research/benincasa/string-six-point-vertex-braid.json",
+          "paraphrase": "Packet records the normal labels, all-history transition, braid words, source reconstruction error, and zero braid defect."
+        }
+      ]
+    }
+  ],
+  "digest": "49361864274f8547cab7306973af8fe30971c18f07315dcc3ce31e91924dc902"
+}

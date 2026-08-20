@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_238bfed2-5087-48b8-afa0-d60a9ce54119",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording the verified incompatible-flag carrier result"
+  },
+  "idempotency_key": "marici-benincasa-entry-922-incompatible-flags-admit",
+  "expected_ledger_head": "a7ee2badcd28c3b18890558f6c21dd46cb10d1142b82e8f05a9b67dfb09bab9e",
+  "created_at": "2026-08-19T13:32:23.5883522Z",
+  "content_fingerprint": "00cb8cd0ac91fcb6a6e812dbf1d8168f98efb04e25563b1d7303f52e1fb3d588",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-922",
+      "kind": "source",
+      "title": "Entry 922 — The Two Three-Normal Lines Have No Common Carrier Stratum",
+      "version": "20260819-922",
+      "locator": "src/ledger/20260819-922 The Two Three-Normal Lines Have No Common Carrier Stratum.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-922-incompatible-flags",
+      "kind": "claim",
+      "title": "The diagonal and off-diagonal maximal flags have no common marked-incidence stratum",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-flag-compatibility.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-922-flag-compatibility",
+      "kind": "test",
+      "title": "Nested-set compatibility and incidence-degree audit",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_flag_compatibility.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-922-incompatible-flags",
+      "target_id": "source-marici-ledger-922",
+      "relation_id": "rel:derived_from-e618cad18a70181d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-922-flag-compatibility",
+      "target_id": "claim-marici-922-incompatible-flags",
+      "relation_id": "rel:tests-71bd840eac1cddb2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-922-flag-compatibility",
+      "test_id": "test-marici-922-flag-compatibility",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: s23 and s35 overlap without nesting, their union is not a nested set, and equal flag degrees prohibit a direct cellular boundary",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-922",
+          "locator": "Entry 922, Incompatibility of the union and Incidence-degree audit",
+          "paraphrase": "The ambient common zero locus is not a frozen marked-incidence carrier stratum."
+        }
+      ]
+    }
+  ],
+  "digest": "37595d0db320bee69cd21e89324714433e0d8033ce8be56137a47634324f6812"
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4e959e35-008b-4445-809f-5776d8875275",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "detail": "Record verified Entry 749 weighted Bunch-Davies path nonuniqueness"
+  },
+  "idempotency_key": "marici-benincasa-entry-749-weighted-bd-nonuniqueness",
+  "expected_ledger_head": "cc314904bdefb089c48a339d65fb864c3b0f97c1683469329430c71afa5332d7",
+  "created_at": "2026-08-18T18:52:54.7449458Z",
+  "content_fingerprint": "f1b8e531961bdda472ee782888e1bc54e8efe7ccebe0d98e628a18aaf5b3810c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-entry-749",
+      "kind": "source",
+      "title": "Entry 749 — The Bunch-Davies Tube Does Not Select a Weighted Exceptional Boundary",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-749 The Bunch-Davies Tube Does Not Select a Weighted Exceptional Boundary.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-entry-749",
+      "kind": "claim",
+      "title": "The frozen Bunch-Davies sign prescription does not determine the weighted Z23 boundary"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-entry-749-rust",
+      "kind": "test",
+      "title": "Two admissible weighted Bunch-Davies paths with distinct exceptional limits"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-entry-749",
+      "target_id": "source-entry-749",
+      "relation_id": "rel:derived_from-9dc72bccd751a93b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-entry-749-rust",
+      "target_id": "claim-entry-749",
+      "relation_id": "rel:tests-ef03f708b345a56b"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-749",
+      "test_id": "test-entry-749-rust",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: c=1 and c=2 obey the same negative-imaginary inequalities but land at t=i and t=2i",
+      "evidence": [
+        {
+          "source_id": "source-entry-749",
+          "locator": "research/benincasa/marici-gm/src/bin/weighted_bd_path_nonuniqueness.rs",
+          "paraphrase": "The exact rational inequality certificate exhibits distinct admissible weighted limits."
+        }
+      ]
+    }
+  ],
+  "digest": "e43b0d518283926a1ee9503a1aa0b9e2d12bd22f992ec539f31e019ea470851f"
+}

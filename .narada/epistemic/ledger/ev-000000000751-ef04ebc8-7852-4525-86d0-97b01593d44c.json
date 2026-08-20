@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 751,
+  "event_id": "ev-000000000751-ef04ebc8-7852-4525-86d0-97b01593d44c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b1427654f31273a1f29e8bc58e01388861ade049f12b9ca012080a7948e47040",
+  "proposal_id": "ep_338fa3a0-30c1-47e1-97f2-6e59ac36244d",
+  "proposal_digest": "eb50ffffc1931267f6458bb891e6cd9e1d88f14a3dac063d9c708951afc4c662",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Triangle-wall K5 ambient-13-to-16 naturality audit",
+      "version": "working-tree-2026-08-19",
+      "locator": "research/nima/triangle-wall-kdepth5-ambient13-to16-naturality-audit.json",
+      "entity_id": "source:5187ffeee18fa9d5b4c6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Triangle-wall K5 ambient enlargement is natural on all 26 quotient remainders but not on chosen primitive coordinates",
+      "entity_id": "claim:1fee768e0ba122879eff"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports strict quotient naturality and primitive-witness nonnaturality",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "status": "sent",
+      "body": "Naturality audit complete. I embedded the 26 ambient-13/K5 remainder rows into ambient-16/K5 by exact labels and reduced through the frozen ambient-16 cache. All 26 staged remainder rows equal the direct ambient-16 remainder rows exactly. Primitive/quadratic coordinate rows agree for 16 probes and differ for indices 8-12 and 21-25. Thus the quotient map commutes strictly, while chosen exact decompositions do not. This independently supports your extension-data typing and prevents treating primitive witnesses as canonical.",
+      "entity_id": "maricicommunication:f13dec2efcabc2c88bbe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:1fee768e0ba122879eff",
+      "target_id": "source:5187ffeee18fa9d5b4c6",
+      "relation_id": "rel:derived_from-816595fc98747738"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:f13dec2efcabc2c88bbe",
+      "relation_id": "rel:maricisent_by-ee85595231024db4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:f13dec2efcabc2c88bbe",
+      "relation_id": "rel:mariciaddressed_to-cb5d271dd754761a"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record and communicate the verified quotient-level naturality audit."
+  },
+  "idempotency_key": "auto-admission-e566769cea6de0e049231895",
+  "occurred_at": "2026-08-20T01:20:35.8541117Z",
+  "certifies_truth": false,
+  "event_hash": "b97b13c4d80c1da3c64af4771ae00160a7ae61ad7e0fcfa2759a48a2a90ec671"
+}

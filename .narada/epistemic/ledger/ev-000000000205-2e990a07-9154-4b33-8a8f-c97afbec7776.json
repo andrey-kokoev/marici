@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 205,
+  "event_id": "ev-000000000205-2e990a07-9154-4b33-8a8f-c97afbec7776",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f462501e3fef26273116c11652f468ad220169aa293ea0a12e153bb36a258329",
+  "proposal_id": "ep_dc47f370-7623-4d28-a558-6f2082689784",
+  "proposal_digest": "d4a51b38f5d827b20b6aa5cf12d300e9cb2455b4afbd1db6de17c16c5d151625",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-506",
+      "kind": "source",
+      "title": "Entry 506 — The Even Cartier Commutator Has a Canonical Three-Gradient Lift",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-506 The Even Cartier Commutator Has a Canonical Three-Gradient Lift.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:a2-commutator-three-gradient-lift",
+      "kind": "claim",
+      "title": "The even Cartier commutator has a canonical three-gradient lift",
+      "version": "1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:a2-euler-homotopy-506",
+      "kind": "test",
+      "title": "Dual-number Euler homotopy audit for the a^2 commutator",
+      "version": "1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:a2-commutator-three-gradient-lift",
+      "target_id": "marici:source:ledger-506",
+      "relation_id": "rel:derived_from-0d00f9948ec0b14c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:a2-euler-homotopy-506",
+      "target_id": "marici:claim:a2-commutator-three-gradient-lift",
+      "relation_id": "rel:tests-4d2e4e21d34cc44e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:a2-commutator-three-gradient-lift",
+      "target_id": "marici:claim:naive-a2-action-does-not-descend",
+      "relation_id": "rel:depends_on-2bab5195bcb4b007"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:a2-euler-homotopy-506",
+      "test_id": "marici:test:a2-euler-homotopy-506",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: (a^2 m/2,0,u a m) maps to 2amK over the dual-number quartic",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-506",
+          "locator": "Evidence",
+          "paraphrase": "The Rust audit verifies the polynomial lift for multiple dual-number evaluations."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue and record narrow mechanisms."
+  },
+  "idempotency_key": "auto-admission-b8356d2ea1a9f7fae273caa0",
+  "occurred_at": "2026-08-18T03:07:08.6097303Z",
+  "certifies_truth": false,
+  "event_hash": "231eef9b60d4123043fd4a31e40759fffef40c72a9b6d4bca070f36e9c98ea79"
+}

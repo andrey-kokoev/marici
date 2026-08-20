@@ -1,0 +1,119 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f1d77882-b5e9-42df-a3bc-1bc453fadb2f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the Sommerfeld-style graded-tail analysis and update the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-44e031f69c763018949e9259",
+  "expected_ledger_head": "e6bc3edc41d51cd4555cfd7ae069ba28d8f2751bd4e8ea4773d417ffe42ad13e",
+  "created_at": "2026-08-18T00:12:13.642624Z",
+  "content_fingerprint": "44e031f69c763018949e9259864640c6c7353a1858c485c9da97f54c3536179e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-441-soft-axis-quartic-cokernel",
+      "local_ref": "s",
+      "kind": "source",
+      "title": "Ledger 441: The Soft-Axis Exact-Form Tail Has Persistent Quartic Cokernel",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-441 The Soft-Axis Exact-Form Tail Has Persistent Quartic Cokernel.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:soft-axis-leading-symbol-shell-rank",
+      "local_ref": "t",
+      "kind": "test",
+      "title": "Soft-axis leading exact-form symbol shell-rank test",
+      "version": "1",
+      "locator": "research/benincasa/soft-axis-exact-symbol-certificate.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:soft-axis-tail-cokernel-f-ab-mod-a4",
+      "local_ref": "q",
+      "kind": "claim",
+      "title": "The tested eventual soft-axis symbol cokernel is F[a,b]/(a^4)"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:criticism:soft-axis-tail-not-contractible",
+      "local_ref": "c",
+      "kind": "criticism",
+      "title": "The soft-axis exact-form tail is not eventually contractible"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:conjecture:physical-relative-boundary-kills-quartic-tail",
+      "local_ref": "n",
+      "kind": "conjecture",
+      "title": "A source-derived physical relative boundary cone kills the quartic soft-axis tail"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "t",
+      "target_ref": "s",
+      "source_id": "marici:test:soft-axis-leading-symbol-shell-rank",
+      "target_id": "marici:source:ledger-441-soft-axis-quartic-cokernel",
+      "relation_id": "rel:derived_from-eee29de2c5c6b051"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t",
+      "target_id": "marici:conjecture:soft-axis-eventual-tail-contractible-determinant-trivial",
+      "source_id": "marici:test:soft-axis-leading-symbol-shell-rank",
+      "relation_id": "rel:tests-e22f425dd7eb471e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "c",
+      "target_id": "marici:conjecture:soft-axis-eventual-tail-contractible-determinant-trivial",
+      "source_id": "marici:criticism:soft-axis-tail-not-contractible",
+      "relation_id": "rel:criticizes-e9d9cf00dd31596d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "n",
+      "target_ref": "q",
+      "source_id": "marici:conjecture:physical-relative-boundary-kills-quartic-tail",
+      "target_id": "marici:claim:soft-axis-tail-cokernel-f-ab-mod-a4",
+      "relation_id": "rel:depends_on-6ff7fc48e03193d4"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:soft-axis-symbol-quartic-cokernel-20260818",
+      "test_id": "marici:test:soft-axis-leading-symbol-shell-rank",
+      "actor": "marici.Benincasa",
+      "outcome": "Every tested shell from degree 13 through 40 has deficiency four. All leading exact images are divisible by a^4, and the missing representatives are 1,a,a^2,a^3, supporting graded cokernel F[a,b]/(a^4).",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-441-soft-axis-quartic-cokernel",
+          "locator": "Result",
+          "paraphrase": "The shell ranks attain the ideal (a^4) dimension while retaining four canonical residue classes."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:tail-contractibility-refuted-20260818",
+      "subject_id": "marici:conjecture:soft-axis-eventual-tail-contractible-determinant-trivial",
+      "judgment": "refuted_in_tested_leading_symbol",
+      "actor": "marici.Benincasa",
+      "reason": "The eventual symbol has persistent four-dimensional cokernel per shell rather than full rank.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-441-soft-axis-quartic-cokernel",
+          "locator": "Interpretation",
+          "paraphrase": "The quartic tail is genuine graded coefficient data unless an independently derived relative boundary condition removes it."
+        }
+      ]
+    }
+  ],
+  "digest": "5dc63c46bd01d408b61b52609202b27ec5bf156e53658c6203de1bf0802d67b4"
+}

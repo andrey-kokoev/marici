@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 500,
+  "event_id": "ev-000000000500-a3b1a1ab-a716-4c01-a826-b73c98c68049",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "d8ed04dffe44acad8a2236a7d37e677ab233c02fe23a677d2d600c88a4b3c5e1",
+  "proposal_id": "ep_f2fb5d2c-f1af-4c6d-8160-50344e00d99f",
+  "proposal_digest": "a0c291781481538a27154540eccbd47c3bf3275c96fc0f5122d270fe595968f5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:mizera-1706.08527",
+      "kind": "source",
+      "title": "Combinatorics and Topology of Kawai-Lewellen-Tye Relations",
+      "version": "arXiv:1706.08527v1",
+      "locator": "https://arxiv.org/abs/1706.08527"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-string-five-point-klt-basis-diagonal",
+      "kind": "claim",
+      "title": "The source five-point KLT basis is diagonal because its cycle pairs share exactly the two declared common vertices"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-string-five-point-diagonal-klt-basis",
+      "kind": "test",
+      "title": "Five-point labelled common-vertex and KLT inversion test"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-string-five-point-klt-basis-diagonal",
+      "target_id": "source:mizera-1706.08527",
+      "relation_id": "rel:derived_from-37c324b8d9efc9b2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-string-five-point-diagonal-klt-basis",
+      "target_id": "claim:marici-string-five-point-klt-basis-diagonal",
+      "relation_id": "rel:tests-84f95af79f5407a2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-string-five-point-diagonal-klt-basis-20260818",
+      "test_id": "test:marici-string-five-point-diagonal-klt-basis",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: support matrix [[(23,45),0],[0,(24,35)]] and the field-theory diagonal kernel exactly inverts the two cycle valuations",
+      "evidence": [
+        {
+          "source_id": "source:mizera-1706.08527",
+          "locator": "Section 3.3 five-point KLT example",
+          "paraphrase": "The source chooses row basis (12345,12435), column basis (13254,14253), and gives a diagonal inverse KLT matrix with the two sine-product entries."
+        },
+        {
+          "source_id": "source:mizera-1706.08527",
+          "locator": "src/ledger/20260818-883 The Source Five-Point KLT Basis Is Diagonal by Common Vertices.md",
+          "paraphrase": "The durable Rust checker enumerates the common labelled channels and verifies exact field-theory inversion at a physical sample."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued string-sector research and epistemic graph maintenance."
+  },
+  "idempotency_key": "auto-admission-b938e3f7870ae8a079e823da",
+  "occurred_at": "2026-08-19T04:01:07.0238988Z",
+  "certifies_truth": false,
+  "event_hash": "4fe5cda0e97d25d802b95189c99996e9e1fe494340419391ac6a48222f2cb4e5"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_81270d1a-080f-47e8-85b0-7308ccf56840",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the geometry-first Marici research program and preserve the first Gauss-Manin obstruction."
+  },
+  "idempotency_key": "auto-proposal-1be3832256940cfb16fd7082",
+  "expected_ledger_head": "353edddc911581fc22a602fe2fe6a6b08389894c32c8a713b90e71d3c3a99363",
+  "created_at": "2026-08-18T00:27:05.0409752Z",
+  "content_fingerprint": "1be3832256940cfb16fd7082a2a89afcb10d030b6ee881e5968737fc0267f551",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source448",
+      "kind": "source",
+      "title": "Entry 448 — The First Soft-Axis Gauss-Manin Lift Is Necessarily Meromorphic",
+      "version": "git:353610a3cb5abb8a37afa8b86a5cefd19936fe05",
+      "locator": "src/ledger/20260817-448 The First Soft-Axis Gauss-Manin Lift Is Necessarily Meromorphic.md",
+      "entity_id": "source:b7dcf49c0f281b69f9e0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim448",
+      "kind": "claim",
+      "title": "The first soft-axis Kodaira-Spencer class is nonzero modulo the fibre Jacobian, so every Gauss-Manin lift requires a simple pole along a=0.",
+      "status": "proved",
+      "scope": "first-order local Cayley-Menger hypersurface geometry; no global relative-support pushforward",
+      "evidence_refs": [
+        "research/voevodsky/check_soft_axis_gauss_manin_lift_obstruction.py"
+      ],
+      "entity_id": "claim:309df8eb157b6e129b12"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim448",
+      "target_ref": "source448",
+      "source_id": "claim:309df8eb157b6e129b12",
+      "target_id": "source:b7dcf49c0f281b69f9e0",
+      "relation_id": "rel:derived_from-7870c9aaf7bba8b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim448",
+      "target_id": "problem:7d6a6a20cd00d4b8e96a",
+      "source_id": "claim:309df8eb157b6e129b12",
+      "relation_id": "rel:addresses-52b5f7794353669e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next449",
+      "kind": "problem",
+      "title": "Blow up the mixed ideal (u,a), retain the exceptional divisor, and derive the logarithmic relative Gauss-Manin connection and its support-forgetting map.",
+      "status": "open",
+      "entity_id": "problem:e3eee7b0922a1ae57dba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next449",
+      "target_ref": "claim448",
+      "source_id": "problem:e3eee7b0922a1ae57dba",
+      "target_id": "claim:309df8eb157b6e129b12",
+      "relation_id": "rel:depends_on-6fb445f2ec321be8"
+    }
+  ],
+  "digest": "31ab5632d9c825b92deff54fb33f125ba762b781c3177d969cae276791bc83d8"
+}

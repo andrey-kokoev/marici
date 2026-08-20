@@ -1,0 +1,58 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7b71c7e1-a1bf-4bbc-a028-8bbecc854f09",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record verified exact local Gysin maps and principal-cell typing"
+  },
+  "idempotency_key": "marici-benincasa-entry-736-local-gysin-maps-graph",
+  "expected_ledger_head": "e943ded94235581fa291639780b8f2ef99383fbbc187ef53ee22469cd2379dda",
+  "created_at": "2026-08-18T18:16:11.0127264Z",
+  "content_fingerprint": "07a870ab701fae07b599087b542b871dc9b79822c2d1fa80d3c1f0726658068b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src736",
+      "kind": "source",
+      "title": "Ledger Entry 736 — The Resolved Local Gysin Maps Require a Principal Cell",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-736 The Resolved Local Gysin Maps Require a Principal Cell.md",
+      "entity_id": "source:e3f75af2c64c9ccd088b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test736",
+      "kind": "test",
+      "title": "Resolved local Gysin corner-map and principal-cell typing test",
+      "entity_id": "test:2f6a93c26eb8df8ca70e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim736",
+      "kind": "claim",
+      "title": "All first-corner incidence information is carried by the shared principal cell, not homogeneous resonance columns",
+      "entity_id": "claim:41f2c62a789c9ee4591b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim736",
+      "target_ref": "src736",
+      "source_id": "claim:41f2c62a789c9ee4591b",
+      "target_id": "source:e3f75af2c64c9ccd088b",
+      "relation_id": "rel:derived_from-79096d2d0ffab70d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test736",
+      "target_ref": "claim736",
+      "source_id": "test:2f6a93c26eb8df8ca70e",
+      "target_id": "claim:41f2c62a789c9ee4591b",
+      "relation_id": "rel:tests-281a9acbc8e511fa"
+    }
+  ],
+  "digest": "627cb6eaf8d21a6f454492c0c1aede321d921c1ae884dd981576d97b596c7171"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_d44154c819df4571",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Hostile independent review of the proposed narrow marked-relative three-site cosmology result. Read the imported Narada worker packets and relevant repository evidence, especially research/benincasa/check_marked_relative_q.rs and ledger entries 148-155. Do not edit files.\n\nAudit these exact points:\n1. Primary-source typing and provenance: Eq. (51) full integral, Eq. (52) denominator families, ten denominators; distinguish the full eight nonconstant restricted lines on q_G12=0 from the five active poles in that residue summand.\n2. Whether the actual finite marks are divisors on the two-dimensional Cayley-Menger residue surface, while the elliptic curve is the anticanonical infinity boundary/Gysin quotient, so a naive punctured-elliptic full-object model is mistyped.\n3. Mathematical validity and exact scope of the Rust finite collision certificate: x=1,y=2 slice, square-free Q slice, all 8 line-branch resultants, 12 reduced signed-face resultants, all 21 nonparallel source-line pair evaluations, universal/source-forced cases separated. Check whether nonzero remainders rigorously reject Q as a multivariate component, and state what they do not prove.\n4. Keep the formal identity Res(M_A,M_A')=A Q (and reciprocal BQ) separate from source provenance: no source-fixed map to M_A/P has been derived.\n5. Nearby cycles: m=A/B with B^{-1/2}; at E_T=0 generic locus x*y*(x+y)!=0; Legendre -unipotent times Kummer -1 gives total unipotent monodromy rank N=1, N^2=0; raw infinity quartic is I2 and the entire compactified residue surface becomes W=±R. Determine which statements apply only to the elliptic quotient and which full marked-relative statements remain unavailable without the physical relative/Borel-Moore chain/log model.\n6. Second normal/Rees data: gr1 Q=0, gr2 Q=-8xy, and why this does not control the first-order elliptic degeneration.\n7. Classification discipline: do not call Q=0 proved coefficient support; do not infer a new carrier cell; do not conflate graph H_1 with elliptic H^1. Assess whether H2 survives and in what refined form.\n\nReturn a concise hostile-review packet with: PASS/FAIL per point; any concrete corrections required before ledger recording; strongest justified claim; prohibited stronger claims; and the single next finite falsifier. Cite exact file/equation/worker evidence.",
+  "request_fingerprint": "3c9155861fd419400bbfbd0706e9db4a4417f683639429d05adcdd312cf838f7",
+  "created_at": "2026-08-15T17:58:15.6184702Z",
+  "updated_at": "2026-08-15T18:10:58.5449867Z",
+  "cancelled_at": null,
+  "idempotency_key": "marici-marked-relative-hostile-review-20260815-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "high",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "resumable": true,
+    "wait_for_completion": false,
+    "max_run_ms": 1200000,
+    "max_concurrency": 1,
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "hostile_review",
+        "objective": "Perform the seven-point hostile audit and return one evidence-bounded review packet.",
+        "acceptance": [
+          "Each point receives PASS/FAIL with evidence",
+          "Overclaims and missing source maps are explicit",
+          "No repository edits"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "criteria": [
+      "Full-eight versus active-five distinction is checked",
+      "Finite-slice divisibility logic is checked without upgrading scope",
+      "Pure elliptic versus full marked-relative nearby cycles are separated",
+      "Carrier/coefficient classification is type-safe"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "hostile_review": {
+        "step_id": "hostile_review",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-c4bd3bfb86aa4a47b3ac902c90e29b78"
+        ],
+        "current_run_id": "run-c4bd3bfb86aa4a47b3ac902c90e29b78",
+        "started_at": "2026-08-15T17:58:15.6477844Z",
+        "finished_at": "2026-08-15T18:10:58.5442903Z",
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "hostile_review",
+        "step_kind": "worker",
+        "run_id": "run-c4bd3bfb86aa4a47b3ac902c90e29b78",
+        "status": "running"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

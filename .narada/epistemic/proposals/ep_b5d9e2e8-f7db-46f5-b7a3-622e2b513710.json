@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b5d9e2e8-f7db-46f5-b7a3-622e2b513710",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "instruction": "Continue the cosmology falsification program and update the epistemic graph."
+  },
+  "idempotency_key": "marici-benincasa-entry-668-wall-conductor-q-support",
+  "expected_ledger_head": "07cb9fa443001e60b046052596b5ad8486ff7567e8cd82c8743ee2296ee878eb",
+  "created_at": "2026-08-18T14:55:48.3747831Z",
+  "content_fingerprint": "c9823854c2662048145560a5fb4052017566f3d84fd0f9af906c9b36d0843448",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-20260818-668",
+      "kind": "source",
+      "title": "Ledger Entry 668 — The Physical Wall-Conductor Support Is Coprime to the Quartic",
+      "version": "20260818-668",
+      "locator": "src/ledger/20260818-668 The Physical Wall-Conductor Support Is Coprime to the Quartic.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:entry-668-q-absent-wall-conductor",
+      "kind": "claim",
+      "title": "Q is absent from the canonical physical wall-conductor support"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:entry-668-conductor-gcd",
+      "kind": "test",
+      "title": "Exact gcd test of Q with all physical conductor resultants"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:entry-668-q-absent-wall-conductor",
+      "target_id": "source:marici-ledger-20260818-668",
+      "relation_id": "rel:derived_from-82b0b90f7040b331"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:entry-668-conductor-gcd",
+      "target_id": "claim:entry-668-q-absent-wall-conductor",
+      "relation_id": "rel:tests-5a36249d51b71881"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:entry-668",
+      "test_id": "test:entry-668-conductor-gcd",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: each of R1, R2, E^2 and their product has gcd 1 with Q",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-20260818-668",
+          "locator": "research/benincasa/physical-wall-conductor-q-support.json",
+          "paraphrase": "The exact component and total gcd fields are all 1."
+        }
+      ]
+    }
+  ],
+  "digest": "236925a6745c745ee8c611cf1193e3aa8c33d8825442197cb1f7c7b97f959f08"
+}

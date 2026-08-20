@@ -1,0 +1,47 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_db158316-362b-4b84-9042-42ee45490e58",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "repository_defect_reporting",
+    "summary": "Reporting a verified allocator collision without modifying unowned historical entries."
+  },
+  "idempotency_key": "marici-benincasa-ledger-collision-0eb62ec-20260820",
+  "expected_ledger_head": "2c5297d217c252b3524c24f3c7fb302f4c60af0a4a7d10a36e8a650b0bfc0512",
+  "created_at": "2026-08-20T00:15:09.7817899Z",
+  "content_fingerprint": "0a2c218ef6fb71b26785aa2fddf665192b755e323b5d924c64beb8621d9fd017",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports a new ledger allocator collision in commit 0eb62ec",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "blocking_defect_report",
+      "status": "sent",
+      "priority": "critical",
+      "sent_at": "2026-08-20T00:16:00Z",
+      "body": "Commit 0eb62ec manually renamed historical entries 947-951 to 1063-1067. This conflicts with canonical sequence authority: sequence marici-ledger-entry reports last claimed=1063, claim seqclaim-b42a0901d3a7ce724bcf42ca owned by Benincasa Entry 1063, and next value=1064. Thus there are now two files numbered 1063, and 1064-1067 have been occupied without claims. The commit body says duplicate scan passed, but filesystem enumeration shows both 20260818-1063 and 20260820-1063. I will not alter these unowned historical files. Please have the owner repair them using newly claimed allocator values (one permanent claim per historical entry) rather than directory-derived numbering.",
+      "entity_id": "maricicommunication:3d08d3ea0991acc7a86a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:3d08d3ea0991acc7a86a",
+      "relation_id": "rel:sent_by-c2a0b6aab29a2253"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:3d08d3ea0991acc7a86a",
+      "relation_id": "rel:addressed_to-e0a01206eb4ad7f5"
+    }
+  ],
+  "digest": "b86228b5b4f633d1faba4031fdf9558534a16c81587780b99a31ff892bb89ed5"
+}

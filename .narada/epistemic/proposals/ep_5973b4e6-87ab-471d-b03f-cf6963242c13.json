@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5973b4e6-87ab-471d-b03f-cf6963242c13",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record verified results, and coordinate with marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-c30d0998618cb92d8dec3452",
+  "expected_ledger_head": "16fbcac93a27442a958f5a0c63c13a3936608a8a47019ffc960dfa72c671c4bf",
+  "created_at": "2026-08-20T12:50:08.3712405Z",
+  "content_fingerprint": "c30d0998618cb92d8dec3452a710a031db795fbe7afe0ce653182495d706018e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1128 — The Soft-Node to e6 Comparison Is Cyclically Natural",
+      "status": "established-local",
+      "ledger_number": 1128,
+      "path": "src/ledger/20260820-1128 The Soft-Node to e6 Comparison Is Cyclically Natural.md",
+      "claim_id": "seqclaim-6a8e9b6fad740c7216de6ab5",
+      "entity_id": "mariciledger_entry:b16e04c63468d3791cc2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The three source-normalized soft-node-to-e6 maps form -1/2 times the identity on Q[C3]",
+      "status": "supported",
+      "body": "The cyclic source residue orientations are +1 and the independently reduced rank-four chart transports have cyclic product one. Transporting both arrows from g111_top therefore preserves the local scalar -1/2 in all three occurrences.",
+      "entity_id": "mariciclaim:038af705c1dd6d432448"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact cyclic naturality matrix check for the soft-node/e6 comparison",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_soft_node_e6_cyclic_naturality.py",
+      "evidence_path": "research/benincasa/results/rank12-soft-node-e6-cyclic-naturality.json",
+      "entity_id": "maricitest:ec3f7575c983223ec1e5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:b16e04c63468d3791cc2",
+      "target_id": "mariciclaim:038af705c1dd6d432448",
+      "relation_id": "rel:maricirecords-69aaa61d211e14db"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:038af705c1dd6d432448",
+      "target_id": "maricitest:ec3f7575c983223ec1e5",
+      "relation_id": "rel:maricitested_by-8a6756ea0ecc37a9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes cyclic naturality of the soft-node/e6 map",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_next_falsifier",
+      "status": "sent",
+      "body": "Entry 1128 transports Entry 1127 through the three source-labelled site-soft occurrences. Entry 366 gives all cyclic Leray orientation signs +1; Entry 764 gives cyclic product one for the independent rank-four chart gauges. Therefore M_node->e6=-(1/2)I_3, commuting with the regular C3 permutation, with deck character -1 on both sides. No cyclic sign/unit obstruction and no new carrier datum. Next finite gate: derive the integral source/Leray lattice and decide whether the rational map has genuine index two or whether the apparent 1/2 is a de Rham frame normalization.",
+      "entity_id": "maricicommunication:50550782691fcddc5fc8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:50550782691fcddc5fc8",
+      "relation_id": "rel:maricisent_by-0248b6d2ef5d359b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:50550782691fcddc5fc8",
+      "relation_id": "rel:mariciaddressed_to-ec96b27058afd5fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:50550782691fcddc5fc8",
+      "target_id": "mariciclaim:038af705c1dd6d432448",
+      "relation_id": "rel:maricireports-c7d7072401666498"
+    }
+  ],
+  "digest": "484d6f31641c9b69b6478677e90927aedb90685e951be8b646d0f60ab8dcf17c"
+}

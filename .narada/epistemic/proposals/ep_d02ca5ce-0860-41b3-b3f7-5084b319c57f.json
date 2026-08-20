@@ -1,0 +1,52 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d02ca5ce-0860-41b3-b3f7-5084b319c57f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "Correct the quadratic residue rank after enforcing the divisor-field quotient"
+  },
+  "idempotency_key": "auto-proposal-56a963c67ff5e255a0f0cf11",
+  "expected_ledger_head": "38503246ab9e1459781dfd5ec90de4960691dc8d4f9fb480f2b6f53a6b009dc4",
+  "created_at": "2026-08-20T11:50:35.9561025Z",
+  "content_fingerprint": "56a963c67ff5e255a0f0cf11dff041194035196fdd5fd21c51d50b8c58594cce",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "correction",
+      "kind": "marici:claim",
+      "title": "Correction to Entry 1120: the quadratic residue is rank one and semisimple",
+      "body": "The earlier rank-two report computed matrix rank over Q(s), not over Q[s]/(s^2+6s+1). A field-aware minor audit and full characteristic-zero rerun give rank R=rank R^2=1. The residue is semisimple with one -1/2 Kummer eigenline and a rank-three zero-residue sector. The existing-support conclusion is unchanged.",
+      "status": "established",
+      "entity_id": "mariciclaim:f2b42c22c20566ef32d2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Divisor-field rank and monodromy audit",
+      "path": "research/benincasa/results/rank12-u0-v2-residue-monodromy-complex.json",
+      "status": "passed",
+      "entity_id": "maricitest:67a4688e4b61276bc398"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "correction",
+      "target_ref": "test",
+      "source_id": "mariciclaim:f2b42c22c20566ef32d2",
+      "target_id": "maricitest:67a4688e4b61276bc398",
+      "relation_id": "rel:maricisupported_by-98bc9ac73ba4e38b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:corrects",
+      "source_ref": "correction",
+      "target_id": "claim:3d8704c1c41e6458f550",
+      "source_id": "mariciclaim:f2b42c22c20566ef32d2",
+      "relation_id": "rel:maricicorrects-928da01834a32a75"
+    }
+  ],
+  "digest": "a4e1b1b486bc385f0753e1cbb28c2de916cf27d519e9bec020a48b8efb34c216"
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1dd133d1-e7e4-42d3-890c-b7bbbf57a3d5",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the odd Bockstein analysis."
+  },
+  "idempotency_key": "auto-proposal-b00384e5adb7a0546964d159",
+  "expected_ledger_head": "7790329e61f2dfe8e4213e82e439c7071cf1ec617cc817855bb52de82458bb2e",
+  "created_at": "2026-08-18T01:59:38.4255275Z",
+  "content_fingerprint": "b00384e5adb7a0546964d159e5010a17d2573cc8bf2a8d1e57d2a425179b64ec",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:marici-ledger-478",
+      "title": "The Odd Bockstein Splits into an L2 Tail and One Resonance Direction",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-478 The Odd Bockstein Splits into an L2 Tail and One Resonance Direction.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:odd-bockstein-l2-tail-plus-resonance",
+      "title": "The stable odd Bockstein image is the filtered L2-transition orbit plus one resonance direction"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:odd-bockstein-l2-tail-plus-resonance",
+      "target_id": "source:marici-ledger-478",
+      "relation_id": "rel:derived_from-08ad4add64aa7a5c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:odd-bockstein-membership",
+      "target_id": "claim:odd-bockstein-l2-tail-plus-resonance",
+      "relation_id": "rel:tests-b3ce5a2f0b68fecb"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:odd-bockstein-l2-tail-plus-resonance",
+      "subject_id": "claim:odd-bockstein-l2-tail-plus-resonance",
+      "judgment": "established as a filtered vector-space decomposition at D=16,20,24,28; module structure remains open",
+      "actor": "marici.Benincasa",
+      "reason": "All b^j multiples of h=3a^3(1+b) are direct Bockstein classes and have rank D-3; one resonance representative completes rank D-2.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-478",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_orbit_completed_rank.rs",
+          "paraphrase": "Exact membership and quotient-rank tests verify the decomposition at four stable cutoffs."
+        }
+      ]
+    }
+  ],
+  "digest": "7447a5df2f459aeeef6f5d030792134b00c030605220cef24ab6973f9252af5a"
+}

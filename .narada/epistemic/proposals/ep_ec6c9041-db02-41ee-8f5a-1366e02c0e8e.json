@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ec6c9041-db02-41ee-8f5a-1366e02c0e8e",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue cosmology audit and update epistemic graph with new ledger entries."
+  },
+  "idempotency_key": "marici-benincasa-entry-451-dual-number-resonance",
+  "expected_ledger_head": "95f99694b7662430f3132515a6489b8e693a9d3f42e1150dd0c4a611b3235689",
+  "created_at": "2026-08-18T00:37:48.1728552Z",
+  "content_fingerprint": "2fca5542d28ff2048dc4b1b9567a9a27b35a268b1374cb55e7a9ccd29526d626",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src451",
+      "kind": "source",
+      "title": "Ledger Entry 451 — Neither Euler Generator Is First-Order Soft Torsion",
+      "version": "20260818-451",
+      "locator": "src/ledger/20260818-451 Neither Euler Generator Is First-Order Soft Torsion.md",
+      "entity_id": "source:73717f652874f01db5ad"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test451",
+      "kind": "test",
+      "title": "Complete-exact-operator dual-number torsion test for the Euler generators",
+      "version": "v1",
+      "locator": "research/benincasa/soft-axis-dual-number-resonance-certificate.json",
+      "entity_id": "test:4d69665ee2bc26841113"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim451",
+      "kind": "claim",
+      "title": "Neither canonical Euler-resonance generator is first-order soft torsion",
+      "version": "entry-451",
+      "locator": "src/ledger/20260818-451 Neither Euler Generator Is First-Order Soft Torsion.md",
+      "entity_id": "claim:58d28ea9068797c3bf80"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim451",
+      "target_ref": "src451",
+      "source_id": "claim:58d28ea9068797c3bf80",
+      "target_id": "source:73717f652874f01db5ad",
+      "relation_id": "rel:derived_from-e568fedc8ebc05cd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test451",
+      "target_ref": "claim451",
+      "source_id": "test:4d69665ee2bc26841113",
+      "target_id": "claim:58d28ea9068797c3bf80",
+      "relation_id": "rel:tests-f1d0dfefd26253dd"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-451-dual-number",
+      "test_id": "test451",
+      "actor": "marici.Benincasa",
+      "outcome": "At degree cutoffs 16 and 20, both a^4 and a^11(b+1) raise the dual-number block-system rank by one; neither t times the class is exact modulo t^2.",
+      "evidence": [
+        {
+          "source_id": "src451",
+          "locator": "rank table and certificate",
+          "paraphrase": "Both augmented systems are inconsistent at two stable cutoffs."
+        }
+      ]
+    }
+  ],
+  "digest": "4e4dff9cceeb17a215f3664bf827862a7c5a8ee4dbd5e9cb4bd4639ffd9a976f"
+}

@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1108 — Both L1 Polarities Close the First Tangency Simplex
 
 ## Record

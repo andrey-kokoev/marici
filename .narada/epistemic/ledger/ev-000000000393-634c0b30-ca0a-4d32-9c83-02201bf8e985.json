@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 393,
+  "event_id": "ev-000000000393-634c0b30-ca0a-4d32-9c83-02201bf8e985",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ce5309ee85e7f38e1b27392d325db885355d7b092c86d36c58f6786763977439",
+  "proposal_id": "ep_f8b2b4d6-8211-4868-afff-18e126a25e13",
+  "proposal_digest": "95117a9a63f5f2fb66ef99eb4135e9496b8660a506b1d4b75b4d6108edb2c91a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-778",
+      "kind": "source",
+      "title": "Entry 778 — Mu-Two Descent Does Not Make the Weighted Physical Pairing Lift Independent",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-778 Mu-Two Descent Does Not Make the Weighted Physical Pairing Lift Independent.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:weighted-extension-chain-pairing-lift-independence",
+      "kind": "test",
+      "title": "Weighted extension-relative-chain pairing lift-independence test"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:weighted-physical-pairing-currently-undefined",
+      "kind": "claim",
+      "title": "The weighted physical pairing with the nonsplit extension is currently undefined"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:weighted-extension-chain-pairing-lift-independence",
+      "target_id": "claim:weighted-physical-pairing-currently-undefined",
+      "relation_id": "rel:tests-39d910ab8435aeb3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "test:weighted-extension-chain-pairing-lift-independence",
+      "target_id": "source:marici-ledger-778",
+      "relation_id": "rel:derived_from-067ad6d683e44991"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:weighted-extension-chain-pairing-gate-20260818",
+      "test_id": "test:weighted-extension-chain-pairing-lift-independence",
+      "actor": "marici.Benincasa",
+      "outcome": "Coefficient overlap and mu2 descent are exact, but the traced restriction varies as 1/(1+c^2) across admissible weighted Bunch-Davies lifts; without a source-derived compensating chain current the pairing is undefined.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-778",
+          "locator": "Weighted Bunch-Davies lifts and Missing chain datum",
+          "paraphrase": "The c=1 and c=2 traced restrictions differ exactly, while the frozen source provides no exceptional boundary current or chain overlap homotopy."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Record Entry 778 weighted physical pairing lift-independence falsifier"
+  },
+  "idempotency_key": "auto-admission-4d323974fce127afd1584bd9",
+  "occurred_at": "2026-08-18T20:14:30.2143606Z",
+  "certifies_truth": false,
+  "event_hash": "305645d7e92323184deb21465e2e7504fd2fa5f2cdf583722ac255b23df2d2b1"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6d8a46fa-ce96-4497-b017-952e6a0dc021",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research_continuation",
+    "description": "Record verified Entry 998 support-variance audit"
+  },
+  "idempotency_key": "marici-benincasa-entry-998-support-variance-gate-admit",
+  "expected_ledger_head": "1f4fbbbd04fcba486a1e3d216e8843ec256b5211eed4520cfc864570e4a052bd",
+  "created_at": "2026-08-19T17:00:08.0854945Z",
+  "content_fingerprint": "f8a7e13f3d18e7e2635a9c0c5c4564db7237a44db9d6cb82ff8e9b37596aeefe",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src998",
+      "kind": "source",
+      "title": "Entry 998 — The Normal Gysin Shift Does Not Supply the Missing Edge Support Map",
+      "version": "20260819-998",
+      "locator": "src/ledger/20260819-998 The Normal Gysin Shift Does Not Supply the Missing Edge Support Map.md",
+      "entity_id": "source:20dbfffbd015f2dc2942"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim998",
+      "kind": "claim",
+      "title": "Normal Gysin degree alignment does not type the codimension-two-costalk to chamber-edge comparison",
+      "entity_id": "claim:9e06e1d36f363c7cf10d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test998",
+      "kind": "test",
+      "title": "Six-point normal-Gysin edge-support variance audit",
+      "entity_id": "test:7bc725fd8bcb2f60a686"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim998",
+      "target_ref": "src998",
+      "source_id": "claim:9e06e1d36f363c7cf10d",
+      "target_id": "source:20dbfffbd015f2dc2942",
+      "relation_id": "rel:derived_from-43fe3ffd190cef01"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test998",
+      "target_ref": "claim998",
+      "source_id": "test:7bc725fd8bcb2f60a686",
+      "target_id": "claim:9e06e1d36f363c7cf10d",
+      "relation_id": "rel:tests-175660a473487875"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-998-test-outcome",
+      "test_id": "test998",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: degree matches after Gysin, but support and variance do not; no source support-changing map is present",
+      "evidence": [
+        {
+          "source_id": "src998",
+          "locator": "research/benincasa/string-six-point-normal-gysin-edge-support-gate.json",
+          "paraphrase": "Native Rust checker verifies the frozen packets and absence of a codimension-two-costalk to chamber-edge morphism."
+        }
+      ]
+    }
+  ],
+  "digest": "dc04c80a229e1bc64772e6c86d8a3a7c701276b5452725658e0591a2ec9278c1"
+}

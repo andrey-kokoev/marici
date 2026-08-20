@@ -1,0 +1,167 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007117659_seq2_a",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "running",
+  "objective": "Stage A (extract), read only. Read only the frozen evidence packet. Return JSON with fields components, operation, constructed_facts, absent_assumptions. Extract the minimal typed representation: identifiers, degrees, modules/types, supports, coefficient typing, admissible operation support, and constructed values. Do not answer the final question, reduce the complex, or propose repairs. No prose outside JSON.",
+  "request_fingerprint": "6169bd4b1ca5bf41c488deda2195fb79927b21fe63b6a9e96a04a29260427c98",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:51:58.0178343Z",
+  "created_at_ms": 1787007118017,
+  "started_at": "2026-08-17T22:51:58.051553Z",
+  "started_at_ms": 1787007118051,
+  "finished_at": null,
+  "finished_at_ms": null,
+  "duration_ms": null,
+  "updated_at": "2026-08-17T22:51:58.0524817Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007117659_seq2_a",
+  "constraints": {
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_retries": 0,
+    "authority": "read",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "preflight_paths": [
+      {
+        "access": "read",
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json"
+      }
+    ],
+    "max_run_ms": 300000,
+    "queue_timeout_ms": 900000
+  },
+  "workflow": {
+    "steps": [
+      {
+        "kind": "worker",
+        "id": "primary",
+        "output_schema": {
+          "name": "primary",
+          "required": [
+            "components",
+            "operation",
+            "constructed_facts",
+            "absent_assumptions"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "components",
+      "operation",
+      "constructed_facts",
+      "absent_assumptions"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "pending",
+    "acceptance_verdict": "pending",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "running",
+        "attempts": 1,
+        "run_ids": [
+          "run-586a91894de140489732d442d7cbf953"
+        ],
+        "current_run_id": "run-586a91894de140489732d442d7cbf953",
+        "started_at": "2026-08-17T22:51:58.0515626Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-586a91894de140489732d442d7cbf953",
+        "status": "running"
+      }
+    ],
+    "worker_outputs": [],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "returned": [],
+        "missing": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "pending",
+        "status": "pending"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "pending",
+        "signal": null,
+        "status": "pending"
+      }
+    ]
+  },
+  "summary": null
+}

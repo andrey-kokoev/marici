@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 810,
+  "event_id": "ev-000000000810-e7d01b37-863a-4887-91c3-2c084b897e2e",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "15e3d85aefd560e4d38b01771ccde003045e675efdf376edaec9344c9b08266d",
+  "proposal_id": "ep_02672cb3-b88f-47e4-b9f0-5798e9509019",
+  "proposal_digest": "2311e70846c6d2c42fe13127b27c638ffeafa78aa730f52fb48958181819f01c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Rank-twelve cyclic partner tangency packet",
+      "version": "2026-08-20",
+      "locator": "research/benincasa/rank12-um1-v0-partner-tangency.json",
+      "entity_id": "source:885ac68303d4dfdf7c8c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The cyclic partner tangency independently closes on L2",
+      "statement": "At (u,v)=(-1,0), the frozen fiber is a doubled conic tangent to L2; its normalized four-factor support cube is normal crossing and exact.",
+      "status": "supported",
+      "scope": "Independent local algebraic derivation; cyclic transport and physical activation not used.",
+      "entity_id": "claim:aee9f6b46346cb1b4eb6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact partner Newton and support-cube audit",
+      "method": "Compute the partner center from frozen formulas, restrict K3 to the doubled plane, then audit the factor Jacobian and signed Koszul cube.",
+      "result": "passed",
+      "entity_id": "test:f4e75051ff9b8fa1e814"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:aee9f6b46346cb1b4eb6",
+      "target_id": "source:885ac68303d4dfdf7c8c",
+      "relation_id": "rel:derived_from-153cb86a53f8cc75"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:f4e75051ff9b8fa1e814",
+      "target_id": "claim:aee9f6b46346cb1b4eb6",
+      "relation_id": "rel:tests-f0b6f4a83b763155"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:uses_source",
+      "source_ref": "test",
+      "target_ref": "src",
+      "source_id": "test:f4e75051ff9b8fa1e814",
+      "target_id": "source:885ac68303d4dfdf7c8c",
+      "relation_id": "rel:mariciuses_source-1da4ccf8475a6cec"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1111 independently derived cyclic partner tangency."
+  },
+  "idempotency_key": "auto-admission-898253537b7cbab4af8b37bf",
+  "occurred_at": "2026-08-20T09:53:51.5567208Z",
+  "certifies_truth": false,
+  "event_hash": "6a4e0be7081272294023a17c42bd98d2bc555e78aa2d0d52b146cb866b443ef9"
+}

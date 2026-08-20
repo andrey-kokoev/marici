@@ -1,0 +1,101 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_dfbcd0215ac1db1d",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return a concise structured result with the two values and verification evidence.",
+  "request_fingerprint": "f82fadba6cafd273f3667baacee91951bf1b6ce33be6b0243852e8b4dad71e64",
+  "created_at": "2026-08-16T13:56:26.7119504Z",
+  "updated_at": "2026-08-16T13:57:07.1304225Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegated-output-parser-live-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "wait_for_completion": false,
+    "resumable": false
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-e35c8ab7af0a44b3bc0fdd0069e20cde"
+        ],
+        "current_run_id": "run-e35c8ab7af0a44b3bc0fdd0069e20cde",
+        "started_at": "2026-08-16T13:56:26.740574Z",
+        "finished_at": "2026-08-16T13:57:07.1296984Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "I’ll perform a read-only check of the directory name and Git branch, then report the command output as verification evidence.The first read-only probe was rejected before execution by the command policy, so I’m narrowing it to direct read-only commands from the already-specified repository working directory.```json\n{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"path\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"commands\": [\"Get-Item .\", \"git branch --show-current\"],\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-e35c8ab7af0a44b3bc0fdd0069e20cde",
+        "status": "completed",
+        "finished_at": "2026-08-16T13:57:07.1296922Z",
+        "output": {
+          "summary_text": "I’ll perform a read-only check of the directory name and Git branch, then report the command output as verification evidence.The first read-only probe was rejected before execution by the command policy, so I’m narrowing it to direct read-only commands from the already-specified repository working directory.```json\n{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"path\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"commands\": [\"Get-Item .\", \"git branch --show-current\"],\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-e35c8ab7af0a44b3bc0fdd0069e20cde",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll perform a read-only check of the directory name and Git branch, then report the command output as verification evidence.The first read-only probe was rejected before execution by the command policy, so I’m narrowing it to direct read-only commands from the already-specified repository working directory.```json\n{\n  \"directory_name\": \"marici\",\n  \"current_branch\": \"main\",\n  \"verification\": {\n    \"path\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \"commands\": [\"Get-Item .\", \"git branch --show-current\"],\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

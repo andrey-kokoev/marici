@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 545,
+  "event_id": "ev-000000000545-6d18e3b2-5463-4cea-9150-57a66247237a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "654bb0e1d9461e63e393256be46f5082b49c79a10b00c4b2f42ae19613821aa1",
+  "proposal_id": "ep_cc9f5a6b-c29e-4c8e-89e9-0407e4e271e1",
+  "proposal_digest": "6c1251b83c22be72040d273ab3d787f82d907a5db412eb6a6392d509a31a20df",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-928",
+      "kind": "source",
+      "title": "Entry 928 — The Rank-Two Normal-Symbol Module Is Not Closed Under Serialized Differentiation",
+      "version": "20260819-928",
+      "locator": "src/ledger/20260819-928 The Rank-Two Normal-Symbol Module Is Not Closed Under Serialized Differentiation.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-928-derivative-closure-rank-four",
+      "kind": "claim",
+      "title": "The rank-two normal-symbol module has rank-four first derivative closure in the serialized frame",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-normal-symbol-horizontality.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-928-derivative-closure",
+      "kind": "test",
+      "title": "Exact tangential derivative-closure audit",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_normal_symbol_horizontality.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-928-derivative-closure-rank-four",
+      "target_id": "source-marici-ledger-928",
+      "relation_id": "rel:derived_from-7d700ff4ace82465"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-928-derivative-closure",
+      "target_id": "claim-marici-928-derivative-closure-rank-four",
+      "relation_id": "rel:tests-dc3664cdbcb2eecf"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-928-derivative-closure",
+      "test_id": "test-marici-928-derivative-closure",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: each tangential derivative makes the source row projectively independent, doubling source rank and raising symbol closure rank from two to four",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-928",
+          "locator": "Entry 928, Exact closure test",
+          "paraphrase": "The bare serialized derivative does not preserve the rank-two normal-symbol module."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording the verified derivative-closure obstruction"
+  },
+  "idempotency_key": "auto-admission-97473a2c09768ebfdfdc0c3c",
+  "occurred_at": "2026-08-19T13:57:58.1540409Z",
+  "certifies_truth": false,
+  "event_hash": "9c5c1b504da22451a12ec58749cd546389cd5c540575910bc28bbad1312c405b"
+}

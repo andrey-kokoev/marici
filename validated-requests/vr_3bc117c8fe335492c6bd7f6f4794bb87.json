@@ -1,0 +1,39 @@
+{
+  "schema": "narada.delegated_task.validated_request.v1",
+  "validated_request_ref": "vr_3bc117c8fe335492c6bd7f6f4794bb87",
+  "created_at": "2026-08-17T14:55:48.7347931Z",
+  "site_root": "C:\\Users\\andrey\\src\\marici",
+  "owner_site_id": "marici",
+  "request": {
+    "expected_owner_site_id": "marici",
+    "objective": "Read README.md without changing files. Return structured fields file_status and topic, with topic as one complete sentence of at least 25 words so terminal-summary truncation behavior is auditable.",
+    "idempotency_key": "ergonomics-summary-retest-readme-20260817-v2",
+    "acceptance": {
+      "required_fields": [
+        "file_status",
+        "topic"
+      ],
+      "no_writes": true,
+      "strict_clean_run": true
+    },
+    "constraints": {
+      "authority": "read",
+      "cwd": "C:\\Users\\andrey\\src\\marici",
+      "site_root": "C:\\Users\\andrey\\src\\marici",
+      "cognition": "low",
+      "sandbox": "read-only",
+      "preflight_paths": [
+        {
+          "path": "README.md",
+          "access": "read",
+          "label": "README"
+        }
+      ],
+      "max_retries": 0
+    },
+    "timeout_ms": 180000,
+    "poll_ms": 500
+  },
+  "request_digest": "3bc117c8fe335492c6bd7f6f4794bb87e1ac8ebeed03626092d0231a12f23d8e",
+  "preflight_status": "deferred"
+}

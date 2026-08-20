@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4f7f82b7-58ae-4030-b1e3-ab9298649c89",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the soft-axis cosmology comparison."
+  },
+  "idempotency_key": "auto-proposal-21b5391a90bb3abaa8702c10",
+  "expected_ledger_head": "38c4d7e6952e96e8de4d5a12097fc0a0d23cbcf90bcc4a25ee65658f7fc96725",
+  "created_at": "2026-08-18T01:29:59.8834613Z",
+  "content_fingerprint": "21b5391a90bb3abaa8702c106dc440f0e90efb9b110376086451759a8553d6dd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:marici-ledger-471",
+      "title": "The Length-Three Local Fiber Is Conormal Plus Matrix-Factorization Data",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-471 The Length-Three Local Fiber Is Conormal Plus Matrix-Factorization Data.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:local-fiber-conormal-plus-mf",
+      "title": "The local length-three resonance fiber is the sum of an even conormal self-intersection term and an odd matrix-factorization cokernel"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:soft-axis-derived-fiber-typing",
+      "title": "Finite linear-algebra audit of conormal and matrix-factorization Cartier lengths"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:local-fiber-conormal-plus-mf",
+      "target_id": "source:marici-ledger-471",
+      "relation_id": "rel:derived_from-1dde93647acbdf34"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-derived-fiber-typing",
+      "target_id": "claim:local-fiber-conormal-plus-mf",
+      "relation_id": "rel:tests-ca744a8a46ad44bc"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:soft-axis-derived-fiber-typing-20260818",
+      "test_id": "test:soft-axis-derived-fiber-typing",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed: Tor_1^S(R,R) has Cartier length two and coker(z:R->R) has length one; total local length three and reduced rank two.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-471",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_derived_fiber_typing.rs",
+          "paraphrase": "Exact finite matrix ranks verify the two local contributions and explicitly leave global tail transport open."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:local-fiber-conormal-plus-mf",
+      "subject_id": "claim:local-fiber-conormal-plus-mf",
+      "judgment": "established for the local associated model; not established for the global quartic-tail fiber",
+      "actor": "marici.Benincasa",
+      "reason": "A pure singularity-category model would erase the perfect even conormal relation, so both relative self-intersection and matrix-factorization data are required.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-471",
+          "locator": "Entry 471, Next falsifier",
+          "paraphrase": "The complete deck-equivariant carrier-reduction morphism must still be computed character by character."
+        }
+      ]
+    }
+  ],
+  "digest": "93eb1636a9c42b517cbe146d20f09ee05be20c398705f05faee575788c8768dd"
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e7c4dfed-9c80-4883-8e98-ae8fcf7f6fe0",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "operator_instruction": "Continue the Marici soft-axis research line and record verified results.",
+    "evidence_commit": "5cf3db596c571bb74007bcd1ed082105df8ff490"
+  },
+  "idempotency_key": "auto-proposal-f44265de0102bd4277c5bdbe",
+  "expected_ledger_head": "8cba6922e960d1ae757153a536264bcddadc81f279503e8638e14f26d3bab58f",
+  "created_at": "2026-08-18T00:51:38.4128738Z",
+  "content_fingerprint": "f44265de0102bd4277c5bdbee2372d2cf2ef333b80ace0da69f0c281e26b2fc8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source455",
+      "kind": "source",
+      "title": "Entry 455: The Euler-Cartier Comparison Carries a Sevenfold Boundary Divisor",
+      "version": "git:5cf3db596c571bb74007bcd1ed082105df8ff490",
+      "locator": "src/ledger/20260817-455 The Euler-Cartier Comparison Carries a Sevenfold Boundary Divisor.md",
+      "entity_id": "source:5e527ffe0c742ee62935"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim455",
+      "kind": "claim",
+      "title": "The generic Euler-Cartier basis comparison differs globally by divisor 3[b=1]+4[b=-1], so the plain global lattice identification fails",
+      "version": "entry-455",
+      "entity_id": "claim:1eb07f097185427b1584"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test455",
+      "kind": "test",
+      "title": "Weighted grading audit of the second Euler generator on the Cartier section",
+      "version": "git:5cf3db596c571bb74007bcd1ed082105df8ff490",
+      "locator": "research/voevodsky/check_soft_axis_euler_cartier_grading.py",
+      "entity_id": "test:872649fba59fa5a7f218"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "problem456",
+      "kind": "problem",
+      "title": "Derive or refute a sector boundary lattice modification with divisor 3[b=1]+4[b=-1]",
+      "version": "after-entry-455",
+      "entity_id": "problem:d6e41c05384a1f9a5764"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim455",
+      "target_ref": "source455",
+      "source_id": "claim:1eb07f097185427b1584",
+      "target_id": "source:5e527ffe0c742ee62935",
+      "relation_id": "rel:derived_from-6715883a024d5d1b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test455",
+      "target_ref": "claim455",
+      "source_id": "test:872649fba59fa5a7f218",
+      "target_id": "claim:1eb07f097185427b1584",
+      "relation_id": "rel:tests-5de530143ab6c089"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "problem456",
+      "target_ref": "claim455",
+      "source_id": "problem:d6e41c05384a1f9a5764",
+      "target_id": "claim:1eb07f097185427b1584",
+      "relation_id": "rel:depends_on-566a8dff8e26d3a4"
+    }
+  ],
+  "digest": "10f9169c356440e340cd9f787e6caceb1785dd718ba5939e39c43759f8a96600"
+}

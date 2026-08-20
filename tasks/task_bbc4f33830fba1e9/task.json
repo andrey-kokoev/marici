@@ -1,0 +1,151 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_bbc4f33830fba1e9",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Return exactly the word ok and perform no filesystem or repository changes.",
+  "request_fingerprint": "58e6725494cef84be020d9e271cee26ca36723195b2c51b93278a18f2bc221f8",
+  "validated_request_ref": "vr_764961c637e840ac1f2da2c9792e7905",
+  "created_at": "2026-08-17T15:59:58.5455243Z",
+  "created_at_ms": 1786982398545,
+  "started_at": "2026-08-17T15:59:58.668989Z",
+  "started_at_ms": 1786982398668,
+  "finished_at": "2026-08-17T16:00:08.6966821Z",
+  "finished_at_ms": 1786982408696,
+  "duration_ms": 10028,
+  "updated_at": "2026-08-17T16:00:08.6966836Z",
+  "cancelled_at": null,
+  "idempotency_key": "live-proof-async-worker-launch-20260817-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "wait_for_completion": true,
+    "wait_timeout_ms": 180000,
+    "max_run_ms": 600000
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-98e32c9270114da1b9cabddfa6e68787"
+        ],
+        "current_run_id": "run-98e32c9270114da1b9cabddfa6e68787",
+        "started_at": "2026-08-17T15:59:58.6689983Z",
+        "finished_at": "2026-08-17T16:00:08.6953969Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "ok",
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-98e32c9270114da1b9cabddfa6e68787",
+        "status": "completed",
+        "finished_at": "2026-08-17T16:00:08.6953603Z",
+        "duration_ms": 5712,
+        "output": {
+          "summary_text": "ok",
+          "truncated": false
+        },
+        "error": "null"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-98e32c9270114da1b9cabddfa6e68787",
+        "status": "completed",
+        "output": {
+          "summary_text": "ok",
+          "truncated": false
+        },
+        "error": "null"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. ok"
+}

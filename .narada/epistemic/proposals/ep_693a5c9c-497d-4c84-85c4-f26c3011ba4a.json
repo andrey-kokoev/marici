@@ -1,0 +1,74 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_693a5c9c-497d-4c84-85c4-f26c3011ba4a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "User requested recording the lens-readout co-generation hypothesis."
+  },
+  "idempotency_key": "marici-nima-entry-990-lens-readout-cogeneration-v1",
+  "expected_ledger_head": "6bf873718db6ec028f13146ff1de8dbe9ae4841c5759fb23ec6edaac1ae0d54f",
+  "created_at": "2026-08-19T16:40:15.198272Z",
+  "content_fingerprint": "2d416a5139e6d99cc4dfb1b662784fd670ba70e05eae76d352387c97a31c0709",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Entry 990 — The Parent May Co-Generate Lenses and Readouts",
+      "version": "147781b",
+      "locator": "src/ledger/20260819-990 The Parent May Co-Generate Lenses and Readouts.md",
+      "entity_id": "source:9f000a89e013e637fe3d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "h2lr",
+      "kind": "conjecture",
+      "title": "A parent object canonically co-generates sector coefficient lenses, admissible readouts, and their pairings",
+      "entity_id": "conjecture:aec7e82880fd4590d723"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "h2o",
+      "kind": "conjecture",
+      "title": "Observers access only lens-readout pairs compatible with their physical realization",
+      "entity_id": "conjecture:35d7ba8f66388c889d64"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Source provenance, typed-pairing, naturality, null-readout, and cross-sector tests for lens-readout co-generation",
+      "entity_id": "test:8e138ba9a98dc5e786cd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "h2lr",
+      "target_ref": "source",
+      "source_id": "conjecture:aec7e82880fd4590d723",
+      "target_id": "source:9f000a89e013e637fe3d",
+      "relation_id": "rel:derived_from-14f69113b5ead50c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "h2o",
+      "target_ref": "source",
+      "source_id": "conjecture:35d7ba8f66388c889d64",
+      "target_id": "source:9f000a89e013e637fe3d",
+      "relation_id": "rel:derived_from-9d0222d486cf12fe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "h2lr",
+      "source_id": "test:8e138ba9a98dc5e786cd",
+      "target_id": "conjecture:aec7e82880fd4590d723",
+      "relation_id": "rel:tests-1ab88e0549f456d5"
+    }
+  ],
+  "digest": "797b33572e8a0d0d38fe45bd6488ec9ec9ccf2d0825d9853ab46ebc6a144cd07"
+}

@@ -1,0 +1,82 @@
+import { expect, test } from '@playwright/test'
+
+test('semantic inspector navigates, compares, restores history, and isolates explicitly', async ({ page }) => {
+  await page.goto('/graph/')
+  const nodes = page.locator('.graph-node')
+  await expect(nodes.first()).toBeVisible()
+
+  await nodes.first().click()
+  await expect(page).toHaveURL(/entity=/)
+  await expect(page.locator('.entity-summary h2').first()).toBeVisible()
+  await nodes.nth(1).hover()
+  await expect(page.locator('[data-tooltip]')).toBeVisible()
+  const visibleBeforeIsolation = await page.locator('.graph-node:not(.is-hidden):not(.is-muted)').count()
+
+  const relation = page.locator('.relation-list button').first()
+  await expect(relation).toBeVisible()
+  const relatedTitle = await relation.locator('strong').innerText()
+  await relation.click()
+  await expect(page.locator('.entity-summary h2')).toContainText(relatedTitle)
+
+  await page.getByRole('button', { name: 'Pin to compare' }).click()
+  await page.getByRole('button', { name: /Next/ }).click()
+  await expect(page.locator('.compare-grid .entity-summary')).toHaveCount(2)
+  await expect(page).toHaveURL(/compare=/)
+  await page.getByRole('button', { name: 'Clear' }).click()
+
+  await page.getByRole('button', { name: 'Isolate neighborhood' }).click()
+  await expect(page.locator('.graph-node.is-muted')).not.toHaveCount(0)
+  const visibleAfterIsolation = await page.locator('.graph-node:not(.is-hidden):not(.is-muted)').count()
+  expect(visibleAfterIsolation).toBeLessThan(visibleBeforeIsolation)
+
+  await page.goBack()
+  await expect(page.locator('.entity-summary h2').first()).toBeVisible()
+  await page.screenshot({ path: '.ai/tmp/graph-semantic-panel-desktop.png', fullPage: true })
+})
+
+test('deep link and roving SVG focus work on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/graph/')
+  const first = page.locator('.graph-node').first()
+  const id = await first.getAttribute('data-id')
+  await page.goto(`/graph/?entity=${encodeURIComponent(id)}`)
+  await expect(page.locator('.entity-summary h2')).toBeVisible()
+  await expect(page.locator('[data-graph-app]')).toHaveClass(/sheet-open/)
+  await page.getByRole('button', { name: 'Close details' }).click()
+  await expect(page.locator('[data-graph-app]')).not.toHaveClass(/sheet-open/)
+  await page.locator(`.graph-node[data-id="${id}"]`).click()
+  await page.locator(`.graph-node[data-id="${id}"]`).focus()
+  await page.keyboard.press('ArrowRight')
+  await expect(page.locator('.graph-node:focus')).toHaveCount(1)
+  await page.screenshot({ path: '.ai/tmp/graph-semantic-panel-mobile.png', fullPage: true })
+})
+
+test('ledger-time views preserve layout and expose an honest interval delta', async ({ page }) => {
+  await page.goto('/graph/')
+  const allVisible = await page.locator('.graph-node:not(.is-hidden)').count()
+  await page.getByRole('button', { name: 'At entry' }).click()
+  const through = page.locator('[data-time-to]')
+  const graph = JSON.parse(await page.locator('#epistemic-graph-data').textContent())
+  expect(graph.entities.every((entity) => Number.isFinite(entity.temporal?.entry))).toBe(true)
+  expect(graph.relations.every((relation) => Number.isFinite(relation.temporal?.entry))).toBe(true)
+  const realMinimum = Math.min(...graph.ledger_entries.map((point) => point.entry))
+  expect(await through.getAttribute('min')).toBe(String(realMinimum))
+  await through.fill(String(realMinimum))
+  await through.dispatchEvent('change')
+  await expect(page).toHaveURL(/time=at/)
+  await expect(page).toHaveURL(/to=1/)
+  expect(await page.locator('.graph-node:not(.is-hidden)').count()).toBeLessThan(allVisible)
+  for (const entityKind of ['claim', 'conjecture', 'criticism', 'problem', 'test']) {
+    expect(await page.locator(`.graph-node.is-hidden[data-id^="${entityKind}:"]`).count()).toBeGreaterThan(0)
+  }
+
+  await page.getByRole('button', { name: 'Compare', exact: true }).click()
+  await through.fill('20')
+  await through.dispatchEvent('change')
+  const from = page.locator('[data-time-from]')
+  await from.fill('3')
+  await from.dispatchEvent('change')
+  await expect(page).toHaveURL(/time=compare/)
+  await expect(page.locator('.graph-node.is-time-added:not(.is-hidden)').first()).toBeVisible()
+  await expect(page.locator('.graph-node.is-time-context:not(.is-hidden)').first()).toBeVisible()
+})

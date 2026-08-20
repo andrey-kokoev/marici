@@ -1,0 +1,415 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787010005604_onepass_high",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside JSON.",
+  "request_fingerprint": "5e5678d1510f3441b47acb6b95034295d13831d3a5b6f056ece711651c9dc376",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T23:40:05.9440586Z",
+  "created_at_ms": 1787010005944,
+  "started_at": "2026-08-17T23:40:06.0425872Z",
+  "started_at_ms": 1787010006042,
+  "finished_at": "2026-08-17T23:43:59.908351Z",
+  "finished_at_ms": 1787010239908,
+  "duration_ms": 233866,
+  "updated_at": "2026-08-17T23:43:59.90836Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787010005604_onepass_high",
+  "constraints": {
+    "queue_timeout_ms": 900000,
+    "max_run_ms": 300000,
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "preflight_paths": [
+      {
+        "access": "read",
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json"
+      }
+    ],
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "high",
+    "max_retries": 0,
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "typed_representation",
+            "decisive_representation",
+            "minimal_reduction",
+            "residual_complex",
+            "unconditional_homology",
+            "conditional_conclusions",
+            "coefficient_gate",
+            "constructed_vs_compatible",
+            "remaining_construction",
+            "falsifier"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-d793f03bc55949d9a552fcfeb9d84568"
+        ],
+        "current_run_id": "run-d793f03bc55949d9a552fcfeb9d84568",
+        "started_at": "2026-08-17T23:40:06.0426184Z",
+        "finished_at": "2026-08-17T23:43:59.9041483Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={2 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "graded_modules": {
+                "degree_2": "C_2=Rx⊕Ry",
+                "degree_1": "C_1=Rz",
+                "other_degrees": "0"
+              },
+              "differential": "delta_2(ax+by)=ac z, with all other delta_k=0",
+              "matrix": "[c 0]:R^2→R"
+            },
+            "decisive_representation": {
+              "decomposition": "(0→Rx --c--> Rz→0) ⊕ (0→Ry→0)",
+              "consequence": "The coefficient map m_c and the forced degree-2 cycle Ry independently determine the homology."
+            },
+            "minimal_reduction": {
+              "operation": "Quotient C_2 by the beta-only summand Ry, equivalently restrict the split source to Rx.",
+              "result": "C_2/Ry≅R·x̄ and delta_2(x̄)=cz.",
+              "qualification": "This removes exactly the zero column but is not a quasi-isomorphism: it discards the homology summand Ry. No quotient or localization of R is justified."
+            },
+            "residual_complex": {
+              "complex": "0→R·x̄ --m_c--> Rz→0",
+              "degrees": "2→1",
+              "matrix": "[c]"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H_2": "Ann_R(c)·x ⊕ R·y",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Impossible for the displayed full complex because c≠0 implies R≠0 and hence Ry≠0."
+              },
+              "reduced_complex": {
+                "H_2": "Ann_R(c)·x̄",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Undetermined from c≠0 alone."
+              }
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the reduced map is injective, so reduced H_2=0 and H_1=R/cR.",
+              "If c is a unit, the residual map is an isomorphism and the reduced complex is acyclic; the unreduced complex still has H_2=Ry.",
+              "If R is a domain, the given c≠0 makes the reduced map injective, but reduced acyclicity still requires c to be a unit.",
+              "If R is a field, c≠0 makes c a unit, so the reduced complex is acyclic."
+            ],
+            "coefficient_gate": {
+              "known": "Only c≠0.",
+              "injectivity": "m_c is injective iff Ann_R(c)=0.",
+              "surjectivity": "m_c is surjective iff cR=R, equivalently iff c is a unit.",
+              "isomorphism_and_reduced_acyclicity": "Equivalent to c being a unit.",
+              "rank": "The residual source and target are free of rank one and [c] is nonzero, which is only formal/nonzero-minor rank compatibility. Split rank, invertibility, and exactness do not follow."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The differential values delta(x)=cz and delta(y)=0, hence matrices [c 0] and [c], are constructed.",
+              "merely_compatible": "Equal residual free ranks make an isomorphism possible but do not construct one.",
+              "unsupported_inference": "Primitivity of p does not make rho(p)=c a unit because rho is specified only to be additive."
+            },
+            "remaining_construction": {
+              "for_reduced_acyclicity": "Construct u∈R with uc=1; then z↦u·x̄ supplies the inverse/contracting homotopy. The packet gives no such u.",
+              "for_full_acyclicity": "Ry must be removed by the stated quotient or hit by an added incoming differential; no such incoming degree exists in the displayed object."
+            },
+            "falsifier": {
+              "model": "Take R=Z/6Z, L=Zp, and rho(np)=2n mod 6, so c=2 is nonzero but neither a unit nor a non-zero-divisor.",
+              "residual_failure": "Ann_R(2)={0,3} and R/2R≠0, so the residual map is neither injective nor surjective and the reduced complex is not acyclic.",
+              "full_failure": "The additional Ry summand remains in H_2."
+            }
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-d793f03bc55949d9a552fcfeb9d84568",
+        "status": "completed",
+        "finished_at": "2026-08-17T23:43:59.9038451Z",
+        "duration_ms": 232478,
+        "output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={2 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "graded_modules": {
+                "degree_2": "C_2=Rx⊕Ry",
+                "degree_1": "C_1=Rz",
+                "other_degrees": "0"
+              },
+              "differential": "delta_2(ax+by)=ac z, with all other delta_k=0",
+              "matrix": "[c 0]:R^2→R"
+            },
+            "decisive_representation": {
+              "decomposition": "(0→Rx --c--> Rz→0) ⊕ (0→Ry→0)",
+              "consequence": "The coefficient map m_c and the forced degree-2 cycle Ry independently determine the homology."
+            },
+            "minimal_reduction": {
+              "operation": "Quotient C_2 by the beta-only summand Ry, equivalently restrict the split source to Rx.",
+              "result": "C_2/Ry≅R·x̄ and delta_2(x̄)=cz.",
+              "qualification": "This removes exactly the zero column but is not a quasi-isomorphism: it discards the homology summand Ry. No quotient or localization of R is justified."
+            },
+            "residual_complex": {
+              "complex": "0→R·x̄ --m_c--> Rz→0",
+              "degrees": "2→1",
+              "matrix": "[c]"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H_2": "Ann_R(c)·x ⊕ R·y",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Impossible for the displayed full complex because c≠0 implies R≠0 and hence Ry≠0."
+              },
+              "reduced_complex": {
+                "H_2": "Ann_R(c)·x̄",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Undetermined from c≠0 alone."
+              }
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the reduced map is injective, so reduced H_2=0 and H_1=R/cR.",
+              "If c is a unit, the residual map is an isomorphism and the reduced complex is acyclic; the unreduced complex still has H_2=Ry.",
+              "If R is a domain, the given c≠0 makes the reduced map injective, but reduced acyclicity still requires c to be a unit.",
+              "If R is a field, c≠0 makes c a unit, so the reduced complex is acyclic."
+            ],
+            "coefficient_gate": {
+              "known": "Only c≠0.",
+              "injectivity": "m_c is injective iff Ann_R(c)=0.",
+              "surjectivity": "m_c is surjective iff cR=R, equivalently iff c is a unit.",
+              "isomorphism_and_reduced_acyclicity": "Equivalent to c being a unit.",
+              "rank": "The residual source and target are free of rank one and [c] is nonzero, which is only formal/nonzero-minor rank compatibility. Split rank, invertibility, and exactness do not follow."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The differential values delta(x)=cz and delta(y)=0, hence matrices [c 0] and [c], are constructed.",
+              "merely_compatible": "Equal residual free ranks make an isomorphism possible but do not construct one.",
+              "unsupported_inference": "Primitivity of p does not make rho(p)=c a unit because rho is specified only to be additive."
+            },
+            "remaining_construction": {
+              "for_reduced_acyclicity": "Construct u∈R with uc=1; then z↦u·x̄ supplies the inverse/contracting homotopy. The packet gives no such u.",
+              "for_full_acyclicity": "Ry must be removed by the stated quotient or hit by an added incoming differential; no such incoming degree exists in the displayed object."
+            },
+            "falsifier": {
+              "model": "Take R=Z/6Z, L=Zp, and rho(np)=2n mod 6, so c=2 is nonzero but neither a unit nor a non-zero-divisor.",
+              "residual_failure": "Ann_R(2)={0,3} and R/2R≠0, so the residual map is neither injective nor surjective and the reduced complex is not acyclic.",
+              "full_failure": "The additional Ry summand remains in H_2."
+            }
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-d793f03bc55949d9a552fcfeb9d84568",
+        "status": "completed",
+        "output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={2 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "graded_modules": {
+                "degree_2": "C_2=Rx⊕Ry",
+                "degree_1": "C_1=Rz",
+                "other_degrees": "0"
+              },
+              "differential": "delta_2(ax+by)=ac z, with all other delta_k=0",
+              "matrix": "[c 0]:R^2→R"
+            },
+            "decisive_representation": {
+              "decomposition": "(0→Rx --c--> Rz→0) ⊕ (0→Ry→0)",
+              "consequence": "The coefficient map m_c and the forced degree-2 cycle Ry independently determine the homology."
+            },
+            "minimal_reduction": {
+              "operation": "Quotient C_2 by the beta-only summand Ry, equivalently restrict the split source to Rx.",
+              "result": "C_2/Ry≅R·x̄ and delta_2(x̄)=cz.",
+              "qualification": "This removes exactly the zero column but is not a quasi-isomorphism: it discards the homology summand Ry. No quotient or localization of R is justified."
+            },
+            "residual_complex": {
+              "complex": "0→R·x̄ --m_c--> Rz→0",
+              "degrees": "2→1",
+              "matrix": "[c]"
+            },
+            "unconditional_homology": {
+              "full_complex": {
+                "H_2": "Ann_R(c)·x ⊕ R·y",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Impossible for the displayed full complex because c≠0 implies R≠0 and hence Ry≠0."
+              },
+              "reduced_complex": {
+                "H_2": "Ann_R(c)·x̄",
+                "H_1": "(R/cR)·z",
+                "H_k_for_other_k": "0",
+                "acyclicity": "Undetermined from c≠0 alone."
+              }
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the reduced map is injective, so reduced H_2=0 and H_1=R/cR.",
+              "If c is a unit, the residual map is an isomorphism and the reduced complex is acyclic; the unreduced complex still has H_2=Ry.",
+              "If R is a domain, the given c≠0 makes the reduced map injective, but reduced acyclicity still requires c to be a unit.",
+              "If R is a field, c≠0 makes c a unit, so the reduced complex is acyclic."
+            ],
+            "coefficient_gate": {
+              "known": "Only c≠0.",
+              "injectivity": "m_c is injective iff Ann_R(c)=0.",
+              "surjectivity": "m_c is surjective iff cR=R, equivalently iff c is a unit.",
+              "isomorphism_and_reduced_acyclicity": "Equivalent to c being a unit.",
+              "rank": "The residual source and target are free of rank one and [c] is nonzero, which is only formal/nonzero-minor rank compatibility. Split rank, invertibility, and exactness do not follow."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The differential values delta(x)=cz and delta(y)=0, hence matrices [c 0] and [c], are constructed.",
+              "merely_compatible": "Equal residual free ranks make an isomorphism possible but do not construct one.",
+              "unsupported_inference": "Primitivity of p does not make rho(p)=c a unit because rho is specified only to be additive."
+            },
+            "remaining_construction": {
+              "for_reduced_acyclicity": "Construct u∈R with uc=1; then z↦u·x̄ supplies the inverse/contracting homotopy. The packet gives no such u.",
+              "for_full_acyclicity": "Ry must be removed by the stated quotient or hit by an added incoming differential; no such incoming degree exists in the displayed object."
+            },
+            "falsifier": {
+              "model": "Take R=Z/6Z, L=Zp, and rho(np)=2n mod 6, so c=2 is nonzero but neither a unit nor a non-zero-divisor.",
+              "residual_failure": "Ann_R(2)={0,3} and R/2R≠0, so the residual map is neither injective nor surjective and the reduced complex is not acyclic.",
+              "full_failure": "The additional Ry summand remains in H_2."
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. typed_representation={3 fields}, decisive_representation={2 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}"
+}

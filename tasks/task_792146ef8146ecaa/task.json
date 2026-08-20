@@ -1,0 +1,448 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_792146ef8146ecaa",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: compare README.md with src/pages/research/index.astro for naming and scope consistency. Synthesize a concise result containing findings, recommendation, and evidence. Make no changes.",
+  "request_fingerprint": "3f6fd2842aa78017db728eb9ef08b646d5773f5f825571c396a7c06388d973b4",
+  "validated_request_ref": "vr_075c0c1f6c08437c911b9ba440ac0709",
+  "created_at": "2026-08-16T18:00:19.2311119Z",
+  "updated_at": "2026-08-16T18:04:35.5096241Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-ergonomics-research-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\README.md",
+        "access": "read"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "research_synthesize",
+    "steps": [
+      {
+        "id": "research",
+        "kind": "research",
+        "milestone_id": "research"
+      },
+      {
+        "id": "synthesize",
+        "kind": "worker",
+        "milestone_id": "synthesize",
+        "depends_on": [
+          "research"
+        ]
+      },
+      {
+        "id": "review",
+        "kind": "review",
+        "milestone_id": "synthesize",
+        "depends_on": [
+          "synthesize"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "findings",
+      "recommendation",
+      "evidence"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "research": {
+        "step_id": "research",
+        "kind": "research",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-46699091ab004619a938cd3444a38e11"
+        ],
+        "current_run_id": "run-46699091ab004619a938cd3444a38e11",
+        "started_at": "2026-08-16T18:00:19.256819Z",
+        "finished_at": "2026-08-16T18:02:46.6291366Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index,, evidence=[5 items]",
+          "diagnostics_text": "I’ll inspect the two specified files only, compare their naming and scope, and return the requested JSON summary without modifying anything.The first read was successful; the combined follow-up query was rejected by the shell policy, so I’m splitting the read-only inspection into simpler commands.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici’s work as research and use the Marici brand.",
+              "Scope is only partially aligned: README.md describes a broad public research ledger, graph, and multiple internal frontiers; index.astro exposes only bounded, external, non-authoritative comparisons.",
+              "No authority conflict is present: the page explicitly keeps external programs separate from Marici claims."
+            ],
+            "recommendation": "Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index, add links or references to the ledger and internal frontiers.",
+            "evidence": [
+              {
+                "file": "README.md",
+                "lines": "3",
+                "text": "Research ledger and public map for the scalar master geometry program."
+              },
+              {
+                "file": "README.md",
+                "lines": "63-64",
+                "text": "The ledger currently keeps three frontiers separate."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "5-6",
+                "text": "Research | Marici; a compact map ... of explicitly bounded external comparisons."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "15-16",
+                "text": "External programs ... without becoming Marici claims; each comparison stays separate until a ledger result earns a stronger relation."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "22-28",
+                "text": "External comparisons; Related programs; bounded reading list; External / non-authoritative."
+              }
+            ]
+          },
+          "truncated": false
+        }
+      },
+      "synthesize": {
+        "step_id": "synthesize",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-d030a29a220c4f6196059433351ca9a2"
+        ],
+        "current_run_id": "run-d030a29a220c4f6196059433351ca9a2",
+        "started_at": "2026-08-16T18:02:46.6503468Z",
+        "finished_at": "2026-08-16T18:03:41.0632236Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "findings=[3 items], recommendation=Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research , evidence=[4 items]",
+          "diagnostics_text": "I’ll read both files with line numbers and compare their naming and stated scope, then return only the requested JSON object.The first read command was rejected by the shell policy before execution; I’m switching to a simpler read-only search command.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici as a research-oriented public site.",
+              "Scope is asymmetric: README.md describes the full research ledger and scalar master geometry program, while the page exposes only bounded external comparisons.",
+              "The epistemic boundary is consistent: external programs are explicitly non-authoritative."
+            ],
+            "recommendation": "Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research hub, add a ledger-focused section.",
+            "evidence": [
+              "README.md:3 describes Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-311 places human-readable research records in src/ledger and distinguishes results, open questions, falsifiers, and prohibited overclaims.",
+              "src/pages/research/index.astro:5-16 labels the page Research and limits it to bounded external comparisons.",
+              "src/pages/research/index.astro:20-28 contains only a Related programs card tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        }
+      },
+      "review": {
+        "step_id": "review",
+        "kind": "review",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-39d9c2c79dc04fb69d574b22e5ee7baa"
+        ],
+        "current_run_id": "run-39d9c2c79dc04fb69d574b22e5ee7baa",
+        "started_at": "2026-08-16T18:03:41.0836754Z",
+        "finished_at": "2026-08-16T18:04:35.5080442Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; othe, evidence=[4 items]",
+          "diagnostics_text": "I’ll inspect only `README.md` and `src/pages/research/index.astro`, then return a concise JSON comparison with evidence.The two files align on the main boundary: Marici’s ledger is authoritative, while neighboring programs are comparison material. I’m checking the exact line references now so the JSON evidence is traceable.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both present Marici as a research/public-map surface.",
+              "Scope boundaries are consistent: the README distinguishes authoritative ledger material, while the page labels related programs as external and non-authoritative.",
+              "The page is narrower than the README: it exposes only related programs and does not surface the core ledger, Nima target, or research lifecycle."
+            ],
+            "recommendation": "Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; otherwise rename or describe it explicitly as the external-comparisons index.",
+            "evidence": [
+              "README.md:3 defines Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-310 describes ledger records, publication status, open questions, prohibited overclaims, and the Nima research target.",
+              "src/pages/research/index.astro:5-16 names the page Research and says comparisons remain separate from Marici claims.",
+              "src/pages/research/index.astro:20-28 contains only the External comparisons / Related programs card, tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "research",
+        "step_kind": "research",
+        "run_id": "run-46699091ab004619a938cd3444a38e11",
+        "status": "completed",
+        "finished_at": "2026-08-16T18:02:46.6291175Z",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index,, evidence=[5 items]",
+          "diagnostics_text": "I’ll inspect the two specified files only, compare their naming and scope, and return the requested JSON summary without modifying anything.The first read was successful; the combined follow-up query was rejected by the shell policy, so I’m splitting the read-only inspection into simpler commands.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici’s work as research and use the Marici brand.",
+              "Scope is only partially aligned: README.md describes a broad public research ledger, graph, and multiple internal frontiers; index.astro exposes only bounded, external, non-authoritative comparisons.",
+              "No authority conflict is present: the page explicitly keeps external programs separate from Marici claims."
+            ],
+            "recommendation": "Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index, add links or references to the ledger and internal frontiers.",
+            "evidence": [
+              {
+                "file": "README.md",
+                "lines": "3",
+                "text": "Research ledger and public map for the scalar master geometry program."
+              },
+              {
+                "file": "README.md",
+                "lines": "63-64",
+                "text": "The ledger currently keeps three frontiers separate."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "5-6",
+                "text": "Research | Marici; a compact map ... of explicitly bounded external comparisons."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "15-16",
+                "text": "External programs ... without becoming Marici claims; each comparison stays separate until a ledger result earns a stronger relation."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "22-28",
+                "text": "External comparisons; Related programs; bounded reading list; External / non-authoritative."
+              }
+            ]
+          },
+          "truncated": false
+        }
+      },
+      {
+        "step_id": "synthesize",
+        "step_kind": "worker",
+        "run_id": "run-d030a29a220c4f6196059433351ca9a2",
+        "status": "completed",
+        "finished_at": "2026-08-16T18:03:41.063208Z",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research , evidence=[4 items]",
+          "diagnostics_text": "I’ll read both files with line numbers and compare their naming and stated scope, then return only the requested JSON object.The first read command was rejected by the shell policy before execution; I’m switching to a simpler read-only search command.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici as a research-oriented public site.",
+              "Scope is asymmetric: README.md describes the full research ledger and scalar master geometry program, while the page exposes only bounded external comparisons.",
+              "The epistemic boundary is consistent: external programs are explicitly non-authoritative."
+            ],
+            "recommendation": "Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research hub, add a ledger-focused section.",
+            "evidence": [
+              "README.md:3 describes Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-311 places human-readable research records in src/ledger and distinguishes results, open questions, falsifiers, and prohibited overclaims.",
+              "src/pages/research/index.astro:5-16 labels the page Research and limits it to bounded external comparisons.",
+              "src/pages/research/index.astro:20-28 contains only a Related programs card tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        }
+      },
+      {
+        "step_id": "review",
+        "step_kind": "review",
+        "run_id": "run-39d9c2c79dc04fb69d574b22e5ee7baa",
+        "status": "completed",
+        "finished_at": "2026-08-16T18:04:35.5080208Z",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; othe, evidence=[4 items]",
+          "diagnostics_text": "I’ll inspect only `README.md` and `src/pages/research/index.astro`, then return a concise JSON comparison with evidence.The two files align on the main boundary: Marici’s ledger is authoritative, while neighboring programs are comparison material. I’m checking the exact line references now so the JSON evidence is traceable.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both present Marici as a research/public-map surface.",
+              "Scope boundaries are consistent: the README distinguishes authoritative ledger material, while the page labels related programs as external and non-authoritative.",
+              "The page is narrower than the README: it exposes only related programs and does not surface the core ledger, Nima target, or research lifecycle."
+            ],
+            "recommendation": "Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; otherwise rename or describe it explicitly as the external-comparisons index.",
+            "evidence": [
+              "README.md:3 defines Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-310 describes ledger records, publication status, open questions, prohibited overclaims, and the Nima research target.",
+              "src/pages/research/index.astro:5-16 names the page Research and says comparisons remain separate from Marici claims.",
+              "src/pages/research/index.astro:20-28 contains only the External comparisons / Related programs card, tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "research",
+        "run_id": "run-46699091ab004619a938cd3444a38e11",
+        "status": "completed",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index,, evidence=[5 items]",
+          "diagnostics_text": "I’ll inspect the two specified files only, compare their naming and scope, and return the requested JSON summary without modifying anything.The first read was successful; the combined follow-up query was rejected by the shell policy, so I’m splitting the read-only inspection into simpler commands.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici’s work as research and use the Marici brand.",
+              "Scope is only partially aligned: README.md describes a broad public research ledger, graph, and multiple internal frontiers; index.astro exposes only bounded, external, non-authoritative comparisons.",
+              "No authority conflict is present: the page explicitly keeps external programs separate from Marici claims."
+            ],
+            "recommendation": "Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index, add links or references to the ledger and internal frontiers.",
+            "evidence": [
+              {
+                "file": "README.md",
+                "lines": "3",
+                "text": "Research ledger and public map for the scalar master geometry program."
+              },
+              {
+                "file": "README.md",
+                "lines": "63-64",
+                "text": "The ledger currently keeps three frontiers separate."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "5-6",
+                "text": "Research | Marici; a compact map ... of explicitly bounded external comparisons."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "15-16",
+                "text": "External programs ... without becoming Marici claims; each comparison stays separate until a ledger result earns a stronger relation."
+              },
+              {
+                "file": "src/pages/research/index.astro",
+                "lines": "22-28",
+                "text": "External comparisons; Related programs; bounded reading list; External / non-authoritative."
+              }
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "synthesize",
+        "run_id": "run-d030a29a220c4f6196059433351ca9a2",
+        "status": "completed",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research , evidence=[4 items]",
+          "diagnostics_text": "I’ll read both files with line numbers and compare their naming and stated scope, then return only the requested JSON object.The first read command was rejected by the shell policy before execution; I’m switching to a simpler read-only search command.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both identify Marici as a research-oriented public site.",
+              "Scope is asymmetric: README.md describes the full research ledger and scalar master geometry program, while the page exposes only bounded external comparisons.",
+              "The epistemic boundary is consistent: external programs are explicitly non-authoritative."
+            ],
+            "recommendation": "Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research hub, add a ledger-focused section.",
+            "evidence": [
+              "README.md:3 describes Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-311 places human-readable research records in src/ledger and distinguishes results, open questions, falsifiers, and prohibited overclaims.",
+              "src/pages/research/index.astro:5-16 labels the page Research and limits it to bounded external comparisons.",
+              "src/pages/research/index.astro:20-28 contains only a Related programs card tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "review",
+        "run_id": "run-39d9c2c79dc04fb69d574b22e5ee7baa",
+        "status": "completed",
+        "output": {
+          "summary_text": "findings=[3 items], recommendation=Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; othe, evidence=[4 items]",
+          "diagnostics_text": "I’ll inspect only `README.md` and `src/pages/research/index.astro`, then return a concise JSON comparison with evidence.The two files align on the main boundary: Marici’s ledger is authoritative, while neighboring programs are comparison material. I’m checking the exact line references now so the JSON evidence is traceable.",
+          "structured_output": {
+            "findings": [
+              "Naming is consistent: both present Marici as a research/public-map surface.",
+              "Scope boundaries are consistent: the README distinguishes authoritative ledger material, while the page labels related programs as external and non-authoritative.",
+              "The page is narrower than the README: it exposes only related programs and does not surface the core ledger, Nima target, or research lifecycle."
+            ],
+            "recommendation": "Keep the terminology and external/non-authoritative boundary. If this is the main research landing page, add an authoritative ledger/core-research section; otherwise rename or describe it explicitly as the external-comparisons index.",
+            "evidence": [
+              "README.md:3 defines Marici as a research ledger and public map for the scalar master geometry program.",
+              "README.md:301-310 describes ledger records, publication status, open questions, prohibited overclaims, and the Nima research target.",
+              "src/pages/research/index.astro:5-16 names the page Research and says comparisons remain separate from Marici claims.",
+              "src/pages/research/index.astro:20-28 contains only the External comparisons / Related programs card, tagged External / non-authoritative."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "findings",
+          "recommendation",
+          "evidence"
+        ],
+        "returned": [
+          "findings",
+          "recommendation",
+          "evidence"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "findings=[3 items], recommendation=Keep the bounded comparison scope, but clarify that this page is a sub-surface of the broader research ledger. If it is intended as the complete research index,, evidence=[5 items] | findings=[3 items], recommendation=Clarify that /research/ is the external-comparisons index and that core research records live in src/ledger. If /research/ is intended as the complete research , evidence=[4 items] | findings=[3 items], recommendation=Keep the terminology and external/non-aut"
+}

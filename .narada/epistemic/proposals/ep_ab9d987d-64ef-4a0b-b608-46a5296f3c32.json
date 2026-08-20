@@ -1,0 +1,121 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ab9d987d-64ef-4a0b-b608-46a5296f3c32",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "site_research_agent",
+    "reason": "WP7 work package of the flavor admission program; ledger entry 1084 claimed via marici-ledger-entry sequence (seqclaim-fc9d9ad0472dfde0f4ae74ba)"
+  },
+  "idempotency_key": "auto-proposal-ca5ec447dc6ab731fecb7979",
+  "expected_ledger_head": "319005ed8931ce40ccc5ac28dde6d10bc1fecf685174036ede7007e601f0b73a",
+  "created_at": "2026-08-20T04:10:42.8664148Z",
+  "content_fingerprint": "ca5ec447dc6ab731fecb79790a80571ed23b82eeb1de43df3650be4c6cf5da65",
+  "operations": [
+    {
+      "kind": "source",
+      "local_ref": "s_ens",
+      "locator": "research/flavor/results/wp7_ensemble.json",
+      "op": "entity.declare",
+      "title": "WP7 nine-link viable-fit ensemble (18 orbits, S3^3 member sweep, free-phase multi-start LM, Tab. S2 chi2)",
+      "version": "1",
+      "entity_id": "source:7e1cd87eb2a7c4eac03d"
+    },
+    {
+      "kind": "source",
+      "local_ref": "s_hist",
+      "locator": "research/flavor/results/wp7_phase_histogram.json",
+      "op": "entity.declare",
+      "title": "WP7.2/7.3 orbit-collapsed fitted-phase histogram and prior sweep",
+      "version": "1",
+      "entity_id": "source:768e3ef34ddba62beeb8"
+    },
+    {
+      "kind": "source",
+      "local_ref": "s_coin",
+      "locator": "research/flavor/results/wp7_stratum_coincidence.json",
+      "op": "entity.declare",
+      "title": "WP7.2b fixed-physics fiber test: loop-phase values across support orbits at one physical point",
+      "version": "1",
+      "entity_id": "source:9f6156cab97777a04c0c"
+    },
+    {
+      "kind": "test",
+      "local_ref": "t_ens",
+      "locator": "research/flavor/checkers/wp7_ensemble.py",
+      "op": "entity.declare",
+      "title": "WP7 ensemble rebuild and orbit-collapsed pi/8 histogram test",
+      "version": "1",
+      "entity_id": "test:0265b4cb4dea9a37d2cc"
+    },
+    {
+      "kind": "test",
+      "local_ref": "t_fib",
+      "locator": "research/flavor/checkers/wp7_stratum_coincidence.py",
+      "op": "entity.declare",
+      "title": "WP7 stratum-coincidence test: loop phase over a fixed physical flavor point",
+      "version": "1",
+      "entity_id": "test:da3644382e156f41e4f5"
+    },
+    {
+      "kind": "claim",
+      "local_ref": "c_main",
+      "locator": "src/ledger/20260820-1084 The Pi-8 Clustering Is Angle Inheritance (WP7 Texture-Progenitor Discriminator).md",
+      "op": "entity.declare",
+      "title": "WP7: the pi/8 fitted-phase clustering survives support-orbit collapse and prior changes, and decomposes as exact angle inheritance at fixed physics — fiber loop phases equal the fitted CKM angles alpha, beta, gamma to sub-milliradian at the global best-fit point, while the loop phase is multi-valued over that point (18 distinct folded phases across 14 orbits; two within orbit 4 alone), so it is not even a stratum function of the physics",
+      "version": "1",
+      "entity_id": "claim:b89e01b0ebff68ade45b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t_ens",
+      "target_ref": "c_main",
+      "source_id": "test:0265b4cb4dea9a37d2cc",
+      "target_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:tests-8d9bd753742b3de1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t_fib",
+      "target_ref": "c_main",
+      "source_id": "test:da3644382e156f41e4f5",
+      "target_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:tests-4000c66797e8bc52"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "c_main",
+      "target_id": "source:0b24ac2fa3458eb0592c",
+      "source_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:derived_from-589c408acecf63c5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "c_main",
+      "target_id": "claim:8f2bdba4018488efe660",
+      "source_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:maricirefines-8823f03e1ab78958"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "c_main",
+      "target_id": "claim:e5f787902ae5159b3285",
+      "source_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:maricirefines-515738fa6ae3be1e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "c_main",
+      "target_id": "claim:4560d08a52308309ed5f",
+      "source_id": "claim:b89e01b0ebff68ade45b",
+      "relation_id": "rel:criticizes-b00b922e6bd0a0e2"
+    }
+  ],
+  "digest": "6747360c3506206352fa3edce104cc3298e4ca0171da9bd266cb9714144f6fe1"
+}

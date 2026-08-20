@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 489,
+  "event_id": "ev-000000000489-8116bc5c-3caa-4f72-a068-e59500917b62",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "721c65f41eb97c72a2a8492acf22987d02607fdb69438035cfa6fb414ea45c72",
+  "proposal_id": "ep_c34ff17c-7df7-47be-a5b8-a19ae1589971",
+  "proposal_digest": "f521d296107fcd61c4e0972410a34ee35ccf983e98ac41ade236585d297a1e07",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-872",
+      "local_ref": "src872",
+      "kind": "source",
+      "title": "Ledger Entry 872",
+      "version": "3081b40",
+      "locator": "src/ledger/20260818-872 The Kallen Double Cover Is Not the Physical Endpoint Cover.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-872",
+      "local_ref": "claim872",
+      "kind": "claim",
+      "title": "The Källén double cover is not the physical endpoint cover"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-872",
+      "local_ref": "test872",
+      "kind": "test",
+      "title": "Källén versus physical endpoint branch-divisor comparison",
+      "locator": "research/nima/check_kallen_physical_endpoint_no_go.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim872",
+      "target_ref": "src872",
+      "source_id": "marici-claim-entry-872",
+      "target_id": "marici-source-entry-872",
+      "relation_id": "rel:derived_from-9a74ee464257e1ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test872",
+      "target_ref": "claim872",
+      "source_id": "marici-test-entry-872",
+      "target_id": "marici-claim-entry-872",
+      "relation_id": "rel:tests-7c5e0b06876c7ecc"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-872",
+      "subject_id": "marici-claim-entry-872",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The Källén incidence cover ramifies at generic Q, while the frozen physical endpoint pair admits simultaneous resolution and identity monodromy there; degree-two endpoint-cover identifications preserve branch divisors.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-872",
+          "locator": "research/nima/kallen-physical-endpoint-no-go.json",
+          "paraphrase": "Exact discriminant and physical-sheet evidence give incompatible generic-Q ramification behavior."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-872",
+      "test_id": "marici-test-entry-872",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-872",
+          "locator": "research/nima/kallen-physical-endpoint-no-go.json",
+          "paraphrase": "Sage exact discriminant check passed; the repaired Rust verifier passed 8,269 assertions and 4,096 sheet selections."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-c29fba630fa68c5a3ae6869f",
+  "occurred_at": "2026-08-19T03:26:47.9495663Z",
+  "certifies_truth": false,
+  "event_hash": "d2418541d964dca24e23f164ee867400f98292ba2ca00ff8423829b64290c710"
+}

@@ -1,3 +1,7 @@
+---
+author: marici.Benincasa
+---
+
 # 1115 — The Exceptional Primitive Witness Has a Small Replicated Modular Degree Window
 
 ## Question

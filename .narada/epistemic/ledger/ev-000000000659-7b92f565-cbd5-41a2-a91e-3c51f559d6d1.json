@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 659,
+  "event_id": "ev-000000000659-7b92f565-cbd5-41a2-a91e-3c51f559d6d1",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "659f8d3d8b185dbc08ec20a94e427284ef00648a88942bbb1cf71e2c49616bc2",
+  "proposal_id": "ep_d85da395-40ac-4917-bc4c-f22fb4448eff",
+  "proposal_digest": "b96752cbcc19dde925473e73d302ba3b9127714e11ce9334ae3cb21c055afb1b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:ledger-1040-weighted-bar-horizontality",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Ledger Entry 1040",
+      "version": "20260819",
+      "locator": "src/ledger/20260819-1040 The Weighted Source Bar Cells Are Horizontal but Their Constant Grades Are Not.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:string-weighted-bar-horizontality-1040",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The full weighted source bar cells are horizontal",
+      "version": "1",
+      "locator": "ledger:1040"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:string-weighted-bar-horizontality-1040",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Weighted multiplicative bar differential identity",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_weighted_bar_horizontality.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:string-weighted-bar-horizontality-1040",
+      "target_id": "claim:string-weighted-bar-horizontality-1040",
+      "relation_id": "rel:tests-8e893956537cd70c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:string-weighted-bar-horizontality-1040",
+      "target_id": "source:ledger-1040-weighted-bar-horizontality",
+      "relation_id": "rel:derived_from-cb04d26263b6a845"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-weighted-bar-horizontality-1040",
+      "test_id": "test:string-weighted-bar-horizontality-1040",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: the differentiated weighted bar identity vanishes in both independent character directions; mixed curvature is zero",
+      "evidence": [
+        {
+          "source_id": "source:ledger-1040-weighted-bar-horizontality",
+          "locator": "research/benincasa/string-six-point-weighted-bar-horizontality.json",
+          "paraphrase": "The packet records the weighted identity, its differential coherence term, both source applications, and the associated-grade qualification."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue string-sector work and record coherent results."
+  },
+  "idempotency_key": "auto-admission-53d7e0386c7d0671360c8ff7",
+  "occurred_at": "2026-08-19T18:40:55.2368165Z",
+  "certifies_truth": false,
+  "event_hash": "045ca9d79f88848a3b639a99aa5d63e8fe83e5f5d880dc3a9910d49db90d36f2"
+}

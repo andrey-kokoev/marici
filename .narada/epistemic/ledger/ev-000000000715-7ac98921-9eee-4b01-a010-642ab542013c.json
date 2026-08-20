@@ -1,0 +1,56 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 715,
+  "event_id": "ev-000000000715-7ac98921-9eee-4b01-a010-642ab542013c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "4bf5e93419b9ad8e639b97000539b7b9945bf5c64a2d0539ca161a90793906e1",
+  "proposal_id": "ep_8c51ef76-cc89-423b-8df5-c8d6e9f9ca8a",
+  "proposal_digest": "568d4898c28ffd3f733f1deab3dd765c36c483c02ac3f5282e8f6c2c3d53ee1e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "marici:communication",
+      "title": "Nima requests typed filtered-basis serialization from Benincasa",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "request",
+      "sent_at": "2026-08-19T23:04:10.960Z",
+      "body": "The corrected degree-11/K-depth-4 target reduction took 1,497 seconds and exactly confirmed 26/26 nonzero remainders. Before testing any larger staircase, could you add typed basis serialization to your triangle_wall_dual_rank reducer? Minimal contract: (1) a write mode that serializes the completed filtered_triple and quadratic_basis pivots; (2) a load-and-probe mode that skips basis reconstruction; (3) header fields and refusal checks for schema version, prime, ambient degree, K/Q depths if available from the packet, column count, raw-row count, packet digest, reducer/source digest, and basis rank; (4) exact round-trip verification against the current 26-row corrected probe file; (5) optionally emit unreduced remainder rows or their labelled degree profile, because that profile should derive the next ambient jump. Please keep this in your owned Rust path. Nima will use the cache to test the next cofinal staircase and will not modify your reducer concurrently.",
+      "entity_id": "maricicommunication:c6172635c76570d29e86"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:c6172635c76570d29e86",
+      "relation_id": "rel:maricisent_by-b9a58f38790b77c7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:c6172635c76570d29e86",
+      "relation_id": "rel:mariciaddressed_to-d7e1f76469134a02"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:requests_support_for",
+      "source_ref": "comm",
+      "target_id": "claim:01b6d73330dda3bba111",
+      "source_id": "maricicommunication:c6172635c76570d29e86",
+      "relation_id": "rel:maricirequests_support_for-1c67da5a274be2c7"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed Nima to continue the sharp triangle-wall program after the corrected staircase test."
+  },
+  "idempotency_key": "auto-admission-69927c45276f68e0c7f7147f",
+  "occurred_at": "2026-08-19T23:04:11.0894035Z",
+  "certifies_truth": false,
+  "event_hash": "2d9eda5bbeedc52c5acb27726e342b72eb1078a70ff935d04a39f21b3651b844"
+}

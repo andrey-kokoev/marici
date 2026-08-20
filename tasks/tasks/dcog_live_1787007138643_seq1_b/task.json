@@ -1,0 +1,308 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787007138643_seq1_b",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Stage B (reduce), read only. Consume only the explicitly imported validated Stage-A output. Return JSON with fields compatible_map, untouchable_components, minimal_reduction, residual_complex, unconditional_homology, conditional_homology, construction_status, coefficient_assumption. Determine the strongest support- and degree-compatible map, what cannot be touched, the minimal quotient/restriction, residual matrix/complex, and homology under explicit assumptions. Distinguish a compatible map from a constructed map. Do not infer nonzero means invertible. No prose outside JSON.",
+  "request_fingerprint": "4e9dae34e79812c8cd46f1fc3064026c2763eaff69d931789d172388fe1a29fb",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T22:52:19.0344531Z",
+  "created_at_ms": 1787007139034,
+  "started_at": "2026-08-17T22:56:49.6243761Z",
+  "started_at_ms": 1787007409624,
+  "finished_at": "2026-08-17T23:24:16.7239144Z",
+  "finished_at_ms": 1787009056723,
+  "duration_ms": 1647099,
+  "updated_at": "2026-08-17T23:24:16.7239223Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787007138643_seq1_b",
+  "constraints": {
+    "cognition": "low",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "queue_timeout_ms": 900000,
+    "max_retries": 0,
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "compatible_map",
+            "untouchable_components",
+            "minimal_reduction",
+            "residual_complex",
+            "unconditional_homology",
+            "conditional_homology",
+            "construction_status",
+            "coefficient_assumption"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "compatible_map",
+      "untouchable_components",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_homology",
+      "construction_status",
+      "coefficient_assumption"
+    ]
+  },
+  "depends_on_task_ids": [
+    "dcog_live_1787007138643_seq1_a"
+  ],
+  "import_task_outputs": [
+    "dcog_live_1787007138643_seq1_a"
+  ],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": "2026-08-17T22:56:49.5993895Z",
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-21b1433a2ac64f4ba24732b8f91cdd5c"
+        ],
+        "current_run_id": "run-21b1433a2ac64f4ba24732b8f91cdd5c",
+        "started_at": "2026-08-17T22:56:49.6243843Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-21b1433a2ac64f4ba24732b8f91cdd5c",
+        "status": "failed",
+        "finished_at": "2026-08-17T23:24:16.7227138Z",
+        "duration_ms": null,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_orphaned:broker_generation_mismatch"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-21b1433a2ac64f4ba24732b8f91cdd5c",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_orphaned:broker_generation_mismatch"
+      }
+    ],
+    "imported_task_outputs": [
+      {
+        "task_id": "dcog_live_1787007138643_seq1_a",
+        "source_ref": "delegated-task://dcog_live_1787007138643_seq1_a/result#final_structured_output",
+        "structured_output": {
+          "components": {
+            "coefficient_ring": {
+              "symbol": "R",
+              "type": "arbitrary commutative unital ring"
+            },
+            "lattice": {
+              "symbol": "L",
+              "type": "free rank-one integral incidence lattice",
+              "generator": {
+                "symbol": "p",
+                "primitive": true
+              }
+            },
+            "realization": {
+              "map": "rho: L -> R",
+              "type": "specified additive realization",
+              "coefficient": {
+                "symbol": "c",
+                "definition": "rho(p)",
+                "type": "element of R",
+                "known_nonzero": true
+              }
+            },
+            "graded_object": {
+              "degree_2": [
+                {
+                  "id": "x",
+                  "module": "R",
+                  "support": [
+                    "alpha",
+                    "beta"
+                  ]
+                },
+                {
+                  "id": "y",
+                  "module": "R",
+                  "support": [
+                    "beta"
+                  ]
+                }
+              ],
+              "degree_1": [
+                {
+                  "id": "z",
+                  "module": "R",
+                  "support": [
+                    "alpha"
+                  ]
+                }
+              ],
+              "other_degrees": []
+            }
+          },
+          "operation": {
+            "id": "delta",
+            "degree_shift": -1,
+            "input_degree": 2,
+            "output_degree": 1,
+            "admissible_support": [
+              "alpha"
+            ]
+          },
+          "constructed_facts": [
+            {
+              "input": "x",
+              "output": "c*z",
+              "status": "constructed"
+            },
+            {
+              "input": "y",
+              "output": "0",
+              "status": "constructed",
+              "reason": "support beta is outside delta admissible support"
+            }
+          ],
+          "absent_assumptions": [
+            "c is a unit",
+            "R is a domain",
+            "rho is multiplicative",
+            "rho is unit-preserving"
+          ]
+        }
+      }
+    ],
+    "prior_step_outputs_ref": "delegated-task://dcog_live_1787007138643_seq1_b/imported-task-outputs",
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "imported_worker_refs": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "compatible_map",
+          "untouchable_components",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_homology",
+          "construction_status",
+          "coefficient_assumption"
+        ],
+        "returned": [],
+        "missing": [
+          "compatible_map",
+          "untouchable_components",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_homology",
+          "construction_status",
+          "coefficient_assumption"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "pending",
+        "status": "pending"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: failed. No substantive objective result was reported."
+}

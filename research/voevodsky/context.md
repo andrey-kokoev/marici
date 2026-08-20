@@ -2479,3 +2479,72 @@ ringed endpoint object with the based \(Q\)-leg and both connector cells.
 Until it exists, entry 142 is a coefficient/carrier theorem only, and
 \(p_{\partial,Q}\), \(d_{\rm sp,sc}\), and
 \(G_{03}^{\rm Cousin}\) remain unconstructed.
+
+## 47. The global target Cech packet is fixed; only the sheet kernel remains
+
+Entry 143 and
+`check_global_k6_koszul_cech_promotion.rs` remove the common target object
+from the list of unknowns.  On the 215 generators \([S,H]\) of the absolute
+original-twist/Borel--Moore packet, put
+\[
+\lambda(S,H)=\prod_{a\in S\setminus H}u_a^{-1}.
+\]
+The forced extended Cech differential is
+\[
+d_{\check C}[S,H]
+=\sum_{a\ {m addable}}
+ \epsilon(S,a){X_a\over u_a}[S+a,H]
++(-1)^{3-|S|}\sum_{h\in H}(-1)^{{\rm pos}(h)}[S,H-h],
+\]
+and
+\[
+\kappa_{K_6}[S,H]=\lambda(S,H)[S,H]_{\check C}
+\]
+is a strict \(D_3\)-equivariant chain map.  The strict support filtration
+\(F_V\subset F_B\subset F_K\) survives, the quotient retains the three
+generic arrows \(X_D/u_D\), and no occurrence variable or integer is
+inverted.  The certificate SHA-256 is
+`3ee572a2d2f17d5a24d7ce5691397604551156baa577cbafde452ae4c7130ece`.
+
+The remaining target is therefore the paired packet
+\[
+\mathcal P_{\partial,Q}^{\rm PC}
+=\left(
+ \mathcal E_{\partial,Q}^{\rm BM,\check C},
+ \mathbb D_{\rm supp}\mathcal E_{\partial,Q}^{\rm BM,\check C},
+ {\rm ev},\iota_{\rm road}^{\check C}
+\right),
+\]
+not a same-variance common stalk and not the ordinary linear dual of a
+non-finite Cech object.  The only missing morphism is
+\[
+\alpha_{\rm sh}^{!,\check C}\in
+R\!\operatorname{Hom}\!\left(
+ \mathcal S_{\rm sh}^{\rm norm,reg}\mathbin\otimes^L
+ \mathcal E_{\partial,Q}^{\rm BM,\check C},
+ \mathbf1_{\chi_N}
+\right)
+\]
+together with the two endpoint comparison cells that point its butterfly
+with the fixed road inclusion.
+
+At coefficient/carrier level the endpoint-fixed mapping fibre has tangent
+\[
+R\!\operatorname{Hom}_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})[1],
+\]
+with component torsor \(H^0=\mathbb Z/2\) and next obstruction
+\(H^1=\operatorname{Ext}^2=\mathbb Z/3\).  Entry 115's carrier curvature
+vanishes, so the abstract carrier torsor is nonempty.  The front/back AW
+collars are strictly \(D_3\)-homotopic and preserve any eventual parity but
+do not select it.  The two connector cells, or equivalently the reflection
+one-cochain they induce, must therefore be derived from the loaded
+normalization--conductor geometry rather than chosen.
+
+This is the current sharp frontier.  Construct only
+\(\alpha_{\rm sh}^{!,\check C}\) and those connector cells, retaining the
+generic \(q_\Sigma\), both Tor grades, the independent multi-Rees filtration,
+entry-131 edge purity, and the separate physical orientation.  Only then is
+it meaningful to form the correspondence homotopy limit and test
+\(d_{\rm sp,sc}^2=0\) and the chain equation for
+\(G_{03}^{\rm Cousin}\).

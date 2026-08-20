@@ -1,0 +1,74 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9504c3bb-2da5-4ce2-a60b-7f110189c915",
+  "status": "submitted",
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Record first exact flavor-sector result: chart-level status of the nine-link loop phase (ledger 1042)"
+  },
+  "idempotency_key": "auto-proposal-387bd06ffbfa0f27f57aa578",
+  "expected_ledger_head": "7cca881c7fd6c21ddc2d548f9d01c82433c7775e004fd7d1273d62196ea67435",
+  "created_at": "2026-08-19T18:46:21.2173018Z",
+  "content_fingerprint": "387bd06ffbfa0f27f57aa578a64d9e482ee59f88c8b39b3beb206c9c625a2266",
+  "operations": [
+    {
+      "kind": "source",
+      "local_ref": "src",
+      "locator": "research/flavor/sources/2607.27315v1.txt",
+      "op": "entity.declare",
+      "title": "Arkani-Hamed, Figueiredo, Hall, Manzari — The Very Nearly Right Theory of Flavor (arXiv:2607.27315v1)",
+      "version": "2607.27315v1",
+      "entity_id": "source:0b24ac2fa3458eb0592c"
+    },
+    {
+      "kind": "problem",
+      "local_ref": "prob",
+      "op": "entity.declare",
+      "title": "Is the nine-link loop phase phi an invariant of a physical flavor point, or only of a selected sparse texture chart?",
+      "entity_id": "problem:8509ffda8946a3387bf6"
+    },
+    {
+      "kind": "claim",
+      "local_ref": "clm",
+      "op": "entity.declare",
+      "title": "The loop phase phi is an invariant of the sparse nine-link texture chart (rephasing + S3^3 permutation groupoid), not of the physical U(3)^3 flavor point",
+      "entity_id": "claim:46e51bbf709af03391e0"
+    },
+    {
+      "kind": "test",
+      "local_ref": "tst",
+      "op": "entity.declare",
+      "title": "Exact checker: rephasing torus audit, S3^3 transport, rational U(3)_Q rotation, perfect matchings vs determinants, S41 spectrum (research/flavor/checkers/nine_link_exact_checks.py)",
+      "entity_id": "test:591f3f2e6be4e4f8a193"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "clm",
+      "target_ref": "prob",
+      "source_id": "claim:46e51bbf709af03391e0",
+      "target_id": "problem:8509ffda8946a3387bf6",
+      "relation_id": "rel:addresses-98722055180c29b8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "clm",
+      "target_ref": "src",
+      "source_id": "claim:46e51bbf709af03391e0",
+      "target_id": "source:0b24ac2fa3458eb0592c",
+      "relation_id": "rel:derived_from-264358aa63865416"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "tst",
+      "target_ref": "clm",
+      "source_id": "test:591f3f2e6be4e4f8a193",
+      "target_id": "claim:46e51bbf709af03391e0",
+      "relation_id": "rel:tests-993ec5fa7f8ca8af"
+    }
+  ],
+  "digest": "70ef62917a8ca3b2bced5f98d3f2796aadf95660707952fa4c82f9e2c10c80a9"
+}

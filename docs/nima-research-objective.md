@@ -2536,3 +2536,229 @@ matrix: construct
 both endpoint connectors, full Tate window, positive multi-Rees support,
 reciprocal/Borel--Moore variance, and polarity exactly once.  Without that
 cospan, neither \(d_{\rm sp,sc}\) nor \(G_{03}^{\rm Cousin}\) is defined.
+
+## Road-side spatial realization after entry 143
+
+Entry 143 closes the road-side carrier part of the entry-142 cospan.  In the
+actual labelled associahedron,
+\[
+V=\bigl\{\{x_1,x_3,x_5\},\{x_0,x_2,x_4\}\bigr\}
+\subset B_{\rm short}\subset K_6
+\]
+has
+\[
+H_1(B_{\rm short},V;\mathbb Z)\simeq\mathbb Z^3
+\]
+with a saturated unimodular basis given by the three physical road
+corridors.  Their common endpoint boundary is
+\[
+\epsilon=(1,1,1):
+H_1(B_{\rm short},V)\longrightarrow\widetilde H_0(V).
+\]
+After tensoring the entire relative pair triangle once by the physical
+road-orientation character, the endpoint becomes
+\(\mathbb Z_{\rm or}\), reflection acts by the negative road permutation,
+and the genuine long-facet boundaries give
+\[
+I-R^2.
+\]
+The signed cyclic tag rebase \(-R\) converts this to entry 142's \(I-R\).
+Thus the complete integral \(N/(1-r)/\epsilon\) road resolution is now
+spatially realized; no road projector or division by three is needed.
+
+The same inclusions restrict entry 105's absolute unlocalized
+original-twist/Borel--Moore support complex to strict \(D_3\)-stable ranks
+\[
+F_V\subset F_B\subset F_K:
+\qquad
+16\subset208\subset215,
+\]
+and retain the seven-generator \(Q\) quotient.  Therefore the road leg is no
+longer missing at carrier and original-twist support grade.
+
+There is a further simplification at exactly this established grade.  The
+common endpoint/\(Q\) object is definitionally the quotient
+\[
+\boxed{
+\mathcal E_{\partial,Q}^{\rm abs}:=F_K/F_V,
+}
+\]
+with canonical filtration
+\[
+0\longrightarrow F_B/F_V
+\longrightarrow F_K/F_V
+\longrightarrow F_K/F_B=Q
+\longrightarrow0.
+\]
+Its carrier \(C_*(K_6,V)\) has ranks \((1,9,21,12)\), differential
+ranks \((1,8,12)\), and only one primitive torsion-free homology line
+\(H_1\simeq\mathbb Z_{\rm or}\) after the road-orientation twist.  Its loaded
+degree ranks are \((12,57,87,43)\), with subobject \(F_B/F_V\) of ranks
+\((12,57,84,39)\) and quotient \(Q\) of ranks \((0,0,3,4)\).
+
+The target-side Cech promotion is now canonical as well.  Put
+\(u_a=q_a-1\).  For every one of the 215 absolute generators \([S,H]\), with
+\(H\subset S\) the chosen normal circles, set
+\[
+\lambda(S,H)=\prod_{a\in S\setminus H}u_a^{-1}.
+\]
+The extended Cech differential forced by the finite radial and normal
+differentials is
+\[
+d_{\check C}[S,H]
+=\sum_{a\ {m addable}}
+ \epsilon(S,a){X_a\over u_a}[S+a,H]
++(-1)^{3-|S|}\sum_{h\in H}(-1)^{{\rm pos}(h)}[S,H-h].
+\]
+Then
+\[
+\boxed{
+\kappa_{K_6}[S,H]=\lambda(S,H)[S,H]_{\check C}
+}
+\]
+is a strict \(D_3\)-equivariant chain map:
+\[
+d_{\check C}\kappa_{K_6}=\kappa_{K_6}d_{\rm fin},
+\qquad d_{\check C}^2=0.
+\]
+All \(u_a^{-1}\) occur only in the indicated target Cech summands; the
+occurrence variables \(X_a\) remain polynomial and no integer is inverted.
+The strict filtration \(F_V\subset F_B\subset F_K\) survives, and the generic
+\(Q\) quotient retains the three physical long-facet arrows \(X_D/u_D\).
+This is certified by
+`research/voevodsky/check_global_k6_koszul_cech_promotion.rs` (SHA-256
+`3ee572a2d2f17d5a24d7ce5691397604551156baa577cbafde452ae4c7130ece`).
+
+Consequently neither another original-twist endpoint object nor another
+road-side Cech target should be manufactured.  The remaining construction is
+source-side: a normalization-sheet correspondence into the supported dual of
+this fixed target, together with its endpoint-pointing cells.
+
+Finite Verdier duality removes one more unnecessary construction.  Since
+the filtration terms are bounded and finite free, the semilinear dual
+\[
+\mathcal E_{\partial,Q}^{\vee,\mathrm{fin}}
+=\mathbb D_\iota(F_K/F_V),
+\qquad \iota(q_D)=q_D^{-1},
+\]
+is canonical, with reversed exact filtration
+\[
+0\to\mathbb D_\iota(Q)
+\to\mathcal E_{\partial,Q}^{\vee,\mathrm{fin}}
+\to\mathbb D_\iota(F_B/F_V)
+\to0.
+\]
+Do not build another finite reciprocal endpoint complex.  Equally, do not
+identify this finite dual with the supported dual of the Cech object: duality
+reverses the road inclusion, and the supported Cousin realization contains
+non-finite localization terms.  The correct target is the paired packet
+\[
+\mathcal P_{\partial,Q}^{\rm PC}:=
+\left(
+ \mathcal E_{\partial,Q}^{\rm BM,\check C},
+ \mathbb D_{\rm supp}\mathcal E_{\partial,Q}^{\rm BM,\check C},
+ {\rm ev},
+ \iota_{\rm road}^{\check C}
+\right),
+\]
+where \(\mathbb D_{\rm supp}\) denotes supported Verdier duality rather than
+the ordinary linear dual of a non-finite Cech complex.
+
+The closed conductor fibre is now matched more strongly than by character.
+Entry 93's ideals
+\[
+J_+=(x_1,x_3,x_5),
+\qquad
+J_-=(x_0,x_2,x_4)
+\]
+have exactly the labels of \(v_+\) and \(v_-\).  For \(D03\), the
+entry-99 positive marked half-gallery
+\[
+v_+\to\{D03,x_1,x_3\}\to\{D03,x_0,x_3\}
+\]
+and its polarity conjugate
+\[
+v_-\to\{D03,x_0,x_4\}\to\{D03,x_0,x_3\}
+\]
+concatenate to the primitive \(D03\) road corridor.  Rotation supplies the
+other two corridors.  If \(\Gamma_\Sigma^\pm\) denote the sums of the
+three special-leg half-galleries, the exact chains obey
+\[
+\Gamma_\Sigma^+-\Gamma_\Sigma^-=N_{\rm road},
+\qquad
+\partial N_{\rm road}=3(v_--v_+).
+\]
+These \(\Gamma_\Sigma^\pm\subset F_B\) are deliberately distinguished
+from entry 113's nonzero generic \(q_\Sigma\in Q\).  Hence the closed
+normalization-conductor endpoints and their special-leg endpoint-defect
+carrier map canonically to \(V\) at labelled carrier grade.
+
+This still does not complete the correspondence.  The half-galleries lie
+wholly in \(F_B\), so their literal \(Q=F_K/F_B\) image is zero.  What is
+missing is the support-typed mixed-variance kernel
+\[
+\boxed{
+\alpha_{\rm sh}^{!,\check C}\in
+R\!\operatorname{Hom}\!\left(
+ \mathcal S_{\rm sh}^{\rm norm,reg}\mathbin{\otimes}^{L}
+ \mathcal E_{\partial,Q}^{\rm BM,\check C},
+ \mathbf1_{\chi_N}
+\right),
+}
+\]
+equivalently a map from the normalization-sheet source to
+\(\mathbb D_{\rm supp}\mathcal E_{\partial,Q}^{\rm BM,\check C}\otimes\chi_N\).
+It must be accompanied by the two endpoint comparison cells that make this
+kernel and \(\iota_{\rm road}^{\check C}\) a pointed butterfly in the
+two-extension category.
+
+The formula objective should therefore be read in the correspondence
+category, not as an objectwise fibre product:
+\[
+\boxed{
+\mathcal S_F^{\rm sp}
+\stackrel?=
+\operatorname*{holim}_{\operatorname{Corr}_{\partial,Q}}
+\left(
+ \mathcal S_{\rm sh}^{\rm norm,reg}
+ \xrightarrow{\ \alpha_{\rm sh}^{!,\check C}\ }
+ \mathcal P_{\partial,Q}^{\rm PC}
+ \xleftarrow{\ \iota_{\rm road}^{\check C}\ }
+ \mathcal C(B_{\rm short},V)_{\rm road}^{\rm or}
+\right)\otimes L_{\rm pol}.
+}
+\]
+Here an arrow into \(\mathcal P_{\partial,Q}^{\rm PC}\) is a bivariant
+correspondence using its evaluation pairing; the two displayed arrows do not
+have the same ordinary variance.
+
+At coefficient/carrier level the endpoint-fixed mapping fibre has tangent
+\[
+R\!\operatorname{Hom}_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})[1].
+\]
+Its component torsor is \(H^0\simeq\mathbb Z/2\), while the next obstruction
+is \(H^1\simeq\operatorname{Ext}^2_{\mathbb Z[D_3]}
+(\mathbb Z,\mathbb Z_{\rm or})\simeq\mathbb Z/3\).  The carrier curvature of
+entry 115 vanishes, so the abstract carrier torsor is nonempty.  The strict
+front/back AW collars are \(D_3\)-homotopic and preserve any eventual parity,
+but they do not select one of its two points.  Selecting a reflection
+one-cochain by hand would therefore fit the answer.
+
+The economical next test is now singular:
+
+1. construct \(\alpha_{\rm sh}^{!,\check C}\) on the full two-sheet
+   normalization--Cech source while retaining the generic \(q_\Sigma\) leg;
+2. derive the two endpoint connector cells from the loaded geometry, rather
+   than choosing the \(\mathbb Z/2\) point;
+3. prove compatibility with entry 131's three edge-purity maps, both Tor
+   grades, the multi-Rees filtration, and the separate physical orientation;
+4. only then form the pointed homotopy limit and test
+   \(d_{\rm sp,sc}^2=0\), the chain equation for
+   \(G_{03}^{\rm Cousin}\), and its \(K_{\rm alt}\otimes L_{\rm pol}\)
+   conductor symbol.
+
+Thus the target and road side are fixed globally.  The first canonical failed
+map is precisely \(\alpha_{\rm sh}^{!,\check C}\) together with its two
+endpoint comparison cells; until they are constructed, neither
+\(d_{\rm sp,sc}\) nor \(G_{03}^{\rm Cousin}\) is defined.

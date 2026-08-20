@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f8812e67-aa34-4706-958b-4f559c1004bf",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record verified results, and coordinate with marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-b7155bb36ef72530f4757a06",
+  "expected_ledger_head": "3157d44381c762670383dbd08c53c743c1f345874f2d2196619090cec29019fd",
+  "created_at": "2026-08-20T12:53:38.8773951Z",
+  "content_fingerprint": "b7155bb36ef72530f4757a068cd1bbc12646451245b9786da7df968617585c94",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1129 — The Half-Scalar Does Not Yet Define an Integral Index",
+      "status": "established-no-go",
+      "ledger_number": 1129,
+      "path": "src/ledger/20260820-1129 The Half-Scalar Does Not Yet Define an Integral Index.md",
+      "claim_id": "seqclaim-d33957fc5dd1660cf20d7290",
+      "entity_id": "mariciledger_entry:b03a32ce2a995837ac5c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The canonical rational node-to-e6 scalar does not determine an integral lattice index",
+      "status": "supported",
+      "body": "The node generator is primitive, but the frozen e6 package is a rational de Rham frame with independently rescaled integral representatives. Constant rational target gauges preserve the differential module and change the displayed -1/2 scalar, so an index-two claim is unauthorized.",
+      "entity_id": "mariciclaim:5373946a67e755294a24"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Rational target-gauge audit of the node-to-e6 scalar",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_soft_node_e6_integral_lattice_gate.py",
+      "evidence_path": "research/benincasa/results/rank12-soft-node-e6-integral-lattice-gate.json",
+      "entity_id": "maricitest:38ea71447f7c8ceec0cc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:b03a32ce2a995837ac5c",
+      "target_id": "mariciclaim:5373946a67e755294a24",
+      "relation_id": "rel:maricirecords-eba5921f760eca2b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:5373946a67e755294a24",
+      "target_id": "maricitest:38ea71447f7c8ceec0cc",
+      "relation_id": "rel:maricitested_by-a1e666f23b75dbe1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the integral-index inference from the half-scalar",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_scope_correction",
+      "status": "sent",
+      "body": "Entry 1129 shows that Entry 1128's -1/2 is canonical only in the source rational de Rham frame. The node tau is primitive, but the frozen e6 packet does not provide a Betti lattice; its purported integral columns are independently rescaled representatives. Constant rational target gauges change -1/2 to -1 or -1/4 without changing the differential module. Therefore no index-two conclusion is authorized. The next admissible datum would be a source Cayley-Menger relative cycle and normalized pairing with e6; absent that, the rational cyclic map is terminal.",
+      "entity_id": "maricicommunication:835b292a2d60dc7eb643"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:835b292a2d60dc7eb643",
+      "relation_id": "rel:maricisent_by-81868801acb2c5a3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:835b292a2d60dc7eb643",
+      "relation_id": "rel:mariciaddressed_to-070fe36e11901674"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:835b292a2d60dc7eb643",
+      "target_id": "mariciclaim:5373946a67e755294a24",
+      "relation_id": "rel:maricireports-0bab81a6169a551f"
+    }
+  ],
+  "digest": "ebc96f7b128914231d0f71c118f68d75cf04c5b5864ca652515a3a5b02ecc28d"
+}

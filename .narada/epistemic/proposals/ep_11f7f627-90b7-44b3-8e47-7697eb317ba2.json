@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_11f7f627-90b7-44b3-8e47-7697eb317ba2",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "marici-entry-874-admit-v1",
+  "expected_ledger_head": "008b82bbfc0110ec74770662270569452521cd1f2398adfc7370593c7e974348",
+  "created_at": "2026-08-19T03:30:06.5187069Z",
+  "content_fingerprint": "51a15d2b1d24560f5137692e5b6b3a890911d5f5fbad22f36fdad072a1094d2b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-874",
+      "local_ref": "src874",
+      "kind": "source",
+      "title": "Ledger Entry 874",
+      "version": "4bee401",
+      "locator": "src/ledger/20260818-874 Proper Quartic Intersections Have No Indicial Spectral Excess.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-874",
+      "local_ref": "claim874",
+      "kind": "claim",
+      "title": "Proper quartic intersections with D and H have no indicial spectral excess"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-874",
+      "local_ref": "test874",
+      "kind": "test",
+      "title": "Generic-carrier versus quartic-intersection indicial comparison",
+      "locator": "research/nima/check_quartic_intersection_indicial_excess.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim874",
+      "target_ref": "src874",
+      "source_id": "marici-claim-entry-874",
+      "target_id": "marici-source-entry-874",
+      "relation_id": "rel:derived_from-f5693e5cb1f3f162"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test874",
+      "target_ref": "claim874",
+      "source_id": "marici-test-entry-874",
+      "target_id": "marici-claim-entry-874",
+      "relation_id": "rel:tests-77398528215e8776"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-874",
+      "subject_id": "marici-claim-entry-874",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The generic D and H residue characteristic polynomials exactly equal the previously computed polynomials at Q intersect D and Q intersect H.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-874",
+          "locator": "research/nima/quartic-intersection-indicial-excess.json",
+          "paraphrase": "Both generic carriers have R9=x^9, R3=x^2(x+1/2), and Hom=x^18(x-1/2)^9, matching Entry 864's intersections."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-874",
+      "test_id": "marici-test-entry-874",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-874",
+          "locator": "research/nima/quartic-intersection-indicial-excess.json",
+          "paraphrase": "Exact SageMath function-field residue computation passed for both D and H."
+        }
+      ]
+    }
+  ],
+  "digest": "1d7426305936a44e38e7650078d7e5e7a12b4d8e8be91638113fb8393d656752"
+}

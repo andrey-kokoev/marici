@@ -1,0 +1,60 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_af10e8fd-c7f5-402d-8346-e20ec6d2ddc9",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Record allocator-backed cosmology Entry 695."
+  },
+  "idempotency_key": "auto-proposal-c76009397d88f8d8462be16c",
+  "expected_ledger_head": "2f673eedfaa2ea17a4f46ea68cba34ab857ac4b83056f435a6b0086dee121727",
+  "created_at": "2026-08-18T16:04:44.7732784Z",
+  "content_fingerprint": "c76009397d88f8d8462be16ca73c5dff9e275e7678be84e88afc02596f89ae71",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source695",
+      "kind": "source",
+      "title": "Entry 695 — The Ordered Wall Residues Cancel with Quartic-Coprime Norms",
+      "version": "ba08d2f",
+      "locator": "src/ledger/20260818-695 The Ordered Wall Residues Cancel with Quartic-Coprime Norms.md",
+      "entity_id": "source:7199cbd85a00366e5042"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim695",
+      "kind": "claim",
+      "title": "Ordered physical wall residues cancel with quartic-coprime norms",
+      "description": "Each pairwise ordered iterated residue is nonzero, order reversal changes its sign, the Cech degree-one component vanishes, and all individual sheet-norm factors are coprime to Q.",
+      "entity_id": "claim:26a994270f615efb811c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test695",
+      "kind": "test",
+      "title": "Ordered wall-residue and sheet-norm audit",
+      "description": "Evaluate all three pair intersections with source Jacobians and test the individual norms against Q.",
+      "entity_id": "test:d050b523257b9d7d4bdb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim695",
+      "target_ref": "source695",
+      "source_id": "claim:26a994270f615efb811c",
+      "target_id": "source:7199cbd85a00366e5042",
+      "relation_id": "rel:derived_from-e906a5433056d359"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test695",
+      "target_ref": "claim695",
+      "source_id": "test:d050b523257b9d7d4bdb",
+      "target_id": "claim:26a994270f615efb811c",
+      "relation_id": "rel:tests-1fc9d75939fa6a04"
+    }
+  ],
+  "digest": "750fad91fa33bcf0424cbf1af2241964e3b20243e52834adddd787deeb1b4799"
+}

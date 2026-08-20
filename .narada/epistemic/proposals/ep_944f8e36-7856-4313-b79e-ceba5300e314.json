@@ -1,0 +1,60 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_944f8e36-7856-4313-b79e-ceba5300e314",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User instructed continued research and epistemic graph maintenance."
+  },
+  "idempotency_key": "idem-marici-nima-entry-866-correct-865-divisors-v2",
+  "expected_ledger_head": "16141bf13ff2f7366dd3cb62e2fa96c5ff90ada01ba448ae9769b2b1fd6568a7",
+  "created_at": "2026-08-19T03:03:07.1750283Z",
+  "content_fingerprint": "6017d668e4a2452ea49f0642bd3dd9e23c765a5edd16fb8f11a66926f8d2b3dc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-866",
+      "kind": "source",
+      "title": "Entry 866 — Correction: The Algebraic Split Line Reopens the Marked Top Channel",
+      "version": "25edc7b",
+      "locator": "src/ledger/20260818-866 Correction - The Algebraic Split Line Reopens the Marked Top Channel.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-866",
+      "kind": "claim",
+      "title": "The algebraic split line reopens the sole marked-top horizontal channel"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-866",
+      "target_id": "marici-source-entry-866",
+      "relation_id": "rel:derived_from-92ec92abf39430d2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici-claim-entry-866",
+      "target_id": "marici-claim-entry-865",
+      "relation_id": "rel:criticizes-95225ec41b9012a4"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-865-correction",
+      "subject_id": "marici-claim-entry-865",
+      "judgment": "partially_corrected",
+      "actor": "marici.Nima",
+      "reason": "Entry 865 correctly excludes e6 but conflates P6 with D1 and overlooks the pre-existing modular algebraic-plane split.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-866",
+          "locator": "research/nima/algebraic-split-divisor-correction.json",
+          "paraphrase": "The stored modular split reconstructs to h=u(u+v)(u+v-4)P6/4 and distinguishes P6 from D1."
+        }
+      ]
+    }
+  ],
+  "digest": "7309de95a52a6bcbb66f8fadf0e5f82017ff29b667747861b03d9dbeeb8fbf88"
+}

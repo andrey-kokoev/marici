@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a3c38471-3d97-43f8-b787-80e4de580954",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "detail": "Record verified Entry 740 cosmology result"
+  },
+  "idempotency_key": "marici-benincasa-entry-740-corner-l0-survival",
+  "expected_ledger_head": "c28176a51330971d04c85c33d53c3c7a2318aca8b38fca16fe8ee387fc26bd2a",
+  "created_at": "2026-08-18T18:28:46.8607823Z",
+  "content_fingerprint": "6ae7411b9eb75eb20f84363951349fa4373ca03bf41c81ace053dd08dddbe722",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry740",
+      "kind": "source",
+      "title": "Entry 740 — The Corner L0 Differential Does Not Kill the Principal Cech Line",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-740 The Corner L0 Differential Does Not Kill the Principal Cech Line.md",
+      "entity_id": "source:0a0662377df0b0df573e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim740",
+      "kind": "claim",
+      "title": "The principal Cech line survives the exact grade-zero corner indicial totalization",
+      "entity_id": "claim:d3bb46d79bc4d67ecce3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test740",
+      "kind": "test",
+      "title": "Exact Symbolica corner L0 and relative-cycle rank test",
+      "entity_id": "test:6d08d91b77b005ff57ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim740",
+      "target_ref": "entry740",
+      "source_id": "claim:d3bb46d79bc4d67ecce3",
+      "target_id": "source:0a0662377df0b0df573e",
+      "relation_id": "rel:derived_from-356ac417a7923157"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test740",
+      "target_ref": "claim740",
+      "source_id": "test:6d08d91b77b005ff57ad",
+      "target_id": "claim:d3bb46d79bc4d67ecce3",
+      "relation_id": "rel:tests-56725a5027d729e5"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-entry-740-corner-l0",
+      "test_id": "test-entry-740-symbolica",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: L0 is zero on all corner extension blocks and rank[delta,l]=rank(delta)+1",
+      "evidence": [
+        {
+          "source_id": "source-entry-740",
+          "locator": "research/benincasa/marici-gm/src/bin/gysin_resolved_local_maps_certificate.rs",
+          "paraphrase": "Symbolica verifies the zero grade-zero internal operator and rank-three augmented horizontal matrix."
+        }
+      ]
+    }
+  ],
+  "digest": "d6e21a1ff82ea3fc4f05f3c9e3b203e8d163b3653f71a6cb23c4331e9b026358"
+}

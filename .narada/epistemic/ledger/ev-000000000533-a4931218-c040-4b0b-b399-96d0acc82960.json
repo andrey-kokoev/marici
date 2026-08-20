@@ -1,0 +1,71 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 533,
+  "event_id": "ev-000000000533-a4931218-c040-4b0b-b399-96d0acc82960",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e41b2ac75908a15c04f6446b889a5fde7c038862d6fceff7c8dc14ea8bbd886b",
+  "proposal_id": "ep_f667fe38-96f9-4806-a40e-b7a49735299d",
+  "proposal_digest": "cb023e684ecaa83448af37c75dfa89cc4829c9948cfc48d7664838c80a842ce4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-916",
+      "kind": "source",
+      "title": "Entry 916 — Off-Diagonal Maximal Flags Require a Rees Direction",
+      "version": "20260819-916",
+      "locator": "src/ledger/20260819-916 Off-Diagonal Maximal Flags Require a Rees Direction.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-string-off-diagonal-flag-order-dependent",
+      "kind": "claim",
+      "title": "The off-diagonal six-point maximal flag has no ordinary order-independent specialization",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-three-normal.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-string-off-diagonal-flag-orders",
+      "kind": "test",
+      "title": "Exact six-route off-diagonal maximal-flag specialization test",
+      "version": "3",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_three_normal.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-string-off-diagonal-flag-order-dependent",
+      "target_id": "source-marici-ledger-916",
+      "relation_id": "rel:derived_from-5aa2484eba48d2eb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-string-off-diagonal-flag-orders",
+      "target_id": "claim-string-off-diagonal-flag-order-dependent",
+      "relation_id": "rel:tests-f36e13a8b26fe349"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-off-diagonal-flag-orders-20260819",
+      "test_id": "test-string-off-diagonal-flag-orders",
+      "actor": "marici.Benincasa",
+      "outcome": "passed falsifier: all six routes are finite but their nonzero-entry counts are 0,0,6,6,0,6, so ordinary specialization is undefined by order dependence",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-916",
+          "locator": "Entry 916, Exact six-route test",
+          "paraphrase": "Exact Laurent reduction distinguishes finite path dependence from an uncanceled singularity."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "instruction": "Record the exact off-diagonal maximal-flag order-dependence falsifier."
+  },
+  "idempotency_key": "auto-admission-275514d779dfbb8457c859e1",
+  "occurred_at": "2026-08-19T13:00:28.2393914Z",
+  "certifies_truth": false,
+  "event_hash": "a9fd5bc9621ae7001bf9c823da5a9159fea4c0e2c3aa3cac0ef4506b47dcedfc"
+}

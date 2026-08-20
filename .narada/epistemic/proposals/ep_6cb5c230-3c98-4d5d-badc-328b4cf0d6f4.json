@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6cb5c230-3c98-4d5d-badc-328b4cf0d6f4",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research_continuation",
+    "description": "Record verified Entry 999 labelled hexagon incidence census"
+  },
+  "idempotency_key": "marici-benincasa-entry-999-recombination-hexagon-incidence-admit",
+  "expected_ledger_head": "ace8b1d634356097b90b6ee722d2cb95237046a67f00a714bf0b59194975f298",
+  "created_at": "2026-08-19T17:04:09.4178179Z",
+  "content_fingerprint": "222c59e02b50155fdcf55328de0f2e35b5b7170351fbba4a48234b73ec26b96a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-999",
+      "kind": "source",
+      "title": "Entry 999 — Only the Minus Recombination Is Incident to the Chamber Hexagon",
+      "version": "20260819-999",
+      "locator": "src/ledger/20260819-999 Only the Minus Recombination Is Incident to the Chamber Hexagon.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-999-incidence",
+      "kind": "claim",
+      "title": "The frozen chamber hexagon realizes zero plus and one minus recombination vertices"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-999-incidence",
+      "kind": "test",
+      "title": "Six-point labelled recombination incidence census"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-999-incidence",
+      "target_id": "marici-source-entry-999",
+      "relation_id": "rel:derived_from-3abc44babe93701c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-999-incidence",
+      "target_id": "marici-claim-entry-999-incidence",
+      "relation_id": "rel:tests-6fe9785d22ff9c04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici-claim-entry-999-incidence",
+      "target_id": "marici-claim-entry-998-support-gate",
+      "relation_id": "rel:depends_on-706000e8b9c857cc"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-999-test-outcome",
+      "test_id": "marici-test-entry-999-incidence",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: exact adjacency census gives zero ++ vertices and one -- vertex (1,4)",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-999",
+          "locator": "research/benincasa/string-six-point-recombination-hexagon-incidence.json",
+          "paraphrase": "Rust checker reconstructs adjacency from the frozen occurrence cycle and wall blocks."
+        }
+      ]
+    }
+  ],
+  "digest": "bcb37845977fbde4cfa38fc09ad25731e93fbc6ad958df484e0520ff83c0c1c4"
+}

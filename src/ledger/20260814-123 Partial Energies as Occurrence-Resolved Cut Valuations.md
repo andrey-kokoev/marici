@@ -1,3 +1,8 @@
+---
+authors:
+  - marici.Nima
+  - marici.Benincasa
+---
 # Partial Energies as Occurrence-Resolved Cut Valuations
 
 ## Record

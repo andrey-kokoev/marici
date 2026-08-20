@@ -1,0 +1,61 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0d4e0b26-d012-4a00-83c7-cf727d1e8817",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue cosmology descent and record the exact exceptional overlap homotopy"
+  },
+  "idempotency_key": "auto-proposal-34035ec2e64222597b0a287d",
+  "expected_ledger_head": "6be9a3f13b1ac601cf1256144cd4c65f404eeb852a74698ca4af164b4feaa17f",
+  "created_at": "2026-08-20T11:22:16.4145171Z",
+  "content_fingerprint": "34035ec2e64222597b0a287d8bc01b2f21dfc6cecda10c27be7611baf69bc145",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Exceptional overlap homotopy result",
+      "version": "1",
+      "locator": "research/benincasa/results/rank12-u0-v2-exceptional-overlap-homotopy.json",
+      "entity_id": "source:c54854e8e94ef9025599"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The pilot exceptional chart square commutes by a degree-four exact homotopy",
+      "status": "supported",
+      "entity_id": "claim:a4cbcfd41b8051640f21"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Degree-filtered exact-submodule membership of the mixed chart defect",
+      "status": "passed",
+      "body": "The transported mixed derivative defect is nonzero before reduction, absent from exact degrees 0 through 3, and belongs to the degree-4 exact image. A 24-term representative has zero residual; the solution has 72 gauge parameters.",
+      "entity_id": "test:e97136c10f10f78f0a22"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:a4cbcfd41b8051640f21",
+      "target_id": "source:c54854e8e94ef9025599",
+      "relation_id": "rel:derived_from-304bf6a938903d43"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:e97136c10f10f78f0a22",
+      "target_id": "claim:a4cbcfd41b8051640f21",
+      "relation_id": "rel:tests-ebd2562ef4f7221a"
+    }
+  ],
+  "digest": "f3759ffdadc9f6fb0f27c2f623eea433c5fe58f1042d9c3e5593afc355044b14"
+}

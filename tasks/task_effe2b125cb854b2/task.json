@@ -1,0 +1,73 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_effe2b125cb854b2",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "accepted_for_execution",
+  "objective": "In C:\\Users\\andrey\\src\\cintamani, run the repository's explicitly declared `pnpm run site:ship` command for the live Cloudflare deployment, including the remote D1 migration. Do not edit source files, package manifests, lockfiles, or git state; report the complete command outcome, Wrangler deployment URL, deployed version, and migration result.",
+  "request_fingerprint": "f590ddd5df9f093c1c07fe207c9207ff29475f6ab8a9d577a2c2d791e9fe6eb2",
+  "created_at": "2026-08-14T23:54:13.6085079Z",
+  "updated_at": "2026-08-14T23:54:13.6085079Z",
+  "cancelled_at": null,
+  "idempotency_key": "ship-cintamani-2026-08-14",
+  "constraints": {
+    "authority": "command",
+    "cwd": "C:\\Users\\andrey\\src\\cintamani",
+    "cognition": "low",
+    "allowed_roots": [
+      "C:\\Users\\andrey\\src\\cintamani"
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "live Cloudflare deployment completed",
+      "remote D1 migration completed",
+      "deployment URL or exact failure reported"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "pending",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "pending",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": []
+  },
+  "summary": null
+}

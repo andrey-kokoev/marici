@@ -3,7 +3,10 @@ use std::env;
 use std::fs::File;
 use std::io::{self, Read, Write};
 
+#[cfg(not(feature = "triangle-wall-replication-prime"))]
 const P: u32 = 32003;
+#[cfg(feature = "triangle-wall-replication-prime")]
+const P: u32 = 31991;
 type Row = BTreeMap<usize, u32>;
 type Provenance = BTreeMap<usize, u32>;
 

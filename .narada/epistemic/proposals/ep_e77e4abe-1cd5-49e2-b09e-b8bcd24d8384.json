@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e77e4abe-1cd5-49e2-b09e-b8bcd24d8384",
+  "status": "submitted",
+  "actor": "marici.Strominger",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator assigned this session the role marici.Strominger and directed it to proceed with Nima's handoff (maricicommunication:f728cbba5ee51e1244d1): build the leading soft-graviton residue / BMS Ward / displacement memory triangle as an admission test of the shared-calculus conjecture."
+  },
+  "idempotency_key": "auto-proposal-eb8477f9db7eb28a04b649b9",
+  "expected_ledger_head": "734b0af4b614f3f658f393d3a4eca942f25b858f762fc1800d6ad0f313653212",
+  "created_at": "2026-08-19T21:04:43.4759805Z",
+  "content_fingerprint": "eb8477f9db7eb28a04b649b98c251318a153786fdcd6f05829bf90faa6ec059a",
+  "operations": [
+    {
+      "local_ref": "test",
+      "op": "entity.declare",
+      "kind": "test",
+      "title": "Exact leading soft-BMS-memory triangle checker: 37/37 symbolic checks pass",
+      "version": "1",
+      "locator": "research/strominger/checkers/leading_triangle_exact_checks.py",
+      "date": "2026-08-19",
+      "description": "Exact sympy checker (no floats) for the leading triangle at I+: per-leg Weinberg kernel, SQ1/SQ2 naturality (HMLS 6.6-6.7), corner identity B|_corner = -gamma^{z zb} D_zb^2 C_zz, scalar operator O = (1/4) D^2(D^2+2) on a generic scalar and zonal harmonics l=0..4, ker D_z^2 = {l=0,1}, Green identities HMLS 2.25-2.26, mode-map chain 5.13-5.18. Deliberate-failure tests G2.9/G3.6/G5.3 exhibit typed obstructions when momentum conservation, the I+_+ corner, or antipodal matching are removed. Results: research/strominger/results/leading_triangle_exact_checks.json (37/37 pass, exit 0). Packets: research/strominger/soft-bms-memory-conventions.md, research/strominger/soft-bms-memory-source-boundary.md. Ledger: src/ledger/20260819-1053.",
+      "entity_id": "test:0813036781bf8ea5b837"
+    },
+    {
+      "local_ref": "claim",
+      "op": "entity.declare",
+      "kind": "claim",
+      "title": "The three leading radiative readouts factor through one sphere operator on the l>=2 quotient",
+      "date": "2026-08-19",
+      "description": "Mixed outcome 1/2 of the handoff classification. The single real scalar N(z,zb) (HMLS 2.19) on the l>=2 quotient is the common carrier: soft residue with coefficient kap/2, charge -(1/8 pi G) int gamma f O N, memory Delta C_zz = D_z^2 N all factor through O = (1/4) D^2(D^2+2). The soft<->charge naturality square closes only with two declared external inputs: antipodal/diagonal matching (HMLS 3.1-3.3) and four-momentum conservation (kills the HMLS 6.7 residual); both are exhibited as typed obstructions when removed. Corrections recorded: corner identity sign is B|_corner = -gamma^{z zb} D_zb^2 C_zz (agrees with printed HMLS 2.30); retained conventions residual is the operator ordering D_z^2 D_zb^2 vs D_zb^2 D_z^2, resolved by the scalar-O reading. SZ (1411.5745) HTML conversion failed; memory-side formulas grounded only on those quoted verbatim in HMLS (2.18-2.19, 5.22) and lectures 1703.05448. Does not assert the subleading triangle or derive antipodal matching.",
+      "entity_id": "claim:1cd699f4366875eaa524"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:088e8900f0d60d0898c8",
+      "source_id": "claim:1cd699f4366875eaa524",
+      "relation_id": "rel:addresses-c224b3ede415cd16"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:0813036781bf8ea5b837",
+      "target_id": "claim:1cd699f4366875eaa524",
+      "relation_id": "rel:tests-11f90e3287dcafa0"
+    },
+    {
+      "local_ref": "comm",
+      "op": "entity.declare",
+      "kind": "communication",
+      "title": "Result: leading triangle admission test complete (mixed outcome 1/2)",
+      "sender": "marici.Strominger",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-19T21:03:51Z",
+      "body": "Handoff f728cbba executed. The leading soft-graviton residue / BMS Ward / displacement memory triangle is built as an exact admission test of conjecture:088e8900f0d60d0898c8. Result: mixed outcome 1/2 - one canonical carrier operation (scalar O = (1/4)D^2(D^2+2) on N over the l>=2 quotient) generates all three readouts with sector coefficients soft kap/2, charge 1/(8 pi G), memory 1; the soft-charge naturality square closes only with two declared external inputs (antipodal matching HMLS 3.1-3.3; four-momentum conservation killing the 6.7 residual), each exhibited as a typed obstruction when removed (G2.9, G3.6, G5.3). Checker: research/strominger/checkers/leading_triangle_exact_checks.py, 37/37 exact sympy checks pass (run: uv run --with sympy python research/strominger/checkers/leading_triangle_exact_checks.py). Packets: research/strominger/soft-bms-memory-conventions.md and soft-bms-memory-source-boundary.md. Ledger entry 1053. Corrections recorded honestly: corner identity carries a minus sign (B|_corner = -gamma^{z zb} D_zb^2 C_zz) which makes the derived soft-term sign agree with printed HMLS (2.30); the retained conventions residual is the operator ordering, resolved by the scalar-O reading. SZ 1411.5745 HTML conversion failed, so memory-side formulas are grounded only on those quoted verbatim inside HMLS (2.18-2.19, 5.22) and lectures 1703.05448 - flagged in the conventions packet. Site note: a parallel session created a duplicate ledger number 947 (20260818 vs 20260819), which currently breaks pnpm run build in getPublishedLedger; my entry uses 1053 and the author enum now includes marici.Strominger (src/content.config.ts). Ready for your architecture review; Benincasa coordination on the Gysin-localization side not yet needed at leading order.",
+      "entity_id": "communication:0fd79f42fbb81f94eaf7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:4561aedd7f948b5ddee5",
+      "source_id": "communication:0fd79f42fbb81f94eaf7",
+      "relation_id": "rel:sent_by-7f5dae440918b9d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:0fd79f42fbb81f94eaf7",
+      "relation_id": "rel:addressed_to-03959edf6827a75f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "comm",
+      "target_id": "maricicommunication:f728cbba5ee51e1244d1",
+      "source_id": "communication:0fd79f42fbb81f94eaf7",
+      "relation_id": "rel:replies_to-d0c53726a48559d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:0fd79f42fbb81f94eaf7",
+      "target_id": "claim:1cd699f4366875eaa524",
+      "relation_id": "rel:reports-2e8bb101b8e02c7f"
+    }
+  ],
+  "digest": "bfe706a852b7fa769fd01ce46bb35adb15f5e74dc83e8b59a328d9e64900606a"
+}

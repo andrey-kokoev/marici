@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c59423e5-2d67-40b0-bd33-b69947a15466",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "instruction": "Record the verified six-point string mixed-corner occurrence-covariance theorem."
+  },
+  "idempotency_key": "marici-benincasa-entry-909-occurrence-covariance-event",
+  "expected_ledger_head": "78dd2ffc6477e30ee421369d8829c4793e0b0260ff31533574921fc4fe04251d",
+  "created_at": "2026-08-19T05:24:20.4446258Z",
+  "content_fingerprint": "5d549931ee6777ec483534a2fb5608c9509577283f6b836c584a0e8023c160a4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src909",
+      "kind": "source",
+      "title": "Entry 909 — The Mixed-Corner Exceptional Line Is Cyclically Occurrence-Covariant",
+      "version": "20260819-909",
+      "locator": "src/ledger/20260819-909 The Mixed-Corner Exceptional Line Is Cyclically Occurrence-Covariant.md",
+      "entity_id": "source:6a65826e0cf33c8c52c8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test909",
+      "kind": "test",
+      "title": "Six-point mixed-corner cyclic occurrence covariance test",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_mixed_corner_occurrence.rs",
+      "entity_id": "test:680de59f569c6ccaf201"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim909",
+      "kind": "claim",
+      "title": "The rank-one mixed-corner exceptional map has signed cyclic composition +1",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-mixed-corner-occurrence.json",
+      "entity_id": "claim:479eb30f5cdba8e36b34"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim909",
+      "target_ref": "src909",
+      "source_id": "claim:479eb30f5cdba8e36b34",
+      "target_id": "source:6a65826e0cf33c8c52c8",
+      "relation_id": "rel:derived_from-72d371a18d0c3926"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test909",
+      "target_ref": "claim909",
+      "source_id": "test:680de59f569c6ccaf201",
+      "target_id": "claim:479eb30f5cdba8e36b34",
+      "relation_id": "rel:tests-893233d16fe2ff0a"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-six-point-mixed-corner-occurrence-20260819",
+      "test_id": "test909",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: sparse and dense permutations are both (J,J,I), their signs cancel at every step, and cyclic composition is +1",
+      "evidence": [
+        {
+          "source_id": "src909",
+          "locator": "Entry 909, Exact occurrence permutations and Result",
+          "paraphrase": "The durable Rust checker transports both matrix variances and verifies identity cycles and positive signed composition."
+        }
+      ]
+    }
+  ],
+  "digest": "0d41d24ce8101ceaca55e3efa010e64c3ce4e9fba4210b9c3b0e03538050d558"
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 492,
+  "event_id": "ev-000000000492-7fc9bbf3-dc07-4980-bf16-675149b5d81c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ecd9ed52aa29ffee9bda8f1f4fa386f3c031bb001e475218095930aeda1df64c",
+  "proposal_id": "ep_96841f8d-87b5-45d7-b903-aa8a3b42109e",
+  "proposal_digest": "94fd8716c33e3d4f39bd7ba7eb3090c66001aea1fb7fba0ab65d216b5a79c81e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-875",
+      "local_ref": "src875",
+      "kind": "source",
+      "title": "Ledger Entry 875",
+      "version": "fee5502",
+      "locator": "src/ledger/20260818-875 The Two Deep Quartic Points Have Different Exceptional Geometry.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-875",
+      "local_ref": "claim875",
+      "kind": "claim",
+      "title": "The two deep quartic points have different exceptional geometry"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-875",
+      "local_ref": "test875",
+      "kind": "test",
+      "title": "Deep quartic tangent-cone and connection-carrier census",
+      "locator": "research/nima/check_deep_quartic_local_carriers.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim875",
+      "target_ref": "src875",
+      "source_id": "marici-claim-entry-875",
+      "target_id": "marici-source-entry-875",
+      "relation_id": "rel:derived_from-068b46c11e8ab0e7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test875",
+      "target_ref": "claim875",
+      "source_id": "marici-test-entry-875",
+      "target_id": "marici-claim-entry-875",
+      "relation_id": "rel:tests-20ff5f2bf999aa2f"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-875",
+      "subject_id": "marici-claim-entry-875",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "Exact tangent-cone calculation shows a doubled existing direction at (0,2), but two unmarked quadratic exceptional directions at (2,2).",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-875",
+          "locator": "research/nima/deep-quartic-local-carriers.json",
+          "paraphrase": "The blowup equations are (t+1)^2 at (0,2) and t^2-6t+1 at (2,2), with the latter disjoint from existing directions 0,1,infinity."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-875",
+      "test_id": "marici-test-entry-875",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-875",
+          "locator": "research/nima/deep-quartic-local-carriers.json",
+          "paraphrase": "Exact SageMath denominator-factor and tangent-cone audit passed."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-52093f6ceabe832dcbdfa853",
+  "occurred_at": "2026-08-19T03:33:54.0478709Z",
+  "certifies_truth": false,
+  "event_hash": "1851fcfbc26154e8276386a6fa771d0abb6e848e15dde98cc741f35b38193715"
+}

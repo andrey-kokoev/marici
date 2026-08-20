@@ -1,0 +1,54 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_efb588b5-6e69-4710-807c-b7feca1ec611",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator corrected duplicate ledger numbering: Benincasa entry 462 becomes 463."
+  },
+  "idempotency_key": "auto-proposal-3b0b6eafd4c7e5fbb061f19e",
+  "expected_ledger_head": "75ddc9ef06de3b9b81327181dcbf9abadeb81abe9ddba5f41bee6de66eb8c2ab",
+  "created_at": "2026-08-18T01:09:06.9247988Z",
+  "content_fingerprint": "3b0b6eafd4c7e5fbb061f19ef411eabe205a96082f1367ddf77eb38d508b6703",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-463",
+      "kind": "source",
+      "title": "Ledger Entry 463: The Generic Cartier Pushforward Has Involutive Soft Monodromy",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-463 The Generic Cartier Pushforward Has Involutive Soft Monodromy.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "source:marici-ledger-463",
+      "target_id": "source:marici-ledger-462",
+      "relation_id": "rel:supersedes-a98cc2f4ec4382a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:generic-cartier-involutive-soft-nearby",
+      "target_id": "source:marici-ledger-463",
+      "relation_id": "rel:derived_from-ac074b23f26618d2"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment-ledger-462-renumbered-463",
+      "subject_id": "source:marici-ledger-462",
+      "judgment": "superseded locator due duplicate ledger number",
+      "actor": "marici.Benincasa",
+      "reason": "Nima's Entry 462 is canonical; the Benincasa entry was renumbered to 463 without changing its scientific content.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-463",
+          "locator": "src/ledger/20260818-463 The Generic Cartier Pushforward Has Involutive Soft Monodromy.md",
+          "paraphrase": "The frontmatter and filename now carry ledger id 463."
+        }
+      ]
+    }
+  ],
+  "digest": "f64741a54c57e4cb10627388a84c7bed6b7cbe6b1f51150b518c0e56b2d9e82c"
+}

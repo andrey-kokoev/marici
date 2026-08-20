@@ -1,0 +1,97 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_28ceaa22c2c9fae7",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read and verify only research/voevodsky/check_d03_affine_node_endpoint_descent_no_go.rs. Run rustfmt --edition 2021 --check, compile with rustc --edition=2021 -D warnings -O to a temporary executable under the repository's approved temp/runtime area, execute it, parse its stdout as JSON, compute SHA-256 of the source, and run git diff --check scoped as safely supported. Do not edit source or ledger. Report exact commands/outcomes and clean temporary executable.",
+  "request_fingerprint": "3a1ae89af5e3afea132ed273fb5f816123f61ca4a316599f6d50893a40b9fefb",
+  "created_at": "2026-08-15T21:27:13.4163575Z",
+  "updated_at": "2026-08-15T21:32:14.5833495Z",
+  "cancelled_at": null,
+  "idempotency_key": "d03-affine-node-no-go-verify-v1",
+  "constraints": {
+    "authority": "command",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "workspace-write",
+    "cognition": "low",
+    "wait_for_completion": true,
+    "wait_timeout_ms": 180000,
+    "max_run_ms": 300000,
+    "max_retries": 0,
+    "exit_interview": true,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\voevodsky\\check_d03_affine_node_endpoint_descent_no_go.rs",
+        "access": "read",
+        "label": "checker source"
+      }
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "rustfmt check passes",
+      "rustc -D warnings passes",
+      "runtime exits zero",
+      "stdout parses as JSON",
+      "source SHA-256 reported",
+      "no source edits"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-6e2e40d053f74a66b367dd1a69416cbd"
+        ],
+        "current_run_id": "run-6e2e40d053f74a66b367dd1a69416cbd",
+        "started_at": "2026-08-15T21:27:13.4540455Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-6e2e40d053f74a66b367dd1a69416cbd",
+        "status": "running"
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

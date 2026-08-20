@@ -1,0 +1,182 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 76,
+  "event_id": "ev-000000000076-cab3a56d-67a9-4ec8-90b1-ff7132e59282",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "68d1930c9fbc7f18b3129f2d5181955917f9a2c68a766e7380cd3a4274a9c9f0",
+  "proposal_id": "ep_75221291-2f4f-40c4-9833-0800d3e1edd9",
+  "proposal_digest": "8e993fce0f3fb92abc8ffebafd40729db0e11cc9be3a74c9a357e64edfeb0b2e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-152",
+      "local_ref": "s152",
+      "kind": "source",
+      "title": "Ledger entry 152 — Deutsch-Popperian Algebraic-Kernel Flat-Lift Conjecture",
+      "version": "2026-08-15",
+      "locator": "src/ledger/20260815-152 Deutsch-Popperian Algebraic-Kernel Flat-Lift Conjecture.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-155",
+      "local_ref": "s155",
+      "kind": "source",
+      "title": "Ledger entry 155 — Absolute Q-Smoothness Falsifies the M2.25 Sign Line",
+      "version": "2026-08-15",
+      "locator": "src/ledger/20260815-155 Absolute Q-Smoothness Falsifies the M2.25 Sign Line.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-check-q-smoothness-legendre",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact generic-Q smoothness and Legendre-normalization certificate",
+      "version": "sha256:a04cc6b13316b3c9ef0224b1b764a28fd4983082f703a24a72d9fff75148017b",
+      "locator": "research/benincasa/check_q_smoothness_and_legendre_normalization.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "local_ref": "m225",
+      "kind": "conjecture",
+      "title": "The absolute algebraic Gysin kernel contains the Q-sign line K_{sqrt(-Q)}(-1)",
+      "status": "falsified",
+      "summary": "M2.25's risk-bearing absolute placement of the source algebraic quartic."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-m225-generic-q-smoothness",
+      "local_ref": "smooth_test",
+      "kind": "test",
+      "title": "Generic-Q smoothness and rational-gauge monodromy falsifier for M2.25"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:marici-m225-absolute-sign-monodromy-mismatch",
+      "local_ref": "mismatch",
+      "kind": "criticism",
+      "title": "Smooth absolute extension has trivial Q-monodromy and cannot contain the Q sign character by rational gauge"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-three-site-reciprocal-legendre-kummer-normalization",
+      "local_ref": "norm",
+      "kind": "claim",
+      "title": "Reciprocating the three-site Legendre modulus requires swapping the Kummer twist from B^{-1/2} to A^{-1/2}"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "m225",
+      "target_ref": "s152",
+      "source_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "target_id": "source:marici-ledger-152",
+      "relation_id": "rel:derived_from-2ee90e79abcf1552"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "smooth_test",
+      "target_ref": "m225",
+      "source_id": "test:marici-m225-generic-q-smoothness",
+      "target_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "relation_id": "rel:tests-9fa5b03cc182f302"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "smooth_test",
+      "target_ref": "checker",
+      "source_id": "test:marici-m225-generic-q-smoothness",
+      "target_id": "source:marici-check-q-smoothness-legendre",
+      "relation_id": "rel:derived_from-ec082d13ac55ae9a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "mismatch",
+      "target_ref": "m225",
+      "source_id": "criticism:marici-m225-absolute-sign-monodromy-mismatch",
+      "target_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "relation_id": "rel:criticizes-f519add2a4452f3c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "mismatch",
+      "target_ref": "s155",
+      "source_id": "criticism:marici-m225-absolute-sign-monodromy-mismatch",
+      "target_id": "source:marici-ledger-155",
+      "relation_id": "rel:derived_from-453fc797e968e50b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "norm",
+      "target_ref": "s155",
+      "source_id": "claim:marici-three-site-reciprocal-legendre-kummer-normalization",
+      "target_id": "source:marici-ledger-155",
+      "relation_id": "rel:derived_from-6718356ad273ca98"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "norm",
+      "target_ref": "checker",
+      "source_id": "claim:marici-three-site-reciprocal-legendre-kummer-normalization",
+      "target_id": "source:marici-check-q-smoothness-legendre",
+      "relation_id": "rel:derived_from-1e67419aa587b96b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:corrects",
+      "source_ref": "norm",
+      "target_id": "source:2a550dec07d3a9462895",
+      "source_id": "claim:marici-three-site-reciprocal-legendre-kummer-normalization",
+      "relation_id": "rel:maricicorrects-c01191b08dcf9d1c"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-m225-generic-q-smoothness-falsifies-sign-line",
+      "test_id": "test:marici-m225-generic-q-smoothness",
+      "actor": "marici.Benincasa",
+      "outcome": "falsified",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-155",
+          "locator": "Claim; Evidence",
+          "paraphrase": "An exact transverse slice meets Q=0 where the compactified absolute branch pair is smooth, hence absolute local monodromy is trivial."
+        },
+        {
+          "source_id": "source:marici-check-q-smoothness-legendre",
+          "locator": "exact assertions and slice certificate",
+          "paraphrase": "The determinant factors, simple Q root, and nonvanishing absolute discriminant factors are checked exactly."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:marici-m225-absolute-sign-line-falsified",
+      "subject_id": "conjecture:marici-m225-absolute-q-sign-line",
+      "judgment": "falsified",
+      "actor": "marici.Benincasa",
+      "reason": "The proposed sign character has half-integral residue and monodromy -1, while the frozen absolute family extends smoothly with trivial monodromy; rational gauges shift residues only by integers.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-155",
+          "locator": "Claim; Consequence",
+          "paraphrase": "The absolute sign-line placement is rejected; marked-relative or extension support remains a smaller open alternative."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "user_directive",
+    "summary": "User directed the Marici cosmology attack, ledger recording, and sparse epistemic-graph update."
+  },
+  "idempotency_key": "auto-admission-a190a828c06889d0589d95b3",
+  "occurred_at": "2026-08-15T17:27:25.7977101Z",
+  "certifies_truth": false,
+  "event_hash": "15d38ede386d93a757554ef8b1fb0eb54d3c9821cf512d6447f0a36a3f1ae43b"
+}

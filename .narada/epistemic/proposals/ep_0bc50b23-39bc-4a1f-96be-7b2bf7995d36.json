@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0bc50b23-39bc-4a1f-96be-7b2bf7995d36",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "research_ledger_author",
+    "summary": "Author of ledger 180 and exact frozen-source comparison."
+  },
+  "idempotency_key": "auto-proposal-a6b8721e1348f4f55e0946aa",
+  "expected_ledger_head": "f665d60589f8f04c29123ada5ef4005c3b9c04b5e50fac4dffca4045bbb10734",
+  "created_at": "2026-08-15T20:46:25.9849228Z",
+  "content_fingerprint": "a6b8721e1348f4f55e0946aa4048d81565b9435f94531a27bc9a6f743a955a17",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger180",
+      "kind": "source",
+      "title": "Ledger 180 boundary-value Leray uniqueness",
+      "version": "sha256:af77a2c944eefa90ac62be3490bbd8dfdb3068c14f5bf57c50ff5db6c483873b",
+      "locator": "src/ledger/20260815-180 Boundary-Value Leray Uniqueness and the Canonical Physical Residue Germ.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-ledger180-local-lift-uniqueness",
+      "kind": "test",
+      "title": "Published boundary-value local Leray-lift uniqueness test",
+      "summary": "Tests whether the negative-imaginary tube and oriented positive Cayley-Menger chain admit two source-admissible local residue germs."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "kind": "claim",
+      "title": "The published data determine a canonical local q_G12 residue germ",
+      "summary": "Convex negative-imaginary tube, positive CM sheet, dq=dy12, induced da wedge db orientation and unit multiplicity fix the local germ; generic Q variation remains open."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "target_id": "source:marici-ledger180",
+      "relation_id": "rel:derived_from-7e6dcc17b2b94e89"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-ledger180-local-lift-uniqueness",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:tests-fcdb8688965c5c81"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:addresses-7d5dd0fcb72ade9d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:marici-ledger180-canonical-local-residue-germ",
+      "target_id": "claim:marici-ledger178-q-cycle-still-underdetermined",
+      "relation_id": "rel:supersedes-995205ab3302d8c9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-ledger180-local-lift-uniqueness",
+      "test_id": "test:marici-ledger180-local-lift-uniqueness",
+      "actor": "marici.Benincasa",
+      "outcome": "survived locally; canonical physical residue germ fixed, generic Q variation uncomputed",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger180",
+          "locator": "Result and Scope boundary",
+          "paraphrase": "The convex source tube and transverse unit-Jacobian boundary value uniquely fix sheet, orientation, and multiplicity; Q-loop transport remains the next falsifier."
+        }
+      ]
+    }
+  ],
+  "digest": "572f985442c0299ad6da631fa03343f2c2ff7a85072ced62b00e455ae10ca9f8"
+}

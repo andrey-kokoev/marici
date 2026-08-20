@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_5bf812b9-5723-4db5-bdae-cdc3cbe716c7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue cosmology research and update epistemic graph with new ledger entries."
+  },
+  "idempotency_key": "marici-entry-525-conic-limit-line-v1",
+  "expected_ledger_head": "d736d686ac1ff638e33cf6f13c642127648a9552620ed8401cac9f636d629320",
+  "created_at": "2026-08-18T04:07:00.114183Z",
+  "content_fingerprint": "e47de2a132e5cf4a67cedf286fa40ce1e3f9c29a65c429c5b46b1d4a55df378e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-525",
+      "kind": "source",
+      "title": "Ledger Entry 525 — The Fitting-Conic Enhancement Is a Canonical Rank-One Limit Quotient",
+      "version": "20260818-525",
+      "locator": "src/ledger/20260818-525 The Fitting-Conic Enhancement Is a Canonical Rank-One Limit Quotient.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:fitting-conic-canonical-limit-quotient",
+      "kind": "claim",
+      "title": "The fitting-conic enhancement is a canonical rank-one quotient of the regular transverse generic-plane limit",
+      "version": "v1",
+      "locator": "research/benincasa/gauge-fitting-conic-limit-line.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:fitting-conic-transverse-limit",
+      "kind": "test",
+      "title": "Finite-field transverse-limit inclusion test for the fitting-conic gauge plane",
+      "version": "v1",
+      "locator": "research/benincasa/gauge-fitting-conic-limit-line.json"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:fitting-conic-canonical-limit-quotient",
+      "target_id": "source:marici-ledger-525",
+      "relation_id": "rel:derived_from-b1d49f5d862104db"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:fitting-conic-transverse-limit",
+      "target_id": "claim:fitting-conic-canonical-limit-quotient",
+      "relation_id": "rel:tests-421d29fcf98a44cf"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:fitting-conic-transverse-limit-pass-v1",
+      "test_id": "test:fitting-conic-transverse-limit",
+      "actor": "marici.Benincasa",
+      "outcome": "passed in 12 finite-field tests: regular rank-two limit embeds in rank-three conic fiber with rank-one quotient pivoted by e6 and supported on e6,e8,e9",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-525",
+          "locator": "research/benincasa/gauge-fitting-conic-limit-line.json",
+          "paraphrase": "Six conic fibers at exact-form degrees 8 and 10 give regular rank-two transverse limits, combined rank three, and quotient rank one."
+        }
+      ]
+    }
+  ],
+  "digest": "aeffbeccea874e0d926952604d5bfcca6b705b3ca15640c947fc0366ca4d3601"
+}

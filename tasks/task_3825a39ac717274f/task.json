@@ -1,0 +1,265 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_3825a39ac717274f",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: inspect src/pages/research/index.astro and src/pages/research/related-programs.astro, then review whether the route hierarchy and non-authoritative labeling are coherent. Return route_count, external_entry_count, review_verdict, and concerns. Make no changes.",
+  "request_fingerprint": "d7b513759b91ea3898094b8aaebd3baa4d7dcbabb7b694b97e275d03754b24b6",
+  "validated_request_ref": "vr_1cfabae0d16f43af83380d76427573d1",
+  "created_at": "2026-08-16T18:00:19.1833472Z",
+  "updated_at": "2026-08-16T18:02:46.6037838Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegation-ergonomics-review-20260816-1",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\index.astro",
+        "access": "read"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\pages\\research\\related-programs.astro",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement_review",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      },
+      {
+        "id": "review",
+        "kind": "review",
+        "milestone_id": "review",
+        "depends_on": [
+          "implement"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "route_count",
+      "external_entry_count",
+      "review_verdict",
+      "concerns"
+    ],
+    "no_writes": true
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-ac934d2871aa4fea98fa9892e9a536e3"
+        ],
+        "current_run_id": "run-ac934d2871aa4fea98fa9892e9a536e3",
+        "started_at": "2026-08-16T18:00:19.2040787Z",
+        "finished_at": "2026-08-16T18:02:19.370946Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent, concerns=[1 items]",
+          "diagnostics_text": "I’ll inspect the two Astro pages and compare their route structure, links, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent",
+            "concerns": [
+              "Visible mojibake appears in “Research · External / non-authoritative” and “Deutsch–Popperian”; verify file encoding for readability."
+            ]
+          },
+          "truncated": false
+        }
+      },
+      "review": {
+        "step_id": "review",
+        "kind": "review",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-7ca096a203594ffa916762c19a254f86"
+        ],
+        "current_run_id": "run-7ca096a203594ffa916762c19a254f86",
+        "started_at": "2026-08-16T18:02:19.392863Z",
+        "finished_at": "2026-08-16T18:02:46.6024674Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent_with_minor_concerns, concerns=[3 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files and compare their hierarchy, entry points, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent_with_minor_concerns",
+            "concerns": [
+              "The route hierarchy is coherent: /research/ links to /research/related-programs/.",
+              "Non-authoritative labeling is clear at page level, but individual program cards say only \"External program\" and do not repeat \"non-authoritative\".",
+              "Visible mojibake appears in \"Research Â·\" and \"Deutschâ€“Popperian\", indicating an encoding issue."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-ac934d2871aa4fea98fa9892e9a536e3",
+        "status": "completed",
+        "finished_at": "2026-08-16T18:02:19.3709366Z",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent, concerns=[1 items]",
+          "diagnostics_text": "I’ll inspect the two Astro pages and compare their route structure, links, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent",
+            "concerns": [
+              "Visible mojibake appears in “Research · External / non-authoritative” and “Deutsch–Popperian”; verify file encoding for readability."
+            ]
+          },
+          "truncated": false
+        }
+      },
+      {
+        "step_id": "review",
+        "step_kind": "review",
+        "run_id": "run-7ca096a203594ffa916762c19a254f86",
+        "status": "completed",
+        "finished_at": "2026-08-16T18:02:46.6024496Z",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent_with_minor_concerns, concerns=[3 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files and compare their hierarchy, entry points, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent_with_minor_concerns",
+            "concerns": [
+              "The route hierarchy is coherent: /research/ links to /research/related-programs/.",
+              "Non-authoritative labeling is clear at page level, but individual program cards say only \"External program\" and do not repeat \"non-authoritative\".",
+              "Visible mojibake appears in \"Research Â·\" and \"Deutschâ€“Popperian\", indicating an encoding issue."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-ac934d2871aa4fea98fa9892e9a536e3",
+        "status": "completed",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent, concerns=[1 items]",
+          "diagnostics_text": "I’ll inspect the two Astro pages and compare their route structure, links, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent",
+            "concerns": [
+              "Visible mojibake appears in “Research · External / non-authoritative” and “Deutsch–Popperian”; verify file encoding for readability."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "review",
+        "run_id": "run-7ca096a203594ffa916762c19a254f86",
+        "status": "completed",
+        "output": {
+          "summary_text": "route_count=2, external_entry_count=2, review_verdict=coherent_with_minor_concerns, concerns=[3 items]",
+          "diagnostics_text": "I’ll inspect the two Astro route files and compare their hierarchy, entry points, and authority labels without modifying anything.",
+          "structured_output": {
+            "route_count": 2,
+            "external_entry_count": 2,
+            "review_verdict": "coherent_with_minor_concerns",
+            "concerns": [
+              "The route hierarchy is coherent: /research/ links to /research/related-programs/.",
+              "Non-authoritative labeling is clear at page level, but individual program cards say only \"External program\" and do not repeat \"non-authoritative\".",
+              "Visible mojibake appears in \"Research Â·\" and \"Deutschâ€“Popperian\", indicating an encoding issue."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "route_count",
+          "external_entry_count",
+          "review_verdict",
+          "concerns"
+        ],
+        "returned": [
+          "route_count",
+          "external_entry_count",
+          "review_verdict",
+          "concerns"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "route_count=2, external_entry_count=2, review_verdict=coherent, concerns=[1 items] | route_count=2, external_entry_count=2, review_verdict=coherent_with_minor_concerns, concerns=[3 items]"
+}

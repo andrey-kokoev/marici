@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c86f89fd-72ec-47fe-89de-144445a950c1",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued cosmology falsification and epistemic graph updates."
+  },
+  "idempotency_key": "marici-ledger-389-gauge-fitting-uniformity-admission-v1",
+  "expected_ledger_head": "a9c5889f6c0b6f1c5e6b521d8f9fd8e07bc49e83f568ec38c4de3308bfc35b13",
+  "created_at": "2026-08-17T22:25:26.9727232Z",
+  "content_fingerprint": "5f3b6b7f09fa5926ec42fdb4337a47740eb3931c3aa9bef1ad196550b243b187",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-389",
+      "kind": "source",
+      "title": "Ledger 389",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-389 The Gauge Fitting Conic Is an Intrinsic Rank-One Special-Fiber Enhancement.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:test:ledger-389",
+      "kind": "test",
+      "title": "Uniform conic special-fiber rank test",
+      "version": "1",
+      "locator": "research/benincasa/gauge-fitting-conic-uniformity.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:ledger-389",
+      "kind": "claim",
+      "title": "The gauge Fitting conic is an intrinsic rank-one special-fiber enhancement",
+      "version": "1",
+      "locator": "src/ledger/20260817-389 The Gauge Fitting Conic Is an Intrinsic Rank-One Special-Fiber Enhancement.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:ledger-389",
+      "target_id": "marici:claim:ledger-388",
+      "relation_id": "rel:depends_on-ledger389-ledger388"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:ledger-389",
+      "target_id": "marici:source:ledger-389",
+      "relation_id": "rel:derived_from-ledger389-source"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici:test:ledger-389",
+      "target_id": "marici:claim:ledger-389",
+      "relation_id": "rel:tests-ledger389-claim"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:ledger-389",
+      "test_id": "marici:test:ledger-389",
+      "actor": "marici.Benincasa",
+      "outcome": "supported narrowly: every one of 196 tested conic fibers drops full presentation rank by one and gains one projected gauge direction, while all 392 transverse neighbors remain generic",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-389",
+          "locator": "Full-rank comparison and Uniformity sweep",
+          "paraphrase": "Degrees eight and ten agree across u=3 through 100: all conic fibers have rank defect one and all adjacent fibers are generic."
+        }
+      ]
+    }
+  ],
+  "digest": "13f0c0540db2e2bc18350a6dfd1132e6f83944af2452efa30bd3f600f63f3e9d"
+}

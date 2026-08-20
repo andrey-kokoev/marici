@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7dc45edf-a9d4-40c2-9116-7cb9b2b25962",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue and record the complete six-point string block-atlas covariance test."
+  },
+  "idempotency_key": "auto-proposal-545749b24a55d8725a1c9f70",
+  "expected_ledger_head": "84acf123f5ac816466215182ad6e94bb029fe6614f81f1bd52a463141e444819",
+  "created_at": "2026-08-19T04:37:46.5481555Z",
+  "content_fingerprint": "545749b24a55d8725a1c9f70943e5a37ac4d3137389f1e265324d1ae7c2d2e0d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger-903",
+      "kind": "source",
+      "title": "Entry 903 — The Complete Six-Point KLT Block Atlas Glues by Labelled Relabelling",
+      "version": "20260818-903",
+      "locator": "src/ledger/20260818-903 The Complete Six-Point KLT Block Atlas Glues by Labelled Relabelling.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-complete-six-point-klt-block-atlas-labelled-gluing",
+      "kind": "claim",
+      "title": "The complete six-point KLT block atlas glues from one Pochhammer block by labelled relabelling and a forced basis reversal"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-six-point-block-atlas",
+      "kind": "test",
+      "title": "Complete six-point block-atlas covariance and inverse audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-complete-six-point-klt-block-atlas-labelled-gluing",
+      "target_id": "source:marici-ledger-903",
+      "relation_id": "rel:derived_from-c26ae7a2d460f770"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-complete-six-point-klt-block-atlas-labelled-gluing",
+      "target_id": "source:mizera-1610.04230",
+      "relation_id": "rel:derived_from-969282142a95fe8b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:marici-complete-six-point-klt-block-atlas-labelled-gluing",
+      "target_id": "claim:marici-mixed-six-point-klt-no-new-determinant-divisor",
+      "relation_id": "rel:depends_on-27ffd3770b72cb16"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-six-point-block-atlas",
+      "target_id": "claim:marici-complete-six-point-klt-block-atlas-labelled-gluing",
+      "relation_id": "rel:tests-85c934cb2bf46971"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:marici-six-point-block-atlas-pass",
+      "test_id": "test:marici-six-point-block-atlas",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: three labelled 2x2 blocks assemble into the source 6x6 inverse with forced J transport and zero off-block leakage",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-903",
+          "locator": "research/benincasa/string-six-point-block-atlas.json",
+          "paraphrase": "Packet records row and column blocks, exact relabelling transitions, off-block maximum, and full inverse error."
+        }
+      ]
+    }
+  ],
+  "digest": "29cb331cd1801f9ec49562fb1559a22c757711641841639d66a450aaee93e0b3"
+}

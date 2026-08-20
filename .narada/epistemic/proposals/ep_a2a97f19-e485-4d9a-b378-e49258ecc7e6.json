@@ -1,0 +1,108 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a2a97f19-e485-4d9a-b378-e49258ecc7e6",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_cosmology_research",
+    "summary": "Record the source-derived variance test for the two-site bubble observable readout."
+  },
+  "idempotency_key": "marici-benincasa-bubble-readout-variance-graph-20260820",
+  "expected_ledger_head": "19b4d4bfe595275440b01b17861049ba88bf944c725fdf873ce8a986c204e2d4",
+  "created_at": "2026-08-20T03:48:27.7287775Z",
+  "content_fingerprint": "ef6a0b34799488db0c3c68a8f5252c5566bee1eb7bcf5985d92855d5333c70af",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry1078",
+      "kind": "source",
+      "title": "Entry 1078 — The Bubble Observable Readout Is Degree Zero",
+      "version": "20260820",
+      "locator": "src/ledger/20260820-1078 The Bubble Observable Readout Is Degree Zero.md",
+      "entity_id": "source:e1714c24a294418b1619"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry1075",
+      "kind": "source",
+      "title": "Entry 1075 — The Full Bubble Cech Nerve Retains One Degree-One Corner Class",
+      "version": "20260820",
+      "locator": "src/ledger/20260820-1075 The Full Bubble Cech Nerve Retains One Degree-One Corner Class.md",
+      "entity_id": "source:98a04a97ffa579d49640"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "paper",
+      "kind": "source",
+      "title": "On one-loop corrections to the Bunch-Davies wavefunction of the universe",
+      "version": "arXiv:2408.16386",
+      "locator": "https://arxiv.org/abs/2408.16386",
+      "entity_id": "source:9904c50bac03daf83799"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The frozen bubble observable readout is degree zero and does not canonically activate the Cech H1 corner line",
+      "entity_id": "claim:b9081d492874599b1dbd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Bubble observable readout variance audit against equations 39-47 and Appendix B",
+      "entity_id": "test:2b8328307bf0a2e23498"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "entry1075",
+      "source_id": "claim:b9081d492874599b1dbd",
+      "target_id": "source:98a04a97ffa579d49640",
+      "relation_id": "rel:derived_from-0500171d7f504a60"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "paper",
+      "source_id": "claim:b9081d492874599b1dbd",
+      "target_id": "source:9904c50bac03daf83799",
+      "relation_id": "rel:derived_from-4ef8e6428480e548"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "entry1078",
+      "target_ref": "claim",
+      "source_id": "source:e1714c24a294418b1619",
+      "target_id": "claim:b9081d492874599b1dbd",
+      "relation_id": "rel:reports-28f4158bc107a0a7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:2b8328307bf0a2e23498",
+      "target_id": "claim:b9081d492874599b1dbd",
+      "relation_id": "rel:tests-6868e1c1ed654c9d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-bubble-readout-variance-20260820",
+      "test_id": "__LOCAL_TEST_PLACEHOLDER__",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: the source defines a functional on the global master vector and common degree-zero boundary data, but no pair-overlap degree-one functional",
+      "evidence": [
+        {
+          "source_id": "__LOCAL_SOURCE_PLACEHOLDER__",
+          "locator": "arXiv:2408.16386 equations (40)-(47) and Appendix B",
+          "paraphrase": "The physical bubble is assembled from global periods and boundary data at one common point."
+        }
+      ]
+    }
+  ],
+  "digest": "72cea57bc34eae5093b0d1c872e8b1a2b26cfc2b78794f6acaa35449ae467082"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_26ccdb1f-a309-4606-bbb0-9e591c3e16ce",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Record Entry 783 and the source-defined Cayley-Menger contour-family gate"
+  },
+  "idempotency_key": "marici-benincasa-entry-783-cayley-menger-contour-family",
+  "expected_ledger_head": "84257d0631d5b0410287a068b1445baac6eedb93091110ab1c3c45cd1f5cf409",
+  "created_at": "2026-08-18T20:22:58.0196371Z",
+  "content_fingerprint": "6d4d4ce78166e0a759fefe90e9fb3e451e22faaaa11e6a22ca47321b0983a3fc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source_asym",
+      "kind": "source",
+      "title": "The Asymptotic Structure of Cosmological Integrals",
+      "version": "arXiv:2402.06558v3",
+      "locator": "https://arxiv.org/abs/2402.06558",
+      "entity_id": "source:9d483e3d5361c3026698"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test783",
+      "kind": "test",
+      "title": "Cayley-Menger contour-family normalization gate",
+      "version": "20260818-783",
+      "locator": "src/ledger/20260818-783 The Cayley-Menger Contour Family Is Source-Normalized Before Weighted Specialization.md",
+      "entity_id": "test:3952ba267555063bb0a6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim783",
+      "kind": "claim",
+      "title": "The source-normalized Cayley-Menger contour family remains a typed weighted-specialization candidate",
+      "version": "20260818-783",
+      "locator": "src/ledger/20260818-783 The Cayley-Menger Contour Family Is Source-Normalized Before Weighted Specialization.md",
+      "entity_id": "claim:77d557d14a11fc8c4a4c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim783",
+      "target_ref": "source_asym",
+      "source_id": "claim:77d557d14a11fc8c4a4c",
+      "target_id": "source:9d483e3d5361c3026698",
+      "relation_id": "rel:derived_from-6830d2f32a86a827"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test783",
+      "target_ref": "claim783",
+      "source_id": "test:3952ba267555063bb0a6",
+      "target_id": "claim:77d557d14a11fc8c4a4c",
+      "relation_id": "rel:tests-9299b4c3e4a5ef1d"
+    }
+  ],
+  "digest": "efef0d6d603e30771017dc71e086a8d481a2c124988fae61322d09678499cb1c"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 824,
+  "event_id": "ev-000000000824-3382c3a2-edb4-4c2c-b3bb-6d692dbb9dea",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a459d542c393f89dc699e50db9bfa5ae1e5ec35878b507e2afd5cf1291aeda30",
+  "proposal_id": "ep_d7d54b08-04a0-4b7f-85a5-a558ee8acacc",
+  "proposal_digest": "2cbacee8cd8e2bae404375b4da98c68451a3b50f13cd06741511d7d8b95987c5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa corrects Entry 1120 quadratic residue rank",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "correction",
+      "status": "sent",
+      "body": "Correction to my prior Entry 1120 message: the quadratic residue rank was mistakenly computed over Q(s). Over the correct divisor field Q[s]/(s^2+6s+1), rank(R)=rank(R^2)=1. It is semisimple: one -1/2 Kummer line and a rank-three zero-residue sector. Local monodromy is -1 on that line and identity on the complement; [T-I] has rank1, kernel3, cokernel3. The existing-support/no-new-carrier conclusion remains valid. Checker, packet, ledger, and graph correction event 823 are repaired.",
+      "entity_id": "maricicommunication:2abc31f8c685ceb66775"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:2abc31f8c685ceb66775",
+      "relation_id": "rel:maricisent_by-0df64117741fa568"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:2abc31f8c685ceb66775",
+      "relation_id": "rel:mariciaddressed_to-2defedc8934cbe40"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "Correct the previously sent quadratic residue classification to marici.Nima"
+  },
+  "idempotency_key": "auto-admission-8d6de819ee2386156c3e3548",
+  "occurred_at": "2026-08-20T11:51:01.2059379Z",
+  "certifies_truth": false,
+  "event_hash": "349a649bdf03375054f3ff77d3409b5434deaedddd4681cdc119bdf528e0e76b"
+}

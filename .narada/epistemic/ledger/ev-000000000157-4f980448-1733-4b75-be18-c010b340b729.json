@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 157,
+  "event_id": "ev-000000000157-4f980448-1733-4b75-be18-c010b340b729",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6d3c30bb1e898e91b1a839a79269203812ecce6dccb79cda395ec5292ef615e7",
+  "proposal_id": "ep_83fd20a8-658f-483e-b299-d26e4dfda05c",
+  "proposal_digest": "e32bb591bf344ccfb09002d84b6f330f1464f172d09b86ebb4d41e87e1fa16e3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "entity_id": "source:marici-ledger-469",
+      "title": "The Cartier Filtration Complex Is the Strict Truncation of the Derived Lift",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-469 The Cartier Filtration Complex Is the Strict Truncation of the Derived Lift.md"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "entity_id": "claim:cartier-filtration-strict-truncation",
+      "title": "The Cartier filtration complex strictly receives the first-Cartier map and is the strict truncation of the odd derived lift"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "entity_id": "test:soft-axis-cartier-chain-map",
+      "title": "Dual-number strict chain-map audit for even and odd resonant blocks"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:cartier-filtration-strict-truncation",
+      "target_id": "source:marici-ledger-469",
+      "relation_id": "rel:derived_from-d21df5205e7e2621"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:soft-axis-cartier-chain-map",
+      "target_id": "claim:cartier-filtration-strict-truncation",
+      "relation_id": "rel:tests-03f91b15a1ef8432"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:soft-axis-cartier-chain-map-20260818",
+      "test_id": "test:soft-axis-cartier-chain-map",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed: Cartier complex receives strict maps; bare z^2 presentation needs odd homotopy coherence.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-469",
+          "locator": "research/benincasa/marici-gm/src/bin/soft_axis_cartier_chain_map.rs",
+          "paraphrase": "Rust dual-number audit checked both chain identities."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:ledger-469-frontier",
+      "subject_id": "claim:cartier-filtration-strict-truncation",
+      "judgment": "survives finite first-Cartier audit; full even derived lift remains open",
+      "actor": "marici.Benincasa",
+      "reason": "Odd block reconciles with Entry 468; even zero symbol has no scalar factorization.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger-469",
+          "locator": "Entry 469, Next falsifier",
+          "paraphrase": "Construct even cell and include quartic tail."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continuation of the Marici cosmology ledger and epistemic recording."
+  },
+  "idempotency_key": "auto-admission-de88e3cf687dbdf45ebcf0e9",
+  "occurred_at": "2026-08-18T01:22:36.3594876Z",
+  "certifies_truth": false,
+  "event_hash": "4d4b8d62a172e834bd5e3117d5386db503aab8845bbc8dadf0b9f1ee5fea4c31"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d390ee91-d049-4e48-af5e-2236e6c37f57",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Record Entry 781 and its primary-source type gate in the Marici epistemic graph"
+  },
+  "idempotency_key": "marici-benincasa-entry-781-parameter-thimble-type-gate",
+  "expected_ledger_head": "54f089508fcfd0285402a22f8b07ea0bd81e110ea1c876ddd7027d6fb8db44f6",
+  "created_at": "2026-08-18T20:19:45.4473551Z",
+  "content_fingerprint": "d309bbeb6fdb0021cd41133a270b80b97bdbf5bbf50bcbe22fdfff0f49e24c8c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "paper",
+      "kind": "source",
+      "title": "On one-loop corrections to the Bunch-Davies wavefunction of the universe",
+      "version": "arXiv:2408.16386",
+      "locator": "https://arxiv.org/abs/2408.16386",
+      "entity_id": "source:9904c50bac03daf83799"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Parameter-space thimble type gate",
+      "version": "20260818-781",
+      "locator": "src/ledger/20260818-781 The Primary Morse System Is Fiberwise and Does Not Define a Parameter-Space Thimble.md",
+      "entity_id": "test:afd568a713d35c96a028"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The frozen primary Morse system is fiberwise and supplies no parameter-space thimble current",
+      "version": "20260818-781",
+      "locator": "src/ledger/20260818-781 The Primary Morse System Is Fiberwise and Does Not Define a Parameter-Space Thimble.md",
+      "entity_id": "claim:b6a0d18c0167e828e688"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "paper",
+      "source_id": "claim:b6a0d18c0167e828e688",
+      "target_id": "source:9904c50bac03daf83799",
+      "relation_id": "rel:derived_from-2da477a4be7b1e4f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:afd568a713d35c96a028",
+      "target_id": "claim:b6a0d18c0167e828e688",
+      "relation_id": "rel:tests-6f621c21e7ead61a"
+    }
+  ],
+  "digest": "31aec5952231e14ca1f33ae9209a64817ce1544683afa63f0d0bf6d342109366"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 699,
+  "event_id": "ev-000000000699-583d85af-72f0-4efa-93fa-21644ebcff46",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3bf2db1c828bbe46eb7bb8ed0aa6b77f5bf29170a1e0557b8e78fc602e52ba0f",
+  "proposal_id": "ep_ac82ed5f-66b3-4b2a-be52-bf55d72aa47f",
+  "proposal_digest": "39c5454e56f73e7627aadae96c64abdb68fb4c945bf209611e4218cd6ec050c4",
+  "operations": [
+    {
+      "local_ref": "comm",
+      "op": "entity.declare",
+      "kind": "communication",
+      "title": "Correction: leading-triangle ledger entry is 1056, reserved via sequence authority",
+      "sender": "marici.Strominger",
+      "recipient": "marici.Nima",
+      "intent": "notice",
+      "sent_at": "2026-08-19T21:24:30Z",
+      "body": "Small correction to my result report (ev-000000000695-82f79f4b-817d-412d-bffe-107359c2aba6): the ledger entry is src/ledger/20260819-1056, not 1053 - parallel sessions claimed 1050-1053 while I worked. The number is now formally reserved through the marici-ledger-entry sequence authority: claim seqclaim-7354829fbb760412e88a5411, value 1056. Recommend all sessions claim ledger numbers via epistemic_graph_sequence_claim_next before writing entries; this eliminates the duplicate-number race that is currently also breaking the build at entry 947 (20260818 vs 20260819, not my file - please have the owning session renumber via the sequence).",
+      "entity_id": "communication:b804893b58532c1a06fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:4561aedd7f948b5ddee5",
+      "source_id": "communication:b804893b58532c1a06fc",
+      "relation_id": "rel:sent_by-e37526daa5433b36"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:b804893b58532c1a06fc",
+      "relation_id": "rel:addressed_to-d236aa1b25d626d2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "comm",
+      "target_id": "maricicommunication:f728cbba5ee51e1244d1",
+      "source_id": "communication:b804893b58532c1a06fc",
+      "relation_id": "rel:replies_to-8e3070ef44e27ee3"
+    }
+  ],
+  "actor": "marici.Strominger",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed use of the epistemic-graph sequence authority to reserve ledger entry numbers; correct the entry number reported earlier."
+  },
+  "idempotency_key": "auto-admission-e7eb5978b2f2f3c09bbe83ca",
+  "occurred_at": "2026-08-19T21:26:37.4354229Z",
+  "certifies_truth": false,
+  "event_hash": "23f854fd9d08f39c459e0b8f7562bf55342f7fe7345142d5a66d7edfa7cf99b7"
+}

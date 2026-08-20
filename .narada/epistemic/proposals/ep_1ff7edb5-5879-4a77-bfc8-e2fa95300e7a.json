@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1ff7edb5-5879-4a77-bfc8-e2fa95300e7a",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "reason": "Recording verified source boundary factorization for the bubble corner complex"
+  },
+  "idempotency_key": "auto-proposal-0b28be76957d9ecce538c658",
+  "expected_ledger_head": "a1779b320a4256e575230f3dff2279898d34649c273336bd39b0849dbfb96a74",
+  "created_at": "2026-08-20T01:29:42.1397215Z",
+  "content_fingerprint": "0b28be76957d9ecce538c65805ca37a0bceca1c58e62fd2e6141583ab4f20f62",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src1074",
+      "kind": "source",
+      "title": "Entry 1074 — The Source Bubble Boundary Factors Exactly through Degree Zero",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1074 The Source Bubble Boundary Factors Exactly through Degree Zero.md",
+      "entity_id": "source:047d425a6983e2d88d9a"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-bubble-source-boundary-factorization-1074",
+      "kind": "claim",
+      "title": "The source bubble boundary vector factors through H0 and has zero component in the intrinsic corner H1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-bubble-source-boundary-factorization-1074",
+      "kind": "test",
+      "title": "Primary-source and exact-matrix audit of the bubble boundary map"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-bubble-source-boundary-factorization-1074",
+      "target_id": "source:9904c50bac03daf83799",
+      "relation_id": "rel:derived_from-5a8366ea6046a8e9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:marici-bubble-source-boundary-factorization-1074",
+      "target_id": "source:21b59578eeff6444b6a2",
+      "relation_id": "rel:derived_from-422bb39095a590ed"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:marici-bubble-source-boundary-factorization-1074",
+      "target_id": "claim:marici-bubble-source-boundary-factorization-1074",
+      "relation_id": "rel:tests-c2af12ec32cd3261"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "src1074",
+      "target_id": "claim:marici-bubble-source-boundary-factorization-1074",
+      "source_id": "source:047d425a6983e2d88d9a",
+      "relation_id": "rel:promotes_to_evidence-7512ab17c93ffacd"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "bubble-source-boundary-factorization-1074",
+      "test_id": "test:marici-bubble-source-boundary-factorization-1074",
+      "actor": "marici.Benincasa",
+      "outcome": "Passed: Appendix B imposes regularity on one master vector at the common spurious point; its exact common-kernel basis has rank 3 and the diagonal boundary map identifies it with H0 while inducing zero in H1.",
+      "evidence": [
+        {
+          "source_id": "source:9904c50bac03daf83799",
+          "locator": "Appendix B, boundary prescription after matrices M_1 through M_8",
+          "paraphrase": "The source fixes J2, J4, and J6 order by order by regularity at the single point (1,1,1)."
+        },
+        {
+          "source_id": "source:21b59578eeff6444b6a2",
+          "locator": "research/benincasa/check_bubble_parabolic_complex.rs",
+          "paraphrase": "Exact checker verifies the rank-three common-kernel basis and diagonal factorization."
+        }
+      ]
+    }
+  ],
+  "digest": "4472a91d3735f6f17cf2faaef1d1bb977ce367cb62c1cb00d363c3007c1183d6"
+}

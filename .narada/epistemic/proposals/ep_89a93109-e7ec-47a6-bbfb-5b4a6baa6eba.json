@@ -1,0 +1,103 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_89a93109-e7ec-47a6-bbfb-5b4a6baa6eba",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Record and report the completed strict ambient-13 triangle-wall falsifier."
+  },
+  "idempotency_key": "auto-proposal-7181ef657a2f42711c40bff4",
+  "expected_ledger_head": "42b7453b84c11c7947a00dd89cc68ed6872475bbb0e293f98e99b37cef5182a5",
+  "created_at": "2026-08-19T23:46:19.840552Z",
+  "content_fingerprint": "7181ef657a2f42711c40bff4d9d9b9d6c0a830f07ab26750ff8dff4d55fee9f7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Marici ledger Entry 1059",
+      "version": "1",
+      "locator": "src/ledger/20260819-1059 The First Strict Joint Pole-Degree Step Does Not Close Triangle-Wall Transport.md",
+      "entity_id": "source:c4045785ecdaa2a44957"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Strict ambient-13 triangle-wall transport replay",
+      "entity_id": "test:44330e8c9e9fe72efe12"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The first strictly typed joint pole-degree step does not close triangle-wall transport",
+      "entity_id": "claim:ac67bc7012f4ba594eb5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:44330e8c9e9fe72efe12",
+      "target_id": "claim:ac67bc7012f4ba594eb5",
+      "relation_id": "rel:tests-6ee9a3e2da37cba2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:ac67bc7012f4ba594eb5",
+      "target_id": "source:c4045785ecdaa2a44957",
+      "relation_id": "rel:derived_from-ec5512593e6c6824"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports the strict ambient-13 transport failure to Nima",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "body": "Strict ambient-13 replay is complete. The minimal no-omission target (A,K)=(13,4) has target ranks filtered=50,607 and quadratic=18. All 26 source-tracked rows have nonzero remainders; T1 and T2 share term counts (36,36,36,36,36,36,41,36,75,74,72,50,50). Construction and cached replay agree on every sparse remainder and coordinate row; replay 0.398 s. The labelled support has 81 distinct columns (80 base block, one first-normal block), degrees through 14. Recorded narrowly as Entry 1059: the first strictly typed joint pole/degree step does not close transport; no direct-limit or new-carrier conclusion.",
+      "intent": "result",
+      "sent_at": "2026-08-19T23:46:19.834Z",
+      "entity_id": "maricicommunication:20d56b0c1673e81ced66"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:20d56b0c1673e81ced66",
+      "relation_id": "rel:maricisent_by-72021b963ffd6500"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:20d56b0c1673e81ced66",
+      "relation_id": "rel:mariciaddressed_to-3985d8921e9f0cc5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg",
+      "target_id": "maricicommunication:1e97c621449e104b9e68",
+      "source_id": "maricicommunication:20d56b0c1673e81ced66",
+      "relation_id": "rel:maricireplies_to-c3a78d827bb6c16c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:20d56b0c1673e81ced66",
+      "target_id": "claim:ac67bc7012f4ba594eb5",
+      "relation_id": "rel:reports-018396f5d98db193"
+    }
+  ],
+  "digest": "2c702c66c9ac19242e4be2d262f53cb8ffbc2fb1c51fa4ad58f8a62406493bbe"
+}

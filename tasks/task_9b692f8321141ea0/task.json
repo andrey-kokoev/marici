@@ -1,0 +1,351 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_9b692f8321141ea0",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only injected ledger entries 342 and 343. Build the smallest source-faithful specification of the uncomputed localization/Gysin map from the rank-three conductor lattice to H^3(S_E;K). Return exactly: domain_basis (use the three cycles stated in entry 343), codomain_data_explicit (only facts actually stated), matrix_entries_explicit (only coefficients actually stated), missing_inputs (data needed to calculate the map), and forbidden_inferences (claims the entries prohibit). Do not solve the map, infer its rank, use other files, or modify files.",
+  "request_fingerprint": "aec63ae1f783d598d19ea70b90b1084f03a74de6862fafedc80cfae1ce7a254e",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T15:49:17.6079073Z",
+  "created_at_ms": 1786981757607,
+  "started_at": "2026-08-17T15:49:17.6307333Z",
+  "started_at_ms": 1786981757630,
+  "finished_at": "2026-08-17T15:49:36.0635907Z",
+  "finished_at_ms": 1786981776063,
+  "duration_ms": 18433,
+  "updated_at": "2026-08-17T15:49:36.0635925Z",
+  "cancelled_at": null,
+  "idempotency_key": "cosmology-342-343-gysin-skeleton-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "wait_for_completion": false,
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-342 Mixed-Face Gysin Geometry.md",
+        "access": "read",
+        "label": "entry_342"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-343 Two-Wall Conductor Cycle Lattice.md",
+        "access": "read",
+        "label": "entry_343"
+      }
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "domain_basis",
+      "codomain_data_explicit",
+      "matrix_entries_explicit",
+      "missing_inputs",
+      "forbidden_inferences"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-b370c3f4b9a944d89739a47899b3feba"
+        ],
+        "current_run_id": "run-b370c3f4b9a944d89739a47899b3feba",
+        "started_at": "2026-08-17T15:49:17.6307385Z",
+        "finished_at": "2026-08-17T15:49:36.0619164Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "domain_basis={2 fields}, codomain_data_explicit={3 fields}, matrix_entries_explicit=[0 items], missing_inputs=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "domain_basis": {
+              "edge_order": [
+                "n_{1a}",
+                "n_{1b}",
+                "n_{2a}",
+                "n_{2b}",
+                "P_+",
+                "P_-"
+              ],
+              "cycles": {
+                "g_{101}": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "g_{110}": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "\\widetilde{g}_{111}": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ]
+              }
+            },
+            "codomain_data_explicit": {
+              "target": "H^3(S_E;K)",
+              "map_type": "Gysin/localization map",
+              "stated_status": "uncomputed"
+            },
+            "matrix_entries_explicit": [],
+            "missing_inputs": [
+              "The actual Gysin/localization images of the three basis cycles in H^3(S_E;K)",
+              "A specified basis or presentation of H^3(S_E;K)",
+              "The geometric localization boundary or physical relative-chain realization"
+            ],
+            "forbidden_inferences": [
+              "Do not compute or infer the map from the graph data alone.",
+              "Do not infer its rank or matrix entries.",
+              "Do not infer a canonical direct map into M_q^(9) subset H^2(S_E;K).",
+              "Do not infer a canonical lift or splitting of the top quotient.",
+              "Do not infer a global splitting of the full 21-dimensional coefficient system."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-b370c3f4b9a944d89739a47899b3feba",
+        "status": "completed",
+        "finished_at": "2026-08-17T15:49:36.0618371Z",
+        "duration_ms": 18083,
+        "output": {
+          "summary_text": "domain_basis={2 fields}, codomain_data_explicit={3 fields}, matrix_entries_explicit=[0 items], missing_inputs=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "domain_basis": {
+              "edge_order": [
+                "n_{1a}",
+                "n_{1b}",
+                "n_{2a}",
+                "n_{2b}",
+                "P_+",
+                "P_-"
+              ],
+              "cycles": {
+                "g_{101}": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "g_{110}": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "\\widetilde{g}_{111}": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ]
+              }
+            },
+            "codomain_data_explicit": {
+              "target": "H^3(S_E;K)",
+              "map_type": "Gysin/localization map",
+              "stated_status": "uncomputed"
+            },
+            "matrix_entries_explicit": [],
+            "missing_inputs": [
+              "The actual Gysin/localization images of the three basis cycles in H^3(S_E;K)",
+              "A specified basis or presentation of H^3(S_E;K)",
+              "The geometric localization boundary or physical relative-chain realization"
+            ],
+            "forbidden_inferences": [
+              "Do not compute or infer the map from the graph data alone.",
+              "Do not infer its rank or matrix entries.",
+              "Do not infer a canonical direct map into M_q^(9) subset H^2(S_E;K).",
+              "Do not infer a canonical lift or splitting of the top quotient.",
+              "Do not infer a global splitting of the full 21-dimensional coefficient system."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-b370c3f4b9a944d89739a47899b3feba",
+        "status": "completed",
+        "output": {
+          "summary_text": "domain_basis={2 fields}, codomain_data_explicit={3 fields}, matrix_entries_explicit=[0 items], missing_inputs=[3 items]",
+          "diagnostics_text": null,
+          "structured_output": {
+            "domain_basis": {
+              "edge_order": [
+                "n_{1a}",
+                "n_{1b}",
+                "n_{2a}",
+                "n_{2b}",
+                "P_+",
+                "P_-"
+              ],
+              "cycles": {
+                "g_{101}": [
+                  1,
+                  -1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "g_{110}": [
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0,
+                  0
+                ],
+                "\\widetilde{g}_{111}": [
+                  1,
+                  0,
+                  0,
+                  -1,
+                  -1,
+                  1
+                ]
+              }
+            },
+            "codomain_data_explicit": {
+              "target": "H^3(S_E;K)",
+              "map_type": "Gysin/localization map",
+              "stated_status": "uncomputed"
+            },
+            "matrix_entries_explicit": [],
+            "missing_inputs": [
+              "The actual Gysin/localization images of the three basis cycles in H^3(S_E;K)",
+              "A specified basis or presentation of H^3(S_E;K)",
+              "The geometric localization boundary or physical relative-chain realization"
+            ],
+            "forbidden_inferences": [
+              "Do not compute or infer the map from the graph data alone.",
+              "Do not infer its rank or matrix entries.",
+              "Do not infer a canonical direct map into M_q^(9) subset H^2(S_E;K).",
+              "Do not infer a canonical lift or splitting of the top quotient.",
+              "Do not infer a global splitting of the full 21-dimensional coefficient system."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "domain_basis",
+          "codomain_data_explicit",
+          "matrix_entries_explicit",
+          "missing_inputs",
+          "forbidden_inferences"
+        ],
+        "returned": [
+          "domain_basis",
+          "codomain_data_explicit",
+          "matrix_entries_explicit",
+          "missing_inputs",
+          "forbidden_inferences"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. domain_basis={2 fields}, codomain_data_explicit={3 fields}, matrix_entries_explicit=[0 items], missing_inputs=[3 items]"
+}

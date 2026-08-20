@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 138,
+  "event_id": "ev-000000000138-92472aa9-1cba-45ed-9488-33a6573ce838",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c0cc42d724632c69a2d06675f8c2a14de0462eb0379225e3c9a6367e711d6b8d",
+  "proposal_id": "ep_a26dd110-73d7-4041-8787-5f36eab44c47",
+  "proposal_digest": "52d5d13cf14e870e39fac43eacf6a976c5ddf7be50dcc59c4511e81b3d1da02b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source451",
+      "kind": "source",
+      "title": "Entry 451 — The Soft Newton Polygon Forces the Weighted Rees Ideal (u,a^2)",
+      "version": "git:ed4272aa1ed36445be3331db0fda20f67f64c849",
+      "locator": "src/ledger/20260817-451 The Soft Newton Polygon Forces the Weighted Rees Ideal u-a2.md",
+      "entity_id": "source:110b8a67b8125d9c6c75"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim451",
+      "kind": "claim",
+      "title": "The controlling soft Cayley-Menger Newton face is the square (a^2+u(1-b^2)/2)^2 and forces the weighted Rees ideal (u,a^2), not the ordinary ideal (u,a).",
+      "status": "proved",
+      "scope": "full frozen Cayley-Menger polynomial; generic b^2 not equal to 1 for the reduced exceptional section",
+      "evidence_refs": [
+        "research/voevodsky/check_soft_axis_weighted_newton_blowup.py"
+      ],
+      "entity_id": "claim:4e9637d9751ba48e71f4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim451",
+      "target_ref": "source451",
+      "source_id": "claim:4e9637d9751ba48e71f4",
+      "target_id": "source:110b8a67b8125d9c6c75",
+      "relation_id": "rel:derived_from-1e170f9cdc46f8a9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim451",
+      "target_id": "problem:8d7de09018db8e3fa469",
+      "source_id": "claim:4e9637d9751ba48e71f4",
+      "relation_id": "rel:addresses-681e4080dbc7e24a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit451",
+      "kind": "criticism",
+      "title": "The ordinary blowup of (u,a) is not adapted to the source Newton face and loses the balance among a^4, ua^2, and u^2.",
+      "entity_id": "criticism:30783b25adcdd480306b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit451",
+      "target_id": "problem:8d7de09018db8e3fa469",
+      "source_id": "criticism:30783b25adcdd480306b",
+      "relation_id": "rel:criticizes-deacd4fea3cb484a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit451",
+      "target_ref": "source451",
+      "source_id": "criticism:30783b25adcdd480306b",
+      "target_id": "source:110b8a67b8125d9c6c75",
+      "relation_id": "rel:derived_from-a8c119e639fe3856"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next452",
+      "kind": "problem",
+      "title": "Pull the complete soft exact complex to the weighted Rees space of (u,a^2), retain its doubled exceptional section, and retest filtered flatness.",
+      "status": "open",
+      "entity_id": "problem:49a223221e35b5dbc421"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next452",
+      "target_ref": "claim451",
+      "source_id": "problem:49a223221e35b5dbc421",
+      "target_id": "claim:4e9637d9751ba48e71f4",
+      "relation_id": "rel:depends_on-1a529fc569362e79"
+    }
+  ],
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the geometry-first Marici research program with the Newton-adapted modification."
+  },
+  "idempotency_key": "auto-admission-2112886816634e2a57bb11bb",
+  "occurred_at": "2026-08-18T00:39:34.1795027Z",
+  "certifies_truth": false,
+  "event_hash": "df01345688326cca5baf372dca49336f981d6be5c3c5f37dfc0ff9e8d9a3d414"
+}

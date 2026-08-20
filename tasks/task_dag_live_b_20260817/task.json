@@ -1,0 +1,103 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_dag_live_b_20260817",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Consume the declared predecessor structured output. Return exactly one JSON object with field sorted_items containing its items sorted ascending.",
+  "request_fingerprint": "0d540a3a2932aaa88947e7bf6f221e28744b210a37ca1db208d444d10f367338",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T19:54:17.5595261Z",
+  "created_at_ms": 1786996457559,
+  "started_at": null,
+  "started_at_ms": null,
+  "finished_at": "2026-08-17T19:54:22.3981921Z",
+  "finished_at_ms": 1786996462398,
+  "duration_ms": 4839,
+  "updated_at": "2026-08-17T19:54:22.398194Z",
+  "cancelled_at": null,
+  "idempotency_key": "dag-live-b-20260817",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 120000
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "reduce",
+        "kind": "worker",
+        "output_schema": {
+          "required": [
+            "sorted_items"
+          ]
+        }
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required": [
+      "sorted_items"
+    ]
+  },
+  "depends_on_task_ids": [
+    "task_dag_live_a_20260817"
+  ],
+  "import_task_outputs": [
+    "task_dag_live_a_20260817"
+  ],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "blocked",
+    "resolved_at": null,
+    "blocked_by": [
+      "task_dag_live_a_20260817"
+    ]
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "reduce": {
+        "step_id": "reduce",
+        "kind": "worker",
+        "status": "blocked",
+        "attempts": 0,
+        "run_ids": [],
+        "current_run_id": null,
+        "started_at": null,
+        "finished_at": "2026-08-17T19:54:22.3974916Z",
+        "error": null,
+        "summary": null,
+        "blocked_by_external_tasks": [
+          "task_dag_live_a_20260817"
+        ]
+      }
+    },
+    "worker_refs": [],
+    "worker_outputs": [],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": []
+  },
+  "summary": null
+}

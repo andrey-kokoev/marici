@@ -1,0 +1,39 @@
+{
+  "schema": "narada.delegated_task.validated_request.v1",
+  "validated_request_ref": "vr_5b17621c89ef838bd458d20f461db11e",
+  "created_at": "2026-08-17T14:42:51.5563365Z",
+  "site_root": "C:\\Users\\andrey\\src\\marici",
+  "owner_site_id": "marici",
+  "request": {
+    "expected_owner_site_id": "marici",
+    "objective": "Read docs/research-lifecycle.md without changing files. Return structured fields file_status and topic, with topic as one complete sentence.",
+    "idempotency_key": "ergonomics-batch-lifecycle-20260817-v1",
+    "acceptance": {
+      "required_fields": [
+        "file_status",
+        "topic"
+      ],
+      "no_writes": true,
+      "strict_clean_run": true
+    },
+    "constraints": {
+      "authority": "read",
+      "cwd": "C:\\Users\\andrey\\src\\marici",
+      "site_root": "C:\\Users\\andrey\\src\\marici",
+      "cognition": "low",
+      "sandbox": "read-only",
+      "preflight_paths": [
+        {
+          "path": "docs/research-lifecycle.md",
+          "access": "read",
+          "label": "research lifecycle"
+        }
+      ],
+      "max_retries": 0
+    },
+    "timeout_ms": 180000,
+    "poll_ms": 500
+  },
+  "request_digest": "5b17621c89ef838bd458d20f461db11e60f6ec6cfda1ceb5b99add91f9cdfd7e",
+  "preflight_status": "deferred"
+}

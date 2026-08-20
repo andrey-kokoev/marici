@@ -27,6 +27,39 @@ for display TeX.
 The cross-repository contract, including the governed direct-Wrangler
 invocation, is documented in narada/docs/deployment/site-ui-and-wrangler.md.
 
+## Public epistemic graph
+
+The graph page consumes a deterministic, read-only projection rather than the
+private operator snapshot directly. Run `pnpm run graph:project` after placing
+an admitted snapshot at `.ai/tmp/epistemic-graph-snapshot.json`, then run
+`pnpm run graph:test`. The `marici.public-epistemic-graph.v2` allowlist exposes
+only identity, kind, title, status, summary, safe ledger provenance, and
+relation endpoints; proposal, event, payload, and private locator fields are
+not published.
+
+Selection is shareable as `/graph/?entity=<id>` and comparison as
+`/graph/?entity=<id>&compare=<id>`. Selecting highlights context without
+hiding the overview. Neighborhood isolation is a separate reversible action.
+The inspector groups relations as propositions and supports same-kind stepping,
+browser history, side-by-side comparison, and keyboard movement among SVG
+nodes with the arrow keys. Hover and keyboard focus expose a compact graph
+tooltip. On tablet and mobile layouts, selection opens the inspector as a
+dismissible bottom sheet so graph context and semantic detail remain adjacent.
+
+Ledger time has three public views: **Now**, **At entry**, and **Compare**.
+The spatial layout remains stable while the scrubber changes the admitted
+cutoff. Compare highlights graph admissions within the selected interval and
+mutes earlier context. Every entity and relation is timed from its immutable
+graph admission event. Of 78 entity-admission events, 73 are directly anchored
+to one ledger entry or a ledger-entry batch. The five source-less events are
+bounded by their adjacent anchored events; their published projection records
+both ends of that interval and uses the conservative upper bound for “Through
+entry” filtering. Batch events likewise appear at the batch upper bound, never
+before graph admission completed. Range controls use actual ledger entry
+numbers—the present projection spans entries 1 through 158—rather than array
+indices. Temporal state is shareable through `time`, `from`, and `to` URL
+parameters.
+
 The ledger currently keeps three frontiers separate:
 
 - **Nima:** the all-arity rooted-spine theorem now proves strict mixed Cut/refinement

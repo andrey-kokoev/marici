@@ -1,0 +1,58 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a54e727f-ebc3-4132-afb7-a4a033647eaa",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "description": "Recording verified result from ledger entry 987"
+  },
+  "idempotency_key": "marici-benincasa-entry-987-cyclic-descent-20260819",
+  "expected_ledger_head": "a6536680a0105d38fd9136de9b62ead4166e99fd7692287b9d60ac3c8d63e249",
+  "created_at": "2026-08-19T16:33:11.662131Z",
+  "content_fingerprint": "b3652c6125049c138f6abfe508b3454e2aecc956972e7d33220ff1eba7714b44",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src987",
+      "kind": "source",
+      "title": "Ledger Entry 987",
+      "version": "1",
+      "locator": "src/ledger/20260819-987 The Corrected Character Lines Have Trivial Cyclic Holonomy.md",
+      "entity_id": "source:c8b35ab862144ffad4e4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim987",
+      "kind": "claim",
+      "title": "The corrected character lines descend cyclically with identity holonomy",
+      "entity_id": "claim:08f009a24b225c4ea9a6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test987",
+      "kind": "test",
+      "title": "Exact three-chart cyclic descent audit",
+      "entity_id": "test:76b213322f0b30f0595d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim987",
+      "target_ref": "src987",
+      "source_id": "claim:08f009a24b225c4ea9a6",
+      "target_id": "source:c8b35ab862144ffad4e4",
+      "relation_id": "rel:derived_from-569f5b5e446b3532"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test987",
+      "target_ref": "claim987",
+      "source_id": "test:76b213322f0b30f0595d",
+      "target_id": "claim:08f009a24b225c4ea9a6",
+      "relation_id": "rel:tests-fa04f5710196be66"
+    }
+  ],
+  "digest": "d45a6e8a1d6aa80bfbbee296b16c41d58c30b538cafcaae3694e7bf285f3514b"
+}

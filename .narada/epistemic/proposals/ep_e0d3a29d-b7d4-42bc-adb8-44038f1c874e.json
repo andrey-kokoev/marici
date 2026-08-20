@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e0d3a29d-b7d4-42bc-adb8-44038f1c874e",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Operator directed continued triangle-wall K5 audit and epistemic recording."
+  },
+  "idempotency_key": "auto-proposal-c60151a995494b25e315e81d",
+  "expected_ledger_head": "ee32c668627d79b754e4d9a4d4bc5fd19f7dd6508457c5ec89ef2d55e832881d",
+  "created_at": "2026-08-20T00:24:26.2650924Z",
+  "content_fingerprint": "c60151a995494b25e315e81d7abeb67ae095c76ff8da6d796cb65ce3c1615b6c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Triangle-wall K5 quotient-line audit packet",
+      "version": "working-tree-2026-08-19",
+      "locator": "research/nima/triangle-wall-kdepth5-ambient13-quotient-line-audit.json",
+      "entity_id": "source:de2510e1534ddf1a3cc1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Test whether Entry 1063's canonical non-descent quotient line survives labelled K4-to-K5 inclusion",
+      "entity_id": "test:8f12bd4825d982b0a705"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The canonical triangle-wall non-descent quotient line survives the same-window K4-to-K5 inclusion with rank one",
+      "entity_id": "claim:60df12d8ecff9b6466df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:8f12bd4825d982b0a705",
+      "target_id": "claim:60df12d8ecff9b6466df",
+      "relation_id": "rel:tests-ac85fbf53f3b4c4f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:60df12d8ecff9b6466df",
+      "target_id": "source:de2510e1534ddf1a3cc1",
+      "relation_id": "rel:derived_from-60447749bc948bcd"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "triangle-wall-k5-quotient-line-survival-20260819",
+      "test_id": "test:placeholder",
+      "actor": "marici.Nima",
+      "outcome": "The seven graph-zero relations have target-image rank 7; adjoining any normalized representative of the quotient direction raises target-image rank to 8. The quotient-line image rank is therefore 1. Its representative has 41 block-zero terms and one block-one term, and no block-two term is produced.",
+      "evidence": [
+        {
+          "source_id": "source:placeholder",
+          "locator": "research/nima/triangle-wall-kdepth5-ambient13-quotient-line-audit.json",
+          "paraphrase": "Durable finite-field audit records source relation dimensions 8 and 7, target image ranks 8 and 7, quotient image rank one, and absence of block two."
+        }
+      ]
+    }
+  ],
+  "digest": "bc093474072c6897177bf5842b9d66b67db32d3816a82b0b4516c2a6a4a4ecd0"
+}

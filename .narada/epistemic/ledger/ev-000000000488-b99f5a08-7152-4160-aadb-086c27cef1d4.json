@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 488,
+  "event_id": "ev-000000000488-b99f5a08-7152-4160-aadb-086c27cef1d4",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5f8dd096e5b71e05054244e27e5a0ffb99e90f86e72eeba3e652c9a3794dbfae",
+  "proposal_id": "ep_27c975e2-b51f-49f9-98d3-33e7f6bcb369",
+  "proposal_digest": "df893a814c4937054e1ce228be5840d0f07deeeb2f6be52c5e8f82b12658e466",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-871",
+      "local_ref": "src871",
+      "kind": "source",
+      "title": "Ledger Entry 871",
+      "version": "c29564e",
+      "locator": "src/ledger/20260818-871 The Surviving Horizontal Gauge Is Quartic-Regular.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-871",
+      "local_ref": "claim871",
+      "kind": "claim",
+      "title": "The surviving horizontal marked-top gauge is quartic-regular"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-871",
+      "local_ref": "test871",
+      "kind": "test",
+      "title": "Exact two-variable marked algebraic horizontal-gauge test",
+      "locator": "research/nima/check_marked_algebraic_horizontal_gauge.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim871",
+      "target_ref": "src871",
+      "source_id": "marici-claim-entry-871",
+      "target_id": "marici-source-entry-871",
+      "relation_id": "rel:derived_from-5b52e342af285390"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test871",
+      "target_ref": "claim871",
+      "source_id": "marici-test-entry-871",
+      "target_id": "marici-claim-entry-871",
+      "relation_id": "rel:tests-6c80b7e50aef9c11"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-871",
+      "subject_id": "marici-claim-entry-871",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The explicit rank-one gauge satisfies both exact horizontal PDEs and its denominator is coprime to the quartic.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-871",
+          "locator": "research/nima/marked-algebraic-horizontal-gauge.json",
+          "paraphrase": "Both horizontal residuals vanish over QQ(u,v); the denominator factors only through Ptop and D1 and is coprime to Q."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-871",
+      "test_id": "marici-test-entry-871",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-871",
+          "locator": "research/nima/marked-algebraic-horizontal-gauge.json",
+          "paraphrase": "Exact SageMath computation reports rank one, two zero PDE residuals, and Q-coprime denominator."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User directed marici.Nima to continue and use the epistemic graph."
+  },
+  "idempotency_key": "auto-admission-dc371b59dba0bd07cee98ab8",
+  "occurred_at": "2026-08-19T03:23:20.337588Z",
+  "certifies_truth": false,
+  "event_hash": "721c65f41eb97c72a2a8492acf22987d02607fdb69438035cfa6fb414ea45c72"
+}

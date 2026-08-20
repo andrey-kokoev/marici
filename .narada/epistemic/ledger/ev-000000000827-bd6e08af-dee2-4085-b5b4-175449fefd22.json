@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 827,
+  "event_id": "ev-000000000827-bd6e08af-dee2-4085-b5b4-175449fefd22",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f95a4c312a7bf8b049a376681d4ee6110d2b142517ac69f594ec2d394af71beb",
+  "proposal_id": "ep_ab12ebb8-5844-46d4-9701-783852809771",
+  "proposal_digest": "3e4fa74011c05e1c0b427afbd82e560348b94971e883942028b08ac998f8155e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1122 — The Positive Regulator Cone Does Not Select the Quadratic Kummer Sheet",
+      "path": "src/ledger/20260820-1122 The Positive Regulator Cone Does Not Select the Quadratic Kummer Sheet.md",
+      "status": "established",
+      "entity_id": "mariciledger_entry:9c22a224babd7fc9cae7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Independent positive regulators do not select a quadratic Kummer sheet",
+      "body": "At the exceptional center, s=(-epsilon1+epsilon2-epsilon3)/(epsilon1+epsilon2+epsilon3). The reachable collision root -3+2sqrt(2) pulls back to sqrt(2)epsilon2=epsilon1+epsilon3, and both sides meet the strictly positive regulator cone. Thus the frozen sign prescription selects neither sheet nor crossing class.",
+      "status": "established",
+      "entity_id": "mariciclaim:b44455c632930b292e2d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact quadratic regulator-chamber audit",
+      "path": "research/benincasa/results/rank12-u0-v2-quadratic-regulator-chambers.json",
+      "status": "passed",
+      "entity_id": "maricitest:9a1d9b3f3a13c2f30018"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:9c22a224babd7fc9cae7",
+      "target_id": "mariciclaim:b44455c632930b292e2d",
+      "relation_id": "rel:maricirecords-02054606ed4d8bf4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:b44455c632930b292e2d",
+      "target_id": "maricitest:9a1d9b3f3a13c2f30018",
+      "relation_id": "rel:maricisupported_by-43ba5745db1e9a36"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and record the quadratic Kummer regulator-cone chamber test"
+  },
+  "idempotency_key": "auto-admission-2628a12b1a5d5d67f0c5a924",
+  "occurred_at": "2026-08-20T11:57:48.1407741Z",
+  "certifies_truth": false,
+  "event_hash": "77dee21bcae07dc13d018c0a3d829517d9d2ff8030b755def81f731893f3a091"
+}

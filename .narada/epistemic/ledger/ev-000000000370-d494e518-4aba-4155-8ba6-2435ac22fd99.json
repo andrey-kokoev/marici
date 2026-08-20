@@ -1,0 +1,67 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 370,
+  "event_id": "ev-000000000370-d494e518-4aba-4155-8ba6-2435ac22fd99",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c3812dea8ecc2bbea7052a39f6b71fcd9f07c0f7ebef06c70dfec6ddb6f3fc2c",
+  "proposal_id": "ep_017ccc71-5567-48ea-97fc-8b8192a58bf9",
+  "proposal_digest": "447a839a6b6187e5160048dd18f38d2c5ad3d2665444ab0703afa367cc7e05a1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-756",
+      "kind": "source",
+      "title": "Ledger Entry 756 — The Labelled G12-to-G31 Residue-Chart Transition",
+      "version": "2026-08-18",
+      "locator": "src/ledger/20260818-756 The Labelled G12-to-G31 Residue-Chart Transition.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-marici-g12-g31-oriented-transition",
+      "kind": "claim",
+      "title": "The oriented G12 and G31 retained-pivot residue presentations are canonically isomorphic under labelled sigma_23 transport"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-marici-g12-g31-retained-pivot-descent",
+      "kind": "test",
+      "title": "Exact retained-pivot descent audit for the labelled G12-to-G31 residue-chart transition"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-marici-g12-g31-oriented-transition",
+      "target_id": "source-marici-ledger-756",
+      "relation_id": "rel:derived_from-0505de32bfe44c2f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-marici-g12-g31-retained-pivot-descent",
+      "target_id": "claim-marici-g12-g31-oriented-transition",
+      "relation_id": "rel:tests-ebb4d6f92520a9c9"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-marici-756-g12-g31-transition",
+      "test_id": "test-marici-g12-g31-retained-pivot-descent",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: 6317 mapped relations reduce to zero; forward and reverse quotient maps have rank 21; signed roundtrip is identity",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-756",
+          "locator": "research/benincasa/g12-g31-residue-chart-transition.json",
+          "paraphrase": "Machine-readable exact finite-field audit records the forced residue sign, labelled denominator map, full-rank transport, and zero relation/roundtrip failures."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "reason": "Recording the verified result of the operator-directed cosmology residue-chart transition calculation"
+  },
+  "idempotency_key": "auto-admission-9977d58c2fa694211794b694",
+  "occurred_at": "2026-08-18T19:07:05.5930871Z",
+  "certifies_truth": false,
+  "event_hash": "ccb8673ff30de2f266a0941abf17fe4a12889d5e8eb01ebf60693196dfac0625"
+}

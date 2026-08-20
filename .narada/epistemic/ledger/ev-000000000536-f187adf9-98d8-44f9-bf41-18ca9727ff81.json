@@ -1,0 +1,71 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 536,
+  "event_id": "ev-000000000536-f187adf9-98d8-44f9-bf41-18ca9727ff81",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0dff25bc8e0a40676e78ec0cdc77aea8bb35abe20e8b566fb38dcdcd1e4344d6",
+  "proposal_id": "ep_1ba6d82c-46b0-40a7-8d64-26ae2e11987f",
+  "proposal_digest": "1eed7e13d1aff37eb0b2c9f76ab2d18341432c755822ce1000a59d11f99e9a23",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source-marici-ledger-919",
+      "kind": "source",
+      "title": "Entry 919 — The Off-Diagonal Exceptional Line Glues with a Degree-Zero Hecke Modification",
+      "version": "20260819-919",
+      "locator": "src/ledger/20260819-919 The Off-Diagonal Exceptional Line Glues with a Degree-Zero Hecke Modification.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim-string-off-diagonal-rees-gluing",
+      "kind": "claim",
+      "title": "The off-diagonal exceptional line glues globally with divisor D_a-D_y",
+      "version": "1",
+      "locator": "research/benincasa/string-six-point-rees-gluing.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test-string-off-diagonal-rees-gluing",
+      "kind": "test",
+      "title": "Exact three-chart Rees overlap test",
+      "version": "1",
+      "locator": "research/benincasa/marici-gm/src/bin/string_six_point_rees_gluing.rs"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim-string-off-diagonal-rees-gluing",
+      "target_id": "source-marici-ledger-919",
+      "relation_id": "rel:derived_from-42a9464de5c59952"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test-string-off-diagonal-rees-gluing",
+      "target_id": "claim-string-off-diagonal-rees-gluing",
+      "relation_id": "rel:tests-7f96bd0a9f551045"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome-string-off-diagonal-rees-gluing-20260819",
+      "test_id": "test-string-off-diagonal-rees-gluing",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: 1/U=A=C/D on all three overlaps, giving constant projective image and divisor D_a-D_y of degree zero",
+      "evidence": [
+        {
+          "source_id": "source-marici-ledger-919",
+          "locator": "Entry 919, Chart factors through Global divisor",
+          "paraphrase": "Exact overlap substitutions globalize the local exceptional line without an additional unit or sign."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "instruction": "Record the verified global Rees-chart gluing and divisor."
+  },
+  "idempotency_key": "auto-admission-960ea9c4924b7a1af0351e1c",
+  "occurred_at": "2026-08-19T13:20:33.3028287Z",
+  "certifies_truth": false,
+  "event_hash": "a80a1a4cb70872691605c324d6fe4618fce6dee04660b4ef18a1107edd38468e"
+}

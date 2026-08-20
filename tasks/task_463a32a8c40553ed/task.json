@@ -1,0 +1,162 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_463a32a8c40553ed",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Neutral DAG fixture Stage A. Return only valid JSON with exactly this shape: {\"items\":[1,2,3,4],\"stage\":\"A\"}. Do not read or write files.",
+  "request_fingerprint": "735ea2cd8ddf4878ab53cb10a2c38680bbc2b4ab3da78934791eb20389257ab9",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T19:34:44.8343378Z",
+  "created_at_ms": 1786995284834,
+  "started_at": "2026-08-17T19:34:44.9712758Z",
+  "started_at_ms": 1786995284971,
+  "finished_at": "2026-08-17T19:36:20.2386598Z",
+  "finished_at_ms": 1786995380238,
+  "duration_ms": 95267,
+  "updated_at": "2026-08-17T19:36:20.2386612Z",
+  "cancelled_at": null,
+  "idempotency_key": "neutral-dag-a-20260817-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "read-only",
+    "max_run_ms": 300000,
+    "wait_for_completion": false,
+    "max_retries": 0
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-882f52f484e04fbf96abd734db73d19e"
+        ],
+        "current_run_id": "run-882f52f484e04fbf96abd734db73d19e",
+        "started_at": "2026-08-17T19:34:44.9712855Z",
+        "finished_at": "2026-08-17T19:36:20.2376965Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-882f52f484e04fbf96abd734db73d19e",
+        "status": "failed",
+        "finished_at": "2026-08-17T19:36:20.2376761Z",
+        "duration_ms": 6920,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-882f52f484e04fbf96abd734db73d19e",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: failed. No substantive objective result was reported."
+}

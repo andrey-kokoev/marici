@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_14147ea1-7234-4741-8720-77bcf65f087a",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "summary": "Operator directed continuation of the Marici cosmology falsification program; claim is sourced to the frozen primary paper and a checked local derivation."
+  },
+  "idempotency_key": "marici-benincasa-entry-651-syzygy-ibp-boundary-20260818",
+  "expected_ledger_head": "2e55ecc32aca3f782218f2b9b209d3bf963198d5b475ddfc53baadfe9e64d0ad",
+  "created_at": "2026-08-18T14:00:50.4316398Z",
+  "content_fingerprint": "0bc04b2e64f998c57bd0698fa5213f5fb8a757f71d1f17c44cad71d154024436",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "paper",
+      "kind": "source",
+      "title": "On one-loop corrections to the Bunch-Davies wavefunction of the universe",
+      "version": "arXiv:2408.16386",
+      "locator": "https://arxiv.org/abs/2408.16386",
+      "entity_id": "source:9904c50bac03daf83799"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Dimension-preserving syzygy IBP has vanishing physical Cayley-Menger boundary flux",
+      "version": "ledger-entry-651",
+      "locator": "src/ledger/20260818-651 Syzygy IBP Restores Physical Cayley-Menger Boundary Vanishing.md",
+      "description": "V(K)=n0 K raises the normal flux from K^gamma to K^(gamma+1), hence to K^(1/2) at epsilon=0.",
+      "entity_id": "claim:135b8984e210ba743146"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Physical syzygy-IBP normal-order audit",
+      "version": "v1",
+      "locator": "research/benincasa/three-site-syzygy-ibp-boundary-audit.json",
+      "entity_id": "test:f97cee7d2afcdc98d627"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "paper",
+      "source_id": "claim:135b8984e210ba743146",
+      "target_id": "source:9904c50bac03daf83799",
+      "relation_id": "rel:derived_from-93ae26778109ecf8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:f97cee7d2afcdc98d627",
+      "target_id": "claim:135b8984e210ba743146",
+      "relation_id": "rel:tests-ceb51318d83852de"
+    }
+  ],
+  "digest": "425f4396dc58032f7148cf5a2d4fe54694beaf6e35f3199496c7cde1cf372919"
+}

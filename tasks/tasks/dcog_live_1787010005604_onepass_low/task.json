@@ -1,0 +1,406 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_live_1787010005604_onepass_low",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside JSON.",
+  "request_fingerprint": "d54649a920b042eafc91b1a86d429008aed60f497f30528c9f94378f6ee74365",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T23:40:05.6427576Z",
+  "created_at_ms": 1787010005642,
+  "started_at": "2026-08-17T23:40:05.8529271Z",
+  "started_at_ms": 1787010005852,
+  "finished_at": "2026-08-17T23:42:19.5783473Z",
+  "finished_at_ms": 1787010139578,
+  "duration_ms": 133726,
+  "updated_at": "2026-08-17T23:42:19.5783563Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_live_1787010005604_onepass_low",
+  "constraints": {
+    "queue_timeout_ms": 900000,
+    "max_run_ms": 300000,
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "preflight_paths": [
+      {
+        "access": "read",
+        "label": "frozen_math_fixture",
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json"
+      }
+    ],
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_retries": 0,
+    "authority": "read"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "output_schema": {
+          "required": [
+            "typed_representation",
+            "decisive_representation",
+            "minimal_reduction",
+            "residual_complex",
+            "unconditional_homology",
+            "conditional_conclusions",
+            "coefficient_gate",
+            "constructed_vs_compatible",
+            "remaining_construction",
+            "falsifier"
+          ],
+          "name": "primary"
+        },
+        "kind": "worker",
+        "id": "primary"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "passed",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-4ff49c56b6bf4fb5bb8813a07ec5b7e1"
+        ],
+        "current_run_id": "run-4ff49c56b6bf4fb5bb8813a07ec5b7e1",
+        "started_at": "2026-08-17T23:40:05.8529596Z",
+        "finished_at": "2026-08-17T23:42:19.5737699Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "coefficient": "R is arbitrary commutative unital, c=rho(p) is nonzero; no unit, domain, or multiplicativity assumption is given.",
+              "complex": "0 -> C2=R x direct_sum R y --delta--> C1=R z -> 0",
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c 0], with columns (x,y) and row z",
+              "residual_matrix": "[c], multiplication by c from R to R",
+              "rank_statement": "The residual source and target are rank-one free modules, so the matrix shape is rank-compatible. Nonzero c does not by itself establish rank one over an arbitrary ring or make c a unit."
+            },
+            "minimal_reduction": {
+              "reduction": "Quotient C2 by the pure beta-supported summand R y, equivalently restrict the displayed map to R x.",
+              "result": "0 -> R xbar --multiplication by c--> R z -> 0",
+              "caveat": "This is not a homology-preserving reduction on the supplied complex: R y is a nonzero cycle and no incoming degree-3 differential is supplied. No alpha/beta splitting of the mixed-support generator x is justified."
+            },
+            "residual_complex": {
+              "map": "m_c:R -> R, r -> cr",
+              "kernel": "Ann_R(c)={r in R: rc=0}",
+              "cokernel": "R/cR"
+            },
+            "unconditional_homology": {
+              "full_H2": "Ann_R(c) x direct_sum R y",
+              "full_H1": "(R/cR) z",
+              "other_degrees": "zero",
+              "acyclicity": "The full displayed complex is not acyclic because y is a nonzero degree-2 cycle."
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 is zero; the full H2 is then R y.",
+              "If c is a unit, the residual complex is acyclic, but the full complex still has H2=R y.",
+              "If R is a domain, the given c nonzero implies residual injectivity and generic rank one, but not residual acyclicity.",
+              "If c is a nonunit, residual H1=R/cR is nonzero. If c is a nonzero zero-divisor, residual H2=Ann_R(c) is nonzero."
+            ],
+            "coefficient_gate": {
+              "known": "c is nonzero",
+              "needed_for_injectivity": "Ann_R(c)=0, equivalently c is a non-zero-divisor",
+              "needed_for_surjectivity_or_residual_acyclicity": "cR=R, equivalently c is a unit",
+              "not_implied": "Primitivity of p and additivity of rho do not imply that c is regular or invertible."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The stated values define a typed R-linear map: delta(x)=c z and delta(y)=0; the support rule accounts for the zero on y.",
+              "compatible": "Compatibility with any stronger incidence, multiplicative, rank, contracting-homotopy, or acyclicity requirement is not established because those hypotheses are absent."
+            },
+            "remaining_construction": {
+              "residual": "To prove residual acyclicity, construct u in R with uc=1. To prove only residual injectivity, establish Ann_R(c)=0.",
+              "full": "To make the full complex acyclic, additionally remove or contract R y via justified extra structure, such as an incoming degree-3 differential; none is supplied."
+            },
+            "falsifier": [
+              "R=Z, c=2, and rho(n p)=2n: c is nonzero and regular, but residual H1=Z/2Z, so nonzero does not imply acyclicity.",
+              "R=Z/4Z, c=2, and rho(n p)=2n mod 4: c is nonzero but a zero-divisor, and residual H2=Ann(c) is nonzero."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-4ff49c56b6bf4fb5bb8813a07ec5b7e1",
+        "status": "completed",
+        "finished_at": "2026-08-17T23:42:19.57337Z",
+        "duration_ms": 132250,
+        "output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "coefficient": "R is arbitrary commutative unital, c=rho(p) is nonzero; no unit, domain, or multiplicativity assumption is given.",
+              "complex": "0 -> C2=R x direct_sum R y --delta--> C1=R z -> 0",
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c 0], with columns (x,y) and row z",
+              "residual_matrix": "[c], multiplication by c from R to R",
+              "rank_statement": "The residual source and target are rank-one free modules, so the matrix shape is rank-compatible. Nonzero c does not by itself establish rank one over an arbitrary ring or make c a unit."
+            },
+            "minimal_reduction": {
+              "reduction": "Quotient C2 by the pure beta-supported summand R y, equivalently restrict the displayed map to R x.",
+              "result": "0 -> R xbar --multiplication by c--> R z -> 0",
+              "caveat": "This is not a homology-preserving reduction on the supplied complex: R y is a nonzero cycle and no incoming degree-3 differential is supplied. No alpha/beta splitting of the mixed-support generator x is justified."
+            },
+            "residual_complex": {
+              "map": "m_c:R -> R, r -> cr",
+              "kernel": "Ann_R(c)={r in R: rc=0}",
+              "cokernel": "R/cR"
+            },
+            "unconditional_homology": {
+              "full_H2": "Ann_R(c) x direct_sum R y",
+              "full_H1": "(R/cR) z",
+              "other_degrees": "zero",
+              "acyclicity": "The full displayed complex is not acyclic because y is a nonzero degree-2 cycle."
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 is zero; the full H2 is then R y.",
+              "If c is a unit, the residual complex is acyclic, but the full complex still has H2=R y.",
+              "If R is a domain, the given c nonzero implies residual injectivity and generic rank one, but not residual acyclicity.",
+              "If c is a nonunit, residual H1=R/cR is nonzero. If c is a nonzero zero-divisor, residual H2=Ann_R(c) is nonzero."
+            ],
+            "coefficient_gate": {
+              "known": "c is nonzero",
+              "needed_for_injectivity": "Ann_R(c)=0, equivalently c is a non-zero-divisor",
+              "needed_for_surjectivity_or_residual_acyclicity": "cR=R, equivalently c is a unit",
+              "not_implied": "Primitivity of p and additivity of rho do not imply that c is regular or invertible."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The stated values define a typed R-linear map: delta(x)=c z and delta(y)=0; the support rule accounts for the zero on y.",
+              "compatible": "Compatibility with any stronger incidence, multiplicative, rank, contracting-homotopy, or acyclicity requirement is not established because those hypotheses are absent."
+            },
+            "remaining_construction": {
+              "residual": "To prove residual acyclicity, construct u in R with uc=1. To prove only residual injectivity, establish Ann_R(c)=0.",
+              "full": "To make the full complex acyclic, additionally remove or contract R y via justified extra structure, such as an incoming degree-3 differential; none is supplied."
+            },
+            "falsifier": [
+              "R=Z, c=2, and rho(n p)=2n: c is nonzero and regular, but residual H1=Z/2Z, so nonzero does not imply acyclicity.",
+              "R=Z/4Z, c=2, and rho(n p)=2n mod 4: c is nonzero but a zero-divisor, and residual H2=Ann(c) is nonzero."
+            ]
+          },
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-4ff49c56b6bf4fb5bb8813a07ec5b7e1",
+        "status": "completed",
+        "output": {
+          "summary_text": "typed_representation={3 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}",
+          "diagnostics_text": null,
+          "structured_output": {
+            "typed_representation": {
+              "coefficient": "R is arbitrary commutative unital, c=rho(p) is nonzero; no unit, domain, or multiplicativity assumption is given.",
+              "complex": "0 -> C2=R x direct_sum R y --delta--> C1=R z -> 0",
+              "supports": {
+                "x": [
+                  "alpha",
+                  "beta"
+                ],
+                "y": [
+                  "beta"
+                ],
+                "z": [
+                  "alpha"
+                ]
+              }
+            },
+            "decisive_representation": {
+              "full_matrix": "[c 0], with columns (x,y) and row z",
+              "residual_matrix": "[c], multiplication by c from R to R",
+              "rank_statement": "The residual source and target are rank-one free modules, so the matrix shape is rank-compatible. Nonzero c does not by itself establish rank one over an arbitrary ring or make c a unit."
+            },
+            "minimal_reduction": {
+              "reduction": "Quotient C2 by the pure beta-supported summand R y, equivalently restrict the displayed map to R x.",
+              "result": "0 -> R xbar --multiplication by c--> R z -> 0",
+              "caveat": "This is not a homology-preserving reduction on the supplied complex: R y is a nonzero cycle and no incoming degree-3 differential is supplied. No alpha/beta splitting of the mixed-support generator x is justified."
+            },
+            "residual_complex": {
+              "map": "m_c:R -> R, r -> cr",
+              "kernel": "Ann_R(c)={r in R: rc=0}",
+              "cokernel": "R/cR"
+            },
+            "unconditional_homology": {
+              "full_H2": "Ann_R(c) x direct_sum R y",
+              "full_H1": "(R/cR) z",
+              "other_degrees": "zero",
+              "acyclicity": "The full displayed complex is not acyclic because y is a nonzero degree-2 cycle."
+            },
+            "conditional_conclusions": [
+              "If c is a non-zero-divisor, the residual H2 is zero; the full H2 is then R y.",
+              "If c is a unit, the residual complex is acyclic, but the full complex still has H2=R y.",
+              "If R is a domain, the given c nonzero implies residual injectivity and generic rank one, but not residual acyclicity.",
+              "If c is a nonunit, residual H1=R/cR is nonzero. If c is a nonzero zero-divisor, residual H2=Ann_R(c) is nonzero."
+            ],
+            "coefficient_gate": {
+              "known": "c is nonzero",
+              "needed_for_injectivity": "Ann_R(c)=0, equivalently c is a non-zero-divisor",
+              "needed_for_surjectivity_or_residual_acyclicity": "cR=R, equivalently c is a unit",
+              "not_implied": "Primitivity of p and additivity of rho do not imply that c is regular or invertible."
+            },
+            "constructed_vs_compatible": {
+              "constructed": "The stated values define a typed R-linear map: delta(x)=c z and delta(y)=0; the support rule accounts for the zero on y.",
+              "compatible": "Compatibility with any stronger incidence, multiplicative, rank, contracting-homotopy, or acyclicity requirement is not established because those hypotheses are absent."
+            },
+            "remaining_construction": {
+              "residual": "To prove residual acyclicity, construct u in R with uc=1. To prove only residual injectivity, establish Ann_R(c)=0.",
+              "full": "To make the full complex acyclic, additionally remove or contract R y via justified extra structure, such as an incoming degree-3 differential; none is supplied."
+            },
+            "falsifier": [
+              "R=Z, c=2, and rho(n p)=2n: c is nonzero and regular, but residual H1=Z/2Z, so nonzero does not imply acyclicity.",
+              "R=Z/4Z, c=2, and rho(n p)=2n mod 4: c is nonzero but a zero-divisor, and residual H2=Ann(c) is nonzero."
+            ]
+          },
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "missing": [],
+        "status": "passed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "passed",
+        "status": "passed"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. typed_representation={3 fields}, decisive_representation={3 fields}, minimal_reduction={3 fields}, residual_complex={3 fields}"
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 135,
+  "event_id": "ev-000000000135-7068e0c2-a0c1-4fa1-9fd5-4dcdefb027dc",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "81ee03e5c991ef28abcdab3722dac9256266da2333b35d73ba0044d6d933d35e",
+  "proposal_id": "ep_fe3fbe8a-ec18-4688-8a31-7fe696ba5e0f",
+  "proposal_digest": "eb3403ba3e63e1cf229a582fc168b29bbf25d9ba76886261f24c5745b44a31fa",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source449",
+      "kind": "source",
+      "title": "Entry 449 — Naive Fiber Multiplication Does Not Descend to the Soft Resonance",
+      "version": "git:51b7d9fbc0e3ca6bb151f51798fa89fbace536e8",
+      "locator": "src/ledger/20260817-449 Naive Fiber Multiplication Does Not Descend to the Soft Resonance.md",
+      "entity_id": "source:9baf07ab8aa7d8e59e06"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim449",
+      "kind": "claim",
+      "title": "Naive multiplication by either fibre coordinate fails to preserve the frozen soft exact image, with a stable common rank-one defect inside the tested length-two cokernel.",
+      "status": "proved_finite_field_test",
+      "scope": "cutoffs 12,16,20,24,28 over the frozen certificate field",
+      "evidence_refs": [
+        "research/voevodsky/check_soft_axis_resonance_multiplication_defect.py"
+      ],
+      "entity_id": "claim:4c5b05f6271b45e774dc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim449",
+      "target_ref": "source449",
+      "source_id": "claim:4c5b05f6271b45e774dc",
+      "target_id": "source:9baf07ab8aa7d8e59e06",
+      "relation_id": "rel:derived_from-deb3d2d65500d366"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit449",
+      "kind": "criticism",
+      "title": "The mixed blowup alone cannot yet carry the full length-two resonance because its naive fibre-coordinate module structure is not defined.",
+      "entity_id": "criticism:266657a4c5a63e455be2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit449",
+      "target_id": "problem:e3eee7b0922a1ae57dba",
+      "source_id": "criticism:266657a4c5a63e455be2",
+      "relation_id": "rel:criticizes-1bc0aaeeef86a9d7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit449",
+      "target_ref": "source449",
+      "source_id": "criticism:266657a4c5a63e455be2",
+      "target_id": "source:9baf07ab8aa7d8e59e06",
+      "relation_id": "rel:derived_from-d84e6d12acdad549"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next450",
+      "kind": "problem",
+      "title": "Derive chain-level homotopy-corrected fibre-coordinate operators on the soft exact complex and determine their action on the stable length-two resonance.",
+      "status": "open",
+      "entity_id": "problem:74455a55a25cb1ef9cb3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next450",
+      "target_ref": "claim449",
+      "source_id": "problem:74455a55a25cb1ef9cb3",
+      "target_id": "claim:4c5b05f6271b45e774dc",
+      "relation_id": "rel:depends_on-d809bcf7add1bdec"
+    }
+  ],
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the geometry-first Marici research program after reviewing Benincasa Entry 443."
+  },
+  "idempotency_key": "auto-admission-155727604b0f16c07a71f749",
+  "occurred_at": "2026-08-18T00:33:09.8276498Z",
+  "certifies_truth": false,
+  "event_hash": "83410f5de8c298c7e9382ca1282cd8c1911941da60889f83eb69bf343f207e9d"
+}

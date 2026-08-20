@@ -1,0 +1,213 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_20260817_onepass_medium",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Read only. Using only the frozen preflight evidence file, answer its question and return JSON with fields: typed_representation, decisive_representation, minimal_reduction, residual_complex, unconditional_homology, conditional_conclusions, coefficient_gate, constructed_vs_compatible, remaining_construction, falsifier. Make the strongest justified conclusion, distinguish rank compatibility from existence and nonzero from invertible, and do not assume facts absent from the packet. No prose outside the structured result.",
+  "request_fingerprint": "dde1f429d003f3550ce9754bc3d8a28852180526605249936a565c42aadca4dd",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T20:41:59.0275266Z",
+  "created_at_ms": 1786999319027,
+  "started_at": "2026-08-17T20:41:59.4473749Z",
+  "started_at_ms": 1786999319447,
+  "finished_at": "2026-08-17T20:47:19.167165Z",
+  "finished_at_ms": 1786999639167,
+  "duration_ms": 319720,
+  "updated_at": "2026-08-17T20:47:19.1671663Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog-20260817-onepass-medium-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "medium",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "typed_representation",
+      "decisive_representation",
+      "minimal_reduction",
+      "residual_complex",
+      "unconditional_homology",
+      "conditional_conclusions",
+      "coefficient_gate",
+      "constructed_vs_compatible",
+      "remaining_construction",
+      "falsifier"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-588b984a6a1a41f79b7bd1ce3b666483"
+        ],
+        "current_run_id": "run-588b984a6a1a41f79b7bd1ce3b666483",
+        "started_at": "2026-08-17T20:41:59.4473834Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-588b984a6a1a41f79b7bd1ce3b666483",
+        "status": "failed",
+        "finished_at": "2026-08-17T20:47:19.1663412Z",
+        "duration_ms": 300274,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=300000:elapsed_ms=300032"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-588b984a6a1a41f79b7bd1ce3b666483",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=300000:elapsed_ms=300032"
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "returned": [],
+        "missing": [
+          "typed_representation",
+          "decisive_representation",
+          "minimal_reduction",
+          "residual_complex",
+          "unconditional_homology",
+          "conditional_conclusions",
+          "coefficient_gate",
+          "constructed_vs_compatible",
+          "remaining_construction",
+          "falsifier"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "pending",
+        "status": "pending"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: failed. No substantive objective result was reported."
+}

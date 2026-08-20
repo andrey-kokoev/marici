@@ -1,0 +1,195 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "dcog_20260817_rerun4_seq1_a",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "failed",
+  "objective": "Stage A (extract), read only. Read only the frozen evidence packet. Return JSON with fields components, operation, constructed_facts, absent_assumptions. Extract the minimal typed representation: identifiers, degrees, modules/types, supports, coefficient typing, admissible operation support, and constructed values. Do not answer the final question, reduce the complex, or propose repairs. No prose outside JSON.",
+  "request_fingerprint": "c1ea355229b691f1e0a01eaf2e11a8b9b2b67d795cb8ad032158e7dff83a19a0",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T21:58:43.5102773Z",
+  "created_at_ms": 1787003923510,
+  "started_at": "2026-08-17T21:58:43.5560155Z",
+  "started_at_ms": 1787003923556,
+  "finished_at": "2026-08-17T22:03:43.9853701Z",
+  "finished_at_ms": 1787004223985,
+  "duration_ms": 300429,
+  "updated_at": "2026-08-17T22:03:43.9853715Z",
+  "cancelled_at": null,
+  "idempotency_key": "dcog_20260817_rerun4_seq1_a-v1",
+  "constraints": {
+    "authority": "read",
+    "cognition": "low",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "max_run_ms": 300000,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\delegated-cognition\\2026-08-17\\evidence.json",
+        "access": "read"
+      }
+    ]
+  },
+  "workflow": {
+    "template_id": "implement",
+    "steps": [
+      {
+        "id": "implement",
+        "kind": "worker",
+        "milestone_id": "implement"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "required_fields": [
+      "components",
+      "operation",
+      "constructed_facts",
+      "absent_assumptions"
+    ]
+  },
+  "depends_on_task_ids": [],
+  "import_task_outputs": [],
+  "import_worker_refs": [],
+  "external_dependencies": {
+    "status": "resolved",
+    "resolved_at": null,
+    "blocked_by": []
+  },
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
+    "step_states": {
+      "implement": {
+        "step_id": "implement",
+        "kind": "worker",
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-715838e5db3a49ce8c84c098ffe13f35"
+        ],
+        "current_run_id": "run-715838e5db3a49ce8c84c098ffe13f35",
+        "started_at": "2026-08-17T21:58:43.5560244Z",
+        "finished_at": null,
+        "error": null,
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "implement",
+        "step_kind": "worker",
+        "run_id": "run-715838e5db3a49ce8c84c098ffe13f35",
+        "status": "failed",
+        "finished_at": "2026-08-17T22:03:43.9845859Z",
+        "duration_ms": 300046,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=300000:elapsed_ms=300043"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "implement",
+        "run_id": "run-715838e5db3a49ce8c84c098ffe13f35",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=300000:elapsed_ms=300043"
+      }
+    ],
+    "imported_task_outputs": [],
+    "prior_step_outputs_ref": null,
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "returned": [],
+        "missing": [
+          "components",
+          "operation",
+          "constructed_facts",
+          "absent_assumptions"
+        ],
+        "status": "failed"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "pending",
+        "status": "pending"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ]
+  },
+  "summary": "objective_result: failed. No substantive objective result was reported."
+}

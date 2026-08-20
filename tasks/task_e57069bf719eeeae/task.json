@@ -1,0 +1,101 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_e57069bf719eeeae",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Read only: identify the repository directory name and current Git branch for C:\\Users\\andrey\\src\\marici. Make no changes. Return a concise structured result with the two values and verification evidence.",
+  "request_fingerprint": "ac4a5162a5ff33b230e82025dd273bcea15b7520ce3c0207c69aa934979efd2e",
+  "created_at": "2026-08-16T14:06:28.6569394Z",
+  "updated_at": "2026-08-16T14:07:09.0743347Z",
+  "cancelled_at": null,
+  "idempotency_key": "delegated-output-parser-fenced-live-20260816-2",
+  "constraints": {
+    "authority": "read",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "cognition": "low",
+    "max_run_ms": 120000,
+    "max_retries": 0,
+    "wait_for_completion": false,
+    "resumable": false
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 500,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-118b54f278df461b8c210d3670e48884"
+        ],
+        "current_run_id": "run-118b54f278df461b8c210d3670e48884",
+        "started_at": "2026-08-16T14:06:28.689186Z",
+        "finished_at": "2026-08-16T14:07:09.073685Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output": {
+          "summary_text": "I’ll perform a read-only Git/location check in the specified directory and report the directory name, branch, and command evidence.The first read-only probe was rejected by the command policy before execution, so I’m narrowing it to direct, non-mutating Git queries.```json\n{\n  \"repository_directory\": \"marici\",\n  \"current_git_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \".git\\\\HEAD\": \"ref: refs/heads/main\",\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-118b54f278df461b8c210d3670e48884",
+        "status": "completed",
+        "finished_at": "2026-08-16T14:07:09.0736788Z",
+        "output": {
+          "summary_text": "I’ll perform a read-only Git/location check in the specified directory and report the directory name, branch, and command evidence.The first read-only probe was rejected by the command policy before execution, so I’m narrowing it to direct, non-mutating Git queries.```json\n{\n  \"repository_directory\": \"marici\",\n  \"current_git_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \".git\\\\HEAD\": \"ref: refs/heads/main\",\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-118b54f278df461b8c210d3670e48884",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll perform a read-only Git/location check in the specified directory and report the directory name, branch, and command evidence.The first read-only probe was rejected by the command policy before execution, so I’m narrowing it to direct, non-mutating Git queries.```json\n{\n  \"repository_directory\": \"marici\",\n  \"current_git_branch\": \"main\",\n  \"verification\": {\n    \"working_directory\": \"C:\\\\Users\\\\andrey\\\\src\\\\marici\",\n    \".git\\\\HEAD\": \"ref: refs/heads/main\",\n    \"changes_made\": false\n  }\n}\n```",
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": []
+  },
+  "summary": null
+}

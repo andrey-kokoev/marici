@@ -1,0 +1,170 @@
+{
+  "schema": "narada.delegated_task.task.v1",
+  "task_id": "task_add2b1843f81c4e4",
+  "owner_site_id": "marici",
+  "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+  "created_by_site_id": "marici",
+  "visibility_scope": "site",
+  "task_root_scope": "site_root",
+  "status": "completed",
+  "objective": "Implement the finite falsifier requested by ledger entry 313 in the existing dependency-free Rust program research/benincasa/marici-gm/src/main.rs.\n\nScope:\n- Read the injected entry 313, main.rs, and README only.\n- Add one CLI command named soft-corner-hidden-test with arguments <point-count> <output.json>.\n- Reuse existing finite-field final-four connection, Gysin quotient, algebraic plane <e6,v_alg>, and matrix helpers.\n- At generic points near the SNC corner u=v=0, transport the rank-two elliptic quotient to the nodal coordinate n=uv/A Deligne frame, form the antisymmetric off-diagonal residue difference between u and v modulo diagonal coboundaries, and project it to the ordered algebraic target (e6,v_alg).\n- Emit epsilon_e6 and epsilon_v_alg plus enough independent checks to distinguish an exact computed zero from an unimplemented/default zero.\n- Validate at disjoint deterministic finite-field samples and test invariance under allowed lift changes/diagonal coboundaries.\n- Add a focused Rust unit test for the computed invariant.\n- Update README command list minimally.\n- Run rustfmt --check, cargo test, and the new release command.\n\nEpistemic guard:\nIf entry 313 plus main.rs do not determine the Deligne-frame transport or quotient projection unambiguously, DO NOT invent a convention and DO NOT edit files. Instead report the first missing formula/type choice precisely.\n\nWrite scope is limited to:\n- research/benincasa/marici-gm/src/main.rs\n- research/benincasa/marici-gm/README.md\n- research/benincasa/marici-gm/soft-corner-hidden-test.json\n\nDo not edit or overwrite any other artifact.",
+  "request_fingerprint": "1c17e1e6526668c5635507d22e22001c1dd36cb9895b61c963b8adfdee80dcaa",
+  "validated_request_ref": null,
+  "created_at": "2026-08-17T16:54:07.6529037Z",
+  "created_at_ms": 1786985647652,
+  "started_at": "2026-08-17T16:54:07.6912916Z",
+  "started_at_ms": 1786985647691,
+  "finished_at": "2026-08-17T16:57:12.3912843Z",
+  "finished_at_ms": 1786985832391,
+  "duration_ms": 184700,
+  "updated_at": "2026-08-17T16:57:12.3912859Z",
+  "cancelled_at": null,
+  "idempotency_key": "cosmology-implement-soft-corner-hidden-test-v1",
+  "constraints": {
+    "authority": "command",
+    "cognition": "medium",
+    "cwd": "C:\\Users\\andrey\\src\\marici",
+    "site_root": "C:\\Users\\andrey\\src\\marici",
+    "sandbox": "workspace-write",
+    "wait_for_completion": false,
+    "max_run_ms": 600000,
+    "max_retries": 0,
+    "preflight_paths": [
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\src\\ledger\\20260816-313 Three Soft-Corner Slices Do Not Determine the Mixed SNC Extension.md",
+        "access": "read",
+        "label": "entry_313"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\benincasa\\marici-gm\\src\\main.rs",
+        "access": "write",
+        "label": "rust_main"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\benincasa\\marici-gm\\README.md",
+        "access": "write",
+        "label": "readme"
+      },
+      {
+        "path": "C:\\Users\\andrey\\src\\marici\\research\\benincasa\\marici-gm\\soft-corner-hidden-test.json",
+        "access": "create",
+        "label": "certificate"
+      }
+    ]
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "primary",
+        "kind": "worker"
+      }
+    ]
+  },
+  "execution": {
+    "start": true,
+    "wait_for_completion": false,
+    "timeout_ms": 0,
+    "poll_ms": 5000,
+    "resumable": true,
+    "exit_interview": false,
+    "max_concurrency": 10,
+    "max_retries": 0
+  },
+  "acceptance": {},
+  "result": {
+    "schema": "narada.delegated_task.handoff.v1",
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "passed",
+    "acceptance_verdict": "passed",
+    "step_states": {
+      "primary": {
+        "step_id": "primary",
+        "kind": "worker",
+        "status": "completed",
+        "attempts": 1,
+        "run_ids": [
+          "run-e6d0530421894687a24065bcd7d48ef6"
+        ],
+        "current_run_id": "run-e6d0530421894687a24065bcd7d48ef6",
+        "started_at": "2026-08-17T16:54:07.6912985Z",
+        "finished_at": "2026-08-17T16:57:12.3902376Z",
+        "error": null,
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "I’ll first inspect the permitted source and README, then I’ll stop without editing if their existing types and formulas do not uniquely fix the requested Deligne-frame calculation.The permitted one-line availability probes both passed. I’m now reading the two authorized files themselves; I’ll use their existing…",
+          "truncated": false
+        }
+      }
+    },
+    "worker_refs": [
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-e6d0530421894687a24065bcd7d48ef6",
+        "status": "completed",
+        "finished_at": "2026-08-17T16:57:12.3902127Z",
+        "duration_ms": 181187,
+        "output": {
+          "summary_text": "I’ll first inspect the permitted source and README, then I’ll stop without editing if their existing types and formulas do not uniquely fix the requested Deligne-frame calculation.The permitted one-line availability probes both passed. I’m now reading the two authorized files themselves; I’ll use their existing…",
+          "truncated": false
+        }
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-e6d0530421894687a24065bcd7d48ef6",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll first inspect the permitted source and README, then I’ll stop without editing if their existing types and formulas do not uniquely fix the requested Deligne-frame calculation.The permitted one-line availability probes both passed. I’m now reading the two authorized files themselves; I’ll use their existing…",
+          "truncated": false
+        },
+        "error": null
+      }
+    ],
+    "residual_risks": [],
+    "observed_incoherencies": [],
+    "verification": [],
+    "changed_files": [],
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "command",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "not_applicable"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "passed",
+        "signal": null,
+        "status": "passed"
+      }
+    ]
+  },
+  "summary": "objective_result: pending. I’ll first inspect the permitted source and README, then I’ll stop without editing if their existing types and formulas do not uniquely fix the requested Deligne-frame calculation.The permitted one-line availability probes both passed. I’m now reading the two authorized files themselves; I’ll use their existing…"
+}

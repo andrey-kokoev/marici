@@ -1,0 +1,241 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_57f00681-570d-49d6-835e-d2d3256624fe",
+  "status": "submitted",
+  "actor": "marici.Codex",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "User requested continued repository curation and epistemic-graph admission of the Benincasa-derived ledger contribution."
+  },
+  "idempotency_key": "auto-proposal-05183b29f7bbe6bd56fa234e",
+  "expected_ledger_head": "1efc9245c4cb85152ff0f8c61d3a1dec025452ea12311bf678f4c04010d0a8a5",
+  "created_at": "2026-08-15T15:52:36.4430469Z",
+  "content_fingerprint": "05183b29f7bbe6bd56fa234eb86143ac849d120043275eda14c95e1a8085e1d1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "s145",
+      "kind": "source",
+      "title": "Ledger entry 145 — Three-Site Elliptic Coefficient System and Nearby-Cycle Degeneration",
+      "version": "2026-08-14/145",
+      "locator": "src/ledger/20260814-145 Three-Site Elliptic Coefficient System and Nearby-Cycle Degeneration.md",
+      "entity_id": "source:a6f91a20c985c049db56"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "s148",
+      "kind": "source",
+      "title": "Ledger entry 148 — Polarized Binary-Quartic Reconstruction of the Three-Site Elliptic Block",
+      "version": "2026-08-15/148",
+      "locator": "src/ledger/20260815-148 Polarized Binary-Quartic Reconstruction of the Three-Site Elliptic Block.md",
+      "entity_id": "source:2a550dec07d3a9462895"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "s149",
+      "kind": "source",
+      "title": "Ledger entry 149 — Polarized Binary-Quartic Embedding and Rank-One Extension Problem",
+      "version": "2026-08-15/149",
+      "locator": "src/ledger/20260815-149 Polarized Binary-Quartic Embedding and Rank-One Extension Problem.md",
+      "entity_id": "source:1d5562d84010981efa8f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "old_order",
+      "kind": "claim",
+      "title": "The first genuinely elliptic deformation occurs only at second normal order",
+      "entity_id": "claim:c712453fe1a611fde22b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "old_order",
+      "target_ref": "s145",
+      "source_id": "claim:c712453fe1a611fde22b",
+      "target_id": "source:a6f91a20c985c049db56",
+      "relation_id": "rel:derived_from-9b93cfe86bcea5a4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "order_crit",
+      "kind": "criticism",
+      "title": "Entry 145 conflates the elliptic Kodaira–Spencer variation with the first variation of the algebraic-letter quartic",
+      "entity_id": "criticism:3d083f6c0db1216d3cba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "order_crit",
+      "target_ref": "old_order",
+      "source_id": "criticism:3d083f6c0db1216d3cba",
+      "target_id": "claim:c712453fe1a611fde22b",
+      "relation_id": "rel:criticizes-6257298c5a58fc7b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "order_crit",
+      "target_ref": "s148",
+      "source_id": "criticism:3d083f6c0db1216d3cba",
+      "target_id": "source:2a550dec07d3a9462895",
+      "relation_id": "rel:derived_from-63e4f179779f7dfb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ks_corrected",
+      "kind": "claim",
+      "title": "The elliptic family has a nonzero first-order Kodaira–Spencer class, while gr1 Q vanishes and gr2 Q equals -8 X1 X2",
+      "entity_id": "claim:37b2c9ad101b60bbbd3e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "ks_corrected",
+      "target_ref": "old_order",
+      "source_id": "claim:37b2c9ad101b60bbbd3e",
+      "target_id": "claim:c712453fe1a611fde22b",
+      "relation_id": "rel:supersedes-5a3c289826620eb7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "ks_corrected",
+      "target_ref": "s148",
+      "source_id": "claim:37b2c9ad101b60bbbd3e",
+      "target_id": "source:2a550dec07d3a9462895",
+      "relation_id": "rel:derived_from-612c46f3fc970958"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "quartic_recon",
+      "kind": "claim",
+      "title": "The source-native polarized q-cut binary quartic reconstructs the published homogeneous three-site elliptic block",
+      "entity_id": "claim:651c24b18afe5d64c7b1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "quartic_recon",
+      "target_ref": "s148",
+      "source_id": "claim:651c24b18afe5d64c7b1",
+      "target_id": "source:2a550dec07d3a9462895",
+      "relation_id": "rel:derived_from-46a4452ae0300a4d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "disc_split",
+      "kind": "claim",
+      "title": "AB(A-B)=0 controls elliptic degeneration whereas Q=0 controls degeneration of the marked section or extension",
+      "entity_id": "claim:d14081dc5e8a53962ca4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "disc_split",
+      "target_ref": "s148",
+      "source_id": "claim:d14081dc5e8a53962ca4",
+      "target_id": "source:2a550dec07d3a9462895",
+      "relation_id": "rel:derived_from-e681ebba9457c5e8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "embed_problem",
+      "kind": "problem",
+      "title": "Construct the source 4×4 embedding and identify the rank-one extension operator L1",
+      "entity_id": "problem:b62e5225eb04aacc2329"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "embed_problem",
+      "target_ref": "s149",
+      "source_id": "problem:b62e5225eb04aacc2329",
+      "target_id": "source:1d5562d84010981efa8f",
+      "relation_id": "rel:derived_from-df0215fdc63b0256"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "embed_problem",
+      "target_ref": "quartic_recon",
+      "source_id": "problem:b62e5225eb04aacc2329",
+      "target_id": "claim:651c24b18afe5d64c7b1",
+      "relation_id": "rel:depends_on-9f4afb447857d998"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "l1_conj",
+      "kind": "conjecture",
+      "title": "L1 is rationally gauge-equivalent to ∂λ - 1/2 ∂λ log(-Q)",
+      "entity_id": "conjecture:fbe765ff6b38e9b63b1b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "l1_conj",
+      "target_ref": "embed_problem",
+      "source_id": "conjecture:fbe765ff6b38e9b63b1b",
+      "target_id": "problem:b62e5225eb04aacc2329",
+      "relation_id": "rel:addresses-d8ef3ef11aef1b3d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "l1_conj",
+      "target_ref": "s149",
+      "source_id": "conjecture:fbe765ff6b38e9b63b1b",
+      "target_id": "source:1d5562d84010981efa8f",
+      "relation_id": "rel:derived_from-cc30ad84b1b5cf3c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "l1_conj",
+      "target_ref": "disc_split",
+      "source_id": "conjecture:fbe765ff6b38e9b63b1b",
+      "target_id": "claim:d14081dc5e8a53962ca4",
+      "relation_id": "rel:depends_on-759ac55c3f3caee0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "l1_test",
+      "kind": "test",
+      "title": "Derive the source 4×4 system and compare its rank-one factor with ∂λ - 1/2 ∂λ log(-Q) without fitting",
+      "entity_id": "test:9a434c5c0b8185be4c81"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "l1_test",
+      "target_ref": "l1_conj",
+      "source_id": "test:9a434c5c0b8185be4c81",
+      "target_id": "conjecture:fbe765ff6b38e9b63b1b",
+      "relation_id": "rel:tests-a15cdca6c3919e3c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "l1_test",
+      "target_ref": "s149",
+      "source_id": "test:9a434c5c0b8185be4c81",
+      "target_id": "source:1d5562d84010981efa8f",
+      "relation_id": "rel:derived_from-60faee681a62fd96"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:marici:entry-145-normal-order-correction:2026-08-15",
+      "subject_id": "$order_crit",
+      "judgment": "supported correction; admission does not certify the replacement theorem",
+      "actor": "marici.Codex",
+      "reason": "The elliptic curve varies linearly in the normal parameter, while the separately defined algebraic-letter quartic has vanishing first grade.",
+      "evidence": [
+        {
+          "source_id": "$s148",
+          "locator": "Semantic correction to entry 145",
+          "paraphrase": "The elliptic family has nonzero first-order Kodaira–Spencer variation; only gr1 of Q vanishes."
+        }
+      ]
+    }
+  ],
+  "digest": "8efd6aea8ba5d2a0391a3b339279a2bc1450e89729d36df43411093fe94530fd"
+}

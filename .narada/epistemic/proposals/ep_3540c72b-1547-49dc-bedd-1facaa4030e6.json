@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3540c72b-1547-49dc-bedd-1facaa4030e6",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator-directed-research",
+    "ledger_entry": "545",
+    "commit": "99552d7b50e2542a59212d4e7a7de07c26eb2780"
+  },
+  "idempotency_key": "marici-entry-545-rank34-v2",
+  "expected_ledger_head": "9e81ee6ca26637e7d179c1e66d4ddaf014a2ecb8ae5fa7e2f6471deaed011dbd",
+  "created_at": "2026-08-18T05:17:17.71844Z",
+  "content_fingerprint": "9acd4dc815532b5a149bdf70cf7323663d1c1f8862540d4dbe0fca1e68026ad0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-entry-545-rank34",
+      "kind": "source",
+      "title": "Entry 545: Generic Lower-Sector Denominator-Deletion Cube",
+      "version": "99552d7b50e2542a59212d4e7a7de07c26eb2780",
+      "locator": "src/ledger/20260818-545 Generic Lower-Sector Denominator-Deletion Cube.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:generic-lower-full-deletion-rank-34",
+      "kind": "claim",
+      "title": "The generic four-denominator lower family has deletion-closed twisted critical rank 34 at generic six-scale kinematics"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:entry-545-two-fiber-groebner-rank",
+      "kind": "test",
+      "title": "Two-prime two-kinematic-point exact Gröbner rank test for the generic lower family"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:generic-lower-full-deletion-rank-34",
+      "target_id": "source:marici-entry-545-rank34",
+      "relation_id": "rel:derived_from-d739baadc9dc5471"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:entry-545-two-fiber-groebner-rank",
+      "target_id": "claim:generic-lower-full-deletion-rank-34",
+      "relation_id": "rel:tests-3ff665e691a8e744"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "entry545-rank34-two-fiber-outcome",
+      "test_id": "test:entry-545-two-fiber-groebner-rank",
+      "actor": "marici.Benincasa",
+      "outcome": "passed: full deletion-closed rank is 34 at both independent exact fibers; low-face ranks 7,12,18,17 calibrate zero, single, finite-pair, and parallel-pair supports",
+      "evidence": [
+        {
+          "source_id": "source:marici-entry-545-rank34",
+          "locator": "Entry 545, Exact rank theorem",
+          "paraphrase": "Exact sparse Gröbner quotients over F_32003 and F_65521 both have full rank 34 and basis size 223."
+        }
+      ]
+    }
+  ],
+  "digest": "29face4067ebb8b5c9e52e55ee32217fd9c27d9722b329637be839df512546c5"
+}

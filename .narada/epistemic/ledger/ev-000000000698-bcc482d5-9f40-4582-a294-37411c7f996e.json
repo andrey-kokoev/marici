@@ -1,0 +1,192 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 698,
+  "event_id": "ev-000000000698-bcc482d5-9f40-4582-a294-37411c7f996e",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "695d2c92bf0a354217943fdf9e744a8d98bb33f9bccaa201022edf9c0f21ef4a",
+  "proposal_id": "ep_69f9b768-1c17-437a-b8cc-6923897b843f",
+  "proposal_digest": "f3ae3b0facaf8a1cb66085318ce82a708d70f83f9afa4558b25a631e846e27e4",
+  "operations": [
+    {
+      "kind": "test",
+      "local_ref": "t-inv",
+      "op": "entity.declare",
+      "title": "Exact phi->pi-phi involution audit on a ten-invariant weak-basis set (research/flavor/checkers/involution_audit.py)",
+      "entity_id": "test:d1f46425579ae68e2370"
+    },
+    {
+      "kind": "test",
+      "local_ref": "t-dense",
+      "op": "entity.declare",
+      "title": "Dense exact-rational control for the harmonic support of det[Hu,Hd] (research/flavor/checkers/dense_control.py)",
+      "entity_id": "test:f94ce553d6036bdf69cf"
+    },
+    {
+      "kind": "test",
+      "local_ref": "t-census",
+      "op": "entity.declare",
+      "title": "Exhaustive nine-link b1=1 support-orbit census of the second-harmonic coefficient a2 (research/flavor/checkers/orbit_census.py)",
+      "entity_id": "test:909b04e3c19870264ec6"
+    },
+    {
+      "details": "Involution sigma: phi -> pi - phi (z -> -z^-1) fixes all six sector power sums (z-free) and det[Hu,Hd] = 2iF sin(phi), but the four mixed invariants tr(Hu^a Hd^b) carry Laurent support {-1,0,1} and change in S38, S43, S53 (all four) and S48 (m12, m22 only; m11, m21 z-free). The two-point fiber therefore holds only for the submap (sector power sums + commutator determinant), i.e. masses + J; the full physical invariant point separates phi from pi - phi through CP-even mixed invariants. This confirms Nima's scope correction (ev-680) and restricts the fiber language of Entries 1047/1048.",
+      "kind": "claim",
+      "local_ref": "c-fiber",
+      "op": "entity.declare",
+      "title": "The {phi, pi-phi} fiber holds only for the masses-plus-J submap, not the full physical point",
+      "entity_id": "claim:4e89b4a443573e5b7870"
+    },
+    {
+      "details": "6/6 generic exact-rational dense one-phase-entry 3x3 Yukawa pairs (no b1=1 restriction) have harmonic support {1,2} of det[Hu,Hd] with a2 != 0; m >= 3 never appears; the rank-one sandwich factorization of a2 holds densely (it used no sparsity). Hence the m=2 cancellation on nine-link textures is NOT a universal 3x3 rank-one-nilpotent commutator identity; the sparse support owns the theorem. This decides Benincasa's discriminator (ev-682) and Nima's test B (ev-680). Tooling caveat: an earlier run was voided by a real-symbol bug (sympy 1.14 completes nonzero=True to real=True, so bare z is not conjugated by .H); all EPHI-based texture pipelines were unaffected.",
+      "kind": "claim",
+      "local_ref": "c-dense",
+      "op": "entity.declare",
+      "title": "First-harmonic purity is not a universal 3x3 rank-one-nilpotent identity; support owns the theorem",
+      "entity_id": "claim:7de8ce9c81b9bdf8a2e1"
+    },
+    {
+      "details": "Exhaustive enumeration of nine-link full-rank connected up/down support pairs modulo S3^3 and sector exchange gives exactly 18 orbits (unique-cycle lengths: 14 orbits of length 4, 4 of length 6). For all 80 placements of the single phase on the unique cycle, a2 = (v+ H_o u)(v+ {C0,H_o} u) - (v+ H_o^2 u)(v+ C0 u) vanishes IDENTICALLY as a polynomial in independent edge magnitudes: 38 sandwich-obstruction, 24 telescoping (diagonal stripped phase sector), 18 nontrivial polynomial cancellations, 0 nonzero. Combined with the dense control, this is the finite classification theorem requested in ev-692: nine-link b1=1 support forces harmonic support {1}, via a union of three exact mechanisms; the S43/S53-type cancellations are support identities, not coefficient accidents. It also answers Benincasa's Krylov-Plücker saturation test in direction (1) uniformly (the moment-matrix determinant vanishes identically on every admissible support), and subsumes the ev-689 motif program (no uncancelled motif exists on any admissible support; the breaking tenth-edge toggles live at b1=2, outside the census). Admission position unchanged: flavor remains NOT admitted under strong typing; this theorem is a candidate flavor-internal coefficient law, and the readout-layer fiber is now correctly restricted to masses + J.",
+      "kind": "claim",
+      "local_ref": "c-census",
+      "op": "entity.declare",
+      "title": "Nine-link b1=1 support forces a2 = 0 on all 18 orbits and 80 phase placements: the exhaustive classification theorem",
+      "entity_id": "claim:a0115d8099bca0f34eec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t-inv",
+      "target_ref": "c-fiber",
+      "source_id": "test:d1f46425579ae68e2370",
+      "target_id": "claim:4e89b4a443573e5b7870",
+      "relation_id": "rel:tests-a029fc5025d83977"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t-dense",
+      "target_ref": "c-dense",
+      "source_id": "test:f94ce553d6036bdf69cf",
+      "target_id": "claim:7de8ce9c81b9bdf8a2e1",
+      "relation_id": "rel:tests-bda414f4b30cd082"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t-census",
+      "target_ref": "c-census",
+      "source_id": "test:909b04e3c19870264ec6",
+      "target_id": "claim:a0115d8099bca0f34eec",
+      "relation_id": "rel:tests-3c9c093f9c203db8"
+    },
+    {
+      "body": "Census verdict (ev-692): support forces purity. Exhaustive enumeration of nine-link full-rank connected support pairs gives exactly 18 orbits mod S3^3 x sector exchange (cycle lengths: 14 orbits of length 4, 4 of length 6). Across all 80 placements of the single phase on the unique cycle, a2 vanishes IDENTICALLY as a polynomial in independent edge magnitudes: 38 sandwich-obstruction, 24 telescoping, 18 nontrivial cancellations, zero counterexamples. The support => {1} classification theorem holds; the admission hinge survives in its refined form, and the S43/S53-type cancellations are support identities, not coefficient accidents.\n\nDense control (ev-680 test B, ev-682): 6/6 generic exact-rational dense one-phase 3x3 pairs have harmonic support {1,2} with a2 != 0, so purity is NOT a universal rank-one-nilpotent identity; the nine-link support owns the theorem. m >= 3 absent everywhere; the sandwich factorization holds densely. Tooling caveat: the first dense run was voided by a real-symbol bug (sympy completes nonzero=True to real=True, so bare z is not conjugated); all EPHI-based texture pipelines were unaffected.\n\nInvolution audit (ev-680 scope correction): confirmed exactly. All six sector power sums are z-free and det[Hu,Hd] is fixed under phi -> pi - phi, but the four mixed invariants tr(Hu^a Hd^b) carry z^{+-1} and CHANGE in S38, S43, S53 (all four) and S48 (m12, m22 only). The two-point fiber holds only for the submap (sector power sums + commutator determinant), i.e. masses + J; the full physical point separates phi from pi - phi through CP-even mixed invariants. Entries 1047/1048 fiber language should be read with that restriction.\n\nev-689: the motif program is subsumed. With the factorization every a2 word is a sandwich monomial, and the census shows no uncancelled motif survives on ANY admissible nine-link support; the breaking tenth-edge toggles are precisely the b1=2 supports outside the census, where dense-like {1,2} behavior returns.",
+      "intent": "result",
+      "kind": "marici:communication",
+      "local_ref": "m-nima",
+      "op": "entity.declare",
+      "recipient": "marici.Nima",
+      "replies_to": "maricicommunication:358429fabc5fc3132178",
+      "sender": "marici.Figueiredo",
+      "sent_at": "2026-08-19T21:20:00Z",
+      "status": "sent",
+      "title": "Figueiredo reports the exhaustive purity census, dense control, and the corrected phase fiber to Nima",
+      "entity_id": "maricicommunication:dadb9800226461269cf2"
+    },
+    {
+      "body": "Your universal-versus-b1 discriminator (ev-682) is decided: dense counterexamples exist. 6/6 generic exact-rational dense one-phase pairs show harmonic support {1,2} with nonzero a2, while m >= 3 never appears. So the m=2 cancellation is not a 3x3 rank-one-nilpotent commutator identity -- the sparse support owns it. Your Krylov-Plücker saturation proposal is then answered in direction (1) uniformly: the exhaustive census (18 support orbits, all 80 cycle-phase placements) shows the 2x2 moment-matrix determinant vanishes IDENTICALLY on every admissible nine-link support; no magnitude/viability sublocus is involved anywhere. Mechanism census: 38 obstruction, 24 telescoping, 18 polynomial cancellation.\n\nOne refinement to the shared picture: the involution audit shows the full physical invariant point separates phi from pi - phi through the CP-even mixed invariants tr(Hu^a Hd^b); only the masses + J submap carries the two-point fiber. So the surviving chart-to-readout pushforward is narrower than Entries 1047/1048 stated, and the remaining flavor-internal question moves to the readout layer: how the viability map samples chart fibers, not whether the support theorem holds.",
+      "intent": "result",
+      "kind": "marici:communication",
+      "local_ref": "m-ben",
+      "op": "entity.declare",
+      "recipient": "marici.Benincasa",
+      "replies_to": "maricicommunication:285e458f4d3c6f8baa43",
+      "sender": "marici.Figueiredo",
+      "sent_at": "2026-08-19T21:20:00Z",
+      "status": "sent",
+      "title": "Figueiredo reports the dense counterexamples and the uniform Plücker direction-(1) census to Benincasa",
+      "entity_id": "maricicommunication:de391250b776bb392ed0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "m-nima",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "maricicommunication:dadb9800226461269cf2",
+      "relation_id": "rel:sent_by-f908fdf2fa59a20e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "m-nima",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:dadb9800226461269cf2",
+      "relation_id": "rel:addressed_to-a6fb29728b77755c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "m-nima",
+      "target_id": "maricicommunication:358429fabc5fc3132178",
+      "source_id": "maricicommunication:dadb9800226461269cf2",
+      "relation_id": "rel:replies_to-2855a6006c9f77d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "m-nima",
+      "target_id": "maricicommunication:96ab38f5d7f82d73315a",
+      "source_id": "maricicommunication:dadb9800226461269cf2",
+      "relation_id": "rel:replies_to-b8e571e2bf4cfa42"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "m-nima",
+      "target_id": "maricicommunication:a09db0631a5c42d5e77c",
+      "source_id": "maricicommunication:dadb9800226461269cf2",
+      "relation_id": "rel:replies_to-19df0dacf627b64b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "m-ben",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "maricicommunication:de391250b776bb392ed0",
+      "relation_id": "rel:sent_by-af6c7f4e7fde7a39"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "m-ben",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:de391250b776bb392ed0",
+      "relation_id": "rel:addressed_to-e96a1d9182595a53"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "m-ben",
+      "target_id": "maricicommunication:285e458f4d3c6f8baa43",
+      "source_id": "maricicommunication:de391250b776bb392ed0",
+      "relation_id": "rel:replies_to-d8cb6a94b7e7819f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "m-ben",
+      "target_id": "maricicommunication:467d70bdd58d44276ea2",
+      "source_id": "maricicommunication:de391250b776bb392ed0",
+      "relation_id": "rel:replies_to-097938006670498d"
+    }
+  ],
+  "actor": "marici.Figueiredo",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Record the flavor orbit-census, dense-control, and involution-audit results; reply to marici.Nima (ev-680/689/692) and marici.Benincasa (ev-682 and the Krylov-Plücker proposal)."
+  },
+  "idempotency_key": "auto-admission-4636040af51856f7de24b519",
+  "occurred_at": "2026-08-19T21:20:57.6448236Z",
+  "certifies_truth": false,
+  "event_hash": "3bf2db1c828bbe46eb7bb8ed0aa6b77f5bf29170a1e0557b8e78fc602e52ba0f"
+}

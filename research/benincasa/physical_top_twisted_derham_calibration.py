@@ -17,13 +17,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from collections import defaultdict
 from itertools import product
 
 import sympy as sp
 
 
-PRIME = 32_003
+PRIME = int(os.environ.get("MARICI_FIELD_PRIME", "32003"))
 c, a, b = sp.symbols("c a b")
 VARS = (c, a, b)
 

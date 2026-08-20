@@ -1,0 +1,54 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_39fcbbef-aa89-43d3-9ced-faba8f3ab72b",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "self_correction",
+    "instruction": "Repair and verify every known defect."
+  },
+  "idempotency_key": "auto-proposal-cf30f9a8cb5360c0d8ed6827",
+  "expected_ledger_head": "6ec0ea62e49c17e6670853618d445993405984ba0f5047c38713be54a3af45cc",
+  "created_at": "2026-08-18T02:55:53.9379013Z",
+  "content_fingerprint": "cf30f9a8cb5360c0d8ed682757ea7952367c1fc7f23439aadddbc3987aa5df33",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:ledger-500-nima",
+      "kind": "source",
+      "title": "Entry 500 — The Endpoint Jet Is Odd and the Deck Does Not Swap Endpoints",
+      "version": "2026-08-17",
+      "locator": "src/ledger/20260817-500 The Endpoint Jet Is Odd and the Deck Does Not Swap Endpoints.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici:source:ledger-500-nima",
+      "target_id": "marici:source:ledger-500",
+      "relation_id": "rel:supersedes-7fc7a6a4616f9443"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici:source:ledger-500-nima",
+      "target_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "relation_id": "rel:criticizes-6d2e65a5f171515b"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:retract-endpoint-hecke-500",
+      "subject_id": "marici:claim:endpoint-lifts-glue-in-hecke-lattice",
+      "judgment": "retracted",
+      "actor": "marici.Benincasa",
+      "reason": "The proposed transition used b -> -b, but the mechanical orbit deck is rho(a)=-a with b fixed; the second endpoint chart is not supplied by orbit completion.",
+      "evidence": [
+        {
+          "source_id": "marici:source:ledger-500-nima",
+          "locator": "Correct character; Corrections to Entries 497--499",
+          "paraphrase": "Entry 500 mechanically retypes the Bockstein as anti-invariant and shows that the deck fixes both endpoints."
+        }
+      ]
+    }
+  ],
+  "digest": "62842ec338b5e83b776ae2e3964228bf436fc657452044851de3017e60943a9d"
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_28f71e1e-50e7-4d45-a998-ae3792b76ea7",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "evidence": "User instructed marici.Nima to continue and to work with the epistemic graph."
+  },
+  "idempotency_key": "marici-entry-870-admit-v2",
+  "expected_ledger_head": "af9b26453869d08d98c59cc9993ec0f00b67b18635aeab45967903c9d7cfb935",
+  "created_at": "2026-08-19T03:20:09.7784033Z",
+  "content_fingerprint": "3961b2a41372541c662fcc1b36f89fc42f58f6949e79b2479908ab8520fa107e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-870",
+      "local_ref": "src870",
+      "kind": "source",
+      "title": "Ledger Entry 870",
+      "version": "3418d6f",
+      "locator": "src/ledger/20260818-870 The Reconstructed Algebraic Marked Block Is Exactly Flat.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-870",
+      "local_ref": "claim870",
+      "kind": "claim",
+      "title": "The reconstructed algebraic marked block is exactly flat",
+      "scope": "Candidate-level result; exact source-identity certification remains pending."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-870",
+      "local_ref": "test870",
+      "kind": "test",
+      "title": "Exact mixed-curvature test for the reconstructed marked block",
+      "locator": "research/nima/check_marked_candidate_flatness.sage"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim870",
+      "target_ref": "src870",
+      "source_id": "marici-claim-entry-870",
+      "target_id": "marici-source-entry-870",
+      "relation_id": "rel:derived_from-8fe27704818cd1d4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test870",
+      "target_ref": "claim870",
+      "source_id": "marici-test-entry-870",
+      "target_id": "marici-claim-entry-870",
+      "relation_id": "rel:tests-5c3f74ce68a9b9b0"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-870",
+      "subject_id": "marici-claim-entry-870",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "All twelve mixed-curvature entries vanish exactly over QQ(u,v) under the documented row-derivative and nabla=d-A convention; this establishes flatness of the reconstructed candidate but not its pending source certification.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-870",
+          "locator": "research/nima/marked-candidate-flatness.json",
+          "paraphrase": "The exact packet reports zero for all twelve entries of the mixed curvature."
+        }
+      ]
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-outcome-entry-870",
+      "test_id": "marici-test-entry-870",
+      "actor": "marici.Nima",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-870",
+          "locator": "research/nima/marked-candidate-flatness.json",
+          "paraphrase": "12/12 exact rational mixed-curvature entries vanish at commit 3418d6f."
+        }
+      ]
+    }
+  ],
+  "digest": "58057b89ae0fbe0cd4ea27b8a395b16e68fa635b0c11c6d5e10d1676a44785f1"
+}

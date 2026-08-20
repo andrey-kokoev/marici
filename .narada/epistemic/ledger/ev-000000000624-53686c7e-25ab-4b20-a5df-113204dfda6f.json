@@ -1,0 +1,103 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 624,
+  "event_id": "ev-000000000624-53686c7e-25ab-4b20-a5df-113204dfda6f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "264139f9717e8a62ba7e79d57a14ea250c858fbeab1fecac8757aae29b07f6cc",
+  "proposal_id": "ep_4485d3a9-7257-49f7-8277-49e028430a16",
+  "proposal_digest": "27ecca5c337e364f5eb6d3e2ae0ed7ab2179a2846d92dbc83e2984256bf66ff6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-source-entry-1005",
+      "kind": "source",
+      "title": "Entry 1005 — The Minus Primitive Is Regular After Correct Basis Transport",
+      "version": "20260819-1005",
+      "locator": "src/ledger/20260819-1005 The Minus Primitive Is Regular After Correct Basis Transport.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-claim-entry-1005-corrected-support",
+      "kind": "claim",
+      "title": "The minus primitive maps to singleton occurrences 0 and 3 and is generically Betti-regular on the minus recombination locus"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-criticism-entry-1004-mixed-basis",
+      "kind": "criticism",
+      "title": "Entry 1004 mixed dense chamber indices with sparse occurrence indices"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici-test-entry-1005-basis-transport",
+      "kind": "test",
+      "title": "Exact dense-to-occurrence permutation and valuation audit"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici-claim-entry-1005-corrected-support",
+      "target_id": "marici-source-entry-1005",
+      "relation_id": "rel:derived_from-6932bcd4c9863e4b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "marici-criticism-entry-1004-mixed-basis",
+      "target_id": "marici-claim-entry-1004-betti-gate",
+      "relation_id": "rel:criticizes-17dc617b0babe94e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici-claim-entry-1005-corrected-support",
+      "target_id": "marici-claim-entry-1004-betti-gate",
+      "relation_id": "rel:supersedes-192a7eafdfbe1dc3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "marici-test-entry-1005-basis-transport",
+      "target_id": "marici-claim-entry-1005-corrected-support",
+      "relation_id": "rel:tests-6b816ef0e0eb73b0"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici-benincasa-entry-1005-test-outcome",
+      "test_id": "marici-test-entry-1005-basis-transport",
+      "actor": "marici.Benincasa",
+      "outcome": "pass: inverse frozen permutation maps dense 4,5 to occurrences 0,3 with valuation-one singleton walls, generically nonvanishing on the minus locus",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1005",
+          "locator": "research/benincasa/string-six-point-minus-twisted-cycle-lattice-gate.json",
+          "paraphrase": "Repaired checker exports the inverse permutation, corrected occurrences, wall factors, and generic regularity classification."
+        }
+      ]
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici-assessment-entry-1004-retracted",
+      "subject_id": "marici-claim-entry-1004-betti-gate",
+      "judgment": "retracted",
+      "actor": "marici.Benincasa",
+      "reason": "The claim was produced by equating coordinate numbers from different labelled bases without applying Entry 974's permutation.",
+      "evidence": [
+        {
+          "source_id": "marici-source-entry-1005",
+          "locator": "src/ledger/20260819-1005 The Minus Primitive Is Regular After Correct Basis Transport.md",
+          "paraphrase": "The exact inverse permutation sends the primitive to different source occurrences and removes the alleged generic resonance."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "description": "Retract Entry 1004 and admit the corrected dense-to-occurrence support transport"
+  },
+  "idempotency_key": "auto-admission-901d6249c5e3be410b2f659a",
+  "occurred_at": "2026-08-19T17:29:52.6066499Z",
+  "certifies_truth": false,
+  "event_hash": "898a1aae55f4bda44e79181fdc3004224ddf828204ea7092a9d1c13383456a79"
+}

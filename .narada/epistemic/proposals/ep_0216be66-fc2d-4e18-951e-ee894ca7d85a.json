@@ -1,0 +1,70 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0216be66-fc2d-4e18-951e-ee894ca7d85a",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology program and record the verified two-chart exceptional cocycle"
+  },
+  "idempotency_key": "auto-proposal-25ddc934c98dec8ffc767cd7",
+  "expected_ledger_head": "b694f6629d7fbc0d3721d54735cbab556acc79fe4bb757dedcd37086687dcf3f",
+  "created_at": "2026-08-20T07:59:11.0046048Z",
+  "content_fingerprint": "25ddc934c98dec8ffc767cd7b7746dbf5a460555dd8c168ca6fa68237373a619",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "marici:source",
+      "title": "Rank-twelve u=0 v=2 two-chart Rees cocycle packet",
+      "locator": "research/benincasa/rank12-u0-v2-exceptional-line.json",
+      "entity_id": "maricisource:f954cfdff36e14655365"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact two-chart rank-four connection cocycle test",
+      "status": "passed",
+      "body": "Independent p- and q-chart reductions have quotient rank four. With G=diag(r^-2,r^-1,r^-1,1), exact Symbolica reduction reports defect_count=0.",
+      "entity_id": "maricitest:48632522cfc5091fb790"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The first exceptional rank-four coefficient object glues across both Rees charts",
+      "status": "supported",
+      "body": "The independently reconstructed q-chart connection is related to the p-chart by the source-labelled Rees transition and introduces no new overlap support. This supports an existing joint carrier with a globally glued sector-specific rank-four coefficient object.",
+      "entity_id": "mariciclaim:8f9cbe8b6660628669ee"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:evidenced_by",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "mariciclaim:8f9cbe8b6660628669ee",
+      "target_id": "maricisource:f954cfdff36e14655365",
+      "relation_id": "rel:maricievidenced_by-d863729a96b64b22"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:8f9cbe8b6660628669ee",
+      "target_id": "maricitest:48632522cfc5091fb790",
+      "relation_id": "rel:maricitested_by-021fb07a6a5a068c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:uses_source",
+      "source_ref": "test",
+      "target_ref": "source",
+      "source_id": "maricitest:48632522cfc5091fb790",
+      "target_id": "maricisource:f954cfdff36e14655365",
+      "relation_id": "rel:mariciuses_source-c4e752dc68c5b50a"
+    }
+  ],
+  "digest": "f0ccf76fb8fc5a8fa49792e4b5608ce10ed6a03fa3fd2811a7fbf62bc4172a16"
+}

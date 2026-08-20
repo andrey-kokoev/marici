@@ -1,0 +1,106 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_36c647f6-8af0-4c2e-87b3-bffe3647476a",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Primary agent owns the exact certificate, ledger wording, and sparse graph admission."
+  },
+  "idempotency_key": "marici-ledger-175-sparse-delta-v1",
+  "expected_ledger_head": "426cc0fc4517798b57dc530085eccddf457107aee754ec5a6578ca349584e6c1",
+  "created_at": "2026-08-15T20:21:56.8328999Z",
+  "content_fingerprint": "a87281d7a11c48ae8e6ce7cf5285884a71885687b0a71796a7e74d03588c72be",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:marici-ledger175",
+      "local_ref": "source175",
+      "kind": "source",
+      "title": "Ledger 175 second-slice Q-regularity and physical-cycle provenance audit",
+      "version": "2026-08-15",
+      "locator": "src/ledger/20260815-175 Second-Slice Q-Regularity and the Missing Physical Residue Cycle.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:marici-ledger175-second-slice-q-regularity",
+      "local_ref": "test175",
+      "kind": "test",
+      "title": "Independent a1=3 generic-Q regularity test",
+      "version": "1",
+      "locator": "research/benincasa/derive_nine_master_second_slice_connection.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "problem:marici-physical-q-moving-chain-provenance",
+      "local_ref": "problem175",
+      "kind": "problem",
+      "title": "Source-defined physical moving-chain provenance of the three-site quartic Q",
+      "version": "1",
+      "locator": "research/benincasa/q_physical_provenance_audit.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:marici-ledger175-q-variation-underdetermined",
+      "local_ref": "claim175",
+      "kind": "claim",
+      "title": "Var_Q(Gamma_phys) is undefined from the frozen source package because the companion P and residue-cycle transport are absent",
+      "version": "1",
+      "locator": "src/ledger/20260815-175 Second-Slice Q-Regularity and the Missing Physical Residue Cycle.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test175",
+      "target_id": "claim:marici-ledger169-trivial-generic-q-monodromy",
+      "source_id": "test:marici-ledger175-second-slice-q-regularity",
+      "relation_id": "rel:tests-1c64ed0474909086"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim175",
+      "target_ref": "source175",
+      "source_id": "claim:marici-ledger175-q-variation-underdetermined",
+      "target_id": "source:marici-ledger175",
+      "relation_id": "rel:derived_from-05fd599ad0cc330c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim175",
+      "target_ref": "problem175",
+      "source_id": "claim:marici-ledger175-q-variation-underdetermined",
+      "target_id": "problem:marici-physical-q-moving-chain-provenance",
+      "relation_id": "rel:addresses-559cc81fbc56c1c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim175",
+      "target_id": "conjecture:088e8900f0d60d0898c8",
+      "source_id": "claim:marici-ledger175-q-variation-underdetermined",
+      "relation_id": "rel:addresses-100990dc98a8bba8"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "test-outcome:marici-ledger175-second-slice-and-source-audit",
+      "test_id": "test:marici-ledger175-second-slice-q-regularity",
+      "actor": "marici.Benincasa",
+      "outcome": "Second slice confirms zero generic-Q coefficient residue and identity monodromy; physical cycle variation remains underdetermined because source-fixed P, sheeted log pair, Leray tube, and lifted relative cycle are absent.",
+      "evidence": [
+        {
+          "source_id": "source:marici-ledger175",
+          "locator": "research/benincasa/nine_master_second_slice_connection.json",
+          "paraphrase": "Exact a1=3 certificate is squarefree at Q, regular at all Q roots, and matches the published L2."
+        },
+        {
+          "source_id": "source:marici-ledger175",
+          "locator": "research/benincasa/q_physical_provenance_audit.json",
+          "paraphrase": "Primary-source audit distinguishes the available i-epsilon boundary side and positive Cayley-Menger chain from the absent residue-cycle transport."
+        }
+      ]
+    }
+  ],
+  "digest": "410103a28f5dcabb4a867d4e7105caaa3465ea2a9f0e83da589fc56618c5d185"
+}

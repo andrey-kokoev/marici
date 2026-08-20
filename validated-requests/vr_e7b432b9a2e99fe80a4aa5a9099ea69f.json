@@ -1,0 +1,39 @@
+{
+  "schema": "narada.delegated_task.validated_request.v1",
+  "validated_request_ref": "vr_e7b432b9a2e99fe80a4aa5a9099ea69f",
+  "created_at": "2026-08-17T14:03:02.4964489Z",
+  "site_root": "C:\\Users\\andrey\\src\\marici",
+  "owner_site_id": "marici",
+  "request": {
+    "expected_owner_site_id": "marici",
+    "objective": "Read README.md without changing files. Report whether it exists and is readable, summarize its project purpose in one sentence, and return structured fields file_status and purpose.",
+    "idempotency_key": "ergonomics-execute-idempotency-retest-20260817-v2",
+    "acceptance": {
+      "required_fields": [
+        "file_status",
+        "purpose"
+      ],
+      "no_writes": true,
+      "strict_clean_run": true
+    },
+    "constraints": {
+      "authority": "read",
+      "cwd": "C:\\Users\\andrey\\src\\marici",
+      "site_root": "C:\\Users\\andrey\\src\\marici",
+      "cognition": "low",
+      "sandbox": "read-only",
+      "preflight_paths": [
+        {
+          "path": "README.md",
+          "access": "read",
+          "label": "project README"
+        }
+      ],
+      "max_retries": 0
+    },
+    "timeout_ms": 180000,
+    "poll_ms": 500
+  },
+  "request_digest": "e7b432b9a2e99fe80a4aa5a9099ea69f2dc36346176fc847a0f5cb0a2014c0f5",
+  "preflight_status": "deferred"
+}

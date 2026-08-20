@@ -1,0 +1,86 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_009307bd-08bb-49fd-a262-850e5b9b4810",
+  "status": "submitted",
+  "actor": "codex-continuation-agent",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Continue the Marici mathematical research program and preserve the verified holonomy obstruction."
+  },
+  "idempotency_key": "auto-proposal-d990a9f8cc73b14943247730",
+  "expected_ledger_head": "2894595fb5ae12df7361d8456468953f6fd656bb36c236c1219515802d11f3c3",
+  "created_at": "2026-08-18T00:12:59.8563796Z",
+  "content_fingerprint": "d990a9f8cc73b1494324773017c0a42ac516f7e58ac6009a00775c0739d39b11",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source444",
+      "kind": "source",
+      "title": "Entry 444 — The Physical Cut Nerve Carries Nontrivial Koszul Holonomy",
+      "version": "git:412c8b283fea3578925cd80b57909f5f9c874c24",
+      "locator": "src/ledger/20260817-444 The Physical Cut Nerve Carries Nontrivial Koszul Holonomy.md",
+      "entity_id": "source:85c69b1a04f6445ff52a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim444",
+      "kind": "claim",
+      "title": "The uniform Koszul comparison sign on the physical octagon Cut nerve represents a nonzero Z/2 cohomology class.",
+      "status": "proved",
+      "scope": "finite cellular physical Cut compatibility nerve",
+      "evidence_refs": [
+        "research/voevodsky/check_n8_cut_nerve_signed_holonomy.py"
+      ],
+      "cycle_basis_lengths": [
+        5,
+        4,
+        5,
+        5,
+        4
+      ],
+      "cycle_basis_holonomies": [
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "entity_id": "claim:b451683c703bfb722c0b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim444",
+      "target_ref": "source444",
+      "source_id": "claim:b451683c703bfb722c0b",
+      "target_id": "source:85c69b1a04f6445ff52a",
+      "relation_id": "rel:derived_from-ce2a1e2295e72f24"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim444",
+      "target_id": "problem:0b50dc96549c8fd94061",
+      "source_id": "claim:b451683c703bfb722c0b",
+      "relation_id": "rel:addresses-9eb464bb9b3feee4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "next445",
+      "kind": "problem",
+      "title": "Determine whether the normalization-sheet, conductor, and Thom orientation data supply the compensating local system for the nontrivial Cut-nerve Koszul class.",
+      "status": "open",
+      "entity_id": "problem:970443accb8275384892"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "next445",
+      "target_ref": "claim444",
+      "source_id": "problem:970443accb8275384892",
+      "target_id": "claim:b451683c703bfb722c0b",
+      "relation_id": "rel:depends_on-367cf06f2132c09b"
+    }
+  ],
+  "digest": "016d36b2b87214b0b7834680712e5f6acc0346e1c279ffc798b4c4f1f5e67db9"
+}
