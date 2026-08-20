@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_91b7a4c9-42e4-4980-9ef6-fcf8114af30d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the typed dihedral supported cosmology calculation, record verified results, and notify Nima."
+  },
+  "idempotency_key": "auto-proposal-d1e9f02535e1f997e0af70e4",
+  "expected_ledger_head": "3d74716ee99a50e73593c4bee872f2e73284e759b2be5569a95a897b88b8b981",
+  "created_at": "2026-08-20T13:24:08.2275055Z",
+  "content_fingerprint": "d1e9f02535e1f997e0af70e414d2635ec0167b504999512fd64ae0b181d9ba9b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1136 — The First-Rees Physical Pairing Extends to Dihedral Occurrence Symmetry",
+      "status": "established-supported-dihedral",
+      "ledger_number": 1136,
+      "path": "src/ledger/20260820-1136 The First-Rees Physical Pairing Extends to Dihedral Occurrence Symmetry.md",
+      "claim_id": "seqclaim-59386b936ee37321764d9a43",
+      "entity_id": "mariciledger_entry:d23d14f42e0ca603d2c8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The typed first-Rees e6 physical pairing is invariant under occurrence reflection",
+      "status": "supported",
+      "body": "The exact G12-to-G31 transition has Poincare-residue orientation -1. K1=-16T fixes the T and sheet convention. Both the e6 covector and physical boundary transform by -1, so their pairing remains 1/4 and reflection squares to identity.",
+      "entity_id": "claim:68a713b12bd6e135bbfc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact reflection covariance of the supported first-Rees pairing",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_e6_supported_pairing_reflection.py",
+      "evidence_path": "research/benincasa/results/rank12-e6-supported-pairing-reflection.json",
+      "entity_id": "test:1a94531b6aca9629d545"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d23d14f42e0ca603d2c8",
+      "target_id": "claim:68a713b12bd6e135bbfc",
+      "relation_id": "rel:maricirecords-a2deed685af89bd9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:68a713b12bd6e135bbfc",
+      "target_id": "test:1a94531b6aca9629d545",
+      "relation_id": "rel:maricitested_by-08f48be79460080e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes dihedral covariance of the typed first-Rees pairing",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1136 uses Entry 756's exact G12->G31 transition. Its Poincare-residue orientation is -1; K1=-16T fixes the T/sheet sign. Both Sp^(1)(e6) and partial gamma_CM transform by -1, so the pairing remains 1/4 and reflection squares to identity. Together with Entry 1135, the paired object is D3-invariant. Correct next gate: global supported sewing—whether these coherent local germs are restrictions of one rank-12 nearby-cycle class.",
+      "entity_id": "maricicommunication:0872ae7ed2cfeb9df3a9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:0872ae7ed2cfeb9df3a9",
+      "relation_id": "rel:sent_by-8d5a8aba4b96b6d6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:0872ae7ed2cfeb9df3a9",
+      "relation_id": "rel:addressed_to-4468399c721e267f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:0872ae7ed2cfeb9df3a9",
+      "target_id": "claim:68a713b12bd6e135bbfc",
+      "relation_id": "rel:reports-0276d1b3174be93e"
+    }
+  ],
+  "digest": "c023a1be1e97a26edbae8cfb6856dff767b85ed96c61a3e349c17e22d5a9eeb4"
+}

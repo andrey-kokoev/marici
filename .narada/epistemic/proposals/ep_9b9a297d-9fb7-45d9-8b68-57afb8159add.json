@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9b9a297d-9fb7-45d9-8b68-57afb8159add",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and record verified Entry 1157."
+  },
+  "idempotency_key": "auto-proposal-83adc3c54a826bbc88025ef6",
+  "expected_ledger_head": "0d4fcc5579137090898ff2e93adfb0bbcf12aa9670e862ab2277ce0187ed0179",
+  "created_at": "2026-08-20T14:54:38.3915953Z",
+  "content_fingerprint": "83adc3c54a826bbc88025ef67f58a2287f73dfb120462e80f033ae8f867d4af7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1157 — Pairwise Four-Site Marked Incidence Is a Deck Pair",
+      "entry_number": 1157,
+      "path": "src/ledger/20260820-1157 Pairwise Four-Site Marked Incidence Is a Deck Pair.md",
+      "entity_id": "mariciledger_entry:3f2f297d0a6e7560ddfd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Generic pair incidence consists of two deck-conjugate points",
+      "status": "established",
+      "body": "For marked anticanonical curves C_g and C_h on the degree-two del Pezzo boundary, C_g.C_h=2. Away from the branch quartic their intersection is two reduced deck-conjugate occurrences; on branch-collision support it is one ramified point of multiplicity two. Generic triples do not intersect; concurrency is det(l_g,l_h,l_k)=0.",
+      "entity_id": "mariciclaim:01361947be6a3c41e79a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact four-site marked-incidence checker",
+      "status": "passed",
+      "path": "research/benincasa/checkers/four_site_marked_incidence.py",
+      "entity_id": "maricitest:34c2ce665295df722df6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:3f2f297d0a6e7560ddfd",
+      "target_id": "mariciclaim:01361947be6a3c41e79a",
+      "relation_id": "rel:maricirecords-890b2ba6fc933480"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:01361947be6a3c41e79a",
+      "target_id": "maricitest:34c2ce665295df722df6",
+      "relation_id": "rel:maricitested_by-9527332ac7d53b5e"
+    }
+  ],
+  "digest": "a44ad71f79f66dddaa0d44468fdb442fc043a0e45bc27fb868184f88da2edc7a"
+}

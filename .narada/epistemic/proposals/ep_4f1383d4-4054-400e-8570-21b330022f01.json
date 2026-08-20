@@ -1,0 +1,102 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4f1383d4-4054-400e-8570-21b330022f01",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the typed cyclic supported cosmology calculation, record verified results, and notify Nima."
+  },
+  "idempotency_key": "auto-proposal-34dad3b50b68492a4aaaf7c0",
+  "expected_ledger_head": "360d47702e90db52f2605aa9f88b6ba07d3314db1e02192cf0ae9774e959a142",
+  "created_at": "2026-08-20T13:20:58.6298982Z",
+  "content_fingerprint": "34dad3b50b68492a4aaaf7c0ef82347ee5315b58e228e88f420c5b87d90685ba",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1135 — The First-Rees Physical Pairing Is Cyclically Invariant",
+      "status": "established-supported-cyclic",
+      "ledger_number": 1135,
+      "path": "src/ledger/20260820-1135 The First-Rees Physical Pairing Is Cyclically Invariant.md",
+      "claim_id": "seqclaim-f217dee18ff4bbbc66431a99",
+      "entity_id": "mariciledger_entry:e9be03c37bc92ea7a7d7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The typed supported first-Rees e6 pairing is one quarter in all three cyclic occurrences",
+      "status": "supported",
+      "body": "The e6 covector transports with homogeneity -2 and the dual physical boundary with +2, so chart scales cancel. All cyclic Leray orientations are +1 and the chart product is identity. The three pairings are (1/4,1/4,1/4).",
+      "entity_id": "claim:0c1a06006c42c6d2edd5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact cyclic transport of the supported first-Rees physical pairing",
+      "status": "passed",
+      "path": "research/benincasa/checkers/rank12_e6_supported_pairing_cyclic.py",
+      "evidence_path": "research/benincasa/results/rank12-e6-supported-pairing-cyclic.json",
+      "entity_id": "test:5a9aacfa4aec586cbf77"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:e9be03c37bc92ea7a7d7",
+      "target_id": "claim:0c1a06006c42c6d2edd5",
+      "relation_id": "rel:maricirecords-758b1a716a5ba876"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:0c1a06006c42c6d2edd5",
+      "target_id": "test:5a9aacfa4aec586cbf77",
+      "relation_id": "rel:maricitested_by-7b3d76bf78d71dce"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes cyclic descent of the typed first-Rees physical pairing",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1135 transports the typed paired object. The e6 covector has physical homogeneity z^-2, the dual physical boundary z^2, and all cyclic Leray orientations are +1; scales cancel and the threefold chart product is identity. Pairings are (1/4,1/4,1/4), i.e. invariant functional (1/4)(1,1,1) on Q[C3]. No cyclic obstruction or new carrier datum. Next finite gate is reflection: both coefficient and boundary should reverse, leaving the pairing fixed.",
+      "entity_id": "maricicommunication:452e036a1618de8ce0f0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:452e036a1618de8ce0f0",
+      "relation_id": "rel:sent_by-a5d5f6757ad966bf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:452e036a1618de8ce0f0",
+      "relation_id": "rel:addressed_to-464ee39ce1f518fa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:452e036a1618de8ce0f0",
+      "target_id": "claim:0c1a06006c42c6d2edd5",
+      "relation_id": "rel:reports-e4379aa9fbb64ef3"
+    }
+  ],
+  "digest": "5b3b413ddc4df908267a3c0ad91052899626c2ebcf8db0c8b8e615ac5fe32767"
+}

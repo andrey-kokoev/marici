@@ -1,0 +1,75 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7a054672-07d5-4875-a5d0-1a01177f05cf",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized continuation of Strominger's paused lane."
+  },
+  "idempotency_key": "auto-proposal-d9f0edd2b8c23e26075aa805",
+  "expected_ledger_head": "6f73f70ef08ad40c83eadb808f97dad7875af2392fb5799ffa58a38e8ac3fe6f",
+  "created_at": "2026-08-20T14:40:18.4643217Z",
+  "content_fingerprint": "d9f0edd2b8c23e26075aa805ddc1b7f67c2bd240659793754fdbbef93e9ddbc2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-crossing-factor-resolution-v1",
+      "kind": "claim",
+      "title": "The subsubleading factor-one-half discrepancy is exactly the crossing factor between one outgoing insertion and the conserved soft charge",
+      "status": "resolved exact normalization sub-boundary",
+      "identity": "2 × (-3π/E_k) = -6π/E_k"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-crossing-factor-resolution-v1",
+      "target_id": "marici:source:fpr2111.15607-text-v1",
+      "locator": "discussion after equation (119)",
+      "relation_id": "rel:derived_from-465d70f60da36743"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:strominger-crossing-factor-resolution-v1",
+      "target_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "relation_id": "rel:maricirefines-5128bfd074d84c48"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v3",
+      "kind": "claim",
+      "title": "The augmented ballistic-memory candidate passes 45 exact linear checks, with insertion-to-charge crossing normalization resolved",
+      "status": "candidate; overall map and nonlinear triangle open"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v3",
+      "target_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v2",
+      "relation_id": "rel:supersedes-dda6a060efded3a2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v3",
+      "target_id": "marici:claim:strominger-crossing-factor-resolution-v1",
+      "relation_id": "rel:depends_on-58fc11bafade6cf2"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "marici:outcome:strominger-ballistic-memory-45-of-45-v3",
+      "test_id": "marici:test:strominger-ballistic-memory-linear-structure-v1",
+      "actor": "marici.Nima",
+      "outcome": "45 of 45 exact checks pass. M8.5 proves the FPR crossing factor converts the single-insertion coefficient to CL16's conserved-charge coefficient.",
+      "evidence": [
+        {
+          "source_id": "marici:source:strominger-subsubleading-memory-results-v1",
+          "locator": "checks.M8.5 and summary",
+          "paraphrase": "M8.5 passes and the regenerated summary reports 45 passed, 0 failed."
+        }
+      ]
+    }
+  ],
+  "digest": "f25b8892654b31a8270649aa7e7abb8a021651136c175ad9837b14216faa0262"
+}

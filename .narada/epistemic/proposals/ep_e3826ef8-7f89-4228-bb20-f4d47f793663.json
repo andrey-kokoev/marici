@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e3826ef8-7f89-4228-bb20-f4d47f793663",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified quadratic Kummer integral lattice."
+  },
+  "idempotency_key": "auto-proposal-cac2cbb5c00df79a852c7404",
+  "expected_ledger_head": "7ed260b41a209123c7626c4f5fea0f0c9a55c30f4984694caabfcaa6a4ef8f88",
+  "created_at": "2026-08-20T13:58:22.1119823Z",
+  "content_fingerprint": "cac2cbb5c00df79a852c740435ec4b28078d53f4d87cc3ba1f85754123a0b858",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The quadratic Kummer eigenline has an index-two integral lattice",
+      "status": "established",
+      "body": "Over K=Q(sqrt(2)), O_K=Z[sqrt(2)], the source Kummer generator is k=(-(2+sqrt(2))/2,1,0,0). A scalar a=m+n sqrt(2) makes a k integral exactly when m is even, so the integrality ideal is (sqrt(2)) and the primitive integral generator is kappa=sqrt(2) k. Multiplication by sqrt(2) has Smith invariants (1,2), giving O_K k/O_K kappa = F_2. Monodromy -1 preserves both lattices. Physical activation remains undefined.",
+      "entity_id": "claim:d394a93aa02922ee3782"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Quadratic Kummer integral-ideal checker",
+      "status": "passed",
+      "body": "The checker verifies the integrality parity condition, ideal (sqrt(2)), determinant -2 and Smith invariants (1,2).",
+      "entity_id": "test:0c75379d3d59a983f3cb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1145 — The Quadratic Kummer Eigenline Has an Index-Two Integral Lattice",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1145 The Quadratic Kummer Eigenline Has an Index-Two Integral Lattice.md",
+      "entity_id": "mariciledger_entry:3ef3b69a930a97e63445"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:d394a93aa02922ee3782",
+      "target_id": "test:0c75379d3d59a983f3cb",
+      "relation_id": "rel:maricitested_by-68081d7d35db92d7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:3ef3b69a930a97e63445",
+      "target_id": "claim:d394a93aa02922ee3782",
+      "relation_id": "rel:maricirecords-3faa08db6de41d26"
+    }
+  ],
+  "digest": "6a577666003e8a35860cc06cffa8d18674fa92812d0d2e29016e10df7b6c1bb3"
+}

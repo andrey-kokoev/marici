@@ -1,0 +1,55 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6ecbe215-b72e-42cc-9142-c8f3b8b034df",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized continuation of Strominger's paused lane."
+  },
+  "idempotency_key": "auto-proposal-4d4056932212498dde315703",
+  "expected_ledger_head": "d8e4d280cda4086c8f6e2302551a260baa54c9f5773795411ae293a3cc75a891",
+  "created_at": "2026-08-20T14:34:35.4836473Z",
+  "content_fingerprint": "4d4056932212498dde3157035348968f4ebc99c976d16026d7174cf110b451a1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:fpr2111.15607-text-v1",
+      "kind": "source",
+      "title": "Freidel–Pranzetti–Raclariu corner-charge source text",
+      "version": "arXiv:2111.15607",
+      "locator": "research/strominger/sources/fpr2111.15607.txt"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "kind": "claim",
+      "title": "FPR's renormalized spin-two charge contains the angular-momentum-aspect coherence cell required by the augmented PSZ memory identity",
+      "status": "typed source-level match; convention and normalization pending",
+      "match": "PSZ N_z ↔ FPR P; the FPR -uDP term supplies the u-weighted integration-by-parts correction"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "target_id": "marici:source:fpr2111.15607-text-v1",
+      "locator": "equations (29), (30), and (36)",
+      "relation_id": "rel:derived_from-4dcbd0f875fb725e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "target_id": "marici:claim:strominger-c2-augmented-aspect-flux-v1",
+      "relation_id": "rel:depends_on-65e740149281f032"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "marici:claim:strominger-fpr-principal-cell-match-v1",
+      "target_id": "marici:claim:strominger-ballistic-memory-augmented-candidate-v2",
+      "relation_id": "rel:maricirefines-762ca25c0866d946"
+    }
+  ],
+  "digest": "434496b04850729a906bd3d55a34c78403588ca242d3935af213746743eadd2b"
+}

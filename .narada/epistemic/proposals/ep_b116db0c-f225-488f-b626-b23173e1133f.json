@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b116db0c-f225-488f-b626-b23173e1133f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified integral conductor-Gysin totalization."
+  },
+  "idempotency_key": "auto-proposal-eaca287fcf8ff6c80a68fb9c",
+  "expected_ledger_head": "2fe85d570206d6f77c77053bdea4bb24b39173828af2f41ad15f6adfa93293bd",
+  "created_at": "2026-08-20T13:55:25.2021501Z",
+  "content_fingerprint": "eaca287fcf8ff6c80a68fb9cfe5dbfd9b919b0a7171ae37a91bb4518f00c794b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The complete mod-four conductor-Gysin totalization is contractible",
+      "status": "established",
+      "body": "Because t=p*s*(B-1) pulls all three support faces with unit valuation into the same Tate coefficient, the typed total object is the tensor product of [Z/4 --2--> Z/4] with the augmented three-face simplex. An explicit integral simplex contraction h0=(1,0,0)^T, h1=[[0,1,0],[0,0,0],[0,0,-1]], h2=(0,1,0) induces K(c_p tensor s)=(-1)^p c_p tensor h(s). Exact computation modulo four gives D K+K D=1 on all basis vectors. Hence the local Z/2 conductor grades do not survive complete support totalization.",
+      "entity_id": "claim:e251ae6503814da9105d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mod-four conductor-Gysin tensor contraction checker",
+      "status": "passed",
+      "body": "The checker verifies the integral simplex contraction and the signed tensor homotopy on all 16 tensor basis vectors modulo four.",
+      "entity_id": "test:f7d9b450bfb6c15fdd67"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1144 — The Complete Mod-Four Conductor-Gysin Totalization Is Contractible",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1144 The Complete Mod-Four Conductor-Gysin Totalization Is Contractible.md",
+      "entity_id": "mariciledger_entry:0c95b5e54437dd8b300b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:e251ae6503814da9105d",
+      "target_id": "test:f7d9b450bfb6c15fdd67",
+      "relation_id": "rel:maricitested_by-39fd79c7b2bf08f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:0c95b5e54437dd8b300b",
+      "target_id": "claim:e251ae6503814da9105d",
+      "relation_id": "rel:maricirecords-b611470fb59f2d0b"
+    }
+  ],
+  "digest": "ecd7e797463671abd76f6b3524f44f02b7d302e5d982b58ded387ead6a8ae282"
+}

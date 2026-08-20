@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a81d9d18-53f7-4f0d-aa8f-17ca316a1b9b",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology lane and record the verified integral total-energy monodromy refinement."
+  },
+  "idempotency_key": "auto-proposal-e0aa1cb0ba93a14b6cee707a",
+  "expected_ledger_head": "9af5209d5924684c09e3668e537d9fdd8c0f2379fa86009fe4cd257aa491c932",
+  "created_at": "2026-08-20T14:04:01.2414742Z",
+  "content_fingerprint": "e0aa1cb0ba93a14b6cee707afa99319c0fe6439c8729cd28cccbdbfcc54c5eec",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The physical total-energy cusp has an integral width-two defect",
+      "status": "established",
+      "body": "After Kummer-Legendre sign cancellation, the physical E_T=0 cusp has integral monodromy T=[[1,2],[0,1]] in the standard Gamma(2) basis. T-I has rank one, square zero and Smith invariant 2. Thus invariants are Z and coinvariants are Z plus Z/2. This is integral elliptic coefficient monodromy reflecting q_mod~E_T^2, not new carrier support or yet a physical Cut class.",
+      "entity_id": "claim:f736a2380b30b0185c1a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Total-energy Legendre integral-monodromy checker",
+      "status": "passed",
+      "body": "The checker verifies T-I=[[0,2],[0,0]], nilpotent square zero, and Smith invariant 2.",
+      "entity_id": "test:684935d0ed2a368200e1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1147 — The Physical Total-Energy Cusp Has an Integral Width-Two Defect",
+      "status": "recorded",
+      "body": "src/ledger/20260820-1147 The Physical Total-Energy Cusp Has an Integral Width-Two Defect.md",
+      "entity_id": "mariciledger_entry:d31a7d5882cd2ca0869c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:f736a2380b30b0185c1a",
+      "target_id": "test:684935d0ed2a368200e1",
+      "relation_id": "rel:maricitested_by-0492b7b01d8cbf94"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d31a7d5882cd2ca0869c",
+      "target_id": "claim:f736a2380b30b0185c1a",
+      "relation_id": "rel:maricirecords-6397c2f2955f75b0"
+    }
+  ],
+  "digest": "55e5d63a897078a6ec1214bb8b1468a8f9a511e2939eaa5f5cbe48b79576b17b"
+}

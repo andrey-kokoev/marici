@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f257d520-b68e-4eec-91e4-556a31a9f268",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_request",
+    "summary": "Operator authorized custodial continuation of Figueiredo's flavor lane."
+  },
+  "idempotency_key": "auto-proposal-39b8a74a4298efb07d7db1ed",
+  "expected_ledger_head": "b215b8c5021a372668df786ab89078489d1aa21ac12063feb48ec3a10d0c9881",
+  "created_at": "2026-08-20T14:33:45.309269Z",
+  "content_fingerprint": "39b8a74a4298efb07d7db1eda3efccc36bea0ac1ca9fd08fdc07d0a00d23e8fd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:source:flavor-chart-transition-packet-v1",
+      "kind": "source",
+      "title": "Flavor nine-link chart-transition packet",
+      "version": "1",
+      "locator": "research/flavor/flavor-chart-transition-packet.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "marici:claim:flavor-sparse-groupoid-not-quotient-atlas-v1",
+      "kind": "claim",
+      "title": "The nine-link sparse texture collection is a canonical S3^3 groupoid internally, not an atlas over the full weak-basis quotient",
+      "status": "supported boundary"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "marici:claim:flavor-sparse-groupoid-not-quotient-atlas-v1",
+      "target_id": "marici:source:flavor-chart-transition-packet-v1",
+      "relation_id": "rel:derived_from-02c6ed64e776fdeb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:corroborates",
+      "source_id": "marici:claim:flavor-wp9-readout-divergence-only-v1",
+      "target_id": "marici:claim:flavor-sparse-groupoid-not-quotient-atlas-v1",
+      "relation_id": "rel:maricicorroborates-774653e2224b744e"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "marici:assessment:flavor-wp9-subbranch-close-v1",
+      "subject_id": "marici:claim:flavor-wp9-readout-divergence-only-v1",
+      "judgment": "No further chart-cocycle calculation is typed on the current across-orbit tolerance ensemble.",
+      "actor": "marici.Nima",
+      "reason": "Exact transitions exist only within declared S3^3 orbits, where uniform exponent scaling is equivariant by coordinate permutation; across orbits there is neither exact physical identity nor a declared transition.",
+      "evidence": [
+        {
+          "source_id": "marici:source:flavor-chart-transition-packet-v1",
+          "locator": "T1–T3 and verdict",
+          "paraphrase": "The packet proves canonical groupoid transport and explicitly rejects an atlas over the physical quotient."
+        },
+        {
+          "source_id": "marici:source:flavor-wp9-transition-results-v1",
+          "locator": "verdict",
+          "paraphrase": "The repaired WP9 checker withholds naturality because its points are tolerance-selected."
+        }
+      ]
+    }
+  ],
+  "digest": "358309d548f29e62d7c7bb57a0bd2cd5c7230b6a0887dce3de32b3e3f432700c"
+}
