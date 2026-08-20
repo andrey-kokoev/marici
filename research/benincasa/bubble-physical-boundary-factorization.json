@@ -1,0 +1,39 @@
+{
+  "schema": "marici.cosmology.bubble-physical-boundary-factorization.v1",
+  "primary_source": {
+    "paper": "arXiv:2408.16386v2",
+    "section": "Appendix B",
+    "equations": ["46", "Appendix-B boundary-condition prescription after M_8"],
+    "source_statement": "J_2, J_4, and J_6 are fixed order by order by regularity at the single point (x1_tilde,x2_tilde,P)=(1,1,1); J_1 and J_5 are fixed by direct integration and J_4 admits an additional direct-integration match."
+  },
+  "spurious_point": {
+    "coordinates": [1, 1, 1],
+    "vanishing_letters": ["x1_tilde-P", "x2_tilde-P", "x1_tilde+x2_tilde-2P"],
+    "residue_indices": [6, 7, 8]
+  },
+  "source_boundary_space": {
+    "definition": "ker(M_6) cap ker(M_7) cap ker(M_8)",
+    "dimension": 3,
+    "basis_in_J1_through_J6": [
+      [0, 0, 2, 1, 0, 0],
+      [-4, -2, -2, 0, 1, 0],
+      [8, 4, 4, 0, 0, 1]
+    ]
+  },
+  "corner_complex_map": {
+    "map": "v maps to (v,v,v) in K_6 direct_sum K_7 direct_sum K_8",
+    "differential_after_map": 0,
+    "factorization": "source boundary space maps isomorphically to H0",
+    "map_to_H1": 0
+  },
+  "classification": {
+    "physical_boundary_conditions": "H0",
+    "intrinsic_corner_H1": "unselected obstruction to independently gluing divisor-local regular data",
+    "new_carrier_datum": null,
+    "new_physical_coefficient": null
+  },
+  "checker": "research/benincasa/check_bubble_parabolic_complex.rs",
+  "replication_primes": [32003, 32009],
+  "allocator_claim": "seqclaim-d75f530607bf9d401e537b4c",
+  "epistemic_event": "ev-000000000754-c12ffc39-6fa6-4cb6-8ce4-26afcb010bb7"
+}
