@@ -157,57 +157,61 @@ def rank(matrix, p):
     return pivot_row
 
 
-results = []
-for prime in (1009, 1013):
-    samples = []
-    keys = set()
-    for seed in range(1, 4001):
-        try:
-            sample = oracle_sample(prime, seed)
-        except RuntimeError:
-            continue
-        key = (sample["t"], *sample["u"])
-        if key not in keys:
-            keys.add(key)
-            samples.append(sample)
-        if len(samples) == 96:
-            break
-    assert len(samples) == 96
-    for primitive_degree in range(4):
-        primitive_columns = 3*len(monomials(primitive_degree))
-        for scalar_degree in range(4):
-            scalar_columns = scalar_degree+1
-            used = samples[:primitive_columns+2*scalar_columns+12]
-            primitive = [primitive_row(s, primitive_degree, 2, prime) for s in used]
-            p0 = [[s["target"]*pow(s["t"], k, prime) % prime for k in range(scalar_columns)]
-                  for s in used]
-            p1 = [[s["target_dt"]*pow(s["t"], k, prime) % prime for k in range(scalar_columns)]
-                  for s in used]
-            rank_primitive = rank(primitive, prime)
-            without_p1 = [a+b for a, b in zip(primitive, p0)]
-            full = [a+b+c for a, b, c in zip(primitive, p0, p1)]
-            rank_without_p1 = rank(without_p1, prime)
-            rank_full = rank(full, prime)
-            p1_kernel_excess = scalar_columns-(rank_full-rank_without_p1)
-            results.append({
-                "prime": prime,
-                "primitive_degree": primitive_degree,
-                "primitive_pole_order": 2,
-                "scalar_degree": scalar_degree,
-                "samples": len(used),
-                "rank_primitive": rank_primitive,
-                "rank_without_dt": rank_without_p1,
-                "rank_full": rank_full,
-                "dt_relation_dimension": p1_kernel_excess,
-                "order_one_relation_exists": p1_kernel_excess > 0,
-            })
+def main():
+    results = []
+    for prime in (1009, 1013):
+        samples = []
+        keys = set()
+        for seed in range(1, 4001):
+            try:
+                sample = oracle_sample(prime, seed)
+            except RuntimeError:
+                continue
+            key = (sample["t"], *sample["u"])
+            if key not in keys:
+                keys.add(key)
+                samples.append(sample)
+            if len(samples) == 96:
+                break
+        assert len(samples) == 96
+        for primitive_degree in range(4):
+            primitive_columns = 3*len(monomials(primitive_degree))
+            for scalar_degree in range(4):
+                scalar_columns = scalar_degree+1
+                used = samples[:primitive_columns+2*scalar_columns+12]
+                primitive = [primitive_row(s, primitive_degree, 2, prime) for s in used]
+                p0 = [[s["target"]*pow(s["t"], k, prime) % prime
+                       for k in range(scalar_columns)] for s in used]
+                p1 = [[s["target_dt"]*pow(s["t"], k, prime) % prime
+                       for k in range(scalar_columns)] for s in used]
+                rank_primitive = rank(primitive, prime)
+                without_p1 = [a+b for a, b in zip(primitive, p0)]
+                full = [a+b+c for a, b, c in zip(primitive, p0, p1)]
+                rank_without_p1 = rank(without_p1, prime)
+                rank_full = rank(full, prime)
+                p1_kernel_excess = scalar_columns-(rank_full-rank_without_p1)
+                results.append({
+                    "prime": prime,
+                    "primitive_degree": primitive_degree,
+                    "primitive_pole_order": 2,
+                    "scalar_degree": scalar_degree,
+                    "samples": len(used),
+                    "rank_primitive": rank_primitive,
+                    "rank_without_dt": rank_without_p1,
+                    "rank_full": rank_full,
+                    "dt_relation_dimension": p1_kernel_excess,
+                    "order_one_relation_exists": p1_kernel_excess > 0,
+                })
+    output = {
+        "schema": "marici.five_site.projective_krylov_order_one.v1",
+        "results": results,
+        "scope": "Sampled order-one closure modulo pole-order-two exact forms; degrees 0..3 only.",
+        "interpretation": "A negative result is a replicated finite bound, not a Gauss-Manin rank theorem.",
+        "passed": True,
+    }
+    OUTPUT.write_text(json.dumps(output, indent=2)+"\n")
+    print(json.dumps(output, sort_keys=True))
 
-output = {
-    "schema": "marici.five_site.projective_krylov_order_one.v1",
-    "results": results,
-    "scope": "Sampled order-one closure modulo pole-order-two exact forms; degrees 0..3 only.",
-    "interpretation": "A negative result is a replicated finite bound, not a Gauss-Manin rank theorem.",
-    "passed": True,
-}
-OUTPUT.write_text(json.dumps(output, indent=2)+"\n")
-print(json.dumps(output, sort_keys=True))
+
+if __name__ == "__main__":
+    main()
