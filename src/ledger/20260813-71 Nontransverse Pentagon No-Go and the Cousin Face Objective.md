@@ -224,14 +224,12 @@ in the Pochhammer/Cousin complex, including:
 
 Its boundary must be computed rather than postulated:
 
-\[
-\partial_{\rm PC}\mathcal P_{\alpha'}(F)
+$$
+\partial_{\mathrm{PC}}\mathcal{P}_{\alpha'}(F)
 =
-\sum_{i=0}^{4}
-\epsilon(F,e_i)\,
-\mathcal P_{\alpha'}(e_i)
+\sum_{i=0}^{4}\epsilon(F,e_i)\,\mathcal{P}_{\alpha'}(e_i)
 +\text{lower-face terms}.
-\]
+$$
 
 The marked physical residues must then satisfy the chain-level comparison
 
