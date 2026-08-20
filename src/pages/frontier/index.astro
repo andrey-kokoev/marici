@@ -1,0 +1,214 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import '../../styles/frontier.css'
+import { currentFrontier, frontierReleases, frontierRegistry } from '../../lib/frontier'
+
+const serializedReleases = JSON.stringify(frontierReleases).replaceAll('<', '\\u003c')
+---
+
+<SiteLayout
+  title="Frontier Atlas · Marici"
+  description="Versioned cross-sector research frontiers, pinned to the ledger, epistemic graph, and Git history."
+>
+  <section class="atlas-page" aria-labelledby="atlas-title">
+    <header class="atlas-hero">
+      <div>
+        <p class="eyebrow">Standing cross-sector synthesis</p>
+        <h1 id="atlas-title">Frontier Atlas</h1>
+        <p class="lede">Immutable snapshots of what is established, what remains missing, and which comparison arrow each sector is testing.</p>
+      </div>
+      <aside class="atlas-current" aria-label="Current frontier release">
+        <span>Current release</span>
+        <strong>v{currentFrontier.version}</strong>
+        <p>{currentFrontier.label}</p>
+      </aside>
+    </header>
+
+    <section class="atlas-controls" aria-label="Frontier version controls">
+      <label>
+        Explore version
+        <select id="frontier-version">
+          {frontierReleases.map((release) => (
+            <option value={release.version} selected={release.version === frontierRegistry.current}>
+              v{release.version} · {release.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Compare against
+        <select id="frontier-compare">
+          <option value="">No comparison</option>
+          {frontierReleases.map((release) => (
+            <option value={release.version} selected={release.version === currentFrontier.supersedes}>
+              v{release.version} · {release.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <button id="frontier-copy-link" type="button">Copy version link</button>
+    </section>
+
+    <p id="frontier-live-status" class="sr-only" aria-live="polite"></p>
+
+    {frontierReleases.map((release) => (
+      <article
+        class="atlas-version"
+        data-frontier-version={release.version}
+        hidden={release.version !== frontierRegistry.current}
+      >
+        <header class="release-header">
+          <div>
+            <p class="release-version">Release v{release.version} · {release.status}</p>
+            <h2>{release.label}</h2>
+            <p>{release.summary}</p>
+          </div>
+          <dl class="release-pins">
+            <div><dt>Released</dt><dd>{new Date(release.released_at).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' })} UTC</dd></div>
+            <div><dt>Source Git baseline</dt><dd><code>{release.pins.git_commit.slice(0, 12)}</code></dd></div>
+            <div><dt>Graph event</dt><dd><code>{release.pins.epistemic_event.split('-')[1]}</code></dd></div>
+            <div><dt>Ledger ceiling</dt><dd>{release.pins.ledger_sequence_ceiling}</dd></div>
+          </dl>
+        </header>
+
+        <section class="release-changes" aria-labelledby={'changes-' + release.version}>
+          <h3 id={'changes-' + release.version}>What changed in this release</h3>
+          <ul>{release.changes.map((change) => <li>{change}</li>)}</ul>
+        </section>
+
+        <section class="sector-grid" aria-label={'Sector frontiers in release ' + release.version}>
+          {release.sectors.map((sector) => (
+            <article class="sector-card" data-sector-id={sector.id}>
+              <header>
+                <div>
+                  <p>{sector.kind}</p>
+                  <h3>{sector.name}</h3>
+                </div>
+                <span>{sector.strength}</span>
+              </header>
+              <dl>
+                <div><dt>Carrier</dt><dd>{sector.carrier}</dd></div>
+                <div><dt>Coefficient object</dt><dd>{sector.coefficient}</dd></div>
+                <div><dt>Physical selection</dt><dd>{sector.selection}</dd></div>
+              </dl>
+              <div class="sector-result"><strong>Sharp result</strong><p>{sector.sharp_result}</p></div>
+              <div class="sector-frontier"><strong>Open frontier</strong><p>{sector.frontier}</p></div>
+              <div class="sector-next"><strong>Next finite test</strong><p>{sector.next_test}</p></div>
+              <footer>
+                {sector.evidence.map((item) => <a href={item.href}>{item.label} →</a>)}
+              </footer>
+            </article>
+          ))}
+        </section>
+      </article>
+    ))}
+
+    <section id="frontier-comparison" class="atlas-comparison" hidden aria-labelledby="comparison-title">
+      <header>
+        <p class="eyebrow">Version comparison</p>
+        <h2 id="comparison-title">Changed sector fields</h2>
+        <p id="comparison-summary"></p>
+      </header>
+      <div id="comparison-rows"></div>
+    </section>
+
+    <section class="atlas-authority">
+      <h2>Authority model</h2>
+      <p>The Atlas is an immutable interpretive snapshot. Ledger entries remain the mathematical record; the epistemic graph carries claims and supersession; the Git pin names the source baseline interpreted by the release. Git history separately identifies the commit that introduced the release artifact. A later release never rewrites an earlier one.</p>
+    </section>
+  </section>
+
+  <script is:inline id="frontier-data" type="application/json" set:html={serializedReleases}></script>
+  <script is:inline>
+    const releases = JSON.parse(document.querySelector('#frontier-data').textContent)
+    const versionSelect = document.querySelector('#frontier-version')
+    const compareSelect = document.querySelector('#frontier-compare')
+    const comparison = document.querySelector('#frontier-comparison')
+    const comparisonRows = document.querySelector('#comparison-rows')
+    const comparisonSummary = document.querySelector('#comparison-summary')
+    const liveStatus = document.querySelector('#frontier-live-status')
+    const fields = [
+      ['carrier', 'Carrier'],
+      ['coefficient', 'Coefficient object'],
+      ['selection', 'Physical selection'],
+      ['sharp_result', 'Sharp result'],
+      ['frontier', 'Open frontier'],
+      ['next_test', 'Next finite test'],
+      ['strength', 'Evidence strength'],
+    ]
+
+    function release(version) {
+      return releases.find((item) => item.version === version)
+    }
+
+    function selectVersion(version, updateHash = true) {
+      if (!release(version)) return
+      document.querySelectorAll('[data-frontier-version]').forEach((node) => {
+        node.hidden = node.dataset.frontierVersion !== version
+      })
+      versionSelect.value = version
+      if (updateHash) history.replaceState(null, '', '#v' + version)
+      liveStatus.textContent = 'Showing Frontier Atlas version ' + version
+      renderComparison()
+    }
+
+    function renderComparison() {
+      const selected = release(versionSelect.value)
+      const baseline = release(compareSelect.value)
+      comparisonRows.replaceChildren()
+      if (!selected || !baseline || selected.version === baseline.version) {
+        comparison.hidden = true
+        return
+      }
+      comparison.hidden = false
+      comparisonSummary.textContent = 'v' + baseline.version + ' → v' + selected.version
+      const sectorIds = [...new Set([...baseline.sectors, ...selected.sectors].map((sector) => sector.id))]
+      for (const sectorId of sectorIds) {
+        const before = baseline.sectors.find((sector) => sector.id === sectorId)
+        const after = selected.sectors.find((sector) => sector.id === sectorId)
+        const changed = fields.filter(([key]) => before?.[key] !== after?.[key])
+        if (!before || !after || changed.length) {
+          const card = document.createElement('article')
+          card.className = 'comparison-card'
+          const heading = document.createElement('h3')
+          heading.textContent = after?.name || before?.name || sectorId
+          card.append(heading)
+          if (!before || !after) {
+            const note = document.createElement('p')
+            note.textContent = before ? 'Removed in selected release.' : 'Added in selected release.'
+            card.append(note)
+          } else {
+            for (const [key, label] of changed) {
+              const row = document.createElement('div')
+              const title = document.createElement('strong')
+              const oldText = document.createElement('p')
+              const newText = document.createElement('p')
+              title.textContent = label
+              const beforeLabel = document.createElement('span')
+              const afterLabel = document.createElement('span')
+              beforeLabel.textContent = 'Before'
+              afterLabel.textContent = 'After'
+              oldText.append(beforeLabel, ' ' + before[key])
+              newText.append(afterLabel, ' ' + after[key])
+              row.append(title, oldText, newText)
+              card.append(row)
+            }
+          }
+          comparisonRows.append(card)
+        }
+      }
+    }
+
+    versionSelect.addEventListener('change', () => selectVersion(versionSelect.value))
+    compareSelect.addEventListener('change', renderComparison)
+    document.querySelector('#frontier-copy-link').addEventListener('click', async () => {
+      const url = new URL(location.href)
+      url.hash = 'v' + versionSelect.value
+      await navigator.clipboard.writeText(url.href)
+      liveStatus.textContent = 'Copied link for Frontier Atlas version ' + versionSelect.value
+    })
+    const requested = location.hash.match(/^#v(.+)$/)?.[1]
+    selectVersion(release(requested) ? requested : versionSelect.value, false)
+    renderComparison()
+  </script>
+</SiteLayout>
