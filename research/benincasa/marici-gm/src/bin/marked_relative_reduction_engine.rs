@@ -193,7 +193,90 @@ struct Geometry {
     l2p: F,
 }
 
+fn exceptional_p_chart_geometry(ss: u64, differentiated: bool) -> Geometry {
+    let one = F::o();
+    let two = F::n(2);
+    let half = two.inv();
+    let s = if differentiated {
+        D::var(F::n(ss))
+    } else {
+        D::c(F::n(ss))
+    };
+    let s2 = s.sq();
+    let s3 = s2.mul(s);
+    let s4 = s2.sq();
+
+    // K_E = in_J(K)(1,s,A,B), in the fixed fiber coordinates A,B.
+    let a2 = D::c(F::n(5).neg().mul(half))
+        .sub(s)
+        .sub(s2.mul(D::c(half)));
+    let a2b = D::c(two).mul(D::c(one).sub(s));
+    let b2 = D::c(one).add(s).sq();
+    let b1 = D::c(half).mul(
+        D::c(F::n(5).neg())
+            .add(s.mul(D::c(F::n(3))))
+            .add(s2)
+            .add(s3),
+    );
+    let constant = D::c(F::n(16).inv()).mul(
+        D::c(F::n(25))
+            .sub(s.mul(D::c(F::n(44))))
+            .add(s2.mul(D::c(F::n(14))))
+            .add(s3.mul(D::c(F::n(4))))
+            .add(s4),
+    );
+    let mut k = Poly::zero();
+    let mut kp = Poly::zero();
+    for (m, coefficient) in [
+        ((4, 0), D::c(one)),
+        ((2, 1), a2b),
+        ((2, 0), a2),
+        ((0, 2), b2),
+        ((0, 1), b1),
+        ((0, 0), constant),
+    ] {
+        if coefficient.x.0 != 0 {
+            k.0.insert(m, coefficient.x);
+        }
+        if coefficient.d.0 != 0 {
+            kp.0.insert(m, coefficient.d);
+        }
+    }
+
+    // in_J(K1)(1,s,A,B) = 4A^2 + 4(1-s)B - s^2 + 6s - 5.
+    let k1_b = D::c(F::n(4)).mul(D::c(one).sub(s));
+    let k1_c = s2.neg().add(s.mul(D::c(F::n(6)))).sub(D::c(F::n(5)));
+    let mut k1 = Poly::zero();
+    let mut k1p = Poly::zero();
+    for (m, coefficient) in [
+        ((2, 0), D::c(F::n(4))),
+        ((0, 1), k1_b),
+        ((0, 0), k1_c),
+    ] {
+        if coefficient.x.0 != 0 {
+            k1.0.insert(m, coefficient.x);
+        }
+        if coefficient.d.0 != 0 {
+            k1p.0.insert(m, coefficient.d);
+        }
+    }
+
+    Geometry {
+        k,
+        kp,
+        k1,
+        k1p,
+        l1: Poly::mon(0, 1, one).sub(&Poly::c(one)),
+        l2: Poly::mon(1, 0, one).add(&Poly::c(s.x.sub(one).mul(half))),
+        l1p: F::z(),
+        l2p: s.d.mul(half),
+    }
+}
+
 fn geometry(uu: u64, vv: u64, axis: char) -> Geometry {
+    if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some() {
+        return exceptional_p_chart_geometry(uu, axis == 'u');
+    }
     let two = F::n(2);
     let half = two.inv();
     let one = F::o();
@@ -733,6 +816,342 @@ fn run_dual(samples: &[(u64, u64)]) {
     println!("}}");
 }
 
+fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
+    let mut records = Vec::new();
+    for (s, _) in samples {
+        let g = exceptional_p_chart_geometry(*s, true);
+        let class_columns: Vec<Poly> = classes(&g).iter().map(|class| common(&g, class)).collect();
+        let mut exact_columns = Vec::new();
+        for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
+            for monomial in monomials(8) {
+                exact_columns.push(exact(&g, sa, sb, monomial, false));
+                exact_columns.push(exact(&g, sa, sb, monomial, true));
+            }
+        }
+        let exact_rank = polynomial_column_rank(&exact_columns);
+        let class_rank_increments: Vec<usize> = (0..class_columns.len())
+            .map(|index| {
+                let mut columns = exact_columns.clone();
+                columns.extend(class_columns[..=index].iter().cloned());
+                polynomial_column_rank(&columns)
+            })
+            .scan(exact_rank, |previous, rank| {
+                let increment = rank - *previous;
+                *previous = rank;
+                Some(increment)
+            })
+            .collect();
+        let (quotient_basis, quotient_coordinates) =
+            quotient_coordinate_matrix(&class_columns, &exact_columns);
+        let mut all_columns = class_columns;
+        all_columns.extend(exact_columns);
+        let all_rank = polynomial_column_rank(&all_columns);
+        let quotient_dimension = all_rank - exact_rank;
+        for master in 0..12 {
+            let solution = solve(&g, master, 8);
+            let (mask, coordinates) = fixed_signature(&solution);
+            records.push((*s, master, solution.consistent, solution.residual_zero,
+                solution.rank, mask, coordinates, solution.equations, solution.unknowns,
+                pivot_hash(&solution.pivot_cols), exact_rank, all_rank, quotient_dimension,
+                class_rank_increments.clone(), quotient_basis.clone(), quotient_coordinates.clone()));
+        }
+    }
+    println!("{{");
+    println!("  \"schema\": \"marici.benincasa.rank12_u0_v2_exceptional_p_chart_reduction.v1\",");
+    println!("  \"prime\": {},", P);
+    println!("  \"chart\": \"p_nonzero\",");
+    println!("  \"coordinate\": \"s=q/p\",");
+    println!("  \"primitive_degree\": 8,");
+    println!("  \"records\": [");
+    for (index, (s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension, increments, quotient_basis, quotient_coordinates)) in records.iter().enumerate() {
+        let quotient_rows = quotient_coordinates.iter()
+            .map(|row| format!("[{}]", row.iter().map(|entry| entry.0.to_string()).collect::<Vec<_>>().join(",")))
+            .collect::<Vec<_>>().join(",");
+        let rational_absolute_line = quotient_coordinates[6..]
+            .iter()
+            .map(|row| rational_reconstruction(row[3])
+                .map(|(numerator, denominator)| format!("\"{numerator}/{denominator}\""))
+                .unwrap_or_else(|| "null".to_string()))
+            .collect::<Vec<_>>().join(",");
+        println!("    {{\"s\":{},\"master\":{},\"consistent\":{},\"residual_zero\":{},\"rank\":{},\"fixed_mask\":{},\"fixed_coordinates\":{:?},\"equations\":{},\"unknowns\":{},\"pivot_hash\":{},\"exact_rank\":{},\"all_rank\":{},\"quotient_dimension\":{},\"class_rank_increments\":{:?},\"quotient_basis_class_indices\":{:?},\"quotient_coordinate_matrix\":[{}],\"absolute_line_coordinates_rational\":[{}]}}{}",
+            s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension,
+            increments, quotient_basis, quotient_rows, rational_absolute_line,
+            if index + 1 == records.len() { "" } else { "," });
+    }
+    println!("  ]");
+    println!("}}");
+}
+
+fn run_exceptional_interpolation() {
+    let samples: Vec<(F, Vec<F>)> = (2_u64..=28)
+        .map(|s| {
+            let geometry = exceptional_p_chart_geometry(s, true);
+            let class_columns: Vec<Poly> = classes(&geometry).iter()
+                .map(|class| common(&geometry, class)).collect();
+            let mut exact_columns = Vec::new();
+            for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
+                for monomial in monomials(8) {
+                    exact_columns.push(exact(&geometry, sa, sb, monomial, false));
+                    exact_columns.push(exact(&geometry, sa, sb, monomial, true));
+                }
+            }
+            let (basis, coordinates) = quotient_coordinate_matrix(&class_columns, &exact_columns);
+            assert_eq!(basis, vec![0, 1, 2, 6]);
+            (F::n(s), coordinates[6..].iter().map(|row| row[3]).collect())
+        })
+        .collect();
+    let discovery = &samples[..18];
+    let verification = &samples[18..];
+    println!("{{");
+    println!("  \"schema\": \"marici.benincasa.rank12_u0_v2_exceptional_line_interpolation.v1\",");
+    println!("  \"prime\": {},", P);
+    println!("  \"basis\": [\"e4\"],");
+    println!("  \"coordinates\": [");
+    for coordinate in 0..6 {
+        let values: Vec<(F, F)> = discovery.iter().map(|(s, row)| (*s, row[coordinate])).collect();
+        let (numerator, denominator) = (0..=17)
+            .find_map(|total| (0..=total).find_map(|denominator_degree| {
+                let numerator_degree = total - denominator_degree;
+                rational_interpolate(&values, numerator_degree, denominator_degree)
+                    .filter(|(numerator, denominator)| verification.iter().all(|(s, row)| {
+                        evaluate_coefficients(numerator, *s)
+                            == row[coordinate].mul(evaluate_coefficients(denominator, *s))
+                    }))
+            }))
+            .expect("bounded rational interpolation must succeed");
+        let numerator_rational = numerator.iter().map(|coefficient| {
+            let (n, d) = rational_reconstruction(*coefficient).expect("coefficient reconstruction");
+            format!("\"{n}/{d}\"")
+        }).collect::<Vec<_>>().join(",");
+        let denominator_rational = denominator.iter().map(|coefficient| {
+            let (n, d) = rational_reconstruction(*coefficient).expect("coefficient reconstruction");
+            format!("\"{n}/{d}\"")
+        }).collect::<Vec<_>>().join(",");
+        println!("    {{\"class_index\":{},\"numerator_coefficients_ascending\":[{}],\"denominator_coefficients_ascending\":[{}],\"verification_points\":{}}}{}",
+            coordinate + 6, numerator_rational, denominator_rational, verification.len(),
+            if coordinate == 5 { "" } else { "," });
+    }
+    println!("  ]");
+    println!("}}");
+}
+
+fn evaluate_coefficients(coefficients: &[F], value: F) -> F {
+    coefficients.iter().rev().fold(F::z(), |accumulator, coefficient| {
+        accumulator.mul(value).add(*coefficient)
+    })
+}
+
+fn rational_interpolate(samples: &[(F, F)], numerator_degree: usize, denominator_degree: usize)
+    -> Option<(Vec<F>, Vec<F>)>
+{
+    let unknowns = numerator_degree + 1 + denominator_degree;
+    if samples.len() < unknowns {
+        return None;
+    }
+    let mut matrix = Vec::new();
+    for (x, y) in samples {
+        let mut powers = vec![F::o()];
+        for degree in 1..=numerator_degree.max(denominator_degree) {
+            powers.push(powers[degree - 1].mul(*x));
+        }
+        let mut row = Vec::new();
+        row.extend(powers[..=numerator_degree].iter().copied());
+        for power in powers.iter().take(denominator_degree) {
+            row.push(y.mul(*power).neg());
+        }
+        row.push(y.mul(powers[denominator_degree]));
+        matrix.push(row);
+    }
+    let rows = matrix.len();
+    let mut pivot_row = 0;
+    let mut pivots = Vec::new();
+    for column in 0..unknowns {
+        let row = (pivot_row..rows).find(|row| matrix[*row][column].0 != 0)?;
+        matrix.swap(pivot_row, row);
+        let inverse = matrix[pivot_row][column].inv();
+        for entry in column..=unknowns {
+            matrix[pivot_row][entry] = matrix[pivot_row][entry].mul(inverse);
+        }
+        for row in 0..rows {
+            if row != pivot_row && matrix[row][column].0 != 0 {
+                let multiplier = matrix[row][column];
+                for entry in column..=unknowns {
+                    matrix[row][entry] = matrix[row][entry]
+                        .sub(multiplier.mul(matrix[pivot_row][entry]));
+                }
+            }
+        }
+        pivots.push((pivot_row, column));
+        pivot_row += 1;
+    }
+    if !(0..rows).all(|row| {
+        !(0..unknowns).all(|column| matrix[row][column].0 == 0)
+            || matrix[row][unknowns].0 == 0
+    }) {
+        return None;
+    }
+    let solution: Vec<F> = (0..unknowns).map(|column| {
+        let row = pivots.iter().find_map(|(row, pivot)| (*pivot == column).then_some(*row))?;
+        Some(matrix[row][unknowns])
+    }).collect::<Option<_>>()?;
+    let numerator = solution[..=numerator_degree].to_vec();
+    let mut denominator = solution[numerator_degree + 1..].to_vec();
+    denominator.push(F::o());
+    Some((numerator, denominator))
+}
+
+fn rational_reconstruction(value: F) -> Option<(i128, i128)> {
+    let modulus = P as i128;
+    let bound = ((modulus / 2) as f64).sqrt() as i128;
+    let mut old_remainder = modulus;
+    let mut remainder = value.0 as i128;
+    let mut old_denominator = 0_i128;
+    let mut denominator = 1_i128;
+    while remainder.abs() > bound {
+        let quotient = old_remainder / remainder;
+        (old_remainder, remainder) = (remainder, old_remainder - quotient * remainder);
+        (old_denominator, denominator) =
+            (denominator, old_denominator - quotient * denominator);
+    }
+    if denominator == 0 || denominator.abs() > bound {
+        return None;
+    }
+    let mut numerator = remainder;
+    if denominator < 0 {
+        numerator = -numerator;
+        denominator = -denominator;
+    }
+    if (numerator - value.0 as i128 * denominator).rem_euclid(modulus) != 0 {
+        return None;
+    }
+    Some((numerator, denominator))
+}
+
+fn quotient_coordinate_matrix(class_columns: &[Poly], exact_columns: &[Poly]) -> (Vec<usize>, Vec<Vec<F>>) {
+    let mut basis_indices = Vec::new();
+    let mut working = exact_columns.to_vec();
+    let mut rank = polynomial_column_rank(&working);
+    for (index, class_column) in class_columns.iter().enumerate() {
+        let mut candidate = working.clone();
+        candidate.push(class_column.clone());
+        let next_rank = polynomial_column_rank(&candidate);
+        if next_rank > rank {
+            basis_indices.push(index);
+            working.push(class_column.clone());
+            rank = next_rank;
+        }
+    }
+    assert_eq!(basis_indices.len(), 4);
+
+    let mut solving_columns: Vec<Poly> = basis_indices
+        .iter()
+        .map(|index| class_columns[*index].clone())
+        .collect();
+    solving_columns.extend(exact_columns.iter().cloned());
+    let coordinates = class_columns
+        .iter()
+        .map(|target| solve_selected_coordinates(&solving_columns, target, basis_indices.len()))
+        .collect();
+    (basis_indices, coordinates)
+}
+
+fn solve_selected_coordinates(columns: &[Poly], target: &Poly, selected: usize) -> Vec<F> {
+    let mut monomials = BTreeSet::new();
+    for column in columns {
+        monomials.extend(column.0.keys().copied());
+    }
+    monomials.extend(target.0.keys().copied());
+    let unknowns = columns.len();
+    let mut matrix: Vec<Vec<F>> = monomials
+        .iter()
+        .map(|monomial| {
+            let mut row: Vec<F> = columns.iter()
+                .map(|column| column.0.get(monomial).copied().unwrap_or(F::z()))
+                .collect();
+            row.push(target.0.get(monomial).copied().unwrap_or(F::z()));
+            row
+        })
+        .collect();
+    let rows = matrix.len();
+    let mut pivots = Vec::new();
+    let mut pivot_row = 0;
+    for column in 0..unknowns {
+        let Some(row) = (pivot_row..rows).find(|row| matrix[*row][column].0 != 0) else {
+            continue;
+        };
+        matrix.swap(pivot_row, row);
+        let inverse = matrix[pivot_row][column].inv();
+        for entry in column..=unknowns {
+            matrix[pivot_row][entry] = matrix[pivot_row][entry].mul(inverse);
+        }
+        for row in 0..rows {
+            if row != pivot_row && matrix[row][column].0 != 0 {
+                let multiplier = matrix[row][column];
+                for entry in column..=unknowns {
+                    matrix[row][entry] = matrix[row][entry]
+                        .sub(multiplier.mul(matrix[pivot_row][entry]));
+                }
+            }
+        }
+        pivots.push((pivot_row, column));
+        pivot_row += 1;
+    }
+    assert!((0..rows).all(|row| {
+        !(0..unknowns).all(|column| matrix[row][column].0 == 0)
+            || matrix[row][unknowns].0 == 0
+    }));
+    (0..selected)
+        .map(|column| {
+            let row = pivots.iter().find_map(|(row, pivot)| (*pivot == column).then_some(*row))
+                .expect("selected quotient coordinate must pivot");
+            assert!((selected..unknowns).all(|free| {
+                !pivots.iter().all(|(_, pivot)| *pivot != free) || matrix[row][free].0 == 0
+            }), "selected quotient coordinate must be independent of exact primitive choices");
+            matrix[row][unknowns]
+        })
+        .collect()
+}
+
+fn polynomial_column_rank(columns: &[Poly]) -> usize {
+    let mut monomials = BTreeSet::new();
+    for column in columns {
+        monomials.extend(column.0.keys().copied());
+    }
+    let mut matrix: Vec<Vec<F>> = monomials
+        .iter()
+        .map(|monomial| columns.iter()
+            .map(|column| column.0.get(monomial).copied().unwrap_or(F::z()))
+            .collect())
+        .collect();
+    let rows = matrix.len();
+    let column_count = columns.len();
+    let mut pivot_row = 0;
+    for column in 0..column_count {
+        let Some(row) = (pivot_row..rows).find(|row| matrix[*row][column].0 != 0) else {
+            continue;
+        };
+        matrix.swap(pivot_row, row);
+        let inverse = matrix[pivot_row][column].inv();
+        for entry in column..column_count {
+            matrix[pivot_row][entry] = matrix[pivot_row][entry].mul(inverse);
+        }
+        for row in 0..rows {
+            if row != pivot_row && matrix[row][column].0 != 0 {
+                let multiplier = matrix[row][column];
+                for entry in column..column_count {
+                    matrix[row][entry] = matrix[row][entry]
+                        .sub(multiplier.mul(matrix[pivot_row][entry]));
+                }
+            }
+        }
+        pivot_row += 1;
+        if pivot_row == rows {
+            break;
+        }
+    }
+    pivot_row
+}
+
 fn main() {
     let reconstruction_mode = std::env::var_os("MARICI_RECONSTRUCTION_MODE").is_some();
     let master_count = if reconstruction_mode { 3 } else { 12 };
@@ -749,6 +1168,14 @@ fn main() {
         })
         .unwrap_or_else(|| vec![(7, 11), (13, 19), (23, 29)]);
     let sample_count = samples.len();
+    if std::env::var_os("MARICI_EXCEPTIONAL_INTERPOLATE").is_some() {
+        run_exceptional_interpolation();
+        return;
+    }
+    if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some() {
+        run_exceptional_p_chart(&samples);
+        return;
+    }
     if std::env::var_os("MARICI_DUAL_MODE").is_some() {
         run_dual(&samples);
         return;
