@@ -843,6 +843,8 @@ fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
             .collect();
         let (quotient_basis, quotient_coordinates) =
             quotient_coordinate_matrix(&class_columns, &exact_columns);
+        let quotient_connection = quotient_derivative_matrix(
+            &g, &class_columns, &exact_columns, &quotient_basis);
         let mut all_columns = class_columns;
         all_columns.extend(exact_columns);
         let all_rank = polynomial_column_rank(&all_columns);
@@ -853,7 +855,8 @@ fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
             records.push((*s, master, solution.consistent, solution.residual_zero,
                 solution.rank, mask, coordinates, solution.equations, solution.unknowns,
                 pivot_hash(&solution.pivot_cols), exact_rank, all_rank, quotient_dimension,
-                class_rank_increments.clone(), quotient_basis.clone(), quotient_coordinates.clone()));
+                class_rank_increments.clone(), quotient_basis.clone(), quotient_coordinates.clone(),
+                quotient_connection.clone()));
         }
     }
     println!("{{");
@@ -863,7 +866,7 @@ fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
     println!("  \"coordinate\": \"s=q/p\",");
     println!("  \"primitive_degree\": 8,");
     println!("  \"records\": [");
-    for (index, (s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension, increments, quotient_basis, quotient_coordinates)) in records.iter().enumerate() {
+    for (index, (s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension, increments, quotient_basis, quotient_coordinates, quotient_connection)) in records.iter().enumerate() {
         let quotient_rows = quotient_coordinates.iter()
             .map(|row| format!("[{}]", row.iter().map(|entry| entry.0.to_string()).collect::<Vec<_>>().join(",")))
             .collect::<Vec<_>>().join(",");
@@ -873,17 +876,38 @@ fn run_exceptional_p_chart(samples: &[(u64, u64)]) {
                 .map(|(numerator, denominator)| format!("\"{numerator}/{denominator}\""))
                 .unwrap_or_else(|| "null".to_string()))
             .collect::<Vec<_>>().join(",");
-        println!("    {{\"s\":{},\"master\":{},\"consistent\":{},\"residual_zero\":{},\"rank\":{},\"fixed_mask\":{},\"fixed_coordinates\":{:?},\"equations\":{},\"unknowns\":{},\"pivot_hash\":{},\"exact_rank\":{},\"all_rank\":{},\"quotient_dimension\":{},\"class_rank_increments\":{:?},\"quotient_basis_class_indices\":{:?},\"quotient_coordinate_matrix\":[{}],\"absolute_line_coordinates_rational\":[{}]}}{}",
+        let rational_connection = quotient_connection.iter().map(|row| {
+            format!("[{}]", row.iter().map(|entry| rational_reconstruction(*entry)
+                .map(|(numerator, denominator)| format!("\"{numerator}/{denominator}\""))
+                .unwrap_or_else(|| "null".to_string())).collect::<Vec<_>>().join(","))
+        }).collect::<Vec<_>>().join(",");
+        println!("    {{\"s\":{},\"master\":{},\"consistent\":{},\"residual_zero\":{},\"rank\":{},\"fixed_mask\":{},\"fixed_coordinates\":{:?},\"equations\":{},\"unknowns\":{},\"pivot_hash\":{},\"exact_rank\":{},\"all_rank\":{},\"quotient_dimension\":{},\"class_rank_increments\":{:?},\"quotient_basis_class_indices\":{:?},\"quotient_coordinate_matrix\":[{}],\"absolute_line_coordinates_rational\":[{}],\"quotient_connection_rational\":[{}]}}{}",
             s, master, consistent, residual, rank, mask, coordinates, equations, unknowns, hash, exact_rank, all_rank, quotient_dimension,
-            increments, quotient_basis, quotient_rows, rational_absolute_line,
+            increments, quotient_basis, quotient_rows, rational_absolute_line, rational_connection,
             if index + 1 == records.len() { "" } else { "," });
     }
     println!("  ]");
     println!("}}");
 }
 
+fn quotient_derivative_matrix(
+    geometry: &Geometry,
+    class_columns: &[Poly],
+    exact_columns: &[Poly],
+    basis_indices: &[usize],
+) -> Vec<Vec<F>> {
+    let mut solving_columns: Vec<Poly> = basis_indices
+        .iter().map(|index| class_columns[*index].clone()).collect();
+    solving_columns.extend(exact_columns.iter().cloned());
+    let classes = classes(geometry);
+    basis_indices.iter().map(|index| {
+        let derivative = target(geometry, &classes[*index]);
+        solve_selected_coordinates(&solving_columns, &derivative, basis_indices.len())
+    }).collect()
+}
+
 fn run_exceptional_interpolation() {
-    let samples: Vec<(F, Vec<F>)> = (2_u64..=28)
+    let samples: Vec<(F, Vec<F>, F)> = (2_u64..=28)
         .map(|s| {
             let geometry = exceptional_p_chart_geometry(s, true);
             let class_columns: Vec<Poly> = classes(&geometry).iter()
@@ -897,7 +921,9 @@ fn run_exceptional_interpolation() {
             }
             let (basis, coordinates) = quotient_coordinate_matrix(&class_columns, &exact_columns);
             assert_eq!(basis, vec![0, 1, 2, 6]);
-            (F::n(s), coordinates[6..].iter().map(|row| row[3]).collect())
+            let connection = quotient_derivative_matrix(
+                &geometry, &class_columns, &exact_columns, &basis);
+            (F::n(s), coordinates[6..].iter().map(|row| row[3]).collect(), connection[3][3])
         })
         .collect();
     let discovery = &samples[..18];
@@ -908,12 +934,12 @@ fn run_exceptional_interpolation() {
     println!("  \"basis\": [\"e4\"],");
     println!("  \"coordinates\": [");
     for coordinate in 0..6 {
-        let values: Vec<(F, F)> = discovery.iter().map(|(s, row)| (*s, row[coordinate])).collect();
+        let values: Vec<(F, F)> = discovery.iter().map(|(s, row, _)| (*s, row[coordinate])).collect();
         let (numerator, denominator) = (0..=17)
             .find_map(|total| (0..=total).find_map(|denominator_degree| {
                 let numerator_degree = total - denominator_degree;
                 rational_interpolate(&values, numerator_degree, denominator_degree)
-                    .filter(|(numerator, denominator)| verification.iter().all(|(s, row)| {
+                    .filter(|(numerator, denominator)| verification.iter().all(|(s, row, _)| {
                         evaluate_coefficients(numerator, *s)
                             == row[coordinate].mul(evaluate_coefficients(denominator, *s))
                     }))
@@ -931,7 +957,24 @@ fn run_exceptional_interpolation() {
             coordinate + 6, numerator_rational, denominator_rational, verification.len(),
             if coordinate == 5 { "" } else { "," });
     }
-    println!("  ]");
+    println!("  ],");
+    let connection_values: Vec<(F, F)> = discovery.iter()
+        .map(|(s, _, connection)| (*s, *connection)).collect();
+    let (connection_numerator, connection_denominator) = (0..=17)
+        .find_map(|total| (0..=total).find_map(|denominator_degree| {
+            let numerator_degree = total - denominator_degree;
+            rational_interpolate(&connection_values, numerator_degree, denominator_degree)
+                .filter(|(numerator, denominator)| verification.iter().all(|(s, _, connection)| {
+                    evaluate_coefficients(numerator, *s)
+                        == connection.mul(evaluate_coefficients(denominator, *s))
+                }))
+        })).expect("absolute connection interpolation must succeed");
+    let render = |coefficients: &[F]| coefficients.iter().map(|coefficient| {
+        let (numerator, denominator) = rational_reconstruction(*coefficient).unwrap();
+        format!("\"{numerator}/{denominator}\"")
+    }).collect::<Vec<_>>().join(",");
+    println!("  \"absolute_line_connection\": {{\"numerator_coefficients_ascending\":[{}],\"denominator_coefficients_ascending\":[{}],\"verification_points\":{}}}",
+        render(&connection_numerator), render(&connection_denominator), verification.len());
     println!("}}");
 }
 
