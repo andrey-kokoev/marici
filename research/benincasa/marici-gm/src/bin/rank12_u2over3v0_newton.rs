@@ -39,10 +39,12 @@ fn valuation(e: &Atom) -> (usize, Atom) {
 }
 
 fn main() {
-    let u = a("2/3+p");
-    let v = a("q");
-    let aa = a("A");
-    let bb = a("-1/3+B");
+    let partner = std::env::args().nth(1).as_deref() == Some("partner");
+    let (u, v, aa, bb) = if partner {
+        (a("-1+p"), a("q"), a("1/2+A"), a("B"))
+    } else {
+        (a("2/3+p"), a("q"), a("A"), a("-1/3+B"))
+    };
     let x = a("1");
     let y = ((&u + &v - a("2")) / a("2")).expand();
     let z = ((&u - &v) / a("2")).expand();
@@ -84,7 +86,14 @@ fn main() {
     let (vk1, ik1) = valuation(&k1);
     let (vl1, il1) = valuation(&l1);
     let (vl2, il2) = valuation(&l2);
-    println!("center=(u,v,a,b)=(2/3,0,0,-1/3)");
+    println!(
+        "center={}",
+        if partner {
+            "(u,v,a,b)=(-1,0,1/2,0)"
+        } else {
+            "(u,v,a,b)=(2/3,0,0,-1/3)"
+        }
+    );
     println!("joint_ideal=(p,q,A,B)");
     println!("nu_K={vk}");
     println!("K_initial={}", ik.factor());
@@ -100,8 +109,16 @@ fn main() {
     for order in vk1..=5 {
         println!("K1_radial_{order}={}", coeff(&k1, order));
     }
-    let k3_on_double = coeff(&k, 3)
-        .replace(a("Bh").to_pattern()).with(a("ph+qh").to_pattern())
-        .expand();
-    println!("K3_on_double_plane={}", k3_on_double.factor());
+    if partner {
+        let k3_on_double = coeff(&k, 3)
+            .replace(a("Ah").to_pattern())
+            .with(a("(ph+qh)/2").to_pattern())
+            .expand();
+        println!("K3_on_double_plane={}", k3_on_double.factor());
+    } else {
+        let k3_on_double = coeff(&k, 3)
+            .replace(a("Bh").to_pattern()).with(a("ph+qh").to_pattern())
+            .expand();
+        println!("K3_on_double_plane={}", k3_on_double.factor());
+    }
 }
