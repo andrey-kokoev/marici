@@ -1,0 +1,1339 @@
+arXiv:1404.4091v2  [hep-th]  10 Jun 2014
+June 11, 2014
+Evidence for a New Soft Graviton
+Theorem
+Freddy Cachazo∗ and Andrew Strominger †
+Abstract
+The single-soft-graviton limit of any quantum gravity scat tering amplitude is given
+at leading order by the universal Weinberg pole formula. Gau ge invariance of the
+formula follows from global energy-momentum conservation . In this paper evidence is
+given for a conjectured universal formula for the ﬁnite subl eading term in the expansion
+about the soft limit, whose gauge invariance follows from gl obal angular momentum
+conservation. The conjecture is non-trivially veriﬁed for all tree-level graviton scattering
+amplitudes using a BCFW recursion relation. One hopes to und erstand this inﬁnity of
+new soft relations as a Ward identity for a new superrotation Virasoro symmetry of the
+quantum gravity S-matrix.
+∗Perimeter Institute for Theoretical Physics, Waterloo, ON , Canada
+† Center for the Fundamental Laws of Nature, Harvard Universi ty, Cambridge MA, USA
+Contents
+1 Introduction 1
+2 All tree-level graviton scattering amplitudes 4
+2.1 Preliminaries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2 Claim . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3 Proof . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.3.1 Factorized representation of Mn+1 . . . . . . . . . . . . . . . . . . . . 7
+2.3.2 Soft limit expansion . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3 Identities for stripped amplitudes 10
+4 Low-point examples 11
+4.1 MHV amplitudes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4.1.1 Four gravitons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4.1.2 Five gravitons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.1.3 Six gravitons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.2 Six-graviton NMHV . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+A Absence of poles in R 16
+B Second-order Taylor expansion 17
+C Hodges’ MHV formula 19
+1 Introduction
+A generic (n+1)-particle on-shell scattering amplitude including an e xternal graviton with
+momentum q may be denoted
+Mn+1 = Mn+1(k1, k2, ...kn, q). (1)
+Weinberg’s theorem [1] states that near the q → 0 soft limit
+Mn+1(k1, k2, ...kn, q) = S(0)Mn(k1, k2, ...kn) + O(q0), (2)
+where the leading soft factor is a pole 1
+S(0) ≡
+n∑
+a=1
+Eµνkµ
+a kν
+a
+q · ka
+. (3)
+1 Here the soft graviton polarization tensor obeys Eµν qν = 0 and 8 πG = 1.
+1
+Gauge invariance requires that the pole term vanish for δΛ Eµν = Λ µqν + Λ µqν with Λ · q = 0.
+Indeed one ﬁnds
+δΛ S(0) = 2Λ µ
+n∑
+a=1
+kµ
+a = 0 (4)
+as a consequence of global-energy momentum conservation.
+Recently it was shown [2, 3] that the universal formula (2) in fact fo llows from a sym-
+metry principle. Gravitational scattering -both classical and quan tum -has inﬁnitely many
+symmetries which form a certain “anti-diagonal” subgroup 2 of the product group of BMS
+supertranslations [4] acting on past and future null inﬁnity. (2) is t hen the Ward identity
+associated to this inﬁnite-dimensional anti-diagonal symmetry. 3
+BMS transformations include, in addition to the supertranslations, SL(2, C) Lorentz
+transformations that act conformally on the sphere at past or fu ture null inﬁnity. It has
+been conjectured in [5, 6] that the BMS transformations should be inﬁnitely extended to
+include all Virasoro transformations, i.e. superrotations, on the conformal sphere. In [7]
+it was further conjectured that the anti-diagonal subgroup of t he past and future Virasoro
+symmetries are a symmetry of the S-matrix, and that there is an associated new soft theorem
+Mn+1(k1, k2, ...kn, q) = S(0)Mn(k1, k2, ...kn) + S(1)Mn(k1, k2, ...kn) + O(q1), (5)
+where the subleading soft factor is
+S(1) ≡ −i
+n∑
+a=1
+Eµνkµ
+a (qρJ ρν
+a )
+q · ka
+, (6)
+with Ja the total angular momentum of the ath particle. 4 A number of considerations led to
+this conjecture: here we note only that it is gauge invariant
+δΛ S(1) = −iΛ µqν
+n∑
+a=1
+J µν
+a = 0 (7)
+as a consequence of global angular momentum conservation. Suble ading terms in soft expan-
+sions have a long history (see e.g. [8, 9, 10]); some of the ﬁrst resu lts on graviton scattering
+oﬀ scalars go back to work by Gross and Jackiw [11, 12].
+There are several approaches to prove or disprove the conject ure (5). One would be a
+diagrammatic approach a la Weinberg, in which one works to one higher order around the
+2These antidiagonal elements involve an antipodal identiﬁcations of p arameters on the conformal spheres
+at past and future null inﬁnity.
+3 The logic may be turned around: soft theorems typically imply inﬁnitely many symmetries of the
+S-matrix, and anti-diagonal BMS symmetry can be derived from Weinb erg’s theorem.
+4In a momentum eigenbasis this acts as a diﬀerential operator Jaµν ∼ ka[µ
+∂
+∂k ν ]
+a
++(helicity terms) on Mn.
+The action of these diﬀerential operators on the on-shell amplitud es is spelled out below.
+2
+soft limit. This is subtle because there are many sources of subleadin g corrections. Another
+follows the path of [2, 3] to Weinberg’s theorem in explicitly construct ing the generators
+of the conjectured superrotation Virasoro symmetries and rewr iting the invariance of the S-
+matrix in the form of a soft theorem. This is substantially more complic ated than the leading
+supertranslation case worked out in [2, 3], but progress in this direc tion appears promising
+[13] and indeed motivated the conjecture (5).
+In this paper we employ a third, orthogonal, approach. We will not tr y to prove (5).
+Rather we will simply test if it is true for tree-level gravitational sca ttering amplitudes, using
+the BCFW construction [14, 15]. The conjecture (5) is found to pas s this tree-level test in
+a highly nontrivial manner. The test is possible due to the deep progr ess in understanding
+these amplitudes and their properties which has evolved in recent ye ars, for a recent review
+see [16]. This progress in turn may have been possible because of the new symmetries pointed
+to herein.
+We employ the spinor helicity formalism which allows us to deﬁne and stud y a certain
+holomorphic soft limit. This limit allows us to see deeper into the expansio n around the
+soft limit and discover a surprising universality in a sub-subleading ter m. We ﬁnd by direct
+computation that all graviton tree amplitudes in fact obey a soft ide ntity even stronger than
+(5) of the form
+Mn+1(k1, k2, ...kn, q) =
+(
+S(0) + S(1) + S(2))
+Mn(k1, k2, ...kn) + O(q2), (8)
+where
+S(2) ≡ − 1
+2
+n∑
+a=1
+Eµν(qρJ ρµ
+a )(qσJ σν
+a )
+q · ka
+. (9)
+It is easy to check that S(2) is gauge invariant as required for the simple reason that J µν
+a is
+antisymmetric and not as a consequence of any conservation law. W hile this result is highly
+suggestive, unlike S(1), at this point we have found no argument that S(2) is universal beyond
+tree-level gravity. We leave the origin of this surprising relation to f uture investigations.
+Going back to the original conjecture (5), several caveats are in order. First, in taking
+the soft limit of one external graviton, momenta of some of the har d particles must be
+simultaneously deformed in order to conserve momentum. Hence th ere are many expansions
+about the soft limit corresponding to the many possible deformation s of the hard particle
+momenta. We prove (5) applies universally to a very large class of suc h soft limit expansions
+which are naturally deﬁned in the spinor helicity formalism. We have not shown that it holds
+for every conceivable deﬁnition of the soft limit expansion.
+Second, since our tests here are purely classical, they leave open t he possibility that the
+conjecture (5) or its extension (8) is either invalid or in need of modiﬁ cation at the quantum
+3
+level.
+We hope that future work can address both of these issues.
+This paper is organized as follows. Section 2.1 contains our conventio ns and some spinor
+helicity formulae. In section 2.2 we precisely state our claim, emphasiz ing that the identity
+(8) involves the full physical amplitudes which contain distributional momentum-conserving
+delta functions. The claim is proven in 2.3 using a factorized form of th e amplitudes which
+played a key role in [17]. Section 3 concerns the unphysical, non-distr ibutional “stripped”
+amplitudes, which are sometimes easier to work with and commonly con sidered in the liter-
+ature. These obey a slightly modiﬁed form of the identity (8) which is p resented in detail.
+Section 4 demonstrates the validity of (8) in detail for some low-poin t amplitudes. Appendix
+A demonstrates the soft regularity of certain terms in the factor ized amplitude sum, Ap-
+pendix B gives details of a Taylor expansion and Appendix C reviews Hod ges’ formula for
+MHV amplitudes.
+2 All tree-level graviton scattering amplitudes
+2.1 Preliminaries
+Our derivation employs the spinor helicity formalism [16]. This subsectio n contains our
+conventions and a few essential spinor helicity formulae.
+Consider any on shell tree level amplitude of n+1 gravitons. We will single out one of them
+which will eventually become soft and label it by s with momentum vector q. The remaining
+n gravitons will be labeled using the standard {1, 2, . . . , n} notation. The kinematic data is
+given by a pair of spinors for each particle λa,α, ˜λa, ˙α. The momentum vector is given as a
+bispinor
+ka,α ˙α = λa,α˜λa, ˙α, a ∈ {1, 2 . . . , n}
+qα ˙α = λs,α˜λs, ˙α. (10)
+The only extra piece of information needed is the helicity of the partic le which we take to be
+h = ±2. Momentum conservation implies
+n∑
+a=1
+λa,α˜λa, ˙α + λs,α˜λs, ˙α = 0. (11)
+The amplitude is a function of the form
+Mn+1 = Mn+1({λ1, ˜λ1, h1}, . . . ,{λn, ˜λn, hn}, {λs, ˜λs, hs})δ4(
+n∑
+a=1
+λa,α˜λa, ˙α + λs,α˜λs, ˙α), (12)
+4
+where Mn+1 is a “ stripped amplitude” without a momentum-conserving delta func tion. Here
+hi denotes the helicity of the ith graviton and from now on we take hs = +2. In the rest of
+the paper we will suppress the helicity dependence unless needed.
+Weinberg’s soft factor
+S(0) ≡
+n∑
+a=1
+Eµνkµ
+a kν
+a
+q · ka
+(13)
+can easily be rewritten in spinor helicity form. The ﬁrst step is to note that for a particle
+with positive helicity (see e.g. [18])
+Eα ˙αβ ˙β =
+(
+λx,α˜λs, ˙α
+⟨x, s⟩
+)(
+λy,β ˜λs, ˙β
+⟨y, s⟩
+)
++ (x ↔ y). (14)
+Here λx and λy are two arbitrary chosen reference spinors, often judiciously ch osen to simplify
+computations. The freedom in this choice is equivalent to the freedo m in gauge choice for
+the polarization tensor. We have also adopted the standard notat ion
+[s, a] ≡ ˜λs, ˙α˜λ ˙α
+a , ⟨s, a⟩ ≡ λs,αλ α
+a . (15)
+The inner product of two null vectors is given, e.g., q and ka by
+2q · ka = ⟨s, a⟩[s, a]. (16)
+Weinberg’s soft theorem for q soft becomes, in spinor helicity form
+Mn+1 → S(0)Mn({λ1, ˜λ1}, . . . ,{λn, ˜λn}),
+S(0) =
+n∑
+a=1
+[s, a]
+⟨s, a⟩
+⟨x, a⟩⟨y, a⟩
+⟨x, s⟩⟨y, s⟩. (17)
+Here Mn is a fully physical amplitude evaluated on the n-particle data obtained by taking q
+identically equal to zero. The independence of expression on the ch oice of reference spinors
+λx and λy is a consequence of energy-momentum conservation of the n-particle data. The
+subleading operator appearing in the conjecture (6) becomes, in s pinor notation
+S(1) = 1
+2
+n∑
+a=1
+[s, a]
+⟨s, a⟩
+( ⟨x, a⟩
+⟨x, s⟩ + ⟨y, a⟩
+⟨y, s⟩
+)
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+a
+. (18)
+Here we have used 5
+Jµνσµ
+α ˙ασν
+β ˙β = −2Jαβǫ ˙α ˙β − 2ǫαβ ˜J ˙α ˙β (19)
+5Here the normalization is σ α ˙α
+µ σνα ˙α = 2ηµν .
+5
+with
+Jαβ = i
+2
+(
+λα
+∂
+∂λβ + λβ
+∂
+∂λα
+)
+, ˜J ˙α ˙β = i
+2
+(
+˜λ ˙α
+∂
+∂˜λ ˙β + ˜λ ˙β
+∂
+∂˜λ ˙α
+)
+.
+Finally, using this formula, the second order soft operator in (9) be comes
+S(2) = 1
+2
+n∑
+a=1
+[s, a]
+⟨s, a⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+a
+. (20)
+2.2 Claim
+We deﬁne the soft limit expansion of Mn+1 by introducing a small expansion parameter ǫ
+which multiplies the momentum of the soft graviton:
+qα, ˙α → ǫqα, ˙α = ǫλs,α˜λs, ˙α. (21)
+We must further specify how λs and ˜λs are taken to zero. A natural choice is
+λs → √
+ǫλs, ˜λs → √ǫ˜λs. (22)
+The precise form of our claim in spinor helicity form is then
+Mn+1(..., {√ǫλs, √ǫ˜λs}) =
+( 1
+ǫ S(0) + S(1) + ǫS(2)
+)
+Mn + O(ǫ2). (23)
+In this expression, the factors of ǫ are explicitly displayed and S(i) are understood to be given
+exactly by (17), (18) and (20) without any rescaling of λs, ˜λs appearing therein. The left
+hand side of this equation involves the (unstripped distributional) ( n + 1)-particle amplitude
+Mn+1(..., {√ǫλs, √ǫ˜λs}) = Mn+1({λ1, ˜λ1}, . . . ,{λn, ˜λn}, {√ǫλs, √ǫ˜λs})δ4(
+n∑
+a=1
+kµ
+n + ǫqµ) (24)
+while right hand side involves the n-particle amplitude
+Mn = Mn({λ1, ˜λ1}, . . . ,{λn, ˜λn})δ4(
+n∑
+a=1
+kµ
+n). (25)
+The deformation (22) has the property that if the original moment um of the soft particle
+is real, i.e., ˜λs = ±(λs)∗ then it stays real for all real values of ǫ. This condition might be
+important in analyzing loop level amplitudes but since we are only intere sted in tree-level
+amplitudes, which are rational functions, this restriction is not nec essary. In fact we will ﬁnd
+that it is technically more convenient to study a holomorphic soft limit a s in [17]. To deﬁne
+this limit recall that any physical amplitude containing a particle of helic ity h transforms
+under the little group as
+M({tλ, t−1˜λ, h}) = t−2hM({λ, ˜λ, h}). (26)
+6
+Applying this to particle s in Mn+1(ǫ) with t = ǫ−1/2 one ﬁnds
+Mn+1({√ǫλs, √ǫ˜λs, +2}) = ǫ2M({ǫλs, ˜λs, +2}). (27)
+The holomorphic soft limit is the usual soft limit combined with a little grou p transformation
+in such a way that only the holomorphic spinor λs(ǫ) → 0 while the anti-holomorphic one,
+˜λs, stays ﬁnite and generic. One then ﬁnds that the claim (23) is equiva lent to
+Mn+1(..., {ǫλs, ˜λs}) =
+( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+Mn + O(ǫ0). (28)
+Note that the undetermined part is now ﬁnite, while the universal pa rts have poles up to
+cubic order.
+2.3 Proof
+The proof of the claim (28) is achieved in several steps. First we ﬁnd a convenient factorized
+representation of the general stripped n + 1 graviton amplitude Mn+1, in which only certain
+special terms can develop poles in ǫ. The second is to apply the deformation (22) to this
+representation to get Mn+1(ǫ). Equation 28 is then recovered via a Taylor expansion of the
+special terms. Our construction uses the same BCFW [14, 15] analy sis employed in the study
+of a single soft emission in [17].
+2.3.1 Factorized representation of Mn+1
+Consider a BCFW-type expansion of a general stripped amplitude Mn+1 based on the defor-
+mation
+λs(z) = λs + zλn, ˜λn(z) = ˜λn − z˜λs. (29)
+where the λs obey (11). Under this deformation the amplitude becomes a ration al function
+of z denoted Mn+1(z). Clearly, the original amplitude is recovered when z = 0: i.e.
+Mn+1 = 1
+2πi
+∮
+|z|=ε
+dz
+z Mn+1(z). (30)
+There are several proofs in the literature [19, 20] that Mn+1(z) → 1/z as z → ∞. Therefore
+the only poles of the integrand are at the solutions of
+(ks(z) + ka1 + ka2 + · · · + kam)2 = 0 (31)
+for any non-empty subset {a1, a2, . . . , am} of {1, 2, . . . , n−1}. Note that this does not include
+the nth graviton.
+7
+The residue at each of these poles is determined by unitarity to be th e product of two lower
+point amplitudes [21, 22]. For a pole at say z = z∗, the vector kI = ks(z∗)+ ka1 +ka2 +· · ·+kam
+is null by construction, and the residue is given by
+∑
+hI
+ML(s(z∗), a1, a2, . . . , am, {kI, hI}) 1
+P 2
+I
+MR({−kI, −hI}, n(z∗), a1, a2, . . . , am)
+where a1, a2, . . . , am is the complement of {a1, a2, . . . , am} in {1, 2, . . . , n − 1} and PI =
+ks + ka1 + · · · + kam. Here ML and MR denote the “Left” and “Right” amplitudes in the
+factorization at the pole. The sum is over all possible intermediate st ates which in this case
+we take to be gravitons with helicity hI = ±2.
+Using the residue theorem on (30) the amplitude Mn+1 can be written as a sum over all
+poles diﬀerent from z = 0,
+Mn+1 =
+∑
+I,hI
+ML(s(z∗), a1, a2, . . . , am, {kI, hI}) 1
+P 2
+I
+MR({−kI, −hI}, n(z∗), a1, a2, . . . , am) (32)
+where the sum is over all non-empty subsets I = {a1, a2, . . . , am} of {1, 2, . . . , n− 1}.
+Let us separate the terms in the sum into two groups. The ﬁrst gro up is those where the
+set I consists of a single element and the second group contains all other sets. The reason
+for this separation is that, as will be proven in Appendix A, elements o f the former becomes
+singular when λs → 0 while elements of the latter remains ﬁnite.
+Let us carefully study the terms in (32) of the ﬁrst kind, i.e., when th e set I consists of
+a single element,
+n−1∑
+a=1
+∑
+hI
+ML(s(z∗), a, {kI, hI}) 1
+(ks + ka)2 MR({−kI, −hI }, n(z∗), a). (33)
+In these terms it is easy to compute
+z∗ = − ⟨a, s⟩
+⟨a, n⟩, λ I = λa, ˜λI = ˜λa + ⟨n, s⟩
+⟨n, a⟩
+˜λs, (34)
+where a potential multiplicative factor in the last two equalities has be en set to unity by a
+little group transformation of ( λI, ˜λI). Using this it is also possible to show that the hI = ha
+term vanishes while the hI = −ha term gives
+ML({s(z∗), +2}, a, {kI, −ha}) = [s, a]2⟨n, a⟩2
+⟨n, s⟩2 (35)
+regardless of the helicity of the ath graviton. Here we have exhibited the helicity hs = +2
+only for the reader’s convenience.
+8
+Using the fact that the propagator in (33) can be written as 1 /⟨s, a⟩[s, a] , (33) may be
+reduced to
+n−1∑
+a=1
+[s, a]⟨n, a⟩2
+⟨s, a⟩⟨n, s⟩2 Mn({λ1, ˜λ1, h1}, . . . ,{λa, ˜λa+ ⟨n, s⟩
+⟨n, a⟩
+˜λs, ha}, . . . ,{λn, ˜λn+ ⟨a, s⟩
+⟨a, n⟩
+˜λs, hn}). (36)
+Note how the intermediate particle I in MR, with data {λI, ˜λI, −hI }, beautifully becomes
+the ath particle of an n-particle amplitude with data {λa, ˜λa + ⟨n,s⟩
+⟨n,a⟩
+˜λs, ha}. Moreover this
+n-particle amplitude is physical in that its n-particle data satisfy momentum conservation!
+The full amplitude can now be written as
+Mn+1=
+n−1∑
+a=1
+[s, a]⟨n, a⟩2
+⟨s, a⟩⟨n, s⟩2 Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa+ ⟨n, s⟩
+⟨n, a⟩
+˜λs}, . . . ,{λn, ˜λn+ ⟨a, s⟩
+⟨a, n⟩
+˜λs})+ R (37)
+where R stands for terms that are shown in Appendix A to be regular for λs → 0.
+It is interesting that the argument of the n-particle amplitude in (37) seems to be obtained
+by “dissolving” particle s into particles a and n. Similar constructions [23, 24, 25, 26] have
+appeared in many diﬀerent applications to the computation of scatt ering amplitudes of both
+Yang-Mills and gravity.
+2.3.2 Soft limit expansion
+In order to obtain expressions for unstripped amplitudes, we dres s both sides of (37) by the
+appropriate momentum-conserving delta function which obeys the identity
+δ4(
+n∑
+b=1
+λb˜λb + λs˜λs) = δ4(
+n−1∑
+b=1,b⁄=a
+λb˜λb + λa(˜λa + ⟨n, s⟩
+⟨n, a⟩
+˜λs) + λn(˜λn + ⟨a, s⟩
+⟨a, n⟩
+˜λs)). (38)
+Using the basic relation (12) between stripped and unstripped amplit udes, and multiplying
+the left (right ) hand side of (37) by the left (right ) hand side of (38 ) we immediately obtain
+Mn+1=
+n−1∑
+a=1
+[s, a]⟨n, a⟩2
+⟨s, a⟩⟨n, s⟩2 Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa + ⟨n, s⟩
+⟨n, a⟩
+˜λs}, . . . ,{λn, ˜λn + ⟨a, s⟩
+⟨a, n⟩
+˜λs}). (39)
+Here and in the rest of this section we drop R as it does not contribute to the order we are
+interested in.
+The next step is to apply the deformation λs → ǫλs to the full ( n + 1)-particle amplitude
+in the factorized form (39). For this all we have to do is send λs to ǫλs and Taylor expand
+Mn around ǫ = 0 to get
+Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa + ǫ ⟨n, s⟩
+⟨n, a⟩
+˜λs}, . . . ,{λn, ˜λn + ǫ ⟨a, s⟩
+⟨a, n⟩
+˜λs}) =
+9
+(
+1 + ǫ ⟨n, s⟩
+⟨n, a⟩
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+a
++ ǫ ⟨a, s⟩
+⟨a, n⟩
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+n
+)
+Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa}, . . . ,{λn, ˜λn}) + O(ǫ2).
+Plugging this back into the ǫ deformed version of (37) it is easy to see that the terms with
+derivatives with respect to ˜λn add up to zero.
+Putting all of this together gives
+Mn+1(. . . ,{ǫλs, ˜λs}) =
+1
+ǫ3
+n−1∑
+a=1
+[s, a]⟨n, a⟩2
+⟨s, a⟩⟨n, s⟩2 Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa}, . . . ,{λn, ˜λn})
++ 1
+ǫ2
+n−1∑
+a=1
+[s, a]⟨n, a⟩
+⟨s, a⟩⟨n, s⟩
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+a
+Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa}, . . . ,{λn, ˜λn}) + O(ǫ−1). (40)
+The analysis of the order 1
+ǫ term in this expansion is a bit long and is relegated to Appendix
+B. Using the result of this Appendix and noting that the prefactors in (40) are just S(0) and
+S(1) the ﬁnal result is
+Mn+1(..., {ǫλs, ˜λs}) =
+( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+Mn + O(ǫ0). (41)
+This completes the proof of our main claim in the form (28).
+3 Identities for stripped amplitudes
+The main result of the previous section is a relation between the soft limit expansion of
+an unstripped n + 1-particle amplitude and diﬀerential operators acting on an unstr ipped
+n-particle amplitude. In this section we translate this into relations be tween stripped ampli-
+tudes. Such relations are easily applied to various explicit formulae fo r amplitudes appearing
+in the literature. We give some examples in the next section.
+Stripped amplitudes are in general deﬁned oﬀ of the momentum-con serving locus. There-
+fore stripped relations must specify a continuation of the amplitude s oﬀ of this locus. For
+any m-particle amplitude the basic relation is
+Mm = Mm δ4(
+m∑
+a=1
+kµ
+a ). (42)
+Here m is arbitrary; below we use both m = n + 1 and m = n. A standard way of solving
+for momentum conservation in the spinor-helicity formalism is by selec ting any two particles,
+say 1 and 2, to write (see e.g. [18])
+δ4(
+m∑
+a=1
+kµ
+a ) = 1
+⟨1, 2⟩2 δ2
+( m∑
+a=1
+⟨1, a⟩
+⟨1, 2⟩
+˜λa
+)
+δ2
+( m∑
+a=1
+⟨2, a⟩
+⟨2, 1⟩
+˜λa
+)
+. (43)
+10
+On the support of these delta functions one has
+˜λ1 = −
+m∑
+a=3
+⟨2, a⟩
+⟨2, 1⟩
+˜λa, ˜λ2 = −
+m∑
+a=3
+⟨1, a⟩
+⟨1, 2⟩
+˜λa (44)
+which implies
+m∑
+a=1
+λa˜λa = 0. (45)
+A deﬁnition of Mm for all ( λa, ˜λa) can be obtained by equating it to its predetermined value
+on the momentum-conserving locus and extending it oﬀ the locus by t he simple condition
+∂
+∂˜λ1
+Mm = ∂
+∂˜λ2
+Mm = 0. (46)
+That is Mm is taken to be a function of only the 2 m−2 spinors that can be varied consistently
+with the constraint of momentum conservation, and is denoted by
+M (12)
+m = M (12)
+m ({λ1, λ2, . . . , λm}, {˜λ3, . . . ,˜λm}) (47)
+where the label (12) indicates that the functions do not depend on the variables {˜λ1, ˜λ2}.
+The relation among full amplitudes can then be expressed as a relatio n among elements
+in any such family of functions. The family of functions we are interes ted in is
+{M (12)
+3 , M (12)
+4 , M (12)
+5 , . . .}
+The explicit relation is then
+M (12)
+n+1({λ1, λ2, . . . , λn, ǫλs}, {˜λ3, ˜λ4, . . . ,˜λn, ˜λs}) =( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+M (12)
+n ({λ1, λ2, . . . , λn}, {˜λ3, ˜λ4, . . . ,˜λn}) + O(ǫ0). (48)
+It is this delta-function-free identity which will be veriﬁed in explicit ex amples in the next
+section.
+4 Low-point examples
+In the previous sections we presented formal proofs that the ide ntity (8) and its stripped
+version (48) are valid for all graviton tree amplitudes. It is both illumin ating and fun to
+actually verify this in detail from the known explicit expressions for t hese amplitudes. In
+this section we verify (48) for all stripped amplitudes with six or fewe r gravitons. This
+includes, in the last subsection, the lowest order next to maximally-h elicity-violating (MHV)
+amplitude which arises for six gravitons.
+11
+4.1 MHV amplitudes
+General MHV amplitudes of gravitons are known to be polynomials in th e antiholomorphic
+spinors, ˜λ. This means that the soft limit expansion terminates. In fact, M MHV
+n+1 (ǫ), only
+contains n − 2 terms. Since the soft theorems we discussed constrain the ﬁrst three terms,
+amplitudes with n + 1 ≤ 6 are completely determined from (8).
+The starting point is a three point amplitude, which is completely deter mined by the
+symmetries to be
+M3({k1, −2}, {k2, −2}, {k3, +2}) = ⟨1, 2⟩6
+⟨2, 3⟩2⟨3, 1⟩2 . (49)
+There is a slightly more symmetric way of writing this amplitude which mak es manifest the
+helicity dependence
+M3({k1, −2}, {k2, −2}, {k3, +2}) = ⟨1, 2⟩8
+|1, 2, 3|2 (50)
+with
+|1, 2, 3| ≡ ⟨1, 2⟩⟨2, 3⟩⟨3, 1⟩. (51)
+4.1.1 Four gravitons
+Applying the soft expansion formula (28) to n + 1 = 4 with the soft particle chosen to be
+graviton 4 one has,
+M (12)
+4 ({λ1, λ2, λ3, ǫλ4}, {˜λ3, ˜λ4}) = (52)( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+M (12)
+3 ({λ1, λ2, λ3}, {˜λ3}). (53)
+Note that since M3 is purely holomorphic, it is annihilated by S(1) and S(2) and we trivially
+ﬁnd
+M (12)
+4 (ǫ) = 1
+ǫ3
+⟨1, 2⟩8
+|1, 2, 3|2
+( 3∑
+a=1
+[4, a]⟨x, a⟩⟨y, a⟩
+⟨4, a⟩⟨x, 4⟩⟨y, 4⟩
+)
+. (54)
+Very nicely, this formula is exact in ǫ and therefore it can be evaluated at ǫ = 1 to get
+the corresponding ﬁnite 4-point amplitude. The presentation of th e four-particle amplitude
+in (54) is precisely the one obtained by specializing Hodges’ determina nt formula [25, 26],
+reviewed in appendix C equation (104), to the four particle case.
+12
+4.1.2 Five gravitons
+In this case the situation is more interesting as we will see S(1) in action. Here we take
+particle 5 as the soft graviton.
+In order to apply (28) more easily to the four particle amplitude we ch oose to use the
+presentation found above in (54) with reference spinors x = 1 and y = 2, i.e.
+M (12)
+4 = ⟨1, 2⟩8
+|1, 2, 3|2
+[4, 3]⟨1, 3⟩⟨2, 3⟩
+⟨4, 3⟩⟨1, 4⟩⟨2, 4⟩. (55)
+Note that this representation has the virtue of not depending on e ither ˜λ1 or ˜λ2. It is also
+easy to see that S(2) annihilates the amplitude since it is only linear in ˜λ’s.
+A short calculation gives
+S(1)M (12)
+4 = 1
+|123|2
+[5, 3][5, 4]⟨3, 1⟩⟨3, 2⟩
+⟨5, 3⟩⟨5, 4⟩⟨4, 1⟩⟨4, 2⟩. (56)
+We choose to use S(0) with reference spinors x = 1 and y = 2, i.e.
+S(0) =
+4∑
+a=3
+[5, a]⟨1, a⟩⟨2, a⟩
+⟨5, a⟩⟨1, 5⟩⟨2, 5⟩. (57)
+In order to compare with the 5-point answer, we use Hodges’ form ula (104) again. After
+performing the deformation and expanding in ǫ one has
+M (12)
+5 (ǫ) = 1
+ǫ3 S(0)M (12)
+4 + 1
+ǫ2
+( 1
+|123|2
+[5, 3][5, 4]⟨3, 1⟩⟨3, 2⟩
+⟨5, 3⟩⟨5, 4⟩⟨4, 1⟩⟨4, 2⟩
+)
+. (58)
+where the 1 /ǫ2 term precisely agrees S(1)M (12)
+4 . Once again, the formula for M (12)
+5 (ǫ) is exact
+in ǫ and gives the full amplitude when evaluated at ǫ = 1.
+4.1.3 Six gravitons
+Here we take particle 6 as the soft graviton. Using Hodges’ formula in the form (104) for the
+ﬁve particle amplitude one ﬁnds
+S(2)M (12)
+5 = −S(0)G4G5 − G5
+[4, 6]2
+⟨4, 6⟩2 − G4
+[5, 6]2
+⟨5, 6⟩2 (59)
+where
+S(0) =
+5∑
+a=3
+[6, a]⟨1, a⟩⟨2, a⟩
+⟨6, a⟩⟨1, 6⟩⟨2, 6⟩, (60)
+G4 = − [4, 6]⟨1, 6⟩⟨2, 6⟩
+⟨4, 6⟩⟨1, 4⟩⟨2, 4⟩, (61)
+G5 = − [5, 6]⟨1, 6⟩⟨2, 6⟩
+⟨5, 6⟩⟨1, 5⟩⟨2, 5⟩. (62)
+13
+Once again, applying the deformation to Hodges’ formula for six gra vitons (104) in the
+Appendix one ﬁnds perfect agreement
+M (12)
+6 (ǫ) = 1
+ǫ3 S(0)M (12)
+5 + 1
+ǫ2 S(1)M (12)
+5 + 1
+ǫ S(2)M (12)
+5 . (63)
+The formula for six MHV gravitons is also exact in ǫ. Starting at seven MHV gravitons we
+do expect to have O(ǫ0) corrections. We also expect to ﬁnd such corrections for the six p oint
+next-to-MHV (NMHV) amplitude which we discuss next.
+4.2 Six-graviton NMHV
+This example is the most interesting one as it requires the use of ever y detail in (48). The
+starting point is the ﬁve point amplitude with helicities {h1 = −2, h2 = −2, h3 = −2, h4 =
++2, h5 = +2}. This is obtained from Hodges’ formula (104) by conjugation
+M5 = [4, 5]6
+[3, 4]2[5, 3]2
+(
+˜φ11 ˜φ22 − ˜φ2
+12
+)
+(64)
+with
+˜φaa = −
+5∑
+b=1
+⟨a, b⟩[b, 4][b, 5]
+[a, b][a, 4][a, 5] , ˜φ12 = ⟨1, 2⟩
+[1, 2] . (65)
+In order to apply (48), we construct M (1,2)
+5 by using momentum conservation to eliminate ˜λ1
+and ˜λ2, more precisely,
+M (12)
+5 ({λ1, λ2, . . . , λ5}, {˜λ3, ˜λ4, ˜λ5}) = M5({λ1, ˜λ∗
+1}, {λ2, ˜λ∗
+2}, {λ3, ˜λ3}, . . .) (66)
+with
+˜λ∗
+1 = −
+5∑
+a=3
+⟨2, a⟩
+⟨2, 1⟩
+˜λa, ˜λ∗
+2 = −
+5∑
+a=3
+⟨1, a⟩
+⟨1, 2⟩
+˜λa. (67)
+It is now easy to apply (48) to obtain
+( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+M (12)
+5 ({λ1, λ2, . . . , λ5}, {˜λ3, ˜λ4, ˜λ5}). (68)
+In order to compare to the six-point amplitude we take the explicit fo rm given in [22] as
+M6 = D1 + D1
+ﬂip
++ D2 + D3 + D3
+ﬂip
++ D6 (69)
+with6
+D1 = ⟨23⟩⟨1|2 + 3|4]7(⟨1|2 + 3|4]⟨5|3 + 4|2][51] − [12][45]⟨51⟩s234)
+⟨15⟩⟨16⟩[23][34]2⟨56⟩s234⟨1|3 + 4|2]⟨5|3 + 4|2]⟨5|2 + 3|4]⟨6|3 + 4|2]⟨6|2 + 3|4]
++(1 ↔ 2). (70)
+6Here we use the opportunity to point out a typographical error in t he formula for D1 given in [22] where
+the second term in the numerator must have a minus sign.
+14
+Here s234 = ( k2 + k3 + k4)2 and ⟨a|b + c|d] = ⟨a, b⟩[b, d] + ⟨a, c⟩[c, d]. In the formula for M6,
+D1
+ﬂip
+means taking the formula for D1 exchange [ , ] ↔ ⟨ , ⟩ and relabel i → 7 − i.
+The remaining pieces are given by
+D2 = − ⟨13⟩7⟨25⟩[45]7[16]
+⟨16⟩[24][25]⟨36⟩s245⟨1|2 + 5|4]⟨6|2 + 5|4]⟨3|1 + 6|5]⟨3|1 + 6|2]
++(1 ↔ 2) + (5 ↔ 6) + (1 ↔ 2, 5 ↔ 6), (71)
+D3 = ⟨13⟩8[14][56]7(⟨23⟩⟨56⟩[62]⟨1|3 + 4|5] + ⟨35⟩[56]⟨62⟩⟨1|3 + 4|2])
+⟨14⟩[25][26]⟨34⟩2s134⟨1|3 + 4|2]⟨1|3 + 4|5]⟨1|3 + 4|6]⟨3|1 + 4|2]⟨3|1 + 4|5]⟨3|1 + 4|6]
+(1 ↔ 2), (72)
+and
+D6 = ⟨12⟩[56]⟨3|1 + 2|4]8
+[21][14][24]⟨35⟩⟨36⟩⟨56⟩s124⟨5|1 + 2|4]⟨6|1 + 2|4]⟨3|5 + 6|1]⟨3|5 + 6|2] . (73)
+The next step is to construct the function M (12)
+6 obtained from M6 as
+M (12)
+6 ({λ1, λ2, . . . , λ6}, {˜λ3, ˜λ4, . . . ,˜λ6}) = M6({λ1, ˜λ∗
+1}, {λ2, ˜λ∗
+2}, {λ3, ˜λ3}, . . .) (74)
+with
+˜λ∗
+1 = −
+6∑
+a=3
+⟨2, a⟩
+⟨2, 1⟩
+˜λa, ˜λ∗
+2 = −
+6∑
+a=3
+⟨1, a⟩
+⟨1, 2⟩
+˜λa. (75)
+Finally, we construct a rational function of ǫ
+M (12)
+6 ({λ1, λ2, . . . , ǫλ6}, {˜λ3, ˜λ4, . . . ,˜λ6}) (76)
+and expand around ǫ = 0. In this case, we ﬁnd that the series does not terminate and tha t
+the ﬁrst three orders are exactly given by
+( 1
+ǫ3 S(0) + 1
+ǫ2 S(1) + 1
+ǫ S(2)
+)
+M (12)
+5 ({λ1, λ2, . . . , λ5}, {˜λ3, ˜λ4, ˜λ5}) (77)
+as expected.
+Acknowledgements
+We are grateful to N. Arkani-Hamed, J. Bourjaily, D. Kapec, V. Ly sov, S. Pasterski, X. Yin
+and E. Yuan for useful conversations. FC is supported by Perimet er Institute for Theoret-
+ical Physics. Research at Perimeter Institute is supported by the Government of Canada
+through Industry Canada and by the Province of Ontario through the Ministry of Research
+& Innovation. AS is supported in part by NSF grant 1205550.
+15
+A Absence of poles in R
+A crucial step in the construction of section 2 is the ﬁniteness of R as ǫ → 0. In this
+appendix we prove this statement. Recall that the terms contribu ting to R come from poles
+of Mn+1(z)/z located at solutions of
+(ks(z) + ka1 + · · ·kam)2 = 0 (78)
+with m > 1. Let us denote as Qm the vector ka1 + · · ·+ kam. The solution to equation (78) is
+z∗ = −(ks + Qm)2
+2p · Qm
+where pα, ˙α = λn,α˜λs, ˙α. (79)
+Here we used that p · ks = 0.
+The terms contributing to R are then of the form
+∑
+hI =±2
+ML(s(z∗), a1, . . . , am, {kI, hI}) 1
+(ks + Qm)2 MR({−kI, −hI }, n(z∗), a1, . . . , am). (80)
+Consider the limit λs → 0. In that case
+z∗ = − Q2
+m
+2p · Qm
+, k I = Qm − Q2
+m
+2p · Qm
+p. (81)
+Note that p remains ﬁnite since ˜λs is held ﬁxed. The momentum of the internal particle, i.e.
+kI, is the projection of Qm along the null direction deﬁned by p and hence is itself null.
+Let us consider the left amplitude in the limit λs → 0,
+ML → ML(z∗p, a1, . . . , am, {kI, hI}). (82)
+This amplitude is evaluated at generic momenta away from any soft, c ollinear or multiparticle
+factorization singularities and hence it is ﬁnite. Note that here Q2
+m ⁄= 0. This is precisely
+what is not true for the terms that do not belong to R and were studied in detail in section
+2.3.1.
+In the holomorphic soft limit the right amplitude becomes
+MR → MR({−kI, −hI }, kn(z∗),
+a1, . . . , am) (83)
+where
+kn(z∗) = kn − z∗p. (84)
+Clearly, if the number of elements in a1, . . . , am is greater than two then the amplitude is
+again evaluated away from any singularities and hence ﬁnite. The only possibly dangerous
+16
+case is when a1, . . . , am consists of a single element. Let us assume that such a particle is
+particle b. In this case we have
+MR({kI, −hI }, {kn(z∗), hn}, {kb, hb}). (85)
+We can evaluate all kinematic invariants explicitly by using momentum co nservation to write
+Q = −kb − ks − kn. Moreover, since λs → 0 we have Q = −kb − kn. A short computation
+also reveals that
+kI =
+(
+−λb − [s, n]
+[s, b] λn
+)
+˜λb, (86)
+kn(z∗) = [s, n]
+[s, b] λn˜λb. (87)
+Note that all three momenta entering in MR have ˜λb by antiholomorphic spinor. This means
+that when the helicities are such that the amplitude has two pluses an d one negative helicity
+then it vanishes. When the amplitude has two negative and one plus th en one gets something
+ﬁnite. In either case the answer is non-singular and hence R is ﬁnite in the soft holomorphic
+limit λs → 0 as claimed.
+B Second-order Taylor expansion
+In this appendix we complete the argument at the end of section 2.3.2 by expanding the
+near-soft amplitude to second order in ǫ.
+Consider the distribution
+G(ǫ) = Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa + ǫ ⟨n, s⟩
+⟨n, a⟩
+˜λs}, . . . ,{λn, ˜λn + ǫ ⟨a, s⟩
+⟨a, n⟩
+˜λs}) (88)
+and expand it as
+G(ǫ) = G(0) + G′(0)ǫ + 1
+2 G′′(0)ǫ2 + O(ǫ3) (89)
+The derivative with respect to ǫ becomes by applying the chain rule
+∂
+∂ǫ = ⟨n, s⟩
+⟨n, a⟩
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+a
++ ⟨a, s⟩
+⟨a, n⟩
+˜λ ˙α
+s
+∂
+∂˜λ ˙α
+n
+. (90)
+This implies that
+G′′(0) =
+(
+⟨n, s⟩2
+⟨n, a⟩2
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+a
+− 2 ⟨a, s⟩⟨n, s⟩
+⟨a, n⟩2
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+a
++ ⟨a, s⟩2
+⟨a, n⟩2
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+)
+Mn.(91)
+17
+The next step is to plug this on the right hand side of the ǫ deformed version of (37),namely
+Mn+1(ǫ)= 1
+ǫ3
+n−1∑
+a=1
+[s, a]⟨n, a⟩2
+⟨s, a⟩⟨n, s⟩2 Mn({λ1, ˜λ1}, . . . ,{λa, ˜λa+ǫ ⟨n, s⟩
+⟨n, a⟩
+˜λs}, . . . ,{λn, ˜λn+ǫ ⟨a, s⟩
+⟨a, n⟩
+˜λs}).
+The sub-subleading term is then
+1
+2ǫ
+n−1∑
+a=1
+[s, a]
+⟨s, a⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+a
+Mn − 1
+ǫ
+n−1∑
+a=1
+[s, a]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+n
+Mn
++ 1
+2ǫ
+n−1∑
+a=1
+[s, a]⟨a, s⟩
+⟨n, s⟩2
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+Mn. (92)
+The ﬁrst sum is almost what is needed to prove our claim, i.e.,
+1
+2ǫ
+n−1∑
+a=1
+[s, a]
+⟨s, a⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+a
+Mn = S(2)Mn − 1
+2ǫ
+[s, n]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+Mn. (93)
+Let us simplify the last sum in (92) using
+n−1∑
+a=1
+[s, a]⟨a, s⟩ = −2
+n−1∑
+a=1
+q · ka = 2q · kn = −[s, n]⟨s, n⟩ (94)
+which gives
+1
+2ǫ
+n−1∑
+a=1
+[s, a]⟨a, s⟩
+⟨n, s⟩2
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+Mn = − 1
+2ǫ
+[s, n]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+Mn. (95)
+The second sum in (92) can be simpliﬁed by writing it as
+− 1
+ǫ
+n−1∑
+a=1
+[s, a]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+n
+Mn = −1
+ǫ
+1
+⟨s, n⟩
+˜λ
+˙β
+s
+∂
+∂˜λ
+˙β
+n
+(
+˜λ ˙α
+s ˜λ ˙γ
+s
+n−1∑
+a=1
+˜λa, ˙γ
+∂
+∂˜λ ˙α
+a
+)
+Mn. (96)
+Using global angular momentum conservation one has
+˜λ ˙α
+s ˜λ ˙γ
+s
+n−1∑
+a=1
+˜λa, ˙γ
+∂
+∂˜λ ˙α
+a
+= 1
+2
+˜λ ˙α
+s ˜λ ˙γ
+s
+n−1∑
+a=1
+˜J (a)
+˙α ˙γ = −1
+2
+˜λ ˙α
+s ˜λ ˙γ
+s ˜J (n)
+˙α ˙γ = −[s, n]˜λ ˙α
+s
+∂
+∂˜λ ˙α
+n
+, (97)
+which gives
+− 1
+ǫ
+n−1∑
+a=1
+[s, a]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+n
+Mn = 1
+ǫ
+[s, n]
+⟨s, n⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+n∂˜λ
+˙β
+n
+Mn. (98)
+Combining all the contributions the ﬁnal form of the sub-subleading term is
+1
+2ǫ
+n∑
+a=1
+[s, a]
+⟨s, a⟩
+˜λ ˙α
+s ˜λ
+˙β
+s
+∂2
+∂˜λ ˙α
+a ∂˜λ
+˙β
+a
+Mn = S(2)Mn (99)
+as desired.
+18
+C Hodges’ MHV formula
+In two beautiful papers [25, 26], Hodges constructed a formula fo r all MHV tree-level ampli-
+tudes which is very compact and makes Weinberg’s soft limits manifest . It is therefore not
+surprising that this is our preferred choice of presentation for MH V amplitudes.
+A stripped n-particle MHV amplitude is given in terms of the determinant of an n × n
+matrix Φ with entries
+Φ ab =
+
+
+
+
+
+
+
+[a, b]
+⟨a, b⟩, a ⁄= b,
+−
+∑
+c⁄=a
+Φ ac
+⟨x, c⟩⟨y, c⟩
+⟨x, a⟩⟨y, a⟩, a = b,
+(100)
+where x and y represent two reference spinors.
+Hodges showed that this matrix has corank 3, i.e., the dimension of th e null space is three.
+He did so by ﬁnding an explicit basis for the null space. Using the basis H odges showed that
+a permutation invariant formula of the determinant of any ( n − 3) × (n − 3) minor of Φ is
+given by
+det′Φ ≡ det Φ ijk
+pqr
+|ijk||pqr| (101)
+where Φ ijk
+mpq is the ( n − 3) × (n − 3) matrix obtained from Φ by removing rows i, j, k and
+columns p, q, r. The factors in the denominator are deﬁned as
+|ijk| ≡ ⟨i, j⟩⟨j, k⟩⟨k, i⟩ (102)
+and similarly for |pqr|.
+Finally, the formula for an n-particle MHV amplitude with negative helicity gravitons 1
+and 2 and the rest of positive helicity is given by
+Mn = ⟨1, 2⟩8det′Φ . (103)
+In the examples section we use a particularly convenient choice of co lumns and rows as well
+as a convenient gauge. The choice of rows and columns in {i, j, k} = {p, q, r} = {1, 2, 3}
+while the choice of gauge is x = 1 and y = 2. In this form
+Mn = ⟨1, 2⟩8
+|1, 2, 3|2 det Φ 123
+123. (104)
+19
+References
+[1] S. Weinberg, “Infrared photons and gravitons,” Phys. Rev. 140, B516 (1965).
+[2] A. Strominger, “On BMS Invariance of Gravitational Scattering ,” arXiv:1312.2229 [hep-
+th].
+[3] T. He, V. Lysov, P. Mitra and A. Strominger, “BMS supertransla tions and Weinberg’s
+soft graviton theorem,” arXiv:1401.7026 [hep-th].
+[4] H. Bondi, M. G. J. van der Burg, A. W. K. Metzner, “Gravitationa l waves in general
+relativity VII. Waves from isolated axisymmetric systems”, Proc. R oy. Soc. Lond. A
+269, 21 (1962); R. K. Sachs, “Gravitational waves in general rela tivity VIII. Waves in
+asymptotically ﬂat space-time”, Proc. Roy. Soc. Lond. A 270, 103 (1962).
+[5] G. Barnich and C. Troessaert, “Symmetries of asymptotically ﬂa t 4 dimensional space-
+times at null inﬁnity revisited,” Phys. Rev. Lett. 105, 111103 (2010) [arXiv:0909.2617
+[gr-qc]]; G. Barnich and C. Troessaert, “Supertranslations call fo r superrotations,” PoS
+CNCFG 2010, 010 (2010), [arXiv:1102.4632 [gr-qc]]; G. Barnich and C. Troessaer t,
+“BMS charge algebra,” JHEP 1112, 105 (2011) [arXiv:1106.0213 [hep-th]]; G. Barnich
+and Cd. Troessaert, “Comments on holographic current algebras and asymptotically ﬂat
+four dimensional spacetimes at null inﬁnity,” arXiv:1309.0794 [hep-th ].
+[6] See footnote 18 in T. Banks, “A Critique of pure string theory: H eterodox opinions of
+diverse dimensions,” hep-th/0306074.
+[7] A. Strominger, “Virasoro Notes”, unpublished, 2013.
+[8] F. E. Low, “Bremsstrahlung of very low-energy quanta in elemen tary particle collisions,”
+Phys. Rev. 110, 974 (1958).
+[9] T. H. Burnett and N. M. Kroll, “Extension of the low soft photon t heorem,” Phys. Rev.
+Lett. 20, 86 (1968).
+[10] C. D. White, “Factorization Properties of Soft Graviton Amplitu des,” JHEP 1105, 060
+(2011) [arXiv:1103.2981 [hep-th]].
+[11] D. J. Gross and R. Jackiw, “Low-Energy Theorem for Graviton Scattering,” Phys. Rev.
+166, 1287 (1968).
+[12] R. Jackiw, “Low-Energy Theorems for Massless Bosons: Phot ons and Gravitons,” Phys.
+Rev. 168, 1623 (1968).
+20
+[13] D. Kapec, V. Lysov, S. Pasterski and A. Strominger to appea r.
+[14] R. Britto, F. Cachazo and B. Feng, “New recursion relations fo r tree amplitudes of
+gluons,” Nucl. Phys. B 715, 499 (2005) [hep-th/0412308].
+[15] R. Britto, F. Cachazo, B. Feng and E. Witten, “Direct proof of tree-level recursion
+relation in Yang-Mills theory,” Phys. Rev. Lett. 94, 181602 (2005) [hep-th/0501052].
+[16] H. Elvang and Y. -t. Huang, “Scattering Amplitudes,” arXiv:1308 .1697 [hep-th].
+[17] N. Arkani-Hamed, F. Cachazo and J. Kaplan, “What is the Simples t Quantum Field
+Theory?,” JHEP 1009, 016 (2010) [arXiv:0808.1446 [hep-th]].
+[18] E. Witten, “Perturbative gauge theory as a string theory in tw istor space,” Commun.
+Math. Phys. 252, 189 (2004) [hep-th/0312171].
+[19] P. Benincasa, C. Boucher-Veronneau and F. Cachazo, “Tamin g Tree Amplitudes In
+General Relativity,” JHEP 0711, 057 (2007) [hep-th/0702032 [HEP-TH]].
+[20] N. Arkani-Hamed and J. Kaplan, JHEP 0804, 076 (2008) [arXiv:0801.2385 [hep-th]].
+[21] J. Bedford, A. Brandhuber, B. J. Spence and G. Travaglini, “A Recursion relation for
+gravity amplitudes,” Nucl. Phys. B 721, 98 (2005) [hep-th/0502146].
+[22] F. Cachazo and P. Svrcek, “Tree level recursion relations in ge neral relativity,” hep-
+th/0502160.
+[23] R. Britto, B. Feng, R. Roiban, M. Spradlin and A. Volovich, “All sp lit helicity tree-
+level gluon amplitudes,” Phys. Rev. D 71, 105017 (2005) [hep-th/0503198]; D. Nguyen,
+M. Spradlin, A. Volovich and C. Wen, “The Tree Formula for MHV Gravit on Ampli-
+tudes,” JHEP 1007, 045 (2010) [arXiv:0907.2276 [hep-th]]; N. Arkani-Hamed, J. Bour-
+jaily, F. Cachazo and J. Trnka, “Uniﬁcation of Residues and Grassm annian Dualities,”
+JHEP 1101, 049 (2011) [arXiv:0912.4912 [hep-th]].
+[24] S. Rajabi, “Higher Codimension Singularities Constructing Yang- Mills Tree Ampli-
+tudes,” JHEP 1308, 037 (2013) [arXiv:1101.5208 [hep-th]]; C. Boucher-Veronneau and
+A. J. Larkoski, “Constructing Amplitudes from Their Soft Limits,” JH EP 1109, 130
+(2011) [arXiv:1108.5385 [hep-th]]; D. C. Dunbar, J. H. Ettle and W. B. Perkins, “Con-
+structing Gravity Amplitudes from Real Soft and Collinear Factorisa tion,” Phys. Rev.
+D 86, 026009 (2012) [arXiv:1203.0198 [hep-th]]; D. Nandan and C. Wen, “G enerating
+All Tree Amplitudes in N=4 SYM by Inverse Soft Limit,” JHEP 1208, 040 (2012)
+[arXiv:1204.4841 [hep-th]].
+21
+[25] A. Hodges, “New expressions for gravitational scattering am plitudes,” Journal of High
+Energy Physics 1307 (2013) [arXiv:1108.2227 [hep-th]].
+[26] A. Hodges, “A simple formula for gravitational MHV amplitudes,” a rXiv:1204.1930
+[hep-th].
+22

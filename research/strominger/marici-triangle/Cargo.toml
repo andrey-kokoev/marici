@@ -1,0 +1,12 @@
+[package]
+name = "marici-triangle"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+symbolica = { version = "2.2.0", default-features = false, features = ["no_gmp"] }
+serde_json = "1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
