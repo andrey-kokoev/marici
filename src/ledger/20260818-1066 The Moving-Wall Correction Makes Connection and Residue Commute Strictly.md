@@ -3,7 +3,11 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# 667 — The Moving-Wall Correction Makes Connection and Residue Commute Strictly
+# 1066 — The Moving-Wall Correction Makes Connection and Residue Commute Strictly
+
+> Numbering repair (2026-08-19): relocated from filename 949 and conflicting
+> heading 667 under allocator claim `seqclaim-bc4d6970479ffe0657563197`.
+> The evidential content and scope are unchanged.
 
 ## Hard-to-vary claim
 
@@ -11,7 +15,7 @@ On the literal physical source, the bulk parameter connection and the three
 shared-wall Poincaré residues commute strictly once the mandatory moving-wall
 double-pole contribution is included.  The ordinary algebraic
 residue--Čech calculus therefore supplies no secondary correction capable of
-cancelling the rank-three first jet found in Entries 664--665.
+cancelling the rank-three first jet found in Entries 1068 and 1064.
 
 ## Typed source square
 
@@ -89,7 +93,7 @@ d_{\rm Cech}\rho_{\rm phys}=0.
 
 ## Consequence
 
-Entry 665 left open whether the localization boundary contributes a
+Entry 1064 left open whether the localization boundary contributes a
 secondary algebraic term that cancels the two transverse derivatives of the
 unsplit source.  The typed source square falsifies that mechanism.  Standard
 Poincaré residue transports the source connection to the wall connection;
@@ -120,7 +124,7 @@ every possible derived or analytic realization.
 
 - `research/benincasa/physical_bulk_wall_connection_residue.py`;
 - `research/benincasa/physical_g12_shared_wall_cech_cocycle.py`;
-- Entries 648--650 and 664--666.
+- Entries 648--650, 1068, 1064, and 1065.
 
 ## Outcome contract
 

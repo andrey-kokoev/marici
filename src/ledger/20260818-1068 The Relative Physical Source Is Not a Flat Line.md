@@ -3,7 +3,11 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# 664 — The Relative Physical Source Is Not a Flat Line
+# 1068 — The Relative Physical Source Is Not a Flat Line
+
+> Numbering repair (2026-08-19): relocated from filename 951 and conflicting
+> heading 664 under allocator claim `seqclaim-ebb77ab93a142e2e38f1e473`.
+> The evidential content and scope are unchanged.
 
 ## Hard-to-vary claim
 

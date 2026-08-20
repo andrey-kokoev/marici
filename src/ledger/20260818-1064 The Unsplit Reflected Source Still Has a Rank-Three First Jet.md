@@ -3,7 +3,11 @@ authors:
   - marici.Nima
 date: 2026-08-18
 ---
-# 665 — The Unsplit Reflected Source Still Has a Rank-Three First Jet
+# 1064 — The Unsplit Reflected Source Still Has a Rank-Three First Jet
+
+> Numbering repair (2026-08-19): relocated from filename 947 and conflicting
+> heading 665 under allocator claim `seqclaim-989154be4a01d7838880f519`.
+> The evidential content and scope are unchanged.
 
 ## Hard-to-vary claim
 
@@ -74,7 +78,7 @@ All calculations are over \(\mathbb F_{32003}\) at
 
 ## Consequence
 
-Entry 664 left open the possibility that the two reflected algebraic
+Entry 1068 left open the possibility that the two reflected algebraic
 occurrences cancel each other's transverse derivatives.  The literal
 five-mark target falsifies that possibility.  Neither relative reduction
 alone nor the source-prescribed reflected sum isolates a flat coefficient
@@ -101,7 +105,7 @@ boundary term cancels the two independent transverse derivatives.
 ## Evidence
 
 - `research/benincasa/physical_four_mark_residue_twisted_derham.py`;
-- Entries 658 and 660--664.
+- Entries 658, 660--663, and 1068.
 
 ## Outcome contract
 
