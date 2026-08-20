@@ -19,8 +19,8 @@ Their complete frozen boundary signatures agree:
 \text{generic Rees factor}&x_D&x_D\\
 \text{closed Cartier residue}&+1&+1\\
 \text{endpoint comparison}&
-\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}&
-\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}\\
+\begin{pmatrix}0&1\\1&0\end{pmatrix}&
+\begin{pmatrix}0&1\\1&0\end{pmatrix}\\
 \text{Tor}_1\text{ suspension orientation}&+1&+1\\
 \text{Čech residual}&0&0\\
 \text{Cartier commutator}&0&0.

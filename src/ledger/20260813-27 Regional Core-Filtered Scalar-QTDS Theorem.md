@@ -225,7 +225,7 @@ Hence
 \[
 \boxed{
 \prod_{R\in\mathcal R(P)}
-\{(T_R,d_R)}
+\{(T_R,d_R)\}
 \simeq
 \left\{
 (Q,(d_C)):

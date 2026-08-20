@@ -87,6 +87,7 @@ Thus the tangency closes locally as
 +
 \text{one anti-invariant Tate coefficient}.
 }
+\]
 
 No new carrier or associated-grade coefficient excess survives.
 

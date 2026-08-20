@@ -57,6 +57,7 @@ H^\bullet_-
 L i^*[R\xrightarrow{2}R]
 \right)=0.
 }
+\]
 
 Thus neither a face Tor class nor a codimension-two conductor extension
 survives.

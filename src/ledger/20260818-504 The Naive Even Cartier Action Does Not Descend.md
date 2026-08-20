@@ -37,7 +37,7 @@ Therefore
 
 \[
 \boxed{
-a^2operatorname{im}d\notsubseteqoperatorname{im}d.
+a^2\operatorname{im}d\not\subseteq\operatorname{im}d.
 }
 \]
 

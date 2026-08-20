@@ -76,6 +76,7 @@ post hoc endpoint ratio:
 \mathcal Q\text{ has algebraic Källén provenance, but the
 associated double cover is not the physical endpoint cover.}
 }
+\]
 
 Together with Entries 181 and 871, this closes the generic
 \(q_{\mathcal G_{12}}\) carrier, marked-extension, and physical-endpoint

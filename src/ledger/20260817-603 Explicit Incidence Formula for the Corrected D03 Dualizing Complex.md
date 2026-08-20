@@ -39,7 +39,7 @@ incidence formula
 \operatorname{Tot}_{-p+r}
 \left(
 \prod_{z_0<\cdots<z_p}
-C_{z_p}\!left(
+C_{z_p}\!\left(
 \operatorname{Hom}_{A_{a_c}}(A_{d_c},I_{a_c}^{,r})
 \right)
 \right),

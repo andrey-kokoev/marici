@@ -65,6 +65,7 @@ has the abstract local character
 =(+1,-1,-1)
 =\chi_N.
 }
+\]
 
 This is a character identity, not yet an identification of coefficient
 complexes.
@@ -111,6 +112,7 @@ Restrict an oriented graph cycle to the three edges incident at the vertex
 \operatorname{res}_D H_1(\Gamma_8)
 \subseteq A_{2,D}.
 }
+\]
 
 The four square boundaries restrict as
 
@@ -135,6 +137,7 @@ H_1(\Gamma_8)/S
 P_D/A_{2,D}
 \quad=\quad0.
 }
+\]
 
 It has image rank zero and cokernel rank one.  Ordinary star restriction is
 not the primitive road counit.
@@ -202,6 +205,7 @@ The exact negative result rules out
 \pi_D^{\rm PC}
 \stackrel{\rm false}{=}
 \text{ordinary restriction of the global orientation cycle}.
+\]
 
 The still viable construction has two derived stages:
 
@@ -213,6 +217,7 @@ The still viable construction has two derived stages:
 \xrightarrow{\;\mathbb D\Delta_D^{\rm circ}\;}
 \mathsf J_D^{\rm road,PC}.
 }
+\]
 
 The first arrow must retain occurrence weights, the polarity conductor,
 ordered normal/tangential lines, and the actual scalar kinetic differential.

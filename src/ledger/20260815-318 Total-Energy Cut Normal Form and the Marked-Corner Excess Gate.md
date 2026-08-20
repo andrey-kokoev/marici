@@ -29,8 +29,7 @@ The hard-to-vary claim was:
 
 \[
 \boxed{
-\text{the predeclared nearby/Gysin/excess calculus through second
-\(E_T\)-Rees grade controls the Cut specialization at every nonsoft marked
+\text{the predeclared nearby/Gysin/excess calculus through second }E_T\text{-Rees grade controls the Cut specialization at every nonsoft marked
 intersection.}
 }
 \]

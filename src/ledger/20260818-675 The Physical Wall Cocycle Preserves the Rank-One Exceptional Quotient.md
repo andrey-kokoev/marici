@@ -84,6 +84,7 @@ and hence
 \qquad
 \operatorname{rank}(R_\rho E_{\rm exc})=1.
 }
+\]
 
 This conclusion is independent of residue normalization and orientation
 signs because those only rescale the six nonzero coordinates.

@@ -35,6 +35,7 @@ For every labelled factor \(f_a\),
 \boxed{
 f_a\circ\rho^3=f_a
 }
+\]
 
 as a rational function, up to a nonzero scalar.  All twelve labels pass this
 identity exactly.
@@ -69,6 +70,7 @@ Therefore the established object is
 \boxed{
 \text{finite three-chart labelled divisor correspondence},
 }
+\]
 
 not a 36-cell carrier enlargement.
 

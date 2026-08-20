@@ -73,9 +73,9 @@ e\in Q_1.
 
 Thus no asymmetric-support obstruction occurs.
 
-If (e\) is absent from both quadrangulations, both cut routes are zero.
+If \(e\) is absent from both quadrangulations, both cut routes are zero.
 
-If (e\) is present, the two directed edges have:
+If \(e\) is present, the two directed edges have:
 
 - the same source quadrilateral;
 - the same two scalar slots (d_e^0,d_e^1);
@@ -98,7 +98,7 @@ the original prism occurrences: twenty of each per polarity.
 ## The correct upper transport
 
 Apply regional inverse Catalan descent separately to both endpoints of each matched cut term. For
-each slot (\sigma\), the resulting pair
+each slot \(\sigma\), the resulting pair
 
 \[
 y_0^\sigma

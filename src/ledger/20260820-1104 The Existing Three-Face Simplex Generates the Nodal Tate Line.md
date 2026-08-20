@@ -109,6 +109,7 @@ Hence the second exceptional center closes locally as
 +
 \text{exact Gysin simplex}.
 }
+\]
 
 No new carrier or residual coefficient class survives this local test.
 

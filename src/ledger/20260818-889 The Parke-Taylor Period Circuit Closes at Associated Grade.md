@@ -11,7 +11,7 @@ Status: exact field-theory-leading/associated-grade period-intertwining theorem 
 Use the Parke--Taylor cocycle basis
 
 \[
-\Phi=igl(\operatorname{PT}(12345),\operatorname{PT}(12435)\bigr),
+\Phi=\bigl(\operatorname{PT}(12345),\operatorname{PT}(12435)\bigr),
 \]
 
 the source cycle basis

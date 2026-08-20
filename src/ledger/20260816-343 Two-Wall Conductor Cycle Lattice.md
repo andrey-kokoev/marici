@@ -178,7 +178,7 @@ The surviving narrower statement is
 
 \[
 \boxed{
-\text{the \(101\), \(110\), and \(111\) grades form one filtered
+\text{the 101, 110, and 111 grades form one filtered
 Tate/conductor coefficient lattice over the frozen arrangement.}
 }
 \]

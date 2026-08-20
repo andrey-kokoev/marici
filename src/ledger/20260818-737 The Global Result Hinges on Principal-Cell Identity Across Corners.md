@@ -36,7 +36,7 @@ sections, not as independently chosen geometric-root vectors.
 ## Two inequivalent source typings
 
 The local calculation alone does not determine whether its symbol
-\(\mathbbm1_{\rm principal}\) is one global vertex-labelled cell or a separate
+\(\mathbf{1}_{\rm principal}\) is one global vertex-labelled cell or a separate
 cell for each incidence germ.
 
 ### Vertex-shared principal cells

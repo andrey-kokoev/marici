@@ -104,7 +104,7 @@ exterior orientation, not by a chosen relation between master vectors.
 ## Classification and limit
 
 - top-to-mixed maps: ordinary logarithmic residue/Gysin maps;
-- mixed-to-(q\)-closed maps: ordinary logarithmic residues;
+- mixed-to-\(q\)-closed maps: ordinary logarithmic residues;
 - coherence: the standard anticommuting Cartier square;
 - carrier input: only the three frozen denominator hyperplanes;
 - new carrier datum: none.
@@ -127,7 +127,7 @@ reduce them in their deletion-closed critical quotients, and verify that
 \nabla\operatorname{Res}=\operatorname{Res}\nabla
 \]
 
-on both mixed faces and on their common (q\)-closed image.  Any defect must
+on both mixed faces and on their common \(q\)-closed image.  Any defect must
 be classified as an exact homotopy, coefficient extension, or genuinely new
 support operation before changing the carrier.
 

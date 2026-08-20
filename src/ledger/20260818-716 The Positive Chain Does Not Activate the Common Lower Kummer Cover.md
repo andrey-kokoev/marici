@@ -51,7 +51,7 @@ four lower divisors. In particular they meet no pair or triple support:
 \[
 \boxed{
 \Gamma_{\rm BD}\cap
-V(q_{g_i},q_{g_j})=arnothing,
+V(q_{g_i},q_{g_j})=\varnothing,
 \qquad
 \Gamma_{\rm BD}\cap V(q_{g_2},q_{g_3},q_{g_{23}})=\varnothing.
 }

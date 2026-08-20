@@ -37,7 +37,7 @@ The nonzero corner residue lies entirely in the inhomogeneous extension block
 (C_E).  Therefore the typed source is the augmented object
 
 \[
-\widetilde K_i=K_i\oplus\mathbbm1_{\rm principal},
+\widetilde K_i=K_i\oplus\mathbf{1}_{\rm principal},
 \]
 
 and the local map is

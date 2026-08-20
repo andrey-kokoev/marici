@@ -94,7 +94,7 @@ g_{11}
 or
 \[
 \boxed{
-g_{11}=d\log\!left((v-u)(y^2-u^4)\right).
+g_{11}=d\log\!\left((v-u)(y^2-u^4)\right).
 }
 \]
 

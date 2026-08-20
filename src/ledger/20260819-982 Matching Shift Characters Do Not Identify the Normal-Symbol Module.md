@@ -31,7 +31,7 @@ projective-minor reduction gives
 
 \[
 \begin{array}{c|c|c}
-\text{character}&\text{combined generic rank}&\text{proportional}\ \hline
+\text{character}&\text{combined generic rank}&\text{proportional}\\ \hline
 (++)&2&\text{no}\\
 (-+)&1&\text{yes}\\
 (+-)&1&\text{yes}\\

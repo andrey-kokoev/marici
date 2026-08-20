@@ -33,6 +33,7 @@ Exact source expansion gives
 \qquad
 \operatorname{in}_J(K)=\frac14(p+q-2A)^2,
 }
+\]
 
 and
 
@@ -42,6 +43,7 @@ and
 \qquad
 \operatorname{in}_J(K_1)=-(p+q-2A).
 }
+\]
 
 The marked initial forms are
 
@@ -57,6 +59,7 @@ The twelve source-form orders are
 \boxed{
 (-1,0,0,2,1,0,2,1,0,1,1,3).
 }
+\]
 
 ## First smoothing
 
@@ -72,6 +75,7 @@ the next radial coefficient factors exactly as
 \boxed{
 K_3=-2q(B+p)(B-p).
 }
+\]
 
 The two linear fiber factors are the occurrence-resolved polarities
 
@@ -101,6 +105,7 @@ The surviving architecture is
 +
 \text{tangency-specific coefficient lattice}.
 }
+\]
 
 No new carrier divisor is indicated.
 

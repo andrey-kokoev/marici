@@ -6,7 +6,7 @@ Date: 2026-08-15
 
 Status: the full two-edge coefficient/bivariant trace is proved; the claim
 that the universal unlocalized second weighted graph canonically selects its
-physical aligned residue is falsified. The symbolic local-(Q\) collar
+physical aligned residue is falsified. The symbolic local-\(Q\) collar
 attachment is nonzero, but no spatial exceptional-fibre pushforward,
 \(\alpha_{03}\), generic-to-special \(Q\) leg, global mapping fiber, or
 parity is constructed. No graph admission is claimed.
@@ -106,6 +106,7 @@ edges. In its ordered middle basis, the primitive excess vector is
 \boxed{
 \eta_{\rm mix}=(-q_3,-1).
 }
+\]
 
 It is closed because
 
@@ -151,7 +152,7 @@ integral two-edge coefficient/bivariant trace
 It has:
 
 - primitive occurrence top \(x_1e_c+X_De_r\);
-- exact shared-(m_+\) lcm cancellation;
+- exact shared-\(m_+\) lcm cancellation;
 - every lower and double-overlap normal term;
 - \(d^2=0\) strictly;
 - primitive \(\eta_{\rm mix}\) with both Tor grades;

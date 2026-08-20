@@ -142,6 +142,7 @@ The tested failure claim is falsified on the first individual soft branch:
 +t\text{-Rees grade}
 +\langle e_6\rangle,
 }
+\]
 
 with the independent elliptic block and no new carrier datum.
 

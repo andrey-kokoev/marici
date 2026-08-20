@@ -42,6 +42,7 @@ M_p=M_s=M_{B-1}=1,
 \qquad
 N=0.
 }
+\]
 
 ## Deck character
 
@@ -75,6 +76,7 @@ This supports
 +
 \text{one sector-specific anti-invariant Tate coefficient}.
 }
+\]
 
 No source Gysin map into this line has yet been constructed.  Rank and
 character matching do not authorize one.

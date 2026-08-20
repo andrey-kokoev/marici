@@ -338,6 +338,7 @@ In particular, for the Hatcher cells,
 \qquad
 \Omega_{6AS}=0
 }
+\]
 
 in the canonical surface-function quotient.  The vanishing is not inferred
 from maximal residues alone.  Their possible discrepancies have zero Cuts and

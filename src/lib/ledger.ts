@@ -3,7 +3,12 @@ import type { CollectionEntry } from 'astro:content'
 
 export type LedgerEntry = CollectionEntry<'ledger'>
 export const DEFAULT_AUTHOR = 'marici.Nima' as const
-export const MARICI_AUTHORS = ['marici.Nima', 'marici.Benincasa'] as const
+export const MARICI_AUTHORS = [
+  'marici.Nima',
+  'marici.Benincasa',
+  'marici.Strominger',
+  'marici.Figueiredo',
+] as const
 export type MariciAuthor = (typeof MARICI_AUTHORS)[number]
 
 export interface LedgerMeta {

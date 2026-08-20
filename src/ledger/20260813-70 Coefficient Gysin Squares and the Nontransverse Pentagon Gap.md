@@ -30,21 +30,21 @@ six-point suspension carrier \(K_{2,3}\).  At the coefficient level the
 desired comparison has the form
 
 \[
-\begin{CD}
+\begin{array}{ccc}
 \ker\!\left(
 \bigoplus_{Q\in\operatorname{Quad}_8}\mathcal L_8(Q)
 \longrightarrow
 H_0(U_+;\mathcal L)\oplus H_0(U_-;\mathcal L)
 \right)
-@>{\delta_{\rm MV,8}}>>
+\xrightarrow{\delta_{\rm MV,8}}
 H_1(\mathcal V_8;\mathcal L)\\
-@V{G_D}VV @VV{G_D^{\rm link}}V\\
+\downarrow^{G_D} && \downarrow^{G_D^{\rm link}}\\
 \mathcal L_4(\varnothing)\boxtimes
 \widetilde C_0(R_3;\mathcal L_6)
-@>{1\boxtimes\Gamma_D}>>
+\xrightarrow{1\boxtimes\Gamma_D}
 \mathcal L_4(\varnothing)\boxtimes
 H_1(K_{2,3};\mathcal L_6).
-\end{CD}
+\end{array}
 \]
 
 Here \(\delta_{\rm MV,8}\) is the coefficient-valued connecting morphism,

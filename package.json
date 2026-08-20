@@ -15,8 +15,10 @@
     "bootstrap": "node scripts/assemble-narada-source.mjs && pnpm install",
     "build:ui": "pnpm --filter @narada-core/ui build",
     "dev": "pnpm run build:ui && astro dev",
-    "check": "pnpm run build:ui && astro check",
-    "build": "pnpm run build:ui && astro build",
+    "math:check": "node scripts/check-katex.mjs source",
+    "math:check:dist": "node scripts/check-katex.mjs dist",
+    "check": "pnpm run math:check && pnpm run build:ui && astro check",
+    "build": "pnpm run math:check && pnpm run build:ui && astro build && pnpm run math:check:dist",
     "preview": "astro preview",
     "ship": "pnpm run build && wrangler deploy"
   },

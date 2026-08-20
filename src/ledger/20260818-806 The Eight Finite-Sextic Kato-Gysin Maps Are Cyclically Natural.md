@@ -108,12 +108,12 @@ anti-invariant generator (1/w) also transports with unit (+1).
 For every representative (S), all units in
 
 \[
-\begin{CD}
-\phi_S @>{\operatorname{Gysin}_S}>> \mathcal K_S\\
-@V{\sigma}VV @VV{\sigma}V\\
-\phi_{\sigma S} @>{\operatorname{Gysin}_{\sigma S}}>>
+\begin{array}{ccc}
+\phi_S & \xrightarrow{\operatorname{Gysin}_S} & \mathcal K_S\\
+\downarrow^{\sigma} && \downarrow^{\sigma}\\
+\phi_{\sigma S} & \xrightarrow{\operatorname{Gysin}_{\sigma S}} &
 \mathcal K_{\sigma S}
-\end{CD}
+\end{array}
 \]
 
 are source-derived and their product is (+1).  Therefore

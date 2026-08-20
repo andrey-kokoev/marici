@@ -32,6 +32,7 @@ Exact source expansion gives
 \qquad
 \operatorname{in}_J(K)=16B^2,
 }
+\]
 
 and
 
@@ -41,6 +42,7 @@ and
 \qquad
 \operatorname{in}_J(K_1)=32B.
 }
+\]
 
 The marked initial forms are
 
@@ -56,6 +58,7 @@ The source-form orders in the standard twelve-class ordering are
 \boxed{
 (-1,0,0,3,2,1,2,1,0,1,3,3).
 }
+\]
 
 ## First smoothing coefficient
 
@@ -67,6 +70,7 @@ radial coefficient gives
 K_3|_{B=0}
 =4(2A-q+1)(2A+q-1).
 }
+\]
 
 These are exactly the two resolved polarities
 
@@ -98,6 +102,7 @@ The surviving architecture is
 +
 \text{center-specific nonuniform coefficient lattice}.
 }
+\]
 
 No new carrier incidence is indicated.
 

@@ -293,6 +293,7 @@ u_\Sigma
 =
 H_0(F_\Sigma).
 }
+\]
 
 Its defining relations are, for a separating Cut,
 

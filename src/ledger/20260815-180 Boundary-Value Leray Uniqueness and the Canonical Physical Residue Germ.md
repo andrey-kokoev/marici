@@ -130,8 +130,8 @@ Neither falsifier occurs on a generic transverse patch. Thus
 
 \[
 \boxed{
-\text{the published data uniquely determine the local physical
-\(q_{\mathcal G_{12}}\)-residue germ up to ordinary relative homology.}
+\text{the published data uniquely determine the local physical }q_{\mathcal G_{12}}
+\text{-residue germ up to ordinary relative homology.}
 }
 \]
 

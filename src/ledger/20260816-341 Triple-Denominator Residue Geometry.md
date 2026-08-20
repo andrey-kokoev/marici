@@ -20,7 +20,7 @@ The next hard-to-vary conjecture was
 
 \[
 \boxed{
-\text{the unique proper \(111\) class requires incidence data beyond the
+\text{the unique proper }111\text{ class requires incidence data beyond the
 frozen denominator and Cayley--Menger arrangement.}
 }
 \]

@@ -53,6 +53,7 @@ Consequently,
 \not\subseteq
 \mathcal D_{12}^{\rm fixed}+\langle d\rangle.
 }
+\]
 
 This is not a defect in Entry 766.  It proves that its chartwise transported
 divisor lattice is necessary: the same twelve abstract labels return after

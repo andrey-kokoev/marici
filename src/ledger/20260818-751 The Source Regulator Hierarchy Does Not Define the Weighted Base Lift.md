@@ -29,7 +29,6 @@ Section 4 of arXiv:2305.19686 derives the kinematic prescription
 x_s\longmapsto x_s-i\epsilon_{x_s},
 \qquad
 y_e\longmapsto y_e-i\epsilon_{y_e},
-\tag{4.19}
 \]
 
 with negative imaginary parts for all external and internal energies. This

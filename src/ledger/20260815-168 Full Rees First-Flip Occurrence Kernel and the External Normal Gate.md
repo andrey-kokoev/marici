@@ -7,7 +7,7 @@ Date: 2026-08-15
 Status: theorem proved for the regular two-generator occurrence/Rees layer.
 The full blowup realizes the universal first-flip occurrence packet, not only
 its exceptional associated grade. Endpoint reciprocal-to-BM normal/Cech
-counits, the external entry-100 normal kernel, and the nonzero generic-(Q\)
+counits, the external entry-100 normal kernel, and the nonzero generic-\(Q\)
 gluing remain unconstructed. No graph admission is claimed.
 
 ## Ordered occurrence ideal and Rees blowup

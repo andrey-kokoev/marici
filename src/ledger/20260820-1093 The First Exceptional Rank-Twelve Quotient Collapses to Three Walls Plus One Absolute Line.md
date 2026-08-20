@@ -122,6 +122,7 @@ associated grade is instead
 \boxed{
 W_3\oplus L_{\rm abs},
 }
+\]
 
 with three marked-wall classes and one absolute line.
 

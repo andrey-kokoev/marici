@@ -95,7 +95,7 @@ comparison cells
 
 \[
 h_+, h_-:
-\operatorname{Tr}^{\rm biv}_{\rm sh,\partial,Q}ig|_{\widetilde Z_\pm}
+\operatorname{Tr}^{\rm biv}_{\rm sh,\partial,Q}\big|_{\widetilde Z_\pm}
 \Longrightarrow
 \operatorname{ev}_{v_\pm},
 \]

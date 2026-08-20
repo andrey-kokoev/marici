@@ -17,14 +17,14 @@ without an additional divisor, exceptional cell, or fitted homotopy.
 In the source canonical basis
 
 \[
-\mathbfcal J=(\mathcal J_1,\ldots,\mathcal J_6)^T,
+\mathcal J=(\mathcal J_1,\ldots,\mathcal J_6)^T,
 \]
 
 equation (3.11) and Appendix A.2 give
 
 \[
-d\mathbfcal J
-=\epsilon\sum_{i=1}^8 M_i\,d\log w_i\,\mathbfcal J,
+d\mathcal J
+=\epsilon\sum_{i=1}^8 M_i\,d\log w_i\,\mathcal J,
 \]
 
 where the ordered letters are

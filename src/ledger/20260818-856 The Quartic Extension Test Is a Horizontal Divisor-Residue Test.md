@@ -79,6 +79,7 @@ forces
 \boxed{
 d_qR+A_9|_q\,R-R\,A_3|_q=0
 }
+\]
 
 along tangent directions of \(q=0\).  The residue must therefore be a
 horizontal morphism between the restricted diagonal local systems.
