@@ -1,0 +1,103 @@
+{
+  "schema": "marici.grothendieck.phase_i_surface_disjoint_union_typing.v1",
+  "demonstrated_strength": [
+    "unbounded mapping-class groupoid theorem",
+    "source-typed finite operation audit"
+  ],
+  "compatibility_preflight": {
+    "coefficient_domain": null,
+    "coefficient_prime": null,
+    "ambient_carrier": "oriented marked surfaces",
+    "source_morphism_classes": [
+      "mapping-class isomorphisms",
+      "separating cut operation"
+    ],
+    "filtration_stage": "coefficient-neutral bare surface layer",
+    "pole_depths": "not_applicable",
+    "input_sha256": {
+      "src/ledger/20260812-07 Surface Operations and the Cut Kernel.md": "84fbd107f303288027b067f699491bc38465fd687a3e62ddfe1f0db566309d02",
+      "src/ledger/20260812-10 Primitive-Symmetric Sewing Requirements.md": "692c8b7e6aafffefc65604db92892aeaf6b77daaec63332e57e6826399cdbd79",
+      "src/ledger/20260813-46 Closed-Circuit Resolution and the Modular Counit Target.md": "6413ea87cea90e475f6ae10f5eead103488398b6fa492e8857581f04ec0eb302"
+    }
+  },
+  "source_typing": {
+    "objects": [
+      "Sigma",
+      "Sigma_L",
+      "Sigma_R",
+      "D"
+    ],
+    "disconnected_object": "D = Sigma_L sqcup Sigma_R",
+    "established_nonidentity_arrow": {
+      "name": "Delta_C",
+      "source": "Sigma",
+      "target": "D"
+    },
+    "required_coproduct_legs": [
+      {
+        "name": "left_injection",
+        "source": "Sigma_L",
+        "target": "D"
+      },
+      {
+        "name": "right_injection",
+        "source": "Sigma_R",
+        "target": "D"
+      }
+    ],
+    "observed_required_leg_count": 0,
+    "required_leg_deficit": 2,
+    "universal_mapping_property_well_typed": false
+  },
+  "mapping_class_groupoid": {
+    "theorem": "mapping-class isomorphisms preserve connected-component count",
+    "hom_U_to_U_squnion_U": [],
+    "categorical_coproduct": false,
+    "monoidal_disjoint_union": true,
+    "unit_power_cutoff": 8,
+    "distinct_unit_power_pair_count": 36,
+    "all_unit_powers_distinct_through_cutoff": true,
+    "unbounded_control": "unique connected-component decomposition makes U^squnion_m isomorphic to U^squnion_n imply m=n"
+  },
+  "coefficient_algebra_escape": {
+    "conditional_statement": "in commutative R-algebras, A tensor_R B is a categorical coproduct with unit-dependent factor maps",
+    "carrier_neutral": false,
+    "missing_inputs": [
+      "base coefficient ring R",
+      "algebra unit maps a -> a tensor 1 and b -> 1 tensor b",
+      "proof that this coefficient coproduct reflects a Carrier coproduct"
+    ],
+    "entry_07_establishes_factorization_only": "A_(Sigma_L sqcup Sigma_R) isomorphic to A_(Sigma_L) tensor A_(Sigma_R)"
+  },
+  "deliberate_failure": {
+    "naive_claim": "the established bare surface disjoint union is already a coefficient-neutral categorical coproduct",
+    "claim_holds": false,
+    "required_injection_leg_count": 2,
+    "observed_injection_leg_count": 0,
+    "nonzero_obstruction": {
+      "typed_injection_leg_deficit": 2
+    }
+  },
+  "verdict": {
+    "surface_disjoint_union_monoidal": true,
+    "surface_disjoint_union_coproduct_derived": false,
+    "multiplicity_sensitive_pi0_candidate": true,
+    "phase_i_finite_coproduct_gate_passed": false,
+    "initial_semiring_N_derived": false,
+    "group_completion_Z_derived": false,
+    "arithmetic_derived": false
+  },
+  "scope_boundary": {
+    "larger_surface_category_contradicted": false,
+    "component_inclusion_morphisms_contradicted": false,
+    "formal_finite_family_completion_contradicted": false,
+    "precise_missing_datum": "a source-authorized noninvertible morphism class containing component injections and satisfying the coproduct mapping property"
+  },
+  "deferred": [
+    "choice between monoidal addition and categorical coproduct",
+    "coefficient-neutral component-inclusion category",
+    "distributive regional tensor",
+    "initial semiring and group completion",
+    "Burnside/Witt operations"
+  ]
+}

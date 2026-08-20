@@ -1,0 +1,144 @@
+{
+  "schema": "marici.grothendieck.phase_i_connected_sewing_unit_obstruction.v1",
+  "demonstrated_strength": [
+    "unbounded boundary-pushout theorem",
+    "exact all-even framed positive control"
+  ],
+  "compatibility_preflight": {
+    "coefficient_domain": null,
+    "coefficient_prime": null,
+    "ambient_carrier": "stable even marked polygons",
+    "interface": "one boundary edge with two endpoints",
+    "source_operation": "connected edge sewing / Cut factorization",
+    "filtration_stage": "Carrier arity before framed coefficient readout",
+    "input_sha256": {
+      "src/ledger/20260813-27 Regional Core-Filtered Scalar-QTDS Theorem.md": "4c0bfa25ceca99e43e3c554a9917576dd3b6e7f68f72707c8cbc9afcba1a3174",
+      "src/ledger/20260817-436 The Physical Derived Pullback Is One Primitive Integral Line.md": "9ff5e8177b3235decbe003f4e102a425568364ad8677f485f3d2eb80778ee419",
+      "src/ledger/20260817-628 The First Eight-Point Cut Boundary Is Forced.md": "a1c22e30250842538680ea141c19a3a6624fe3351f76ed8aa87b7098117460bd",
+      "src/ledger/20260818-537 The Eight-Point Framed Physical Line Is Rigid.md": "aced5363a672a2430fe86663b8222424ceacfc2f45a1e26527ee584949ac17ee",
+      "src/ledger/20260818-540 The Framed Decagon Cut Gluing Space Is Contractible.md": "2cb6229f297885b89a196ee2e282b1a2ceb878ed56bb3d018febdb87fdb313f5",
+      "src/ledger/20260818-541 The Dodecagon Passes the First Four-Cut Induction Gate.md": "2160618b058afcc4decab7a9e96bd7779844c18fb92121cdac51cb6c0345b75b",
+      "src/ledger/20260818-542 Even-Arity Framed Cut Descent Follows by Quadrangulation Induction.md": "9c118836fc6accac2d3120250f905317af031934085510c3c75fb263604efa6a",
+      "research/voevodsky/check_n8_framed_physical_line_rigidity.py": "547317722e3c4024e46da589c33524c127e210bbc050d2d15f05b87c4e92b628",
+      "research/voevodsky/check_n10_framed_cut_gluing_rigidity.py": "1b0c387427ae296fa30c6a5c797dc9c66ef01fc166f41b1f91b904f05c0ff3c8",
+      "research/voevodsky/check_n12_physical_cut_induction_gate.py": "3141754133069cedfe73db266e63c757fda0ffe9eac39ce762a03f7d1d979eda",
+      "research/voevodsky/check_general_even_cut_induction.py": "5f719033318d32c08a048aae03f3577ae9a4bf11d44eb4902fff58153c5f2aa5"
+    }
+  },
+  "positive_coefficient_control": {
+    "source_checker_reruns": {
+      "research/voevodsky/check_n8_framed_physical_line_rigidity.py": true,
+      "research/voevodsky/check_n10_framed_cut_gluing_rigidity.py": true,
+      "research/voevodsky/check_n12_physical_cut_induction_gate.py": true,
+      "research/voevodsky/check_general_even_cut_induction.py": true
+    },
+    "framed_cut_descent_scope": "cellular fs/Kato sector",
+    "verified_statement": "primitive four-point coefficient lines external-product coherently on every even-arity Cut stratum",
+    "carrier_unit_claimed_by_control": false
+  },
+  "boundary_pushout": {
+    "operation": "B_left pushout_over_interface_edge B_right",
+    "interface_endpoint_count": 2,
+    "arity_law": "left + right - 2",
+    "profiles": [
+      {
+        "left_arity": 4,
+        "right_arity": 4,
+        "expected_output_arity": 6,
+        "observed_output_arity": 6,
+        "source_profile": "first connected quadrilateral sewing"
+      },
+      {
+        "left_arity": 6,
+        "right_arity": 4,
+        "expected_output_arity": 8,
+        "observed_output_arity": 8,
+        "source_profile": "six-by-four octagon boundary"
+      },
+      {
+        "left_arity": 4,
+        "right_arity": 8,
+        "expected_output_arity": 10,
+        "observed_output_arity": 10,
+        "source_profile": "four-by-eight decagon Cut"
+      },
+      {
+        "left_arity": 6,
+        "right_arity": 6,
+        "expected_output_arity": 10,
+        "observed_output_arity": 10,
+        "source_profile": "six-by-six decagon Cut"
+      },
+      {
+        "left_arity": 4,
+        "right_arity": 10,
+        "expected_output_arity": 12,
+        "observed_output_arity": 12,
+        "source_profile": "four-by-ten dodecagon Cut"
+      },
+      {
+        "left_arity": 6,
+        "right_arity": 8,
+        "expected_output_arity": 12,
+        "observed_output_arity": 12,
+        "source_profile": "six-by-eight dodecagon Cut"
+      }
+    ],
+    "excess_arity": "arity - 2",
+    "excess_law": "excess(output) = excess(left) + excess(right)"
+  },
+  "unit_test": {
+    "unit_equation": "n + e - 2 = n",
+    "unique_unit_arity_solution": 2,
+    "admitted_stable_minimum_arity": 4,
+    "interface_only_unit_admitted": false,
+    "four_point_candidate_residuals": {
+      "4": 2,
+      "6": 2,
+      "8": 2,
+      "10": 2,
+      "12": 2,
+      "14": 2
+    },
+    "four_point_is_carrier_unit": false
+  },
+  "type_separation": {
+    "coefficient_primitive_unit": "chosen +1 generator in an oriented rank-one framed line",
+    "carrier_tensor_unit": "object E with natural isomorphisms X sew E isomorphic to X",
+    "observed_external_product_target": "a higher-arity Cut boundary, not the original Carrier object",
+    "types_coincide": false
+  },
+  "deliberate_failure": {
+    "naive_claim": "the primitive four-point coefficient unit is the unit object for connected Carrier sewing",
+    "claim_holds": false,
+    "required_arity_residual": 0,
+    "observed_arity_residual": 2,
+    "nonzero_obstruction": {
+      "four_point_unit_arity_residual": 2
+    }
+  },
+  "verdict": {
+    "framed_coefficient_unit_verified": true,
+    "framed_external_product_coherent_all_even_arities": true,
+    "four_point_carrier_tensor_unit": false,
+    "interface_only_two_point_unit_admitted": false,
+    "connected_sewing_unital_on_admitted_carriers": false,
+    "connected_sewing_is_intrinsic_multiplication": false,
+    "initial_semiring_derived": false,
+    "arithmetic_sector_derived": false
+  },
+  "scope_boundary": {
+    "adjoining_unstable_two_point_object_contradicted": false,
+    "different_carrier_tensor_contradicted": false,
+    "coefficient_external_product_contradicted": false,
+    "precise_missing_datum": "an admitted Carrier unit object and total source-equivariant product distinct from the framed coefficient-line unit"
+  },
+  "deferred": [
+    "admission and geometry of an interface-only object",
+    "different total Carrier tensor",
+    "distributivity over geometric disjoint union",
+    "initial semiring multiplication",
+    "intrinsic irreducibility and primes",
+    "Burnside/Witt operations"
+  ]
+}
