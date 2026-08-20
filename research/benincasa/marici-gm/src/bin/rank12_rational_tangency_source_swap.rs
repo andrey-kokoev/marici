@@ -77,9 +77,12 @@ fn main() {
     // Units on the ordered support factors (rho,q,U_minus,U_plus):
     // (1,-3/2,-3/4,-3/4). Their product is -27/32.
     let support_orientation_sign = -1;
-    let fiber_residue_orientation_sign = -1;
+    let relative_fiber_residue_orientation_sign = 1;
+    let ordered_cut_occurrence_sign = -1;
+    let total_residue_orientation_sign =
+        relative_fiber_residue_orientation_sign * ordered_cut_occurrence_sign;
     let deck_character = 1;
-    assert_eq!(support_orientation_sign, fiber_residue_orientation_sign);
+    assert_eq!(support_orientation_sign, total_residue_orientation_sign);
 
     println!("schema=marici.benincasa.rank12_rational_tangency_source_swap.v1");
     println!("base_map=(u',v')=(2u/d,2v/d),d=u+v-2");
@@ -89,7 +92,9 @@ fn main() {
     println!("linear_determinant=-243/32");
     println!("factor_units=(1,-3/2,-3/4,-3/4)");
     println!("support_orientation_sign={support_orientation_sign}");
-    println!("fiber_residue_orientation_sign={fiber_residue_orientation_sign}");
+    println!("relative_fiber_residue_orientation_sign={relative_fiber_residue_orientation_sign}");
+    println!("ordered_cut_occurrence_sign={ordered_cut_occurrence_sign}");
+    println!("total_residue_orientation_sign={total_residue_orientation_sign}");
     println!("deck_character={deck_character}");
     println!("orientation_match=true");
 }

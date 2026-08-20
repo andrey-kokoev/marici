@@ -134,6 +134,13 @@ the transition units are
 Their product has sign \(-1\), so the ordered support cube reverses
 orientation.
 
+The Cayley--Menger polynomial is homogeneous of degree six. With
+\(y=d/2\), the source swap therefore gives
+
+\[
+w'=\frac{w}{y^3}=\frac{8w}{d^3}.
+\]
+
 At fixed base kinematics,
 
 \[
@@ -142,23 +149,26 @@ At fixed base kinematics,
 -\frac{4}{d^2}.
 \]
 
-The Cayley--Menger square root scales as \(w'=4w/d^2\) on the same sheet.
 Consequently
 
 \[
 \frac{da'\wedge db'}{w'}
 =
--\frac{da\wedge db}{w}.
+-\frac d2\frac{da\wedge db}{w}.
 \]
 
-The Poincaré-residue orientation also reverses, while the deck character is
-\(+1\). Hence
+At the present center \(d=-4/3\), the relative fiber-residue unit is
+\(+2/3\), so it preserves orientation. However, the source involution
+exchanges the ordered endpoints of the \(G_{12}\) occurrence. Its
+Poincaré-residue orientation contributes an additional sign \(-1\).
+The total residue orientation is therefore \(-1\), while the deck character
+is \(+1\). Hence
 
 \[
 \boxed{
 \text{support orientation}=-1
 =
-\text{residue orientation},
+\text{ordered-cut sign}\times\text{relative-fiber sign},
 \qquad
 \chi_{\rm deck}=+1.
 }
