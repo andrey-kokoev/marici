@@ -1,0 +1,116 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+---
+<SiteLayout
+  title="Carrier for system architects | Marici"
+  description="A system-architecture sketch of Marici's carrier, labelled occurrences, operating strata, and coherence rules."
+>
+  <article class="section-shell" aria-labelledby="article-title">
+    <header class="article-header">
+      <p class="eyebrow">Technical sketch · System architecture</p>
+      <h1 id="article-title">The carrier as an architecture model.</h1>
+      <p>
+        For a system architect, Marici's carrier resembles a typed architecture description:
+        topology, interfaces, operating conditions, transitions, and the rules that make composed
+        operations coherent.
+      </p>
+    </header>
+
+    <div class="article-body">
+      <p><a href="/research/carrier-and-algebra/">← Return to the general explainer</a></p>
+
+      <h2>Architecture, not workload</h2>
+      <p>
+        The carrier is not the running application or its current data. It is the substrate on
+        which several applications could run: components, typed ports, boundary conditions,
+        intersections of conditions, legal transitions, and consistency requirements.
+      </p>
+      <pre><code>{`struct Carrier {
+    components: Vec<Component>,
+    interfaces: Vec<Occurrence<Interface>>,
+    strata: Vec<OperatingStratum>,
+    incidence: Vec<Incidence>,
+    transitions: Vec<Transition>,
+    coherence: Vec<CoherenceRule>,
+}`}</code></pre>
+
+      <h2>Labelled occurrences are typed ports</h2>
+      <p>
+        Two ports may implement the same coarse contract and carry identical bytes without being
+        interchangeable. <code>Checkout.PaymentOut</code> and <code>Ledger.PaymentIn</code> both
+        carry a payment, but one is a producer occurrence and the other a consumer occurrence.
+        Their component, side, direction, protocol, and orientation are part of their type.
+      </p>
+      <pre><code>{`struct EndpointOccurrence<T> {
+    component: ComponentId,
+    port: PortId,
+    direction: Direction,
+    protocol: Protocol,
+    payload: T,
+    coarse_contract: ContractId,
+}`}</code></pre>
+      <p>
+        Connecting them is an explicit architectural operation. Equality of payloads does not by
+        itself authorize the connection.
+      </p>
+
+      <h2>Strata are operating contexts</h2>
+      <p>
+        A carrier records normal operation, each declared boundary condition, and their
+        intersections. For example:
+      </p>
+      <pre><code>{`S₀  normal operation
+S₁  database unavailable
+S₂  payment provider unavailable
+S₁₂ both unavailable`}</code></pre>
+      <p>
+        The corner <code>S₁₂</code> need not be determined by handling <code>S₁</code> and
+        <code>S₂</code> independently. Recovery, ordering, or consistency rules may interact only
+        when both conditions hold. In Marici, that corner data belongs to the carrier rather than
+        being an afterthought.
+      </p>
+
+      <h2>The carrier algebra is the operation catalogue</h2>
+      <p>
+        Restriction, residue, gluing, specialization, pushforward, and pullback are analogous to
+        typed architecture transformations. Every operation has a declared source and target.
+      </p>
+      <pre><code>{`enum CarrierOperation {
+    Restrict { from: StratumId, to: StratumId },
+    Residue { along: BoundaryId },
+    Glue { occurrences: Vec<OccurrenceId>, target: CoarseObjectId },
+    Specialize { normal: NormalDirectionId, order: usize },
+    PushForward { map: ArchitectureMapId },
+    PullBack { map: ArchitectureMapId },
+}`}</code></pre>
+
+      <h2>Coherence is composition testing</h2>
+      <p>
+        A mature architecture tests more than isolated operations. It asks whether two routes
+        through the system agree:
+      </p>
+      <pre><code>{`restrict → glue
+     ≅
+glue → restrict`}</code></pre>
+      <p>
+        Sometimes they agree strictly. Sometimes their difference is a required corner correction.
+        This resembles transaction, retry, replication, and failover consistency: local correctness
+        does not guarantee compositional correctness.
+      </p>
+
+      <h2>Several sectors, one architectural substrate</h2>
+      <pre><code>{`struct Sector<C, P, R> {
+    carrier: Carrier,
+    calculus: CarrierAlgebra,
+    coefficients: C,
+    physical_selection: P,
+    readout: R,
+}`}</code></pre>
+      <p>
+        Different sectors may share the topology and operation types while transporting different
+        coefficient objects and using different physical selections. The research question is
+        whether that architectural reuse survives hostile calculations in physics.
+      </p>
+    </div>
+  </article>
+</SiteLayout>

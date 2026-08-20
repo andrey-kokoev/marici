@@ -1,0 +1,100 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+
+const rustCarrierExample = `use std::collections::HashMap;
+
+enum Side { Plus, Minus }
+
+struct OccurrenceId {
+    edge: EdgeId,
+    side: Side,
+    region: RegionId,
+}
+
+struct Occurrence<T> {
+    id: OccurrenceId,
+    orientation: i8,
+    value: T,
+    coarse_wall: WallId,
+}
+
+type CoarseCarrier<T> = HashMap<WallId, Vec<(i8, T)>>;
+
+fn glue<T>(resolved: Vec<Occurrence<T>>) -> CoarseCarrier<T> {
+    let mut coarse = HashMap::new();
+
+    for occurrence in resolved {
+        coarse
+            .entry(occurrence.coarse_wall)
+            .or_insert_with(Vec::new)
+            .push((occurrence.orientation, occurrence.value));
+    }
+
+    coarse
+}`
+---
+<SiteLayout
+  title="Carrier through Rust types | Marici"
+  description="A Rust type-system sketch of labelled occurrences and explicit gluing in Marici's carrier."
+>
+  <article class="section-shell" aria-labelledby="article-title">
+    <header class="article-header">
+      <p class="eyebrow">Technical sketch · Rust types</p>
+      <h1 id="article-title">The carrier through the Rust type system.</h1>
+      <p>
+        The central idea is simple: information that changes which operations are legal belongs in
+        the type, not in a comment and not in an anonymous array position.
+      </p>
+    </header>
+
+    <div class="article-body">
+      <p><a href="/research/carrier-and-algebra/">← Return to the general explainer</a></p>
+
+      <h2>More than <code>Vec&lt;T&gt;</code> versus a record</h2>
+      <p>
+        A keyed record is a useful first approximation because it remembers which value is which.
+        But <code>HashMap&lt;String, T&gt;</code> is still too weak. A labelled occurrence must
+        remember structured provenance: which edge, which side, which region, which orientation,
+        and which coarse wall it maps to.
+      </p>
+
+      <pre><code>{rustCarrierExample}</code></pre>
+
+      <h2>What the example preserves and forgets</h2>
+      <p>
+        Before <code>glue</code>, two occurrences may have equal values and the same
+        <code>coarse_wall</code> while remaining different typed inputs. They may belong to
+        opposite sides of a cut, carry opposite residue orientations, or participate in different
+        restriction maps.
+      </p>
+      <p>
+        The explicit <code>glue</code> function forgets the occurrence identifier only at a
+        declared boundary in the program. It groups values by coarse wall while retaining their
+        orientation. A real implementation could require additional proofs or validation before
+        constructing the coarse object.
+      </p>
+
+      <h2>Why an anonymous array is dangerous</h2>
+      <p>
+        An array can preserve multiplicity while losing meaning. If two entries both equal
+        <code>y</code>, the array <code>[y, y]</code> cannot tell whether they are opposite sides
+        of one edge, two graph locations, two sheets, or accidental duplicates. Once that
+        provenance is erased, later code may silently apply the wrong sign or identify objects
+        that have different legal maps.
+      </p>
+
+      <h2>The mathematical reading</h2>
+      <p>
+        The two occurrences are not merely two names for one value. They are two source objects or
+        incidences mapping to one coarse target. The forgetful map is therefore mathematical data:
+      </p>
+      <pre><code>{`Dₑ₊ ──→ D
+Dₑ₋ ──→ D`}</code></pre>
+      <p>
+        Rust's type system is a useful analogy because it makes illegal identifications difficult
+        to express. Marici's resolved carrier aims to do the same for geometric and physical
+        operations.
+      </p>
+    </div>
+  </article>
+</SiteLayout>
