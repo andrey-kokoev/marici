@@ -8,6 +8,7 @@ export const MARICI_AUTHORS = [
   'marici.Benincasa',
   'marici.Strominger',
   'marici.Figueiredo',
+  'marici.Grothendieck',
 ] as const
 export type MariciAuthor = (typeof MARICI_AUTHORS)[number]
 
