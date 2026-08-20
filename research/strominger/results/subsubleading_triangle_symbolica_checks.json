@@ -1,0 +1,373 @@
+{
+  "author": "marici.Strominger",
+  "checker": "subsubleading_triangle_symbolica_checks",
+  "checks": [
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.1"
+      ],
+      "detail": "",
+      "group": "T1",
+      "id": "T1.1",
+      "statement": "antisymmetry mechanism: q_mu q_nu J^{mu nu} = q.A = 0 identically for antisymmetric J (CS lines 137-139)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.2"
+      ],
+      "detail": "",
+      "group": "T1",
+      "id": "T1.2",
+      "statement": "per-leg gauge variation of CS (9) under the declared shift dE = q Lam + Lam q vanishes IDENTICALLY — no conservation law, no Sigma-constraint anywhere (G_CS2)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.3"
+      ],
+      "detail": "",
+      "group": "T1",
+      "id": "T1.3",
+      "statement": "two-leg sum with independent generic J1, J2: each leg's variation vanishes SEPARATELY — leg-summed gauge invariance needs no inter-leg cancellation (contrast rungs 1-2)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.4"
+      ],
+      "detail": "residual retained: 2*(2*q0*q1*q2*L0*S_00*S_12+4*q0*q1*q2*L0*S_01*S_02-4*q0*q1*q2*L1*S_01*S_12-2*q0*q1*q2*L1*S_02*S_11-2*q0*q1*q2*L2*S_01*S_22-4*q0*q1*q2*L2*S_02*S_12-2*q0*q1*q2*L3*S_01*S_23-2*q0*q1*q2*L3*S_02*S_13-2*q0*q1*q2*L3*S_03*S_12+2*q0*q1*q3*L0*S_00*S_13+4*q0*q1*q3*L0*S_01*S_03-4*q0*q1*q3*L1*S_01*S_13-2*q0*q1*q",
+      "group": "T1",
+      "id": "T1.4",
+      "statement": "deliberate-failure mutation: with a SYMMETRIC mutation J -> S the per-leg variation is nonzero — the antisymmetry of J is load-bearing and the harness can fail",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.5"
+      ],
+      "detail": "residual retained: q0*L1*J1_01+q0*L2*J1_02+q0*L3*J1_03-q1*L0*J1_01-q1*L2*J1_12-q1*L3*J1_13-q2*L0*J1_02+q2*L1*J1_12-q2*L3*J1_23-q3*L0*J1_03+q3*L1*J1_13+q3*L2*J1_23",
+      "group": "T1",
+      "id": "T1.5",
+      "statement": "pattern break: the RUNG-2-grade variation Lam_mu q_nu J^{mu nu} is nonzero per leg without sum_a J_a = 0, while the rung-3 variation (T1.2) is identically zero — the P -> J escalation terminates at rung 3",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T1.6"
+      ],
+      "detail": "",
+      "group": "T1",
+      "id": "T1.6",
+      "statement": "operator form on the sphere: the per-leg soft operator annihilates the gauge direction, op(q) = 0 — the epsilon -> epsilon + alpha q freedom leaves C = (eps.q.J) invariant per leg",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T2.1"
+      ],
+      "detail": "",
+      "group": "T2",
+      "id": "T2.1",
+      "statement": "per-leg CS (20) spinor operator on bracket monomials: t_s^a t_s^b d^2/(dt_a^a dt_a^b) [a,b]^m = m(m-1) [s,b]^2 [a,b]^{m-2} for m = 2, 3, 4",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T2.2"
+      ],
+      "detail": "",
+      "group": "T2",
+      "id": "T2.2",
+      "statement": "holomorphic soft-limit pole ladder (CS (28)): under lam_s -> eps lam_s, lam~_s fixed, the per-leg soft factors scale as eps^-3 (S^(0), CS (17)), eps^-2 (S^(1), CS (18)), eps^-1 (S^(2), CS (20))",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T2.3a"
+      ],
+      "detail": "",
+      "group": "T2",
+      "id": "T2.3a",
+      "statement": "contraction identity: (eps_mu q_nu J^{mu nu})^2 = (eps_mu (q.J)^{rho mu})^2 for antisymmetric J — the CL16 (14) and CS (9) numerators agree with E_{mu nu} = eps^-_mu eps^-_nu",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T2.3b"
+      ],
+      "detail": "",
+      "group": "T2",
+      "id": "T2.3b",
+      "statement": "normalization: CS (9) per leg equals exactly -om times the CL16 (14) per-leg insertion (the omega^-1 vs overall -1/2 convention)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T2.3c"
+      ],
+      "detail": "residual retained: 1/2*(-2*om*q0*q1*e0*e1*J1_01^2-2*om*q0*q1*e0*e2*J1_01*J1_02-2*om*q0*q1*e0*e3*J1_01*J1_03-2*om*q0*q1*e1*e2*J1_01*J1_12-2*om*q0*q1*e1*e3*J1_01*J1_13-2*om*q0*q1*e2*e3*J1_02*J1_13-2*om*q0*q1*e2*e3*J1_03*J1_12-2*om*q0*q1*e2^2*J1_02*J1_12-2*om*q0*q1*e3^2*J1_03*J1_13-2*om*q0*q2*e0*e1*J1_01*J1_02-2*om*q0*q2",
+      "group": "T2",
+      "id": "T2.3c",
+      "statement": "typed normalization residual: the ratio is -om, not 1 — CL16 (14) carries an explicit omega^-1 and (2 k.q)^-1, CS (9) an overall -1/2 (same family as the rung-2 kap residual S3)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.1"
+      ],
+      "detail": "sqrt(2) carried as symbol sq2 with exact relation sq2^2 = 2",
+      "group": "T3",
+      "id": "T3.1",
+      "statement": "per-leg C = (eps^-.q.J) operator on the sphere: (c_zk, c_zbk, c_Ek) = (-sqrt(2) om (z-zk)^2/(1+z zb), 0, -sqrt(2) Ek om (z-zk)(1+z zbk)/((1+z zb)(1+zk zbk))) — regular in zb (the antiholomorphic pole of KLPS (6.6) is cancelled by q.k)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.2"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.2",
+      "statement": "S^(2)- per-leg operator channels (CL16 (14)): the d_zk^2, d_zk d_Ek, d_Ek^2, d_zk coefficients match their closed forms and the d_Ek first-order channel vanishes identically; om cancels throughout",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.3"
+      ],
+      "detail": "stripped coefficients at the pole: -1/2*(3*z*zk^2+3*z*zk^3*zbk-3*z^2*zk-3*z^2*zk^2*zbk+z^3+z^3*zk*zbk-zk^3-zk^4*zbk)/(Ek*(1+z*zbk)); -(-2*z*zk+z^2+zk^2); -1/2*(-z*zk*zbk*Ek+z*Ek-zk*Ek+z^2*zbk*Ek)/(1+zk*zbk); (-2*z*zk-2*z*zk^2*zbk+z^2+z^2*zk*zbk+zk^2+zk^3*zbk)/(Ek*(1+z*zbk))",
+      "group": "T3",
+      "id": "T3.3",
+      "statement": "single-pole structure: every channel coefficient is G(z, zb) . (zb - zbk)^-1 with G finite at zb = zbk — the only antiholomorphic pole is the explicit (2 q.k)^-1 of CL16 (14); the operator C itself is pole-free",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.4a"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.4a",
+      "statement": "CL16 (15) structural core: with the declared weight sequence (-1,0,1,2) the regular part of D_z^4 S^(2)- vanishes in ALL operator channels — 'all terms are proportional to (derivatives of) delta functions' holds exactly",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.4b"
+      ],
+      "detail": "residual retained: -12*(5*z*zb^2+5*z*zb^2*zk*zbk+2*zb+2*zb*zk*zbk-3*zb^2*zk-3*zb^2*zk^2*zbk)/(Ek*(1+z*zb)^3)",
+      "group": "T3",
+      "id": "T3.4b",
+      "statement": "the weight choice is forced, not arbitrary: the naive sequence (0,1,2,3) leaves a nonzero regular part in the d_zk^2 channel; the scan selects the start weight -1 uniquely",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.5a"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.5a",
+      "statement": "the d_zk^2 channel is PURE plain-delta: no delta-derivative terms (D delta = D^2 delta = D^3 delta = 0) — exactly the printed structure of CL16 (15)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.5b"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.5b",
+      "statement": "the plain-delta coefficient in the d_zk^2 channel is exactly -3 pi/Ek per leg",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.5c"
+      ],
+      "detail": "residual retained: 3*𝜋/Ek",
+      "group": "T3",
+      "id": "T3.5c",
+      "statement": "typed residual: printed CL16 (15) has (1/2pi) D_z^4 S^(2)- = -3 sum_i E_i^-1 delta^2 d_zi^2 + ..., i.e. -6 pi/Ek in our normalization — the computed delta is uniformly HALF the printed one (candidate delta^2-normalization drift, same family as rung-2 S10.2/S10.3e)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.6"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.6",
+      "statement": "the unprinted '...' content of CL16 (15), named exactly: d_zk d_Ek channel = -8 pi zbk/(1+zk zbk) delta - 2 pi D delta; d_Ek^2 channel = -6 pi Ek zbk^2/(1+zk zbk)^2 delta - 3 pi Ek zbk/(1+zk zbk) D delta - (pi Ek/2) D^2 delta; d_zk channel = 2 pi zbk/(Ek (1+zk zbk)) delta + (2 pi/Ek) D delta",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T3.7"
+      ],
+      "detail": "",
+      "group": "T3",
+      "id": "T3.7",
+      "statement": "electric/magnetic doubling: the positive-helicity operator C+ = (eps^+.q.J) is the exact sigma-conjugate of C-: c+_zk = 0, c+_zbk = sigma(c_zk), c+_Ek = sigma(c_Ek) — the c.c. piece of CL16 (17)/(18) is exact at operator level",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.1"
+      ],
+      "detail": "",
+      "group": "T4",
+      "id": "T4.1",
+      "statement": "cross-rung consistency: the fold recursion at n = 3, sequence (0,1,2), reproduces rung-2's declared fold (cP = G''' - 3 Gam G'' + (2 Gam^2 - Gam') G', c0 = pi(3 G'' - 6 Gam G' + (2 Gam^2 - Gam') G), c1 = pi(3 G' - 3 Gam G), c2 = pi G) exactly — one celestial D-calculus across rungs (test function chosen with cP = 6/(1+z zb)^2 != 0, so the P channel comparison is non-vacuous)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.2"
+      ],
+      "detail": "",
+      "group": "T4",
+      "id": "T4.2",
+      "statement": "derivative-grade ladder as one recursion: D_z^2 = d^2 - Gam d, D_z^3 = d^3 - 3 Gam d^2 + (2 Gam^2 - Gam') d, D_z^4 = d^4 - 6 Gam d^3 + (11 Gam^2 - 4 Gam') d^2 + (7 Gam Gam' - Gam'' - 6 Gam^3) d on weight-0 scalars — closed forms match the weighted recursion exactly",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.3a"
+      ],
+      "detail": "",
+      "group": "T4",
+      "id": "T4.3a",
+      "statement": "time-integral ladder, rung-3 grade: the double retarded primitive satisfies the first-moment identity int^u u' F(u') du' = u int^u F - int int^u F, i.e. (u A - S)' = u F with A = S', F = S'' — CL16 (17)'s int du int^u du' is a FIRST-MOMENT observable",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.3b"
+      ],
+      "detail": "",
+      "group": "T4",
+      "id": "T4.3b",
+      "statement": "convergence/boundary: for the falloff-class test field the boundary terms vanish, S(+/-inf) = S'(+/-inf) = 0 (exact u -> 1/t evaluation) — the CL16 footnote-2 falloff class makes the u-integrals convergent",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.3c"
+      ],
+      "detail": "residual retained: (-1+u+u^2+u^3)/(1+u^2)^2",
+      "group": "T4",
+      "id": "T4.3c",
+      "statement": "ladder contrast: the rung-3 double-integral observable H = S is NOT the rung-2 single-integral observable A = S' — the int^2 and int^1 grades are distinct (H - A != 0), and the CM memory of Nichols sits at the int^1 grade (rung 2), not here",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T4.4"
+      ],
+      "detail": "",
+      "group": "T4",
+      "id": "T4.4",
+      "statement": "zero-frequency projector ladder: (1 + om d_om) annihilates a/om (rung 2, KLPS 5.33); the rung-3 finite-part operator (2 + om d_om)(1 + om d_om) annihilates a/om^2 and b/om and acts as 2x on the finite part — the finite-part prescription for the omega^-1 moment of CL16 (14)",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T5.1"
+      ],
+      "detail": "backed by T1.2, T1.3 (zero) vs T1.5 (nonzero)",
+      "group": "T5",
+      "id": "T5.1",
+      "statement": "H-A anti-test (the inverse of the rung-1/2 deliberate-failure tests): removing every Sigma-constraint changes NOTHING at the rung-3 gauge step — the per-leg variation of CS (9) is identically zero with generic independent J_a (T1.2/T1.3), while the rung-2-grade variation is nonzero without sum J = 0 (T1.5); imposing sum P = 0 or sum J = 0 is a no-op at rung 3",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T5.2"
+      ],
+      "detail": "",
+      "group": "T5",
+      "id": "T5.2",
+      "statement": "H-B baseline obstruction: the rung-2-grade D_z^3 smearing (sequence (-1,0,1)) applied to the rung-3 d_zk^2 channel leaves a nonzero regular part, pinned exactly as -3 (1+zb zk)^3 (1+zk zbk)/(Ek (1+z zb)^4 (zb-zbk)) — no smooth generalized-BMS (single-u-integral) charge class reproduces the rung-3 distributional identity; the D_z^4 grade is forced",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T5.3"
+      ],
+      "detail": "residual retained: -15136/2205",
+      "group": "T5",
+      "id": "T5.3",
+      "statement": "genuinely-wrong mutation that must FAIL: polluting CS (20) with a leg spinor, t_s^a t_a^b d^2/dt_a^a dt_a^b, breaks the bracket identity — the residual m(m-1)[a,b]^{m-2}[s,b]([a,b]-[s,b]) is nonzero (exact rational point); the reference-spinor-free form of (20) is load-bearing",
+      "status": "pass"
+    },
+    {
+      "agreement_with_sympy": true,
+      "cross_validates": [
+        "T6.1"
+      ],
+      "detail": "synthesis of T1-T5",
+      "group": "T6",
+      "id": "T6.1",
+      "statement": "verdict on H-A..H-E for the checkable core: H-A SUPPORTED (per-leg gauge invariance needs no conservation law; the smeared identity closes with no Sigma-input — closure is kinematic); H-B FALSIFIED as baseline (T5.2); H-C SUPPORTED up to the uniform factor-1/2 delta-normalization drift (T3.5c, same family as rung-2 S10) with the '...' channels named exactly (T3.6) and the electric/magnetic doubling exact at operator level (T3.7); H-D SUPPORTED at tree level (one D-recursion across rungs, T4.1/T4.2) with collinear/nonlinear corrections a typed residual; H-mem structural core verified (double-u integral = first-moment observable, T4.3) but the rung-3 memory observable remains OPEN; H-E: the named residual of this rung is the half-strength delta drift, not a closure failure",
+      "status": "pass"
+    }
+  ],
+  "cross_validates": "research/strominger/results/subsubleading_triangle_exact_checks.json",
+  "date": "2026-08-20",
+  "engine": "symbolica 2.2.0 (Rust, no_gmp)",
+  "summary": {
+    "classification": {
+      "gauge_corner": "S^(2) is gauge invariant PER LEG from J antisymmetry alone (T1.1-T1.3, T1.6); the P -> J escalation of rungs 1-2 terminates (T1.5); the antisymmetry is load-bearing (T1.4 mutation fails as predicted)",
+      "memory_corner": "no rung-3 observable is grounded; the structural candidate H-mem (double retarded-time integral at grade D_z^4) is verified as a first-moment observable (T4.3); the CM memory sits at the single-integral rung-2 grade (T4.3c); existence of a measurable rung-3 persistent observable remains OPEN",
+      "outcome": "the rung-3 triangle closes on the checkable core with NO conservation-law input (structurally different from rungs 1-2: closure is kinematic, H-A), with the smearing identity CL16 (15) exact up to the uniform factor-1/2 delta-normalization drift (typed residual), the cross-rung derivative/time-integral ladders exact (H-D), and the rung-3 memory observable OPEN (H-mem candidate shape verified structurally) — reproduced identically by the independent Symbolica engine",
+      "ward_corner": "CL16 (15) verified as an exact distributional identity: D_z^4 S^(2)- is purely distributional in all operator channels under the declared weight sequence (-1,0,1,2) (T3.4a; the weight is forced, T3.4b); the d_zk^2 channel is pure plain-delta with coefficient -3 pi/Ek — exactly HALF the printed -6 pi/Ek (typed residual T3.5c, same delta^2-normalization drift family as rung-2 S10); the unprinted '...' channels are named exactly (T3.6); electric/magnetic doubling exact at operator level (T3.7)"
+    },
+    "cross_validation": {
+      "agreement": "31/31 verdicts agree with the sympy reference; typed residuals compared exactly where declared (T3.5c 3 pi/Ek, T4.3c (u^3+u^2+u-1)/(1+u^2)^2, T5.3 -15136/2205)",
+      "disagreements": [],
+      "engine": "symbolica 2.2.0 (default-features = false, features = [\"no_gmp\"]), exact rational / complex-rational arithmetic, no floats",
+      "ported_core_only": [
+        "distributional prescription d_z (zb - zbk)^-1 = pi delta^2 is a declared external input in both engines (rung-1 prescription, inherited)",
+        "the fold weight sequence (-1,0,1,2) is a declared input, fixed by the vanishing-regular-part requirement; uniqueness is witnessed by T3.4b in both engines",
+        "T5.1/T6.1: classification verdict records (corroborated by the computational checks), same as sympy"
+      ],
+      "reference": "research/strominger/results/subsubleading_triangle_exact_checks.json (sympy, 31/31)"
+    },
+    "failed": 0,
+    "failed_ids": [],
+    "passed": 31,
+    "total": 31
+  }
+}
