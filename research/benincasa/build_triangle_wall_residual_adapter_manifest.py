@@ -120,6 +120,22 @@ for left, right in zip(
             ratio = None
     block_one_pair_ratios.append(ratio)
 
+coordinate_rows = [dict(probe["coordinates"]) for probe in probes]
+coordinate_rows_with_graph_value = []
+for probe, row in zip(probes, coordinate_rows):
+    augmented = dict(row)
+    graph_value = next(
+        (
+            term["value"]
+            for term in probe["terms"]
+            if term["normal_block"] == 1
+        ),
+        0,
+    )
+    if graph_value:
+        augmented[1_000_000] = graph_value
+    coordinate_rows_with_graph_value.append(augmented)
+
 result = {
     "schema": "marici.triangle-wall-residual-adapter-manifest.v1",
     "field_prime": PRIME,
@@ -148,6 +164,12 @@ result = {
                 )["incidence"]
             )
         ],
+    },
+    "quadratic_coordinate_descent": {
+        "coordinate_rank": rank(coordinate_rows),
+        "rank_with_graph_value": rank(coordinate_rows_with_graph_value),
+        "graph_functional_factors": rank(coordinate_rows)
+        == rank(coordinate_rows_with_graph_value),
     },
     "labels": manifest_labels,
     "acceptance_gate": (
