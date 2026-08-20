@@ -907,7 +907,7 @@ fn quotient_derivative_matrix(
 }
 
 fn run_exceptional_interpolation() {
-    let samples: Vec<(F, Vec<F>, F)> = (2_u64..=28)
+    let samples: Vec<(F, Vec<F>, Vec<Vec<F>>)> = (2_u64..=28)
         .map(|s| {
             let geometry = exceptional_p_chart_geometry(s, true);
             let class_columns: Vec<Poly> = classes(&geometry).iter()
@@ -923,7 +923,7 @@ fn run_exceptional_interpolation() {
             assert_eq!(basis, vec![0, 1, 2, 6]);
             let connection = quotient_derivative_matrix(
                 &geometry, &class_columns, &exact_columns, &basis);
-            (F::n(s), coordinates[6..].iter().map(|row| row[3]).collect(), connection[3][3])
+            (F::n(s), coordinates[6..].iter().map(|row| row[3]).collect(), connection)
         })
         .collect();
     let discovery = &samples[..18];
@@ -959,22 +959,49 @@ fn run_exceptional_interpolation() {
     }
     println!("  ],");
     let connection_values: Vec<(F, F)> = discovery.iter()
-        .map(|(s, _, connection)| (*s, *connection)).collect();
+        .map(|(s, _, connection)| (*s, connection[3][3])).collect();
     let (connection_numerator, connection_denominator) = (0..=17)
         .find_map(|total| (0..=total).find_map(|denominator_degree| {
             let numerator_degree = total - denominator_degree;
             rational_interpolate(&connection_values, numerator_degree, denominator_degree)
                 .filter(|(numerator, denominator)| verification.iter().all(|(s, _, connection)| {
                     evaluate_coefficients(numerator, *s)
-                        == connection.mul(evaluate_coefficients(denominator, *s))
+                        == connection[3][3].mul(evaluate_coefficients(denominator, *s))
                 }))
         })).expect("absolute connection interpolation must succeed");
     let render = |coefficients: &[F]| coefficients.iter().map(|coefficient| {
         let (numerator, denominator) = rational_reconstruction(*coefficient).unwrap();
         format!("\"{numerator}/{denominator}\"")
     }).collect::<Vec<_>>().join(",");
-    println!("  \"absolute_line_connection\": {{\"numerator_coefficients_ascending\":[{}],\"denominator_coefficients_ascending\":[{}],\"verification_points\":{}}}",
+    println!("  \"absolute_line_connection\": {{\"numerator_coefficients_ascending\":[{}],\"denominator_coefficients_ascending\":[{}],\"verification_points\":{}}},",
         render(&connection_numerator), render(&connection_denominator), verification.len());
+    let mut reconstructed_entries = Vec::new();
+    for row in 0..4 {
+        for column in 0..4 {
+            if samples.iter().all(|(_, _, connection)| connection[row][column].0 == 0) {
+                continue;
+            }
+            let values: Vec<(F, F)> = discovery.iter()
+                .map(|(s, _, connection)| (*s, connection[row][column])).collect();
+            let (numerator, denominator) = (0..=17)
+                .find_map(|total| (0..=total).find_map(|denominator_degree| {
+                    let numerator_degree = total - denominator_degree;
+                    rational_interpolate(&values, numerator_degree, denominator_degree)
+                        .filter(|(numerator, denominator)| verification.iter().all(|(s, _, connection)| {
+                            evaluate_coefficients(numerator, *s)
+                                == connection[row][column].mul(evaluate_coefficients(denominator, *s))
+                        }))
+                })).expect("connection entry interpolation must succeed");
+            reconstructed_entries.push((row, column, numerator, denominator));
+        }
+    }
+    println!("  \"full_connection_nonzero\": [");
+    for (index, (row, column, numerator, denominator)) in reconstructed_entries.iter().enumerate() {
+        println!("    {{\"row\":{},\"column\":{},\"numerator_coefficients_ascending\":[{}],\"denominator_coefficients_ascending\":[{}],\"verification_points\":{}}}{}",
+            row, column, render(numerator), render(denominator), verification.len(),
+            if index + 1 == reconstructed_entries.len() { "" } else { "," });
+    }
+    println!("  ]");
     println!("}}");
 }
 
