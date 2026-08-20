@@ -105,15 +105,26 @@ fn multiply(a: &[Vec<i64>], b: &[Vec<i64>]) -> Vec<Vec<i64>> {
 }
 
 fn main() {
+    let partner = std::env::args().nth(1).as_deref() == Some("partner");
     // Rows are gradients of (rho, q, U_minus, U_plus) in (rho, q, p, A).
-    let jacobian = vec![
-        vec![1, 0, 0, 0],
-        vec![0, 1, 0, 0],
-        vec![0, 1, 3, -2],
-        vec![0, 1, 3, 2],
-    ];
+    let jacobian = if partner {
+        // Gradients of (rho, q, V_minus, V_plus) in (rho, q, p, B).
+        vec![
+            vec![1, 0, 0, 0],
+            vec![0, 1, 0, 0],
+            vec![0, 0, 1, -1],
+            vec![0, 0, 1, 1],
+        ]
+    } else {
+        vec![
+            vec![1, 0, 0, 0],
+            vec![0, 1, 0, 0],
+            vec![0, 1, 3, -2],
+            vec![0, 1, 3, 2],
+        ]
+    };
     let jacobian_rank = rank_mod(jacobian);
-    let jacobian_determinant = 12;
+    let jacobian_determinant = if partner { 2 } else { 12 };
 
     let differentials: Vec<_> = (0..4).map(wedge_one_matrix).collect();
     let ranks: Vec<_> = differentials.iter().cloned().map(rank_mod).collect();
@@ -140,9 +151,21 @@ fn main() {
     assert_eq!(homology, vec![0, 0, 0, 0, 0]);
 
     println!("schema=marici.benincasa.rank12_rational_tangency_support_cube.v1");
-    println!("factor_order=(rho,q,U_minus,U_plus)");
-    println!("U_minus=3*p+q-2*A");
-    println!("U_plus=3*p+q+2*A");
+    println!(
+        "factor_order={}",
+        if partner {
+            "(rho,q,V_minus,V_plus)"
+        } else {
+            "(rho,q,U_minus,U_plus)"
+        }
+    );
+    if partner {
+        println!("V_minus=p-B");
+        println!("V_plus=p+B");
+    } else {
+        println!("U_minus=3*p+q-2*A");
+        println!("U_plus=3*p+q+2*A");
+    }
     println!("jacobian_determinant={jacobian_determinant}");
     println!("jacobian_rank={jacobian_rank}");
     println!("dimensions={dimensions:?}");
