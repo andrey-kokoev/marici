@@ -1,4 +1,4 @@
-# 1111 — The Cyclic Partner Tangency Independently Closes on L2
+# 1111 — The Source-Swap Partner Tangency Independently Closes on L2
 
 ## Question
 
@@ -9,7 +9,8 @@ Does the exceptional center
 \]
 
 have the same local closure mechanism as Entry 1110, when derived directly
-from the frozen source rather than transported by cyclic symmetry?
+from the frozen source rather than transported by the source-label swap
+\(r\leftrightarrow s\)?
 
 ## Independent critical-point derivation
 
@@ -118,9 +119,9 @@ The cyclic partner center independently closes:
 }
 \]
 
-No new carrier datum is required. Cyclic symmetry was not used to derive this
-local result; it is now legitimate to compare Entries 1110 and 1111 through
-the source occurrence action.
+No new carrier datum is required. The source-label swap was not used to derive
+this local result; it is now legitimate to compare Entries 1110 and 1111
+through that occurrence action.
 
 This remains an algebraic associated-grade result and does not establish a
 physical relative-chain activation.
@@ -149,7 +150,7 @@ ev-000000000810-e7d01b37-863a-4887-91c3-2c084b897e2e.
 
 ## Next finite falsifier
 
-Construct the source-labelled cyclic occurrence map between the two rational
+Construct the source-labelled \(r\leftrightarrow s\) occurrence map between the two rational
 tangency packets. Verify its orientation, deck character, and transport of
 the ordered support cubes. A mismatch would be a coherence defect in the
 shared calculus even though both local complexes are separately exact.
