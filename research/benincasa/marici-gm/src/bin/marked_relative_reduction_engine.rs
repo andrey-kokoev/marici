@@ -798,6 +798,61 @@ fn run_polynomial_module_gate(samples: &[(u64, u64)]) {
         numerator_rank.rank(), full_rank.rank(), excess, excess > 0);
 }
 
+fn run_exceptional_polynomial_module_gate(samples: &[(u64, u64)], q_chart: bool) {
+    let master: usize = std::env::var("MARICI_WITNESS_MASTER").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let numerator_degree: usize = std::env::var("MARICI_MODULE_NUMERATOR_DEGREE").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let denominator_degree: usize = std::env::var("MARICI_MODULE_DENOMINATOR_DEGREE").ok().and_then(|x| x.parse().ok()).unwrap_or(0);
+    let numerator_unknowns = 372 * (numerator_degree + 1);
+    let denominator_unknowns = denominator_degree + 1;
+    let mut numerator_rank = SparseRank::default();
+    let mut full_rank = SparseRank::default();
+    let mut accepted = 0usize;
+    for (s, _) in samples {
+        let geometry = if q_chart {
+            exceptional_q_chart_geometry(*s, true)
+        } else {
+            exceptional_p_chart_geometry(*s, true)
+        };
+        let (support, columns, rhs) = system_data(&geometry, master);
+        if support.len() != 124 { continue }
+        let coordinate = F::n(*s);
+        let numerator_values: Vec<F> = (0..=numerator_degree)
+            .map(|degree| coordinate.pow(degree as u64)).collect();
+        let denominator_values: Vec<F> = (0..=denominator_degree)
+            .map(|degree| coordinate.pow(degree as u64)).collect();
+        for monomial in &support {
+            let mut numerator_row = BTreeMap::new();
+            for (column_index, column) in columns.iter().enumerate() {
+                let coefficient = column.0.get(monomial).copied().unwrap_or(F::z());
+                if coefficient == F::z() { continue }
+                for (term, value) in numerator_values.iter().enumerate() {
+                    let entry = coefficient.mul(*value);
+                    if entry != F::z() {
+                        numerator_row.insert(column_index * numerator_values.len() + term, entry);
+                    }
+                }
+            }
+            let mut full_row = numerator_row.clone();
+            let target = rhs.0.get(monomial).copied().unwrap_or(F::z()).neg();
+            if target != F::z() {
+                for (term, value) in denominator_values.iter().enumerate() {
+                    let entry = target.mul(*value);
+                    if entry != F::z() { full_row.insert(numerator_unknowns + term, entry); }
+                }
+            }
+            numerator_rank.insert(numerator_row);
+            full_rank.insert(full_row);
+        }
+        accepted += 1;
+    }
+    let excess = denominator_unknowns as isize
+        - (full_rank.rank() as isize - numerator_rank.rank() as isize);
+    println!("{{\"schema\":\"marici.benincasa.exceptional_polynomial_module_gate.v1\",\"prime\":{},\"chart\":\"{}\",\"coordinate\":\"{}\",\"master\":{},\"numerator_degree\":{},\"denominator_degree\":{},\"samples\":{},\"numerator_unknowns\":{},\"denominator_unknowns\":{},\"numerator_rank\":{},\"full_rank\":{},\"denominator_kernel_excess\":{},\"nonzero_denominator_solution\":{},\"epistemic_status\":\"modular_degree_feasibility_only\"}}",
+        P, if q_chart { "q_nonzero" } else { "p_nonzero" }, if q_chart { "r=p/q" } else { "s=q/p" },
+        master, numerator_degree, denominator_degree, accepted, numerator_unknowns, denominator_unknowns,
+        numerator_rank.rank(), full_rank.rank(), excess, excess > 0);
+}
+
 fn dual_rows(g: &Geometry, degree: u8) -> Option<(usize, Vec<usize>, Vec<usize>, Vec<Vec<F>>)> {
     let cs = classes(g);
     let mut cols: Vec<Poly> = cs.iter().map(|q| common(g, q)).collect();
@@ -1308,6 +1363,11 @@ fn main() {
     if std::env::var_os("MARICI_EXCEPTIONAL_INTERPOLATE").is_some()
         || std::env::var_os("MARICI_EXCEPTIONAL_Q_INTERPOLATE").is_some() {
         run_exceptional_interpolation(std::env::var_os("MARICI_EXCEPTIONAL_Q_INTERPOLATE").is_some());
+        return;
+    }
+    if std::env::var_os("MARICI_EXCEPTIONAL_MODULE_MODE").is_some() {
+        run_exceptional_polynomial_module_gate(
+            &samples, std::env::var_os("MARICI_EXCEPTIONAL_Q_CHART").is_some());
         return;
     }
     if std::env::var_os("MARICI_EXCEPTIONAL_P_CHART").is_some()
