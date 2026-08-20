@@ -1,0 +1,20 @@
+{
+  "schema": "marici.flavor.s43-rephased-nlo.v1",
+  "tests": {
+    "T1_Hd_phase_is_diagonal_conjugation": true,
+    "T2_light_vector_normalized_through_eps3": true,
+    "T3_beta_quartet_has_only_exp_plus_i_phi_through_relative_eps2": true,
+    "T4_reduced_quartet_is_real_for_real_edges": true,
+    "T5_relative_eps2_phase_coefficient_vanishes": true
+  },
+  "phase_conjugation": "H_d(phi)=diag(e^-iphi,e^-iphi,1) H_d(0) diag(e^iphi,e^iphi,1)",
+  "elements": {
+    "V_cd": "d13**3*epsilon**3*z/(2*d23**3) - d13*epsilon*z/d23",
+    "V_cb": "d23*d33*epsilon*z/(d32**2 + d33**2)",
+    "V_td": "-d13**2*epsilon**4*u13*z/(2*d23**2*u33) + epsilon**2*u13*z/u33",
+    "V_tb": "-d23**2*d33**2*epsilon**2/(2*d32**4 + 4*d32**2*d33**2 + 2*d33**4) + 1"
+  },
+  "R_beta": "d13*d23**2*d33**3*epsilon**2*u33/(2*d32**6*u13*z + 6*d32**4*d33**2*u13*z + 6*d32**2*d33**4*u13*z + 2*d33**6*u13*z) + d13*d33*u33/(d32**2*u13*z + d33**2*u13*z)",
+  "R_beta_times_exp_minus_i_phi": "d13*d33*u33*(d23**2*d33**2*epsilon**2 + 2*d32**4 + 4*d32**2*d33**2 + 2*d33**4)/(2*u13*(d32**6 + 3*d32**4*d33**2 + 3*d32**2*d33**4 + d33**6))",
+  "verdict": "For S43 as written, arg R_beta = phi plus no epsilon^2 phase correction.  The nonzero S47 correction is not reproduced."
+}
