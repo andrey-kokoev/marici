@@ -1,0 +1,24 @@
+{
+  "schema": "marici.flavor.zero_diagonal_gram_discriminant.v1",
+  "status": "proved_symbolically",
+  "map": {
+    "A": "x+y",
+    "B": "z+w",
+    "C": "v+t",
+    "p": "y*w",
+    "q": "x*t",
+    "r": "z*v"
+  },
+  "jacobian_determinant": "t*y*z - v*w*x",
+  "boundary_linear_form_L": "A*B*C - A*r - B*q - C*p",
+  "boundary_discriminant": "A**2*B**2*C**2 - 2*A**2*B*C*r + A**2*r**2 - 2*A*B**2*C*q - 2*A*B*C**2*p + 2*A*B*q*r + 2*A*C*p*r + B**2*q**2 + 2*B*C*p*q + C**2*p**2 - 4*p*q*r",
+  "pullback_discriminant": "(-t*y*z + v*w*x)**2",
+  "pullback_over_jacobian_squared": "1",
+  "fiber_quadratic": "-A*B*C*y + A*C*p + A*r*y + B*C*y**2 + B*q*y - C*p*y - p*q - r*y**2",
+  "fiber_discriminant": "A**2*B**2*C**2 - 2*A**2*B*C*r + A**2*r**2 - 2*A*B**2*C*q - 2*A*B*C**2*p + 2*A*B*q*r + 2*A*C*p*r + B**2*q**2 + 2*B*C*p*q + C**2*p**2 - 4*p*q*r",
+  "fiber_discriminant_over_boundary": "1",
+  "fiber_discriminant_matches": true,
+  "positive_sheet_condition": "L >= 0",
+  "realisable_side": "L >= 2*sqrt(p*q*r)",
+  "interpretation": "inside the positive orthant, the algebraic boundary is exactly the critical-value locus of the Gram map; coordinate faces add separate incidence boundaries"
+}

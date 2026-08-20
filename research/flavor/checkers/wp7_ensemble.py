@@ -47,6 +47,7 @@ import argparse
 import itertools
 import json
 import math
+from pathlib import Path
 
 import numpy as np
 from scipy.optimize import least_squares
@@ -360,6 +361,10 @@ def main():
                     help="sweep only this census orbit_index")
     ap.add_argument("--restarts", type=int, default=8,
                     help="starts per member")
+    ap.add_argument("--sector-swapped", action="store_true",
+                    help="swap the labelled up/down masks before sweeping")
+    ap.add_argument("--output", type=str, default=None,
+                    help="optional JSON path for a single-orbit result")
     args = ap.parse_args()
 
     census = json.load(open("research/flavor/results/orbit_census.json"))
@@ -373,7 +378,14 @@ def main():
                        if o["orbit_index"] == args.orbit), None)
         if target is None:
             raise SystemExit(f"orbit_index {args.orbit} not in census")
+        if args.sector_swapped:
+            target = dict(target, mask_u=target["mask_d"],
+                          mask_d=target["mask_u"])
         rec = sweep_orbit(target, n_starts=args.restarts)
+        rec["sector_swapped_from_census_representative"] = args.sector_swapped
+        if args.output:
+            Path(args.output).write_text(json.dumps(rec, indent=2)+"\n",
+                                         encoding="utf-8")
         print(f"orbit {rec['orbit_index']}, masks ({rec['mask_u']}, "
               f"{rec['mask_d']}), members {rec['n_members']}, tried "
               f"{len(rec['members_tried'])}, escalated "

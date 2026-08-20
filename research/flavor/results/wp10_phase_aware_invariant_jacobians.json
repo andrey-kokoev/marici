@@ -1,0 +1,121 @@
+{
+  "schema": "marici.flavor.phase_aware_invariant_jacobians.v1",
+  "status": "complete_symbolic_jacobian_audit",
+  "coordinate_contract": "3 base Gram diagonals + 3 moving Gram diagonals + 3 offdiagonal norms + Im(H01 H12 H20)",
+  "case_count": 4,
+  "generic_full_rank_count": 4,
+  "records": [
+    {
+      "orientation": "original",
+      "orbit": 0,
+      "masks": {
+        "u": 84,
+        "d": 95
+      },
+      "phase_edge": [
+        "d",
+        0,
+        0
+      ],
+      "coordinates": [
+        "m0**2",
+        "m1**2",
+        "m2**2",
+        "m3**2*(c**2 + s**2) + m4**2 + m5**2",
+        "m6**2 + m7**2",
+        "m8**2",
+        "c**2*m3**2*m6**2 + 2*c*m3*m4*m6*m7 + m3**2*m6**2*s**2 + m4**2*m7**2",
+        "m3**2*m8**2*(c**2 + s**2)",
+        "m6**2*m8**2",
+        "-m3*m4*m6*m7*m8**2*s"
+      ],
+      "jacobian_determinant": "512*m0*m1*m2*m3**2*m4*m5*m6**2*m7**3*m8**7*(c**2 + s**2)*(c**2*m3*m6 + c*m4*m7 + m3*m6*s**2)",
+      "unit_circle_reduced_jacobian": "512*m0*m1*m2*m3**2*m4*m5*m6**2*m7**3*m8**7*(c*m4*m7 + m3*m6)",
+      "identically_zero": false
+    },
+    {
+      "orientation": "original",
+      "orbit": 2,
+      "masks": {
+        "u": 84,
+        "d": 221
+      },
+      "phase_edge": [
+        "d",
+        1,
+        0
+      ],
+      "coordinates": [
+        "m0**2",
+        "m1**2",
+        "m2**2",
+        "m3**2 + m4**2",
+        "m5**2*(c**2 + s**2) + m6**2",
+        "m7**2 + m8**2",
+        "m3**2*m5**2*(c**2 + s**2)",
+        "m3**2*m7**2",
+        "c**2*m5**2*m7**2 + 2*c*m5*m6*m7*m8 + m5**2*m7**2*s**2 + m6**2*m8**2",
+        "-m3**2*m5*m6*m7*m8*s"
+      ],
+      "jacobian_determinant": "-512*m0*m1*m2*m3**5*m4*m5**2*m6*m7**2*m8*(c**2 + s**2)*(c**2*m5*m7 + c*m6*m8 + m5*m7*s**2)*(c**2*m5**2*m8**2 - 2*c*m5*m6*m7*m8 + m5**2*m8**2*s**2 + m6**2*m7**2)",
+      "unit_circle_reduced_jacobian": "-512*m0*m1*m2*m3**5*m4*m5**2*m6*m7**2*m8*(-2*c*m5**2*m6*m7**2*m8 + c*m5**2*m6*m8**3 + c*m6**3*m7**2*m8 + m5**3*m7*m8**2 + m5*m6**2*m7**3 + 2*m5*m6**2*m7*m8**2*s**2 - 2*m5*m6**2*m7*m8**2)",
+      "identically_zero": false
+    },
+    {
+      "orientation": "sector_swapped",
+      "orbit": 0,
+      "masks": {
+        "u": 95,
+        "d": 84
+      },
+      "phase_edge": [
+        "u",
+        0,
+        0
+      ],
+      "coordinates": [
+        "m6**2",
+        "m7**2",
+        "m8**2",
+        "m0**2*(c**2 + s**2) + m1**2 + m2**2",
+        "m3**2 + m4**2",
+        "m5**2",
+        "c**2*m0**2*m3**2 + 2*c*m0*m1*m3*m4 + m0**2*m3**2*s**2 + m1**2*m4**2",
+        "m0**2*m5**2*(c**2 + s**2)",
+        "m3**2*m5**2",
+        "-m0*m1*m3*m4*m5**2*s"
+      ],
+      "jacobian_determinant": "512*m0**2*m1*m2*m3**2*m4**3*m5**7*m6*m7*m8*(c**2 + s**2)*(c**2*m0*m3 + c*m1*m4 + m0*m3*s**2)",
+      "unit_circle_reduced_jacobian": "512*m0**2*m1*m2*m3**2*m4**3*m5**7*m6*m7*m8*(c*m1*m4 + m0*m3)",
+      "identically_zero": false
+    },
+    {
+      "orientation": "sector_swapped",
+      "orbit": 2,
+      "masks": {
+        "u": 221,
+        "d": 84
+      },
+      "phase_edge": [
+        "u",
+        1,
+        0
+      ],
+      "coordinates": [
+        "m6**2",
+        "m7**2",
+        "m8**2",
+        "m0**2 + m1**2",
+        "m2**2*(c**2 + s**2) + m3**2",
+        "m4**2 + m5**2",
+        "m0**2*m2**2*(c**2 + s**2)",
+        "m0**2*m4**2",
+        "c**2*m2**2*m4**2 + 2*c*m2*m3*m4*m5 + m2**2*m4**2*s**2 + m3**2*m5**2",
+        "-m0**2*m2*m3*m4*m5*s"
+      ],
+      "jacobian_determinant": "-512*m0**5*m1*m2**2*m3*m4**2*m5*m6*m7*m8*(c**2 + s**2)*(c**2*m2*m4 + c*m3*m5 + m2*m4*s**2)*(c**2*m2**2*m5**2 - 2*c*m2*m3*m4*m5 + m2**2*m5**2*s**2 + m3**2*m4**2)",
+      "unit_circle_reduced_jacobian": "-512*m0**5*m1*m2**2*m3*m4**2*m5*m6*m7*m8*(-2*c*m2**2*m3*m4**2*m5 + c*m2**2*m3*m5**3 + c*m3**3*m4**2*m5 + m2**3*m4*m5**2 + m2*m3**2*m4**3 + 2*m2*m3**2*m4*m5**2*s**2 - 2*m2*m3**2*m4*m5**2)",
+      "identically_zero": false
+    }
+  ]
+}
