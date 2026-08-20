@@ -76,7 +76,7 @@ fn annihilates(matrix: &Mat, vector: &[i64; 6]) -> bool {
     (0..6).all(|i| (0..6).map(|j| matrix[i][j] * vector[j]).sum::<i64>() == 0)
 }
 
-fn audit(p: i64) -> (Vec<usize>, i64) {
+fn audit(p: i64) -> (Vec<usize>, i64, Vec<usize>) {
     // Four times the published M_6,M_7,M_8 matrices.
     let m6: Mat = [
         [0,0,0,0,0,0],[-2,4,0,0,0,0],[0,0,0,0,0,0],
@@ -168,14 +168,58 @@ fn audit(p: i64) -> (Vec<usize>, i64) {
     assert!(acted_dual.iter().zip(functional).all(|(a, f)| {
         (*a - eigenvalue * *f).rem_euclid(p) == 0
     }));
-    (result, eigenvalue)
+    // Full labelled Cech nerve:
+    // C0=K6+K7+K8, C1=V_67+V_68+V_78, C2=V_678.
+    // d0(v6,v7,v8)=(v7-v6,v8-v6,v8-v7),
+    // d1(a67,a68,a78)=a78-a68+a67.
+    let mut cech_d0 = vec![vec![0; source_dim]; 18];
+    let mut source_offset = 0;
+    for (s, basis) in kernels.iter().enumerate() {
+        for vector in basis {
+            for coordinate in 0..6 {
+                match s {
+                    0 => {
+                        cech_d0[coordinate][source_offset] = (-vector[coordinate]).rem_euclid(p);
+                        cech_d0[6 + coordinate][source_offset] = (-vector[coordinate]).rem_euclid(p);
+                    }
+                    1 => {
+                        cech_d0[coordinate][source_offset] = vector[coordinate];
+                        cech_d0[12 + coordinate][source_offset] = (-vector[coordinate]).rem_euclid(p);
+                    }
+                    2 => {
+                        cech_d0[6 + coordinate][source_offset] = vector[coordinate];
+                        cech_d0[12 + coordinate][source_offset] = vector[coordinate];
+                    }
+                    _ => unreachable!(),
+                }
+            }
+            source_offset += 1;
+        }
+    }
+    let mut cech_d1 = vec![vec![0; 18]; 6];
+    for coordinate in 0..6 {
+        cech_d1[coordinate][coordinate] = 1;
+        cech_d1[coordinate][6 + coordinate] = p - 1;
+        cech_d1[coordinate][12 + coordinate] = 1;
+    }
+    assert!((0..6).all(|i| {
+        (0..source_dim).all(|j| {
+            (0..18).map(|k| cech_d1[i][k] * cech_d0[k][j]).sum::<i64>().rem_euclid(p) == 0
+        })
+    }));
+    let cech_rank_d0 = rank(cech_d0, p);
+    let cech_rank_d1 = rank(cech_d1, p);
+    let cech_h0 = source_dim - cech_rank_d0;
+    let cech_h1 = (18 - cech_rank_d1) - cech_rank_d0;
+    let cech_h2 = 6 - cech_rank_d1;
+    let cech = vec![cech_rank_d0, cech_rank_d1, cech_h0, cech_h1, cech_h2];
+    (result, eigenvalue, cech)
 }
 
 fn main() {
     let first = audit(32003);
     let second = audit(32009);
-    assert_eq!(first.0, second.0);
-    assert_eq!(first.1, second.1);
+    assert_eq!(first, second);
     assert_eq!(&first.0[0..3], &[4,5,5]);
     assert_eq!(first.0[6], 3);
     assert_eq!(first.0[8], 3);
@@ -184,6 +228,11 @@ fn main() {
          difference_rank={} h0={} h1={} triple_residue_on_h1={}",
         &first.0[0..3], &first.0[3..6], first.0[6], first.0[7],
         first.0[8], first.0[9], first.1,
+    );
+    println!(
+        "full_cech_rank_d0={} full_cech_rank_d1={} full_cech_h0={} \
+         full_cech_h1={} full_cech_h2={}",
+        first.2[0], first.2[1], first.2[2], first.2[3], first.2[4],
     );
     println!(
         "source_boundary_basis=[[0,0,2,1,0,0],[-4,-2,-2,0,1,0],[8,4,4,0,0,1]] \
