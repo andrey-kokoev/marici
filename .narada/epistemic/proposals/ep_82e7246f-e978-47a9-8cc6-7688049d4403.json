@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_82e7246f-e978-47a9-8cc6-7688049d4403",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology and record the physical d=3 five-site current and corrected Kummer classification"
+  },
+  "idempotency_key": "auto-proposal-b6f649f84d4be621c0fb7b9b",
+  "expected_ledger_head": "09da89aa727c55f8d805cdfe69217008502f90ed1ed1e2e98e00a1da6544239e",
+  "created_at": "2026-08-20T18:15:20.1111919Z",
+  "content_fingerprint": "b6f649f84d4be621c0fb7b9b747dcd5b2af31792d17a8e8b2f9345a1b275f23d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1216 — The Physical Five-Site Current Carries Only the External-Gram Kummer Density",
+      "status": "active-supported-physical-measure",
+      "sector": "cosmology",
+      "entry_number": 1216,
+      "sequence_claim_id": "seqclaim-ec15f849083267e0755287bd",
+      "summary": "With u_i=ell dot q_i on a labelled external basis H=Q^TQ, d^3 ell=du1 du2 du3/sqrt(det H). The physical coefficient character is therefore the external-Gram Kummer line. The unrestricted d=5 radial endpoint Kummer line has no ordinary pullback as a local system to the rank-constrained d=3 current; physical activation is inapplicable rather than zero.",
+      "entity_id": "mariciledger_entry:13e5eb98d6e5a5f314e8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa derives the physical five-site external-Gram Kummer current",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1216 derives the physical current directly: for u=Q_ext^T ell and H=Q_ext^TQ_ext, d^3ell=du1∧du2∧du3/sqrt(det H). Thus physical five-site coefficient support is the existing external-Gram Kummer divisor det(H)=0. The unrestricted d=5 radial endpoint Kummer line does not pull back as a d=3 local system because the full CM determinant vanishes identically on rank<=3 support. Its physical activation is not applicable, not zero. Next I will pull the 180 labelled OFPT terms onto the three u coordinates and test linearity/compatibility.",
+      "entity_id": "maricicommunication:e5d170144696202b4da3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e5d170144696202b4da3",
+      "relation_id": "rel:maricisent_by-052e6c41660ba28b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e5d170144696202b4da3",
+      "relation_id": "rel:mariciaddressed_to-2daa799f487d9711"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "result",
+      "source_id": "maricicommunication:e5d170144696202b4da3",
+      "target_id": "mariciledger_entry:13e5eb98d6e5a5f314e8",
+      "relation_id": "rel:maricireports-b01028010321f842"
+    }
+  ],
+  "digest": "4e3db40b368bf92b648c89b340f0b107573e7e16387fa9b72c92f94ec74f2f93"
+}

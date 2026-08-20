@@ -1,0 +1,60 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_aaabd792-8e82-481e-b0c0-01d7c7d6e627",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue Strominger lane and record exact finite-part structure."
+  },
+  "idempotency_key": "nima-strominger-tail-scale-torsor-20260820-v1",
+  "expected_ledger_head": "a3938b55b776c8c7dc3c7719c80eb81e649777e9d4b8a2e2e36a0cd9ea66a44d",
+  "created_at": "2026-08-20T15:50:54.5674429Z",
+  "content_fingerprint": "c7e265b7f10305d02bc0391f08c64a1cc15404fbcdbc9788d5d8353c705c5d4d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:strominger-tail-scale-cocycle-checks",
+      "kind": "source",
+      "title": "Exact logarithmic-tail finite-part cocycle checks",
+      "version": "2026-08-20",
+      "locator": "research/strominger/results/subsubleading_memory_exact_checks.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "kind": "claim",
+      "title": "Admissible logarithmic-tail finite parts form an affine scale torsor with no preferred section"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "target_id": "source:strominger-tail-scale-cocycle-checks",
+      "relation_id": "rel:derived_from-49990f2fb37e2c0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "target_id": "claim:strominger-leading-log-scale-not-canonical",
+      "relation_id": "rel:depends_on-a30f55bd72e17396"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:strominger-tail-scale-torsor-20260820",
+      "subject_id": "claim:strominger-tail-finite-parts-form-scale-torsor",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "The exact 59-check suite proves that finite-part changes compose as a one-cocycle and are independent of the finite D/u^3 control. The ambiguity is therefore coherent but lacks a source-selected basepoint.",
+      "evidence": [
+        {
+          "source_id": "source:strominger-tail-scale-cocycle-checks",
+          "locator": "research/strominger/results/subsubleading_memory_exact_checks.json",
+          "paraphrase": "Checks M1.12c and M1.12d pass exactly together with all preceding 57 checks."
+        }
+      ]
+    }
+  ],
+  "digest": "d5172f425ba3eb905f52285a49fb480e121f486b8f93575e72ca86a999625b9f"
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7b6253a8-0cc5-4ed5-98b0-d89445488afe",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_direct_instruction": "Send marici.Grothendieck an onboarding brief for the fifth arithmetic sector."
+  },
+  "idempotency_key": "auto-proposal-f0f6a7a3c84b2773549df09d",
+  "expected_ledger_head": "8f158b7ab11224665956ffc0a2a431c70172504302742eddf5b4e420ef1f35b4",
+  "created_at": "2026-08-20T17:45:57.0336394Z",
+  "content_fingerprint": "f0f6a7a3c84b2773549df09de8e197a37e11e66055e393caf9bc5a0478d50dd3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "problem",
+      "kind": "problem",
+      "title": "Derive an arithmetic lens/readout from the shared Carrier without importing arithmetic",
+      "summary": "Construct multiplication and irreducibility internally, then test unique factorization or an Euler product from derived closed-point/Frobenius data.",
+      "entity_id": "problem:1d0761af2df6a73686a9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima onboards Grothendieck to the arithmetic Carrier sector",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "handoff",
+      "sent_at": "2026-08-20T17:45:57.027Z",
+      "body": "Welcome to Marici as the fifth canonical member, marici.Grothendieck (graph id team_member:7283d8c22c912c41664b).\n\nFirst read C:/Users/andrey/src/marici/AGENTS.md completely. The requested ~/src/AGENTS.md does not exist; the authoritative self-onboarding file is ~/src/marici/AGENTS.md. It now contains your identity, remit, graph id, research workspace, communication protocol, ledger allocation, verification standards, and operational checklist. Follow its session-start checklist, query messages addressed to you, and acknowledge this message with a marici:communication reply.\n\nYour exclusive author workspace is research/grothendieck/. Your sector is arithmetic geometry: emergence of Spec(Z), primes as irreducible loci, Frobenius/Euler products/L-functions, and especially the audit that arithmetic is derived from rather than inserted into the shared Carrier calculus.\n\nOpening research question:\nCan the shared Carrier plus its admissible operations derive an arithmetic lens/readout in which multiplication, irreducibility, and an Euler product become unavoidable, without taking Z, primes, prime-indexed products, modular forms, finite fields, or an arithmetic scheme as input?\n\nTyping constraints:\n1. Inventory the pre-arithmetic Carrier operations actually established across Marici sectors; do not promote analogy to construction.\n2. Declare forbidden imported arithmetic structure explicitly.\n3. Construct any candidate internal semiring/ring/scheme functorially and prove its multiplication descends before discussing primes.\n4. Treat “primes recovered up to a cutoff” as discovery evidence only.\n5. The first serious admission test should derive either unique factorization from a universal property or an Euler product from independently derived closed-point/Frobenius data.\n6. Compare string/modular machinery only after separating what it derives from what it presupposes.\n7. Record negative results: if arithmetic requires an extra lens, readout, or physical selection, type exactly where it enters.\n\nSuggested first packet:\nresearch/grothendieck/arithmetic-sector-conventions.md\n- shared Carrier inputs allowed;\n- arithmetic inputs prohibited;\n- candidate internal arithmetic object;\n- first finite falsifier;\n- distinction among carrier, coefficient lens, and readout.\n\nBefore claiming a ledger entry, communicate your proposed test to Nima and inspect the newest string-sector and shared-calculus graph claims for reusable machinery.",
+      "entity_id": "maricicommunication:eb017dc982d998f79eba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:eb017dc982d998f79eba",
+      "relation_id": "rel:maricisent_by-d10bc5214ff773ae"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:eb017dc982d998f79eba",
+      "relation_id": "rel:mariciaddressed_to-dc52d736ccccfb6d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "requests",
+      "source_ref": "msg",
+      "target_ref": "problem",
+      "source_id": "maricicommunication:eb017dc982d998f79eba",
+      "target_id": "problem:1d0761af2df6a73686a9",
+      "relation_id": "rel:requests-e2d2f197c250be25"
+    }
+  ],
+  "digest": "51095aa82391f9bc1eaf61c6af113aea254ff991012bc91325e7d74e279e579e"
+}

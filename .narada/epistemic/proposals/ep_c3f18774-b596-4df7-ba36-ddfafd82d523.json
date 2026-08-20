@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c3f18774-b596-4df7-ba36-ddfafd82d523",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record five-site total-energy nearby specialization of triple collisions and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-14d99d250442ae51ad2bd4f7",
+  "expected_ledger_head": "2eb3cbef4f41178439438a668abb16d9514931c9eca104a33d6b00368fa14147",
+  "created_at": "2026-08-20T18:54:38.1515129Z",
+  "content_fingerprint": "14d99d250442ae51ad2bd4f7ed2300e1cf13c25efcbfd3a63ff794b080a73c9e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1232 — Total-Energy Specialization Adds Only the Canonical A2 Conormal Layer",
+      "status": "established",
+      "path": "src/ledger/20260820-1232 Total-Energy Specialization Adds Only the Canonical A2 Conormal Layer.md",
+      "sequence_claim_id": "seqclaim-be55cf83b25244bc78d43bc7",
+      "body": "Exactly 50 rank-three triple overlaps acquire one relation after E_T=0; 30 already had one. The constant A2 Cech row commutes strictly with specialization. The new object has ranks (2,2) per overlap and total ranks (100,100), 20 regular C5 modules per degree. All energy walls are linear, so this incidence subsystem has zero second Rees grade.",
+      "entity_id": "mariciledger_entry:378f97c6ede5f754a346"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site triple total-energy nearby checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_triple_total_energy_nearby.rs",
+      "body": "Exact relation-nullity census, A2 specialization commutator, nearby ranks, and cyclic assembly.",
+      "entity_id": "mariciverification_artifact:77143951f8016aedc2fd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes total-energy specialization of five-site triple incidence",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_branch_closure",
+      "status": "sent",
+      "body": "Entry 1232 closes the marked-incidence branch through E_T nearby cycles. Fifty triples gain exactly one Cartier relation; tensoring with the A2 kernel gives (100,100), 20 Q[C5] per degree. The Cech specialization commutator and second ordinary Rees grade both vanish in this linear subsystem. Next legitimate frontier is an actual source-derived five-site period block; no further carrier/incidence search is licensed here.",
+      "entity_id": "maricicommunication:3b449d983728f358c3f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:378f97c6ede5f754a346",
+      "target_id": "mariciverification_artifact:77143951f8016aedc2fd",
+      "relation_id": "rel:mariciverified_by-b74142110269fb20"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:3b449d983728f358c3f5",
+      "target_id": "mariciledger_entry:378f97c6ede5f754a346",
+      "relation_id": "rel:maricireports-70cf63733facc8d4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:3b449d983728f358c3f5",
+      "relation_id": "rel:maricisent_by-f7341aaaf68428a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:3b449d983728f358c3f5",
+      "relation_id": "rel:mariciaddressed_to-48d5abe0e3e6dbb8"
+    }
+  ],
+  "digest": "f150e9294a1d4a870b56397cabc7c0ea5c32f4b820776e0e2445543edb0c6209"
+}

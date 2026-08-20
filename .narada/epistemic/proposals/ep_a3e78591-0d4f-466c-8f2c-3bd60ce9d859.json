@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a3e78591-0d4f-466c-8f2c-3bd60ce9d859",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the five-site source-labelled triple-collision Cech census and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-591708e60ebffc20a52173f1",
+  "expected_ledger_head": "6b136d4e48d5cc417735ac2701ed22ca238bf1495a4995d6fd05b49fbee712d5",
+  "created_at": "2026-08-20T18:52:43.1203149Z",
+  "content_fingerprint": "591708e60ebffc20a52173f1400b23fb43dad637a2d0bca0135ec4c69ac46165",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1231 — Five-Site Triple Collisions Close by the A2 Čech Relation",
+      "status": "established",
+      "path": "src/ledger/20260820-1231 Five-Site Triple Collisions Close by the A2 Cech Relation.md",
+      "sequence_claim_id": "seqclaim-6c954a0ea850c6776934f5bf",
+      "body": "There are 80 correctly supported labelled triple overlaps in 16 free C5 orbits. Energy ranks split 30 of rank2 and 50 of rank3; exactly the latter force E_T=0. The three pair lines map by (1,-1,1), rank1 with kernel rank2, exactly the A2 top OS space. No higher Cech excess.",
+      "entity_id": "mariciledger_entry:5ac48e4555fb56466c43"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site triple-collision Čech census checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_triple_collision_cech.rs",
+      "body": "Exact complementary occurrence census, integer energy ranks, total-energy span tests, cyclic freeness, and A2 incidence rank.",
+      "entity_id": "mariciverification_artifact:78a7e363e99f594878e0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes five-site triple collision Cech coherence",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_total_energy_frontier",
+      "status": "sent",
+      "body": "Entry 1231 enumerates the actual supported triples: 80 labels, 16 free C5 orbits. Thirty have energy rank2; fifty have rank3 and force E_T=0. All close through the single A2 row (1,-1,1), leaving the expected rank-two top OS kernel and no excess. Next gate is whether this A2 kernel commutes with E_T nearby cycles and whether second normal grade adds anything beyond existing Kummer/total-energy maps.",
+      "entity_id": "maricicommunication:8f59a840e57d31f92274"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:5ac48e4555fb56466c43",
+      "target_id": "mariciverification_artifact:78a7e363e99f594878e0",
+      "relation_id": "rel:mariciverified_by-a3fba4ff56071f7b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:8f59a840e57d31f92274",
+      "target_id": "mariciledger_entry:5ac48e4555fb56466c43",
+      "relation_id": "rel:maricireports-582a836e508c408a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:8f59a840e57d31f92274",
+      "relation_id": "rel:maricisent_by-d2d316469dad8e5e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:8f59a840e57d31f92274",
+      "relation_id": "rel:mariciaddressed_to-3baa7c26abae237c"
+    }
+  ],
+  "digest": "2211160c28655b28a16ecc1ff9af124cf9ea856db1c20dba12ea0929b43689db"
+}

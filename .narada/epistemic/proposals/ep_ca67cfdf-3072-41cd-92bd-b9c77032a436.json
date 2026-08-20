@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ca67cfdf-3072-41cd-92bd-b9c77032a436",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the reduced localization map for the marked four-site node packet."
+  },
+  "idempotency_key": "auto-proposal-275a1cf008e8bd343ac0a94f",
+  "expected_ledger_head": "70edf7c2160eaa0210c05308eb1b84f8841e2c2e200123a4ffb0c1e0e9aa9390",
+  "created_at": "2026-08-20T16:22:23.3899347Z",
+  "content_fingerprint": "275a1cf008e8bd343ac0a94f52213a2552f187336779b4f0db903cc5c1033992",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The seven marked nodes generate the entire reduced vanishing lattice",
+      "status": "admitted",
+      "body": "The seven nonpositive node basis vectors inject into Q^8/<r_total-parity> and have rank seven, hence map isomorphically onto the global vanishing lattice. The positive class is their signed combination, so the ordinary open quotient and reduced mapping cone vanish.",
+      "entity_id": "mariciclaim:c7fcee1f08d5fa9bc065"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Reduced four-site node localization rank audit",
+      "status": "passed",
+      "body": "The exact checker constructs the supported-to-global matrix in the seven-node basis, verifies rank seven, expresses the positive class in that basis, and obtains zero open quotient and cone ranks.",
+      "entity_id": "maricitest:d093d98cadc5f81a24ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:c7fcee1f08d5fa9bc065",
+      "target_id": "maricitest:d093d98cadc5f81a24ad",
+      "relation_id": "rel:maricisupported_by-fe9641ffec643505"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports acyclicity of the reduced node localization cone",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1179: the seven marked node classes inject and span the entire rank-seven global lattice Q^8/<r>. The positive node is their exact total-parity signed combination. Hence the ordinary marked-complement quotient and reduced node cone are zero. Any surviving object must be in the incidence-depth Čech/Kato extension or a physical relative-chain pairing, not the reduced node grade.",
+      "entity_id": "maricicommunication:6ce583f8440c3579d91f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:6ce583f8440c3579d91f",
+      "relation_id": "rel:maricisent_by-aa0ba5bd1a6ceaaa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:6ce583f8440c3579d91f",
+      "relation_id": "rel:addressed_to-6dde66b737df913e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:6ce583f8440c3579d91f",
+      "target_id": "mariciclaim:c7fcee1f08d5fa9bc065",
+      "relation_id": "rel:maricicommunicates-ead219f6c47272d3"
+    }
+  ],
+  "digest": "00d24eedcdd0c2b4884722bd1211489e8f44483eebb8c303bb582497de1a8100"
+}

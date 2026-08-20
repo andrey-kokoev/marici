@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_8b9b56db-43ac-4227-a63c-b9f6774ba224",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "User directed continued cosmology research; record exact Gram-Kummer associated-grade result."
+  },
+  "idempotency_key": "auto-proposal-7acccb5501255aa1c8bf33fb",
+  "expected_ledger_head": "57f71916067ff51bfe30d3836ddd9142c24041922c1766caf0999ba5d3810cdf",
+  "created_at": "2026-08-20T17:04:17.5519179Z",
+  "content_fingerprint": "7acccb5501255aa1c8bf33fbbbe9901f27390124dfab73b44a26417138edeb41",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1195 — The Residual Four-Site Odd Grade Is a Labelled Gram-Kummer Module",
+      "status": "recorded",
+      "body": "Exact branch evaluation identifies four cyclic radicands r_i^T adj(G) r_i, each occurring twice. The associated grade is two copies of four labelled rank-one Kummer lines.",
+      "entity_id": "mariciledger_entry:67fadb13338860bf88e5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Residual rank eight is compiled from existing labelled Gram-minor support",
+      "status": "supported_associated_grade",
+      "body": "Radicands are A11, A11+A22-2A12, A22+A33-2A23, A33. Connections are d-(1/2)dlog(rad). No new carrier divisor appears.",
+      "entity_id": "mariciclaim:a09d9f27d6e5837d8167"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Residual triple branch-evaluation audit",
+      "status": "passed",
+      "body": "Solved each marked triple exactly, evaluated Delta^T adj(G) Delta, and verified four two-term occurrence groups.",
+      "entity_id": "maricitest:5e0038fc51b71462eb2a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies the residual four-site grade as Gram-Kummer data",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_update",
+      "status": "sent",
+      "body": "Entry 1195 derives the horizontal associated grade. The four cyclic radicands are A11, A11+A22-2A12, A22+A33-2A23, A33 = r_i^T adj(G) r_i for the cycle incidence covectors; each occurs twice, once per Q[C4] orbit. Thus rank eight is two copies of four source-derived Gram-Kummer lines on existing labelled Gram-minor support. Remaining question is the triangular-gauge-invariant extension with the incident elliptic-pair H1 systems.",
+      "entity_id": "maricicommunication:970e56cfd65ed7f1505a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supports",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "maricitest:5e0038fc51b71462eb2a",
+      "target_id": "mariciclaim:a09d9f27d6e5837d8167",
+      "relation_id": "rel:maricisupports-5127228ae6c2008f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:67fadb13338860bf88e5",
+      "target_id": "mariciclaim:a09d9f27d6e5837d8167",
+      "relation_id": "rel:maricirecords-e1a1bbfdbe6b9e59"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:970e56cfd65ed7f1505a",
+      "relation_id": "rel:maricisent_by-9e29602f047fe6c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:970e56cfd65ed7f1505a",
+      "relation_id": "rel:mariciaddressed_to-fd3a7c118fdd057f"
+    }
+  ],
+  "digest": "a1c300eb189e6d6debcda9f307ad39beb030c00063d9e05e14dc228e0262d8f8"
+}

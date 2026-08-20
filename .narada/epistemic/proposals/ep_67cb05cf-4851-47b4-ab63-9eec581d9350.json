@@ -1,0 +1,203 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_67cb05cf-4851-47b4-ab63-9eec581d9350",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "The operator directed marici.Grothendieck to read newly addressed messages and continue Nima's finalized arithmetic Carrier plan."
+  },
+  "idempotency_key": "auto-proposal-691efd2b1430f04024f76604",
+  "expected_ledger_head": "cefd7cb9ac0bf370efb5f552a25a833f28a41e9e684628079c4e0850c17f4828",
+  "created_at": "2026-08-20T18:18:06.1830363Z",
+  "content_fingerprint": "691efd2b1430f04024f766042e64b8550328487077730c9b1c20405bd2442207",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Phase-I unmarked assembly obstruction",
+      "version": "sha256:6fb56222d72ad78a70cf657570ee42d353439ea1aa489665e1a3fe956a23d299",
+      "locator": "research/grothendieck/phase-i-unmarked-assembly-obstruction.md",
+      "entity_id": "source:dc651d43f9f43a76d5ed"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "source",
+      "title": "Phase-I unmarked assembly obstruction result",
+      "version": "sha256:4e537bcc07297479b5c26b2e5b073ec75b8308c8c09900f25811d1a60d772c37",
+      "locator": "research/grothendieck/results/phase-i-unmarked-assembly-obstruction.json",
+      "entity_id": "source:2792506a4b07f2bfa3c5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Independent source relabelling obstructs canonical unmarked quadrilateral sewing",
+      "status": "established_at_first_connected_sewing_arity",
+      "demonstrated_strength": [
+        "finite-cutoff theorem",
+        "source-typed morphism"
+      ],
+      "body": "For an occurrence-preserving connected sewing Q4 x Q4 -> Q6 that selects one interface edge from each input, the gluing choices form E x E with 16 elements. Independent C4 rotations act transitively and D4 x D4 has no fixed gluing pair. Therefore the admitted regional products, which are canonical only after cut/interface marks are supplied, do not themselves define a total unmarked source-equivariant connected binary assembly. Marked regional assembly is not contradicted; disjoint coproduct and orbit-sum/Burnside alternatives remain unconstructed.",
+      "entity_id": "claim:9e93f7d63f7675fa6467"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact D4 x D4 unmarked assembly fixed-point test",
+      "status": "passed",
+      "checker": "research/grothendieck/checkers/phase_i_unmarked_assembly_obstruction.py",
+      "checker_sha256": "ba1a9108fed6e56fb0fee7b28a67976c056fed6e05c6ff8d02a696c55be17b0b",
+      "result": "research/grothendieck/results/phase-i-unmarked-assembly-obstruction.json",
+      "result_sha256": "4e537bcc07297479b5c26b2e5b073ec75b8308c8c09900f25811d1a60d772c37",
+      "command": "uv run --with sympy python research/grothendieck/checkers/phase_i_unmarked_assembly_obstruction.py",
+      "deterministic_rerun": true,
+      "gluing_choice_count": 16,
+      "rotation_orbit_size": 16,
+      "fixed_gluing_pair_count": 0,
+      "marked_stabilizer_orders": [
+        2,
+        2
+      ],
+      "entity_id": "test:dc8493c65bcf954e20c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:9e93f7d63f7675fa6467",
+      "target_id": "source:dc651d43f9f43a76d5ed",
+      "relation_id": "rel:derived_from-9bd9a5eb188b112b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "result",
+      "source_id": "claim:9e93f7d63f7675fa6467",
+      "target_id": "source:2792506a4b07f2bfa3c5",
+      "relation_id": "rel:derived_from-f1a1b8d429b1a9cd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "result",
+      "source_id": "test:dc8493c65bcf954e20c6",
+      "target_id": "source:2792506a4b07f2bfa3c5",
+      "relation_id": "rel:derived_from-05c2462f2c78fd2c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:dc8493c65bcf954e20c6",
+      "target_id": "claim:9e93f7d63f7675fa6467",
+      "relation_id": "rel:tests-927e15ccece278b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "problem:1d0761af2df6a73686a9",
+      "source_id": "claim:9e93f7d63f7675fa6467",
+      "relation_id": "rel:addresses-710e3776b2f200d6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_nima",
+      "kind": "marici:communication",
+      "title": "Grothendieck reports the first Phase-I connected-assembly obstruction",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:18:06.175Z",
+      "body": "Smallest connected-assembly test completed. On two cyclic quadrilateral carriers, a single-interface occurrence-preserving sewing requires one of 16 edge pairs. C4 x C4 acts transitively and D4 x D4 fixes none, so the regional tensor cannot descend to a total unmarked source-equivariant connected multiplication without extra interface marks. The exact checker and packet are research/grothendieck/checkers/phase_i_unmarked_assembly_obstruction.py and research/grothendieck/phase-i-unmarked-assembly-obstruction.md. This does not contradict marked fixed-core products and does not rule out disjoint union. The next smallest gate is whether a coefficient-neutral empty object and finite disjoint coproduct with its universal property are admitted; I will not replace the missing choice by a sum over all sewings because that would assume the Burnside/additive completion.",
+      "entity_id": "maricicommunication:16b254df406a3cc688df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:16b254df406a3cc688df",
+      "relation_id": "rel:maricisent_by-58636183c4b46572"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_nima",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:16b254df406a3cc688df",
+      "relation_id": "rel:mariciaddressed_to-85884dc1629b255a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_nima",
+      "target_id": "maricicommunication:2f4115b7fd53847cc262",
+      "source_id": "maricicommunication:16b254df406a3cc688df",
+      "relation_id": "rel:maricireplies_to-f2fa402258dbe844"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_nima",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:16b254df406a3cc688df",
+      "target_id": "claim:9e93f7d63f7675fa6467",
+      "relation_id": "rel:reports-56e274a783595301"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg_benincasa",
+      "kind": "marici:communication",
+      "title": "Grothendieck locates the mark-forgetting gate before Burnside–Witt",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T18:18:06.176Z",
+      "body": "Your Burnside–Witt suggestion exposes the precise escape from the first obstruction. The 16 quadrilateral gluing pairs form one C4 x C4 orbit, so no single unmarked equivariant sewing exists; supplied interface marks reduce to stabilizers and recover the established regional product. Summing the orbit would be equivariant, but that requires the finite coproduct/Burnside completion Phase I has not derived. I have therefore deferred orbit sums, symmetric powers, lambda/Witt structure, and Frobenius rather than inserting them.",
+      "entity_id": "maricicommunication:684ab638f77fb5e14d85"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:684ab638f77fb5e14d85",
+      "relation_id": "rel:maricisent_by-b24d80a49a497b87"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:684ab638f77fb5e14d85",
+      "relation_id": "rel:mariciaddressed_to-fc69070886a9af9a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msg_benincasa",
+      "target_id": "maricicommunication:c0647c920ba5468cae47",
+      "source_id": "maricicommunication:684ab638f77fb5e14d85",
+      "relation_id": "rel:maricireplies_to-2fb9cc84444a8893"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg_benincasa",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:684ab638f77fb5e14d85",
+      "target_id": "claim:9e93f7d63f7675fa6467",
+      "relation_id": "rel:reports-59e90fe35d38a92b"
+    }
+  ],
+  "digest": "e4fb0a30123d5403d63c948a707333dfce60c6a32eb500c7b4568303936c1822"
+}

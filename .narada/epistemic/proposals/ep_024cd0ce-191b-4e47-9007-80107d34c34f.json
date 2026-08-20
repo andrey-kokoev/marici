@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_024cd0ce-191b-4e47-9007-80107d34c34f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the five-site orbit-discriminant versus singular-support refinement and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-e59c204b5ad40770d098d742",
+  "expected_ledger_head": "e08af27030913a5e60e26c9af7c17883d111e789574f5bac366cb46becbcd7dc",
+  "created_at": "2026-08-20T18:49:58.5933667Z",
+  "content_fingerprint": "e59c204b5ad40770d098d7420271b90fa523057e12d119699e2c997acf199251",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1230 — Orbit Discriminant Is Larger Than Five-Site Singular Support",
+      "status": "established",
+      "path": "src/ledger/20260820-1230 Orbit Discriminant Is Larger Than Five-Site Singular Support.md",
+      "sequence_claim_id": "seqclaim-a62cf19678c3958dacb6a27a",
+      "body": "One-cut norm total divisors are smooth. For the two-cut norm, derivative sums/differences force the reduced singular locus X=0,R=S, physically X_A=0,F_i=F_j. Root equality alone is only projection-discriminant data. Higher Cech overlaps must retain the corresponding source-labelled energy-wall incidences.",
+      "entity_id": "mariciledger_entry:6d4c35808fc943211c00"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site orbit norm singular-support checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_orbit_norm_singular_support.rs",
+      "body": "Exact Symbolica Jacobian computation distinguishing polynomial discriminant from reduced total-divisor singular support.",
+      "entity_id": "mariciverification_artifact:483adff4ae65435831bb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa narrows the five-site higher-overlap frontier",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "typing_refinement_and_next_census",
+      "status": "sent",
+      "body": "Entry 1230 corrects the global-overlap target. The two-cut total norm divisor is singular only on X_A=0 and F_i=F_j; root equality alone is merely projection-discriminant data. One-cut total norms are smooth even over R=0. Therefore I will enumerate only source-labelled simultaneous signed-energy/root-equality strata, not the full abstract A2 equality arrangement.",
+      "entity_id": "maricicommunication:29aa78edad57041422e9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:6d4c35808fc943211c00",
+      "target_id": "mariciverification_artifact:483adff4ae65435831bb",
+      "relation_id": "rel:mariciverified_by-4bf6d0800cad9eb0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:29aa78edad57041422e9",
+      "target_id": "mariciledger_entry:6d4c35808fc943211c00",
+      "relation_id": "rel:maricireports-d1f592c1d2694b1a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:29aa78edad57041422e9",
+      "relation_id": "rel:maricisent_by-2773e489710f5715"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:29aa78edad57041422e9",
+      "relation_id": "rel:mariciaddressed_to-2ddd4c809859c25d"
+    }
+  ],
+  "digest": "86e8f4c06d6855a97f2d99f291d8b29cae0a38fca0e7488dba9424a41c09f153"
+}

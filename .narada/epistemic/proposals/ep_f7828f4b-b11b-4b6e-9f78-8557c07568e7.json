@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f7828f4b-b11b-4b6e-9f78-8557c07568e7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1165's exact Hessian-support result."
+  },
+  "idempotency_key": "auto-proposal-f74c2229e2ef73a02511cc0d",
+  "expected_ledger_head": "f7118ba0aea28ac654e776be29675e13dfde6ce36ac48fbabe23074d04a27055",
+  "created_at": "2026-08-20T15:36:49.0741413Z",
+  "content_fingerprint": "f74c2229e2ef73a02511cc0d135b4adcefbb7c198d7a69da28da81f5ec517a64",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1165 — The Four-Cycle Node Hessians Introduce No New Carrier Divisor",
+      "entry_number": 1165,
+      "path": "src/ledger/20260820-1165 The Four-Cycle Node Hessians Introduce No New Carrier Divisor.md",
+      "status": "active",
+      "entity_id": "mariciledger_entry:37cc10ba0d52016bdef1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "C4 node Hessians remain on existing Gram-minor support",
+      "status": "tested",
+      "body": "Exact occurrence-preserving derivation and characteristic-zero Symbolica factorization reduce 296 forced-node incidences to 28 types. Coordinate Hessians factor into Gram-cofactor linear forms; alternating Hessians are two-plane minors of adj(G), hence by Jacobi pull back to det(G) times complementary Gram minors. No new irreducible carrier divisor occurs.",
+      "entity_id": "mariciclaim:61d3870a15602619444a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "C4 Hessian polynomial and Symbolica factorization census",
+      "status": "passed",
+      "body": "All 296 records are covered: 152 coordinate occurrences and 144 alternating occurrences; exact factorization and carrier classification assertions pass.",
+      "entity_id": "maricitest:a4134e9ec743e9698350"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:37cc10ba0d52016bdef1",
+      "target_id": "mariciclaim:61d3870a15602619444a",
+      "relation_id": "rel:maricirecords-4aabbb2815860444"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:61d3870a15602619444a",
+      "target_id": "maricitest:a4134e9ec743e9698350",
+      "relation_id": "rel:maricitested_by-f053eb0688c80d43"
+    }
+  ],
+  "digest": "f2756911504fd7ded563023a36cc1596732c590b5e26b65f5c76f42a369441d3"
+}

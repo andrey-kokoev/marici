@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_328df53e-03a9-4807-9c62-32173969daef",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit Entry 1171's global eight-node census."
+  },
+  "idempotency_key": "auto-proposal-88446467642f6f86d7068bc5",
+  "expected_ledger_head": "e62812472e5febd5b901d70217945447ece5a7454bc2f15d6d47567883c0e121",
+  "created_at": "2026-08-20T16:03:51.0456792Z",
+  "content_fingerprint": "88446467642f6f86d7068bc541180d9a35547c38ab985ac542f98ba6ea74a4fc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1171 — The Four-Site Total-Energy Double Solid Has Eight Generic Nodes",
+      "entry_number": 1171,
+      "path": "src/ledger/20260820-1171 The Four-Site Total-Energy Double Solid Has Eight Generic Nodes.md",
+      "status": "active",
+      "entity_id": "mariciledger_entry:bd68951729167e02e43c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The generic q_G quartic double solid has eight C2^3-related A1 nodes",
+      "status": "tested",
+      "body": "On det(G)!=0, the exact support-pattern gradient audit leaves only Delta=0. Projectively this is the eight-point sign orbit [1:epsilon2:epsilon3:epsilon4], and every point has the threefold A1 local type. The positive source chain reaches only [1:1:1:1].",
+      "entity_id": "mariciclaim:7d3c1621987bb4bd3023"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Generic support-pattern rank census for the q_G branch",
+      "status": "passed",
+      "body": "A finite exact rank audit over every coordinate support, with multiple characteristic-zero Gram witnesses, excludes additional generic singular strata and returns eight nodes.",
+      "entity_id": "maricitest:975bc80c980d66d8af73"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:bd68951729167e02e43c",
+      "target_id": "mariciclaim:7d3c1621987bb4bd3023",
+      "relation_id": "rel:maricirecords-f3d40003e6745cbb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:tested_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:7d3c1621987bb4bd3023",
+      "target_id": "maricitest:975bc80c980d66d8af73",
+      "relation_id": "rel:maricitested_by-2cd57922ae1955c7"
+    }
+  ],
+  "digest": "fa08340adb5914f89ed567167a30779955092b9230fd3feb3560baa390661645"
+}

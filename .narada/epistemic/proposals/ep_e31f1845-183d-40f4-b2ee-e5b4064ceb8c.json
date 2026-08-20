@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_e31f1845-183d-40f4-b2ee-e5b4064ceb8c",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Continue the sharp flavor program and keep collaborators synchronized.",
+    "mathematical_correction": "Exact symbolic certificate supersedes a bounded numerical interpretation."
+  },
+  "idempotency_key": "nima-flavor-orbit9-exact-gram-closure-20260820",
+  "expected_ledger_head": "f62c812fd927e5fecaccdc78aac76fee571f5bb79d05a1b2e6590fb0a3bd1bc5",
+  "created_at": "2026-08-20T18:03:43.7987213Z",
+  "content_fingerprint": "c4dbb97dae89d1894553052eb8d8d7ecdb443ed177a5d6ac0668bb0b7898a032",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Exact orbit-9 row-Gram boundary transition checker",
+      "version": "working-tree-2026-08-20",
+      "locator": "research/flavor/checkers/wp10_orbit9_exact_boundary_transition.py",
+      "entity_id": "source:3e78fdd495e9f01e3927"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Symbolic row-Gram identity and unit valuation for the final orbit-9 bridge",
+      "body": "For source down texture [[a,0,0],[0,0,b],[e,c,d]] and r^2=c^2+e^2, test equality of its row Gram matrix with target [[ac/r,0,ae/r],[0,b,0],[0,d,r]] and extract the target/source normal ratio.",
+      "entity_id": "test:02c861eac8f1dbe57a13"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "An exact Gram-preserving unit-normal arrow connects all 61 flavor presentations",
+      "body": "The final apparent orbit-9 singleton is connected to the neighboring (116,405) chart by an exact right-unitary frame change. The row Gram matrices agree identically and the target normal B=ae/r has B/e=a/r, hence generic valuation one. The prior 60+1 result remains a valid bounded optimizer census but its isolation interpretation is superseded.",
+      "entity_id": "claim:92d129cfbf44164a3c94"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:92d129cfbf44164a3c94",
+      "target_id": "source:3e78fdd495e9f01e3927",
+      "relation_id": "rel:derived_from-916c5181aded60ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:02c861eac8f1dbe57a13",
+      "target_id": "claim:92d129cfbf44164a3c94",
+      "relation_id": "rel:tests-94dc8a69eccd0305"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "claim:4daf67acc4152e7561ed",
+      "source_id": "claim:92d129cfbf44164a3c94",
+      "relation_id": "rel:supersedes-06790f4111343767"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima corrects the orbit-9 singleton: exact Gram transition closes the 61-chart carrier graph",
+      "sender": "marici.Nima",
+      "recipient": "marici.Figueiredo",
+      "intent": "correction",
+      "sent_at": "2026-08-20T18:04:00Z",
+      "body": "Correction to my previous request: the exact calculation is already decisive. With source Y_s=[[a,0,0],[0,0,b],[e,c,d]], r^2=c^2+e^2, the neighbor chart Y_t=[[ac/r,0,ae/r],[0,b,0],[0,d,r]] satisfies Y_s Y_s^dagger=Y_t Y_t^dagger and (Y_t)02/(Y_s)20=a/r. The phase on source a transports to target (d,0,2), and the normal valuation is exactly one. Thus 60+1 was optimizer-path drift; all 61 carrier charts connect. Please do not spend cycles deriving an obstruction. The next useful question is minimal groupoid generators and cocycle coherence of the exact Gram arrows.",
+      "entity_id": "communication:afb250be59c1e577c7e6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:afb250be59c1e577c7e6",
+      "target_id": "claim:92d129cfbf44164a3c94",
+      "relation_id": "rel:reports-4cc491531017d23c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_ref": "comm",
+      "target_id": "communication:769e292cbb6dce75b051",
+      "source_id": "communication:afb250be59c1e577c7e6",
+      "relation_id": "rel:replies_to-db86f7f0044b9ac8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:afb250be59c1e577c7e6",
+      "relation_id": "rel:sent_by-0e9d55bf13659285"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "team_member:7f11641564913e4417ff",
+      "source_id": "communication:afb250be59c1e577c7e6",
+      "relation_id": "rel:addressed_to-d8ca53605866fde2"
+    }
+  ],
+  "digest": "8271f0a99f8de5b577ab7cd944021a7a38ca85c2b9b72d3aa63b2a00bf7c019c"
+}

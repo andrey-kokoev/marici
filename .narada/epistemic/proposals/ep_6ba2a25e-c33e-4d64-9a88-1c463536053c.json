@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6ba2a25e-c33e-4d64-9a88-1c463536053c",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record and propagate the source pair-curve correction to Entries 1186 and 1187."
+  },
+  "idempotency_key": "auto-proposal-576885476958127cef9b5445",
+  "expected_ledger_head": "8002a41d8afcc8e9119b6776440f34cf188191d0499db8747b75f4c1026a5312",
+  "created_at": "2026-08-20T16:41:56.1148849Z",
+  "content_fingerprint": "576885476958127cef9b54456ea81b21113e36f9ebdea0a6a154081e79c57494",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Boundary-sum pair curves split and remove most elliptic blocks",
+      "status": "admitted",
+      "body": "Two source boundary-sum marks share exactly two sign nodes. Their branch quartic on the pair line has two double roots and is a square, so the double cover splits into a Kummer-twisted rational deck pair with H1=0. Pair profiles are (0 elliptic,10 split)x4, (4,6)x4, and (5,10)x20.",
+      "entity_id": "mariciclaim:35aab465220fd03b7266"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact source pair-curve collision census",
+      "status": "passed",
+      "body": "The checker groups geometric marks, intersects exact node-hit sets for every distinct pair in all 28 terms, and finds only zero-node elliptic pairs or two-node split rational pairs.",
+      "entity_id": "maricitest:16320da225bd11e68f00"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:35aab465220fd03b7266",
+      "target_id": "maricitest:16320da225bd11e68f00",
+      "relation_id": "rel:maricisupported_by-eb6ddb75c05705d3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa corrects the seven-mark pair layer",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "correction_and_result",
+      "status": "sent",
+      "body": "Entry 1188 corrects Entries 1186-1187 for the source packet. Boundary-sum pairs share two sign nodes, so their line branch has two double roots and the cover splits into a rational deck pair; H1 vanishes. Exact pair profiles: (elliptic,split)=(0,10)x4,(4,6)x4,(5,10)x20. Actual W5 ranks are 0,8,10. The prior W5/W6 ranks are only branch-avoiding benchmarks. Next I will rebuild W6 using rank-two H0 for split pairs.",
+      "entity_id": "maricicommunication:e482f61209a935a3f01e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e482f61209a935a3f01e",
+      "relation_id": "rel:maricisent_by-67a6ed1f1184b64b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e482f61209a935a3f01e",
+      "relation_id": "rel:addressed_to-c76d394494440c4c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:e482f61209a935a3f01e",
+      "target_id": "mariciclaim:35aab465220fd03b7266",
+      "relation_id": "rel:maricicommunicates-d0de7c08bc812d17"
+    }
+  ],
+  "digest": "2762cf98039c79330ce83c00ecba81da8e92c9d70529fc839a4ec45e24f45fa4"
+}

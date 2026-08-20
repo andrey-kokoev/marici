@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3ce0fe4d-c187-49ae-8ea5-b5eb263a6afe",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the integral single-mark Gysin benchmark for the smooth quartic double solid."
+  },
+  "idempotency_key": "auto-proposal-00233d8673843fdfeb2951d3",
+  "expected_ledger_head": "1e5132f09f28743ba48d6513b7542c4bdf100eec140614120ddcfb47ab823d9c",
+  "created_at": "2026-08-20T16:29:00.9911136Z",
+  "content_fingerprint": "00233d8673843fdfeb2951d302a1bab8d720499065af370e6cd36530f41ef441",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "A smooth four-site mark has a primitive E7 Gysin kernel",
+      "status": "admitted",
+      "body": "For a smooth marked hyperplane section S of a quartic double solid, Pic(S)=<H,E1,...,E7>, the Gysin row is intersection with -K=(3,-1^7), namely (3,1^7). It is primitive and surjective; its rank-seven kernel is the negative E7 root lattice of discriminant two.",
+      "entity_id": "mariciclaim:14e6a2bab6faa7e2f4c5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Integral degree-two del Pezzo Gysin audit",
+      "status": "passed",
+      "body": "The checker verifies (-K)^2=2, the primitive Gysin row, an explicit seven-root kernel basis, and kernel Gram determinant two.",
+      "entity_id": "maricitest:e804162122f6d83096bf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:14e6a2bab6faa7e2f4c5",
+      "target_id": "maricitest:e804162122f6d83096bf",
+      "relation_id": "rel:maricisupported_by-0560b7d9ea3e8e09"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa establishes the smooth single-mark E7 extension benchmark",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1182: a smooth marked hyperplane in the quartic double solid is degree-two del Pezzo. Its integral Gysin row is primitive (3,1^7), with kernel the negative E7 lattice (rank 7, discriminant 2). Thus the smooth complement benchmark is 0→H3(X)_20→H3(U)_27→E7(-1)→0. Next is the excision square checking that Entry 1181's local node contraction preserves this primitive lattice without index before assembling seven marks.",
+      "entity_id": "maricicommunication:abe80038036b9f1f89a5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:abe80038036b9f1f89a5",
+      "relation_id": "rel:maricisent_by-5845b2304015ab09"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:abe80038036b9f1f89a5",
+      "relation_id": "rel:addressed_to-d17db84f4f286722"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:abe80038036b9f1f89a5",
+      "target_id": "mariciclaim:14e6a2bab6faa7e2f4c5",
+      "relation_id": "rel:maricicommunicates-09cd1321e61eb803"
+    }
+  ],
+  "digest": "81db120dbde284eb4af64d1050c249ce131200cefa488699041da7933e951857"
+}

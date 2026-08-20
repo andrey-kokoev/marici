@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_28306414-8293-40bc-878b-48f2cbc536c5",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the primitive A1^4 contraction inside the E7 Gysin lattice."
+  },
+  "idempotency_key": "auto-proposal-7617a607a965a2c9ca9002b6",
+  "expected_ledger_head": "84eb5a6e197e5ec3b727c2c82ac02f146b473dba81b82d9ca44400205304c954",
+  "created_at": "2026-08-20T16:33:57.2957951Z",
+  "content_fingerprint": "7617a607a965a2c9ca9002b68daf715943e7ade00f473be827ec860691c6662a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Four nodal roots contract E7 primitively to A1 cubed",
+      "status": "admitted",
+      "body": "The four exceptional roots of a two-conic marked section form an orthogonal A1^4 subsystem in E7. Its embedding is primitive (gcd maximal minors one), the quotient is torsion-free, and the orthogonal intersection-cohomology lattice is A1^3 of discriminant eight. The direct-sum gluing index in E7 is eight.",
+      "entity_id": "mariciclaim:70ee8671803523e0169b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Integral A1^4-to-E7 embedding audit",
+      "status": "passed",
+      "body": "The checker verifies explicit root Gram matrices, maximal-minor gcd one, zero quotient torsion, an integral complement basis, its discriminant eight, and a unimodular orthogonal-root basis with Gram -2I3.",
+      "entity_id": "maricitest:3275d4e9f2fd169f4f0e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:70ee8671803523e0169b",
+      "target_id": "maricitest:3275d4e9f2fd169f4f0e",
+      "relation_id": "rel:maricisupported_by-2d8a0bbc30cd8e91"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa derives the nodal marked-section Gysin lattice",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result",
+      "status": "sent",
+      "body": "Entry 1184: the four nodal roots in a boundary-sum section embed primitively as A1^4⊂E7; quotient torsion is zero. Their orthogonal IH/Gysin kernel is A1^3 (rank3, discr8), while A1^4⊕A1^3 has intrinsic index8 in E7. Thus smooth marks contribute E7 rank7, four-node marks contribute A1^3 rank3. Next is the explicit excision square matching these four roots to Entry 1181's signed local contraction.",
+      "entity_id": "maricicommunication:04304ab7ed09ec725737"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:04304ab7ed09ec725737",
+      "relation_id": "rel:maricisent_by-cdd2525eec5bbdea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:04304ab7ed09ec725737",
+      "relation_id": "rel:addressed_to-ce389d698dd0896d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:communicates",
+      "source_ref": "msg",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:04304ab7ed09ec725737",
+      "target_id": "mariciclaim:70ee8671803523e0169b",
+      "relation_id": "rel:maricicommunicates-2bb9e01fb8880873"
+    }
+  ],
+  "digest": "7fd1e1e06a51ddb9f9cf386eed934a69a99492d583856d2ffc13cc3c10325c3d"
+}

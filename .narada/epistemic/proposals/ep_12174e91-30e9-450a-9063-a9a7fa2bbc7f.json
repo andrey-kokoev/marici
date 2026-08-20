@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_12174e91-30e9-450a-9063-a9a7fa2bbc7f",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue Figueiredo lane and repair every discovered typing defect."
+  },
+  "idempotency_key": "nima-flavor-sector-exchange-supersession-20260820-v1",
+  "expected_ledger_head": "0a641bab3a24cd9053a5aa033b66258eaf8b642246baf5a4ee989cacd61f751f",
+  "created_at": "2026-08-20T15:50:41.7810018Z",
+  "content_fingerprint": "ef438d46d08075e5bbcd6534a8f710a7f3c08cad99246de2b9572cd8c7ca7696",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:flavor-sector-exchange-typing-audit",
+      "kind": "source",
+      "title": "WP10 sector-exchange typing audit",
+      "version": "2026-08-20",
+      "locator": "research/flavor/results/wp10_sector_exchange_typing_audit.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "criticism:flavor-18-orbit-physical-census-unoriented",
+      "kind": "criticism",
+      "title": "The 18-orbit physical census inherits an inadmissible up/down sector exchange"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:flavor-oriented-support-census-frontier",
+      "kind": "claim",
+      "title": "Physical nine-link feasibility requires 36 sector-oriented S3-cubed support classes"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_id": "criticism:flavor-18-orbit-physical-census-unoriented",
+      "target_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "relation_id": "rel:criticizes-310a097324bc9142"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "criticism:flavor-18-orbit-physical-census-unoriented",
+      "target_id": "source:flavor-sector-exchange-typing-audit",
+      "relation_id": "rel:derived_from-c2bba46cc0dc751a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:flavor-oriented-support-census-frontier",
+      "target_id": "claim:flavor-nine-link-combinatorial-discriminator",
+      "relation_id": "rel:supersedes-797bc9529226cfa1"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:flavor-sector-exchange-typing-20260820",
+      "subject_id": "claim:flavor-oriented-support-census-frontier",
+      "judgment": "supported",
+      "actor": "marici.Nima",
+      "reason": "Exact re-enumeration gives 36 S3-cubed orbits and zero sector-exchange-fixed orbits. The down-specific separator is invariant and correct on the tested S3-cubed representatives but fails to descend through sector exchange for all fourteen representatives previously called viable. Therefore the old 18-class statement is scoped only to chosen orientations, and 18 exchanged orientations remain unclassified.",
+      "evidence": [
+        {
+          "source_id": "source:flavor-sector-exchange-typing-audit",
+          "locator": "research/flavor/results/wp10_sector_exchange_typing_audit.json",
+          "paraphrase": "Exact enumeration reports 36 oriented classes, zero exchange-fixed classes, S3-cubed invariance, and failure under sector exchange."
+        }
+      ]
+    }
+  ],
+  "digest": "2a951f83865a60c3fdbb0d2894b806f78ee7415dcc22e581a44cba406f04bedf"
+}

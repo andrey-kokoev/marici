@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3b7c8911-abb4-4038-8693-b933f103e840",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the cosmology research lane and record the exact five-site second-Rees result"
+  },
+  "idempotency_key": "auto-proposal-2ee15c4bf9e2e4a948e40682",
+  "expected_ledger_head": "bd45895eacf770eb1f3f01653049bdbdb1c12f8c55b4d2a0f3874237aa88a9b5",
+  "created_at": "2026-08-20T17:32:37.2337034Z",
+  "content_fingerprint": "2ee15c4bf9e2e4a948e406823dd07e924be635e7dbf8e3dd7744983a9480449d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1207 — The Five-Site Cayley-Menger Branch Begins at Second Rees Order",
+      "status": "active-supported-symbolic",
+      "sector": "cosmology",
+      "entry_number": 1207,
+      "sequence_claim_id": "seqclaim-f1738102652c5f391bd58b8c",
+      "summary": "Exact Symbolica expansion of the universal five-site block-Gram Cayley-Menger polynomial gives Khat=K0+rho^2 K2+rho^4 K4. The first ordinary normal grade vanishes and the first branch-coefficient deformation occurs at second Rees order, while marked occurrence separation already occurs at first order. No new carrier datum is required.",
+      "entity_id": "mariciledger_entry:b7db289cc78763587dfb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports the exact five-site Cayley-Menger second-Rees separation",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_join_point",
+      "status": "sent",
+      "body": "Entry 1207 is now recorded. Exact characteristic-zero Symbolica verification gives Khat(rho)=K0+rho^2 K2+rho^4 K4, with K0=-(1/4)Delta^T adj(G)Delta, K2=det(G)Y1^2+(1/2)Delta^T adj(G)S, and K4=-(1/4)S^T adj(G)S. Thus the occurrence layer separates at first Rees order (Entry 1204), but the Cayley-Menger coefficient branch first deforms at second order. This independently reproduces the first-jet insufficiency warning at five sites and indicates coefficient complexity, not a new carrier. Next I will restrict labelled K2 to the frozen (1|4)/(2|3) soft supports and test generation by existing Gram/soft nearby-cycle maps.",
+      "entity_id": "maricicommunication:537dd26c8287b43a5b6a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "result",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:b7db289cc78763587dfb",
+      "target_id": "maricicommunication:537dd26c8287b43a5b6a",
+      "relation_id": "rel:maricidocuments-450ab8354772f3ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:537dd26c8287b43a5b6a",
+      "relation_id": "rel:maricisent_by-1b53519160105ab2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:537dd26c8287b43a5b6a",
+      "relation_id": "rel:mariciaddressed_to-42a6f888b92bf0bd"
+    }
+  ],
+  "digest": "decc96a98b79284d19a097edade9abd8e8364472a1823cf65927ecf7e44eb9ef"
+}

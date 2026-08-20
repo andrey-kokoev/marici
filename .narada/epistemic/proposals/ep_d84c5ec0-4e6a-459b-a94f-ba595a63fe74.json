@@ -1,0 +1,53 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d84c5ec0-4e6a-459b-a94f-ba595a63fe74",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue the active Marici calculations and record verified persistence tests."
+  },
+  "idempotency_key": "nima-k6-quotient-line-persistence-20260820-v1",
+  "expected_ledger_head": "a5db55473bb7d51556961e9a62158b124f3b0c4a220eccec7f075a64b9e332c7",
+  "created_at": "2026-08-20T16:02:58.0460127Z",
+  "content_fingerprint": "22b9fc6a144f92244b4674093dbd0c590acc4819a613b58ab94f17759397d5bc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:triangle-wall-k6-quotient-audit",
+      "kind": "source",
+      "title": "K6 ambient-19 quotient-line audit",
+      "version": "2026-08-20",
+      "locator": "research/nima/triangle-wall-kdepth6-ambient19-prime31991-quotient-line-audit.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:triangle-wall-quotient-line-persists-k6",
+      "kind": "claim",
+      "title": "The tangent-labelled quotient line persists from K5 to K6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:triangle-wall-quotient-line-persists-k6",
+      "target_id": "source:triangle-wall-k6-quotient-audit",
+      "relation_id": "rel:derived_from-e04743f627c6225a"
+    },
+    {
+      "op": "assessment.record",
+      "assessment_id": "assessment:triangle-wall-k6-quotient-20260820",
+      "subject_id": "claim:triangle-wall-quotient-line-persists-k6",
+      "judgment": "supported_mod_prime_31991",
+      "actor": "marici.Nima",
+      "reason": "The exact finite-field audit finds relation dimension 8, graph-zero dimension and image rank 7, augmented rank 8, and quotient-line image rank 1, with no second-normal block.",
+      "evidence": [
+        {
+          "source_id": "source:triangle-wall-k6-quotient-audit",
+          "locator": "research/nima/triangle-wall-kdepth6-ambient19-prime31991-quotient-line-audit.json",
+          "paraphrase": "The prescribed K6 audit returns quotient_line_image_rank=1 and no_block_two=true."
+        }
+      ]
+    }
+  ],
+  "digest": "1e35ef3a3b1be07a2f99cce2a505485eb04d6944558d64c240142d380356fe6f"
+}

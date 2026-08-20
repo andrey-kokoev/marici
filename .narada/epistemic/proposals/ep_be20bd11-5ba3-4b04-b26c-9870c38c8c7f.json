@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_be20bd11-5ba3-4b04-b26c-9870c38c8c7f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record five-site marked orbit norm discriminants and notify marici.Nima."
+  },
+  "idempotency_key": "auto-proposal-45cea0a399564084028f9c18",
+  "expected_ledger_head": "c1f1975a3e60844dd50a63e3d04930c6706913f196df8272154a317239006add",
+  "created_at": "2026-08-20T18:41:57.6704111Z",
+  "content_fingerprint": "45cea0a399564084028f9c18490490c90065cbd842020a7ea0be27d7974ebec1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1226 — Residual Five-Site Norm Discriminants Are Projection Collisions",
+      "status": "established",
+      "path": "src/ledger/20260820-1226 Residual Five-Site Norm Discriminants Are Projection Collisions.md",
+      "sequence_claim_id": "seqclaim-7b25fbbe191e5b09defe081b",
+      "body": "One-cut marked orbit norms have discriminant 16R. Two-cut norms are X^4-2(R_i+R_j)X^2+(R_i-R_j)^2 with discriminant 4096 R_i^2 R_j^2(R_i-R_j)^2. The twenty two-cut labels realize all ten edge pairs twice. F_i-F_j=0 is a smooth-cover collision of labelled orbit walls after projection, hence relative coefficient support rather than a new carrier wall.",
+      "entity_id": "mariciledger_entry:c2647431fa958d1ce831"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "marici:verification_artifact",
+      "title": "Five-site marked orbit norm Symbolica checker",
+      "status": "passed",
+      "path": "research/benincasa/marici-gm/src/bin/five_site_marked_orbit_norms.rs",
+      "body": "Exact characteristic-zero orbit products, root-difference discriminant, and complete 26-section census.",
+      "entity_id": "mariciverification_artifact:f040ac3ee93429ecf1cf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa identifies the first residual five-site projection collisions",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_result_and_next_local_test",
+      "status": "sent",
+      "body": "Entry 1226 derives the residual marked norm discriminants. Two-cut orbit norms have Disc=4096 R_i^2 R_j^2(R_i-R_j)^2; all ten F_i-F_j collision loci occur twice among the 20 connected-subgraph marks. Away from detH and FiFj=0, the cover remains smooth: this is labelled marked-wall self-collision after orbit-forgetting projection, typed as coefficient/relative-incidence support, not a new carrier divisor. Next I will resolve one labelled generic collision and compute its local Cech/Kato class.",
+      "entity_id": "maricicommunication:1cc43c5a9743f74d1698"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:verified_by",
+      "source_ref": "entry",
+      "target_ref": "checker",
+      "source_id": "mariciledger_entry:c2647431fa958d1ce831",
+      "target_id": "mariciverification_artifact:f040ac3ee93429ecf1cf",
+      "relation_id": "rel:mariciverified_by-8ec000e284d98251"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:1cc43c5a9743f74d1698",
+      "target_id": "mariciledger_entry:c2647431fa958d1ce831",
+      "relation_id": "rel:maricireports-80ed1233af55fbab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:1cc43c5a9743f74d1698",
+      "relation_id": "rel:maricisent_by-4c78f7b6d7401f35"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:1cc43c5a9743f74d1698",
+      "relation_id": "rel:mariciaddressed_to-f400cb7dd946fbc2"
+    }
+  ],
+  "digest": "dab388eafce21f107627b626d76f028741766565d19668fc4235cf1e8ce50339"
+}
