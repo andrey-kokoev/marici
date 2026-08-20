@@ -27,11 +27,12 @@ Status as of 2026-08-19 (updated after PDF text extraction succeeded):
 | [HMLS] = arXiv:1401.7026 full text | grounded (leading-triangle session) |
 | [CS] abstract + formulas | grounded. Abstract via arxiv.org/abs/1404.4091; formula level via PDF text extraction to `sources/cs1404.4091.txt` (23 pages): soft expansion (5), subleading factor (6), gauge variation (7), spinor form (18)–(19) |
 | [PSZ] abstract + formulas | grounded. Abstract via arxiv.org/abs/1502.06120; formula level via PDF text extraction to `sources/psz1502.06120.txt` (18 pages): spin memory contour formula (4.5), constraint (5.2), Green's function (5.3)–(5.4), flux convolution (5.6), equivalence to the subleading soft theorem (6.1)–(6.9), conserved charges (7.1) |
-| [KLPS] = arXiv:1406.3312 | grounded via PDF text extraction to `sources/klps1406.3312.txt` (23 pages): news shift law (5.5)–(5.6), soft charge (5.8), Ward identity (5.14)–(5.16), mode expansion (5.17) |
+| [KLPS] = arXiv:1406.3312 | grounded via PDF text extraction to `sources/klps1406.3312.txt` (23 pages): news shift law (5.5)–(5.6), soft charge (5.8), Ward identity (5.14)–(5.16), mode expansion (5.17); §6 read at formula level for the subleading bridge: gauge mechanism (6.4), per-leg operator (6.6), delta scaffold (6.7)/(6.12), spin soft factor (6.11) |
+| [SZ] = arXiv:1411.5745 | grounded via PDF text extraction to `sources/sz1411.5745.txt` (leading memory ↔ soft paper). NOTE: an earlier draft of this ledger cited [SZ] for the PSZ (6.8) closure route; that was a mis-citation — PSZ ref [20] is [KLPS], and the grounded (6.8) derivation runs through KLPS §6. [SZ] is retained in the ledger but plays no role in the S5 closure. |
 
-(The arXiv HTML / ar5iv route fails with a fatal conversion error, as it
-did for [SZ]=1411.5745 in the leading session; the working route is
-`arxiv.org/pdf/<id>` + `pypdf` text extraction into `sources/`.)
+(The arXiv HTML / ar5iv route fails with a fatal conversion error; the
+working route is `arxiv.org/pdf/<id>` + `pypdf` text extraction into
+`sources/` — used for all four papers above, [SZ] included.)
 
 Rule carried over from the leading packet: nothing is proved by citing
 the correspondence; every link becomes an explicit check item, and every

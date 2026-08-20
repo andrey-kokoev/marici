@@ -83,7 +83,7 @@
     {
       "id": "S5.1",
       "group": "S5",
-      "statement": "per-leg Shat^(1)_zz operator: om cancels exactly; components (c_zk, c_zbk, c_Ek) = (2(1+zb zk)^3/((z-zk)(1+z zb)^3), 0, -2 E (zb-zbk)(1+zb zk)^2/((z-zk)(1+z zb)^3(1+zk zbk)))",
+      "statement": "per-leg Shat^(1)_zz operator: om cancels exactly; with the repaired generator contraction (S5.6a) the components are (c_zk, c_zbk, c_Ek) = (0, -2(zb-zbk)^2(1+zb zk)/((z-zk)(1+z zb)^3), -2 E (zb-zbk)(1+zb zk)^2/((z-zk)(1+z zb)^3(1+zk zbk))) \u2014 the angular component now sits in the d_zbk slot, not d_zk",
       "status": "pass",
       "detail": ""
     },
@@ -111,16 +111,93 @@
     {
       "id": "S5.5a",
       "group": "S5",
-      "statement": "typed obstruction: (6.8) per-leg angular channel (d_zk) residual is nonzero (exact rational point)",
+      "statement": "typed obstruction: (6.8) per-leg angular channel (d_zk) residual is nonzero (exact rational point); with the repaired contraction it equals exactly the named gauge-mixing residual M (S5.9) and closes only leg-summed via KLPS (6.4) sum_k J_k = 0 (S10.1); PSZ ref [20] = KLPS arXiv:1406.3312 (grounded)",
       "status": "pass",
-      "detail": "residual retained: 102500/483153"
+      "detail": "residual retained: -102500/483153"
     },
     {
       "id": "S5.5b",
       "group": "S5",
-      "statement": "typed obstruction: (6.8) per-leg angular channel (d_zbk) residual is nonzero (exact rational point); closure route = leg-summed J-conservation form used for PSZ (6.9) and/or [SZ] arXiv:1411.5745 (ungrounded)",
+      "statement": "typed obstruction: (6.8) per-leg angular channel (d_zbk) residual is nonzero (exact rational point); the pre-repair zero in this channel was an artifact of the lowered-beta contraction defect (S5.6a); same leg-summed closure route as S5.5a",
       "status": "pass",
-      "detail": "residual retained: 1671500/7891499"
+      "detail": "residual retained: -1671500/7891499"
+    },
+    {
+      "id": "S5.6a",
+      "group": "S5",
+      "statement": "generator-contraction arbiter: the per-leg operator's pushforward c_Ek d_pk/dEk + c_zk d_pk/dzk + c_zbk d_pk/dzbk equals exactly the soft-factor vector field W = (eps^-.k) q - (q.k) eps^-; this pins A^{mn} = -s^m s^n beta_{mn} (raised indices) and repairs the earlier lowered-beta contraction",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.6b",
+      "group": "S5",
+      "statement": "the repaired per-leg stripped soft operator is exactly KLPS (6.6): (c_zk, c_zbk, c_Ek) = ((z-zk)^2/(zbk-zb), 0, Ek(z-zk)(1+z zbk)/((zbk-zb)(1+zk zbk))) (PSZ ref [20] = KLPS arXiv:1406.3312)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.6c",
+      "group": "S5",
+      "statement": "the eps+ operator is the sigma-conjugate (slot-swapped) of the eps- operator",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.7a",
+      "group": "S5",
+      "statement": "sphere tetrad: dX/dz = b eps+ + c X and dX/dzb = b eps- + cb X with b = sqrt(2)/(1+z zb), c = -zb/(1+z zb), cb = -z/(1+z zb)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.7b",
+      "group": "S5",
+      "statement": "gauge direction: the soft-factor vector field annihilates q itself, op(q) = 0",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.8",
+      "group": "S5",
+      "statement": "mixing theorem: Shat_zz = b^2 S+ + (b c/om) op(eps+) and Shat_zbzb = b^2 S- + (b cb/om) op(eps-) \u2014 the angular gauge components enter Shat only through the KLPS (6.4) first-type gauge-mixing term eps^nu q^lam J_{nu lam}",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.9a",
+      "group": "S5",
+      "statement": "the (6.8) per-leg bridge residual is named exactly: derived-LHS minus printed-RHS equals M := D_z^2 mix^- - D_zb^2 mix^+ in all three operator channels",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.9b",
+      "group": "S5",
+      "statement": "M computed from the mixing operators equals its closed forms (polynomial numerators over (1+z zb)^5)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.9c",
+      "group": "S5",
+      "statement": "the residual has no d_Ek component: M_E = 0, so the energy channel closes per leg (consistent with S5.4)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.9d",
+      "group": "S5",
+      "statement": "exact-value pinning: M_zk(PT1) = -102500/483153",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S5.9e",
+      "group": "S5",
+      "statement": "exact-value pinning: M_zbk(PT1) = -1671500/7891499",
+      "status": "pass",
+      "detail": ""
     },
     {
       "id": "S6.1",
@@ -212,19 +289,103 @@
       "statement": "RHS curl-only invariance (PSZ below (5.5)): real shift N_z -> N_z + d_z X leaves Im[d_u d_zb N_z + d_zb T_uz] invariant (second independent real test field)",
       "status": "pass",
       "detail": ""
+    },
+    {
+      "id": "S10.1a",
+      "group": "S10",
+      "statement": "leg-summed closure: C(J1) + C(J2) vanishes when J1 + J2 = 0 \u2014 the KLPS (6.4) sum_k J_k = 0 mechanism that kills the leg-summed gauge-mixing residual of S5.9 (the prefactor b c/om is k-independent)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.1b",
+      "group": "S10",
+      "statement": "typed obstruction: per leg the gauge-mixing contraction C(J) = eps^+_n q_l J^{n l} is nonzero",
+      "status": "pass",
+      "detail": "residual retained: (sqrt(2)*J1_01*om*zb**2 - sqrt(2)*J1_01*om + sqrt(2)*I*J1_02*om*zb**2 + sqrt(2)*I*J1_02*om + 2*sqrt(2)*J1_03*om*zb + 2*sqrt(2)*I*J1_12*om*zb + sqrt(2)*J1_13*om*zb**2 + sqrt(2)*J1_13*om + sqrt(2)*I*J1_23*om*zb**2 - sqrt(2)*I*J1_23*om)/(2*z*zb + 2)"
+    },
+    {
+      "id": "S10.2a",
+      "group": "S10",
+      "statement": "KLPS (6.7) angular channel: the computed leading delta is D0 = -2 pi per leg \u2014 exactly half the printed -4 pi",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.2b",
+      "group": "S10",
+      "statement": "KLPS (6.7) energy channel: the computed D_z-delta coefficient is -pi Ek \u2014 exactly half the printed -2 pi Ek",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.2c",
+      "group": "S10",
+      "statement": "KLPS (6.12) spin channel: the computed D_z-delta coefficient is +pi per unit h_k \u2014 exactly half the printed +2 pi",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.2d",
+      "group": "S10",
+      "statement": "channels printed as absent are absent: D1_ang = D2_ang = D2_E = D2_sp = 0",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.2e",
+      "group": "S10",
+      "statement": "the regular (non-distributional) parts of gamma^{zzb} D_z^3(eps-hat S) vanish identically in all three channels \u2014 no regular obstruction",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.3a",
+      "group": "S10",
+      "statement": "structural obstruction, named: the energy channel carries an unprinted plain-delta term D0_E = -2 pi Ek zbk/(1+zk zbk)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.3b",
+      "group": "S10",
+      "statement": "typed obstruction: printed (6.7) has NO plain-delta term in the d_Ek channel; the computed one is nonzero \u2014 no delta^2-normalization convention repairs this",
+      "status": "pass",
+      "detail": "residual retained: -2*pi*Ek*zbk/(zbk*zk + 1)"
+    },
+    {
+      "id": "S10.3c",
+      "group": "S10",
+      "statement": "structural obstruction, named: the spin channel carries an unprinted plain-delta term D0_sp = +2 pi zbk/(1+zk zbk) per unit h_k",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S10.3d",
+      "group": "S10",
+      "statement": "typed obstruction: printed (6.12) has NO plain-delta term at all; the computed one is nonzero",
+      "status": "pass",
+      "detail": "residual retained: 2*pi*zbk/(zbk*zk + 1)"
+    },
+    {
+      "id": "S10.3e",
+      "group": "S10",
+      "statement": "typed residual: the uniform factor-1/2 gap (computed deltas are half the printed ones) is not explained away \u2014 candidate delta^2-normalization convention drift, same family as the S5.4 factor-2 note",
+      "status": "pass",
+      "detail": "residual retained: 2*pi"
     }
   ],
   "summary": {
-    "total": 30,
-    "passed": 30,
+    "total": 53,
+    "passed": 53,
     "failed": 0,
     "failed_ids": [],
     "classification": {
       "carrier": "one sigma-odd field (the magnetic/curl part of N_z, equivalently the tower over C_zz) read at three derivative grades D_z, D_z^2, D_z^3 \u2014 NOT one operator (H2 confirmed as a typed refinement of the leading one-operator picture)",
-      "common_operation": "curl/magnetic projection (Im) of the C_zz tower; per-leg soft operator Shat^(1)_zz with components (c_zk, 0, c_Ek) built from PSZ (6.5)+(6.7)",
-      "verdict": "soft-memory bridge (PSZ 6.8) exact per leg in the energy channel; angular channels are a typed per-leg residual",
+      "common_operation": "curl/magnetic projection (Im) of the C_zz tower; per-leg soft operator Shat^(1)_zz with components (0, c_zbk, c_Ek) built from PSZ (6.5)+(6.7) with the repaired generator contraction (S5.1, S5.6a)",
+      "verdict": "soft-memory bridge (PSZ 6.8) exact per leg in the energy channel; the angular channels fail per leg by exactly the named gauge-mixing residual M = D_z^2 mix^- - D_zb^2 mix^+ (S5.9), which closes only leg-summed via the KLPS (6.4) mechanism sum_k J_k = 0 (S10.1) \u2014 verdict (ii)",
       "external_inputs": [
-        "J: global angular momentum conservation (CS (7); PSZ (6.9) derivation)",
+        "J: global angular momentum conservation (CS (7); KLPS (6.4); PSZ (6.9) derivation)",
         "G_CS gauge prescription (conventions packet section 2)",
         "antipodal matching + KLPS i^0 mode correspondence (packet section 3)",
         "symmetric/hermitian zero-frequency limit (PSZ 6.1) = (1+om d_om) projection (KLPS 5.33)",
@@ -233,11 +394,13 @@
       "conventions_residuals": [
         "CS (7) sign: with the declared shift dE = q Lam + Lam q the per-leg contraction gives dS^(1) = +i Lam q sum J vs printed -i (shift-sign convention; check S2.1)",
         "S3: PSZ (6.5) / CS (6) ratio is exactly kap = sqrt(32 pi G) (check S3.1/S3.2)",
-        "S5: PSZ (6.8) holds per leg only in the d_Ek channel; the factor 2 between derived and printed sides is the (6.1) half-symmetric-limit vs (6.5) convention drift; angular-channel residuals S5.5a/b await the leg-summed J form and/or [SZ] arXiv:1411.5745 (PSZ ref [20], ungrounded: ar5iv extraction failed in the leading session)",
+        "S5: the generator contraction in build_op was repaired (raised indices A^{mn} = -s^m s^n beta_{mn}) and pinned by the momentum-space arbiter S5.6a; the repaired operator reproduces KLPS (6.6) exactly (S5.6b) \u2014 PSZ ref [20] = KLPS arXiv:1406.3312 (grounded); [SZ] arXiv:1411.5745 is grounded at sources/sz1411.5745.txt but not needed for this closure",
+        "S5: PSZ (6.8) holds per leg only in the d_Ek channel; the angular residual is exactly M = D_z^2 mix^- - D_zb^2 mix^+ (S5.9), the second derivative of the KLPS (6.4) gauge-mixing term, closing only leg-summed under sum_k J_k = 0 (S10.1)",
+        "S10: KLPS (6.7)/(6.12) as printed are NOT exact per-leg distributional identities under the declared prescription: the computed deltas carry a uniform factor 1/2 relative to print (candidate delta^2-normalization drift), and the energy/spin channels carry unprinted plain-delta terms D0_E = -2 pi Ek zbk/(1+zk zbk), D0_sp = +2 pi zbk/(1+zk zbk) h_k (S10.2/S10.3); the endpoint KLPS (5.16) is unaffected (S4.3)",
         "S7: the formal kernel of D_z^3 exceeds the CKVs (zb, zb^2, z zb are killed but singular at the poles); the CKV-only quotient requires global smoothness \u2014 analytic input, same mechanism as S8.2 (checks S7.3/S7.4)",
         "S8.2: the smoothness/corner-condition quotient removing the (1+z zb)^{-2s} x antiholomorphic ambiguity between derivative grades is an analytic note (declared input), not an exact check"
       ],
-      "outcome": "mixed: the subleading naturality square closes exactly at the level of the projector (S1), gauge variation (S2), normalization ratio kap (S3), hard-operator sphere reduction (S4), Green kernel (S6), and the D_z^3 CKV quotient (S7); the D^2 bridge (S5) closes exactly only in the energy channel per leg, with the angular channels recorded as typed residuals; the carrier question lands on one field with three derivative grades rather than one operator (S8, H2 refinement)"
+      "outcome": "mixed: the subleading naturality square closes exactly at the level of the projector (S1), gauge variation (S2), normalization ratio kap (S3), hard-operator sphere reduction (S4), Green kernel (S6), and the D_z^3 CKV quotient (S7); the D^2 bridge (S5) closes exactly per leg in the energy channel, with the angular channels equal to the exactly named gauge-mixing residual M (S5.9) that closes only leg-summed via KLPS (6.4) sum_k J_k = 0 (S10.1); the KLPS (6.7)/(6.12) delta scaffold holds only at half delta strength with structural plain-delta contamination (S10.2/S10.3); the carrier question lands on one field with three derivative grades rather than one operator (S8, H2 refinement)"
     }
   }
 }
