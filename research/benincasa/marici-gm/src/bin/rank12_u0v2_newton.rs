@@ -75,6 +75,32 @@ fn main() {
     // preserve the source ordering (Omega111, Omega101, Omega110, e1..e9).
     let form_orders = [-2_i32, -1, -1, 2, 1, 0, 1, 0, -1, 0, 2, 2];
 
+    let exceptional = k4
+        .replace(atom("ph").to_pattern())
+        .with(atom("1").to_pattern())
+        .replace(atom("qh").to_pattern())
+        .with(atom("s").to_pattern())
+        .replace(atom("Ah").to_pattern())
+        .with(atom("A").to_pattern())
+        .replace(atom("Bh").to_pattern())
+        .with(atom("B").to_pattern())
+        .expand();
+    let on_l1 = exceptional
+        .replace(atom("B").to_pattern())
+        .with(atom("1").to_pattern())
+        .expand()
+        .factor();
+    let on_l2 = exceptional
+        .replace(atom("A").to_pattern())
+        .with(atom("(1-s)/2").to_pattern())
+        .expand()
+        .factor();
+    let on_top = on_l1
+        .replace(atom("A").to_pattern())
+        .with(atom("(1-s)/2").to_pattern())
+        .expand()
+        .factor();
+
     println!("center=(u,v)=(0,2)");
     println!("joint_ideal=(p,q,A,B)");
     println!("nu_K=4");
@@ -88,4 +114,8 @@ fn main() {
     println!("L1_initial={l1_1}");
     println!("L2_initial={l2_1}");
     println!("relative_form_orders={form_orders:?}");
+    println!("p_chart_exceptional={}", exceptional.factor());
+    println!("p_chart_on_L1={on_l1}");
+    println!("p_chart_on_L2={on_l2}");
+    println!("p_chart_on_top={on_top}");
 }
