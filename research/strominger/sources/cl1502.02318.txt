@@ -1,0 +1,904 @@
+New symmetries for the Gravitational S-matrix
+Miguel Campigliaa and Alok Laddha b
+aInstituto de F´ ısica, Facultad de Ciencias, Montevideo 11400,
+Uruguay
+bChennai Mathematical Institute, Siruseri 603103, India
+Abstract
+In [15] we proposed a generalization of the BMS group G which is a semi-
+direct product of supertranslations and smooth diﬀeomorphisms of the con-
+formal sphere. Although an extension of BMS, G is a symmetry group of
+asymptotically ﬂat space times. By taking G as a candidate symmetry group
+of the quantum gravity S-matrix, we argued that the Ward identities associ-
+ated to the generators of Diﬀ( S2) were equivalent to the Cachazo-Strominger
+subleading soft graviton theorem. Our argument however was based on a pro-
+posed deﬁnition of the Diﬀ( S2) charges which we could not derive from ﬁrst
+principles asG does not have a well deﬁned action on the radiative phase space
+of gravity. Here we ﬁll this gap and provide a ﬁrst principles derivation of the
+Diﬀ(S2) charges. The result of this paper, in conjunction with the results of
+[4, 15] prove that the leading and subleading soft theorems are equivalent to
+the Ward identities associated toG.
+E-mail: campi@ﬁsica.edu.uy, aladdha@cmi.ac.in
+1
+arXiv:1502.02318v2  [hep-th]  1 Mar 2015
+Contents
+1 Introduction 2
+2 Preliminaries 4
+2.1 Spacetimes under consideration . . . . . . . . . . . . . . . . . . . . . 4
+2.2 Deﬁnition of G . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.3 Radiative phase spaces . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3 Main section 7
+3.1 General idea . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.2 Symplectic structure on Γ 0 . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.3 Diﬀ( S2) charges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.4 Past null inﬁnity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.5 Diﬀ( S2) Ward identities and CS soft theorem . . . . . . . . . . . . . 12
+4 Goldstone modes of G 13
+4.1 Evaluating δVNAB . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+5 Conclusions 14
+A Closure of generalized BMS action 16
+1 Introduction
+The space of asymptotically ﬂat spacetimes which satisfy Einstein’s equations is very
+rich. For example, there is an inﬁnite dimensional symmetry group associated to
+this space which is known as BMS group [1, 2]. BMS group is intrinsically tied to the
+null boundary of any asymptotically ﬂat spacetime, which in turn has a topology of
+S2× R. The group is a semidirect product of an abelian group of angle-dependent
+translations along the null direction (referred to as ‘supertranslations’) times the
+group of global conformal transformations of the 2-sphere, the Lorentz group. As
+asymptotically ﬂat spacetimes have future as well as past null inﬁnities, the complete
+group which can be associated to such spaces is a direct product BMS +×BMS−. In
+a beautiful piece of work [3] Strominger introduced a remarkable notion of “energy
+conserving” diagonal subgroup BMS 0. It was then shown in [4] that if we assume
+BMS0 is a symmetry group of the (perturbative) quantum gravity S-matrix, then
+the Ward identities associated to supertranslations are in a precise sense equivalent
+to Weinberg’s soft graviton theorem [5] which relatesn-particle scattering amplitude
+with (n− 1)-particle scattering amplitude when one of the external particles is a
+graviton of vanishing energy. We refer the reader to [3, 4] for more details and for
+the precise deﬁnition of BMS 0.
+A natural question then arises, namely if the subleading soft graviton theorem
+conjectured by Strominger and proved in [6, 7, 8] 1 is also a manifestation of Ward
+1In [6], this theorem was proved in the holomorphic limit. More general proofs were later given
+2
+identities associated to some symmetry of the perturbative S matrix. In [12] it was
+argued that the subleading soft theorem can yield Ward identities associated to ‘ex-
+tended BMS’ symmetries [13, 14]. The extended BMS group is a semidirect product
+of local (as opposed to global in the BMS case) conformal group of the two-sphere,
+also known as Virasoro group, and supertranslations. However due to diﬃculties
+associated to the singular nature of local conformal Killing vector ﬁelds (CKVs) on
+the conformal sphere, it was not clear how to obtain the subleading soft theorem
+from Ward identities.
+In [15], motivated by the precise equivalence between supertranslation Ward
+Identities and Weinberg’s soft graviton theorem, we argued that the Cachazo-Strominger
+(CS) theorem 2 was in fact equivalent to Ward identities associated not to the Vi-
+rasoro group but to the group of sphere diﬀeomorphisms Diﬀ( S2) which belongs
+not to the ‘extended BMS’ group but to what we called ‘generalized BMS’ group
+G. This group has the same structure as the (extended) BMS group, but instead of
+(local) CKVs of the conformal sphere one allows for arbitrary smooth sphere vec-
+tor ﬁelds. That is, G is a semidirect product of diﬀeomorphisms of the conformal
+sphere and supertranslations. Based on earlier literature on radiative phase space
+and asymptotic symmetries [16, 17, 18, 19, 20, 13, 14] it was argued in [15] that
+G is a symmetry of Einstein’s equations (with zero cosmological constant) if one
+allows for arbitrary metrics on the conformal sphere. We then showed that if the
+charges3 of the Diﬀ( S2) generators were exactly equal to the charges of Virasoro
+generators given in [12] then the Cachazo-Strominger theorem was equivalent to the
+Ward identities associated to Diﬀ(S2)
+A key question left unanswered in [15] was whether the proposed charges could
+be derived from canonical methods. The diﬃculty stem from the fact that the action
+ofG does not preserve Ashtekar’s radiative phase space (see [21] for a recent review).
+More in detail, the radiative phase space Γ q depends an a given choice of sphere 2-
+metric qAB or ‘frame’ 4 at null inﬁnity. In contrast to the BMS group, G does not
+preserve Γq since the Diﬀ(S2) factor does not preserve the given frame qAB. Thus,
+the strategy that had successfully lead to BMS charges [17] could not be applied here.
+It is then natural to attempt to work in the space Γ ∼∪ {q}Γq oﬀ all radiative
+phase spaces on which G acts in a well deﬁned manner. However we were so far
+lacking a symplectic structure on Γ. It is here that we turn to covariant phase space
+methods [22, 23].
+It is well known [24] that the symplectic structure on Γ q corresponds to the GR
+covariant phase space symplectic structure Ω cov evaluated at null inﬁnity. Here we
+will show that Ω cov naturally deﬁnes a symplectic structure on (a suitable subspace
+in [7, 8]. See [9, 10, 11] for earlier work on soft graviton amplitudes.
+2Based on earlier papers, we refer to the subleading soft theorem as Cachazo-Strominger theo-
+rem.
+3Here ‘charge’ refers to what is called ‘ﬂux’ in the radiative phase space literature, i.e. it involves
+a three dimensional integral over null inﬁnity.
+4We are deviating from the standard radiative phase space terminology in which ‘frame’ denotes
+a conformal class of [( qab, na)] of metric and null normal [17].
+3
+of) Γ. By realizing Γ ˚q as a symplectic subspace of Γ, we will be able to derive the
+G-charges that were postulated in [15].
+The outline of the paper is as follows. Section 2 provides the background material
+for our discussion. In 2.1 we describe the class of spacetimes under consideration
+following closely reference [14]. In 2.2 we review the deﬁnition of generalized BMS
+groupG as a symmetry group of such spacetimes. In 2.3 we recall the deﬁnition
+of radiative phase space associated to an arbitrary ‘frame’ an introduce the total
+space Γ of all such radiative phase spaces. We also introduce certain subspaces with
+stronger fall-oﬀs in u that play a crucial role in the later discussion.
+Section 3 is the main part of the paper. 3.1 describes the general idea behind
+our computation. In 3.2 we show that the covariant phase space symplectic struc-
+ture induces a symplectic structure on (suitable subspace of) Γ. In section 3.3 we
+use this symplectic structure to derive the charges associated to the generators of
+Diﬀ(S2). This represents the main result of the paper. In 3.4 we summarize the
+analogue results at past null inﬁnity (our detailed calculations take place in future
+null inﬁnity). Finally in 3.5 we give a brief summary of the results presented in [15]
+on the equivalence between the Diﬀ(S2) Ward identities and the CS theorem.
+In section 4 we argue that subleading soft gravitons can be thought of as Gold-
+stone modes of a spontaneous symmetry breaking G→ BMS, in complete parallel
+to how leading soft gravitons are thought as Goldstone modes of a spontaneous
+symmetry breaking from supertranslations to translations [4].
+We end with the conclusions in section 5.
+2 Preliminaries
+2.1 Spacetimes under consideration
+As in [3, 4, 12] we are interested in spacetimes that are asymptotically ﬂat at both
+future and past null inﬁnity. For concreteness we focus on the description from
+future null inﬁnity; similar considerations apply to the description from past null
+inﬁnity. We follow closely Reference [14].
+In Bondi coordinates (u,r,x A) the 4-metric is parameterized as
+ds2 = (V/r )e2βdu2− 2e2βdudr +gAB(dxA−UAdu)(dxB−UBdu), (1)
+with β,V/r,U A and gAB satisfying the r→∞ fall-oﬀs
+β =r−2˚β +O(r−3), V/r = ˚V +r−12M +O(r−2), U A =r−2˚UA +O(r−3) (2)
+gAB =r2qAB +rCAB + 1
+4qABC2 +O(r−1). (3)
+Here C2 ≡ CABCAB (sphere indices are raised and lowered with qAB) and the
+coeﬃcients of the 1 /r expansion in (2) and (3) are functions of u and xA except
+for qAB which, in contrast to [14], we assume to be u-independent. There is an
+additional gauge ﬁxing condition
+det(gAB) =r4 det(qAB) (4)
+4
+which in particular implies that qABCAB = 0 and that the trace part of the O(1)
+term of gAB has the form given in (3). We take the trace-free O(1) part of gAB to
+be zero as in the original treatment by Sachs (see discussion following Eq. (4.38) in
+[14]).
+An important diﬀerence with the treatment of [14] is that we do not demandqAB
+to be proportional to the unit round metric ˚qAB. So far it can be any sphere metric.
+One can verify that Einstein equations still imply the relations given in Equations
+(4.42), (4.36) and (4.37) of [14]:
+˚V =−1
+2R, ˚β =− 1
+32C2, U A =−1
+2DBCAB, (5)
+whereR and DA are respectively the scalar curvature and covariant derivative of
+qAB. Finally, as it will become clear in the next subsection, the natural space of
+metrics to consider from the point of view of the generalized BMS group G is one
+where the area form of qAB is ﬁxed:√q =√˚q.
+To summarize, we will be interested in spacetime metrics of the form (1) parametrized
+by ‘free data’ (qAB,CAB) 5 satisfying
+∂uqAB = 0, √q =
+√
+˚q, q ABCAB = 0. (6)
+In section 2.3 we describe conditions on CAB as u→±∞ .
+2.2 Deﬁnition of G
+As described in [15], from a spacetime perspective G can be characterized as the
+group of diﬀeomorphisms generated by (non-trivial at null inﬁnity) vector ﬁelds
+ξa preserving the form of the metric (1) and such that they are asymptotically
+divergence-free (instead of asymptotically Killing as in the BMS case). Such vector
+ﬁelds are parametrized by a sphere function f(ˆx) (supertranslation) and sphere
+vector ﬁeld VA(ˆx) according to [14, 15]:
+ξa
+f =f∂u +..., ξ a
+V =VA∂A +uα∂u−rα∂r +... (7)
+where α = (DCVC)/2 and the dots indicate subleading term in the 1 /r expansion
+that depend on f and V and in the 4-metric ‘free data’. The relations deﬁning the
+algebra Lie(G) are obtained by computing the leading terms of the Lie brackets of
+the vector ﬁelds (7). One ﬁnds:
+[ξf1,ξf2] = 0, [ξV1,ξV2] =ξ[V1,V2], [ξV,ξf] =ξLVf−αf. (8)
+Thus as in the (extended) BMS case, Lie(G) has a semidirect sum algebra structure,
+where supertranslations form an abelian ideal Lie(ST) and Lie( G)/Lie(ST) is the
+algebra of sphere vector ﬁelds. Similarly to the BMS case, one can also characterize
+the groupG as diﬀeomorphisms of an abstract I preserving certain structure (see
+section 4.1 of [15]).
+5This actually is not the totality of free data since there are additional u-independent sphere
+functions that arise as integration ‘constants’ [14]. These however play no role in our analysis.
+5
+By computing the Lie derivative of the metric (1) along the vector ﬁelds (7) one
+obtains the following action of Lie(G) on the free data [14, 15]:
+δfqAB = 0, δ fCAB =f ˙CAB− 2(DADBf)TF (9)
+δVqAB =LVqAB− 2αqAB, δ VCAB =LVCAB−αCAB +αu ˙CAB− 2u(DADBα)TF,
+(10)
+where ‘TF’ denotes trace-free part with respect to qAB. In appendix A we verify
+this action indeed reproduces the algebra (8):
+[δf1,δf2] = 0, [δV1,δV2] =−δ[V1,V2], [δV,δf] =−δLVf−αf. (11)
+Hereδf andδV are understood as vector ﬁelds on the space of free data{(qAB,CAB)}
+satisfying (6) (strictly speaking −δf and−δV are the vector ﬁelds that provide the
+representation of the algebra (8)).
+Similar analysis on past null inﬁnity yields a generalized BMS group associated
+toI−. Thus the total group acting on the spacetimes we are interested in is G+×
+G−, (G+ is what we have been calling G). The proposed symmetry group of the
+gravitational S matrix is the ‘diagonal’ subgroup G0⊂G +×G− deﬁned in analogy
+to Strominger’s BMS 0 [15].
+2.3 Radiative phase spaces
+We ﬁrst recall the asymptotic conditions on CAB that ensure well-deﬁnedness of the
+radiative phase spaces [17]. The radiative phase space Γ q associated to a sphere
+metric qAB is given by tensors CAB onI satisfying:
+Γq := {CAB : qABCAB = 0, C AB(u, ˆx) =u(ρAB)TF +C±
+AB(ˆx) +O(u−ϵ)}, (12)
+where ϵ >0. Here ρAB is a ﬁxed tensor that depends on qAB; its deﬁnition is re-
+viewed in section 4.1. The radiative phase space traditionally used in the literature
+is the one associated to the unit round metric ˚qAB on which (ρAB)TF = 0.
+We deﬁne Γ as the union of all Γ q spaces with given area element√q =√˚q:
+Γ :=
+⋃
+√q=√˚q
+Γq. (13)
+The properties of ρAB in (12) ensure that the action (10) preserves the form of the
+linear inu term in (12), so that indeedG has a well deﬁned action on Γ. The precise
+mechanism by which this occurs is described in section 4.1.
+As in [15], due to infrared issues, the charges associated to (extended and) gen-
+eralized BMS group will be deﬁned on the following subspace of Γ ˚q:
+Γ˚q
+0 :={CAB∈ Γ˚q :CAB(u, ˆx) =O(u−1−ϵ) as u→±∞}. (14)
+6
+We similarly deﬁne a subspace Γ on which the covariant phase space symplectic
+structure will turn out to be well-deﬁned:
+Γ0 :={(qAB,CAB) : ∂uqAB = 0,√q =
+√
+˚q, qABCAB = 0, CAB(u, ˆx) =O(u−1−ϵ)}.
+(15)
+The spaces (14) and (15) will play an essential role in ensuring integrals in u are
+ﬁnite. We would like to emphasize however that this way of avoiding IR divergences
+is not entirely satisfactory: Γ 0 is not preserved by G and Γ ˚q
+0 is not preserved by
+supertranslations6. There may be better ways of dealing with these IR issues, for
+instance by introducing appropiate counterterms (see footnote 7). We hope to return
+to this point in future investigations.
+3 Main section
+3.1 General idea
+In this section we show that starting from the covariant phase space derived from
+the Einstein Hilbert action, one can obtain a phase space at null inﬁnity which is
+coordinatized not only by radiative degrees of freedom CAB but also by the 2-metric
+qAB on the conformal sphere. It turns out that the radiative phase space is a sym-
+plectic subspace of this larger space. This will allow us to compute the corresponding
+charge, which is well deﬁned on a (suitable) subspace of Γ ˚q, where ˚qAB is the unit
+round-metric on the 2 sphere. This is the main result of the paper, which combined
+with the result of [15] show that Ward identities associated to G are equivalent to
+the CS soft theorem.
+The main idea can be summarized as follows. Let
+Ωt,g(δ,δ′) :=
+∫
+Σt
+dSaωa
+g(δ,δ′), (16)
+be the standard covariant phase space symplectic form [22, 23] evaluated on a t :=
+r+u =constant slice Σt. If we characterize 4-metricsgab by the free data (qAB,CAB),
+the t→∞ limit of (16) could correspond to a symplectic product deﬁned at I+.
+However, one needs to impose conditions on the given ﬁelds ( qAB,CAB,δ,δ ′) in
+order for this limit to be well deﬁned. For instance, for variations δ,δ′ such that
+δqAB =δ′qAB = 0 and such that δCAB,δ′CAB satisﬁes appropriate fall-oﬀs in u, this
+procedures reproduces Ashtekar’s radiative phase space symplectic structure [24].
+In section 3.2 we show that if CAB and its variation are taken to be O(u−1−ϵ) and
+qAB is allowed to vary, then (16) also has a well deﬁned t→∞ limit. In other
+words, the covariant phase space symplectic form induces a well deﬁned symplectic
+form on the space Γ 0 deﬁned in Eq. (15).
+This is not quite yet what we need, since δV /∈T Γ0 due the linear in u term in
+(10). We now explain the computation we are really interested in. Given the phase
+6The analogue of the space Γ ˚q
+0 that was used in [15] actually allows for a u-independent term
+and hence is invariant under supertranslations. The stronger condition (14) is used here in order
+to allow for certain integration by parts in u
+7
+space Γ˚q
+0 and given a symmetry generator V ∈ Lie(G), we would like to compute
+its associated charge HV as a function on Γ ˚q
+0. Now in general, given a Hamiltonian
+Vector ﬁeld on any phase space, we ﬁrst compute the diﬀerential of the corresponding
+Hamiltonian function, which upon integration yields the corresponding Hamiltonian.
+This implies that in our case, given the action of δV what we would really like to
+compute is
+Ω(δV,δ ) =: δHV (17)
+where the variation δ must be along Γ ˚q
+0. As we will see, the symplectic product
+needed in (17) is still well deﬁned. In other words Eq. (16) has also a well deﬁned
+t→∞ limit when δ =δV and δ′∈T Γ˚q
+0.
+3.2 Symplectic structure on Γ0
+In this section we evaluate thet→∞ limit of (16) on Γ0. The computation simpliﬁes
+by working with the symplectic potential
+Θt,(q,C)(δ) :=
+∫
+Σt
+dSaθa, (18)
+θa := 1
+2
+√g
+(
+gbcδΓa
+bc−gabδΓc
+cb
+)
+. (19)
+Recall t = r +u so that the relevant component will be θt = θr +θu. The limit
+is taken t→∞ with u constant. The variable r will be understood as given by
+r =t−u.
+Before proceeding with the details, we summarize certain salient aspects of the
+computation which critically use the fall-oﬀ conditions on CAB.
+(a) We will see that in the limit t→∞ , conditions CAB = O(u−1−ϵ) and δ∈ T Γ0
+will ensure ﬁniteness of the integrals as well as cancellation of various boundary
+terms.7 We will discard total variation terms, since they do not contribute to the
+symplectic form.
+(b) We will ﬁnd that θt has an 1/r expansion of the form:
+θt =rθt
+1 +θt
+0 +O(r−1), (20)
+which gives the following 1/t expansion:
+θt =tθt
+1 + (θt
+0−uθt
+1) +O(t−1). (21)
+The would-be divergent term tθt
+1 will turn out to integrate to zero on the space of
+C’s we are restricting attention to.
+We now proceed with the details of the computation.
+7For slower fall-oﬀs of the type which deﬁne Γ (Eqns. (12), (13)) there may be a possibility of
+obtaining a ﬁnite symplectic structure by supplementing the action with counterterms at i0, i±.
+We have not pursued this direction here as it is not needed for our analysis.
+8
+The form of the metric (1) implies the non-zero term appearing in θt are:
+2θt =√qe2βr2(
+2gurδΓr
+ur +grrδΓr
+ur + 2gArδΓr
+Ar +gAB(δΓr
+AB +δΓu
+AB)
+−gur(δΓc
+cu +δΓc
+cr)−gArδΓc
+cA
+)
+. (22)
+There are 6 terms in (22), lets call them (1)...(6). Setting to zero terms that are
+O(r−1) we get:
+(1) =−2√qδM, (2) = (3) = 0, (5) = 2√qδ ˙˚β, (6) = ˚UA∂Aδ(√q) (23)
+For the space we are interested where √q is ﬁxed, the term (6) vanishes and the
+terms (1) and (5) are total variations which do not contribute to the symplectic
+structure. The only nonzero term is the fourth one in (22) so we rewrite θt as:
+θt = 1
+2
+√qe2βr2gAB(δΓr
+AB +δΓu
+AB). (24)
+The relevant Christoﬀel symbols are (see [14]):
+Γr
+AB = D(A˚UB) + r
+2
+˙CAB + 1
+8qAB∂u(C2) + ˚Vrq AB + 1
+2
+˚VCAB + 2MqAB +O(r−1) (25)
+Γu
+AB = −1
+2gur∂rgAB =rqAB + 1
+2CAB +O(r−1). (26)
+We now evaluate the ﬁrst term in (24):
+r2e2βgABδΓr
+AB =qABδΓr
+AB−r−1CABδΓr
+AB +O(r−1). (27)
+In evaluating (27) we will discard terms of the form qABδ(fqAB) for any quantity f
+since they give a total variation by the identity
+√qqABδ(fqAB) =δ(√qf ) (28)
+that follows from qABqAB = 2 and 2δ√q =√qqABδqAB. Substituting (25) in (27)
+we get
+r2e2βgABδΓr
+AB =qABδ(DA˚UB)−1
+2CABδ ˙CAB−1
+2
+˚VC ABδqAB+r
+2qABδ ˙CAB+δ()+O(r−1)
+(29)
+whereδ() indicates a total variation term. When we substitute r =t−u, the linear
+in r term in (29) gives a potential diverging linear in t term and a ﬁnite term
+− u
+2qABδ ˙CAB = 1
+2CABδqAB−∂u(u
+2δCAB)qAB +δ() (30)
+which we rewrote up to total derivative inu and a total variation. Now, the condition
+CAB =O(u−1−ϵ) implies the total derivative in (30) as well as the potential diverging
+term t
+2qABδ ˙CAB give a vanishing contribution upon integration.
+The second term in (24) gives:
+r2e2βgABδΓu
+AB = qABδΓu
+AB−r−1CABδΓu
+AB +O(r−1) (31)
+= −1
+2CABδqAB +δ() +O(r−1) (32)
+9
+Note that this term cancels the term in (30). Collecting all terms and writing for
+later convenience
+qABδ(DA˚UB) =DA˚UBδqAB +δ() (33)
+we obtain the following expressions for the symplectic potential Θ(δ) := limt→∞ Θt(δ)
+atI+:
+Θ(δ) = 1
+4
+∫
+I
+du√q
+(
+−CABδ ˙CAB +
+[
+2DA˚UB− ˚VC AB]
+δqAB
+)
+. (34)
+The corresponding symplectic form at I+ is then:
+Ω(δ,δ′) = 1
+4
+∫
+I
+du√q
+(
+δCABδ′ ˙CAB−δ(2DA˚UB− ˚VC AB)δ′qAB
+)
+−δ↔δ′. (35)
+We have thus obtained a symplectic form on the space Γ 0 deﬁned in Eq. (15).
+Clearly, the radiative phase space Γ ˚q
+0 is symplectic subspace of Γ 0.
+We conclude with the observation that (35) can actually be used for the evalua-
+tion of the symplectic product between δV∈T Γ and δ0∈T Γ˚q
+0.
+By introducing a second variation in all steps above, one can verify that:
+lim
+t→∞
+Ωt(δV,δ 0) = Ω(δV,δ 0), (36)
+with Ω given in (35). Indeed, there are only two potentially problematic terms in
+the computation that are described after Eq. (30). Their contribution to the density
+ωt(δV,δ 0) is:
+− t
+2δVqABδ0 ˙CAB +∂u(u
+2δ0CAB)δVqAB, (37)
+where we used that δ0qAB = 0. The condition δ0CAB =O(u−1−ϵ) implies that both
+terms in (37) integrate to zero. In summary, the symplectic product betweenδV and
+δ0∈T Γ˚q
+0 is well deﬁned and given by evaluation on the form (35). This evaluation
+is used in the next section to obtain the charge HV .
+3.3 Diﬀ(S2) charges
+We now apply the above results to ﬁnd the charge HV satisfying
+δHV = Ω(δV,δ ), (38)
+forδV given in Eq. (10) and for δ∈T Γ˚q
+0, i.e. δCAB =O(u−1−ϵ) andδqAB = 0. Since
+we already have a candidate for HV , namely the one postulated in [15], we will just
+verify that such HV indeed satisﬁes (38).
+HV is a sum of a ‘hard’ quadratic in CAB term and a ‘soft’ linear in CAB term
+[15]:
+HV =Hhard
+V +Hsoft
+V , (39)
+Hhard
+V := 1
+4
+∫
+du√q ˙CAB(LVCAB−αCAB +αu ˙CAB) (40)
+Hsoft
+V := 1
+2
+∫
+du√qC ABsAB, (41)
+10
+withsAB a symmetric trace-free tensor such that its components in (z, ¯z) coordinates
+are given by:
+szz :=D3
+zVz, (42)
+and corresponding complex conjugated expression (the trace-free condition sets
+sz¯z = 0). We now verify that HV satisﬁes (38).
+For the RHS of (38) we have
+Ω(δV,δ ) = 1
+4
+∫
+du√q
+(
+δVCABδ ˙CAB−δCAB∂u(δVCAB) + (2DAδ˚UB +δCAB)δVqAB
+)
+,
+(43)
+where we used that δqAB = 0 and ˚V =−R/2 = −1 since we are at qAB = ˚qAB.
+Using (10) and the corresponding transformations:
+δVCAB =LVCAB + 4αCAB +αu ˙CAB− 2u(DADBα)TF (44)
+δVqAB =LVqAB + 2αqAB, (45)
+one veriﬁes that the ‘hard’ terms in (43) combine to give δH hard
+V . By integration by
+parts one can bring all ‘soft’ terms in a form that is proportional to δCAB. The end
+result is:
+Ω(δV,δ ) =δH hard
+V + 1
+2
+∫
+du√qδC ABs′
+AB (46)
+where
+s′
+AB := (2DADBα− 1
+2D(ADMδVqB)M +D(AVB))TF. (47)
+We ﬁnally show that s′
+AB =sAB from which (38) follows.
+From (10) and using the identity DMDBXM =XB + 2DBα one ﬁnds
+DMδVqBM = ∆VB +VB. (48)
+Using this we can rewrite (47) as
+s′
+AB = (D(As′
+B))TF (49)
+with
+s′
+A :=DADMVM− 1
+2DMDMVA + 1
+2VA. (50)
+Finally, writing (50) in (z, ¯z) coordinates and using ˚qz¯z[D¯z,Dz]Vz =Vz one ﬁnds
+s′
+z =D2
+zVz. (51)
+Going back to (49) we conclude that s′
+AB =sAB as desired.
+Comment: In order to highlight the role played by the ‘extra’ terms in the symplectic
+structure (35), it is interesting to repeat the computation by writing the symplec-
+tic structure as Ω(δ,δ′) = 1
+4
+∫(
+δCABδ′ ˙CAB +δ(2aD (A˚UB) +bC AB)δ′qAB
+)
+−δ↔δ′
+and setting the correct values a =−1,b = ˚V =−1 at the end of the computation
+(for the δ considered here δ˚V = 0 and so ˚V can be treated as a constant). Doing so
+one obtains: s′
+z =D2
+zVz + (1 +a)DzD¯zVz + (a−b)Vz.
+11
+3.4 Past null inﬁnity
+A similar analysis to the one given in the previous two subsections goes through for
+past null inﬁnity. The form of the metric in that case can be obtained by doing
+the substitution v =−u in (1). The relevant component of the symplectic potential
+density is now θt =−(θr−θv). Thus, the symplectic structure at past null inﬁnity
+can be obtained by the replacement u→−v (up to an overall sign). The result is:
+Ω−(δ,δ′) = 1
+4
+∫
+I
+dv√q
+(
+δC−ABδ′ ˙C−
+AB +δ(2DA˚U−B− ˚V−C−AB)δ′q−
+AB
+)
+−δ↔δ′.
+(52)
+On the other hand, the transformation rule for C−
+AB is the same as for C+
+AB except
+that the soft factor comes with opposite sign:
+δVC−
+AB =LVC−
+AB−αC−
+AB +αv ˙C−
+AB + 2v(DADBα)TF. (53)
+The corresponding charge H−
+V has thus the same form as (39), (40), (41), with an
+opposite sign in the soft term:
+s−
+zz =−D3
+zVz. (54)
+3.5 Diﬀ(S2) Ward identities and CS soft theorem
+We sketch here how the new symmetry relates to CS soft theorem. We refer to
+[12, 15] for further details.
+Given a vector ﬁeld VA and corresponding charges H±
+V at future and past null
+inﬁnity, the proposed Ward identities arise from assuming the S matrix satisﬁes:
+H+
+VS =SH−
+V, (55)
+or equivalently:
+Hsoft+
+V S−SH soft−
+V =−Hhard+
+V S +SH hard−
+V . (56)
+When one takes the matrix element of (56) between a n+ particle state ⟨out|
+and a n− particle state|in⟩, the RHS of (56) becomes an operator on the scattering
+amplitude⟨out|S|in⟩ that consists of a sum of diﬀerential operators acting on the
+individual particle labels (momentum and helicity). On the other hand, the LHS of
+(56) can be realized as creation operators of gravitons with vanishing energy, where
+the helicity and smeared momentum direction is determined by VA.
+The choice
+VA(z, ¯z) =KA
+(zs,¯zs)(z, ¯z) := (¯z− ¯zs)−1(z−zs)2∂z (57)
+gives, in the ﬁrst term of the LHS of (56), the insertion of a negative helicity outgoing
+soft graviton with momentum pointing in the direction determined by ( zs, ¯zs). By
+crossing symmetry the second term in the LHS of (56) can be shown to be equal
+to the ﬁrst one. Now, the diﬀerential operators arising on the RHS of (56) for the
+choice (57) reproduce those of the CS theorem. In short, for VA =KA
+(zs,¯zs), Eq. (56)
+reproduces CS soft theorem for a negative helicity graviton (the positive helicity
+case is obtained by choosing the complex conjugated vector, VA = ¯KA
+(zs,¯zs)).
+12
+Conversely, the Ward identities associated to the vector ﬁelds (57) and its com-
+plex conjugate (which we just argued are equivalent to CS theorem), can be shown
+to imply the Ward identity (56) for any vector ﬁeld VA. Essentially the vectors
+KA
+(zs,¯zs)(z, ¯z) have the role of elementary kernels, and by appropriate smearing in the
+(zs, ¯zs) variables one can reproduce any desired vector ﬁeld.
+4 Goldstone modes of G
+In the case of supertranslation symmetry, it was argued in [4] that as supertransla-
+tions map an asymptotic conﬁguration CAB with zero news NAB = 0 to a distinct
+conﬁguration with zero news (by creating a soft graviton), the choice of a particu-
+lar vacuum implies a spontaneous breaking of supertranslation symmetry with soft
+gravitons playing the role of Goldstone modes.
+In this section we argue that one can interpret the subleading soft gravitons in a
+similar manner and that they can be thought of as Goldstone modes associated to
+spontaneous breaking of G to BMS. At ﬁrst sight this statement looks obviously
+wrong as for a given choice of the sphere metric, such subleading changes in CAB
+are not gapless. This can be seen as follows. Given ( CAB,qCD) ∈ Γ, a vector ﬁeld
+V ∈ Lie(G) maps it to
+δVqAB =LVqAB− 2αqAB, δ VCAB =LVCAB−αCAB +αu ˙CAB− 2u(DADBα)TF
+(58)
+Whence it naively appears as if a conﬁgurationC(0) which has zero news in say Bondi
+frame (where the associated qAB = ˚qAB) goes to a new conﬁguration C(0) +δVC(0)
+whose news is given by δNAB = 2( DADBα)TF. However the above assertion is
+wrong as it relies upon the deﬁnition of news given by
+NAB(u, ˆx) = −∂uCAB(u, ˆx).
+This deﬁnition of news is only valid when the metric on S2 is the unit metric ˚qAB.
+In a generic case there is a slight technicality regarding the news tensor.
+Given an arbitrary sphere metric qAB there exists a unique symmetric tensor
+ρAB[q] which is implicitly deﬁned via [25]:
+ρABqAB =R[q], D [AρB]C = 0 . (59)
+It can be split into a trace-free part and the trace part as
+ρAB = ρ(0)
+AB + 1
+2R[q]qAB, (60)
+and as shown in [25] ρ(0)[˚q] = 0.
+The news tensor associated to a conﬁguration CAB ∈ Γq is then deﬁned as (see
+for instance Eq. (23) of [26])
+NAB(u, ˆx) := −∂uCAB(u, ˆx) −ρ(0)
+AB(ˆx). (61)
+13
+We thus see that as V ∈ Lie(G) change CAB as well as qAB, the corresponding
+change in news is given by
+δVNAB(u, ˆx) = −∂uδVCAB(u, ˆx) − δVρ(0)
+AB(ˆx). (62)
+In section 4.1 we show thatδVρ(0)
+AB(ˆx) is precisely such that a zero news conﬁguration
+is mapped into a distinct zero news conﬁguration. Whence the corresponding change
+in the news vanishes. That is any element of V ∈ Lie(G) maps a conﬁguration
+with zero news to a conﬁguration with zero news because the deﬁnition of the news
+before and after the action ofV refer to diﬀerent frames. Hence choosing a qAB (and
+working with Γq) implies breaking the G symmetry spontaneously to BMS and the
+subleading soft gravitons can be thought of as goldstone modes associated to this
+symmetry breaking as they map one family of vacua (associated to a given qAB) to
+a distinct family of vacua associated to a diﬀerent qAB.
+4.1 Evaluating δVNAB
+From (10) and the deﬁnition of the news tensor (61) we have
+δVNAB = −∂uδVCAB−δVρ(0)
+AB (63)
+= −LV ˙CAB−αu ¨CAB + 2(DADBα)TF−δVρ(0)
+AB. (64)
+We now evaluate the last term in (64). From δVqAB =LVqAB− 2αqAB we have that
+δVρAB is a sum of a Lie derivative term plus a scale transformation term. Since the
+behaviour of ρAB under scale transformation is known [25] the eﬀect of the second
+term can be obtained explicitly. The total change is found to be:
+δVρAB =LVρAB + 2DADBα, (65)
+which in turn implies,
+δVρ(0)
+AB =LVρ(0)
+AB + 2(DADBα)TF. (66)
+When substituting (66) in (64) the ‘soft’ factors cancel out and one obtains:
+δVNAB = −LV ˙CAB−αu ¨CAB−LVρ(0)
+AB (67)
+= LVNAB +αu ˙NAB, (68)
+where in the second line we used the deﬁnition of the news tensor (61) and the fact
+that− ¨CAB = ˙NAB since ∂uρ(0)
+AB = 0.
+Thus the news tensor transforms homogeneously. In particular if NAB = 0 then
+δVNAB = 0.
+5 Conclusions
+Analyzing the symmetry structure of the quantum gravity S-matrix is of paramount
+importance. It has been well known since the 60’s that (at least at the semiclas-
+sical level) this symmetry group contains an inﬁnite dimensional group known as
+14
+the BMS group. The relationship of BMS symmetry to infrared issues in Quan-
+tum Gravity (for instance the existence of various superselection sectors) has been
+rigorously studied by Ashtekar et. al. in the beautiful framework of Asymptotic
+Quantization [16, 17, 18, 19, 20]. This relationship (of BMS group to infrared issues
+in quantum gravity in asymptotically ﬂat spacetimes) got a new lease due to seminal
+work of Strominger et. al. [3, 4, 12]. One of the outcomes of this recent study is the
+universality concerning subleading corrections to soft graviton amplitudes, referred
+to in this paper as Cachazo-Strominger (CS) soft theorem [6].
+A natural question ﬁrst posed in [12] was if the CS soft theorem could be understood
+as Ward identities associated to certain symmetries of the semi-classical S matrix.
+It was shown in [12] that the Ward identities associated to Virasoro symmetries
+contained in the so-called extended BMS group can be derived from CS soft the-
+orem. However, the question of how to go in the reverse direction and derive the
+CS soft theorem from the Virasoro Ward Identities remained unanswered. In [15]
+we argued in favor of a diﬀerent possibility: If a diﬀerent generalization of the BMS
+group (referred to unimaginatively as generalized BMS) G was a symmetry of the
+gravitational S matrix, then the Ward identities associated to Diﬀ(S2) contained in
+G were shown to be equivalent to CS soft theorem. Our argument however relied on
+an ad-hoc assumption that the charges associated to such symmetries had the same
+form as the charges associated to Virasoro symmetries, which (modulo certain IR
+issues) could be derived from ﬁrst principles. The main block for computing such
+charges was lack of a suitable phase space on whichG acted in a well-deﬁned manner
+and whose corresponding charges were ﬁnite.
+We have ﬁlled these gaps in the current paper. Starting from the covariant phase
+space associated to Einstein Hilbert action, we derive a phase space at null inﬁnity
+which is coordinatized by the well known radiative degrees of freedom as well as the
+space of metrics on the conformal sphere. The symplectic structure on this phase
+space can be used to compute the charges associated to Diﬀ( S2) which is, rather
+remarkably well-deﬁned on an appropriate subspace of the radiative phase space.
+Surprisingly these charges turn out to be exactly equal to the charges corresponding
+to the Virasoro symmetries computed in [12]. This proves the key assumption that
+we made in [15] and hence completes the proof of the equivalence between Ward
+identities associated to the generators of Diﬀ( S2) and CS soft theorem.
+One of the nice corollaries of our analysis is the representation ofG on Γ. However
+the symplectic structure arising from the Einstein Hilbert action is only well-deﬁned
+in the stronger fall-oﬀs subspace Γ 0⊂ Γ which unfortunately is not preserved under
+the action ofG. We believe however that the inclusion of appropriate counter-terms
+to the action at i0,i± could yield a well-deﬁned symplectic structure on Γ. If this
+were to be the case, we could hope for the action of G to be symplectic on Γ. This
+would solve another issue which arose in [15], namely that the charges on radiative
+phase space which correspond to subleading soft factors do not close to form an
+algebra. We hope to come back to this point in the near future. We ﬁnally wish to
+emphasize that the physical phase space of the theory really is the radiative phase
+space (or an appropriate subspace thereof) and the bigger phase space Γ is an “aux-
+iliary” arena which however is an indispensable tool to implement G in classical as
+15
+well as quantum theory.
+Acknowledgements
+We are indebted to Abhay Ashtekar for crucial discussions in the initial stages of this
+work and for his constant encouragement and interest. We thank Vyacheslav Lysov,
+Michael Reisenberger and Andrew Strominger for their comments on the manuscript.
+MC is supported by Anii and Pedeciba. AL is supported by Ramanujan Fellowship
+of the Department of Science and Technology.
+A Closure of generalized BMS action
+The ﬁrst relation (11) is easily veriﬁed. We now show the second and third relations.
+Let V3 := [V1,V 2]. To shorten notation we will omit ‘ V ’ labels and use only
+subscripts 1, 2, 3. Thus the second equation in (11) reads:
+[δ2,δ 1] =δ3, (69)
+and Equations (10) for V1 become:
+δ1CAB = L1CAB−α1CAB +α1u ˙CAB− 2u(DADBα1)TF (70)
+δ1qAB = L1qAB− 2α1qAB, (71)
+and similarly forV2 andV3. For the computation it is important to keep in mind that
+the α’s are in fact independent of the 2-metric qAB due to the condition √q =√˚q.
+This can be seen explicitly by deﬁning α purely in terms of√q according to:
+LV
+√q = 2α√q. (72)
+We ﬁrst verify (69) along the δqAB direction:
+[δ2,δ 1]qAB = δ2(L1qAB− 2α1qAB)− 1↔ 2 (73)
+= L1δ2qAB− 2δ2α1qAB− 2α1δ2qAB)− 1↔ 2 (74)
+= L3qAB− 2(L1α2−L 2α1)qAB (75)
+= δ3qAB. (76)
+Here we used the fact that δ2α1 = 0 since α1 is independent of qAB as mentioned
+above Eq. (72). In the last equality we used
+α3 =L1α2−L 2α1, (77)
+which directly follows from the deﬁnition of α given in (72):
+2α3
+√q =L3
+√q = (L1L2−L2L1)√q = 2L1(α2
+√q)−2L2(α1
+√q) = 2(L1α2−L2α1)√q.
+(78)
+For theδCAB direction, one ﬁnds
+[δ2,δ 1]CAB =L1δ2CAB−α1δ2CAB +α1u∂uδ2CAB− 2uδ2(DADBα1)TF− 1↔ 2
+=L3CAB−α3CAB +uα3 ˙CAB− 2uL1(DADBα2)TF− 2uδ2(DADBα1)TF−
+1↔ 2.
+(79)
+16
+where we used similar simpliﬁcations as when getting (76) above. The ‘hard’
+term in (79) corresponds to the hard term of δ3CAB. We now show that the ‘soft’
+term also matches. This amounts to show the equality:
+δ2(DADBα1)TF−L 2(DADBα1)TF− 1↔ 2 = (DADBα3)TF. (80)
+The variationδ2 in (80) only involve variations alongδqAB. It is convenient to write
+them as an explicit sum of ‘Lie derivative’ and ‘scale’ terms:
+δ2qAB =δL
+2qAB +δS
+2qAB; δL
+2qAB :=L2qAB, δ S
+2qAB :=−2α2qAB. (81)
+In this way, the ﬁrst term in (80) takes the form:
+δ2(DADBα1)TF =δL
+21AB +δS
+21AB (82)
+where:
+δL
+21AB := δL
+2 (DA)∂Bα1− 1
+2δL
+2 (∆)α1qAB− 1
+2∆α1δL
+2qAB (83)
+δS
+21AB := δS
+2 (DA)∂Bα1− 1
+2δS
+2 (∆)α1qAB− 1
+2∆α1δS
+2qAB (84)
+For theδS term one obtains:
+δS
+21AB = 2D(Aα1DB)α2−qABDCα1DCα2. (85)
+Since it is symmetric under 1 ↔ 2 it does not contribute to the LHS of (80). For
+the δL term, we notice that from the deﬁnition of δL
+2 one has:
+δL
+2DA = [L2,DA], δ L
+2 ∆ = [L2, ∆], (86)
+from which it follows that (83) can be written as:
+δL
+21AB :=L2(DADBα1)TF−DA∂B(L2α1) + 1
+2∆(L2α1)qAB. (87)
+The ﬁrst term in (87) cancels the Lie derivative term in (80). Including the 1 ↔ 2
+term one recovers Equation (80) with α3 given in (77). This concludes the proof of
+Eq. (69).
+We ﬁnally show the last relation in (11):
+[δV,δf] =−δLVf−αf. (88)
+Along δqAB direction this relation trivializes to 0 = 0. Evaluating the commutator
+along δCAB one ﬁnds
+[δf,δV ]CAB = (LVf−αf) ˙CAB
++ 2α(DADBf)TF + 2f(DADBα)TF + 2δV (DADBf)TF− 2LV (DADBf)TF. (89)
+The ‘hard’ term in (89) matches the hard term of δLVf−αf. That the ‘soft’ term
+(displayed in the second line) also matches can be shown along similar lines as for
+17
+the soft term of [ δV1,δV2] computed above. Writing δVqAB = δL
+VqAB +δS
+VqAB as in
+Eq. (81) and using relations as those given in Eqns. (85) and (87) and ﬁnds that
+the last two terms in (89) combine to
+2δV (DADBf)TF−2LV (DADBf)TF =−2(DADBLVf)TF+4D(AαDB)f−2qABDCαDCf.
+(90)
+The ﬁrst term in the RHS of (90) is the soft factor of δLVf. The remaining terms
+combine to give the soft factor of δ−αf due to the identity:
+(DADB(αf))TF =α(DADBf)TF +f(DADBα)TF + (2D(AαDB)f)TF. (91)
+References
+[1] H. Bondi, M. G. J. van der Burg and A. W. K. Metzner, “Gravitational waves
+in general relativity. 7. Waves from axisymmetric isolated systems,” Proc. Roy.
+Soc. Lond. A 269, 21 (1962).
+[2] R. K. Sachs, “Gravitational waves in general relativity. 8. Waves in asymptoti-
+cally ﬂat space-times,” Proc. Roy. Soc. Lond. A 270, 103 (1962).
+[3] A. Strominger, “On BMS Invariance of Gravitational Scattering,” JHEP 1407,
+152 (2014) [arXiv:1312.2229 [hep-th]]
+[4] T. He, V. Lysov, P. Mitra and A. Strominger, “BMS supertranslations and
+Weinberg’s soft graviton theorem,” arXiv:1401.7026 [hep-th]
+[5] S. Weinberg, “Infrared photons and gravitons,” Phys. Rev. 140, B516 (1965)
+[6] F. Cachazo and A. Strominger, “Evidence for a New Soft Graviton Theorem,”
+arXiv:1404.4091 [hep-th].
+[7] J. Broedel, M. de Leeuw, J. Plefka and M. Rosso, “Constraining subleading soft
+gluon and graviton theorems,” Phys. Rev. D90, 065024 (2014) [arXiv:1406.6574
+[hep-th]]
+[8] Z. Bern, S. Davies, P. Di Vecchia and J. Nohle, “Low-Energy Behavior of Gluons
+and Gravitons from Gauge Invariance,” Phys. Rev. D 90, no. 8, 084035 (2014)
+[arXiv:1406.6987 [hep-th]]
+[9] D. J. Gross and R. Jackiw, “Low-Energy Theorem for Graviton Scattering,”
+Phys. Rev. 166, 1287 (1968)
+[10] S. G. Naculich and H. J. Schnitzer, “Eikonal methods applied to gravitational
+scattering amplitudes,” JHEP 1105, 087 (2011) [arXiv:1101.1524 [hep-th]].
+[11] C. D. White, “Factorization Properties of Soft Graviton Amplitudes,” JHEP
+1105, 060 (2011) [arXiv:1103.2981 [hep-th]]
+[12] D. Kapec, V. Lysov, S. Pasterski and A. Strominger, “Semiclassical Vira-
+soro symmetry of the quantum gravity S-matrix,” JHEP 1408, 058 (2014)
+[arXiv:1406.3312 [hep-th]].
+18
+[13] G. Barnich and C. Troessaert, “Symmetries of asymptotically ﬂat 4 dimen-
+sional spacetimes at null inﬁnity revisited,” Phys. Rev. Lett.105, 111103 (2010)
+[arXiv:0909.2617 [gr-qc]
+[14] G. Barnich and C. Troessaert, “Aspects of the BMS/CFT correspondence,”
+JHEP 1005, 062 (2010) [arXiv:1001.1541 [hep-th]]
+[15] M. Campiglia and A. Laddha, “Asymptotic symmetries and subleading soft
+graviton theorem,” Phys. Rev. D 90, no. 12, 124028 (2014) [arXiv:1408.2228
+[hep-th]]
+[16] A. Ashtekar, “Asymptotic Quantization of the Gravitational Field,” Phys. Rev.
+Lett. 46, 573 (1981)
+[17] A. Ashtekar and M. Streubel, “Symplectic Geometry of Radiative Modes and
+Conserved Quantities at Null Inﬁnity,” Proc. Roy. Soc. Lond. A376, 585 (1981)
+[18] A. Ashtekar, “Radiative Degrees of Freedom of the Gravitational Field in Exact
+General Relativity,” J. Math. Phys. 22, 2885 (1981)
+[19] A. Ashtekar, “Quantization of the Radiative Modes of the Gravitational Field”,
+In: Quantum Gravity 2; Edited by C. J. Isham, R. Penrose, and D. W. Sciama
+(Oxford University Press, Oxford, 1981).
+[20] A. Ashtekar, “Asymptotic Quantization”, Naples, Italy: Bibliopolis (1987)
+[21] A. Ashtekar, “Geometry and Physics of Null Inﬁnity,” arXiv:1409.1800 [gr-qc]
+[22] Ashtekar, A., L. Bombelli, and O. Reula. ”The covariant phase space of asymp-
+totically ﬂat gravitational ﬁelds”, in Analysis, Geometry and Mechanics: 200
+Years After Lagrange, ed. M Francaviglia, North-Holland (1991).
+[23] J. Lee and R. M. Wald, “Local symmetries and constraints,” J. Math. Phys.
+31, 725 (1990)
+[24] A. Ashtekar and A. Magnon-Ashtekar “On the symplectic structure of general
+relativity” Commun. Math. Phys. 86, 55 (1982).
+[25] R. Geroch, “Asymptotic structure of space-time,” in Asymptotic structure of
+space-time, ed. L. Witten, Plenum, New York (1976)
+[26] C. Kozameh and E. T. Newman, ”A note on asymptotically ﬂat spaces. II.” ,
+General Relativity and Gravitation 15.5 (1983): 475-487.
+19

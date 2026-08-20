@@ -1,0 +1,2266 @@
+Sub-subleading Soft Graviton Theorem
+from Asymptotic Einstein’s Equations
+Laurent Freidel1, Daniele Pranzetti 1,2 and Ana-Maria Raclariu 1
+1Perimeter Institute for Theoretical Physics, 31 Caroline Street North, Waterloo, Ontario,
+Canada N2L 2Y5
+2 Universit` a degli Studi di Udine, via Palladio 8, I-33100 Udine, Italy
+Abstract
+We identify in Einstein gravity an asymptotic spin-2 charge aspect whose conservation
+equation gives rise, after quantization, to the sub-subleading soft theorem. Our treatment
+reveals that this spin-2 charge generates a non-local spacetime symmetry represented at
+null inﬁnity by pseudo-vector ﬁelds. Moreover, we demonstrate that the non-linear nature
+of Einstein’s equations is reﬂected in the Ward identity through collinear corrections to
+the sub-subleading soft theorem. Our analysis also provides a uniﬁed treatment of the
+universal soft theorems as conservation equations for the spin-0,-1,-2 canonical generators,
+while highlighting the important role played by the dual mass.
+arXiv:2111.15607v2  [hep-th]  6 Jan 2022
+Contents
+1 Introduction 1
+2 Asymptotic equations of motion 3
+2.1 Asymptotic conditions and integrated charges . . . . . . . . . . . . . . . . . . . . 8
+2.2 Brackets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3 Charge action 11
+3.1 Leading action . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2 Subleading action . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.3 Sub-subleading action . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4 From conservation laws to soft theorems 17
+4.1 Leading soft theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2 Subleading soft theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.3 Sub-subleading soft theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+5 Collinear contribution to the soft theorem 22
+6 Conclusions 23
+A Conformal derivative 24
+A.1 Commutators and curvature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+A.2 Spin connection and variations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+B Charge commutators 28
+B.1 Leading charges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+B.2 Subleading charges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+B.3 Sub-subleading charges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+C Conventions 30
+D Collinear terms 31
+1 Introduction
+It has been long known that the asymptotic symmetry group of gravity in four-dimensional
+asymptotically ﬂat spacetimes (AFS) is inﬁnite dimensional [1–3]. This enhancement remained
+largely overlooked until recently, when an unforeseen connection between the symmetries of null
+inﬁnity and properties of scattering amplitudes in the infrared was uncovered. A prime example
+is the equivalence between Weinberg’s soft graviton theorem [4], the Ward identities associated
+with BMS supertranslation symmetry [5, 6] and the gravitational memory eﬀect [7–11]. The
+latter was on the one hand identiﬁed with the spacetime Fourier version of the Weinberg soft
+pole, on the other hand related to transitions between the inﬁnity of BMS vacua induced by
+gravitational ﬂux [12], rendering supertranslations physical.
+1
+Building on these ideas, the proposed extension of BMS to allow for local Lorentz trans-
+formations, or superrotations [13–16], led to the discovery of a new, subleading soft graviton
+theorem [17,18]. A derivation from the Ward identity associated with a Virasoro subgroup of the
+extended BMS group [19], as well as the identiﬁcation of the corresponding observable, a new
+gravitational memory [20], shortly followed. An equivalence between the subleading soft theo-
+rem and conservation laws was established by a further extension of the BMS group to include
+arbitrary smooth diﬀeomorphisms of the conformal sphere [21, 22]. Moreover, a certain mode
+of the subleading soft graviton was shown to behave like the stress tensor of a two-dimensional
+conformal ﬁeld theory [23,24], providing evidence for a dual description of gravity in 4D AFS in
+terms of a theory living on the celestial sphere [25–27].
+A key lesson drawn is that the symmetries of gravity in four-dimensional asymptotically ﬂat
+spacetimes are much richer than anticipated. The overarching goal of identifying the underlying
+symmetry structures and their implications has been approached with diﬀerent methods. On
+the one hand, a reconsideration of the set of allowed boundary conditions and covariant phase
+space methods at null inﬁnity [28,29] led to further extensions of the asymptotic symmetry group
+and their canonical analysis [30–33]. On the other hand, the reformulation of the gravitational
+scattering problem in a basis of asymptotic boost eigenstates [26, 27] revealed the existence of
+an inﬁnite tower of soft theorems [34, 35], which was remarkably shown to be governed by a
+higher-spin symmetry [36]. This symmetry was found to be perturbatively exact in self-dual
+gravity [37] and, in the same context, explained via twistor methods in particular Penrose’s non-
+linear graviton construction [38, 39]. At the classical level, the inﬁnite tower of symmetries is a
+generic feature of any theory of gravity in 4D AFS, so it is natural to try to trace back its origin
+in the physically relevant case of Einstein gravity.
+In this paper, we take a ﬁrst step in this direction by establishing an equivalence between
+the sub-subleading soft graviton theorem [17, 40–43] and the conservation law associated with
+a new class of asymptotic symmetries. Evidence for such a connection was previously provided
+in [44,45], but the divergent behavior of the therein proposed vector ﬁelds at inﬁnity and the lack
+of a well-deﬁned symmetry action on the gravitational phase space precluded an identiﬁcation of
+asymptotic symmetries. An interesting alternative approach was pursued for linearized gravity
+in [46], where the sub-subleading soft graviton theorem was related to the 1 /r2 contribution in a
+large-r expansion of the supertranslation charge.
+At the leading and subleading orders, the equivalence relies on a matching condition obeyed
+by the Bondi mass and angular momentum aspects, as well as their time evolution governed by
+constraint equations at leading order in a large- r expansion [6, 19, 21]. Our strategy is similar
+in spirit and builds on recent work [47] where symmetry considerations revealed the existence of
+a spin-2 charge with an evolution dictated by the remaining leading order evolution equation.
+This equation also follows from the Newman–Penrose [48–50] analysis of asymptotic Einstein’s
+equations [16, 51–53] where the spin-2 charge can be identiﬁed as the asymptotic value of the
+Weyl scalar encoding incoming radiation. We demonstrate explicitly that, as in the leading and
+subleading cases, the associated asymptotic equation includes linear and quadratic components
+in the gravitational ﬁeld. The former is identiﬁed with a sub-subleading soft graviton, while
+the canonical action of the latter on the gravitational phase space at null inﬁnity is shown to be
+related to the sub-subleading soft graviton factor upon Fourier transform. Unlike the leading and
+subleading cases, there is also a cubic contribution which translates into a collinear correction to
+the sub-subleading soft theorem.
+2
+This paper is organized as follows. In Section 2 we review the results of [47] that revealed
+a clear pattern organizing the asymptotic gravitational dynamics. In particular, we introduce
+the Weyl-BMS group (BMSW) [33] corresponding to the asymptotic limit to null inﬁnity of the
+extended corner symmetry group of residual diﬀeomorphisms associated to a generic codimension-
+2 surface embedded in spacetime [54–57]. This comprises all previously proposed BMS extensions
+[13–16, 21, 31]. Upon identifying the relevant physical quantities in terms of primary ﬁelds for
+the homogeneous subgroup of BMSW, the leading order asymptotic Einstein’s equations are
+expressed compactly in terms of spin-weighted scalars. In Section 2.1 we specify fall-oﬀ conditions
+on the covariant phase-space variables which allow for the asymptotic evolution equations to
+be integrated. Finite corner charge aspects are constructed and associated with asymptotic
+symmetry generators.
+The action of the corner charge aspects on the shear of null inﬁnity is computed in Section
+3. In particular, the sub-subleading soft symmetry is shown to be generated by pseudo-vector
+ﬁelds quadratic in retarded time. In Section 4 we use these actions to demonstrate how the
+conservation laws for the renormalized corner charge aspects imply the three soft theorems.
+At the sub-subleading order we show that the structure of the asymptotic Einstein’s equation
+associated with the spin-2 charge yields higher order corrections in GN to the factorization
+properties of tree-level scattering amplitudes. These corrections take the form of new collinear
+terms in the sub-subleading soft factor which are discussed in Section 5. Concluding remarks are
+presented in Section 6 and technical details are collected in Appendices A, B, C and D.
+2 Asymptotic equations of motion
+Introducing the retarded Bondi coordinates xµ = (u,r,σ A), where σA denote coordinates on the
+celestial 2-sphere, asymptotically ﬂat metrics in the Bondi gauge near future null inﬁnity ( I+)
+take the general form [13,14]
+ds2 =−2e2βdu(dr + Φdu) +r2γAB
+(
+dσA− ΨA
+r2 du
+)(
+dσB− ΨB
+r2 du
+)
+. (1)
+In a large-r expansion, generic solutions to the asymptotic Einstein’s equations to order r−1 are
+of the form
+Φ = R(q)
+4 − M
+r +o
+(
+r−1)
+, (2a)
+β =− 1
+32
+CABCAB
+r2 +o
+(
+r−2)
+, (2b)
+ΨA =−1
+2DBCBA− 1
+r
+(2
+3PA− 1
+2CABDCCCB− 1
+16∂A(
+CBCCBC))
++o
+(
+r−1)
+, (2c)
+γAB =qAB + 1
+rCAB + 1
+4r2qAB
+(
+CCDCCD)
++ 1
+r3
+(1
+3TAB + 1
+16CAB(CCDCCD)
+)
++o
+(
+r−3)
+, (2d)
+where ∂uqAB = 0. All indices are raised with the inverse sphere metric 1 qAB and the shear CAB
+is symmetric and traceless.
+1We do not assume that qAB is the round sphere metric.
+3
+The asymptotic symmetry group is the Weyl-BMS group (BMSW) [33] generated by vector
+ﬁelds that act onI+ as
+ξ(T,Y,W ) =T∂u +YA∂A +W (u∂u−r∂r). (3)
+These are parameterized by a vector ﬁeld YA(σA) and functions W (σA),T (σA) on the sphere.
+BMSW contains a homogeneous subgroupHS := (Diﬀ(S)⋉Weyl) acting on the normal subgroup
+of supertranslations. The subgroup of BMSW implemented canonically on the asymptotic phase
+space is the generalized BMS group (GBMS) [22, 31, 32] which preserves the measure √q. The
+metric and its determinant transform under BMSW as
+δ(T,Y,W )qAB = (LY− 2W )qAB, δ (T,Y,W )
+√q =DAYA− 2W, (4)
+hence upon restricting to GBMS the Weyl factor becomes WY = 1
+2DAYA.
+The homogeneous subgroup HS can be used to organize the metric components in terms
+of primary ﬁelds for HS [47]. These are denoted by O(∆,s) and are labelled by a spin s and a
+conformal dimension ∆ [51, 53]. By deﬁnition, for a particular cut u = 0 ofI+, a primary ﬁeld
+transforms homogeneously under HS as
+δ(Y,W )O(∆,s) = (LY + (∆−s)W )O(∆,s), (5)
+withLY the Lie derivative along Y . We assign spin +1 to vector ﬁelds ∂A, spin +2 to ∂⟨A∂B⟩,
+etc. and spin −1 to dual forms d σA, as well as dimension ∆ = 1 to ∂u and r. In this conven-
+tion, positive spin operators correspond to symmetric traceless forms while negative spin ones
+correspond to symmetric traceless tensors, which we denote by
+O(∆,s) :=O∆⟨A1···As⟩, O (∆,−s) :=O⟨A1···As⟩
+∆ , s ≥ 0. (6)
+This parallels the re-organization of asymptotic data in a conformal primary basis [26,27,58,59].
+On the space of homogeneous primary ﬁelds we can perform certain operations that map primaries
+onto primaries. A basic example of such an operation is the metric contraction
+qAB : (∆,s ) → (∆,s + 2), (7)
+which raises 2 the spin by 2. Similarly, contraction with the inverse metric lowers the spin by
+2. Another candidate operation is the contraction with the Levi-Civita derivative DA which
+raises the spin by 1. 3 This operation does not preserve the primary condition; however, upon
+introducing a conformal connection ΥA, one can construct a conformally invariant derivative (see
+Appendix A)
+DAO(∆,s) = (DA + (∆ +s)ΥA)O(∆,s), (9)
+2This is consistent with our deﬁnition (5) and the transformation (4).
+3Its action is explicitly given by
+DA :OA1···As→DAsOA1···As, D A :OA1···As→D⟨As+1OA1···As⟩, (8)
+4
+where the action ofDA is contracted or symmetrized as in footnote 3. This maps primaries onto
+primaries with shifted dimension and spin,
+DA : (∆,s )→ (∆ + 1,s + 1). (10)
+The connection ΥA transforms as a one form under diﬀeomorphisms and inhomogeneously under
+rescalings, namely
+δ(Y,W )ΥA =LY ΥA−DAW. (11)
+There is a unique connection Υ A(q) with the property that Υ A(˚q) = 0 for the round sphere
+metric ˚q. The importance of the conformal derivative to the canonical analysis of GBMS was
+ﬁrst revealed by Campiglia and Peraza in [32]. It was also used by Donnay and Ruzziconi in [60]4
+and it is a central feature of the holographic ﬂuid perspective developed by Ciambelli et al. [61,62].
+Another candidate operation on primaries is the time derivative∂u : (∆,s )→ (∆+1,s ) which
+raises the dimension and preserves the spin. It turns out that if O(∆,s) is a homogeneous primary,
+then∂uO(∆,s) is a primary if and only if it transforms covariantly under supertranslations [47,60].
+For instance, the shear CAB is a primary of dimension-spin (1 , 2), while its time derivative
+NAB := ˙CAB is not. However, the news tensor ˆNAB deﬁned by [31,63]
+ˆNAB :=NAB−τAB, τ AB := 2(D⟨AΥB⟩ + Υ⟨AΥB⟩), (12)
+is a primary of dimension-spin (2,−2) (see Appendix A). τAB is the so-called Liouville or Geroch
+tensor [31, 63]. Moreover, the time derivative of the news NAB := ∂u ˆNAB is a primary of
+dimension-spin (3,−2). More generally ∂n
+uNAB is a primary of (∆,s ) = (n + 3,−2).
+Building on these ideas, primary ﬁelds consisting of components of the metric in a large- r
+expansion to order r−1 were identiﬁed in [47]. The list of primaries additionally includes the
+energy current JA (3,-1), the covariant mass M (3,0), the covariant dual mass ˜M (3,0), the
+momentumPA (3, 1) and the spin-2 tensor TAB (3,2). The momentum and spin-2 ﬁeld already
+appear in the metric expansion (2), while the energy current and covariant masses take the form
+JA := 1
+2DBNAB + 1
+4∂AR(q), (13)
+M :=M + 1
+8NABCAB, (14)
+˜M := 1
+4ϵA
+C
+(
+DADBCCB + 1
+2NCBCAB
+)
+. (15)
+HereϵAB is the complex structure on the 2-sphere deﬁned through the volume form ϵAB, namely
+ϵA
+B :=ϵACqCB, ϵ A
+BϵB
+C =−δC
+A. (16)
+The relevant primary ﬁelds and their weights are summarized in Table 1.
+4We thank S. Pasterski for bringing this to our attention.
+5
+Primary Fields CAB NAB JA M ˜M PA TAB
+Dimension-Spin (∆,s ) (1,2) (3,-2) (3,-1) (3,0) (3,0) (3,1) (3,2)
+Table 1: Fields transforming covariantly according to (5) under the homogeneous component of
+BMSW.
+Under supertranslations, the quantities in Table 1 acquire inhomogeneous shifts. For example,
+δTJA =T∂uJA + 1
+2NAB∂BT, (17)
+δTM =T∂uM +JA∂AT , (18)
+δTPA =T∂uPA + 3
+(
+M∂AT + ˜M˜∂AT
+)
+. (19)
+Remarkably, Einstein’s equations can be reconstructed by identifying the combinations of ﬁelds
+and derivatives that transform homogeneously under arbitrary BMSW transformations [47]. We
+illustrate this in a short example. It can be easily shown that there are no translationally covariant
+scalar combinations at dimension 3. At (∆ ,s ) = (4 , 0) the set of all parity-even primaries
+constructed from primary ﬁelds is 5
+CABNAB, ˙M− 1
+2DAJA. (20)
+It turns out that the unique linear combination transforming homogeneously under supertrans-
+lations is
+E := ˙M− 1
+2DAJA− 1
+8CABNAB. (21)
+In the absence of sources, the only covariant equation is therefore E = 0. This is one of the
+asymptotic vacuum Einstein’s equations. We can continue this exercise for diﬀerent spins and
+parity conditions. All supertranslation primaries that can be constructed from the asymptotic
+metric expansion (2) have dimension ∆ = 4 and spin s =−2,−1, 0, 1, 2, yielding all equations of
+motion to the same order in a large- r expansion.
+The equations of motion can be compactly written by introducing a holomorphic frame m =
+mA∂A with coframe m =mAdσA and normalization mA ¯mA = 1. In terms of these frame ﬁelds,
+the sphere metric qAB and the volume form ϵAB are given by6
+qAB = (mA ¯mB +mB ¯mA), ϵ AB =−i(mA ¯mB−mB ¯mA). (22)
+Both mA and ¯mA have (∆,s ) = (0, 1). They are however distinguished by their helicity (also
+called spin-weight when the metric is spherical [58, 59, 64]): mA has helicity +1 while ¯mA has
+helicity−1. We can use the frame ﬁeld to convert spin- s tensors into scalars of a given helicity.
+5Note that products of primaries are also primary.
+6In complex coordinates, the normalization implies that for the round sphere m = P d¯z, where P :=
+√
+2
+(1+z¯z).
+We do not restrict to the round sphere metric case and do not ﬁx the form of m.
+6
+By convention, positive and negative helicity scalars can be obtained by contraction with mA
+and ¯mA respectively,
+Os =OA1···AsmA1··· mAs, O −s =OA1···As ¯mA1··· ¯mAs. (23)
+This implies that O−s = ¯Os, meaning that negative helicity scalars are complex conjugates of
+positive helicity ones.
+Given the phase space variables ( NAB,JA,M, ˜M,PA,TAB) of conformal dimension 3, we
+deﬁne the following (spin-weighted) scalars
+C :=CABmAmB, N :=NAB ¯mA ¯mB, J :=JA ¯mA,
+MC :=M +i ˜M, P :=PAmA, T :=TABmAmB. (24)
+We have introduced the complex mass MC which is a complex linear combination of the mass
+and its dual. In spherical complex coordinates this deﬁnition implies that C = P−2Czz and
+N =P 2Nzz =P−2N¯z¯z in agreement with the standard convention that (outgoing) positive and
+negative helicities correspond to holomorphic and anti-holomorphic forms respectively [6,19].
+We denoteD =mADA the Cartan derivative7 alongmA and ¯D = ¯mADA the Cartan derivative
+along ¯m (see Appendix A.2). D raises the spin weight by 1, while ¯D = ¯mADA lowers it by 1.
+Upon contraction with the frame ﬁeld, (13) can then be recast as
+J = 1
+2DN + 1
+4
+¯DR, (26)
+or equivalently in terms of the contraction ˆN = ˆNAB ¯mA ¯mB of the news tensor (12),
+J = 1
+2D ˆN, (27)
+where we have used (see Appendix A.1) 1
+2
+¯DR = −D¯τ, with ¯τ := ¯mA ¯mBτAB and N :=
+¯mA ¯mBNAB. The asymptotic evolution equations [15,47,65] can then be compactly expressed as
+˙J = 1
+2DN, (28a)
+˙MC =DJ + 1
+4CN, (28b)
+˙P =DMC +CJ , (28c)
+˙T =DP + 3
+2CMC, (28d)
+and their complex conjugates.
+It will prove convenient to organize aspects of conformal dimension 3 in terms of their helicity
+and denote
+Q−2 :=N
+2 , Q−1 :=J, Q0 :=MC, Q1 :=P, Q2 :=T, (29)
+7This is such that
+DOs =mAmA1··· mAsDAOA1···As = (Dm−isΩ)Os, (25)
+where Dm :=mADA, with DA the covariant derivative and where iΩ := ¯mBDmmB = ¯mBD ¯mmB is the 2d spin
+connection.
+7
+allowing for the asymptotic Einstein’s equations to be compactly expressed as
+˙Qs =DQs−1 + (1 +s)
+2 CQs−2, (30)
+for s =−1, 0, 1, 2. This analysis can be repeated near I−.
+We conclude this preliminary section with a clarifying remark. In this paper, we emphasize
+the corner and celestial ﬂuid perspective [55,61,62,66–70] where MC,P andJ are the complex
+energy density, momentum and energy current of the celestial ﬂuid. From the gravity point of
+view,M andP are the momentum and angular momentum aspects. The distinction between
+bulk and boundary stems from the fact that translations on the celestial sphere arise from bulk
+rotations. We ﬁnd the holographic point of view on the asymptotic dynamics quite powerful and
+inspiring. Of course, this is just a change of perspective and nomenclature with respect to the
+standard relativist’s bulk point of view whereM is sometimes denotedP, whileP is denotedJ ,
+such as in [71]. We hope that this doesn’t introduce confusion.
+2.1 Asymptotic conditions and integrated charges
+The Einstein constraint equations played an important role in establishing the equivalence be-
+tween asymptotic symmetries and soft theorems at the leading [5, 6] and subleading orders
+[19, 21, 22]. In order to integrate the asymptotic evolution equations (28) and generalize the
+analysis to the sub-subleading case, the asymptotic behavior of the dressed news and the charges
+at large retarded times needs to be speciﬁed. As we will see, to access the sub-subleading soft
+theorem one must impose that ˆN =O(|u|−α) where α >3. For the leading and subleading soft
+theorems weaker fall-oﬀs are suﬃcient, namely α> 1 [5] and α> 2 [32] respectively. In order to
+avoid logarithmic corrections [72,73], α /∈ N will be assumed throughout.
+These fall-oﬀs on the news are necessary to ensure that all generators of asymptotic sym-
+metries (J,MC,P,T ) decay to zero at I+
++, where the geometry reverts to a radiative vacuum.
+Speciﬁcally,
+lim
+u→+∞
+Qs(u,z ) = 0, (31)
+for s =−2,−1, 0, 1, 2. Here and henceforth, arguments z compactly denote dependence on the
+transverse coordinatesz, ¯z. Note that it is essential to use the covariant charge aspects to be able
+to impose boundary conditions that capture the soft physics. While these asymptotic conditions
+are restrictive,8 they are well adapted to the S-matrix context. In particular, (31) allows one to
+deﬁne the charge aspects as integrals over their ﬂux
+MC(u,z ) =
+∫ u
++∞
+du′ ˙MC(u′,z ), (32)
+and similarly forP andT . Subject to the asymptotic fall-oﬀs of ˆN, we deduce that
+Qs =O(u1+s−α) when u→ +∞. (33)
+8For instance, imposing (31) for MC excludes the presence of black holes.
+8
+Consequently, the condition α >3 is necessary to integrate the spin s = 2 chargeT . Note that
+these conditions do not ﬁx the value ofC(u,z ) whenu→ +∞. Nevertheless, this value can be set
+to 0 by performing a combination of supertranslation, dual supertranslation and superrotation
+which amounts to ﬁxing the asymptotic frame of reference at timelike inﬁnity to be a center of
+mass frame. We henceforth assume that C = O(u−α+1) at u = +∞. Of course, such a choice
+cannot be independently made at u =−∞ as the asymptotic value of C is determined by the
+memory eﬀect.
+These fall-oﬀ conditions are not suﬃcient to ensure that P andT have ﬁnite limits when
+u→−∞ . To remedy this problem, following [47] one can consider a non-radiative phase space
+deﬁned by the conditions 9
+N = 0 =J . (34)
+In this case, the shear is simply given by its memory components
+CM(u,z ) :=c(z) +uτ(z). (35)
+The non-radiative corner phase space is then parameterized by the renormalized corner charge
+aspects [47]
+ˆmC = 8
+κ2MC, ˆp = 8
+κ2
+1
+2 (P− uDMC) ˆt = 8
+κ2
+1
+3
+(
+T −uDP +
+(u2
+2 D2− 3
+2
+(∫ u
+C
+))
+MC
+)
+,
+(36)
+where κ =
+√
+32πG. These are time independent when (34) holds. The reason for the overall
+numerical rescaling will become clear when we compute their action on C in Section 3. The ﬁrst
+two aspects ( ˆmC, ˆp) deﬁne a moment map for the generalized BMS group (this was proven for the
+case ˜M = 0 in [71]). Additionally, the spin-2 charge ˆt deﬁnes a moment map for an extension of
+the generalized BMS group at null inﬁnity to include the spin-2 charge aspect ˆt [74].
+To summarize, in order to establish the soft theorems, one needs to impose appropriate
+boundary conditions such that the renormalized charge aspects vanish at I+
++,
+lim
+u→+∞
+ˆqs(u,z ) = 0 (37)
+and are ﬁnite atI+
+−, namely
+lim
+u→−∞
+( ˆmC, ˆp, ˆt)(u,z ) = (mC(z),p (z),t (z)). (38)
+The asymptotic symmetry generators can then be compactly expressed as
+Q(T,Y,Z ) :=
+∫
+d2z√q (Tm C +Yp +Zt) (z). (39)
+9These conditions are equivalent to the typically employed ones for the non-radiative phase space, namely
+ˆN = 0.
+9
+In order to compute the symmetry action onC it will be necessary to consider the integrated10
+asymptotic equations of motion
+MC(u) = 1
+2D2(∂−1
+u ˆN) + 1
+4∂−1
+u (CN ), (40)
+P(u) = 1
+2D3(∂−2
+u ˆN) + 1
+4D∂−2
+u (CN ) +∂−1
+u (CJ ), (41)
+T (u) = 1
+2D4(∂−3
+u ˆN) + 1
+4D2(∂−3
+u CN ) +D∂−2
+u (CJ ) + 3
+2∂−1
+u (CMC), (42)
+where we introduced the symbolic notation
+(∂−n
+u ˆN)(u) :=
+∫ u
++∞
+du1
+∫ u1
++∞
+du2···
+∫ un−1
++∞
+dun ˆN(un). (43)
+This notation will come in handy in the next sections. An identity that will be essential to our
+story is the Leibniz rule for the pseudo-diﬀerential operator ∂−1
+u [75–79]
+∂−1
+u (PF ) =
+∞∑
+n=0
+(−1)n(∂n
+uP )(∂−n−1
+u F ). (44)
+The sum truncates when P is a polynomial in u.11 Note that the asymptotic conditions (33)
+ensure that the integrals (40)-(42) are well deﬁned. The order of integral labels in (43) is tailored
+to the choice of boundary conditions at I+
++, corresponding to the no-radiation condition (31) at
+u = +∞.
+2.2 Brackets
+The basic bracket needed to compute the action of the charges (39) on the asymptotic shear
+is [6,80–82]
+{ ˆN(u,z ),C (u′,z′)} = κ2
+2 δ(u−u′)δ(z,z′). (45)
+Note that on I+, it is the shifted news (12) that is canonically conjugate to the shear C. The
+Poisson bracket (45) implies the following other brackets 12
+{N (u,z ),C (u′,z′)} = κ2
+2 ∂uδ(u−u′)δ(z,z′), (46)
+{J (u,z ),C (u′,z′)} = κ2
+4 δ(u−u′)Dzδ(z,z′), (47)
+{C(u,z ),C (u′,z′)} = 0. (48)
+10The boundary conditionQs =O(u1+s−α) at u→ +∞ allows one to do so.
+11More details on pseudo-diﬀerential calculus are provided in Section 3.3.
+12We are assuming that {mA,C} = 0 which may have to be revisited for extensions of BMS beyond Virasoro
+[31,33].
+10
+Quantum commutators are simply obtained by deﬁning [ ·,·] = −iℏ{·,·}. At the quantum
+level we therefore have
+[N (u,z ),C (u′,z′)] =−iκ2
+2 ∂uδ(u−u′)δ(z,z′). (49)
+The delta function on the sphere is dual to the measure ϵ =iP 2dz∧ d¯z, meaning that
+δ(z,z′) = δ(2)(z−z′)
+P 2 . (50)
+3 Charge action
+In this section we evaluate the action of the local charges (36) on the shear C. The commutation
+relations follow straightforwardly from (46) and (47) and are explicitly computed in Appendix
+B. For clarity, we continue working on I+, but a similar analysis pertains to I− and will be
+discussed in Section 4.
+3.1 Leading action
+We start with the complex mass aspect (40) which can be split as [5,6]
+MC =MS +MH, (51)
+whereMS is linear in C, whileMH is quadratic in C, ¯C. These are explicitly given by
+MS(u,z ) =
+∫ u
++∞
+du′DJ (u′,z ), (52)
+MH(u,z ) = 1
+4
+∫ u
++∞
+du′C(u′,z )N (u′,z ). (53)
+A related split, and the transformation properties of its soft and hard components under asymp-
+totic symmetries were studied in [60]. The brackets (46) and (47) allow us to evaluate
+{MS(u,z ),C (u′,z′)} =−κ2
+4 θ(u′−u)D2
+zδ(z,z′), (54)
+{MH(u,z ),C (u′,z′)} = κ2
+8 ∂u′[C(u′,z )θ(u′−u)]δ(z,z′), (55)
+where θ(x) is the unit step function deﬁned in (176). Here and in the following sections, the
+derivatives are as deﬁned in (25) and in particular do not carry any spatial index. The subscripts
+z,z′ are simply introduced to keep track of the variables they act on.
+Putting these together, we ﬁnd that for u′ >u
+8
+κ2{MC(z,u ),C (u′,z′)} =
+(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′), (56)
+or equivalently, in terms of the supertranslation corner aspect deﬁned by (38)
+{mC(z),C (u′,z′)} =
+(
+∂u′C(u′,z′)− 2D2
+z
+)
+δ(z,z′). (57)
+11
+According to (39), the supertranslation charge 13
+QT :=
+∫
+S
+T (z)mC(z) (58)
+induces the following symmetry transformation on C
+δ0
+TC(u,z ) :={QT,C (u,z )} =T∂uC(u,z )− 2D2
+zT , (59)
+which is the usual action of supertranslations on the shear. The homogeneous component of the
+transformation indicates that the charge QT is associated with a vector ﬁeld
+ξT =T∂u. (60)
+It is worth emphasizing that it is the charge constructed from the complex mass aspect
+that reproduces the expected Lie derivative action on C. On the other hand, in order for the
+“standard” supertranslation charges associated with the real mass aspect (14) to act correctly,
+one ought to impose an equivalence relation on phase space [5,6],
+˜M∝
+[(
+¯D2− 1
+2N
+)
+C−
+(
+D2− 1
+2
+¯N
+)
+¯C
+]
+I+
+∓
+= 0. (61)
+One has to be careful with such constraints because they are second class, meaning { ˜M,C}⁄ = 0.
+To further clarify this, we consider the action of the anti-holomorphic charges on the holomorphic
+shear C,
+{ ¯QT,C (u,z )} =T∂uC(u,z ). (62)
+The real and imaginary parts of the (complex) supertranslation charge then act respectively as
+{QT + ¯QT
+2 ,C (u,z )
+}
+=T∂uC(u,z )−D2
+zT,
+{QT− ¯QT
+2 ,C (u,z )
+}
+=−D2
+zT.
+(63)
+We see explicitly that the dual mass contains a purely soft contribution, providing a complemen-
+tary perspective on the mysterious factor of 2 mismatch for the real charge action ﬁrst observed
+and remedied in [6]. While the importance of the dual mass was previously pointed out in [83–85],
+its interpretation in a scattering context remains elusive. We leave a complete understanding of
+these interesting issues to future work.
+3.2 Subleading action
+The momentum aspect is given by
+P(u,z ) =
+∫ u
++∞
+du′ ˙P(u′,z ). (64)
+13From now on we use the shortcut notation
+∫
+SF :=
+∫
+S d2z√qF.
+12
+Using (41) this can be decomposed as
+P =PSS +PSH +PHH, (65)
+where the subscripts label the three terms in (41), namelyPHH is the hard component associated
+with CJ ,PSH corresponds to DMH, whilePSS is the soft contribution DMS. The brackets of
+the individual terms with C are computed in Appendix B.2 and the results take the form
+{PSS(u,z ),C (u′,z′)} = κ2
+4 (u′−u)θ(u′−u)D3
+zδ(z,z′), (66)
+{PSH(u,z ),C (u′,z′)} =−κ2
+8 Dz∂u′[C(u′,z )θ(u′−u)δ(z,z′)(u′−u)], (67)
+{PHH(u,z ),C (u′,z′)} =−κ2
+4 [C(u′,z )θ(u′−u)]Dzδ(z,z′). (68)
+Overall, these imply that for u′ >u
+{P(u,z ),C (u′,z′)} =−κ2
+8 (u′−u)Dz[
+(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′)]
+− κ2
+8 (Dz[C(u′,z )δ(z,z′)] + 2C(u′,z )Dzδ(z,z′)) . (69)
+As anticipated in Section 2.1, in the limit u→−∞ the bracket (69) diverges. As explained
+there, this divergence can be eliminated by deﬁning the corner charge aspects (38), whose sub-
+leading component is
+p(z) := lim
+u→−∞
+8
+κ2
+1
+2 (P(u,z )−uDMC(u,z )) . (70)
+Then using (69) and (56),
+{p(z),C (u′,z′)} =− u′
+2Dz
+[(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′)
+]
+−
+(
+C(u′,z )Dzδ(z,z′) + 1
+2Dz[C(u′,z )δ(z,z′)]
+)
+. (71)
+For later convenience, we can use the general formula
+f(z)Ds
+zδ(z,z′) =
+s∑
+n=0
+(−1)n s!
+n!(s−n)!(Dnf)(z′)Ds−n
+z δ(z,z′), (72)
+to rewrite the RHS of (71) in terms of C(u′,z′) as
+{p(z),C (u′,z′)} =u′D3
+zδ(z,z′)− 1
+2(u′∂u′ + 3)C(u′,z′)Dzδ(z,z′) +Dz′C(u′,z′)δ(z,z′). (73)
+The asymptotic holomorphic super-Lorentz charges and their symmetry action take the form [19]
+QY :=
+∫
+S
+Y (z)p(z), δ 1
+YC(u,z ) :={QY,C (u,z )}. (74)
+13
+Together with (73), one ﬁnds
+δ1
+YC(u,z ) = u
+2
+(
+δ0
+DYC
+)
+(u,z ) +Y (z)DzC(u,z ) + 3
+2C(u,z )DzY (z). (75)
+The Y transformation can be written in terms of the Lie derivative action
+Y (z)DC(u,z ) + 3
+2C(u,z )DY (z) =mAmB
+[(
+LY− 1
+2DY
+)
+CAB
+]
+, (76)
+which precisely agrees with the super-Lorentz transformations on the shear [19,31,33]. Note that
+the factor of 1/2 in (70) ensures that the charge action (75) reproduces the Lie derivative action
+(76) with the correct normalization. This explains the prefactor of the subleading corner aspect
+introduced in (36), and implies that the charge QY is associated with a vector ﬁeld
+ξY = u
+2DY∂ u +Ym. (77)
+3.3 Sub-subleading action
+Similarly, the sub-subleading charge aspect takes the form
+T (u,z ) =
+∫ u
++∞
+du′ ˙T (u′,z ). (78)
+As before, equation (42) suggests the decomposition
+T =TSSS +TSSH +TSHH +THHS +THHH, (79)
+where the ﬁrst three terms on the RHS correspond respectively to the ﬁrst three terms in (42),
+while the last two terms arise from the last term in (42) upon splitting MC according to (51).
+We obtain the following brackets (see Appendix B for details)
+{THHH(u,z ),C (u′,z′)} =− 3
+16κ2∂u′
+[
+C(u′,z )
+(∫ u′
+u
+du′′C(u′′,z )
+)
+θ(u′−u)
+]
+δ(z,z′), (80)
+{THHS(u,z ),C (u′,z′)} = 3
+8κ2
+(∫ u′
+u
+du′′C(u′′,z )
+)
+θ(u′−u)D2
+zδ(z,z′), (81)
+{TSHH(u,z ),C (u′,z′)} = κ2
+4 (u′−u)θ(u′−u)Dz [C(u′,z )Dzδ(z,z′)] , (82)
+{TSSH(u,z ),C (u′,z′)} = κ2
+8 ∂u′
+(
+D2
+z[C(u′,z )δ(z,z′)](u′−u)2
+2 θ(u′−u)
+)
+, (83)
+{TSSS(u,z ),C (u′,z′)} =−κ2
+8 (u′−u)2θ(u′−u)D4
+zδ(z,z′). (84)
+14
+Putting everything together, these imply the following bracket of (78) with C for u′ >u
+8
+κ2{T (u,z ),C (u′,z′)} = (u′−u)2
+2 D2
+z
+[(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′)
+]
++ 2(u′−u)Dz
+[
+C(u′,z )Dzδ(z,z′) + 1
+2Dz[C(u′,z )δ(z,z′)]
+]
+− 3
+2
+(∫ u′
+u
+du′′C(u′′,z )
+)
+[(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′)
+]
+− 3
+2[C(u′,z )]2δ(z,z′). (85)
+We see again that the generator admitting a well deﬁned limit u→−∞ is notT (u,z ) but the
+renormalized charge aspect deﬁned in (36), namely 14
+t(z) := lim
+u→−∞
+8
+κ2
+1
+3
+(
+T (u,z )−uDP(u,z ) +u2
+2 D2MC(u,z )−3
+2
+(∫ u
++∞
+C
+)
+MC
+)
+. (86)
+This combination is then such that
+{t(z),C (u′,z′)} =
+(
+u′2
+6 D2
+z− 1
+2
+(∫ u′
++∞
+C(z)
+))
+[(
+∂u′C(u′,z )− 2D2
+z
+)
+δ(z,z′)
+]
++ 2
+3u′Dz
+[
+C(u′,z )Dzδ(z,z′) + 1
+2Dz[C(u′,z )δ(z,z′)]
+]
+− 1
+2[C(u′,z )]2δ(z,z′). (87)
+This symmetry action distinguishes itself from the leading and subleading ones through the
+following features: 1) it is non-local in time and 2) it involves collinear excitations. It will
+be convenient to break down this symmetry action into a soft, hard and collinear component,
+t = tS +tH +tC, where the collinear terms are cubic in C, ¯C. As before, upon introducing the
+spin-2 charge and the spin-2 variation
+QZ := 8
+κ2
+∫
+Z(z)t(z), δ 2
+ZC(u,z ) :={QZ,C (u,z )}, (88)
+(87) allows us to conclude that
+δ2
+ZC(u,z ) =−u2
+6
+(
+δ0
+D2ZC
+)
++ 2
+3u
+(
+δ1
+DZC
+)
++D2
+[
+Z
+(∫ u
++∞
+C
+)]
+− Z
+2
+(
+C2 +∂uC
+(∫ u
++∞
+C
+))
+. (89)
+The last term is a non-linear transformation consisting of products ofC(u,z ) at possibly diﬀerent
+times, but evaluated at the same point on the celestial sphere. We will investigate this collinear
+component in Section 5.
+The linear transformation associated with the ﬁrst two terms in (89) can be described by
+introducing the notion of pseudo-vector ﬁelds. Vector ﬁelds on I+ are linear combinations over
+14One uses that (u′−u)2
+2 +u(u′−u) + u2
+2 = u′ 2
+2 . One also uses our boundary condition C→ 0 when u→ +∞.
+15
+the space of functions onI+ of the individual vector ﬁelds m, ¯m and∂u which act as diﬀerential
+operators on I+. Holomorphic vectors only involve linear combinations of ( m,∂u). Note that
+according to our discussion in Section 2, the vectors ( m,∂u) were assigned dimension 1. We also
+introduce the pseudo-diﬀerential operator ∂−1
+u of dimension−1.15 A holomorphic pseudo-vector
+of spin s is then given by the product Ds = ms∂1−s
+u . These pseudo-vectors are of dimension 1
+and they satisfy a generalization of the Leibniz rule [77]
+∂1−s
+u F =
+∞∑
+n=0
+(1−s)n
+n! (∂n
+uF )∂1−s−n
+u , (90)
+where (x)n =x(x− 1)...(x−n + 1) is the falling factorial.
+A pseudo-vector ﬁeld is simply a linear combination over I+ of pseudo-vectors. The set of
+pseudo-vectors is naturally equipped with a Poisson bracket which is deﬁned as the commutator
+of pseudo-vector ﬁelds restricted to dimension one 16
+{FsDs,Gs′Ds′} =Fs(DsGs′)Ds′−Gs′(Ds′Fs)Ds. (91)
+We now see that the linear component of the transformation (89) is associated with the
+pseudo-vector ﬁeld
+ξZ =ZD2 + 2
+3uDZD 1 + u2
+6 D2ZD0, (92)
+where D0 =∂u and D1 =m are standard vectors while D2 =m2∂−1
+u is a pseudo-vector. Again,
+the factor of 1/3 in (86) is to ensure the correct normalization of the u-independent contribution
+in (92).
+For later convenience, we can again use (72) to rewrite the RHS of (87) in terms of C(u′,z′)
+as
+{t(z),C (u′,z′)} =−u′2
+3 D4
+zδ(z,z′)
++ 1
+6
+(
+[
+u′2∂2
+u′ + 6u′∂u′ + 6
+]∫ u′
++∞
+du′′C(u′′,z′)
+)
+D2
+zδ(z,z′)
+− 2
+3
+(
+[u′∂u′ + 3]Dz′
+∫ u′
++∞
+du′′C(u′′,z′)
+)
+Dzδ(z,z′)
++δ(z,z′)D2
+z′
+∫ u′
++∞
+du′′C(u′′,z′)
+− 1
+2∂u′
+(
+C(u′,z′)
+∫ u′
++∞
+du′′C(u′′,z′)
+)
+δ(z,z′).
+(93)
+As we will demonstrate in the next section, upon Fourier transforming, this symmetry action
+(excluding the non-linear contribution in the last line) can be recast into the sub-subleading soft
+theorem [17,45,86].
+15This is the space-time version of the dimension-lowering operators encountered in sub-subleading conformally
+soft theorems [34,86].
+16It can be shown that the commutator of two holomorphic pseudo-vectors also contains a sum of terms
+proportional to ∂−n
+u Ds, which are of lower dimension.
+16
+4 From conservation laws to soft theorems
+In this section we demonstrate that the leading, subleading and sub-subleading soft graviton
+theorems follow from conservation laws associated with the charges (36). The analysis at the
+leading and subleading orders was ﬁrst done in [5, 19] and is presented herein for completeness.
+The derivation of the sub-subleading soft graviton theorem as a consequence of conservation of
+the charges (86) is new.
+Amplitudes in gravity17 have universal behavior in the limit when one of the gravitons becomes
+soft [4,17]. In particular,
+⟨out|a±(ωˆq)S|in⟩ =
+(
+S(0)
+± +S(1)
+± +S(2)
+±
+)
+⟨out|S|in⟩ +O(ω2). (94)
+Here S(i)
+± for i = 0, 1, 2 are the leading, subleading and sub-subleading soft factors [4,17],
+S(0)
+± = κ
+2
+n∑
+k=1
+(pk·ε±)2
+pk·q , (95)
+S(1)
+± =−iκ
+2
+n∑
+k=1
+(pk·ε±)(q·Jk·ε±)
+pk·q , (96)
+S(2)
+± =−κ
+4
+n∑
+k=1
+(ε±·Jk·q)2
+pk·q , (97)
+where the subscripts refer to the helicity of the soft graviton. The (outgoing) graviton has
+momentumq =ωˆq and polarization
+ε±±
+µν =ε±
+µε±
+ν, (98)
+while pk and Jk are the momenta and angular momenta of all other (hard) particles.
+Following [5], the large-r mode expansion18 of C nearI+ is
+C(u, ˆx) = iκ
+8π2
+∫ ∞
+0
+dω
+[
+aout†
+− (ωˆx)eiωu−aout
++ (ωˆx)e−iωu
+]
+. (99)
+¯C takes a similar form related to (99) by Hermitian conjugation. One can check (see Appendix
+C) that the commutators (49) imply the standard commutation relations for the modes,
+[a±(ωˆx),a†
+±(ω′ˆx′)] = (2π)3 2
+ωδ(ω−ω′)δ(z,z′). (100)
+We also deﬁne the Fourier modes [5]
+Nω :=
+∫ ∞
+−∞
+dueiωu∂u ¯C. (101)
+17This behaviour is universal at tree-level. In the quantum theory, the leading soft theorem remains universal,
+but S(1) and S(2) may receive one- and two-loop exact corrections.
+18Note that our deﬁnition of C =CABmAmB already includes the polarization factors.
+17
+This notation is consistent with the previous sections where N was deﬁned as the variable con-
+jugate to C which is ∂u ¯C. As such, Nω are the Fourier modes of negative helicity gravitons.
+Leading, subleading and sub-subleading negative-helicity (outgoing) soft gravitons correspond
+to [23,45]
+N (0) = 1
+2 lim
+ω→0+
+(
+Nω +N−ω)
+=− κ
+8π lim
+ω→0+
+ω
+(
+aout†
++ (ωˆx) +aout
+− (ωˆx)
+)
+, (102a)
+N (1) =−i
+2 lim
+ω→0+
+∂ω
+(
+Nω−N−ω)
+=−iκ
+8π lim
+ω→0+
+(1 +ω∂ω)
+(
+aout†
++ (ωˆx)−aout
+− (ωˆx)
+)
+, (102b)
+N (2) =−1
+4 lim
+ω→0+
+∂2
+ω(Nω +N−ω) = κ
+16π lim
+ω→0+
+∂ω(1 +ω∂ω)
+(
+aout†
++ (ωˆx) +aout
+− (ωˆx)
+)
+. (102c)
+Using (101), (102) can be equivalently written as
+N (0) =
+∫ ∞
+−∞
+duN, N (1) =
+∫ ∞
+−∞
+duuN, N (2) = 1
+2
+∫ ∞
+−∞
+duu2N, (103)
+which can in turn be related to the soft charges 19
+mS(z) = 8
+κ2
+1
+2 lim
+u→−∞
+D2∂−1
+u N(u,z ), (104a)
+pS(z) = 8
+κ2
+1
+4 lim
+u→−∞
+D3[
+∂−2
+u N(u,z )−u∂−1
+u N(u,z )
+]
+, (104b)
+tS(z) = 8
+κ2
+1
+6 lim
+u→−∞
+D4
+[
+∂−3
+u N(u,z )−u∂−2
+u N(u,z ) +u2
+2 ∂−1
+u N(u,z )
+]
+. (104c)
+The Leibniz rule (44) implies that
+∂−1
+u
+(uk
+k!F (u)
+)
+= (−1)k
+k∑
+n=0
+(−u)n
+n! ∂−(1+k−n)
+u F (u), (105)
+which allows us to rewrite the subleading and sub-subleading renormalized soft charge aspects
+in terms of the soft modes as
+mS(z) =− 4
+κ2D2N (0)(z), p S(z) = 2
+κ2D3N (1)(z), t S(z) =− 4
+3κ2D4N (2)(z). (106)
+The analogous relations for ¯N =NABmAmB are obtained by Hermitian conjugation.
+The transformation properties ofC under the symmetries (36) derived in the previous sections
+can be converted into actions of hard charges on asymptotic Fock states by means of inverting
+the mode expansion (99),
+~C(ω,z ) :=
+∫ ∞
+−∞
+dueiωuC(u,z ) = iκ
+4π
+(
+aout†
+− (−ωˆx)θ(−ω)−aout
++ (ωˆx)θ(ω)
+)
+. (107)
+19Here the label S refers to the contributions to MC,P,T linear in N (i.e. containing no hard modes) in the
+decompositions (51), (65), (79).
+18
+In particular, one ﬁnds (57), (71) and (87) imply the following commutators 20
+[mCH(z),a out
++ (ωˆx′)] =−ωaout
++ (ωˆx′)δ(z,z′), (108)
+[pH(z),a out
++ (ωˆx′)] =i (h+Dzδ(z,z′)−δ(z,z′)Dz′)aout
++ (ωˆx′), (109)
+[tH(z),a out
++ (ωˆx′)] = 1
+6
+(
+2h+(2h+− 1)D2
+zδ(z,z′)
+− 8h+Dzδ(z,z′)Dz′ + 6δ(z,z′)D2
+z′
+)
+ω−1aout
++ (ωˆx′) +O(κ3), (110)
+where ω >0 and we deﬁned the left-moving conformal weights 21
+2h± =−ω∂ω± 2 (111)
+associated with positive (+) and negative (−) helicity gravitons respectively. For the last com-
+mutator, we used (see Appendix C)
+~∂−1
+u C(ω,z ) =
+~C(ω,z )
+−iω−ϵ. (112)
+The commutators with negative helicity modes are implied by brackets of the charges with ¯C and
+can be shown to take the same form with h+→h−. Similar mode expansions apply near I− [6]
+allowing for commutators of the charges with the incoming modes to be computed. The O(κ3)
+contribution arises from the quadratic term in (87). We postpone the analysis of this correction
+to Section 5.
+Without loss of generality, in the following sections we set P = 1 in which case the celestial
+sphere is ﬂattened to a plane. All formulas can be covariantized by simply replacing ∂z by Dz.
+We spell out our conventions in Appendix C.
+4.1 Leading soft theorem
+Using the parameterizations (187) of the momenta, the leading soft factor (95) becomes
+S(0)
++ =− κ
+2ω
+n∑
+k=1
+ϵkωk
+¯z− ¯zk
+z−zk
+, S (0)
+− =− κ
+2ω
+n∑
+k=1
+ϵkωk
+z−zk
+¯z− ¯zk
+. (113)
+ϵk =±1 distinguishes between incoming (−) and outgoing (+) particles. For a negative helicity
+insertion we have
+∂2
+zS(0)
+− =−πκ
+ω
+n∑
+k=1
+ϵkωkδ(2)(z−zk). (114)
+The matching condition22
+mC(z)|I+
+−
+= mC(z)|I−
++
+, (115)
+20Here the label H refers to the contributions to ˆq in (36) that are neither soft nor collinear.
+21These become diagonal in a conformal primary basis [23,26].
+22More precisely, mC(z)|I+
+−
+= mC(ϵ(z))|I−
++
+where ϵ(z) is the inversion z→− 1
+¯z, ¯z→− 1
+z . To avoid clutter, we
+follow [5] and take the inversion to be implicit in all matching relations.
+19
+where the transverse coordinates z atI+
+− andI−
++ are antipodally related [5], then implies the
+conservation law
+⟨out|mC(z)|I+
+−
+S−S mC(z)|I−
++
+|in⟩ = 0. (116)
+mC consists of a soft component, namely a leading soft graviton (106) and a hard component
+whose action on asymptotic states is implied by the commutator (108). We ﬁnd
+1
+πκ lim
+ω→0
+ω∂2
+z⟨out|aout
+− (ωˆx)S|in⟩ +
+n∑
+k=1
+ϵkωkδ(2)(z−zk)⟨out|S|in⟩ = 0, (117)
+where the ﬁrst term is associated with the soft part and the second term arises from the action
+of the hard part on asymptotic states. 23 We have used crossing symmetry
+⟨out|aout
+− (ωˆx)S|in⟩ =⟨out|Sain†
++ (ωˆx)|in⟩ (118)
+to rewrite the soft charge in terms of an outgoing soft insertion. Rearranging, we recover (114).
+Note that at O(ωs−1), (118) implies
+lim
+ω→0+
+∂s
+ω
+(
+ω⟨out|aout
+− (ωˆx)S|in⟩
+)
+= (−1)s+1 lim
+ω→0+
+∂s
+ω
+(
+ω⟨out|Sain†
++ (−ωˆx)|out⟩
+)
+. (119)
+Therefore, the soft component of (116) and its subleading counterparts below will be twice that
+of an outgoing soft insertion [6,19].
+4.2 Subleading soft theorem
+In the parameterization (187), the subleading soft factor (96) becomes [19]
+S(1)
++ = κ
+2
+n∑
+k=1
+(¯z− ¯zk)2
+z−zk
+[ 2¯hk
+¯z− ¯zk
+−∂¯zk
+]
+, S (1)
+− = κ
+2
+n∑
+k=1
+(z−zk)2
+¯z− ¯zk
+[ 2hk
+z−zk
+−∂zk
+]
+, (120)
+or equivalently, for a negative helicity soft insertion,
+∂3
+zS(1)
+− = 2πκ
+n∑
+k=1
+[
+hk∂zkδ(2)(z−zk)−δ(2)(z−zk)∂zk
+]
+. (121)
+Here
+2hk =−ωk∂ωk +sk, 2¯hk =−ωk∂ωk−sk, (122)
+where sk are graviton helicities.
+As before, imposing an antipodal matching condition on p(z)
+p(z)|I+
+−
+= p(z)|I−
++
+, (123)
+23One assumes that mCH(z)|0⟩ = 0 which can be achieved by normal ordering.
+20
+upon splitting p(z) according to (41) and using (106) to identify the soft component with a
+subleading soft insertion and (109) to compute the action of the hard component on asymptotic
+states, we ﬁnd [19]
+i
+2κπ∂3
+z lim
+ω→0
+(1 +ω∂ω)⟨out|aout
+− (ωˆx)S|in⟩−
+n∑
+k=1
+i
+(
+hk∂zδ(2)(z−zk)−δ(2)(z−zk)∂zk
+)
+⟨out|S|in⟩ = 0.
+(124)
+As expected, this agrees with (121).
+4.3 Sub-subleading soft theorem
+Using the standard parameterization for the momenta spelled out in Appendix C, the sub-
+subleading soft factor (97) can be put into the form [44,45,86]
+S(2)
+− =−κω
+4
+n∑
+k=1
+z−zk
+¯z− ¯zk
+[
+2hk(2hk− 1)− 2(z−zk)2hk∂zk + (z−zk)2∂2
+zk
+]
+(ϵkωk)−1,
+S(2)
++ =−κω
+4
+n∑
+k=1
+¯z− ¯zk
+z−zk
+[
+2¯hk(2¯hk− 1)− 2(¯z− ¯zk)2¯hk∂¯zk + (¯z− ¯zk)2∂2
+¯zk
+]
+(ϵkωk)−1.
+(125)
+As before, focusing on the negative helicity insertion and taking ∂4
+zS(2)
+− , all terms localize to
+delta functions or derivatives thereof, namely
+∂4
+zS(2)
+− =−πκω
+2
+n∑
+k=1
+(
+2hk(2hk− 1)∂2
+zδ(2)(z−zk)− 4(2hk)∂zδ(2)(z−zk)∂zk
++ 6δ(2)(z−zk)∂2
+zk
+)
+(ϵkωk)−1.
+(126)
+An antipodal matching condition for t(z),
+t(z)|I+
+−
+= t(z)|I−
++
+(127)
+then implies the conservation law
+⟨out|t(z)|I+
+−
+S−S t(z)|I−
++
+|in⟩ = 0. (128)
+(106) identiﬁes the soft component of (128) with a sub-subleading soft insertion
+⟨out|tS(z)|I+
+−
+S−S tS(z)|I−
++
+|in⟩ =− 1
+6κπ lim
+ω→0
+∂ω(1 +ω∂ω)∂4
+z
+(
+⟨out|aout
+− (ωˆx)S|in⟩
+)
+. (129)
+On the other hand, (110) allows for the hard component of (128) to be written as
+⟨out|tH(z)|I+
+−
+S−S tH(z)|I−
++
+|in⟩ =− 1
+6
+n∑
+k=1
+(
+2hk(2hk− 1)∂2
+zδ(2)(z−zk)− 8hk∂zδ(2)(z−zk)∂zk
++ 6δ(2)(z−zk)∂2
+zk
+)
+(ϵkωk)−1⟨out|S|in⟩ +O(κ3).
+(130)
+21
+TheO(κ3) contributions arise from the terms cubic in the ﬁelds whose action on asymptotic
+states will be computed using (80) in Section 5.
+Putting everything together, we ﬁnd that to leading order in κ
+lim
+ω→0
+∂ω(1 +ω∂ω)∂4
+z
+(
+⟨out|aout
+− (ωˆx)S|in⟩
+)
+= 2∂4
+zS(2)⟨out|S|in⟩ =
+=−πκ
+n∑
+k=1
+(
+2hk(2hk− 1)∂2
+zδ(2)(z−zk)− 8hk∂zδ(2)(z−zk)∂zk
++ 6δ(2)(z−zk)∂2
+zk
+)
+(ϵkωk)−1⟨out|S|in⟩,
+(131)
+which remarkably agrees with (126).
+5 Collinear contribution to the soft theorem
+In this section we consider the quadratic contribution to symmetry action (93), which upon
+promoting the bracket to a commutator takes the form
+[tC(z),C (u′,z′)] = i
+2∂u
+(
+C(u,z′)∂−1
+u C(u,z′)
+)
+δ(z,z′). (132)
+Upon Fourier transforming and using (107), we ﬁnd
+[tC(z),a out
++ (ωˆx′)] =−2π
+κ
+~[∂u[C∂−1
+u C]](ω)δ(z,z′)
+=−ω
+κ
+∫ +∞
+−∞
+dω′
+(~C(ω−ω′)~C(ω′)
+(ω−ω′)−iϵ
+)
+δ(z,z′), (133)
+where we have used the convolution theorem and (112). Using (107) the RHS of (133) can be
+re-expressed in terms of modes, namely
+[tC(z),a out
++ (ωˆx′)] = κω
+16π2
+∫ ω
+0
+dω′
+[a+((ω−ω′)ˆx′)a+(ω′ˆx′)
+ω−ω′−iϵ
+]
+δ(z,z′)
+− κω2
+16π2
+∫ +∞
+ω
+dω′
+[
+a†
++((ω′−ω)ˆx′)a+(ω′ˆx′)
+]
+(ω−ω′−iϵ)(ω′−iϵ) δ(z,z′). (134)
+Details are given in Appendix D. The commutators with the opposite helicity as well as incoming
+modes can be found similarly.
+Both terms represent collinear corrections to the sub-subleading soft theorem that can be
+traced back to classical, non-perturbative gravitational eﬀects. The ﬁrst term is a particle creating
+contribution which can be evaluated using the universal behavior of equal helicity gravitons in
+the collinear limit [87] which for positive helicity gravitons takes the form
+lim
+ˆpi→ˆpj
+⟨ωiˆpi;ωj ˆpj|S|in⟩ =−κ
+2
+¯zij
+zij
+(ωi +ωj)2
+ωiωj
+⟨(ωi +ωj)ˆpj|S|in⟩ +··· , (135)
+22
+where··· denote subleading terms in the collinear limit. The associated correction then becomes
+⟨out|tC(z)|I+
+−
+S−S tC(z)|I−
++
+|in⟩
+∝κ2
+∑
+i
+ωi
+∫ ωi
+0
+dω′ ω2
+i
+ω′(ω′−ωi)2δ(z,zi)⟨ωiˆpi|S|in⟩ +··· , (136)
+∝κ2 lim
+ϵ→0
+∑
+i
+ωiB(ϵ,−1 +ϵ)δ(z,zi)⟨ωiˆpi|S|in⟩ +··· , (137)
+where B(ϵ,−1 +ϵ) = 1
+ϵ is an Euler beta function resulting from the regulated integral. The
+second term can be shown to give rise to corrections with δ-function support of the form
+⟨out|tC(z)|I+
+−
+S−S tC(z)|I−
++
+|in⟩
+∝κ
+∑
+i,j
+Fij(ωi,ωj)δ(zi,zj)δ(z,zi)⟨(ωi +ωj)ˆpi|S|in⟩ +··· , (138)
+where Fij are (possibly vanishing) functions of the external energies. We expect a careful treat-
+ment of contact terms in the original proof of [17] to reveal these corrections. 24 We leave a
+complete understanding of their amplitudes origin and implications to future work.
+6 Conclusions
+In this work we have established a clear connection between the spin-2 conservation equation
+and the sub-subleading soft theorem. We have learned that the non-linear nature of Einstein’s
+equations manifests itself in the sub-subleading soft theorem through collinear corrections. We
+have also revealed that, unlike the spin-0 and -1 symmetries responsible for the leading and
+subleading soft theorems, the spin-2 symmetry is not simply an asymptotic diﬀeomorphism.
+It involves a non-local transformation represented by a pseudo-vector ﬁeld acting on I. The
+extension of this symmetry to the bulk of spacetime remains mysterious to us. This result now
+puts us in a position to understand the nature of the spin-2 memory eﬀect, which is a question
+we expect to return to in the near future.
+From the S-matrix point of view, it is expected that this spin-2 charge, or rather its quadratic
+truncation, is one of the canonical generators for the w1+∞ symmetry unraveled by celestial
+holography [35, 36]. Interestingly, the connection between W N algebras, pseudo-vectors and
+integrable systems has already been explored in the past [78]. This suggests that there could
+be an exciting connection between asymptotic Einstein’s equations and symmetries of integrable
+systems.
+Finally, it is natural to wonder whether the collection of celestial Ward identities associated
+with the entire w1+∞ symmetry tower possesses a gravitational dynamical interpretation. We
+started to address this question in [88], where ﬁrst evidence for a canonical realization of a w1+∞
+loop algebra on the gravitational phase space was given.
+24We thank Freddy Cachazo for a discussion on this point.
+23
+Acknowledgements
+We would like to thank Freddy Cachazo and Sabrina Pasterski for helpful discussions and insights.
+We also thank Andrew Strominger for feedback on a ﬁnal version of this manuscript. Research at
+Perimeter Institute is supported in part by the Government of Canada through the Department of
+Innovation, Science and Economic Development Canada and by the Province of Ontario through
+the Ministry of Colleges and Universities. This project has received funding from the European
+Union’s Horizon 2020 research and innovation programme under the Marie Sklodowska-Curie
+grant agreement No. 841923. The research of A.R. is additionally supported by the Stephen
+Hawking fellowship.
+A Conformal derivative
+In this appendix we study the properties of the conformal derivative introduced in Section 2.
+From the transformation (4) of the metric we deduce that
+δW ΓC
+AB =−DAWδC
+B−DBWδC
+A +qABDCW . (139)
+Let us assume that O⟨A1···As⟩ is a spin s ﬁeld of dimension ∆. We have
+δWD⟨A0OA1···As⟩ = D⟨A0δWOA1···As⟩−
+s∑
+i=1
+δW ΓBi
+⟨A0Ai
+OA1···|Bi|···As⟩
+= D⟨A0((∆−s)WOA1···As⟩) + 2sD⟨A0WOA1···As⟩
+= (∆ −s)WD⟨A0OA1···As⟩) + (∆ +s)D⟨A0WOA1···As⟩. (140)
+Hence, by using the transformation (11) of the conformal connection Υ A, we see that
+D⟨A0OA1···As⟩ :=D⟨A0OA1···As⟩ + (∆ +s)Υ⟨A0OA1···As⟩ (141)
+transforms covariantly. Similarly for a spin −s ﬁeld, one ﬁnds
+δWDA0O⟨A1···As⟩ = (∆ + s)WDA0O⟨A1···As⟩ + (∆−s)(DA0W )O⟨A1···As⟩. (142)
+We can also compute the transformation of
+δWD⟨AΥB⟩ = D⟨AδW ΥB⟩−δW ΓC
+⟨AB⟩ΥC
+= −D⟨ADB⟩W + 2D⟨AW ΥB⟩,
+δW Υ⟨AΥB⟩ = −2D⟨AW ΥB⟩. (143)
+This implies that
+δWτAB = 2δW (D⟨AΥB⟩ + Υ⟨AΥB⟩) =−2D⟨ADB⟩W. (144)
+This coincides with the transformation of NAB and hence
+δW (NAB−τAB) = 0. (145)
+24
+Since CAB is a primary ﬁeld of (∆ ,s ) = (1,−2), we deduce that DBCAB andDADBCAB are
+respectively of dimension (2,−1) and (3, 0). Moreover,
+DADBCAB = (DA + ΥA)(DB− ΥB)CAB
+=DADBCAB− (DAΥB + ΥAΥB)CAB
+=DADBCAB− 1
+2CABτAB. (146)
+Similarly,
+DADB ˜CAB =DADB ˜CAB− 1
+2
+˜CABτAB, (147)
+where ˜CAB :=ϵACCCB. We can thus write the dual covariant mass as [47]
+˜M = 1
+4DADB ˜CAB− 1
+8
+˜CABNAB
+= 1
+4DADB ˜CAB− 1
+8
+˜CAB ˆNAB. (148)
+In order to extend the deﬁnition of the conformally covariant derivative beyond the case of
+symmetric, traceless tensors, we use (139) to note that for a spin-1 ﬁeld OA of dimension ∆ we
+have
+δWDBOA =DBδWOA−δW ΓC
+ABOC
+= (∆− 1)DB(WOA) +DAWOB +DBWOA−qABDCWOC
+= (∆− 1)WDBOA + (∆− 1)DBWOA + 2D⟨AWOB⟩. (149)
+Hence, we see that
+DBOA :=DBOA + (∆− 1)ΥBOA + 2Υ⟨AOB⟩ (150)
+transforms covariantly as
+δWDBOA = (∆− 1)WDBOA. (151)
+For a general ﬁeld of spin s and dimension ∆, the conformal covariant derivative is given by
+DBOA1···As :=DBOA1···As + (∆−s)ΥBOA1···As + 2
+s∑
+i=1
+Υ⟨BO|A1···|Ai⟩···As. (152)
+Finally, we see that the sphere metric qAB, which is a ﬁeld of spin s = 2 and dimension ∆ = 0,
+is compatible with the conformal connection, namely
+DCqAB =−2ΥCqAB + 2Υ⟨CqA⟩B + 2Υ⟨CqB⟩A = 0. (153)
+25
+A.1 Commutators and curvature
+By means of the general formula (152), we can evaluate the commutator of the Weyl-covariant
+derivative on a ﬁeld of spin 1 and dimension ∆
+[DA,DB]VC =DA(DBVC + (∆− 1)ΥBVC + 2Υ⟨BVC⟩)−A↔B
+=DADBVC + (∆− 1)(DAΥB)VC + 2(DAΥ⟨B)VC⟩−A↔B
+= [DA,DB]VC + 2∆(D[AΥB])VC + 2(D[A|ΥC)V|B]− 2qC[B(DA]ΥD)VD. (154)
+Writing the conformal connection as Υ A = DAϕ and working in complex coordinates, we can
+derive the identity
+(D[A|ΥC)V|B]−qC[B(DA]ΥD)VD =qA[CqD]BVDDEΥE. (155)
+Moreover, we can write the commutator of the Weyl-covariant derivative as
+[DA,DB]VC =RqA[CqD]BVD, (156)
+where, in analogy to [32], we have deﬁned
+R :=R + 2DAΥA, (157)
+and we recall R denotes the scalar curvature of the 2-sphere metric qAB.
+Finally,
+δWDAτAB =DAδWτAB +δW ΓA
+ACτCB +δW ΓB
+ACτAC
+= 4DA(Wτ AB)− 2DAD⟨ADB⟩W− 4DCWτ CB
+= 4W (DAτAB + 1
+4DBR)−DB(RW + ˆ∆W ), (158)
+where ˆ∆ =DCDC and [ ˆ∆,DB]W = R
+2DBW . We also have that
+δWR = 2WR + 2ˆ∆W , (159)
+from which
+δW (DBR) = 2WDBR +DB(2WR + 2ˆ∆W ). (160)
+Therefore,
+δW (1
+2DBR +DAτAB) = 4W (DAτAB + 1
+2DBR). (161)
+This implies that 2DAτAB +DBR is a primary ﬁeld of dimension/spin (3 ,−1). If we assume it
+vanishes for one choice of the conformal orbit, it vanishes at all times.
+26
+A.2 Spin connection and variations
+The spin connection Ω appears in
+DAmB−DBmA = ΩϵAB. (162)
+Using (22) and contracting with mA ¯mB, as well as with ¯mAmB, one ﬁnds
+iΩ = ¯mADmA = ¯mA ¯DmA. (163)
+Moreover,
+DAmA = (mA ¯mB + ¯mAmB)DAmB = ¯mBDmB =iΩ. (164)
+We can expand the vector ﬁeld as YA = YmA + ¯Y ¯mA where Y = YA ¯mA. This means that,
+under GBMS transformations (W = 1
+2DAYA), we have
+δ(T,Y )mA =YBDBmA +mBDAYB− 1
+2DBYBmA
+=iΩ(YmA− ¯Y ¯mA) +DA ¯Y− 1
+2((D +iΩ)Y + ( ¯D−iΩ) ¯Y )mA, (165)
+mAδ(T,Y )mA = (D−iΩ) ¯Y , (166)
+¯mAδ(T,Y )mA = 1
+2(( ¯D +iΩ) ¯Y− (D−iΩ)Y ), (167)
+1
+2qABδ(T,Y )qAB =mA ¯mBδ(T,Y )( ¯mAmB) + ¯mAmBδ(T,Y )( ¯mAmB)
+= ¯mAδ(T,Y )mA +mAδ(T,Y ) ¯mA = 0. (168)
+Then for a primary spin s operator,
+OA1···As =Os ¯mA1··· ¯mAs + ¯OsmA1··· mAs,
+OA1···As =O−smA1··· mAs + ¯O−s ¯mA1··· ¯mAs, (169)
+where O−s = ¯Os, one ﬁnds the variations
+mA1··· mAsδYOA1···As =DYOs +sOs(mADY ¯mA) +sDY B ¯mBOs + (∆−s)WYOs
+= (YD + ¯Y ¯D)Os−isΩ(Y + ¯Y )Os +sOs(DY +Y ¯mBDmB)
++ 1
+2Os(∆−s)((D +iΩ)Y + ( ¯D−iΩ) ¯Y )
+=Y [(D−isΩ)Os] + ¯Y [( ¯D−isΩ)Os]
++ 1
+2(∆ +s)Os[(D +iΩ)Y ] + 1
+2(∆−s)Os[( ¯D−iΩ) ¯Y ]. (170)
+OA1···AsδYmA1··· mAs =−s
+2Os[(D−iΩ)Y ] +s
+2Os[( ¯D +iΩ) ¯Y ]. (171)
+We thus see that the general transformation (170) is consistent with the shear transformation
+(76) (recall that CAB is a primary of (∆,s ) = (1, 2) and footnote 7). Finally, we can write
+δYOs = (YD + ¯Y ¯D)Os + ∆
+2Os(D +iΩ)Y + ∆
+2Os( ¯D−iΩ) ¯Y . (172)
+27
+B Charge commutators
+In this appendix we spell out the steps leading to the results presented in Section 3.
+B.1 Leading charges
+The commutators of the soft and hard parts of MC with C are
+{MS(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{J (u′′,z ),C (u′,z′)}
+= −κ2
+4 θ(u′−u)D2
+zδ(z,z′), (173)
+and
+{MH(u,z ),C (u′,z′)} = 1
+4
+∫ u
++∞
+du′′C(u′′,z ){N (u′′,z ),C (u′,z′)}
+= −κ2
+8
+∫ u
++∞
+du′′C(u′′,z )∂u′δ(u′−u′′)δ(z,z′)
+= κ2
+8 ∂u′[C(u′,z )θ(u′−u)]δ(z,z′), (174)
+where we have used
+∫ u
+∞
+du′′δ(u′′−u′) =−
+∫ ∞
+u
+du′′δ(u′′−u′) =−θ(u′−u), (175)
+with
+θ(x) =
+
+
+
+0,x< 0,
+1,x≥ 0.
+(176)
+B.2 Subleading charges
+The commutators of the terms in P with C are
+{PSS(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{MS(u′′,z ),C (u′,z′)}
+= κ2
+4
+∫ +∞
+u
+du′′θ(u′−u′′)D3
+zδ(z,z′)
+= κ2
+4 (u′−u)θ(u′−u)D3
+zδ(z,z′), (177)
+{PSH(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{MH(u′′,z ),C (u′,z′)}
+= κ2
+8 ∂u′
+∫ u
++∞
+du′′Dz (C(u′,z′)θ(u′−u′′)δ(z,z′))
+28
+= −κ2
+8 Dz∂u′[C(u′,z )θ(u′−u)δ(z,z′)(u′−u)], (178)
+and
+{PHH(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′C(u′′,z ){J (u′′,z ),C (u′,z′)}
+= κ2
+4
+∫ u
++∞
+du′′C(u′′,z )δ(u′′−u′)Dzδ(z,z′)
+= −κ2
+4 [C(u′,z )θ(u′−u)]Dzδ(z,z′), (179)
+where in the last bracket we used (47).
+B.3 Sub-subleading charges
+For the sub-subleading charge we ﬁnd
+{THHH(u,z ),C (u′,z′)} = 3
+2
+∫ u
++∞
+du′′C(u′′,z ){MH(u′′,z ),C (u′,z′)}
+= 3
+16κ2
+∫ u
++∞
+du′′C(u′′,z )∂u′[C(u′,z )θ(u′−u′′)]δ(z,z′)
+=− 3
+16κ2∂u′
+[
+C(u′,z )
+(∫ u′
+u
+du′′C(u′′,z )
+)
+θ(u′−u)
+]
+δ(z,z′), (180)
+{THHS(u,z ),C (u′,z′)} = 3
+2
+∫ u
++∞
+du′′C(u′′,z ){MS(u′′,z ),C (u′,z′)}
+= −3
+8κ2
+∫ u
++∞
+du′′C(u′′,z )θ(u′−u′′)D2
+zδ(z,z′)
+= 3
+8κ2
+(∫ u′
+u
+du′′C(u′′,z )
+)
+θ(u′−u)D2
+zδ(z,z′), (181)
+{TSHH(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{PHH (u′′,z ),C (u′,z′)}
+= −κ2
+4
+∫ u
++∞
+du′′Dz [C(u′,z )Dzδ(z,z′)]θ(u′−u′′)
+= κ2
+4 (u′−u)θ(u′−u)Dz [C(u′,z )Dzδ(z,z′)] , (182)
+{TSSH(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{PSH(u′′,z ),C (u′,z′)}
+= −κ2
+8
+∫ u
++∞
+du′′∂u′
+(
+D2
+z[C(u′,z )δ(z,z′)](u′−u′′)θ(u′−u′′)
+)
+29
+= κ2
+8 ∂u′
+(
+D2
+z[C(u′,z )δ(z,z′)](u′−u)2
+2 θ(u′−u)
+)
+, (183)
+and ﬁnally
+{TSSS(u,z ),C (u′,z′)} =
+∫ u
++∞
+du′′Dz{PSS(u′′,z ),C (u′,z′)}
+= κ2
+4
+∫ u
++∞
+du′′(u′−u′′)θ(u′−u′′)D4
+zδ(z,z′)
+= −κ2
+8 (u′−u)2θ(u′−u)D4
+zδ(z,z′). (184)
+C Conventions
+To demonstrate the equivalence between symmetries and soft theorems in Section 4 it is conve-
+nient to work in ﬂat retarded coordinates
+xµ =u∂z∂¯z ˆqµ(z, ¯z) +rˆqµ(z, ¯z),
+ˆqµ(z, ¯z) = 1√
+2 (1 +z¯z,z + ¯z,−i(z− ¯z), 1−z¯z) := ˆx(z, ¯z), (185)
+in which the Minkowski metric becomes
+ds2 = dxµdxµ =−2dudr + 2r2dzd¯z, (186)
+and the celestial sphere is conformally mapped to a plane. This corresponds to choosing P = 1
+in (22).
+More generally, we parameterize Cartesian coordinate massless 4-momenta as
+pµ
+k = ϵkωk√
+2 (1 +zk¯zk,zk + ¯zk,−i(zk− ¯zk), 1−zk¯zk),
+q = ω√
+2(1 +z¯z,z + ¯z,−i(z− ¯z), 1−z¯z),
+(187)
+withµ = 0, 1, 2, 3 andϵk =±1 for outgoing and incoming momenta respectively. zk is the spatial
+location at which a particle of momentum pk crossesI+. In this parameterization,
+p1·p2 =−ϵ1ϵ2ω1ω2z12¯z12, (188)
+where
+z12 =z1−z2, ¯z12 = ¯z1− ¯z2. (189)
+It can be shown [6,19,23,45,86] that in these coordinates, the soft factors (95)-(97) indeed take
+the forms (113), (120) and (125).
+The mode expansions of the shear and the news take the form [6] (see [89] for a review)
+C(u, ˆx) = iκ
+8π2
+∫ ∞
+0
+dω
+[
+aout†
+− (ωˆx)eiωu−aout
++ (ωˆx)e−iωu
+]
+,
+ˆN(u, ˆx) =− κ
+8π2
+∫ ∞
+0
+dωω
+[
+aout†
++ (ωˆx)eiωu +aout
+− (ωˆx)e−iωu
+]
+,
+(190)
+30
+where ˆN :=∂u ¯C. From this we have for ω >0
+ωa−(ωˆx) =−4π
+κ
+∫
+du ˆN(u, ˆx)eiωu,
+a†
+−(ω′ˆx′) =−4iπ
+κ
+∫
+du′C(u′, ˆx′)e−iω′u′
+. (191)
+We now recall (49),
+[ ˆN(u,z ),C (u′,z′)] =−iκ2
+2 δ(u−u′)δ(z,z′), (192)
+which allows us to compute
+ω[a−(ωˆx),a†
+−(ω′ˆx′)] =i
+(4π
+κ2
+)2∫
+dudu′[N(u, ˆx),C (u′, ˆx′)]eiωue−iω′u′
+= 16π3δ(ω−ω′)δ(z,z′). (193)
+Moreover, considering the Fourier transform of C,
+~C(ω,z ) =
+∫ ∞
+−∞
+dueiωuC(u, ˆx) = iκ
+4π
+[
+aout†
+− (−ωˆx)θ(−ω)−aout
++ (ωˆx)θ(ω)
+]
+, (194)
+we ﬁnd that
+(∂−1
+u C)(u,z ) :=
+∫ u
++∞
+du′C(u′,z ) = 1
+2π
+∫ +∞
+−∞
+dω~C(ω,z )
+∫ u
++∞
+du′e−i(ω−iϵ)u′
+= 1
+2iπ
+∫ +∞
+−∞
+dω
+~C(ω,z )
+−ω +iϵe−i(ω−iϵ)u, (195)
+or equivalently
+~∂−1
+u C(ω,z ) =
+~C(ω,z )
+−iω−ϵ. (196)
+D Collinear terms
+(196) and the convolution theorem imply that
+~[∂u[C∂−1
+u C]](ω,z ) = ω
+2π
+∫ ∞
+−∞
+dω′~C(ω′,z )
+~C(ω−ω′,z )
+(ω−ω′)−iϵ. (197)
+We can use (132) to evaluate the commutator of the cubic contribution to the sub-subleading
+charge with an annihilation operator. We ﬁnd
+ω
+2π
+∫
+dω′~C(ω′,z′)
+~C(ω−ω′,z′)
+(ω−ω′)−iϵ =− ωκ2
+(4π)22π
+∫
+dω′
+[aout
++ (ω′ˆx′)aout
++ ((ω−ω′)ˆx′)
+ω−ω′−iϵ θ(ω′)θ(ω−ω′)
+− ωaout†
+− ((ω′−ω)ˆx′)aout
++ (ω′ˆx′)
+(ω′−iϵ)(ω−ω′−iϵ) θ(ω′)θ(ω′−ω)
+]
+(198)
+31
+and therefore
+[tC(z),a out
++ (ωˆx′)] =−ω
+κ
+∫
+dω′~C(ω′,z′)
+~C(ω−ω′,z′)
+(ω−ω′)−iϵδ(z,z′)
+= κω
+(4π)2
+∫ ω
+0
+dω′aout
++ (ω′ˆx′)aout
++ (ω−ω′)ˆx′)
+ω−ω′−iϵ δ(z,z′)
+− κω2
+(4π)2
+∫ ∞
+ω
+dω′aout†
+− ((ω′−ω)ˆx′)aout
++ (ω′ˆx′)
+(ω′−iϵ)(ω−ω′−iϵ) δ(z,z′), ω > 0. (199)
+References
+[1] H. Bondi, Gravitational Waves in General Relativity , Nature 186 (1960) 535–535.
+[2] H. Bondi, M. G. J. van der Burg and A. W. K. Metzner, Gravitational waves in general
+relativity. 7. Waves from axisymmetric isolated systems , Proc. Roy. Soc. Lond. A269
+(1962) 21–52.
+[3] R. Sachs, On the characteristic initial value problem in gravitational theory , J.Math.Phys.
+3 (1962) 908–914.
+[4] S. Weinberg, Infrared photons and gravitons, Phys. Rev. 140 (1965) B516–B524.
+[5] A. Strominger, On BMS Invariance of Gravitational Scattering , JHEP 07 (2014) 152,
+[1312.2229].
+[6] T. He, V. Lysov, P. Mitra and A. Strominger, BMS supertranslations and Weinberg’s soft
+graviton theorem, JHEP 05 (2015) 151, [ 1401.7026].
+[7] K. S. T. Braginsky, Gravitational-wave bursts with memory and experimental prospects ,
+Nature 327 (1987) 123–125.
+[8] D. Christodoulou, Nonlinear nature of gravitation and gravitational wave experiments ,
+Phys. Rev. Lett. 67 (1991) 1486–1489.
+[9] L. Blanchet and T. Damour, Hereditary eﬀects in gravitational radiation , Phys. Rev. D 46
+(1992) 4304–4319.
+[10] K. S. Thorne, Gravitational-wave bursts with memory: The Christodoulou eﬀect , Phys.
+Rev. D 45 (1992) 520–524.
+[11] M. Favata, The gravitational-wave memory eﬀect , Class. Quant. Grav. 27 (2010) 084036,
+[1003.3486].
+[12] A. Strominger and A. Zhiboedov, Gravitational Memory, BMS Supertranslations and Soft
+Theorems, JHEP 01 (2016) 086, [ 1411.5745].
+[13] G. Barnich and C. Troessaert, Symmetries of asymptotically ﬂat 4 dimensional spacetimes
+at null inﬁnity revisited , Phys. Rev. Lett. 105 (2010) 111103, [ 0909.2617].
+32
+[14] G. Barnich and C. Troessaert, Aspects of the BMS/CFT correspondence, JHEP 05 (2010)
+062, [1001.1541].
+[15] G. Barnich and C. Troessaert, BMS charge algebra, JHEP 12 (2011) 105, [ 1106.0213].
+[16] G. Barnich and C. Troessaert, Comments on holographic current algebras and
+asymptotically ﬂat four dimensional spacetimes at null inﬁnity , JHEP 11 (2013) 003,
+[1309.0794].
+[17] F. Cachazo and A. Strominger, Evidence for a New Soft Graviton Theorem , [1404.4091].
+[18] C. D. White, Diagrammatic insights into next-to-soft corrections , Phys. Lett. B 737 (2014)
+216–222, [1406.7184].
+[19] D. Kapec, V. Lysov, S. Pasterski and A. Strominger, Semiclassical Virasoro symmetry of
+the quantum gravity S-matrix, JHEP 08 (2014) 058, [ 1406.3312].
+[20] S. Pasterski, A. Strominger and A. Zhiboedov, New Gravitational Memories , JHEP 12
+(2016) 053, [ 1502.06120].
+[21] M. Campiglia and A. Laddha, Asymptotic symmetries and subleading soft graviton
+theorem, Phys. Rev. D 90 (2014) 124028, [ 1408.2228].
+[22] M. Campiglia and A. Laddha, New symmetries for the Gravitational S-matrix , JHEP 04
+(2015) 076, [ 1502.02318].
+[23] D. Kapec, P. Mitra, A.-M. Raclariu and A. Strominger, 2D Stress Tensor for 4D Gravity ,
+Phys. Rev. Lett. 119 (2017) 121601, [ 1609.00282].
+[24] C. Cheung, A. de la Fuente and R. Sundrum, 4D scattering amplitudes and asymptotic
+symmetries from 2D CFT , JHEP 01 (2017) 112, [ 1609.00732].
+[25] J. de Boer and S. N. Solodukhin, A Holographic reduction of Minkowski space-time , Nucl.
+Phys. B 665 (2003) 545–593, [ hep-th/0303006].
+[26] S. Pasterski, S.-H. Shao and A. Strominger, Flat Space Amplitudes and Conformal
+Symmetry of the Celestial Sphere , Phys. Rev. D 96 (2017) 065026, [ 1701.00049].
+[27] S. Pasterski and S.-H. Shao, Conformal basis for ﬂat space amplitudes , Phys. Rev. D 96
+(2017) 065022, [ 1705.01027].
+[28] A. Ashtekar and M. Streubel, Symplectic Geometry of Radiative Modes and Conserved
+Quantities at Null Inﬁnity , Proc. Roy. Soc. Lond. A 376 (1981) 585–607.
+[29] J. Lee and R. M. Wald, Local symmetries and constraints, J. Math. Phys. 31 (1990)
+725–743.
+[30] E. E. Flanagan and D. A. Nichols, Conserved charges of the extended Bondi-Metzner-Sachs
+algebra, Phys. Rev. D 95 (2017) 044002, [ 1510.03386].
+33
+[31] G. Comp` ere, A. Fiorucci and R. Ruzziconi,Superboost transitions, refraction memory and
+super-Lorentz charge algebra, JHEP 11 (2018) 200, [ 1810.00377].
+[32] M. Campiglia and J. Peraza, Generalized BMS charge algebra, Phys. Rev. D 101 (2020)
+104039, [2002.06691].
+[33] L. Freidel, R. Oliveri, D. Pranzetti and S. Speziale, The Weyl BMS group and Einstein’s
+equations, JHEP 07 (4, 2021) 170, [ 2104.05793].
+[34] A. Guevara, Notes on Conformal Soft Theorems and Recursion Relations in Gravity ,
+[1906.07810].
+[35] A. Guevara, E. Himwich, M. Pate and A. Strominger, Holographic symmetry algebras for
+gauge theory and gravity , JHEP 11 (2021) 152, [ 2103.03961].
+[36] A. Strominger, w(1+inﬁnity) and the Celestial Sphere , [2105.14346].
+[37] A. Ball, S. Narayanan, J. Salzer and A. Strominger, Perturbatively Exact w1+∞ Asymptotic
+Symmetry of Quantum Self-Dual Gravity , [2111.10392].
+[38] T. Adamo, L. Mason and A. Sharma, Celestial w1+∞ symmetries from twistor space ,
+[2110.06066].
+[39] T. Adamo, W. Bu, E. Casali and A. Sharma, Celestial operator products from the
+worldsheet, [2111.02279].
+[40] M. Zlotnikov, Sub-sub-leading soft-graviton theorem in arbitrary dimension , JHEP 10
+(2014) 148, [ 1407.5936].
+[41] C. Kalousios and F. Rojas, Next to subleading soft-graviton theorem in arbitrary
+dimensions, JHEP 01 (2015) 107, [ 1407.5982].
+[42] A. Luna, S. Melville, S. G. Naculich and C. D. White, Next-to-soft corrections to high
+energy scattering in QCD and gravity , JHEP 01 (2017) 052, [ 1611.02172].
+[43] S. Banerjee, S. Ghosh and S. S. Samal, Subsubleading soft graviton symmetry and MHV
+graviton scattering amplitudes, [2104.02546].
+[44] M. Campiglia and A. Laddha, Sub-subleading soft gravitons: New symmetries of quantum
+gravity?, Phys. Lett. B 764 (2017) 218–221, [ 1605.09094].
+[45] M. Campiglia and A. Laddha, Sub-subleading soft gravitons and large diﬀeomorphisms ,
+JHEP 01 (2017) 036, [ 1608.00685].
+[46] E. Conde and P. Mao, BMS Supertranslations and Not So Soft Gravitons , JHEP 05 (2017)
+060, [1612.08294].
+[47] L. Freidel and D. Pranzetti, Gravity from symmetry: Duality and impulsive waves ,
+[2109.06342].
+34
+[48] E. Newman and R. Penrose, An approach to gravitational radiation by a method of spin
+coeﬃcients, J.Math.Phys. 3 (1962) 566–578.
+[49] E. T. Newman and T. W. J. Unti, Behavior of Asymptotically Flat Empty Spaces , J. Math.
+Phys. 3 (1962) 891.
+[50] T. M. Adamo, C. N. Kozameh and E. T. Newman, Null geodesic congruences,
+asymptotically ﬂat space-times and their physical interpretation , Living Rev. Rel. 12 (2009)
+6, [0906.2155].
+[51] G. Barnich and P.-H. Lambert, A Note on the Newman-Unti group and the BMS charge
+algebra in terms of Newman-Penrose coeﬃcients , Adv. Math. Phys. 2012 (2012) 197385,
+[1102.0589].
+[52] G. Barnich and C. Troessaert, Finite BMS transformations , JHEP 03 (2016) 167,
+[1601.04090].
+[53] G. Barnich, P. Mao and R. Ruzziconi, BMS current algebra in the context of the
+Newman–Penrose formalism, Class. Quant. Grav. 37 (2020) 095010, [ 1910.14588].
+[54] W. Donnelly and L. Freidel, Local subsystems in gauge theory and gravity , JHEP 09
+(2016) 102, [ 1601.04744].
+[55] L. Freidel, M. Geiller and D. Pranzetti, Edge modes of gravity - I: Corner potentials and
+charges, [2006.12527].
+[56] L. Freidel, R. Oliveri, D. Pranzetti and S. Speziale, Extended corner symmetry, charge
+bracket and Einstein’s equations, JHEP 09 (2021) 083, [ 2104.12881].
+[57] L. Ciambelli and R. G. Leigh, Isolated Surfaces and Symmetries of Gravity , [2104.07643].
+[58] S. Pasterski, A. Puhm and E. Trevisani, Celestial diamonds: conformal multiplets in
+celestial CFT, JHEP 11 (2021) 072, [ 2105.03516].
+[59] S. Pasterski, A. Puhm and E. Trevisani, Revisiting the conformally soft sector with celestial
+diamonds, JHEP 11 (2021) 143, [ 2105.09792].
+[60] L. Donnay and R. Ruzziconi, BMS ﬂux algebra in celestial holography , JHEP 11 (2021)
+040, [2108.11969].
+[61] L. Ciambelli, R. G. Leigh, C. Marteau and P. M. Petropoulos, Carroll Structures, Null
+Geometry and Conformal Isometries , Phys. Rev. D 100 (2019) 046010, [ 1905.02221].
+[62] L. Ciambelli and R. G. Leigh, Weyl Connections and their Role in Holography , Phys. Rev.
+D 101 (2020) 086020, [ 1905.04339].
+[63] R. Geroch, Asymptotic structure of space-time , in Asymptotic Structure of Space-Time
+(F. P. Esposito and L. Witten, eds.), (Boston, MA), Springer US, 1977. DOI.
+[64] S. Pasterski and A. Puhm, Shifting spin on the celestial sphere , Phys. Rev. D 104 (2021)
+086020, [2012.15694].
+35
+[65] D. A. Nichols, Center-of-mass angular momentum and memory eﬀect in asymptotically ﬂat
+spacetimes, Phys. Rev. D 98 (2018) 064032, [ 1807.08767].
+[66] L. Freidel, E. R. Livine and D. Pranzetti, Gravitational edge modes: from Kac-Moody
+charges to Poincar´ e networks, Class. Quant. Grav. 36 (2019) 195014, [ 1906.07876].
+[67] L. Freidel, E. R. Livine and D. Pranzetti, Kinematical Gravitational Charge Algebra, Phys.
+Rev. D 101 (2020) 024012, [ 1910.05642].
+[68] W. Donnelly, L. Freidel, S. F. Moosavian and A. J. Speranza, Gravitational Edge Modes,
+Coadjoint Orbits, and Hydrodynamics , [2012.10367].
+[69] R. F. Penna, BMS invariance and the membrane paradigm , JHEP 03 (2016) 023,
+[1508.06577].
+[70] R. F. Penna, Near-horizon BMS symmetries as ﬂuid symmetries , JHEP 10 (2017) 049,
+[1703.07382].
+[71] G. Barnich and R. Ruzziconi, Coadjoint representation of the bms group on celestial
+riemann surfaces, [2103.11253].
+[72] A. Laddha and A. Sen, Sub-subleading Soft Graviton Theorem in Generic Theories of
+Quantum Gravity, JHEP 10 (2017) 065, [ 1706.00759].
+[73] A. Laddha and A. Sen, Logarithmic Terms in the Soft Expansion in Four Dimensions ,
+JHEP 10 (2018) 056, [ 1804.09193].
+[74] L. Freidel, S. F. Moosavian and D. Pranzetti, “ Coadjoint Orbits of null inﬁnity .” 2021, to
+appear.
+[75] I. M. Gel’fand and L. A. Dikii, Fractional powers of operators and hamiltonian systems ,
+Functional Analysis and Its Applications 10:4 (1976) 259–273.
+[76] M. Adler, On a trace functional for formal pseudo diﬀerential operators , Invent Math 50
+(1978) 219–248.
+[77] L. A. Dickey, Soliton Equations And Hamiltonian Systems (Second Edition) . World
+Scientiﬁc, 2003.
+[78] I. Bakas, Higher Spin Fields and the Gelfand-dickey Algebra , Commun. Math. Phys. 123
+(1989) 627–639.
+[79] L. Bonora, Q. P. Liu and C. S. Xiong, The Integrable hierarchy constructed from a pair of
+higher KdV hierarchies and its associated W algebra , Commun. Math. Phys. 175 (1996)
+177–202, [hep-th/9408035].
+[80] A. Ashtekar and R. O. Hansen, A uniﬁed treatment of null and spatial inﬁnity in general
+relativity. I - Universal structure, asymptotic symmetries, and conserved quantities at
+spatial inﬁnity, J. Math. Phys. 19 (1978) 1542–1566.
+36
+[81] A. Ashtekar, Asymptotic Quantization of the Gravitational Field , Phys. Rev. Lett. 46
+(1981) 573–576.
+[82] A. Ashtekar, M. Campiglia and A. Laddha, Null inﬁnity, the BMS group and infrared
+issues, Gen. Rel. Grav. 50 (2018) 140–163, [ 1808.07093].
+[83] H. Godazgar, M. Godazgar and C. Pope, Tower of subleading dual BMS charges , JHEP 03
+(2019) 057, [ 1812.06935].
+[84] H. Godazgar, M. Godazgar and C. Pope, Dual gravitational charges and soft theorems ,
+JHEP 10 (2019) 123, [ 1908.01164].
+[85] H. Godazgar, M. Godazgar and M. J. Perry, Hamiltonian derivation of dual gravitational
+charges, JHEP 20 (2020) 084, [ 2007.07144].
+[86] M. Pate, A.-M. Raclariu, A. Strominger and E. Y. Yuan, Celestial operator products of
+gluons and gravitons , Rev. Math. Phys. 33 (2021) 2140003, [ 1910.07424].
+[87] Z. Bern, L. J. Dixon, M. Perelstein and J. S. Rozowsky, Multileg one loop gravity
+amplitudes from gauge theory , Nucl. Phys. B 546 (1999) 423–479, [ hep-th/9811140].
+[88] L. Freidel, D. Pranzetti and A.-M. Raclariu, Higher spin dynamics in gravity and w1+∞
+celestial symmetries, [2112.15573].
+[89] A. Strominger, Lectures on the Infrared Structure of Gravity and Gauge Theory ,
+[1703.05448].
+37
