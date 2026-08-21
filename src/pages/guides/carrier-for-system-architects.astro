@@ -19,6 +19,75 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
     <div class="article-body">
       <p><a href="/guides/carrier-and-algebra/">← Return to the general explainer</a></p>
 
+      <h2>The shortest useful model</h2>
+      <pre><code>{`Marici ≈
+    derived relational store
+  + typed sector database view
+  + coherent transport runtime
+  + physical UI view`}</code></pre>
+      <p>
+        The store contains identities, labelled occurrences, typed relations, strata, and
+        provenance. A sector view selects the relevant coefficient objects and legal operations.
+        Transport preserves or explicitly corrects that view across gluing, specialization,
+        continuation, and chart changes. The physical UI view supplies effects, support,
+        normalization, and the final observable record.
+      </p>
+      <p>
+        This is not a literal database ontology. In particular, stored decomposition is not
+        operational distinguishability. Two rows or summands count as distinct physical outcomes
+        only when a source-derived effect can distinguish them. Entropy measures unresolved
+        multiplicity in the rendered physical view—not table size.
+      </p>
+
+      <h2>Datomic: identity, immutable value, and history</h2>
+      <p>
+        Datomic is a closer analogy than a mutable SQL database because it separates enduring
+        identity from immutable database values and retains transaction provenance. A rough
+        correspondence is:
+      </p>
+      <pre><code>Datomic entity identity  ↔ labelled physical identity
+immutable database value ↔ one coherent sector/context view
+transaction history      ↔ provenance of admitted transformations
+query                     ↔ sector lens or physical readout</code></pre>
+      <p>
+        But the final line cannot be pushed too far. A Datomic database value is an ordinary
+        commutative collection of facts: its datoms can in principle participate in one global
+        query. Marici’s exact scattering and flavor controls instead contain internally
+        commutative outcome views whose projectors do not commute across contexts. Two valid views
+        need not possess one physical join that preserves both as simultaneous facts.
+      </p>
+      <p>
+        The bounded analogy is therefore <strong>Datomic-like immutable identity and
+        provenance, generalized by noncommuting contextual materializations</strong>. A quantum
+        context is not merely an <code>as-of</code> database time, and Gauss–Manin or Gysin
+        transport is not ordinary transaction history.
+      </p>
+
+      <h2>Not just readout: a read/write interaction surface</h2>
+      <p>
+        A UI contains queries and commands. The physical analogue does too. Read-only effects
+        return records; preparations, channels, detector choices, and postselection are authorized
+        writes that change what later interactions can observe. The proper object is an instrument:
+        one operation emits an outcome and produces a conditional next state.
+      </p>
+      <pre><code>current state
+    → capability-authorized interaction
+    → (public event record, conditional next state)</code></pre>
+      <p>
+        Public UI, developer tools, and server internals should also remain distinct. A stronger
+        apparatus can expose diagnostic data or a side channel that is absent from the ordinary
+        public contract. Such data can be observable without being a stable semantic property of
+        the underlying object.
+      </p>
+      <p>
+        The distinction is mathematically consequential, not cosmetic. Formal instrument
+        completions show that a direct coarse interaction and a fine diagnostic measurement
+        followed by forgetting can report the same coarse probability while producing different
+        backaction: the diagnostic path can erase coherence preserved by the coarse path.
+        Inspecting the “network tab” may change the system. Current scattering and flavor sources
+        do not yet select these update maps, so the physical instrument layer remains conjectural.
+      </p>
+
       <h2>Architecture, not workload</h2>
       <p>
         The carrier is not the running application or its current data. It is the substrate on
