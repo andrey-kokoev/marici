@@ -1,0 +1,79 @@
+{
+  "schema": "marici.source-derived-instrument-gate.v1",
+  "required_capabilities": [
+    "system_state_space",
+    "apparatus_state_space",
+    "source_interaction",
+    "pointer_outcomes",
+    "conditioning_rule"
+  ],
+  "sectors": {
+    "scattering_bell": {
+      "evidence": "research/nima/scattering-bell-admission-audit.md",
+      "system_state_space": true,
+      "apparatus_state_space": false,
+      "source_interaction": false,
+      "pointer_outcomes": false,
+      "conditioning_rule": false,
+      "strongest_object": "fixed-kinematics Born table after a chosen polarization effect",
+      "missing": [
+        "apparatus_state_space",
+        "source_interaction",
+        "pointer_outcomes",
+        "conditioning_rule"
+      ],
+      "source_derived_instrument": false
+    },
+    "radiative_memory": {
+      "evidence": "research/nima/radiative-memory-paired-readout.md",
+      "system_state_space": true,
+      "apparatus_state_space": false,
+      "source_interaction": false,
+      "pointer_outcomes": false,
+      "conditioning_rule": false,
+      "strongest_object": "covariant pairing of transported memory and detector labels",
+      "missing": [
+        "apparatus_state_space",
+        "source_interaction",
+        "pointer_outcomes",
+        "conditioning_rule"
+      ],
+      "source_derived_instrument": false
+    },
+    "cosmology": {
+      "evidence": "research/nima/cosmology-entropy-descent-obstruction.md",
+      "system_state_space": false,
+      "apparatus_state_space": false,
+      "source_interaction": false,
+      "pointer_outcomes": false,
+      "conditioning_rule": false,
+      "strongest_object": "positive scalar period without an outcome algebra",
+      "missing": [
+        "system_state_space",
+        "apparatus_state_space",
+        "source_interaction",
+        "pointer_outcomes",
+        "conditioning_rule"
+      ],
+      "source_derived_instrument": false
+    },
+    "flavor": {
+      "evidence": "research/flavor/flavor-nine-link-conventions.md",
+      "system_state_space": true,
+      "apparatus_state_space": false,
+      "source_interaction": false,
+      "pointer_outcomes": false,
+      "conditioning_rule": false,
+      "strongest_object": "weak-basis invariants and transition amplitudes/fit observables",
+      "missing": [
+        "apparatus_state_space",
+        "source_interaction",
+        "pointer_outcomes",
+        "conditioning_rule"
+      ],
+      "source_derived_instrument": false
+    }
+  },
+  "verdict": "No currently admitted sector packet determines an outcome-indexed physical instrument. Formal L\u00fcders completions remain noncanonical. The first universally missing datum is an explicit source coupling to an apparatus/pointer system.",
+  "next_falsifier": "Admit one source packet containing a system-apparatus interaction and pointer preparation/readout; derive its Kraus maps by dilation, then test descent, trace preservation, sequential composition, and coarse-graining."
+}

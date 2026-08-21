@@ -1,0 +1,132 @@
+{
+  "schema": "marici.same-effect-different-capability.v1",
+  "parameter": {
+    "cos_theta": "3/5",
+    "sin_theta": "4/5"
+  },
+  "absorptive_udw": {
+    "kraus": [
+      [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "3/5"
+        ]
+      ],
+      [
+        [
+          "0",
+          "-4*I/5"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    ],
+    "channel": [
+      [
+        "rho00 + 16*rho11/25",
+        "3*rho01/5"
+      ],
+      [
+        "3*rho10/5",
+        "9*rho11/25"
+      ]
+    ],
+    "click_successor": [
+      [
+        "16*rho11/25",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "qnd_controlled_pointer": {
+    "kraus": [
+      [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "3/5"
+        ]
+      ],
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-4*I/5"
+        ]
+      ]
+    ],
+    "channel": [
+      [
+        "rho00",
+        "3*rho01/5"
+      ],
+      [
+        "3*rho10/5",
+        "rho11"
+      ]
+    ],
+    "click_successor": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "16*rho11/25"
+      ]
+    ]
+  },
+  "shared_effects": [
+    [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "9/25"
+      ]
+    ],
+    [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "16/25"
+      ]
+    ]
+  ],
+  "checks": {
+    "absorptive_complete": true,
+    "qnd_complete": true,
+    "identical_effects": true,
+    "identical_outcome_probabilities": true,
+    "different_click_successors": true,
+    "different_nonselective_updates": true,
+    "absorptive_double_click_zero": true,
+    "qnd_double_click_nonzero": true,
+    "absorptive_phase_descent": true,
+    "qnd_phase_descent": true,
+    "absorptive_tp": true,
+    "qnd_tp": true
+  },
+  "verdict": "The absorptive UDW and QND controlled-pointer interactions induce exactly the same effect algebra and outcome probabilities for every input state, but different selective, nonselective, and sequential updates. The interaction capability is not reconstructible from the public record law."
+}

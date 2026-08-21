@@ -1,0 +1,102 @@
+{
+  "schema": "marici.udw-one-mode-source-instrument.v1",
+  "source": {
+    "paper": "Suryaatmadja, Cong, Mann, arXiv:2205.14739",
+    "interaction_equation": "H_D=lambda chi mu_D tensor phi[x_D]",
+    "unitary_equation": "U=T exp(-i integral H_I dt)",
+    "preparation": "detector ground state",
+    "pointer": "detector energy basis"
+  },
+  "bounded_specialization": {
+    "scope": "resonant one-field-mode, single-excitation sector",
+    "c": "3/5",
+    "s": "4/5",
+    "status": "declared finite specialization; not a full-field equivalence theorem"
+  },
+  "kraus": {
+    "no_click": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "3/5"
+      ]
+    ],
+    "click": [
+      [
+        "0",
+        "-4*I/5"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "effects": {
+    "no_click": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "9/25"
+      ]
+    ],
+    "click": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "16/25"
+      ]
+    ]
+  },
+  "nonselective_channel": [
+    [
+      "rho00 + 16*rho11/25",
+      "3*rho01/5"
+    ],
+    [
+      "3*rho10/5",
+      "9*rho11/25"
+    ]
+  ],
+  "physical_click_successor": [
+    [
+      "16*rho11/25",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ]
+  ],
+  "formal_luders_click_successor": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "16*rho11/25"
+    ]
+  ],
+  "checks": {
+    "kraus_completeness": true,
+    "branch_sum_trace_preserving": true,
+    "click_probability": true,
+    "same_effect_as_luders": true,
+    "source_update_differs_from_luders": true,
+    "phase_rephasing_descent": true,
+    "sequential_completeness": true,
+    "double_click_forbidden_single_excitation": true,
+    "coarse_forget_equals_branch_sum": true
+  },
+  "verdict": "The declared UDW interaction supplies the first source-selected Marici instrument in a bounded physical specialization. Its click probability agrees with the effect algebra, but its successor state is amplitude damping to the field vacuum, not the formal Luders successor. Records do not determine updates."
+}

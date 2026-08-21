@@ -1,0 +1,124 @@
+{
+  "schema": "marici.instrument-capability-fiber.v1",
+  "fixed_effects": {
+    "no_click": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "9/25"
+      ]
+    ],
+    "click": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "16/25"
+      ]
+    ]
+  },
+  "factorization": "K_x = U_x sqrt(E_x); partial-isometry data are invisible to one-use probabilities",
+  "fixed_no_click_kraus": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "3/5"
+    ]
+  ],
+  "sample_capabilities": {
+    "absorptive_z_minus": {
+      "successor_projector": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "sequential_click_signatures": {
+        "Z": "0",
+        "X": "8/25",
+        "Y": "8/25"
+      },
+      "unanalysed_repeat_probability": "0"
+    },
+    "qnd_z_plus": {
+      "successor_projector": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "sequential_click_signatures": {
+        "Z": "16/25",
+        "X": "8/25",
+        "Y": "8/25"
+      },
+      "unanalysed_repeat_probability": "16/25"
+    },
+    "x_plus": {
+      "successor_projector": [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "sequential_click_signatures": {
+        "Z": "8/25",
+        "X": "0",
+        "Y": "8/25"
+      },
+      "unanalysed_repeat_probability": "8/25"
+    },
+    "y_plus": {
+      "successor_projector": [
+        [
+          "1/2",
+          "-I/2"
+        ],
+        [
+          "I/2",
+          "1/2"
+        ]
+      ],
+      "sequential_click_signatures": {
+        "Z": "8/25",
+        "X": "8/25",
+        "Y": "0"
+      },
+      "unanalysed_repeat_probability": "8/25"
+    }
+  },
+  "rational_family": {
+    "psi_t": [
+      "(1-t^2)/(1+t^2)",
+      "2t/(1+t^2)"
+    ],
+    "repeat_probability": "64*t**2/(25*(t**2 + 1)**2)"
+  },
+  "checks": {
+    "all_click_effects_identical": true,
+    "sample_sequential_signatures_distinct": true,
+    "rational_family_normalized": true,
+    "rational_family_effect_fixed": true
+  },
+  "verdict": "A fixed binary effect algebra supports a continuous projective capability fiber. Single-use records forget the fiber coordinate; controlled sequential analyzers recover it operationally."
+}

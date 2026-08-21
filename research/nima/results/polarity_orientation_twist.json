@@ -1,0 +1,50 @@
+{
+  "schema": "marici.polarity-orientation-twist.v1",
+  "generator_order": [
+    "road_or_spatial_reflection",
+    "core_exchange_or_time_reversal"
+  ],
+  "characters": {
+    "carrier_polarity": [
+      -1,
+      -1
+    ],
+    "physical_time_orientation": [
+      1,
+      -1
+    ],
+    "required_spatial_orientation_twist": [
+      -1,
+      1
+    ]
+  },
+  "identity": "L_time = L_polarity tensor L_spatial_orientation",
+  "uniqueness": {
+    "all_real_Z2xZ2_characters": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        -1,
+        1
+      ],
+      [
+        -1,
+        -1
+      ]
+    ],
+    "repair_count": 1
+  },
+  "checks": {
+    "unique_character_repair": true,
+    "time_equals_polarity_tensor_spatial": true,
+    "three_lines_pairwise_recover_each_other": true
+  },
+  "typing_boundary": "The character identity is exact after declaring the generator comparison. It does not derive the spacetime spatial-orientation line or identify Carrier road reflection with physical parity.",
+  "verdict": "The polarity/time mismatch is a one-line twist, not an arbitrary defect. The unique missing character is spatial parity: odd under spatial reflection and even under time reversal."
+}

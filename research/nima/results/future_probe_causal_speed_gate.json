@@ -1,0 +1,146 @@
+{
+  "schema": "marici.future-probe-causal-speed-gate.v1",
+  "local_model": {
+    "sites": 11,
+    "source_site": 5,
+    "max_depth": 5,
+    "rule": "one nearest-neighbor composition layer expands distinguishability support by at most one edge",
+    "checks": [
+      {
+        "depth": 0,
+        "support": [
+          5
+        ],
+        "causal_cone": [
+          5
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      },
+      {
+        "depth": 1,
+        "support": [
+          4,
+          5,
+          6
+        ],
+        "causal_cone": [
+          4,
+          5,
+          6
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      },
+      {
+        "depth": 2,
+        "support": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "causal_cone": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      },
+      {
+        "depth": 3,
+        "support": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "causal_cone": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      },
+      {
+        "depth": 4,
+        "support": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "causal_cone": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      },
+      {
+        "depth": 5,
+        "support": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "causal_cone": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "within_bound": true,
+        "cone_saturated": true
+      }
+    ]
+  },
+  "hostile_control": {
+    "rule": "admit one all-to-all source-to-site-0 interaction at depth one",
+    "support": [
+      0,
+      5
+    ],
+    "violates_unit_speed_bound": true
+  },
+  "verdict": "Future probing operationally defines where a perturbation is distinguishable. A finite propagation bound follows in the bounded model only after local composition is imposed; future probing alone permits instantaneous nonlocal support."
+}
