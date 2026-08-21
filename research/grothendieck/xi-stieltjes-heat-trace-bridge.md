@@ -39,9 +39,10 @@ An off-line centered zero `a=alpha+i beta` contributes a squared pole at
 ` =2 exp((alpha^2-beta^2)t) cos(2alpha beta t)`.
 
 For a genuine off-axis quartet (`alpha beta!=0`), this term oscillates in
-sign. Depending on `alpha^2-beta^2`, it may also grow. Hence the hostile
-deformation violates positivity of the heat measure even though it preserves
-critical-boundary sign and reflection.
+sign. Depending on `alpha^2-beta^2`, it may also grow. A positive background
+can hide that oscillation pointwise, so the decisive failure is of complete
+monotonicity/Stieltjes pole location, not necessarily of the order-zero sign
+of the total heat kernel.
 
 ## Coupling of research gates
 
