@@ -1,0 +1,75 @@
+{
+  "schema": "marici.photon-d8-bell-coefficient-locus.v1",
+  "strength": "exact projective semialgebraic and identifiability theorem",
+  "coefficient_conventions": {
+    "lagrangian": "(g2+f2)/16*(F.F)^2 + (g2-f2)/16*(F.Fdual)^2",
+    "projective_coordinate": "r=f2/g2",
+    "positivity": "g2>0 and |f2|<=g2"
+  },
+  "operator_to_helicity_source": "research/nima/results/photon-d8-helicity-map.json",
+  "bell_function": "I(q,r)=8*sqrt(2)*r*q/(1+4*r^2*q^2), q=1-x+x^2",
+  "angular_range": {
+    "q_min": "3/4",
+    "q_max": "1"
+  },
+  "strict_all_angle_bell_locus": "-2/3 + 2*sqrt(2)/3 < |r| < 1/2 + sqrt(2)/2",
+  "closed_bell_saturation_locus": "-2/3 + 2*sqrt(2)/3 <= |r| <= 1/2 + sqrt(2)/2",
+  "bell_and_positivity_locus": "-2/3 + 2*sqrt(2)/3 < |r| <= 1",
+  "closed_bell_and_positivity_locus": "-2/3 + 2*sqrt(2)/3 <= |r| <= 1",
+  "endpoint_residuals": {
+    "lower": "0",
+    "upper": "0"
+  },
+  "identifiability": {
+    "overall_scale_kernel": "(g2,f2); Bell Jacobian rank is one generically",
+    "scale_residual": "0",
+    "radial_derivative_residual": "0",
+    "single_angle_ambiguity": "r' = r or r*r'=1/(4*q^2)",
+    "two_angle_dual_branch_incompatibility": "-7/36",
+    "signed_two_angle_result": "r is unique generically",
+    "absolute_Bell_result": "only |r| is identifiable"
+  },
+  "maximin": {
+    "ratio": "sqrt(3)/3",
+    "endpoint_balance_residual": "0",
+    "endpoint_duality_residual": "0",
+    "endpoint_difference": "8*sqrt(2)*r*(3*r**2 - 1)/((4*r**2 + 1)*(9*r**2 + 4))",
+    "lower_endpoint_derivative": "-24*sqrt(2)*(3*r - 2)*(3*r + 2)/(9*r**2 + 4)**2",
+    "upper_endpoint_derivative": "-8*sqrt(2)*(2*r - 1)*(2*r + 1)/(4*r**2 + 1)**2",
+    "proof": "below 1/sqrt(3) the lower-q endpoint is the smaller increasing value; above it the upper-q endpoint is the smaller decreasing value"
+  },
+  "benchmarks": {
+    "qed_one_loop_abs_ratio": "3/11",
+    "qed_minus_lower_boundary": "31/33 - 2*sqrt(2)/3",
+    "qed_all_angle_status": "outside: fails only near the transverse minimum",
+    "bell_lower_boundary": "-2/3 + 2*sqrt(2)/3",
+    "maximin_ratio": "sqrt(3)/3",
+    "born_infeld_ratio": "0",
+    "born_infeld_bell_value": "0"
+  },
+  "heldout_exact_samples": [
+    {
+      "r": "1/3",
+      "x": "0",
+      "residual": "0"
+    },
+    {
+      "r": "1/2",
+      "x": "1/4",
+      "residual": "0"
+    },
+    {
+      "r": "3/4",
+      "x": "1/2",
+      "residual": "0"
+    }
+  ],
+  "accepted_event": {
+    "rule": "integrate the unnormalized density against one nonnegative helicity-blind base weight, then normalize once",
+    "uniform_full_bin_bell": "100*sqrt(2)*f*g/(3*(14*f**2 + 5*g**2))",
+    "scale_residual": "0",
+    "hostile_control": "Entry 1578: outcome-dependent support changes a selected marginal by sqrt(2)/4"
+  },
+  "carrier_verdict": "the current Marici packet generates/types the two-dimensional coefficient fiber but supplies no canonical coefficient ray",
+  "content_sha256": "CBD737E13B81557232FAEAFE18783DB5D89CA62FE535361DCBCA007D3428D0F4"
+}

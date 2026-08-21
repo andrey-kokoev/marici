@@ -1,0 +1,100 @@
+{
+  "schema": "marici.exact-one-loop-qed-bell-onset.v1",
+  "strength": "numerical evaluation of the exact analytic one-loop helicity amplitudes with a low-energy coefficient gate",
+  "source": "arXiv:2312.16966v2 equations 50 and 53-55",
+  "energy_variable": "y=s/m_e^2",
+  "low_energy_gate": {
+    "sample_y": "0.01",
+    "expected_stripped_amplitudes": [
+      "0.0000030555555555555555555555555555555556",
+      "-0.00000125",
+      "-9.9206349206349206349206349206349207e-11"
+    ],
+    "relative_errors": [
+      "0.00052118202994907296000759008584613667",
+      "0.00079603554246403108398164644104097195",
+      "0.000001137064906422243647737661883987012"
+    ],
+    "verdict": "all three amplitudes reproduce g2, f2, and h3 within the expected finite-y remainder"
+  },
+  "samples": [
+    {
+      "y": "0.01",
+      "amplitudes": [
+        "(0.0000030571480562026221673778009697067521 + 7.7016038877174632947095680445727092e-34j)",
+        "(-0.0000012509950444280800388549770580513012 + 0.0j)",
+        "(-9.9206462010407383159092037466456745e-11 - 2.2851610179985269154912238283600456e-33j)"
+      ],
+      "bell": "1.9827904040083848339812072484035944"
+    },
+    {
+      "y": "0.1",
+      "amplitudes": [
+        "(0.00030719551566578859794224251693757351 - 4.6504271437021881329254939983587778e-35j)",
+        "(-0.00012602230976783661462455359367867451 - 4.6996831960760702175436143426080663e-35j)",
+        "(-0.000000099217694007388387715584998471940138 - 9.1664470188401087571082465937385541e-35j)"
+      ],
+      "bell": "1.9863502703197079448798621526449144"
+    },
+    {
+      "y": "0.4",
+      "amplitudes": [
+        "(0.0050045787963378878465080310580497746 + 4.1653362183172943544652257478587394e-35j)",
+        "(-0.0020716434479626638139142133578652933 + 4.5366384929279140635393523586067442e-35j)",
+        "(-0.0000063610683036154194592744333478852957 + 3.4691356821320538628597454477947203e-35j)"
+      ],
+      "bell": "1.9990930134543180308923495408229583"
+    },
+    {
+      "y": "0.5",
+      "amplitudes": [
+        "(0.0078722859668346544641630352939217686 + 7.7935275459517661778327232417834888e-36j)",
+        "(-0.0032692739651351545956873827355212171 + 1.2037062152420224081599862141155796e-35j)",
+        "(-0.000012437270647968805235947641255490025 - 4.617341810029945331301197118208981e-35j)"
+      ],
+      "bell": "2.0036585618704154158572151296557378"
+    }
+  ],
+  "onset_bracket": {
+    "lo": "0.420157608739100396633148193359375",
+    "hi": "0.42015760876238346099853515625",
+    "bell_minus_2_lo": "-7.0167829768541642531515444447666779e-13",
+    "bell_minus_2_hi": "3.4978040327401398682501240772038425e-13",
+    "midpoint": "0.4201576087507419288158416748046875",
+    "sqrt_s_over_m_e": "0.64819565622637577870823904566472896"
+  },
+  "comparison": {
+    "d10_truncated_amplitude": "0.4680304498848546",
+    "d12_truncated_amplitude": "0.4236925576731669",
+    "exact_one_loop": "0.4201576087507419288158416748046875"
+  },
+  "bounded_angular_census": {
+    "0.4": {
+      "grid": "x=k/50, 1<=k<=25; reflection supplies 1/2<=x<1",
+      "minimum": {
+        "x": "0.5",
+        "bell": "1.9990930134543180308923495408229583"
+      },
+      "maximum": {
+        "x": "0.02",
+        "bell": "2.330244876172351448634593732321322"
+      },
+      "monotone_toward_transverse": true
+    },
+    "0.43": {
+      "grid": "x=k/50, 1<=k<=25; reflection supplies 1/2<=x<1",
+      "minimum": {
+        "x": "0.5",
+        "bell": "2.0004452768456670300222940056793672"
+      },
+      "maximum": {
+        "x": "0.02",
+        "bell": "2.3287885043278541571346071147653416"
+      },
+      "monotone_toward_transverse": true
+    }
+  },
+  "conclusion": "The transverse fixed-analyzer Bell crossing predicted by consecutive EFT truncations survives in the exact one-loop QED amplitude below pair production.",
+  "scope": "A 25-point half-interval census identifies the transverse point as the minimum immediately below and above onset, supporting but not proving an all-angle theorem. Two-loop radiative corrections are not included.",
+  "content_sha256": "CD0D9FAF4D905178EF24B89BF153554377B9FADDFCF1AAB9F2DA87D3E082400A"
+}

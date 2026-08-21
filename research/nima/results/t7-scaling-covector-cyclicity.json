@@ -1,0 +1,36 @@
+{
+  "schema": "marici.nima.t7_scaling_covector_cyclicity.v1",
+  "passed": true,
+  "rho": 2,
+  "lambda": "1/5",
+  "exact_duplicate_blocks": {
+    "first": ["e2", "e3"],
+    "second": ["e4", "e5"],
+    "matrix": [["0", "1/lambda"], ["0", "-1/lambda"]],
+    "cross_coupling_zero": true
+  },
+  "replications": [
+    {
+      "prime": 1000000007,
+      "maximum_rank": 5,
+      "first_maximum": {
+        "seed": [1, -1, 1, -1, 1, -1, 1],
+        "rank": 5,
+        "determinant_mod_prime": 0
+      },
+      "trial_count": 42
+    },
+    {
+      "prime": 1000000009,
+      "maximum_rank": 5,
+      "first_maximum": {
+        "seed": [1, -1, 1, -1, 1, -1, 1],
+        "rank": 5,
+        "determinant_mod_prime": 0
+      },
+      "trial_count": 42
+    }
+  ],
+  "rank_ceiling_interpretation": "one scalar covector transported only in the lambda scaling direction cannot separate the two identical rank-two summands; replicated maximum rank is five",
+  "scope": "one generic rational scaling slice; not the full bivariate connection and not identification of the physical Bunch-Davies covector"
+}

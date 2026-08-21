@@ -1,0 +1,104 @@
+{
+  "schema": "marici.scattering-bell-packet-admission.v1",
+  "strength": "bounded repository typing census",
+  "sources": {
+    "ledger_entries": [
+      42,
+      45,
+      53,
+      54,
+      1567
+    ],
+    "source_annotation": "research/sources/nima/talks/scattering-amplitudes-and-dualities-at-infinity/annotations.md"
+  },
+  "capabilities": {
+    "polarization_multilinear_amplitude": {
+      "present": true,
+      "evidence": [
+        42
+      ]
+    },
+    "ward_reduced_physical_polarization_space": {
+      "present": true,
+      "evidence": [
+        53,
+        54
+      ]
+    },
+    "physical_cut_factorization": {
+      "present": true,
+      "evidence": [
+        45
+      ]
+    },
+    "two_open_pair_trace_coherence": {
+      "present": true,
+      "evidence": [
+        54
+      ]
+    },
+    "source_preparation_density_operator": {
+      "present": false,
+      "missing": "No density operator or equivalent normalized preparation map is declared."
+    },
+    "local_two_setting_instruments": {
+      "present": false,
+      "missing": "Polarization labels are amplitude inputs; no two-setting detector instrument per wing is declared."
+    },
+    "exclusive_binary_outcome_effects": {
+      "present": false,
+      "missing": "No source effects E_{a|x}, E_{b|y} resolving identity are declared."
+    },
+    "born_pairing_with_conjugate_amplitude": {
+      "present": false,
+      "missing": "The admitted packet is linear at amplitude level and supplies no A times conjugate-A probability map."
+    },
+    "normalized_joint_probability_table": {
+      "present": false,
+      "missing": "No normalized P(a,b|x,y) is constructed."
+    }
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "name": "bipartite scattering kinematics",
+      "passes": true,
+      "reason": "External labels and physical cuts supply a bipartite factorization candidate."
+    },
+    {
+      "gate": 2,
+      "name": "two physical settings and binary outcomes per wing",
+      "passes": false,
+      "reason": "No detector instruments or exclusive outcome effects are source-defined."
+    },
+    {
+      "gate": 3,
+      "name": "normalized joint probabilities",
+      "passes": false,
+      "reason": "No Born/conjugate-amplitude pairing and normalization map are present."
+    },
+    {
+      "gate": 4,
+      "name": "no-signalling marginals",
+      "passes": false,
+      "reason": "Untyped before a joint probability table exists."
+    },
+    {
+      "gate": 5,
+      "name": "CHSH and relative-totalization survival",
+      "passes": false,
+      "reason": "Untyped before gates 2-4."
+    },
+    {
+      "gate": 6,
+      "name": "Tsirelson bound",
+      "passes": false,
+      "reason": "Untyped before an ordered positive/normed readout object exists."
+    }
+  ],
+  "first_failed_gate": 2,
+  "conclusion": "The admitted scattering packet supplies coherent polarization amplitudes and cuts, but not a Bell experiment. The first missing typed datum is a local detector instrument with two settings and exclusive binary outcomes per wing.",
+  "forbidden_promotion": "Do not identify polarization input vectors or transmutation trace choices with measurement settings, and do not square amplitudes without a source-defined preparation, detector pairing, phase-space measure, and normalization.",
+  "next_falsifier": "Adjoin or locate a source-derived polarized 2-to-2 preparation-and-detector packet; then test completeness, normalization, and no-signalling before CHSH.",
+  "content_sha256": "C187F65D37175641BC7CE9907DCAC1294A7A2D1B20865D3185ED379DBDEA6D65"
+}

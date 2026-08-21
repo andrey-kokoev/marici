@@ -1,0 +1,70 @@
+{
+  "schema": "marici.qed-bell-experimental-gate.v1",
+  "energy": {
+    "s_over_me2": "0.42015760875460728129837661981582642",
+    "photon_energy_over_me": "0.3240978281146787017521187311357193132215",
+    "photon_energy_keV": "165.6136498638812961826958318856848765509"
+  },
+  "single_compton_polarimeter": {
+    "optimal_scatter_angle_degrees": "88.12060080922513277712565193582815613575",
+    "single_arm_visibility": "0.9284658148919977855039903264098136320955",
+    "two_arm_visibility": "0.8620487694230614968039796066604493579156",
+    "required_ideal_chsh": "2.320054353002010182967248219374491998641",
+    "linear_analyzer_axes_degrees": {
+      "Alice_A1": "90",
+      "Alice_A2": "45",
+      "Bob_B1": "67.5",
+      "Bob_B2": "112.5"
+    },
+    "implementation": "For each axis alpha, bin Compton azimuths into calibrated parallel/perpendicular outcome sectors realizing E_pm=(1 pm mu O(alpha))/2."
+  },
+  "polarization_preparation": {
+    "incoming_state": "two counter-propagating photons, each prepared in positive circular helicity relative to its own momentum (++ source channel)",
+    "minimum_residual_state_visibility_after_compton_dilution": "0.9929884336644194552996217693734229535838",
+    "minimum_equal_per_beam_circular_polarization_under_product_visibility_model": "0.9964880499355822457155768813817559781719",
+    "maximum_total_additional_visibility_loss": "0.007011566335580544700378230626577046416219"
+  },
+  "accepted_gamma_gamma_cone": {
+    "x_min_for_numerics": "0.0001",
+    "x_max": "0.02791652280746293931432219830143232179232",
+    "theta_max_degrees": "19.2364515379709763567162611505634503314",
+    "single_cone_cross_section_fraction": "0.03879806645701171481281898049270015190876",
+    "ideal_weighted_chsh": "2.336436432034084289734088147601541558131",
+    "observed_weighted_chsh": "2.014122151070190822131199291196306783788",
+    "observed_excess": "0.0141221510701908221311992911963067837884"
+  },
+  "rate_gate": {
+    "euler_heisenberg_total_cross_section_estimate_m2": "1.499059606787437495547162976957479480555e-38",
+    "accepted_cross_section_estimate_m2": "5.816061424716084942767048008738200594575e-40",
+    "accepted_events_for_conservative_five_sigma": "2005664.489417264860415736156362591666142",
+    "required_integrated_luminosity_m_minus_2": "3.44849261889487826092179097377857683924e+45",
+    "required_integrated_luminosity_cm_minus_2": "3.44849261889487826092179097377857683924e+41",
+    "ideal_luminosity_scenarios": {
+      "1e30_cm_minus_2_s_minus_1": {
+        "ideal_accepted_rate_per_second": "0.000005816061424716084942767048008738200594575",
+        "ideal_live_time_years_for_five_sigma": "10927.61369335715726456318279520171635118"
+      },
+      "1e32_cm_minus_2_s_minus_1": {
+        "ideal_accepted_rate_per_second": "0.0005816061424716084942767048008738200594575",
+        "ideal_live_time_years_for_five_sigma": "109.2761369335715726456318279520171635118"
+      },
+      "1e34_cm_minus_2_s_minus_1": {
+        "ideal_accepted_rate_per_second": "0.05816061424716084942767048008738200594575",
+        "ideal_live_time_years_for_five_sigma": "1.092761369335715726456318279520171635118"
+      }
+    }
+  },
+  "theory_uncertainty": {
+    "status": "explicit two-loop helicity amplitudes not inserted",
+    "benchmark_differential_helicity_correction": "alpha/pi",
+    "benchmark_abs_shift_in_y": "0.07274040870052570341075333200309792333654",
+    "benchmark_photon_energy_interval_keV": [
+      "150.5967744361640412419758994786719478874",
+      "179.3777399007348048187701543957804034794"
+    ],
+    "interpretation": "sensitivity benchmark, not a statistical confidence interval"
+  },
+  "verdict": "A typed single-Compton CHSH protocol exists only in a forward gamma-gamma cone and has a marginal observed excess. Its required accepted statistics and photon-photon luminosity make it a conceptual protocol, not a presently credible experiment.",
+  "scope": "Uses the leading Euler-Heisenberg rate and idealized Compton visibility; detector efficiency, backgrounds, beam phase space, and loophole closure only worsen feasibility.",
+  "content_sha256": "A1ACBC1F39E085F652B6A4D0B2ABC5E65F2281C8C65C25A040F6AF9B4052124B"
+}

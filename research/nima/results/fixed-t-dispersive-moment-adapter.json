@@ -1,0 +1,23 @@
+{
+  "schema": "marici.fixed-t-dispersive-moment-adapter.v1",
+  "crossing_coordinate": "nu=s+t/2; s<->u sends nu->-nu",
+  "fixed_t_expansion": {
+    "Phi2": "3*f2*t**2/2 + f3*t**3/4 + nu**2*(2*f2 - f3*t)",
+    "Phi5": "-h3*nu**2*t + h3*t**3/4"
+  },
+  "even_kernel_series": "2*nu**4/nup**5 + 2*nu**2/nup**3 + 2/nup",
+  "nu2_moment": "C2(t)=(2/pi) integral_{nu0(t)}^infinity Im F_+(nu',t)/nu'^3 dnu'",
+  "sample_transfers": [
+    "-m^2",
+    "-2m^2"
+  ],
+  "coefficient_matrix_determinant": "2*m^2",
+  "reconstruction": {
+    "f2": "(2*C1 - C2)/2",
+    "f3": "-(C1 - C2)/m**2",
+    "h3": "H1/m**2"
+  },
+  "subtraction_gate": "Valid only if the chosen crossing-even amplitude has no independent nu^2 subtraction polynomial. This must be established from QED asymptotics/Ward identities before treating the moment as a theorem.",
+  "conclusion": "Conditional on the subtraction gate, two fixed-t inverse-cubic absorptive moments recover f2,f3 and one recovers h3.",
+  "content_sha256": "061F10D8FAF0BBEBB2FB89ADE3AE54C873E301AD79ACB1AE1ABD50C35452CD66"
+}

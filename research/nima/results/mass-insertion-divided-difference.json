@@ -1,0 +1,15 @@
+{
+  "schema": "marici.mass-insertion-divided-difference.v1",
+  "coordinates": {
+    "z": "2y",
+    "p": "x1-y",
+    "q": "x2-y"
+  },
+  "kernel": "f(z)=z*log(z)",
+  "numerator": "f(z+p+q)+f(z)-f(z+p)-f(z+q)",
+  "operation": "Delta_p Delta_q f(z)",
+  "denominator": "p*q*(z+p)*(z+q)",
+  "coincident_limit_p=q=0": "1/z^3",
+  "coincident_limit_in_y": "1/(2y)^3",
+  "conclusion": "The integrated mass-insertion coefficient is a normalized mixed divided difference. Removable difference poles and the cubic coincident limit follow from this intrinsic form."
+}

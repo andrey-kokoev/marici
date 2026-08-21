@@ -1,0 +1,26 @@
+{
+  "schema": "marici.piecewise-fourier-jump-boundary.v1",
+  "density": "a*1_[0,c] + b*1_[c,Lambda]",
+  "pushforward": "-a*log(q) + (a-b)*log(q+c) + b*log(q+Lambda)",
+  "oriented_residue_vectors_in_(a,b)": {
+    "q=0": [
+      -1,
+      0
+    ],
+    "q=-c": [
+      1,
+      -1
+    ],
+    "q=-Lambda": [
+      0,
+      1
+    ]
+  },
+  "total_residue_vector": [
+    0,
+    0
+  ],
+  "internal_residue": "a-b",
+  "internal_residue_when_a_equals_b": 0,
+  "conclusion": "The internal logarithmic class is exactly the coefficient jump. It cancels under subdivision when adjacent densities agree."
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "marici.photon-d10-bell-boundary.v1",
+  "strength": "exact transverse dimension-ten Bell-boundary theorem",
+  "source_basis": {
+    "Phi1": "g2*s^2+g3*s^3",
+    "Phi2": "f2*(s^2+t^2+u^2)+f3*s*t*u",
+    "Phi5": "h3*s*t*u",
+    "ratios": "a=g3/g2, b=f3/g2, h=h3/g2, r=f2/g2"
+  },
+  "transverse": {
+    "Phi2_over_Phi1": "(b*s + 6*r)/(4*(a*s + 1))",
+    "Phi5_over_Phi1": "h*s/(4*(a*s + 1))",
+    "bell": "16*sqrt(2)*(a*s + 1)*(b*s + 6*r)/(2*h**2*s**2 + 16*(a*s + 1)**2 + (b*s + 6*r)**2)",
+    "exact_lower_boundary": "-b*s/6 - sqrt(2)*(a*s + 1)*(sqrt(-(h**2*s**2 - 8*(a*s + 1)**2)/(a*s + 1)**2) - 4)/6",
+    "saturation_residual": "0"
+  },
+  "small_s_expansion": {
+    "dimension_eight_boundary": "-2/3 + 2*sqrt(2)/3",
+    "linear_coefficient": "-2*a/3 + 2*sqrt(2)*a/3 - b/6",
+    "quadratic_coefficient": "h**2/24",
+    "linear_controlling_combination": "(2/3)*(sqrt(2)-1)*(g3/g2)-(1/6)*(f3/g2)",
+    "h3_linear_coefficient": "0",
+    "h3_first_contribution": "(h3/g2)^2/24 at order s^2"
+  },
+  "all_angle_audit": {
+    "angular_coordinate": "p=x*(1-x) in [0,1/4]",
+    "exact_lower_threshold": "(b*p*s + (a*s + 1)*(sqrt((-2*h**2*p**2*s**2 + (a*s + 1)**2)/(a*s + 1)**2) - sqrt(2)))/(2*(p - 1))",
+    "derivative_numerator": "-b*s - (a*s + 1)*(2*h**2*p*s**2*(p - 1)/((a*s + 1)**2*sqrt(-2*h**2*p**2*s**2/(a*s + 1)**2 + 1)) + sqrt(-2*h**2*p**2*s**2/(a*s + 1)**2 + 1) - sqrt(2))",
+    "bracket_derivative": "2*h**2*s**2*sqrt((-2*h**2*p**2*s**2 + (a*s + 1)**2)/(a*s + 1)**2)*(1 - p)*(a*s + 1)**2/(-2*h**2*p**2*s**2 + (a*s + 1)**2)**2",
+    "sufficient_domain": "1+a*s>0; 1-2*(h*s*p/(1+a*s))^2>0 on [0,1/4]; b*s<(1+a*s)*(sqrt(2)-1)",
+    "verdict": "On this explicit EFT-validity domain the angular threshold is strictly increasing in p, so its maximum is transverse and the displayed transverse boundary is the all-angle lower boundary."
+  },
+  "typing_verdict": "The first finite-energy motion of the Bell boundary is an off-diagonal comparison of the g3 and f3 helicity sectors. The mixed-helicity h3 sector enters only quadratically and cannot control the infinitesimal direction.",
+  "scope": "The exact all-angle promotion holds on the explicit regularity and monotonicity domain stated in all_angle_audit.",
+  "content_sha256": "EA3B6A15D6A254AF18EDAED6E37F47F7194F2949C15D23B0B5280BC218E908A6"
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "marici.photon-bell-source-packet.v1",
+  "strength": "exact source-formula audit",
+  "source": {
+    "title": "Bell inequalities in 2-2 scattering",
+    "authors": [
+      "Aninda Sinha",
+      "Ahmadullah Zahed"
+    ],
+    "version": "arXiv:2212.10213v3",
+    "doi": "10.1103/PhysRevD.108.025015",
+    "equations": [
+      6,
+      8,
+      9,
+      10,
+      11,
+      13
+    ]
+  },
+  "specialization": "fixed incoming ++ photons; low-energy outgoing state N(Phi1|00>+Phi2|11>); Phi1=r and Phi2=s real",
+  "state_trace_residual": "0",
+  "joint_probabilities": {
+    "A1,B1": {
+      "-1,-1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "-1,1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,-1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))"
+    },
+    "A1,B2": {
+      "-1,-1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "-1,1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,-1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))"
+    },
+    "A2,B1": {
+      "-1,-1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "-1,1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,-1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))"
+    },
+    "A2,B2": {
+      "-1,-1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "-1,1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,-1": "(r**2 - sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))",
+      "1,1": "(r**2 + sqrt(2)*r*s + s**2)/(4*(r**2 + s**2))"
+    }
+  },
+  "normalization_residuals": {
+    "A1,B1": "0",
+    "A1,B2": "0",
+    "A2,B1": "0",
+    "A2,B2": "0"
+  },
+  "no_signalling_residuals": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "bell_expression": "4*sqrt(2)*r*s/(r**2 + s**2)",
+  "source_equation_13_specialization": "4*sqrt(2)*r*s/(r**2 + s**2)",
+  "tsirelson_slack_numerator": "2*sqrt(2)*r**2 - 4*sqrt(2)*r*s + 2*sqrt(2)*s**2",
+  "tsirelson_factorization": "2*sqrt(2)*(r - s)**2",
+  "maximal_at": "r=s!=0",
+  "gate_vector": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "marici_comparison_status": "The external source packet types the Bell experiment and exact quantum bound. It is not yet derived from the Marici transmutation/relative-totalization maps.",
+  "next_falsifier": "Construct the map from the Ward-reduced two-open-pair scattering object to the positive helicity density object, and test whether its projector effects and Born pairing commute with physical Cut.",
+  "content_sha256": "F5BF24F271EB18973DF00DE870C735BC1DEF3FF9B71E3A807E2E59318D3A0584"
+}

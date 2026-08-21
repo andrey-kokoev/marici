@@ -1,0 +1,41 @@
+{
+  "schema": "marici.oriented-transverse-bell-lens.v1",
+  "strength": "exact local coefficient construction",
+  "input": "oriented real metric transverse plane (V,g,J), J^2=-1",
+  "helicity_projectors": {
+    "plus": "Matrix([[1/2, I/2], [-I/2, 1/2]])",
+    "minus": "Matrix([[1/2, -I/2], [I/2, 1/2]])"
+  },
+  "helicity_checks": {
+    "J_squared_plus_identity": true,
+    "P_plus_idempotent": true,
+    "P_minus_idempotent": true,
+    "P_sum_identity": true,
+    "P_product_zero": true,
+    "P_plus_hermitian": true,
+    "P_minus_hermitian": true,
+    "conjugation_swaps_helicity": true
+  },
+  "analyzer_observable": "Matrix([[0, exp(-I*phi)], [exp(I*phi), 0]])",
+  "analyzer_checks": {
+    "observable_hermitian": true,
+    "observable_binary": true,
+    "effects_exhaust_identity": true,
+    "effects_orthogonal": true,
+    "effect_plus_projector": true,
+    "effect_minus_projector": true
+  },
+  "orientation_reversal_swaps_helicity": true,
+  "derived_structures": [
+    "complex conjugation exchanging helicities",
+    "orthogonal exhaustive helicity effects",
+    "a continuous family of Hermitian binary analyzer effects"
+  ],
+  "not_derived": [
+    "the transverse orientation/complex structure on the admitted Ward quotient",
+    "the physical detector angles",
+    "the Born pairing and accepted-event normalization"
+  ],
+  "conclusion": "Once an oriented transverse real form is supplied, conjugation and local binary analyzer effects require no new carrier divisor. The current Ward packet supplies the quotient and metric trace but does not serialize the orientation/Hodge operator J.",
+  "content_sha256": "2E67A6E00BF8F0FB9F3FA8E23A5E979448EEA6351618C668E036DE70CB04BCBF"
+}

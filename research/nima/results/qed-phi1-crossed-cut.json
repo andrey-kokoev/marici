@@ -1,0 +1,96 @@
+{
+  "schema": "marici.qed-phi1-crossed-cut.v1",
+  "source_convention": "source t=(p2+p3)^2 and u=(p1+p3)^2; source u is the physical transfer used by the cut checker",
+  "crossing": "at fixed physical transfer, the left cut is M--++ under s<->t_source, hence M+--+ and physical C[+-,+-]",
+  "moments": "J_n^h=(1/pi) integral_4^infinity C[h,h](s,0)/s^(n+1) ds",
+  "assembly": {
+    "g2": "J_2^(++)+J_2^(+-)",
+    "g3": "J_3^(++)-J_3^(+-)"
+  },
+  "quadrature": {
+    "coarse": [
+      30,
+      32
+    ],
+    "fine": [
+      48,
+      48
+    ],
+    "max_difference": 2.0144227034059672e-08
+  },
+  "component_moments": {
+    "J2_pp": 0.0009850620701425392,
+    "J2_pm": 0.0005628984965875344,
+    "J3_pp": 0.00013871352151737255,
+    "J3_pm": 5.8299889667437396e-05
+  },
+  "reconstruction": {
+    "g2": 0.0015479605667300736,
+    "g3": 8.041363184993516e-05
+  },
+  "expected": {
+    "g2": 0.0015479625278690496,
+    "g3": 8.04136378113792e-05
+  },
+  "relative_errors": {
+    "g2": 1.2669163114154003e-06,
+    "g3": 7.413473890327538e-08
+  },
+  "nonforward_gate": {
+    "transfer": -0.25,
+    "coarse": [
+      22,
+      24
+    ],
+    "fine": [
+      36,
+      38
+    ],
+    "max_difference": 4.2684998095799884e-08,
+    "reconstructed_nu2": 0.0015805116091008567,
+    "naive_d10_nu2": 0.0015781176420483168,
+    "reconstructed_nu3": 9.21470665956867e-05,
+    "naive_d10_nu3": 8.04136378113792e-05,
+    "relative_errors": {
+      "nu2": 0.0015169762942595089,
+      "nu3": 0.14591341846553196
+    },
+    "verdict": "The nonzero-transfer inverse moments contain D12-and-higher contamination and are not D10 projectors."
+  },
+  "triangular_d12_extraction": {
+    "symbolic_law": "[nu^3]Phi1=g3-2*T*(g41+g42)+O(T^2)",
+    "second_transfer": -0.125,
+    "second_transfer_coarse": [
+      18,
+      20
+    ],
+    "second_transfer_fine": [
+      30,
+      32
+    ],
+    "second_transfer_max_difference": 1.0579628054088047e-07,
+    "nu3_at_second_transfer": 8.61069504997114e-05,
+    "g41_plus_g42_estimate_at_T_minus_1_over_4": 2.3466869491503084e-05,
+    "g41_plus_g42_estimate_at_T_minus_1_over_8": 2.2773274599104977e-05,
+    "linear_richardson_T_to_zero": 2.207967970670687e-05,
+    "third_transfer": -0.0625,
+    "third_transfer_coarse": [
+      18,
+      20
+    ],
+    "third_transfer_fine": [
+      30,
+      32
+    ],
+    "third_transfer_max_difference": 1.176557961272539e-07,
+    "nu3_at_third_transfer": 8.321852493863428e-05,
+    "g41_plus_g42_estimate_at_T_minus_1_over_16": 2.2439144709593016e-05,
+    "nested_linear_richardson_T_to_zero": 2.2105014820081054e-05,
+    "nested_richardson_over_g2": 0.014280089102512408,
+    "candidate_rational_ratio": "1/70 (comparison only; not used by the reconstruction)",
+    "candidate_relative_residual": 0.00039376282413139396,
+    "strength": "numerical discovery estimate; higher-transfer grades are removed only to first Richardson order"
+  },
+  "conclusion": "The vector-valued crossing completion dispersively reproduces both Phi1 coefficients at the forward point. At nonzero transfer the same moments remain well-defined, but a naive D10 identification fails because the shifted nu grading mixes higher EFT orders. A scalar crossing parity would still miss the second helicity channel.",
+  "content_sha256": "BB45E6099EC3E82E448152A3804FB93FE6C024566F0939B9FF7536F0765B3225"
+}
