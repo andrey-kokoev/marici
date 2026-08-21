@@ -1,5 +1,10 @@
 # Entry 1234 — A Cyclic Gram-Nondegenerate Five-Site Physical Slice Is Frozen
 
+> **Superseded and retyped by Entry 1256.** The displayed vectors obey
+> \(\sum_iP_i=(0,0,5)\neq0\), so this is a Gram-nondegenerate algebraic slice,
+> not a physical momentum-conserving slice. All downstream calculations remain
+> algebraically valid only in that narrower scope.
+
 ## Purpose
 
 Entry 1233 requires a one-parameter physical family frozen before period evaluation. A planar regular pentagon would make the physical three-dimensional routing Gram degenerate. Use instead a regular cone orbit.

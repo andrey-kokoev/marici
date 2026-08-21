@@ -30,6 +30,30 @@ def rank(rows):
     return r
 
 
+def determinant(rows):
+    """Exact determinant in the declared coordinate and row order."""
+    a = [[Fraction(x) for x in row] for row in rows]
+    n = len(a)
+    assert all(len(row) == n for row in a)
+    value = Fraction(1)
+    for c in range(n):
+        pivot = next((i for i in range(c, n) if a[i][c]), None)
+        if pivot is None:
+            return 0
+        if pivot != c:
+            a[c], a[pivot] = a[pivot], a[c]
+            value = -value
+        p = a[c][c]
+        value *= p
+        for i in range(c + 1, n):
+            if a[i][c]:
+                q = a[i][c] / p
+                for j in range(c, n):
+                    a[i][j] -= q * a[c][j]
+    assert value.denominator == 1
+    return value.numerator
+
+
 def polygon(n):
     # Coordinates are x_0,...,x_(n-1),y_0,...,y_(n-1), where y_i joins i to i+1.
     vertices = []
@@ -107,6 +131,7 @@ def polygon(n):
     )
     unseen = set(term_set)
     orbit_sizes = []
+    term_orbits = []
     while unseen:
         seed = unseen.pop()
         orbit = {seed}
@@ -116,6 +141,15 @@ def polygon(n):
             orbit.add(current)
             unseen.discard(current)
         orbit_sizes.append(len(orbit))
+        term_orbits.append(sorted([list(term) for term in orbit]))
+
+    term_orbits.sort(key=lambda orbit: orbit[0])
+
+    determinants = [
+        determinant([facets[name] for name in common + list(term)])
+        for term in compatible
+    ]
+    assert all(abs(value) == 2 ** n for value in determinants)
 
     return {
         "n": n,
@@ -126,7 +160,11 @@ def polygon(n):
         "additional_denominators_per_term": needed,
         "term_count": len(compatible),
         "cyclic_orbit_sizes": sorted(orbit_sizes),
+        "cyclic_term_orbits": term_orbits,
         "terms": [list(x) for x in compatible],
+        "ordered_denominator_determinants": determinants,
+        "common_absolute_determinant": 2 ** n,
+        "orientation_normalized_term_weights": [1] * len(compatible),
     }
 
 
@@ -140,11 +178,13 @@ def main():
         ("G_minus_e23", "g_12"), ("G_minus_e23", "g_13"),
         ("G_minus_e31", "g_12"), ("G_minus_e31", "g_23"),
     }
+    assert all(x != 0 for x in triangle["ordered_denominator_determinants"])
 
     square = polygon(4)
     assert square["facet_count"] == 17
     assert all(len(term) == 3 for term in square["terms"])
     assert sum(square["cyclic_orbit_sizes"]) == square["term_count"]
+    assert all(x != 0 for x in square["ordered_denominator_determinants"])
 
     packet = {
         "schema": "marici.benincasa.four_cycle_ofpt_packet.v1",
