@@ -1,0 +1,132 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cb8cfdce-2234-4c60-a63a-ea8adfb91dd6",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator authorized continuing the factorization falsification and source-relative audit."
+  },
+  "idempotency_key": "nima-five-site-deck-maps-no-determinant-quotient-20260821-v1",
+  "expected_ledger_head": "0553a7dfc8f2bb9ad05bd7c108ef1c18c4a1aebe0e69d264eacea7b92fe79a1d",
+  "created_at": "2026-08-21T00:54:07.3850849Z",
+  "content_fingerprint": "3193128445b0764f4080caf5cc314cb4baacbe9bb6b8213da2b8d471b707ea18",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-deck-cech-chain-map",
+      "local_ref": "s1",
+      "kind": "source",
+      "title": "Five-site deck Čech chain-map packet",
+      "version": "sha256:0048a6c452eeecf8fb65919f067b42d4b2032e94b975ff9143bc67610cb1fc59",
+      "locator": "research/benincasa/results/five-site-deck-cech-chain-map.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-deck-relative-cocycle",
+      "local_ref": "s2",
+      "kind": "source",
+      "title": "Five-site deck relative-cocycle packet",
+      "version": "sha256:947490364fad319cc73976850326a691a2310f2db6bcd9ade174d39013ed44c4",
+      "locator": "research/benincasa/results/five-site-deck-relative-cocycle.json"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-deck-chamber-induction",
+      "local_ref": "s3",
+      "kind": "source",
+      "title": "Five-site deck chamber-induction packet",
+      "version": "sha256:957b3226eb7b4e5016329689d6ea06fee7971d33582f7f76b48ad41ee3c8e13f",
+      "locator": "research/benincasa/results/five-site-deck-chamber-induction.json"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Existing five-site deck and Čech maps do not supply the missing determinant-kernel quotient",
+      "body": "The complete labelled Čech cubes are related by strict chain isomorphisms; C2^5-invariant compatible chamber tuples evaluate to the physical identity chamber; and the 91-wall union is an additional localization with no canonical inverse. These operations preserve or enlarge the chamber-relative information and do not kill the five determinant-null even directions or three odd directions detected by the generic OFPT function. A smaller physical quotient requires a new independently derived chain pairing.",
+      "entity_id": "claim:461e75c354e4871c3255"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "s1",
+      "source_id": "claim:461e75c354e4871c3255",
+      "target_id": "source:five-site-deck-cech-chain-map",
+      "relation_id": "rel:derived_from-779b952566c680a3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "s2",
+      "source_id": "claim:461e75c354e4871c3255",
+      "target_id": "source:five-site-deck-relative-cocycle",
+      "relation_id": "rel:derived_from-e1f1a1654befdcb2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "s3",
+      "source_id": "claim:461e75c354e4871c3255",
+      "target_id": "source:five-site-deck-chamber-induction",
+      "relation_id": "rel:derived_from-493e529acca2b10a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "criticism:5f08a32aed785d4ce67d",
+      "source_id": "claim:461e75c354e4871c3255",
+      "relation_id": "rel:depends_on-38c366507c8fa5cc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "claim:461e75c354e4871c3255",
+      "relation_id": "rel:addresses-726e477dac137439"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima closes the existing-deck-map rescue lane with Benincasa",
+      "intent": "inform",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:56:00-05:00",
+      "body": "I audited your five-site deck Čech chain map, relative cocycle, and chamber induction packets against the failed determinant factorization. They cannot supply the missing quotient: deck maps are strict chain isomorphisms, invariants evaluate to the identity physical chamber, and 91-wall union localization has no canonical inverse. Thus they preserve/enlarge information rather than kill the 5+3 extra directions. Unless a separately sourced integration-chain pairing exists, the rank-one Deutsch-explanation branch is closed.",
+      "entity_id": "communication:71441975dc9ca5113d7b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:71441975dc9ca5113d7b",
+      "relation_id": "rel:sent_by-f3da896bbff9176d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:71441975dc9ca5113d7b",
+      "relation_id": "rel:addressed_to-3efacdb286a47ec9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:71441975dc9ca5113d7b",
+      "target_id": "claim:461e75c354e4871c3255",
+      "relation_id": "rel:reports-fa88b57a13d05fc4"
+    }
+  ],
+  "digest": "ab570cffc8508b562502543848434b9e1f918efca678ead96cf4d3c5ca5a315c"
+}

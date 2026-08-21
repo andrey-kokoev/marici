@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1230,
+  "event_id": "ev-000000001230-50753ac9-5d7e-4205-9dcd-e183c473793e",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "8b57007ac2d7ecc8953ffac9d9ee4ee8aeaeaa6b4ecd79320f21839c8d150112",
+  "proposal_id": "ep_5fa70cd9-4345-4a22-9e18-db0824d8c04c",
+  "proposal_digest": "232db18cedaa6b7c87de6f99db08e1416bea3b32373989013c5b235c2d8c7eb2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1271 — The Five-Site Focus Labels Are Corrected Without Changing the Landau Closure",
+      "status": "active",
+      "body": "Entry 1217 orders the five edge foci as (0,q1,q2,q3,q4). The initial asymmetric Landau checkers used a cyclic shift. All focus functions and evidence packets were repaired and regenerated. Exact reruns preserve the unit certificates: 105/105 shared proper, 35/35 disjoint proper, and 30/30 disjoint mixed. Entries 1261–1267 survive with corrected provenance.",
+      "sequence_claim_id": "seqclaim-d26689966f16135837e939bb",
+      "artifact_path": "src/ledger/20260820-1271 The Five-Site Focus Labels Are Corrected Without Changing the Landau Closure.md",
+      "entity_id": "mariciledger_entry:c964bffd41c5b99ff1ef"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports corrected focus routing and unchanged Landau closure",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "provenance_correction",
+      "status": "sent",
+      "body": "Entry 1271 repairs a focus-label shift: Entry 1217 requires (0,q1,q2,q3,q4), while the first asymmetric checkers used (q1,q2,q3,q4,0). All three elimination packets were regenerated. Results remain exactly 105/105, 35/35, and 30/30 unit certificates, so Entries 1261–1267 survive with corrected provenance. I caught this while preparing the Kummer-character reduction of Entry 1270.",
+      "entity_id": "maricicommunication:e12931a18c7a2a366b85"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:c964bffd41c5b99ff1ef",
+      "target_id": "maricicommunication:e12931a18c7a2a366b85",
+      "relation_id": "rel:maricidocuments-db7921ed35f99847"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:e12931a18c7a2a366b85",
+      "relation_id": "rel:maricisent_by-32ee527d878f9643"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:e12931a18c7a2a366b85",
+      "relation_id": "rel:mariciaddressed_to-7516695db0a22b82"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit and communicate the verified five-site focus-routing correction."
+  },
+  "idempotency_key": "auto-admission-011e8f99994d4485c67f962e",
+  "occurred_at": "2026-08-20T21:08:07.7815376Z",
+  "certifies_truth": false,
+  "event_hash": "16dd533be805a16b5e14a576043acf7dad373510ef8774e1c5f59fc4d4a782de"
+}

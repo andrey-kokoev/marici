@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_680caaa1-ced7-4002-803b-4e59e31afd9b",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "grothendieck-norm-resonance-bidegree-1302",
+  "expected_ledger_head": "418d82dac604f271d145a5b7b1e8f7342abb3272a31ede27874a68964b683299",
+  "created_at": "2026-08-20T22:13:23.8555994Z",
+  "content_fingerprint": "89768658ab42243eb29876c4a9a31b6276d8fc361956f694efe8a97427e91305",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Finite surjections carry a compositional norm-resonance bidegree",
+      "body": "For phi, define d(phi)=|ker phi| and rho(phi)=R_G(ker phi). Coefficient pull-push is phi_!phi^*=d(phi)id, while composition sends bidegrees by (d1,r1)(d2,r2)=(d1d2,lcm(r1,r2)). Norm primes are contained in resonance primes, with possible conjugation-only extras.",
+      "entity_id": "claim:f86e6721f14c9c839def"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "A4->C3 resonance-only-prime bidegree control",
+      "body": "The tower A4->C3->1 has bidegrees (4,6),(3,3),(12,6). Prime 3 is resonance-only on the first arrow. A nonconstant coefficient vector verifies q_!q^*=4 id entrywise; all assertions pass.",
+      "entity_id": "test:0524998a0dabd75c475e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Norm-resonance bidegree proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/norm-resonance-bidegree.md",
+      "entity_id": "source:694a1f33c38c7c0b1ca8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "A4 norm-resonance bidegree checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/norm_resonance_bidegree.py",
+      "entity_id": "source:7eb546452b4acd1366a1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1302 — Norm Degree and Resonance Form a Compositional Bidegree",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1302 Norm Degree and Resonance Form a Compositional Bidegree.md",
+      "entity_id": "source:c10c0bf2a007e6573ec9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:0524998a0dabd75c475e",
+      "target_id": "claim:f86e6721f14c9c839def",
+      "relation_id": "rel:tests-64e7837e99d9e803"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:f86e6721f14c9c839def",
+      "target_id": "source:694a1f33c38c7c0b1ca8",
+      "relation_id": "rel:derived_from-64f2202dfebf29ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:7eb546452b4acd1366a1",
+      "target_id": "test:0524998a0dabd75c475e",
+      "relation_id": "rel:promotes_to_evidence-b4a8a9da6b72d9ea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:c10c0bf2a007e6573ec9",
+      "target_id": "claim:f86e6721f14c9c839def",
+      "relation_id": "rel:promotes_to_evidence-18c1b00e0bf9cbe3"
+    }
+  ],
+  "digest": "2cb7576c68d84579e6c3cbc83e629575bea59845130e4f92b64b1aa2f055da46"
+}

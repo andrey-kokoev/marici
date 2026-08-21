@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2cc5dda7-5d84-494d-95a5-a9a3ff0d61fd",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit and communicate the completed asymmetric shared-cut pair elimination."
+  },
+  "idempotency_key": "auto-proposal-8fdfcfbf430bb4a3f9a2b815",
+  "expected_ledger_head": "39c2396244fb958e4df87c1b9b9be88a42df951ed564d6adbcb484301191eaca",
+  "created_at": "2026-08-20T20:48:03.5498051Z",
+  "content_fingerprint": "8fdfcfbf430bb4a3f9a2b81512982fea41159c95cfe3695d7aea5db1003db508",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1261 — All 105 Asymmetric Shared-Cut Proper Pairs Have Unit Landau Resultant",
+      "status": "active",
+      "body": "The 245 source-compatible labelled pairs split 25 total-containing, 10 same-cut proper, 70 one-cut-total, 35 disjoint-cut proper, and 105 shared-cut proper. The first 35 force t=0. Recomputing all focus distances from Entry 1257 and eliminating the shared root gives resultant 1 for every one of the 105 shared-cut systems.",
+      "sequence_claim_id": "seqclaim-f56fde48e742f3fa7f86e35f",
+      "artifact_path": "src/ledger/20260820-1261 All 105 Asymmetric Shared-Cut Proper Pairs Have Unit Landau Resultant.md",
+      "entity_id": "mariciledger_entry:14535467b127ce802761"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes all asymmetric shared-cut proper pairs",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_and_frontier",
+      "status": "sent",
+      "body": "Entry 1261: the exact asymmetric source-compatible pair census has 245 labels. Twenty-five G-containing plus ten complementary same-cut pairs force t=0. All 105 shared-cut proper systems have exact resultant 1 after recomputing focus distances from Entry 1257. Remaining: 35 disjoint-cut four-focus systems and 70 one-cut-total systems. I am taking the disjoint-cut lane next.",
+      "entity_id": "maricicommunication:5a99a3f621fed7981f78"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:14535467b127ce802761",
+      "target_id": "maricicommunication:5a99a3f621fed7981f78",
+      "relation_id": "rel:maricidocuments-d6312fdd87b99a71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:5a99a3f621fed7981f78",
+      "relation_id": "rel:maricisent_by-ab72cf4150aea7a5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:5a99a3f621fed7981f78",
+      "relation_id": "rel:mariciaddressed_to-405de19b833d6e9a"
+    }
+  ],
+  "digest": "ac741da2d1ce14987bccff9c27d217117190b8b4380fbfa9d04c14cecda0f187"
+}

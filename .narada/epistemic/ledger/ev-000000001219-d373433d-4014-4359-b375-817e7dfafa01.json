@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1219,
+  "event_id": "ev-000000001219-d373433d-4014-4359-b375-817e7dfafa01",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c18458d1a4f53e169b87c60c4f193da672dfe3cdb46bb7ee11770d45e8aa4157",
+  "proposal_id": "ep_6d55e29b-f9f4-4064-a101-d741c63b5c5b",
+  "proposal_digest": "3cc44764bc9702f7be5533bf65beab36624a39c46062c1af136130f3fdd68ec8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-visible-monodromy-exponent-adams-spectrum",
+      "kind": "claim",
+      "title": "Only the visible monodromy exponent controls the power spectrum",
+      "statement": "For an arbitrary finite H-action rho on F_p^r, power correspondences commute with all coefficient fiber sums and basis-level fiber lifts iff gcd(n,p*exp(im rho))=1; invisible factors in ker rho add no obstruction.",
+      "scope": "Elementary-abelian kernel, arbitrary finite possibly nonfaithful action, algebraic correspondence only."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-visible-monodromy-exponent-adams-spectrum",
+      "target_id": "claim:grothendieck-finite-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:supersedes-cbeedec856ef8e2d"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-visible-monodromy-exponent-spectrum",
+      "kind": "test",
+      "title": "Nonfaithful visible-monodromy exponent test",
+      "protocol": "Exhaust n=1..30 for C15 acting on F2^2 through C3 and for trivial C3 action on F2; compare image-exponent and full-quotient predictions.",
+      "falsifier": "Any fiber/index disagrees with image exponent or invisible quotient primes obstruct compatibility."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-visible-monodromy-exponent-spectrum",
+      "target_id": "claim:grothendieck-visible-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:tests-0bf202718998d949"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-visible-monodromy-exponent-spectrum-packet",
+      "kind": "source",
+      "title": "Visible-monodromy exponent Adams spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/visible-monodromy-exponent-adams-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-visible-monodromy-exponent-spectrum-packet",
+      "target_id": "claim:grothendieck-visible-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:promotes_to_evidence-574c3e06042f8b20"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-visible-monodromy-exponent-spectrum",
+      "test_id": "test:grothendieck-visible-monodromy-exponent-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 60 index cases and 7560 checks match exp(im rho); full quotient exponent makes seven explicit false failure predictions",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-visible-monodromy-exponent-spectrum-packet",
+          "locator": "research/grothendieck/results/visible-monodromy-exponent-adams-spectrum.json",
+          "paraphrase": "Exact nonfaithful-action spectra isolate the visible image exponent."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "nonabelian Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-ee84fde834df5b53ec34fa95",
+  "occurred_at": "2026-08-20T20:59:39.5484858Z",
+  "certifies_truth": false,
+  "event_hash": "f6ef9bb0212e62f98b1dce8b4f2fdb9321cf7b7894d8af6c7fe9947004e38024"
+}

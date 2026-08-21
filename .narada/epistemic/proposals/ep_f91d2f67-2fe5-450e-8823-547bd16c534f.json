@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f91d2f67-2fe5-450e-8823-547bd16c534f",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "paired physical-readout gate"
+  },
+  "idempotency_key": "grothendieck-five-site-unit-sieve-physical-activation-gate",
+  "expected_ledger_head": "2820e6a90ee4d7929aa6739d8f1a65c3d2316937b475ba23899454312a3dc011",
+  "created_at": "2026-08-20T21:33:26.1180357Z",
+  "content_fingerprint": "e9fddd3cef72d6c72035ff337c0673edf40cadf5216d055010b4323a3694c9a0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "kind": "claim",
+      "title": "The five-site unit sieve activates no nontrivial frozen physical branch quotient",
+      "statement": "For every nonempty branch B, odd power indices are algebraically Mackey-compatible with q_B, but delta_0 does not descend through q_B; hence no branch/index pair passes the joint physical gate.",
+      "scope": "Frozen five-site coefficient selector and declared branch quotients; no inferred relative-chain pushforward."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "target_id": "claim:grothendieck-radical-resonance-unit-sieve",
+      "relation_id": "rel:depends_on-ddb3863fb5bcfc3f"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "kind": "test",
+      "title": "All-branch all-index joint physical activation census",
+      "protocol": "For 31 nontrivial branch masks and n=1..24, combine odd-index algebraic compatibility with exact fiber constancy of delta_0.",
+      "falsifier": "Any nontrivial branch/index pair passes both algebraic compatibility and selector descent."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "target_id": "claim:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "relation_id": "rel:tests-1ea01763ceda8bf7"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "kind": "source",
+      "title": "Five-site unit-sieve physical activation gate research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-unit-sieve-physical-activation-gate.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "target_id": "claim:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "relation_id": "rel:promotes_to_evidence-304ffe9f93686bf5"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "test_id": "test:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 372 algebraically compatible odd pairs, zero selector-admitted nontrivial branches, and zero joint physical passes across 744 cases",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-unit-sieve-physical-activation-gate",
+          "locator": "research/grothendieck/results/five-site-unit-sieve-physical-activation-gate.json",
+          "paraphrase": "Exact all-branch census separates the algebraic unit sieve from empty frozen physical activation."
+        }
+      ]
+    }
+  ],
+  "digest": "acda76a74bbe25f90a94a63b1e6f5b5b82f29acd71d60b569f5f8e28f673f26f"
+}

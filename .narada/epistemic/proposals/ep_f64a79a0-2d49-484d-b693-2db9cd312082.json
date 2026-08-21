@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f64a79a0-2d49-484d-b693-2db9cd312082",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-finite-abelian-kernel-monodromy-spectrum",
+  "expected_ledger_head": "8a09c7e140c3bc5ed5bf7f5df78e7a7d422459aa788e2637114af67311b8a563",
+  "created_at": "2026-08-20T21:08:49.0112993Z",
+  "content_fingerprint": "150b1966282e95b33c2aabc2385c50bb066160a281b86849de9f8e30d7c99357",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "kind": "claim",
+      "title": "Finite abelian kernels have a product-exponent power spectrum",
+      "statement": "For a finite H-action on a finite abelian K with visible image M in Aut(K), all power-Mackey fiber squares commute iff gcd(n,exp(K)*exp(M))=1.",
+      "scope": "Finite abelian kernel; arbitrary finite action; basis-level algebraic correspondence only."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "target_id": "claim:grothendieck-visible-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:supersedes-d00e0623d80dbe87"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "kind": "test",
+      "title": "Non-field finite-abelian-kernel spectrum test",
+      "protocol": "Exhaust n=1..24 for C4 semidirect C2, C9 semidirect C2, and C4^2 semidirect C3; compare every fiber to gcd(n,exp(K)*exp(M))=1.",
+      "falsifier": "Any fiber/index disagrees with the product-exponent criterion."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "target_id": "claim:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "relation_id": "rel:tests-802a6c10e2efd9a1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-finite-abelian-kernel-monodromy-spectrum-packet",
+      "kind": "source",
+      "title": "Finite-abelian-kernel monodromy spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/finite-abelian-kernel-monodromy-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-finite-abelian-kernel-monodromy-spectrum-packet",
+      "target_id": "claim:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "relation_id": "rel:promotes_to_evidence-ab526bff34b99cb4"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "test_id": "test:grothendieck-finite-abelian-kernel-monodromy-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: all 72 index cases across three non-field kernel families match the product-exponent criterion under 23088 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-finite-abelian-kernel-monodromy-spectrum-packet",
+          "locator": "research/grothendieck/results/finite-abelian-kernel-monodromy-spectrum.json",
+          "paraphrase": "Exact non-field fiber spectra match gcd(n,exp(K)*exp(M))=1."
+        }
+      ]
+    }
+  ],
+  "digest": "0c5976d94611958adc3bdad48a715c76ae85f49c77d0a99d5125b6f87a45e11e"
+}

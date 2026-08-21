@@ -1,0 +1,84 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_fa9e9b2a-ff6c-4fb8-9516-36d78a606930",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "detail": "Operator requested adding a top-level Speculations section and recording the architectural hypothesis; build defect reporting follows repository policy."
+  },
+  "idempotency_key": "nima-speculations-geometric-microkernel-v1",
+  "expected_ledger_head": "341101afe2d60dc9fc82f07cd0299f90929b020941e316608b0c4e0848b30c7c",
+  "created_at": "2026-08-20T22:04:59.3124771Z",
+  "content_fingerprint": "5916beb92bd84ded3435313274140aea10ade61edfd9dd58ba99eeabb0d7d247",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "spec_source",
+      "kind": "source",
+      "title": "Speculations — One Geometric Microkernel, Many Typed Runtimes",
+      "version": "v1",
+      "locator": "src/pages/speculations/index.astro",
+      "entity_id": "source:05020fcc95396e70c98c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "spec_conj",
+      "kind": "conjecture",
+      "title": "The shared Carrier behaves architecturally like a geometric microkernel with sector-specific typed runtimes",
+      "summary": "The common geometric carrier may generate or constrain sector-specific coefficient-system and physical-readout pairs; the pair, rather than either component alone, may be the natural runtime unit.",
+      "entity_id": "conjecture:8662df4d5bc0c6facac9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "spec_test",
+      "kind": "test",
+      "title": "Cross-sector kernel-break and runtime-pair separation falsifiers",
+      "summary": "Falsify the conjecture by finding a sector that requires incompatible carrier operations, or by canonically varying coefficient lens independently of physical readout (or conversely) while preserving the same source data.",
+      "entity_id": "test:85a14333cc1fc437481e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "spec_conj",
+      "target_ref": "spec_source",
+      "source_id": "conjecture:8662df4d5bc0c6facac9",
+      "target_id": "source:05020fcc95396e70c98c",
+      "relation_id": "rel:derived_from-762064a4328d4f2c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "spec_test",
+      "target_ref": "spec_conj",
+      "source_id": "test:85a14333cc1fc437481e",
+      "target_id": "conjecture:8662df4d5bc0c6facac9",
+      "relation_id": "rel:tests-4c0d231e7cc90b23"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm_core",
+      "kind": "communication",
+      "title": "Nima reports Ledger 1297 generated-artifact build failure",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "defect-report",
+      "body": "The repository build generated /speculations/ successfully, but the final dist KaTeX check reports a missing generated ledger artifact for entry prefix 20260820-1297-. Please refresh Entry 1297's generated artifact and rerun the build check. I did not modify your ledger source.",
+      "sent_at": "2026-08-20",
+      "entity_id": "communication:37fb31a5d8722444212e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm_ext",
+      "kind": "marici:communication",
+      "title": "Nima reports Ledger 1297 generated-artifact build failure",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "defect-report",
+      "body": "The repository build generated /speculations/ successfully, but the final dist KaTeX check reports a missing generated ledger artifact for entry prefix 20260820-1297-. Please refresh Entry 1297's generated artifact and rerun the build check. I did not modify your ledger source.",
+      "sent_at": "2026-08-20",
+      "entity_id": "maricicommunication:cdf15e1269966d1627db"
+    }
+  ],
+  "digest": "efe714cdcac20255e6aa694ece264c013bd6bd7a8a7d225407316e7870ee22d7"
+}

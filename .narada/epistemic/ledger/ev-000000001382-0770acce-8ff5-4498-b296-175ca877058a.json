@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1382,
+  "event_id": "ev-000000001382-0770acce-8ff5-4498-b296-175ca877058a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c8e40335e700478d04cbd7b78b52a8ffa2608652a96ca806f3c07d00fda5f294",
+  "proposal_id": "ep_15c23636-5517-4bf6-afb1-3825cb408002",
+  "proposal_digest": "8c74c942327dc794a7d531fba877c49ddef53c65f88a737ddd38b9e2c09716f9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The inertia groupoid carries a canonical ghost Frobenius system",
+      "statement": "For a finite labelled component object with automorphism (X,sigma), F_n(X,sigma)=(X,sigma^n) is a well-defined inertia endofunctor, with F_m F_n=F_mn. Ghost coordinates w_r=|Fix(sigma^r)| satisfy w_r(F_n)=w_rn. Intrinsic primes therefore index generally nontrivial F_p operations on inertia data, though no canonical prime-to-cycle attachment or physical authorization is yet derived.",
+      "scope": "Conditional D4_ab-labelled inertia groupoid; cycle-power Frobenius, not geometric Frobenius or a physical chain map.",
+      "entity_id": "claim:50cf52e75bacca2ffec6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-cycle inertia hostile test",
+      "procedure": "Take sigma to be a p-cycle. Verify conjugacy invariance, F_mF_n=F_mn, the ghost shift w_r(F_n)=w_rn, and F_p(sigma)=identity.",
+      "expected_result": "All composition and ghost identities hold and F_p is nontrivial on the p-cycle. Failure of conjugacy functoriality or composition falsifies the claim.",
+      "entity_id": "test:b773c5ab4378e6085d89"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Inertia ghost-Frobenius system packet",
+      "version": "1",
+      "locator": "research/grothendieck/inertia-ghost-frobenius-system.md",
+      "entity_id": "source:f54a6bc43f4bde4f6302"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1358 — Inertia Carries a Ghost Frobenius System",
+      "version": "1",
+      "locator": "src/ledger/20260820-1358 Inertia Carries a Ghost Frobenius System.md",
+      "entity_id": "source:00fdedf2ca509b0deb6a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:b773c5ab4378e6085d89",
+      "target_id": "claim:50cf52e75bacca2ffec6",
+      "relation_id": "rel:tests-529d27b7e6ec1e58"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:50cf52e75bacca2ffec6",
+      "target_id": "source:f54a6bc43f4bde4f6302",
+      "relation_id": "rel:derived_from-e5fbd201b4b576d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:00fdedf2ca509b0deb6a",
+      "target_id": "claim:50cf52e75bacca2ffec6",
+      "relation_id": "rel:reports-eb5db8517f892fef"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Derive canonical prime-power/Frobenius operations on a source-related enlargement and test composition laws."
+  },
+  "idempotency_key": "auto-admission-ab4bc13e70dfcc633e7a7e35",
+  "occurred_at": "2026-08-20T23:31:00.9812917Z",
+  "certifies_truth": false,
+  "event_hash": "239fc83e3b4e842c187fcdd47c0815d461e32e341e91ad7ae4cb11967528b6c7"
+}

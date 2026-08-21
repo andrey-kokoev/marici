@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0be02d6f-fdda-487c-b66c-b824da6781af",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1336-minimal-adjoint-localization-v1",
+  "expected_ledger_head": "0756bff553a64d299e64b0f63d1636a2d3fd1bcf9bb9dc193b0730bf3ff3e6ee",
+  "created_at": "2026-08-20T22:55:11.7195566Z",
+  "content_fingerprint": "cecd5cf71fd2a9e4a61de24da0f2720652d0322dabc7be97085301097598ed44",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Smith divisibility gives the minimal localization for a Betti adjoint",
+      "statement": "For U P_H V=diag(d_i) and B'=UQ^TP_G, reduced denominators e_ij=d_i/gcd(d_i,B'_ij) have lcm L. Integral adjunction exists iff L=1; localization works exactly after inverting the prime support of L.",
+      "entity_id": "claim:f8e62bcfb8ea18dfa325"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Pairing determinant overestimates adjoint localization",
+      "procedure": "Compare P_H=[6],B=[4] with P_H=[6],B=[6].",
+      "outcome": "The first has minimal denominator L=3; the second has L=1 despite the same pairing determinant.",
+      "falsifier": "This falsifies using determinant primes alone as the integral-adjoint obstruction.",
+      "entity_id": "test:df5c380e50424c633cc3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Minimal localization for an integral adjoint",
+      "version": "v1",
+      "locator": "research/grothendieck/minimal-localization-for-integral-adjoint.md",
+      "entity_id": "source:868643293269e0b584a6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1336 — Smith Divisibility Gives the Minimal Localization for a Betti Adjoint",
+      "version": "1336",
+      "locator": "src/ledger/20260820-1336 Smith Divisibility Gives the Minimal Localization for a Betti Adjoint.md",
+      "entity_id": "source:180e47c5ed3e25cab75a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:df5c380e50424c633cc3",
+      "target_id": "claim:f8e62bcfb8ea18dfa325",
+      "relation_id": "rel:tests-cc202ed9f9b825c3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:f8e62bcfb8ea18dfa325",
+      "target_id": "source:868643293269e0b584a6",
+      "relation_id": "rel:derived_from-44ca862bf0475e58"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:180e47c5ed3e25cab75a",
+      "target_id": "claim:f8e62bcfb8ea18dfa325",
+      "relation_id": "rel:reports-297f8cd8f20ebb0d"
+    }
+  ],
+  "digest": "d9fc5ce204dfeec13af0ec747a7e6cce3bd5328b0bb90ee13aad41e0d16c1a9f"
+}

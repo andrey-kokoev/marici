@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_eaf3f98f-3ac5-41c5-af42-897cdc8feee7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the replicated deck-parity covariance failure."
+  },
+  "idempotency_key": "auto-proposal-0c5c1dab686214fc06ff8454",
+  "expected_ledger_head": "3ee21aa8495e028751393d1fa133ce157ab02f8d754fa1377a1903b9deaf1d51",
+  "created_at": "2026-08-21T00:44:55.0638547Z",
+  "content_fingerprint": "0c5c1dab686214fc06ff845448f84d838b75833c0d55a9fb7cbc42088d657be2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1399 — Naive Deck Parity Does Not Preserve the Cubic Affine Kernel",
+      "status": "supported",
+      "path": "src/ledger/20260820-1399 Naive Deck Parity Does Not Preserve the Cubic Affine Kernel.md",
+      "ledger_number": 1399,
+      "allocator_claim": "seqclaim-af88458cd918dc4e7e621aa2",
+      "entity_id": "mariciledger_entry:e0d8bad580a794a3db31"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Naive Kummer-character parity does not supply deck covariance of the mismatch plane",
+      "status": "supported",
+      "body": "At z=7 and z=13 over F_1019, A has rank 1152 but stacking A with its character-parity transform has full rank 1921. Thus parity at fixed kinematics does not preserve the affine kernel; equal complement-triple dimensions are not an intertwiner.",
+      "entity_id": "mariciclaim:bcaa097cb98461a4cc9c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Affine-kernel deck-parity row-space audit",
+      "status": "passed",
+      "body": "Both maximal-rank fibers give stacked rank 1921 versus affine rank 1152.",
+      "entity_id": "maricitest:891127a4fb3b9b88e232"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:e0d8bad580a794a3db31",
+      "target_id": "mariciclaim:bcaa097cb98461a4cc9c",
+      "relation_id": "rel:maricirecords-719cdebbfafa0634"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:e0d8bad580a794a3db31",
+      "target_id": "maricitest:891127a4fb3b9b88e232",
+      "relation_id": "rel:maricirecords-2d1a8792f1370fc4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:bcaa097cb98461a4cc9c",
+      "target_id": "maricitest:891127a4fb3b9b88e232",
+      "relation_id": "rel:maricisupported_by-fb9725d79812ac8c"
+    }
+  ],
+  "digest": "1f67b296fed58b2b188e58f57e10d279d566357ded716af14bf95dcde880ed69"
+}

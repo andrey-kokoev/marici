@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6d4b6e77-f6ed-47cf-8868-29adb70870c3",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact obstruction to cyclic descent through the asymmetric Kummer profile."
+  },
+  "idempotency_key": "auto-proposal-9768662037ffeceb8f18084c",
+  "expected_ledger_head": "16a88ac7c354f9e3af7f33404ce37f27733127202dedeb0a438fb79b1199b8c2",
+  "created_at": "2026-08-21T00:54:29.2964388Z",
+  "content_fingerprint": "9768662037ffeceb8f18084c8cf31ced1961261cf8cbe1c718d803262b6cc314",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1404 — The Asymmetric Five-Site Kummer Profile Does Not Admit the Source Cycle",
+      "status": "established",
+      "path": "src/ledger/20260820-1404 The Asymmetric Five-Site Kummer Profile Does Not Admit the Source Cycle.md",
+      "ledger_number": 1404,
+      "allocator_claim": "seqclaim-344d8bdd8f958e11f5ea2e4e",
+      "entity_id": "mariciledger_entry:da52359f1bdf2f0ae789"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The declared asymmetric five-site Kummer specialization has no affine C5 lift",
+      "status": "established",
+      "body": "The four radicand differences force a unique affine candidate u'=(u2-u1,u3-u1,4u3-2u1-u2-25/2), but exact substitution leaves a nonzero quadratic residual. Therefore the source cycle does not descend through this specialization.",
+      "entity_id": "mariciclaim:6aa7723f13ccafb5a052"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Characteristic-zero Symbolica cyclic-specialization identity audit",
+      "status": "passed",
+      "body": "All five transformed radicand residuals were computed exactly; the common first-four residual is nonzero and the fifth closure residual is also nonzero.",
+      "entity_id": "maricitest:5666bd434c96ee3db6b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:da52359f1bdf2f0ae789",
+      "target_id": "mariciclaim:6aa7723f13ccafb5a052",
+      "relation_id": "rel:maricirecords-1534dac3b8aaa025"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:da52359f1bdf2f0ae789",
+      "target_id": "maricitest:5666bd434c96ee3db6b6",
+      "relation_id": "rel:maricirecords-73f6af54b8292d5b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:6aa7723f13ccafb5a052",
+      "target_id": "maricitest:5666bd434c96ee3db6b6",
+      "relation_id": "rel:maricisupported_by-8ddb339475853125"
+    }
+  ],
+  "digest": "31d4521e443fa8c28f93ac2ce648a7c158fe99989793aa30a37801008dfe86aa"
+}

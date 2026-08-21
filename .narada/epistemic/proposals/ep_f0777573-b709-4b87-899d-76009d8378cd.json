@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f0777573-b709-4b87-899d-76009d8378cd",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1318-homology-descent-v1",
+  "expected_ledger_head": "47b59daaf6ee1c3b05b7072b1cde91dd43c3071a934052d02c757d2d6e61cde7",
+  "created_at": "2026-08-20T22:33:13.7774173Z",
+  "content_fingerprint": "8e40e3d5552f440ac73ca5772171769f8b2140e0f91b5642913ad18565398625",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Homology descent is strictly weaker than a physical chain map",
+      "statement": "A graded map S induces H_n(G)->H_n(H) exactly when Omega_n vanishes on Z_n(G) and Omega_(n+1)(C_(n+1)(G)) lies in B_n(H). These conditions can hold with Omega nonzero.",
+      "entity_id": "claim:b675d08704b0332aaddf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Contractible-summand separation of homology descent from chain compatibility",
+      "procedure": "Take D_G=D_H=diag(1,0), S_1=diag(0,1), S_0=diag(1,1).",
+      "outcome": "Omega_1=diag(-1,0) is nonzero, but S induces the identity on the surviving homology summand.",
+      "falsifier": "This falsifies the inference that failure of strict chain compatibility necessarily destroys every class-level readout.",
+      "entity_id": "test:b93121890b88a4adb495"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Homology descent weaker than chain map",
+      "version": "v1",
+      "locator": "research/grothendieck/homology-descent-weaker-than-chain-map.md",
+      "entity_id": "source:05263d8270d7b04c98e8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1318 — Homology Descent Is Strictly Weaker Than a Physical Chain Map",
+      "version": "1318",
+      "locator": "src/ledger/20260820-1318 Homology Descent Is Strictly Weaker Than a Physical Chain Map.md",
+      "entity_id": "source:f8c78fb3ed07190f0180"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:b93121890b88a4adb495",
+      "target_id": "claim:b675d08704b0332aaddf",
+      "relation_id": "rel:tests-d7723884f8389ec8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:b675d08704b0332aaddf",
+      "target_id": "source:05263d8270d7b04c98e8",
+      "relation_id": "rel:derived_from-c936bbafa34b126f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:f8c78fb3ed07190f0180",
+      "target_id": "claim:b675d08704b0332aaddf",
+      "relation_id": "rel:reports-dde76b2909f1c90e"
+    }
+  ],
+  "digest": "e70d0c1bcc9f2b905d6b590901c20104295b678e835a92f8a9d18469364bc6a1"
+}

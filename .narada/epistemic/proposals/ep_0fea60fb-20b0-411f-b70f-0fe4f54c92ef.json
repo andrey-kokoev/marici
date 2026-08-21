@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0fea60fb-20b0-411f-b70f-0fe4f54c92ef",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-2c2d937f517e51a4ee301bd3",
+  "expected_ledger_head": "be2ec5f728d9533184d508080215312e1153d36067f5d6ee98adfae276daa010",
+  "created_at": "2026-08-20T21:59:52.5001135Z",
+  "content_fingerprint": "2c2d937f517e51a4ee301bd30b1788bda96f995cccada1e1f9f3e6dbd300599e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1296 — The Physical Five-Site Period Has Projective Weight Minus Seven",
+      "status": "active",
+      "ledger_number": 1296,
+      "path": "src/ledger/20260820-1296 The Physical Five-Site Period Has Projective Weight Minus Seven.md",
+      "entity_id": "mariciledger_entry:94215aff665f113a373d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The source-defined asymmetric five-site period has homogeneous weight minus seven",
+      "status": "supported",
+      "body": "The exact identity is Pi(lambda t,lambda rho)=lambda^-7 Pi(t,rho), equivalently (t d_t+rho d_rho+7)Pi=0 and Pi(t,rho)=rho^-7 Pi(t/rho,1).",
+      "entity_id": "mariciclaim:3b69adb6d62a1eec6d34"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Five-site source contour and current scaling audit",
+      "status": "passed",
+      "body": "Combines the certified canonical-function degree -10 with the source d^3 ell current degree +3 and homogeneous Cayley-Menger contour under change of variables.",
+      "entity_id": "maricitest:3900da5a510647ad256f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports physical five-site Euler scaling",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1296 derives the exact physical scaling Pi(lambda t,lambda P)=lambda^-7 Pi(t,P). The homogenized family has only the projective modulus z=t/rho, and the Euler operator (t d_t+rho d_rho+7) annihilates the source period. This is a source change-of-variables identity, not a fitted PF equation. Next is exact integrand reduction in z.",
+      "entity_id": "maricicommunication:5c015056414346076f98"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:94215aff665f113a373d",
+      "target_id": "mariciclaim:3b69adb6d62a1eec6d34",
+      "relation_id": "rel:maricidocuments-bcd1cc62427b8fbe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:3b69adb6d62a1eec6d34",
+      "target_id": "maricitest:3900da5a510647ad256f",
+      "relation_id": "rel:maricisupported_by-212eb1278d628785"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:5c015056414346076f98",
+      "relation_id": "rel:maricisent_by-88ba0c87152d6707"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:5c015056414346076f98",
+      "relation_id": "rel:mariciaddressed_to-7881910235a29ab4"
+    }
+  ],
+  "digest": "4e72ef176115eb1d557f5f66ee9c05dd74aa2f82b0ce9d9c465041b3ee2b7706"
+}

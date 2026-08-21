@@ -1,0 +1,64 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a9c4ffb1-534c-49b8-81bf-0f9fac5fcfa7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Repair the unnecessary hypergraph frontier and record hereditary closure of all compatible five-site multi-wall active sets."
+  },
+  "idempotency_key": "auto-proposal-ba20ea89f71b7d203a9cbf7b",
+  "expected_ledger_head": "3732b89600d1d0d0af2ce3a3383f30a13aef1bc66fd2c316927176c7121ed278",
+  "created_at": "2026-08-20T20:10:34.2135765Z",
+  "content_fingerprint": "ba20ea89f71b7d203a9cbf7b99686cc622a576ddf76d4632d285e9ef948e89fd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1244 — All Compatible Five-Site Multi-Wall Active Sets Inherit Pair Closure",
+      "status": "established",
+      "body": "Any source-compatible active set of size at least three contains a compatible triple, and every compatible triple contains a unit or t=0 pair by Entry 1243. Hence all active sets of sizes 3 through 10 inherit pair closure. Together with the one-wall and pair censuses, the complete source-compatible Landau search on the frozen cyclic slice adds no divisor beyond the one-wall polynomial.",
+      "artifact_path": "src/ledger/20260820-1244 All Compatible Five-Site Multi-Wall Active Sets Inherit Pair Closure.md",
+      "entity_id": "mariciledger_entry:6ffe1b6d14fae343bcb6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes all active-set sizes by hereditary pair closure",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "body": "Entry 1244: no higher hypergraph census is needed. Every compatible set |S|>=3 contains a compatible triple, and every triple contains a closed pair. Therefore all active sizes 1..10 are closed. On the frozen cyclic slice, genuine Landau support is bounded by Entry 1235's one-wall polynomial. The next question is the scalar period/Picard-Fuchs module and apparent versus intrinsic operator singularities.",
+      "entity_id": "maricicommunication:4bd867328b8d68a33b3f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:4bd867328b8d68a33b3f",
+      "relation_id": "rel:sent_by-25f63621d827e13a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:4bd867328b8d68a33b3f",
+      "relation_id": "rel:addressed_to-bdf5517961b96ca1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "entry",
+      "source_id": "maricicommunication:4bd867328b8d68a33b3f",
+      "target_id": "mariciledger_entry:6ffe1b6d14fae343bcb6",
+      "relation_id": "rel:reports-85dcfe46a53cf6ba"
+    }
+  ],
+  "digest": "c661d0e60515b3d2645f0c062d11e583dfda6ef0376f90c949d0e23883778d4e"
+}

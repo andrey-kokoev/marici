@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1427,
+  "event_id": "ev-000000001427-1cce4bc0-74a2-413b-be24-297765d0e625",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3c956ba68c3e85dd34416a02672e504a7b0b1315939a365357e3787ec2a65962",
+  "proposal_id": "ep_ecca44be-73ef-4401-8ae3-02d10e42749d",
+  "proposal_digest": "a5baa9f0857697881151d515ae67ee4db01abdd54d17789c42f3f51d5b00ad74",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Theta Pólya-frequency no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/theta-polya-frequency-no-go.md",
+      "entity_id": "source:1d40a0ae55ddcb05df82"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1387 — The Riemann Theta Kernel Is Not Pólya-Frequency",
+      "version": "1",
+      "locator": "src/ledger/20260820-1387 The Riemann Theta Kernel Is Not Polya-Frequency.md",
+      "entity_id": "source:f9960b24fbd70eb2eefe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The Riemann theta kernel is not Pólya-frequency of infinite order",
+      "statement": "Schoenberg's theorem makes the bilateral Laplace transform of a PF-infinity function the reciprocal of an entire Laguerre-Polya function. The super-exponentially decaying Riemann theta kernel has entire transform Xi(is). If it were PF-infinity, the identity theorem would force Xi(is) to be zero-free, contradicting known nontrivial xi zeros. Thus total positivity must arise, if at all, only after the logarithmic Stieltjes transform.",
+      "scope": "Unconditional no-go for full translation-kernel total positivity; weaker finite-order and derived Pick/Stieltjes positivity remain open.",
+      "entity_id": "claim:5abb4571ba878f7f96b1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Schoenberg entire-reciprocal theta test",
+      "description": "Combine the PF-infinity reciprocal-transform classification with the entire theta transform and its known nontrivial zeros.",
+      "entity_id": "test:c00e6a818af365d382e9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:5abb4571ba878f7f96b1",
+      "target_id": "source:1d40a0ae55ddcb05df82",
+      "relation_id": "rel:derived_from-7e0630a884e04a5f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:5abb4571ba878f7f96b1",
+      "target_id": "source:f9960b24fbd70eb2eefe",
+      "relation_id": "rel:derived_from-bce0669be486e54d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c00e6a818af365d382e9",
+      "target_id": "claim:5abb4571ba878f7f96b1",
+      "relation_id": "rel:tests-9e5c31fea9e161c0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:c00e6a818af365d382e9",
+      "target_id": "source:1d40a0ae55ddcb05df82",
+      "relation_id": "rel:derived_from-5b30575737394094"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-positive Weyl boundary and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-5af5b8f4ebb07b4481d47d78",
+  "occurred_at": "2026-08-21T00:23:36.4394028Z",
+  "certifies_truth": false,
+  "event_hash": "c5abe55447a412153d7f8a7cf70ccf71c9fbc6cd4933a982c7667f36a998dd83"
+}

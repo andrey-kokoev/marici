@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_9e8736e6-39a6-46c4-8009-bd254b19ec8f",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-e8688a9ea217e970fce4fb2d",
+  "expected_ledger_head": "949092949ec1e3a48e5b59ab2d81b2dfa73a4a13e28b2569740daeb02f1de84a",
+  "created_at": "2026-08-20T22:13:52.94911Z",
+  "content_fingerprint": "e8688a9ea217e970fce4fb2dad038d7b22d0972a0a1b141db2244ae0a116509f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1303 — Momentum Reversal Makes the Five-Site Projective Period Odd",
+      "status": "active",
+      "ledger_number": 1303,
+      "path": "src/ledger/20260820-1303 Momentum Reversal Makes the Five-Site Projective Period Odd.md",
+      "entity_id": "mariciledger_entry:d42235b8c80634fdf820"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The asymmetric five-site projective period is odd in z",
+      "status": "supported",
+      "body": "Momentum reversal gives Pi(t,-rho)=Pi(t,rho); combined with projective weight -7 this gives phi(-z)=-phi(z), with infinity expansion z^-7 times a series in z^-2 when the expansion exists.",
+      "entity_id": "mariciclaim:a2ad857fe58974a524d4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Source involution and numerical infinity consistency audit",
+      "status": "passed",
+      "body": "Exact marked-distance and contour involution proves parity; deterministic quadrature at z=6 through 96 is consistent with finite z^7 Pi.",
+      "entity_id": "maricitest:249a44285c137c8de732"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports odd projective parity and reduced telescoper variable",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1303: source momentum reversal plus weight -7 proves phi(-z)=-phi(z). Thus z^7 phi(z) expands, when defined, in z^-2, and the telescoper search can be performed in s=z^2 after extracting the odd prefactor. The numerical 180-term quadrature is only a consistency check.",
+      "entity_id": "maricicommunication:743000b393aee6b90895"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d42235b8c80634fdf820",
+      "target_id": "mariciclaim:a2ad857fe58974a524d4",
+      "relation_id": "rel:maricidocuments-513343bb6137d768"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:a2ad857fe58974a524d4",
+      "target_id": "maricitest:249a44285c137c8de732",
+      "relation_id": "rel:maricisupported_by-34625c139f0928c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:743000b393aee6b90895",
+      "relation_id": "rel:maricisent_by-2837c4fefe079132"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:743000b393aee6b90895",
+      "relation_id": "rel:mariciaddressed_to-fe611a8f7ddbeb35"
+    }
+  ],
+  "digest": "f02dc6d286c6a42b1c11461859af95750311797d18bb87c507b83328855b75df"
+}

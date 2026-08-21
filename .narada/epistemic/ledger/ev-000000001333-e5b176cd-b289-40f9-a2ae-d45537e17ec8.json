@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1333,
+  "event_id": "ev-000000001333-e5b176cd-b289-40f9-a2ae-d45537e17ec8",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "77e95a6de01fd3f5c0a906d7086453701abce5e6294704eba85623db8689531b",
+  "proposal_id": "ep_58823616-b9d2-42a7-8840-79d4d538ef81",
+  "proposal_digest": "a9d47f32c664ca901ff5ab3a177e3073143b75dc4204a72114171186a86f56bc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Separated boundary support prevents cancellation but not annihilation",
+      "statement": "If im(Omega_r S_q) intersects im(S_r Omega_q) trivially, a zero composite defect forces both transported defects to vanish. Recovering Omega_r needs detection by S_q (surjectivity suffices); recovering Omega_q needs S_r injective on im Omega_q.",
+      "entity_id": "claim:6844cc761551e50d6e37"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Kernel annihilation survives separated-support testing",
+      "procedure": "Take S_q identity, S_r=[1 0], Omega_r=0, and im Omega_q spanned by (0,1).",
+      "outcome": "The composite defect vanishes and transported supports are separated, while Omega_q remains nonzero.",
+      "falsifier": "This falsifies terminal stage certification from support separation alone.",
+      "entity_id": "test:dbbe50543d22b78122bc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Separated-support boundary-defect detection",
+      "version": "v1",
+      "locator": "research/grothendieck/separated-support-boundary-defect-detection.md",
+      "entity_id": "source:e53052076e7bfabd32b7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1319 — Separated Boundary Support Prevents Cancellation but Not Annihilation",
+      "version": "1319",
+      "locator": "src/ledger/20260820-1319 Separated Boundary Support Prevents Cancellation but Not Annihilation.md",
+      "entity_id": "source:8d79beb68444499a3a64"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:dbbe50543d22b78122bc",
+      "target_id": "claim:6844cc761551e50d6e37",
+      "relation_id": "rel:tests-667c5f809b664a8e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:6844cc761551e50d6e37",
+      "target_id": "source:e53052076e7bfabd32b7",
+      "relation_id": "rel:derived_from-643a0ba35f86e6f1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:8d79beb68444499a3a64",
+      "target_id": "claim:6844cc761551e50d6e37",
+      "relation_id": "rel:reports-325cbe1327b52c43"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-be53c1044528370ef7038864",
+  "occurred_at": "2026-08-20T22:34:13.6122218Z",
+  "certifies_truth": false,
+  "event_hash": "41306e1dbe9284e11924354efaf2be6e4468a048ed7d4c89e405666c6453a074"
+}

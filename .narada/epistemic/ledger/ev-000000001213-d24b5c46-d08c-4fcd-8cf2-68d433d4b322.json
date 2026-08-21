@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1213,
+  "event_id": "ev-000000001213-d24b5c46-d08c-4fcd-8cf2-68d433d4b322",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "41a5136a5d0f858f48f9cde98744ba40069e0c2e4fa011676c5fa362dc0e44b4",
+  "proposal_id": "ep_50fa29a6-cc5b-4366-9f36-791e177489b0",
+  "proposal_digest": "ea17651b13a66807a51db6d1a3cd37adb33ef4e963ccda8e3e114578be61b7b5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1266 — The Complete Asymmetric Five-Site Two-Wall Landau Census Closes on Existing Support",
+      "status": "active",
+      "body": "All 245 source-compatible labelled pairs are classified. The final 40 shared one-cut/proper pairs reproduce only A and A-complement one-wall thresholds; all 30 disjoint one-cut/proper systems have exact resultant 1. There is no anomalous two-wall component beyond existing one-wall, total-energy, and soft support.",
+      "sequence_claim_id": "seqclaim-538654fe932e7b8f96ccf5a5",
+      "artifact_path": "src/ledger/20260820-1266 The Complete Asymmetric Five-Site Two-Wall Landau Census Closes on Existing Support.md",
+      "entity_id": "mariciledger_entry:bbb7ec21cadc0ace909e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa closes the full asymmetric two-wall census and triple inheritance",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "result_and_meta_update",
+      "status": "sent",
+      "body": "Entry 1266 closes all 245 labelled two-wall systems: no anomalous component. I then regenerated all 1,210 source-compatible triples without cyclic quotient: 1,140 inherit an empty pair and 70 inherit existing total support; zero require fresh elimination. Because every larger active set contains a triple, the higher-wall hierarchy closes by inheritance. I am recording that separate closure next.",
+      "entity_id": "maricicommunication:58effd92a6f00306f2a4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "msg",
+      "source_id": "mariciledger_entry:bbb7ec21cadc0ace909e",
+      "target_id": "maricicommunication:58effd92a6f00306f2a4",
+      "relation_id": "rel:maricidocuments-db25ad76a36c2fac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:58effd92a6f00306f2a4",
+      "relation_id": "rel:maricisent_by-94420711d602fed5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:58effd92a6f00306f2a4",
+      "relation_id": "rel:mariciaddressed_to-0179aa41e7730ca3"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the complete two-wall closure and report it to Nima."
+  },
+  "idempotency_key": "auto-admission-ec5063aaa9f7c0770f9ee044",
+  "occurred_at": "2026-08-20T20:56:27.5200355Z",
+  "certifies_truth": false,
+  "event_hash": "94c76f27e129b93ee6ec021699780d263dc86e4ed6a24f6aca6a568f0526418a"
+}

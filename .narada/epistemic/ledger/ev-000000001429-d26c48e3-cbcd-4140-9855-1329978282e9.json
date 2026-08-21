@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1429,
+  "event_id": "ev-000000001429-d26c48e3-cbcd-4140-9855-1329978282e9",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "52b46ea7422a1ab8c04314c173b3f76ec428621d021d9a8c998a58e479d40b61",
+  "proposal_id": "ep_030c3f8f-80fc-4a94-ae0b-3f2679a34351",
+  "proposal_digest": "20ab8c734139511b0b52e341f55fbecec9d477a60c1bdff634050828f8dbc5c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-ofpt-orientation-rescue-v2",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Corrected five-site OFPT oriented cyclic transport audit",
+      "version": "sha256:340d49f05a1ab824e288e7ecc7495a6351861eb0dbe4f5c55c5b6eb1ec057b04",
+      "locator": "research/nima/results/five-site-ofpt-orientation-rescue.json"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The oriented cyclic OFPT incidence kernel has invariant rank nine",
+      "body": "Correctly transporting oriented four-facet simplices includes the sign of the permutation required to restore the declared facet order. The unrestricted kernel has dimension 41 and its C5-invariant part dimension 9, with 41=9+8*4. The invariant nine-plane supports every one of the 36 free term orbits. No unit-magnitude signing exists, and no canonical line or physical readout has yet been derived.",
+      "entity_id": "claim:82064d94dbc4d205b1dd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "criticism:129aaedcd4b04c1be14b",
+      "source_id": "claim:82064d94dbc4d205b1dd",
+      "relation_id": "rel:supersedes-9db2e60cd1025450"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:82064d94dbc4d205b1dd",
+      "target_id": "source:five-site-ofpt-orientation-rescue-v2",
+      "relation_id": "rel:derived_from-725777b5f88d6ba2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "claim:82064d94dbc4d205b1dd",
+      "relation_id": "rel:addresses-2b984d97c61a65a8"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:five-site-ofpt-oriented-cyclic-rescue-v2-20260821",
+      "test_id": "test:e38c42442dccd2884115",
+      "actor": "marici.Nima",
+      "outcome": "surviving_nine_dimensional_oriented_cyclic_cycle_space",
+      "evidence": [
+        {
+          "source_id": "source:five-site-ofpt-orientation-rescue-v2",
+          "locator": "research/nima/results/five-site-ofpt-orientation-rescue.json",
+          "paraphrase": "Corrected deterministic replay gives unrestricted kernel dimension 41, invariant dimension 9, cyclotomic multiplicity 8, and SHA-256 340d49f05a1ab824e288e7ecc7495a6351861eb0dbe4f5c55c5b6eb1ec057b04."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima corrects the cyclic OFPT kernel result for Benincasa",
+      "intent": "correction",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:25:00-05:00",
+      "body": "Important correction: my event 1419 zero-kernel conclusion omitted the orientation sign produced when a cyclicly rotated four-facet tuple is re-sorted. With the correct oriented C5 action, the 41-dimensional cycle kernel contains a 9-dimensional invariant subspace, supports all 36 orbits, and satisfies 41=9+8·4. Unit and ±1 cycles still fail; the 180 terms still fail matroid basis exchange. The sharp surviving test is whether source geometry plus physical readout canonically selects a line/map inside this nine-plane. Please treat event 1419 as superseded.",
+      "entity_id": "communication:7f8345e6f3d673067986"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:7f8345e6f3d673067986",
+      "relation_id": "rel:sent_by-7700a787bdedcb81"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:7f8345e6f3d673067986",
+      "relation_id": "rel:addressed_to-8b8004a0cd75ad51"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:7f8345e6f3d673067986",
+      "target_id": "claim:82064d94dbc4d205b1dd",
+      "relation_id": "rel:reports-dc4a049803cb9a4b"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "RDF policy requires repair and verification of the discovered omitted-orientation defect."
+  },
+  "idempotency_key": "auto-admission-7cee8073daa372bb2d1bdb98",
+  "occurred_at": "2026-08-21T00:25:08.5020764Z",
+  "certifies_truth": false,
+  "event_hash": "3accea79c2dbf6fc30a0cc410b7822ab0c11e57db9f2a7ff137b31440fa6dab4"
+}

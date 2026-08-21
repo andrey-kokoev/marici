@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_92b7c76c-c317-4a8a-82e5-afd857564032",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1337-adjoint-denominator-composition-v1",
+  "expected_ledger_head": "b4325817028f238840bd37493048ea569c2452229e97dd49785d484ef94eeaac",
+  "created_at": "2026-08-20T22:56:29.0381854Z",
+  "content_fingerprint": "7e8d8a3e0fa4852c35b41dc700f09f9758502b2ceeb034543b4fc0abba313369",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Adjoint denominators are submultiplicative but can cancel in a composite",
+      "statement": "For composable rational adjoints, L_(rq) divides L_r L_q, so composite localization primes lie in the union of stage supports. An integral composite need not have integral factors.",
+      "entity_id": "claim:33f15617276032267353"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Rank-one pairing tower cancels both adjoint denominators",
+      "procedure": "Take P_G=2, P_H=3, P_J=2 and identity coefficient pullbacks.",
+      "outcome": "Stage adjoints are 2/3 and 3/2, while the composite adjoint is 1.",
+      "falsifier": "This falsifies inferring stagewise integral transfers from terminal integrality.",
+      "entity_id": "test:445a7c4beb06d7f65493"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Adjoint-denominator composition cancellation",
+      "version": "v1",
+      "locator": "research/grothendieck/adjoint-denominator-composition-cancellation.md",
+      "entity_id": "source:e52beebc8f68c3f4aca2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1337 — Adjoint Denominators Are Submultiplicative but Can Cancel in a Composite",
+      "version": "1337",
+      "locator": "src/ledger/20260820-1337 Adjoint Denominators Are Submultiplicative but Can Cancel in a Composite.md",
+      "entity_id": "source:1d67eff6af521b23c475"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:445a7c4beb06d7f65493",
+      "target_id": "claim:33f15617276032267353",
+      "relation_id": "rel:tests-ecceed152dd9a728"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:33f15617276032267353",
+      "target_id": "source:e52beebc8f68c3f4aca2",
+      "relation_id": "rel:derived_from-f47902ec45c887f6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:1d67eff6af521b23c475",
+      "target_id": "claim:33f15617276032267353",
+      "relation_id": "rel:reports-0ca8178ca1786221"
+    }
+  ],
+  "digest": "bd66e07799162943723d7476cb73073409c24b295745a010c55d75dc6c6a56d1"
+}

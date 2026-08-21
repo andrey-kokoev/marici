@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_6a558065-1a1c-4e0c-b257-1d611edcdc10",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Only after completing prime, Frobenius, Euler, and analytic-completion gates, test whether a natural global spectrum contains zeta zeros."
+  },
+  "idempotency_key": "grothendieck-ledger-1363-theta-natural-operator-spectrum-audit-v1",
+  "expected_ledger_head": "7b53603ac9ffab35f9435f98f1ecd0d0d529dd64e5295ddd2e6824f260c41d9a",
+  "created_at": "2026-08-20T23:37:07.1665717Z",
+  "content_fingerprint": "a0ff497d50706fe566516583dee6b358037b34f067ca3f1bc82cb00a5d826819",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Natural theta operators do not isolate the zeta-zero spectrum",
+      "statement": "On L2(R_+,dx/x), the Mellin dilation generator becomes -i d/dy under y=log x and has continuous spectrum R. Inversion Jf(x)=f(1/x) is a unitary involution with J^2=1 and JDJ=-D, hence only plus/minus-one symmetry spectrum. These natural theta operators encode functional-equation symmetry but do not yield discrete zeta-zero ordinates.",
+      "scope": "Audit of unmodified archimedean theta operators; no no-go claim for additional source-derived Hilbert-Polya geometry.",
+      "entity_id": "claim:c722466eaa42ed924170"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Continuous-spectrum hostile test",
+      "procedure": "Conjugate the dilation generator by logarithmic coordinates to momentum on L2(R), use Fourier transformation to compute its spectrum, and compute the inversion involution identities.",
+      "expected_result": "D has continuous spectrum R and J has spectrum contained in plus/minus one. A discrete compact-resolvent zero spectrum from these unmodified operators would falsify the claim.",
+      "entity_id": "test:7f103a3662ab13d2c296"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Theta natural-operator spectrum audit",
+      "version": "1",
+      "locator": "research/grothendieck/theta-natural-operator-spectrum-audit.md",
+      "entity_id": "source:94bfe07ac3cbb193a57e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1363 — Natural Theta Operators Do Not Select Zeta Zeros",
+      "version": "1",
+      "locator": "src/ledger/20260820-1363 Natural Theta Operators Do Not Select Zeta Zeros.md",
+      "entity_id": "source:db10368ed7a8213d4f0d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:7f103a3662ab13d2c296",
+      "target_id": "claim:c722466eaa42ed924170",
+      "relation_id": "rel:tests-4c33cd6b6bd867e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:c722466eaa42ed924170",
+      "target_id": "source:94bfe07ac3cbb193a57e",
+      "relation_id": "rel:derived_from-3dc7a8b14b54ad74"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:db10368ed7a8213d4f0d",
+      "target_id": "claim:c722466eaa42ed924170",
+      "relation_id": "rel:reports-701c5ac4f7d277fe"
+    }
+  ],
+  "digest": "c723389756da6084f5fd2d0b25414aa77a82c38cc916bda0c8b01861cf4b93ac"
+}

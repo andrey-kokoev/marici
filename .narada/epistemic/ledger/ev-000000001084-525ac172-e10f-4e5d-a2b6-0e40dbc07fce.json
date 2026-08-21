@@ -1,0 +1,185 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1084,
+  "event_id": "ev-000000001084-525ac172-e10f-4e5d-a2b6-0e40dbc07fce",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "49c0864a42e77f78657ee57492767bef8e4b40a54ac9d14a8033cbb56bbe29aa",
+  "proposal_id": "ep_dc146723-d580-4da0-8e1c-664413ef3779",
+  "proposal_digest": "f9062ff1ef6ebb917a3a549b396c6c9deeac9430b4d23fc53b430e6c8c996b08",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Grothendieck universal physical-readout congruence packet",
+      "version": "sha256:ff214ecb379fbbb478507c5957db199348ef5c6173e27c95c430b7b348700c34",
+      "locator": "research/grothendieck/physical-readout-congruence.md",
+      "entity_id": "source:706d60efc082798dc417"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Grothendieck physical-readout congruence exact checker",
+      "version": "sha256:90d92be88a6608cd7476b7baf26d072f3501922722ad0c943e3e8b2456e56585",
+      "locator": "research/grothendieck/checkers/physical_readout_congruence.py",
+      "entity_id": "source:776cd7afa96b868e1089"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "result",
+      "kind": "source",
+      "title": "Grothendieck physical-readout congruence result",
+      "version": "sha256:46f375a4cd7efb9df21eb1e3ce14b3fd9d034afdd8deaeacc15026876d1919ab",
+      "locator": "research/grothendieck/results/physical-readout-congruence.json",
+      "entity_id": "source:f59793638115c2be5996"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The universal physical-readout quotient kills exactly the jointly invisible commutators and preserves the conditional pi_0 semiring under additive congruence",
+      "status": "conditional universal theorem with exact finite falsifier",
+      "demonstrated_strength": [
+        "group and groupoid universal-property theorem",
+        "rank-one free-semiring congruence theorem",
+        "exact finite cross-sector controls"
+      ],
+      "body": "For a nonempty family of typed physical-observable representations rho_i of a source group G, let K_obs be their joint kernel and K_phys=[G,G] intersect K_obs. Then G_phys=G/K_phys is the initial quotient killing every jointly invisible commutator, and it is abelian exactly when [G,G] is contained in K_obs. Isotropy-only quotients leave pi_0 unchanged; any additive congruence on the rank-one free additive Carrier automatically respects its endomorphism multiplication, so the conditional initial semiring descends without a Carrier tensor. Flavor locates the quotient after physical readout; cosmology verifies simultaneous pairing but has an already abelian deck group; the D4 orientation line passes non-hostilely while the standard rank-two D4 probe detects the commutator; five-point strings instantiate scalar assembly, but six-point descent is untyped until N_shift tensor Gamma_source -> C is constructed.",
+      "entity_id": "claim:f101503b84a10d53c007"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite falsifier for the universal physical-readout abelian shadow",
+      "status": "passed",
+      "checker": "research/grothendieck/checkers/physical_readout_congruence.py",
+      "result": "research/grothendieck/results/physical-readout-congruence.json",
+      "controls": {
+        "additive_congruence_checks": 15014,
+        "cosmology_simultaneous_pairing_checks": 32768,
+        "flavor_commutator_detected_by_lens": true,
+        "d4_rank_two_commutator_detected": true
+      },
+      "deliberate_failure": "The standard rank-two D4 representation detects r^2, falsifying automatic higher-dimensional factorization through D4_ab.",
+      "entity_id": "test:79e47e5ece754dfaf29c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "reply",
+      "kind": "marici:communication",
+      "title": "Grothendieck returns the universal physical-readout congruence theorem and finite falsifier",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "status": "sent",
+      "sent_at": "2026-08-20T19:15:41.410Z",
+      "body": "Directed lane complete. For a nonempty family of typed physical-observable representations rho_i, define K_obs=intersection ker(rho_i), K_phys=[G,G] intersect K_obs, and G_phys=G/K_phys. This is the smallest congruence forced to kill every jointly invisible commutator; it is an abelianization iff every commutator is physically invisible. The conditional pi_0 semiring descends without a Carrier tensor: isotropy quotients leave pi_0 unchanged, and every additive congruence on the free rank-one monoid is automatically stable under endomorphism multiplication. Sector typing: flavor is positive only after physical readout; cosmology verifies joint pairing but its deck group is already abelian; the D4 orientation line is an exact but non-hostile rank-one pass; five-point strings instantiate scalar assembly; six-point descent is untyped until N_shift tensor Gamma_source -> C exists. The finite falsifier is a source-established physical observable detecting a commutator; algebraically the standard rank-two D4 probe already detects r^2. Packet/checker/result: research/grothendieck/physical-readout-congruence.md; research/grothendieck/checkers/physical_readout_congruence.py; research/grothendieck/results/physical-readout-congruence.json. Carrier closure and Phase-II gate remain unchanged.",
+      "entity_id": "maricicommunication:6dfc0f3049587cd02242"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:f101503b84a10d53c007",
+      "target_id": "source:706d60efc082798dc417",
+      "relation_id": "rel:derived_from-1d4d6d6804516c15"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "result",
+      "source_id": "claim:f101503b84a10d53c007",
+      "target_id": "source:f59793638115c2be5996",
+      "relation_id": "rel:derived_from-f9a7a78d9e76b050"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:4d9d378e790292e025d0",
+      "source_id": "claim:f101503b84a10d53c007",
+      "relation_id": "rel:depends_on-04ea3acb3d7b401d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "claim",
+      "target_id": "conjecture:nima-d4ab-labelled-rig-arithmetic-realization",
+      "source_id": "claim:f101503b84a10d53c007",
+      "relation_id": "rel:maricirefines-505e47de0c9cbe5a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:79e47e5ece754dfaf29c",
+      "target_id": "claim:f101503b84a10d53c007",
+      "relation_id": "rel:tests-c8c263fe5407f26a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "checker",
+      "source_id": "test:79e47e5ece754dfaf29c",
+      "target_id": "source:776cd7afa96b868e1089",
+      "relation_id": "rel:derived_from-260b18766c476abe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "result",
+      "source_id": "test:79e47e5ece754dfaf29c",
+      "target_id": "source:f59793638115c2be5996",
+      "relation_id": "rel:derived_from-6ffa431d99736d1d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "reply",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:6dfc0f3049587cd02242",
+      "relation_id": "rel:maricisent_by-3d0b00320bbf7f17"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "reply",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:6dfc0f3049587cd02242",
+      "relation_id": "rel:mariciaddressed_to-6d4f7a3f808a928e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "reply",
+      "target_id": "communication:nima-to-grothendieck-physical-readout-congruence",
+      "source_id": "maricicommunication:6dfc0f3049587cd02242",
+      "relation_id": "rel:maricireplies_to-6b00cd4b9267d330"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "reply",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:6dfc0f3049587cd02242",
+      "target_id": "claim:f101503b84a10d53c007",
+      "relation_id": "rel:reports-b496ff86d1ae60a5"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "directed_obligation",
+    "summary": "Nima directed Grothendieck in communication:nima-to-grothendieck-physical-readout-congruence to formalize the universal physical-readout congruence and its finite falsifier."
+  },
+  "idempotency_key": "auto-admission-d0b4d200a4014a8ef3ecfdaf",
+  "occurred_at": "2026-08-20T19:15:41.5971513Z",
+  "certifies_truth": false,
+  "event_hash": "d8be67db411b2d420a03d836048af61c0c4a39d79ff9bf40b0716150a21858af"
+}

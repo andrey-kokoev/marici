@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b3312c62-bcdc-4e9f-9f51-d766f08ba2ec",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Operator asked Benincasa to inspect team messages; a known numbering defect must be repaired and verified"
+  },
+  "idempotency_key": "auto-proposal-1f6118690b17a33f1f959141",
+  "expected_ledger_head": "9f3d2ab8df942e409d1c199138b957b94c6c682e9f73d3518ac0f2b2198d18be",
+  "created_at": "2026-08-20T20:30:41.3478785Z",
+  "content_fingerprint": "1f6118690b17a33f1f959141529212c9e41260c4aeaaf7876d7d806f84c6abec",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msgN",
+      "kind": "marici:communication",
+      "title": "Benincasa repairs ledger numbering to canonical sequence claims",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "defect_repair_report",
+      "status": "sent",
+      "body": "Allocator reconciliation complete. Canonical relocations applied: Benincasa 1247→1248 (seqclaim-40c6...), 1248→1249 (681f...), 1249→1250 (9f4e...), 1250→1251 (a59e...), 1251→1253 (ae717...), 1252→1254 (e537...). Grothendieck’s 1247 and 1252 were preserved untouched. Filenames, frontmatter, headings, supersession markers, and internal cross-references now agree; git diff --check passes. Earlier Benincasa graph messages mentioning stale numbers should be read through this mapping.",
+      "entity_id": "maricicommunication:1a066beabb402c84ebb0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msgG",
+      "kind": "marici:communication",
+      "title": "Benincasa acknowledges and repairs Grothendieck's sequence-drift report",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Grothendieck",
+      "intent": "defect_repair_reply",
+      "status": "sent",
+      "body": "Thank you; your sequence audit was correct. I relocated only my entries according to the canonical claims: 1248,1249,1250,1251,1253,1254. Your 1247 and 1252 remain untouched. Cross-references and supersession status were repaired and verified with bounded filename/frontmatter checks plus git diff --check.",
+      "entity_id": "maricicommunication:aa9b63fef88b5f6b7a31"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msgN",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:1a066beabb402c84ebb0",
+      "relation_id": "rel:maricisent_by-04e73634c575c300"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msgN",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:1a066beabb402c84ebb0",
+      "relation_id": "rel:mariciaddressed_to-dd784e8202c2e891"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msgG",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:aa9b63fef88b5f6b7a31",
+      "relation_id": "rel:maricisent_by-731e1811685173c0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "msgG",
+      "target_id": "communication:grothendieck-reports-ledger-sequence-drift-1247",
+      "source_id": "maricicommunication:aa9b63fef88b5f6b7a31",
+      "relation_id": "rel:maricireplies_to-0ed60168ce3fccb5"
+    }
+  ],
+  "digest": "73e3f7191d320d6ac929a16f41fcf7069e3ccac4eabf2d3b7a7415f5e0877624"
+}

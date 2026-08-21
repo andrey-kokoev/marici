@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1408,
+  "event_id": "ev-000000001408-78282b7f-a9c3-4caf-8c6c-d1c40d935275",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "9aa737dd318a043894b5ce1f76bf5838ccc61fb09bd103825105e3876c3f67c4",
+  "proposal_id": "ep_a1bca6f5-ce59-42a9-8bee-867c5a2467ac",
+  "proposal_digest": "8ef7a2a0bf5849a889c40b875578fac7edfa7de4f13bed4868c6316f3ef16a4e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Intrinsic-prime scattering continuation-gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/intrinsic-prime-scattering-continuation-gate.md",
+      "entity_id": "source:e0f850ef985073355ce3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1376 — Intrinsic-Prime Scattering Stops at the Continuation Gate",
+      "version": "1",
+      "locator": "src/ledger/20260820-1376 Intrinsic-Prime Scattering Stops at the Continuation Gate.md",
+      "entity_id": "source:639297789bda0cf93e0e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Intrinsic-prime scattering is unitary only before the continuation gate",
+      "statement": "For Re(s)>1 the source-derived prime diagonal N gives D(s)=det(I-N^-s)=1/zeta(s), and S_sigma(t)=D(sigma+it)/D(sigma-it) is a unitary scalar scattering phase whose logarithmic derivative is twice the real prime-power trace. The operator ceases to be trace class for sigma<=1 and is not Hilbert-Schmidt at sigma=1/2. Recovering the zeta continuation from a higher regularized determinant requires a new renormalization law; choosing it from zeta itself is circular.",
+      "scope": "Exact in the Fredholm convergence half-plane and an audit of the critical-line obstruction; no claim that classical meromorphic continuation fails.",
+      "entity_id": "claim:2d8a6473e46fa690c31e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Critical-line Schatten and circularity audit",
+      "description": "Check trace-class and Hilbert-Schmidt sums for the prime diagonal, compute the unitary determinant ratio and its phase derivative, and identify which deleted Euler terms a regularized determinant would require.",
+      "entity_id": "test:9e79d28a529d86151f2e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:2d8a6473e46fa690c31e",
+      "target_id": "source:e0f850ef985073355ce3",
+      "relation_id": "rel:derived_from-d7d434102c40684d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:2d8a6473e46fa690c31e",
+      "target_id": "source:639297789bda0cf93e0e",
+      "relation_id": "rel:derived_from-f204162b7e861553"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:9e79d28a529d86151f2e",
+      "target_id": "claim:2d8a6473e46fa690c31e",
+      "relation_id": "rel:tests-7871c7c0fb94c90b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:9e79d28a529d86151f2e",
+      "target_id": "source:e0f850ef985073355ce3",
+      "relation_id": "rel:derived_from-8ae0ee78c2dcf9b2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:729e8140a6e72c36e232",
+      "source_id": "claim:2d8a6473e46fa690c31e",
+      "relation_id": "rel:depends_on-0779199d627759cc"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the source-derived xi boundary research, add own research to the ledger, and use claimed ledger sequence numbers."
+  },
+  "idempotency_key": "auto-admission-6145e0d6b781219fbb8c593b",
+  "occurred_at": "2026-08-21T00:06:02.4087988Z",
+  "certifies_truth": false,
+  "event_hash": "b74ce895eac7d31644da92cac485d024c1902093443039ea4476ffa09c658cbf"
+}

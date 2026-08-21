@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1376,
+  "event_id": "ev-000000001376-4c76a6fb-a3fd-45f1-9a41-0aafaaf643b5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "075f43f4f60039ea616a61a76236f3bc9a98a2cdfa99d1536add49cc6aed6d61",
+  "proposal_id": "ep_46144910-52e0-4188-ad33-238e0e956724",
+  "proposal_digest": "847ea46ec86360202c1f997783cf8b965666ec6300914f9f4eff769f6e8f783a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Canonical determinants of norm homology produce no Euler factor",
+      "statement": "For H_d=(Z/d)^(d-2), rationalization is zero, so every rational determinant det(1-uF) equals 1. On the canonical p-primary associated graded, the intrinsic prime operator P_p=p is nilpotent, hence det(1-uP_p)=1. Choosing an invertible scalar or Adams index imports an unselected Frobenius datum. Thus the current norm module yields no nontrivial Euler factor.",
+      "scope": "Negative determinant result for the present algebraic norm module; not a no-go for enlarged geometric cohomology.",
+      "entity_id": "claim:9d534449c82730a029b2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Two-route Euler determinant hostile test",
+      "procedure": "Compute determinants after rationalization and on the p-primary associated graded. The first vector space is zero; the second prime operator is nilpotent with all eigenvalues zero.",
+      "expected_result": "Both determinants equal 1. A canonical nonzero eigenvalue or nontrivial determinant from the same typed data would falsify the claim.",
+      "entity_id": "test:a9ded285336e66c07712"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Norm-module Euler-determinant obstruction packet",
+      "version": "1",
+      "locator": "research/grothendieck/norm-module-euler-determinant-obstruction.md",
+      "entity_id": "source:a34a3120dacfcfe1ab90"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1352 — Canonical Norm Determinants Give No Euler Factor",
+      "version": "1",
+      "locator": "src/ledger/20260820-1352 Canonical Norm Determinants Give No Euler Factor.md",
+      "entity_id": "source:791c8d194a573306a5fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:a9ded285336e66c07712",
+      "target_id": "claim:9d534449c82730a029b2",
+      "relation_id": "rel:tests-1942587df64ecbeb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:9d534449c82730a029b2",
+      "target_id": "source:a34a3120dacfcfe1ab90",
+      "relation_id": "rel:derived_from-aa71a45389530057"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:791c8d194a573306a5fd",
+      "target_id": "claim:9d534449c82730a029b2",
+      "relation_id": "rel:reports-2df5e9037d187331"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Test whether the derived prime operations produce Euler factors before asking for a global zero spectrum."
+  },
+  "idempotency_key": "auto-admission-729345db5fa34b13b99117dd",
+  "occurred_at": "2026-08-20T23:22:59.9491235Z",
+  "certifies_truth": false,
+  "event_hash": "e4190eb60d106d908b76a8a61c024dfc475c7170f597d36bd9993481d5d5163b"
+}

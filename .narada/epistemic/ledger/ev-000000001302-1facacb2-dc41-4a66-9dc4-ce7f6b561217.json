@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1302,
+  "event_id": "ev-000000001302-1facacb2-dc41-4a66-9dc4-ce7f6b561217",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "73f1862c071df42345a73ccb7986c5ee0ad19079cc71771e5587f0896f9ad628",
+  "proposal_id": "ep_f9b97b83-6c04-4691-838d-e82f94f0895d",
+  "proposal_digest": "f78bc44e597f3ccf46865881d40fb0d949386a3f53c95701cd55c22e5b6341b1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Surjective selector pullback obeys exact normal-core base change",
+      "body": "For a finite surjection phi:G->H and selector c on H, Stab_G(phi*c)=phi^-1(Stab_H(c)) and K_(phi*c)=phi^-1(K_c). For delta_0 this gives phi*delta_0=1_(ker phi), so pullback can introduce a new resonance obstruction.",
+      "entity_id": "claim:a005adbed80fd6fc4706"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C4->C2 strict selector-core pullback control",
+      "body": "The target delta_0 has terminal kernel order 1 and all indices through 24. Its pullback is the indicator of {0,2}, has terminal kernel order 2, and retains the 12 odd indices. All assertions pass.",
+      "entity_id": "test:8a278c457b82ef0a7718"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Surjective selector pullback core-base-change proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/selector-surjective-pullback-core-base-change.md",
+      "entity_id": "source:2fc89f13cff5cfe3b932"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact C4->C2 selector pullback checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/selector_surjective_pullback_core.py",
+      "entity_id": "source:8c9e9f0c04537a78d15e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1297 — Selector Pullback Obeys Exact Normal-Core Base Change",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1297 Selector Pullback Obeys Exact Normal-Core Base Change.md",
+      "entity_id": "source:eea69f8556daf5e3552b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:8a278c457b82ef0a7718",
+      "target_id": "claim:a005adbed80fd6fc4706",
+      "relation_id": "rel:tests-c519e87ead2d7112"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:a005adbed80fd6fc4706",
+      "target_id": "source:2fc89f13cff5cfe3b932",
+      "relation_id": "rel:derived_from-3ecbe31eeacb8062"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:8c9e9f0c04537a78d15e",
+      "target_id": "test:8a278c457b82ef0a7718",
+      "relation_id": "rel:promotes_to_evidence-13c05715b25a9774"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:eea69f8556daf5e3552b",
+      "target_id": "claim:a005adbed80fd6fc4706",
+      "relation_id": "rel:promotes_to_evidence-4d8246ba36e4cc65"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-5f497ac128bce3a754ff1bdf",
+  "occurred_at": "2026-08-20T22:02:55.9164177Z",
+  "certifies_truth": false,
+  "event_hash": "6608bd04e74a3974a3da21031650d2569e8f3ff0dba8b72f70e862f67652d96d"
+}

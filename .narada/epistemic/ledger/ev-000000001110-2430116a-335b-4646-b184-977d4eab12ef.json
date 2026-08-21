@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1110,
+  "event_id": "ev-000000001110-2430116a-335b-4646-b184-977d4eab12ef",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "35f12aac1cf977b59faf291b525a15c9509973adb9a62f66097d0e99ff7ddb95",
+  "proposal_id": "ep_854882a5-e863-4cbc-b181-ef5aa6eb9dca",
+  "proposal_digest": "8f98bd1ede125c1eee744caae690de4567c41e920912a3dea6ccf8a4e5906776",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site cosmology readout composition square",
+      "version": "2026-08-20",
+      "locator": "research/nima/cosmology-readout-composition.md",
+      "entity_id": "source:e6b66ae383db9250210d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Diagonal deck quotient and identity-idempotent selection compose to the five-site physical pairing",
+      "summary": "For G=(C2)^5, delta_0(g xor h)=delta_(g,h). The difference map is the diagonal-deck orbit quotient and the identity idempotent is the physical coefficient–Betti selection.",
+      "status": "exact-sectorwise-composition",
+      "entity_id": "claim:f0389aca36fcb2feb57b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact five-site cosmology readout composition controls",
+      "locator": "research/nima/check_cosmology_readout_composition.py",
+      "result_locator": "research/nima/results/cosmology-readout-composition.json",
+      "outcome": "passed: 1024 compositions, 1024 orbit fibers, 32768 deck identities",
+      "entity_id": "test:d45145033318ff4f6ae3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:f0389aca36fcb2feb57b",
+      "target_id": "source:e6b66ae383db9250210d",
+      "relation_id": "rel:derived_from-71af3ee109e1fb41"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d45145033318ff4f6ae3",
+      "target_id": "claim:f0389aca36fcb2feb57b",
+      "relation_id": "rel:tests-2d5f68afbb1ee82b"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Unblocking the active composition lane with a second exact sectorwise realization."
+  },
+  "idempotency_key": "auto-admission-d1368ae1169f45fd6c5bbd8d",
+  "occurred_at": "2026-08-20T19:42:40.1237167Z",
+  "certifies_truth": false,
+  "event_hash": "ba7df23a89e9f6d9a7e55deda45edb43064616eef216b51a5508261238ba996d"
+}

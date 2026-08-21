@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_8033963d-92b2-40a0-83d4-65306f9c5f3f",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1331-equivariant-radical-repair-v1",
+  "expected_ledger_head": "e929b3a7f5e0c8a4d32e216e5fc78a12f412fa4060e39ef4f25425ee76ef3ac4",
+  "created_at": "2026-08-20T22:49:52.8034063Z",
+  "content_fingerprint": "cba59fc5d5c2673187be08d1f12b601bcc3c6170981d06dc5f1102e3a2b7fe25",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Equivariant radical repair has a first-cohomology obstruction",
+      "statement": "For a symmetry group Gamma acting on the repair torsor with translation module A=H^0(Hom(C(G),R)), symmetry displacement defines [b] in H^1(Gamma,A). An equivariant repair exists iff [b]=0; fixed repairs form an A^Gamma-torsor.",
+      "entity_id": "claim:e80bbb8f7c6ccf802e18"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Integral C2 repair torsor has no natural point",
+      "procedure": "Let C2 act on repair torsor Z by sigma(m)=1-m, with sign action on the translation module.",
+      "outcome": "b(sigma)=1 represents the nonzero class in H^1(C2,Z_sign)=Z/2; no integer fixed point exists, while 1/2 appears after inverting two.",
+      "falsifier": "This falsifies deriving automorphism-natural repair from mere repair existence.",
+      "entity_id": "test:de905032ff72584ad970"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Equivariant radical-repair H1 obstruction",
+      "version": "v1",
+      "locator": "research/grothendieck/equivariant-radical-repair-h1-obstruction.md",
+      "entity_id": "source:e0d47b5c1e54f5bdc0df"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1331 — Equivariant Radical Repair Has a First-Cohomology Obstruction",
+      "version": "1331",
+      "locator": "src/ledger/20260820-1331 Equivariant Radical Repair Has a First-Cohomology Obstruction.md",
+      "entity_id": "source:e3c1d78101a4c8836530"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:de905032ff72584ad970",
+      "target_id": "claim:e80bbb8f7c6ccf802e18",
+      "relation_id": "rel:tests-bf08f8442592335d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:e80bbb8f7c6ccf802e18",
+      "target_id": "source:e0d47b5c1e54f5bdc0df",
+      "relation_id": "rel:derived_from-0a5cdf4ab6112fe9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:e3c1d78101a4c8836530",
+      "target_id": "claim:e80bbb8f7c6ccf802e18",
+      "relation_id": "rel:reports-b3ad2d1348e2f01a"
+    }
+  ],
+  "digest": "fc6646d6643afa091062d40eaddce7b3e18bda3a3b177c6b384ddfaa5c2f8927"
+}

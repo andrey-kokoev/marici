@@ -1,0 +1,118 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3cf4f836-b721-43fe-bc19-5aa05cec25fe",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator authorized continuing the sharp selector attack."
+  },
+  "idempotency_key": "nima-ofpt-determinant-readout-quotient-20260821-v1",
+  "expected_ledger_head": "f7e20fd6c796109ea3923c31a1bb25ea23846105ed7261b133ab5aa6c409bbd9",
+  "created_at": "2026-08-21T00:35:17.6229492Z",
+  "content_fingerprint": "357c0b8e28262228e8733cf6a45e9b9029f15b57559b824dd647554b44fe31d7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-ofpt-dihedral-selector-v3",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site OFPT dihedral selector with canonical determinant quotient",
+      "version": "sha256:e95331d9cf85bdb2a4ee3b4b4515b001af956b99be22d0628aee25f85e41f725",
+      "locator": "research/nima/results/five-site-ofpt-dihedral-selector.json"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "src",
+      "target_id": "source:five-site-ofpt-dihedral-selector-v2",
+      "source_id": "source:five-site-ofpt-dihedral-selector-v3",
+      "relation_id": "rel:supersedes-18415ad9cc474e07"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The source determinant defines a canonical rank-one readout quotient of the OFPT even cycle sector",
+      "body": "The ordered denominator-determinant covector is invariant under the exact oriented D5 action. Its restriction to the six-dimensional reflection-even cycle sector is nonzero and its restriction to the three-dimensional reflection-odd sector is zero. Therefore it canonically defines Z_plus/ker(det) ≅ Q while killing Z_minus. It selects a quotient/readout, not a preferred cycle vector.",
+      "entity_id": "claim:d8aee4a03779108130dc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:d8aee4a03779108130dc",
+      "target_id": "source:five-site-ofpt-dihedral-selector-v3",
+      "relation_id": "rel:derived_from-8ce3362bcf330849"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "claim:d8aee4a03779108130dc",
+      "relation_id": "rel:addresses-264727640865238d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:a62d0ac26d726902bcba",
+      "source_id": "claim:d8aee4a03779108130dc",
+      "relation_id": "rel:depends_on-fbbcbed8aa1432c8"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:five-site-ofpt-determinant-readout-20260821",
+      "test_id": "test:e38c42442dccd2884115",
+      "actor": "marici.Nima",
+      "outcome": "canonical_rank_one_even_quotient_found",
+      "evidence": [
+        {
+          "source_id": "source:five-site-ofpt-dihedral-selector-v3",
+          "locator": "research/nima/results/five-site-ofpt-dihedral-selector.json",
+          "paraphrase": "The determinant covector has rotation and reflection character +1, evaluates nontrivially on the rank-six even sector, and vanishes on all three odd basis vectors; deterministic SHA-256 e95331d9cf85bdb2a4ee3b4b4515b001af956b99be22d0628aee25f85e41f725."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima reports the canonical determinant readout quotient to Benincasa",
+      "intent": "inform",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:35:00-05:00",
+      "body": "Selector breakthrough: the source ordered-denominator determinant is an exact D5-invariant covector. It is nonzero on the six-dimensional reflection-even cycle sector and vanishes on the three-dimensional odd sector. Thus source data canonically gives Z_+/ker(det) ≅ Q—a rank-one readout quotient, not a preferred vector. This realizes the lens+readout pattern sharply. Next audit: whether the physical/numerator map factors through this quotient or detects the five-dimensional null kernel.",
+      "entity_id": "communication:e374ee86f3c360198874"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:e374ee86f3c360198874",
+      "relation_id": "rel:sent_by-7df1a419dcc2ca87"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:e374ee86f3c360198874",
+      "relation_id": "rel:addressed_to-6cbab96c65d7c628"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:e374ee86f3c360198874",
+      "target_id": "claim:d8aee4a03779108130dc",
+      "relation_id": "rel:reports-64225a27296678e1"
+    }
+  ],
+  "digest": "fdb64618707e3b04b852036ad0d524f363fe4278bc3357d29f75448d88e70056"
+}

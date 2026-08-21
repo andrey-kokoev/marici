@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d1ae0b78-31dd-421e-8d18-ac504b493ec3",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+  "expected_ledger_head": "206c7b4d2dce87dc21706198262bea62f79381ccf8a382ab31bc5138fbbeabf9",
+  "created_at": "2026-08-20T21:27:02.6347762Z",
+  "content_fingerprint": "b9541bea142e6218d860ee2b2262215f9e7b80f9afd41e4e0432674827fcf29d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "kind": "claim",
+      "title": "Every finite surjection has a conjugation-exponent power spectrum",
+      "statement": "For any finite surjection q:G->H with kernel K and conjugation image A_q in Aut(K), all power-Mackey fiber squares commute iff gcd(n,exp(K)*exp(A_q))=1.",
+      "scope": "Arbitrary split or nonsplit, central or noncentral finite group surjection; basis-level correspondence."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "target_id": "claim:grothendieck-arbitrary-finite-kernel-monodromy-spectrum",
+      "relation_id": "rel:supersedes-0d16b3234ec557c3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "target_id": "claim:grothendieck-central-extension-power-mackey-spectrum",
+      "relation_id": "rel:supersedes-72be2284ab5daf56"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-nonsplit-noncentral-conjugation-spectrum",
+      "kind": "test",
+      "title": "Q16 nonsplit versus D16 split conjugation-spectrum test",
+      "protocol": "Exhaust n=1..24 and both fibers for Q16->C2 and D16->C2 with kernel C8 and inversion conjugation.",
+      "falsifier": "The nonsplit cocycle changes compatibility or either family disagrees with the conjugation-exponent criterion."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-nonsplit-noncentral-conjugation-spectrum",
+      "target_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "relation_id": "rel:tests-632a16577b22f744"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "kind": "source",
+      "title": "Arbitrary finite-surjection conjugation spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/arbitrary-finite-surjection-conjugation-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "target_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "relation_id": "rel:promotes_to_evidence-0fd17bad87be1065"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-nonsplit-noncentral-conjugation-spectrum",
+      "test_id": "test:grothendieck-nonsplit-noncentral-conjugation-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: Q16 nonsplit and D16 split controls have identical odd-index spectra across 12288 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+          "locator": "research/grothendieck/results/arbitrary-finite-surjection-conjugation-spectrum.json",
+          "paraphrase": "Exact comparison shows the nonsplit cocycle adds no resonance prime beyond kernel and conjugation exponents."
+        }
+      ]
+    }
+  ],
+  "digest": "2e8f06d5ae40d6c68f8458c4eaae09458e32f090416e0dfe65d4a1d8d0120bf8"
+}

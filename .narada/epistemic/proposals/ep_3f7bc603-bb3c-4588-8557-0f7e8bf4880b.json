@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3f7bc603-bb3c-4588-8557-0f7e8bf4880b",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Derive or falsify the boundary/metaplectic correction required by the noncircular Mellin-dilation spectral candidate."
+  },
+  "idempotency_key": "grothendieck-ledger-1371-eighth-phase-source-gate-v1",
+  "expected_ledger_head": "300ffb64e5a6cb7c7f1616214e4b5b6d0f1ded8ca5d16831f75f725802c8e6c1",
+  "created_at": "2026-08-20T23:57:01.2059377Z",
+  "content_fingerprint": "898ba8eb4dbdd35b063f46c4105eb609418c5137194171ace19c0de087ab62c9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Pi_0 source symmetry does not supply the missing one-eighth phase",
+      "statement": "Stirling expansion of the Riemann-Siegel phase contributes -pi/8, changing the raw phase-volume constant 1 to 7/8. Although a symplectic quarter rotation has an order-eight metaplectic lift, the full D4 mapping-class action is trivial on the rank-one component lattice and its dual, hence induces identity in the symplectic group; its metaplectic lifts provide only a central sign. The missing eighth is therefore not derived from pi_0 symmetry.",
+      "scope": "Exact constant-term and representation-typing audit; does not exclude a higher-rank physical metaplectic correction.",
+      "entity_id": "claim:e19963a730747d3dfd33"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Eighth-phase source hostile test",
+      "procedure": "Compute the Stirling constant in the Riemann-Siegel phase, then evaluate the D4 action on the component generator, group completion, dual lattice, and symplectic double.",
+      "expected_result": "The smooth constant defect is exactly minus one-eighth, while the induced rank-one symplectic D4 action is trivial. A source quarter rotation on this double would falsify the no-go.",
+      "entity_id": "test:33690113ed6dbfda4682"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Eighth-phase metaplectic source-gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/eighth-phase-metaplectic-source-gate.md",
+      "entity_id": "source:fc66fd146ec3335ce822"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1371 — Pi-Zero Symmetry Does Not Supply the Missing Eighth",
+      "version": "1",
+      "locator": "src/ledger/20260820-1371 Pi-Zero Symmetry Does Not Supply the Missing Eighth.md",
+      "entity_id": "source:ff91661c52cfe5a204c3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:33690113ed6dbfda4682",
+      "target_id": "claim:e19963a730747d3dfd33",
+      "relation_id": "rel:tests-3f4eeab7226ce390"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:e19963a730747d3dfd33",
+      "target_id": "source:fc66fd146ec3335ce822",
+      "relation_id": "rel:derived_from-0ec8c04276e45741"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:ff91661c52cfe5a204c3",
+      "target_id": "claim:e19963a730747d3dfd33",
+      "relation_id": "rel:reports-7a350076e8621402"
+    }
+  ],
+  "digest": "414fb78cd705cc9102faf451d093924f13e0190066d94d3f072e56a83ff69645"
+}

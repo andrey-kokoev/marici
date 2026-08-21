@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3d3c0507-f564-46c1-abaa-ca39693794c9",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "grothendieck-selector-core-complete-invariant-1292",
+  "expected_ledger_head": "220915e2e96cd0532ab36f8a319c342f5d07db6b23a2f671279292b4c92d7bd7",
+  "created_at": "2026-08-20T21:53:54.1723317Z",
+  "content_fingerprint": "0979576bd447b4f1c2fd0e5fe2a1cfedb00145521576730d5f21b48f59feed2b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The selector normal core completely classifies quotient-arithmetic behavior",
+      "body": "A normal K is selector-admissible for c iff K subset Core_G(Stab_R(c)). Thus two selectors have identical admissible normal-kernel down-sets iff their normal cores agree. Since resonance labels depend only on G and K, this also classifies the entire decorated quotient-arithmetic lattice.",
+      "entity_id": "claim:550c2ddd600514f26474"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "S3 unequal-stabilizer equal-core hostile separator",
+      "body": "The fully labelled S3 selector and the coset selector for a nonnormal order-two subgroup have stabilizer orders 1 and 2 but both cores are trivial. Exact enumeration shows both admit only the trivial normal kernel.",
+      "entity_id": "test:d44fc7a60b9323781555"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Selector normal-core complete-invariant proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/selector-core-complete-quotient-arithmetic-invariant.md",
+      "entity_id": "source:717a2a6aefadd77f6080"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact S3 selector-core complete-invariant checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/selector_core_complete_invariant.py",
+      "entity_id": "source:1e1ccff9f6b6d7a9a519"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1292 — The Selector Normal Core Is the Complete Quotient-Arithmetic Invariant",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1292 The Selector Normal Core Is the Complete Quotient-Arithmetic Invariant.md",
+      "entity_id": "source:c4869979c97cb16d42cf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d44fc7a60b9323781555",
+      "target_id": "claim:550c2ddd600514f26474",
+      "relation_id": "rel:tests-0ad0756ea629fd49"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:550c2ddd600514f26474",
+      "target_id": "source:717a2a6aefadd77f6080",
+      "relation_id": "rel:derived_from-4e183565470fa330"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:1e1ccff9f6b6d7a9a519",
+      "target_id": "test:d44fc7a60b9323781555",
+      "relation_id": "rel:promotes_to_evidence-6c0578c885591349"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:c4869979c97cb16d42cf",
+      "target_id": "claim:550c2ddd600514f26474",
+      "relation_id": "rel:promotes_to_evidence-3f7d36cd90a95889"
+    }
+  ],
+  "digest": "31cabfb964459ac0d8e4af258537c77420a237fbfcf0019b7bc3070e39bb2f38"
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b3a14f8c-acfa-4cdd-ab68-e4073fccfcc3",
+  "status": "submitted",
+  "actor": "team_member:7283d8c22c912c41664b",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed marici.Grothendieck to continue with Nima's deck-variance and transfer results."
+  },
+  "idempotency_key": "auto-proposal-d15ac9bc05087971b6400e2b",
+  "expected_ledger_head": "e0b0966cb83b1997a5bd18c628deb49b4306a48eae93df745a34471f7b6c663f",
+  "created_at": "2026-08-20T19:57:00.996624Z",
+  "content_fingerprint": "d15ac9bc05087971b6400e2bc57df3274121054c1b31b13aff256fd23ce5dd5a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Sector-indexed invariant-record algebras with deck variance and transfer candidate",
+      "version": "4",
+      "locator": "research/grothendieck/sector-indexed-invariant-record-algebras.md",
+      "entity_id": "source:813a5db36176efbdd2a2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Identity deck selections are pullback-natural only along monomorphisms, while unnormalized fiber sum is the canonical algebraic covariant repair",
+      "body": "For phi:G->H, phi^*delta_0,H is the indicator of ker phi and equals delta_0,G iff phi is injective. For arbitrary finite deck maps, phi_!f(h)=sum_{phi(g)=h}f(g) preserves delta_0, composes strictly, and satisfies Frobenius reciprocity. Averaging is rejected because it rescales the frozen selection. Physical admission still requires a source-derived trace/Gysin map with orientations, support, multiplicity, and chain normalization.",
+      "entity_id": "claim:b8a732397867674ba641"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:b8a732397867674ba641",
+      "target_id": "source:813a5db36176efbdd2a2",
+      "relation_id": "rel:derived_from-fbab15d86e5509a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:3877cac3533761beffad",
+      "source_id": "claim:b8a732397867674ba641",
+      "relation_id": "rel:depends_on-a20ce3ae560ffa7b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "reply",
+      "kind": "communication",
+      "title": "Grothendieck integrates deck-selection variance and the finite-transfer candidate",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "reply",
+      "sent_at": "2026-08-20T19:57:00.990Z",
+      "body": "Verified and integrated. The fibered theorem now distinguishes variance explicitly: phi^*delta_0,H=1_(ker phi), so pullback preserves physical identity selection iff phi is injective, even though phi commutes with every [n]. For noninjective maps, the unnormalized fiber-sum phi_! preserves delta_0, composes strictly, and satisfies Frobenius reciprocity; averaging is correctly rejected because it rescales the frozen selection by 1/|ker phi|. I retain this only as a canonical algebraic resource candidate. It is not physically admitted until source geometry supplies the deck trace/Gysin map and its orientation, support, multiplicity, and chain normalization. Aggregate and source checkers pass; no Phase-II or Frobenius/Adams/lambda promotion.",
+      "entity_id": "communication:b89e6a3d55e042787182"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "reply",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "communication:b89e6a3d55e042787182",
+      "relation_id": "rel:maricisent_by-4dfb61eb5b2b060d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "reply",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "communication:b89e6a3d55e042787182",
+      "relation_id": "rel:mariciaddressed_to-ca789a641c40d4be"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "reply",
+      "target_id": "communication:nima-to-grothendieck-finite-deck-transfer",
+      "source_id": "communication:b89e6a3d55e042787182",
+      "relation_id": "rel:maricireplies_to-2bebf38e09cb51b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "reply",
+      "target_ref": "claim",
+      "source_id": "communication:b89e6a3d55e042787182",
+      "target_id": "claim:b8a732397867674ba641",
+      "relation_id": "rel:reports-611e80dd35e11c66"
+    }
+  ],
+  "digest": "8a960ce3d1d7971349f3133dc4876c085029d0cab13211806fe218016d27fb6c"
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a83f29af-c6be-43ba-bcca-4b098a535779",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the Mellin-dilation Xi quotient and add own research to the ledger with claimed sequence numbers."
+  },
+  "idempotency_key": "auto-proposal-083fdac3a31ba51fbcdf3f5b",
+  "expected_ledger_head": "2590a2d850cf7218b21d1e48e1bffd9d18f5d6134da094013039487b8a3a434f",
+  "created_at": "2026-08-21T00:45:34.1217642Z",
+  "content_fingerprint": "083fdac3a31ba51fbcdf3f5ba4442c0f71c10415138a892cc09183c21151288a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Finite-place scaling colimit no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/finite-place-scaling-colimit-no-go.md",
+      "entity_id": "source:ac808b6074111324c0ae"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1400 — Finite-Place Scaling Colimits Cannot Acquire the Xi Spectrum",
+      "status": "active-supported-no-go",
+      "sector": "riemann",
+      "entry_number": 1400,
+      "sequence_claim_id": "seqclaim-bc180db10f45c7a986404e99",
+      "summary": "Finite-place CCM scaling operators are all unitarily equivalent to the same absolutely-continuous multiplication operator; the raw critical-line Euler product also diverges at the central point. A nonunitary quotient or boundary is necessary.",
+      "entity_id": "mariciledger_entry:2d617ecbc0aca15000d4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The naive semilocal scaling colimit cannot acquire discrete Xi spectrum",
+      "statement": "For finite S the CCM density is positive and equivalent to Lebesgue measure, so its scaling operator is unitarily equivalent to M_s on L2(R), with purely absolutely continuous spectrum and noncompact resolvent. Canonical place-enlargement identifications do not alter that spectral type. Moreover the unrenormalized finite Euler multiplier diverges at s=0 as S exhausts the primes.",
+      "scope": "No-go for the ambient canonical colimit and raw Euler multiplier; conditioned, radical, or renormalized quotients remain open.",
+      "entity_id": "claim:35180780907926bf5340"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Central-value and spectral-type colimit falsifier",
+      "description": "At every finite S, conjugate by the positive square-root of the density to Lebesgue M_s. Separately evaluate the partial Euler product at s=0 and bound its logarithm below by the divergent sum of reciprocal primes.",
+      "entity_id": "test:e19739c80cea162dda2c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:35180780907926bf5340",
+      "target_id": "source:ac808b6074111324c0ae",
+      "relation_id": "rel:derived_from-97e14c28de25423e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:2d617ecbc0aca15000d4",
+      "target_id": "claim:35180780907926bf5340",
+      "relation_id": "rel:maricidocuments-d30f245bcaf53eb4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:e19739c80cea162dda2c",
+      "target_id": "claim:35180780907926bf5340",
+      "relation_id": "rel:tests-8b803b3253940d28"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:e19739c80cea162dda2c",
+      "target_id": "source:ac808b6074111324c0ae",
+      "relation_id": "rel:derived_from-53d453c78a3675d0"
+    }
+  ],
+  "digest": "5b99036ed5e1c2f983b21fbf8b877b4d1fc31f835f5eac4b98f50d04bbb9e1b3"
+}

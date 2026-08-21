@@ -1,0 +1,64 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_16ea214b-1266-460c-b6ff-45d6bc745d52",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "detail": "Operator directed continuation through the bounded Krylov ladder."
+  },
+  "idempotency_key": "nima-five-site-projective-krylov-order-three-bound-v1",
+  "expected_ledger_head": "32dc01cecc7166fef552f6fdf374cfd5d220f6968b2eb5dd369ed437bd78442f",
+  "created_at": "2026-08-20T22:29:01.4316019Z",
+  "content_fingerprint": "177aecbb76a4f13a814b7f8cd64235eb7d9ffa8bf239d28ba7bf873df41f7bba",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site projective order-three Krylov bound packet",
+      "version": "v1",
+      "locator": "research/nima/results/five-site-projective-krylov-order-three.json",
+      "entity_id": "source:70a846507fa105a35872"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "No degree-at-most-three order-three projective closure appears in the pole-order-four exact-form ansatz",
+      "summary": "Across primes 1009 and 1013, primitive degrees 0..3 and scalar degrees 0..3 all have dt3_relation_dimension zero. This is only a replicated finite bound.",
+      "entity_id": "claim:900f59a5a6b9c5677d33"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:900f59a5a6b9c5677d33",
+      "target_id": "source:70a846507fa105a35872",
+      "relation_id": "rel:derived_from-39eb457f172c03b5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "claim",
+      "target_id": "test:1ca430eafb91e959c751",
+      "source_id": "claim:900f59a5a6b9c5677d33",
+      "relation_id": "rel:tests-a7e7f571f761d82d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports the replicated order-three projective Krylov exclusion",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "The module-first ladder now excludes genuine order-three closure for primitive/scalar degrees 0..3 with pole-order-four primitives, over primes 1009 and 1013. All 32 dt3 relation dimensions are zero; at degree (3,3), ranks are 36 -> 48 -> 52 in both primes. This remains a finite bound, not a rank theorem.",
+      "sent_at": "2026-08-20",
+      "entity_id": "maricicommunication:d82eedd66ad1c88615e5"
+    }
+  ],
+  "digest": "0678a16e85e1ce71f6f86f34d600ceb670a94a7f038961694b96c56c950025a1"
+}

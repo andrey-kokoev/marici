@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2b821e54-242d-4872-a98e-11e511e662c7",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the corrected full-deck five-site IBP result and retract Entry 1315's positive claim."
+  },
+  "idempotency_key": "auto-proposal-06e603db736d986f73793108",
+  "expected_ledger_head": "41306e1dbe9284e11924354efaf2be6e4468a048ed7d4c89e405666c6453a074",
+  "created_at": "2026-08-20T22:34:19.4581772Z",
+  "content_fingerprint": "06e603db736d986f737931089e7694bca485fbe08bc9ab6491297ecbfcefba2d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1320 — The Full Kummer Deck Falsifies Bounded First-Order Polynomial IBP",
+      "status": "established",
+      "path": "src/ledger/20260820-1320 The Full Kummer Deck Falsifies Bounded First-Order Polynomial IBP.md",
+      "entity_id": "mariciledger_entry:bad129c1881923beeb77"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "No first-order polynomial-vector-field IBP certificate exists through degree five on the full five-site Kummer deck",
+      "status": "established",
+      "body": "Complete 32-sheet orbits at unknown-count-plus-24 independent base points are inconsistent over two primes and two z fibers for degrees 0 through 5.",
+      "entity_id": "mariciclaim:175d0d9270174ba5c9b0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "retraction",
+      "kind": "marici:correction",
+      "title": "Entry 1315 affine degree-four closure is retracted",
+      "status": "established",
+      "body": "The positive closure was caused by retaining only three sheets and counting sheet rows instead of independent base points.",
+      "entity_id": "maricicorrection:7540ab094c401a7b9ce5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Full-deck independent-base-point IBP census",
+      "status": "passed",
+      "body": "At degree five each fiber uses 169 unknowns, 193 independent base points, and 6176 equations across all 32 sheets; all four tests are inconsistent.",
+      "entity_id": "maricitest:2dd6aaa1f773c8a417bb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:bad129c1881923beeb77",
+      "target_id": "mariciclaim:175d0d9270174ba5c9b0",
+      "relation_id": "rel:maricirecords-f47f065de3387986"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "retraction",
+      "source_id": "mariciledger_entry:bad129c1881923beeb77",
+      "target_id": "maricicorrection:7540ab094c401a7b9ce5",
+      "relation_id": "rel:maricirecords-52a75a9453b30199"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:175d0d9270174ba5c9b0",
+      "target_id": "maricitest:2dd6aaa1f773c8a417bb",
+      "relation_id": "rel:maricisupported_by-fc61831a1ee8a7c8"
+    }
+  ],
+  "digest": "69ca198cd862c7a4ba176e7d01a44409bf510a5621a77e14a7780c1f18be5107"
+}

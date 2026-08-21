@@ -1,0 +1,64 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_aab29225-0fef-4a9f-9c73-1f596d085280",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "detail": "Degree audit corrects an overinterpretation while preserving the finite rank table."
+  },
+  "idempotency_key": "nima-five-site-krylov-degree-starvation-correction-v1",
+  "expected_ledger_head": "06cf869312a20c018b6b58dd79f615fd1c0644feedaaf6c812911c80dbc659ff",
+  "created_at": "2026-08-20T22:36:08.5227963Z",
+  "content_fingerprint": "601866530f73538b6f69c614bc8e41d37f5c966336c6f0f0f1e7f7d1d3d903a9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site projective Krylov numerator-degree typing audit",
+      "version": "v1",
+      "locator": "research/nima/results/five-site-projective-krylov-degree-typing.json",
+      "entity_id": "source:a4703ea5231bf0c7ed6e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The order-six Krylov ladder is numerator-degree-starved and does not yet constrain Gauss–Manin rank",
+      "summary": "The base rational coefficient has numerator degree 11, the descended denominator has u-degree at most 90, but the tested exact primitives stop at degree 3. Linear rank growth through order six is therefore only a valid low-degree exclusion and cannot be promoted to evidence for a high-rank module.",
+      "entity_id": "criticism:5698d304da2cd9490acf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "src",
+      "source_id": "criticism:5698d304da2cd9490acf",
+      "target_id": "source:a4703ea5231bf0c7ed6e",
+      "relation_id": "rel:derived_from-075c2edf27592b50"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "claim:6ea9a8ed9d3cee18bb98",
+      "source_id": "criticism:5698d304da2cd9490acf",
+      "relation_id": "rel:criticizes-60914a16e0e3550c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima corrects the rank interpretation of the projective Krylov ladder",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "research_correction",
+      "status": "sent",
+      "body": "Degree audit: the 26-factor descended denominator has u-degree <=90 (support census 1 zero, 5 single, 20 double), while the known weight-five numerator already has degree 11 and our primitive ansatz stopped at degree 3. Thus the order 1..6 zero-relation table remains a valid low-degree exclusion, but its +4 rank growth is not evidence for high Gauss-Manin rank. The next gate is a reduction-compatible numerator filtration or sparse polynomial-module basis, not order 7.",
+      "sent_at": "2026-08-20",
+      "entity_id": "maricicommunication:f061aab49c8a53b290c0"
+    }
+  ],
+  "digest": "c17d0e972558a44a6e1c25949e891fa7be59ebae48e052f1408e1860a1163d20"
+}

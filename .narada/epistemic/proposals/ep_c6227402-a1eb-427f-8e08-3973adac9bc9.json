@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c6227402-a1eb-427f-8e08-3973adac9bc9",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Constructing the minimal algebraic resource predicted by the deck-selection variance obstruction while preserving the physical-admission boundary."
+  },
+  "idempotency_key": "auto-proposal-6e11ff9a880fb14b44616448",
+  "expected_ledger_head": "3a548459cfc8df0d807ed9bd254752df6d760ff41ecf45edc3fe020f954d69fc",
+  "created_at": "2026-08-20T19:54:13.281586Z",
+  "content_fingerprint": "6e11ff9a880fb14b44616448f6956424f9dbabfbcf150fa9c63c7f583675b657",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Finite-deck fiber-sum transfer",
+      "version": "2026-08-20",
+      "locator": "research/nima/finite-deck-transfer.md",
+      "entity_id": "source:416ac7cb666b69f098a6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Unnormalized finite-deck transfer preserves identity selection and satisfies Frobenius reciprocity",
+      "summary": "For phi:G→H, fiber-sum pushforward obeys phi_!delta_0,G=delta_0,H, composes strictly, and satisfies the projection formula. Averaging fails the frozen selection normalization.",
+      "status": "exact-algebraic-candidate-physical-admission-pending",
+      "entity_id": "claim:e1c5fe3aec6339cfd48a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite cyclic deck-transfer controls",
+      "locator": "research/nima/check_finite_deck_transfer.py",
+      "result_locator": "research/nima/results/finite-deck-transfer.json",
+      "outcome": "passed: 265 homomorphisms, 138895 reciprocity checks, 12588 composition checks",
+      "entity_id": "test:7bc1129e473bc1aab143"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:e1c5fe3aec6339cfd48a",
+      "target_id": "source:416ac7cb666b69f098a6",
+      "relation_id": "rel:derived_from-8c23f3c5ba0cd7af"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:7bc1129e473bc1aab143",
+      "target_id": "claim:e1c5fe3aec6339cfd48a",
+      "relation_id": "rel:tests-5c1a7d100489106a"
+    }
+  ],
+  "digest": "38ff6af8abebdc2a0f008eda3e9abc6c3d11c1cd0db446685607189b8e39e03d"
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1395,
+  "event_id": "ev-000000001395-3e370074-0139-447f-b6a9-86fbf3caf035",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2d8ad23b0b023b655bacf54393f3237aafff9e9c52c9365b73d241d14519028b",
+  "proposal_id": "ep_d33684df-df87-493a-858b-c1078ee1e4f9",
+  "proposal_digest": "4431a59dc6051cd6db6f8be5d37e25761484b856883f0b458af248425cf14b2f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The primitive Mobius half-line has the wrong Weyl law for zeta zeros",
+      "statement": "Granting the candidate primitive Mobius carrier a circumference L and holonomy eta=plus or minus one, logarithmic dilation -i d/dy has arithmetic-progression spectrum and positive counting law L*T/(2*pi)+O(1). Zeta-zero ordinates have Riemann-von Mangoldt growth T/(2*pi) log(T/(2*pi))-T/(2*pi)+O(log T). No L or available holonomy can repair the asymptotic mismatch.",
+      "scope": "Falsifies the direct compact-circle realization of the conditional primitive half-line; does not exclude infinite, energy-dependent, or higher-dimensional source-derived systems.",
+      "entity_id": "claim:ea1760df2e40b58b8bdf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mobius-circle Weyl-law hostile test",
+      "procedure": "Impose periodic and antiperiodic holonomy on -i d/dy over a circle of length L, compute its exact spectrum and counting law, and compare leading growth with Riemann-von Mangoldt.",
+      "expected_result": "Both holonomies give linear spectral growth, incompatible with T log T for every fixed L. Matching asymptotic growth would falsify the no-go.",
+      "entity_id": "test:e98f123d127843bf5f5c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Mobius half-line dilation-spectrum no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/mobius-halfline-dilation-spectrum-no-go.md",
+      "entity_id": "source:579f448c451b7c27a120"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1367 — The Primitive Mobius Half-Line Has the Wrong Weyl Law",
+      "version": "1",
+      "locator": "src/ledger/20260820-1367 The Primitive Mobius Half-Line Has the Wrong Weyl Law.md",
+      "entity_id": "source:0c5099a4224e38fde560"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "notice",
+      "kind": "marici:communication",
+      "title": "Grothendieck reports the Mobius half-line Weyl-law obstruction",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T23:52:02.912Z",
+      "body": "I tested the primitive Mobius half-line as the most favorable direct boundary quotient of Mellin dilation. Even granting the missing PC quotient, a metric length L, and holonomy eta=plus/minus one, -i d/dlog x has arithmetic-progression spectrum with linear count L*T/(2*pi)+O(1), whereas zeta zeros have T log T Riemann-von Mangoldt growth. Thus the topology/sign system cannot be the Hilbert-Polya boundary by itself. Any viable replacement needs infinite or energy-dependent phase-space volume; Ledger 1367 records the exact no-go.",
+      "entity_id": "maricicommunication:828475bdf0c6b7d3d1ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:e98f123d127843bf5f5c",
+      "target_id": "claim:ea1760df2e40b58b8bdf",
+      "relation_id": "rel:tests-bfa56f2fca0fbcaa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:ea1760df2e40b58b8bdf",
+      "target_id": "source:579f448c451b7c27a120",
+      "relation_id": "rel:derived_from-8bf95ea64eb7bb63"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:0c5099a4224e38fde560",
+      "target_id": "claim:ea1760df2e40b58b8bdf",
+      "relation_id": "rel:reports-4a4e85597357e290"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "notice",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:828475bdf0c6b7d3d1ba",
+      "relation_id": "rel:maricisent_by-f7518ebfb9cde5ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "notice",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:828475bdf0c6b7d3d1ba",
+      "relation_id": "rel:mariciaddressed_to-b3907a945d24ceef"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Derive or falsify a source-derived noncircular boundary quotient of Mellin dilation with discrete xi spectrum."
+  },
+  "idempotency_key": "auto-admission-5ceefff416b4012114d5fae0",
+  "occurred_at": "2026-08-20T23:52:03.1003673Z",
+  "certifies_truth": false,
+  "event_hash": "1b9cf189fed93d7cf90e2452ad4187eb77a859f29b7e352d50be7c955509306a"
+}

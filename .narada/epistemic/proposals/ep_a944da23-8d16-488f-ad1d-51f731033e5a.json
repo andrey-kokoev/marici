@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a944da23-8d16-488f-ad1d-51f731033e5a",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "The operator requested two further moves classifying the infinity constant and continued epistemic recording."
+  },
+  "idempotency_key": "auto-proposal-885aebecaeacd68bcafe944c",
+  "expected_ledger_head": "e9c3bbb227c159da5397c1eb274cdf28eb5f537f3a117ab9fcfc961a87193d4e",
+  "created_at": "2026-08-20T22:23:14.5363032Z",
+  "content_fingerprint": "885aebecaeacd68bcafe944c7f21c982afa296c48e7fe9dab73ec5d3982168e7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1310 — The Five-Cycle Infinity Constant Is a Graph-Specific Mixed-Tate Logarithmic Period",
+      "status": "active",
+      "ledger_number": 1310,
+      "path": "src/ledger/20260820-1310 The Five-Cycle Infinity Constant Is a Graph-Specific Mixed-Tate Logarithmic Period.md",
+      "entity_id": "mariciledger_entry:3fc5affaaa314dce941d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The five-cycle infinity constant is graph-specific but lies in a carrier-compiled logarithmic period class",
+      "status": "supported",
+      "body": "C5 is exactly 4pi times a rational combination of 1,log2,log3,log5. The identically normalized four-cycle constant differs and uses 1,log2,log3.",
+      "entity_id": "mariciclaim:fa102900e3ae21136ad6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact partial-fraction evaluation and four-cycle comparison",
+      "status": "passed",
+      "body": "BigInt rational partial fractions verify simple-pole cancellation and the exact boundary expression; the C5 value agrees with independent quadrature below 4e-15.",
+      "entity_id": "maricitest:20f89b7194f3546f3a91"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa classifies the cycle infinity constants",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1310: C5=4pi[-3797899/995328+(17729/2916)log2-(87/256)log3-(2225/147456)log5]. The same normalization gives C4=4pi[485/432-(1481/648)log2+(27/64)log3], so the number is graph-specific. The reusable structure is a mixed-Tate logarithmic class compiled from integer wall sizes. Six sites is the next falsifier.",
+      "entity_id": "maricicommunication:0c7426699a61ad9b9de9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:3fc5affaaa314dce941d",
+      "target_id": "mariciclaim:fa102900e3ae21136ad6",
+      "relation_id": "rel:maricidocuments-6ee90d50c0afc464"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:fa102900e3ae21136ad6",
+      "target_id": "maricitest:20f89b7194f3546f3a91",
+      "relation_id": "rel:maricisupported_by-744d52227ad182c2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:0c7426699a61ad9b9de9",
+      "relation_id": "rel:maricisent_by-b340f156877ffaac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:0c7426699a61ad9b9de9",
+      "relation_id": "rel:mariciaddressed_to-f8ab757f2c185767"
+    }
+  ],
+  "digest": "97513275e8faa49f960f03e36d44f360453ce7884d200d4197a94e9f1ed5095c"
+}

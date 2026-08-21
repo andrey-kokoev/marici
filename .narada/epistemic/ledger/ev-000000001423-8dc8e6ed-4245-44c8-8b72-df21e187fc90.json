@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1423,
+  "event_id": "ev-000000001423-8dc8e6ed-4245-44c8-8b72-df21e187fc90",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "019a99bbb964be03a53fd496c203b3676ac2c776613a9fae05ad603347ed053e",
+  "proposal_id": "ep_73d359e1-7fc3-4f0d-a65b-facb8f7d1261",
+  "proposal_digest": "b449e7189fbf76fac1140aefe0b52ee8026a8d1da55a0e2d1c95808afb63bccd",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Xi Stieltjes-moment equivalence packet",
+      "version": "1",
+      "locator": "research/grothendieck/xi-stieltjes-moment-equivalence.md",
+      "entity_id": "source:a10a44caa54e66c8f2cf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1385 — RH Is the Xi Stieltjes Moment Problem",
+      "version": "1",
+      "locator": "src/ledger/20260820-1385 RH Is the Xi Stieltjes Moment Problem.md",
+      "entity_id": "source:f9fdf69e9d55af51e062"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "RH is equivalent to a theta-defined Stieltjes moment representation",
+      "statement": "For B(y)=Xi(iy) and R_Xi(x)=d/dx log B(sqrt x), RH holds iff R_Xi is a Stieltjes function. Under RH its positive measure is sum m_gamma delta_(gamma^2); conversely Stieltjes analyticity forces all logarithmic-derivative poles to the negative real squared axis and hence all Xi zeros real. Complete-monotonicity derivatives and Hankel moment minors give source-only finite falsifiers.",
+      "scope": "Unconditional equivalence and falsifier hierarchy; no proof of the Stieltjes property or Mellin boundary identification.",
+      "entity_id": "claim:95e3a3bf728b2f79bce3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Xi Stieltjes derivative and moment-matrix gate",
+      "description": "Test alternating derivatives and Hankel matrices of the theta-defined squared-variable logarithmic derivative without using zero locations.",
+      "entity_id": "test:a5198d5991734977f27f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:95e3a3bf728b2f79bce3",
+      "target_id": "source:a10a44caa54e66c8f2cf",
+      "relation_id": "rel:derived_from-26c08743dfe46679"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:95e3a3bf728b2f79bce3",
+      "target_id": "source:f9fdf69e9d55af51e062",
+      "relation_id": "rel:derived_from-ea525183453a428c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:a5198d5991734977f27f",
+      "target_id": "claim:95e3a3bf728b2f79bce3",
+      "relation_id": "rel:tests-9cd15e61c96559ef"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:a5198d5991734977f27f",
+      "target_id": "source:a10a44caa54e66c8f2cf",
+      "relation_id": "rel:derived_from-0b1fb624f0d7929c"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-positive Weyl boundary and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-2c53df76d1d96629eafd9fa3",
+  "occurred_at": "2026-08-21T00:19:34.5363692Z",
+  "certifies_truth": false,
+  "event_hash": "25a6084840356cca1ef030cfa4b43d1c309053d6f2813705800e42cadf38306b"
+}

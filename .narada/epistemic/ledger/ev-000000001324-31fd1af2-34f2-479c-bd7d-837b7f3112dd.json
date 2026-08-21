@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1324,
+  "event_id": "ev-000000001324-31fd1af2-34f2-479c-bd7d-837b7f3112dd",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5010b031ff2e40984fc1badafa1aff7bc870fcd480d68a15aa39012ec0330272",
+  "proposal_id": "ep_4282055f-1755-4d6a-bb3f-e281ada49860",
+  "proposal_digest": "81c4f53cedff8789fd35a4e3e8ff389ca786485619d67824c20a16df06e79452",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The forced Betti pushforward has one exact boundary-commutator obstruction",
+      "body": "For the unique pairing-adjoint candidate S_q, define Omega_q=partial_H S_q-S_q partial_G. It is a relative-chain map iff Omega_q=0. Under chain-level perfect pairings, Omega_q transpose is the coefficient cochain commutator q*d_H-d_Gq* up to grading sign.",
+      "entity_id": "claim:44f4e131dbdc35c6cc32"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Forced-map compatible and hostile boundary controls",
+      "body": "The forced C4->C2 matrix has zero commutator for compatible identity differentials and nonzero defect [[0,0,0,0],[0,1,0,1]] for the hostile source differential. The coefficient commutator is exactly its transpose.",
+      "entity_id": "test:dd24bba33db020d180eb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Forced Betti boundary-commutator proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/forced-betti-boundary-commutator.md",
+      "entity_id": "source:e2283249d4cd0830093f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact forced Betti boundary-commutator checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/forced_betti_boundary_commutator.py",
+      "entity_id": "source:165e81b29bd2b780ee04"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1313 — The Forced Betti Pushforward Has One Boundary-Commutator Obstruction",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1313 The Forced Betti Pushforward Has One Boundary-Commutator Obstruction.md",
+      "entity_id": "source:07e4e05dc42bf16ef705"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:dd24bba33db020d180eb",
+      "target_id": "claim:44f4e131dbdc35c6cc32",
+      "relation_id": "rel:tests-7487a0f70602811f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:44f4e131dbdc35c6cc32",
+      "target_id": "source:e2283249d4cd0830093f",
+      "relation_id": "rel:derived_from-b7d7b667fbfc5d61"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:165e81b29bd2b780ee04",
+      "target_id": "test:dd24bba33db020d180eb",
+      "relation_id": "rel:promotes_to_evidence-eb9fe61e0c258cf5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:07e4e05dc42bf16ef705",
+      "target_id": "claim:44f4e131dbdc35c6cc32",
+      "relation_id": "rel:promotes_to_evidence-989cbe5aef6c3ad4"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-f647732e037ea7b66876e3ec",
+  "occurred_at": "2026-08-20T22:27:52.8647282Z",
+  "certifies_truth": false,
+  "event_hash": "32dc01cecc7166fef552f6fdf374cfd5d220f6968b2eb5dd369ed437bd78442f"
+}

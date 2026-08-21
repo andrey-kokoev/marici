@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_daf24b58-c099-4ba9-a38c-1fbcd1270eb7",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1316-boundary-basis-invariance-v1",
+  "expected_ledger_head": "54a748fc42283701c85191983b9bf5f7de5089c856af0a2a106c8c03c51db8fd",
+  "created_at": "2026-08-20T22:31:19.9458107Z",
+  "content_fingerprint": "2e751b5029a1e3ada9fbdb6af0dee775eb3c7c162820e4144bacb6edcf0adc7b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The Betti boundary obstruction is basis-invariant",
+      "statement": "For Omega_n=D_H,n S_n-S_(n-1)D_G,n, invertible source and target basis changes give Omega'_n=P_H,n-1^(-1) Omega_n P_G,n. Thus vanishing, field rank, and integral Smith factors are intrinsic.",
+      "entity_id": "claim:4d1cb0c0256ec4dcfa06"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Coordinate-free boundary-obstruction witness",
+      "procedure": "Exhibit x in C_n(G) and lambda in C_(n-1)(H)^* and evaluate lambda(Omega_n x).",
+      "falsifier": "Any nonzero value falsifies the forced chain map independently of bases.",
+      "caution": "Nonzero reduction modulo a prime proves integral failure; zero reduction at one prime does not prove integral vanishing.",
+      "entity_id": "test:ce8e14b46f8913a99066"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Boundary-commutator basis invariance",
+      "version": "v1",
+      "locator": "research/grothendieck/boundary-commutator-basis-invariance.md",
+      "entity_id": "source:a993e6527b99d3ed67ee"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1316 — The Betti Boundary Obstruction Is Basis-Invariant",
+      "version": "1316",
+      "locator": "src/ledger/20260820-1316 The Betti Boundary Obstruction Is Basis-Invariant.md",
+      "entity_id": "source:373ae503450e777bc04b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ce8e14b46f8913a99066",
+      "target_id": "claim:4d1cb0c0256ec4dcfa06",
+      "relation_id": "rel:tests-ab9d431466e8be47"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:4d1cb0c0256ec4dcfa06",
+      "target_id": "source:a993e6527b99d3ed67ee",
+      "relation_id": "rel:derived_from-d2e64e0cc1dbbe61"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:373ae503450e777bc04b",
+      "target_id": "claim:4d1cb0c0256ec4dcfa06",
+      "relation_id": "rel:reports-2627e81515ca696d"
+    }
+  ],
+  "digest": "3f41341774c1fe4725209272b9439c206f44d3038bf96bb6bd5026b791de8a14"
+}

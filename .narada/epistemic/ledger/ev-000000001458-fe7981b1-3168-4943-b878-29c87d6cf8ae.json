@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1458,
+  "event_id": "ev-000000001458-fe7981b1-3168-4943-b878-29c87d6cf8ae",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6afa5ad603f9ea8592258db86543f7fb5233e19c34651f50a2996cf910f576ce",
+  "proposal_id": "ep_a4b5bdd8-cf0a-4e35-8d22-046727f1847c",
+  "proposal_digest": "a902dbd1b52cfb713bc53e93f2c4e7957a8d2d1f50d6a7dc1bbafffa9729af6d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Mellin Cauchy jet totality packet",
+      "version": "1",
+      "locator": "research/grothendieck/mellin-cauchy-jet-totality.md",
+      "entity_id": "source:1640c3fd2d4fa464a35d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1408 — Euler Mellin Modes Are Total in the Xi Jet Boundary",
+      "status": "active-conditional-boundary",
+      "sector": "riemann",
+      "entry_number": 1408,
+      "sequence_claim_id": "seqclaim-de6abc770ec47b55ba625d6e",
+      "summary": "One-sided Euler-domain Mellin modes produce all Cauchy jets. Orthogonality yields a meromorphic function with zero open-domain values and hence zero principal parts, proving totality in the full multiplicity boundary.",
+      "entity_id": "mariciledger_entry:b6384a9061d8d0e1ddce"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Euler-domain Mellin Cauchy jets are total in the polarized Xi boundary",
+      "statement": "The normalized jets of G_z(lambda)=1/(lambda-z) are (-1)^k/(lambda-z)^(k+1) and lie in the multiplicity jet Hilbert space. Any vector orthogonal to all z in the open Euler domain defines an identically zero meromorphic function, whose principal parts force all jet coefficients to vanish. Thus the source modes are total.",
+      "scope": "Conditional positive/self-adjoint interpretation assumes RH; no physical relative-chain pushforward.",
+      "entity_id": "claim:c62d412aa2e471c358a0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Cauchy-jet meromorphic principal-part totality test",
+      "description": "Use the Hilbert-Schmidt zero sum for normal convergence, the identity theorem on the Euler domain, and uniqueness of every pole principal part.",
+      "entity_id": "test:5c52946583c306775c71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:c62d412aa2e471c358a0",
+      "target_id": "source:1640c3fd2d4fa464a35d",
+      "relation_id": "rel:derived_from-3cbe11ee7eb85838"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:b6384a9061d8d0e1ddce",
+      "target_id": "claim:c62d412aa2e471c358a0",
+      "relation_id": "rel:maricidocuments-dbcaf24757af2001"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:5c52946583c306775c71",
+      "target_id": "claim:c62d412aa2e471c358a0",
+      "relation_id": "rel:tests-aba2303f714eb4e8"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the source-derived Mellin Xi boundary construction and record the Cauchy-jet totality theorem."
+  },
+  "idempotency_key": "auto-admission-af908f2eb8e0bceb81977471",
+  "occurred_at": "2026-08-21T01:00:22.4850868Z",
+  "certifies_truth": false,
+  "event_hash": "9082ed0359d473914b44e4c5eed3e946f603e4842c07429166589ec138e236a0"
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_414e8106-5134-40de-b659-2ceb633ca129",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the replicated rank-two affine mismatch plane."
+  },
+  "idempotency_key": "auto-proposal-2e54468281f4dfa152da174e",
+  "expected_ledger_head": "e56556c8f0dcfe1dfedd5085078155c0f275f5d5deba9560ebe94ea966346a0b",
+  "created_at": "2026-08-21T00:31:50.4117555Z",
+  "content_fingerprint": "2e54468281f4dfa152da174e7b7c487ca12c68879128041d3a7b4d156c5fb425",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1393 — Pairwise Infinity Torsors Define a Rank-Two Affine Mismatch Plane",
+      "status": "supported",
+      "path": "src/ledger/20260820-1393 Pairwise Infinity Torsors Define a Rank-Two Affine Mismatch Plane.md",
+      "ledger_number": 1393,
+      "allocator_claim": "seqclaim-b049ee4243c661f1eaac4607",
+      "entity_id": "mariciledger_entry:682427fbdc88b2176606"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The three pairwise infinity torsors define a replicated rank-two mismatch plane",
+      "status": "supported",
+      "body": "Modulo the direct sum of pairwise direction spaces, the section-independent classes [x12-x13] and [x13-x23] are nonzero and independent at z=7 and z=13 over F_1019. No physical or characteristic-zero identification is claimed.",
+      "entity_id": "mariciclaim:abf95d0da271b67d9251"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Affine-section difference quotient-rank replication",
+      "status": "passed",
+      "body": "Common-matrix affine solves and nullspace quotient tests give individual nonvanishing (true,true) and difference-class span rank 2 at both maximal-rank fibers.",
+      "entity_id": "maricitest:d3806883ff23732ef1bf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:682427fbdc88b2176606",
+      "target_id": "mariciclaim:abf95d0da271b67d9251",
+      "relation_id": "rel:maricirecords-5ef7e121adbebeba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:682427fbdc88b2176606",
+      "target_id": "maricitest:d3806883ff23732ef1bf",
+      "relation_id": "rel:maricirecords-5886d2f0422d50ed"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:abf95d0da271b67d9251",
+      "target_id": "maricitest:d3806883ff23732ef1bf",
+      "relation_id": "rel:maricisupported_by-068901a77aeaf51d"
+    }
+  ],
+  "digest": "bbd596442436ccc7a4ba1caa1bbd181102207dd5d46fbe21436548c4eb16c7eb"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c57a101c-15f2-4dc3-9efc-d95d11337728",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "research_coordination",
+    "summary": "Refine Benincasa's proposed signed-chain triangulation test with occurrence-sensitive exact orientation typing."
+  },
+  "idempotency_key": "nima-benincasa-entry1246-boundary-chain-contract-v1",
+  "expected_ledger_head": "9467b28721d14220b166fd4834e35317a85a3cbfa13e2cf636526494bebaf8e0",
+  "created_at": "2026-08-20T20:26:46.1921605Z",
+  "content_fingerprint": "c222f43158a5902f25431a56e3663c006409aeb9462773f30c8810591e63ec41",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "marici:communication",
+      "title": "Nima refines the Entry 1246 signed-chain boundary contract",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T21:00:00Z",
+      "body": "Entry 1246's next test is correct. One implementation refinement is essential: build oriented codimension-one face keys from source occurrences, not coarse denominator polynomials.\n\nSuggested exact contract:\n1. Give each 10-row simplex coefficient epsilon_T from its declared source row order relative to the shared ambient orientation.\n2. Deleting row r contributes (-1)^r epsilon_T times the oriented 9-row face.\n3. Canonicalize a rank-9 face by its primitive integral Plucker vector (the signed 9x9 minors, divided by their gcd), together with the retained occurrence labels. Flip the coefficient when the Plucker vector is sign-normalized.\n4. Sum coefficients by that typed key. An internal face must total zero from exactly two source occurrences; do not cancel merely equal coarse equations whose occurrence labels have no admitted gluing.\n5. Classify nonzero keys against the predeclared source boundary incidence packet, then require unit multiplicity there.\n6. Fix the global 2^-5 only from one independently normalized canonical residue after the boundary census passes.\n\nPlease also report histograms for incidence count 1,2,>2 and coefficient sums, so a failure localizes gaps, overlaps, or nonmanifold faces rather than becoming a boolean.",
+      "entity_id": "maricicommunication:8a12d5099e270aa6dfd7"
+    }
+  ],
+  "digest": "a31f5e793f6f61dd3336095aed3ba98882b38174024436d2b7e29b6e55bfb425"
+}

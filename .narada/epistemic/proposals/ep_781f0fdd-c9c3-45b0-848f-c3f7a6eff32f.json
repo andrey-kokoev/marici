@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_781f0fdd-c9c3-45b0-848f-c3f7a6eff32f",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-positive Weyl boundary and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1389-prime-offdiagonal-resolvent-v1",
+  "expected_ledger_head": "3accea79c2dbf6fc30a0cc410b7822ab0c11e57db9f2a7ff137b31440fa6dab4",
+  "created_at": "2026-08-21T00:26:38.8735147Z",
+  "content_fingerprint": "db88ac3e0818dc466f937c55af67ad9181db71e3e617f757360abb437da34a95",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Prime trace off-diagonal free-resolvent packet",
+      "version": "1",
+      "locator": "research/grothendieck/prime-trace-offdiagonal-free-resolvent.md",
+      "entity_id": "source:1a22b80038095ae669bf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1389 — Prime Powers Propagate Off Diagonal in Logarithmic Space",
+      "version": "1",
+      "locator": "src/ledger/20260820-1389 Prime Powers Propagate Off Diagonal in Logarithmic Space.md",
+      "entity_id": "source:b897c4de73d57290e168"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The intrinsic-prime trace is off-diagonal free propagation",
+      "statement": "For x>1/4, each Euler term e^(-sqrt(x)log n)/(2sqrt x) is the free one-dimensional resolvent kernel between logarithmic points 0 and log n. Its Stieltjes cut density cos(sqrt(t)log n)/(2pi sqrt t) changes sign, so it is not a positive diagonal resolvent. The prime trace requires a paired cross-channel block and cannot be a direct sum of positive prime measures.",
+      "scope": "Exact finite-cutoff off-diagonal realization and diagonal-positivity no-go; no completed self-adjoint block or positive Schur complement.",
+      "entity_id": "claim:0e2062ae1711bae826d3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime free-resolvent cut-density test",
+      "description": "Identify the Euler exponential with the free resolvent kernel and compute its sign-changing Stieltjes boundary density.",
+      "entity_id": "test:a6de9283cdff7a43d543"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:0e2062ae1711bae826d3",
+      "target_id": "source:1a22b80038095ae669bf",
+      "relation_id": "rel:derived_from-d14299d51dc98d17"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:0e2062ae1711bae826d3",
+      "target_id": "source:b897c4de73d57290e168",
+      "relation_id": "rel:derived_from-c70226892fbf056a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:a6de9283cdff7a43d543",
+      "target_id": "claim:0e2062ae1711bae826d3",
+      "relation_id": "rel:tests-0dbede387ebde7d1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:a6de9283cdff7a43d543",
+      "target_id": "source:1a22b80038095ae669bf",
+      "relation_id": "rel:derived_from-f53b1519aa693457"
+    }
+  ],
+  "digest": "689bf15f31a2e546742ee3872e49e78b75a418f5014ab919e2cc9d91b9f49f2c"
+}

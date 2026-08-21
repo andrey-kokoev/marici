@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1207,
+  "event_id": "ev-000000001207-bae542af-266f-4d8f-9dad-57b35c49b014",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "83584eb79b77b0a09cf421c42548222439b861f617c340fabb57ff23ccaccb90",
+  "proposal_id": "ep_d3d9af10-9c77-4955-9193-d9eb6eeb3b65",
+  "proposal_digest": "b624643b56b0ad1c6a7b7730ed307fde7e3ce9d4fc5c43f002b586092a66773c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-coprime-cyclic-monodromy-adams-spectrum",
+      "kind": "claim",
+      "title": "Coprime cyclic monodromy has Adams survivor spectrum gcd(n,p m)=1",
+      "statement": "For G=F_p^r semidirect C_m with faithful cyclic action of order m prime to p, power operations commute with all coefficient fiber sums and basis-level fiber lifts iff gcd(n,p*m)=1.",
+      "scope": "Elementary-abelian kernel, faithful cyclic coprime action, algebraic correspondence only."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-coprime-cyclic-monodromy-adams-spectrum",
+      "target_id": "claim:grothendieck-semidirect-linear-norm-adams-gate",
+      "relation_id": "rel:derived_from-b19431ea18626ac3"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-coprime-cyclic-monodromy-spectrum",
+      "kind": "test",
+      "title": "Three-family coprime cyclic monodromy spectrum test",
+      "protocol": "Exhaust every quotient fiber and n=1..24 for A4->C3, C3 semidirect C2->C2, and C5 semidirect C4->C4; compare global compatibility to gcd(n,p*m)=1.",
+      "falsifier": "Any family/index disagrees with the gcd classification."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-coprime-cyclic-monodromy-spectrum",
+      "target_id": "claim:grothendieck-coprime-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:tests-9e930889da854b54"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-coprime-cyclic-monodromy-spectrum-packet",
+      "kind": "source",
+      "title": "Coprime cyclic-monodromy Adams spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/coprime-cyclic-monodromy-adams-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-coprime-cyclic-monodromy-spectrum-packet",
+      "target_id": "claim:grothendieck-coprime-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:promotes_to_evidence-9f4757ad9bcec6f3"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-coprime-cyclic-monodromy-spectrum",
+      "test_id": "test:grothendieck-coprime-cyclic-monodromy-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: all 72 family/index cases agree with gcd(n,p*m)=1 under 13920 exact coefficient-value checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-coprime-cyclic-monodromy-spectrum-packet",
+          "locator": "research/grothendieck/results/coprime-cyclic-monodromy-adams-spectrum.json",
+          "paraphrase": "Exact survivor lists for three independent coprime cyclic actions match the classification."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "nonabelian Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-167927888305db08716ab04f",
+  "occurred_at": "2026-08-20T20:52:09.7147369Z",
+  "certifies_truth": false,
+  "event_hash": "4a0721fb09ba1ac4faace5c0b020e7131a67026dd1c183f7a2ad88b4b8919836"
+}

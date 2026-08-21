@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1361,
+  "event_id": "ev-000000001361-21340b61-6fe2-42ff-9e1c-5079ae23372c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7d1a18ebbf2a3451b4ebbc70cd68c381812bcd0c398366f64d01454bfcee5d52",
+  "proposal_id": "ep_2fa8cd2b-58f4-49a4-a365-c85186eeb6a9",
+  "proposal_digest": "b55f8e1ef2fbe2ee79eb11c5a45d4a462c6e445c844784c53a9bd8b43a112b46",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The residual mod-two norm homology has a closed Hilbert series",
+      "statement": "For k collapsed five-site directions, H_k(t)=(1+t)^(5-k)((1+t)^k-1-t^k). Its basis is indexed by proper nonempty collapsed subsets times arbitrary untouched subsets.",
+      "entity_id": "claim:c588d3f5bf59b782fabe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Hilbert-series controls for one, two, and five collapsed bits",
+      "procedure": "Evaluate the closed formula at k=1,2,5.",
+      "outcome": "It gives 0; 2t(1+t)^3 with dimensions 2,6,6,2; and 5t+10t^2+10t^3+5t^4.",
+      "falsifier": "Any proposed graded census inconsistent with these coefficients falsifies the deck norm-homology identification.",
+      "entity_id": "test:98124f739fdea5d2440e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Mod-two norm-homology Hilbert series",
+      "version": "v1",
+      "locator": "research/grothendieck/mod2-norm-homology-hilbert-series.md",
+      "entity_id": "source:09c47481e457589ae982"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1341 — The Residual Mod-Two Norm Homology Has a Closed Hilbert Series",
+      "version": "1341",
+      "locator": "src/ledger/20260820-1341 The Residual Mod-Two Norm Homology Has a Closed Hilbert Series.md",
+      "entity_id": "source:410f69a5ed55ced63583"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:98124f739fdea5d2440e",
+      "target_id": "claim:c588d3f5bf59b782fabe",
+      "relation_id": "rel:tests-581698963a733cfe"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:c588d3f5bf59b782fabe",
+      "target_id": "source:09c47481e457589ae982",
+      "relation_id": "rel:derived_from-92af843754bc4c7c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:410f69a5ed55ced63583",
+      "target_id": "claim:c588d3f5bf59b782fabe",
+      "relation_id": "rel:reports-a42a6d55364cfe26"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-b34703edb7352ac4df0e6919",
+  "occurred_at": "2026-08-20T23:02:17.6896483Z",
+  "certifies_truth": false,
+  "event_hash": "74ba7fa6f4af75ba5baa0d7f6280584db540d8d1f77a04a27389fcd060813f6d"
+}

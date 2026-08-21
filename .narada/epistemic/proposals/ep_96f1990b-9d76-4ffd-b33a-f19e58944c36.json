@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_96f1990b-9d76-4ffd-b33a-f19e58944c36",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1314-boundary-matrix-availability-v1",
+  "expected_ledger_head": "69d63052994f3ed7ecae6581ff44f945a12b2995cb3c63cee9ba9ff330281e60",
+  "created_at": "2026-08-20T22:30:26.4461894Z",
+  "content_fingerprint": "61db06aec56fcafbe6b603a9eb5beb2ca15d28cdb3a819292366a95d8bee01e9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The five-site boundary commutator is specified but not yet evaluable",
+      "statement": "For source-derived based relative complexes, the forced Betti candidate is a chain map iff every Omega_q^n=D_H^n S_q^n-S_q^(n-1)D_G^n vanishes. The frozen five-site artifacts supply no source-derived pair D_G,D_H, so Omega_q is presently undefined physically rather than zero or nonzero.",
+      "scope": "Algebraic criterion exact; physical availability audit limited to frozen repository artifacts.",
+      "entity_id": "claim:2600981a4e4504cf4721"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "One-entry boundary-commutator falsifier",
+      "procedure": "For the one-bit quotient (C2)^5 -> (C2)^4, acquire adjacent source-derived boundary matrices and pairing-forced S matrices; compute Omega degreewise.",
+      "falsifier": "Any single nonzero entry of any Omega_q^n falsifies the forced physical chain map on the supplied complexes.",
+      "pass_condition": "All degreewise commutators vanish in source-fixed bases.",
+      "entity_id": "test:a8a64e9050149bb5928a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Five-site boundary-matrix availability audit",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-boundary-matrix-availability-audit.md",
+      "entity_id": "source:311af903b1f414c7533b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1314 — The Five-Site Boundary Commutator Is Specified but Not Yet Evaluable",
+      "version": "1314",
+      "locator": "src/ledger/20260820-1314 The Five-Site Boundary Commutator Is Specified but Not Yet Evaluable.md",
+      "entity_id": "source:be7e9df37649a966f45b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:a8a64e9050149bb5928a",
+      "target_id": "claim:2600981a4e4504cf4721",
+      "relation_id": "rel:tests-bf164fd78649093f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:2600981a4e4504cf4721",
+      "target_id": "source:311af903b1f414c7533b",
+      "relation_id": "rel:derived_from-06a6df96db33b294"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:be7e9df37649a966f45b",
+      "target_id": "claim:2600981a4e4504cf4721",
+      "relation_id": "rel:reports-4bb1ec65d8d2558c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "claim:2600981a4e4504cf4721",
+      "target_id": "test:a8a64e9050149bb5928a",
+      "relation_id": "rel:depends_on-283f1ef55d79832a"
+    }
+  ],
+  "digest": "2647013294c5d748da323ec9cf2d4ae8231d9906eb10c40e634a9a18ae0640d9"
+}

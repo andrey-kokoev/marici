@@ -1,0 +1,57 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_8004fa9d-2d66-488e-b32c-c0eef6b760c9",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "basis": "Operator explicitly directed Frontier Atlas update; validated versioned snapshot."
+  },
+  "idempotency_key": "nima-frontier-atlas-0.3.0-v1",
+  "expected_ledger_head": "06157cb0b465cdd4e98629b9d2ca8fc3338d27d5a94ee444e187628d72df8f2c",
+  "created_at": "2026-08-20T21:53:14.7752734Z",
+  "content_fingerprint": "3c79ff01088114584b41254a655978902542db67f41b70a72368e60ea451006d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "local_ref": "s",
+      "title": "Frontier Atlas 0.3.0 — Deck-Saturated Coefficient and Comparison Frontier",
+      "version": "0.3.0",
+      "locator": "src/data/frontiers/0.3.0.json",
+      "entity_id": "source:2286c14c34245e3a468b"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "local_ref": "c",
+      "title": "Frontier Atlas 0.3.0 captures evidence through epistemic event 1295 and ledger 1282",
+      "entity_id": "claim:56185c8588a18942303c"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "local_ref": "t",
+      "title": "Frontier Atlas three-release registry and schema validation",
+      "entity_id": "test:81d71ea16aaa7ce8b4c5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "c",
+      "target_ref": "s",
+      "source_id": "claim:56185c8588a18942303c",
+      "target_id": "source:2286c14c34245e3a468b",
+      "relation_id": "rel:derived_from-e386e673d39ddf78"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t",
+      "target_ref": "c",
+      "source_id": "test:81d71ea16aaa7ce8b4c5",
+      "target_id": "claim:56185c8588a18942303c",
+      "relation_id": "rel:tests-31255b873a4335ba"
+    }
+  ],
+  "digest": "86d50b3547a5443b4f40c292304877217c56a741e1a7c7c93dbab224b606ad92"
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1455,
+  "event_id": "ev-000000001455-d364e00e-d6c8-44b1-922b-82eb9e1287b2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "9889b2cb93d8440fbd3060e747a366f979b88b2e547a5fbd22b2bdc3cd627032",
+  "proposal_id": "ep_f881afa4-8e82-440a-a977-0ad337016e7a",
+  "proposal_digest": "654418fcf333f4fec6724c264580baf618ec9abc040bdfa09f1f7a78d3f50969",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Xi local residue Krein pairing packet",
+      "version": "1",
+      "locator": "research/grothendieck/xi-local-residue-krein-pairing.md",
+      "entity_id": "source:99b45cc0f9ebb2bfe42e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1405 — The Canonical Xi Jet Pairing Is Krein Rather Than Hilbert",
+      "status": "active-supported-no-go",
+      "sector": "riemann",
+      "entry_number": 1405,
+      "sequence_claim_id": "seqclaim-55af5867d14169fbaceabed7",
+      "summary": "The canonical Grothendieck residue pairing on the local Xi quotient sees every jet and makes Jordan multiplication symmetric, but it is indefinite at every multiple zero. A separate source polarization is required.",
+      "entity_id": "mariciledger_entry:8884e77cf003c57a9c2f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The canonical multiplicity-sensitive Xi residue pairing is indefinite at multiple zeros",
+      "statement": "For A_lambda=O_lambda/(Xi), the Grothendieck residue form is nondegenerate and makes multiplication by z symmetric. If the zero order m exceeds one, the nonzero socle vector t^(m-1) is isotropic, so no scalar rescaling makes the form positive. The double-zero matrix is [[0,1],[1,0]].",
+      "scope": "Local no-go for the unpolarized residue form; extra source polarization and zero simplicity remain possible.",
+      "entity_id": "claim:7e87bde126dc3659a287"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Dual-number residue polarization falsifier",
+      "description": "On C[t]/(t^2), verify the residue Gram matrix has signature (1,1), the Jordan multiplier is B-self-adjoint, and the socle vector remains isotropic under every scalar rescaling.",
+      "entity_id": "test:1a79d4d7466fbd2add8e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:7e87bde126dc3659a287",
+      "target_id": "source:99b45cc0f9ebb2bfe42e",
+      "relation_id": "rel:derived_from-d598e36950b16bfc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:8884e77cf003c57a9c2f",
+      "target_id": "claim:7e87bde126dc3659a287",
+      "relation_id": "rel:maricidocuments-dfb50fb43af58fb4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:1a79d4d7466fbd2add8e",
+      "target_id": "claim:7e87bde126dc3659a287",
+      "relation_id": "rel:tests-2c7858567298464a"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the Mellin-dilation Xi boundary audit and record the canonical jet-pairing positivity obstruction."
+  },
+  "idempotency_key": "auto-admission-a5b85371bc1ac9accbe5e886",
+  "occurred_at": "2026-08-21T00:55:57.5044922Z",
+  "certifies_truth": false,
+  "event_hash": "331e641089033ce09808abbd6c33523e8c1f502c09cc5a6af735b1d5617d4018"
+}

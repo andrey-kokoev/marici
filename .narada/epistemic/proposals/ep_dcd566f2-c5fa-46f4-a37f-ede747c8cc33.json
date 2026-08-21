@@ -1,0 +1,110 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_dcd566f2-c5fa-46f4-a37f-ede747c8cc33",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "directed_graph_lane",
+    "directive_event": "ev-000000001133-f59d87c1-2c89-45d6-810a-5ec348742e41",
+    "preledger_report_event": "ev-000000001134-91b0b7c2-4ca2-4acc-9354-470f755e2b43",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "grothendieck-paired-deck-mackey-norm-result-v1",
+  "expected_ledger_head": "03969f4cc254857baba092f63edd71a100aa521ce14b130ad2b95d4fc984ff40",
+  "created_at": "2026-08-20T20:08:27.0019006Z",
+  "content_fingerprint": "d361941ad70bfb8abbbe3041f6d725ef3d664166b9269c11fb46cba19182f817",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-paired-deck-mackey-norm",
+      "kind": "source",
+      "title": "Paired deck Mackey norm and integral normalization obstruction",
+      "version": "v1",
+      "locator": "research/grothendieck/paired-deck-mackey-norm.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-paired-deck-mackey-norm",
+      "kind": "test",
+      "title": "Exact cyclic-surjection Mackey norm and C2 normalization gate",
+      "method": "Exhaust cyclic surjections C_n->C_m for m|n, n<=12, checking pull-push multiplicity, upstairs kernel norms, N_K quadratic relation, coefficient-Betti adjunction, and C2 symmetric-weight incompatibility.",
+      "locator": "research/grothendieck/checkers/paired_deck_mackey_norm.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-paired-deck-mackey-norm",
+      "kind": "claim",
+      "title": "Paired finite-deck correspondences carry an integral kernel norm that obstructs simultaneous frozen selection and normalized ambidexterity",
+      "body": "For a surjective finite deck homomorphism q with K=ker q, q_!q^* and q_*q^! equal |K| times identity downstairs, while q^*q_! and q^!q_* equal N_K upstairs and N_K^2=|K|N_K. For C2->1, frozen delta normalization forces transfer weight 1 while normalized ambidexterity forces 1/2. Algebraic Mackey/Beck-Chevalley survives; physical cross-deck naturality remains unadmitted without relative-chain q_*.",
+      "status": "verified_algebraically_physical_admission_open"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-paired-deck-mackey-norm-v1",
+      "test_id": "test:grothendieck-paired-deck-mackey-norm",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 801 downstairs pull-push scalar checks, 2372 upstairs norm checks, 2372 norm-quadratic checks, 1090 coefficient-Betti adjunction checks; C2 normalization requirements incompatible",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-paired-deck-mackey-norm",
+          "locator": "research/grothendieck/results/paired-deck-mackey-norm.json",
+          "paraphrase": "Exact rational/integer enumeration verifies the norm theorem and minimal hostile normalization obstruction."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:grothendieck-to-nima-paired-mackey-result",
+      "kind": "communication",
+      "title": "Grothendieck returns the exact paired Mackey norm gate",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "result",
+      "sent_at": "2026-08-20T20:16:00Z",
+      "body": "Directed lane complete. The paired coefficient-Betti correspondence theorem and C2 falsifier proposed in event 1134 now pass exact enumeration: 801 downstairs pull-push scalar checks, 2372 upstairs kernel-norm checks, 2372 checks of N_K^2=|K|N_K, and 1090 coefficient-Betti adjunction checks across all cyclic surjections C_n->C_m with m|n and n<=12. The minimal C2->1 quotient forces weight 1 from frozen delta normalization and 1/2 from normalized ambidexterity. Therefore algebraic Mackey/Beck-Chevalley and objectwise physical-readout congruence survive, as do fiberwise prime-to-exponent repetition monoids; integral normalized ambidexterity, cross-deck physical naturality, and any semiring/Frobenius/Adams/lambda/Phase-II promotion do not follow. Entry 1224 cardinalities were not used to infer a relative-chain pushforward; physical q_* remains open."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-paired-deck-mackey-norm",
+      "target_id": "source:grothendieck-paired-deck-mackey-norm",
+      "relation_id": "rel:derived_from-b792c6b908a27c8b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-paired-deck-mackey-norm",
+      "target_id": "claim:grothendieck-paired-deck-mackey-norm",
+      "relation_id": "rel:tests-88f6bd36b7ab66fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:grothendieck-to-nima-paired-mackey-result",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "relation_id": "rel:sent_by-2478e16ffef95f4b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-to-nima-paired-mackey-result",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-faedf11f5ef7968b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "replies_to",
+      "source_id": "communication:grothendieck-to-nima-paired-mackey-result",
+      "target_id": "maricicommunication:1f5f1092b11162770ec9",
+      "relation_id": "rel:replies_to-bbb315eba6b7a4bc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:grothendieck-to-nima-paired-mackey-result",
+      "target_id": "claim:grothendieck-paired-deck-mackey-norm",
+      "relation_id": "rel:reports-7e14cd1f582b9873"
+    }
+  ],
+  "digest": "b61ea65324e6b98bbd9e9c4cbfc18ba572c3a92288401a2cd08348eeffb31a79"
+}

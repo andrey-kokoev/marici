@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1451,
+  "event_id": "ev-000000001451-7fff96da-9937-4b40-8f1e-c7c29e901c94",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0553a7dfc8f2bb9ad05bd7c108ef1c18c4a1aebe0e69d264eacea7b92fe79a1d",
+  "proposal_id": "ep_ec21a41c-151d-43f5-bd99-7204c41b46f4",
+  "proposal_digest": "2f11fa3e57ae2818509e04adae300c5fdccf5ba6b65ee6fdc645ac6f948701ce",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Scalar Weil squarefree determinant gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/scalar-weil-squarefree-determinant-gate.md",
+      "entity_id": "source:b9222a15bcb0e3ea46cb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1403 — The Scalar Weil Boundary Has Only the Squarefree Xi Determinant",
+      "status": "active-supported-gate",
+      "sector": "riemann",
+      "entry_number": 1403,
+      "sequence_claim_id": "seqclaim-d524480297f27f30b3dd6e54",
+      "summary": "Under RH the scalar Weil completion has one dimension per distinct zero, regardless of atomic mass. Its determinant is the squarefree Xi product and equals Xi only if all zeros are simple; otherwise a source-derived jet boundary is necessary.",
+      "entity_id": "mariciledger_entry:280654667323af6e5066"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The scalar Weil determinant equals Xi exactly under zero simplicity",
+      "statement": "The scalar Weil Hilbert space L2(sum m_lambda delta_lambda) has one eigendirection per distinct lambda. Its modified determinant is the product over distinct zeros with exponent one, while Xi has exponent m_lambda. Equality holds iff every Xi zero is simple.",
+      "scope": "Hilbert interpretation assumes RH/positivity; no assertion that multiple zeros exist.",
+      "entity_id": "claim:8dc7d7ea8ce5063c262e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Double-zero scalar determinant rank test",
+      "description": "At a double zero compare the rank-one norm 2|G(lambda)|^2 and its exponent-one determinant with the exponent-two Xi factor.",
+      "entity_id": "test:3bae127a15072d6645b4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:8dc7d7ea8ce5063c262e",
+      "target_id": "source:b9222a15bcb0e3ea46cb",
+      "relation_id": "rel:derived_from-b2bf03401d67657c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:280654667323af6e5066",
+      "target_id": "claim:8dc7d7ea8ce5063c262e",
+      "relation_id": "rel:maricidocuments-29673705cfc276fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:3bae127a15072d6645b4",
+      "target_id": "claim:8dc7d7ea8ce5063c262e",
+      "relation_id": "rel:tests-b01c5630b9fd5dfe"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the Mellin-dilation Xi boundary audit and record the determinant multiplicity gate."
+  },
+  "idempotency_key": "auto-admission-3345c3bc1ada90448751c77a",
+  "occurred_at": "2026-08-21T00:54:28.6191797Z",
+  "certifies_truth": false,
+  "event_hash": "16a88ac7c354f9e3af7f33404ce37f27733127202dedeb0a438fb79b1199b8c2"
+}
