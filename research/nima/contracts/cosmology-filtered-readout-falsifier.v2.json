@@ -1,0 +1,64 @@
+{
+  "schema": "marici.cosmology-filtered-readout-falsifier.v2",
+  "frozen_at": "2026-08-21",
+  "architecture": "sequential kernel filtration; no extension of a downstream readout across an upstream quotient",
+  "stages": [
+    {
+      "stage": 0,
+      "domain": "M_mark^(12)",
+      "domain_dimension": 12,
+      "readout": "Res_W",
+      "target": "W_3",
+      "required_rank": 3,
+      "kernel": "M_q^(9)",
+      "kernel_dimension": 9,
+      "status": "source_exact_sequence_established",
+      "source": "Entry 851"
+    },
+    {
+      "stage": 1,
+      "domain": "M_q^(9)",
+      "domain_dimension": 9,
+      "readout": "R_infinity",
+      "target": "V_ell(-1)",
+      "required_rank": 2,
+      "kernel": "T_7",
+      "kernel_dimension": 7,
+      "status": "generic_de_rham_and_integral_primitivity_established",
+      "source": "Entries 150 and 1151"
+    }
+  ],
+  "terminal_domain": {
+    "object": "T_7",
+    "dimension": 7,
+    "integral_basis_id": null,
+    "integral_basis_digest": null
+  },
+  "terminal_required_readouts": [
+    {
+      "readout_id": "nearby_cycle_on_T7",
+      "matrix": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    },
+    {
+      "readout_id": "physical_pairing_on_T7",
+      "matrix": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    }
+  ],
+  "decision_rule": {
+    "pass": "both filtration stages are exact and the vertically stacked terminal maps have rank 7 on the frozen T7 basis",
+    "fail": "both terminal maps are source-derived, typed, coherent, and their stacked rank is less than 7",
+    "inconclusive": "the terminal integral basis or either terminal source-derived map/certificate is absent"
+  },
+  "forbidden_repairs": [
+    "extend R_infinity from M9 to M12 by a chosen splitting",
+    "identify M12 with W3 plus M9",
+    "identify M9 with V_ell plus T7",
+    "promote a single physical class to a rank-seven readout",
+    "add a terminal readout after inspecting the residual kernel"
+  ],
+  "v1_relation": "v1 remains a valid generic parallel-map protocol, but it is not the natural typing of the established cosmology exact sequences"
+}

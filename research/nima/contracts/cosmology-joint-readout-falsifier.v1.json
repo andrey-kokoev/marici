@@ -1,0 +1,61 @@
+{
+  "schema": "marici.cosmology-joint-readout-falsifier.v1",
+  "frozen_at": "2026-08-21",
+  "domain": {
+    "object_name": "frozen marked-relative cosmological coefficient object",
+    "basis_id": null,
+    "basis_digest": null,
+    "dimension": null,
+    "coefficient_field": "Q"
+  },
+  "required_readouts": [
+    {
+      "readout_id": "residue",
+      "status": "awaiting_source_derived_map",
+      "matrix": null,
+      "source_locator": null,
+      "source_digest": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    },
+    {
+      "readout_id": "infinity_gysin",
+      "status": "awaiting_source_derived_map",
+      "matrix": null,
+      "source_locator": null,
+      "source_digest": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    },
+    {
+      "readout_id": "nearby_cycle",
+      "status": "awaiting_source_derived_map",
+      "matrix": null,
+      "source_locator": null,
+      "source_digest": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    },
+    {
+      "readout_id": "physical_pairing",
+      "status": "awaiting_source_derived_map",
+      "matrix": null,
+      "source_locator": null,
+      "source_digest": null,
+      "typing_certificate": null,
+      "coherence_certificate": null
+    }
+  ],
+  "forbidden_repairs": [
+    "fitted splitting",
+    "post-residual quotient",
+    "rank-only identification",
+    "untyped associated-grade promotion",
+    "adding a fifth readout after inspecting the joint kernel"
+  ],
+  "decision_rule": {
+    "pass": "every required readout is source-derived and typed, every required coherence certificate passes, and the vertically stacked matrix has rank equal to the frozen domain dimension",
+    "fail": "all required maps are admissible and the stacked matrix has rank smaller than the frozen domain dimension",
+    "inconclusive": "the domain or any required source-derived map, typing certificate, or coherence certificate is absent"
+  }
+}

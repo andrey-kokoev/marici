@@ -1,0 +1,179 @@
+"""Derive conformal path-graph integrands from ordered propagator terms.
+
+This is a source-level replication harness.  Each edge is expanded into the
+two time-ordered propagator terms and the boundary-subtraction term.  The
+resulting time-order posets are integrated by summing their linear extensions.
+"""
+
+from itertools import permutations, product
+
+
+def linear_extensions(vertex_count, relations):
+    for order in permutations(range(vertex_count)):
+        position = {vertex: index for index, vertex in enumerate(order)}
+        if all(position[left] < position[right] for left, right in relations):
+            yield order
+
+
+def ordered_time_integral(k, order):
+    # For 0<t_1<...<t_n, successive-difference coordinates produce suffix
+    # energy sums.  The common power of i is suppressed uniformly.
+    value = 1
+    for start in range(len(order)):
+        value /= sum(k[order[index]] for index in range(start, len(order)))
+    return value
+
+
+def path_integrand(site_energies, edge_energies):
+    vertex_count = len(site_energies)
+    assert len(edge_energies) == vertex_count - 1
+    answer = 0
+    # State F: eta_left>eta_right; state R: reverse; state B: boundary term.
+    for states in product("FRB", repeat=len(edge_energies)):
+        k = list(site_energies)
+        relations = []
+        coefficient = 1
+        for left, (state, y) in enumerate(zip(states, edge_energies)):
+            right = left + 1
+            if state == "F":
+                # eta_left>eta_right iff t_left<t_right.
+                relations.append((left, right))
+                k[left] -= y
+                k[right] += y
+            elif state == "R":
+                relations.append((right, left))
+                k[left] += y
+                k[right] -= y
+            else:
+                coefficient *= -1
+                k[left] += y
+                k[right] += y
+        for order in linear_extensions(vertex_count, relations):
+            answer += coefficient * ordered_time_integral(k, order)
+    for y in edge_energies:
+        answer /= 2 * y
+    return answer
+
+
+def factor_or_zero(value):
+    return 0 if value == 0 else factor(value)
+
+
+def main():
+    ring = PolynomialRing(QQ, names=("x1", "w1", "w2", "x2", "y"))
+    x1, w1, w2, x2, y = ring.gens()
+    field = ring.fraction_field()
+    x1, w1, w2, x2, y = map(field, (x1, w1, w2, x2, y))
+
+    two_site = path_integrand([x1, x2], [y])
+    one_white = path_integrand([x1, w1, x2], [y, y])
+    two_white = path_integrand([x1, w1, w2, x2], [y, y, y])
+
+    # Reverse the labelled path through temporary symbols so substitution is
+    # simultaneous rather than sequential.
+    reversed_two_white = two_white.subs({x1: x2, x2: x1, w1: w2, w2: w1})
+    assert reversed_two_white == two_white
+
+    print("TWO_SITE")
+    print(factor(two_site))
+    print("ONE_WHITE")
+    print(factor(one_white))
+    print(
+        "one-white terminal degrees:",
+        one_white.numerator().degree(ring.gen(1)),
+        one_white.denominator().degree(ring.gen(1)),
+    )
+    print("ONE_WHITE_WEIGHTED_PARTIAL_FRACTIONS")
+    shifts = [2*y, x2+y, x1+y, x1+x2]
+    prefactor = 1 / ((x1+y)*(x2+y))
+    residues = []
+    for shift in shifts:
+        root = -shift
+        numerator = root * (x1 + 2*root + x2 + 2*y)
+        other_factors = prod(other - shift for other in shifts if other != shift)
+        residues.append(prefactor * numerator / other_factors)
+    expected_log_coefficients = [
+        2*y / ((y^2-x1^2)*(y^2-x2^2)),
+        -(x2+y) / ((y^2-x1^2)*(y^2-x2^2)),
+        -(x1+y) / ((y^2-x1^2)*(y^2-x2^2)),
+        (x1+x2) / ((y^2-x1^2)*(y^2-x2^2)),
+    ]
+    # Integral_0^infinity sum A/(w+a) dw = -sum A log(a), since sum A=0.
+    assert sum(residues) == 0
+    assert all(-residue == expected for residue, expected in zip(residues, expected_log_coefficients))
+    print("Eq. 4.7 exact coefficient match: PASS")
+    print("TWO_WHITE")
+    print(factor(two_white))
+    print(
+        "two-white terminal degrees:",
+        two_white.numerator().degree(ring.gen(2)),
+        two_white.denominator().degree(ring.gen(2)),
+    )
+    print("path reversal: PASS")
+
+    print("TWO_WHITE_FIRST_PUSHFORWARD")
+    weighted_two_white = w1 * w2 * two_white
+    w2_shifts = [
+        2*y,
+        x2+y,
+        w1+2*y,
+        w1+x2+y,
+        x1+w1+y,
+        x1+w1+x2,
+    ]
+    w2_residues = []
+    for shift in w2_shifts:
+        # All six w2-dependent factors are monic and simple at a generic point.
+        residue = ((w2 + shift) * weighted_two_white).subs(w2=-shift)
+        w2_residues.append(residue)
+    assert sum(w2_residues) == 0
+    # Certify the partial-fraction reconstruction before interpreting its logs.
+    reconstructed = sum(
+        residue / (w2 + shift)
+        for residue, shift in zip(w2_residues, w2_shifts)
+    )
+    assert reconstructed == weighted_two_white
+    print("first w2 pushforward reconstruction: PASS")
+    print("first-pushforward logarithmic arguments:")
+    for shift in w2_shifts:
+        print(shift)
+    print("first-pushforward residue denominators factored in w1:")
+    for shift, residue in zip(w2_shifts, w2_residues):
+        denominator = residue.denominator()
+        print("LOG", shift, "DEN", factor(denominator))
+
+    print("SECOND_PUSHFORWARD_LOG_POLE_RESIDUES")
+    w1_pole_shifts = [2*y, x1-y, x1+y]
+    # The first pushforward is -sum_j A_j log(L_j).  Only the final four
+    # logarithms move with w1; record their exact simple-pole coefficients.
+    second_residue_rows = []
+    for log_shift, first_residue in zip(w2_shifts[2:], w2_residues[2:]):
+        row = []
+        for pole_shift in w1_pole_shifts:
+            coefficient = (
+                (w1 + pole_shift) * (-first_residue)
+            ).subs(w1=-pole_shift)
+            row.append(coefficient)
+        second_residue_rows.append(row)
+        print("LOG", log_shift, "RES", [factor_or_zero(entry) for entry in row])
+
+    # Equal zero-minus-pole differences are the only places where putative
+    # dilogarithmic letters can cancel before the final integration.
+    grouped = {}
+    for (log_shift, row) in zip(w2_shifts[2:], second_residue_rows):
+        log_constant = log_shift - w1
+        for pole_shift, coefficient in zip(w1_pole_shifts, row):
+            if coefficient != 0:
+                difference = log_constant - pole_shift
+                grouped[difference] = grouped.get(difference, 0) + coefficient
+    print("GROUPED_ZERO_MINUS_POLE_COEFFICIENTS")
+    for difference in sorted(grouped, key=str):
+        print(
+            "DIFF",
+            factor_or_zero(difference),
+            "COEFF",
+            factor_or_zero(grouped[difference]),
+        )
+
+
+main()
