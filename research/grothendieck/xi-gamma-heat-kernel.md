@@ -46,7 +46,7 @@ Their Laplace sum agrees with
 initially for `x>1/4`, where the Euler product is valid and each transform is
 controlled. Analytic continuation then identifies the completed expression.
 
-## Pointwise RH-equivalent target
+## Pointwise necessary target
 
 The source-positive Lévy-density conjecture becomes the explicit inequality
 
@@ -54,8 +54,10 @@ The source-positive Lévy-density conjecture becomes the explicit inequality
 
 for every `t>0`, together with the transform and continuation conditions.
 
-If proved, the left side is the positive heat trace `Theta(t)`, its Laplace
-transform is Stieltjes, and the complete-Bernstein program follows.
+If proved, the left side is a positive inverse-Laplace kernel. This alone does
+not make its Laplace transform Stieltjes. The complete-Bernstein program also
+requires `Theta(t)` to be completely monotone in `t`, equivalently to be the
+Laplace transform of a positive squared-spectral measure.
 
 ## Coupling behavior
 

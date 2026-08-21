@@ -59,8 +59,10 @@ This supplies a concrete source-side positivity target:
 
 `K_endpoint(t)+K_gamma(t) >= -K_prime(t)` for every `t>0`.
 
-Proving this pointwise inequality without zero locations would construct the
-positive Lévy density and hence cross the complete-Bernstein gate.
+Proving this pointwise inequality without zero locations would construct a
+positive Lévy density and cross the ordinary Bernstein gate. Crossing the
+complete-Bernstein/Stieltjes gate additionally requires complete monotonicity
+of the kernel in `t`.
 
 ## Asymptotic warning
 

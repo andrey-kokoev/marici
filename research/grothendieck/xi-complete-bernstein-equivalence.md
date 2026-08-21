@@ -79,7 +79,8 @@ without using zero locations and must reproduce:
 3. the logarithmic heat Weyl law;
 4. positive integer spectral residues.
 
-The central missing object is a source-positive Lévy density whose Laplace
-transform is `B'`.
+The central missing object is a source-derived Lévy density that is completely
+monotone in heat time, not merely positive, so that its Laplace transform
+`B'` is Stieltjes.
 
 This is an RH-equivalent conjecture, not an RH proof.
