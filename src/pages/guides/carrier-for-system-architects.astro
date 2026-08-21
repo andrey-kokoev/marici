@@ -3,7 +3,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 ---
 <SiteLayout
   title="Carrier for system architects | Marici"
-  description="A system-architecture sketch of Marici's carrier, labelled occurrences, operating strata, and coherence rules."
+  description="A system-architecture sketch of Marici's carrier, labelled occurrences, mixed-variance sector adapters, and coherence rules."
 >
   <article class="section-shell" aria-labelledby="article-title">
     <header class="article-header">
@@ -99,17 +99,183 @@ glue → restrict`}</code></pre>
       </p>
 
       <h2>Several sectors, one architectural substrate</h2>
-      <pre><code>{`struct Sector<C, P, R> {
+      <pre><code>{`struct Sector<Coeff, Response, Record> {
     carrier: Carrier,
     calculus: CarrierAlgebra,
-    coefficients: C,
-    physical_selection: P,
-    readout: R,
+    coefficients: Coeff,
+    response: Response,
+    pairing: Pairing<Coeff, Response, Record>,
 }`}</code></pre>
       <p>
         Different sectors may share the topology and operation types while transporting different
-        coefficient objects and using different physical selections. The research question is
-        whether that architectural reuse survives hostile calculations in physics.
+        pairs of physical objects. One side may be a coefficient system, detector, or differential
+        form; the other may be an integration cycle, memory field, or response object. The
+        observable is produced by their typed pairing, not necessarily by either object alone.
+      </p>
+
+      <h2>The readout behaves like a bidirectional adapter</h2>
+      <p>
+        A useful software analogy is a request/response boundary whose two sides have opposite
+        variance. If an architecture map <code>q: G → H</code> forgets detail, coefficient data
+        may be pulled back from <code>H</code> to <code>G</code>, while response or cycle data is
+        pushed forward from <code>G</code> to <code>H</code>. A valid pairing obeys an adjunction:
+      </p>
+      <pre><code>{`pair_G(pull_back(q, coefficient), response)
+    ==
+pair_H(coefficient, push_forward(q, response))`}</code></pre>
+      <p>
+        This is stricter than saying that every sector has a “lens” followed by a readout. The two
+        sides form one typed interaction contract. Transporting only one side can change the
+        observable even when both individual transformations look legal.
+      </p>
+
+      <h2>Capability is not authority</h2>
+      <p>
+        The generic calculus may know how a pushforward should behave algebraically. That does not
+        authorize every sector to use it. A physical pushforward also needs a source-defined map,
+        orientation, boundary behavior, support rule, and normalization. In architecture terms:
+        implementing an adapter interface does not grant a service permission to call it.
+      </p>
+      <p>
+        Current exact controls exhibit the paired pattern in three different settings: a
+        cosmological coefficient system paired with a chamber cycle, a string differential form
+        paired with an oriented integration chamber, and a gravitational-memory field paired with
+        its supertranslation detector. Their payload types differ; the shared candidate is the
+        variance-sensitive interaction and coherence calculus.
+      </p>
+
+      <h2>A worked proof-of-concept</h2>
+      <p>
+        The five-site infinity calculation now realizes the layers separately in one exact,
+        source-normalized case:
+      </p>
+      <pre><code>{`carrier:
+    blow_up(two_normals: (1 / total_energy, 1 / loop_radius))
+
+coefficient:
+    deepest_exceptional_grade
+    + odd_character_under_global_sheet_flip
+
+response:
+    positive_euclidean_chamber
+
+record:
+    pair(coefficient, response)
+    == exact_mixed_tate_period_C5`}</code></pre>
+      <p>
+        The same exceptional divisor also carries shallower, even coefficient grades. They are not
+        additional carrier components and cannot be identified with the odd physical coefficient.
+        The chamber supplies the physical evaluation; it is not recoverable by choosing an
+        algebraic basis for the coefficient line.
+      </p>
+      <p>
+        Specialization retypes symmetry. Only identity and global sheet complement preserve one
+        exceptional grade, but the other 30 sheet changes are not lost: they act as exact
+        correspondences between differently shifted fractional lattices. The response lattices
+        shift in the opposite direction, so coefficient poles cancel response zeros and the paired
+        record is unchanged. In architecture terms, entering a mode can turn an in-place adapter
+        into a typed migration between interface versions while preserving end-to-end behavior.
+      </p>
+      <p>
+        This proof-of-concept is deliberately narrow: it is established for the coalesced-focus
+        five-cycle current. The generic asymmetric family and the shallower coefficient objects
+        remain open.
+      </p>
+
+      <h2>A second proof-of-concept: the adapter alone is not the readout</h2>
+      <p>
+        A mass-insertion corner now gives a smaller exact example in which every layer can be
+        inspected. Two existing total-energy boundaries meet in the carrier. Their supported
+        coefficient object has two channels, exchanged by a sign/deck involution:
+      </p>
+      <pre><code>carrier:
+    intersection(total_energy_left, total_energy_right)
+
+coefficient lens:
+    channels A = (y1 + y2)^2, B = (y1 - y2)^2
+    deck action swaps A and B
+
+scalar adapter:
+    s = A + B, p = A * B
+    first two records reconstruct the unordered pair
+
+response:
+    two small-pole cycles exchanged by the same deck action
+
+physical record:
+    invariant cycle trace survives
+    anti-invariant cycle trace is annihilated</code></pre>
+      <p>
+        This example separates three mechanisms that can look identical from a final scalar.
+        The map from the two-channel lens to <code>(s, p)</code> is a smooth finite quotient: it
+        forgets channel ordering but no continuous data. The physical equal-mass source reaches
+        that quotient tangentially, because its first visible normal coordinate is
+        <code>(y1 - y2)^2</code>. Source ramification and readout information loss therefore occur
+        in different arrows.
+      </p>
+      <p>
+        The coefficient connection is flat and explicitly pure gauge, so it has no nontrivial
+        local monodromy of its own. The response object is different: looping around the invariant
+        mass-difference coordinate exchanges its two small-pole cycles. Their source residues are
+        equal, so the pairing keeps the invariant trace, kills the anti-trace, and limits to the
+        central physical pole when the cycles collide.
+      </p>
+      <p>
+        In architecture language, a stateless adapter can be completely trivializable while the
+        end-to-end protocol still has meaningful failover or replica permutation state. The
+        observable belongs to the adapter-plus-response contract. Inspecting the adapter alone
+        cannot recover which response trace is authorized.
+      </p>
+
+      <h2>A third proof-of-concept: structure permits, coefficients realize, readout activates</h2>
+      <p>
+        Exact one-loop photon scattering now provides a case where the architecture produces a
+        quantitative physical threshold rather than only a type distinction. The Carrier and Ward
+        constraints construct a rank-two photon coefficient fiber, but they do not select the QED
+        ray inside it. QED supplies that sector-specific coefficient object; a frozen Bell protocol
+        supplies the physical readout.
+      </p>
+      <pre><code>{`carrier/calculus:
+    four-photon crossing + Ward fiber + helicity transport
+
+coefficient object:
+    exact massive-electron one-loop helicity amplitude
+    (Phi1, Phi2, Phi5)
+
+physical readout:
+    maximally-entangled input
+    + fixed CHSH analyzers
+    + normalized outgoing-helicity pairing
+
+record:
+    abs(Bell(s, theta))
+
+derived transverse threshold:
+    s / m_e^2 = 0.4201576087546...
+    sqrt(s) / m_e = 0.6481956562...`}</code></pre>
+      <p>
+        The threshold is neither stored in the Carrier nor fitted into the readout. Two consecutive
+        EFT jets predict it, and the full massive one-loop amplitude confirms it below the
+        electron-pair threshold. Independent precision runs reproduce the root. A refined angular
+        census places the last sampled nonviolating direction at the transverse point; a continuum
+        angular certificate remains open.
+      </p>
+      <p>
+        This separates four layers cleanly: the Carrier supplies structural possibility, the
+        coefficient object realizes one sector, the readout states what is physically interrogated,
+        and their pairing produces the observable record. Asking the Carrier alone to predict the
+        QED coefficient ray would confuse permission with realization. Asking the coefficient object
+        alone for a Bell threshold would omit the measurement contract that makes the threshold
+        meaningful.
+      </p>
+
+      <h2>The revised architecture question</h2>
+      <p>
+        The research question is now whether the carrier supplies a stable topology of supported
+        interactions, while each sector supplies an authorized pair of endpoint objects and the
+        physical contract that evaluates them. A failure of a particular payload or detector does
+        not refute the shared architecture. A required interaction that cannot be typed by the
+        frozen carrier and calculus would.
       </p>
     </div>
   </article>

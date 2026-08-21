@@ -1,9 +1,12 @@
 {
+  "classification": "nonphysical algebraic slice; downstream Landau calculations require this retyping",
   "complex_parameter": "t",
-  "cyclic_symmetry": "exact C5",
+  "cyclic_symmetry": "exact C5 only as an algebraic Gram family",
   "five_by_five_gram_determinant": "0",
   "frozen_before_period_evaluation": true,
-  "physical_real_domain": "t>=sqrt(2); extra opposite external-momentum pairs can raise each site energy while preserving P_k",
+  "momentum_conservation": "fails: sum_i P_i=(0,0,5), with squared norm 25",
+  "no_go": "in real d=3 an exact C5 orbit is 1+2 dimensional; conservation kills the invariant line, so a conserved orbit has Gram rank at most 2",
+  "physical_real_domain": "none: global momentum conservation fails",
   "point_dot_products": {
     "cyclic_distance_1": "(3+sqrt(5))/4",
     "cyclic_distance_2": "(3-sqrt(5))/4",
@@ -33,9 +36,10 @@
     ]
   ],
   "routing_gram_determinant": "-5/8*(-5+5^(1/2))",
-  "schema": "marici.benincasa.five_site.cyclic_physical_slice.v1",
+  "schema": "marici.benincasa.five_site.cyclic_slice_correction.v2",
   "site_energies": "X_1=...=X_5=t",
   "soft_support": "excluded at generic t and nonzero P_k",
   "spatial_resultants": "P_k=(cos(2*pi*k/5),sin(2*pi*k/5),1), k=0,...,4",
-  "total_energy": "E_T=5t"
+  "total_energy": "E_T=5t",
+  "total_resultant_squared": "25"
 }

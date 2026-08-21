@@ -31,7 +31,7 @@ On either line, write
 
 \[
 \Delta=uS+vT,
-\qquad S=s^2,quad T=t^2.
+\qquad S=s^2,\quad T=t^2.
 \]
 
 The restricted branch quartic is
@@ -43,9 +43,9 @@ The restricted branch quartic is
 where
 
 \[
-\alpha=u^TAu,qquad
-\beta=u^TAv,qquad
-\gamma=v^TAv,qquad A=\operatorname{adj}(G).
+\alpha=u^TAu,\qquad
+\beta=u^TAv,\qquad
+\gamma=v^TAv,\qquad A=\operatorname{adj}(G).
 \]
 
 ## Exact factorization
@@ -90,6 +90,7 @@ the complete support is
 \boxed{
 \alpha\gamma\,\det(G)^2\,(n^TGn)^2=0.
 }
+\]
 
 The marked residual section evaluates in both representative families to
 
@@ -103,10 +104,10 @@ the expected principal Gram cofactor.
 
 Every factor has source provenance:
 
-- (alpha=0) and (gamma=0) are endpoint collisions with the frozen
+- \(\alpha=0\) and \(\gamma=0\) are endpoint collisions with the frozen
   branch divisor;
-- (det G=0) is the existing total Gram divisor;
-- (n^TGn=0) is the labelled pair-normal Gram degeneration;
+- \(\det G=0\) is the existing total Gram divisor;
+- \(n^TGn=0\) is the labelled pair-normal Gram degeneration;
 - the marked-section collision is the existing cofactor divisor.
 
 Thus no new marked incidence or cosmology-specific carrier stratum is
