@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1f25bf20-d183-462c-864b-38b6ab419f05",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the source-derived xi boundary research, add own research to the ledger, and use claimed ledger sequence numbers."
+  },
+  "idempotency_key": "grothendieck-ledger-1375-gaussian-endpoint-boundary-no-go-v1",
+  "expected_ledger_head": "b903950f950e577bb48d4b09513d7eef28277328251c55f08e377ae6a9dec396",
+  "created_at": "2026-08-21T00:04:38.9447276Z",
+  "content_fingerprint": "2a01397bee6336b1373e2c36694a5723892c9223eae1b255876042b3949322fe",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Gaussian endpoint boundary spectral no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/gaussian-endpoint-boundary-spectrum-no-go.md",
+      "entity_id": "source:21fbd8c8961f05038024"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1375 — Gaussian Endpoint Boundary Has the Wrong Spectral Growth",
+      "version": "1",
+      "locator": "src/ledger/20260820-1375 Gaussian Endpoint Boundary Has the Wrong Spectral Growth.md",
+      "entity_id": "source:3222e6a9983fa5ee1108"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The Gaussian endpoint boundary has the wrong spectral growth",
+      "statement": "For D=-i d/dy on a compact logarithmic interval with finite-dimensional unitary endpoint law f(L)=Uf(0), the spectrum is the finite union lambda_(j,n)=(2 pi n+theta_j)/L and N_D(T)=rLT/(2pi)+O(1). Taking U=(1+J)/sqrt(2) therefore realizes the Gaussian half-rotation self-adjointly and supplies its phase offsets, but its characteristic determinant has linear zero density and cannot equal completed Riemann xi, whose zero count grows as T log T.",
+      "scope": "Exact no-go for finite-rank, energy-independent endpoint unitaries; does not exclude infinite-rank or energy-dependent prime-coupled boundaries and does not construct a physical relative-chain pushforward.",
+      "entity_id": "claim:672c2b28d8c252c39fd2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite-unitary endpoint Weyl-law hostile test",
+      "description": "Diagonalize the endpoint unitary, solve the first-order eigenvalue equation exactly, and compare its linear Weyl count with the Riemann-von Mangoldt count.",
+      "entity_id": "test:fe8afe53627d056c27d2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:672c2b28d8c252c39fd2",
+      "target_id": "source:21fbd8c8961f05038024",
+      "relation_id": "rel:derived_from-02fb0499eb707fb7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:672c2b28d8c252c39fd2",
+      "target_id": "source:3222e6a9983fa5ee1108",
+      "relation_id": "rel:derived_from-368b0284fbe7c17f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_id": "claim:729e8140a6e72c36e232",
+      "source_id": "claim:672c2b28d8c252c39fd2",
+      "relation_id": "rel:derived_from-22a3de6bb374d8f2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:fe8afe53627d056c27d2",
+      "target_id": "claim:672c2b28d8c252c39fd2",
+      "relation_id": "rel:tests-f0018f0197ecda3f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:fe8afe53627d056c27d2",
+      "target_id": "source:21fbd8c8961f05038024",
+      "relation_id": "rel:derived_from-ac53928c96342ed1"
+    }
+  ],
+  "digest": "e960c09b34a638001284ff8b22970a17753821e2a0850d89ad2162423aa6f31a"
+}

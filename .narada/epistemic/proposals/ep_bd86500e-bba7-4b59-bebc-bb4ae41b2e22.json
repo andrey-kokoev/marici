@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_bd86500e-bba7-4b59-bebc-bb4ae41b2e22",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "paired coefficient-Betti Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-nonabelian-twisted-norm-mackey-gate",
+  "expected_ledger_head": "f074ad2a93c4ee3386ad4cb4b3d57af8ae2b83d83911f5aa6143289ab78bf296",
+  "created_at": "2026-08-20T20:45:44.707345Z",
+  "content_fingerprint": "0c30efd1132812ce92989900b2e2ffc908df855df3d5269111b29a6c422674b2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-nonabelian-twisted-norm-mackey-gate",
+      "kind": "claim",
+      "title": "For a finite-group quotient, power operations commute with Mackey legs exactly when every fiberwise twisted norm is bijective",
+      "statement": "For q:G->H and n>=1, coefficient fiber sum commutes with n-th power pullback iff P_n:q^-1(h)->q^-1(h^n) is bijective for every h; equivalently each twisted norm N_{g,n}:ker(q)->ker(q) is bijective. The same multiset criterion governs basis-level fiber lift.",
+      "scope": "Finite groups and algebraic coefficient-function/group-basis correspondence only; no physical relative-chain transfer."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-s3-c2-twisted-norm-hostile",
+      "kind": "test",
+      "title": "Smallest hostile S3 to C2 power-map test",
+      "protocol": "Exhaust quotient fibers for n=1..6 and compare S3->C2 against abelian C6->C2 with the same kernel and quotient orders.",
+      "falsifier": "S3->C2 commutes at n=2 or C6->C2 fails at n=2."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-s3-c2-twisted-norm-hostile",
+      "target_id": "claim:grothendieck-nonabelian-twisted-norm-mackey-gate",
+      "relation_id": "rel:tests-87fc095089419171"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-nonabelian-twisted-norm-packet",
+      "kind": "source",
+      "title": "Nonabelian twisted-norm Mackey gate research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/nonabelian-twisted-norm-mackey-gate.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-nonabelian-twisted-norm-packet",
+      "target_id": "claim:grothendieck-nonabelian-twisted-norm-mackey-gate",
+      "relation_id": "rel:promotes_to_evidence-4b58efe63ecbb251"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-s3-c2-twisted-norm-hostile",
+      "test_id": "test:grothendieck-s3-c2-twisted-norm-hostile",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: S3->C2 fails at n=2 while C6->C2 passes; 432 exact coefficient-value checks across 12 cases",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-nonabelian-twisted-norm-packet",
+          "locator": "research/grothendieck/results/nonabelian-twisted-norm-mackey-gate.json",
+          "paraphrase": "Exact exhaustive output records the hostile failure and abelian control."
+        }
+      ]
+    }
+  ],
+  "digest": "05c687e0c84f65d404eb55320f55b36e11664f988a2f075d07e89bb902b90b75"
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1312,
+  "event_id": "ev-000000001312-eff5a54d-eab5-4403-a2d1-e05aaecf851d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "37c8606de3300fd54708bcee05cd08557fbcb33f44da8dd0556d9d1cc3bc3717",
+  "proposal_id": "ep_da4b665b-000d-436e-a0fb-65b673b96e1a",
+  "proposal_digest": "175759cd146dc403105b57bfac10bea7488ad541e2dab3aaa995465840869b86",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Resonance failure is rigid under nonzero coefficient localization",
+      "body": "A nonbijective self-map of a finite fiber linearizes to a matrix with repeated columns and a zero row, so it remains noninvertible after every nonzero coefficient localization. Thus bad power-Mackey fiber words cannot be repaired by localizing coefficients, unlike the scalar norm degree.",
+      "entity_id": "claim:5309c67679388bd7a0b8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "A4 index-three localization-rigidity control",
+      "body": "For A4->C3, I+A+A^2=0 on V4, so the twisted norm maps all four elements to zero. Its basis linearization has rank one in characteristics 2,3,5,7, including prime 3 where degree four is a unit.",
+      "entity_id": "test:84a7992efe52d0cb3aea"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Resonance localization-rigidity proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/resonance-localization-rigidity.md",
+      "entity_id": "source:5f234e9522ac460197dc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "A4 resonance localization-rigidity checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/resonance_localization_rigidity.py",
+      "entity_id": "source:3fe323bbb840f82d9a37"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1305 — Resonance Failure Cannot Be Repaired by Coefficient Localization",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1305 Resonance Failure Cannot Be Repaired by Coefficient Localization.md",
+      "entity_id": "source:a9222a7fab6a5f524356"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:84a7992efe52d0cb3aea",
+      "target_id": "claim:5309c67679388bd7a0b8",
+      "relation_id": "rel:tests-e1da6523aa57871d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:5309c67679388bd7a0b8",
+      "target_id": "source:5f234e9522ac460197dc",
+      "relation_id": "rel:derived_from-0bfc024fdc34053f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:3fe323bbb840f82d9a37",
+      "target_id": "test:84a7992efe52d0cb3aea",
+      "relation_id": "rel:promotes_to_evidence-4521316d0ff84996"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:a9222a7fab6a5f524356",
+      "target_id": "claim:5309c67679388bd7a0b8",
+      "relation_id": "rel:promotes_to_evidence-e8cb265e9a46d5e1"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-c419802467e0cab2ba33b9f1",
+  "occurred_at": "2026-08-20T22:16:20.0410597Z",
+  "certifies_truth": false,
+  "event_hash": "64141cb3878a7f6ba8bcf4de45e81bdf315d8264f5b80d6c47dabbe9614c2d36"
+}

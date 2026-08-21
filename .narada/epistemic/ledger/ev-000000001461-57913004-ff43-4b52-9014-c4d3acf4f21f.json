@@ -1,0 +1,103 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1461,
+  "event_id": "ev-000000001461-57913004-ff43-4b52-9014-c4d3acf4f21f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "fcc85fee67779b674e3ed0aa7ba4d16e01ca73e8803c1eb51a39113fac8c48a8",
+  "proposal_id": "ep_4223d116-345c-4824-89e3-8c077bb354cd",
+  "proposal_digest": "b50d892d2d592b304c052e20c9cc35d55ad744b9d6a073f8096c43bdec1c2656",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Mellin source ideal saturation packet",
+      "version": "1",
+      "locator": "research/grothendieck/mellin-source-ideal-saturation.md",
+      "entity_id": "source:67f4f818a73f9eb8bcff"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "paper",
+      "kind": "source",
+      "title": "Connes–Consani–Moscovici, Zeta zeros and prolate wave operators, Proposition 3.6",
+      "version": "2024",
+      "locator": "https://alainconnes.org/wp-content/uploads/Zeta-zeros-and-prolateproofs-final-2024.pdf",
+      "entity_id": "source:b7e8499ae1270755e29a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1409 — The Mellin Source Generates Exactly the Xi Ideal",
+      "status": "active-supported-source-quotient",
+      "sector": "riemann",
+      "entry_number": 1409,
+      "sequence_claim_id": "seqclaim-6ddaab989631fe304d0609eb",
+      "summary": "The smallest spectral-multiplier ideal containing the CCM Mellin source range is exactly (Xi): the range lies in (Xi) and contains Xi. The resulting algebraic quotient retains exact local zero multiplicities independently of the paper's closure topology.",
+      "entity_id": "mariciledger_entry:141b7257c37edfc3edc3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Spectral-multiplier saturation of the Mellin source range is the principal Xi ideal",
+      "statement": "If R_E is the CCM Fourier source range in the order-at-most-one entire-function ring B, Proposition 3.6 gives R_E={P Xi:P polynomial}. Hence the ideal I_E=B R_E equals (Xi). The quotient B/(Xi) has intrinsic local lengths equal to Xi zero orders and supports the multiplicity jet boundary.",
+      "scope": "Unconditional algebraic quotient theorem; self-adjointness remains RH-equivalent and physical chain provenance is separate.",
+      "entity_id": "claim:2128526d61978d6ee2bd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mellin source ideal two-inclusion test",
+      "description": "Check that every source generator is divisible by Xi and that the constant polynomial multiple Xi occurs; these give I_E subset (Xi) and (Xi) subset I_E.",
+      "entity_id": "test:73477b8048972814473e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:2128526d61978d6ee2bd",
+      "target_id": "source:67f4f818a73f9eb8bcff",
+      "relation_id": "rel:derived_from-f663ecc917628d8d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "paper",
+      "source_id": "claim:2128526d61978d6ee2bd",
+      "target_id": "source:b7e8499ae1270755e29a",
+      "relation_id": "rel:derived_from-8b4b2cd365f43f86"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:141b7257c37edfc3edc3",
+      "target_id": "claim:2128526d61978d6ee2bd",
+      "relation_id": "rel:maricidocuments-606a2e1c58cf773e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:73477b8048972814473e",
+      "target_id": "claim:2128526d61978d6ee2bd",
+      "relation_id": "rel:tests-c196dd8455a1d51c"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the Mellin-dilation Xi quotient completion audit and record the source-ideal saturation theorem."
+  },
+  "idempotency_key": "auto-admission-811788055c3d8e0d5287a9fb",
+  "occurred_at": "2026-08-21T01:04:08.6469345Z",
+  "certifies_truth": false,
+  "event_hash": "6f87cba52e9b97ebff093d8da5b56d85e371350d86b3f57616a2ec4b4d856a0e"
+}

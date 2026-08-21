@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1215,
+  "event_id": "ev-000000001215-42af7c43-a564-4c4a-8097-14bfe72698e4",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5d3d9272f610a3ba50b93123f73cbccb12af70e277b2a469689b1b0979504f0b",
+  "proposal_id": "ep_8fe3f75c-7ca8-4bfb-a60c-4234710ebd30",
+  "proposal_digest": "d7fbd65ac1ec94cc63ec6c7de8c21127fd905825cbe3308d84b0b87e3c1bb445",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-finite-monodromy-exponent-adams-spectrum",
+      "kind": "claim",
+      "title": "Finite monodromy has a complete exponent-controlled power spectrum",
+      "statement": "For a faithful action of a finite group H on F_p^r, the power operation on F_p^r semidirect H commutes with all coefficient fiber sums and basis-level fiber lifts iff gcd(n,p*exp(H))=1.",
+      "scope": "Elementary-abelian kernel; arbitrary finite quotient; basis-level power correspondence, not necessarily a ring Adams operation; no physical chain transfer."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-finite-monodromy-exponent-adams-spectrum",
+      "target_id": "claim:grothendieck-modular-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:supersedes-903b747aefdb64d1"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-finite-monodromy-exponent-spectrum",
+      "kind": "test",
+      "title": "Nonabelian and noncyclic finite-monodromy spectrum test",
+      "protocol": "Exhaust n=1..24 and every acting element for faithful S3 on F5^2 and faithful V4 on F3^2; compare to gcd(n,p*exp(H))=1.",
+      "falsifier": "Any fiber/index disagrees with the exponent criterion."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-finite-monodromy-exponent-spectrum",
+      "target_id": "claim:grothendieck-finite-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:tests-278ede3ff426785b"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-finite-monodromy-exponent-spectrum-packet",
+      "kind": "source",
+      "title": "Finite-monodromy exponent Adams spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/finite-monodromy-exponent-adams-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-finite-monodromy-exponent-spectrum-packet",
+      "target_id": "claim:grothendieck-finite-monodromy-exponent-adams-spectrum",
+      "relation_id": "rel:promotes_to_evidence-de5f4c6c6b55a02d"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-finite-monodromy-exponent-spectrum",
+      "test_id": "test:grothendieck-finite-monodromy-exponent-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: faithful S3 and V4 actions agree with gcd(n,p*exp(H))=1 across 48 index cases and 97776 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-finite-monodromy-exponent-spectrum-packet",
+          "locator": "research/grothendieck/results/finite-monodromy-exponent-adams-spectrum.json",
+          "paraphrase": "Exact nonabelian and noncyclic survivor spectra match the exponent theorem."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "nonabelian Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-af9a2ef4856275634af17ca7",
+  "occurred_at": "2026-08-20T20:57:36.1795022Z",
+  "certifies_truth": false,
+  "event_hash": "b39ef442c807c209cf2d8a21a42f29c18d61317e18fa63ae53a684808eb05840"
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_7eb2e677-b27c-41cc-97be-e9a02139891a",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1325-cohomology-anomaly-v1",
+  "expected_ledger_head": "6790224dfb60e00e6c55f2bc1632b521afb29643d9a05bcd513e691f5eced398",
+  "created_at": "2026-08-20T22:39:44.4774116Z",
+  "content_fingerprint": "8726aac634a6226a8cf2d2b954d3ee72efb959edef9116e153421ac6540d47ca",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The class of alpha Omega is the cohomology-representative anomaly",
+      "statement": "A graded S induces H^n(H)->H^n(G) iff all target n-cocycles annihilate Omega_(n+1) and every tau_n(alpha)=[alpha Omega_n] vanishes. The identity S^*(d alpha)=d(S^*alpha)+alpha Omega makes tau the exact representative-independence obstruction.",
+      "entity_id": "claim:39da3bbf901453982186"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact-cocycle pullback detects the anomaly class",
+      "procedure": "Use the Ledger 1324 complex where target [1 0]=d_H(1) and its pullback is the nonzero source class 1.",
+      "outcome": "tau_1(1)=1, exactly detecting failure of representative-independent cohomological pullback.",
+      "falsifier": "Any nonzero tau falsifies the claimed cohomology map even when selected cocycles separately descend.",
+      "entity_id": "test:0ccdc1821ec2aa329edf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Cohomology-representative anomaly class",
+      "version": "v1",
+      "locator": "research/grothendieck/cohomology-representative-anomaly-class.md",
+      "entity_id": "source:b0795b86ab4c0f5e4300"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1325 — The Class of Alpha Omega Is the Cohomology-Representative Anomaly",
+      "version": "1325",
+      "locator": "src/ledger/20260820-1325 The Class of Alpha Omega Is the Cohomology-Representative Anomaly.md",
+      "entity_id": "source:f2533d8ec6a2fb77a2fc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:0ccdc1821ec2aa329edf",
+      "target_id": "claim:39da3bbf901453982186",
+      "relation_id": "rel:tests-ad39b62b0e62d1bd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:39da3bbf901453982186",
+      "target_id": "source:b0795b86ab4c0f5e4300",
+      "relation_id": "rel:derived_from-38e06097ca6271ba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:f2533d8ec6a2fb77a2fc",
+      "target_id": "claim:39da3bbf901453982186",
+      "relation_id": "rel:reports-5e98980570b95308"
+    }
+  ],
+  "digest": "635ab10d853449ae6e50ebae3fddba50234fd75460a12ae5b0c0b0ed3dd0184f"
+}

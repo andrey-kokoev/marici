@@ -1,0 +1,72 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1256,
+  "event_id": "ev-000000001256-15c23374-2916-4412-9820-8bc3c9756fe6",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "821136e728b18f60935d26e9ecfccb7968a9a968baee1f2236c061d152ea155f",
+  "proposal_id": "ep_df8bac46-7737-40c7-894a-15226f178c3c",
+  "proposal_digest": "fb550cce2d87da75f47773d20c08f295a0518dc984b943a41cfd6606acdaa990",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-central-extension-power-mackey-spectrum",
+      "kind": "claim",
+      "title": "Central extensions have kernel-exponent-only power compatibility",
+      "statement": "For any finite surjection q:G->H with central kernel K, all power-Mackey fiber squares commute iff gcd(n,exp(K))=1; the extension cocycle and quotient add no resonance primes.",
+      "scope": "Arbitrary finite central extension, including nonsplit and nonabelian total groups; basis-level correspondence."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-central-extension-power-mackey-spectrum",
+      "kind": "test",
+      "title": "Nonsplit central-extension power spectrum test",
+      "protocol": "Exhaust n=1..18 and every fiber for C4->C2, Q8->V4, and Heisenberg27->C3^2.",
+      "falsifier": "Any fiber disagrees with the kernel-exponent criterion."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-central-extension-power-mackey-spectrum",
+      "target_id": "claim:grothendieck-central-extension-power-mackey-spectrum",
+      "relation_id": "rel:tests-7ae28e8393e81001"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-central-extension-power-mackey-spectrum",
+      "kind": "source",
+      "title": "Central-extension power-Mackey spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/central-extension-power-mackey-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-central-extension-power-mackey-spectrum",
+      "target_id": "claim:grothendieck-central-extension-power-mackey-spectrum",
+      "relation_id": "rel:promotes_to_evidence-b276329485cb80fc"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-central-extension-power-mackey-spectrum",
+      "test_id": "test:grothendieck-central-extension-power-mackey-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: three central extensions, 54 index cases, and 14562 exact checks all match gcd(n,exp(K))=1",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-central-extension-power-mackey-spectrum",
+          "locator": "research/grothendieck/results/central-extension-power-mackey-spectrum.json",
+          "paraphrase": "Exact nonsplit central-extension spectra contain no cocycle-derived resonance prime."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-6d5f986dee1b55ea0aededc4",
+  "occurred_at": "2026-08-20T21:23:55.6428694Z",
+  "certifies_truth": false,
+  "event_hash": "ac89a2fbd8b7d0734485c5936dd6bfd4906290c3b67752a32e970edfc31b6d9e"
+}

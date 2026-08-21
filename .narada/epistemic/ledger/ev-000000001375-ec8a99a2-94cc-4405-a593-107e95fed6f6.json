@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1375,
+  "event_id": "ev-000000001375-ec8a99a2-94cc-4405-a593-107e95fed6f6",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3e3c1869312c4c591fb6daf3bb9f58f83eed6aeb50bcea39f662ef70041b749e",
+  "proposal_id": "ep_51aed4c2-b00f-4e47-a5d1-616b545c1bb4",
+  "proposal_digest": "985fb00745c513d00d7516c7be0c6c8987cea6eac54618a8ac8dff0d3a7cb65a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Canonical primary operations exist but do not yield Frobenius",
+      "statement": "For H_d=(Z/d)^(d-2), canonical p-primary subgroups and scalar operators P_p=p exist with P_p^r=P_(p^r), and their kernel filtration recovers v_p(d). But P_p is nilpotent, zero modulo p, and contains no information beyond d. Existing Adams operations commute across a kernel only for indices coprime to its exponent, so psi^p fails on nontrivial p-primary kernels; tested absolute Frobenius collapses the bad fiber. No nontrivial arithmetic Frobenius is thereby derived.",
+      "scope": "Algebraic norm module and established Adams-Mackey gates; no geometric or physical Frobenius.",
+      "entity_id": "claim:6c63a9414a51c75d54d0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-primary Frobenius hostile test",
+      "procedure": "On H_(p)=(Z/p^a)^(d-2), iterate P_p=p. Verify P_p^a=0 and its reduction on H_(p)/pH_(p) is zero. Compare the Adams-Mackey criterion gcd(p,exp K)=1 for a nontrivial p-primary kernel.",
+      "expected_result": "Strict scalar prime-power composition holds, but the operator is nilpotent and psi^p fails Mackey compatibility. A nontrivial unit-eigenvalue or compatible Frobenius spectrum would falsify the negative verdict.",
+      "entity_id": "test:04c92637575587262b5c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Primary-filtration Frobenius audit",
+      "version": "1",
+      "locator": "research/grothendieck/primary-filtration-is-not-frobenius.md",
+      "entity_id": "source:ac5ada0846327763c282"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1351 — Primary Operations Exist but Frobenius Does Not Yet Emerge",
+      "version": "1",
+      "locator": "src/ledger/20260820-1351 Primary Operations Exist but Frobenius Does Not Yet Emerge.md",
+      "entity_id": "source:5b00094f0f3fb9458a56"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:04c92637575587262b5c",
+      "target_id": "claim:6c63a9414a51c75d54d0",
+      "relation_id": "rel:tests-5de5eca4687f618f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:6c63a9414a51c75d54d0",
+      "target_id": "source:ac5ada0846327763c282",
+      "relation_id": "rel:derived_from-5f69b38c49d3cc14"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:5b00094f0f3fb9458a56",
+      "target_id": "claim:6c63a9414a51c75d54d0",
+      "relation_id": "rel:reports-c6bcf55bda50b21f"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Pursue canonical prime-power and Frobenius operations after auditing whether primes are inherited."
+  },
+  "idempotency_key": "auto-admission-8dfab8ba5dc3c6fddd0dbd46",
+  "occurred_at": "2026-08-20T23:21:51.9063577Z",
+  "certifies_truth": false,
+  "event_hash": "075f43f4f60039ea616a61a76236f3bc9a98a2cdfa99d1536add49cc6aed6d61"
+}

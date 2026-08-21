@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_58ffc5e7-c83f-419d-aa7b-2669e337bae6",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Pursue the ordered program: first determine whether primes are intrinsic or inherited, then test Frobenius operations and Euler factors."
+  },
+  "idempotency_key": "grothendieck-ledger-1350-prime-support-inherited-degree-audit-v1",
+  "expected_ledger_head": "5ecc40c7152bfbc1275e63719ab7681e57c839d605d718e6af0362716c2985a6",
+  "created_at": "2026-08-20T23:20:15.6036885Z",
+  "content_fingerprint": "1d139becf458e7d8314990bfc1361d717204b6dce9554f6cfa9f1520e11b7580",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Prime support is intrinsic to norm homology but inherited from the input degree",
+      "statement": "For d>2, H_d=(Z/d)^(d-2) intrinsically has annihilator dZ and support the primes dividing d, including their primary exponents. Nevertheless d already enters as fiber cardinality and as the scalar in T^2=dT; after forgetting group action the construction factors through cardinality. Thus current norm homology recovers but does not derive primes. For d=2, H_d=0 and homology alone loses even the prime 2.",
+      "scope": "Explanatory-strength audit of the algebraic regular-fiber norm construction; no physical realization.",
+      "entity_id": "claim:a14f14bb769f8d1f3fac"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Same-order cardinality-factorization hostile test",
+      "procedure": "Compare C6 and S3. Their group laws differ, but after forgetting induced action both order-six regular norm homologies have Smith module (Z/6)^4. Compare d=2, where the homology vanishes and cannot recover 2.",
+      "expected_result": "Underlying prime support and invariant factors depend only on d. Any same-order pair with different underlying norm-homology Smith modules would falsify the factorization claim.",
+      "entity_id": "test:2d2e28ddfcd72e518a1b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Prime-support inherited-degree audit",
+      "version": "1",
+      "locator": "research/grothendieck/prime-support-inherited-degree-audit.md",
+      "entity_id": "source:f26278e1732d202400f4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1350 — Prime Support Is Recovered but Not Yet Derived",
+      "version": "1",
+      "locator": "src/ledger/20260820-1350 Prime Support Is Recovered but Not Yet Derived.md",
+      "entity_id": "source:e4348e1514198b55dc42"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:2d2e28ddfcd72e518a1b",
+      "target_id": "claim:a14f14bb769f8d1f3fac",
+      "relation_id": "rel:tests-87b36e3f3adfc682"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:a14f14bb769f8d1f3fac",
+      "target_id": "source:f26278e1732d202400f4",
+      "relation_id": "rel:derived_from-7ee920c1dcb104ff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:e4348e1514198b55dc42",
+      "target_id": "claim:a14f14bb769f8d1f3fac",
+      "relation_id": "rel:reports-5d3d433dd8745a7c"
+    }
+  ],
+  "digest": "2547c1b236b26a79392e5bfe251bf37de91e559c0c1448a876fcd03d25524e8d"
+}

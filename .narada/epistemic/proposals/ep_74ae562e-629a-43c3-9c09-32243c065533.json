@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_74ae562e-629a-43c3-9c09-32243c065533",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1328-radical-repair-obstruction-v1",
+  "expected_ledger_head": "e40e655c4c81ab915304eaa23276504f2490cb418e27c83b4d5ed0a1203ba654",
+  "created_at": "2026-08-20T22:41:48.6427562Z",
+  "content_fingerprint": "d06494159a3f8cba3abc9d6966a8ea5ecd5c8ef4f67992e5aecfe18f08672b86",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Degenerate pairing turns rigidity into a radical obstruction class",
+      "statement": "For right radical R a subcomplex, pairing-preserving corrections are radical-valued. A chain-map repair exists iff Omega vanishes in C(H)/R and its radical-valued class vanishes in H^(-1)(Hom(C(G),R)). Perfect pairing recovers Omega=0.",
+      "entity_id": "claim:a4bb0ab9fcda300f2189"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Two-stage falsifier for pairing-preserving repair",
+      "procedure": "Project Omega to C(H)/R; if zero, compute its class in H^(-1)(Hom(C(G),R)).",
+      "falsifier": "A nonzero quotient projection or nonzero radical cohomology class excludes every pairing-preserving correction.",
+      "pass_condition": "Exhibit radical-valued C with delta C=-Omega.",
+      "entity_id": "test:bab459b341b1c69b7819"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Degenerate-pairing radical repair obstruction",
+      "version": "v1",
+      "locator": "research/grothendieck/degenerate-pairing-radical-repair-obstruction.md",
+      "entity_id": "source:c26959a553abc85f12cd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1328 — Degenerate Pairing Turns Rigidity into a Radical Obstruction Class",
+      "version": "1328",
+      "locator": "src/ledger/20260820-1328 Degenerate Pairing Turns Rigidity into a Radical Obstruction Class.md",
+      "entity_id": "source:57eabc95b38d429b1e95"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:bab459b341b1c69b7819",
+      "target_id": "claim:a4bb0ab9fcda300f2189",
+      "relation_id": "rel:tests-1125be0c8b08ba17"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:a4bb0ab9fcda300f2189",
+      "target_id": "source:c26959a553abc85f12cd",
+      "relation_id": "rel:derived_from-2eea649166eaa073"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:57eabc95b38d429b1e95",
+      "target_id": "claim:a4bb0ab9fcda300f2189",
+      "relation_id": "rel:reports-1818d8f6c615e6d2"
+    }
+  ],
+  "digest": "a8427701958d0b40de5b06b0fb3b567ff3eadab4f174ffd1415ffb481857ebc4"
+}

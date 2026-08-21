@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1316,
+  "event_id": "ev-000000001316-924f7fab-6971-444f-93be-91fc7636400f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e86c22fe98a9088d7ec8785bab7875e053370943dd80190911c11b8be6639f82",
+  "proposal_id": "ep_fff5356f-ed8d-40e7-ac75-6597fc7271a1",
+  "proposal_digest": "4a71ffdf1ecd73b96e5cacd0444ae161477c43d1b756e30313c55239e8ef2fc6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "A selection-preserving split requires symmetry-breaking lift data",
+      "body": "A kernel-equivariant weighted left inverse has uniform fiber weights 1/d and sends delta_0 to (1/d)delta_0, so it cannot preserve frozen selection for d>1. A section-based left inverse preserves delta_0 but breaks kernel equivariance by choosing one lift per fiber.",
+      "entity_id": "claim:7cde0491364223cbfe12"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C4->C2 section-versus-averaging separator",
+      "body": "The section choosing lifts 0,1 is a left inverse and preserves delta but fails translation by two. Uniform averaging is translation invariant and a left inverse but sends delta to (1/2,0). Exact rational assertions pass.",
+      "entity_id": "test:36fc33ff89d1b128904e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Equivariant-transfer selection no-go proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/equivariant-transfer-selection-nogo.md",
+      "entity_id": "source:11ace5657e9abb03e9b9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact section-versus-averaging checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/equivariant_transfer_selection_nogo.py",
+      "entity_id": "source:923ebe70a924a24eab49"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1307 — A Selection-Preserving Split Requires Symmetry-Breaking Lift Data",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1307 A Selection-Preserving Split Requires Symmetry-Breaking Lift Data.md",
+      "entity_id": "source:04337d21fa6942157a5f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:36fc33ff89d1b128904e",
+      "target_id": "claim:7cde0491364223cbfe12",
+      "relation_id": "rel:tests-7bb940cd9a46138d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:7cde0491364223cbfe12",
+      "target_id": "source:11ace5657e9abb03e9b9",
+      "relation_id": "rel:derived_from-0fd70f29401e42dd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:923ebe70a924a24eab49",
+      "target_id": "test:36fc33ff89d1b128904e",
+      "relation_id": "rel:promotes_to_evidence-5d7f6e7f22f0bf82"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:04337d21fa6942157a5f",
+      "target_id": "claim:7cde0491364223cbfe12",
+      "relation_id": "rel:promotes_to_evidence-4a2280d66df7046b"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-132c3aa6c8acba1c570011c1",
+  "occurred_at": "2026-08-20T22:19:36.5666743Z",
+  "certifies_truth": false,
+  "event_hash": "b8bd4505f43755104911a2916d546150d395908e5174f445b3907fe7488a003b"
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_91957212-2a31-44c5-a1a5-62dd49dfc796",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the paired xi boundary and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1391-xi-pick-preshape-v1",
+  "expected_ledger_head": "cb06fcc3d0101a185741605034c0d89f14621bbf7f1ae2bc74507e4dfa3a589f",
+  "created_at": "2026-08-21T00:29:26.8382796Z",
+  "content_fingerprint": "44d6e8035aa904cbf68b9f7a93c34052585f98020861e276873a91eb15f19ca8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Xi Pick indefinite boundary preshape packet",
+      "version": "1",
+      "locator": "research/grothendieck/xi-pick-krein-boundary-preshape.md",
+      "entity_id": "source:7e5ad5c0479bc878c6cc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1391 — Xi Has a Canonical Indefinite Pick Boundary Preshape",
+      "version": "1",
+      "locator": "src/ledger/20260820-1391 Xi Has a Canonical Indefinite Pick Boundary Preshape.md",
+      "entity_id": "source:295849c4bc41c22b059b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Xi has a canonical source-derived indefinite Pick boundary preshape",
+      "statement": "The theta-defined M=-Xi'/Xi yields a Hermitian Pick kernel. The radical quotient of the formal kernel-vector span is a canonical algebraic indefinite boundary preshape satisfying the Green/Weyl identity. Its form is positive semidefinite iff all Pick matrices are positive, equivalently RH; only after that descent does the compact-resolvent Hilbert operator with det_2=Xi/Xi(0) exist.",
+      "scope": "Canonical algebraic indefinite boundary and exact positivity gate; no canonical Krein topology, coefficient-Betti comparison map, or positive self-adjoint realization.",
+      "entity_id": "claim:45b1d9a250d9880a72d2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Xi Pick radical-quotient and positivity-descent test",
+      "description": "Construct the formal kernel Gram form, quotient its radical, verify the Green/Weyl identity, and test positivity via finite Pick matrices.",
+      "entity_id": "test:20e8e1857b3cfc5e9f32"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:45b1d9a250d9880a72d2",
+      "target_id": "source:7e5ad5c0479bc878c6cc",
+      "relation_id": "rel:derived_from-58d26a14292ba44a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:45b1d9a250d9880a72d2",
+      "target_id": "source:295849c4bc41c22b059b",
+      "relation_id": "rel:derived_from-b8cc1f5e3bd9e5ee"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:20e8e1857b3cfc5e9f32",
+      "target_id": "claim:45b1d9a250d9880a72d2",
+      "relation_id": "rel:tests-0c7f47a9d86cd373"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:20e8e1857b3cfc5e9f32",
+      "target_id": "source:7e5ad5c0479bc878c6cc",
+      "relation_id": "rel:derived_from-fa7b4adc46ac1b8e"
+    }
+  ],
+  "digest": "2d115334c6a5f5035f13f79908ef4554601993cb6849694e3ceaa8f7bab4359c"
+}

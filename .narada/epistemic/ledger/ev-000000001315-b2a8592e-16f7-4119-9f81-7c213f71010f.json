@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1315,
+  "event_id": "ev-000000001315-b2a8592e-16f7-4119-9f81-7c213f71010f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "14796df28a1bf5060bdd53040875317ef02120c6faa579a2f8ea30434d0bdc9d",
+  "proposal_id": "ep_0e9b3269-8a32-4216-bcec-6dc217ec145c",
+  "proposal_digest": "c8975b779ffac524f2471dce01ad7d8b49efb1df3fca6ff6ccbdb0f6e0a9c22e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "No scalar transfer normalization both splits the norm and preserves delta selection",
+      "body": "For a degree d>1 surjection and T=a q_!, Tq^*=id forces a=1/d, while T delta_0=delta_0 forces a=1. Thus no scalar normalization satisfies both over characteristic zero. Averaging gives an idempotent fiber-constant projector but sends delta_0 to (1/d)1_ker.",
+      "entity_id": "claim:5bec2222396448db207b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Degree 2,3,4 scalar-normalization no-go controls",
+      "body": "Exact rational arithmetic gives norm scales 1/2,1/3,1/4 versus selector scale 1. For C4->C2, the averaging projector is idempotent and sends delta_0 to (1/2,0,1/2,0). All assertions pass.",
+      "entity_id": "test:7212868ab1616e746311"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Transfer-normalization selector no-go proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/transfer-normalization-selector-nogo.md",
+      "entity_id": "source:19e541e78135bc4e64be"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact scalar-transfer normalization checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/transfer_normalization_selector_nogo.py",
+      "entity_id": "source:2af45bd2b499e25993e7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1306 — No Scalar Transfer Normalization Both Splits the Norm and Preserves Selection",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1306 No Scalar Transfer Normalization Both Splits the Norm and Preserves Selection.md",
+      "entity_id": "source:55f7c948053e69e79ffd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:7212868ab1616e746311",
+      "target_id": "claim:5bec2222396448db207b",
+      "relation_id": "rel:tests-0ad2579f67cb2a69"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:5bec2222396448db207b",
+      "target_id": "source:19e541e78135bc4e64be",
+      "relation_id": "rel:derived_from-8e022fdf42e2d6df"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:2af45bd2b499e25993e7",
+      "target_id": "test:7212868ab1616e746311",
+      "relation_id": "rel:promotes_to_evidence-eba48b149784c64d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:55f7c948053e69e79ffd",
+      "target_id": "claim:5bec2222396448db207b",
+      "relation_id": "rel:promotes_to_evidence-c52bfd920d97d5d4"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-a0e94b4a7c3874faaa74b30a",
+  "occurred_at": "2026-08-20T22:17:57.2144954Z",
+  "certifies_truth": false,
+  "event_hash": "e86c22fe98a9088d7ec8785bab7875e053370943dd80190911c11b8be6639f82"
+}

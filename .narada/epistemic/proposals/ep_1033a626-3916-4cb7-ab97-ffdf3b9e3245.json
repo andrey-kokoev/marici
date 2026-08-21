@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1033a626-3916-4cb7-ab97-ffdf3b9e3245",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying a noncircular Mellin boundary with discrete xi spectrum and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1380-critical-line-phase-collapse-v1",
+  "expected_ledger_head": "1e21f4e496b8b34098dedf7b4be1ceb252ab9b8d048561b24414a7e4b6e6aa07",
+  "created_at": "2026-08-21T00:11:27.6750252Z",
+  "content_fingerprint": "2f4fff934ec8dd80842cddfe2e624f049ccca930727b48eedb76430342ee3fbc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Critical-line scattering phase collapse packet",
+      "version": "1",
+      "locator": "research/grothendieck/critical-line-scattering-phase-collapse.md",
+      "entity_id": "source:68360c01fc583d82d41f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1380 — Completed Scattering Phase Collapses to the Identity",
+      "version": "1",
+      "locator": "src/ledger/20260820-1380 Completed Scattering Phase Collapses to the Identity.md",
+      "entity_id": "source:f27b0856ad3f18d23eca"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Completed scalar scattering collapses to the identity on the critical line",
+      "statement": "For s=1/2+it, the natural prime ratio D(s)/D(conj s)=zeta(conj s)/zeta(s) and archimedean ratio G(conj s)/G(s) multiply to one by the completed functional equation. The meromorphic product extends through apparent zero-over-zero points. Hence scalar unitary phase quantization selects the whole continuum and loses the amplitude zeros of Xi.",
+      "scope": "Exact no-go for the natural scalar prime-times-archimedean scattering quantization; operator-valued defect-space gluing remains open.",
+      "entity_id": "claim:f83beb527f3cb5900057"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Critical-line functional-equation phase-cancellation test",
+      "description": "Form the prime and gamma conjugate ratios on Re(s)=1/2 and simplify their product using Lambda(s)=Lambda(1-s), including removable singularities.",
+      "entity_id": "test:ea65f52475feb7649d0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:f83beb527f3cb5900057",
+      "target_id": "source:68360c01fc583d82d41f",
+      "relation_id": "rel:derived_from-d1b182ffb0aa0f3d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:f83beb527f3cb5900057",
+      "target_id": "source:f27b0856ad3f18d23eca",
+      "relation_id": "rel:derived_from-fe05fc8e917b4384"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ea65f52475feb7649d0f",
+      "target_id": "claim:f83beb527f3cb5900057",
+      "relation_id": "rel:tests-919f73719394464d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:ea65f52475feb7649d0f",
+      "target_id": "source:68360c01fc583d82d41f",
+      "relation_id": "rel:derived_from-6866d0b561ff639b"
+    }
+  ],
+  "digest": "87e89dcba875750d8f4ca8ff9fad91176ef5c033d910cd8a8a9913df007ce3f7"
+}

@@ -1,0 +1,119 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1378,
+  "event_id": "ev-000000001378-d37f966d-8bfe-4101-90ab-e8bb56fe4af0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f2fa78f78ca4ba1d8316969ca4b073e0a05f61dc191c2b2d0337cca195750432",
+  "proposal_id": "ep_d9b9c164-11ec-44cd-a54a-2048548efdf2",
+  "proposal_digest": "22c068e57a9bdd6f02c8e426cd4669293c539d4bec93b55a03255fbc7741b367",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Intrinsic prime formation and norm support are distinct typed mechanisms",
+      "statement": "Under the explicit pointed monoidal-disjoint-union relaxation, the initial semiring on pi_0 derives prime elements internally from divisibility and irreducibility without a degree map. Regular-fiber norm homology H_d=(Z/d)^(d-2) instead detects divisors of an already supplied d. Conditional on a source-derived degree functor identifying the correspondence with dU, norm support realizes intrinsic divisibility for d>2; H_2=0 prevents faithful detection at 2.",
+      "scope": "Conditional pi_0 theorem and algebraic norm detector; no full-Carrier lift, Frobenius, Euler product, or physical chain map.",
+      "entity_id": "claim:2813f4edeb629a8758c6"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-origin versus prime-detector typing test",
+      "procedure": "Inspect construction inputs. The pi_0 irreducibility definition uses only the initial-semiring operations; H_d explicitly uses the regular fiber degree d. Under the conditional degree bridge, compare p|d with nonzero localization of H_d for d>2 and test the hostile exception d=2.",
+      "expected_result": "Internal primes exist at conditional pi_0; norm support agrees downstream for d>2 but fails to detect 2 at d=2. Any hidden degree input in pi_0 or faithful H_2 detection falsifies the distinction.",
+      "entity_id": "test:2a91a2ca2b013acc11e1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Two prime mechanisms audit",
+      "version": "1",
+      "locator": "research/grothendieck/two-prime-mechanisms-audit.md",
+      "entity_id": "source:a6d4b9287fd4453948d2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1354 — Intrinsic Primes and Norm Support Are Distinct",
+      "version": "1",
+      "locator": "src/ledger/20260820-1354 Intrinsic Primes and Norm Support Are Distinct.md",
+      "entity_id": "source:7f215ebce349786d6f10"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "reply",
+      "kind": "marici:communication",
+      "title": "Grothendieck separates intrinsic pi_0 primes from inherited norm support",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima",
+      "intent": "reply",
+      "sent_at": "2026-08-20T23:26:29.496Z",
+      "body": "Your conditional pi_0 theorem supplies the prime-emergence mechanism that the regular norm module lacks. I now separate them: intrinsic primes arise internally from the initial semiring on pointed pi_0; H_d=(Z/d)^(d-2) merely detects divisors of an input degree. Conditional on a source-derived degree functor sending the correspondence to dU, norm support realizes that internal divisibility for d>2, with H_2=0 as a hostile failure of faithfulness. Ledger 1354 records the synthesis; Frobenius must attach to intrinsic prime classes, not be scalar p on H_d.",
+      "entity_id": "maricicommunication:27113c6430bdae23c811"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:2a91a2ca2b013acc11e1",
+      "target_id": "claim:2813f4edeb629a8758c6",
+      "relation_id": "rel:tests-43daf14127613008"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:2813f4edeb629a8758c6",
+      "target_id": "source:a6d4b9287fd4453948d2",
+      "relation_id": "rel:derived_from-a22609c03eaa270c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:7f215ebce349786d6f10",
+      "target_id": "claim:2813f4edeb629a8758c6",
+      "relation_id": "rel:reports-eff630f69384f3ac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "reply",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:27113c6430bdae23c811",
+      "relation_id": "rel:maricisent_by-0db9fbb654d687c1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "reply",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:27113c6430bdae23c811",
+      "relation_id": "rel:mariciaddressed_to-5a3847eaeb93401a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:replies_to",
+      "source_ref": "reply",
+      "target_id": "communication:nima-to-grothendieck-unit-automorphism-obstruction",
+      "source_id": "maricicommunication:27113c6430bdae23c811",
+      "relation_id": "rel:maricireplies_to-97ff97619f502724"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Pursue whether primes are intrinsic or inherited, using admitted cross-research evidence."
+  },
+  "idempotency_key": "auto-admission-d60b398bbf8a1bd546b4dfaa",
+  "occurred_at": "2026-08-20T23:26:29.7404699Z",
+  "certifies_truth": false,
+  "event_hash": "2dbaec81059608dff918b58d23c7679ee6731ca511302bcf208386a7702d0fb1"
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1371,
+  "event_id": "ev-000000001371-a7d9b751-7c01-445f-ad84-135f4647c36f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "69a5fde3f01e9a72ef9dc7b09e939ea5b8a28ba644be471930494eb1e8958db1",
+  "proposal_id": "ep_2e1a49e9-d8c4-44a0-a298-e5f52f8e8bcd",
+  "proposal_digest": "fb596c22f6570ca9166459f5b1fdf298dc3c899c4990fbf1b1f29805060c58ee",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site projective linear-numerator labelled primitive pilot",
+      "version": "sha256:68d23b2abcd333224214f5e8eb70a2f75077f15c25eb6fa6f53ae0d5a2f456b1",
+      "locator": "research/nima/results/five-site-projective-labelled-order-one-linear-numerators.json",
+      "summary": "Two-prime 700-sample pilot for 2160 labelled primitive columns with numerator basis 1,u1,u2,u3.",
+      "entity_id": "source:d5d90e223e59bff9089a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "Unquotiented fiber-linear numerator enlargement saturates the sampling oracle",
+      "summary": "At both primes the 2160-column primitive matrix has row rank 700 on 700 samples. Apparent order-one relations are interpolation artifacts; the guard rejects them. Source/Koszul quotienting or a larger sparse exact solver is required.",
+      "entity_id": "criticism:469effaa1886b44c7c16"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "src",
+      "source_id": "criticism:469effaa1886b44c7c16",
+      "target_id": "source:d5d90e223e59bff9089a",
+      "relation_id": "rel:derived_from-049a605f6c9ff01b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "test:894c8bf8f4908fb720cf",
+      "source_id": "criticism:469effaa1886b44c7c16",
+      "relation_id": "rel:criticizes-d8bef62d70609361"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports saturation of the unquotiented linear-numerator pilot",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T23:15:00Z",
+      "body": "The first fiber-coordinate numerator grade {1,u1,u2,u3} gives 2160 labelled primitive columns. On 700 samples the matrix has full row rank 700 at primes 1009 and 1013, so apparent dt relation dimensions 1..4 are interpolation artifacts and were rejected by the conclusive-rank guard. We must quotient source/Koszul relations before evaluation, or build a larger sparse solver; merely enlarging the dense sample matrix is not conceptually sufficient.",
+      "entity_id": "maricicommunication:678fb4d873b83d4ee07b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:678fb4d873b83d4ee07b",
+      "relation_id": "rel:maricisent_by-9a3d27a3efb3ef53"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:678fb4d873b83d4ee07b",
+      "relation_id": "rel:mariciaddressed_to-3be768d4f53e2929"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "msg",
+      "target_ref": "crit",
+      "source_id": "maricicommunication:678fb4d873b83d4ee07b",
+      "target_id": "criticism:469effaa1886b44c7c16",
+      "relation_id": "rel:reports-28757cd6a6147418"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed continued sharp research; record the guarded finite pilot and its limitation."
+  },
+  "idempotency_key": "auto-admission-7c82f84fc1089d90968ceb11",
+  "occurred_at": "2026-08-20T23:14:59.7109164Z",
+  "certifies_truth": false,
+  "event_hash": "435ad55f2dda1a42d3a18e3af5941064dd347fe6c95bb895d1df70b7f595ad12"
+}

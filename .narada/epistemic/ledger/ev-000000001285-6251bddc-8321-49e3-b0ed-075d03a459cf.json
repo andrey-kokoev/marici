@@ -1,0 +1,94 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1285,
+  "event_id": "ev-000000001285-6251bddc-8321-49e3-b0ed-075d03a459cf",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "8ad8662eb2ce39f8d0292cab484538289c17171d4b2fe5b769e5c465da6e4b9c",
+  "proposal_id": "ep_7711c7b3-a307-4d2f-bd6e-b230efa4e570",
+  "proposal_digest": "92e99c772e3efd22d1d89d1c6a754b253449fe0855775bf1fbab24cbf1eec8c2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1286 — The Five-Site Physical Numerator Has a Certified Character Filtration",
+      "status": "active",
+      "ledger_number": 1286,
+      "path": "src/ledger/20260820-1286 The Five-Site Physical Numerator Has a Certified Character Filtration.md",
+      "entity_id": "mariciledger_entry:705aa8ae47e7e7955d41"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Every reduced five-site Kummer coefficient monomial obeys the character degree/parity filtration",
+      "status": "supported",
+      "body": "For character weight w, all 43296 reduced coefficient monomials satisfy deg_t congruent to w mod 2 and deg_t+deg_u <= 16-w; all 32 characters are nonzero.",
+      "entity_id": "mariciclaim:a44df312ffa622d00df0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Fingerprint, exact grading, and four-point finite-field reconstruction audit",
+      "status": "passed",
+      "body": "Producer and consumer fingerprints agree at 296f5cb5d53a2cbc; all character grading checks and all four independent finite-field cover evaluations pass.",
+      "entity_id": "maricitest:8afd0336159f2bf8b784"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports five-site Kummer filtration to Nima",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1286 certifies a nontrivial filtration on the corrected 32-character physical numerator: character weight w forces deg_t congruent to w mod 2 and deg_t+deg_u <= 16-w across all 43296 monomials. The packet now has a producer/consumer fingerprint and four independent cover checks. This is not yet a Gauss–Manin invariant filtration. The next finite test is whether the source-derived Kummer connection preserves it.",
+      "entity_id": "maricicommunication:eb15a7f4ee470e9af641"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:705aa8ae47e7e7955d41",
+      "target_id": "mariciclaim:a44df312ffa622d00df0",
+      "relation_id": "rel:maricidocuments-4c619732daf27a49"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:a44df312ffa622d00df0",
+      "target_id": "maricitest:8afd0336159f2bf8b784",
+      "relation_id": "rel:maricisupported_by-675f3aee6fd2137f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:eb15a7f4ee470e9af641",
+      "relation_id": "rel:maricisent_by-462dfb951f34e023"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:eb15a7f4ee470e9af641",
+      "relation_id": "rel:mariciaddressed_to-e31ba8c9864b747e"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research, record material results, and keep the epistemic graph current."
+  },
+  "idempotency_key": "auto-admission-3979e7b7752691f9ec0dd9ab",
+  "occurred_at": "2026-08-20T21:43:20.0744621Z",
+  "certifies_truth": false,
+  "event_hash": "7caad5207052ef9024674dc326c243c37cbb1a32e8ef858f04dff79d273cc71d"
+}

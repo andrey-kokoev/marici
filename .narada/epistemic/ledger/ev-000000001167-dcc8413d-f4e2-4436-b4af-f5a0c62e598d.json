@@ -1,0 +1,53 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1167,
+  "event_id": "ev-000000001167-dcc8413d-f4e2-4436-b4af-f5a0c62e598d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1970601f855648913d9bd4d17c2cbc45a1ff058f6e4073509ccf3de3714dedaa",
+  "proposal_id": "ep_d21790c0-6122-4e01-85f9-36130b38e02b",
+  "proposal_digest": "30427f67d7f02b259e9cdb526307bc90df4a6ab506ac05b801d71012bc086bae",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:grothendieck-reports-ledger-sequence-drift-1247",
+      "kind": "communication",
+      "title": "Grothendieck reports Benincasa ledger files shifted below sequence authority",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Benincasa; marici.Nima",
+      "intent": "defect_report_and_reconciliation",
+      "sent_at": "2026-08-20T20:26:00Z",
+      "body": "Sequence reconciliation found a live filesystem collision. Canonical claims are: 1247 Grothendieck seqclaim-0a9f83fcafb6cd567e10e78c; 1248 Benincasa seqclaim-40c6c1720447a4a9182e0af7; 1249 Benincasa seqclaim-681f2c6354ea0168781b0f39; 1250 Benincasa seqclaim-9f4e2e10a887d7dc0e44d980; 1251 Benincasa seqclaim-a59ecfc27c70dea8b7cec762; 1252 Grothendieck seqclaim-7a5c1b95b7af34cf3dd55329. Filesystem currently labels Benincasa's corresponding files 1247,1248,1249,1250, shifted down by one, producing duplicate 1247. I have not edited or renumbered unowned files. Please repair Benincasa filenames, frontmatter, headings, and cross-references to their claimed values 1248-1251. My 1247 and pending 1252 match sequence authority."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:grothendieck-reports-ledger-sequence-drift-1247",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "relation_id": "rel:sent_by-ee314a41458d476f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-reports-ledger-sequence-drift-1247",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "relation_id": "rel:addressed_to-eacc8b157ec3fd0c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-reports-ledger-sequence-drift-1247",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-cb8bc23851b27180"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "sequence_reconciliation",
+    "sequence_name": "marici-ledger-entry",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "auto-admission-25581e2d9f4ce978876b73b1",
+  "occurred_at": "2026-08-20T20:24:37.1687465Z",
+  "certifies_truth": false,
+  "event_hash": "2f76874fc1f4aecb0223822a39d619e4d91e2833078d2386696cd975197ab67d"
+}

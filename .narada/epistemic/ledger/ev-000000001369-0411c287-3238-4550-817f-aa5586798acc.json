@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1369,
+  "event_id": "ev-000000001369-0411c287-3238-4550-817f-aa5586798acc",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "94011c77fa37803e769ccdaed1c0d9136544781084bd4211a41373b713e8f62c",
+  "proposal_id": "ep_3a5cb923-6e99-4781-a2de-b45b784f5053",
+  "proposal_digest": "ebf5ccf6b55e5abac308b61885d8b469d22d0923b68251f7ab8e46214d72578e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The integral norm relation defines a canonical two-periodic complex",
+      "statement": "For a finite group G of order d over a commutative ring R, norm multiplication T satisfies T^2=dT, hence alternating T and d-T gives a two-periodic complex. Its norm-side homology is I/(dI+R(d*1-nu_G)), where I is the augmentation ideal. It vanishes after d is inverted and specializes in characteristic dividing d to I/(k nu_G) of dimension d-2.",
+      "scope": "Regular group-ring correspondence only; no physical relative-chain realization.",
+      "entity_id": "claim:172ec5fdc5fc1bc849df"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Integral C2/C3 specialization control",
+      "procedure": "For C2, d*1-nu=1-g generates the augmentation ideal, so the integral norm-side homology vanishes. For C3, in the rank-two augmentation basis the extra relation is the diagonal vector modulo 3, leaving Z/3.",
+      "expected_result": "C2 gives zero and C3 gives Z/3; failure of either quotient calculation falsifies the claimed formula.",
+      "entity_id": "test:4948b7f35dd3e529f450"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Integral two-periodic norm-complex research packet",
+      "version": "1",
+      "locator": "research/grothendieck/integral-two-periodic-norm-complex.md",
+      "entity_id": "source:83c0e28f6c13bdbc7932"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1347 — The Integral Norm Relation Is a Two-Periodic Complex",
+      "version": "1",
+      "locator": "src/ledger/20260820-1347 The Integral Norm Relation Is a Two-Periodic Complex.md",
+      "entity_id": "source:01f17392f461be73b65a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:4948b7f35dd3e529f450",
+      "target_id": "claim:172ec5fdc5fc1bc849df",
+      "relation_id": "rel:tests-4d006d64906de6f4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:172ec5fdc5fc1bc849df",
+      "target_id": "source:83c0e28f6c13bdbc7932",
+      "relation_id": "rel:derived_from-d0e1baee962adeb9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:01f17392f461be73b65a",
+      "target_id": "claim:172ec5fdc5fc1bc849df",
+      "relation_id": "rel:reports-11399b4e34cea0b4"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-53682af91e6e6c91ba730f06",
+  "occurred_at": "2026-08-20T23:10:38.6209546Z",
+  "certifies_truth": false,
+  "event_hash": "5c2316ce5e6d7a2eb041b450082ee1a15e534f826a96c0ad57acaa2410ea7edf"
+}

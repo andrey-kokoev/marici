@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1437,
+  "event_id": "ev-000000001437-5e1d902d-6a4d-4271-86f3-9aea854eaa83",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "14b48d051d15bc2d9ef2042c10142aa9202a7c6796cfb2bfefcee844e47dd577",
+  "proposal_id": "ep_61ebd8e2-94bb-4f9f-ace7-771b4f8c9861",
+  "proposal_digest": "3f7c18d34d236768678bee61d683087288a99ae1e22f9705633b6c41489f3b1c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Finite Euler cutoff self-adjoint no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/finite-euler-cutoff-selfadjoint-no-go.md",
+      "entity_id": "source:fde3ffedad289543e484"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1394 — Finite Euler Cutoffs Cannot Be Self-Adjoint Xi Determinants",
+      "version": "1",
+      "locator": "src/ledger/20260820-1394 Finite Euler Cutoffs Cannot Be Self-Adjoint Xi Determinants.md",
+      "entity_id": "source:cd3b476b381cdfb1042e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "No nonempty finite Euler cutoff is a self-adjoint xi determinant",
+      "statement": "A finite intrinsic-prime determinant has local zero lattices s=2pi ik/log p on Re(s)=0, which map under s=1/2+iz to nonreal zeros on Im(z)=1/2. Its inverse Euler product is meromorphic. Archimedean completion does not cancel the nonzero lattices. Hence no finite prime cutoff is a self-adjoint determinant approximation.",
+      "scope": "Exact no-go for all nonempty finite Euler cutoffs; genuinely global renormalized infinite completion remains possible.",
+      "entity_id": "claim:3891e1278be6635e4cae"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite Euler local-lattice spectral-axis test",
+      "description": "Solve each finite local Euler-factor zero equation and transport its lattice to the critical spectral coordinate.",
+      "entity_id": "test:bf2c66af16dc88da402b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:3891e1278be6635e4cae",
+      "target_id": "source:fde3ffedad289543e484",
+      "relation_id": "rel:derived_from-f1bc92e34f02125a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:3891e1278be6635e4cae",
+      "target_id": "source:cd3b476b381cdfb1042e",
+      "relation_id": "rel:derived_from-015d44d15dd9d590"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:bf2c66af16dc88da402b",
+      "target_id": "claim:3891e1278be6635e4cae",
+      "relation_id": "rel:tests-3aeb26781dd1eb35"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:bf2c66af16dc88da402b",
+      "target_id": "source:fde3ffedad289543e484",
+      "relation_id": "rel:derived_from-59ea287ac6787b32"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the paired xi boundary comparison map and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-c2c9af696dbb71ad19c82248",
+  "occurred_at": "2026-08-21T00:33:07.0674411Z",
+  "certifies_truth": false,
+  "event_hash": "f7e20fd6c796109ea3923c31a1bb25ea23846105ed7261b133ab5aa6c409bbd9"
+}

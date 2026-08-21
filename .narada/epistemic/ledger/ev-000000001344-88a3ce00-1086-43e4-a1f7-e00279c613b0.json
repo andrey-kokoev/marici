@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1344,
+  "event_id": "ev-000000001344-88a3ce00-1086-43e4-a1f7-e00279c613b0",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a40734e5f7ccd412e1d84b3b49196b0a67c6607c24acbe3687c011abfd6eb007",
+  "proposal_id": "ep_4d8fd056-037c-4b37-919c-26241a8b0fbd",
+  "proposal_digest": "0eba2ecd6c4d5dd58f33b6fdfd7920bdd3666c5a9509d19bb8d01653d0fb6017",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The boundary defect is invariant under chain-homotopy changes",
+      "statement": "For S'=S+D_H K+K D_G, one has D_H S'-S'D_G=Omega. A nonzero defect cannot be repaired within the chain-homotopy class, and cocycle pairings on source cycles remain unchanged.",
+      "entity_id": "claim:0533425bfb72bd91de21"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Chain-homotopy correction cancellation",
+      "procedure": "Expand D_H(S+D_HK+KD_G)-(S+D_HK+KD_G)D_G and use D_H^2=D_G^2=0.",
+      "outcome": "All K terms cancel exactly and the original Omega remains.",
+      "falsifier": "Any proposed endpoint or overlap homotopy that claims to remove Omega while retaining the same chain-homotopy class contradicts this identity.",
+      "entity_id": "test:9beb6a74ae457ebbe19e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Boundary-defect chain-homotopy rigidity",
+      "version": "v1",
+      "locator": "research/grothendieck/boundary-defect-chain-homotopy-rigidity.md",
+      "entity_id": "source:4d147d11fee5d2255eb1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1327 — The Boundary Defect Is Invariant Under Chain-Homotopy Changes",
+      "version": "1327",
+      "locator": "src/ledger/20260820-1327 The Boundary Defect Is Invariant Under Chain-Homotopy Changes.md",
+      "entity_id": "source:9bfec6af9e3b827b20e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:9beb6a74ae457ebbe19e",
+      "target_id": "claim:0533425bfb72bd91de21",
+      "relation_id": "rel:tests-4f697dbcb91d3721"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:0533425bfb72bd91de21",
+      "target_id": "source:4d147d11fee5d2255eb1",
+      "relation_id": "rel:derived_from-bfa68deea6bfc303"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:9bfec6af9e3b827b20e4",
+      "target_id": "claim:0533425bfb72bd91de21",
+      "relation_id": "rel:reports-fe639bdd7c918743"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-0599dc50b49c8e3bd6efc72e",
+  "occurred_at": "2026-08-20T22:40:53.5398709Z",
+  "certifies_truth": false,
+  "event_hash": "e40e655c4c81ab915304eaa23276504f2490cb418e27c83b4d5ed0a1203ba654"
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_325dc7f4-5c3e-42a4-9f33-e0fd70b987ac",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the five-site mixed-deck infinity obstruction result."
+  },
+  "idempotency_key": "auto-proposal-bd92907d5f192e268710d5af",
+  "expected_ledger_head": "ecc33bdf1d717a7392bb55fcf60d86859d84bd97ca0ea67ca944eadf9f191f2a",
+  "created_at": "2026-08-20T22:54:25.1211682Z",
+  "content_fingerprint": "bd92907d5f192e268710d5afdd9c19b4bac9fbb30a9694272e1664ebb71668c6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1335 — Five-Site Gauss–Manin Variation Is an Unavoidable Mixed-Deck Infinity Class",
+      "status": "established",
+      "path": "src/ledger/20260820-1335 Five-Site Gauss-Manin Variation Is an Unavoidable Mixed-Deck Infinity Class.md",
+      "entity_id": "mariciledger_entry:4ecd7303e2ba615926ec"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Every quadratic Kummer-resolved primitive for the five-site derivative has nonzero mixed-deck radial boundary",
+      "status": "established",
+      "body": "The 32 sheets have exact generic radial denominator-growth distribution 10×2, 20×4, 2×9 with no leading canonical-sum cancellations at two independent fibers. Intersecting the full affine solution module with all sheet/order radial-flux kernels is inconsistent at both fibers.",
+      "entity_id": "mariciclaim:b4635b1f61d5b83a4b10"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test1",
+      "kind": "marici:test",
+      "title": "Five-site deck-resolved infinity valuation and leading-cancellation audit",
+      "status": "passed",
+      "entity_id": "maricitest:ec272cd970462774ddfd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test2",
+      "kind": "marici:test",
+      "title": "Full affine-solution radial-kernel intersection test",
+      "status": "passed",
+      "entity_id": "maricitest:97fdbf21f2ac98e8a8f6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:4ecd7303e2ba615926ec",
+      "target_id": "mariciclaim:b4635b1f61d5b83a4b10",
+      "relation_id": "rel:maricirecords-d7ac9fc7b9795359"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test1",
+      "source_id": "mariciclaim:b4635b1f61d5b83a4b10",
+      "target_id": "maricitest:ec272cd970462774ddfd",
+      "relation_id": "rel:maricisupported_by-b3c64286b610b8b6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test2",
+      "source_id": "mariciclaim:b4635b1f61d5b83a4b10",
+      "target_id": "maricitest:97fdbf21f2ac98e8a8f6",
+      "relation_id": "rel:maricisupported_by-a4fabaa4da228650"
+    }
+  ],
+  "digest": "c63068b742c2309531d53a8d00ab9cb3da4929b66df252eecf231473900d62b3"
+}

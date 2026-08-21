@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1401,
+  "event_id": "ev-000000001401-bf89254e-6e5c-4d9e-8c07-4e68be7bb165",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "42ca58a2f404346beeb223c947b8b87bb7dc145489653612a82a134cdd3d10c9",
+  "proposal_id": "ep_16f19539-7b9a-4d4a-a2b9-c90dff2350e3",
+  "proposal_digest": "2f5ddf3751b40514bddfa8c1a9c4e407914c9ffa619f2538ebba517ab771b3c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Paired polarization has a conditional metaplectic phase matching the missing one-eighth",
+      "statement": "For a finite regular coefficient-Betti fiber, the delta identification defines a canonical symplectic exchange J(c,b)=(-b,c) with J^2=-1. After real extension, the positive-path square root exp(pi J/4) has one-mode metaplectic half-form phase exp(-i*pi/8), exactly the missing -1/8 smooth-count correction. No admitted Carrier map yet selects this half-rotation as the dual-cutoff boundary path, so the match is conditional.",
+      "scope": "Canonical algebraic polarization exchange and conditional archimedean phase; no physical chain realization, xi determinant, or zero spectrum.",
+      "entity_id": "claim:02a2e9ca5c713c351ba3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Paired metaplectic eighth-phase test",
+      "procedure": "Verify the delta identification is natural, compute J^2 and symplectic invariance, exponentiate J through angle pi/4, and calculate the one-mode half-form phase along the identity-based metaplectic lift.",
+      "expected_result": "The phase is exp(-i*pi/8) and contributes -1/8 to counting. Failure of symplecticity or a different path phase falsifies the candidate.",
+      "entity_id": "test:05c6e6eb36b0300a739b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Paired-polarization quarter-rotation packet",
+      "version": "1",
+      "locator": "research/grothendieck/paired-polarization-quarter-rotation.md",
+      "entity_id": "source:93dd07c8fc93ce7787b2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1372 — Paired Polarization Has the Correct Conditional Eighth Phase",
+      "version": "1",
+      "locator": "src/ledger/20260820-1372 Paired Polarization Has the Correct Conditional Eighth Phase.md",
+      "entity_id": "source:8d9acbc5be3a04e36461"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:05c6e6eb36b0300a739b",
+      "target_id": "claim:02a2e9ca5c713c351ba3",
+      "relation_id": "rel:tests-1a11232c021acaab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:02a2e9ca5c713c351ba3",
+      "target_id": "source:93dd07c8fc93ce7787b2",
+      "relation_id": "rel:derived_from-f0774f99e72e6ff3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:8d9acbc5be3a04e36461",
+      "target_id": "claim:02a2e9ca5c713c351ba3",
+      "relation_id": "rel:reports-9c08ebb018eab0c3"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Derive or falsify a noncircular metaplectic boundary correction for the paired Mellin-dilation candidate."
+  },
+  "idempotency_key": "auto-admission-e58a940e4603fda4418a0ecb",
+  "occurred_at": "2026-08-20T23:58:24.2442767Z",
+  "certifies_truth": false,
+  "event_hash": "a6e0453706f857fba523158ec58b56c99b4c932977a768791ae0e129de4b668c"
+}

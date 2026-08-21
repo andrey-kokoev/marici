@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3a2998a4-fb34-4070-ba42-e3b4f5174cdc",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "grothendieck-norm-resonance-prime-trichotomy-1304",
+  "expected_ledger_head": "29d0db798b879cec60453c076f4e66afc2bfec5fbb024606641b2f53c4111ce8",
+  "created_at": "2026-08-20T22:14:45.6593363Z",
+  "content_fingerprint": "7a9dce7868fc80d40f7333bd361198ecdde03b5f036288ad0ef1f4129a6da606",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Norm and resonance primes obey a strict three-regime law",
+      "body": "Because rad(d(phi)) divides rho(phi), a prime is either good for both, bad for both, or norm-invertible but resonance-obstructed. Norm-bad but resonance-good is impossible. Inverting the norm degree need not repair conjugation resonance.",
+      "entity_id": "claim:3ea80aed71291931cb8a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-regime census with A4 resonance-only separator",
+      "body": "Primes 2,3,5,7 were classified for identity, C4->C2, A4->C3, and A4->1. The impossible norm-only cell is empty; A4->C3 realizes prime 3 as resonance-only. All assertions pass.",
+      "entity_id": "test:c684f5a46a157f00b813"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Norm-resonance prime-trichotomy proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/norm-resonance-prime-trichotomy.md",
+      "entity_id": "source:b071edd4b0d172edfc2b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Norm-resonance prime-regime checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/norm_resonance_prime_trichotomy.py",
+      "entity_id": "source:4611d1b2ca06d93f52ec"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1304 — Norm and Resonance Primes Obey a Three-Regime Law",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1304 Norm and Resonance Primes Obey a Three-Regime Law.md",
+      "entity_id": "source:e8157b6fe1c222bcf7a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c684f5a46a157f00b813",
+      "target_id": "claim:3ea80aed71291931cb8a",
+      "relation_id": "rel:tests-e8c2b59c01bdb51b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:3ea80aed71291931cb8a",
+      "target_id": "source:b071edd4b0d172edfc2b",
+      "relation_id": "rel:derived_from-d47dede560346c5d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:4611d1b2ca06d93f52ec",
+      "target_id": "test:c684f5a46a157f00b813",
+      "relation_id": "rel:promotes_to_evidence-b75deb83e6c968ff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:e8157b6fe1c222bcf7a0",
+      "target_id": "claim:3ea80aed71291931cb8a",
+      "relation_id": "rel:promotes_to_evidence-042aeecf6ffc7820"
+    }
+  ],
+  "digest": "887394db6fdab7d4eaafbb3fe3577bd9ab8d6d1df483fb15ba3e5c7a615c0621"
+}

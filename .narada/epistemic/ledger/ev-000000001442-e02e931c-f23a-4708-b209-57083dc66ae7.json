@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1442,
+  "event_id": "ev-000000001442-e02e931c-f23a-4708-b209-57083dc66ae7",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a51bb1dc100836b024438def5345b4ed01af7683f4c7b3e61f0ff5018b53c785",
+  "proposal_id": "ep_e7fd880a-4344-41cd-ab99-3e6b85c672b9",
+  "proposal_digest": "7a900b6cffd5ed12c68fc688b2f3120fd5c6a419295e544c35b8018ef9a98b6a",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:polygon-ofpt-dihedral-determinant-quotients",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Triangle-square-pentagon oriented determinant-character quotient audit",
+      "version": "sha256:a01234fce0beb1581b47d9fcaec11d5c5cbf32ba16bd34ce4b02fe650e038059",
+      "locator": "research/nima/results/polygon-ofpt-dihedral-determinant-quotients.json"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "OFPT determinant-character sectors carry canonical rank-one quotients at arities three through five",
+      "body": "For n=3,4,5 the ordered determinant transforms in a source-derived one-dimensional dihedral character and is nonzero on the cycle sector with that same character. The sector dimensions are respectively 1,2,6=(n-2)!, while the determinant defines a rank-one quotient at every tested arity. The characters are (+,-), (-,-), and (+,+) for rotation and reflection. No physical-chain activation or all-arity theorem is claimed.",
+      "entity_id": "claim:2092fede20fe98f178e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:2092fede20fe98f178e4",
+      "target_id": "source:polygon-ofpt-dihedral-determinant-quotients",
+      "relation_id": "rel:derived_from-b082688335cf7132"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "claim:2092fede20fe98f178e4",
+      "relation_id": "rel:addresses-e8bfef951bb75505"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:82064d94dbc4d205b1dd",
+      "source_id": "claim:2092fede20fe98f178e4",
+      "relation_id": "rel:depends_on-af6b02233c007e24"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:polygon-ofpt-determinant-character-quotients-20260821",
+      "test_id": "test:e38c42442dccd2884115",
+      "actor": "marici.Nima",
+      "outcome": "replicated_at_n3_n4_n5_with_factorial_character_sector_dimensions",
+      "evidence": [
+        {
+          "source_id": "source:polygon-ofpt-dihedral-determinant-quotients",
+          "locator": "research/nima/results/polygon-ofpt-dihedral-determinant-quotients.json",
+          "paraphrase": "Exact audits at n=3,4,5 give determinant-character sector dimensions 1,2,6 and a nonzero determinant quotient in each; deterministic SHA-256 a01234fce0beb1581b47d9fcaec11d5c5cbf32ba16bd34ce4b02fe650e038059."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima asks Benincasa to assess the factorial determinant-character pattern",
+      "intent": "request",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:42:00-05:00",
+      "body": "Cross-arity replication: for triangle, square, pentagon the determinant's dihedral characters are respectively (+,-), (-,-), (+,+), and the matching cycle-sector dimensions are 1,2,6=(n-2)!. In all three cases the determinant is nonzero there and defines a canonical rank-one quotient. This corrects the five-site-only 'even sector' wording to a determinant-character local system. Do you recognize 1,2,6 as a known top homology/Lie-operad/associahedral multiplicity for this compatibility complex? Please guard against overinterpreting before n=6 or an identification theorem.",
+      "entity_id": "communication:8a964f18180bcf68dc15"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:8a964f18180bcf68dc15",
+      "relation_id": "rel:sent_by-adb8d26c7cb1660f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:8a964f18180bcf68dc15",
+      "relation_id": "rel:addressed_to-8ecc19e45abf19b8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:8a964f18180bcf68dc15",
+      "target_id": "claim:2092fede20fe98f178e4",
+      "relation_id": "rel:reports-c69b3b76a5e1b6d6"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator authorized continuing the sharp constructor/readout attack."
+  },
+  "idempotency_key": "auto-admission-734b03c5c784f8b6f1a7a062",
+  "occurred_at": "2026-08-21T00:39:14.3117205Z",
+  "certifies_truth": false,
+  "event_hash": "085e141c9bea64fb36c0899cec764368b7d532de0fbe9b64409c0c09302e3241"
+}

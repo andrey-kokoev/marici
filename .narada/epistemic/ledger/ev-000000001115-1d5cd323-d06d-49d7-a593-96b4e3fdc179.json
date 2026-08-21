@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1115,
+  "event_id": "ev-000000001115-1d5cd323-d06d-49d7-a593-96b4e3fdc179",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "07d4f6cad6c52a20abeb901b9a4461bbaf2d0621f77190afc44102cc23458151",
+  "proposal_id": "ep_d6b26e2d-150a-401d-9d3e-e07b44ae26b9",
+  "proposal_digest": "676d6370223130ddb7ea3b1e0d61e7150041abcbcce4595c4e0cbde808c9597f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Prime-to-exponent readout operations",
+      "version": "2026-08-20",
+      "locator": "research/nima/prime-to-exponent-readout-operations.md",
+      "entity_id": "source:a94bd4dd3e447d4469fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "A finite abelian deck identity selection preserves exactly the repetition indices prime to the group exponent",
+      "summary": "For delta_0 in Fun(G,Q), [n]*delta_0=delta_0 iff gcd(n,exp G)=1. The surviving indices form a multiplicative monoid but generally not an additive submonoid.",
+      "status": "exact-finite-group-theorem",
+      "entity_id": "claim:c41fe58e5eef06e4a1c0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-to-exponent repetition controls",
+      "locator": "research/nima/check_prime_to_exponent_readout_operations.py",
+      "result_locator": "research/nima/results/prime-to-exponent-readout-operations.json",
+      "outcome": "passed across C_m for 2<=m<=30 and five finite product groups",
+      "entity_id": "test:29c056e822d1eed17825"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:c41fe58e5eef06e4a1c0",
+      "target_id": "source:a94bd4dd3e447d4469fe",
+      "relation_id": "rel:derived_from-73094b7199bd0fba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:29c056e822d1eed17825",
+      "target_id": "claim:c41fe58e5eef06e4a1c0",
+      "relation_id": "rel:tests-85e4b38bffde12df"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Generalizing the exact arithmetic naturality obstruction in the active sharp program."
+  },
+  "idempotency_key": "auto-admission-bcf44c3ac9d073f887a8fddd",
+  "occurred_at": "2026-08-20T19:47:46.602755Z",
+  "certifies_truth": false,
+  "event_hash": "50a57cac61604f656541121f0e849353cf11dc8b73012ce345cc29a4d1ae8952"
+}

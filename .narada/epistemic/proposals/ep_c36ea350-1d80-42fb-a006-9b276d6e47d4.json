@@ -1,0 +1,118 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c36ea350-1d80-42fb-a006-9b276d6e47d4",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator authorized continuing the sharp falsification program."
+  },
+  "idempotency_key": "nima-hexagon-ofpt-determinant-character-quotient-20260821-v1",
+  "expected_ledger_head": "fcb16441f71d0b8d66d4efe18ab481e030bdfb5d97d497802279fd50c1a7a2c4",
+  "created_at": "2026-08-21T00:43:37.1118104Z",
+  "content_fingerprint": "92432fd99b4da705e55693993c2ff952faf1bf365ef4bbcb231e39cdbe189c09",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:polygon-ofpt-dihedral-determinant-quotients-v2",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Triangle-through-hexagon oriented determinant-character quotient audit",
+      "version": "sha256:5262bbc56f0c07e7312878181d94be33a615d4f3239a9ce995abe998cda62f3c",
+      "locator": "research/nima/results/polygon-ofpt-dihedral-determinant-quotients.json"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "src",
+      "target_id": "source:polygon-ofpt-dihedral-determinant-quotients",
+      "source_id": "source:polygon-ofpt-dihedral-determinant-quotients-v2",
+      "relation_id": "rel:supersedes-b1fdef1037e45607"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The determinant-character quotient persists at six sites while the factorial dimension extrapolation fails",
+      "body": "At n=6 the OFPT packet has 1,476 terms and boundary-kernel dimension 373. The determinant character is rotation-odd and reflection-even; its matching cycle sector has dimension 38, not the factorial extrapolation 24. The determinant remains nonzero on exactly a rank-one quotient, leaving a 37-dimensional kernel. Thus the canonical quotient persists for n=3..6, while no simple factorial law for the possibility-space dimension survives.",
+      "entity_id": "claim:4264c5c7d686ce16b230"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:4264c5c7d686ce16b230",
+      "target_id": "source:polygon-ofpt-dihedral-determinant-quotients-v2",
+      "relation_id": "rel:derived_from-8e17c18f4c08a14e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "claim:4264c5c7d686ce16b230",
+      "relation_id": "rel:addresses-b95e2afd9baf21fb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:2092fede20fe98f178e4",
+      "source_id": "claim:4264c5c7d686ce16b230",
+      "relation_id": "rel:depends_on-e2dfd19c098d7233"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:hexagon-ofpt-determinant-character-quotient-20260821",
+      "test_id": "test:e38c42442dccd2884115",
+      "actor": "marici.Nima",
+      "outcome": "rank_one_quotient_replication_survives_but_factorial_dimension_guess_fails",
+      "evidence": [
+        {
+          "source_id": "source:polygon-ofpt-dihedral-determinant-quotients-v2",
+          "locator": "research/nima/results/polygon-ofpt-dihedral-determinant-quotients.json",
+          "paraphrase": "At n=6 the determinant-character sector has dimension 38 rather than 24, while the determinant evaluates nontrivially on one basis direction; deterministic replay SHA-256 5262bbc56f0c07e7312878181d94be33a615d4f3239a9ce995abe998cda62f3c."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima updates Benincasa: six-site quotient survives but factorial law fails",
+      "intent": "correction",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:44:00-05:00",
+      "body": "n=6 is complete: 1,476 terms, boundary kernel 373, determinant character (rotation -, reflection +), matching sector dimension 38—not 24. So the tempting (n-2)! dimension extrapolation is falsified immediately. The important structure survives: determinant is nonzero on one quotient direction and leaves a 37-dimensional null kernel. Across n=3..6 we have character-sector dimensions 1,2,6,38, each with a canonical rank-one determinant quotient.",
+      "entity_id": "communication:5752c6eac87d4c1e0dd4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:5752c6eac87d4c1e0dd4",
+      "relation_id": "rel:sent_by-7fc8f9a3b5df161a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:5752c6eac87d4c1e0dd4",
+      "relation_id": "rel:addressed_to-3fc1919a25b08fc5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:5752c6eac87d4c1e0dd4",
+      "target_id": "claim:4264c5c7d686ce16b230",
+      "relation_id": "rel:reports-f9d60904d153cf12"
+    }
+  ],
+  "digest": "7a0fb5ae71f6088cc8aebfda5e815818896aca73c89becc43431592950481f0f"
+}

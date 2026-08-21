@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_47d70b59-49f6-4c10-9601-4b5dc431b86a",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-small-nonabelian-monodromy-converse-sweep",
+  "expected_ledger_head": "ebd177c787da0d72415edce6eea99fbd63d897a71f252eee7e3708cf883063da",
+  "created_at": "2026-08-20T21:18:19.3770562Z",
+  "content_fingerprint": "9dc7d5e0de923083fd36ffc999363ed6f8de05ba95a9c8d0d5339098c5f1e136",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "conjecture:grothendieck-nonabelian-visible-monodromy-converse",
+      "kind": "conjecture",
+      "title": "Every visible monodromy prime obstructs a fiber for arbitrary finite kernels",
+      "statement": "For a faithful finite M-action on arbitrary finite K, all power-Mackey fibers are compatible iff gcd(n,exp(K)*exp(M))=1.",
+      "scope": "Converse conjectural beyond abelian kernels; sufficient direction proved."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "kind": "test",
+      "title": "Complete S3 D8 Q8 automorphism converse sweep",
+      "protocol": "Enumerate all 38 automorphisms, their cyclic actions, all fibers, and n=1..12; search for compatibility disagreeing with the product-exponent criterion.",
+      "falsifier": "A visible action prime survives every fiber."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "target_id": "conjecture:grothendieck-nonabelian-visible-monodromy-converse",
+      "relation_id": "rel:tests-f585d64882e7c9a4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "conjecture:grothendieck-nonabelian-visible-monodromy-converse",
+      "target_id": "claim:grothendieck-general-nonabelian-product-exponent-sufficiency",
+      "relation_id": "rel:depends_on-d58b1017c5a3f508"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "kind": "source",
+      "title": "Small nonabelian-monodromy converse sweep research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/small-nonabelian-monodromy-converse-sweep.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "target_id": "conjecture:grothendieck-nonabelian-visible-monodromy-converse",
+      "relation_id": "rel:promotes_to_evidence-5c1c478b11e5fbad"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "test_id": "test:grothendieck-small-nonabelian-monodromy-converse-sweep",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass_no_counterexample: 38 automorphisms, 456 index cases, and 71664 exact checks all match the product-exponent criterion",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-small-nonabelian-monodromy-converse-sweep",
+          "locator": "research/grothendieck/results/small-nonabelian-monodromy-converse-sweep.json",
+          "paraphrase": "Complete automorphism census for S3, D8, and Q8 contains no converse counterexample."
+        }
+      ]
+    }
+  ],
+  "digest": "8ba2ea3c3b835dc9697fe37cc30bf128eb86b3af6aaa6bdc87eaed4adf6aa07f"
+}

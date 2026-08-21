@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1403,
+  "event_id": "ev-000000001403-05ba308f-ea83-4325-82ca-5e1ea98ead83",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2cb1a7aee24d3cba4e23183fdfe5714f2e2928ce04fffea2aae5f9daaa669986",
+  "proposal_id": "ep_51a86a6a-7735-4ee6-a57d-02ae16d9c8ac",
+  "proposal_digest": "ab7f6ac55a902da7715e615d43dc934bd7d5640b2c92c89c73ab73a0473d46fe",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1373 — A Source-Labelled Modular Dual Detects the Ternary Infinity Class",
+      "status": "supported",
+      "path": "src/ledger/20260820-1373 A Source-Labelled Modular Dual Detects the Ternary Infinity Class.md",
+      "ledger_number": 1373,
+      "allocator_claim": "seqclaim-b33baf4e7853aca3f3ace3a3",
+      "entity_id": "mariciledger_entry:1cb379b9f1fc0c0c5c49"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "A verified modular dual detects the representative ternary infinity inconsistency",
+      "status": "supported",
+      "body": "At (p,z)=(1019,13), a source-labelled row functional lambda satisfies lambda A=0 and lambda r=1 for the weight-(1,2,3) triple. It has 1917 nonzero terms and boundary support on all three occurrence weights. Characteristic-zero and canonical face-vanishing normalization remain open.",
+      "entity_id": "mariciclaim:1c53180c574e953f82ec"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Labelled elimination-trace certificate verification",
+      "status": "passed",
+      "body": "The reconstructed functional annihilates all 1921 coefficient columns and pairs to 1 with the inhomogeneous column. Boundary support counts are 328,234,205 on weights 1,2,3.",
+      "entity_id": "maricitest:254925f402967bdf9a18"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:1cb379b9f1fc0c0c5c49",
+      "target_id": "mariciclaim:1c53180c574e953f82ec",
+      "relation_id": "rel:maricirecords-50edd881c4cef38f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:1cb379b9f1fc0c0c5c49",
+      "target_id": "maricitest:254925f402967bdf9a18",
+      "relation_id": "rel:maricirecords-02bf8dfa8f0ce34d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:1c53180c574e953f82ec",
+      "target_id": "maricitest:254925f402967bdf9a18",
+      "relation_id": "rel:maricisupported_by-fa63760a4600c260"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue the research and record the verified modular certificate."
+  },
+  "idempotency_key": "auto-admission-31b655635704c27e1227907e",
+  "occurred_at": "2026-08-20T23:58:53.6639977Z",
+  "certifies_truth": false,
+  "event_hash": "ad5305ce0ebe9d3364491f5d5e8f00f2d31d11b62de9f3f23e5c85f452ba7acc"
+}

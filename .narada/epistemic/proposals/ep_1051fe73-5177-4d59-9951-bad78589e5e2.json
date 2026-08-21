@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1051fe73-5177-4d59-9951-bad78589e5e2",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the exact minimum-dimension gate for the cyclic Kummer successor."
+  },
+  "idempotency_key": "auto-proposal-376906cfdc1950f0064e0cf0",
+  "expected_ledger_head": "331e641089033ce09808abbd6c33523e8c1f502c09cc5a6af735b1d5617d4018",
+  "created_at": "2026-08-21T00:56:04.7779279Z",
+  "content_fingerprint": "376906cfdc1950f0064e0cf01e86a96a395e3e6641a29a1487d41f2697163e13",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1406 — A Rational Five-Cycle Kummer Base Requires Four Dimensions",
+      "status": "established",
+      "path": "src/ledger/20260820-1406 A Rational Five-Cycle Kummer Base Requires Four Dimensions.md",
+      "ledger_number": 1406,
+      "allocator_claim": "seqclaim-9113b7821a2186518f47c3c7",
+      "entity_id": "mariciledger_entry:7f73b02bb703e56f7284"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "A nontrivial rational affine C5 base has dimension at least four",
+      "status": "established",
+      "body": "A finite affine action has a fixed point after averaging and linearizes. Every nontrivial rational order-five linear summand contains the irreducible cyclotomic representation Q(zeta_5), of degree four. Thus the cyclic successor must use the four-dimensional augmentation representation, naturally five labelled radicands modulo their diagonal.",
+      "entity_id": "mariciclaim:f4dea01b2d5510b52079"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Cyclotomic minimum-dimension proof",
+      "status": "passed",
+      "body": "x^5-1=(x-1)Phi_5 with irreducible Phi_5 of degree four; finite affine-action averaging supplies the fixed point.",
+      "entity_id": "maricitest:8130dbb83b6fb14e970e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:7f73b02bb703e56f7284",
+      "target_id": "mariciclaim:f4dea01b2d5510b52079",
+      "relation_id": "rel:maricirecords-772fdfe53a7a786b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:7f73b02bb703e56f7284",
+      "target_id": "maricitest:8130dbb83b6fb14e970e",
+      "relation_id": "rel:maricirecords-458e42c2b3c2aa58"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:f4dea01b2d5510b52079",
+      "target_id": "maricitest:8130dbb83b6fb14e970e",
+      "relation_id": "rel:maricisupported_by-875f66e04eb1f703"
+    }
+  ],
+  "digest": "dd0f4b44aaf7cf58fdca9d6eadd4484f88c6b7b2ae1e4a53af29bf8398d2b084"
+}

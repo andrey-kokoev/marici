@@ -1,0 +1,109 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_55927b56-8052-4aee-a5e7-f9fd78ab34dc",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the xi operator research lane and add own research to the ledger using claimed sequence numbers."
+  },
+  "idempotency_key": "grothendieck-ledger-1398-ccm-semilocal-audit-v1",
+  "expected_ledger_head": "085e141c9bea64fb36c0899cec764368b7d532de0fbe9b64409c0c09302e3241",
+  "created_at": "2026-08-21T00:42:09.6795241Z",
+  "content_fingerprint": "3c0cb250ccfc3d3069c30b7a04678dcbd748fbfff6eb4ff52bbf4ffcfa63f220",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "CCM semilocal scaling quotient audit",
+      "version": "1",
+      "locator": "research/grothendieck/connes-semilocal-scaling-quotient-audit.md",
+      "entity_id": "source:d60c74423b02ab13c9d0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1398 — CCM Semilocal Scaling Quotient Stops Before the Xi Determinant",
+      "status": "active-supported-audit",
+      "sector": "riemann",
+      "entry_number": 1398,
+      "sequence_claim_id": "seqclaim-4ba8ad8af7897580aca929e3",
+      "summary": "CCM realizes an exact Xi-divisible entire-function quotient and finite-place self-adjoint ambient scaling pairs, but not one fixed self-adjoint compact-resolvent quotient with completed-Xi determinant.",
+      "entity_id": "mariciledger_entry:26cf31310108e3754191"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "paper",
+      "kind": "source",
+      "title": "Connes–Consani–Moscovici, Zeta zeros and prolate wave operators",
+      "version": "2024",
+      "locator": "https://alainconnes.org/wp-content/uploads/Zeta-zeros-and-prolateproofs-final-2024.pdf",
+      "entity_id": "source:4015de9d7979858a894a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "CCM validates the Weil radical preshape but stops before the Xi determinant",
+      "statement": "The CCM map E and its semilocal extensions give a source-derived radical quotient, exact finite Euler multipliers, and an ambient self-adjoint scaling generator. Exact zero recovery occurs in a quotient of an entire-function topological ring, while the Hilbert scaling model is finite-place and the prolate comparison is limiting. The cited results therefore do not yield a single cutoff-independent self-adjoint compact-resolvent operator whose determinant is completed Xi.",
+      "scope": "Audit of the published CCM construction; no claim that such a global operator is impossible by other means.",
+      "entity_id": "claim:3aec43f56228d61bf6c4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Finite-place omitted-prime determinant falsifier",
+      "description": "For S={infinity,p}, vary an omitted prime q. The finite-S Hilbert pair is unchanged while completed Xi changes by the nonconstant local factor L_q; hence a finite-S determinant cannot equal completed Xi.",
+      "entity_id": "test:ee6f32da758f5fa5a51d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:3aec43f56228d61bf6c4",
+      "target_id": "source:d60c74423b02ab13c9d0",
+      "relation_id": "rel:derived_from-450fc9d3e4e2fc09"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "paper",
+      "source_id": "claim:3aec43f56228d61bf6c4",
+      "target_id": "source:4015de9d7979858a894a",
+      "relation_id": "rel:derived_from-1cf2fac3e82d31b5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:26cf31310108e3754191",
+      "target_id": "claim:3aec43f56228d61bf6c4",
+      "relation_id": "rel:maricidocuments-5cb9dff703e32994"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ee6f32da758f5fa5a51d",
+      "target_id": "claim:3aec43f56228d61bf6c4",
+      "relation_id": "rel:tests-d3068bae1fb1d9e0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:ee6f32da758f5fa5a51d",
+      "target_id": "source:d60c74423b02ab13c9d0",
+      "relation_id": "rel:derived_from-a538e203bb3342ab"
+    }
+  ],
+  "digest": "35d7bdfb8f188a274b25c1c9a3967d7f1183cbdaea5068c6b98d286713f0e6be"
+}

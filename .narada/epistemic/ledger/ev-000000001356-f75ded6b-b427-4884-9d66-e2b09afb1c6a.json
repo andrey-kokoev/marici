@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1356,
+  "event_id": "ev-000000001356-f75ded6b-b427-4884-9d66-e2b09afb1c6a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0cbc96f305928106413a4963edb388e208b24a7d7cd76185e2f07f87d6eb1d4a",
+  "proposal_id": "ep_e364d04d-ff3c-4eb2-a76d-896fb8b5aac9",
+  "proposal_digest": "5d35cd0d3990ab57b3294805788ae7d13715900bbc20060663bb9fc5c1f69cf7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Smith factors exactly decide an integral Mackey trace",
+      "statement": "For integral S:Z^n->Z^m, an integral T with ST=dI exists iff S has full row rank and every Smith invariant s_i divides d. The minimal possible norm scalar is lcm(s_i).",
+      "entity_id": "claim:87abcbe7e96f8f3d5605"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Rank-one Smith factor rejects an incompatible norm degree",
+      "procedure": "Take S=[2] and prescribed d=3, then compare d=4.",
+      "outcome": "No integral trace exists for d=3; T=[2] works for d=4.",
+      "falsifier": "Any Smith invariant not dividing the geometric degree falsifies the integral Mackey trace.",
+      "entity_id": "test:01e1b1d47ce07f2c3e1e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Integral Mackey-trace Smith criterion",
+      "version": "v1",
+      "locator": "research/grothendieck/integral-mackey-trace-smith-criterion.md",
+      "entity_id": "source:551136e1733303688b29"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1338 — Smith Factors Exactly Decide an Integral Mackey Trace",
+      "version": "1338",
+      "locator": "src/ledger/20260820-1338 Smith Factors Exactly Decide an Integral Mackey Trace.md",
+      "entity_id": "source:06cf8a2453ce77c58a7d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:01e1b1d47ce07f2c3e1e",
+      "target_id": "claim:87abcbe7e96f8f3d5605",
+      "relation_id": "rel:tests-e3824a4536e1c536"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:87abcbe7e96f8f3d5605",
+      "target_id": "source:551136e1733303688b29",
+      "relation_id": "rel:derived_from-7d81a7b305ff7ada"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:06cf8a2453ce77c58a7d",
+      "target_id": "claim:87abcbe7e96f8f3d5605",
+      "relation_id": "rel:reports-443d201361c4c954"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-81cf4b87daabf66c133c360f",
+  "occurred_at": "2026-08-20T22:57:36.8303416Z",
+  "certifies_truth": false,
+  "event_hash": "41f929d9eeac8337211a3c40b274c449044e7dbb844472e193ebf84ebe035b2d"
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a7b3f3e5-d408-4a74-ab3b-7c352bc19419",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "After deriving Frobenius composition, construct Euler factors from determinants or traces and audit their arithmetic typing."
+  },
+  "idempotency_key": "grothendieck-ledger-1359-inertia-dynamical-euler-factor-v1",
+  "expected_ledger_head": "239fc83e3b4e842c187fcdd47c0815d461e32e341e91ad7ae4cb11967528b6c7",
+  "created_at": "2026-08-20T23:31:54.1446237Z",
+  "content_fingerprint": "6fad32fce8337f244beb9ecb05bc52ef6b0bce5202dae6e503da18cca237190d",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Inertia ghost traces produce exact dynamical Euler factors",
+      "statement": "For a finite inertia object (X,sigma), w_r=|Fix(sigma^r)|=Tr(sigma^r|Q[X]) and Z(u)=exp(sum_r w_r u^r/r)=det(1-u sigma)^(-1)=product_j(1-u^ell_j)^(-1). Under F_n, each ell-cycle splits into gcd(ell,n) cycles of length ell/gcd(ell,n), compatibly with F_mF_n=F_mn. These are dynamical, not yet arithmetic, Euler factors.",
+      "scope": "Conditional finite-component inertia dynamics; no prime-to-cycle attachment, finite-field Frobenius, global Euler product, or physical authorization.",
+      "entity_id": "claim:a97df6282c9b43b393b9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime-cycle determinant hostile test",
+      "procedure": "For sigma a p-cycle, compute w_r and the determinant before and after F_p. The original factor is (1-u^p)^(-1); F_p sigma is identity on p points and has factor (1-u)^(-p).",
+      "expected_result": "The trace exponential and determinant agree, and power splitting gives the stated factors. Any mismatch falsifies the theorem.",
+      "entity_id": "test:ad31f190c024226510fc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Inertia dynamical Euler-factor packet",
+      "version": "1",
+      "locator": "research/grothendieck/inertia-dynamical-euler-factor.md",
+      "entity_id": "source:411dd0045608f8ca8a9e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1359 — Inertia Traces Produce Dynamical Euler Factors",
+      "version": "1",
+      "locator": "src/ledger/20260820-1359 Inertia Traces Produce Dynamical Euler Factors.md",
+      "entity_id": "source:12ae1d29747f36e017be"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ad31f190c024226510fc",
+      "target_id": "claim:a97df6282c9b43b393b9",
+      "relation_id": "rel:tests-1889ecc236fc0613"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:a97df6282c9b43b393b9",
+      "target_id": "source:411dd0045608f8ca8a9e",
+      "relation_id": "rel:derived_from-fc93b24eaec9562a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:12ae1d29747f36e017be",
+      "target_id": "claim:a97df6282c9b43b393b9",
+      "relation_id": "rel:reports-5338933faa4bbba0"
+    }
+  ],
+  "digest": "9246ba8dba7be909292d20ec945bcf184d9fa134fda9bcdc7eedfb93669ff1c7"
+}

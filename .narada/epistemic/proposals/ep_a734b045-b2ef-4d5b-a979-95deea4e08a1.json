@@ -1,0 +1,65 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_a734b045-b2ef-4d5b-a979-95deea4e08a1",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "basis": "Operator-authorized continuation; independent exact extraction from authoritative source packet."
+  },
+  "idempotency_key": "nima-five-site-weight-five-exact-coefficient-v1",
+  "expected_ledger_head": "b9f9e688e0ce727e1af288db630c1a511119f71941089f17d9b4a696ddea7127",
+  "created_at": "2026-08-20T21:38:46.8967445Z",
+  "content_fingerprint": "7f9ec2698644104c4a8945dfe0aa6992909209d859c81c760374b6519dda69e6",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "source",
+      "local_ref": "s",
+      "title": "Exact Five-Site Weight-Five Kummer Coefficient Packet",
+      "version": "v1",
+      "locator": "research/nima/results/five-site-weight-five-coefficient.json",
+      "entity_id": "source:c73a29cba6e3bbe8bdbe"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "claim",
+      "local_ref": "c",
+      "title": "The physical five-site weight-five coefficient has exactly 526 base monomials",
+      "entity_id": "claim:d975d7d12efde5de7b08"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "test",
+      "local_ref": "t",
+      "title": "Independent all-odd sparse extraction of the weight-five coefficient",
+      "entity_id": "test:b915838e48f1ca05a011"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "c",
+      "target_ref": "s",
+      "source_id": "claim:d975d7d12efde5de7b08",
+      "target_id": "source:c73a29cba6e3bbe8bdbe",
+      "relation_id": "rel:derived_from-d17c0baf7080ab17"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "t",
+      "target_ref": "c",
+      "source_id": "test:b915838e48f1ca05a011",
+      "target_id": "claim:d975d7d12efde5de7b08",
+      "relation_id": "rel:tests-544ede07ce631205"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_ref": "c",
+      "target_id": "claim:0ba15040b117b7f76f92",
+      "source_id": "claim:d975d7d12efde5de7b08",
+      "relation_id": "rel:maricirefines-374ffb9a60688bc7"
+    }
+  ],
+  "digest": "4096f564b72963fa973e6623f67de59ee05260202acfda3fb83159edad0c34ee"
+}

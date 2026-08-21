@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1306,
+  "event_id": "ev-000000001306-0ac9a5ad-9d2b-4ca6-863c-d6ba8cfb5fad",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "538a9d228763a831b59ad5ca26eb3d28ce2f3a048083f2b8818e9e5ab87d9fd6",
+  "proposal_id": "ep_6ccf7edf-1187-485f-b89e-2e389225bdd3",
+  "proposal_digest": "fe1c16ccc862a5e1b190b5b11f4e544b9f2be1da7e92d2bfb7e10989cc567fa2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Iterated selector pullback accumulates resonance by path-independent least common multiple",
+      "body": "For surjections G->H->J and selector c on J, the terminal pullback resonance is lcm of the G-kernel, H-kernel, and target-selector resonance labels. The operation spectrum is their intersection, independent of stepwise versus composite pullback.",
+      "entity_id": "claim:59c530c8a073e82dccea"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C12->C6->C2 strict iterated-pullback control",
+      "body": "For target delta_0, direct and stepwise pullbacks agree pointwise. Terminal kernel orders and labels are 1,3,6; spectrum sizes through 24 are 24,16,8. All assertions pass.",
+      "entity_id": "test:6cf787149dd0e0fe8576"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Iterated selector pullback resonance proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/iterated-selector-pullback-resonance.md",
+      "entity_id": "source:87a540ee4b509e5d87ff"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact C12->C6->C2 pullback tower checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/iterated_selector_pullback_resonance.py",
+      "entity_id": "source:cefee6b533466818d465"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1300 — Iterated Selector Pullback Accumulates Resonance by Least Common Multiple",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1300 Iterated Selector Pullback Accumulates Resonance by Least Common Multiple.md",
+      "entity_id": "source:25a485e8808c89961832"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:6cf787149dd0e0fe8576",
+      "target_id": "claim:59c530c8a073e82dccea",
+      "relation_id": "rel:tests-1fe1a823d06bdf04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:59c530c8a073e82dccea",
+      "target_id": "source:87a540ee4b509e5d87ff",
+      "relation_id": "rel:derived_from-f7330c59eb6684e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:cefee6b533466818d465",
+      "target_id": "test:6cf787149dd0e0fe8576",
+      "relation_id": "rel:promotes_to_evidence-dab55ef7d2ac5e4c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:25a485e8808c89961832",
+      "target_id": "claim:59c530c8a073e82dccea",
+      "relation_id": "rel:promotes_to_evidence-55c3a3fcc7228133"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-26f738119bf3d78dae552956",
+  "occurred_at": "2026-08-20T22:07:44.6200755Z",
+  "certifies_truth": false,
+  "event_hash": "c5359ed01c31425bf0a476f8ba9abc26e7ff70f6638a1ffc305cf6cc0657e103"
+}

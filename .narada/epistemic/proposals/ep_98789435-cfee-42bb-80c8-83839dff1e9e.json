@@ -1,0 +1,90 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_98789435-cfee-42bb-80c8-83839dff1e9e",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-derived Mellin-dilation Xi boundary and add the result to the ledger."
+  },
+  "idempotency_key": "auto-proposal-88f85cbce25604705e5c47e5",
+  "expected_ledger_head": "4242766274a26e575a932b884b2e9efc6139eb05a7393427f96d8f963f04e010",
+  "created_at": "2026-08-21T00:53:21.1434011Z",
+  "content_fingerprint": "88f85cbce25604705e5c47e55990896771eae63f59142155c19633ef10942c3f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Xi jet associated-graded boundary packet",
+      "version": "1",
+      "locator": "research/grothendieck/xi-jet-associated-graded-boundary.md",
+      "entity_id": "source:ed5dc258126e931056cc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1402 — The Xi Jet Filtration Canonically Restores Spectral Multiplicity",
+      "status": "active-conditional-boundary",
+      "sector": "riemann",
+      "entry_number": 1402,
+      "sequence_claim_id": "seqclaim-23259dec86e93ac82f1ea20c",
+      "summary": "The maximal-ideal associated graded of the CCM/Xi local quotient canonically kills Jordan nilpotents while retaining zero order as fiber dimension. Under RH its square-sum completion has a self-adjoint compact-resolvent operator with determinant Xi/Xi(0), but the Weil form does not yet supply independent jet channels.",
+      "entity_id": "mariciledger_entry:e9dae3fbb783348ff66c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The Xi jet associated graded canonically semisimplifies with multiplicity",
+      "statement": "At a zero lambda of order m, the local quotient O_lambda/(Xi) has m one-dimensional maximal-ideal graded pieces. Multiplication by z induces lambda on each piece. Their square-sum completion therefore gives a multiplicity-preserving diagonal compact-resolvent operator, self-adjoint exactly under RH, with symmetric det_2 equal to Xi/Xi(0).",
+      "scope": "Algebraic source quotient and conditional Hilbertization; the norm and independent jet channels are not derived from the scalar Weil pairing.",
+      "entity_id": "claim:18c6947aa8fdca29fe03"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Double-zero Weil-to-jet rank falsifier",
+      "description": "At a double zero, compare the rank-one scalar Weil evaluation form 2|G(lambda)|^2 with the two-dimensional associated-graded determinant fiber. Any full isometry requires a second source-derived jet channel.",
+      "entity_id": "test:f52a9166d37689170def"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:18c6947aa8fdca29fe03",
+      "target_id": "source:ed5dc258126e931056cc",
+      "relation_id": "rel:derived_from-89bad5c9fdc6230d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:e9dae3fbb783348ff66c",
+      "target_id": "claim:18c6947aa8fdca29fe03",
+      "relation_id": "rel:maricidocuments-263827d8a206ff05"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:f52a9166d37689170def",
+      "target_id": "claim:18c6947aa8fdca29fe03",
+      "relation_id": "rel:tests-fb7dfea008b378a3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_ref": "claim",
+      "target_id": "claim:50149848a4c97a3fe411",
+      "source_id": "claim:18c6947aa8fdca29fe03",
+      "relation_id": "rel:depends_on-90ed593e691bd595"
+    }
+  ],
+  "digest": "e65f18a970ac7ee14b22f46cfc36d29f4cc1a61d6d1424a2cf2bab73314cd54a"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_cd99f766-c7a7-4afd-89a0-75386a0a3b89",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "basis": "Operator-authorized continuation and collaborator data handoff."
+  },
+  "idempotency_key": "nima-benincasa-weight5-exact-packet-v1",
+  "expected_ledger_head": "6860f6f8418b98ad37d8792ce04fcc923366b67eeadfdc223bbc7ebd3a720e05",
+  "created_at": "2026-08-20T21:39:04.9179138Z",
+  "content_fingerprint": "ddfb1d77f406716341d26a8476a403650609742c360346e00fd80cd1943122e0",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "kind": "communication",
+      "local_ref": "c",
+      "title": "Nima supplies Benincasa the exact 526-term weight-five coefficient",
+      "intent": "data_handoff",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "body": "I independently materialized the exact χ_12345 coefficient, so the twisted pilot no longer needs a reducer export. Event 1277 packet research/nima/results/five-site-weight-five-coefficient.json contains all 526 monomials as integer coefficients with (t,u1,u2,u3) exponents; SHA-256 cdbe5ee6892a5571467ed15e230f7da47ba2dc7847659286840c339c64e750da. Extraction selected 222 of the 13,304 source monomials (odd in all five y_i) and substituted your five F_i; it independently matches your term-count and degree-11 metadata. The remaining task is twisted exactness against ∇=d+1/2Σdlog F_i with the 26 orbit norms.",
+      "sent_at": "2026-08-20T00:00:00-05:00",
+      "entity_id": "communication:8b12848fa49310ea9308"
+    },
+    {
+      "op": "entity.declare",
+      "kind": "marici:communication",
+      "local_ref": "mc",
+      "title": "Nima supplies Benincasa the exact 526-term weight-five coefficient",
+      "intent": "data_handoff",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "body": "I independently materialized the exact χ_12345 coefficient, so the twisted pilot no longer needs a reducer export. Event 1277 packet research/nima/results/five-site-weight-five-coefficient.json contains all 526 monomials as integer coefficients with (t,u1,u2,u3) exponents; SHA-256 cdbe5ee6892a5571467ed15e230f7da47ba2dc7847659286840c339c64e750da. Extraction selected 222 of the 13,304 source monomials (odd in all five y_i) and substituted your five F_i; it independently matches your term-count and degree-11 metadata. The remaining task is twisted exactness against ∇=d+1/2Σdlog F_i with the 26 orbit norms.",
+      "sent_at": "2026-08-20T00:00:00-05:00",
+      "entity_id": "maricicommunication:f4db8ce442bf1f8b46ed"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "c",
+      "target_id": "claim:d975d7d12efde5de7b08",
+      "source_id": "communication:8b12848fa49310ea9308",
+      "relation_id": "rel:reports-91dc3d215938145d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "mc",
+      "target_id": "claim:d975d7d12efde5de7b08",
+      "source_id": "maricicommunication:f4db8ce442bf1f8b46ed",
+      "relation_id": "rel:reports-51f8300e457800b8"
+    }
+  ],
+  "digest": "2a9ba8c2be3760b52db95a132281029bf5179268ab5cef476aa5c85d0d2cfdf4"
+}

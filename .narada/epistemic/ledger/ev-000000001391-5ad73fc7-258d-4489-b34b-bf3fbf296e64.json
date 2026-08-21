@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1391,
+  "event_id": "ev-000000001391-5ad73fc7-258d-4489-b34b-bf3fbf296e64",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "0e44cb7c1ea60b5e1b80c1d63fa74059f41b0e79e77e22aa96633bafbb467ae4",
+  "proposal_id": "ep_b69172a3-2963-44ab-8c0b-4dcc379b61da",
+  "proposal_digest": "989d629fd6db6890219d53ea513248b0acab7a1121ad87e7e4775f78a8730642",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Intrinsic primes define a global Fredholm Euler operator in the convergent half-plane",
+      "statement": "On ell2 of intrinsic primes, N e_p=p e_p gives trace-class N^(-s) for Re(s)>1, with det(1-N^(-s))=product_p(1-p^(-s))=zeta(s)^(-1) and logarithmic derivative equal to the prime-power trace sum. Trace class fails for Re(s)<=1; the spectrum is the primes or log primes, not zeta-zero ordinates, and a holomorphic Fredholm determinant cannot equal 1/zeta through its poles at zeta zeros.",
+      "scope": "Conditional intrinsic-prime basis plus explicit Hilbert/functional-calculus input; no continuation, Hilbert-Polya operator, or physical realization.",
+      "entity_id": "claim:cce5a83c3d7e8f968c6c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Fredholm trace-class boundary hostile test",
+      "procedure": "Sum the singular values p^(-Re(s)), compute the diagonal Fredholm determinant and its logarithmic derivative, then compare holomorphy with poles of 1/zeta at zeta zeros.",
+      "expected_result": "Trace class and the Euler determinant hold exactly for Re(s)>1; the trace norm diverges at and left of 1. Any trace-class continuation with unchanged determinant through a zeta zero falsifies the boundary claim.",
+      "entity_id": "test:95d65694b063f93580d1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Prime-diagonal Fredholm determinant packet",
+      "version": "1",
+      "locator": "research/grothendieck/prime-diagonal-fredholm-determinant.md",
+      "entity_id": "source:21ce028448b364cd3c56"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1365 — Intrinsic Primes Define a Global Fredholm Euler Operator",
+      "version": "1",
+      "locator": "src/ledger/20260820-1365 Intrinsic Primes Define a Global Fredholm Euler Operator.md",
+      "entity_id": "source:3ec67b544fad87d1089a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:95d65694b063f93580d1",
+      "target_id": "claim:cce5a83c3d7e8f968c6c",
+      "relation_id": "rel:tests-ecbc9c4a8831b8e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:cce5a83c3d7e8f968c6c",
+      "target_id": "source:21ce028448b364cd3c56",
+      "relation_id": "rel:derived_from-0ab06e6aba8e80f1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:3ec67b544fad87d1089a",
+      "target_id": "claim:cce5a83c3d7e8f968c6c",
+      "relation_id": "rel:reports-67bfd0053f8073f9"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "After deriving intrinsic primes, Frobenius composition, and Euler factors, construct and audit a global determinant operator before asking whether its spectrum contains zeta zeros."
+  },
+  "idempotency_key": "auto-admission-659ee1e5ff3fa555f4316e8a",
+  "occurred_at": "2026-08-20T23:38:35.6575251Z",
+  "certifies_truth": false,
+  "event_hash": "e6c077826ff443b70d44e30b4bdc4757e1522add6abca3af6bda466165110012"
+}

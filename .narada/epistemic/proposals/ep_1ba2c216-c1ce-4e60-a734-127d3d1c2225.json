@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1ba2c216-c1ce-4e60-a734-127d3d1c2225",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the five-site Kummer-resolved affine IBP threshold result."
+  },
+  "idempotency_key": "auto-proposal-f54e3b4f83b39ac6a237335a",
+  "expected_ledger_head": "7d7633b020de56c51092934949b7218c71789e79276355a201e980b96df26851",
+  "created_at": "2026-08-20T22:47:52.9352436Z",
+  "content_fingerprint": "f54e3b4f83b39ac6a237335ab7052e77d06948a6f888a76d58a32b4b18b48ad7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1329 — Kummer-Resolved Affine IBP First Closes at Quadratic Primitive Degree",
+      "status": "established",
+      "path": "src/ledger/20260820-1329 Kummer-Resolved Affine IBP First Closes at Quadratic Primitive Degree.md",
+      "entity_id": "mariciledger_entry:d13edd25a842293c2d31"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Full Kummer occurrence resolution lowers affine IBP closure to quadratic primitive degree",
+      "status": "established",
+      "body": "Degree-zero and degree-one Kummer-resolved first-order systems are inconsistent at two fibers; degree two is consistent and remains so with scalar coefficient zero. The resulting affine primitive must carry nonzero projective-relative boundary data because the physical period varies.",
+      "entity_id": "mariciclaim:6bdd8fe3f2551f2d15ee"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Degree 0–2 full-character affine IBP census",
+      "status": "passed",
+      "body": "All 32 characters, all 32 deck sheets, independently sampled base points, and two finite-field fibers.",
+      "entity_id": "maricitest:06765257650978c88208"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d13edd25a842293c2d31",
+      "target_id": "mariciclaim:6bdd8fe3f2551f2d15ee",
+      "relation_id": "rel:maricirecords-7c89950fa621be2d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:6bdd8fe3f2551f2d15ee",
+      "target_id": "maricitest:06765257650978c88208",
+      "relation_id": "rel:maricisupported_by-e10e7874c9cd96d6"
+    }
+  ],
+  "digest": "3b7f3c0b716dd184edf0ae622fabf038525c72a74aa3de49da79ccf5ffe565af"
+}

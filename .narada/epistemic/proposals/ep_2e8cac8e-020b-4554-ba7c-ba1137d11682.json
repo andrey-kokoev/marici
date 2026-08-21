@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2e8cac8e-020b-4554-ba7c-ba1137d11682",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "After constructing the intrinsic Euler product, determine whether it canonically acquires continuation, completion, and a global spectral setting."
+  },
+  "idempotency_key": "grothendieck-ledger-1362-archimedean-theta-completion-v1",
+  "expected_ledger_head": "141b80c00bab5428c5f6781786f8df16ae0da0c5962b0dfcea5e606399f034cb",
+  "created_at": "2026-08-20T23:36:05.6615861Z",
+  "content_fingerprint": "07f0b2642178c61e8a1fa074eeb339f472e37c0b3c93f6b5f8313125eb9f11c3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Theta completion crosses the Euler boundary only with new archimedean input",
+      "statement": "The conditional Carrier supplies an initial integral lattice. After explicitly adding a real embedding, self-dual Haar/Fourier data, the Gaussian, Poisson summation, and Mellin transform, theta reciprocity yields the completed xi function, its entire continuation, and xi(s)=xi(1-s). These archimedean inputs are not derived from the finite correspondence calculus, and no global operator with determinant xi is constructed.",
+      "scope": "Conditional analytic completion and provenance audit; no Carrier-derived archimedean analysis or Hilbert-Polya spectrum.",
+      "entity_id": "claim:d29d704c315e6722a326"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Theta Mellin continuation gate",
+      "procedure": "Apply Poisson summation to theta(t), split its Mellin integral at t=1, and verify that Lambda(s)=1/(s(s-1)) plus an entire expression symmetric under s maps to 1-s.",
+      "expected_result": "xi(s)=one-half s(s-1)Lambda(s) extends entire and is symmetric. Any residual nonsymmetric term or unaccounted pole falsifies the calculation.",
+      "entity_id": "test:4d4ca690556f52e82a6e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Archimedean theta-completion gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/archimedean-theta-completion-gate.md",
+      "entity_id": "source:44a2ae3d869126684f8a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1362 — Theta Completion Requires New Archimedean Structure",
+      "version": "1",
+      "locator": "src/ledger/20260820-1362 Theta Completion Requires New Archimedean Structure.md",
+      "entity_id": "source:46e981315a001c6083f7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:4d4ca690556f52e82a6e",
+      "target_id": "claim:d29d704c315e6722a326",
+      "relation_id": "rel:tests-41cf6fb58a13df6a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:d29d704c315e6722a326",
+      "target_id": "source:44a2ae3d869126684f8a",
+      "relation_id": "rel:derived_from-c4285e5f65ab98b9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:46e981315a001c6083f7",
+      "target_id": "claim:d29d704c315e6722a326",
+      "relation_id": "rel:reports-f5eb039eaeefcccd"
+    }
+  ],
+  "digest": "4674f8bc61882a767d39172372b430ea8760edd5a9c0400c34f30d58b0f7a2bf"
+}

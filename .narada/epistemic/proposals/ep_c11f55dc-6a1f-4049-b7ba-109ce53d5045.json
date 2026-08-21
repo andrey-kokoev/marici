@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c11f55dc-6a1f-4049-b7ba-109ce53d5045",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "grothendieck-resonance-enriched-surjection-category-1301",
+  "expected_ledger_head": "c5359ed01c31425bf0a476f8ba9abc26e7ff70f6638a1ffc305cf6cc0657e103",
+  "created_at": "2026-08-20T22:11:00.3578089Z",
+  "content_fingerprint": "6ada64bf1841b23f952cd62754941fcc429a1471a4dc02947fd9e572b2805077",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Finite surjections form a resonance-enriched coefficient category",
+      "body": "Assign rho(phi)=R_G(ker phi). Then rho(id)=1 and rho(psi phi)=lcm(rho(phi),rho(psi)); equivalently U(psi phi)=U(phi)∩U(psi). Selector object costs act by R(K_(phi*c))=lcm(rho(phi),R(K_c)).",
+      "entity_id": "claim:d835cbd67046f1f522f9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C60->C30->C6 resonance-enrichment control",
+      "body": "Identity, arrow, and composite costs are 1,2,5,10. Through index 60 the arrow and composite spectrum sizes are 30,48,24, with composite equal to intersection. All assertions pass.",
+      "entity_id": "test:481196475b4494483045"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Resonance-enriched surjection-category proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/resonance-enriched-surjection-category.md",
+      "entity_id": "source:09a7cd30976712c76e2a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact cyclic resonance-enrichment checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/resonance_enriched_surjection_category.py",
+      "entity_id": "source:999a785fe2ecae7cd7f2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1301 — Finite Surjections Form a Resonance-Enriched Coefficient Category",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1301 Finite Surjections Form a Resonance-Enriched Coefficient Category.md",
+      "entity_id": "source:5c373b0be649e8733d8d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:481196475b4494483045",
+      "target_id": "claim:d835cbd67046f1f522f9",
+      "relation_id": "rel:tests-a0632b2ef27c0598"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:d835cbd67046f1f522f9",
+      "target_id": "source:09a7cd30976712c76e2a",
+      "relation_id": "rel:derived_from-9706fa6134c597e6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:999a785fe2ecae7cd7f2",
+      "target_id": "test:481196475b4494483045",
+      "relation_id": "rel:promotes_to_evidence-b1402ee23f1a3da4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:5c373b0be649e8733d8d",
+      "target_id": "claim:d835cbd67046f1f522f9",
+      "relation_id": "rel:promotes_to_evidence-c934181ea7ffab11"
+    }
+  ],
+  "digest": "bed867ae93ee4f3d8651d17f5531333f4241de69b828c4d69e629cf6923b566f"
+}

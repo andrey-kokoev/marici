@@ -1,0 +1,81 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1343,
+  "event_id": "ev-000000001343-f4476834-1f84-48de-ba13-71504b71db0a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b7bb02a48fb334da11655ff52cd7f4d5bb1f5a27439dd39745c7b17bd879ab5e",
+  "proposal_id": "ep_d3b981e9-6944-4361-a3ea-41cb098cc37c",
+  "proposal_digest": "4e29d6a3708ff379168176bb86467502faf8e026c7f7cdcde5c7d8c82b02ba90",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1326 — Neither Low-Degree Second Order nor Single-Wall Logarithmic IBP Closes the Five-Site Period",
+      "status": "established",
+      "path": "src/ledger/20260820-1326 Neither Low-Degree Second Order nor Single-Wall Logarithmic IBP Closes the Five-Site Period.md",
+      "entity_id": "mariciledger_entry:d5857b2852f066f583ea"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Two lowest-complexity extensions of five-site scalar IBP are excluded",
+      "status": "established",
+      "body": "Full-deck second-order polynomial systems are inconsistent through vector degree five at four fibers; all 26 frozen single-wall first-order logarithmic systems with numerator degree at most two are inconsistent at two independent fibers.",
+      "entity_id": "mariciclaim:dd3199bd616d8f19f6d0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test1",
+      "kind": "marici:test",
+      "title": "Full-deck second-order polynomial IBP census",
+      "status": "passed",
+      "entity_id": "maricitest:7b9e530a73fa9bed4ee1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test2",
+      "kind": "marici:test",
+      "title": "Full-deck 26-wall logarithmic IBP census",
+      "status": "passed",
+      "entity_id": "maricitest:64d51732fefc619f59f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d5857b2852f066f583ea",
+      "target_id": "mariciclaim:dd3199bd616d8f19f6d0",
+      "relation_id": "rel:maricirecords-b5d1658e2475798d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test1",
+      "source_id": "mariciclaim:dd3199bd616d8f19f6d0",
+      "target_id": "maricitest:7b9e530a73fa9bed4ee1",
+      "relation_id": "rel:maricisupported_by-ce501eb3283f0e67"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test2",
+      "source_id": "mariciclaim:dd3199bd616d8f19f6d0",
+      "target_id": "maricitest:64d51732fefc619f59f5",
+      "relation_id": "rel:maricisupported_by-3ce0d79f9da69275"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the completed five-site second-order and single-wall logarithmic IBP comparison."
+  },
+  "idempotency_key": "auto-admission-fc3b5b86dcd61e2de325c184",
+  "occurred_at": "2026-08-20T22:40:25.018081Z",
+  "certifies_truth": false,
+  "event_hash": "a40734e5f7ccd412e1d84b3b49196b0a67c6607c24acbe3687c011abfd6eb007"
+}

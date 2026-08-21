@@ -1,0 +1,63 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_04916950-03a5-4b38-9ebe-4a079cece7f4",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Executing the first bounded sectorwise composition test in the active program."
+  },
+  "idempotency_key": "auto-proposal-5719e3dceca9ccf365f67653",
+  "expected_ledger_head": "8931c690188c031248fc4bcc9e76c9d2305c5665ed5c7d994eb52a4b13682af0",
+  "created_at": "2026-08-20T19:39:06.1360397Z",
+  "content_fingerprint": "5719e3dceca9ccf365f67653336b3521804830c6934b064451cbe5ce6d0b7814",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Radiative-memory readout composition square",
+      "version": "2026-08-20",
+      "locator": "research/nima/radiative-memory-readout-composition.md",
+      "entity_id": "source:5d4cc7bf0de54b112821"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Constant-mode quotient and D3 invariant scalarization compose exactly in the finite radiative-memory fiber",
+      "summary": "For three directional samples, centering followed by q2,q3 scalarization equals direct pullback to centered variance and centered cubic product. The square is permutation-invariant and constant-mode invariant.",
+      "status": "exact-finite-sectorwise-composition",
+      "entity_id": "claim:556016cb9f85aa9a6923"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Exact radiative-memory readout composition controls",
+      "locator": "research/nima/check_radiative_memory_readout_composition.py",
+      "result_locator": "research/nima/results/radiative-memory-readout-composition.json",
+      "outcome": "passed: 2197 composition, 13182 permutation, 10985 constant-mode controls",
+      "entity_id": "test:bb2d46e697d0aa0a72e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:556016cb9f85aa9a6923",
+      "target_id": "source:5d4cc7bf0de54b112821",
+      "relation_id": "rel:derived_from-e9a5dc10ef92c520"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:bb2d46e697d0aa0a72e8",
+      "target_id": "claim:556016cb9f85aa9a6923",
+      "relation_id": "rel:tests-5655fd3b857d55aa"
+    }
+  ],
+  "digest": "4d24a2567481fa876e3f13646dcd6b6536292c0204749113781284d82d27a3e6"
+}

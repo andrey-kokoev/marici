@@ -1,0 +1,85 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1462,
+  "event_id": "ev-000000001462-a0ca145e-ca10-41bb-b660-4f8aec7f2429",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6f87cba52e9b97ebff093d8da5b56d85e371350d86b3f57616a2ec4b4d856a0e",
+  "proposal_id": "ep_48aa39b7-5663-43f8-9f6e-60153b8ea99f",
+  "proposal_digest": "f2227fa1de31839dad7cd6ee02fd2e78033f2d092b9b8f3e973ce75a3fa051cc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Mellin Xi jet boundary theorem",
+      "version": "1",
+      "locator": "research/grothendieck/mellin-xi-jet-boundary-theorem.md",
+      "entity_id": "source:dd8254280393c2c7584d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1410 — The Mellin Xi Jet Boundary Has the Completed Determinant",
+      "status": "completed-analytic-boundary",
+      "sector": "riemann",
+      "entry_number": 1410,
+      "sequence_claim_id": "seqclaim-d6e9fa63b0a3a1741ef99065",
+      "summary": "The source-saturated Mellin quotient B/(Xi), its intrinsic jet associated graded, and residue degree-reversal polarization produce a closed normal compact-resolvent operator with full Xi divisor and theta-normalized determinant Xi. Euler-domain Mellin modes are total. Self-adjointness is equivalent to RH.",
+      "entity_id": "mariciledger_entry:2109220145bb86e92a6b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "A source-saturated Mellin jet boundary has discrete spectrum and completed-Xi determinant",
+      "statement": "The CCM Mellin source range generates the ideal (Xi). The maximal-ideal associated graded of B/(Xi), completed in the residue-polarized jet norm, carries the closed normal operator A e_(lambda,k)=lambda e_(lambda,k), with compact resolvent, full zero multiplicities, and Xi(z)=Xi(0) det_2(I-zA^-1). Euler-domain Cauchy Mellin modes are total. A is self-adjoint iff RH.",
+      "scope": "Completes the analytic boundary/quotient objective without a zero list; does not prove RH or the separate physical coefficient–Betti chain pushforward.",
+      "entity_id": "claim:fe31537b542e6561f68e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mellin Xi boundary end-to-end theorem audit",
+      "description": "Verify source ideal equality, exact local length, degree-reversal positive Gram matrix, diagonal operator domain and compact resolvent, Hilbert-Schmidt inverse, paired determinant, and Cauchy-jet totality.",
+      "entity_id": "test:e1c8055fa01c5af8862a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:fe31537b542e6561f68e",
+      "target_id": "source:dd8254280393c2c7584d",
+      "relation_id": "rel:derived_from-3cade426727354e8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:2109220145bb86e92a6b",
+      "target_id": "claim:fe31537b542e6561f68e",
+      "relation_id": "rel:maricidocuments-599346fd434b6e71"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:e1c8055fa01c5af8862a",
+      "target_id": "claim:fe31537b542e6561f68e",
+      "relation_id": "rel:tests-b08d6f849f548f85"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Complete and record the source-derived noncircular Mellin-dilation boundary with discrete Xi determinant."
+  },
+  "idempotency_key": "auto-admission-990a8a08b5fbc3fb680d18ec",
+  "occurred_at": "2026-08-21T01:06:25.2668281Z",
+  "certifies_truth": false,
+  "event_hash": "2a77588b1c856787215543bfa9ae801f65f85fc1b3fd5422ee446870e8337acc"
+}

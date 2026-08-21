@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_b46866ce-5614-44fc-90b8-16fc3b321ae0",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1345-finite-p-group-norm-homology-v1",
+  "expected_ledger_head": "6622856b4061c6d02d6b882beeeab47896fb291479cd33d0a84064536a56bd84",
+  "created_at": "2026-08-20T23:07:14.6616167Z",
+  "content_fingerprint": "eca6dc913c5b4a1003a179af44df4aa99fe775a8933b20896d4331cfdc6ad740",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Finite p-group norm homology is the augmentation ideal modulo the norm line",
+      "statement": "For every nontrivial finite p-group K over F_p, multiplication by nu_K=sum_g g on F_p[K] has kernel the augmentation ideal I, image F_p nu_K, and square-zero homology I/F_p nu_K of dimension |K|-2. For m regular fibers the dimension is m(|K|-2); C2 is the unique nontrivial acyclic case.",
+      "scope": "Regular modular group algebra; no physical relative-chain pushforward or physical readout is asserted.",
+      "entity_id": "claim:68e2cae67c7344256060"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Nonabelian order-eight hostile control",
+      "procedure": "For K=D8 or Q8 over F_2, use x nu_K=epsilon(x)nu_K: kernel dimension 7 and image dimension 1, hence residual norm homology dimension 6 per regular fiber. Contrast K=C2, where the residual dimension is zero.",
+      "expected_result": "All nontrivial finite p-groups have residual dimension |K|-2; any regular-fiber example with different kernel or image dimensions falsifies the claim.",
+      "entity_id": "test:b4593299132496f89a1c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Finite p-group norm-socle homology research packet",
+      "version": "1",
+      "locator": "research/grothendieck/finite-p-group-norm-socle-homology.md",
+      "entity_id": "source:91ce9ab17e80177e9926"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1345 — Finite P-Group Norm Homology Is Universal",
+      "version": "1",
+      "locator": "src/ledger/20260820-1345 Finite P-Group Norm Homology Is Universal.md",
+      "entity_id": "source:29487e54dc4f44faeffa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:b4593299132496f89a1c",
+      "target_id": "claim:68e2cae67c7344256060",
+      "relation_id": "rel:tests-acc8ec96fbf364d8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:68e2cae67c7344256060",
+      "target_id": "source:91ce9ab17e80177e9926",
+      "relation_id": "rel:derived_from-8f2fc2a69185b354"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:29487e54dc4f44faeffa",
+      "target_id": "claim:68e2cae67c7344256060",
+      "relation_id": "rel:reports-55545ec335514d9b"
+    }
+  ],
+  "digest": "5f7561721ae618f1c9b870cdac60fcd43ef3bd0fc4f34a2467570ce4f09f14de"
+}

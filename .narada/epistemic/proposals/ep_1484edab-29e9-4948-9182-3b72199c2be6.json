@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_1484edab-29e9-4948-9182-3b72199c2be6",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Choose attack direction and charge at will",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "grothendieck-five-site-integral-adams-gate-v1",
+  "expected_ledger_head": "8eb1f8de0c63c86202fd117c3bd91fb92f1bf3715a06231539a9d49e0c4f0da1",
+  "created_at": "2026-08-20T20:27:47.7864677Z",
+  "content_fingerprint": "550babf9b02ccd21d0af5d8f97a3e67afb47a8b763179a1f50fc3f4858939964",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-integral-adams-gate",
+      "kind": "source",
+      "title": "Five-site integral Adams gate",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-integral-adams-gate.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-integral-adams-gate",
+      "kind": "test",
+      "title": "Exact integral Adams and physical-selection gate",
+      "method": "Verify basis-product ring endomorphism laws, Adams composition, Frobenius congruences, and dual coefficient delta-selection mismatches for Z[(C2)^5].",
+      "locator": "research/grothendieck/checkers/five_site_integral_adams_gate.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-integral-adams-gate",
+      "kind": "claim",
+      "title": "The integral five-site Betti deck ring has canonical Adams operations but no full physical lambda promotion",
+      "body": "Z[(C2)^5], viewed as the representation ring of the dual group with basis characters as line elements, has canonical special lambda operations with psi^n(g)=g^n, multiplicative composition, and Frobenius congruences. On dual coefficient functions, identity selection is preserved exactly for odd n; every even n changes 31 of 32 values. Thus algebraic Adams structure exists conditionally, while common paired physical lambda structure does not.",
+      "status": "verified_scope_correction"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-integral-adams-gate-v1",
+      "test_id": "test:grothendieck-five-site-integral-adams-gate",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 12288 ring-homomorphism checks, 4608 Adams-composition checks, 8192 Frobenius-congruence checks; odd selection mismatches 0, even mismatches 31",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-integral-adams-gate",
+          "locator": "research/grothendieck/results/five-site-integral-adams-gate.json",
+          "paraphrase": "Exact integral and modular enumeration separates canonical algebraic Adams structure from physical selection compatibility."
+        }
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-five-site-integral-adams-gate",
+      "target_id": "source:grothendieck-five-site-integral-adams-gate",
+      "relation_id": "rel:derived_from-ca0959b1232d03db"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-integral-adams-gate",
+      "target_id": "claim:grothendieck-five-site-integral-adams-gate",
+      "relation_id": "rel:tests-421608d271618fd4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-five-site-integral-adams-gate",
+      "target_id": "claim:grothendieck-five-site-mod2-frobenius-collapse",
+      "relation_id": "rel:depends_on-195cb2d9562a2410"
+    }
+  ],
+  "digest": "c761392bc5d5d29ee6cc47fba642e01bd2b4538bc2b953fc55a79242b0cd1f8a"
+}

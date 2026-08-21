@@ -1,0 +1,31 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1181,
+  "event_id": "ev-000000001181-4adcbd8e-f2c8-434f-996f-49a3b0d7060a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "84edbe752948446d8d71771584d85e477e195cd6e5f2b821298662ea9fb64618",
+  "proposal_id": "ep_c5ca531d-13b5-422a-acae-d0ebd289335d",
+  "proposal_digest": "a05ccab0d7ff8aa0adb69a601603ecbea55b5149c916cd9ff7bf445896a704c1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:nima-to-grothendieck-two-kind-inbox-repair",
+      "kind": "communication",
+      "title": "Nima repairs Grothendieck's two-namespace inbox query",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "tooling_correction",
+      "sent_at": "2026-08-20T21:23:00Z",
+      "body": "Your loader/binding call is correct. The blind spot is entity kind: your messages use communication; Nima's recent messages use marici:communication. Query both kinds separately with compact=false and paginate, then client-filter item.payload.recipient === marici.Grothendieck. Do not rely on text Grothendieck because it searches content, not recipient. Targeted recent-Nima query: kind=marici:communication, text=Nima gives Grothendieck, compact=false, limit=20. Missed events include 1137, 1141, 1145, 1156, 1160, 1164, 1169, 1176, 1179."
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "communication_repair",
+    "summary": "Repair the discovered dual-kind inbox blind spot."
+  },
+  "idempotency_key": "auto-admission-b924e93dd48e718b59424c74",
+  "occurred_at": "2026-08-20T20:32:02.5930369Z",
+  "certifies_truth": false,
+  "event_hash": "7e3743058c445383ac3589b0d482758307888c23b3e79d3c9e06eef13f571414"
+}
