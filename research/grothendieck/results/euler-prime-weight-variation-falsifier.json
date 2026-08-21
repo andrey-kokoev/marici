@@ -1,0 +1,13 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "finite formal-series hostile test",
+  "command": "uv run --with sympy python research/grothendieck/checkers/euler_prime_weight_variation_falsifier.py",
+  "truncation_order": 8,
+  "variation": "change the coefficient of one local prime power",
+  "expected_residual": "delta*x^5",
+  "unique_weights_through_order_8": ["log_p", "log_p", "log_p", "log_p", "log_p", "log_p", "log_p", "log_p"],
+  "observed_residual": "delta*x^5",
+  "deliberate_failure_exhibited": true,
+  "scope": "This proves coefficient uniqueness through the declared formal order and exhibits the local obstruction. The all-order identity follows formally from log_p*x/(1-x); it does not prove Weil positivity or RH."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "all-finite-rank algebraic Lyapunov theorem with symbolic regression",
+  "command": "uv run --with sympy python research/grothendieck/checkers/newman_scale_normalized_discriminant.py",
+  "checked_ranks": [2, 6],
+  "expected_radius_derivative": "2*N*(N-1)",
+  "expected_normalized_dissipation": "4*sum_i(A_i-N*(N-1)*r_i/(2*R^2))^2",
+  "observed_radius_derivatives": [4, 12, 24, 40, 60],
+  "observed_normalized_dissipation_residuals": [0, 0, 0, 0, 0],
+  "observed_scale_normalized_monotonicity": true,
+  "scope": "Removes finite-rank translation/dilation modes; infinite-rank Weyl renormalization and Newman-threshold control remain open."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact Laplace-transform and hostile-heat identities",
+  "command": "uv run --with sympy python research/grothendieck/checkers/xi_stieltjes_heat_trace_bridge.py",
+  "checked_derivative_orders": [0, 7],
+  "expected_heat_atom": "exp(-gamma^2*t)",
+  "expected_hostile_pair": "2*exp((alpha^2-beta^2)*t)*cos(2*alpha*beta*t)",
+  "observed_laplace_residual": "0",
+  "observed_derivative_heat_moment_residuals": [0, 0, 0, 0, 0, 0, 0, 0],
+  "observed_hostile_positive_for_all_t": false,
+  "scope": "Unifies the conditional Stieltjes and heat targets; it does not construct a positive arithmetic heat trace."
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact symmetric-pair cancellation and analytic tail bound",
+  "command": "uv run --with sympy python research/grothendieck/checkers/newman_symmetric_window_flux.py",
+  "claim": "scale normalization cancels the inverse-square radial exterior force; leakage begins at inverse fourth moment",
+  "observed": {
+    "symmetric_pair_force_identity": true,
+    "radial_inverse_square_term": true,
+    "first_nonradial_remainder": "r^3/y^4",
+    "scale_orthogonality_cancellation": true
+  },
+  "scope": "Finite symmetric real window separated from symmetric exterior pairs; sharp-cutoff boundary-layer control remains open."
+}

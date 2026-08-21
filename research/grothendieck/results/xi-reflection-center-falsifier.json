@@ -1,0 +1,16 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact symbolic hostile test",
+  "command": "uv run --with sympy python research/grothendieck/checkers/xi_reflection_center_falsifier.py",
+  "variation": "replace the completed-zeta center 1/2 by 1/2+delta",
+  "expected_residual": "-2*delta",
+  "residuals": {
+    "general_reflection_line": "1-2*c",
+    "shifted_center": "-2*delta",
+    "center_one_half": "0"
+  },
+  "unique_invariant_center": "1/2",
+  "deliberate_failure_exhibited": true,
+  "scope": "This proves uniqueness of the reflection-invariant vertical center. It does not prove spectral reality or RH."
+}

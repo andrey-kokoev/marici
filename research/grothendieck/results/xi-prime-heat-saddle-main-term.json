@@ -1,0 +1,13 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact Gaussian saddle integral and asymptotic",
+  "command": "uv run --with sympy python research/grothendieck/checkers/xi_prime_heat_saddle_main_term.py",
+  "expected_saddle": "log(n)=t",
+  "expected_endpoint_remainder": "exp(t/4)*erfc(sqrt(t)/2)/2",
+  "expected_large_time_scale": "1/sqrt(pi*t)",
+  "observed_saddle": "log(n)=t",
+  "observed_endpoint_remainder_residual": "0",
+  "observed_scaled_large_time_limit": 1,
+  "scope": "Explains PNT main-term cancellation; it does not control the completed exponentially small remainder or prove positivity."
+}

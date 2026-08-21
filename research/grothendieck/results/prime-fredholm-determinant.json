@@ -1,0 +1,16 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact Euler/Fredholm determinant identity and critical-line Schatten-class gate",
+  "command": "uv run --with sympy python research/grothendieck/checkers/prime_fredholm_determinant.py",
+  "claim": "zeta is an inverse prime Fredholm determinant for Re(s)>1, but the same operator is not Hilbert--Schmidt on the critical line",
+  "observed": {
+    "finite_prime_counts_checked": [1, 2, 4],
+    "Fredholm_Euler_identity": true,
+    "critical_line_HS_partial_sums": ["1.176190", "1.533439", "1.802817", "2.012855"],
+    "critical_line_prime_operator_Hilbert_Schmidt": false,
+    "critical_line_Fredholm_determinant": false,
+    "relative_regularized_determinant_required": true
+  },
+  "scope": "Convergence-half-plane determinant; a combined relative regularization on the critical line remains open."
+}

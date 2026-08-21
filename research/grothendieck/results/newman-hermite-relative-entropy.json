@@ -1,0 +1,19 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact Hermite reference constants and finite variational theorem",
+  "command": "uv run --with sympy python research/grothendieck/checkers/newman_hermite_relative_entropy.py",
+  "checked_ranks": [2, 8],
+  "expected_discriminant": "product_(k=1)^N k^k",
+  "expected_radius_squared": "N*(N-1)",
+  "expected_entropy_derivative_sign": "nonpositive",
+  "observed": {
+    "ranks": "2 through 8",
+    "discriminant_identity": "exactly verified",
+    "radius_squared_identity": "exactly verified",
+    "hermite_equilibrium_coefficient": "1/2",
+    "relative_entropy_nonnegative": true,
+    "relative_entropy_derivative": "minus centered repulsion dissipation"
+  },
+  "scope": "Constructs the canonical finite-rank relative entropy; Xi-window convergence and infinite-rank dissipation remain open."
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "limiting exact symbolic hostile test",
+  "domain": "1/3 < t < 1",
+  "command": "uv run --with sympy python research/grothendieck/checkers/hyperbolic_opposite_branch_falsifier.py",
+  "claims": {
+    "q2_factor": "t*(t-1)*(t+1)*(3*t-1)*(3*t+1)/4",
+    "q2_negative": true,
+    "selected_branch_Q_L": "-sqrt(discriminant)",
+    "opposite_branch_Q_L": "+sqrt(discriminant)",
+    "opposite_branch_is_maximum": false
+  },
+  "residuals": {
+    "selected_critical_equation": "0",
+    "opposite_critical_equation": "0",
+    "selected_transverse_identity": "0",
+    "opposite_transverse_identity": "0"
+  },
+  "deliberate_failure": {
+    "variation": "replace the selected root by the opposite quadratic root",
+    "predicted_obstruction": "the transverse derivative reverses from negative to positive",
+    "exhibited": true
+  },
+  "scope": "This selects the maximum branch exactly. It does not prove positivity of the affine derivative remainder, separated rank-three positivity, or RH."
+}

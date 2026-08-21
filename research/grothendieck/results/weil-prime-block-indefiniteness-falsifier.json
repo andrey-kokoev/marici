@@ -1,0 +1,16 @@
+{
+  "schema": "marici.grothendieck.exact-check.v1",
+  "status": "passed",
+  "strength": "exact finite source-block hostile test",
+  "command": "uv run --with sympy python research/grothendieck/checkers/weil_prime_block_indefiniteness_falsifier.py",
+  "model": "two disjoint source translates separated by log(p), with w=log(p)/sqrt(p)>0",
+  "expected_determinant": "-w^2",
+  "observed": {
+    "determinant": "-w^2",
+    "symmetric_direction": "-2*w",
+    "antisymmetric_direction": "2*w",
+    "eigenvalues": ["-w", "w"]
+  },
+  "deliberate_failure_exhibited": true,
+  "scope": "This proves that an isolated prime block cannot be a positive Gram form. It does not separately prove that deleting only the gamma term makes the full endpoint-plus-prime functional indefinite, and it does not prove Weil positivity or RH."
+}
