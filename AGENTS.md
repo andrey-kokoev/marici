@@ -206,6 +206,46 @@ promotes a claim to evidence. Failed formulations are superseded explicitly,
 not silently reworded to match the survivor. Retrospective assessments append
 to the original stimulus record; they never overwrite it.
 
+### Research activation and process calibration
+
+At the beginning and end of a substantive research objective, report three
+independent optional self-assessments on 0--10 scales:
+
+- `excitement`: felt attraction or activation toward the topic, where 0 is
+  actively lifeless, 5 is neutral engagement, and 10 is exceptionally
+  compelling;
+- `confidence`: expectation that the stated conjecture or route is correct;
+- `information_gain`: expected before the objective and realized afterward.
+
+Name the topic, phase (`pre`, `mid`, or `post`), immediate reason, and obvious
+confounds. Unusually high or low activation may be reported when it arises
+inside an objective. Flatness, boredom, aversion, uncertainty, and
+`not introspectively available` are valid reports. Do not infer excitement
+from importance, manufacture a rating, or measure before and after every
+command; objective boundaries, genuine changes, and occasional neutral
+samples are the useful cadence.
+
+Before executing the objective, also freeze the outcome-side measurement.
+Prefer a raw **optionality-space snapshot** over one retrospective success
+score. Record, where typed and applicable:
+
+- open branches and source-admissible branches;
+- branches eliminated, opened, merged, or retyped;
+- conjectures promoted, dissolved, criticized, or superseded;
+- canonical maps or coherence cells constructed;
+- required coherence tests passed and total tests declared;
+- unresolved contradictions, anomalies, and missing source data;
+- dimension, rank, support, or parameter-space reductions established by
+  exact evidence.
+
+The post-objective record reports the raw delta and only then any preregistered
+composite measure. Make the post-activation report before writing the polished
+synthesis, so the synthesis does not overwrite the immediate reaction. Never
+design or change the scoring rule after seeing the result. Excitement and
+intuition remain process observations, not evidence for
+the mathematical claim. Preserve low-activation and unsuccessful samples to
+avoid a retrospective archive of apparent prophetic hits.
+
 ### Outcome terminology gate
 
 `Outcome` has no primitive operating meaning in Marici. Do not use it as an
@@ -270,6 +310,57 @@ class, or physical class, verify the relevant parameter action descends, the
 differential and coherence identities hold, support and provenance are typed,
 comparison maps are canonical, and any physical selection is source-derived.
 Finite rank patterns alone do not supply these structures.
+
+### Source identity before linear-algebra identification
+
+Use **geometry first, transported coefficients second** as an operating gate:
+
+1. Establish the source-derived carrier or support, labelled generators, and
+   defining maps before identifying a coefficient object from ranks,
+   characters, images, or reduced representatives.
+2. Verify that the proposed object and its defining maps are preserved by the
+   relevant parameter transport. Only afterward may it be treated as a
+   module, local system, supported class, or physical coefficient object.
+3. Treat row reduction, equal dimensions, matching characters, and equal
+   images under a functor as diagnostics only. They do not preserve source
+   identity and do not authorize identifying two source objects.
+4. If the source or transport gate fails, record the exact residual and
+   withdraw the stronger interpretation. Do not fit a quotient, corrective
+   cell, or higher homotopy merely to restore the desired rank or square-zero
+   identity.
+
+In short:
+
+\[
+\text{source geometry/support}
+\longrightarrow
+\text{typed coefficient object}
+\longrightarrow
+\text{transport/coherence}
+\longrightarrow
+\text{quotient or physical readout}.
+\]
+
+### Cherish the oddball
+
+When a result refuses to fit, do not smooth it away. An unexpected residual,
+rank jump, broken symmetry, exceptional locus, convention mismatch,
+performance discontinuity, or cross-sector coincidence may expose either a
+defect or new structure. Give the oddball deliberate attention, then triage it
+as one of:
+
+1. a known defect, which must be repaired and verified under the no-carpets
+   rule;
+2. expected behavior, which should be explained from the governing structure;
+3. an unresolved observation, whose exact evidence must be preserved and
+   routed for bounded future exploration.
+
+Record an unresolved observation in the owning research packet or epistemic
+graph when it is reproducible, structurally surprising, or capable of changing
+a conclusion. State what was observed, how it was reproduced, why it may
+matter, and the cheapest discriminating test. Do not silently absorb it into a
+convention, fit it away, or promote it to a claim. Casual curiosities that meet
+none of these gates do not require durable recording.
 
 ## Ledger entries
 
