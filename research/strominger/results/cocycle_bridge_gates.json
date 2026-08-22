@@ -1,0 +1,148 @@
+{
+  "checker": "cocycle_bridge_gates_checks",
+  "author": "marici.Strominger",
+  "date": "2026-08-22",
+  "engine": "sympy",
+  "checks": [
+    {
+      "id": "C1.1",
+      "group": "C1",
+      "statement": "cocycle determinant-line relation: F sigma(F) = (z zb)^-2 exactly, with F = (1+z zbk)(zb-zbk)/(z^2 (1+zb zk)(z-zk)) (symbolic)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C1.2",
+      "group": "C1",
+      "statement": "P-covariance of the coefficient line (re-derived from the per-leg Weinberg kernels, legs fixed): alpha(K+) = F K-, P(K+) = sigma(F) K+, P(K-) = F K- exactly (symbolic)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C1.3",
+      "group": "C1",
+      "statement": "1-cocycle condition making the twisted Z2 action well-defined: alpha(F) sigma(F) = 1 exactly, and applying the twisted P twice returns each kernel: P(sigma(F) K+) - K+ = 0 and P(F K-) - K- = 0 (composition uses alpha.sigma(F) = alpha(F) since P.sigma = alpha; legs fixed, symbolic)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C1.4",
+      "group": "C1",
+      "statement": "exact witness values at the FRESH point W2 = (z, zb, zk, zbk) = (3, 2/7, 5/3, 11/13): all denominators of F and sigma(F) are nonzero there, and F sigma(F) evaluates to (z zb)^-2 = 49/36",
+      "status": "pass",
+      "detail": "denominators: {'z^2': 9, '1+zb zk': 31/21, 'z-zk': 4/3, 'zb^2': 4/49, '1+z zbk': 46/13, 'zb-zbk': -51/91}; F|W2 = -1173/10478; sigma(F)|W2 = -256711/21114; F sigma(F)|W2 = 49/36"
+    },
+    {
+      "id": "C1.5",
+      "group": "C1",
+      "statement": "square-root existence gate: the diagonal character (z zb)^-2 = ((z zb)^-1)^2 with the root (z zb)^-1 exactly sigma-invariant, and F sigma(F) = ((z zb)^-1)^2 exactly; even exponent parity permits the cocycle square root, while an odd-exponent character (z zb)^k (k = -3,-1,1,3) has no square root in Q(z zb) (valuation parity at u = 0) \u2014 an odd-parity obstruction character would forbid the diagonal cocycle entirely (candidate cross-sector selection rule)",
+      "status": "pass",
+      "detail": "sigma((z zb)^-1) = 1/(z*zb); ((z zb)^-1)^2 = (z zb)^-2 exact; odd k tested: (-3,-1,1,3)"
+    },
+    {
+      "id": "C2.1",
+      "group": "C2",
+      "statement": "rung 0 electric (fresh field): for the real test news N2 = z zb (z+zb)^2/(1+z zb)^2 the shear pair (D_z^2 N2, D_zb^2 N2) is sigma-exchanged, the density D_z^2 N2 + D_zb^2 N2 is sigma-even and nonzero at W2",
+      "status": "pass",
+      "detail": "N2 = z zb (z+zb)^2/(1+z zb)^2; dens0|W2 = -249862/28561"
+    },
+    {
+      "id": "C2.2",
+      "group": "C2",
+      "statement": "rung 1 magnetic (fresh field): sigma(d_zb D_z^3 C_zz) = d_z D_zb^3 C_zbzb exactly for the N2 shear, so the magnetic combination M = d_zb D_z^3 C_zz - d_z D_zb^3 C_zbzb is sigma-odd and nonzero at W2",
+      "status": "pass",
+      "detail": "M|W2 = -38543400/371293"
+    },
+    {
+      "id": "C2.3",
+      "group": "C2",
+      "statement": "rung 2 electric (fresh scalar): for the CL16-style divergence-free datum X^A = eps^{AB} d_B chi2 of the real scalar chi2 = z zb (z+zb)/(1+z zb)^2, sigma(D_z X_z) = D_zb X_zb exactly and the density D_z X_z + D_zb X_zb is sigma-even and nonzero at W2",
+      "status": "pass",
+      "detail": "chi2 = z zb (z+zb)/(1+z zb)^2; dens2|W2 = 116508*I/28561"
+    },
+    {
+      "id": "C2.4",
+      "group": "C2",
+      "statement": "unique diagonal-even rung at fresh data: chi_sigma = [+1,-1,+1] from C2.1-C2.3; chi_alpha = -1 uniformly (sphere-scalar density; re-derived antipodal Jacobian det J = -1/(x^2+y^2)^2, orientation reversal as in D3.2); diagonal products chi_alpha*chi_sigma = [-1,+1,-1] \u2014 exactly one rung has product +1 and it is rung 1 (magnetic)",
+      "status": "pass",
+      "detail": "det J = -1/(x**4 + 2*x**2*y**2 + y**4); products = [-1, 1, -1]"
+    },
+    {
+      "id": "C3.1",
+      "group": "C3",
+      "statement": "character-forbidding gate: the gravitational diagonal-product vector [-1,+1,-1] differs from the declared Carrier/fusion conductor-rung character [+1,+1,+1] (ev-2100 packet) \u2014 no character-preserving identification of the full coefficient lines exists (exact integer bookkeeping; not even a rung permutation can match them). The vectors differ in exactly the two ELECTRIC entries (Hamming distance 2) and agree ONLY at rung 1 \u2014 the unique rung where a character-preserving comparison could land is the magnetic one (cf. C3.3)",
+      "status": "pass",
+      "detail": "gravitational: [-1, 1, -1]; Carrier: [1, 1, 1]; Hamming distance = 2; agreeing rungs = [1]"
+    },
+    {
+      "id": "C3.2",
+      "group": "C3",
+      "statement": "anchor gate (CORRECTED to the true computed statements): on the exact P-symmetric spin-2 datum C_zz = (z zb + (z zb)^-1)/z^2, C_zbzb = sigma(C_zz) \u2014 (i) datum invariance as a spin-2 tensor: P(C_zz) = z^4 C_zz, P(C_zbzb) = zb^4 C_zbzb; (ii) the magnetic readout M = d_zb D_z^3 C_zz - d_z D_zb^3 C_zbzb is sigma-odd (chi_sigma = -1); (iii) EXACT diagonal covariance law: P(d_zb D_z^3 C_zz) = z^10 zb^2 d_zb D_z^3 C_zz and P(d_z D_zb^3 C_zbzb) = z^2 zb^10 d_z D_zb^3 C_zbzb (sigma-conjugate tensor weights), hence P maps the magnetic sigma-line to itself: sigma(P(M)) + P(M) = 0; (iv) the unique P-even dilation-frame dressing vanishes identically on the P-invariant datum: z^5 zb A - z zb^5 B = 0, i.e. z^4 d_zb D_z^3 C_zz = zb^4 d_z D_zb^3 C_zbzb exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C3.2!",
+      "group": "C3",
+      "statement": "typed obstruction: the naive specced identity P(M) - M = 0 for the RAW PSZ magnetic readout FAILS \u2014 the two terms carry different diagonal tensor weights (z^10 zb^2 vs z^2 zb^10), so no pointwise P-definite raw magnetic combination exists; residual recorded at the fresh witness W2",
+      "status": "pass",
+      "detail": "residual retained: 91712801267753425/13064352970032"
+    },
+    {
+      "id": "C3.2b",
+      "group": "C3",
+      "statement": "anchor gate contrast at W2: the magnetic readout M itself is nonzero at the fresh witness, and the electric combination E = d_zb D_z^3 C_zz + d_z D_zb^3 C_zbzb is NOT P-invariant at W2 (typed contrast to the magnetic line's diagonal covariance)",
+      "status": "pass",
+      "detail": "M|W2 = -558186307585/111045168; (P(E)-E)|W2 = -3048757028445173/1004950228464"
+    },
+    {
+      "id": "C3.3",
+      "group": "C3",
+      "statement": "intertwining gate form: on the readout-line space Q^3 = span{rung 0, rung 1, rung 2} the diagonal character matrix diag(-1,+1,-1) has +1-eigenspace of dimension EXACTLY 1, spanned by rung 1 (e_1 = (0,1,0)); therefore any comparison map from a Carrier diagonal-invariant object (uniform character +1) must land in the spin-grade (magnetic) sector \u2014 dimension count = 1 (exact rational linear algebra)",
+      "status": "pass",
+      "detail": "+1-eigenspace basis: [[0, 1, 0]]"
+    },
+    {
+      "id": "C3.4",
+      "group": "C3",
+      "statement": "unified P-covariance theorem: on the P-invariant datum the raw magnetic readout and the electric combination are P-covariant with single characters, P(M) = -(z zb)^6 M and P(E) = +(z zb)^6 E exactly (the separate weights z^10 zb^2 and z^2 zb^10 collapse via z^4 A = zb^4 B); closed-form obstruction P(M) - M = -(1 + (z zb)^6) M",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C3.4b",
+      "group": "C3",
+      "statement": "closed form explains the W2 residual factorization: (P(M)-M)|W2 / M|W2 = -(1 + (6/7)^6) = -164305/117649 exactly \u2014 the C3.2! numerator being a multiple of M|W2's numerator is structural, not coincidental",
+      "status": "pass",
+      "detail": "ratio = -164305/117649; expected = -164305/117649"
+    },
+    {
+      "id": "C3.5",
+      "group": "C3",
+      "statement": "sign-vector-free anchor characterization (Nima's test): the magnetic rung is uniquely characterized WITHOUT either sign vector as the unique sigma-odd rung (pattern [+1,-1,+1] from C2.1-C2.3; with chi_alpha = -1 uniform the unique diagonal-even rung equals the unique sigma-odd rung); every rung permutation preserving the admitted sigma-parity data fixes rung 1, so no data-preserving symmetry can move the anchor \u2014 the C3.1 cross-sector agreement at rung 1 is structural, not accidental",
+      "status": "pass",
+      "detail": "sigma-parity [1, -1, 1]; data-preserving permutations [(0, 1, 2), (2, 1, 0)]; all fix rung 1: True"
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "failed_ids": [],
+    "classification": {
+      "cocycle_object": "P(K+) = sigma(F) K+, P(K-) = F K-, F sigma(F) = (z zb)^-2, alpha(F) sigma(F) = 1; twisted action involutive (C1.1-C1.3); exact witness values at W2 = (3, 2/7, 5/3, 11/13): F = -1173/10478, sigma(F) = -256711/21114, product 49/36 (C1.4); square-root gate: character (z zb)^-2 = ((z zb)^-1)^2, sigma-invariant root, even-parity existence rule (C1.5)",
+      "rung_staircase_fresh": "chi_sigma = [+1,-1,+1] re-verified on fresh fields (N2 = z zb (z+zb)^2/(1+z zb)^2, chi2 = z zb (z+zb)/(1+z zb)^2); diagonal products [-1,+1,-1]; unique diagonal-even rung = 1 (C2)",
+      "bridge_gates": {
+        "character_forbidding": "gravitational [-1,+1,-1] != Carrier [+1,+1,+1], Hamming 2, agreement only at rung 1 (C3.1)",
+        "anchor": "exact diagonal covariance P(A) = z^10 zb^2 A, P(B) = z^2 zb^10 B on a P-invariant spin-2 datum; magnetic sigma-line P-stable; naive pointwise P(M) = M false (C3.2, C3.2!)",
+        "intertwining": "+1-eigenspace of diag(-1,+1,-1) is 1-dimensional, spanned by rung 1 (C3.3)",
+        "unified_covariance": "P(M) = -(z zb)^6 M and P(E) = +(z zb)^6 E exactly; closed-form obstruction P(M) - M = -(1 + (z zb)^6) M (C3.4, C3.4b)",
+        "anchor_characterization": "rung 1 is the unique sigma-odd rung; every rung permutation preserving the admitted data fixes it; the C3.1 agreement is structural (C3.5)"
+      },
+      "design_corrections": [
+        "C3.2 as specced (P(M) - M = 0 for the raw PSZ magnetic readout on a P-symmetric datum) is FALSE: on a P-invariant spin-2 datum the two readout terms carry different diagonal tensor weights (z^10 zb^2 vs z^2 zb^10), no pointwise P-definite raw magnetic combination exists (33-datum scan found none), and the unique P-even dilation-frame dressing z^5 zb A - z zb^5 B vanishes identically on P-invariant data. Replaced by the true exact identities asserted in C3.2 (datum tensor invariance, sigma-oddness, diagonal covariance law, P-stability of the magnetic line, z^4 A = zb^4 B identity); the failed naive identity is retained as typed obstruction C3.2! with the exact residual at W2."
+      ]
+    }
+  },
+  "verdict": "cocycle object certified standalone: P(K+) = sigma(F) K+, P(K-) = F K-, F sigma(F) = (z zb)^-2 = ((z zb)^-1)^2 (square-root gate, C1.5), twisted Z2 action involutive via alpha(F) sigma(F) = 1 (C1); rung sigma-staircase re-verified on fresh fields with unique diagonal-even rung 1 (products [-1,+1,-1]) (C2); bridge gates: no character-preserving identification with the Carrier conductor rungs ([-1,+1,-1] != [+1,+1,+1]) (C3.1), magnetic line anchored by the exact diagonal covariance law with the naive pointwise invariance corrected to a typed obstruction (C3.2, C3.2!), the +1-character subspace is exactly 1-dimensional spanned by rung 1 (C3.3), the unified covariance theorem P(M) = -(z zb)^6 M, P(E) = +(z zb)^6 E with closed-form obstruction P(M) - M = -(1 + (z zb)^6) M (C3.4), and the anchor is characterized sign-vector-free as the unique sigma-odd rung which no data-preserving rung permutation can move (C3.5)."
+}

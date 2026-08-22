@@ -1,0 +1,173 @@
+{
+  "checker": "descent_gate_exact_checks",
+  "author": "marici.Strominger",
+  "date": "2026-08-22",
+  "engine": "sympy",
+  "checks": [
+    {
+      "id": "D1.1",
+      "group": "D1",
+      "statement": "sigma(eps+) = c eps- with the constant c = +1 computed symbolically componentwise (and sigma(eps-) = eps+)",
+      "status": "pass",
+      "detail": "c = 1"
+    },
+    {
+      "id": "D1.2",
+      "group": "D1",
+      "statement": "sigma(K_k^+) = K_k^- exactly: sigma of the per-leg Weinberg kernel with eps+ is the kernel with eps-",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D1.3",
+      "group": "D1",
+      "statement": "little-group weight: K_k^+/- are homogeneous of degree exactly 2 in eps+/- (eps -> t eps gives t^2 K)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D1.4",
+      "group": "D1",
+      "statement": "S+ + S- is sigma-even and S+ - S- is sigma-odd, both nonzero at the exact witness (z,zb,zk,zbk) = (2, 3/5, 1/3, 7/5) with om, Ek, kap symbolic",
+      "status": "pass",
+      "detail": "S+ + S- |W = 769*Ek*kap/400; S+ - S- |W = -481*Ek*kap/400"
+    },
+    {
+      "id": "D2.1",
+      "group": "D2",
+      "statement": "rung 0 electric: the leading readout pair (D_z^2 N, D_zb^2 N) of a real test news field is sigma-exchanged, so the density D_z^2 N + D_zb^2 N is sigma-even and nonzero",
+      "status": "pass",
+      "detail": "test field N = z zb (z+zb)/(1+z zb)"
+    },
+    {
+      "id": "D2.2",
+      "group": "D2",
+      "statement": "rung 1 magnetic: sigma(d_zb D_z^3 C_zz) = d_z D_zb^3 C_zbzb exactly, and the two sides DIFFER at the witness \u2014 the Im in PSZ (5.2) is a genuine parity projection (re-certifies S9.1)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D2.3",
+      "group": "D2",
+      "statement": "rung 2 electric: for the CL16-style divergence-free datum X^A = eps^{AB} d_B chi of a real scalar chi, sigma(D_z X_z) = D_zb X_zb exactly (both witnesses)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D2.4",
+      "group": "D2",
+      "statement": "character-table assertion: chi_sigma(rung r) = (-1)^r for r = 0, 1, 2 \u2014 exact sign bookkeeping of D2.1 (electric, +1), D2.2 (magnetic, -1), D2.3 (electric, +1)",
+      "status": "pass",
+      "detail": "chi_sigma = [1, -1, 1]"
+    },
+    {
+      "id": "D3.1",
+      "group": "D3",
+      "statement": "antipodal map alpha: z -> -1/zb sends xhat -> -xhat (re-certifies G1.5)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D3.2",
+      "group": "D3",
+      "statement": "in real stereographic coordinates alpha acts as (x,y) -> (-x/(x^2+y^2), -y/(x^2+y^2)) with Jacobian determinant exactly -1/(x^2+y^2)^2 (orientation reversal, degree -1)",
+      "status": "pass",
+      "detail": "det J = -1/(x**4 + 2*x**2*y**2 + y**4)"
+    },
+    {
+      "id": "D3.3",
+      "group": "D3",
+      "statement": "antipodal kernel factor: K_k^+(alpha(z); zk, zbk) / K_k^+(z; zk, zbk) = (1+z zbk)(z-zk) / (z^2 (1+zb zk) (zb-zbk)) exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D3.4",
+      "group": "D3",
+      "statement": "diagonal action P = alpha.sigma on the helicity doublet (legs fixed): exact cocycle identities P(K+) = sigma(F) K+, P(K-) = F K- with F = (1+z zbk)(zb-zbk)/(z^2 (1+zb zk)(z-zk)), and the determinant-line relation F sigma(F) = (z zb)^-2 (CORRECTION to the designed invariance statement: P is covariant with cocycle, not invariant)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D3.4!",
+      "group": "D3",
+      "statement": "typed obstruction: naive diagonal invariance FAILS per leg \u2014 P(S+ + S-) - (S+ + S-) is nonzero at the exact witness; the coefficient line is not fixed by the diagonal action at fixed legs (physical parity invariance needs the antipodal leg matching / momentum-conservation input, as in G2.9/G5.3)",
+      "status": "pass",
+      "detail": "residual retained: -48247*Ek*kap/15200"
+    },
+    {
+      "id": "D3.5",
+      "group": "D3",
+      "statement": "2x2 character census \u2014 rung 0 displacement/electric: (chi_alpha, chi_sigma) = (-1, +1), product -1; rung 1 spin/magnetic: (-1, -1), product +1; rung 2 ballistic/electric: (-1, +1), product -1. ANSWER to the diagonal-invariance question (collaborator Nima): the coefficient line is NOT invariant under the diagonal action P = alpha.sigma on the electric rungs 0 and 2 (product character -1); only the magnetic rung 1 is diagonal-even (product +1). Computed, not forced.",
+      "status": "pass",
+      "detail": "products chi_alpha*chi_sigma = [-1, 1, -1]"
+    },
+    {
+      "id": "D3.6",
+      "group": "D3",
+      "statement": "orientation factorization Or(I): chi_generator = (+1,-1), chi_{S^2} = (-1,+1) under (P,T), hence det Or(I) = (-1,-1) exactly",
+      "status": "pass",
+      "detail": "det Or(I) = (-1, -1)"
+    },
+    {
+      "id": "D4.1",
+      "group": "D4",
+      "statement": "soft-residue map: p.q is linear in om (degree exactly 1), the single prefactor om cancels it, and the extracted residue K_k^+/- = om (p.eps)^2/(p.q) is om-independent, equal to the declared kernels -E (zb-zbk)(1+z zb)/((z-zk)(1+zk zbk)) and its conjugate (finite om -> 0 limit by inspection)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D4.2",
+      "group": "D4",
+      "statement": "graviton projector: with h = diag(1,-1), H_tot = kron(h,I2)+kron(I2,h) on (++ , +-, -+, --), Pi = H_tot^2/4 = diag(1,0,0,1) is idempotent, rank 2, and invariant under H_tot -> -H_tot",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D4.3",
+      "group": "D4",
+      "statement": "parity on the graviton doublet G_grav = span{++, --} acts as the 2x2 swap matrix with determinant exactly -1 (determinant-line character)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D4.4",
+      "group": "D4",
+      "statement": "sigma acts on the radiative doublet (C_zz, C_zbzb) as the swap: det = -1, the electric combination (1,1) has eigenvalue +1 and the sigma-odd magnetic combination (1,-1) has eigenvalue -1 \u2014 exact 2x2 arithmetic",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "D4.5",
+      "group": "D4",
+      "statement": "verdict: the chain 'helicity coefficient line -> soft residue -> BMS/memory orientation' is certified with the normalization triple (kap/2, 1/(8 pi G), 1) real and sigma-even; scaffold/label transport (alpha, direction exchange) is NOT physical parity (sigma, helicity conjugation) \u2014 typed non-identification; the physical parity on I+ is the diagonal P = alpha . sigma, under which the per-leg coefficient line transforms by the D3.4 cocycle (covariant, not invariant)",
+      "status": "pass",
+      "detail": "evidence: D1.1-D4.4 exact; cocycle F = (1+z zbk)(zb-zbk)/(z^2 (1+zb zk)(z-zk))"
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "failed_ids": [],
+    "classification": {
+      "helicity_line": "sigma exchanges the two helicity coefficient lines exactly (D1.1-D1.3); S+ +/- S- is the sigma-even/odd decomposition (D1.4)",
+      "rung_staircase": "chi_sigma(rung r) = (-1)^r for r = 0,1,2 on exact sigma-symmetric test fields (D2.1-D2.4)",
+      "antipodal_factor": "K+(alpha z)/K+(z) = (1+z zbk)(z-zk)/(z^2 (1+zb zk)(zb-zbk)) (D3.3)",
+      "diagonal_census": {
+        "table": "rung 0 displacement/electric: (chi_alpha, chi_sigma) = (-1, +1), product -1; rung 1 spin/magnetic: (-1, -1), product +1; rung 2 ballistic/electric: (-1, +1), product -1",
+        "products": [
+          -1,
+          1,
+          -1
+        ],
+        "answer": "coefficient line NOT diagonal-invariant on electric rungs 0,2; magnetic rung 1 is diagonal-even (D3.5)"
+      },
+      "orientation_factorization": "det Or(I) = (-1,-1) from chi_gen = (+1,-1), chi_{S^2} = (-1,+1) (D3.6)",
+      "design_corrections": [
+        "D3.4 as designed (P(S+ + S-) = S+ + S- at fixed legs) does NOT hold; the true identities are the exact cocycle relations P(K+) = sigma(F) K+, P(K-) = F K- with F sigma(F) = (z zb)^-2, asserted in D3.4; the failed naive identity is retained as typed obstruction D3.4!"
+      ]
+    }
+  },
+  "verdict": "helicity line decomposition verified: sigma(K+) = K- with weight 2, S+ +/- S- sigma-even/odd (D1); rung sigma-staircase chi_sigma = (-1)^r, r = 0,1,2 (D2); antipodal kernel factor K+(alpha z)/K+(z) = (1+z zbk)(z-zk)/(z^2 (1+zb zk)(zb-zbk)) (D3.3); diagonal-character table rung 0 displacement/electric: (chi_alpha, chi_sigma) = (-1, +1), product -1; rung 1 spin/magnetic: (-1, -1), product +1; rung 2 ballistic/electric: (-1, +1), product -1 \u2014 answer: the coefficient line is NOT diagonal-invariant on electric rungs 0,2 and is diagonal-even on magnetic rung 1 (D3.5); Or(I) factorization det = (-1,-1) (D3.6); DESIGN CORRECTION at D3.4: naive per-leg diagonal invariance fails, replaced by the exact cocycle identity with F sigma(F) = (z zb)^-2."
+}
