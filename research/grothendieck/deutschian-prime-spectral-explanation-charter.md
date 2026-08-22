@@ -2324,3 +2324,205 @@ Cauchy tail is below `0.007863`, so the quarter-disk nonvanishing condition
 and hence pointwise reciprocal-slope concavity on the first positive-width
 cell are now certified. See
 `central-F-prime-unit-disk-theta-coarse-certificate.md`.
+
+The centered directed Xi-log jet has now been extended through order 61,
+giving `H=(F')^(-1/2)` through degree 11. On `[0,0.01]` the remaining Cauchy
+series has ratio at most `0.04`. Directed polynomial evaluation plus the exact
+geometric tail upgrades all 78 certified chord averages, and the independent
+boundary value closes `[0,10^-8]`. Hence `H''(t)<0` for every
+`0<=t<=0.01`. This is the first full continuum coupled-positivity theorem of
+the program, still local and not RH. See
+`central-reciprocal-slope-continuum-concavity-theorem.md`.
+
+The long-horizon target is now sharpened as arithmetic Loewner kernel
+completion: construct a zero-free source Gram factorization
+`K_F(x,y)=R(x)^*R(y)` whose minimal completion supplies the self-adjoint
+resolvent, completed-Xi determinant, and prime-power trace formula. A negative
+finite minor, incompatible compression, nonclosability, or determinant/trace
+mismatch kills it. The first genuinely separated central rank-three test at
+`(0,0.005,0.01)` is directed-positive, with determinant in
+`[8.0788e-34,9.3302e-34]`. See
+`arithmetic-loewner-kernel-completion-conjecture.md` and
+`central-separated-rank-three-loewner-certificate.md`.
+
+The separated test now covers all 165 triples on
+`{0,0.001,...,0.01}`. Every directed rank-three determinant is positive; the
+weakest, at `(0.008,0.009,0.01)`, exceeds `5.5699262074e-38`. This is a hostile
+overlapping compression test, not a continuum rank-three theorem.
+
+Newton divided-difference elimination now upgrades that grid result to the
+continuum. After dividing by the squared Vandermonde, the rank-three
+determinant is the determinant of a mixed-divided-difference matrix. One
+directed derivative box over `[0,0.01]^2`, with the degree-23 Cauchy tail,
+places the normalized determinant in
+`[1.3413135748e-20,1.4441125285e-20]`. Thus every distinct triple in the
+central interval is strictly positive, including nonnegative confluent
+limits. Rank four is the next finite falsifier. See
+`rank-three-loewner-vandermonde-continuum-reduction.md`.
+
+The first rank-four natural-box attack is deliberately unresolved. Its
+Vandermonde-normalized determinant box is about `+-1.12e-36`, whereas the
+center value is positive near `3.02e-39`. The loss is entry-correlation, not
+source-tail error. Rank four therefore requires correlated Schur pivots or an
+ordered-simplex subdivision.
+
+The correlated Newton repair succeeds on the complete central rank-four grid.
+Using complete homogeneous symmetric polynomials for monomial divided
+differences, all 330 quadruples are directed-positive. The weakest normalized
+determinant is above `3.0190646591e-39` at
+`(0.007,0.008,0.009,0.01)`. The remaining gate is continuum interpolation on
+the ordered four-node simplex.
+
+That interpolation gate is now closed. All 1001 nondecreasing anchors,
+including collisions, are positive. Directed derivatives of the Newton
+complete-homogeneous representation bound nearest-grid transport by
+`3.66295e-41`, leaving the uniform normalized rank-four lower bound
+`2.98214e-39`. Thus continuum rank four holds on `[0,0.01]`; rank five is the
+next finite obstruction.
+
+Rank five initially exposed a different failure mode: the degree-23 Cauchy
+tail for the eighth mixed derivative exceeded the true final pivot. Extending
+`F` through degree 29 reduces that tail below `1.84e-33`. Newton--`LDL*` then
+certifies all 462 distinct grid quintuples; the weakest final pivot is above
+`6.6652565650e-26`. Repeated-node anchors and continuum transport remain.
+
+All 3003 repeated and separated anchors now pass as well. The weakest final
+pivot is above `6.6651134944e-26` at the fully confluent upper endpoint.
+However, adjugate transport of the normalized determinant costs `3.28366e-60`
+against determinant margin `2.01205e-64`; it loses four orders. Continuum rank
+five must transport the stable `LDL*` pivots directly.
+
+Direct pivot differentiation now succeeds at the weakest anchor. The
+half-grid linearized cost is below `9.185e-31` against fifth-pivot margin
+`6.665e-26`, a safety factor above 72,000. A cellwise derivative enclosure is
+the sole remaining central rank-five continuum gate.
+
+Natural interval extension over the weakest half-grid cell fails conditioning:
+the fifth pivot becomes roughly `[-2.91e-21,1.97e-23]`. Since subdivision to
+the required scale would be impractical, the next carrier must propagate
+shared node displacements symbolically in a centered affine/Taylor `LDL*`
+model.
+
+The centered five-variable pivot jet now runs through degree five. Its box
+budgets decay from `8.99e-31` to `6.86e-52`, roughly `5e-6` per degree. This
+supports the carrier choice but remains midpoint reconnaissance until the
+coefficient intervals and rational remainder majorant are directed.
+
+The finite-polynomial qualification is now discharged: directed coefficient
+intervals through Taylor degree five preserve margin `6.6650237584e-26` for
+the degree-29 source. The omitted analytic source tail and the infinite
+rational `LDL*` remainder remain separate open obligations.
+
+Falling-factorial Cauchy bounds now inject the omitted source into every
+Taylor coefficient through degree five. The remaining directed margin is
+`6.6650083764e-26`; only the degree-six-and-higher combined source/rational
+majorant remains.
+
+An a posteriori residual Taylor algebra now closes that majorant on the full
+endpoint cell. The certified fifth-pivot lower bound is `6.6649067122e-26`,
+including source and rational tails. Uniformization over the other ordered
+cells is the remaining rank-five gate.
+
+The uniformization problem now has a scalar candidate. Across all 3003 grid
+anchors, every one of the 15,015 numerical fifth-pivot coordinate derivatives
+has negative sampled sign. The former `6.77e-29` extremal claim is withdrawn:
+binary differencing at that scale suffers cancellation. Direct analytic
+interval differentiation at `(0.003,0.003,0.003,0.01,0.01)` instead proves all
+five derivatives negative, with upper endpoints between `-1.35e-28` and
+`-1.22e-27`. Directed coordinatewise monotonicity would make the certified
+upper endpoint cell the global minimum. See
+`rank-five-pivot-coordinate-monotonicity-target.md`.
+
+The complete directed anchor audit now replaces that reconnaissance. All
+15,015 coordinate derivatives at all 3003 nondecreasing anchors are strictly
+negative with analytic tails included. The closest upper endpoint to zero is
+`-1.3533618854e-28`, at the fully confluent upper endpoint. Consequently the
+sole monotonicity gate is a between-anchor derivative Taylor bound smaller
+than this margin; discrete sign uncertainty has been eliminated.
+
+The naive derivative of the endpoint Taylor box does not close that gate: its
+absolute coefficient budget is `2.08e-28`, larger than the margin. This is an
+enclosure failure rather than observed sign failure. Direct intervals at all
+six ordered vertices of `[0.0095,0.01]^5` remain negative and vary only around
+`2.5e-33` in their closest upper endpoints. A directly propagated pivot
+Hessian, retaining ordered-node dependence and a single source-tail bound, is
+the next falsifier.
+
+That Hessian falsifier identifies source depth as the controlling resource.
+With `F` only through degree 29, the twice-differentiated Cauchy tail gives
+useless row sums near `2.94e-22`. Recomputing the directed Xi-log jet through
+order 81 yields `F` through degree 39; the endpoint-anchor Hessian row sums
+collapse to `4.32e-30`--`4.56e-29`, corresponding to half-grid derivative
+variation at most `2.28e-32`. The remaining obligation is to make this a
+uniform Hessian bound on the endpoint cell, then transport the same argument
+over the other cells.
+
+The correlated endpoint Taylor jet with this deeper source closes the finite
+part of that supremum estimate. Taylor degrees 3--5 change any Hessian row sum
+by at most `6.4272e-34`; the degreewise maxima decay from `6.43e-34` to
+`6.02e-39` to `7.42e-43`. Only an all-orders Hessian remainder from degree six
+onward remains before the endpoint cell has rigorous coordinatewise pivot
+monotonicity.
+
+The directed jet now reaches degree seven. Degrees six and seven contribute
+only `1.14e-42` and `1.43e-42`; their non-geometric floor comes from repeated
+coefficientwise source-tail enclosures. Hence the remaining degree-eight-and-
+higher proof must use one analytic tail majorant propagated through the
+rational recurrence, as in the earlier pivot-value certificate.
+
+The aggregated `C^2` remainder propagation closes that obligation. Its final
+degree-eight-and-higher Hessian bound is `1.6707041856e-41`; adding it to the
+anchor Hessian and finite correlated variation gives half-cell derivative
+transport below `2.279e-32`, over 5,900 times smaller than the sign margin.
+Thus coordinatewise negativity, and therefore pivot monotonicity, now holds
+throughout the complete endpoint cell. The remaining rank-five task is to
+uniformize this `C^2` certificate over the other ordered half-grid cells.
+
+The first global stress test audits every fully confluent grid anchor. Their
+maximum Hessian row sum decreases from `4.55802e-29` at zero to `4.55609e-29`
+at the upper endpoint. Thus neither boundary creates curvature inflation; the
+remaining hostile family consists of mixed-node anchors.
+
+The mixed-node audit now covers both extremes. All 462 distinct anchors and
+all 231 anchors with at most two distinct values have directed Hessian row
+sums below `4.55802e-29`; the global hostile case among these 693 anchors is
+the fully confluent zero anchor. Only three- and four-value collision strata
+remain before the discrete Hessian ceiling is complete.
+
+The discrete Hessian ceiling is now complete. Partitioning by number of
+distinct values covers `231 + 990 + 1320 + 462 = 3003` anchors. Every directed
+Hessian succeeds, and the global maximum row sum is `4.5580195455e-29` at the
+fully confluent zero anchor. The last continuum rank-five monotonicity gate is
+only the Hessian variation between an anchor and its half-grid cell.
+
+The simplest natural-box Hessian transport is rejected: even on the endpoint
+cell it inflates to `4.92e-21`, far above the allowed ceiling. The correlated
+route gains a useful global input, however: a refreshed 3003-anchor pivot audit
+shows every one of the five pivot minima occurs at the fully confluent upper
+endpoint. Hence the already certified endpoint denominators are the worst
+discrete rational conditioning; only their within-cell stability remains.
+
+Determinant ratios now remove that apparent stability obligation. Directed
+continuum `Q_2,Q_3,Q_4` bounds plus Hadamard upper bounds yield global floors
+`d_1>9.2454e-2`, `d_2>3.3764e-7`, `d_3>2.5127e-13`, and
+`d_4>4.3406e-21`. However a cancellation-free global `C^3` norm explodes to
+`3.53e112`. Hence the remaining third-derivative proof must retain local
+Taylor correlations; global absolute Schur norms are formally available but
+useless.
+
+Correlated degree-three jets recover the non-pathological scale: four extreme
+and hostile anchors have third-tensor `l1` bounds near `1.801e-30`, twelve
+million times below the sufficient global threshold. Degree four changes that
+tensor by only `3.294e-35` across either extreme half-cell. This strongly
+separates the mathematics from the failed absolute norm, but an all-orders
+tail and a non-naive uniformization across cell centers remain required.
+
+### 2026-08-22: central rank-five continuum gate closed
+
+A binary lower/upper partition of each coordinate has only six ordered
+patterns, so six radius-`.0025` correlated Taylor charts cover all 3,003
+half-grid cells. Their worst degree-five-and-higher third-tensor remainder is
+`1.312985e-29`; the worst full tensor bound is `1.493075e-29`, well below the
+predeclared `2.16e-23` falsifier. Directed mean-value transport then preserves
+all 15,015 negative anchor derivatives on the full ordered simplex. This is
+evidence for the finite central Loewner program, not RH.
