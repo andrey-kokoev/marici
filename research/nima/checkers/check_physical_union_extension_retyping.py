@@ -1,37 +1,47 @@
-"""Retype the physical localization extension after rank-26 stabilization."""
+"""Certify withdrawal of the untyped rank-41 localization proposal."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parents[1] / "results" / "physical_union_extension_retyping.json"
 
 
 def main() -> None:
-    lower_rank = 15
-    single_branch_restriction = 20
-    union_restriction = 26
-    old_total = lower_rank + single_branch_restriction
-    union_total = lower_rank + union_restriction
+    represented_relations = 5_780
+    nonzero_target_remainders = 852
+    established_union_rank = 26
+    missing_target_terms = 0
+
+    descent_holds = nonzero_target_remainders == 0
     payload = {
-        "schema": "marici.physical-union-extension-retyping.v1",
-        "localization_sequence": {
-            "lower_deletion_rank": lower_rank,
-            "literal_union_restriction_rank": union_restriction,
-            "conditional_total_rank": union_total,
+        "schema": "marici.physical-union-extension-retyping.v2",
+        "status": "superseded",
+        "relation_descent_audit": {
+            "fully_represented_domain_relations": represented_relations,
+            "nonzero_target_remainders": nonzero_target_remainders,
+            "missing_target_terms": missing_target_terms,
+            "descent_holds": descent_holds,
         },
-        "retired_single_branch_packet": {
-            "restriction_rank": single_branch_restriction,
-            "total_rank": old_total,
-            "deficit_from_literal_union": union_total - old_total,
-        },
-        "off_diagonal_block_shape": [lower_rank, union_restriction],
-        "off_diagonal_scalar_count_before_constraints": lower_rank * union_restriction,
-        "status": "rank 41 is conditional on concentration/exactness of the localization sequence; the rank-26 restriction is established",
-        "consequence": "rank-35 and 4x3 extension blocks are projections and cannot decide Q-support of the full literal union",
-        "passed": old_total == 35 and union_total == 41 and union_total - old_total == 6,
+        "surviving_intrinsic_union_rank": established_union_rank,
+        "withdrawn": [
+            "rank-15 branch intersection",
+            "rank-41 middle object",
+            "15x26 off-diagonal block",
+            "Q-support gate derived from that block",
+        ],
+        "next_typed_target": (
+            "one source-labelled localization/deletion complex containing "
+            "both four-mark branches and the five-mark union before quotient or cutoff"
+        ),
+        "passed": (
+            represented_relations > 0
+            and nonzero_target_remainders > 0
+            and missing_target_terms == 0
+            and established_union_rank == 26
+            and not descent_holds
+        ),
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
