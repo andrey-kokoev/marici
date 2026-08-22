@@ -175,6 +175,66 @@ Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
   gitignored (a venv pollutes the repo). Run checkers as
   `uv run --with sympy python research/<name>/checkers/<checker>.py`.
 
+### Operator intuition and falsification
+
+When an operator stimulus changes a research direction, priority, conjecture,
+method, or stopping condition, preserve it durably rather than relying on chat
+history. Admit a `marici:operator_stimulus` entity to the epistemic graph and,
+at a milestone, summarize it in the owning research packet or ledger entry.
+Do not record routine acknowledgments or every `go on` message.
+
+The stimulus record must keep these fields distinct:
+
+- timestamp, operator identity, and the operator's wording or a faithful
+  paraphrase;
+- stimulus mode (`intuition`, `question`, `pressure`, `objection`,
+  `prohibition`, or `priority`);
+- confidence modality exactly as reported (`sensed`, reasoned, uncertain,
+  etc.), without translating one modality into another;
+- research horizon and domain;
+- epistemic status (`non-evidential search direction`, constraint, or direct
+  instruction);
+- the bounded action or resource allocation it triggered;
+- links to resulting conjectures, tests, criticisms, supersessions, and the
+  eventual tested disposition.
+
+Follow `research/nima/operator-intuition-falsification-protocol.md`. Keep four
+objects distinct: the phenomenological stimulus report, its weakest
+falsifiable conjecture, the test/supersession chain, and the explanatory
+survivor. Operator confidence may justify bounded search pressure but never
+promotes a claim to evidence. Failed formulations are superseded explicitly,
+not silently reworded to match the survivor. Retrospective assessments append
+to the original stimulus record; they never overwrite it.
+
+### Outcome terminology gate
+
+`Outcome` has no primitive operating meaning in Marici. Do not use it as an
+untyped synonym for a possible future, mathematical branch, physical event,
+observed record, or uniquely actualized world. Choose the term that matches
+the demonstrated type:
+
+- `extension`: a lawful continuation in an extension space;
+- `alternative`: one member of an admitted effect decomposition;
+- `branch`: a component of a mathematical presentation;
+- `event`: a localized interaction defined by the sector;
+- `record`: a stable physical readout;
+- `effect value`: a state--effect pairing such as
+  `p_i = Tr(rho E_i)`;
+- `selected extension`: permitted only when a source-derived selection map is
+  explicitly present.
+
+Use `operational outcome` only as shorthand after naming the source, admitted
+effect, positive state--effect pairing, and physical record map. A probability
+assigned to an effect-indexed possible record does not by itself establish
+collapse, unique actuality, Everett branching, or observer-independent
+selection.
+
+Future-reference and probing-depth constructions address extension spaces,
+constraints, commitments, or record capabilities--never an untyped selected
+future. When reviewing historical claims, preserve their wording as immutable
+provenance and add an explicit criticism or superseding claim where `outcome`
+carried unsupported operating meaning; do not silently rewrite history.
+
 ### Long-running computations
 
 Every long-running or restart-sensitive computation needs a run manifest in an
