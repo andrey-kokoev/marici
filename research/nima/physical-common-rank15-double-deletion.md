@@ -144,13 +144,29 @@ The cheaper ambient-10 envelope assigns the same rank to parity \((0,0)\);
 that parity placement is therefore a truncation artifact, while the nonzero
 mixed-curvature rank is stable.
 
+Axis-separated export sharpens the meaning of that rank.  The rank-two object
+is the sum of the two directional coefficient images inside \(C_{26}\).  As a
+single map to \(T^*B\otimes C_{26}\), \(\Theta\) has rank one: both axes use
+the same primitive modular source covector \((3,0,121)\) on the last three
+**raw free rows**.  The former identification of those rows with the literal
+normal-jet graph generators was incorrect.  The raw rank-two parity block and
+the proposed supported graph block are disjoint rank-two subspaces, and the
+actual equation-(58) simple sector has nonzero \(\Theta\)-image.
+
 This is the decisive separation: moving transport cancels two of the three
 frozen defect directions but not the last one.  Consequently the finite
 physical localization comparison is not an ordinary morphism of connections.
 Its remaining two-component, directionwise rank-one mixed curvature is a
 genuine higher-coherence obstruction in the certified finite presentation.
-Any principal or homotopy cell proposed to repair localization must have this
-\(\Theta\) as its horizontal boundary.
+The later graph-principal proposal does not repair it: direct source-labelled
+substitution gives
+
+\[
+\operatorname{rank}\bigl(\Theta-(\Theta i)\pi_J\bigr)=1
+\]
+
+on each axis.  Any future principal or homotopy cell must first establish its
+own source-typed factorization rather than inherit the withdrawn one.
 
 The rank-level graph contract replicated at seven primes at the stabilized
 ambient-12, cutoff-6 envelope.  A prior stability audit found that the explicit
@@ -188,8 +204,10 @@ cutoffs 6 and 7 at prime 32003 and between primes 32003 and 32009 at cutoff 6;
 the stronger value/parity packet agrees across the independent cross-design
 pair (32009, cutoff 6) and (32003, cutoff 7).  A cheap aggregate checker
 certifies these packets without replaying the long eliminations.
-Characteristic-zero reconstruction and construction of the
-principal/normal coherence cell whose boundary is \(\Theta\) remain open.
+Characteristic-zero reconstruction remains open.  The attempted finite
+first-jet principal/normal coherence cell is audited and rejected in
+`research/nima/physical-theta-graph-principal-cell.md`; consequently its
+second-parameter-jet coherence is not a typed question.
 
 - `research/nima/checkers/check_physical_common_rank15_double_deletion.py`
 - `research/nima/results/physical_common_rank15_double_deletion.json`
@@ -206,3 +224,5 @@ principal/normal coherence cell whose boundary is \(\Theta\) remain open.
 - `research/nima/results/physical_moving_localization_horizontality_p*.json`
 - `research/nima/checkers/certify_physical_moving_localization_horizontality.py`
 - `research/nima/results/physical_moving_localization_horizontality_certificate.json`
+- `research/nima/checkers/certify_physical_theta_graph_cell.py`
+- `research/nima/results/physical_theta_graph_cell_certificate.json`
