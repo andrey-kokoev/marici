@@ -1,0 +1,155 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import '../../styles/frontier.css'
+import '../../styles/oddballs.css'
+import { currentOddballs, oddballRegistry, oddballReleases } from '../../lib/oddballs'
+
+const serialized = JSON.stringify(oddballReleases).replaceAll('<', '\\u003c')
+---
+
+<SiteLayout title="Oddball Observatory · Marici" description="A versioned census of reproducible anomalies and cross-sector structural recurrences.">
+  <section class="atlas-page oddball-page" aria-labelledby="oddball-title">
+    <header class="atlas-hero">
+      <div>
+        <p class="eyebrow">Cherish the oddball</p>
+        <h1 id="oddball-title">Oddball Observatory</h1>
+        <p class="lede">Reproducible structures that deserve attention but have not earned promotion to shared objects or physical claims.</p>
+      </div>
+      <aside class="atlas-current" aria-label="Current oddball release">
+        <span>Current census</span><strong>v{currentOddballs.version}</strong><p>{currentOddballs.label}</p>
+      </aside>
+    </header>
+
+    <nav class="observatory-boundary" aria-label="Relationship to research records">
+      <a href="/frontier/">Frontier Atlas: what comes next →</a>
+      <span>Oddballs: what refuses to disappear</span>
+      <a href="/graph/">Epistemic graph: typed authority →</a>
+    </nav>
+
+    <section class="atlas-controls" aria-label="Oddball version controls">
+      <label>Explore census version
+        <select id="oddball-version">
+          {oddballReleases.map((release) => <option value={release.version} selected={release.version === oddballRegistry.current}>v{release.version} · {release.label}</option>)}
+        </select>
+      </label>
+      <label>Compare against
+        <select id="oddball-compare">
+          <option value="">No comparison</option>
+          {oddballReleases.map((release) => <option value={release.version} selected={release.version === currentOddballs.supersedes}>v{release.version}</option>)}
+        </select>
+      </label>
+      <label>Sector
+        <select id="oddball-sector"><option value="">All sectors</option></select>
+      </label>
+      <button id="oddball-copy-link" type="button">Copy version link</button>
+    </section>
+    <p id="oddball-live-status" class="sr-only" aria-live="polite"></p>
+
+    {oddballReleases.map((release) => (
+      <article class="atlas-version" data-oddball-version={release.version} hidden={release.version !== oddballRegistry.current}>
+        <header class="release-header">
+          <div><p class="release-version">Census v{release.version} · {release.status}</p><h2>{release.label}</h2><p>{release.summary}</p></div>
+          <dl class="release-pins">
+            <div><dt>Released</dt><dd>{new Date(release.released_at).toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</dd></div>
+            <div><dt>Source baseline</dt><dd><code>{release.pins.git_commit.slice(0, 12)}</code></dd></div>
+            <div><dt>Ledger ceiling</dt><dd>{release.pins.ledger_sequence_ceiling}</dd></div>
+            <div><dt>Observations</dt><dd>{release.observations.length}</dd></div>
+          </dl>
+        </header>
+        <section class="release-changes"><h3>What changed</h3><ul>{release.changes.map((change) => <li>{change}</li>)}</ul></section>
+        <section class="oddball-grid" aria-label={'Oddballs in census ' + release.version}>
+          {release.observations.map((item) => (
+            <article class="oddball-card" data-sectors={item.sectors.join(' ')} data-observation-id={item.id}>
+              <header><div><p>{item.status}</p><h3>{item.name}</h3></div><span data-confidence={item.confidence}>{item.confidence} confidence</span></header>
+              <ul class="sector-tags">{item.sectors.map((sector) => <li>{sector}</li>)}</ul>
+              <p class="oddball-observation">{item.observation}</p>
+              <dl>
+                <div><dt>Invariant content</dt><dd>{item.invariant_content}</dd></div>
+                <div><dt>Do not overread</dt><dd>{item.caution}</dd></div>
+                <div><dt>Cheapest discriminating test</dt><dd>{item.next_test}</dd></div>
+                <div><dt>Observed</dt><dd>{item.first_seen} → {item.last_updated}</dd></div>
+              </dl>
+              <footer>{item.evidence.map((evidence) => <a href={evidence.href}>{evidence.label} →</a>)}</footer>
+            </article>
+          ))}
+        </section>
+      </article>
+    ))}
+
+    <section id="oddball-comparison" class="atlas-comparison" hidden>
+      <header><p class="eyebrow">Census comparison</p><h2>Changed oddballs</h2><p id="oddball-comparison-summary"></p></header>
+      <div id="oddball-comparison-rows"></div>
+    </section>
+    <section class="atlas-authority"><h2>Promotion boundary</h2><p>An oddball is an observation, not a claim. Later releases may mark it explained, promoted, dissolved, or superseded, but never rewrite the earlier census. Promotion requires a source-typed construction and its own ledger or epistemic-graph authority.</p></section>
+  </section>
+
+  <script is:inline id="oddball-data" type="application/json" set:html={serialized}></script>
+  <script is:inline>
+    const releases = JSON.parse(document.querySelector('#oddball-data').textContent)
+    const versionSelect = document.querySelector('#oddball-version')
+    const compareSelect = document.querySelector('#oddball-compare')
+    const sectorSelect = document.querySelector('#oddball-sector')
+    const comparison = document.querySelector('#oddball-comparison')
+    const comparisonRows = document.querySelector('#oddball-comparison-rows')
+    const comparisonSummary = document.querySelector('#oddball-comparison-summary')
+    const liveStatus = document.querySelector('#oddball-live-status')
+    const fields = [['status','Status'], ['confidence','Confidence'], ['sectors','Sectors'], ['observation','Observation'], ['invariant_content','Invariant content'], ['caution','Caution'], ['next_test','Next test']]
+    const release = (version) => releases.find((item) => item.version === version)
+    const comparable = (value) => Array.isArray(value) ? value.join(', ') : value
+
+    function populateSectors() {
+      const selected = release(versionSelect.value)
+      const current = sectorSelect.value
+      const sectors = [...new Set((selected?.observations || []).flatMap((item) => item.sectors))].sort()
+      sectorSelect.replaceChildren(new Option('All sectors', ''), ...sectors.map((sector) => new Option(sector, sector)))
+      sectorSelect.value = sectors.includes(current) ? current : ''
+    }
+    function filterSectors() {
+      const sector = sectorSelect.value
+      document.querySelectorAll(`[data-oddball-version="${versionSelect.value}"] .oddball-card`).forEach((card) => {
+        card.hidden = Boolean(sector) && !card.dataset.sectors.split(' ').includes(sector)
+      })
+    }
+    function selectVersion(version, updateHash = true) {
+      if (!release(version)) return
+      document.querySelectorAll('[data-oddball-version]').forEach((node) => { node.hidden = node.dataset.oddballVersion !== version })
+      versionSelect.value = version
+      populateSectors(); filterSectors(); renderComparison()
+      if (updateHash) history.replaceState(null, '', '#v' + version)
+      liveStatus.textContent = 'Showing Oddball Observatory version ' + version
+    }
+    function renderComparison() {
+      const selected = release(versionSelect.value); const baseline = release(compareSelect.value)
+      comparisonRows.replaceChildren()
+      if (!selected || !baseline || selected.version === baseline.version) { comparison.hidden = true; return }
+      comparison.hidden = false
+      comparisonSummary.textContent = 'v' + baseline.version + ' → v' + selected.version
+      const ids = [...new Set([...baseline.observations, ...selected.observations].map((item) => item.id))]
+      for (const id of ids) {
+        const before = baseline.observations.find((item) => item.id === id); const after = selected.observations.find((item) => item.id === id)
+        const changed = fields.filter(([key]) => comparable(before?.[key]) !== comparable(after?.[key]))
+        if (!before || !after || changed.length) {
+          const card = document.createElement('article'); card.className = 'comparison-card'
+          const heading = document.createElement('h3'); heading.textContent = after?.name || before?.name || id; card.append(heading)
+          if (!before || !after) { const note = document.createElement('p'); note.textContent = before ? 'Absent from selected census.' : 'New in selected census.'; card.append(note) }
+          else for (const [key, label] of changed) {
+            const row = document.createElement('div'); const title = document.createElement('strong'); title.textContent = label
+            const oldText = document.createElement('p'); const newText = document.createElement('p')
+            oldText.textContent = 'Before  ' + comparable(before[key]); newText.textContent = 'After  ' + comparable(after[key])
+            row.append(title, oldText, newText); card.append(row)
+          }
+          comparisonRows.append(card)
+        }
+      }
+    }
+    versionSelect.addEventListener('change', () => selectVersion(versionSelect.value))
+    compareSelect.addEventListener('change', renderComparison)
+    sectorSelect.addEventListener('change', filterSectors)
+    document.querySelector('#oddball-copy-link').addEventListener('click', async () => {
+      const url = new URL(location.href); url.hash = 'v' + versionSelect.value; await navigator.clipboard.writeText(url.href)
+      liveStatus.textContent = 'Copied link for Oddball Observatory version ' + versionSelect.value
+    })
+    const requested = location.hash.match(/^#v(.+)$/)?.[1]
+    selectVersion(release(requested) ? requested : versionSelect.value, false)
+  </script>
+</SiteLayout>
