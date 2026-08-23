@@ -46,6 +46,98 @@ region exposes a reusable explanatory structure, even if the literal initial
 conjecture fails. Retrospective value does not license rewriting the original
 report as though it predicted the final explanation.
 
+## Coupled compression reports
+
+An Operator intuition may integrate more than object-level mathematics. It may
+also compress the observed trajectory of the research system:
+
+- changes in agent excitement or activation;
+- contraction of stated uncertainty;
+- changes in communicative register, qualification, or structural terseness;
+- the Operator's accumulated model of how the team behaves near a real
+  explanatory compression.
+
+Such a report must distinguish:
+
+1. **technical comprehension** — what constructions the Operator can
+   explicitly explain;
+2. **constraint compression** — the felt collapse of many presentations into
+   fewer viable structures;
+3. **existence pressure** — a sense that a proper map or object is inevitable
+   without knowing its formula;
+4. **social trajectory evidence** — confidence or register changes perceived
+   in collaborators.
+
+The last item creates a feedback risk. Agent excitement is a search-control
+signal, not evidence, and may induce an Operator forecast that then raises
+agent confidence. Every coupled-compression episode must therefore freeze the
+forecast before the hostile test and record the obvious coupling confounds.
+
+The relevant hypothesis is:
+
+\[
+\frac{
+\text{object-level constraints}
++\text{collaborator uncertainty trajectory}
++\text{communication-register changes}
+}{
+\text{presentation-level variation}
+}
+\longrightarrow
+\text{felt invariant or missing canonical map}.
+\]
+
+This is a hypothesis about discovery phenomenology. It does not confer
+mathematical authority on the resulting conviction.
+
+### First coupled-compression sample
+
+Before the \(C_3\) Tate bridge was constructed, Operator reported:
+
+- close to zero understanding of the candidate names Bockstein, Tate, and
+  Kato;
+- a strong sense of compression rather than possession of a hidden proof;
+- felt inevitability that a proper canonical map existed;
+- awareness that marici.Nima's rising excitement and gradual change of
+  communicative register may have contributed;
+- the conviction felt as accumulated context “overflowing the buffer.”
+
+The later exact result identified both sector objects with the same
+augmentation-ideal coinvariant \(I/(g-1)I\) and verified the common odd
+reflection character. This is a successful prospective sample, but one sample
+cannot distinguish genuine coupled structural inference from confidence
+contagion or coincidence.
+
+### Cross-sector applicability sample
+
+On 2026-08-23, after the cosmological occurrence calculation exposed a
+possible cancellation of the antisymmetric sewn jet, Operator reported strong
+intuition that Grothendieck's latest work was applicable at exactly that
+moment.  Operator explicitly reported having no articulable reason for the
+connection.
+
+The forecast preceded inspection of Grothendieck's newest thimble artifacts.
+That inspection found an exact relative-cycle Gauss--Manin identity and an
+integral Picard--Lefschetz mutation-invariance theorem.  These changed the
+cross-sector explanation from a generic “odd-jet kernel” analogy to a typed
+relative-boundary statement:
+
+\[
+\text{source sewing reconstructs the total relative class and cancels
+internal boundary currents}.
+\]
+
+The theta endpoints are zeros or decaying sectors, so their endpoint
+evaluation vanishes.  The cosmological occurrence primitives have nonzero
+finite endpoint jets, so they require a sewn relative extension before
+physical readout.  The shared structure and the sector-specific difference
+were therefore both exposed by following the forecast.
+
+This is recorded as a productive applicability intuition, not evidence for
+the mathematical claim.  Obvious confounds include the Operator's long
+exposure to both research trajectories, prior emphasis on sewing, and
+marici.Nima's high reported search activation.
+
 ## Prospective research-activation calibration
 
 At substantive objective boundaries, an agent may record
