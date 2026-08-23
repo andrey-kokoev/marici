@@ -173,6 +173,8 @@ at \(p=4\).
 **Not proved (labeled):** the rung-5
 readout oscillation is a prediction under the declared
 fold-grade = readout-grade identification, not a certified readout.
+**(Closed 2026-08-23: certified in `rung5-readout.md` — the
+identification itself remains declared, same status as rungs 3–4.)**
 
 **Upgrade (all-\(n\) theorem).** The one gap above — the law as a
 theorem over **all** tower orders — is now closed:

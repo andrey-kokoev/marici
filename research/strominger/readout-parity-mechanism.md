@@ -74,6 +74,13 @@ Certified exactly for \(g=0,\dots,5\):
 \boxed{\;P(E_g)=+u^{g+2}E_g,\qquad P(M_g)=-u^{g+3}M_g\;}
 \]
 
+**Upgrade (2026-08-23).** The theorem is now certified through the
+rung-5 grade: `rung5-readout.md` proves \(P(E_g)=+u^{g+2}E_g\),
+\(P(M_g)=-u^{g+3}M_g\), the monomial closure, and the diagonal weight
+exactly for \(g=0..8\) (checker `rung5_readout_checks.py`, 19/19), via a
+closed form for the grade-\(g\) fold whose reciprocity engine makes the
+theorem structural rather than a finite-range accident.
+
 which subsumes the whole certified ladder — rung-0 electric \(+u^{4}\)
 (\(g=2\)), rung-1 magnetic \(-u^{6}\) (\(g=3\)), rung-3 electric \(+u^{6}\)
 and magnetic \(-u^{7}\) (\(g=4\)) — and continues it: \(g=5\) gives

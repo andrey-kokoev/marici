@@ -1,0 +1,142 @@
+{
+  "checker": "rung5_readout_checks.py",
+  "author": "marici.Strominger",
+  "checks": [
+    {
+      "id": "Q1",
+      "group": "Q",
+      "statement": "T-operator monomial action: T_e u^m = (e+m) u^m + 2(e+m+1) u^{m+1} + (e+m+2) u^{m+2} EXACTLY, symbolic e, m = -2..10 \u2014 the fold chain is a tridiagonal Laurent recursion",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "Q2",
+      "group": "Q",
+      "statement": "base of the recursion: Q_1 = (Theta-2) h with h = (1+u)^4 (u+1/u), and h is reciprocal: h(1/u) = u^{-4} h(u) exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "Q3",
+      "group": "Q",
+      "statement": "reciprocity theorem (engine of both characters): Q_g(u) = (-1)^g u^{2(g+1)} Q_g(1/u) EXACTLY for g = 1..12 \u2014 certified well beyond the rung-5 grade 8",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "Q4",
+      "group": "Q",
+      "statement": "support law: supp Q_g = [-1, 2g+3] with BOTH endpoints attained (nonzero endpoint coefficients) for g = 1..12 \u2014 the Laurent width 2g+5 grows linearly while the reciprocity pivot sits at exponent g+1",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F1",
+      "group": "F",
+      "statement": "base of the closed form: cf_1 = (1+u)^{-4} z^{-3} Q_1(u) equals the first fold Dz(C,2) exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F2",
+      "group": "F",
+      "statement": "one-step recursion: Dz(cf_g, 2+g) = cf_{g+1} EXACTLY for g = 1..7 \u2014 with F1 this certifies cf_g = fold_g for every g = 1..8 (the full fold chain collapses to the Q-recursion)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F3",
+      "group": "F",
+      "statement": "direct anchor: the full D-chain fold(C,g) computed step by step equals cf_g EXACTLY for g = 1..5 \u2014 ties the closed form to the definition used in the previously certified checkers",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C1",
+      "group": "C",
+      "statement": "electric character theorem THROUGH RUNG-5 GRADE: P(E_g) = +u^{g+2} E_g EXACTLY for g = 0..8 \u2014 extends the certified range g = 0..5 of readout_parity_mechanism P3.1 to the rung-5 grade 8",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C2",
+      "group": "C",
+      "statement": "magnetic character theorem THROUGH RUNG-5 GRADE: P(M_g) = -u^{g+3} M_g EXACTLY for g = 0..8 \u2014 extends readout_parity_mechanism P3.2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C3",
+      "group": "C",
+      "statement": "monomial closure z^{g+1} A_g = zb^{g+1} B_g EXACTLY for g = 0..8 \u2014 automatic from the closed form since z^{g+1} A_g = Rt_g(u) is sigma-invariant; extends readout_parity_mechanism P2.1",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C4",
+      "group": "C",
+      "statement": "diagonal weight of the magnetic component: P(A_g) = z^{2g+4} zb^2 A_g EXACTLY for g = 0..8 \u2014 extends readout_parity_mechanism P2.2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "C5",
+      "group": "C",
+      "statement": "witness regression: the closed-form readouts at g = 4 reproduce the previously certified values M_4|W2 = 38822265502889/1443587184 and E_4|W2 = 1606143346495/28789488 (readout_parity_mechanism P6.3, rung3_s2_bridge R2.6) \u2014 the new engine agrees with the old computation where both apply",
+      "status": "pass",
+      "detail": "M_4|W2 = 38822265502889/1443587184; E_4|W2 = 1606143346495/28789488"
+    },
+    {
+      "id": "R5.1",
+      "group": "R5",
+      "statement": "rung-5 electric sector PASSES the square-root gate: P(E_8) = +u^10 E_8 and the root u^5 is sigma-invariant (sigma(u^5) = u^5), so the even electric character admits a cocycle root in Q(u)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R5.2",
+      "group": "R5",
+      "statement": "rung-5 magnetic sector FAILS the square-root gate: P(M_8) = -u^11 M_8 with ODD exponent 11 \u2014 no square root of -u^11 exists in Q(u), so the magnetic readout is gate-obstructed",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R5.3",
+      "group": "R5",
+      "statement": "closed-form rung-5 obstruction: P(M_8) - M_8 = -(1 + u^11) M_8 exactly \u2014 the obstruction factor 1+u^11 is a nonzero rational function, so the readout can never be P-invariant",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R5.4",
+      "group": "R5",
+      "statement": "intrinsic oddness (sample instances of the lemma certified in rung3_cocycle K4): val_u(h sigma(h)) = 2 val_u(h) is ALWAYS even, verified on rational dressings including the datum factor h and the magnetic components Rt_4, Rt_8 \u2014 a cocycle root F would need F sigma(F) = -u^11 of ODD diagonal valuation 11, which no rational dressing can supply: the rung-5 magnetic obstruction is unrepairable",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "ALT1",
+      "group": "ALT",
+      "statement": "grade law reproduces the certified minimal full-closure grades: g_n = n + 2 ceil(n/2) gives 3, 4, 7, 8 for tower orders n = 1..4 \u2014 the grounded rungs 2, 3, 4 and the rung-5 grade certified by rung4_foldrule R2",
+      "status": "pass",
+      "detail": "g_n = [3, 4, 7, 8]"
+    },
+    {
+      "id": "ALT2",
+      "group": "ALT",
+      "statement": "alternation theorem: parity(g_n) = parity(n) for n = 1..50, so EXACTLY ONE of the character exponents g_n+2 (electric), g_n+3 (magnetic) is odd at every rung \u2014 exactly one sector is square-root obstructed at every rung, electric iff n (tower order) is odd",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "ALT3",
+      "group": "ALT",
+      "statement": "the grounded ladder instantiates the alternation E, M, E, M: rung 2 (g=3) electric-obstructed, rung 3 (g=4) magnetic (-u^7, certified), rung 4 (g=7) electric-obstructed (rung4-foldgrade), rung 5 (g=8) magnetic (-u^11, this checker)",
+      "status": "pass",
+      "detail": "g = [3, 4, 7, 8]"
+    }
+  ],
+  "n_pass": 19,
+  "n_fail": 0,
+  "verdict": "The rung-5 readout is CERTIFIED, upgrading the prediction of rung4-foldrule.md section 5. The grade-g fold collapses to the closed form (1+u)^{-2(g+1)} z^{-(g+2)} Q_g(u) with Q_g generated by the tridiagonal T-recursion (F1-F3); the engine is the reciprocity Q_g(u) = (-1)^g u^{2(g+1)} Q_g(1/u), certified g = 1..12 (Q3), with support law [-1, 2g+3] (Q4). The character theorem P(E_g) = +u^{g+2} E_g, P(M_g) = -u^{g+3} M_g now holds EXACTLY for g = 0..8 (C1-C2), tied to the old computation by the g = 4 witness regression (C5). At the rung-5 grade 8: the electric sector passes the square-root gate (+u^10, root u^5 sigma-invariant, R5.1); the magnetic sector fails (-u^11, odd, R5.2) with closed-form obstruction P(M_8) - M_8 = -(1+u^11) M_8 (R5.3), unrepairable by rational cocycle dressing (R5.4). The obstructed sector alternates E, M, E, M along the grounded ladder rungs 2, 3, 4, 5 (ALT)."
+}
