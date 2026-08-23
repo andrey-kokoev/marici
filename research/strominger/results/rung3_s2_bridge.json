@@ -1,0 +1,197 @@
+{
+  "checker": "rung3_s2_bridge_checks",
+  "author": "marici.Strominger",
+  "date": "2026-08-22",
+  "engine": "sympy",
+  "checks": [
+    {
+      "id": "R1.1a",
+      "group": "R1",
+      "statement": "grounding, antisymmetry mechanism (CS lines 137-139): q_mu q_nu J^{mu nu} = 0 identically for antisymmetric J",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.1b",
+      "group": "R1",
+      "statement": "grounding, gauge prescription G_CS2 explicit: the per-leg gauge variation of CS (9) under dE = q Lam + Lam q vanishes IDENTICALLY \u2014 no conservation law, no Sigma-constraint",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.2",
+      "group": "R1",
+      "statement": "grounded per-leg C = (eps^-.q.J) operator on the sphere (CL16 (14) contraction): (c_zk, c_zbk, c_Ek) = (-sqrt(2) om (z-zk)^2/(1+z zb), 0, -sqrt(2) Ek om (z-zk)(1+z zbk)/((1+z zb)(1+zk zbk)))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.3",
+      "group": "R1",
+      "statement": "grounded S^(2)- per-leg operator channels (CL16 (14), from CS (9)/(20)): the d_zk^2, d_zk d_Ek, d_Ek^2, d_zk coefficients match their closed forms and the d_Ek first-order channel vanishes identically; om cancels",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.4a",
+      "group": "R1",
+      "statement": "contraction identity: (eps_mu q_nu J^{mu nu})^2 = (eps_mu (q.J)^{rho mu})^2 for antisymmetric J \u2014 CS (9) and CL16 (14) numerators agree with E = eps eps",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.4b",
+      "group": "R1",
+      "statement": "normalization explicit: CS (9) per leg equals exactly -om times the CL16 (14) per-leg insertion (the omega^-1 vs overall -1/2 convention)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.4c",
+      "group": "R1",
+      "statement": "typed normalization residual (retained, not absorbed): the CS (9)/CL16 (14) ratio is -om, not 1 (same family as the rung-2 kap residual S3)",
+      "status": "pass",
+      "detail": "residual retained: (J1_01**2*e0**2*om*q1**2 + J1_01**2*e0**2*q1**2 - 2*J1_01**2*e0*e1*om*q0*q1 - 2*J1_01**2*e0*e1*q0*q1 + J1_01**2*e1**2*om*q0**2 + J1_01**2*e1**2*q0**2 + 2*J1_01*J1_02*e0**2*om*q1*q2 + 2*J1_01*J1_02*e0**2*q1*q2 - 2*J1_01*J1_02*e0*e1*om*q0*q2 - 2*J1_01*J1_02*e0*e1*q0*q2 - 2*J1_01*J1_02*e0*e2*om*q0*q1 -"
+    },
+    {
+      "id": "R2.1",
+      "group": "R2",
+      "statement": "anchor datum invariance at the rung-3 grade: P(C_zz) = z^4 C_zz and P(C_zbzb) = zb^4 C_zbzb exactly (spin-2 tensor invariance)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R2.2",
+      "group": "R2",
+      "statement": "sigma-structure of the rung-3 readouts: sigma(A3) = B3, so M3 is sigma-odd (sigma(M3) + M3 = 0) and E3 is sigma-even (sigma(E3) - E3 = 0)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R2.3",
+      "group": "R2",
+      "statement": "separate diagonal weights at grade 4: P(D_z^4 C_zz) = z^12 D_z^4 C_zz, P(D_zb^4 C_zbzb) = zb^12 D_zb^4 C_zbzb, P(A3) = z^12 zb^2 A3, P(B3) = z^2 zb^12 B3 exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R2.4",
+      "group": "R2",
+      "statement": "datum identities behind the single characters: electric (z^12 - u^6) D_z^4C + (zb^12 - u^6) D_zb^4Cb = 0 and magnetic (z^10 + u^5) A3 = (zb^10 + u^5) B3 exactly",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R2.4!",
+      "group": "R2",
+      "statement": "typed obstruction: the rung-1 dilation-frame identity z^4 A = zb^4 B does NOT lift to grade 4 \u2014 z^4 A3 - zb^4 B3 is nonzero; the grade-4 datum identity is the weaker (z^10 + u^5) form of R2.4",
+      "status": "pass",
+      "detail": "residual retained: (-360*z**8*zb**7 + 360*z**7*zb**8 - 1800*z**7*zb**6 + 1800*z**6*zb**7 + 1128*z**6*zb**5 - 1128*z**5*zb**6 - 792*z**5*zb**4 + 792*z**4*zb**5 + 792*z**4*zb**3 - 792*z**3*zb**4 - 1128*z**3*zb**2 + 1128*z**2*zb**3 + 1800*z**2*zb - 1800*z*zb**2 + 360*z - 360*zb)/(z**8*zb**8 + 5*z**7*zb**7 + 10*z**6*zb**6"
+    },
+    {
+      "id": "R2.5",
+      "group": "R2",
+      "statement": "single-character P-covariance of the rung-3 readouts: P(E3) = +u^6 E3 and P(M3) = -u^7 M3 exactly (the separate weights of R2.3 collapse via the R2.4 datum identities); closed-form magnetic obstruction P(M3) - M3 = -(1 + u^7) M3",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R2.6",
+      "group": "R2",
+      "statement": "exact witness values at the fresh point W2 (z, zb) = (3, 2/7): M3|W2 = 38822265502889/1443587184, E3|W2 = 1606143346495/28789488, and (P(M3)-M3)|W2 / M3|W2 = -(1 + (6/7)^7) = -1103479/823543 exactly",
+      "status": "pass",
+      "detail": "M3|W2 = 38822265502889/1443587184; E3|W2 = 1606143346495/28789488; ratio = -1103479/823543"
+    },
+    {
+      "id": "R3.1",
+      "group": "R3",
+      "statement": "third square-root gate, ELECTRIC line (passes): the rung-3 electric character u^6 = (u^3)^2 with the root u^3 exactly sigma-invariant \u2014 even exponent parity permits the diagonal square root, as at rung 1 (u^6 = (u^3)^2) and in the cocycle (u^-2 = (u^-1)^2)",
+      "status": "pass",
+      "detail": "sigma(u^3) = z**3*zb**3; (u^3)^2 = u^6 exact"
+    },
+    {
+      "id": "R3.2",
+      "group": "R3",
+      "statement": "third square-root gate, MAGNETIC line (FAILS \u2014 odd-parity obstruction): the rung-3 magnetic character u^7 has ODD exponent parity \u2014 no g in Q(u) squares to u^7 (valuation parity at u = 0: 2m = 7 has no integer solution, scanned m in [-5, 11]; the odd family k = 5, 7, 9 is likewise rootless). No diagonal sigma-invariant cocycle square root exists for the rung-3 magnetic readout, and the obstruction factor 1 + u^7 is a nonzero rational function \u2014 P(M3) - M3 = -(1 + u^7) M3 can never vanish",
+      "status": "pass",
+      "detail": "magnetic exponent ladder: rung 1 -> u^6 (even, root exists); rung 3 -> u^7 (odd, no root) \u2014 the square-root existence rule separates the two magnetic readouts"
+    },
+    {
+      "id": "R3.3",
+      "group": "R3",
+      "statement": "character ladder record: the certified P-covariance characters of the angular readouts are rung-0 electric +u^4, rung-1 magnetic -u^6, rung-3 electric +u^6, rung-3 magnetic -u^7 \u2014 signs alternate with sigma parity [+,-,+,-], exponents are non-decreasing [4,6,6,7], and the magnetic exponents cross from even (6) to odd (7) between rungs 1 and 3 while the electric exponents stay even (4, 6)",
+      "status": "pass",
+      "detail": "ladder: E0 +u^4; M -u^6; E3 +u^6; M3 -u^7"
+    },
+    {
+      "id": "R4.1",
+      "group": "R4",
+      "statement": "per-leg angular-channel residual: with the declared weight sequence (-1,0,1,2) the regular part of the D_z^4 fold of every S^(2)- operator channel vanishes PER LEG \u2014 the rung-3 per-leg angular residual is identically zero (contrast rung 2's nonzero M); closure is kinematic, not conservation-law-mediated",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R4.2",
+      "group": "R4",
+      "statement": "leg-summed closure under NO-LAW: the two-leg gauge variation with independent generic J1, J2 vanishes with NO Sigma-constraint \u2014 each leg closes separately, so the leg-summed closure needs no inter-leg input",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R4.3",
+      "group": "R4",
+      "statement": "leg-summed closure under P (momentum conservation): closure holds, and the law is NOT load-bearing \u2014 the per-leg variation vanishes for a single leg with fully generic momentum (no Sigma k = 0 relation can even be stated for one leg), so momentum conservation cannot be the mechanism; imposing it changes nothing",
+      "status": "pass",
+      "detail": "per-leg variation identically zero in the unconstrained ring"
+    },
+    {
+      "id": "R4.4",
+      "group": "R4",
+      "statement": "leg-summed closure under J (angular momentum conservation): closure holds, and the law is NOT load-bearing \u2014 the second leg's variation vanishes independently of any Sigma J = 0 relation; the rung-2-grade contrast (R4.4!) shows what WOULD need the law",
+      "status": "pass",
+      "detail": "per-leg variation identically zero with generic independent J2"
+    },
+    {
+      "id": "R4.4!",
+      "group": "R4",
+      "statement": "typed contrast: the RUNG-2-grade variation Lam_mu q_nu J^{mu nu} is nonzero per leg without Sigma J = 0 \u2014 at rung 2 the law WAS load-bearing; the P -> J escalation terminates at rung 3",
+      "status": "pass",
+      "detail": "residual retained: -J1_01*L0*q1 + J1_01*L1*q0 - J1_02*L0*q2 + J1_02*L2*q0 - J1_03*L0*q3 + J1_03*L3*q0 + J1_12*L1*q2 - J1_12*L2*q1 + J1_13*L1*q3 - J1_13*L3*q1 + J1_23*L2*q3 - J1_23*L3*q2"
+    },
+    {
+      "id": "R4.5a",
+      "group": "R4",
+      "statement": "leg-summed closure under superrotation/boost: the per-leg soft operator annihilates the gauge direction, op(q) = 0 \u2014 the eps -> eps + alpha q freedom leaves C = (eps.q.J) invariant per leg, so no boost/rotation relation between legs is needed",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R4.5b",
+      "group": "R4",
+      "statement": "superrotation baseline obstruction (H-B, retained): the rung-2-grade D_z^3 smearing (sequence (-1,0,1)) applied to the rung-3 d_zk^2 channel leaves a nonzero regular part, pinned exactly as -3 (1+zb zk)^3 (1+zk zbk)/(Ek (1+z zb)^4 (zb-zbk)) \u2014 no smooth superrotation (single-u-integral) charge class reproduces the rung-3 identity; the D_z^4 grade is forced",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R5.1",
+      "group": "R5",
+      "statement": "verdict: the rung-3 S2 angular bridge is grounded (R1: G_CS2 per-leg gauge invariance with no conservation law, grounded operator and channels, -om normalization residual retained); the rung-3 readouts carry single P-covariance characters P(E3) = +u^6 E3 and P(M3) = -u^7 M3 (R2); the third square-root gate PASSES on the electric line (u^6 = (u^3)^2) and FAILS on the magnetic line (u^7 odd \u2014 no diagonal sigma-invariant square root exists, R3); leg-summed closure holds under no-law, P, J, and superrotation classes alike because the per-leg angular residual is identically zero \u2014 closure is kinematic and none of the three laws is load-bearing (R4)",
+      "status": "pass",
+      "detail": "synthesis of R1-R4"
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "failed_ids": [],
+    "classification": {
+      "datum": "S^(2) grounded from cs1404.4091 + CL16 1605.09094: G_CS2 per-leg gauge invariance from J antisymmetry alone (R1.1), grounded sphere operator and S^(2)- channels (R1.2/R1.3), CS/CL16 normalization ratio exactly -om (R1.4b, residual R1.4c retained)",
+      "character": "rung-3 readouts carry single characters on the P-invariant anchor datum: P(E3) = +u^6 E3 (electric), P(M3) = -u^7 M3 (magnetic); datum identities (z^12-u^6) D4C + (zb^12-u^6) D4Cb = 0 and (z^10+u^5) A3 = (zb^10+u^5) B3 (R2.4); rung-1 identity z^4 A = zb^4 B does not lift (R2.4! retained); closed-form obstruction P(M3) - M3 = -(1 + u^7) M3 with W2 ratio -1103479/823543 (R2.5/R2.6)",
+      "square_root_gate": "electric line: u^6 = (u^3)^2, sigma-invariant root \u2014 even-parity gate passes (R3.1); magnetic line: u^7 odd \u2014 NO square root in Q(u), the third gate fails (R3.2); ladder E0 +u^4, M -u^6, E3 +u^6, M3 -u^7 (R3.3)",
+      "closure": "per-leg angular residual identically zero (R4.1); leg-summed closure under no-law (R4.2), P (R4.3), J (R4.4), superrotation/boost (R4.5a) \u2014 all four close because closure is kinematic; no law is load-bearing; rung-2-grade contrasts retained (R4.4!, R4.5b)",
+      "outcome": "closure under NO named law is needed at rung 3 \u2014 the angular bridge closes kinematically per leg (H-A of the conventions packet), and the rung-3 magnetic readout is character-obstructed at the square-root gate (odd u^7) exactly where CL16 report lacking a first-principles magnetic charge"
+    }
+  },
+  "verdict": "rung-3 S2 angular bridge grounded with G_CS2 explicit and the -om normalization residual retained (R1); the rung-3 readouts are P-covariant with single characters P(E3) = +u^6 E3 and P(M3) = -u^7 M3 on the P-invariant anchor datum (R2), extending the character ladder to +u^4, -u^6, +u^6, -u^7; the third square-root gate passes on the electric line (u^6 = (u^3)^2) and FAILS on the magnetic line \u2014 u^7 is odd-parity, so no diagonal sigma-invariant cocycle square root exists for the rung-3 magnetic readout (R3); leg-summed closure holds under no-law, P, J, and superrotation classes alike because the per-leg angular residual is identically zero \u2014 closure is kinematic and the P -> J escalation of rungs 1-2 terminates with no successor law (R4)."
+}

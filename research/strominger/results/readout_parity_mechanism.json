@@ -1,0 +1,121 @@
+{
+  "checker": "readout_parity_mechanism_checks.py",
+  "author": "marici.Strominger",
+  "checks": [
+    {
+      "id": "P1.1",
+      "group": "P1",
+      "statement": "anchor datum: P(C) = z^4 C exactly (spin-2 tensor invariance) and sigma(C) = C_zbzb",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P1.2",
+      "group": "P1",
+      "statement": "two-sheet decomposition C = C+ + C- with C+ = zb/z (u-support +1) and C- = 1/(z^3 zb) (u-support -1); sigma maps each sheet to the same-u-support sheet of C_zbzb",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P1.3!",
+      "group": "P1",
+      "statement": "typed obstruction: neither sheet is P-invariant \u2014 P(C+) - z^4 C+ and P(C-) - z^4 C- are both exactly nonzero; P-invariance is a property of the total datum only",
+      "status": "pass",
+      "detail": "P(C+)-z^4 C+ = (-z**3*zb**2 + z)/zb; P(C-)-z^4 C- = (z**3*zb**2 - z)/zb"
+    },
+    {
+      "id": "P2.1",
+      "group": "P2",
+      "statement": "grade-indexed monomial closure theorem: z^{g+1} A_g = zb^{g+1} B_g EXACTLY for g = 0..5 \u2014 the rung-1 identity z^4 A = zb^4 B (g=3) and the rung-3 core z^5 A = zb^5 B (g=4) are members of one family",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P2.2",
+      "group": "P2",
+      "statement": "separate diagonal weights at every grade: P(A_g) = z^{2g+4} zb^2 A_g and P(B_g) = z^2 zb^{2g+4} B_g EXACTLY for g = 0..5 (g=3: z^10 zb^2; g=4: z^12 zb^2, matching C3.2/R2.3)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P2.3",
+      "group": "P2",
+      "statement": "the certified two-term rung-3 datum identity (z^10+u^5) A = (zb^10+u^5) B (R2.4) is EXACTLY equivalent to its monomial core z^5 A = zb^5 B (z^10+u^5 = z^5(z^5+zb^5) and sigma)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P2.4!",
+      "group": "P2",
+      "statement": "typed obstruction (retained from R2.4!): the rung-1 identity z^4 A = zb^4 B does NOT lift verbatim to grade 4 \u2014 z^4 A_4 - zb^4 B_4 is exactly nonzero; the correct lift is the grade-indexed family z^{g+1} A = zb^{g+1} B",
+      "status": "pass",
+      "detail": "residual retained: (-360*z**8*zb**7 + 360*z**7*zb**8 - 1800*z**7*zb**6 + 1800*z**6*zb**7 + 1128*z**6*zb**5 - 1128*z**5*zb**6 - 792*z**5*zb**4 + 792*z**4*zb**5 + 792*z**4*zb**3 - 792*z**3*zb**4 - 1128*z**3*zb**2 + 1128*z"
+    },
+    {
+      "id": "P3.1",
+      "group": "P3",
+      "statement": "electric character theorem: P(E_g) = +u^{g+2} E_g EXACTLY for g = 0..5 (g=2 rung-0 control: +u^4; g=4 rung-3: +u^6)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P3.2",
+      "group": "P3",
+      "statement": "magnetic character theorem: P(M_g) = -u^{g+3} M_g EXACTLY for g = 0..5 (g=3 rung-1: -u^6; g=4 rung-3: -u^7)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P3.3",
+      "group": "P3",
+      "statement": "parity corollary: the magnetic character exponent g+3 is ODD iff the fold grade g is EVEN \u2014 the square-root gate fails iff g is even (rung 1 at g=3 passes with -u^6; rung 3 at g=4 fails with -u^7); the gate verdict alternates with the readout grade",
+      "status": "pass",
+      "detail": "(g, exponent parity) = [(0, 1), (1, 0), (2, 1), (3, 0), (4, 1), (5, 0)]"
+    },
+    {
+      "id": "P4.1",
+      "group": "P4",
+      "statement": "datum-gap independence: for C_k = (u^k+u^-k)/z^2, k = 1,2,3, every datum is P-invariant, the monomial closure holds, and the characters are IDENTICAL (+u^{g+2} electric, -u^{g+3} magnetic at g = 3,4) \u2014 the datum u-support contributes nothing to the exponent; parity is manufactured by the projection grade alone",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P5.1",
+      "group": "P5",
+      "statement": "per-sheet closure: each datum sheet SEPARATELY satisfies the monomial closure z^{g+1} A_sheet = zb^{g+1} B_sheet exactly (g = 3,4) \u2014 closure is sheetwise and does not require P-invariance",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P5.2!",
+      "group": "P5",
+      "statement": "typed obstruction (birth locus): per datum sheet the magnetic combination M_sheet = A_sheet - sigma(A_sheet) carries NO single u-character (ten candidate monomials +/-u^{g+1..g+5} per sheet per grade, all exact nonzero residuals) \u2014 the single character exists only for the P-invariant total datum: it is BORN at the readout projection",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P6.1",
+      "group": "P6",
+      "statement": "pre-closure decomposition: P(M_g) = u^2 (z^{2g+2} A_g - zb^{2g+2} B_g) EXACTLY for g = 0..5 \u2014 before the datum closure is applied, the magnetic readout carries only the EVEN diagonal factor u^2 times a non-diagonal bracket; the odd exponent enters post-closure through z^{g+1} A = zb^{g+1} B as u^{g+1}",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P6.2",
+      "group": "P6",
+      "statement": "closed-form rung-3 obstruction: P(M_4) - M_4 = -(1 + u^7) M_4 exactly \u2014 the obstruction factor 1+u^7 is a nonzero rational function, so the readout can never be P-invariant",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "P6.3",
+      "group": "P6",
+      "statement": "witness cross-check against rung3_s2_bridge R2.6: M_4|W2 = 38822265502889/1443587184 and E_4|W2 = 1606143346495/28789488 exactly",
+      "status": "pass",
+      "detail": "M_4|W2 = 38822265502889/1443587184; E_4|W2 = 1606143346495/28789488"
+    }
+  ],
+  "n_pass": 16,
+  "n_fail": 0,
+  "verdict": "The rung-3 magnetic odd character -u^7 is manufactured at the readout projection: the pre-closure readout carries only the even diagonal factor u^2 (P6.1); the grade-indexed monomial datum closure z^{g+1} A = zb^{g+1} B (P2.1) shifts in u^{g+1}; the character is -u^{g+3} exactly for g = 0..5 (P3.2), odd iff g is even (P3.3). The exponent is independent of the datum u-support gap k = 1,2,3 (P4.1), and per datum sheet no single character exists at all (P5.2!) \u2014 the single character is born only at the P-invariant total. Combined with the coefficient-line evenness theorem and the intrinsic-oddness lemma (rung3_cocycle K4/K5), this proves the R3.2 obstruction is born at readout projection, not inherited from the coefficient line, and that its parity is forced by the readout fold grade, not by any convention."
+}

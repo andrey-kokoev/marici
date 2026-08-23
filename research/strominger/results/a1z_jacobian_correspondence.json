@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "total": 29,
+    "passed": 29,
+    "failed": 0,
+    "failed_ids": [],
+    "classification": {
+      "operator": "S^(2)- = V^2/den exactly: the rung-3 soft operator is the pure square of one leg vector field V = c_zk d_zk + c_Ek d_Ek (J1)",
+      "collapse": "V(c_Ek) = 0 <=> V Hamiltonian w.r.t. c_Ek with multiplier mu = (z-zk)(1+zk zbk)/(1+z zbk) (J2)",
+      "jacobian": "V(c_zk) = mu Jac(c_zk, c_Ek): the A1z channel is an area form (J3)",
+      "bookkeeping": "D multiplicative; D(c_zk) = X^2, D(c_Ek) = 1, D(den) = X^2, D(mu) = X^2 \u2014 every product-side input square-protected (J4)",
+      "character": "D(Jac) = u X: the soft-map Jacobian is the unique odd-character object; det(A1z) = u X (J5)",
+      "verdict": "the unique partnerless channel carries the unique odd determinant line: partner-vanishing removes the square protection; the odd u-valuation (1) is a computed property of the soft-map Jacobian character (J6)"
+    }
+  },
+  "checks": [
+    {
+      "id": "J1.den",
+      "group": "J1",
+      "statement": "common denominator closed form: den = c_zk^2/A2z = -4 Ek om^2 (z-zk)(zb-zbk)/((1+u)(1+zk zbk))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J1.AzE",
+      "group": "J1",
+      "statement": "operator square: AzE den = 2 c_zk c_Ek",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J1.A2E",
+      "group": "J1",
+      "statement": "operator square: A2E den = c_Ek^2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J1.A1z",
+      "group": "J1",
+      "statement": "operator square: A1z den = V(c_zk)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J1.A1E",
+      "group": "J1",
+      "statement": "operator square: A1E den = V(c_Ek) = 0 (helicity-degenerate partner, grounded R1.3)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J2.mu",
+      "group": "J2",
+      "statement": "Hamiltonian multiplier closed form: mu = Ek c_zk/c_Ek = (z-zk)(1+zk zbk)/(1+z zbk)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J2.flow.a",
+      "group": "J2",
+      "statement": "Hamiltonian collapse: c_zk = mu d_Ek(c_Ek)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J2.flow.b",
+      "group": "J2",
+      "statement": "Hamiltonian collapse: c_Ek = -mu d_zk(c_Ek)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J2.collapse",
+      "group": "J2",
+      "statement": "V(c_Ek) = 0 is exactly the partner-vanishing: in 2 leg dimensions a vector field annihilating c_Ek is Hamiltonian with respect to c_Ek, V = mu J grad(c_Ek)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J3.bracket",
+      "group": "J3",
+      "statement": "Jacobian identity: the surviving first-order numerator is a Poisson bracket, V(c_zk) = mu Jac(c_zk, c_Ek)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J3.closed",
+      "group": "J3",
+      "statement": "Jacobian closed form: Jac(c_zk, c_Ek) = -4 om^2 (z-zk)^2 (1+z zbk)/((1+u)^2 (1+zk zbk))",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J3.channel",
+      "group": "J3",
+      "statement": "the A1z channel is the area form: A1z = mu Jac/den",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J3.nonzero",
+      "group": "J3",
+      "statement": "the soft map (zk, Ek) -> (c_zk, c_Ek) is a local diffeomorphism: Jac is not identically zero",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.mult",
+      "group": "J4",
+      "statement": "the norm character is multiplicative: D(c_zk c_Ek) = D(c_zk) D(c_Ek)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.czk",
+      "group": "J4",
+      "statement": "square character: D(c_zk) = X^2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.cEk",
+      "group": "J4",
+      "statement": "square character: D(c_Ek) = 1",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.den",
+      "group": "J4",
+      "statement": "square character: D(den) = X^2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.mu",
+      "group": "J4",
+      "statement": "square character: D(mu) = X^2 \u2014 even the Hamiltonian multiplier is square-protected",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.A2z",
+      "group": "J4",
+      "statement": "forced evenness: det(A2z) = D(c_zk)^2/D(den) = X^2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.AzE",
+      "group": "J4",
+      "statement": "forced evenness: det(AzE) = D(c_zk)D(c_Ek)/D(den) = 1",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J4.A2E",
+      "group": "J4",
+      "statement": "forced evenness: det(A2E) = D(c_Ek)^2/D(den) = X^-2",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J5.char",
+      "group": "J5",
+      "statement": "THE Jacobian character: D(Jac(c_zk, c_Ek)) = u X \u2014 the soft-map Jacobian is the unique odd-character object in the construction",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J5.Vczk",
+      "group": "J5",
+      "statement": "character multiplicativity on the area form: D(V(c_zk)) = D(mu) D(Jac) = u X^3",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J5.det",
+      "group": "J5",
+      "statement": "the A1z determinant line from the characters: det(A1z) = D(mu) D(Jac)/D(den) = u X (matches the K3 line)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J5.gate",
+      "group": "J5",
+      "statement": "the square-root gate failure is located in the Jacobian: det(A1z) = u X has odd val_z = 1, so no rational square root exists",
+      "status": "pass",
+      "detail": "val_z(uX) = 1, val_u(uX) = 2"
+    },
+    {
+      "id": "J6.necessity",
+      "group": "J6",
+      "statement": "necessity direction: every symmetrized c-product channel (c_zk, c_Ek, c_zk^2, c_zk c_Ek, c_Ek^2 over den) has a determinant that is a RATIONAL SQUARE \u2014 evenness is forced by J4 multiplicativity, not checked case by case",
+      "status": "pass",
+      "detail": "roots: X, 1, X, 1, X^-1; the Jacobian channel is the only channel not of product form"
+    },
+    {
+      "id": "J6.pin.det",
+      "group": "J6",
+      "statement": "pinning identity: the odd line is pinned by the even lines up to u^2: det(A1z)^2 = u^2 det(A2z) det(AzE)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J6.pin.F2",
+      "group": "J6",
+      "statement": "pinning identity at cocycle level: F2(A1z)^2 = -zb^2 F2(AzE) F2(A2z)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "J6.verdict",
+      "group": "J6",
+      "statement": "VERDICT: vanishing partner <=> Hamiltonian collapse of V (J2) <=> the first-order sector is a pure Jacobian area form (J3). The Jacobian is the unique object not protected by the square-norm bookkeeping (J4), and its character is computed to be u X (J5). Hence the unique partnerless channel carries the unique odd determinant line: the partner-vanishing removes the square protection; the odd u-valuation itself is a property of the soft-map Jacobian",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "summary",
+      "group": "summary",
+      "statement": "{\"total\": 29, \"passed\": 29, \"failed\": 0, \"failed_ids\": [], \"classification\": {\"operator\": \"S^(2)- = V^2/den exactly: the rung-3 soft operator is the pure square of one leg vector field V = c_zk d_zk + c_Ek d_Ek (J1)\", \"collapse\": \"V(c_Ek) = 0 <=> V Hamiltonian w.r.t. c_Ek with multiplier mu = (z-zk)(1+zk zbk)/(1+z zbk) (J2)\", \"jacobian\": \"V(c_zk) = mu Jac(c_zk, c_Ek): the A1z channel is an area form (J3)\", \"bookkeeping\": \"D multiplicative; D(c_zk) = X^2, D(c_Ek) = 1, D(den) = X^2, D(mu) = X^2 \\u2014 every product-side input square-protected (J4)\", \"character\": \"D(Jac) = u X: the soft-map Jacobian is the unique odd-character object; det(A1z) = u X (J5)\", \"verdict\": \"the unique partnerless channel carries the unique odd determinant line: partner-vanishing removes the square protection; the odd u-valuation (1) is a computed property of the soft-map Jacobian character (J6)\"}}",
+      "status": "info"
+    }
+  ]
+}
