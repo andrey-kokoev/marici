@@ -13,9 +13,11 @@ carries a check id.
 **Status boundary (read first).** Rung 4 here is a candidate: the tower is
 *anchored* to the grounded rung-3 channels (G1), but no independent
 source formula for \(S^{(3)}\) exists in the corpus, so nothing below is a
-confirmation of an external expression. The rung-4 readout claim (G5) is
-additionally *conditional on the fold-grade assignment* \(g=5\). Both
-qualifications are stated, not smoothed over.
+confirmation of an external expression. The rung-4 readout claim (G5) was
+originally stated *conditional on the fold-grade assignment*; the
+follow-up packet `rung4-foldgrade.md` computes the fold and FORCES the
+grade at \(g=7\) (weight start \(-2\)), deriving the same sector verdict
+unconditionally — see that packet for the certified version of §5.
 
 ## 1. The tower and its anchor (G1)
 
@@ -155,8 +157,14 @@ P(M_5)=-u^{8}\;(\text{even: gate PASSES}).
 
 The obstruction migrates to the **electric** sector (G5.migration). This
 is the falsifiable signature of the derived rung 4: where rung 3 was
-magnetically obstructed, rung 4 is electrically obstructed — *conditional
-on the fold-grade assignment* placing rung 4 at \(g=5\).
+magnetically obstructed, rung 4 is electrically obstructed.
+
+**Update (fold-grade packet).** The fold computation
+(`rung4-foldgrade.md`, F2–F5) refutes the naive assignment \(g=5\) and
+forces \(g=7\) with weight start \(-2\): the depth ≥ 1 channels close at
+grade 5 but the principal sector needs grade 7. The sector verdict is
+unchanged and now derived: \(P(E_7)=+u^{9}\) odd (electric gate fails),
+\(P(M_7)=-u^{10}\) even (magnetic gate passes, root \(u^{5}\)).
 
 ## 6. Verdict (G6)
 
@@ -176,8 +184,9 @@ where oddness can live.}}
 
 **Open edges.** (i) The tower is derived, not grounded: an independent
 \(S^{(3)}\) source formula would either confirm or kill the candidate —
-the anchor makes the first step safe, not the third. (ii) The \(g=5\)
-readout prediction waits on the fold-grade assignment; if the fold
-places rung 4 elsewhere, G5 recomputes in one line. (iii) The
+the anchor makes the first step safe, not the third. (ii) *Resolved:* the
+fold-grade assignment is computed in `rung4-foldgrade.md` — the grade is
+forced at \(g=7\) (\(w_0=-2\)), and the G5 sector verdict survives
+unconditionally. (iii) The
 depth-parity rule is certified on 18 channels of orders 3–4; a symbolic
 proof for all orders is the natural next certificate.

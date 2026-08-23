@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "failed_ids": [],
+    "forced_pair": {
+      "grade": 7,
+      "w0": -2
+    },
+    "verdict": "rung-4 fold grade FORCED at (7, -2) \u2014 naive grade-5 extrapolation refuted; electric sector obstructed (+u^9 odd), magnetic gate passes (-u^10 even) \u2014 migration derived"
+  },
+  "checks": [
+    {
+      "id": "H.Ek",
+      "group": "H",
+      "statement": "homogeneity certificate: every rung-4 channel is a pure MONOMIAL in Ek (channel(a,b) ~ Ek^{b-1}), so Ek = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "H.om",
+      "group": "H",
+      "statement": "homogeneity certificate: every rung-4 channel is a pure MONOMIAL in om (order-3 channels ~ om^1), so om = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "H.sq2",
+      "group": "H",
+      "statement": "uniformity certificate: every rung-4 channel is a pure MONOMIAL in sqrt(2) (three c-factors per term), so sqrt(2) = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F1.pole",
+      "group": "F1",
+      "statement": "single-pole structure: every rung-4 channel is G (zb-zbk)^-1 with G = channel (zb-zbk) finite at the pole \u2014 the declared fold machinery applies to all 7 channels",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F2.g4",
+      "group": "F2",
+      "statement": "grade-4 obstruction (witness-proven): NO weight w0 in {-4..4} closes ANY rung-4 channel at grade 4 \u2014 the grounded rung-3 grade is insufficient at rung 4; the fold grade must rise",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F3.depth1",
+      "group": "F3",
+      "statement": "grade 5, w0 = -1: the depth >= 1 channels (2,0), (1,1), (1,0) CLOSE \u2014 CERTIFIED zero in the reduced ring (WLOG by H); the rung-3 prescription already folds the V-differentiated sector at grade 5",
+      "status": "pass",
+      "detail": "certified: {(2, 0): True, (1, 1): True, (1, 0): True}"
+    },
+    {
+      "id": "F3.princ",
+      "group": "F3",
+      "statement": "grade 5, w0 = -1: the principal depth-0 sector (3,0), (2,1), (1,2), (0,3) does NOT close (witness-proven nonzero) \u2014 the principal symbol needs more than the rung-3 prescription",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F4.low",
+      "group": "F4",
+      "statement": "grades 5 and 6 at w0 = -2: NOTHING closes (witness-proven nonzero for all 7 channels at both grades) \u2014 with the w0 pattern 0, -1, -2 across rungs 2, 3, 4, the rung-4 grade is forced ABOVE 6",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "F5.closure",
+      "group": "F5",
+      "statement": "THE FORCED GRADE: at grade 7, w0 = -2 ALL SEVEN rung-4 channels fold to pure deltas \u2014 CERTIFIED zero in the reduced ring (WLOG by H); the rung-4 operator admits the distributional fold at grade 7 with weight start -2",
+      "status": "pass",
+      "detail": "certified: {(0, 3): True, (1, 0): True, (1, 1): True, (1, 2): True, (2, 0): True, (2, 1): True, (3, 0): True}"
+    },
+    {
+      "id": "F5.unique",
+      "group": "F5",
+      "statement": "weight uniqueness at grade 7 (witness scan): every w0 in {-4..4} except -2 leaves at least one channel open \u2014 w0 = -2 is the UNIQUE full-closure weight, continuing the rung pattern 0, -1, -2",
+      "status": "pass",
+      "detail": "non-closing weights confirmed: [-4, -3, -1, 0, 1, 2, 3, 4]"
+    },
+    {
+      "id": "F6.family",
+      "group": "F6",
+      "statement": "family structure (witness-level scan, labeled): rung-4 closure PERSISTS at (8,-2), (9,-2), (9,-3); the grounded rung-3 control closes at (4,-1) minimal and persists at (5,-1), (6,-1), (6,-2); the rung-4 depth >= 1 sector closes at w0 = -1 at every grade >= 5 \u2014 closure sets are upward-closed in grade and along the diagonal (grade+2, w0-1)",
+      "status": "pass",
+      "detail": "rung4: {(8, -2): True, (9, -2): True, (9, -3): True}; rung3: {(4, -1): True, (5, -1): True, (6, -1): True, (6, -2): True}; depth1 w0=-1 grades 6,7: True"
+    },
+    {
+      "id": "F7.migration",
+      "group": "F7",
+      "statement": "THE DERIVED MIGRATION: with the fold grade FORCED at g = 7 (F5), the character theorem (P3) gives P(E_7) = +u^9 \u2014 ODD, the electric square-root gate FAILS \u2014 and P(M_7) = -u^10 \u2014 EVEN, the magnetic gate passes with root u^5; the rung-4 obstruction migrates to the ELECTRIC sector, no longer conditional on a grade assignment (the verdict is grade-robust: it holds at every odd grade)",
+      "status": "pass",
+      "detail": "E_7: +u^9 odd (fails); M_7: -u^10 even (passes, root u^5)"
+    },
+    {
+      "id": "F8.verdict",
+      "group": "F8",
+      "statement": "verdict: the derived rung-4 candidate V^3/den admits the declared distributional fold at the FORCED minimal pair (grade 7, w0 = -2), certified; the naive grade-5 extrapolation is refuted (F2-F4: the depth >= 1 sector closes at grade 5 but the principal sector needs grade 7); the weight pattern 0, -1, -2 continues cleanly across rungs 2, 3, 4; and the forced grade being ODD derives the readout migration \u2014 at rung 4 the ELECTRIC sector is square-root-obstructed (+u^9) while the magnetic gate passes (-u^10, root u^5)",
+      "status": "pass",
+      "detail": ""
+    }
+  ]
+}
