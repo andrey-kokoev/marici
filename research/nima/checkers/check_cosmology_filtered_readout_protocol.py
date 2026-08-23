@@ -39,6 +39,7 @@ def main():
     contract_path = Path(__file__).parents[1] / "contracts" / "cosmology-filtered-readout-falsifier.v2.json"
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     assert contract["schema"].endswith(".v2")
+    assert contract["status"] == "superseded_as_literal_physical_target"
     assert [s["domain_dimension"] - s["required_rank"] for s in contract["stages"]] == [9, 7]
     assert contract["terminal_domain"]["dimension"] == 7
 
@@ -60,13 +61,15 @@ def main():
     result = json.loads(payload)
     assert result == {
         "schema": "marici.cosmology-filtered-readout-protocol-check.v2",
+        "status": "superseded_as_literal_physical_target",
         "filtration_dimensions": [12, 9, 7],
         "peeled_quotient_dimensions": [3, 2],
         "terminal_dimension": 7,
         "synthetic_positive": "pass",
         "synthetic_negative": "fail",
         "current": "inconclusive",
-        "reason": "terminal T7 basis and source-derived nearby-cycle/physical-pairing matrices are absent"
+        "reason": "the abstract T7 terminal maps are absent, and later localization proves the literal physical residue does not descend to T7",
+        "replacement_target": "rank-20 marked-relative residue with retained wall maps"
     }
     print(json.dumps({"passed": True, "current": "inconclusive", "sha256": hashlib.sha256(payload.encode()).hexdigest().upper()}))
 

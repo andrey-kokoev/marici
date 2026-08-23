@@ -31,9 +31,9 @@ def main() -> None:
             "15x26 off-diagonal block",
             "Q-support gate derived from that block",
         ],
-        "next_typed_target": (
-            "one source-labelled localization/deletion complex containing "
-            "both four-mark branches and the five-mark union before quotient or cutoff"
+        "subsequent_typed_repair": (
+            "the common five-mark localization complex recovers 15<25<26; "
+            "its valid extension target is 0->F25->H26->T_top->0"
         ),
         "passed": (
             represented_relations > 0

@@ -82,23 +82,34 @@ not descend through the independently truncated quotient packets. The
 rank-15 image, rank-41 middle object, and its \(15\times26\) cocycle are
 withdrawn.
 
-The smallest remaining source-typed home is therefore not another quotient.
-It is a single labelled localization/deletion complex containing both
-four-mark branches and the five-mark union before any quotient or cutoff. An
-authority cocycle and a \(\mathcal Q\)-filter test become meaningful only if
-they are induced by maps internal to that common complex.
+That common complex has since been constructed. It recovers the typed
+filtration \(15\subset25\subset26\) internally and supplies the horizontal
+sequence
+
+\[
+0\to F_{25}\to H_{26}\to T_{\rm top}\to0.
+\]
+
+The physical source has zero image in the quotient Kato line. Nevertheless,
+the extension has a nonzero rank-one off-diagonal channel in each parameter
+direction and no simultaneous constant invariant lift at two independent
+primes: \(\operatorname{rank}M=25\) while
+\(\operatorname{rank}[M\mid b]=26\). This is a source-typed recursive
+foothold, but only a constant-frame obstruction. A rational gauge may still
+split the differential module.
 
 ## Bounded falsification program
 
-1. Construct one source-labelled localization/deletion complex containing the
-   two four-mark branches and their five-mark union before quotient or cutoff.
-2. Derive the branch-to-union maps as chain maps and verify relation descent;
-   do not infer images from rational-form identities alone.
-3. Compute the resulting homology ranks. Only then derive the extension or
-   authority cocycle and its mixed flatness equation.
-4. Compute the intrinsic divisor support of its gauge class, not of a chosen
-   representative or denominator.
-5. Restrict the complete complex to the generic function field of
+1. Derive source denominator and degree bounds for the rational splitting
+   equation \(\nabla_Fh-\alpha h=-C\).
+2. Solve it without selecting a primitive section, and certify the identities
+   at independent primes before characteristic-zero reconstruction.
+3. If a rational solution exists, record that the typed extension class
+   vanishes despite its constant-frame obstruction.
+4. If none exists within source-derived complete bounds, construct the
+   differential-module extension class and compute its intrinsic divisor
+   support, not the denominator of a representative.
+5. Restrict that complete object to the generic function field of
    \(\mathcal Q=0\), compare rank and cohomology with a held-out generic
    fiber, and compute the class's residue or specialization.
 6. If a nonzero \(\mathcal Q\)-supported obstruction survives, test whether
@@ -123,6 +134,11 @@ source datum distinguishing them.
   map.
 - `research/nima/physical-union-extension-retyping.md`: explicit supersession
   of the proposed rank-41 extension while preserving the rank-26 result.
+- `research/nima/physical-common-localization-filtration.md`: the repaired
+  typed filtration and physically unactivated horizontal Kato quotient.
+- `research/nima/physical-common-extension-constant-splitting-obstruction.md`:
+  replicated constant-frame nonsplitting of the typed \(25\to26\to1\)
+  sequence.
 - `research/nima/audit_marked_relative_source_map_inventory.py`: the earlier
   rank-nine-to-rank-twelve marked-relative source map remains unconstructed.
 - Sonar's `generic_controllers.select` and
