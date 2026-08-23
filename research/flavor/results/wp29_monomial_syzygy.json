@@ -1,0 +1,128 @@
+{
+ "purpose": "WP29: is the rigid-cluster lnM freeze an exact mass-data syzygy?",
+ "n_classes": 755,
+ "det_term_counts": {
+  "(1, 1)": 731,
+  "(1, 2)": 24
+ },
+ "per_cluster": {
+  "0": {
+   "n_classes": 137,
+   "coef": [
+    -947.2563285811102,
+    6166.937814458131,
+    127001.2663216603
+   ],
+   "lnM_between_std": 9.995707259871596,
+   "resid_between_std": 9.879232188330457,
+   "floor_lndet_u": 0.0017924129923667825,
+   "floor_lndet_d": 0.00010079690084608286,
+   "resid_over_floor": 5511.694141027998
+  },
+  "1": {
+   "n_classes": 30,
+   "coef": [
+    5692633.334020362,
+    0.016458635971863738,
+    99781985.29402062
+   ],
+   "lnM_between_std": 0.07881223663338045,
+   "resid_between_std": 0.07843673494014972,
+   "floor_lndet_u": 7.300785331990649e-10,
+   "floor_lndet_d": 0.41818500385222324,
+   "resid_over_floor": 0.18756467644130878
+  },
+  "2": {
+   "n_classes": 190,
+   "coef": [
+    0.2925506418025846,
+    3.5276036410547484,
+    44.53341344890625
+   ],
+   "lnM_between_std": 0.0012770654449305934,
+   "resid_between_std": 0.000867568416028857,
+   "floor_lndet_u": 0.0010956194622531235,
+   "floor_lndet_d": 0.00022069658376751847,
+   "resid_over_floor": 0.7918519576539073
+  },
+  "3": {
+   "n_classes": 206,
+   "coef": [
+    876.6616824118221,
+    6.892653905449818,
+    15489.436327980618
+   ],
+   "lnM_between_std": 3.812756747910384,
+   "resid_between_std": 3.5192618313190858,
+   "floor_lndet_u": 0.0005843414267569286,
+   "floor_lndet_d": 0.19538094867607714,
+   "resid_over_floor": 18.01230803292743
+  },
+  "4": {
+   "n_classes": 192,
+   "coef": [
+    30086362.45198106,
+    -138822240.76841667,
+    -2706136337.7530475
+   ],
+   "lnM_between_std": 9.288073383879743,
+   "resid_between_std": 9.266725313745109,
+   "floor_lndet_u": 0.0008862241045618728,
+   "floor_lndet_d": 0.0001920635203142609,
+   "resid_over_floor": 10456.413074350248
+  }
+ },
+ "exact_syzygy_classes": [],
+ "det_u_anchor_census": {
+  "0|False": 24,
+  "0|True": 113,
+  "1|True": 30,
+  "2|False": 65,
+  "2|True": 125,
+  "3|False": 35,
+  "3|True": 171,
+  "4|False": 46,
+  "4|True": 146
+ },
+ "gates": {
+  "G1_matchings_enumerated": {
+   "value": {
+    "(1, 1)": 731,
+    "(1, 2)": 24
+   },
+   "passed": true
+  },
+  "G2_cluster2_at_mass_floor": {
+   "value": {
+    "lnM_between_std": 0.0012770654449305934,
+    "floor_lndet_u": 0.0010956194622531235,
+    "resid_over_floor": 0.7918519576539073
+   },
+   "passed": true
+  },
+  "G3_conspiracy_not_det_determined": {
+   "value": [
+    5511.7,
+    18.0,
+    10456.4
+   ],
+   "passed": true
+  },
+  "G4_no_exact_monomial_syzygy": {
+   "value": {
+    "n_exact": 0,
+    "n_single_single": 731
+   },
+   "passed": true
+  },
+  "G5_cluster1_det_u_diagonal_anchor": {
+   "value": {
+    "det_u_through_22": 30,
+    "total": 30
+   },
+   "passed": true
+  }
+ },
+ "gates_passed": 5,
+ "interpretation": "No exact monomial syzygy anywhere: 0/731 single-single classes have the M exponent vector in span(det_u, det_d). The cluster-2 lnM freeze (1.3e-3) sits AT the mass-data fit-tolerance floor (det_u floor 1.1e-3): the monomial is pinned as tightly as the masses themselves, but NOT through det values (regression residual 8.7e-4 barely below raw 1.3e-3, coefficients non-integer) - it behaves like physical data without being reducible to det data. Cluster 1 is structurally different: all 27 classes are diagonal-up textures with det_u = u00*u11*u22 through the y_t-CENTRAL anchor edge, det_u frozen to 7.3e-10 between classes, while lnM spreads 0.079 - an intermediate freeze far above the mass floor, unexplained by det data. Conspiracy clusters: lnM spreads 3.8..9.9, 18..10456x the floor - no determination. Net: the rigid freeze is a property of the viable fitted set per cluster, not a monomial identity."
+}
