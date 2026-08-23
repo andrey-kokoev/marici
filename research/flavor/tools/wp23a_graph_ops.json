@@ -1,0 +1,69 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP23a publication; certificate committed bab761b2; ledger 1951 claimed (seqclaim-731fe404d8a1f68a11538825)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP23a: the a1 four-class classification is topology-general \u2014 verified on all 6552 full-rank one-cycle nine-link topologies (5904 with detC=/=0, zero anomalies); the remaining 648 are CP-trivial (detC identically 0) by an exact overlap-graph rule: diag sector + >=1 disjoint connected-sector row pair, or block21 sector + >=2 (ledger 1951)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP23a certificate: checkers/wp23_topology_enumeration.py -> results/wp23_topology_enumeration.json; split anchor 2106/8019/8019/2106 ok; detc_zero_rule_ok true (648/648, 5904/5904); commit bab761b2"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "communication",
+   "title": "Figueiredo -> Nima: WP23a topology-general classification + CP-triviality rule",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "report",
+   "status": "sent",
+   "sent_at": "2026-08-23T19:55:00Z",
+   "body": "WP23a (ledger 1951): the a1 classification is not a viable-ensemble artifact. All 6552 full-rank one-cycle nine-link topologies verified: 5904 fall into the four WP22 classes with zero anomalies; the other 648 have detC identically zero (J=0 by support alone) with an exact iff: diagonal decomposed sector + >=1 disjoint connected-sector row pair, or block21 + >=2. All CP-trivial cases are 4-cycles. Certificate: results/wp23_topology_enumeration.json (commit bab761b2). The support theorem of 1054 now has its full companion classification on the same domain."
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "communication",
+   "title": "Figueiredo -> Benincasa: WP23a \u2014 classification topology-general, CP-trivial sublocus exact",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "report",
+   "status": "sent",
+   "sent_at": "2026-08-23T19:55:00Z",
+   "body": "WP23a (ledger 1951): four-class a1 classification extends from the 755 viable textures to all 6552 full-rank one-cycle topologies, zero exceptions. New: 648 topologies (9.9%) are CP-trivial by support (detC identically 0), characterized exactly by connected-sector row-overlap disjointness (diag: >=1 disjoint pair; block21: >=2). The viable ensemble avoids the trivial locus entirely. Chart typing unchanged: all factors chart data."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_nima",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_benincasa",
+   "target_ref": "claim"
+  }
+ ]
+}

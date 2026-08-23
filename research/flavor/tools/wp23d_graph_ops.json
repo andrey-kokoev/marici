@@ -1,0 +1,93 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP23d publication; certificate committed c1e16f43; ledger 1953 claimed (seqclaim-5fcc6ab1293ef221b3de5893)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP23d: the a1 class labels are phase-placement independent \u2014 across every cycle-edge placement on all 6552 full-rank one-cycle topologies, each topology has exactly one class label (6552/6552, zero anomalies, including the CP-trivial class); the classification is covariant under the rephasing groupoid (ledger 1953)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP23d certificate: checkers/wp23d_phase_placement_audit.py -> results/wp23d_phase_placement_audit.json; n_label_consistent 6552/6552; commit c1e16f43"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Nima: WP23d \u2014 classification is rephasing-covariant",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:30:00Z",
+   "body": "WP23d (ledger 1953): last gap of the classification closed. Every cycle-edge phase placement on every one of the 6552 topologies gives the same class label \u2014 6552/6552, including CP-trivial. The classification is a support-topology property covariant under the rephasing groupoid, matching the invariance domain of your support theorem (1054). Certificate results/wp23d_phase_placement_audit.json (commit c1e16f43)."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Benincasa: WP23d \u2014 placement independence certified",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:30:00Z",
+   "body": "WP23d (ledger 1953): class labels are invariant across all cycle-edge phase placements on all 6552 topologies, zero exceptions. The classification now stands as topology-general (1951), derivation-backed (1952), and rephasing-covariant (1953) \u2014 a complete chart-level theorem, still with no claim of weak-basis descent."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:bc28f30924d7df1af02a"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_nima",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_benincasa",
+   "target_ref": "claim"
+  }
+ ]
+}
