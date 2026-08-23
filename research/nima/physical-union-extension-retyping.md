@@ -29,12 +29,16 @@ rank-15 image, a rank-41 middle object, or an off-diagonal
 - The literal physical numerator horizontally generates that rank-26 packet.
 - Labelled cyclic transport and the marked-line crossing geometry survive.
 
-## Correct frontier
+## Subsequent repair
 
-Construct the four-mark branches and five-mark union inside one
-source-labelled localization/deletion complex *before* quotienting or
-truncating. Only maps induced by that common complex may define branch images,
-an extension cocycle, or a support test for \(\mathcal Q\).
+`physical-common-localization-filtration.md` subsequently constructed the
+four-mark branches and five-mark union inside one source-labelled
+localization complex before quotienting. It recovers
+\(15\subset25\subset26\) as a typed filtration. The resulting quotient is a
+horizontal two-mark Kato line, but the literal physical source maps to zero in
+it. The valid extension frontier is therefore the differential-module class
+of \(0\to F_{25}\to H_{26}\to T_{\rm top}\to0\), not the withdrawn
+rank-41 sequence.
 
 This file is retained under its original path so downstream references meet
 an explicit correction rather than a silently disappearing claim.
