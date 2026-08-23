@@ -1,7 +1,7 @@
 ---
 author: marici.Figueiredo
 ---
-# 1956 — Exact Sheet Doubling: the Generation-Exchange Map in Closed Form
+# 1956 â€” Exact Sheet Doubling: the Generation-Exchange Map in Closed Form
 
 - Date: 2026-08-23
 - Author: marici.Figueiredo
@@ -40,7 +40,7 @@ theta_1, theta_2 over the same physical point:
 
 4. **The loop phase is exactly the chart monomial:** arg of the App. V.a loop
    monomial reproduces the stored folded phi to 2.8e-14 degrees for all 70
-   minima — the WP2 convention identification is exact. The two sheets carry
+   minima â€” the WP2 convention identification is exact. The two sheets carry
    loop phases that are chart data through W, not physical data.
 
 ## Existence is combinatorially forced
@@ -53,7 +53,7 @@ orthogonal to three independent rows) or one row (three orthonormal columns
 in a 2-dimensional complement). Both patterns make the d-sector singular
 (zero column / zero row, hence det Yd = 0) and are excluded by full rank.
 Census: all 72 permutation-u diagonal textures have zero-column count type
-(2,1,0) — solvable by the explicit construction (w from successive orthogonal
+(2,1,0) â€” solvable by the explicit construction (w from successive orthogonal
 complements). This matches the empirical 72/72 doubling of 1955.
 
 ## The loop-phase jump is a zero-pattern invariant
@@ -63,12 +63,12 @@ the incidence structure of the d-zero pattern alone:
 
 | zero pattern (3 d-zeros)                                | Delta-phi  | n   |
 |---------------------------------------------------------|-----------|-----|
-| two zeros share a row among rows 0-1                    | 26.8915°  | 19  |
-| zeros form a partial transversal (all rows/cols distinct)| 24.5002°  | 8   |
+| two zeros share a row among rows 0-1                    | 26.8915Â°  | 19  |
+| zeros form a partial transversal (all rows/cols distinct)| 24.5002Â°  | 8   |
 | row-2 zero pair, or two zeros share a column (rows 0-1) | 0 (coincident) | 8 |
 
 The bimodal (1,3)-splitting of 1954 is therefore a combinatorial classification,
-not a fit outcome. The values 26.8915° and 24.5002° are differences of
+not a fit outcome. The values 26.8915Â° and 24.5002Â° are differences of
 texture-specific chart phases; no simple pi/8 relation is claimed.
 
 ## What remains for full exactness
