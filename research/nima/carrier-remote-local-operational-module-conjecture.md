@@ -55,8 +55,10 @@ but must not require:
 - a post-hoc projection selected from the desired readout;
 - identification by matching finite-field coordinate indices.
 
-The same source should remain cyclic in both modules. A valid adapter must
-send the source to itself and intertwine the source-defined operations.
+The same source was initially predicted to remain cyclic in both modules. A
+valid adapter was therefore expected to send the source to itself and
+intertwine the source-defined operations. The higher-pole audit below
+falsifies the cyclicity clause while preserving the module-family clause.
 
 ## Falsifiers
 
@@ -182,6 +184,41 @@ This does not exclude additional resonant classes first appearing at higher
 half twist. If it remains rank 26, the canonical Leray covector may be built
 directly in the physical Plücker chart and compared to the generic family by
 ordinary base change.
+
+## Higher-pole result: regular module, codimension-one physical source orbit
+
+Complete normal-form reduction was extended from common \(K\)-pole depth two
+to depth three. At both tested primes,
+
+\[
+\begin{array}{c|cc}
+&K\text{-depth }2&K\text{-depth }3\\
+\hline
+\dim H_{\gamma=5}&26&26\\
+\dim H_{\gamma=-1/2}&26&26\\
+\dim\langle\nabla^I s\rangle_{\gamma=5}&26&26\\
+\dim\langle\nabla^I s\rangle_{\gamma=-1/2}&25&25
+\end{array}
+\]
+
+Thus no higher-pole cohomology appears through depth three, and the physical
+fiber remains an ordinary rank-26 base change. Nevertheless the literal
+unsplit source loses exactly one cyclic direction at the physical twist.
+
+The prior rank-26 physical source-orbit report used an incomplete quotient
+normal form that stopped at the first free leader. Eliminating every pivot
+before free-coordinate projection gives the replicated rank 25.
+
+This is not a Carrier mutation and not a rank singularity. It is a
+codimension-one operational residual inside the regular physical module:
+
+\[
+\boxed{H_{-1/2}/\langle\nabla^I s_{\rm phys}\rangle\simeq k.}
+\]
+
+It is not yet identified as a physical readout class. The next test must
+construct its intrinsic annihilator line, classify its filtration/support,
+and evaluate whether the canonical Leray covector detects it.
 
 Evidence:
 
