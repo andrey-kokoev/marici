@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import hashlib
 from itertools import product
 from pathlib import Path
 
@@ -19,15 +20,23 @@ import physical_four_mark_residue_twisted_derham as m
 NAMES = ("g1", "g2", "g3", "g23", "g31")
 P = m.PRIME
 GAMMA = (P - 1) // 2
+POINT = tuple(
+    int(value)
+    for value in os.environ.get("MARICI_EXTERNAL_POINT", "2,3,4").split(",")
+)
+if len(POINT) != 3:
+    raise ValueError("MARICI_EXTERNAL_POINT must contain exactly three integers")
 AMBIENT = int(os.environ.get("MARICI_AMBIENT_DEGREE", "12"))
 CUTOFF = int(os.environ.get("MARICI_CUTOFF_DEGREE", "6"))
 AXES = tuple(
     int(axis) for axis in os.environ.get("MARICI_EXTERNAL_AXES", "0,1").split(",")
 )
 AXIS_SUFFIX = "" if AXES == (0, 1) else "_axes" + "-".join(map(str, AXES))
+POINT_SUFFIX = "_x" + "_".join(map(str, POINT))
 OUT = Path(__file__).resolve().parents[1] / "results" / (
-    f"physical_moving_localization_horizontality_p{P}_a{AMBIENT}_c{CUTOFF}{AXIS_SUFFIX}.json"
+    f"physical_moving_localization_horizontality_p{P}_a{AMBIENT}_c{CUTOFF}{POINT_SUFFIX}{AXIS_SUFFIX}.json"
 )
+ORIGINAL_FIBER_DATA = m.fiber_data
 
 
 def add(row, column, value, tangent=0):
@@ -101,9 +110,46 @@ def polynomial_terms(polynomial, tangent_polynomial, exponent, scale):
         )
 
 
+def parameter_derivative_data_at_point(axis):
+    # Every coefficient has kinematic degree at most four, so this symmetric
+    # five-point stencil is the exact formal derivative over the field.
+    weights = (1, -8, 0, 8, -1)
+    inverse_twelve = pow(12, P - 2, P)
+    k_result = {}
+    q_result = {}
+    for offset, weight in zip((-2, -1, 0, 1, 2), weights):
+        point = list(POINT)
+        point[axis] += offset
+        k, q = ORIGINAL_FIBER_DATA(*point)
+        for exponent, coefficient in k.items():
+            k_result[exponent] = (
+                k_result.get(exponent, 0) + weight * coefficient
+            ) % P
+        for name, polynomial in q.items():
+            target = q_result.setdefault(name, {})
+            for exponent, coefficient in polynomial.items():
+                target[exponent] = (
+                    target.get(exponent, 0) + weight * coefficient
+                ) % P
+    k_result = {
+        exponent: coefficient * inverse_twelve % P
+        for exponent, coefficient in k_result.items()
+        if coefficient
+    }
+    q_result = {
+        name: {
+            exponent: coefficient * inverse_twelve % P
+            for exponent, coefficient in polynomial.items()
+            if coefficient
+        }
+        for name, polynomial in q_result.items()
+    }
+    return k_result, q_result
+
+
 def presentation_tangent(names, external_axis):
-    k, all_q = m.fiber_data(2, 3, 4)
-    dk, dall_q = m.parameter_derivative_data(external_axis)
+    k, all_q = ORIGINAL_FIBER_DATA(*POINT)
+    dk, dall_q = parameter_derivative_data_at_point(external_axis)
     q = [all_q[name] for name in names]
     dq = [dall_q[name] for name in names]
     q_count = len(names)
@@ -225,10 +271,26 @@ def pivot_packet(rows):
 
 
 def main():
+    # The imported source engine historically freezes (2,3,4). Redirect only
+    # its point-evaluation hooks; retain the original source polynomial
+    # constructor for exact tangent stencils above.
+    m.fiber_data = lambda _x, _y, _z: ORIGINAL_FIBER_DATA(*POINT)
+    m.parameter_derivative_data = parameter_derivative_data_at_point
     a0, ac, ap, af = m.presentation((), GAMMA, AMBIENT, CUTOFF, minimum_q_level=0)
     c0, cc, cp, cf = m.presentation(NAMES, GAMMA, AMBIENT, CUTOFF, minimum_q_level=0)
     al = {column: label for label, column in ac.items()}
     cl = {column: label for label, column in cc.items()}
+
+    def basis_packet(free, labels):
+        serialized = [
+            [*labels[column][:-1], list(labels[column][-1])] for column in free
+        ]
+        encoded = json.dumps(serialized, separators=(",", ":")).encode("utf-8")
+        return {
+            "columns": list(free),
+            "labels": serialized,
+            "sha256": hashlib.sha256(encoded).hexdigest(),
+        }
 
     def cq(vector):
         reduced = m.reduce_row(vector, cp)
@@ -355,9 +417,12 @@ def main():
     packet = {
         "schema": "marici.physical-moving-localization-horizontality.v1",
         "prime": P,
+        "external_point": list(POINT),
         "ambient": AMBIENT,
         "cutoff": CUTOFF,
         "external_axes": list(AXES),
+        "absolute_free_basis": basis_packet(af, al),
+        "common_free_basis": basis_packet(cf, cl),
         "localization_kernel_dimension": len(kernel),
         "axes": packets,
         "combined_mixed_curvature_rank": rank(all_residuals),

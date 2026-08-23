@@ -48,9 +48,21 @@ presentation is its explicit period covector
 
 The next construction must retain the source-labelled rank-26 basis and
 evaluate or transport this canonical germ. Globally, its variation around
-generic \(\mathcal Q=0\) remains unresolved. Coordinate pairing, direct
-positive-chamber restriction, and post-hoc addition of an absolute cycle are
-inadmissible.
+generic \(\mathcal Q=0\) is not unresolved: the simultaneous-resolution
+theorem gives
+
+\[
+T_{\mathcal Q}=1,\qquad
+N_{\mathcal Q}=0,\qquad
+\operatorname{Var}_{\mathcal Q}(\Gamma_{\rm phys}^{\rm res})=0.
+\]
+
+Therefore the missing covector cannot reopen \(\mathcal Q\) as intrinsic
+physical support.  Its purpose is to determine which parts of the nonsplit
+rank-26 coefficient system the physical contour observes, and with what
+source normalization.  Coordinate pairing, direct positive-chamber
+restriction, post-hoc addition of an absolute cycle, and fitting a
+\(\mathcal Q\)-degenerate response matrix are inadmissible.
 
 The subsequent half-twist audit sharpens “transport”: although the bounded
 generic and physical presentations both have dimension 26, their relation
@@ -59,5 +71,6 @@ spaces differ. See
 contiguity or limiting-lattice comparison must precede the period covector.
 
 Evidence: `published_boundary_value_leray_uniqueness.md`,
+`research/benincasa/q_sheet_resolution_certificate.md`,
 `check_nine_master_griffiths_dwork.py`, and
 `results/physical_marked_rank26_geometry.json`.
