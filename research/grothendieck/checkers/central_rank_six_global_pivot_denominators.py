@@ -15,6 +15,12 @@ def main():
         'central-rank-six-loewner-anchor.json').read_text())
     upper = next(row for row in rank_six['anchors']
                  if row['anchor'] == ['0.01'] * 6)
+    if first_four.get('directed_scalar_arithmetic_version') != 2:
+        raise RuntimeError('first-four global floors lack directed arithmetic v2')
+    if monotonicity.get('directed_scalar_arithmetic_version') != 2:
+        raise RuntimeError('rank-five continuum monotonicity lacks directed arithmetic v2')
+    if upper.get('directed_scalar_arithmetic_version') != 2:
+        raise RuntimeError('rank-six upper anchor lacks directed arithmetic v2')
     if not monotonicity['all_five_coordinate_derivatives_strictly_negative_on_ordered_simplex']:
         raise RuntimeError('rank-five continuum monotonicity is not certified')
     fifth_floor = D(upper['pivots'][4][0])

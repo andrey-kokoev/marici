@@ -10,6 +10,10 @@ I = G.I
 N = G.N
 
 
+def up_pow(base, exponent):
+    return I.up.power(base, D(exponent))
+
+
 def derivative_h(h, x):
     return [I.box(0)] + [
         I.add(*(I.scale(I.mul(I.powi(I.box(x), q-1), h[d-q]), q)
@@ -24,13 +28,15 @@ def derivative_tail(i, j, variable):
     value = D(0)
     for p in range(G.SOURCE_DEGREE, 201):
         falling = math.factorial(p) // math.factorial(p-order)
-        term = I.up.multiply(D(multiplicity) * G.M,
-                             D(falling) * G.R ** (p-order))
+        term = I.up.multiply(I.up.multiply(D(multiplicity), G.M),
+                             I.up.multiply(D(falling),
+                                           up_pow(G.R, p-order)))
         value = I.up.add(value, I.up.divide(
             term, D(math.factorial(i) * math.factorial(j))))
     first = I.up.divide(
-        I.up.multiply(D(multiplicity) * G.M,
-                      D(201 ** order) * G.R ** (201-order)),
+        I.up.multiply(I.up.multiply(D(multiplicity), G.M),
+                      I.up.multiply(D(201 ** order),
+                                    up_pow(G.R, 201-order))),
         D(math.factorial(i) * math.factorial(j)))
     return I.up.add(value, I.up.divide(first, D('.989')))
 
@@ -109,6 +115,7 @@ def evaluate(nodes):
         'all_six_derivatives_strictly_negative': certified,
         'analytic_source_tail_included': True,
         'directed_decimal_rounding': True,
+        'directed_scalar_arithmetic_version': 2,
         'interval_certified': certified,
         'rh_proved': False,
     }
