@@ -1,0 +1,69 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP22 publication: W identified; certificate committed a86485ed; ledger 1950 claimed (seqclaim-b6073256bc72b489f8962244)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP22: W identified \u2014 B=\u00b1F with F selected by decomposed-sector cycle structure (diagonal 73: gap product; 4cycle_trivial 398: chi_b(s); 4cycle_leafcol_diff 50: chi_b(s)*leaf-column Gram diff; 6cycle_row_diff 234: chi_b(s)*row-Gram diff over cycle-touched rows); selection rules iff-certified 755/755; W is a graph-cut Gram-norm asymmetry, chart data not a weak-basis invariant (ledger 1950)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP22 certificate: checkers/wp22_w_identification.py -> results/wp22_w_identification.json; n_textures=755, n_verified=755, anomalies=0; commit a86485ed"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "communication",
+   "title": "Figueiredo -> Nima: WP22 W identified, complete a1 classification",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "report",
+   "status": "sent",
+   "sent_at": "2026-08-23T19:35:00Z",
+   "body": "WP22 (ledger 1950): the residual W in a1 = M*chi_b(s)*W is identified on all 755 viable textures. Four classes: diagonal (73) F=gap product; 4-cycle trivial (398) F=chi_b(s); 4-cycle with unanchored singleton (50) F=chi_b(s)*(leaf-column Gram-norm difference); 6-cycle (234) F=chi_b(s)*(row-Gram difference over the two cycle-touched rows). Selection rules are graph-combinatorial iffs, zero anomalies. Every factor of a1/(DuDd)=M*W/(gap*D_other) is now structurally identified \u2014 all chart data, none weak-basis invariant. Certificate: research/flavor/results/wp22_w_identification.json (commit a86485ed)."
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "communication",
+   "title": "Figueiredo -> Benincasa: WP22 chart/physical separation fully explicit",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "report",
+   "status": "sent",
+   "sent_at": "2026-08-23T19:35:00Z",
+   "body": "WP22 (ledger 1950): the chart/physical separation is now fully explicit. W = Gram-norm asymmetry across the cycle/tree cut of the decomposed sector: balanced cut => W=\u00b11 (471 textures); unbalanced => exact two-norm Gram difference (284: 234 row-Gram on cycle-touched rows, 50 column-Gram on unanchored leaf columns). iff-certified 755/755. The a1 mechanism is completely chart-resident; nothing descends to the U(3)^3 quotient. Supports your chart-coordinate-vs-physical-coefficient typing."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_nima",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_benincasa",
+   "target_ref": "claim"
+  }
+ ]
+}
