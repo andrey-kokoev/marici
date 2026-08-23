@@ -54,6 +54,20 @@ while
 
 Equation (2) is denominator-free and contains no zero data.
 
+It also has a one-line scalar interpretation. With
+\(E(a,b)=|B(a+ib)|^2\), analyticity gives
+
+\[
+\boxed{
+\text{left side of (2), with its positive normalization}
+=\frac12(\beta\partial_a-\alpha\partial_b)E.
+}
+\]
+
+The two-copy midpoint/relative-coordinate kernel is therefore the expanded
+form of a directional energy flux. See
+`theta-denominator-free-energy-flow.md`.
+
 ## Sign geometry
 
 The unweighted relative-coordinate kernel is positive on the core band

@@ -32,9 +32,23 @@ for seed in seeds:
     rows.append({"seed": [seed.real, seed.imag], "checks": cutoff_checks})
 
 same_root = abs(complex(*rows[0]["checks"][-1]["root"]) - complex(*rows[1]["checks"][-1]["root"])) < 1e-10
+second_zero_checks = []
+for cutoff in (28, 36):
+    root, residual, derivative = newton_source_zero(complex(0.25566, 0.69525), cutoff)
+    second_zero_checks.append({
+        "max_label": cutoff,
+        "root": [root.real, root.imag],
+        "phi_absolute_residual": residual,
+        "phi_prime_absolute": derivative,
+    })
 result = {
     "endpoint_rows": rows,
     "both_thimble_endpoint_seeds_converge_to_same_source_zero": same_root,
+    "second_source_zero_checks": second_zero_checks,
+    "first_two_source_zeros_distinct": abs(
+        complex(*rows[0]["checks"][-1]["root"])
+        - complex(*second_zero_checks[-1]["root"])
+    ) > 0.01,
     "source_zero_is_xi_zero": False,
     "interpretation": "zero of analytically continued Mellin amplitude G, hence a relative-cycle endpoint",
     "interval_certified": False,

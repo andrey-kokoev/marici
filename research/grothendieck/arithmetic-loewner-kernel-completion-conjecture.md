@@ -164,3 +164,42 @@ A complete numerical anchor sweep finds all 15,015 fifth-pivot coordinate
 derivatives negative. Proving this coordinatewise monotonicity would reduce
 uniformization to the certified upper endpoint cell and is now the preferred
 rank-five theorem target.
+
+## Thimble transport is removed from the proof contract
+
+The modular sewing audit now proves that the completed real Mellin contour is
+the faithful source object. Superexponential decay makes
+
+\[
+Z(z)=\int_{\mathbb R}e^{zu}\Phi(u)\,du
+\]
+
+entire in \(z\), with every parameter jet obtained on that same fixed contour.
+Complex thimbles are optional coordinate decompositions.
+
+Inside any theta analyticity strip
+
+\[
+\left|\Im u-k\pi\right|<\frac\pi4,
+\]
+
+endpoint incidence uniquely determines a relative path: the strip is simply
+connected, source zeros are not punctures, and every Mellin-jet one-form has a
+primitive. Integral Picard--Lefschetz mutation therefore changes only the
+presentation of a period. It supplies no additional global obstruction or
+positivity mechanism.
+
+Accordingly, the preferred rank-uniform attack should no longer accumulate
+wall-by-wall thimble reconstructions. The live explanatory question is
+strictly:
+
+\[
+\boxed{
+\text{which special property of the completed positive real theta source
+forces the quarter-centered angular energy to decrease?}
+}
+\]
+
+Any successful answer must act on the undecomposed real-source integral or
+its exact Loewner kernel. Component signs, saddle counts, and fitted
+cancellation paths are diagnostics only.
