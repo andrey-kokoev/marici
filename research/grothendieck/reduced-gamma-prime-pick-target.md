@@ -33,7 +33,7 @@ inequality
 \[
  \boxed{\operatorname{Im}\left\{
  \frac{4s(s-1)}{2s-1}
- \left[-\frac12\log\pi+rac12\psi(s/2)
+ \left[-\frac12\log\pi+\frac12\psi(s/2)
  +\frac{\zeta'}{\zeta}(s)\right]\right\}\ge0}
 \]
 
@@ -47,7 +47,7 @@ canonical endpoint reduction—not a sectorwise inequality.
 Under nonnegative squared spectral coordinates,
 
 \[
- F(t)=4\sum m_\lambda-sum_\lambda
+ F(t)=4\sum_\lambda m_\lambda-\sum_\lambda
  \frac{m_\lambda(1+4\lambda)}{t+\lambda}
 \]
 

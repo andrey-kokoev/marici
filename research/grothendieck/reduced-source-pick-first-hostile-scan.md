@@ -10,7 +10,7 @@ A zero-free complex evaluator was built from:
 On a 117-point grid spanning
 
 \[
- -100\le\operatorname{Re}t\le100,qquad
+ -100\le\operatorname{Re}t\le100,\qquad
  0.01\le\operatorname{Im}t\le100,
 \]
 

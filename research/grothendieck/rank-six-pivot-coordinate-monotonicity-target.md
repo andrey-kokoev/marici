@@ -318,4 +318,68 @@ propagation, a higher Taylor order, or a finer correlated cover may still
 close the continuum argument.  The machine-readable certificate is
 `central-rank-six-degree-eight-all-high-chart-obstruction.json`.
 
+## Degree-49 source repair and reopened continuum route
+
+Component isolation showed that the obstruction above was not caused by the
+rational LDL recursion.  The largest raw matrix-entry C3 remainder was
+`1.05377186607081721612702924948e-23`, while the propagated final-pivot value
+was only about `0.0085%` larger.  A directed standalone split assigned
+`1.05377186607081721612675249137e-23` of the raw bound to the uniform Cauchy
+envelope beginning at source degree 39.  The known degree-at-most-38
+polynomial remainder was negligible on that scale.
+
+The centered source computation has therefore been extended without changing
+its analytic model: it now certifies `F_0,...,F_49` as directed intervals and
+retains the old degree-29 and degree-39 arrays for compatibility.  Applying
+the same `6.038308` envelope only from degree 50 reduces its isolated raw C3
+contribution to
+`1.09633241507670558557602566069e-39`, roughly ten orders below the required
+transport ceiling.
+
+The hostile all-high chart has completed again under a distinct `current-v3`
+tag.  It has all 15 positive inverse floors, minimum
+`6.66511364459739599865850030827e-26`, and final post-degree-eight C3
+remainder `1.09967152638247165127573347926e-39`.  After adding the complete
+finite degree-3-through-8 jet budget, its uniform third-tensor bound is
+`3.76471153932640501894770158366e-37`, below the exact sufficient ceiling
+`2.28469267982528540551242151242e-29` by a safety factor of about
+`6.07e7`.  Thus the earlier obstruction remains a valid falsifier of the v2
+cutoff but is superseded as an obstacle to the theorem route.  Consumers now
+require exact source degree 49, first enveloped degree 50, and `current-v3`
+filenames.  Six further ordered binary charts remain to complete the finite
+cover.
+
+## Certified rank-six continuum theorem
+
+All seven `current-v3` binary charts are now complete and pass the exact-source
+degree 49, first-enveloped degree 50, directed-arithmetic, closed-binomial,
+product-kernel, and 15-positive-inverse-floor gates.  Their largest uniform
+third-tensor slice-l1 bound is attained on the all-low chart and equals
+
+`3.7654233628084175387336242074856613126923718748624e-37`,
+
+strictly below the downward-rounded sufficient ceiling
+`2.2846926798252854055124215124238241491049109667426e-29`.
+
+The corrected linf transport gives maximum continuum Hessian row sum
+`6.4625694588264088943210384442051871415328173092969e-35` and derivative
+transport loss
+`3.2312847294132044471605192221025935707664086546485e-38`.  Subtracting this
+loss from the smallest of the 48,048 certified anchor derivative margins
+leaves the directed positive margin
+
+`2.8558658027138147217853076563594775928103722997736e-35`.
+
+Consequently the sixth Newton--LDL pivot is strictly decreasing in every
+coordinate throughout `0 <= x1 <= ... <= x6 <= .01`; its minimum is at the
+all-`.01` endpoint, where the directed grid certificate is strictly positive.
+Together with the established rank-five continuum theorem for the preceding
+principal pivots, all six Newton--LDL pivots are strictly positive throughout
+the ordered rank-six simplex.  The machine-readable terminal certificates are
+`central-rank-six-third-tensor-seven-chart-cover.json` and
+`central-rank-six-global-coordinate-monotonicity.json`.
+
+This is a finite rank-six positivity theorem for the specified central
+Loewner system.  It is not a rank-uniform theorem and does not prove RH.
+
 RH is not proved.
