@@ -152,6 +152,14 @@ grade, the rung-5 grade is \(8\) (even), so the character theorem
 magnetic sector at rung 5. (The refuted rule's grade 10 was also even;
 the gate prediction is unchanged, the grade is corrected.)
 
+**Upgrade (2026-08-23, certified).** The prediction above is now a
+certified readout: `rung5-readout.md` proves the character theorem
+through grade 8 via the fold closed form and its reciprocity engine
+(checker `rung5_readout_checks.py`, 19/19), confirming
+\(P(E_8)=+u^{10}\) (gate passes) and \(P(M_8)=-u^{11}\) (gate FAILS,
+obstruction \(P(M_8)-M_8=-(1+u^{11})M_8\) exact, unrepairable by
+rational cocycle dressing).
+
 ## 6. What is proved, and what is not
 
 **Proved:** the mechanism identities M1–M5 (chain identity certified on
@@ -162,12 +170,17 @@ every channel of orders 2, 3, 4, closures certified, both sharpness
 directions witness-proven; the refutation of the old \(k\ge p-1\) rule
 at \(p=4\).
 
-**Not proved (labeled):** the law as a theorem over **all** tower orders
-— the support law and chain identity are certified through order 4 and
-order 3 respectively, and the mechanism reduces further orders to the
-support computation, but no all-\(n\) induction is recorded; the rung-5
+**Not proved (labeled):** the rung-5
 readout oscillation is a prediction under the declared
 fold-grade = readout-grade identification, not a certified readout.
+
+**Upgrade (all-\(n\) theorem).** The one gap above — the law as a
+theorem over **all** tower orders — is now closed:
+`channel-closedform.md` proves every tower channel has a universal
+closed form with explicit Lah-number coefficients (checker
+`channel_closedform_checks.py`), making the support law — and hence
+the closure law of Section 1 — a theorem for every tower order \(n\),
+not only orders \(\le4\).
 
 ## Verification
 
