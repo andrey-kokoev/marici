@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1950 — The Identification of W: a Gram-Norm Difference Across the Graph Cut, and the Complete a₁ Classification (WP22)
 
 Date: 2026-08-23

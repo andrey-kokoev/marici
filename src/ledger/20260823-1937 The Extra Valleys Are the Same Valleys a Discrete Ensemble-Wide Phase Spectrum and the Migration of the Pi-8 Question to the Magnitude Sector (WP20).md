@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1937 — The Extra Valleys Are the Same Valleys: a Discrete Ensemble-Wide Phase Spectrum, and the Migration of the π/8 Question to the Magnitude Sector (WP20)
 
 Date: 2026-08-23
