@@ -13,6 +13,20 @@ sys.path.insert(0, str(ROOT / "research" / "benincasa"))
 with contextlib.redirect_stdout(io.StringIO()):
     base = importlib.import_module("physical_four_mark_residue_twisted_derham")
 
+def canonical_reduce(row, pivots):
+    """Eliminate every pivot before projecting to free quotient coordinates."""
+    row = dict(row)
+    while True:
+        active = [column for column in row if column in pivots]
+        if not active:
+            return row
+        pivot = max(active)
+        coefficient = row[pivot]
+        for column, value in pivots[pivot].items():
+            base.add_value(row, column, -coefficient * value)
+
+base.reduce_row = canonical_reduce
+
 OUT_DIR = Path(__file__).resolve().parents[1] / "results"
 
 def presentation(gamma: int, ambient: int = 14, cutoff: int = 7):
