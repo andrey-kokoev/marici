@@ -108,10 +108,14 @@ def main():
             return 2
         send(proc.stdin, {"jsonrpc": "2.0",
                           "method": "notifications/initialized"})
-        send(proc.stdin, {
-            "jsonrpc": "2.0", "id": 2, "method": "tools/call",
-            "params": {"name": tool_name, "arguments": arguments},
-        })
+        if tool_name == "__list__":
+            send(proc.stdin, {"jsonrpc": "2.0", "id": 2, "method": "tools/list",
+                              "params": {}})
+        else:
+            send(proc.stdin, {
+                "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+                "params": {"name": tool_name, "arguments": arguments},
+            })
         while True:
             msg = read_message(proc.stdout)
             if msg is None:
