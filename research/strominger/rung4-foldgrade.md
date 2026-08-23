@@ -109,6 +109,12 @@ V-tower packet are joined by a third ladder: the weight starts
 2, 3, 4 — the grade jump \(4\to7\) being the first visible cost of the
 principal sector's growth.
 
+**Update (2026-08-23).** The grade jump is now explained by a per-channel
+law: `rung4-foldrule.md` certifies that channel \((a,b)\) at tower order
+\(n\) closes iff \(k\ge\max(1,p-1)\) and grade \(\ge n+2k\)
+(\(p=a+b\)); the forced pair \((7,-2)\) is its \(p=3\) instance and the
+depth-\(\ge1\) closure at \((5,-1)\) its \(p\le2\) instance.
+
 ## Verification
 
 `uv run --with sympy python research/strominger/checkers/rung4_foldgrade_checks.py`
