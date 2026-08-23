@@ -109,11 +109,16 @@ V-tower packet are joined by a third ladder: the weight starts
 2, 3, 4 — the grade jump \(4\to7\) being the first visible cost of the
 principal sector's growth.
 
-**Update (2026-08-23).** The grade jump is now explained by a per-channel
-law: `rung4-foldrule.md` certifies that channel \((a,b)\) at tower order
-\(n\) closes iff \(k\ge\max(1,p-1)\) and grade \(\ge n+2k\)
-(\(p=a+b\)); the forced pair \((7,-2)\) is its \(p=3\) instance and the
-depth-\(\ge1\) closure at \((5,-1)\) its \(p\le2\) instance.
+**Update (2026-08-23).** The grade jump is now explained by a derived
+per-channel law: `rung4-foldrule.md` proves that channel \((a,b)\) at
+tower order \(n\) closes iff \(2w_0+p\le0\) and grade \(\ge n-2w_0\)
+(\(p=a+b\)), minimal pair \((n+2\lceil p/2\rceil,-\lceil p/2\rceil)\) —
+the fold is a covariant chain with trivializing connection, diagonal in
+\(x=1+u\), with channel support exactly \([-(n-1),p]\). The forced pair
+\((7,-2)\) is its \(p=3\) instance and the depth-\(\ge1\) closure at
+\((5,-1)\) its \(p\le2\) instance. (An earlier version of this note
+stated the fitted rule \(k\ge\max(1,p-1)\); it coincides with the true
+law for \(p\le3\) and was corrected at \(p=4\).)
 
 ## Verification
 

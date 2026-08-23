@@ -1,0 +1,125 @@
+{
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "failed_ids": [],
+    "rule": "channel (a,b) at tower order n, p = a+b, w0 = -k: closes iff 2 w0 + p <= 0 and grade >= n - 2 w0; minimal pair (n + 2 ceil(p/2), -ceil(p/2))",
+    "mechanism": "fold = covariant chain D_{w0+g-1}...D_{w0}(G) = zb^g x^{-2(w0+g-1)} (d_x M_{x^2})^{g-1} d_x (x^{2 w0} G); kernel span{x^{-(g-1)},..,x^0}; supp(G) = [-(n-1), p]",
+    "verdict": "fold law derived (mechanism + support law) and certified on orders 2-4 with both sharpness directions witness-proven"
+  },
+  "checks": [
+    {
+      "id": "H.Ek",
+      "group": "H",
+      "statement": "homogeneity certificate: every order-4 channel is a pure MONOMIAL in Ek (channel(a,b) ~ Ek^{b-1}), so Ek = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "H.om",
+      "group": "H",
+      "statement": "homogeneity certificate: every order-4 channel is a pure MONOMIAL in om (order-4 channels ~ om^2), so om = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "H.sq2",
+      "group": "H",
+      "statement": "uniformity certificate: every order-4 channel is a pure MONOMIAL in sqrt(2) (four c-factors per term), so sqrt(2) = 1 substitution loses no zero-recognition content",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M1.conn",
+      "group": "M",
+      "statement": "connection trivialization: D_w = S^{-w} d_z S^w with S = (1+u)^2 (symbolic w, sample coefficient)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M2.chain",
+      "group": "M",
+      "statement": "fold regular part == covariant chain D_{w0+g-1}...D_{w0}(G): every order-2/3 channel at (4,-1)/(6,-2) resp. (5,-1)/(7,-2) \u2014 the fold IS the covariant chain",
+      "status": "pass",
+      "detail": "22 channel-pair identities certified"
+    },
+    {
+      "id": "M3.xchain",
+      "group": "M",
+      "statement": "x-space chain form: the chain equals zb^g x^{-2(w0+g-1)} (d_x M_{x^2})^{g-1} d_x (x^{2 w0} G) (order-2 channel (1,0) at (4,-1), reduced ring)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M4.monomial",
+      "group": "M",
+      "statement": "diagonal monomial action: (d_x M_{x^2})^m d_x (x^e) = e(e+1)...(e+m) x^{e+m-1} for m = 1..4, e in [-6, 5] \u2014 the fold coefficient on x^e acquires the factor e(e+1)...(e+g-1)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "M5.kernel",
+      "group": "M",
+      "statement": "kernel of (d_x M_{x^2})^{g-1} d_x on Laurent polynomials is exactly span{x^{-(g-1)}, ..., x^0} (g = 2..5, exponents -8..7): CLOSURE(g, w0) iff supp(x^{2 w0} G) lies in this kernel",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S.pole",
+      "group": "S",
+      "statement": "pole law (UNREDUCED): x^{n-1} G is x-free in the denominator for every channel at orders 2, 3, 4 \u2014 the (1+u)-pole order is exactly n-1",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "S.support",
+      "group": "S",
+      "statement": "SUPPORT LAW (UNREDUCED): for every channel at orders 2, 3, 4 the exponent support of G in x = 1+u is EXACTLY the full range [-(n-1), p] \u2014 lower edge the pole law, upper edge p (no edge cancellation, no interior gaps)",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R1.census",
+      "group": "R1",
+      "statement": "order-4 census: 11 channels with p-classes 5/3/2/1 (p = a+b = 4, 3, <= 2) \u2014 the law applies per p-class",
+      "status": "pass",
+      "detail": "p-classes: {p: [alphas]} = {4: [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)], 1: [(1, 0)], 2: [(1, 1), (2, 0)], 3: [(1, 2), (2, 1), (3, 0)]}"
+    },
+    {
+      "id": "R2.closures",
+      "group": "R2",
+      "statement": "CERTIFIED closures at the law's minimal pairs for EVERY channel of orders 2, 3, 4 \u2014 (grade, w0) = (n + 2 ceil(p/2), -ceil(p/2)): order 2 all at (4, -1); order 3: p<=2 at (5, -1), p=3 at (7, -2); order 4: p<=2 at (6, -1), p=3 and p=4 at (8, -2)",
+      "status": "pass",
+      "detail": "certified 22/22 channels"
+    },
+    {
+      "id": "R3.grade_min",
+      "group": "R3",
+      "statement": "grade minimality (witness-proven): EVERY channel of orders 2-4 stays open one grade below its law-minimal grade at the minimal weight \u2014 the grade floor n + 2 ceil(p/2) is sharp",
+      "status": "pass",
+      "detail": "nonzero confirmed: 22 channels"
+    },
+    {
+      "id": "R3.weight_min",
+      "group": "R3",
+      "statement": "weight minimality (witness-proven): every channel of orders 2-4 stays open one weight SHALLOWER at the same grade \u2014 the depth floor k >= ceil(p/2) is sharp, and the weight condition 2w0 + p <= 0 is the real gate (it fails there independent of grade)",
+      "status": "pass",
+      "detail": "nonzero confirmed: 22 channels"
+    },
+    {
+      "id": "R4.control",
+      "group": "R4",
+      "statement": "grounded rung-3 S2 control: the four bridge channels close at (4, -1) and stay open at (3, -1) (witness-proven) \u2014 the independent grounded fold matches the law's order-2 pattern",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "R5.verdict",
+      "group": "R5",
+      "statement": "verdict: the fold law is DERIVED, not fitted. The fold is the covariant chain D_{w0+g-1}...D_{w0}(G) (M2) with trivializing connection S = (1+u)^2 (M1); in x = 1+u it is the diagonal operator (d_x M_{x^2})^{g-1} d_x on x^{2 w0} G (M3, M4), whose kernel is span{x^{-(g-1)},..,x^0} (M5); the channel support is exactly [-(n-1), p] (S, unreduced). Hence closure iff 2 w0 + p <= 0 and grade >= n - 2 w0: minimal pair (n + 2 ceil(p/2), -ceil(p/2)), certified on every channel of orders 2, 3, 4 (R2) with both sharpness directions witness-proven (R3). The old rule k >= max(1, p-1) coincides with ceil(p/2) for p <= 3 and is REFUTED at p = 4 (closure at (8, -2), not first at (10, -3)). Since p >= 1 always, no channel closes at w0 = 0. The rung-4 forced pair (7, -2) is the p = 3, n = 3 instance",
+      "status": "pass",
+      "detail": ""
+    }
+  ]
+}

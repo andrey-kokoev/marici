@@ -1,56 +1,77 @@
-"""Exact fold-rule checker: the DEPTH-GRADED closure law for the weighted
-distributional fold across tower orders 2, 3, and 4 (marici.Strominger).
+"""Exact fold-law checker: the DERIVED depth-graded closure law for the
+weighted distributional fold across tower orders 2, 3, and 4
+(marici.Strominger).
 
-THE RULE (predicted a priori from the order-2/3 closure table, then tested
-here against order 4 before any claim is recorded):
-  For a tower channel alpha = (a, b) at tower order n, with p = a + b
-  (the number of c-factors), folding with weight start w0 = -k:
-      the channel CLOSES iff  k >= max(1, p - 1)  AND  grade >= n + 2k.
-  Equivalently the minimal closure pair is
-      (grade_min, w0_min) = (n + 2 max(1, p-1), -max(1, p-1)).
+THE LAW (derived in this arc, not fitted):
+  The regular part of the weighted fold of a tower channel G is the
+  covariant chain  D_{w0+g-1} ... D_{w0} (G),  D_w = d_z - w Gam, and the
+  connection trivializes: D_w = S^{-w} d_z S^{w} with S = (1+u)^2. In
+  x = 1+u coordinates the chain is
+      zb^g x^{-2(w0+g-1)} (d_x M_{x^2})^{g-1} d_x ( x^{2 w0} G ),
+  and (d_x M_{x^2}) is diagonal on monomials, x^e |-> (e+2) x^{e+1}, so the
+  fold coefficient on x^e acquires the factor e(e+1)...(e+g-1). Hence
+      CLOSURE(g, w0)  iff  supp(x^{2 w0} G) subset {-(g-1), ..., 0}
+  (the kernel of the diagonal operator on Laurent polynomials).
+
+  The channel support is exactly  supp(G) = [-(n-1), p]  (lower edge = the
+  certified (1+u)-pole law; upper edge = p, with single-factored edge
+  coefficients, so no cancellation), p = a+b the number of c-factors.
+  The closure law therefore reads
+      closes iff  2 w0 + p <= 0  AND  grade >= n - 2 w0,
+  i.e. with w0 = -k:  k >= ceil(p/2), minimal pair (n + 2 ceil(p/2), -ceil(p/2)).
+  Since p >= 1 for every tower channel, NO channel ever closes at w0 = 0.
+
+  Historical note: the previously recorded rule k >= max(1, p-1) coincides
+  with ceil(p/2) for p <= 3 (all order-2/3 evidence) and first diverges at
+  p = 4, where order-4 data decide for ceil(p/2) = 2: the p = 4 channels
+  close at (8, -2), certified, and stay open at grade 7, witness-proven.
 
 Companion to (does NOT import or modify):
   research/strominger/checkers/rung4_vtower_checks.py (G1-G6, the tower)
   research/strominger/checkers/rung4_foldgrade_checks.py (F1-F8, the rung-4
-    forced pair (7, -2) — which this rule EXPLAINS: the principal p = 3
-    sector needs k >= 2, hence grade >= 3 + 4 = 7, while the depth >= 1
-    p <= 2 sector already closes at (5, -1))
+    forced pair (7, -2) — the p = 3 instance of this law)
   research/strominger/checkers/rung3_s2_bridge_checks.py (R4, grounded
     rung-3 fold control)
+  research/strominger/checkers/vtower_polelaw_checks.py (the pole law —
+    the lower edge of the support law here)
 Sources and conventions:
   research/strominger/subsubleading-triangle-source-boundary.md (the declared
     weighted fold prescription)
   research/strominger/rung4-vtower.md, research/strominger/rung4-foldgrade.md
 
 Method notes (finite-fiber discipline).
-  * NONZERO claims (refutations, sub-minimal probes) are proved by exact
-    rational witness evaluation — a nonzero exact value proves the function
-    is not identically zero. This is the sound direction.
-  * ZERO claims (closures at the predicted minimal pairs) are CERTIFIED
-    symbolically in the reduced ring Q(z, zb, zk, zbk) with
-    Ek = om = sqrt(2) = 1, justified without loss by the homogeneity
-    certificates of group H (every channel is a pure monomial in Ek, om and
-    sqrt(2)-uniform, certified there).
-  * The fold recursion is the grounded rung-3 one (R4.1), unchanged. Terms
-    are cancelled at each recursion step (exact arithmetic, sound); a
-    cross-check (group X) re-certifies the known (7, -2) rung-4 full
-    closure with this variant, matching F5 of rung4_foldgrade_checks.py.
-  * Uniqueness/minimality statements carry their scan domains explicitly.
+  * NONZERO claims (sharpness probes) are proved by exact rational witness
+    evaluation — a nonzero exact value proves the function is not
+    identically zero. This is the sound direction.
+  * ZERO claims (closures, mechanism identities) are CERTIFIED symbolically
+    in the reduced ring Q(z, zb, zk, zbk) with Ek = om = sqrt(2) = 1,
+    justified without loss by the homogeneity certificates of group H.
+  * The support law (group S) is certified UNREDUCED: the full numerator
+    degree set of x^{n-1} G in x = 1+u coordinates must be exactly
+    {-(n-1), ..., p} — edges and no interior gaps, no measured input.
+  * The fold recursion is the grounded rung-3 one (R4.1), unchanged; terms
+    are cancelled at each step (exact arithmetic, sound).
 
 Layers:
-  H  homogeneity certificates at tower order 4 (Ek^{b-1}, om^2, sqrt(2)^4
+  H  homogeneity certificates at tower order 4 (Ek, om, sqrt(2) monomial
      uniformity) — reduced-ring certification is without loss.
+  M  mechanism: M1 connection trivialization D_w = S^{-w} d_z S^w;
+     M2 fold == covariant D-chain on every order-2/3 channel at two
+     (grade, w0) pairs each; M3 the x-space chain form on a sample;
+     M4 monomial diagonal action (d_x M_{x^2})^m d_x x^e =
+     e(e+1)_m x^{e+m-1}; M5 kernel = span{x^{-(g-1)},..,x^0}.
+  S  support law, UNREDUCED: for every channel at orders 2, 3, 4 the
+     numerator degree set of x^{n-1} G is exactly {-(n-1), ..., p}.
   R1 order-4 census: 11 channels with p-classes 5/3/2/1 (p = 4, 3, <=2).
-  R2 CERTIFIED closures at the predicted minimal pairs, per p-class:
-     p <= 2 at (6, -1), p = 3 at (8, -2), p = 4 at (10, -3).
-  R3 refutations (witness-proven nonzero) at the canonical sub-minimal
-     probes: one grade below the minimum at the minimal weight, and one
-     weight shallower at one grade below that — for every order-4 channel.
-  R4 the rule CERTIFIED on orders 2 and 3 (spot re-runs at predicted
-     minimal pairs plus sub-minimal refutations, including the grounded
-     rung-3 S2 control at (4, -1)); the order-3 (7, -2) re-certification
-     doubles as machinery cross-validation of the per-step-cancel variant
-     against rung4_foldgrade_checks.py F5.
+  R2 CERTIFIED closures at the law's minimal pairs for EVERY channel of
+     orders 2, 3, 4:  (n + 2 ceil(p/2), -ceil(p/2)).
+  R3 sharpness (witness-proven), orders 2-4: (a) one grade below the
+     minimum at the minimal weight — open; (b) one weight shallower at the
+     SAME grade — open (the weight condition 2w0 + p <= 0 fails there
+     independent of grade).
+  R4 grounded rung-3 S2 control (bridge channels close at (4, -1), open
+     at (3, -1)) — independent grounded fold matches the law's order-2
+     pattern.
   R5 verdict.
 
 Output: research/strominger/results/rung4_foldrule.json
@@ -61,13 +82,14 @@ import os
 import sympy as sp
 
 # ---------------------------------------------------------------- symbols
-z, zb, zk, zbk, Ek = sp.symbols("z zb zk zbk Ek")
+z, zb, zk, zbk, Ek, w, x = sp.symbols("z zb zk zbk Ek w x")
 om = sp.symbols("om", positive=True)
 sq2 = sp.sqrt(2)
 pi = sp.pi
 u = z * zb
 
 Gam = -2 * zb / (1 + u)
+S_conn = (1 + u) ** 2
 
 results = []
 
@@ -154,11 +176,11 @@ def fold(G, w0, n, simplify_terms=True):
 
     Recursion identical to rung4_foldgrade_checks.py; when simplify_terms
     is set, each generated term is cancelled (exact arithmetic) to keep
-    the high-grade certifications tractable. Cross-validated in group X.
+    the high-grade certifications tractable.
     """
     mons = [(G, -1)]
     for i in range(n):
-        w = w0 + i
+        wi = w0 + i
         nxt = []
         for c, b in mons:
             dc = sp.diff(c, z)
@@ -168,20 +190,28 @@ def fold(G, w0, n, simplify_terms=True):
             else:
                 nxt.append((dc, b))
                 nxt.append((c, b + 1))
-        mons = nxt + [(-w * Gam * c, b) for c, b in mons]
+        mons = nxt + [(-wi * Gam * c, b) for c, b in mons]
         if simplify_terms:
             mons = [(sp.cancel(c), b) for c, b in mons]
     return sp.Add(*[c for c, b in mons if b == -1])
 
 
-def witness_value(e, w):
+def dchain(G, w0, g):
+    """Covariant chain D_{w0+g-1} ... D_{w0} (G), D_w = d_z - w Gam."""
+    f = G
+    for i in range(g):
+        f = sp.cancel(sp.diff(f, z) - (w0 + i) * Gam * f)
+    return f
+
+
+def witness_value(e, wt):
     """Exact value at a rational witness (reduced ring)."""
-    return sp.simplify(e.subs(w, simultaneous=True))
+    return sp.simplify(e.subs(wt, simultaneous=True))
 
 
 def witness_nonzero(e):
     """PROOF of not-identically-zero: an exact nonzero witness value."""
-    return any(witness_value(e, w) != 0 for w in W)
+    return any(witness_value(e, wt) != 0 for wt in W)
 
 
 def zero_certified(e):
@@ -190,9 +220,9 @@ def zero_certified(e):
 
 
 def predicted_min_pair(n, alpha):
-    """THE RULE: minimal (grade, w0) for channel alpha at tower order n."""
+    """THE LAW: minimal (grade, w0) for channel alpha at tower order n."""
     p = sum(alpha)
-    k = max(1, p - 1)
+    k = (p + 1) // 2  # ceil(p/2); p >= 1 for every tower channel
     return n + 2 * k, -k
 
 
@@ -216,97 +246,185 @@ check_true("H.sq2", "H", "uniformity certificate: every order-4 channel is a pur
            "substitution loses no zero-recognition content",
            all(is_const_ratio(ch, sq2, 3) for ch in CH4.values()))
 
+# ============================================================ M mechanism
+# M1: connection trivialization D_w = S^{-w} d_z S^w (symbolic w, sample f)
+f_sample = (z - zk) / ((1 + u) * (zb - zbk))
+lhs = sp.diff(f_sample, z) - w * Gam * f_sample
+rhs = sp.cancel(S_conn ** (-w) * sp.diff(S_conn ** w * f_sample, z))
+check_true("M1.conn", "M", "connection trivialization: D_w = S^{-w} d_z S^w "
+           "with S = (1+u)^2 (symbolic w, sample coefficient)",
+           sp.simplify(lhs - rhs) == 0)
+
+# M2: fold regular part == covariant D-chain, orders 2 and 3, two pairs each
+m2 = True
+m2_tested = 0
+for n, GS_R, pairs in ((2, GS2_R, ((4, -1), (6, -2))),
+                       (3, GS3_R, ((5, -1), (7, -2)))):
+    for alpha in sorted(GS_R):
+        for g, w0 in pairs:
+            m2_tested += 1
+            diff = fold(GS_R[alpha], w0, g) - dchain(GS_R[alpha], w0, g)
+            if not zero_certified(diff):
+                m2 = False
+                print(f"      M2 FAIL at n={n} {alpha} ({g},{w0})", flush=True)
+check_true("M2.chain", "M", "fold regular part == covariant chain "
+           "D_{w0+g-1}...D_{w0}(G): every order-2/3 channel at (4,-1)/(6,-2) "
+           "resp. (5,-1)/(7,-2) — the fold IS the covariant chain",
+           m2, f"{m2_tested} channel-pair identities certified")
+
+# M3: x-space chain form on a sample (order 2, channel (1, 0), at (4, -1))
+Gx_s = sp.cancel(GS2_R[(1, 0)].subs(z, (x - 1) / zb))
+# (d_x M_{x^2})^{g-1} d_x (x^{2 w0} G) with g=4, w0=-1:
+h = sp.diff(x ** (-2) * Gx_s, x)
+for _ in range(3):
+    h = sp.cancel(sp.diff(x ** 2 * h, x))
+xchain = zb ** 4 * x ** (-2 * 2) * h
+direct = dchain(GS2_R[(1, 0)], -1, 4).subs(z, (x - 1) / zb)
+check_true("M3.xchain", "M", "x-space chain form: the chain equals "
+           "zb^g x^{-2(w0+g-1)} (d_x M_{x^2})^{g-1} d_x (x^{2 w0} G) "
+           "(order-2 channel (1,0) at (4,-1), reduced ring)",
+           zero_certified(sp.cancel(xchain - sp.cancel(direct))))
+
+# M4: monomial diagonal action (d_x M_{x^2})^m d_x x^e = e(e+1)_m x^{e+m-1}
+m4 = True
+for m in range(1, 5):
+    for e in range(-6, 6):
+        h = sp.diff(x ** e, x)
+        for _ in range(m):
+            h = sp.cancel(sp.diff(x ** 2 * h, x))
+        rising = sp.prod(e + 1 + j for j in range(m))
+        if sp.simplify(h - e * rising * x ** (e + m - 1)) != 0:
+            m4 = False
+            print(f"      M4 FAIL at m={m}, e={e}", flush=True)
+check_true("M4.monomial", "M", "diagonal monomial action: "
+           "(d_x M_{x^2})^m d_x (x^e) = e(e+1)...(e+m) x^{e+m-1} for "
+           "m = 1..4, e in [-6, 5] — the fold coefficient on x^e acquires "
+           "the factor e(e+1)...(e+g-1)",
+           m4)
+
+# M5: kernel = span{x^{-(g-1)},..,x^0} on the probed Laurent range
+m5 = True
+for g in (2, 3, 4, 5):
+    for e in range(-8, 8):
+        h = sp.diff(x ** e, x)
+        for _ in range(g - 1):
+            h = sp.cancel(sp.diff(x ** 2 * h, x))
+        vanishes = sp.simplify(h) == 0
+        if vanishes != (-(g - 1) <= e <= 0):
+            m5 = False
+            print(f"      M5 mismatch at g={g}, e={e}", flush=True)
+check_true("M5.kernel", "M", "kernel of (d_x M_{x^2})^{g-1} d_x on Laurent "
+           "polynomials is exactly span{x^{-(g-1)}, ..., x^0} (g = 2..5, "
+           "exponents -8..7): CLOSURE(g, w0) iff supp(x^{2 w0} G) lies in "
+           "this kernel",
+           m5)
+
+# ============================================================ S support law (UNREDUCED)
+s_pole = True
+s_supp = True
+for n, GS in ((2, GS2), (3, GS3), (4, GS4)):
+    for alpha in sorted(GS):
+        p = sum(alpha)
+        Gx = sp.cancel(GS[alpha].subs(z, (x - 1) / zb) * x ** (n - 1))
+        num, deno = sp.fraction(Gx)
+        if deno.has(x):
+            s_pole = False
+            print(f"      S.pole FAIL at n={n} {alpha}: {deno}", flush=True)
+            continue
+        degs = {m[0] for m, _c in sp.Poly(sp.expand(num), x).terms()}
+        supp = {d - (n - 1) for d in degs}
+        if supp != set(range(-(n - 1), p + 1)):
+            s_supp = False
+            print(f"      S.support FAIL at n={n} {alpha}: {sorted(supp)} "
+                  f"!= [{-(n-1)},{p}]", flush=True)
+check_true("S.pole", "S", "pole law (UNREDUCED): x^{n-1} G is x-free in the "
+           "denominator for every channel at orders 2, 3, 4 — the (1+u)-pole "
+           "order is exactly n-1",
+           s_pole)
+check_true("S.support", "S", "SUPPORT LAW (UNREDUCED): for every channel at "
+           "orders 2, 3, 4 the exponent support of G in x = 1+u is EXACTLY "
+           "the full range [-(n-1), p] — lower edge the pole law, upper "
+           "edge p (no edge cancellation, no interior gaps)",
+           s_supp)
+
 # ============================================================ R1 census
 census = {}
 for alpha in sorted(GS4):
     census.setdefault(sum(alpha), []).append(alpha)
 check_true("R1.census", "R1", "order-4 census: 11 channels with p-classes "
-           "5/3/2/1 (p = a+b = 4, 3, <= 2) — the rule applies per p-class",
+           "5/3/2/1 (p = a+b = 4, 3, <= 2) — the law applies per p-class",
            len(GS4) == 11 and len(census.get(4, [])) == 5
            and len(census.get(3, [])) == 3
-           and len(census.get(2, [])) + len(census.get(1, []))
-           + len(census.get(0, [])) == 3,
+           and len(census.get(2, [])) + len(census.get(1, [])) == 3,
            f"p-classes: {{p: [alphas]}} = {census}")
 
-# ============================================================ R2 certified closures (order 4)
+# ============================================================ R2 certified closures (orders 2-4)
 cert_r2 = {}
-for alpha in sorted(GS4):
-    g_min, w0_min = predicted_min_pair(4, alpha)
-    print(f"[....] R2: certifying order-4 channel {alpha} (p={sum(alpha)}) at "
-          f"predicted minimal pair ({g_min}, {w0_min})...", flush=True)
-    cert_r2[alpha] = zero_certified(fold(GS4_R[alpha], w0_min, g_min))
-check_true("R2.closures", "R2", "CERTIFIED closures at the predicted minimal "
-           "pairs for ALL 11 order-4 channels: p <= 2 at (6, -1), p = 3 at "
-           "(8, -2), p = 4 at (10, -3) — every channel folds to a pure delta "
-           "at exactly the rule's minimal pair (reduced ring, WLOG by H)",
-           all(cert_r2.values()), f"certified: {cert_r2}")
-
-# ============================================================ R3 refutations (order 4)
-ref_grade = {}
-ref_weight = {}
-for alpha in sorted(GS4):
-    g_min, w0_min = predicted_min_pair(4, alpha)
-    # one grade below the minimum at the minimal weight
-    ref_grade[alpha] = witness_nonzero(fold(GS4_R[alpha], w0_min, g_min - 1))
-    # one weight shallower (k-1), at ITS predicted grade n + 2(k-1) + 1
-    # (one above its own rule grade, so grade cannot be the failure cause)
-    k = -w0_min
-    if k > 1:
-        ref_weight[alpha] = witness_nonzero(
-            fold(GS4_R[alpha], w0_min + 1, 4 + 2 * (k - 1) + 1))
-check_true("R3.grade_min", "R3", "grade minimality (witness-proven): EVERY "
-           "order-4 channel stays open one grade below its predicted minimum "
-           "at the minimal weight — the grade floor n + 2k is sharp",
-           all(ref_grade.values()),
-           f"nonzero confirmed: {sorted(ref_grade)}")
-check_true("R3.weight_min", "R3", "weight minimality (witness-proven): every "
-           "order-4 channel with k >= 2 stays open at weight -(k-1) even one "
-           "grade ABOVE that weight's own rule grade — the depth floor "
-           "k >= p - 1 is sharp, not a grade artifact",
-           all(ref_weight.values()),
-           f"nonzero confirmed: {sorted(ref_weight)}")
-
-# ============================================================ R4 rule on orders 2 and 3
-cert_o23 = {}
-ref_o23 = {}
-for n, GS_R in ((2, GS2_R), (3, GS3_R)):
+for n, GS_R in ((2, GS2_R), (3, GS3_R), (4, GS4_R)):
     for alpha in sorted(GS_R):
         g_min, w0_min = predicted_min_pair(n, alpha)
-        cert_o23[(n, alpha)] = zero_certified(fold(GS_R[alpha], w0_min, g_min))
-        ref_o23[(n, alpha)] = witness_nonzero(fold(GS_R[alpha], w0_min, g_min - 1))
-check_true("R4.o23_close", "R4", "the rule CERTIFIED on orders 2 and 3: every "
-           "order-2 and order-3 channel closes at its predicted minimal pair "
-           "(order 2: all at (4, -1); order 3: p <= 2 at (5, -1), p = 3 at "
-           "(7, -2)) — reproducing F3/F5 of the fold-grade arc as instances; "
-           "this simultaneously CROSS-VALIDATES the per-step-cancel fold "
-           "variant against the plain-fold certification of "
-           "rung4_foldgrade_checks.py F5",
-           all(cert_o23.values()),
-           f"certified {sum(cert_o23.values())}/{len(cert_o23)} channels")
-check_true("R4.o23_sharp", "R4", "orders 2 and 3 grade-sharpness "
-           "(witness-proven): every channel stays open one grade below its "
-           "predicted minimum",
-           all(ref_o23.values()),
-           f"nonzero confirmed for {len(ref_o23)} channels")
+        print(f"[....] R2: certifying order-{n} channel {alpha} "
+              f"(p={sum(alpha)}) at the law's minimal pair "
+              f"({g_min}, {w0_min})...", flush=True)
+        cert_r2[(n, alpha)] = zero_certified(fold(GS_R[alpha], w0_min, g_min))
+check_true("R2.closures", "R2", "CERTIFIED closures at the law's minimal "
+           "pairs for EVERY channel of orders 2, 3, 4 — "
+           "(grade, w0) = (n + 2 ceil(p/2), -ceil(p/2)): order 2 all at "
+           "(4, -1); order 3: p<=2 at (5, -1), p=3 at (7, -2); order 4: "
+           "p<=2 at (6, -1), p=3 and p=4 at (8, -2)",
+           all(cert_r2.values()),
+           f"certified {sum(cert_r2.values())}/{len(cert_r2)} channels")
+
+# ============================================================ R3 sharpness (orders 2-4)
+ref_grade = {}
+ref_weight = {}
+for n, GS_R in ((2, GS2_R), (3, GS3_R), (4, GS4_R)):
+    for alpha in sorted(GS_R):
+        g_min, w0_min = predicted_min_pair(n, alpha)
+        # (a) one grade below the minimum at the minimal weight
+        ref_grade[(n, alpha)] = witness_nonzero(
+            fold(GS_R[alpha], w0_min, g_min - 1))
+        # (b) one weight shallower at the SAME grade: 2(w0+1)+p > 0, so the
+        # kernel condition fails independent of grade — must stay open
+        ref_weight[(n, alpha)] = witness_nonzero(
+            fold(GS_R[alpha], w0_min + 1, g_min))
+check_true("R3.grade_min", "R3", "grade minimality (witness-proven): EVERY "
+           "channel of orders 2-4 stays open one grade below its law-minimal "
+           "grade at the minimal weight — the grade floor n + 2 ceil(p/2) "
+           "is sharp",
+           all(ref_grade.values()),
+           f"nonzero confirmed: {len(ref_grade)} channels")
+check_true("R3.weight_min", "R3", "weight minimality (witness-proven): every "
+           "channel of orders 2-4 stays open one weight SHALLOWER at the "
+           "same grade — the depth floor k >= ceil(p/2) is sharp, and the "
+           "weight condition 2w0 + p <= 0 is the real gate (it fails there "
+           "independent of grade)",
+           all(ref_weight.values()),
+           f"nonzero confirmed: {len(ref_weight)} channels")
+
+# ============================================================ R4 grounded control
 ctrl = all(not witness_nonzero(fold(G3_R[k], -1, 4)) for k in G3_R)
 ctrl_below = all(witness_nonzero(fold(G3_R[k], -1, 3)) for k in G3_R)
 check_true("R4.control", "R4", "grounded rung-3 S2 control: the four bridge "
            "channels close at (4, -1) and stay open at (3, -1) "
            "(witness-proven) — the independent grounded fold matches the "
-           "rule's order-2 pattern",
+           "law's order-2 pattern",
            ctrl and ctrl_below)
 
 # ============================================================ R5 verdict
-record("R5.verdict", "R5", "verdict: the depth-graded fold rule — channel "
-       "(a,b) at tower order n closes iff k >= max(1, p-1) and "
-       "grade >= n + 2k, minimal pair (n + 2 max(1,p-1), -max(1,p-1)) — is "
-       "CERTIFIED on every channel of orders 2, 3, and 4 (closures at the "
-       "predicted minimal pairs, symbolic) with both sharpness directions "
-       "witness-proven (one grade below at minimal weight; one weight "
-       "shallower above its own rule grade). The rung-4 forced pair (7, -2) "
-       "is the p = 3 instance; the depth >= 1 sector's (5, -1) closure is "
-       "the p <= 2 instance. The MECHANISM of the rule (why k >= p - 1 and "
-       "grade n + 2k) remains the open question",
+record("R5.verdict", "R5", "verdict: the fold law is DERIVED, not fitted. "
+       "The fold is the covariant chain D_{w0+g-1}...D_{w0}(G) (M2) with "
+       "trivializing connection S = (1+u)^2 (M1); in x = 1+u it is the "
+       "diagonal operator (d_x M_{x^2})^{g-1} d_x on x^{2 w0} G (M3, M4), "
+       "whose kernel is span{x^{-(g-1)},..,x^0} (M5); the channel support "
+       "is exactly [-(n-1), p] (S, unreduced). Hence closure iff "
+       "2 w0 + p <= 0 and grade >= n - 2 w0: minimal pair "
+       "(n + 2 ceil(p/2), -ceil(p/2)), certified on every channel of "
+       "orders 2, 3, 4 (R2) with both sharpness directions witness-proven "
+       "(R3). The old rule k >= max(1, p-1) coincides with ceil(p/2) for "
+       "p <= 3 and is REFUTED at p = 4 (closure at (8, -2), not first at "
+       "(10, -3)). Since p >= 1 always, no channel closes at w0 = 0. The "
+       "rung-4 forced pair (7, -2) is the p = 3, n = 3 instance",
        "pass")
 
 # ============================================================ summary
@@ -316,9 +434,13 @@ summary = {
     "total": len(results), "passed": n_pass, "failed": len(mandatory),
     "failed_ids": [r["id"] for r in mandatory],
     "rule": "channel (a,b) at tower order n, p = a+b, w0 = -k: closes iff "
-            "k >= max(1, p-1) and grade >= n + 2k",
-    "verdict": "depth-graded fold rule certified on orders 2-4 with both "
-               "sharpness directions witness-proven; mechanism open",
+            "2 w0 + p <= 0 and grade >= n - 2 w0; minimal pair "
+            "(n + 2 ceil(p/2), -ceil(p/2))",
+    "mechanism": "fold = covariant chain D_{w0+g-1}...D_{w0}(G) = "
+                 "zb^g x^{-2(w0+g-1)} (d_x M_{x^2})^{g-1} d_x (x^{2 w0} G); "
+                 "kernel span{x^{-(g-1)},..,x^0}; supp(G) = [-(n-1), p]",
+    "verdict": "fold law derived (mechanism + support law) and certified "
+               "on orders 2-4 with both sharpness directions witness-proven",
 }
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "..", "results", "rung4_foldrule.json")
