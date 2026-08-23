@@ -21,11 +21,28 @@ import sys
 PROXY = ("C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-runtime-proxy/"
          "dist/native/versions/850c89b963a0910e639b243746eaa0d7608b75f64a68243dd5d404225b1fcae0/"
          "narada-mcp-runtime.exe")
-CHILD = ("C:/Users/andrey/src/mcp-surfaces/packages/ledger-domain-mcp/"
-         "dist/native/versions/d040aefe3f69f258290cfb82d1fd48f3ee2510f9dd968685917583b24e4cdce2/"
-         "narada-ledger-domain.exe")
 MANIFEST = ("C:/Users/andrey/src/mcp-surfaces/.ai/runtime/"
             "workspace-artifact-manifest.json")
+
+
+def _manifest_child():
+    """Resolve the ledger-domain child from the workspace artifact manifest.
+
+    The proxy preflight refuses any entrypoint absent from the manifest, so
+    the client must track the manifest-listed build rather than a pinned
+    version directory (the d040aefe pin went stale on 2026-08-23 when the
+    workspace was re-materialized to 68c9e7e7).
+    """
+    with open(MANIFEST) as fh:
+        manifest = json.load(fh)
+    for artifact in manifest.get('artifacts', []):
+        path = artifact.get('path', '')
+        if path.endswith('narada-ledger-domain.exe'):
+            return path
+    raise RuntimeError('narada-ledger-domain.exe not in artifact manifest')
+
+
+CHILD = _manifest_child()
 DOMAIN = ("C:\\Users\\andrey\\src\\mcp-surfaces\\packages/shared/"
           "ledger-domain-epistemic/domain.json")
 SITE_ROOT = "C:\\Users\\andrey\\src\\marici"
