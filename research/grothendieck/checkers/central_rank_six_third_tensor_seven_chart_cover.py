@@ -40,7 +40,7 @@ def artifact(center):
     tag = '_'.join(str(x).replace('.', 'p') for x in center)
     return ROOT / 'results' / (
         'central-rank-six-hessian-taylor-majorant-center-' + tag +
-        '-radius-0p0025-current-v2.json')
+        '-radius-0p0025-current-v3.json')
 
 
 def chart_result(low_count, target):
@@ -63,7 +63,8 @@ def chart_result(low_count, target):
     if source.get('taylor_product_kernel_version') != 2:
         raise RuntimeError('degree-bucket Taylor product kernel is absent or stale')
     if (D(source.get('source_coefficient_envelope', '-1')) != D('6.038308') or
-            source.get('source_tail_first_enveloped_degree') != 39 or
+            source.get('source_exact_coefficient_degree') != 49 or
+            source.get('source_tail_first_enveloped_degree') != 50 or
             source.get('source_tail_explicit_degree_cutoff') != 200 or
             not source.get('source_tail_geometric_ratio_below_one', False)):
         raise RuntimeError('analytic source-envelope metadata is absent or stale')
