@@ -1,0 +1,66 @@
+{
+  "schema": "marici.nima.string_associated_grade_readout_falsifier.v1",
+  "question": "Does the source-normalized six-point string readout descend on the globally occurrence-covariant first three-normal associated-grade packet?",
+  "established_inputs": {
+    "associated_grade_rank": 1,
+    "ordinary_maximal_flag_pullback_rank": 0,
+    "cyclic_character": 1,
+    "dihedral_reflection_character": 1,
+    "local_loaded_boundary_factors_cancel_occurrencewise": true,
+    "localized_two_term_loaded_complex_contractible": true,
+    "complete_hexagon_dual_cellular_intertwiner_is_chain_map": true,
+    "complete_hexagon_dual_cellular_intertwiner_laurent_index": 1,
+    "dual_cellular_relative_gauge_monodromy": 1,
+    "single_hexagon_regularization_typed": false,
+    "dual_regularization_map_typed": false
+  },
+  "forbidden_shortcuts": [
+    "Do not identify occurrence-labelled loaded tubular boundaries with the six facets of one associahedral hexagon.",
+    "Do not use M_block*S^T or its bare transpose as a cochain-to-dual-Betti map.",
+    "Do not infer physical vanishing from ordinary maximal-flag pullback zero.",
+    "Do not infer physical activation from associated-grade rank one."
+  ],
+  "required_source_data": [
+    {
+      "id": "relative_boundaries",
+      "description": "Source-labelled relative boundary matrices on the maximal-flag orbit, including orientations and occurrence labels."
+    },
+    {
+      "id": "dual_local_system",
+      "description": "The source dual-local-system convention and source-normalized twisted cycle/cochain intersection pairing."
+    },
+    {
+      "id": "physical_selector",
+      "description": "The physical Pochhammer or relative-chain readout covector ell in the same normalized basis."
+    },
+    {
+      "id": "comparison",
+      "description": "Identify the pairing-adjoint comparison S with the established complete cellular intertwiner D, up to a global Laurent unit, or exhibit the source-forced nondiagonal mismatch."
+    }
+  ],
+  "calculation": {
+    "boundary_commutator": "Omega = partial_H*S - S*partial_G",
+    "selected_readout_defect": "delta_phys = ell*Omega",
+    "evaluate_on": "the complete maximal-compatible-channel orbit packet containing the Entry 912 associated-grade line",
+    "reduction": "For the established cellular D, Omega_D=0 exactly. A global scalar or Laurent-unit normalization preserves this vanishing. Only a source-forced nondiagonal mismatch can reopen delta_phys."
+  },
+  "outcomes": {
+    "delta_phys_zero": "The selected string observable descends even if S is not a global chain or homology map.",
+    "delta_phys_nonzero": "The source-selected readout does not descend on this associated-grade packet.",
+    "source_data_not_canonical": "Physical status is unavailable; no zero or nonzero readout claim is licensed."
+  },
+  "sources": [
+    "src/ledger/20260819-912 The First Three-Normal String Class Lives in Associated Grade.md",
+    "src/ledger/20260819-913 The Three-Normal Associated-Grade Line Has Trivial Cyclic Character.md",
+    "src/ledger/20260819-914 The Three-Normal Associated-Grade Line Is Dihedrally Untwisted.md",
+    "src/ledger/20260819-1032 Pochhammer Regularization Cancels the Loaded Boundary Factors Occurrencewise.md",
+    "src/ledger/20260820-1313 The Forced Betti Pushforward Has One Boundary-Commutator Obstruction.md",
+    "src/ledger/20260820-1323 A Selected Cocycle Can Descend Without a Betti Homology Map.md",
+    "research/benincasa/string-six-point-dual-regularization-type-gate.json",
+    "research/benincasa/string-six-point-loaded-monodromy-type-gate.json",
+    "src/ledger/20260819-1013 The Hexagon Transports Determine a Diagonal Dual Intertwiner.md",
+    "src/ledger/20260819-1014 The Dual Cellular Intertwiner Is Laurent-Unimodular.md",
+    "src/ledger/20260819-1015 The Dual Intertwiner Extends Through the Hexagon Two-Cell.md",
+    "src/ledger/20260819-1016 Dual Cellularization Adds Only a Trivial-Monodromy Gauge.md"
+  ]
+}
