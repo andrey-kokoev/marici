@@ -341,6 +341,32 @@ In short:
 \text{quotient or physical readout}.
 \]
 
+### Faithful quotient coordinates before fiber claims
+
+Finite-to-one is not one-to-one.  Never identify source objects, chart
+classes, physical points, or transport fibers merely because they have the
+same measured observables or the same image under a compressed readout.
+
+Before making a fiber-identity, uniqueness, multiplicity, or descent claim:
+
+1. name the source and target of the comparison map;
+2. state which equivalences have already been quotiented;
+3. use a coordinate system proved faithful on that quotient, or retain the
+   unresolved fiber multiplicity explicitly;
+4. distinguish measured coordinates from faithful quotient coordinates;
+5. test branch data, connection/transport data, occurrence labels, and cycle
+   data whenever the proposed quotient retains them.
+
+A finite fiber census in a compressed observable space is a lower-resolution
+readout, not a census of physical quotient fibers. Equal measured data may
+certify compatibility or finite ambiguity, but never injectivity, uniqueness,
+or reconstruction. Those claims must be made against coordinates proved
+faithful on the intended quotient. In the flavor sector, this means testing
+them in `physical16`, never inferring them from the measured ten-coordinate
+projection `physical10`: the latter can leave a two-branch ambiguity while the
+former separates the physical quotient points. This is evidence for the gate,
+not a universal choice of coordinates for other sectors.
+
 ### Cherish the oddball
 
 When a result refuses to fit, do not smooth it away. An unexpected residual,
