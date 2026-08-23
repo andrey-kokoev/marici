@@ -18,6 +18,10 @@ F = [(D(a), D(b)) for a, b in payload['F_coefficients_through_degree_thirty_nine
 DEPTH = len(F)
 
 
+def up_pow(base, exponent):
+    return I.up.power(base, D(exponent))
+
+
 def dconstant(value):
     return value, [Z for _ in range(N)], [[Z for _ in range(N)] for _ in range(N)]
 
@@ -92,9 +96,13 @@ def analytic_tail(i, j, derivative_degree, multiplicity):
     value = D(0)
     for p in range(DEPTH - 1, 201):
         falling = math.factorial(p) // math.factorial(p - order)
-        value = I.up.add(value, I.up.divide(I.up.multiply(D(multiplicity) * G.M, D(falling) * G.R ** (p - order)),
+        value = I.up.add(value, I.up.divide(I.up.multiply(
+            I.up.multiply(D(multiplicity), G.M),
+            I.up.multiply(D(falling), up_pow(G.R, p - order))),
                                             D(math.factorial(i) * math.factorial(j))))
-    first = I.up.divide(I.up.multiply(D(multiplicity) * G.M, D(201 ** order) * G.R ** (201 - order)),
+    first = I.up.divide(I.up.multiply(
+        I.up.multiply(D(multiplicity), G.M),
+        I.up.multiply(D(201 ** order), up_pow(G.R, 201 - order))),
                         D(math.factorial(i) * math.factorial(j)))
     return I.up.add(value, I.up.divide(first, D('.989')))
 
@@ -156,13 +164,21 @@ def evaluate(nodes):
             for j in range(k): value = dsub(value, dmul(dmul(lower[row][j], lower[k][j]), diagonal[j]))
             lower[row][k] = ddiv(value, pivot)
     final = diagonal[-1]
-    row_sums = [sum((max(abs(x[0]), abs(x[1])) for x in final[2][v]), D(0)) for v in range(N)]
+    row_sums = []
+    for v in range(N):
+        total = D(0)
+        for interval in final[2][v]:
+            total = I.up.add(total, max(abs(interval[0]), abs(interval[1])))
+        row_sums.append(total)
     return {'anchor': [str(x) for x in nodes],
             'derivative_intervals': [[str(a), str(b)] for a,b in final[1]],
             'hessian_intervals': [[[str(a),str(b)] for a,b in row] for row in final[2]],
             'hessian_absolute_row_sums': [str(x) for x in row_sums],
-            'half_grid_l1_derivative_variation_bounds': [str(D('.0005') * x) for x in row_sums],
-            'analytic_tail_bounds_included': True, 'rh_proved': False}
+            'half_grid_linf_derivative_variation_bounds': [
+                str(I.up.multiply(D('.0005'), x)) for x in row_sums],
+            'analytic_tail_bounds_included': True,
+            'directed_scalar_arithmetic_version': 2,
+            'rh_proved': False}
 
 
 if __name__ == '__main__':

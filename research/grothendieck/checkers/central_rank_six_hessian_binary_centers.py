@@ -16,6 +16,8 @@ def main():
     for low_count in range(7):
         center = [LOW] * low_count + [HIGH] * (6-low_count)
         row = H.evaluate(center)
+        if row.get('directed_scalar_arithmetic_version') != 2:
+            raise RuntimeError('center Hessian lacks directed scalar arithmetic v2')
         row['low_coordinate_count'] = low_count
         rows.append(row)
     maximum = max(max(float(x) for x in row['hessian_absolute_row_sums'])
@@ -26,6 +28,7 @@ def main():
         'maximum_hessian_row_sum_float_reconnaissance': repr(maximum),
         'analytic_source_tail_included': True,
         'directed_interval_centers_certified': True,
+        'directed_scalar_arithmetic_version': 2,
         'rh_proved': False,
     }
     output = ROOT / 'results' / 'central-rank-six-hessian-binary-centers.json'

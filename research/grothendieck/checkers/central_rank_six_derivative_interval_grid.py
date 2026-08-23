@@ -127,6 +127,7 @@ def main():
         'derivative_entry_cache_size': derivative_entry.cache_info().currsize,
         'analytic_source_tail_included': True,
         'directed_decimal_rounding': True,
+        'directed_scalar_arithmetic_version': 2,
         'interval_certified': not failures and count == 8008,
         'failures': failures[:10],
         'rh_proved': False,

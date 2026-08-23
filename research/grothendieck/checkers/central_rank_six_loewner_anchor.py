@@ -16,17 +16,23 @@ f = [(D(a), D(b)) for a, b in
      payload['F_coefficients_through_degree_thirty_nine']]
 
 
+def up_pow(base, exponent):
+    return I.up.power(base, D(exponent))
+
+
 @lru_cache(maxsize=None)
 def tail(i, j):
     order = i + j
     value = D(0)
     for p in range(SOURCE_DEGREE, 201):
         falling = math.factorial(p) // math.factorial(p - order)
-        term = I.up.multiply(M, D(falling) * R ** (p - order))
+        term = I.up.multiply(M, I.up.multiply(
+            D(falling), up_pow(R, p - order)))
         value = I.up.add(value, I.up.divide(
             term, D(math.factorial(i) * math.factorial(j))))
     first = I.up.divide(
-        I.up.multiply(M, D(201 ** order) * R ** (201 - order)),
+        I.up.multiply(M, I.up.multiply(
+            D(201 ** order), up_pow(R, 201 - order))),
         D(math.factorial(i) * math.factorial(j)))
     return I.up.add(value, I.up.divide(first, D('.989')))
 
@@ -95,6 +101,7 @@ def evaluate(nodes):
         'source_degree': SOURCE_DEGREE,
         'analytic_source_tail_included': True,
         'directed_decimal_rounding': True,
+        'directed_scalar_arithmetic_version': 2,
         'interval_certified': certified,
         'rh_proved': False,
     }

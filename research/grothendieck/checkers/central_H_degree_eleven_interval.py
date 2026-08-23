@@ -7,7 +7,7 @@ from pathlib import Path
 
 import central_interval_jet_first_cell_probe as P
 
-I=P.I; D=Decimal; P.O=81; P.DEPTH=300
+I=P.I; D=Decimal; P.O=101; P.DEPTH=300
 q=[I.box(0),I.box(1)]+[I.box(0)]*(P.O-1)
 s=P.add(P.c(Fraction(1,2)),q)
 eta,eta_s=P.eta_pair(s)
@@ -28,10 +28,10 @@ for n in range(P.O+1):
 
 xi_log=P.add(endpoint,P.cb(I.neg(I.scale(I.logpi,Fraction(1,2)))),P.scale(gamma,Fraction(1,2)),zlog)
 even=[xi_log[n] for n in range(0,P.O+1,2)]
-ell_prime=[I.scale(xi_log[2*n+1],Fraction(1,2)) for n in range(40)]
+ell_prime=[I.scale(xi_log[2*n+1],Fraction(1,2)) for n in range(50)]
 
-P.O=39
-t=[I.box(0),I.box(1)]+[I.box(0)]*38
+P.O=49
+t=[I.box(0),I.box(1)]+[I.box(0)]*48
 f_deep=P.mul(P.sub(P.scale(t,4),P.c(1)),ell_prime)
 f=f_deep[:30]
 P.O=29
@@ -43,7 +43,8 @@ result={
     'centered_q_order':81,
     'F_coefficients_through_degree_twenty_three':[[str(a),str(b)] for a,b in f[:24]],
     'F_coefficients_through_degree_twenty_nine':[[str(a),str(b)] for a,b in f],
-    'F_coefficients_through_degree_thirty_nine':[[str(a),str(b)] for a,b in f_deep],
+    'F_coefficients_through_degree_thirty_nine':[[str(a),str(b)] for a,b in f_deep[:40]],
+    'F_coefficients_through_degree_forty_nine':[[str(a),str(b)] for a,b in f_deep],
     'H_coefficients_through_degree_eleven':[[str(a),str(b)] for a,b in h[:12]],
     'all_reflection_forced_even_coefficients_contain_zero':True,
     'analytic_eta_and_gamma_tail_bounds_included':True,
