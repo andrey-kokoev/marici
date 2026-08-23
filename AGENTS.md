@@ -206,6 +206,33 @@ promotes a claim to evidence. Failed formulations are superseded explicitly,
 not silently reworded to match the survivor. Retrospective assessments append
 to the original stimulus record; they never overwrite it.
 
+### Lakatos research-programme layer
+
+Use the Lakatos layer when a line of inquiry has acquired a stable scoped
+constraint, several revisable successor hypotheses, or a repeated tendency to
+relocate a failed claim. Follow
+`research/nima/lakatos-research-programme-protocol.md`.
+
+Keep these graph objects distinct and namespaced:
+`marici:research_programme`, `marici:hard_core`,
+`marici:protective_belt`, `marici:positive_heuristic`,
+`marici:negative_heuristic`, `marici:problem_shift`, and
+`marici:programme_appraisal`. A programme version must state its exact scope,
+predecessor, owner, evidence boundary, and hard-core reopening condition.
+
+Lakatos records organize sequences of revisions; they do not certify truth or
+replace Popperian tests. “Protected” never means unfalsifiable. Evidence inside
+the exact declared scope may trigger a crisis or successor programme.
+Outside-scope evidence adjusts the protective belt and must not be
+misrepresented as refuting a scoped theorem.
+
+Before adjusting a belt, freeze the independently motivated source
+enlargement, predicted typed effect, admissible test, and failure condition.
+Call a shift progressive only relative to a named predecessor and only when it
+predicts new testable information. Record as degenerating any post-hoc move
+that merely relocates a failed claim, fits a desired factor, changes the target
+after failure, or narrows scope without prior source justification.
+
 ### Research activation and process calibration
 
 At the beginning and end of a substantive research objective, report three
