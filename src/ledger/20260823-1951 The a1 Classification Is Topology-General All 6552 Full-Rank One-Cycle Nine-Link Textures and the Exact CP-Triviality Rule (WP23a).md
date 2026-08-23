@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1951 — The a₁ Classification Is Topology-General: All 6,552 Full-Rank One-Cycle Nine-Link Textures, and the Exact CP-Triviality Rule (WP23a)
 
 Date: 2026-08-23

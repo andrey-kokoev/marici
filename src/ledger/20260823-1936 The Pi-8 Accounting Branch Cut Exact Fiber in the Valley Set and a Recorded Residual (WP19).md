@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1936 — The π/8 Accounting: Branch Cut, Exact Fiber in the Valley Set, and a Recorded Residual (WP19)
 
 Date: 2026-08-23

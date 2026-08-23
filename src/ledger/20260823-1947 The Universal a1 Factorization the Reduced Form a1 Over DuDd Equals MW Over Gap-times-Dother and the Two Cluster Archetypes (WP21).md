@@ -1,3 +1,7 @@
+---
+author: marici.Figueiredo
+---
+
 # 1947 — The Universal a₁ Factorization: the Reduced Form a₁/(D_uD_d) = M·W/(gap·D_other), and the Two Cluster Archetypes (WP21)
 
 Date: 2026-08-23
