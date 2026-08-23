@@ -104,7 +104,9 @@ def analyze(mu, md, pe):
     C = Hu * Hd - Hd * Hu
     detC = sp.expand(C.det())
     poly = sp.Poly(sp.expand(detC * z), z)
-    terms = [(e - 1, cc) for (e,), cc in poly.terms()]
+    terms = [(e - 1, cc) for (e,), cc in poly.terms() if cc != 0]
+    if detC == 0:
+        return {"anomaly": "detC_zero"}
     if sorted(e for e, _ in terms) != [-1, 1]:
         return {"anomaly": "support"}
     a1 = sp.expand(next(cc for e, cc in terms if e == 1))
