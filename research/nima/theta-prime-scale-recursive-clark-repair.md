@@ -101,6 +101,102 @@ at (u=1/a), and the faithful bilateral source requires the modular sewing at
 source-specific and capable of distinguishing the theta density from the
 two-atom counterexample.
 
+## The repair is not pointwise dominant
+
+The positive displacement term cannot repair the signed density by a local
+inequality. As (u\to+\infty), the primitive sector is dominated by (n=1):
+
+\[
+\Phi_{p\nmid}(u)\sim\phi_1(u).
+\]
+
+The shifted term is the sector of labels divisible by (p), whose first
+contribution is (phi_p(u)). Their ratio contains
+
+\[
+\exp\!\left[-\pi(p^2-1)e^{2u}\right]
+\]
+
+times only an elementary exponential factor. Hence
+
+\[
+\frac{a\log(p)\,p^{-1/2}\Phi(u+\log p)}
+{(au-1)\Phi_{p\nmid}(u)}\longrightarrow0.
+\]
+
+In the negative side of the fold, the source-forced positive repair is
+asymptotically much smaller than the negative primitive remainder. Therefore
+the prime recursion does **not** imply pointwise positivity of the Clark
+density or of a local energy integrand. Any successful repair must occur only
+after transform and sewing.
+
+## Transform recursion and the arithmetic half-line
+
+Let
+
+\[
+F_a(z)=\int_0^\infty h_a(u)e^{izu}\,du,
+\qquad
+B_{a,p}(z)=\int_0^{\log p}h_a(u)e^{izu}\,du,
+\]
+
+and denote the transform of the right-hand side of the prime recursion by
+(R_{a,p}(z)). Changing variables in the shifted integral gives
+
+\[
+\int_0^\infty h_a(u+\log p)e^{izu}\,du
+=p^{-iz}\bigl(F_a(z)-B_{a,p}(z)\bigr).
+\]
+
+Therefore
+
+\[
+\boxed{
+\left(1-p^{-1/2-iz}\right)F_a(z)
+=R_{a,p}(z)-p^{-1/2-iz}B_{a,p}(z).
+}
+\]
+
+The prime multiplier vanishes exactly at
+
+\[
+\boxed{
+z=\frac{2\pi k}{\log p}+\frac i2,
+\qquad k\in\mathbb Z.
+}
+\]
+
+The height (1/2) is forced by the translate weight (n^{-1/2}). It is not
+inserted from a zero list. In the centered variable
+(s=1/2+iz), this upper (z)-line maps to the outer boundary
+(\operatorname{Re}s=0) of the critical strip, not to the RH line itself.
+
+Since (F_a) is entire under the superexponential source decay, every
+apparent prime-multiplier pole is cancelled by the finite chamber term and
+the primitive-sector transform:
+
+\[
+R_{a,p}(z)=p^{-1/2-iz}B_{a,p}(z)
+\quad\text{when}\quad p^{-1/2-iz}=1.
+\]
+
+This cancellation is an exact finite sewing constraint. Dropping
+(B_{a,p}) would manufacture false arithmetic singularities. The promising
+object is therefore not the Euler-like multiplier alone, but the triple
+
+\[
+\boxed{
+\text{prime multiplier}
++\text{primitive-label transform}
++\text{finite modular sewing current}.
+}
+\]
+
+The next question is whether these cancellation identities for all primes
+assemble into a positive Hardy-space boundary form. A single-prime recursion
+cannot suffice: its multiplier has zeros inside the upper (z)-half-plane
+and is rescued only by the source-defined finite current.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
