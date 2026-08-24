@@ -368,3 +368,52 @@ therefore be converted into a finite auxiliary-channel boundary-value system
 with 44 rates and parity-separated boundary conditions. A directed
 Evans/Sturm or interval transfer-matrix count can certify that this system has
 no eigenvalue below zero. That is now the preferred proof implementation.
+
+## Stable boundary-value determinant scout
+
+Writing \(y_0\) for the growing kernel channel and \(y_n\) for the 43
+decaying channels gives
+
+\[
+y_0''-\frac14y_0=f,
+\qquad
+y_n''-a_n^2y_n=-2a_nf,
+\]
+
+with
+
+\[
+f=\frac{\sum_{n=1}^{43}y_n-y_0}{d_{44}-\lambda}.
+\]
+
+At the right endpoint, the growing channel has slope \(+a_0\), while every
+decaying channel has slope \(-a_n\). At the interval center, even modes have
+zero derivative and odd modes have zero value. These conditions define two
+\(44\times44\) Evans determinants.
+
+Naive shooting is numerically invalid: its log-determinants at zero are about
+797 and 654, and double precision produces many false sign changes. The
+authorized stable realization propagates the endpoint boundary plane
+backward while QR-renormalizing it after short steps. Its even root is
+
+\[
+\lambda_{44}^{\rm BVP}
+\approx2.71879497\times10^{-6},
+\]
+
+with no odd root in \([-10^{-4},10^{-4}]\). Using 8, 16, 32, and 64 QR steps
+gives respectively
+
+\[
+2.7187949667,
+2.7187949636,
+2.7187949671,
+2.7187949691
+\quad\times10^{-6}.
+\]
+
+The agreement across step counts and with the independent FFT value
+\(2.65188806\times10^{-6}\) validates the BVP typing. It does not certify the
+sign. The remaining implementation is directed ball-arithmetic propagation,
+together with an Evans/Sturm zero count excluding all \(\lambda\le0\), not
+merely evaluation near the observed root.
