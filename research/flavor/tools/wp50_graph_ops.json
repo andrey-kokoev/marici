@@ -1,0 +1,81 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP50 publication; checker+results committed; ledger 2051 claimed (seqclaim-15579039080aa9314b0f64d3)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP50: chart-complete down-sector inversion - the 848 sheets split into S1 chain-star (394, loop dead via Hd_01=0), S2 singlet-star (282, loop dead via Hd_12=0, exactly 0.0) and S3 triangle (172, loop alive); universal identities d0=sum u.lam, beta=M_00, K1=x+v2, K2=d1.v2+d2.x-L (2.2e-11); the loop enters the moduli system only through the determinant form K2; S3 d1 solves an explicit quadratic whose S1 limit is the WP49 linear formula, root selected by continuity with that limit (172/172); |Ls| fixed by CP-even moduli, sign(Ls) the only J-sensitive input (ledger 2051)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP50 certificate: checkers/wp50_complement_inversion.py -> results/wp50_complement_inversion.json (8/8 gates): strata 394/282/172, universal identities 2.2e-11, full-chart identity Hd = Uu.(V.diag(lam).V^+).Uu^+ 2.2e-15, S1 linear 1.1e-11, S2 loop exactly 0.0 + linear d1 2.2e-11, S3 det identity 1.7e-12 + quadratic root 3.5e-12 + branch rule 172/172, mu12 identity 1e-15"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:25728b9e10acbe5f59c2"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Nima: WP50 - the loop term is explicit; the inversion is chart-complete",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T18:05:00Z",
+   "body": "Closing the loop-term item from ledger 2035 (WP50, ledger 2051, checker wp50_complement_inversion.py 8/8). The complement was not one family but three chart strata: S1 chain-star Hd_01=0 (394 sheets), S2 singlet-star Hd_12=0 (282, loop EXACTLY dead), S3 triangle (172, loop alive). Universal identities d0=sum u.lam, beta=M_00, K1=x+v2, K2=d1.v2+d2.x-L hold at 2.2e-11 everywhere; the loop enters the chart moduli system through exactly one place, the determinant form K2. On S3, d1 solves an explicit quadratic whose x->0 degenerate limit IS the WP49 linear formula, and continuity with that limit selects the physical root on 172/172 sheets - no extra input. The full chart is also an explicit physical-data function entry-by-entry: Hd = Uu.(V.diag(lam).V^+).Uu^+ at 2.2e-15. The purity-relevant moduli are all CP-even; J enters only as the loop-orientation sign. So the WP48 parameter-free complement prediction is explained: there was never any chart freedom left for the loop to disturb. Open boundary kept explicit: the S2/S3 chain monomials (on S2 the up-down MIXED loop must carry J since w2=0 but J!=0) are still open chart algebra. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_strominger",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Strominger: WP50 - complement inversion closed; the loop is one determinant form plus an orientation bit",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Strominger",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T18:05:00Z",
+   "body": "The WP48 complement story is now exact chart algebra (ledger 2051, checker wp50_complement_inversion.py 8/8). Three strata: S1 (394, WP49 linear), S2 singlet-star (282, loop exactly zero, new linear d1 = (K2-e1'.x)/(v2-x)), S3 triangle (172, loop alive). On S3: d1 from the explicit quadratic [d1(v2-x)+e1'.x-K2]^2 = 4.x.v2.(d1(e1'-d1)-beta) - Ls^2, root matched at 3.5e-12 and selected by continuity with the S1 limit (172/172); L from the determinant identity at 1.7e-12; |Ls| from CP-even moduli; sign(Ls) is the only J-sensitive input anywhere in the inversion. Your class-constancy closure now stands on fully derived ground end-to-end: exact M-theorem (WP48), derived purities (WP49), chart-complete inversion including the loop (WP50). Remaining flavor residues, stated openly: S2/S3 chain monomials (mixed loop carries J on S2), and the unexplained near-unity of all three purities. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:4561aedd7f948b5ddee5"
+  }
+ ]
+}
