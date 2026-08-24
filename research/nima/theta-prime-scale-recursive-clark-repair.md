@@ -197,6 +197,111 @@ assemble into a positive Hardy-space boundary form. A single-prime recursion
 cannot suffice: its multiplier has zeros inside the upper (z)-half-plane
 and is rescued only by the source-defined finite current.
 
+## The bare arithmetic character is not the Hilbert feature
+
+The semigroup character
+
+\[
+\chi_z(n)=n^{-1/2-iz}
+\]
+
+has modulus (n^{y-1/2}) for (z=x+iy). Although each nontrivial label is a
+strict contraction when (y<1/2), the full character vector is not square
+summable in the relevant upper half-plane:
+
+\[
+\sum_{n\ge1}|\chi_z(n)|^2
+=\sum_{n\ge1}n^{2y-1}=\infty
+\qquad(y>0).
+\]
+
+Therefore a polarization that treats the label characters themselves as
+Hilbert-space features is mistyped. The logarithmic commutator is exact, but
+its putative positive contraction loss cannot be summed before the finite
+chamber/tail data are restored.
+
+## The source-normalized tail feature
+
+For the primitive profile (phi), define
+
+\[
+T(q,z)=\int_q^\infty\phi(v)e^{izv}\,dv,
+\qquad q\ge0,
+\]
+
+and
+
+\[
+\boxed{
+G(q,z)=e^{-(1/2+iz)q}T(q,z).
+}
+\]
+
+At the arithmetic scales (q=\log n), this is exactly the half-line transform
+of the transported source label:
+
+\[
+G(\log n,z)
+=\int_0^\infty(S_n\phi)(u)e^{izu}\,du.
+\]
+
+The superexponential tail of (phi) makes the labelled family summable even
+when the naked characters are not. Thus (G(\log n,z)), not
+(chi_z(n)), is the faithful candidate feature.
+
+Differentiating in the continuous scale variable gives the exact forced flow
+
+\[
+\boxed{
+\partial_qG(q,z)
+=-(1/2+iz)G(q,z)-e^{-q/2}\phi(q).
+}
+\]
+
+The oscillatory phase cancels completely from the boundary forcing. The
+coefficient (1/2+iz) is the centered Mellin variable, while the forcing is
+real and source-positive on the modular chamber. This is a more faithful
+transport law than the bare identity
+(partial_y\chi_z(n)=\log(n)\chi_z(n)): differentiating the complete feature
+also differentiates its moving tail.
+
+For the signed primitive fold define
+
+\[
+T_a(q,z)=\int_q^\infty(1-av)\phi(v)e^{izv}\,dv.
+\]
+
+Then the transform of the (n)-labelled Clark contribution is
+
+\[
+e^{-(1/2+iz)q}
+\left[T_a(q,z)+aq\,T(q,z)\right]_{q=\log n}.
+\]
+
+The positive commutator repair (aqT) and the signed primitive tail (T_a)
+are therefore two components of one source-normalized tail feature. They may
+not be polarized independently.
+
+## Revised positivity target
+
+The next legitimate Gram construction must use the tail-weighted arithmetic
+features and prove convergence before taking cross-label sums. Its prospective
+energy has three typed pieces:
+
+\[
+\boxed{
+\text{Mellin scale flow of }G
++\text{positive boundary forcing }e^{-q/2}\phi(q)
++\text{discrete sampling at }q=\log n.
+}
+\]
+
+The sharp test is whether Green's identity for the forced scale flow, summed
+over the multiplicative labels with the modular sewing relation retained,
+reproduces the de Branges Bezoutian. If it leaves a boundary term of
+indefinite sign, the positive-commutator explanation is insufficient in its
+current form.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
