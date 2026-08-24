@@ -168,9 +168,92 @@ two scalar resolvent gates:
 At the finest current resolution these evaluate to approximately
 
 \[
--0.00119900,qquad 0.14115981.
+-0.00119900,\qquad 0.14115981.
 \]
 
 The odd gate has wide margin. The prime-two boundary theorem is therefore
 concentrated almost entirely in the near-critical even secular inequality,
 together with a proof that \(A_\infty\) has index one on the support interval.
+
+## Exact real-space conductor form
+
+The digamma identity gives
+
+\[
+h_\infty(\tau)
+=h_\infty(0)
++\int_0^\infty
+\frac{e^{r/2}}{\sinh r}
+\bigl(1-\cos(\tau r)\bigr)\,dr,
+\]
+
+where
+
+\[
+h_\infty(0)
+=-\log\pi+\psi(1/4)
+=-\log\pi-\gamma-\frac\pi2-3\log2.
+\]
+
+For a zero-extended function supported on an interval \(I\) of length
+\(L=\log2\), Parseval converts this into
+
+\[
+\begin{aligned}
+\langle f,A_\infty f\rangle
+={}&C_L\|f\|^2\\
+&+\frac12\int_0^L
+\frac{e^{r/2}}{\sinh r}
+\int_{\mathbb R}|f(x+r)-f(x)|^2\,dx\,dr,
+\end{aligned}
+\]
+
+with
+
+\[
+C_L=h_\infty(0)+
+\int_L^\infty\frac{e^{r/2}}{\sinh r}\,dr
+\approx-2.37847682784580.
+\]
+
+Thus the archimedean operator is an explicit positive logarithmic difference
+energy minus a scalar mass. Its index-one theorem is a nonlocal Poincaré
+theorem, not an opaque spectral assertion.
+
+For the normalized trial function
+
+\[
+f_0(x)=\sqrt{2/L}\cos(\pi x/L),
+\]
+
+the autocorrelation for \(0\le r\le L\) is exactly
+
+\[
+R_0(r)=\left(1-\frac rL\right)\cos\frac{\pi r}{L}
++\frac1\pi\sin\frac{\pi r}{L}.
+\]
+
+Direct 80-digit quadrature gives
+
+\[
+\langle f_0,A_\infty f_0\rangle
+\approx-1.12744036888818,
+\]
+
+and
+
+\[
+2|\langle\cosh(x/2),f_0\rangle|^2
+\approx1.13009549396338.
+\]
+
+Their sum is
+
+\[
+\boxed{0.00265512507519669>0.}
+\]
+
+This independently confirms the FFT normalization. The remaining theorem is
+a rank-one-strengthened logarithmic Poincaré inequality at the arithmetic
+width \(L=\log2\), extending this balance from the cosine trial mode to every
+supported function.
