@@ -384,6 +384,88 @@ exactly these primitive norm and seam-boundary channels. If additional
 indefinite cross-label terms remain, the present positive-commutator mechanism
 does not close.
 
+## The Clark differential creates one Jordan cross-channel
+
+The complete one-label Clark feature is
+
+\[
+H(q,z)=(1+ia\partial_z)G(q,z).
+\]
+
+Differentiating the forced scale equation with respect to (z) gives the
+closed triangular pair
+
+\[
+\boxed{
+\begin{aligned}
+\partial_qG&=-s_zG-f,\\
+\partial_qH&=-s_zH+aG-f.
+\end{aligned}
+}
+\]
+
+Thus the Clark differential does not commute with scale transport. It creates
+a rank-one nilpotent/Jordan coupling (G\mapsto aG) inside the continuous
+state.
+
+Repeating the Green calculation directly for (H) yields
+
+\[
+\boxed{
+\begin{aligned}
+i(\bar w-z)\int_0^\infty
+H(q,z)\overline{H(q,w)}\,dq
+={}&\int_0^\infty
+\bigl(H(q,z)+f(q)\bigr)
+\overline{\bigl(H(q,w)+f(q)\bigr)}\,dq\\
+&-\int_0^\infty f(q)^2\,dq
+-H(0,z)\overline{H(0,w)}\\
+&-a\int_0^\infty
+\left[
+G(q,z)\overline{H(q,w)}
++H(q,z)\overline{G(q,w)}
+\right]dq.
+\end{aligned}
+}
+\]
+
+The last line is the new obstruction. On the diagonal, introduce
+
+\[
+U_\pm=\frac{H\pm G}{\sqrt2}.
+\]
+
+Then
+
+\[
+G\overline H+H\overline G
+=|U_+|^2-|U_-|^2.
+\]
+
+The Clark differential therefore produces exactly one positive and one
+negative continuous bulk channel. It is a typed defect of the Jordan scale
+flow, not one of the two rank-one boundary defects found before applying the
+differential.
+
+A nonzero nilpotent operator cannot be skew-adjoint in a positive-definite
+finite-dimensional metric. Consequently no constant positive symmetrizer of
+the local ((G,H)) state can simply erase this cross-channel. Its control must
+come from the arithmetic sampling, reflected modular sewing, or an enlarged
+boundary complex.
+
+This is the precise remaining gate for the positive-commutator proposal:
+
+\[
+\boxed{
+\text{prove that the all-prime sewn source controls the negative }U_+
+\text{ channel without fitting a projector.}
+}
+\]
+
+If the sampled/sewn Green identity retains this indefinite norm difference
+with no source-derived comparison between (U_+) and (U_-), the mechanism
+does not prove the Schur property.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
