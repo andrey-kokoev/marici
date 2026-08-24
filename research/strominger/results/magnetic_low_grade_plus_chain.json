@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_low_grade_plus_chain_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic support localization with exact generated audit",
+    "domain": "q=g+d>g>=2"
+  },
+  "checks": [
+    {
+      "id": "SUPPORT.minus",
+      "statement": "every positive-depth minus valuation lies at or below -g-2",
+      "status": "pass",
+      "detail": "start=-g-a with a>=2"
+    },
+    {
+      "id": "SUPPORT.plus",
+      "statement": "every plus valuation lies at or above -g-1",
+      "status": "pass",
+      "detail": "start=d-a and a<=q+1=g+d+1"
+    },
+    {
+      "id": "SUPPORT.separate",
+      "statement": "positive-depth minus coefficients are forced before the plus sector",
+      "status": "pass",
+      "detail": "minus ends at or below -g-2 while plus begins at or above -g-1"
+    },
+    {
+      "id": "SUPPORT.a0plus",
+      "statement": "the depth-zero plus column has the private target row q",
+      "status": "pass",
+      "detail": "all positive-depth plus columns end at or below q-1"
+    },
+    {
+      "id": "CHAIN.align",
+      "statement": "the shortened columns 4<=a<=g+4 share upper row d-3",
+      "status": "pass",
+      "detail": "degree(C_g,a)=a-4 and degree(B_g,a)=a-3"
+    },
+    {
+      "id": "CHAIN.generated",
+      "statement": "all generated shortened plus columns have the predicted common top",
+      "status": "pass",
+      "detail": "records=7368; failures=[]"
+    },
+    {
+      "id": "CHAIN.divisor",
+      "statement": "on d=g+3 the common top drops coherently from d-3 to d-4",
+      "status": "pass",
+      "detail": "q=2g+3; failures=[]"
+    },
+    {
+      "id": "FALSIFIER.peel",
+      "statement": "common-top alignment already stalls raw peeling at (g,d)=(2,6)",
+      "status": "pass",
+      "detail": "[(0, '-'), (4, '+'), (6, '+')]"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Every low-grade kernel relation first loses all positive-depth minus columns by valuation separation and loses the a=0 plus column at its private row q. The remaining obstruction is a=0 minus coupled to a plus-only chain. For 4<=a<=g+4, source shortening generically makes every such magnetic column end at row d-3. The common coefficient is proportional to d-g-3; on the presentation divisor q=2g+3 the whole chain drops coherently to row d-4. This alignment explains the failure of raw leaf peeling and identifies the missing theorem as a confluent polynomial-basis elimination with an atlas transition."
+}

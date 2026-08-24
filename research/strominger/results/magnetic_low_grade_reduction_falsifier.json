@@ -1,0 +1,32 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_low_grade_reduction_falsifier_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact support-level falsifier",
+    "audit": "2<=g<=21 and 2<=d<=21"
+  },
+  "checks": [
+    {
+      "id": "FALSIFIER.first",
+      "statement": "raw forced peeling first fails to reach the desired core at (g,d)=(2,6)",
+      "status": "pass",
+      "detail": "(2, 6, ((0, '-'), (4, '+'), (6, '+')), ((0, '-'), (6, '+')))"
+    },
+    {
+      "id": "FALSIFIER.growth",
+      "statement": "the stalled plus-chain remainder is not uniformly width three",
+      "status": "pass",
+      "detail": "[(6, 3), (7, 4), (8, 4), (9, 5), (10, 5), (11, 6), (12, 6), (13, 7), (14, 7), (15, 8), (16, 8), (17, 9), (18, 9), (19, 10), (20, 10), (21, 11)]"
+    },
+    {
+      "id": "SCOPE.weighted",
+      "statement": "a weighted/oriented elimination is required beyond support leaves",
+      "status": "pass",
+      "detail": "local collision minors remain valid but are not a forced support quotient"
+    }
+  ],
+  "n_pass": 3,
+  "n_fail": 0,
+  "verdict": "The proposed raw leaf reduction of every low-grade initialization block to the displayed parity core is false. The first failure is (g,d)=(2,6), where columns (0,-),(4,+),(6,+) remain although the desired even core contains only (0,-),(6,+). Remainder width grows in the audit. A weighted oriented elimination, not support peeling alone, is required to connect the full block to the classified local collision minors."
+}
