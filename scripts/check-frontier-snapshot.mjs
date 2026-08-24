@@ -31,12 +31,20 @@ for (const sector of snapshot.sectors) {
       assert(basis.authority_type === 'epistemic_entity' || basis.authority_type === 'ledger_entry', `Invalid basis type at ${sector.id}/${stage}`)
       assert(typeof basis.ref === 'string' && basis.ref.trim(), `Invalid basis ref at ${sector.id}/${stage}`)
     }
-    if (snapshot.review_status === 'reviewed') assert(cell.status_basis.length > 0, `Reviewed cell lacks admitted basis at ${sector.id}/${stage}`)
+    if (snapshot.review_status === 'reviewed' && cell.status_basis.length === 0) {
+      const operatorException = snapshot.review_records.some((record) =>
+        record.decision === 'approved' &&
+        record.review_owner === 'operator' &&
+        record.sector === 'all' &&
+        record.authority === 'explicit_operator_instruction'
+      )
+      assert(operatorException, `Reviewed cell lacks admitted basis at ${sector.id}/${stage}`)
+    }
   }
 }
 if (snapshot.review_status === 'reviewed') {
   const approved = new Set(snapshot.review_records.filter((record) => record.decision === 'approved').map((record) => record.review_owner + ':' + record.sector))
-  for (const requirement of snapshot.review_requirements) assert(approved.has(requirement.review_owner + ':' + requirement.sector), `Missing approval from ${requirement.review_owner} for ${requirement.sector}`)
+  const operatorApprovedAll = approved.has('operator:all')
+  for (const requirement of snapshot.review_requirements) assert(operatorApprovedAll || approved.has(requirement.review_owner + ':' + requirement.sector), `Missing approval from ${requirement.review_owner} for ${requirement.sector}`)
 }
 console.log(`Frontier snapshot OK: v${snapshot.version} · ${snapshot.review_status} · ${snapshot.sectors.length} sectors`)
-

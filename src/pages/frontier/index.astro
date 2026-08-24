@@ -1,9 +1,12 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import '../../styles/frontier.css'
-import { currentFrontier, frontierReleases, frontierRegistry } from '../../lib/frontier'
+import { currentFrontier, frontierProgressSnapshots, frontierReleases, frontierRegistry } from '../../lib/frontier'
 
 const serializedReleases = JSON.stringify(frontierReleases).replaceAll('<', '\\u003c')
+const serializedSnapshots = JSON.stringify(frontierProgressSnapshots).replaceAll('<', '\\u003c')
+const statusLabels = { established: 'Established', partial: 'Partial', open: 'Open', falsified: 'Falsified', not_applicable: 'Not applicable' }
+const partialLabels = { typed_not_constructed: 'Typed, not constructed', constructed_not_verified: 'Constructed, not verified', verified_limited_scope: 'Verified in limited scope', blocked_missing_source_input: 'Blocked by missing source input' }
 ---
 
 <SiteLayout
@@ -81,6 +84,66 @@ const serializedReleases = JSON.stringify(frontierReleases).replaceAll('<', '\\u
           <ul>{release.changes.map((change) => <li>{change}</li>)}</ul>
         </section>
 
+        {frontierProgressSnapshots[release.version] && (() => {
+          const snapshot = frontierProgressSnapshots[release.version]
+          return (
+            <section class="progress-chart" aria-labelledby={'progress-' + release.version}>
+              <header class="progress-header">
+                <div>
+                  <p class="eyebrow">Reviewed epistemic-graph projection</p>
+                  <h3 id={'progress-' + release.version}>Cross-sector selection pipeline</h3>
+                  <p>{snapshot.introduction}</p>
+                  <p class="selector-note">{snapshot.selector_note}</p>
+                </div>
+                <p class="review-badge"><span aria-hidden="true">✓</span> Operator reviewed · v{snapshot.version}</p>
+              </header>
+
+              <div class="progress-legend" aria-label="Progress status legend">
+                {Object.entries(statusLabels).map(([status, label]) => <span class={'status status-' + status}><i aria-hidden="true"></i>{label}</span>)}
+              </div>
+
+              <div class="progress-matrix" role="table" aria-label={'Cross-sector progress in Frontier ' + snapshot.version}>
+                <div class="progress-row progress-head" role="row">
+                  <span role="columnheader">Sector</span>
+                  {snapshot.stages.map((stage) => <span role="columnheader">{stage.label}</span>)}
+                </div>
+                {snapshot.sectors.map((sector) => (
+                  <div class="progress-row" role="row">
+                    <div class="sector-label" role="rowheader"><strong>{sector.name}</strong><span>{sector.lens_family_object}</span></div>
+                    {snapshot.stages.map((stage) => {
+                      const cell = sector.cells[stage.id]
+                      return (
+                        <details class={'progress-cell status-' + cell.status} role="cell">
+                          <summary aria-label={`${sector.name}, ${stage.label}: ${statusLabels[cell.status]}`}>
+                            <span class="mobile-stage">{stage.label}</span>
+                            <span class={'status status-' + cell.status}><i aria-hidden="true"></i>{statusLabels[cell.status]}</span>
+                            {cell.selector_maturity && <small>{cell.selector_maturity.replaceAll('_', ' ')}</small>}
+                          </summary>
+                          <div class="evidence-panel">
+                            <p>{cell.explanation}</p>
+                            {cell.partial_reason && <p><strong>Why partial:</strong> {partialLabels[cell.partial_reason]}</p>}
+                            <p><strong>Evidence:</strong> {cell.evidence_summary}</p>
+                            <p><strong>What remains:</strong> {cell.what_remains}</p>
+                            <dl>
+                              <div><dt>Reviewed by</dt><dd>{cell.review_owner}</dd></div>
+                              <div><dt>Status changed</dt><dd>Frontier v{cell.changed_in_version}</dd></div>
+                            </dl>
+                            {cell.status_basis.length ? (
+                              <ul class="basis-list">
+                                {cell.status_basis.map((basis) => <li>{basis.href ? <a href={basis.href}>{basis.label}</a> : <span>{basis.label} · graph {basis.event_id?.split('-')[1]}</span>}</li>)}
+                              </ul>
+                            ) : <p class="evidence-gap">No admitted status-basis entity is attached. The review approval does not create missing evidence.</p>}
+                          </div>
+                        </details>
+                      )
+                    })}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        })()}
+
         <section class="sector-grid" aria-label={'Sector frontiers in release ' + release.version}>
           {release.sectors.map((sector) => (
             <article class="sector-card" data-sector-id={sector.id}>
@@ -124,8 +187,10 @@ const serializedReleases = JSON.stringify(frontierReleases).replaceAll('<', '\\u
   </section>
 
   <script is:inline id="frontier-data" type="application/json" set:html={serializedReleases}></script>
+  <script is:inline id="frontier-progress-data" type="application/json" set:html={serializedSnapshots}></script>
   <script is:inline>
     const releases = JSON.parse(document.querySelector('#frontier-data').textContent)
+    const progressSnapshots = JSON.parse(document.querySelector('#frontier-progress-data').textContent)
     const versionSelect = document.querySelector('#frontier-version')
     const compareSelect = document.querySelector('#frontier-compare')
     const comparison = document.querySelector('#frontier-comparison')
@@ -167,6 +232,10 @@ const serializedReleases = JSON.stringify(frontierReleases).replaceAll('<', '\\u
       }
       comparison.hidden = false
       comparisonSummary.textContent = 'v' + baseline.version + ' → v' + selected.version
+      const selectedProgress = progressSnapshots[selected.version]
+      const baselineProgress = progressSnapshots[baseline.version]
+      if (selectedProgress && !baselineProgress) comparisonSummary.textContent += ' · selection pipeline introduced'
+      if (!selectedProgress && baselineProgress) comparisonSummary.textContent += ' · selection pipeline not present in selected version'
       const sectorIds = [...new Set([...baseline.sectors, ...selected.sectors].map((sector) => sector.id))]
       for (const sectorId of sectorIds) {
         const before = baseline.sectors.find((sector) => sector.id === sectorId)
