@@ -27,6 +27,14 @@ def archimedean_symbol(omega):
     return -np.log(np.pi) + np.real(digamma(0.25 + 0.5j * omega))
 
 
+def truncated_gamma_symbol(omega, levels):
+    result = np.full_like(omega, -np.log(np.pi) + float(digamma(0.25)))
+    for index in range(levels):
+        rate = 2 * index + 0.5
+        result += 2 * omega**2 / (rate * (rate**2 + omega**2))
+    return result
+
+
 def lowest_compressed_eigenvalue(support_points, padding_factor, analyze=False):
     dx = LOG_TWO / support_points
     total_points = support_points * padding_factor
@@ -116,6 +124,40 @@ def lowest_compressed_eigenvalue(support_points, padding_factor, analyze=False):
             }
             for index in range(6)
         ]
+        truncated_tower = []
+        for levels in [
+            1, 2, 4, 8, 16, 32, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+            52, 56, 58, 60, 62, 64, 128
+        ]:
+            truncated_symbol = boundary_symbol(omega) + truncated_gamma_symbol(
+                omega, levels
+            )
+
+            def truncated_matvec(source):
+                source_full = np.zeros(total_points, dtype=np.complex128)
+                source_full[start:stop] = source
+                return np.fft.ifft(
+                    truncated_symbol
+                    * np.fft.fft(source_full, norm="ortho"),
+                    norm="ortho",
+                )[start:stop].real
+
+            truncated_operator = LinearOperator(
+                (support_points, support_points),
+                matvec=truncated_matvec,
+                dtype=np.float64,
+            )
+            truncated_value = eigsh(
+                truncated_operator,
+                k=1,
+                which="SA",
+                tol=1e-10,
+                maxiter=10000,
+                return_eigenvectors=False,
+            )[0]
+            truncated_tower.append(
+                {"levels": levels, "lowest_eigenvalue": float(truncated_value)}
+            )
 
         def correlation(candidate):
             candidate = np.asarray(candidate, dtype=float)
@@ -223,6 +265,7 @@ def lowest_compressed_eigenvalue(support_points, padding_factor, analyze=False):
             "even_dirichlet_subspace_convergence": dirichlet_convergence,
             "first_three_mode_sectors": first_modes,
             "archimedean_six_lowest_modes": arch_modes,
+            "truncated_gamma_tower": truncated_tower,
         }
     return result
 
@@ -239,6 +282,7 @@ runs = [
         (256, 128, True),
         (512, 32),
         (512, 64, True),
+        (1024, 64, True),
     ]
 ]
 

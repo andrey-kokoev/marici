@@ -279,3 +279,92 @@ and would yield the negative total bound
 Therefore the prospective theorem is not generic support uncertainty for the
 logarithmic Laplacian. It must retain the finer completed archimedean weight;
 that source coefficient carries essential positivity information.
+
+## The infinite gamma tower admits a finite positive truncation
+
+The exact source weight decomposes into half-integer gamma channels:
+
+\[
+\frac{e^{r/2}}{\sinh r}
+=2\sum_{n\ge0}e^{-a_nr},
+\qquad
+a_n=2n+\frac12.
+\]
+
+Equivalently, the \(n\)-th Fourier multiplier is
+
+\[
+g_n(\tau)=
+\frac{2\tau^2}{a_n(a_n^2+\tau^2)}\ge0.
+\]
+
+Every omitted gamma level is therefore positive semidefinite. Let \(T_N\)
+denote the endpoint-completed operator using only the first \(N\) levels.
+The 1024-point scout gives
+
+\[
+\lambda_{\min}(T_{43})
+\approx-5.85936\times10^{-5},
+\]
+
+\[
+\lambda_{\min}(T_{44})
+\approx2.65189\times10^{-6},
+\]
+
+and
+
+\[
+\lambda_{\min}(T_{45})
+\approx5.98926\times10^{-5}.
+\]
+
+Thus level 44 is the first positive truncation in every sufficiently refined
+current scout. If \(T_{44}\ge0\) is certified, then
+
+\[
+T_\infty=T_{44}+\sum_{n\ge44}g_n(D)\ge0
+\]
+
+follows immediately. This is a source-derived finite certificate contract,
+not a fitted cutoff: the remainder has a fixed positive sign.
+
+## Exponential-kernel boundary-value realization
+
+Each gamma channel has the exact physical-space form
+
+\[
+g_n(D)=\frac2{a_n}I-K_{a_n},
+\qquad
+K_a(x,y)=e^{-a|x-y|}.
+\]
+
+The first channel and endpoint term simplify further:
+
+\[
+-e^{-|x-y|/2}+2\cosh\frac{x-y}{2}
+=e^{|x-y|/2}.
+\]
+
+Consequently
+
+\[
+T_{44}
+=d_{44}I
++e^{|x-y|/2}
+-\sum_{n=1}^{43}e^{-a_n|x-y|},
+\]
+
+where
+
+\[
+d_{44}=h_\infty(0)+\sum_{n=0}^{43}\frac2{a_n}
+\approx2.63378349367197.
+\]
+
+Every exponential kernel is the Green kernel of a second-order
+constant-coefficient equation. The continuum certification problem can
+therefore be converted into a finite auxiliary-channel boundary-value system
+with 44 rates and parity-separated boundary conditions. A directed
+Evans/Sturm or interval transfer-matrix count can certify that this system has
+no eigenvalue below zero. That is now the preferred proof implementation.
