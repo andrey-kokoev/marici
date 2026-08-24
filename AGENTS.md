@@ -18,6 +18,9 @@ repository:
 - `marici.Buzzard`: Lean formalization of stabilized exact theorems, reusable
   formal definitions for quotients/probes/transports, and detection of hidden
   assumptions that prevent an informal claim from becoming a theorem.
+- `marici.Kitaev`: topological condensed matter, quantum error correction,
+  anyon transport, protected logical sectors, and the hostile audit of local
+  syndrome versus global residue-free capability.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
@@ -133,6 +136,7 @@ multi-call sessions here; use the binding-call route for every call.
   - `marici.Strominger` — `team_member:4561aedd7f948b5ddee5`
   - `marici.Grothendieck` — `team_member:7283d8c22c912c41664b`
   - `marici.Buzzard` — `team_member:81a83d48cea75aaf3336`
+  - `marici.Kitaev` — `team_member:2ec122bc41a1fea3b5ab`
 
 ## Epistemic graph: submitting records
 
