@@ -231,3 +231,207 @@ Evidence:
 - `research/nima/checkers/check_rank26_replaced_relation_profile.py`
 - `research/nima/results/rank26_replaced_relation_profile_p32003.json`
 - `research/nima/results/rank26_replaced_relation_profile_p32009.json`
+
+## Recurring architecture: obstruction on the ordinary channel
+
+The Sonar comparison exposes a second distinction that is more important
+than the remote/local naming.  Its RPC layer separates transport failure from
+a successfully transported negative domain result.  A request may reach the
+generic controller and return the ordinary typed envelope
+
+```text
+{ result: "error", messages: [...], requestedFrontendActions?: [...] }
+```
+
+through a successful HTTP response.  The UI may render that value as an
+error, but it is not the same thing as failure of the transport itself.  The
+same `RpcResponseV1` sum type carries successful data, negative domain
+results, messages, and authorized frontend effects.  Controlled-action
+records determine which entity/action/field operation is legal before the
+controller evaluates it.
+
+This sharpens the Marici analogy:
+
+\[
+\boxed{
+\text{illegal or untyped attempt}
+\;\neq\;
+\text{legal operation returning a typed obstruction}.
+}
+\]
+
+For an admitted operation \(f\), the operational result should be modelled
+schematically as
+
+\[
+\operatorname{Attempt}_f(X)
+\longrightarrow
+\operatorname{Success}_f(Y)\sqcup
+\operatorname{Obstruction}_f(O_f).
+\]
+
+The obstruction is not necessarily an exception or a defect.  It may be a
+failed-descent class, boundary residue, extension class, curvature term,
+relation cell, or missing homotopy.  Because it was produced by a legal typed
+operation, it retains source, target, provenance, support, and composition
+data.  A sector adapter or physical readout may display it as a negative
+record, annihilate it, transport it, or reveal that it is precisely the next
+coherence datum.
+
+### Earlier occurrences of the same pattern
+
+This is a recurrence claim, not an assertion that the following objects are
+identical.
+
+| Occurrence | Ordinary channel | Structured negative/residual datum |
+|---|---|---|
+| Sonar controlled actions and RPC | authorized generic-controller request/response | `result: "error"`, messages, and requested frontend actions |
+| Carrier coherence squares | two legal composites of typed maps | their difference, curvature, or required homotopy |
+| Generic versus supported coefficient maps | localization/Gysin comparison | the Beck--Chevalley obstruction rather than a fabricated direct map |
+| Labelled principal-cell calculations | the full labelled total complex | a principal or extension column that survives although the homogeneous quotient misses it |
+| C9 Orlik--Solomon sewing | legal source relation among adjacent charts | a seam relation/coherence cell, not an ordinary period class |
+| Labelled Lah constructors | insert/create/freeze histories | augmentation collapses many labelled histories to one scalar coefficient without making the histories identical |
+| Physical readout | an admitted coefficient--response pairing | an invisible, killed, or supported channel rather than an untyped absence |
+
+The database/UI analogy anticipated this distinction in the separation of
+authority, local projection, capability, and readout.  The controlled-action
+example now supplies an independently built software instance in which the
+negative result is explicitly first-class and travels through the normal
+response contract.  The C9 seam and labelled-Lah results supply later
+mathematical instances: a relation cell can carry the unresolved datum, while
+augmentation can hide its labelled provenance.
+
+### Falsification boundary
+
+The analogy earns explanatory weight only if the negative branch is itself
+typed and composable.  It weakens or fails when:
+
+1. the alleged obstruction is only free-form logging with no source/target;
+2. an illegal or unauthorized request is conflated with a legal negative
+   result;
+3. a local projection is treated as authority for the remote/source object;
+4. the residual is fitted after inspecting the desired readout;
+5. composition discards the obstruction without a declared augmentation,
+   quotient, or annihilating readout.
+
+Thus the proposed recurring architecture is not simply “errors are data.”
+It is:
+
+\[
+\boxed{
+\text{admitted operation}
++\text{normal typed result channel}
++\text{first-class obstruction branch}
++\text{explicit readout/augmentation}.
+}
+\]
+
+Evidence and provenance:
+
+- `C:/Users/andrey/src/sonar.cloud/src/api/rpc.ts`, especially the separate
+  transport-error and response-body branches;
+- `C:/Users/andrey/src/sonar.cloud/src/types/rpcInterfaces.ts`, defining
+  `RpcResponseV1`;
+- `C:/Users/andrey/src/sonar.cloud/src/platform/server/api/implementations/plpgsql/utils/get_applicable_controlled_actions2.pgsql`;
+- `research/nima/capability-indexed-instrument-surface.md`;
+- `research/nima/cross-sector-source-sewing-annihilates-nondescending-odd-jets.md`;
+- epistemic events 2567--2580 for the C9 seam typing and labelled-Lah
+  constructor/augmentation sequence.
+
+## First universality attack: one interface, not one obstruction object
+
+The recurrence does **not** justify a single global type
+
+\[
+\operatorname{Result}(T,E)
+\]
+
+with one fixed error object \(E\).  The examples already falsify that naive
+formulation.  Their residues have incompatible mathematical types:
+
+- curvature is a degree-two morphism-valued form;
+- a Beck--Chevalley defect is a comparison 2-cell or its obstruction class;
+- a principal column is part of an augmented complex;
+- an Orlik--Solomon seam is a relation cell;
+- an augmentation kernel retains labelled combinatorial provenance;
+- a Sonar domain rejection is an application-level response record.
+
+Forcing these into one set or vector space would erase precisely the degree,
+support, variance, and authority information that makes them useful.
+
+The surviving universal candidate is instead an **indexed result
+architecture**.  Let \(\mathsf{Op}\) be the category of admitted operations.
+For each operation \(f\), retain its own success and obstruction fibers
+\(Y_f\) and \(O_f\):
+
+\[
+\mathsf{Result}_f=Y_f\sqcup O_f.
+\]
+
+Globally these form a projection
+
+\[
+\boxed{
+\pi:\int_{f\in\mathsf{Op}}\mathsf{Result}_f
+\longrightarrow\mathsf{Op},
+}
+\]
+
+not one untyped coproduct.  Composition must supply typed transport from the
+chosen branch over \(f\) and the chosen branch over \(g\) into the appropriate
+branch over \(g\circ f\).  A readout is a further operation-indexed functor or
+pairing; it may not silently identify fibers belonging to different
+operations.
+
+This has a close software form.  A generic RPC envelope is reusable, while
+each endpoint still owns its response payload, domain rejection vocabulary,
+authorization conditions, and follow-up actions.  Parametricity of the
+envelope is not equality of its payload types.
+
+### What repeats
+
+The recurring invariant is therefore the four-stage shape
+
+\[
+\boxed{
+\text{admission}
+\to\text{operation-indexed attempt}
+\to\text{operation-indexed value/residue}
+\to\text{explicit readout or composition}.
+}
+\]
+
+What does *not* repeat is a universal coefficient space, scalar error code,
+or common physical interpretation.  This is the same methodological split as
+“shared calculus, sector-specific coefficients,” now applied to negative as
+well as positive operational results.
+
+### Decisive next test
+
+Choose two composable source operations \(f,g\) in one established sector and
+export all four branch-composition maps
+
+\[
+Y_g\circ Y_f,
+\quad Y_g\circ O_f,
+\quad O_g\circ Y_f,
+\quad O_g\circ O_f
+\longrightarrow
+Y_{g\circ f}\sqcup O_{g\circ f}.
+\]
+
+The conjecture survives only if those maps are source-derived and associative
+up to already declared coherence.  The filtered jet pilot supplies one exact
+positive model: its current value and next-grade Hochschild cocycle compose
+associatively after the residue is retained.  A hostile physical-sector test
+must now use a genuine localization/Gysin or seam/augmentation pair.
+
+Failure of any mixed branch to type without inventing a corrective target
+would show that “normal-channel obstruction” is only a family resemblance,
+not an operational calculus.  Successful closure would identify the first
+nontrivial piece of the sought universal constructor: not a universal error,
+but a fibred algebra of typed attempts and residues.
+
+Related exact pilot:
+`research/nima/filtered-interaction-jet-pilot.md` and
+`research/nima/checkers/check_filtered_interaction_jet_pilot.py`.
