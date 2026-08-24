@@ -42,6 +42,40 @@ export interface FrontierRelease {
   sectors: FrontierSector[]
 }
 
+export type ProgressStatus = 'established' | 'partial' | 'open' | 'falsified' | 'not_applicable'
+export type PartialReason = 'typed_not_constructed' | 'constructed_not_verified' | 'verified_limited_scope' | 'blocked_missing_source_input'
+
+export interface ProgressBasis {
+  authority_type: 'epistemic_entity' | 'ledger_entry'
+  ref: string
+  event_id?: string
+  href?: string
+  label: string
+}
+
+export interface ProgressCell {
+  status: ProgressStatus
+  partial_reason: PartialReason | null
+  explanation: string
+  evidence_summary: string
+  status_basis: ProgressBasis[]
+  review_owner: string
+  changed_in_version: string
+  what_remains: string
+  selector_maturity?: 'untyped' | 'typed' | 'constructed' | 'constructed_verified'
+}
+
+export interface ProgressSnapshot {
+  schema: 'marici.frontier-progress-snapshot.v1'
+  version: string
+  review_status: 'reviewed'
+  introduction: string
+  selector_note: string
+  stages: { id: string; label: string }[]
+  sectors: { id: string; name: string; lens_family_object: string; cells: Record<string, ProgressCell> }[]
+  review_records: { decision: string; review_owner: string; sector: string; note?: string }[]
+}
+
 const modules = import.meta.glob<{ default: FrontierRelease }>(
   '../data/frontiers/[0-9]*.json',
   { eager: true },
@@ -70,6 +104,13 @@ for (const release of releases) {
 
 export const frontierRegistry = registry
 export const frontierReleases = releases
+const snapshotModules = import.meta.glob<{ default: ProgressSnapshot }>(
+  '../data/frontier-snapshots/reviewed/[0-9]*.json',
+  { eager: true },
+)
+export const frontierProgressSnapshots = Object.fromEntries(
+  Object.values(snapshotModules).map((module) => [module.default.version, module.default]),
+) as Record<string, ProgressSnapshot>
 const selectedCurrentFrontier = releases.find((release) => release.version === registry.current)
 
 if (!selectedCurrentFrontier) {
