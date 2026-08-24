@@ -302,6 +302,88 @@ reproduces the de Branges Bezoutian. If it leaves a boundary term of
 indefinite sign, the positive-commutator explanation is insufficient in its
 current form.
 
+## Exact Green identity: positive bulk with two rank-one defects
+
+Put
+
+\[
+s_z=\frac12+iz,
+\qquad
+f(q)=e^{-q/2}\phi(q),
+\]
+
+so that
+
+\[
+\partial_qG(q,z)=-s_zG(q,z)-f(q).
+\]
+
+For two spectral parameters (z,w), let
+
+\[
+P(q;z,w)=G(q,z)\overline{G(q,w)}.
+\]
+
+Since
+
+\[
+s_z+\overline{s_w}=1-i(\bar w-z),
+\]
+
+direct differentiation gives
+
+\[
+i(\bar w-z)P
+=\partial_qP+P+f(q)
+\left(G(q,z)+\overline{G(q,w)}\right).
+\]
+
+The source tail makes (G(q,z)\to0) as (q\to\infty). Integrating and
+completing the square therefore yields
+
+\[
+\boxed{
+\begin{aligned}
+i(\bar w-z)\int_0^\infty
+G(q,z)\overline{G(q,w)}\,dq
+={}&\int_0^\infty
+\bigl(G(q,z)+f(q)\bigr)
+\overline{\bigl(G(q,w)+f(q)\bigr)}\,dq\\
+&-\int_0^\infty f(q)^2\,dq
+-G(0,z)\overline{G(0,w)}.
+\end{aligned}
+}
+\]
+
+The first term is a positive Gram kernel. The remaining obstruction has rank
+at most two on every finite spectral packet:
+
+1. the constant kernel (int f^2), representing the primitive source norm;
+2. the boundary kernel (G(0,z)\overline{G(0,w)}), representing the primitive
+   Fourier tail at the modular seam.
+
+On the diagonal (w=z=x+iy), the identity becomes
+
+\[
+2y\int_0^\infty|G(q,z)|^2\,dq
+=\int_0^\infty|G(q,z)+f(q)|^2\,dq
+-\int_0^\infty f(q)^2\,dq
+-|G(0,z)|^2.
+\]
+
+This identity is source-faithful and denominator-free. It also holds for a
+generic sufficiently decaying primitive profile, so it cannot by itself imply
+RH. Its importance is architectural: the continuous Mellin-scale flow has a
+positive bulk and a finite, explicitly typed defect rather than uncontrolled
+indefinite curvature.
+
+The modular/arithmetic theorem is now sharply localized. After discrete
+sampling at (q=\log n), summing labels, applying the Clark differential
+(1+ia\partial_z), and sewing the reflected chamber, the source must repair
+exactly these primitive norm and seam-boundary channels. If additional
+indefinite cross-label terms remain, the present positive-commutator mechanism
+does not close.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
