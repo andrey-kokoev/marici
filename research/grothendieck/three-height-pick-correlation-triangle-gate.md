@@ -2459,3 +2459,834 @@ was removed.
 The universal rank-two theorem and universal confluent rank-three theorem are
 proved.  Positivity for three separated heights remains open.  Neither result
 constructs the full self-adjoint boundary operator.
+
+## Post-rank-two disposition: center the constraint intersection
+
+The universal rank-two theorem is now complete on the entire outer ray.  An
+exact hostile moment jet shows why the present gate cannot be bypassed:
+
+`q=(1,1,2,5,51/4)`
+
+has adjacent rank-two Hankel minors `(1,1,1/2)` but rank-three determinant
+`-1/4`.  Thus separated rank three is genuinely new information, not a
+technical strengthening of the Schwarzian certificate.
+
+The successful compact proof also changes the preferred implementation here.
+Raw interval quotients there lost seven orders of cancellation because they
+forgot a shared source displacement; a centered Taylor model recovered it and
+certified every box.  The failed whole-rectangle and thin-tube prototypes in
+the present problem have the same semantic defect: they interval-enclose the
+ambient variables after forgetting the exact critical relation `Q=0`.  The
+earlier phase-plane equation `G=0` belongs to the derivation of this limiting
+family and must not be imposed as a second constraint here.
+
+The next directed checker should therefore use a centered bivariate jet in
+`(u,L)`, with `k=exp(u)-1`, on the critical graph
+
+`Q(u,L)=0`,
+
+with the branch orientation retained.  At each admitted center it should:
+
+1. evaluate `Q` and the curvature target `-(1-t^2)D Q` with their common
+   centered perturbations retained;
+2. enclose the critical graph from `Q_L` and the certified root orientation;
+3. propagate the graph-centered target to second order;
+4. use a deliberately coarse third derivative bound only in the cubic
+   remainder; and
+5. subdivide only when the final curvature enclosure contains zero.
+
+This is the direct analogue of the now successful shared-`x` compact
+certificate.  A failure after preserving the critical graph would be a
+genuine falsifier of the proposed limiting-family curvature mechanism;
+failure before that is only coordinate dependency.
+
+## Exact boundary-orbit orientations
+
+The two endpoint orientations in the abstract unimodality problem now admit
+short exact factorizations.  Put
+
+`p=2a/(1+a^2), q=2b/(1+b^2)`, with `0<=b<a<1`.
+
+At zero holding time the rationalized reachable boundary has
+
+`T=(a-b)/(1-ab)`,
+
+`R=T(a+b)/(1+ab)`.
+
+Substitution into `G=2F'` gives the exact factorization
+
+\[
+G(0)=
+\frac{-2(a-1)^3(a+1)^3(a-b)^3(b-1)^2(b+1)^2}
+{(1+a^2)(ab-1)^4(ab+1)^3}>0.
+\]
+
+Thus every nondegenerate reachable orbit leaves the exact equality boundary
+in the positive direction.  At large holding time, `R` approaches one more
+slowly than `T` when `p<1`.  Writing `epsilon=1-R`, the leading term is
+
+\[
+G=
+-\frac{8a(a-1)^2(b-1)^2}
+{(1+a^2)^2(1+b^2)}\,\epsilon+O(\epsilon^2)<0.
+\]
+
+Hence every orbit eventually has negative derivative.  The remaining
+abstract obstruction is now precisely uniqueness of the sign transition:
+
+\[
+G=0\quad\Longrightarrow\quad DG<0
+\]
+
+on the exact endpoint-dependent orbit.  The initial and terminal signs no
+longer require numerical evidence or interval collars.
+
+Artifact:
+
+- checkers/hyperbolic_boundary_initial_variation_factor.py
+
+## Critical-curvature elimination and a projection falsifier
+
+Because `G` is affine in the terminal slope `q`, eliminate `q` exactly on
+`G=0` and put `z=R/T`, `x=T^2`.  The critical curvature collapses to
+
+\[
+DG\big|_{G=0}=-2x\,\frac{P(x,z,p)}{D(x,z,p)},
+\]
+
+where `P` is cubic in `x` and
+
+\[
+D=p-z+x(-2p^2z+3pz^2-2p+z)
+\]
+
+is affine in `x`.  Thus the apparent degree-nine obstruction is mostly
+coordinate weight; the live sign theorem is a same-sign statement for one
+cubic and one affine polynomial on the exact reachable critical set.
+
+It is tempting to prove `D<0` from the endpoint inequalities
+
+\[
+D(0)=p-z<0,
+\qquad
+D(1)=p(3z^2-2pz-1)<0.
+\]
+
+This projected wedge is false.  A 50,000-orbit hostile sweep found 4,301
+critical packages with `z<=p`; the most negative sampled `z-p` was about
+`-0.07253`.  The upper inequality
+
+\[
+z<\frac{p+\sqrt{p^2+3}}3
+\]
+
+survived, but it is insufficient alone.  The denominator orientation must
+retain `x=T^2`.  Projecting the critical carrier to `(z,p)` discards essential
+reachability information and cannot support the proof.
+
+Artifacts:
+
+- checkers/hyperbolic_critical_curvature_elimination.py
+- checkers/hyperbolic_critical_reachable_wedge_sweep.py
+
+## Faithful small-slope compactification
+
+The eliminated factors become sharp in the corner `p,q->0`, where the
+critical holding time diverges and `T->1`.  The naive projection `T=1` is not
+faithful: with `q=cp` and `R=py` it gives the impossible leading critical
+equation
+
+\[
+G=-p^2(1+c+2y)+o(p^2)=0.
+\]
+
+The missing fiber coordinate is
+
+\[
+1-T^2=p^2v.
+\]
+
+Retaining it before expansion gives
+
+\[
+G=p^2(4v-1-c-2y)+O(p^3).
+\]
+
+Therefore the critical carrier satisfies
+
+\[
+v=\frac{1+c+2y}{4}+O(p).
+\]
+
+In the same chart the directional curvature is
+
+\[
+DG=-2p^2(4v+1)+O(p^3)
+   =-2p^2(c+2y+2)+O(p^3)<0
+\]
+
+at leading order on `G=0`.  Thus the small-slope corner is not genuinely
+degenerate after division by `p^2`; it has a coercive negative limit.  A
+directed tail proof now needs a uniform remainder bound in `(p,c,y,v)`, with
+the critical relation used to eliminate `v`.  Setting `T=1` before retaining
+`v` is a sharp mechanism falsifier because it deletes the physical critical
+fiber.
+
+Artifact:
+
+- checkers/hyperbolic_critical_factor_reserve_sweep.py
+
+## Exact polynomial small-slope carrier
+
+The square root in the faithful chart can be removed entirely.  Define
+
+\[
+d=\frac{1-T}{p^2},
+\qquad T=1-p^2d,
+\qquad 1-T^2=p^2(2d-p^2d^2).
+\]
+
+Together with `q=cp` and `R=py`, this turns both normalized targets into exact
+polynomials:
+
+\[
+G/p^2=\mathcal G(p,c,y,d),
+\qquad \deg(\mathcal G)=(8,1,4,5),
+\]
+
+\[
+DG/p^2=\mathcal K(p,c,y,d),
+\qquad \deg(\mathcal K)=(10,1,5,6).
+\]
+
+Their boundary values are
+
+\[
+\mathcal G(0,c,y,d)=8d-1-c-2y,
+\]
+
+\[
+\mathcal K(0,c,y,d)=-2(8d+1).
+\]
+
+Polynomial division of `K` by `G` in the branch variable `d` has no
+denominator and leaves a remainder of degree four in `d`.  At `p=0`, imposing
+the critical equation gives
+
+\[
+\mathcal K\equiv-2(c+2y+2)<0\pmod{\mathcal G}.
+\]
+
+Thus the small-slope/unbounded-holding corner is now an exact finite
+polynomial branch problem rather than a transcendental asymptotic remainder.
+The directed tail certificate should isolate the positive critical root of
+`G`, reduce `K` modulo it, and split only the slowly unbounded `y` direction;
+the limiting margin is coercive in `y`.
+
+## Exact post-barrier exclusion in the small-slope chart
+
+The coarse critical barrier `d=1/2` admits an exact tensor-Bernstein proof.
+Put `R=py` and map the triangular domain by
+
+\[
+p=u/10,
+\qquad
+R=2p+(1-2p)s,
+\qquad (u,s,c)\in[0,1]^3.
+\]
+
+For `d=1/2`, the compact polynomial `-8G/p` has Bernstein degree `(9,4,1)`.
+All 100 Bernstein coefficients are nonnegative.  The eight zero coefficients
+are boundary degeneracies; the coefficients at indices `(9,0,k)` are
+
+\[
+681178599/10^9,
+\qquad
+55365183/4\cdot10^7,
+\]
+
+so the physical domain `p>0,R<1` is strict.
+
+The stronger four-variable calculation puts `d=h/2`, `0<=h<=1`.  The
+resulting Bernstein degree is `(9,4,1,5)`.  All 600 coefficients are
+nonnegative, and the smallest strict witness is again
+
+\[
+681178599/10^9>0.
+\]
+
+Thus
+
+\[
+G<0
+\]
+
+throughout
+
+\[
+0<p\le1/10,quad0\le c\le1,quad y\ge2,quad py<1,quad0\le d\le1/2.
+\]
+
+The condition `y>=2` follows from the exact orbit.  If `d<=1/2`, then
+
+\[
+T\ge1-p^2/2,
+\]
+
+and the orbit formulas reduce `R>=2p` to the monotone endpoint inequality
+
+\[
+\log399-\operatorname{artanh}(0.1)
+-20\operatorname{artanh}(0.2)>1.83397498807>0.
+\]
+
+Therefore `d<=1/2` implies `y>=2`, and the Bernstein slab applies.  We obtain
+the exact post-barrier theorem
+
+\[
+\boxed{G<0\quad\text{on every small-slope orbit point with }d\le1/2.}
+\]
+
+Consequently every critical point `G=0` for `p<=1/10` lies in `d>1/2`; no
+later critical crossing can hide below the faithful barrier.
+
+Artifacts:
+
+- checkers/hyperbolic_small_slope_barrier_bernstein.py
+- checkers/hyperbolic_small_slope_orbit_barrier.py
+
+## Complete small-slope critical-curvature theorem
+
+For every critical point above the post-barrier, the exact orbit also obeys
+two radial caps.  Directed endpoint inequalities give
+
+\[
+R<3/10,
+\qquad
+R^2\le p,
+\]
+
+for `0<p<=1/10`.  The respective directed margins at `p=1/10` are
+
+\[
+0.0151178987904,
+\qquad
+0.0141292861361.
+\]
+
+Introduce the critical-tube displacement
+
+\[
+e=8d-(1+c+2y).
+\]
+
+The faithful radial domain splits into two polynomial charts:
+
+1. `0<=p<=0.09`: put `p=z^2` and
+   `R=2z^2+(z-2z^2)s`;
+2. `0.09<=p<=0.1`: put
+   `R=2p+(0.3-2p)s`.
+
+On both charts exact tensor-Bernstein conversion proves
+
+\[
+G(e=0)\ge0,
+\qquad
+G(e=-0.4)<0,
+\qquad
+\partial_eG>0.
+\]
+
+The low-chart coefficient counts are 612, 612, and 2,125; the high-chart
+counts are 324, 324, and 1,125.  None is negative.  Hence every critical root
+lies in
+
+\[
+-0.4<e<0.
+\]
+
+Independently, on the larger coarse tube
+
+\[
+p\le0.1,quad R\le0.3,quad -0.4\le e\le0,
+\]
+
+the cleared polynomial for `-DG/p^2` has tensor-Bernstein degree `(11,6,6,6)`.
+All 4,116 coefficients are nonnegative, and strict corner witnesses close
+every physical face.  Therefore
+
+\[
+\boxed{
+0<p\le1/10,quad G=0
+\Longrightarrow DG<0.
+}
+\]
+
+This is the complete small-slope critical-curvature theorem.  Together with
+the exact initial and terminal orientations it proves boundary unimodality in
+the entire unbounded-holding chart.  The remaining abstract region is the
+compact interior `p>=1/10`, with the unit-slope corner handled by its existing
+two-scale collar certificates.
+
+Artifacts:
+
+- checkers/hyperbolic_small_slope_radial_cap.py
+- checkers/hyperbolic_small_slope_square_root_cap.py
+- checkers/hyperbolic_small_slope_curvature_tube_bernstein.py
+- checkers/hyperbolic_small_slope_membership_orbit_charts.py
+
+### Affine-slope elimination on the source-offset carrier
+
+The deliberately broad interior tube is false: on independent
+`(p,c,R,e)` samples, `DG/p^2` can be positive.  This is not a
+counterexample to boundary unimodality.  Those points violate the faithful
+source-offset carrier.  With `q=cp`, it is
+
+\[
+\operatorname{artanh}R
+=p\operatorname{artanh}T
++\frac14\log\frac{1-c^2p^2}{1-p^2}
+-\frac p2\bigl(\operatorname{artanh}p-\operatorname{artanh}(cp)\bigr).
+\]
+
+A sharper exact reduction removes the second slope altogether.  Write
+`q=cp`.  Both the boundary derivative and its directional curvature are
+affine in `c`:
+
+\[
+G=G_0+cG_1,\qquad DG=K_0+cK_1.
+\]
+
+Consequently at a physical critical point with `0<=c<=1`,
+
+\[
+c=-G_0/G_1.
+\]
+
+Once `G_1<0` is established on the physical critical carrier, this is
+equivalent to the endpoint orientation `G_0>=0>=G_0+G_1`.
+
+and there
+
+\[
+DG=\frac{K_0G_1-K_1G_0}{G_1}.
+\]
+
+The numerator factors as `2p(R^2-1)` times one explicit polynomial of
+degrees `(6,8,9)` in `(p,R,T)`, while
+
+\[
+G_1=p(R^2-1)
+\left(2T^3p+2T^2p^2R-T^2R-3TpR^2-Tp+R\right).
+\]
+
+Thus the remaining compact-interior theorem can be restricted to the
+two-dimensional source-offset critical carrier obtained by combining the
+displayed carrier equation with `c=-G_0/G_1`.  The desired implication is
+
+\[
+\text{source-offset carrier},\quad G=0,\quad0\le c\le1
+\quad\Longrightarrow\quad
+G_1<0,\quad K_0G_1-K_1G_0>0.
+\]
+
+Corrected physical root checks at `p=0.1,0.2,0.5,0.9,0.99` and
+`c=0,1/2,1` reproduce the independently evaluated negative curvature
+exactly through the resultant quotient.  The new checker is
+`checkers/hyperbolic_critical_c_elimination.py`.  This is evidence and an
+exact reduction, not yet the global sign certificate.
+
+The source offset itself has a useful intrinsic form.  Put
+`a=artanh(p)` and `b=artanh(q)`.  Then
+
+\[
+\delta(p,q)
+=\frac12\bigl(\log\cosh a-\log\cosh b-p(a-b)\bigr)
+=-\frac12\int_b^a(p-\tanh u)\,du\le0,
+\]
+
+and the faithful carrier is
+
+\[
+\operatorname{artanh}R=p\operatorname{artanh}T+\delta(p,q).
+\]
+
+Thus the source does not merely impose an arbitrary transcendental
+constraint: it displaces the naive orbit downward by the integrated
+concavity defect of `tanh`.  Concavity also gives the exact elementary cap
+
+\[
+0\le-\delta(p,q)
+\le\frac14(a-b)(p-q).
+\]
+
+This identifies the next attack coordinate: retain the nonnegative defect
+`Delta=-delta`, rather than enclosing `T` and `R` independently.  Any
+compact-interior certificate should use
+
+\[
+R=\tanh\bigl(p\operatorname{artanh}T-\Delta\bigr),
+\qquad
+0\le\Delta\le\frac14(a-b)(p-q),
+\]
+
+with the exact integral available whenever the cap is too coarse.
+
+The cap is too coarse.  An initial sweep appeared to support arbitrary
+`Delta` in this interval, but that implementation retained only the last
+positive-to-negative root on each displaced orbit.  After auditing *all*
+sign crossings, a 50,000-sample hostile test found 99,487 roots and 49,742
+positive-curvature roots.  Even arbitrary `0<=Delta<=1` already gives
+7,222 failures among 49,140 roots.  The checker
+`checkers/hyperbolic_defect_cap_curvature_sweep.py` now records every
+crossing.
+
+Therefore neither a scalar defect budget nor the upper-envelope condition
+
+\[
+0\le R\le\tanh\bigl(p\operatorname{artanh}T\bigr)
+\]
+
+preserves unimodality.  Downward displacement can create an additional
+negative-to-positive crossing before the terminal positive-to-negative
+crossing.  The exact source value
+
+\[
+\Delta(p,q)=\frac12\int_{\operatorname{artanh}q}^{
+\operatorname{artanh}p}(p-\tanh u)\,du
+\]
+
+is constructively necessary: its magnitude alone does not encode the
+selection law.  This is a useful meaning-first falsifier.  The physical
+carrier succeeds because `Delta`, `p`, and `q` are coupled by one specific
+integrated concavity defect, not merely because the carrier lies within a
+geometric tube.
+
+For reference, rational supersolutions of the unshifted orbit were also
+derived in `checkers/hyperbolic_orbit_rational_envelope.py`; the first has
+ODE reserve
+
+\[
+\frac{T^2p(2-p)(1-p)}{(1-(1-p)T^2)^2}>0.
+\]
+
+They are valid envelope inequalities but cannot prove the theorem, because
+the envelope enlargement contains the newly identified upward crossings.
+The live target returns to the exact source-offset critical carrier,
+preferably using the integral formula rather than independent `(T,R)`
+boxes.
+
+The exact offset has a stronger interpretation.  For
+`f(x)=log(cosh(x))`, `a=artanh(p)`, and `b=artanh(q)`,
+
+\[
+2\Delta
+=f(b)-f(a)-f'(a)(b-a)
+=D_f(b,a).
+\]
+
+Thus `Delta` is half the reverse Bregman divergence of the hyperbolic
+potential.  Its differential identities are unusually simple:
+
+\[
+\partial_p\Delta=\frac12(\operatorname{artanh}p-
+\operatorname{artanh}q),
+\qquad
+\partial_q\Delta=-\frac{p-q}{2(1-q^2)}.
+\]
+
+These are verified symbolically by
+`checkers/hyperbolic_source_defect_bregman.py`.  They explain why replacing
+the source offset by a free scalar loses the theorem: the physical
+displacement carries a canonical differential coupling to both slopes.
+The next proof attack should preserve this Bregman graph and seek the sign
+of `DG` after substitution, rather than certify any larger defect tube.
+
+At fixed `p` and carrier coordinate `X=artanh(T)`, the Bregman identities
+give
+
+\[
+\partial_qR
+=(1-R^2)\frac{p-q}{2(1-q^2)}.
+\]
+
+Hence the exact source-tangent slope variation is
+
+\[
+G_q^{\rm src}=\partial_qG+
+(1-R^2)\frac{p-q}{2(1-q^2)}\partial_RG.
+\]
+
+Its cleared numerator is only polynomial degree `(3,2,3,5)` in
+`(p,q,T,R)`.  On 707 sampled physical critical roots
+(`p=0.1,0.2,0.3,0.5,0.7,0.9,0.99`, 101 values of `q/p` each), it is
+strictly negative.  The largest observed value was about `-1.16e-4` near
+the unit corner.  The sign is *not* global on the carrier: a million-point
+hostile sweep finds it positive at many early points.  Thus this is another
+critical-locus selection law, not a background monotonicity statement.
+
+This suggests the coupled formulation
+
+\[
+G=0\quad\Longrightarrow\quad
+G_X<0,\qquad G_q^{\rm src}<0.
+\]
+
+The second sign makes the physical zero set locally a graph `q=Q_p(X)`;
+the first is then equivalent to `Q_p'(X)<0`.  Boundary unimodality can
+therefore be attacked as monotonicity of the source-selected zero curve,
+anchored at the already understood `q=p` family.  The exact variation and
+tests are in `checkers/hyperbolic_bregman_graph_q_variation.py`.
+
+A direct topology sweep supports this zero-curve formulation.  For each of
+99 slices `p=0.01,...,0.99`, the interval between the `q=p` and `q=0`
+endpoint roots was divided into 100 `X` slices and each slice into 400 `q`
+cells.  Every interior `X` slice contained exactly one detected `q` root,
+and the root decreased strictly with `X`; no branch duplication or fold was
+found.  See `checkers/hyperbolic_source_zero_curve_sweep.py`.
+
+The branch is not accidentally straight.  Its maximum deviation from
+linear interpolation was about `0.135` in `q/p`, `0.324` in rapidity, and
+`0.239` in normalized Bregman displacement.  The remaining theorem is
+therefore genuine critical-curve monotonicity, not an affine-coordinate
+identity.
+
+Near `p=1`, the curvature data recover the earlier two-scale structure: on
+the diagonal `q=p`, `-DG` is order `(1-p)^2`, whereas away from that
+diagonal it is generally order `1-p`.  The correct corner coordinate is
+
+\[
+p=1-\varepsilon,\qquad q=1-(1+k)\varepsilon,
+\]
+
+exactly the chart in which the complete limiting-family theorem and its
+positive first inward coefficient were developed above.  The zero-curve
+formulation therefore explains how to attach that collar to the compact
+interior: both pieces must certify the same no-fold statement
+`Q_p'(X)<0`.
+
+The compact middle now has a useful quantitative target.  A dense profile
+of 90,000 critical roots, zoned from `p=0.1` through `p=0.99`, found
+
+\[
+\frac{-DG}{(1-p)^2}\ge 0.15557956\ldots,
+\]
+
+with the minimum at the small-slope handoff `p=0.1,q=0`, not at the unit
+corner.  A further 200,000-root hostile sweep biased toward both handoffs
+found no failure of the rounded inequality
+
+\[
+\boxed{-DG\ge0.14(1-p)^2,
+\qquad 0.1\le p\le0.99,quad G=0.}
+\]
+
+The smallest sampled normalized reserve above `0.14` was about `0.01558`.
+See `checkers/hyperbolic_compact_middle_margin_profile.py`.  This is a
+discovery inequality, not yet a directed certificate, but it supplies a
+uniform target with a genuine cushion.  The proof cover can therefore use
+ordinary centered source-coordinate boxes on the compact middle, while the
+existing small-slope and two-scale unit-corner charts handle the two ends.
+
+A first directed compact checker now exists at
+`checkers/hyperbolic_compact_middle_centered_certificate.py`.  It uses
+40-digit outward-rounded intervals and first-order jets in the aligned
+source chart
+
+\[
+u=-\log p,\qquad M=H-2u=H+2\log p.
+\]
+
+On `0.1<=p<=0.2`, the physical roots lie in the narrow strip
+`0.8<=M<=1.1`.  A point audit at the hostile handoff root reproduces
+`G=0` and
+
+\[
+-DG=0.12601944\ldots,qquad
+\frac{-DG}{(1-p)^2}=0.15557956\ldots
+\]
+
+with directed endpoints.  A tight box around that root directly certifies
+the stronger `0.10(1-p)^2` reserve.
+
+The first full-cover attempts exposed two implementation defects, both now
+repaired: the exponential formula for `T` initially doubled the rapidity
+descent (a missing square root), and the adaptive splitter initially failed
+to split transverse `M` slabs when interval Newton could not start.  With
+those repairs, partial runs certify thousands of boxes and report no genuine
+unresolved critical box.  They remain too slow because first-order boxes
+overestimate false transverse slabs.  No completed zone certificate is
+claimed.  The next implementation should use either a second-order centered
+model or a validated numerical predictor for `M_*(u,c)` followed by
+parametric interval Newton; further flat subdivision is not the preferred
+route.
+
+The root sheet is in fact extremely predictable.  A total-degree-four
+polynomial `M_0(u,c)`, fitted on a `41x41` critical grid, has maximum
+absolute residual only `4.1606e-5` on an independent `201x201` grid.  The
+fit and hostile validation are in
+`checkers/hyperbolic_compact_root_predictor.py`.  Thus the physical sheet
+can plausibly be enclosed in a predictor tube orders of magnitude thinner
+than the original `M` strip.
+
+`checkers/hyperbolic_compact_predictor_tube_certificate.py` implements the
+corresponding directed strategy: prove opposite signs of `G` on
+`M=M_0+-rho`, then prove `-DG>0` throughout the tube.  First-order centered
+faces remain inefficient even after inflating `rho` well beyond the sampled
+fit error: their dependency width decays too slowly in `(u,c)`.  Bounded
+runs were stopped and no tube certificate is claimed.  This experiment
+decisively selects a second-order Taylor model (or an exact polynomial
+remainder bound for `M_0`) as the next implementation; increasing the tube
+or flat subdivision further would discard the predictor's main advantage.
+
+The full second-order jet is now implemented in the predictor-tube checker.
+It propagates the exact gradient and Hessian through the rational,
+exponential, and square-root source operations and evaluates
+
+\[
+f(m)+Df(m)\delta+\tfrac12\delta^T D^2f(\Box)\delta
+\]
+
+with outward-rounded intervals.  Unlike the first-order model, bounded face
+runs show stable quadratic convergence: hundreds of boxes are accepted with
+zero unresolved cells and without an exploding pending stack.  The generic
+object-level Hessian evaluator remains slow, however.  Lowering directed
+precision from 40 to 25 digits does not materially change throughput, so
+precision is not the bottleneck.  Runs were stopped before closeout and no
+face or tube theorem is claimed.
+
+The remaining optimization is representation-level: generate flat formulas
+for `G`, its face gradients, and the independent Hessian entries, then
+evaluate them without generic jet objects.  The limiting-family work above
+showed that this compilation step can be decisive.  Mathematically the
+predictor tube and second-order enclosure now behave correctly; evaluator
+overhead is the live defect.
+
+The face evaluator has now been compiled.  Exact-rational symbolic CSE
+reduces the six-output graph
+
+\[
+(G,G_u,G_c,G_{uu},G_{uc},G_{cc})
+\]
+
+from 337,277 raw operations to 3,029 operations and 628 temporaries.  The
+generated straight-line interval evaluator is about an order of magnitude
+faster than generic Hessian jets.  See
+`checkers/hyperbolic_compact_flat_formula_generator.py`.
+
+Using this evaluator, both faces of the predictor tube `rho=0.02` are now
+fully directedly certified on `0.1<=p<=0.2`, `0<=c<=1`:
+
+\[
+G(M_0-0.02)>6.1417508\times10^{-4},
+\]
+
+\[
+G(M_0+0.02)<-5.8967244\times10^{-4}.
+\]
+
+Each face used 2,048 accepted boxes and had zero unresolved boxes.  Thus
+every physical critical root in this zone is trapped inside the predictor
+tube, using the independently established initial/terminal orientations.
+The three-dimensional `-DG>0` tube run also began with zero unresolved
+boxes, but its generic Hessian evaluator remained slow and the bounded run
+was stopped after 500 processed boxes.  The remaining obligation for this
+first compact zone is now only to compile the curvature-tube Hessian graph
+and close that sign.
+
+That obligation is now complete.  The curvature graph
+
+\[
+(-DG,(-DG)_u,(-DG)_c,(-DG)_e,D^2(-DG))
+\]
+
+has 1,579,482 raw symbolic operations but only 6,717 operations and 1,298
+temporaries after exact-rational CSE.  The expanded ten-output `G` graph
+needed for interval Newton similarly reduces from 586,621 operations to
+4,090 operations.
+
+The final certificate uses the two already-certified predictor faces for
+existence, contracts the error coordinate `e=M-M_0` by parametric interval
+Newton using compiled `G_e`, and evaluates compiled second-order curvature
+only on the contracted root enclosure.  On the complete zone
+
+\[
+0.1\le p\le0.2,\qquad0\le q\le p,
+\]
+
+it processes 1,494 boxes, accepts 779, and leaves zero unresolved.  The
+directed curvature lower bound is
+
+\[
+-DG>2.0505789\times10^{-5}
+\]
+
+on every possible critical root.  Together with the face signs, this is the
+first completed finite compact no-fold zone:
+
+\[
+\boxed{0.1\le p\le0.2,\quad0\le q\le p,\quad G=0
+\Longrightarrow DG<0.}
+\]
+
+The result is produced by
+`checkers/hyperbolic_compact_predictor_tube_certificate.py --root-only`;
+the face and root runs are deterministic directed certificates.  Extending
+the cover now requires refitting the predictor and selecting aligned
+`(u,M)` ranges for the next `p` zones, not a new proof mechanism.
+
+The identical mechanism now closes the next zone
+
+\[
+0.2\le p\le0.4,\qquad0\le q\le p.
+\]
+
+A degree-four predictor fitted on `41x41` roots has hostile `201x201`
+maximum residual `4.4492e-4`, safely inside the same `rho=0.02` tube.  The
+directed face certificates again use 2,048 accepted boxes each and zero
+unresolved, with margins
+
+\[
+G(M_0-0.02)>1.1410940\times10^{-3},
+\qquad
+G(M_0+0.02)<-1.0960864\times10^{-3}.
+\]
+
+The parametric interval-Newton curvature certificate processes 1,292 boxes,
+accepts 678, leaves zero unresolved, and proves
+
+\[
+-DG>6.9265959\times10^{-4}
+\]
+
+on every possible critical root.  Hence the certified finite cover has
+advanced to
+
+\[
+\boxed{0.1\le p\le0.4,\quad0\le q\le p,\quad G=0
+\Longrightarrow DG<0.}
+\]
+
+### Neighboring Lindeloef test
+
+The same fixed-source machinery suggests a useful post-RH neighboring
+conjecture.  RH implies the Lindeloef bound
+
+\[
+\zeta(1/2+it)=O_\varepsilon(t^\varepsilon),
+\]
+
+but the explanatory content is different: the present no-fold theorem
+selects zero geometry, whereas Lindeloef asks for quantitative cancellation
+after the gamma factor is removed.  The natural Marici formulation is that
+the source-normalized transport has only subpower coherence gain,
+
+\[
+\log|\zeta(1/2+it)|\le\varepsilon\log t+O_\varepsilon(1).
+\]
+
+This should be treated as the next out-of-sample test, not as a diversion
+from the current certificate.  If the eventual source-derived operator
+controls its norm growth as well as its spectral line, Lindeloef may follow
+directly; if it controls only the line, the failure cleanly separates a
+zero-selector from an amplitude-controller.
