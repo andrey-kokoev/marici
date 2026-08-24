@@ -174,6 +174,24 @@ Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
 - Python tooling: the system `python` has no sympy and `.venv` is not
   gitignored (a venv pollutes the repo). Run checkers as
   `uv run --with sympy python research/<name>/checkers/<checker>.py`.
+- **Do not run a dependency-bearing checker with bare `python`.** A Python
+  executable managed by uv is not the same thing as the uv environment that
+  supplies a package. Never infer package availability from the interpreter's
+  install provenance, and never repair an import failure by installing into
+  uv's standalone/system interpreter (including with
+  `--break-system-packages`). Use the repository-declared invocation or an
+  explicit ephemeral environment, for example:
+
+  ```text
+  uv run --with sympy python research/<name>/checkers/<checker>.py
+  ```
+
+  Before a long run, execute the same command with a bounded import preflight,
+  e.g. `uv run --with sympy python -c "import sympy; print(sympy.__version__)"`.
+  Bare `python` is admissible only when the checker is dependency-free by
+  construction. If the required dependency contract is unclear, inspect the
+  repository configuration and existing checker invocations before running or
+  modifying any environment.
 
 ### Operator intuition and falsification
 
