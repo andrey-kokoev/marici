@@ -38,6 +38,27 @@ endpoint_overlap = mp.quad(
 ) / mp.sqrt(cosine_norm_squared)
 boundary = 2 * endpoint_overlap**2
 
+gamma_levels = []
+gamma_cumulative = mp.mpf(0)
+for index in range(32):
+    rate = 2 * index + mp.mpf(1) / 2
+    level_energy = 2 * mp.quad(
+        lambda distance: mp.exp(-rate * distance)
+        * (1 - normalized_cosine_correlation(distance)),
+        [0, length],
+    ) + 2 * mp.exp(-rate * length) / rate
+    gamma_cumulative += level_energy
+    gamma_levels.append(
+        {
+            "index": index,
+            "rate": mp.nstr(rate, 20),
+            "level_energy": mp.nstr(level_energy, 40),
+            "partial_total_with_h0_and_boundary": mp.nstr(
+                h_zero + boundary + gamma_cumulative, 40
+            ),
+        }
+    )
+
 result = {
     "schema": "marici.burnol-cosine-exact-quadratic.v1",
     "status": "pass",
@@ -55,6 +76,7 @@ result = {
     "one_over_r_comparison_total_lower_bound": mp.nstr(
         h_zero + tail + universal_log_kinetic + boundary, 70
     ),
+    "first_32_gamma_level_partial_sums": gamma_levels,
 }
 
 print(json.dumps(result, indent=2))
