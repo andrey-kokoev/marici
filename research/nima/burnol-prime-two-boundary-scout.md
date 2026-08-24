@@ -618,3 +618,33 @@ certified directly, for example by the already typed parity-separated
 Evans/Sturm system. This is also a scope correction: local complete
 monotonicity of \(K'\) is a shape theorem, not a global spectral-ordering
 theorem.
+
+## Secular threshold census
+
+Applying the same Gauss--Legendre Nyström convention and quadratic
+\(N^{-2}\) extrapolation at adjacent truncation levels gives
+
+\[
+\begin{array}{c|c|c}
+\text{level}&S_N=1+c_N\langle1,A_N^{-1}1\rangle
+&\lambda_{\min}(T_N)\\
+\hline
+41&+2.9986\times10^{-4}&-1.9467\times10^{-4}\\
+42&+1.9135\times10^{-4}&-1.2422\times10^{-4}\\
+43&+9.0255\times10^{-5}&-5.8590\times10^{-5}\\
+44&-4.0864\times10^{-6}&+2.6532\times10^{-6}\\
+45&-9.2263\times10^{-5}&+5.9892\times10^{-5}.
+\end{array}
+\]
+
+Thus level 44 is the first observed crossing in the scalar secular gate as
+well as in the independent lowest-eigenvalue census. The sign convention is
+the rank-one inertia convention: \(S_N<0\) is the repaired side. These are
+extrapolated discovery values, not directed certificates. The sharp finite
+target is now the pair
+
+\[
+S_{43}>0,
+\qquad
+S_{44}<0.
+\]
