@@ -590,3 +590,31 @@ Its sign and scale agree with the positive BVP eigenvalue
 \(2.7188\times10^{-6}\). This is the genuinely near-saturated theorem: the
 odd-sector inequality has percent-scale reserve, whereas the even completion
 crosses its scalar repair threshold by only a few parts in a million.
+
+## Total-positivity shortcut is closed
+
+The alternating derivative signs on \([0,\log2]\) do **not** license a
+Pólya-frequency or total-positivity theorem. The distance kernel already has
+a certified negative ordered \(2\times2\) minor. At
+
+\[
+x=(0.11832377,0.15811552),
+\qquad
+y=(0.07854827,0.11835137),
+\]
+
+256-bit Arb evaluation gives
+
+\[
+\det\bigl(B(|x_i-y_j|)\bigr)
+=-111.1054748937158591990\ldots<0.
+\]
+
+A broader deterministic random scout also finds negative minors frequently at
+orders two through four. Hence \(B(|x-y|)\) is not totally nonnegative, and
+variation-diminishing machinery cannot be used to infer that its second
+eigenvalue is the top odd eigenvalue. The required inertia statement must be
+certified directly, for example by the already typed parity-separated
+Evans/Sturm system. This is also a scope correction: local complete
+monotonicity of \(K'\) is a shape theorem, not a global spectral-ordering
+theorem.
