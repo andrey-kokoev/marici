@@ -417,3 +417,27 @@ The agreement across step counts and with the independent FFT value
 sign. The remaining implementation is directed ball-arithmetic propagation,
 together with an Evans/Sturm zero count excluding all \(\lambda\le0\), not
 merely evaluation near the observed root.
+
+## First directed-ball gate
+
+The 44-channel flow is now also propagated in Sage/Arb at 256-bit precision.
+The step exponential uses scaling and squaring with an explicit matrix-norm
+Taylor remainder. Sage has no QR decomposition over `RealBallField`, so the
+implementation uses midpoint QR only to choose an invertible point-valued
+right preconditioner. Multiplying the full ball matrix by that preconditioner
+does not alter its enclosed column space and contributes no floating-point
+claim to the certificate.
+
+For 32 steps and Taylor order 24, the even center determinant at
+\(\lambda=0\) is enclosed strictly on the negative side:
+
+\[
+D_+(0)\in[-1.276,-0.724]\times10^{-6}.
+\]
+
+Thus zero is rigorously excluded as an even eigenvalue of \(T_{44}\). The odd
+determinant is not yet certified: its current interval contains zero because
+the normalized determinant is extremely small. Most importantly, a pointwise
+sign at zero does not exclude negative eigenvalues. The remaining proof gate
+is therefore a parity-separated Evans/Sturm zero count on \(\lambda\le0\),
+with a coarse operator lower bound supplying the finite left endpoint.
