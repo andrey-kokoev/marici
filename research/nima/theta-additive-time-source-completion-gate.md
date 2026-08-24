@@ -147,3 +147,40 @@ renames the desired inequality and must not be advertised as an explanation.
 
 Any one failure rejects this proposed mechanism.  Passing finite Hankel or
 quadrature tests alone does not admit it.
+
+## Candidate census and surviving lane
+
+The existing arithmetic-sector results close four tempting global shortcuts:
+
+| Candidate | Outcome |
+|---|---|
+| Smooth reflection compression \(P_+C_kRP_+^*\) | Fails the required zero density because smoothing makes the reciprocal spectrum too sparse. |
+| One positive Hilbert Schur leg for the intrinsic-prime cross trace | Fails because the prime-distance term has oscillating cut density, whereas a positive Schur resolvent has fixed-sign density. |
+| Ordinary endpoint--gamma--prime augmentation | Canonical and translation-compatible, but positivity of its image is the RH-equivalent assertion itself. |
+| Global Weil radical quotient | Canonical and source-derived, but indefinite unconditionally; its positive descent is precisely Weil positivity. |
+
+One noncircular construction lane survives this census.  Short-support Weil
+positivity supplies unconditional local Hilbert blocks.  The new datum would
+be a source-derived gluing law for those blocks:
+
+\[
+\boxed{
+\text{positive local Weil blocks}
+\longrightarrow
+\text{prime-power edge contractions}
+\longrightarrow
+\text{cycle-coherent positive dilation}.}
+\]
+
+The bounded attack order is forced:
+
+1. test the two-cell block at separation \(\log 2\);
+2. if it survives, test the \(0,\log2,2\log2\) triangle, where two prime-two
+   edges meet the prime-four edge;
+3. test the first mixed-prime rectangle \(0,\log2,\log3,\log6\);
+4. only then seek an all-prime Mackey/Adams or Markov/chordal dilation law.
+
+Pairwise contraction is not enough: a three-cycle can have every positive
+\(2\times2\) principal block and still have negative determinant.  Therefore
+the triangle is the first place where a proposed *coherence law*, rather than
+another scalar positivity observation, earns explanatory content.
