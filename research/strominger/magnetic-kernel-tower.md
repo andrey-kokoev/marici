@@ -104,4 +104,3 @@ line for each nonzero pole depth.
 `uv run --with sympy python -u research/strominger/checkers/magnetic_kernel_tower_checks.py`
 passes 38/38. Groups: GRID (8), TOWER (12), RAT (4), RES (8), FAIL (4),
 EXC (2). All arithmetic, ranks, potentials, and residues are exact.
-
