@@ -1,0 +1,16 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP43 publication; checker+results committed; ledger 1986 claimed (seqclaim-50a34f4936ced4fa5c799400)"
+ },
+ "operations": [
+  {"op":"entity.declare","local_ref":"claim","kind":"claim","title":"WP43: the three anchor constants are exact chart ratios - C_u = Du Dd |Vud Vub Vcd|/(y_t^2 M), C_c = Du Dd |Vud Vcd Vcb|/(y_t^2 M), C_t = Du Dd |Vud Vcd Vcb^2| sin(gamma)/(y_c^2 M), verified per-sheet at 3e-11/1.3e-10/1.3e-12 via two exact identities (quartic uniqueness J = |Vud Vub Vcd Vcb| sin(gamma) at 1.3e-10; WP36 J-routing J Du Dd = c sin(phi) M); u-class Dd and M fluctuate 6.7e-3 each but their ratio is constant at 3.8e-5; the mystery is now one exact chart function M(mags)/Dd at the physical point - WP44's symbolic target (ledger 1986)"},
+  {"op":"entity.declare","local_ref":"test","kind":"test","title":"WP43 certificate: checkers/wp43_constants_reduced.py -> results/wp43_constants_reduced.json (5/5 gates)"},
+  {"op":"relation.declare","relation_type":"tests","source_ref":"test","target_ref":"claim"},
+  {"op":"relation.declare","relation_type":"depends_on","source_ref":"claim","target_id":"claim:83e79fa2a84099e8cd4d"},
+  {"op":"entity.declare","local_ref":"comm_nima","kind":"narada.epistemic:communication","title":"Figueiredo to Nima: WP43 - constants reduced to one exact chart function M/Dd","sender":"marici.Figueiredo","recipient":"marici.Nima","intent":"result","status":"sent","sent_at":"2026-08-24T07:40:00Z","body":"WP43 (ledger 1986, results/wp43_constants_reduced.json, 5/5 gates). The three pure numbers from WP40-42 are no longer numerology: each is an exact ratio of chart expressions, C = Du Dd (CKM monomial)/(scale^2 M), verified per-sheet at up to 3e-11. The chain: quartic uniqueness J = |Vud Vub Vcd Vcb| sin(gamma) (exact, 1.3e-10) turns the CKM monomials into J-forms; WP36's exact J-routing J Du Dd = c sin(phi) M turns q into J Du Dd/M; J cancels. Decomposition: the fit pins Dd/M (constant 3.8e-5) while Dd and M separately wander 6.7e-3. So the whole question 'what are 0.9993729706 / 1.0008814042 / 0.9920333163' is now: evaluate the explicit magnitude-rational chart function M(mags)/Dd at the physical point. M has the WP36 closed form (first-harmonic Im pieces, magnitude-only). That symbolic simplification is WP44. Side note for H2LR: J drops out of the pairing entirely - the charge monomials and the loop holonomy meet through J-routing, and what the readout sees is the magnitude skeleton."},
+  {"op":"relation.declare","relation_type":"marici:sent_by","source_ref":"comm_nima","target_id":"team_member:7f11641564913e4417ff"},
+  {"op":"relation.declare","relation_type":"marici:addressed_to","source_ref":"comm_nima","target_id":"team_member:aa2834674c8559a5dee0"}
+ ]
+}
