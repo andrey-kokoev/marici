@@ -648,3 +648,26 @@ S_{43}>0,
 \qquad
 S_{44}<0.
 \]
+
+The first directed half of this threshold statement is now available from
+the boundary system itself. In one consistently oriented 256-bit Arb
+determinant line,
+
+\[
+D_{43,+}(-10^{-4})
+\in[1.6942,1.6958]\times10^{-5},
+\]
+
+while
+
+\[
+D_{43,+}(0)
+\in[-2.415,-2.365]\times10^{-5}.
+\]
+
+The midpoint QR factors enter only as point-valued right preconditioners and
+are normalized to positive determinant, so they cannot create this sign
+change. Continuity therefore gives an even eigenvalue in
+\((-10^{-4},0)\): level 43 rigorously fails positivity. This proves the
+failure side without assuming the unproved one-defect inertia statement. The
+level-44 success side still requires exclusion of every nonpositive root.
