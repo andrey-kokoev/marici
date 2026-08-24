@@ -537,6 +537,89 @@ whether orientation reversal kills the moment line or transports it into a
 nonnegative boundary current. Treating spectral independence as cancellation
 would skip that required map.
 
+## Completed bilateral sewing does cancel the sheet-odd moment
+
+After aggregating the arithmetic labels into the completed modular-even
+source, the two scale charts may be placed on one oriented coordinate
+(q\in\mathbb R), with
+
+\[
+f_{\rm bil}(q)=e^{-|q|/2}\Phi(|q|).
+\]
+
+This forcing is even. Consequently the sheet-odd norm difference is an odd
+integral:
+
+\[
+\int_{\mathbb R}
+\left[(aq-1)^2-(-aq-1)^2\right]f_{\rm bil}(q)^2\,dq
+=-4a\int_{\mathbb R}qf_{\rm bil}(q)^2\,dq=0.
+\]
+
+Thus the correction above is resolved, but only at the completed bilateral
+level. The cancellation is not available in either primitive one-sided chart.
+
+Equivalently, let (H_a^+(z)) denote the right-half Clark feature. Evenness
+of the completed source gives the exact sewing formula
+
+\[
+\boxed{
+E_a(z)=H_a^+(z)+H_{-a}^+(-z).
+}
+\]
+
+The reflected Clark sheet is
+
+\[
+E_{-a}(z)=H_{-a}^+(z)+H_a^+(-z).
+\]
+
+Therefore the two one-sided norm defects occur as the same sum
+(c_a+c_{-a}) on both sheets and cancel in the de Branges antisymmetrization.
+This proves the cancellation without pretending that (c_a=c_{-a}) on one
+chart.
+
+## The remaining object is the mixed sewing kernel
+
+The bilateral formula also exposes an uncomputed term. Expanding
+
+\[
+E_a(z)\overline{E_a(w)}
+-E_{-a}(z)\overline{E_{-a}(w)}
+\]
+
+contains:
+
+1. two same-chart differences, controlled by the sheared positive Green
+   identities; and
+2. right--left cross terms such as
+   \(H_a^+(z)\overline{H_{-a}^+(-w)}\).
+
+The separate chart identities do not determine the sign of the second group.
+For the underlying tail flows, their scale exponents add as
+
+\[
+s_z+\overline{s_{-w}}=1+i(z+\bar w),
+\]
+
+so their natural Green denominator involves (z+\bar w), whereas the de
+Branges kernel requires (ar w-z). The conversion between these two
+denominators is precisely the mixed modular-sewing map.
+
+Hence the live theorem is no longer cancellation of the sheet-odd moment; it
+is
+
+\[
+\boxed{
+\text{derive the mixed right--left Green identity and show that its
+cross terms are positive, exact, or absorbed by the primitive seam.}
+}
+\]
+
+If a second independent indefinite polarization survives this mixed identity,
+the arithmetic shear is insufficient. If it reduces to the declared primitive
+seam, the positive-commutator architecture closes to one intrinsic defect.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
