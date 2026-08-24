@@ -128,6 +128,119 @@ The third is the cleanest target. The finite falsifier for any proposed
 construction is exact: its Gram representation must reproduce the two-copy
 Bezoutian, including the oscillatory phase, before positivity is invoked.
 
+## The minimal four-state repair is unique but changes the source
+
+Grothendieck's minimal local closure can be written with transport state
+(t=(c,s)^T), accumulator state (a=(A,B)^T), and
+
+\[
+R=\begin{pmatrix}0&-1\\1&0\end{pmatrix},
+\qquad
+C(r)=\begin{pmatrix}\Phi(r)&0\\0&-r\Phi(r)\end{pmatrix}.
+\]
+
+The uncorrected triangular equations are
+
+\[
+t'=zRt,
+\qquad
+a'=Ct.
+\]
+
+Ask for a four-state Lagrange identity with the block symplectic form
+
+\[
+\Omega=\operatorname{diag}(-R,-R)
+\]
+
+and positive spectral Hamiltonian
+
+\[
+H=\Omega\operatorname{diag}(R,0)=
+\operatorname{diag}(I_2,0)\succeq0.
+\]
+
+Because a positive semidefinite block matrix with zero accumulator diagonal
+cannot have transport--accumulator cross terms, this block form is forced by
+the declared spectral action. Add a reverse source coupling (D(r)a) to the
+transport equation:
+
+\[
+t'=zRt+Da,
+\qquad
+a'=Ct.
+\]
+
+The zero-order symplectic condition is
+
+\[
+(-R)D+C^T(-R)=0,
+\]
+
+so the repair is uniquely fixed:
+
+\[
+\boxed{
+D=RC^TR
+=\begin{pmatrix}r\Phi(r)&0\\0&-\Phi(r)\end{pmatrix}.
+}
+\]
+
+Thus the repaired equations are
+
+\[
+\begin{aligned}
+c'&=-zs+r\Phi A,&
+s'&=zc-\Phi B,\\
+A'&=\Phi c,&
+B'&=-r\Phi s.
+\end{aligned}
+\]
+
+This is a genuine positive canonical system. It also exposes the obstruction:
+the reverse coupling changes the source transform it was meant to realize.
+For the natural zero-spectral initial data
+
+\[
+c(0)=1,\quad s(0)=A(0)=B(0)=0,
+\]
+
+the (z=0) equations give
+
+\[
+s=B=0,
+\qquad
+A'=\Phi c,
+\qquad
+c'=r\Phi A.
+\]
+
+For (r>0), positivity of the completed theta kernel gives (A>0), hence
+(c'>0) and (c>1). Consequently
+
+\[
+A(L)=\int_0^L\Phi(r)c(r)\,dr
+>\int_0^L\Phi(r)\,dr.
+\]
+
+The repaired terminal accumulator is not the original theta transform even
+at (z=0). The discrepancy is a source-derived nonlinear dressing, not a
+normalization accident.
+
+Therefore the most obvious realization attempt has a precise disposition:
+
+\[
+\boxed{
+\text{positive four-state repair exists, but violates terminal source
+faithfulness.}
+}
+\]
+
+A successful canonical system must either carry additional boundary/state
+data whose reduction removes this dressing, or derive a different carrier
+coordinate in which the completed theta transform is already the terminal
+solution. Merely adding the missing reverse arrow is not enough.
+
 ## Conclusion
 
 The level-44 theorem supplies a model of how source completion can repair a
