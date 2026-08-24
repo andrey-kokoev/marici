@@ -1,0 +1,94 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_endpoint_hall_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range endpoint-Hall theorem",
+    "hall_range": {
+      "g": [
+        2,
+        30
+      ],
+      "k": [
+        0,
+        15
+      ],
+      "q": [
+        1,
+        60
+      ]
+    },
+    "rank_range": {
+      "g": [
+        2,
+        20
+      ],
+      "k_max": 10,
+      "q": [
+        1,
+        30
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "HALL.range",
+      "group": "HALL",
+      "statement": "wide Hall deficiencies are exactly grade-2 q=1 and q=7",
+      "status": "pass",
+      "detail": "blocks=27840; deficiencies=29"
+    },
+    {
+      "id": "HALL.hulls",
+      "group": "HALL",
+      "statement": "interval hulls and actual nonzero supports have the same matching size",
+      "status": "pass",
+      "detail": "mismatches=[]"
+    },
+    {
+      "id": "RANK.maximal",
+      "group": "RANK",
+      "statement": "only maximal blocks (g,q)=(2,1),(2,7) lose rank in the exact range",
+      "status": "pass",
+      "detail": "blocks=570; singular=[(2, 1, 1), (2, 7, 1)]"
+    },
+    {
+      "id": "RANK.falsifier",
+      "group": "RANK",
+      "statement": "no complete-support matching loses rank through internal cancellation",
+      "status": "pass",
+      "detail": "[]"
+    },
+    {
+      "id": "RANK.subsets",
+      "group": "RANK",
+      "statement": "exceptional maximal-block dependencies restrict exactly at their support thresholds",
+      "status": "pass",
+      "detail": "cases=22"
+    },
+    {
+      "id": "ENDPOINT.smallest",
+      "group": "ENDPOINT",
+      "statement": "(g,k,q)=(2,1,3) is full rank although both raw endpoint lists collide",
+      "status": "pass",
+      "detail": "lefts=[0, 3, -4, 0]; rights=[1, 4, -1, 1]"
+    },
+    {
+      "id": "ENDPOINT.minor",
+      "group": "ENDPOINT",
+      "statement": "a Hall-selected minor of the smallest endpoint-collision block is nonzero",
+      "status": "pass",
+      "detail": "matched_rows=[1, 3, -4, 0]; determinant=-6912000"
+    },
+    {
+      "id": "SMITH.cores",
+      "group": "SMITH",
+      "statement": "deficient cores have primitive circuits (-1,1) and (1,-3,2)",
+      "status": "pass",
+      "detail": "E2_minor_gcd=2400"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Across 27,840 reflected blocks, Hall deficiency occurs exactly in the grade-2 q=1 family and the q=7 family once k>=3; actual supports and interval hulls have identical matching size. Exact maximal-block ranks through g=20,q=30 find the same two singular blocks and no complete-matching/internal-cancellation falsifier. Raw distinct left/right endpoints are not sufficient: the smallest counterexample to that proof shortcut is the full-rank block (g,k,q)=(2,1,3), whose Hall-selected minor has determinant -6912000. Thus the directed Hall strategy survives, but the unbounded injectivity theorem is not yet proved."
+}
