@@ -1,0 +1,79 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_plucker_orientation_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range orientation-coherence theorem",
+    "orientation_scan": {
+      "g": [
+        3,
+        20
+      ],
+      "k": [
+        1,
+        10
+      ],
+      "q": [
+        1,
+        30
+      ]
+    },
+    "grade_two_defects": {
+      "k": [
+        1,
+        10
+      ],
+      "q": [
+        1,
+        20
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "RAW.mixed",
+      "statement": "raw adjacent-minor signs mix within the scanned family",
+      "status": "pass",
+      "detail": "first=(3, 1, 2, [-1, 1])"
+    },
+    {
+      "id": "ORIENT.cycles",
+      "statement": "every tested adjacent-minor sign graph has positive cycle holonomy",
+      "status": "pass",
+      "detail": "cases=5400; edges=62562; failures=[]"
+    },
+    {
+      "id": "ORIENT.nonzero",
+      "statement": "no supported adjacent Plucker minor vanishes for g>=3",
+      "status": "pass",
+      "detail": "cases=5400; first=[]"
+    },
+    {
+      "id": "GAUGE.integrates",
+      "statement": "the coherent pair orientation integrates to row and column signs",
+      "status": "pass",
+      "detail": "row_signs=[1, -1, 1, -1, 1, -1, -1, 1]; column_signs=[1, 1, 1, 1]"
+    },
+    {
+      "id": "FALSIFIER.negative_cycle",
+      "statement": "a single sign flip on a cycle is detected as incoherent",
+      "status": "pass",
+      "detail": "first=(3, 3, 1, 2, 4)"
+    },
+    {
+      "id": "EXCEPTION.loci",
+      "statement": "grade-two rank defects occur only at q=1 and q=7",
+      "status": "pass",
+      "detail": "q=[1, 7]"
+    },
+    {
+      "id": "EXCEPTION.flow",
+      "statement": "the q=7 singular Plucker step has primitive flow (1,-3,2)",
+      "status": "pass",
+      "detail": "[1, -3, 2]"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "Raw adjacent-minor signs mix, but the bipartite row-interval/column-interval sign constraints are globally coherent across 5400 g>=3 component blocks. Every tested cycle has positive holonomy, the pair orientation integrates to an explicit row/column gauge, and no supported adjacent minor vanishes. A deliberate one-edge cycle flip is rejected. Grade-two rank defects remain confined to q=1,7, with q=7 primitive flow (1,-3,2). This is finite evidence for signed total positivity, not an unbounded transfer theorem."
+}

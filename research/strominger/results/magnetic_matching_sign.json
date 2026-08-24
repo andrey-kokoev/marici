@@ -1,0 +1,95 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_matching_sign_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range oriented-matching theorem",
+    "term_enumeration": {
+      "g": [
+        2,
+        8
+      ],
+      "k": [
+        0,
+        4
+      ],
+      "q": [
+        1,
+        15
+      ]
+    },
+    "modular_rank": {
+      "g": [
+        2,
+        30
+      ],
+      "k_max": 15,
+      "q": [
+        1,
+        60
+      ],
+      "prime": 1000000007
+    }
+  },
+  "checks": [
+    {
+      "id": "SIGN.first",
+      "group": "SIGN",
+      "statement": "the first mixed-sign Hall minor is (g,k,q)=(2,2,2)",
+      "status": "pass",
+      "detail": "(2, 2, 2, [0, 2, -3, -2, -6, -4], [604800000, -3024000000], -2419200000)"
+    },
+    {
+      "id": "SIGN.terms",
+      "group": "SIGN",
+      "statement": "its two determinant terms survive by weight-specific dominance",
+      "status": "pass",
+      "detail": "enumerated_minors=518"
+    },
+    {
+      "id": "SIGN.cancel",
+      "group": "SIGN",
+      "statement": "no actual-weight cancellation occurs in the enumerated minor range",
+      "status": "pass",
+      "detail": "None"
+    },
+    {
+      "id": "NORM.invariant",
+      "group": "NORM",
+      "statement": "canonical row/column sign normalization leaves mixed determinant signs",
+      "status": "pass",
+      "detail": "[604800000, -3024000000]"
+    },
+    {
+      "id": "PATH.core",
+      "group": "PATH",
+      "statement": "the minimal mixed determinant reduces to core [[-10,100],[-30,60]]",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "id": "PATH.split",
+      "group": "PATH",
+      "statement": "the core entry -10 splits into underlying contributions 32 and -42",
+      "status": "pass",
+      "detail": "(32, -42)"
+    },
+    {
+      "id": "MOD.maximal",
+      "group": "MOD",
+      "statement": "every full-Hall maximal block has nonzero rank modulo 1000000007",
+      "status": "pass",
+      "detail": "blocks=1740; failures=[]"
+    },
+    {
+      "id": "MOD.subsets",
+      "group": "MOD",
+      "statement": "full rank of each maximal pole block certifies all smaller column subsets",
+      "status": "pass",
+      "detail": "A_k is a column subset of A_15 for every k<=15"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Structural sign coherence is false: the first mixed-sign Hall-selected minor is (g,k,q)=(2,2,2), with terms +604800000 and -3024000000 and nonzero sum -2419200000. Canonical row/column sign normalization cannot remove the mixture. Its ambiguity reduces to core [[-10,100],[-30,60]], determinant -600+3000=2400; entry -10 itself splits as 32-42, so aggregated total positivity and naive LGV positivity both fail. Nevertheless every full-Hall maximal block across g<=30,k=15,q<=60 has full column rank modulo 1000000007, proving actual-weight noncancellation there and for all k<=15 subsets. No actual cancellation falsifier is found; an unbounded weight-dominance theorem remains open."
+}

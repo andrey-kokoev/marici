@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_q1_transfer_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic arbitrary-grade arbitrary-cutoff q=1 theorem",
+    "g": "all integers g>=3",
+    "q": 1,
+    "k": "all integers k>=0",
+    "finite_matrix_crosscheck": {
+      "g": [
+        3,
+        12
+      ],
+      "k": [
+        0,
+        10
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "SYMBOL.transfer",
+      "statement": "the q=1 boundary determinant has the closed source formula",
+      "status": "pass",
+      "detail": "(-a - g)*(a + g - 2)*RisingFactorial(a, g)**2"
+    },
+    {
+      "id": "SYMBOL.base",
+      "statement": "the a=0 endpoint block vanishes exactly at the grade-two locus",
+      "status": "pass",
+      "detail": "-g*(g - 2)*RisingFactorial(4, g)**2"
+    },
+    {
+      "id": "MATRIX.product",
+      "statement": "exact nested minors equal the closed product",
+      "status": "pass",
+      "detail": "cases=110; failures=[]"
+    },
+    {
+      "id": "SUPPORT.triangular",
+      "statement": "new q=1 rows vanish on every old pole column",
+      "status": "pass",
+      "detail": "steps=100; failures=[]"
+    },
+    {
+      "id": "RANK.nonzero",
+      "statement": "the q=1 nested minor is nonzero for all tested g>=3 and cutoffs",
+      "status": "pass",
+      "detail": "3<=g<=12; 0<=k<=10"
+    },
+    {
+      "id": "EXCEPTION.g2",
+      "statement": "the symbolic base factor isolates g=2 as the q=1 exception",
+      "status": "pass",
+      "detail": "D(2,0)=0; D(3,0)=-43200"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "For q=1, recursively ordered Hall minors are block upper triangular for arbitrary pole cutoff. The a=0 base determinant is -g*(g-2)*(4)^(rising g)^2, and adjoining pole depth a=2k multiplies it by -(a+g)*(a+g-2)*(a^(rising g))^2. Every factor is nonzero for g>=3, proving full column rank for arbitrary grade and cutoff. The base factor vanishes at g=2, explaining the exceptional q=1 locus."
+}

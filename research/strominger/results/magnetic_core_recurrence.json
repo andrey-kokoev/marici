@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_core_recurrence_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic arbitrary-k determinant recurrence",
+    "g": 2,
+    "q": 2,
+    "k": "all integers k>=2",
+    "finite_matrix_crosscheck": [
+      2,
+      20
+    ]
+  },
+  "checks": [
+    {
+      "id": "BASE.det",
+      "statement": "the initial 2 by 2 core has determinant 2400",
+      "status": "pass",
+      "detail": "[[-10, 100], [-30, 60]]"
+    },
+    {
+      "id": "REC.ratio",
+      "statement": "successive core determinants obey the quartic ratio",
+      "status": "pass",
+      "detail": "3<=k<=20"
+    },
+    {
+      "id": "REC.product",
+      "statement": "the closed product reproduces every exact determinant",
+      "status": "pass",
+      "detail": "2<=k<=20"
+    },
+    {
+      "id": "REC.positive",
+      "statement": "every factor and hence every tested determinant is positive",
+      "status": "pass",
+      "detail": "digits(D20)=120"
+    },
+    {
+      "id": "REC.structure",
+      "statement": "the recurrence belongs to cores of order 2k-2 after four pivots",
+      "status": "pass",
+      "detail": "2<=k<=20"
+    },
+    {
+      "id": "SYMBOL.boundary",
+      "statement": "the arbitrary-k boundary block has the quartic determinant",
+      "status": "pass",
+      "detail": "[[-2*(k - 1)*(12*k**2 - 20*k - 3), 2*k*(12*k**2 - 20*k + 17)], [-2*(k - 1)*(2*k - 1)*(2*k + 1), 2*k*(2*k - 1)*(2*k + 1)]]"
+    },
+    {
+      "id": "SYMBOL.positive",
+      "statement": "the symbolic multiplier is positive for every integer k>=2",
+      "status": "pass",
+      "detail": "80*k*(k-1)*(2k-1)*(2k+1)"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "For the growing (g,q)=(2,2) forced core, recursively order rows and columns by lattice labels. The two newly appended rows vanish on every old column, so the core is block upper triangular. Its symbolic 2x2 boundary block has determinant 80*k*(k-1)*(2*k-1)*(2*k+1), positive for every integer k>=2. With D_2=2400 this proves the closed positive product for arbitrary k. Exact matrices through k=20 cross-check the symbolic theorem."
+}

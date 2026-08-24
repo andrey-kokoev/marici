@@ -1,0 +1,68 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_forced_core_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range structural falsifier",
+    "g": 2,
+    "q": 2,
+    "k": [
+      2,
+      30
+    ],
+    "prime": 1000000007
+  },
+  "checks": [
+    {
+      "id": "CORE.first",
+      "statement": "the first member has a 2 by 2 residual core",
+      "status": "pass",
+      "detail": "[[-10, 100], [-30, 60]]"
+    },
+    {
+      "id": "CORE.growth",
+      "statement": "the residual core order is 2k-2 for every tested k",
+      "status": "pass",
+      "detail": "2<=k<=30"
+    },
+    {
+      "id": "CORE.pivots",
+      "statement": "forced degree-one stripping removes exactly four pivots",
+      "status": "pass",
+      "detail": "2<=k<=30"
+    },
+    {
+      "id": "CORE.connected",
+      "statement": "every residual support graph is connected",
+      "status": "pass",
+      "detail": "2<=k<=30"
+    },
+    {
+      "id": "CORE.band",
+      "statement": "the growing core has maximum row degree at most four",
+      "status": "pass",
+      "detail": "degrees=[2, 3, 4, 4, 4, 4]"
+    },
+    {
+      "id": "CORE.nnz",
+      "statement": "for k>=3 the residual support has exactly 8k-14 edges",
+      "status": "pass",
+      "detail": "k30=226"
+    },
+    {
+      "id": "CORE.rank",
+      "statement": "every growing residual core is nonsingular modulo 1000000007",
+      "status": "pass",
+      "detail": "2<=k<=30"
+    },
+    {
+      "id": "CORE.falsifier",
+      "statement": "bounded forced-pivot cores are falsified by linear growth",
+      "status": "pass",
+      "detail": "core orders 2 through 58"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Forced degree-one pivot stripping does not reduce Hall minors to bounded exceptional graphs. For (g,q)=(2,2), the connected residual core has order 2k-2 after exactly four pivots; its row degree is at most four and it remains full rank modulo 1000000007 through k=30. The proof target is therefore an unbounded banded determinant or transfer recurrence."
+}
