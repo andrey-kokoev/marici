@@ -705,3 +705,25 @@ gives
 
 The level-44 odd sector is therefore rigorously positive. All remaining
 near-critical work is even.
+
+## Temple shortcut audit
+
+A direct Rayleigh--residual proof was also tested after the odd closure. Two
+natural trial spaces expose complementary conditioning defects:
+
+- Product Gauss quadrature in polynomial bases samples the derivative cusp
+  on \(x=y\) incorrectly. Its apparent lowest value converges from the
+  negative side at order \(N^{-2}\), reproducing the already diagnosed
+  Nyström bias rather than the continuum form.
+- Endpoint-vanishing odd-cosine trial spaces avoid that cusp in multiplier
+  coordinates and give positive Ritz values. A 96-mode scout initially gives
+  a positive truncated Temple bound, but the unresolved high cosine tail is
+  too large. The eigenfunction does not satisfy the artificial endpoint
+  condition strongly enough for this basis to yield a short residual proof.
+
+The full-space multiplier residual is not a valid replacement: most of it is
+the action outside the compressed support interval and must be removed before
+Temple's inequality is applied. Therefore no Temple certificate is claimed.
+The viable even route remains the finite-channel boundary response with a
+validated root/inertia count, or a support-adapted trial basis whose tail is
+proved rather than truncated.
