@@ -514,3 +514,30 @@ direction. This is discovery evidence, not yet the continuum theorem. It
 suggests a sharper two-part certificate: prove
 \(\lambda_2(B)<d_{44}<\lambda_1(B)\), then prove the associated rank-one
 secular inequality. Only the second part is near saturation.
+
+The odd sector admits a particularly small certificate candidate. On the
+half-interval \([0,L/2]\), its positive kernel is
+
+\[
+B_-(x,y)=B(|x-y|)-B(x+y)\ge0.
+\]
+
+With the elementary positive weight
+
+\[
+\phi(x)=x\exp(-7x^2-32x^4),
+\]
+
+a high-order quadrature scout gives
+
+\[
+\sup_{0<x\le L/2}
+\frac{\int_0^{L/2}B_-(x,y)\phi(y)\,dy}{\phi(x)}
+\approx2.594996
+<d_{44},
+\]
+
+leaving margin about \(0.0388\). A directed interval quadrature of this one
+scalar ratio would certify the weighted Schur bound and remove the complete
+odd sector. No fitted eigenvector is needed: the integer coefficients
+\((-7,-32)\) retain essentially the full margin of the optimized scout.
