@@ -241,6 +241,84 @@ data whose reduction removes this dressing, or derive a different carrier
 coordinate in which the completed theta transform is already the terminal
 solution. Merely adding the missing reverse arrow is not enough.
 
+## A varying Green form cannot rescue the triangular closure
+
+The preceding calculation used the simplest constant symplectic form. There
+is a stronger intrinsic no-go. In the real source frame, allow an arbitrary
+carrier-dependent skew Green form
+
+\[
+\Omega(r)=
+\begin{pmatrix}
+P(r)&Q(r)\\
+-Q(r)^T&S(r)
+\end{pmatrix}
+\]
+
+on the original triangular system
+
+\[
+Y'=(A_0+zA_1)Y,
+\qquad
+A_0=\begin{pmatrix}0&0\\C&0\end{pmatrix},
+\qquad
+A_1=\begin{pmatrix}R&0\\0&0\end{pmatrix}.
+\]
+
+Suppose its Lagrange identity has a positive, spectral-independent density
+(H(r)\succeq0). Comparing coefficients of (z) and (ar w) forces
+
+\[
+H=\Omega A_1
+=\begin{pmatrix}PR&0\\-Q^TR&0\end{pmatrix}.
+\]
+
+The accumulator diagonal block of (H) is zero. Positivity of a Hermitian
+block matrix with a zero diagonal block forces its off-diagonal block to
+vanish. Since (R) is invertible,
+
+\[
+Q=0.
+\]
+
+The zero-order Green equation
+
+\[
+\Omega'+A_0^T\Omega+\Omega A_0=0
+\]
+
+then has transport--accumulator block
+
+\[
+Q'+C^TS=C^TS=0.
+\]
+
+For every (r>0) with (Phi(r)>0),
+
+\[
+C(r)=\operatorname{diag}(\Phi(r),-r\Phi(r))
+\]
+
+is invertible. Therefore (S(r)=0) throughout the open carrier. It cannot
+approach the nondegenerate terminal accumulator form required to reproduce
+
+\[
+X'(z)\overline{X(w)}-X(z)\overline{X'(w)}.
+\]
+
+Hence
+
+\[
+\boxed{
+\text{No carrier-dependent positive Green form on the original four-state
+triangular closure can produce the terminal theta Bezoutian.}
+}
+\]
+
+This removes the normalization loophole. The next admissible construction
+must change the dynamics or enlarge the state/boundary complex; it cannot
+repair the original accumulator merely by choosing a clever local metric.
+
 ## Conclusion
 
 The level-44 theorem supplies a model of how source completion can repair a
