@@ -3,12 +3,14 @@
 import json
 import math
 import numpy as np
+import argparse
 
 from hyperbolic_boundary_unimodality_sweep import boundary_derivative
 
 
-U0,U1=math.log(5),math.log(10)
-DEGREE=4
+parser=argparse.ArgumentParser();parser.add_argument("--p-min",type=float,default=0.1);parser.add_argument("--p-max",type=float,default=0.2);parser.add_argument("--degree",type=int,default=4);arguments=parser.parse_args()
+U0,U1=math.log(1/arguments.p_max),math.log(1/arguments.p_min)
+DEGREE=arguments.degree
 POWERS=[(i,j) for i in range(DEGREE+1) for j in range(DEGREE+1-i)]
 
 
@@ -46,6 +48,8 @@ for ui in range(201):
 
 print(json.dumps({
     "degree":DEGREE,
+    "p_range":[arguments.p_min,arguments.p_max],
+    "u_range":[U0,U1],
     "powers":POWERS,
     "coefficients":[float(value) for value in coefficients],
     "validation_grid":[201,201],
