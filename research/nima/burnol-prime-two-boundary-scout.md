@@ -441,3 +441,76 @@ the normalized determinant is extremely small. Most importantly, a pointwise
 sign at zero does not exclude negative eigenvalues. The remaining proof gate
 is therefore a parity-separated Evans/Sturm zero count on \(\lambda\le0\),
 with a coarse operator lower bound supplying the finite left endpoint.
+
+## One-fold and local Bernstein structure
+
+Writing \(t=|x-y|\), the continuous kernel has the exact form
+
+\[
+K_{44}(t)=e^{t/2}
+\left(1-\sum_{n=1}^{43}e^{-(2n+1)t}\right).
+\]
+
+The parenthesized polynomial is strictly increasing as a function of \(t\).
+It has one zero,
+
+\[
+t_*=0.28119957431739495\ldots
+=0.4056852313\ldots\log2.
+\]
+
+There is a stronger exact property on \(0\le t\le\log2\):
+
+\[
+K_{44}'(t)>0,
+\qquad
+K_{44}^{(2m)}(t)<0,
+\qquad
+K_{44}^{(2m+1)}(t)>0.
+\]
+
+Odd derivatives are manifestly positive. For every even order \(2m\ge2\),
+the first decaying channel already dominates the growing channel, since
+
+\[
+\frac{(5/2)^{2m}e^{-5t/2}}{(1/2)^{2m}e^{t/2}}
+=5^{2m}e^{-3t}
+\ge \frac{5^{2m}}8>1.
+\]
+
+Thus \(K_{44}'\) is completely monotone on the full prime-two interval: the
+kernel is a local Bernstein function of separation. This rules out hidden
+oscillatory sign bands and supplies the correct shape constraint for a direct
+quadratic-form proof. It does not alone imply positivity of
+\(d_{44}I+K_{44}\); the next step is to turn this shape theorem into a sharp
+bound on the negative short-range interaction.
+
+The shape theorem also exposes the earlier rank-one gate directly. Put
+
+\[
+B(t)=K_{44}(\log2)-K_{44}(t).
+\]
+
+Then \(B\ge0\), it is decreasing with alternating derivatives, and
+
+\[
+T_{44}
+=d_{44}I-B_{\rm op}
++K_{44}(\log2)|1\rangle\langle1|.
+\]
+
+Thus prime-two completion subtracts one positive decreasing distance
+interaction from the local counterterm and restores its sole unstable mode
+through a constant-mode rank-one channel. A 1200-point Nyström scout gives
+
+\[
+\lambda(B)=3.3654,\ 2.5704,\ 2.0513,\ldots,
+\qquad d_{44}=2.63378\ldots.
+\]
+
+Consequently \(d_{44}I-B_{\rm op}\) has one observed negative direction, with
+a robust gap above the second eigenvalue, while the rank-one term acts on that
+direction. This is discovery evidence, not yet the continuum theorem. It
+suggests a sharper two-part certificate: prove
+\(\lambda_2(B)<d_{44}<\lambda_1(B)\), then prove the associated rank-one
+secular inequality. Only the second part is near saturation.
