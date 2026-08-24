@@ -35,6 +35,20 @@ def kernel(value):
     return (value / 2).exp() - sum((-rate * value).exp() for rate in RATES)
 
 
+K_AT_LENGTH = kernel(C(LENGTH))
+
+
+def constant_b_rayleigh():
+    integral = C.integral(
+        lambda t, _analytic: (C(LENGTH) - t) * (K_AT_LENGTH - kernel(t)),
+        0,
+        LENGTH,
+        abs_tol=R(2) ** -140,
+        use_heap=True,
+    )
+    return 2 * integral.real() / LENGTH
+
+
 def quotient_away_from_zero(x):
     x_complex = C(x)
     half = C(HALF_LENGTH)
@@ -143,6 +157,9 @@ def main():
     print(f"endpoint=[0,{endpoint}] value={endpoint_value}")
     endpoint_certified = endpoint_value.upper() < D44.lower()
     print(f"endpoint_certified={endpoint_certified}")
+    constant_rayleigh = constant_b_rayleigh()
+    print(f"constant_b_rayleigh={constant_rayleigh}")
+    print(f"constant_direction_negative={(constant_rayleigh-D44).lower() > 0}")
     print(
         f"away_from_zero_certified={not failures and not unresolved and endpoint_certified}"
     )
