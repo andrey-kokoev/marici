@@ -727,3 +727,60 @@ Temple's inequality is applied. Therefore no Temple certificate is claimed.
 The viable even route remains the finite-channel boundary response with a
 validated root/inertia count, or a support-adapted trial basis whose tail is
 proved rather than truncated.
+
+## Symmetric Riccati reduction of the even sector
+
+The auxiliary coupling matrix is not symmetric in its original labelled
+coordinates, but it has the exact positive symmetrizer
+
+\[
+H=\operatorname{diag}
+\left(1,\frac1{2a_1},\ldots,\frac1{2a_{43}}\right).
+\]
+
+After \(z=H^{1/2}y\), the second-order system becomes
+
+\[
+z''=\widetilde M(\lambda)z,
+\qquad
+\widetilde M(\lambda)
+=\operatorname{diag}(a_n^2)
+-\frac{qq^T}{d_{44}-\lambda},
+\]
+
+where
+
+\[
+q=(-1,\sqrt{2a_1},\ldots,\sqrt{2a_{43}})^T.
+\]
+
+This is a self-adjoint matrix Sturm system with the original diagonal Robin
+boundary slopes. Wherever its center Dirichlet-to-Neumann matrix \(P(\lambda)\)
+has no Riccati pole, Green's identity gives
+
+\[
+v^TP'(\lambda)v
+=\int_0^{L/2}
+\frac{|q^Tz_v(x)|^2}{(d_{44}-\lambda)^2}\,dx
+\ge0.
+\]
+
+A double-precision scout on \([-0.2311,0]\) finds no sampled position-block
+singularity and constant center-response inertia \((43-,1+)\). At zero the
+largest negative response eigenvalue is
+
+\[
+-5.67877\times10^{-6},
+\]
+
+while at the left endpoint the sole positive response eigenvalue remains
+\(8.0765\ldots\). The proof contract is now finite and directed: certify the
+two endpoint inertias and exclude position-block singularities on the
+rectangle
+
+\[
+(x,\lambda)\in[0,L/2]\times[-0.2311,0].
+\]
+
+Monotonicity then excludes every even root at \(\lambda\le0\). Combined with
+the directed odd Schur theorem, this would prove \(T_{44}>0\).
