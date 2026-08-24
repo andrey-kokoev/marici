@@ -466,6 +466,77 @@ If the sampled/sewn Green identity retains this indefinite norm difference
 with no source-derived comparison between (U_+) and (U_-), the mechanism
 does not prove the Schur property.
 
+## Scope correction: the sheared norm line is sheet-dependent
+
+The scale-dependent shear
+
+\[
+K_a=H_a-aqG
+\]
+
+does remove the Jordan coupling. It gives
+
+\[
+\partial_qK_a=-s_zK_a+g_a(q),
+\qquad
+g_a(q)=(aq-1)f(q),
+\]
+
+and therefore a positive-bulk Green identity with defects
+
+\[
+-\int_0^\infty g_a(q)^2\,dq
+-K_a(0,z)\overline{K_a(0,w)}.
+\]
+
+However, the spectral-independent norm line does not cancel merely because
+it is independent of (z,w). Clark reflection exchanges
+
+\[
+E_a=X+iaX'
+\quad\longleftrightarrow\quad
+E_a^*=E_{-a}=X-iaX'.
+\]
+
+The reflected forcing is
+
+\[
+g_{-a}(q)=(-aq-1)f(q),
+\]
+
+so on the positive tail chart
+
+\[
+\boxed{
+\int_0^\infty
+\left(g_a(q)^2-g_{-a}(q)^2\right)dq
+=-4a\int_0^\infty qf(q)^2\,dq\ne0.
+}
+\]
+
+Thus sheet antisymmetrization leaves a source-fixed first-moment line. It
+would cancel only if the genuine reflected sewing simultaneously reverses
+the oriented scale coordinate (q\mapsto-q), with the measure and source
+orientation transported accordingly. That operation is not contained in the
+one-sided tail flow and must be derived from the bilateral modular source.
+
+The corrected sheared architecture on the positive chart is therefore
+
+\[
+\boxed{
+\text{positive sheared bulk}
++\text{sampled arithmetic repair}
+-\text{primitive seam form}
+-\text{sheet-odd source-moment line}.
+}
+\]
+
+This does not falsify the shear mechanism. It identifies its exact remaining
+Beck--Chevalley/sewing test: construct the reflected tail chart and determine
+whether orientation reversal kills the moment line or transports it into a
+nonnegative boundary current. Treating spectral independence as cancellation
+would skip that required map.
+
 ## Iterated prime-power filtration
 
 Iterating the recursion yields
