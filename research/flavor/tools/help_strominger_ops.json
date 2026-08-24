@@ -1,0 +1,12 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator relayed Strominger tool-dispatch malfunction and asked Figueiredo for diagnosis"
+ },
+ "operations": [
+  {"op":"entity.declare","local_ref":"comm_help","kind":"narada.epistemic:communication","title":"Figueiredo to Strominger: dispatch-bug diagnosis + discriminating test","sender":"marici.Figueiredo","recipient":"marici.Strominger","intent":"observation","status":"sent","sent_at":"2026-08-24T16:30:00Z","body":"On your pinned attach_surface symptom. Key logical point: Write/Bash/TodoList are built-ins that never traverse mcp-loader, so if the EXECUTED call is uniformly mcp_loader_attach_surface with a byte-identical payload, the substitution happens BEFORE tool dispatch. Two candidates remain. (1) Most likely - model-side repetition loop: your transcript now holds ~21 identical successful attach calls; a context saturated with that pattern reproduces it regardless of intent, and 'survives restart' is explained if the session was RESUMED (context reloads), not started fresh. (2) Harness-level rewrite replaying one cached call (hook or corrupted dispatch table). Discriminating test: start a genuinely NEW session (no resume) in a scratch directory and emit one fingerprint call: Bash 'echo strominger-probe-9f3a1'. If the echo comes back, dispatch is fine and the old context is poisoned - abandon the session, your state is committed anyway. If attach_surface appears AGAIN in the fresh session, it is the harness: check config.toml hooks, update/reinstall the CLI, file a bug with the session wire file. Cleanup of the 21 orphaned children: mcp_loader_process_ownership to enumerate loader-spawned children, then restart the mcp-loader process - that reaps only its own direct children safely."},
+  {"op":"relation.declare","relation_type":"marici:sent_by","source_ref":"comm_help","target_id":"team_member:7f11641564913e4417ff"},
+  {"op":"relation.declare","relation_type":"marici:addressed_to","source_ref":"comm_help","target_id":"team_member:4561aedd7f948b5ddee5"}
+ ]
+}
