@@ -1,0 +1,50 @@
+{
+ "purpose": "WP36: mechanism of the WP35 reciprocal law - the J-routing theorem",
+ "closed_form": "det[Hu,Hd] = 2i ( c Im(w)(|C1|^2-|C2|^2) - Im(C1 C12 conj(C2)) ) with C1=u(s-a)-cv, C2=v(s-b)-cu, C12=w(a-b)+c(Hd22-Hd11)",
+ "n_u_sheets": 303,
+ "n_mixed": 232,
+ "gates": {
+  "G1_exact_commutator_identity": {
+   "value": {
+    "max_abs_err": 2.0800127315056308e-34,
+    "n_sheets": 303
+   },
+   "passed": true
+  },
+  "G2_branch_routing": {
+   "value": {
+    "max_mixed_J0_over_J": 3.48511380081387e-18,
+    "max_unmixed_dev_from_1": 0.0,
+    "n_mixed": 232,
+    "n_unmixed": 71
+   },
+   "passed": true
+  },
+  "G3_first_harmonic_ImHd": {
+   "value": {
+    "max_rel_err": 4.266021618508549e-16
+   },
+   "passed": true
+  },
+  "G4_magnitude_only_M": {
+   "value": {
+    "max_rel_variation": 3.615889289111818e-11
+   },
+   "passed": true
+  },
+  "G5_emergent_law_constancy": {
+   "value": {
+    "n_mixed_sheets": 232,
+    "q_mean": 0.03621318058343578,
+    "q_cross_class_rel": 2.9138329947862375e-05,
+    "M_mean": 6.421658407138061e-23,
+    "M_cross_class_rel": 0.009132388021502916,
+    "M_within_class_rel_max": 0.0024876329674296542,
+    "note": "within-class spread is fit phi-jitter acting on the smooth law (same mechanism as WP35 c-class); cross-class-at-fixed-phi is the sharp statement",
+    "theta_law_check": 0.03885534397364354
+   },
+   "passed": true
+  }
+ },
+ "gates_passed": 5
+}
