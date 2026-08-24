@@ -180,7 +180,18 @@ The bounded attack order is forced:
 3. test the first mixed-prime rectangle \(0,\log2,\log3,\log6\);
 4. only then seek an all-prime Mackey/Adams or Markov/chordal dilation law.
 
+The first step is not covered by the known short-support theorem. Burnol's
+argument proves positivity for support in \([1/c,c]\) with sufficiently small
+\(c>1\), works initially under \(c\le\sqrt2\), and explicitly requires a
+further idea to reach the boundary value \(c=\sqrt2\). Two narrow packets
+whose centers differ by \(\log2\) require precisely that boundary support
+ratio. Thus the prime-two contraction sits at the first arithmetic contact
+where unconditional local positivity stops; it is not a duplicated theorem.
+
 Pairwise contraction is not enough: a three-cycle can have every positive
 \(2\times2\) principal block and still have negative determinant.  Therefore
 the triangle is the first place where a proposed *coherence law*, rather than
 another scalar positivity observation, earns explanatory content.
+
+Primary boundary source: Jean-François Burnol, *Sur les Formules Explicites
+I: analyse invariante*, arXiv:math/0101068, theorem and proof on pp. 2--3.
