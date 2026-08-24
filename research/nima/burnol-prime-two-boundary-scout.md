@@ -55,6 +55,39 @@ The 512-point scout with padding 64 gives
 \lambda_1\approx0.00132758094046.
 \]
 
+## Shape of the nearly-null mode
+
+The lowest mode is even to numerical precision and has no internal zero. Its
+correlation with the first Dirichlet mode is
+
+\[
+\left|\left\langle v_1,
+\cos\frac{\pi x}{\log2}\right\rangle\right|
+\approx0.9992665277.
+\]
+
+It places about \(69.6\%\) of its Fourier mass inside the negative multiplier
+band. The energy balance is nearly exact:
+
+\[
+E_-\approx-0.4663343600,
+\qquad
+E_+\approx0.4676619409.
+\]
+
+The bare cosine has Rayleigh quotient \(0.0026545988\), so it captures the
+shape but not the sharp margin. Even Dirichlet subspaces of dimensions
+\(1,2,4,8,16,32\) give lowest values
+
+\[
+0.00265460, 0.00159014, 0.00157656,
+0.00150736, 0.00143449, 0.00138586.
+\]
+
+Their slow convergence reveals a boundary layer. The endpoint-to-peak sample
+ratio decreases from \(0.0441\) to \(0.0382\) to \(0.0344\) under successive
+spatial doubling, rather than behaving like a fixed smooth cosine profile.
+
 ## Interpretation
 
 The boundary is pointwise indefinite but apparently positive after imposing
@@ -63,10 +96,14 @@ near-critical uncertainty-principle problem, not broad positivity.
 
 This is evidence for the prime-two contraction, not a proof. A theorem now
 needs a directed lower bound for the compressed operator, or an analytic
-uncertainty inequality showing that no \(\log2\)-supported function can place
-enough Fourier mass in the negative band of \(\alpha\).
+**logarithmic uncertainty inequality** showing that no \(\log2\)-supported
+function can place enough Fourier mass in the negative band of \(\alpha\).
 
-The next finite work is to extract the lowest numerical eigenvector, identify
-its parity and endpoint behavior, and fit a source-natural comparison form
-whose residual admits interval certification.
+The slow boundary layer makes a small fixed polynomial basis unattractive.
+Burnol's native conductor-operator language, \(\log|x|+\log|D|\), is better
+matched to the asymptotic symbol and should be the next analytic comparison.
 
+The next finite work is to compare the compressed boundary operator with the
+known conductor operator or a Sonine-space restriction, isolate the compact
+prime-two correction, and seek a certified lower bound on the resulting
+ground-state energy.
