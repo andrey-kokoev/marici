@@ -10,14 +10,17 @@ Gram--Schmidt is implemented directly because Sage does not provide QR over
 RealBallField.
 """
 
+import os
+
 from sage.all import RDF, RealBallField, identity_matrix, matrix, zero_matrix
 
 
-LEVELS = 44
+LEVELS = int(os.environ.get("BURNOL_LEVELS", "44"))
 STEPS = 32
 PRECISION = 256
 TAYLOR_ORDER = 24
 R = RealBallField(PRECISION)
+EIGENVALUE = R(os.environ.get("BURNOL_EIGENVALUE", "0"))
 LENGTH = R(2).log()
 RATES = [R(2 * n) + R(1) / 2 for n in range(LEVELS)]
 H_ZERO = -R.pi().log() - R.euler_constant() - R.pi() / 2 - 3 * LENGTH
@@ -109,7 +112,7 @@ def endpoint_plane():
 
 
 def center_block(parity):
-    flow = flow_matrix()
+    flow = flow_matrix(EIGENVALUE)
     step, scaling, tail = ball_matrix_exp(-(LENGTH / (2 * STEPS)) * flow)
     plane = midpoint_qr_precondition(endpoint_plane())
     for _ in range(STEPS):
@@ -124,7 +127,9 @@ def center_block(parity):
 
 
 def main():
-    print("schema=marici.burnol-44-channel-arb.v1")
+    print("schema=marici.burnol-channel-arb.v2")
+    print(f"levels={LEVELS}")
+    print(f"eigenvalue={EIGENVALUE}")
     print(f"precision={PRECISION} steps={STEPS} order={TAYLOR_ORDER}")
     print(f"d_coefficient={D_COEFFICIENT}")
     for parity in ("even", "odd"):
