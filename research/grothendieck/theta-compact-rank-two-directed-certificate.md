@@ -311,6 +311,51 @@ task is an adaptive sweep of the 62 intervening boxes, beginning at degree
 four/500 panels and escalating only when the emitted polynomial or quadrature
 remainder fails to preserve positivity.
 
+## Completed compact sweep
+
+The adaptive sweep is complete.  All 64 declared logarithmic boxes have a
+strictly positive directed enclosure.  The selected tiers were:
+
+- degree two / 250 panels through box 47;
+- degree four / 500 panels through box 57; and
+- degree six / 1,000 panels for boxes 58--63.
+
+The weakest directed lower bound occurs on terminal box 63:
+
+\[
+\mathcal N(I_{63})
+\ge 2.5160267952633994\times10^{-10}>0.
+\]
+
+The floating logarithmic grid ends at (399.99999999999994).  A separately
+audited, overlapping Decimal box certificate reaches exact (400), so the
+union has no rounding gap.  The consolidated manifest verifies 64 unique
+indices, exact adjacency of all declared grid endpoints, strict positivity of
+every selected enclosure, overlap of the exact-(400) closure, and reports
+
+```text
+compact_interval_certified: true
+rh_proved_or_disproved: false
+```
+
+Consequently the directed compact theorem is
+
+\[
+\boxed{\mathcal N(H)(x)>0\quad(1/4\le x\le400).}
+\]
+
+Combining it with the previously proved analytic far-ray theorem gives the
+first universal coupled positivity theorem of this lane:
+
+\[
+\boxed{\mathcal N(H)(x)>0\quad\text{for every }x\ge1/4.}
+\]
+
+This is not a proof of RH.  The remaining logical work is to prove that this
+global rank-two positivity yields the required order-two Stieltjes/operator
+representation with support in \([1/4,\infty)\), while auditing continuation,
+multiplicities, and possible polynomial or boundary contributions.
+
 ## Artifacts
 
 - checkers/theta_outer_schwarzian_scan.py
@@ -321,3 +366,6 @@ remainder fails to preserve positivity.
 - results/theta-compact-endpoint-decimal-interval.json
 - results/theta-compact-endpoints/
 - results/theta-compact-boxes/
+- checkers/theta_compact_box_taylor_sweep.py
+- checkers/theta_compact_box_taylor_audit.py
+- results/theta-compact-box-taylor-manifest.json

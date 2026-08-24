@@ -729,15 +729,43 @@ q_0q_2-q_1^2
 =\frac{\mathcal N(H)}{12}.
 \]
 
-Thus the infinite operator theorem already contains the compact rank-two
-Schwarzian theorem as its first coupled condition.  That condition is proved
-for \(x\ge400\) and remains uncertified on \(1/4<x<400\).  Higher positive
-reconstructions cannot substitute for closing this first gate.
+Thus the infinite operator theorem already contains the rank-two Schwarzian
+theorem as its first coupled condition.  That condition is now directedly
+certified on \(1/4\le x\le400\) and proved analytically for \(x\ge400\), hence
+holds universally on the outer ray.  Higher positive reconstructions cannot
+substitute for the remaining higher-rank gates.
+
+Nor can universal rank two be promoted formally to rank three.  The exact
+factorially normalized jet
+
+\[
+(q_0,q_1,q_2,q_3,q_4)=(1,1,2,5,51/4)
+\]
+
+has all three adjacent rank-two Hankel minors positive,
+
+\[
+q_0q_2-q_1^2=1,
+\quad q_1q_3-q_2^2=1,
+\quad q_2q_4-q_3^2=1/2,
+\]
+
+while
+
+\[
+\det(q_{i+j})_{0\le i,j\le2}=-1/4.
+\]
+
+This is an exact logical falsifier of a rank-two-to-operator leap.  The next
+irreducible theorem is positivity for three separated heights; the already
+proved confluent rank-three theorem controls only its diagonal limit.
 
 Artifacts:
 
 - checkers/theta_order_two_stieltjes_gaussian_reconstruction.py
+- checkers/rank_two_not_rank_three_hankel_falsifier.py
 - results/theta-order-two-stieltjes-gaussian-reconstruction.json
+- results/rank-two-not-rank-three-hankel-falsifier.json
 
 ## Immediate attack
 
