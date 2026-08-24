@@ -1,0 +1,67 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_offset_character_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact finite deformation theorem for stable parity characters",
+    "h": [
+      2,
+      8
+    ],
+    "g": [
+      2,
+      7
+    ],
+    "q": [
+      2,
+      8
+    ]
+  },
+  "checks": [
+    {
+      "id": "OFFSET.odd",
+      "statement": "odd stable characters are independent of h",
+      "status": "pass",
+      "detail": "h=2..8; g=2..7; odd q=3,5,7"
+    },
+    {
+      "id": "OFFSET.even",
+      "statement": "even stable characters replace g+3 by g+h-1",
+      "status": "pass",
+      "detail": "h=2..8; g=2..7; even q=2,4,6,8"
+    },
+    {
+      "id": "OFFSET.coverage",
+      "statement": "the deformation audit covers over eight hundred exact ratios",
+      "status": "pass",
+      "detail": "ratios=873"
+    },
+    {
+      "id": "OFFSET.atlas",
+      "statement": "zero preferred minors are separated as chart boundaries",
+      "status": "pass",
+      "detail": "count=3; first=[(2, 2, 8, 6), (2, 2, 8, 7), (2, 2, 8, 8)]"
+    },
+    {
+      "id": "OFFSET.baseline",
+      "statement": "h=4 gives the factor g(g+3)",
+      "status": "pass",
+      "detail": "all integer grades"
+    },
+    {
+      "id": "FALSIFIER.parity",
+      "statement": "h=5 leaves odd transport fixed but changes even transport",
+      "status": "pass",
+      "detail": "even residual=3732480"
+    },
+    {
+      "id": "OFFSET.positive",
+      "statement": "g(g+h-1) makes every deformed stable even character positive",
+      "status": "pass",
+      "detail": "2<=g,h,q<=50; q even"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "Under the confluent offset deformation 4->h, odd stable determinant characters are unchanged, while even characters replace g(g+3) by g(g+h-1). Thus odd endpoint localization is blind to the vertical offset, whereas even endpoint collision measures it through a curvature-like grade character. The rigid engine value h=4 is exactly what produces g(g+3)."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_stable_cycle_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact bounded falsification of global triangularity",
+    "q": [
+      1,
+      8
+    ],
+    "g": [
+      2,
+      12
+    ],
+    "k": [
+      2,
+      9
+    ]
+  },
+  "checks": [
+    {
+      "id": "Q1.unique",
+      "statement": "the q=1 preferred Hall chart has a unique determinant term",
+      "status": "pass",
+      "detail": "3<=g<=12; 2<=k<=9"
+    },
+    {
+      "id": "QGT1.cycles",
+      "statement": "every q=2..8 has an alternating cycle at its first stable step",
+      "status": "pass",
+      "detail": "{2: (2, 3, 8, 3), 3: (2, 3, 8, 2), 4: (2, 4, 10, 3), 5: (3, 4, 10, 2), 6: (2, 5, 12, 3), 7: (3, 5, 12, 2), 8: (2, 6, 14, 3)}"
+    },
+    {
+      "id": "FALSIFIER.smallest",
+      "statement": "the (g,q,k)=(2,2,3) stable block contains a nonzero K_2,2",
+      "status": "pass",
+      "detail": "[[-30, 60], [-10, 100]]"
+    },
+    {
+      "id": "FALSIFIER.cancel",
+      "statement": "the first cycle has two nonzero determinant terms with partial cancellation",
+      "status": "pass",
+      "detail": "-3000-(-600)=-2400"
+    },
+    {
+      "id": "RANK.separate",
+      "statement": "the first stable alternating cycles remain full rank",
+      "status": "pass",
+      "detail": "q=2..8"
+    },
+    {
+      "id": "ORIENTATION.parity",
+      "statement": "the first q=3 cycle reinforces rather than partially cancels",
+      "status": "pass",
+      "detail": "[[-80, -20], [-40, 20]]"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "The interval filtration globalizes only to a banded quotient filtration. The q=1 preferred chart has a unique determinant term in the tested range, but every q>=2 tested develops an alternating cycle at the first stable step. The smallest is the full-rank K_2,2 at (2,2,3). Thus Hall support gives local pivots, while cycle orientation is genuinely required for higher q."
+}

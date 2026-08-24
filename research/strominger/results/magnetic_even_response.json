@@ -1,0 +1,51 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_even_response_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic stable even-response sign theorem",
+    "domain": "g>=2, even q>=2, a=q+4+2t, t>=0"
+  },
+  "checks": [
+    {
+      "id": "RESPONSE.coefficients",
+      "statement": "-X has strictly positive coefficients at stable distance t",
+      "status": "pass",
+      "detail": "terms=13; minimum_coefficient=1"
+    },
+    {
+      "id": "RESPONSE.constant",
+      "statement": "the positive response has a strictly positive constant term",
+      "status": "pass",
+      "detail": "constant=9"
+    },
+    {
+      "id": "RESPONSE.stable",
+      "statement": "X is strictly negative throughout the stable even domain",
+      "status": "pass",
+      "detail": "2<=g<=50; 2<=q<=50 even; 0<=t<=20"
+    },
+    {
+      "id": "TRANSFER.positive",
+      "statement": "the stable even determinant character is strictly positive",
+      "status": "pass",
+      "detail": "positive factorization"
+    },
+    {
+      "id": "FALSIFIER.prefix",
+      "statement": "X can vanish before the stable threshold",
+      "status": "pass",
+      "detail": "[(5, 12, 6)]"
+    },
+    {
+      "id": "FALSIFIER.boundary",
+      "statement": "the first prefix zero lies strictly before a=q+4",
+      "status": "pass",
+      "detail": "(g,q,a)=(5,12,6)"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "positive_response": "g**2*q + 2*g**2*t + 2*g**2 + 2*g*q*t + 4*g*q + 4*g*t**2 + 10*g*t + 9*g + 2*q*t + 3*q + 4*t**2 + 12*t + 9",
+  "verdict": "At every stable even step, write a=q+4+2t. Then -X is a polynomial with strictly positive integer coefficients and constant 9, so X cannot vanish and the Schur correction has fixed sign. The apparent denominator is a safe chart normalization in the stable domain. Prefix vanishing at (5,12,6) proves that the stability threshold is essential."
+}

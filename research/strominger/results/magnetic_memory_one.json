@@ -1,0 +1,77 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_memory_one_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic stable memory-one transfer theorem",
+    "g": "all integers g>=2",
+    "q": [
+      2,
+      3
+    ],
+    "k": "all stable k>=3",
+    "finite_crosscheck": {
+      "g": [
+        2,
+        10
+      ],
+      "k": [
+        3,
+        12
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "RATIO.closed",
+      "statement": "all memory-one determinant ratios equal the closed products",
+      "status": "pass",
+      "detail": "ratios=180; failures=[]"
+    },
+    {
+      "id": "Q2.positive",
+      "statement": "every tested q=2 multiplier is positive",
+      "status": "pass",
+      "detail": "2<=g<=10; 3<=k<=12"
+    },
+    {
+      "id": "Q3.negative",
+      "statement": "every tested q=3 multiplier is negative and nonzero",
+      "status": "pass",
+      "detail": "2<=g<=10; 3<=k<=12"
+    },
+    {
+      "id": "FACTOR.nonzero",
+      "statement": "the displayed products have no zero in the stable domain",
+      "status": "pass",
+      "detail": "2<=g<=100; 3<=k<=100"
+    },
+    {
+      "id": "FALSIFIER.factor",
+      "statement": "a one-unit endpoint-factor error produces a nonzero residual",
+      "status": "pass",
+      "detail": "witness=(3, 2, 3); residual=508032"
+    },
+    {
+      "id": "DEGREE.pattern",
+      "statement": "the observed degrees are 2g for q=2 and 2g+2 for q=3",
+      "status": "pass",
+      "detail": "2<=g<=10"
+    },
+    {
+      "id": "SCHUR.q2",
+      "statement": "the anti-triangular q=2 endpoint product equals the closed multiplier",
+      "status": "pass",
+      "detail": "S=[[* ,u],[v,0]]; det=-uv with endpoint signs"
+    },
+    {
+      "id": "SCHUR.q3",
+      "statement": "the triangular q=3 endpoint product equals the closed multiplier",
+      "status": "pass",
+      "detail": "S=[[u,0],[*,v]]; det=uv with endpoint signs"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "For q=2 the memory-one Schur complement has shape [[*,u],[v,0]], and for q=3 it has shape [[u,0],[*,v]]. All older-state dependence lies in the starred entry and drops out of the determinant. Direct endpoint coefficients give q=2 multiplier 2*g*(g+3)*rf(a,g)*rf(a,g-1)*(a+g+1), and q=3 multiplier -rf(a,g)^2*(a+g-4)*(a+g+2). These are nonzero for every stable g>=2,k>=3. The symbolic theorem is cross-checked by 180 exact growing matrices."
+}

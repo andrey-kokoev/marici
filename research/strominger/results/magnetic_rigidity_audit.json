@@ -1,0 +1,67 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_rigidity_audit_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic hard-to-vary classification within the affine-binomial/Euler ansatz"
+  },
+  "checks": [
+    {
+      "id": "RIGID.slopes",
+      "statement": "the square reflection character fixes the pole-depth slopes",
+      "status": "pass",
+      "detail": "u=-1, v=1"
+    },
+    {
+      "id": "RIGID.unique",
+      "statement": "divisor valuations make the slope solution unique",
+      "status": "pass",
+      "detail": "[{u: -1, v: 1}]"
+    },
+    {
+      "id": "MODULUS.constants",
+      "statement": "the additive binomial exponents cancel from the shift quotient",
+      "status": "pass",
+      "detail": "u0 and v0 remain free"
+    },
+    {
+      "id": "MODULUS.h",
+      "statement": "every h has the same square pole-depth character",
+      "status": "pass",
+      "detail": "h is unconstrained"
+    },
+    {
+      "id": "MODULUS.order",
+      "statement": "the transported numerator remains quadratic for arbitrary h",
+      "status": "pass",
+      "detail": "degree=2"
+    },
+    {
+      "id": "MODULUS.universal",
+      "statement": "the numerator shift is independent of h and s",
+      "status": "pass",
+      "detail": "2*(x + 1)*(2*t*x - 1)"
+    },
+    {
+      "id": "MODULUS.memory",
+      "statement": "order-four magnetic contiguity survives for every h",
+      "status": "pass",
+      "detail": "degrees=(4,4)"
+    },
+    {
+      "id": "FALSIFIER.h5",
+      "statement": "h=5 changes the magnetic numerator without changing transport order",
+      "status": "pass",
+      "detail": "N_5-N_4=-t*x^2*(t+1)"
+    },
+    {
+      "id": "FALSIFIER.payload",
+      "statement": "the surviving h modulus changes endpoint coefficients",
+      "status": "pass",
+      "detail": "(h-a) rising g"
+    }
+  ],
+  "n_pass": 9,
+  "n_fail": 0,
+  "verdict": "The square reflection character uniquely fixes the pole-depth slopes (-1,+1) of the two binomial factors, but it does not fix their additive exponents. A genuine parameter h survives: all h retain the same square shift, quadratic magnetic numerator, universal numerator increment, and order-four contiguity, while changing endpoint coefficient data. Therefore finite transport and reflection squaring alone are not yet a hard-to-vary explanation of the physical h=4 theory."
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_chart_locus_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "wide finite-range arithmetic chart-locus theorem",
+    "g": [
+      2,
+      15
+    ],
+    "q": [
+      1,
+      50
+    ],
+    "k_max": 30,
+    "primes": [
+      1000000007,
+      1000000009
+    ]
+  },
+  "checks": [
+    {
+      "id": "LOCUS.onsets",
+      "statement": "all chart-failure onsets obey q=2g+8 and k=g/2+4",
+      "status": "pass",
+      "detail": "[(2, 12, 5), (4, 16, 6), (6, 20, 7), (8, 24, 8), (10, 28, 9), (12, 32, 10), (14, 36, 11)]"
+    },
+    {
+      "id": "LOCUS.parity",
+      "statement": "the primary-chart failure family contains only even grades",
+      "status": "pass",
+      "detail": "[(2, 12, 5), (4, 16, 6), (6, 20, 7), (8, 24, 8), (10, 28, 9), (12, 32, 10), (14, 36, 11)]"
+    },
+    {
+      "id": "RANK.defects",
+      "statement": "true rank-defect loci remain only (2,1) and (2,7)",
+      "status": "pass",
+      "detail": "[(2, 1), (2, 7)]"
+    },
+    {
+      "id": "EXACT.primary",
+      "statement": "every modular onset has exactly zero primary determinant",
+      "status": "pass",
+      "detail": "[(2, 12, 5, 0, 195441246545970423398400000000), (4, 16, 6, 0, 773238275739661352204919810861344786109419225088000000000000000), (6, 20, 7, 0, -12203489860644300979851113130158180525000092332355577580415828382512300212850265086230528000000000000000000000), (8, 24, 8, 0, -158033032458200459747093976593917851925100523961345474609765068733703972836013448248324919904884781601815053935048455933444948344648499200000000000000000000000000000000000), (10, 28, 9, 0, -57851382174374305372755106689041905699903086372446621952582684501088923555353704899177317315986317973387900394113944127979458726801190720765260178623137996474153269770284991854174386629969448219443200000000000000000000000000000000000000000000000), (12, 32, 10, 0, -4551596961827156595844443882326034359767171054454297865706181056099103119917982074685453769871832919223130236643879629451950862354143192972745517406185516036651918536536706835300425495435333667323987337919688133397721321928480773675684969037278601769214558561219117056000000000000000000000000000000000000000000000000000000000000000000), (14, 36, 11, 0, -220388105032922356512977557005004144081426530312386149370487128634446630901410416387444597894755061542148091692788878272070422411171457636407131356032841086003424177116620086865735897313168616308939168557865609546013229860787269836865131990555052895154859985432531100733508875978974189217394916136340398616578862102620443882925234503670020780364056756224000000000000000000000000000000000000000000000000000000000000000000000000000000000000)]"
+    },
+    {
+      "id": "EXACT.alternate",
+      "statement": "the uniform row exchange 1->3 is nonzero at every onset",
+      "status": "pass",
+      "detail": "confirmed=7"
+    },
+    {
+      "id": "LOCUS.source",
+      "statement": "the onset pole depth obeys a=2k=q-g=g+8",
+      "status": "pass",
+      "detail": "[(2, 12, 5), (4, 16, 6), (6, 20, 7), (8, 24, 8), (10, 28, 9), (12, 32, 10), (14, 36, 11)]"
+    },
+    {
+      "id": "COVERAGE.wide",
+      "statement": "the two-prime sweep covers more than twelve thousand blocks",
+      "status": "pass",
+      "detail": "cases=12938; candidates=70"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "The preferred maximal-minor chart has an injective zero family at even grades satisfying q=2g+8, with onset k=g/2+4 and pole depth a=q-g=g+8. Seven onsets through g=14 are confirmed exactly; replacing target row 1 by row 3 gives a nonzero alternate minor at every onset. No odd-grade chart-zero family appears, and true rank defects remain only (2,1),(2,7). This is a wide finite theorem, not a symbolic proof that the arithmetic family is exhaustive for unbounded parameters."
+}

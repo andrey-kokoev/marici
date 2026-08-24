@@ -1,0 +1,39 @@
+{
+  "schema": "marici.nima.residue-dag-not-stack.v1",
+  "nodes": [
+    "restrict",
+    "gysin",
+    "transport",
+    "specialize",
+    "coherence"
+  ],
+  "dependencies": [
+    [
+      "gysin",
+      "coherence"
+    ],
+    [
+      "restrict",
+      "gysin"
+    ],
+    [
+      "specialize",
+      "coherence"
+    ],
+    [
+      "transport",
+      "specialize"
+    ]
+  ],
+  "construction_linear_extensions": 6,
+  "repair_linear_extensions": 6,
+  "gates": {
+    "diamond_has_six_linear_extensions": true,
+    "repair_has_six_reverse_extensions": true,
+    "coherence_waits_for_both_branches": true,
+    "coherence_repairs_before_both_branches": true,
+    "neither_branch_stack_contains_full_residue": true,
+    "lifo_requires_arbitrary_linear_extension": true
+  },
+  "conclusion": "A diamond coherence residue has a canonical dependency DAG but six valid stack linearizations. LIFO is valid only after an arbitrary linear extension; resolution is intrinsically partial-order driven."
+}

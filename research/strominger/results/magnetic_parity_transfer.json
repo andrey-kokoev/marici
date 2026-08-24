@@ -1,0 +1,81 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_parity_transfer_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range parity law plus first scalar-chart falsifier",
+    "g": [
+      2,
+      8
+    ],
+    "q_character": [
+      2,
+      11
+    ],
+    "stable_steps_per_block": 8,
+    "first_chart_falsifier": {
+      "g": 2,
+      "q": 12,
+      "k": 5
+    }
+  },
+  "checks": [
+    {
+      "id": "PARITY.closed",
+      "statement": "all stable determinant ratios obey the uniform parity formulas",
+      "status": "pass",
+      "detail": "ratios=552; failures=[]"
+    },
+    {
+      "id": "PARITY.coverage",
+      "statement": "the exact comparison covers more than five hundred stable steps",
+      "status": "pass",
+      "detail": "ratios=552; skipped=[(2, 7, 3), (2, 7, 4), (2, 7, 5), (2, 7, 6), (2, 7, 7), (2, 7, 8), (2, 7, 9), (2, 7, 10), (2, 7, 11), (2, 7, 12)]"
+    },
+    {
+      "id": "CHART.first",
+      "statement": "the deterministic scalar chart vanishes at (g,q,k)=(2,12,5)",
+      "status": "pass",
+      "detail": "selected_rows=[1, 12, -4, 8, -6, 6, -8, 4, -10, 2, -12, 0]"
+    },
+    {
+      "id": "CHART.injective",
+      "statement": "the q=12 chart failure is not a kernel birth",
+      "status": "pass",
+      "detail": "rank=12; alternate_det=-195441246545970423398400000000"
+    },
+    {
+      "id": "STABLE.even",
+      "statement": "every displayed even-q stable character is positive",
+      "status": "pass",
+      "detail": "2<=g,q<=100"
+    },
+    {
+      "id": "STABLE.odd",
+      "statement": "every displayed odd-q stable character is negative and nonzero",
+      "status": "pass",
+      "detail": "2<=g,q<=100"
+    },
+    {
+      "id": "EXCEPTION.q7",
+      "statement": "the uniform odd character vanishes at (g,q,a)=(2,7,6)",
+      "status": "pass",
+      "detail": "value=0"
+    },
+    {
+      "id": "EXCEPTION.factor",
+      "statement": "odd-q candidate singularity is exactly a+g=q+1",
+      "status": "pass",
+      "detail": "bounded algebraic sweep"
+    },
+    {
+      "id": "FALSIFIER.qdependence",
+      "statement": "dropping explicit q dependence gives a nonzero residual",
+      "status": "pass",
+      "detail": "witness=(3, 4, 4); residual=29859840"
+    }
+  ],
+  "n_pass": 9,
+  "n_fail": 0,
+  "verdict": "Stable nested determinant ratios obey uniform even/odd formulas through q=11 in the tested range. At (g,q,k)=(2,12,5), the deterministic nested Hall minor becomes zero and remains a bad scalar chart, although the full component has full column rank and an alternate nonzero maximal minor. Thus scalar determinant transport in one fixed chart is not global. A transfer atlas or invariant-factor state is required; the q=12 event is not a kernel exception."
+}

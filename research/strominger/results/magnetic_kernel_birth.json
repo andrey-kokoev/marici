@@ -1,0 +1,65 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_kernel_birth_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact local explanation of known exceptional births",
+    "exceptions": [
+      {
+        "g": 2,
+        "q": 1
+      },
+      {
+        "g": 2,
+        "q": 7
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "BIRTH.prefix",
+      "statement": "the q=7 cutoff-two prefix is invertible",
+      "status": "pass",
+      "detail": "rows=[0, 7, -4, 3, -6, 1]; det=265420800000"
+    },
+    {
+      "id": "BIRTH.schur",
+      "statement": "the singular local Schur block is [[-588,0],[-984,0]]",
+      "status": "pass",
+      "detail": "[[-588, 0], [-984, 0]]"
+    },
+    {
+      "id": "BIRTH.lift",
+      "statement": "lifting the local null direction gives the primitive global circuit",
+      "status": "pass",
+      "detail": "y=[0, 1]; lift=[1/2, 0, 0, 0, 0, -3/2, 0, 1]"
+    },
+    {
+      "id": "BIRTH.identity",
+      "statement": "the lifted vector is annihilated by every sparse target row",
+      "status": "pass",
+      "detail": "active_points=[(0, -8), (4, 2), (6, 0)]"
+    },
+    {
+      "id": "BIRTH.persistence",
+      "statement": "the q=7 birth persists with nullity one and no later birth",
+      "status": "pass",
+      "detail": "[(3, 1, True), (4, 1, True), (5, 1, True), (6, 1, True), (7, 1, True), (8, 1, True), (9, 1, True), (10, 1, True)]"
+    },
+    {
+      "id": "INITIAL.q1",
+      "statement": "the q=1 initial block has primitive kernel (-1,1)",
+      "status": "pass",
+      "detail": "matrix=[[-40, -40]]; kernel=[1, -1]"
+    },
+    {
+      "id": "LOCAL.plucker",
+      "statement": "the active local block has primitive kernel (1,-3,2)",
+      "status": "pass",
+      "detail": "[[-120, 0, 60], [-160, -40, 20]]"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "The q=1 exception is the primitive kernel of a singular initial block. The q=7 exception is born when an invertible cutoff-two prefix is extended by a singular 2x2 Schur block [[-588,0],[-984,0]]. Its local null vector (0,1) lifts canonically to (1/2,0,0,0,0,-3/2,0,1), whose primitive active coordinates are (1,-3,2). The class persists with nullity one through k=10 and no later class is born. This realizes exceptional kernel classes as failed local transport."
+}

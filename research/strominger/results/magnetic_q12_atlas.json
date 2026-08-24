@@ -1,0 +1,61 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_q12_atlas_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range two-chart transfer theorem",
+    "g": 2,
+    "q": 12,
+    "k": [
+      0,
+      20
+    ]
+  },
+  "checks": [
+    {
+      "id": "ATLAS.coincide",
+      "statement": "primary and alternate charts coincide through cutoff four",
+      "status": "pass",
+      "detail": "0<=k<=4"
+    },
+    {
+      "id": "ATLAS.exchange",
+      "statement": "one persistent row exchange gives the alternate chart",
+      "status": "pass",
+      "detail": "[(5, [1], [3]), (6, [1], [3]), (7, [1], [3]), (8, [1], [3])]"
+    },
+    {
+      "id": "ATLAS.nested",
+      "statement": "the alternate row sets remain nested after the transition",
+      "status": "pass",
+      "detail": "0<=k<=20"
+    },
+    {
+      "id": "ATLAS.cover",
+      "statement": "the alternate chart is nonzero wherever the primary chart vanishes",
+      "status": "pass",
+      "detail": "alternate_D5=-195441246545970423398400000000"
+    },
+    {
+      "id": "ATLAS.rank",
+      "statement": "every q=12 component remains full column rank",
+      "status": "pass",
+      "detail": "0<=k<=20"
+    },
+    {
+      "id": "ATLAS.transfer",
+      "statement": "the replacement chart resumes the q=12 parity character",
+      "status": "pass",
+      "detail": "8<=k<=20; failures=[]"
+    },
+    {
+      "id": "ATLAS.transition",
+      "statement": "the chart transition has a finite nonzero rational coordinate",
+      "status": "pass",
+      "detail": "-809600/3"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "At (g,q,k)=(2,12,5), replace target row 1 by row 3. This single row exchange gives a nested alternate maximal-minor chart that stays nonzero through k=20 while the primary chart remains zero. The full component is injective throughout. From k=8 onward, alternate determinant ratios recover the q=12 parity character up to fixed orientation sign; the finite chart transition coordinate is -809600/3. This demonstrates a two-chart determinant atlas, not a kernel exception."
+}

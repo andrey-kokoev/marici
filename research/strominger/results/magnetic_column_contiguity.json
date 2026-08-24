@@ -1,0 +1,55 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_column_contiguity_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "formal bigraded magnetic-column transport theorem",
+    "formal_grade": [
+      0,
+      15
+    ],
+    "branch_audit": 1386
+  },
+  "checks": [
+    {
+      "id": "COLUMN.generator",
+      "statement": "the magnetic-column EGF has a quadratic numerator",
+      "status": "pass",
+      "detail": "formal coefficients g=0..15"
+    },
+    {
+      "id": "COLUMN.contiguous",
+      "statement": "a->a+2 obeys the exact order-four magnetic-column law",
+      "status": "pass",
+      "detail": "formal identities g=4..15"
+    },
+    {
+      "id": "COLUMN.width",
+      "statement": "both cross-multipliers have degree exactly four",
+      "status": "pass",
+      "detail": "degrees=(4,4)"
+    },
+    {
+      "id": "COLUMN.shift",
+      "statement": "the quadratic numerator changes by 2*(1+x)*(2tx-1)",
+      "status": "pass",
+      "detail": "2*(x + 1)*(2*t*x - 1)"
+    },
+    {
+      "id": "COLUMN.branches",
+      "statement": "the recurrence holds on both reflected branches",
+      "status": "pass",
+      "detail": "1386 exact branch cases"
+    },
+    {
+      "id": "FALSIFIER.numerator",
+      "statement": "discarding the magnetic numerator breaks contiguity",
+      "status": "pass",
+      "detail": "g=5"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "numerator": "-a*x - a + s*x + s + t**2*(-s*x**2 - s*x - 5*x**2 - x) + t*(2*a*x**2 + 2*a*x - s*x**2 + s - 5*x**2 + 1) + x + 1",
+  "verdict": "For branch parameter s and m=1-g+s-a, the magnetic column EGF is (1+t)^(-a-1)(1-xt)^(a-5) times a quadratic N. Cross multiplication under a->a+2 yields an exact grade-order-four recurrence for the actual magnetic columns. This is a cutoff-independent local elimination identity; the extra two grades relative to the source law are precisely the quadratic magnetic numerator."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_hall_functor_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact finite source-functorial Hall theorem",
+    "formula_g": "even 2..60",
+    "equivariance_g": "even 2..30"
+  },
+  "checks": [
+    {
+      "id": "HALL.formula",
+      "statement": "the augmenting matching equals the source-label formula",
+      "status": "pass",
+      "detail": "all even g=2..60"
+    },
+    {
+      "id": "HALL.support",
+      "statement": "every assigned observation has a nonzero source coefficient",
+      "status": "pass",
+      "detail": "all 1170 assignments"
+    },
+    {
+      "id": "HALL.dimension",
+      "statement": "removing two endpoints leaves g+8 ordered labels",
+      "status": "pass",
+      "detail": "g=2..60"
+    },
+    {
+      "id": "NATURAL.storage",
+      "statement": "canonical Hall matrices ignore storage permutations",
+      "status": "pass",
+      "detail": "45 hostile storage orders"
+    },
+    {
+      "id": "NATURAL.target",
+      "statement": "oriented target translations act equivariantly",
+      "status": "pass",
+      "detail": "60 translated matrices"
+    },
+    {
+      "id": "NATURAL.source",
+      "statement": "display-token renaming preserves semantic source order",
+      "status": "pass",
+      "detail": "g=2..30"
+    },
+    {
+      "id": "FALSIFIER.swap",
+      "statement": "the swapped-first-two control is not a legal relabelling",
+      "status": "pass",
+      "detail": "[-34, 34, 0, 0]"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "hall_formula": {
+    "minus": "H(0,-)=3 in alternate chart; H(a,-)=-g-a for a>=2",
+    "plus": "H(0,+)=2g+8; H(a,+)=g+8-a for a>=2"
+  },
+  "verdict": "The Hall ordering is determined functorially by semantic source labels (pole depth, reflected branch), not by storage order or elimination. Its closed formula agrees with the augmenting matching through even g=60. Canonical matrices are invariant under hostile storage permutations and source-token renamings, and equivariant under uniform oriented target translations. Swapping the first two observations is not induced by any such legal relabelling and violates the Hall naturality equation."
+}

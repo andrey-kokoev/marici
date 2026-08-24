@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_offset_rigidity_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic local weighted-diamond rigidity theorem",
+    "ansatz": "connection strength c and unit-increment weights starting at w0"
+  },
+  "checks": [
+    {
+      "id": "MOVE.general",
+      "statement": "the generalized vertical move has weight r+(c-1)s+w0",
+      "status": "pass",
+      "detail": "c*step + r - step + w0"
+    },
+    {
+      "id": "DIAMOND.residual",
+      "statement": "the elementary path-ordering defect is r*(c-2)",
+      "status": "pass",
+      "detail": "r*(c - 2)"
+    },
+    {
+      "id": "DIAMOND.unique",
+      "statement": "local weighted confluence uniquely fixes c=2",
+      "status": "pass",
+      "detail": "[2]"
+    },
+    {
+      "id": "OFFSET.path",
+      "statement": "the j-th vertical factor is 2*w0-a+j after confluence",
+      "status": "pass",
+      "detail": "-a + j + 2*w0"
+    },
+    {
+      "id": "OFFSET.baseline",
+      "statement": "the rigid baseline weight start w0=2 selects h=4",
+      "status": "pass",
+      "detail": "h=2*w0=4"
+    },
+    {
+      "id": "OFFSET.closed",
+      "statement": "the confluent path product recovers the magnetic coefficient law",
+      "status": "pass",
+      "detail": "binomial interleavings times two rising factorials"
+    },
+    {
+      "id": "FALSIFIER.connection",
+      "statement": "changing c destroys the first weighted diamond",
+      "status": "pass",
+      "detail": "c=3 residual=1"
+    },
+    {
+      "id": "FALSIFIER.weight",
+      "statement": "changing the weight start preserves confluence but changes h",
+      "status": "pass",
+      "detail": "w0=3 gives h=6"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Within the local two-move fold engine, weighted path confluence holds iff c=2: the elementary HV-VH residual is r(c-2). At c=2 and weight start w0, the j-th vertical factor is 2w0-a+j, so the binomial path sum has offset h=2w0. The independently rigid baseline start w0=2 therefore forces h=4. The apparent h-modulus arose only after forgetting the engine's confluence and weight-start axioms."
+}

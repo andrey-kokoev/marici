@@ -1,0 +1,61 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_stable_hall_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic stable-Hall theorem with finite-prefix census",
+    "stable_theorem": "all g>=2,q>=1,k>floor(q/2)+1",
+    "crosscheck": {
+      "g": [
+        2,
+        30
+      ],
+      "q": [
+        1,
+        60
+      ],
+      "stable_steps": 11
+    }
+  },
+  "checks": [
+    {
+      "id": "MATCH.parity",
+      "statement": "minus and plus endpoint row families have opposite parity",
+      "status": "pass",
+      "detail": "cases=19140"
+    },
+    {
+      "id": "MATCH.injective",
+      "statement": "the explicit stable endpoint assignment has no row collisions",
+      "status": "pass",
+      "detail": "cases=19140"
+    },
+    {
+      "id": "WEIGHT.nonzero",
+      "statement": "every explicit stable matching edge has nonzero integer weight",
+      "status": "pass",
+      "detail": "cases=19140; failures=[]"
+    },
+    {
+      "id": "WEIGHT.signproof",
+      "statement": "stable endpoint nonvanishing follows from same-sign path terms",
+      "status": "pass",
+      "detail": "2<=g<=100; 1<=q<=100; first three stable steps"
+    },
+    {
+      "id": "HALL.prefix",
+      "statement": "no new Hall deficiency begins after the stable threshold",
+      "status": "pass",
+      "detail": "deficiencies=[(2, 1, 0), (2, 1, 1), (2, 1, 2), (2, 1, 3), (2, 1, 4), (2, 7, 3), (2, 7, 4), (2, 7, 5), (2, 7, 6), (2, 7, 7)]; late_onsets=[]"
+    },
+    {
+      "id": "HALL.known",
+      "statement": "the finite-prefix Hall defects lie only at grade-two q=1 and q=7",
+      "status": "pass",
+      "detail": "[(2, 1, 0), (2, 1, 1), (2, 1, 2), (2, 1, 3), (2, 1, 4), (2, 7, 3), (2, 7, 4), (2, 7, 5), (2, 7, 6), (2, 7, 7)]"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "For every g>=2 and q>=1, once k>floor(q/2)+1, match the new minus column to row -2k-g and the new plus column to row -2k-g+2*floor(q/2)+1. The row families have opposite parity, never collide with earlier assignments, and their endpoint weights are nonzero by a direct sign argument. Hence Hall matching extends forever after a finite prefix. In the finite-prefix census, deficiencies occur only at (g,q)=(2,1),(2,7). This proves unbounded Hall-support persistence, not actual-weight determinant noncancellation for q>1."
+}

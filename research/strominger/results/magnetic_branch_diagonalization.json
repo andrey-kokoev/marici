@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_branch_diagonalization_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic all-grade branch-diagonalization theorem",
+    "formal_grade_audit": "g=0..30"
+  },
+  "checks": [
+    {
+      "id": "BRANCH.factor",
+      "statement": "the branch coefficient factors into three linear characters",
+      "status": "pass",
+      "detail": "-(t + 1)*(x + 1)*(t*x - 1)"
+    },
+    {
+      "id": "BRANCH.numerator",
+      "statement": "the reflected numerator difference is 2q times that character",
+      "status": "pass",
+      "detail": "-2*q*(t + 1)*(x + 1)*(t*x - 1)"
+    },
+    {
+      "id": "BRANCH.cancel",
+      "statement": "branch antisymmetrization cancels both magnetic denominators",
+      "status": "pass",
+      "detail": "B_+-B_-=2q(1+x)C"
+    },
+    {
+      "id": "BRANCH.columns",
+      "statement": "the branch-difference identity holds grade by grade",
+      "status": "pass",
+      "detail": "formal grades g=0..30"
+    },
+    {
+      "id": "BRANCH.sum",
+      "statement": "the branch sum is twice the neutral transported column",
+      "status": "pass",
+      "detail": "formal grades g=0..20"
+    },
+    {
+      "id": "BRANCH.wedge",
+      "statement": "the two-branch exterior character contains the scalar 2q",
+      "status": "pass",
+      "detail": "det=-2q"
+    },
+    {
+      "id": "TOWER.fixed",
+      "statement": "branch diagonalization degenerates exactly at q=0",
+      "status": "pass",
+      "detail": "reflection-fixed tower"
+    },
+    {
+      "id": "FALSIFIER.affine",
+      "statement": "adding quadratic branch dependence destroys affine diagonalization",
+      "status": "pass",
+      "detail": "second branch derivative=2t"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "The transported numerator is affine in the reflection-branch parameter s, with coefficient (1+x)(1+t)(1-xt). Hence B_(+q)-B_(-q)=2q(1+x)C and B_(+q)+B_(-q)=2B_0 at every grade. The two-branch exterior character therefore contains a forced scalar 2q and degenerates exactly on the reflection-fixed tower q=0. All further q-dependence arises from the relative lattice translations used to assemble a component, not from its local path weights."
+}

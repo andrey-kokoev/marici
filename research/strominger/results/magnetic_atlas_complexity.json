@@ -1,0 +1,123 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_atlas_complexity_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range two-chart atlas theorem",
+    "g": [
+      2,
+      8
+    ],
+    "q": [
+      1,
+      30
+    ],
+    "k": [
+      0,
+      20
+    ]
+  },
+  "checks": [
+    {
+      "id": "ATLAS.bound",
+      "statement": "every injective component needs at most one row exchange",
+      "status": "pass",
+      "detail": "cases=4371; failures=[]"
+    },
+    {
+      "id": "ATLAS.nested",
+      "statement": "every canonical alternate chart remains nested in cutoff",
+      "status": "pass",
+      "detail": "cases=4371; failures=[]"
+    },
+    {
+      "id": "ATLAS.locus",
+      "statement": "the nontrivial chart locus is the displayed sparse six-pair set",
+      "status": "pass",
+      "detail": "[(2, 12), (4, 16), (5, 4), (5, 12), (6, 20), (8, 24)]"
+    },
+    {
+      "id": "ATLAS.patterns",
+      "statement": "every chart transition is one of three explicit row swaps",
+      "status": "pass",
+      "detail": "{(2, 12): {((1,), (3,))}, (4, 16): {((1,), (3,))}, (5, 4): {((-4,), (-6,))}, (5, 12): {((4,), (2,))}, (6, 20): {((1,), (3,))}, (8, 24): {((1,), (3,))}}"
+    },
+    {
+      "id": "RANK.defects",
+      "statement": "rank defects remain confined to the known grade-two loci",
+      "status": "pass",
+      "detail": "defect_steps=39"
+    },
+    {
+      "id": "ATLAS.first",
+      "statement": "the first lexicographic nontrivial chart is (g,q)=(2,12)",
+      "status": "pass",
+      "detail": "(2, 12)"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "transition_patterns": {
+    "2,12": [
+      [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    ],
+    "4,16": [
+      [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    ],
+    "5,4": [
+      [
+        [
+          -4
+        ],
+        [
+          -6
+        ]
+      ]
+    ],
+    "5,12": [
+      [
+        [
+          4
+        ],
+        [
+          2
+        ]
+      ]
+    ],
+    "6,20": [
+      [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    ],
+    "8,24": [
+      [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    ]
+  },
+  "verdict": "Across every injective component in the scan, a canonical nonzero maximal-minor chart differs from the preferred Hall chart by at most one target row and remains nested with cutoff. Only six (g,q) pairs require any exchange, using three explicit swaps. No three-chart event or nonnested replacement occurs. Rank defects remain only at (2,1),(2,7). This is finite-range evidence for a two-chart Plucker atlas, not an unbounded atlas theorem."
+}

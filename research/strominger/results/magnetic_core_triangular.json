@@ -1,0 +1,51 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_core_triangular_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic all-grade triangular-core theorem",
+    "g": "all even integers g>=2",
+    "finite_matrix_crosscheck": "even g=2..60"
+  },
+  "checks": [
+    {
+      "id": "TRI.support",
+      "statement": "every entry below the Hall diagonal vanishes by disjoint support",
+      "status": "pass",
+      "detail": "symbolic inequalities audited through even g=200"
+    },
+    {
+      "id": "TRI.matrix",
+      "statement": "the exact generated core is upper triangular",
+      "status": "pass",
+      "detail": "all even g=2..60"
+    },
+    {
+      "id": "DIAG.formula",
+      "statement": "all diagonal entries equal the three closed endpoint formulas",
+      "status": "pass",
+      "detail": "1170 exact diagonal coefficients"
+    },
+    {
+      "id": "DIAG.negative",
+      "statement": "every Hall pivot is strictly negative for every admissible label",
+      "status": "pass",
+      "detail": "all factors are positive before the displayed minus sign"
+    },
+    {
+      "id": "DET.product",
+      "statement": "the core determinant is the positive product of its diagonal characters",
+      "status": "pass",
+      "detail": "all even g=2..40"
+    },
+    {
+      "id": "FALSIFIER.swap",
+      "statement": "the swapped-observation control is not triangular and has zero first pivot",
+      "status": "pass",
+      "detail": "g=8; illegal observation relabelling"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "In the source-derived Hall order the alternate-chart interior core is upper triangular. Later Hall rows lie outside every earlier path-support interval. Its diagonal entries are explicit negative endpoint characters, so every pivot is negative and the even-dimensional determinant is positive for all even grades. No internal transfer state is required for this core."
+}

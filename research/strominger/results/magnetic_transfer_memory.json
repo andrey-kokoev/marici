@@ -1,0 +1,73 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_transfer_memory_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "finite-range Hall-row theorem with symbolic support implication",
+    "g": [
+      2,
+      15
+    ],
+    "q": [
+      1,
+      30
+    ],
+    "k": [
+      0,
+      20
+    ]
+  },
+  "checks": [
+    {
+      "id": "HALL.nested",
+      "statement": "every full-Hall row set extends the preceding admitted set",
+      "status": "pass",
+      "detail": "steps=8362; failures=[]"
+    },
+    {
+      "id": "HALL.rows",
+      "statement": "beyond the initial memory window, added rows obey the closed formula",
+      "status": "pass",
+      "detail": "steps=8362; failures=[]"
+    },
+    {
+      "id": "MEMORY.bound",
+      "statement": "backward interaction never exceeds floor(q/2) pole pairs",
+      "status": "pass",
+      "detail": "steps=8362; failures=[]"
+    },
+    {
+      "id": "MEMORY.minimal",
+      "statement": "the floor(q/2) bound is attained for every tested g>=3,q",
+      "status": "pass",
+      "detail": "pairs=390; failures=[]"
+    },
+    {
+      "id": "MEMORY.q1",
+      "statement": "q=1 has zero backward memory, recovering scalar triangular transfer",
+      "status": "pass",
+      "detail": "3<=g<=15"
+    },
+    {
+      "id": "MEMORY.cutoff",
+      "statement": "the memory bound remains fixed as cutoff grows through k=20",
+      "status": "pass",
+      "detail": "steps=8362"
+    },
+    {
+      "id": "FALSIFIER.smaller",
+      "statement": "reducing the proposed memory by one fails on an actual interaction",
+      "status": "pass",
+      "detail": "first=(3, 2, 1)"
+    },
+    {
+      "id": "SUPPORT.inequality",
+      "statement": "interval overlap reduces exactly to d<=floor(q/2)",
+      "status": "pass",
+      "detail": "1<=q,d<=100; parity identity is symbolic"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "Nested full-Hall minors have backward pole-pair memory w(q)=floor(q/2) throughout the tested range. Their two added rows are -2k-g and -2k-g+2*floor(q/2)+1. Comparing the latter with an old path beginning at -2k-g+2d reduces overlap to 2d<=2*floor(q/2)+1, equivalently d<=floor(q/2). Thus the width follows symbolically from the observed row formula. Proving that nested Hall selection for arbitrary parameters, and constructing its transfer matrices, remain open."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_translation_parity_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic stable endpoint-collision theorem"
+  },
+  "checks": [
+    {
+      "id": "TRANSLATION.collision",
+      "statement": "plus-left collides with an old minus endpoint iff d=q/2",
+      "status": "pass",
+      "detail": "[q/2]"
+    },
+    {
+      "id": "PARITY.odd",
+      "statement": "odd translation cannot collide with the depth-two endpoint lattice",
+      "status": "pass",
+      "detail": "q odd versus displacement 2d"
+    },
+    {
+      "id": "PARITY.even",
+      "statement": "q=2w collides exactly with the minus endpoint w pairs behind",
+      "status": "pass",
+      "detail": "depth a-2w"
+    },
+    {
+      "id": "PARITY.repair",
+      "statement": "the adjacent B1 row has no integral minus-endpoint collision for even q",
+      "status": "pass",
+      "detail": "[q/2 + 1/2]"
+    },
+    {
+      "id": "MEMORY.exact",
+      "statement": "the even collision occurs at backward memory w=q/2",
+      "status": "pass",
+      "detail": "pole-pair distance w"
+    },
+    {
+      "id": "WEIGHT.odd",
+      "statement": "odd parity selects two B0 endpoints and gives the odd character",
+      "status": "pass",
+      "detail": "(-a - g + q + 1)*(a + g + q - 1)*RisingFactorial(a, g)**2"
+    },
+    {
+      "id": "WEIGHT.even",
+      "statement": "even parity replaces the collided B0 edge by the adjacent B1 response",
+      "status": "pass",
+      "detail": "raw product contains X"
+    },
+    {
+      "id": "STABLE.window",
+      "statement": "the collision witness lies inside the admitted stable window",
+      "status": "pass",
+      "detail": "old depth is at least 4"
+    },
+    {
+      "id": "FALSIFIER.spacing",
+      "statement": "changing pole spacing from two to one destroys the parity split",
+      "status": "pass",
+      "detail": "every integer q then collides"
+    }
+  ],
+  "n_pass": 9,
+  "n_fail": 0,
+  "verdict": "The even/odd transfer split is forced by translating one branch across a pole-depth lattice of spacing two. The plus B0 endpoint collides with an old minus endpoint exactly when d=q/2. Odd q has no integral collision and uses two B0 characters. Even q=2w collides w pairs behind and must use the adjacent B1 response X, producing memory w and the nontrivial Schur lane. Changing the pole lattice spacing destroys this parity mechanism."
+}

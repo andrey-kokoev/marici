@@ -1,0 +1,64 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_schur_normal_form_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact finite stable Schur normal-form theorem",
+    "g": [
+      2,
+      8
+    ],
+    "q": [
+      2,
+      11
+    ],
+    "stable_steps": 4
+  },
+  "checks": [
+    {
+      "id": "SCHUR.forms",
+      "statement": "every stable step is lower triangular in semantic boundary order",
+      "status": "pass",
+      "detail": "steps=276; failures=[]"
+    },
+    {
+      "id": "SCHUR.odd",
+      "statement": "odd Schur complements retain both raw endpoint pivots",
+      "status": "pass",
+      "detail": "steps=136"
+    },
+    {
+      "id": "SCHUR.even",
+      "statement": "even Schur complements retain minus and renormalize plus",
+      "status": "pass",
+      "detail": "steps=140"
+    },
+    {
+      "id": "DET.star",
+      "statement": "the determinant ignores the older-state starred entry in both parities",
+      "status": "pass",
+      "detail": "unified lower-triangular determinant"
+    },
+    {
+      "id": "DET.character",
+      "statement": "every Schur determinant equals the closed parity character",
+      "status": "pass",
+      "detail": "steps=276"
+    },
+    {
+      "id": "ODD.orthogonal",
+      "statement": "old-state elimination leaves both odd endpoint pivots unchanged",
+      "status": "pass",
+      "detail": "C*A^-1*B has zero diagonal"
+    },
+    {
+      "id": "FALSIFIER.orientation",
+      "statement": "reversing boundary observations destroys semantic triangularity",
+      "status": "pass",
+      "detail": "row orientation is source data"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "In semantic boundary order (r_minus,r_plus), every audited stable Schur complement is lower triangular. The minus pivot is always raw. Odd q also preserves the raw plus B0 pivot; even q renormalizes the plus pivot to (-1)^g*q*g*(g+3)*rf(a,g-1). Older-state dependence otherwise lies in the determinant-invisible lower-left star. This corrects the matcher-order artifact that made even blocks appear anti-triangular."
+}

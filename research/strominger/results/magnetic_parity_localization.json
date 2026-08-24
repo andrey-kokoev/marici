@@ -1,0 +1,67 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_parity_localization_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic parity-localization identities with exact finite ratio audit",
+    "ratio_audit": {
+      "g": [
+        2,
+        8
+      ],
+      "q": [
+        2,
+        11
+      ],
+      "steps": 5
+    }
+  },
+  "checks": [
+    {
+      "id": "ODD.endpoint",
+      "statement": "the odd-q transfer character is exactly the endpoint product",
+      "status": "pass",
+      "detail": "symbolic identity"
+    },
+    {
+      "id": "EVEN.correction",
+      "statement": "the even-q character is the endpoint product times q*g*(g+3)/X",
+      "status": "pass",
+      "detail": "g*q*(g + 3)/(-a**2*g - a**2 - a*g**2 + a*g*q + 3*a*g + a*q + 2*a + 2*g**2 - 3*g*q - 5*g - q - 1)"
+    },
+    {
+      "id": "EVEN.nontrivial",
+      "statement": "the even-cycle correction is not identically one",
+      "status": "pass",
+      "detail": "-a**2*g - a**2 - a*g**2 + a*g*q + 3*a*g + a*q + 2*a + 2*g**2 - 3*g*q - 5*g - q - 1"
+    },
+    {
+      "id": "ODD.ratios",
+      "statement": "odd stable determinant ratios localize to endpoint products",
+      "status": "pass",
+      "detail": "175 exact ratios"
+    },
+    {
+      "id": "EVEN.ratios",
+      "statement": "even stable ratios include the displayed cycle correction",
+      "status": "pass",
+      "detail": "175 exact ratios"
+    },
+    {
+      "id": "ODD.stable",
+      "statement": "the odd singular factor is strictly positive after initialization",
+      "status": "pass",
+      "detail": "a+g-q-1>=g+2"
+    },
+    {
+      "id": "EXCEPTION.q7",
+      "statement": "the grade-two q=7 exception is an odd endpoint zero before stability",
+      "status": "pass",
+      "detail": "a+g-q-1=0 at (2,7,3)"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "x_even": "-a**2*g - a**2 - a*g**2 + a*g*q + 3*a*g + a*q + 2*a + 2*g**2 - 3*g*q - 5*g - q - 1",
+  "verdict": "Odd-q scalar transport localizes exactly to the two new endpoint weights; its cycles are determinant-invisible after elimination. Even-q transport carries a genuine Schur correction q*g*(g+3)/X. The q=7 class is the zero of the odd plus-endpoint character in the finite initialization region, while that character is strictly nonzero at every stable step."
+}

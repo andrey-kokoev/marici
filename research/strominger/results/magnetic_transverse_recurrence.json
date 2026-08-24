@@ -1,0 +1,112 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_transverse_recurrence_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact recurrence discovery with held-out tests",
+    "g": "even 2..46",
+    "fit": "4..40",
+    "held_out": [
+      42,
+      44,
+      46
+    ]
+  },
+  "checks": [
+    {
+      "id": "BASE.tau",
+      "statement": "the initial transverse response is tau_2=320/3",
+      "status": "pass",
+      "detail": "320/3"
+    },
+    {
+      "id": "RATIO.fit",
+      "statement": "the factored recurrence matches all discovery grades 4..40",
+      "status": "pass",
+      "detail": "19 exact ratios"
+    },
+    {
+      "id": "RATIO.heldout",
+      "statement": "the recurrence predicts held-out grades 42,44,46",
+      "status": "pass",
+      "detail": "[(42, 162261090/5369), (44, 744122236/22525), (46, 84800833250/2357069)]"
+    },
+    {
+      "id": "FACTOR.integral",
+      "statement": "the two quadratic factors have nonsquare discriminant 105",
+      "status": "pass",
+      "detail": "discriminant=105"
+    },
+    {
+      "id": "FACTOR.domain",
+      "statement": "the proposed multiplier has no zero or pole at even g>=4",
+      "status": "pass",
+      "detail": "factor proof cross-checked through g=1000"
+    },
+    {
+      "id": "SIGN.law",
+      "statement": "tau is positive at g=2,4 and negative for every tested g>=6",
+      "status": "pass",
+      "detail": "g=2..46"
+    },
+    {
+      "id": "FALSIFIER.quadratic",
+      "statement": "changing -26 to -24 leaves a held-out residual",
+      "status": "pass",
+      "detail": "-1530765/42952"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "values": {
+    "2": "320/3",
+    "4": "25088",
+    "6": "-4838400",
+    "8": "-39293337600",
+    "10": "-135455691571200",
+    "12": "-510097617469440000",
+    "14": "-2294619272631189504000",
+    "16": "-12481500953201895014400000",
+    "18": "-81654597478417376343490560000",
+    "20": "-636059337780996094123824906240000",
+    "22": "-5835811232432689499850698391552000000",
+    "24": "-62409994708054450599217850032639180800000",
+    "26": "-770493505484851126734725960053618114560000000",
+    "28": "-10885377771330854103036924269605845687336960000000",
+    "30": "-174600435799442746522470809757352818551354818560000000",
+    "32": "-3157033707784713757365587038914750765017331243417600000000",
+    "34": "-63936740005323598430237617306452387289548452367150612480000000",
+    "36": "-1441881750982488383662605562546018229693638489872971857920000000000",
+    "38": "-36018069559351488909270996167143655816142764093658266295336960000000000",
+    "40": "-991817222620075346960172953776851712685806664917029526003022561280000000000",
+    "42": "-29974547145298208545331691202896549761364465818346427724237992938700800000000000",
+    "44": "-990220956485980902532587144042659724089313772061865199590338144359522762752000000000",
+    "46": "-35625415383097895088497801758478567300740413323303959058660664278791294550016000000000000"
+  },
+  "ratios": {
+    "4": "1176/5",
+    "6": "-1350/7",
+    "8": "56848/7",
+    "10": "58604/17",
+    "12": "71550/19",
+    "14": "1192074/265",
+    "16": "1626400/299",
+    "18": "6999993/1070",
+    "20": "19139128/2457",
+    "22": "109888350/11977",
+    "24": "1987484688/185845",
+    "26": "6493825/526",
+    "28": "40589168/2873",
+    "30": "43323786/2701",
+    "32": "72488640/4009",
+    "34": "116247377/5740",
+    "36": "15809391000/701029",
+    "38": "138713414/5553",
+    "40": "13008234096/472397",
+    "42": "162261090/5369",
+    "44": "744122236/22525",
+    "46": "84800833250/2357069"
+  },
+  "proposed_multiplier": "4*g*(g+3)*(g+4)*(2*g+1)*(2*g+3)*(g^2-g-26)/((g-2)*(g+6)*(g+7)*(g^2-5*g-20))",
+  "verdict": "The transverse response satisfies the displayed hypergeometric ratio at 19 discovery grades and three held-out grades through g=46. The multiplier has no zero or pole at any even integer g>=4 because both exceptional quadratics have nonsquare discriminant 105. This is strong exact discovery evidence and a conditional all-grade nonvanishing proof, but the recurrence itself still requires symbolic Schur-elimination derivation."
+}

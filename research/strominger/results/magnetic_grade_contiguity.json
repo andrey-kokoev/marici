@@ -1,0 +1,50 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_grade_contiguity_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "formal bigraded generating-function theorem",
+    "coefficient_audit": "g=0..30; recurrence g=2..20"
+  },
+  "checks": [
+    {
+      "id": "GRADE.generator",
+      "statement": "the grade EGF factorizes into two binomial characters",
+      "status": "pass",
+      "detail": "formal coefficients g=0..30"
+    },
+    {
+      "id": "GRADE.contiguous",
+      "statement": "pole-depth shift by two obeys the order-two grade law",
+      "status": "pass",
+      "detail": "formal identities g=2..20"
+    },
+    {
+      "id": "GRADE.initial",
+      "statement": "grades zero and one supply the two initial conditions",
+      "status": "pass",
+      "detail": "g=0,1"
+    },
+    {
+      "id": "GRADE.square",
+      "statement": "the a-shift quotient is ((1-xt)/(1+t))^2",
+      "status": "pass",
+      "detail": "formal rational identity"
+    },
+    {
+      "id": "FALSIFIER.order1",
+      "statement": "no first-order scalar grade multiplier can replace the quadratic law",
+      "status": "pass",
+      "detail": "order two is intrinsic"
+    },
+    {
+      "id": "FALSIFIER.memory",
+      "statement": "deleting the second-memory term leaves a nonzero residual",
+      "status": "pass",
+      "detail": "g=4"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "The magnetic source family has EGF (1+t)^(-a)(1-xt)^(a-4). Pole-depth shift a->a+2 multiplies it by the square reflection character ((1-xt)/(1+t))^2. Cross-multiplication yields an exact order-two recurrence involving grades g,g-1,g-2. This is the finite contiguous algebra beneath pole-depth transport; closure at one fixed grade alone is false."
+}
