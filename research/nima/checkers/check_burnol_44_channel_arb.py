@@ -12,6 +12,7 @@ RealBallField.
 
 import os
 
+import numpy as np
 from sage.all import RDF, RealBallField, identity_matrix, matrix, zero_matrix
 
 
@@ -111,12 +112,17 @@ def endpoint_plane():
     return identity_matrix(R, LEVELS).stack(matrix.diagonal(R, slopes))
 
 
-def center_block(parity):
+def stabilized_center_plane():
     flow = flow_matrix(EIGENVALUE)
     step, scaling, tail = ball_matrix_exp(-(LENGTH / (2 * STEPS)) * flow)
     plane = midpoint_qr_precondition(endpoint_plane())
     for _ in range(STEPS):
         plane = midpoint_qr_precondition(step * plane)
+    return plane, scaling, tail
+
+
+def center_block(parity):
+    plane, scaling, tail = stabilized_center_plane()
     if parity == "even":
         block = plane[LEVELS:, :]
     elif parity == "odd":
@@ -124,6 +130,43 @@ def center_block(parity):
     else:
         raise ValueError(parity)
     return block, scaling, tail
+
+
+def symmetric_response_inertia():
+    plane, _, _ = stabilized_center_plane()
+    scale = matrix.diagonal(
+        R,
+        [R(1)]
+        + [(R(1) / (2 * RATES[index])).sqrt() for index in range(1, LEVELS)],
+    )
+    position = scale * plane[:LEVELS, :]
+    slope = scale * plane[LEVELS:, :]
+    response = slope * position.inverse()
+    symmetric = (response + response.transpose()) / 2
+    midpoint = np.array(
+        [
+            [float(symmetric[i, j].center()) for j in range(LEVELS)]
+            for i in range(LEVELS)
+        ]
+    )
+    _, vectors = np.linalg.eigh(midpoint)
+    rotated = matrix(R, vectors).transpose() * symmetric * matrix(R, vectors)
+    negative = 0
+    positive = 0
+    unresolved = []
+    for i in range(LEVELS):
+        off_diagonal = sum(
+            rotated[i, j].abs().upper() for j in range(LEVELS) if j != i
+        )
+        lower = rotated[i, i].lower() - off_diagonal
+        upper = rotated[i, i].upper() + off_diagonal
+        if upper < 0:
+            negative += 1
+        elif lower > 0:
+            positive += 1
+        else:
+            unresolved.append((i, lower, upper))
+    return negative, positive, unresolved
 
 
 def main():
@@ -139,6 +182,10 @@ def main():
         print(f"{parity}.unscaled_tail={tail}")
         print(f"{parity}.determinant={determinant}")
         print(f"{parity}.sign_certified={not determinant.contains_zero()}")
+    negative, positive, unresolved = symmetric_response_inertia()
+    print(f"response.negative_gershgorin={negative}")
+    print(f"response.positive_gershgorin={positive}")
+    print(f"response.unresolved={unresolved}")
 
 
 if __name__ == "__main__":
