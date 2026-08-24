@@ -1,6 +1,7 @@
 # Burnol's prime-two boundary is pointwise indefinite but support-positive in the first Galerkin scout
 
-Status: numerical reconnaissance; no continuum positivity claim
+Status: level-44 continuum positivity proved; full infinite-tower and RH
+claims remain outside this theorem
 
 ## Exact boundary problem
 
@@ -810,3 +811,81 @@ of this Riccati chart: the position block must have no zero on
 
 Thus the even positivity problem has reduced from an 88-dimensional spectral
 claim to one matrix disconjugacy/pole-exclusion theorem.
+
+## Closure of the level-44 continuum theorem
+
+The pole-exclusion theorem is already contained in the directed odd result.
+Suppose the position block had a zero at \(x_0\), and put
+\(\ell=L/2-x_0\). Solving the individual channel equations with a Dirichlet
+condition at \(x_0\) and the source Robin condition at \(L/2\) reduces the
+common forcing \(F=q^Tz\) to
+
+\[
+F=\frac1{d_{44}-\lambda}C_\ell F.
+\]
+
+The channel Green functions give exactly
+
+\[
+C_\ell(s,t)
+=K_{44}(s+t)-K_{44}(|s-t|),
+\qquad 0\le s,t\le\ell.
+\]
+
+For a decaying channel, its contribution is
+
+\[
+e^{-a|s-t|}-e^{-a(s+t)},
+\]
+
+while the growing \(a_0=1/2\) channel contributes
+
+\[
+e^{a_0(s+t)}-e^{a_0|s-t|}.
+\]
+
+Their sum is precisely the positive folded odd kernel already certified.
+Restricting the same positive Schur integrand and weight to a shorter interval
+cannot increase its bound. Therefore
+
+\[
+\|C_\ell\|
+\le\|C_{L/2}\|
+<d_{44}
+\le d_{44}-\lambda
+\qquad(\lambda\le0).
+\]
+
+The pole equation is impossible. Thus the Riccati chart exists for every
+\(\lambda\le0\). Its Loewner monotonicity, its exact limiting inertia
+\((43-,1+)\), and its directed zero-endpoint inertia \((43-,1+)\) exclude
+every even zero. The directed weighted-Schur theorem excludes every odd zero.
+Since the essential diagonal is positive,
+
+\[
+\boxed{T_{44}>0.}
+\]
+
+Level 43 has a directed even eigenvalue in \((-10^{-4},0)\), so 44 is the
+first rigorously separated crossing of the pair.
+
+Finally, the secular sign follows without resolving its few-parts-per-million
+value directly. Directed Arb integration gives
+
+\[
+\frac{\langle1,B1\rangle}{\|1\|^2}
+=3.2837698479145955\ldots
+>d_{44}
+\]
+
+with margin \(0.6499863542\ldots\). Hence
+\(A=d_{44}I-B\) has a negative direction. Because
+\(T_{44}=A+c|1\rangle\langle1|>0\), the rank-one downdate has exactly one
+negative direction. The rank-one inertia formula then yields the strict
+source-normalized secular sign
+
+\[
+\boxed{
+S_{44}=1+c\langle1,A^{-1}1\rangle<0.
+}
+\]
