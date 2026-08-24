@@ -88,6 +88,39 @@ query                     ↔ sector lens or physical readout</code></pre>
         do not yet select these update maps, so the physical instrument layer remains conjectural.
       </p>
 
+      <h2>A normal response can carry a negative result</h2>
+      <p>
+        A useful distinction appears in real request/response systems. A network or authorization
+        failure can prevent an operation from running at all. But a legal request can also run
+        successfully and return a structured negative domain result through the ordinary response
+        envelope: an error discriminator, messages, provenance, and perhaps authorized follow-up
+        actions. The UI may paint that result red; the transport did not fail.
+      </p>
+      <pre><code>{`transport rejected / operation not admitted
+    !=
+admitted operation -> Success<Value> | Obstruction<Residue>`}</code></pre>
+      <p>
+        This pattern occurs explicitly in Sonar's generic-controller RPC: HTTP failure and a
+        response body with <code>result: "error"</code> are separate branches, while the same typed
+        response may carry messages and requested frontend actions. Its controlled-action records
+        decide which entity, action, and fields are admissible before evaluation.
+      </p>
+      <p>
+        Marici repeatedly exhibits the mathematical version. Two legal composites can differ by
+        a curvature or coherence cell; a localization comparison can return a supported
+        obstruction; a labelled source relation can survive as a seam cell without being an
+        ordinary period; and an augmentation can collapse many labelled histories to one scalar
+        without identifying those histories. These are not malformed operations. Their residuals
+        are first-class outputs of well-typed attempts.
+      </p>
+      <p>
+        The recurrence suggests a bounded design principle: preserve a legal negative result on
+        the normal typed channel until an explicit quotient, augmentation, or physical readout
+        says what becomes observable. Do not confuse it with an unauthorized call, and do not turn
+        every exception or log message into geometry. The residual must retain a declared source,
+        target, provenance, and composition rule.
+      </p>
+
       <h2>Architecture, not workload</h2>
       <p>
         The carrier is not the running application or its current data. It is the substrate on
