@@ -13,7 +13,7 @@ OUTPUT = ROOT / "results" / "theta-compact-boxes" / "adaptive-sweep"
 LADDER = ((2, 250), (4, 500), (6, 1000))
 
 
-def run(start, stop):
+def run(start, stop, start_tier=0):
     scan = json.loads(SCAN.read_text(encoding="utf-8"))
     boxes = scan["compact_bridge_reconnaissance"][
         "inflated_derivative_box_budget"
@@ -24,7 +24,7 @@ def run(start, stop):
         lo, hi = boxes[index]["interval"]
         certified = False
         attempts = []
-        for degree, steps in LADDER:
+        for degree, steps in LADDER[start_tier:]:
             path = OUTPUT / f"box-{index:02d}-d{degree}-s{steps}.json"
             if path.exists():
                 result = json.loads(path.read_text(encoding="utf-8"))
@@ -57,5 +57,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", type=int, required=True)
     parser.add_argument("--stop", type=int, required=True)
+    parser.add_argument("--start-tier", type=int, choices=range(len(LADDER)), default=0)
     args = parser.parse_args()
-    run(args.start, args.stop)
+    run(args.start, args.stop, args.start_tier)
