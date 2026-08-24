@@ -107,3 +107,70 @@ The next finite work is to compare the compressed boundary operator with the
 known conductor operator or a Sonine-space restriction, isolate the compact
 prime-two correction, and seek a certified lower bound on the resulting
 ground-state energy.
+
+## Exact finite-rank reduction
+
+The rational prime-two/endpoint part of \(\alpha\) has an elementary inverse
+Fourier transform. With the convention \(d\tau/(2\pi)\),
+
+\[
+\frac{8\sqrt2\cos(\tau\log2)}{1+4\tau^2}
+\longleftrightarrow
+\sqrt2\left(e^{-|r-\log2|/2}+e^{-|r+\log2|/2}\right).
+\]
+
+For \(|r|\le\log2\), which is exactly the difference range of the support
+interval, this simplifies to
+
+\[
+2\cosh(r/2).
+\]
+
+Hence the compressed boundary operator is exactly rank two:
+
+\[
+B
+=2|c\rangle\langle c|-2|s\rangle\langle s|,
+\qquad
+c(x)=\cosh(x/2),\quad s(x)=\sinh(x/2).
+\]
+
+The FFT action agrees with this real-space formula to about \(9\times10^{-10}\)
+in the current padding census.
+
+Let \(A_\infty\) be the compression of
+
+\[
+-\log\pi+\Re\psi\!\left(\frac14+\frac{i\tau}{2}\right).
+\]
+
+Its first six sampled eigenvalues are
+
+\[
+-1.28588046, 0.08480089, 0.58205825,
+0.92724298, 1.17515436, 1.37844630,
+\]
+
+with alternating even/odd parity. Thus the observed archimedean index is one,
+carried by the even sector. Standard rank-one inertia reduces positivity to
+two scalar resolvent gates:
+
+\[
+1+2\langle c,A_\infty^{-1}c\rangle\le0
+\quad\text{(even)},
+\]
+
+\[
+2\langle s,A_\infty^{-1}s\rangle\le1
+\quad\text{(odd)}.
+\]
+
+At the finest current resolution these evaluate to approximately
+
+\[
+-0.00119900,qquad 0.14115981.
+\]
+
+The odd gate has wide margin. The prime-two boundary theorem is therefore
+concentrated almost entirely in the near-critical even secular inequality,
+together with a proof that \(A_\infty\) has index one on the support interval.
