@@ -671,3 +671,37 @@ change. Continuity therefore gives an even eigenvalue in
 \((-10^{-4},0)\): level 43 rigorously fails positivity. This proves the
 failure side without assuming the unproved one-defect inertia statement. The
 level-44 success side still requires exclusion of every nonpositive root.
+
+## Directed odd-sector closure
+
+The weighted Schur inequality is now certified by FLINT/Arb analytic
+integration. The implementation uses the exact two-chart split at \(y=x\),
+adaptive interval subdivision in the outer parameter \(x\), and a separately
+desingularized fixed-cube formula on
+\([0,\log(2)/4096]\). With 192-bit balls, 64 initial boxes, and maximum
+subdivision depth 12, the run reports
+
+- 1830 certified adaptive boxes;
+- no failed integrations;
+- no unresolved boxes;
+- a certified endpoint enclosure;
+- strict upper bound below \(d_{44}\) on every box.
+
+The tightest accepted adaptive enclosure retains positive reserve
+
+\[
+d_{44}-\sup_{\rm boxes}\frac{B_-\phi}{\phi}
+>8.55\times10^{-6}.
+\]
+
+This small *certification* reserve reflects interval overestimation; the
+midpoint inequality has reserve about \(0.039\). Since \(B_-\) is a positive
+kernel and \(\phi>0\) in the open half-interval, the weighted Schur theorem
+gives
+
+\[
+\|B_-\|<d_{44}.
+\]
+
+The level-44 odd sector is therefore rigorously positive. All remaining
+near-critical work is even.
