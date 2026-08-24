@@ -3267,6 +3267,130 @@ advanced to
 \Longrightarrow DG<0.}
 \]
 
+The central zone is now certified as well:
+
+\[
+0.4\le p\le0.7,qquad0\le q\le p.
+\]
+
+A degree-five predictor is used here; its hostile `201x201` residual is
+`0.0020927`, still safely inside `rho=0.02`.  The wider zone reveals a real
+near-tangency of the fixed predictor faces, but directed subdivision closes
+both signs with zero unresolved boxes:
+
+\[
+G(M_0-0.02)>1.0497529\times10^{-6}
+\]
+
+after 9,488 processed face boxes, and
+
+\[
+G(M_0+0.02)<-2.9249734\times10^{-7}
+\]
+
+after 9,700 boxes.  Parametric interval Newton plus compiled curvature then
+processes 4,558 boxes, accepts 2,311, leaves zero unresolved, and proves
+
+\[
+-DG>3.9843758\times10^{-4}
+\]
+
+on every possible critical root.  Thus the certified compact cover is now
+
+\[
+\boxed{0.1\le p\le0.7,\quad0\le q\le p,\quad G=0
+\Longrightarrow DG<0.}
+\]
+
+The tiny face margins are a coordinate/predictor phenomenon rather than a
+curvature degeneration: the root curvature retains a roughly `4e-4`
+directed reserve.  Future broad zones should prefer adaptive predictor
+radius or narrower `p` splits if face cost grows further.
+
+The next narrow zone is now certified:
+
+\[
+0.7\le p\le0.8,\qquad0\le q\le p.
+\]
+
+A degree-four predictor with hostile sampled maximum residual
+`0.0055752108` is enclosed by the same `rho=0.02` tube.  Directed adaptive
+subdivision proves the two face signs with zero unresolved boxes:
+
+\[
+G(M_0-0.02)>4.95503285428598095075\times10^{-7}
+\]
+
+after 8,528 processed and 4,296 accepted boxes, and
+
+\[
+G(M_0+0.02)<-5.99622601698329191723\times10^{-8}
+\]
+
+after 8,466 processed and 4,265 accepted boxes.  The parametric
+interval-Newton root calculation then processes 4,876 boxes, accepts 2,470,
+leaves zero unresolved, and proves
+
+\[
+-DG>2.145673707275175246246\times10^{-5}
+\]
+
+on every possible critical root.  The combined directed compact cover is
+therefore
+
+\[
+\boxed{0.1\le p\le0.8,\quad0\le q\le p,\quad G=0
+\Longrightarrow DG<0.}
+\]
+
+Here the face margins have become substantially narrower while the root
+curvature remains decisively positive.  This confirms that the immediate
+obstruction is predictor-face conditioning, not a detected geometric fold;
+the remaining `0.8<=p<1` collar should be split or refitted rather than
+forced through one broad fixed predictor.
+
+The first unit-slope collar slice is now certified:
+
+\[
+0.8\le p\le0.85,\qquad0\le q\le p.
+\]
+
+A degree-five predictor fitted on the standard `41x41` grid has hostile
+`201x201` maximum residual `0.0025074122`, well inside `rho=0.02`.  The
+fixed-radius faces are extremely close to tangency and consequently require
+much deeper subdivision, but both close with zero unresolved boxes:
+
+\[
+G(M_0-0.02)>2.852784668344407106203\times10^{-7}
+\]
+
+after 24,566 processed and 12,315 accepted boxes, and
+
+\[
+G(M_0+0.02)<-3.165364307129015104553\times10^{-7}
+\]
+
+after 24,578 processed and 12,321 accepted boxes.  The root calculation is
+more expensive again, but processes 31,124 boxes, accepts 15,594, leaves
+zero unresolved, and proves
+
+\[
+-DG>3.28525335957191921209\times10^{-6}.
+\]
+
+The combined directed compact cover is therefore
+
+\[
+\boxed{0.1\le p\le0.85,\quad0\le q\le p,\quad G=0
+\Longrightarrow DG<0.}
+\]
+
+The falling curvature reserve is now real as well as a face-conditioning
+effect, although it remains decisively positive.  The cost profile argues
+for a narrower next split such as `0.85<=p<=0.875`, followed by handoff to
+the separate unit-slope collar argument, rather than another width-`0.05`
+fixed-radius certificate.
+
 ### Neighboring Lindeloef test
 
 The same fixed-source machinery suggests a useful post-RH neighboring
@@ -3290,3 +3414,53 @@ from the current certificate.  If the eventual source-derived operator
 controls its norm growth as well as its spectral line, Lindeloef may follow
 directly; if it controls only the line, the failure cleanly separates a
 zero-selector from an amplitude-controller.
+
+### Cut-localization translation: reflection-positive quotient
+
+Nima's Cut-localization theorem suggests a sharper interpretation of the
+long-horizon Stieltjes target.  In centered coordinates `z=s-1/2`, the
+functional equation and real structure generate
+
+\[
+F:z\mapsto-z,\qquad C:z\mapsto\bar z,
+\qquad FC:z\mapsto-\bar z,
+\]
+
+whose fixed locus is the critical line.  The quotient coordinate `x=z^2`
+maps that line to the negative real ray.  Off-critical zero quartets become
+nonreal conjugate packets in `x`.
+
+The current theta/Schwarzian machinery does not yet contain a literal chain
+complex whose off-sector zero packets form a differential-stable
+subcomplex: zeros are not additive objects and ordinary differentiation
+does not preserve a zero-generated subobject.  At present, support
+confinement appears only after the proposed moment/resolvent transform.
+
+The natural analogue of the Cut quotient is instead a reflection-positive
+GNS construction.  Let the completed theta source define a functional `L`
+on the positive-sector algebra in `x`, define
+
+\[
+\langle f,g\rangle_R=L((Rf)^*g),
+\]
+
+and take its null radical
+
+\[
+K=\{f:\langle f,f\rangle_R=0\},
+\qquad \mathcal H=\mathcal A_+/K.
+\]
+
+If source-derived reflection positivity and shifted positivity hold, the
+multiplication operator on this quotient is self-adjoint with `A>=1/4`, and
+the cyclic resolvent produces
+
+\[
+H'(x)=\langle\Omega,(x-1/4+A)^{-2}\Omega\rangle.
+\]
+
+This would turn the infinite Stieltjes moment tower into matrix shadows of
+one fixed-sector localization theorem.  The present coupled Hankel and
+rank-three inequalities are its candidate first finite compressions.  The
+sharp finite falsifier is a positive-sector polynomial `f` for which the
+exact theta reflection form is negative.
