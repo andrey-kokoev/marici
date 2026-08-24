@@ -1,0 +1,86 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_boundary_covector_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact finite local-support theorem for the even quotient functional",
+    "g": [
+      2,
+      8
+    ],
+    "q_even": [
+      2,
+      12
+    ],
+    "stable_steps": 4,
+    "skipped_chart_zeros": [
+      [
+        2,
+        12,
+        8
+      ],
+      [
+        2,
+        12,
+        9
+      ],
+      [
+        2,
+        12,
+        10
+      ],
+      [
+        2,
+        12,
+        11
+      ]
+    ]
+  },
+  "checks": [
+    {
+      "id": "COVECTOR.local",
+      "statement": "the even quotient covector is supported on exactly w collision rows",
+      "status": "pass",
+      "detail": "steps=164; failures=[]"
+    },
+    {
+      "id": "COVECTOR.pattern",
+      "statement": "its support is r_plus-1,r_plus-3,...,r_plus-(2w-1)",
+      "status": "pass",
+      "detail": "arithmetic collision chain"
+    },
+    {
+      "id": "COVECTOR.annihilate",
+      "statement": "the normalized covector annihilates every old column",
+      "status": "pass",
+      "detail": "lambda*A+c=0 exactly"
+    },
+    {
+      "id": "COVECTOR.casimir",
+      "statement": "evaluation on the new plus column gives the Casimir pivot",
+      "status": "pass",
+      "detail": "(-1)^g*q*g*(g+3)*rf(a,g-1)"
+    },
+    {
+      "id": "MEMORY.saturated",
+      "statement": "covector support saturates width q/2 independently of cutoff",
+      "status": "pass",
+      "detail": "[(2, 1), (4, 2), (6, 3), (8, 4), (10, 5), (12, 6)]"
+    },
+    {
+      "id": "ATLAS.separate",
+      "statement": "singular preferred charts are separated from quotient solves",
+      "status": "pass",
+      "detail": "skipped=[(2, 12, 8), (2, 12, 9), (2, 12, 10), (2, 12, 11)]"
+    },
+    {
+      "id": "FALSIFIER.raw",
+      "statement": "discarding the collision covector leaves the wrong raw B1 pivot",
+      "status": "pass",
+      "detail": "raw=-13968; effective=-2592"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "The even Schur pivot is computed by a normalized quotient covector supported on exactly w=q/2 old collision rows r_plus-(2d-1). It annihilates the complete old component and evaluates the new plus column to (-1)^g*q*g*(g+3)*rf(a,g-1). This realizes the boundary Casimir inside the finite matrix: the primitive is the w-row collision-chain solve, while the final evaluation is its quadratic grade character."
+}

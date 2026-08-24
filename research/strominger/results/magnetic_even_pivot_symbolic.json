@@ -1,0 +1,74 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_even_pivot_symbolic_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic all-parameter stable even-pivot theorem",
+    "domain": "g>=2, h>=2, even q>=2, a>=q+4"
+  },
+  "checks": [
+    {
+      "id": "CHAIN.index",
+      "statement": "the collision-chain entry is path coefficient B_[2(e-d+1)]",
+      "status": "pass",
+      "detail": "-2*d + 2*e + 2"
+    },
+    {
+      "id": "CHAIN.triangular",
+      "statement": "the local collision matrix is upper triangular with B0 diagonal",
+      "status": "pass",
+      "detail": "0<=e<=50; 1<=d<=51; inequality is symbolic"
+    },
+    {
+      "id": "CHAIN.boundary",
+      "statement": "the boundary source term on old depth b_e is B_[2e+1]",
+      "status": "pass",
+      "detail": "2*e + 1"
+    },
+    {
+      "id": "CHAIN.first",
+      "statement": "the first triangular equation gives lambda_1=-B1_old/B0_old",
+      "status": "pass",
+      "detail": "-(-a**2*g - a**2 - a*g**2 + a*g*h + a*g*q - a*g + a*q + 2*a + g**2*h + g**2*q - 2*g**2 - 2*g*h + 3*g - q - 1)/((a + g - 1)*(-a - g + q + 1))"
+    },
+    {
+      "id": "CHAIN.evaluate",
+      "statement": "the new plus column meets only the first covector row",
+      "status": "pass",
+      "detail": "new path index=2-2d"
+    },
+    {
+      "id": "PIVOT.identity",
+      "statement": "the two-column collision identity equals q*g*(g+h-1)",
+      "status": "pass",
+      "detail": "g*q*(g + h - 1)"
+    },
+    {
+      "id": "PIVOT.full",
+      "statement": "restoring the endpoint factor gives the full even Schur pivot",
+      "status": "pass",
+      "detail": "(-1)^g*q*g*(g+h-1)*rf(a,g-1)"
+    },
+    {
+      "id": "PIVOT.baseline",
+      "statement": "the rigid offset h=4 gives q*g*(g+3)",
+      "status": "pass",
+      "detail": "h=4"
+    },
+    {
+      "id": "PIVOT.nonzero",
+      "statement": "the triangular solve and effective pivot are nonzero stably",
+      "status": "pass",
+      "detail": "g,h>=2; even q>=2; a>=q+4"
+    },
+    {
+      "id": "FALSIFIER.raw",
+      "statement": "dropping lambda_1 fails symbolically",
+      "status": "pass",
+      "detail": "raw B1 is not the Casimir pivot"
+    }
+  ],
+  "n_pass": 10,
+  "n_fail": 0,
+  "verdict": "The even collision quotient is an upper-triangular w=q/2 row system. Its first equation gives lambda_1=-B1_old/B0_old at old depth a-q, and the new plus column meets only that first covector row. The exact two-column evaluation simplifies symbolically to (-1)^g*q*g*(g+h-1)*rf(a,g-1). This proves the stable even Schur pivot and its nonvanishing without matrix inversion or determinant fitting."
+}

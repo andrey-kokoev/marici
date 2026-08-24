@@ -1,0 +1,59 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_boundary_casimir_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "formal boundary-operator derivation of all semantic pivot formulas",
+    "grade_audit": [
+      0,
+      50
+    ]
+  },
+  "checks": [
+    {
+      "id": "BOUNDARY.minus",
+      "statement": "the minus pivot is -(Theta+a+q-1) on the left endpoint",
+      "status": "pass",
+      "detail": "formal grades g=0..32"
+    },
+    {
+      "id": "BOUNDARY.odd",
+      "statement": "the odd plus pivot is (Theta+a-q-1) on the left endpoint",
+      "status": "pass",
+      "detail": "formal grades g=0..32"
+    },
+    {
+      "id": "BOUNDARY.primitive",
+      "statement": "the boundary primitive satisfies J'=-L to audited order",
+      "status": "pass",
+      "detail": "J=-integral L"
+    },
+    {
+      "id": "BOUNDARY.even",
+      "statement": "the even pivot is q*Theta*(Theta+h-1) on the primitive",
+      "status": "pass",
+      "detail": "formal grades g=1..32"
+    },
+    {
+      "id": "CASIMIR.eigen",
+      "statement": "Theta(Theta+h-1) has eigenvalue g(g+h-1)",
+      "status": "pass",
+      "detail": "grades g=0..50"
+    },
+    {
+      "id": "CASIMIR.baseline",
+      "statement": "the rigid offset h=4 gives the eigenvalue g(g+3)",
+      "status": "pass",
+      "detail": "h=4"
+    },
+    {
+      "id": "FALSIFIER.first_order",
+      "statement": "no first-order polynomial in Theta gives the even character",
+      "status": "pass",
+      "detail": "quadratic Casimir is minimal"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "All stable semantic pivots are coefficient characters of the left-endpoint EGF L=(1+t)^(-a). Minus and odd-plus pivots are first-order affine functions of Theta=t*d/dt. The even renormalized pivot is q*Theta*(Theta+h-1) applied to the boundary primitive J=-integral L, producing (-1)^g*q*g*(g+h-1)*rf(a,g-1). Thus g(g+3) at h=4 is the exact quadratic grade-Casimir eigenvalue read by the even collision lane."
+}

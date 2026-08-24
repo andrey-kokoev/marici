@@ -1,0 +1,39 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_high_grade_base_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic support/product theorem with exact bounded matrix audit",
+    "domain": "integers g>=q>1",
+    "audit": "2<=q<=16 and q<=g<=24"
+  },
+  "checks": [
+    {
+      "id": "SUPPORT.rows",
+      "statement": "the semantic initialization rows are distinct throughout g>=q>1",
+      "status": "pass",
+      "detail": "blocks=240; failures=[]"
+    },
+    {
+      "id": "SUPPORT.peel",
+      "statement": "every high-grade base support graph leaf-peels completely",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "DET.product",
+      "statement": "every generated determinant equals the universal endpoint product",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "DET.nonzero",
+      "statement": "the endpoint product has no zero in the cone g>=q>1",
+      "status": "pass",
+      "detail": "q^2-1>0 and a+g-q-1>=1 for every admitted a>=2"
+    }
+  ],
+  "n_pass": 4,
+  "n_fail": 0,
+  "verdict": "For every initialization block in the cone g>=q>1, the semantic rows 0,q and the two endpoint rows at each positive even pole depth are collision-free. The support graph leaf-peels to the universal endpoint product (q^2-1)(4 rising g)^2 times the odd character at every positive depth. Every factor is nonzero in this cone. Together with boundary and stable transport, all q<=g components are injective; unresolved initialization is confined to g<q."
+}

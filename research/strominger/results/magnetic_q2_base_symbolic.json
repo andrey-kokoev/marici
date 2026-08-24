@@ -1,0 +1,44 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_q2_base_symbolic_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic arbitrary-grade q=2 initialization theorem",
+    "domain": "integer g>=2, q=2, a_max=2"
+  },
+  "checks": [
+    {
+      "id": "SUPPORT.singletons",
+      "statement": "the two a=0 columns have private Hall rows 1 and 2",
+      "status": "pass",
+      "detail": "a=0 source has only c_g, hence only its two terminal path rows"
+    },
+    {
+      "id": "SUPPORT.depth2",
+      "statement": "the a=2 pair is triangular on rows -g-2 and -g",
+      "status": "pass",
+      "detail": "the plus support begins at -g, while the minus support begins at -g-2"
+    },
+    {
+      "id": "DET.formula",
+      "statement": "the q=2 base determinant is an explicit endpoint product",
+      "status": "pass",
+      "detail": "-3*(g - 1)*(g + 1)*(g + 3)*RisingFactorial(2, g)**2*RisingFactorial(4, g)**2"
+    },
+    {
+      "id": "DET.nonzero",
+      "statement": "the q=2 initialization block has full rank for every g>=2",
+      "status": "pass",
+      "detail": "all rising factorials and g-1,g+1,g+3 are nonzero"
+    },
+    {
+      "id": "DET.generated",
+      "statement": "the symbolic product equals every generated q=2 base determinant",
+      "status": "pass",
+      "detail": "g=2..51; failures=[]"
+    }
+  ],
+  "n_pass": 5,
+  "n_fail": 0,
+  "verdict": "The q=2 initialization block in source Hall coordinates consists of two private a=0 endpoints and a triangular a=2 pair. Its determinant is -3(g-1)(g+1)(g+3)(4 rising g)^2(2 rising g)^2, nonzero for every g>=2. Thus no q=2 kernel class can be born at initialization; later extensions are covered by the even boundary and stable transport laws."
+}

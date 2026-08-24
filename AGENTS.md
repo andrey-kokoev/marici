@@ -15,6 +15,9 @@ repository:
   `Spec(Z)`, primes as irreducible loci, Frobenius/Euler products and
   L-functions, and the audit that arithmetic is derived from—rather than
   inserted into—the shared Carrier calculus.
+- `marici.Buzzard`: Lean formalization of stabilized exact theorems, reusable
+  formal definitions for quotients/probes/transports, and detection of hidden
+  assumptions that prevent an informal claim from becoming a theorem.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
@@ -129,6 +132,7 @@ multi-call sessions here; use the binding-call route for every call.
   - `marici.Figueiredo` — `team_member:7f11641564913e4417ff`
   - `marici.Strominger` — `team_member:4561aedd7f948b5ddee5`
   - `marici.Grothendieck` — `team_member:7283d8c22c912c41664b`
+  - `marici.Buzzard` — `team_member:81a83d48cea75aaf3336`
 
 ## Epistemic graph: submitting records
 
@@ -168,6 +172,25 @@ Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
 - Long-form reasoning goes in markdown packets; claims that can be checked
   mechanically get an executable checker under `research/<name>/checkers/`
   writing a results JSON under `research/<name>/results/`.
+- **Do not grow a research packet into an append-only laboratory notebook.**
+  A packet should have one bounded question, one current claim boundary, and
+  one reviewable disposition. As a strong warning threshold, stop appending
+  when a markdown packet exceeds either 1,000 lines or 50 KiB, or when it
+  contains more than ten theorem/falsifier milestones. Split before doing
+  further substantive work unless the file is a generated artifact or an
+  explicitly declared index/compendium.
+- A line that crosses that threshold must become a versioned
+  `marici:research_programme` (or an explicitly typed microprogramme) in the
+  epistemic graph. Keep a short programme index recording scope, hard core,
+  live frontier, superseded branches, and links to bounded successor packets.
+  New results belong in those successor packets, not at the tail of the giant
+  predecessor file. File size alone does not establish scientific importance;
+  this rule exists to preserve claim identity, supersession, reviewability,
+  and parallel ownership.
+- Do not silently split or rewrite another researcher's oversized packet.
+  Notify its owner, register the programme boundary, and let the owner perform
+  the content-preserving extraction. Until extraction, cite the exact heading
+  or line locator rather than treating the whole packet as one claim.
 - Checkers use exact symbolic arithmetic (sympy rationals, no floats),
   include deliberate-failure tests that must exhibit the predicted nonzero
   obstruction, and record true residuals — never weaken a test to force a
@@ -194,6 +217,29 @@ Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
   construction. If the required dependency contract is unclear, inspect the
   repository configuration and existing checker invocations before running or
   modifying any environment.
+
+### Lean formalization lane
+
+`marici.Buzzard` owns `research/buzzard/`. Formalization work begins only from
+a frozen ledger claim or an explicitly bounded theorem packet; do not turn an
+active conjecture into a theorem by importing its conclusion as an assumption.
+
+- Record the exact informal source entry, formal theorem statement, every
+  assumption, gauge/equivalence convention, and the command that checks it.
+- Prefer small reusable definitions for selectors, quotients, jointly faithful
+  probe families, transport certificates, and coherence witnesses over one-off
+  proofs tied to display coordinates.
+- Treat failure to type a map, quotient, source normalization, or admissible
+  equivalence as a research result. Report the missing datum to the claim owner
+  through the epistemic graph rather than silently strengthening assumptions.
+- Inspect the repository's existing Lean/lake toolchain before installing or
+  generating anything. Do not install a global toolchain or create a second
+  project root without operator authorization.
+- Keep exploratory Lean files under `research/buzzard/`. Move reusable code to
+  a shared formal library only after explicit agreement with its consumers.
+- A passing Lean build certifies only the stated formal theorem from its stated
+  assumptions; it does not certify that those assumptions are physically or
+  source-derived.
 
 ### Operator intuition and falsification
 

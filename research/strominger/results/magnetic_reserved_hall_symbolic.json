@@ -1,0 +1,72 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_reserved_hall_symbolic_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic closed Hall assignment with bounded arithmetic audit",
+    "domain": "all g>=2 and even q>=2",
+    "audit": {
+      "g": [
+        2,
+        100
+      ],
+      "q_even": [
+        2,
+        100
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "HALL.distinct",
+      "statement": "the closed boundary matching assigns distinct target rows",
+      "status": "pass",
+      "detail": "blocks=4950; failures=[]"
+    },
+    {
+      "id": "HALL.reserve",
+      "statement": "the matching avoids both future semantic boundary rows",
+      "status": "pass",
+      "detail": "r_minus=-q-g-2; r_plus=-g-1"
+    },
+    {
+      "id": "HALL.weights",
+      "statement": "every assigned path coefficient is nonzero",
+      "status": "pass",
+      "detail": "2<=g<=100; even 2<=q<=100"
+    },
+    {
+      "id": "REPAIR.parity",
+      "statement": "row-zero and row-one endpoint collisions split by grade parity",
+      "status": "pass",
+      "detail": "q is even"
+    },
+    {
+      "id": "REPAIR.zero",
+      "statement": "the m=0 plus column has a nonzero B1 repair at row zero",
+      "status": "pass",
+      "detail": "factor -g(g+3)"
+    },
+    {
+      "id": "REPAIR.one",
+      "statement": "the row-one B1 repair has the unique admissible zero (5,12)",
+      "status": "pass",
+      "detail": "zeros=[(5, 12)]"
+    },
+    {
+      "id": "REPAIR.chain",
+      "statement": "the unique zero is bypassed by a two-column alternating chain",
+      "status": "pass",
+      "detail": "rows=[4,3]; weights=[-6720, -33600]"
+    },
+    {
+      "id": "FALSIFIER.naive",
+      "statement": "unrepaired left endpoints fail at odd grade",
+      "status": "pass",
+      "detail": "witness (g,q)=(3,8)"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "At the old block a_max=q preceding the first even boundary extension, an explicit Hall matching avoids the future rows -q-g-2 and -g-1. Generic columns use endpoints; odd-grade collisions use B1 repairs. The nominal row-one repair has the unique admissible zero (g,q)=(5,12), bypassed by the two-column alternating chain (a,row)=(4,4),(6,3). Row distinctness and nonvanishing then prove reserved-row Hall existence for all g>=2 and even q>=2. This is support existence, not yet actual-weight noncancellation of the selected old minor."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_reserved_minor_atlas_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact bounded weighted-minor atlas audit",
+    "audit": {
+      "g": [
+        2,
+        12
+      ],
+      "q_even": [
+        2,
+        30
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "CHART.zeros",
+      "statement": "the preferred weighted chart vanishes exactly on q=2g+8 at even grade",
+      "status": "pass",
+      "detail": "blocks=165; zeros=[(2, 12), (4, 16), (6, 20), (8, 24), (10, 28)]"
+    },
+    {
+      "id": "ATLAS.row3",
+      "statement": "replacing observation row 1 by row 3 restores every vanished chart",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "OBJECT.rank",
+      "statement": "no audited chart zero is an exterior-power zero",
+      "status": "pass",
+      "detail": "a second maximal minor is nonzero at every preferred-chart zero"
+    },
+    {
+      "id": "DEFECT.corank",
+      "statement": "every preferred-chart zero has corank exactly one",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "DEFECT.cocircuit",
+      "statement": "the row cocircuit has the fixed reflection-window support",
+      "status": "pass",
+      "detail": "support={1,0,-2,...,-g-2}; failures=[]"
+    },
+    {
+      "id": "DEFECT.circuit",
+      "statement": "the column circuit is (0,-) plus the local plus chain",
+      "status": "pass",
+      "detail": "support={(0,-),(4,+),...,(q-g,+)}; failures=[]"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "The explicit reserved Hall chart has a coordinate-degeneracy family q=2g+8 at even grade, transported from the symbolic onset cocircuit. Each audited zero has corank one. Its row cocircuit is supported exactly on {1,0,-2,...,-g-2}, while its column circuit terminates at the onset depth: (0,-) and the plus chain a=4,...,q-g=g+8. Exchanging observation row 1 for row 3 gives a nonzero maximal minor. Thus the later tail transports a presentation witness but creates no new rank defect. Unbounded alternate-chart nonvanishing remains the transverse-response problem."
+}

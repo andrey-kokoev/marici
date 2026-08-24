@@ -1,0 +1,58 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_even_boundary_atlas_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact finite boundary-adapted atlas theorem",
+    "g": [
+      2,
+      15
+    ],
+    "q_even": [
+      2,
+      30
+    ],
+    "blocks": 210
+  },
+  "checks": [
+    {
+      "id": "ATLAS.reserve",
+      "statement": "the old component remains full rank after reserving future boundary rows",
+      "status": "pass",
+      "detail": "blocks=210; failures=[]"
+    },
+    {
+      "id": "ATLAS.diagonal",
+      "statement": "every first even boundary Schur block is semantically diagonal",
+      "status": "pass",
+      "detail": "2<=g<=15; even 2<=q<=30"
+    },
+    {
+      "id": "ATLAS.pivots",
+      "statement": "its diagonal entries are the stable minus and Casimir pivots",
+      "status": "pass",
+      "detail": "a=q+2"
+    },
+    {
+      "id": "ATLAS.q12",
+      "statement": "the boundary-adapted chart crosses the (2,12) preferred-chart zero",
+      "status": "pass",
+      "detail": "[[-5670, 0], [0, 1680]]"
+    },
+    {
+      "id": "ATLAS.g5q4",
+      "statement": "the (5,4,3) residual disappears in semantic boundary coordinates",
+      "status": "pass",
+      "detail": "[[423360, 0], [0, -483840]]"
+    },
+    {
+      "id": "FALSIFIER.reserve",
+      "statement": "the reserved-row condition is operationally necessary",
+      "status": "pass",
+      "detail": "semantic rows are excluded from the old chart"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "At the first even transfer step a=q+2, choose an old maximal minor while reserving the two future semantic boundary rows. Across 210 exact blocks this chart always exists and the resulting Schur complement is diagonal with the same minus and Casimir pivots as stable transport. It crosses both the (2,12) preferred-chart zero and the (5,4,3) 99/40 coordinate residual. Those events are presentation failures, not failures of invariant even transport."
+}
