@@ -541,3 +541,52 @@ leaving margin about \(0.0388\). A directed interval quadrature of this one
 scalar ratio would certify the weighted Schur bound and remove the complete
 odd sector. No fitted eigenvector is needed: the integer coefficients
 \((-7,-32)\) retain essentially the full margin of the optimized scout.
+
+## Exact even secular gate
+
+Let
+
+\[
+A=d_{44}I-B_{\rm op},
+\qquad
+c=K_{44}(\log2).
+\]
+
+Once \(A\) is known to have exactly one negative direction and the constant
+vector couples to it, the rank-one inertia formula says that
+
+\[
+A+c|1\rangle\langle1|\ge0
+\quad\Longleftrightarrow\quad
+1+c\langle1,A^{-1}1\rangle\le0.
+\]
+
+The coefficient is source-fixed and has the exact prime-two form
+
+\[
+c
+=\sqrt2-\sum_{n=1}^{43}2^{-(2n+1/2)}
+=\frac{5+4^{-43}}{3\sqrt2}.
+\]
+
+Likewise
+
+\[
+d_{44}
+=-\log\pi-\gamma-\frac\pi2-3\log2
++4\sum_{n=0}^{43}\frac1{4n+1}.
+\]
+
+Thus the secular test contains no fitted coefficient. Gauss--Legendre
+Nyström values converge slowly because of the diagonal cusp, but extrapolation
+in the observed \(N^{-2}\) error gives
+
+\[
+1+c\langle1,A^{-1}1\rangle
+\approx-4.15\times10^{-6}.
+\]
+
+Its sign and scale agree with the positive BVP eigenvalue
+\(2.7188\times10^{-6}\). This is the genuinely near-saturated theorem: the
+odd-sector inequality has percent-scale reserve, whereas the even completion
+crosses its scalar repair threshold by only a few parts in a million.
