@@ -25,6 +25,10 @@ kinetic = mp.quad(
     * (1 - normalized_cosine_correlation(distance)),
     [0, length],
 )
+universal_log_kinetic = mp.quad(
+    lambda distance: (1 - normalized_cosine_correlation(distance)) / distance,
+    [0, length],
+)
 archimedean = h_zero + tail + kinetic
 
 cosine_norm_squared = length / 2
@@ -42,10 +46,15 @@ result = {
     "h_infinity_at_zero": mp.nstr(h_zero, 70),
     "outside_support_tail": mp.nstr(tail, 70),
     "inside_support_difference_energy": mp.nstr(kinetic, 70),
+    "universal_one_over_r_difference_energy": mp.nstr(
+        universal_log_kinetic, 70
+    ),
     "archimedean_cosine_energy": mp.nstr(archimedean, 70),
     "rank_one_boundary_energy": mp.nstr(boundary, 70),
     "total_cosine_rayleigh": mp.nstr(archimedean + boundary, 70),
+    "one_over_r_comparison_total_lower_bound": mp.nstr(
+        h_zero + tail + universal_log_kinetic + boundary, 70
+    ),
 }
 
 print(json.dumps(result, indent=2))
-

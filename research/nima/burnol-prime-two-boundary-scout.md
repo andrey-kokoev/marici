@@ -257,3 +257,25 @@ This independently confirms the FFT normalization. The remaining theorem is
 a rank-one-strengthened logarithmic Poincaré inequality at the arithmetic
 width \(L=\log2\), extending this balance from the cosine trial mode to every
 supported function.
+
+The universal lower comparison
+
+\[
+\frac{e^{r/2}}{\sinh r}\ge\frac1r
+\]
+
+is too coarse. On the same cosine it supplies difference energy only
+
+\[
+1.05878776646842,
+\]
+
+and would yield the negative total bound
+
+\[
+-0.189593567414004.
+\]
+
+Therefore the prospective theorem is not generic support uncertainty for the
+logarithmic Laplacian. It must retain the finer completed archimedean weight;
+that source coefficient carries essential positivity information.
