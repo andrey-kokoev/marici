@@ -784,3 +784,29 @@ rectangle
 
 Monotonicity then excludes every even root at \(\lambda\le0\). Combined with
 the directed odd Schur theorem, this would prove \(T_{44}>0\).
+
+The fixed \(\lambda=0\) inertia is now directed. The stabilized 256-bit ball
+plane was transformed by the exact symmetrizer, converted to the center
+response, and subjected to a midpoint orthogonal congruence. Interval
+Gershgorin discs certify
+
+\[
+\operatorname{inertia}P(0)=(43-,1+)
+\]
+
+with no unresolved disc. In particular, the near-zero negative response
+direction is separated from zero despite its scale.
+
+At \(\lambda\to-\infty\), the rank-one coupling vanishes and the response is
+exactly diagonal: the growing \(a_0\) channel is positive and the 43 decaying
+channels are negative. Hence the limiting inertia is also \((43-,1+)\).
+Since \(P'(\lambda)\succeq0\), equality of these endpoint inertias would rule
+out every zero crossing. The only remaining logical gate is global existence
+of this Riccati chart: the position block must have no zero on
+
+\[
+(x,\lambda)\in[0,L/2]\times(-\infty,0].
+\]
+
+Thus the even positivity problem has reduced from an 88-dimensional spectral
+claim to one matrix disconjugacy/pole-exclusion theorem.
