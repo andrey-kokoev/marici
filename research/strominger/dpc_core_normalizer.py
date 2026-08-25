@@ -459,6 +459,39 @@ def audit_resource_ssa_programs(contract: dict[str, Any]) -> list[dict[str, Any]
     return audits
 
 
+def _forget_core_capability(capability: dict[str, Any], fields: list[str]) -> dict[str, Any]:
+    evidence = {
+        "target_operation": capability.get("scope", [None])[0],
+        "authority_kind": capability.get("authority_kind"),
+        "source_authority_evidence": capability.get("source_constructor_evidence"),
+    }
+    return {field: evidence.get(field) for field in fields}
+
+
+def audit_forgetful_projections(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    capabilities = {item["id"]: item for item in contract.get("native_capabilities", [])}
+    audits = []
+    for item in contract.get("forgetful_projection_audits", []):
+        source = capabilities.get(item.get("native_capability"))
+        alternate = item.get("alternate_core_preimage", {})
+        fields = item.get("legacy_fields", [])
+        left = _forget_core_capability(source or {}, fields)
+        right = _forget_core_capability(alternate, fields)
+        source_core = {field: (source or {}).get(field) for field in LEGACY_IMPORT_FIELDS}
+        alternate_core = {field: alternate.get(field) for field in LEGACY_IMPORT_FIELDS}
+        errors = []
+        if source is None or not item.get("projection_constructor"):
+            errors.append("forgetful_projection_untyped")
+        if left != right or source_core == alternate_core:
+            errors.append("forgetful_projection_noninjectivity_unwitnessed")
+        if item.get("claims_canonical_reverse_lift") or item.get("reverse_lift_constructor") is not None:
+            errors.append("canonical_reverse_lift_laundered")
+        if set(fields) != {"target_operation", "authority_kind", "source_authority_evidence"}:
+            errors.append("forgetful_projection_wrong_legacy_signature")
+        audits.append({"id": item["id"], "passed": not errors, "errors": errors, "legacy_projection": left, "distinct_core_preimages": source_core != alternate_core, "canonical_reverse_exists": False})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -488,10 +521,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     execution_audits = audit_native_execution_traces(contract)
     cocircuit_audits = audit_trusted_base_cocircuits(contract)
     resource_ssa_audits = audit_resource_ssa_programs(contract)
+    projection_audits = audit_forgetful_projections(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -509,4 +543,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "native_execution_traces": execution_audits,
         "trusted_base_cocircuits": cocircuit_audits,
         "resource_ssa_programs": resource_ssa_audits,
+        "forgetful_projections": projection_audits,
     }

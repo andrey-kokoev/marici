@@ -129,3 +129,21 @@ compensation produces a settled effect rather than reminting the original
 capability. Declared concurrent consumers may proceed without a linearizer only
 on disjoint partition regions. Resource reuse, inflation, unauthorized release,
 reminting compensation, and overlapping concurrent consumption are rejected.
+
+## Forgetful projection to legacy evidence
+
+The named projection forgets identity, resource quantity, modality, physical
+roots, and epoch, retaining only target operation, authority kind, and source
+evidence. It maps two inequivalent core capabilities—one linear use at `e` and
+one bounded-two-use capability at independent epoch family `f`—to the same
+legacy evidence packet:
+
+\[
+U(c_{\mathrm{linear},e})=U(c_{\mathrm{bounded2},f}).
+\]
+
+Hence the projection is non-injective and has no canonical reverse lift. A
+reverse construction must choose precisely the fields the legacy calculus does
+not contain, so it requires new source authority. Claiming a canonical lift,
+omitting the projection constructor, or smuggling resource fields into the
+legacy signature is rejected.

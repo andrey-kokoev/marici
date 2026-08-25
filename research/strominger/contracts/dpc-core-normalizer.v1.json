@@ -102,6 +102,26 @@
       "expected_terminal_states":{"effectB":"effect","settledA":"settled"}
     }
   ],
+  "forgetful_projection_audits": [
+    {
+      "id":"native_challenge_to_legacy_evidence",
+      "native_capability":"native_manifest_challenge_use",
+      "projection_constructor":"forget_resource_temporal_execution_structure",
+      "legacy_fields":["target_operation","authority_kind","source_authority_evidence"],
+      "alternate_core_preimage":{
+        "nominal_identity":"cap:manifest-challenge:f:bounded2",
+        "authority_kind":"executor",
+        "scope":["submit_manifest_challenge"],
+        "modality":"bounded_2",
+        "resource":{"challenge_uses":2},
+        "physical_support_roots":["alternate_challenge_ledger","configuration_quorum"],
+        "epoch":{"parameter":"f","offset":0},
+        "source_constructor_evidence":"one source-issued challenge use bound to arbitrary active epoch e and the configuration quorum"
+      },
+      "claims_canonical_reverse_lift":false,
+      "reverse_lift_constructor":null
+    }
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
