@@ -4,10 +4,12 @@ Owner: `marici.Kitaev`
 
 ## Status
 
-This packet upgrades the source-authorized capability principle from a typing
-rule to a generative explanation at the logical endpoint layer. It does not
-yet promote the complete five-rail compiler to `Executable`: encoded
-intertwining or a verified resource factory remains open.
+This packet gives an exact conditional realization at the logical endpoint
+layer. A subsequent hostile source-independence audit retracts its original
+classification as a proper Deutschian explanation: the proposed generators
+are target spectral logarithms and are not derived from the native D(S3)
+Hamiltonian. It does not promote the complete five-rail compiler to
+`Executable`.
 
 ## Independently stated source
 
@@ -70,7 +72,7 @@ Fredkin. On the embedding
 |2\rangle\mapsto|10\rangle), Fredkin is controlled qutrit inversion and
 fixes the unused state.
 
-## Why this is explanatory
+## Why this initially appeared explanatory
 
 The same microscopic property—nonlinear conditional phase or exchange—both
 changes the Clifford-hierarchy invariant and generates the missing endpoint
@@ -120,9 +122,10 @@ Consequently:
 \end{array}
 \]
 
-The explanation is now generative at the logical layer. A complete physical
-explanation still requires the encoded-intertwining theorem; claiming the
-full compiler before that theorem would repeat the inference the DPC forbids.
+The logical realization is generative after the couplers are postulated. It
+is not yet a physical explanation because neither the couplers nor their
+calibrations are independently derived, and the encoded-intertwining theorem
+fails for their raw transversal use.
 
 ## Falsifiers
 
@@ -145,3 +148,4 @@ full compiler before that theorem would repeat the inference the DPC forbids.
 - Consolidated result: `results/s3-dpc-explanation-audit.json`
 - Epistemic graph claim: `claim:ff518eb5a5c72ef3a36f`
 - Graph event: `ev-000000003315-8d630deb-f2c2-4990-af4a-21da43959fd5`
+- Hostile correction: `dpc-hostile-source-independence-audit.md`
