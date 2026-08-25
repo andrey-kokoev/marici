@@ -1224,6 +1224,12 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         bridge = old_endorsement & new_endorsement
         if set(audit.get("bridge_witness", [])) != bridge or not bridge or not audit.get("bridge_durable_non_equivocation"):
             err("reconfiguration_bridge_not_non_equivocating", aid, str(sorted(bridge)))
+        fault_kind, fault_bound = audit.get("fault_kind"), audit.get("fault_bound")
+        safe = len(bridge) >= 1 if fault_kind == "crash_recovery" and not audit.get("bridge_members_may_equivocate") else (
+            len(bridge) > fault_bound if fault_kind == "byzantine" and isinstance(fault_bound, int) else False
+        )
+        if audit.get("claimed_safe") != safe:
+            err("incorrect_reconfiguration_fault_threshold", aid, f"bridge={len(bridge)},f={fault_bound},kind={fault_kind}")
         if audit.get("old_only_may_activate_successor") or audit.get("new_only_may_self_activate") or audit.get("claims_authority_by_membership_transport"):
             err("reconfiguration_authority_laundering", aid, "one configuration cannot unilaterally cross the authority boundary")
         if audit.get("conflicting_transition_constructible"):

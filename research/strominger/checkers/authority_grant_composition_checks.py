@@ -473,6 +473,11 @@ def main():
             reconfiguration_audits["joint_transition_epoch_12_to_13"]["bridge_witness"] == ["r2"]
             and reconfiguration_audits["joint_transition_epoch_12_to_13"]["bridge_durable_non_equivocation"]
             and not reconfiguration_audits["joint_transition_epoch_12_to_13"]["conflicting_transition_constructible"],
+        "reconfiguration_threshold_depends_on_fault_model":
+            len(reconfiguration_audits["joint_transition_epoch_12_to_13"]["bridge_witness"]) == 1
+            and reconfiguration_audits["joint_transition_epoch_12_to_13"]["fault_kind"] == "crash_recovery"
+            and len(reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["bridge_witness"])
+            > reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["fault_bound"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
