@@ -1,0 +1,68 @@
+{
+  "schema": "marici.data-descent-packet.v2",
+  "contexts": [
+    {"id": "uv_chart_A", "site": "flavor_uv", "stratum_depth": 0},
+    {"id": "uv_chart_B", "site": "flavor_uv", "stratum_depth": 0},
+    {"id": "physical16", "site": "flavor", "stratum_depth": 1}
+  ],
+  "local_objects": [
+    {"id": "UV_A", "context": "uv_chart_A", "coefficient_type": "probability_simplex", "rank": 2, "grades": ["source"]},
+    {"id": "UV_B", "context": "uv_chart_B", "coefficient_type": "probability_simplex", "rank": 2, "grades": ["source"]},
+    {"id": "Flavor16", "context": "physical16", "coefficient_type": "probability_simplex", "rank": 2, "grades": ["pushforward"]}
+  ],
+  "arrows": [
+    {"id": "uv_chart_change", "kind": "groupoid_arrow", "source": "UV_A", "target": "UV_B", "invertible": true, "authority_evidence": "declared UV gauge and field-redefinition groupoid"},
+    {"id": "uv_to_physical16", "kind": "specialization", "source": "UV_A", "target": "Flavor16"}
+  ],
+  "resource_theories": [
+    {
+      "id": "declared_flavor_source",
+      "admission": "admitted",
+      "resources": [
+        {"id": "physical16_readout", "admitted": true, "authority_evidence": "WP116"}
+      ]
+    },
+    {
+      "id": "proposed_uv_ensemble_source",
+      "extends": "declared_flavor_source",
+      "admission": "proposed",
+      "resources": [
+        {"id": "uv_action_and_measure", "admitted": false},
+        {"id": "covariant_vacuum_matching", "admitted": false},
+        {"id": "frozen_rg_contract", "admitted": false}
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "physical_uv_flavor_ensemble",
+      "subject": "normalized equivalence-invariant probability measure on physical16",
+      "resource_theory": "proposed_uv_ensemble_source",
+      "uses_resources": [],
+      "status": {
+        "kind": "Conditional",
+        "cost": {
+          "physical_gate_count": {"kind": "undefined", "reason": "no source preparation instrument is admitted"},
+          "depth": {"kind": "undefined", "reason": "the UV dynamics is absent"},
+          "magic_ancilla_count": {"kind": "undefined", "reason": "not a circuit claim"}
+        },
+        "required_resource": ["uv_action_and_measure", "covariant_vacuum_matching", "frozen_rg_contract"],
+        "required_resource_mode": "all_of",
+        "preserved_contract": {
+          "id": "full_quotient_measure_descent",
+          "preserved": true,
+          "evidence": "source-equivalent UV presentations must induce identical measures on physical16"
+        }
+      }
+    }
+  ],
+  "evidence_replays": [
+    {
+      "id": "wp117_uv_measure_descent_replay",
+      "checker": "research/flavor/checkers/wp117_uv_measure_descent_replay.py",
+      "artifact": "research/flavor/results/wp117_uv_measure_descent_replay.json",
+      "sha256": "009451bf9ad487e9fbc6402e7505e4f64423692682bde9fd2d219c89223210b5",
+      "expected": {"passed": 4, "total": 4, "decisive_falsifier_realized": true}
+    }
+  ]
+}

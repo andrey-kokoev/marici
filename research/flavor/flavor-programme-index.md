@@ -20,6 +20,10 @@ No complete physical selector is presently established. The next admissible
 advance must independently derive viable UV parameters and normalization before
 flavor readouts, then close the common-domain physical-instrument gates.
 
+The successor is now opened in `flavor-uv-ensemble-microprogramme-index.md`.
+It runs strictly upstream-to-downstream: source and normalization, then a
+quotient-descending `physical16` ensemble, and only then frozen readouts.
+
 ## Current bounded packets
 
 - `flavor-nine-link-conventions.md`: source and equivalence conventions.
