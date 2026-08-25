@@ -71,6 +71,8 @@ def main():
     mechanism_audits = {item["id"]: item for item in packet["mechanism_identification_audits"]}
     rival_audits = {item["id"]: item for item in packet["rival_extension_audits"]}
     rival_admissions = {item["id"]: item for item in packet["rival_admissions"]}
+    rival_reviews = {item["id"]: item for item in packet["rival_admission_reviews"]}
+    identity_audits = {item["id"]: item for item in packet["proposer_identity_invariance_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -178,6 +180,35 @@ def main():
         "incomplete_speculation_cannot_open_challenge":
             rival_admissions["pending_port_incomplete_speculation"]["status"] == "pending"
             and not rival_admissions["pending_port_incomplete_speculation"]["predicts_all_existing_ports"],
+        "rival_admission_has_separated_governance_roles": all(
+            review["incumbent"] not in review["reviewers"]
+            and review["proposer"] not in review["reviewers"]
+            and not set(review["reviewers"]) & set(review["appeal_reviewers"])
+            for review in packet["rival_admission_reviews"]
+        ),
+        "rival_reviewers_have_independent_authority_roots": all(
+            len(review["reviewers"]) == len(set(review["reviewer_authority_roots"]))
+            for review in packet["rival_admission_reviews"]
+        ),
+        "rival_review_is_content_addressed_and_precommitted": all(
+            review["immutable_evidence_packet_sha256"]
+            and review["criteria_committed_before_response"]
+            for review in packet["rival_admission_reviews"]
+        ),
+        "rival_review_preserves_operative_authority_kind": all(
+            review["authority_kind_before"] == review["authority_kind_after"]
+            and review["grants_only_challenge_standing"]
+            for review in packet["rival_admission_reviews"]
+        ),
+        "proposer_identity_does_not_change_admission":
+            identity_audits["same_delta_packet_two_pseudonyms"]["packet_sha256_left"]
+            == identity_audits["same_delta_packet_two_pseudonyms"]["packet_sha256_right"]
+            and identity_audits["same_delta_packet_two_pseudonyms"]["decision_left"]
+            == identity_audits["same_delta_packet_two_pseudonyms"]["decision_right"]
+            and identity_audits["same_delta_packet_two_pseudonyms"]["identity_blinded_during_merits_review"],
+        "every_rival_disposition_has_review_and_appeal":
+            {review["admission_id"] for review in rival_reviews.values()} == set(rival_admissions)
+            and all(review["appeal_available"] and review["appeal_reviewers"] for review in rival_reviews.values()),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -216,6 +247,7 @@ def main():
         "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
         "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
         "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
+        "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

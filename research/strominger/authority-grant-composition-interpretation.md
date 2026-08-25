@@ -97,7 +97,13 @@ The machine-readable fixture suite rejects:
 30. an arbitrary response column opening a challenge without rival authority;
 31. a rival reverse-engineered from the incumbent fit;
 32. an authorized gauge copy mislabeled as a distinct mechanism;
-33. a port-incomplete speculation admitted as a rival.
+33. a port-incomplete speculation admitted as a rival;
+34. the incumbent acting as sole reviewer of its rival;
+35. identical rival packets receiving different decisions by proposer identity;
+36. admission criteria chosen after the rival response is inspected;
+37. an appeal controlled by the original reviewers;
+38. nominally independent reviewers sharing one authority root;
+39. admission review silently upgrading constructor authority to executor authority.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -379,6 +385,42 @@ Hence the open-world DPC rule becomes
 \text{only constructor-bearing, port-total, non-gauge rivals may reopen an
 identification claim}.}
 \]
+
+### Rival-governance law: criticism cannot be licensed by its target
+
+A constructor-complete rival packet still cannot adjudicate itself, and the
+incumbent cannot hold a unilateral veto over its own competition. Admission is
+a second authority-bearing arrow whose input is a frozen, content-addressed
+packet. Its merits criteria must be fixed before the response column is
+inspected.
+
+The admissible governance square separates four roles:
+
+\[
+\text{proposer}\longrightarrow\text{independent merits reviewers}
+\longrightarrow\text{disposition}\longrightarrow\text{independent appeal}.
+\]
+
+Reviewer independence is typed by distinct authority roots, not merely by
+different names. The same packet under two blinded proposer pseudonyms must
+receive the same disposition. Otherwise the process is selecting persons, not
+testing explanations.
+
+Finally, admission grants only standing to challenge the bounded incumbent
+claim. It does not turn constructor evidence into executor, observer, or
+selector authority. Thus
+
+\[
+\boxed{
+\text{fair rival admission}
+=\text{content invariance}+\text{role separation}+\text{appeal}
+-\text{authority promotion}.}
+\]
+
+This answers the governance question without creating an infinite regress:
+review authority is not explanatory authority over the mechanism. It is a
+bounded procedural grant over the admission operation, auditable by packet
+identity, declared authority roots, and a disjoint appeal route.
 
 ### Refinement law: higher coherence
 
