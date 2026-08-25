@@ -74,6 +74,18 @@ a separate verification model produces its certificate. No flavor candidate
 is admitted until one independently validated bounded UV class and its
 accuracy, scale, scheme, time, and resource budgets are frozen.
 
+## First candidate-class audit: WP119
+
+- `flavor-first-bounded-uv-candidate-audit.md`
+- `checkers/wp119_first_bounded_uv_candidate_audit.py`
+- `results/wp119_first_bounded_uv_candidate_audit.json`
+
+WP119 freezes the retrospective four-member class `C_FUV_0`: SM one-loop RG,
+the fixed FDM-2 benchmark, the two-parameter repair, and the WP117 abstract UV
+template. Zero candidates pass the eight-field WP118 admission gate. Because
+all four routes have already inspected historical flavor readouts, no
+agreement with the 1,210-sheet ensemble counts as a protected prediction.
+
 ## Admission gate
 
 A successor may become a physical ensemble only if it provides, before flavor
