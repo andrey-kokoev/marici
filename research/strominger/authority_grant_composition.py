@@ -844,6 +844,55 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if execution.get("second_use_permitted") is not False:
             err("authority_capability_reuse_permitted", eid, str(execution.get("second_use_permitted")))
 
+    # Distributed-consumption no-go.  With identical local views, no message
+    # before execution, and the same deterministic rule, the two decisions are
+    # equal.  Hence neither (0,0) nor (1,1) realizes exactly one success.
+    repair_kinds = {"shared_linearization", "site_partition", "bounded_multiplicity"}
+    for audit in packet.get("distributed_capability_consumption_audits", []):
+        did = audit["id"]
+        certificate = stack_certificates.get(audit.get("certificate_id"))
+        sites = audit.get("sites", [])
+        outcomes = audit.get("symmetric_deterministic_outcomes", [])
+        if certificate is None or len(sites) != 2:
+            err("untyped_distributed_capability_audit", did, str(sites))
+            continue
+        symmetric_partition = bool(
+            audit.get("identical_initial_local_views")
+            and audit.get("same_deterministic_local_rule")
+            and not audit.get("communication_before_execution")
+        )
+        exact_outcomes = sorted(outcomes) == [[0, 0], [1, 1]]
+        if not symmetric_partition or not exact_outcomes or any(sum(outcome) == 1 for outcome in outcomes):
+            err("invalid_distributed_indistinguishability_witness", did, str(outcomes))
+        if audit.get("local_protocol_guarantees_exactly_one"):
+            err("false_distributed_single_use_guarantee", did, "symmetric sites cannot choose different outcomes")
+        if audit.get("delayed_coherence_messages_restore_safety"):
+            err("post_execution_coherence_cannot_restore_linearity", did, "messages arrive after both local commits")
+        if audit.get("local_nonce_logs_are_global"):
+            err("local_nonce_state_misclassified_as_global_linearity", did, "duplicated nonce logs do not linearize")
+
+        repairs = {item.get("kind"): item for item in audit.get("repairs", [])}
+        if set(repairs) != repair_kinds:
+            err("incomplete_distributed_consumption_trichotomy", did, str(sorted(repairs)))
+            continue
+        linear = repairs["shared_linearization"]
+        if not linear.get("source_authorized") or not linear.get("atomic_compare_and_set") or linear.get("state_cardinality") != 2:
+            err("missing_shared_linearization_authority", did, str(linear))
+        if linear.get("capability_kind_before") != linear.get("capability_kind_after"):
+            err("distributed_linearizer_authority_laundering", did, f"{linear.get('capability_kind_before')}->{linear.get('capability_kind_after')}")
+        if sorted(linear.get("global_outcome", [])) != [0, 1] or not linear.get("preserves_single_use"):
+            err("linearizer_fails_global_single_use", did, str(linear.get("global_outcome")))
+        partition = repairs["site_partition"]
+        if not partition.get("partitioned_before_distribution") or partition.get("site_token_count") != 1:
+            err("late_or_non_linear_site_partition", did, str(partition))
+        if partition.get("semantic_change") != "eligible_locus_restricted":
+            err("site_partition_semantics_untyped", did, str(partition.get("semantic_change")))
+        multiplicity = repairs["bounded_multiplicity"]
+        if multiplicity.get("resource_kind_after") != "bounded_multiplicity" or multiplicity.get("bound") != 2:
+            err("untyped_bounded_multiplicity_repair", did, str(multiplicity))
+        if multiplicity.get("still_claims_single_use"):
+            err("bounded_multiplicity_mislabeled_single_use", did, str(multiplicity.get("bound")))
+
     return errors
 
 

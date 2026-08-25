@@ -133,8 +133,9 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "fa659b755c696e405fae0f14aad484231c91fdb150fe9eea745f4dad4e3548d8",
+  "contract_sha256": "80e5041d9d9b9815570e0678367ef40ddb8cc7409b7dbbdbea8dc51ae6f30b8a",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
+  "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "gates": {
     "all_hostiles_rejected": true,
     "appeal_authority_is_certified_and_separate": true,
@@ -151,6 +152,7 @@
     "composition_preserves_authority_kind": true,
     "counterfactual_deletion_separates_presentation_from_source": true,
     "descent_stabilizer_is_source_authorized": true,
+    "distributed_consumption_trichotomy_is_typed": true,
     "every_rival_disposition_has_review_and_appeal": true,
     "explanatory_provenance_is_forward_and_source_rooted": true,
     "finite_interventions_identify_declared_mechanisms": true,
@@ -180,6 +182,7 @@
     "rival_review_is_content_addressed_and_precommitted": true,
     "rival_review_preserves_operative_authority_kind": true,
     "rival_reviewers_have_independent_authority_roots": true,
+    "shared_linearizer_is_minimal_true_single_use_repair": true,
     "source_authorized_gauge_descends_stackily": true,
     "source_deletion_revokes_authority_not_cached_output": true,
     "source_derived_probe_revalidates_extended_family": true,
@@ -193,7 +196,8 @@
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
     "three_atlas_comparison_cells_form_zero_cocycle": true,
-    "transport_requires_authority_preservation": true
+    "transport_requires_authority_preservation": true,
+    "two_site_indistinguishability_no_go_is_exact": true
   },
   "hostile": {
     "admission_review_upgrades_operative_authority": {
@@ -229,6 +233,15 @@
         "nonunique_global_authority_descent"
       ],
       "expected_code": "nonunique_global_authority_descent",
+      "passed": true,
+      "valid": false
+    },
+    "bounded_multiplicity_called_single_use": {
+      "description": "Allowing both sites to execute is presented as preserving the original linear resource type.",
+      "error_codes": [
+        "bounded_multiplicity_mislabeled_single_use"
+      ],
+      "expected_code": "bounded_multiplicity_mislabeled_single_use",
       "passed": true,
       "valid": false
     },
@@ -374,6 +387,15 @@
       "passed": true,
       "valid": false
     },
+    "delayed_messages_retroactively_restore_linearity": {
+      "description": "Coherence messages arriving after both commits are claimed to undo one completed execution.",
+      "error_codes": [
+        "post_execution_coherence_cannot_restore_linearity"
+      ],
+      "expected_code": "post_execution_coherence_cannot_restore_linearity",
+      "passed": true,
+      "valid": false
+    },
     "deletion_survival_without_source_reconstruction": {
       "description": "The process is claimed to survive deletion of Bprime without a surviving source-derived reconstruction.",
       "error_codes": [
@@ -498,6 +520,24 @@
       "passed": true,
       "valid": false
     },
+    "linearizer_has_no_source_authority": {
+      "description": "An atomic register orders executions but has no grant to decide this capability's consumption.",
+      "error_codes": [
+        "missing_shared_linearization_authority"
+      ],
+      "expected_code": "missing_shared_linearization_authority",
+      "passed": true,
+      "valid": false
+    },
+    "local_nonce_logs_called_global": {
+      "description": "Two duplicated local nonce stores are treated as one globally linear consumption record.",
+      "error_codes": [
+        "local_nonce_state_misclassified_as_global_linearity"
+      ],
+      "expected_code": "local_nonce_state_misclassified_as_global_linearity",
+      "passed": true,
+      "valid": false
+    },
     "new_rival_but_old_authority_retained": {
       "description": "An unresolved new candidate is admitted while the old identification authority is silently retained.",
       "error_codes": [
@@ -542,6 +582,15 @@
         "triple_authority_coherence_failure"
       ],
       "expected_code": "triple_authority_coherence_failure",
+      "passed": true,
+      "valid": false
+    },
+    "partitioned_sites_claim_exactly_one": {
+      "description": "Two symmetric sites with no pre-execution communication each claim their local rule guarantees exactly one global success.",
+      "error_codes": [
+        "false_distributed_single_use_guarantee"
+      ],
+      "expected_code": "false_distributed_single_use_guarantee",
       "passed": true,
       "valid": false
     },
@@ -736,6 +785,15 @@
       "passed": true,
       "valid": false
     },
+    "site_partition_occurs_after_distribution": {
+      "description": "Both sites first receive the unrestricted token and site scope is assigned only after they may execute.",
+      "error_codes": [
+        "late_or_non_linear_site_partition"
+      ],
+      "expected_code": "late_or_non_linear_site_partition",
+      "passed": true,
+      "valid": false
+    },
     "source_perturbation_leaves_coherence_inert": {
       "description": "The alleged source is perturbed but the coherence witness is merely replayed unchanged.",
       "error_codes": [
@@ -872,14 +930,14 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "86cbc2e84162d68eac1cb777bef5607a874ea241d4876e0bc66ded75eea9f1f4",
-  "hostile_passed": 71,
-  "hostile_total": 71,
+  "hostile_fixture_sha256": "819b5b472301bea1950d7ca555846a5d0c5208091d46017220249f505675b307",
+  "hostile_passed": 77,
+  "hostile_total": 77,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 58,
+  "passed_gates": 61,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -889,6 +947,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 58,
+  "total_gates": 61,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
