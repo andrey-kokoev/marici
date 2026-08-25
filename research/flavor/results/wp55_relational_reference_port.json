@@ -1,0 +1,33 @@
+{
+  "schema": "marici.flavor.relational-reference-port.v1",
+  "arithmetic": "exact SymPy rational matrix algebra",
+  "original_domain": "Yukawa Gram data modulo full common-left U(3)_Q",
+  "extended_domain": "pairs (H,r) with a normalized Q-space reference ray r",
+  "relative_readout": "O_r(H) = r^dag H r",
+  "exact_values": {
+    "O_r_H": "1",
+    "O_r_QHQdag": "73/25",
+    "O_Qr_QHQdag": "1"
+  },
+  "groupoids": {
+    "original": "H -> Q H Q^dag; fixed-r readout does not descend",
+    "relational": "(H,r) -> (Q H Q^dag,Qr); readout descends",
+    "fixed_reference_gauge": "residual arrows lie in Stab(r)"
+  },
+  "classification": {
+    "selector_on_original_physical16": false,
+    "rigidifier_of_original_chart": false,
+    "new_relational_experiment": true,
+    "absolute_phase_recovery": false,
+    "physical_instrument": "none declared for preparing or measuring a generation-space reference ray independently of the Yukawa data"
+  },
+  "smallest_exact_falsifier": "the same weak-basis orbit gives O_r(H)=1 and O_r(QHQ^dag)=73/25 when r is illegally held fixed",
+  "gates": {
+    "weak_basis_related_states_have_same_spectrum": true,
+    "fixed_reference_readout_fails_original_quotient_descent": true,
+    "simultaneous_state_reference_action_restores_descent": true,
+    "declared_reference_has_nontrivial_stabilizer": true,
+    "readout_is_invariant_under_reference_stabilizer": true
+  },
+  "conclusion": "A reference port repairs descent only by enlarging the state and replacing the full groupoid by the relational/stabilizer groupoid; it does not select the original physical16 quotient."
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "marici.flavor.rg-transport-selector-gate.v1",
+  "source_equations": [
+    "S16",
+    "S17",
+    "S18-S21"
+  ],
+  "arithmetic": "exact SymPy rational matrix algebra and symbolic exponential flow",
+  "domain": "nondegenerate Yukawa pairs on any interval where the one-loop ODE exists uniquely",
+  "quotient": "full weak-basis U(3)_Q x U(3)_u x U(3)_d",
+  "operation": "one-loop Standard Model Yukawa/CKM RG transport",
+  "descent": "yes: the beta vector field is equivariant under the full weak-basis action",
+  "leading_flow": {
+    "map": "(V_13,V_31) -> exp(k t) (V_13,V_31)",
+    "determinant": "exp(2*k*t)",
+    "ratio_invariant": "V_13/V_31",
+    "contextual_partition_change": "none"
+  },
+  "classification": {
+    "separates_physical_points": "transport preserves distinctions by local invertibility",
+    "selects_smaller_admissible_family": false,
+    "rigidifies_chart_presentations": false,
+    "selector": false,
+    "rigidifier": false,
+    "physical_instrument": "no standalone instrument: RG is theoretical scale transport; boundary data and a frozen normalization are required"
+  },
+  "smallest_exact_falsifier": "the nonzero flow determinant exp(2*k*t), which proves the leading source map has full image rather than a proper selected image",
+  "remaining_gate": "an independently fixed UV boundary condition, fixed locus, threshold matching law, or normalization not inferred from the IR fit",
+  "gates": {
+    "one_loop_yukawa_beta_is_full_weak_basis_covariant": true,
+    "leading_common_rescaling_flow_is_invertible": true,
+    "leading_unitarity_triangle_ratio_is_constant": true,
+    "flow_has_no_rank_loss": true,
+    "transport_alone_has_no_proper_image": true
+  },
+  "conclusion": "The source RG operation descends to the physical quotient but is transport, not selection."
+}

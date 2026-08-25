@@ -1,0 +1,69 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "arbitrary_depth_parity_kernel_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact bounded arbitrary-depth/cutoff audit",
+    "grades": [
+      2,
+      8
+    ],
+    "depth_universe": [
+      0,
+      2,
+      4,
+      6,
+      8
+    ],
+    "depth_sets": 32,
+    "cutoffs": [
+      [
+        -12,
+        4
+      ],
+      [
+        -8,
+        2
+      ],
+      [
+        -6,
+        0
+      ],
+      [
+        -4,
+        4
+      ],
+      [
+        -2,
+        2
+      ],
+      [
+        0,
+        4
+      ]
+    ]
+  },
+  "checks": [
+    {
+      "id": "MAGNETIC.arbitrary",
+      "statement": "the magnetic law holds for every audited nonconsecutive depth set",
+      "status": "pass",
+      "detail": "cases=1344; failures=[]"
+    },
+    {
+      "id": "ELECTRIC.arbitrary",
+      "statement": "the electric law holds for every audited nonconsecutive depth set",
+      "status": "pass",
+      "detail": "cases=1344; failures=[]"
+    },
+    {
+      "id": "BOUNDARY.visibility",
+      "statement": "source cutoffs only hide named supports and create no new class",
+      "status": "pass",
+      "detail": "six independent Laurent windows per grade/depth set"
+    }
+  ],
+  "n_pass": 3,
+  "n_fail": 0,
+  "verdict": "Across every subset of {0,2,4,6,8}, six independent Laurent windows, and grades 2 through 8, the magnetic kernel contains exactly visible towers plus visible E1/E2 magnetic circuits, while the electric kernel contains exactly the two visible branch-sign circuits. No nonconsecutive depth choice or source cutoff creates a new class. The unbounded arbitrary-set theorem follows by restricting the proved consecutive-depth classification."
+}

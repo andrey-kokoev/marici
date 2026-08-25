@@ -1,0 +1,56 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "electric_kernel_classification_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic electric-kernel theorem with exact audits",
+    "audit": "2<=g<=12,q<=20,a<=16; center through g=30,k=20"
+  },
+  "checks": [
+    {
+      "id": "BRANCH.rank",
+      "statement": "electric and magnetic ranks agree on every q>0 component",
+      "status": "pass",
+      "detail": "blocks=220; failures=[]"
+    },
+    {
+      "id": "BRANCH.defects",
+      "statement": "electric rank defects occur only at the two grade-two components",
+      "status": "pass",
+      "detail": "[(2, 1, 1), (2, 7, 1)]"
+    },
+    {
+      "id": "CIRCUIT.E1",
+      "statement": "the primitive electric q=1 circuit is 1+zb^-2",
+      "status": "pass",
+      "detail": "[[1, 1]]"
+    },
+    {
+      "id": "CIRCUIT.E2",
+      "statement": "the primitive electric q=7 circuit is the branch-sign transform",
+      "status": "pass",
+      "detail": "[[1, 3, -2]]"
+    },
+    {
+      "id": "CENTER.injective",
+      "statement": "the electric q=0 center is injective rather than a tower kernel",
+      "status": "pass",
+      "detail": "2<=g<=30,k=20; failures=[]"
+    },
+    {
+      "id": "JOINT.E1",
+      "statement": "the electric E1 circuit has nonzero magnetic readout",
+      "status": "pass",
+      "detail": "M!=0"
+    },
+    {
+      "id": "JOINT.E2",
+      "statement": "the electric E2 circuit has nonzero magnetic readout",
+      "status": "pass",
+      "detail": "M!=0"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "For q>0, electric and magnetic blocks are related by a reflected-branch sign gauge and have identical rank. Thus the only electric circuits are the grade-two sign transforms 1+zb^-2 and zb^-8+3z^-4*zb^2-2z^-6. At q=0 electric antisymmetry is absent: E=2A, injective by the one-sheet theorem. The electric and magnetic kernels are disjoint, and their pair is faithful."
+}

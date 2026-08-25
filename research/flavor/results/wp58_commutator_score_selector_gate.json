@@ -1,0 +1,24 @@
+{
+  "schema": "marici.flavor.commutator-score-selector-gate.v1",
+  "arithmetic": "exact SymPy Gaussian-rational matrix algebra",
+  "functional": "C(Hu,Hd)=Tr([Hu,Hd]^dag[Hu,Hd])",
+  "spectral_formula": "2 sum_{i<j}(u_i-u_j)^2 |(Hd)_ij|^2",
+  "exact_example_score": "236",
+  "descent": "yes under full simultaneous U(3)_Q conjugation",
+  "physical_instrument": "the scalar is reconstructible from masses and CKM data; no admitted dynamics extremizes it",
+  "classification": {
+    "discriminator": true,
+    "selector_without_extra_law": false,
+    "rigidifier": false,
+    "minimum_locus": "commuting Hu,Hd; experimentally excluded by mixing"
+  },
+  "smallest_exact_falsifier": "one nonzero off-diagonal Hd entry makes C>0; zero-selection predicts no physical mixing",
+  "conclusion": "An invariant positive score can be instrumented as a readout without becoming a selector; extremization is the missing unauthorized arrow.",
+  "gates": {
+    "score_is_full_weak_basis_invariant": true,
+    "score_equals_positive_spectral_sum": true,
+    "generic_mixing_score_is_strictly_positive": true,
+    "commuting_locus_score_is_zero": true,
+    "nondegenerate_zero_locus_is_commuting_locus": true
+  }
+}

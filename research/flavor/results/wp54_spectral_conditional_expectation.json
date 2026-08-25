@@ -1,0 +1,30 @@
+{
+  "schema": "marici.flavor.spectral-conditional-expectation.v1",
+  "arithmetic": "exact SymPy rational and Gaussian-rational matrix algebra",
+  "domain": "nondegenerate Hermitian Yukawa Gram pairs (H_u,H_d)",
+  "quotient": "simultaneous conjugation by full U(3)_Q; right-handed basis already removed by Gram formation",
+  "operation": "E_u(H_d) = sum_i P_i^u H_d P_i^u",
+  "descent": "yes: E_{QH_uQ^dag}(QH_dQ^dag) = Q E_{H_u}(H_d) Q^dag",
+  "proper_image": "the commutant of H_u (diagonal down Gram in the up spectral frame)",
+  "contextual_partition": {
+    "before": "generic physical16 points with mixing",
+    "fixed_locus": "commuting H_u,H_d; generically permutation/phase CKM with J=0"
+  },
+  "classification": {
+    "mathematical_selector": true,
+    "physical_selector": false,
+    "rigidifier": false,
+    "reason_physical_selector_fails": "the source defines the spectral data but no flavor dynamics or instrument applies the pinching; its fixed locus also excludes observed nonzero mixing",
+    "physical_instrument": "none admitted for the projection; CKM measurements instrument its failure"
+  },
+  "smallest_exact_falsifier": "one nonzero off-diagonal matrix element of H_d in the H_u eigenbasis (equivalently a nontrivial CKM mixing modulus); CP violation J != 0 is a stronger experimental falsifier",
+  "gates": {
+    "conditional_expectation_is_full_weak_basis_covariant": true,
+    "conditional_expectation_is_idempotent": true,
+    "conditional_expectation_is_unital": true,
+    "image_is_proper_commutant_subspace": true,
+    "discarded_hilbert_schmidt_norm_is_positive": true,
+    "nonzero_mixing_is_exact_fixed_locus_falsifier": true
+  },
+  "conclusion": "A canonical positive conditional expectation descends and has a proper image, but it is not an admissible physical flavor selector and its fixed locus is empirically false."
+}
