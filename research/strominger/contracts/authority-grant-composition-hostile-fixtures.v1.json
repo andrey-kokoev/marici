@@ -527,6 +527,54 @@
         {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "minimality_witnesses", "value": []}
       ],
       "expected_code": "incomplete_authority_certificate_minimality_witness"
+    },
+    {
+      "id": "capability_executes_after_lease",
+      "description": "A previously validated capability executes after its atomic lease has expired.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "execution_time", "value": 33}
+      ],
+      "expected_code": "authority_capability_execution_outside_lease"
+    },
+    {
+      "id": "capability_uses_stale_revocation_snapshot",
+      "description": "A root revocation epoch changes between validation and execution.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "execution_revocation_epochs", "value": {"source_methods_board_A_successor":1,"source_methods_board_B":0,"source_methods_board_C":0,"source_methods_board_D":0,"source_methods_board_E":0,"source_methods_board_F":0,"source_appeal_panel":0}}
+      ],
+      "expected_code": "stale_authority_capability_snapshot"
+    },
+    {
+      "id": "capability_scope_expands_to_selector",
+      "description": "Challenge standing is reused to select the winning mechanism.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "operation", "value": "select_true_mechanism"}
+      ],
+      "expected_code": "authority_capability_scope_amplification"
+    },
+    {
+      "id": "capability_execution_is_nonatomic",
+      "description": "Execution checks roots before use but does not bind the revocation epoch atomically.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "atomic_revocation_check", "value": false}
+      ],
+      "expected_code": "non_atomic_authority_capability_execution"
+    },
+    {
+      "id": "capability_nonce_can_be_reused",
+      "description": "The same capability nonce is permitted to execute the operation twice.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "second_use_permitted", "value": true}
+      ],
+      "expected_code": "authority_capability_reuse_permitted"
+    },
+    {
+      "id": "capability_lease_upgrades_authority_kind",
+      "description": "The lease silently promotes challenge standing into selector authority.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "authority_kind_after", "value": "selector"}
+      ],
+      "expected_code": "capability_lease_authority_laundering"
     }
   ]
 }

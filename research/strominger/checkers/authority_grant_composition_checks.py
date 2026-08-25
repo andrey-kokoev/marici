@@ -79,6 +79,7 @@ def main():
     temporal_atlases = {item["id"]: item for item in packet["temporal_replay_atlas_audits"]}
     temporal_cocycles = {item["id"]: item for item in packet["temporal_governance_cocycle_audits"]}
     stack_certificates = {item["id"]: item for item in packet["finite_authority_stack_certificates"]}
+    capability_executions = {item["id"]: item for item in packet["authority_capability_execution_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -323,6 +324,19 @@ def main():
         "certificate_generator_deletions_are_replayed": all(
             item["passed"] for item in certificate_deletion_results.values()
         ),
+        "capability_execution_is_atomic_and_epoch_fresh":
+            capability_executions["execute_delta_challenge_once"]["atomic_revocation_check"]
+            and capability_executions["execute_delta_challenge_once"]["root_revocation_epoch_snapshot"]
+            == capability_executions["execute_delta_challenge_once"]["execution_revocation_epochs"]
+            and capability_executions["execute_delta_challenge_once"]["execution_time"]
+            <= capability_executions["execute_delta_challenge_once"]["lease_expires"],
+        "capability_execution_is_scoped_and_single_use":
+            capability_executions["execute_delta_challenge_once"]["operation"]
+            in stack_certificates["current_delta_challenge_standing_certificate"]["allowed_operations"]
+            and capability_executions["execute_delta_challenge_once"]["target_scope"]
+            == stack_certificates["current_delta_challenge_standing_certificate"]["target_scope"]
+            and capability_executions["execute_delta_challenge_once"]["nonce_consumed"]
+            and not capability_executions["execute_delta_challenge_once"]["second_use_permitted"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -368,6 +382,7 @@ def main():
         "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
         "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
         "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
+        "capability_execution_verdict": "A replayed certificate becomes executable only through an atomic revocation-epoch lease binding one exact operation, target, and single-use nonce. Epoch change aborts execution; the lease cannot widen scope, survive expiry, or upgrade challenge standing.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

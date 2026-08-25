@@ -3,6 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
+  "capability_execution_verdict": "A replayed certificate becomes executable only through an atomic revocation-epoch lease binding one exact operation, target, and single-use nonce. Epoch change aborts execution; the lease cannot widen scope, survive expiry, or upgrade challenge standing.",
   "certificate_deletion_replay": {
     "gen_admission": {
       "error_codes": [
@@ -17,6 +18,7 @@
     },
     "gen_appeal_root": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "uncertified_review_authority_root",
         "uncertified_temporal_higher_cell",
         "unknown_authority_certificate_generator"
@@ -59,6 +61,7 @@
     },
     "gen_root_A": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "invalid_temporal_authority_restoration",
         "review_replay_uses_inactive_root",
         "temporal_atlas_uses_inactive_root",
@@ -71,6 +74,7 @@
     },
     "gen_root_B": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "invalid_review_root_independence_audit",
         "invalid_temporal_authority_restoration",
         "review_replay_uses_inactive_root",
@@ -85,6 +89,7 @@
     },
     "gen_root_C": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "temporal_atlas_uses_inactive_root",
         "unknown_authority_certificate_generator"
       ],
@@ -95,6 +100,7 @@
     },
     "gen_root_D": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "temporal_atlas_uses_inactive_root",
         "unknown_authority_certificate_generator"
       ],
@@ -105,6 +111,7 @@
     },
     "gen_root_E": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "temporal_atlas_uses_inactive_root",
         "unknown_authority_certificate_generator"
       ],
@@ -115,6 +122,7 @@
     },
     "gen_root_F": {
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "temporal_atlas_uses_inactive_root",
         "unknown_authority_certificate_generator"
       ],
@@ -125,7 +133,7 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "e94e6efcdb714e361899b2552c058def279e8c0bfa53865c98ff718fbb30495c",
+  "contract_sha256": "fa659b755c696e405fae0f14aad484231c91fdb150fe9eea745f4dad4e3548d8",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
@@ -133,6 +141,8 @@
     "associativity_holds_on_typed_domain": true,
     "atlas_refinement_preserves_global_reconstruction": true,
     "authority_stack_has_finite_replayable_generator_basis": true,
+    "capability_execution_is_atomic_and_epoch_fresh": true,
+    "capability_execution_is_scoped_and_single_use": true,
     "certificate_digest_identifies_but_does_not_authorize": true,
     "certificate_generator_deletions_are_replayed": true,
     "certificate_minimality_is_bounded_and_deletion_witnessed": true,
@@ -246,6 +256,60 @@
         "cached_not_explanatory_coherence"
       ],
       "expected_code": "cached_not_explanatory_coherence",
+      "passed": true,
+      "valid": false
+    },
+    "capability_executes_after_lease": {
+      "description": "A previously validated capability executes after its atomic lease has expired.",
+      "error_codes": [
+        "authority_capability_execution_outside_lease"
+      ],
+      "expected_code": "authority_capability_execution_outside_lease",
+      "passed": true,
+      "valid": false
+    },
+    "capability_execution_is_nonatomic": {
+      "description": "Execution checks roots before use but does not bind the revocation epoch atomically.",
+      "error_codes": [
+        "non_atomic_authority_capability_execution"
+      ],
+      "expected_code": "non_atomic_authority_capability_execution",
+      "passed": true,
+      "valid": false
+    },
+    "capability_lease_upgrades_authority_kind": {
+      "description": "The lease silently promotes challenge standing into selector authority.",
+      "error_codes": [
+        "capability_lease_authority_laundering"
+      ],
+      "expected_code": "capability_lease_authority_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "capability_nonce_can_be_reused": {
+      "description": "The same capability nonce is permitted to execute the operation twice.",
+      "error_codes": [
+        "authority_capability_reuse_permitted"
+      ],
+      "expected_code": "authority_capability_reuse_permitted",
+      "passed": true,
+      "valid": false
+    },
+    "capability_scope_expands_to_selector": {
+      "description": "Challenge standing is reused to select the winning mechanism.",
+      "error_codes": [
+        "authority_capability_scope_amplification"
+      ],
+      "expected_code": "authority_capability_scope_amplification",
+      "passed": true,
+      "valid": false
+    },
+    "capability_uses_stale_revocation_snapshot": {
+      "description": "A root revocation epoch changes between validation and execution.",
+      "error_codes": [
+        "stale_authority_capability_snapshot"
+      ],
+      "expected_code": "stale_authority_capability_snapshot",
       "passed": true,
       "valid": false
     },
@@ -580,6 +644,7 @@
     "review_replay_uses_revoked_root": {
       "description": "Replay at time 30 reuses a root revoked at time 25.",
       "error_codes": [
+        "capability_execution_uses_inactive_root",
         "invalid_temporal_authority_restoration",
         "review_replay_uses_inactive_root",
         "temporal_atlas_uses_inactive_root"
@@ -807,14 +872,14 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "66622b87b18478f7bddbcb78213da4dd1d5f33b783529aeb20abfdad99ef4e2b",
-  "hostile_passed": 65,
-  "hostile_total": 65,
+  "hostile_fixture_sha256": "86cbc2e84162d68eac1cb777bef5607a874ea241d4876e0bc66ded75eea9f1f4",
+  "hostile_passed": 71,
+  "hostile_total": 71,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 56,
+  "passed_gates": 58,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -824,6 +889,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 56,
+  "total_gates": 58,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
