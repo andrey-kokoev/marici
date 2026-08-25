@@ -413,6 +413,50 @@
       "scope": "all hyperedges over every finite typed hole set admitted by the correlation constructor"
     }
   ],
+  "configuration_correlation_composition_theorems": [
+    {
+      "composition_modes_distinct": true,
+      "errors": [],
+      "fixtures": [
+        {
+          "family_union_safe": true,
+          "fused_safe": true,
+          "id": "safe_fusion_fixture",
+          "left_safe": true,
+          "passed": true,
+          "right_safe": true,
+          "seam_law_holds": true,
+          "split_cocircuits": []
+        },
+        {
+          "family_union_safe": true,
+          "fused_safe": false,
+          "id": "unsafe_split_cocircuit_fixture",
+          "left_safe": true,
+          "passed": true,
+          "right_safe": true,
+          "seam_law_holds": true,
+          "split_cocircuits": [
+            [
+              [
+                "h0",
+                "admin_B"
+              ],
+              [
+                "h0",
+                "admin_C"
+              ]
+            ]
+          ]
+        }
+      ],
+      "fusion_separately_authorized": true,
+      "id": "typed_correlation_composition",
+      "passed": true,
+      "scope": "all pairs of typed correlation hyperedges over a common finite hole set",
+      "seam_law": "fusion_safe_iff_no_primitive_cocircuit_is_split_across_inputs"
+    }
+  ],
   "configuration_normalization": [
     {
       "confluent": true,
@@ -862,6 +906,16 @@
     "wrong_orbit_count": true,
     "wrong_safety_law": true,
     "wrong_symmetry_action": true
+  },
+  "correlation_composition_hostiles": {
+    "bounded_scope": true,
+    "family_union_authorizes_fusion": true,
+    "fusion_has_no_constructor": true,
+    "modes_conflated": true,
+    "seam_law_by_input_safety": true,
+    "split_cocircuit_hidden": true,
+    "unsafe_fixture_deleted": true,
+    "unsafe_fusion_claimed_safe": true
   },
   "critical_pair_count": 6,
   "critical_pairs": [

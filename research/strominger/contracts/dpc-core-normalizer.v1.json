@@ -313,6 +313,35 @@
       "theorem_scope":"all hyperedges over every finite typed hole set admitted by the correlation constructor"
     }
   ],
+  "configuration_correlation_composition_theorems":[
+    {
+      "id":"typed_correlation_composition",
+      "cocircuit_theorem_id":"fault_correlation_cocircuit_classification",
+      "family_union_semantics":"preserve_distinct_hyperedges",
+      "synchronous_fusion_semantics":"union_loci_into_one_hyperedge",
+      "fusion_constructor_id":"dpc.synchronous_fault_fusion.v1",
+      "fusion_source_authority_root":"simultaneity_charter",
+      "family_union_authorizes_fusion":false,
+      "seam_law":"fusion_safe_iff_no_primitive_cocircuit_is_split_across_inputs",
+      "fixtures":[
+        {
+          "id":"safe_fusion_fixture",
+          "kind":"safe_fusion",
+          "left_hyperedge":[["h0","admin_B"],["h1","admin_B"]],
+          "right_hyperedge":[["h0","admin_D"],["h2","admin_D"]],
+          "expected":{"fused_safe":true,"split_cocircuit_count":0}
+        },
+        {
+          "id":"unsafe_split_cocircuit_fixture",
+          "kind":"unsafe_split_cocircuit_fusion",
+          "left_hyperedge":[["h0","admin_B"],["h1","admin_B"]],
+          "right_hyperedge":[["h0","admin_C"],["h2","admin_C"]],
+          "expected":{"fused_safe":false,"split_cocircuit_count":1}
+        }
+      ],
+      "theorem_scope":"all pairs of typed correlation hyperedges over a common finite hole set"
+    }
+  ],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},

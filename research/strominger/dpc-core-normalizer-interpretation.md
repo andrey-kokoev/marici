@@ -511,3 +511,39 @@ only the order-two stabilizer exchanging `h0` and `h1`; its action partitions
 the nine cocircuits into six orbits. Both the obstruction basis and its orbit
 decomposition are derived from bridge data and actual correlation
 automorphisms, rather than listed as fitted exceptions.
+
+## Correlation composition has two meanings
+
+There are two inequivalent ways to combine valid correlation records. Ordinary
+family union retains the inputs as distinct possible fault hyperedges:
+
+\[
+\mathcal H_1\sqcup\mathcal H_2.
+\]
+
+It is safe exactly when every retained hyperedge is safe. Synchronous fusion
+instead asserts that the two sets of fault loci may occur as one event:
+
+\[
+E_1\star E_2=E_1\cup E_2.
+\]
+
+Fusion is therefore not supplied by ordinary union or by transport. It needs
+the separate constructor `dpc.synchronous_fault_fusion.v1` rooted in the
+`simultaneity_charter`.
+
+Even when both inputs are safe, their fusion is safe only if no primitive
+cocircuit is assembled across the seam:
+
+\[
+E_1\star E_2\text{ safe}
+\quad\Longleftrightarrow\quad
+\nexists K_{i,B}\subseteq E_1\cup E_2.
+\]
+
+The hostile witness splits `{(h0,admin_B),(h0,admin_C)}` between two separately
+safe cross-hole correlations. Retaining them as alternatives is safe; fusing
+them exhausts the `admin_B/admin_C` bridge at `h0`. Thus local validity is not
+compositional under strengthened simultaneity semantics. The missing datum is
+not another root but authority to assert that the two fault descriptions belong
+to one jointly realizable event.

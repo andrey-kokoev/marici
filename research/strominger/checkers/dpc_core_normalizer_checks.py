@@ -299,6 +299,23 @@ for name, mutate_cocircuit, expected in (
     errors = candidate_result["configuration_correlation_cocircuit_theorems"][0]["errors"]
     correlation_cocircuit_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["correlation_cocircuit_hostiles"] = correlation_cocircuit_hostiles
+correlation_composition_hostiles = {}
+for name, mutate_composition, expected in (
+    ("modes_conflated", lambda c: c["configuration_correlation_composition_theorems"][0].update({"family_union_semantics":"union_loci_into_one_hyperedge"}), "correlation_composition_modes_conflated"),
+    ("fusion_has_no_constructor", lambda c: c["configuration_correlation_composition_theorems"][0].update({"fusion_constructor_id":None}), "correlation_composition_fusion_authority_laundered"),
+    ("family_union_authorizes_fusion", lambda c: c["configuration_correlation_composition_theorems"][0].update({"family_union_authorizes_fusion":True}), "correlation_composition_fusion_authority_laundered"),
+    ("seam_law_by_input_safety", lambda c: c["configuration_correlation_composition_theorems"][0].update({"seam_law":"safe_inputs_imply_safe_fusion"}), "correlation_composition_seam_law_untyped"),
+    ("unsafe_fusion_claimed_safe", lambda c: c["configuration_correlation_composition_theorems"][0]["fixtures"][1]["expected"].update({"fused_safe":True}), "correlation_composition_fixture_mismatch"),
+    ("split_cocircuit_hidden", lambda c: c["configuration_correlation_composition_theorems"][0]["fixtures"][1]["expected"].update({"split_cocircuit_count":0}), "correlation_composition_fixture_mismatch"),
+    ("unsafe_fixture_deleted", lambda c: c["configuration_correlation_composition_theorems"][0].update({"fixtures":c["configuration_correlation_composition_theorems"][0]["fixtures"][:1]}), "correlation_composition_fixture_coverage_incomplete"),
+    ("bounded_scope", lambda c: c["configuration_correlation_composition_theorems"][0].update({"theorem_scope":"two fixtures only"}), "correlation_composition_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_composition(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_correlation_composition_theorems"][0]["errors"]
+    correlation_composition_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["correlation_composition_hostiles"] = correlation_composition_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -357,5 +374,7 @@ for name, rejected in correlated_context_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlated_context hostile." + name)
 for name, rejected in correlation_cocircuit_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlation_cocircuit hostile." + name)
+for name, rejected in correlation_composition_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " correlation_composition hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and coherence_omission_rejected else 1)
