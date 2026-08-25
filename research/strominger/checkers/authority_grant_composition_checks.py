@@ -78,6 +78,34 @@ def main():
     temporal_audits = {item["id"]: item for item in packet["temporal_review_authority_audits"]}
     temporal_atlases = {item["id"]: item for item in packet["temporal_replay_atlas_audits"]}
     temporal_cocycles = {item["id"]: item for item in packet["temporal_governance_cocycle_audits"]}
+    stack_certificates = {item["id"]: item for item in packet["finite_authority_stack_certificates"]}
+
+    certificate_deletion_results = {}
+    generator_collections = (
+        "rival_admissions", "rival_admission_reviews", "review_authority_root_certifications",
+        "temporal_replay_atlas_audits", "temporal_governance_cocycle_audits",
+    )
+    certificate = stack_certificates["current_delta_challenge_standing_certificate"]
+    witnesses = {item["generator_id"]: item for item in certificate["minimality_witnesses"]}
+    for generator in certificate["generators"]:
+        candidate = copy.deepcopy(packet)
+        removed = False
+        for collection in generator_collections:
+            retained = [item for item in candidate[collection] if item["id"] != generator["object_ref"]]
+            if len(retained) != len(candidate[collection]):
+                candidate[collection] = retained
+                removed = True
+                break
+        deletion_result = compile_packet(candidate)
+        expected = witnesses[generator["id"]]["expected_failure_code"]
+        deletion_codes = sorted(codes(deletion_result))
+        certificate_deletion_results[generator["id"]] = {
+            "object_ref": generator["object_ref"],
+            "removed": removed,
+            "expected_failure_code": expected,
+            "error_codes": deletion_codes,
+            "passed": removed and not deletion_result["valid"] and expected in deletion_codes,
+        }
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -279,6 +307,22 @@ def main():
             and cell["naturality_defect"] == 0
             for cell in temporal_cocycles["triangle_AB_CD_EF"]["comparison_cells"]
         ),
+        "authority_stack_has_finite_replayable_generator_basis":
+            len(stack_certificates["current_delta_challenge_standing_certificate"]["generators"]) == 11
+            and bool(stack_certificates["current_delta_challenge_standing_certificate"]["deterministic_replay_checker"])
+            and stack_certificates["current_delta_challenge_standing_certificate"]["terminal_claim_node"] == "current_challenge_standing",
+        "certificate_minimality_is_bounded_and_deletion_witnessed":
+            not stack_certificates["current_delta_challenge_standing_certificate"]["claims_absolute_minimality"]
+            and len(stack_certificates["current_delta_challenge_standing_certificate"]["minimality_witnesses"])
+            == len(stack_certificates["current_delta_challenge_standing_certificate"]["generators"])
+            and all(witness["deletion_breaks_terminal_claim"] for witness in stack_certificates["current_delta_challenge_standing_certificate"]["minimality_witnesses"]),
+        "certificate_digest_identifies_but_does_not_authorize":
+            stack_certificates["current_delta_challenge_standing_certificate"]["replay_checker_sha256"]
+            == hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+            and not stack_certificates["current_delta_challenge_standing_certificate"]["digest_confers_authority"],
+        "certificate_generator_deletions_are_replayed": all(
+            item["passed"] for item in certificate_deletion_results.values()
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -304,6 +348,7 @@ def main():
         "hostile_passed": sum(item["passed"] for item in hostile_results.values()),
         "hostile_total": len(hostile_results),
         "hostile": hostile_results,
+        "certificate_deletion_replay": certificate_deletion_results,
         "contract_sha256": hashlib.sha256(CONTRACT.read_bytes()).hexdigest(),
         "hostile_fixture_sha256": hashlib.sha256(HOSTILES.read_bytes()).hexdigest(),
         "application_classification": {
@@ -322,6 +367,7 @@ def main():
         "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
         "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
         "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
+        "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

@@ -487,6 +487,46 @@
         {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "cocycle_defect", "value": 2}
       ],
       "expected_code": "standing_restored_across_temporal_cocycle_defect"
+    },
+    {
+      "id": "certificate_claims_absolute_minimality",
+      "description": "A grammar-relative deletion basis is promoted to an absolute proof that no smaller alternative certificate exists.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "claims_absolute_minimality", "value": true}
+      ],
+      "expected_code": "unbounded_authority_certificate_minimality"
+    },
+    {
+      "id": "certificate_digest_confers_authority",
+      "description": "Possession of the certificate hash is treated as authority without replaying its typed dependencies.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "digest_confers_authority", "value": true}
+      ],
+      "expected_code": "authority_by_certificate_digest"
+    },
+    {
+      "id": "certificate_has_no_replay_checker",
+      "description": "The compressed proof object cannot deterministically reconstruct its terminal claim.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "deterministic_replay_checker", "value": null}
+      ],
+      "expected_code": "nonreplayable_authority_stack_certificate"
+    },
+    {
+      "id": "certificate_dependency_graph_cycles",
+      "description": "The terminal claim is allowed to generate one of its own premises.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "dependency_edges", "value": [{"id":"cycle1","source":"gen_admission","target":"current_challenge_standing"},{"id":"cycle2","source":"current_challenge_standing","target":"gen_admission"}]}
+      ],
+      "expected_code": "cyclic_authority_certificate_dependencies"
+    },
+    {
+      "id": "certificate_minimality_witnesses_missing",
+      "description": "The certificate calls its generator basis minimal without deletion witnesses.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "minimality_witnesses", "value": []}
+      ],
+      "expected_code": "incomplete_authority_certificate_minimality_witness"
     }
   ]
 }
