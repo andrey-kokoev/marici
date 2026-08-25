@@ -27,6 +27,12 @@ semantic_gates = {
     "central_phase_retained_as_anomaly_candidate": models["central_phase_anomaly"]["braid_audits"][0]["classification"] == "central_phase" and not models["central_phase_anomaly"]["braid_audits"][0]["coherent"],
     "capability_deletion_blocks_one_order": models["residual_capability_deleted_before_consumption"]["observed"]["legal_completed_path_count"] == 1 and any(cell["code"] == "repair_residual_capability_failure" for cell in models["residual_capability_deleted_before_consumption"]["swap_cells"]),
     "theta_tate_remains_declaration_blocked": result["theta_tate_fixture"]["status"] == "source_declarations_required" and len(result["theta_tate_fixture"]["missing_source_declarations"]) == 7 and not result["theta_tate_fixture"]["enumeration_performed"],
+    "theta_triangle_classifies_all_six_orders": result["theta_repair_triangle"]["observed"]["formal_order_count"] == 6 and len(result["theta_repair_triangle"]["paths"]) == 6,
+    "theta_triangle_current_source_has_no_completed_path": result["theta_repair_triangle"]["observed"]["admissible_order_count"] == 0 and result["theta_repair_triangle"]["same_completed_typed_endpoint"] is None,
+    "theta_triangle_first_illegal_nodes_are_typed": {path["first_rejection"]["code"] for path in result["theta_repair_triangle"]["paths"]} == {"distinction_erased_before_required_repair","theta_pro_gram_instantiation_blocked_missing_incidence","valuation_completion_not_source_authorized"},
+    "theta_triangle_hostile_witness_is_irrecoverable": result["theta_repair_triangle"]["principal_hostile_rejection"]["code"] == "distinction_erased_before_required_repair" and result["theta_repair_triangle"]["principal_hostile_rejection"]["recovery_possible"] is False,
+    "finite_clark_positivity_does_not_authorize_completion": result["theta_repair_triangle"]["clark_finite_bulk_identity"].startswith("2||G+f||") and not result["theta_repair_triangle"]["clark_completion_continuity_authorized"],
+    "native_q_flow_endpoint_control_kept_separate": result["theta_repair_triangle"]["native_q_flow_endpoint_certificate"]["authorizes_clark_z_completion"] is False,
 }
 result["semantic_gates"] = semantic_gates
 
@@ -45,11 +51,16 @@ for name, mutate, expected in (
     ("theta_dependencies_invented", lambda c: c["theta_tate_fixture"].update({"assume_discrete_poset":True}), "theta_tate_dependencies_invented"),
     ("theta_enumerated_while_incomplete", lambda c: c["theta_tate_fixture"].update({"compilation_mode":"enumerate"}), "theta_tate_enumeration_without_source_declarations"),
     ("theta_question_deleted", lambda c: c["theta_tate_fixture"].update({"open_source_questions":c["theta_tate_fixture"]["open_source_questions"][:-1]}), "theta_tate_open_questions_incomplete"),
+    ("triangle_seam_contract_weakened", lambda c: c["theta_repair_triangle"]["operations"][2].update({"required_distinctions":["raw_arithmetic_label"]}), "theta_triangle_completion_distinction_contract_weakened"),
+    ("triangle_uniform_family_self_asserted", lambda c: c["theta_repair_triangle"].update({"clark_uniform_constructor_family":{"family_id":"F","source_authority_root":None,"fixed_finite":True,"uniformly_dominates_current_matrices":True}}), "theta_triangle_uniform_family_unauthorized"),
+    ("triangle_swap_authority_fitted", lambda c: c["theta_repair_triangle"]["commutation_declarations"][0].update({"authorized":True}), "theta_triangle_swap_authority_untyped"),
+    ("triangle_closure_claimed", lambda c: c["theta_repair_triangle"]["expected"].update({"admissible_order_count":1}), "theta_triangle_expectation_mismatch:admissible_order_count"),
+    ("triangle_clark_source_deleted", lambda c: c["theta_repair_triangle"]["operations"][1].update({"source_authority":None}), "theta_triangle_source_authority_missing:C"),
 ):
     candidate = deepcopy(contract)
     mutate(candidate)
     candidate_result = compile_contract(candidate)
-    errors = {error for model in candidate_result["models"] for error in model["errors"]} | set(candidate_result["theta_tate_fixture"]["errors"])
+    errors = {error for model in candidate_result["models"] for error in model["errors"]} | set(candidate_result["theta_tate_fixture"]["errors"]) | set(candidate_result["theta_repair_triangle"]["errors"])
     hostiles[name] = not candidate_result["passed"] and expected in errors
 
 result["hostiles"] = hostiles
