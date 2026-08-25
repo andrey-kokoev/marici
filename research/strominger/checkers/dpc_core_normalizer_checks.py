@@ -108,6 +108,18 @@ for name, mutate_ssa, expected in ssa_mutations:
     errors = candidate_result["resource_ssa_programs"][0]["errors"]
     ssa_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["resource_ssa_hostiles"] = ssa_hostiles
+projection_hostiles = {}
+for field, value, expected in (
+    ("claims_canonical_reverse_lift", True, "canonical_reverse_lift_laundered"),
+    ("projection_constructor", None, "forgetful_projection_untyped"),
+    ("legacy_fields", ["target_operation","authority_kind","source_authority_evidence","resource"], "forgetful_projection_wrong_legacy_signature"),
+):
+    candidate = deepcopy(contract)
+    candidate["forgetful_projection_audits"][0][field] = value
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["forgetful_projections"][0]["errors"]
+    projection_hostiles[field] = not candidate_result["passed"] and expected in errors
+result["forgetful_projection_hostiles"] = projection_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -137,4 +149,6 @@ for item in result["trusted_base_cocircuits"]:
     print(("PASS" if item["passed"] else "FAIL") + " cocircuit." + item["primitive_failure_class"])
 for name, rejected in ssa_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " resource_ssa hostile." + name)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) else 1)
+for name, rejected in projection_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " projection hostile." + name)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) else 1)
