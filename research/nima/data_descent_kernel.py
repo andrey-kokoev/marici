@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -37,6 +38,23 @@ REQUIRED_CIRCUIT_COST_FIELDS = (
     "magic_ancilla_count",
 )
 
+COMPLETION_EXTENSION_MECHANISMS = {
+    "bounded_unique_continuous_extension",
+    "unique_continuous_locally_convex_extension",
+    "closable_graph_closure",
+    "closed_form_friedrichs_extension",
+}
+
+AUTHORITY_PERMISSIONS = {
+    "physical_source_operation": {"selector", "readout"},
+    "physical_relative_cycle": {"observer", "readout"},
+    "resource_constructor": {"constructor", "executor"},
+    "source_completed_operator": {"readout"},
+    "policy_section": {"executor"},
+    "algebraic_faithfulness": set(),
+    "geometric_support": set(),
+}
+
 
 @dataclass(frozen=True)
 class TypeErrorRecord:
@@ -47,6 +65,35 @@ class TypeErrorRecord:
 
 def _signature(obj: dict[str, Any]) -> tuple[Any, ...]:
     return (obj["coefficient_type"], obj["rank"], tuple(obj.get("grades", [])))
+
+
+def _fraction(value: Any) -> Fraction:
+    return Fraction(str(value))
+
+
+def _matrix_rank(spec: dict[str, Any]) -> int:
+    rows, columns = spec.get("shape", [0, 0])
+    matrix = [[Fraction(0) for _ in range(columns)] for _ in range(rows)]
+    for row, column, value in spec.get("entries", []):
+        if 0 <= row < rows and 0 <= column < columns:
+            matrix[row][column] += _fraction(value)
+    pivot_row = 0
+    for column in range(columns):
+        pivot = next((r for r in range(pivot_row, rows) if matrix[r][column]), None)
+        if pivot is None:
+            continue
+        matrix[pivot_row], matrix[pivot] = matrix[pivot], matrix[pivot_row]
+        scale = matrix[pivot_row][column]
+        matrix[pivot_row] = [value / scale for value in matrix[pivot_row]]
+        for row in range(rows):
+            if row == pivot_row or not matrix[row][column]:
+                continue
+            scale = matrix[row][column]
+            matrix[row] = [a - scale * b for a, b in zip(matrix[row], matrix[pivot_row])]
+        pivot_row += 1
+        if pivot_row == rows:
+            break
+    return pivot_row
 
 
 def validate(packet: dict[str, Any]) -> list[TypeErrorRecord]:
@@ -381,6 +428,198 @@ def validate(packet: dict[str, Any]) -> list[TypeErrorRecord]:
             elif capabilities[sc]["status"]["kind"] != capabilities[tc]["status"]["kind"]:
                 err("frame_transition_status_mismatch", tr["id"], f"{sc}->{tc}")
 
+    # Topology-bearing completion.  Completion changes the admissible space;
+    # it does not, by itself, choose an operator or manufacture a kernel.
+    spaces = {x["id"]: x for x in packet.get("completion_spaces", [])}
+    operators = {x["id"]: x for x in packet.get("completion_operators", [])}
+    completions = {x["id"]: x for x in packet.get("completion_interfaces", [])}
+    comparisons = {x["id"]: x for x in packet.get("kernel_comparisons", [])}
+    for cid, completion in completions.items():
+        source, target = completion.get("source_space"), completion.get("completed_space")
+        if source not in spaces or target not in spaces:
+            err("unknown_completion_space", cid, f"{source}->{target}")
+        if completion.get("source_target_space") not in spaces or completion.get("completed_target_space") not in spaces:
+            err("unknown_completion_target_space", cid, "source and completed targets must be typed")
+        if completion.get("constructor_kind") != "topology_bearing_completion":
+            err("completion_as_ordinary_base_change", cid, str(completion.get("constructor_kind")))
+        topology = completion.get("topology", {})
+        if not topology.get("kind") or not topology.get("separation"):
+            err("untyped_completion_topology", cid, str(topology))
+        embedding = completion.get("dense_embedding", {})
+        if not embedding.get("map") or not embedding.get("injective") or not embedding.get("dense") or not embedding.get("evidence"):
+            err("invalid_dense_embedding", cid, str(embedding))
+        if not completion.get("completion_map", {}).get("universal_property_evidence"):
+            err("missing_completion_map", cid, "completion universal property is required")
+        source_operator = operators.get(completion.get("source_operator"))
+        extended_operator = operators.get(completion.get("extended_operator"))
+        if source_operator is None or extended_operator is None:
+            err("unknown_completion_operator", cid, f"{completion.get('source_operator')}->{completion.get('extended_operator')}")
+        proof = completion.get("extension_well_defined", {})
+        mechanism = proof.get("mechanism")
+        if mechanism not in COMPLETION_EXTENSION_MECHANISMS:
+            err("unknown_extension_mechanism", cid, str(mechanism))
+        if not proof.get("unique") or not proof.get("proof_evidence"):
+            err("operator_extension_not_canonical", cid, "unique evidenced extension required")
+        square = completion.get("operator_extension_square", {})
+        if not square.get("commutes") or not square.get("evidence"):
+            err("operator_extension_square_defect", cid, str(square))
+        if completion.get("manufactured_from_completion_only", False):
+            err("completion_manufactures_operator", cid, "topology alone cannot choose an operator")
+        if extended_operator is not None and mechanism in {
+            "closable_graph_closure", "closed_form_friedrichs_extension"
+        }:
+            if not extended_operator.get("closed") or not extended_operator.get("dense_domain_evidence"):
+                err("unbounded_extension_not_closed", cid, "closed densely defined extension required")
+
+    for kid, comparison in comparisons.items():
+        if comparison.get("completion") not in completions:
+            err("unknown_kernel_completion", kid, str(comparison.get("completion")))
+        source_dim = comparison.get("source_kernel_dimension")
+        completed_dim = comparison.get("completed_kernel_dimension")
+        if not isinstance(source_dim, int) or not isinstance(completed_dim, int):
+            err("untyped_kernel_dimension", kid, f"{source_dim}->{completed_dim}")
+            continue
+        square = comparison.get("comparison_square", {})
+        rank = square.get("map_rank")
+        if not square.get("commutes") or not square.get("evidence"):
+            err("kernel_comparison_square_defect", kid, str(square))
+        if not isinstance(rank, int) or rank < 0 or rank > min(source_dim, completed_dim):
+            err("invalid_kernel_comparison_rank", kid, str(rank))
+            rank = 0
+        groups = comparison.get("class_groups", [])
+        if sum(x.get("dimension", 0) for x in groups) != completed_dim:
+            err("kernel_partition_dimension_defect", kid, str(completed_dim))
+        if sum(x.get("dimension", 0) for x in groups if x.get("classification") == "descends") != rank:
+            err("descended_kernel_rank_defect", kid, str(rank))
+        derived_dimension = 0
+        for group in groups:
+            classification = group.get("classification")
+            if classification == "completion_only":
+                if not group.get("graph_limit_evidence") or group.get("tor_object") is not None:
+                    err("completion_only_class_mistyped", f"{kid}:{group.get('id')}", "graph-limit evidence without Tor required")
+            elif classification == "derived_completion_obstruction":
+                derived_dimension += group.get("dimension", 0)
+                tor = derived.get(group.get("tor_object"))
+                if tor is None or tor.get("kind") != "Tor" or not group.get("derived_evidence"):
+                    err("derived_completion_obstruction_untyped", f"{kid}:{group.get('id')}", str(group.get("tor_object")))
+            elif classification != "descends":
+                err("unknown_completed_kernel_class", f"{kid}:{group.get('id')}", str(classification))
+        if comparison.get("completion_defect_dimension") != derived_dimension:
+            err("completion_defect_dimension_mismatch", kid, str(derived_dimension))
+
+    support_ids = {x["id"] for x in packet.get("support_objects", [])}
+    for identification in packet.get("support_identifications", []):
+        endpoints = {identification.get("left"), identification.get("right")}
+        if endpoints & support_ids and endpoints & set(comparisons):
+            err("characteristic_support_is_not_kernel_support", identification["id"], str(endpoints))
+
+    for fiber in packet.get("finite_linear_observation_fibers", []):
+        fid = fiber["id"]
+        comparison = comparisons.get(fiber.get("kernel_comparison"))
+        if comparison is None:
+            err("unknown_observation_kernel", fid, str(fiber.get("kernel_comparison")))
+            continue
+        kernel_dimension = comparison["completed_kernel_dimension"]
+        if fiber.get("kernel_dimension") != kernel_dimension:
+            err("kernel_dimension_port_count_conflation", fid, str(fiber.get("kernel_dimension")))
+        ports = fiber.get("ports", [])
+        matrix = fiber.get("observation_matrix", {})
+        if matrix.get("shape") != [len(ports), kernel_dimension]:
+            err("observation_matrix_shape_defect", fid, str(matrix.get("shape")))
+        for port in ports:
+            if port.get("availability") != "available":
+                err("unavailable_port_is_not_zero_port", f"{fid}:{port.get('id')}", str(port.get("availability")))
+            if not port.get("execution_evidence") or not port.get("source_authority"):
+                err("unexecutable_observation_port", f"{fid}:{port.get('id')}", "execution and source authority required")
+        rank = _matrix_rank(matrix)
+        if rank != fiber.get("declared_rank"):
+            err("observation_rank_certificate_defect", fid, str(rank))
+        if fiber.get("faithful") != (rank == kernel_dimension):
+            err("observation_faithfulness_defect", fid, str(rank))
+        entries = matrix.get("entries", [])
+        deletion_ranks = []
+        for deleted in range(len(ports)):
+            remapped = []
+            for row, column, value in entries:
+                if row == deleted:
+                    continue
+                remapped.append([row - (row > deleted), column, value])
+            deletion_ranks.append(_matrix_rank({"shape": [len(ports) - 1, kernel_dimension], "entries": remapped}))
+        certificate = fiber.get("deletion_certificate", {})
+        if certificate.get("ranks") != deletion_ranks:
+            err("port_deletion_certificate_defect", fid, str(deletion_ranks))
+        minimal = rank == kernel_dimension and all(x < kernel_dimension for x in deletion_ranks)
+        if certificate.get("minimal") != minimal:
+            err("port_minimality_defect", fid, str(minimal))
+
+    for compression in packet.get("spectral_compressions", []):
+        if compression.get("operator") not in operators:
+            err("unknown_compression_operator", compression["id"], str(compression.get("operator")))
+        if not compression.get("compact_resolvent_evidence"):
+            err("missing_compact_resolvent_evidence", compression["id"], "compact resolvent is required")
+        if not compression.get("finite_rank") or not compression.get("strongly_converges_to_identity"):
+            err("invalid_spectral_compression", compression["id"], "finite-rank strong exhaustion required")
+        if compression.get("rh_bearing_kernel_claim", False):
+            err("unauthorized_rh_kernel_claim", compression["id"], "compression alone carries no RH theorem")
+
+    # Authority is typed by provenance.  Faithfulness and support are not
+    # authority sources, and transport cannot silently upgrade authority.
+    authority_sources = {x["id"]: x for x in packet.get("authority_sources", [])}
+    grants = {x["id"]: x for x in packet.get("authority_grants", [])}
+    for sid, source in authority_sources.items():
+        provenance = source.get("provenance_kind")
+        if provenance not in AUTHORITY_PERMISSIONS:
+            err("unknown_authority_provenance", sid, str(provenance))
+        if not source.get("evidence"):
+            err("missing_authority_evidence", sid, "authority provenance requires evidence")
+    for gid, grant in grants.items():
+        source = authority_sources.get(grant.get("source_authority"))
+        if source is None:
+            err("unknown_authority_source", gid, str(grant.get("source_authority")))
+            continue
+        kind = grant.get("authority_kind")
+        if kind not in AUTHORITY_PERMISSIONS[source.get("provenance_kind")]:
+            err("unauthorized_authority_promotion", gid, f"{source.get('provenance_kind')}->{kind}")
+        if not grant.get("subject") or not grant.get("evidence"):
+            err("untyped_authority_grant", gid, "subject and evidence required")
+    for transport in packet.get("authority_transports", []):
+        grant = grants.get(transport.get("source_grant"))
+        if grant is None:
+            err("unknown_authority_grant", transport["id"], str(transport.get("source_grant")))
+            continue
+        if transport.get("target_authority_kind") != grant.get("authority_kind"):
+            err("authority_transport_upgrade", transport["id"], f"{grant.get('authority_kind')}->{transport.get('target_authority_kind')}")
+        if not transport.get("evidence"):
+            err("missing_authority_transport_evidence", transport["id"], "transport requires evidence")
+
+    # Conditioned reliability is attached to an authorized readout/executor,
+    # not used to create selector authority.
+    for certificate in packet.get("conditioned_reliability_certificates", []):
+        rid = certificate["id"]
+        grant = grants.get(certificate.get("authority_grant"))
+        if grant is None or grant.get("authority_kind") not in {"readout", "executor"}:
+            err("reliability_without_operational_authority", rid, str(certificate.get("authority_grant")))
+        try:
+            gamma = _fraction(certificate.get("gamma"))
+            terms = certificate.get("errors", {})
+            sampling = _fraction(terms.get("sampling"))
+            detector = _fraction(terms.get("detector"))
+            canonical = _fraction(terms.get("canonical"))
+            reset = _fraction(terms.get("reset"))
+            if gamma <= 0:
+                err("nonpositive_reliability_margin", rid, str(gamma))
+                continue
+            if min(sampling, detector, canonical, reset) < 0:
+                err("negative_reliability_error", rid, str(terms))
+                continue
+            computed = (sampling + detector) / gamma + canonical + reset
+            if _fraction(certificate.get("declared_bound")) != computed:
+                err("reliability_bound_mismatch", rid, str(computed))
+        except (ValueError, TypeError, ZeroDivisionError):
+            err("untyped_reliability_certificate", rid, "rational gamma, errors, and bound required")
+        if not certificate.get("evidence"):
+            err("missing_reliability_evidence", rid, "conditioned bound requires evidence")
+
     return errors
 
 
@@ -400,6 +639,12 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "resource_theory_count": len(packet.get("resource_theories", [])),
         "capability_count": len(packet.get("capabilities", [])),
         "capability_status_transition_count": len(packet.get("capability_status_transitions", [])),
+        "completion_interface_count": len(packet.get("completion_interfaces", [])),
+        "kernel_comparison_count": len(packet.get("kernel_comparisons", [])),
+        "linear_observation_fiber_count": len(packet.get("finite_linear_observation_fibers", [])),
+        "authority_source_count": len(packet.get("authority_sources", [])),
+        "authority_grant_count": len(packet.get("authority_grants", [])),
+        "reliability_certificate_count": len(packet.get("conditioned_reliability_certificates", [])),
     }
 
 

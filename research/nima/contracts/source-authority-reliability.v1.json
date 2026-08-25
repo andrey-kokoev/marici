@@ -1,0 +1,46 @@
+{
+  "schema": "marici.source-authority-calculus.v1",
+  "contexts": [],
+  "local_objects": [],
+  "authority_sources": [
+    {
+      "id": "thermal_source",
+      "provenance_kind": "physical_source_operation",
+      "evidence": "WP101 source-normalized thermal branch operation"
+    },
+    {
+      "id": "physical16_probe",
+      "provenance_kind": "algebraic_faithfulness",
+      "evidence": "WP116 faithful physical16 separation theorem"
+    },
+    {
+      "id": "cosmology_rank60",
+      "provenance_kind": "algebraic_faithfulness",
+      "evidence": "Entries 2413, 2416, and 2419 algebraic action"
+    }
+  ],
+  "authority_grants": [
+    {
+      "id": "thermal_readout",
+      "source_authority": "thermal_source",
+      "authority_kind": "readout",
+      "subject": "conditional flavor route detector",
+      "evidence": "WP101 conditioned detector construction"
+    }
+  ],
+  "conditioned_reliability_certificates": [
+    {
+      "id": "flavor_route_bound",
+      "authority_grant": "thermal_readout",
+      "gamma": "1/2",
+      "errors": {
+        "sampling": "1/100",
+        "detector": "1/100",
+        "canonical": "1/200",
+        "reset": "1/200"
+      },
+      "declared_bound": "1/20",
+      "evidence": "epsilon_route <= (epsilon_s+epsilon_d)/gamma + epsilon_c + epsilon_r"
+    }
+  ]
+}
