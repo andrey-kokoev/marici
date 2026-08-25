@@ -60,6 +60,20 @@ WP117 types all twelve packages and proves the decisive finite descent
 falsifier. It does not invent the missing UV action or measure. Its current
 classification is **undefined without additional source data**.
 
+## DPC hostile reduction: WP118
+
+- `flavor-dpc-bounded-audit-framework.md`
+- `checkers/wp118_flavor_dpc_bounded_audit.py`
+- `results/wp118_flavor_dpc_bounded_audit.json`
+
+WP118 retracts the universal flavor DPC and retains a bounded source-relative
+audit. It permits point predictions, quotient-only measures, universality,
+memory augmentation, calibrated detector conditioning, and approximate
+recovered-ensemble bounds. The physical source produces an ensemble/channel;
+a separate verification model produces its certificate. No flavor candidate
+is admitted until one independently validated bounded UV class and its
+accuracy, scale, scheme, time, and resource budgets are frozen.
+
 ## Admission gate
 
 A successor may become a physical ensemble only if it provides, before flavor
