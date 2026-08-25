@@ -229,13 +229,24 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
         fault_sets = [set(item) for item in event.get("admissible_signer_fault_sets", [])]
         signer_roots = [item.get("independence_root") for item in signers.values()]
         fault_safe = all(bool(quorum - fault) for fault in fault_sets) and len(signer_roots) == len(set(signer_roots))
-        attestation = event.get("physical_state_correspondence", {})
+        attestation_raw = event.get("physical_state_correspondence", {})
+        attestation = attestation_raw if isinstance(attestation_raw, dict) else {}
+        signer_independence_roots = set(signer_roots)
         physical = (
-            isinstance(attestation, dict)
+            isinstance(attestation_raw, dict)
             and attestation.get("measured_state_sha256") == event.get("successor_state_sha256")
             and bool(attestation.get("executor_id"))
             and bool(attestation.get("verifier_authority_root"))
+            and bool(attestation.get("measurement_constructor"))
+            and attestation.get("signature_verified")
             and attestation.get("verified_before_epoch_acceptance")
+        )
+        fresh = (
+            attestation.get("certificate_nonce") == event.get("certificate_nonce")
+            and attestation.get("attested_epoch") == successor
+            and isinstance(attestation.get("monotone_boot_counter"), int)
+            and attestation.get("monotone_boot_counter") >= attestation.get("accepted_counter_floor", 0)
+            and attestation.get("verifier_independence_root") not in signer_independence_roots
         )
         errors = []
         if not adjacent:
@@ -250,6 +261,8 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
             errors.append("epoch_successor_fork_constructible")
         if not physical:
             errors.append("epoch_successor_lacks_physical_correspondence")
+        if not fresh:
+            errors.append("epoch_successor_attestation_stale_or_correlated")
         audits.append({"id": event["id"], "passed": not errors, "errors": errors})
     return audits
 
