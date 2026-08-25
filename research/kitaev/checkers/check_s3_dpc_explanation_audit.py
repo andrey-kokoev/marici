@@ -35,11 +35,13 @@ def main():
     replay("check_s3_record_phase_magic_obstruction.py")
     replay("check_s3_dpc_nonlinear_source_mechanism.py")
     replay("check_s3_dpc_five_rail_intertwining.py")
+    replay("check_s3_dpc_source_independence_attack.py")
 
     inversion, inversion_digest = load("s3-controlled-inversion-magic-obstruction.json")
     phase, phase_digest = load("s3-record-phase-magic-obstruction.json")
     mechanism, mechanism_digest = load("s3-dpc-nonlinear-source-mechanism.json")
     intertwining, intertwining_digest = load("s3-dpc-five-rail-intertwining.json")
+    attack, attack_digest = load("s3-dpc-source-independence-attack.json")
 
     assert not inversion["is_product_clifford"]
     assert phase["nonclifford_controlled_powers"] == [1, 2]
@@ -48,36 +50,41 @@ def main():
     assert not intertwining["complete_frozen_code_lift"]
     assert not intertwining["transversal_hybrid_exchange"]["preserves_code"]
     assert not any(row["preserves_code"] for row in intertwining["transversal_record_phases"][:2])
+    assert all(attack["attacks_succeeded"].values())
 
     result = {
         "schema": "marici.kitaev.s3-dpc-explanation-audit.v1",
         "bounded_replay": {
-            "component_checkers": 4,
+            "component_checkers": 5,
             "digests": {
                 "controlled_inversion_obstruction": inversion_digest,
                 "record_phase_obstruction": phase_digest,
                 "nonlinear_source_mechanism": mechanism_digest,
                 "five_rail_intertwining": intertwining_digest,
+                "source_independence_attack": attack_digest,
             },
         },
         "explanation_chain": [
             "frozen stabilizer invariants exclude the three missing logical controls",
-            "independently specified nonlinear occupation/exchange dynamics generates those controls exactly",
-            "source deletion or mistiming preserves formal support but destroys exact gate action",
+            "postulated nonlinear occupation/exchange dynamics realizes those controls exactly",
+            "the proposed generators are reconstructed spectral logarithms of the target gates",
+            "inequivalent source logarithms give identical endpoint operations",
+            "the native D(S3) Hamiltonian does not derive the proposed couplers or fitted pulse angles",
             "raw railwise application fails the frozen-code intertwining test",
-            "therefore the logical capability is source-explained while the physical five-rail lift requires a verified factory or code switch",
+            "therefore only the conditional realization survives; physical explanation and five-rail execution remain open",
         ],
-        "hard_to_vary": True,
-        "not_a_restated_obstruction": True,
-        "logical_layer": "proper generative explanation",
+        "hard_to_vary": False,
+        "not_a_restated_obstruction": False,
+        "logical_layer": "exact conditional realization, not an independently derived explanation",
         "physical_fault_tolerant_layer": "open constructive problem with an exact frozen-code falsifier",
         "capability_status": {
             "frozen_stabilizer": "Obstructed",
             "logical_nonlinear_source": "Executable",
             "five_rail_nonlinear_extension": "Conditional",
         },
-        "smallest_next_theorem": "construct a verified encoded resource injection or code-switch intertwiner and replay its one-fault exRec",
-        "verdict": "The DPC is now a proper explanation of the logical D(S3) capability boundary: a source-level nonlinear mechanism generates exactly the operations excluded by stabilizer invariants, and hostile source mutations fail without changing formal support. The same audit falsifies the naive frozen-code lift, so the complete physical compiler remains honestly conditional rather than being inferred from the explanation.",
+        "source_independence_attack": attack["attacks_succeeded"],
+        "smallest_next_theorem": "derive a gauge-compatible nonlinear interaction from independently constrained native D(S3) microscopic dynamics, then construct and replay its encoded one-fault lift",
+        "verdict": "The first DPC mechanism is an exact conditional logical realization, not a proper source explanation. Its generators are target spectral logarithms, its calibrations are fitted to the desired characters, inequivalent generators share the same endpoint gates, and the native D(S3) Hamiltonian does not supply the couplers. The naive frozen-code lift also fails. A proper explanation requires one independent microscopic law to derive both the interaction and its encoded fault-tolerant capability.",
     }
     OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))
