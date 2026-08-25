@@ -154,6 +154,50 @@
       "status": "pending"
     }
   ],
+  "review_authority_root_certifications": [
+    {
+      "id": "source_methods_board_A",
+      "holder": "independent_reviewer_A",
+      "issuing_charter": "cross_sector_methods_charter_A",
+      "provenance_chain": ["cross_sector_methods_charter_A", "independent_reviewer_A"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true
+    },
+    {
+      "id": "source_methods_board_B",
+      "holder": "independent_reviewer_B",
+      "issuing_charter": "cross_sector_methods_charter_B",
+      "provenance_chain": ["cross_sector_methods_charter_B", "independent_reviewer_B"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true
+    },
+    {
+      "id": "source_appeal_panel",
+      "holder": "independent_appeal_panel",
+      "issuing_charter": "cross_sector_appeal_charter",
+      "provenance_chain": ["cross_sector_appeal_charter", "independent_appeal_panel"],
+      "jurisdiction": "rival_admission_appeal",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true
+    }
+  ],
+  "review_root_independence_audits": [
+    {
+      "id": "merits_roots_A_B_independent",
+      "roots": ["source_methods_board_A", "source_methods_board_B"],
+      "shared_controlling_ancestors": [],
+      "source_derived_comparison": "charter provenance comparison fixed before rival submission",
+      "coherence_defect": 0
+    }
+  ],
   "rival_admission_reviews": [
     {
       "id": "review_mechanism_delta",
@@ -163,6 +207,7 @@
       "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
       "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
       "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
       "criteria_committed_before_response": true,
       "immutable_evidence_packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
       "decision": "admitted",
@@ -179,6 +224,7 @@
       "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
       "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
       "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
       "criteria_committed_before_response": true,
       "immutable_evidence_packet_sha256": "1e88ea5f530cdef15c47179e91567e34189b86435e6085cd50b01e59de299962",
       "decision": "rejected",
@@ -195,6 +241,7 @@
       "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
       "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
       "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
       "criteria_committed_before_response": true,
       "immutable_evidence_packet_sha256": "9adb9b76e38b3e4f48fb9ecbf450231714c9841d5a53aa6be4b809936c68693e",
       "decision": "pending",

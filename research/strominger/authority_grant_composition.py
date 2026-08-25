@@ -367,6 +367,18 @@ def validate(packet: dict[str, Any]) -> list[Error]:
     # but cannot be the sole adjudicator of its own rival.  Review operates on a
     # frozen content packet under criteria fixed before the response is inspected;
     # it grants challenge standing, never a stronger operative authority kind.
+    root_certifications = {item["id"]: item for item in packet.get("review_authority_root_certifications", [])}
+    for root_id, root in root_certifications.items():
+        for field in ("holder", "issuing_charter", "provenance_chain", "jurisdiction", "authority_kind"):
+            if not root.get(field):
+                err("uncertified_review_authority_root", root_id, field)
+        if root.get("issuing_charter") == root_id or root_id in root.get("provenance_chain", []):
+            err("self_authorized_review_root", root_id, str(root.get("provenance_chain")))
+        if root.get("authority_kind") != "procedural_review" or root.get("operative_authority_ceiling") != "challenge_standing":
+            err("review_root_scope_laundering", root_id, f"{root.get('authority_kind')}:{root.get('operative_authority_ceiling')}")
+        if not root.get("revocable") or root.get("may_select_mechanism_truth") is not False:
+            err("unbounded_review_authority_root", root_id, str(root))
+
     reviews = {item["id"]: item for item in packet.get("rival_admission_reviews", [])}
     reviewed_admissions: set[str] = set()
     for review_id, review in reviews.items():
@@ -380,10 +392,22 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         reviewers = review.get("reviewers", [])
         appeal_reviewers = review.get("appeal_reviewers", [])
         roots = review.get("reviewer_authority_roots", [])
+        appeal_roots = review.get("appeal_authority_roots", [])
         if not reviewers or incumbent in reviewers or proposer in reviewers:
             err("incumbent_or_proposer_controls_rival_admission", review_id, str(reviewers))
         if len(roots) != len(reviewers) or len(set(roots)) != len(roots):
             err("nonindependent_rival_review_authority", review_id, str(roots))
+        if any(root not in root_certifications for root in roots + appeal_roots):
+            err("uncertified_review_authority_root", review_id, str(roots + appeal_roots))
+        else:
+            if any(root_certifications[root].get("holder") != reviewer for root, reviewer in zip(roots, reviewers)):
+                err("reviewer_root_holder_mismatch", review_id, str(roots))
+            if len(appeal_roots) != len(appeal_reviewers) or any(
+                root_certifications[root].get("holder") != reviewer
+                or root_certifications[root].get("jurisdiction") != "rival_admission_appeal"
+                for root, reviewer in zip(appeal_roots, appeal_reviewers)
+            ):
+                err("invalid_appeal_authority_root", review_id, str(appeal_roots))
         if not review.get("criteria_committed_before_response"):
             err("target_fitted_rival_review", review_id, "review criteria were not precommitted")
         if not review.get("immutable_evidence_packet_sha256"):
@@ -409,6 +433,16 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("proposer_identity_bias", aid, f"{audit.get('decision_left')}!={audit.get('decision_right')}")
         if not audit.get("identity_blinded_during_merits_review"):
             err("unblinded_rival_merits_review", aid, "proposer identity exposed during merits review")
+
+    for audit in packet.get("review_root_independence_audits", []):
+        aid = audit["id"]
+        roots = audit.get("roots", [])
+        if len(roots) < 2 or any(root not in root_certifications for root in roots):
+            err("invalid_review_root_independence_audit", aid, str(roots))
+        if audit.get("shared_controlling_ancestors"):
+            err("review_roots_share_controlling_authority", aid, str(audit.get("shared_controlling_ancestors")))
+        if not audit.get("source_derived_comparison") or audit.get("coherence_defect") != 0:
+            err("uncertified_review_root_independence", aid, str(audit.get("coherence_defect")))
 
     # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
