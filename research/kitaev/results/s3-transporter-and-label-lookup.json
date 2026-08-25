@@ -1,0 +1,195 @@
+{
+  "alignment": {
+    "action": "|h,x> maps to |h,t(h)x>",
+    "basis_cases": 36,
+    "inverse": "|h,x> maps to |h,t(h)^-1 x>",
+    "is_product_clifford": false,
+    "product_pauli_generator_images_inside": [
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      false
+    ],
+    "unitary_permutation": true
+  },
+  "encoded_label_copy": {
+    "action": "|r>|l> maps to |r>|l XOR r> on three logical qubits",
+    "all_64_source_target_cases_clean": true,
+    "clean_inverse": "the same three SUM gates",
+    "executable_by_verified_clifford_teleportation": true,
+    "primitive_logical_gates": "three qubit SUM gates"
+  },
+  "lookup_boundary": "The residue truth table is exact, and label-to-label copy is Clifford. Coherently computing its three predicates from flux and centralizer-charge modes is a central-projector-controlled lookup, not supplied by the frozen product-Clifford interfaces.",
+  "schema": "marici.kitaev.s3-transporter-and-label-lookup.v1",
+  "sector_lookup": [
+    {
+      "bits_b2_b1_b0": [
+        0,
+        0,
+        0
+      ],
+      "residue": 0,
+      "sector": "A"
+    },
+    {
+      "bits_b2_b1_b0": [
+        0,
+        0,
+        1
+      ],
+      "residue": 1,
+      "sector": "B"
+    },
+    {
+      "bits_b2_b1_b0": [
+        0,
+        1,
+        0
+      ],
+      "residue": 2,
+      "sector": "C"
+    },
+    {
+      "bits_b2_b1_b0": [
+        0,
+        1,
+        1
+      ],
+      "residue": 3,
+      "sector": "D"
+    },
+    {
+      "bits_b2_b1_b0": [
+        1,
+        1,
+        0
+      ],
+      "residue": 6,
+      "sector": "E"
+    },
+    {
+      "bits_b2_b1_b0": [
+        1,
+        1,
+        1
+      ],
+      "residue": 7,
+      "sector": "F"
+    },
+    {
+      "bits_b2_b1_b0": [
+        1,
+        0,
+        0
+      ],
+      "residue": 4,
+      "sector": "G"
+    },
+    {
+      "bits_b2_b1_b0": [
+        1,
+        0,
+        1
+      ],
+      "residue": 5,
+      "sector": "H"
+    }
+  ],
+  "transporter_table": [
+    {
+      "flux_class": "identity",
+      "holonomy": [
+        0,
+        0
+      ],
+      "representative": [
+        0,
+        0
+      ],
+      "transporter": [
+        0,
+        0
+      ]
+    },
+    {
+      "flux_class": "transposition",
+      "holonomy": [
+        0,
+        1
+      ],
+      "representative": [
+        0,
+        1
+      ],
+      "transporter": [
+        0,
+        0
+      ]
+    },
+    {
+      "flux_class": "three_cycle",
+      "holonomy": [
+        1,
+        0
+      ],
+      "representative": [
+        1,
+        0
+      ],
+      "transporter": [
+        0,
+        0
+      ]
+    },
+    {
+      "flux_class": "transposition",
+      "holonomy": [
+        1,
+        1
+      ],
+      "representative": [
+        0,
+        1
+      ],
+      "transporter": [
+        1,
+        0
+      ]
+    },
+    {
+      "flux_class": "three_cycle",
+      "holonomy": [
+        2,
+        0
+      ],
+      "representative": [
+        1,
+        0
+      ],
+      "transporter": [
+        0,
+        1
+      ]
+    },
+    {
+      "flux_class": "transposition",
+      "holonomy": [
+        2,
+        1
+      ],
+      "representative": [
+        0,
+        1
+      ],
+      "transporter": [
+        2,
+        0
+      ]
+    }
+  ],
+  "verdict": "The transporter and label-copy actions are now explicit. The 36-state transporter is non-Clifford on the frozen hybrid encoding. Three-bit label copy is executable Clifford once a residue exists, while coherent sector-to-residue lookup remains a nonstabilizer controlled-projector gate."
+}

@@ -1,0 +1,65 @@
+{
+  "digest_bound_results": {
+    "s3-26-contact-exrec-fault-pairs.json": "3c15a5b1fbfffcd02f50f935cdf8b5e4b4d5b4ea9139c67b7c7e8e48ba7aca71",
+    "s3-clifford-choi-verification.json": "d6788f5ec930113b18185d389feba401b93e73be48e142004cc42954482755ff",
+    "s3-controlled-inversion-magic-obstruction.json": "dd60bb475fb57407ff245d6e724406c685c46cc726335e41ef1b8ad4e00d9645",
+    "s3-encoded-clifford-teleportation.json": "914687f9267f213bb6eb9ec1adea86bb84708dfcafd86674e219ffc04429810f",
+    "s3-five-rail-code-freeze.json": "33ab2b3ae31e326a4cffff8761b68c03e6e3bf3388645641903ca9139cfe348a",
+    "s3-five-rail-shor-recovery.json": "dc0a3df929f4f095f897ec266885c7845058562f448f7f3470baca02683d64ee",
+    "s3-five-rail-transversal-gate-obstructions.json": "67ed0ded4d589441e2c19bc5e64c05d1b33d48768c4709e200767b78b9e5cda7",
+    "s3-record-phase-magic-obstruction.json": "f419da0d3c355da0d091980b1923ce52b9d902a9bea6d860cd317e9978b322dd",
+    "s3-transporter-and-label-lookup.json": "87332b9deb4e6634a4b5adb2e49385eefc087637ff4bbd16deb495aeda919bb2"
+  },
+  "explicit_encodings": {
+    "core_quantum_rails_during_acquisition": 50,
+    "eight_level": "five rails of three [[5,1,3]]_2 components",
+    "final_classical_record_bits": 6,
+    "four_encoded_data_blocks_rails": 20,
+    "six_level": "five rails of [[5,1,3]]_2 tensor [[5,1,3]]_3",
+    "three_encoded_bus_blocks_rails": 15,
+    "three_encoded_record_qubits_rails": 15
+  },
+  "fault_accounting": {
+    "distance_three_is_executable_for_full_compiler": false,
+    "macro_fault_pairs": 3081,
+    "macro_single_faults": 78,
+    "malignant_macro_pairs": 220,
+    "malignant_macro_single_faults": 0,
+    "minimum_distance_if_missing_magic_modules_are_one_fault_tolerant": 3,
+    "reason": "the full compiler is not an executable circuit until the nonstabilizer modules and their verified factories are supplied"
+  },
+  "final_disposition": "OBSTRUCTED_WITHIN_FROZEN_INTERFACES",
+  "proved_executable_with_stabilizer_resources": [
+    "single-rail syndrome decoding and Pauli recovery",
+    "coordinate inversion",
+    "logical H and F3 by verified encoded Choi teleportation",
+    "logical qubit and qutrit SUM by verified encoded Choi teleportation",
+    "generalized Shor recovery after each contact",
+    "controlled power 4 binary record-label phase"
+  ],
+  "proved_unavailable_in_frozen_resource_theory": [
+    "deterministic qubit-controlled qutrit inversion",
+    "deterministic controlled-power-1 record-label phase",
+    "deterministic controlled-power-2 record-label phase",
+    "full S3 multiplication assembled only from the frozen stabilizer interfaces",
+    "the explicit 36-state holonomy-conditioned transporter"
+  ],
+  "resource_accounting": {
+    "eight_level_recovery_cat_data_contacts": 144,
+    "fourier_choi_verification_contacts": 36,
+    "full_depth": "undefined for the same source reason",
+    "full_magic_ancilla_count": "not zero and not derivable from the frozen interfaces",
+    "full_physical_gate_count": "undefined: no admitted factory exists for the required nonstabilizer resources",
+    "macro_contacts_per_controlled_power": 26,
+    "macro_gates_per_controlled_power_before_nonstabilizer_expansion": 49,
+    "recovery_layers_per_controlled_power": 26,
+    "six_level_recovery_cat_data_contacts": 105,
+    "sum_choi_verification_contacts": 90
+  },
+  "schema": "marici.kitaev.s3-executable-ft-frontier-audit.v1",
+  "still_typed_as_nonstabilizer_lookup": [
+    "class-conditioned selection between H and F3",
+    "coherent flux/charge-to-three-bit sector lookup"
+  ],
+  "verdict": "The executable stabilizer subcompiler is explicit and distance-three at macro single-fault level. The full D(S3) sector compiler is impossible in the frozen stabilizer resource theory: controlled inversion and two record phases are proven non-Clifford, and three coherent lookup controls remain nonstabilizer. Therefore full gate/depth/magic costs and an executable full-compiler distance cannot be assigned without inventing a magic-state source. Adding verified one-fault-tolerant magic modules would make distance three sufficient at the audited contact level, but that is a conditional extension, not the current source theory."
+}

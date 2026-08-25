@@ -44,6 +44,22 @@ policy goal, and requires capability transitions to be bijective functors.
 The toric bit-syndrome packet compiles; a partial policy and a nonfunctorial
 frame transition fail.
 
+### Resource-relative capability status
+
+A capability may be `Executable`, `Conditional`, or `Obstructed` relative to
+an explicit resource theory. Executability requires admitted resources and a
+scope-matched replay certificate. Conditionality names the missing resource
+and an evidenced contract that the extension must preserve. Obstruction names
+both the missing resource and evidenced witnesses. Circuit cost fields are
+typed independently as `known`, `unknown`, or `undefined`: an absent circuit
+has undefined cost, rather than a fabricated zero.
+
+Resource extension is monotone and cannot rewrite the frozen judgement;
+restriction must recover it. Resource-typed frame transitions remain
+evidenced bijective functors and cannot silently change capability status.
+The finite D(S3) packet exercises these constructors and hostile cases while
+leaving the existing cosmology and toric packets unchanged.
+
 ## What the two packets establish
 
 The cosmology packet exercises data descent, derived specialization,
@@ -61,6 +77,6 @@ missing operational lift in cosmology.
 
 The kernel still lacks dependent ranks, chain-level matrix verification,
 higher homotopies, derived correspondence composition, infinite-dimensional
-capabilities, and proof-assistant certification.  It is now sufficient to
-reject the four recurrent mistypings requested here, but it is not a complete
-foundation for all Marici descent.
+capabilities, quantitative resource optimization, and proof-assistant
+certification. It types finite resource-relative claims; it does not turn a
+proposed resource into an admitted physical instrument.

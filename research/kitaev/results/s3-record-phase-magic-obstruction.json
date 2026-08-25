@@ -1,0 +1,46 @@
+{
+  "audits": [
+    {
+      "binary_phase_factorization": {
+        "least_significant_label_bit": "controlled phase exp(-i*pi*1/4)",
+        "middle_label_bit": "controlled phase exp(-i*pi*1/2)",
+        "most_significant_label_bit": "controlled phase exp(-i*pi*1)"
+      },
+      "controlled_power": 1,
+      "is_four_qubit_clifford": false
+    },
+    {
+      "binary_phase_factorization": {
+        "least_significant_label_bit": "controlled phase exp(-i*pi*2/4)",
+        "middle_label_bit": "controlled phase exp(-i*pi*2/2)",
+        "most_significant_label_bit": "controlled phase exp(-i*pi*2)"
+      },
+      "controlled_power": 2,
+      "is_four_qubit_clifford": false
+    },
+    {
+      "binary_phase_factorization": {
+        "least_significant_label_bit": "controlled phase exp(-i*pi*4/4)",
+        "middle_label_bit": "controlled phase exp(-i*pi*4/2)",
+        "most_significant_label_bit": "controlled phase exp(-i*pi*4)"
+      },
+      "controlled_power": 4,
+      "is_four_qubit_clifford": true
+    }
+  ],
+  "clifford_controlled_powers": [
+    4
+  ],
+  "label_encoding": "residue r = 4 b2 + 2 b1 + b0",
+  "minimal_new_resource_types": [
+    "verified controlled-T-type phase resource for power 1",
+    "verified controlled-S-type phase resource for power 2"
+  ],
+  "nonclifford_controlled_powers": [
+    1,
+    2
+  ],
+  "schema": "marici.kitaev.s3-record-phase-magic-obstruction.v1",
+  "stabilizer_resource_consequence": "the U and U^2 record-label phases cannot be implemented deterministically using only encoded Clifford Choi states, Pauli measurements, and Pauli feed-forward",
+  "verdict": "Binary label encoding makes the phase inventory exact: power 4 is Clifford, while powers 1 and 2 are non-Clifford and require verified magic resources in addition to the controlled-inversion resource."
+}

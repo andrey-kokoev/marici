@@ -19,6 +19,25 @@ class ArrowKind(str, Enum):
     CORRESPONDENCE = "correspondence"
 
 
+class CapabilityStatusKind(str, Enum):
+    EXECUTABLE = "Executable"
+    CONDITIONAL = "Conditional"
+    OBSTRUCTED = "Obstructed"
+
+
+class CostValueKind(str, Enum):
+    KNOWN = "known"
+    UNKNOWN = "unknown"
+    UNDEFINED = "undefined"
+
+
+REQUIRED_CIRCUIT_COST_FIELDS = (
+    "physical_gate_count",
+    "depth",
+    "magic_ancilla_count",
+)
+
+
 @dataclass(frozen=True)
 class TypeErrorRecord:
     code: str
@@ -35,9 +54,172 @@ def validate(packet: dict[str, Any]) -> list[TypeErrorRecord]:
     contexts = {x["id"]: x for x in packet.get("contexts", [])}
     objects = {x["id"]: x for x in packet.get("local_objects", [])}
     arrows = {x["id"]: x for x in packet.get("arrows", [])}
+    replay_ids = {x["id"] for x in packet.get("evidence_replays", [])}
 
     def err(code: str, subject: str, detail: str):
         errors.append(TypeErrorRecord(code, subject, detail))
+
+    # Resource-relative capability declarations.  Resource membership and
+    # admission are distinct: merely naming transport does not authorize use.
+    theories = {x["id"]: x for x in packet.get("resource_theories", [])}
+    for tid, theory in theories.items():
+        parent = theory.get("extends")
+        if parent is not None and parent not in theories:
+            err("unknown_parent_resource_theory", tid, str(parent))
+        if theory.get("admission") not in {"admitted", "proposed"}:
+            err("invalid_resource_theory_admission", tid, str(theory.get("admission")))
+        seen_resources: set[str] = set()
+        for resource in theory.get("resources", []):
+            rid = resource.get("id")
+            if not rid or rid in seen_resources:
+                err("duplicate_or_missing_resource", tid, str(rid))
+                continue
+            seen_resources.add(rid)
+            if resource.get("admitted") and not resource.get("authority_evidence"):
+                err("unauthorized_resource_admission", f"{tid}:{rid}",
+                    "admitted resources require source authority evidence")
+        if parent is not None and any(x.get("admitted") for x in theory.get("resources", [])):
+            if not theory.get("extension_authority"):
+                err("unauthorized_resource_theory_extension", tid,
+                    "an admitted extension requires explicit extension authority")
+
+    def theory_resources(theory_id: str) -> dict[str, dict[str, Any]]:
+        resources: dict[str, dict[str, Any]] = {}
+        visited: set[str] = set()
+        current = theory_id
+        while current in theories and current not in visited:
+            visited.add(current)
+            theory = theories[current]
+            for resource in theory.get("resources", []):
+                rid = resource.get("id")
+                if rid:
+                    resources.setdefault(rid, resource)
+            current = theory.get("extends")
+        return resources
+
+    def theory_extends(child: str, ancestor: str) -> bool:
+        visited: set[str] = set()
+        current: str | None = child
+        while current in theories and current not in visited:
+            if current == ancestor:
+                return True
+            visited.add(current)
+            current = theories[current].get("extends")
+        return False
+
+    def validate_cost(cost: Any, subject: str) -> dict[str, str]:
+        kinds: dict[str, str] = {}
+        if not isinstance(cost, dict):
+            err("missing_capability_cost", subject, "cost must be a typed field map")
+            return kinds
+        for field in REQUIRED_CIRCUIT_COST_FIELDS:
+            if field not in cost:
+                err("missing_required_cost_field", subject, field)
+        for field, value in cost.items():
+            if not isinstance(value, dict):
+                err("untyped_cost_value", f"{subject}:{field}", repr(value))
+                continue
+            try:
+                kind = CostValueKind(value.get("kind"))
+            except ValueError:
+                err("unknown_cost_value_kind", f"{subject}:{field}", str(value.get("kind")))
+                continue
+            kinds[field] = kind.value
+            if kind is CostValueKind.KNOWN:
+                known = value.get("value")
+                if not isinstance(known, int) or isinstance(known, bool) or known < 0:
+                    err("invalid_known_cost", f"{subject}:{field}", repr(known))
+            elif not value.get("reason"):
+                err("missing_cost_reason", f"{subject}:{field}", kind.value)
+        return kinds
+
+    capabilities = {x["id"]: x for x in packet.get("capabilities", [])}
+    for cid, capability in capabilities.items():
+        theory_id = capability.get("resource_theory")
+        if theory_id not in theories:
+            err("unknown_resource_theory", cid, str(theory_id))
+            available: dict[str, dict[str, Any]] = {}
+        else:
+            available = theory_resources(theory_id)
+        status = capability.get("status", {})
+        try:
+            kind = CapabilityStatusKind(status.get("kind"))
+        except ValueError:
+            err("unknown_capability_status", cid, str(status.get("kind")))
+            continue
+        cost_kinds = validate_cost(status.get("cost"), cid)
+        used = capability.get("uses_resources", [])
+        for rid in used:
+            if rid not in available or not available[rid].get("admitted"):
+                err("executable_unavailable_resource" if kind is CapabilityStatusKind.EXECUTABLE
+                    else "unavailable_declared_resource", cid, rid)
+
+        if kind is CapabilityStatusKind.EXECUTABLE:
+            certificates = status.get("certificate", [])
+            if not certificates:
+                err("missing_execution_certificate", cid, "Executable requires replayable evidence")
+            for certificate in certificates:
+                if certificate.get("scope") != capability.get("subject"):
+                    err("certificate_scope_mismatch", cid, str(certificate.get("scope")))
+                if not certificate.get("evidence"):
+                    err("missing_execution_evidence", cid, str(certificate.get("id")))
+                if certificate.get("replay_id") not in replay_ids:
+                    err("unknown_execution_replay", cid, str(certificate.get("replay_id")))
+            if any(value == CostValueKind.UNDEFINED.value for value in cost_kinds.values()):
+                err("executable_undefined_cost", cid,
+                    "an executable circuit may have unknown, but not undefined, cost")
+        elif kind is CapabilityStatusKind.CONDITIONAL:
+            required = status.get("required_resource", [])
+            if not required:
+                err("missing_conditional_resource", cid, "Conditional requires a resource lift")
+            contract = status.get("preserved_contract", {})
+            if not contract.get("preserved") or not contract.get("evidence"):
+                err("conditional_contract_not_preserved", cid,
+                    "the required resource must preserve an evidenced contract")
+        elif kind is CapabilityStatusKind.OBSTRUCTED:
+            if not status.get("missing_resource"):
+                err("missing_obstruction_resource", cid, "Obstructed requires a missing resource")
+            witnesses = status.get("witness", [])
+            if not witnesses or any(not x.get("evidence") for x in witnesses):
+                err("missing_obstruction_witness", cid, "every obstruction witness needs evidence")
+            if any(cost_kinds.get(field) != CostValueKind.UNDEFINED.value
+                   for field in REQUIRED_CIRCUIT_COST_FIELDS):
+                err("obstructed_cost_must_be_undefined", cid,
+                    "an absent circuit has undefined gate, depth, and magic costs")
+
+    status_rank = {
+        CapabilityStatusKind.OBSTRUCTED.value: 0,
+        CapabilityStatusKind.CONDITIONAL.value: 1,
+        CapabilityStatusKind.EXECUTABLE.value: 2,
+    }
+    for transition in packet.get("capability_status_transitions", []):
+        sid, tid = transition.get("source_capability"), transition.get("target_capability")
+        source, target = capabilities.get(sid), capabilities.get(tid)
+        if source is None or target is None:
+            err("unknown_capability_status_endpoint", transition["id"], f"{sid}->{tid}")
+            continue
+        if source.get("subject") != target.get("subject"):
+            err("capability_status_subject_mismatch", transition["id"],
+                f'{source.get("subject")}->{target.get("subject")}')
+        if not transition.get("evidence"):
+            err("missing_capability_status_transition_evidence", transition["id"], "")
+        direction = transition.get("kind")
+        sr, tr = source["resource_theory"], target["resource_theory"]
+        sk, tk = source["status"]["kind"], target["status"]["kind"]
+        if direction == "extension":
+            if not theory_extends(tr, sr):
+                err("invalid_resource_extension", transition["id"], f"{sr}->{tr}")
+            if status_rank.get(tk, -1) < status_rank.get(sk, -1):
+                err("nonmonotone_capability_extension", transition["id"], f"{sk}->{tk}")
+            if not transition.get("preserves_prior"):
+                err("resource_extension_rewrites_prior", transition["id"], sid)
+        elif direction == "restriction":
+            if not theory_extends(sr, tr):
+                err("invalid_resource_restriction", transition["id"], f"{sr}->{tr}")
+            if status_rank.get(tk, -1) > status_rank.get(sk, -1):
+                err("nonrestrictive_capability_forgetting", transition["id"], f"{sk}->{tk}")
+        else:
+            err("unknown_capability_status_transition", transition["id"], str(direction))
 
     for oid, obj in objects.items():
         if obj["context"] not in contexts:
@@ -186,6 +368,18 @@ def validate(packet: dict[str, Any]) -> list[TypeErrorRecord]:
         for (a, b), c in scomp.items():
             if a in smap and b in smap and c in smap and tcomp.get((smap[a], smap[b])) != smap[c]:
                 err("capability_transition_composition_defect", tr["id"], f"{a};{b}")
+        if sf.get("resource_theory") or tf.get("resource_theory"):
+            if sf.get("resource_theory") not in theories or tf.get("resource_theory") not in theories:
+                err("unknown_resource_theory", tr["id"],
+                    f'{sf.get("resource_theory")}->{tf.get("resource_theory")}')
+            if not tr.get("evidence"):
+                err("missing_capability_transition_evidence", tr["id"],
+                    "resource-typed frame changes require evidence")
+            sc, tc = sf.get("capability_ref"), tf.get("capability_ref")
+            if sc not in capabilities or tc not in capabilities:
+                err("unknown_frame_capability", tr["id"], f"{sc}->{tc}")
+            elif capabilities[sc]["status"]["kind"] != capabilities[tc]["status"]["kind"]:
+                err("frame_transition_status_mismatch", tr["id"], f"{sc}->{tc}")
 
     return errors
 
@@ -203,6 +397,9 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "derived_object_count": len(packet.get("derived_objects", [])),
         "base_change_count": len(packet.get("base_changes", [])),
         "capability_fiber_count": len(packet.get("capability_fibers", [])),
+        "resource_theory_count": len(packet.get("resource_theories", [])),
+        "capability_count": len(packet.get("capabilities", [])),
+        "capability_status_transition_count": len(packet.get("capability_status_transitions", [])),
     }
 
 

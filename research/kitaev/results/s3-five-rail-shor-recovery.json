@@ -1,0 +1,94 @@
+{
+  "component_schedules": {
+    "qubit": {
+      "cat_data_contacts_per_recovery": 48,
+      "cat_data_contacts_per_round": 16,
+      "cat_shift_audits": [
+        {
+          "accepted_patterns": 2,
+          "accepted_patterns_are_only_global_shifts": true,
+          "adjacent_verification_checks": 3,
+          "cat_length": 4,
+          "field_order": 2,
+          "rejected_dangerous_patterns": 14,
+          "shift_patterns": 16
+        }
+      ],
+      "cat_verification_checks_per_recovery": 36,
+      "cat_verification_checks_per_round": 12,
+      "code": "[[5,1,3]]_2",
+      "complete_syndrome_rounds": 3,
+      "field_order": 2,
+      "fresh_cat_rails_prepared_per_recovery": 48,
+      "majority_cases_checked": 12,
+      "single_bad_syndrome_sample_corrected": true,
+      "stabilizer_weights": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "qutrit": {
+      "cat_data_contacts_per_recovery": 57,
+      "cat_data_contacts_per_round": 19,
+      "cat_shift_audits": [
+        {
+          "accepted_patterns": 3,
+          "accepted_patterns_are_only_global_shifts": true,
+          "adjacent_verification_checks": 3,
+          "cat_length": 4,
+          "field_order": 3,
+          "rejected_dangerous_patterns": 78,
+          "shift_patterns": 81
+        },
+        {
+          "accepted_patterns": 3,
+          "accepted_patterns_are_only_global_shifts": true,
+          "adjacent_verification_checks": 4,
+          "cat_length": 5,
+          "field_order": 3,
+          "rejected_dangerous_patterns": 240,
+          "shift_patterns": 243
+        }
+      ],
+      "cat_verification_checks_per_recovery": 45,
+      "cat_verification_checks_per_round": 15,
+      "code": "[[5,1,3]]_3",
+      "complete_syndrome_rounds": 3,
+      "field_order": 3,
+      "fresh_cat_rails_prepared_per_recovery": 57,
+      "majority_cases_checked": 27,
+      "single_bad_syndrome_sample_corrected": true,
+      "stabilizer_weights": [
+        5,
+        5,
+        5,
+        4
+      ]
+    }
+  },
+  "eight_level_bus_recovery": {
+    "cat_data_contacts": 144,
+    "cat_verification_checks": 108,
+    "complete_syndrome_rounds": 3,
+    "fresh_cat_rails_prepared": 144,
+    "parallel_binary_components": 3
+  },
+  "fault_contract": [
+    "each accepted cat rail contacts at most one data rail",
+    "adjacent cat checks reject every nonglobal shift pattern",
+    "global cat shift preserves the cat state",
+    "phase/readout errors are suppressed by three complete syndrome rounds",
+    "a correction is applied from the component recovery table"
+  ],
+  "one_ec_boundary": "The schedule proves clean-input/one-fault containment and fault-free correction of one input error. Input-error plus circuit-fault combinations belong to the malignant-pair audit.",
+  "schema": "marici.kitaev.s3-five-rail-shor-recovery.v1",
+  "six_level_bus_recovery": {
+    "cat_data_contacts": 105,
+    "cat_verification_checks": 81,
+    "fresh_cat_rails_prepared": 105,
+    "parallel_component_rounds": 3
+  },
+  "verdict": "Fresh verified generalized Shor cats give an explicit nonpropagating recovery schedule for all frozen five-rail components. The schedule removes syndrome extraction as an untyped interface, but it does not create the missing nonstabilizer gate resources."
+}

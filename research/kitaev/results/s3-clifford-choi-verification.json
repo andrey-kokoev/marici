@@ -1,0 +1,86 @@
+{
+  "components": {
+    "qubit": {
+      "fourier_choi": {
+        "cat_data_contacts": 36,
+        "cat_verification_checks": 30,
+        "encoded_blocks": 2,
+        "fresh_cat_rails_prepared": 36,
+        "logical_stabilizer_generators": 2,
+        "logical_stabilizer_weights": [
+          6,
+          6
+        ],
+        "maximum_cat_length": 6,
+        "resource": "qubit_fourier_choi",
+        "unique_logical_state_after_stabilizer_projection": true,
+        "verification_rounds": 3
+      },
+      "logical_x_weight": 3,
+      "logical_z_weight": 3,
+      "sum_choi": {
+        "cat_data_contacts": 90,
+        "cat_verification_checks": 78,
+        "encoded_blocks": 4,
+        "fresh_cat_rails_prepared": 90,
+        "logical_stabilizer_generators": 4,
+        "logical_stabilizer_weights": [
+          9,
+          6,
+          6,
+          9
+        ],
+        "maximum_cat_length": 9,
+        "resource": "qubit_sum_choi",
+        "unique_logical_state_after_stabilizer_projection": true,
+        "verification_rounds": 3
+      }
+    },
+    "qutrit": {
+      "fourier_choi": {
+        "cat_data_contacts": 36,
+        "cat_verification_checks": 30,
+        "encoded_blocks": 2,
+        "fresh_cat_rails_prepared": 36,
+        "logical_stabilizer_generators": 2,
+        "logical_stabilizer_weights": [
+          6,
+          6
+        ],
+        "maximum_cat_length": 6,
+        "resource": "qutrit_fourier_choi",
+        "unique_logical_state_after_stabilizer_projection": true,
+        "verification_rounds": 3
+      },
+      "logical_x_weight": 3,
+      "logical_z_weight": 3,
+      "sum_choi": {
+        "cat_data_contacts": 90,
+        "cat_verification_checks": 78,
+        "encoded_blocks": 4,
+        "fresh_cat_rails_prepared": 90,
+        "logical_stabilizer_generators": 4,
+        "logical_stabilizer_weights": [
+          9,
+          6,
+          6,
+          9
+        ],
+        "maximum_cat_length": 9,
+        "resource": "qutrit_sum_choi",
+        "unique_logical_state_after_stabilizer_projection": true,
+        "verification_rounds": 3
+      }
+    }
+  },
+  "peak_width_boundary": "Counts are consumed fresh-cat rails. Sequential stabilizer measurement reduces peak cat width to the listed maximum cat length plus its verification rails.",
+  "preparation_protocol": [
+    "prepare individually error-corrected encoded blocks",
+    "measure the listed independent logical Choi stabilizers with fresh adjacent-verified generalized cats",
+    "repeat every logical stabilizer three times and majority-decode",
+    "apply a logical Pauli frame to set all stabilizer eigenvalues to +1",
+    "perform a final component-code recovery before coupling the resource to data"
+  ],
+  "schema": "marici.kitaev.s3-clifford-choi-verification.v1",
+  "verdict": "The H, F3, qubit-SUM, and qutrit-SUM Choi resources have explicit verified preparation schedules. Fourier resources use weights [6,6] and 36 cat-data contacts; SUM resources use [9,6,6,9] and 90 contacts, before final code recovery."
+}
