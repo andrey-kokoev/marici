@@ -61,6 +61,18 @@ for field, value in (
     errors = candidate_result["epoch_successor_events"][0]["errors"]
     attestation_hostiles[field] = not candidate_result["passed"] and "epoch_successor_attestation_stale_or_correlated" in errors
 result["epoch_attestation_hostiles"] = attestation_hostiles
+tcb_hostiles = {}
+for field, value in (
+    ("claims_absolute_unclonability", True),
+    ("anti_rollback_storage", False),
+    ("measured_ports", ["boot_state", "manifest_state"]),
+):
+    candidate = deepcopy(contract)
+    candidate["epoch_successor_events"][0]["physical_state_correspondence"]["trusted_physical_base"][field] = value
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["epoch_successor_events"][0]["errors"]
+    tcb_hostiles[field] = not candidate_result["passed"] and "epoch_successor_attestation_tcb_unbounded" in errors
+result["attestation_tcb_hostiles"] = tcb_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -82,4 +94,6 @@ for field, rejected in successor_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " successor hostile." + field)
 for field, rejected in attestation_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " attestation hostile." + field)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) else 1)
+for field, rejected in tcb_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " attestation_tcb hostile." + field)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) else 1)

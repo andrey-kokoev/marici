@@ -74,3 +74,10 @@ authority root independent of both configuration signers. Replayed nonces,
 rolled-back counters, and correlated verifier governance are independently
 rejected. Absence of the attestation is a typed error rather than a checker
 exception.
+
+The explanatory regress terminates at a declared attestation trusted base:
+one hardware-root identity, measured boot/manifest/configuration ports, and
+anti-rollback counter storage under a bounded threat model. This is not an
+absolute noncloning theorem or a universal execution-port census. A live
+challenge interface admits newly discovered ports and hardware common causes,
+which must suspend and refine the affected claim.
