@@ -1,0 +1,156 @@
+{
+  "acceptance_condition": "rank(J_det)=2 and det(J_det^T W J_det)>0 for independently calibrated positive W, with positive margin after uncertainty and support completion.",
+  "admitted_domain": "candidate interfaces from a source-defined two-error flavor module to a calibrated detector-response module.",
+  "candidate_diagnostics": {
+    "admitted_pdet": {
+      "admitted": true,
+      "gram_determinant_for_W_identity": "1",
+      "jacobian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_determinant": "1",
+      "missing_fields": [],
+      "positive_gram": true,
+      "rank_two": true,
+      "robust_rank_margin": true
+    },
+    "collapsed_source_directions": {
+      "admitted": false,
+      "gram_determinant_for_W_identity": "0",
+      "jacobian": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "jacobian_determinant": "0",
+      "missing_fields": [],
+      "positive_gram": false,
+      "rank_two": false,
+      "robust_rank_margin": false
+    },
+    "external_detector_variation": {
+      "admitted": false,
+      "gram_determinant_for_W_identity": "1",
+      "jacobian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_determinant": "1",
+      "missing_fields": [
+        "detector_variations_from_source"
+      ],
+      "positive_gram": true,
+      "rank_two": true,
+      "robust_rank_margin": true
+    },
+    "presentation_calibration": {
+      "admitted": false,
+      "gram_determinant_for_W_identity": "1",
+      "jacobian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_determinant": "1",
+      "missing_fields": [
+        "experimental_calibration"
+      ],
+      "positive_gram": true,
+      "rank_two": true,
+      "robust_rank_margin": true
+    },
+    "uncertainty_collapse": {
+      "admitted": false,
+      "gram_determinant_for_W_identity": "1/10000",
+      "jacobian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1/100"
+        ]
+      ],
+      "jacobian_determinant": "1/100",
+      "missing_fields": [],
+      "positive_gram": true,
+      "rank_two": true,
+      "robust_rank_margin": false
+    },
+    "unjoined_rg_plus_physical16": {
+      "admitted": false,
+      "gram_determinant_for_W_identity": "1",
+      "jacobian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_determinant": "1",
+      "missing_fields": [
+        "common_source_readout_frame",
+        "detector_variations_from_source",
+        "named_interface_constructor"
+      ],
+      "positive_gram": true,
+      "rank_two": true,
+      "robust_rank_margin": true
+    }
+  },
+  "checks": {
+    "complete_pdet_is_admitted": true,
+    "identical_responses_leave_rank_one": true,
+    "named_interface_and_common_frame_are_missing": true,
+    "nominal_rank_two_can_fail_uncertainty_gate": true,
+    "non_source_detector_variation_is_rejected": true,
+    "presentation_calibration_is_rejected": true,
+    "rank_one_has_zero_gram_determinant": true,
+    "rank_two_equals_positive_gram_for_positive_W_test": true,
+    "unjoined_rg_physical16_is_not_pdet": true,
+    "wp232_closes_without_a_named_pdet": true
+  },
+  "claim": "P_det is the missing authority-bearing interface: a valid source model plus a valid calibrated readout does not imply a source-calibrated probe.",
+  "classification": "source-support closure: neither selector nor physical instrument until P_det is constructed.",
+  "contextual_partition": [
+    "unjoined_source_and_readout",
+    "rank_deficient_join",
+    "presentation_or_external_calibration",
+    "uncertainty_unstable_rank_two",
+    "admitted_robust_rank_two_pdet"
+  ],
+  "faithful_quotient": "the named common-frame P_det interface with calibrated Jacobian, detector metric, uncertainty contract, and support assumptions.",
+  "passed": true,
+  "remaining_gate": "Construct an admitted physical P_det operation with experimental calibration, common frame, rank two, and uncertainty-stable positive Gram determinant.",
+  "sharp_question": "Is there an admitted physical operation that independently excites two flavor-error directions and measures their calibrated detector responses in one common frame?",
+  "smallest_exact_falsifier": "J=[[1,1],[0,0]] maps two independent source directions to the same detector response, giving rank one and zero Gram determinant.",
+  "source_authorized_probe_family": "none currently admitted; the target family is P_det-generated calibrated responses to two independently excitable source-error directions.",
+  "work_package": "WP233"
+}
