@@ -1015,6 +1015,23 @@
         {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "bridge_durable_non_equivocation", "value": false}
       ],
       "expected_code": "reconfiguration_bridge_not_non_equivocating"
+    },
+    {
+      "id": "single_bridge_witness_claimed_byzantine_safe",
+      "description": "The one-replica crash-safe bridge is relabelled Byzantine-safe for f=1.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "fault_kind", "value": "byzantine"},
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "bridge_members_may_equivocate", "value": true}
+      ],
+      "expected_code": "incorrect_reconfiguration_fault_threshold"
+    },
+    {
+      "id": "byzantine_bridge_threshold_weakened",
+      "description": "A two-seat bridge is claimed safe against two Byzantine bridge faults.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "fault_bound", "value": 2}
+      ],
+      "expected_code": "incorrect_reconfiguration_fault_threshold"
     }
   ]
 }

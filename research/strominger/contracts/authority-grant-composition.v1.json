@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "4fd057315871215b10d107632e446dc03af24638853443273854f66ce4a8fa64",
+      "replay_checker_sha256": "e96e738c4926b43e3745d7a3891821668396076e95fea4a2e59d24760f81e056",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -908,9 +908,25 @@
       "new_only_may_self_activate": false,
       "bridge_witness": ["r2"],
       "bridge_durable_non_equivocation": true,
+      "fault_kind": "crash_recovery",
+      "fault_bound": 1,
+      "bridge_members_may_equivocate": false,
+      "claimed_safe": true,
       "conflicting_transition_constructible": false,
       "bootstrap_authority": "epoch-12 configuration certificate",
       "claims_authority_by_membership_transport": false
+    },
+    {
+      "id": "byzantine_joint_transition_epoch_13_to_14",
+      "old_configuration": {"epoch": 13, "members": ["r1", "r2", "r3", "r4"], "quorum": ["r1", "r2", "r3"]},
+      "new_configuration": {"epoch": 14, "members": ["r2", "r3", "r4", "r5"], "quorum": ["r2", "r3", "r5"]},
+      "transition_value_fields": ["old_epoch", "old_digest", "new_epoch", "new_digest", "new_members"],
+      "old_quorum_endorsement": ["r1", "r2", "r3"], "new_quorum_endorsement": ["r2", "r3", "r5"],
+      "joint_consensus_required": true, "old_only_may_activate_successor": false, "new_only_may_self_activate": false,
+      "bridge_witness": ["r2", "r3"], "bridge_durable_non_equivocation": true,
+      "fault_kind": "byzantine", "fault_bound": 1, "bridge_members_may_equivocate": true, "claimed_safe": true,
+      "conflicting_transition_constructible": false,
+      "bootstrap_authority": "epoch-13 configuration certificate", "claims_authority_by_membership_transport": false
     }
   ],
   "application_cases": [

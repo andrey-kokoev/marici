@@ -1102,6 +1102,17 @@ at durable witness `r2`. Its non-equivocation prevents incompatible successor
 certificates. Thus configuration authority moves by joint consensus, not by
 membership transport or successor self-authorization.
 
+The bridge condition is fault-parametric. A single durable witness suffices
+for crash/recovery because it cannot equivocate. Under a Byzantine bound `f`,
+the cross-configuration overlap must instead satisfy
+
+\[
+|Q_v\cap Q_{v+1}|>f.
+\]
+
+Thus the one-seat `{r2}` bridge is crash-safe but not Byzantine-safe for
+`f=1`. The smallest displayed Byzantine repair uses bridge `{r2,r3}`.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.
