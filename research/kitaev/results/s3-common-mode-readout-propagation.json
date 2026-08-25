@@ -1,0 +1,196 @@
+{
+  "constructor_boundary": {
+    "controller_logical_X_physically_equals_global_adjoint": false,
+    "controller_logical_X_physically_equals_global_omission": false,
+    "reason": "the missing code-switch constructor has no admitted fault-action homomorphism from controller errors to logical Wilson operations",
+    "required_map": "Phi_fault: controller fault classes -> logical CPTP maps on data and pointers"
+  },
+  "global_adjoint_fault": {
+    "ambiguous_fibers": {
+      "(0, 1, 0, 0)": [
+        "D:mode0",
+        "E:mode1"
+      ],
+      "(0, 3, 0, 0)": [
+        "D:mode1",
+        "E:mode0"
+      ],
+      "(2, 1, 2, 2)": [
+        "A:mode1",
+        "B:mode0"
+      ],
+      "(2, 3, 2, 2)": [
+        "A:mode0",
+        "B:mode1"
+      ]
+    },
+    "ambiguous_observation_count": 4,
+    "joint_readout_faithful_when_mode_unobserved": false,
+    "observation_image_size": 12,
+    "sector_action": {
+      "A": {
+        "detected_as_outside_codebook": false,
+        "global_adjoint": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "nominal": [
+          2,
+          3,
+          2,
+          2
+        ],
+        "valid_sector_after_adjoint": "B"
+      },
+      "B": {
+        "detected_as_outside_codebook": false,
+        "global_adjoint": [
+          2,
+          3,
+          2,
+          2
+        ],
+        "nominal": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "valid_sector_after_adjoint": "A"
+      },
+      "C": {
+        "detected_as_outside_codebook": true,
+        "global_adjoint": [
+          2,
+          0,
+          1,
+          1
+        ],
+        "nominal": [
+          2,
+          0,
+          3,
+          3
+        ],
+        "valid_sector_after_adjoint": null
+      },
+      "D": {
+        "detected_as_outside_codebook": false,
+        "global_adjoint": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "nominal": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "valid_sector_after_adjoint": "E"
+      },
+      "E": {
+        "detected_as_outside_codebook": false,
+        "global_adjoint": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "nominal": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "valid_sector_after_adjoint": "D"
+      },
+      "F": {
+        "detected_as_outside_codebook": true,
+        "global_adjoint": [
+          1,
+          0,
+          2,
+          1
+        ],
+        "nominal": [
+          3,
+          0,
+          2,
+          3
+        ],
+        "valid_sector_after_adjoint": null
+      },
+      "G": {
+        "detected_as_outside_codebook": true,
+        "global_adjoint": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "nominal": [
+          3,
+          0,
+          3,
+          3
+        ],
+        "valid_sector_after_adjoint": null
+      },
+      "H": {
+        "detected_as_outside_codebook": true,
+        "global_adjoint": [
+          1,
+          0,
+          1,
+          2
+        ],
+        "nominal": [
+          3,
+          0,
+          3,
+          2
+        ],
+        "valid_sector_after_adjoint": null
+      }
+    },
+    "sectors_sent_outside_valid_codebook": [
+      "C",
+      "F",
+      "G",
+      "H"
+    ],
+    "typed_action": "replace all four controlled quarter evolutions by their adjoints, so r -> -r mod 4",
+    "unknown_mode_domain_size": 16,
+    "valid_permutation_pairs": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "D",
+        "E"
+      ]
+    ]
+  },
+  "global_omission_proxy": {
+    "detectable_by_codebook_membership": true,
+    "inside_valid_codebook": false,
+    "output_signature": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "typed_action": "omit every controlled phase interaction"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/lockstep-controller-repetition-complex.json": "a24ed5841db757557c3deaec585140e1580d6d50785e0b403dbf26c66a9788d2",
+    "research/kitaev/results/s3-coherent-wilson-phase-kickback.json": "afc68d25279b4b763f64c94670ccaaa135fcc47090c54100cf69c0a02cfcb3c7"
+  },
+  "schema": "marici.kitaev.s3-common-mode-readout-propagation.v1",
+  "verdict": "A common mode is not automatically harmless or uniformly detectable. Under the global-adjoint algebraic fault, A/B and D/E become undetected sector swaps while C,F,G,H leave the valid codebook; with the mode unobserved the 16 sector-mode inputs collapse to 12 observations. Global omission instead yields the invalid 0000 word. Which action represents a physical controller logical X is not derivable until the interface supplies a fault-action map."
+}

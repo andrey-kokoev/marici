@@ -1,0 +1,94 @@
+{
+  "checker_sha256": "1b5e5ad1c3e474e0cf32659f611fcc4c699d3d0871eb91caf76b32a7366d8bed",
+  "composition": {
+    "C2_displacement_law": "epsilon(D o C)=epsilon(D)+epsilon(C) mod 2",
+    "representation_law": "rho(D o C)=rho(D)rho(C)",
+    "required_coherence": "the spin-two sign character chi obeys chi(D o C)=chi(D)chi(C)"
+  },
+  "deliberate_falsifier": {
+    "bad_pair": [
+      "I+Q",
+      "I+Q"
+    ],
+    "failure": "same-sign sheets do not complete the norm",
+    "shared_null_direction": [
+      0,
+      1
+    ],
+    "theta_zero_bad_sum_rank": 1
+  },
+  "exact_ring": "Q[c,s]/(c^2+s^2-1)",
+  "forms": {
+    "spin_two_matrix": [
+      [
+        "c",
+        "s"
+      ],
+      [
+        "s",
+        "-c"
+      ]
+    ],
+    "spin_two_square": "I modulo c^2+s^2=1",
+    "spin_two_trace": 0,
+    "trace_matrix": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "schema": "marici.kitaev.quadrature-sheet-torsor.v1",
+  "sheet_action": {
+    "criterion": "R^T Q R=-Q, equivalently RQ=-QR for an orthogonal involution",
+    "flips_spin_two": true,
+    "geometric_classification": "reflection across an axis bisecting the two eigenquadrature axes of Q; identity and -I do not flip Q",
+    "involution": true,
+    "matrix": [
+      [
+        "-s",
+        "c"
+      ],
+      [
+        "c",
+        "s"
+      ]
+    ],
+    "orthogonal": true,
+    "preserves_trace": true
+  },
+  "sheet_energies": {
+    "E_minus": "I-Q",
+    "E_plus": "I+Q",
+    "each_eigenvalues": [
+      0,
+      2
+    ],
+    "each_rank": 1,
+    "null_lines_complementary": true,
+    "product": "E_plus E_minus=0",
+    "sum": "2I",
+    "sum_rank": 2
+  },
+  "source_authority_boundary": {
+    "D_S3_authorizes_Fourier_Tate_action": false,
+    "must_be_derived": [
+      "actual sheet displacement g_C",
+      "lambda",
+      "theta",
+      "endpoint and Mellin normalization",
+      "completion stability"
+    ]
+  },
+  "typing": {
+    "linear_amplitude_coordinates": 2,
+    "meaning": "the bit labels which complementary quadrature is called plus; it supplies no missing real amplitude coordinate",
+    "origin_bit_reconstructs_amplitude": false,
+    "torsor_origin_bits": 1
+  },
+  "verdict": "An orthogonal C2 sheet involution exchanges the two semidefinite quadrature energies precisely when it anticommutes with the normalized spin-two form. Then the sheets have complementary null lines and sum to the positive-definite form 2|psi|^2. One torsor bit labels the sheets but cannot reconstruct the two real amplitude coordinates."
+}

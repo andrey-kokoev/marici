@@ -1,0 +1,37 @@
+{
+  "checker_sha256": "19cfd1b966b6ee260cc2dcb273dd6b7e819c828bd5a7ddda71808a82ef62b1f3",
+  "common_frame": {
+    "comparison": "E_plus(x)+E_minus(x)",
+    "matrix": "(I+Q)+(I-Q)=2I",
+    "positive_definite": true,
+    "theta_zero_rank": 2
+  },
+  "deliberate_falsifier": {
+    "claim": "retaining both covariantly transported sheets automatically completes the norm",
+    "counterexample": "R^T(I-Q)R=I+Q, so the sum is 2(I+Q) and retains the same null line"
+  },
+  "input_sha256": "aa5f281343ba10972398925663956993710fd6a6017b8a47fb508a8b92d5dfd5",
+  "missing_datum": {
+    "identity_parallelization_passes": true,
+    "name": "cross-sheet amplitude parallelization P",
+    "not_selected_by": [
+      "orthogonality",
+      "C2 equivariance",
+      "individual sheet nonnegativity"
+    ],
+    "required_test": "rank((I+Q)+P^T(I-Q)P)=2",
+    "torsor_transport_parallelization_fails": true,
+    "typed_map": "P: V_plus -> V_minus used to pull both forms to one source fiber"
+  },
+  "schema": "marici.kitaev.quadrature-parallelization-gate.v1",
+  "source_authority_boundary": "Fourier-Tate source data must derive the cross-sheet comparison map independently of the desired positive sum. Choosing P=I merely to obtain 2I is circular.",
+  "transported_frame": {
+    "comparison": "E_plus(x)+E_minus(Rx)",
+    "matrix": "2(I+Q)",
+    "positive_definite": false,
+    "pulled_back_minus_form": "R^T(I-Q)R=I+Q",
+    "sheet_transport": "x_minus=R x_plus",
+    "theta_zero_rank": 1
+  },
+  "verdict": "Opposite spin-two characters are necessary but not sufficient for rank-two positivity. The two sheet forms must also be compared in a source-derived common amplitude frame. Pullback by the very C2 transport that exchanges the sheets duplicates one rank-one form instead of complementing it."
+}

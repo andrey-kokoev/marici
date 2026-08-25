@@ -1,0 +1,43 @@
+{
+  "inputs_sha256": {
+    "research/kitaev/results/s3-controlled-wilson-executability.json": "4fb5ee3c5d0c84abb5bbc3b04f6fc9f36679c74afd6c171a672496406228cc70",
+    "research/kitaev/results/s3-fusion-ring.json": "fc24d419cc59a5c4c869aa395a2c5fda6fe9bae7044b46b8c4a63f959c6d297d",
+    "research/kitaev/results/s3-oriented-ribbon-algebra.json": "5302e6416876fb04203929b43026f605943de14986120ae3b2e604dcb1768247",
+    "research/kitaev/results/s3-wilson-orientation-simple-current-torsor.json": "553db7be3d887f4a1661088ac248c423a48a697bdc77ba22ea5a49e2b1371008"
+  },
+  "involutions": {
+    "B_simple_current_sheet": {
+      "fixes_G_H_individually": true,
+      "moves_tensor_unit": true,
+      "permutation": "(A B)(D E)"
+    },
+    "commute": true,
+    "equal": false,
+    "generated_group": "C2 x C2",
+    "geometric_ribbon_reversal": {
+      "fixed_D_E_individually": true,
+      "fixed_ribbon_intertwiner": "h -> h^-1",
+      "permutation_on_simple_labels": "(G H)",
+      "reason": "transpositions are self-inverse while omega and omega2 are conjugate under three-cycle inversion"
+    }
+  },
+  "operational_boundary": {
+    "closed_ribbon_insertion_equals_controlled_quarter_evolution": false,
+    "interface_preserves_source_rooted_Wilson_sign": false,
+    "oriented_fixed_ribbon_algebra_supplied": true,
+    "remaining_map": "source-rooted ribbon/character normalization -> controlled exp(2 pi i W_x/4) -> digit-interface primitive"
+  },
+  "schema": "marici.kitaev.s3-simple-current-sheet-vs-ribbon-reversal.v1",
+  "source_rooted_labels": {
+    "D_E": "transposition flux with plus/minus Z2 centralizer representation",
+    "G_H": "three-cycle flux with omega/omega2 centralizer representation",
+    "simple_current_B": "(identity flux, sign representation)",
+    "tensor_unit_A": "(identity flux, trivial representation)"
+  },
+  "terminology_correction": {
+    "deprecated_ambiguous_phrase": "absolute D/E orientation",
+    "geometric_ribbon_orientation_already_frozen": true,
+    "precise_name": "B-simple-current sheet or signed Wilson D/E frame"
+  },
+  "verdict": "The hidden Wilson C2 is not geometric ribbon reversal. It is translation by the sign simple current B, acting as (A B)(D E); geometric reversal acts by group inversion and exchanges G/H while fixing D/E. The two commuting involutions generate C2xC2. Source data already distinguish A=(e,triv) from B=(e,sign) and freeze ribbon orientation, but the admitted closed-ribbon insertion is not the required controlled quarter evolution. The unresolved operational datum is sign-preserving compilation from the source-rooted Wilson character to the charged digit interface."
+}

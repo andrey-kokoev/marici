@@ -1,0 +1,174 @@
+{
+  "coding_theorem": {
+    "code": "binary repetition [n,1,n]",
+    "common_mode_error": "1_n is the nonzero codeword, has zero syndrome, and acts as logical X",
+    "correct_t_errors_iff": "n >= 2t+1",
+    "detect_s_errors_iff": "n >= s+1",
+    "minimum_distance": "d=n"
+  },
+  "exact_complex": {
+    "boundary_squared_zero": "H_n E_n=0",
+    "encoding": "E_n(b)=b*1_n",
+    "exactness": "ker H_n=im E_n=span{1_n}; rank H_n=n-1",
+    "parity_check": "H_n(x)_j=x_j+x_(j+1)",
+    "sequence": "0 -> F2 --E_n--> F2^n --H_n--> F2^(n-1) -> 0"
+  },
+  "exhaustive_census_n_1_through_7": {
+    "1": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 1,
+      "rank_H": 0
+    },
+    "2": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": false,
+        "2": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 2,
+      "rank_H": 1
+    },
+    "3": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 3,
+      "rank_H": 2
+    },
+    "4": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 4,
+      "rank_H": 3
+    },
+    "5": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 5,
+      "rank_H": 4
+    },
+    "6": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 6,
+      "rank_H": 5
+    },
+    "7": {
+      "corrects_up_to_t": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "detects_up_to_s": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": false
+      },
+      "kernel_size": 2,
+      "minimum_distance": 7,
+      "rank_H": 6
+    }
+  },
+  "fanout": {
+    "common_mode_image": "logical X before F becomes simultaneous four-actuator command inversion",
+    "controller_pipeline": "command -> E_n -> syndrome/decode -> F -> four actuators",
+    "map": "F:F2 -> F2^4, F(b)=b*1_4"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-lockstep-controller-redundancy.json": "a6c9b4e66d02778d0cf32323708610fedcb7989f303292e8437cc108c15db5a4"
+  },
+  "lens_separation": {
+    "quantum_coefficient_lens_required_for": [
+      "mapping actuator-command inversion to encoded Pauli/CPTP faults",
+      "recovery and exRec semantics",
+      "T-equivalent interface cost"
+    ],
+    "shared_Carrier_geometry": [
+      "repetition complex",
+      "syndrome quotient",
+      "distance",
+      "fanout incidence map"
+    ]
+  },
+  "schema": "marici.kitaev.lockstep-controller-repetition-complex.v1",
+  "verdict": "Controller redundancy is the exact binary repetition complex. Two-copy detection and three-copy correction are the n=2 and n=3 cases of d=n: n>=s+1 detects s errors and n>=2t+1 corrects t errors. The all-replica common mode is not a syndrome defect but the logical X codeword, whose four-port fanout inverts every actuator command. This algebra is shared Carrier geometry; its physical quantum meaning requires the coefficient lens."
+}

@@ -1,0 +1,63 @@
+{
+  "CDFG_readout_repair": {
+    "augmented_observation_count": 16,
+    "augmented_signature": "(CDFG residue signature, external mode bit)",
+    "information_lower_bound_bits": 1,
+    "jointly_faithful": true,
+    "maximum_unaugmented_fiber_size": 2,
+    "sector_mode_domain_size": 16,
+    "unaugmented_observation_count": 12
+  },
+  "boundary": {
+    "external_bit_physically_constructed": false,
+    "global_adjoint_is_physical_fault_action_proved": false,
+    "independent_authority_root_proved": false
+  },
+  "external_reference": {
+    "authority_requirement": "reference must not share the controller common-mode orbit",
+    "comparison_syndrome": "decoded_command + intended_command in F2",
+    "detects_logical_X": true,
+    "minimal_datum": "one independently rooted bit specifying the intended logical command or fault mode"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-coherent-wilson-phase-kickback.json": "afc68d25279b4b763f64c94670ccaaa135fcc47090c54100cf69c0a02cfcb3c7",
+    "research/kitaev/results/s3-common-mode-readout-propagation.json": "ec8a0cfd713907b1fef2fd31d76012caf9d3e58b200473d136b1269860b0f441"
+  },
+  "internal_no_go": {
+    "common_mode_detectable_by_more_internal_parity_checks": false,
+    "exhaustive_covector_census_n_1_through_7": {
+      "1": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 1
+      },
+      "2": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 2
+      },
+      "3": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 4
+      },
+      "4": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 8
+      },
+      "5": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 16
+      },
+      "6": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 32
+      },
+      "7": {
+        "checks_detecting_common_mode": 0,
+        "linear_checks_annihilating_encoded_line": 64
+      }
+    },
+    "reason": "1_n=E_n(1) lies on the valid encoded command line",
+    "statement": "every linear internal syndrome L with L E_n=0 also satisfies L(1_n)=0"
+  },
+  "schema": "marici.kitaev.s3-common-mode-external-reference.v1",
+  "verdict": "Internal redundancy cannot expose controller logical X: every valid linear syndrome annihilates the encoded repetition-code line and therefore the common mode. An independently rooted intended-command or mode bit is necessary. For the conditional CDFG global-adjoint model it is also sufficient and information-minimal: the largest residue fiber has size two, and adjoining one mode bit restores 16 distinct observations."
+}
