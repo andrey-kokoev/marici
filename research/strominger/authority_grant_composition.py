@@ -328,6 +328,38 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if not audit.get("bounded_claim_scope") or not audit.get("no_universal_extrapolation"):
             err("unbounded_explanatory_extrapolation", aid, str(audit.get("bounded_claim_scope")))
 
+    # Open-world DPC: a new rival reopens identification unless the current
+    # source-derived ports separate the enlarged family.  New authority is
+    # earned only after a source-derived discriminator closes the new kernel.
+    for challenge in packet.get("rival_extension_audits", []):
+        cid = challenge["id"]
+        candidates = challenge.get("candidate_mechanisms", [])
+        ports = challenge.get("intervention_ports", [])
+        matrix = challenge.get("observation_matrix", [])
+        rank = _exact_rank(matrix)
+        if rank < 0 or len(matrix) != len(ports) or (matrix and len(matrix[0]) != len(candidates)):
+            err("invalid_rival_extension_matrix", cid, f"{len(matrix)}x{len(matrix[0]) if matrix else 0}")
+            continue
+        nullity = len(candidates) - rank
+        gauge = challenge.get("source_authorized_gauge_dimension", 0)
+        status = challenge.get("status")
+        if challenge.get("claims_closed_under_all_future_rivals"):
+            err("closed_world_explanation_claim", cid, "finite audit cannot quantify over ungenerated rivals")
+        if status == "challenge_open":
+            if nullity <= gauge:
+                err("spurious_open_rival_challenge", cid, f"nullity={nullity}")
+            if challenge.get("identification_authority_retained"):
+                err("authority_retained_with_unresolved_rival", cid, f"nullity={nullity}")
+        elif status == "revalidated":
+            if nullity != gauge:
+                err("rival_repair_not_jointly_faithful", cid, f"nullity={nullity}, gauge={gauge}")
+            if not challenge.get("new_discriminator_source_derived"):
+                err("target_fitted_rival_discriminator", cid, "new port lacks source derivation")
+            if not challenge.get("identification_authority_retained"):
+                err("revalidated_rival_audit_withholds_authority", cid, "full quotient rank achieved")
+        else:
+            err("unknown_rival_extension_status", cid, str(status))
+
     for atlas in packet.get("presentation_atlas_coherence", []):
         aid = atlas["id"]
         path_signatures = []
@@ -464,5 +496,6 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "source_provenance_node_count": len(packet.get("source_provenance", {}).get("nodes", [])),
         "source_intervention_test_count": len(packet.get("source_intervention_tests", [])),
         "mechanism_identification_audit_count": len(packet.get("mechanism_identification_audits", [])),
+        "rival_extension_audit_count": len(packet.get("rival_extension_audits", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

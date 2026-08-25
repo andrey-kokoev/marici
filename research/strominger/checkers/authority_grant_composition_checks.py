@@ -69,6 +69,7 @@ def main():
     provenance_edges = packet["source_provenance"]["edges"]
     interventions = {item["id"]: item for item in packet["source_intervention_tests"]}
     mechanism_audits = {item["id"]: item for item in packet["mechanism_identification_audits"]}
+    rival_audits = {item["id"]: item for item in packet["rival_extension_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -155,6 +156,16 @@ def main():
             mechanism_audits["finite_stacky_mechanism_identification"]["source_authorized_gauge_dimension"] == 1
             and len(mechanism_audits["finite_stacky_mechanism_identification"]["candidate_mechanisms"]) == 3
             and len(mechanism_audits["finite_stacky_mechanism_identification"]["intervention_ports"]) == 2,
+        "new_rival_suspends_identification_authority":
+            rival_audits["new_rival_opens_identification_challenge"]["status"] == "challenge_open"
+            and not rival_audits["new_rival_opens_identification_challenge"]["identification_authority_retained"],
+        "source_derived_probe_revalidates_extended_family":
+            rival_audits["new_source_probe_revalidates_extended_family"]["status"] == "revalidated"
+            and bool(rival_audits["new_source_probe_revalidates_extended_family"]["new_discriminator_source_derived"])
+            and rival_audits["new_source_probe_revalidates_extended_family"]["identification_authority_retained"],
+        "rival_protocol_remains_open_world": all(
+            not audit["claims_closed_under_all_future_rivals"] for audit in packet["rival_extension_audits"]
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -191,6 +202,7 @@ def main():
         "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
         "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
         "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
+        "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
