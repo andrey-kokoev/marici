@@ -925,6 +925,50 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if audit.get("eventual_recovery_counted_as_partition_availability"):
             err("eventual_recovery_laundered_as_immediate_availability", tid, "availability must hold during partition")
 
+    # Explicit finite constructor for the linearizer.  Pairwise quorum
+    # intersection locates a shared replica; durable non-equivocation at that
+    # replica prevents two conflicting certificates in one fencing epoch.
+    for network in packet.get("linearization_constructor_networks", []):
+        nid = network["id"]
+        replicas = {item["id"]: item for item in network.get("replicas", [])}
+        quorums = [set(items) for items in network.get("authorized_quorums", [])]
+        if len(replicas) < 3 or not quorums or any(not quorum.issubset(replicas) for quorum in quorums):
+            err("untyped_linearization_constructor_network", nid, str(quorums))
+            continue
+        intersections = [quorums[i] & quorums[j] for i in range(len(quorums)) for j in range(i + 1, len(quorums))]
+        if not intersections or any(not overlap for overlap in intersections):
+            err("linearization_quorum_intersection_failure", nid, str([sorted(item) for item in intersections]))
+        for replica_id, replica in replicas.items():
+            if not replica.get("source_authorized_vote_role"):
+                err("unauthorized_linearization_replica", replica_id, "vote role lacks source grant")
+            if not replica.get("durable_append_only_vote_cell") or not replica.get("survives_restart") or not replica.get("monotone_epoch"):
+                err("missing_durable_replica_non_equivocation", replica_id, str(replica))
+            if replica.get("signatures_alone_prevent_equivocation"):
+                err("signature_authentication_misclassified_as_non_equivocation", replica_id, "a signer can sign conflicting values")
+        proof = network.get("conflict_exclusion_proof", {})
+        first_quorum, second_quorum = set(proof.get("first_quorum", [])), set(proof.get("second_quorum", []))
+        overlap = first_quorum & second_quorum
+        if not overlap or set(proof.get("intersection_witness", [])) != overlap:
+            err("invalid_quorum_intersection_witness", nid, str(sorted(overlap)))
+        witness_replicas = [replicas.get(replica_id) for replica_id in overlap]
+        durable_witness = bool(witness_replicas and all(
+            replica and replica.get("durable_append_only_vote_cell") and replica.get("monotone_epoch")
+            for replica in witness_replicas
+        ))
+        if proof.get("same_epoch") and proof.get("conflicting_values") and durable_witness:
+            expected_constructible = False
+        else:
+            expected_constructible = True
+        if proof.get("second_certificate_constructible") != expected_constructible:
+            err("incorrect_linearization_conflict_exclusion", nid, str(proof.get("second_certificate_constructible")))
+        boundary = network.get("implementation_boundary", {})
+        if boundary.get("durable_cell_status") != "explicit_constructor_assumption" or not boundary.get("requires_storage_authority"):
+            err("hidden_physical_linearization_oracle", nid, str(boundary))
+        if boundary.get("claims_derived_from_quorum_math"):
+            err("durability_falsely_derived_from_intersection", nid, "quorum mathematics does not build storage")
+        if network.get("claims_unconditional_liveness"):
+            err("unbounded_linearization_liveness_claim", nid, "safety proof does not imply progress")
+
     return errors
 
 
