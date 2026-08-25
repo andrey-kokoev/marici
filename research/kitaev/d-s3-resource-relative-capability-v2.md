@@ -59,6 +59,9 @@ not such a certificate.
 - Checker: `checkers/check_s3_data_descent_capability_contract.py`
 - Result: `results/s3-data-descent-capability-contract.json`
 - Upstream consolidated audit: `checkers/check_s3_executable_ft_frontier_audit.py`
+- Ledger: `src/ledger/20260825-2411 D(S3) Capability Is Resource-Relative and Frozen Obstruction Survives Extension.md`
+- Epistemic graph claim: `claim:e36c7ef65456faefb42f`
+- Graph admission event: `ev-000000003300-5c3c9099-1393-4396-ab65-47bdbf0409a1`
 
 ## Unresolved typing
 
