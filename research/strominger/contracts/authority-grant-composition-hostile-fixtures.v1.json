@@ -1,0 +1,58 @@
+{
+  "schema": "marici.authority-grant-composition-hostiles.v1",
+  "base_contract": "research/strominger/contracts/authority-grant-composition.v1.json",
+  "fixtures": [
+    {
+      "id": "faithfulness_plus_support_to_observer",
+      "description": "Algebraic faithfulness and physical support are laundered into observer authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AB", "field": "authority_kind", "value": "algebraic_faithfulness"},
+        {"collection": "authority_grants", "id": "g_BC", "field": "authority_kind", "value": "support"},
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "observer"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "two_readouts_to_selector",
+      "description": "Two valid readout grants are laundered into selector authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "selector"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "completion_ports_to_constructor",
+      "description": "A completed readout and executable observation ports are laundered into constructor authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AB", "field": "source_authority_evidence", "value": "topology-bearing completion"},
+        {"collection": "authority_grants", "id": "g_BC", "field": "source_authority_evidence", "value": "executable observation ports"},
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "constructor"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "pairwise_valid_triple_incoherent",
+      "description": "Every pairwise composition remains valid, but the triple associator has nonzero defect.",
+      "mutations": [
+        {"collection": "associativity_cells", "id": "assoc_ABCD", "field": "coherence_defect", "value": 1}
+      ],
+      "expected_code": "triple_authority_coherence_failure"
+    },
+    {
+      "id": "evidence_preserving_base_change_loses_authority",
+      "description": "Chart evidence survives base change while source authority does not.",
+      "mutations": [
+        {"collection": "transformations", "id": "chart_transport", "field": "preserves_authority", "value": false}
+      ],
+      "expected_code": "base_change_preserves_evidence_not_authority"
+    },
+    {
+      "id": "factorization_dependent_composite",
+      "description": "Both local factorizations exist, but their result grants live on different evidence domains.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AD_right", "field": "evidence_domain", "value": "D_transport_B"}
+      ],
+      "expected_code": "factorization_dependent_composite"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "marici.authority-grant-composition.v1",
+  "evidence_domains": [
+    {"id": "D_common", "kind": "finite_common_domain", "atoms": ["e0", "e1"], "authority_boundary": "readout only"},
+    {"id": "D_transport_A", "kind": "chart_A", "atoms": ["a0", "a1"], "authority_boundary": "readout only"},
+    {"id": "D_transport_B", "kind": "chart_B", "atoms": ["b0", "b1"], "authority_boundary": "readout only"},
+    {"id": "D_theta_positive", "kind": "folded_half_line_chart", "atoms": ["trace", "labels", "halfline"], "authority_boundary": "positive-chart readout"},
+    {"id": "D_theta_doubled", "kind": "reciprocal_doubled_chart", "atoms": ["trace", "labels", "halfline", "reflection", "seam_current"], "authority_boundary": "doubled readout, not observer or RH authority"},
+    {"id": "D_kitaev_couplers", "kind": "postulated_nonlinear_coupler_model", "atoms": ["H2", "H3", "Hex", "calibrated_angles"], "authority_boundary": "conditional logical execution"},
+    {"id": "D_kitaev_rails", "kind": "frozen_five_rail_support", "atoms": ["rail_support", "distance_three_spread"], "authority_boundary": "support evidence only"}
+  ],
+  "transformations": [
+    {"id": "chart_transport", "source_domain": "D_transport_A", "target_domain": "D_transport_B", "atom_map": {"a0": "b0", "a1": "b1"}, "variance": "covariant", "preserves_evidence": true, "preserves_authority": true, "evidence": "source-derived chart equivalence"},
+    {"id": "rail_base_change", "source_domain": "D_kitaev_couplers", "target_domain": "D_kitaev_rails", "atom_map": {}, "variance": "covariant", "preserves_evidence": true, "preserves_authority": false, "evidence": "formal rail support survives while encoded intertwining fails"}
+  ],
+  "authority_grants": [
+    {"id": "id_A", "source_object": "A", "target_operation": "identity", "target_object": "A", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "identity_cell", "source_authority_evidence": "identity preserves admitted readout", "status": "identity", "identity": true},
+    {"id": "id_B", "source_object": "B", "target_operation": "identity", "target_object": "B", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "identity_cell", "source_authority_evidence": "identity preserves admitted readout", "status": "identity", "identity": true},
+    {"id": "g_AB", "source_object": "A", "target_operation": "read_AB", "target_object": "B", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout AB", "status": "admitted"},
+    {"id": "g_BC", "source_object": "B", "target_operation": "read_BC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout BC", "status": "admitted"},
+    {"id": "g_CD", "source_object": "C", "target_operation": "read_CD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout CD", "status": "admitted"},
+    {"id": "g_AC", "source_object": "A", "target_operation": "read_AC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "composite readout AB then BC", "status": "admitted"},
+    {"id": "g_BD", "source_object": "B", "target_operation": "read_BD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "composite readout BC then CD", "status": "admitted"},
+    {"id": "g_AD_left", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "left-associated triple readout", "status": "admitted"},
+    {"id": "g_AD_right", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "right-associated triple readout", "status": "admitted"},
+    {"id": "t_AB", "source_object": "TA", "target_operation": "chart_read", "target_object": "TB", "authority_kind": "readout", "evidence_domain": "D_transport_A", "variance": "covariant", "admissible_transformations": ["chart_transport"], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-A readout", "status": "admitted"},
+    {"id": "t_BC", "source_object": "TB", "target_operation": "chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-B readout", "status": "admitted"},
+    {"id": "t_AC", "source_object": "TA", "target_operation": "transported_chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_transport_cell", "source_authority_evidence": "authority-preserving chart transport", "status": "admitted"},
+    {"id": "theta_labels_Splus", "source_object": "theta_positive_labels", "target_operation": "halfline_overlap", "target_object": "Splus", "authority_kind": "readout", "evidence_domain": "D_theta_positive", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "halfline_trace_cell", "source_authority_evidence": "Hilbert-Schmidt synthesis and trace-class overlap", "status": "admitted"},
+    {"id": "theta_Splus_double", "source_object": "Splus", "target_operation": "reciprocal_doubling", "target_object": "Sdouble", "authority_kind": "readout", "evidence_domain": "D_theta_doubled", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "moving_endpoint_seam_current", "source_authority_evidence": "reflection exchanges folded charts and endpoint derivative supplies seam current", "status": "admitted"},
+    {"id": "theta_labels_double", "source_object": "theta_positive_labels", "target_operation": "doubled_trace_readout", "target_object": "Sdouble", "authority_kind": "readout", "evidence_domain": "D_theta_doubled", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "moving_endpoint_seam_current", "source_authority_evidence": "completed doubled carrier with seam correction", "status": "admitted"},
+    {"id": "kitaev_couplers_logical", "source_object": "postulated_nonlinear_couplers", "target_operation": "exact_logical_gate_synthesis", "target_object": "logical_D_S3_gates", "authority_kind": "executor", "evidence_domain": "D_kitaev_couplers", "variance": "covariant", "admissible_transformations": ["rail_base_change"], "required_coherence_witness": "pulse_exponential_identity", "source_authority_evidence": "conditional synthesis after couplers and calibrations are admitted", "status": "admitted"}
+  ],
+  "compositions": [
+    {"id": "c_idA_AB", "left": "id_A", "right": "g_AB", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
+    {"id": "c_AB_idB", "left": "g_AB", "right": "id_B", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
+    {"id": "c_AB_BC", "left": "g_AB", "right": "g_BC", "result": "g_AC", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
+    {"id": "c_BC_CD", "left": "g_BC", "right": "g_CD", "result": "g_BD", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
+    {"id": "c_AC_CD", "left": "g_AC", "right": "g_CD", "result": "g_AD_left", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
+    {"id": "c_AB_BD", "left": "g_AB", "right": "g_BD", "result": "g_AD_right", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
+    {"id": "c_transport", "left": "t_AB", "right": "t_BC", "result": "t_AC", "mode": "transport", "transformation": "chart_transport", "coherence_witness": "chart_transport_cell"},
+    {"id": "c_theta", "left": "theta_labels_Splus", "right": "theta_Splus_double", "result": "theta_labels_double", "mode": "authority_extension", "coherence_witness": "moving_endpoint_seam_current", "extension_authority": "reciprocal completion of the positive theta source", "new_atom_evidence": "reflection and partial_c K_d seam-current formula"}
+  ],
+  "identity_laws": [
+    {"id": "left_identity_AB", "composition": "c_idA_AB", "grant": "g_AB"},
+    {"id": "right_identity_AB", "composition": "c_AB_idB", "grant": "g_AB"}
+  ],
+  "associativity_cells": [
+    {"id": "assoc_ABCD", "left_factorization": "c_AC_CD", "right_factorization": "c_AB_BD", "variance": "covariant", "triple_coherence_witness": "source-derived common-domain associator", "coherence_defect": 0}
+  ],
+  "application_cases": [
+    {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
+    {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}
+  ]
+}

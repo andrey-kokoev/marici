@@ -1,0 +1,190 @@
+"""Standalone partial composition calculus for source-authority grants."""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+from typing import Any
+
+
+AUTHORITY_KINDS = {
+    "algebraic_faithfulness",
+    "support",
+    "readout",
+    "observer",
+    "executor",
+    "constructor",
+    "selector",
+}
+VARIANCES = {"covariant", "contravariant", "bivariant"}
+COMPOSITION_MODES = {"transport", "domain_intersection", "authority_extension"}
+CASE_CLASSES = {"strict_commuting_square", "coherence_cell_required", "no_composable_authority_map"}
+
+
+@dataclass(frozen=True)
+class Error:
+    code: str
+    subject: str
+    detail: str
+
+
+def _signature(grant: dict[str, Any]) -> tuple[Any, ...]:
+    return (
+        grant.get("source_object"),
+        grant.get("target_operation"),
+        grant.get("target_object"),
+        grant.get("authority_kind"),
+        grant.get("evidence_domain"),
+        grant.get("variance"),
+    )
+
+
+def validate(packet: dict[str, Any]) -> list[Error]:
+    errors: list[Error] = []
+    domains = {item["id"]: item for item in packet.get("evidence_domains", [])}
+    transformations = {item["id"]: item for item in packet.get("transformations", [])}
+    grants = {item["id"]: item for item in packet.get("authority_grants", [])}
+    compositions = {item["id"]: item for item in packet.get("compositions", [])}
+
+    def err(code: str, subject: str, detail: str) -> None:
+        errors.append(Error(code, subject, detail))
+
+    for did, domain in domains.items():
+        atoms = domain.get("atoms", [])
+        if not domain.get("kind") or len(atoms) != len(set(atoms)):
+            err("invalid_evidence_domain", did, str(domain))
+        if not domain.get("authority_boundary"):
+            err("missing_evidence_domain_boundary", did, "authority boundary required")
+
+    for tid, transformation in transformations.items():
+        if transformation.get("source_domain") not in domains or transformation.get("target_domain") not in domains:
+            err("unknown_transformation_domain", tid, f"{transformation.get('source_domain')}->{transformation.get('target_domain')}")
+        if transformation.get("variance") not in VARIANCES:
+            err("invalid_transformation_variance", tid, str(transformation.get("variance")))
+        if not transformation.get("evidence"):
+            err("missing_transformation_evidence", tid, "transformation evidence required")
+
+    for gid, grant in grants.items():
+        if grant.get("authority_kind") not in AUTHORITY_KINDS:
+            err("unknown_authority_kind", gid, str(grant.get("authority_kind")))
+        if grant.get("evidence_domain") not in domains:
+            err("unknown_grant_evidence_domain", gid, str(grant.get("evidence_domain")))
+        if grant.get("variance") not in VARIANCES:
+            err("invalid_grant_variance", gid, str(grant.get("variance")))
+        for field in ("source_object", "target_operation", "target_object", "source_authority_evidence", "required_coherence_witness"):
+            if not grant.get(field):
+                err("untyped_authority_grant", gid, field)
+        for tid in grant.get("admissible_transformations", []):
+            if tid not in transformations:
+                err("unknown_admissible_transformation", gid, tid)
+        if grant.get("status") not in {"admitted", "identity"}:
+            err("grant_not_admitted", gid, str(grant.get("status")))
+        if grant.get("identity", False):
+            if grant.get("source_object") != grant.get("target_object") or grant.get("target_operation") != "identity":
+                err("invalid_authority_identity", gid, _signature(grant).__repr__())
+
+    for cid, composition in compositions.items():
+        left, right, result = (grants.get(composition.get(name)) for name in ("left", "right", "result"))
+        if left is None or right is None or result is None:
+            err("unknown_composition_grant", cid, f"{composition.get('left')},{composition.get('right')}->{composition.get('result')}")
+            continue
+        if left["target_object"] != right["source_object"]:
+            err("authority_endpoint_mismatch", cid, f"{left['target_object']}!={right['source_object']}")
+        if result["source_object"] != left["source_object"] or result["target_object"] != right["target_object"]:
+            err("authority_composite_endpoint_defect", cid, _signature(result).__repr__())
+        kinds = {left["authority_kind"], right["authority_kind"], result["authority_kind"]}
+        if len(kinds) != 1:
+            err("authority_kind_laundering", cid, "->".join([left["authority_kind"], right["authority_kind"], result["authority_kind"]]))
+        variances = {left["variance"], right["variance"], result["variance"]}
+        if len(variances) != 1:
+            err("authority_variance_mismatch", cid, str(sorted(variances)))
+        mode = composition.get("mode")
+        if mode not in COMPOSITION_MODES:
+            err("unknown_authority_composition_mode", cid, str(mode))
+            continue
+        if not composition.get("coherence_witness"):
+            err("missing_authority_coherence", cid, "composition requires a coherence witness")
+        left_atoms = set(domains[left["evidence_domain"]]["atoms"])
+        right_atoms = set(domains[right["evidence_domain"]]["atoms"])
+        result_atoms = set(domains[result["evidence_domain"]]["atoms"])
+        if mode == "domain_intersection":
+            if result_atoms != left_atoms & right_atoms:
+                err("evidence_intersection_defect", cid, f"{sorted(result_atoms)} != {sorted(left_atoms & right_atoms)}")
+        elif mode == "transport":
+            transformation = transformations.get(composition.get("transformation"))
+            if transformation is None:
+                err("missing_authority_transport", cid, str(composition.get("transformation")))
+                continue
+            if transformation["id"] not in left.get("admissible_transformations", []):
+                err("inadmissible_authority_transport", cid, transformation["id"])
+            if not transformation.get("preserves_evidence"):
+                err("transport_destroys_evidence", cid, transformation["id"])
+            if not transformation.get("preserves_authority"):
+                err("base_change_preserves_evidence_not_authority", cid, transformation["id"])
+            mapping = transformation.get("atom_map", {})
+            mapped = {mapping[atom] for atom in left_atoms if atom in mapping}
+            if result_atoms != mapped & right_atoms:
+                err("transported_evidence_domain_defect", cid, f"{sorted(result_atoms)} != {sorted(mapped & right_atoms)}")
+            if transformation.get("variance") != left["variance"]:
+                err("authority_variance_mismatch", cid, f"{transformation.get('variance')}!={left['variance']}")
+        elif mode == "authority_extension":
+            if not composition.get("extension_authority") or not composition.get("new_atom_evidence"):
+                err("unauthorized_authority_extension", cid, "extension authority and new-atom evidence required")
+            if not result_atoms.issuperset(left_atoms | right_atoms):
+                err("authority_extension_domain_defect", cid, f"{sorted(result_atoms)} lacks {sorted(left_atoms | right_atoms)}")
+
+    for cell in packet.get("associativity_cells", []):
+        left = compositions.get(cell.get("left_factorization"))
+        right = compositions.get(cell.get("right_factorization"))
+        if left is None or right is None:
+            err("unknown_associativity_factorization", cell["id"], f"{cell.get('left_factorization')}|{cell.get('right_factorization')}")
+            continue
+        left_result, right_result = grants[left["result"]], grants[right["result"]]
+        if _signature(left_result) != _signature(right_result):
+            err("factorization_dependent_composite", cell["id"], f"{_signature(left_result)} != {_signature(right_result)}")
+        if cell.get("variance") != left_result["variance"] or cell.get("variance") != right_result["variance"]:
+            err("associativity_variance_mismatch", cell["id"], str(cell.get("variance")))
+        if not cell.get("triple_coherence_witness") or cell.get("coherence_defect") != 0:
+            err("triple_authority_coherence_failure", cell["id"], str(cell.get("coherence_defect")))
+
+    for law in packet.get("identity_laws", []):
+        composition = compositions.get(law.get("composition"))
+        grant = grants.get(law.get("grant"))
+        if composition is None or grant is None:
+            err("unknown_identity_law", law["id"], str(law))
+            continue
+        result = grants[composition["result"]]
+        if _signature(result) != _signature(grant):
+            err("authority_identity_law_defect", law["id"], f"{_signature(result)} != {_signature(grant)}")
+
+    for case in packet.get("application_cases", []):
+        classification = case.get("classification")
+        if classification not in CASE_CLASSES:
+            err("unknown_application_classification", case["id"], str(classification))
+        if classification == "strict_commuting_square":
+            composition = compositions.get(case.get("composition"))
+            if composition is None or composition.get("coherence_witness") != "identity_cell":
+                err("application_not_strict", case["id"], str(case.get("composition")))
+        elif classification == "coherence_cell_required":
+            composition = compositions.get(case.get("composition"))
+            if composition is None or not case.get("explicit_coherence_cell") or composition.get("coherence_witness") == "identity_cell":
+                err("application_missing_explicit_cell", case["id"], str(case.get("explicit_coherence_cell")))
+        elif classification == "no_composable_authority_map":
+            if case.get("composition") is not None or not case.get("obstruction_evidence"):
+                err("false_application_composability", case["id"], str(case.get("composition")))
+
+    return errors
+
+
+def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
+    errors = validate(packet)
+    return {
+        "valid": not errors,
+        "error_count": len(errors),
+        "errors": [asdict(error) for error in errors],
+        "evidence_domain_count": len(packet.get("evidence_domains", [])),
+        "grant_count": len(packet.get("authority_grants", [])),
+        "composition_count": len(packet.get("compositions", [])),
+        "associativity_cell_count": len(packet.get("associativity_cells", [])),
+        "application_case_count": len(packet.get("application_cases", [])),
+        "schema": "marici.authority-grant-composition-result.v1",
+    }
