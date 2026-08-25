@@ -76,6 +76,7 @@ def main():
     review_roots = {item["id"]: item for item in packet["review_authority_root_certifications"]}
     root_audits = {item["id"]: item for item in packet["review_root_independence_audits"]}
     temporal_audits = {item["id"]: item for item in packet["temporal_review_authority_audits"]}
+    temporal_atlases = {item["id"]: item for item in packet["temporal_replay_atlas_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -251,6 +252,17 @@ def main():
                      or temporal_audits["revoke_merits_root_then_replay"]["replayed_at"] < review_roots[root]["revoked_at"])
                 for root in temporal_audits["revoke_merits_root_then_replay"]["replay_roots"]
             ),
+        "independent_successor_atlases_are_flat":
+            len({path["decision"] for path in temporal_atlases["two_successor_atlases_same_packet"]["paths"]}) == 1
+            and temporal_atlases["two_successor_atlases_same_packet"]["disposition_defect"] == 0
+            and temporal_atlases["two_successor_atlases_same_packet"]["prospective_authority_restored"],
+        "temporal_replay_paths_have_disjoint_roots":
+            not set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][0]["roots"])
+            & set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][1]["roots"]),
+        "higher_appeal_cell_compares_without_selecting_truth":
+            temporal_atlases["two_successor_atlases_same_packet"]["higher_appeal_cell"]["role"]
+            == "compare_procedure_not_truth"
+            and not temporal_atlases["two_successor_atlases_same_packet"]["higher_appeal_cell"]["may_override_disagreement"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -292,6 +304,7 @@ def main():
         "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
         "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
         "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
+        "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

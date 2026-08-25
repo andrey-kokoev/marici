@@ -115,6 +115,11 @@ The machine-readable fixture suite rejects:
 48. replay using a root already revoked at replay time;
 49. prospective standing restored without completed replay;
 50. a revocation backdated before the original review.
+51. independently rooted successor atlases disagreeing while authority is restored;
+52. nominal replay paths sharing a review root;
+53. the path-comparison law fitted after dispositions are known;
+54. a higher appeal cell claiming mechanism-truth authority;
+55. a flat replay atlas arbitrarily withholding standing.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -493,6 +498,38 @@ This makes authority non-monotone while evidence remains monotone: audit
 records accumulate, but the operations they authorize can expire. It is the
 temporal analogue of the earlier distinction between transported evidence and
 transported authority.
+
+### Temporal-atlas law: disagreement is governance holonomy
+
+Replay through one successor atlas establishes only chart-local authority. To
+show that restoration belongs to the review process rather than the chosen
+reviewers, replay the same frozen packet through a second atlas with disjoint
+certified roots and a comparison law fixed beforehand.
+
+If the dispositions agree, the temporal atlas is flat and prospective standing
+is presentation-independent. If they disagree, the defect is not evidence
+that either path is corrupt; it is a nonzero governance holonomy:
+
+\[
+\operatorname{Hol}_{\mathrm{gov}}
+=d_{AB}-d_{CD}\ne0.
+\]
+
+Standing then remains suspended. A higher appeal cell may verify common packet
+identity, compare procedure, or authorize a fresh replay. It may not overwrite
+the two outputs and call the result truth.
+
+Hence:
+
+\[
+\boxed{
+\text{global temporal authority}
+=\text{live local replays}+\text{zero governance holonomy}.}
+\]
+
+This is the governance analogue of presentation descent: competent local
+decisions do not automatically glue. The obstruction itself is meaningful
+data and must remain visible until a newly authorized process removes it.
 
 ### Refinement law: higher coherence
 
