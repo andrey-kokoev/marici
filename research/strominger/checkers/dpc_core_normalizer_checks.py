@@ -213,10 +213,12 @@ for name, mutate_coherence, expected in (
 result["configuration_coherence_hostiles"] = configuration_coherence_hostiles
 configuration_normalization_hostiles = {}
 for name, mutate_normalization, expected_section, expected in (
-    ("unauthorized_relation", lambda c: c["configuration_constructor_relations"][0].update({"source_authority_root":None}), "configuration_normalization", "configuration_normalization_relation_unauthorized"),
-    ("word_mismatch", lambda c: c["configuration_constructor_relations"][0].update({"edge_word":["rho_01","rho_23"]}), "configuration_normalization", "configuration_normalization_word_mismatch"),
-    ("duplicate_normal_form_witness", lambda c: c["configuration_constructor_relations"].append(deepcopy(c["configuration_constructor_relations"][0])), "configuration_normalization", "configuration_normalization_not_unique"),
-    ("normal_form_target_fitted", lambda c: c["configuration_constructor_relations"][2].update({"normal_form_id":"NF_FITTED"}), "configuration_normalization", "configuration_normalization_target_fitted"),
+    ("unauthorized_rewrite", lambda c: c["configuration_constructor_rewrites"][0].update({"source_authority_root":None}), "configuration_constructor_rewrites", "configuration_rewrite_unauthorized"),
+    ("duplicate_rewrite", lambda c: c["configuration_constructor_rewrites"].append(deepcopy(c["configuration_constructor_rewrites"][0])), "configuration_constructor_rewrites", "configuration_rewrite_duplicate"),
+    ("normal_form_target_fitted", lambda c: c["configuration_constructor_rewrites"][2].update({"normal_form_id":"NF_FITTED"}), "configuration_constructor_rewrites", "configuration_rewrite_target_fitted"),
+    ("rewrite_cycle", lambda c: c["configuration_constructor_rewrites"].append({"id":"rewrite_tau_rho","source_path_id":"third_configuration_path","target_path_id":"varying_membership_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"}), "configuration_normalization", "configuration_rewrite_nonterminating"),
+    ("nonconfluent_fork", lambda c: c["configuration_constructor_rewrites"].pop(1), "configuration_normalization", "configuration_rewrite_nonconfluent"),
+    ("required_critical_pair_deleted", lambda c: c["configuration_constructor_rewrites"].pop(2), "configuration_normalization", "configuration_rewrite_required_critical_pair_missing"),
     ("triangle_target_fitted", lambda c: c["configuration_coherence_triangle_audits"][0].update({"normal_form_id":"NF_FITTED"}), "configuration_coherence_triangles", "configuration_coherence_triangle_target_fitted"),
 ):
     candidate = deepcopy(contract)

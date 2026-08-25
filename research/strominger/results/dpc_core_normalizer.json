@@ -66,10 +66,10 @@
   "configuration_coherence_triangles": [
     {
       "composite_cell": [
-        "ce7b03eae3e97e44295ab4e5d05eb3ff82160872e626cbd4d1f1557f461ab318",
-        "d71a687bd81d57bcc482ddc6365c60f6337e01ffa60994da7527748bbbb29d17"
+        "7526593f4a70cd05608dd3ff1bd83d0afa2850f63651abe912e591a436cf97b7",
+        "84b3f9ba1b4ddec168ade9d3ca59c6dc26de10b4cffea6440ff7322c649a0491"
       ],
-      "direct_cell": "24cc5066dd80aa0ab5c7f5a1911a3cb315b44f87de9b1f18bce03934f046507c",
+      "direct_cell": "65cc68e21727848412e6e9cd0cf92aec0016258af6a6e5ecd9842585f261abcf",
       "errors": [],
       "id": "rho_sigma_tau_triangle",
       "loop_action": "identity",
@@ -82,48 +82,82 @@
       "telescopes": true
     }
   ],
+  "configuration_constructor_rewrites": [
+    {
+      "errors": [],
+      "id": "rewrite_rho_sigma",
+      "passed": true,
+      "source_path_id": "varying_membership_configuration_path",
+      "target_path_id": "alternate_configuration_path"
+    },
+    {
+      "errors": [],
+      "id": "rewrite_sigma_tau",
+      "passed": true,
+      "source_path_id": "alternate_configuration_path",
+      "target_path_id": "third_configuration_path"
+    },
+    {
+      "errors": [],
+      "id": "rewrite_rho_tau",
+      "passed": true,
+      "source_path_id": "varying_membership_configuration_path",
+      "target_path_id": "third_configuration_path"
+    }
+  ],
   "configuration_normalization": [
     {
+      "confluent": true,
       "errors": [],
-      "id": "normalize_rho",
-      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
-      "normalization_witness": "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
+      "id": "configuration_constructor_rewrite_system",
+      "normal_forms": {
+        "alternate_configuration_path": [
+          "third_configuration_path"
+        ],
+        "third_configuration_path": [
+          "third_configuration_path"
+        ],
+        "varying_membership_configuration_path": [
+          "third_configuration_path"
+        ]
+      },
       "passed": true,
-      "path_id": "varying_membership_configuration_path"
+      "terminating": true,
+      "topological_order": [
+        "varying_membership_configuration_path",
+        "alternate_configuration_path",
+        "third_configuration_path"
+      ]
     },
     {
+      "branches": [
+        "alternate_configuration_path",
+        "third_configuration_path"
+      ],
       "errors": [],
-      "id": "normalize_sigma",
-      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
-      "normalization_witness": "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00",
+      "join": "third_configuration_path",
       "passed": true,
-      "path_id": "alternate_configuration_path"
-    },
-    {
-      "errors": [],
-      "id": "normalize_tau",
-      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
-      "normalization_witness": "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0",
-      "passed": true,
-      "path_id": "third_configuration_path"
+      "source_path_id": "varying_membership_configuration_path"
     }
   ],
   "configuration_normalization_hostiles": {
-    "duplicate_normal_form_witness": true,
+    "duplicate_rewrite": true,
+    "nonconfluent_fork": true,
     "normal_form_target_fitted": true,
+    "required_critical_pair_deleted": true,
+    "rewrite_cycle": true,
     "triangle_target_fitted": true,
-    "unauthorized_relation": true,
-    "word_mismatch": true
+    "unauthorized_rewrite": true
   },
   "configuration_path_coherence": [
     {
       "boundary_equal": true,
-      "coherence_cell": "ce7b03eae3e97e44295ab4e5d05eb3ff82160872e626cbd4d1f1557f461ab318",
+      "coherence_cell": "7526593f4a70cd05608dd3ff1bd83d0afa2850f63651abe912e591a436cf97b7",
       "errors": [],
       "fault_hypergraph_descends": true,
       "generated_from": [
-        "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
-        "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00"
+        "68db2ff2c32d963f70accf48593afdd3bbac82d191ecf5efcac61a8669001811",
+        "bd80d5fcc3de7ba46118b4ea1117b532b8231d5b0e94cd7c12ae692082089a6a"
       ],
       "id": "rho_sigma_endpoint_coherence",
       "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
@@ -137,12 +171,12 @@
     },
     {
       "boundary_equal": true,
-      "coherence_cell": "d71a687bd81d57bcc482ddc6365c60f6337e01ffa60994da7527748bbbb29d17",
+      "coherence_cell": "84b3f9ba1b4ddec168ade9d3ca59c6dc26de10b4cffea6440ff7322c649a0491",
       "errors": [],
       "fault_hypergraph_descends": true,
       "generated_from": [
-        "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00",
-        "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0"
+        "bd80d5fcc3de7ba46118b4ea1117b532b8231d5b0e94cd7c12ae692082089a6a",
+        "17bdd40b2694f05c5bacafc6727a6b668c3618d2251397a3db07d294661df2f6"
       ],
       "id": "sigma_tau_endpoint_coherence",
       "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
@@ -156,12 +190,12 @@
     },
     {
       "boundary_equal": true,
-      "coherence_cell": "24cc5066dd80aa0ab5c7f5a1911a3cb315b44f87de9b1f18bce03934f046507c",
+      "coherence_cell": "65cc68e21727848412e6e9cd0cf92aec0016258af6a6e5ecd9842585f261abcf",
       "errors": [],
       "fault_hypergraph_descends": true,
       "generated_from": [
-        "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
-        "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0"
+        "68db2ff2c32d963f70accf48593afdd3bbac82d191ecf5efcac61a8669001811",
+        "17bdd40b2694f05c5bacafc6727a6b668c3618d2251397a3db07d294661df2f6"
       ],
       "id": "rho_tau_endpoint_coherence",
       "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",

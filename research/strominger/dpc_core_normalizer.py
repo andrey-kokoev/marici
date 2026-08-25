@@ -721,68 +721,113 @@ def audit_configuration_category(contract: dict[str, Any]) -> list[dict[str, Any
     return audits
 
 
-def generate_configuration_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[tuple[str, str], dict[str, Any]]]:
+def generate_configuration_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[tuple[str, str], dict[str, Any]]]:
     paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
     admitted = {audit["id"]: audit["passed"] for audit in path_audits}
-    relations = contract.get("configuration_constructor_relations", [])
-    audits = []
-    witnesses: dict[str, dict[str, Any]] = {}
-    path_counts: dict[str, int] = {}
-    for relation in relations:
-        errors: list[str] = []
-        path_id = relation.get("path_id")
-        path = paths.get(path_id, {})
-        path_counts[path_id] = path_counts.get(path_id, 0) + 1
-        if not admitted.get(path_id):
-            errors.append("configuration_normalization_path_not_admissible")
-        if relation.get("edge_word") != [edge.get("id") for edge in path.get("edges", [])]:
-            errors.append("configuration_normalization_word_mismatch")
-        if not relation.get("source_authority_root") or relation.get("admissible_transformation") != "factorization_rewrite":
-            errors.append("configuration_normalization_relation_unauthorized")
-        if "normal_form_id" in relation:
-            errors.append("configuration_normalization_target_fitted")
-        boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
-        normal_form_payload = {
+    rewrites = contract.get("configuration_constructor_rewrites", [])
+    rewrite_audits = []
+    adjacency: dict[str, list[tuple[str, str]]] = {path_id: [] for path_id in paths}
+    seen_pairs: set[tuple[str, str]] = set()
+    boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
+
+    def semantic_signature(path: dict[str, Any]) -> dict[str, Any]:
+        return {
             "source": {key: path.get("source_configuration", {}).get(key) for key in boundary_fields},
             "endpoint": {key: path.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields},
             "support": sorted(path.get("expected_endpoint_configuration", {}).get("support", [])),
             "fault_hypergraph": sorted(sorted(fault) for fault in path.get("admissible_authority_root_fault_sets", [])),
         }
-        normal_form_id = hashlib.sha256(json.dumps(normal_form_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
-        witness_payload = {"relation": relation.get("id"), "path": path_id, "word": relation.get("edge_word"), "normal_form": normal_form_id, "authority": relation.get("source_authority_root")}
-        witness_id = hashlib.sha256(json.dumps(witness_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+
+    for rewrite in rewrites:
+        errors: list[str] = []
+        source_id, target_id = rewrite.get("source_path_id"), rewrite.get("target_path_id")
+        pair = (source_id, target_id)
+        if source_id == target_id or source_id not in paths or target_id not in paths or not admitted.get(source_id) or not admitted.get(target_id):
+            errors.append("configuration_rewrite_endpoint_invalid")
+        if not rewrite.get("source_authority_root") or rewrite.get("admissible_transformation") != "factorization_substitution":
+            errors.append("configuration_rewrite_unauthorized")
+        if "normal_form_id" in rewrite:
+            errors.append("configuration_rewrite_target_fitted")
+        if pair in seen_pairs:
+            errors.append("configuration_rewrite_duplicate")
+        if source_id in paths and target_id in paths and semantic_signature(paths[source_id]) != semantic_signature(paths[target_id]):
+            errors.append("configuration_rewrite_changes_semantics")
         if not errors:
-            witnesses[path_id] = {"id": witness_id, "relation_id": relation.get("id"), "normal_form_id": normal_form_id}
-        audits.append({"id": relation.get("id"), "path_id": path_id, "passed": not errors, "errors": errors, "normal_form_id": normal_form_id, "normalization_witness": witness_id})
-    for audit in audits:
-        if path_counts.get(audit["path_id"]) != 1:
-            audit["errors"] = sorted(set(audit["errors"] + ["configuration_normalization_not_unique"]))
-            audit["passed"] = False
-            witnesses.pop(audit["path_id"], None)
+            adjacency[source_id].append((target_id, rewrite.get("id")))
+            seen_pairs.add(pair)
+        rewrite_audits.append({"id": rewrite.get("id"), "source_path_id": source_id, "target_path_id": target_id, "passed": not errors, "errors": errors})
+
+    indegree = {node: 0 for node in paths}
+    for outgoing in adjacency.values():
+        for target, _ in outgoing:
+            indegree[target] += 1
+    frontier = sorted(node for node, degree in indegree.items() if degree == 0)
+    visited = []
+    while frontier:
+        node = frontier.pop(0)
+        visited.append(node)
+        for target, _ in adjacency[node]:
+            indegree[target] -= 1
+            if indegree[target] == 0:
+                frontier.append(target)
+                frontier.sort()
+    terminating = len(visited) == len(paths)
+
+    def traces_from(node: str, active: frozenset[str] = frozenset()) -> list[tuple[str, tuple[str, ...]]]:
+        if node in active:
+            return []
+        if not adjacency.get(node):
+            return [(node, ())]
+        traces = []
+        for target, rule_id in adjacency[node]:
+            traces.extend((sink, (rule_id,) + trace) for sink, trace in traces_from(target, active | {node}))
+        return traces
+
+    traces = {path_id: traces_from(path_id) if terminating else [] for path_id in paths}
+    unique_sinks = {path_id: sorted({sink for sink, _ in path_traces}) for path_id, path_traces in traces.items()}
+    confluent = terminating and all(len(sinks) == 1 for sinks in unique_sinks.values())
+    required_pairs = set(contract.get("required_configuration_critical_pairs", []))
+    critical_pair_audits = []
+    for source_id in sorted(required_pairs | {node for node, outgoing in adjacency.items() if len(outgoing) > 1}):
+        outgoing = adjacency.get(source_id, [])
+        branch_sinks = [sorted({sink for sink, _ in traces.get(target, [])}) for target, _ in outgoing]
+        joins = len(outgoing) > 1 and bool(branch_sinks) and len({tuple(sinks) for sinks in branch_sinks}) == 1 and len(branch_sinks[0]) == 1
+        critical_pair_audits.append({"source_path_id": source_id, "passed": joins, "errors": [] if joins else ["configuration_rewrite_critical_pair_unjoined"], "branches": [target for target, _ in outgoing], "join": branch_sinks[0][0] if joins else None})
+    system_errors = []
+    if not terminating:
+        system_errors.append("configuration_rewrite_nonterminating")
+    if not confluent:
+        system_errors.append("configuration_rewrite_nonconfluent")
+    if any(not audit["passed"] for audit in critical_pair_audits):
+        system_errors.append("configuration_rewrite_required_critical_pair_missing")
+    system_audit = {"id": "configuration_constructor_rewrite_system", "passed": not system_errors, "errors": system_errors, "terminating": terminating, "confluent": confluent, "topological_order": visited, "normal_forms": unique_sinks}
+    normalization_audits = [system_audit] + critical_pair_audits
+
+    witnesses: dict[str, dict[str, Any]] = {}
+    if not system_errors and all(audit["passed"] for audit in rewrite_audits):
+        for path_id, path_traces in traces.items():
+            sink = unique_sinks[path_id][0]
+            canonical_trace = min(trace for trace_sink, trace in path_traces if trace_sink == sink)
+            normal_form_payload = semantic_signature(paths[sink])
+            normal_form_id = hashlib.sha256(json.dumps(normal_form_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+            witness_payload = {"path": path_id, "sink": sink, "trace": canonical_trace, "normal_form": normal_form_id}
+            witness_id = hashlib.sha256(json.dumps(witness_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+            witnesses[path_id] = {"id": witness_id, "trace": list(canonical_trace), "sink_path_id": sink, "normal_form_id": normal_form_id}
+
     cells: dict[tuple[str, str], dict[str, Any]] = {}
     path_ids = sorted(witnesses)
-    boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
     for index, left_id in enumerate(path_ids):
         for right_id in path_ids[index + 1:]:
-            left, right = paths[left_id], paths[right_id]
             left_witness, right_witness = witnesses[left_id], witnesses[right_id]
             if left_witness["normal_form_id"] != right_witness["normal_form_id"]:
                 continue
-            left_boundary = ({key: left.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: left.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
-            right_boundary = ({key: right.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: right.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
-            support_equal = set(left.get("expected_endpoint_configuration", {}).get("support", [])) == set(right.get("expected_endpoint_configuration", {}).get("support", []))
-            left_roots = {root for edge in left.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
-            right_roots = {root for edge in right.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
-            left_faults = {tuple(sorted(fault)) for fault in left.get("admissible_authority_root_fault_sets", [])}
-            right_faults = {tuple(sorted(fault)) for fault in right.get("admissible_authority_root_fault_sets", [])}
-            if left_boundary != right_boundary or not support_equal or left_roots != right_roots or left_faults != right_faults:
-                continue
+            roots = {root for edge in paths[left_id].get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
             cell_payload = {"left": left_witness["id"], "right": right_witness["id"]}
             cell_id = hashlib.sha256(json.dumps(cell_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
-            cell = {"id": cell_id, "left_path_id": left_id, "right_path_id": right_id, "left_witness": left_witness["id"], "right_witness": right_witness["id"], "normal_form_id": left_witness["normal_form_id"], "root_identification": {root: root for root in sorted(left_roots)}}
+            cell = {"id": cell_id, "left_path_id": left_id, "right_path_id": right_id, "left_witness": left_witness["id"], "right_witness": right_witness["id"], "left_trace": left_witness["trace"], "right_trace": right_witness["trace"], "normal_form_id": left_witness["normal_form_id"], "root_identification": {root: root for root in sorted(roots)}}
             cells[(left_id, right_id)] = cell
-            cells[(right_id, left_id)] = {**cell, "left_path_id": right_id, "right_path_id": left_id, "left_witness": right_witness["id"], "right_witness": left_witness["id"]}
-    return audits, cells
+            cells[(right_id, left_id)] = {**cell, "left_path_id": right_id, "right_path_id": left_id, "left_witness": right_witness["id"], "right_witness": left_witness["id"], "left_trace": right_witness["trace"], "right_trace": left_witness["trace"]}
+    return rewrite_audits, normalization_audits, cells
 
 
 def audit_configuration_path_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]], generated_cells: dict[tuple[str, str], dict[str, Any]]) -> list[dict[str, Any]]:
@@ -885,14 +930,14 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     reconfiguration_audits = audit_native_reconfiguration_constructors(contract)
     configuration_path_audits = audit_configuration_paths(contract)
     configuration_category_audits = audit_configuration_category(contract)
-    configuration_normalization_audits, generated_coherence_cells = generate_configuration_coherence(contract, configuration_path_audits)
+    configuration_rewrite_audits, configuration_normalization_audits, generated_coherence_cells = generate_configuration_coherence(contract, configuration_path_audits)
     configuration_coherence_audits = audit_configuration_path_coherence(contract, configuration_path_audits, generated_coherence_cells)
     configuration_triangle_audits = audit_configuration_coherence_triangles(contract, generated_coherence_cells)
     configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -915,6 +960,7 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "native_reconfiguration_constructors": reconfiguration_audits,
         "configuration_paths": configuration_path_audits,
         "configuration_category": configuration_category_audits,
+        "configuration_constructor_rewrites": configuration_rewrite_audits,
         "configuration_normalization": configuration_normalization_audits,
         "configuration_path_coherence": configuration_coherence_audits,
         "configuration_coherence_triangles": configuration_triangle_audits,
