@@ -1,6 +1,15 @@
 {
-  "critical_pair_count": 5,
+  "critical_pair_count": 6,
   "critical_pairs": [
+    {
+      "expected_joined": true,
+      "failure_code": null,
+      "id": "identity_then_support_union_joins",
+      "joined": true,
+      "passed": true,
+      "same_full_signature": true,
+      "same_output": true
+    },
     {
       "expected_joined": true,
       "failure_code": null,
@@ -69,6 +78,17 @@
         "scope"
       ],
       "witness": "identity_then_attenuate_joins"
+    },
+    {
+      "covered": true,
+      "rules": [
+        "support_union",
+        "typed_identity"
+      ],
+      "shared_fields": [
+        "support"
+      ],
+      "witness": "identity_then_support_union_joins"
     }
   ],
   "hostile_missing_overlap_coverage_rejected": true,
@@ -77,9 +97,31 @@
     "equal_output_unequal_support_rejected": "c010b5888dca93411ac0e87f9c14e097e7a80eadd087d94b8e58237f15679274",
     "identity_then_attenuate_joins": "5dc26a162f5ea2287716bca06474591b7250b8f8df1357ed71811327f3e45a4c",
     "identity_then_partition_joins": "18321ce3b9ff8fc02856be582a128bd364b3f58511279416612526f11cb6ef42",
+    "identity_then_support_union_joins": "a67deab350c6f2bc9556e8b83b576db52d59734674da732ab1c86753bcc2980a",
     "matching_signature_missing_selector_cell_rejected": "eb25ba4022bb1c6e43e1810b4a782d870624943dec613be401b0620436eee0b5"
   },
   "normalization_cases": [
+    {
+      "error": null,
+      "id": "support_union_preserves_distinct_roots_and_removes_duplicates",
+      "normalized": {
+        "authority_kind": "readout",
+        "executable_output": "bit",
+        "modality": "unrestricted",
+        "operations": [],
+        "resource": {
+          "queries": 1
+        },
+        "scope": [
+          "observe"
+        ],
+        "support": [
+          "root_A",
+          "root_B"
+        ]
+      },
+      "passed": true
+    },
     {
       "error": null,
       "id": "conservative_partition",

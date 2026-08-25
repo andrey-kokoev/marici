@@ -41,6 +41,9 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
             if operation["kind"] == "attenuate":
                 current["scope"] = sorted(set(current["scope"]) & set(operation["scope"]))
                 continue
+            if operation["kind"] == "support_union":
+                current["support"] = sorted(set(current["support"]) | set(operation["support"]))
+                continue
             if operation["kind"] == "partition":
                 source = operation["source"]
                 amount = current["resource"].get(source)
