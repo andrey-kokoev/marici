@@ -1,0 +1,101 @@
+{
+  "frozen_pointer_statement": "one four-level coherent pointer per Wilson observable",
+  "inputs_sha256": {
+    "research/kitaev/results/s3-coherent-wilson-phase-kickback.json": "afc68d25279b4b763f64c94670ccaaa135fcc47090c54100cf69c0a02cfcb3c7",
+    "research/kitaev/results/s3-cross-port-conjunction-sharing.json": "446f4a425c1f2a15e13389ce273eedf2e371e9565ee675e95fccc0b396131db7"
+  },
+  "models": {
+    "monolithic_encoded_ququart_per_port": {
+      "one_fault_output_contract_preserved_by_contact_multiplicity_alone": false,
+      "predicates": {
+        "011": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "D": 1,
+            "F": 1,
+            "G": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "101": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C": 1,
+            "D": 1,
+            "G": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "110": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "111": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C": 2,
+            "F": 2,
+            "G": 2
+          },
+          "maximum_multiplicity": 2,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": true
+        }
+      }
+    },
+    "two_independently_protected_binary_components_per_port": {
+      "one_fault_output_contract_preserved_by_contact_multiplicity_alone": true,
+      "predicates": {
+        "011": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "D:power1": 1,
+            "F:power1": 1,
+            "G:power1": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "101": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C:power1": 1,
+            "D:power1": 1,
+            "G:power1": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "110": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C:power1": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        },
+        "111": {
+          "contact_multiplicity_by_encoded_pointer_block": {
+            "C:power1": 1,
+            "C:power2": 1,
+            "F:power1": 1,
+            "F:power2": 1,
+            "G:power1": 1,
+            "G:power2": 1
+          },
+          "maximum_multiplicity": 1,
+          "one_persistent_fault_can_exceed_one_error_per_pointer_block": false
+        }
+      }
+    }
+  },
+  "monolithic_repair": {
+    "derivation": "011 base and 111 extension are each instantiated once in the power-1 layer and again in the power-2 layer; 101 and 110 remain power-1 only",
+    "ideal_shared_episode_count_no_longer_fault_safe": 4,
+    "minimum_power_layer_boundary_for_predicate_111": 1,
+    "recomputed_conjunction_episode_upper_bound": 6,
+    "required_action": "hygiene or discard-and-recompute the 111 predicate workspace between controlled-power layers"
+  },
+  "schema": "marici.kitaev.s3-shared-predicate-pointer-typing.v1",
+  "scope_boundary": "This checker audits pointer contact multiplicity only. Compute/uncompute propagation into sector data and microscopic controlled-phase faults remain outside the model.",
+  "typing_blocker": "The phrase 'one four-level coherent pointer' does not state whether fault correction treats the two phase-estimation controls as one encoded block or two independently protected component blocks.",
+  "verdict": "The fault-safe status of ideal four-episode cross-port sharing depends on an unresolved pointer-block decomposition. It fails contact multiplicity for a monolithic ququart but survives that particular test for two independently protected binary components. No unconditional fault-tolerant sharing theorem follows until the encoding is frozen."
+}

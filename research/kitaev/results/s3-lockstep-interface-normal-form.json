@@ -1,0 +1,38 @@
+{
+  "CDFG_interaction_layer": {
+    "all_terms_pairwise_commute": true,
+    "basis_states_checked": 2048,
+    "elementary_diagonal_terms": 21,
+    "lockstep_digit_exposed_interaction_window_exists_at_ideal_unitary_level": true,
+    "maximum_phase_exponent_residual_mod4": 0,
+    "orders_checked": [
+      "compiler",
+      "reverse",
+      "predicate_grouped",
+      "odd_then_even"
+    ],
+    "ports": [
+      "C",
+      "D",
+      "F",
+      "G"
+    ]
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-joint-interface-selector-fault-gate.json": "b65015eeb8f4f34ae3d7f101b370485b3bdffd583d46da50a0e739460988b4bc",
+    "research/kitaev/results/s3-native-ququart-wilson-compiler.json": "7c526c0638d17298c038df914adbc84662d03683c6e0962bed470836b3f9af29"
+  },
+  "remaining_boundary": {
+    "independent_fault_domains_certified": false,
+    "native_F4_and_inverse_layers_may_be_moved_through_interaction_window": false,
+    "numerical_joint_switch_cost_derived": false,
+    "physical_four_block_joint_switch_admitted": false
+  },
+  "schema": "marici.kitaev.s3-lockstep-interface-normal-form.v1",
+  "selector_refinement": {
+    "independent_16_configuration_contract_required_by_ideal_interaction_order": false,
+    "source_of_coherence_law": "the actual CDFG interaction primitives are simultaneously diagonal",
+    "two_state_lockstep_contract_sufficient_for_ideal_interaction_order": true
+  },
+  "verdict": "The actual CDFG controlled-Z4 terms admit an exact lockstep interface normal form: all 21 diagonal terms commute on all 2048 data-pointer basis states, so ideal interaction ordering never requires a mixed native/binary port configuration. This removes the independent-selector deficit for the ideal compiler. It does not make the joint switch free or fault independent; the four-block physical channel and its cost remain untyped."
+}

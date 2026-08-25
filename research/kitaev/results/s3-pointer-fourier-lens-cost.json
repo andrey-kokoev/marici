@@ -1,0 +1,40 @@
+{
+  "binary_lens": {
+    "CDFG_upper_bound_including_pointer_Fouriers": 217,
+    "CS_invocations_per_F4": 1,
+    "F4_is_binary_Clifford": false,
+    "F4_per_pointer_full_extract_lookup_unextract_cycle": 2,
+    "T_upper_bound_from_three_T_CS_factory": 24,
+    "pointers": 4,
+    "total_CS_invocations": 8
+  },
+  "exact_F4_decomposition": "F4 = SWAP (I tensor H) CS (H tensor I)",
+  "independent_axes": {
+    "coefficient_Pauli_lens": [
+      "binary two-qubit",
+      "native ququart"
+    ],
+    "correction_block_decomposition": [
+      "one monolithic block",
+      "two independently protected component blocks"
+    ],
+    "rule": "block decomposition does not determine the Pauli lens and the two costs may not be mixed without an explicit transport compiler"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/controlled-s-from-t-factory.json": "4b51b4a86e372eeabff06d58e5c9aead1a778b191d8cc40676fb9aaae909dab8",
+    "research/kitaev/results/mod4-phase-kernel-encoding-boundary.json": "b4b0e5741ff028b281ca91f27868d846766f1a044aac4f1aff033039b08ceda1",
+    "research/kitaev/results/s3-cross-port-conjunction-sharing.json": "446f4a425c1f2a15e13389ce273eedf2e371e9565ee675e95fccc0b396131db7"
+  },
+  "matrix_max_residual": 1.1102230246251565e-16,
+  "native_ququart_lens": {
+    "F4_is_ququart_Clifford": true,
+    "binary_193T_compiler_transports_unchanged": false,
+    "normalizer_residuals": {
+      "F4_X4_F4dagger_vs_Z4": 0.0,
+      "F4_Z4_F4dagger_vs_X4inverse": 0.0
+    },
+    "reason": "the native ququart and two-qubit Pauli label groups are not Pauli-preservingly isomorphic; controlled-phase primitives must be recompiled in the native lens"
+  },
+  "schema": "marici.kitaev.s3-pointer-fourier-lens-cost.v1",
+  "verdict": "In the binary pointer lens the full coherent CDFG cycle adds exactly eight CS invocations, giving a 24T upper-bound increment and 217T total ideal bound. F4 is Clifford in the native ququart lens, but the binary 193T controlled-phase compiler cannot be imported unchanged. Pointer block typing and coefficient lens are independent architectural choices."
+}

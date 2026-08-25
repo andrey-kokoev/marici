@@ -1,0 +1,50 @@
+{
+  "fault_models": {
+    "factorized_actuators_with_one_shared_controller": {
+      "maximum_pointer_block_support": 4,
+      "quantum_actuator_locality_alone_proves_global_one_fault_contract": false,
+      "required_repair": "harden, duplicate-and-compare, or make controller faults detectable/benign",
+      "shared_controller_fault_patterns": [
+        "1111"
+      ]
+    },
+    "four_factorized_quantum_actuators": {
+      "block_local_quantum_fault_containment_passes": true,
+      "maximum_pointer_block_support": 1,
+      "shared_controller_fault_included": false,
+      "single_fault_patterns": [
+        "0001",
+        "0010",
+        "0100",
+        "1000"
+      ]
+    },
+    "one_monolithic_four_block_channel": {
+      "block_local_quantum_fault_containment_passes": false,
+      "contains_1111": true,
+      "maximum_pointer_block_support": 4,
+      "single_fault_pattern_count": 15
+    }
+  },
+  "ideal_lockstep_truth_table": {
+    "0": "0000",
+    "1": "1111"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-joint-interface-selector-fault-gate.json": "b65015eeb8f4f34ae3d7f101b370485b3bdffd583d46da50a0e739460988b4bc",
+    "research/kitaev/results/s3-lockstep-interface-normal-form.json": "6822f9d9283e24292e442c8f2836829971eddaed85a2ffd365c0a368df19d265"
+  },
+  "schema": "marici.kitaev.s3-lockstep-interface-fault-locus.v1",
+  "typing_consequence": {
+    "factorized_quantum_switches_imply_independent_total_fault_domains": false,
+    "ideal_lockstep_unitary_determines_fault_locus": false,
+    "required_fields": [
+      "quantum actuator decomposition",
+      "controller authority roots",
+      "controller-to-actuator fanout",
+      "fault detection and recovery boundary"
+    ],
+    "shared_schedule_implies_monolithic_quantum_channel": false
+  },
+  "verdict": "The ideal lockstep truth table does not determine fault locality. Four synchronized but factorized quantum actuators limit an actuator fault to one pointer block, whereas a monolithic quantum channel permits four-block support. Yet even factorized actuators inherit a four-block common-cause mode from an unhardened shared controller. The compiler must type controller and quantum-channel loci separately."
+}

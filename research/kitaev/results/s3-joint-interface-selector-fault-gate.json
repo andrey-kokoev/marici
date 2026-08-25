@@ -1,0 +1,61 @@
+{
+  "authorized_lockstep_contract": {
+    "admissible_configurations": [
+      "0000",
+      "1111"
+    ],
+    "independent_pointer_fault_domains_certified": false,
+    "minimum_selector_bits": 1,
+    "required_additional_typing": [
+      "source-authorized lockstep coherence law",
+      "common-cause fault set",
+      "epoch and replay identity",
+      "one-fault output contract across all four pointer blocks"
+    ],
+    "selector_sufficient": true,
+    "single_authority_root_spans_pointer_blocks": 4
+  },
+  "independent_interface_contract": {
+    "minimum_selector_bits": 4,
+    "missing_count": 14,
+    "missing_joint_configurations": [
+      "0001",
+      "0010",
+      "0011",
+      "0100",
+      "0101",
+      "0110",
+      "0111",
+      "1000",
+      "1001",
+      "1010",
+      "1011",
+      "1100",
+      "1101",
+      "1110"
+    ],
+    "one_shared_bit_joint_image_size": 2,
+    "one_shared_bit_marginals_complete": true,
+    "required_joint_configurations": 16,
+    "verdict": "joint_selector_correlation_deficit"
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-hybrid-z4-binary-interface.json": "e099e93bd63f5c29822afc73bed5fac343fe4bb18749fb08e42cc055ab798ff9",
+    "research/kitaev/results/s3-shared-predicate-pointer-typing.json": "03646b6d4552833691ebebe0caf4adfe525b4eb845ff7f8c3bf276778f733cc5",
+    "research/nima/joint-selector-correlation-and-orbit-product-gate.md": "abb2df5fa5c52142962465c1d91a67f77e2b33b2be2ff27b5ace5b10c177388d"
+  },
+  "ports": [
+    "C",
+    "D",
+    "F",
+    "G"
+  ],
+  "resource_boundary": {
+    "marginal_interface_costs_may_be_summed_without_joint_constructor": false,
+    "numerical_joint_switch_cost_derived": false,
+    "previous_total_interface_budget_for_strict_improvement_T_equivalent": 83,
+    "reason": "shared selection can change both reachable joint configurations and common-cause fault structure"
+  },
+  "schema": "marici.kitaev.s3-joint-interface-selector-fault-gate.v1",
+  "verdict": "Four marginally complete pointer interfaces do not compose automatically. Independent per-port switching needs a 16-state joint image and at least four selector bits; one shared bit reaches only the two lockstep configurations and misses fourteen. Lockstep can instead be authorized, but then its single selector is a common-cause root spanning all four pointers. Hence the conditional <83T interface budget is not yet a compositional executable bound."
+}

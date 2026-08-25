@@ -1,0 +1,26 @@
+{
+  "common_mode_boundary": {
+    "all_replica_flip_detected_by_equality_or_majority": false,
+    "independent_fault_domains_required": true,
+    "quantum_actuator_faults_repaired_by_controller_redundancy": false
+  },
+  "fault_model": {
+    "at_most_one_independent_replica_bit_flip": true,
+    "comparison_or_vote_completes_before_fanout": true,
+    "controller_command_is_classical_before_actuation": true
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/s3-lockstep-interface-fault-locus.json": "838684403305c8c0e60df85eae642428680b6f2373156e6ab75a5727c2fa4a5f"
+  },
+  "minimality": {
+    "minimum_copies_for_correction": 3,
+    "minimum_copies_for_detection": 2,
+    "one_copy_detects_one_flip": false,
+    "three_copy_correction_checks": 6,
+    "three_copy_majority_corrects_one_flip": true,
+    "two_copy_detection_checks": 4,
+    "two_copy_equality_detects_one_flip": true
+  },
+  "schema": "marici.kitaev.s3-lockstep-controller-redundancy.v1",
+  "verdict": "For a classical command validated before actuator fanout and at most one independent replica flip, two controller copies are minimally sufficient for detection and three are minimally sufficient for correction. Common-mode replica faults remain invisible, and this redundancy does not repair quantum switch faults or price the interface."
+}

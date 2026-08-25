@@ -1,0 +1,127 @@
+{
+  "coherent_control_test": {
+    "digit_decomposition": "CZ(b,a) CS(b,d)",
+    "input": "|+>_b tensor |+_4>_r",
+    "is_binary_stabilizer": false,
+    "operation": "sum_b |b><b| tensor Z4^b",
+    "required_count_for_pure_three_qubit_stabilizer": 8,
+    "unit_Paulis": [
+      {
+        "XZ_exponents": "000000",
+        "expectation": "1"
+      },
+      {
+        "XZ_exponents": "011000",
+        "expectation": "1"
+      }
+    ],
+    "unit_magnitude_binary_Pauli_count": 2
+  },
+  "fixed_residue_branches": {
+    "all_binary_stabilizer": true,
+    "states": "F4 character states sum_r i^(k r)|r>/2 under r=2a+d",
+    "tests": {
+      "0": {
+        "is_binary_stabilizer": true,
+        "unit_Paulis": [
+          {
+            "XZ_exponents": "0000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "0010",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "1000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "1010",
+            "expectation": "1"
+          }
+        ],
+        "unit_magnitude_Pauli_count": 4
+      },
+      "1": {
+        "is_binary_stabilizer": true,
+        "unit_Paulis": [
+          {
+            "XZ_exponents": "0000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "0011",
+            "expectation": "-I"
+          },
+          {
+            "XZ_exponents": "1000",
+            "expectation": "-1"
+          },
+          {
+            "XZ_exponents": "1011",
+            "expectation": "I"
+          }
+        ],
+        "unit_magnitude_Pauli_count": 4
+      },
+      "2": {
+        "is_binary_stabilizer": true,
+        "unit_Paulis": [
+          {
+            "XZ_exponents": "0000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "0010",
+            "expectation": "-1"
+          },
+          {
+            "XZ_exponents": "1000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "1010",
+            "expectation": "-1"
+          }
+        ],
+        "unit_magnitude_Pauli_count": 4
+      },
+      "3": {
+        "is_binary_stabilizer": true,
+        "unit_Paulis": [
+          {
+            "XZ_exponents": "0000",
+            "expectation": "1"
+          },
+          {
+            "XZ_exponents": "0011",
+            "expectation": "I"
+          },
+          {
+            "XZ_exponents": "1000",
+            "expectation": "-1"
+          },
+          {
+            "XZ_exponents": "1011",
+            "expectation": "-I"
+          }
+        ],
+        "unit_magnitude_Pauli_count": 4
+      }
+    }
+  },
+  "inputs_sha256": {
+    "research/kitaev/results/ququart-digit-interface-magic-witness.json": "b1491af6bcc0c6a324d6521520b008168a367e80f913b849faebcfa925003fe4",
+    "research/kitaev/results/s3-hybrid-z4-binary-interface.json": "e099e93bd63f5c29822afc73bed5fac343fe4bb18749fb08e42cc055ab798ff9",
+    "research/kitaev/results/s3-native-ququart-wilson-compiler.json": "7c526c0638d17298c038df914adbc84662d03683c6e0962bed470836b3f9af29"
+  },
+  "schema": "marici.kitaev.ququart-wilson-coherence-magic.v1",
+  "typing": {
+    "classically_resolved_pointer_branches_need_magic_witness": false,
+    "coherent_odd_Wilson_interaction_needs_nonstabilizer_resource_under_digit_map": true,
+    "fault_tolerant_interface_admitted": false,
+    "full_code_switch_cost_derived": false
+  },
+  "verdict": "The restricted Wilson trajectory does not evade the interface obstruction. Each classically fixed F4 pointer branch is a binary stabilizer, so branchwise testing misses the cost. Before sector decoherence, however, the odd controlled-Z4 primitive sends the free product |+>|+4> to a binary nonstabilizer with only two unit Pauli expectations rather than eight. The resource is coherence-activated and lies in the controlled interaction, while its fault-tolerant conversion cost remains untyped."
+}
