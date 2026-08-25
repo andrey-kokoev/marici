@@ -1010,7 +1010,8 @@ def validate(packet: dict[str, Any]) -> list[Error]:
     # Correlated-fault hypergraph theorem.  Scalar replica counts are a special
     # case.  Safety requires every pair of winning quorums to retain an honest
     # witness outside every admissible common-cause fault set.
-    for audit in packet.get("fault_hypergraph_quorum_audits", []):
+    hypergraph_audits = {item["id"]: item for item in packet.get("fault_hypergraph_quorum_audits", [])}
+    for audit in hypergraph_audits.values():
         hid = audit["id"]
         replicas = set(audit.get("replicas", []))
         quorums = [set(quorum) for quorum in audit.get("authorized_quorums", [])]
@@ -1048,6 +1049,52 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("unauthorized_or_unbounded_common_cause_model", hid, str(audit.get("bounded_model_scope")))
         if audit.get("infers_independence_from_distinct_replica_ids"):
             err("replica_identity_laundered_as_failure_independence", hid, "distinct IDs do not imply distinct authority roots")
+
+    # Open-world common-cause discovery.  A source-derived intervention row
+    # generates a fault hyperedge from its nonzero replica support.  Enlarging
+    # the fault family is safety-nonmonotone and suspends any certificate whose
+    # quorum overlap is swallowed by the new edge.
+    for discovery in packet.get("common_cause_discovery_audits", []):
+        did = discovery["id"]
+        baseline = hypergraph_audits.get(discovery.get("baseline_fault_audit"))
+        repair = hypergraph_audits.get(discovery.get("repair_fault_audit"))
+        replicas = discovery.get("replicas", [])
+        matrix = discovery.get("intervention_response_matrix", [])
+        probes = discovery.get("intervention_probes", [])
+        if baseline is None or repair is None or len(matrix) != len(probes) or any(len(row) != len(replicas) for row in matrix):
+            err("invalid_common_cause_discovery_matrix", did, f"{len(matrix)}x{len(matrix[0]) if matrix else 0}")
+            continue
+        new_probe = discovery.get("new_probe")
+        if new_probe not in probes:
+            err("unknown_common_cause_discovery_probe", did, str(new_probe))
+            continue
+        row = matrix[probes.index(new_probe)]
+        support = [replica for replica, response in zip(replicas, row) if response]
+        declared = discovery.get("derived_fault_set", [])
+        if support != declared:
+            err("common_cause_response_support_mismatch", did, f"{support}!={declared}")
+        if not discovery.get("new_probe_source_derived") or not discovery.get("probe_committed_before_response"):
+            err("target_fitted_common_cause_probe", did, str(new_probe))
+        baseline_faults = [set(item) for item in baseline.get("admissible_fault_sets", [])]
+        new_fault = set(declared)
+        if new_fault in baseline_faults or new_fault not in [set(item) for item in discovery.get("extended_fault_sets", [])]:
+            err("discovered_common_cause_not_admitted", did, str(declared))
+        swallowed = any(
+            not (set(left) & set(right)) - new_fault
+            for left in baseline.get("authorized_quorums", [])
+            for right in baseline.get("authorized_quorums", [])
+        )
+        if swallowed and discovery.get("old_safety_authority_retained"):
+            err("safety_authority_retained_after_common_cause_discovery", did, str(declared))
+        if discovery.get("status") != "challenge_open" or not swallowed:
+            err("common_cause_discovery_fails_to_open_challenge", did, str(swallowed))
+        repair_faults = [set(item) for item in repair.get("admissible_fault_sets", [])]
+        if new_fault not in repair_faults:
+            err("repair_drops_discovered_common_cause", did, str(declared))
+        if not repair.get("claimed_safe") or discovery.get("repair_status") != "revalidated":
+            err("common_cause_repair_not_revalidated", did, str(discovery.get("repair_status")))
+        if discovery.get("claims_universal_independence") or not discovery.get("bounded_tested_constructor_grammar"):
+            err("closed_world_common_cause_claim", did, str(discovery.get("bounded_tested_constructor_grammar")))
 
     return errors
 

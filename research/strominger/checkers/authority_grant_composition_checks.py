@@ -85,6 +85,7 @@ def main():
     constructor_networks = {item["id"]: item for item in packet["linearization_constructor_networks"]}
     fault_audits = {item["id"]: item for item in packet["fault_parametric_quorum_audits"]}
     hypergraph_audits = {item["id"]: item for item in packet["fault_hypergraph_quorum_audits"]}
+    discovery_audits = {item["id"]: item for item in packet["common_cause_discovery_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -411,6 +412,18 @@ def main():
             )
             for audit in hypergraph_audits.values()
         ),
+        "intervention_response_support_discovers_new_fault_edge":
+            discovery_audits["discover_shared_build_pipeline_edge"]["intervention_response_matrix"][-1] == [1, 1, 0, 0]
+            and discovery_audits["discover_shared_build_pipeline_edge"]["derived_fault_set"] == ["r1", "r2"]
+            and ["r1", "r2"] in discovery_audits["discover_shared_build_pipeline_edge"]["extended_fault_sets"],
+        "new_common_cause_suspends_then_revalidates_safety":
+            discovery_audits["discover_shared_build_pipeline_edge"]["status"] == "challenge_open"
+            and not discovery_audits["discover_shared_build_pipeline_edge"]["old_safety_authority_retained"]
+            and discovery_audits["discover_shared_build_pipeline_edge"]["repair_status"] == "revalidated"
+            and hypergraph_audits[discovery_audits["discover_shared_build_pipeline_edge"]["repair_fault_audit"]]["claimed_safe"],
+        "common_cause_discovery_remains_open_world":
+            bool(discovery_audits["discover_shared_build_pipeline_edge"]["bounded_tested_constructor_grammar"])
+            and not discovery_audits["discover_shared_build_pipeline_edge"]["claims_universal_independence"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -462,6 +475,7 @@ def main():
         "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
         "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash/recovery safety with durable non-equivocation requires only a nonempty overlap I_min>=1, so n=3,q=2 is safe. Byzantine safety requires I_min>f: n=3,q=2,f=1 is unsafe, while n=4,q=3,f=1 is safe.",
         "fault_hypergraph_verdict": "Replica cardinality is insufficient under correlated faults. Safety requires (Q1 intersection Q2) minus F to be nonempty for every winning-quorum pair and every source-authorized common-cause fault set F. Shared authority-root fibers are mandatory fault sets; the unsafe correlated 3-of-4 design is repaired either by root diversification or by the verified 4-of-5 geometry.",
+        "common_cause_discovery_verdict": "A source-derived intervention row generates a fault hyperedge from its nonzero replica support. Discovering the shared-build edge {r1,r2} enlarges the fault family and suspends the former 3-of-4 safety claim; safety is revalidated only on a topology whose catalog retains that edge. Independence remains relative to the tested constructor grammar.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

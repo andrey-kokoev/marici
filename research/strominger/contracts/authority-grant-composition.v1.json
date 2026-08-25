@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "2a3c0f9ff3553a2618f91c43120e1a81f6205aadbd9ab76157a6bff1461f7b2e",
+      "replay_checker_sha256": "0d625006e24b874488c26f3b0992d50577afbf4f629efbc30d782340fd000026",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -788,6 +788,26 @@
       "source_authorized_common_cause_model": "one declared administrative-root compromise at a time",
       "bounded_model_scope": "single root-fiber common cause",
       "infers_independence_from_distinct_replica_ids": false
+    }
+  ],
+  "common_cause_discovery_audits": [
+    {
+      "id": "discover_shared_build_pipeline_edge",
+      "baseline_fault_audit": "diversified_n4_q3_safe",
+      "repair_fault_audit": "correlated_n5_q4_safe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "intervention_probes": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential", "shared_build_pipeline"],
+      "intervention_response_matrix": [[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1], [1,1,0,0]],
+      "new_probe": "shared_build_pipeline",
+      "new_probe_source_derived": "build provenance identified one compiler/signing pipeline feeding r1 and r2",
+      "probe_committed_before_response": true,
+      "derived_fault_set": ["r1", "r2"],
+      "extended_fault_sets": [["r1"], ["r2"], ["r3"], ["r4"], ["r1", "r2"]],
+      "old_safety_authority_retained": false,
+      "status": "challenge_open",
+      "repair_status": "revalidated",
+      "bounded_tested_constructor_grammar": "declared administrator and build-pipeline interventions",
+      "claims_universal_independence": false
     }
   ],
   "application_cases": [

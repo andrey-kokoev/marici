@@ -132,8 +132,9 @@
       "removed": true
     }
   },
+  "common_cause_discovery_verdict": "A source-derived intervention row generates a fault hyperedge from its nonzero replica support. Discovering the shared-build edge {r1,r2} enlarges the fault family and suspends the former 3-of-4 safety claim; safety is revalidated only on a topology whose catalog retains that edge. Independence remains relative to the tested constructor grammar.",
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "d4c72ebd53a7ae437e1a63e3d4aa73a124dc4905e3391572ac90ebf6ba2f1585",
+  "contract_sha256": "40332c43ad85f01c2cd9530f6ec2ff25bd22624905b136e0a7b4b05151e4d868",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
@@ -153,6 +154,7 @@
     "certificate_minimality_is_bounded_and_deletion_witnessed": true,
     "changing_B_requires_source_derived_natural_coherence": true,
     "coherence_is_prior_target_independent_and_recomputable": true,
+    "common_cause_discovery_remains_open_world": true,
     "common_cause_fault_sets_are_derived_from_authority_roots": true,
     "composition_preserves_authority_kind": true,
     "correlated_fault_hypergraph_falsifies_nominal_n4_q3": true,
@@ -172,12 +174,14 @@
     "incomplete_speculation_cannot_open_challenge": true,
     "independent_successor_atlases_are_flat": true,
     "intersection_replica_enforces_durable_non_equivocation": true,
+    "intervention_response_support_discovers_new_fault_edge": true,
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
     "live_successor_roots_restore_prospective_standing": true,
     "majority_quorums_intersect_pairwise": true,
     "mechanism_identification_is_explicitly_bounded": true,
     "missing_alternative_executor_is_presentation_only": true,
+    "new_common_cause_suspends_then_revalidates_safety": true,
     "new_rival_has_independent_constructor_authority": true,
     "new_rival_suspends_identification_authority": true,
     "physical_non_equivocation_boundary_is_explicit": true,
@@ -404,6 +408,15 @@
       "passed": true,
       "valid": false
     },
+    "common_cause_probe_is_target_fitted": {
+      "description": "The shared-build probe is selected only after inspecting the desired correlated response.",
+      "error_codes": [
+        "target_fitted_common_cause_probe"
+      ],
+      "expected_code": "target_fitted_common_cause_probe",
+      "passed": true,
+      "valid": false
+    },
     "completion_ports_to_constructor": {
       "description": "A completed readout and executable observation ports are laundered into constructor authority.",
       "error_codes": [
@@ -469,6 +482,24 @@
         "unsupported_presentation_deletion_survival"
       ],
       "expected_code": "unsupported_presentation_deletion_survival",
+      "passed": true,
+      "valid": false
+    },
+    "discovered_edge_does_not_suspend_safety": {
+      "description": "A newly evidenced common cause swallows a quorum overlap while the old safety authority remains live.",
+      "error_codes": [
+        "safety_authority_retained_after_common_cause_discovery"
+      ],
+      "expected_code": "safety_authority_retained_after_common_cause_discovery",
+      "passed": true,
+      "valid": false
+    },
+    "discovered_edge_omitted_from_extended_family": {
+      "description": "The response-derived common cause is observed but not admitted into the enlarged fault family.",
+      "error_codes": [
+        "discovered_common_cause_not_admitted"
+      ],
+      "expected_code": "discovered_common_cause_not_admitted",
       "passed": true,
       "valid": false
     },
@@ -584,6 +615,15 @@
         "unbounded_explanatory_extrapolation"
       ],
       "expected_code": "unbounded_explanatory_extrapolation",
+      "passed": true,
+      "valid": false
+    },
+    "finite_probes_claim_universal_independence": {
+      "description": "A finite administrator/build intervention family is claimed to exclude every possible physical common cause.",
+      "error_codes": [
+        "closed_world_common_cause_claim"
+      ],
+      "expected_code": "closed_world_common_cause_claim",
       "passed": true,
       "valid": false
     },
@@ -800,6 +840,15 @@
       "passed": true,
       "valid": false
     },
+    "repair_drops_known_common_cause": {
+      "description": "Revalidation points to a safe-looking topology whose fault catalog omits the newly discovered build-pipeline edge.",
+      "error_codes": [
+        "repair_drops_discovered_common_cause"
+      ],
+      "expected_code": "repair_drops_discovered_common_cause",
+      "passed": true,
+      "valid": false
+    },
     "replica_vote_memory_is_volatile": {
       "description": "A restart erases the prior vote, allowing the intersection replica to sign a conflict in the same epoch.",
       "error_codes": [
@@ -828,6 +877,17 @@
         "missing_source_derived_representation_coherence"
       ],
       "expected_code": "missing_source_derived_representation_coherence",
+      "passed": true,
+      "valid": false
+    },
+    "response_support_does_not_match_fault_edge": {
+      "description": "The admitted fault edge includes r3 even though the intervention moved only r1 and r2.",
+      "error_codes": [
+        "common_cause_response_support_mismatch",
+        "discovered_common_cause_not_admitted",
+        "repair_drops_discovered_common_cause"
+      ],
+      "expected_code": "common_cause_response_support_mismatch",
       "passed": true,
       "valid": false
     },
@@ -1154,15 +1214,15 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "9eb50e1f00d18499ec245d06dab91c324a12d469039015dd0a13cf52ff9f980a",
-  "hostile_passed": 100,
-  "hostile_total": 100,
+  "hostile_fixture_sha256": "26d2eba83f5e63e585bf2319a3466618e9d01fef86b9b11c1b6d2adbdcb3701c",
+  "hostile_passed": 106,
+  "hostile_total": 106,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 71,
+  "passed_gates": 74,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -1172,6 +1232,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 71,
+  "total_gates": 74,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

@@ -807,6 +807,54 @@
         {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "violation_witness", "value": {}}
       ],
       "expected_code": "missing_fault_hypergraph_violation_witness"
+    },
+    {
+      "id": "discovered_edge_does_not_suspend_safety",
+      "description": "A newly evidenced common cause swallows a quorum overlap while the old safety authority remains live.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "old_safety_authority_retained", "value": true}
+      ],
+      "expected_code": "safety_authority_retained_after_common_cause_discovery"
+    },
+    {
+      "id": "common_cause_probe_is_target_fitted",
+      "description": "The shared-build probe is selected only after inspecting the desired correlated response.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "probe_committed_before_response", "value": false}
+      ],
+      "expected_code": "target_fitted_common_cause_probe"
+    },
+    {
+      "id": "response_support_does_not_match_fault_edge",
+      "description": "The admitted fault edge includes r3 even though the intervention moved only r1 and r2.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "derived_fault_set", "value": ["r1", "r2", "r3"]}
+      ],
+      "expected_code": "common_cause_response_support_mismatch"
+    },
+    {
+      "id": "discovered_edge_omitted_from_extended_family",
+      "description": "The response-derived common cause is observed but not admitted into the enlarged fault family.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "extended_fault_sets", "value": [["r1"], ["r2"], ["r3"], ["r4"]]}
+      ],
+      "expected_code": "discovered_common_cause_not_admitted"
+    },
+    {
+      "id": "repair_drops_known_common_cause",
+      "description": "Revalidation points to a safe-looking topology whose fault catalog omits the newly discovered build-pipeline edge.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "repair_fault_audit", "value": "diversified_n4_q3_safe"}
+      ],
+      "expected_code": "repair_drops_discovered_common_cause"
+    },
+    {
+      "id": "finite_probes_claim_universal_independence",
+      "description": "A finite administrator/build intervention family is claimed to exclude every possible physical common cause.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "claims_universal_independence", "value": true}
+      ],
+      "expected_code": "closed_world_common_cause_claim"
     }
   ]
 }
