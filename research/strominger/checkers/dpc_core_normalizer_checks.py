@@ -88,6 +88,11 @@ for name, path, value, expected in execution_mutations:
     errors = candidate_result["native_execution_traces"][0]["errors"]
     execution_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["native_execution_hostiles"] = execution_hostiles
+cocircuit_classes = {item["primitive_failure_class"] for item in result["trusted_base_cocircuits"]}
+cocircuit_complete = cocircuit_classes == {"rollback", "hidden_port", "clone", "signer_fork", "attestation_replay"} and all(
+    item["passed"] for item in result["trusted_base_cocircuits"]
+)
+result["trusted_base_cocircuit_basis_complete"] = cocircuit_complete
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -113,4 +118,6 @@ for field, rejected in tcb_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " attestation_tcb hostile." + field)
 for name, rejected in execution_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " execution hostile." + name)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) else 1)
+for item in result["trusted_base_cocircuits"]:
+    print(("PASS" if item["passed"] else "FAIL") + " cocircuit." + item["primitive_failure_class"])
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete else 1)

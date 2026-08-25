@@ -322,6 +322,51 @@ def audit_native_execution_traces(contract: dict[str, Any]) -> list[dict[str, An
     return audits
 
 
+def _delete_tcb_assumption(contract: dict[str, Any], assumption: str) -> None:
+    event = contract["epoch_successor_events"][0]
+    attestation = event.get("physical_state_correspondence")
+    if not isinstance(attestation, dict) or not isinstance(attestation.get("trusted_physical_base"), dict):
+        raise ValueError("cocircuit_baseline_attestation_missing")
+    tcb = attestation["trusted_physical_base"]
+    if assumption == "anti_rollback_storage":
+        tcb["anti_rollback_storage"] = False
+    elif assumption == "measured_ports_cover_required_ports":
+        tcb["measured_ports"] = [item for item in tcb["measured_ports"] if item != "configuration_state"]
+    elif assumption == "bounded_noncloned_hardware_root":
+        tcb["bounded_threat_model"] = None
+    elif assumption == "independent_configuration_signer_roots":
+        event["authorized_signers"]["config_root_B"]["independence_root"] = "admin_A"
+    elif assumption == "transition_nonce_binding":
+        attestation["certificate_nonce"] = "nonce:replayed"
+    else:
+        raise ValueError("unknown_tcb_assumption")
+
+
+def audit_trusted_base_cocircuits(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    expected_classes = {"rollback", "hidden_port", "clone", "signer_fork", "attestation_replay"}
+    for item in contract.get("trusted_base_cocircuit_audits", []):
+        candidate = deepcopy(contract)
+        try:
+            _delete_tcb_assumption(candidate, item["assumption"])
+        except ValueError as exc:
+            audits.append({"id": item["id"], "assumption": item["assumption"], "primitive_failure_class": item.get("primitive_failure_class"), "singleton_deletion_rejected": False, "observed_errors": [str(exc)], "passed": False})
+            continue
+        successor = audit_epoch_successors(candidate)[0]
+        expected_error = item["singleton_deletion_error"]
+        primitive = item.get("primitive_failure_class")
+        passed = not successor["passed"] and expected_error in successor["errors"] and primitive in expected_classes
+        audits.append({
+            "id": item["id"],
+            "assumption": item["assumption"],
+            "primitive_failure_class": primitive,
+            "singleton_deletion_rejected": not successor["passed"],
+            "observed_errors": successor["errors"],
+            "passed": passed,
+        })
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -349,10 +394,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     native_audits = audit_native_capabilities(contract)
     successor_audits = audit_epoch_successors(contract)
     execution_audits = audit_native_execution_traces(contract)
+    cocircuit_audits = audit_trusted_base_cocircuits(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -368,4 +414,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "native_capabilities": native_audits,
         "epoch_successor_events": successor_audits,
         "native_execution_traces": execution_audits,
+        "trusted_base_cocircuits": cocircuit_audits,
     }

@@ -755,5 +755,58 @@
   ],
   "passed": true,
   "rule_count": 7,
-  "schema": "marici.dpc-core-normalizer-result.v1"
+  "schema": "marici.dpc-core-normalizer-result.v1",
+  "trusted_base_cocircuit_basis_complete": true,
+  "trusted_base_cocircuits": [
+    {
+      "assumption": "anti_rollback_storage",
+      "id": "tcb_anti_rollback",
+      "observed_errors": [
+        "epoch_successor_attestation_tcb_unbounded"
+      ],
+      "passed": true,
+      "primitive_failure_class": "rollback",
+      "singleton_deletion_rejected": true
+    },
+    {
+      "assumption": "measured_ports_cover_required_ports",
+      "id": "tcb_port_coverage",
+      "observed_errors": [
+        "epoch_successor_attestation_tcb_unbounded"
+      ],
+      "passed": true,
+      "primitive_failure_class": "hidden_port",
+      "singleton_deletion_rejected": true
+    },
+    {
+      "assumption": "bounded_noncloned_hardware_root",
+      "id": "tcb_hardware_nonclone_boundary",
+      "observed_errors": [
+        "epoch_successor_attestation_tcb_unbounded"
+      ],
+      "passed": true,
+      "primitive_failure_class": "clone",
+      "singleton_deletion_rejected": true
+    },
+    {
+      "assumption": "independent_configuration_signer_roots",
+      "id": "tcb_signer_independence",
+      "observed_errors": [
+        "epoch_successor_signer_fault_model_unsafe"
+      ],
+      "passed": true,
+      "primitive_failure_class": "signer_fork",
+      "singleton_deletion_rejected": true
+    },
+    {
+      "assumption": "transition_nonce_binding",
+      "id": "tcb_attestation_freshness",
+      "observed_errors": [
+        "epoch_successor_attestation_stale_or_correlated"
+      ],
+      "passed": true,
+      "primitive_failure_class": "attestation_replay",
+      "singleton_deletion_rejected": true
+    }
+  ]
 }
