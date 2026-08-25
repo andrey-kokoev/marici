@@ -3,16 +3,18 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "e6f149a3b7d5d42f71f27233161eb47f1dd9fae995655e6b8dc22aa99abc6db3",
+  "contract_sha256": "c408c8f716c3597a79e1a3923d79628057ea13ebc0e15e83d9372896177f2989",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
     "associativity_holds_on_typed_domain": true,
     "atlas_refinement_preserves_global_reconstruction": true,
     "changing_B_requires_source_derived_natural_coherence": true,
+    "coherence_is_prior_target_independent_and_recomputable": true,
     "composition_preserves_authority_kind": true,
     "counterfactual_deletion_separates_presentation_from_source": true,
     "descent_stabilizer_is_source_authorized": true,
+    "explanatory_provenance_is_forward_and_source_rooted": true,
     "flat_descent_is_effective_and_unique": true,
     "identity_laws_declared_twice": true,
     "kitaev_has_no_composable_physical_authority": true,
@@ -22,7 +24,10 @@
     "presentation_cells_are_invertible_and_kind_preserving": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
     "source_authorized_gauge_descends_stackily": true,
+    "source_deletion_revokes_authority_not_cached_output": true,
+    "source_intervention_regenerates_coherence": true,
     "standalone_contract_compiles": true,
+    "target_intervention_cannot_rewrite_upstream_authority": true,
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
     "transport_requires_authority_preservation": true
@@ -34,6 +39,24 @@
         "nonunique_global_authority_descent"
       ],
       "expected_code": "nonunique_global_authority_descent",
+      "passed": true,
+      "valid": false
+    },
+    "cached_output_retains_authority_after_source_deletion": {
+      "description": "A cached result is incorrectly treated as retaining authority after its constructor is deleted.",
+      "error_codes": [
+        "authority_survives_deleted_constructor"
+      ],
+      "expected_code": "authority_survives_deleted_constructor",
+      "passed": true,
+      "valid": false
+    },
+    "cached_witness_not_recomputable": {
+      "description": "A stored coherence certificate survives, but the declared source can no longer regenerate it.",
+      "error_codes": [
+        "cached_not_explanatory_coherence"
+      ],
+      "expected_code": "cached_not_explanatory_coherence",
       "passed": true,
       "valid": false
     },
@@ -139,6 +162,17 @@
       "passed": true,
       "valid": false
     },
+    "readout_to_source_provenance_cycle": {
+      "description": "The terminal readout is allowed to regenerate the source constructor, producing circular explanatory provenance.",
+      "error_codes": [
+        "authority_not_source_reachable",
+        "cyclic_explanatory_provenance",
+        "provenance_stage_violation"
+      ],
+      "expected_code": "cyclic_explanatory_provenance",
+      "passed": true,
+      "valid": false
+    },
     "refinement_changes_reconstruction": {
       "description": "The coarse and refined presentation atlases reconstruct inequivalent global grants.",
       "error_codes": [
@@ -179,6 +213,33 @@
       "passed": true,
       "valid": false
     },
+    "source_perturbation_leaves_coherence_inert": {
+      "description": "The alleged source is perturbed but the coherence witness is merely replayed unchanged.",
+      "error_codes": [
+        "source_perturbation_fails_to_regenerate_witnesses"
+      ],
+      "expected_code": "source_perturbation_fails_to_regenerate_witnesses",
+      "passed": true,
+      "valid": false
+    },
+    "target_fitted_coherence_witness": {
+      "description": "The presentation equivalence is chosen only after inspecting the desired target readout.",
+      "error_codes": [
+        "target_fitted_coherence"
+      ],
+      "expected_code": "target_fitted_coherence",
+      "passed": true,
+      "valid": false
+    },
+    "target_intervention_rewrites_coherence": {
+      "description": "Changing the desired readout retroactively changes an upstream coherence witness.",
+      "error_codes": [
+        "target_intervention_changes_upstream_authority"
+      ],
+      "expected_code": "target_intervention_changes_upstream_authority",
+      "passed": true,
+      "valid": false
+    },
     "two_readouts_to_selector": {
       "description": "Two valid readout grants are laundered into selector authority.",
       "error_codes": [
@@ -203,13 +264,15 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "26a557c4ba30a88ee7cc1d4c57ba887471b57acad4c0df6edd74bc5c6094e526",
-  "hostile_passed": 17,
-  "hostile_total": 17,
+  "hostile_fixture_sha256": "8224aa4c464e6c21f23572f4feaeee68976d6c2c4e24ea32ce7d9e3ddfc676ac",
+  "hostile_passed": 23,
+  "hostile_total": 23,
+  "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "passed": true,
-  "passed_gates": 20,
+  "passed_gates": 25,
+  "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 20,
+  "total_gates": 25,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

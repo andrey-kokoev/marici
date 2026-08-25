@@ -60,6 +60,8 @@ def validate(packet: dict[str, Any]) -> list[Error]:
     grants = {item["id"]: item for item in packet.get("authority_grants", [])}
     compositions = {item["id"]: item for item in packet.get("compositions", [])}
     presentation_cells = {item["id"]: item for item in packet.get("presentation_coherence_cells", [])}
+    provenance = packet.get("source_provenance", {})
+    provenance_nodes = {item["id"]: item for item in provenance.get("nodes", [])}
 
     def err(code: str, subject: str, detail: str) -> None:
         errors.append(Error(code, subject, detail))
@@ -200,6 +202,83 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("invalid_presentation_coherence_cell", cell_id, str(cell))
         if cell.get("naturality_defect") != 0:
             err("presentation_coherence_naturality_failure", cell_id, str(cell.get("naturality_defect")))
+        pnode = provenance_nodes.get(cell.get("provenance_node"))
+        if pnode is None or pnode.get("role") != "coherence_witness":
+            err("missing_coherence_source_provenance", cell_id, str(cell.get("provenance_node")))
+        if not cell.get("derived_before_target"):
+            err("target_fitted_coherence", cell_id, "coherence was selected after the target")
+        if not cell.get("target_independent"):
+            err("target_dependent_coherence", cell_id, "coherence changes with desired output")
+        if not cell.get("counterfactual_recomputable"):
+            err("cached_not_explanatory_coherence", cell_id, "witness cannot be regenerated after a source-preserving replay")
+
+    # Provenance is directed explanatory data, not a bag of citations.  Every
+    # derived node must be reachable from a source constructor along strictly
+    # forward, source-derived edges; cycles are forbidden.
+    provenance_roles = {"source_constructor", "local_mechanism", "coherence_witness", "global_authority", "readout"}
+    adjacency = {node_id: [] for node_id in provenance_nodes}
+    indegree = {node_id: 0 for node_id in provenance_nodes}
+    for node_id, node in provenance_nodes.items():
+        if node.get("role") not in provenance_roles or not isinstance(node.get("stage"), int):
+            err("invalid_source_provenance_node", node_id, str(node))
+    for edge in provenance.get("edges", []):
+        eid = edge["id"]
+        source = provenance_nodes.get(edge.get("source"))
+        target = provenance_nodes.get(edge.get("target"))
+        if source is None or target is None:
+            err("unknown_source_provenance_endpoint", eid, f"{edge.get('source')}->{edge.get('target')}")
+            continue
+        adjacency[source["id"]].append(target["id"])
+        indegree[target["id"]] += 1
+        if not edge.get("source_derived") or source["stage"] >= target["stage"]:
+            err("provenance_stage_violation", eid, f"{source['stage']}!<{target['stage']}")
+    queue = [node_id for node_id, degree in indegree.items() if degree == 0]
+    visited = []
+    while queue:
+        node_id = queue.pop()
+        visited.append(node_id)
+        for target_id in adjacency[node_id]:
+            indegree[target_id] -= 1
+            if indegree[target_id] == 0:
+                queue.append(target_id)
+    if len(visited) != len(provenance_nodes):
+        err("cyclic_explanatory_provenance", provenance.get("id", "source_provenance"), str(sorted(set(provenance_nodes) - set(visited))))
+    roots = {node_id for node_id, node in provenance_nodes.items() if node.get("role") == "source_constructor"}
+    reachable = set(roots)
+    frontier = list(roots)
+    while frontier:
+        node_id = frontier.pop()
+        for target_id in adjacency.get(node_id, []):
+            if target_id not in reachable:
+                reachable.add(target_id)
+                frontier.append(target_id)
+    for node_id, node in provenance_nodes.items():
+        if node.get("role") != "source_constructor" and node_id not in reachable:
+            err("authority_not_source_reachable", node_id, node.get("role", "unknown"))
+
+    for intervention in packet.get("source_intervention_tests", []):
+        iid = intervention["id"]
+        kind = intervention.get("kind")
+        affected = set(intervention.get("observed_affected_nodes", []))
+        if not affected.issubset(provenance_nodes):
+            err("unknown_intervention_effect_node", iid, str(sorted(affected - set(provenance_nodes))))
+        if kind == "source_perturbation":
+            required = set(intervention.get("required_downstream_response", []))
+            if not required or not required.issubset(affected):
+                err("source_perturbation_fails_to_regenerate_witnesses", iid, str(sorted(required - affected)))
+            if not intervention.get("fresh_recomputation"):
+                err("cached_source_intervention_response", iid, "fresh recomputation required")
+        elif kind == "target_perturbation":
+            upstream = {node_id for node_id in affected if provenance_nodes[node_id]["role"] != "readout"}
+            if upstream:
+                err("target_intervention_changes_upstream_authority", iid, str(sorted(upstream)))
+        elif kind == "source_deletion":
+            if intervention.get("authority_survives"):
+                err("authority_survives_deleted_constructor", iid, "cached output cannot retain authority")
+            if not intervention.get("cached_output_may_survive"):
+                err("source_deletion_test_erases_output_distinction", iid, "test must distinguish cached output from authority")
+        else:
+            err("unknown_source_intervention_kind", iid, str(kind))
 
     for atlas in packet.get("presentation_atlas_coherence", []):
         aid = atlas["id"]
@@ -334,5 +413,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),
         "presentation_refinement_count": len(packet.get("presentation_refinement_coherence", [])),
         "presentation_deletion_test_count": len(packet.get("presentation_deletion_tests", [])),
+        "source_provenance_node_count": len(packet.get("source_provenance", {}).get("nodes", [])),
+        "source_intervention_test_count": len(packet.get("source_intervention_tests", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

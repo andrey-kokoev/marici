@@ -82,6 +82,12 @@ The machine-readable fixture suite rejects:
 15. claimed deletion stability without a surviving source reconstruction.
 16. a hidden global stabilizer unsupported by the source grammar.
 17. source-authorized gauge whose declared quotient remains ambiguous.
+18. coherence selected only after inspecting the target output;
+19. a cached witness that the source can no longer regenerate;
+20. circular provenance in which readout data reconstructs its own source.
+21. source perturbation that leaves its alleged coherence witness inert;
+22. target perturbation that rewrites upstream authority;
+23. cached output retaining authority after source deletion.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -187,6 +193,68 @@ is legitimate when it is exactly the orbit of a source-authorized gauge
 stabilizer and the quotient ambiguity rank is zero. DPC rejects both hidden
 symmetries and incomplete quotients, but it does not mistake authorized gauge
 redundancy for multiple physical explanations.
+
+### Provenance law: descent must point from source to target
+
+Even effective stacky descent can be manufactured by solving backward from a
+desired result. DPC therefore orients explanatory provenance:
+
+\[
+\text{source constructor}
+\longrightarrow
+\text{local mechanisms}
+\longrightarrow
+\text{coherence}
+\longrightarrow
+\text{global authority}
+\longrightarrow
+\text{readout}.
+\]
+
+Every edge must be source-derived and strictly forward in this order. The
+dependency graph must be acyclic, and every non-source node must be reachable
+from a declared source constructor. A readout-to-source edge is explanatory
+circularity even when all equations commute.
+
+Presentation coherence must additionally be derived before target selection,
+independent of the desired output, and regenerable under a source-preserving
+counterfactual replay. A certificate that merely remains cached after its
+constructor is removed is retained evidence, not a surviving explanation.
+
+Thus effective descent answers *whether compatible local data glue*;
+provenance orientation answers *whether the source, rather than the target,
+generated the gluing law*.
+
+### Intervention law: provenance must be causal
+
+A correctly oriented dependency graph can still be an observational story
+drawn after the calculation. It becomes explanatory only when it supports the
+right interventions:
+
+\[
+\begin{array}{c|c}
+\text{intervention}&\text{required response}\\
+\hline
+do(\text{source})&\text{fresh downstream coherence and global reconstruction}\\
+do(\text{target})&\text{no change to upstream mechanisms or authority}\\
+delete(\text{source})&\text{authority revoked, even if cached output survives.}
+\end{array}
+\]
+
+This separates causal generation from archival persistence. A stored theorem,
+matrix, or output may remain available after its constructor is removed; what
+does not survive is the authority to claim that the current source system
+generates it.
+
+The DPC criterion is therefore interventionist as well as descent-theoretic:
+
+\[
+\boxed{
+\text{explanation}
+=
+\text{effective source descent whose provenance passes source/target
+interventions}.}
+\]
 
 ### Refinement law: higher coherence
 

@@ -21,7 +21,10 @@ OUT = S / "results" / "authority_grant_composition.json"
 
 
 def by_id(packet, collection, item_id):
-    return next(item for item in packet[collection] if item["id"] == item_id)
+    items = packet
+    for part in collection.split("."):
+        items = items[part]
+    return next(item for item in items if item["id"] == item_id)
 
 
 def mutate(packet, mutations):
@@ -62,6 +65,9 @@ def main():
     descent_objects = {item["id"]: item for item in packet["authority_descent_objects"]}
     refinements = {item["id"]: item for item in packet["presentation_refinement_coherence"]}
     deletions = {item["id"]: item for item in packet["presentation_deletion_tests"]}
+    provenance_nodes = {item["id"]: item for item in packet["source_provenance"]["nodes"]}
+    provenance_edges = packet["source_provenance"]["edges"]
+    interventions = {item["id"]: item for item in packet["source_intervention_tests"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -116,6 +122,26 @@ def main():
             and set(descent_objects["descent_process_AC_stacky"]["stabilizer"]).issubset(
                 descent_objects["descent_process_AC_stacky"]["source_authorized_stabilizer"]
             ),
+        "explanatory_provenance_is_forward_and_source_rooted":
+            provenance_nodes["prov_source"]["role"] == "source_constructor"
+            and provenance_nodes["prov_readout"]["role"] == "readout"
+            and all(
+                provenance_nodes[edge["source"]]["stage"] < provenance_nodes[edge["target"]]["stage"]
+                and edge["source_derived"]
+                for edge in provenance_edges
+            ),
+        "coherence_is_prior_target_independent_and_recomputable": all(
+            cell["derived_before_target"] and cell["target_independent"] and cell["counterfactual_recomputable"]
+            for cell in packet["presentation_coherence_cells"]
+        ),
+        "source_intervention_regenerates_coherence":
+            "prov_coherence" in interventions["intervene_on_source_constructor"]["observed_affected_nodes"]
+            and interventions["intervene_on_source_constructor"]["fresh_recomputation"],
+        "target_intervention_cannot_rewrite_upstream_authority":
+            interventions["intervene_on_target_readout"]["observed_affected_nodes"] == ["prov_readout"],
+        "source_deletion_revokes_authority_not_cached_output":
+            interventions["delete_source_constructor"]["cached_output_may_survive"]
+            and not interventions["delete_source_constructor"]["authority_survives"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -149,6 +175,8 @@ def main():
         },
         "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
         "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
+        "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
+        "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
