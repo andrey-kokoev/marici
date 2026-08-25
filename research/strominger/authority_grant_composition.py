@@ -893,6 +893,38 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if multiplicity.get("still_claims_single_use"):
             err("bounded_multiplicity_mislabeled_single_use", did, str(multiplicity.get("bound")))
 
+    # Safety/availability/partition trilemma for a globally linear capability.
+    # The three maximal designs each satisfy exactly two properties.  Under a
+    # partition, a safe linearizer must fail closed outside the authorized
+    # quorum and use a monotone fencing epoch against stale winners.
+    for audit in packet.get("distributed_linearity_trilemma_audits", []):
+        tid = audit["id"]
+        designs = audit.get("maximal_designs", [])
+        signatures = {
+            (item.get("single_use_safety"), item.get("availability_at_both_sites"), item.get("partition_tolerance"))
+            for item in designs
+        }
+        expected = {(True, True, False), (True, False, True), (False, True, True)}
+        if signatures != expected:
+            err("invalid_distributed_linearity_trilemma", tid, str(sorted(signatures)))
+        if audit.get("claims_all_three"):
+            err("impossible_distributed_linearity_trinity", tid, "single-use safety, bilateral availability, partition tolerance")
+        partition_run = audit.get("safe_partition_run", {})
+        if partition_run.get("quorum_site") not in audit.get("sites", []) or partition_run.get("minority_site") not in audit.get("sites", []):
+            err("untyped_partition_authority_loci", tid, str(partition_run))
+        if partition_run.get("quorum_outcome") != 1 or partition_run.get("minority_outcome") != 0:
+            err("safe_linearizer_serves_both_partition_sides", tid, str(partition_run))
+        if not partition_run.get("minority_fails_closed") or partition_run.get("minority_local_fallback"):
+            err("minority_locus_launders_local_authority", tid, str(partition_run))
+        old_epoch = partition_run.get("old_fencing_epoch")
+        new_epoch = partition_run.get("new_fencing_epoch")
+        if not isinstance(old_epoch, int) or not isinstance(new_epoch, int) or new_epoch <= old_epoch:
+            err("nonmonotone_distributed_fencing_epoch", tid, f"{old_epoch}->{new_epoch}")
+        if partition_run.get("stale_epoch_execution_permitted"):
+            err("stale_partition_grant_executes", tid, str(old_epoch))
+        if audit.get("eventual_recovery_counted_as_partition_availability"):
+            err("eventual_recovery_laundered_as_immediate_availability", tid, "availability must hold during partition")
+
     return errors
 
 

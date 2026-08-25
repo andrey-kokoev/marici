@@ -142,6 +142,12 @@ The machine-readable fixture suite rejects:
 75. an atomic linearizer lacking source authority over consumption;
 76. site partitioning performed only after unrestricted distribution;
 77. bounded multiplicity mislabeled as single use.
+78. one design claiming safety, bilateral availability, and partition tolerance;
+79. a safe linearizer serving both sides of a partition;
+80. a minority locus manufacturing local fallback authority;
+81. nonmonotone fencing epochs;
+82. execution under a stale partition grant;
+83. eventual recovery mislabeled as availability during partition.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -685,6 +691,40 @@ single use is one source-authorized two-state linearization resource. Its
 atomicity supplies order; its authority grant supplies legitimacy. Consensus
 without authority merely chooses a winner, while authority without consensus
 cannot make the choice globally unique.
+
+### Distributed-linearity trilemma: safety costs availability
+
+The shared linearizer repairs exactly-one consumption, but under a network
+partition it cannot remain immediately available at both authority loci. For
+one globally linear capability, the maximal property combinations are
+
+\[
+\begin{array}{c|ccc}
+&\text{safety}&\text{bilateral availability}&\text{partition tolerance}\\
+\hline
+\text{connected consensus}&1&1&0\\
+\text{safe partitioned linearizer}&1&0&1\\
+\text{available partitioned execution}&0&1&1.
+\end{array}
+\]
+
+During a safe partition, only the component holding the source-authorized
+quorum receives the fresh consumption grant. The other component fails closed.
+Monotone fencing epochs prevent a stale former winner from executing after a
+new quorum has issued a later grant.
+
+This is not just CAP stated in authority language. Ordering and legitimacy are
+separate requirements:
+
+\[
+\boxed{
+\text{safe distributed consumption}
+=\text{consensus order}+\text{source authority}+\text{monotone fencing}.}
+\]
+
+Consensus without the grant chooses a winner without authority. A grant
+without consensus authorizes multiple indistinguishable winners. Fencing is
+what makes a formerly authorized but now stale winner non-executable.
 
 ### Refinement law: higher coherence
 

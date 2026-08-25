@@ -133,9 +133,10 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "80e5041d9d9b9815570e0678367ef40ddb8cc7409b7dbbdbea8dc51ae6f30b8a",
+  "contract_sha256": "4cddd26298ede640456bf0a8a8ef43fa4400a131c1fb8caf48aaed9e9b7d8e57",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
+  "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
   "gates": {
     "all_hostiles_rejected": true,
     "appeal_authority_is_certified_and_separate": true,
@@ -153,6 +154,7 @@
     "counterfactual_deletion_separates_presentation_from_source": true,
     "descent_stabilizer_is_source_authorized": true,
     "distributed_consumption_trichotomy_is_typed": true,
+    "distributed_linearity_trilemma_has_exact_three_frontier_designs": true,
     "every_rival_disposition_has_review_and_appeal": true,
     "explanatory_provenance_is_forward_and_source_rooted": true,
     "finite_interventions_identify_declared_mechanisms": true,
@@ -182,6 +184,7 @@
     "rival_review_is_content_addressed_and_precommitted": true,
     "rival_review_preserves_operative_authority_kind": true,
     "rival_reviewers_have_independent_authority_roots": true,
+    "safe_partition_run_fails_closed_with_fencing": true,
     "shared_linearizer_is_minimal_true_single_use_repair": true,
     "source_authorized_gauge_descends_stackily": true,
     "source_deletion_revokes_authority_not_cached_output": true,
@@ -405,12 +408,39 @@
       "passed": true,
       "valid": false
     },
+    "distributed_fencing_epoch_not_monotone": {
+      "description": "A new winner receives a fencing epoch no greater than the stale winner's epoch.",
+      "error_codes": [
+        "nonmonotone_distributed_fencing_epoch"
+      ],
+      "expected_code": "nonmonotone_distributed_fencing_epoch",
+      "passed": true,
+      "valid": false
+    },
+    "distributed_linearizer_claims_all_three": {
+      "description": "One design claims global single-use safety, availability at both sites, and partition tolerance simultaneously.",
+      "error_codes": [
+        "impossible_distributed_linearity_trinity"
+      ],
+      "expected_code": "impossible_distributed_linearity_trinity",
+      "passed": true,
+      "valid": false
+    },
     "effective_descent_with_hidden_ambiguity": {
       "description": "A global grant is reconstructed but a nonzero ambiguity kernel makes it nonunique.",
       "error_codes": [
         "nonunique_global_authority_descent"
       ],
       "expected_code": "nonunique_global_authority_descent",
+      "passed": true,
+      "valid": false
+    },
+    "eventual_recovery_called_partition_availability": {
+      "description": "A site blocked throughout the partition is called available because it may execute after communication recovers.",
+      "error_codes": [
+        "eventual_recovery_laundered_as_immediate_availability"
+      ],
+      "expected_code": "eventual_recovery_laundered_as_immediate_availability",
       "passed": true,
       "valid": false
     },
@@ -535,6 +565,15 @@
         "local_nonce_state_misclassified_as_global_linearity"
       ],
       "expected_code": "local_nonce_state_misclassified_as_global_linearity",
+      "passed": true,
+      "valid": false
+    },
+    "minority_uses_local_authority_fallback": {
+      "description": "The minority component replaces missing global consumption authority with its own local grant.",
+      "error_codes": [
+        "minority_locus_launders_local_authority"
+      ],
+      "expected_code": "minority_locus_launders_local_authority",
       "passed": true,
       "valid": false
     },
@@ -785,6 +824,16 @@
       "passed": true,
       "valid": false
     },
+    "safe_linearizer_serves_both_partition_sides": {
+      "description": "Both disconnected components consume the supposedly single-use capability.",
+      "error_codes": [
+        "minority_locus_launders_local_authority",
+        "safe_linearizer_serves_both_partition_sides"
+      ],
+      "expected_code": "safe_linearizer_serves_both_partition_sides",
+      "passed": true,
+      "valid": false
+    },
     "site_partition_occurs_after_distribution": {
       "description": "Both sites first receive the unrestricted token and site scope is assigned only after they may execute.",
       "error_codes": [
@@ -800,6 +849,15 @@
         "source_perturbation_fails_to_regenerate_witnesses"
       ],
       "expected_code": "source_perturbation_fails_to_regenerate_witnesses",
+      "passed": true,
+      "valid": false
+    },
+    "stale_partition_grant_executes": {
+      "description": "An old quorum winner executes after a newer fencing epoch has been issued.",
+      "error_codes": [
+        "stale_partition_grant_executes"
+      ],
+      "expected_code": "stale_partition_grant_executes",
       "passed": true,
       "valid": false
     },
@@ -930,14 +988,14 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "819b5b472301bea1950d7ca555846a5d0c5208091d46017220249f505675b307",
-  "hostile_passed": 77,
-  "hostile_total": 77,
+  "hostile_fixture_sha256": "a4a6c29c11d303fdc5d123a65350dba07d054381b1aa458471671591f7e60264",
+  "hostile_passed": 83,
+  "hostile_total": 83,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 61,
+  "passed_gates": 63,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -947,6 +1005,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 61,
+  "total_gates": 63,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

@@ -81,6 +81,7 @@ def main():
     stack_certificates = {item["id"]: item for item in packet["finite_authority_stack_certificates"]}
     capability_executions = {item["id"]: item for item in packet["authority_capability_execution_audits"]}
     distributed_audits = {item["id"]: item for item in packet["distributed_capability_consumption_audits"]}
+    trilemma_audits = {item["id"]: item for item in packet["distributed_linearity_trilemma_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -349,6 +350,18 @@ def main():
             distributed_audits["two_site_partitioned_single_use_no_go"]["minimal_single_use_repair"] == "shared_linearization"
             and next(repair for repair in distributed_audits["two_site_partitioned_single_use_no_go"]["repairs"] if repair["kind"] == "shared_linearization")["state_cardinality"] == 2
             and next(repair for repair in distributed_audits["two_site_partitioned_single_use_no_go"]["repairs"] if repair["kind"] == "shared_linearization")["global_outcome"] == [1, 0],
+        "distributed_linearity_trilemma_has_exact_three_frontier_designs":
+            {
+                (design["single_use_safety"], design["availability_at_both_sites"], design["partition_tolerance"])
+                for design in trilemma_audits["single_use_safety_availability_partition_trilemma"]["maximal_designs"]
+            } == {(True, True, False), (True, False, True), (False, True, True)}
+            and not trilemma_audits["single_use_safety_availability_partition_trilemma"]["claims_all_three"],
+        "safe_partition_run_fails_closed_with_fencing":
+            trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["quorum_outcome"] == 1
+            and trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["minority_outcome"] == 0
+            and trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["new_fencing_epoch"]
+            > trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["old_fencing_epoch"]
+            and not trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["stale_epoch_execution_permitted"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -396,6 +409,7 @@ def main():
         "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
         "capability_execution_verdict": "A replayed certificate becomes executable only through an atomic revocation-epoch lease binding one exact operation, target, and single-use nonce. Epoch change aborts execution; the lease cannot widen scope, survive expiry, or upgrade challenge standing.",
         "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
+        "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

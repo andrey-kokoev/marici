@@ -623,6 +623,54 @@
         {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"atomic register","source_authorized":true,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"site token","partitioned_before_distribution":true,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":true}]}
       ],
       "expected_code": "bounded_multiplicity_mislabeled_single_use"
+    },
+    {
+      "id": "distributed_linearizer_claims_all_three",
+      "description": "One design claims global single-use safety, availability at both sites, and partition tolerance simultaneously.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "claims_all_three", "value": true}
+      ],
+      "expected_code": "impossible_distributed_linearity_trinity"
+    },
+    {
+      "id": "safe_linearizer_serves_both_partition_sides",
+      "description": "Both disconnected components consume the supposedly single-use capability.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":1,"minority_fails_closed":false,"minority_local_fallback":true,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "safe_linearizer_serves_both_partition_sides"
+    },
+    {
+      "id": "minority_uses_local_authority_fallback",
+      "description": "The minority component replaces missing global consumption authority with its own local grant.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":false,"minority_local_fallback":true,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "minority_locus_launders_local_authority"
+    },
+    {
+      "id": "distributed_fencing_epoch_not_monotone",
+      "description": "A new winner receives a fencing epoch no greater than the stale winner's epoch.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":true,"minority_local_fallback":false,"old_fencing_epoch":7,"new_fencing_epoch":7,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "nonmonotone_distributed_fencing_epoch"
+    },
+    {
+      "id": "stale_partition_grant_executes",
+      "description": "An old quorum winner executes after a newer fencing epoch has been issued.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":true,"minority_local_fallback":false,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":true}}
+      ],
+      "expected_code": "stale_partition_grant_executes"
+    },
+    {
+      "id": "eventual_recovery_called_partition_availability",
+      "description": "A site blocked throughout the partition is called available because it may execute after communication recovers.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "eventual_recovery_counted_as_partition_availability", "value": true}
+      ],
+      "expected_code": "eventual_recovery_laundered_as_immediate_availability"
     }
   ]
 }
