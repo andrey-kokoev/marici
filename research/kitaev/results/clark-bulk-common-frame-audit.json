@@ -1,0 +1,93 @@
+{
+  "checker_sha256": "891c3016dccd6b2e89f236b4fc0aa20774ac81a636fc84569e79b8072e9efaf7",
+  "common_frame": {
+    "E_minus": "T-S",
+    "E_plus": "T+S",
+    "coordinates": [
+      "Re(G+f)",
+      "Im(G+f)",
+      "Re(d_z G)",
+      "Im(d_z G)"
+    ],
+    "formed_before_sheet_comparison": true,
+    "sum": "2T"
+  },
+  "completion_boundary": {
+    "defect_channels_closed": false,
+    "finite_bulk_coefficients_closed": true,
+    "uniform_lower_bound_proved": false
+  },
+  "deliberate_falsifiers": {
+    "a_zero": "determinant vanishes and rank drops from four to two",
+    "state_feature_kernel": "a nonzero admissible state mapped to G+f=0 and d_z G=0 is invisible to the Gram trace"
+  },
+  "finite_cutoffs": {
+    "checked_label_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "identity_is_labelwise": true,
+    "ranks_at_a_one": {
+      "1": 4,
+      "2": 8,
+      "3": 12,
+      "4": 16
+    }
+  },
+  "gram_matrix": {
+    "determinant": "16a^4",
+    "faithful_on_feature_packet_for_nonzero_a": true,
+    "rank_at_a_zero": 2,
+    "rank_for_nonzero_a": 4,
+    "sum_matrix": [
+      [
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        "2a^2",
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        "2a^2"
+      ]
+    ]
+  },
+  "representation_audit": {
+    "equal_sheet_coefficients": true,
+    "odd_component": "2a Im((G+f) conjugate(d_z G))",
+    "third_quadratic_component": false,
+    "trace": "|G+f|^2+a^2|d_z G|^2"
+  },
+  "schema": "marici.kitaev.clark-bulk-common-frame-audit.v1",
+  "source_sha256": {
+    "research/grothendieck/theta-clark-sheet-bulks-sum-to-an-exact-faithful-gram-trace.md": "dd3d4df8e9629c34b63b01b017f0ef717443e24e337f2f6017c5de8e77bf751a",
+    "research/grothendieck/theta-clark-sheet-swap-natively-reverses-spin-two.md": "60351e8fce50c6c4f3a7eda9ce7a7969246de9fde96502c7c69fb6adbeec4e0d"
+  },
+  "typing_boundary": {
+    "additional_required_condition": "ker J_X=0, uniformly through completion",
+    "additional_required_map": "J_X: admissible boundary states -> feature packet",
+    "feature_packet": "(G+f,a d_z G)",
+    "gram_faithfulness_proves_state_faithfulness": false,
+    "unresolved_simultaneous_vanishing": [
+      "G+f=0 almost everywhere",
+      "d_z G=0 almost everywhere"
+    ]
+  },
+  "verdict": "The native Clark positive bulk resolves the common-frame, equal-coefficient, and representation-completeness gates exactly. Its Gram matrix is faithful on the four-real-dimensional feature packet for a nonzero Clark parameter and at every finite labelled direct sum. Faithfulness on admissible boundary states and completion stability remain separate injectivity and uniform-bound theorems."
+}
