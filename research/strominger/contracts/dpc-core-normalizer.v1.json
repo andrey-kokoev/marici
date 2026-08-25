@@ -9,16 +9,16 @@
   "native_capabilities": [
     {
       "id": "native_manifest_challenge_use",
-      "nominal_identity": "cap:manifest-challenge:epoch12:use1",
+      "nominal_identity": "cap:manifest-challenge:e:use1",
       "authority_kind": "executor",
       "scope": ["submit_manifest_challenge"],
       "modality": "linear",
       "resource": {"challenge_uses": 1},
       "physical_support_roots": ["challenge_ledger", "configuration_quorum"],
-      "epoch": 12,
+      "epoch": {"parameter": "e", "offset": 0},
       "executable_output": "challenge_receipt",
-      "operations": [{"kind":"epoch_fence","minimum_epoch":12}],
-      "source_constructor_evidence": "one source-issued challenge use bound to epoch 12 and the configuration quorum"
+      "operations": [{"kind":"epoch_fence","minimum_epoch":{"parameter":"e","offset":0}}],
+      "source_constructor_evidence": "one source-issued challenge use bound to arbitrary active epoch e and the configuration quorum"
     }
   ],
   "active_rewrite_footprints": {
@@ -36,6 +36,17 @@
     ,"support_union|typed_identity": "identity_then_support_union_joins"
   },
   "normalization_cases": [
+    {
+      "id": "symbolic_successor_epoch_fences_predecessor",
+      "expected": {"status":"rejected_stale_epoch","executable_output":"REJECT:stale_epoch"},
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["ledger"],"resource":{"uses":1},"epoch":{"parameter":"e","offset":0},"status":"active","executable_output":"effect","operations":[{"kind":"epoch_fence","minimum_epoch":{"parameter":"e","offset":1}}]}
+    },
+    {
+      "id": "unrelated_epoch_families_are_incomparable",
+      "expected": {},
+      "expected_error": "incomparable_epoch_parameters",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["ledger"],"resource":{"uses":1},"epoch":{"parameter":"e","offset":0},"status":"active","executable_output":"effect","operations":[{"kind":"epoch_fence","minimum_epoch":{"parameter":"f","offset":0}}]}
+    },
     {
       "id": "full_signature_coherence_roundtrip_eliminates",
       "expected": {"operations": []},

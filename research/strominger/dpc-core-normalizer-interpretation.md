@@ -40,7 +40,9 @@ twenty grants would manufacture authority the original records never claimed.
 than upgraded from a legacy grant. It declares one nominal identity, the
 single operation `submit_manifest_challenge`, linear modality, one conserved
 challenge use, physical roots at the challenge ledger and configuration
-quorum, and epoch 12. Its epoch fence normalizes successfully.
+quorum, and an arbitrary active epoch `e`. Its epoch fence normalizes
+symbolically at offset zero. The theorem depends only on affine comparisons
+within one epoch family, never on a privileged numerical epoch.
 
 Deleting any one of the six constructor fields makes compilation fail. This
 is a bounded minimality result: the native inhabitant is not obtained by

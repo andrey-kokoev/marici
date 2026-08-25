@@ -33,6 +33,9 @@ for field in ("nominal_identity", "scope", "modality", "resource", "physical_sup
     audit = candidate_result["native_capabilities"][0]
     native_deletions[field] = not candidate_result["passed"] and field in audit["missing_core_fields"]
 result["native_constructor_deletions"] = native_deletions
+native_epoch = contract["native_capabilities"][0]["epoch"]
+symbolic_epoch_enforced = native_epoch == {"parameter": "e", "offset": 0}
+result["native_symbolic_epoch_enforced"] = symbolic_epoch_enforced
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -49,4 +52,5 @@ print(("PASS" if defaulting_rejected else "FAIL") + " hostile legacy_defaulting"
 print(f"LEGACY {result['legacy_projection']['importable_count']}/{result['legacy_projection']['grant_count']} core-importable")
 for field, rejected in native_deletions.items():
     print(("PASS" if rejected else "FAIL") + " delete native." + field)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) else 1)
+print(("PASS" if symbolic_epoch_enforced else "FAIL") + " native symbolic_epoch")
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced else 1)
