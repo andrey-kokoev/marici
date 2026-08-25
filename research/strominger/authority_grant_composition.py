@@ -378,6 +378,11 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("review_root_scope_laundering", root_id, f"{root.get('authority_kind')}:{root.get('operative_authority_ceiling')}")
         if not root.get("revocable") or root.get("may_select_mechanism_truth") is not False:
             err("unbounded_review_authority_root", root_id, str(root))
+        if not isinstance(root.get("valid_from"), int):
+            err("untyped_review_root_validity_interval", root_id, str(root.get("valid_from")))
+        revoked_at = root.get("revoked_at")
+        if revoked_at is not None and (not isinstance(revoked_at, int) or revoked_at <= root.get("valid_from", revoked_at)):
+            err("untyped_review_root_validity_interval", root_id, str(revoked_at))
 
     reviews = {item["id"]: item for item in packet.get("rival_admission_reviews", [])}
     reviewed_admissions: set[str] = set()
@@ -420,6 +425,16 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("rival_review_authority_laundering", review_id, f"{review.get('authority_kind_before')}->{review.get('authority_kind_after')}")
         if review.get("grants_only_challenge_standing") is not True:
             err("rival_review_grants_operative_authority", review_id, str(review.get("grants_only_challenge_standing")))
+        reviewed_at = review.get("reviewed_at")
+        if not isinstance(reviewed_at, int):
+            err("untyped_rival_review_time", review_id, str(reviewed_at))
+        else:
+            for root_id in roots + appeal_roots:
+                root = root_certifications.get(root_id)
+                if root and (reviewed_at < root.get("valid_from", reviewed_at) or (
+                    root.get("revoked_at") is not None and reviewed_at >= root["revoked_at"]
+                )):
+                    err("rival_review_outside_root_validity", review_id, f"{root_id}@{reviewed_at}")
 
     for admission_id in rival_admissions:
         if admission_id not in reviewed_admissions:
@@ -443,6 +458,41 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("review_roots_share_controlling_authority", aid, str(audit.get("shared_controlling_ancestors")))
         if not audit.get("source_derived_comparison") or audit.get("coherence_defect") != 0:
             err("uncertified_review_root_independence", aid, str(audit.get("coherence_defect")))
+
+    # Revocation changes prospective authority, not the historical audit fact.
+    # Restoration requires replay of the same frozen packet through roots valid
+    # at replay time; a cached decision is evidence but carries no live standing.
+    for audit in packet.get("temporal_review_authority_audits", []):
+        aid = audit["id"]
+        review = reviews.get(audit.get("original_review"))
+        revoked_root = root_certifications.get(audit.get("revoked_root"))
+        revoked_at = audit.get("revoked_at")
+        if review is None or revoked_root is None or not isinstance(revoked_at, int):
+            err("untyped_temporal_review_audit", aid, str(audit))
+            continue
+        if revoked_at <= review.get("reviewed_at", revoked_at):
+            err("backdated_review_root_revocation", aid, f"{revoked_at}<={review.get('reviewed_at')}")
+        if not audit.get("historical_decision_preserved"):
+            err("revocation_erases_historical_review", aid, review["id"])
+        if audit.get("prospective_authority_before_replay"):
+            err("revoked_root_leaves_cached_authority_live", aid, revoked_root["id"])
+        if not audit.get("replay_required"):
+            err("standing_restored_without_review_replay", aid, "replay requirement absent")
+        if audit.get("replay_packet_sha256") != review.get("immutable_evidence_packet_sha256"):
+            err("review_replay_changes_evidence_packet", aid, str(audit.get("replay_packet_sha256")))
+        replayed_at = audit.get("replayed_at")
+        replay_roots = audit.get("replay_roots", [])
+        roots_live = isinstance(replayed_at, int) and bool(replay_roots)
+        for root_id in replay_roots:
+            root = root_certifications.get(root_id)
+            roots_live = bool(roots_live and root and replayed_at >= root.get("valid_from", replayed_at) and (
+                root.get("revoked_at") is None or replayed_at < root["revoked_at"]
+            ))
+        if not roots_live:
+            err("review_replay_uses_inactive_root", aid, str(replay_roots))
+        restored = bool(audit.get("prospective_authority_after_replay"))
+        if restored != bool(roots_live and audit.get("replay_required") and audit.get("replay_completed")):
+            err("invalid_temporal_authority_restoration", aid, str(restored))
 
     # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
