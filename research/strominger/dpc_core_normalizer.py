@@ -14,6 +14,14 @@ from typing import Any
 
 
 SIGNATURE_FIELDS = ("authority_kind", "scope", "modality", "support", "resource")
+LEGACY_IMPORT_FIELDS = {
+    "nominal_identity": "nominal capability identity",
+    "scope": "operation scope",
+    "modality": "resource modality",
+    "resource": "conserved resource measure",
+    "physical_support_roots": "physical support-root inventory",
+    "epoch": "temporal validity epoch",
+}
 
 
 def canonical_signature(node: dict[str, Any]) -> dict[str, Any]:
@@ -148,7 +156,20 @@ def check_pair(pair: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
+def audit_legacy_grants(legacy: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    for grant in legacy.get("authority_grants", []):
+        missing = [field for field in LEGACY_IMPORT_FIELDS if field not in grant]
+        audits.append({
+            "id": grant["id"],
+            "importable": not missing,
+            "missing_core_fields": missing,
+            "missing_constructors": [LEGACY_IMPORT_FIELDS[field] for field in missing],
+        })
+    return audits
+
+
+def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
     footprints = contract["active_rewrite_footprints"]
@@ -171,13 +192,21 @@ def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
             error = str(exc)
             passed = error == case.get("expected_error")
         normalization_results.append({"id": case["id"], "passed": passed, "error": error, "normalized": normalized})
+    legacy_audits = audit_legacy_grants(legacy) if legacy is not None else []
+    defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps),
+        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps) and defaults_forbidden,
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
         "normalization_cases": normalization_results,
         "generated_overlaps": overlaps,
         "normal_form_digests": {item["id"]: digest(item["left"]) for item in contract["critical_pairs"]},
+        "legacy_projection": {
+            "defaults_forbidden": defaults_forbidden,
+            "grant_count": len(legacy_audits),
+            "importable_count": sum(item["importable"] for item in legacy_audits),
+            "grants": legacy_audits,
+        },
     }
