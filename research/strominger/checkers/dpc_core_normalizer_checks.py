@@ -41,6 +41,7 @@ for field, value, expected in (
     ("competing_successor_constructible", True, "epoch_successor_fork_constructible"),
     ("successor_epoch", {"parameter":"e","offset":2}, "nonadjacent_or_cross_family_epoch_successor"),
     ("physical_state_correspondence", None, "epoch_successor_lacks_physical_correspondence"),
+    ("authorized_signers", {"config_root_A":{"durable_non_equivocation":True,"independence_root":"admin_A"},"config_root_B":{"durable_non_equivocation":True,"independence_root":"admin_A"}}, "epoch_successor_signer_fault_model_unsafe"),
 ):
     candidate = deepcopy(contract)
     candidate["epoch_successor_events"][0][field] = value

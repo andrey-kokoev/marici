@@ -221,9 +221,22 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
         same_family = predecessor.get("parameter") == successor.get("parameter")
         adjacent = same_family and isinstance(predecessor.get("offset"), int) and successor.get("offset") == predecessor["offset"] + 1
         digests_bound = all(len(event.get(field, "")) == 64 for field in ("predecessor_state_sha256", "successor_state_sha256"))
-        authority = bool(event.get("configuration_authority_roots")) and event.get("joint_configuration_certificate")
+        roots = set(event.get("configuration_authority_roots", []))
+        quorum = set(event.get("certificate_quorum", []))
+        signers = event.get("authorized_signers", {})
+        authority = bool(roots) and event.get("joint_configuration_certificate") and quorum == roots and set(signers) == roots
         unique = event.get("durable_non_equivocation") and not event.get("competing_successor_constructible")
-        physical = bool(event.get("physical_state_correspondence"))
+        fault_sets = [set(item) for item in event.get("admissible_signer_fault_sets", [])]
+        signer_roots = [item.get("independence_root") for item in signers.values()]
+        fault_safe = all(bool(quorum - fault) for fault in fault_sets) and len(signer_roots) == len(set(signer_roots))
+        attestation = event.get("physical_state_correspondence", {})
+        physical = (
+            isinstance(attestation, dict)
+            and attestation.get("measured_state_sha256") == event.get("successor_state_sha256")
+            and bool(attestation.get("executor_id"))
+            and bool(attestation.get("verifier_authority_root"))
+            and attestation.get("verified_before_epoch_acceptance")
+        )
         errors = []
         if not adjacent:
             errors.append("nonadjacent_or_cross_family_epoch_successor")
@@ -231,6 +244,8 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
             errors.append("epoch_successor_does_not_bind_states")
         if not authority:
             errors.append("epoch_successor_lacks_configuration_authority")
+        if not fault_safe:
+            errors.append("epoch_successor_signer_fault_model_unsafe")
         if not unique:
             errors.append("epoch_successor_fork_constructible")
         if not physical:
