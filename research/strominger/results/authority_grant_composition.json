@@ -3,13 +3,139 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "455767ac5776a6a28544d578d33364ec394cb24970bd20f3ac718a378cabe2fd",
+  "certificate_deletion_replay": {
+    "gen_admission": {
+      "error_codes": [
+        "rival_challenge_without_admission_authority",
+        "unknown_authority_certificate_generator",
+        "unknown_reviewed_rival_admission"
+      ],
+      "expected_failure_code": "rival_challenge_without_admission_authority",
+      "object_ref": "admit_mechanism_delta",
+      "passed": true,
+      "removed": true
+    },
+    "gen_appeal_root": {
+      "error_codes": [
+        "uncertified_review_authority_root",
+        "uncertified_temporal_higher_cell",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "uncertified_temporal_higher_cell",
+      "object_ref": "source_appeal_panel",
+      "passed": true,
+      "removed": true
+    },
+    "gen_cocycle": {
+      "error_codes": [
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "unknown_authority_certificate_generator",
+      "object_ref": "triangle_AB_CD_EF",
+      "passed": true,
+      "removed": true
+    },
+    "gen_original_review": {
+      "error_codes": [
+        "rival_admission_without_governance_review",
+        "unknown_authority_certificate_generator",
+        "untyped_temporal_replay_atlas",
+        "untyped_temporal_review_audit"
+      ],
+      "expected_failure_code": "untyped_temporal_review_audit",
+      "object_ref": "review_mechanism_delta",
+      "passed": true,
+      "removed": true
+    },
+    "gen_replay_atlas": {
+      "error_codes": [
+        "incomplete_temporal_governance_cocycle",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "incomplete_temporal_governance_cocycle",
+      "object_ref": "two_successor_atlases_same_packet",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_A": {
+      "error_codes": [
+        "invalid_temporal_authority_restoration",
+        "review_replay_uses_inactive_root",
+        "temporal_atlas_uses_inactive_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "review_replay_uses_inactive_root",
+      "object_ref": "source_methods_board_A_successor",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_B": {
+      "error_codes": [
+        "invalid_review_root_independence_audit",
+        "invalid_temporal_authority_restoration",
+        "review_replay_uses_inactive_root",
+        "temporal_atlas_uses_inactive_root",
+        "uncertified_review_authority_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "uncertified_review_authority_root",
+      "object_ref": "source_methods_board_B",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_C": {
+      "error_codes": [
+        "temporal_atlas_uses_inactive_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "temporal_atlas_uses_inactive_root",
+      "object_ref": "source_methods_board_C",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_D": {
+      "error_codes": [
+        "temporal_atlas_uses_inactive_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "temporal_atlas_uses_inactive_root",
+      "object_ref": "source_methods_board_D",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_E": {
+      "error_codes": [
+        "temporal_atlas_uses_inactive_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "temporal_atlas_uses_inactive_root",
+      "object_ref": "source_methods_board_E",
+      "passed": true,
+      "removed": true
+    },
+    "gen_root_F": {
+      "error_codes": [
+        "temporal_atlas_uses_inactive_root",
+        "unknown_authority_certificate_generator"
+      ],
+      "expected_failure_code": "temporal_atlas_uses_inactive_root",
+      "object_ref": "source_methods_board_F",
+      "passed": true,
+      "removed": true
+    }
+  },
+  "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
+  "contract_sha256": "e94e6efcdb714e361899b2552c058def279e8c0bfa53865c98ff718fbb30495c",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
     "appeal_authority_is_certified_and_separate": true,
     "associativity_holds_on_typed_domain": true,
     "atlas_refinement_preserves_global_reconstruction": true,
+    "authority_stack_has_finite_replayable_generator_basis": true,
+    "certificate_digest_identifies_but_does_not_authorize": true,
+    "certificate_generator_deletions_are_replayed": true,
+    "certificate_minimality_is_bounded_and_deletion_witnessed": true,
     "changing_B_requires_source_derived_natural_coherence": true,
     "coherence_is_prior_target_independent_and_recomputable": true,
     "composition_preserves_authority_kind": true,
@@ -120,6 +246,53 @@
         "cached_not_explanatory_coherence"
       ],
       "expected_code": "cached_not_explanatory_coherence",
+      "passed": true,
+      "valid": false
+    },
+    "certificate_claims_absolute_minimality": {
+      "description": "A grammar-relative deletion basis is promoted to an absolute proof that no smaller alternative certificate exists.",
+      "error_codes": [
+        "unbounded_authority_certificate_minimality"
+      ],
+      "expected_code": "unbounded_authority_certificate_minimality",
+      "passed": true,
+      "valid": false
+    },
+    "certificate_dependency_graph_cycles": {
+      "description": "The terminal claim is allowed to generate one of its own premises.",
+      "error_codes": [
+        "authority_certificate_boundary_mismatch",
+        "cyclic_authority_certificate_dependencies",
+        "redundant_authority_certificate_generator"
+      ],
+      "expected_code": "cyclic_authority_certificate_dependencies",
+      "passed": true,
+      "valid": false
+    },
+    "certificate_digest_confers_authority": {
+      "description": "Possession of the certificate hash is treated as authority without replaying its typed dependencies.",
+      "error_codes": [
+        "authority_by_certificate_digest"
+      ],
+      "expected_code": "authority_by_certificate_digest",
+      "passed": true,
+      "valid": false
+    },
+    "certificate_has_no_replay_checker": {
+      "description": "The compressed proof object cannot deterministically reconstruct its terminal claim.",
+      "error_codes": [
+        "nonreplayable_authority_stack_certificate"
+      ],
+      "expected_code": "nonreplayable_authority_stack_certificate",
+      "passed": true,
+      "valid": false
+    },
+    "certificate_minimality_witnesses_missing": {
+      "description": "The certificate calls its generator basis minimal without deletion witnesses.",
+      "error_codes": [
+        "incomplete_authority_certificate_minimality_witness"
+      ],
+      "expected_code": "incomplete_authority_certificate_minimality_witness",
       "passed": true,
       "valid": false
     },
@@ -634,14 +807,14 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "07d2cb74e802bd31b8db889a2617c7470cc2a9ba8009e07270707540578b98ab",
-  "hostile_passed": 60,
-  "hostile_total": 60,
+  "hostile_fixture_sha256": "66622b87b18478f7bddbcb78213da4dd1d5f33b783529aeb20abfdad99ef4e2b",
+  "hostile_passed": 65,
+  "hostile_total": 65,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 52,
+  "passed_gates": 56,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -651,6 +824,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 52,
+  "total_gates": 56,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

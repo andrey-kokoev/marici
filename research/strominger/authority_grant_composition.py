@@ -730,6 +730,79 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         elif verdict == "presentation_only" and same_process and (not presentation_changed or coherent):
             err("false_presentation_only_verdict", tid, "an invariant source-coherent composite exists")
 
+    # Finite proof-carrying compression.  The certificate is a replayable DAG
+    # over typed bundles, not a hash promoted into authority.  Minimality is
+    # relative to the declared constructor grammar and witnessed by deletion.
+    object_registry: set[str] = set()
+    for collection in (
+        "rival_admissions",
+        "rival_admission_reviews",
+        "review_authority_root_certifications",
+        "temporal_replay_atlas_audits",
+        "temporal_governance_cocycle_audits",
+    ):
+        object_registry.update(item["id"] for item in packet.get(collection, []))
+    for certificate in packet.get("finite_authority_stack_certificates", []):
+        sid = certificate["id"]
+        generators = certificate.get("generators", [])
+        generator_ids = {item.get("id") for item in generators}
+        if not generators or len(generator_ids) != len(generators):
+            err("invalid_authority_certificate_generator_basis", sid, str(generator_ids))
+        for generator in generators:
+            if generator.get("object_ref") not in object_registry or not generator.get("role"):
+                err("unknown_authority_certificate_generator", generator.get("id", sid), str(generator.get("object_ref")))
+        if not certificate.get("bounded_constructor_grammar") or certificate.get("claims_absolute_minimality") is not False:
+            err("unbounded_authority_certificate_minimality", sid, str(certificate.get("bounded_constructor_grammar")))
+        if certificate.get("digest_confers_authority") is not False:
+            err("authority_by_certificate_digest", sid, str(certificate.get("digest_confers_authority")))
+        if not certificate.get("deterministic_replay_checker") or not certificate.get("replay_checker_sha256"):
+            err("nonreplayable_authority_stack_certificate", sid, "checker and artifact digest required")
+        nodes = {item["id"]: item for item in certificate.get("dependency_nodes", [])}
+        terminal = certificate.get("terminal_claim_node")
+        adjacency = {node_id: [] for node_id in nodes}
+        indegree = {node_id: 0 for node_id in nodes}
+        for edge in certificate.get("dependency_edges", []):
+            source, target = edge.get("source"), edge.get("target")
+            if source not in nodes or target not in nodes:
+                err("unknown_authority_certificate_dependency", edge.get("id", sid), f"{source}->{target}")
+                continue
+            adjacency[source].append(target)
+            indegree[target] += 1
+        queue = [node_id for node_id, degree in indegree.items() if degree == 0]
+        roots = set(queue)
+        visited = []
+        while queue:
+            node_id = queue.pop()
+            visited.append(node_id)
+            for target in adjacency[node_id]:
+                indegree[target] -= 1
+                if indegree[target] == 0:
+                    queue.append(target)
+        if len(visited) != len(nodes):
+            err("cyclic_authority_certificate_dependencies", sid, str(sorted(set(nodes) - set(visited))))
+        if roots != generator_ids or terminal not in nodes:
+            err("authority_certificate_boundary_mismatch", sid, f"roots={sorted(roots)}, generators={sorted(generator_ids)}")
+        reverse = {node_id: [] for node_id in nodes}
+        for source, targets in adjacency.items():
+            for target in targets:
+                reverse[target].append(source)
+        ancestors = {terminal} if terminal in nodes else set()
+        frontier = list(ancestors)
+        while frontier:
+            node_id = frontier.pop()
+            for source in reverse.get(node_id, []):
+                if source not in ancestors:
+                    ancestors.add(source)
+                    frontier.append(source)
+        if not generator_ids.issubset(ancestors):
+            err("redundant_authority_certificate_generator", sid, str(sorted(generator_ids - ancestors)))
+        witnesses = {item.get("generator_id"): item for item in certificate.get("minimality_witnesses", [])}
+        if set(witnesses) != generator_ids or any(
+            not witness.get("deletion_breaks_terminal_claim") or not witness.get("expected_failure_code")
+            for witness in witnesses.values()
+        ):
+            err("incomplete_authority_certificate_minimality_witness", sid, str(sorted(set(witnesses) ^ generator_ids)))
+
     return errors
 
 

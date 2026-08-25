@@ -501,6 +501,67 @@
       "source_derived_reconstruction": null
     }
   ],
+  "finite_authority_stack_certificates": [
+    {
+      "id": "current_delta_challenge_standing_certificate",
+      "subject": "mechanism_delta",
+      "claim": "current prospective challenge standing at time 30",
+      "as_of": 30,
+      "bounded_constructor_grammar": "DPC authority composition v1 typed bundles",
+      "claims_absolute_minimality": false,
+      "digest_confers_authority": false,
+      "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
+      "replay_checker_sha256": "3e87e07bccb454a632e3b300f0d3372f0d685ff1b6a41a0c4b7210a1b736c84a",
+      "generators": [
+        {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
+        {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
+        {"id": "gen_root_A", "object_ref": "source_methods_board_A_successor", "role": "live merits root A"},
+        {"id": "gen_root_B", "object_ref": "source_methods_board_B", "role": "live merits root B"},
+        {"id": "gen_root_C", "object_ref": "source_methods_board_C", "role": "live merits root C"},
+        {"id": "gen_root_D", "object_ref": "source_methods_board_D", "role": "live merits root D"},
+        {"id": "gen_root_E", "object_ref": "source_methods_board_E", "role": "live merits root E"},
+        {"id": "gen_root_F", "object_ref": "source_methods_board_F", "role": "live merits root F"},
+        {"id": "gen_appeal_root", "object_ref": "source_appeal_panel", "role": "procedural higher-cell root"},
+        {"id": "gen_replay_atlas", "object_ref": "two_successor_atlases_same_packet", "role": "three-path flat replay atlas"},
+        {"id": "gen_cocycle", "object_ref": "triangle_AB_CD_EF", "role": "zero-defect comparison cocycle"}
+      ],
+      "dependency_nodes": [
+        {"id": "gen_admission", "kind": "generator"}, {"id": "gen_original_review", "kind": "generator"},
+        {"id": "gen_root_A", "kind": "generator"}, {"id": "gen_root_B", "kind": "generator"},
+        {"id": "gen_root_C", "kind": "generator"}, {"id": "gen_root_D", "kind": "generator"},
+        {"id": "gen_root_E", "kind": "generator"}, {"id": "gen_root_F", "kind": "generator"},
+        {"id": "gen_appeal_root", "kind": "generator"}, {"id": "gen_replay_atlas", "kind": "generator"},
+        {"id": "gen_cocycle", "kind": "generator"},
+        {"id": "typed_candidate", "kind": "derived"}, {"id": "live_local_replays", "kind": "derived"},
+        {"id": "flat_disposition_atlas", "kind": "derived"}, {"id": "flat_comparison_cocycle", "kind": "derived"},
+        {"id": "current_challenge_standing", "kind": "terminal_claim"}
+      ],
+      "dependency_edges": [
+        {"id":"e1","source":"gen_admission","target":"typed_candidate"}, {"id":"e2","source":"gen_original_review","target":"typed_candidate"},
+        {"id":"e3","source":"gen_root_A","target":"live_local_replays"}, {"id":"e4","source":"gen_root_B","target":"live_local_replays"},
+        {"id":"e5","source":"gen_root_C","target":"live_local_replays"}, {"id":"e6","source":"gen_root_D","target":"live_local_replays"},
+        {"id":"e7","source":"gen_root_E","target":"live_local_replays"}, {"id":"e8","source":"gen_root_F","target":"live_local_replays"},
+        {"id":"e9","source":"gen_replay_atlas","target":"flat_disposition_atlas"}, {"id":"e10","source":"live_local_replays","target":"flat_disposition_atlas"},
+        {"id":"e11","source":"gen_cocycle","target":"flat_comparison_cocycle"}, {"id":"e12","source":"gen_appeal_root","target":"flat_comparison_cocycle"},
+        {"id":"e13","source":"typed_candidate","target":"current_challenge_standing"}, {"id":"e14","source":"flat_disposition_atlas","target":"current_challenge_standing"},
+        {"id":"e15","source":"flat_comparison_cocycle","target":"current_challenge_standing"}
+      ],
+      "terminal_claim_node": "current_challenge_standing",
+      "minimality_witnesses": [
+        {"generator_id":"gen_admission","deletion_breaks_terminal_claim":true,"expected_failure_code":"rival_challenge_without_admission_authority"},
+        {"generator_id":"gen_original_review","deletion_breaks_terminal_claim":true,"expected_failure_code":"untyped_temporal_review_audit"},
+        {"generator_id":"gen_root_A","deletion_breaks_terminal_claim":true,"expected_failure_code":"review_replay_uses_inactive_root"},
+        {"generator_id":"gen_root_B","deletion_breaks_terminal_claim":true,"expected_failure_code":"uncertified_review_authority_root"},
+        {"generator_id":"gen_root_C","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_D","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_E","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_F","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_appeal_root","deletion_breaks_terminal_claim":true,"expected_failure_code":"uncertified_temporal_higher_cell"},
+        {"generator_id":"gen_replay_atlas","deletion_breaks_terminal_claim":true,"expected_failure_code":"incomplete_temporal_governance_cocycle"},
+        {"generator_id":"gen_cocycle","deletion_breaks_terminal_claim":true,"expected_failure_code":"unknown_authority_certificate_generator"}
+      ]
+    }
+  ],
   "application_cases": [
     {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
     {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}

@@ -125,6 +125,11 @@ The machine-readable fixture suite rejects:
 58. a comparison cell promoting itself to truth-selection authority;
 59. a temporal triangle missing its direct comparison cell;
 60. global standing restored across a nonzero cocycle defect.
+61. grammar-relative minimality promoted to absolute minimality;
+62. a certificate digest treated as authority;
+63. a compressed certificate lacking deterministic replay;
+64. a cyclic dependency graph in which the claim generates its premise;
+65. a purportedly minimal basis lacking deletion witnesses.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -568,6 +573,41 @@ The strengthened law is
 Thus DPC now separates extensional reproducibility from intensional
 coherence. Repeating the answer is not yet explaining why the repetitions
 belong to one authority process.
+
+### Compression law: a proof-carrying capability
+
+The growing authority atlas can be transported finitely without collapsing it
+to a Boolean flag. The compressed object contains eleven typed bundle
+generators: rival admission, frozen original review, six live merits roots, an
+appeal root, the replay atlas, and its comparison cocycle. An acyclic
+dependency graph reconstructs current challenge standing.
+
+Every generator has a deletion witness showing which typed premise fails when
+it is removed. The deterministic checker actually performs all eleven
+deletions and recompiles the contract; these are not trusted annotations. This
+proves irredundancy only relative to the declared DPC v1 constructor grammar.
+It does not exclude a different grammar with a smaller proof.
+
+The artifact digest is deliberately non-authoritative:
+
+\[
+\boxed{
+\text{portable authority certificate}
+=\text{typed generators}+\text{acyclic replay DAG}
++\text{deletion witnesses},
+\qquad
+\text{hash}\ne\text{authority}.}
+\]
+
+This is the first genuinely compact endpoint of the programme. The certificate
+is finite because higher structure is represented by reusable bundles, yet it
+remains proof-carrying because every bundle resolves back to source evidence
+and every dependency can be replayed.
+
+The deeper consequence is that authority behaves like a capability with a
+proof term, not like a property attached permanently to an object. Possessing
+the bytes identifies the claim; successfully replaying the typed term under
+current roots makes the capability executable.
 
 ### Refinement law: higher coherence
 
