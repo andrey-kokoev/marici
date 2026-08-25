@@ -84,6 +84,7 @@ def main():
     trilemma_audits = {item["id"]: item for item in packet["distributed_linearity_trilemma_audits"]}
     constructor_networks = {item["id"]: item for item in packet["linearization_constructor_networks"]}
     fault_audits = {item["id"]: item for item in packet["fault_parametric_quorum_audits"]}
+    hypergraph_audits = {item["id"]: item for item in packet["fault_hypergraph_quorum_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -395,6 +396,21 @@ def main():
             and fault_audits["byzantine_n4_q3_f1"]["minimum_intersection"]
             > fault_audits["byzantine_n4_q3_f1"]["fault_bound"]
             and fault_audits["byzantine_n3_q2_f1_no_go"]["conflict_witness"]["both_certificates_constructible"],
+        "correlated_fault_hypergraph_falsifies_nominal_n4_q3":
+            not hypergraph_audits["correlated_n4_q3_unsafe"]["claimed_safe"]
+            and hypergraph_audits["correlated_n4_q3_unsafe"]["violation_witness"]["honest_overlap"] == [],
+        "diversification_or_quorum_expansion_repairs_common_causes":
+            hypergraph_audits["diversified_n4_q3_safe"]["claimed_safe"]
+            and hypergraph_audits["correlated_n5_q4_safe"]["claimed_safe"]
+            and len(set(hypergraph_audits["diversified_n4_q3_safe"]["replica_authority_roots"].values())) == 4,
+        "common_cause_fault_sets_are_derived_from_authority_roots": all(
+            all(
+                sorted(replica for replica, value in audit["replica_authority_roots"].items() if value == root)
+                in [sorted(fault_set) for fault_set in audit["admissible_fault_sets"]]
+                for root in set(audit["replica_authority_roots"].values())
+            )
+            for audit in hypergraph_audits.values()
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -445,6 +461,7 @@ def main():
         "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
         "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
         "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash/recovery safety with durable non-equivocation requires only a nonempty overlap I_min>=1, so n=3,q=2 is safe. Byzantine safety requires I_min>f: n=3,q=2,f=1 is unsafe, while n=4,q=3,f=1 is safe.",
+        "fault_hypergraph_verdict": "Replica cardinality is insufficient under correlated faults. Safety requires (Q1 intersection Q2) minus F to be nonempty for every winning-quorum pair and every source-authorized common-cause fault set F. Shared authority-root fibers are mandatory fault sets; the unsafe correlated 3-of-4 design is repaired either by root diversification or by the verified 4-of-5 geometry.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

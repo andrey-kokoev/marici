@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "b8857776f2b4fac2031510457fd64c85698793cc4b07ad4a070c7805b702bd11",
+      "replay_checker_sha256": "2a3c0f9ff3553a2618f91c43120e1a81f6205aadbd9ab76157a6bff1461f7b2e",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -752,6 +752,42 @@
       "source_authorized_fault_model": "at most one Byzantine replica and honest durable vote cells",
       "claimed_safe": true,
       "claims_fault_model_transport_without_reproof": false
+    }
+  ],
+  "fault_hypergraph_quorum_audits": [
+    {
+      "id": "correlated_n4_q3_unsafe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_A", "r3": "admin_C", "r4": "admin_D"},
+      "authorized_quorums": [["r1","r2","r3"], ["r1","r2","r4"], ["r1","r3","r4"], ["r2","r3","r4"]],
+      "admissible_fault_sets": [["r1","r2"], ["r3"], ["r4"]],
+      "claimed_safe": false,
+      "violation_witness": {"first_quorum": ["r1","r2","r3"], "second_quorum": ["r1","r2","r4"], "fault_set": ["r1","r2"], "honest_overlap": []},
+      "source_authorized_common_cause_model": "administrator compromise controls every replica in its declared authority-root fiber",
+      "bounded_model_scope": "declared administrative common causes only",
+      "infers_independence_from_distinct_replica_ids": false
+    },
+    {
+      "id": "diversified_n4_q3_safe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_B", "r3": "admin_C", "r4": "admin_D"},
+      "authorized_quorums": [["r1","r2","r3"], ["r1","r2","r4"], ["r1","r3","r4"], ["r2","r3","r4"]],
+      "admissible_fault_sets": [["r1"], ["r2"], ["r3"], ["r4"]],
+      "claimed_safe": true,
+      "source_authorized_common_cause_model": "four separately governed administrative roots",
+      "bounded_model_scope": "single declared administrative-root compromise",
+      "infers_independence_from_distinct_replica_ids": false
+    },
+    {
+      "id": "correlated_n5_q4_safe",
+      "replicas": ["r1", "r2", "r3", "r4", "r5"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_A", "r3": "admin_C", "r4": "admin_C", "r5": "admin_E"},
+      "authorized_quorums": [["r1","r2","r3","r4"], ["r1","r2","r3","r5"], ["r1","r2","r4","r5"], ["r1","r3","r4","r5"], ["r2","r3","r4","r5"]],
+      "admissible_fault_sets": [["r1","r2"], ["r3","r4"], ["r5"]],
+      "claimed_safe": true,
+      "source_authorized_common_cause_model": "one declared administrative-root compromise at a time",
+      "bounded_model_scope": "single root-fiber common cause",
+      "infers_independence_from_distinct_replica_ids": false
     }
   ],
   "application_cases": [
