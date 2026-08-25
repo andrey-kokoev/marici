@@ -159,6 +159,11 @@ The machine-readable fixture suite rejects:
 92. equivocation admitted inside a crash-only model;
 93. a fault bound asserted without source authority;
 94. a fault-model change treated as transport rather than reproof.
+95. a correlated (3)-of-(4) design falsely declared safe;
+96. a shared authority-root fiber omitted from the fault catalog;
+97. distinct replica identifiers treated as proof of independence;
+98. a common-cause hypergraph asserted without source authority;
+99. an unsafe hypergraph lacking an explicit violation witness.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -833,6 +838,41 @@ A crash-safety proof cannot be transported into a Byzantine domain. The fault
 bound and honest-replica constructor assumptions are themselves environmental
 claims requiring source authority. Changing them creates a new proof
 obligation, not a harmless change of presentation.
+
+### Common-cause theorem: replace counts by a fault hypergraph
+
+A scalar bound (f) assumes that any subset of at most (f) replicas is the
+relevant failure unit. Real systems often have correlated constructors: two
+replicas may share an administrator, signing service, firmware image, power
+supply, or physical host.
+
+Let (mathcal F) be the source-authorized family of admissible common-cause
+fault sets. The exact safety condition is
+
+\[
+\boxed{
+\forall Q_1,Q_2\in\mathcal Q, \forall F\in\mathcal F:
+\quad (Q_1\cap Q_2)\setminus F\ne\varnothing.}
+\]
+
+In the hostile (3)-of-(4) design, (r_1,r_2) share `admin_A`. Quorums
+({r_1,r_2,r_3}) and ({r_1,r_2,r_4}) intersect exactly in
+({r_1,r_2}), which the common cause can control completely. Nominal
+replica count therefore overstates the independent authority count.
+
+Two repairs pass exact enumeration:
+
+- give all four replicas distinct authority roots while retaining (3)-of-(4);
+- retain correlated pairs but expand to the verified (4)-of-(5) geometry.
+
+The fault catalog itself is derived from the replica-to-authority-root map:
+every root fiber must occur as an admissible fault set. This blocks the common
+trick of establishing safety by silently omitting the dangerous shared cause.
+Completeness remains bounded to the declared common-cause model; it is not a
+claim that every physical correlation has been discovered.
+
+Thus “independent replicas” is not a numerical fact. It is a typed provenance
+claim about independently transformable authority loci.
 
 ### Refinement law: higher coherence
 

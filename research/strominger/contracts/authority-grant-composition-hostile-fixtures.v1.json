@@ -767,6 +767,46 @@
         {"collection": "fault_parametric_quorum_audits", "id": "crash_recovery_n3_q2_f1", "field": "safety_condition", "value": "minimum_intersection>fault_bound"}
       ],
       "expected_code": "fault_model_safety_condition_mismatch"
+    },
+    {
+      "id": "correlated_n4_q3_claimed_safe",
+      "description": "A 3-of-4 design is declared safe although one common cause covers the entire two-replica overlap.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "claimed_safe", "value": true}
+      ],
+      "expected_code": "incorrect_fault_hypergraph_safety_classification"
+    },
+    {
+      "id": "shared_authority_root_omitted_from_fault_catalog",
+      "description": "Replicas r1 and r2 share admin_A, but their two-replica root fiber is omitted from admissible faults.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "admissible_fault_sets", "value": [["r1"], ["r2"], ["r3"], ["r4"]]}
+      ],
+      "expected_code": "common_cause_fault_set_omitted"
+    },
+    {
+      "id": "distinct_replica_ids_imply_independence",
+      "description": "Four process identifiers are treated as four independently compromisable authority roots without provenance.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "infers_independence_from_distinct_replica_ids", "value": true}
+      ],
+      "expected_code": "replica_identity_laundered_as_failure_independence"
+    },
+    {
+      "id": "common_cause_model_has_no_source_authority",
+      "description": "The admissible fault hypergraph is asserted without evidence about shared administrative constructors.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "diversified_n4_q3_safe", "field": "source_authorized_common_cause_model", "value": null}
+      ],
+      "expected_code": "unauthorized_or_unbounded_common_cause_model"
+    },
+    {
+      "id": "unsafe_hypergraph_lacks_witness",
+      "description": "A correlated design is marked unsafe without exhibiting quorums whose overlap is swallowed by an admissible fault set.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "violation_witness", "value": {}}
+      ],
+      "expected_code": "missing_fault_hypergraph_violation_witness"
     }
   ]
 }

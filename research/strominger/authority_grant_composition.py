@@ -1007,6 +1007,48 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if audit.get("claims_fault_model_transport_without_reproof"):
             err("fault_model_authority_transport", fid, "crash proof cannot be transported to Byzantine faults")
 
+    # Correlated-fault hypergraph theorem.  Scalar replica counts are a special
+    # case.  Safety requires every pair of winning quorums to retain an honest
+    # witness outside every admissible common-cause fault set.
+    for audit in packet.get("fault_hypergraph_quorum_audits", []):
+        hid = audit["id"]
+        replicas = set(audit.get("replicas", []))
+        quorums = [set(quorum) for quorum in audit.get("authorized_quorums", [])]
+        fault_sets = [set(fault_set) for fault_set in audit.get("admissible_fault_sets", [])]
+        root_map = audit.get("replica_authority_roots", {})
+        if not replicas or set(root_map) != replicas or not quorums or not fault_sets:
+            err("untyped_fault_hypergraph_audit", hid, str(sorted(replicas)))
+            continue
+        if any(not quorum.issubset(replicas) for quorum in quorums) or any(not fault_set.issubset(replicas) for fault_set in fault_sets):
+            err("fault_hypergraph_unknown_replica", hid, "quorum or fault-set endpoint outside replica set")
+        root_fibers: dict[str, set[str]] = {}
+        for replica, root in root_map.items():
+            root_fibers.setdefault(root, set()).add(replica)
+        missing_fibers = [fiber for fiber in root_fibers.values() if fiber not in fault_sets]
+        if missing_fibers:
+            err("common_cause_fault_set_omitted", hid, str([sorted(fiber) for fiber in missing_fibers]))
+        violations = []
+        for left_index in range(len(quorums)):
+            for right_index in range(left_index, len(quorums)):
+                overlap = quorums[left_index] & quorums[right_index]
+                for fault_set in fault_sets:
+                    if not overlap - fault_set:
+                        violations.append((left_index, right_index, sorted(fault_set)))
+        expected_safe = not violations
+        if audit.get("claimed_safe") != expected_safe:
+            err("incorrect_fault_hypergraph_safety_classification", hid, str(violations[:3]))
+        if violations:
+            witness = audit.get("violation_witness", {})
+            left = set(witness.get("first_quorum", []))
+            right = set(witness.get("second_quorum", []))
+            fault = set(witness.get("fault_set", []))
+            if left not in quorums or right not in quorums or fault not in fault_sets or (left & right) - fault:
+                err("missing_fault_hypergraph_violation_witness", hid, str(witness))
+        if not audit.get("source_authorized_common_cause_model") or not audit.get("bounded_model_scope"):
+            err("unauthorized_or_unbounded_common_cause_model", hid, str(audit.get("bounded_model_scope")))
+        if audit.get("infers_independence_from_distinct_replica_ids"):
+            err("replica_identity_laundered_as_failure_independence", hid, "distinct IDs do not imply distinct authority roots")
+
     return errors
 
 
