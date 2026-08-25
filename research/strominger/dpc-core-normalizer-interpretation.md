@@ -648,3 +648,34 @@ Therefore there is no canonical repair selector in the safety structure:
 Treating “fewest changed loci” as automatic would merely smuggle in the unit
 cost valuation. It is a legitimate policy only when that valuation has an
 authority-bearing source.
+
+## Selection is not execution
+
+The selected repair is a content-addressed decision record, not an operative
+capability. Its certificate binds four objects:
+
+\[
+(\text{unsafe hyperedge},\ \text{primitive repair family},\
+\text{valuation profile},\ \text{selected repair}).
+\]
+
+Execution requires a separately issued linear capability rooted in the
+`repair_execution_charter`. Its only admitted transition is an atomic
+compare/apply/consume operation:
+
+\[
+(E,R,u=1)
+\longmapsto
+(E\setminus R,u=0),
+\]
+
+provided the observed configuration and requested repair match the certificate
+exactly. Safety is recomputed from the resulting hyperedge; it is not inherited
+from the earlier selection proof.
+
+This rules out four distinct authority shortcuts: treating a selector output as
+an actuator, replaying a consumed capability, applying a valid repair to a
+different configuration, or assuming the postcondition without rerunning the
+cocircuit test. The successful fixture consumes its one use and records
+certificate digest
+`08337b0bd40cbf3492d3282ed94b2a3fd54c887fd413a0b46f762d3db0d925fe`.
