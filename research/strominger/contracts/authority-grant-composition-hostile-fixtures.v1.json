@@ -238,6 +238,38 @@
         {"collection": "rival_extension_audits", "id": "new_source_probe_revalidates_extended_family", "field": "claims_closed_under_all_future_rivals", "value": true}
       ],
       "expected_code": "closed_world_explanation_claim"
+    },
+    {
+      "id": "arbitrary_column_opens_rival_challenge",
+      "description": "A new response column opens a challenge without any admitted constructor-level rival packet.",
+      "mutations": [
+        {"collection": "rival_extension_audits", "id": "new_rival_opens_identification_challenge", "field": "new_rival_admission", "value": null}
+      ],
+      "expected_code": "rival_challenge_without_admission_authority"
+    },
+    {
+      "id": "rival_reverse_engineered_from_incumbent_fit",
+      "description": "Delta is admitted although its constructor was fitted from the incumbent target responses.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "independent_of_incumbent_fit", "value": false}
+      ],
+      "expected_code": "target_fitted_rival_admission"
+    },
+    {
+      "id": "gauge_copy_admitted_as_new_rival",
+      "description": "An authorized gauge copy is mislabeled as a physically distinct rival mechanism.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "non_gauge_witness", "value": null}
+      ],
+      "expected_code": "gauge_duplicate_misclassified_as_rival"
+    },
+    {
+      "id": "port_incomplete_rival_admitted",
+      "description": "A proposed mechanism is admitted despite lacking predictions on every already-declared intervention port.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "predicts_all_existing_ports", "value": false}
+      ],
+      "expected_code": "port_incomplete_rival_admission"
     }
   ]
 }

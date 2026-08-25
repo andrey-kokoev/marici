@@ -113,10 +113,52 @@
       "no_universal_extrapolation": true
     }
   ],
+  "rival_admissions": [
+    {
+      "id": "admit_mechanism_delta",
+      "mechanism_id": "mechanism_delta",
+      "proposer_source": "independent extended constructor packet",
+      "constructor_grammar": "finite source law generating delta without using incumbent fitted coefficients",
+      "admissible_domain": "the same finite intervention domain as the incumbent mechanisms",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": true,
+      "non_gauge_witness": "delta differs from every authorized gauge orbit on a declared source invariant",
+      "falsifiable_difference": "delta predicts a distinct response under source_probe_delta",
+      "admitted_before_response_selection": true,
+      "status": "admitted"
+    },
+    {
+      "id": "reject_gauge_copy_as_rival",
+      "mechanism_id": "mechanism_alpha_gauge_copy",
+      "proposer_source": "authorized gauge action on mechanism_alpha",
+      "constructor_grammar": "source_gauge applied to alpha",
+      "admissible_domain": "incumbent finite intervention domain",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": true,
+      "non_gauge_witness": null,
+      "falsifiable_difference": "none outside the authorized gauge orbit",
+      "admitted_before_response_selection": true,
+      "status": "rejected"
+    },
+    {
+      "id": "pending_port_incomplete_speculation",
+      "mechanism_id": "mechanism_epsilon",
+      "proposer_source": "partial speculative constructor",
+      "constructor_grammar": "incomplete source sketch",
+      "admissible_domain": "proper subset of the incumbent intervention domain",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": false,
+      "non_gauge_witness": "provisional invariant difference",
+      "falsifiable_difference": "not yet total on existing ports",
+      "admitted_before_response_selection": true,
+      "status": "pending"
+    }
+  ],
   "rival_extension_audits": [
     {
       "id": "new_rival_opens_identification_challenge",
       "extends_audit": "finite_three_mechanism_identification",
+      "new_rival_admission": "admit_mechanism_delta",
       "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
       "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3"],
       "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1]],
@@ -128,6 +170,7 @@
     {
       "id": "new_source_probe_revalidates_extended_family",
       "extends_audit": "new_rival_opens_identification_challenge",
+      "new_rival_admission": "admit_mechanism_delta",
       "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
       "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3", "source_probe_delta"],
       "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1], [0, 0, 0, 1]],

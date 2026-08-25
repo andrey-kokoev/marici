@@ -328,7 +328,42 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if not audit.get("bounded_claim_scope") or not audit.get("no_universal_extrapolation"):
             err("unbounded_explanatory_extrapolation", aid, str(audit.get("bounded_claim_scope")))
 
-    # Open-world DPC: a new rival reopens identification unless the current
+    rival_admissions = {item["id"]: item for item in packet.get("rival_admissions", [])}
+    for admission_id, admission in rival_admissions.items():
+        status = admission.get("status")
+        if status not in {"admitted", "rejected", "pending"}:
+            err("unknown_rival_admission_status", admission_id, str(status))
+            continue
+        complete = all(
+            admission.get(field)
+            for field in (
+                "mechanism_id",
+                "proposer_source",
+                "constructor_grammar",
+                "admissible_domain",
+                "falsifiable_difference",
+            )
+        )
+        admissible = bool(
+            complete
+            and admission.get("independent_of_incumbent_fit")
+            and admission.get("predicts_all_existing_ports")
+            and admission.get("non_gauge_witness")
+            and admission.get("admitted_before_response_selection")
+        )
+        if status == "admitted" and not admissible:
+            if not admission.get("non_gauge_witness"):
+                err("gauge_duplicate_misclassified_as_rival", admission_id, admission.get("mechanism_id", "unknown"))
+            elif not admission.get("predicts_all_existing_ports"):
+                err("port_incomplete_rival_admission", admission_id, admission.get("mechanism_id", "unknown"))
+            elif not admission.get("independent_of_incumbent_fit") or not admission.get("admitted_before_response_selection"):
+                err("target_fitted_rival_admission", admission_id, admission.get("mechanism_id", "unknown"))
+            else:
+                err("untyped_rival_admission", admission_id, str(admission))
+        if status == "rejected" and admissible:
+            err("admissible_rival_improperly_rejected", admission_id, admission.get("mechanism_id", "unknown"))
+
+    # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
     # earned only after a source-derived discriminator closes the new kernel.
     for challenge in packet.get("rival_extension_audits", []):
@@ -343,6 +378,11 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         nullity = len(candidates) - rank
         gauge = challenge.get("source_authorized_gauge_dimension", 0)
         status = challenge.get("status")
+        admission = rival_admissions.get(challenge.get("new_rival_admission"))
+        if admission is None or admission.get("status") != "admitted":
+            err("rival_challenge_without_admission_authority", cid, str(challenge.get("new_rival_admission")))
+        elif admission.get("mechanism_id") not in candidates:
+            err("admitted_rival_missing_from_candidate_family", cid, admission.get("mechanism_id", "unknown"))
         if challenge.get("claims_closed_under_all_future_rivals"):
             err("closed_world_explanation_claim", cid, "finite audit cannot quantify over ungenerated rivals")
         if status == "challenge_open":
@@ -497,5 +537,6 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "source_intervention_test_count": len(packet.get("source_intervention_tests", [])),
         "mechanism_identification_audit_count": len(packet.get("mechanism_identification_audits", [])),
         "rival_extension_audit_count": len(packet.get("rival_extension_audits", [])),
+        "rival_admission_count": len(packet.get("rival_admissions", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

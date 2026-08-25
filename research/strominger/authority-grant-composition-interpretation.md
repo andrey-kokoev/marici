@@ -94,6 +94,10 @@ The machine-readable fixture suite rejects:
 27. retaining identification authority after a new unresolved rival appears;
 28. repairing a rival challenge with a target-fitted discriminator;
 29. declaring a repaired finite family closed under all future rivals.
+30. an arbitrary response column opening a challenge without rival authority;
+31. a rival reverse-engineered from the incumbent fit;
+32. an authorized gauge copy mislabeled as a distinct mechanism;
+33. a port-incomplete speculation admitted as a rival.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -337,6 +341,44 @@ This gives an explicit Popperian state transition:
 
 The final state remains open to further rivals. No finite candidate census is
 permitted to assert closure under all future explanations.
+
+### Rival-admission law: criticism also needs a constructor
+
+Open-ended criticism does not mean that an arbitrary response vector can
+manufacture a new explanatory crisis. A proposed rival enters the comparison
+only when it supplies:
+
+1. an independently generated constructor grammar;
+2. an admissible domain matching the incumbent comparison;
+3. predictions on every already-declared intervention port;
+4. a witness that it is not merely an authorized gauge copy;
+5. a falsifiable difference from the incumbent family;
+6. admission before its response column is used to design the test.
+
+This gives three typed states:
+
+\[
+\begin{array}{c|c}
+\text{proposal}&\text{status}\\
+\hline
+\text{independent, total, non-gauge constructor}&\text{admitted rival}\\
+\text{authorized gauge transform}&\text{rejected as non-distinct}\\
+\text{partial source sketch}&\text{pending, no challenge authority}.
+\end{array}
+\]
+
+The symmetry with discriminator admission is deliberate. A fitted rival can
+manufacture fake underdetermination just as a fitted probe can manufacture
+fake resolution. Both sides of a Popperian contest require independent source
+authority.
+
+Hence the open-world DPC rule becomes
+
+\[
+\boxed{
+\text{only constructor-bearing, port-total, non-gauge rivals may reopen an
+identification claim}.}
+\]
 
 ### Refinement law: higher coherence
 

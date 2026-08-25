@@ -70,6 +70,7 @@ def main():
     interventions = {item["id"]: item for item in packet["source_intervention_tests"]}
     mechanism_audits = {item["id"]: item for item in packet["mechanism_identification_audits"]}
     rival_audits = {item["id"]: item for item in packet["rival_extension_audits"]}
+    rival_admissions = {item["id"]: item for item in packet["rival_admissions"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -166,6 +167,17 @@ def main():
         "rival_protocol_remains_open_world": all(
             not audit["claims_closed_under_all_future_rivals"] for audit in packet["rival_extension_audits"]
         ),
+        "new_rival_has_independent_constructor_authority":
+            rival_admissions["admit_mechanism_delta"]["status"] == "admitted"
+            and rival_admissions["admit_mechanism_delta"]["independent_of_incumbent_fit"]
+            and rival_admissions["admit_mechanism_delta"]["predicts_all_existing_ports"]
+            and bool(rival_admissions["admit_mechanism_delta"]["non_gauge_witness"]),
+        "gauge_copy_is_not_a_distinct_rival":
+            rival_admissions["reject_gauge_copy_as_rival"]["status"] == "rejected"
+            and rival_admissions["reject_gauge_copy_as_rival"]["non_gauge_witness"] is None,
+        "incomplete_speculation_cannot_open_challenge":
+            rival_admissions["pending_port_incomplete_speculation"]["status"] == "pending"
+            and not rival_admissions["pending_port_incomplete_speculation"]["predicts_all_existing_ports"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -203,6 +215,7 @@ def main():
         "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
         "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
         "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
+        "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
