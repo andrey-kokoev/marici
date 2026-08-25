@@ -1,0 +1,52 @@
+{
+  "schema": "marici.data-descent-packet.v2",
+  "contexts": [
+    {"id": "toric_frame_A", "site": "toric_code", "stratum_depth": 0},
+    {"id": "toric_frame_B", "site": "toric_code", "stratum_depth": 0}
+  ],
+  "capability_fibers": [
+    {
+      "id": "RecoveryA",
+      "context": "toric_frame_A",
+      "states": ["clean", "error"],
+      "diagnostics": ["0", "1"],
+      "identity": "I",
+      "operations": [
+        {"id": "I", "action_table": {"clean": "clean", "error": "error"}},
+        {"id": "X", "action_table": {"clean": "error", "error": "clean"}}
+      ],
+      "composition": [
+        {"left": "I", "right": "I", "result": "I"},
+        {"left": "I", "right": "X", "result": "X"},
+        {"left": "X", "right": "I", "result": "X"},
+        {"left": "X", "right": "X", "result": "I"}
+      ],
+      "policies": [
+        {"id": "syndrome_decoder", "section": {"0": "I", "1": "X"}, "diagnostic_inputs": {"0": "clean", "1": "error"}, "goal_state": "clean"}
+      ]
+    },
+    {
+      "id": "RecoveryB",
+      "context": "toric_frame_B",
+      "states": ["clean", "error"],
+      "diagnostics": ["0", "1"],
+      "identity": "I",
+      "operations": [
+        {"id": "I", "action_table": {"clean": "clean", "error": "error"}},
+        {"id": "X", "action_table": {"clean": "error", "error": "clean"}}
+      ],
+      "composition": [
+        {"left": "I", "right": "I", "result": "I"},
+        {"left": "I", "right": "X", "result": "X"},
+        {"left": "X", "right": "I", "result": "X"},
+        {"left": "X", "right": "X", "result": "I"}
+      ],
+      "policies": [
+        {"id": "syndrome_decoder", "section": {"0": "I", "1": "X"}, "diagnostic_inputs": {"0": "clean", "1": "error"}, "goal_state": "clean"}
+      ]
+    }
+  ],
+  "capability_transitions": [
+    {"id": "frame_change", "source_fiber": "RecoveryA", "target_fiber": "RecoveryB", "operation_map": {"I": "I", "X": "X"}}
+  ]
+}

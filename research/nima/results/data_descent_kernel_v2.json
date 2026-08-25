@@ -1,0 +1,71 @@
+{
+  "schema": "marici.data-descent-kernel-v2-result.v1",
+  "positive": {
+    "derived_packet": {
+      "valid": true,
+      "error_count": 0,
+      "errors": [],
+      "context_count": 2,
+      "local_object_count": 3,
+      "arrow_count": 2,
+      "coherence_cell_count": 0,
+      "derived_object_count": 2,
+      "base_change_count": 1,
+      "capability_fiber_count": 0
+    },
+    "capability_packet": {
+      "valid": true,
+      "error_count": 0,
+      "errors": [],
+      "context_count": 2,
+      "local_object_count": 0,
+      "arrow_count": 0,
+      "coherence_cell_count": 0,
+      "derived_object_count": 0,
+      "base_change_count": 0,
+      "capability_fiber_count": 2
+    },
+    "evidence_replay": {
+      "passed": true,
+      "results": [
+        {
+          "id": "three_chart_descent_replay",
+          "passed": true,
+          "returncode": 0,
+          "artifact_sha256": "31445b08490c73558f778a7f217f13b88c27cbd771c9abcb93274695642dbbe7",
+          "expected_fields_match": true,
+          "expected_digest_match": true
+        }
+      ]
+    }
+  },
+  "hostile": {
+    "ordinary_nonflat_base_change": {
+      "valid": false,
+      "error_codes": [
+        "nonflat_ordinary_base_change"
+      ]
+    },
+    "erased_correspondence_variance": {
+      "valid": false,
+      "error_codes": [
+        "correspondence_variance_mismatch"
+      ]
+    },
+    "partial_policy": {
+      "valid": false,
+      "error_codes": [
+        "incomplete_policy_section"
+      ]
+    },
+    "nonfunctorial_capability_transition": {
+      "valid": false,
+      "error_codes": [
+        "capability_transition_composition_defect"
+      ]
+    }
+  },
+  "hostile_evidence_replay_passed": false,
+  "all_requested_layers_operational": true,
+  "verdict": "Derived base change, correspondence variance, evidence replay, and finite executable capability fibers all have discriminating validation rules."
+}
