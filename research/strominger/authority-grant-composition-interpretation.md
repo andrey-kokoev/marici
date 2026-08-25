@@ -1090,6 +1090,18 @@ non-equivocation then prevent two certificates for `(12,h)` and `(12,h')`.
 Reusing a consumption quorum is not sufficient by transport: it needs an
 explicit configuration-selection grant.
 
+Reconfiguration exposes the final bootstrap circularity: the manifest names
+the quorum that certifies manifests. The initial configuration must enter by an
+explicit bootstrap certificate. Thereafter, neither the old quorum alone nor
+the proposed new quorum alone may authorize the crossing. A transition binds
+both configuration digests, both epochs, and the successor membership, and is
+endorsed by quorums of both configurations.
+
+In the bounded transition, old quorum `{r1,r2}` and new quorum `{r2,r4}` meet
+at durable witness `r2`. Its non-equivocation prevents incompatible successor
+certificates. Thus configuration authority moves by joint consensus, not by
+membership transport or successor self-authorization.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.

@@ -90,6 +90,7 @@ def main():
     probe_grammar_boundaries = {item["id"]: item for item in packet["probe_grammar_boundary_audits"]}
     probe_grammar_epochs = {item["id"]: item for item in packet["probe_grammar_epoch_audits"]}
     distributed_manifest_audits = {item["id"]: item for item in packet["distributed_manifest_epoch_audits"]}
+    reconfiguration_audits = {item["id"]: item for item in packet["configuration_reconfiguration_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -464,6 +465,14 @@ def main():
             == {"epoch", "manifest_sha256"}
             and distributed_manifest_audits["two_site_manifest_fork_and_repair"]["repair"]["durable_non_equivocation"]
             and not distributed_manifest_audits["two_site_manifest_fork_and_repair"]["repair"]["conflicting_same_epoch_digest_certificate_constructible"],
+        "configuration_transition_requires_joint_consensus":
+            reconfiguration_audits["joint_transition_epoch_12_to_13"]["joint_consensus_required"]
+            and not reconfiguration_audits["joint_transition_epoch_12_to_13"]["old_only_may_activate_successor"]
+            and not reconfiguration_audits["joint_transition_epoch_12_to_13"]["new_only_may_self_activate"],
+        "reconfiguration_bridge_prevents_split_brain":
+            reconfiguration_audits["joint_transition_epoch_12_to_13"]["bridge_witness"] == ["r2"]
+            and reconfiguration_audits["joint_transition_epoch_12_to_13"]["bridge_durable_non_equivocation"]
+            and not reconfiguration_audits["joint_transition_epoch_12_to_13"]["conflicting_transition_constructible"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

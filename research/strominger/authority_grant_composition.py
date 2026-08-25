@@ -1207,6 +1207,28 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if not repair.get("durable_non_equivocation") or repair.get("conflicting_same_epoch_digest_certificate_constructible"):
             err("manifest_digest_fork_survives_linearization", aid, str(repair.get("conflicting_same_epoch_digest_certificate_constructible")))
 
+    # Reconfiguration crosses authority loci. Neither side may authorize the
+    # transition alone: the successor is activated by a value bound to both
+    # configurations and jointly endorsed across the boundary.
+    for audit in packet.get("configuration_reconfiguration_audits", []):
+        aid = audit["id"]
+        old, new = audit.get("old_configuration", {}), audit.get("new_configuration", {})
+        required = {"old_epoch", "old_digest", "new_epoch", "new_digest", "new_members"}
+        if not isinstance(old.get("epoch"), int) or not isinstance(new.get("epoch"), int) or new.get("epoch", -1) <= old.get("epoch", -1):
+            err("nonmonotone_configuration_transition", aid, f"{old.get('epoch')}->{new.get('epoch')}")
+        if set(audit.get("transition_value_fields", [])) != required:
+            err("reconfiguration_certificate_underbinds_transition", aid, str(audit.get("transition_value_fields")))
+        old_endorsement, new_endorsement = set(audit.get("old_quorum_endorsement", [])), set(audit.get("new_quorum_endorsement", []))
+        if old_endorsement != set(old.get("quorum", [])) or new_endorsement != set(new.get("quorum", [])) or not audit.get("joint_consensus_required"):
+            err("reconfiguration_lacks_joint_consensus", aid, str([sorted(old_endorsement), sorted(new_endorsement)]))
+        bridge = old_endorsement & new_endorsement
+        if set(audit.get("bridge_witness", [])) != bridge or not bridge or not audit.get("bridge_durable_non_equivocation"):
+            err("reconfiguration_bridge_not_non_equivocating", aid, str(sorted(bridge)))
+        if audit.get("old_only_may_activate_successor") or audit.get("new_only_may_self_activate") or audit.get("claims_authority_by_membership_transport"):
+            err("reconfiguration_authority_laundering", aid, "one configuration cannot unilaterally cross the authority boundary")
+        if audit.get("conflicting_transition_constructible"):
+            err("reconfiguration_split_brain_survives", aid, "conflicting successor transition remains constructible")
+
     return errors
 
 
@@ -1226,6 +1248,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "probe_grammar_boundary_audit_count": len(packet.get("probe_grammar_boundary_audits", [])),
         "probe_grammar_epoch_audit_count": len(packet.get("probe_grammar_epoch_audits", [])),
         "distributed_manifest_epoch_audit_count": len(packet.get("distributed_manifest_epoch_audits", [])),
+        "configuration_reconfiguration_audit_count": len(packet.get("configuration_reconfiguration_audits", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),

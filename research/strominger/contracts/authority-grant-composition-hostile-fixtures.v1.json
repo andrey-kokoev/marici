@@ -991,6 +991,30 @@
         {"collection": "distributed_manifest_epoch_audits", "id": "two_site_manifest_fork_and_repair", "field": "repair", "value": {"linearization_network": "three_replica_majority_linearizer", "certificate_value_fields": ["epoch", "manifest_sha256"], "certificate_epoch": 12, "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "certificate_quorum": ["r1", "r2"], "conflicting_certificate_quorum": ["r2", "r3"], "intersection_witness": ["r2"], "durable_non_equivocation": false, "conflicting_same_epoch_digest_certificate_constructible": true, "source_authorized_configuration_role": true}}
       ],
       "expected_code": "manifest_digest_fork_survives_linearization"
+    },
+    {
+      "id": "new_configuration_self_activates",
+      "description": "The proposed successor quorum grants itself authority before the old configuration authorizes the crossing.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "new_only_may_self_activate", "value": true}
+      ],
+      "expected_code": "reconfiguration_authority_laundering"
+    },
+    {
+      "id": "reconfiguration_certificate_omits_old_digest",
+      "description": "A transition certificate is replayable from a different predecessor because it does not bind the old digest.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "transition_value_fields", "value": ["old_epoch", "new_epoch", "new_digest", "new_members"]}
+      ],
+      "expected_code": "reconfiguration_certificate_underbinds_transition"
+    },
+    {
+      "id": "reconfiguration_bridge_can_equivocate",
+      "description": "The shared transition replica can endorse incompatible successors at the same boundary.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "bridge_durable_non_equivocation", "value": false}
+      ],
+      "expected_code": "reconfiguration_bridge_not_non_equivocating"
     }
   ]
 }
