@@ -86,6 +86,7 @@ def main():
     fault_audits = {item["id"]: item for item in packet["fault_parametric_quorum_audits"]}
     hypergraph_audits = {item["id"]: item for item in packet["fault_hypergraph_quorum_audits"]}
     discovery_audits = {item["id"]: item for item in packet["common_cause_discovery_audits"]}
+    probe_grammar_audits = {item["id"]: item for item in packet["probe_grammar_authority_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -424,6 +425,15 @@ def main():
         "common_cause_discovery_remains_open_world":
             bool(discovery_audits["discover_shared_build_pipeline_edge"]["bounded_tested_constructor_grammar"])
             and not discovery_audits["discover_shared_build_pipeline_edge"]["claims_universal_independence"],
+        "probe_grammar_coverage_is_source_relative":
+            probe_grammar_audits["common_cause_probe_grammar_v2"]["coverage_kind"] == "relative_exhaustion"
+            and bool(probe_grammar_audits["common_cause_probe_grammar_v2"]["authority_root"])
+            and not probe_grammar_audits["common_cause_probe_grammar_v2"]["claims_constructor_universality"],
+        "grammar_refinement_expires_negative_but_preserves_positive_evidence":
+            probe_grammar_audits["common_cause_probe_grammar_v2"]["predecessor_negative_certificate_expired"]
+            and probe_grammar_audits["common_cause_probe_grammar_v2"]["replay_required_after_refinement"]
+            and probe_grammar_audits["common_cause_probe_grammar_v2"]["replay_status"] == "passed"
+            and ["r1", "r2"] in probe_grammar_audits["common_cause_probe_grammar_v2"]["discovered_faults_preserved_under_refinement"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

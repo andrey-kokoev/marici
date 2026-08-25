@@ -855,6 +855,46 @@
         {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "claims_universal_independence", "value": true}
       ],
       "expected_code": "closed_world_common_cause_claim"
+    },
+    {
+      "id": "probe_grammar_has_no_source_authority",
+      "description": "A finite probe list is called exhaustive without an authority root for its constructor classes.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "authority_root", "value": null}
+      ],
+      "expected_code": "probe_grammar_lacks_source_authority"
+    },
+    {
+      "id": "probe_grammar_omits_constructor_class",
+      "description": "The build-pipeline probe is executed but absent from the declared constructor coverage map.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "authorized_probes", "value": {"administrator_credential": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential"]}}
+      ],
+      "expected_code": "probe_grammar_constructor_coverage_gap"
+    },
+    {
+      "id": "grammar_refinement_keeps_stale_negative_certificate",
+      "description": "A newly admitted constructor class is tested while the predecessor's negative authority is silently retained.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "predecessor_negative_certificate_expired", "value": false}
+      ],
+      "expected_code": "probe_grammar_refinement_retains_stale_negative_authority"
+    },
+    {
+      "id": "grammar_refinement_drops_learned_fault",
+      "description": "Refining the probe language forgets the previously observed shared-build fault edge.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "discovered_faults_preserved_under_refinement", "value": []}
+      ],
+      "expected_code": "probe_grammar_refinement_drops_positive_discovery"
+    },
+    {
+      "id": "relative_probe_coverage_claimed_universal",
+      "description": "Exhaustion of two constructor classes is laundered into completeness over all possible common causes.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "claims_constructor_universality", "value": true}
+      ],
+      "expected_code": "probe_grammar_launders_relative_coverage"
     }
   ]
 }
