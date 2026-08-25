@@ -1032,6 +1032,22 @@
         {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "fault_bound", "value": 2}
       ],
       "expected_code": "incorrect_reconfiguration_fault_threshold"
+    },
+    {
+      "id": "bridge_replicas_share_hidden_authority_root",
+      "description": "Both Byzantine bridge seats share one administrator, but the resulting two-seat fault edge is omitted.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "bridge_authority_roots", "value": {"r2": "admin_B", "r3": "admin_B"}}
+      ],
+      "expected_code": "reconfiguration_common_cause_omitted"
+    },
+    {
+      "id": "correlated_bridge_fault_claimed_safe",
+      "description": "The entire bridge is an admitted common-cause fault set while the transition remains classified safe.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "admissible_bridge_fault_sets", "value": [["r2"], ["r3"], ["r2", "r3"]]}
+      ],
+      "expected_code": "incorrect_reconfiguration_hypergraph_safety"
     }
   ]
 }
