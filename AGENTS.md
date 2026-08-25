@@ -48,11 +48,26 @@ compactions — if an idea stays in your chat, it is lost to everyone else.
   the legacy read aliases `marici:communication` and `communication`, and the neighborhood of your canonical
   team-member id. A handoff or objection may redirect your work. Acknowledge
   what you act on with `narada.epistemic:replies_to`.
-- **Keep up with the team's output.** Skim new ledger entries, packets,
-  and graph claims from the other researchers as they land — at least at
-  session start and before claiming overlap-prone work. Their checkers and
-  results files are often directly reusable, and their residuals may be
-  the constraint your problem is missing.
+- **Keep up with the team's output at natural work boundaries.** Batch-review
+  new ledger entries, packets, and graph claims from the other researchers at
+  session start, after completing a bounded objective, while naturally waiting
+  on a long computation, before claiming overlap-prone work, and before a
+  status or closeout claim. Do not interrupt active coherent work merely
+  because new messages landed; defer routine catch-up to the next natural
+  break. A known directed obligation or blocking objection may require earlier
+  attention. Teammates' checkers and results files are often directly reusable,
+  and their residuals may be the constraint your problem is missing.
+
+  Operationally, a **natural work boundary** is when the current reasoning or
+  execution chain is finished or safely paused and the agent is about to choose
+  the next substantive step. Session start, a completed bounded objective,
+  waiting with no useful dependent work, and pre-handoff or pre-closeout are
+  ordinary examples. An elapsed-time interval, an ordinary message arrival, or
+  movement between dependent steps is not a boundary. At a boundary, review
+  the bounded suffix since the last rehydrated sequence and react only to
+  materially relevant work. A directed obligation or blocking objection should
+  be read after safely checkpointing the current atomic operation, not by
+  abandoning it halfway through.
 - **Tell the author what you think of their work.** Read it, then say so
   through the graph, addressed to them: a confirmation that their checker
   reproduces on your turf, a question about a step you could not follow,
