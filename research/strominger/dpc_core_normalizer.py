@@ -214,6 +214,31 @@ def audit_native_capabilities(contract: dict[str, Any]) -> list[dict[str, Any]]:
     return audits
 
 
+def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    for event in contract.get("epoch_successor_events", []):
+        predecessor, successor = event.get("predecessor_epoch", {}), event.get("successor_epoch", {})
+        same_family = predecessor.get("parameter") == successor.get("parameter")
+        adjacent = same_family and isinstance(predecessor.get("offset"), int) and successor.get("offset") == predecessor["offset"] + 1
+        digests_bound = all(len(event.get(field, "")) == 64 for field in ("predecessor_state_sha256", "successor_state_sha256"))
+        authority = bool(event.get("configuration_authority_roots")) and event.get("joint_configuration_certificate")
+        unique = event.get("durable_non_equivocation") and not event.get("competing_successor_constructible")
+        physical = bool(event.get("physical_state_correspondence"))
+        errors = []
+        if not adjacent:
+            errors.append("nonadjacent_or_cross_family_epoch_successor")
+        if not digests_bound:
+            errors.append("epoch_successor_does_not_bind_states")
+        if not authority:
+            errors.append("epoch_successor_lacks_configuration_authority")
+        if not unique:
+            errors.append("epoch_successor_fork_constructible")
+        if not physical:
+            errors.append("epoch_successor_lacks_physical_correspondence")
+        audits.append({"id": event["id"], "passed": not errors, "errors": errors})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -239,10 +264,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         normalization_results.append({"id": case["id"], "passed": passed, "error": error, "normalized": normalized})
     legacy_audits = audit_legacy_grants(legacy) if legacy is not None else []
     native_audits = audit_native_capabilities(contract)
+    successor_audits = audit_epoch_successors(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -256,4 +282,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
             "grants": legacy_audits,
         },
         "native_capabilities": native_audits,
+        "epoch_successor_events": successor_audits,
     }

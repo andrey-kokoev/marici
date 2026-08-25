@@ -48,3 +48,16 @@ Deleting any one of the six constructor fields makes compilation fail. This
 is a bounded minimality result: the native inhabitant is not obtained by
 defaults, and every field excluded by the legacy projection audit is operative
 in the import boundary.
+
+## Authorized epoch successor
+
+The symbolic order is realized by `advance_e_0_to_e_1`, not by labels alone.
+The event binds predecessor and successor state digests, carries a joint
+configuration certificate, requires durable non-equivocation, and includes an
+executor-side physical-state correspondence before `e+1` is accepted.
+
+Three deletion-style hostiles separate the mechanism: a competing successor
+creates a fork, offset two is not an adjacent successor, and a label advance
+without physical correspondence does not advance the executor. Thus epoch
+order is induced by an authorized state transition rather than presumed from
+symbolic arithmetic.
