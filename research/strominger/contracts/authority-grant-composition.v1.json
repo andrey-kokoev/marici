@@ -206,6 +206,32 @@
       "revocable": true,
       "valid_from": 21,
       "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_C",
+      "holder": "independent_reviewer_C",
+      "issuing_charter": "cross_sector_methods_charter_C",
+      "provenance_chain": ["cross_sector_methods_charter_C", "independent_reviewer_C"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_D",
+      "holder": "independent_reviewer_D",
+      "issuing_charter": "cross_sector_methods_charter_D",
+      "provenance_chain": ["cross_sector_methods_charter_D", "independent_reviewer_D"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
     }
   ],
   "review_root_independence_audits": [
@@ -299,6 +325,39 @@
       "replayed_at": 30,
       "replay_completed": true,
       "prospective_authority_after_replay": true
+    }
+  ],
+  "temporal_replay_atlas_audits": [
+    {
+      "id": "two_successor_atlases_same_packet",
+      "original_review": "review_mechanism_delta",
+      "paths": [
+        {
+          "id": "replay_path_AB",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_A_successor", "source_methods_board_B"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
+        },
+        {
+          "id": "replay_path_CD",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_C", "source_methods_board_D"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
+        }
+      ],
+      "comparison_committed_before_replay": true,
+      "source_derived_path_comparison": "same packet, same precommitted merits predicate, disjoint certified roots",
+      "disposition_defect": 0,
+      "prospective_authority_restored": true,
+      "higher_appeal_cell": {
+        "authority_root": "source_appeal_panel",
+        "role": "compare_procedure_not_truth",
+        "may_override_disagreement": false
+      }
     }
   ],
   "rival_extension_audits": [

@@ -494,6 +494,55 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if restored != bool(roots_live and audit.get("replay_required") and audit.get("replay_completed")):
             err("invalid_temporal_authority_restoration", aid, str(restored))
 
+    # A temporal replay atlas is flat only when independently rooted replay
+    # paths on the same packet have the same disposition.  A higher appeal cell
+    # may compare or restart procedures, but cannot coerce disagreement into
+    # consensus or acquire truth-selection authority.
+    for atlas in packet.get("temporal_replay_atlas_audits", []):
+        aid = atlas["id"]
+        original = reviews.get(atlas.get("original_review"))
+        paths = atlas.get("paths", [])
+        if original is None or len(paths) < 2:
+            err("untyped_temporal_replay_atlas", aid, str(atlas.get("original_review")))
+            continue
+        path_root_sets: list[set[str]] = []
+        decisions = []
+        for path in paths:
+            roots = path.get("roots", [])
+            replayed_at = path.get("replayed_at")
+            path_root_sets.append(set(roots))
+            decisions.append(path.get("decision"))
+            if path.get("packet_sha256") != original.get("immutable_evidence_packet_sha256"):
+                err("temporal_atlas_packet_mismatch", path.get("id", aid), str(path.get("packet_sha256")))
+            if not path.get("completed") or not isinstance(replayed_at, int) or not roots:
+                err("incomplete_temporal_replay_path", path.get("id", aid), str(path))
+                continue
+            for root_id in roots:
+                root = root_certifications.get(root_id)
+                if root is None or replayed_at < root.get("valid_from", replayed_at) or (
+                    root.get("revoked_at") is not None and replayed_at >= root["revoked_at"]
+                ):
+                    err("temporal_atlas_uses_inactive_root", path.get("id", aid), root_id)
+        for left_index in range(len(path_root_sets)):
+            for right_index in range(left_index + 1, len(path_root_sets)):
+                if path_root_sets[left_index] & path_root_sets[right_index]:
+                    err("temporal_replay_paths_not_independently_rooted", aid, str(sorted(path_root_sets[left_index] & path_root_sets[right_index])))
+        if not atlas.get("comparison_committed_before_replay") or not atlas.get("source_derived_path_comparison"):
+            err("target_fitted_temporal_path_comparison", aid, "comparison law must precede replay")
+        disagreement = len(set(decisions)) != 1
+        if disagreement or atlas.get("disposition_defect") != 0:
+            err("unresolved_governance_holonomy", aid, str(decisions))
+            if atlas.get("prospective_authority_restored"):
+                err("authority_restored_across_governance_holonomy", aid, str(decisions))
+        elif not atlas.get("prospective_authority_restored"):
+            err("flat_temporal_atlas_withholds_authority", aid, str(decisions))
+        cell = atlas.get("higher_appeal_cell", {})
+        appeal_root = root_certifications.get(cell.get("authority_root"))
+        if appeal_root is None or appeal_root.get("jurisdiction") != "rival_admission_appeal":
+            err("uncertified_temporal_higher_cell", aid, str(cell.get("authority_root")))
+        if cell.get("role") != "compare_procedure_not_truth" or cell.get("may_override_disagreement") is not False:
+            err("temporal_higher_cell_launders_truth_authority", aid, str(cell))
+
     # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
     # earned only after a source-derived discriminator closes the new kernel.

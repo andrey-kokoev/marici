@@ -407,6 +407,46 @@
         {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "revoked_at", "value": 5}
       ],
       "expected_code": "backdated_review_root_revocation"
+    },
+    {
+      "id": "successor_replay_paths_disagree",
+      "description": "Two independently valid successor atlases return different dispositions while standing is declared restored.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "paths", "value": [{"id":"replay_path_AB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_A_successor","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"},{"id":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_C","source_methods_board_D"],"replayed_at":30,"completed":true,"decision":"rejected"}]}
+      ],
+      "expected_code": "unresolved_governance_holonomy"
+    },
+    {
+      "id": "temporal_paths_share_review_root",
+      "description": "Two nominal replay paths share a controlling merits root and are falsely treated as independent.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "paths", "value": [{"id":"replay_path_AB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_A_successor","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"},{"id":"replay_path_CB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_C","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"}]}
+      ],
+      "expected_code": "temporal_replay_paths_not_independently_rooted"
+    },
+    {
+      "id": "temporal_path_comparison_is_fitted",
+      "description": "The rule for comparing successor replay paths is chosen after their dispositions are known.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "comparison_committed_before_replay", "value": false}
+      ],
+      "expected_code": "target_fitted_temporal_path_comparison"
+    },
+    {
+      "id": "higher_appeal_cell_selects_truth",
+      "description": "The higher appeal cell claims authority to overwrite disagreement and select mechanism truth.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "higher_appeal_cell", "value": {"authority_root":"source_appeal_panel","role":"select_mechanism_truth","may_override_disagreement":true}}
+      ],
+      "expected_code": "temporal_higher_cell_launders_truth_authority"
+    },
+    {
+      "id": "flat_replay_atlas_withholds_standing",
+      "description": "All valid replay paths agree but the contract arbitrarily withholds restored prospective standing.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "prospective_authority_restored", "value": false}
+      ],
+      "expected_code": "flat_temporal_atlas_withholds_authority"
     }
   ]
 }
