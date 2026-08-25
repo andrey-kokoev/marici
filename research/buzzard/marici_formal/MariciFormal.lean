@@ -21,3 +21,8 @@ import MariciFormal.FiniteConcurrentHistory
 import MariciFormal.CASFencingRefinement
 import MariciFormal.SmallScheduleModelCheck
 import MariciFormal.CompensatingRecovery
+import MariciFormal.DS3Finite
+import MariciFormal.BoundedModelCheckAudit
+import MariciFormal.SemanticFidelity
+import MariciFormal.SafetyLiveness
+import MariciFormal.BoundedLiveness
