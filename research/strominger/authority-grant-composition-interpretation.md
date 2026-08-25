@@ -1040,6 +1040,24 @@ not an unqualified independence theorem. The smallest missing constructor is
 a versioned, authority-rooted probe grammar with a replay transition; a bare
 list of successful tests cannot carry exhaustion authority.
 
+The next apparent regress is stopped by separating declaration authority from
+totality authority. A deployment owner can sign an accountable manifest and
+thereby authorize the statement “these constructors occur in this declared
+deployment description.” The same signature cannot prove that no undeclared
+physical constructor exists. Its authority ends at the manifest boundary.
+
+Accordingly the contract carries an explicit complement: an open constructor
+frontier and a live refinement port. The frontier is not a list of asserted
+faults; it is the typed admission that the present grammar is not terminal.
+This yields the finite rule
+
+\[
+\text{signed boundary} + \text{relative exhaustion} + \text{open challenge port},
+\]
+
+without an infinite regress of authorities certifying authorities and without
+letting a root self-certify omniscience.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.
