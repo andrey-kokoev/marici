@@ -164,6 +164,12 @@ The machine-readable fixture suite rejects:
 97. distinct replica identifiers treated as proof of independence;
 98. a common-cause hypergraph asserted without source authority;
 99. an unsafe hypergraph lacking an explicit violation witness.
+100. a discovered edge that does not suspend prior safety authority;
+101. a target-fitted common-cause probe;
+102. a response support that disagrees with the admitted fault edge;
+103. a discovered edge omitted from the enlarged fault family;
+104. a repair that drops a previously discovered common cause;
+105. finite probes claimed to establish universal independence.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -873,6 +879,56 @@ claim that every physical correlation has been discovered.
 
 Thus “independent replicas” is not a numerical fact. It is a typed provenance
 claim about independently transformable authority loci.
+
+### Open-world common-cause discovery
+
+The fault hypergraph is not fixed. For declared constructor probes
+(P_1,ldots,P_m) and replicas (r_1,ldots,r_n), form the exact binary
+response matrix
+
+\[
+R_{ij}=1
+\quad\Longleftrightarrow\quad
+\text{intervening on }P_i\text{ moves replica }r_j.
+\]
+
+The support of each source-derived row is a candidate common-cause hyperedge.
+In the bounded audit, administrator probes initially separate four replicas,
+but the build-provenance probe returns
+
+\[
+(1,1,0,0),
+\]
+
+discovering (F_{\mathrm{build}}={r_1,r_2}). This edge swallows a
+(3)-of-(4) quorum overlap, so the old safety authority is suspended
+immediately.
+
+The transition is
+
+\[
+\text{safe relative to }\mathcal F
+\longrightarrow
+\text{new edge admitted; challenge open}
+\longrightarrow
+\text{revalidated on a geometry safe for }\mathcal F\cup\{F_{\mathrm{new}}\}.
+\]
+
+The repair is not allowed to forget the discovered edge. Here the verified
+(4)-of-(5) topology retains ({r_1,r_2}) in its catalog and still leaves
+an honest overlap witness.
+
+Therefore independence means
+
+\[
+\boxed{
+\text{independent relative to a declared, intervention-tested,
+open-world constructor grammar}.}
+\]
+
+Finite probes do not establish universal physical independence. They provide
+a challengeable current model and a typed rule for revoking safety when a new
+common cause becomes constructible.
 
 ### Refinement law: higher coherence
 
