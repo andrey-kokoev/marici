@@ -16,10 +16,10 @@ Four hostile mutations are rejected:
 \begin{array}{c|c}
 \text{mistyping}&\text{obstruction}\\
 \hline
-\text{groupoid arrow as open restriction}&\texttt{missing_open_overlap}\\
-\text{rank-changing equivalence}&\texttt{groupoid_fiber_mismatch}\\
-\text{broken path}&\texttt{noncomposable_path}\\
-\text{failed cycle}&\texttt{nonzero_identity_defect}
+\text{groupoid arrow as open restriction}&\mathtt{missing\_open\_overlap}\\
+\text{rank-changing equivalence}&\mathtt{groupoid\_fiber\_mismatch}\\
+\text{broken path}&\mathtt{noncomposable\_path}\\
+\text{failed cycle}&\mathtt{nonzero\_identity\_defect}
 \end{array}
 \]
 
