@@ -104,6 +104,11 @@ The machine-readable fixture suite rejects:
 37. an appeal controlled by the original reviewers;
 38. nominally independent reviewers sharing one authority root;
 39. admission review silently upgrading constructor authority to executor authority.
+40. a review root lacking an external charter;
+41. a review root authorizing itself;
+42. distinct review roots sharing a hidden controller;
+43. a procedural charter claiming authority to select mechanism truth;
+44. an appeal panel operating through an uncertified root.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -421,6 +426,33 @@ This answers the governance question without creating an infinite regress:
 review authority is not explanatory authority over the mechanism. It is a
 bounded procedural grant over the admission operation, auditable by packet
 identity, declared authority roots, and a disjoint appeal route.
+
+### Root-certification law: independence must descend from provenance
+
+Merely writing two different root identifiers does not establish independent
+review. Each root must descend from an external issuing charter, identify its
+holder and jurisdiction, remain revocable, and stop at the procedural ceiling
+of challenge standing. A root may not cite itself as its own source.
+
+For merits roots (r_A,r_B), the independence audit asks for more than
+(r_A\ne r_B): their controlling-ancestor intersection must be empty, and the
+comparison must be source-derived with zero coherence defect. The appeal root
+has a separate jurisdiction and holder.
+
+Thus the regress terminates at a typed constitutional boundary rather than an
+all-purpose epistemic sovereign:
+
+\[
+\boxed{
+\text{review-root authority}
+=\text{external charter}+\text{narrow jurisdiction}+\text{revocability},
+\qquad
+\text{truth authority}=0.}
+\]
+
+This does not prove that the charter is metaphysically correct. It makes the
+remaining institutional assumption explicit, bounded, and counterfactually
+revocable—the smallest object on which governance can honestly depend.
 
 ### Refinement law: higher coherence
 

@@ -73,6 +73,8 @@ def main():
     rival_admissions = {item["id"]: item for item in packet["rival_admissions"]}
     rival_reviews = {item["id"]: item for item in packet["rival_admission_reviews"]}
     identity_audits = {item["id"]: item for item in packet["proposer_identity_invariance_audits"]}
+    review_roots = {item["id"]: item for item in packet["review_authority_root_certifications"]}
+    root_audits = {item["id"]: item for item in packet["review_root_independence_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -209,6 +211,29 @@ def main():
         "every_rival_disposition_has_review_and_appeal":
             {review["admission_id"] for review in rival_reviews.values()} == set(rival_admissions)
             and all(review["appeal_available"] and review["appeal_reviewers"] for review in rival_reviews.values()),
+        "review_authority_roots_are_externally_certified": all(
+            root["issuing_charter"] != root["id"]
+            and root["issuing_charter"]
+            and root["id"] not in root["provenance_chain"]
+            for root in review_roots.values()
+        ),
+        "review_root_scope_is_strictly_procedural": all(
+            root["authority_kind"] == "procedural_review"
+            and root["operative_authority_ceiling"] == "challenge_standing"
+            and not root["may_select_mechanism_truth"]
+            and root["revocable"]
+            for root in review_roots.values()
+        ),
+        "review_root_independence_has_zero_coherence_defect":
+            root_audits["merits_roots_A_B_independent"]["shared_controlling_ancestors"] == []
+            and bool(root_audits["merits_roots_A_B_independent"]["source_derived_comparison"])
+            and root_audits["merits_roots_A_B_independent"]["coherence_defect"] == 0,
+        "appeal_authority_is_certified_and_separate": all(
+            all(root in review_roots and review_roots[root]["jurisdiction"] == "rival_admission_appeal"
+                for root in review["appeal_authority_roots"])
+            and not set(review["appeal_authority_roots"]) & set(review["reviewer_authority_roots"])
+            for review in rival_reviews.values()
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -248,6 +273,7 @@ def main():
         "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
         "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
         "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
+        "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

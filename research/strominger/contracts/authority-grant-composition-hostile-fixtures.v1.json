@@ -319,6 +319,46 @@
         {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "authority_kind_after", "value": "executor"}
       ],
       "expected_code": "rival_review_authority_laundering"
+    },
+    {
+      "id": "review_root_has_no_external_charter",
+      "description": "A reviewer root is presented without an issuing source charter.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "issuing_charter", "value": null}
+      ],
+      "expected_code": "uncertified_review_authority_root"
+    },
+    {
+      "id": "review_root_self_authorizes",
+      "description": "A review authority root cites itself as its own charter and provenance.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "issuing_charter", "value": "source_methods_board_A"}
+      ],
+      "expected_code": "self_authorized_review_root"
+    },
+    {
+      "id": "review_roots_share_hidden_controller",
+      "description": "Distinct merits roots descend from one controlling ancestor.",
+      "mutations": [
+        {"collection": "review_root_independence_audits", "id": "merits_roots_A_B_independent", "field": "shared_controlling_ancestors", "value": ["incumbent_funding_board"]}
+      ],
+      "expected_code": "review_roots_share_controlling_authority"
+    },
+    {
+      "id": "review_charter_claims_truth_selection",
+      "description": "A procedural review charter expands into authority to select the true mechanism.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "may_select_mechanism_truth", "value": true}
+      ],
+      "expected_code": "unbounded_review_authority_root"
+    },
+    {
+      "id": "appeal_uses_uncertified_root",
+      "description": "The appeal panel is named but its authority root has no certification.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "appeal_authority_roots", "value": ["missing_appeal_root"]}
+      ],
+      "expected_code": "uncertified_review_authority_root"
     }
   ]
 }

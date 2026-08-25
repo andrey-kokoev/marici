@@ -3,10 +3,11 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "e5922e231fd979ed2cd37d3998f8dae10405db6aa6e7347e8a1d2f58218843a8",
+  "contract_sha256": "6d3bef37fbcb0d8655b8e679762c2edd15384b805b5f998d6505d4013fe9e68c",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
+    "appeal_authority_is_certified_and_separate": true,
     "associativity_holds_on_typed_domain": true,
     "atlas_refinement_preserves_global_reconstruction": true,
     "changing_B_requires_source_derived_natural_coherence": true,
@@ -31,6 +32,9 @@
     "presentation_cells_are_invertible_and_kind_preserving": true,
     "proposer_identity_does_not_change_admission": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
+    "review_authority_roots_are_externally_certified": true,
+    "review_root_independence_has_zero_coherence_defect": true,
+    "review_root_scope_is_strictly_procedural": true,
     "rival_admission_has_separated_governance_roles": true,
     "rival_protocol_remains_open_world": true,
     "rival_review_is_content_addressed_and_precommitted": true,
@@ -54,6 +58,15 @@
         "rival_review_authority_laundering"
       ],
       "expected_code": "rival_review_authority_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "appeal_uses_uncertified_root": {
+      "description": "The appeal panel is named but its authority root has no certification.",
+      "error_codes": [
+        "uncertified_review_authority_root"
+      ],
+      "expected_code": "uncertified_review_authority_root",
       "passed": true,
       "valid": false
     },
@@ -197,7 +210,8 @@
     "incumbent_is_sole_rival_reviewer": {
       "description": "The incumbent mechanism controls the only admission vote on its own rival.",
       "error_codes": [
-        "incumbent_or_proposer_controls_rival_admission"
+        "incumbent_or_proposer_controls_rival_admission",
+        "uncertified_review_authority_root"
       ],
       "expected_code": "incumbent_or_proposer_controls_rival_admission",
       "passed": true,
@@ -318,6 +332,15 @@
       "passed": true,
       "valid": false
     },
+    "review_charter_claims_truth_selection": {
+      "description": "A procedural review charter expands into authority to select the true mechanism.",
+      "error_codes": [
+        "unbounded_review_authority_root"
+      ],
+      "expected_code": "unbounded_review_authority_root",
+      "passed": true,
+      "valid": false
+    },
     "review_criteria_fitted_after_response": {
       "description": "Admission criteria are selected only after reviewers inspect the rival response column.",
       "error_codes": [
@@ -327,10 +350,38 @@
       "passed": true,
       "valid": false
     },
+    "review_root_has_no_external_charter": {
+      "description": "A reviewer root is presented without an issuing source charter.",
+      "error_codes": [
+        "uncertified_review_authority_root"
+      ],
+      "expected_code": "uncertified_review_authority_root",
+      "passed": true,
+      "valid": false
+    },
+    "review_root_self_authorizes": {
+      "description": "A review authority root cites itself as its own charter and provenance.",
+      "error_codes": [
+        "self_authorized_review_root"
+      ],
+      "expected_code": "self_authorized_review_root",
+      "passed": true,
+      "valid": false
+    },
+    "review_roots_share_hidden_controller": {
+      "description": "Distinct merits roots descend from one controlling ancestor.",
+      "error_codes": [
+        "review_roots_share_controlling_authority"
+      ],
+      "expected_code": "review_roots_share_controlling_authority",
+      "passed": true,
+      "valid": false
+    },
     "reviewers_share_one_authority_root": {
       "description": "Two nominal reviewers derive authority from the same source and are falsely counted as independent.",
       "error_codes": [
-        "nonindependent_rival_review_authority"
+        "nonindependent_rival_review_authority",
+        "reviewer_root_holder_mismatch"
       ],
       "expected_code": "nonindependent_rival_review_authority",
       "passed": true,
@@ -357,6 +408,7 @@
     "rival_review_has_no_independent_appeal": {
       "description": "The initial reviewers are also the entire appeal panel.",
       "error_codes": [
+        "invalid_appeal_authority_root",
         "missing_independent_rival_appeal"
       ],
       "expected_code": "missing_independent_rival_appeal",
@@ -423,19 +475,20 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "51e8a2d2f748eb082f0947e5169d15d9cbc0d1e0e17eea197be2ccb41179cdd2",
-  "hostile_passed": 39,
-  "hostile_total": 39,
+  "hostile_fixture_sha256": "8bd8eabc178620f6e1f0427bf1405861f8f6c222d872ca0ad22162cbe4d40171",
+  "hostile_passed": 44,
+  "hostile_total": 44,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 40,
+  "passed_gates": 44,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
+  "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
   "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
   "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 40,
+  "total_gates": 44,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
