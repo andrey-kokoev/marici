@@ -10,7 +10,8 @@
         {"repair_id":"C","input_defect_signature":["dC"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"C":1},"support_delta":["sC"],"authority_root":"root_C","prerequisites":[],"residual_certificate_type":"residual/C","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]}
       ],
       "commutes_with":[["A","B"],["A","C"],["B","C"]],
-      "expected":{"linear_extension_count":6,"legal_completed_path_count":6,"swap_component_count":1,"typed_endpoint_count":1}
+      "braid_checks":[{"id":"strict_ABC_braid","start_order":["A","B","C"],"position":0,"residual_policy":{"class":"zero","source_authority_root":null}}],
+      "expected":{"linear_extension_count":6,"legal_completed_path_count":6,"swap_component_count":1,"typed_endpoint_count":1,"first_braid_class":"zero"}
     },
     {
       "id":"one_precedence_relation",
@@ -32,6 +33,58 @@
       ],
       "commutes_with":[["X","Y"]],
       "expected":{"linear_extension_count":2,"legal_completed_path_count":2,"swap_component_count":2,"typed_endpoint_count":2}
+    },
+    {
+      "id":"pairwise_diamonds_failed_braid",
+      "initial_state":{"defects":["dA","dB","dC"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":[],"scalar_output":"same-bytes"},
+      "repairs":[
+        {"repair_id":"A","input_defect_signature":["dA"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_A","prerequisites":[],"residual_certificate_type":"residual/A","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"B","input_defect_signature":["dB"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_B","prerequisites":[],"residual_certificate_type":"residual/B","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"C","input_defect_signature":["dC"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_C","prerequisites":[],"residual_certificate_type":"residual/C","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["A","B"],["A","C"],["B","C"]],
+      "swap_cell_witnesses":{"A,B,C|0":{"value":1,"source_authority_root":"pairwise_current_root","derivation":"source_comparison_current"}},
+      "braid_checks":[{"id":"ABC_braid","start_order":["A","B","C"],"position":0,"residual_policy":{"class":"untyped_residual","source_authority_root":null}}],
+      "expected":{"linear_extension_count":6,"legal_completed_path_count":6,"swap_component_count":1,"typed_endpoint_count":1,"first_braid_class":"untyped_residual"}
+    },
+    {
+      "id":"central_phase_anomaly",
+      "initial_state":{"defects":["dA","dB","dC"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":[],"scalar_output":"same-bytes"},
+      "repairs":[
+        {"repair_id":"A","input_defect_signature":["dA"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_A","prerequisites":[],"residual_certificate_type":"residual/A","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"B","input_defect_signature":["dB"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_B","prerequisites":[],"residual_certificate_type":"residual/B","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"C","input_defect_signature":["dC"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_C","prerequisites":[],"residual_certificate_type":"residual/C","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["A","B"],["A","C"],["B","C"]],
+      "swap_cell_witnesses":{"A,B,C|0":{"value":1,"source_authority_root":"pairwise_current_root","derivation":"source_comparison_current"}},
+      "braid_checks":[{"id":"ABC_phase","start_order":["A","B","C"],"position":0,"residual_policy":{"class":"central_phase","source_authority_root":"phase_current_root"}}],
+      "expected":{"linear_extension_count":6,"legal_completed_path_count":6,"swap_component_count":1,"typed_endpoint_count":1,"first_braid_class":"central_phase"}
+    },
+    {
+      "id":"residual_capability_deleted_before_consumption",
+      "initial_state":{"defects":["dRead","dDelete"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":["residual_k"],"scalar_output":"same-bytes"},
+      "repairs":[
+        {"repair_id":"Read","input_defect_signature":["dRead"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_Read","prerequisites":[],"residual_certificate_type":"residual/Read","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":["residual_k"],"produces_capabilities":["residual_k"]},
+        {"repair_id":"Delete","input_defect_signature":["dDelete"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{},"support_delta":[],"authority_root":"root_Delete","prerequisites":[],"residual_certificate_type":"residual/Delete","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":["residual_k"],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["Read","Delete"]],
+      "expected":{"linear_extension_count":2,"legal_completed_path_count":1,"swap_component_count":1,"typed_endpoint_count":1}
     }
-  ]
+  ],
+  "theta_tate_fixture":{
+    "source_owner":"Grothendieck",
+    "assume_discrete_poset":false,
+    "compilation_mode":"declarations_only",
+    "expected_status":"source_declarations_required",
+    "open_source_questions":["P<->Q?","S<->P?","L<C?","(P,Q,S,A)<D?"],
+    "stages":[
+      {"repair_id":"S","description":"retain independent seam state","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"P","description":"split primitive k=1 current","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"Q","description":"split prime-square k=2 current","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"A","description":"attach archimedean boundary current","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"L","description":"retain discrete arithmetic label port","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"C","description":"complete coefficient module","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null},
+      {"repair_id":"D","description":"form determinant or Pfaffian if authorized","precedes":null,"commutes_with":null,"domain_after":null,"boundary_delta":null,"completion_scope":null}
+    ]
+  }
 }
