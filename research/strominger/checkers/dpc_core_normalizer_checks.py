@@ -349,6 +349,25 @@ for name, mutate_repair, expected in (
     errors = candidate_result["configuration_correlation_repair_theorems"][0]["errors"]
     correlation_repair_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["correlation_repair_hostiles"] = correlation_repair_hostiles
+repair_selection_hostiles = {}
+for name, mutate_selection, expected in (
+    ("untyped_valuation", lambda c: c["configuration_repair_selection_theorems"][0].update({"valuation_kind":"arbitrary_scores"}), "repair_selection_valuation_untyped"),
+    ("missing_selector_authority", lambda c: c["configuration_repair_selection_theorems"][0].update({"selector_source_authority_root":None}), "repair_selection_authority_laundered"),
+    ("safety_selects", lambda c: c["configuration_repair_selection_theorems"][0].update({"safety_authorizes_selection":True}), "repair_selection_authority_laundered"),
+    ("selection_executes", lambda c: c["configuration_repair_selection_theorems"][0].update({"selection_authorizes_execution":True}), "repair_selection_authority_laundered"),
+    ("wrong_selection_law", lambda c: c["configuration_repair_selection_theorems"][0].update({"selection_law":"fewest_loci_without_valuation"}), "repair_selection_law_untyped"),
+    ("zero_cost", lambda c: c["configuration_repair_selection_theorems"][0]["valuation_profiles"][0]["weights"][0].update({"cost":0}), "repair_selection_profile_mismatch"),
+    ("profile_missing_locus", lambda c: c["configuration_repair_selection_theorems"][0]["valuation_profiles"][0].update({"weights":c["configuration_repair_selection_theorems"][0]["valuation_profiles"][0]["weights"][:2]}), "repair_selection_profile_mismatch"),
+    ("fitted_winner", lambda c: c["configuration_repair_selection_theorems"][0]["valuation_profiles"][0].update({"expected_selected_repair":[["h0","admin_C"]]}), "repair_selection_profile_mismatch"),
+    ("canonical_selector_claimed", lambda c: c["configuration_repair_selection_theorems"][0].update({"no_canonical_selector_from_safety":False}), "repair_selection_canonical_choice_smuggled"),
+    ("bounded_scope", lambda c: c["configuration_repair_selection_theorems"][0].update({"theorem_scope":"two valuation profiles only"}), "repair_selection_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_selection(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_repair_selection_theorems"][0]["errors"]
+    repair_selection_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["repair_selection_hostiles"] = repair_selection_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -413,5 +432,7 @@ for name, rejected in finite_fusion_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " finite_fusion hostile." + name)
 for name, rejected in correlation_repair_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlation_repair hostile." + name)
+for name, rejected in repair_selection_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " repair_selection hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and all(correlation_repair_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and all(correlation_repair_hostiles.values()) and all(repair_selection_hostiles.values()) and coherence_omission_rejected else 1)
