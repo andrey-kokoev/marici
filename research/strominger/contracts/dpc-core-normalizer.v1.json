@@ -1,0 +1,34 @@
+{
+  "schema": "marici.dpc-core-normalizer.v1",
+  "rewrite_rules": ["typed_identity", "transport_fusion", "scope_attenuation", "support_union", "partition_flattening", "coherence_inverse", "epoch_fence"],
+  "critical_pairs": [
+    {
+      "id": "identity_then_attenuate_joins",
+      "coherence_cell": "typed_identity_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1},"executable_output":"read_once","operations":[{"kind":"identity","signature":{"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1}}}]},
+      "right": {"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1},"executable_output":"read_once","operations":[]}
+    },
+    {
+      "id": "equal_output_unequal_support_rejected",
+      "coherence_cell": "presentation_cell",
+      "expected_joined": false,
+      "left": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["clock_A"],"resource":{"queries":1},"executable_output":"bit","operations":[]},
+      "right": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["clock_B"],"resource":{"queries":1},"executable_output":"bit","operations":[]}
+    },
+    {
+      "id": "equal_output_modality_laundering_rejected",
+      "coherence_cell": "presentation_cell",
+      "expected_joined": false,
+      "left": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"credits":1},"executable_output":"receipt","operations":[]},
+      "right": {"authority_kind":"executor","scope":["spend"],"modality":"unrestricted","support":["ledger"],"resource":{"credits":1},"executable_output":"receipt","operations":[]}
+    },
+    {
+      "id": "matching_signature_missing_selector_cell_rejected",
+      "coherence_cell": null,
+      "expected_joined": false,
+      "left": {"authority_kind":"selector","scope":["choose"],"modality":"affine","support":["board_A"],"resource":{"choices":1},"executable_output":"A","operations":[]},
+      "right": {"authority_kind":"selector","scope":["choose"],"modality":"affine","support":["board_A"],"resource":{"choices":1},"executable_output":"A","operations":[]}
+    }
+  ]
+}
