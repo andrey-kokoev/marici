@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "7a9c5d8cc8aa67f12cf6f2e332b551ae055d951a84b54b7fc14e4abd88fd5cbd",
+      "replay_checker_sha256": "4fd057315871215b10d107632e446dc03af24638853443273854f66ce4a8fa64",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -893,6 +893,24 @@
         "conflicting_same_epoch_digest_certificate_constructible": false,
         "source_authorized_configuration_role": true
       }
+    }
+  ],
+  "configuration_reconfiguration_audits": [
+    {
+      "id": "joint_transition_epoch_12_to_13",
+      "old_configuration": {"epoch": 12, "members": ["r1", "r2", "r3"], "quorum": ["r1", "r2"]},
+      "new_configuration": {"epoch": 13, "members": ["r2", "r3", "r4"], "quorum": ["r2", "r4"]},
+      "transition_value_fields": ["old_epoch", "old_digest", "new_epoch", "new_digest", "new_members"],
+      "old_quorum_endorsement": ["r1", "r2"],
+      "new_quorum_endorsement": ["r2", "r4"],
+      "joint_consensus_required": true,
+      "old_only_may_activate_successor": false,
+      "new_only_may_self_activate": false,
+      "bridge_witness": ["r2"],
+      "bridge_durable_non_equivocation": true,
+      "conflicting_transition_constructible": false,
+      "bootstrap_authority": "epoch-12 configuration certificate",
+      "claims_authority_by_membership_transport": false
     }
   ],
   "application_cases": [
