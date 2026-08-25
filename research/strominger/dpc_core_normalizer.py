@@ -1476,6 +1476,84 @@ def audit_staged_repair_paths(contract: dict[str, Any], selection_audits: list[d
     return audits
 
 
+def audit_finite_staged_coherence(contract: dict[str, Any], repair_audits: list[dict[str, Any]], cocircuit_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    repair_results = {item["id"]: item for item in repair_audits}
+    repair_contracts = {item["id"]: item for item in contract.get("configuration_correlation_repair_theorems", [])}
+    cocircuit_results = {item["id"]: item for item in cocircuit_audits}
+    audits = []
+
+    def swapped(order: tuple[Any, ...], position: int) -> tuple[Any, ...]:
+        result = list(order)
+        result[position], result[position + 1] = result[position + 1], result[position]
+        return tuple(result)
+
+    def acted(order: tuple[Any, ...], word: list[int]) -> tuple[Any, ...]:
+        for position in word:
+            order = swapped(order, position)
+        return order
+
+    for theorem in contract.get("configuration_finite_staged_coherence_theorems", []):
+        errors: list[str] = []
+        repair_id = theorem.get("repair_theorem_id")
+        repair_result = repair_results.get(repair_id, {})
+        repair_contract = repair_contracts.get(repair_id, {})
+        fixture_result = next((item for item in repair_result.get("fixtures", []) if item.get("id") == theorem.get("repair_fixture_id")), {})
+        fixture_contract = next((item for item in repair_contract.get("fixtures", []) if item.get("id") == theorem.get("repair_fixture_id")), {})
+        cocircuit_base = cocircuit_results.get(repair_contract.get("cocircuit_theorem_id"), {})
+        if not repair_result.get("passed") or not fixture_result.get("passed") or not cocircuit_base.get("passed"):
+            errors.append("finite_staged_coherence_base_invalid")
+        selected = frozenset(tuple(locus) for locus in theorem.get("selected_primitive_repair", []))
+        primitive_repairs = {frozenset(tuple(locus) for locus in repair) for repair in fixture_result.get("minimal_repairs", [])}
+        selected_typed = selected in primitive_repairs and len(selected) >= 2
+        if not selected_typed:
+            errors.append("finite_staged_selected_repair_not_primitive")
+        generators_typed = theorem.get("path_generators") == "adjacent_transpositions_of_repair_loci"
+        relations_typed = set(theorem.get("coherence_relations", [])) == {"involution", "far_commutation", "braid"} and theorem.get("coherence_completion") == "coxeter_presentation_of_finite_symmetric_group" and theorem.get("primitive_or_fitted_higher_cells") is False
+        if not generators_typed:
+            errors.append("finite_staged_generators_untyped")
+        if not relations_typed:
+            errors.append("finite_staged_coxeter_relations_incomplete")
+        if theorem.get("intermediate_authority_kind") != "unsafe_repair_in_progress":
+            errors.append("finite_staged_intermediate_authority_laundered")
+        if theorem.get("theorem_scope") != "all finite selected repairs with constructor-authorized intermediate states":
+            errors.append("finite_staged_scope_laundered")
+
+        base_order = tuple(sorted(selected))
+        orders = list(permutations(base_order))
+        edge = frozenset(tuple(locus) for locus in fixture_contract.get("unsafe_hyperedge", []))
+        cocircuits = {frozenset(tuple(locus) for locus in witness) for witness in cocircuit_base.get("primitive_cocircuits", [])}
+        all_proper_prefixes_unsafe = True
+        endpoints = set()
+        for order in orders:
+            for prefix_size in range(1, len(order)):
+                intermediate = edge - set(order[:prefix_size])
+                all_proper_prefixes_unsafe &= any(cocircuit <= intermediate for cocircuit in cocircuits)
+            endpoints.add(edge - set(order))
+        common_safe_endpoint = len(endpoints) == 1 and all(not any(cocircuit <= endpoint for cocircuit in cocircuits) for endpoint in endpoints)
+
+        reachable = {base_order}
+        frontier = [base_order]
+        while frontier:
+            current = frontier.pop()
+            for position in range(max(0, len(current) - 1)):
+                target = swapped(current, position)
+                if target not in reachable:
+                    reachable.add(target)
+                    frontier.append(target)
+        adjacent_graph_connected = set(orders) == reachable
+        involution = all(acted(base_order, [i, i]) == base_order for i in range(max(0, len(base_order) - 1)))
+        braid = all(acted(base_order, [i, i + 1, i]) == acted(base_order, [i + 1, i, i + 1]) for i in range(max(0, len(base_order) - 2)))
+        four = tuple(range(4))
+        far_commutation = all(acted(four, [i, j]) == acted(four, [j, i]) for i in range(3) for j in range(3) if abs(i - j) > 1)
+        coxeter_holds = involution and braid and far_commutation and adjacent_graph_connected
+        expected = theorem.get("expected", {})
+        fixture_holds = len(selected) == expected.get("repair_size") and len(orders) == expected.get("path_count") and all_proper_prefixes_unsafe == expected.get("all_proper_prefixes_unsafe") and common_safe_endpoint == expected.get("common_safe_endpoint")
+        if not coxeter_holds or not fixture_holds:
+            errors.append("finite_staged_coherence_fixture_mismatch")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "selected_repair_primitive": selected_typed, "repair_size": len(selected), "factorization_path_count": len(orders), "all_proper_prefixes_unsafe": all_proper_prefixes_unsafe, "common_safe_endpoint": common_safe_endpoint, "adjacent_swap_graph_connected": adjacent_graph_connected, "coxeter_relations": {"involution": involution, "far_commutation": far_commutation, "braid": braid}, "coherence_generated": relations_typed and coxeter_holds, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1525,10 +1603,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     repair_execution_audits = audit_repair_execution(contract, repair_selection_audits)
     repair_decomposition_audits = audit_repair_execution_decomposition(contract, repair_selection_audits, correlation_cocircuit_audits)
     staged_repair_path_audits = audit_staged_repair_paths(contract, repair_selection_audits, correlation_cocircuit_audits)
+    finite_staged_coherence_audits = audit_finite_staged_coherence(contract, correlation_repair_audits, correlation_cocircuit_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits + repair_execution_audits + repair_decomposition_audits + staged_repair_path_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits + repair_execution_audits + repair_decomposition_audits + staged_repair_path_audits + finite_staged_coherence_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1567,4 +1646,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_repair_execution_theorems": repair_execution_audits,
         "configuration_repair_execution_decomposition_theorems": repair_decomposition_audits,
         "configuration_staged_repair_path_theorems": staged_repair_path_audits,
+        "configuration_finite_staged_coherence_theorems": finite_staged_coherence_audits,
     }
