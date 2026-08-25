@@ -1,0 +1,73 @@
+{
+  "work_package": "WP150",
+  "title": "Fixed-point Euler-correction audit",
+  "domain": "finite order-96 cellular actions with integral k=chi(X)/24",
+  "identity": "k=4 chi(X/G)-F/24, F=sum_(g!=e) chi(X^g)",
+  "contextual_partition": {
+    "F/24 mod 4 = 0": "k=0 mod 4",
+    "F/24 mod 4 = 1": "k=3 mod 4",
+    "F/24 mod 4 = 2": "k=2 mod 4",
+    "F/24 mod 4 = 3": "k=1 mod 4"
+  },
+  "classification": "fixed-point-corrected quotient does not select k in 4N unless an additional F=0 mod 96 law is sourced",
+  "selector": false,
+  "rigidifier": "order-96 presentation grammar only",
+  "physical_instrument": false,
+  "smallest_exact_falsifier": "chi(X/G)=1 and F=24 give chi(X)=72 and k=3, not k=0 mod 4",
+  "hostile_accessibility_falsifier": "chi(X/G)=1 and F=72 give k=1, which is inaccessible",
+  "packets": [
+    {
+      "chi_quotient": 1,
+      "fixed_sum": 0,
+      "chi_x": 96,
+      "k": 4,
+      "integral": true,
+      "modulus_four": true,
+      "accessible": true
+    },
+    {
+      "chi_quotient": 1,
+      "fixed_sum": 24,
+      "chi_x": 72,
+      "k": 3,
+      "integral": true,
+      "modulus_four": false,
+      "accessible": true
+    },
+    {
+      "chi_quotient": 1,
+      "fixed_sum": 48,
+      "chi_x": 48,
+      "k": 2,
+      "integral": true,
+      "modulus_four": false,
+      "accessible": true
+    },
+    {
+      "chi_quotient": 1,
+      "fixed_sum": 72,
+      "chi_x": 24,
+      "k": 1,
+      "integral": true,
+      "modulus_four": false,
+      "accessible": false
+    }
+  ],
+  "checks": {
+    "free_packet_gives_k_four": true,
+    "free_packet_preserves_modulus_four": true,
+    "fixed_sum_24_gives_k_three": true,
+    "fixed_sum_48_gives_k_two": true,
+    "fixed_sum_72_gives_k_one": true,
+    "all_four_residue_packets_are_integral": true,
+    "only_zero_residue_preserves_modulus_four": true,
+    "fixed_corrections_span_all_k_residues_mod_four": true,
+    "fixed_correction_can_restore_inaccessible_sector": true,
+    "correction_multiple_96_can_preserve_modulus": true,
+    "modulus_condition_is_fixed_sum_divisible_by_96": true,
+    "group_order_alone_does_not_fix_accessibility": true
+  },
+  "passed": 12,
+  "total": 12,
+  "all_passed": true
+}

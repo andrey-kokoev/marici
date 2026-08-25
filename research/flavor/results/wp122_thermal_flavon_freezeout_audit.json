@@ -1,0 +1,44 @@
+{
+  "work_package": "WP122",
+  "classification": "finite-volume thermal producer; freeze-out selector not source-authorized",
+  "arithmetic": {
+    "kappa": "2",
+    "diffusion": "1/6",
+    "beta_eff": "6",
+    "stationary_variance": "1/12",
+    "frozen_variance": "19/192",
+    "anisotropic_beta_residual": "3",
+    "volume_times_variance": "5/6"
+  },
+  "hostile_falsifiers": {
+    "infinite_volume": "variance = T/(V_c m^2) -> 0",
+    "no_quench": "quadratic variation rate = 2D > 0",
+    "chart_bath": "beta residual = 3 in exact fixture"
+  },
+  "missing_source_data": [
+    "microscopic_flavon_bath",
+    "correlation_volume",
+    "quench_trigger_and_time",
+    "post_quench_stabilization",
+    "uv_scale_and_rg_matching"
+  ],
+  "checks": {
+    "kappa_from_mobility": true,
+    "diffusion_from_einstein_relation": true,
+    "beta_from_ou_ratio": true,
+    "beta_from_thermal_density": true,
+    "stationary_variance": true,
+    "equipartition_variance": true,
+    "extensive_scaling_invariant": true,
+    "doubling_volume_halves_variance": true,
+    "finite_time_freeze_formula": true,
+    "zero_mean_preserved": true,
+    "chart_anisotropy_changes_beta": true,
+    "chart_anisotropy_residual": true,
+    "active_bath_nonzero_quadratic_variation": true,
+    "thermodynamic_variance_coefficient_nonzero": true
+  },
+  "passed": 14,
+  "total": 14,
+  "all_pass": true
+}
