@@ -113,6 +113,31 @@
       "no_universal_extrapolation": true
     }
   ],
+  "rival_extension_audits": [
+    {
+      "id": "new_rival_opens_identification_challenge",
+      "extends_audit": "finite_three_mechanism_identification",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3"],
+      "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1]],
+      "source_authorized_gauge_dimension": 0,
+      "status": "challenge_open",
+      "identification_authority_retained": false,
+      "claims_closed_under_all_future_rivals": false
+    },
+    {
+      "id": "new_source_probe_revalidates_extended_family",
+      "extends_audit": "new_rival_opens_identification_challenge",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3", "source_probe_delta"],
+      "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1], [0, 0, 0, 1]],
+      "source_authorized_gauge_dimension": 0,
+      "new_discriminator_source_derived": "probe_delta follows from the extended constructor grammar before fitting delta's output",
+      "status": "revalidated",
+      "identification_authority_retained": true,
+      "claims_closed_under_all_future_rivals": false
+    }
+  ],
   "presentation_coherence_cells": [
     {"id": "cell_B_Bprime", "source_presentation": "B", "target_presentation": "Bprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "independent source encode/decode equivalence"},
     {"id": "cell_Bprime_Bdoubleprime", "source_presentation": "Bprime", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "second independent source presentation equivalence"},

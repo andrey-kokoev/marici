@@ -91,6 +91,9 @@ The machine-readable fixture suite rejects:
 24. interventions leaving a non-gauge rival-mechanism kernel;
 25. discriminator ports chosen after seeing the desired mechanism;
 26. a finite full-rank audit promoted to a universal explanation.
+27. retaining identification authority after a new unresolved rival appears;
+28. repairing a rival challenge with a target-fitted discriminator;
+29. declaring a repaired finite family closed under all future rivals.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -301,6 +304,39 @@ modulo declared gauge, by independently derived interventions}.}
 Removing the bounded-scope clause would turn a finite hostile audit into an
 unearned universal ontology—the exact overreach the calculus is meant to
 prevent.
+
+### Open-world law: explanations remain challengeable
+
+A bounded identification result is not monotone under enlargement of its
+candidate family. If a new rival \(m_{n+1}\) is proposed, append its response
+column to the intervention matrix. When
+
+\[
+\dim\ker R_{\mathrm{extended}}
+>
+\dim(\text{authorized gauge}),
+\]
+
+the old identification authority is suspended. Retaining it would hide a new
+underdetermination behind an earlier finite certificate.
+
+Authority can be recovered by adding a discriminator only when that new port
+is derived independently from the extended source grammar. After the enlarged
+matrix becomes jointly faithful modulo gauge, the bounded claim is
+revalidated.
+
+This gives an explicit Popperian state transition:
+
+\[
+\text{identified}
+\xrightarrow{\text{new unresolved rival}}
+\text{challenge open}
+\xrightarrow{\text{source-derived discriminator}}
+\text{revalidated}.
+\]
+
+The final state remains open to further rivals. No finite candidate census is
+permitted to assert closure under all future explanations.
 
 ### Refinement law: higher coherence
 
