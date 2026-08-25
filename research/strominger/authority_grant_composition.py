@@ -969,6 +969,40 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if network.get("claims_unconditional_liveness"):
             err("unbounded_linearization_liveness_claim", nid, "safety proof does not imply progress")
 
+    # Fault-parametric quorum theorem.  Two size-q quorums among n replicas
+    # intersect in at least max(0, 2q-n) replicas.  Crash faults preserve
+    # non-equivocation; Byzantine faults may occupy f intersection seats, so
+    # safety requires minimum_intersection > f.
+    for audit in packet.get("fault_parametric_quorum_audits", []):
+        fid = audit["id"]
+        n, q, f = audit.get("replica_count"), audit.get("quorum_size"), audit.get("fault_bound")
+        if not all(isinstance(value, int) for value in (n, q, f)) or n <= 0 or q <= 0 or f < 0 or q > n:
+            err("invalid_fault_parametric_quorum", fid, f"n={n},q={q},f={f}")
+            continue
+        minimum_intersection = max(0, 2 * q - n)
+        if audit.get("minimum_intersection") != minimum_intersection:
+            err("incorrect_minimum_quorum_intersection", fid, f"{audit.get('minimum_intersection')}!={minimum_intersection}")
+        fault_kind = audit.get("fault_kind")
+        if fault_kind == "crash_recovery":
+            expected_safe = minimum_intersection > 0 and not audit.get("faulty_replicas_may_equivocate")
+        elif fault_kind == "byzantine":
+            expected_safe = minimum_intersection > f and audit.get("faulty_replicas_may_equivocate")
+        else:
+            err("unknown_linearizer_fault_model", fid, str(fault_kind))
+            continue
+        if not audit.get("honest_replicas_non_equivocate") or not audit.get("source_authorized_fault_model"):
+            err("unauthorized_or_unenforced_fault_model", fid, str(audit.get("source_authorized_fault_model")))
+        if audit.get("claimed_safe") != expected_safe:
+            err("incorrect_fault_parametric_safety_classification", fid, f"claimed={audit.get('claimed_safe')}, expected={expected_safe}")
+        if fault_kind == "byzantine" and not expected_safe:
+            witness = audit.get("conflict_witness", {})
+            intersection = set(witness.get("first_quorum", [])) & set(witness.get("second_quorum", []))
+            faulty = set(witness.get("faulty_replicas", []))
+            if not intersection or not intersection.issubset(faulty) or len(faulty) > f or not witness.get("both_certificates_constructible"):
+                err("missing_byzantine_quorum_conflict_witness", fid, str(witness))
+        if audit.get("claims_fault_model_transport_without_reproof"):
+            err("fault_model_authority_transport", fid, "crash proof cannot be transported to Byzantine faults")
+
     return errors
 
 

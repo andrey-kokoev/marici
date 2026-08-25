@@ -154,6 +154,11 @@ The machine-readable fixture suite rejects:
 87. signatures treated as preventing double-signing;
 88. durable storage hidden as a consequence of quorum mathematics;
 89. a safety proof extrapolated to unconditional liveness.
+90. a crash-only quorum proof transported to Byzantine faults;
+91. an incorrect minimum-intersection calculation;
+92. equivocation admitted inside a crash-only model;
+93. a fault bound asserted without source authority;
+94. a fault-model change treated as transport rather than reproof.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -768,6 +773,54 @@ authorized replica. Its concrete realization may be stable storage, trusted
 hardware, or another source-authorized constructor. The calculus does not
 derive that physics from set intersection, and the safety theorem makes no
 unconditional liveness claim.
+
+### Fault-parametric quorum theorem
+
+The three-replica majority constructor assumes that replicas may crash and
+recover but cannot equivocate once their durable vote is written. If a replica
+may instead behave Byzantine, the same quorum geometry is insufficient.
+
+For (n) replicas and quorum size (q), two quorums intersect in at least
+
+\[
+I_{\min}=\max(0,2q-n)
+\]
+
+replicas. Under a Byzantine bound (f), uniqueness requires
+
+\[
+I_{\min}>f,
+\]
+
+so the overlap necessarily contains an honest non-equivocating replica.
+
+Consequently:
+
+\[
+\begin{array}{c|c|c|c|c}
+\text{model}&n&q&f&I_{\min}&\text{safety}\\
+\hline
+\text{crash/recovery}&3&2&1&1&\text{yes}\\
+\text{Byzantine}&3&2&1&1&\text{no}\\
+\text{Byzantine}&4&3&1&2&\text{yes}.
+\end{array}
+\]
+
+In the unsafe three-replica Byzantine case, quorums
+({r_1,r_2}) and ({r_2,r_3}) intersect only at faulty (r_2), which may
+sign both values. Both conflicting certificates are then constructible.
+
+The authority lesson is sharp:
+
+\[
+\boxed{
+\text{quorum proof authority is indexed by its fault model}.}
+\]
+
+A crash-safety proof cannot be transported into a Byzantine domain. The fault
+bound and honest-replica constructor assumptions are themselves environmental
+claims requiring source authority. Changing them creates a new proof
+obligation, not a harmless change of presentation.
 
 ### Refinement law: higher coherence
 
