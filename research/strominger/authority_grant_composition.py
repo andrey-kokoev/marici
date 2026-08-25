@@ -971,8 +971,8 @@ def validate(packet: dict[str, Any]) -> list[Error]:
 
     # Fault-parametric quorum theorem.  Two size-q quorums among n replicas
     # intersect in at least max(0, 2q-n) replicas.  Crash faults preserve
-    # non-equivocation; Byzantine faults may occupy f intersection seats, so
-    # safety requires minimum_intersection > f.
+    # non-equivocation and require a nonempty overlap.  Byzantine faults may
+    # occupy f overlap seats and therefore require minimum_intersection > f.
     for audit in packet.get("fault_parametric_quorum_audits", []):
         fid = audit["id"]
         n, q, f = audit.get("replica_count"), audit.get("quorum_size"), audit.get("fault_bound")
@@ -984,12 +984,16 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("incorrect_minimum_quorum_intersection", fid, f"{audit.get('minimum_intersection')}!={minimum_intersection}")
         fault_kind = audit.get("fault_kind")
         if fault_kind == "crash_recovery":
+            required_condition = "minimum_intersection>=1"
             expected_safe = minimum_intersection > 0 and not audit.get("faulty_replicas_may_equivocate")
         elif fault_kind == "byzantine":
+            required_condition = "minimum_intersection>fault_bound"
             expected_safe = minimum_intersection > f and audit.get("faulty_replicas_may_equivocate")
         else:
             err("unknown_linearizer_fault_model", fid, str(fault_kind))
             continue
+        if audit.get("safety_condition") != required_condition:
+            err("fault_model_safety_condition_mismatch", fid, f"{audit.get('safety_condition')}!={required_condition}")
         if not audit.get("honest_replicas_non_equivocate") or not audit.get("source_authorized_fault_model"):
             err("unauthorized_or_unenforced_fault_model", fid, str(audit.get("source_authorized_fault_model")))
         if audit.get("claimed_safe") != expected_safe:
