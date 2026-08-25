@@ -1320,6 +1320,60 @@ def audit_repair_selection(contract: dict[str, Any], repair_audits: list[dict[st
     return audits
 
 
+def audit_repair_execution(contract: dict[str, Any], selection_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selection_results = {item["id"]: item for item in selection_audits}
+    selection_contracts = {item["id"]: item for item in contract.get("configuration_repair_selection_theorems", [])}
+    repair_contracts = {item["id"]: item for item in contract.get("configuration_correlation_repair_theorems", [])}
+    audits = []
+    required_bindings = {"unsafe_hyperedge", "primitive_repair_family", "valuation_profile", "selected_repair"}
+    for theorem in contract.get("configuration_repair_execution_theorems", []):
+        errors: list[str] = []
+        selection_id = theorem.get("selection_theorem_id")
+        selection = selection_results.get(selection_id, {})
+        selection_contract = selection_contracts.get(selection_id, {})
+        repair_contract = repair_contracts.get(selection_contract.get("repair_theorem_id"), {})
+        repair_fixtures = {item["id"]: item for item in repair_contract.get("fixtures", [])}
+        repair_fixture = repair_fixtures.get(selection_contract.get("repair_fixture_id"), {})
+        if not selection.get("passed") or not repair_fixture:
+            errors.append("repair_execution_selection_base_invalid")
+        binding_typed = set(theorem.get("certificate_binding_fields", [])) == required_bindings and theorem.get("binding_kind") == "content_addressed_exact_configuration"
+        if not binding_typed:
+            errors.append("repair_execution_certificate_underbound")
+        capability_typed = bool(theorem.get("executor_constructor_id") and theorem.get("executor_source_authority_root")) and theorem.get("capability_modality") == "linear" and theorem.get("capability_uses") == 1 and theorem.get("selection_record_is_nonexecuting") is True
+        if not capability_typed:
+            errors.append("repair_execution_authority_laundered")
+        atomic_typed = theorem.get("execution_semantics") == "atomic_compare_bound_configuration_apply_and_consume" and theorem.get("postcondition") == "recompute_cocircuit_safety"
+        if not atomic_typed:
+            errors.append("repair_execution_nonatomic_or_unverified")
+        if theorem.get("theorem_scope") != "all source-bound selected repairs with separately issued linear execution capabilities":
+            errors.append("repair_execution_scope_laundered")
+
+        unsafe_edge = frozenset(tuple(locus) for locus in repair_fixture.get("unsafe_hyperedge", []))
+        profiles = {item["id"]: item for item in selection.get("profiles", [])}
+        request_results = []
+        for request in theorem.get("execution_requests", []):
+            profile = profiles.get(request.get("valuation_profile_id"), {})
+            selected = frozenset(tuple(locus) for locus in profile.get("selected_repair", []))
+            observed = frozenset(tuple(locus) for locus in request.get("observed_hyperedge", []))
+            requested = frozenset(tuple(locus) for locus in request.get("requested_repair", []))
+            configuration_matches = observed == unsafe_edge
+            selection_matches = requested == selected and bool(selected)
+            linear_consumption = request.get("uses_before") == 1 and request.get("uses_after") == 0
+            repaired_edge = observed - requested
+            # Every declared local bridge must retain at least one authority root.
+            local_bridges = {frozenset(edge.get("bridge_authority_roots", {}).values()) for path in contract.get("configuration_path_audits", []) for edge in path.get("edges", [])}
+            postcondition_safe = all(not bridge <= {root for hole, root in repaired_edge if hole == index} for index in {hole for hole, _ in repaired_edge} for bridge in local_bridges)
+            admitted = binding_typed and capability_typed and atomic_typed and configuration_matches and selection_matches and linear_consumption and postcondition_safe
+            expected = request.get("expected_admitted")
+            if admitted != expected:
+                errors.append("repair_execution_request_mismatch")
+            certificate = {"unsafe_hyperedge": [list(item) for item in sorted(unsafe_edge)], "valuation_profile": request.get("valuation_profile_id"), "selected_repair": [list(item) for item in sorted(selected)]}
+            certificate_payload = json.dumps(certificate, sort_keys=True, separators=(",", ":")).encode("ascii")
+            request_results.append({"id": request.get("id"), "passed": admitted == expected, "admitted": admitted, "configuration_matches": configuration_matches, "selection_matches": selection_matches, "linear_capability_consumed": linear_consumption, "postcondition_safe": postcondition_safe, "certificate_digest": hashlib.sha256(certificate_payload).hexdigest()})
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "certificate_fully_bound": binding_typed, "linear_executor_separately_authorized": capability_typed, "atomic_and_postverified": atomic_typed, "execution_requests": request_results, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1366,10 +1420,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     finite_fusion_audits = audit_finite_fusion_witness_bounds(contract, correlation_cocircuit_audits)
     correlation_repair_audits = audit_correlation_repairs(contract, correlation_cocircuit_audits)
     repair_selection_audits = audit_repair_selection(contract, correlation_repair_audits)
+    repair_execution_audits = audit_repair_execution(contract, repair_selection_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits + repair_execution_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1405,4 +1460,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_finite_fusion_theorems": finite_fusion_audits,
         "configuration_correlation_repair_theorems": correlation_repair_audits,
         "configuration_repair_selection_theorems": repair_selection_audits,
+        "configuration_repair_execution_theorems": repair_execution_audits,
     }

@@ -422,6 +422,33 @@
       "theorem_scope":"finite primitive repair families with source-authorized strictly positive locus valuations"
     }
   ],
+  "configuration_repair_execution_theorems":[
+    {
+      "id":"bound_linear_repair_execution",
+      "selection_theorem_id":"authorized_repair_valuation_and_selection",
+      "certificate_binding_fields":["unsafe_hyperedge","primitive_repair_family","valuation_profile","selected_repair"],
+      "binding_kind":"content_addressed_exact_configuration",
+      "executor_constructor_id":"dpc.bound_repair_executor.v1",
+      "executor_source_authority_root":"repair_execution_charter",
+      "capability_modality":"linear",
+      "capability_uses":1,
+      "selection_record_is_nonexecuting":true,
+      "execution_semantics":"atomic_compare_bound_configuration_apply_and_consume",
+      "postcondition":"recompute_cocircuit_safety",
+      "execution_requests":[
+        {
+          "id":"execute_outer_loci_repair",
+          "valuation_profile_id":"outer_loci_cheaper",
+          "observed_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h0","admin_D"],["h1","admin_C"]],
+          "requested_repair":[["h0","admin_B"],["h0","admin_D"]],
+          "uses_before":1,
+          "uses_after":0,
+          "expected_admitted":true
+        }
+      ],
+      "theorem_scope":"all source-bound selected repairs with separately issued linear execution capabilities"
+    }
+  ],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
