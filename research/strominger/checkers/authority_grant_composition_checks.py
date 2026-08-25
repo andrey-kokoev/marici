@@ -89,6 +89,7 @@ def main():
     probe_grammar_audits = {item["id"]: item for item in packet["probe_grammar_authority_audits"]}
     probe_grammar_boundaries = {item["id"]: item for item in packet["probe_grammar_boundary_audits"]}
     probe_grammar_epochs = {item["id"]: item for item in packet["probe_grammar_epoch_audits"]}
+    distributed_manifest_audits = {item["id"]: item for item in packet["distributed_manifest_epoch_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -452,6 +453,17 @@ def main():
             not probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["old_negative_certificate_live"]
             and not probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["old_capability_execution_permitted"]
             and probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["grammar_replay_required"],
+        "same_epoch_local_views_can_fork_on_manifest_digest":
+            distributed_manifest_audits["two_site_manifest_fork_and_repair"]["local_views"][0]["epoch"]
+            == distributed_manifest_audits["two_site_manifest_fork_and_repair"]["local_views"][1]["epoch"]
+            and distributed_manifest_audits["two_site_manifest_fork_and_repair"]["local_views"][0]["manifest_sha256"]
+            != distributed_manifest_audits["two_site_manifest_fork_and_repair"]["local_views"][1]["manifest_sha256"]
+            and not distributed_manifest_audits["two_site_manifest_fork_and_repair"]["local_checks_imply_global_consistency"],
+        "quorum_certificate_linearizes_epoch_digest_pair":
+            set(distributed_manifest_audits["two_site_manifest_fork_and_repair"]["repair"]["certificate_value_fields"])
+            == {"epoch", "manifest_sha256"}
+            and distributed_manifest_audits["two_site_manifest_fork_and_repair"]["repair"]["durable_non_equivocation"]
+            and not distributed_manifest_audits["two_site_manifest_fork_and_repair"]["repair"]["conflicting_same_epoch_digest_certificate_constructible"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

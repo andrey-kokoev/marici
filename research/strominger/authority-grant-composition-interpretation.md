@@ -1075,6 +1075,21 @@ where `F` is accumulated positive fault evidence and `N` is the relative
 negative certificate. This prevents time-of-check/time-of-use laundering of a
 correct but stale independence audit.
 
+Local atomicity is still insufficient in a distributed deployment. Two sites
+may each validate epoch 12 while seeing different manifest digests. An epoch
+number is therefore not the configuration value; the value is the pair
+
+\[
+(e,h)=(\text{manifest epoch},\text{manifest digest}).
+\]
+
+Before communication, the fork is indistinguishable from two valid local
+histories. Repair requires a source-authorized configuration linearizer whose
+certificate binds both fields. Intersecting quorums and durable
+non-equivocation then prevent two certificates for `(12,h)` and `(12,h')`.
+Reusing a consumption quorum is not sufficient by transport: it needs an
+explicit configuration-selection grant.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.
