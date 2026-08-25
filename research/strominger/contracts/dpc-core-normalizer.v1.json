@@ -30,9 +30,20 @@
       "successor_state_sha256": "9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478",
       "configuration_authority_roots": ["config_root_A","config_root_B"],
       "joint_configuration_certificate": "joint-config-transition-e0-e1",
+      "certificate_quorum": ["config_root_A","config_root_B"],
+      "authorized_signers": {
+        "config_root_A": {"durable_non_equivocation":true,"independence_root":"admin_A"},
+        "config_root_B": {"durable_non_equivocation":true,"independence_root":"admin_B"}
+      },
+      "admissible_signer_fault_sets": [["config_root_A"],["config_root_B"]],
       "durable_non_equivocation": true,
       "competing_successor_constructible": false,
-      "physical_state_correspondence": "executor state attests successor digest before accepting e+1"
+      "physical_state_correspondence": {
+        "executor_id":"manifest_executor_1",
+        "measured_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478",
+        "verifier_authority_root":"executor_attestation_root",
+        "verified_before_epoch_acceptance":true
+      }
     }
   ],
   "active_rewrite_footprints": {

@@ -61,3 +61,9 @@ creates a fork, offset two is not an adjacent successor, and a label advance
 without physical correspondence does not advance the executor. Thus epoch
 order is induced by an authorized state transition rather than presumed from
 symbolic arithmetic.
+
+The joint certificate is expanded into two independently rooted configuration
+signers. Its admitted singleton fault sets leave at least one signer witness,
+and shared administration fails the fault-model audit. Physical correspondence
+is likewise exact: an executor attestation binds the measured state digest to
+the certified successor digest and must be verified before accepting `e+1`.
