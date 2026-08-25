@@ -1,6 +1,24 @@
 {
   "schema": "marici.dpc-core-normalizer.v1",
   "rewrite_rules": ["typed_identity", "transport_fusion", "scope_attenuation", "support_union", "partition_flattening", "coherence_inverse", "epoch_fence"],
+  "normalization_cases": [
+    {
+      "id": "conservative_partition",
+      "expected": {"resource": {"site_A": 2, "site_B": 3}, "status": "active"},
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"status":"active","executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}}]}
+    },
+    {
+      "id": "inflating_partition_rejected",
+      "expected": {},
+      "expected_error": "resource_partition_inflation",
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"status":"active","executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":3,"site_B":3}}]}
+    },
+    {
+      "id": "stale_epoch_becomes_auditable_rejection",
+      "expected": {"status":"rejected_stale_epoch","executable_output":"REJECT:stale_epoch"},
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"credits":1},"epoch":7,"status":"active","executable_output":"receipt","operations":[{"kind":"epoch_fence","minimum_epoch":8}]}
+    }
+  ],
   "critical_pairs": [
     {
       "id": "identity_then_attenuate_joins",

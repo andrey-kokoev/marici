@@ -40,6 +40,27 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
             if operation["kind"] == "attenuate":
                 current["scope"] = sorted(set(current["scope"]) & set(operation["scope"]))
                 continue
+            if operation["kind"] == "partition":
+                source = operation["source"]
+                amount = current["resource"].get(source)
+                children = operation["children"]
+                if amount is None:
+                    raise ValueError("partition_source_missing")
+                if sum(children.values()) > amount:
+                    raise ValueError("resource_partition_inflation")
+                del current["resource"][source]
+                for child, child_amount in children.items():
+                    if child in current["resource"]:
+                        raise ValueError("partition_child_collision")
+                    current["resource"][child] = child_amount
+                continue
+            if operation["kind"] == "epoch_fence":
+                if current.get("epoch", 0) < operation["minimum_epoch"]:
+                    current["status"] = "rejected_stale_epoch"
+                    current["executable_output"] = "REJECT:stale_epoch"
+                    current["operations"] = []
+                    return current
+                continue
             reduced.append(operation)
         current["operations"] = reduced
         after = json.dumps(current, sort_keys=True, separators=(",", ":"))
@@ -74,11 +95,24 @@ def check_pair(pair: dict[str, Any]) -> dict[str, Any]:
 
 def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
+    normalization_results = []
+    for case in contract.get("normalization_cases", []):
+        try:
+            normalized = normalize(case["input"])
+            actual = {key: normalized.get(key) for key in case["expected"]}
+            passed = actual == case["expected"] and case.get("expected_error") is None
+            error = None
+        except ValueError as exc:
+            normalized = None
+            error = str(exc)
+            passed = error == case.get("expected_error")
+        normalization_results.append({"id": case["id"], "passed": passed, "error": error, "normalized": normalized})
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results),
+        "passed": all(item["passed"] for item in results + normalization_results),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
+        "normalization_cases": normalization_results,
         "normal_form_digests": {item["id"]: digest(item["left"]) for item in contract["critical_pairs"]},
     }

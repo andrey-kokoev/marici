@@ -16,5 +16,9 @@ out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
     print(("PASS" if item["passed"] else "FAIL") + " " + item["id"])
-print(f"SUMMARY {sum(item['passed'] for item in result['critical_pairs'])}/{result['critical_pair_count']}")
+for item in result["normalization_cases"]:
+    print(("PASS" if item["passed"] else "FAIL") + " " + item["id"])
+passed = sum(item["passed"] for item in result["critical_pairs"] + result["normalization_cases"])
+total = len(result["critical_pairs"] + result["normalization_cases"])
+print(f"SUMMARY {passed}/{total}")
 raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 else 1)
