@@ -24,6 +24,19 @@ LEGACY_IMPORT_FIELDS = {
 }
 
 
+def _epoch_less(left: Any, right: Any) -> bool:
+    if isinstance(left, int) and isinstance(right, int):
+        return left < right
+    if isinstance(left, dict) and isinstance(right, dict):
+        if left.get("parameter") != right.get("parameter"):
+            raise ValueError("incomparable_epoch_parameters")
+        left_offset, right_offset = left.get("offset"), right.get("offset")
+        if not isinstance(left_offset, int) or not isinstance(right_offset, int):
+            raise ValueError("invalid_affine_epoch")
+        return left_offset < right_offset
+    raise ValueError("mixed_epoch_representations")
+
+
 def canonical_signature(node: dict[str, Any]) -> dict[str, Any]:
     sig = {key: deepcopy(node[key]) for key in SIGNATURE_FIELDS}
     sig["scope"] = sorted(set(sig["scope"]))
@@ -106,7 +119,7 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
                     current["resource"][child] = child_amount
                 continue
             if operation["kind"] == "epoch_fence":
-                if current.get("epoch", 0) < operation["minimum_epoch"]:
+                if _epoch_less(current.get("epoch", 0), operation["minimum_epoch"]):
                     current["status"] = "rejected_stale_epoch"
                     current["executable_output"] = "REJECT:stale_epoch"
                     current["operations"] = []

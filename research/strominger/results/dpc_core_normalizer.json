@@ -508,7 +508,10 @@
       "missing_core_fields": [],
       "normalized": {
         "authority_kind": "executor",
-        "epoch": 12,
+        "epoch": {
+          "offset": 0,
+          "parameter": "e"
+        },
         "executable_output": "challenge_receipt",
         "modality": "linear",
         "operations": [],
@@ -534,6 +537,7 @@
     "resource": true,
     "scope": true
   },
+  "native_symbolic_epoch_enforced": true,
   "normal_form_digests": {
     "equal_output_modality_laundering_rejected": "ac464df7acaa05692f9a95b927558260d2227d533c281558b67044d7d4c10440",
     "equal_output_unequal_support_rejected": "c010b5888dca93411ac0e87f9c14e097e7a80eadd087d94b8e58237f15679274",
@@ -543,6 +547,37 @@
     "matching_signature_missing_selector_cell_rejected": "eb25ba4022bb1c6e43e1810b4a782d870624943dec613be401b0620436eee0b5"
   },
   "normalization_cases": [
+    {
+      "error": null,
+      "id": "symbolic_successor_epoch_fences_predecessor",
+      "normalized": {
+        "authority_kind": "executor",
+        "epoch": {
+          "offset": 0,
+          "parameter": "e"
+        },
+        "executable_output": "REJECT:stale_epoch",
+        "modality": "linear",
+        "operations": [],
+        "resource": {
+          "uses": 1
+        },
+        "scope": [
+          "act"
+        ],
+        "status": "rejected_stale_epoch",
+        "support": [
+          "ledger"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "error": "incomparable_epoch_parameters",
+      "id": "unrelated_epoch_families_are_incomparable",
+      "normalized": null,
+      "passed": true
+    },
     {
       "error": null,
       "id": "full_signature_coherence_roundtrip_eliminates",
