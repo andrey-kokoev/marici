@@ -900,7 +900,7 @@ def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audit
     paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
     admitted = {audit["id"]: audit["passed"] for audit in path_audits}
     rewrites = {rewrite["id"]: rewrite for rewrite in contract.get("configuration_constructor_rewrites", [])}
-    required_fields = {"source_boundary", "endpoint_boundary", "support_union", "fault_hypergraph", "input_authority", "output_authority"}
+    required_fields = {"source_boundary", "endpoint_boundary", "support_union", "fault_hypergraph", "input_authority", "output_authority", "resource_freshness"}
     required_schemas = {"same_position_branch", "disjoint_positions_commute"}
     boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
 
@@ -916,13 +916,27 @@ def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audit
         ranks = theorem.get("rank", {})
         if alphabet != set(paths) or not all(admitted.get(path_id) for path_id in alphabet) or set(ranks) != alphabet or any(not isinstance(rank, int) or rank < 0 for rank in ranks.values()):
             errors.append("contextual_rewrite_alphabet_or_rank_untyped")
+        derived_hole_types = []
+        for path_id in sorted(alphabet):
+            path = paths.get(path_id, {})
+            source, endpoint = path.get("source_configuration", {}), path.get("expected_endpoint_configuration", {})
+            derived_hole_types.append({"source_vertex": source.get("vertex_id"), "source_state_sha256": source.get("state_sha256"), "endpoint_vertex": endpoint.get("vertex_id"), "endpoint_state_sha256": endpoint.get("state_sha256")})
+        hole_type = theorem.get("hole_type", {})
+        declared_structural_hole = {key: hole_type.get(key) for key in ("source_vertex", "source_state_sha256", "endpoint_vertex", "endpoint_state_sha256")}
+        resource_parameters_typed = hole_type.get("input_authority_parameter") == "alpha_in[i]" and hole_type.get("output_authority_parameter") == "alpha_out[i]" and hole_type.get("resource_instances_pairwise_disjoint") is True and hole_type.get("shared_authority_claimed") is False
+        hole_typing_holds = bool(derived_hole_types) and all(derived == declared_structural_hole for derived in derived_hole_types) and resource_parameters_typed
+        if not hole_typing_holds:
+            errors.append("contextual_rewrite_hole_type_mismatch")
+        product_context_typed = theorem.get("context_grammar") == "finite_typed_product_context" and theorem.get("composition_kind") == "independent_hole_substitution" and theorem.get("sequential_composition_claimed") is False
+        if not product_context_typed:
+            errors.append("contextual_rewrite_sequential_composition_smuggled")
         if set(selected_ids) != set(rewrites) or any(not rewrite for rewrite in selected):
             errors.append("contextual_rewrite_rule_coverage_failure")
         rank_decreases = bool(selected) and all(rewrite.get("source_path_id") in ranks and rewrite.get("target_path_id") in ranks and ranks[rewrite["source_path_id"]] > ranks[rewrite["target_path_id"]] for rewrite in selected)
         if not rank_decreases:
             errors.append("contextual_rewrite_rank_not_decreasing")
         rule_semantics_preserved = all(rewrite.get("source_path_id") in paths and rewrite.get("target_path_id") in paths and semantic_signature(paths[rewrite["source_path_id"]]) == semantic_signature(paths[rewrite["target_path_id"]]) for rewrite in selected)
-        context_preserved = theorem.get("context_closure") is True and set(theorem.get("preserved_semantic_fields", [])) == required_fields and rule_semantics_preserved
+        context_preserved = theorem.get("context_closure") is True and product_context_typed and hole_typing_holds and set(theorem.get("preserved_semantic_fields", [])) == required_fields and rule_semantics_preserved
         if not context_preserved:
             errors.append("contextual_rewrite_context_signature_not_preserved")
         schemas = set(theorem.get("critical_pair_schemas", []))
@@ -958,9 +972,9 @@ def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audit
         newman_global_confluence = terminating and local_confluence and context_preserved
         if not newman_global_confluence:
             errors.append("contextual_rewrite_newman_gate_failure")
-        if theorem.get("theorem_scope") != "arbitrary finite words over the admitted configuration-path alphabet":
+        if theorem.get("theorem_scope") != "arbitrary finite products of independently typed factorization holes":
             errors.append("contextual_rewrite_scope_laundered")
-        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "rank_decreases": rank_decreases, "rewrite_semantics_preserved": rule_semantics_preserved, "context_signature_preserved": context_preserved, "same_position_critical_pairs": same_position_pairs, "same_position_joins": same_position_joins, "disjoint_positions_commute": disjoint_positions_commute, "locally_confluent": local_confluence, "terminating": terminating, "newman_global_confluence": newman_global_confluence, "scope": theorem.get("theorem_scope")})
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "context_grammar": theorem.get("context_grammar"), "composition_kind": theorem.get("composition_kind"), "sequential_composition_claimed": theorem.get("sequential_composition_claimed"), "hole_type": hole_type, "hole_typing_holds": hole_typing_holds, "resource_parameters_typed": resource_parameters_typed, "rank_decreases": rank_decreases, "rewrite_semantics_preserved": rule_semantics_preserved, "context_signature_preserved": context_preserved, "same_position_critical_pairs": same_position_pairs, "same_position_joins": same_position_joins, "disjoint_positions_commute": disjoint_positions_commute, "locally_confluent": local_confluence, "terminating": terminating, "newman_global_confluence": newman_global_confluence, "scope": theorem.get("theorem_scope")})
     return audits
 
 

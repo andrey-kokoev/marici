@@ -329,10 +329,37 @@ The central falsifier remains represented directly:
 No temporal interpretation enters this result. Parallel paths are alternative
 factorizations of a morphism, not alternative histories.
 
-## Context closure and the unbounded theorem
+## Typed context closure and the unbounded theorem
 
-The three-presentation result extends to arbitrary finite constructor words.
-Regard `rho`, `sigma`, and `tau` as letters with rank
+An important correction is required before taking the unbounded limit.
+`rho`, `sigma`, and `tau` all have boundary type
+
+\[
+B=(C_0,h_0,\alpha_0)\longrightarrow(C_3,h_3,\alpha_3).
+\]
+
+They therefore cannot be concatenated as sequential path morphisms: the target
+`C3` of one does not match the source `C0` of another. The valid unbounded
+object is a finite product context containing independently typed holes of type
+`B`. Each hole may be filled by one of the three alternative factorizations.
+This is substitution into parallel holes, not path concatenation.
+
+The authority resources at those boundaries are parameters, not copied
+constants:
+
+\[
+\alpha_i^{\mathrm{in}}\longmapsto\alpha_i^{\mathrm{out}},
+\qquad i\ne j\Rightarrow
+\{\alpha_i^{\mathrm{in}},\alpha_i^{\mathrm{out}}\}
+\cap
+\{\alpha_j^{\mathrm{in}},\alpha_j^{\mathrm{out}}\}=\varnothing.
+\]
+
+Thus enlarging the product context requires fresh pairwise-disjoint resource
+instances. It does not clone the concrete `cfg_auth_C0` capability used by the
+single-hole witness.
+
+Assign the fillings rank
 
 \[
 r(\rho)=2,
@@ -340,29 +367,31 @@ r(\rho)=2,
 \qquad r(\tau)=0,
 \]
 
-and extend the rank additively over words. Every authorized rewrite strictly
-decreases total rank, including when it is inserted into an arbitrary left and
-right context. Hence no finite word admits an infinite reduction sequence.
+and extend the rank additively over the holes of a product context. Every
+authorized substitution strictly decreases total rank. Hence no finite typed
+context admits an infinite reduction sequence.
 
-There are exactly two critical-pair schemas for unary contextual substitution:
+There are exactly two critical-pair schemas:
 
-- At the same word position, two rules may leave `rho`; the exhibited diamond
+- In the same hole, two rules may leave `rho`; the exhibited diamond
   joins their reducts at `tau`.
-- At distinct positions, the two substitutions commute because each preserves
+- In distinct holes, the two substitutions commute because each preserves
   the full component signature: source and endpoint boundaries, support union,
   fault hypergraph, and input/output authority resources.
 
-These schemas prove local confluence independently of word length. Termination
+These schemas prove local confluence independently of context size. Termination
 plus local confluence invokes Newman's lemma, yielding
 
 \[
-\boxed{\text{every finite configuration word has a unique normal form}.}
+\boxed{\text{every finite well-typed factorization context has a unique normal form}.}
 \]
 
 This is the first genuinely unbounded coherence statement in this lane. The
-checker rejects a nondecreasing rank, loss of context closure, omission of any
-preserved semantic field, omission of the disjoint-position schema, incomplete
-rule coverage, or replacement of the theorem scope by a bounded census.
+checker rejects a nondecreasing rank, loss of context closure, a smeared hole
+boundary, cloned or concrete-reused authority resources,
+sequential-composition laundering, omission of any preserved
+semantic field, omission of the disjoint-hole schema, incomplete rule
+coverage, or replacement of the theorem scope by a bounded census.
 
-The scope remains algebraic and atemporal: a word is a finite compositional
-context, not a sequence of moments.
+The scope remains algebraic and atemporal: a product context is neither a path
+through configurations nor a sequence of moments.
