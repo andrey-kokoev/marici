@@ -251,20 +251,40 @@ as complete composite summaries: boundary resources, support, edge order, and
 fault obligations all agree. The checker derives both parenthesizations rather
 than accepting a declared associativity flag.
 
-Path independence is deliberately stronger. The paths
+Path independence is deliberately stronger. Three paths are now independently
+admissible:
 
 \[
 C_0\xrightarrow{\rho_{01}}C_1\xrightarrow{\rho_{12}}C_2
 \xrightarrow{\rho_{23}}C_3
 \quad\text{and}\quad
 C_0\xrightarrow{\sigma_{0X}}C_X\xrightarrow{\sigma_{X3}}C_3
+\quad\text{and}\quad
+C_0\xrightarrow{\tau_{0Y}}C_Y\xrightarrow{\tau_{Y3}}C_3.
 \]
 
-are independently admissible and have equal typed boundaries and support
-unions, but their raw presentations are unequal. They are identified only by
-the source-derived invertible cell `omega_rho_sigma`. The cell must preserve
-the boundary signature and support, and its root identification must transport
-the complete fault hypergraph of one path to that of the other.
+Their typed boundaries, support unions, and fault hypergraphs agree, but their
+raw presentations do not. Coherence cells are no longer primitive contract
+fields. The source-authorized constructor relations `normalize_rho`,
+`normalize_sigma`, and `normalize_tau` rewrite their exact edge words to a
+common normal form. Its identifier is not declared: the checker hashes the
+common typed boundary, support union, and fault hypergraph. Each relation then
+produces a content-addressed normalization witness
+
+\[
+n_p:p\Longrightarrow NF_{C_0,C_3}.
+\]
+
+The checker generates, rather than accepts, the comparison cell
+
+\[
+\omega_{pq}=n_q^{-1}n_p.
+\]
+
+Attempting to insert a primitive fitted cell or a fitted normal-form name is
+rejected. So are an
+unauthorized rewrite relation, a relation whose word differs from the actual
+path, two normalization witnesses for one path, or a split normal form.
 
 This is the descent condition: local bridge witnesses glue to one global path
 class only when the path-wide root-fault hyperedges agree under the coherence
@@ -272,9 +292,24 @@ cell. Equal endpoints without equal support, equal support without fault
 descent, or two valid paths without an authorized cell do not establish path
 independence.
 
-Composing the cell with its inverse produces a loop action. The exhibited loop
-acts identically. A declared `authority_twist` is rejected as nontrivial
-authority holonomy. Thus the central falsifier is represented directly:
+The first higher coherence diagram now closes by cancellation rather than a
+declared loop label:
+
+\[
+\omega_{\sigma\tau}\omega_{\rho\sigma}
+=(n_\tau^{-1}n_\sigma)(n_\sigma^{-1}n_\rho)
+=n_\tau^{-1}n_\rho
+=\omega_{\rho\tau}.
+\]
+
+Thus triangle holonomy is identity because the middle normalization witness
+telescopes. A fitted triangle target, ambiguous normalization, or distinct
+normal-form component breaks this equality and is rejected. This answers the
+current Deutsch question at the bounded three-path level: the cell is forced
+by a constructor relation and confluence, not appended because two readouts
+happen to agree.
+
+The central falsifier remains represented directly:
 
 \[
 \boxed{\text{locally admissible parallel paths can still differ globally}.}

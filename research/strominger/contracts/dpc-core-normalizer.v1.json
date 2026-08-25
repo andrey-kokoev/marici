@@ -196,6 +196,25 @@
       "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
     },
     {
+      "id":"third_configuration_path","theorem_scope":"third composable presentation of the same typed boundary","admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
+      "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+      "edges":[
+        {"id":"tau_0Y","source_authority_root":"charter_rho_01","joint_authorization_required":true,
+         "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+         "target_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"support":["correspondence_rho_01","presentation_C1"]},
+         "state_correspondence":{"source_derived":true,"source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","target_state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","support":["charter_rho_12","presentation_C2"]},
+         "source_quorum_endorsement":["r1","r2","r3"],"target_quorum_endorsement":["r2","r3","r4","r5"],"bridge_witness":["r2","r3"],"bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},"admissible_bridge_fault_sets":[["r2"],["r3"]],
+         "input_authority_resource":"cfg_auth_C0","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CY","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]}},
+        {"id":"tau_Y3","source_authority_root":"charter_rho_23","joint_authorization_required":true,
+         "source_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CY","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+         "target_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"support":["presentation_C3"]},
+         "state_correspondence":{"source_derived":true,"source_state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","target_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support":["correspondence_rho_12","correspondence_rho_23"]},
+         "source_quorum_endorsement":["r2","r3","r4","r5"],"target_quorum_endorsement":["r4","r5","r6"],"bridge_witness":["r4","r5"],"bridge_authority_roots":{"r4":"admin_D","r5":"admin_E"},"admissible_bridge_fault_sets":[["r4"],["r5"]],
+         "input_authority_resource":"cfg_auth_CY","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}}
+      ],
+      "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+    },
+    {
       "id":"alternate_configuration_path",
       "theorem_scope":"alternate composable presentation of the same typed boundary",
       "admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
@@ -224,11 +243,23 @@
   "configuration_category_audits":[
     {"id":"configuration_path_category","path_id":"varying_membership_configuration_path","identity_vertices":["C0","C1","C2","C3"],"identity_preserves_full_signature":true,"identity_replaces_authority":false,"associativity_edge_ids":["rho_01","rho_12","rho_23"]}
   ],
+  "configuration_constructor_relations":[
+    {"id":"normalize_rho","path_id":"varying_membership_configuration_path","edge_word":["rho_01","rho_12","rho_23"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"},
+    {"id":"normalize_sigma","path_id":"alternate_configuration_path","edge_word":["sigma_0X","sigma_X3"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"},
+    {"id":"normalize_tau","path_id":"third_configuration_path","edge_word":["tau_0Y","tau_Y3"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"}
+  ],
   "configuration_path_coherence_audits":[
-    {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path","coherence_cell":{"id":"omega_rho_sigma","source_derived":true,"invertible":true,"preserves_boundary_signature":true,"preserves_support_union":true,"root_identification":{"admin_B":"admin_B","admin_C":"admin_C","admin_D":"admin_D","admin_E":"admin_E"},"loop_action":"identity"}}
+    {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
+    {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
+    {"id":"rho_tau_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"third_configuration_path"}
   ],
   "required_configuration_path_comparisons":[
-    {"left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"}
+    {"left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
+    {"left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
+    {"left_path_id":"varying_membership_configuration_path","right_path_id":"third_configuration_path"}
+  ],
+  "configuration_coherence_triangle_audits":[
+    {"id":"rho_sigma_tau_triangle","paths":["varying_membership_configuration_path","alternate_configuration_path","third_configuration_path"]}
   ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
