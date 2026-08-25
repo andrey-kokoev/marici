@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "c1d463bb9d97d33d56b8d860d4f558d0bf0c716ad4e8b3c01eee3e9ea1ed1b0a",
+      "replay_checker_sha256": "2cf60c2250b073e64a8442563d9b95c7705c11bf7182a214aad6b8a2e85c79fc",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -702,6 +702,53 @@
       },
       "claims_unconditional_liveness": false,
       "theorem": "pairwise quorum intersection plus durable per-epoch non-equivocation implies uniqueness of a winning consumption certificate"
+    }
+  ],
+  "fault_parametric_quorum_audits": [
+    {
+      "id": "crash_recovery_n3_q2_f1",
+      "fault_kind": "crash_recovery",
+      "replica_count": 3,
+      "quorum_size": 2,
+      "fault_bound": 1,
+      "minimum_intersection": 1,
+      "faulty_replicas_may_equivocate": false,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "crash-recovery with durable vote cells",
+      "claimed_safe": true,
+      "claims_fault_model_transport_without_reproof": false
+    },
+    {
+      "id": "byzantine_n3_q2_f1_no_go",
+      "fault_kind": "byzantine",
+      "replica_count": 3,
+      "quorum_size": 2,
+      "fault_bound": 1,
+      "minimum_intersection": 1,
+      "faulty_replicas_may_equivocate": true,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "at most one Byzantine replica",
+      "claimed_safe": false,
+      "conflict_witness": {
+        "first_quorum": ["r1", "r2"],
+        "second_quorum": ["r2", "r3"],
+        "faulty_replicas": ["r2"],
+        "both_certificates_constructible": true
+      },
+      "claims_fault_model_transport_without_reproof": false
+    },
+    {
+      "id": "byzantine_n4_q3_f1",
+      "fault_kind": "byzantine",
+      "replica_count": 4,
+      "quorum_size": 3,
+      "fault_bound": 1,
+      "minimum_intersection": 2,
+      "faulty_replicas_may_equivocate": true,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "at most one Byzantine replica and honest durable vote cells",
+      "claimed_safe": true,
+      "claims_fault_model_transport_without_reproof": false
     }
   ],
   "application_cases": [

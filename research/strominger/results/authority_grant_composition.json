@@ -133,16 +133,18 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "4533a646eb0ceabe8d9afea82989ac4103b6d03ee13d269660db014833bab221",
+  "contract_sha256": "8aadba3d6a8dab00ce1d1ad1b5c2e41f0c39eb5ee72fcb760b74efb95c70ba2a",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
+  "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash-recovery n=3,q=2 is safe with durable non-equivocation; Byzantine n=3,q=2,f=1 is unsafe because the sole overlap may be faulty; n=4,q=3,f=1 is safe because minimum overlap two exceeds the fault bound and therefore contains an honest non-equivocator.",
   "gates": {
     "all_hostiles_rejected": true,
     "appeal_authority_is_certified_and_separate": true,
     "associativity_holds_on_typed_domain": true,
     "atlas_refinement_preserves_global_reconstruction": true,
     "authority_stack_has_finite_replayable_generator_basis": true,
+    "byzantine_safety_requires_honest_quorum_overlap": true,
     "capability_execution_is_atomic_and_epoch_fresh": true,
     "capability_execution_is_scoped_and_single_use": true,
     "certificate_digest_identifies_but_does_not_authorize": true,
@@ -152,6 +154,7 @@
     "coherence_is_prior_target_independent_and_recomputable": true,
     "composition_preserves_authority_kind": true,
     "counterfactual_deletion_separates_presentation_from_source": true,
+    "crash_and_byzantine_thresholds_are_distinguished": true,
     "descent_stabilizer_is_source_authorized": true,
     "distributed_consumption_trichotomy_is_typed": true,
     "distributed_linearity_trilemma_has_exact_three_frontier_designs": true,
@@ -248,6 +251,15 @@
         "bounded_multiplicity_mislabeled_single_use"
       ],
       "expected_code": "bounded_multiplicity_mislabeled_single_use",
+      "passed": true,
+      "valid": false
+    },
+    "byzantine_quorum_intersection_miscalculated": {
+      "description": "The minimum intersection for n=4, q=3 is incorrectly reported as one.",
+      "error_codes": [
+        "incorrect_minimum_quorum_intersection"
+      ],
+      "expected_code": "incorrect_minimum_quorum_intersection",
       "passed": true,
       "valid": false
     },
@@ -393,6 +405,24 @@
       "passed": true,
       "valid": false
     },
+    "crash_fault_model_allows_equivocation": {
+      "description": "A crash-recovery model silently permits a replica to double-vote while retaining the crash-only safety claim.",
+      "error_codes": [
+        "incorrect_fault_parametric_safety_classification"
+      ],
+      "expected_code": "incorrect_fault_parametric_safety_classification",
+      "passed": true,
+      "valid": false
+    },
+    "crash_quorum_proof_transported_to_byzantine": {
+      "description": "The n=3, q=2 crash proof is reused unchanged when the intersection replica may equivocate.",
+      "error_codes": [
+        "incorrect_fault_parametric_safety_classification"
+      ],
+      "expected_code": "incorrect_fault_parametric_safety_classification",
+      "passed": true,
+      "valid": false
+    },
     "delayed_messages_retroactively_restore_linearity": {
       "description": "Coherence messages arriving after both commits are claimed to undo one completed execution.",
       "error_codes": [
@@ -487,6 +517,24 @@
         "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "fault_model_change_declared_transport": {
+      "description": "Changing from crash to Byzantine faults is treated as evidence transport rather than a new proof obligation.",
+      "error_codes": [
+        "fault_model_authority_transport"
+      ],
+      "expected_code": "fault_model_authority_transport",
+      "passed": true,
+      "valid": false
+    },
+    "fault_model_has_no_source_authority": {
+      "description": "The checker assumes a one-fault bound without any authority for that environmental claim.",
+      "error_codes": [
+        "unauthorized_or_unenforced_fault_model"
+      ],
+      "expected_code": "unauthorized_or_unenforced_fault_model",
       "passed": true,
       "valid": false
     },
@@ -1047,15 +1095,15 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "b8d22fc5adb2b75080abb3918b74966a1b6edb5915929a2382565f587a36db0c",
-  "hostile_passed": 89,
-  "hostile_total": 89,
+  "hostile_fixture_sha256": "574d9630a4272f6d302347dadd962a8a63d15489134a1147e3a8bb5559cd7ca6",
+  "hostile_passed": 94,
+  "hostile_total": 94,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 66,
+  "passed_gates": 68,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -1065,6 +1113,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 66,
+  "total_gates": 68,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
