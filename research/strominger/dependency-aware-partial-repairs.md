@@ -38,9 +38,87 @@ the two composites produce inequivalent graph norms. Its swap gate reports
 typed endpoints. Scalar equality therefore supplies neither a swap cell nor
 endpoint coherence.
 
-The current increment deliberately stops before braid/anomaly classification.
-Those cells will be generated only after their residual representation and
-source-authority types are present. Likewise, the theta/Tate stages
-`{S,P,Q,A,L,C,D}` are not assigned dependencies by this compiler: their
-`precedes`, `commutes_with`, `domain_after`, `boundary_delta`, and
-`completion_scope` declarations remain source-owner obligations.
+The higher comparison boundary is crossed only through a typed
+comparison-current channel.
+
+## Braid and anomaly gate
+
+Every nonzero pairwise swap comparison value must carry its own source
+authority root and `source_comparison_current` derivation. For a legal triple,
+the compiler follows both braid words and subtracts their accumulated
+comparison currents. It classifies the first residual as:
+
+- `zero`: strict braid coherence;
+- `exact_boundary`: a higher cell only when a source root and comparison cell
+  are supplied;
+- `central_phase`: a retained determinant/Pfaffian anomaly candidate;
+- `domain_mismatch`: one comparison path is not defined;
+- `untyped_residual`: rejection, with no fitted killing cell.
+
+The failed-braid model has six legal paths and every pairwise swap cell, but its
+two braid composites differ by one unit of comparison current. With no typed
+higher witness it is classified `untyped_residual`. A second model has the same
+scalar endpoint bytes and the same numerical residual, but a source-rooted
+central-phase type; the compiler retains it as an anomaly candidate rather than
+calling the paths coherent.
+
+## Residual capability deletion
+
+In the sixth model, both orders are linear extensions of the discrete
+dependency poset. `Read;Delete` is dynamically legal. `Delete;Read` is not:
+the first constructor consumes `residual_k`, so the second leg fails with
+`repair_residual_capability_failure`. This is a domain-of-definition failure,
+not a precedence relation inferred after the fact. The missing swap cell is
+reported explicitly.
+
+## Theta/Tate declaration barrier
+
+The theta/Tate stages `{S,P,Q,A,L,C,D}` are present as a parameterized packet,
+but the compiler assigns them no dependencies. Every stage currently lacks the
+source-owned fields
+
+```text
+precedes
+commutes_with
+domain_after
+boundary_delta
+completion_scope
+```
+
+Accordingly the packet status is `source_declarations_required`; path
+enumeration, component construction, braid comparison, and endpoint claims are
+not performed. In particular, the compiler preserves the questions
+
+```text
+P <-> Q?
+S <-> P?
+L < C?
+(P,Q,S,A) < D?
+```
+
+as questions. A hostile request to assume the discrete poset or enumerate the
+incomplete packet is rejected.
+
+A final refresh of Grothendieck's live notes found a source-native candidate
+scale-flow graph norm and an explicit warning that the bulk tail--seam Gram
+does not preserve the endpoint trace. This strengthens the need for the
+`graph_norm_signature` and boundary-packet swap gates, but it still does not
+declare the per-stage precedence, commutation, domain transition, boundary
+delta, or completion scope. The seven-stage packet therefore remains correctly
+blocked rather than being partially inferred from those analytic results.
+
+## The compiler theorem
+
+Legal staged repairs are dynamically admitted linear extensions of a typed
+dependency poset. Adjacent swaps are available only for incomparable repairs
+with source-declared commutation and equal complete local packets: boundary,
+domain, graph norm, support/fault union, remaining defects, and reconstruction
+capabilities. These swaps generate coherence only subject to the typed braid
+and anomaly gate. Equal scalar bytes never suffice.
+
+The compiler records two graphs separately. The abstract graph of all linear
+extensions is connected under adjacent swaps of incomparable elements, as the
+standard poset theorem requires. The dynamically legal, authority-bearing swap
+graph is a subgraph: it can split when a domain is absent, a graph norm changes,
+a residual capability is destroyed, or source commutation authority is
+missing. Only connectivity of the latter establishes coherent construction.
