@@ -77,6 +77,7 @@ def main():
     root_audits = {item["id"]: item for item in packet["review_root_independence_audits"]}
     temporal_audits = {item["id"]: item for item in packet["temporal_review_authority_audits"]}
     temporal_atlases = {item["id"]: item for item in packet["temporal_replay_atlas_audits"]}
+    temporal_cocycles = {item["id"]: item for item in packet["temporal_governance_cocycle_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -257,12 +258,27 @@ def main():
             and temporal_atlases["two_successor_atlases_same_packet"]["disposition_defect"] == 0
             and temporal_atlases["two_successor_atlases_same_packet"]["prospective_authority_restored"],
         "temporal_replay_paths_have_disjoint_roots":
-            not set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][0]["roots"])
-            & set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][1]["roots"]),
+            all(
+                not set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][i]["roots"])
+                & set(temporal_atlases["two_successor_atlases_same_packet"]["paths"][j]["roots"])
+                for i in range(len(temporal_atlases["two_successor_atlases_same_packet"]["paths"]))
+                for j in range(i + 1, len(temporal_atlases["two_successor_atlases_same_packet"]["paths"]))
+            ),
         "higher_appeal_cell_compares_without_selecting_truth":
             temporal_atlases["two_successor_atlases_same_packet"]["higher_appeal_cell"]["role"]
             == "compare_procedure_not_truth"
             and not temporal_atlases["two_successor_atlases_same_packet"]["higher_appeal_cell"]["may_override_disagreement"],
+        "three_atlas_comparison_cells_form_zero_cocycle":
+            temporal_cocycles["triangle_AB_CD_EF"]["cocycle_defect"] == 0
+            and temporal_cocycles["triangle_AB_CD_EF"]["global_standing_restored"]
+            and len(temporal_cocycles["triangle_AB_CD_EF"]["comparison_cells"]) == 3,
+        "temporal_comparison_cells_are_procedural_and_natural": all(
+            cell["authority_kind"] == "procedural_review"
+            and not cell["may_select_truth"]
+            and cell["invertible"]
+            and cell["naturality_defect"] == 0
+            for cell in temporal_cocycles["triangle_AB_CD_EF"]["comparison_cells"]
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -305,6 +321,7 @@ def main():
         "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
         "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
         "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
+        "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

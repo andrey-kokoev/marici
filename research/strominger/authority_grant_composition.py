@@ -543,6 +543,43 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if cell.get("role") != "compare_procedure_not_truth" or cell.get("may_override_disagreement") is not False:
             err("temporal_higher_cell_launders_truth_authority", aid, str(cell))
 
+    temporal_atlases = {item["id"]: item for item in packet.get("temporal_replay_atlas_audits", [])}
+    for cocycle in packet.get("temporal_governance_cocycle_audits", []):
+        cid = cocycle["id"]
+        atlas = temporal_atlases.get(cocycle.get("atlas_id"))
+        cells = {item["id"]: item for item in cocycle.get("comparison_cells", [])}
+        if atlas is None or len(atlas.get("paths", [])) < 3 or len(cells) < 3:
+            err("incomplete_temporal_governance_cocycle", cid, str(cocycle.get("atlas_id")))
+            continue
+        path_ids = {path["id"] for path in atlas["paths"]}
+        for cell_id, cell in cells.items():
+            if cell.get("source_path") not in path_ids or cell.get("target_path") not in path_ids:
+                err("unknown_temporal_comparison_endpoint", cell_id, f"{cell.get('source_path')}->{cell.get('target_path')}")
+            if not cell.get("invertible") or not cell.get("source_derived") or not cell.get("committed_before_replay"):
+                err("invalid_temporal_comparison_cell", cell_id, str(cell))
+            if cell.get("authority_kind") != "procedural_review" or cell.get("may_select_truth") is not False:
+                err("temporal_comparison_cell_launders_authority", cell_id, str(cell.get("authority_kind")))
+            if cell.get("packet_sha256") != atlas["paths"][0].get("packet_sha256"):
+                err("temporal_comparison_packet_mismatch", cell_id, str(cell.get("packet_sha256")))
+            if cell.get("naturality_defect") != 0:
+                err("temporal_comparison_naturality_failure", cell_id, str(cell.get("naturality_defect")))
+        direct = cells.get(cocycle.get("direct_cell"))
+        composite_ids = cocycle.get("composite_path", [])
+        composite = [cells.get(cell_id) for cell_id in composite_ids]
+        if direct is None or len(composite) < 2 or any(cell is None for cell in composite):
+            err("incomplete_temporal_governance_cocycle", cid, str(composite_ids))
+            continue
+        composable = all(composite[index]["target_path"] == composite[index + 1]["source_path"] for index in range(len(composite) - 1))
+        same_boundary = direct["source_path"] == composite[0]["source_path"] and direct["target_path"] == composite[-1]["target_path"]
+        if not composable or not same_boundary:
+            err("noncomposable_temporal_governance_cocycle", cid, str(composite_ids))
+        if cocycle.get("cocycle_defect") != 0:
+            err("temporal_governance_cocycle_failure", cid, str(cocycle.get("cocycle_defect")))
+            if cocycle.get("global_standing_restored"):
+                err("standing_restored_across_temporal_cocycle_defect", cid, str(cocycle.get("cocycle_defect")))
+        elif not cocycle.get("global_standing_restored"):
+            err("flat_temporal_cocycle_withholds_standing", cid, "zero cocycle defect")
+
     # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
     # earned only after a source-derived discriminator closes the new kernel.

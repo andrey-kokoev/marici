@@ -3,7 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "4ae4e447bd65041182dec1c24e3fb58188e9c0e17a82210d1a80c9960697b0d8",
+  "contract_sha256": "455767ac5776a6a28544d578d33364ec394cb24970bd20f3ac718a378cabe2fd",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
@@ -51,10 +51,12 @@
     "stacky_mechanism_kernel_equals_authorized_gauge": true,
     "standalone_contract_compiles": true,
     "target_intervention_cannot_rewrite_upstream_authority": true,
+    "temporal_comparison_cells_are_procedural_and_natural": true,
     "temporal_replay_paths_have_disjoint_roots": true,
     "temporal_replay_uses_same_frozen_packet": true,
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
+    "three_atlas_comparison_cells_form_zero_cocycle": true,
     "transport_requires_authority_preservation": true
   },
   "hostile": {
@@ -278,6 +280,16 @@
       "passed": true,
       "valid": false
     },
+    "pairwise_agreement_but_triangular_holonomy": {
+      "description": "All three replay dispositions agree, but direct and two-step comparison cells have nonzero cocycle defect.",
+      "error_codes": [
+        "standing_restored_across_temporal_cocycle_defect",
+        "temporal_governance_cocycle_failure"
+      ],
+      "expected_code": "temporal_governance_cocycle_failure",
+      "passed": true,
+      "valid": false
+    },
     "pairwise_cells_nontrivial_atlas_holonomy": {
       "description": "Every presentation change is locally valid, but direct and two-step re-encoding disagree around the atlas triangle.",
       "error_codes": [
@@ -495,6 +507,16 @@
       "passed": true,
       "valid": false
     },
+    "standing_restored_across_triangular_defect": {
+      "description": "Global standing is retained despite a nonzero temporal governance cocycle.",
+      "error_codes": [
+        "standing_restored_across_temporal_cocycle_defect",
+        "temporal_governance_cocycle_failure"
+      ],
+      "expected_code": "standing_restored_across_temporal_cocycle_defect",
+      "passed": true,
+      "valid": false
+    },
     "standing_restored_without_replay": {
       "description": "Prospective authority is restored without completing a new review.",
       "error_codes": [
@@ -508,6 +530,7 @@
       "description": "Two independently valid successor atlases return different dispositions while standing is declared restored.",
       "error_codes": [
         "authority_restored_across_governance_holonomy",
+        "incomplete_temporal_governance_cocycle",
         "unresolved_governance_holonomy"
       ],
       "expected_code": "unresolved_governance_holonomy",
@@ -541,6 +564,24 @@
       "passed": true,
       "valid": false
     },
+    "temporal_comparison_cell_noninvertible": {
+      "description": "A one-way procedural comparison is used as an atlas equivalence.",
+      "error_codes": [
+        "invalid_temporal_comparison_cell"
+      ],
+      "expected_code": "invalid_temporal_comparison_cell",
+      "passed": true,
+      "valid": false
+    },
+    "temporal_comparison_cell_promotes_truth_authority": {
+      "description": "A comparison cell silently changes from procedural review to truth selection.",
+      "error_codes": [
+        "temporal_comparison_cell_launders_authority"
+      ],
+      "expected_code": "temporal_comparison_cell_launders_authority",
+      "passed": true,
+      "valid": false
+    },
     "temporal_path_comparison_is_fitted": {
       "description": "The rule for comparing successor replay paths is chosen after their dispositions are known.",
       "error_codes": [
@@ -553,9 +594,19 @@
     "temporal_paths_share_review_root": {
       "description": "Two nominal replay paths share a controlling merits root and are falsely treated as independent.",
       "error_codes": [
+        "incomplete_temporal_governance_cocycle",
         "temporal_replay_paths_not_independently_rooted"
       ],
       "expected_code": "temporal_replay_paths_not_independently_rooted",
+      "passed": true,
+      "valid": false
+    },
+    "temporal_triangle_missing_direct_cell": {
+      "description": "Only the two-step comparison exists, so the claimed triangular coherence cannot be tested.",
+      "error_codes": [
+        "incomplete_temporal_governance_cocycle"
+      ],
+      "expected_code": "incomplete_temporal_governance_cocycle",
       "passed": true,
       "valid": false
     },
@@ -583,14 +634,14 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "49a4bd4e48b938afc628e6f2d1af35789b4668328fbdcae938688ac4ad30cfc3",
-  "hostile_passed": 55,
-  "hostile_total": 55,
+  "hostile_fixture_sha256": "07d2cb74e802bd31b8db889a2617c7470cc2a9ba8009e07270707540578b98ab",
+  "hostile_passed": 60,
+  "hostile_total": 60,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 50,
+  "passed_gates": 52,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -599,6 +650,7 @@
   "schema": "marici.authority-grant-composition-checks.v1",
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
-  "total_gates": 50,
+  "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
+  "total_gates": 52,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
