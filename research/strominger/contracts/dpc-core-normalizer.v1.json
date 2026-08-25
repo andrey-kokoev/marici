@@ -78,6 +78,13 @@
       "history":{"append_only":true,"entries":[{"kind":"issued"},{"kind":"consumed"},{"kind":"effect_committed"},{"kind":"receipt_recorded"}],"execution_fact_retained":true,"compensation_erases_history":false}
     }
   ],
+  "trusted_base_cocircuit_audits": [
+    {"id":"tcb_anti_rollback","target":"successor:advance_e_0_to_e_1","assumption":"anti_rollback_storage","primitive_failure_class":"rollback","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_port_coverage","target":"successor:advance_e_0_to_e_1","assumption":"measured_ports_cover_required_ports","primitive_failure_class":"hidden_port","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_hardware_nonclone_boundary","target":"successor:advance_e_0_to_e_1","assumption":"bounded_noncloned_hardware_root","primitive_failure_class":"clone","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_signer_independence","target":"successor:advance_e_0_to_e_1","assumption":"independent_configuration_signer_roots","primitive_failure_class":"signer_fork","singleton_deletion_error":"epoch_successor_signer_fault_model_unsafe"},
+    {"id":"tcb_attestation_freshness","target":"successor:advance_e_0_to_e_1","assumption":"transition_nonce_binding","primitive_failure_class":"attestation_replay","singleton_deletion_error":"epoch_successor_attestation_stale_or_correlated"}
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],

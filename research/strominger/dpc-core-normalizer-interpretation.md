@@ -96,3 +96,19 @@ successor. Moving an unconsumed capability across that boundary will require a
 future explicit lift constructor. Nonatomic consumption, replayable nonces,
 effects outside the fence, mismatched receipts, and historical erasure are
 independently rejected.
+
+## Trusted-base cocircuits
+
+Five singleton deletions form the bounded primitive trusted-base cocircuit
+basis:
+
+\[
+\{\text{rollback},\text{hidden port},\text{clone},
+  \text{signer fork},\text{attestation replay}\}.
+\]
+
+Each deletion changes the successor certificate from admitted to rejected with
+its declared primitive failure class. The cocircuit audit is total under other
+hostile mutations: a missing baseline attestation produces a typed failed
+minimality audit, never a checker exception. Minimality here is explicitly
+bounded to the five declared trusted-base assumptions.
