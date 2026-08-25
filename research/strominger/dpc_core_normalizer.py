@@ -26,8 +26,12 @@ def canonical_signature(node: dict[str, Any]) -> dict[str, Any]:
 
 def normalize(node: dict[str, Any]) -> dict[str, Any]:
     current = deepcopy(node)
+    seen: set[str] = set()
     while True:
         before = json.dumps(current, sort_keys=True, separators=(",", ":"))
+        if before in seen:
+            raise ValueError("normalization_cycle")
+        seen.add(before)
         current["scope"] = sorted(set(current["scope"]))
         current["support"] = sorted(set(current["support"]))
         current["resource"] = {key: current["resource"][key] for key in sorted(current["resource"])}
@@ -36,6 +40,16 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
         index = 0
         while index < len(operations):
             first = operations[index]
+            if index + 1 < len(operations) and first["kind"] == "coherence" and operations[index + 1]["kind"] == "coherence":
+                second = operations[index + 1]
+                inverse_pair = first.get("cell") == second.get("inverse_of") and second.get("cell") == first.get("inverse_of")
+                if inverse_pair:
+                    if not first.get("invertible") or not second.get("invertible"):
+                        raise ValueError("coherence_inverse_not_invertible")
+                    if not first.get("preserves_full_signature") or not second.get("preserves_full_signature"):
+                        raise ValueError("coherence_inverse_changes_authority_signature")
+                    index += 2
+                    continue
             if index + 1 < len(operations) and first["kind"] == "transport" and operations[index + 1]["kind"] == "transport":
                 second = operations[index + 1]
                 if first["target"] != second["source"]:
@@ -95,11 +109,18 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
                     raise ValueError("transport_loses_authority")
                 reduced.append(operation)
                 continue
+            if operation["kind"] == "coherence":
+                if not operation.get("invertible"):
+                    raise ValueError("noninvertible_coherence_cannot_normalize")
+                reduced.append(operation)
+                continue
             reduced.append(operation)
         current["operations"] = reduced
         after = json.dumps(current, sort_keys=True, separators=(",", ":"))
         if before == after:
             return current
+        if after in seen:
+            raise ValueError("normalization_cycle")
 
 
 def digest(node: dict[str, Any]) -> str:
