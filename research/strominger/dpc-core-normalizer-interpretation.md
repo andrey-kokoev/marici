@@ -434,3 +434,47 @@ alter the admitted normal form. A nonbijective index map, resource aliasing,
 untagged support union, position-dependent rewrite, or implicit cross-hole
 fault identification is rejected. These are precisely the operations that
 would turn symmetry into information loss or authority cloning.
+
+## Authorized correlation and symmetry breaking
+
+Cross-hole dependence is admitted only through the constructor
+`dpc.cross_hole_fault_correlation.v1`. Its authority is narrow: it may extend
+the fault hypergraph, but it may not identify support records or linear
+resources. The exhibited hyperedge is
+
+\[
+\{(h_0,\mathrm{admin}_C),(h_1,\mathrm{admin}_C)\}.
+\]
+
+It records one common-cause failure across two holes. Its projection into each
+affected local bridge removes only `admin_C`, leaving the independently rooted
+`admin_B` member available. A hyperedge containing both `admin_B` and
+`admin_C` at one hole is rejected because it exhausts that local bridge.
+
+Correlation breaks symmetry. Before extension, every finite permutation of
+the three holes is admitted. Afterwards, the permitted permutations are
+exactly the automorphisms of the typed correlation hypergraph. For the fixture
+they are
+
+\[
+\mathrm{id},\qquad(h_0\ h_1),
+\]
+
+so the symmetry group has order two rather than six. The checker derives this
+stabilizer by transporting the complete hyperedge set; it does not accept a
+claimed group size.
+
+Pointwise normalization still commutes with this stabilizer because rewrite
+rules preserve indexed root labels and mention no distinguished hole. It does
+not claim equivariance under permutations that move the correlated pair to an
+uncorrelated pair:
+
+\[
+N(gX)=gN(X)
+\quad\text{only for}\quad
+g\in\operatorname{Aut}(H_{\mathrm{fault}}).
+\]
+
+Thus an authority-bearing correlation constructor has a measurable algebraic
+effect: it reduces symmetry without merging the underlying support or resource
+fibers.

@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import hashlib
 import json
-from itertools import combinations
+import math
+from itertools import combinations, permutations
 from copy import deepcopy
 from typing import Any
 
@@ -1012,6 +1013,67 @@ def audit_configuration_context_symmetry(contract: dict[str, Any], contextual_au
     return audits
 
 
+def audit_correlated_configuration_contexts(contract: dict[str, Any], contextual_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    context_results = {item["id"]: item for item in contextual_audits}
+    paths = contract.get("configuration_path_audits", [])
+    allowed_roots = {root for path in paths for edge in path.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
+    local_bridge_root_sets = {frozenset(edge.get("bridge_authority_roots", {}).values()) for path in paths for edge in path.get("edges", [])}
+    rewrites = contract.get("configuration_constructor_rewrites", [])
+    audits = []
+    for theorem in contract.get("configuration_correlated_context_theorems", []):
+        errors: list[str] = []
+        base = context_results.get(theorem.get("base_context_theorem_id"), {})
+        if not base.get("passed") or not base.get("indexed_fibers_typed"):
+            errors.append("correlated_context_base_invalid")
+        constructor_typed = bool(theorem.get("constructor_id") and theorem.get("source_authority_root")) and theorem.get("authorized_effect") == "fault_hypergraph_extension_only"
+        if not constructor_typed:
+            errors.append("correlated_context_constructor_unauthorized")
+        separation_preserved = theorem.get("support_identification") is False and theorem.get("resource_identification") is False
+        if not separation_preserved:
+            errors.append("correlated_context_authority_or_support_laundered")
+        indices = theorem.get("hole_indices", [])
+        if not indices or len(indices) != len(set(indices)):
+            errors.append("correlated_context_hole_indices_invalid")
+        raw_edges = theorem.get("correlation_hyperedges", [])
+        hyperedges: set[frozenset[tuple[str, str]]] = set()
+        hyperedges_typed = bool(raw_edges)
+        for raw_edge in raw_edges:
+            edge = frozenset((item[0], item[1]) for item in raw_edge if isinstance(item, list) and len(item) == 2)
+            if len(edge) != len(raw_edge) or len({hole for hole, _ in edge}) < 2 or any(hole not in indices or root not in allowed_roots for hole, root in edge):
+                hyperedges_typed = False
+            hyperedges.add(edge)
+        if not hyperedges_typed or len(hyperedges) != len(raw_edges):
+            errors.append("correlated_context_hyperedge_untyped")
+        bridge_safe = True
+        for edge in hyperedges:
+            for hole in indices:
+                failed_roots = {root for edge_hole, root in edge if edge_hole == hole}
+                if any(bridge_roots <= failed_roots for bridge_roots in local_bridge_root_sets):
+                    bridge_safe = False
+        if not bridge_safe:
+            errors.append("correlated_context_exhausts_local_bridge")
+        automorphisms = []
+        if hyperedges_typed:
+            for image in permutations(indices):
+                mapping = dict(zip(indices, image))
+                transformed = {frozenset((mapping[hole], root) for hole, root in edge) for edge in hyperedges}
+                if transformed == hyperedges:
+                    automorphisms.append(list(image))
+        expected_automorphisms = theorem.get("expected_automorphisms", [])
+        automorphism_group_exact = theorem.get("symmetry") == "automorphisms_of_typed_fault_hypergraph" and sorted(automorphisms) == sorted(expected_automorphisms)
+        if not automorphism_group_exact:
+            errors.append("correlated_context_symmetry_group_incorrect")
+        rewrite_position_independent = all("hole_index" not in rewrite for rewrite in rewrites)
+        normalization_equivariant = base.get("newman_global_confluence") and rewrite_position_independent and bridge_safe and separation_preserved and automorphism_group_exact and theorem.get("normalization_action") == "pointwise_rewrites_preserve_indexed_correlation_labels"
+        if not normalization_equivariant:
+            errors.append("correlated_context_normalization_not_equivariant")
+        if theorem.get("theorem_scope") != "all finite typed fault hypergraphs constructed by the admitted correlation constructor":
+            errors.append("correlated_context_scope_laundered")
+        full_group_order = math.factorial(len(indices))
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "constructor_typed": constructor_typed, "separation_preserved": separation_preserved, "hyperedges_typed": hyperedges_typed, "local_bridges_survive": bridge_safe, "automorphisms": automorphisms, "automorphism_group_order": len(automorphisms), "full_symmetric_group_order": full_group_order, "symmetry_broken": bool(indices) and len(automorphisms) < full_group_order, "normalization_equivariant_under_stabilizer": normalization_equivariant, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1052,10 +1114,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
     contextual_rewrite_audits = audit_contextual_configuration_rewrites(contract, configuration_path_audits)
     context_symmetry_audits = audit_configuration_context_symmetry(contract, contextual_rewrite_audits)
+    correlated_context_audits = audit_correlated_configuration_contexts(contract, contextual_rewrite_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1085,4 +1148,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_coherence_coverage": configuration_coherence_coverage,
         "configuration_contextual_rewrite_theorems": contextual_rewrite_audits,
         "configuration_context_symmetry_theorems": context_symmetry_audits,
+        "configuration_correlated_context_theorems": correlated_context_audits,
     }

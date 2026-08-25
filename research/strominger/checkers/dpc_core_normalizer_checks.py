@@ -264,6 +264,24 @@ for name, mutate_symmetry, expected in (
     errors = candidate_result["configuration_context_symmetry_theorems"][0]["errors"]
     context_symmetry_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["context_symmetry_hostiles"] = context_symmetry_hostiles
+correlated_context_hostiles = {}
+for name, mutate_correlation, expected in (
+    ("missing_constructor_authority", lambda c: c["configuration_correlated_context_theorems"][0].update({"source_authority_root":None}), "correlated_context_constructor_unauthorized"),
+    ("support_identified", lambda c: c["configuration_correlated_context_theorems"][0].update({"support_identification":True}), "correlated_context_authority_or_support_laundered"),
+    ("resources_identified", lambda c: c["configuration_correlated_context_theorems"][0].update({"resource_identification":True}), "correlated_context_authority_or_support_laundered"),
+    ("single_hole_not_correlation", lambda c: c["configuration_correlated_context_theorems"][0].update({"correlation_hyperedges":[[["h0","admin_C"]]]}), "correlated_context_hyperedge_untyped"),
+    ("correlation_exhausts_bridge", lambda c: c["configuration_correlated_context_theorems"][0]["correlation_hyperedges"].append([["h0","admin_B"],["h0","admin_C"],["h1","admin_C"]]), "correlated_context_exhausts_local_bridge"),
+    ("full_symmetry_retained", lambda c: c["configuration_correlated_context_theorems"][0].update({"symmetry":"finite_bijections_of_hole_indices"}), "correlated_context_symmetry_group_incorrect"),
+    ("wrong_stabilizer", lambda c: c["configuration_correlated_context_theorems"][0]["expected_automorphisms"].append(["h2","h1","h0"]), "correlated_context_symmetry_group_incorrect"),
+    ("position_sensitive_normalization", lambda c: c["configuration_constructor_rewrites"][0].update({"hole_index":"h0"}), "correlated_context_normalization_not_equivariant"),
+    ("scope_expanded_without_constructor", lambda c: c["configuration_correlated_context_theorems"][0].update({"theorem_scope":"all cross-hole relations"}), "correlated_context_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_correlation(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_correlated_context_theorems"][0]["errors"]
+    correlated_context_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["correlated_context_hostiles"] = correlated_context_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -318,5 +336,7 @@ for name, rejected in contextual_rewrite_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " contextual_rewrite hostile." + name)
 for name, rejected in context_symmetry_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " context_symmetry hostile." + name)
+for name, rejected in correlated_context_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " correlated_context hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and coherence_omission_rejected else 1)
