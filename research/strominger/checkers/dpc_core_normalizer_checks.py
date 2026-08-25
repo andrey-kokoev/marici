@@ -120,6 +120,20 @@ for field, value, expected in (
     errors = candidate_result["forgetful_projections"][0]["errors"]
     projection_hostiles[field] = not candidate_result["passed"] and expected in errors
 result["forgetful_projection_hostiles"] = projection_hostiles
+chain_hostiles = {}
+chain_mutations = (
+    ("gap", lambda c: c["epoch_successor_chain_audits"][0]["steps"][1].update({"successor":{"parameter":"e","offset":3}}), "successor_chain_nonadjacent_step"),
+    ("digest_break", lambda c: c["epoch_successor_chain_audits"][0]["steps"][1].update({"predecessor_state_sha256":"0" * 64}), "successor_chain_digest_link_failure"),
+    ("fork", lambda c: c["epoch_successor_chain_audits"][0]["steps"][1].update({"competing_successor_constructible":True}), "successor_chain_uniqueness_failure"),
+    ("support_drop", lambda c: c["epoch_successor_chain_audits"][0]["steps"][1].update({"support_added":[]}), "successor_chain_support_not_accumulated"),
+)
+for name, mutate_chain, expected in chain_mutations:
+    candidate = deepcopy(contract)
+    mutate_chain(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["epoch_successor_chains"][0]["errors"]
+    chain_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["successor_chain_hostiles"] = chain_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -151,4 +165,6 @@ for name, rejected in ssa_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " resource_ssa hostile." + name)
 for name, rejected in projection_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " projection hostile." + name)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) else 1)
+for name, rejected in chain_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " successor_chain hostile." + name)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) else 1)

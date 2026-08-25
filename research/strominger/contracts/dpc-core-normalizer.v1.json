@@ -122,6 +122,23 @@
       "reverse_lift_constructor":null
     }
   ],
+  "epoch_successor_chain_audits": [
+    {
+      "id":"finite_symbolic_successor_chain",
+      "parameter":"e",
+      "base_epoch":{"parameter":"e","offset":0},
+      "base_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "base_support":["bootstrap_root"],
+      "steps":[
+        {"id":"s01","predecessor":{"parameter":"e","offset":0},"successor":{"parameter":"e","offset":1},"predecessor_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","successor_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","support_added":["config_transition_1"],"competing_successor_constructible":false,"physical_state_correspondence":true},
+        {"id":"s12","predecessor":{"parameter":"e","offset":1},"successor":{"parameter":"e","offset":2},"predecessor_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","successor_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","support_added":["config_transition_2"],"competing_successor_constructible":false,"physical_state_correspondence":true},
+        {"id":"s23","predecessor":{"parameter":"e","offset":2},"successor":{"parameter":"e","offset":3},"predecessor_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","successor_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support_added":["config_transition_3"],"competing_successor_constructible":false,"physical_state_correspondence":true}
+      ],
+      "expected_terminal_epoch":{"parameter":"e","offset":3},
+      "expected_accumulated_support":["bootstrap_root","config_transition_1","config_transition_2","config_transition_3"],
+      "theorem_scope":"arbitrary finite nonempty step lists satisfying the induction invariant"
+    }
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],

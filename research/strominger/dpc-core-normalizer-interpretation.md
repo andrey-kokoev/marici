@@ -147,3 +147,17 @@ reverse construction must choose precisely the fields the legacy calculus does
 not contain, so it requires new source authority. Claiming a canonical lift,
 omitting the projection constructor, or smuggling resource fields into the
 legacy signature is rejected.
+
+## Finite successor-chain induction
+
+The one-step successor theorem now extends to arbitrary finite nonempty chains.
+The induction state is the current symbolic epoch, current physical-state
+digest, accumulated support set, and previously used transition identities.
+Appending one step is valid exactly when it is adjacent, digest-linked,
+nonforking, physically realized, and contributes an explicit support witness.
+
+The bounded three-step replay reaches `e+3` and retains bootstrap plus all three
+transition obligations. Because the checker iterates the same invariant over
+an arbitrary input list, the proof is by finite induction rather than a
+three-epoch special case. Offset gaps, broken digest links, competing
+successors, and support deletion are rejected independently.
