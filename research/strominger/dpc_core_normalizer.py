@@ -1374,6 +1374,52 @@ def audit_repair_execution(contract: dict[str, Any], selection_audits: list[dict
     return audits
 
 
+def audit_repair_execution_decomposition(contract: dict[str, Any], selection_audits: list[dict[str, Any]], cocircuit_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selection_results = {item["id"]: item for item in selection_audits}
+    selection_contracts = {item["id"]: item for item in contract.get("configuration_repair_selection_theorems", [])}
+    repair_contracts = {item["id"]: item for item in contract.get("configuration_correlation_repair_theorems", [])}
+    cocircuit_results = {item["id"]: item for item in cocircuit_audits}
+    audits = []
+    for theorem in contract.get("configuration_repair_execution_decomposition_theorems", []):
+        errors: list[str] = []
+        selection_id = theorem.get("selection_theorem_id")
+        selection = selection_results.get(selection_id, {})
+        selection_contract = selection_contracts.get(selection_id, {})
+        repair_contract = repair_contracts.get(selection_contract.get("repair_theorem_id"), {})
+        fixture = next((item for item in repair_contract.get("fixtures", []) if item.get("id") == selection_contract.get("repair_fixture_id")), {})
+        profile = next((item for item in selection.get("profiles", []) if item.get("id") == theorem.get("valuation_profile_id")), {})
+        cocircuit_base = cocircuit_results.get(repair_contract.get("cocircuit_theorem_id"), {})
+        if not selection.get("passed") or not profile.get("passed") or not cocircuit_base.get("passed"):
+            errors.append("repair_decomposition_base_invalid")
+        law_typed = theorem.get("decomposition_law") == "proper_subrepairs_are_not_endpoint_capabilities_without_intermediate_state_authority" and theorem.get("atomic_capability_partition_authorized") is False
+        if not law_typed:
+            errors.append("repair_decomposition_authority_laundered")
+        options_typed = set(theorem.get("authorized_options", [])) == {"joint_atomic_execution", "staged_execution_with_intermediate_state_authority"}
+        if not options_typed:
+            errors.append("repair_decomposition_options_untyped")
+        if theorem.get("theorem_scope") != "all multi-locus primitive repairs selected from an unsafe typed correlation hyperedge":
+            errors.append("repair_decomposition_scope_laundered")
+
+        edge = frozenset(tuple(locus) for locus in fixture.get("unsafe_hyperedge", []))
+        selected = frozenset(tuple(locus) for locus in profile.get("selected_repair", []))
+        cocircuits = {frozenset(tuple(locus) for locus in witness) for witness in cocircuit_base.get("primitive_cocircuits", [])}
+        proper_subrepairs = []
+        for size in range(1, len(selected)):
+            for subset in combinations(sorted(selected), size):
+                part = frozenset(subset)
+                safe = not any(cocircuit <= (edge - part) for cocircuit in cocircuits)
+                proper_subrepairs.append({"repair": [list(item) for item in sorted(part)], "endpoint_safe": safe})
+        joint_safe = bool(selected) and not any(cocircuit <= (edge - selected) for cocircuit in cocircuits)
+        all_proper_unsafe = bool(proper_subrepairs) and all(not item["endpoint_safe"] for item in proper_subrepairs)
+        algebraic_commutation = all((edge - first) - second == (edge - second) - first for first, second in combinations((frozenset({item}) for item in selected), 2))
+        expected = theorem.get("expected", {})
+        fixture_holds = len(proper_subrepairs) == expected.get("proper_subrepair_count") and all_proper_unsafe == expected.get("all_proper_subrepairs_endpoint_unsafe") and joint_safe == expected.get("joint_repair_safe") and algebraic_commutation
+        if not fixture_holds:
+            errors.append("repair_decomposition_fixture_mismatch")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "selected_repair_size": len(selected), "proper_subrepairs": proper_subrepairs, "all_proper_subrepairs_endpoint_unsafe": all_proper_unsafe, "joint_repair_safe": joint_safe, "deletion_effects_commute": algebraic_commutation, "authority_partition_forbidden": law_typed, "authorized_options_typed": options_typed, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1421,10 +1467,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     correlation_repair_audits = audit_correlation_repairs(contract, correlation_cocircuit_audits)
     repair_selection_audits = audit_repair_selection(contract, correlation_repair_audits)
     repair_execution_audits = audit_repair_execution(contract, repair_selection_audits)
+    repair_decomposition_audits = audit_repair_execution_decomposition(contract, repair_selection_audits, correlation_cocircuit_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits + repair_execution_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits + repair_execution_audits + repair_decomposition_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1461,4 +1508,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_correlation_repair_theorems": correlation_repair_audits,
         "configuration_repair_selection_theorems": repair_selection_audits,
         "configuration_repair_execution_theorems": repair_execution_audits,
+        "configuration_repair_execution_decomposition_theorems": repair_decomposition_audits,
     }

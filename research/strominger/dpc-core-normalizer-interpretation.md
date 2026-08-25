@@ -679,3 +679,32 @@ different configuration, or assuming the postcondition without rerunning the
 cocircuit test. The successful fixture consumes its one use and records
 certificate digest
 `08337b0bd40cbf3492d3282ed94b2a3fd54c887fd413a0b46f762d3db0d925fe`.
+
+## Commuting effects do not imply distributable authority
+
+The selected outer repair has two loci, `{B,D}`. As set operations its parts
+commute:
+
+\[
+(E\setminus\{B\})\setminus\{D\}
+=
+(E\setminus\{D\})\setminus\{B\}
+=E\setminus\{B,D\}.
+\]
+
+But the endpoint proof does not factor. Removing only `B` leaves the `{C,D}`
+cocircuit, while removing only `D` leaves `{B,C}`. Thus both proper nonempty
+subrepairs are unsafe even though the joint repair is safe.
+
+Consequently an atomic two-locus capability cannot be transported into two
+independent endpoint capabilities merely because their underlying mutations
+commute. There are exactly two admitted execution architectures at this layer:
+
+- preserve one joint atomic execution capability; or
+- introduce a staged-execution constructor carrying explicit authority for the
+  unsafe intermediate configuration and a residual certificate for completion.
+
+This obstruction is atemporal. It concerns factorization through an
+intermediate object, not which action occurs “first.” Algebra supplies a
+commuting square of effects; authority fails because neither intermediate leg
+has the endpoint type.
