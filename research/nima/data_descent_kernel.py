@@ -620,6 +620,47 @@ def validate(packet: dict[str, Any]) -> list[TypeErrorRecord]:
         if not certificate.get("evidence"):
             err("missing_reliability_evidence", rid, "conditioned bound requires evidence")
 
+    # A bounded source-relative explanation separates the physical producer
+    # from its verifier.  The verifier certifies behavior; it does not produce
+    # the capability or inherit the producer's authority.
+    for audit in packet.get("source_relative_capability_audits", []):
+        aid = audit["id"]
+        source = audit.get("physical_source", {})
+        model = audit.get("implementation_model", {})
+        resources = audit.get("resource_class", {})
+        capability = audit.get("implemented_capability", {})
+        verifier = audit.get("verification_model", {})
+        budgets = audit.get("budgets", {})
+        counterfactual = audit.get("counterfactual", {})
+        if not source.get("id") or not source.get("evidence"):
+            err("untyped_physical_source", aid, str(source))
+        if not model.get("id") or not model.get("independently_validated") or not model.get("evidence"):
+            err("unvalidated_implementation_model", aid, str(model))
+        if not resources.get("id") or not resources.get("descendant_closure") or not resources.get("evidence"):
+            err("unclosed_resource_class", aid, str(resources))
+        if not capability.get("id") or not capability.get("implementation_evidence"):
+            err("unimplemented_capability", aid, str(capability))
+        if not verifier.get("id") or not verifier.get("independently_validated") or not verifier.get("evidence"):
+            err("unvalidated_verification_model", aid, str(verifier))
+        if verifier.get("id") in {source.get("id"), model.get("id")}:
+            err("producer_verifier_conflation", aid, str(verifier.get("id")))
+        try:
+            epsilon = _fraction(budgets.get("epsilon"))
+            time = _fraction(budgets.get("time"))
+            resource = _fraction(budgets.get("resource"))
+            if epsilon < 0 or time <= 0 or resource <= 0:
+                err("invalid_capability_audit_budget", aid, str(budgets))
+        except (ValueError, TypeError):
+            err("untyped_capability_audit_budget", aid, str(budgets))
+        if counterfactual.get("removed_resource_class") != resources.get("id"):
+            err("counterfactual_wrong_resource_class", aid, str(counterfactual))
+        if not counterfactual.get("removes_descendants"):
+            err("counterfactual_leaves_resource_descendants", aid, str(counterfactual))
+        if not counterfactual.get("nontrivial_capability_change") or not counterfactual.get("evidence"):
+            err("counterfactual_not_explanatory", aid, str(counterfactual))
+        if audit.get("claims_universal_law", False):
+            err("bounded_audit_promoted_to_universal_law", aid, "source-relative audit is not a universal metaphysics")
+
     return errors
 
 
@@ -645,6 +686,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "authority_source_count": len(packet.get("authority_sources", [])),
         "authority_grant_count": len(packet.get("authority_grants", [])),
         "reliability_certificate_count": len(packet.get("conditioned_reliability_certificates", [])),
+        "source_relative_capability_audit_count": len(packet.get("source_relative_capability_audits", [])),
     }
 
 

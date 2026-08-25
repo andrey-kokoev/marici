@@ -42,5 +42,45 @@
       "declared_bound": "1/20",
       "evidence": "epsilon_route <= (epsilon_s+epsilon_d)/gamma + epsilon_c + epsilon_r"
     }
+  ],
+  "source_relative_capability_audits": [
+    {
+      "id": "bounded_topological_capability",
+      "physical_source": {
+        "id": "d_s3_nonlinear_source",
+        "evidence": "Kitaev source Hamiltonian and interaction packet"
+      },
+      "implementation_model": {
+        "id": "logical_nonlinear_compiler",
+        "independently_validated": true,
+        "evidence": "exact logical action checks"
+      },
+      "resource_class": {
+        "id": "nonclifford_resource_class",
+        "descendant_closure": ["magic_states", "compiled_nonclifford_gates"],
+        "evidence": "resource descendants explicitly enumerated"
+      },
+      "implemented_capability": {
+        "id": "logical_d_s3_capability",
+        "implementation_evidence": "logical nonlinear implementation"
+      },
+      "verification_model": {
+        "id": "recovered_channel_checker",
+        "independently_validated": true,
+        "evidence": "separate recovered-channel verification"
+      },
+      "budgets": {
+        "epsilon": "0",
+        "time": "1",
+        "resource": "1"
+      },
+      "counterfactual": {
+        "removed_resource_class": "nonclifford_resource_class",
+        "removes_descendants": true,
+        "nontrivial_capability_change": true,
+        "evidence": "removing the class and descendants removes the compiled capability"
+      },
+      "claims_universal_law": false
+    }
   ]
 }

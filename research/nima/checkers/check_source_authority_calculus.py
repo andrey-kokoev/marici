@@ -82,6 +82,18 @@ case["authority_transports"] = [{
 }]
 hostile["authority_upgrade_by_transport"] = compile_packet(case)
 
+case = copy.deepcopy(authority_packet)
+case["source_relative_capability_audits"][0]["verification_model"]["id"] = "logical_nonlinear_compiler"
+hostile["producer_is_its_own_verifier"] = compile_packet(case)
+
+case = copy.deepcopy(authority_packet)
+case["source_relative_capability_audits"][0]["counterfactual"]["removes_descendants"] = False
+hostile["counterfactual_retains_descendants"] = compile_packet(case)
+
+case = copy.deepcopy(authority_packet)
+case["source_relative_capability_audits"][0]["claims_universal_law"] = True
+hostile["bounded_audit_promoted_to_metaphysics"] = compile_packet(case)
+
 expected = {
     "completion_erasure": "completion_as_ordinary_base_change",
     "ordinary_kernel_mistyped_as_derived": "completion_only_class_mistyped",
@@ -90,6 +102,9 @@ expected = {
     "algebraic_cosmology_promoted_to_observer": "unauthorized_authority_promotion",
     "zero_margin_reliability": "nonpositive_reliability_margin",
     "authority_upgrade_by_transport": "authority_transport_upgrade",
+    "producer_is_its_own_verifier": "producer_verifier_conflation",
+    "counterfactual_retains_descendants": "counterfactual_leaves_resource_descendants",
+    "bounded_audit_promoted_to_metaphysics": "bounded_audit_promoted_to_universal_law",
 }
 
 checks = {
