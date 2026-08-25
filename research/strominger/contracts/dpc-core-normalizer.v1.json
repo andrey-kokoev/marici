@@ -379,6 +379,11 @@
           "id":"overlapping_cocircuit_repairs",
           "unsafe_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h0","admin_D"],["h1","admin_C"]],
           "expected":{"minimal_repair_count":2,"minimal_repair_sizes":[1,2]}
+        },
+        {
+          "id":"three_independent_bridge_repairs",
+          "unsafe_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h1","admin_B"],["h1","admin_C"],["h2","admin_B"],["h2","admin_C"]],
+          "expected":{"minimal_repair_count":8,"minimal_repair_sizes":[3,3,3,3,3,3,3,3]}
         }
       ],
       "theorem_scope":"every unsafe typed synchronous correlation hyperedge"
@@ -480,6 +485,21 @@
       ],
       "expected":{"path_count":2,"distinct_intermediates":true,"common_safe_endpoint":true},
       "theorem_scope":"both factorizations of every selected two-locus primitive repair"
+    }
+  ],
+  "configuration_finite_staged_coherence_theorems":[
+    {
+      "id":"finite_staged_repair_coxeter_coherence",
+      "repair_theorem_id":"minimal_correlation_repair_transversals",
+      "repair_fixture_id":"three_independent_bridge_repairs",
+      "selected_primitive_repair":[["h0","admin_B"],["h1","admin_B"],["h2","admin_B"]],
+      "path_generators":"adjacent_transpositions_of_repair_loci",
+      "coherence_relations":["involution","far_commutation","braid"],
+      "coherence_completion":"coxeter_presentation_of_finite_symmetric_group",
+      "primitive_or_fitted_higher_cells":false,
+      "intermediate_authority_kind":"unsafe_repair_in_progress",
+      "expected":{"repair_size":3,"path_count":6,"all_proper_prefixes_unsafe":true,"common_safe_endpoint":true},
+      "theorem_scope":"all finite selected repairs with constructor-authorized intermediate states"
     }
   ],
   "configuration_path_coherence_audits":[

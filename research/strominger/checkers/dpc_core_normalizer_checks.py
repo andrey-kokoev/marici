@@ -421,6 +421,24 @@ for name, mutate_staged, expected in (
     errors = candidate_result["configuration_staged_repair_path_theorems"][0]["errors"]
     staged_repair_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["staged_repair_hostiles"] = staged_repair_hostiles
+finite_staged_hostiles = {}
+for name, mutate_finite_staged, expected in (
+    ("nonprimitive_selected_repair", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"selected_primitive_repair":[["h0","admin_B"],["h0","admin_C"],["h1","admin_B"]]}), "finite_staged_selected_repair_not_primitive"),
+    ("wrong_generators", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"path_generators":"arbitrary_endpoint_equalities"}), "finite_staged_generators_untyped"),
+    ("involution_omitted", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"coherence_relations":["far_commutation","braid"]}), "finite_staged_coxeter_relations_incomplete"),
+    ("braid_omitted", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"coherence_relations":["involution","far_commutation"]}), "finite_staged_coxeter_relations_incomplete"),
+    ("wrong_completion", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"coherence_completion":"pairwise_diamonds_only"}), "finite_staged_coxeter_relations_incomplete"),
+    ("fitted_higher_cells", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"primitive_or_fitted_higher_cells":True}), "finite_staged_coxeter_relations_incomplete"),
+    ("intermediate_called_safe", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"intermediate_authority_kind":"safe_endpoint"}), "finite_staged_intermediate_authority_laundered"),
+    ("path_count_fitted", lambda c: c["configuration_finite_staged_coherence_theorems"][0]["expected"].update({"path_count":5}), "finite_staged_coherence_fixture_mismatch"),
+    ("bounded_scope", lambda c: c["configuration_finite_staged_coherence_theorems"][0].update({"theorem_scope":"three-locus fixture only"}), "finite_staged_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_finite_staged(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_finite_staged_coherence_theorems"][0]["errors"]
+    finite_staged_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["finite_staged_hostiles"] = finite_staged_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -493,5 +511,7 @@ for name, rejected in repair_decomposition_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " repair_decomposition hostile." + name)
 for name, rejected in staged_repair_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " staged_repair hostile." + name)
+for name, rejected in finite_staged_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " finite_staged hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and all(correlation_repair_hostiles.values()) and all(repair_selection_hostiles.values()) and all(repair_execution_hostiles.values()) and all(repair_decomposition_hostiles.values()) and all(staged_repair_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and all(correlation_repair_hostiles.values()) and all(repair_selection_hostiles.values()) and all(repair_execution_hostiles.values()) and all(repair_decomposition_hostiles.values()) and all(staged_repair_hostiles.values()) and all(finite_staged_hostiles.values()) and coherence_omission_rejected else 1)
