@@ -249,6 +249,18 @@
     {"id":"rewrite_rho_tau","source_path_id":"varying_membership_configuration_path","target_path_id":"third_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"}
   ],
   "required_configuration_critical_pairs":["varying_membership_configuration_path"],
+  "configuration_contextual_rewrite_theorems":[
+    {
+      "id":"context_closed_configuration_rewrites",
+      "alphabet":["varying_membership_configuration_path","alternate_configuration_path","third_configuration_path"],
+      "rank":{"varying_membership_configuration_path":2,"alternate_configuration_path":1,"third_configuration_path":0},
+      "rewrite_ids":["rewrite_rho_sigma","rewrite_sigma_tau","rewrite_rho_tau"],
+      "context_closure":true,
+      "preserved_semantic_fields":["source_boundary","endpoint_boundary","support_union","fault_hypergraph","input_authority","output_authority"],
+      "critical_pair_schemas":["same_position_branch","disjoint_positions_commute"],
+      "theorem_scope":"arbitrary finite words over the admitted configuration-path alphabet"
+    }
+  ],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
