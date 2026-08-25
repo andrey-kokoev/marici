@@ -492,6 +492,53 @@ def audit_forgetful_projections(contract: dict[str, Any]) -> list[dict[str, Any]
     return audits
 
 
+def audit_epoch_successor_chains(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    for chain in contract.get("epoch_successor_chain_audits", []):
+        errors: list[str] = []
+        current_epoch = chain.get("base_epoch")
+        current_digest = chain.get("base_state_sha256")
+        accumulated = set(chain.get("base_support", []))
+        seen_step_ids: set[str] = set()
+        seen_successors: set[tuple[Any, Any]] = set()
+        steps = chain.get("steps", [])
+        if not steps or not chain.get("theorem_scope"):
+            errors.append("successor_chain_empty_or_unscoped")
+        for step in steps:
+            successor = step.get("successor", {})
+            predecessor = step.get("predecessor", {})
+            successor_key = (successor.get("parameter"), successor.get("offset"))
+            adjacent = (
+                predecessor == current_epoch
+                and successor.get("parameter") == chain.get("parameter")
+                and predecessor.get("parameter") == chain.get("parameter")
+                and isinstance(predecessor.get("offset"), int)
+                and successor.get("offset") == predecessor["offset"] + 1
+            )
+            if not adjacent:
+                errors.append("successor_chain_nonadjacent_step")
+            if step.get("predecessor_state_sha256") != current_digest:
+                errors.append("successor_chain_digest_link_failure")
+            if step.get("id") in seen_step_ids or successor_key in seen_successors or step.get("competing_successor_constructible"):
+                errors.append("successor_chain_uniqueness_failure")
+            if not step.get("physical_state_correspondence"):
+                errors.append("successor_chain_physical_correspondence_failure")
+            support_added = set(step.get("support_added", []))
+            if not support_added:
+                errors.append("successor_chain_support_not_accumulated")
+            accumulated |= support_added
+            seen_step_ids.add(step.get("id"))
+            seen_successors.add(successor_key)
+            current_epoch = successor
+            current_digest = step.get("successor_state_sha256")
+        if current_epoch != chain.get("expected_terminal_epoch"):
+            errors.append("successor_chain_terminal_epoch_mismatch")
+        if accumulated != set(chain.get("expected_accumulated_support", [])):
+            errors.append("successor_chain_support_not_accumulated")
+        audits.append({"id": chain["id"], "passed": not errors, "errors": sorted(set(errors)), "step_count": len(steps), "terminal_epoch": current_epoch, "accumulated_support": sorted(accumulated), "induction_rule":"valid prefix plus one adjacent unique physically realized step yields a valid extended prefix"})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -522,10 +569,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     cocircuit_audits = audit_trusted_base_cocircuits(contract)
     resource_ssa_audits = audit_resource_ssa_programs(contract)
     projection_audits = audit_forgetful_projections(contract)
+    chain_audits = audit_epoch_successor_chains(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -544,4 +592,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "trusted_base_cocircuits": cocircuit_audits,
         "resource_ssa_programs": resource_ssa_audits,
         "forgetful_projections": projection_audits,
+        "epoch_successor_chains": chain_audits,
     }
