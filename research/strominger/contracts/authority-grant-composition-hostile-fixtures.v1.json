@@ -447,6 +447,46 @@
         {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "prospective_authority_restored", "value": false}
       ],
       "expected_code": "flat_temporal_atlas_withholds_authority"
+    },
+    {
+      "id": "pairwise_agreement_but_triangular_holonomy",
+      "description": "All three replay dispositions agree, but direct and two-step comparison cells have nonzero cocycle defect.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "cocycle_defect", "value": 1}
+      ],
+      "expected_code": "temporal_governance_cocycle_failure"
+    },
+    {
+      "id": "temporal_comparison_cell_noninvertible",
+      "description": "A one-way procedural comparison is used as an atlas equivalence.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "comparison_cells", "value": [{"id":"cell_AB_CD","source_path":"replay_path_AB","target_path":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":false,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_CD_EF","source_path":"replay_path_CD","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_AB_EF","source_path":"replay_path_AB","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0}]}
+      ],
+      "expected_code": "invalid_temporal_comparison_cell"
+    },
+    {
+      "id": "temporal_comparison_cell_promotes_truth_authority",
+      "description": "A comparison cell silently changes from procedural review to truth selection.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "comparison_cells", "value": [{"id":"cell_AB_CD","source_path":"replay_path_AB","target_path":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"truth_selector","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":true,"naturality_defect":0},{"id":"cell_CD_EF","source_path":"replay_path_CD","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_AB_EF","source_path":"replay_path_AB","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0}]}
+      ],
+      "expected_code": "temporal_comparison_cell_launders_authority"
+    },
+    {
+      "id": "temporal_triangle_missing_direct_cell",
+      "description": "Only the two-step comparison exists, so the claimed triangular coherence cannot be tested.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "direct_cell", "value": "missing_direct_cell"}
+      ],
+      "expected_code": "incomplete_temporal_governance_cocycle"
+    },
+    {
+      "id": "standing_restored_across_triangular_defect",
+      "description": "Global standing is retained despite a nonzero temporal governance cocycle.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "cocycle_defect", "value": 2}
+      ],
+      "expected_code": "standing_restored_across_temporal_cocycle_defect"
     }
   ]
 }

@@ -232,6 +232,32 @@
       "revocable": true,
       "valid_from": 21,
       "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_E",
+      "holder": "independent_reviewer_E",
+      "issuing_charter": "cross_sector_methods_charter_E",
+      "provenance_chain": ["cross_sector_methods_charter_E", "independent_reviewer_E"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_F",
+      "holder": "independent_reviewer_F",
+      "issuing_charter": "cross_sector_methods_charter_F",
+      "provenance_chain": ["cross_sector_methods_charter_F", "independent_reviewer_F"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
     }
   ],
   "review_root_independence_audits": [
@@ -347,6 +373,14 @@
           "replayed_at": 30,
           "completed": true,
           "decision": "admitted"
+        },
+        {
+          "id": "replay_path_EF",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_E", "source_methods_board_F"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
         }
       ],
       "comparison_committed_before_replay": true,
@@ -358,6 +392,21 @@
         "role": "compare_procedure_not_truth",
         "may_override_disagreement": false
       }
+    }
+  ],
+  "temporal_governance_cocycle_audits": [
+    {
+      "id": "triangle_AB_CD_EF",
+      "atlas_id": "two_successor_atlases_same_packet",
+      "comparison_cells": [
+        {"id": "cell_AB_CD", "source_path": "replay_path_AB", "target_path": "replay_path_CD", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0},
+        {"id": "cell_CD_EF", "source_path": "replay_path_CD", "target_path": "replay_path_EF", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0},
+        {"id": "cell_AB_EF", "source_path": "replay_path_AB", "target_path": "replay_path_EF", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0}
+      ],
+      "direct_cell": "cell_AB_EF",
+      "composite_path": ["cell_AB_CD", "cell_CD_EF"],
+      "cocycle_defect": 0,
+      "global_standing_restored": true
     }
   ],
   "rival_extension_audits": [

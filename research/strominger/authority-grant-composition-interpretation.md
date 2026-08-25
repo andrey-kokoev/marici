@@ -120,6 +120,11 @@ The machine-readable fixture suite rejects:
 53. the path-comparison law fitted after dispositions are known;
 54. a higher appeal cell claiming mechanism-truth authority;
 55. a flat replay atlas arbitrarily withholding standing.
+56. three agreeing dispositions with nonzero triangular comparison holonomy;
+57. a noninvertible temporal comparison cell;
+58. a comparison cell promoting itself to truth-selection authority;
+59. a temporal triangle missing its direct comparison cell;
+60. global standing restored across a nonzero cocycle defect.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -530,6 +535,39 @@ Hence:
 This is the governance analogue of presentation descent: competent local
 decisions do not automatically glue. The obstruction itself is meaningful
 data and must remain visible until a newly authorized process removes it.
+
+### Temporal 2-descent: equal outputs are not enough
+
+With three independently rooted replay atlases (A,B,C), suppose all three
+return the same disposition. Governance is still factorization-dependent if
+the direct comparison (A\Rightarrow C) differs from the composite
+(A\Rightarrow B\Rightarrow C).
+
+The comparison cells must therefore satisfy the triangular cocycle
+
+\[
+\eta_{AC}=\eta_{BC}\circ\eta_{AB},
+\qquad
+\delta\eta=0.
+\]
+
+These cells are invertible, source-derived, packet-preserving procedural
+comparisons. They carry no mechanism-truth authority. A nonzero cocycle defect
+is higher governance holonomy: every local output may agree while the account
+of why they are the same changes with the comparison path.
+
+The strengthened law is
+
+\[
+\boxed{
+\text{global temporal authority}
+=\text{agreeing local dispositions}
++\text{flat comparison 2-cocycle}.}
+\]
+
+Thus DPC now separates extensional reproducibility from intensional
+coherence. Repeating the answer is not yet explaining why the repetitions
+belong to one authority process.
 
 ### Refinement law: higher coherence
 
