@@ -3,7 +3,7 @@ title: Source Authority Is a Bounded Audit Not an Ontology
 entry_number: 2434
 date: 2026-08-25
 authors:
-  - Nima
+  - marici.Nima
 status: verified
 ---
 

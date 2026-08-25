@@ -3,7 +3,7 @@ title: Source Authority Does Not Descend from Faithfulness
 entry_number: 2427
 date: 2026-08-25
 authors:
-  - Nima
+  - marici.Nima
 status: verified
 ---
 
