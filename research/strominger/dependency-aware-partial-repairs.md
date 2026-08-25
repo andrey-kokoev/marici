@@ -122,3 +122,84 @@ standard poset theorem requires. The dynamically legal, authority-bearing swap
 graph is a subgraph: it can split when a domain is absent, a graph norm changes,
 a residual capability is destroyed, or source commutation authority is
 missing. Only connectivity of the latter establishes coherent construction.
+
+## First theta/Tate repair triangle: `S`, `C`, `L`
+
+The first source instantiation uses seam retention `S`, finite Clark bulk `C`,
+and valuation pro-Gram construction `L`. Each carries the ten requested state,
+domain, norm, boundary, completion, residual, and authority fields.
+
+The exact cut decomposition authorizes `S` and proves that the seam cannot be
+reconstructed from the retained tail:
+
+\[
+\|g_p\|\to0,
+\qquad
+\|h_p\|\to\|\Phi\|_2>0.
+\]
+
+The valuation constructor algebra authorizes the finite operational topology
+behind `L`, while adjacent analytic atoms collapse and fixed-prime projectors
+remain separated. Thus `L` requires both `seam_translation_norm` and
+`raw_arithmetic_label`; completing before either is retained is irrecoverable.
+
+The Clark identity authorizes `C` on finite packets:
+
+\[
+\|H_a+f\|^2+\|H_{-a}+f\|^2
+=2\|G+f\|^2+2a^2\|\partial_zG\|^2.
+\]
+
+It does not authorize continuity through completion. Grothendieck's source
+correction says the `z` derivative is not the scale-flow endpoint graph norm.
+The endpoint is nevertheless controlled—separately—by the native first-order
+operator (A_s=-\partial_q+(1-s)):
+
+\[
+|G(0)|^2\le {\|G+f\|_2^2\over 1-\Re s}.
+\]
+
+This closes ordinary one-sided tail completion escape, but it does not turn
+the Clark `z` current into a completion-continuous valuation incidence map.
+No fixed finite authorized family `F` uniformly dominating those current
+matrices has been supplied, and the valuation/Fock-to-boundary incidence and
+completion extension needed by `L` remain absent.
+
+All six formal orders therefore have a typed first failure:
+
+| Order | First rejection |
+|---|---|
+| `C L S` | `L` lacks the retained seam distinction |
+| `C S L` | the common Clark/valuation incidence required by `L` is absent |
+| `L C S` | `L` lacks the retained seam distinction |
+| `L S C` | `L` lacks the retained seam distinction |
+| `S C L` | the common Clark/valuation incidence required by `L` is absent |
+| `S L C` | the completion extension required by `L` is not source-authorized |
+
+There are currently zero completed typed paths, zero authorized adjacent swap
+cells, and no braid comparison domain. The braid class is
+`illegal_factorization`, not a fitted zero or central anomaly.
+
+The compiler emits the principal hostile witness directly:
+
+```json
+{
+  "code": "distinction_erased_before_required_repair",
+  "path": ["complete_tail_quotient", "retain_seam"],
+  "lost_capability": "seam_translation_norm",
+  "recovery_possible": false
+}
+```
+
+The resulting precedence law is logical rather than chronological:
+
+\[
+\boxed{
+\text{completion may precede a repair only when it preserves every
+distinction required by that repair's source contract}.}
+\]
+
+Supplying `F` would remove the Clark/completion obstruction but would not by
+itself authorize the `S`--`C` swap. A source comparison cell for their complete
+domain, graph norm, boundary packet, and residual capability would still be
+required before the triangle could be called coherent.

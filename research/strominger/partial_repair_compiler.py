@@ -278,7 +278,94 @@ def compile_theta_tate_fixture(fixture: dict[str, Any]) -> dict[str, Any]:
     return {"passed": not errors, "errors": sorted(set(errors)), "status": status, "stage_ids": sorted(stage_ids - {None}), "missing_source_declarations": missing, "open_source_questions": questions, "enumeration_performed": ready and fixture.get("compilation_mode") == "enumerate", "legal_factorization_paths": [], "swap_components": [], "missing_swap_cells": [], "first_braid_residual": None, "unsafe_intermediate_states": [], "one_typed_endpoint": None}
 
 
+def compile_theta_repair_triangle(triangle: dict[str, Any]) -> dict[str, Any]:
+    required_fields = {"input_state_type", "output_state_type", "domain_before", "domain_after", "graph_norm_before", "graph_norm_after", "boundary_delta", "completion_scope", "residual_capability", "source_authority"}
+    expected_ids = {"S", "C", "L"}
+    stages = {stage.get("repair_id"): stage for stage in triangle.get("operations", [])}
+    errors = []
+    if set(stages) != expected_ids or len(triangle.get("operations", [])) != 3:
+        errors.append("theta_triangle_operation_inventory_mismatch")
+    for repair_id, stage in stages.items():
+        if not required_fields <= set(stage):
+            errors.append("theta_triangle_constructor_fields_missing:" + str(repair_id))
+        if not stage.get("source_authority"):
+            errors.append("theta_triangle_source_authority_missing:" + str(repair_id))
+    if set(stages.get("L", {}).get("required_distinctions", [])) != {"seam_translation_norm", "raw_arithmetic_label"}:
+        errors.append("theta_triangle_completion_distinction_contract_weakened")
+    family = triangle.get("clark_uniform_constructor_family")
+    family_authorized = bool(family and family.get("family_id") and family.get("source_authority_root") and family.get("fixed_finite") is True and family.get("uniformly_dominates_current_matrices") is True)
+    if family is not None and not family_authorized:
+        errors.append("theta_triangle_uniform_family_unauthorized")
+    commutations = triangle.get("commutation_declarations", [])
+    for declaration in commutations:
+        if declaration.get("authorized") and (not declaration.get("source_authority_root") or not declaration.get("comparison_cell")):
+            errors.append("theta_triangle_swap_authority_untyped")
+
+    initial = {"state_components": {"finite_theta_source"}, "domain": {"finite_support"}, "graph_norm": {"tail_analytic_gram"}, "distinctions": {"tail_translation_norm", "raw_arithmetic_label"}, "capabilities": {"raw_label_port"}, "completion_scope": "uncompleted_finite_packet"}
+
+    def apply(stage_id: str, state: dict[str, Any], path: tuple[str, ...]) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+        result = deepcopy(state)
+        if stage_id == "S":
+            result["state_components"].add("independent_seam_state")
+            result["domain"].add("tail_seam_domain")
+            result["graph_norm"].add("seam_translation_norm")
+            result["distinctions"].add("seam_translation_norm")
+            result["capabilities"].add("seam_state_port")
+        elif stage_id == "C":
+            if "pro_gram_completion" in result["state_components"] and not family_authorized:
+                return None, {"code":"clark_current_not_continuous_after_completion", "path":list(path), "failed_operation":"C", "missing_certificate":"fixed_finite_uniform_constructor_family_F", "recovery_possible":False}
+            result["state_components"].add("clark_differentiated_bulk")
+            result["domain"].add("clark_finite_current_domain")
+            result["graph_norm"].add("clark_z_derivative_finite_bulk")
+            result["capabilities"].add("clark_current_matrix")
+        elif stage_id == "L":
+            missing_distinctions = set(stages["L"].get("required_distinctions", [])) - result["distinctions"]
+            if missing_distinctions:
+                lost = sorted(missing_distinctions)[0]
+                return None, {"code":"distinction_erased_before_required_repair", "path":list(path), "failed_operation":"L", "lost_capability":lost, "recovery_possible":False}
+            if "independent_seam_state" not in result["state_components"]:
+                return None, {"code":"distinction_erased_before_required_repair", "path":list(path), "failed_operation":"L", "lost_capability":"seam_translation_norm", "recovery_possible":False}
+            if "clark_differentiated_bulk" in result["state_components"] and not family_authorized:
+                return None, {"code":"theta_pro_gram_instantiation_blocked_missing_incidence", "path":list(path), "failed_operation":"L", "missing_source_maps":["valuation/Fock -> boundary", "Clark current -> common finite module"], "required_family":"fixed_finite_authorized_F", "recovery_possible":False}
+            if stages["L"].get("completion_scope") == "completion_stability_unproved":
+                return None, {"code":"valuation_completion_not_source_authorized", "path":list(path), "failed_operation":"L", "missing_constructor":stages["L"].get("missing_source_constructor"), "recovery_possible":False}
+            result["state_components"] |= {"valuation_constructor_port", "pro_gram_completion"}
+            result["domain"].add("constructor_generated_pro_gram_domain")
+            result["graph_norm"].add("valuation_pro_gram_topology")
+            result["distinctions"].add("prime_valuation_label")
+            result["capabilities"].add("valuation_projector_family")
+            result["completion_scope"] = "constructor_generated_pro_gram_completion"
+        return result, None
+
+    path_results = []
+    for order in permutations(sorted(expected_ids)):
+        state = deepcopy(initial)
+        prefixes = []
+        rejection = None
+        for stage_id in order:
+            state, rejection = apply(stage_id, state, order[:order.index(stage_id) + 1])
+            if rejection:
+                break
+            prefixes.append({"after":stage_id, "state_components":sorted(state["state_components"]), "domain":sorted(state["domain"]), "graph_norm":sorted(state["graph_norm"]), "distinctions":sorted(state["distinctions"]), "completion_scope":state["completion_scope"], "unsafe_repair_in_progress":stage_id != order[-1]})
+        endpoint = None
+        if rejection is None:
+            endpoint = {key: sorted(state[key]) if isinstance(state[key], set) else state[key] for key in ("state_components", "domain", "graph_norm", "distinctions", "capabilities", "completion_scope")}
+        path_results.append({"order":list(order), "dynamically_admissible":rejection is None, "first_rejection":rejection, "prefixes":prefixes, "typed_endpoint":endpoint, "endpoint_digest":stable_digest(endpoint) if endpoint else None})
+    admissible = [path for path in path_results if path["dynamically_admissible"]]
+    endpoints = {path["endpoint_digest"] for path in admissible}
+    authorized_swaps = [declaration for declaration in commutations if declaration.get("authorized")]
+    hostile = triangle.get("principal_hostile_fixture", {})
+    hostile_witness = {"code":"distinction_erased_before_required_repair", "path":["complete_tail_quotient","retain_seam"], "lost_capability":"seam_translation_norm", "recovery_possible":False, "tail_norm":hostile.get("tail_norm"), "seam_norm":hostile.get("seam_norm"), "adjacent_label_collapse":hostile.get("adjacent_label_collapse")}
+    expected = triangle.get("expected", {})
+    observed = {"formal_order_count":len(path_results), "admissible_order_count":len(admissible), "typed_endpoint_count":len(endpoints), "authorized_adjacent_swap_count":len(authorized_swaps), "first_braid_class":"illegal_factorization" if len(admissible) < 6 else "not_computed"}
+    for key, value in expected.items():
+        if observed.get(key) != value:
+            errors.append("theta_triangle_expectation_mismatch:" + key)
+    return {"passed":not errors, "errors":sorted(set(errors)), "source_status":"blocked_on_valuation_incidence_completion_and_clark_uniform_F" if not family_authorized else "blocked_on_valuation_incidence_completion", "clark_finite_bulk_identity":"2||G+f||^2+2a^2||partial_z G||^2", "clark_completion_continuity_authorized":family_authorized, "native_q_flow_endpoint_certificate":triangle.get("native_q_flow_endpoint_certificate"), "observed":observed, "paths":path_results, "authorized_adjacent_swaps":authorized_swaps, "same_completed_typed_endpoint":len(endpoints) == 1 if admissible else None, "braid_residual_class":observed["first_braid_class"], "principal_hostile_rejection":hostile_witness}
+
+
 def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
     models = [compile_model(model) for model in contract.get("models", [])]
     theta_tate = compile_theta_tate_fixture(contract.get("theta_tate_fixture", {}))
-    return {"schema": "marici.dependency-aware-partial-repair-result.v1", "passed": bool(models) and all(model["passed"] for model in models) and theta_tate["passed"], "models": models, "theta_tate_fixture": theta_tate}
+    theta_triangle = compile_theta_repair_triangle(contract.get("theta_repair_triangle", {}))
+    return {"schema": "marici.dependency-aware-partial-repair-result.v1", "passed": bool(models) and all(model["passed"] for model in models) and theta_tate["passed"] and theta_triangle["passed"], "models": models, "theta_tate_fixture": theta_tate, "theta_repair_triangle": theta_triangle}
