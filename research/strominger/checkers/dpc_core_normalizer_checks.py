@@ -134,6 +134,21 @@ for name, mutate_chain, expected in chain_mutations:
     errors = candidate_result["epoch_successor_chains"][0]["errors"]
     chain_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["successor_chain_hostiles"] = chain_hostiles
+reconfiguration_hostiles = {}
+reconfiguration_mutations = (
+    ("self_activation", lambda c: c["native_reconfiguration_constructors"][0].update({"new_only_may_self_activate":True}), "native_reconfiguration_self_authorization"),
+    ("bridge_fault", lambda c: c["native_reconfiguration_constructors"][0]["admissible_bridge_fault_sets"].append(["r2","r3"]), "native_reconfiguration_bridge_fault_unsafe"),
+    ("common_cause_omitted", lambda c: c["native_reconfiguration_constructors"][0].update({"admissible_bridge_fault_sets":[["r2"]]}), "native_reconfiguration_common_cause_omitted"),
+    ("missing_old_support", lambda c: c["native_reconfiguration_constructors"][0]["output_signature"].update({"support":["configuration_transition_charter","executor_attestation_root","new_config_root"]}), "native_reconfiguration_support_loss"),
+    ("authority_duplication", lambda c: c["native_reconfiguration_constructors"][0].update({"resource_law":"old and new configurations both remain live"}), "native_reconfiguration_duplicates_authority"),
+)
+for name, mutate_reconfiguration, expected in reconfiguration_mutations:
+    candidate = deepcopy(contract)
+    mutate_reconfiguration(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["native_reconfiguration_constructors"][0]["errors"]
+    reconfiguration_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["native_reconfiguration_hostiles"] = reconfiguration_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -167,4 +182,6 @@ for name, rejected in projection_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " projection hostile." + name)
 for name, rejected in chain_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " successor_chain hostile." + name)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) else 1)
+for name, rejected in reconfiguration_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " reconfiguration hostile." + name)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) else 1)

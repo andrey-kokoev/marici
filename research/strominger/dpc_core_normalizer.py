@@ -539,6 +539,49 @@ def audit_epoch_successor_chains(contract: dict[str, Any]) -> list[dict[str, Any
     return audits
 
 
+def audit_native_reconfiguration_constructors(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    successor_ids = {item["id"] for item in contract.get("epoch_successor_events", [])}
+    audits = []
+    for constructor in contract.get("native_reconfiguration_constructors", []):
+        errors: list[str] = []
+        inputs = {item.get("role"): item for item in constructor.get("input_signatures", [])}
+        old, new, physical = inputs.get("old_configuration", {}), inputs.get("new_configuration", {}), inputs.get("successor_state", {})
+        if not constructor.get("constructor_id") or not constructor.get("source_authority_root") or set(inputs) != {"old_configuration", "new_configuration", "successor_state"}:
+            errors.append("native_reconfiguration_constructor_untyped")
+        if old.get("epoch", {}).get("parameter") != new.get("epoch", {}).get("parameter") or new.get("epoch", {}).get("offset") != old.get("epoch", {}).get("offset", -1) + 1:
+            errors.append("native_reconfiguration_epoch_mismatch")
+        output = constructor.get("output_signature", {})
+        if output.get("epoch") != new.get("epoch") or output.get("state_sha256") != new.get("state_sha256") or output.get("members") != new.get("members"):
+            errors.append("native_reconfiguration_output_mismatch")
+        if physical.get("successor_event") not in successor_ids:
+            errors.append("native_reconfiguration_missing_successor_correspondence")
+        old_q, new_q = set(old.get("quorum", [])), set(new.get("quorum", []))
+        old_endorsement, new_endorsement = set(constructor.get("old_quorum_endorsement", [])), set(constructor.get("new_quorum_endorsement", []))
+        bridge = old_q & new_q
+        if old_endorsement != old_q or new_endorsement != new_q or not constructor.get("joint_consensus_required"):
+            errors.append("native_reconfiguration_lacks_joint_endorsement")
+        if set(constructor.get("bridge_witness", [])) != bridge:
+            errors.append("native_reconfiguration_bridge_mismatch")
+        fault_sets = [set(item) for item in constructor.get("admissible_bridge_fault_sets", [])]
+        if any(not (bridge - fault) for fault in fault_sets):
+            errors.append("native_reconfiguration_bridge_fault_unsafe")
+        root_map = constructor.get("bridge_authority_roots", {})
+        if set(root_map) != bridge:
+            errors.append("native_reconfiguration_bridge_roots_incomplete")
+        root_fibers = [{node for node, root in root_map.items() if root == authority_root} for authority_root in set(root_map.values())]
+        if any(fiber not in fault_sets for fiber in root_fibers):
+            errors.append("native_reconfiguration_common_cause_omitted")
+        if constructor.get("old_only_may_activate_successor") or constructor.get("new_only_may_self_activate"):
+            errors.append("native_reconfiguration_self_authorization")
+        expected_support = set(old.get("support", [])) | set(new.get("support", [])) | set(physical.get("support", [])) | {constructor.get("source_authority_root")}
+        if set(output.get("support", [])) != expected_support:
+            errors.append("native_reconfiguration_support_loss")
+        if constructor.get("resource_law") != "configuration authority is replaced, not duplicated":
+            errors.append("native_reconfiguration_duplicates_authority")
+        audits.append({"id": constructor["id"], "passed": not errors, "errors": sorted(set(errors)), "bridge": sorted(bridge), "bridge_authority_roots": root_map, "fault_sets": [sorted(item) for item in fault_sets], "output_support": sorted(output.get("support", []))})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -570,10 +613,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     resource_ssa_audits = audit_resource_ssa_programs(contract)
     projection_audits = audit_forgetful_projections(contract)
     chain_audits = audit_epoch_successor_chains(contract)
+    reconfiguration_audits = audit_native_reconfiguration_constructors(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -593,4 +637,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "resource_ssa_programs": resource_ssa_audits,
         "forgetful_projections": projection_audits,
         "epoch_successor_chains": chain_audits,
+        "native_reconfiguration_constructors": reconfiguration_audits,
     }
