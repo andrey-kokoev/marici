@@ -26,7 +26,7 @@ generalized-Pauli twirl
 
 \[
 X\longmapsto\frac1{d_a^2}\sum_{p,q=0}^{d_a-1}
-W_{pq}XW_{pq}^{\dagger}=rac{\operatorname{Tr}X}{d_a}I.
+W_{pq}XW_{pq}^{\dagger}=\frac{\operatorname{Tr}X}{d_a}I.
 \]
 
 Composing the Walsh stage with the six nontrivial block stages gives exactly
