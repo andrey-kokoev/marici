@@ -3,7 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "2e890947acd164e14ce4223058f79e5e4b39e8b5cb036dde7818f456b98a4112",
+  "contract_sha256": "e6f149a3b7d5d42f71f27233161eb47f1dd9fae995655e6b8dc22aa99abc6db3",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
@@ -21,12 +21,22 @@
     "presentation_atlas_has_zero_holonomy": true,
     "presentation_cells_are_invertible_and_kind_preserving": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
+    "source_authorized_gauge_descends_stackily": true,
     "standalone_contract_compiles": true,
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
     "transport_requires_authority_preservation": true
   },
   "hostile": {
+    "authorized_gauge_but_incomplete_quotient": {
+      "description": "The stabilizer is source-authorized, but quotienting leaves a nonzero ambiguity kernel.",
+      "error_codes": [
+        "nonunique_global_authority_descent"
+      ],
+      "expected_code": "nonunique_global_authority_descent",
+      "passed": true,
+      "valid": false
+    },
     "completion_ports_to_constructor": {
       "description": "A completed readout and executable observation ports are laundered into constructor authority.",
       "error_codes": [
@@ -193,13 +203,13 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "242ee33cdf0467c43890578ab9be140054c63d0b1761609594dbde0a84331361",
-  "hostile_passed": 16,
-  "hostile_total": 16,
+  "hostile_fixture_sha256": "26a557c4ba30a88ee7cc1d4c57ba887471b57acad4c0df6edd74bc5c6094e526",
+  "hostile_passed": 17,
+  "hostile_total": 17,
   "passed": true,
-  "passed_gates": 19,
+  "passed_gates": 20,
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 19,
+  "total_gates": 20,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
