@@ -36,12 +36,14 @@ def main():
     replay("check_s3_dpc_nonlinear_source_mechanism.py")
     replay("check_s3_dpc_five_rail_intertwining.py")
     replay("check_s3_dpc_source_independence_attack.py")
+    replay("check_dpc_universal_law_countermodels.py")
 
     inversion, inversion_digest = load("s3-controlled-inversion-magic-obstruction.json")
     phase, phase_digest = load("s3-record-phase-magic-obstruction.json")
     mechanism, mechanism_digest = load("s3-dpc-nonlinear-source-mechanism.json")
     intertwining, intertwining_digest = load("s3-dpc-five-rail-intertwining.json")
     attack, attack_digest = load("s3-dpc-source-independence-attack.json")
+    universal, universal_digest = load("dpc-universal-law-countermodels.json")
 
     assert not inversion["is_product_clifford"]
     assert phase["nonclifford_controlled_powers"] == [1, 2]
@@ -51,17 +53,19 @@ def main():
     assert not intertwining["transversal_hybrid_exchange"]["preserves_code"]
     assert not any(row["preserves_code"] for row in intertwining["transversal_record_phases"][:2])
     assert all(attack["attacks_succeeded"].values())
+    assert all(universal["countermodels"].values())
 
     result = {
         "schema": "marici.kitaev.s3-dpc-explanation-audit.v1",
         "bounded_replay": {
-            "component_checkers": 5,
+            "component_checkers": 6,
             "digests": {
                 "controlled_inversion_obstruction": inversion_digest,
                 "record_phase_obstruction": phase_digest,
                 "nonlinear_source_mechanism": mechanism_digest,
                 "five_rail_intertwining": intertwining_digest,
                 "source_independence_attack": attack_digest,
+                "universal_law_countermodels": universal_digest,
             },
         },
         "explanation_chain": [
@@ -83,8 +87,10 @@ def main():
             "five_rail_nonlinear_extension": "Conditional",
         },
         "source_independence_attack": attack["attacks_succeeded"],
-        "smallest_next_theorem": "derive a gauge-compatible nonlinear interaction from independently constrained native D(S3) microscopic dynamics, then construct and replay its encoded one-fault lift",
-        "verdict": "The first DPC mechanism is an exact conditional logical realization, not a proper source explanation. Its generators are target spectral logarithms, its calibrations are fitted to the desired characters, inequivalent generators share the same endpoint gates, and the native D(S3) Hamiltonian does not supply the couplers. The naive frozen-code lift also fails. A proper explanation requires one independent microscopic law to derive both the interaction and its encoded fault-tolerant capability.",
+        "universal_law_countermodels": universal["countermodels"],
+        "dpc_final_classification": "bounded audit framework, not a universal explanatory law",
+        "smallest_next_theorem": "within declared epsilon, time, and resource budgets, derive a gauge-compatible effective interaction from an independently validated D(S3) model and separately certify its recovered encoded channel",
+        "verdict": "The first DPC mechanism is an exact conditional logical realization, not a proper source explanation. Its generators are target spectral logarithms, its calibrations are fitted to the desired characters, and the native D(S3) Hamiltonian does not supply the couplers. The stronger universal DPC also fails: finite countermodels show that chronological priority, named-resource necessity, microscopic uniqueness, certificate co-generation, and exact projector intertwining are not necessary for explanation. What survives is a bounded audit framework joining an independently validated physical model, resource-class counterfactuals, and a separate recovered-channel certificate.",
     }
     OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))

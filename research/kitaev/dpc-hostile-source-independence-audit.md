@@ -93,6 +93,16 @@ fitting those structures from the target operation.
 This stronger form is falsified by any target-shaped logarithm, postulated
 coupler, or decoder/factory chosen only after the desired gate is known.
 
+## Further correction
+
+Finite countermodels subsequently falsify this strengthened formulation as a
+universal law: chronological priority is not evidential independence,
+resource implementations may be substitutable, microscopic nonuniqueness may
+express universality, certificates are derived by verification models rather
+than physical sources, and valid code deformation need not satisfy exact
+projector intertwining. The surviving formulation is the bounded audit
+framework in `dpc-bounded-audit-framework.md`.
+
 ## Next decisive test
 
 Derive the nonlinear terms as controlled perturbations or gadgets of the
