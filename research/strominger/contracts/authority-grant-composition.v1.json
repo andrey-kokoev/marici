@@ -507,11 +507,13 @@
       "subject": "mechanism_delta",
       "claim": "current prospective challenge standing at time 30",
       "as_of": 30,
+      "allowed_operations": ["open_bounded_identification_challenge"],
+      "target_scope": "finite_three_mechanism_identification",
       "bounded_constructor_grammar": "DPC authority composition v1 typed bundles",
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "3e87e07bccb454a632e3b300f0d3372f0d685ff1b6a41a0c4b7210a1b736c84a",
+      "replay_checker_sha256": "52997a42c89a9472770e96e9e85aeecfd6e898f0a8de1f3951befd897c6ef869",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -560,6 +562,42 @@
         {"generator_id":"gen_replay_atlas","deletion_breaks_terminal_claim":true,"expected_failure_code":"incomplete_temporal_governance_cocycle"},
         {"generator_id":"gen_cocycle","deletion_breaks_terminal_claim":true,"expected_failure_code":"unknown_authority_certificate_generator"}
       ]
+    }
+  ],
+  "authority_capability_execution_audits": [
+    {
+      "id": "execute_delta_challenge_once",
+      "certificate_id": "current_delta_challenge_standing_certificate",
+      "validation_time": 30,
+      "execution_time": 31,
+      "lease_expires": 32,
+      "atomic_revocation_check": true,
+      "root_revocation_epoch_snapshot": {
+        "source_methods_board_A_successor": 0,
+        "source_methods_board_B": 0,
+        "source_methods_board_C": 0,
+        "source_methods_board_D": 0,
+        "source_methods_board_E": 0,
+        "source_methods_board_F": 0,
+        "source_appeal_panel": 0
+      },
+      "execution_revocation_epochs": {
+        "source_methods_board_A_successor": 0,
+        "source_methods_board_B": 0,
+        "source_methods_board_C": 0,
+        "source_methods_board_D": 0,
+        "source_methods_board_E": 0,
+        "source_methods_board_F": 0,
+        "source_appeal_panel": 0
+      },
+      "operation": "open_bounded_identification_challenge",
+      "target_scope": "finite_three_mechanism_identification",
+      "authority_kind_before": "challenge_standing",
+      "authority_kind_after": "challenge_standing",
+      "single_use": true,
+      "nonce": "delta-challenge-epoch-0-use-1",
+      "nonce_consumed": true,
+      "second_use_permitted": false
     }
   ],
   "application_cases": [

@@ -130,6 +130,12 @@ The machine-readable fixture suite rejects:
 63. a compressed certificate lacking deterministic replay;
 64. a cyclic dependency graph in which the claim generates its premise;
 65. a purportedly minimal basis lacking deletion witnesses.
+66. capability execution after lease expiry;
+67. execution under a stale revocation-epoch snapshot;
+68. challenge standing expanded into mechanism selection;
+69. non-atomic validation and execution;
+70. reuse of a consumed capability nonce;
+71. a lease promoting the underlying authority kind.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -608,6 +614,30 @@ The deeper consequence is that authority behaves like a capability with a
 proof term, not like a property attached permanently to an object. Possessing
 the bytes identifies the claim; successfully replaying the typed term under
 current roots makes the capability executable.
+
+### Execution law: close the time-of-check/time-of-use gap
+
+Successful certificate replay at (t_0) does not by itself authorize execution
+at (t_1). A root may be revoked between those events. DPC therefore binds one
+exact operation and target to a short lease carrying the validated revocation
+epochs of every required root.
+
+Execution succeeds only when the epoch snapshot remains unchanged through the
+atomic use, the lease has not expired, and the single-use nonce has not already
+been consumed. The lease cannot widen the certificate's operation set or
+promote challenge standing into selector authority.
+
+\[
+\boxed{
+\text{executable capability}
+=\text{valid proof term}+\text{fresh atomic epoch lease}
++\text{scoped single use}.}
+\]
+
+This is a concurrency result as much as an epistemic one. Validation and use
+must be linearized against revocation. Otherwise a perfectly valid historical
+proof term becomes a race condition that can execute after its authority has
+ceased.
 
 ### Refinement law: higher coherence
 

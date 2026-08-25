@@ -742,7 +742,8 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         "temporal_governance_cocycle_audits",
     ):
         object_registry.update(item["id"] for item in packet.get(collection, []))
-    for certificate in packet.get("finite_authority_stack_certificates", []):
+    stack_certificates = {item["id"]: item for item in packet.get("finite_authority_stack_certificates", [])}
+    for certificate in stack_certificates.values():
         sid = certificate["id"]
         generators = certificate.get("generators", [])
         generator_ids = {item.get("id") for item in generators}
@@ -802,6 +803,46 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             for witness in witnesses.values()
         ):
             err("incomplete_authority_certificate_minimality_witness", sid, str(sorted(set(witnesses) ^ generator_ids)))
+
+    # Capability execution closes the time-of-check/time-of-use gap by binding
+    # one exact operation to a revocation-epoch snapshot and a short lease.  A
+    # lease freezes validity; it neither widens scope nor upgrades authority.
+    for execution in packet.get("authority_capability_execution_audits", []):
+        eid = execution["id"]
+        certificate = stack_certificates.get(execution.get("certificate_id"))
+        if certificate is None:
+            err("unknown_executed_authority_certificate", eid, str(execution.get("certificate_id")))
+            continue
+        validation_time = execution.get("validation_time")
+        execution_time = execution.get("execution_time")
+        lease_expires = execution.get("lease_expires")
+        if not all(isinstance(value, int) for value in (validation_time, execution_time, lease_expires)) or not (
+            validation_time <= execution_time <= lease_expires
+        ):
+            err("authority_capability_execution_outside_lease", eid, f"{validation_time}<={execution_time}<={lease_expires}")
+        if not execution.get("atomic_revocation_check"):
+            err("non_atomic_authority_capability_execution", eid, "revocation epoch not checked atomically")
+        snapshot = execution.get("root_revocation_epoch_snapshot", {})
+        current = execution.get("execution_revocation_epochs", {})
+        if not snapshot or snapshot != current:
+            err("stale_authority_capability_snapshot", eid, f"{snapshot}!={current}")
+        for root_id in snapshot:
+            root = root_certifications.get(root_id)
+            if root is None or (isinstance(execution_time, int) and (
+                execution_time < root.get("valid_from", execution_time)
+                or (root.get("revoked_at") is not None and execution_time >= root["revoked_at"])
+            )):
+                err("capability_execution_uses_inactive_root", eid, root_id)
+        operation = execution.get("operation")
+        target = execution.get("target_scope")
+        if operation not in certificate.get("allowed_operations", []) or target != certificate.get("target_scope"):
+            err("authority_capability_scope_amplification", eid, f"{operation}@{target}")
+        if execution.get("authority_kind_before") != "challenge_standing" or execution.get("authority_kind_after") != "challenge_standing":
+            err("capability_lease_authority_laundering", eid, f"{execution.get('authority_kind_before')}->{execution.get('authority_kind_after')}")
+        if not execution.get("single_use") or not execution.get("nonce") or not execution.get("nonce_consumed"):
+            err("replayable_authority_capability_nonce", eid, str(execution.get("nonce")))
+        if execution.get("second_use_permitted") is not False:
+            err("authority_capability_reuse_permitted", eid, str(execution.get("second_use_permitted")))
 
     return errors
 
