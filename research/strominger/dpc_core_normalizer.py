@@ -1272,6 +1272,54 @@ def audit_correlation_repairs(contract: dict[str, Any], cocircuit_audits: list[d
     return audits
 
 
+def audit_repair_selection(contract: dict[str, Any], repair_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    repair_results = {item["id"]: item for item in repair_audits}
+    audits = []
+    for theorem in contract.get("configuration_repair_selection_theorems", []):
+        errors: list[str] = []
+        base = repair_results.get(theorem.get("repair_theorem_id"), {})
+        fixtures = {item["id"]: item for item in base.get("fixtures", [])}
+        fixture = fixtures.get(theorem.get("repair_fixture_id"), {})
+        if not base.get("passed") or not fixture.get("passed"):
+            errors.append("repair_selection_repair_base_invalid")
+        repairs = [frozenset(tuple(locus) for locus in repair) for repair in fixture.get("minimal_repairs", [])]
+        universe = set().union(*repairs) if repairs else set()
+        valuation_typed = bool(theorem.get("valuation_constructor_id")) and theorem.get("valuation_kind") == "strictly_positive_additive_locus_cost"
+        selector_typed = bool(theorem.get("selector_constructor_id") and theorem.get("selector_source_authority_root")) and theorem.get("safety_authorizes_selection") is False and theorem.get("selection_authorizes_execution") is False
+        if not valuation_typed:
+            errors.append("repair_selection_valuation_untyped")
+        if not selector_typed:
+            errors.append("repair_selection_authority_laundered")
+        if theorem.get("selection_law") != "argmin_total_cost_over_primitive_repairs":
+            errors.append("repair_selection_law_untyped")
+        if theorem.get("theorem_scope") != "finite primitive repair families with source-authorized strictly positive locus valuations":
+            errors.append("repair_selection_scope_laundered")
+
+        profile_results = []
+        selections = set()
+        for profile in theorem.get("valuation_profiles", []):
+            weights = {tuple(item.get("locus", [])): item.get("cost") for item in profile.get("weights", [])}
+            weights_typed = bool(profile.get("source_authority_root")) and set(weights) == universe and all(isinstance(cost, int) and not isinstance(cost, bool) and cost > 0 for cost in weights.values())
+            costs = [sum(weights.get(locus, 0) for locus in repair) for repair in repairs]
+            minimum = min(costs) if costs else None
+            winners = [repair for repair, cost in zip(repairs, costs) if cost == minimum]
+            unique = len(winners) == 1
+            selected = winners[0] if unique else frozenset()
+            expected = frozenset(tuple(locus) for locus in profile.get("expected_selected_repair", []))
+            profile_passed = weights_typed and unique and selected == expected
+            if not profile_passed:
+                errors.append("repair_selection_profile_mismatch")
+            selections.add(selected)
+            encode = lambda witness: [[hole, root] for hole, root in sorted(witness)]
+            profile_results.append({"id": profile.get("id"), "passed": profile_passed, "weights_typed": weights_typed, "repair_costs": costs, "minimum_cost": minimum, "unique_minimizer": unique, "selected_repair": encode(selected)})
+        preference_reversal = len(profile_results) >= 2 and len(selections) >= 2
+        no_canonical_selector = theorem.get("no_canonical_selector_from_safety") is True and preference_reversal
+        if not no_canonical_selector:
+            errors.append("repair_selection_canonical_choice_smuggled")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "valuation_typed": valuation_typed, "selector_separately_authorized": selector_typed, "preference_reversal": preference_reversal, "no_canonical_selector_from_safety": no_canonical_selector, "profiles": profile_results, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1317,10 +1365,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     correlation_composition_audits = audit_correlation_composition(contract, correlation_cocircuit_audits)
     finite_fusion_audits = audit_finite_fusion_witness_bounds(contract, correlation_cocircuit_audits)
     correlation_repair_audits = audit_correlation_repairs(contract, correlation_cocircuit_audits)
+    repair_selection_audits = audit_repair_selection(contract, correlation_repair_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits + correlation_repair_audits + repair_selection_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1355,4 +1404,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_correlation_composition_theorems": correlation_composition_audits,
         "configuration_finite_fusion_theorems": finite_fusion_audits,
         "configuration_correlation_repair_theorems": correlation_repair_audits,
+        "configuration_repair_selection_theorems": repair_selection_audits,
     }

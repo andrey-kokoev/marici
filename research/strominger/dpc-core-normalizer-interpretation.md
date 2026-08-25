@@ -615,3 +615,36 @@ minimal in the order of authorized changes, but they have different
 cardinalities and operational shapes: one repairs a shared failure locus; the
 other repairs two independent outer loci. Choosing between them requires a
 separate cost or feasibility readout and cannot be derived from safety alone.
+
+## Safety does not contain a repair selector
+
+The repair antichain is invariant under changes of operational preference. A
+valuation is additional source data, represented here by a strictly positive
+additive cost on repairable loci. The selector then computes
+
+\[
+\operatorname*{argmin}_{R\in\operatorname{Tr}_{\min}(\mathcal K(E))}
+\sum_{x\in R}w(x).
+\]
+
+Valuation and selection have their own constructors. Neither safety diagnosis
+nor the existence of a minimum authorizes executing the selected repair.
+
+The two authorized schedules give a preference-reversal witness. When the
+outer loci cost one each and the shared locus costs three, the selected repair
+is `{B,D}` with total cost two. When the shared locus costs one and each outer
+locus costs three, the selected repair is `{C}` with total cost one. The
+cocircuit geometry and primitive repair family are unchanged.
+
+Therefore there is no canonical repair selector in the safety structure:
+
+\[
+\text{safety}\longrightarrow\text{valid repair antichain},
+\qquad
+\text{safety}+\text{authorized valuation}
+\longrightarrow\text{preferred repair}.
+\]
+
+Treating “fewest changed loci” as automatic would merely smuggle in the unit
+cost valuation. It is a legitimate policy only when that valuation has an
+authority-bearing source.

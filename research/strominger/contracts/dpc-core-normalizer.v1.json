@@ -384,6 +384,44 @@
       "theorem_scope":"every unsafe typed synchronous correlation hyperedge"
     }
   ],
+  "configuration_repair_selection_theorems":[
+    {
+      "id":"authorized_repair_valuation_and_selection",
+      "repair_theorem_id":"minimal_correlation_repair_transversals",
+      "repair_fixture_id":"overlapping_cocircuit_repairs",
+      "valuation_constructor_id":"dpc.repair_locus_valuation.v1",
+      "valuation_kind":"strictly_positive_additive_locus_cost",
+      "selector_constructor_id":"dpc.minimum_cost_repair_selector.v1",
+      "selector_source_authority_root":"repair_selection_charter",
+      "safety_authorizes_selection":false,
+      "selection_authorizes_execution":false,
+      "selection_law":"argmin_total_cost_over_primitive_repairs",
+      "no_canonical_selector_from_safety":true,
+      "valuation_profiles":[
+        {
+          "id":"outer_loci_cheaper",
+          "source_authority_root":"outer_repair_cost_schedule",
+          "weights":[
+            {"locus":["h0","admin_B"],"cost":1},
+            {"locus":["h0","admin_C"],"cost":3},
+            {"locus":["h0","admin_D"],"cost":1}
+          ],
+          "expected_selected_repair":[["h0","admin_B"],["h0","admin_D"]]
+        },
+        {
+          "id":"shared_locus_cheaper",
+          "source_authority_root":"shared_repair_cost_schedule",
+          "weights":[
+            {"locus":["h0","admin_B"],"cost":3},
+            {"locus":["h0","admin_C"],"cost":1},
+            {"locus":["h0","admin_D"],"cost":3}
+          ],
+          "expected_selected_repair":[["h0","admin_C"]]
+        }
+      ],
+      "theorem_scope":"finite primitive repair families with source-authorized strictly positive locus valuations"
+    }
+  ],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
