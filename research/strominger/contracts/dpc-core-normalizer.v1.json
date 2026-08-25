@@ -4,14 +4,21 @@
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
+    "support_union": ["support"],
     "typed_identity": ["authority_kind", "scope", "modality", "support", "resource"],
     "epoch_fence": ["epoch", "status", "executable_output"]
   },
   "critical_pair_coverage": {
     "partition_flattening|typed_identity": "identity_then_partition_joins",
     "scope_attenuation|typed_identity": "identity_then_attenuate_joins"
+    ,"support_union|typed_identity": "identity_then_support_union_joins"
   },
   "normalization_cases": [
+    {
+      "id": "support_union_preserves_distinct_roots_and_removes_duplicates",
+      "expected": {"support": ["root_A", "root_B"]},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"support_union","support":["root_B","root_A","root_B"]}]}
+    },
     {
       "id": "conservative_partition",
       "expected": {"resource": {"site_A": 2, "site_B": 3}, "status": "active"},
@@ -30,6 +37,13 @@
     }
   ],
   "critical_pairs": [
+    {
+      "id": "identity_then_support_union_joins",
+      "coherence_cell": "typed_identity_support_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"identity","signature":{"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1}}},{"kind":"support_union","support":["root_B","root_A"]}]},
+      "right": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"support_union","support":["root_B","root_A"]},{"kind":"identity","signature":{"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A","root_B"],"resource":{"queries":1}}}]}
+    },
     {
       "id": "identity_then_partition_joins",
       "coherence_cell": "typed_identity_resource_naturality",
