@@ -1,0 +1,69 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_carrier_method_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact bounded falsification of carrier-loss prediction",
+    "full_blocks": "2<=g<=20, 1<=q<=30",
+    "symbolic_case_split": "all odd d>=3 and g>=2"
+  },
+  "checks": [
+    {
+      "id": "PREDICT.odd",
+      "statement": "simultaneous transverse-route loss predicts only (g,d)=(2,5)",
+      "status": "pass",
+      "detail": "[(2, 5)]"
+    },
+    {
+      "id": "PROOF.d3",
+      "statement": "the depth-boundary branch d=3 leaves the other route nonzero",
+      "status": "pass",
+      "detail": "-g**2 - 5*g + 2"
+    },
+    {
+      "id": "PROOF.g2",
+      "statement": "the grade-capacity branch g=2 selects only d=5",
+      "status": "pass",
+      "detail": "left carrier=-6(d-1)(d-5)"
+    },
+    {
+      "id": "FALSIFIER.local",
+      "statement": "carrier loss agrees with exact local-core rank defect",
+      "status": "pass",
+      "detail": "blocks=435; defects=[(2, 5)]; mismatches=[]"
+    },
+    {
+      "id": "FALSIFIER.q1",
+      "statement": "single-carrier loss agrees with exact q=1 rank defect",
+      "status": "pass",
+      "detail": "2<=g<=100; mismatches=[]"
+    },
+    {
+      "id": "FALSIFIER.full",
+      "statement": "carrier prediction agrees with every full initialization rank",
+      "status": "pass",
+      "detail": "blocks=570; defects=[(2, 1), (2, 7)]; mismatches=[]"
+    },
+    {
+      "id": "CONTROL.chart",
+      "statement": "the alternate carrier survives every even chart divisor",
+      "status": "pass",
+      "detail": "primary d-g-8=0; alternate tau_g nonzero for even 2<=g<=100"
+    },
+    {
+      "id": "CONTROL.symbolic",
+      "statement": "the alternate carrier has no integral grade zero",
+      "status": "pass",
+      "detail": "only possible factor g^2-g-26 has nonsquare discriminant 105"
+    },
+    {
+      "id": "CONTROL.seam",
+      "statement": "the d=1 presentation overlap retains a nonzero carrier",
+      "status": "pass",
+      "detail": "endpoint determinant nonzero for 2<=g<=100"
+    }
+  ],
+  "n_pass": 9,
+  "n_fail": 0,
+  "verdict": "Observation-carrier loss predicts the two magnetic defects without computing null vectors. In the odd low-grade family simultaneous loss has the unique integral solution (g,d)=(2,5); in q=1 the single carrier vanishes only at g=2. These predictions agree with exact ranks of 435 local cores, 99 q=1 blocks, and 570 full initialization blocks."
+}

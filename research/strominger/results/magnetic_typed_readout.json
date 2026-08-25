@@ -1,0 +1,121 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_typed_readout_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact typed-readout mechanism checks"
+  },
+  "checks": [
+    {
+      "id": "FORGET.rank",
+      "statement": "ordinary type forgetting preserves the direct-sum rank",
+      "status": "pass",
+      "detail": "underlying map is still the 2x2 identity"
+    },
+    {
+      "id": "QUOTIENT.kernel",
+      "statement": "the codiagonal quotient creates an anti-diagonal kernel",
+      "status": "pass",
+      "detail": "ker[1 1]=span(-1,1)"
+    },
+    {
+      "id": "QUOTIENT.not_forgetful",
+      "statement": "type erasure plus codiagonal is not a conservative forgetful functor",
+      "status": "pass",
+      "detail": "rank 2 becomes rank 1"
+    },
+    {
+      "id": "PAIRING.integer",
+      "statement": "every integral reflection component admits the common readout pairing",
+      "status": "pass",
+      "detail": "q=1..30,N=1..12; failures=[]"
+    },
+    {
+      "id": "PAIRING.fractional",
+      "statement": "no thirds-clearing cover authorizes the rational branch pairing",
+      "status": "pass",
+      "detail": "q=35/3,55/3; N=3,6,...,60; false alignments=[]"
+    },
+    {
+      "id": "DETERMINANT.blockwise",
+      "statement": "the typed maximal minor retains both sector factors",
+      "status": "pass",
+      "detail": "typed determinant=xy; collapsed readout=[x y]"
+    },
+    {
+      "id": "DESCENT.invariants",
+      "statement": "none of the fractional candidates has an ordinary descended scalar",
+      "status": "pass",
+      "detail": "[2, 1, 1]"
+    },
+    {
+      "id": "DESCENT.schur",
+      "statement": "no charge-zero morphism sends either candidate sector to scalars",
+      "status": "pass",
+      "detail": "Hom_Z3(V_chi,V_0)=0 for chi=1,2"
+    },
+    {
+      "id": "DESCENT.charged",
+      "statement": "a nontrivial readout requires an explicitly charged morphism",
+      "status": "pass",
+      "detail": "charges 2 and 1 respectively absorb the source deck charge"
+    },
+    {
+      "id": "DESCENT.uniform_twist",
+      "statement": "a uniform twist cannot repair relative charge mismatch",
+      "status": "pass",
+      "detail": "relative charge remains 1 mod 3"
+    },
+    {
+      "id": "COHERENCE.weights",
+      "statement": "the anti-diagonal packet cancels only after choosing equal adapter weights",
+      "status": "pass",
+      "detail": "A*alpha - A*beta"
+    },
+    {
+      "id": "COHERENCE.not_canonical",
+      "statement": "an allowed independent adapter rescaling destroys unit-weight cancellation",
+      "status": "pass",
+      "detail": "deck charge fixes admissibility, not the relative normalization"
+    },
+    {
+      "id": "DIHEDRAL.no_linear",
+      "statement": "the reflected charge doublet has no invariant linear readout",
+      "status": "pass",
+      "detail": "[{u: 0, v: 0}]"
+    },
+    {
+      "id": "DIHEDRAL.quadratic",
+      "statement": "the first lawful invariant is the quadratic norm",
+      "status": "pass",
+      "detail": "x0**2 + y0**2"
+    },
+    {
+      "id": "DIHEDRAL.visible",
+      "statement": "a nonzero anti-diagonal packet is visible to the invariant norm",
+      "status": "pass",
+      "detail": "||(A,-A)||^2=2*A^2"
+    },
+    {
+      "id": "POSITIVE.hermitian",
+      "statement": "the star-compatible anti-diagonal energy is a positive sum of squares",
+      "status": "pass",
+      "detail": "2*ai**2 + 2*ar**2"
+    },
+    {
+      "id": "POSITIVE.loss",
+      "statement": "the zero route-loss packet has zero invariant energy",
+      "status": "pass",
+      "detail": "packet=(0,0)"
+    },
+    {
+      "id": "POSITIVE.complex_caveat",
+      "statement": "a holomorphic quadratic alone has nonzero complex isotropic vectors",
+      "status": "pass",
+      "detail": "(1,i) shows why the star/real structure is required"
+    }
+  ],
+  "n_pass": 18,
+  "n_fail": 0,
+  "verdict": "Forgetting labels while retaining the direct-sum target preserves rank; a codiagonal can create spurious kernels. Equivariant descent forbids scalar readouts from the candidate sectors. With reflection, conjugate charges form the D3 standard doublet: it has no invariant linear functional, while its star-compatible Hermitian norm sees every nonzero anti-diagonal packet. The star structure is essential because a holomorphic quadratic has complex isotropic vectors. Charged linear adapters require new normalization data."
+}

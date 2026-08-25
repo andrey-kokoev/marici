@@ -1,0 +1,125 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_exception_circuit_explanation_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact local constructor explanation",
+    "locus": {
+      "g": 2,
+      "q": 7
+    }
+  },
+  "checks": [
+    {
+      "id": "SUPPORT.two",
+      "statement": "all three exceptional columns collapse to rows 0 and 1",
+      "status": "pass",
+      "detail": "[0, 1]"
+    },
+    {
+      "id": "STATE.boundary",
+      "statement": "the normalized boundary-state matrix is canonical",
+      "status": "pass",
+      "detail": "[[-6, 0, 3], [-8, -2, 1]]"
+    },
+    {
+      "id": "PLUCKER.primitive",
+      "statement": "signed maximal minors force the primitive circuit",
+      "status": "pass",
+      "detail": "[[1, -3, 2]]"
+    },
+    {
+      "id": "CIRCUIT.zero",
+      "statement": "the primitive Plucker vector annihilates both observations",
+      "status": "pass",
+      "detail": "[[0, 0]]"
+    },
+    {
+      "id": "CIRCUIT.minimal",
+      "statement": "every column pair is independent, so the circuit is minimal",
+      "status": "pass",
+      "detail": "[4800, 7200, 2400]"
+    },
+    {
+      "id": "JET.transverse",
+      "statement": "the grade-two R2 response has the exact obstruction factor",
+      "status": "pass",
+      "detail": "-6*(d - 5)*(d - 1)"
+    },
+    {
+      "id": "JET.one_column",
+      "statement": "the neighboring right collision column is invisible to R2",
+      "status": "pass",
+      "detail": "0"
+    },
+    {
+      "id": "JET.unique_loss",
+      "statement": "the admissible odd collision range loses R2 only at d=5",
+      "status": "pass",
+      "detail": "q=g+d=7 and collision depths are d-1=4,d+1=6"
+    },
+    {
+      "id": "ROUTES.left",
+      "statement": "the left transverse carrier has the closed two-parameter form",
+      "status": "pass",
+      "detail": "-(2*d*g + 2*d - g**2 - 11*g - 4)*factorial(d + g - 3)/factorial(d - 2)"
+    },
+    {
+      "id": "ROUTES.right",
+      "statement": "the right transverse carrier contains the grade divisor g-2",
+      "status": "pass",
+      "detail": "g*(d - 4)*(d - 3)*(g - 2)*(g - 1)*(g + 3)*factorial(d + g - 3)/(2*factorial(d))"
+    },
+    {
+      "id": "ROUTES.intersection",
+      "statement": "on g=2 the left route vanishes at admissible d=5",
+      "status": "pass",
+      "detail": "exception is the intersection g=2 and d=5"
+    },
+    {
+      "id": "CONSTRUCTOR.routes",
+      "statement": "R2 has exactly two possible collision-source ports",
+      "status": "pass",
+      "detail": "structurally: (0,-) is absent; (4,+),(6,+) are the two carriers"
+    },
+    {
+      "id": "CONSTRUCTOR.cofactors",
+      "statement": "both independent R2 repair cofactors are nonzero",
+      "status": "pass",
+      "detail": "left=-7200; right=4800"
+    },
+    {
+      "id": "CONSTRUCTOR.repair",
+      "statement": "the local repaired determinant is the carrier pairing",
+      "status": "pass",
+      "detail": "-2400*(3*ell - 2*rho)"
+    },
+    {
+      "id": "CONSTRUCTOR.single",
+      "statement": "restoring either route alone restores full rank",
+      "status": "pass",
+      "detail": "capacity repair or alignment repair is individually sufficient"
+    },
+    {
+      "id": "INTERFERENCE.left",
+      "statement": "the left-route reconstruction sensitivity is closed",
+      "status": "pass",
+      "detail": "g*(g + 3)*(d*g - 2*d - 5*g + 4)*factorial(g + 3)*factorial(d + g - 1)/(6*factorial(d))"
+    },
+    {
+      "id": "INTERFERENCE.right",
+      "statement": "the right-route reconstruction sensitivity is closed",
+      "status": "pass",
+      "detail": "factorial(g + 3)*factorial(d + g - 1)/(3*factorial(d - 2))"
+    },
+    {
+      "id": "INTERFERENCE.sum",
+      "statement": "the full determinant is the weighted sum of both routes",
+      "status": "pass",
+      "detail": "det=C_L*L+C_R*R"
+    }
+  ],
+  "n_pass": 18,
+  "n_fail": 0,
+  "verdict": "The transverse observation has exactly two collision-source routes, and the full symbolic determinant is their cofactor pairing C_L*L+C_R*R. The right route contains g-2; there the left route reduces to -6(d-1)(d-5), so both disappear only at (2,5). Their exceptional-fiber cofactors are -7200 and 4800, proving either independent repair restores rank. The surviving R0,R1 states have primitive Plucker circuit (1,-3,2)."
+}

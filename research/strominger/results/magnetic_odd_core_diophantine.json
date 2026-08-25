@@ -1,0 +1,62 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_odd_core_diophantine_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic and finite exact Diophantine theorem",
+    "domain": "integers g>=2 and d"
+  },
+  "checks": [
+    {
+      "id": "GRADE.two",
+      "statement": "at g=2 the unique odd positive root is d=5",
+      "status": "pass",
+      "detail": "P(2,d)=-36(d-5)"
+    },
+    {
+      "id": "QUAD.leading",
+      "statement": "for every g>=3 the obstruction is genuinely quadratic in d",
+      "status": "pass",
+      "detail": "(g - 2)*(g + 3)"
+    },
+    {
+      "id": "SQUARE.lower",
+      "statement": "the discriminant lies strictly above S(g)^2 for g>=3",
+      "status": "pass",
+      "detail": "128*(g**2 + 4*g - 2)"
+    },
+    {
+      "id": "SQUARE.upper",
+      "statement": "the discriminant lies below (S(g)+1)^2 for g>=67",
+      "status": "pass",
+      "detail": "at g=67+x: 2*x**3 + 278*x**2 + 9780*x + 9129"
+    },
+    {
+      "id": "SQUARE.small",
+      "statement": "the only square discriminant for 3<=g<=66 occurs at g=6",
+      "status": "pass",
+      "detail": "[(6, 57600, 240)]"
+    },
+    {
+      "id": "SQUARE.g6",
+      "statement": "the two roots at g=6 are nonintegral",
+      "status": "pass",
+      "detail": "[17/3, 37/3]"
+    },
+    {
+      "id": "THEOREM.integer",
+      "statement": "P(g,d)=0 on g>=2 and integral d implies (g,d)=(2,5)",
+      "status": "pass",
+      "detail": "g=2 is linear; g=3..66 audited; g>=67 trapped between consecutive squares"
+    },
+    {
+      "id": "THEOREM.odd",
+      "statement": "the odd-core Diophantine lemma has the unique admissible solution (2,5)",
+      "status": "pass",
+      "detail": "equivalently (g,q)=(2,7)"
+    }
+  ],
+  "n_pass": 8,
+  "n_fail": 0,
+  "verdict": "The odd-core obstruction P is linear at g=2 with root d=5. For g>=3 it is quadratic in d. Its discriminant is trapped strictly between S(g)^2 and (S(g)+1)^2 for every g>=67. Exact inspection of 3<=g<=66 finds one square discriminant, at g=6, whose roots 17/3 and 37/3 are nonintegral. Therefore P(g,d)=0 has the unique integral solution (g,d)=(2,5), proving that the only odd low-grade kernel exception is (g,q)=(2,7)."
+}

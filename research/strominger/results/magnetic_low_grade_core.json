@@ -1,0 +1,75 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_low_grade_core_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic local collision minors with bounded embedding audit",
+    "domain": "q>g>=2",
+    "audit": "g<=500, odd d<=1001"
+  },
+  "checks": [
+    {
+      "id": "CORE.even",
+      "statement": "the even-excess residual core is the displayed 2x2 block",
+      "status": "pass",
+      "detail": "-g*(d - g - 8)*RisingFactorial(4, g)*RisingFactorial(d, g)"
+    },
+    {
+      "id": "CORE.even_zero",
+      "statement": "its only positive-domain zero is the chart divisor d=g+8",
+      "status": "pass",
+      "detail": "repaired by the symbolic row-3 transverse theorem"
+    },
+    {
+      "id": "CORE.odd",
+      "statement": "the odd-excess residual core has obstruction polynomial P(g,d)",
+      "status": "pass",
+      "detail": "d**2*g**2 + d**2*g - 6*d**2 - d*g**3 - 12*d*g**2 - 5*d*g + 30*d + 5*g**3 + 39*g**2 + 12*g - 40"
+    },
+    {
+      "id": "CORE.exception",
+      "statement": "the known grade-two exception is exactly P(2,d)=-36(d-5)",
+      "status": "pass",
+      "detail": "d=5 gives (g,q)=(2,7)"
+    },
+    {
+      "id": "CORE.d1",
+      "statement": "the overlapping d=1 endpoint core has a closed nonzero determinant",
+      "status": "pass",
+      "detail": "-g*(g + 3)*(2*g - 1)*factorial(g)*factorial(g + 3)/3"
+    },
+    {
+      "id": "CORE.d1_nonzero",
+      "statement": "the d=1 core is nonsingular for every integer g>=2",
+      "status": "pass",
+      "detail": "displayed factors are positive apart from the overall sign"
+    },
+    {
+      "id": "CORE.generated",
+      "statement": "the symbolic cores equal all generated local matrices",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "CORE.zeros",
+      "statement": "the bounded core zeros are the even chart divisor and (2,7)",
+      "status": "pass",
+      "detail": "zeros=[(2, 7, 5), (2, 12, 10), (4, 16, 12), (6, 20, 14), (8, 24, 16), (10, 28, 18), (12, 32, 20), (14, 36, 22), (16, 40, 24), (18, 44, 26), (20, 48, 28), (22, 52, 30)]"
+    },
+    {
+      "id": "CORE.d1_generated",
+      "statement": "the symbolic d=1 core equals every generated endpoint block",
+      "status": "pass",
+      "detail": "2<=g<=30; failures=[]"
+    },
+    {
+      "id": "ODD.audit",
+      "statement": "the odd obstruction has only (g,d)=(2,5) in the large audit",
+      "status": "pass",
+      "detail": "2<=g<=500; odd 3<=d<=1001"
+    }
+  ],
+  "n_pass": 10,
+  "n_fail": 0,
+  "verdict": "With d=q-g, the adjacent stratum d=1 has a nonsingular 2x2 endpoint core, the even strata have a 2x2 collision coordinate proportional to d-g-8, and odd d>=3 has a 3x3 coordinate controlled by P(g,d). The even zero is the repaired chart divisor, while P(2,d) gives the genuine (2,7) exception. The aligned plus-chain and boundary-compatibility packets supply the global reduction that raw forced leaf peeling alone could not provide."
+}

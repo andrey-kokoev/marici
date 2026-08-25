@@ -1,0 +1,47 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_e1_circuit_explanation_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact local constructor explanation",
+    "locus": {
+      "g": 2,
+      "q": 1
+    }
+  },
+  "checks": [
+    {
+      "id": "SUPPORT.one",
+      "statement": "both grade-two q=1 states collapse to the single row R1",
+      "status": "pass",
+      "detail": "[1]"
+    },
+    {
+      "id": "STATE.equal",
+      "statement": "the two surviving observation records are identical",
+      "status": "pass",
+      "detail": "[[-40, -40]]"
+    },
+    {
+      "id": "CIRCUIT.primitive",
+      "statement": "the unique primitive circuit is (1,-1)",
+      "status": "pass",
+      "detail": "[[1, -1]]"
+    },
+    {
+      "id": "JET.carrier",
+      "statement": "the second q=1 observation has carrier (g-2)*rf(4,g)",
+      "status": "pass",
+      "detail": "2<=g<=20; failures=[]"
+    },
+    {
+      "id": "JET.unique_loss",
+      "statement": "the carrier vanishes in the domain exactly at grade two",
+      "status": "pass",
+      "detail": "(g - 2)*RisingFactorial(4, g)"
+    }
+  ],
+  "n_pass": 5,
+  "n_fail": 0,
+  "verdict": "The q=1 component has a second observation carried by (g-2)*rf(4,g), so it disappears uniquely at grade two. The two remaining source states then have the identical R1 record -40, forcing the primitive circuit (1,-1) and hence 1-zb^-2."
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_plus_chain_triangular_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic two-chart triangular polynomial-basis theorem",
+    "domain": "g>=2 and even 4<=a<=g+4"
+  },
+  "checks": [
+    {
+      "id": "COEFF.source",
+      "statement": "the terminal shortened-source coefficient has the factorial form",
+      "status": "pass",
+      "detail": "factorial(g)*factorial(g + 3)/(factorial(a - 1)*factorial(-a + g + 4))"
+    },
+    {
+      "id": "COEFF.generic",
+      "statement": "the magnetic top coefficient is (d-g-3) times the source endpoint",
+      "status": "pass",
+      "detail": "(d - g - 3)*factorial(g)*factorial(g + 3)/(factorial(a - 1)*factorial(-a + g + 4))"
+    },
+    {
+      "id": "COEFF.divisor",
+      "statement": "after the common top vanishes, the next coefficient is explicit",
+      "status": "pass",
+      "detail": "(2*a*g + 4*a - g**2 - 9*g - 16)*factorial(g)*factorial(g + 3)/((a - g - 5)*factorial(a - 1)*factorial(-a + g + 4))"
+    },
+    {
+      "id": "COEFF.nonzero",
+      "statement": "the divisor-chart pivot cannot vanish at integral pole depth",
+      "status": "pass",
+      "detail": "a=(g+7)/2+1/(g+2), nonintegral for every integer g>=2"
+    },
+    {
+      "id": "MATRIX.generic",
+      "statement": "generated generic-chain pivots equal the symbolic formula",
+      "status": "pass",
+      "detail": "records=34300; failures=[]"
+    },
+    {
+      "id": "MATRIX.divisor",
+      "statement": "generated q=2g+3 replacement pivots equal the symbolic formula",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "BASIS.degree",
+      "statement": "reflection about the common top gives strictly increasing degrees",
+      "status": "pass",
+      "detail": "generic degrees a-3; divisor degrees a-4"
+    }
+  ],
+  "n_pass": 7,
+  "n_fail": 0,
+  "verdict": "After reflection about the aligned endpoint, shortened plus columns have strictly increasing degrees. Off d=g+3 their leading coefficient is (d-g-3)g!(g+3)!/[(g-a+4)!(a-1)!]. On the divisor, the next coefficient is the same positive factorial factor times [g^2+9g+16-(2g+4)a]/(g-a+5), which never vanishes for integral a. Hence the growing aligned plus chain has a canonical triangular basis in two charts; its internal weighted elimination cannot create rank loss."
+}
