@@ -1,0 +1,1762 @@
+{
+  "all_hostiles_rejected": true,
+  "hostiles": {
+    "dependency_cycle": true,
+    "graph_norm_difference_hidden": true,
+    "missing_authority_root": true,
+    "scalar_bytes_claim_typed_coherence": true,
+    "wrong_independent_path_count": true,
+    "wrong_precedence_path_count": true
+  },
+  "models": [
+    {
+      "all_legal_paths_one_typed_endpoint": true,
+      "dependency_acyclic": true,
+      "dependency_closure": {
+        "A": [],
+        "B": [],
+        "C": []
+      },
+      "errors": [],
+      "id": "independent_three_repairs",
+      "linear_extensions": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "A",
+          "C",
+          "B"
+        ],
+        [
+          "B",
+          "A",
+          "C"
+        ],
+        [
+          "B",
+          "C",
+          "A"
+        ],
+        [
+          "C",
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "B",
+          "A"
+        ]
+      ],
+      "observed": {
+        "legal_completed_path_count": 6,
+        "linear_extension_count": 6,
+        "swap_component_count": 1,
+        "typed_endpoint_count": 1
+      },
+      "passed": true,
+      "paths": [
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "A",
+            "B",
+            "C"
+          ],
+          "states": [
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A"
+                ],
+                "boundary_packet": {
+                  "A": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA"
+                ]
+              },
+              "unresolved_defects": [
+                "dB",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB"
+                ]
+              },
+              "unresolved_defects": [
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "A",
+            "C",
+            "B"
+          ],
+          "states": [
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A"
+                ],
+                "boundary_packet": {
+                  "A": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA"
+                ]
+              },
+              "unresolved_defects": [
+                "dB",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "B",
+            "A",
+            "C"
+          ],
+          "states": [
+            {
+              "after": "B",
+              "next_admissible_repairs": [
+                "A",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "B"
+                ],
+                "boundary_packet": {
+                  "B": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sB"
+                ]
+              },
+              "unresolved_defects": [
+                "dA",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB"
+                ]
+              },
+              "unresolved_defects": [
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "B",
+            "C",
+            "A"
+          ],
+          "states": [
+            {
+              "after": "B",
+              "next_admissible_repairs": [
+                "A",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "B"
+                ],
+                "boundary_packet": {
+                  "B": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sB"
+                ]
+              },
+              "unresolved_defects": [
+                "dA",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "A"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dA"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "A",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "C",
+            "A",
+            "B"
+          ],
+          "states": [
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "A",
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "C"
+                ],
+                "boundary_packet": {
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA",
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dA",
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": [
+              "sA",
+              "sB",
+              "sC"
+            ]
+          },
+          "endpoint_digest": "05674fe8ea86383191b2287ca1f5d722566df4de5c48bb666ea1d5d9449f7e9b",
+          "legal": true,
+          "order": [
+            "C",
+            "B",
+            "A"
+          ],
+          "states": [
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "A",
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "C"
+                ],
+                "boundary_packet": {
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA",
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dA",
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [
+                "A"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [
+                "dA"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "A",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": [
+                  "sA",
+                  "sB",
+                  "sC"
+                ]
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        }
+      ],
+      "scalar_bytes_do_not_define_typed_endpoint": false,
+      "swap_cells": [
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "B",
+            "A",
+            "C"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "B",
+            "A",
+            "C"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "B",
+            "A",
+            "C"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "B",
+            "C",
+            "A"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "B",
+            "C",
+            "A"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "C",
+            "B",
+            "A"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "B",
+            "C",
+            "A"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "B",
+            "A",
+            "C"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "C",
+            "B",
+            "A"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "C",
+            "B",
+            "A"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "B",
+            "C",
+            "A"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "C",
+            "B",
+            "A"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        }
+      ],
+      "swap_components": [
+        [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "A",
+            "C",
+            "B"
+          ],
+          [
+            "B",
+            "A",
+            "C"
+          ],
+          [
+            "B",
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "B",
+            "A"
+          ]
+        ]
+      ]
+    },
+    {
+      "all_legal_paths_one_typed_endpoint": true,
+      "dependency_acyclic": true,
+      "dependency_closure": {
+        "A": [],
+        "B": [
+          "A"
+        ],
+        "C": []
+      },
+      "errors": [],
+      "id": "one_precedence_relation",
+      "linear_extensions": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "A",
+          "C",
+          "B"
+        ],
+        [
+          "C",
+          "A",
+          "B"
+        ]
+      ],
+      "observed": {
+        "legal_completed_path_count": 3,
+        "linear_extension_count": 3,
+        "swap_component_count": 1,
+        "typed_endpoint_count": 1
+      },
+      "passed": true,
+      "paths": [
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": []
+          },
+          "endpoint_digest": "5c3291000627693c2fda476105b573a8f280eb77bbcb340dcd6040891a11f70c",
+          "legal": true,
+          "order": [
+            "A",
+            "B",
+            "C"
+          ],
+          "states": [
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A"
+                ],
+                "boundary_packet": {
+                  "A": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dB",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": []
+          },
+          "endpoint_digest": "5c3291000627693c2fda476105b573a8f280eb77bbcb340dcd6040891a11f70c",
+          "legal": true,
+          "order": [
+            "A",
+            "C",
+            "B"
+          ],
+          "states": [
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B",
+                "C"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A"
+                ],
+                "boundary_packet": {
+                  "A": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB",
+                  "dC"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dB",
+                "dC"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "N0",
+            "scalar_output": "same-bytes",
+            "support": []
+          },
+          "endpoint_digest": "5c3291000627693c2fda476105b573a8f280eb77bbcb340dcd6040891a11f70c",
+          "legal": true,
+          "order": [
+            "C",
+            "A",
+            "B"
+          ],
+          "states": [
+            {
+              "after": "C",
+              "next_admissible_repairs": [
+                "A"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "C"
+                ],
+                "boundary_packet": {
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dA",
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dA",
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "A",
+              "next_admissible_repairs": [
+                "B"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [
+                  "dB"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dB"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "B",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "boundary_packet": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1
+                },
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "N0",
+                "scalar_output": "same-bytes",
+                "support": []
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        }
+      ],
+      "scalar_bytes_do_not_define_typed_endpoint": false,
+      "swap_cells": [
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": null,
+          "complete_boundary_packet_equal": true,
+          "generated": true,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": true,
+          "left_path": [
+            "C",
+            "A",
+            "B"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "A",
+            "C",
+            "B"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        }
+      ],
+      "swap_components": [
+        [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "A",
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "A",
+            "B"
+          ]
+        ]
+      ]
+    },
+    {
+      "all_legal_paths_one_typed_endpoint": false,
+      "dependency_acyclic": true,
+      "dependency_closure": {
+        "X": [],
+        "Y": []
+      },
+      "errors": [],
+      "id": "equal_bytes_inequivalent_graph_norms",
+      "linear_extensions": [
+        [
+          "X",
+          "Y"
+        ],
+        [
+          "Y",
+          "X"
+        ]
+      ],
+      "observed": {
+        "legal_completed_path_count": 2,
+        "linear_extension_count": 2,
+        "swap_component_count": 2,
+        "typed_endpoint_count": 2
+      },
+      "passed": true,
+      "paths": [
+        {
+          "endpoint": {
+            "boundary_packet": {},
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "NXY_left",
+            "scalar_output": "identical-scalar-bytes",
+            "support": []
+          },
+          "endpoint_digest": "7a34e4f96255b6f0e9cd9280c408f1a188163f932b7d8acdc4a389824ab4c602",
+          "legal": true,
+          "order": [
+            "X",
+            "Y"
+          ],
+          "states": [
+            {
+              "after": "X",
+              "next_admissible_repairs": [
+                "Y"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "X"
+                ],
+                "boundary_packet": {},
+                "capabilities": [],
+                "defects": [
+                  "dY"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "NX",
+                "scalar_output": "identical-scalar-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dY"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "Y",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "X",
+                  "Y"
+                ],
+                "boundary_packet": {},
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "NXY_left",
+                "scalar_output": "identical-scalar-bytes",
+                "support": []
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        },
+        {
+          "endpoint": {
+            "boundary_packet": {},
+            "capabilities": [],
+            "defects": [],
+            "domain_signature": "D0",
+            "graph_norm_signature": "NXY_right",
+            "scalar_output": "identical-scalar-bytes",
+            "support": []
+          },
+          "endpoint_digest": "06f3c66112822f98c25bb63b2d14126f744dc74b506b53fcb279da735a06728e",
+          "legal": true,
+          "order": [
+            "Y",
+            "X"
+          ],
+          "states": [
+            {
+              "after": "Y",
+              "next_admissible_repairs": [
+                "X"
+              ],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "Y"
+                ],
+                "boundary_packet": {},
+                "capabilities": [],
+                "defects": [
+                  "dX"
+                ],
+                "domain_signature": "D0",
+                "graph_norm_signature": "NY",
+                "scalar_output": "identical-scalar-bytes",
+                "support": []
+              },
+              "unresolved_defects": [
+                "dX"
+              ],
+              "unsafe_repair_in_progress": true
+            },
+            {
+              "after": "X",
+              "next_admissible_repairs": [],
+              "residual_capability": [],
+              "state": {
+                "applied": [
+                  "X",
+                  "Y"
+                ],
+                "boundary_packet": {},
+                "capabilities": [],
+                "defects": [],
+                "domain_signature": "D0",
+                "graph_norm_signature": "NXY_right",
+                "scalar_output": "identical-scalar-bytes",
+                "support": []
+              },
+              "unresolved_defects": [],
+              "unsafe_repair_in_progress": false
+            }
+          ]
+        }
+      ],
+      "scalar_bytes_do_not_define_typed_endpoint": true,
+      "swap_cells": [
+        {
+          "code": "repair_swap_domain_failure",
+          "complete_boundary_packet_equal": true,
+          "generated": false,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": false,
+          "left_path": [
+            "X",
+            "Y"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "Y",
+            "X"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        },
+        {
+          "code": "repair_swap_domain_failure",
+          "complete_boundary_packet_equal": true,
+          "generated": false,
+          "graph_domain_equivalent": true,
+          "graph_norm_equivalent": false,
+          "left_path": [
+            "Y",
+            "X"
+          ],
+          "reconstruction_capability_equal": true,
+          "remaining_defects_equal": true,
+          "right_path": [
+            "X",
+            "Y"
+          ],
+          "scalar_endpoint_bytes_equal": true,
+          "support_union_equal": true
+        }
+      ],
+      "swap_components": [
+        [
+          [
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          [
+            "Y",
+            "X"
+          ]
+        ]
+      ]
+    }
+  ],
+  "passed": true,
+  "schema": "marici.dependency-aware-partial-repair-result.v1"
+}
