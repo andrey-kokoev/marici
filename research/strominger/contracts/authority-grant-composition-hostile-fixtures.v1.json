@@ -270,6 +270,55 @@
         {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "predicts_all_existing_ports", "value": false}
       ],
       "expected_code": "port_incomplete_rival_admission"
+    },
+    {
+      "id": "incumbent_is_sole_rival_reviewer",
+      "description": "The incumbent mechanism controls the only admission vote on its own rival.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewers", "value": ["incumbent_mechanism_team"]},
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewer_authority_roots", "value": ["incumbent_source_root"]}
+      ],
+      "expected_code": "incumbent_or_proposer_controls_rival_admission"
+    },
+    {
+      "id": "proposer_identity_changes_decision",
+      "description": "The identical content-addressed rival packet receives a different decision under a different proposer name.",
+      "mutations": [
+        {"collection": "proposer_identity_invariance_audits", "id": "same_delta_packet_two_pseudonyms", "field": "decision_right", "value": "rejected"}
+      ],
+      "expected_code": "proposer_identity_bias"
+    },
+    {
+      "id": "review_criteria_fitted_after_response",
+      "description": "Admission criteria are selected only after reviewers inspect the rival response column.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "criteria_committed_before_response", "value": false}
+      ],
+      "expected_code": "target_fitted_rival_review"
+    },
+    {
+      "id": "rival_review_has_no_independent_appeal",
+      "description": "The initial reviewers are also the entire appeal panel.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "appeal_reviewers", "value": ["independent_reviewer_A"]}
+      ],
+      "expected_code": "missing_independent_rival_appeal"
+    },
+    {
+      "id": "reviewers_share_one_authority_root",
+      "description": "Two nominal reviewers derive authority from the same source and are falsely counted as independent.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewer_authority_roots", "value": ["source_methods_board_A", "source_methods_board_A"]}
+      ],
+      "expected_code": "nonindependent_rival_review_authority"
+    },
+    {
+      "id": "admission_review_upgrades_operative_authority",
+      "description": "A merits review silently promotes a constructor claim to executor authority.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "authority_kind_after", "value": "executor"}
+      ],
+      "expected_code": "rival_review_authority_laundering"
     }
   ]
 }

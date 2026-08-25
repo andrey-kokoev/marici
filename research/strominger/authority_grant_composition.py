@@ -363,6 +363,53 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if status == "rejected" and admissible:
             err("admissible_rival_improperly_rejected", admission_id, admission.get("mechanism_id", "unknown"))
 
+    # Admission is itself authority-bearing.  The incumbent may submit evidence,
+    # but cannot be the sole adjudicator of its own rival.  Review operates on a
+    # frozen content packet under criteria fixed before the response is inspected;
+    # it grants challenge standing, never a stronger operative authority kind.
+    reviews = {item["id"]: item for item in packet.get("rival_admission_reviews", [])}
+    reviewed_admissions: set[str] = set()
+    for review_id, review in reviews.items():
+        admission = rival_admissions.get(review.get("admission_id"))
+        if admission is None:
+            err("unknown_reviewed_rival_admission", review_id, str(review.get("admission_id")))
+            continue
+        reviewed_admissions.add(admission["id"])
+        proposer = review.get("proposer")
+        incumbent = review.get("incumbent")
+        reviewers = review.get("reviewers", [])
+        appeal_reviewers = review.get("appeal_reviewers", [])
+        roots = review.get("reviewer_authority_roots", [])
+        if not reviewers or incumbent in reviewers or proposer in reviewers:
+            err("incumbent_or_proposer_controls_rival_admission", review_id, str(reviewers))
+        if len(roots) != len(reviewers) or len(set(roots)) != len(roots):
+            err("nonindependent_rival_review_authority", review_id, str(roots))
+        if not review.get("criteria_committed_before_response"):
+            err("target_fitted_rival_review", review_id, "review criteria were not precommitted")
+        if not review.get("immutable_evidence_packet_sha256"):
+            err("mutable_rival_review_packet", review_id, "content-addressed evidence packet required")
+        if not review.get("appeal_available") or not appeal_reviewers or set(appeal_reviewers) & set(reviewers):
+            err("missing_independent_rival_appeal", review_id, str(appeal_reviewers))
+        if review.get("decision") != admission.get("status"):
+            err("rival_review_decision_mismatch", review_id, f"{review.get('decision')}!={admission.get('status')}")
+        if review.get("authority_kind_before") != review.get("authority_kind_after"):
+            err("rival_review_authority_laundering", review_id, f"{review.get('authority_kind_before')}->{review.get('authority_kind_after')}")
+        if review.get("grants_only_challenge_standing") is not True:
+            err("rival_review_grants_operative_authority", review_id, str(review.get("grants_only_challenge_standing")))
+
+    for admission_id in rival_admissions:
+        if admission_id not in reviewed_admissions:
+            err("rival_admission_without_governance_review", admission_id, "every disposition requires an independent review trace")
+
+    for audit in packet.get("proposer_identity_invariance_audits", []):
+        aid = audit["id"]
+        if audit.get("packet_sha256_left") != audit.get("packet_sha256_right"):
+            err("identity_audit_compares_different_rival_packets", aid, "packet digests differ")
+        if audit.get("decision_left") != audit.get("decision_right"):
+            err("proposer_identity_bias", aid, f"{audit.get('decision_left')}!={audit.get('decision_right')}")
+        if not audit.get("identity_blinded_during_merits_review"):
+            err("unblinded_rival_merits_review", aid, "proposer identity exposed during merits review")
+
     # Open-world DPC: a new admitted rival reopens identification unless the current
     # source-derived ports separate the enlarged family.  New authority is
     # earned only after a source-derived discriminator closes the new kernel.

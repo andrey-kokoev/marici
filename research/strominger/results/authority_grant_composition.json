@@ -3,7 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "a796f01a7139f69a14d66ebc127e2ff61caafa11ba922661ba743ab2ab038eaa",
+  "contract_sha256": "e5922e231fd979ed2cd37d3998f8dae10405db6aa6e7347e8a1d2f58218843a8",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
@@ -14,6 +14,7 @@
     "composition_preserves_authority_kind": true,
     "counterfactual_deletion_separates_presentation_from_source": true,
     "descent_stabilizer_is_source_authorized": true,
+    "every_rival_disposition_has_review_and_appeal": true,
     "explanatory_provenance_is_forward_and_source_rooted": true,
     "finite_interventions_identify_declared_mechanisms": true,
     "flat_descent_is_effective_and_unique": true,
@@ -28,8 +29,13 @@
     "new_rival_suspends_identification_authority": true,
     "presentation_atlas_has_zero_holonomy": true,
     "presentation_cells_are_invertible_and_kind_preserving": true,
+    "proposer_identity_does_not_change_admission": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
+    "rival_admission_has_separated_governance_roles": true,
     "rival_protocol_remains_open_world": true,
+    "rival_review_is_content_addressed_and_precommitted": true,
+    "rival_review_preserves_operative_authority_kind": true,
+    "rival_reviewers_have_independent_authority_roots": true,
     "source_authorized_gauge_descends_stackily": true,
     "source_deletion_revokes_authority_not_cached_output": true,
     "source_derived_probe_revalidates_extended_family": true,
@@ -42,6 +48,15 @@
     "transport_requires_authority_preservation": true
   },
   "hostile": {
+    "admission_review_upgrades_operative_authority": {
+      "description": "A merits review silently promotes a constructor claim to executor authority.",
+      "error_codes": [
+        "rival_review_authority_laundering"
+      ],
+      "expected_code": "rival_review_authority_laundering",
+      "passed": true,
+      "valid": false
+    },
     "arbitrary_column_opens_rival_challenge": {
       "description": "A new response column opens a challenge without any admitted constructor-level rival packet.",
       "error_codes": [
@@ -179,6 +194,15 @@
       "passed": true,
       "valid": false
     },
+    "incumbent_is_sole_rival_reviewer": {
+      "description": "The incumbent mechanism controls the only admission vote on its own rival.",
+      "error_codes": [
+        "incumbent_or_proposer_controls_rival_admission"
+      ],
+      "expected_code": "incumbent_or_proposer_controls_rival_admission",
+      "passed": true,
+      "valid": false
+    },
     "interventions_leave_rival_mechanism_kernel": {
       "description": "Two valid probes leave one inequivalent candidate mechanism unresolved.",
       "error_codes": [
@@ -234,6 +258,15 @@
       "passed": true,
       "valid": false
     },
+    "proposer_identity_changes_decision": {
+      "description": "The identical content-addressed rival packet receives a different decision under a different proposer name.",
+      "error_codes": [
+        "proposer_identity_bias"
+      ],
+      "expected_code": "proposer_identity_bias",
+      "passed": true,
+      "valid": false
+    },
     "readout_to_source_provenance_cycle": {
       "description": "The terminal readout is allowed to regenerate the source constructor, producing circular explanatory provenance.",
       "error_codes": [
@@ -285,6 +318,24 @@
       "passed": true,
       "valid": false
     },
+    "review_criteria_fitted_after_response": {
+      "description": "Admission criteria are selected only after reviewers inspect the rival response column.",
+      "error_codes": [
+        "target_fitted_rival_review"
+      ],
+      "expected_code": "target_fitted_rival_review",
+      "passed": true,
+      "valid": false
+    },
+    "reviewers_share_one_authority_root": {
+      "description": "Two nominal reviewers derive authority from the same source and are falsely counted as independent.",
+      "error_codes": [
+        "nonindependent_rival_review_authority"
+      ],
+      "expected_code": "nonindependent_rival_review_authority",
+      "passed": true,
+      "valid": false
+    },
     "rival_repair_uses_target_fitted_probe": {
       "description": "The new rival is separated by a discriminator designed from its desired output rather than the source grammar.",
       "error_codes": [
@@ -300,6 +351,15 @@
         "target_fitted_rival_admission"
       ],
       "expected_code": "target_fitted_rival_admission",
+      "passed": true,
+      "valid": false
+    },
+    "rival_review_has_no_independent_appeal": {
+      "description": "The initial reviewers are also the entire appeal panel.",
+      "error_codes": [
+        "missing_independent_rival_appeal"
+      ],
+      "expected_code": "missing_independent_rival_appeal",
       "passed": true,
       "valid": false
     },
@@ -363,18 +423,19 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "66da74aa6530f0c07a6a92688092d1334d4c89b5aa1fb32a8eb70586307e0e63",
-  "hostile_passed": 33,
-  "hostile_total": 33,
+  "hostile_fixture_sha256": "51e8a2d2f748eb082f0947e5169d15d9cbc0d1e0e17eea197be2ccb41179cdd2",
+  "hostile_passed": 39,
+  "hostile_total": 39,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 34,
+  "passed_gates": 40,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
+  "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 34,
+  "total_gates": 40,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
