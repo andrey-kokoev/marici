@@ -57,6 +57,8 @@ def main():
     cases = {item["id"]: item for item in packet["application_cases"]}
     transformations = {item["id"]: item for item in packet["transformations"]}
     representation_tests = {item["id"]: item for item in packet["representation_change_tests"]}
+    presentation_cells = {item["id"]: item for item in packet["presentation_coherence_cells"]}
+    presentation_atlases = {item["id"]: item for item in packet["presentation_atlas_coherence"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -87,8 +89,15 @@ def main():
             and representation_tests["remove_B_direct_source_route"]["direct_grant"] == "g_AC_direct",
         "changing_B_requires_source_derived_natural_coherence":
             representation_tests["replace_B_by_Bprime"]["verdict"] == "process_explained_coherently"
-            and representation_tests["replace_B_by_Bprime"]["coherence_cell"]["source_derived"]
-            and representation_tests["replace_B_by_Bprime"]["coherence_cell"]["naturality_defect"] == 0,
+            and presentation_cells[representation_tests["replace_B_by_Bprime"]["coherence_cell_id"]]["source_derived"]
+            and presentation_cells[representation_tests["replace_B_by_Bprime"]["coherence_cell_id"]]["naturality_defect"] == 0,
+        "presentation_cells_are_invertible_and_kind_preserving": all(
+            cell["invertible"] and cell["preserves_authority_kind"]
+            for cell in packet["presentation_coherence_cells"]
+        ),
+        "presentation_atlas_has_zero_holonomy":
+            presentation_atlases["atlas_B_Bprime_Bdoubleprime"]["holonomy_defect"] == 0
+            and len(presentation_atlases["atlas_B_Bprime_Bdoubleprime"]["paths"]) == 2,
         "missing_alternative_executor_is_presentation_only":
             representation_tests["kitaev_remove_logical_presentation"]["verdict"] == "presentation_only"
             and representation_tests["kitaev_remove_logical_presentation"].get("alternative_composition") is None

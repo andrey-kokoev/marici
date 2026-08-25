@@ -58,7 +58,7 @@
       "id": "representation_change_without_coherence",
       "description": "Changing B to Bprime preserves the boundary process signature but supplies no source-derived coherence cell.",
       "mutations": [
-        {"collection": "representation_change_tests", "id": "replace_B_by_Bprime", "field": "coherence_cell", "value": null}
+        {"collection": "representation_change_tests", "id": "replace_B_by_Bprime", "field": "coherence_cell_id", "value": null}
       ],
       "expected_code": "missing_source_derived_representation_coherence"
     },
@@ -77,6 +77,22 @@
         {"collection": "representation_change_tests", "id": "remove_B_direct_source_route", "field": "direct_grant", "value": null}
       ],
       "expected_code": "representation_removal_destroys_composite"
+    },
+    {
+      "id": "pairwise_cells_nontrivial_atlas_holonomy",
+      "description": "Every presentation change is locally valid, but direct and two-step re-encoding disagree around the atlas triangle.",
+      "mutations": [
+        {"collection": "presentation_atlas_coherence", "id": "atlas_B_Bprime_Bdoubleprime", "field": "holonomy_defect", "value": 1}
+      ],
+      "expected_code": "presentation_atlas_holonomy_failure"
+    },
+    {
+      "id": "noninvertible_presentation_cell",
+      "description": "A one-way adapter is mislabeled as an equivalence of explanatory presentations.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "invertible", "value": false}
+      ],
+      "expected_code": "invalid_presentation_coherence_cell"
     }
   ]
 }

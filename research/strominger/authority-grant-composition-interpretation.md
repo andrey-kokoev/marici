@@ -74,6 +74,8 @@ The machine-readable fixture suite rejects:
 8. replacement that silently strengthens authority kind;
 9. removal of the intermediate object without an independently authorized
    direct route.
+10. locally valid presentation cells with nontrivial atlas holonomy;
+11. a one-way adapter mislabeled as an invertible presentation equivalence.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -118,6 +120,43 @@ must be source-derived, invertible on the admitted evidence domain,
 kind-preserving, and natural (zero coherence defect). Otherwise the account
 explains why one representation computes the output, not why the underlying
 process occurs.
+
+### Atlas law: explanatory flatness
+
+One replacement test is not enough. Let `B`, `Bprime`, and `Bdoubleprime` be
+three admissible presentations, with source-derived coherence cells
+
+\[
+\eta_{BB'},\qquad \eta_{B'B''},\qquad \eta_{BB''}.
+\]
+
+The cells must themselves compose. The direct and two-step changes of
+presentation must agree:
+
+\[
+\eta_{BB''}=\eta_{B'B''}\circ\eta_{BB'}.
+\]
+
+Equivalently, every presentation loop must have trivial authority holonomy.
+The checker represents this by `presentation_atlas_coherence` and requires
+zero `holonomy_defect`. This rules out a subtler presentation dependence in
+which every pairwise adapter is valid but the claimed process depends on the
+route through the atlas.
+
+The strengthened DPC is therefore
+
+\[
+\boxed{
+\text{process explanation}
+=
+\text{source-derived local mechanisms}
++
+\text{a flat, kind-preserving presentation groupoid}.
+}
+\]
+
+Invertibility is essential. A one-way compiler may transport a result, but it
+does not establish equivalence of explanatory presentations.
 
 ## Grothendieck classification
 

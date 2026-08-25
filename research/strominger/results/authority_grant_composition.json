@@ -3,7 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "f2bef629d99db1567dce5d41847409818fc157a4350e94b55eec63c943dca0c8",
+  "contract_sha256": "14bf12610f2631dde7f6dc0c6c01a8a9319e66d2fce26f38139497661980ecb6",
   "gates": {
     "all_hostiles_rejected": true,
     "associativity_holds_on_typed_domain": true,
@@ -13,6 +13,8 @@
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
     "missing_alternative_executor_is_presentation_only": true,
+    "presentation_atlas_has_zero_holonomy": true,
+    "presentation_cells_are_invertible_and_kind_preserving": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
     "standalone_contract_compiles": true,
     "theta_composite_remains_readout": true,
@@ -62,6 +64,25 @@
         "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "noninvertible_presentation_cell": {
+      "description": "A one-way adapter is mislabeled as an equivalence of explanatory presentations.",
+      "error_codes": [
+        "invalid_presentation_coherence_cell",
+        "missing_source_derived_representation_coherence"
+      ],
+      "expected_code": "invalid_presentation_coherence_cell",
+      "passed": true,
+      "valid": false
+    },
+    "pairwise_cells_nontrivial_atlas_holonomy": {
+      "description": "Every presentation change is locally valid, but direct and two-step re-encoding disagree around the atlas triangle.",
+      "error_codes": [
+        "presentation_atlas_holonomy_failure"
+      ],
+      "expected_code": "presentation_atlas_holonomy_failure",
       "passed": true,
       "valid": false
     },
@@ -118,13 +139,13 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "af8a3f5e021d8a1437383edeb0217e3968ff9f84a0c4e3a99ba63b136812eddb",
-  "hostile_passed": 9,
-  "hostile_total": 9,
+  "hostile_fixture_sha256": "8e17809f45a567c28f9c33d0c44d80afc493f1c901d1b065b753dcc44c00aa99",
+  "hostile_passed": 11,
+  "hostile_total": 11,
   "passed": true,
-  "passed_gates": 13,
+  "passed_gates": 15,
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 13,
+  "total_gates": 15,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
