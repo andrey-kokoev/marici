@@ -6,6 +6,7 @@
     "scope_attenuation": ["scope"],
     "support_union": ["support"],
     "transport_fusion": ["transport_chain"],
+    "coherence_inverse": ["coherence_chain"],
     "typed_identity": ["authority_kind", "scope", "modality", "support", "resource"],
     "epoch_fence": ["epoch", "status", "executable_output"]
   },
@@ -15,6 +16,23 @@
     ,"support_union|typed_identity": "identity_then_support_union_joins"
   },
   "normalization_cases": [
+    {
+      "id": "full_signature_coherence_roundtrip_eliminates",
+      "expected": {"operations": []},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_A"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":true,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":true}]}
+    },
+    {
+      "id": "signature_changing_roundtrip_rejected",
+      "expected": {},
+      "expected_error": "coherence_inverse_changes_authority_signature",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["source_A"],"resource":{"uses":1},"executable_output":"effect","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":true,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":false}]}
+    },
+    {
+      "id": "noninvertible_presentation_cell_rejected",
+      "expected": {},
+      "expected_error": "coherence_inverse_not_invertible",
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_A"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":false,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":true}]}
+    },
     {
       "id": "authority_preserving_transport_chain_fuses",
       "expected": {"operations":[{"kind":"transport","source":"chart_A","target":"chart_C","preserves_authority":true,"normal_form_cell":"cell_AC"}]},
