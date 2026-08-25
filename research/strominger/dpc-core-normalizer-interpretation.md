@@ -577,3 +577,41 @@ while no ternary-only obstruction exists.
 This is the first useful complexity theorem for the fault-correlation layer.
 An unbounded family does not require an unbounded global census; its safety
 reduces to subfamilies whose size is bounded by local authority redundancy.
+
+## Repairs are cocircuit transversals
+
+Diagnosis and repair remain different authority kinds. Discovering that a
+fused hyperedge is unsafe does not authorize changing its fault declaration.
+The constructor `dpc.fault_locus_repair.v1`, rooted in the `repair_charter`, may
+remove repaired loci; it may not mint replacement authority.
+
+For an unsafe hyperedge `E`, let
+
+\[
+\mathcal K(E)=\{K_{i,B}:K_{i,B}\subseteq E\}.
+\]
+
+A repair set `R` restores safety exactly when it intersects every member of
+`mathcal K(E)`. The complete primitive repair family is therefore the family of
+inclusion-minimal transversals of the blocking cocircuit hypergraph:
+
+\[
+R\text{ primitive repair}
+\quad\Longleftrightarrow\quad
+R\cap K\ne\varnothing\ \text{for all }K\in\mathcal K(E),
+\]
+
+with no proper subset of `R` satisfying the same condition.
+
+The overlapping fixture contains the two blockers `{B,C}` and `{C,D}` at one
+hole. Its primitive repairs are
+
+\[
+\{C\},\qquad \{B,D\}.
+\]
+
+This exposes a distinction that a single repair score would hide. Both are
+minimal in the order of authorized changes, but they have different
+cardinalities and operational shapes: one repairs a shared failure locus; the
+other repairs two independent outer loci. Choosing between them requires a
+separate cost or feasibility readout and cannot be derived from safety alone.

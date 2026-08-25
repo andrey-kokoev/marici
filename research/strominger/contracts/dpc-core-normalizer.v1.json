@@ -365,6 +365,25 @@
       "theorem_scope":"all finite families of typed correlation hyperedges over a common finite hole set"
     }
   ],
+  "configuration_correlation_repair_theorems":[
+    {
+      "id":"minimal_correlation_repair_transversals",
+      "cocircuit_theorem_id":"fault_correlation_cocircuit_classification",
+      "repair_classification":"inclusion_minimal_transversals_of_blocking_cocircuits",
+      "repair_constructor_id":"dpc.fault_locus_repair.v1",
+      "repair_source_authority_root":"repair_charter",
+      "diagnosis_authorizes_repair":false,
+      "repair_effect":"remove_failed_loci_from_synchronous_hyperedge",
+      "fixtures":[
+        {
+          "id":"overlapping_cocircuit_repairs",
+          "unsafe_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h0","admin_D"],["h1","admin_C"]],
+          "expected":{"minimal_repair_count":2,"minimal_repair_sizes":[1,2]}
+        }
+      ],
+      "theorem_scope":"every unsafe typed synchronous correlation hyperedge"
+    }
+  ],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},

@@ -333,6 +333,22 @@ for name, mutate_fusion, expected in (
     errors = candidate_result["configuration_finite_fusion_theorems"][0]["errors"]
     finite_fusion_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["finite_fusion_hostiles"] = finite_fusion_hostiles
+correlation_repair_hostiles = {}
+for name, mutate_repair, expected in (
+    ("fitted_repair", lambda c: c["configuration_correlation_repair_theorems"][0].update({"repair_classification":"smallest_fixture_deletion"}), "correlation_repair_classification_untyped"),
+    ("missing_repair_constructor", lambda c: c["configuration_correlation_repair_theorems"][0].update({"repair_constructor_id":None}), "correlation_repair_authority_laundered"),
+    ("diagnosis_authorizes_mutation", lambda c: c["configuration_correlation_repair_theorems"][0].update({"diagnosis_authorizes_repair":True}), "correlation_repair_authority_laundered"),
+    ("repair_adds_authority", lambda c: c["configuration_correlation_repair_theorems"][0].update({"repair_effect":"mint_replacement_authority"}), "correlation_repair_authority_laundered"),
+    ("shared_repair_hidden", lambda c: c["configuration_correlation_repair_theorems"][0]["fixtures"][0]["expected"].update({"minimal_repair_count":1}), "correlation_repair_fixture_mismatch"),
+    ("repair_sizes_fitted", lambda c: c["configuration_correlation_repair_theorems"][0]["fixtures"][0]["expected"].update({"minimal_repair_sizes":[1,1]}), "correlation_repair_fixture_mismatch"),
+    ("bounded_scope", lambda c: c["configuration_correlation_repair_theorems"][0].update({"theorem_scope":"one fixture only"}), "correlation_repair_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_repair(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_correlation_repair_theorems"][0]["errors"]
+    correlation_repair_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["correlation_repair_hostiles"] = correlation_repair_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -395,5 +411,7 @@ for name, rejected in correlation_composition_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlation_composition hostile." + name)
 for name, rejected in finite_fusion_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " finite_fusion hostile." + name)
+for name, rejected in correlation_repair_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " correlation_repair hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and all(correlation_repair_hostiles.values()) and coherence_omission_rejected else 1)
