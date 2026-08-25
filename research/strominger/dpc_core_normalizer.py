@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from itertools import combinations
 from copy import deepcopy
 from typing import Any
 
@@ -95,6 +96,15 @@ def check_pair(pair: dict[str, Any]) -> dict[str, Any]:
 
 def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
+    pair_ids = {item["id"] for item in results}
+    footprints = contract["active_rewrite_footprints"]
+    overlaps = []
+    for left, right in combinations(sorted(footprints), 2):
+        shared = sorted(set(footprints[left]) & set(footprints[right]))
+        if shared:
+            key = f"{left}|{right}"
+            witness = contract.get("critical_pair_coverage", {}).get(key)
+            overlaps.append({"rules": [left, right], "shared_fields": shared, "witness": witness, "covered": witness in pair_ids})
     normalization_results = []
     for case in contract.get("normalization_cases", []):
         try:
@@ -109,10 +119,11 @@ def compile_contract(contract: dict[str, Any]) -> dict[str, Any]:
         normalization_results.append({"id": case["id"], "passed": passed, "error": error, "normalized": normalized})
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results),
+        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
         "normalization_cases": normalization_results,
+        "generated_overlaps": overlaps,
         "normal_form_digests": {item["id"]: digest(item["left"]) for item in contract["critical_pairs"]},
     }
