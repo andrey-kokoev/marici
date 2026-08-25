@@ -243,11 +243,12 @@
   "configuration_category_audits":[
     {"id":"configuration_path_category","path_id":"varying_membership_configuration_path","identity_vertices":["C0","C1","C2","C3"],"identity_preserves_full_signature":true,"identity_replaces_authority":false,"associativity_edge_ids":["rho_01","rho_12","rho_23"]}
   ],
-  "configuration_constructor_relations":[
-    {"id":"normalize_rho","path_id":"varying_membership_configuration_path","edge_word":["rho_01","rho_12","rho_23"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"},
-    {"id":"normalize_sigma","path_id":"alternate_configuration_path","edge_word":["sigma_0X","sigma_X3"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"},
-    {"id":"normalize_tau","path_id":"third_configuration_path","edge_word":["tau_0Y","tau_Y3"],"source_authority_root":"factorization_charter","admissible_transformation":"factorization_rewrite"}
+  "configuration_constructor_rewrites":[
+    {"id":"rewrite_rho_sigma","source_path_id":"varying_membership_configuration_path","target_path_id":"alternate_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"},
+    {"id":"rewrite_sigma_tau","source_path_id":"alternate_configuration_path","target_path_id":"third_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"},
+    {"id":"rewrite_rho_tau","source_path_id":"varying_membership_configuration_path","target_path_id":"third_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"}
   ],
+  "required_configuration_critical_pairs":["varying_membership_configuration_path"],
   "configuration_path_coherence_audits":[
     {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
     {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},

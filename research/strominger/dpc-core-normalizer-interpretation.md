@@ -265,11 +265,22 @@ C_0\xrightarrow{\tau_{0Y}}C_Y\xrightarrow{\tau_{Y3}}C_3.
 
 Their typed boundaries, support unions, and fault hypergraphs agree, but their
 raw presentations do not. Coherence cells are no longer primitive contract
-fields. The source-authorized constructor relations `normalize_rho`,
-`normalize_sigma`, and `normalize_tau` rewrite their exact edge words to a
-common normal form. Its identifier is not declared: the checker hashes the
-common typed boundary, support union, and fault hypergraph. Each relation then
-produces a content-addressed normalization witness
+fields. Nor does each path declare its own normalization target. The
+source-authorized constructor presentation contains only
+
+\[
+\rho\to\sigma,
+\qquad \sigma\to\tau,
+\qquad \rho\to\tau.
+\]
+
+The checker proves that this directed rewrite graph is acyclic and that every
+presentation has the unique reachable sink `tau`. The two reductions leaving
+`rho` form the first critical pair; their branches join at `tau`. Thus the
+normal form is derived from termination plus confluence, not repeated in three
+certificates. Its identifier is then hashed from the common typed boundary,
+support union, and fault hypergraph. A canonical reduction trace produces the
+content-addressed normalization witness
 
 \[
 n_p:p\Longrightarrow NF_{C_0,C_3}.
@@ -282,9 +293,9 @@ The checker generates, rather than accepts, the comparison cell
 \]
 
 Attempting to insert a primitive fitted cell or a fitted normal-form name is
-rejected. So are an
-unauthorized rewrite relation, a relation whose word differs from the actual
-path, two normalization witnesses for one path, or a split normal form.
+rejected. So are an unauthorized rewrite, a duplicate rewrite, a directed
+cycle, a fork with two irreducible sinks, or deletion of the required critical
+pair branch.
 
 This is the descent condition: local bridge witnesses glue to one global path
 class only when the path-wide root-fault hyperedges agree under the coherence
@@ -303,11 +314,11 @@ declared loop label:
 \]
 
 Thus triangle holonomy is identity because the middle normalization witness
-telescopes. A fitted triangle target, ambiguous normalization, or distinct
-normal-form component breaks this equality and is rejected. This answers the
-current Deutsch question at the bounded three-path level: the cell is forced
-by a constructor relation and confluence, not appended because two readouts
-happen to agree.
+telescopes. A fitted triangle target, nontermination, or nonconfluence breaks
+the construction and is rejected. This answers the current Deutsch question
+at the bounded three-presentation level: the cell is forced by a terminating
+confluent constructor presentation, not appended because two readouts happen
+to agree.
 
 The central falsifier remains represented directly:
 
