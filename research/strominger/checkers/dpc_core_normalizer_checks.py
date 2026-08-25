@@ -182,6 +182,38 @@ for edge_count in range(1, len(base_path["edges"]) + 1):
     candidate_result = compile_contract(candidate, legacy)
     partial_composite_replay[str(edge_count)] = candidate_result["configuration_paths"][0]["passed"]
 result["configuration_path_partial_composite_replay"] = partial_composite_replay
+configuration_category_hostiles = {}
+for name, mutate_category, expected in (
+    ("identity_changes_signature", lambda c: c["configuration_category_audits"][0].update({"identity_preserves_full_signature":False}), "configuration_category_identity_failure"),
+    ("associativity_witness_reordered", lambda c: c["configuration_category_audits"][0].update({"associativity_edge_ids":["rho_12","rho_01","rho_23"]}), "configuration_category_associativity_witness_untyped"),
+    ("composition_seam_mismatch", lambda c: c["configuration_path_audits"][0]["edges"][1].update({"input_authority_resource":"cfg_auth_unrelated"}), "configuration_category_associativity_failure"),
+):
+    candidate = deepcopy(contract)
+    mutate_category(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_category"][0]["errors"]
+    configuration_category_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["configuration_category_hostiles"] = configuration_category_hostiles
+configuration_coherence_hostiles = {}
+for name, mutate_coherence, expected in (
+    ("fitted_coherence", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"source_derived":False}), "configuration_coherence_cell_untyped"),
+    ("different_endpoint", lambda c: (c["configuration_path_audits"][1]["edges"][-1]["target_configuration"].update({"vertex_id":"CY"}), c["configuration_path_audits"][1]["edges"][-1]["output_configuration"].update({"vertex_id":"CY"}), c["configuration_path_audits"][1]["expected_endpoint_configuration"].update({"vertex_id":"CY"})), "configuration_coherence_boundary_mismatch"),
+    ("different_support", lambda c: (c["configuration_path_audits"][1]["edges"][-1]["target_configuration"]["support"].append("route_specific_support"), c["configuration_path_audits"][1]["edges"][-1]["output_configuration"]["support"].append("route_specific_support"), c["configuration_path_audits"][1]["expected_endpoint_configuration"]["support"].append("route_specific_support")), "configuration_coherence_support_mismatch"),
+    ("fault_identification_loss", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"root_identification":{"admin_B":"admin_B","admin_C":"admin_C","admin_E":"admin_E"}}), "configuration_coherence_fault_descent_failure"),
+    ("nontrivial_holonomy", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"loop_action":"authority_twist"}), "configuration_authority_holonomy_nontrivial"),
+    ("alternate_path_not_admissible", lambda c: c["configuration_path_audits"][1]["edges"][0]["state_correspondence"].update({"source_derived":False}), "configuration_coherence_path_not_admissible"),
+):
+    candidate = deepcopy(contract)
+    mutate_coherence(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_path_coherence"][0]["errors"]
+    configuration_coherence_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["configuration_coherence_hostiles"] = configuration_coherence_hostiles
+candidate = deepcopy(contract)
+candidate["configuration_path_coherence_audits"] = []
+candidate_result = compile_contract(candidate, legacy)
+coherence_omission_rejected = not candidate_result["passed"] and "configuration_coherence_required_pair_uncovered" in candidate_result["configuration_coherence_coverage"][0]["errors"]
+result["configuration_coherence_omission_rejected"] = coherence_omission_rejected
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -221,4 +253,9 @@ for name, rejected in configuration_path_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_path hostile." + name)
 for edge_count, admitted in partial_composite_replay.items():
     print(("PASS" if admitted else "FAIL") + " configuration_path partial_composite." + edge_count)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) else 1)
+for name, rejected in configuration_category_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " configuration_category hostile." + name)
+for name, rejected in configuration_coherence_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " configuration_coherence hostile." + name)
+print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and coherence_omission_rejected else 1)

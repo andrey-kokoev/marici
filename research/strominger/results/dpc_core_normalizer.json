@@ -4,6 +4,67 @@
     "claims_absolute_unclonability": true,
     "measured_ports": true
   },
+  "configuration_category": [
+    {
+      "associativity_holds": true,
+      "composite_edge_sequence": [
+        "rho_01",
+        "rho_12",
+        "rho_23"
+      ],
+      "errors": [],
+      "id": "configuration_path_category",
+      "identity_laws_hold": true,
+      "identity_vertices": [
+        "C0",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "passed": true
+    }
+  ],
+  "configuration_category_hostiles": {
+    "associativity_witness_reordered": true,
+    "composition_seam_mismatch": true,
+    "identity_changes_signature": true
+  },
+  "configuration_coherence_coverage": [
+    {
+      "errors": [],
+      "passed": true,
+      "paths": [
+        "alternate_configuration_path",
+        "varying_membership_configuration_path"
+      ]
+    }
+  ],
+  "configuration_coherence_hostiles": {
+    "alternate_path_not_admissible": true,
+    "different_endpoint": true,
+    "different_support": true,
+    "fault_identification_loss": true,
+    "fitted_coherence": true,
+    "nontrivial_holonomy": true
+  },
+  "configuration_coherence_omission_rejected": true,
+  "configuration_path_coherence": [
+    {
+      "boundary_equal": true,
+      "coherence_cell": "omega_rho_sigma",
+      "errors": [],
+      "fault_hypergraph_descends": true,
+      "id": "rho_sigma_endpoint_coherence",
+      "loop_action": "identity",
+      "passed": true,
+      "paths": [
+        "varying_membership_configuration_path",
+        "alternate_configuration_path"
+      ],
+      "raw_presentations_equal": false,
+      "support_equal": true
+    }
+  ],
   "configuration_path_hostiles": {
     "authority_reuse": true,
     "broken_incidence": true,
@@ -116,6 +177,93 @@
         "cfg_auth_C0",
         "cfg_auth_C1",
         "cfg_auth_C2"
+      ],
+      "output_authority_resource": "cfg_auth_C3",
+      "passed": true,
+      "support_union": [
+        "bootstrap_root",
+        "charter_rho_01",
+        "charter_rho_12",
+        "charter_rho_23",
+        "correspondence_rho_01",
+        "correspondence_rho_12",
+        "correspondence_rho_23",
+        "presentation_C1",
+        "presentation_C2",
+        "presentation_C3"
+      ]
+    },
+    {
+      "bridge_audits": [
+        {
+          "authority_roots": {
+            "r2": "admin_B",
+            "r3": "admin_C"
+          },
+          "bridge": [
+            "r2",
+            "r3"
+          ],
+          "edge": "sigma_0X",
+          "fault_sets": [
+            [
+              "r2"
+            ],
+            [
+              "r3"
+            ]
+          ]
+        },
+        {
+          "authority_roots": {
+            "r4": "admin_D",
+            "r5": "admin_E"
+          },
+          "bridge": [
+            "r4",
+            "r5"
+          ],
+          "edge": "sigma_X3",
+          "fault_sets": [
+            [
+              "r4"
+            ],
+            [
+              "r5"
+            ]
+          ]
+        }
+      ],
+      "edge_count": 2,
+      "endpoint_vertex": "C3",
+      "errors": [],
+      "global_authority_root_fault_sets": [
+        [
+          "admin_B"
+        ],
+        [
+          "admin_C"
+        ],
+        [
+          "admin_D"
+        ],
+        [
+          "admin_E"
+        ],
+        [
+          "admin_B",
+          "admin_D"
+        ],
+        [
+          "admin_B",
+          "admin_E"
+        ]
+      ],
+      "id": "alternate_configuration_path",
+      "induction_rule": "a valid partial composite extends iff the next edge is incident at the current configuration vertex, carries a source-derived state correspondence, linearly replaces its input authority, unions support, and every admitted local or path-wide authority-root fault leaves every affected bridge with a survivor",
+      "input_authority_resources": [
+        "cfg_auth_C0",
+        "cfg_auth_CX"
       ],
       "output_authority_resource": "cfg_auth_C3",
       "passed": true,
