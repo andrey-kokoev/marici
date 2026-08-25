@@ -18,6 +18,11 @@ AUTHORITY_KINDS = {
 VARIANCES = {"covariant", "contravariant", "bivariant"}
 COMPOSITION_MODES = {"transport", "domain_intersection", "authority_extension"}
 CASE_CLASSES = {"strict_commuting_square", "coherence_cell_required", "no_composable_authority_map"}
+REPRESENTATION_VERDICTS = {
+    "process_explained_strictly",
+    "process_explained_coherently",
+    "presentation_only",
+}
 
 
 @dataclass(frozen=True)
@@ -34,6 +39,16 @@ def _signature(grant: dict[str, Any]) -> tuple[Any, ...]:
         grant.get("target_object"),
         grant.get("authority_kind"),
         grant.get("evidence_domain"),
+        grant.get("variance"),
+    )
+
+
+def _process_signature(grant: dict[str, Any]) -> tuple[Any, ...]:
+    """Presentation-neutral boundary and authority type of a grant."""
+    return (
+        grant.get("source_object"),
+        grant.get("target_object"),
+        grant.get("authority_kind"),
         grant.get("variance"),
     )
 
@@ -172,6 +187,53 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             if case.get("composition") is not None or not case.get("obstruction_evidence"):
                 err("false_application_composability", case["id"], str(case.get("composition")))
 
+    # DPC representation-change test.  A process survives replacement/removal
+    # of an intermediate presentation only if its boundary authority is
+    # unchanged.  Non-identical presentations additionally require a
+    # source-derived, invertible, natural coherence cell.
+    for test in packet.get("representation_change_tests", []):
+        tid = test["id"]
+        verdict = test.get("verdict")
+        if verdict not in REPRESENTATION_VERDICTS:
+            err("unknown_representation_test_verdict", tid, str(verdict))
+            continue
+        baseline = compositions.get(test.get("baseline_composition"))
+        baseline_grant = grants.get(test.get("baseline_grant"))
+        alternative = compositions.get(test.get("alternative_composition"))
+        direct = grants.get(test.get("direct_grant"))
+        if baseline is None and baseline_grant is None:
+            err("missing_baseline_factorization", tid, str(test.get("baseline_composition") or test.get("baseline_grant")))
+            continue
+        baseline_result = grants[baseline["result"]] if baseline is not None else baseline_grant
+        candidate = grants[alternative["result"]] if alternative is not None else direct
+        if candidate is None:
+            if verdict != "presentation_only":
+                err("representation_removal_destroys_composite", tid, "no alternative composition or direct source grant")
+            continue
+        same_process = _process_signature(baseline_result) == _process_signature(candidate)
+        strengthened = baseline_result["authority_kind"] != candidate["authority_kind"]
+        if strengthened:
+            err("representation_change_strengthens_authority", tid, f"{baseline_result['authority_kind']}->{candidate['authority_kind']}")
+        if not same_process:
+            err("representation_dependent_process_signature", tid, f"{_process_signature(baseline_result)} != {_process_signature(candidate)}")
+        cell = test.get("coherence_cell")
+        presentation_changed = test.get("intermediate_before") != test.get("intermediate_after")
+        coherent = bool(
+            cell
+            and cell.get("source_derived")
+            and cell.get("invertible")
+            and cell.get("preserves_authority_kind")
+            and cell.get("naturality_defect") == 0
+        )
+        if verdict == "process_explained_strictly":
+            if _signature(baseline_result) != _signature(candidate):
+                err("false_strict_representation_invariance", tid, "strict verdict requires the same full grant signature")
+        elif verdict == "process_explained_coherently":
+            if not presentation_changed or not same_process or not coherent:
+                err("missing_source_derived_representation_coherence", tid, str(cell))
+        elif verdict == "presentation_only" and same_process and (not presentation_changed or coherent):
+            err("false_presentation_only_verdict", tid, "an invariant source-coherent composite exists")
+
     return errors
 
 
@@ -186,5 +248,6 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "composition_count": len(packet.get("compositions", [])),
         "associativity_cell_count": len(packet.get("associativity_cells", [])),
         "application_case_count": len(packet.get("application_cases", [])),
+        "representation_change_test_count": len(packet.get("representation_change_tests", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

@@ -23,6 +23,10 @@
     {"id": "g_BD", "source_object": "B", "target_operation": "read_BD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "composite readout BC then CD", "status": "admitted"},
     {"id": "g_AD_left", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "left-associated triple readout", "status": "admitted"},
     {"id": "g_AD_right", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "right-associated triple readout", "status": "admitted"},
+    {"id": "g_ABprime", "source_object": "A", "target_operation": "encode_ABprime", "target_object": "Bprime", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "independent source encoding through alternative presentation", "status": "admitted"},
+    {"id": "g_BprimeC", "source_object": "Bprime", "target_operation": "decode_BprimeC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "independent source decoding from alternative presentation", "status": "admitted"},
+    {"id": "g_AC_via_Bprime", "source_object": "A", "target_operation": "read_AC_via_Bprime", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "alternative composite related by a source-derived presentation equivalence", "status": "admitted"},
+    {"id": "g_AC_direct", "source_object": "A", "target_operation": "read_AC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "direct source grant independent of the B presentation", "status": "admitted"},
     {"id": "t_AB", "source_object": "TA", "target_operation": "chart_read", "target_object": "TB", "authority_kind": "readout", "evidence_domain": "D_transport_A", "variance": "covariant", "admissible_transformations": ["chart_transport"], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-A readout", "status": "admitted"},
     {"id": "t_BC", "source_object": "TB", "target_operation": "chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-B readout", "status": "admitted"},
     {"id": "t_AC", "source_object": "TA", "target_operation": "transported_chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_transport_cell", "source_authority_evidence": "authority-preserving chart transport", "status": "admitted"},
@@ -35,6 +39,7 @@
     {"id": "c_idA_AB", "left": "id_A", "right": "g_AB", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
     {"id": "c_AB_idB", "left": "g_AB", "right": "id_B", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
     {"id": "c_AB_BC", "left": "g_AB", "right": "g_BC", "result": "g_AC", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
+    {"id": "c_ABprime_BprimeC", "left": "g_ABprime", "right": "g_BprimeC", "result": "g_AC_via_Bprime", "mode": "domain_intersection", "coherence_witness": "B_to_Bprime_cell"},
     {"id": "c_BC_CD", "left": "g_BC", "right": "g_CD", "result": "g_BD", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
     {"id": "c_AC_CD", "left": "g_AC", "right": "g_CD", "result": "g_AD_left", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
     {"id": "c_AB_BD", "left": "g_AB", "right": "g_BD", "result": "g_AD_right", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
@@ -51,5 +56,40 @@
   "application_cases": [
     {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
     {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}
+  ],
+  "representation_change_tests": [
+    {
+      "id": "remove_B_direct_source_route",
+      "baseline_composition": "c_AB_BC",
+      "direct_grant": "g_AC_direct",
+      "intermediate_before": "B",
+      "intermediate_after": null,
+      "verdict": "process_explained_strictly",
+      "interpretation": "the direct source grant has exactly the same full authority signature"
+    },
+    {
+      "id": "replace_B_by_Bprime",
+      "baseline_composition": "c_AB_BC",
+      "alternative_composition": "c_ABprime_BprimeC",
+      "intermediate_before": "B",
+      "intermediate_after": "Bprime",
+      "verdict": "process_explained_coherently",
+      "coherence_cell": {
+        "id": "B_to_Bprime_cell",
+        "source_derived": true,
+        "invertible": true,
+        "preserves_authority_kind": true,
+        "naturality_defect": 0,
+        "evidence": "independent source encode/decode equivalence"
+      }
+    },
+    {
+      "id": "kitaev_remove_logical_presentation",
+      "baseline_grant": "kitaev_couplers_logical",
+      "intermediate_before": "logical_D_S3_gates",
+      "intermediate_after": null,
+      "verdict": "presentation_only",
+      "interpretation": "no native source-derived direct five-rail executor grant exists"
+    }
   ]
 }
