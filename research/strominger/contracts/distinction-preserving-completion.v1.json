@@ -1,0 +1,25 @@
+{
+  "schema":"marici.distinction-preserving-completion-contract.v1",
+  "finite_fixtures":[
+    {"fixture_id":"preserved_coordinate","quotient_matrix":[[1,0]],"required_distinction_matrix":[[2,0]],"expected_descends":true},
+    {"fixture_id":"erased_coordinate","quotient_matrix":[[1,0]],"required_distinction_matrix":[[0,1]],"expected_descends":false},
+    {"fixture_id":"mixed_repair","quotient_matrix":[[1,1]],"required_distinction_matrix":[[1,-1]],"expected_descends":false}
+  ],
+  "theta_application":{
+    "finite_incidence":{
+      "P":{"formula":"p^(-1/2) delta_(log p)","source":"prime-Fock grade k=1"},
+      "Q":{"formula":"(1/2)p^(-1) delta_(2 log p)","source":"prime-Fock grade k=2"}
+    },
+    "completion_classes":{
+      "P":"exponential_Laplace_test_rigging_decay_gt_1/2",
+      "Q":"tempered_positive_scale_measure_not_finite_or_trace_class"
+    },
+    "completed_scalar_readout_authorized":false,
+    "joint_global_completion":{"constructor":"A_Tate","source_authorized":true,"scope":"whole_adelic_source_with_P_Q_tail_reassembled","output":"meromorphic_global_scalar_section_with_polar_boundary_packet","gradewise_scalar_pushforward":false},
+    "operator_lift":{"map":"A_Tate -> tail_seam_incidence_(B_s,C_s)","source_authorized":false},
+    "sequential_hostiles":[
+      {"witness_id":"seam_translation","quotient_norm_limit":"0","required_distinction_limit":"||Phi||_2>0"},
+      {"witness_id":"adjacent_valuation_label","quotient_norm_limit":"0","required_distinction_limit":"persistent_nonzero_jump"}
+    ]
+  }
+}
