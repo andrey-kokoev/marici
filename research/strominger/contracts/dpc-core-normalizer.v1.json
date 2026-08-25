@@ -1,6 +1,11 @@
 {
   "schema": "marici.dpc-core-normalizer.v1",
   "rewrite_rules": ["typed_identity", "transport_fusion", "scope_attenuation", "support_union", "partition_flattening", "coherence_inverse", "epoch_fence"],
+  "legacy_projection_audit": {
+    "source": "contracts/authority-grant-composition.v1.json",
+    "permit_defaulting": false,
+    "required_core_fields": ["nominal_identity", "scope", "modality", "resource", "physical_support_roots", "epoch"]
+  },
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
