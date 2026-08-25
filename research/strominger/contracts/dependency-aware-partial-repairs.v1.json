@@ -1,0 +1,37 @@
+{
+  "schema":"marici.dependency-aware-partial-repairs.v1",
+  "models":[
+    {
+      "id":"independent_three_repairs",
+      "initial_state":{"defects":["dA","dB","dC"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":[],"scalar_output":"same-bytes"},
+      "repairs":[
+        {"repair_id":"A","input_defect_signature":["dA"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"A":1},"support_delta":["sA"],"authority_root":"root_A","prerequisites":[],"residual_certificate_type":"residual/A","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"B","input_defect_signature":["dB"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"B":1},"support_delta":["sB"],"authority_root":"root_B","prerequisites":[],"residual_certificate_type":"residual/B","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"C","input_defect_signature":["dC"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"C":1},"support_delta":["sC"],"authority_root":"root_C","prerequisites":[],"residual_certificate_type":"residual/C","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["A","B"],["A","C"],["B","C"]],
+      "expected":{"linear_extension_count":6,"legal_completed_path_count":6,"swap_component_count":1,"typed_endpoint_count":1}
+    },
+    {
+      "id":"one_precedence_relation",
+      "initial_state":{"defects":["dA","dB","dC"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":[],"scalar_output":"same-bytes"},
+      "repairs":[
+        {"repair_id":"A","input_defect_signature":["dA"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"A":1},"support_delta":[],"authority_root":"root_A","prerequisites":[],"residual_certificate_type":"residual/A","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"B","input_defect_signature":["dB"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"B":1},"support_delta":[],"authority_root":"root_B","prerequisites":["A"],"residual_certificate_type":"residual/B","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"C","input_defect_signature":["dC"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":"N0","boundary_current_delta":{"C":1},"support_delta":[],"authority_root":"root_C","prerequisites":[],"residual_certificate_type":"residual/C","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"N0"},"consumes_capabilities":[],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["A","C"],["B","C"]],
+      "expected":{"linear_extension_count":3,"legal_completed_path_count":3,"swap_component_count":1,"typed_endpoint_count":1}
+    },
+    {
+      "id":"equal_bytes_inequivalent_graph_norms",
+      "initial_state":{"defects":["dX","dY"],"domain_signature":"D0","graph_norm_signature":"N0","boundary_packet":{},"support":[],"capabilities":[],"scalar_output":"identical-scalar-bytes"},
+      "repairs":[
+        {"repair_id":"X","input_defect_signature":["dX"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":["N0","NY"],"boundary_current_delta":{},"support_delta":[],"authority_root":"root_X","prerequisites":[],"residual_certificate_type":"residual/X","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"NX","NY":"NXY_right"},"consumes_capabilities":[],"produces_capabilities":[]},
+        {"repair_id":"Y","input_defect_signature":["dY"],"output_defect_signature":[],"domain_signature":"D0","graph_norm_signature":["N0","NX"],"boundary_current_delta":{},"support_delta":[],"authority_root":"root_Y","prerequisites":[],"residual_certificate_type":"residual/Y","domain_after":{"D0":"D0"},"graph_norm_after":{"N0":"NY","NX":"NXY_left"},"consumes_capabilities":[],"produces_capabilities":[]}
+      ],
+      "commutes_with":[["X","Y"]],
+      "expected":{"linear_extension_count":2,"legal_completed_path_count":2,"swap_component_count":2,"typed_endpoint_count":2}
+    }
+  ]
+}
