@@ -169,6 +169,38 @@ def audit_legacy_grants(legacy: dict[str, Any]) -> list[dict[str, Any]]:
     return audits
 
 
+def audit_native_capabilities(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    for capability in contract.get("native_capabilities", []):
+        missing = [field for field in LEGACY_IMPORT_FIELDS if field not in capability]
+        error = None
+        normalized = None
+        if not missing:
+            node = {
+                "authority_kind": capability["authority_kind"],
+                "scope": capability["scope"],
+                "modality": capability["modality"],
+                "support": capability["physical_support_roots"],
+                "resource": capability["resource"],
+                "epoch": capability["epoch"],
+                "status": "active",
+                "executable_output": capability["executable_output"],
+                "operations": capability.get("operations", []),
+            }
+            try:
+                normalized = normalize(node)
+            except ValueError as exc:
+                error = str(exc)
+        audits.append({
+            "id": capability.get("id", "<missing-id>"),
+            "missing_core_fields": missing,
+            "error": error,
+            "compiled": not missing and error is None,
+            "normalized": normalized,
+        })
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -193,10 +225,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
             passed = error == case.get("expected_error")
         normalization_results.append({"id": case["id"], "passed": passed, "error": error, "normalized": normalized})
     legacy_audits = audit_legacy_grants(legacy) if legacy is not None else []
+    native_audits = audit_native_capabilities(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps) and defaults_forbidden,
+        "passed": all(item["passed"] for item in results + normalization_results) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -209,4 +242,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
             "importable_count": sum(item["importable"] for item in legacy_audits),
             "grants": legacy_audits,
         },
+        "native_capabilities": native_audits,
     }
