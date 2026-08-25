@@ -86,6 +86,20 @@ template. Zero candidates pass the eight-field WP118 admission gate. Because
 all four routes have already inspected historical flavor readouts, no
 agreement with the 1,210-sheet ensemble counts as a protected prediction.
 
+## First concrete normalized ensemble: WP120
+
+- `flavor-gaussian-yukawa-ensemble-audit.md`
+- `checkers/wp120_gaussian_yukawa_ensemble_audit.py`
+- `results/wp120_gaussian_yukawa_ensemble_audit.json`
+
+WP120 constructs the isotropic complex-Gaussian law on two `3 x 3` Yukawa
+matrices. The measure is exactly normalized, invariant under the full weak-
+basis group, and pushes to Wishart spectra with a Haar relative CKM frame. It
+is therefore a genuine mathematical probability law on `physical16`, not a
+texture chart. It still fails the bounded DPC at independent physical source
+validation: Gaussianity, its scale, and its RG/matching contract are posited,
+not derived from an admitted production mechanism.
+
 ## Admission gate
 
 A successor may become a physical ensemble only if it provides, before flavor
