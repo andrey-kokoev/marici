@@ -93,6 +93,21 @@ cocircuit_complete = cocircuit_classes == {"rollback", "hidden_port", "clone", "
     item["passed"] for item in result["trusted_base_cocircuits"]
 )
 result["trusted_base_cocircuit_basis_complete"] = cocircuit_complete
+ssa_hostiles = {}
+ssa_mutations = (
+    ("resource_reuse", lambda c: c["resource_ssa_programs"][0]["nodes"].insert(4, {"id":"n_reuse","kind":"consume","input":"holdA","effect_output":"effectAgain","resource_region":"A"}), "linear_resource_reused_or_undefined"),
+    ("partition_inflation", lambda c: c["resource_ssa_programs"][0]["nodes"][1].update({"outputs":{"rA":2,"rB":1}}), "ssa_partition_inflation"),
+    ("release_without_authority", lambda c: c["resource_ssa_programs"][0]["nodes"][5].update({"release_authority":None}), "release_without_authority"),
+    ("compensation_remints", lambda c: c["resource_ssa_programs"][0]["nodes"][7].update({"restores_original_capability":True}), "compensation_remints_consumed_capability"),
+    ("concurrent_overlap", lambda c: c["resource_ssa_programs"][0]["nodes"][6].update({"resource_region":"A"}), "concurrent_resource_overlap_without_linearizer"),
+)
+for name, mutate_ssa, expected in ssa_mutations:
+    candidate = deepcopy(contract)
+    mutate_ssa(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["resource_ssa_programs"][0]["errors"]
+    ssa_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["resource_ssa_hostiles"] = ssa_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -120,4 +135,6 @@ for name, rejected in execution_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " execution hostile." + name)
 for item in result["trusted_base_cocircuits"]:
     print(("PASS" if item["passed"] else "FAIL") + " cocircuit." + item["primitive_failure_class"])
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete else 1)
+for name, rejected in ssa_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " resource_ssa hostile." + name)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) else 1)

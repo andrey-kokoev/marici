@@ -112,3 +112,20 @@ its declared primitive failure class. The cocircuit audit is total under other
 hostile mutations: a missing baseline attestation produces a typed failed
 minimality audit, never a checker exception. Minimality here is explicitly
 bounded to the five declared trusted-base assumptions.
+
+## Linear SSA resource flow
+
+The native resource programme now executes
+
+\[
+\text{issue}\to\text{partition}\to\text{reserve}\to
+\{\text{consume},\text{release}\}\to\text{consume}\to\text{compensate}.
+\]
+
+Every resource name has one definition and a consuming use removes it from the
+live environment immediately. Partitions conserve quantity at each prefix;
+reservations block reuse until an authorized release or consumption; and
+compensation produces a settled effect rather than reminting the original
+capability. Declared concurrent consumers may proceed without a linearizer only
+on disjoint partition regions. Resource reuse, inflation, unauthorized release,
+reminting compensation, and overlapping concurrent consumption are rejected.

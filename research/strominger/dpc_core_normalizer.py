@@ -367,6 +367,98 @@ def audit_trusted_base_cocircuits(contract: dict[str, Any]) -> list[dict[str, An
     return audits
 
 
+def audit_resource_ssa_programs(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = []
+    for program in contract.get("resource_ssa_programs", []):
+        live: dict[str, dict[str, Any]] = {}
+        defined: set[str] = set()
+        consumed: set[str] = set()
+        errors: list[str] = []
+        prefix_balances: list[int] = []
+        nodes_by_id = {item["id"]: item for item in program.get("nodes", [])}
+
+        def define(name: str, amount: int, state: str = "available") -> None:
+            if name in defined:
+                errors.append("ssa_resource_redefined")
+                return
+            defined.add(name)
+            live[name] = {"amount": amount, "state": state}
+
+        def take(name: str, required_state: str | None = None) -> dict[str, Any] | None:
+            item = live.get(name)
+            if item is None:
+                errors.append("linear_resource_reused_or_undefined")
+                return None
+            if required_state is not None and item["state"] != required_state:
+                errors.append("resource_state_mismatch")
+                return None
+            del live[name]
+            consumed.add(name)
+            return item
+
+        for node in program.get("nodes", []):
+            kind = node.get("kind")
+            if kind == "issue":
+                if not node.get("source_authorized") or node.get("amount", 0) <= 0:
+                    errors.append("unauthorized_or_nonpositive_issue")
+                else:
+                    define(node["output"], node["amount"])
+            elif kind == "partition":
+                parent = take(node["input"], "available")
+                outputs = node.get("outputs", {})
+                if parent is not None:
+                    if sum(outputs.values()) > parent["amount"]:
+                        errors.append("ssa_partition_inflation")
+                    else:
+                        for name, amount in outputs.items():
+                            define(name, amount)
+            elif kind == "reserve":
+                item = take(node["input"], "available")
+                if item is not None:
+                    define(node["output"], item["amount"], "reserved")
+            elif kind == "release":
+                item = take(node["input"], "reserved")
+                if not node.get("release_authority"):
+                    errors.append("release_without_authority")
+                elif item is not None:
+                    define(node["output"], item["amount"], "available")
+            elif kind == "consume":
+                item = take(node["input"])
+                if item is not None and item["state"] not in {"available", "reserved"}:
+                    errors.append("invalid_consumption_state")
+                if item is not None and node.get("effect_output"):
+                    define(node["effect_output"], item["amount"], "effect")
+            elif kind == "compensate":
+                effect = take(node["input"], "effect")
+                if not node.get("compensation_authority"):
+                    errors.append("compensation_without_authority")
+                elif effect is not None:
+                    define(node["settlement_output"], effect["amount"], "settled")
+                    if node.get("restores_original_capability"):
+                        errors.append("compensation_remints_consumed_capability")
+            else:
+                errors.append("unknown_resource_ssa_node")
+            prefix_balance = sum(item["amount"] for item in live.values() if item["state"] in {"available", "reserved"})
+            prefix_balances.append(prefix_balance)
+            if prefix_balance < 0:
+                errors.append("negative_resource_prefix")
+        expected_terminal = program.get("expected_terminal_states", {})
+        actual_terminal = {name: item["state"] for name, item in sorted(live.items())}
+        if actual_terminal != expected_terminal:
+            errors.append("resource_ssa_terminal_state_mismatch")
+        for pair in program.get("concurrency_pairs", []):
+            left, right = nodes_by_id.get(pair.get("left")), nodes_by_id.get(pair.get("right"))
+            if left is None or right is None:
+                errors.append("unknown_concurrent_resource_node")
+                continue
+            left_region, right_region = left.get("resource_region"), right.get("resource_region")
+            overlap = bool(left_region and right_region and (left_region == right_region or left_region == "global" or right_region == "global"))
+            if overlap and not pair.get("linearization_witness"):
+                errors.append("concurrent_resource_overlap_without_linearizer")
+        audits.append({"id": program["id"], "passed": not errors, "errors": sorted(set(errors)), "prefix_balances": prefix_balances, "terminal_states": actual_terminal})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -395,10 +487,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     successor_audits = audit_epoch_successors(contract)
     execution_audits = audit_native_execution_traces(contract)
     cocircuit_audits = audit_trusted_base_cocircuits(contract)
+    resource_ssa_audits = audit_resource_ssa_programs(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -415,4 +508,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "epoch_successor_events": successor_audits,
         "native_execution_traces": execution_audits,
         "trusted_base_cocircuits": cocircuit_audits,
+        "resource_ssa_programs": resource_ssa_audits,
     }
