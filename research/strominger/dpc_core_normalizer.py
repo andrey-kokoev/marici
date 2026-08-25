@@ -231,6 +231,7 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
         fault_safe = all(bool(quorum - fault) for fault in fault_sets) and len(signer_roots) == len(set(signer_roots))
         attestation_raw = event.get("physical_state_correspondence", {})
         attestation = attestation_raw if isinstance(attestation_raw, dict) else {}
+        tcb = attestation.get("trusted_physical_base", {}) if isinstance(attestation, dict) else {}
         signer_independence_roots = set(signer_roots)
         physical = (
             isinstance(attestation_raw, dict)
@@ -248,6 +249,15 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
             and attestation.get("monotone_boot_counter") >= attestation.get("accepted_counter_floor", 0)
             and attestation.get("verifier_independence_root") not in signer_independence_roots
         )
+        physical_base = (
+            bool(tcb.get("hardware_root_id"))
+            and set(tcb.get("required_ports", [])) <= set(tcb.get("measured_ports", []))
+            and bool(tcb.get("anti_rollback_storage"))
+            and bool(tcb.get("bounded_threat_model"))
+            and not tcb.get("claims_absolute_unclonability")
+            and not tcb.get("claims_universal_port_coverage")
+            and bool(tcb.get("challenge_interface"))
+        )
         errors = []
         if not adjacent:
             errors.append("nonadjacent_or_cross_family_epoch_successor")
@@ -263,6 +273,8 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
             errors.append("epoch_successor_lacks_physical_correspondence")
         if not fresh:
             errors.append("epoch_successor_attestation_stale_or_correlated")
+        if not physical_base:
+            errors.append("epoch_successor_attestation_tcb_unbounded")
         audits.append({"id": event["id"], "passed": not errors, "errors": errors})
     return audits
 

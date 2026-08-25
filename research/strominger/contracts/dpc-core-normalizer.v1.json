@@ -50,6 +50,16 @@
         "accepted_counter_floor":41,
         "signature_verified":true,
         "measurement_constructor":"measured boot binds executor state to successor digest",
+        "trusted_physical_base": {
+          "hardware_root_id":"tpm:manifest-executor-1",
+          "measured_ports":["boot_state","manifest_state","configuration_state"],
+          "required_ports":["boot_state","manifest_state","configuration_state"],
+          "anti_rollback_storage":true,
+          "bounded_threat_model":"one non-cloned hardware root with intact measured boot and monotone counter storage",
+          "claims_absolute_unclonability":false,
+          "claims_universal_port_coverage":false,
+          "challenge_interface":"admit newly discovered execution port or hardware common cause"
+        },
         "verified_before_epoch_acceptance":true
       }
     }
