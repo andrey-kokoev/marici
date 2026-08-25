@@ -1,0 +1,45 @@
+{
+  "checker": "completed_grade_three_source_readout_checks.py",
+  "checks": [
+    {
+      "detail": "(z-x)^4(zb-xb)^4 times sphere factors",
+      "gate": "RESPONSE.denominator",
+      "passed": true,
+      "statement": "the response has fourth-order incidence poles"
+    },
+    {
+      "detail": "generic rational witness",
+      "gate": "RESPONSE.nonzero",
+      "passed": true,
+      "statement": "the one-puncture grade-three density is nonzero"
+    },
+    {
+      "detail": "(-6*z + 6*zb)*(z + zb)*(z**2 + zb**2)*(5*z*zb - 1)/(z**4*zb**4*(z*zb + 1)**7)",
+      "gate": "RESPONSE.center",
+      "passed": true,
+      "statement": "the centered response has the closed factored form"
+    },
+    {
+      "detail": "total source order <=2",
+      "gate": "JET.commute",
+      "passed": true,
+      "statement": "source jets commute with the observation readout"
+    },
+    {
+      "detail": "Q M3=-M3",
+      "gate": "PARITY.odd",
+      "passed": true,
+      "statement": "helicity/reflection exchange reverses the magnetic density"
+    },
+    {
+      "detail": "abstract three-coordinate block",
+      "gate": "PROJECTOR.factor",
+      "passed": true,
+      "statement": "M3 factors through the magnetic projector"
+    }
+  ],
+  "passed": 6,
+  "strength": "exact source-derived grade-three morphism",
+  "total": 6,
+  "verdict": "The invariant point kernel has a nonzero fourth-order grade-three incidence density. The readout commutes with source jets and factors through the magnetic Q eigenspace; its universal electric kernel is a parity-port alias, leaving injectivity on the magnetic source packet as the next question."
+}

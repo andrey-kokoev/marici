@@ -1,0 +1,59 @@
+{
+  "aggregate_gates": {
+    "arbitrary_bus_error_correction_needs_distance_three": true,
+    "conditional_bus_spread_falls_to_one": true,
+    "conditional_data_distance_requirement_falls_to_five": true,
+    "eight_level_distance_three_bus_code_exists_abstractly": true,
+    "five_rails_are_singleton_minimal": true,
+    "relative_coordinate_spread_keeps_combined_weight_at_two": true,
+    "six_level_distance_three_bus_code_exists_abstractly": true,
+    "twenty_interleaved_correction_cycles_are_required_by_the_schedule": true
+  },
+  "conditional_fault_bound": {
+    "bus_induced_max_data_weight": 1,
+    "combined_max_data_weight": 2,
+    "data_code_distance_for_arbitrary_recovery": 5,
+    "improves_unencoded_distance_nine_to_five": true,
+    "relative_coordinate_gate_max_data_weight": 2
+  },
+  "encoded_buses": {
+    "holonomy": {
+      "construction": "tensor_[[5,1,3]]_2_and_[[5,1,3]]_3",
+      "distance": 3,
+      "logical_dimension": 6,
+      "rails": 5
+    },
+    "sector_label": {
+      "construction": "[[5,1,3]]_8_qudit_code",
+      "distance": 3,
+      "logical_dimension": 8,
+      "rails": 5
+    },
+    "total_bus_rails": 10
+  },
+  "interleaved_schedule": {
+    "assumes_correction_does_not_propagate_to_data": true,
+    "assumes_each_logical_interaction_is_one_fault_transversal": true,
+    "bus_data_interactions_per_controlled_power": {
+      "charge_label_copy_forward_and_reverse": 2,
+      "class_conditioned_fourier_forward_and_reverse": 8,
+      "holonomy_compute_and_uncompute": 8,
+      "transporter_align_and_unalign": 2
+    },
+    "minimum_intervening_correction_cycles": 20,
+    "total_bus_data_interactions": 20
+  },
+  "quantum_singleton_lower_bound": {
+    "classical_repetition_is_sufficient_for_arbitrary_coherent_faults": false,
+    "distance": 3,
+    "logical_qudits": 1,
+    "minimum_physical_rails": 5
+  },
+  "schema": "marici.s3-encoded-bus-interleaving.v1",
+  "unresolved_gate_typing": [
+    "fault_transversal_logical_S3_multiplication_on_encoded_six_level_bus",
+    "fault_transversal_logical_F3_H_and_transporter_gates",
+    "syndrome_extraction_and_recovery_circuit",
+    "fresh_verified_ancillas_for_twenty_correction_cycles"
+  ]
+}

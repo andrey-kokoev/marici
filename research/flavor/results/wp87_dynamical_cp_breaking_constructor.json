@@ -1,0 +1,53 @@
+{
+  "schema": "marici.flavor.dynamical-cp-breaking-constructor.v1",
+  "source": "FDM-1 authorized after WP86",
+  "action": "V(s)=(s^2-1)^2/4; ds/dt=s(1-s^2)",
+  "attribute": "s in {-1,+1}, mapped to J != 0",
+  "admitted_domain": "s != 0; certified work domain 1/4 <= s^2 <= 4",
+  "instrument": {
+    "type": "cooled overdamped flavon annealing stage",
+    "ports": [
+      "modulus",
+      "bath",
+      "time_control",
+      "reset"
+    ]
+  },
+  "repeatability": {
+    "ideal": "attribute fixed exactly",
+    "finite_bath_per_cycle_degradation": "1/10000",
+    "cycles": 250,
+    "total_bound": "1/40"
+  },
+  "prediction": {
+    "predeclared": "J != 0; sign and magnitude unconstrained",
+    "sheets_tested": 1210,
+    "passes": 1210,
+    "min_abs_J": 3.1413288219332114e-05,
+    "max_abs_J": 3.212292203718607e-05
+  },
+  "fields": {
+    "proper_operation_or_attribute": true,
+    "independent_authority_and_normalization": true,
+    "task_specific_instrument": true,
+    "repeatability_degradation_account": true,
+    "own_ensemble_prediction": true
+  },
+  "gates": {
+    "WP86_dependency": true,
+    "source_action_is_CP_symmetric": true,
+    "gradient_flow_solution_exact": true,
+    "both_vacua_fixed": true,
+    "nonzero_inputs_converge_to_vacuum_attribute": true,
+    "certified_error_bound_positive": true,
+    "finite_degradation_composes_exactly": true,
+    "instrument_readout_is_task_specific_verifier": true,
+    "complete_ensemble_loaded": true,
+    "predeclared_nonzero_J_survives_all_sheets": true,
+    "source_does_not_choose_J_sign": true,
+    "all_package_fields_pass": true
+  },
+  "passed": 12,
+  "total": 12,
+  "empirical_status": "internally coherent proposed source; UV realization remains unverified"
+}

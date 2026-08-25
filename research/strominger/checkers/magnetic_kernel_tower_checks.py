@@ -107,6 +107,20 @@ for grade in (2, 3, 4, 5):
                    residues[0] != 0 and residues[0] + residues[1] == 0,
                    str(residues))
 
+    # The two positive-depth residues occupy the same divisor line.  Their
+    # weighted difference is rational-exact; individual nonzero residues do
+    # not imply two independent cohomology classes.
+    residue_a2 = -grade * (grade + 1) * sp.catalan(grade + 1) * sp.rf(2, grade - 1)
+    residue_a4 = -grade * (grade + 1) * sp.catalan(grade + 1) * sp.rf(4, grade - 1)
+    relative = residue_a4 * tower[1] - residue_a2 * tower[2]
+    relative_f, relative_fb = fold_pair(grade, relative)
+    relative_phi = simp(sp.integrate(relative_f, z))
+    record(f"RATCOMB.g{grade}", "RATCOMB",
+           "the residue-cancelling positive-depth combination is rational-exact",
+           not relative_phi.has(sp.log) and
+           simp(sp.diff(relative_phi, z) - relative_f) == 0 and
+           simp(sp.diff(relative_phi, zb) - relative_fb) == 0)
+
     neighbor = z ** -2 * zb ** (-grade)
     record(f"FAIL.g{grade}", "FAIL",
            "neighboring exponent is a deliberate nonkernel control",
@@ -132,7 +146,7 @@ output = {
     "scope": {"strength": "finite-cutoff theorem", "grades": [2, 3, 4, 5],
               "grid": {"a": [0, 2, 4], "m": [-9, 4], "dimension": 42}},
     "checks": checks, "n_pass": len(passed), "n_fail": len(failed),
-    "verdict": "On the expanded 42-dimensional Laurent grid, ker(M_g) is spanned by D_{g,a}=z^-a zb^{-(g+a-1)} for a=0,2,4 at every tested grade g=2..5, plus one exceptional rational-exact line 1-zb^-2 at g=2. Thus kernel dimensions are (4,3,3,3). The a=0 tower is rational-exact; the a=2 and a=4 towers have nonzero opposite residues and require logarithms. This supersedes only dimension interpretations extrapolated beyond the smaller grid of magnetic_kernel_checks.py; that checker's stated restricted-grid claims remain valid.",
+    "verdict": "On the expanded 42-dimensional Laurent grid, ker(M_g) is spanned by D_{g,a}=z^-a zb^{-(g+a-1)} for a=0,2,4 at every tested grade g=2..5, plus one exceptional rational-exact line 1-zb^-2 at g=2. Thus kernel dimensions are (4,3,3,3). The a=0 tower and the exception are rational-exact. The a=2 and a=4 towers are individually nonexact, but their weighted zero-residue combination is rational-exact; hence the ordinary rational quotient has dimension one, not two.",
 }
 outdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
 os.makedirs(outdir, exist_ok=True)

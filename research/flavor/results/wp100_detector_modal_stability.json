@@ -1,0 +1,34 @@
+{
+  "schema": "marici.flavor.detector-modal-stability.v1",
+  "domain": "zero-sum route-weight errors under calibrated CP-covariant detector",
+  "modes": {
+    "odd": "(1,0,-1)",
+    "even": "(1,-2,1)"
+  },
+  "eigenvalues": {
+    "odd": "1-l-2e",
+    "even": "1-b-l"
+  },
+  "amplification": "max(1/|lambda_odd|,1/|lambda_even|)",
+  "robust_margins": [
+    "|hat_lambda_odd|-d_odd>0",
+    "|hat_lambda_even|-d_even>0"
+  ],
+  "classification": "stable separator iff both robust margins positive; neither selector nor rigidifier",
+  "smallest_falsifier": "l=b=0,e=(1-epsilon)/2 gives odd amplification 1/epsilon",
+  "instrument_gate": "calibration and drift certificate plus combined sampling/matching/reset error budget",
+  "gates": {
+    "WP99_dependency": true,
+    "odd_mode_exact": true,
+    "even_mode_exact": true,
+    "modes_span_zero_sum_plane": true,
+    "inverse_odd_amplification": true,
+    "inverse_even_amplification": true,
+    "robust_margin_triangle_bound": true,
+    "hostile_ray_odd_eigenvalue": true,
+    "hostile_ray_amplification_diverges": true,
+    "stable_readout_not_selector": true
+  },
+  "passed": 10,
+  "total": 10
+}

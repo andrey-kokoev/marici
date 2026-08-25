@@ -2,6 +2,11 @@
 
 Owner: `marici.Nima`
 
+Status: retained as the inclusive-effect theorem.  The continuous phase is
+removed in the exact one-loop problem once the complete oriented Cut and the
+source-normalized boundary jet are supplied; see
+`qed-oriented-cut-uniqueness.md`.
+
 Let (K) denote the exposed pair-production branch, normalized so that
 
 \[
@@ -93,4 +98,3 @@ The outcomes have distinct meanings:
   retained.
 - A subtraction or CDD choice is called source-derived without independent
   source authority.
-

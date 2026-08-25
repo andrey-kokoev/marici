@@ -1,0 +1,45 @@
+{
+  "checker": "completed_collision_strata_checks.py",
+  "checks": [
+    {
+      "detail": "clusters 1..12, jet bounds 0..7",
+      "gate": "COLLISION.coarse",
+      "passed": true,
+      "statement": "exact collision forgets precisely zero-sum labelled jets"
+    },
+    {
+      "detail": "n=1..10, all L through n+1",
+      "gate": "MOMENT.Vandermonde",
+      "passed": true,
+      "statement": "one-dimensional collision moments have rank min(n,L+1)"
+    },
+    {
+      "detail": "n=1..8",
+      "gate": "MOMENT.determinant",
+      "passed": true,
+      "statement": "full moment resolution has the factorial Vandermonde determinant"
+    },
+    {
+      "detail": "orders L=0..4",
+      "gate": "MOMENT.two_dimensional",
+      "passed": true,
+      "statement": "generic two-dimensional moments attain dimension capacity"
+    },
+    {
+      "detail": "t=(0,1,3/2)",
+      "gate": "CIRCUIT.primitive",
+      "passed": true,
+      "statement": "the nonuniform three-point stencil yields (1,-3,2)"
+    },
+    {
+      "detail": "J=0..10",
+      "gate": "TRANSPORT.after_collision",
+      "passed": true,
+      "statement": "grade-three transport is injective on every retained moment jet"
+    }
+  ],
+  "passed": 6,
+  "strength": "unbounded collision moment-rank theorem with hostile strata",
+  "total": 6,
+  "verdict": "Exact collision maps labelled jets to their sum and has kernel dimension (n-1)d_J. A resolved collision is governed by a Vandermonde moment map, becoming faithful at sufficient order for distinct tangent directions. The primitive (1,-3,2) can occur as a geometry-dependent three-point stencil, not a universal magnetic exception."
+}

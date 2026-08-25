@@ -1,0 +1,35 @@
+{
+  "aggregate_gates": {
+    "accepted_cat_control_fault_spread_is_one": true,
+    "all_four_single_X_rail_faults_have_nonzero_syndrome": true,
+    "cat_Z_fault_does_not_spread_through_diagonal_control": true,
+    "cat_verification_does_not_protect_shared_bus": true,
+    "combined_worst_case_data_weight_remains_four": true,
+    "distance_nine_requirement_remains": true
+  },
+  "combined_gadget": {
+    "distance_for_arbitrary_recovery": 9,
+    "maximum_arbitrary_single_fault_data_weight": 4,
+    "remaining_requirement": "verified_or_fresh_segmented_sector_bus",
+    "verified_cat_alone_improves_global_distance_requirement": false
+  },
+  "schema": "marici.s3-verified-cat-bus-fault-split.v1",
+  "shared_sector_bus": {
+    "arbitrary_single_bus_fault_max_data_weight": 4,
+    "revisits_data_edges": 4,
+    "source_derived_coherent_bus_verification_available": false,
+    "verified_cat_protects_bus_faults": false
+  },
+  "verified_four_rail_cat": {
+    "accepted_postverification_control_fault_max_data_weight": 1,
+    "all_single_X_faults_detected_before_data_coupling": true,
+    "parity_checks": ["Z0Z1", "Z1Z2", "Z2Z3"],
+    "single_X_syndromes": {
+      "0": [1, 0, 0],
+      "1": [1, 1, 0],
+      "2": [0, 1, 1],
+      "3": [0, 0, 1]
+    },
+    "single_Z_rail_fault_spreads_through_diagonal_control": false
+  }
+}

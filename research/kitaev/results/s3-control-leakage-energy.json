@@ -1,0 +1,51 @@
+{
+  "aggregate_gates": {
+    "all_nontrivial_ports_are_trivial_on_the_flat_vacuum_code": true,
+    "excess_vertex_energy_equals_leakage_for_unit_penalty": true,
+    "gh_separator_annihilates_the_haar_vertex_sector": true,
+    "gh_separator_preserves_fixed_point_energy": true,
+    "three_cycle_compute_transient_is_one_half": true,
+    "three_cycle_final_leakage_formula_is_exact": true,
+    "transposition_compute_transient_is_two_thirds": true,
+    "transposition_final_leakage_formula_is_exact": true
+  },
+  "deliberate_failure": {
+    "actual": false,
+    "claim": "clean_ancilla_uncompute_implies_zero_final_leakage_for_element_flux_phases",
+    "counterexample": "theta=pi_three_cycle_port_has_unit_vertex_leakage_on_a_gauge_invariant_flux_excitation"
+  },
+  "flat_vacuum_code": {
+    "B_c_action": "zero",
+    "B_t_action": "zero",
+    "K_c_action": "zero",
+    "final_leakage": "0"
+  },
+  "gauge_invariant_flux_excitation": {
+    "final_vertex_leakage_probability": {
+      "three_cycle": "sin(theta/2)**2",
+      "transposition": "8*sin(theta/2)**2/9"
+    },
+    "fixed_point_excess_vertex_energy": "equals_final_vertex_leakage_for_unit_vertex_penalty",
+    "maximum_at_theta_pi": {
+      "three_cycle": "1",
+      "transposition": "8/9"
+    }
+  },
+  "gh_separator": {
+    "A_K": "0",
+    "K_A": "0",
+    "commutes_with_fixed_point_vertex_projector": true,
+    "commutes_with_flatness_projector_by_nontrivial_flux_support": true,
+    "fixed_point_energy_change": "0",
+    "nontrivial_domain": "charged_G_H_endpoint_subspace_in_kernel_of_A"
+  },
+  "holonomy_compute_transient": {
+    "reason": "ancilla_which_flux_information_splits_the_gauge_orbit",
+    "uncompute_disposition": "restored_before_the_phase_dependent_final_residual",
+    "vertex_leakage_probability": {
+      "three_cycle": "1/2",
+      "transposition": "2/3"
+    }
+  },
+  "schema": "marici.s3-control-leakage-energy.v1"
+}

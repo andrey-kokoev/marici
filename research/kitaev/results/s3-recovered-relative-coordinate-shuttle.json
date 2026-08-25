@@ -1,0 +1,217 @@
+{
+  "basis_checks": {
+    "forward": 36,
+    "reverse": 36,
+    "total": 72,
+    "workspace_clean": true
+  },
+  "conditional_contracts": [
+    "distance-three encoding of every data block and all three buses",
+    "one-fault-correcting recovery on both incident blocks after every contact",
+    "fault-transversal logical multiplication and inverse-multiplication contacts",
+    "nonpropagating recovery with fresh verified syndrome ancillas"
+  ],
+  "gadget": {
+    "contacts_per_relative_map": 3,
+    "maps_per_controlled_power": 2,
+    "new_contacts_per_controlled_power": 6,
+    "primitive_arity": 2,
+    "relative_bus_dimension": 6,
+    "relative_bus_distance_three_rails": 5
+  },
+  "group_order": 6,
+  "revised_compiler": {
+    "bus_data_contacts_per_controlled_power": 26,
+    "encoded_bus_rails_before_syndrome_ancillas": 15,
+    "gates_per_controlled_power": 49,
+    "maximum_single_fault_data_weight": 1,
+    "minimum_data_code_distance": 3,
+    "recovery_layers_per_controlled_power": 26,
+    "three_controlled_powers_total_gates": 147
+  },
+  "schema": "marici.kitaev.s3-recovered-relative-coordinate-shuttle.v1",
+  "single_fault_audit": {
+    "abstract_fault_paths": 18,
+    "contact_fault_locations": 6,
+    "maximum_data_block_weight": 1,
+    "paths": [
+      {
+        "contact": "forward_write_inverse_x",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "x"
+        ],
+        "incident_blocks": [
+          "x",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "forward_write_inverse_x",
+        "damaged_block": "x",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "after_contact": "forward_write_inverse_x",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "contact": "forward_update_y",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "y"
+        ],
+        "incident_blocks": [
+          "y",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "forward_update_y",
+        "damaged_block": "y",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "after_contact": "forward_update_y",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "contact": "forward_clean_bus",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "x"
+        ],
+        "incident_blocks": [
+          "x",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "forward_clean_bus",
+        "damaged_block": "x",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "after_contact": "forward_clean_bus",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "contact": "reverse_write_x",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "x"
+        ],
+        "incident_blocks": [
+          "x",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "reverse_write_x",
+        "damaged_block": "x",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "after_contact": "reverse_write_x",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "contact": "reverse_update_y",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "y"
+        ],
+        "incident_blocks": [
+          "y",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "reverse_update_y",
+        "damaged_block": "y",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": [
+          "y"
+        ]
+      },
+      {
+        "after_contact": "reverse_update_y",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": []
+      },
+      {
+        "contact": "reverse_clean_bus",
+        "fault_type": "contact",
+        "immediate_recovery": [
+          "relative_bus",
+          "x"
+        ],
+        "incident_blocks": [
+          "x",
+          "relative_bus"
+        ],
+        "maximum_data_block_weight": 1,
+        "residual_blocks_before_next_contact": []
+      },
+      {
+        "after_contact": "reverse_clean_bus",
+        "damaged_block": "x",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 1,
+        "residual_blocks_at_gadget_output": [
+          "x"
+        ]
+      },
+      {
+        "after_contact": "reverse_clean_bus",
+        "damaged_block": "relative_bus",
+        "fault_type": "recovery",
+        "maximum_data_block_weight": 0,
+        "residual_blocks_at_gadget_output": [
+          "relative_bus"
+        ]
+      }
+    ],
+    "recovery_output_error_paths": 12,
+    "requires_recovery_after_every_contact_on_both_incident_blocks": true
+  },
+  "verdict": "The direct weight-two relative-coordinate gate has an exact three-contact clean shuttle replacement. Under immediate fault-tolerant recovery of both incident blocks, every single contact fault is removed before another contact, so the full compiler conditionally needs data distance three rather than five."
+}

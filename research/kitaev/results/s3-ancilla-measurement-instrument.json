@@ -1,0 +1,96 @@
+{
+  "aggregate_gates": {
+    "classical_random_records_change_instrument_typing_if_retained": true,
+    "coherent_control_and_readout_ancillas_are_distinct": true,
+    "controlled_central_powers_remain_a_source_obligation": true,
+    "discarding_the_sector_record_recovers_center_expectation": true,
+    "eight_sector_residues_decode_exactly": true,
+    "measure_prepare_instrument_has_thirty_six_kraus_operators": true,
+    "three_qubits_are_necessary_for_eight_orthogonal_records": true,
+    "three_qubits_are_sufficient_for_the_sector_record": true
+  },
+  "ancilla_inventory": {
+    "local_holonomy_compiler": {
+      "dimension": 6,
+      "ideal_final_state": "|e>",
+      "preparation": "|e>",
+      "reuse_rule": "reuse_only_after_clean_return_verification_or_reset"
+    },
+    "sector_readout": {
+      "dimension": 8,
+      "final_action": "measure_retain_sector_record_then_reset",
+      "physical_form": "three_qubits",
+      "preparation": "|000>"
+    }
+  },
+  "classical_random_inventory_for_nonselective_center_channel": {
+    "four_dimension_two_stages": "8 unbiased bits",
+    "ideal_entropy_bits": "11+4*log2(3)",
+    "record_rule": "discard_or_keep_inaccessible_to_expose_the_nonselective_channel",
+    "sector_dephasing": "3 unbiased bits",
+    "two_dimension_three_stages": "4 independent uniform trits"
+  },
+  "deliberate_failure": {
+    "actual": false,
+    "claim": "uncontrolled_reachability_of_U1_U2_U4_supplies_their_controlled_versions",
+    "reason": "controlization_requires_an_additional_conditional_coupling_interface"
+  },
+  "instrument_distinctions": {
+    "all_records_discarded": "nonselective_center_expectation_channel",
+    "random_unitary_records_retained": "refined_control_branch_instrument_not_center_readout",
+    "sector_record_retained_after_internal_depolarization": "record_producing_center_measure_prepare_instrument",
+    "sector_record_retained_before_internal_depolarization": "sector_projective_instrument"
+  },
+  "record_producing_center_instrument": {
+    "cross_block_units": 220,
+    "global_matrix_units_typed": 256,
+    "kraus_count_by_record": {
+      "A": 1,
+      "B": 1,
+      "C": 4,
+      "D": 9,
+      "E": 9,
+      "F": 4,
+      "G": 4,
+      "H": 4
+    },
+    "nonselective_channel": "center_conditional_expectation",
+    "operation": "rho_to_Tr(P_a*rho)/d_a*P_a_tensor_|a><a|",
+    "record_values": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "total_kraus_count": 36,
+    "within_block_units": 36
+  },
+  "schema": "marici.s3-ancilla-measurement-instrument.v1",
+  "sector_phase_estimation": {
+    "controlled_power_source_status": "unresolved_not_implied_by_uncontrolled_reachability",
+    "controlled_powers": [
+      "U1",
+      "U2",
+      "U4"
+    ],
+    "exact_decoding": true,
+    "initialization": "|000>",
+    "inverse_qft_dimension": 8,
+    "measurement_basis": "computational",
+    "record_register": "three_qubits_dimension_eight",
+    "residue_to_sector": {
+      "0": "A",
+      "1": "B",
+      "2": "C",
+      "3": "D",
+      "4": "G",
+      "5": "H",
+      "6": "E",
+      "7": "F"
+    }
+  }
+}

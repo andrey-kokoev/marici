@@ -1,0 +1,45 @@
+{
+  "checker": "completed_local_distribution_target_checks.py",
+  "checks": [
+    {
+      "detail": "orders -4..-1",
+      "gate": "PP.coefficients",
+      "passed": true,
+      "statement": "the full fourth-order holomorphic principal part is exact"
+    },
+    {
+      "detail": "holomorphic=-6/(1+x*xb)^2",
+      "gate": "PP.leading",
+      "passed": true,
+      "statement": "both incidence-leading route coefficients are nonzero and opposite"
+    },
+    {
+      "detail": "k=1..12",
+      "gate": "DIST.boundary",
+      "passed": true,
+      "statement": "Cauchy powers map to fixed delta-jet coefficients"
+    },
+    {
+      "detail": "punctures 1..12, order 0..7",
+      "gate": "SUPPORT.block",
+      "passed": true,
+      "statement": "distinct puncture coefficient ports are block faithful"
+    },
+    {
+      "detail": "orders 0..10",
+      "gate": "FILTER.finite",
+      "passed": true,
+      "statement": "bounded point-supported jet stages are finite and strict"
+    },
+    {
+      "detail": "residue=-1; background=-gamma/2",
+      "gate": "PSZ.ports",
+      "passed": true,
+      "statement": "orbital residue and spin background are both present"
+    }
+  ],
+  "passed": 6,
+  "strength": "exact local principal-part and distribution filtration",
+  "total": 6,
+  "verdict": "The physical local target is the finite-order union of prescribed principal-value powers, point-supported delta jets, and fixed smooth backgrounds. The grade-three puncture response has nonzero opposite fourth-order route ports, and distinct puncture supports are locally faithful before global quotients."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "marici.flavor.domain-detector-confusion-kernel.v1",
+  "domain": "labelled route simplex followed by calibrated CP-covariant three-outcome detector",
+  "channel": [
+    [
+      "-e - l + 1",
+      "b/2",
+      "e"
+    ],
+    [
+      "l",
+      "1 - b",
+      "l"
+    ],
+    [
+      "e",
+      "b/2",
+      "-e - l + 1"
+    ]
+  ],
+  "determinant": "(b + l - 1)*(2*e + l - 1)",
+  "contextual_partition": {
+    "generic": "singleton weights after deconvolution",
+    "sign_kernel": "orientation collapsed",
+    "even_kernel": "broken-versus-symmetric contrast collapsed"
+  },
+  "classification": "readout channel; neither selector nor rigidifier",
+  "smallest_falsifiers": [
+    "l=0,e=1/2 erases odd mode",
+    "l=0,b=1 erases even contrast"
+  ],
+  "instrument_gate": "calibrate e,l,b and drift; propagate sampling error through inverse; canonical matching and reset",
+  "gates": {
+    "WP98_dependency": true,
+    "column_stochastic": true,
+    "CP_covariant": true,
+    "determinant_factorization": true,
+    "odd_mode_eigenvalue": true,
+    "sign_kernel_exact": true,
+    "even_kernel_rank_loss": true,
+    "generic_channel_invertible_off_surfaces": true,
+    "kernel_is_detector_not_selector": true,
+    "near_kernel_error_amplification_unbounded": true
+  },
+  "passed": 10,
+  "total": 10
+}

@@ -1,0 +1,51 @@
+{
+  "checker": "completed_tower_exception_analogue_checks.py",
+  "checks": [
+    {
+      "detail": "physical grades g>=2 are disjoint",
+      "gate": "TOWER.diagonal",
+      "passed": true,
+      "statement": "physical and magnetic tower diagonals intersect only at g=-1"
+    },
+    {
+      "detail": "terminal depths N=0..20",
+      "gate": "TOWER.recurrence",
+      "passed": true,
+      "statement": "no nonzero finite sequence obeys the source recurrence"
+    },
+    {
+      "detail": "[(0, 0), (0, -2)]",
+      "gate": "E1.support",
+      "passed": true,
+      "statement": "E1 is outside coherent point-source support"
+    },
+    {
+      "detail": "[(0, -8), (4, 2), (6, 0)]",
+      "gate": "E2.support",
+      "passed": true,
+      "statement": "every E2 monomial is outside coherent point-source support"
+    },
+    {
+      "detail": "individual rank one; joint rank two",
+      "gate": "PROJECTOR.restore",
+      "passed": true,
+      "statement": "joint electric and magnetic ports restore every parity pair"
+    },
+    {
+      "detail": "t3=3/2 versus t3=2",
+      "gate": "E2.collision",
+      "passed": true,
+      "statement": "(1,-3,2) is a geometry-dependent collision stencil"
+    },
+    {
+      "detail": "degrees J=0..8",
+      "gate": "CHARACTERISTIC.finite",
+      "passed": true,
+      "statement": "no nonzero finite homogeneous jet is annihilated by the symbol"
+    }
+  ],
+  "passed": 7,
+  "strength": "typed exact exclusion and analogue classification",
+  "total": 7,
+  "verdict": "No magnetic tower, E1, or E2 vector is constructed by the completed point-source module. The physical analogues are respectively a complementary parity-projector kernel, declared zero/exact quotients, and geometry-dependent collision moment circuits. The coefficient (1,-3,2) can recur at a collision without reviving the engine exception."
+}

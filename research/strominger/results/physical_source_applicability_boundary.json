@@ -1,0 +1,45 @@
+{
+  "checker": "physical_source_applicability_boundary_checks.py",
+  "checks": [
+    {
+      "detail": "(p,q) maps to (-p-4,-q)",
+      "gate": "CHART.involution",
+      "passed": true,
+      "statement": "the spin-two exponent transition is an involution"
+    },
+    {
+      "detail": "north requires p>=0,q>=0; south requires p<=-4,q<=0",
+      "gate": "REGULAR.empty",
+      "passed": true,
+      "statement": "no Laurent monomial is regular in both sphere charts"
+    },
+    {
+      "detail": "failures=[]",
+      "gate": "NAMED.singular",
+      "passed": true,
+      "statement": "all towers through g=20,a=20 and both exceptional supports fail global regularity"
+    },
+    {
+      "detail": "matching grades=[3]",
+      "gate": "GRADE.psz",
+      "passed": true,
+      "statement": "the PSZ partial_zbar D_z^3 magnetic density selects engine grade three"
+    },
+    {
+      "detail": "exception grade=2; PSZ grade=3",
+      "gate": "GRADE.exceptions",
+      "passed": true,
+      "statement": "the E1 and E2 circuits occur at a different engine grade from the PSZ density"
+    },
+    {
+      "detail": "verified symbolically on five hostile exponent pairs",
+      "gate": "CHART.jacobian",
+      "passed": true,
+      "statement": "the covariant spin-two Jacobian gives w^(-p-4) wb^(-q)"
+    }
+  ],
+  "passed": 6,
+  "strength": "source-typed no-go theorem plus bounded hostile audit",
+  "total": 6,
+  "verdict": "The standard smooth Bondi-shear constructor has zero intersection with the nonzero finite Laurent engine source. All named towers and grade-two circuits are singular as global spin-two data, and the PSZ magnetic constraint selects engine grade three rather than the grade-two exceptional locus."
+}

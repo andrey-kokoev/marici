@@ -1,0 +1,45 @@
+{
+  "checker": "completed_gauge_conservation_antipodal_quotient_checks.py",
+  "checks": [
+    {
+      "detail": "points 0,1,i,2+i; determinant -16",
+      "gate": "CONSERVATION.momentum",
+      "passed": true,
+      "statement": "four generic celestial directions span four-momentum charge space"
+    },
+    {
+      "detail": "Vandermonde charge rows, n=4..12",
+      "gate": "CONSERVATION.restrict",
+      "passed": true,
+      "statement": "restriction to conserved packets preserves an injective local map"
+    },
+    {
+      "detail": "dimensions 2..11",
+      "gate": "GAUGE.exact",
+      "passed": true,
+      "statement": "the target quotient kills exactly the declared gauge line"
+    },
+    {
+      "detail": "dimensions 1..12",
+      "gate": "MATCHING.graph",
+      "passed": true,
+      "statement": "antipodal matching is the kernel graph of an invertible adapter"
+    },
+    {
+      "detail": "adapter determinants nonzero",
+      "gate": "MATCHING.projection",
+      "passed": true,
+      "statement": "either boundary projection is faithful on the matching graph"
+    },
+    {
+      "detail": "dimensions 1..12",
+      "gate": "MATCHING.hostile",
+      "passed": true,
+      "statement": "an untyped sum port manufactures an n-dimensional alias"
+    }
+  ],
+  "passed": 6,
+  "strength": "typed exact-sequence and hostile-projection audit",
+  "total": 6,
+  "verdict": "Gauge is a target quotient, conservation is a source restriction, and antipodal matching is the graph of an invertible adapter. Only the gauge quotient is intrinsically nonfaithful; conservation preserves injectivity and either boundary reconstructs a matched packet, while an untyped sum creates a false kernel."
+}

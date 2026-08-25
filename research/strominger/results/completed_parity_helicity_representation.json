@@ -1,0 +1,51 @@
+{
+  "checker": "completed_parity_helicity_representation_checks.py",
+  "checks": [
+    {
+      "detail": "4x4 orbit-helicity block",
+      "gate": "GROUP.involutions",
+      "passed": true,
+      "statement": "P, sigma, and Q are involutions"
+    },
+    {
+      "detail": "Klein-four representation",
+      "gate": "GROUP.commute",
+      "passed": true,
+      "statement": "chart parity and helicity conjugation commute"
+    },
+    {
+      "detail": "PiE=(1+Q)/2, PiM=(1-Q)/2",
+      "gate": "PROJECTOR.algebra",
+      "passed": true,
+      "statement": "electric and magnetic maps are complementary projectors"
+    },
+    {
+      "detail": "ranks 2+2=4",
+      "gate": "PROJECTOR.ranks",
+      "passed": true,
+      "statement": "each two-label helicity block splits evenly"
+    },
+    {
+      "detail": "rank([PiE;PiM])=4",
+      "gate": "JOINT.faithful",
+      "passed": true,
+      "statement": "the joint parity readout is injective"
+    },
+    {
+      "detail": "label orbits 1..8, jet bounds 0..7",
+      "gate": "ORBIT.hostile",
+      "passed": true,
+      "statement": "rank laws persist for arbitrary direct-sum multiplicity"
+    },
+    {
+      "detail": "one even and one odd fiber line",
+      "gate": "FIXED.fiber",
+      "passed": true,
+      "statement": "a fixed label splits by helicity exchange without zero columns"
+    }
+  ],
+  "passed": 7,
+  "strength": "exact representation and arbitrary-multiplicity rank law",
+  "total": 7,
+  "verdict": "The completed source module carries commuting chart-parity and helicity involutions. Electric and magnetic ports are complementary Q eigenspace projectors: each alone forgets the opposite eigenspace, while their joint readout is faithful at every finite jet stage."
+}

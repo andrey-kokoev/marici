@@ -1,0 +1,45 @@
+{
+  "checker": "completed_two_chart_parity_module_checks.py",
+  "checks": [
+    {
+      "detail": "r=1..8",
+      "gate": "JET.Lah",
+      "passed": true,
+      "statement": "repeated inversion derivatives obey the Lah expansion"
+    },
+    {
+      "detail": "r=1..29",
+      "gate": "JET.diagonal",
+      "passed": true,
+      "statement": "the order-r leading coefficient is x^(2r)"
+    },
+    {
+      "detail": "J=0..8; diagonal product nonzero for x,y!=0",
+      "gate": "JET.determinant",
+      "passed": true,
+      "statement": "every bounded mixed-jet stage is invertible on overlap"
+    },
+    {
+      "detail": "orders 0..6",
+      "gate": "JET.involution",
+      "passed": true,
+      "statement": "inverse chart uses the same triangular law and preserves order"
+    },
+    {
+      "detail": "each order r uses only derivatives j<=r",
+      "gate": "LF.compatible",
+      "passed": true,
+      "statement": "finite-stage maps preserve jet filtration"
+    },
+    {
+      "detail": "transition determinant is asserted only on x!=0,infinity",
+      "gate": "BOUNDARY.atlas",
+      "passed": true,
+      "statement": "x=0 is a chart boundary, not an overlap rank defect"
+    }
+  ],
+  "passed": 6,
+  "strength": "symbolic finite-stage jet transport theorem",
+  "total": 6,
+  "verdict": "Spin-two gluing and source-jet chart inversion are faithful. Source jets transform triangularly with unsigned Lah coefficients, and every finite stage is invertible on chart overlap; zeros at x=0 belong to the atlas boundary."
+}

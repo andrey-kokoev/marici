@@ -1,0 +1,71 @@
+{
+  "aggregate_gates": {
+    "S3_charge_label_uses_F3_plus_zero_mode_H": true,
+    "S3_regular_representation_routing_is_exact": true,
+    "all_seventy_two_control_sector_basis_cases_clean": true,
+    "all_three_controlled_powers_are_exact": true,
+    "arbitrary_single_bus_fault_can_still_reach_four_data_edges": true,
+    "both_workspace_buses_return_clean": true,
+    "centralizer_irreps_derive_all_eight_sector_labels": true,
+    "compiler_uses_only_one_and_two_body_primitives": true,
+    "sector_labels_are_derived_before_target_residues": true,
+    "serial_gate_count_is_forty_five_per_power": true
+  },
+  "ancillas": {
+    "holonomy_bus_dimension": 6,
+    "record_control_dimension": 2,
+    "record_control_retained": true,
+    "sector_label_bus_dimension": 8,
+    "workspace_cleanup": "both_buses_exactly_clean"
+  },
+  "compute_phase_uncompute_basis_cases_verified": 72,
+  "conditional_gate_contracts": [
+    "reversible_relative_coordinate",
+    "holonomy_conditioned_transporter_alignment",
+    "class_conditioned_F3_and_H",
+    "two_body_flux_and_charge_label_copy"
+  ],
+  "controlled_powers_verified": [1, 2, 4],
+  "derived_sector_census": {
+    "anyon_dimensions": {"A": 1, "B": 1, "C": 2, "D": 3, "E": 3, "F": 2, "G": 2, "H": 2},
+    "centralizer_irrep_square_sums": {"c": 3, "e": 6, "t": 2},
+    "centralizer_orders": {"c": 3, "e": 6, "t": 2},
+    "centralizers": {"c": "Z3", "e": "S3", "t": "Z2"},
+    "regular_endpoint_dimension": 36
+  },
+  "fault_boundary": {
+    "arbitrary_bus_fault_max_data_weight_without_verification": 4,
+    "lower_arity_alone_reduces_worst_case_spread": false,
+    "reason": "one_bus_revisits_all_four_edge_light_cones",
+    "verified_bus_or_fresh_bus_segmentation_required": true
+  },
+  "fourier_mode_routing": {
+    "F3_and_H_are_exactly_unitary": true,
+    "S3_from_F3_then_zero_mode_H": {"A": 1, "B": 1, "C": 4},
+    "S3_regular_action_projector_ranks": {"A_plus_B": 2, "C_isotypic": 4},
+    "Z2_from_H": {"D": 1, "E": 1},
+    "Z3_from_F3": {"F": 1, "G": 1, "H": 1},
+    "sector_labels_derived_before_residue_assignment": true
+  },
+  "gate_inventory": {
+    "data_support": 4,
+    "forward_extractor_gates": 22,
+    "forward_sector_extractor": {
+      "charge_mode_copy_coordinate_to_label": 1,
+      "class_conditioned_F3_or_H_gates": 4,
+      "flux_class_copy_holonomy_to_label": 1,
+      "holonomy_compute_two_body": 4,
+      "holonomy_uncompute_two_body": 4,
+      "inverse_class_conditioned_F3_or_H_gates": 4,
+      "relative_coordinate_two_edge": 1,
+      "relative_coordinate_uncompute_two_edge": 1,
+      "transporter_alignment_edge_bus": 1,
+      "transporter_unalignment_edge_bus": 1
+    },
+    "maximum_primitive_arity": 2,
+    "record_label_phase_gates": 1,
+    "reverse_extractor_gates": 22,
+    "total_serial_gates_per_controlled_power": 45
+  },
+  "schema": "marici.s3-centralizer-fourier-sector-bus.v1"
+}

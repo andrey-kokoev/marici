@@ -1,0 +1,51 @@
+{
+  "aggregate_gates": {
+    "all_forty_eight_single_bit_corruptions_decode_uniquely": true,
+    "all_raw_single_bit_flips_mislabel": true,
+    "length_at_most_five_is_impossible_by_hamming_bound": true,
+    "length_six_distance_three_code_exists": true,
+    "record_protection_does_not_supply_controlled_powers": true
+  },
+  "lower_bound": {
+    "minimum_length": 6,
+    "radius_one_hamming_bound_by_length": {
+      "3": false,
+      "4": false,
+      "5": false,
+      "6": true
+    }
+  },
+  "protected_record": {
+    "additional_record_bits": 3,
+    "bits": 6,
+    "code": "punctured_binary_simplex_[6,3,3]",
+    "generator_columns": [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 0],
+      [1, 0, 1],
+      [0, 1, 1]
+    ],
+    "labels": 8,
+    "minimum_distance": 3,
+    "single_bit_corruptions_uniquely_decoded": 48
+  },
+  "raw_record": {
+    "bits": 3,
+    "labels": 8,
+    "minimum_distance": 1,
+    "single_bit_flips": 24,
+    "single_bit_flips_that_mislabel": 24
+  },
+  "schema": "marici.s3-sector-record-redundancy.v1",
+  "scope_boundary": {
+    "does_not_protect": [
+      "controlled_power_fault",
+      "inverse_F8_fault",
+      "wrong_label_before_encoding",
+      "encoder_gate_fault_without_fault_tolerant_schedule"
+    ],
+    "protects": "one_bit_flip_after_correct_label_encoding"
+  }
+}

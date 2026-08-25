@@ -1,0 +1,51 @@
+{
+  "checker": "physical_puncture_parity_transport_checks.py",
+  "checks": [
+    {
+      "detail": "z^-4 K+(p(z);p(x))=K+",
+      "gate": "GLUE.plus",
+      "passed": true,
+      "statement": "positive helicity has ordinary spin-two gluing"
+    },
+    {
+      "detail": "zb^-4 K-(p(z);p(x))=K-",
+      "gate": "GLUE.minus",
+      "passed": true,
+      "statement": "negative helicity has conjugate spin-two gluing"
+    },
+    {
+      "detail": "both transition ratios are one",
+      "gate": "GLUE.no_extra_cocycle",
+      "passed": true,
+      "statement": "no additional cocycle remains"
+    },
+    {
+      "detail": "sigma(K+)=K-",
+      "gate": "HELICITY.exchange",
+      "passed": true,
+      "statement": "helicity conjugation exchanges kernels"
+    },
+    {
+      "detail": "p(z)=p(x) iff z=x",
+      "gate": "INCIDENCE.preserve",
+      "passed": true,
+      "statement": "simultaneous transport preserves z=x"
+    },
+    {
+      "detail": "P^2 K+=K+",
+      "gate": "PARITY.involution",
+      "passed": true,
+      "statement": "two-chart parity is involutive"
+    },
+    {
+      "detail": "n=0..100",
+      "gate": "CHART.support",
+      "passed": true,
+      "statement": "exterior support maps exactly to north support"
+    }
+  ],
+  "passed": 7,
+  "strength": "exact invariant two-chart tensor transport",
+  "total": 7,
+  "verdict": "The invariant puncture shear glues exactly as a spin-two section. The earlier x^2/z^2 factor was a coordinate-Green artifact; chart transport is faithful and helicity exchange is separate."
+}

@@ -1,0 +1,57 @@
+{
+  "checker": "physical_spin_readout_constructor_checks.py",
+  "checks": [
+    {
+      "detail": "d_xb G=(1+x*zb)/((xb-zb)(1+x*xb))",
+      "gate": "GREEN.dbar",
+      "passed": true,
+      "statement": "the orbital PSZ kernel is the exact source derivative of log chordal distance"
+    },
+    {
+      "detail": "away from z=x, d_x d_xb G=-1/(1+x*xb)^2",
+      "gate": "GREEN.mixed",
+      "passed": true,
+      "statement": "the regular mixed source derivative is the sphere zero-mode subtraction"
+    },
+    {
+      "detail": "distributional completion adds 2*pi*delta^2(x-z)",
+      "gate": "GREEN.background",
+      "passed": true,
+      "statement": "the regular mixed derivative equals -gamma/2"
+    },
+    {
+      "detail": "Res_zb=xb d_xb G=-1",
+      "gate": "PORT.residue",
+      "passed": true,
+      "statement": "the orbital source coefficient has a nonzero local pole port"
+    },
+    {
+      "detail": "seven-puncture hostile residue matrix has full rank",
+      "gate": "PORT.reconstruct",
+      "passed": true,
+      "statement": "distinct puncture residue ports reconstruct all orbital source labels"
+    },
+    {
+      "detail": "delta=2*I*pi*h/(x*xb + 1)**2; background=-I*h/(x*xb + 1)**4",
+      "gate": "PORT.spin",
+      "passed": true,
+      "statement": "the spin source has both a puncture delta port and a sphere background port"
+    },
+    {
+      "detail": "orders 0..20",
+      "gate": "TARGET.tail",
+      "passed": true,
+      "statement": "every finite coefficient chart of a puncture pole omits a coherent nonzero tail"
+    },
+    {
+      "detail": "hostile polynomial potential",
+      "gate": "QUOTIENT.exact",
+      "passed": true,
+      "statement": "the local curl removes exact real-gradient shifts"
+    }
+  ],
+  "passed": 8,
+  "strength": "source-derived PSZ source/readout morphism",
+  "total": 8,
+  "verdict": "The PSZ source generates puncture-supported orbital and spin distributions. Complete local residue and delta ports reconstruct the labelled hard packet before conservation quotients, whereas a finite Laurent target omits coherent tails and distributional ports."
+}

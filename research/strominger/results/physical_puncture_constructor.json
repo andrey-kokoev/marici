@@ -1,0 +1,51 @@
+{
+  "checker": "physical_puncture_constructor_checks.py",
+  "checks": [
+    {
+      "detail": "exact symbolic identity",
+      "gate": "KERNEL.derive",
+      "passed": true,
+      "statement": "D_z^2(S log S) is the invariant rational shear"
+    },
+    {
+      "detail": "zb/(z*(z*zb + 1)**3)",
+      "gate": "KERNEL.center",
+      "passed": true,
+      "statement": "the centered puncture is zb/(z*(1+u)^3)"
+    },
+    {
+      "detail": "orders 0..12",
+      "gate": "SERIES.locked",
+      "passed": true,
+      "statement": "both charts use the negative-binomial tail"
+    },
+    {
+      "detail": "both parities; onset a=4",
+      "gate": "SUPPORT.diagonal",
+      "passed": true,
+      "statement": "exterior support is m=2-a at every a>=4"
+    },
+    {
+      "detail": "(n+1)c[n+1]=-(n+3)c[n]",
+      "gate": "SERIES.recurrence",
+      "passed": true,
+      "statement": "coherent coefficients obey the source recurrence"
+    },
+    {
+      "detail": "both charts, orders 0..20",
+      "gate": "TRUNCATION.nonexact",
+      "passed": true,
+      "statement": "no finite chart truncation is global"
+    },
+    {
+      "detail": "both charts, orders 0..20",
+      "gate": "FINITE.boundary",
+      "passed": true,
+      "statement": "multiplication by (1+u)^3 exposes a boundary"
+    }
+  ],
+  "passed": 7,
+  "strength": "invariant source derivation plus hostile finite audit",
+  "total": 7,
+  "verdict": "The invariant point-memory constructor is a coherent spin-two rational kernel. Its exterior chart begins at depth four on m=2-a, has locked negative-binomial coefficients, and has no exact finite Laurent representative."
+}

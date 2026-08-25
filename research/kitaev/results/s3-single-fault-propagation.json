@@ -1,0 +1,46 @@
+{
+  "aggregate_gates": {
+    "all_tested_ancilla_faults_leave_a_cleanliness_flag": true,
+    "branch_bit_faults_are_not_local_syndrome_events": true,
+    "distance_five_is_required_for_arbitrary_weight_two_recovery": true,
+    "every_single_readout_bit_flip_mislabels_the_sector": true,
+    "holonomy_compiler_ancilla_faults_do_not_spread_to_data": true,
+    "holonomy_compiler_edge_faults_are_data_nonspreading": true,
+    "relative_coordinate_gate_can_spread_one_fault_to_two_edges": true,
+    "syndrome_does_not_choose_a_preferred_decoder": true
+  },
+  "classical_and_readout_faults": {
+    "every_single_record_bit_flip_changes_the_reported_sector": true,
+    "local_syndrome_visibility": "classical_record_faults_are_invisible",
+    "random_branch_bit_flip": "changes_central_unitary_but_preserves_sector_label",
+    "single_sector_record_bit_flips_checked": 24
+  },
+  "deliberate_failure": {
+    "actual": false,
+    "claim": "every_single_fault_in_the_explicit_compilers_remains_weight_one_on_data",
+    "counterexample": "first_input_fault_of_the_relative_coordinate_gate_has_output_support_two"
+  },
+  "holonomy_compiler": {
+    "ancilla_fault_cases": 11664,
+    "ancilla_faults_detected_by_non_e_final_state": 11664,
+    "edge_fault_cases": 46656,
+    "edge_fault_cases_with_residual_ancilla": 20736,
+    "maximum_data_support_from_one_ancilla_fault": 0,
+    "maximum_final_data_edge_support_from_one_edge_fault": 1
+  },
+  "recovery_typing": {
+    "holonomy_ancilla_fault": "detect_by_final_non_e_check_then_discard_or_reset",
+    "preferred_decoder": "not_selected_by_syndrome_or_this_audit",
+    "record_bit_fault": "requires_classical_redundancy_or_repeated_measurement",
+    "relative_gate_weight_two_fault": "arbitrary_correction_requires_code_distance_at_least_five",
+    "single_data_edge_fault": "route_to_a_declared_D_S3_syndrome_decoder",
+    "within_block_primitive_pulse_faults": "unresolved_because_timed_words_are_unresolved"
+  },
+  "relative_coordinate_gate": {
+    "basis_pairs_checked": 36,
+    "first_input_fault_output_support": 2,
+    "second_input_fault_output_support": 1,
+    "single_fault_can_become_weight_two": true
+  },
+  "schema": "marici.s3-single-fault-propagation.v1"
+}

@@ -1,6 +1,6 @@
 # The magnetic kernel forms three pole-depth towers
 
-Companion to `checkers/magnetic_kernel_tower_checks.py` (38/38, exit 0)
+Companion to `checkers/magnetic_kernel_tower_checks.py` (42/42, exit 0)
 and `results/magnetic_kernel_tower.json`. This packet expands the smaller
 grid of `magnetic-kernel.md` and supersedes only dimension interpretations
 made outside that earlier packet's explicitly declared cutoff.
@@ -75,11 +75,16 @@ The grade-2 exceptional line \(1-\bar z^{-2}\) is rational-exact with
 \Phi=-\frac{20(z+\bar z)}{1+u}.
 \]
 
-Hence the rational-exact dimensions are \((2,1,1,1)\), while the quotient
-of the closed kernel by rational-exact directions has dimension two at every
-tested grade. The stable object is not merely a magnetic-zero line: it is a
-two-dimensional residue quotient, one line at each nonzero admitted pole
-depth.
+The individual residue test does **not** make these two directions independent
+in rational cohomology: both residue pairs lie on the same two divisors.  Their
+weighted difference is rational-exact at every audited grade.  Consequently
+the rational-exact dimensions are \((3,2,2,2)\), and the ordinary quotient of
+the closed kernel by rational-exact directions has dimension one at every
+tested grade.
+
+The earlier `(2,1,1,1)` inference is superseded.  One line per positive depth
+exists only in a depth-labelled associated grade that forbids cross-depth
+cancellation; it is not the ordinary rational de Rham quotient.
 
 ## What changed from the first census
 
@@ -95,12 +100,12 @@ typed comparison.
 The repeated formula strongly suggests an all-grade tower law, but grades
 2 through 5 do not prove it. No symbolic-grade induction, global de Rham
 classification, source descent, or physical gauge interpretation is claimed.
-The cheapest next theorem would derive the folded pair for
-\(D_{g,a}\) with symbolic \(g\) and explain why the residue quotient has one
-line for each nonzero pole depth.
+The symbolic theorem is now supplied by
+`magnetic-tower-logarithmic-normal-form-proof.md`: all positive-depth towers
+are rational representatives of one universal logarithmic class.
 
 ## Verification
 
 `uv run --with sympy python -u research/strominger/checkers/magnetic_kernel_tower_checks.py`
-passes 38/38. Groups: GRID (8), TOWER (12), RAT (4), RES (8), FAIL (4),
-EXC (2). All arithmetic, ranks, potentials, and residues are exact.
+passes 42/42. Groups: GRID (8), TOWER (12), RAT (4), RES (8), RATCOMB (4),
+FAIL (4), EXC (2). All arithmetic, ranks, potentials, and residues are exact.

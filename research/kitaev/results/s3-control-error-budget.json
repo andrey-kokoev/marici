@@ -1,0 +1,95 @@
+{
+  "aggregate_gates": {
+    "all_nonzero_lift_differences_are_catalogued": true,
+    "branch_dependent_phase_bound_is_rigorous": true,
+    "common_additive_offset_does_not_resurrect_coherence": true,
+    "flux_port_angle_error_propagates_into_exact_leakage_formula": true,
+    "leading_scale_sensitivities_are_exact": true,
+    "scale_error_geometric_residual_is_exact": true,
+    "separator_operator_norm_error_is_exact": true,
+    "single_overweight_fourier_residual_is_eight_eta_over_seven": true
+  },
+  "branch_dependent_angle_errors": {
+    "exact_residual": "(1/8)*sum_k zeta^(k*Delta)*exp(-i*Delta*delta_k)",
+    "rigorous_bound": "Abs(Delta)/8*sum_k Abs(delta_k)"
+  },
+  "branch_weight_error": {
+    "all_nontrivial_mode_magnitudes": "8*Abs(eta)/7",
+    "general_bound": "sum_k Abs(e_k)=2*total_variation_distance",
+    "general_residual": "sum_k e_k*zeta^(k*Delta)_with_sum_e_k_zero",
+    "single_overweight_pattern": "eta,-eta/7,...,-eta/7"
+  },
+  "central_integer_lifts": [
+    -8,
+    1,
+    2,
+    3,
+    6,
+    7,
+    20,
+    5
+  ],
+  "common_additive_phase_offset": {
+    "cross_sector_residual": "0",
+    "reason": "common_unitary_factor_multiplies_the_ideal_zero_character_sum"
+  },
+  "common_fractional_timing_or_amplitude_error": {
+    "cross_sector_residual": "(1-exp(-2*pi*i*Delta*epsilon))/(8*(1-exp(-2*pi*i*Delta*(1+epsilon)/8)))",
+    "definition": "actual_branch_angle=(1+epsilon)*ideal_branch_angle",
+    "leading_residual_magnitude_squared_coefficient_by_Delta": {
+      "1": "sqrt(2)*pi**2/32 + pi**2/16",
+      "10": "25*pi**2/8",
+      "11": "-121*sqrt(2)*pi**2/32 + 121*pi**2/16",
+      "13": "-169*sqrt(2)*pi**2/32 + 169*pi**2/16",
+      "14": "49*pi**2/8",
+      "15": "225*sqrt(2)*pi**2/32 + 225*pi**2/16",
+      "17": "289*sqrt(2)*pi**2/32 + 289*pi**2/16",
+      "18": "81*pi**2/8",
+      "19": "-361*sqrt(2)*pi**2/32 + 361*pi**2/16",
+      "2": "pi**2/8",
+      "28": "49*pi**2/4",
+      "3": "-9*sqrt(2)*pi**2/32 + 9*pi**2/16",
+      "4": "pi**2/4",
+      "5": "-25*sqrt(2)*pi**2/32 + 25*pi**2/16",
+      "6": "9*pi**2/8",
+      "9": "81*sqrt(2)*pi**2/32 + 81*pi**2/16"
+    },
+    "typing_warning": "depends_on_integer_lifts_not_only_mod_8_residues"
+  },
+  "deliberate_failure": {
+    "actual": false,
+    "claim": "only_residues_modulo_eight_matter_for_calibration_robustness",
+    "reason": "multiplicative_error_slopes_depend_on_full_integer_eigenvalue_differences"
+  },
+  "element_flux_angle_error": {
+    "angle_product": "theta=J*t",
+    "exact_product_error": "dtheta=t*dJ+J*dt+dJ*dt",
+    "final_leakage_after_error": {
+      "three_cycle": "sin(dtheta/2 + theta/2)**2",
+      "transposition": "8*sin(dtheta/2 + theta/2)**2/9"
+    }
+  },
+  "gh_separator_angle_error": {
+    "generator_norm": "sqrt(3)/2",
+    "unitary_operator_norm_error": "2*Abs(sin(sqrt(3)*dtheta/4))"
+  },
+  "nonzero_absolute_eigenvalue_differences": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    28
+  ],
+  "schema": "marici.s3-control-error-budget.v1"
+}

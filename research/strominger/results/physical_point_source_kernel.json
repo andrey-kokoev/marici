@@ -1,0 +1,39 @@
+{
+  "checker": "physical_point_source_kernel_checks.py",
+  "checks": [
+    {
+      "detail": "one through twenty punctures with distinct nonzero metric weights",
+      "gate": "LOCAL.injective",
+      "passed": true,
+      "statement": "complete residue and delta ports are injective for distinct punctures"
+    },
+    {
+      "detail": "two through ten punctures",
+      "gate": "LOCAL.conservation",
+      "passed": true,
+      "statement": "restriction to explicit sum-zero conservation subspaces remains injective"
+    },
+    {
+      "detail": "source dimensions 2..30; one through five retained contours",
+      "gate": "CONTOUR.deficiency",
+      "passed": true,
+      "statement": "an incomplete contour family has the rank-forced source kernel"
+    },
+    {
+      "detail": "kernel vector=(c2,-c1)",
+      "gate": "CONTOUR.circuit",
+      "passed": true,
+      "statement": "the two-route one-contour alias depends on the physical pairing coefficients"
+    },
+    {
+      "detail": "minimal two-source collision model",
+      "gate": "COLLISION.jet",
+      "passed": true,
+      "statement": "coincident value ports lose a label and a first-jet port restores it"
+    }
+  ],
+  "passed": 5,
+  "strength": "unbounded finite-puncture kernel theorem",
+  "total": 5,
+  "verdict": "Complete local residue and delta ports are injective on every finite distinct-puncture packet. Kernels arise from incomplete contour selection or collision-incomplete targets, with pairing-dependent circuits unrelated to the Laurent towers and E1/E2."
+}

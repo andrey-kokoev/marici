@@ -1,0 +1,45 @@
+{
+  "checker": "physical_laurent_completion_cutoff_checks.py",
+  "checks": [
+    {
+      "detail": "orders 0..30",
+      "gate": "TAIL.identity",
+      "passed": true,
+      "statement": "the omitted tail has the exact quadratic-over-cubic form"
+    },
+    {
+      "detail": "z=2,zb=3",
+      "gate": "RESPONSE.formula",
+      "passed": true,
+      "statement": "the tail response has the exact sextic witness"
+    },
+    {
+      "detail": "all sextic coefficients strictly positive",
+      "gate": "RESPONSE.unbounded",
+      "passed": true,
+      "statement": "every nonnegative cutoff has nonzero tail response"
+    },
+    {
+      "detail": "N=0..100",
+      "gate": "RESPONSE.hostile",
+      "passed": true,
+      "statement": "the witness is nonzero through cutoff 100"
+    },
+    {
+      "detail": "N=0..8",
+      "gate": "REPAIR.commute",
+      "passed": true,
+      "statement": "partial plus remainder reconstructs the full readout"
+    },
+    {
+      "detail": "exact rational response",
+      "gate": "SOURCE.nonzero",
+      "passed": true,
+      "statement": "the full invariant puncture has nonzero grade-three density"
+    }
+  ],
+  "passed": 6,
+  "strength": "corrected unbounded source-cutoff obstruction",
+  "total": 6,
+  "verdict": "No finite Laurent cutoff stabilizes the invariant point source. Its negative-binomial remainder has a grade-three witness equal to a positive-coefficient sextic for every N>=0; only the global kernel or partial-plus-remainder packet is exact."
+}

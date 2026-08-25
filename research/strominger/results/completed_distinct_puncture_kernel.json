@@ -1,0 +1,45 @@
+{
+  "checker": "completed_distinct_puncture_kernel_checks.py",
+  "checks": [
+    {
+      "detail": "jet bounds J=0..20",
+      "gate": "SYMBOL.rank",
+      "passed": true,
+      "statement": "multiplication by p^4-q^4 has full column rank"
+    },
+    {
+      "detail": "triangular monomial bases",
+      "gate": "FILTER.dimensions",
+      "passed": true,
+      "statement": "source and output filtration dimensions match the formula"
+    },
+    {
+      "detail": "unique p-leading image for J=0..20; formula independent of J",
+      "gate": "SYMBOL.proof",
+      "passed": true,
+      "statement": "lexicographic leading monomials certify injectivity unboundedly"
+    },
+    {
+      "detail": "1..10 punctures at J=6",
+      "gate": "SUPPORT.blocks",
+      "passed": true,
+      "statement": "distinct puncture blocks remain injective"
+    },
+    {
+      "detail": "(p-q)(p+q)(p^2+q^2)",
+      "gate": "CHARACTERISTIC.no_annihilator",
+      "passed": true,
+      "statement": "factorization gives characteristics but no polynomial zero divisor"
+    },
+    {
+      "detail": "J=4 representative; dimensions equal by block form",
+      "gate": "KERNEL.full",
+      "passed": true,
+      "statement": "the only pre-symbol kernel is the projected electric half"
+    }
+  ],
+  "passed": 6,
+  "strength": "unbounded filtered principal-symbol proof plus sparse hostile census",
+  "total": 6,
+  "verdict": "For every finite jet bound, multiplication by the grade-three symbol p^4-q^4 is injective on point-supported polynomial jets. Distinct supports remain blockwise injective. Before later gauge/period quotients, the full kernel is exactly the electric parity sector and there is no additional magnetic interior circuit."
+}

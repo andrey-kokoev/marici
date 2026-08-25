@@ -1,0 +1,60 @@
+{
+  "schema": "marici.flavor.constructor-task-classification.v1",
+  "tasks": {
+    "preparation": {
+      "changes_substrate": true,
+      "appends_record": false,
+      "proper_image": true,
+      "selector_candidate": true
+    },
+    "discrimination": {
+      "changes_substrate": false,
+      "appends_record": true,
+      "proper_image": false,
+      "selector_candidate": false
+    },
+    "filtering": {
+      "changes_substrate": false,
+      "appends_record": true,
+      "proper_image": false,
+      "selector_candidate": false,
+      "conditional": true
+    },
+    "stabilization": {
+      "changes_substrate": true,
+      "appends_record": false,
+      "proper_image": true,
+      "selector_candidate": true
+    },
+    "copying": {
+      "changes_substrate": false,
+      "appends_record": false,
+      "proper_image": false,
+      "selector_candidate": false
+    },
+    "readout": {
+      "changes_substrate": false,
+      "appends_record": true,
+      "proper_image": false,
+      "selector_candidate": false
+    }
+  },
+  "hostile_pair": {
+    "physical_equal": false,
+    "measured10_equal": true,
+    "measured_readout_discriminates": false,
+    "measured_readout_selects": false
+  },
+  "gates": {
+    "six_task_types_are_declared": true,
+    "only_preparation_and_stabilization_are_unconditional_selector_classes": true,
+    "readout_preserves_substrate": true,
+    "discrimination_is_not_selection": true,
+    "filter_requires_typed_postselection": true,
+    "copying_requires_information_variable_typing": true,
+    "finite_fiber_is_not_singleton_fiber": true,
+    "composition_cannot_create_undeclared_resources": true
+  },
+  "passed": 8,
+  "total": 8
+}

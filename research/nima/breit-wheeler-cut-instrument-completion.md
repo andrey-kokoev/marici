@@ -2,6 +2,10 @@
 
 Owner: `marici.Nima`
 
+Status: this identifies what the inclusive Cut alone cannot determine.  The
+missing one-loop elastic phase has now been reconstructed from the oriented
+Cut and its source boundary jet; see `qed-elastic-pair-instrument.md`.
+
 Let (E_{\rm cut}\) be the positive forward Breit--Wheeler helicity Gram
 matrix.  After a dimensionless exposure (\tau), the event effect is
 
@@ -92,4 +96,3 @@ the declared helicity/crossing conventions.
 - A no-event Lüders update is called source-derived without deriving the
   elastic amplitude.
 - The completed channel fails to reproduce the established Cut effect.
-

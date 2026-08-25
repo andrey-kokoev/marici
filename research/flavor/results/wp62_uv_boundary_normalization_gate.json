@@ -1,0 +1,43 @@
+{
+  "schema": "marici.flavor.uv-boundary-normalization-gate.v1",
+  "arithmetic": "exact rational linear transport",
+  "model": "x_IR=A x_UV with invertible A; UV law B x_UV=b",
+  "transported_constraint": "B A^{-1} x_IR=b",
+  "ranks": {
+    "ambient": 3,
+    "constraint": 1,
+    "selected_dimension": 2
+  },
+  "hostile_pair": {
+    "x1": [
+      "1",
+      "2",
+      "3"
+    ],
+    "x2": [
+      "2",
+      "1",
+      "3"
+    ],
+    "frozen_b": "1",
+    "x1_residual": "0",
+    "x2_residual": "1"
+  },
+  "classification": {
+    "rg_transport_selector": false,
+    "transport_plus_independent_boundary_selector": true,
+    "source_authorized_in_declared_paper": false,
+    "instrument": "requires independent UV/threshold measurement or a derived vacuum law"
+  },
+  "minimal_added_structure": "one source-derived quotient-level boundary equation with normalization fixed independently of the IR point",
+  "smallest_exact_falsifier": "refitting b separately to x1 and x2 makes both pass, proving an unfrozen normalization predicts nothing",
+  "conclusion": "A boundary law can turn invertible transport into proper selection, but only when its normalization is independently frozen; the declared source supplies no such law.",
+  "gates": {
+    "transport_is_invertible_without_boundary": true,
+    "boundary_pushes_forward_to_exact_ir_constraint": true,
+    "one_independent_boundary_reduces_dimension_by_one": true,
+    "frozen_boundary_selects_one_hostile_point": true,
+    "ir_fitted_normalization_is_circular": true,
+    "declared_source_lacks_frozen_normalization": true
+  }
+}

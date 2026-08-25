@@ -1,0 +1,51 @@
+{
+  "schema": "marici.flavor.stochastic-cp-constructor-repair.v1",
+  "source": "FDM-2 authorized extension of FDM-1",
+  "defect_repaired": "deterministic CP-equivariant flow fixes s=0",
+  "task": "uniform Markov preparation of s=+/-1 from every real s",
+  "instrument_ports": [
+    "modulus",
+    "cooled_bath",
+    "orientation_coin",
+    "time_control",
+    "reset"
+  ],
+  "errors": {
+    "coin_bias": "1/1000",
+    "total_variation": "1/1000",
+    "bath_degradation_per_cycle": "1/10000",
+    "coin_drift_per_cycle": "1/20000",
+    "cycles": 200,
+    "total_degradation_bound": "3/100"
+  },
+  "prediction": {
+    "J_nonzero": true,
+    "sheets": 1210,
+    "passes": 1210
+  },
+  "fields": {
+    "proper_total_operation": true,
+    "independent_authority_and_normalization": true,
+    "task_specific_instrument": true,
+    "repeatability_degradation": true,
+    "own_ensemble_prediction": true
+  },
+  "gates": {
+    "WP87_dependency": true,
+    "deterministic_symmetry_fixed_point_detected": true,
+    "kernel_is_total_on_negative_zero_positive_inputs": true,
+    "kernel_image_is_two_vacuum_attribute": true,
+    "CP_covariance_of_uniform_kernel": true,
+    "uniform_weights_forced": true,
+    "hostile_zero_input_leaves_symmetric_point": true,
+    "attribute_repeatable": true,
+    "coin_total_variation_error_exact": true,
+    "finite_degradation_bound": true,
+    "complete_ensemble": true,
+    "prediction_survives_all_sheets": true,
+    "all_package_fields_pass": true
+  },
+  "passed": 13,
+  "total": 13,
+  "empirical_status": "coherent proposed source; physical coin and UV bath remain unverified"
+}

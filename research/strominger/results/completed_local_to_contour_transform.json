@@ -1,0 +1,57 @@
+{
+  "checker": "completed_local_to_contour_transform_checks.py",
+  "checks": [
+    {
+      "detail": "orders k=1..10",
+      "gate": "PERIOD.residue",
+      "passed": true,
+      "statement": "a local period reads only the simple-pole coefficient"
+    },
+    {
+      "detail": "orders k=2..10",
+      "gate": "PERIOD.exact",
+      "passed": true,
+      "statement": "every higher principal power is an exact local derivative"
+    },
+    {
+      "detail": "punctures 2..12; rank n-1",
+      "gate": "PERIOD.complete",
+      "passed": true,
+      "statement": "the complete loop family is faithful on residue cohomology"
+    },
+    {
+      "detail": "sum of loop rows vanishes",
+      "gate": "BOUNDARY.sum",
+      "passed": true,
+      "statement": "the boundary-at-infinity row enforces total residue zero"
+    },
+    {
+      "detail": "punctures 3..12",
+      "gate": "PERIOD.single",
+      "passed": true,
+      "statement": "one contour is deficient when cohomology has dimension >1"
+    },
+    {
+      "detail": "finite quadrature models n=2..14",
+      "gate": "GREEN.constant",
+      "passed": true,
+      "statement": "normalized Green inversion removes exactly the constant mode"
+    },
+    {
+      "detail": "l=0..20",
+      "gate": "SPIN2.zero_modes",
+      "passed": true,
+      "statement": "D_z^2 reconstruction has precisely l=0,1 scalar zero modes"
+    },
+    {
+      "detail": "delta orders 0..10",
+      "gate": "DIST.period",
+      "passed": true,
+      "statement": "unweighted periods see delta mass but not derivative jets"
+    }
+  ],
+  "passed": 8,
+  "strength": "exact genus-zero de Rham and zero-mode classification",
+  "total": 8,
+  "verdict": "The complete contour family is faithful exactly on punctured-sphere H1: it reads simple-pole residues subject to one global sum relation. Green normalization removes constants, spin-two reconstruction removes l<=1, and exact forms, higher poles, and delta derivatives are invisible to ordinary periods."
+}
