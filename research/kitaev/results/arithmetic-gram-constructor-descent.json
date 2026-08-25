@@ -1,0 +1,263 @@
+{
+  "adjacent_formula": {
+    "input_norm_squared": "2(A0-A(delta_n)) -> 0",
+    "necessary_for_bounded_descent_when_f_is_bounded": "f(n+1)-f(n) -> 0",
+    "output_norm_squared": "A0|f(n+1)-f(n)|^2 + 2 Re(conj(f(n+1))f(n))(A0-A(delta_n))"
+  },
+  "authority_trichotomy": {
+    "descends": "no new port required for this constructor",
+    "fails_to_descend": "retain a jointly faithful discrete source port if the constructor is admitted",
+    "not_operative": "no authority to demand preservation"
+  },
+  "checker_sha256": "18227afe527c0d790560c61a57e7f3c217a4a19ce08f90dbc990eca8017681a1",
+  "discrete_port_compiler": {
+    "finite_horizon_2_to_100": {
+      "divisible_by_3": {
+        "minimum_binary_bits_on_horizon": 1,
+        "pattern_count": 2,
+        "realized_patterns": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      "parity": {
+        "minimum_binary_bits_on_horizon": 1,
+        "pattern_count": 2,
+        "realized_patterns": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      "parity_and_div3": {
+        "minimum_binary_bits_on_horizon": 2,
+        "pattern_count": 4,
+        "realized_patterns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "prime_and_prime_power": {
+        "minimum_binary_bits_on_horizon": 2,
+        "pattern_count": 3,
+        "realized_patterns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "rule": "quotient labels by equality of all admitted non-descending constructor attributes; encode the realized joint patterns",
+    "typed_prime_power_label": "a Boolean port suffices only for the predicate; constructors using base or exponent require those typed values"
+  },
+  "first_invalid_constructor": {
+    "adjacent_value_jump": 2,
+    "code": "arithmetic_constructor_does_not_descend_to_gram_completion",
+    "constructor": "parity",
+    "input_gram_norm_squared": "2(A0-A(log 2)); asymptotic copies use (n,n+1) and tend to 0",
+    "labels": [
+      1,
+      2
+    ],
+    "output_gram_norm_squared": "2(A0+A(log(1+1/n))) -> 4A0",
+    "requires_discrete_port": true
+  },
+  "full_descent_criterion": {
+    "adjacent_continuity_is_sufficient": false,
+    "diagonal": "D_f,N=diag(f(1),...,f(N))",
+    "finite_kernel": "K_N=(K(n,m))",
+    "necessary_and_sufficient": "exists C independent of N with D_f,N^* K_N D_f,N <= C^2 K_N for every N"
+  },
+  "mellin_control": {
+    "adjacent_condition_passes_for_fixed_t": true,
+    "bound": "|(n+1)^(it)-n^(it)| <= |t| log(1+1/n) <= |t|/n",
+    "constructor": "f_t(n)=n^(it)",
+    "full_Gram_boundedness_proved": false
+  },
+  "non_descent_witnesses": {
+    "divisible_by_3": {
+      "jump_magnitude": 1,
+      "output_norm_squared": "A0",
+      "pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          17,
+          18
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          23,
+          24
+        ]
+      ]
+    },
+    "parity": {
+      "jump_magnitude": 2,
+      "output_limit": "4A0",
+      "pairs": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    "prime_power_type": {
+      "infinite_proof": "2^(2m)-1=(2^m-1)(2^m+1) has coprime nontrivial factors for m>=2, while 2^(2m) is a prime power",
+      "jump_magnitude": 1,
+      "pairs": [
+        [
+          15,
+          16
+        ],
+        [
+          63,
+          64
+        ],
+        [
+          255,
+          256
+        ],
+        [
+          1023,
+          1024
+        ],
+        [
+          4095,
+          4096
+        ],
+        [
+          16383,
+          16384
+        ],
+        [
+          65535,
+          65536
+        ],
+        [
+          262143,
+          262144
+        ]
+      ]
+    },
+    "prime_type": {
+      "infinite_proof": "for every prime p>3, p-1 is composite; infinitely many primes exist",
+      "jump_magnitude": 1,
+      "pairs": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          28,
+          29
+        ]
+      ]
+    }
+  },
+  "schema": "marici.kitaev.arithmetic-gram-constructor-descent.v1",
+  "verdict": "Adjacent collapse forbids every bounded admitted diagonal constructor with persistent adjacent jumps. Parity, fixed-prime divisibility, prime type, and prime-power type have exact infinite witnesses; fixed Mellin characters pass the necessary adjacent test but still require the global kernel inequality. Minimal discrete repair is the code of joint values of the admitted non-descending attributes, not a universal copy of the integer label."
+}

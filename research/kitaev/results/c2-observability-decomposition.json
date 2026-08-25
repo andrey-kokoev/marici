@@ -1,0 +1,56 @@
+{
+  "PBH_witness": {
+    "eigenvalue": 0,
+    "even_output": 0,
+    "odd_seam_output": 1,
+    "state": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "checker_sha256": "dfa3c67c5b7c4be2f9ff323950b31603b21f48ffc8c53ab8c5533f7b3404bf2f",
+  "exact_model": {
+    "A_block": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "A_commutes_with_R": true,
+    "even_only_observability_rank": 2,
+    "full_character_observability_rank": 4,
+    "odd_only_observability_rank": 2,
+    "parity_dimensions": {
+      "even": 2,
+      "odd": 2
+    },
+    "state_dimension": 4
+  },
+  "minimality": {
+    "additional_odd_output_rows": 1,
+    "odd_hidden_state_dimension": 2,
+    "reason_one_row_suffices": "dynamics generates two independent odd Krylov functionals",
+    "required_quantity": "rank of the restricted observability matrix, not raw row count"
+  },
+  "schema": "marici.kitaev.c2-observability-decomposition.v1",
+  "source_test": {
+    "completion": "bound the two restricted Gramians uniformly; the full bound is their minimum when cross terms vanish",
+    "first": "verify [A_X,R_X]=0 or record its residual",
+    "second": "compute character projections J_even=(J+JR)/2 and J_odd=(J-JR)/2",
+    "third": "run observability/PBH separately on V_even and V_odd"
+  },
+  "theorem_checks": {
+    "Hadamard_determinant": -2,
+    "even_output_kills_odd_block_at_all_Krylov_orders": true,
+    "generic_output_orbit_equals_character_split_up_to_Hadamard": true,
+    "odd_output_kills_even_block_at_all_Krylov_orders": true,
+    "pure_character_sheet_copy_adds_rank": false
+  },
+  "verdict": "For C2-equivariant dynamics, observability decomposes by sheet character. A pure even Clark output can never observe an odd invariant state, regardless of propagation time. A genuinely odd seam row can observe the whole odd block through its Krylov orbit. Two sheet-related measurements help only when their orbit contains both nonzero character projections."
+}

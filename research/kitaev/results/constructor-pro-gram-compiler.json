@@ -1,0 +1,312 @@
+{
+  "checker_sha256": "84fcd4a51d0ea7316bfff4afca1aac45e18893791040cab83b02b86598805716",
+  "compiler": {
+    "extension": "one fixed finite authorized F and one cutoff-independent constant",
+    "linear_kernel_gate": "ker Q_F,N subset ker L_N",
+    "linear_sharp_M_squared": "lambda_max(Q_F,N^dagger/2 L_N^*L_N Q_F,N^dagger/2)",
+    "mixed_gate": "apply quadratic gate to [[0,B],[B*,0]] against diag(Q_left,Q_right)",
+    "quadratic_gate": "-C Q_F,N <= B_N <= C Q_F,N"
+  },
+  "distinctions": {
+    "continuity": "target form is uniformly dominated by a fixed finite authorized constructor Gramian",
+    "faithfulness": "selected observations separate admissible states",
+    "uniform_observability": "observation energy has a cutoff-independent lower bound on state norm"
+  },
+  "hostile_fixtures": {
+    "divergent_constants": {
+      "L": [
+        [
+          0,
+          1
+        ]
+      ],
+      "Q_N": "diag(1,1/N^2)",
+      "samples": [
+        {
+          "M_N": "1",
+          "M_N_squared": "1",
+          "cutoff": 1,
+          "lambda_min_Q": "1"
+        },
+        {
+          "M_N": "2",
+          "M_N_squared": "4",
+          "cutoff": 2,
+          "lambda_min_Q": "1/4"
+        },
+        {
+          "M_N": "3",
+          "M_N_squared": "9",
+          "cutoff": 3,
+          "lambda_min_Q": "1/9"
+        },
+        {
+          "M_N": "4",
+          "M_N_squared": "16",
+          "cutoff": 4,
+          "lambda_min_Q": "1/16"
+        },
+        {
+          "M_N": "5",
+          "M_N_squared": "25",
+          "cutoff": 5,
+          "lambda_min_Q": "1/25"
+        },
+        {
+          "M_N": "6",
+          "M_N_squared": "36",
+          "cutoff": 6,
+          "lambda_min_Q": "1/36"
+        },
+        {
+          "M_N": "7",
+          "M_N_squared": "49",
+          "cutoff": 7,
+          "lambda_min_Q": "1/49"
+        },
+        {
+          "M_N": "8",
+          "M_N_squared": "64",
+          "cutoff": 8,
+          "lambda_min_Q": "1/64"
+        }
+      ],
+      "sup_M_N_finite": false
+    },
+    "kernel_failure": {
+      "L": [
+        [
+          0,
+          1
+        ]
+      ],
+      "Q": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "witness": [
+        0,
+        1
+      ]
+    },
+    "mixed_kernel_failure": {
+      "controlled_B": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "controlled_constant": 1,
+      "uncontrolled_B": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "no_fixed_finite_F": {
+      "cutoffwise_controls": [
+        {
+          "constant": 1,
+          "controlling_constructor": "C_1",
+          "cutoff": 1
+        },
+        {
+          "constant": 1,
+          "controlling_constructor": "C_2",
+          "cutoff": 2
+        },
+        {
+          "constant": 1,
+          "controlling_constructor": "C_3",
+          "cutoff": 3
+        },
+        {
+          "constant": 1,
+          "controlling_constructor": "C_4",
+          "cutoff": 4
+        },
+        {
+          "constant": 1,
+          "controlling_constructor": "C_5",
+          "cutoff": 5
+        },
+        {
+          "constant": 1,
+          "controlling_constructor": "C_6",
+          "cutoff": 6
+        }
+      ],
+      "fixed_finite_subset_exists": false,
+      "target": "coordinate N at cutoff N"
+    },
+    "rank_complete_nonuniform": {
+      "Q_N_rank": 2,
+      "lambda_min": "1/N^2 -> 0"
+    },
+    "scalar_cancellation": {
+      "B_primitive": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "B_square": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "sum": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "typed_matrices_individually_zero": false
+    },
+    "unauthorized_repair": {
+      "admitted_Q": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "authorized": false,
+      "repair_constant": 1,
+      "unauthorized_Q": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "machine_rejection": {
+    "code": "current_not_continuous_in_constructor_completion",
+    "constructor_subset": [
+      "admitted_coordinate_1"
+    ],
+    "current": "primitive",
+    "cutoff": "kernel-fixture",
+    "kernel_witness": [
+      0,
+      1
+    ],
+    "sharp_domination_constant": null,
+    "unauthorized_constructor_required": true,
+    "uniform_bound_failed": true
+  },
+  "schema": "marici.kitaev.constructor-pro-gram-compiler.v1",
+  "source_authority_boundary": {
+    "optimized_over": "frozen authorized constructor list only",
+    "required": [
+      "K_N",
+      "D_C,N",
+      "L_k1,N",
+      "L_k2,N",
+      "L_seam,N",
+      "L_infinity,N",
+      "B_Green,N",
+      "defect residual matrices"
+    ],
+    "theta_matrices_supplied": false
+  },
+  "synthetic_authorized_registry": {
+    "minimal_controls": {
+      "archimedean": [
+        {
+          "Q_rank": 2,
+          "sharp_constant": "2",
+          "subset": [
+            "tail_coordinate",
+            "square_coordinate"
+          ]
+        }
+      ],
+      "defect": [
+        {
+          "Q_rank": 2,
+          "sharp_constant": "1",
+          "subset": [
+            "tail_coordinate",
+            "square_coordinate"
+          ]
+        }
+      ],
+      "green": [
+        {
+          "Q_rank": 2,
+          "sharp_constant": "1",
+          "subset": [
+            "tail_coordinate",
+            "seam_coordinate"
+          ]
+        }
+      ],
+      "primitive": [
+        {
+          "Q_rank": 1,
+          "sharp_constant": "1",
+          "subset": [
+            "tail_coordinate"
+          ]
+        }
+      ],
+      "seam": [
+        {
+          "Q_rank": 1,
+          "sharp_constant": "1",
+          "subset": [
+            "seam_coordinate"
+          ]
+        }
+      ],
+      "square": [
+        {
+          "Q_rank": 1,
+          "sharp_constant": "1",
+          "subset": [
+            "square_coordinate"
+          ]
+        }
+      ]
+    },
+    "warning": "compiler fixture only; not theta/Tate source data"
+  },
+  "verdict": "A current extends to the constructor pro-Gram completion exactly when one fixed finite authorized constructor subset closes every kernel and supplies a cutoff-uniform domination constant. Rank, cutoffwise choice of moving constructors, scalar cancellation, and repair by an unauthorized row are each insufficient."
+}
