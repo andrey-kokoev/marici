@@ -582,12 +582,12 @@ def audit_native_reconfiguration_constructors(contract: dict[str, Any]) -> list[
     return audits
 
 
-def audit_dynamic_reconfiguration_chains(contract: dict[str, Any]) -> list[dict[str, Any]]:
+def audit_configuration_paths(contract: dict[str, Any]) -> list[dict[str, Any]]:
     audits = []
-    for chain in contract.get("dynamic_reconfiguration_chain_audits", []):
+    for path in contract.get("configuration_path_audits", []):
         errors: list[str] = []
-        current = chain.get("base_configuration", {})
-        current_epoch = current.get("epoch")
+        current = path.get("source_configuration", {})
+        current_vertex = current.get("vertex_id")
         current_digest = current.get("state_sha256")
         current_members = current.get("members")
         current_quorum = current.get("quorum")
@@ -596,72 +596,69 @@ def audit_dynamic_reconfiguration_chains(contract: dict[str, Any]) -> list[dict[
         consumed: set[str] = set()
         bridges = []
         bridge_states: list[tuple[set[str], dict[str, str]]] = []
-        steps = chain.get("steps", [])
-        if not steps or not chain.get("theorem_scope"):
-            errors.append("dynamic_reconfiguration_chain_empty_or_unscoped")
-        for step in steps:
-            old = step.get("old_configuration", {})
-            new = step.get("new_configuration", {})
-            physical = step.get("physical_successor", {})
-            output = step.get("output_configuration", {})
-            if (old.get("epoch"), old.get("state_sha256"), old.get("members"), old.get("quorum"), old.get("authority_resource")) != (current_epoch, current_digest, current_members, current_quorum, current_authority):
-                errors.append("dynamic_reconfiguration_predecessor_link_failure")
-            if set(old.get("support", [])) != accumulated:
-                errors.append("dynamic_reconfiguration_predecessor_support_failure")
-            if not step.get("source_authority_root"):
-                errors.append("dynamic_reconfiguration_constructor_untyped")
-            old_offset = old.get("epoch", {}).get("offset")
-            if (new.get("epoch", {}).get("parameter") != old.get("epoch", {}).get("parameter") or not isinstance(old_offset, int) or new.get("epoch", {}).get("offset") != old_offset + 1):
-                errors.append("dynamic_reconfiguration_nonadjacent_epoch")
-            if not physical.get("realized") or physical.get("predecessor_state_sha256") != old.get("state_sha256") or physical.get("successor_state_sha256") != new.get("state_sha256"):
-                errors.append("dynamic_reconfiguration_physical_correspondence_failure")
-            old_q, new_q = set(old.get("quorum", [])), set(new.get("quorum", []))
-            bridge = old_q & new_q
-            if not bridge or not old_q <= set(old.get("members", [])) or not new_q <= set(new.get("members", [])) or len(old.get("members", [])) != len(set(old.get("members", []))) or len(new.get("members", [])) != len(set(new.get("members", []))):
-                errors.append("dynamic_reconfiguration_invalid_configuration_bridge")
-            if set(step.get("old_quorum_endorsement", [])) != old_q or set(step.get("new_quorum_endorsement", [])) != new_q or not step.get("joint_consensus_required"):
-                errors.append("dynamic_reconfiguration_joint_endorsement_failure")
-            if set(step.get("bridge_witness", [])) != bridge:
-                errors.append("dynamic_reconfiguration_bridge_mismatch")
-            roots = step.get("bridge_authority_roots", {})
-            faults = [set(fault) for fault in step.get("admissible_bridge_fault_sets", [])]
+        edges = path.get("edges", [])
+        if not edges or not path.get("theorem_scope"):
+            errors.append("configuration_path_empty_or_unscoped")
+        for edge in edges:
+            source = edge.get("source_configuration", {})
+            target = edge.get("target_configuration", {})
+            correspondence = edge.get("state_correspondence", {})
+            output = edge.get("output_configuration", {})
+            if (source.get("vertex_id"), source.get("state_sha256"), source.get("members"), source.get("quorum"), source.get("authority_resource")) != (current_vertex, current_digest, current_members, current_quorum, current_authority):
+                errors.append("configuration_path_incidence_failure")
+            if set(source.get("support", [])) != accumulated:
+                errors.append("configuration_path_source_support_failure")
+            if not edge.get("source_authority_root") or source.get("vertex_id") == target.get("vertex_id"):
+                errors.append("configuration_edge_untyped_or_identity")
+            if correspondence.get("source_state_sha256") != source.get("state_sha256") or correspondence.get("target_state_sha256") != target.get("state_sha256") or not correspondence.get("source_derived"):
+                errors.append("configuration_state_correspondence_failure")
+            source_q, target_q = set(source.get("quorum", [])), set(target.get("quorum", []))
+            bridge = source_q & target_q
+            if not bridge or not source_q <= set(source.get("members", [])) or not target_q <= set(target.get("members", [])) or len(source.get("members", [])) != len(set(source.get("members", []))) or len(target.get("members", [])) != len(set(target.get("members", []))):
+                errors.append("configuration_path_invalid_bridge")
+            if set(edge.get("source_quorum_endorsement", [])) != source_q or set(edge.get("target_quorum_endorsement", [])) != target_q or not edge.get("joint_authorization_required"):
+                errors.append("configuration_path_joint_authorization_failure")
+            if set(edge.get("bridge_witness", [])) != bridge:
+                errors.append("configuration_path_bridge_mismatch")
+            roots = edge.get("bridge_authority_roots", {})
+            faults = [set(fault) for fault in edge.get("admissible_bridge_fault_sets", [])]
             if set(roots) != bridge:
-                errors.append("dynamic_reconfiguration_bridge_roots_incomplete")
+                errors.append("configuration_path_bridge_roots_incomplete")
             root_fibers = [{node for node, root in roots.items() if root == authority_root} for authority_root in set(roots.values())]
             if any(fiber not in faults for fiber in root_fibers):
-                errors.append("dynamic_reconfiguration_common_cause_omitted")
+                errors.append("configuration_path_common_cause_omitted")
             if any(not (bridge - fault) for fault in faults):
-                errors.append("dynamic_reconfiguration_bridge_fault_unsafe")
+                errors.append("configuration_path_bridge_fault_unsafe")
             output_authority = output.get("authority_resource")
-            if step.get("consumes_authority_resource") != current_authority or current_authority in consumed or not output_authority or output_authority == current_authority or output_authority in consumed or step.get("old_authority_retained") is not False or step.get("live_authority_count_after") != 1:
-                errors.append("dynamic_reconfiguration_linear_replacement_failure")
+            if edge.get("input_authority_resource") != current_authority or current_authority in consumed or not output_authority or output_authority == current_authority or output_authority in consumed or edge.get("source_authority_also_output") is not False or edge.get("output_authority_count") != 1:
+                errors.append("configuration_path_linear_replacement_failure")
             consumed.add(current_authority)
-            expected_support = accumulated | set(new.get("support", [])) | set(physical.get("support", [])) | {step.get("source_authority_root")}
+            expected_support = accumulated | set(target.get("support", [])) | set(correspondence.get("support", [])) | {edge.get("source_authority_root")}
             if set(output.get("support", [])) != expected_support:
-                errors.append("dynamic_reconfiguration_support_not_monotone")
-            if (output.get("epoch"), output.get("state_sha256"), output.get("members"), output.get("quorum")) != (new.get("epoch"), new.get("state_sha256"), new.get("members"), new.get("quorum")):
-                errors.append("dynamic_reconfiguration_output_mismatch")
-            bridges.append({"step": step.get("id"), "bridge": sorted(bridge), "authority_roots": roots, "fault_sets": [sorted(fault) for fault in faults]})
+                errors.append("configuration_path_support_union_failure")
+            if (output.get("vertex_id"), output.get("state_sha256"), output.get("members"), output.get("quorum")) != (target.get("vertex_id"), target.get("state_sha256"), target.get("members"), target.get("quorum")):
+                errors.append("configuration_path_output_mismatch")
+            bridges.append({"edge": edge.get("id"), "bridge": sorted(bridge), "authority_roots": roots, "fault_sets": [sorted(fault) for fault in faults]})
             bridge_states.append((bridge, roots))
             accumulated = expected_support
-            current_epoch, current_digest = output.get("epoch"), output.get("state_sha256")
+            current_vertex, current_digest = output.get("vertex_id"), output.get("state_sha256")
             current_members, current_quorum = output.get("members"), output.get("quorum")
             current_authority = output_authority
-        global_root_faults = [set(fault) for fault in chain.get("admissible_authority_root_fault_sets", [])]
+        global_root_faults = [set(fault) for fault in path.get("admissible_authority_root_fault_sets", [])]
         all_roots = {root for _, roots in bridge_states for root in roots.values()}
         if any({root} not in global_root_faults for root in all_roots):
-            errors.append("dynamic_reconfiguration_global_root_fault_omitted")
+            errors.append("configuration_path_global_root_fault_omitted")
         for root_fault in global_root_faults:
             for bridge, roots in bridge_states:
                 failed_nodes = {node for node in bridge if roots.get(node) in root_fault}
                 if not (bridge - failed_nodes):
-                    errors.append("dynamic_reconfiguration_global_fault_unsafe")
-        terminal = chain.get("expected_terminal_configuration", {})
-        if (current_epoch, current_digest, current_members, current_quorum, current_authority) != (terminal.get("epoch"), terminal.get("state_sha256"), terminal.get("members"), terminal.get("quorum"), terminal.get("authority_resource")):
-            errors.append("dynamic_reconfiguration_terminal_mismatch")
-        if accumulated != set(terminal.get("support", [])):
-            errors.append("dynamic_reconfiguration_support_not_monotone")
-        audits.append({"id": chain["id"], "passed": not errors, "errors": sorted(set(errors)), "step_count": len(steps), "terminal_epoch": current_epoch, "live_authority_resource": current_authority, "consumed_authority_resources": sorted(consumed), "accumulated_support": sorted(accumulated), "bridge_audits": bridges, "global_authority_root_fault_sets": [sorted(fault) for fault in global_root_faults], "induction_rule": "a valid prefix extends iff the adjacent realized joint transition consumes its sole live configuration authority, emits one replacement, accumulates support, and every admitted local or chain-wide authority-root fault leaves every affected bridge with a survivor"})
+                    errors.append("configuration_path_global_fault_unsafe")
+        endpoint = path.get("expected_endpoint_configuration", {})
+        if (current_vertex, current_digest, current_members, current_quorum, current_authority) != (endpoint.get("vertex_id"), endpoint.get("state_sha256"), endpoint.get("members"), endpoint.get("quorum"), endpoint.get("authority_resource")):
+            errors.append("configuration_path_endpoint_mismatch")
+        if accumulated != set(endpoint.get("support", [])):
+            errors.append("configuration_path_support_union_failure")
+        audits.append({"id": path["id"], "passed": not errors, "errors": sorted(set(errors)), "edge_count": len(edges), "endpoint_vertex": current_vertex, "output_authority_resource": current_authority, "input_authority_resources": sorted(consumed), "support_union": sorted(accumulated), "bridge_audits": bridges, "global_authority_root_fault_sets": [sorted(fault) for fault in global_root_faults], "induction_rule": "a valid partial composite extends iff the next edge is incident at the current configuration vertex, carries a source-derived state correspondence, linearly replaces its input authority, unions support, and every admitted local or path-wide authority-root fault leaves every affected bridge with a survivor"})
     return audits
 
 
@@ -697,11 +694,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     projection_audits = audit_forgetful_projections(contract)
     chain_audits = audit_epoch_successor_chains(contract)
     reconfiguration_audits = audit_native_reconfiguration_constructors(contract)
-    dynamic_reconfiguration_audits = audit_dynamic_reconfiguration_chains(contract)
+    configuration_path_audits = audit_configuration_paths(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + dynamic_reconfiguration_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -722,5 +719,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "forgetful_projections": projection_audits,
         "epoch_successor_chains": chain_audits,
         "native_reconfiguration_constructors": reconfiguration_audits,
-        "dynamic_reconfiguration_chains": dynamic_reconfiguration_audits,
+        "configuration_paths": configuration_path_audits,
     }

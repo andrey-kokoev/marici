@@ -149,39 +149,39 @@ for name, mutate_reconfiguration, expected in reconfiguration_mutations:
     errors = candidate_result["native_reconfiguration_constructors"][0]["errors"]
     reconfiguration_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["native_reconfiguration_hostiles"] = reconfiguration_hostiles
-dynamic_reconfiguration_hostiles = {}
-dynamic_reconfiguration_mutations = (
-    ("predecessor_link", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["old_configuration"].update({"authority_resource":"cfg_auth_stale"}), "dynamic_reconfiguration_predecessor_link_failure"),
-    ("epoch_gap", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["new_configuration"]["epoch"].update({"offset":3}), "dynamic_reconfiguration_nonadjacent_epoch"),
-    ("unrealized_physical_step", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["physical_successor"].update({"realized":False}), "dynamic_reconfiguration_physical_correspondence_failure"),
-    ("missing_joint_endorsement", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1].update({"new_quorum_endorsement":["r3","r4"]}), "dynamic_reconfiguration_joint_endorsement_failure"),
-    ("empty_bridge", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["new_configuration"].update({"members":["r5","r6","r7"],"quorum":["r5","r6","r7"]}), "dynamic_reconfiguration_invalid_configuration_bridge"),
-    ("whole_bridge_fault", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["admissible_bridge_fault_sets"].append(["r3","r4"]), "dynamic_reconfiguration_bridge_fault_unsafe"),
-    ("common_cause_omitted", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1].update({"admissible_bridge_fault_sets":[["r3"]]}), "dynamic_reconfiguration_common_cause_omitted"),
-    ("correlated_roots_unmodelled", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1].update({"bridge_authority_roots":{"r3":"admin_C","r4":"admin_C"}}), "dynamic_reconfiguration_common_cause_omitted"),
-    ("global_root_omitted", lambda c: c["dynamic_reconfiguration_chain_audits"][0].update({"admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_E"]]}), "dynamic_reconfiguration_global_root_fault_omitted"),
-    ("global_correlated_fault", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["admissible_authority_root_fault_sets"].append(["admin_C","admin_D"]), "dynamic_reconfiguration_global_fault_unsafe"),
-    ("authority_reuse", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["output_configuration"].update({"authority_resource":"cfg_auth_0"}), "dynamic_reconfiguration_linear_replacement_failure"),
-    ("predecessor_retained", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1].update({"old_authority_retained":True,"live_authority_count_after":2}), "dynamic_reconfiguration_linear_replacement_failure"),
-    ("support_drop", lambda c: c["dynamic_reconfiguration_chain_audits"][0]["steps"][1]["output_configuration"].update({"support":["charter_2","physical_2","proposal_2"]}), "dynamic_reconfiguration_support_not_monotone"),
+configuration_path_hostiles = {}
+configuration_path_mutations = (
+    ("broken_incidence", lambda c: c["configuration_path_audits"][0]["edges"][1]["source_configuration"].update({"authority_resource":"cfg_auth_unrelated"}), "configuration_path_incidence_failure"),
+    ("identity_edge", lambda c: c["configuration_path_audits"][0]["edges"][1]["target_configuration"].update({"vertex_id":"C1"}), "configuration_edge_untyped_or_identity"),
+    ("fitted_correspondence", lambda c: c["configuration_path_audits"][0]["edges"][1]["state_correspondence"].update({"source_derived":False}), "configuration_state_correspondence_failure"),
+    ("missing_joint_authorization", lambda c: c["configuration_path_audits"][0]["edges"][1].update({"target_quorum_endorsement":["r3","r4"]}), "configuration_path_joint_authorization_failure"),
+    ("empty_bridge", lambda c: c["configuration_path_audits"][0]["edges"][1]["target_configuration"].update({"members":["r5","r6","r7"],"quorum":["r5","r6","r7"]}), "configuration_path_invalid_bridge"),
+    ("whole_bridge_fault", lambda c: c["configuration_path_audits"][0]["edges"][1]["admissible_bridge_fault_sets"].append(["r3","r4"]), "configuration_path_bridge_fault_unsafe"),
+    ("common_cause_omitted", lambda c: c["configuration_path_audits"][0]["edges"][1].update({"admissible_bridge_fault_sets":[["r3"]]}), "configuration_path_common_cause_omitted"),
+    ("correlated_roots_unmodelled", lambda c: c["configuration_path_audits"][0]["edges"][1].update({"bridge_authority_roots":{"r3":"admin_C","r4":"admin_C"}}), "configuration_path_common_cause_omitted"),
+    ("global_root_omitted", lambda c: c["configuration_path_audits"][0].update({"admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_E"]]}), "configuration_path_global_root_fault_omitted"),
+    ("global_correlated_fault", lambda c: c["configuration_path_audits"][0]["admissible_authority_root_fault_sets"].append(["admin_C","admin_D"]), "configuration_path_global_fault_unsafe"),
+    ("authority_reuse", lambda c: c["configuration_path_audits"][0]["edges"][1]["output_configuration"].update({"authority_resource":"cfg_auth_C0"}), "configuration_path_linear_replacement_failure"),
+    ("source_authority_duplicated", lambda c: c["configuration_path_audits"][0]["edges"][1].update({"source_authority_also_output":True,"output_authority_count":2}), "configuration_path_linear_replacement_failure"),
+    ("support_drop", lambda c: c["configuration_path_audits"][0]["edges"][1]["output_configuration"].update({"support":["charter_rho_12","correspondence_rho_12","presentation_C2"]}), "configuration_path_support_union_failure"),
 )
-for name, mutate_dynamic, expected in dynamic_reconfiguration_mutations:
+for name, mutate_path, expected in configuration_path_mutations:
     candidate = deepcopy(contract)
-    mutate_dynamic(candidate)
+    mutate_path(candidate)
     candidate_result = compile_contract(candidate, legacy)
-    errors = candidate_result["dynamic_reconfiguration_chains"][0]["errors"]
-    dynamic_reconfiguration_hostiles[name] = not candidate_result["passed"] and expected in errors
-result["dynamic_reconfiguration_hostiles"] = dynamic_reconfiguration_hostiles
-dynamic_prefix_replay = {}
-base_dynamic_chain = contract["dynamic_reconfiguration_chain_audits"][0]
-for prefix_length in range(1, len(base_dynamic_chain["steps"]) + 1):
+    errors = candidate_result["configuration_paths"][0]["errors"]
+    configuration_path_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["configuration_path_hostiles"] = configuration_path_hostiles
+partial_composite_replay = {}
+base_path = contract["configuration_path_audits"][0]
+for edge_count in range(1, len(base_path["edges"]) + 1):
     candidate = deepcopy(contract)
-    candidate_chain = candidate["dynamic_reconfiguration_chain_audits"][0]
-    candidate_chain["steps"] = candidate_chain["steps"][:prefix_length]
-    candidate_chain["expected_terminal_configuration"] = deepcopy(candidate_chain["steps"][-1]["output_configuration"])
+    candidate_path = candidate["configuration_path_audits"][0]
+    candidate_path["edges"] = candidate_path["edges"][:edge_count]
+    candidate_path["expected_endpoint_configuration"] = deepcopy(candidate_path["edges"][-1]["output_configuration"])
     candidate_result = compile_contract(candidate, legacy)
-    dynamic_prefix_replay[str(prefix_length)] = candidate_result["dynamic_reconfiguration_chains"][0]["passed"]
-result["dynamic_reconfiguration_prefix_replay"] = dynamic_prefix_replay
+    partial_composite_replay[str(edge_count)] = candidate_result["configuration_paths"][0]["passed"]
+result["configuration_path_partial_composite_replay"] = partial_composite_replay
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -217,8 +217,8 @@ for name, rejected in chain_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " successor_chain hostile." + name)
 for name, rejected in reconfiguration_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " reconfiguration hostile." + name)
-for name, rejected in dynamic_reconfiguration_hostiles.items():
-    print(("PASS" if rejected else "FAIL") + " dynamic_reconfiguration hostile." + name)
-for length, admitted in dynamic_prefix_replay.items():
-    print(("PASS" if admitted else "FAIL") + " dynamic_reconfiguration prefix." + length)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(dynamic_reconfiguration_hostiles.values()) and all(dynamic_prefix_replay.values()) else 1)
+for name, rejected in configuration_path_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " configuration_path hostile." + name)
+for edge_count, admitted in partial_composite_replay.items():
+    print(("PASS" if admitted else "FAIL") + " configuration_path partial_composite." + edge_count)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) else 1)
