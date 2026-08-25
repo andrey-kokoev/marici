@@ -395,3 +395,42 @@ coverage, or replacement of the theorem scope by a bounded census.
 
 The scope remains algebraic and atemporal: a product context is neither a path
 through configurations nor a sequence of moments.
+
+## Indexed fibers and permutation equivariance
+
+Independence also cannot be inferred from equal untagged labels. In an
+`n`-hole context, support records, authority roots, and resource boundaries are
+lifted to indexed fibers
+
+\[
+(i,s),\qquad(i,r),\qquad
+\alpha_i^{\mathrm{in/out}}.
+\]
+
+The default fault hypergraph is the disjoint coproduct of the hole-local
+hypergraphs. Consequently, two roots with the same local spelling in distinct
+holes remain distinct authority loci. A cross-hole common cause is possible
+only after an explicit constructor replaces that coproduct by a correlated
+hyperedge; the present theorem does not authorize such a constructor.
+
+Every finite bijection `pi` of the hole indices acts simultaneously by
+
+\[
+(i,s)\mapsto(\pi(i),s),qquad
+(i,r)\mapsto(\pi(i),r),qquad
+\alpha_i\mapsto\alpha_{\pi(i)}.
+\]
+
+The rewrite rules contain no distinguished hole index, so substitution is
+equivariant under this action. Rank is a sum over holes, the two local
+critical-pair schemas are preserved, and pointwise normalization satisfies
+
+\[
+N(\pi\cdot X)=\pi\cdot N(X).
+\]
+
+This predicts that renaming or permuting independent authority loci cannot
+alter the admitted normal form. A nonbijective index map, resource aliasing,
+untagged support union, position-dependent rewrite, or implicit cross-hole
+fault identification is rejected. These are precisely the operations that
+would turn symmetry into information loss or authority cloning.

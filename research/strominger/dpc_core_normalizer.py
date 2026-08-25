@@ -930,13 +930,16 @@ def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audit
         product_context_typed = theorem.get("context_grammar") == "finite_typed_product_context" and theorem.get("composition_kind") == "independent_hole_substitution" and theorem.get("sequential_composition_claimed") is False
         if not product_context_typed:
             errors.append("contextual_rewrite_sequential_composition_smuggled")
+        indexed_fibers_typed = theorem.get("support_lift") == "tagged_pair(i,support)" and theorem.get("authority_root_lift") == "tagged_pair(i,root)" and theorem.get("fault_hypergraph_composition") == "disjoint_coproduct" and theorem.get("cross_hole_correlations_authorized") is False
+        if not indexed_fibers_typed:
+            errors.append("contextual_rewrite_indexed_fiber_collision")
         if set(selected_ids) != set(rewrites) or any(not rewrite for rewrite in selected):
             errors.append("contextual_rewrite_rule_coverage_failure")
         rank_decreases = bool(selected) and all(rewrite.get("source_path_id") in ranks and rewrite.get("target_path_id") in ranks and ranks[rewrite["source_path_id"]] > ranks[rewrite["target_path_id"]] for rewrite in selected)
         if not rank_decreases:
             errors.append("contextual_rewrite_rank_not_decreasing")
         rule_semantics_preserved = all(rewrite.get("source_path_id") in paths and rewrite.get("target_path_id") in paths and semantic_signature(paths[rewrite["source_path_id"]]) == semantic_signature(paths[rewrite["target_path_id"]]) for rewrite in selected)
-        context_preserved = theorem.get("context_closure") is True and product_context_typed and hole_typing_holds and set(theorem.get("preserved_semantic_fields", [])) == required_fields and rule_semantics_preserved
+        context_preserved = theorem.get("context_closure") is True and product_context_typed and hole_typing_holds and indexed_fibers_typed and set(theorem.get("preserved_semantic_fields", [])) == required_fields and rule_semantics_preserved
         if not context_preserved:
             errors.append("contextual_rewrite_context_signature_not_preserved")
         schemas = set(theorem.get("critical_pair_schemas", []))
@@ -974,7 +977,38 @@ def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audit
             errors.append("contextual_rewrite_newman_gate_failure")
         if theorem.get("theorem_scope") != "arbitrary finite products of independently typed factorization holes":
             errors.append("contextual_rewrite_scope_laundered")
-        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "context_grammar": theorem.get("context_grammar"), "composition_kind": theorem.get("composition_kind"), "sequential_composition_claimed": theorem.get("sequential_composition_claimed"), "hole_type": hole_type, "hole_typing_holds": hole_typing_holds, "resource_parameters_typed": resource_parameters_typed, "rank_decreases": rank_decreases, "rewrite_semantics_preserved": rule_semantics_preserved, "context_signature_preserved": context_preserved, "same_position_critical_pairs": same_position_pairs, "same_position_joins": same_position_joins, "disjoint_positions_commute": disjoint_positions_commute, "locally_confluent": local_confluence, "terminating": terminating, "newman_global_confluence": newman_global_confluence, "scope": theorem.get("theorem_scope")})
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "context_grammar": theorem.get("context_grammar"), "composition_kind": theorem.get("composition_kind"), "sequential_composition_claimed": theorem.get("sequential_composition_claimed"), "hole_type": hole_type, "hole_typing_holds": hole_typing_holds, "resource_parameters_typed": resource_parameters_typed, "indexed_fibers_typed": indexed_fibers_typed, "rank_decreases": rank_decreases, "rewrite_semantics_preserved": rule_semantics_preserved, "context_signature_preserved": context_preserved, "same_position_critical_pairs": same_position_pairs, "same_position_joins": same_position_joins, "disjoint_positions_commute": disjoint_positions_commute, "locally_confluent": local_confluence, "terminating": terminating, "newman_global_confluence": newman_global_confluence, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
+def audit_configuration_context_symmetry(contract: dict[str, Any], contextual_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    context_contracts = {item["id"]: item for item in contract.get("configuration_contextual_rewrite_theorems", [])}
+    context_results = {item["id"]: item for item in contextual_audits}
+    rewrites = contract.get("configuration_constructor_rewrites", [])
+    audits = []
+    for theorem in contract.get("configuration_context_symmetry_theorems", []):
+        errors: list[str] = []
+        context_id = theorem.get("context_theorem_id")
+        context = context_contracts.get(context_id, {})
+        context_result = context_results.get(context_id, {})
+        if not context_result.get("passed") or not context_result.get("indexed_fibers_typed"):
+            errors.append("context_symmetry_base_context_invalid")
+        finite_bijection_typed = theorem.get("symmetry") == "finite_bijections_of_hole_indices" and theorem.get("theorem_scope") == "all finite bijections of every finite typed hole set"
+        if not finite_bijection_typed:
+            errors.append("context_symmetry_nonbijective_or_bounded")
+        fiber_actions_typed = theorem.get("resource_action") == "alpha_rename_by_index_bijection" and theorem.get("support_action") == "tagged_pair(pi(i),support)" and theorem.get("authority_root_action") == "tagged_pair(pi(i),root)"
+        if not fiber_actions_typed:
+            errors.append("context_symmetry_fiber_action_not_faithful")
+        position_independent = theorem.get("rewrite_action") == "position_independent" and all("hole_index" not in rewrite for rewrite in rewrites)
+        if not position_independent:
+            errors.append("context_symmetry_rewrite_depends_on_position")
+        fault_coproduct_equivariant = context.get("fault_hypergraph_composition") == "disjoint_coproduct" and context.get("cross_hole_correlations_authorized") is False and theorem.get("cross_hole_fault_action") == "none_without_explicit_constructor"
+        if not fault_coproduct_equivariant:
+            errors.append("context_symmetry_cross_hole_fault_laundered")
+        normalization_equivariant = theorem.get("normal_form_action") == "pointwise_normalization_then_permutation" and context_result.get("newman_global_confluence") and finite_bijection_typed and fiber_actions_typed and position_independent and fault_coproduct_equivariant
+        if not normalization_equivariant:
+            errors.append("context_symmetry_normalization_not_equivariant")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "finite_bijection_typed": finite_bijection_typed, "fiber_actions_typed": fiber_actions_typed, "rewrite_position_independent": position_independent, "fault_coproduct_equivariant": fault_coproduct_equivariant, "normalization_equivariant": normalization_equivariant, "scope": theorem.get("theorem_scope")})
     return audits
 
 
@@ -1017,10 +1051,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     configuration_triangle_audits = audit_configuration_coherence_triangles(contract, generated_coherence_cells)
     configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
     contextual_rewrite_audits = audit_contextual_configuration_rewrites(contract, configuration_path_audits)
+    context_symmetry_audits = audit_configuration_context_symmetry(contract, contextual_rewrite_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1049,4 +1084,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_coherence_triangles": configuration_triangle_audits,
         "configuration_coherence_coverage": configuration_coherence_coverage,
         "configuration_contextual_rewrite_theorems": contextual_rewrite_audits,
+        "configuration_context_symmetry_theorems": context_symmetry_audits,
     }

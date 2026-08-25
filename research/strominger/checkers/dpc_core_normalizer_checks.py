@@ -235,6 +235,8 @@ for name, mutate_contextual, expected in (
     ("hole_boundary_smeared", lambda c: c["configuration_contextual_rewrite_theorems"][0]["hole_type"].update({"endpoint_vertex":"C_any"}), "contextual_rewrite_hole_type_mismatch"),
     ("linear_authority_cloned", lambda c: c["configuration_contextual_rewrite_theorems"][0]["hole_type"].update({"resource_instances_pairwise_disjoint":False,"shared_authority_claimed":True}), "contextual_rewrite_hole_type_mismatch"),
     ("concrete_authority_reused", lambda c: c["configuration_contextual_rewrite_theorems"][0]["hole_type"].update({"input_authority_parameter":"cfg_auth_C0"}), "contextual_rewrite_hole_type_mismatch"),
+    ("untagged_support_union", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"support_lift":"support"}), "contextual_rewrite_indexed_fiber_collision"),
+    ("cross_hole_fault_smuggled", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"fault_hypergraph_composition":"shared_union","cross_hole_correlations_authorized":True}), "contextual_rewrite_indexed_fiber_collision"),
     ("untyped_context_grammar", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"context_grammar":"free_word_monoid"}), "contextual_rewrite_sequential_composition_smuggled"),
     ("support_not_preserved", lambda c: c["configuration_contextual_rewrite_theorems"][0]["preserved_semantic_fields"].remove("support_union"), "contextual_rewrite_context_signature_not_preserved"),
     ("rewrite_semantics_change", lambda c: (configuration_path(c,"alternate_configuration_path")["edges"][-1]["target_configuration"]["support"].append("context_visible_support"), configuration_path(c,"alternate_configuration_path")["edges"][-1]["output_configuration"]["support"].append("context_visible_support"), configuration_path(c,"alternate_configuration_path")["expected_endpoint_configuration"]["support"].append("context_visible_support")), "contextual_rewrite_context_signature_not_preserved"),
@@ -248,6 +250,20 @@ for name, mutate_contextual, expected in (
     errors = candidate_result["configuration_contextual_rewrite_theorems"][0]["errors"]
     contextual_rewrite_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["contextual_rewrite_hostiles"] = contextual_rewrite_hostiles
+context_symmetry_hostiles = {}
+for name, mutate_symmetry, expected in (
+    ("nonbijective_action", lambda c: c["configuration_context_symmetry_theorems"][0].update({"symmetry":"all_hole_maps"}), "context_symmetry_nonbijective_or_bounded"),
+    ("resource_aliasing_action", lambda c: c["configuration_context_symmetry_theorems"][0].update({"resource_action":"all_indices_share_alpha"}), "context_symmetry_fiber_action_not_faithful"),
+    ("position_dependent_rewrite", lambda c: c["configuration_constructor_rewrites"][0].update({"hole_index":0}), "context_symmetry_rewrite_depends_on_position"),
+    ("cross_hole_fault_action", lambda c: c["configuration_context_symmetry_theorems"][0].update({"cross_hole_fault_action":"identify_equal_root_labels"}), "context_symmetry_cross_hole_fault_laundered"),
+    ("normalization_before_renaming_only", lambda c: c["configuration_context_symmetry_theorems"][0].update({"normal_form_action":"normalize_fixed_indices_only"}), "context_symmetry_normalization_not_equivariant"),
+):
+    candidate = deepcopy(contract)
+    mutate_symmetry(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_context_symmetry_theorems"][0]["errors"]
+    context_symmetry_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["context_symmetry_hostiles"] = context_symmetry_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -300,5 +316,7 @@ for name, rejected in configuration_normalization_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_normalization hostile." + name)
 for name, rejected in contextual_rewrite_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " contextual_rewrite hostile." + name)
+for name, rejected in context_symmetry_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " context_symmetry hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and coherence_omission_rejected else 1)
