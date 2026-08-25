@@ -1,0 +1,95 @@
+{
+  "schema": "marici.data-descent-packet.v2+generic-completion-interface.v1",
+  "contexts": [],
+  "local_objects": [],
+  "completion_spaces": [
+    {"id": "X_atomic", "space": "finite signed atomic spin-two measures", "category": "strict_LF"},
+    {"id": "X_hat", "space": "finite Radon spin-two measures", "category": "weak_star_sigma_M_C0"},
+    {"id": "Y_atomic", "space": "grade-three derivatives of finite atomic measures", "category": "finite_distributional_images"},
+    {"id": "Y_hat", "space": "spin-four distributions", "category": "weak_distribution_sigma_Dprime_Cinfinity"}
+  ],
+  "completion_operators": [
+    {"id": "A3_source", "domain": "X_atomic", "operator_domain": "X_atomic", "codomain": "Y_atomic", "kind": "paired_grade_three_distributional_spin_operator"},
+    {"id": "A3_hat", "domain": "X_hat", "operator_domain": "X_hat", "codomain": "Y_hat", "kind": "weakstar_to_weak_distribution_continuous_operator"}
+  ],
+  "completion_interfaces": [
+    {
+      "id": "magnetic_weakstar_completion",
+      "constructor_kind": "topology_bearing_completion",
+      "source_space": "X_atomic",
+      "completed_space": "X_hat",
+      "source_target_space": "Y_atomic",
+      "completed_target_space": "Y_hat",
+      "target_embedding": {"map": "i_Y", "injective": true, "evidence": "atomic derivatives embed canonically as distributions"},
+      "topology": {"kind": "weak_star_sigma_M_C0", "separation": "Hausdorff", "duality": "M=(C0)^*"},
+      "dense_embedding": {"map": "i_X", "injective": true, "dense": true, "evidence": "atomic measures are weak-star dense in finite Radon measures"},
+      "completion_map": {"map": "c_X", "universal_property_evidence": "finite atomic measures are completed inside the weak-star complete Radon dual"},
+      "source_operator": "A3_source",
+      "extended_operator": "A3_hat",
+      "extension_well_defined": {"mechanism": "unique_continuous_locally_convex_extension", "unique": true, "proof_evidence": "for each smooth test section phi, pairing A3(mu) with phi equals pairing mu with the smooth formal adjoint A3*phi, hence weak-star convergence implies weak-distribution convergence; density gives uniqueness"},
+      "operator_extension_square": {"commutes": true, "evidence": "A3_hat i_X = i_Y A3_source by the definition of distributional differentiation"},
+      "manufactured_from_completion_only": false
+    }
+  ],
+  "kernel_comparisons": [
+    {
+      "id": "magnetic_kernel_comparison",
+      "completion": "magnetic_weakstar_completion",
+      "source_kernel_dimension": 0,
+      "completed_kernel_dimension": 21,
+      "comparison_square": {"map": "ker_i_X", "map_rank": 0, "injective": true, "commutes": true, "evidence": "restriction of the operator-extension square to kernels"},
+      "class_groups": [
+        {"id": "H2", "classification": "completion_only", "dimension": 5, "tor_object": null, "graph_limit_evidence": "Riemann-sum atomic measures converge weak-star to each smooth l=2 density and continuity gives weak-distribution A3 images converging to zero"},
+        {"id": "H3", "classification": "completion_only", "dimension": 7, "tor_object": null, "graph_limit_evidence": "Riemann-sum atomic measures converge weak-star to each smooth l=3 density and continuity gives weak-distribution A3 images converging to zero"},
+        {"id": "H4", "classification": "completion_only", "dimension": 9, "tor_object": null, "graph_limit_evidence": "Riemann-sum atomic measures converge weak-star to each smooth l=4 density and continuity gives weak-distribution A3 images converging to zero"}
+      ],
+      "completion_defect_dimension": 0
+    }
+  ],
+  "support_objects": [
+    {"id": "p4_minus_q4_characteristic", "kind": "projected_characteristic_support", "equation": "p^4-q^4=0"}
+  ],
+  "finite_linear_observation_fibers": [
+    {
+      "id": "magnetic_low_ports",
+      "kernel_comparison": "magnetic_kernel_comparison",
+      "kernel_dimension": 21,
+      "ports": [
+        {"id": "P0", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P1", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P2", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P3", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P4", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P5", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P6", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P7", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P8", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P9", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P10", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P11", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P12", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P13", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P14", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P15", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P16", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P17", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P18", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P19", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient"},
+        {"id": "P20", "availability": "available", "execution_evidence": "exact harmonic projection", "source_authority": "pre-readout shear coefficient", "zero_value_witness": "the zero shear gives value zero without making this port unavailable"}
+      ],
+      "observation_matrix": {"shape": [21, 21], "entries": [[0,0,1],[1,1,1],[2,2,1],[3,3,1],[4,4,1],[5,5,1],[6,6,1],[7,7,1],[8,8,1],[9,9,1],[10,10,1],[11,11,1],[12,12,1],[13,13,1],[14,14,1],[15,15,1],[16,16,1],[17,17,1],[18,18,1],[19,19,1],[20,20,1]]},
+      "declared_rank": 21,
+      "faithful": true,
+      "deletion_certificate": {"minimal": true, "ranks": [20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]}
+    }
+  ],
+  "evidence_replays": [
+    {
+      "id": "magnetic_master_replay",
+      "checker": "research/strominger/checkers/functional_completion_extension_master_checks.py",
+      "artifact": "research/strominger/results/functional_completion_extension_master.json",
+      "sha256": "6ec5501becfa43354ea2061034758b32cb1c2539b9d8f395d15adc8a0e3364d0",
+      "expected": {"passed": 16, "total": 16, "constituent_gates": 91}
+    }
+  ]
+}
