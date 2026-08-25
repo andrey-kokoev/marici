@@ -1,0 +1,45 @@
+{
+  "compatible_completions_with_reversed_preference": {
+    "single_lane_factory": {
+      "factory_T_states_per_round": 1,
+      "parallel_rounds_lower_bound": 85,
+      "preferred": "serial_reuse",
+      "reason": "parallel term execution cannot increase one-lane magic throughput and uses more work blocks",
+      "serial_rounds_lower_bound": 85
+    },
+    "unbounded_parallel_factory": {
+      "factory_T_states_per_round": "at_least_85",
+      "parallel_rounds_in_abstract_module_model": 31,
+      "preferred": "parallel_terms",
+      "reason": "parallel term modules reduce abstract injection rounds from 85 to 31 when throughput and layout are free",
+      "serial_rounds_in_abstract_module_model": 85
+    }
+  },
+  "controlled_H_abstract_demand": {
+    "T_state_upper_bound": 85,
+    "fully_parallel_peak_clean_work_blocks": 5,
+    "idealized_parallel_term_rounds": 31,
+    "serial_reuse_peak_clean_work_blocks": 2
+  },
+  "frozen_contract_readback": {
+    "future_magic_envelope": "proposed",
+    "magic_ancilla_count": "undefined",
+    "physical_depth": "undefined",
+    "verified_magic_source_admitted": false
+  },
+  "inputs_sha256": {
+    "research/kitaev/contracts/d-s3-resource-relative-capability.v2.json": "e7cbb6b0c35221145a0dba04716e3f3e00035620d9514edebfcc4446da2fba37",
+    "research/kitaev/results/s3-wilson-phase-native-compression.json": "6eafdfd4b38de1481dabb019634c6d4b056d476b87216112ca83bbd8f88f57f7"
+  },
+  "minimum_reopening_data": [
+    "admitted verified magic source or code-switching surface",
+    "factory acceptance probability and output-error contract",
+    "T-state throughput and latency",
+    "encoded CS, CCZ, and Toffoli exRec latency and fault-spread contracts",
+    "clean-work-block preparation, verification, reset, and reuse latency",
+    "layout concurrency and routing constraints",
+    "objective ordering or weights for depth, footprint, and failure probability"
+  ],
+  "schema": "marici.kitaev.s3-wilson-spacetime-nonidentifiability.v1",
+  "verdict": "Fault-tolerant spacetime optimization is not identifiable from the frozen data. Exact algebraic T upper bounds do not type physical depth: two resource completions consistent with the current proposed envelope prefer opposite schedules. The correct current values remain undefined, not estimated from T count."
+}

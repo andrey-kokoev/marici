@@ -37,6 +37,7 @@ def main():
     replay("check_s3_dpc_five_rail_intertwining.py")
     replay("check_s3_dpc_source_independence_attack.py")
     replay("check_dpc_universal_law_countermodels.py")
+    replay("check_dpc_protection_engineering_dichotomy.py")
 
     inversion, inversion_digest = load("s3-controlled-inversion-magic-obstruction.json")
     phase, phase_digest = load("s3-record-phase-magic-obstruction.json")
@@ -44,6 +45,7 @@ def main():
     intertwining, intertwining_digest = load("s3-dpc-five-rail-intertwining.json")
     attack, attack_digest = load("s3-dpc-source-independence-attack.json")
     universal, universal_digest = load("dpc-universal-law-countermodels.json")
+    dichotomy, dichotomy_digest = load("dpc-protection-engineering-dichotomy.json")
 
     assert not inversion["is_product_clifford"]
     assert phase["nonclifford_controlled_powers"] == [1, 2]
@@ -54,11 +56,12 @@ def main():
     assert not any(row["preserves_code"] for row in intertwining["transversal_record_phases"][:2])
     assert all(attack["attacks_succeeded"].values())
     assert all(universal["countermodels"].values())
+    assert all(dichotomy["falsifiers"].values())
 
     result = {
         "schema": "marici.kitaev.s3-dpc-explanation-audit.v1",
         "bounded_replay": {
-            "component_checkers": 6,
+            "component_checkers": 7,
             "digests": {
                 "controlled_inversion_obstruction": inversion_digest,
                 "record_phase_obstruction": phase_digest,
@@ -66,6 +69,7 @@ def main():
                 "five_rail_intertwining": intertwining_digest,
                 "source_independence_attack": attack_digest,
                 "universal_law_countermodels": universal_digest,
+                "protection_engineering_dichotomy": dichotomy_digest,
             },
         },
         "explanation_chain": [
@@ -88,9 +92,10 @@ def main():
         },
         "source_independence_attack": attack["attacks_succeeded"],
         "universal_law_countermodels": universal["countermodels"],
-        "dpc_final_classification": "bounded audit framework, not a universal explanatory law",
+        "protection_engineering_falsifiers": dichotomy["falsifiers"],
+        "dpc_final_classification": "retired as a conjecture; retained only as typed audit vocabulary",
         "smallest_next_theorem": "within declared epsilon, time, and resource budgets, derive a gauge-compatible effective interaction from an independently validated D(S3) model and separately certify its recovered encoded channel",
-        "verdict": "The first DPC mechanism is an exact conditional logical realization, not a proper source explanation. Its generators are target spectral logarithms, its calibrations are fitted to the desired characters, and the native D(S3) Hamiltonian does not supply the couplers. The stronger universal DPC also fails: finite countermodels show that chronological priority, named-resource necessity, microscopic uniqueness, certificate co-generation, and exact projector intertwining are not necessary for explanation. What survives is a bounded audit framework joining an independently validated physical model, resource-class counterfactuals, and a separate recovered-channel certificate.",
+        "verdict": "The first DPC mechanism is an exact conditional logical realization, not a source-derived physical explanation. The universal law and the protection/engineering dichotomy both fail finite countermodels. DPC is retired as a conjecture. Its useful residue is a typed question matrix that keeps algebraic reachability, resource obstruction, microscopic realization, robustness, fault tolerance, scalability, and explanatory scope as separate theorem obligations.",
     }
     OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))

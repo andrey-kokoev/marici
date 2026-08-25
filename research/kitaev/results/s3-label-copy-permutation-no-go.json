@@ -1,0 +1,55 @@
+{
+  "CF_witness": {
+    "compressed_rank": 6,
+    "copy_act_uncompute_equals_desired_CF": false,
+    "desired_permutation_rank": 8,
+    "fixed_labels": [
+      "A",
+      "B",
+      "D",
+      "E",
+      "G",
+      "H"
+    ],
+    "moved_labels": [
+      "C",
+      "F"
+    ],
+    "moved_sector_leakage_diagonal": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "diagonal_control": {
+    "reason": "diagonal bus actions preserve each matched |a>|a> subspace",
+    "sample_nontrivial_phase_kicks_back_exactly": true
+  },
+  "exhaustive_S8_gate": {
+    "fixed_point_rank_histogram": {
+      "0": 14833,
+      "1": 14832,
+      "2": 7420,
+      "3": 2464,
+      "4": 630,
+      "5": 112,
+      "6": 28,
+      "8": 1
+    },
+    "only_identity_is_unitary": true,
+    "permutations_checked": 40320,
+    "unitary_copy_permute_uncompute_compressions": 1
+  },
+  "required_enlargement": [
+    "coherent state transfer from torus sector register to control register with cleanable source",
+    "or a source-derived data-sector permutation controlled by the copied label",
+    "or direct locality-preserving implementation on the torus code space"
+  ],
+  "schema": "marici.kitaev.s3-label-copy-permutation-no-go.v1",
+  "verdict": "A coherent nondemolition sector-label bus enables diagonal phase kickback but no nontrivial sector permutation. Exhaustively over S8, V^dagger(I tensor P)V is unitary only for identity; for C-F it is the rank-six fixed-point projector with complete leakage on C and F. Therefore the conditional S8 algebra cannot be compiled by label copy, bus permutation, and uncompute."
+}

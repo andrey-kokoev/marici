@@ -1,0 +1,136 @@
+{
+  "chosen_family": [
+    "C",
+    "D",
+    "F",
+    "G"
+  ],
+  "chosen_signatures": {
+    "(-1, 0, -1, -1)": "G",
+    "(-1, 0, -1, 2)": "H",
+    "(-1, 0, 2, -1)": "F",
+    "(0, -1, 0, 0)": "E",
+    "(0, 1, 0, 0)": "D",
+    "(2, -3, 2, 2)": "B",
+    "(2, 0, -1, -1)": "C",
+    "(2, 3, 2, 2)": "A"
+  },
+  "coherent_extractor": {
+    "gram_is_identity": true,
+    "isometry_rank": 8,
+    "kickback": {
+      "A": {
+        "compressed_diagonal": [
+          "z",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "equals_exp_it_Q_target_when_z_exp_it": true
+      },
+      "C": {
+        "compressed_diagonal": [
+          "1",
+          "1",
+          "z",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "equals_exp_it_Q_target_when_z_exp_it": true
+      }
+    },
+    "unitary_extension_exists": true
+  },
+  "exact_modular_phase_estimation": {
+    "chosen_residue_labels_mod_4": {
+      "A": [
+        2,
+        3,
+        2,
+        2
+      ],
+      "B": [
+        2,
+        1,
+        2,
+        2
+      ],
+      "C": [
+        2,
+        0,
+        3,
+        3
+      ],
+      "D": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "E": [
+        0,
+        3,
+        0,
+        0
+      ],
+      "F": [
+        3,
+        0,
+        2,
+        3
+      ],
+      "G": [
+        3,
+        0,
+        3,
+        3
+      ],
+      "H": [
+        3,
+        0,
+        3,
+        2
+      ]
+    },
+    "controlled_gate": "controlled exp(2 pi i W_x / 4) and its powers",
+    "exactness_reason": "all Wilson eigenvalues are integers and remain jointly distinct modulo 4",
+    "family_moduli": {
+      "CDFG": 4,
+      "CDFH": 4,
+      "CDGH": 4,
+      "CEFG": 4,
+      "CEFH": 4,
+      "CEGH": 4,
+      "DFGH": 4,
+      "EFGH": 4
+    },
+    "minimum_modulus_for_every_minimum_family": 4,
+    "pointer": "one four-level coherent pointer per Wilson observable"
+  },
+  "measurement_negative_control": {
+    "channel": "rho -> sum_a Q_a rho Q_a",
+    "equals_coherent_extractor": false,
+    "off_diagonal_matrix_units_surviving": 0
+  },
+  "minimum_faithful_spectral_observables": 4,
+  "minimum_family_count": 8,
+  "oracle_boundary": {
+    "concrete_sufficient_gate_set": "controlled exp(2 pi i W_x / 4) for the four types in one faithful family, coherent mod-4 pointers, reversible signature lookup, and inverse extraction",
+    "not_established_by": [
+      "ability to measure the four observables destructively",
+      "abstract existence of the four Hermitian Wilson operators",
+      "uncontrolled Wilson Hamiltonian evolution"
+    ],
+    "resource_consequence": "four coherent spectral ports suffice nonlinearly, while eight Wilson Hamiltonian types are necessary for linear projector synthesis",
+    "sufficient": "coherent nondemolition spectral extractor for one faithful four-observable family"
+  },
+  "schema": "marici.kitaev.s3-coherent-wilson-phase-kickback.v1",
+  "verdict": "A coherent faithful Wilson spectral oracle compiles exact sector-projector phases by compute-phase-uncompute. This reduces the nonlinear coherent port count from eight Hamiltonian types to four spectral observables, but only under a strictly stronger oracle type than measurement access or abstract Wilson availability."
+}

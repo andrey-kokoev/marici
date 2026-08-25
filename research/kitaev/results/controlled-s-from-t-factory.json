@@ -1,0 +1,70 @@
+{
+  "exact_circuit": [
+    "T(x)",
+    "T(y)",
+    "CNOT(x->y)",
+    "T_dagger(y)",
+    "CNOT(x->y)"
+  ],
+  "factory_reduction": {
+    "CS_factory_from_verified_T_states": "consume three verified encoded |T> or conjugate states and execute the Clifford parity network",
+    "fault_tolerance_boundary": "three injection exRecs plus two logical CNOTs must be scheduled and verified; algebraic T-count is not a physical error-rate estimate",
+    "frozen_source_status": "no source-derived verified T-state factory is admitted",
+    "new_magic_species_if_T_factory_exists": 0
+  },
+  "phase_identity": "2*x*y = x+y-(x xor y) mod 8",
+  "phase_polynomial_search": {
+    "coefficient_domain": "Z/8",
+    "linear_forms": [
+      "x",
+      "y",
+      "x xor y"
+    ],
+    "minimum_T_count": 3,
+    "minimum_solutions": [
+      {
+        "coefficients": [
+          1,
+          1,
+          7
+        ],
+        "t_count": 3
+      },
+      {
+        "coefficients": [
+          5,
+          5,
+          3
+        ],
+        "t_count": 3
+      }
+    ],
+    "scope": "ancilla-free diagonal CNOT+T synthesis; arbitrary Clifford+T circuits with measurement are outside the lower bound",
+    "solutions": [
+      {
+        "coefficients": [
+          1,
+          1,
+          7
+        ],
+        "t_count": 3
+      },
+      {
+        "coefficients": [
+          5,
+          5,
+          3
+        ],
+        "t_count": 3
+      }
+    ]
+  },
+  "prepares_CS_magic_state_from_plus_plus": true,
+  "resources": {
+    "CNOT": 2,
+    "T_or_T_dagger_injections": 3,
+    "workspace_ancillas": 0
+  },
+  "schema": "marici.kitaev.controlled-s-from-t-factory.v1",
+  "verdict": "A CS magic-state factory is not an independent algebraic species if verified T states are available: exactly three T/T-dagger injections and two CNOTs prepare CS|++>, with no workspace ancilla. Three is optimal within ancilla-free diagonal phase-polynomial synthesis. The frozen source still lacks the upstream verified T factory, so this is a resource reduction rather than executable production."
+}

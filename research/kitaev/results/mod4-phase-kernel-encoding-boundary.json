@@ -1,0 +1,42 @@
+{
+  "binary_two_qubits_per_pointer_lens": {
+    "bit_convention": "r=2a+b, s=2c+d",
+    "exact_decomposition": "CS(b,d) * CZ(a,d) * CZ(b,c)",
+    "is_four_qubit_clifford": false,
+    "nonclifford_component": "controlled-S on the low bits b,d",
+    "nonclifford_gate_count_in_clifford_plus_CS_library": 1,
+    "optimality": "upper bound from exact CS*CZ*CZ decomposition; lower bound from non-Clifford Pauli-normalizer failure"
+  },
+  "kernel": "K|r,s>=i^(r*s)|r,s>",
+  "native_ququart_lens": {
+    "constructor": "one generalized ququart controlled-Z",
+    "is_clifford": true,
+    "pauli": "X4,Z4 on each pointer"
+  },
+  "operator_schmidt_rank": 4,
+  "pauli_lens_no_isomorphism": {
+    "native_ququart_element_order_census": {
+      "1": 1,
+      "2": 3,
+      "4": 12
+    },
+    "native_ququart_projective_label_group": "Z4 x Z4",
+    "pauli_preserving_relabelling_exists": false,
+    "reason": "the ququart label group has twelve order-four elements while the two-qubit label group has none",
+    "two_qubit_element_order_census": {
+      "1": 1,
+      "2": 15
+    },
+    "two_qubit_projective_label_group": "Z2^4"
+  },
+  "schema": "marici.kitaev.mod4-phase-kernel-encoding-boundary.v1",
+  "source_consequence": {
+    "does_not_supply": "coherent Wilson residue extraction into either pointer",
+    "factory_reuse": "the controlled-S-type factory already required by the controlled-power-two record phase can serve this kernel",
+    "if_native_ququart_stabilizer_hardware": "interaction kernel is Clifford",
+    "in_frozen_binary_stabilizer_architecture": "requires the already-missing controlled-S-type resource",
+    "new_magic_species_beyond_existing_D_S3_frontier": 0,
+    "shared_constructor_count": 1
+  },
+  "verdict": "The cross-factor residue interaction is not intrinsically magic. It is one Clifford controlled-Z in the native mod-4 ququart coefficient lens, but becomes exactly one CS plus two CZ gates in the frozen binary pointer encoding. One non-Clifford gate is optimal, and its controlled-S species is already missing elsewhere in the D(S3) architecture, so this interaction adds no new magic species. The two Pauli lenses are not related by a Pauli-preserving relabelling; a ququart switch remains a genuine architectural transition."
+}

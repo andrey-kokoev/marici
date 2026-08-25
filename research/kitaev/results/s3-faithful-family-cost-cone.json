@@ -1,0 +1,186 @@
+{
+  "CDFG_difference_table": {
+    "CDFH": [
+      1,
+      0,
+      1,
+      1
+    ],
+    "CDGH": [
+      2,
+      0,
+      2,
+      2
+    ],
+    "CEFG": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "CEFH": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "CEGH": [
+      2,
+      1,
+      2,
+      2
+    ],
+    "DFGH": [
+      2,
+      0,
+      1,
+      1
+    ],
+    "EFGH": [
+      2,
+      1,
+      1,
+      1
+    ]
+  },
+  "coordinates": [
+    "CS_or_CSdagger",
+    "CCZ",
+    "Toffoli_compute_uncompute_pair",
+    "work_block_episode"
+  ],
+  "family_vectors": {
+    "CDFG": [
+      13,
+      14,
+      16,
+      16
+    ],
+    "CDFH": [
+      14,
+      14,
+      17,
+      17
+    ],
+    "CDGH": [
+      15,
+      14,
+      18,
+      18
+    ],
+    "CEFG": [
+      13,
+      15,
+      16,
+      16
+    ],
+    "CEFH": [
+      14,
+      15,
+      17,
+      17
+    ],
+    "CEGH": [
+      15,
+      15,
+      18,
+      18
+    ],
+    "DFGH": [
+      15,
+      14,
+      17,
+      17
+    ],
+    "EFGH": [
+      15,
+      15,
+      17,
+      17
+    ]
+  },
+  "hostile_weight_grid_0_through_3": {
+    "classifications": {
+      "CDFG_tied": 67,
+      "other_wins": 0,
+      "unique_CDFG": 189
+    },
+    "examples": {
+      "CDFG_tied": {
+        "minimizers": [
+          "CDFG",
+          "CDFH",
+          "CDGH",
+          "CEFG",
+          "CEFH",
+          "CEGH",
+          "DFGH",
+          "EFGH"
+        ],
+        "weights": {
+          "CCZ": 0,
+          "CS_or_CSdagger": 0,
+          "Toffoli_compute_uncompute_pair": 0,
+          "work_block_episode": 0
+        }
+      },
+      "unique_CDFG": {
+        "minimizers": [
+          "CDFG"
+        ],
+        "weights": {
+          "CCZ": 1,
+          "CS_or_CSdagger": 0,
+          "Toffoli_compute_uncompute_pair": 0,
+          "work_block_episode": 1
+        }
+      }
+    }
+  },
+  "input_sha256": "681ae79d6dbf0fbd0bc00f9919ce62900944a6c2fdf2f1fc39280c3f4b93cb9c",
+  "nonnegative_cost_cone_theorem": {
+    "degenerate_ties": "if CCZ is free, CEFG ties CDFG; if CS, Toffoli-pair, and work episodes are all free, CDFH and other zero-difference families may tie",
+    "uniqueness_condition": "weight_CCZ > 0 and weight_CS + weight_Toffoli_pair + weight_work_episode > 0",
+    "weak_dominance": "CDFG minimizes every nonnegative linear combination of the four coordinates"
+  },
+  "port_vectors": {
+    "C": [
+      3,
+      4,
+      5,
+      5
+    ],
+    "D": [
+      3,
+      2,
+      2,
+      2
+    ],
+    "E": [
+      3,
+      3,
+      2,
+      2
+    ],
+    "F": [
+      3,
+      4,
+      4,
+      4
+    ],
+    "G": [
+      4,
+      4,
+      5,
+      5
+    ],
+    "H": [
+      5,
+      4,
+      6,
+      6
+    ]
+  },
+  "schema": "marici.kitaev.s3-faithful-family-cost-cone.v1",
+  "verdict": "CDFG's compiler-relative selection is robust throughout the nonnegative primitive-cost cone, not an artifact of the numerical 3/7/14 T-cost assignment. It is unique exactly away from the stated degenerate free-resource faces. This remains relative to the chosen primitive library and excludes physical failure correlations."
+}

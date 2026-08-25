@@ -1,0 +1,190 @@
+{
+  "gate": "CS=diag(1,1,1,i)",
+  "gate_is_clifford": false,
+  "resource_state": {
+    "is_stabilizer_state": false,
+    "state": "CS|++>=(|00>+|01>+|10>+i|11>)/2",
+    "unit_magnitude_pauli_expectations_including_identity": 1
+  },
+  "schema": "marici.kitaev.controlled-s-magic-injection.v1",
+  "shared_factory_contract": {
+    "consumed_resource_per_kernel_invocation": "one verified encoded CS|++> state",
+    "consumers": [
+      "mod-four product residue kernel",
+      "D(S3) controlled-power-two record phase"
+    ],
+    "online_nonclifford_gates_after_resource_preparation": 0,
+    "online_requirements": "two logical Bell measurements plus branch-dependent two-qubit Clifford correction",
+    "still_missing": "a source-derived verified encoded CS|++> preparation/distillation factory and its fault-tolerant exRec"
+  },
+  "teleportation": {
+    "bell_branches": 16,
+    "corrections": [
+      {
+        "bell_outcome": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": true
+      },
+      {
+        "bell_outcome": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": true
+      },
+      {
+        "bell_outcome": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": true
+      },
+      {
+        "bell_outcome": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": true
+      },
+      {
+        "bell_outcome": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      },
+      {
+        "bell_outcome": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "correction_is_clifford": true,
+        "correction_is_pauli": false
+      }
+    ],
+    "deterministic_with_clifford_feedforward": true,
+    "nonclifford_correction_branches": 0,
+    "nonpauli_clifford_correction_branches": 12,
+    "pauli_correction_branches": 4
+  },
+  "verdict": "Controlled-S consumption is executable conditionally from one verified nonstabilizer CS|++> resource: all 16 teleportation branches have Clifford corrections, four Pauli and twelve non-Pauli Clifford. The online gadget introduces no further magic species. Physical executability remains blocked solely at verified resource-state production and encoded scheduling."
+}

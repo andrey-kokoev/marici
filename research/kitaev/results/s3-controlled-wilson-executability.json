@@ -1,0 +1,176 @@
+{
+  "clifford_assisted_magic_equivalence": {
+    "allowed_free_relations": "three-bit affine permutations and diagonal Clifford phase corrections",
+    "equivalence_neighborhoods": {
+      "C": [
+        "C",
+        "F",
+        "G",
+        "H"
+      ],
+      "D": [
+        "D",
+        "E"
+      ],
+      "E": [
+        "D",
+        "E"
+      ],
+      "F": [
+        "C",
+        "F",
+        "G",
+        "H"
+      ],
+      "G": [
+        "C",
+        "F",
+        "G",
+        "H"
+      ],
+      "H": [
+        "C",
+        "F",
+        "G",
+        "H"
+      ]
+    },
+    "every_minimum_family_uses_both_species": true,
+    "species": [
+      [
+        "C",
+        "F",
+        "G",
+        "H"
+      ],
+      [
+        "D",
+        "E"
+      ]
+    ],
+    "species_count": 2
+  },
+  "family_consequence": {
+    "every_minimum_family_contains_four_nonclifford_quarter_evolutions": true,
+    "minimum_family_count": 8,
+    "minimum_nonclifford_species_up_to_available_affine_and_diagonal_clifford_interconversion": 2,
+    "one_frozen_stabilizer_constructor_serves_any_family": false
+  },
+  "inputs": {
+    "research/kitaev/results/s3-coherent-wilson-phase-kickback.json": "afc68d25279b4b763f64c94670ccaaa135fcc47090c54100cf69c0a02cfcb3c7",
+    "research/kitaev/results/s3-executable-ft-frontier-audit.json": "c7b6d8636e56c97b27349f7878692ebfa68311726236d87f609c3e418b312b34",
+    "research/kitaev/results/s3-modular-data.json": "d3b286ba5acbbf8fdcf52b598277e68e0aae0a1ba71c4232827f8b61b33ec1a9"
+  },
+  "logical_normalizer_test": {
+    "C": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    "D": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        3,
+        -3,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    "E": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        3,
+        -3,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "F": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        2,
+        2,
+        -1,
+        0,
+        0,
+        2,
+        -1,
+        -1
+      ]
+    },
+    "G": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        2,
+        2,
+        -1,
+        0,
+        0,
+        -1,
+        -1,
+        2
+      ]
+    },
+    "H": {
+      "controlled_quarter_evolution_is_four_qubit_clifford": false,
+      "quarter_evolution_is_three_qubit_clifford": false,
+      "wilson_eigenvalues": [
+        2,
+        2,
+        -1,
+        0,
+        0,
+        -1,
+        2,
+        -1
+      ]
+    }
+  },
+  "microscopic_constructor_audit": {
+    "closed_ribbon_insertion": "produces a Wilson eigenvalue/amplitude and is generally nonunitary; it is not exp(2 pi i W_x/4)",
+    "code_distance": "distance 3 is only conditionally sufficient after each missing controlled-W module is supplied as a one-fault-tolerant exRec",
+    "leakage": "ideal compute-uncompute has zero final label leakage; any retained/lost pointer dephases sectors sharing the environment record",
+    "locality_lower_bound": "a single localized controller cannot influence all length-L loop contacts through bounded-range gates in sublinear depth unless pre-shared length-L correlations are charged",
+    "mobile_ancilla": {
+      "data_contact_depth": "L",
+      "one_fault_tolerant": false,
+      "single_persistent_ancilla_fault": "can propagate to a suffix of O(L) data contacts and become logical",
+      "support": "one noncontractible cycle of length L"
+    },
+    "verified_extended_ancilla": {
+      "data_contact_depth_excluding_preparation": 1,
+      "missing": "a verified preparation factory for the non-Clifford controlled Wilson resource",
+      "single_transversal_contact_fault": "at most one data fault under the declared contact model",
+      "support": "distributed length-L encoded/cat resource"
+    }
+  },
+  "resource_no_go": {
+    "frozen_resource_theory": "encoded stabilizer states, Clifford operations, Pauli measurements, and Pauli feed-forward",
+    "phase_kickback_relocates_oracle": true,
+    "required_new_resource": "verified nonstabilizer controlled-W_x quarter-evolution states/gadgets, an equivalent code switch, or a stronger source-derived topological gate constructor",
+    "target_outside_frozen_theory": true
+  },
+  "schema": "marici.kitaev.s3-controlled-wilson-executability.v1",
+  "verdict": "The mod-4 compiler is correct but does not close physical executability. Every Wilson quarter evolution appearing in every faithful family, and every controlled version, is non-Clifford in the frozen three-qubit sector encoding. The admitted stabilizer architecture therefore cannot generate even one required controlled gate, let alone a shared four-type constructor. Mobile-loop implementations are not one-fault tolerant; verified distributed implementations merely move the missing resource into their preparation factory."
+}

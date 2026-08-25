@@ -1,0 +1,254 @@
+{
+  "carrier": "N[Z/4 under multiplication] represented by residue-count vectors (n0,n1,n2,n3)",
+  "closed_convolution_formula": {
+    "A": "sum_i ai",
+    "B": "sum_i bi",
+    "c0": "a0*B+b0*A-a0*b0+a2*b2",
+    "c1": "a1*b1+a3*b3",
+    "c2": "a1*b2+a2*b1+a2*b3+a3*b2",
+    "c3": "a1*b3+a3*b1"
+  },
+  "cross_factor_phase_kernel": {
+    "consequence": "generic product-sector quarter evolution is an interacting diagonal gate and cannot be compiled as a tensor product of factor-only unitaries; rank-one support is the exceptional separable case",
+    "entries": "K_rs=i^(r*s)",
+    "full_operator_schmidt_rank": 4,
+    "selected_support_ranks": {
+      "even_by_even_02|02": 1,
+      "full_0123|0123": 4,
+      "s3_dimension2_by_dimension3_023|013": 3
+    }
+  },
+  "laws": {
+    "associative": true,
+    "commutative": true,
+    "unit": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "minimal_spectral_moments": {
+    "packet": [
+      "N",
+      "tau1=Tr(U)",
+      "tau2=Tr(U^2)"
+    ],
+    "reconstruction": [
+      "O=(N-tau2)/2",
+      "Delta=Im(tau1)",
+      "T=(N-O-Re(tau1))/2"
+    ],
+    "scope": "spectral identification only; estimating traces does not implement U or controlled-U",
+    "tau1": "(N-O-2T)+i*Delta",
+    "tau2": "N-2O"
+  },
+  "multiplication_table": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      2,
+      0,
+      2
+    ],
+    [
+      0,
+      3,
+      2,
+      1
+    ]
+  ],
+  "product_counterexample_reproduced": {
+    "equal_histogram": false,
+    "equal_quantum_dimension": 6,
+    "equal_total_rank": 462,
+    "left": [
+      282,
+      0,
+      180,
+      0
+    ],
+    "right": [
+      242,
+      0,
+      220,
+      0
+    ]
+  },
+  "product_sector_power_law": {
+    "checked_exponents": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "checks": {
+      "generic_witness": {
+        "1": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "2": [
+          89,
+          58,
+          100,
+          42
+        ],
+        "3": [
+          2413,
+          468,
+          1500,
+          532
+        ],
+        "4": [
+          53521,
+          5128,
+          20000,
+          4872
+        ],
+        "5": [
+          1069857,
+          49488,
+          250000,
+          50512
+        ]
+      },
+      "product_left": {
+        "1": [
+          282,
+          0,
+          180,
+          0
+        ],
+        "2": [
+          213444,
+          0,
+          0,
+          0
+        ],
+        "3": [
+          98611128,
+          0,
+          0,
+          0
+        ],
+        "4": [
+          45558341136,
+          0,
+          0,
+          0
+        ],
+        "5": [
+          21047953604832,
+          0,
+          0,
+          0
+        ]
+      },
+      "product_right": {
+        "1": [
+          242,
+          0,
+          220,
+          0
+        ],
+        "2": [
+          213444,
+          0,
+          0,
+          0
+        ],
+        "3": [
+          98611128,
+          0,
+          0,
+          0
+        ],
+        "4": [
+          45558341136,
+          0,
+          0,
+          0
+        ],
+        "5": [
+          21047953604832,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "coordinates": [
+      "N_k=N^k",
+      "O_k=O^k",
+      "T_k=k*T*O^(k-1)",
+      "Delta_k=Delta^k"
+    ],
+    "even_support_cancellation": "if O=0, the Wilson quarter phase for the product sector x^{boxtimes k} is identity for k>=2",
+    "not_claimed": "this is not cancellation of U_x tensor U_x; exp(pi i W_x/2) tensor exp(pi i W_x/2) has additive phases, whereas W_(x boxtimes x) has multiplicative eigenvalues"
+  },
+  "replacement_dpc": "The typed Wilson quarter-spectrum packet is a symmetric monoidal invariant into N[Z/4,multiplication]; product-double predictions must be computed by this convolution, and no scalar quotient such as quantum dimension is explanatory unless its fibers are proven convolution-homogeneous.",
+  "schema": "marici.kitaev.quarter-spectrum-compositional-semiring.v1",
+  "triangular_coordinates": {
+    "definition": [
+      "N=n0+n1+n2+n3",
+      "O=n1+n3",
+      "T=n2",
+      "Delta=n1-n3"
+    ],
+    "dual_number_sector": "O+T*epsilon multiplies with epsilon^2=0",
+    "interpretation": {
+      "Delta": "oriented imbalance between +i and -i",
+      "N": "total sector rank",
+      "O": "multiplicity of odd quarter phases plus/minus i",
+      "T": "multiplicity of residue-two phase -1"
+    },
+    "inverse": [
+      "n0=N-O-T",
+      "n1=(O+Delta)/2",
+      "n2=T",
+      "n3=(O-Delta)/2"
+    ],
+    "product": [
+      "N'=Na*Nb",
+      "O'=Oa*Ob",
+      "T'=Ta*Ob+Oa*Tb",
+      "Delta'=Deltaa*Deltab"
+    ],
+    "product_counterexample_coordinates": {
+      "left": [
+        462,
+        0,
+        180,
+        0
+      ],
+      "only_distinguishing_coordinate": "T",
+      "right": [
+        462,
+        0,
+        220,
+        0
+      ]
+    }
+  },
+  "typing": {
+    "quantum_coefficient_lens": "selects mod-4 phase residues through exp(2 pi i lambda/4)",
+    "readout_control_boundary": "histogram classifies the unitary spectrum but does not construct controlled Wilson evolution",
+    "shared_carrier_geometry": "tensor products multiply eigenvalues and Cartesian-product their multiplicities"
+  },
+  "verdict": "The product-double failure has an exact compositional explanation. Quarter spectra form a commutative semiring-valued invariant whose multiplication is residue-product convolution. Quantum dimension and total rank are lossy scalar shadows, so equal values cannot justify equal control species."
+}
