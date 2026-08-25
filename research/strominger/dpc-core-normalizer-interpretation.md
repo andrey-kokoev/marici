@@ -328,3 +328,41 @@ The central falsifier remains represented directly:
 
 No temporal interpretation enters this result. Parallel paths are alternative
 factorizations of a morphism, not alternative histories.
+
+## Context closure and the unbounded theorem
+
+The three-presentation result extends to arbitrary finite constructor words.
+Regard `rho`, `sigma`, and `tau` as letters with rank
+
+\[
+r(\rho)=2,
+\qquad r(\sigma)=1,
+\qquad r(\tau)=0,
+\]
+
+and extend the rank additively over words. Every authorized rewrite strictly
+decreases total rank, including when it is inserted into an arbitrary left and
+right context. Hence no finite word admits an infinite reduction sequence.
+
+There are exactly two critical-pair schemas for unary contextual substitution:
+
+- At the same word position, two rules may leave `rho`; the exhibited diamond
+  joins their reducts at `tau`.
+- At distinct positions, the two substitutions commute because each preserves
+  the full component signature: source and endpoint boundaries, support union,
+  fault hypergraph, and input/output authority resources.
+
+These schemas prove local confluence independently of word length. Termination
+plus local confluence invokes Newman's lemma, yielding
+
+\[
+\boxed{\text{every finite configuration word has a unique normal form}.}
+\]
+
+This is the first genuinely unbounded coherence statement in this lane. The
+checker rejects a nondecreasing rank, loss of context closure, omission of any
+preserved semantic field, omission of the disjoint-position schema, incomplete
+rule coverage, or replacement of the theorem scope by a bounded census.
+
+The scope remains algebraic and atemporal: a word is a finite compositional
+context, not a sequence of moments.

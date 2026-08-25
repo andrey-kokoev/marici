@@ -896,6 +896,74 @@ def audit_configuration_coherence_coverage(contract: dict[str, Any]) -> list[dic
     return audits
 
 
+def audit_contextual_configuration_rewrites(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
+    admitted = {audit["id"]: audit["passed"] for audit in path_audits}
+    rewrites = {rewrite["id"]: rewrite for rewrite in contract.get("configuration_constructor_rewrites", [])}
+    required_fields = {"source_boundary", "endpoint_boundary", "support_union", "fault_hypergraph", "input_authority", "output_authority"}
+    required_schemas = {"same_position_branch", "disjoint_positions_commute"}
+    boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
+
+    def semantic_signature(path: dict[str, Any]) -> dict[str, Any]:
+        return {"source": {key: path.get("source_configuration", {}).get(key) for key in boundary_fields}, "endpoint": {key: path.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields}, "support": sorted(path.get("expected_endpoint_configuration", {}).get("support", [])), "fault_hypergraph": sorted(sorted(fault) for fault in path.get("admissible_authority_root_fault_sets", []))}
+
+    audits = []
+    for theorem in contract.get("configuration_contextual_rewrite_theorems", []):
+        errors: list[str] = []
+        alphabet = set(theorem.get("alphabet", []))
+        selected_ids = theorem.get("rewrite_ids", [])
+        selected = [rewrites.get(rewrite_id, {}) for rewrite_id in selected_ids]
+        ranks = theorem.get("rank", {})
+        if alphabet != set(paths) or not all(admitted.get(path_id) for path_id in alphabet) or set(ranks) != alphabet or any(not isinstance(rank, int) or rank < 0 for rank in ranks.values()):
+            errors.append("contextual_rewrite_alphabet_or_rank_untyped")
+        if set(selected_ids) != set(rewrites) or any(not rewrite for rewrite in selected):
+            errors.append("contextual_rewrite_rule_coverage_failure")
+        rank_decreases = bool(selected) and all(rewrite.get("source_path_id") in ranks and rewrite.get("target_path_id") in ranks and ranks[rewrite["source_path_id"]] > ranks[rewrite["target_path_id"]] for rewrite in selected)
+        if not rank_decreases:
+            errors.append("contextual_rewrite_rank_not_decreasing")
+        rule_semantics_preserved = all(rewrite.get("source_path_id") in paths and rewrite.get("target_path_id") in paths and semantic_signature(paths[rewrite["source_path_id"]]) == semantic_signature(paths[rewrite["target_path_id"]]) for rewrite in selected)
+        context_preserved = theorem.get("context_closure") is True and set(theorem.get("preserved_semantic_fields", [])) == required_fields and rule_semantics_preserved
+        if not context_preserved:
+            errors.append("contextual_rewrite_context_signature_not_preserved")
+        schemas = set(theorem.get("critical_pair_schemas", []))
+        if schemas != required_schemas:
+            errors.append("contextual_rewrite_critical_schema_incomplete")
+        adjacency: dict[str, set[str]] = {path_id: set() for path_id in alphabet}
+        for rewrite in selected:
+            if rewrite.get("source_path_id") in adjacency:
+                adjacency[rewrite["source_path_id"]].add(rewrite.get("target_path_id"))
+
+        def reachable(node: str) -> set[str]:
+            seen, frontier = {node}, [node]
+            while frontier:
+                current = frontier.pop()
+                for target in adjacency.get(current, set()):
+                    if target not in seen:
+                        seen.add(target)
+                        frontier.append(target)
+            return seen
+
+        same_position_joins = True
+        same_position_pairs = []
+        for source, targets in adjacency.items():
+            for left, right in combinations(sorted(targets), 2):
+                common = sorted(reachable(left) & reachable(right))
+                same_position_pairs.append({"source": source, "branches": [left, right], "common_reducts": common})
+                same_position_joins &= bool(common)
+        disjoint_positions_commute = context_preserved and "disjoint_positions_commute" in schemas
+        local_confluence = same_position_joins and disjoint_positions_commute and schemas == required_schemas
+        if not local_confluence:
+            errors.append("contextual_rewrite_local_confluence_failure")
+        terminating = rank_decreases
+        newman_global_confluence = terminating and local_confluence and context_preserved
+        if not newman_global_confluence:
+            errors.append("contextual_rewrite_newman_gate_failure")
+        if theorem.get("theorem_scope") != "arbitrary finite words over the admitted configuration-path alphabet":
+            errors.append("contextual_rewrite_scope_laundered")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "rank_decreases": rank_decreases, "rewrite_semantics_preserved": rule_semantics_preserved, "context_signature_preserved": context_preserved, "same_position_critical_pairs": same_position_pairs, "same_position_joins": same_position_joins, "disjoint_positions_commute": disjoint_positions_commute, "locally_confluent": local_confluence, "terminating": terminating, "newman_global_confluence": newman_global_confluence, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -934,10 +1002,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     configuration_coherence_audits = audit_configuration_path_coherence(contract, configuration_path_audits, generated_coherence_cells)
     configuration_triangle_audits = audit_configuration_coherence_triangles(contract, generated_coherence_cells)
     configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
+    contextual_rewrite_audits = audit_contextual_configuration_rewrites(contract, configuration_path_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -965,4 +1034,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_path_coherence": configuration_coherence_audits,
         "configuration_coherence_triangles": configuration_triangle_audits,
         "configuration_coherence_coverage": configuration_coherence_coverage,
+        "configuration_contextual_rewrite_theorems": contextual_rewrite_audits,
     }

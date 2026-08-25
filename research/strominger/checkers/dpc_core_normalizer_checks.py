@@ -227,6 +227,22 @@ for name, mutate_normalization, expected_section, expected in (
     errors = [error for audit in candidate_result[expected_section] for error in audit["errors"]]
     configuration_normalization_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["configuration_normalization_hostiles"] = configuration_normalization_hostiles
+contextual_rewrite_hostiles = {}
+for name, mutate_contextual, expected in (
+    ("nondecreasing_rank", lambda c: c["configuration_contextual_rewrite_theorems"][0]["rank"].update({"varying_membership_configuration_path":1}), "contextual_rewrite_rank_not_decreasing"),
+    ("context_closure_removed", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"context_closure":False}), "contextual_rewrite_context_signature_not_preserved"),
+    ("support_not_preserved", lambda c: c["configuration_contextual_rewrite_theorems"][0]["preserved_semantic_fields"].remove("support_union"), "contextual_rewrite_context_signature_not_preserved"),
+    ("rewrite_semantics_change", lambda c: (configuration_path(c,"alternate_configuration_path")["edges"][-1]["target_configuration"]["support"].append("context_visible_support"), configuration_path(c,"alternate_configuration_path")["edges"][-1]["output_configuration"]["support"].append("context_visible_support"), configuration_path(c,"alternate_configuration_path")["expected_endpoint_configuration"]["support"].append("context_visible_support")), "contextual_rewrite_context_signature_not_preserved"),
+    ("disjoint_schema_omitted", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"critical_pair_schemas":["same_position_branch"]}), "contextual_rewrite_critical_schema_incomplete"),
+    ("rewrite_coverage_omitted", lambda c: c["configuration_contextual_rewrite_theorems"][0]["rewrite_ids"].remove("rewrite_rho_tau"), "contextual_rewrite_rule_coverage_failure"),
+    ("bounded_scope_substituted", lambda c: c["configuration_contextual_rewrite_theorems"][0].update({"theorem_scope":"words of length at most three"}), "contextual_rewrite_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_contextual(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_contextual_rewrite_theorems"][0]["errors"]
+    contextual_rewrite_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["contextual_rewrite_hostiles"] = contextual_rewrite_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -277,5 +293,7 @@ for name, rejected in configuration_coherence_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_coherence hostile." + name)
 for name, rejected in configuration_normalization_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_normalization hostile." + name)
+for name, rejected in contextual_rewrite_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " contextual_rewrite hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and coherence_omission_rejected else 1)
