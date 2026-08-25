@@ -176,3 +176,49 @@ of either root remains survivable, while loss of the whole bridge is rejected.
 Omitting an admitted common-cause fiber is also rejected. Thus the checker
 distinguishes a real fault-hypergraph guarantee from an overlap count or an
 empty fault model.
+
+## Dynamic-membership reconfiguration-chain theorem
+
+The successor and reconfiguration laws now share one induction state
+
+\[
+I_n=(e+n,h_n,C_n,Q_n,\alpha_n,S_n),
+\]
+
+where `h` is the physical-state digest, `(C,Q)` is membership and quorum,
+`alpha` is the sole live configuration-authority resource, and `S` is the
+accumulated support. A transition extends a valid prefix exactly when:
+
+1. its old signature equals `I_n` and its new epoch is adjacent;
+2. physical correspondence links the two state digests;
+3. old and new quorums jointly endorse the transition;
+4. their nonempty bridge survives every admitted authority-root fault fiber;
+5. `alpha_n` is consumed, not retained, and exactly one fresh `alpha_(n+1)` is emitted; and
+6. the output support is precisely the old support union the proposal,
+   physical, and constructor supports.
+
+These are prefix-local conditions, so the checker implements the finite
+induction step for an arbitrary nonempty list, rather than a fixed matrix of
+three epochs. The bounded replay rotates membership
+`123 -> 234 -> 345 -> 456` and reaches `e+3`; it is evidence exercising the
+generic rule. The theorem is conditional on the declared fault hypergraph:
+replica labels do not imply independent authority roots. If two bridge members
+share one root, that entire root fiber must be admitted as one correlated
+failure, and the transition is rejected when the fiber exhausts the bridge.
+The chain also declares global root-fault hyperedges. Each such hyperedge is
+projected through every transition's root map and must leave a survivor in
+every bridge it touches. This detects cross-epoch correlations: `admin_C`
+participates in the first two bridges and `admin_D` in the next two, while the
+joint failure `{admin_C,admin_D}` is rejected because it exhausts the middle
+bridge. Independent replica names cannot hide that common authority geometry.
+
+The resulting global law is therefore:
+
+\[
+\text{safe chain}
+\iff
+\text{every local transition preserves }I_n\text{ and its fault-root bridge}.
+\]
+
+This is a theorem about typed contract admission. It does not manufacture a
+consensus implementation or infer executable authority from geometric overlap.
