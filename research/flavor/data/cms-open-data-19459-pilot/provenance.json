@@ -1,0 +1,93 @@
+{
+  "record": "https://opendata.cern.ch/record/19459",
+  "doi": "10.7483/OPENDATA.CMS.KU7I.0AYJ",
+  "dataset": "/SUSYGluGluToBBHToTauTau_M-140_TuneCUETP8M1_13TeV-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM",
+  "pilot_file": {
+    "path": "4C142A8C-80B8-E511-8DFD-0025905C2CD0.root",
+    "bytes": 316932303,
+    "adler32": "494b83da",
+    "events": 14688
+  },
+  "instrument": "CMS 2015 detector simulation",
+  "source": "bottom-associated scalar with tau-pair decay at nominal 140 GeV",
+  "execution_limit": "split tau kinematics are uproot-readable, but embedded pat::Tau ID payload uses unsupported memberwise vector<pair<string,float>> serialization and generic ROOT lacks CMSSW dictionaries",
+  "generic_root_hostile_probe": {
+    "root_version": "6.40.00",
+    "method": "generate only pair<string,float> and vector<pair<string,float>> dictionaries, then read patTaus_slimmedTaus__PAT.obj.tauIDs_ with TTreeReaderArray",
+    "first_nonempty_entry": 1,
+    "reported_tau_count": 1,
+    "reported_tau_id_count": 14757395258967575620,
+    "diagnostic": "impossible container length after detaching the split leaf from the missing pat::Tau streamer; values are corrupt and inadmissible"
+  },
+  "root_makeproject_probe": {
+    "requested_class": "pat::Tau",
+    "generated_classes": 299,
+    "rootcling_found_after_path_repair": true,
+    "shared_object_created": false,
+    "first_compile_obstruction": "redefinition of CaloJet as different kind of symbol: namespace CaloJet conflicts with prior class reco::CaloJet",
+    "disposition": "streamer metadata exists, but its automatically generated dependency closure does not compile; no generated dictionary is admitted"
+  },
+  "repaired_streamer_scan": {
+    "repair": "replace the duplicate generated reco::CaloJet namespace declaration in pat__Jet.h with the already generated reco__CaloJet.h class definition, then rebuild without changing serialized members",
+    "shared_object_created": true,
+    "entries": 14688,
+    "reconstructed_taus": 17352,
+    "tau_id_count_per_tau": 98,
+    "distinct_tau_id_schemas": 1,
+    "frozen_required_ids": [
+      "decayModeFinding",
+      "byMediumIsolationMVArun2v1DBoldDMwLT",
+      "againstElectronVLooseMVA6",
+      "againstMuonTight3"
+    ],
+    "taus_passing_all_four_ids": 6431,
+    "events_with_at_least_two_passing_taus": 811,
+    "scope": "file-local offline tau-ID readback; no trigger, background, mass-template, or official-CMSSW layout validation"
+  },
+  "source_local_trigger_scan": {
+    "parameter_set_entries": 8781,
+    "menus_recovered": 5,
+    "event_pset_hash": "135c92ec06f77fa20e40a18e931468b7",
+    "events_with_that_hash": 14688,
+    "menu_status_length_mismatches": 0,
+    "target_paths": [
+      {"index": 15, "name": "HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v2"},
+      {"index": 16, "name": "HLT_DoubleMediumIsoPFTau40_Trk1_eta2p1_Reg_v4"}
+    ],
+    "events_firing_either_target_path": 613,
+    "events_with_two_offline_id_taus": 811,
+    "events_passing_both": 142,
+    "scope": "event-level trigger intersection; trigger-object matching can only reduce the admitted count"
+  },
+  "mu_tau_trigger_scan": {
+    "frozen_before_counting": true,
+    "target_paths": [
+      {"index": 76, "name": "HLT_IsoMu17_eta2p1_LooseIsoPFTau20_v4"},
+      {"index": 77, "name": "HLT_IsoMu17_eta2p1_LooseIsoPFTau20_SingleL1_v4"},
+      {"index": 86, "name": "HLT_IsoMu20_eta2p1_LooseIsoPFTau20_v3"}
+    ],
+    "menu_status_length_mismatches": 0,
+    "events": 14688,
+    "events_firing_target_or": 935,
+    "events_with_at_least_one_frozen_offline_id_tau": 5619,
+    "events_passing_both": 414,
+    "scope": "event-level muon-tau trigger plus one offline-ID tau; trigger-object matching, offline muon reconstruction, backgrounds, and common-era calibration remain open"
+  },
+  "mu_tau_object_match_scan": {
+    "frozen_rules": {
+      "trigger_paths": [76, 77, 86],
+      "trigger_object_types": {"muon": 83, "tau": 84},
+      "same_path_last_filter_accepted": true,
+      "trigger_offline_match_delta_r_max": "3/10",
+      "offline_pair_delta_r_min": "1/2",
+      "offline_muon": "PF type bit, pt > 17 GeV, abs(eta) < 2.1",
+      "offline_tau": "WP248 four-ID conjunction, pt > 20 GeV, abs(eta) < 2.1"
+    },
+    "events": 14688,
+    "wp250_parent_events": 414,
+    "coherent_object_matched_events": 389,
+    "triggered_events_failing_offline_tau": 546,
+    "events_reaching_both_offline_objects_but_failing_object_coherence": 0,
+    "scope": "signal-only 2015 object-coherent pilot; backgrounds, mass-grid closure, common era, and source-response rank remain open"
+  }
+}
