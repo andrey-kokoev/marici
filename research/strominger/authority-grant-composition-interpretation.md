@@ -88,6 +88,9 @@ The machine-readable fixture suite rejects:
 21. source perturbation that leaves its alleged coherence witness inert;
 22. target perturbation that rewrites upstream authority;
 23. cached output retaining authority after source deletion.
+24. interventions leaving a non-gauge rival-mechanism kernel;
+25. discriminator ports chosen after seeing the desired mechanism;
+26. a finite full-rank audit promoted to a universal explanation.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -255,6 +258,49 @@ The DPC criterion is therefore interventionist as well as descent-theoretic:
 \text{effective source descent whose provenance passes source/target
 interventions}.}
 \]
+
+### Identification law: which alternatives were excluded?
+
+Causal response alone does not identify a mechanism. For a declared finite
+candidate family \(m_1,\ldots,m_n\) and source-derived intervention ports
+\(I_1,\ldots,I_r\), form the exact response matrix
+
+\[
+R_{ij}=I_i(m_j).
+\]
+
+The unresolved mechanism space has dimension
+
+\[
+\dim\ker R=n-\operatorname{rank}_{\mathbb Q}R.
+\]
+
+DPC requires this nullity to vanish, except for directions already typed as a
+source-authorized gauge stabilizer. The checker performs exact rational rank,
+not a floating threshold test.
+
+This yields two honest positive outcomes:
+
+- strict identification: \(\ker R=0\);
+- stacky identification: \(\ker R\) is exactly the authorized gauge orbit and
+  the quotient kernel vanishes.
+
+Any larger kernel means that the interventions identify only an equivalence
+class of rival mechanisms. Moreover, this conclusion is bounded by the
+declared candidate family. Full rank on three candidates does not explain all
+possible sources.
+
+The current DPC statement is therefore deliberately relative:
+
+\[
+\boxed{
+\text{the source mechanism is identified within a declared alternative class,
+modulo declared gauge, by independently derived interventions}.}
+\]
+
+Removing the bounded-scope clause would turn a finite hostile audit into an
+unearned universal ontology—the exact overreach the calculus is meant to
+prevent.
 
 ### Refinement law: higher coherence
 
