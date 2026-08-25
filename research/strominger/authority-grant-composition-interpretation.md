@@ -76,6 +76,11 @@ The machine-readable fixture suite rejects:
    direct route.
 10. locally valid presentation cells with nontrivial atlas holonomy;
 11. a one-way adapter mislabeled as an invertible presentation equivalence.
+12. a flat atlas whose local grants do not descend to a global grant;
+13. effective gluing with a nonzero uniqueness kernel;
+14. refinement that changes the reconstructed global authority;
+15. claimed deletion stability without a surviving source reconstruction.
+16. a hidden global stabilizer unsupported by the source grammar.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -157,6 +162,58 @@ The strengthened DPC is therefore
 
 Invertibility is essential. A one-way compiler may transport a result, but it
 does not establish equivalence of explanatory presentations.
+
+### Descent law: flat is not yet global
+
+A flat presentation groupoid is still only compatible local data. DPC must
+also require *effective authority descent*: the local composites must
+reconstruct an admitted global grant
+
+\[
+G_{AC}\longmapsto\{G_{AC}^{(B_i)}\}_i
+\]
+
+with zero reconstruction defect. Without such a source-derived gluing map,
+the explanation remains an atlas of mutually compatible calculations.
+
+Existence is not enough. The reconstruction ambiguity kernel must vanish, or
+every surviving stabilizer must itself be source-authorized and explicitly
+quotiented. Otherwise the same local evidence supports several inequivalent
+global authorities.
+
+### Refinement law: higher coherence
+
+Subdividing or refining the presentation atlas must not change the recovered
+global grant. The checker compares coarse reconstruction with reconstruction
+after inserting `Bprime` and requires both zero defect and unchanged authority
+kind. This is the next coherence level above triangular holonomy.
+
+### Counterfactual deletion law
+
+Deletion has two distinct meanings:
+
+- deleting redundant presentation scaffolding may preserve the process when
+  an independent source-derived global reconstruction remains;
+- deleting the source gluing mechanism must destroy the explanatory grant.
+
+If both deletions are reported as harmless, the account has confused
+availability of a previously computed result with continued explanatory
+authority.
+
+The resulting hierarchy is
+
+\[
+\boxed{
+\begin{aligned}
+&\text{local grants}\\
+&+\ \text{flat presentation coherence}\\
+&+\ \text{effective and unique descent}\\
+&+\ \text{refinement invariance}\\
+&+\ \text{source-sensitive counterfactuals}
+\end{aligned}
+\quad=\quad
+\text{process-level DPC explanation}.}
+\]
 
 ## Grothendieck classification
 

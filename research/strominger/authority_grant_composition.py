@@ -221,6 +221,51 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if not atlas.get("source_derived_comparison") or atlas.get("holonomy_defect") != 0:
             err("presentation_atlas_holonomy_failure", aid, str(atlas.get("holonomy_defect")))
 
+    # Flat descent data need not be effective: local process presentations may
+    # satisfy every cocycle while failing to reconstruct a unique global grant.
+    for descent in packet.get("authority_descent_objects", []):
+        did = descent["id"]
+        atlas = next((item for item in packet.get("presentation_atlas_coherence", []) if item["id"] == descent.get("atlas_id")), None)
+        local_grants = [grants.get(gid) for gid in descent.get("local_grants", [])]
+        global_grant = grants.get(descent.get("global_grant"))
+        if atlas is None or not local_grants or any(grant is None for grant in local_grants) or global_grant is None:
+            err("untyped_authority_descent_object", did, "atlas, local grants, and global grant are required")
+            continue
+        signatures = {_process_signature(grant) for grant in [*local_grants, global_grant]}
+        if len(signatures) != 1:
+            err("descent_changes_process_signature", did, str(signatures))
+        if not descent.get("source_derived_gluing") or not descent.get("effective") or descent.get("reconstruction_defect") != 0:
+            err("flat_but_noneffective_authority_descent", did, str(descent.get("reconstruction_defect")))
+        ambiguity_rank = descent.get("ambiguity_kernel_rank")
+        if ambiguity_rank != 0:
+            err("nonunique_global_authority_descent", did, str(ambiguity_rank))
+        stabilizer = set(descent.get("stabilizer", []))
+        authorized = set(descent.get("source_authorized_stabilizer", []))
+        if not stabilizer or not stabilizer.issubset(authorized):
+            err("unauthorized_descent_stabilizer", did, str(sorted(stabilizer - authorized)))
+
+    # Refining an atlas is a higher coherence operation: reconstruction before
+    # and after refinement must agree, not merely every pairwise overlap.
+    for refinement in packet.get("presentation_refinement_coherence", []):
+        rid = refinement["id"]
+        if not refinement.get("source_derived_refinement") or refinement.get("reconstruction_defect") != 0:
+            err("presentation_refinement_coherence_failure", rid, str(refinement.get("reconstruction_defect")))
+        if refinement.get("authority_kind_before") != refinement.get("authority_kind_after"):
+            err("refinement_strengthens_authority", rid, f"{refinement.get('authority_kind_before')}->{refinement.get('authority_kind_after')}")
+
+    # Counterfactual deletion distinguishes redundant presentation scaffolding
+    # from a source mechanism on which the process genuinely depends.
+    for deletion in packet.get("presentation_deletion_tests", []):
+        did = deletion["id"]
+        survivor = grants.get(deletion.get("surviving_global_grant"))
+        if deletion.get("expected_process_survives"):
+            if survivor is None or not deletion.get("source_derived_reconstruction"):
+                err("unsupported_presentation_deletion_survival", did, str(deletion.get("surviving_global_grant")))
+            elif survivor["authority_kind"] != deletion.get("authority_kind_before"):
+                err("deletion_strengthens_authority", did, f"{deletion.get('authority_kind_before')}->{survivor['authority_kind']}")
+        elif survivor is not None:
+            err("false_source_deletion_independence", did, survivor["id"])
+
     # DPC representation-change test.  A process survives replacement/removal
     # of an intermediate presentation only if its boundary authority is
     # unchanged.  Non-identical presentations additionally require a
@@ -285,5 +330,8 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "representation_change_test_count": len(packet.get("representation_change_tests", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
+        "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),
+        "presentation_refinement_count": len(packet.get("presentation_refinement_coherence", [])),
+        "presentation_deletion_test_count": len(packet.get("presentation_deletion_tests", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

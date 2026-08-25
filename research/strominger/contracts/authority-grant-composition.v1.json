@@ -61,6 +61,49 @@
   "presentation_atlas_coherence": [
     {"id": "atlas_B_Bprime_Bdoubleprime", "paths": [["cell_B_Bdoubleprime"], ["cell_B_Bprime", "cell_Bprime_Bdoubleprime"]], "source_derived_comparison": "source comparison of direct and two-step re-encodings", "holonomy_defect": 0}
   ],
+  "authority_descent_objects": [
+    {
+      "id": "descent_process_AC",
+      "atlas_id": "atlas_B_Bprime_Bdoubleprime",
+      "local_grants": ["g_AC", "g_AC_via_Bprime"],
+      "global_grant": "g_AC_direct",
+      "source_derived_gluing": "joint source encode/decode reconstruction",
+      "effective": true,
+      "reconstruction_defect": 0,
+      "ambiguity_kernel_rank": 0,
+      "stabilizer": ["identity"],
+      "source_authorized_stabilizer": ["identity"]
+    }
+  ],
+  "presentation_refinement_coherence": [
+    {
+      "id": "refine_B_atlas_by_Bprime",
+      "coarse_global_grant": "g_AC_direct",
+      "refined_descent_object": "descent_process_AC",
+      "source_derived_refinement": "source encode/decode refinement comparison",
+      "authority_kind_before": "readout",
+      "authority_kind_after": "readout",
+      "reconstruction_defect": 0
+    }
+  ],
+  "presentation_deletion_tests": [
+    {
+      "id": "delete_redundant_Bprime",
+      "removed_presentation": "Bprime",
+      "authority_kind_before": "readout",
+      "expected_process_survives": true,
+      "surviving_global_grant": "g_AC_direct",
+      "source_derived_reconstruction": "direct A-to-C source grant"
+    },
+    {
+      "id": "delete_source_gluing_mechanism",
+      "removed_presentation": "source_encode_decode_authority",
+      "authority_kind_before": "readout",
+      "expected_process_survives": false,
+      "surviving_global_grant": null,
+      "source_derived_reconstruction": null
+    }
+  ],
   "application_cases": [
     {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
     {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}
