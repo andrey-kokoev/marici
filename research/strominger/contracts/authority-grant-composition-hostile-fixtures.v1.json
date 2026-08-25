@@ -141,6 +141,54 @@
         {"collection": "authority_descent_objects", "id": "descent_process_AC_stacky", "field": "quotient_ambiguity_rank", "value": 1}
       ],
       "expected_code": "nonunique_global_authority_descent"
+    },
+    {
+      "id": "target_fitted_coherence_witness",
+      "description": "The presentation equivalence is chosen only after inspecting the desired target readout.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "derived_before_target", "value": false}
+      ],
+      "expected_code": "target_fitted_coherence"
+    },
+    {
+      "id": "cached_witness_not_recomputable",
+      "description": "A stored coherence certificate survives, but the declared source can no longer regenerate it.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "counterfactual_recomputable", "value": false}
+      ],
+      "expected_code": "cached_not_explanatory_coherence"
+    },
+    {
+      "id": "readout_to_source_provenance_cycle",
+      "description": "The terminal readout is allowed to regenerate the source constructor, producing circular explanatory provenance.",
+      "mutations": [
+        {"collection": "source_provenance.edges", "id": "prov_e_global_readout", "field": "target", "value": "prov_source"}
+      ],
+      "expected_code": "cyclic_explanatory_provenance"
+    },
+    {
+      "id": "source_perturbation_leaves_coherence_inert",
+      "description": "The alleged source is perturbed but the coherence witness is merely replayed unchanged.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "intervene_on_source_constructor", "field": "observed_affected_nodes", "value": ["prov_source", "prov_local", "prov_global", "prov_readout"]}
+      ],
+      "expected_code": "source_perturbation_fails_to_regenerate_witnesses"
+    },
+    {
+      "id": "target_intervention_rewrites_coherence",
+      "description": "Changing the desired readout retroactively changes an upstream coherence witness.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "intervene_on_target_readout", "field": "observed_affected_nodes", "value": ["prov_coherence", "prov_readout"]}
+      ],
+      "expected_code": "target_intervention_changes_upstream_authority"
+    },
+    {
+      "id": "cached_output_retains_authority_after_source_deletion",
+      "description": "A cached result is incorrectly treated as retaining authority after its constructor is deleted.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "delete_source_constructor", "field": "authority_survives", "value": true}
+      ],
+      "expected_code": "authority_survives_deleted_constructor"
     }
   ]
 }
