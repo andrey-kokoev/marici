@@ -1058,6 +1058,23 @@ This yields the finite rule
 without an infinite regress of authorities certifying authorities and without
 letting a root self-certify omniscience.
 
+The boundary is also temporal. A negative certificate and every capability
+depending on it are indexed by the exact manifest digest and epoch. Validation
+and execution must observe that epoch atomically. If a new deployment manifest
+introduces (for example) `firmware_substrate`, the old negative certificate and
+its executable capability are fenced immediately; the successor grammar must
+be replayed. The already observed `{r1,r2}` fault edge is retained.
+
+So deployment evolution has the same variance as grammar refinement:
+
+\[
+F_v\subseteq F_{v+1},\qquad N_v\not\Rightarrow N_{v+1},
+\]
+
+where `F` is accumulated positive fault evidence and `N` is the relative
+negative certificate. This prevents time-of-check/time-of-use laundering of a
+correct but stale independence audit.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.

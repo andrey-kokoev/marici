@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "6a8a5bc50f0805a07fb5709221de983778db94fc0cf49c68ac04625a789bb7e4",
+      "replay_checker_sha256": "6bbd7ec4512fc31e5116d669921802642566217a48bdd2d91c9bacc1dc1b40c4",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -847,6 +847,27 @@
       "challenge_port_live": true,
       "negative_claim_scope": "manifest_constructor_classes only",
       "frontier_emptiness_claimed": false
+    }
+  ],
+  "probe_grammar_epoch_audits": [
+    {
+      "id": "manifest_v2_epoch_binding",
+      "boundary_audit": "deployment_manifest_boundary_v2",
+      "manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "audit_epoch": 12,
+      "capability_epoch": 12,
+      "execution_epoch": 12,
+      "lease_expires_epoch": 12,
+      "atomic_manifest_epoch_check": true,
+      "negative_certificate_live": true,
+      "drift_scenario": {
+        "new_manifest_epoch": 13,
+        "new_constructor_class": "firmware_substrate",
+        "old_negative_certificate_live": false,
+        "old_capability_execution_permitted": false,
+        "grammar_replay_required": true,
+        "positive_discoveries_retained": [["r1", "r2"]]
+      }
     }
   ],
   "application_cases": [
