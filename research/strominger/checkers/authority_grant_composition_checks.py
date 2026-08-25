@@ -56,6 +56,7 @@ def main():
     compositions = {item["id"]: item for item in packet["compositions"]}
     cases = {item["id"]: item for item in packet["application_cases"]}
     transformations = {item["id"]: item for item in packet["transformations"]}
+    representation_tests = {item["id"]: item for item in packet["representation_change_tests"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -81,6 +82,17 @@ def main():
             and cases["kitaev_logical_to_five_rail"]["composition"] is None,
         "kitaev_rail_base_change_preserves_evidence_not_authority": transformations["rail_base_change"]["preserves_evidence"]
             and not transformations["rail_base_change"]["preserves_authority"],
+        "removing_B_preserves_process_only_with_direct_source_grant":
+            representation_tests["remove_B_direct_source_route"]["verdict"] == "process_explained_strictly"
+            and representation_tests["remove_B_direct_source_route"]["direct_grant"] == "g_AC_direct",
+        "changing_B_requires_source_derived_natural_coherence":
+            representation_tests["replace_B_by_Bprime"]["verdict"] == "process_explained_coherently"
+            and representation_tests["replace_B_by_Bprime"]["coherence_cell"]["source_derived"]
+            and representation_tests["replace_B_by_Bprime"]["coherence_cell"]["naturality_defect"] == 0,
+        "missing_alternative_executor_is_presentation_only":
+            representation_tests["kitaev_remove_logical_presentation"]["verdict"] == "presentation_only"
+            and representation_tests["kitaev_remove_logical_presentation"].get("alternative_composition") is None
+            and representation_tests["kitaev_remove_logical_presentation"].get("direct_grant") is None,
         "all_hostiles_rejected": all(item["passed"] for item in hostile_results.values()),
     }
     passed = all(gates.values())
@@ -99,7 +111,8 @@ def main():
             "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
             "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining",
         },
-        "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and triple composition requires an explicit zero-defect coherence cell.",
+        "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
+        "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="ascii")

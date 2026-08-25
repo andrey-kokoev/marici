@@ -69,9 +69,55 @@ The machine-readable fixture suite rejects:
 4. pairwise-valid composites with a nonzero triple coherence defect;
 5. base change preserving evidence while destroying authority;
 6. two factorizations producing different evidence domains.
+7. replacement of an intermediate presentation without a source-derived
+   coherence cell;
+8. replacement that silently strengthens authority kind;
+9. removal of the intermediate object without an independently authorized
+   direct route.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
+
+## Deutsch--Popperian representation test
+
+Let a claimed explanation be presented as
+
+\[
+A\xrightarrow{f}B\xrightarrow{g}C.
+\]
+
+Remove `B`, or replace it by `Bprime`. Compare the resulting arrow with the
+original composite at the process boundary
+
+\[
+\sigma(g\circ f)=(A,C,\text{authority kind},\text{variance}).
+\]
+
+The contract returns exactly three verdicts:
+
+1. `process_explained_strictly`: removing the intermediate presentation
+   leaves an independently source-authorized direct grant with the same full
+   signature;
+2. `process_explained_coherently`: changing the presentation preserves the
+   process signature and an invertible, source-derived natural coherence cell
+   identifies the two composites;
+3. `presentation_only`: no alternative composite or direct source grant
+   exists, authority kind changes, or the required coherence cell is absent.
+
+Thus the compositional DPC is
+
+\[
+\boxed{
+\text{an explanation is process-level only if its authority survives every
+admissible change of presentation coherently.}
+}
+\]
+
+Agreement of outputs is insufficient. The coherence transformation itself
+must be source-derived, invertible on the admitted evidence domain,
+kind-preserving, and natural (zero coherence defect). Otherwise the account
+explains why one representation computes the output, not why the underlying
+process occurs.
 
 ## Grothendieck classification
 

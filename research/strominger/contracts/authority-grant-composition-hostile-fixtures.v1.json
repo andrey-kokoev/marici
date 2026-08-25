@@ -53,6 +53,30 @@
         {"collection": "authority_grants", "id": "g_AD_right", "field": "evidence_domain", "value": "D_transport_B"}
       ],
       "expected_code": "factorization_dependent_composite"
+    },
+    {
+      "id": "representation_change_without_coherence",
+      "description": "Changing B to Bprime preserves the boundary process signature but supplies no source-derived coherence cell.",
+      "mutations": [
+        {"collection": "representation_change_tests", "id": "replace_B_by_Bprime", "field": "coherence_cell", "value": null}
+      ],
+      "expected_code": "missing_source_derived_representation_coherence"
+    },
+    {
+      "id": "representation_change_strengthens_authority",
+      "description": "The alternative presentation silently promotes a readout process to selector authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AC_via_Bprime", "field": "authority_kind", "value": "selector"}
+      ],
+      "expected_code": "representation_change_strengthens_authority"
+    },
+    {
+      "id": "remove_B_without_direct_source_grant",
+      "description": "Removing B destroys the composite because no independently authorized direct A-to-C grant remains.",
+      "mutations": [
+        {"collection": "representation_change_tests", "id": "remove_B_direct_source_route", "field": "direct_grant", "value": null}
+      ],
+      "expected_code": "representation_removal_destroys_composite"
     }
   ]
 }

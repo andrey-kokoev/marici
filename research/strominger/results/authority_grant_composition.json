@@ -3,14 +3,17 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "e791008eaa50f48b9336679171cc79a326c686466e353e00f85c161e2710f108",
+  "contract_sha256": "f2bef629d99db1567dce5d41847409818fc157a4350e94b55eec63c943dca0c8",
   "gates": {
     "all_hostiles_rejected": true,
     "associativity_holds_on_typed_domain": true,
+    "changing_B_requires_source_derived_natural_coherence": true,
     "composition_preserves_authority_kind": true,
     "identity_laws_declared_twice": true,
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
+    "missing_alternative_executor_is_presentation_only": true,
+    "removing_B_preserves_process_only_with_direct_source_grant": true,
     "standalone_contract_compiles": true,
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
@@ -20,7 +23,11 @@
     "completion_ports_to_constructor": {
       "description": "A completed readout and executable observation ports are laundered into constructor authority.",
       "error_codes": [
-        "authority_kind_laundering"
+        "authority_kind_laundering",
+        "false_strict_representation_invariance",
+        "missing_source_derived_representation_coherence",
+        "representation_change_strengthens_authority",
+        "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
       "passed": true,
@@ -48,7 +55,11 @@
     "faithfulness_plus_support_to_observer": {
       "description": "Algebraic faithfulness and physical support are laundered into observer authority.",
       "error_codes": [
-        "authority_kind_laundering"
+        "authority_kind_laundering",
+        "false_strict_representation_invariance",
+        "missing_source_derived_representation_coherence",
+        "representation_change_strengthens_authority",
+        "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
       "passed": true,
@@ -63,22 +74,57 @@
       "passed": true,
       "valid": false
     },
+    "remove_B_without_direct_source_grant": {
+      "description": "Removing B destroys the composite because no independently authorized direct A-to-C grant remains.",
+      "error_codes": [
+        "representation_removal_destroys_composite"
+      ],
+      "expected_code": "representation_removal_destroys_composite",
+      "passed": true,
+      "valid": false
+    },
+    "representation_change_strengthens_authority": {
+      "description": "The alternative presentation silently promotes a readout process to selector authority.",
+      "error_codes": [
+        "authority_kind_laundering",
+        "missing_source_derived_representation_coherence",
+        "representation_change_strengthens_authority",
+        "representation_dependent_process_signature"
+      ],
+      "expected_code": "representation_change_strengthens_authority",
+      "passed": true,
+      "valid": false
+    },
+    "representation_change_without_coherence": {
+      "description": "Changing B to Bprime preserves the boundary process signature but supplies no source-derived coherence cell.",
+      "error_codes": [
+        "missing_source_derived_representation_coherence"
+      ],
+      "expected_code": "missing_source_derived_representation_coherence",
+      "passed": true,
+      "valid": false
+    },
     "two_readouts_to_selector": {
       "description": "Two valid readout grants are laundered into selector authority.",
       "error_codes": [
-        "authority_kind_laundering"
+        "authority_kind_laundering",
+        "false_strict_representation_invariance",
+        "missing_source_derived_representation_coherence",
+        "representation_change_strengthens_authority",
+        "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
       "passed": true,
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "79125fdac904c722cebe1e9df22adfdea353a7b3e52ae4dba386538d92afca48",
-  "hostile_passed": 6,
-  "hostile_total": 6,
+  "hostile_fixture_sha256": "af8a3f5e021d8a1437383edeb0217e3968ff9f84a0c4e3a99ba63b136812eddb",
+  "hostile_passed": 9,
+  "hostile_total": 9,
   "passed": true,
-  "passed_gates": 10,
+  "passed_gates": 13,
+  "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 10,
-  "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and triple composition requires an explicit zero-defect coherence cell."
+  "total_gates": 13,
+  "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }
