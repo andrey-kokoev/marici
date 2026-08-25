@@ -59,6 +59,7 @@ def validate(packet: dict[str, Any]) -> list[Error]:
     transformations = {item["id"]: item for item in packet.get("transformations", [])}
     grants = {item["id"]: item for item in packet.get("authority_grants", [])}
     compositions = {item["id"]: item for item in packet.get("compositions", [])}
+    presentation_cells = {item["id"]: item for item in packet.get("presentation_coherence_cells", [])}
 
     def err(code: str, subject: str, detail: str) -> None:
         errors.append(Error(code, subject, detail))
@@ -187,6 +188,39 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             if case.get("composition") is not None or not case.get("obstruction_evidence"):
                 err("false_application_composability", case["id"], str(case.get("composition")))
 
+    for cell_id, cell in presentation_cells.items():
+        for field in ("source_presentation", "target_presentation", "authority_kind", "variance", "evidence"):
+            if not cell.get(field):
+                err("untyped_presentation_coherence_cell", cell_id, field)
+        if cell.get("authority_kind") not in AUTHORITY_KINDS:
+            err("unknown_authority_kind", cell_id, str(cell.get("authority_kind")))
+        if cell.get("variance") not in VARIANCES:
+            err("invalid_grant_variance", cell_id, str(cell.get("variance")))
+        if not cell.get("source_derived") or not cell.get("invertible") or not cell.get("preserves_authority_kind"):
+            err("invalid_presentation_coherence_cell", cell_id, str(cell))
+        if cell.get("naturality_defect") != 0:
+            err("presentation_coherence_naturality_failure", cell_id, str(cell.get("naturality_defect")))
+
+    for atlas in packet.get("presentation_atlas_coherence", []):
+        aid = atlas["id"]
+        path_signatures = []
+        for path in atlas.get("paths", []):
+            cells = [presentation_cells.get(cell_id) for cell_id in path]
+            if not cells or any(cell is None for cell in cells):
+                err("unknown_presentation_coherence_path", aid, str(path))
+                continue
+            composable = all(cells[index]["target_presentation"] == cells[index + 1]["source_presentation"] for index in range(len(cells) - 1))
+            kinds = {cell["authority_kind"] for cell in cells}
+            variances = {cell["variance"] for cell in cells}
+            if not composable or len(kinds) != 1 or len(variances) != 1:
+                err("noncomposable_presentation_coherence_path", aid, str(path))
+                continue
+            path_signatures.append((cells[0]["source_presentation"], cells[-1]["target_presentation"], next(iter(kinds)), next(iter(variances))))
+        if not path_signatures or len(set(path_signatures)) != 1:
+            err("presentation_atlas_factorization_defect", aid, str(path_signatures))
+        if not atlas.get("source_derived_comparison") or atlas.get("holonomy_defect") != 0:
+            err("presentation_atlas_holonomy_failure", aid, str(atlas.get("holonomy_defect")))
+
     # DPC representation-change test.  A process survives replacement/removal
     # of an intermediate presentation only if its boundary authority is
     # unchanged.  Non-identical presentations additionally require a
@@ -216,7 +250,7 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("representation_change_strengthens_authority", tid, f"{baseline_result['authority_kind']}->{candidate['authority_kind']}")
         if not same_process:
             err("representation_dependent_process_signature", tid, f"{_process_signature(baseline_result)} != {_process_signature(candidate)}")
-        cell = test.get("coherence_cell")
+        cell = presentation_cells.get(test.get("coherence_cell_id")) or test.get("coherence_cell")
         presentation_changed = test.get("intermediate_before") != test.get("intermediate_after")
         coherent = bool(
             cell
@@ -249,5 +283,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "associativity_cell_count": len(packet.get("associativity_cells", [])),
         "application_case_count": len(packet.get("application_cases", [])),
         "representation_change_test_count": len(packet.get("representation_change_tests", [])),
+        "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
+        "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

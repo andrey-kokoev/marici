@@ -53,6 +53,14 @@
   "associativity_cells": [
     {"id": "assoc_ABCD", "left_factorization": "c_AC_CD", "right_factorization": "c_AB_BD", "variance": "covariant", "triple_coherence_witness": "source-derived common-domain associator", "coherence_defect": 0}
   ],
+  "presentation_coherence_cells": [
+    {"id": "cell_B_Bprime", "source_presentation": "B", "target_presentation": "Bprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "evidence": "independent source encode/decode equivalence"},
+    {"id": "cell_Bprime_Bdoubleprime", "source_presentation": "Bprime", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "evidence": "second independent source presentation equivalence"},
+    {"id": "cell_B_Bdoubleprime", "source_presentation": "B", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "evidence": "direct source presentation equivalence"}
+  ],
+  "presentation_atlas_coherence": [
+    {"id": "atlas_B_Bprime_Bdoubleprime", "paths": [["cell_B_Bdoubleprime"], ["cell_B_Bprime", "cell_Bprime_Bdoubleprime"]], "source_derived_comparison": "source comparison of direct and two-step re-encodings", "holonomy_defect": 0}
+  ],
   "application_cases": [
     {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
     {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}
@@ -74,14 +82,7 @@
       "intermediate_before": "B",
       "intermediate_after": "Bprime",
       "verdict": "process_explained_coherently",
-      "coherence_cell": {
-        "id": "B_to_Bprime_cell",
-        "source_derived": true,
-        "invertible": true,
-        "preserves_authority_kind": true,
-        "naturality_defect": 0,
-        "evidence": "independent source encode/decode equivalence"
-      }
+      "coherence_cell_id": "cell_B_Bprime"
     },
     {
       "id": "kitaev_remove_logical_presentation",
