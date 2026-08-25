@@ -1,6 +1,16 @@
 {
   "schema": "marici.dpc-core-normalizer.v1",
   "rewrite_rules": ["typed_identity", "transport_fusion", "scope_attenuation", "support_union", "partition_flattening", "coherence_inverse", "epoch_fence"],
+  "active_rewrite_footprints": {
+    "partition_flattening": ["resource"],
+    "scope_attenuation": ["scope"],
+    "typed_identity": ["authority_kind", "scope", "modality", "support", "resource"],
+    "epoch_fence": ["epoch", "status", "executable_output"]
+  },
+  "critical_pair_coverage": {
+    "partition_flattening|typed_identity": "identity_then_partition_joins",
+    "scope_attenuation|typed_identity": "identity_then_attenuate_joins"
+  },
   "normalization_cases": [
     {
       "id": "conservative_partition",
@@ -20,6 +30,13 @@
     }
   ],
   "critical_pairs": [
+    {
+      "id": "identity_then_partition_joins",
+      "coherence_cell": "typed_identity_resource_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"executable_output":"partitioned","operations":[{"kind":"identity","signature":{"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5}}},{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}}]},
+      "right": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}},{"kind":"identity","signature":{"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"site_A":2,"site_B":3}}}]}
+    },
     {
       "id": "identity_then_attenuate_joins",
       "coherence_cell": "typed_identity_naturality",
