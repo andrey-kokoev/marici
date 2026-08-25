@@ -4,6 +4,135 @@
     "claims_absolute_unclonability": true,
     "measured_ports": true
   },
+  "configuration_path_hostiles": {
+    "authority_reuse": true,
+    "broken_incidence": true,
+    "common_cause_omitted": true,
+    "correlated_roots_unmodelled": true,
+    "empty_bridge": true,
+    "fitted_correspondence": true,
+    "global_correlated_fault": true,
+    "global_root_omitted": true,
+    "identity_edge": true,
+    "missing_joint_authorization": true,
+    "source_authority_duplicated": true,
+    "support_drop": true,
+    "whole_bridge_fault": true
+  },
+  "configuration_path_partial_composite_replay": {
+    "1": true,
+    "2": true,
+    "3": true
+  },
+  "configuration_paths": [
+    {
+      "bridge_audits": [
+        {
+          "authority_roots": {
+            "r2": "admin_B",
+            "r3": "admin_C"
+          },
+          "bridge": [
+            "r2",
+            "r3"
+          ],
+          "edge": "rho_01",
+          "fault_sets": [
+            [
+              "r2"
+            ],
+            [
+              "r3"
+            ]
+          ]
+        },
+        {
+          "authority_roots": {
+            "r3": "admin_C",
+            "r4": "admin_D"
+          },
+          "bridge": [
+            "r3",
+            "r4"
+          ],
+          "edge": "rho_12",
+          "fault_sets": [
+            [
+              "r3"
+            ],
+            [
+              "r4"
+            ]
+          ]
+        },
+        {
+          "authority_roots": {
+            "r4": "admin_D",
+            "r5": "admin_E"
+          },
+          "bridge": [
+            "r4",
+            "r5"
+          ],
+          "edge": "rho_23",
+          "fault_sets": [
+            [
+              "r4"
+            ],
+            [
+              "r5"
+            ]
+          ]
+        }
+      ],
+      "edge_count": 3,
+      "endpoint_vertex": "C3",
+      "errors": [],
+      "global_authority_root_fault_sets": [
+        [
+          "admin_B"
+        ],
+        [
+          "admin_C"
+        ],
+        [
+          "admin_D"
+        ],
+        [
+          "admin_E"
+        ],
+        [
+          "admin_B",
+          "admin_D"
+        ],
+        [
+          "admin_B",
+          "admin_E"
+        ]
+      ],
+      "id": "varying_membership_configuration_path",
+      "induction_rule": "a valid partial composite extends iff the next edge is incident at the current configuration vertex, carries a source-derived state correspondence, linearly replaces its input authority, unions support, and every admitted local or path-wide authority-root fault leaves every affected bridge with a survivor",
+      "input_authority_resources": [
+        "cfg_auth_C0",
+        "cfg_auth_C1",
+        "cfg_auth_C2"
+      ],
+      "output_authority_resource": "cfg_auth_C3",
+      "passed": true,
+      "support_union": [
+        "bootstrap_root",
+        "charter_rho_01",
+        "charter_rho_12",
+        "charter_rho_23",
+        "correspondence_rho_01",
+        "correspondence_rho_12",
+        "correspondence_rho_23",
+        "presentation_C1",
+        "presentation_C2",
+        "presentation_C3"
+      ]
+    }
+  ],
   "critical_pair_count": 6,
   "critical_pairs": [
     {
@@ -61,138 +190,6 @@
       "same_output": true
     }
   ],
-  "dynamic_reconfiguration_chains": [
-    {
-      "accumulated_support": [
-        "bootstrap_root",
-        "charter_1",
-        "charter_2",
-        "charter_3",
-        "physical_1",
-        "physical_2",
-        "physical_3",
-        "proposal_1",
-        "proposal_2",
-        "proposal_3"
-      ],
-      "bridge_audits": [
-        {
-          "authority_roots": {
-            "r2": "admin_B",
-            "r3": "admin_C"
-          },
-          "bridge": [
-            "r2",
-            "r3"
-          ],
-          "fault_sets": [
-            [
-              "r2"
-            ],
-            [
-              "r3"
-            ]
-          ],
-          "step": "reconfigure_0_1"
-        },
-        {
-          "authority_roots": {
-            "r3": "admin_C",
-            "r4": "admin_D"
-          },
-          "bridge": [
-            "r3",
-            "r4"
-          ],
-          "fault_sets": [
-            [
-              "r3"
-            ],
-            [
-              "r4"
-            ]
-          ],
-          "step": "reconfigure_1_2"
-        },
-        {
-          "authority_roots": {
-            "r4": "admin_D",
-            "r5": "admin_E"
-          },
-          "bridge": [
-            "r4",
-            "r5"
-          ],
-          "fault_sets": [
-            [
-              "r4"
-            ],
-            [
-              "r5"
-            ]
-          ],
-          "step": "reconfigure_2_3"
-        }
-      ],
-      "consumed_authority_resources": [
-        "cfg_auth_0",
-        "cfg_auth_1",
-        "cfg_auth_2"
-      ],
-      "errors": [],
-      "global_authority_root_fault_sets": [
-        [
-          "admin_B"
-        ],
-        [
-          "admin_C"
-        ],
-        [
-          "admin_D"
-        ],
-        [
-          "admin_E"
-        ],
-        [
-          "admin_B",
-          "admin_D"
-        ],
-        [
-          "admin_B",
-          "admin_E"
-        ]
-      ],
-      "id": "dynamic_membership_reconfiguration_chain",
-      "induction_rule": "a valid prefix extends iff the adjacent realized joint transition consumes its sole live configuration authority, emits one replacement, accumulates support, and every admitted local or chain-wide authority-root fault leaves every affected bridge with a survivor",
-      "live_authority_resource": "cfg_auth_3",
-      "passed": true,
-      "step_count": 3,
-      "terminal_epoch": {
-        "offset": 3,
-        "parameter": "e"
-      }
-    }
-  ],
-  "dynamic_reconfiguration_hostiles": {
-    "authority_reuse": true,
-    "common_cause_omitted": true,
-    "correlated_roots_unmodelled": true,
-    "empty_bridge": true,
-    "epoch_gap": true,
-    "global_correlated_fault": true,
-    "global_root_omitted": true,
-    "missing_joint_endorsement": true,
-    "predecessor_link": true,
-    "predecessor_retained": true,
-    "support_drop": true,
-    "unrealized_physical_step": true,
-    "whole_bridge_fault": true
-  },
-  "dynamic_reconfiguration_prefix_replay": {
-    "1": true,
-    "2": true,
-    "3": true
-  },
   "epoch_attestation_hostiles": {
     "certificate_nonce": true,
     "monotone_boot_counter": true,
