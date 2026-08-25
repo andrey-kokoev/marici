@@ -1,0 +1,41 @@
+{
+  "checks": {
+    "cap_depends_on_bad_subchannel_bound": true,
+    "cap_depends_on_copy_count": true,
+    "five_one_bad_derives_one_fifth": true,
+    "five_one_bad_satisfies_cap": true,
+    "five_two_bad_fails_cap": true,
+    "five_two_bad_gives_two_fifths": true,
+    "four_one_bad_fails_cap": true,
+    "four_one_bad_gives_one_fourth": true,
+    "one_fifth_not_derived_without_five_copy_law": true,
+    "readout_redundancy_is_instrument_structure": true,
+    "repetition_law_must_be_source_or_detector_authorized": true,
+    "wp206_cap_conditionally_explained": true
+  },
+  "claim": "A five-readout law with at most one bad subchannel derives the WP206 one-fifth safety cap, but the five-copy/one-bad law itself requires authority.",
+  "classification": "conditional safety-cap derivation from repetition readout.",
+  "passed": true,
+  "readout_laws": {
+    "five_one_bad": {
+      "bad": 1,
+      "bad_fraction": "1/5",
+      "copies": 5,
+      "satisfies_1_5_cap": true
+    },
+    "five_two_bad": {
+      "bad": 2,
+      "bad_fraction": "2/5",
+      "copies": 5,
+      "satisfies_1_5_cap": false
+    },
+    "four_one_bad": {
+      "bad": 1,
+      "bad_fraction": "1/4",
+      "copies": 4,
+      "satisfies_1_5_cap": false
+    }
+  },
+  "remaining_gate": "Derive or admit the five-copy one-bad readout law from the detector architecture.",
+  "work_package": "WP207"
+}

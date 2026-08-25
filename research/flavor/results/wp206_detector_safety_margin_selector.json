@@ -1,0 +1,55 @@
+{
+  "candidates": {
+    "near_margin_radius6": {
+      "background": "1/5",
+      "passes_safety": false,
+      "radius": 6,
+      "sharpness_cost": "10",
+      "total_error": "2/5",
+      "width": "1/5"
+    },
+    "sharp_radius6": {
+      "background": "1/10",
+      "passes_safety": true,
+      "radius": 6,
+      "sharpness_cost": "20",
+      "total_error": "1/5",
+      "width": "1/10"
+    },
+    "sharper_radius6": {
+      "background": "1/20",
+      "passes_safety": true,
+      "radius": 6,
+      "sharpness_cost": "40",
+      "total_error": "1/10",
+      "width": "1/20"
+    }
+  },
+  "checks": {
+    "different_safety_cap_would_change_selection": true,
+    "minimal_cost_among_safe_selects_sharp": true,
+    "near_margin_fails_safety": true,
+    "near_margin_total_error_two_fifths": true,
+    "one_tenth_constants_derived_conditional_on_safety_cap": true,
+    "safe_set_is_sharp_and_sharper": true,
+    "safety_cap_is_one_fifth": true,
+    "safety_cap_itself_needs_source_or_detector_authority": true,
+    "sharp_passes_safety": true,
+    "sharp_total_error_one_fifth": true,
+    "sharper_passes_safety": true,
+    "sharper_total_error_one_tenth": true
+  },
+  "claim": "A declared safety cap total_error <= 1/5 plus minimal sharpness cost selects the WP203 one-tenth detector constants.",
+  "classification": "conditional detector-constant selector; safety cap remains an authority gate.",
+  "passed": true,
+  "remaining_gate": "Derive the 1/5 safety cap from detector dynamics or source law.",
+  "safe_candidates": [
+    "sharp_radius6",
+    "sharper_radius6"
+  ],
+  "safety_cap": "1/5",
+  "selected_candidates": [
+    "sharp_radius6"
+  ],
+  "work_package": "WP206"
+}

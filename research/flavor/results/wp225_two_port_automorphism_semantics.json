@@ -1,0 +1,47 @@
+{
+  "action_domains": {
+    "declared_detector_error_swap": "detector_errors",
+    "hypothetical_coupled_source_detector_swap": "source_and_detector_errors",
+    "mediator_species_swap": "mediator_species",
+    "port_label_swap": "port_labels"
+  },
+  "admitted_domain": "automorphisms of the finite two-port source compared with detector-error swaps.",
+  "candidate_admissions": {
+    "declared_detector_error_swap": false,
+    "hypothetical_coupled_source_detector_swap": true,
+    "mediator_species_swap": false,
+    "port_label_swap": false
+  },
+  "checks": {
+    "declared_detector_error_swap_not_source_derived": true,
+    "finite_two_port_source_does_not_identify_detector_error_semantics": true,
+    "mediator_species_swap_is_source_symmetry_only": true,
+    "only_hypothetical_coupled_swap_admitted": true,
+    "port_label_swap_is_source_symmetry_only": true,
+    "source_label_automorphism_does_not_imply_detector_exchange": true,
+    "wp223_exchange_gate_remains_open_for_two_port_source": true
+  },
+  "claim": "The finite two-port source supplies source-label automorphisms, but they do not act on width/background detector semantics; WP223 exchange remains external.",
+  "classification": "two-port automorphism semantics no-go.",
+  "faithful_quotient": "action domain and WP224 property set, not source-label symmetry alone.",
+  "missing_properties": {
+    "declared_detector_error_swap": [
+      "commutes_with_source_law"
+    ],
+    "hypothetical_coupled_source_detector_swap": [],
+    "mediator_species_swap": [
+      "descends_to_detector_quotient",
+      "preserves_error_semantics",
+      "swaps_width_background"
+    ],
+    "port_label_swap": [
+      "descends_to_detector_quotient",
+      "preserves_error_semantics",
+      "swaps_width_background"
+    ]
+  },
+  "passed": true,
+  "remaining_gate": "Couple detector-error semantics to the source action, or treat width/background exchange as an external detector symmetry.",
+  "smallest_exact_falsifier": "Mediator species swap commutes with the source law but does not swap width/background or preserve detector-error semantics.",
+  "work_package": "WP225"
+}

@@ -1,0 +1,87 @@
+{
+  "architecture": {
+    "features": {
+      "exchangeable_width_background_channels": {
+        "entails": [
+          "width_background_exchange"
+        ]
+      },
+      "single_fault_sentinel": {
+        "entails": [
+          "minimal_nonzero_fault_tolerance"
+        ]
+      },
+      "strict_interval_comparator": {
+        "entails": [
+          "strict_below_quarter_target"
+        ]
+      }
+    },
+    "name": "minimal_symmetric_two_error_detector"
+  },
+  "checks": {
+    "architecture_is_compact_three_feature_candidate": true,
+    "asymmetric_missing_exchange_gate": true,
+    "each_hostile_variant_missing_one_gate": true,
+    "exchangeable_channels_entail_width_background_exchange": true,
+    "feature_entailments_are_declared_not_derived_microphysics": true,
+    "full_architecture_entails_all_three_gates": true,
+    "no_sentinel_missing_fault_gate": true,
+    "non_strict_missing_quarter_target_gate": true,
+    "physical_realization_still_needed": true,
+    "sentinel_entails_minimal_fault_gate": true,
+    "strict_comparator_entails_quarter_target_gate": true,
+    "wp214_gates_closed_conditionally": true
+  },
+  "claim": "A minimal symmetric two-error detector architecture conditionally entails the three remaining WP214 gates, but the feature entailments still need physical realization.",
+  "classification": "conditional detector-architecture closure candidate.",
+  "full_entailed_gates": [
+    "minimal_nonzero_fault_tolerance",
+    "strict_below_quarter_target",
+    "width_background_exchange"
+  ],
+  "hostile_variants": {
+    "asymmetric_channels": {
+      "entailed_gates": [
+        "minimal_nonzero_fault_tolerance",
+        "strict_below_quarter_target"
+      ],
+      "features": [
+        "strict_interval_comparator",
+        "single_fault_sentinel"
+      ],
+      "missing_gates": [
+        "width_background_exchange"
+      ]
+    },
+    "no_sentinel": {
+      "entailed_gates": [
+        "strict_below_quarter_target",
+        "width_background_exchange"
+      ],
+      "features": [
+        "strict_interval_comparator",
+        "exchangeable_width_background_channels"
+      ],
+      "missing_gates": [
+        "minimal_nonzero_fault_tolerance"
+      ]
+    },
+    "non_strict_comparator": {
+      "entailed_gates": [
+        "minimal_nonzero_fault_tolerance",
+        "width_background_exchange"
+      ],
+      "features": [
+        "single_fault_sentinel",
+        "exchangeable_width_background_channels"
+      ],
+      "missing_gates": [
+        "strict_below_quarter_target"
+      ]
+    }
+  },
+  "passed": true,
+  "remaining_gate": "Physically realize or derive the three detector features.",
+  "work_package": "WP215"
+}

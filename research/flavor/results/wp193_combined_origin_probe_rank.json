@@ -1,0 +1,83 @@
+{
+  "checks": {
+    "epsilon_alone_collapses_local_and_frozen": true,
+    "epsilon_alone_not_faithful": true,
+    "epsilon_channel_required_for_mediator_subtypes": true,
+    "instrument_authority_still_required_for_both_channels": true,
+    "joint_faithfulness_relative_to_small_domain": true,
+    "joint_partition_is_faithful": true,
+    "not_a_universal_source_identifier": true,
+    "probes_are_complementary": true,
+    "three_sources_three_joint_classes": true,
+    "threshold_alone_collapses_mediator_subtypes": true,
+    "threshold_alone_not_faithful": true,
+    "threshold_channel_required_for_local_vs_frozen": true
+  },
+  "claim": "Threshold and epsilon-intervention probes are jointly faithful on the three-origin toy domain, while either probe alone leaves a kernel.",
+  "classification": "conditional joint-origin identifier on a frozen small domain.",
+  "epsilon_partition": {
+    "(('hnf', 'rectangular'),)": [
+      "zero_accessible_mediator"
+    ],
+    "(('hnf',),)": [
+      "local_constraint",
+      "frozen_nonzero_mediator"
+    ]
+  },
+  "instrument_gate": "Requires both independently typed threshold spectroscopy and epsilon-intervention channels.",
+  "joint_partition": {
+    "((False, False, False), ('hnf',))": [
+      "local_constraint"
+    ],
+    "((False, True, False), ('hnf', 'rectangular'))": [
+      "zero_accessible_mediator"
+    ],
+    "((False, True, False), ('hnf',))": [
+      "frozen_nonzero_mediator"
+    ]
+  },
+  "passed": true,
+  "sources": {
+    "frozen_nonzero_mediator": {
+      "epsilon_trace": [
+        "hnf"
+      ],
+      "threshold_vector": [
+        false,
+        true,
+        false
+      ]
+    },
+    "local_constraint": {
+      "epsilon_trace": [
+        "hnf"
+      ],
+      "threshold_vector": [
+        false,
+        false,
+        false
+      ]
+    },
+    "zero_accessible_mediator": {
+      "epsilon_trace": [
+        "hnf",
+        "rectangular"
+      ],
+      "threshold_vector": [
+        false,
+        true,
+        false
+      ]
+    }
+  },
+  "threshold_partition": {
+    "((False, False, False),)": [
+      "local_constraint"
+    ],
+    "((False, True, False),)": [
+      "frozen_nonzero_mediator",
+      "zero_accessible_mediator"
+    ]
+  },
+  "work_package": "WP193"
+}

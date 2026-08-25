@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "nonstrict_touching_would_allow_four": true,
+    "one_bad_is_minimal_nonzero_fault_tolerance": true,
+    "one_bad_nonstrict_needs_four": true,
+    "one_bad_strict_needs_five": true,
+    "physical_fault_model_still_required": true,
+    "strict_interval_separation_rejects_touching": true,
+    "strictness_explains_four_vs_five": true,
+    "target_one_fourth_is_still_declared": true,
+    "two_bad_changes_copy_count": true,
+    "two_bad_strict_needs_nine": true,
+    "wp208_assumptions_reduced_not_eliminated": true,
+    "zero_bad_needs_only_one_copy": true
+  },
+  "claim": "A minimal nonzero-fault contract plus strict interval separation explains why one-bad strict readout needs five copies, but the one-fourth target and physical fault model remain authority gates.",
+  "classification": "fault-contract audit; assumptions reduced, not eliminated.",
+  "contracts": {
+    "one_bad_nonstrict": {
+      "bad": 1,
+      "minimal_copies": 4,
+      "strict": false,
+      "target": "1/4"
+    },
+    "one_bad_strict": {
+      "bad": 1,
+      "minimal_copies": 5,
+      "strict": true,
+      "target": "1/4"
+    },
+    "two_bad_strict": {
+      "bad": 2,
+      "minimal_copies": 9,
+      "strict": true,
+      "target": "1/4"
+    },
+    "zero_bad": {
+      "bad": 0,
+      "minimal_copies": 1,
+      "strict": true,
+      "target": "1/4"
+    }
+  },
+  "passed": true,
+  "remaining_gate": "Derive the one-fourth target and the physical one-bad fault model.",
+  "work_package": "WP209"
+}

@@ -1,0 +1,86 @@
+{
+  "checks": {
+    "detector_and_actuator_fields_missing": true,
+    "does_not_entail_background_bound": true,
+    "does_not_entail_executable_radius": true,
+    "does_not_entail_width_bound": true,
+    "entails_epsilon_probe_formally": true,
+    "entails_multiplicity_probe": true,
+    "entails_order_cap": true,
+    "entails_port_law": true,
+    "entails_quotient_domain": true,
+    "entails_threshold_probe": true,
+    "not_admitted_physical_selector": true,
+    "source_side_fields_all_entailed": true
+  },
+  "claim": "A minimal finite two-port mediator-lattice constructor can entail the source-side tuple, but still fails the physical selector gate at detector and actuator bounds.",
+  "classification": "constructor-law candidate; source-side progress, detector/actuator failure.",
+  "constructor": {
+    "axioms": {
+      "actuator_model": {
+        "entails": [],
+        "value": "not_source_derived"
+      },
+      "coupled_mediator_port_relation": {
+        "entails": [
+          "port_law",
+          "quotient_domain",
+          "epsilon_probe"
+        ],
+        "value": {
+          "epsilon_probe": "formal_coupling_parameter",
+          "port_law": "coupled",
+          "quotient_domain": "hnf"
+        }
+      },
+      "detector_model": {
+        "entails": [],
+        "value": "not_source_derived"
+      },
+      "finite_internal_state_space": {
+        "entails": [
+          "order_cap_K"
+        ],
+        "value": 64
+      },
+      "two_mediator_species": {
+        "entails": [
+          "threshold_probe",
+          "multiplicity_probe"
+        ],
+        "value": {
+          "multiplicity_probe": 2,
+          "threshold_probe": "mediator_threshold"
+        }
+      }
+    },
+    "name": "finite_two_port_mediator_lattice"
+  },
+  "entailed_fields": [
+    "epsilon_probe",
+    "multiplicity_probe",
+    "order_cap_K",
+    "port_law",
+    "quotient_domain",
+    "threshold_probe"
+  ],
+  "missing_fields": [
+    "background_bound",
+    "executable_radius",
+    "width_bound"
+  ],
+  "passed": true,
+  "required_fields": [
+    "background_bound",
+    "epsilon_probe",
+    "executable_radius",
+    "multiplicity_probe",
+    "order_cap_K",
+    "port_law",
+    "quotient_domain",
+    "threshold_probe",
+    "width_bound"
+  ],
+  "smallest_falsifier": "No source-derived width, background, or executable-radius bound, so WP197/WP178 gates remain open.",
+  "work_package": "WP198"
+}

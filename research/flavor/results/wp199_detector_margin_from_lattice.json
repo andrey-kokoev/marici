@@ -1,0 +1,52 @@
+{
+  "cases": {
+    "borderline_detector": {
+      "background_bound": "1/4",
+      "passes": false,
+      "spacing": "1",
+      "total_error": "1/2",
+      "width_bound": "1/4"
+    },
+    "sharp_detector": {
+      "background_bound": "1/10",
+      "passes": true,
+      "spacing": "1",
+      "total_error": "1/5",
+      "width_bound": "1/10"
+    },
+    "smeared_detector": {
+      "background_bound": "1/4",
+      "passes": false,
+      "spacing": "1",
+      "total_error": "7/12",
+      "width_bound": "1/3"
+    },
+    "source_only": {
+      "background_bound": null,
+      "passes": false,
+      "spacing": "1",
+      "total_error": null,
+      "width_bound": null
+    }
+  },
+  "checks": {
+    "borderline_fails_strict_margin": true,
+    "borderline_total_error_one_half": true,
+    "detector_contract_is_independent_field": true,
+    "sharp_detector_passes": true,
+    "sharp_detector_total_error_one_fifth": true,
+    "smeared_fails": true,
+    "smeared_total_error_seven_twelfths": true,
+    "source_only_does_not_pass_margin": true,
+    "source_only_has_no_detector_bounds": true,
+    "spacing_alone_does_not_bound_background": true,
+    "spacing_alone_does_not_bound_width": true,
+    "wp198_detector_gap_remains_for_source_only": true
+  },
+  "claim": "The finite mediator-lattice source spacing does not by itself derive the WP197 detector margin; width and background bounds remain independent detector contracts.",
+  "classification": "detector-law audit; source-side lattice alone insufficient.",
+  "margin_rule": "width + background < spacing/2",
+  "passed": true,
+  "smallest_falsifier": "source_only has spacing but no width/background bounds, so no multiplicity-margin proof.",
+  "work_package": "WP199"
+}

@@ -1,0 +1,81 @@
+{
+  "checks": {
+    "chain_is_acyclic": true,
+    "detector_constants_conditional_not_unconditional": true,
+    "external_gates_are_three": true,
+    "five_copy_depends_on_one_bad": true,
+    "five_copy_depends_on_quarter_target": true,
+    "five_copy_not_external_after_dependencies": true,
+    "one_bad_contract_not_external_after_minimal_fault": true,
+    "one_fifth_cap_not_external_after_five_copy": true,
+    "one_fifth_depends_on_five_copy": true,
+    "one_tenth_depends_on_one_fifth_cap": true,
+    "one_tenth_depends_on_width_background_exchange": true,
+    "strict_interval_separation_not_external_here": true
+  },
+  "claim": "The one-tenth detector constants have a closed conditional derivation chain; the remaining external gates are minimal nonzero fault tolerance, strict below-quarter target, and width/background exchange symmetry.",
+  "classification": "detector derivation chain closeout; conditional, not unconditional.",
+  "dependency_closure_for_one_tenth": [
+    "five_copy_minimality",
+    "minimal_nonzero_fault_tolerance",
+    "one_bad_contract",
+    "one_fifth_safety_cap",
+    "strict_below_quarter_target",
+    "strict_interval_separation",
+    "width_background_exchange"
+  ],
+  "next_frontier": "Derive or admit the three remaining detector gates from physical architecture.",
+  "nodes": {
+    "five_copy_minimality": {
+      "depends": [
+        "one_bad_contract",
+        "strict_below_quarter_target"
+      ],
+      "external": false
+    },
+    "minimal_nonzero_fault_tolerance": {
+      "depends": [],
+      "external": true
+    },
+    "one_bad_contract": {
+      "depends": [
+        "minimal_nonzero_fault_tolerance"
+      ],
+      "external": false
+    },
+    "one_fifth_safety_cap": {
+      "depends": [
+        "five_copy_minimality"
+      ],
+      "external": false
+    },
+    "one_tenth_constants": {
+      "depends": [
+        "one_fifth_safety_cap",
+        "width_background_exchange"
+      ],
+      "external": false
+    },
+    "strict_below_quarter_target": {
+      "depends": [
+        "strict_interval_separation"
+      ],
+      "external": true
+    },
+    "strict_interval_separation": {
+      "depends": [],
+      "external": false
+    },
+    "width_background_exchange": {
+      "depends": [],
+      "external": true
+    }
+  },
+  "passed": true,
+  "remaining_external_gates": [
+    "minimal_nonzero_fault_tolerance",
+    "strict_below_quarter_target",
+    "width_background_exchange"
+  ],
+  "work_package": "WP214"
+}

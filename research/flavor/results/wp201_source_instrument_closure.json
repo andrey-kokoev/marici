@@ -1,0 +1,59 @@
+{
+  "admitted_package": "sharp_radius6",
+  "checks": {
+    "borderline_radius6_detector_fails": true,
+    "borderline_radius6_package_fails": true,
+    "both_detector_and_actuator_required": true,
+    "closure_is_conditional_on_instrument_law": true,
+    "sharp_radius5_actuator_fails": true,
+    "sharp_radius5_package_fails": true,
+    "sharp_radius6_actuator_passes": true,
+    "sharp_radius6_detector_passes": true,
+    "sharp_radius6_package_passes": true,
+    "source_law_has_K64": true,
+    "source_law_has_hnf_domain": true,
+    "source_law_has_required_probes": true
+  },
+  "claim": "The finite mediator-lattice source plus a sharp radius-six instrument law closes the conditional selector gate; weaker detector or actuator laws fail.",
+  "classification": "conditional source+instrument closure; not source-only explanation.",
+  "instrument_gate": "Instrument law must be admitted independently: width+background<1/2 and actuator radius>=6.",
+  "instrument_laws": {
+    "borderline_radius6": {
+      "actuator_passes": true,
+      "actuator_radius": 6,
+      "background_bound": "1/4",
+      "detector_passes": false,
+      "package_passes": false,
+      "total_detector_error": "1/2",
+      "width_bound": "1/4"
+    },
+    "sharp_radius5": {
+      "actuator_passes": false,
+      "actuator_radius": 5,
+      "background_bound": "1/10",
+      "detector_passes": true,
+      "package_passes": false,
+      "total_detector_error": "1/5",
+      "width_bound": "1/10"
+    },
+    "sharp_radius6": {
+      "actuator_passes": true,
+      "actuator_radius": 6,
+      "background_bound": "1/10",
+      "detector_passes": true,
+      "package_passes": true,
+      "total_detector_error": "1/5",
+      "width_bound": "1/10"
+    }
+  },
+  "passed": true,
+  "source_law": {
+    "epsilon_probe": true,
+    "multiplicity_probe": true,
+    "order_cap_K": 64,
+    "port_law": "coupled",
+    "quotient_domain": "hnf",
+    "threshold_probe": true
+  },
+  "work_package": "WP201"
+}

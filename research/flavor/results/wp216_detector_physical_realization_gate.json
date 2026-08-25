@@ -1,0 +1,46 @@
+{
+  "admitted_domain": "WP215 detector-feature packets plus physical-realization fields.",
+  "candidate_admissions": {
+    "calibrated_but_not_source_coupled": false,
+    "declared_architecture_only": false,
+    "formal_device_no_calibration": false,
+    "fully_realized_detector": true,
+    "source_coupled_but_not_executable": false
+  },
+  "checks": {
+    "architecture_entailment_does_not_imply_physical_realization": true,
+    "calibrated_without_source_coupling_not_admitted": true,
+    "declared_architecture_only_not_physical_instrument": true,
+    "formal_device_without_calibration_not_admitted": true,
+    "fully_realized_detector_is_admitted": true,
+    "selector_authority_requires_fully_realized_detector": true,
+    "smallest_falsifier_is_one_missing_realization_field": true,
+    "source_coupled_without_executability_not_admitted": true,
+    "three_realization_fields_are_jointly_necessary": true,
+    "wp215_features_are_present_in_all_candidates": true
+  },
+  "claim": "WP215's detector architecture becomes a physical instrument only after executable operation, calibrated error contract, and source coupling/descent are all supplied.",
+  "classification": "physical-instrument realization gate; not a new selector.",
+  "faithful_quotient": "feature realization tuple modulo candidates with identical executable, calibrated, source-coupled instrument action.",
+  "missing_realization_fields": {
+    "calibrated_but_not_source_coupled": [
+      "source_coupling_and_descent"
+    ],
+    "declared_architecture_only": [
+      "calibrated_error_contract",
+      "executable_operation",
+      "source_coupling_and_descent"
+    ],
+    "formal_device_no_calibration": [
+      "calibrated_error_contract"
+    ],
+    "fully_realized_detector": [],
+    "source_coupled_but_not_executable": [
+      "executable_operation"
+    ]
+  },
+  "passed": true,
+  "remaining_gate": "Construct or derive a real flavor experiment implementing the fully realized detector tuple.",
+  "smallest_exact_falsifier": "Any one missing realization field blocks physical-instrument admission.",
+  "work_package": "WP216"
+}

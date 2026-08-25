@@ -1,0 +1,66 @@
+{
+  "candidates": {
+    "borderline_radius6": {
+      "background": "1/4",
+      "passes": false,
+      "radius": 6,
+      "sharpness_cost": "8",
+      "width": "1/4"
+    },
+    "near_margin_radius6": {
+      "background": "1/5",
+      "passes": true,
+      "radius": 6,
+      "sharpness_cost": "10",
+      "width": "1/5"
+    },
+    "sharp_radius6": {
+      "background": "1/10",
+      "passes": true,
+      "radius": 6,
+      "sharpness_cost": "20",
+      "width": "1/10"
+    },
+    "sharp_radius7": {
+      "background": "1/10",
+      "passes": true,
+      "radius": 7,
+      "sharpness_cost": "20",
+      "width": "1/10"
+    },
+    "sharper_radius6": {
+      "background": "1/20",
+      "passes": true,
+      "radius": 6,
+      "sharpness_cost": "40",
+      "width": "1/20"
+    }
+  },
+  "checks": {
+    "borderline_fails": true,
+    "cost_principle_selects_near_margin": true,
+    "different_cost_function_would_change_detector_choice": true,
+    "minimal_radius_is_six": true,
+    "one_tenth_constants_not_derivable_from_this_principle": true,
+    "optimality_principle_itself_needs_authority": true,
+    "radius_minimal_set_has_three": true,
+    "radius_six_derivable_from_minimal_radius": true,
+    "sharp_radius6_not_selected_by_minimal_cost": true,
+    "sharp_radius7_passes_but_not_radius_minimal": true,
+    "sharper_radius6_not_selected_by_minimal_cost": true,
+    "wp204_derivation_gap_partially_closed_only_for_radius": true
+  },
+  "claim": "A minimal-radius optimality principle derives actuator radius six, but a simple sharpness-cost principle selects a near-margin detector rather than WP203's one-tenth constants.",
+  "classification": "partial instrument-constant derivation: radius yes, detector constants no.",
+  "minimal_radius_candidates": [
+    "sharp_radius6",
+    "sharper_radius6",
+    "near_margin_radius6"
+  ],
+  "passed": true,
+  "radius_then_cost_optimum": [
+    "near_margin_radius6"
+  ],
+  "remaining_gate": "Derive the detector constants or the correct detector cost functional from physical dynamics.",
+  "work_package": "WP205"
+}

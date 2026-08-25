@@ -1,0 +1,54 @@
+{
+  "admitted_domain": "WP220 missing detector fields with requirement deficits.",
+  "checks": {
+    "calibration_requires_error_bounds_not_source_tuple": true,
+    "exchange_symmetry_is_one_action_short": true,
+    "executability_requires_apparatus_not_source_tuple": true,
+    "fault_and_apparatus_fields_not_derivable_by_naming": true,
+    "no_full_selector_from_partial_structural_derivation": true,
+    "sentinel_requires_fault_model_not_present": true,
+    "smallest_constructive_targets_are_structural": true,
+    "strict_comparator_is_one_rule_short": true
+  },
+  "claim": "The smallest constructive detector targets are the structural strict-boundary rule and channel-exchange action; fault, apparatus, and calibration fields remain larger physical gates.",
+  "classification": "detector-field derivation ladder.",
+  "faithful_quotient": "field-requirement entailment ladder over the original physical16 detector route.",
+  "field_classes": {
+    "calibrated_error_contract": "calibration",
+    "exchangeable_width_background_channels": "structural_symmetry",
+    "executable_operation": "apparatus",
+    "single_fault_sentinel": "fault_model",
+    "strict_interval_comparator": "structural_order"
+  },
+  "missing_requirements": {
+    "calibrated_error_contract": [
+      "background_bound",
+      "drift_bound",
+      "width_bound"
+    ],
+    "exchangeable_width_background_channels": [
+      "channel_exchange_action"
+    ],
+    "executable_operation": [
+      "control_protocol",
+      "finite_runtime",
+      "readout_reset"
+    ],
+    "single_fault_sentinel": [
+      "fault_state",
+      "one_bad_contract",
+      "sentinel_transition"
+    ],
+    "strict_interval_comparator": [
+      "strict_boundary_rule"
+    ]
+  },
+  "passed": true,
+  "remaining_gate": "Derive either strict boundary rule or channel-exchange action from source dynamics; neither suffices alone for selector authority.",
+  "smallest_constructive_targets": [
+    "strict_interval_comparator",
+    "exchangeable_width_background_channels"
+  ],
+  "smallest_exact_falsifier": "A source tuple with ordered gap but no strict boundary rule, or two error channels but no exchange action.",
+  "work_package": "WP221"
+}

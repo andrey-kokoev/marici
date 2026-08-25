@@ -1,0 +1,82 @@
+{
+  "checks": {
+    "additional_threshold_or_coupling_probe_required": true,
+    "epsilon_zero_is_required_for_wp190_separation": true,
+    "finite_fiber_not_singleton_after_restricted_intervention": true,
+    "frozen_mediator_lacks_epsilon_zero": true,
+    "frozen_mediator_trace_static_hnf": true,
+    "intervention_family_relative_faithfulness": true,
+    "local_and_frozen_mediator_equivalent_under_authorized_interventions": true,
+    "local_trace_static_hnf": true,
+    "mediator_origin_not_identified_without_zero_access": true,
+    "zero_accessible_mediator_separated_from_frozen": true,
+    "zero_accessible_mediator_separated_from_local": true,
+    "zero_accessible_mediator_trace_changes": true
+  },
+  "claim": "WP190's origin discriminator requires epsilon-zero access; a frozen nonzero mediator remains equivalent to a hard local constraint under restricted interventions.",
+  "classification": "intervention-family kernel: origin discrimination is relative to accessible epsilon controls.",
+  "passed": true,
+  "smallest_falsifier": "S_local_constraint and S_mediator_frozen_nonzero both produce only the HNF 5/6 gate.",
+  "sources": {
+    "S_local_constraint": {
+      "authorized_epsilons": [
+        null
+      ],
+      "origin": "local_constraint"
+    },
+    "S_mediator_frozen_nonzero": {
+      "authorized_epsilons": [
+        "1",
+        "1/2"
+      ],
+      "origin": "mediator_elimination"
+    },
+    "S_mediator_zero_accessible": {
+      "authorized_epsilons": [
+        "1",
+        "1/2",
+        "0"
+      ],
+      "origin": "mediator_elimination"
+    }
+  },
+  "traces": {
+    "S_local_constraint": [
+      [
+        "hnf",
+        5,
+        6
+      ]
+    ],
+    "S_mediator_frozen_nonzero": [
+      [
+        "hnf",
+        5,
+        6
+      ],
+      [
+        "hnf",
+        5,
+        6
+      ]
+    ],
+    "S_mediator_zero_accessible": [
+      [
+        "hnf",
+        5,
+        6
+      ],
+      [
+        "hnf",
+        5,
+        6
+      ],
+      [
+        "rectangular",
+        4,
+        5
+      ]
+    ]
+  },
+  "work_package": "WP191"
+}

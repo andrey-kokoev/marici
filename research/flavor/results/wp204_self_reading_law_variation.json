@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "all_variants_share_source_tuple": true,
+    "borderline_radius6_selector_fails": true,
+    "hard_to_vary_only_after_freezing_constants": true,
+    "instrument_tuples_not_unique": true,
+    "same_source_has_multiple_passing_instrument_laws": true,
+    "same_source_has_passing_and_failing_laws": true,
+    "self_reading_law_needs_independent_derivation": true,
+    "sharp_radius6_selector_ok": true,
+    "sharp_radius7_selector_ok": true,
+    "sharper_radius6_selector_ok": true,
+    "source_side_tuple_does_not_fix_instrument_tuple": true,
+    "wp203_constants_not_derived_by_source_tuple": true
+  },
+  "claim": "The WP203 self-reading constants can vary while preserving the same source-side tuple; the law is hard-to-vary only after its instrument constants are frozen.",
+  "classification": "self-reading derivation gap; constants still underived.",
+  "passed": true,
+  "smallest_falsifier": "Same source tuple admits sharp_radius6, sharp_radius7, sharper_radius6, and borderline_radius6 variants.",
+  "source_tuple": {
+    "epsilon_probe": true,
+    "multiplicity_probe": true,
+    "order_cap_K": 64,
+    "quotient_domain": "hnf",
+    "threshold_probe": true
+  },
+  "variants": {
+    "borderline_radius6": {
+      "actuator_radius": 6,
+      "background": "1/4",
+      "selector_ok": false,
+      "width": "1/4"
+    },
+    "sharp_radius6": {
+      "actuator_radius": 6,
+      "background": "1/10",
+      "selector_ok": true,
+      "width": "1/10"
+    },
+    "sharp_radius7": {
+      "actuator_radius": 7,
+      "background": "1/10",
+      "selector_ok": true,
+      "width": "1/10"
+    },
+    "sharper_radius6": {
+      "actuator_radius": 6,
+      "background": "1/20",
+      "selector_ok": true,
+      "width": "1/20"
+    }
+  },
+  "work_package": "WP204"
+}

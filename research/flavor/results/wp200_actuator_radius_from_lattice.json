@@ -1,0 +1,55 @@
+{
+  "cases": {
+    "exact_only_actuator": {
+      "K": 64,
+      "actuator_radius": 5,
+      "domain": "hnf",
+      "supports_hnf_exact": true,
+      "supports_hnf_tau1": false
+    },
+    "source_only": {
+      "K": 64,
+      "actuator_radius": null,
+      "domain": "hnf",
+      "supports_hnf_exact": false,
+      "supports_hnf_tau1": false
+    },
+    "tau1_actuator": {
+      "K": 64,
+      "actuator_radius": 6,
+      "domain": "hnf",
+      "supports_hnf_exact": true,
+      "supports_hnf_tau1": true
+    },
+    "weak_actuator": {
+      "K": 64,
+      "actuator_radius": 4,
+      "domain": "hnf",
+      "supports_hnf_exact": false,
+      "supports_hnf_tau1": false
+    }
+  },
+  "checks": {
+    "K_and_domain_do_not_entail_actuator": true,
+    "no_algebraic_span_to_executable_control": true,
+    "radius_five_supports_exact_only": true,
+    "radius_resource_is_independent_field": true,
+    "radius_six_supports_tau1": true,
+    "required_hnf_exact_radius_is_five": true,
+    "required_hnf_tau1_radius_is_six": true,
+    "source_only_has_no_actuator_radius": true,
+    "source_only_supports_neither": true,
+    "tau1_selector_needs_stronger_actuator_than_exact": true,
+    "weak_radius_four_supports_neither_hnf_gate": true,
+    "wp198_actuator_gap_remains_for_source_only": true
+  },
+  "claim": "The finite mediator lattice's K=64 HNF source law does not by itself entail an executable recurrence actuator; radius remains an independent control resource.",
+  "classification": "actuator-law audit; source-side lattice alone insufficient.",
+  "passed": true,
+  "required_radius": {
+    "hnf_exact": 5,
+    "hnf_tau1": 6
+  },
+  "smallest_falsifier": "source_only has K=64 and HNF domain but no actuator radius, so no executable recurrence selector.",
+  "work_package": "WP200"
+}

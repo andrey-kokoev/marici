@@ -1,0 +1,50 @@
+{
+  "authorized_instruments": [
+    "I_sharp_radius6"
+  ],
+  "checks": {
+    "borderline_radius6_fails_detector_only": true,
+    "conditional_closure_not_hard_to_vary_without_instrument_derivation": true,
+    "detector_and_actuator_failures_distinct": true,
+    "independent_physical_admission_would_resolve": true,
+    "instrument_law_not_entailed_by_source": true,
+    "only_sharp_radius6_authorizes_selector": true,
+    "same_source_different_selector_outcomes": true,
+    "same_source_for_all_instruments": true,
+    "sharp_radius5_fails_actuator_only": true,
+    "source_only_explanation_still_absent": true,
+    "three_rival_instrument_laws": true,
+    "wp201_not_invalidated": true
+  },
+  "claim": "WP201's closure is not hard-to-vary source explanation unless the sharp radius-six instrument law is derived or independently admitted; rival instrument laws attach to the same source and change selector authority.",
+  "classification": "instrument-law rival kernel.",
+  "instrument_signatures": {
+    "I_borderline_radius6": {
+      "actuator_ok": true,
+      "detector_ok": false,
+      "selector_authorized": false
+    },
+    "I_sharp_radius5": {
+      "actuator_ok": false,
+      "detector_ok": true,
+      "selector_authorized": false
+    },
+    "I_sharp_radius6": {
+      "actuator_ok": true,
+      "detector_ok": true,
+      "selector_authorized": true
+    }
+  },
+  "passed": true,
+  "smallest_falsifier": "Same source with I_borderline_radius6 or I_sharp_radius5 fails selector authority.",
+  "source": {
+    "name": "finite_two_port_mediator_lattice",
+    "order_cap_K": 64,
+    "quotient_domain": "hnf"
+  },
+  "unauthorized_instruments": [
+    "I_borderline_radius6",
+    "I_sharp_radius5"
+  ],
+  "work_package": "WP202"
+}

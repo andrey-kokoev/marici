@@ -1,0 +1,82 @@
+{
+  "checks": {
+    "exact_multiplicity_partition_discrete": true,
+    "faithfulness_relative_to_mu": true,
+    "gap_one_requires_mu_less_than_half": true,
+    "local_frozen_composite_collapse_at_mu_half": true,
+    "local_frozen_gap_also_touches_at_mu_half": true,
+    "mu_one_half_not_discrete": true,
+    "mu_one_third_discrete": true,
+    "multiplicity_resolution_is_instrument_gate": true,
+    "strict_margin_required": true,
+    "touching_intervals_count_as_unresolved": true,
+    "wp195_assumed_exact_multiplicity": true,
+    "zero_accessible_stays_separate_by_epsilon_trace": true
+  },
+  "claim": "WP195's multiplicity probe requires a resolution margin: multiplicity gaps must be strictly greater than twice the absolute multiplicity error.",
+  "classification": "multiplicity detector-resolution gate.",
+  "epsilon_traces": {
+    "composite_hidden_mediator": [
+      "hnf"
+    ],
+    "frozen_nonzero_mediator": [
+      "hnf"
+    ],
+    "local_constraint": [
+      "hnf"
+    ],
+    "zero_accessible_mediator": [
+      "hnf",
+      "rectangular"
+    ]
+  },
+  "instrument_gate": "For the 1-vs-2 composite distinction, require absolute multiplicity error mu < 1/2.",
+  "multiplicities": {
+    "composite_hidden_mediator": 2,
+    "frozen_nonzero_mediator": 1,
+    "local_constraint": 0,
+    "zero_accessible_mediator": 1
+  },
+  "partitions": {
+    "mu=0": {
+      "composite_hidden_mediator": [
+        "composite_hidden_mediator"
+      ],
+      "frozen_nonzero_mediator": [
+        "frozen_nonzero_mediator"
+      ],
+      "local_constraint": [
+        "local_constraint"
+      ],
+      "zero_accessible_mediator": [
+        "zero_accessible_mediator"
+      ]
+    },
+    "mu=1/2": {
+      "local_constraint": [
+        "composite_hidden_mediator",
+        "frozen_nonzero_mediator",
+        "local_constraint"
+      ],
+      "zero_accessible_mediator": [
+        "zero_accessible_mediator"
+      ]
+    },
+    "mu=1/3": {
+      "composite_hidden_mediator": [
+        "composite_hidden_mediator"
+      ],
+      "frozen_nonzero_mediator": [
+        "frozen_nonzero_mediator"
+      ],
+      "local_constraint": [
+        "local_constraint"
+      ],
+      "zero_accessible_mediator": [
+        "zero_accessible_mediator"
+      ]
+    }
+  },
+  "passed": true,
+  "work_package": "WP196"
+}
