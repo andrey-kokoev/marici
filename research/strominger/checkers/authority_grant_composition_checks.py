@@ -75,6 +75,7 @@ def main():
     identity_audits = {item["id"]: item for item in packet["proposer_identity_invariance_audits"]}
     review_roots = {item["id"]: item for item in packet["review_authority_root_certifications"]}
     root_audits = {item["id"]: item for item in packet["review_root_independence_audits"]}
+    temporal_audits = {item["id"]: item for item in packet["temporal_review_authority_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -234,6 +235,22 @@ def main():
             and not set(review["appeal_authority_roots"]) & set(review["reviewer_authority_roots"])
             for review in rival_reviews.values()
         ),
+        "revocation_preserves_history_but_suspends_live_standing":
+            temporal_audits["revoke_merits_root_then_replay"]["historical_decision_preserved"]
+            and not temporal_audits["revoke_merits_root_then_replay"]["prospective_authority_before_replay"],
+        "temporal_replay_uses_same_frozen_packet":
+            temporal_audits["revoke_merits_root_then_replay"]["replay_packet_sha256"]
+            == rival_reviews["review_mechanism_delta"]["immutable_evidence_packet_sha256"],
+        "live_successor_roots_restore_prospective_standing":
+            temporal_audits["revoke_merits_root_then_replay"]["replay_completed"]
+            and temporal_audits["revoke_merits_root_then_replay"]["prospective_authority_after_replay"]
+            and all(
+                root in review_roots
+                and review_roots[root]["valid_from"] <= temporal_audits["revoke_merits_root_then_replay"]["replayed_at"]
+                and (review_roots[root]["revoked_at"] is None
+                     or temporal_audits["revoke_merits_root_then_replay"]["replayed_at"] < review_roots[root]["revoked_at"])
+                for root in temporal_audits["revoke_merits_root_then_replay"]["replay_roots"]
+            ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -274,6 +291,7 @@ def main():
         "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
         "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
         "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
+        "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

@@ -3,7 +3,7 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "6d3bef37fbcb0d8655b8e679762c2edd15384b805b5f998d6505d4013fe9e68c",
+  "contract_sha256": "fb3c26dc6d6072d3a40b0e324d0ec649e2a7501f0003f2d749fbb5ffa64b46ee",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
@@ -24,6 +24,7 @@
     "incomplete_speculation_cannot_open_challenge": true,
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
+    "live_successor_roots_restore_prospective_standing": true,
     "mechanism_identification_is_explicitly_bounded": true,
     "missing_alternative_executor_is_presentation_only": true,
     "new_rival_has_independent_constructor_authority": true,
@@ -35,6 +36,7 @@
     "review_authority_roots_are_externally_certified": true,
     "review_root_independence_has_zero_coherence_defect": true,
     "review_root_scope_is_strictly_procedural": true,
+    "revocation_preserves_history_but_suspends_live_standing": true,
     "rival_admission_has_separated_governance_roles": true,
     "rival_protocol_remains_open_world": true,
     "rival_review_is_content_addressed_and_precommitted": true,
@@ -47,6 +49,7 @@
     "stacky_mechanism_kernel_equals_authorized_gauge": true,
     "standalone_contract_compiles": true,
     "target_intervention_cannot_rewrite_upstream_authority": true,
+    "temporal_replay_uses_same_frozen_packet": true,
     "theta_composite_remains_readout": true,
     "theta_requires_explicit_seam_cell": true,
     "transport_requires_authority_preservation": true
@@ -85,6 +88,15 @@
         "nonunique_global_authority_descent"
       ],
       "expected_code": "nonunique_global_authority_descent",
+      "passed": true,
+      "valid": false
+    },
+    "cached_decision_survives_as_live_authority": {
+      "description": "A cached admission retains prospective standing after its review root is revoked and before replay.",
+      "error_codes": [
+        "revoked_root_leaves_cached_authority_live"
+      ],
+      "expected_code": "revoked_root_leaves_cached_authority_live",
       "passed": true,
       "valid": false
     },
@@ -350,6 +362,25 @@
       "passed": true,
       "valid": false
     },
+    "review_replay_substitutes_new_packet": {
+      "description": "Temporal replay silently changes the content-addressed evidence packet.",
+      "error_codes": [
+        "review_replay_changes_evidence_packet"
+      ],
+      "expected_code": "review_replay_changes_evidence_packet",
+      "passed": true,
+      "valid": false
+    },
+    "review_replay_uses_revoked_root": {
+      "description": "Replay at time 30 reuses a root revoked at time 25.",
+      "error_codes": [
+        "invalid_temporal_authority_restoration",
+        "review_replay_uses_inactive_root"
+      ],
+      "expected_code": "review_replay_uses_inactive_root",
+      "passed": true,
+      "valid": false
+    },
     "review_root_has_no_external_charter": {
       "description": "A reviewer root is presented without an issuing source charter.",
       "error_codes": [
@@ -387,6 +418,15 @@
       "passed": true,
       "valid": false
     },
+    "revocation_erases_review_history": {
+      "description": "Revoking a root deletes the fact that its earlier valid review occurred.",
+      "error_codes": [
+        "revocation_erases_historical_review"
+      ],
+      "expected_code": "revocation_erases_historical_review",
+      "passed": true,
+      "valid": false
+    },
     "rival_repair_uses_target_fitted_probe": {
       "description": "The new rival is separated by a discriminator designed from its desired output rather than the source grammar.",
       "error_codes": [
@@ -415,12 +455,30 @@
       "passed": true,
       "valid": false
     },
+    "root_revocation_is_backdated": {
+      "description": "The revocation is placed before the original review, invalidating its claimed authorization interval.",
+      "error_codes": [
+        "backdated_review_root_revocation"
+      ],
+      "expected_code": "backdated_review_root_revocation",
+      "passed": true,
+      "valid": false
+    },
     "source_perturbation_leaves_coherence_inert": {
       "description": "The alleged source is perturbed but the coherence witness is merely replayed unchanged.",
       "error_codes": [
         "source_perturbation_fails_to_regenerate_witnesses"
       ],
       "expected_code": "source_perturbation_fails_to_regenerate_witnesses",
+      "passed": true,
+      "valid": false
+    },
+    "standing_restored_without_replay": {
+      "description": "Prospective authority is restored without completing a new review.",
+      "error_codes": [
+        "invalid_temporal_authority_restoration"
+      ],
+      "expected_code": "invalid_temporal_authority_restoration",
       "passed": true,
       "valid": false
     },
@@ -475,20 +533,21 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "8bd8eabc178620f6e1f0427bf1405861f8f6c222d872ca0ad22162cbe4d40171",
-  "hostile_passed": 44,
-  "hostile_total": 44,
+  "hostile_fixture_sha256": "994c403be35c49bd7c259015e5733168c4e0f688da9165992ce3dd5cf945b1ec",
+  "hostile_passed": 50,
+  "hostile_total": 50,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 44,
+  "passed_gates": 47,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
   "rival_admission_verdict": "A rival may enter the explanatory competition only through an independently generated constructor grammar, total predictions on existing ports, a non-gauge difference witness, and admission before response selection. Gauge copies and incomplete speculations cannot manufacture challenges.",
   "rival_governance_verdict": "Rival admission is a separate, content-addressed authority process: proposer and incumbent are excluded from merits adjudication, independent reviewer roots and a disjoint appeal path are required, proposer identity cannot change the decision, and review grants challenge standing without upgrading operative authority.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 44,
+  "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
+  "total_gates": 47,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

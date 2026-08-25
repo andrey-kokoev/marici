@@ -164,7 +164,9 @@
       "authority_kind": "procedural_review",
       "operative_authority_ceiling": "challenge_standing",
       "may_select_mechanism_truth": false,
-      "revocable": true
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
     },
     {
       "id": "source_methods_board_B",
@@ -175,7 +177,9 @@
       "authority_kind": "procedural_review",
       "operative_authority_ceiling": "challenge_standing",
       "may_select_mechanism_truth": false,
-      "revocable": true
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
     },
     {
       "id": "source_appeal_panel",
@@ -186,7 +190,22 @@
       "authority_kind": "procedural_review",
       "operative_authority_ceiling": "challenge_standing",
       "may_select_mechanism_truth": false,
-      "revocable": true
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_A_successor",
+      "holder": "independent_reviewer_A_successor",
+      "issuing_charter": "cross_sector_methods_charter_A_successor",
+      "provenance_chain": ["cross_sector_methods_charter_A_successor", "independent_reviewer_A_successor"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
     }
   ],
   "review_root_independence_audits": [
@@ -214,7 +233,8 @@
       "authority_kind_before": "constructor",
       "authority_kind_after": "constructor",
       "grants_only_challenge_standing": true,
-      "appeal_available": true
+      "appeal_available": true,
+      "reviewed_at": 10
     },
     {
       "id": "review_gauge_copy",
@@ -231,7 +251,8 @@
       "authority_kind_before": "constructor",
       "authority_kind_after": "constructor",
       "grants_only_challenge_standing": true,
-      "appeal_available": true
+      "appeal_available": true,
+      "reviewed_at": 10
     },
     {
       "id": "review_incomplete_speculation",
@@ -248,7 +269,8 @@
       "authority_kind_before": "constructor",
       "authority_kind_after": "constructor",
       "grants_only_challenge_standing": true,
-      "appeal_available": true
+      "appeal_available": true,
+      "reviewed_at": 10
     }
   ],
   "proposer_identity_invariance_audits": [
@@ -261,6 +283,22 @@
       "decision_left": "admitted",
       "decision_right": "admitted",
       "identity_blinded_during_merits_review": true
+    }
+  ],
+  "temporal_review_authority_audits": [
+    {
+      "id": "revoke_merits_root_then_replay",
+      "original_review": "review_mechanism_delta",
+      "revoked_root": "source_methods_board_A",
+      "revoked_at": 20,
+      "historical_decision_preserved": true,
+      "prospective_authority_before_replay": false,
+      "replay_required": true,
+      "replay_packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+      "replay_roots": ["source_methods_board_A_successor", "source_methods_board_B"],
+      "replayed_at": 30,
+      "replay_completed": true,
+      "prospective_authority_after_replay": true
     }
   ],
   "rival_extension_audits": [

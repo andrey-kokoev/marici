@@ -109,6 +109,12 @@ The machine-readable fixture suite rejects:
 42. distinct review roots sharing a hidden controller;
 43. a procedural charter claiming authority to select mechanism truth;
 44. an appeal panel operating through an uncertified root.
+45. revocation erasing a valid historical review;
+46. a cached admission retaining live authority after root revocation;
+47. replay substituting a different evidence packet;
+48. replay using a root already revoked at replay time;
+49. prospective standing restored without completed replay;
+50. a revocation backdated before the original review.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -453,6 +459,40 @@ all-purpose epistemic sovereign:
 This does not prove that the charter is metaphysically correct. It makes the
 remaining institutional assumption explicit, bounded, and counterfactually
 revocable—the smallest object on which governance can honestly depend.
+
+### Temporal law: revocation is suspension, not historical erasure
+
+Authority has event time. A review performed while its roots were valid
+remains a historical fact after revocation, but its prospective challenge
+standing does not remain executable merely because the decision was cached.
+This separates three predicates:
+
+\[
+\operatorname{Occurred}(r,t_0),\qquad
+\operatorname{AuthorizedAt}(r,t),\qquad
+\operatorname{ExecutableAt}(r,t).
+\]
+
+After a root is revoked, the first remains true while the latter two become
+false. Restoration requires replaying the identical content-addressed packet
+under roots whose validity intervals contain the replay time. The successor
+atlas may change personnel, but it may neither change the packet silently nor
+inherit authority from the cached outcome.
+
+Therefore:
+
+\[
+\boxed{
+\text{revocation}
+=\text{preserve history}+\text{suspend prospective standing},
+\qquad
+\text{restoration}=\text{live-root replay}.}
+\]
+
+This makes authority non-monotone while evidence remains monotone: audit
+records accumulate, but the operations they authorize can expire. It is the
+temporal analogue of the earlier distinction between transported evidence and
+transported authority.
 
 ### Refinement law: higher coherence
 

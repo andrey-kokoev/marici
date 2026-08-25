@@ -359,6 +359,54 @@
         {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "appeal_authority_roots", "value": ["missing_appeal_root"]}
       ],
       "expected_code": "uncertified_review_authority_root"
+    },
+    {
+      "id": "revocation_erases_review_history",
+      "description": "Revoking a root deletes the fact that its earlier valid review occurred.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "historical_decision_preserved", "value": false}
+      ],
+      "expected_code": "revocation_erases_historical_review"
+    },
+    {
+      "id": "cached_decision_survives_as_live_authority",
+      "description": "A cached admission retains prospective standing after its review root is revoked and before replay.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "prospective_authority_before_replay", "value": true}
+      ],
+      "expected_code": "revoked_root_leaves_cached_authority_live"
+    },
+    {
+      "id": "review_replay_substitutes_new_packet",
+      "description": "Temporal replay silently changes the content-addressed evidence packet.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "replay_packet_sha256", "value": "different_packet"}
+      ],
+      "expected_code": "review_replay_changes_evidence_packet"
+    },
+    {
+      "id": "review_replay_uses_revoked_root",
+      "description": "Replay at time 30 reuses a root revoked at time 25.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A_successor", "field": "revoked_at", "value": 25}
+      ],
+      "expected_code": "review_replay_uses_inactive_root"
+    },
+    {
+      "id": "standing_restored_without_replay",
+      "description": "Prospective authority is restored without completing a new review.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "replay_completed", "value": false}
+      ],
+      "expected_code": "invalid_temporal_authority_restoration"
+    },
+    {
+      "id": "root_revocation_is_backdated",
+      "description": "The revocation is placed before the original review, invalidating its claimed authorization interval.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "revoked_at", "value": 5}
+      ],
+      "expected_code": "backdated_review_root_revocation"
     }
   ]
 }
