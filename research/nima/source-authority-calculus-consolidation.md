@@ -1,12 +1,14 @@
 # Source authority calculus consolidation
 
-The shared data-descent compiler now distinguishes four structures that earlier
+The shared data-descent compiler now distinguishes five structures that earlier
 sector packets had to encode separately:
 
 1. topology-bearing completion and the unique compatible operator extension;
 2. ordinary, completion-only, and derived kernel classes;
 3. finite executable observation fibers;
 4. source-derived operational authority and conditioned reliability.
+5. bounded source-relative capability audits separating production from
+   verification.
 
 The distinction is operational. A faithful algebraic probe does not thereby
 select a physical state, a support equation does not thereby become a kernel,
@@ -37,3 +39,8 @@ relative cycle or equivalent observer-bearing source remains required.
 Grothendieck's moving-endpoint theta cocycle is likewise not promoted here.
 It is a candidate topology-bearing boundary channel awaiting its modular
 operator correspondence and coercivity theorem.
+
+Kitaev's countermodels supersede the stronger ontological reading of this
+calculus. It is an audit type system, not a universal law of what exists. A
+physical model produces a capability; a separate verification model certifies
+its recovered behavior within explicit accuracy, time, and resource budgets.
