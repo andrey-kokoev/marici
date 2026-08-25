@@ -109,6 +109,13 @@ def main():
             set(descent_objects["descent_process_AC"]["stabilizer"]).issubset(
                 descent_objects["descent_process_AC"]["source_authorized_stabilizer"]
             ),
+        "source_authorized_gauge_descends_stackily":
+            descent_objects["descent_process_AC_stacky"]["ambiguity_kernel_rank"] == 1
+            and descent_objects["descent_process_AC_stacky"]["stabilizer_quotient_declared"]
+            and descent_objects["descent_process_AC_stacky"]["quotient_ambiguity_rank"] == 0
+            and set(descent_objects["descent_process_AC_stacky"]["stabilizer"]).issubset(
+                descent_objects["descent_process_AC_stacky"]["source_authorized_stabilizer"]
+            ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

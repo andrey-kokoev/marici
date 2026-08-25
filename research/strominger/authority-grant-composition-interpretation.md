@@ -81,6 +81,7 @@ The machine-readable fixture suite rejects:
 14. refinement that changes the reconstructed global authority;
 15. claimed deletion stability without a surviving source reconstruction.
 16. a hidden global stabilizer unsupported by the source grammar.
+17. source-authorized gauge whose declared quotient remains ambiguous.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -180,6 +181,12 @@ Existence is not enough. The reconstruction ambiguity kernel must vanish, or
 every surviving stabilizer must itself be source-authorized and explicitly
 quotiented. Otherwise the same local evidence supports several inequivalent
 global authorities.
+
+This is stacky rather than set-valued descent. A nonzero pre-quotient kernel
+is legitimate when it is exactly the orbit of a source-authorized gauge
+stabilizer and the quotient ambiguity rank is zero. DPC rejects both hidden
+symmetries and incomplete quotients, but it does not mistake authorized gauge
+redundancy for multiple physical explanations.
 
 ### Refinement law: higher coherence
 

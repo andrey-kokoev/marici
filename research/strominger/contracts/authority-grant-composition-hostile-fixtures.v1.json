@@ -133,6 +133,14 @@
         {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "stabilizer", "value": ["identity", "gauge_flip"]}
       ],
       "expected_code": "unauthorized_descent_stabilizer"
+    },
+    {
+      "id": "authorized_gauge_but_incomplete_quotient",
+      "description": "The stabilizer is source-authorized, but quotienting leaves a nonzero ambiguity kernel.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC_stacky", "field": "quotient_ambiguity_rank", "value": 1}
+      ],
+      "expected_code": "nonunique_global_authority_descent"
     }
   ]
 }

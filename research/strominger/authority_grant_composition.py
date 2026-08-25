@@ -238,7 +238,8 @@ def validate(packet: dict[str, Any]) -> list[Error]:
             err("flat_but_noneffective_authority_descent", did, str(descent.get("reconstruction_defect")))
         ambiguity_rank = descent.get("ambiguity_kernel_rank")
         if ambiguity_rank != 0:
-            err("nonunique_global_authority_descent", did, str(ambiguity_rank))
+            if not descent.get("stabilizer_quotient_declared") or descent.get("quotient_ambiguity_rank") != 0:
+                err("nonunique_global_authority_descent", did, str(ambiguity_rank))
         stabilizer = set(descent.get("stabilizer", []))
         authorized = set(descent.get("source_authorized_stabilizer", []))
         if not stabilizer or not stabilizer.issubset(authorized):
