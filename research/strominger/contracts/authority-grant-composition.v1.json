@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "057e8f2b475079f39daa2404c3d9f15fa146af296e79852f82003339e2357ed2",
+      "replay_checker_sha256": "b05bfcbcaaa202ff97131f8fa9f3718f623108a002d5becbe3a39fedb7a24bf1",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -645,6 +645,33 @@
         }
       ],
       "minimal_single_use_repair": "shared_linearization"
+    }
+  ],
+  "distributed_linearity_trilemma_audits": [
+    {
+      "id": "single_use_safety_availability_partition_trilemma",
+      "sites": ["site_A", "site_B"],
+      "properties": ["single_use_safety", "availability_at_both_sites", "partition_tolerance"],
+      "maximal_designs": [
+        {"id": "connected_consensus", "single_use_safety": true, "availability_at_both_sites": true, "partition_tolerance": false},
+        {"id": "safe_partitioned_linearizer", "single_use_safety": true, "availability_at_both_sites": false, "partition_tolerance": true},
+        {"id": "available_partitioned_execution", "single_use_safety": false, "availability_at_both_sites": true, "partition_tolerance": true}
+      ],
+      "claims_all_three": false,
+      "safe_partition_run": {
+        "quorum_site": "site_A",
+        "minority_site": "site_B",
+        "quorum_outcome": 1,
+        "minority_outcome": 0,
+        "minority_fails_closed": true,
+        "minority_local_fallback": false,
+        "old_fencing_epoch": 7,
+        "new_fencing_epoch": 8,
+        "stale_epoch_execution_permitted": false,
+        "authority_interpretation": "only the quorum component receives the fresh source-authorized consumption grant"
+      },
+      "eventual_recovery_counted_as_partition_availability": false,
+      "theorem_scope": "two authority loci, one globally single-use capability, arbitrary communication partition"
     }
   ],
   "application_cases": [
