@@ -282,6 +282,23 @@ for name, mutate_correlation, expected in (
     errors = candidate_result["configuration_correlated_context_theorems"][0]["errors"]
     correlated_context_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["correlated_context_hostiles"] = correlated_context_hostiles
+correlation_cocircuit_hostiles = {}
+for name, mutate_cocircuit, expected in (
+    ("wrong_classification", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"classification":"all_indexed_root_singletons"}), "correlation_cocircuit_classification_untyped"),
+    ("wrong_safety_law", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"safety_law":"safe_iff_each_hyperedge_is_small"}), "correlation_cocircuit_safety_law_untyped"),
+    ("wrong_minimality_law", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"minimality_law":"proper_subsets_may_remain_fatal"}), "correlation_cocircuit_minimality_untyped"),
+    ("wrong_symmetry_action", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"symmetry_action":"full_symmetric_group_orbits"}), "correlation_cocircuit_symmetry_action_untyped"),
+    ("wrong_cocircuit_count", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"expected_cocircuit_count":5}), "correlation_cocircuit_count_mismatch"),
+    ("wrong_orbit_count", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"expected_orbit_count":3}), "correlation_cocircuit_orbit_mismatch"),
+    ("unsafe_admitted_hyperedge", lambda c: c["configuration_correlated_context_theorems"][0]["correlation_hyperedges"].append([["h0","admin_D"],["h0","admin_E"],["h2","admin_C"]]), "correlation_cocircuit_present_in_admitted_hyperedge"),
+    ("bounded_scope", lambda c: c["configuration_correlation_cocircuit_theorems"][0].update({"theorem_scope":"three-hole fixture only"}), "correlation_cocircuit_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_cocircuit(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_correlation_cocircuit_theorems"][0]["errors"]
+    correlation_cocircuit_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["correlation_cocircuit_hostiles"] = correlation_cocircuit_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -338,5 +355,7 @@ for name, rejected in context_symmetry_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " context_symmetry hostile." + name)
 for name, rejected in correlated_context_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlated_context hostile." + name)
+for name, rejected in correlation_cocircuit_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " correlation_cocircuit hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and coherence_omission_rejected else 1)

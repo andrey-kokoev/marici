@@ -478,3 +478,36 @@ g\in\operatorname{Aut}(H_{\mathrm{fault}}).
 Thus an authority-bearing correlation constructor has a measurable algebraic
 effect: it reduces symmetry without merging the underlying support or resource
 fibers.
+
+## Correlation cocircuit classification
+
+The correlated-context safety test now has a complete minimal obstruction
+basis. If `B` is the authority-root set of a local bridge and `i` is a typed
+hole, define
+
+\[
+K_{i,B}=\{(i,r):r\in B\}.
+\]
+
+For any admitted correlation hyperedge `E`, every local bridge survives
+exactly when no primitive cocircuit is contained in it:
+
+\[
+E\text{ is safe}\quad\Longleftrightarrow\quad
+\forall i,B,\ K_{i,B}\not\subseteq E.
+\]
+
+This is not a bound on correlation size. An arbitrarily large cross-hole
+hyperedge remains safe if every local projection leaves at least one root of
+each bridge alive. Conversely, a two-root hyperedge is fatal when it contains
+the complete authority basis of one local bridge. Each obstruction is
+deletion-minimal: removing either root restores a surviving authorization
+route.
+
+The three-hole fixture has three derived bridge sets:
+`{admin_B,admin_C}`, `{admin_C,admin_D}`, and `{admin_D,admin_E}`. It therefore
+has nine primitive indexed cocircuits. The authorized correlation preserves
+only the order-two stabilizer exchanging `h0` and `h1`; its action partitions
+the nine cocircuits into six orbits. Both the obstruction basis and its orbit
+decomposition are derived from bridge data and actual correlation
+automorphisms, rather than listed as fitted exceptions.

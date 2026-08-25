@@ -1074,6 +1074,72 @@ def audit_correlated_configuration_contexts(contract: dict[str, Any], contextual
     return audits
 
 
+def audit_correlation_cocircuits(contract: dict[str, Any], correlated_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    correlated_contracts = {item["id"]: item for item in contract.get("configuration_correlated_context_theorems", [])}
+    correlated_results = {item["id"]: item for item in correlated_audits}
+    paths = contract.get("configuration_path_audits", [])
+    local_bridges = sorted({tuple(sorted(edge.get("bridge_authority_roots", {}).values())) for path in paths for edge in path.get("edges", [])})
+    audits = []
+    for theorem in contract.get("configuration_correlation_cocircuit_theorems", []):
+        errors: list[str] = []
+        context_id = theorem.get("correlated_context_theorem_id")
+        context = correlated_contracts.get(context_id, {})
+        context_result = correlated_results.get(context_id, {})
+        if not context_result.get("passed"):
+            errors.append("correlation_cocircuit_base_context_invalid")
+        if theorem.get("classification") != "indexed_local_bridge_root_sets":
+            errors.append("correlation_cocircuit_classification_untyped")
+        if theorem.get("safety_law") != "safe_iff_no_hyperedge_contains_a_primitive_cocircuit":
+            errors.append("correlation_cocircuit_safety_law_untyped")
+        if theorem.get("minimality_law") != "deleting_any_one_root_restores_a_bridge_survivor":
+            errors.append("correlation_cocircuit_minimality_untyped")
+        if theorem.get("symmetry_action") != "automorphism_orbits_of_cocircuits":
+            errors.append("correlation_cocircuit_symmetry_action_untyped")
+        if theorem.get("theorem_scope") != "all hyperedges over every finite typed hole set admitted by the correlation constructor":
+            errors.append("correlation_cocircuit_scope_laundered")
+
+        indices = context.get("hole_indices", [])
+        cocircuits = {frozenset((hole, root) for root in bridge) for hole in indices for bridge in local_bridges}
+        deletion_minimal = all(
+            not frozenset((hole, root) for root in bridge) <= (cocircuit - {locus})
+            for hole in indices
+            for bridge in local_bridges
+            for cocircuit in (frozenset((hole, root) for root in bridge),)
+            for locus in cocircuit
+        )
+        # The bridge audit's failure predicate is exactly cocircuit containment.
+        raw_hyperedges = context.get("correlation_hyperedges", [])
+        hyperedges = {frozenset((item[0], item[1]) for item in edge) for edge in raw_hyperedges}
+        admitted_safe = not any(cocircuit <= edge for cocircuit in cocircuits for edge in hyperedges)
+        safety_agrees = admitted_safe == bool(context_result.get("local_bridges_survive"))
+        if not deletion_minimal:
+            errors.append("correlation_cocircuit_deletion_minimality_failure")
+        if not safety_agrees:
+            errors.append("correlation_cocircuit_safety_equivalence_failure")
+        if not admitted_safe:
+            errors.append("correlation_cocircuit_present_in_admitted_hyperedge")
+
+        automorphisms = context_result.get("automorphisms", [])
+        orbits: list[set[frozenset[tuple[str, str]]]] = []
+        remaining = set(cocircuits)
+        while remaining:
+            seed = min(remaining, key=lambda value: sorted(value))
+            orbit = {seed}
+            for image in automorphisms:
+                mapping = dict(zip(indices, image))
+                orbit.add(frozenset((mapping[hole], root) for hole, root in seed))
+            orbits.append(orbit)
+            remaining -= orbit
+        if theorem.get("expected_cocircuit_count") != len(cocircuits):
+            errors.append("correlation_cocircuit_count_mismatch")
+        if theorem.get("expected_orbit_count") != len(orbits):
+            errors.append("correlation_cocircuit_orbit_mismatch")
+
+        encode = lambda witness: [[hole, root] for hole, root in sorted(witness)]
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "local_bridge_root_sets": [list(bridge) for bridge in local_bridges], "primitive_cocircuits": [encode(item) for item in sorted(cocircuits, key=lambda value: sorted(value))], "cocircuit_count": len(cocircuits), "deletion_minimal": deletion_minimal, "safety_iff_cocircuit_avoidance": safety_agrees, "admitted_hyperedges_safe": admitted_safe, "cocircuit_orbits": [[encode(item) for item in sorted(orbit, key=lambda value: sorted(value))] for orbit in orbits], "orbit_count": len(orbits), "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1115,10 +1181,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     contextual_rewrite_audits = audit_contextual_configuration_rewrites(contract, configuration_path_audits)
     context_symmetry_audits = audit_configuration_context_symmetry(contract, contextual_rewrite_audits)
     correlated_context_audits = audit_correlated_configuration_contexts(contract, contextual_rewrite_audits)
+    correlation_cocircuit_audits = audit_correlation_cocircuits(contract, correlated_context_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1149,4 +1216,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_contextual_rewrite_theorems": contextual_rewrite_audits,
         "configuration_context_symmetry_theorems": context_symmetry_audits,
         "configuration_correlated_context_theorems": correlated_context_audits,
+        "configuration_correlation_cocircuit_theorems": correlation_cocircuit_audits,
     }
