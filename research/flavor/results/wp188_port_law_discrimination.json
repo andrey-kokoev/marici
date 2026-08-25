@@ -1,0 +1,83 @@
+{
+  "checks": {
+    "hnf_R4_tests_neither_as_closure_selector_for_coupled": true,
+    "hnf_R5_exact_is_first_exact_port_law_discriminator": true,
+    "hnf_R5_exact_tests_both_sources": true,
+    "hnf_R6_tau1_tests_both_sources": true,
+    "low_energy_packet_remains_collapsed": true,
+    "port_law_discrimination_requires_correct_radius": true,
+    "port_law_discrimination_requires_hnf_domain": true,
+    "rect_R4_tests_independent_only": true,
+    "rectangular_observation_does_not_discriminate_port_law": true,
+    "skew_test_required": true,
+    "tau1_discrimination_requires_radius_six": true,
+    "under_radius_hnf_observation_does_not_discriminate": true
+  },
+  "claim": "Port-law discrimination requires a recurrence observation that actually tests skew HNF quotients at the appropriate radius; rectangular success alone cannot choose the source port law.",
+  "classification": "recurrence-growth port-law discriminator.",
+  "observations": {
+    "O_hnf_R4_exact_success": {
+      "domain": "hnf",
+      "radius": 4,
+      "skew_tested": true,
+      "tau": 0
+    },
+    "O_hnf_R5_exact_success": {
+      "domain": "hnf",
+      "radius": 5,
+      "skew_tested": true,
+      "tau": 0
+    },
+    "O_hnf_R6_tau1_success": {
+      "domain": "hnf",
+      "radius": 6,
+      "skew_tested": true,
+      "tau": 1
+    },
+    "O_rect_R4_exact_success": {
+      "domain": "rectangular",
+      "radius": 4,
+      "skew_tested": false,
+      "tau": 0
+    }
+  },
+  "passed": true,
+  "port_law_discriminators": [
+    "O_hnf_R5_exact_success",
+    "O_hnf_R6_tau1_success"
+  ],
+  "smallest_exact_discriminator": "HNF exact radius five with skew quotients included.",
+  "sources": {
+    "S_coupled_ports": {
+      "admits_skew": true,
+      "domain": "hnf",
+      "exact_radius": 5,
+      "tau1_radius": 6
+    },
+    "S_independent_ports": {
+      "admits_skew": false,
+      "domain": "rectangular",
+      "exact_radius": 4,
+      "tau1_radius": 5
+    }
+  },
+  "test_matrix": {
+    "O_hnf_R4_exact_success": {
+      "S_coupled_ports": false,
+      "S_independent_ports": true
+    },
+    "O_hnf_R5_exact_success": {
+      "S_coupled_ports": true,
+      "S_independent_ports": true
+    },
+    "O_hnf_R6_tau1_success": {
+      "S_coupled_ports": true,
+      "S_independent_ports": true
+    },
+    "O_rect_R4_exact_success": {
+      "S_coupled_ports": false,
+      "S_independent_ports": true
+    }
+  },
+  "work_package": "WP188"
+}

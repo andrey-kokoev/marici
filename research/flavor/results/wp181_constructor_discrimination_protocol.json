@@ -1,0 +1,97 @@
+{
+  "checks": {
+    "common_exact_and_noisy_tests_both_constructors": true,
+    "domain_coverage_is_directional": true,
+    "hnf_R5_exact_does_not_test_hnf_noisy_due_radius_or_tau_contract": true,
+    "hnf_R5_exact_tests_rect_constructor": true,
+    "hnf_R6_tau1_does_not_test_exact_rect_constructor": true,
+    "negative_result_is_constructor_discrimination": true,
+    "protocol_separates_gate_commitments_not_low_energy_packet": true,
+    "radius_requirement_blocks_R5_for_hnf_noisy": true,
+    "rect_R4_does_not_test_hnf_noisy_constructor": true,
+    "rect_R4_tests_rect_constructor": true,
+    "strong_vector_instrument_needed_for_common_comparison": true,
+    "tau_requirement_blocks_noisy_channel_for_exact_constructor": true,
+    "weaker_instrument_leaves_constructor_kernel": true
+  },
+  "claim": "The WP180 rival constructors are discriminated only by an instrument strong enough for the larger authorized gate; weaker recurrence observations leave the source kernel unresolved.",
+  "classification": "constructor-discrimination protocol; recurrence growth can test source commitments but does not follow from the shared low-energy packet.",
+  "constructors": {
+    "C_hnf_noisy": {
+      "authorized_claim": "finite_vs_infinite_over_hnf_domain",
+      "domain": "hnf",
+      "required_radius": 6,
+      "tau": 1
+    },
+    "C_rect_exact": {
+      "authorized_claim": "finite_vs_infinite_over_rectangular_domain",
+      "domain": "rectangular",
+      "required_radius": 4,
+      "tau": 0
+    }
+  },
+  "instruments": {
+    "I_common_exact_and_noisy": {
+      "channels": [
+        {
+          "domain": "hnf",
+          "radius": 6,
+          "tau": 0
+        },
+        {
+          "domain": "hnf",
+          "radius": 6,
+          "tau": 1
+        }
+      ]
+    },
+    "I_hnf_R5_exact": {
+      "channels": [
+        {
+          "domain": "hnf",
+          "radius": 5,
+          "tau": 0
+        }
+      ]
+    },
+    "I_hnf_R6_tau1": {
+      "channels": [
+        {
+          "domain": "hnf",
+          "radius": 6,
+          "tau": 1
+        }
+      ]
+    },
+    "I_rect_R4_exact": {
+      "channels": [
+        {
+          "domain": "rectangular",
+          "radius": 4,
+          "tau": 0
+        }
+      ]
+    }
+  },
+  "passed": true,
+  "smallest_common_instrument": "I_common_exact_and_noisy",
+  "test_matrix": {
+    "I_common_exact_and_noisy": {
+      "C_hnf_noisy": true,
+      "C_rect_exact": true
+    },
+    "I_hnf_R5_exact": {
+      "C_hnf_noisy": false,
+      "C_rect_exact": true
+    },
+    "I_hnf_R6_tau1": {
+      "C_hnf_noisy": true,
+      "C_rect_exact": false
+    },
+    "I_rect_R4_exact": {
+      "C_hnf_noisy": false,
+      "C_rect_exact": true
+    }
+  },
+  "work_package": "WP181"
+}

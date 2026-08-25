@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "coupled_source_admits_skew_hostile": true,
+    "coupled_source_requires_hnf_exact_radius_five": true,
+    "coupled_source_requires_hnf_tau1_radius_six": true,
+    "different_port_laws": true,
+    "different_quotient_domains": true,
+    "independent_source_excludes_skew_hostile": true,
+    "low_energy_readout_cannot_choose_port_law": true,
+    "port_law_is_source_discriminator": true,
+    "rectangular_radius_valid_only_for_independent_source": true,
+    "same_measured10_packet": true,
+    "same_order_cap_control": true,
+    "same_physical16_packet": true
+  },
+  "claim": "Independent-port and coupled-port sources can share the same low-energy flavor packet and order cap while requiring different recurrence-growth quotient domains and radii.",
+  "classification": "rival source falsifier for quotient-domain law.",
+  "passed": true,
+  "skew_hostile": {
+    "hnf": {
+      "a": 10,
+      "b": 4,
+      "d": 6
+    },
+    "index": 60
+  },
+  "smallest_falsifier": "Using rectangular radius four on S_coupled_ports misses the WP175 skew HNF hostile.",
+  "sources": {
+    "S_coupled_ports": {
+      "exact_radius": 5,
+      "low_energy": {
+        "measured10_id": "M_fit_common",
+        "physical16_id": "P_fit_common"
+      },
+      "order_cap_K": 64,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    },
+    "S_independent_ports": {
+      "exact_radius": 4,
+      "low_energy": {
+        "measured10_id": "M_fit_common",
+        "physical16_id": "P_fit_common"
+      },
+      "order_cap_K": 64,
+      "port_law": "independent_axis_resets",
+      "quotient_domain": "rectangular",
+      "tau1_radius": 5
+    }
+  },
+  "work_package": "WP187"
+}

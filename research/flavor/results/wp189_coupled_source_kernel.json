@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "additional_origin_probe_required": true,
+    "distinct_coupling_origins": true,
+    "finite_fiber_not_singleton_fiber": true,
+    "hnf_discriminator_does_not_identify_coupled_origin": true,
+    "port_law_discriminator_is_not_source_identifier": true,
+    "same_exact_radius": true,
+    "same_low_energy_packet": true,
+    "same_order_cap": true,
+    "same_port_law_class": true,
+    "same_quotient_domain": true,
+    "same_recurrence_gate": true,
+    "same_tau1_radius": true
+  },
+  "claim": "HNF recurrence growth discriminates independent versus coupled port law but does not identify the coupled source origin.",
+  "classification": "coupled-source kernel: discriminator but not source identifier.",
+  "coupled_sources": {
+    "S_coupled_local_constraint": {
+      "coupling_origin": "local_constraint",
+      "exact_radius": 5,
+      "low_energy": "P_fit_common",
+      "order_cap_K": 64,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    },
+    "S_coupled_mediator_elimination": {
+      "coupling_origin": "mediator_elimination",
+      "exact_radius": 5,
+      "low_energy": "P_fit_common",
+      "order_cap_K": 64,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    }
+  },
+  "passed": true,
+  "shared_recurrence_gate": {
+    "exact_radius": 5,
+    "order_cap_K": 64,
+    "quotient_domain": "hnf",
+    "tau1_radius": 6
+  },
+  "smallest_falsifier": "local-constraint versus mediator-elimination coupled sources share the HNF recurrence gate.",
+  "work_package": "WP189"
+}

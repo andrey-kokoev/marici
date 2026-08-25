@@ -1,0 +1,69 @@
+{
+  "checks": {
+    "intervention_response_separates_origins": true,
+    "local_epsilon_intervention_illegal": true,
+    "local_gate_static": true,
+    "local_has_no_continuous_weakening": true,
+    "mediator_epsilon_half_remains_coupled": true,
+    "mediator_epsilon_one_is_coupled": true,
+    "mediator_epsilon_zero_restores_independent": true,
+    "mediator_gate_changes_at_zero": true,
+    "mediator_has_continuous_weakening": true,
+    "origin_probe_not_available_without_intervention": true,
+    "probe_requires_controlled_epsilon_instrument": true,
+    "static_recurrence_gate_remains_shared_at_epsilon_none": true
+  },
+  "claim": "A controlled weakening intervention separates local-constraint and mediator-elimination coupled origins: only the mediator origin has an epsilon->0 path restoring independent ports.",
+  "classification": "conditional origin-sensitive intervention probe.",
+  "instrument_gate": "Requires a source-authorized controlled epsilon intervention on the coupled port relation.",
+  "local_trace": [
+    {
+      "epsilon": null,
+      "exact_radius": 5,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    }
+  ],
+  "mediator_trace": [
+    {
+      "epsilon": "1",
+      "exact_radius": 5,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    },
+    {
+      "epsilon": "1/2",
+      "exact_radius": 5,
+      "port_law": "coupled_port_relations",
+      "quotient_domain": "hnf",
+      "tau1_radius": 6
+    },
+    {
+      "epsilon": "0",
+      "exact_radius": 4,
+      "port_law": "independent_axis_resets",
+      "quotient_domain": "rectangular",
+      "tau1_radius": 5
+    }
+  ],
+  "passed": true,
+  "sources": {
+    "S_coupled_local_constraint": {
+      "epsilon_values": [],
+      "has_continuous_weakening": false,
+      "origin": "local_constraint"
+    },
+    "S_coupled_mediator_elimination": {
+      "epsilon_values": [
+        "1",
+        "1/2",
+        "0"
+      ],
+      "has_continuous_weakening": true,
+      "origin": "mediator_elimination"
+    }
+  },
+  "work_package": "WP190"
+}

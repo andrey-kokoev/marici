@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "both_gates_formally_consistent": true,
+    "different_authorized_gate_tuples": true,
+    "domain_differs": true,
+    "low_energy_readout_cannot_select_constructor": true,
+    "not_a_unique_explanation_without_constructor_law": true,
+    "order_cap_same_control": true,
+    "radius_differs": true,
+    "recurrence_gate_tuple_refines_source_kernel": true,
+    "same_low_energy_packet": true,
+    "same_measured10_packet": true,
+    "same_physical16_packet": true,
+    "tau_differs": true
+  },
+  "claim": "Two rival constructors can share the same low-energy flavor packet while authorizing different recurrence-growth gate tuples.",
+  "classification": "constructor-kernel falsifier: recurrence-growth gate data are not yet uniquely entailed by the low-energy flavor packet.",
+  "constructors": {
+    "C_hnf_noisy": {
+      "gate": {
+        "count_error_tau": 1,
+        "executable_radius": 6,
+        "order_cap_K": 64,
+        "quotient_domain": "hnf"
+      },
+      "low_energy": {
+        "measured10_id": "M_fit_common",
+        "physical16_id": "P_fit_common",
+        "selector_architecture": "two_adjoint_equivalent_low_energy_packet"
+      }
+    },
+    "C_rect_exact": {
+      "gate": {
+        "count_error_tau": 0,
+        "executable_radius": 4,
+        "order_cap_K": 64,
+        "quotient_domain": "rectangular"
+      },
+      "low_energy": {
+        "measured10_id": "M_fit_common",
+        "physical16_id": "P_fit_common",
+        "selector_architecture": "two_adjoint_equivalent_low_energy_packet"
+      }
+    }
+  },
+  "differing_gate_fields": [
+    "quotient_domain",
+    "count_error_tau",
+    "executable_radius"
+  ],
+  "passed": true,
+  "smallest_falsifier": "C_rect_exact versus C_hnf_noisy: same physical16/measured10 packet, different domain/tau/radius gate.",
+  "work_package": "WP180"
+}

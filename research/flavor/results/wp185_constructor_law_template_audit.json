@@ -1,0 +1,87 @@
+{
+  "checks": {
+    "full_template_entails_all_required_fields": true,
+    "full_template_has_no_missing_fields": true,
+    "full_template_is_not_single_source_law": true,
+    "homogeneous_lattice_is_extra_shape_assumption": true,
+    "instrument_fields_are_not_source_derived": true,
+    "law_template_not_physical_establishment": true,
+    "source_only_does_not_entail_degradation": true,
+    "source_only_does_not_entail_radius": true,
+    "source_only_does_not_entail_tau": true,
+    "source_only_entails_K": true,
+    "source_only_entails_some_domain_law": true,
+    "source_only_missing_three_fields": true
+  },
+  "claim": "A finite-state-space constructor template can explain K and part of the quotient-domain law, but tau, executable radius, degradation, and quotient-shape restrictions remain independent gates.",
+  "classification": "constructor-law template audit; not a physical selector.",
+  "full_template_entailed_fields": [
+    "count_error_tau",
+    "degradation_map",
+    "executable_radius",
+    "order_cap_K",
+    "quotient_domain"
+  ],
+  "full_template_fields": [
+    "finite_state_space_dimension",
+    "abelian_two_port_closure",
+    "homogeneous_lattice_admissibility",
+    "detector_counting_contract",
+    "recurrence_actuator_budget",
+    "coarse_graining_channel"
+  ],
+  "law_fields": {
+    "abelian_two_port_closure": {
+      "entails": [
+        "quotient_domain"
+      ],
+      "status": "source_law_candidate"
+    },
+    "coarse_graining_channel": {
+      "entails": [
+        "degradation_map"
+      ],
+      "status": "instrument_assumption"
+    },
+    "detector_counting_contract": {
+      "entails": [
+        "count_error_tau"
+      ],
+      "status": "instrument_assumption"
+    },
+    "finite_state_space_dimension": {
+      "entails": [
+        "order_cap_K"
+      ],
+      "status": "source_law_candidate"
+    },
+    "homogeneous_lattice_admissibility": {
+      "entails": [
+        "quotient_domain"
+      ],
+      "status": "extra_shape_assumption"
+    },
+    "recurrence_actuator_budget": {
+      "entails": [
+        "executable_radius"
+      ],
+      "status": "instrument_assumption"
+    }
+  },
+  "next_falsifier": "Find a flavor source action that derives the instrument fields, or construct rival sources with the same K but different quotient-shape laws.",
+  "passed": true,
+  "source_only_entailed_fields": [
+    "order_cap_K",
+    "quotient_domain"
+  ],
+  "source_only_laws": [
+    "finite_state_space_dimension",
+    "abelian_two_port_closure"
+  ],
+  "source_only_missing_fields": [
+    "count_error_tau",
+    "degradation_map",
+    "executable_radius"
+  ],
+  "work_package": "WP185"
+}

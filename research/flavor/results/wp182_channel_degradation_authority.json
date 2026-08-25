@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "compression_is_conditional_not_free": true,
+    "degradation_authority_is_extra_field": true,
+    "domain_coverage_still_required": true,
+    "exact_channel_does_not_test_hnf_noisy_without_degradation": true,
+    "exact_channel_tests_hnf_noisy_with_degradation": true,
+    "exact_channel_tests_rect_exact_without_degradation": true,
+    "finer_readout_does_not_automatically_authorize_coarser_noise_model": true,
+    "noisy_channel_cannot_test_exact_commitment": true,
+    "radius_coverage_still_required": true,
+    "single_exact_channel_common_with_degradation": true,
+    "single_exact_channel_not_common_without_degradation": true,
+    "wp181_vector_common_without_degradation": true
+  },
+  "claim": "The WP181 exact+noisy vector instrument compresses to a single exact HNF radius-six channel only if an exact-to-tau=1 degradation map is independently authorized.",
+  "classification": "instrument-compression authority gate.",
+  "constructors": {
+    "C_hnf_noisy": {
+      "domain": "hnf",
+      "required_radius": 6,
+      "tau": 1
+    },
+    "C_rect_exact": {
+      "domain": "rectangular",
+      "required_radius": 4,
+      "tau": 0
+    }
+  },
+  "instrument_gate": "Declare whether exact recurrence counts may be physically degraded into the constructor's noisy tau contract.",
+  "passed": true,
+  "single_exact_channel": [
+    {
+      "domain": "hnf",
+      "radius": 6,
+      "tau": 0
+    }
+  ],
+  "work_package": "WP182",
+  "wp181_vector_channel": [
+    {
+      "domain": "hnf",
+      "radius": 6,
+      "tau": 0
+    },
+    {
+      "domain": "hnf",
+      "radius": 6,
+      "tau": 1
+    }
+  ]
+}
