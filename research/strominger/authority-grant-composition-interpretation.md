@@ -1115,6 +1115,18 @@ Thus the one-seat `{r2}` bridge is crash-safe but not Byzantine-safe for
 
 ## Artifacts
 
+Cardinality is only the singleton-fault specialization. For correlated bridge
+failures the invariant condition is
+
+\[
+(Q_v\cap Q_{v+1})\setminus F\ne\varnothing
+\quad\text{for every admitted bridge fault set }F.
+\]
+
+If both bridge replicas inherit one administrator, the induced edge
+`{r2,r3}` consumes the entire bridge despite `2>1`. Diversity is therefore a
+source-derived authority-root fact, not a replica-counting fact.
+
 - Compiler: `authority_grant_composition.py`.
 - Contract: `contracts/authority-grant-composition.v1.json`.
 - Hostile fixtures:

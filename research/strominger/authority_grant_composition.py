@@ -1230,6 +1230,16 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         )
         if audit.get("claimed_safe") != safe:
             err("incorrect_reconfiguration_fault_threshold", aid, f"bridge={len(bridge)},f={fault_bound},kind={fault_kind}")
+        fault_sets = [set(item) for item in audit.get("admissible_bridge_fault_sets", [])]
+        root_map = audit.get("bridge_authority_roots", {})
+        if set(root_map) != bridge or not audit.get("source_authorized_bridge_fault_model"):
+            err("unauthorized_reconfiguration_fault_hypergraph", aid, str(root_map))
+        root_fibers = [{r for r, root in root_map.items() if root == authority_root} for authority_root in set(root_map.values())]
+        if fault_kind == "byzantine" and any(fiber not in fault_sets for fiber in root_fibers):
+            err("reconfiguration_common_cause_omitted", aid, str([sorted(f) for f in root_fibers]))
+        hypergraph_safe = all(bool(bridge - fault) for fault in fault_sets)
+        if audit.get("claimed_safe") != hypergraph_safe:
+            err("incorrect_reconfiguration_hypergraph_safety", aid, str([sorted(f) for f in fault_sets]))
         if audit.get("old_only_may_activate_successor") or audit.get("new_only_may_self_activate") or audit.get("claims_authority_by_membership_transport"):
             err("reconfiguration_authority_laundering", aid, "one configuration cannot unilaterally cross the authority boundary")
         if audit.get("conflicting_transition_constructible"):

@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "e96e738c4926b43e3745d7a3891821668396076e95fea4a2e59d24760f81e056",
+      "replay_checker_sha256": "aee8373f918eb2a54d1a9f608e7758cb71f4fa0332165e3cfcdfb1ecd097095d",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -910,6 +910,9 @@
       "bridge_durable_non_equivocation": true,
       "fault_kind": "crash_recovery",
       "fault_bound": 1,
+      "bridge_authority_roots": {"r2": "admin_B"},
+      "admissible_bridge_fault_sets": [],
+      "source_authorized_bridge_fault_model": "crash-recovery durable non-equivocation",
       "bridge_members_may_equivocate": false,
       "claimed_safe": true,
       "conflicting_transition_constructible": false,
@@ -925,6 +928,9 @@
       "joint_consensus_required": true, "old_only_may_activate_successor": false, "new_only_may_self_activate": false,
       "bridge_witness": ["r2", "r3"], "bridge_durable_non_equivocation": true,
       "fault_kind": "byzantine", "fault_bound": 1, "bridge_members_may_equivocate": true, "claimed_safe": true,
+      "bridge_authority_roots": {"r2": "admin_B", "r3": "admin_C"},
+      "admissible_bridge_fault_sets": [["r2"], ["r3"]],
+      "source_authorized_bridge_fault_model": "one independently rooted Byzantine bridge failure",
       "conflicting_transition_constructible": false,
       "bootstrap_authority": "epoch-13 configuration certificate", "claims_authority_by_membership_transport": false
     }

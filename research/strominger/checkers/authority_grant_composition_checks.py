@@ -478,6 +478,10 @@ def main():
             and reconfiguration_audits["joint_transition_epoch_12_to_13"]["fault_kind"] == "crash_recovery"
             and len(reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["bridge_witness"])
             > reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["fault_bound"],
+        "reconfiguration_bridge_survives_every_admitted_fault_edge": all(
+            bool(set(reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["bridge_witness"]) - set(fault))
+            for fault in reconfiguration_audits["byzantine_joint_transition_epoch_13_to_14"]["admissible_bridge_fault_sets"]
+        ),
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
