@@ -139,6 +139,28 @@
       "theorem_scope":"arbitrary finite nonempty step lists satisfying the induction invariant"
     }
   ],
+  "native_reconfiguration_constructors": [
+    {
+      "id":"joint_reconfigure_e0_e1",
+      "constructor_id":"dpc.joint_reconfiguration.v1",
+      "source_authority_root":"configuration_transition_charter",
+      "input_signatures":[
+        {"role":"old_configuration","authority_kind":"configuration","epoch":{"parameter":"e","offset":0},"state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"support":["old_config_root"]},
+        {"role":"new_configuration","authority_kind":"configuration_proposal","epoch":{"parameter":"e","offset":1},"state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"quorum":["r2","r3","r4"],"support":["new_config_root"]},
+        {"role":"successor_state","authority_kind":"physical_correspondence","successor_event":"advance_e_0_to_e_1","support":["executor_attestation_root"]}
+      ],
+      "old_quorum_endorsement":["r1","r2","r3"],
+      "new_quorum_endorsement":["r2","r3","r4"],
+      "bridge_witness":["r2","r3"],
+      "bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},
+      "admissible_bridge_fault_sets":[["r2"],["r3"]],
+      "joint_consensus_required":true,
+      "old_only_may_activate_successor":false,
+      "new_only_may_self_activate":false,
+      "resource_law":"configuration authority is replaced, not duplicated",
+      "output_signature":{"authority_kind":"configuration","epoch":{"parameter":"e","offset":1},"state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"support":["configuration_transition_charter","executor_attestation_root","new_config_root","old_config_root"]}
+    }
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],

@@ -161,3 +161,18 @@ transition obligations. Because the checker iterates the same invariant over
 an arbitrary input list, the proof is by finite induction rather than a
 three-epoch special case. Offset gaps, broken digest links, competing
 successors, and support deletion are rejected independently.
+
+## Native reconfiguration
+
+Configuration change is a joint constructor in the core IR, not a legacy-side
+convention. It consumes old-configuration authority, a new proposal, and a
+physically attested successor; it emits one replacement configuration while
+retaining the complete support union. Neither configuration can activate the
+successor alone.
+
+The bridge condition is typed over authority-root fault fibers. In the fixture
+the common bridge is `r2,r3`, rooted independently at `admin_B,admin_C`; loss
+of either root remains survivable, while loss of the whole bridge is rejected.
+Omitting an admitted common-cause fiber is also rejected. Thus the checker
+distinguishes a real fault-hypergraph guarantee from an overlap count or an
+empty fault model.
