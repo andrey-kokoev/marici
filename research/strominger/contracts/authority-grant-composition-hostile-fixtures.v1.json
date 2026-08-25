@@ -93,6 +93,46 @@
         {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "invertible", "value": false}
       ],
       "expected_code": "invalid_presentation_coherence_cell"
+    },
+    {
+      "id": "flat_atlas_but_noneffective_descent",
+      "description": "All overlap cells are flat, but the local grants do not reconstruct a global authority grant.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "effective", "value": false}
+      ],
+      "expected_code": "flat_but_noneffective_authority_descent"
+    },
+    {
+      "id": "effective_descent_with_hidden_ambiguity",
+      "description": "A global grant is reconstructed but a nonzero ambiguity kernel makes it nonunique.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "ambiguity_kernel_rank", "value": 1}
+      ],
+      "expected_code": "nonunique_global_authority_descent"
+    },
+    {
+      "id": "refinement_changes_reconstruction",
+      "description": "The coarse and refined presentation atlases reconstruct inequivalent global grants.",
+      "mutations": [
+        {"collection": "presentation_refinement_coherence", "id": "refine_B_atlas_by_Bprime", "field": "reconstruction_defect", "value": 1}
+      ],
+      "expected_code": "presentation_refinement_coherence_failure"
+    },
+    {
+      "id": "deletion_survival_without_source_reconstruction",
+      "description": "The process is claimed to survive deletion of Bprime without a surviving source-derived reconstruction.",
+      "mutations": [
+        {"collection": "presentation_deletion_tests", "id": "delete_redundant_Bprime", "field": "source_derived_reconstruction", "value": null}
+      ],
+      "expected_code": "unsupported_presentation_deletion_survival"
+    },
+    {
+      "id": "unauthorized_global_stabilizer",
+      "description": "A hidden automorphism preserves every local readout but is not authorized by the source grammar.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "stabilizer", "value": ["identity", "gauge_flip"]}
+      ],
+      "expected_code": "unauthorized_descent_stabilizer"
     }
   ]
 }

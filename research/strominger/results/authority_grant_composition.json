@@ -3,12 +3,17 @@
     "grothendieck_folded_theta": "authority square commutes only with the explicit moving-endpoint seam/reflection coherence cell; result remains readout authority",
     "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining"
   },
-  "contract_sha256": "14bf12610f2631dde7f6dc0c6c01a8a9319e66d2fce26f38139497661980ecb6",
+  "contract_sha256": "2e890947acd164e14ce4223058f79e5e4b39e8b5cb036dde7818f456b98a4112",
+  "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "gates": {
     "all_hostiles_rejected": true,
     "associativity_holds_on_typed_domain": true,
+    "atlas_refinement_preserves_global_reconstruction": true,
     "changing_B_requires_source_derived_natural_coherence": true,
     "composition_preserves_authority_kind": true,
+    "counterfactual_deletion_separates_presentation_from_source": true,
+    "descent_stabilizer_is_source_authorized": true,
+    "flat_descent_is_effective_and_unique": true,
     "identity_laws_declared_twice": true,
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
@@ -26,12 +31,31 @@
       "description": "A completed readout and executable observation ports are laundered into constructor authority.",
       "error_codes": [
         "authority_kind_laundering",
+        "descent_changes_process_signature",
         "false_strict_representation_invariance",
         "missing_source_derived_representation_coherence",
         "representation_change_strengthens_authority",
         "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "deletion_survival_without_source_reconstruction": {
+      "description": "The process is claimed to survive deletion of Bprime without a surviving source-derived reconstruction.",
+      "error_codes": [
+        "unsupported_presentation_deletion_survival"
+      ],
+      "expected_code": "unsupported_presentation_deletion_survival",
+      "passed": true,
+      "valid": false
+    },
+    "effective_descent_with_hidden_ambiguity": {
+      "description": "A global grant is reconstructed but a nonzero ambiguity kernel makes it nonunique.",
+      "error_codes": [
+        "nonunique_global_authority_descent"
+      ],
+      "expected_code": "nonunique_global_authority_descent",
       "passed": true,
       "valid": false
     },
@@ -58,12 +82,22 @@
       "description": "Algebraic faithfulness and physical support are laundered into observer authority.",
       "error_codes": [
         "authority_kind_laundering",
+        "descent_changes_process_signature",
         "false_strict_representation_invariance",
         "missing_source_derived_representation_coherence",
         "representation_change_strengthens_authority",
         "representation_dependent_process_signature"
       ],
       "expected_code": "authority_kind_laundering",
+      "passed": true,
+      "valid": false
+    },
+    "flat_atlas_but_noneffective_descent": {
+      "description": "All overlap cells are flat, but the local grants do not reconstruct a global authority grant.",
+      "error_codes": [
+        "flat_but_noneffective_authority_descent"
+      ],
+      "expected_code": "flat_but_noneffective_authority_descent",
       "passed": true,
       "valid": false
     },
@@ -95,6 +129,15 @@
       "passed": true,
       "valid": false
     },
+    "refinement_changes_reconstruction": {
+      "description": "The coarse and refined presentation atlases reconstruct inequivalent global grants.",
+      "error_codes": [
+        "presentation_refinement_coherence_failure"
+      ],
+      "expected_code": "presentation_refinement_coherence_failure",
+      "passed": true,
+      "valid": false
+    },
     "remove_B_without_direct_source_grant": {
       "description": "Removing B destroys the composite because no independently authorized direct A-to-C grant remains.",
       "error_codes": [
@@ -108,6 +151,7 @@
       "description": "The alternative presentation silently promotes a readout process to selector authority.",
       "error_codes": [
         "authority_kind_laundering",
+        "descent_changes_process_signature",
         "missing_source_derived_representation_coherence",
         "representation_change_strengthens_authority",
         "representation_dependent_process_signature"
@@ -129,6 +173,7 @@
       "description": "Two valid readout grants are laundered into selector authority.",
       "error_codes": [
         "authority_kind_laundering",
+        "descent_changes_process_signature",
         "false_strict_representation_invariance",
         "missing_source_derived_representation_coherence",
         "representation_change_strengthens_authority",
@@ -137,15 +182,24 @@
       "expected_code": "authority_kind_laundering",
       "passed": true,
       "valid": false
+    },
+    "unauthorized_global_stabilizer": {
+      "description": "A hidden automorphism preserves every local readout but is not authorized by the source grammar.",
+      "error_codes": [
+        "unauthorized_descent_stabilizer"
+      ],
+      "expected_code": "unauthorized_descent_stabilizer",
+      "passed": true,
+      "valid": false
     }
   },
-  "hostile_fixture_sha256": "8e17809f45a567c28f9c33d0c44d80afc493f1c901d1b065b753dcc44c00aa99",
-  "hostile_passed": 11,
-  "hostile_total": 11,
+  "hostile_fixture_sha256": "242ee33cdf0467c43890578ab9be140054c63d0b1761609594dbde0a84331361",
+  "hostile_passed": 16,
+  "hostile_total": 16,
   "passed": true,
-  "passed_gates": 15,
+  "passed_gates": 19,
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "schema": "marici.authority-grant-composition-checks.v1",
-  "total_gates": 15,
+  "total_gates": 19,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

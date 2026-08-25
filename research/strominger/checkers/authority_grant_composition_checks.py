@@ -59,6 +59,9 @@ def main():
     representation_tests = {item["id"]: item for item in packet["representation_change_tests"]}
     presentation_cells = {item["id"]: item for item in packet["presentation_coherence_cells"]}
     presentation_atlases = {item["id"]: item for item in packet["presentation_atlas_coherence"]}
+    descent_objects = {item["id"]: item for item in packet["authority_descent_objects"]}
+    refinements = {item["id"]: item for item in packet["presentation_refinement_coherence"]}
+    deletions = {item["id"]: item for item in packet["presentation_deletion_tests"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -98,6 +101,23 @@ def main():
         "presentation_atlas_has_zero_holonomy":
             presentation_atlases["atlas_B_Bprime_Bdoubleprime"]["holonomy_defect"] == 0
             and len(presentation_atlases["atlas_B_Bprime_Bdoubleprime"]["paths"]) == 2,
+        "flat_descent_is_effective_and_unique":
+            descent_objects["descent_process_AC"]["effective"]
+            and descent_objects["descent_process_AC"]["reconstruction_defect"] == 0
+            and descent_objects["descent_process_AC"]["ambiguity_kernel_rank"] == 0,
+        "descent_stabilizer_is_source_authorized":
+            set(descent_objects["descent_process_AC"]["stabilizer"]).issubset(
+                descent_objects["descent_process_AC"]["source_authorized_stabilizer"]
+            ),
+        "atlas_refinement_preserves_global_reconstruction":
+            refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
+            and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
+            == refinements["refine_B_atlas_by_Bprime"]["authority_kind_after"],
+        "counterfactual_deletion_separates_presentation_from_source":
+            deletions["delete_redundant_Bprime"]["expected_process_survives"]
+            and bool(deletions["delete_redundant_Bprime"]["source_derived_reconstruction"])
+            and not deletions["delete_source_gluing_mechanism"]["expected_process_survives"]
+            and deletions["delete_source_gluing_mechanism"]["surviving_global_grant"] is None,
         "missing_alternative_executor_is_presentation_only":
             representation_tests["kitaev_remove_logical_presentation"]["verdict"] == "presentation_only"
             and representation_tests["kitaev_remove_logical_presentation"].get("alternative_composition") is None
@@ -121,6 +141,7 @@ def main():
             "kitaev_logical_to_five_rail": "no composable authority map; conditional logical synthesis and rail-support evidence do not supply native coupler authority or encoded intertwining",
         },
         "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
+        "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
