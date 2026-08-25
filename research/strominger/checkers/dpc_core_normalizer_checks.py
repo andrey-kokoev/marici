@@ -25,6 +25,14 @@ defaulting = deepcopy(contract)
 defaulting["legacy_projection_audit"]["permit_defaulting"] = True
 defaulting_rejected = not compile_contract(defaulting, legacy)["passed"]
 result["hostile_legacy_defaulting_rejected"] = defaulting_rejected
+native_deletions = {}
+for field in ("nominal_identity", "scope", "modality", "resource", "physical_support_roots", "epoch"):
+    candidate = deepcopy(contract)
+    del candidate["native_capabilities"][0][field]
+    candidate_result = compile_contract(candidate, legacy)
+    audit = candidate_result["native_capabilities"][0]
+    native_deletions[field] = not candidate_result["passed"] and field in audit["missing_core_fields"]
+result["native_constructor_deletions"] = native_deletions
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -39,4 +47,6 @@ print(f"SUMMARY {passed}/{total}")
 print(("PASS" if missing_coverage_rejected else "FAIL") + " hostile missing_overlap_coverage")
 print(("PASS" if defaulting_rejected else "FAIL") + " hostile legacy_defaulting")
 print(f"LEGACY {result['legacy_projection']['importable_count']}/{result['legacy_projection']['grant_count']} core-importable")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected else 1)
+for field, rejected in native_deletions.items():
+    print(("PASS" if rejected else "FAIL") + " delete native." + field)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) else 1)

@@ -6,6 +6,21 @@
     "permit_defaulting": false,
     "required_core_fields": ["nominal_identity", "scope", "modality", "resource", "physical_support_roots", "epoch"]
   },
+  "native_capabilities": [
+    {
+      "id": "native_manifest_challenge_use",
+      "nominal_identity": "cap:manifest-challenge:epoch12:use1",
+      "authority_kind": "executor",
+      "scope": ["submit_manifest_challenge"],
+      "modality": "linear",
+      "resource": {"challenge_uses": 1},
+      "physical_support_roots": ["challenge_ledger", "configuration_quorum"],
+      "epoch": 12,
+      "executable_output": "challenge_receipt",
+      "operations": [{"kind":"epoch_fence","minimum_epoch":12}],
+      "source_constructor_evidence": "one source-issued challenge use bound to epoch 12 and the configuration quorum"
+    }
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
