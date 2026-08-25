@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "0d625006e24b874488c26f3b0992d50577afbf4f629efbc30d782340fd000026",
+      "replay_checker_sha256": "a2e958310a1314f0d2934cd9135ec4d1071c89bdf8e1f076e08c26608a89fb0c",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -808,6 +808,28 @@
       "repair_status": "revalidated",
       "bounded_tested_constructor_grammar": "declared administrator and build-pipeline interventions",
       "claims_universal_independence": false
+    }
+  ],
+  "probe_grammar_authority_audits": [
+    {
+      "id": "common_cause_probe_grammar_v2",
+      "discovery_audit": "discover_shared_build_pipeline_edge",
+      "authority_root": "declared deployment provenance and administrator ownership graph",
+      "grammar_version": 2,
+      "predecessor_version": 1,
+      "constructor_classes": ["administrator_credential", "build_pipeline"],
+      "authorized_probes": {
+        "administrator_credential": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential"],
+        "build_pipeline": ["shared_build_pipeline"]
+      },
+      "coverage_claim": "complete only for the two declared constructor classes",
+      "coverage_kind": "relative_exhaustion",
+      "new_constructor_classes": ["build_pipeline"],
+      "predecessor_negative_certificate_expired": true,
+      "discovered_faults_preserved_under_refinement": [["r1", "r2"]],
+      "replay_required_after_refinement": true,
+      "replay_status": "passed",
+      "claims_constructor_universality": false
     }
   ],
   "application_cases": [

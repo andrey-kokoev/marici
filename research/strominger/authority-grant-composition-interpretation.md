@@ -1017,6 +1017,29 @@ smallest proposed addition is:
 
 No ordering that automatically promotes authority kinds should be added.
 
+## Authority of the probe grammar
+
+Deutsch's next objection applies one level above the intervention matrix: who
+authorized the list of interventions? A probe family is exhaustive only
+relative to an enumerated, source-derived constructor grammar. Here deployment
+provenance and administrator ownership authorize two classes: administrator
+credentials and the shared build pipeline. They do not authorize a claim about
+every possible physical common cause.
+
+Grammar refinement is asymmetric. Positive discoveries are monotone: the
+learned edge `{r1,r2}` must survive every later refinement. Negative authority
+is anti-monotone: adding `build_pipeline` expires the predecessor claim that no
+further common cause was found, and the enlarged grammar must be replayed.
+Thus a finite negative certificate has the typed form
+
+\[
+\text{no unmodelled edge detected relative to }(G_v,P_v),
+\]
+
+not an unqualified independence theorem. The smallest missing constructor is
+a versioned, authority-rooted probe grammar with a replay transition; a bare
+list of successful tests cannot carry exhaustion authority.
+
 ## Artifacts
 
 - Compiler: `authority_grant_composition.py`.

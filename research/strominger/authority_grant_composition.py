@@ -1096,6 +1096,36 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if discovery.get("claims_universal_independence") or not discovery.get("bounded_tested_constructor_grammar"):
             err("closed_world_common_cause_claim", did, str(discovery.get("bounded_tested_constructor_grammar")))
 
+    # Probe coverage is authority-bearing and relative to enumerated source
+    # constructors. Refinement preserves discoveries but expires negative
+    # certificates until the enlarged grammar is replayed.
+    discoveries = {item["id"]: item for item in packet.get("common_cause_discovery_audits", [])}
+    for grammar in packet.get("probe_grammar_authority_audits", []):
+        gid = grammar["id"]
+        discovery = discoveries.get(grammar.get("discovery_audit"))
+        classes = grammar.get("constructor_classes", [])
+        authorized = grammar.get("authorized_probes", {})
+        if discovery is None or not grammar.get("authority_root"):
+            err("probe_grammar_lacks_source_authority", gid, str(grammar.get("authority_root")))
+            continue
+        if set(authorized) != set(classes) or any(not authorized.get(kind) for kind in classes):
+            err("probe_grammar_constructor_coverage_gap", gid, str(authorized))
+        declared_probes = set(discovery.get("intervention_probes", []))
+        covered_probes = {probe for probes in authorized.values() for probe in probes}
+        if covered_probes != declared_probes:
+            err("probe_grammar_probe_coverage_mismatch", gid, str(sorted(covered_probes ^ declared_probes)))
+        if grammar.get("coverage_kind") != "relative_exhaustion" or grammar.get("claims_constructor_universality"):
+            err("probe_grammar_launders_relative_coverage", gid, str(grammar.get("coverage_kind")))
+        refined = bool(grammar.get("new_constructor_classes"))
+        if refined and (not grammar.get("predecessor_negative_certificate_expired") or not grammar.get("replay_required_after_refinement")):
+            err("probe_grammar_refinement_retains_stale_negative_authority", gid, str(grammar.get("new_constructor_classes")))
+        learned = {tuple(item) for item in discovery.get("extended_fault_sets", [])}
+        preserved = {tuple(item) for item in grammar.get("discovered_faults_preserved_under_refinement", [])}
+        if not preserved or not preserved <= learned:
+            err("probe_grammar_refinement_drops_positive_discovery", gid, str(sorted(preserved)))
+        if refined and grammar.get("replay_status") != "passed":
+            err("probe_grammar_refinement_not_replayed", gid, str(grammar.get("replay_status")))
+
     return errors
 
 
@@ -1111,6 +1141,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "associativity_cell_count": len(packet.get("associativity_cells", [])),
         "application_case_count": len(packet.get("application_cases", [])),
         "representation_change_test_count": len(packet.get("representation_change_tests", [])),
+        "probe_grammar_authority_audit_count": len(packet.get("probe_grammar_authority_audits", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),
