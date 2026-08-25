@@ -189,6 +189,8 @@ def audit_native_capabilities(contract: dict[str, Any]) -> list[dict[str, Any]]:
         error = None
         normalized = None
         if not missing:
+            if len(capability.get("bound_state_sha256", "")) != 64:
+                error = "native_capability_missing_bound_state"
             node = {
                 "authority_kind": capability["authority_kind"],
                 "scope": capability["scope"],
@@ -200,10 +202,11 @@ def audit_native_capabilities(contract: dict[str, Any]) -> list[dict[str, Any]]:
                 "executable_output": capability["executable_output"],
                 "operations": capability.get("operations", []),
             }
-            try:
-                normalized = normalize(node)
-            except ValueError as exc:
-                error = str(exc)
+            if error is None:
+                try:
+                    normalized = normalize(node)
+                except ValueError as exc:
+                    error = str(exc)
         audits.append({
             "id": capability.get("id", "<missing-id>"),
             "missing_core_fields": missing,
@@ -279,6 +282,46 @@ def audit_epoch_successors(contract: dict[str, Any]) -> list[dict[str, Any]]:
     return audits
 
 
+def audit_native_execution_traces(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    capabilities = {item["id"]: item for item in contract.get("native_capabilities", [])}
+    audits = []
+    for trace in contract.get("native_execution_traces", []):
+        capability = capabilities.get(trace.get("capability_id"))
+        errors = []
+        if capability is None or trace.get("nominal_identity") != capability.get("nominal_identity"):
+            errors.append("execution_trace_identity_mismatch")
+        if capability is not None and trace.get("epoch") != capability.get("epoch"):
+            errors.append("execution_trace_epoch_mismatch")
+        issuance, consumption = trace.get("issuance", {}), trace.get("consumption", {})
+        if not issuance.get("source_authorized") or issuance.get("resource_amount") != 1:
+            errors.append("execution_trace_invalid_issuance")
+        if not consumption.get("atomic_compare_and_set") or consumption.get("prior_state") != "unspent" or consumption.get("post_state") != "spent":
+            errors.append("execution_trace_nonatomic_consumption")
+        nonce = consumption.get("nonce")
+        if not nonce or not consumption.get("nonce_durably_recorded"):
+            errors.append("execution_trace_replayable_nonce")
+        execution, receipt = trace.get("execution", {}), trace.get("receipt", {})
+        if (
+            not execution.get("executor_id")
+            or capability is None
+            or execution.get("attested_epoch") != capability.get("epoch")
+            or execution.get("attested_state_sha256") != capability.get("bound_state_sha256")
+            or not execution.get("effect_committed_atomically_with_fence")
+        ):
+            errors.append("execution_trace_unattested_effect")
+        effect_digest = execution.get("effect_sha256", "")
+        if len(effect_digest) != 64 or receipt.get("effect_sha256") != effect_digest or receipt.get("nonce") != nonce or not receipt.get("receiver_signature_verified"):
+            errors.append("execution_trace_receipt_mismatch")
+        history = trace.get("history", {})
+        kinds = [item.get("kind") for item in history.get("entries", [])]
+        if not history.get("append_only") or kinds != ["issued", "consumed", "effect_committed", "receipt_recorded"]:
+            errors.append("execution_trace_history_not_append_only")
+        if not history.get("execution_fact_retained") or history.get("compensation_erases_history"):
+            errors.append("execution_trace_erases_irreversible_history")
+        audits.append({"id": trace["id"], "passed": not errors, "errors": errors})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -305,10 +348,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     legacy_audits = audit_legacy_grants(legacy) if legacy is not None else []
     native_audits = audit_native_capabilities(contract)
     successor_audits = audit_epoch_successors(contract)
+    execution_audits = audit_native_execution_traces(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -323,4 +367,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         },
         "native_capabilities": native_audits,
         "epoch_successor_events": successor_audits,
+        "native_execution_traces": execution_audits,
     }

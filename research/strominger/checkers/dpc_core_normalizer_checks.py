@@ -73,6 +73,21 @@ for field, value in (
     errors = candidate_result["epoch_successor_events"][0]["errors"]
     tcb_hostiles[field] = not candidate_result["passed"] and "epoch_successor_attestation_tcb_unbounded" in errors
 result["attestation_tcb_hostiles"] = tcb_hostiles
+execution_hostiles = {}
+execution_mutations = (
+    ("nonatomic_consumption", ("consumption", "atomic_compare_and_set"), False, "execution_trace_nonatomic_consumption"),
+    ("replayable_nonce", ("consumption", "nonce_durably_recorded"), False, "execution_trace_replayable_nonce"),
+    ("effect_outside_fence", ("execution", "effect_committed_atomically_with_fence"), False, "execution_trace_unattested_effect"),
+    ("receipt_digest_mismatch", ("receipt", "effect_sha256"), "0" * 64, "execution_trace_receipt_mismatch"),
+    ("history_erasure", ("history", "execution_fact_retained"), False, "execution_trace_erases_irreversible_history"),
+)
+for name, path, value, expected in execution_mutations:
+    candidate = deepcopy(contract)
+    candidate["native_execution_traces"][0][path[0]][path[1]] = value
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["native_execution_traces"][0]["errors"]
+    execution_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["native_execution_hostiles"] = execution_hostiles
 out = S / "results" / "dpc_core_normalizer.json"
 out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="ascii")
 for item in result["critical_pairs"]:
@@ -96,4 +111,6 @@ for field, rejected in attestation_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " attestation hostile." + field)
 for field, rejected in tcb_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " attestation_tcb hostile." + field)
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) else 1)
+for name, rejected in execution_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " execution hostile." + name)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) else 1)
