@@ -68,6 +68,7 @@ def main():
     provenance_nodes = {item["id"]: item for item in packet["source_provenance"]["nodes"]}
     provenance_edges = packet["source_provenance"]["edges"]
     interventions = {item["id"]: item for item in packet["source_intervention_tests"]}
+    mechanism_audits = {item["id"]: item for item in packet["mechanism_identification_audits"]}
 
     left_result = grants[compositions["c_AC_CD"]["result"]]
     right_result = grants[compositions["c_AB_BD"]["result"]]
@@ -142,6 +143,18 @@ def main():
         "source_deletion_revokes_authority_not_cached_output":
             interventions["delete_source_constructor"]["cached_output_may_survive"]
             and not interventions["delete_source_constructor"]["authority_survives"],
+        "finite_interventions_identify_declared_mechanisms":
+            mechanism_audits["finite_three_mechanism_identification"]["observation_matrix"]
+            == [[1, 0, 1], [0, 1, 1], [1, 1, 0]]
+            and mechanism_audits["finite_three_mechanism_identification"]["source_authorized_gauge_dimension"] == 0,
+        "mechanism_identification_is_explicitly_bounded": all(
+            audit["bounded_claim_scope"] and audit["no_universal_extrapolation"]
+            for audit in packet["mechanism_identification_audits"]
+        ),
+        "stacky_mechanism_kernel_equals_authorized_gauge":
+            mechanism_audits["finite_stacky_mechanism_identification"]["source_authorized_gauge_dimension"] == 1
+            and len(mechanism_audits["finite_stacky_mechanism_identification"]["candidate_mechanisms"]) == 3
+            and len(mechanism_audits["finite_stacky_mechanism_identification"]["intervention_ports"]) == 2,
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -177,6 +190,7 @@ def main():
         "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
         "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
         "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
+        "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

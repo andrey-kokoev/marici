@@ -91,6 +91,28 @@
       "authority_survives": false
     }
   ],
+  "mechanism_identification_audits": [
+    {
+      "id": "finite_three_mechanism_identification",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3"],
+      "observation_matrix": [[1, 0, 1], [0, 1, 1], [1, 1, 0]],
+      "source_authorized_gauge_dimension": 0,
+      "source_derived_ports": "ports fixed by constructor grammar before observing the target",
+      "bounded_claim_scope": "the declared finite family of three candidate mechanisms and three exact probes",
+      "no_universal_extrapolation": true
+    },
+    {
+      "id": "finite_stacky_mechanism_identification",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "gauge_copy"],
+      "intervention_ports": ["source_probe_1", "source_probe_2"],
+      "observation_matrix": [[1, 0, 1], [0, 1, 1]],
+      "source_authorized_gauge_dimension": 1,
+      "source_derived_ports": "two source-fixed probes identify the quotient mechanism class",
+      "bounded_claim_scope": "the declared finite candidate family modulo its one-dimensional source gauge",
+      "no_universal_extrapolation": true
+    }
+  ],
   "presentation_coherence_cells": [
     {"id": "cell_B_Bprime", "source_presentation": "B", "target_presentation": "Bprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "independent source encode/decode equivalence"},
     {"id": "cell_Bprime_Bdoubleprime", "source_presentation": "Bprime", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "second independent source presentation equivalence"},

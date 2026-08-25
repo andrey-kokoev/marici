@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from fractions import Fraction
 from typing import Any
 
 
@@ -51,6 +52,32 @@ def _process_signature(grant: dict[str, Any]) -> tuple[Any, ...]:
         grant.get("authority_kind"),
         grant.get("variance"),
     )
+
+
+def _exact_rank(matrix: list[list[int]]) -> int:
+    """Exact Gaussian-elimination rank over Q for bounded audit matrices."""
+    if not matrix:
+        return 0
+    width = len(matrix[0])
+    if width == 0 or any(len(row) != width for row in matrix):
+        return -1
+    rows = [[Fraction(value) for value in row] for row in matrix]
+    rank = 0
+    for column in range(width):
+        pivot = next((index for index in range(rank, len(rows)) if rows[index][column]), None)
+        if pivot is None:
+            continue
+        rows[rank], rows[pivot] = rows[pivot], rows[rank]
+        scale = rows[rank][column]
+        rows[rank] = [value / scale for value in rows[rank]]
+        for index in range(len(rows)):
+            if index != rank and rows[index][column]:
+                factor = rows[index][column]
+                rows[index] = [value - factor * pivot_value for value, pivot_value in zip(rows[index], rows[rank])]
+        rank += 1
+        if rank == len(rows):
+            break
+    return rank
 
 
 def validate(packet: dict[str, Any]) -> list[Error]:
@@ -280,6 +307,27 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         else:
             err("unknown_source_intervention_kind", iid, str(kind))
 
+    # Interventions explain only relative to the alternatives they separate.
+    # Exact rank computes the unresolved mechanism kernel; only a declared,
+    # source-authorized gauge quotient may absorb that nullity.
+    for audit in packet.get("mechanism_identification_audits", []):
+        aid = audit["id"]
+        candidates = audit.get("candidate_mechanisms", [])
+        ports = audit.get("intervention_ports", [])
+        matrix = audit.get("observation_matrix", [])
+        rank = _exact_rank(matrix)
+        if rank < 0 or len(matrix) != len(ports) or (matrix and len(matrix[0]) != len(candidates)):
+            err("invalid_mechanism_observation_matrix", aid, f"{len(matrix)}x{len(matrix[0]) if matrix else 0}")
+            continue
+        nullity = len(candidates) - rank
+        gauge_dimension = audit.get("source_authorized_gauge_dimension", 0)
+        if nullity != gauge_dimension:
+            err("intervention_family_not_jointly_faithful", aid, f"nullity={nullity}, authorized_gauge={gauge_dimension}")
+        if not audit.get("source_derived_ports"):
+            err("target_fitted_intervention_family", aid, "ports lack independent source derivation")
+        if not audit.get("bounded_claim_scope") or not audit.get("no_universal_extrapolation"):
+            err("unbounded_explanatory_extrapolation", aid, str(audit.get("bounded_claim_scope")))
+
     for atlas in packet.get("presentation_atlas_coherence", []):
         aid = atlas["id"]
         path_signatures = []
@@ -415,5 +463,6 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "presentation_deletion_test_count": len(packet.get("presentation_deletion_tests", [])),
         "source_provenance_node_count": len(packet.get("source_provenance", {}).get("nodes", [])),
         "source_intervention_test_count": len(packet.get("source_intervention_tests", [])),
+        "mechanism_identification_audit_count": len(packet.get("mechanism_identification_audits", [])),
         "schema": "marici.authority-grant-composition-result.v1",
     }

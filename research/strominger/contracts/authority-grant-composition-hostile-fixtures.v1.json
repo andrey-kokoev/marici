@@ -189,6 +189,31 @@
         {"collection": "source_intervention_tests", "id": "delete_source_constructor", "field": "authority_survives", "value": true}
       ],
       "expected_code": "authority_survives_deleted_constructor"
+    },
+    {
+      "id": "interventions_leave_rival_mechanism_kernel",
+      "description": "Two valid probes leave one inequivalent candidate mechanism unresolved.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "intervention_ports", "value": ["source_probe_1", "source_probe_2"]},
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "observation_matrix", "value": [[1, 0, 1], [0, 1, 1]]}
+      ],
+      "expected_code": "intervention_family_not_jointly_faithful"
+    },
+    {
+      "id": "target_fitted_discriminator_ports",
+      "description": "The intervention ports separate candidates only because they were chosen after seeing the desired mechanism.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "source_derived_ports", "value": null}
+      ],
+      "expected_code": "target_fitted_intervention_family"
+    },
+    {
+      "id": "finite_audit_claims_universal_explanation",
+      "description": "A full-rank finite candidate audit is silently extrapolated to all possible mechanisms.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "no_universal_extrapolation", "value": false}
+      ],
+      "expected_code": "unbounded_explanatory_extrapolation"
     }
   ]
 }
