@@ -67,3 +67,10 @@ signers. Its admitted singleton fault sets leave at least one signer witness,
 and shared administration fails the fault-model audit. Physical correspondence
 is likewise exact: an executor attestation binds the measured state digest to
 the certified successor digest and must be verified before accepting `e+1`.
+
+The attestation now binds the transition nonce and symbolic successor epoch,
+uses a monotone boot counter above the accepted floor, and is verified by an
+authority root independent of both configuration signers. Replayed nonces,
+rolled-back counters, and correlated verifier governance are independently
+rejected. Absence of the attestation is a typed error rather than a checker
+exception.
