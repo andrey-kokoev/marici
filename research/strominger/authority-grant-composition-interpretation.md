@@ -136,6 +136,12 @@ The machine-readable fixture suite rejects:
 69. non-atomic validation and execution;
 70. reuse of a consumed capability nonce;
 71. a lease promoting the underlying authority kind.
+72. symmetric partitioned sites claiming exactly-one success;
+73. delayed messages claimed to undo completed duplicate execution;
+74. duplicated local nonce logs mislabeled as global linear state;
+75. an atomic linearizer lacking source authority over consumption;
+76. site partitioning performed only after unrestricted distribution;
+77. bounded multiplicity mislabeled as single use.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -638,6 +644,47 @@ This is a concurrency result as much as an epistemic one. Validation and use
 must be linearized against revocation. Otherwise a perfectly valid historical
 proof term becomes a race condition that can execute after its authority has
 ceased.
+
+### Distributed-consumption theorem: linearity does not descend locally
+
+Give sites (A) and (B) identical valid capability views, identical nonce
+state, the same deterministic local rule, and no communication before either
+may commit. Swapping the site labels preserves both local histories. Their
+decisions must therefore agree.
+
+For a Boolean execute/reject decision, the complete symmetric outcome set is
+
+\[
+\{(0,0),(1,1)\}.
+\]
+
+Neither outcome has exactly one success. Local leases and nonce logs prevent
+some local replays, but duplicated local state cannot instantiate a global
+linear resource. Messages delivered after both commits can report the defect;
+they cannot undo an execution.
+
+There are exactly three typed repairs in the present grammar:
+
+1. Add a source-authorized shared linearizer. A two-state atomic test-and-set
+   grants one success and one rejection while preserving single use.
+2. Partition before distribution into a site-scoped linear token. This avoids
+   consensus by restricting the eligible locus in advance.
+3. Permit both executions and change the resource type to bounded
+   multiplicity two.
+
+Thus:
+
+\[
+\boxed{
+\text{linear capability consumption does not descend across disconnected
+authority loci without shared ordering or prior resource partition}.}
+\]
+
+The smallest repair preserving both sites as eligible and preserving true
+single use is one source-authorized two-state linearization resource. Its
+atomicity supplies order; its authority grant supplies legitimacy. Consensus
+without authority merely chooses a winner, while authority without consensus
+cannot make the choice globally unique.
 
 ### Refinement law: higher coherence
 

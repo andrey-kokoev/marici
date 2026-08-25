@@ -575,6 +575,54 @@
         {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "authority_kind_after", "value": "selector"}
       ],
       "expected_code": "capability_lease_authority_laundering"
+    },
+    {
+      "id": "partitioned_sites_claim_exactly_one",
+      "description": "Two symmetric sites with no pre-execution communication each claim their local rule guarantees exactly one global success.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "local_protocol_guarantees_exactly_one", "value": true}
+      ],
+      "expected_code": "false_distributed_single_use_guarantee"
+    },
+    {
+      "id": "delayed_messages_retroactively_restore_linearity",
+      "description": "Coherence messages arriving after both commits are claimed to undo one completed execution.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "delayed_coherence_messages_restore_safety", "value": true}
+      ],
+      "expected_code": "post_execution_coherence_cannot_restore_linearity"
+    },
+    {
+      "id": "local_nonce_logs_called_global",
+      "description": "Two duplicated local nonce stores are treated as one globally linear consumption record.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "local_nonce_logs_are_global", "value": true}
+      ],
+      "expected_code": "local_nonce_state_misclassified_as_global_linearity"
+    },
+    {
+      "id": "linearizer_has_no_source_authority",
+      "description": "An atomic register orders executions but has no grant to decide this capability's consumption.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"unowned register","source_authorized":false,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"site token","partitioned_before_distribution":true,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":false}]}
+      ],
+      "expected_code": "missing_shared_linearization_authority"
+    },
+    {
+      "id": "site_partition_occurs_after_distribution",
+      "description": "Both sites first receive the unrestricted token and site scope is assigned only after they may execute.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"atomic register","source_authorized":true,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"late site token","partitioned_before_distribution":false,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":false}]}
+      ],
+      "expected_code": "late_or_non_linear_site_partition"
+    },
+    {
+      "id": "bounded_multiplicity_called_single_use",
+      "description": "Allowing both sites to execute is presented as preserving the original linear resource type.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"atomic register","source_authorized":true,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"site token","partitioned_before_distribution":true,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":true}]}
+      ],
+      "expected_code": "bounded_multiplicity_mislabeled_single_use"
     }
   ]
 }

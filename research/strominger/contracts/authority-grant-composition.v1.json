@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "52997a42c89a9472770e96e9e85aeecfd6e898f0a8de1f3951befd897c6ef869",
+      "replay_checker_sha256": "057e8f2b475079f39daa2404c3d9f15fa146af296e79852f82003339e2357ed2",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -598,6 +598,53 @@
       "nonce": "delta-challenge-epoch-0-use-1",
       "nonce_consumed": true,
       "second_use_permitted": false
+    }
+  ],
+  "distributed_capability_consumption_audits": [
+    {
+      "id": "two_site_partitioned_single_use_no_go",
+      "certificate_id": "current_delta_challenge_standing_certificate",
+      "sites": ["site_A", "site_B"],
+      "identical_initial_local_views": true,
+      "same_deterministic_local_rule": true,
+      "communication_before_execution": false,
+      "symmetric_deterministic_outcomes": [[0, 0], [1, 1]],
+      "requested_invariant": "exactly_one_success",
+      "local_protocol_guarantees_exactly_one": false,
+      "delayed_coherence_messages_restore_safety": false,
+      "local_nonce_logs_are_global": false,
+      "indistinguishability_witness": "before communication, swapping site labels preserves each local history and therefore preserves equal decisions",
+      "repairs": [
+        {
+          "kind": "shared_linearization",
+          "resource": "one source-authorized atomic test-and-set register",
+          "source_authorized": true,
+          "atomic_compare_and_set": true,
+          "state_cardinality": 2,
+          "global_outcome": [1, 0],
+          "preserves_single_use": true,
+          "capability_kind_before": "challenge_standing",
+          "capability_kind_after": "challenge_standing"
+        },
+        {
+          "kind": "site_partition",
+          "resource": "one site-A-scoped linear token",
+          "partitioned_before_distribution": true,
+          "site_token_count": 1,
+          "authorized_site": "site_A",
+          "unauthorized_site_outcome": 0,
+          "semantic_change": "eligible_locus_restricted"
+        },
+        {
+          "kind": "bounded_multiplicity",
+          "resource": "two-use distributed counter capability",
+          "resource_kind_after": "bounded_multiplicity",
+          "bound": 2,
+          "allowed_global_outcome": [1, 1],
+          "still_claims_single_use": false
+        }
+      ],
+      "minimal_single_use_repair": "shared_linearization"
     }
   ],
   "application_cases": [
