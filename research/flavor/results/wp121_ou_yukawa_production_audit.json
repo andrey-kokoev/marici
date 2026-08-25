@@ -1,0 +1,79 @@
+{
+  "schema": "marici.flavor.ou-yukawa-production-audit.v1",
+  "candidate": {
+    "id": "C_OU_GAUSS",
+    "SDE": "dX=-kappa X dt+sqrt(2D)dW on 36 real Yukawa coordinates",
+    "kappa": "2",
+    "D": "1",
+    "beta": "1",
+    "stationary_measure": "(beta/pi)^18 exp[-beta(||Yu||_F^2+||Yd||_F^2)] d^36Y"
+  },
+  "exact_dynamics": {
+    "initial_variance": "3",
+    "stationary_variance": "1/2",
+    "first_decay_factor": "1/4",
+    "second_decay_factor": "1/9",
+    "composed_variance": "41/72",
+    "one_step_combined_variance": "41/72",
+    "spectral_gap": "2"
+  },
+  "descent": {
+    "drift": "full weak-basis equivariant",
+    "noise": "isotropic covariance, full weak-basis invariant",
+    "stabilizer": "source-authorized weak-basis gauge, explicitly quotiented",
+    "quotient_ambiguity_rank": 0,
+    "hostile_anisotropic_bath_rejected": true
+  },
+  "derived_conditionally": [
+    "Gaussian measure class",
+    "beta=kappa/(2D)",
+    "finite-time convergence",
+    "quotient Markov semigroup",
+    "Wishart/Haar physical16 pushforward"
+  ],
+  "unvalidated_source_data": [
+    "dynamical Yukawa substrate",
+    "microscopic bath",
+    "white-noise limit",
+    "fluctuation-dissipation inputs",
+    "UV scale",
+    "RG/matching transport"
+  ],
+  "admission": {
+    "bounded_class": true,
+    "independent_validation": false,
+    "physical_source_generation": false,
+    "normalized_quotient_measure": true,
+    "recovered_physical16_certificate": true,
+    "declared_budgets": true,
+    "descendant_closed_counterfactual": true,
+    "protected_prediction": false
+  },
+  "classification": "Gaussian_measure_dynamically_derived_conditional_on_unvalidated_OU_bath",
+  "first_failure": "independent_validation",
+  "smallest_authority_falsifier": "deleting the postulated bath destroys the production dynamics; retaining its Gaussian stationary law would be descendant leakage",
+  "next_gate": "derive an equivariant matrix Langevin generator from an admitted local quantum/thermal field theory with externally constrained drift, diffusion, and scale",
+  "gates": {
+    "beta_derived_from_drift_diffusion": true,
+    "stationary_variance_matches_gaussian": true,
+    "stationary_variance_is_fixed_point": true,
+    "finite_time_variance_moves_toward_stationarity": true,
+    "semigroup_variance_composition_exact": true,
+    "mean_contraction_declared": true,
+    "spectral_gap_is_kappa": true,
+    "drift_is_weak_basis_equivariant": true,
+    "isotropic_noise_covariance_invariant": true,
+    "anisotropic_chart_bath_fails_descent": true,
+    "authorized_stabilizers_quotiented_stackily": true,
+    "quotient_ambiguity_zero": true,
+    "Gaussian_measure_class_conditionally_derived": true,
+    "OU_bath_not_promoted_to_validated_source": true,
+    "first_failure_remains_independent_validation": true,
+    "finite_time_budget_not_replaced_by_infinite_equilibrium": true,
+    "bath_counterfactual_removes_measure_descendant": true,
+    "historical_flavor_data_not_protected": true,
+    "candidate_not_admitted": true
+  },
+  "passed": 19,
+  "total": 19
+}
