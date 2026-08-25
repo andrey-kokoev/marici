@@ -1,0 +1,51 @@
+{
+  "checker": "global_parity_helicity_harmonic_checks.py",
+  "checks": [
+    {
+      "detail": "l=2..15",
+      "gate": "PARITY.algebra",
+      "passed": true,
+      "statement": "Q is an involution with complementary E/M projectors"
+    },
+    {
+      "detail": "l=2..15",
+      "gate": "PARITY.ranks",
+      "passed": true,
+      "statement": "each parity sector has multiplicity 2l+1"
+    },
+    {
+      "detail": "l=2..15",
+      "gate": "SPECTRUM.intertwine",
+      "passed": true,
+      "statement": "every block-scalar spectral multiplier commutes with parity"
+    },
+    {
+      "detail": "l=2..19, all m",
+      "gate": "REALITY.compatible",
+      "passed": true,
+      "statement": "spin-two conjugation is involutive and parity compatible"
+    },
+    {
+      "detail": "l=2,3,4",
+      "gate": "KERNEL.split",
+      "passed": true,
+      "statement": "the smooth low kernel has 21 real modes in each parity sector"
+    },
+    {
+      "detail": "l=2..15",
+      "gate": "MATCHING.graph",
+      "passed": true,
+      "statement": "antipodal matching remains an invertible graph condition"
+    },
+    {
+      "detail": "singular-support types are disjoint",
+      "gate": "PUNCTURE.reconcile",
+      "passed": true,
+      "statement": "the smooth low-mode kernel has zero intersection with nonzero point-supported packets"
+    }
+  ],
+  "passed": 7,
+  "strength": "exact harmonic parity representation and kernel split",
+  "total": 7,
+  "verdict": "Antipodal-helicity parity splits every l block evenly and commutes with global grade-three transport. Smooth l=2,3,4 modes contribute 21 real electric and 21 real magnetic kernel directions. The composite magnetic readout forgets all electric modes plus the 21 magnetic low modes."
+}

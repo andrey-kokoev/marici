@@ -1,0 +1,45 @@
+{
+  "checker": "global_grade_three_numerical_spectral_checks.py",
+  "checks": [
+    {
+      "detail": "[2, 3, 4]",
+      "gate": "NUM.zeros",
+      "passed": true,
+      "statement": "no late spectral zero appears through l=10000"
+    },
+    {
+      "detail": "l=5..10000",
+      "gate": "NUM.positive",
+      "passed": true,
+      "statement": "every high harmonic multiplier is positive"
+    },
+    {
+      "detail": "min=0.216281058177; max=0.999999690031",
+      "gate": "NUM.elliptic_bound",
+      "passed": true,
+      "statement": "weighted multipliers stay uniformly bounded above and below"
+    },
+    {
+      "detail": "errors=[0.0030669889113982274, 3.096879494179916e-05, 3.099689792618321e-07]",
+      "gate": "NUM.asymptotic",
+      "passed": true,
+      "statement": "normalized multiplier converges monotonically to one"
+    },
+    {
+      "detail": "index 12",
+      "gate": "NUM.multiplicity",
+      "passed": true,
+      "statement": "numerical block counts reproduce kernel 21 and cokernel 9"
+    },
+    {
+      "detail": "bound=4.62361340576",
+      "gate": "NUM.pseudoinverse",
+      "passed": true,
+      "statement": "weighted pseudoinverse remains bounded at high cutoff"
+    }
+  ],
+  "passed": 6,
+  "strength": "high-cutoff numerical spectral and conditioning audit",
+  "total": 6,
+  "verdict": "Through l=10000, the only zeros are l=2,3,4; the weighted multiplier is uniformly bounded and approaches its unit principal asymptotic, numerically confirming the order-four Fredholm inverse."
+}

@@ -1,0 +1,57 @@
+{
+  "checker": "global_grade_three_spin_spectrum_checks.py",
+  "checks": [
+    {
+      "detail": "spin +2 to +4",
+      "gate": "SPECTRUM.ladder",
+      "passed": true,
+      "statement": "eth^3 followed by bareth has the claimed squared multiplier"
+    },
+    {
+      "detail": "spin -2 to -4",
+      "gate": "SPECTRUM.helicities",
+      "passed": true,
+      "statement": "both helicity branches have equal squared multiplier"
+    },
+    {
+      "detail": "l=2..30",
+      "gate": "KERNEL.low_modes",
+      "passed": true,
+      "statement": "the spin-two kernel is exactly l=2,3,4"
+    },
+    {
+      "detail": "5+7+9",
+      "gate": "KERNEL.dimension",
+      "passed": true,
+      "statement": "each helicity kernel has dimension 21"
+    },
+    {
+      "detail": "l=0 is excluded by Green normalization",
+      "gate": "SOURCE.composite",
+      "passed": true,
+      "statement": "the nonconstant scalar-source composite kills l=1..4 only"
+    },
+    {
+      "detail": "l=5..100",
+      "gate": "SPECTRUM.high",
+      "passed": true,
+      "statement": "every harmonic l>=5 is detected by the paired operator"
+    },
+    {
+      "detail": "lambda_l^2 degree 8, leading coefficient 1",
+      "gate": "SOBOLEV.order",
+      "passed": true,
+      "statement": "the spectral multiplier has differential order four"
+    },
+    {
+      "detail": "coefficientwise spectral argument for all l>=5",
+      "gate": "DISTRIBUTION.kernel",
+      "passed": true,
+      "statement": "distributional completion adds no paired singular zero modes"
+    }
+  ],
+  "passed": 8,
+  "strength": "exact global spin-harmonic multiplier and distributional kernel",
+  "total": 8,
+  "verdict": "The globally covariant grade-three map is paired spin +/-4 transport with multiplier lambda_l. Its kernel in every Sobolev and distributional completion is the smooth l=2,3,4 spin-two sector; all l>=5 modes are detected. The local p^4-q^4 expression belongs only to a later coordinate parity projection."
+}

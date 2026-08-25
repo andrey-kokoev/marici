@@ -1,0 +1,57 @@
+{
+  "checker": "functional_completion_source_categories_checks.py",
+  "checks": [
+    {
+      "detail": "N=0..20",
+      "gate": "LF.dimension",
+      "passed": true,
+      "statement": "bounded point-jet stages have triangular dimension"
+    },
+    {
+      "detail": "every stage adds N+2 coordinates",
+      "gate": "LF.strict",
+      "passed": true,
+      "statement": "the finite-order jet union is strict"
+    },
+    {
+      "detail": "orders k=0..20",
+      "gate": "SOBOLEV.point",
+      "passed": true,
+      "statement": "point jets obey s>k+1 in two dimensions"
+    },
+    {
+      "detail": "logarithmic radial divergence",
+      "gate": "SOBOLEV.endpoint",
+      "passed": true,
+      "statement": "a delta fails at the H^-1 endpoint"
+    },
+    {
+      "detail": "one transverse Fourier variable",
+      "gate": "SOBOLEV.curve",
+      "passed": true,
+      "statement": "a codimension-one measure has local threshold s>1/2"
+    },
+    {
+      "detail": "weights 2^-i, N=1..20",
+      "gate": "MEASURE.accumulation",
+      "passed": true,
+      "statement": "l1 atomic weights converge in total variation"
+    },
+    {
+      "detail": "harmonic total variation diverges",
+      "gate": "MEASURE.hostile",
+      "passed": true,
+      "statement": "non-l1 accumulating atoms do not form a finite measure"
+    },
+    {
+      "detail": "xi_x xi_y (xi_x^2-xi_y^2)=0",
+      "gate": "WAVEFRONT.characteristic",
+      "passed": true,
+      "statement": "the real magnetic characteristic cone has four dyad lines"
+    }
+  ],
+  "passed": 8,
+  "strength": "functional-category threshold and hostile-completion audit",
+  "total": 8,
+  "verdict": "Finite jets form a strict LF source, Radon measures are a total-variation closure of atomic flux packets, and point derivatives require progressively more negative Sobolev order. The full distribution carrier and characteristic wavefront sectors are representable enlargements, not source-authorized completions."
+}

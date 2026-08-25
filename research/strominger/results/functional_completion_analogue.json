@@ -1,0 +1,51 @@
+{
+  "checker": "functional_completion_analogue_checks.py",
+  "checks": [
+    {
+      "detail": "independent of cutoff and Sobolev index",
+      "gate": "LOW.stable",
+      "passed": true,
+      "statement": "the magnetic functional kernel has fixed dimension 21"
+    },
+    {
+      "detail": "l=5..100",
+      "gate": "HIGH.diagonal",
+      "passed": true,
+      "statement": "all harmonic columns l>=5 are individually nonzero"
+    },
+    {
+      "detail": "harmonic cutoffs L=4..40",
+      "gate": "LOW.no_tower_growth",
+      "passed": true,
+      "statement": "increasing resolution creates no new kernel tower"
+    },
+    {
+      "detail": "monomial tests degree 0..8",
+      "gate": "E2.collision",
+      "passed": true,
+      "statement": "(1,-3,2) is a second-jet collision stencil"
+    },
+    {
+      "detail": "second delta derivative has point singular support and is detected",
+      "gate": "E2.detected",
+      "passed": true,
+      "statement": "the collision limit is not a smooth low spectral class"
+    },
+    {
+      "detail": "not the E1 Laurent vector",
+      "gate": "E1.role",
+      "passed": true,
+      "statement": "the only analogue is a finite initial spectral block"
+    },
+    {
+      "detail": "global smooth section versus puncture principal part",
+      "gate": "TOWER.source",
+      "passed": true,
+      "statement": "smooth harmonics and finite Laurent pole vectors have disjoint support type"
+    }
+  ],
+  "passed": 7,
+  "strength": "typed stable-limit comparison across all named mechanisms",
+  "total": 7,
+  "verdict": "The functional completion adds a fixed 21-dimensional smooth magnetic kernel at l=2,3,4. It is an initial spectral block, not a pole-depth tower, E1 vector, E2 circuit, or characteristic ridge. The recurring (1,-3,2) remains a detected collision second-jet stencil."
+}

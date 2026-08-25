@@ -1,0 +1,51 @@
+{
+  "checker": "local_characteristics_global_kernel_checks.py",
+  "checks": [
+    {
+      "detail": "(pq)^4=|xi|^8/4^4",
+      "gate": "PAIRED.elliptic",
+      "passed": true,
+      "statement": "the paired spin symbol determinant is positive off zero"
+    },
+    {
+      "detail": "axes and diagonals",
+      "gate": "PROJECTED.characteristic",
+      "passed": true,
+      "statement": "the scalar magnetic presentation has four characteristic lines"
+    },
+    {
+      "detail": "polynomial hostile representatives",
+      "gate": "RIDGE.solutions",
+      "passed": true,
+      "statement": "all four ridge directions solve the projected equation"
+    },
+    {
+      "detail": "P[x y (x+y)^5]=-120*x**3 - 120*x**2*y + 120*x*y**2 + 120*y**3",
+      "gate": "LOCALIZE.cutoff",
+      "passed": true,
+      "statement": "multiplying a ridge by a transverse cutoff creates a source"
+    },
+    {
+      "detail": "Lebesgue measure zero in R2",
+      "gate": "FOURIER.measure_zero",
+      "passed": true,
+      "statement": "the characteristic support is a finite union of codimension-one lines"
+    },
+    {
+      "detail": "l=2..100",
+      "gate": "GLOBAL.collapse",
+      "passed": true,
+      "statement": "global bundle gluing leaves only smooth l=2,3,4 modes"
+    },
+    {
+      "detail": "Paley-Wiener: entire Fourier transform vanishes on open complement",
+      "gate": "COMPACT.no_go",
+      "passed": true,
+      "statement": "compactly supported homogeneous projected solutions vanish"
+    }
+  ],
+  "passed": 7,
+  "strength": "microlocal localization and globalization no-go",
+  "total": 7,
+  "verdict": "The paired global operator is elliptic, whereas p^4-q^4 is a nonelliptic coordinate projection with four ridge-wave families. No nonzero projected solution is both compactly supported or L2 on the plane, and global spin/parity gluing leaves only smooth l=2,3,4 modes."
+}

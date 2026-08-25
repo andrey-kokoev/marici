@@ -1,0 +1,51 @@
+{
+  "checker": "finite_energy_bms_boundary_kernel_checks.py",
+  "checks": [
+    {
+      "detail": "f=(1+tanh u)/2",
+      "gate": "ENERGY.transition",
+      "passed": true,
+      "statement": "a low harmonic boundary transition has finite energy"
+    },
+    {
+      "detail": "f=sech^2 u",
+      "gate": "ENERGY.pulse",
+      "passed": true,
+      "statement": "a returning low harmonic pulse has finite positive energy"
+    },
+    {
+      "detail": "N=d_u C=0",
+      "gate": "ENERGY.stationary",
+      "passed": true,
+      "statement": "a time-independent shear mode has zero news energy"
+    },
+    {
+      "detail": "endpoint difference zero",
+      "gate": "ENDPOINT.return",
+      "passed": true,
+      "statement": "the pulse has zero endpoint memory despite nonzero history"
+    },
+    {
+      "detail": "l=2,3,4",
+      "gate": "PARITY.count",
+      "passed": true,
+      "statement": "weak finite-energy space admits 21 low modes per parity sector"
+    },
+    {
+      "detail": "21 independent endpoint equations",
+      "gate": "BOUNDARY.strong",
+      "passed": true,
+      "statement": "no-magnetic endpoint restriction removes the full magnetic low block"
+    },
+    {
+      "detail": "one-mode model",
+      "gate": "READOUT.typed",
+      "passed": true,
+      "statement": "time-resolved readout restores a pulse invisible to endpoint memory"
+    }
+  ],
+  "passed": 7,
+  "strength": "exact finite-energy profiles and boundary-policy separation",
+  "total": 7,
+  "verdict": "Finite news energy admits every smooth l=2,3,4 kernel mode and even returning magnetic pulses. A no-magnetic endpoint condition removes stationary endpoint records but is extra boundary authority; time-resolved news ports still detect finite-energy pulses invisible to endpoint memory."
+}

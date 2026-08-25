@@ -1,0 +1,45 @@
+{
+  "checker": "low_kernel_observability_checks.py",
+  "checks": [
+    {
+      "detail": "[[], [2], [2, 3], [2, 3, 4]]",
+      "gate": "LADDER.zeros",
+      "passed": true,
+      "statement": "successive derivative grades kill the predicted low blocks"
+    },
+    {
+      "detail": "rank-nullity on the kernel",
+      "gate": "REPAIR.minimum",
+      "passed": true,
+      "statement": "any scalar repair requires at least 21 real ports"
+    },
+    {
+      "detail": "harmonic cutoffs L=4..30",
+      "gate": "REPAIR.injective",
+      "passed": true,
+      "statement": "grade three plus the low projector is injective"
+    },
+    {
+      "detail": "l=2..9",
+      "gate": "REPAIR.parity",
+      "passed": true,
+      "statement": "the low repair commutes with antipodal parity"
+    },
+    {
+      "detail": "polynomial chart representative",
+      "gate": "CONTOUR.residue",
+      "passed": true,
+      "statement": "smooth low presentations have no puncture residue"
+    },
+    {
+      "detail": "sech^2 profile",
+      "gate": "TIME.history",
+      "passed": true,
+      "statement": "endpoint memory misses a returning pulse while time ports detect it"
+    }
+  ],
+  "passed": 6,
+  "strength": "minimal spectral repair and typed port-completeness theorem",
+  "total": 6,
+  "verdict": "The magnetic grade-three readout loses exactly 21 smooth low harmonic coefficients. Appending those 21 ports is minimal and restores stable injectivity. Local shear and time-resolved ports see the modes; puncture residues, downstream grade-three contours, and endpoint-only memory generally do not."
+}

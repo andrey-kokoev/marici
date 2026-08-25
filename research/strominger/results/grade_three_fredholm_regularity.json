@@ -1,0 +1,57 @@
+{
+  "checker": "grade_three_fredholm_regularity_checks.py",
+  "checks": [
+    {
+      "detail": "l=5..500; asymptotic ratio one",
+      "gate": "SOBOLEV.equivalence",
+      "passed": true,
+      "statement": "lambda_l is uniformly comparable to the order-four Sobolev weight"
+    },
+    {
+      "detail": "l=2..4",
+      "gate": "FREDHOLM.kernel",
+      "passed": true,
+      "statement": "one helicity kernel has dimension 21"
+    },
+    {
+      "detail": "spin-four target onset",
+      "gate": "FREDHOLM.cokernel",
+      "passed": true,
+      "statement": "one helicity cokernel is the nine-dimensional target l=4 block"
+    },
+    {
+      "detail": "21-9",
+      "gate": "FREDHOLM.index",
+      "passed": true,
+      "statement": "one helicity branch has index 12"
+    },
+    {
+      "detail": "l=5..100 plus exact factor law",
+      "gate": "FREDHOLM.inverse",
+      "passed": true,
+      "statement": "the l>=5 pseudoinverse is coefficientwise well-defined"
+    },
+    {
+      "detail": "delta, seventh point jet, curve delta",
+      "gate": "REGULARITY.thresholds",
+      "passed": true,
+      "statement": "point and curve Sobolev thresholds have the claimed codimension law"
+    },
+    {
+      "detail": "paired principal symbol elliptic; parametrix raises regularity by four",
+      "gate": "REGULARITY.kernel",
+      "passed": true,
+      "statement": "a distributional homogeneous solution is smooth"
+    },
+    {
+      "detail": "l=4..100",
+      "gate": "RANGE.solvability",
+      "passed": true,
+      "statement": "only the target l=4 block obstructs solvability"
+    }
+  ],
+  "passed": 8,
+  "strength": "Sobolev-all-orders Fredholm and microlocal regularity theorem",
+  "total": 8,
+  "verdict": "Each global helicity branch is order-four Fredholm H^s->H^(s-4), with kernel dimension 21, cokernel dimension 9, and index 12. Its distributional kernel is smooth; point, curve, and characteristic singularities cannot survive the paired homogeneous equation."
+}

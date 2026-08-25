@@ -1,0 +1,51 @@
+{
+  "checker": "hard_flux_low_kernel_constructibility_checks.py",
+  "checks": [
+    {
+      "detail": "multipliers 24,120,360",
+      "gate": "ELECTRIC.multiplier",
+      "passed": true,
+      "statement": "the displacement source map is invertible on l=2,3,4"
+    },
+    {
+      "detail": "minima=[3/4, 1/2, 11/14]",
+      "gate": "ELECTRIC.positive",
+      "passed": true,
+      "statement": "a positive background admits nonzero l=2,3,4 energy anisotropy"
+    },
+    {
+      "detail": "Laplacian multipliers -6,-12,-20",
+      "gate": "MAGNETIC.hodge",
+      "passed": true,
+      "statement": "the coexact angular-flux curl is onto l=2,3,4"
+    },
+    {
+      "detail": "5+7+9",
+      "gate": "SOURCE.dimension",
+      "passed": true,
+      "statement": "each smooth parity source channel constructs all 21 low modes"
+    },
+    {
+      "detail": "zonal representatives l=2..4 versus l=0,1",
+      "gate": "CONSERVATION.orthogonal",
+      "passed": true,
+      "statement": "low kernel harmonics do not alter l=0,1 charge moments"
+    },
+    {
+      "detail": "Gauss-Legendre n>=3 exact through degree four",
+      "gate": "CLOSURE.weak_star",
+      "passed": true,
+      "statement": "finite angular quadratures recover all low harmonic moments"
+    },
+    {
+      "detail": "singular support is invariant under distribution equality",
+      "gate": "ATOMIC.exclusion",
+      "passed": true,
+      "statement": "a nonzero finite atomic distribution cannot equal a smooth harmonic sum"
+    }
+  ],
+  "passed": 7,
+  "strength": "parity-resolved hard-source surjectivity on the global low kernel",
+  "total": 7,
+  "verdict": "Smooth positive energy flux constructs every electric l=2,3,4 kernel mode, and coexact angular-momentum flux constructs every magnetic one at the linear PSZ source level. Finite point packets contain no exact pure low mode, but weak-* atomic closure recovers all low harmonic moments."
+}

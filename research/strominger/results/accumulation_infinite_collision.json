@@ -1,0 +1,57 @@
+{
+  "checker": "accumulation_infinite_collision_checks.py",
+  "checks": [
+    {
+      "detail": "geometric weights",
+      "gate": "ATOMIC.TV",
+      "passed": true,
+      "statement": "absolutely summable accumulating atoms converge in variation"
+    },
+    {
+      "detail": "choose the countable atomic support: masses 1 versus 0",
+      "gate": "ATOMIC.NONATOMIC",
+      "passed": true,
+      "statement": "atomic probabilities cannot converge in variation to a smooth probability"
+    },
+    {
+      "detail": "Vandermonde n=2..7",
+      "gate": "WEAK.moments",
+      "passed": true,
+      "statement": "finite packets recover every fixed finite moment at sufficient resolution"
+    },
+    {
+      "detail": "test monomials degree 0..8",
+      "gate": "COLLISION.first",
+      "passed": true,
+      "statement": "first difference converges to a delta derivative functional"
+    },
+    {
+      "detail": "test monomials degree 0..8",
+      "gate": "COLLISION.stencil",
+      "passed": true,
+      "statement": "(1,-3,2) converges to three-quarters of the second derivative"
+    },
+    {
+      "detail": "first and nonuniform second stencils",
+      "gate": "COLLISION.norm",
+      "passed": true,
+      "statement": "collision-jet total variation diverges"
+    },
+    {
+      "detail": "H^-10 admits k=0..8",
+      "gate": "SOBOLEV.escape",
+      "passed": true,
+      "statement": "a fixed negative Sobolev order contains only bounded jet order"
+    },
+    {
+      "detail": "high-l amplitude N^-N, output scale N^(4-N)",
+      "gate": "KERNEL.birth",
+      "passed": true,
+      "statement": "nonkernel smooth packets can converge rapidly to a low kernel mode"
+    }
+  ],
+  "passed": 8,
+  "strength": "topology-resolved kernel-birth and collision blow-up theorem",
+  "total": 8,
+  "verdict": "Weak-* atomic closure can produce smooth l=2,3,4 kernel sources, whereas total-variation atomic closure cannot. Derivative collision jets require diverging variation norm, and infinite formal jets escape every fixed Sobolev source space."
+}
