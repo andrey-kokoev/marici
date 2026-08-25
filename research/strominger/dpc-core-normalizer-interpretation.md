@@ -81,3 +81,18 @@ anti-rollback counter storage under a bounded threat model. This is not an
 absolute noncloning theorem or a universal execution-port census. A live
 challenge interface admits newly discovered ports and hardware common causes,
 which must suspend and refine the affected claim.
+
+## End-to-end native execution
+
+The native challenge capability now has a complete trace: source-authorized
+issuance, atomic `unspent -> spent` consumption, durable nonce recording,
+effect commitment under the same epoch fence, receiver-signed receipt, and an
+append-only history retaining the execution fact. The receipt binds both the
+consumption nonce and effect digest.
+
+Execution is deliberately bound to the capability's state digest at epoch
+`e`; it does not inherit authority from the separately certified `e+1`
+successor. Moving an unconsumed capability across that boundary will require a
+future explicit lift constructor. Nonatomic consumption, replayable nonces,
+effects outside the fence, mismatched receipts, and historical erasure are
+independently rejected.

@@ -16,6 +16,7 @@
       "resource": {"challenge_uses": 1},
       "physical_support_roots": ["challenge_ledger", "configuration_quorum"],
       "epoch": {"parameter": "e", "offset": 0},
+      "bound_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
       "executable_output": "challenge_receipt",
       "operations": [{"kind":"epoch_fence","minimum_epoch":{"parameter":"e","offset":0}}],
       "source_constructor_evidence": "one source-issued challenge use bound to arbitrary active epoch e and the configuration quorum"
@@ -62,6 +63,19 @@
         },
         "verified_before_epoch_acceptance":true
       }
+    }
+  ],
+  "native_execution_traces": [
+    {
+      "id":"execute_native_manifest_challenge_once",
+      "capability_id":"native_manifest_challenge_use",
+      "nominal_identity":"cap:manifest-challenge:e:use1",
+      "epoch":{"parameter":"e","offset":0},
+      "issuance":{"source_authorized":true,"issuer_root":"challenge_issuer","resource_amount":1},
+      "consumption":{"nonce":"nonce:challenge:e:use1","atomic_compare_and_set":true,"prior_state":"unspent","post_state":"spent","nonce_durably_recorded":true},
+      "execution":{"executor_id":"manifest_executor_1","attested_epoch":{"parameter":"e","offset":0},"attested_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","effect_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","effect_committed_atomically_with_fence":true},
+      "receipt":{"nonce":"nonce:challenge:e:use1","effect_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","receiver":"manifest_challenge_ledger","receiver_signature_verified":true},
+      "history":{"append_only":true,"entries":[{"kind":"issued"},{"kind":"consumed"},{"kind":"effect_committed"},{"kind":"receipt_recorded"}],"execution_fact_retained":true,"compensation_erases_history":false}
     }
   ],
   "active_rewrite_footprints": {
