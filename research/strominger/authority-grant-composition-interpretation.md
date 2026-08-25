@@ -786,7 +786,19 @@ For (n) replicas and quorum size (q), two quorums intersect in at least
 I_{\min}=\max(0,2q-n)
 \]
 
-replicas. Under a Byzantine bound (f), uniqueness requires
+replicas. The safety predicate is indexed by fault kind:
+
+\[
+\boxed{
+\begin{aligned}
+\text{crash/recovery with durable non-equivocation:}&\quad I_{\min}\ge1,\\
+\text{Byzantine with fault bound }f:&\quad I_{\min}>f.
+\end{aligned}}
+\]
+
+The crash branch needs only a nonempty intersection because crashed or
+recovered replicas do not equivocate. Under a Byzantine bound (f), uniqueness
+requires the stronger condition
 
 \[
 I_{\min}>f,

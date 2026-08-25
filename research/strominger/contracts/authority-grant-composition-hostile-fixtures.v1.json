@@ -759,6 +759,14 @@
         {"collection": "fault_parametric_quorum_audits", "id": "byzantine_n4_q3_f1", "field": "claims_fault_model_transport_without_reproof", "value": true}
       ],
       "expected_code": "fault_model_authority_transport"
+    },
+    {
+      "id": "crash_row_uses_byzantine_threshold",
+      "description": "The crash/recovery row is incorrectly typed with the Byzantine overlap condition I_min > f.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "crash_recovery_n3_q2_f1", "field": "safety_condition", "value": "minimum_intersection>fault_bound"}
+      ],
+      "expected_code": "fault_model_safety_condition_mismatch"
     }
   ]
 }

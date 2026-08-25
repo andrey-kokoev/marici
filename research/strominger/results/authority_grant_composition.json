@@ -133,11 +133,11 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "8aadba3d6a8dab00ce1d1ad1b5c2e41f0c39eb5ee72fcb760b74efb95c70ba2a",
+  "contract_sha256": "1b6bfe1531cd9ca05b191be155749d7ce8f032d26940c7c56ad719c141023f23",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
-  "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash-recovery n=3,q=2 is safe with durable non-equivocation; Byzantine n=3,q=2,f=1 is unsafe because the sole overlap may be faulty; n=4,q=3,f=1 is safe because minimum overlap two exceeds the fault bound and therefore contains an honest non-equivocator.",
+  "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash/recovery safety with durable non-equivocation requires only a nonempty overlap I_min>=1, so n=3,q=2 is safe. Byzantine safety requires I_min>f: n=3,q=2,f=1 is unsafe, while n=4,q=3,f=1 is safe.",
   "gates": {
     "all_hostiles_rejected": true,
     "appeal_authority_is_certified_and_separate": true,
@@ -420,6 +420,15 @@
         "incorrect_fault_parametric_safety_classification"
       ],
       "expected_code": "incorrect_fault_parametric_safety_classification",
+      "passed": true,
+      "valid": false
+    },
+    "crash_row_uses_byzantine_threshold": {
+      "description": "The crash/recovery row is incorrectly typed with the Byzantine overlap condition I_min > f.",
+      "error_codes": [
+        "fault_model_safety_condition_mismatch"
+      ],
+      "expected_code": "fault_model_safety_condition_mismatch",
       "passed": true,
       "valid": false
     },
@@ -1095,9 +1104,9 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "574d9630a4272f6d302347dadd962a8a63d15489134a1147e3a8bb5559cd7ca6",
-  "hostile_passed": 94,
-  "hostile_total": 94,
+  "hostile_fixture_sha256": "2d7d660f90f937fbc14975609344d0a1e448ad021221e23207cbba53de010e4c",
+  "hostile_passed": 95,
+  "hostile_total": 95,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",

@@ -385,7 +385,9 @@ def main():
             and not constructor_networks["three_replica_majority_linearizer"]["implementation_boundary"]["claims_derived_from_quorum_math"],
         "crash_and_byzantine_thresholds_are_distinguished":
             fault_audits["crash_recovery_n3_q2_f1"]["claimed_safe"]
+            and fault_audits["crash_recovery_n3_q2_f1"]["safety_condition"] == "minimum_intersection>=1"
             and not fault_audits["byzantine_n3_q2_f1_no_go"]["claimed_safe"]
+            and fault_audits["byzantine_n3_q2_f1_no_go"]["safety_condition"] == "minimum_intersection>fault_bound"
             and fault_audits["byzantine_n4_q3_f1"]["claimed_safe"],
         "byzantine_safety_requires_honest_quorum_overlap":
             fault_audits["byzantine_n3_q2_f1_no_go"]["minimum_intersection"]
@@ -442,7 +444,7 @@ def main():
         "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
         "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
         "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
-        "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash-recovery n=3,q=2 is safe with durable non-equivocation; Byzantine n=3,q=2,f=1 is unsafe because the sole overlap may be faulty; n=4,q=3,f=1 is safe because minimum overlap two exceeds the fault bound and therefore contains an honest non-equivocator.",
+        "fault_parametric_quorum_verdict": "Quorum authority is fault-model dependent. Crash/recovery safety with durable non-equivocation requires only a nonempty overlap I_min>=1, so n=3,q=2 is safe. Byzantine safety requires I_min>f: n=3,q=2,f=1 is unsafe, while n=4,q=3,f=1 is safe.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
