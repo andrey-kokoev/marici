@@ -87,6 +87,7 @@ def main():
     hypergraph_audits = {item["id"]: item for item in packet["fault_hypergraph_quorum_audits"]}
     discovery_audits = {item["id"]: item for item in packet["common_cause_discovery_audits"]}
     probe_grammar_audits = {item["id"]: item for item in packet["probe_grammar_authority_audits"]}
+    probe_grammar_boundaries = {item["id"]: item for item in packet["probe_grammar_boundary_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -434,6 +435,14 @@ def main():
             and probe_grammar_audits["common_cause_probe_grammar_v2"]["replay_required_after_refinement"]
             and probe_grammar_audits["common_cause_probe_grammar_v2"]["replay_status"] == "passed"
             and ["r1", "r2"] in probe_grammar_audits["common_cause_probe_grammar_v2"]["discovered_faults_preserved_under_refinement"],
+        "manifest_boundary_terminates_authority_without_claiming_omniscience":
+            bool(probe_grammar_boundaries["deployment_manifest_boundary_v2"]["accountable_declarer"])
+            and not probe_grammar_boundaries["deployment_manifest_boundary_v2"]["self_certifying_root"]
+            and not probe_grammar_boundaries["deployment_manifest_boundary_v2"]["totality_authority"],
+        "open_constructor_frontier_has_live_refinement_port":
+            bool(probe_grammar_boundaries["deployment_manifest_boundary_v2"]["open_frontier"])
+            and probe_grammar_boundaries["deployment_manifest_boundary_v2"]["challenge_port_live"]
+            and not probe_grammar_boundaries["deployment_manifest_boundary_v2"]["frontier_emptiness_claimed"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

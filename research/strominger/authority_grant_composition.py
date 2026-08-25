@@ -1126,6 +1126,27 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if refined and grammar.get("replay_status") != "passed":
             err("probe_grammar_refinement_not_replayed", gid, str(grammar.get("replay_status")))
 
+    # An authority root certifies an accountable manifest boundary, not its own
+    # universal completeness. The complement is represented by a live frontier
+    # and a typed refinement port, avoiding both regress and self-certification.
+    grammars = {item["id"]: item for item in packet.get("probe_grammar_authority_audits", [])}
+    for boundary in packet.get("probe_grammar_boundary_audits", []):
+        bid = boundary["id"]
+        grammar = grammars.get(boundary.get("probe_grammar_audit"))
+        if grammar is None or not boundary.get("accountable_declarer") or not boundary.get("signed_manifest"):
+            err("probe_grammar_boundary_unaccountable", bid, str(boundary.get("accountable_declarer")))
+            continue
+        if set(boundary.get("manifest_constructor_classes", [])) != set(grammar.get("constructor_classes", [])):
+            err("probe_grammar_manifest_mismatch", bid, str(boundary.get("manifest_constructor_classes")))
+        if boundary.get("self_certifying_root") or boundary.get("totality_authority"):
+            err("probe_grammar_root_self_certifies_totality", bid, str(boundary.get("totality_authority")))
+        if boundary.get("negative_claim_scope") != "manifest_constructor_classes only":
+            err("probe_grammar_negative_scope_exceeds_manifest", bid, str(boundary.get("negative_claim_scope")))
+        if not boundary.get("open_frontier") or boundary.get("frontier_emptiness_claimed"):
+            err("probe_grammar_erases_open_frontier", bid, str(boundary.get("open_frontier")))
+        if not boundary.get("challenge_port") or not boundary.get("challenge_port_live"):
+            err("probe_grammar_boundary_has_no_refinement_port", bid, str(boundary.get("challenge_port")))
+
     return errors
 
 
@@ -1142,6 +1163,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "application_case_count": len(packet.get("application_cases", [])),
         "representation_change_test_count": len(packet.get("representation_change_tests", [])),
         "probe_grammar_authority_audit_count": len(packet.get("probe_grammar_authority_audits", [])),
+        "probe_grammar_boundary_audit_count": len(packet.get("probe_grammar_boundary_audits", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),

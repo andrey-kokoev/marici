@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "a2e958310a1314f0d2934cd9135ec4d1071c89bdf8e1f076e08c26608a89fb0c",
+      "replay_checker_sha256": "6a8a5bc50f0805a07fb5709221de983778db94fc0cf49c68ac04625a789bb7e4",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -830,6 +830,23 @@
       "replay_required_after_refinement": true,
       "replay_status": "passed",
       "claims_constructor_universality": false
+    }
+  ],
+  "probe_grammar_boundary_audits": [
+    {
+      "id": "deployment_manifest_boundary_v2",
+      "probe_grammar_audit": "common_cause_probe_grammar_v2",
+      "accountable_declarer": "deployment_owner",
+      "signed_manifest": "deployment-manifest-v2",
+      "manifest_constructor_classes": ["administrator_credential", "build_pipeline"],
+      "declaration_authority": "attests which constructors are represented in deployment-manifest-v2",
+      "totality_authority": false,
+      "self_certifying_root": false,
+      "open_frontier": ["physical_supply_chain", "firmware_substrate", "network_control_plane"],
+      "challenge_port": "admit_source_derived_constructor_refinement",
+      "challenge_port_live": true,
+      "negative_claim_scope": "manifest_constructor_classes only",
+      "frontier_emptiness_claimed": false
     }
   ],
   "application_cases": [
