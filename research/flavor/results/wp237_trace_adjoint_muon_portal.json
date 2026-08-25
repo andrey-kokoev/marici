@@ -1,0 +1,51 @@
+{
+  "benchmark": {
+    "relative_residue_A": "1/100",
+    "relative_residue_D": "1/144",
+    "theta_A": "1/10",
+    "theta_D": "1/12"
+  },
+  "candidate_admissions": {
+    "fully_identifying_trace_portal": true,
+    "trace_adjoint_higgs_portal": false,
+    "wp131_quark_higgs_portal_into_dimuon_detector": false
+  },
+  "checks": {
+    "H_dagger_H_is_sm_gauge_invariant": true,
+    "dimension_one_kappa_makes_potential_dimension_four": true,
+    "higgs_mixing_transmits_sm_muon_yukawa": true,
+    "nonzero_benchmark_residues_exist": true,
+    "only_full_candidate_is_admitted": true,
+    "portal_operator_has_dimension_three": true,
+    "trace_A_is_weak_basis_invariant": true,
+    "trace_D_is_weak_basis_invariant": true,
+    "trace_portal_closes_same_final_state": true,
+    "trace_portal_still_lacks_scale_and_residue_selection": true,
+    "wp131_final_state_mismatch_is_rejected": true,
+    "zero_kappa_is_exact_blind_source": true
+  },
+  "claim": "The renormalizable trace-adjoint Higgs portal closes the WP131-to-CMS final-state mismatch, but source-identifying P_det still requires selected absolute scale, nonzero residues, and distinct accessible poles.",
+  "classification": "source-derived same-final-state bridge; conditional P_det architecture, not yet source-identifying",
+  "induced_muon_coupling": "theta_i y_mu with theta_i approximately kappa_i v/(M_i^2-m_h^2)",
+  "missing_fields": {
+    "fully_identifying_trace_portal": [],
+    "trace_adjoint_higgs_portal": [
+      "absolute_scale_selected",
+      "distinct_accessible_poles",
+      "nonzero_residues_selected"
+    ],
+    "wp131_quark_higgs_portal_into_dimuon_detector": [
+      "absolute_scale_selected",
+      "detector_calibrated",
+      "distinct_accessible_poles",
+      "higgs_mixing_to_muons",
+      "nonzero_residues_selected",
+      "same_final_state"
+    ]
+  },
+  "passed": true,
+  "portal": "kappa_A Tr(A) H^dagger H + kappa_D Tr(D) H^dagger H",
+  "remaining_gate": "Derive nonzero kappa values and an absolute accessible mass scale from the source, then verify the calibrated multi-pole Jacobian rank under uncertainty.",
+  "smallest_exact_falsifier": "kappa_A=0 gives exactly zero A-pole residue, so its mass/source direction is detector-invisible despite a valid portal grammar.",
+  "work_package": "WP237"
+}

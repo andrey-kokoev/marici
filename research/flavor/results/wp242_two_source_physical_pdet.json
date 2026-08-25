@@ -1,0 +1,71 @@
+{
+  "work_package": "WP242",
+  "admitted_source_domain": [
+    "CMS_MSSM_MA130_tanb20",
+    "CMS_MSSM_MA150_tanb20",
+    "smooth_background"
+  ],
+  "instrument": "CMS 2016 certified DoubleMuon invariant-mass record with independently simulated and selected source responses",
+  "source_events": {
+    "MA130": {
+      "generated": 4600,
+      "accepted": 1371
+    },
+    "MA150": {
+      "generated": 4600,
+      "accepted": 1367
+    }
+  },
+  "collision_events_in_support": 82,
+  "response_rank": 3,
+  "gram": [
+    [
+      0.13234666714738103,
+      0.0008530994400853102,
+      0.016754158286887942
+    ],
+    [
+      0.0008530994400853102,
+      0.10575509592734304,
+      0.007906562636588293
+    ],
+    [
+      0.016754158286887942,
+      0.007906562636588293,
+      0.024650114915871844
+    ]
+  ],
+  "gram_determinant": 0.00030726019784875036,
+  "mc_statistical_bootstrap": {
+    "replicates": 500,
+    "seed": 242,
+    "gram_determinant_q05": 0.00029244148522612604,
+    "gram_determinant_min": 0.00026954983653621275
+  },
+  "frozen_background_slope_per_GeV": -0.04395,
+  "nonnegative_fit_yields": {
+    "MA130": 0.09874673120360074,
+    "MA150": 5.856203516411505,
+    "background": 76.04508824487769
+  },
+  "hostile_coincident_source_rank": 2,
+  "contextual_partition": "distinct MA130, MA150, and smooth-background response classes on the admitted finite domain",
+  "classification": "source-identifying physical P_det on the finite labelled MSSM mass-source domain; not a trace-adjoint or physical16 selector",
+  "smallest_falsifier": "replace the MA150 response by the MA130 response; the source columns become identical and rank falls",
+  "remaining_flavor_gate": "derive a validated trace-adjoint-to-MSSM response transport or generate trace-adjoint events with physical normalization",
+  "uncertainty_scope": "source-template Monte Carlo counting uncertainty only; detector systematics, luminosity, and theory normalization are not included",
+  "checks": {
+    "all_source_checksums_match": true,
+    "both_sources_have_4600_events": true,
+    "both_source_responses_nonempty": true,
+    "certified_collision_record_nonempty": true,
+    "response_rank_three_with_background": true,
+    "positive_gram_determinant": true,
+    "mc_statistical_bootstrap_q05_positive": true,
+    "fit_converged": true,
+    "coincident_source_hostile_rank_two": true,
+    "weak_basis_descent": true,
+    "trace_adjoint_transfer_not_claimed": true
+  },
+  "passed": true
+}

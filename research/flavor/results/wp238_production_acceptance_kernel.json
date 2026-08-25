@@ -1,0 +1,62 @@
+{
+  "acceptance_route": {
+    "bytes": 198875911585,
+    "doi": "10.7483/OPENDATA.CMS.JCLT.5OAH",
+    "events": 2000000,
+    "files": 57,
+    "record": "https://opendata.cern.ch/record/718",
+    "status": "authoritative CMS Drell-Yan AODSIM; no reduced portal-signal acceptance sample yet"
+  },
+  "checks": {
+    "cms_record_718_is_named_acceptance_route": true,
+    "distinct_residue_acceptance_pairs_have_equal_yield": true,
+    "hostile_sources_are_not_identical": true,
+    "kernel_is_multiplicative": true,
+    "known_acceptance_recovers_residue": true,
+    "same_final_state_does_not_imply_source_identification": true,
+    "wp235_detector_calibration_does_not_supply_source_production": true,
+    "wp237_lacks_production_and_acceptance_fields": true
+  },
+  "claim": "The trace-adjoint dimuon portal is not source-identifying until production and acceptance are calibrated: detector yield depends on their product with portal residue.",
+  "classification": "first nonfaithful arrow localized at source production/residue to accepted event yield",
+  "hostile_pair": {
+    "common_detected_yield": "57/40000",
+    "kernel_relation": "residue_A*acceptance_A = residue_B*acceptance_B",
+    "source_A": {
+      "acceptance": "1/2",
+      "residue": "1/100"
+    },
+    "source_B": {
+      "acceptance": "1",
+      "residue": "1/200"
+    }
+  },
+  "passed": true,
+  "pipeline": "source residue -> production x branching -> acceptance x efficiency -> calibrated detector spectrum",
+  "remaining_gate": "Generate or obtain a portal-signal Monte Carlo/control sample that independently calibrates mass-dependent production, branching, acceptance, and efficiency before fitting portal residues.",
+  "required_fields": [
+    "acceptance",
+    "branching_fraction",
+    "detector_response",
+    "integrated_luminosity",
+    "production_cross_section",
+    "reconstruction_efficiency",
+    "source_portal_residue",
+    "uncertainty_contract"
+  ],
+  "smallest_exact_falsifier": "(residue,acceptance)=(1/100,1/2) and (1/200,1) give identical detected yield.",
+  "work_package": "WP238",
+  "wp235_missing": [
+    "acceptance",
+    "branching_fraction",
+    "production_cross_section",
+    "source_portal_residue"
+  ],
+  "wp237_missing": [
+    "acceptance",
+    "branching_fraction",
+    "integrated_luminosity",
+    "production_cross_section",
+    "reconstruction_efficiency"
+  ]
+}

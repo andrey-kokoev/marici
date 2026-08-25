@@ -1,0 +1,82 @@
+{
+  "work_package": "WP247",
+  "pilot": {
+    "record": "https://opendata.cern.ch/record/19459",
+    "doi": "10.7483/OPENDATA.CMS.KU7I.0AYJ",
+    "dataset": "/SUSYGluGluToBBHToTauTau_M-140_TuneCUETP8M1_13TeV-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM",
+    "pilot_file": {
+      "path": "4C142A8C-80B8-E511-8DFD-0025905C2CD0.root",
+      "bytes": 316932303,
+      "adler32": "494b83da",
+      "events": 14688
+    },
+    "instrument": "CMS 2015 detector simulation",
+    "source": "bottom-associated scalar with tau-pair decay at nominal 140 GeV",
+    "execution_limit": "split tau kinematics are uproot-readable, but embedded pat::Tau ID payload uses unsupported memberwise vector<pair<string,float>> serialization and generic ROOT lacks CMSSW dictionaries",
+    "generic_root_hostile_probe": {
+      "root_version": "6.40.00",
+      "method": "generate only pair<string,float> and vector<pair<string,float>> dictionaries, then read patTaus_slimmedTaus__PAT.obj.tauIDs_ with TTreeReaderArray",
+      "first_nonempty_entry": 1,
+      "reported_tau_count": 1,
+      "reported_tau_id_count": 14757395258967575620,
+      "diagnostic": "impossible container length after detaching the split leaf from the missing pat::Tau streamer; values are corrupt and inadmissible"
+    },
+    "root_makeproject_probe": {
+      "requested_class": "pat::Tau",
+      "generated_classes": 299,
+      "rootcling_found_after_path_repair": true,
+      "shared_object_created": false,
+      "first_compile_obstruction": "redefinition of CaloJet as different kind of symbol: namespace CaloJet conflicts with prior class reco::CaloJet",
+      "disposition": "streamer metadata exists, but its automatically generated dependency closure does not compile; no generated dictionary is admitted"
+    }
+  },
+  "readable_products": [
+    "reconstructed tau pt/eta/phi/mass",
+    "reconstructed tau charge",
+    "split MET kinematics",
+    "generator-particle kinematics"
+  ],
+  "unreadable_required_product": "pat::Tau tauIDs_ vector<pair<string,float>>",
+  "tau_id_error": {
+    "type": "NotImplementedError",
+    "message": "memberwise serialization of AsArray\nin file C:\\Users\\andrey\\src\\marici\\research\\flavor\\data\\cms-open-data-19459-pilot\\4C142A8C-80B8-E511-8DFD-0025905C2CD0.root"
+  },
+  "generic_root_hostile_probe": {
+    "root_version": "6.40.00",
+    "method": "generate only pair<string,float> and vector<pair<string,float>> dictionaries, then read patTaus_slimmedTaus__PAT.obj.tauIDs_ with TTreeReaderArray",
+    "first_nonempty_entry": 1,
+    "reported_tau_count": 1,
+    "reported_tau_id_count": 14757395258967575620,
+    "diagnostic": "impossible container length after detaching the split leaf from the missing pat::Tau streamer; values are corrupt and inadmissible"
+  },
+  "root_makeproject_probe": {
+    "requested_class": "pat::Tau",
+    "generated_classes": 299,
+    "rootcling_found_after_path_repair": true,
+    "shared_object_created": false,
+    "first_compile_obstruction": "redefinition of CaloJet as different kind of symbol: namespace CaloJet conflicts with prior class reco::CaloJet",
+    "disposition": "streamer metadata exists, but its automatically generated dependency closure does not compile; no generated dictionary is admitted"
+  },
+  "detached_leaf_corruption_bound": {
+    "reported_tau_id_count": 14757395258967575620,
+    "entire_file_bytes": 316932303,
+    "strictly_exceeds_even_one_byte_per_id": true
+  },
+  "classification": "detector-kinematic pilot executable; physical tau identification and acceptance not executable on the current non-CMSSW surface",
+  "smallest_falsifier": "a kinematics-selected reconstructed object cannot be typed as a tau without the independently derived tau-ID discriminator",
+  "remaining_instrument_gate": "run the checksum-pinned MiniAOD through a compatible CMSSW 7.6 environment or obtain an officially derived flat format retaining tau IDs and triggers",
+  "checks": {
+    "cern_checksum_matches": true,
+    "pilot_event_count_matches": true,
+    "all_tau_kinematic_branches_present": true,
+    "tau_kinematics_deserialize": true,
+    "tau_id_branch_present": true,
+    "tau_id_payload_is_not_deserializable": true,
+    "detached_stl_leaf_is_exactly_falsified": true,
+    "streamer_project_has_source_metadata": true,
+    "streamer_project_dictionary_not_admitted": true,
+    "kinematics_only_acceptance_rejected": true,
+    "cmssw_dictionary_gate_recorded": true
+  },
+  "passed": true
+}

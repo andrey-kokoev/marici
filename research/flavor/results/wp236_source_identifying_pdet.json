@@ -1,0 +1,82 @@
+{
+  "admitted_source_domain": [
+    "Z_pole_dimuon_source",
+    "smooth_continuum_dimuon_source"
+  ],
+  "checks": {
+    "collapsed_templates_fail_identification": true,
+    "continuum_source_is_present_in_heldout_data": true,
+    "empirical_continuum_blocks_microscopic_source_authority": true,
+    "five_gev_mediator_not_overclaimed": true,
+    "heldout_source_yields_are_nonnegative": true,
+    "measured_ten_not_used_for_source_identification": true,
+    "pdet_has_two_source_columns": true,
+    "pole_source_is_present_in_heldout_data": true,
+    "positive_source_gram": true,
+    "source_grammar_frozen_before_heldout_fit": true,
+    "source_rank_survives_two_sigma_calibration_box": true,
+    "source_response_rank_two": true,
+    "weak_basis_descent": true
+  },
+  "claim": "The calibrated invariant-mass spectrum identifies two spectral components, but the empirical continuum column does not yet supply microscopic source authority.",
+  "classification": "spectral-component identifier and calibrated physical readout; not yet a microscopic source-identifying P_det or physical16 selector",
+  "contextual_partition": "singleton coefficient fibers on the nonnegative two-source cone because P_det has rank two",
+  "descent": "Invariant-mass bins and source yields descend under the full flavor weak-basis groupoid; no texture chart enters the map.",
+  "detector_record_domain": "40 invariant-mass bins from 70 to 110 GeV in CMS Run2010B record 700",
+  "heldout_identification": {
+    "Z_pole_yield": 115.57565268462707,
+    "continuum_yield": 151.15205482031334,
+    "residual_l2": 15.588876659075193,
+    "standard_errors_from_calibration_metric": [
+      15.284219306600509,
+      16.278166277224436
+    ]
+  },
+  "hostile_falsifier": {
+    "description": "replace the continuum template by the pole template",
+    "gram_determinant": 0.0,
+    "kernel_generator": [
+      1,
+      -1
+    ],
+    "rank": 1
+  },
+  "passed": true,
+  "pdet": {
+    "gram_determinant": 1.8797970225826166e-05,
+    "gram_eigenvalues": [
+      0.0029078532264465826,
+      0.006464552631082216
+    ],
+    "gram_matrix": [
+      [
+        0.004981061663244081,
+        0.001753734868911179
+      ],
+      [
+        0.001753734868911179,
+        0.004391344194284718
+      ]
+    ],
+    "jacobian_shape": [
+      40,
+      2
+    ],
+    "map": "(N_Z,N_continuum) -> N_Z*Voigt_Z + N_continuum*exp_background",
+    "metric": "calibration-fold inverse-Poisson detector metric",
+    "rank": 2,
+    "two_sigma_calibration_box": {
+      "corner_gram_determinants": [
+        6.554778026801489e-05,
+        8.913423863070259e-05,
+        3.793322096949339e-05,
+        3.1133460927577744e-05
+      ],
+      "log_sigma_standard_error": 2.279721231712898,
+      "minimum_gram_determinant": 3.1133460927577744e-05,
+      "slope_standard_error": 0.06169756285572203
+    }
+  },
+  "remaining_gate": "Replace every empirical component by a source-derived portal response in the same final state, then derive a nonzero normalized residue or executable epsilon control.",
+  "work_package": "WP236"
+}
