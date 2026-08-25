@@ -260,9 +260,27 @@
       "composition_kind":"independent_hole_substitution",
       "sequential_composition_claimed":false,
       "hole_type":{"source_vertex":"C0","source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","endpoint_vertex":"C3","endpoint_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","input_authority_parameter":"alpha_in[i]","output_authority_parameter":"alpha_out[i]","resource_instances_pairwise_disjoint":true,"shared_authority_claimed":false},
+      "support_lift":"tagged_pair(i,support)",
+      "authority_root_lift":"tagged_pair(i,root)",
+      "fault_hypergraph_composition":"disjoint_coproduct",
+      "cross_hole_correlations_authorized":false,
       "preserved_semantic_fields":["source_boundary","endpoint_boundary","support_union","fault_hypergraph","input_authority","output_authority","resource_freshness"],
       "critical_pair_schemas":["same_position_branch","disjoint_positions_commute"],
       "theorem_scope":"arbitrary finite products of independently typed factorization holes"
+    }
+  ],
+  "configuration_context_symmetry_theorems":[
+    {
+      "id":"finite_hole_permutation_equivariance",
+      "context_theorem_id":"context_closed_configuration_rewrites",
+      "symmetry":"finite_bijections_of_hole_indices",
+      "resource_action":"alpha_rename_by_index_bijection",
+      "support_action":"tagged_pair(pi(i),support)",
+      "authority_root_action":"tagged_pair(pi(i),root)",
+      "rewrite_action":"position_independent",
+      "normal_form_action":"pointwise_normalization_then_permutation",
+      "cross_hole_fault_action":"none_without_explicit_constructor",
+      "theorem_scope":"all finite bijections of every finite typed hole set"
     }
   ],
   "configuration_path_coherence_audits":[
