@@ -32,6 +32,31 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
         current["support"] = sorted(set(current["support"]))
         current["resource"] = {key: current["resource"][key] for key in sorted(current["resource"])}
         operations = current.get("operations", [])
+        fused_operations: list[dict[str, Any]] = []
+        index = 0
+        while index < len(operations):
+            first = operations[index]
+            if index + 1 < len(operations) and first["kind"] == "transport" and operations[index + 1]["kind"] == "transport":
+                second = operations[index + 1]
+                if first["target"] != second["source"]:
+                    raise ValueError("transport_endpoint_mismatch")
+                if not first.get("preserves_authority") or not second.get("preserves_authority"):
+                    raise ValueError("transport_fusion_loses_authority")
+                fusion_cell = second.get("fusion_cell") or first.get("fusion_cell")
+                if not fusion_cell:
+                    raise ValueError("transport_fusion_missing_cell")
+                fused_operations.append({
+                    "kind": "transport",
+                    "source": first["source"],
+                    "target": second["target"],
+                    "preserves_authority": True,
+                    "normal_form_cell": fusion_cell,
+                })
+                index += 2
+                continue
+            fused_operations.append(first)
+            index += 1
+        operations = fused_operations
         reduced: list[dict[str, Any]] = []
         for operation in operations:
             if operation["kind"] == "identity":
@@ -64,6 +89,11 @@ def normalize(node: dict[str, Any]) -> dict[str, Any]:
                     current["executable_output"] = "REJECT:stale_epoch"
                     current["operations"] = []
                     return current
+                continue
+            if operation["kind"] == "transport":
+                if not operation.get("preserves_authority"):
+                    raise ValueError("transport_loses_authority")
+                reduced.append(operation)
                 continue
             reduced.append(operation)
         current["operations"] = reduced

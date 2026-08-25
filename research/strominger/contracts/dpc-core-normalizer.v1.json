@@ -5,6 +5,7 @@
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
     "support_union": ["support"],
+    "transport_fusion": ["transport_chain"],
     "typed_identity": ["authority_kind", "scope", "modality", "support", "resource"],
     "epoch_fence": ["epoch", "status", "executable_output"]
   },
@@ -14,6 +15,17 @@
     ,"support_union|typed_identity": "identity_then_support_union_joins"
   },
   "normalization_cases": [
+    {
+      "id": "authority_preserving_transport_chain_fuses",
+      "expected": {"operations":[{"kind":"transport","source":"chart_A","target":"chart_C","preserves_authority":true,"normal_form_cell":"cell_AC"}]},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_chart"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"transport","source":"chart_A","target":"chart_B","preserves_authority":true},{"kind":"transport","source":"chart_B","target":"chart_C","preserves_authority":true,"fusion_cell":"cell_AC"}]}
+    },
+    {
+      "id": "evidence_transport_without_authority_is_rejected",
+      "expected": {},
+      "expected_error": "transport_fusion_loses_authority",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["source_A"],"resource":{"uses":1},"executable_output":"effect","operations":[{"kind":"transport","source":"logical","target":"encoded","preserves_authority":true},{"kind":"transport","source":"encoded","target":"physical","preserves_authority":false,"fusion_cell":"unsupported_cell"}]}
+    },
     {
       "id": "support_union_preserves_distinct_roots_and_removes_duplicates",
       "expected": {"support": ["root_A", "root_B"]},
