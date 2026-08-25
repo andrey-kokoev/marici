@@ -1185,6 +1185,51 @@ def audit_correlation_composition(contract: dict[str, Any], cocircuit_audits: li
     return audits
 
 
+def audit_finite_fusion_witness_bounds(contract: dict[str, Any], cocircuit_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    cocircuit_results = {item["id"]: item for item in cocircuit_audits}
+    audits = []
+    for theorem in contract.get("configuration_finite_fusion_theorems", []):
+        errors: list[str] = []
+        base = cocircuit_results.get(theorem.get("cocircuit_theorem_id"), {})
+        if not base.get("passed"):
+            errors.append("finite_fusion_cocircuit_base_invalid")
+        cocircuits = {frozenset(tuple(locus) for locus in witness) for witness in base.get("primitive_cocircuits", [])}
+        derived_bound = max((len(cocircuit) for cocircuit in cocircuits), default=0)
+        bound_typed = theorem.get("witness_bound_source") == "maximum_primitive_cocircuit_cardinality" and theorem.get("expected_witness_bound") == derived_bound
+        if not bound_typed:
+            errors.append("finite_fusion_witness_bound_not_source_derived")
+        if theorem.get("finite_subfamily_law") != "unsafe_fusion_has_an_unsafe_subfusion_of_size_at_most_witness_bound":
+            errors.append("finite_fusion_subfamily_law_untyped")
+        if theorem.get("pairwise_completeness_claimed") != (derived_bound == 2):
+            errors.append("finite_fusion_pairwise_completeness_mismatch")
+        if theorem.get("theorem_scope") != "all finite families of typed correlation hyperedges over a common finite hole set":
+            errors.append("finite_fusion_scope_laundered")
+
+        fixtures = []
+        sharp = False
+        for fixture in theorem.get("fixtures", []):
+            inputs = [frozenset(tuple(locus) for locus in edge) for edge in fixture.get("input_hyperedges", [])]
+            individually_safe = all(not any(cocircuit <= edge for cocircuit in cocircuits) for edge in inputs)
+            fused = frozenset().union(*inputs) if inputs else frozenset()
+            globally_safe = not any(cocircuit <= fused for cocircuit in cocircuits)
+            minimum_unsafe_arity = None
+            for arity in range(1, len(inputs) + 1):
+                if any(any(cocircuit <= frozenset().union(*subfamily) for cocircuit in cocircuits) for subfamily in combinations(inputs, arity)):
+                    minimum_unsafe_arity = arity
+                    break
+            witness_bound_holds = globally_safe or (minimum_unsafe_arity is not None and minimum_unsafe_arity <= derived_bound)
+            expected = fixture.get("expected", {})
+            fixture_passed = individually_safe and globally_safe == expected.get("globally_safe") and minimum_unsafe_arity == expected.get("minimum_unsafe_arity") and witness_bound_holds
+            sharp |= minimum_unsafe_arity == derived_bound
+            if not fixture_passed:
+                errors.append("finite_fusion_fixture_mismatch")
+            fixtures.append({"id": fixture.get("id"), "passed": fixture_passed, "input_count": len(inputs), "individually_safe": individually_safe, "globally_safe": globally_safe, "minimum_unsafe_arity": minimum_unsafe_arity, "witness_bound_holds": witness_bound_holds})
+        if theorem.get("bound_sharp_on_fixture") is not True or not sharp:
+            errors.append("finite_fusion_witness_bound_not_sharp")
+        audits.append({"id": theorem["id"], "passed": not errors, "errors": sorted(set(errors)), "derived_witness_bound": derived_bound, "pairwise_checks_complete": derived_bound == 2, "bound_sharp": sharp, "fixtures": fixtures, "scope": theorem.get("theorem_scope")})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -1228,10 +1273,11 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     correlated_context_audits = audit_correlated_configuration_contexts(contract, contextual_rewrite_audits)
     correlation_cocircuit_audits = audit_correlation_cocircuits(contract, correlated_context_audits)
     correlation_composition_audits = audit_correlation_composition(contract, correlation_cocircuit_audits)
+    finite_fusion_audits = audit_finite_fusion_witness_bounds(contract, correlation_cocircuit_audits)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_rewrite_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage + contextual_rewrite_audits + context_symmetry_audits + correlated_context_audits + correlation_cocircuit_audits + correlation_composition_audits + finite_fusion_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -1264,4 +1310,5 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "configuration_correlated_context_theorems": correlated_context_audits,
         "configuration_correlation_cocircuit_theorems": correlation_cocircuit_audits,
         "configuration_correlation_composition_theorems": correlation_composition_audits,
+        "configuration_finite_fusion_theorems": finite_fusion_audits,
     }

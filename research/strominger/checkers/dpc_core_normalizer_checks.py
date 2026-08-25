@@ -316,6 +316,23 @@ for name, mutate_composition, expected in (
     errors = candidate_result["configuration_correlation_composition_theorems"][0]["errors"]
     correlation_composition_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["correlation_composition_hostiles"] = correlation_composition_hostiles
+finite_fusion_hostiles = {}
+for name, mutate_fusion, expected in (
+    ("fitted_bound", lambda c: c["configuration_finite_fusion_theorems"][0].update({"witness_bound_source":"fixture_search"}), "finite_fusion_witness_bound_not_source_derived"),
+    ("wrong_bound", lambda c: c["configuration_finite_fusion_theorems"][0].update({"expected_witness_bound":3}), "finite_fusion_witness_bound_not_source_derived"),
+    ("subfamily_law_removed", lambda c: c["configuration_finite_fusion_theorems"][0].update({"finite_subfamily_law":"global_check_only"}), "finite_fusion_subfamily_law_untyped"),
+    ("pairwise_completeness_denied", lambda c: c["configuration_finite_fusion_theorems"][0].update({"pairwise_completeness_claimed":False}), "finite_fusion_pairwise_completeness_mismatch"),
+    ("sharpness_denied", lambda c: c["configuration_finite_fusion_theorems"][0].update({"bound_sharp_on_fixture":False}), "finite_fusion_witness_bound_not_sharp"),
+    ("unsafe_family_claimed_safe", lambda c: c["configuration_finite_fusion_theorems"][0]["fixtures"][0]["expected"].update({"globally_safe":True}), "finite_fusion_fixture_mismatch"),
+    ("witness_arity_hidden", lambda c: c["configuration_finite_fusion_theorems"][0]["fixtures"][0]["expected"].update({"minimum_unsafe_arity":None}), "finite_fusion_fixture_mismatch"),
+    ("bounded_scope", lambda c: c["configuration_finite_fusion_theorems"][0].update({"theorem_scope":"three-input fixture only"}), "finite_fusion_scope_laundered"),
+):
+    candidate = deepcopy(contract)
+    mutate_fusion(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = candidate_result["configuration_finite_fusion_theorems"][0]["errors"]
+    finite_fusion_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["finite_fusion_hostiles"] = finite_fusion_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -376,5 +393,7 @@ for name, rejected in correlation_cocircuit_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlation_cocircuit hostile." + name)
 for name, rejected in correlation_composition_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " correlation_composition hostile." + name)
+for name, rejected in finite_fusion_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " finite_fusion hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and all(contextual_rewrite_hostiles.values()) and all(context_symmetry_hostiles.values()) and all(correlated_context_hostiles.values()) and all(correlation_cocircuit_hostiles.values()) and all(correlation_composition_hostiles.values()) and all(finite_fusion_hostiles.values()) and coherence_omission_rejected else 1)

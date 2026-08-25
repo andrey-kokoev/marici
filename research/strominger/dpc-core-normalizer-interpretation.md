@@ -547,3 +547,33 @@ them exhausts the `admin_B/admin_C` bridge at `h0`. Thus local validity is not
 compositional under strengthened simultaneity semantics. The missing datum is
 not another root but authority to assert that the two fault descriptions belong
 to one jointly realizable event.
+
+## Finite fusion has a source-derived witness bound
+
+Let
+
+\[
+r=\max_{i,B}|K_{i,B}|.
+\]
+
+If a finite synchronous fusion is unsafe, choose a blocking cocircuit and, for
+each of its loci, one input hyperedge containing that locus. Those choices use
+at most `r` inputs and their subfusion is already unsafe. Hence
+
+\[
+\bigcup_{j\in J}E_j\text{ unsafe}
+\quad\Longrightarrow\quad
+\exists J_0\subseteq J,quad |J_0|\le r,quad
+\bigcup_{j\in J_0}E_j\text{ unsafe}.
+\]
+
+The bound comes from constructor geometry—the largest local bridge basis—not
+from the number of holes or the size of the correlation family. In the present
+contract every primitive cocircuit has cardinality two, so pairwise fusion
+checks decide safety for an arbitrary finite family. The binary split witness
+shows that this bound is sharp: checking inputs individually is insufficient,
+while no ternary-only obstruction exists.
+
+This is the first useful complexity theorem for the fault-correlation layer.
+An unbounded family does not require an unbounded global census; its safety
+reduces to subfamilies whose size is bounded by local authority redundancy.
