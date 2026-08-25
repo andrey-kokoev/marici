@@ -927,6 +927,38 @@
         {"collection": "probe_grammar_boundary_audits", "id": "deployment_manifest_boundary_v2", "field": "challenge_port_live", "value": false}
       ],
       "expected_code": "probe_grammar_boundary_has_no_refinement_port"
+    },
+    {
+      "id": "stale_manifest_epoch_capability_executes",
+      "description": "A capability derived at manifest epoch 12 executes against epoch 13 without revalidation.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "execution_epoch", "value": 13}
+      ],
+      "expected_code": "stale_probe_grammar_capability_epoch"
+    },
+    {
+      "id": "manifest_epoch_check_is_not_atomic",
+      "description": "The manifest epoch is checked before execution with a race window for deployment drift.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "atomic_manifest_epoch_check", "value": false}
+      ],
+      "expected_code": "non_atomic_manifest_epoch_check"
+    },
+    {
+      "id": "manifest_drift_keeps_old_negative_authority",
+      "description": "A new firmware constructor appears but the old negative certificate remains live.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "drift_scenario", "value": {"new_manifest_epoch": 13, "new_constructor_class": "firmware_substrate", "old_negative_certificate_live": true, "old_capability_execution_permitted": false, "grammar_replay_required": true, "positive_discoveries_retained": [["r1", "r2"]]}}
+      ],
+      "expected_code": "manifest_drift_preserves_stale_authority"
+    },
+    {
+      "id": "manifest_drift_drops_old_positive_fault",
+      "description": "A deployment update forgets the already witnessed shared-build common cause.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "drift_scenario", "value": {"new_manifest_epoch": 13, "new_constructor_class": "firmware_substrate", "old_negative_certificate_live": false, "old_capability_execution_permitted": false, "grammar_replay_required": true, "positive_discoveries_retained": []}}
+      ],
+      "expected_code": "manifest_drift_drops_positive_discovery"
     }
   ]
 }

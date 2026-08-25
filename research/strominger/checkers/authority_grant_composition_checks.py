@@ -88,6 +88,7 @@ def main():
     discovery_audits = {item["id"]: item for item in packet["common_cause_discovery_audits"]}
     probe_grammar_audits = {item["id"]: item for item in packet["probe_grammar_authority_audits"]}
     probe_grammar_boundaries = {item["id"]: item for item in packet["probe_grammar_boundary_audits"]}
+    probe_grammar_epochs = {item["id"]: item for item in packet["probe_grammar_epoch_audits"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -443,6 +444,14 @@ def main():
             bool(probe_grammar_boundaries["deployment_manifest_boundary_v2"]["open_frontier"])
             and probe_grammar_boundaries["deployment_manifest_boundary_v2"]["challenge_port_live"]
             and not probe_grammar_boundaries["deployment_manifest_boundary_v2"]["frontier_emptiness_claimed"],
+        "probe_grammar_capability_is_atomically_epoch_bound":
+            probe_grammar_epochs["manifest_v2_epoch_binding"]["audit_epoch"]
+            == probe_grammar_epochs["manifest_v2_epoch_binding"]["execution_epoch"]
+            and probe_grammar_epochs["manifest_v2_epoch_binding"]["atomic_manifest_epoch_check"],
+        "manifest_drift_fences_stale_negative_authority":
+            not probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["old_negative_certificate_live"]
+            and not probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["old_capability_execution_permitted"]
+            and probe_grammar_epochs["manifest_v2_epoch_binding"]["drift_scenario"]["grammar_replay_required"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]

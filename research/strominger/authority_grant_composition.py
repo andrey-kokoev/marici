@@ -1147,6 +1147,35 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if not boundary.get("challenge_port") or not boundary.get("challenge_port_live"):
             err("probe_grammar_boundary_has_no_refinement_port", bid, str(boundary.get("challenge_port")))
 
+    # Relative negative authority is epoch-indexed. Manifest mutation fences
+    # both the negative certificate and capabilities derived from it; positive
+    # discoveries remain valid evidence in the successor epoch.
+    boundaries = {item["id"]: item for item in packet.get("probe_grammar_boundary_audits", [])}
+    for epoch_audit in packet.get("probe_grammar_epoch_audits", []):
+        eid = epoch_audit["id"]
+        if epoch_audit.get("boundary_audit") not in boundaries or len(epoch_audit.get("manifest_sha256", "")) != 64:
+            err("manifest_epoch_binding_untyped", eid, str(epoch_audit.get("boundary_audit")))
+            continue
+        audit_epoch = epoch_audit.get("audit_epoch")
+        capability_epoch = epoch_audit.get("capability_epoch")
+        execution_epoch = epoch_audit.get("execution_epoch")
+        expiry = epoch_audit.get("lease_expires_epoch")
+        if not all(isinstance(value, int) for value in (audit_epoch, capability_epoch, execution_epoch, expiry)) or not (
+            audit_epoch == capability_epoch == execution_epoch <= expiry
+        ):
+            err("stale_probe_grammar_capability_epoch", eid, f"{audit_epoch},{capability_epoch},{execution_epoch},{expiry}")
+        if not epoch_audit.get("atomic_manifest_epoch_check"):
+            err("non_atomic_manifest_epoch_check", eid, "manifest may drift between validation and execution")
+        drift = epoch_audit.get("drift_scenario", {})
+        if not isinstance(drift.get("new_manifest_epoch"), int) or drift.get("new_manifest_epoch", -1) <= audit_epoch:
+            err("nonmonotone_manifest_epoch", eid, str(drift.get("new_manifest_epoch")))
+        if drift.get("old_negative_certificate_live") or drift.get("old_capability_execution_permitted"):
+            err("manifest_drift_preserves_stale_authority", eid, str(drift))
+        if not drift.get("grammar_replay_required"):
+            err("manifest_drift_skips_probe_replay", eid, str(drift.get("new_constructor_class")))
+        if ["r1", "r2"] not in drift.get("positive_discoveries_retained", []):
+            err("manifest_drift_drops_positive_discovery", eid, str(drift.get("positive_discoveries_retained")))
+
     return errors
 
 
@@ -1164,6 +1193,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "representation_change_test_count": len(packet.get("representation_change_tests", [])),
         "probe_grammar_authority_audit_count": len(packet.get("probe_grammar_authority_audits", [])),
         "probe_grammar_boundary_audit_count": len(packet.get("probe_grammar_boundary_audits", [])),
+        "probe_grammar_epoch_audit_count": len(packet.get("probe_grammar_epoch_audits", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),
