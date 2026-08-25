@@ -195,13 +195,15 @@ for name, mutate_category, expected in (
     configuration_category_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["configuration_category_hostiles"] = configuration_category_hostiles
 configuration_coherence_hostiles = {}
+def configuration_path(candidate, path_id):
+    return next(path for path in candidate["configuration_path_audits"] if path["id"] == path_id)
+
 for name, mutate_coherence, expected in (
-    ("fitted_coherence", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"source_derived":False}), "configuration_coherence_cell_untyped"),
-    ("different_endpoint", lambda c: (c["configuration_path_audits"][1]["edges"][-1]["target_configuration"].update({"vertex_id":"CY"}), c["configuration_path_audits"][1]["edges"][-1]["output_configuration"].update({"vertex_id":"CY"}), c["configuration_path_audits"][1]["expected_endpoint_configuration"].update({"vertex_id":"CY"})), "configuration_coherence_boundary_mismatch"),
-    ("different_support", lambda c: (c["configuration_path_audits"][1]["edges"][-1]["target_configuration"]["support"].append("route_specific_support"), c["configuration_path_audits"][1]["edges"][-1]["output_configuration"]["support"].append("route_specific_support"), c["configuration_path_audits"][1]["expected_endpoint_configuration"]["support"].append("route_specific_support")), "configuration_coherence_support_mismatch"),
-    ("fault_identification_loss", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"root_identification":{"admin_B":"admin_B","admin_C":"admin_C","admin_E":"admin_E"}}), "configuration_coherence_fault_descent_failure"),
-    ("nontrivial_holonomy", lambda c: c["configuration_path_coherence_audits"][0]["coherence_cell"].update({"loop_action":"authority_twist"}), "configuration_authority_holonomy_nontrivial"),
-    ("alternate_path_not_admissible", lambda c: c["configuration_path_audits"][1]["edges"][0]["state_correspondence"].update({"source_derived":False}), "configuration_coherence_path_not_admissible"),
+    ("primitive_cell_injected", lambda c: c["configuration_path_coherence_audits"][0].update({"coherence_cell":{"id":"fitted"}}), "primitive_configuration_coherence_forbidden"),
+    ("different_endpoint", lambda c: (configuration_path(c,"alternate_configuration_path")["edges"][-1]["target_configuration"].update({"vertex_id":"CZ"}), configuration_path(c,"alternate_configuration_path")["edges"][-1]["output_configuration"].update({"vertex_id":"CZ"}), configuration_path(c,"alternate_configuration_path")["expected_endpoint_configuration"].update({"vertex_id":"CZ"})), "configuration_coherence_boundary_mismatch"),
+    ("different_support", lambda c: (configuration_path(c,"alternate_configuration_path")["edges"][-1]["target_configuration"]["support"].append("route_specific_support"), configuration_path(c,"alternate_configuration_path")["edges"][-1]["output_configuration"]["support"].append("route_specific_support"), configuration_path(c,"alternate_configuration_path")["expected_endpoint_configuration"]["support"].append("route_specific_support")), "configuration_coherence_support_mismatch"),
+    ("fault_hypergraph_disagreement", lambda c: configuration_path(c,"alternate_configuration_path")["admissible_authority_root_fault_sets"].append(["admin_C","admin_E"]), "configuration_coherence_fault_descent_failure"),
+    ("alternate_path_not_admissible", lambda c: configuration_path(c,"alternate_configuration_path")["edges"][0]["state_correspondence"].update({"source_derived":False}), "configuration_coherence_path_not_admissible"),
 ):
     candidate = deepcopy(contract)
     mutate_coherence(candidate)
@@ -209,6 +211,20 @@ for name, mutate_coherence, expected in (
     errors = candidate_result["configuration_path_coherence"][0]["errors"]
     configuration_coherence_hostiles[name] = not candidate_result["passed"] and expected in errors
 result["configuration_coherence_hostiles"] = configuration_coherence_hostiles
+configuration_normalization_hostiles = {}
+for name, mutate_normalization, expected_section, expected in (
+    ("unauthorized_relation", lambda c: c["configuration_constructor_relations"][0].update({"source_authority_root":None}), "configuration_normalization", "configuration_normalization_relation_unauthorized"),
+    ("word_mismatch", lambda c: c["configuration_constructor_relations"][0].update({"edge_word":["rho_01","rho_23"]}), "configuration_normalization", "configuration_normalization_word_mismatch"),
+    ("duplicate_normal_form_witness", lambda c: c["configuration_constructor_relations"].append(deepcopy(c["configuration_constructor_relations"][0])), "configuration_normalization", "configuration_normalization_not_unique"),
+    ("normal_form_target_fitted", lambda c: c["configuration_constructor_relations"][2].update({"normal_form_id":"NF_FITTED"}), "configuration_normalization", "configuration_normalization_target_fitted"),
+    ("triangle_target_fitted", lambda c: c["configuration_coherence_triangle_audits"][0].update({"normal_form_id":"NF_FITTED"}), "configuration_coherence_triangles", "configuration_coherence_triangle_target_fitted"),
+):
+    candidate = deepcopy(contract)
+    mutate_normalization(candidate)
+    candidate_result = compile_contract(candidate, legacy)
+    errors = [error for audit in candidate_result[expected_section] for error in audit["errors"]]
+    configuration_normalization_hostiles[name] = not candidate_result["passed"] and expected in errors
+result["configuration_normalization_hostiles"] = configuration_normalization_hostiles
 candidate = deepcopy(contract)
 candidate["configuration_path_coherence_audits"] = []
 candidate_result = compile_contract(candidate, legacy)
@@ -257,5 +273,7 @@ for name, rejected in configuration_category_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_category hostile." + name)
 for name, rejected in configuration_coherence_hostiles.items():
     print(("PASS" if rejected else "FAIL") + " configuration_coherence hostile." + name)
+for name, rejected in configuration_normalization_hostiles.items():
+    print(("PASS" if rejected else "FAIL") + " configuration_normalization hostile." + name)
 print(("PASS" if coherence_omission_rejected else "FAIL") + " configuration_coherence hostile.omitted_required_comparison")
-raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and coherence_omission_rejected else 1)
+raise SystemExit(0 if result["passed"] and result["rule_count"] == 7 and missing_coverage_rejected and defaulting_rejected and all(native_deletions.values()) and symbolic_epoch_enforced and all(successor_hostiles.values()) and all(attestation_hostiles.values()) and all(tcb_hostiles.values()) and all(execution_hostiles.values()) and cocircuit_complete and all(ssa_hostiles.values()) and all(projection_hostiles.values()) and all(chain_hostiles.values()) and all(reconfiguration_hostiles.values()) and all(configuration_path_hostiles.values()) and all(partial_composite_replay.values()) and all(configuration_category_hostiles.values()) and all(configuration_coherence_hostiles.values()) and all(configuration_normalization_hostiles.values()) and coherence_omission_rejected else 1)

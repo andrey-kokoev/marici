@@ -721,14 +721,80 @@ def audit_configuration_category(contract: dict[str, Any]) -> list[dict[str, Any
     return audits
 
 
-def audit_configuration_path_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def generate_configuration_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[tuple[str, str], dict[str, Any]]]:
+    paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
+    admitted = {audit["id"]: audit["passed"] for audit in path_audits}
+    relations = contract.get("configuration_constructor_relations", [])
+    audits = []
+    witnesses: dict[str, dict[str, Any]] = {}
+    path_counts: dict[str, int] = {}
+    for relation in relations:
+        errors: list[str] = []
+        path_id = relation.get("path_id")
+        path = paths.get(path_id, {})
+        path_counts[path_id] = path_counts.get(path_id, 0) + 1
+        if not admitted.get(path_id):
+            errors.append("configuration_normalization_path_not_admissible")
+        if relation.get("edge_word") != [edge.get("id") for edge in path.get("edges", [])]:
+            errors.append("configuration_normalization_word_mismatch")
+        if not relation.get("source_authority_root") or relation.get("admissible_transformation") != "factorization_rewrite":
+            errors.append("configuration_normalization_relation_unauthorized")
+        if "normal_form_id" in relation:
+            errors.append("configuration_normalization_target_fitted")
+        boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
+        normal_form_payload = {
+            "source": {key: path.get("source_configuration", {}).get(key) for key in boundary_fields},
+            "endpoint": {key: path.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields},
+            "support": sorted(path.get("expected_endpoint_configuration", {}).get("support", [])),
+            "fault_hypergraph": sorted(sorted(fault) for fault in path.get("admissible_authority_root_fault_sets", [])),
+        }
+        normal_form_id = hashlib.sha256(json.dumps(normal_form_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+        witness_payload = {"relation": relation.get("id"), "path": path_id, "word": relation.get("edge_word"), "normal_form": normal_form_id, "authority": relation.get("source_authority_root")}
+        witness_id = hashlib.sha256(json.dumps(witness_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+        if not errors:
+            witnesses[path_id] = {"id": witness_id, "relation_id": relation.get("id"), "normal_form_id": normal_form_id}
+        audits.append({"id": relation.get("id"), "path_id": path_id, "passed": not errors, "errors": errors, "normal_form_id": normal_form_id, "normalization_witness": witness_id})
+    for audit in audits:
+        if path_counts.get(audit["path_id"]) != 1:
+            audit["errors"] = sorted(set(audit["errors"] + ["configuration_normalization_not_unique"]))
+            audit["passed"] = False
+            witnesses.pop(audit["path_id"], None)
+    cells: dict[tuple[str, str], dict[str, Any]] = {}
+    path_ids = sorted(witnesses)
+    boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
+    for index, left_id in enumerate(path_ids):
+        for right_id in path_ids[index + 1:]:
+            left, right = paths[left_id], paths[right_id]
+            left_witness, right_witness = witnesses[left_id], witnesses[right_id]
+            if left_witness["normal_form_id"] != right_witness["normal_form_id"]:
+                continue
+            left_boundary = ({key: left.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: left.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
+            right_boundary = ({key: right.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: right.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
+            support_equal = set(left.get("expected_endpoint_configuration", {}).get("support", [])) == set(right.get("expected_endpoint_configuration", {}).get("support", []))
+            left_roots = {root for edge in left.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
+            right_roots = {root for edge in right.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
+            left_faults = {tuple(sorted(fault)) for fault in left.get("admissible_authority_root_fault_sets", [])}
+            right_faults = {tuple(sorted(fault)) for fault in right.get("admissible_authority_root_fault_sets", [])}
+            if left_boundary != right_boundary or not support_equal or left_roots != right_roots or left_faults != right_faults:
+                continue
+            cell_payload = {"left": left_witness["id"], "right": right_witness["id"]}
+            cell_id = hashlib.sha256(json.dumps(cell_payload, sort_keys=True, separators=(",", ":")).encode("ascii")).hexdigest()
+            cell = {"id": cell_id, "left_path_id": left_id, "right_path_id": right_id, "left_witness": left_witness["id"], "right_witness": right_witness["id"], "normal_form_id": left_witness["normal_form_id"], "root_identification": {root: root for root in sorted(left_roots)}}
+            cells[(left_id, right_id)] = cell
+            cells[(right_id, left_id)] = {**cell, "left_path_id": right_id, "right_path_id": left_id, "left_witness": right_witness["id"], "right_witness": left_witness["id"]}
+    return audits, cells
+
+
+def audit_configuration_path_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]], generated_cells: dict[tuple[str, str], dict[str, Any]]) -> list[dict[str, Any]]:
     paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
     admitted = {audit["id"]: audit["passed"] for audit in path_audits}
     audits = []
     for item in contract.get("configuration_path_coherence_audits", []):
         errors: list[str] = []
+        if "coherence_cell" in item:
+            errors.append("primitive_configuration_coherence_forbidden")
         left, right = paths.get(item.get("left_path_id"), {}), paths.get(item.get("right_path_id"), {})
-        cell = item.get("coherence_cell", {})
+        cell = generated_cells.get((item.get("left_path_id"), item.get("right_path_id")), {})
         if not admitted.get(item.get("left_path_id")) or not admitted.get(item.get("right_path_id")):
             errors.append("configuration_coherence_path_not_admissible")
         boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
@@ -748,11 +814,30 @@ def audit_configuration_path_coherence(contract: dict[str, Any], path_audits: li
         fault_descent = set(root_map) == left_roots and set(root_map.values()) == right_roots and translated_faults == right_faults
         if not fault_descent:
             errors.append("configuration_coherence_fault_descent_failure")
-        if not cell.get("id") or not cell.get("source_derived") or not cell.get("invertible") or not cell.get("preserves_boundary_signature") or not cell.get("preserves_support_union"):
-            errors.append("configuration_coherence_cell_untyped")
-        if cell.get("loop_action") != "identity":
-            errors.append("configuration_authority_holonomy_nontrivial")
-        audits.append({"id": item["id"], "passed": not errors, "errors": sorted(set(errors)), "paths": [item.get("left_path_id"), item.get("right_path_id")], "raw_presentations_equal": [edge.get("id") for edge in left.get("edges", [])] == [edge.get("id") for edge in right.get("edges", [])], "boundary_equal": boundary_equal, "support_equal": support_equal, "fault_hypergraph_descends": fault_descent, "coherence_cell": cell.get("id"), "loop_action": cell.get("loop_action")})
+        if not cell:
+            errors.append("configuration_coherence_not_generated")
+        audits.append({"id": item["id"], "passed": not errors, "errors": sorted(set(errors)), "paths": [item.get("left_path_id"), item.get("right_path_id")], "raw_presentations_equal": [edge.get("id") for edge in left.get("edges", [])] == [edge.get("id") for edge in right.get("edges", [])], "boundary_equal": boundary_equal, "support_equal": support_equal, "fault_hypergraph_descends": fault_descent, "coherence_cell": cell.get("id"), "generated_from": [cell.get("left_witness"), cell.get("right_witness")], "normal_form_id": cell.get("normal_form_id")})
+    return audits
+
+
+def audit_configuration_coherence_triangles(contract: dict[str, Any], generated_cells: dict[tuple[str, str], dict[str, Any]]) -> list[dict[str, Any]]:
+    audits = []
+    for item in contract.get("configuration_coherence_triangle_audits", []):
+        errors: list[str] = []
+        if "normal_form_id" in item:
+            errors.append("configuration_coherence_triangle_target_fitted")
+        paths = item.get("paths", [])
+        if len(paths) != 3 or len(set(paths)) != 3:
+            errors.append("configuration_coherence_triangle_untyped")
+            cells = ({}, {}, {})
+        else:
+            a, b, c = paths
+            cells = (generated_cells.get((a, b), {}), generated_cells.get((b, c), {}), generated_cells.get((a, c), {}))
+        ab, bc, ac = cells
+        telescopes = bool(ab and bc and ac and ab.get("right_witness") == bc.get("left_witness") and ab.get("left_witness") == ac.get("left_witness") and bc.get("right_witness") == ac.get("right_witness"))
+        if not telescopes:
+            errors.append("configuration_coherence_triangle_holonomy")
+        audits.append({"id": item["id"], "passed": not errors, "errors": errors, "paths": paths, "telescopes": telescopes, "loop_action": "identity" if telescopes else "underdetermined", "composite_cell": [ab.get("id"), bc.get("id")], "direct_cell": ac.get("id")})
     return audits
 
 
@@ -800,12 +885,14 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     reconfiguration_audits = audit_native_reconfiguration_constructors(contract)
     configuration_path_audits = audit_configuration_paths(contract)
     configuration_category_audits = audit_configuration_category(contract)
-    configuration_coherence_audits = audit_configuration_path_coherence(contract, configuration_path_audits)
+    configuration_normalization_audits, generated_coherence_cells = generate_configuration_coherence(contract, configuration_path_audits)
+    configuration_coherence_audits = audit_configuration_path_coherence(contract, configuration_path_audits, generated_coherence_cells)
+    configuration_triangle_audits = audit_configuration_coherence_triangles(contract, generated_coherence_cells)
     configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_coherence_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_normalization_audits + configuration_coherence_audits + configuration_triangle_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -828,6 +915,8 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "native_reconfiguration_constructors": reconfiguration_audits,
         "configuration_paths": configuration_path_audits,
         "configuration_category": configuration_category_audits,
+        "configuration_normalization": configuration_normalization_audits,
         "configuration_path_coherence": configuration_coherence_audits,
+        "configuration_coherence_triangles": configuration_triangle_audits,
         "configuration_coherence_coverage": configuration_coherence_coverage,
     }

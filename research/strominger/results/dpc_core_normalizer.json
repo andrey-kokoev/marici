@@ -37,29 +37,138 @@
         "alternate_configuration_path",
         "varying_membership_configuration_path"
       ]
+    },
+    {
+      "errors": [],
+      "passed": true,
+      "paths": [
+        "alternate_configuration_path",
+        "third_configuration_path"
+      ]
+    },
+    {
+      "errors": [],
+      "passed": true,
+      "paths": [
+        "third_configuration_path",
+        "varying_membership_configuration_path"
+      ]
     }
   ],
   "configuration_coherence_hostiles": {
     "alternate_path_not_admissible": true,
     "different_endpoint": true,
     "different_support": true,
-    "fault_identification_loss": true,
-    "fitted_coherence": true,
-    "nontrivial_holonomy": true
+    "fault_hypergraph_disagreement": true,
+    "primitive_cell_injected": true
   },
   "configuration_coherence_omission_rejected": true,
-  "configuration_path_coherence": [
+  "configuration_coherence_triangles": [
     {
-      "boundary_equal": true,
-      "coherence_cell": "omega_rho_sigma",
+      "composite_cell": [
+        "ce7b03eae3e97e44295ab4e5d05eb3ff82160872e626cbd4d1f1557f461ab318",
+        "d71a687bd81d57bcc482ddc6365c60f6337e01ffa60994da7527748bbbb29d17"
+      ],
+      "direct_cell": "24cc5066dd80aa0ab5c7f5a1911a3cb315b44f87de9b1f18bce03934f046507c",
       "errors": [],
-      "fault_hypergraph_descends": true,
-      "id": "rho_sigma_endpoint_coherence",
+      "id": "rho_sigma_tau_triangle",
       "loop_action": "identity",
       "passed": true,
       "paths": [
         "varying_membership_configuration_path",
+        "alternate_configuration_path",
+        "third_configuration_path"
+      ],
+      "telescopes": true
+    }
+  ],
+  "configuration_normalization": [
+    {
+      "errors": [],
+      "id": "normalize_rho",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "normalization_witness": "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
+      "passed": true,
+      "path_id": "varying_membership_configuration_path"
+    },
+    {
+      "errors": [],
+      "id": "normalize_sigma",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "normalization_witness": "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00",
+      "passed": true,
+      "path_id": "alternate_configuration_path"
+    },
+    {
+      "errors": [],
+      "id": "normalize_tau",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "normalization_witness": "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0",
+      "passed": true,
+      "path_id": "third_configuration_path"
+    }
+  ],
+  "configuration_normalization_hostiles": {
+    "duplicate_normal_form_witness": true,
+    "normal_form_target_fitted": true,
+    "triangle_target_fitted": true,
+    "unauthorized_relation": true,
+    "word_mismatch": true
+  },
+  "configuration_path_coherence": [
+    {
+      "boundary_equal": true,
+      "coherence_cell": "ce7b03eae3e97e44295ab4e5d05eb3ff82160872e626cbd4d1f1557f461ab318",
+      "errors": [],
+      "fault_hypergraph_descends": true,
+      "generated_from": [
+        "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
+        "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00"
+      ],
+      "id": "rho_sigma_endpoint_coherence",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "passed": true,
+      "paths": [
+        "varying_membership_configuration_path",
         "alternate_configuration_path"
+      ],
+      "raw_presentations_equal": false,
+      "support_equal": true
+    },
+    {
+      "boundary_equal": true,
+      "coherence_cell": "d71a687bd81d57bcc482ddc6365c60f6337e01ffa60994da7527748bbbb29d17",
+      "errors": [],
+      "fault_hypergraph_descends": true,
+      "generated_from": [
+        "44d05ba3203c42eeb24c0316a45bfd0e2719929ea9e536dcb3b4c93833d1af00",
+        "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0"
+      ],
+      "id": "sigma_tau_endpoint_coherence",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "passed": true,
+      "paths": [
+        "alternate_configuration_path",
+        "third_configuration_path"
+      ],
+      "raw_presentations_equal": false,
+      "support_equal": true
+    },
+    {
+      "boundary_equal": true,
+      "coherence_cell": "24cc5066dd80aa0ab5c7f5a1911a3cb315b44f87de9b1f18bce03934f046507c",
+      "errors": [],
+      "fault_hypergraph_descends": true,
+      "generated_from": [
+        "cb6f7309d8d398c5cc26c049cc2b1eaaf81e43bd8c125eabf292a9e5a53e6bfd",
+        "60b410fa7dba90cc6a42c30d5fcb33b3a681ea3a7f74883fe90f911825b2b8b0"
+      ],
+      "id": "rho_tau_endpoint_coherence",
+      "normal_form_id": "9a1df2ca97c4e8b264eb5f3397fda93218c89bb3ead0840922416733de03cf12",
+      "passed": true,
+      "paths": [
+        "varying_membership_configuration_path",
+        "third_configuration_path"
       ],
       "raw_presentations_equal": false,
       "support_equal": true
@@ -177,6 +286,93 @@
         "cfg_auth_C0",
         "cfg_auth_C1",
         "cfg_auth_C2"
+      ],
+      "output_authority_resource": "cfg_auth_C3",
+      "passed": true,
+      "support_union": [
+        "bootstrap_root",
+        "charter_rho_01",
+        "charter_rho_12",
+        "charter_rho_23",
+        "correspondence_rho_01",
+        "correspondence_rho_12",
+        "correspondence_rho_23",
+        "presentation_C1",
+        "presentation_C2",
+        "presentation_C3"
+      ]
+    },
+    {
+      "bridge_audits": [
+        {
+          "authority_roots": {
+            "r2": "admin_B",
+            "r3": "admin_C"
+          },
+          "bridge": [
+            "r2",
+            "r3"
+          ],
+          "edge": "tau_0Y",
+          "fault_sets": [
+            [
+              "r2"
+            ],
+            [
+              "r3"
+            ]
+          ]
+        },
+        {
+          "authority_roots": {
+            "r4": "admin_D",
+            "r5": "admin_E"
+          },
+          "bridge": [
+            "r4",
+            "r5"
+          ],
+          "edge": "tau_Y3",
+          "fault_sets": [
+            [
+              "r4"
+            ],
+            [
+              "r5"
+            ]
+          ]
+        }
+      ],
+      "edge_count": 2,
+      "endpoint_vertex": "C3",
+      "errors": [],
+      "global_authority_root_fault_sets": [
+        [
+          "admin_B"
+        ],
+        [
+          "admin_C"
+        ],
+        [
+          "admin_D"
+        ],
+        [
+          "admin_E"
+        ],
+        [
+          "admin_B",
+          "admin_D"
+        ],
+        [
+          "admin_B",
+          "admin_E"
+        ]
+      ],
+      "id": "third_configuration_path",
+      "induction_rule": "a valid partial composite extends iff the next edge is incident at the current configuration vertex, carries a source-derived state correspondence, linearly replaces its input authority, unions support, and every admitted local or path-wide authority-root fault leaves every affected bridge with a survivor",
+      "input_authority_resources": [
+        "cfg_auth_C0",
+        "cfg_auth_CY"
       ],
       "output_authority_resource": "cfg_auth_C3",
       "passed": true,
