@@ -232,3 +232,53 @@ source contracts explicitly declare temporal validity. Those audits neither
 feed nor justify the configuration-path theorem. There is no forgetful map
 from path orientation to an epoch order: adding one would require an explicit
 source-authorized clock or causality constructor.
+
+## Composition, descent, and path independence
+
+Admissible configuration edges now form a checked category on the exhibited
+path. The identity at a vertex preserves its complete signature and has no
+linear-resource replacement boundary. Binary composition is defined only when
+the target vertex and output authority of the left morphism equal the source
+vertex and input authority of the right morphism. On three composable edges,
+
+\[
+(\rho_{23}\circ\rho_{12})\circ\rho_{01}
+=
+\rho_{23}\circ(\rho_{12}\circ\rho_{01})
+\]
+
+as complete composite summaries: boundary resources, support, edge order, and
+fault obligations all agree. The checker derives both parenthesizations rather
+than accepting a declared associativity flag.
+
+Path independence is deliberately stronger. The paths
+
+\[
+C_0\xrightarrow{\rho_{01}}C_1\xrightarrow{\rho_{12}}C_2
+\xrightarrow{\rho_{23}}C_3
+\quad\text{and}\quad
+C_0\xrightarrow{\sigma_{0X}}C_X\xrightarrow{\sigma_{X3}}C_3
+\]
+
+are independently admissible and have equal typed boundaries and support
+unions, but their raw presentations are unequal. They are identified only by
+the source-derived invertible cell `omega_rho_sigma`. The cell must preserve
+the boundary signature and support, and its root identification must transport
+the complete fault hypergraph of one path to that of the other.
+
+This is the descent condition: local bridge witnesses glue to one global path
+class only when the path-wide root-fault hyperedges agree under the coherence
+cell. Equal endpoints without equal support, equal support without fault
+descent, or two valid paths without an authorized cell do not establish path
+independence.
+
+Composing the cell with its inverse produces a loop action. The exhibited loop
+acts identically. A declared `authority_twist` is rejected as nontrivial
+authority holonomy. Thus the central falsifier is represented directly:
+
+\[
+\boxed{\text{locally admissible parallel paths can still differ globally}.}
+\]
+
+No temporal interpretation enters this result. Parallel paths are alternative
+factorizations of a morphism, not alternative histories.

@@ -194,7 +194,41 @@
         }
       ],
       "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+    },
+    {
+      "id":"alternate_configuration_path",
+      "theorem_scope":"alternate composable presentation of the same typed boundary",
+      "admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
+      "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+      "edges":[
+        {
+          "id":"sigma_0X","source_authority_root":"charter_rho_01","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+          "target_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"support":["charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","target_state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","support":[]},
+          "source_quorum_endorsement":["r1","r2","r3"],"target_quorum_endorsement":["r2","r3","r4","r5"],"bridge_witness":["r2","r3"],"bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},"admissible_bridge_fault_sets":[["r2"],["r3"]],
+          "input_authority_resource":"cfg_auth_C0","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CX","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]}
+        },
+        {
+          "id":"sigma_X3","source_authority_root":"charter_rho_23","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CX","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+          "target_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"support":["presentation_C3"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","target_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support":["correspondence_rho_12","correspondence_rho_23"]},
+          "source_quorum_endorsement":["r2","r3","r4","r5"],"target_quorum_endorsement":["r4","r5","r6"],"bridge_witness":["r4","r5"],"bridge_authority_roots":{"r4":"admin_D","r5":"admin_E"},"admissible_bridge_fault_sets":[["r4"],["r5"]],
+          "input_authority_resource":"cfg_auth_CX","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+        }
+      ],
+      "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
     }
+  ],
+  "configuration_category_audits":[
+    {"id":"configuration_path_category","path_id":"varying_membership_configuration_path","identity_vertices":["C0","C1","C2","C3"],"identity_preserves_full_signature":true,"identity_replaces_authority":false,"associativity_edge_ids":["rho_01","rho_12","rho_23"]}
+  ],
+  "configuration_path_coherence_audits":[
+    {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path","coherence_cell":{"id":"omega_rho_sigma","source_derived":true,"invertible":true,"preserves_boundary_signature":true,"preserves_support_union":true,"root_identification":{"admin_B":"admin_B","admin_C":"admin_C","admin_D":"admin_D","admin_E":"admin_E"},"loop_action":"identity"}}
+  ],
+  "required_configuration_path_comparisons":[
+    {"left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"}
   ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],

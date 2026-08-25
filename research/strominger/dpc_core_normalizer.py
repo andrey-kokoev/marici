@@ -662,6 +662,110 @@ def audit_configuration_paths(contract: dict[str, Any]) -> list[dict[str, Any]]:
     return audits
 
 
+def _edge_summary(edge: dict[str, Any]) -> dict[str, Any]:
+    source, output = edge.get("source_configuration", {}), edge.get("output_configuration", {})
+    return {
+        "source": source.get("vertex_id"), "target": output.get("vertex_id"),
+        "input_authority": edge.get("input_authority_resource"), "output_authority": output.get("authority_resource"),
+        "support": tuple(sorted(output.get("support", []))), "edges": (edge.get("id"),),
+        "fault_obligations": ((edge.get("id"), tuple(sorted((node, root) for node, root in edge.get("bridge_authority_roots", {}).items()))),),
+    }
+
+
+def _compose_path_summaries(left: dict[str, Any], right: dict[str, Any]) -> dict[str, Any] | None:
+    if left["target"] != right["source"] or left["output_authority"] != right["input_authority"]:
+        return None
+    return {
+        "source": left["source"], "target": right["target"],
+        "input_authority": left["input_authority"], "output_authority": right["output_authority"],
+        "support": right["support"], "edges": left["edges"] + right["edges"],
+        "fault_obligations": left["fault_obligations"] + right["fault_obligations"],
+    }
+
+
+def audit_configuration_category(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
+    audits = []
+    for item in contract.get("configuration_category_audits", []):
+        errors: list[str] = []
+        path = paths.get(item.get("path_id"), {})
+        edges = path.get("edges", [])
+        edge_ids = [edge.get("id") for edge in edges]
+        if edge_ids != item.get("associativity_edge_ids") or len(edges) < 3:
+            errors.append("configuration_category_associativity_witness_untyped")
+        vertices: dict[str, dict[str, Any]] = {}
+        for edge in edges:
+            vertices[edge.get("source_configuration", {}).get("vertex_id")] = edge.get("source_configuration", {})
+            vertices[edge.get("output_configuration", {}).get("vertex_id")] = edge.get("output_configuration", {})
+        if set(item.get("identity_vertices", [])) != set(vertices) or not item.get("identity_preserves_full_signature") or item.get("identity_replaces_authority"):
+            errors.append("configuration_category_identity_failure")
+        summaries = [_edge_summary(edge) for edge in edges]
+        identity_laws_hold = True
+        for summary in summaries:
+            source_signature, target_signature = vertices.get(summary["source"], {}), vertices.get(summary["target"], {})
+            left_identity = {"source": summary["source"], "target": summary["source"], "input_authority": source_signature.get("authority_resource"), "output_authority": source_signature.get("authority_resource"), "support": tuple(sorted(source_signature.get("support", []))), "edges": (), "fault_obligations": ()}
+            right_identity = {"source": summary["target"], "target": summary["target"], "input_authority": target_signature.get("authority_resource"), "output_authority": target_signature.get("authority_resource"), "support": tuple(sorted(target_signature.get("support", []))), "edges": (), "fault_obligations": ()}
+            identity_laws_hold &= _compose_path_summaries(left_identity, summary) == summary and _compose_path_summaries(summary, right_identity) == summary
+        if not identity_laws_hold:
+            errors.append("configuration_category_identity_failure")
+        associativity_holds = False
+        if len(summaries) >= 3:
+            left_pair = _compose_path_summaries(summaries[0], summaries[1])
+            right_pair = _compose_path_summaries(summaries[1], summaries[2])
+            left_composite = _compose_path_summaries(left_pair, summaries[2]) if left_pair else None
+            right_composite = _compose_path_summaries(summaries[0], right_pair) if right_pair else None
+            associativity_holds = left_composite is not None and left_composite == right_composite
+        if not associativity_holds:
+            errors.append("configuration_category_associativity_failure")
+        audits.append({"id": item["id"], "passed": not errors, "errors": sorted(set(errors)), "identity_vertices": sorted(vertices), "identity_laws_hold": identity_laws_hold, "associativity_holds": associativity_holds, "composite_edge_sequence": edge_ids})
+    return audits
+
+
+def audit_configuration_path_coherence(contract: dict[str, Any], path_audits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    paths = {path["id"]: path for path in contract.get("configuration_path_audits", [])}
+    admitted = {audit["id"]: audit["passed"] for audit in path_audits}
+    audits = []
+    for item in contract.get("configuration_path_coherence_audits", []):
+        errors: list[str] = []
+        left, right = paths.get(item.get("left_path_id"), {}), paths.get(item.get("right_path_id"), {})
+        cell = item.get("coherence_cell", {})
+        if not admitted.get(item.get("left_path_id")) or not admitted.get(item.get("right_path_id")):
+            errors.append("configuration_coherence_path_not_admissible")
+        boundary_fields = ("vertex_id", "state_sha256", "members", "quorum", "authority_resource")
+        left_boundary = ({key: left.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: left.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
+        right_boundary = ({key: right.get("source_configuration", {}).get(key) for key in boundary_fields}, {key: right.get("expected_endpoint_configuration", {}).get(key) for key in boundary_fields})
+        boundary_equal = left_boundary == right_boundary
+        support_equal = set(left.get("expected_endpoint_configuration", {}).get("support", [])) == set(right.get("expected_endpoint_configuration", {}).get("support", []))
+        if not boundary_equal:
+            errors.append("configuration_coherence_boundary_mismatch")
+        if not support_equal:
+            errors.append("configuration_coherence_support_mismatch")
+        root_map = cell.get("root_identification", {})
+        left_roots = {root for edge in left.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
+        right_roots = {root for edge in right.get("edges", []) for root in edge.get("bridge_authority_roots", {}).values()}
+        translated_faults = {tuple(sorted(root_map.get(root, "") for root in fault)) for fault in left.get("admissible_authority_root_fault_sets", [])}
+        right_faults = {tuple(sorted(fault)) for fault in right.get("admissible_authority_root_fault_sets", [])}
+        fault_descent = set(root_map) == left_roots and set(root_map.values()) == right_roots and translated_faults == right_faults
+        if not fault_descent:
+            errors.append("configuration_coherence_fault_descent_failure")
+        if not cell.get("id") or not cell.get("source_derived") or not cell.get("invertible") or not cell.get("preserves_boundary_signature") or not cell.get("preserves_support_union"):
+            errors.append("configuration_coherence_cell_untyped")
+        if cell.get("loop_action") != "identity":
+            errors.append("configuration_authority_holonomy_nontrivial")
+        audits.append({"id": item["id"], "passed": not errors, "errors": sorted(set(errors)), "paths": [item.get("left_path_id"), item.get("right_path_id")], "raw_presentations_equal": [edge.get("id") for edge in left.get("edges", [])] == [edge.get("id") for edge in right.get("edges", [])], "boundary_equal": boundary_equal, "support_equal": support_equal, "fault_hypergraph_descends": fault_descent, "coherence_cell": cell.get("id"), "loop_action": cell.get("loop_action")})
+    return audits
+
+
+def audit_configuration_coherence_coverage(contract: dict[str, Any]) -> list[dict[str, Any]]:
+    provided = {frozenset((item.get("left_path_id"), item.get("right_path_id"))) for item in contract.get("configuration_path_coherence_audits", [])}
+    audits = []
+    for required in contract.get("required_configuration_path_comparisons", []):
+        pair = frozenset((required.get("left_path_id"), required.get("right_path_id")))
+        covered = len(pair) == 2 and pair in provided
+        audits.append({"paths": sorted(pair), "passed": covered, "errors": [] if covered else ["configuration_coherence_required_pair_uncovered"]})
+    return audits
+
+
 def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = None) -> dict[str, Any]:
     results = [check_pair(pair) for pair in contract["critical_pairs"]]
     pair_ids = {item["id"] for item in results}
@@ -695,10 +799,13 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
     chain_audits = audit_epoch_successor_chains(contract)
     reconfiguration_audits = audit_native_reconfiguration_constructors(contract)
     configuration_path_audits = audit_configuration_paths(contract)
+    configuration_category_audits = audit_configuration_category(contract)
+    configuration_coherence_audits = audit_configuration_path_coherence(contract, configuration_path_audits)
+    configuration_coherence_coverage = audit_configuration_coherence_coverage(contract)
     defaults_forbidden = not contract.get("legacy_projection_audit", {}).get("permit_defaulting", True)
     return {
         "schema": "marici.dpc-core-normalizer-result.v1",
-        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
+        "passed": all(item["passed"] for item in results + normalization_results + successor_audits + execution_audits + cocircuit_audits + resource_ssa_audits + projection_audits + chain_audits + reconfiguration_audits + configuration_path_audits + configuration_category_audits + configuration_coherence_audits + configuration_coherence_coverage) and all(item["covered"] for item in overlaps) and defaults_forbidden and all(item["compiled"] for item in native_audits),
         "rule_count": len(contract["rewrite_rules"]),
         "critical_pair_count": len(results),
         "critical_pairs": results,
@@ -720,4 +827,7 @@ def compile_contract(contract: dict[str, Any], legacy: dict[str, Any] | None = N
         "epoch_successor_chains": chain_audits,
         "native_reconfiguration_constructors": reconfiguration_audits,
         "configuration_paths": configuration_path_audits,
+        "configuration_category": configuration_category_audits,
+        "configuration_path_coherence": configuration_coherence_audits,
+        "configuration_coherence_coverage": configuration_coherence_coverage,
     }
