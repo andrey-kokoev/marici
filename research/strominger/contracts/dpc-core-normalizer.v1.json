@@ -85,6 +85,23 @@
     {"id":"tcb_signer_independence","target":"successor:advance_e_0_to_e_1","assumption":"independent_configuration_signer_roots","primitive_failure_class":"signer_fork","singleton_deletion_error":"epoch_successor_signer_fault_model_unsafe"},
     {"id":"tcb_attestation_freshness","target":"successor:advance_e_0_to_e_1","assumption":"transition_nonce_binding","primitive_failure_class":"attestation_replay","singleton_deletion_error":"epoch_successor_attestation_stale_or_correlated"}
   ],
+  "resource_ssa_programs": [
+    {
+      "id":"native_challenge_resource_flow",
+      "nodes":[
+        {"id":"n0","kind":"issue","output":"r0","amount":2,"source_authorized":true},
+        {"id":"n1","kind":"partition","input":"r0","outputs":{"rA":1,"rB":1}},
+        {"id":"n2","kind":"reserve","input":"rA","output":"holdA"},
+        {"id":"n3","kind":"consume","input":"holdA","effect_output":"effectA","resource_region":"A"},
+        {"id":"n4","kind":"reserve","input":"rB","output":"holdB"},
+        {"id":"n5","kind":"release","input":"holdB","output":"rB_released","release_authority":"abort-certificate-B"},
+        {"id":"n6","kind":"consume","input":"rB_released","effect_output":"effectB","resource_region":"B"},
+        {"id":"n7","kind":"compensate","input":"effectA","settlement_output":"settledA","compensation_authority":"compensate-effect-A","restores_original_capability":false}
+      ],
+      "concurrency_pairs":[{"left":"n3","right":"n6","linearization_witness":null}],
+      "expected_terminal_states":{"effectB":"effect","settledA":"settled"}
+    }
+  ],
   "active_rewrite_footprints": {
     "partition_flattening": ["resource"],
     "scope_attenuation": ["scope"],
