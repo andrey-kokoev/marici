@@ -148,6 +148,12 @@ The machine-readable fixture suite rejects:
 81. nonmonotone fencing epochs;
 82. execution under a stale partition grant;
 83. eventual recovery mislabeled as availability during partition.
+84. disjoint authorized quorums;
+85. an intersection replica allowed to equivocate;
+86. volatile vote memory across restart;
+87. signatures treated as preventing double-signing;
+88. durable storage hidden as a consequence of quorum mathematics;
+89. a safety proof extrapolated to unconditional liveness.
 
 These realize the decisive falsifier: local validity does not guarantee a
 factorization-independent or kind-preserving composite.
@@ -725,6 +731,43 @@ separate requirements:
 Consensus without the grant chooses a winner without authority. A grant
 without consensus authorizes multiple indistinguishable winners. Fencing is
 what makes a formerly authorized but now stale winner non-executable.
+
+### Linearizer constructor theorem: open the atomic register
+
+The shared register can be replaced by three authorized replicas
+(r_1,r_2,r_3) and the majority quorums
+
+\[
+\{r_1,r_2\},\qquad\{r_2,r_3\},\qquad\{r_1,r_3\}.
+\]
+
+Every two winning quorums intersect. Suppose two conflicting consumption
+certificates are attempted in the same fencing epoch. Their quorum
+intersection contains a replica that would have to vote for both values. If
+each replica has a source-authorized, append-only, monotone vote cell that
+survives restart, the second vote is rejected. Hence the second certificate
+cannot be constructed.
+
+\[
+\boxed{
+Q_1\cap Q_2\ne\varnothing
++\text{durable non-equivocation on }Q_1\cap Q_2
+\Longrightarrow
+\text{unique winning certificate}.}
+\]
+
+This finally exposes the atomic register's internal explanation. It also
+locates the remaining constructor boundary. Quorum intersection is
+mathematical; durable non-equivocation is a physical or computational storage
+assumption requiring its own implementation authority. Digital signatures
+authenticate who voted but do not stop an authorized replica from signing two
+conflicting values.
+
+The smallest explicit resource is one monotone durable vote cell per
+authorized replica. Its concrete realization may be stable storage, trusted
+hardware, or another source-authorized constructor. The calculus does not
+derive that physics from set intersection, and the safety theorem makes no
+unconditional liveness claim.
 
 ### Refinement law: higher coherence
 

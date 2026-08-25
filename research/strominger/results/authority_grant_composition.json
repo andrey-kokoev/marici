@@ -133,7 +133,7 @@
     }
   },
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "4cddd26298ede640456bf0a8a8ef43fa4400a131c1fb8caf48aaed9e9b7d8e57",
+  "contract_sha256": "4533a646eb0ceabe8d9afea82989ac4103b6d03ee13d269660db014833bab221",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
@@ -164,13 +164,16 @@
     "identity_laws_declared_twice": true,
     "incomplete_speculation_cannot_open_challenge": true,
     "independent_successor_atlases_are_flat": true,
+    "intersection_replica_enforces_durable_non_equivocation": true,
     "kitaev_has_no_composable_physical_authority": true,
     "kitaev_rail_base_change_preserves_evidence_not_authority": true,
     "live_successor_roots_restore_prospective_standing": true,
+    "majority_quorums_intersect_pairwise": true,
     "mechanism_identification_is_explicitly_bounded": true,
     "missing_alternative_executor_is_presentation_only": true,
     "new_rival_has_independent_constructor_authority": true,
     "new_rival_suspends_identification_authority": true,
+    "physical_non_equivocation_boundary_is_explicit": true,
     "presentation_atlas_has_zero_holonomy": true,
     "presentation_cells_are_invertible_and_kind_preserving": true,
     "proposer_identity_does_not_change_admission": true,
@@ -426,6 +429,16 @@
       "passed": true,
       "valid": false
     },
+    "durable_cell_hidden_as_mathematical_consequence": {
+      "description": "The physical storage constructor is claimed to follow from quorum intersection alone.",
+      "error_codes": [
+        "durability_falsely_derived_from_intersection",
+        "hidden_physical_linearization_oracle"
+      ],
+      "expected_code": "hidden_physical_linearization_oracle",
+      "passed": true,
+      "valid": false
+    },
     "effective_descent_with_hidden_ambiguity": {
       "description": "A global grant is reconstructed but a nonzero ambiguity kernel makes it nonunique.",
       "error_codes": [
@@ -541,6 +554,16 @@
       "passed": true,
       "valid": false
     },
+    "intersection_replica_can_equivocate": {
+      "description": "The shared replica has no durable append-only vote cell and can authorize both values.",
+      "error_codes": [
+        "incorrect_linearization_conflict_exclusion",
+        "missing_durable_replica_non_equivocation"
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation",
+      "passed": true,
+      "valid": false
+    },
     "interventions_leave_rival_mechanism_kernel": {
       "description": "Two valid probes leave one inequivalent candidate mechanism unresolved.",
       "error_codes": [
@@ -556,6 +579,15 @@
         "missing_shared_linearization_authority"
       ],
       "expected_code": "missing_shared_linearization_authority",
+      "passed": true,
+      "valid": false
+    },
+    "linearizer_uses_disjoint_quorums": {
+      "description": "Two authorized winning quorums have no shared replica capable of blocking a conflicting certificate.",
+      "error_codes": [
+        "linearization_quorum_intersection_failure"
+      ],
+      "expected_code": "linearization_quorum_intersection_failure",
       "passed": true,
       "valid": false
     },
@@ -677,6 +709,15 @@
         "representation_removal_destroys_composite"
       ],
       "expected_code": "representation_removal_destroys_composite",
+      "passed": true,
+      "valid": false
+    },
+    "replica_vote_memory_is_volatile": {
+      "description": "A restart erases the prior vote, allowing the intersection replica to sign a conflict in the same epoch.",
+      "error_codes": [
+        "missing_durable_replica_non_equivocation"
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation",
       "passed": true,
       "valid": false
     },
@@ -834,6 +875,24 @@
       "passed": true,
       "valid": false
     },
+    "safety_proof_claims_unconditional_liveness": {
+      "description": "Quorum intersection safety is extrapolated to progress under arbitrary failures and partitions.",
+      "error_codes": [
+        "unbounded_linearization_liveness_claim"
+      ],
+      "expected_code": "unbounded_linearization_liveness_claim",
+      "passed": true,
+      "valid": false
+    },
+    "signatures_claim_to_prevent_double_signing": {
+      "description": "Authentication is incorrectly treated as a constructor that prevents an authorized signer from signing twice.",
+      "error_codes": [
+        "signature_authentication_misclassified_as_non_equivocation"
+      ],
+      "expected_code": "signature_authentication_misclassified_as_non_equivocation",
+      "passed": true,
+      "valid": false
+    },
     "site_partition_occurs_after_distribution": {
       "description": "Both sites first receive the unrestricted token and site scope is assigned only after they may execute.",
       "error_codes": [
@@ -988,14 +1047,15 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "a4a6c29c11d303fdc5d123a65350dba07d054381b1aa458471671591f7e60264",
-  "hostile_passed": 83,
-  "hostile_total": 83,
+  "hostile_fixture_sha256": "b8d22fc5adb2b75080abb3918b74966a1b6edb5915929a2382565f587a36db0c",
+  "hostile_passed": 89,
+  "hostile_total": 89,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
+  "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 63,
+  "passed_gates": 66,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -1005,6 +1065,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 63,
+  "total_gates": 66,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

@@ -82,6 +82,7 @@ def main():
     capability_executions = {item["id"]: item for item in packet["authority_capability_execution_audits"]}
     distributed_audits = {item["id"]: item for item in packet["distributed_capability_consumption_audits"]}
     trilemma_audits = {item["id"]: item for item in packet["distributed_linearity_trilemma_audits"]}
+    constructor_networks = {item["id"]: item for item in packet["linearization_constructor_networks"]}
 
     certificate_deletion_results = {}
     generator_collections = (
@@ -362,6 +363,25 @@ def main():
             and trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["new_fencing_epoch"]
             > trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["old_fencing_epoch"]
             and not trilemma_audits["single_use_safety_availability_partition_trilemma"]["safe_partition_run"]["stale_epoch_execution_permitted"],
+        "majority_quorums_intersect_pairwise": all(
+            set(constructor_networks["three_replica_majority_linearizer"]["authorized_quorums"][i])
+            & set(constructor_networks["three_replica_majority_linearizer"]["authorized_quorums"][j])
+            for i in range(len(constructor_networks["three_replica_majority_linearizer"]["authorized_quorums"]))
+            for j in range(i + 1, len(constructor_networks["three_replica_majority_linearizer"]["authorized_quorums"]))
+        ),
+        "intersection_replica_enforces_durable_non_equivocation":
+            constructor_networks["three_replica_majority_linearizer"]["conflict_exclusion_proof"]["intersection_witness"] == ["r2"]
+            and constructor_networks["three_replica_majority_linearizer"]["conflict_exclusion_proof"]["witness_rejects_second_vote"]
+            and not constructor_networks["three_replica_majority_linearizer"]["conflict_exclusion_proof"]["second_certificate_constructible"]
+            and all(
+                replica["durable_append_only_vote_cell"] and replica["survives_restart"] and replica["monotone_epoch"]
+                for replica in constructor_networks["three_replica_majority_linearizer"]["replicas"]
+            ),
+        "physical_non_equivocation_boundary_is_explicit":
+            constructor_networks["three_replica_majority_linearizer"]["implementation_boundary"]["durable_cell_status"]
+            == "explicit_constructor_assumption"
+            and constructor_networks["three_replica_majority_linearizer"]["implementation_boundary"]["requires_storage_authority"]
+            and not constructor_networks["three_replica_majority_linearizer"]["implementation_boundary"]["claims_derived_from_quorum_math"],
         "atlas_refinement_preserves_global_reconstruction":
             refinements["refine_B_atlas_by_Bprime"]["reconstruction_defect"] == 0
             and refinements["refine_B_atlas_by_Bprime"]["authority_kind_before"]
@@ -410,6 +430,7 @@ def main():
         "capability_execution_verdict": "A replayed certificate becomes executable only through an atomic revocation-epoch lease binding one exact operation, target, and single-use nonce. Epoch change aborts execution; the lease cannot widen scope, survive expiry, or upgrade challenge standing.",
         "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
         "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
+        "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
         "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

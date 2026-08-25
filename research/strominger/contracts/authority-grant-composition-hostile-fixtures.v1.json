@@ -671,6 +671,54 @@
         {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "eventual_recovery_counted_as_partition_availability", "value": true}
       ],
       "expected_code": "eventual_recovery_laundered_as_immediate_availability"
+    },
+    {
+      "id": "linearizer_uses_disjoint_quorums",
+      "description": "Two authorized winning quorums have no shared replica capable of blocking a conflicting certificate.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "authorized_quorums", "value": [["r1"], ["r2", "r3"]]}
+      ],
+      "expected_code": "linearization_quorum_intersection_failure"
+    },
+    {
+      "id": "intersection_replica_can_equivocate",
+      "description": "The shared replica has no durable append-only vote cell and can authorize both values.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":false,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation"
+    },
+    {
+      "id": "replica_vote_memory_is_volatile",
+      "description": "A restart erases the prior vote, allowing the intersection replica to sign a conflict in the same epoch.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":false,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation"
+    },
+    {
+      "id": "signatures_claim_to_prevent_double_signing",
+      "description": "Authentication is incorrectly treated as a constructor that prevents an authorized signer from signing twice.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":true},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "signature_authentication_misclassified_as_non_equivocation"
+    },
+    {
+      "id": "durable_cell_hidden_as_mathematical_consequence",
+      "description": "The physical storage constructor is claimed to follow from quorum intersection alone.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "implementation_boundary", "value": {"durable_cell_status":"derived_theorem","requires_storage_authority":false,"claims_derived_from_quorum_math":true,"smallest_physical_resource":"none"}}
+      ],
+      "expected_code": "hidden_physical_linearization_oracle"
+    },
+    {
+      "id": "safety_proof_claims_unconditional_liveness",
+      "description": "Quorum intersection safety is extrapolated to progress under arbitrary failures and partitions.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "claims_unconditional_liveness", "value": true}
+      ],
+      "expected_code": "unbounded_linearization_liveness_claim"
     }
   ]
 }

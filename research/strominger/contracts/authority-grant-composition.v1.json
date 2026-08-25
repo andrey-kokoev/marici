@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "b05bfcbcaaa202ff97131f8fa9f3718f623108a002d5becbe3a39fedb7a24bf1",
+      "replay_checker_sha256": "c1d463bb9d97d33d56b8d860d4f558d0bf0c716ad4e8b3c01eee3e9ea1ed1b0a",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -672,6 +672,36 @@
       },
       "eventual_recovery_counted_as_partition_availability": false,
       "theorem_scope": "two authority loci, one globally single-use capability, arbitrary communication partition"
+    }
+  ],
+  "linearization_constructor_networks": [
+    {
+      "id": "three_replica_majority_linearizer",
+      "replicas": [
+        {"id": "r1", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false},
+        {"id": "r2", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false},
+        {"id": "r3", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false}
+      ],
+      "authorized_quorums": [["r1", "r2"], ["r2", "r3"], ["r1", "r3"]],
+      "conflict_exclusion_proof": {
+        "epoch": 8,
+        "same_epoch": true,
+        "conflicting_values": ["consume_at_site_A", "consume_at_site_B"],
+        "first_quorum": ["r1", "r2"],
+        "second_quorum": ["r2", "r3"],
+        "intersection_witness": ["r2"],
+        "witness_prior_vote": "consume_at_site_A",
+        "witness_rejects_second_vote": true,
+        "second_certificate_constructible": false
+      },
+      "implementation_boundary": {
+        "durable_cell_status": "explicit_constructor_assumption",
+        "requires_storage_authority": true,
+        "claims_derived_from_quorum_math": false,
+        "smallest_physical_resource": "one monotone durable vote cell per authorized replica"
+      },
+      "claims_unconditional_liveness": false,
+      "theorem": "pairwise quorum intersection plus durable per-epoch non-equivocation implies uniqueness of a winning consumption certificate"
     }
   ],
   "application_cases": [
