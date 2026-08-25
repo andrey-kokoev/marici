@@ -134,7 +134,7 @@
   },
   "common_cause_discovery_verdict": "A source-derived intervention row generates a fault hyperedge from its nonzero replica support. Discovering the shared-build edge {r1,r2} enlarges the fault family and suspends the former 3-of-4 safety claim; safety is revalidated only on a topology whose catalog retains that edge. Independence remains relative to the tested constructor grammar.",
   "compression_verdict": "The current authority stack compresses to a finite proof-carrying capability: eleven typed bundle generators, an acyclic replay DAG, and eleven deletion witnesses actually replayed against the compiler. Minimality is relative to the declared DPC constructor grammar, and the checker digest identifies the replay program but carries no authority.",
-  "contract_sha256": "a7fc17950d4127d38a13b071088e06ece4976472cbc0baf9afe752dfda1268ad",
+  "contract_sha256": "fc48e02d3a9c100afabbca8a24d09e123b894e4dbec67c42b8f35192c7512361",
   "descent_verdict": "Flat local presentation coherence is necessary but insufficient: the local grants must glue effectively and uniquely to a global authority grant, remain invariant under atlas refinement, and survive deletion only when an independent source reconstruction remains.",
   "distributed_consumption_verdict": "Two sites with identical valid local views and no pre-execution communication cannot deterministically guarantee exactly one success: symmetry permits only (0,0) or (1,1). True global single use requires a source-authorized shared linearizer; pre-distribution site partition restricts the eligible locus, while concurrent success changes the resource to bounded multiplicity.",
   "distributed_linearity_trilemma_verdict": "For one globally linear capability, single-use safety, availability at both authority loci, and partition tolerance cannot coexist. A safe partitioned linearizer serves only the source-authorized quorum component, fences stale epochs, and fails closed elsewhere; eventual recovery is not availability during partition.",
@@ -194,6 +194,7 @@
     "probe_grammar_capability_is_atomically_epoch_bound": true,
     "probe_grammar_coverage_is_source_relative": true,
     "proposer_identity_does_not_change_admission": true,
+    "quorum_certificate_linearizes_epoch_digest_pair": true,
     "removing_B_preserves_process_only_with_direct_source_grant": true,
     "review_authority_roots_are_externally_certified": true,
     "review_root_independence_has_zero_coherence_defect": true,
@@ -205,6 +206,7 @@
     "rival_review_preserves_operative_authority_kind": true,
     "rival_reviewers_have_independent_authority_roots": true,
     "safe_partition_run_fails_closed_with_fencing": true,
+    "same_epoch_local_views_can_fork_on_manifest_digest": true,
     "shared_linearizer_is_minimal_true_single_use_repair": true,
     "source_authorized_gauge_descends_stackily": true,
     "source_deletion_revokes_authority_not_cached_output": true,
@@ -738,9 +740,19 @@
     "linearizer_uses_disjoint_quorums": {
       "description": "Two authorized winning quorums have no shared replica capable of blocking a conflicting certificate.",
       "error_codes": [
-        "linearization_quorum_intersection_failure"
+        "linearization_quorum_intersection_failure",
+        "manifest_certificate_quorums_not_coherent"
       ],
       "expected_code": "linearization_quorum_intersection_failure",
+      "passed": true,
+      "valid": false
+    },
+    "local_manifest_checks_claim_global_consistency": {
+      "description": "Two sites atomically validate different digests at the same epoch and nevertheless claim one global manifest.",
+      "error_codes": [
+        "local_manifest_atomicity_laundered_as_global_consistency"
+      ],
+      "expected_code": "local_manifest_atomicity_laundered_as_global_consistency",
       "passed": true,
       "valid": false
     },
@@ -759,6 +771,24 @@
         "probe_grammar_erases_open_frontier"
       ],
       "expected_code": "probe_grammar_erases_open_frontier",
+      "passed": true,
+      "valid": false
+    },
+    "manifest_certificate_binds_epoch_not_digest": {
+      "description": "The quorum agrees on an epoch number while remaining free to certify two different manifests in that epoch.",
+      "error_codes": [
+        "manifest_certificate_does_not_bind_digest"
+      ],
+      "expected_code": "manifest_certificate_does_not_bind_digest",
+      "passed": true,
+      "valid": false
+    },
+    "manifest_digest_fork_survives_quorum": {
+      "description": "The quorum layer is called a repair although it can certify conflicting digests at one epoch.",
+      "error_codes": [
+        "manifest_digest_fork_survives_linearization"
+      ],
+      "expected_code": "manifest_digest_fork_survives_linearization",
       "passed": true,
       "valid": false
     },
@@ -786,6 +816,15 @@
         "non_atomic_manifest_epoch_check"
       ],
       "expected_code": "non_atomic_manifest_epoch_check",
+      "passed": true,
+      "valid": false
+    },
+    "manifest_linearizer_has_no_configuration_role": {
+      "description": "A consumption quorum is reused for configuration selection without a source grant for that operation.",
+      "error_codes": [
+        "manifest_linearizer_lacks_configuration_authority"
+      ],
+      "expected_code": "manifest_linearizer_lacks_configuration_authority",
       "passed": true,
       "valid": false
     },
@@ -1339,15 +1378,15 @@
       "valid": false
     }
   },
-  "hostile_fixture_sha256": "d90410cc70291f9cc6e077cc4081ba3114ff83c9520a720532f9484734056324",
-  "hostile_passed": 119,
-  "hostile_total": 119,
+  "hostile_fixture_sha256": "4fa1762e55635d4d03fb92abb95f425969469b6be0a5a142f96fea71ce635104",
+  "hostile_passed": 123,
+  "hostile_total": 123,
   "identification_verdict": "Interventions identify a mechanism only relative to a declared candidate family: the exact observation matrix must have no kernel beyond source-authorized gauge, the ports must be source-derived, and finite rank may not be extrapolated to a universal explanatory claim.",
   "intervention_verdict": "A provenance graph becomes explanatory only when source interventions regenerate downstream coherence, target interventions leave upstream authority fixed, and source deletion revokes authority even if cached output persists.",
   "linearizer_constructor_verdict": "The atomic linearizer is realized by a three-replica majority network: every two winning quorums intersect, and the shared replica's durable monotone vote cell forbids conflicting certificates in one epoch. Quorum math proves safety conditional on that storage constructor; signatures authenticate votes but do not prevent double-signing, and liveness is not implied.",
   "open_world_verdict": "A new rival that enlarges the non-gauge kernel suspends identification authority. Authority returns only after a newly source-derived discriminator makes the extended family jointly faithful; no finite repair closes the space of future rivals.",
   "passed": true,
-  "passed_gates": 80,
+  "passed_gates": 82,
   "provenance_verdict": "Even effective descent is explanatory only when every coherence and gluing witness is generated along an acyclic source-to-readout provenance order, independently of the desired target, and can be regenerated in a source-preserving replay.",
   "representation_change_verdict": "A claimed explanation survives removal or replacement of B only when the induced A-to-C grant keeps its process signature and any non-identical presentation is joined by a source-derived invertible natural coherence cell. Otherwise it explains a presentation.",
   "review_root_verdict": "Reviewer independence is derived from externally chartered, revocable procedural roots with no shared controlling ancestry and a challenge-standing ceiling. Distinct labels are insufficient, self-certification is circular, and appeal requires its own certified jurisdiction.",
@@ -1357,6 +1396,6 @@
   "temporal_atlas_verdict": "Replay is path-independent only when disjoint certified successor atlases reviewing the same frozen packet under a precommitted comparison law agree. Disagreement is governance holonomy that suspends standing; a higher appeal cell may compare or restart procedure but cannot overwrite it into truth.",
   "temporal_authority_verdict": "Revocation preserves the historical review record but suspends prospective challenge standing. Live authority returns only after the identical frozen evidence packet is replayed through roots certified at replay time; cached decisions are not continuing grants.",
   "temporal_cocycle_verdict": "Pairwise agreement of three replay dispositions is insufficient: the direct comparison cell must equal the two-step comparison up to zero cocycle defect. Nonzero triangular holonomy makes the governance explanation factorization-dependent even when every output agrees.",
-  "total_gates": 80,
+  "total_gates": 82,
   "verdict": "Authority grants form a partial category only on matching authority kind, variance, endpoints, and evidenced domains. Transport preserves kind, intersection restricts domains, extension requires fresh authority, and both triple composition and representation change require explicit zero-defect coherence."
 }

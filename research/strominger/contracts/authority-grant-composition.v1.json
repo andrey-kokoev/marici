@@ -513,7 +513,7 @@
       "claims_absolute_minimality": false,
       "digest_confers_authority": false,
       "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
-      "replay_checker_sha256": "6bbd7ec4512fc31e5116d669921802642566217a48bdd2d91c9bacc1dc1b40c4",
+      "replay_checker_sha256": "7a9c5d8cc8aa67f12cf6f2e332b551ae055d951a84b54b7fc14e4abd88fd5cbd",
       "generators": [
         {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
         {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
@@ -867,6 +867,31 @@
         "old_capability_execution_permitted": false,
         "grammar_replay_required": true,
         "positive_discoveries_retained": [["r1", "r2"]]
+      }
+    }
+  ],
+  "distributed_manifest_epoch_audits": [
+    {
+      "id": "two_site_manifest_fork_and_repair",
+      "probe_grammar_epoch_audit": "manifest_v2_epoch_binding",
+      "local_views": [
+        {"site": "site_A", "epoch": 12, "manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "local_atomic_check": true},
+        {"site": "site_B", "epoch": 12, "manifest_sha256": "9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478", "local_atomic_check": true}
+      ],
+      "identical_epoch_numbers_imply_identical_manifest": false,
+      "local_checks_imply_global_consistency": false,
+      "fork_is_constructible_before_communication": true,
+      "repair": {
+        "linearization_network": "three_replica_majority_linearizer",
+        "certificate_value_fields": ["epoch", "manifest_sha256"],
+        "certificate_epoch": 12,
+        "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+        "certificate_quorum": ["r1", "r2"],
+        "conflicting_certificate_quorum": ["r2", "r3"],
+        "intersection_witness": ["r2"],
+        "durable_non_equivocation": true,
+        "conflicting_same_epoch_digest_certificate_constructible": false,
+        "source_authorized_configuration_role": true
       }
     }
   ],

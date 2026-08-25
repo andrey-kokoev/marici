@@ -1176,6 +1176,37 @@ def validate(packet: dict[str, Any]) -> list[Error]:
         if ["r1", "r2"] not in drift.get("positive_discoveries_retained", []):
             err("manifest_drift_drops_positive_discovery", eid, str(drift.get("positive_discoveries_retained")))
 
+    # Local atomicity does not make a distributed manifest view unique. The
+    # globally linearized value is the pair (epoch, digest), certified by an
+    # authorized intersecting quorum with durable non-equivocation.
+    epoch_audits = {item["id"]: item for item in packet.get("probe_grammar_epoch_audits", [])}
+    networks = {item["id"]: item for item in packet.get("linearization_constructor_networks", [])}
+    for audit in packet.get("distributed_manifest_epoch_audits", []):
+        aid = audit["id"]
+        views = audit.get("local_views", [])
+        if audit.get("probe_grammar_epoch_audit") not in epoch_audits or len(views) != 2:
+            err("distributed_manifest_audit_untyped", aid, str(len(views)))
+            continue
+        same_epoch = views[0].get("epoch") == views[1].get("epoch")
+        different_digest = views[0].get("manifest_sha256") != views[1].get("manifest_sha256")
+        if same_epoch and different_digest and (audit.get("identical_epoch_numbers_imply_identical_manifest") or audit.get("local_checks_imply_global_consistency")):
+            err("local_manifest_atomicity_laundered_as_global_consistency", aid, str(views))
+        if not (same_epoch and different_digest and audit.get("fork_is_constructible_before_communication")):
+            err("distributed_manifest_fork_witness_missing", aid, str(views))
+        repair = audit.get("repair", {})
+        network = networks.get(repair.get("linearization_network"))
+        if network is None or not repair.get("source_authorized_configuration_role"):
+            err("manifest_linearizer_lacks_configuration_authority", aid, str(repair.get("linearization_network")))
+            continue
+        if set(repair.get("certificate_value_fields", [])) != {"epoch", "manifest_sha256"}:
+            err("manifest_certificate_does_not_bind_digest", aid, str(repair.get("certificate_value_fields")))
+        first, second = set(repair.get("certificate_quorum", [])), set(repair.get("conflicting_certificate_quorum", []))
+        overlap = first & second
+        if first not in [set(q) for q in network.get("authorized_quorums", [])] or second not in [set(q) for q in network.get("authorized_quorums", [])] or set(repair.get("intersection_witness", [])) != overlap:
+            err("manifest_certificate_quorums_not_coherent", aid, str(sorted(overlap)))
+        if not repair.get("durable_non_equivocation") or repair.get("conflicting_same_epoch_digest_certificate_constructible"):
+            err("manifest_digest_fork_survives_linearization", aid, str(repair.get("conflicting_same_epoch_digest_certificate_constructible")))
+
     return errors
 
 
@@ -1194,6 +1225,7 @@ def compile_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "probe_grammar_authority_audit_count": len(packet.get("probe_grammar_authority_audits", [])),
         "probe_grammar_boundary_audit_count": len(packet.get("probe_grammar_boundary_audits", [])),
         "probe_grammar_epoch_audit_count": len(packet.get("probe_grammar_epoch_audits", [])),
+        "distributed_manifest_epoch_audit_count": len(packet.get("distributed_manifest_epoch_audits", [])),
         "presentation_coherence_cell_count": len(packet.get("presentation_coherence_cells", [])),
         "presentation_atlas_count": len(packet.get("presentation_atlas_coherence", [])),
         "authority_descent_object_count": len(packet.get("authority_descent_objects", [])),
