@@ -1,0 +1,49 @@
+{
+  "work_package": "WP306",
+  "pipeline": "free source moduli theta -> selected physical coordinates x_star -> calibrated detector records y",
+  "source_predictivity_jacobian": "J_src=d x_star/d theta; required rank 0 after quotienting admitted source redundancies",
+  "detector_faithfulness_jacobian": "J_det=d y/d x; required full column rank, equivalently det(J_det^T W J_det)>0 for positive calibrated W",
+  "exact_cases": {
+    "both": {
+      "source_rank": 0,
+      "detector_rank": 2,
+      "detector_gram_determinant": "6",
+      "predictive": true,
+      "instrument_faithful": true
+    },
+    "prediction_only": {
+      "source_rank": 0,
+      "detector_rank": 1,
+      "detector_gram_determinant": "0",
+      "predictive": true,
+      "instrument_faithful": false
+    },
+    "readout_only": {
+      "source_rank": 2,
+      "detector_rank": 2,
+      "detector_gram_determinant": "6",
+      "predictive": false,
+      "instrument_faithful": true
+    },
+    "neither": {
+      "source_rank": 2,
+      "detector_rank": 1,
+      "detector_gram_determinant": "0",
+      "predictive": false,
+      "instrument_faithful": false
+    }
+  },
+  "classification": "predictivity and instrument faithfulness are independent gates on opposite arrows; zero source response and full detector response are compatible and jointly required for an identified numerical prediction",
+  "smallest_exact_falsifier": "J_src=I and J_det=I gives perfect readout but no source prediction; J_src=0 and rank-one J_det gives prediction without identifiable detector response",
+  "remaining_physical_instrument_gate": "derive a zero-rank source-to-physical16 image on the admitted source quotient and a full-rank calibrated physical16-to-record response in the same support domain",
+  "checks": {
+    "both_case_passes_both_gates": true,
+    "prediction_only_case_has_detector_kernel": true,
+    "readout_only_case_has_source_ambiguity": true,
+    "neither_case_fails_both_gates": true,
+    "full_detector_gram_is_positive": true,
+    "rank_one_detector_gram_is_singular": true,
+    "source_and_detector_ranks_are_logically_independent": true
+  },
+  "passed": true
+}

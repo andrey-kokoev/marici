@@ -1,0 +1,51 @@
+{
+  "work_package": "WP305",
+  "criterion": "after quotienting genuine source redundancies, rank(d x_star/d theta)=0 is necessary for a parameter-independent point prediction on the admitted source family",
+  "rank_audits": {
+    "wp301_unconstrained_linear_source": {
+      "free_parameters": [
+        "b1",
+        "b2"
+      ],
+      "physical_response_rank": 2
+    },
+    "wp302_swap_symmetric_source": {
+      "free_parameters": [
+        "beta"
+      ],
+      "physical_response_rank": 1
+    },
+    "wp303_projective_ratio": {
+      "free_parameters": [
+        "beta"
+      ],
+      "projective_response_rank": 0
+    },
+    "wp303_normalization_lift": {
+      "free_parameters": [
+        "radius"
+      ],
+      "physical_response_rank": 1
+    },
+    "wp304_dimensional_transmutation": {
+      "free_parameters": [
+        "g0"
+      ],
+      "scale_response_rank": 1,
+      "response": "reference_scale*exp(-1/(beta_coefficient*boundary_coupling))/(beta_coefficient*boundary_coupling**2)"
+    }
+  },
+  "classification": "source-modulus response rank measures local predictive ambiguity; quotienting can remove redundant directions, but every physical normalization modulus must also have zero response or independent selection",
+  "smallest_exact_falsifier": "swap symmetry reduces the physical ambiguity rank from two to one, but only the projective quotient makes it zero; lifting by a free radius returns rank one",
+  "scope_limit": "zero response rank is necessary, not sufficient: disconnected branches, global monodromy, coefficient provenance, dynamics, descent, and instruments remain separate gates",
+  "remaining_physical_instrument_gate": "enumerate the actual source moduli, quotient only admitted redundancies, compute the full source-to-physical16 response rank with uncertainty, and derive operations selecting every surviving responsive modulus",
+  "checks": {
+    "unconstrained_quadratic_source_has_rank_two_ambiguity": true,
+    "swap_symmetric_source_has_rank_one_physical_ambiguity": true,
+    "projective_ratio_kills_amplitude_response": true,
+    "normalization_lift_restores_rank_one_response": true,
+    "dimensional_transmutation_retains_boundary_response": true,
+    "transmutation_response_formula_is_exact": true
+  },
+  "passed": true
+}

@@ -1,0 +1,37 @@
+{
+  "work_package": "WP307",
+  "theorem_domain": "two-coordinate Euclidean source and detector Jacobians with spectral-norm-bounded additive uncertainty",
+  "source_gate": {
+    "nominal_rank": 0,
+    "hostile_completion_norm": "1/100",
+    "hostile_completion_rank": 1,
+    "exact_rule": "rank-zero predictivity must hold for every admitted completion; a merely small response authorizes only approximate sensitivity bounds"
+  },
+  "detector_gate": {
+    "nominal_singular_values": [
+      "1",
+      "2"
+    ],
+    "uncertainty_radius": "1/2",
+    "weyl_lower_bound": "1/2",
+    "boundary_singular_values": [
+      "0",
+      "2"
+    ],
+    "robust_rule": "sigma_min(J_det_nominal)>epsilon guarantees full rank for every spectral-norm perturbation of size at most epsilon"
+  },
+  "classification": "exact source predictivity needs a structural zero over the entire support, while detector faithfulness admits a quantitative positive singular-value margin",
+  "smallest_exact_falsifier": "a source response diag(1/100,0) is small but rank one; a detector perturbation diag(0,-1) at the nominal unit margin kills rank",
+  "remaining_physical_instrument_gate": "derive an exact symmetry or source theorem forcing J_src=0 on all admitted completions and calibrate a detector sigma_min margin that survives uncertainty and support completion",
+  "checks": {
+    "nominal_source_rank_is_zero": true,
+    "arbitrarily_small_admitted_source_completion_breaks_exact_prediction": true,
+    "source_completion_operator_norm_is_one_hundredth": true,
+    "nominal_detector_smallest_singular_value_is_one": true,
+    "half_radius_weyl_margin_is_positive": true,
+    "explicit_safe_completion_remains_full_rank": true,
+    "boundary_completion_at_unit_radius_is_singular": true,
+    "positive_gram_margin_matches_full_rank": true
+  },
+  "passed": true
+}
