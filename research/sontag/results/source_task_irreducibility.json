@@ -1,0 +1,63 @@
+{
+  "schema": "marici.sontag.source_task_irreducibility.v1",
+  "passed": 10,
+  "total": 10,
+  "all_passed": true,
+  "checks": {
+    "same_raw_dynamics_support_task_zero": true,
+    "same_raw_dynamics_support_task_one": true,
+    "raw_dynamics_are_identical_across_tasks": true,
+    "task_predicates_disagree_on_every_state": true,
+    "each_task_has_a_unique_minimal_repair_policy": true,
+    "minimal_repair_policies_are_different": true,
+    "task_zero_policy_sets_damaged_one_to_zero": true,
+    "task_one_policy_sets_damaged_zero_to_one": true,
+    "success_labeled_behavior_separates_tasks": true,
+    "adding_success_label_does_not_derive_task_from_raw_dynamics": true
+  },
+  "raw_dynamics": [
+    [
+      0,
+      "noop",
+      0
+    ],
+    [
+      0,
+      "set0",
+      0
+    ],
+    [
+      0,
+      "set1",
+      1
+    ],
+    [
+      1,
+      "noop",
+      1
+    ],
+    [
+      1,
+      "set0",
+      0
+    ],
+    [
+      1,
+      "set1",
+      1
+    ]
+  ],
+  "minimal_repair_for_target_zero": [
+    {
+      "0": "noop",
+      "1": "set0"
+    }
+  ],
+  "minimal_repair_for_target_one": [
+    {
+      "0": "set1",
+      "1": "noop"
+    }
+  ],
+  "verdict": "One unlabeled process supports two incompatible source tasks with different unique minimal repair policies. Raw capability dynamics cannot determine which relation counts as success. A success effect makes the task reconstructible only by carrying that distinction. The Marici object is therefore irreducibly relational to a source-defined task or to a deeper constructor that generates it."
+}

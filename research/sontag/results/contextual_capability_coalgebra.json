@@ -1,0 +1,70 @@
+{
+  "schema": "marici.sontag.contextual_capability_coalgebra.v1",
+  "passed": 11,
+  "total": 11,
+  "all_passed": true,
+  "checks": {
+    "three_contexts_have_same_immediate_capability": true,
+    "rich_context_has_set_actions": true,
+    "immediate_partition_collapses_three_latent_causes": true,
+    "grant_alone_does_not_create_capability_without_budget": true,
+    "replenish_alone_does_not_create_capability_without_authority": true,
+    "grant_after_replenish_creates_capability": true,
+    "replenish_after_grant_creates_capability": true,
+    "one_step_future_behavior_separates_all_contexts": true,
+    "immediate_quotient_has_no_same_level_context_dynamics": true,
+    "graded_context_transition_is_well_defined": true,
+    "grant_and_replenish_commute_on_context": true
+  },
+  "partitions": {
+    "immediate": [
+      [
+        [
+          "controller",
+          1
+        ]
+      ],
+      [
+        [
+          "observer",
+          0
+        ],
+        [
+          "observer",
+          1
+        ],
+        [
+          "controller",
+          0
+        ]
+      ]
+    ],
+    "one_step_contextual": [
+      [
+        [
+          "controller",
+          0
+        ]
+      ],
+      [
+        [
+          "controller",
+          1
+        ]
+      ],
+      [
+        [
+          "observer",
+          0
+        ]
+      ],
+      [
+        [
+          "observer",
+          1
+        ]
+      ]
+    ]
+  },
+  "verdict": "Authority and resource are not reconstructible from one immediate capability fiber, but are reconstructed as distinct latent axes by lawful grant and replenish continuations. Packet fields are therefore presentation coordinates of a context-indexed capability coalgebra exactly when context changes address them independently; otherwise future-capability minimization must quotient them."
+}
