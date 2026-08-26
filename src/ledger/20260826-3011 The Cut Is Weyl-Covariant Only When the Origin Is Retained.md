@@ -1,4 +1,12 @@
-# The Cut Is Weyl-Covariant Only When the Origin Is Retained
+---
+title: "The Cut Is Weyl-Covariant Only When the Origin Is Retained"
+date: 2026-08-26
+sequence: 3011
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3011 — The Cut Is Weyl-Covariant Only When the Origin Is Retained
 
 The operator-covariance audit of the exact tail–seam cut has a sharp answer. Differentiation commutes with translation, but multiplication by the global wall coordinate obeys
 

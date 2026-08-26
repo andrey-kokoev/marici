@@ -1,4 +1,12 @@
-# A Zero Is Exactly When the Cumulative Seam Enters H1
+---
+title: "A Zero Is Exactly When the Cumulative Seam Enters H1"
+date: 2026-08-26
+sequence: 3014
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3014 — A Zero Is Exactly When the Cumulative Seam Enters H1
 
 For a decaying source (A), define its scalar transform and cumulative seam profile by
 

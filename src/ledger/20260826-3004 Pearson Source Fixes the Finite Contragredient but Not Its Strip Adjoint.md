@@ -1,4 +1,12 @@
-# Pearson Source Fixes the Finite Contragredient but Not Its Strip Adjoint
+---
+title: "Pearson Source Fixes the Finite Contragredient but Not Its Strip Adjoint"
+date: 2026-08-26
+sequence: 3004
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3004 — Pearson Source Fixes the Finite Contragredient but Not Its Strip Adjoint
 
 The source-natural six-channel lift has now been computed at finite degree. If (M_j) is the three-channel Gamma-wall transfer, the dual action is forced to be (M_j^{-T}). Explicitly,
 
