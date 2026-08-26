@@ -1,0 +1,58 @@
+{
+  "artifact_sha256": "A29848FE98F43DDE7DBD6C6E29C7BE9DC48830153058D8A41839AC98015A77EA",
+  "checks": {
+    "carrier_characteristic_is_t_equals_two_thirds": true,
+    "continuous_grade_envelope_uses_only_endpoint_powers": true,
+    "coordinate_remainder_constant_at_order_six_is_exact": true,
+    "envelope_is_not_reported_as_a_watson_remainder": true,
+    "far_wall_first_factor_has_uniform_positive_margin": true,
+    "far_wall_gamma_envelope_has_uniform_decay": true,
+    "far_wall_patch_stays_strictly_inside_positive_carrier_domain": true,
+    "logarithmic_coordinate_is_completely_monotone_through_order_eight": true,
+    "logarithmic_substitution_cancels_moving_exponential": true,
+    "resummed_exponent_matches_formal_tail": true,
+    "transformed_measure_is_fixed_unit_exponential": true
+  },
+  "observed": {
+    "carrier": "(exp(x*t)-3*t/2)*exp(5*x*t/4)*exp(-(exp(x*t)-1-x*t)/t)",
+    "characteristic": {
+      "c_wall": "3/2",
+      "first_zero_location_at_boundary": "x=0",
+      "interior_zero_for_t_above_boundary": "log(3*t/2)/t",
+      "t": "2/3"
+    },
+    "continuous_q_range": [
+      "4",
+      "10"
+    ],
+    "coordinate_derivative_upper_constants": {
+      "0": "1",
+      "1": "1/2",
+      "2": "2/3",
+      "3": "3/2",
+      "4": "24/5",
+      "5": "20",
+      "6": "720/7",
+      "7": "630",
+      "8": "4480"
+    },
+    "coordinate_resolvent": "h_t(y)/y=integral_0^1 (1+t*y*s)^(-1) ds",
+    "far_wall_patch": {
+      "c_wall_min": "60",
+      "gamma_decay_rate": "77/80",
+      "positive_factor_margin": "39/40",
+      "t_max": "1/60"
+    },
+    "integrable_q_envelope": "(x^4+x^10)*(1+abs(log(x))^3)*exp(-77*x/80)",
+    "logarithmic_substitution": {
+      "forward": "y=(exp(x*t)-1)/t",
+      "inverse": "x=log(1+t*y)/t",
+      "jacobian": "dx=dy/(1+t*y)",
+      "maximum_sampled_relative_residual": 5.2103149937829785e-15,
+      "transformed_integrand": "exp(-y)*(1+t*(y-3/2))*(1+t*y)^(1/4)*(log(1+t*y)/t)^q"
+    },
+    "watson_remainder_status": "open"
+  },
+  "passed": true,
+  "semantic_boundary": "The exact carrier identity, logarithmic substitution, and real-axis envelope reduce the problem to a fixed exponential measure and justify positivity, q-differentiation, and domination. They do not yet bound the order-six Taylor remainder in t."
+}

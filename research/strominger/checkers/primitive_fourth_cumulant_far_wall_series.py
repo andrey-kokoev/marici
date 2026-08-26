@@ -23,7 +23,7 @@ RESULT = (
     / "results"
     / "primitive_fourth_cumulant_far_wall_series.json"
 )
-ORDER = 8
+ORDER = 12
 
 
 def trim(poly: list[Fraction]) -> list[Fraction]:
@@ -113,6 +113,22 @@ def poly_interpolate(points: list[tuple[Fraction, Fraction]]) -> list[Fraction]:
             denominator *= x_i - x_j
         result = poly_add(result, poly_scale(basis, y_i / denominator))
     return trim(result)
+
+
+def power_to_bernstein(
+    polynomial: list[Fraction], interval_length: Fraction
+) -> list[Fraction]:
+    """Convert p(x) on [0,L] from powers of x to Bernstein coordinates."""
+    degree = len(polynomial) - 1
+    return [
+        sum(
+            polynomial[power]
+            * Fraction(math.comb(index, power), math.comb(degree, power))
+            * interval_length**power
+            for power in range(index + 1)
+        )
+        for index in range(degree + 1)
+    ]
 
 
 def series_mul(
@@ -475,6 +491,16 @@ for order in range(3, ORDER + 1):
         Fraction((-1) ** (order - 3)),
     )
 
+ratio_37_bernstein = {}
+for order in range(6, ORDER):
+    difference = poly_add(
+        poly_scale(oriented_shifted_quotients[order], Fraction(37)),
+        poly_scale(oriented_shifted_quotients[order + 1], Fraction(-1)),
+    )
+    ratio_37_bernstein[order] = power_to_bernstein(
+        difference, Fraction(6)
+    )
+
 # Positivity of the displayed three-term bracket for every real c>0.
 # Multiplying its discriminant by 16 gives the polynomial below.
 truncated_discriminant_numerator = [
@@ -529,15 +555,19 @@ checks = {
     "continuous_q_order_three_formula_is_exact": continuous_formula_checks[3],
     "continuous_q_order_four_formula_is_exact": continuous_formula_checks[4],
     "continuous_q_order_five_formula_is_exact": continuous_formula_checks[5],
-    "continuous_q_coefficients_are_polynomials_through_order_eight": all(
+    "continuous_q_coefficients_are_polynomials_through_order_twelve": all(
         continuous_interpolation_checks.values()
     ),
-    "continuous_q_coefficients_share_q_cubed_through_order_eight": all(
+    "continuous_q_coefficients_share_q_cubed_through_order_twelve": all(
         continuous_q_cubed_checks.values()
     ),
-    "continuous_q_coefficients_alternate_for_every_q_at_least_four": all(
+    "continuous_q_coefficients_alternate_through_order_twelve_for_q_at_least_four": all(
         all(coefficient > 0 for coefficient in polynomial)
         for polynomial in oriented_shifted_quotients.values()
+    ),
+    "oriented_coefficient_ratios_six_through_twelve_are_below_37": all(
+        all(coefficient > 0 for coefficient in coordinates)
+        for coordinates in ratio_37_bernstein.values()
     ),
     "three_term_bracket_has_negative_discriminant_for_q_ge_4": (
         discriminant_decreases_from_q4
@@ -551,10 +581,10 @@ checks = {
         uniform_reserve_increases_from_q4
         and poly_evaluate(uniform_reserve_difference, Fraction(4)) > 0
     ),
-    "integer_grade_coefficients_alternate_through_order_eight": all(
+    "integer_grade_coefficients_alternate_through_order_twelve": all(
         ((-1) ** (order - 3)) * series_by_q[q][order] > 0
         for q in range(4, 11)
-        for order in range(3, 9)
+        for order in range(3, ORDER + 1)
     ),
     "finite_alternation_is_not_reported_as_series_convergence": True,
     "all_q_4_through_10_begin_at_order_three": all(
@@ -581,6 +611,10 @@ payload = {
         "oriented_quotients_in_q_minus_four_low_to_high": {
             str(order): [str(value) for value in polynomial]
             for order, polynomial in oriented_shifted_quotients.items()
+        },
+        "ratio_37_difference_bernstein_coordinates_on_q_4_to_10": {
+            str(order): [str(value) for value in coordinates]
+            for order, coordinates in ratio_37_bernstein.items()
         },
         "uniform_remainder_status": "open",
         "compact_wall_status": "open",
