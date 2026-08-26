@@ -3,12 +3,9 @@
 ## Relative germ space
 
 Let `V` be a real vector space of asymptotic regulator germs at
-`epsilon=0`, let `B` contain the declared divergent boundary germs, and let
-
-\[
- V_+=\{F:F_\varepsilon\ge0\text{ for every sufficiently small }
- \varepsilon>0\}.
-\]
+`epsilon=0`, and let `B` contain the declared divergent boundary germs. Let
+\(V_+\) consist of germs \(F\) for which \(F_\varepsilon\ge0\) whenever
+\(\varepsilon>0\) is sufficiently small.
 
 The relative detector lives in the quotient `V/B`. The obvious attempted
 order is the image cone
@@ -28,8 +25,8 @@ Assume `B` contains one positive divergent germ
 For every constant germ `c`, both
 
 \[
- b_\varepsilon+c>0
- \quad\text{and}\quad
+ b_\varepsilon+c>0,
+ \qquad
  b_\varepsilon-c>0
 \]
 
@@ -44,9 +41,8 @@ for all sufficiently small `epsilon`. Since `[b]=0` in `V/B`, this gives
 Therefore
 
 \[
- \boxed{
  \overline V_+\cap(-\overline V_+)
- \supseteq\{\text{all constant finite-part classes}\}.}
+ \supseteq\{[c]:c\in\mathbb R\}.
 \]
 
 In particular, the induced cone is not pointed on the scalar detector line.
