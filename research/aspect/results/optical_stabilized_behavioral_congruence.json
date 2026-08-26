@@ -1,0 +1,82 @@
+{
+  "schema": "marici.aspect.optical-stabilized-behavioral-congruence.v1",
+  "status": "pass",
+  "authorized_future_analyzers": [
+    "H",
+    "V",
+    "D",
+    "A"
+  ],
+  "stabilization_iterations": 2,
+  "old_partition": [
+    [
+      "A",
+      "D_a",
+      "D_b",
+      "H",
+      "V"
+    ],
+    [
+      "dead"
+    ]
+  ],
+  "stable_partition": [
+    [
+      "A"
+    ],
+    [
+      "D_a",
+      "D_b"
+    ],
+    [
+      "H"
+    ],
+    [
+      "V"
+    ],
+    [
+      "dead"
+    ]
+  ],
+  "canonical_stable_to_old_downgrade": {
+    "A": 0,
+    "D_a|D_b": 0,
+    "H": 0,
+    "V": 0,
+    "dead": 1
+  },
+  "canonical_old_to_stable_upgrade_exists": false,
+  "equal_old_scalar_probability": "1/4",
+  "equal_scalar_continuations_equal": false,
+  "downstream_h_conditional_probabilities": [
+    "1/2",
+    "1"
+  ],
+  "distinct_continuation_lifts": [
+    [
+      [
+        "1/4",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    [
+      [
+        "1/8",
+        "1/8"
+      ],
+      [
+        "1/8",
+        "1/8"
+      ]
+    ]
+  ],
+  "good_old_operation_preserves_stable_congruence": true,
+  "hostile_label_dependent_operation_preserves_old_scalar_class": true,
+  "hostile_label_dependent_operation_preserves_stable_congruence": false,
+  "verdict": "Migration needs refined-congruence preservation and source-selected continuation lifts; old scalar equality supplies neither.",
+  "claim_boundary": "finite exact ideal-polarization stabilized congruence"
+}
