@@ -1,0 +1,123 @@
+{
+  "artifact_sha256": "026255D62DCFD2D209543FBB224DDBA6A9BD6648FAE9E79E7260BAC97EF2A529",
+  "source_result_sha256": "F1FDD2B98D595775423886692A52E241558ABAB8D3EAE1C573E30484AA2BA360",
+  "checks": {
+    "source_order_30_hostile_passed": true,
+    "zero_deficit_diagonal_is_one_through_vertex_grade_30": true,
+    "deficit_one_cubic_matches_four_reconstruction_grades": true,
+    "deficit_one_cubic_matches_23_withheld_grades": true,
+    "deficit_one_third_forward_difference_is_five_over_eight": true,
+    "deficit_zero_through_five_have_degree_three_d_transport": true,
+    "all_stable_deficit_polynomials_have_positive_newton_coordinates": true,
+    "newton_degree_bound_matches_three_d_plus_one_propagator_bound": true
+  },
+  "observed": {
+    "vertex_grade_range": [
+      1,
+      30
+    ],
+    "leading_failures": [],
+    "cubic_reconstruction_grades": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "cubic_reconstruction_failures": [],
+    "cubic_withheld_grades": [
+      8,
+      30
+    ],
+    "cubic_withheld_failure_count": 0,
+    "third_forward_difference": "5/8",
+    "deficit_one_formula": "(5*n^3+10*n^2+175*n-198)/48",
+    "decoration_deficit_degree_law": "degree=3*d; stable from n=d+3",
+    "deficit_polynomials": {
+      "0": "1",
+      "1": "(5*n**3 + 10*n**2 + 175*n - 198)/48",
+      "2": "(4*n**6 + 28*n**5 + 580*n**4 - 795*n**3 + 8356*n**2 - 30283*n + 22680)/1440",
+      "3": "(88*n**9 + 1320*n**8 + 34467*n**7 + 38556*n**6 + 1533546*n**5 - 11698596*n**4 + 42255503*n**3 - 152523312*n**2 + 286994436*n - 171770760)/2903040",
+      "4": "(329*n**12 + 8554*n**11 + 279565*n**10 + 1602326*n**9 + 28872327*n**8 - 221806398*n**7 + 1393219135*n**6 - 15384296158*n**5 + 84428289044*n**4 - 284058543956*n**3 + 666106009680*n**2 - 880414620048*n + 449068989600)/1916006400",
+      "5": "(24327*n**15 + 973080*n**14 + 39294780*n**13 + 468748280*n**12 + 8244733224*n**11 - 35941926020*n**10 + 452305000290*n**9 - 10562685707860*n**8 + 83948867723721*n**7 - 588460942689620*n**6 + 3814119707790210*n**5 - 16773293634244420*n**4 + 48236333381937528*n**3 - 89714339090066240*n**2 + 95498645711731920*n - 43359235156036800)/41845579776000"
+    },
+    "deficit_withheld_counts": {
+      "0": 27,
+      "1": 23,
+      "2": 19,
+      "3": 15,
+      "4": 11,
+      "5": 7
+    },
+    "deficit_failures": [],
+    "newton_basis": "binomial(n-d-3,k), k=0..3d",
+    "propagator_basis": "(1-T)^(-k-1), k=0..3d",
+    "newton_coefficients": {
+      "0": [
+        "1"
+      ],
+      "1": [
+        "491/24",
+        "95/8",
+        "85/24",
+        "5/8"
+      ],
+      "2": [
+        "5481/16",
+        "10547/24",
+        "8705/24",
+        "9709/48",
+        "226/3",
+        "52/3",
+        "2"
+      ],
+      "3": [
+        "32740817/5760",
+        "67705513/5760",
+        "47549221/2880",
+        "9575293/576",
+        "8850373/720",
+        "965275/144",
+        "510037/192",
+        "140849/192",
+        "385/3",
+        "11"
+      ],
+      "4": [
+        "560444779/5760",
+        "67849331/240",
+        "205635161/360",
+        "2450204147/2880",
+        "2779363031/2880",
+        "67893471/80",
+        "83911051/144",
+        "59838907/192",
+        "1281807/10",
+        "394467/10",
+        "34497/4",
+        "3619/3",
+        "329/4"
+      ],
+      "5": [
+        "1674716964197/967680",
+        "3798235193885/580608",
+        "20240646380551/1161216",
+        "7481543242631/215040",
+        "78284025580627/1451520",
+        "13768724306659/207360",
+        "3980428495243/60480",
+        "137082327325/2592",
+        "357738248425/10368",
+        "2329687327/128",
+        "2949365249/384",
+        "325582517/128",
+        "61431251/96",
+        "3698315/32",
+        "429777/32",
+        "24327/32"
+      ]
+    },
+    "newton_positivity_failures": []
+  },
+  "passed": true,
+  "semantic_boundary": "Finite-cutoff theorem through connected vertex grade 30. The cubic is verified on 23 withheld grades. Deficits zero through five satisfy the degree-3d law with withheld tests and positive Newton coordinates, but neither law is yet derived from the all-orders Gamma saddle or a source-authorized decoration grammar."
+}
