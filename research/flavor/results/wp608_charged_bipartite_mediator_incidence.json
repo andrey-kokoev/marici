@@ -1,0 +1,39 @@
+{
+  "work_package": "WP608",
+  "status": "PASS",
+  "checks": {
+    "cross_kernel_is_directed_forward_shift": true,
+    "cross_kernel_has_rank_three": true,
+    "fewer_than_three_mediator_modes_cannot_factor_rank_three": true,
+    "full_schur_kernel_is_reciprocal": true,
+    "common_label_reflection_reverses_cross_kernel": true,
+    "forward_and_reverse_are_distinct": true,
+    "charge_rule_allows_exactly_diagonal_a_channels": true,
+    "charge_rule_allows_exactly_forward_b_channels": true,
+    "charge_rule_forbids_every_reverse_b_channel": true,
+    "independent_b_relabel_removes_shift": true,
+    "shifted_b_reflection_stabilizes_incidence": true,
+    "shifted_b_reflection_is_an_involution": true,
+    "forward_support_has_three_nonzero_entries": true,
+    "reverse_support_is_exactly_zero": true,
+    "orientation_contrast_is_three_widths": true
+  },
+  "source_domain": "three complex mediators and two cyclic channel families with independent texture-chart relabellings, equipped with the displayed Z2^3 semidirect C3 charge incidence",
+  "allowed_incidence": [
+    "X_i to A_i",
+    "X_i to B_(i+1)"
+  ],
+  "forbidden_incidence": "X_i to B_(i-1) for every i",
+  "effective_cross_kernel": "K=-(g_A*g_B/M^2) P_forward",
+  "minimality": "rank(P_forward)=3, so any Gaussian factorization needs at least three mediator modes; the displayed construction saturates the bound",
+  "relabeling_kernel": "B_prime=P_forward*B turns K into a scalar identity cross-block",
+  "generalized_reflection": "ordinary reflection on A together with P_forward^T*S*P_forward on B stabilizes K",
+  "hard_to_vary_content": "none at the physical quotient level unless a source-derived common A/B label alignment is added",
+  "contextual_partition": "the apparent forward/reverse support partition is chart-dependent under independent B relabelling",
+  "smallest_exact_falsifier": "the explicit B_prime=P_forward*B relabelling removes the orientation without changing the source incidence",
+  "experimental_record": "a family-resolved branch table tests the incidence only after an independently physical common A/B label frame has been declared",
+  "temporal_gate": "the ordered-channel result must be conditioned on a derived phase-monitor or reset history; static marginal visibility is insufficient",
+  "physical16_gate": "derive a common A/B alignment from weak-basis-invariant flavor operations; otherwise the shift cannot descend to physical16",
+  "reference_disposition": "an added alignment port defines a relational experiment over the stabilizer of that port; it does not reveal an absolute pre-existing orientation",
+  "classification": "negative: the charged incidence rigidifies a bipartite presentation but does not select physical orientation"
+}
