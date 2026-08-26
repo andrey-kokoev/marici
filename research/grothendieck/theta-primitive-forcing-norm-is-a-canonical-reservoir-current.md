@@ -21,17 +21,15 @@ flow. The two objects may later couple, but their labels must remain distinct.
 Define the tail energy of the fixed forcing
 
 \[
- \boxed{
  J_{\rm force}(q)
- =2\int_q^\infty|f(v)|^2\,dv.}
+ =2\int_q^\infty|f(v)|^2\,dv.
 \]
 
 This current is constructed from `f` alone, before selecting a spectral
 parameter, state, or zero. Direct differentiation gives
 
 \[
- \boxed{
- \partial_qJ_{\rm force}(q)=-2|f(q)|^2.}
+ \partial_qJ_{\rm force}(q)=-2|f(q)|^2.
 \]
 
 Therefore the entire negative forcing-norm defect is an exact source-local
@@ -115,12 +113,8 @@ by `J_force,X`.
 
 One universal non-bulk defect is now typed and closed:
 
-\[
- \boxed{
- \text{negative primitive forcing norm}
- =\text{flux of the canonical source-energy reservoir}.}
-\]
+The negative primitive forcing norm is the flux of the canonical source-energy
+reservoir.
 
 The RH-bearing audit advances to the arithmetic `k=1`, `k=2`, mixed-seam,
 Jordan, and archimedean endpoint channels.
-

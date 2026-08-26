@@ -48,9 +48,7 @@ of `Phihat` is bounded on `[-N,N]`.  But
 
 Therefore
 
-\[
- \boxed{L\text{ is not continuous in the full tail--seam Gram norm}.}
-\]
+The functional \(L\) is not continuous in the full tail--seam Gram norm.
 
 ## Meaning
 
@@ -62,9 +60,7 @@ completion by a bounded trace map.
 The completed object must retain an endpoint port explicitly:
 
 \[
- \boxed{
  U_{\rm boundary}c=(Gc,Hc,L(c)),
- }
 \]
 
 or use a source-derived rigging whose topology already contains `L` as a
