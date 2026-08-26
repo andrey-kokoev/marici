@@ -63,17 +63,19 @@ The checker rejects all of the following:
 - erasing correspondence variance;
 - deriving executable ports from support alone;
 - deleting any one of the 21 ports;
-- promoting the numerical rank-21 coincidence with cosmology to an identity.
+- promoting the historical cosmology cutoff-five rank-21 plateau to a current
+  coincidence or identity.
 
 Deleting one coordinate projection leaves rank 20 on a 21-dimensional blind
 space. Thus fewer than 21 scalar ports cannot make the joint readout faithful.
 
-## Cosmology coincidence
+## Cosmology rank correction
 
-The cosmological diagonal invariant and this magnetic low kernel both have
-rank 21. The contract records only `typed_numerical_coincidence_only` because
-no source-derived comparison map is known. Equal rank supplies neither an
-isomorphism nor executable transport between the objects.
+The magnetic low kernel still has rank 21. The current cosmological
+marked-relative geometric closure has stabilized rank 26; its earlier rank 21
+was a cutoff-five plateau. The contract now records
+`superseded_cutoff_plateau_not_current_coincidence`. No source-derived
+comparison map is known, and the current objects do not even have equal rank.
 
 ## Evidence boundary
 
