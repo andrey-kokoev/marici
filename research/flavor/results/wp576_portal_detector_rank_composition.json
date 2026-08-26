@@ -1,0 +1,79 @@
+{
+  "work_package": "WP576",
+  "classification": "rank-two invariant portal entrance plus conditional rank-two completed detector composition; common-frame physical interface absent",
+  "source_domain": "z>0, lambda_H>0, lambda_s>0",
+  "source_coordinates": [
+    "z",
+    "lambda_s"
+  ],
+  "invariant_readouts": [
+    "r=z",
+    "q=lambda_s*z^2/lambda_H"
+  ],
+  "source_jacobian": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "2*lambda_s*z/lambda_H",
+      "z**2/lambda_H"
+    ]
+  ],
+  "source_wedge": "z**2/lambda_H",
+  "detector_response": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "-1",
+      "1"
+    ],
+    [
+      "0",
+      "-1"
+    ]
+  ],
+  "composed_response": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "(-lambda_H + 2*lambda_s*z)/lambda_H",
+      "z**2/lambda_H"
+    ],
+    [
+      "-2*lambda_s*z/lambda_H",
+      "-z**2/lambda_H"
+    ]
+  ],
+  "composed_gram": [
+    [
+      "(lambda_H**2 + 4*lambda_s**2*z**2 + (lambda_H - 2*lambda_s*z)**2)/lambda_H**2",
+      "z**2*(-lambda_H + 4*lambda_s*z)/lambda_H**2"
+    ],
+    [
+      "z**2*(-lambda_H + 4*lambda_s*z)/lambda_H**2",
+      "2*z**4/lambda_H**2"
+    ]
+  ],
+  "composed_gram_determinant": "3*z**4/lambda_H**2",
+  "smallest_exact_falsifier": "z=0 makes the quartic source column vanish and collapses both entrance and composed rank to one",
+  "authority_boundary": "D may be composed with A only after a publication-bound calibrated interface identifies the detector input frame with invariant (r,q)",
+  "selector_status": "separator, not selector or rigidifier",
+  "remaining_gate": "portal-complete common-frame detector transport with completed null or calibrated exposure record and uncertainty-stable rank",
+  "checks": {
+    "source_jacobian_has_expected_form": true,
+    "source_wedge_is_nonzero_off_zero_mixing": true,
+    "completed_detector_response_preserves_probability": true,
+    "completed_detector_response_has_rank_two": true,
+    "formal_composition_has_rank_two": true,
+    "composed_gram_determinant_factorizes": true,
+    "zero_mixing_source_rank_collapses": true,
+    "zero_mixing_composed_rank_collapses": true,
+    "zero_mixing_quartic_column_vanishes": true
+  },
+  "passed": true
+}

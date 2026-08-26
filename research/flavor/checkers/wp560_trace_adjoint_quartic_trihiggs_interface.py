@@ -62,7 +62,12 @@ result = {
     "source_vertex": str(physical_vertex),
     "portal_readout": str(kappa_4),
     "portal_jacobian": str(portal_jacobian),
-    "admitted_domain": ["lambda_H > 0", "sin_theta != 0", "kappa_3 = 1"],
+    "admitted_domain": [
+        "lambda_s > 0",
+        "lambda_H > 0",
+        "sin_theta != 0",
+        "kappa_3 = 1",
+    ],
     "experimental_record": atlas_record,
     "interface_fields": interface_fields,
     "supported_interface_field_count": sum(interface_fields.values()),

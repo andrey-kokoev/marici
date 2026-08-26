@@ -1,0 +1,86 @@
+{
+  "work_package": "WP580",
+  "classification": "exact nonlinear source-coordinate compiler for orthogonal finite invariant portal settings; neither selector nor physical detector instrument",
+  "base_invariants": [
+    [
+      "z"
+    ],
+    [
+      "lambda_s*z**2/lambda_H"
+    ]
+  ],
+  "pure_r_source_setting": [
+    [
+      "h + z"
+    ],
+    [
+      "lambda_s*z**2/(h + z)**2"
+    ]
+  ],
+  "pure_q_source_setting": [
+    [
+      "z"
+    ],
+    [
+      "h*lambda_H/z**2 + lambda_s"
+    ]
+  ],
+  "pure_r_invariant_response": [
+    [
+      "h"
+    ],
+    [
+      "0"
+    ]
+  ],
+  "pure_q_invariant_response": [
+    [
+      "0"
+    ],
+    [
+      "h"
+    ]
+  ],
+  "finite_design": [
+    [
+      "h",
+      "0"
+    ],
+    [
+      "0",
+      "h"
+    ]
+  ],
+  "linearized_r_source_setting": [
+    [
+      "h + z"
+    ],
+    [
+      "lambda_s*(-2*h + z)/z"
+    ]
+  ],
+  "linearized_r_invariant_response": [
+    [
+      "h"
+    ],
+    [
+      "-h**2*lambda_s*(2*h + 3*z)/(lambda_H*z)"
+    ]
+  ],
+  "linearized_q_contamination": "-h**2*lambda_s*(2*h + 3*z)/(lambda_H*z)",
+  "smallest_exact_falsifier": "at z=lambda_s=lambda_H=1 and h=1/2, exact setting (3/2,4/9) preserves q while the linearized setting (3/2,0) changes q by -1",
+  "domain": "z>0, lambda_s>0, lambda_H>0, z+h>0, and lambda_s+lambda_H*h/z^2>0; symmetric r settings additionally require 0<h<z",
+  "remaining_gate": "intersect exact settings with a declared viable source domain, then execute them through one publication-bound completed detector pipeline",
+  "checks": {
+    "pure_r_setting_is_exact": true,
+    "pure_q_setting_is_exact": true,
+    "finite_design_is_h_times_identity": true,
+    "finite_design_determinant_is_h_squared": true,
+    "linearized_r_setting_has_exact_contamination": true,
+    "hostile_exact_setting_is_three_halves_four_ninths": true,
+    "hostile_exact_response_is_pure_r": true,
+    "hostile_linear_setting_is_three_halves_zero": true,
+    "hostile_linear_response_contaminates_q_by_minus_one": true
+  },
+  "passed": true
+}

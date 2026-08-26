@@ -38,7 +38,9 @@ Standard Model light-Higgs vertex, the induced readout coordinate is
 \]
 
 This derivative is nonzero on the preregistered domain
-\(\lambda_H>0\) and \(\sin\theta\ne0\). It vanishes in the exact zero-mixing
+\(\lambda_s>0\), \(\lambda_H>0\), and \(\sin\theta\ne0\). Positivity of
+\(\lambda_s\) is required by boundedness on the isolated large-\(s\) ray of
+the declared quartic source. The derivative vanishes in the exact zero-mixing
 limit. Because the entrance uses a trace-adjoint mode and the exit is a Higgs
 mass-eigenstate coupling, the map descends under the full quark weak-basis
 groupoid. It does not use a texture chart or a reference port.
