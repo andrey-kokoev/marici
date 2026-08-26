@@ -1,0 +1,88 @@
+{
+  "work_package": "WP286",
+  "theorem_domain": "finite undirected graph with positive heterogeneous edge tensions J_ij, positive vertex biases h_i, and zero-temperature single-spin descent",
+  "necessary_and_sufficient_uniform_monotonicity_condition": "for every vertex i, h_i > sum_j J_ij",
+  "exact_worst_case_costs_at_vertex_i": {
+    "minus_to_plus": "2*incident_sum - 2*local_bias",
+    "plus_to_minus": "-2*incident_sum + 2*local_bias"
+  },
+  "weighted_triangle": {
+    "edges": [
+      [
+        0,
+        1,
+        "1"
+      ],
+      [
+        1,
+        2,
+        "2"
+      ],
+      [
+        0,
+        2,
+        "3"
+      ]
+    ],
+    "incident_weight_sums": [
+      "4",
+      "3",
+      "5"
+    ],
+    "admitted_biases": [
+      "5",
+      "4",
+      "6"
+    ],
+    "admitted_audit": {
+      "minimum_minus_flip_margin": "2",
+      "minimum_plus_flip_margin": "2",
+      "local_minima": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "unique_favored_local_minimum": true,
+      "all_canonical_paths_strict": true
+    },
+    "hostile_biases": [
+      "3",
+      "5/2",
+      "4"
+    ],
+    "hostile_audit": {
+      "minimum_minus_flip_margin": "-2",
+      "minimum_plus_flip_margin": "-2",
+      "local_minima": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "unique_favored_local_minimum": false,
+      "all_canonical_paths_strict": false
+    }
+  },
+  "classification": "local conditional branch selector only when every source bias dominates its incident wall budget; a global or averaged bias certificate is nonfaithful",
+  "smallest_exact_falsifier": "weighted triangle J_01=1, J_12=2, J_02=3 with biases (3,5/2,4): total bias is positive, but all-minus is a strict local minimum because every h_i is below its incident wall budget",
+  "remaining_physical_instrument_gate": "derive spatially resolved h_i and J_ij in one calibrated source frame, the physical update law and uncertainty bounds, then provide the branch-to-physical16 map",
+  "checks": {
+    "symbolic_minus_cost_negative_exactly_above_local_threshold": true,
+    "symbolic_plus_cost_positive_exactly_above_local_threshold": true,
+    "admitted_packet_satisfies_every_local_inequality": true,
+    "admitted_packet_has_unique_favored_local_minimum": true,
+    "admitted_packet_paths_are_strict": true,
+    "hostile_packet_has_positive_total_bias": true,
+    "hostile_packet_violates_every_local_inequality": true,
+    "hostile_packet_traps_wrong_uniform_vacuum": true
+  },
+  "passed": true
+}

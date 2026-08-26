@@ -1,0 +1,38 @@
+{
+  "work_package": "WP290",
+  "theorem_domain": "all real selector-margin laws with calibrated positive mean mu and finite nonzero variance sigma^2",
+  "cantelli_certificate": "P(m<=0) <= sigma^2/(sigma^2+mu^2)",
+  "mean_two_variance_one": {
+    "upper_failure_bound": "1/5",
+    "sharp_law": [
+      [
+        "0",
+        "1/5"
+      ],
+      [
+        "5/2",
+        "4/5"
+      ]
+    ],
+    "sharp_failure_probability": "1/5"
+  },
+  "one_percent_gate": {
+    "maximum_failure_probability": "1/100",
+    "required_signal_to_uncertainty_ratio": "mu/sigma >= sqrt(99)",
+    "required_squared_ratio": "mu^2/sigma^2 >= 99"
+  },
+  "classification": "mean and variance authorize only a sharp probabilistic selector certificate; they never certify strict positive support at finite signal-to-uncertainty ratio",
+  "smallest_exact_falsifier": "the law P(m=0)=1/5 and P(m=5/2)=4/5 has mean 2 and variance 1 and exactly saturates the 1/5 failure bound",
+  "remaining_physical_instrument_gate": "calibrate mean and variance of the actual local margin in one source frame, predeclare tolerated failure, justify finite-moment and sampling assumptions, and validate dynamics plus the physical16 map",
+  "checks": {
+    "sharp_packet_normalizes": true,
+    "sharp_packet_has_mean_two": true,
+    "sharp_packet_has_variance_one": true,
+    "cantelli_bound_at_mean_two_variance_one_is_one_fifth": true,
+    "sharp_packet_attains_cantelli_bound": true,
+    "one_percent_solver_returns_three_sqrt_eleven": true,
+    "three_sqrt_eleven_equals_sqrt_99": true,
+    "strict_support_is_not_obtained_from_finite_ratio": true
+  },
+  "passed": true
+}

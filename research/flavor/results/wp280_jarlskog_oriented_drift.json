@@ -1,0 +1,50 @@
+{
+  "work_package": "WP280",
+  "theorem_domain": "nondegenerate physical16 deviation slice carrying the signed Jarlskog pseudoscalar J",
+  "candidate_drift": "A=J*[[0,1],[-1,0]]",
+  "reflection_rule": "J -> -J and orientation generator -> -orientation generator",
+  "observability_tower": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "signed_j"
+    ]
+  ],
+  "controllability_tower": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "-signed_j"
+    ]
+  ],
+  "observation_gram_determinant": "signed_j**2",
+  "control_gram_determinant": "signed_j**2",
+  "cp_conserving_ranks": {
+    "observability": 1,
+    "controllability": 1
+  },
+  "contextual_partition": "for J nonzero the dynamic towers separate and reach the two-dimensional slice; at J=0 both collapse to rank one, with conditioning controlled by |J|",
+  "classification": "signed J repairs orientation descent and gives generic formal dynamic closure, but using a measured physical16 coordinate as a drift coefficient is a self-reading law, not yet a source-generated selector or instrument",
+  "first_nonfaithful_arrow": "quotient-available signed J readout -> dynamical coefficient that physically drives flavor",
+  "smallest_exact_falsifier": "J=0 makes both tower determinants vanish; J=1 and J=2 both descend but generate different drift speeds",
+  "remaining_physical_instrument_gate": "derive a CP-odd dynamical field or source coupling whose vacuum value produces the orientation and clock normalization, then establish behavior near J=0, noise margin, sensor, actuator, and stabilization",
+  "scope_limit": "the packet proves covariance and generic rank only; it does not authorize feedback from a measured J value into Standard Model Yukawa parameters",
+  "checks": {
+    "pseudoscalar_drift_covariant_under_reflection": true,
+    "observability_determinant_is_signed_j": true,
+    "controllability_determinant_is_minus_signed_j": true,
+    "observation_gram_determinant_is_j_squared": true,
+    "control_gram_determinant_is_j_squared": true,
+    "tower_determinants_are_nonzero_polynomials": true,
+    "cp_conserving_locus_reopens_both_kernels": true,
+    "different_nonzero_j_values_change_drift_speed": true,
+    "descent_does_not_fix_clock_normalization": true
+  },
+  "passed": true
+}

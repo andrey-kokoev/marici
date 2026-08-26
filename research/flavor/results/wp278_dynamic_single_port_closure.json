@@ -1,0 +1,81 @@
+{
+  "work_package": "WP278",
+  "theorem_domain": "two-dimensional linear deviation dynamics with source drift A, one sensor C, and one actuator B",
+  "drift": [
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      0
+    ]
+  ],
+  "sensor": [
+    [
+      1,
+      0
+    ]
+  ],
+  "actuator": [
+    1,
+    0
+  ],
+  "observability_tower": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "controllability_tower": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "score_readout": [
+    "z1",
+    "z2"
+  ],
+  "reconstructed_state": [
+    "z1",
+    "z2"
+  ],
+  "closed_loop": [
+    [
+      -2,
+      1
+    ],
+    [
+      -1,
+      0
+    ]
+  ],
+  "closed_loop_characteristic": "(lambda + 1)**2",
+  "observer_error_characteristic": "(lambda + 1)**2",
+  "contextual_partition": "the instantaneous sensor has one-dimensional fibers, while the source-generated first time score refines them to singleton states in this finite model",
+  "classification": "conditional positive architecture: one physical sensor and actuator become jointly faithful and stabilizing through a source-derived drift; neither algebraic span nor an added reference port is needed once the time-resolved instrument exists",
+  "smallest_exact_falsifier": "if the drift entry A_12 vanishes, both observability and controllability towers lose their second independent column/row",
+  "remaining_physical_instrument_gate": "derive an actual dynamical flavon drift with this mixing action, a time-resolved flavor sensor, an actuator coupling, clock, bandwidth, noise model, and repeatable stabilization on physical16",
+  "scope_limit": "this is a finite linear architecture theorem, not evidence that Standard Model Yukawa parameters possess the required dynamical substrate or executable ports",
+  "checks": {
+    "instantaneous_sensor_rank_one": true,
+    "instantaneous_actuator_rank_one": true,
+    "two_score_observability_rank_two": true,
+    "drift_actuator_controllability_rank_two": true,
+    "score_tower_reconstructs_state_exactly": true,
+    "single_actuator_feedback_stabilizes": true,
+    "single_sensor_observer_stabilizes": true,
+    "drift_is_nonsingular_rotation_generator": true,
+    "deliberate_instantaneous_rank_bounds_dynamic_rank_claim_fails": true
+  },
+  "passed": true
+}

@@ -1,0 +1,74 @@
+{
+  "work_package": "WP284",
+  "theorem_domain": "finite one-dimensional periodic CP-domain ring with energy -J*sum(s_i*s_i+1)-h*sum(s_i) and zero-temperature single-spin energy descent",
+  "minus_flip_costs_by_neighbor_sum": {
+    "two_minus_neighbors": "-2*bias + 4*wall_tension",
+    "mixed_neighbors": "-2*bias",
+    "two_plus_neighbors": "-2*bias - 4*wall_tension"
+  },
+  "coarsening_threshold": "h>2J",
+  "five_site_packets": {
+    "weak_h_equals_J_local_minima": [
+      [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "threshold_h_equals_2J_local_minima": [
+      [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "strong_h_equals_3J_local_minima": [
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ]
+  },
+  "strong_packet_flip_cost_bounds": {
+    "largest_minus_flip_cost": "-2",
+    "smallest_plus_flip_cost": "2"
+  },
+  "contextual_partition": "below threshold the local dynamics retains a wrong-vacuum metastable class; above threshold every minus domain has a lowering move and only the favored uniform vacuum is absorbing",
+  "classification": "source-biased local domain dynamics is a conditional deterministic finite-ring branch selector only for h>2J; positive bias alone is insufficient",
+  "smallest_exact_falsifier": "J=1 and h=1 favor plus globally but trap the all-minus ring because a single flip costs 2",
+  "remaining_physical_instrument_gate": "derive h/J, spatial dimension and topology, wall tension, local update or field equation, thermal activation, expansion rate, coarsening time, defects, and post-selection stabilization",
+  "scope_limit": "finite one-dimensional zero-temperature single-flip theorem; higher dimensions, thermal nucleation, quantum tunneling, conserved dynamics, and cosmological expansion require separate analysis",
+  "checks": {
+    "all_minus_flip_cost_formula_exact": true,
+    "weak_bias_traps_wrong_uniform_vacuum": true,
+    "threshold_bias_leaves_neutral_wrong_vacuum": true,
+    "strong_bias_makes_every_minus_flip_lower_energy": true,
+    "strong_bias_makes_every_plus_flip_raise_energy": true,
+    "strong_bias_has_unique_local_minimum": true,
+    "strong_monotone_coarsening_reaches_all_plus_in_one_flip_per_initial_minus": true,
+    "desired_uniform_vacuum_is_lower_than_wrong_vacuum": true,
+    "deliberate_positive_bias_implies_coarsening_claim_fails": true
+  },
+  "passed": true
+}

@@ -1,0 +1,52 @@
+{
+  "work_package": "WP291",
+  "theorem_domain": "three local selector margins with identical calibrated marginal laws and unrestricted dependence",
+  "shared_marginal": {
+    "law": [
+      [
+        "-1",
+        "1/12"
+      ],
+      [
+        "2",
+        "2/3"
+      ],
+      [
+        "3",
+        "1/4"
+      ]
+    ],
+    "mean": "2",
+    "variance": "1",
+    "failure_probability": "1/12"
+  },
+  "joint_packets": {
+    "perfectly_aligned_failures": {
+      "global_failure_probability": "1/12"
+    },
+    "disjoint_failures": {
+      "global_failure_probability": "1/4"
+    }
+  },
+  "global_union_certificate": "P(any m_i<=0) <= sum_i P(m_i<=0)",
+  "one_percent_three_vertex_gate": {
+    "required_local_failure_bound": "1/300",
+    "required_local_signal_to_uncertainty_ratio": "mu_i/sigma_i >= sqrt(299)"
+  },
+  "contextual_partition": "all marginal moment and tail probes place the two joint packets in one class; a coincidence-sensitive joint probe separates them",
+  "classification": "marginal calibration supplies only a worst-case union certificate for global selection; dependence-sensitive source probes are required for a sharper result",
+  "smallest_exact_falsifier": "two three-margin packets have identical marginals, but aligned failures give global risk 1/12 while disjoint failures give 1/4",
+  "remaining_physical_instrument_gate": "measure or source-derive cross-domain dependence in a common frame, including coincidence timing and detector resolution, or accept the predeclared union-bound budget",
+  "checks": {
+    "both_joint_packets_have_twelve_equal_atoms": true,
+    "all_three_marginal_laws_match_exactly": true,
+    "every_marginal_has_mean_two_variance_one": true,
+    "every_marginal_failure_is_one_twelfth": true,
+    "correlated_global_failure_is_one_twelfth": true,
+    "disjoint_global_failure_is_one_quarter": true,
+    "disjoint_packet_saturates_union_bound": true,
+    "one_percent_three_vertex_union_gate_requires_squared_ratio_299": true,
+    "solver_returns_sqrt_299_threshold": true
+  },
+  "passed": true
+}

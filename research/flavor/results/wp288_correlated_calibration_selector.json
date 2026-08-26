@@ -1,0 +1,104 @@
+{
+  "work_package": "WP288",
+  "theorem_domain": "affine source-calibration packet over the declared joint polytope t in [-1,1]",
+  "correlated_family": {
+    "edge_functions": [
+      "t/10 + 1",
+      "2 - t/10",
+      "3"
+    ],
+    "bias_functions": [
+      "t/10 + 21/5",
+      "16/5",
+      "26/5 - t/10"
+    ],
+    "selector_margins": [
+      "1/5",
+      "1/5",
+      "1/5"
+    ],
+    "polytope_vertices": [
+      {
+        "t": -1,
+        "edges": [
+          "9/10",
+          "21/10",
+          "3"
+        ],
+        "biases": [
+          "41/10",
+          "16/5",
+          "53/10"
+        ],
+        "margins": [
+          "1/5",
+          "1/5",
+          "1/5"
+        ]
+      },
+      {
+        "t": 1,
+        "edges": [
+          "11/10",
+          "19/10",
+          "3"
+        ],
+        "biases": [
+          "43/10",
+          "16/5",
+          "51/10"
+        ],
+        "margins": [
+          "1/5",
+          "1/5",
+          "1/5"
+        ]
+      }
+    ]
+  },
+  "independent_box_relaxation": {
+    "edge_intervals": [
+      [
+        "9/10",
+        "11/10"
+      ],
+      [
+        "19/10",
+        "21/10"
+      ],
+      [
+        "3",
+        "3"
+      ]
+    ],
+    "bias_lowers": [
+      "41/10",
+      "16/5",
+      "51/10"
+    ],
+    "upper_incident_wall_budgets": [
+      "41/10",
+      "16/5",
+      "51/10"
+    ],
+    "worst_margins": [
+      "0",
+      "0",
+      "0"
+    ],
+    "strict_certificate_passes": false
+  },
+  "classification": "a source-declared correlated support can certify a robust conditional selector that its independent interval projection falsely rejects",
+  "smallest_exact_falsifier": "the marginal interval box has zero worst margin at all three vertices even though every point of the correlated source line has margin 1/5",
+  "anti_circularity_gate": "the joint support relation must be derived from calibration physics before evaluating selector margins; fitting the correlation to preserve the answer is forbidden",
+  "remaining_physical_instrument_gate": "derive and measure the joint support or covariance in one source/readout frame, validate non-affine tails, and propagate the admitted set through dynamics and physical16",
+  "checks": {
+    "all_correlated_margins_are_constant_one_fifth": true,
+    "polytope_vertices_have_positive_margins": true,
+    "affine_polytope_vertex_test_is_exact": true,
+    "independent_box_relaxation_loses_strictness_at_every_vertex": true,
+    "box_contains_both_correlated_endpoints": true,
+    "correlation_changes_certificate_not_physical_state_domain": true
+  },
+  "passed": true
+}

@@ -1,0 +1,96 @@
+{
+  "work_package": "WP285",
+  "theorem_domain": "finite undirected graph Ising domains with uniform J>0, uniform h>0, and zero-temperature single-spin energy descent",
+  "exact_worst_case_flip_costs": {
+    "minus_to_plus": "-2*bias + 2*degree*wall_tension",
+    "plus_to_minus": "2*bias - 2*degree*wall_tension"
+  },
+  "topology_uniform_monotone_threshold": "h>J*Delta, where Delta is maximum graph degree",
+  "audited_graphs": [
+    {
+      "name": "triangle",
+      "vertex_count": 3,
+      "degrees": [
+        2,
+        2,
+        2
+      ],
+      "maximum_degree": 2,
+      "weak_bias": 1,
+      "strong_bias": 3,
+      "wrong_uniform_vacuum_is_weak_local_minimum": true,
+      "strong_local_minima": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "strong_unique_minimum_is_all_plus": true,
+      "all_enumerated_strong_paths_strict": true
+    },
+    {
+      "name": "cycle_5",
+      "vertex_count": 5,
+      "degrees": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "maximum_degree": 2,
+      "weak_bias": 1,
+      "strong_bias": 3,
+      "wrong_uniform_vacuum_is_weak_local_minimum": true,
+      "strong_local_minima": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "strong_unique_minimum_is_all_plus": true,
+      "all_enumerated_strong_paths_strict": true
+    },
+    {
+      "name": "complete_4",
+      "vertex_count": 4,
+      "degrees": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "maximum_degree": 3,
+      "weak_bias": 2,
+      "strong_bias": 4,
+      "wrong_uniform_vacuum_is_weak_local_minimum": true,
+      "strong_local_minima": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "strong_unique_minimum_is_all_plus": true,
+      "all_enumerated_strong_paths_strict": true
+    }
+  ],
+  "classification": "conditional graph-domain branch selector above a topology-dependent threshold; neither a physical16 selector nor an instrument until J, h, graph geometry, and dynamics are source-derived",
+  "smallest_exact_falsifier": "on the triangle, J=1 and h=1 favor plus globally but all-minus is a strict local minimum because each first flip costs 2",
+  "remaining_physical_instrument_gate": "derive the domain adjacency or continuum geometry, J and h normalization, allowed update law, temperature, tunneling, expansion, defects, runtime, and mapping from the selected branch to physical16",
+  "checks": {
+    "worst_minus_cost_is_negative_above_threshold": true,
+    "worst_plus_cost_is_positive_above_threshold": true,
+    "regular_graphs_trap_wrong_vacuum_below_threshold": true,
+    "above_threshold_unique_local_minimum_is_favored_vacuum": true,
+    "above_threshold_every_enumerated_configuration_has_strict_path": true,
+    "triangle_exactly_realizes_smallest_stated_falsifier": true,
+    "topology_changes_numeric_threshold": true
+  },
+  "passed": true
+}

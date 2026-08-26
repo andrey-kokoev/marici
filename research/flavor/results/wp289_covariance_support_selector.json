@@ -1,0 +1,53 @@
+{
+  "work_package": "WP289",
+  "theorem_domain": "discrete calibrated laws for one exact local selector margin m_i=h_i-sum_j J_ij",
+  "safe_packet": {
+    "law": [
+      [
+        "1",
+        "1/2"
+      ],
+      [
+        "3",
+        "1/2"
+      ]
+    ],
+    "mean": "2",
+    "variance": "1",
+    "failure_probability": "0"
+  },
+  "unsafe_packet": {
+    "law": [
+      [
+        "-1",
+        "1/12"
+      ],
+      [
+        "2",
+        "2/3"
+      ],
+      [
+        "3",
+        "1/4"
+      ]
+    ],
+    "mean": "2",
+    "variance": "1",
+    "failure_probability": "1/12"
+  },
+  "contextual_partition": "mean and covariance place the two packets in one equivalence class, but support-sensitive selector readout separates them",
+  "classification": "covariance is not a robust selector certificate; exact support or an independently justified tail-risk tolerance is required",
+  "smallest_exact_falsifier": "both margin laws have mean 2 and variance 1, but one has zero failure probability and the other fails with probability 1/12",
+  "remaining_physical_instrument_gate": "calibrate distributional support or certified tail bounds in the source frame and declare the tolerated selector failure probability before observing flavor readout",
+  "checks": {
+    "safe_probabilities_normalize": true,
+    "unsafe_probabilities_normalize": true,
+    "means_are_exactly_equal": true,
+    "variances_are_exactly_equal": true,
+    "safe_support_is_strictly_positive": true,
+    "unsafe_support_crosses_selector_boundary": true,
+    "safe_selector_failure_probability_is_zero": true,
+    "unsafe_selector_failure_probability_is_one_twelfth": true
+  },
+  "passed": true
+}

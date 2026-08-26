@@ -1,0 +1,60 @@
+{
+  "work_package": "WP299",
+  "theorem_domain": "finite proxy for an admissible physical16 family with typed source operations and readout maps",
+  "typed_arrows": {
+    "faithful_readout": "R:X->Y with singleton fibers and |R(X)|=|X|",
+    "selector": "S:X->X with proper idempotent image S(X) subsetneq X",
+    "selected_readout": "R after S, whose reduced record image is inherited from S",
+    "conditioning": "R^{-1}(observed record), a posterior inference after an outcome rather than a source operation"
+  },
+  "finite_audit": {
+    "physical_domain": [
+      "x0",
+      "x1",
+      "x2",
+      "x3"
+    ],
+    "faithful_readout_image": [
+      "r_x0",
+      "r_x1",
+      "r_x2",
+      "r_x3"
+    ],
+    "branch_fibers": {
+      "+": [
+        "x0",
+        "x1"
+      ],
+      "-": [
+        "x2",
+        "x3"
+      ]
+    },
+    "selector_image": [
+      "x0",
+      "x2"
+    ],
+    "selected_readout_image": [
+      "r_x0",
+      "r_x2"
+    ],
+    "posterior_fiber_at_r_x1": [
+      "x1"
+    ]
+  },
+  "classification": "WP298 supplies a faithful separator/readout only; a proper reduction must occur at an independently source-authorized selector arrow before readout",
+  "smallest_exact_falsifier": "the identity-like readout reconstructs all four states perfectly while leaving the admissible source image at all four states",
+  "anti_postselection_rule": "a singleton posterior fiber after observing a record does not retroactively select the source state or predict its numerical value",
+  "remaining_physical_instrument_gate": "construct an admitted physical operation S on the flavor source whose proper physical16 image is derived before and independently of the faithful readout values",
+  "checks": {
+    "faithful_readout_has_singleton_fibers": true,
+    "faithful_readout_preserves_full_family_cardinality": true,
+    "branch_readout_is_nonfaithful": true,
+    "source_selector_has_proper_image": true,
+    "readout_after_selector_has_reduced_image": true,
+    "conditioning_on_observed_record_gives_singleton": true,
+    "conditioning_does_not_change_prior_source_image": true,
+    "selector_is_idempotent": true
+  },
+  "passed": true
+}

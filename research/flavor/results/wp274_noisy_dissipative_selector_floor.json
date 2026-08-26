@@ -1,0 +1,48 @@
+{
+  "work_package": "WP274",
+  "theorem_domain": "Ornstein-Uhlenbeck deviation dynamics dz=-gamma*z*dt+sqrt(2D)*dW with mean-square preparation tolerance epsilon^2",
+  "variance_exact": "(-diffusion*(1 - exp(2*rate*time)) + initial_variance*rate)*exp(-2*rate*time)/rate",
+  "stationary_variance": "diffusion/rate",
+  "necessary_strict_finite_time_condition": "D/gamma < epsilon^2",
+  "tolerance": "1/100",
+  "packets": {
+    "passing": {
+      "gamma": "1",
+      "D": "1/40000",
+      "v0": "1",
+      "floor": "1/40000",
+      "runtime": "log(13333)/2",
+      "terminal_variance": "1/10000"
+    },
+    "borderline": {
+      "gamma": "1",
+      "D": "1/10000",
+      "v0": "1",
+      "floor": "1/10000",
+      "finite_time_excess": "9999*exp(-2*time)/10000"
+    },
+    "failing": {
+      "gamma": "1",
+      "D": "1/5000",
+      "v0": "1",
+      "floor": "1/5000"
+    }
+  },
+  "contextual_partition": "the noisy channel converges to a Gaussian tolerance class with variance D/gamma, not to a distinguished point",
+  "classification": "finite noisy dissipation is a conditional approximate distribution selector only when an independently calibrated noise floor lies strictly below tolerance",
+  "first_nonfaithful_arrow": "unique deterministic vacuum -> point preparation under source noise",
+  "smallest_exact_falsifier": "D=1/10000 and gamma=1 put the variance floor exactly at epsilon^2=1/10000, so every finite time remains above tolerance from v0=1",
+  "remaining_physical_instrument_gate": "derive and calibrate damping, diffusion, initial-domain variance, tolerance metric, runtime, post-preparation stabilization, and readout in one flavor substrate",
+  "scope_limit": "active cooling, squeezed/non-Gaussian reservoirs, feedback, error correction, or zero-temperature limits require separate source and resource typing",
+  "checks": {
+    "variance_ode_solution_exact": true,
+    "stationary_variance_is_D_over_gamma": true,
+    "passing_noise_floor_below_tolerance": true,
+    "passing_runtime_exact": true,
+    "borderline_floor_equals_tolerance": true,
+    "borderline_packet_never_passes_at_finite_time": true,
+    "failing_floor_exceeds_tolerance": true,
+    "deliberate_damping_alone_implies_point_selector_claim_fails": true
+  },
+  "passed": true
+}

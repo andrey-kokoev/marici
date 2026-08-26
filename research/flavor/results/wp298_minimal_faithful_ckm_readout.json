@@ -1,0 +1,80 @@
+{
+  "work_package": "WP298",
+  "admitted_state_domain": "standard CKM chart with ordered nondegenerate masses, angles in the open first quadrant, nonzero sines, and phase constrained by sin^2(delta)+cos^2(delta)=1",
+  "faithful_quotient_coordinate": "physical16",
+  "compact_faithful_readout": "six ordered masses plus |V_us|^2, |V_ub|^2, |V_cb|^2, |V_cd|^2, and signed J",
+  "reconstruction": {
+    "angles": "first-row and |V_cb| moduli recover s13, s12, and s23 in the declared quadrant",
+    "sin_delta": "signed J divided by the positive Jarlskog angle normalization",
+    "cos_delta": "the |V_cd|^2 interference term",
+    "remaining_moduli": "standard CKM formula after phase reconstruction"
+  },
+  "packet_audits": [
+    {
+      "readout": [
+        "1296/4225",
+        "25/169",
+        "3600/28561",
+        "285184/714025",
+        "82944/1856465"
+      ],
+      "reconstructed_sines": [
+        "3/5",
+        "5/13",
+        "5/13"
+      ],
+      "reconstructed_cosines": [
+        "4/5",
+        "12/13",
+        "12/13"
+      ],
+      "reconstructed_sin_delta": "4/5",
+      "reconstructed_cos_delta": "3/5",
+      "checks": {
+        "input_is_unitary": true,
+        "reconstructed_moduli_match_all_nine": true,
+        "reconstructed_signed_j_matches": true,
+        "reconstructed_phase_is_on_unit_circle": true
+      }
+    },
+    {
+      "readout": [
+        "1296/4225",
+        "25/169",
+        "3600/28561",
+        "172864/714025",
+        "82944/1856465"
+      ],
+      "reconstructed_sines": [
+        "3/5",
+        "5/13",
+        "5/13"
+      ],
+      "reconstructed_cosines": [
+        "4/5",
+        "12/13",
+        "12/13"
+      ],
+      "reconstructed_sin_delta": "4/5",
+      "reconstructed_cos_delta": "-3/5",
+      "checks": {
+        "input_is_unitary": true,
+        "reconstructed_moduli_match_all_nine": true,
+        "reconstructed_signed_j_matches": true,
+        "reconstructed_phase_is_on_unit_circle": true
+      }
+    }
+  ],
+  "contextual_partition": "generic equality of physical16 on the declared standard chart; singular angle and degeneracy loci are excluded",
+  "descent": "every readout entry is a weak-basis invariant after ordered mass conventions",
+  "classification": "faithful physical readout/separator on the declared domain; neither selector nor texture rigidifier",
+  "smallest_exact_falsifier_for_the_predecessor": "the WP297 phase pair is separated by |V_cd|^2=285184/714025 versus 172864/714025",
+  "remaining_physical_instrument_gate": "type and calibrate the individual decay instruments and their common-fit correlations; no readout instrument gains authority to select the reconstructed numerical point",
+  "checks": {
+    "both_exact_packets_reconstruct": true,
+    "vcd_probe_separates_wp297_pair": true,
+    "signed_j_alone_does_not_separate_pair": true,
+    "reconstructed_cosines_have_opposite_sign": true
+  },
+  "passed": true
+}

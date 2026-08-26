@@ -1,0 +1,37 @@
+{
+  "work_package": "WP273",
+  "theorem_domain": "dissipative deviation dynamics dz/dt=-gamma*z with finite runtime and detector/preparation tolerance epsilon",
+  "exact_deviation": "amplitude*exp(-rate*time)",
+  "finite_time_derivative_with_respect_to_initial_amplitude": "exp(-rate*time)",
+  "bounded_domain_runtime": "log(amplitude/tolerance)/rate",
+  "frozen_instrument_packet": {
+    "gamma": "1",
+    "maximum_initial_amplitude": "10",
+    "tolerance": "1/100",
+    "runtime": "log(1000)",
+    "terminal_residual": "1/100"
+  },
+  "hostile_unbounded_witness": {
+    "same_runtime_amplitude": "20",
+    "terminal_residual": "1/50",
+    "general_adversarial_amplitude": "2*tolerance*exp(rate*time)",
+    "general_terminal_residual": "2*tolerance"
+  },
+  "contextual_partition": "finite-time dynamics preserves exact amplitudes; a tolerance quotient collapses them only on a declared bounded initial domain after a calibrated runtime",
+  "classification": "unique dissipative vacuum supplies conditional approximate preparation, not an exact finite-time selector; uniform executable authority additionally requires a source-bounded domain, rate, tolerance, and runtime",
+  "first_nonfaithful_arrow": "asymptotic unique vacuum -> uniform finite-resource preparation",
+  "smallest_exact_falsifier": "the runtime log(1000) prepares amplitudes up to 10 within 1/100, but amplitude 20 retains residual 1/50",
+  "remaining_physical_instrument_gate": "derive the initial-domain bound, damping rate, noise floor, stopping rule, stabilization, reset/degradation budget, and coupling to the physical flavor substrate",
+  "scope_limit": "compact source domains with calibrated rates and tolerances can yield finite approximate preparation; exact finite-time projection or unbounded-domain uniformity is not established",
+  "checks": {
+    "relaxation_solution_exact": true,
+    "finite_time_map_is_injective": true,
+    "bounded_domain_runtime_formula_exact": true,
+    "frozen_packet_runtime_is_log_1000": true,
+    "frozen_packet_reaches_tolerance": true,
+    "same_runtime_fails_larger_unadmitted_amplitude": true,
+    "unbounded_domain_adversary_always_exceeds_tolerance": true,
+    "deliberate_uniform_finite_time_claim_fails": true
+  },
+  "passed": true
+}

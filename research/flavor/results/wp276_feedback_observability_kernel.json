@@ -1,0 +1,74 @@
+{
+  "work_package": "WP276",
+  "theorem_domain": "two-dimensional flavor-deviation module with measurement-based linear feedback and zero uncontrolled drift",
+  "single_sensor": [
+    [
+      1,
+      0
+    ]
+  ],
+  "single_sensor_gram": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "single_sensor_closed_loop": [
+    [
+      "-k1",
+      "0"
+    ],
+    [
+      "-k2",
+      "0"
+    ]
+  ],
+  "blind_direction": [
+    0,
+    1
+  ],
+  "stacked_sensor": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "stacked_sensor_gram_determinant": "1",
+  "full_closed_loop": [
+    [
+      "-k1",
+      "0"
+    ],
+    [
+      "0",
+      "-k2"
+    ]
+  ],
+  "contextual_partition": "the one-port sensor identifies all deviations differing only along its kernel; the complementary source-derived port refines the partition to singleton vectors in this finite model",
+  "classification": "rank-one feedback is neither a full deviation selector nor a complete physical instrument; a rank-two source-derived probe family restores formal observability, with actuator execution still separate",
+  "first_nonfaithful_arrow": "physical deviation module -> sensor record",
+  "smallest_exact_falsifier": "z=(0,1) has zero sensor record and zero feedback response for every positive gain pair",
+  "remaining_physical_instrument_gate": "derive two independent flavor-sensitive sensor channels and actuator couplings in one common frame, then calibrate their noise, latency, bandwidth, reachability, and stabilization",
+  "scope_limit": "formal observation rank is necessary but not sufficient for executable control; nonlinear dynamics and time-varying observability require separate audits",
+  "checks": {
+    "single_sensor_rank_one": true,
+    "single_sensor_gram_singular": true,
+    "blind_direction_is_unobserved": true,
+    "blind_direction_is_uncontrolled_for_any_gain": true,
+    "single_sensor_closed_loop_has_zero_eigenvalue": true,
+    "complementary_sensor_restores_observation_rank": true,
+    "complementary_sensor_gram_positive": true,
+    "full_closed_loop_is_nonsingular": true,
+    "full_closed_loop_modes_decay": true,
+    "deliberate_gain_kills_sensor_kernel_claim_fails": true
+  },
+  "passed": true
+}

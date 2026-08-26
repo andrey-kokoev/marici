@@ -1,0 +1,36 @@
+{
+  "work_package": "WP275",
+  "theorem_domain": "linear feedback with intrinsic damping gamma, source diffusion D, controller gain k, and independent sensor-noise intensity R",
+  "stationary_variance": "(gain**2*sensor_noise + source_noise)/(damping + gain)",
+  "optimal_gain": "-damping + sqrt(damping**2*sensor_noise + source_noise)/sqrt(sensor_noise)",
+  "minimum_variance": "sqrt(sensor_noise)*(source_noise + (damping*sqrt(sensor_noise) - sqrt(damping**2*sensor_noise + source_noise))**2)/sqrt(damping**2*sensor_noise + source_noise)",
+  "minimum_identity": "v_min=2*R*k_star",
+  "exact_packet": {
+    "gamma": "1",
+    "D": "1/100",
+    "R": "1/300",
+    "passive_floor": "1/100",
+    "optimal_gain": "1",
+    "optimized_floor": "1/150",
+    "tighter_target_variance": "1/200"
+  },
+  "contextual_partition": "feedback refines the noisy preparation classes only in the enlarged sensor-controller experiment; sensor noise leaves a nonzero optimized floor",
+  "classification": "linear feedback can improve an approximate distribution selector but cannot remove noise freely; it requires a new calibrated measurement/control port and remains neither an exact point selector nor a texture rigidifier",
+  "first_nonfaithful_arrow": "formal feedback gain -> executable sensor-derived control with calibrated noise",
+  "smallest_exact_falsifier": "gamma=1, D=1/100, and R=1/300 optimize at k=1 with floor 1/150, still above target variance 1/200",
+  "remaining_physical_instrument_gate": "derive a flavor-sensitive sensor, actuator coupling, sensor noise R, latency/bandwidth, gain bound, energetic cost, stopping rule, and post-feedback stabilization from the source experiment",
+  "scope_limit": "nonlinear, adaptive, squeezed, coherent, or error-corrected feedback can change the bound but defines a new instrument and resource law",
+  "checks": {
+    "stationary_variance_formula_positive": true,
+    "optimal_gain_stationary_exact": true,
+    "optimal_gain_positive": true,
+    "minimum_variance_identity_exact": true,
+    "rational_packet_optimal_gain_one": true,
+    "feedback_improves_passive_floor": true,
+    "optimized_packet_still_misses_tighter_target": true,
+    "zero_gain_recovers_passive_floor": true,
+    "infinite_gain_amplifies_sensor_noise": true,
+    "deliberate_unbounded_gain_removes_noise_claim_fails": true
+  },
+  "passed": true
+}
