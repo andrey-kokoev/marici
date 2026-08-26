@@ -106,7 +106,7 @@ def main():
         "all_21_ports_faithful": rank_21,
         "one_port_deletion_rank_is_20": every_deletion_rank == 20,
         "every_one_port_deletion_nonfaithful": deletion_proof,
-        "cosmology_rank_21_disposition": packet["typed_coincidences"][0]["disposition"],
+        "cosmology_rank_correction_disposition": packet["typed_coincidences"][0]["disposition"],
     }
 
     facts = {
@@ -115,12 +115,17 @@ def main():
         "completed_kernel_rank": kernel["rank"],
         "completed_kernel_harmonics": kernel["harmonic_support"],
         "largest_one_port_deletion_rank": every_deletion_rank,
-        "cosmology_rank_21_disposition": packet["typed_coincidences"][0]["disposition"],
+        "cosmology_rank_correction_disposition": packet["typed_coincidences"][0]["disposition"],
+        "cosmology_current_rank": packet["typed_coincidences"][0]["right_rank"],
+        "cosmology_historical_plateau_rank": 21,
     }
-    semantic["cosmology_coincidence_remains_unidentified"] = (
-        facts["cosmology_rank_21_disposition"] == "typed_numerical_coincidence_only"
+    semantic["cosmology_rank_21_coincidence_is_superseded"] = (
+        facts["cosmology_rank_correction_disposition"] == "superseded_cutoff_plateau_not_current_coincidence"
+        and facts["cosmology_current_rank"] == 26
+        and not packet["typed_coincidences"][0]["same_rank"]
+        and not packet["typed_coincidences"][0]["identified"]
     )
-    del semantic["cosmology_rank_21_disposition"]
+    del semantic["cosmology_rank_correction_disposition"]
 
     all_hostile = all(test["passed"] for test in tests.values())
     passed = compiled["valid"] and replay["passed"] and all(semantic.values()) and all_hostile
