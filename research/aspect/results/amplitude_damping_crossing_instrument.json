@@ -1,0 +1,40 @@
+{
+  "schema": "marici.aspect.amplitude-damping-crossing-instrument.v1",
+  "status": "pass",
+  "source_formula": "Delta=(1-p)^2 |beta|^2 (|alpha|^2-p^2|beta|^2)",
+  "theta_1_weights": [
+    "1/4",
+    "3/4"
+  ],
+  "theta_1_crossing": "1/sqrt(3)",
+  "theta_1_below": {
+    "p": "1/2",
+    "exact_delta": "3/256",
+    "safe_npt_lower": "45471/4000000 - sqrt(3)/800"
+  },
+  "theta_1_above": {
+    "p": "2/3",
+    "exact_delta": "-1/144",
+    "safe_ppt_upper": "-14821/2250000 + sqrt(3)/1200"
+  },
+  "theta_2_weights": [
+    "3/4",
+    "1/4"
+  ],
+  "theta_2_formal_crossing": "sqrt(3), outside physical p interval",
+  "theta_2_control": {
+    "p": "9/10",
+    "exact_delta": "219/160000",
+    "safe_npt_lower": "5391/4000000 - sqrt(3)/4000"
+  },
+  "theta_2_near_endpoint": {
+    "p": "99/100",
+    "exact_delta_positive": true,
+    "safe_lower": "50679/1600000000 - sqrt(3)/40000",
+    "instrument_inconclusive": true
+  },
+  "population_radius": "1/1000",
+  "quadrature_radius": "1/200",
+  "verdict": "The calibrated determinant instrument resolves the source-predicted Theta_1 crossing at frozen bracketing points and distinguishes the Theta_2 no-finite-crossing control until endpoint signal loss overwhelms calibration.",
+  "claim_boundary": "source-derived dual local amplitude-damping law; exact state family; deterministic calibration box; no fitted trajectory or differential phase-drift repair"
+}
