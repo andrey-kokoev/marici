@@ -31,10 +31,9 @@ be the Mellin transform.  Mellin inversion in a common absolute-convergence
 chamber gives
 
 \[
- \boxed{
  Z_{\rho,\varepsilon}(s)
  ={1\over2\pi i}\int_{(c)}
- \widehat\rho(z)\varepsilon^{-z}\zeta(s+2z)\,dz.}
+ \widehat\rho(z)\varepsilon^{-z}\zeta(s+2z)\,dz.
 \]
 
 Two poles determine the boundary and constant terms.
@@ -50,10 +49,9 @@ The pole of `zeta(s+2z)` at `s+2z=1` occurs at
 Its residue produces the regulator-dependent boundary current
 
 \[
- \boxed{
  B_{\rho,\varepsilon}(s)
  ={1\over2}\widehat\rho\left({1-s\over2}\right)
- \varepsilon^{(s-1)/2}.}
+ \varepsilon^{(s-1)/2}.
 \]
 
 For the Gaussian,
@@ -76,7 +74,7 @@ residue one:
 The residue of the integrand at `z=0` is therefore
 
 \[
- \boxed{\zeta(s),}
+ \zeta(s),
 \]
 
 independent of the regulator shape.  Further regulator poles lie to the left
@@ -87,10 +85,9 @@ parameters.
 Hence
 
 \[
- \boxed{
  \operatorname{FP}_{\varepsilon\downarrow0}
  \left[Z_{\rho,\varepsilon}(s)-B_{\rho,\varepsilon}(s)\right]
- =\zeta(s).}
+ =\zeta(s).
 \]
 
 ## Coherence under regulator change
@@ -110,15 +107,9 @@ Thus changing the source smoothing chart transports the boundary current but
 does not change the relative scalar.  The finite part is a coherence
 invariant, not a Gaussian fit.
 
-This is the regulator analogue of the anomaly-line transition law:
-
-\[
- \boxed{
- \text{bulk chart change}
- +\text{boundary-current change}
- \longrightarrow
- \text{fixed relative section}.}
-\]
+This is the regulator analogue of the anomaly-line transition law: a bulk
+chart change together with its boundary-current change leaves the relative
+section fixed.
 
 ## Unauthorized finite counterterms
 

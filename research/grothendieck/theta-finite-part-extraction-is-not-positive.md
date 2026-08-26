@@ -31,9 +31,8 @@ For all sufficiently small positive `epsilon`,
 but after subtracting its positive divergent boundary term,
 
 \[
- \boxed{
  \operatorname{FP}_{\varepsilon\downarrow0}
- \left(F_\varepsilon-\varepsilon^{-a}\right)=c.}
+ \left(F_\varepsilon-\varepsilon^{-a}\right)=c.
 \]
 
 The finite part can therefore have either sign or vanish while the regulated
@@ -52,13 +51,11 @@ then eventual positivity of `Z_epsilon` imposes no constraint on `C`.
 
 Regulator universality proves that all admissible smoothing charts produce
 the same relative section. It does not turn the finite-part map into a
-positive functional. Hence the following implication is invalid:
+positive functional. Even if \(Z_{\rho,\varepsilon}>0\) for every sufficiently
+small \(\varepsilon\), it does not follow that
 
 \[
- \boxed{
- Z_{\rho,\varepsilon}>0\text{ for every small }\varepsilon
- \quad\not\Longrightarrow\quad
- \operatorname{FP}(Z_{\rho,\varepsilon}-B_{\rho,\varepsilon})>0.}
+ \operatorname{FP}(Z_{\rho,\varepsilon}-B_{\rho,\varepsilon})>0.
 \]
 
 This closes every RH route using only:
