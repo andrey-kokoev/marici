@@ -165,6 +165,105 @@ remains the explicit unequal-amplitude witness. This records phase-orbit
 invariance without manufacturing a phase origin or conflating the nonlinear
 intensity map with the linear amplitude carrier.
 
+## Finite-bandwidth completion gates
+
+The finite-bandwidth packet is now represented by five deliberately separate
+interfaces. Integer frequency sampling factors through `ZMod N`; shifting by
+one sample rate leaves the sampled class unchanged. The four-sample fixture
+proves that the distinct integer frequencies one and five alias, so sampling
+is not faithful on unrestricted frequencies. This is a finite quotient and
+not a continuum Fourier or reconstruction theorem.
+
+A three-bin spectrum projected onto its first two detector bins has an
+explicit nonzero out-of-band kernel vector. The spectra `(1,2,3)` and
+`(1,2,-3)` are distinct and have identical retained records. Injectivity is
+recovered only on a witness-carrying subtype whose third bin is declared zero.
+Thus bandlimiting is source-side data rather than a conclusion inferred from
+a zero detector record.
+
+Discrete causality uses signed time with nonpositive indices declared present
+or past. The three-tap response
+`u(0) + (1/2)u(-1) + (1/4)u(-2)` respects equality of complete past histories.
+An advanced tap reading `u(1)` fails the same property: the zero stream and a
+unit future pulse agree at every nonpositive time but give different present
+outputs. A fitted response row therefore carries no causality authority until
+its time order is supplied.
+
+For the stable impulse response with squared energy `(1/4)^n`, Lean proves the
+infinite energy sum `4/3`, the first-three-sample energy `21/16`, and the
+strictly positive omitted tail `1/48`. Summability is proved by the geometric
+series theorem. Stability therefore does not make a finite window complete.
+
+The pointwise/uniform distinction is represented by singular values
+`1/(n+1)` and inverse gains `n+1`. Every finite sample has an exact inverse,
+but the inverse gains exceed every real bound. This is the operational dual of
+the existing `DirectLimitReflection` lower-metric-bound hostile, not a new
+universal completion abstraction.
+
+Finally, `SameFinitePrefix` and `FinitePrefixDetermines` isolate the logical
+descent condition for any supplied asymptotic readout. A zero stream and a
+stream that becomes one at the cutoff agree throughout the observed prefix.
+Any readout separating them cannot factor through that prefix. The theorem is
+kept abstract because an eventual value is not silently interchangeable with
+a Cesàro mean.
+
+The positive-impedance/dark-reflection overlap between Nima and Aspect is
+represented first on the real axis and then on the complex right half-plane.
+For fixed positive scale `a`, the normalized impedance `Z(s)=s/a` has strictly
+positive real part whenever `Re(s)>0`. After the unit-reference Cayley
+constructor, the matched probe lies in that half-plane and has reflection
+zero; the reduced reflection denominator vanishes at the opposite probe
+`s=-a`. This refutes transport of nonvanishing from impedance to reflection
+while keeping the two port quantities distinct. It does not certify seam
+unitarity, identify an off-seam exponential probe with a physical-frequency
+measurement, or construct a complementary energy port.
+
+The reciprocal denominator-sewing packet contributes one further shared
+finite law. For a scalar retained block `a`, static couplings `b,c`, and
+boundary block `e`, Lean proves
+`det([[a,b],[c,e]]) = a (e-c a^-1 b)`. At first-jet level it proves that the
+full-minus-retained logarithmic determinant increment equals the logarithmic
+first jet of the Schur factor. The Schur derivative retains the mixed term
+`c a^-1 a' a^-1 b`. In the hostile fixture `a=2`, `a'=b=c=1`, and `e'=0`,
+that mixed contribution is `1/4`; using only the diagonal derivative gives
+zero and is wrong. This is exact one-mode boundary elimination, not a
+continuum determinant line, locally uniform mode limit, or physical bath-port
+dilation.
+
+Determinant first jets are also packaged as basepoint value/derivative pairs.
+Their logarithmic increments telescope through every intermediate retained
+block. Two mode-addition orders with common endpoints therefore have equal
+total increments even when their local increments differ. The explicit
+hostile produces local pairs `(1,3)` and `(2,2)`: both sum to four, but the
+first increments are unequal. Global determinant-line coherence thus does not
+erase constructor order at intermediate stages.
+
+The reciprocal sector double is certified at first-jet level. Reflection of
+the spectral coordinate preserves the determinant value and negates its first
+derivative. Multiplying the direct and reflected jets gives squared basepoint
+value and zero first derivative. The hostile starts from value two and first
+derivative three: both unsown sector derivatives are nonzero, while the sewn
+odd jet vanishes. Cancellation after sewing therefore cannot be descended to
+a vanishing claim in either individual sector. This is a basepoint jet
+identity, not a global analytic functional equation.
+
+The packet's three-mode determinant channels are represented directly in the
+source eigenbasis with eigenvalues `1/2`, `1/4`, and `1/5`. The denominator
+product is strictly positive at every positive rational probe. At probe
+`1/2`, the selected Cayley numerator product vanishes while the denominator
+remains strictly positive and nonzero. The reciprocal product of the positive
+and reflected denominator polynomials is globally even. These are determinant
+channels; the formalization does not infer their laboratory reconstruction
+from one analyzer scalar.
+
+The Hurwitz completion gate has an explicit hostile. At stage `n`, the
+determinant channel is the constant nonzero function `(1/2)^n`. The same
+geometric number is a probe-independent uniform error bound against the zero
+function, and it tends to zero. Thus every finite stage is zero-free while the
+uniform limit is identically zero. Local uniform convergence alone therefore
+does not preserve nonvanishing; a source-fixed normalization, nonzero
+basepoint, or explicit exclusion of the zero limit is indispensable.
+
 ## Missing convention-fixed inputs
 
 A common structure named `Instrument` remains withheld. The current packets
@@ -177,6 +276,16 @@ do not jointly fix:
 - a continuum temporal-mode or point-process completion;
 - convergence from finite readout effects to a quantum stochastic model.
 
+The finite-bandwidth promotion additionally still requires:
+
+- named finite and continuum function spaces, measures, and a convergence map;
+- a sampling normalization, anti-alias filter, and source-derived bandlimit;
+- a continuum causal transfer prescription and radiation boundary condition;
+- cutoff-independent operator and tail estimates;
+- an infinite-time averaging functional, its index/denominator convention,
+  and its convergence topology;
+- noise spectral density normalized per unit bandwidth.
+
 Amplitude readouts are complex-linear before intensity formation, whereas
 probability effects are affine or linear on states. Treating both as the same
 linear map would erase a known optics distinction.
@@ -188,8 +297,8 @@ file and `lake build MariciFormal`, while continuing to prohibit the Marici
 site build. The active operator prohibition still forbids Git inspection. The
 new file contains no `sorry`, `admit`, or active conjecture assumption.
 
-The verified snapshot is 65 theorem declarations and 54 definitions across
-864 lines. The module is imported by
+The verified snapshot is 109 theorem declarations and 95 definitions across
+1479 lines. The module is imported by
 `MariciFormal.lean`, and its sole direct import is
 `MariciFormal.FiniteObservation`. The exact commands were run from
 `research/buzzard/marici_formal`:
