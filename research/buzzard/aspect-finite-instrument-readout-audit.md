@@ -264,6 +264,52 @@ uniform limit is identically zero. Local uniform convergence alone therefore
 does not preserve nonvanishing; a source-fixed normalization, nonzero
 basepoint, or explicit exclusion of the zero limit is indispensable.
 
+The complementary positive gate is local and strictly weaker than a global
+uniform lower bound. If the approximation error at a source-normalized
+basepoint is smaller than the magnitude of the limiting value there, the
+finite-stage value is nonzero. The normalized fixture
+`1 + (1/2)^(n+1)` has exact error `(1/2)^(n+1)` from the fixed limit value one;
+the error is always smaller than one and tends to zero. This blocks the
+identically-zero collapse at the named basepoint. Propagating nonvanishing
+from that point across a complex domain still requires analytic structure and
+a Hurwitz-style theorem.
+
+Logarithmic determinant jets now carry nonvanishing as part of their type.
+Reflection preserves this subtype and negates its logarithmic slope;
+multiplication preserves it and adds slopes; reciprocal sewing consequently
+has slope zero. The hostile raw jet `(value,first)=(0,1)` demonstrates why the
+witness matters: Lean's totalized rational division assigns the untyped
+formula `first/value` the number zero, but no nonvanishing logarithmic jet can
+have that underlying record. A computed quotient is therefore not authority
+for a logarithmic derivative when its denominator gate is absent.
+
+Ordered determinant paths now have a parallel typed increment API. Typed
+increments telescope and two typed constructor orders with common endpoints
+have equal totals. The raw API is retained as algebraic history and supplies a
+hostile: a zero-valued intermediate with derivative seven receives totalized
+logarithmic slope zero, producing raw increments `-1` and `5` that telescope
+numerically to four. No nonvanishing typed jet can represent that intermediate.
+Numerical telescoping is therefore weaker than an admissible determinant-line
+path and cannot by itself certify effective descent.
+
+The schematic typed path is now instantiated by Aspect's actual source-fixed
+three-mode matrix. Exact determinant values and derivatives at `z=0` were
+derived read-only from the packet checker, not replaced by normalized
+value-one coordinates. All four base/intermediate/full stages have explicit
+nonzero witnesses. Order `(1,2)` has increments
+`497817076/679033509` and `98569/122430`; order `(2,1)` has increments
+`3076504369/3821955330` and `5053/6891`. The first increments differ, while
+both typed totals equal `853149/554630`, exactly matching the checker export.
+
+The first actual boundary addition is replayed from the matrix entries rather
+than only from exported increments. Lean recovers Schur value
+`306075/221852`, nonzero mixed inverse-block derivative
+`35212356/3076144369`, and full Schur derivative
+`3111356725/3076144369`. Its logarithmic Schur jet equals the first typed path
+increment exactly. Dividing the diagonal derivative one by the Schur value
+does not equal that increment, certifying the checker’s deliberate
+diagonal-only failure inside Lean.
+
 ## Missing convention-fixed inputs
 
 A common structure named `Instrument` remains withheld. The current packets
@@ -297,8 +343,8 @@ file and `lake build MariciFormal`, while continuing to prohibit the Marici
 site build. The active operator prohibition still forbids Git inspection. The
 new file contains no `sorry`, `admit`, or active conjecture assumption.
 
-The verified snapshot is 109 theorem declarations and 95 definitions across
-1479 lines. The module is imported by
+The verified snapshot is 128 theorem declarations and 115 definitions across
+1789 lines. The module is imported by
 `MariciFormal.lean`, and its sole direct import is
 `MariciFormal.FiniteObservation`. The exact commands were run from
 `research/buzzard/marici_formal`:

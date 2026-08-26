@@ -1476,4 +1476,373 @@ theorem finiteZeroFreeStages_can_uniformlyCollapse_to_zero :
 
 end ZeroFreeCompletionHostile
 
+section NormalizedCompletionGate
+
+/-- An approximation remains nonzero at a normalized basepoint whenever its
+error is strictly smaller than the limiting magnitude there. -/
+theorem nonzero_of_error_lt_limitMagnitude
+    {stage limit error : ℝ}
+    (errorBound : |stage - limit| ≤ error)
+    (errorSmall : error < |limit|) :
+    stage ≠ 0 := by
+  intro stageZero
+  subst stage
+  have : |limit| ≤ error := by
+    simpa [abs_neg] using errorBound
+  exact (not_lt_of_ge this) errorSmall
+
+/-- Source-normalized stages converging to the fixed basepoint value one. -/
+noncomputable def normalizedNonzeroStage
+    (n : ℕ) (_probe : ℚ) : ℝ :=
+  1 + (1 / 2 : ℝ) ^ (n + 1)
+
+noncomputable def normalizedStageUniformError (n : ℕ) : ℝ :=
+  (1 / 2 : ℝ) ^ (n + 1)
+
+theorem normalizedStage_error_exact
+    (n : ℕ) (probe : ℚ) :
+    |normalizedNonzeroStage n probe - 1| =
+      normalizedStageUniformError n := by
+  simp [normalizedNonzeroStage, normalizedStageUniformError, abs_of_nonneg]
+
+theorem normalizedStage_error_lt_basepointMagnitude (n : ℕ) :
+    normalizedStageUniformError n < |(1 : ℝ)| := by
+  rw [normalizedStageUniformError, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 1)]
+  exact pow_lt_one₀ (by norm_num : (0 : ℝ) ≤ 1 / 2)
+    (by norm_num : (1 / 2 : ℝ) < 1) (Nat.succ_ne_zero n)
+
+/-- The fixed nonzero normalization blocks the uniform-collapse hostile at
+every finite stage. -/
+theorem normalizedNonzeroStage_nonzero
+    (n : ℕ) (probe : ℚ) :
+    normalizedNonzeroStage n probe ≠ 0 := by
+  apply nonzero_of_error_lt_limitMagnitude
+    (error := normalizedStageUniformError n) (limit := 1)
+  · exact (normalizedStage_error_exact n probe).le
+  · exact normalizedStage_error_lt_basepointMagnitude n
+
+theorem normalizedStageUniformError_tendsto_zero :
+    Filter.Tendsto normalizedStageUniformError Filter.atTop (nhds 0) := by
+  have scaled :=
+    vanishingStageUniformError_tendsto_zero.const_mul (1 / 2 : ℝ)
+  convert scaled using 1
+  funext n
+  simp only [normalizedStageUniformError, vanishingStageUniformError,
+    pow_succ]
+  ring
+  norm_num
+
+end NormalizedCompletionGate
+
+section TypedLogarithmicDeterminantJets
+
+/-- A logarithmic determinant jet is admitted only with an explicit nonzero
+basepoint value. -/
+def NonvanishingDeterminantFirstJet :=
+  { jet : DeterminantFirstJet // jet.value ≠ 0 }
+
+def NonvanishingDeterminantFirstJet.logSlope
+    (jet : NonvanishingDeterminantFirstJet) : ℚ :=
+  jet.1.first / jet.1.value
+
+def reflectNonvanishingDeterminantJet
+    (jet : NonvanishingDeterminantFirstJet) :
+    NonvanishingDeterminantFirstJet :=
+  ⟨reflectDeterminantFirstJet jet.1, by
+    simpa [reflectDeterminantFirstJet] using jet.2⟩
+
+def multiplyNonvanishingDeterminantJets
+    (left right : NonvanishingDeterminantFirstJet) :
+    NonvanishingDeterminantFirstJet :=
+  ⟨multiplyDeterminantFirstJets left.1 right.1, by
+    simp only [multiplyDeterminantFirstJets]
+    exact mul_ne_zero left.2 right.2⟩
+
+theorem reflectedTypedLogSlope_neg
+    (jet : NonvanishingDeterminantFirstJet) :
+    (reflectNonvanishingDeterminantJet jet).logSlope = -jet.logSlope := by
+  simp [NonvanishingDeterminantFirstJet.logSlope,
+    reflectNonvanishingDeterminantJet, reflectDeterminantFirstJet]
+  ring
+
+/-- The product rule becomes addition of logarithmic slopes once both
+nonvanishing witnesses are present. -/
+theorem multipliedTypedLogSlope_add
+    (left right : NonvanishingDeterminantFirstJet) :
+    (multiplyNonvanishingDeterminantJets left right).logSlope =
+      left.logSlope + right.logSlope := by
+  rcases left with ⟨⟨leftValue, leftFirst⟩, leftNonzero⟩
+  rcases right with ⟨⟨rightValue, rightFirst⟩, rightNonzero⟩
+  simp only [NonvanishingDeterminantFirstJet.logSlope,
+    multiplyNonvanishingDeterminantJets,
+    multiplyDeterminantFirstJets]
+  field_simp [leftNonzero, rightNonzero]
+
+def sewNonvanishingReciprocalJet
+    (jet : NonvanishingDeterminantFirstJet) :
+    NonvanishingDeterminantFirstJet :=
+  multiplyNonvanishingDeterminantJets jet
+    (reflectNonvanishingDeterminantJet jet)
+
+theorem sewnTypedLogSlope_zero
+    (jet : NonvanishingDeterminantFirstJet) :
+    (sewNonvanishingReciprocalJet jet).logSlope = 0 := by
+  rw [sewNonvanishingReciprocalJet, multipliedTypedLogSlope_add,
+    reflectedTypedLogSlope_neg]
+  ring
+
+def zeroValuedRawDeterminantJet : DeterminantFirstJet := ⟨0, 1⟩
+
+/-- Hostile to Lean's totalized division: the raw formula returns zero at a
+zero denominator, but no typed logarithmic determinant jet can carry this
+underlying record. -/
+theorem totalizedDivision_does_not_authorize_logarithmicJet :
+    zeroValuedRawDeterminantJet.logSlope = 0 ∧
+      ¬ ∃ typed : NonvanishingDeterminantFirstJet,
+        typed.1 = zeroValuedRawDeterminantJet := by
+  constructor
+  · norm_num [DeterminantFirstJet.logSlope, zeroValuedRawDeterminantJet]
+  · rintro ⟨typed, typedValue⟩
+    have := typed.2
+    rw [typedValue] at this
+    exact this rfl
+
+end TypedLogarithmicDeterminantJets
+
+section TypedDeterminantJetPaths
+
+def typedDeterminantJetIncrement
+    (source target : NonvanishingDeterminantFirstJet) : ℚ :=
+  target.logSlope - source.logSlope
+
+theorem typedDeterminantJetIncrement_telescopes
+    (base intermediate full : NonvanishingDeterminantFirstJet) :
+    typedDeterminantJetIncrement base intermediate +
+        typedDeterminantJetIncrement intermediate full =
+      typedDeterminantJetIncrement base full := by
+  unfold typedDeterminantJetIncrement
+  ring
+
+theorem typedDeterminantJet_two_orders_same_total
+    (base firstIntermediate secondIntermediate full :
+      NonvanishingDeterminantFirstJet) :
+    typedDeterminantJetIncrement base firstIntermediate +
+        typedDeterminantJetIncrement firstIntermediate full =
+      typedDeterminantJetIncrement base secondIntermediate +
+        typedDeterminantJetIncrement secondIntermediate full := by
+  rw [typedDeterminantJetIncrement_telescopes,
+    typedDeterminantJetIncrement_telescopes]
+
+def rawZeroIntermediateJet : DeterminantFirstJet := ⟨0, 7⟩
+
+/-- Raw totalized slopes still telescope numerically through a zero-valued
+intermediate, but that intermediate is not an admissible logarithmic stage. -/
+theorem rawTelescoping_does_not_authorize_zeroIntermediate :
+    determinantJetIncrement sewingBaseJet rawZeroIntermediateJet = -1 ∧
+      determinantJetIncrement rawZeroIntermediateJet sewingFullJet = 5 ∧
+      determinantJetIncrement sewingBaseJet rawZeroIntermediateJet +
+          determinantJetIncrement rawZeroIntermediateJet sewingFullJet = 4 ∧
+      ¬ ∃ typed : NonvanishingDeterminantFirstJet,
+        typed.1 = rawZeroIntermediateJet := by
+  constructor
+  · norm_num [determinantJetIncrement, DeterminantFirstJet.logSlope,
+      sewingBaseJet, rawZeroIntermediateJet]
+  constructor
+  · norm_num [determinantJetIncrement, DeterminantFirstJet.logSlope,
+      sewingFullJet, rawZeroIntermediateJet]
+  constructor
+  · norm_num [determinantJetIncrement, DeterminantFirstJet.logSlope,
+      sewingBaseJet, sewingFullJet, rawZeroIntermediateJet]
+  · rintro ⟨typed, typedValue⟩
+    have := typed.2
+    rw [typedValue] at this
+    exact this rfl
+
+end TypedDeterminantJetPaths
+
+section AspectThreeModeTypedPath
+
+/-- Exact determinant value/derivative data derived from Aspect's source-fixed
+three-mode rational matrix at `z=0`. -/
+def aspectThreeModeBaseJet : NonvanishingDeterminantFirstJet :=
+  ⟨⟨55463 / 42250, 1⟩, by norm_num⟩
+
+def aspectThreeModeOrder12IntermediateJet :
+    NonvanishingDeterminantFirstJet :=
+  ⟨⟨12243 / 6760, 9151 / 3380⟩, by norm_num⟩
+
+def aspectThreeModeOrder21IntermediateJet :
+    NonvanishingDeterminantFirstJet :=
+  ⟨⟨6891 / 4225, 107963 / 42250⟩, by norm_num⟩
+
+def aspectThreeModeFullJet : NonvanishingDeterminantFirstJet :=
+  ⟨⟨9 / 4, 207 / 40⟩, by norm_num⟩
+
+theorem aspectThreeMode_order12_exactIncrements :
+    typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder12IntermediateJet =
+      497817076 / 679033509 ∧
+    typedDeterminantJetIncrement aspectThreeModeOrder12IntermediateJet
+        aspectThreeModeFullJet = 98569 / 122430 := by
+  norm_num [typedDeterminantJetIncrement,
+    NonvanishingDeterminantFirstJet.logSlope,
+    aspectThreeModeBaseJet, aspectThreeModeOrder12IntermediateJet,
+    aspectThreeModeFullJet]
+
+theorem aspectThreeMode_order21_exactIncrements :
+    typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder21IntermediateJet =
+      3076504369 / 3821955330 ∧
+    typedDeterminantJetIncrement aspectThreeModeOrder21IntermediateJet
+        aspectThreeModeFullJet = 5053 / 6891 := by
+  norm_num [typedDeterminantJetIncrement,
+    NonvanishingDeterminantFirstJet.logSlope,
+    aspectThreeModeBaseJet, aspectThreeModeOrder21IntermediateJet,
+    aspectThreeModeFullJet]
+
+/-- The source network's two actual constructor orders have different local
+increments but the same full-minus-base logarithmic jet. -/
+theorem aspectThreeMode_typedOrders_localDifference_globalCoherence :
+    typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder12IntermediateJet ≠
+      typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder21IntermediateJet ∧
+    typedDeterminantJetIncrement aspectThreeModeBaseJet
+          aspectThreeModeOrder12IntermediateJet +
+        typedDeterminantJetIncrement aspectThreeModeOrder12IntermediateJet
+          aspectThreeModeFullJet = 853149 / 554630 ∧
+    typedDeterminantJetIncrement aspectThreeModeBaseJet
+          aspectThreeModeOrder21IntermediateJet +
+        typedDeterminantJetIncrement aspectThreeModeOrder21IntermediateJet
+          aspectThreeModeFullJet = 853149 / 554630 := by
+  norm_num [typedDeterminantJetIncrement,
+    NonvanishingDeterminantFirstJet.logSlope,
+    aspectThreeModeBaseJet, aspectThreeModeOrder12IntermediateJet,
+    aspectThreeModeOrder21IntermediateJet, aspectThreeModeFullJet]
+
+end AspectThreeModeTypedPath
+
+section AspectThreeModeActualSchurJet
+
+/-- Exact first retained scalar block and coupling from Aspect's calibrated
+three-mode matrix. -/
+def aspectFirstRetainedValue : ℚ := 55463 / 42250
+def aspectFirstRetainedJet : ℚ := 1
+def aspectFirstBoundaryCoupling : ℚ := 2967 / 21125
+def aspectFirstBoundaryValue : ℚ := 117849 / 84500
+def aspectFirstBoundaryJet : ℚ := 1
+
+def aspectFirstMixedSchurJet : ℚ :=
+  aspectFirstBoundaryCoupling * aspectFirstRetainedValue⁻¹ *
+    aspectFirstRetainedJet * aspectFirstRetainedValue⁻¹ *
+    aspectFirstBoundaryCoupling
+
+theorem aspectFirstSchurValue_exact :
+    scalarSchurValue aspectFirstRetainedValue
+        aspectFirstBoundaryCoupling aspectFirstBoundaryCoupling
+        aspectFirstBoundaryValue = 306075 / 221852 := by
+  norm_num [scalarSchurValue, aspectFirstRetainedValue,
+    aspectFirstBoundaryCoupling, aspectFirstBoundaryValue]
+
+theorem aspectFirstMixedSchurJet_exact_nonzero :
+    aspectFirstMixedSchurJet = 35212356 / 3076144369 ∧
+      aspectFirstMixedSchurJet ≠ 0 := by
+  norm_num [aspectFirstMixedSchurJet, aspectFirstBoundaryCoupling,
+    aspectFirstRetainedValue, aspectFirstRetainedJet]
+
+theorem aspectFirstSchurFirstJet_exact :
+    scalarSchurFirstJet aspectFirstRetainedValue
+        aspectFirstRetainedJet aspectFirstBoundaryCoupling
+        aspectFirstBoundaryCoupling aspectFirstBoundaryJet =
+      3111356725 / 3076144369 := by
+  norm_num [scalarSchurFirstJet, aspectFirstRetainedValue,
+    aspectFirstRetainedJet, aspectFirstBoundaryCoupling,
+    aspectFirstBoundaryJet]
+
+/-- The actual Schur logarithmic jet equals the first typed determinant-path
+increment, while the diagonal-only value one does not. -/
+theorem aspectFirstSchurJet_matches_typedIncrement_and_rejects_diagonalOnly :
+    scalarSchurFirstJet aspectFirstRetainedValue
+          aspectFirstRetainedJet aspectFirstBoundaryCoupling
+          aspectFirstBoundaryCoupling aspectFirstBoundaryJet /
+        scalarSchurValue aspectFirstRetainedValue
+          aspectFirstBoundaryCoupling aspectFirstBoundaryCoupling
+          aspectFirstBoundaryValue =
+      typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder12IntermediateJet ∧
+    aspectFirstBoundaryJet /
+          scalarSchurValue aspectFirstRetainedValue
+            aspectFirstBoundaryCoupling aspectFirstBoundaryCoupling
+            aspectFirstBoundaryValue ≠
+      typedDeterminantJetIncrement aspectThreeModeBaseJet
+        aspectThreeModeOrder12IntermediateJet := by
+  norm_num [scalarSchurFirstJet, scalarSchurValue,
+    typedDeterminantJetIncrement,
+    NonvanishingDeterminantFirstJet.logSlope,
+    aspectFirstRetainedValue, aspectFirstRetainedJet,
+    aspectFirstBoundaryCoupling, aspectFirstBoundaryValue,
+    aspectFirstBoundaryJet, aspectThreeModeBaseJet,
+    aspectThreeModeOrder12IntermediateJet]
+
+end AspectThreeModeActualSchurJet
+
+section FiniteTailSeamCutEnergy
+
+/-- Squared energy of the first `length` samples of a rational source. -/
+def finitePrefixEnergy (source : ℕ → ℚ) (length : ℕ) : ℚ :=
+  ∑ k ∈ Finset.range length, source k ^ 2
+
+def shiftedEnergySource (source : ℕ → ℚ) (offset : ℕ) : ℕ → ℚ :=
+  fun k ↦ source (offset + k)
+
+/-- Exact finite cut isometry: total interval energy is prefix energy plus the
+energy of the translated tail interval. -/
+theorem finitePrefixEnergy_add
+    (source : ℕ → ℚ) (first second : ℕ) :
+    finitePrefixEnergy source (first + second) =
+      finitePrefixEnergy source first +
+        finitePrefixEnergy (shiftedEnergySource source first) second := by
+  simp only [finitePrefixEnergy, shiftedEnergySource, Finset.sum_range_add]
+
+/-- Two staged cuts reconstruct the same three-piece energy decomposition as
+one cut at the combined marked positions. -/
+theorem finiteTailSeam_twoStage_energy
+    (source : ℕ → ℚ) (first second third : ℕ) :
+    finitePrefixEnergy source (first + second + third) =
+      finitePrefixEnergy source first +
+        finitePrefixEnergy (shiftedEnergySource source first) second +
+        finitePrefixEnergy
+          (shiftedEnergySource source (first + second)) third := by
+  rw [finitePrefixEnergy_add source (first + second) third,
+    finitePrefixEnergy_add source first second]
+
+def seamOnlyUnitSource : ℕ → ℚ
+  | 0 => 1
+  | _ => 0
+
+/-- Tail-only observation may vanish after a cut even though the retained seam
+prefix carries nonzero energy. -/
+theorem vanishingTail_does_not_erase_seamEnergy (horizon : ℕ) :
+    finitePrefixEnergy seamOnlyUnitSource 1 = 1 ∧
+      finitePrefixEnergy (shiftedEnergySource seamOnlyUnitSource 1) horizon = 0 ∧
+      finitePrefixEnergy seamOnlyUnitSource 1 +
+          finitePrefixEnergy
+            (shiftedEnergySource seamOnlyUnitSource 1) horizon = 1 := by
+  constructor
+  · norm_num [finitePrefixEnergy, seamOnlyUnitSource]
+  constructor
+  · apply Finset.sum_eq_zero
+    intro k hk
+    simp [shiftedEnergySource, seamOnlyUnitSource]
+  · rw [show finitePrefixEnergy seamOnlyUnitSource 1 = 1 by
+      norm_num [finitePrefixEnergy, seamOnlyUnitSource]]
+    rw [show finitePrefixEnergy
+          (shiftedEnergySource seamOnlyUnitSource 1) horizon = 0 by
+      apply Finset.sum_eq_zero
+      intro k hk
+      simp [shiftedEnergySource, seamOnlyUnitSource]]
+    norm_num
+
+end FiniteTailSeamCutEnergy
+
 end MariciFormal.FiniteInstrumentReadout
