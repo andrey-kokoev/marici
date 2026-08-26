@@ -1,0 +1,53 @@
+{
+  "schema": "marici.gamma_wall_riccati_transfer.v1",
+  "checks": {
+    "riccati_transfer_residual_zero": true,
+    "companion_transfer_residual_zero": true,
+    "wrong_coefficient_residual_nonzero": true,
+    "backward_R_inverse_residual_zero": true,
+    "backward_S_inverse_residual_zero": true,
+    "endpoint_flux_scales_by_c": true,
+    "base_recurrence_with_wall_channel": true,
+    "normalized_wall_channel_transfer": true,
+    "linear_lift_determinant": true,
+    "tail_bivector_scale": true,
+    "wall_to_tail_shear": true
+  },
+  "exact": {
+    "riccati_residual": "0",
+    "companion_residual": "0",
+    "wrong_coefficient_residual": "-R/4",
+    "backward_R_residual": "0",
+    "backward_S_residual": "0",
+    "endpoint_flux": "c**(j + 5/4)*(c - 3/2)**2*exp(-c)",
+    "endpoint_scaling_residual": "0",
+    "base_recurrence_residual": "0",
+    "wall_channel_residual": "0",
+    "transfer_matrix": [
+      [
+        "j + 19/4",
+        "-3*j/2 - 15/8",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "c"
+      ]
+    ],
+    "determinant": "3*c*(4*j + 5)/8",
+    "determinant_residual": "0",
+    "tail_minor": "3*(4*j + 5)/8",
+    "tail_minor_residual": "0",
+    "wall_column": [
+      "1",
+      "0",
+      "c"
+    ]
+  }
+}

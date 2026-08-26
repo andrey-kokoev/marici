@@ -1,0 +1,16 @@
+{
+  "schema": "marici.gamma_wall_mellin_residue.v1",
+  "checks": {
+    "wall_value_identity": true,
+    "shifted_residue_equals_wall_current": true,
+    "four_term_laurent_regularization": true,
+    "wrong_wall_coefficient_residual_nonzero": true
+  },
+  "exact": {
+    "wall_value": "c**(j + 5/4)*(c - 3/2)*exp(-c)",
+    "shifted_residue": "c**(5/4)*c**j*(2*c - 3)**2*exp(-c)/4",
+    "wall_current": "c**(j + 5/4)*(c - 3/2)**2*exp(-c)",
+    "regularized_laurent": "k0*q + k1*q**2 + k2*q**3 + k_minus_one",
+    "wrong_wall_residual": "c**(5/4)*c**j*(2*c - 3)*exp(-c)/4"
+  }
+}
