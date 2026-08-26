@@ -1,0 +1,48 @@
+{
+  "schema": "marici.aspect.x-state-determinant-instrument.v1",
+  "status": "pass",
+  "measurement_settings": [
+    "joint Z populations",
+    "XX",
+    "YY",
+    "XY",
+    "YX"
+  ],
+  "reconstruction": {
+    "b": "P(01)",
+    "c": "P(10)",
+    "Re(z)": "(XX-YY)/4",
+    "Im(z)": "-(XY+YX)/4"
+  },
+  "decision_residual": "Re(z)^2+Im(z)^2-b*c",
+  "hostile": {
+    "b": "1/100",
+    "c": "9/100",
+    "a": "9/20",
+    "d": "9/20",
+    "z": [
+      "3/100",
+      "1/25"
+    ],
+    "nuisance_w": [
+      "1/100",
+      "-1/200"
+    ],
+    "corner_physical_residual": "1/5",
+    "inner_physical_residual": "31/40000",
+    "records": {
+      "XX": "2/25",
+      "YY": "-1/25",
+      "XY": "-9/100",
+      "YX": "-7/100"
+    },
+    "determinant_residual": "1/625",
+    "linear_witness": "1/50",
+    "linear_witness_misses_npt": true
+  },
+  "ppt_control_residual": "-7/10000",
+  "symmetric_branch_residual": "9/10000",
+  "symmetric_branch_linear_witness": "-1/100",
+  "verdict": "Five optical settings recover the invariant X-state NPT boundary and strictly dominate the phase-aligned linear witness on asymmetric or complex-coherence records.",
+  "claim_boundary": "labelled two-qubit X-state family; exact expectation values; no finite-count, loss, or misalignment model"
+}
