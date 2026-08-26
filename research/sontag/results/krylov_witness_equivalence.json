@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "checks": {
+    "baseline_is_nonzero": true,
+    "similarity_scales_by_determinant": true,
+    "seed_scaling_has_cubic_weight": true,
+    "affine_operator_has_cubic_slope_weight": true,
+    "single_input_state_feedback_preserves_omega": true,
+    "nonlinear_polynomial_can_destroy_cyclicity": true,
+    "invertible_seed_filter_scales_by_its_determinant": true,
+    "singular_seed_filter_destroys_cyclicity": true,
+    "unreferenced_ray_representative_flips_sign": true,
+    "contragredient_reference_cancels_seed_weight": true,
+    "cartesian_join_has_spurious_pairs": true,
+    "lineage_pullback_has_only_physical_pairs": true
+  },
+  "baseline_omega": "2",
+  "classification": {
+    "cyclicity": "preserved by similarity, nonzero seed scaling, affine evolution reparameterization, state feedback, and invertible seed filtering under their stated gates",
+    "signed_readout": "preserved only after the volume reference transports by the inverse determinant character",
+    "witness_equivalence": "additionally requires staged-constructor and lineage preservation"
+  },
+  "deliberate_failure": {
+    "input_spectrum": [
+      -1,
+      1,
+      2
+    ],
+    "polynomial": "p(z)=z^2",
+    "before_omega": "6",
+    "after_omega": "0"
+  }
+}
