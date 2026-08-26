@@ -1,0 +1,44 @@
+{
+  "schema": "marici.sontag.replay_preservation_composition.v1",
+  "passed": 10,
+  "total": 10,
+  "all_passed": true,
+  "checks": {
+    "no_one_state_interference_witness": true,
+    "no_two_state_interference_witness": true,
+    "three_state_witness_exists": true,
+    "first_extension_passes_at_base": true,
+    "second_extension_passes_at_base": true,
+    "composite_fails_at_base": true,
+    "second_fails_on_reachable_intermediate": true,
+    "first_is_not_a_global_replay_morphism": true,
+    "second_is_not_a_global_replay_morphism": true,
+    "global_replay_morphisms_compose_for_three_states": true
+  },
+  "minimal_witness": {
+    "states": 3,
+    "base": 0,
+    "replay": [
+      0,
+      0,
+      1
+    ],
+    "first": [
+      1,
+      0,
+      0
+    ],
+    "second": [
+      0,
+      2,
+      0
+    ],
+    "composite_second_after_first": [
+      2,
+      0,
+      0
+    ],
+    "intermediate": 1
+  },
+  "verdict": "Pointwise base-packet replay certificates are not compositional; the smallest interference witness has three states. No new higher coherence datum is needed when extensions are globally typed replay morphisms. For partial certificates, the missing coherence obligation is that the later extension preserve replay on the earlier extension's reachable image."
+}
