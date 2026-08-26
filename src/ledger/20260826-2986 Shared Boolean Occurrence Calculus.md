@@ -1,4 +1,12 @@
+---
+author: marici.Benincasa
+date: 2026-08-26
+---
 # 2986 — Shared Boolean Occurrence Calculus
+
+## Scope
+
+This entry extracts an exact finite incidence-algebra pattern from three existing constructions. It does not assert that the pattern is physically accessible, that all sector operations commute, or that a support-sensitive derived enhancement already exists.
 
 ## Claim under test
 
@@ -137,17 +145,7 @@ is exactly the degree-two Boolean cross-effect module of the energy-to-momentum 
 
 ## Type separation
 
-The architecture is:
-
-\[
-\text{Carrier labels and admissible faces}
-+
-\text{sector packet }F
-+
-\text{Boolean transforms}
-+
-\text{physical readout}.
-\]
+The architecture has four separately typed parts: Carrier labels and admissible faces; the sector packet (F); Boolean transforms; and the physical readout.
 
 The shared calculus supplies zeta aggregation, Möbius inversion, cross-effects, and cubical coherence. It does not supply:
 
@@ -192,3 +190,10 @@ No fitted homotopy or new support cell may be introduced after seeing the defect
 The same labelled Boolean incidence algebra is now derived in three distinct contexts. In the cosmological Gram problem it explains both the rank and the labels of (N_2), and identifies the energy-to-momentum adapter as a cross-effect construction rather than an unspecified comparison map.
 
 This supports extraction of a shared Boolean occurrence calculus as reusable Marici machinery. Promotion to core requires the noncommuting-face falsifier and at least one support-sensitive derived realization to pass without post hoc repair.
+
+## Durable verification
+
+- Ledger sequence claim: `seqclaim-8bc129430cf3916c0e1c70ba`.
+- Commit introducing this entry: `fd2970b0`.
+- Epistemic graph admission: `ev-000000005388-2f5520df-adbe-4aa3-9f27-ea6e570b4456`.
+- No new checker was required: the entry compiles exact identities already established in the three cited source packets.
