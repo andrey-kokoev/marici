@@ -1,0 +1,75 @@
+{
+  "schema": "marici.sontag.reciprocal-lossy-cavity-control-audit.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "source_packet": "research/aspect/reciprocal-lossy-cavity-plant.md",
+  "checks": {
+    "aspect_dilation_remains_orthogonal": true,
+    "open_loop_ordered_plant_is_well_posed": true,
+    "incident_port_controls_scalar_state": true,
+    "each_physical_detector_observes_scalar_state_in_one_sample": true,
+    "sampled_pole_is_strictly_stable": true,
+    "source_derived_storage_supply_identity": true,
+    "dark_reflection_has_nonzero_state_and_energy": true,
+    "reflected_feedback_hostile_is_singular": true,
+    "transmitted_feedback_hostile_is_singular": true,
+    "stable_transfer_can_hide_marginal_mode": true,
+    "hidden_marginal_mode_is_unreachable": true,
+    "high_finesse_gramian_bound_holds": true,
+    "high_finesse_gramian_samples_collapse": true
+  },
+  "passed": 13,
+  "total": 13,
+  "frozen_plant": {
+    "A": "36/125",
+    "B_u": "48/125",
+    "B_w": "4/5",
+    "C": [
+      "4/5",
+      "9/25",
+      "-48/125"
+    ],
+    "D_u": [
+      "-3/5",
+      "12/25",
+      "-64/125"
+    ]
+  },
+  "witnesses": {
+    "dark_locus_witness": {
+      "u": "4/5",
+      "x": "3/5",
+      "y_reflected": "0",
+      "forward": "1"
+    },
+    "reflected_singular_gain": "-5/3",
+    "transmitted_singular_gain": "25/12",
+    "hidden_marginal_augmented_A": [
+      [
+        "36/125",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "high_finesse_N3_gramians": {
+      "2": "4097003056/6103515625",
+      "3": "2924260569/6103515625",
+      "10": "1205044020731240200504001200/11494742132376223120464911401",
+      "100": "120000050400004020000073120000402000000504000000120000/100140091036410012002300334323003200210010364009100140001"
+    }
+  },
+  "continuum_boundary": {
+    "survives": [
+      "ordered delay recurrence",
+      "complete-port energy balance",
+      "round-trip contraction when |A|<1"
+    ],
+    "does_not_promote": [
+      "one sampled scalar output to observability of an arbitrary delay-history state",
+      "finite-horizon rank to uniform high-finesse observability"
+    ]
+  }
+}
