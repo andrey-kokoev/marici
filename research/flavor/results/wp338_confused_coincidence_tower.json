@@ -1,0 +1,30 @@
+{
+  "work_package": "WP338",
+  "admitted_state_domain": "normalized exchangeable coincidence moments u_0 through u_6 observed through calibrated false-positive background alpha and detector contrast gamma",
+  "faithful_quotient_coordinate": "the source coincidence tower conditional on independently calibrated alpha and nonzero gamma",
+  "candidate_probe_family": "observed coincidence tower plus known-negative background and known-positive contrast calibration ports",
+  "forward_rule": "r_j=sum_{ell<=j} binomial(j,ell) alpha^(j-ell) gamma^ell u_ell",
+  "inverse_rule": "u_j=gamma^(-j) sum_{ell<=j} binomial(j,ell) (-alpha)^(j-ell) r_ell",
+  "determinant": "gamma**21",
+  "first_three_observed_moments": [
+    "u0",
+    "alpha*u0 + gamma*u1",
+    "alpha**2*u0 + 2*alpha*gamma*u1 + gamma**2*u2"
+  ],
+  "contextual_partition": "fixed calibrated alpha,gamma with gamma nonzero gives singleton source-moment fibers; floating detector parameters group distinct source towers",
+  "classification": "a complete calibrated background-subtraction theorem; raw coincidence correlators include lower-order detector sectors and are not source-faithful",
+  "smallest_exact_falsifier": "the source/detector pairs (p,alpha,gamma)=(1/2,0,1/2) and (1/4,0,1) have identical complete observed coincidence towers",
+  "remaining_physical_instrument_gate": "realize traceable negative and positive calibration ports, bound background and contrast drift, and test conditional independence and occupancy dependence across coincidence order",
+  "checks": {
+    "forward_transform_is_lower_triangular": true,
+    "diagonal_is_contrast_power_tower": true,
+    "determinant_is_contrast_power_21": true,
+    "declared_background_subtraction_is_exact_inverse": true,
+    "calibrated_tower_reconstructs_source_moments": true,
+    "first_observed_moment_contains_background": true,
+    "second_observed_moment_contains_all_lower_sectors": true,
+    "hostile_uncalibrated_towers_are_identical": true,
+    "zero_contrast_collapses_to_background_only": true
+  },
+  "passed": true
+}

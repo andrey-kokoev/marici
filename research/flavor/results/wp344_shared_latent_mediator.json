@@ -1,0 +1,30 @@
+{
+  "work_package": "WP344",
+  "admitted_state_domain": "six domains conditionally iid given one shared binary mediator selecting probabilities pbar-d and pbar+d with equal weights, restricted by 0<d<min(pbar,1-pbar)",
+  "faithful_quotient_coordinate": "the marginal coincidence hierarchy after the shared mediator is unobserved",
+  "source_operation": "draw one common mediator branch, then prepare all domains independently conditional on that branch",
+  "conditional_probabilities": [
+    "-d + pbar",
+    "d + pbar"
+  ],
+  "marginal_first_moment": "pbar",
+  "marginal_second_moment": "d**2 + pbar**2",
+  "connected_second_moment": "d**2",
+  "marginal_third_moment": "pbar*(3*d**2 + pbar**2)",
+  "contextual_partition": "first order merges the shared-latent mixture with the product law at pbar; second order detects d^2 but still identifies opposite mediator displacements",
+  "classification": "a source-generated common-cause obstruction to WP343 factorization; conditional independence does not imply marginal independence after forgetting the mediator",
+  "smallest_exact_falsifier": "the latent mixture and product law have identical first moment pbar but second moments pbar^2+d^2 and pbar^2",
+  "remaining_physical_instrument_gate": "measure a calibrated connected pair coincidence or directly resolve the mediator branch; then test whether the mediator is shared across the same domains and freeze-out history",
+  "checks": {
+    "marginal_first_moment_equals_center": true,
+    "shared_latent_second_moment_contains_variance": true,
+    "connected_pair_coincidence_is_d_squared": true,
+    "third_moment_contains_latent_correction": true,
+    "product_model_has_same_first_moment": true,
+    "product_model_differs_at_second_order": true,
+    "product_model_differs_at_third_order": true,
+    "zero_displacement_recovers_factorization_through_third": true,
+    "second_order_identifies_latent_variance_not_sign": true
+  },
+  "passed": true
+}

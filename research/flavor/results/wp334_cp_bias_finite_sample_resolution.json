@@ -1,0 +1,28 @@
+{
+  "work_package": "WP334",
+  "admitted_state_domain": "independent CP-domain Bernoulli trials near epsilon=0 with known positive beta,c0 and calibrated rates alpha,delta satisfying 0<=alpha,delta and alpha+delta<1",
+  "faithful_quotient_coordinate": "the local signed bias epsilon inferred from detector-level branch frequencies",
+  "candidate_physical_instrument": "N repeated domain preparations passed through the calibrated WP329 binary detector",
+  "true_positive_probability": "1/(1 + exp(-2*beta*c0*epsilon))",
+  "observed_positive_probability": "(alpha - delta*exp(2*beta*c0*epsilon) + exp(2*beta*c0*epsilon))/(exp(2*beta*c0*epsilon) + 1)",
+  "zero_bias_observed_probability": "alpha/2 - delta/2 + 1/2",
+  "fisher_information_per_sample": "4*beta**2*c0**2*(exp(2*beta*c0*epsilon) + 1)**2*(alpha + delta - 1)**2*exp(4*beta*c0*epsilon)/((-alpha + delta*exp(2*beta*c0*epsilon) + 1)*(alpha - delta*exp(2*beta*c0*epsilon) + exp(2*beta*c0*epsilon))*(exp(4*beta*c0*epsilon) + 2*exp(2*beta*c0*epsilon) + 1)**2)",
+  "zero_bias_fisher_per_sample": "-beta**2*c0**2*(alpha + delta - 1)**2/((alpha - delta - 1)*(alpha - delta + 1))",
+  "symmetric_error_zero_bias_fisher": "beta**2*c0**2*(2*r - 1)**2",
+  "cramer_rao_rule": "for N independent trials, Var(epsilon_hat) is at least 1/(N*I_epsilon); detector confusion reduces I_epsilon and cannot be repaired by algebraic inversion alone",
+  "contextual_partition": "nonzero calibrated contrast makes nearby biases statistically distinguishable only asymptotically; finite N leaves overlapping outcome distributions",
+  "classification": "a finite-sample resolution contract for an identifying instrument, not a selector or a proof of independent domain preparation",
+  "smallest_exact_falsifier": "alpha+delta=1 sets the Fisher information to zero for every sample count, so repetitions cannot repair a blind detector",
+  "remaining_physical_instrument_gate": "establish independent or correctly correlated domain trials, freeze beta and c0 uncertainties, propagate calibration uncertainty, choose a declared confidence and power criterion, and demonstrate sufficient N",
+  "checks": {
+    "zero_bias_true_probability_is_half": true,
+    "boundary_observed_probability_is_exact": true,
+    "perfect_detector_boundary_information_is_beta2c02": true,
+    "boundary_information_has_exact_contrast_form": true,
+    "symmetric_confusion_penalty_is_contrast_squared": true,
+    "independent_samples_add_information": true,
+    "zero_contrast_kills_boundary_information": true,
+    "probability_denominator_has_difference_of_squares_form": true
+  },
+  "passed": true
+}

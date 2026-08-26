@@ -1,0 +1,30 @@
+{
+  "work_package": "WP370",
+  "admitted_state_domain": "local linear two-channel detector with calibrated symmetric confusion beta in [0,1/2], calibrated fixed backgrounds, and the WP369 finite-width threshold map",
+  "faithful_quotient_coordinate": "the recovered dispersive/absorptive threshold pair when contrast gamma=1-2*beta is positive; full physical16 remains projected downstream",
+  "source_authorized_probe_family": "WP369 complementary threshold channels composed with calibrated detector confusion and background subtraction",
+  "contextual_partition": "positive calibrated contrast preserves threshold classes; complete confusion merges channel-swapped packets, and unknown differential background creates an additional kernel",
+  "classification": "finite-resolution threshold identifier with exact contrast margin; neither numerical selector nor additional control direction",
+  "confusion_matrix": "Matrix([[1 - beta, beta], [beta, 1 - beta]])",
+  "contrast": "1 - 2*beta",
+  "threshold_jacobian_determinant": "-mu**4/(4*(L**2 + Omega**2)**2)",
+  "composed_jacobian_determinant": "mu**4*(2*beta - 1)/(4*(L**2 + Omega**2)**2)",
+  "inverse_difference_gain": "1/(1 - 2*beta)",
+  "smallest_exact_falsifier": "at beta=1/2 the packets (1,0) and (0,1) both produce (1/2,1/2), so the complementary threshold channel is erased",
+  "remaining_physical_instrument_gate": "independently calibrate a positive contrast lower bound and differential background, then include finite-sample noise and scan support",
+  "checks": {
+    "confusion_determinant_is_contrast": true,
+    "common_channel_eigenvalue_is_one": true,
+    "difference_channel_eigenvalue_is_contrast": true,
+    "threshold_jacobian_matches_wp369_determinant": true,
+    "composed_determinant_factors_at_detector": true,
+    "calibrated_inverse_recovers_threshold_vector": true,
+    "complete_confusion_collapses_hostile_channels": true,
+    "complete_confusion_has_rank_one": true,
+    "fixed_background_does_not_change_jacobian": true,
+    "unknown_differential_background_has_exact_kernel": true,
+    "inverse_difference_gain_is_one_over_contrast": true,
+    "deliberate_complete_confusion_determinant_zero": true
+  },
+  "passed": true
+}

@@ -1,0 +1,44 @@
+{
+  "work_package": "WP328",
+  "admitted_state_domain": "two CP-conjugate domains with energies -epsilon*c0 and +epsilon*c0, prepared by a thermal channel at inverse temperature beta",
+  "faithful_quotient_coordinate": "CP-resolved branch probability p_plus, or equivalently its log-odds",
+  "source_operation": "Gibbs preparation of the two WP327 branches followed by repeated CP-sensitive branch counts",
+  "p_plus": "exp(2*beta*c0*epsilon)/(exp(2*beta*c0*epsilon) + 1)",
+  "p_minus": "1/(exp(2*beta*c0*epsilon) + 1)",
+  "log_odds": "2*beta*c0*epsilon",
+  "response_jacobian": [
+    [
+      "2*c0*epsilon",
+      "2*beta*c0",
+      "2*beta*epsilon"
+    ]
+  ],
+  "response_rank": 1,
+  "kernel_basis": [
+    [
+      "beta",
+      "-epsilon",
+      "0"
+    ],
+    [
+      "beta",
+      "0",
+      "-c0"
+    ]
+  ],
+  "contextual_partition": "CP-insensitive observations collapse both domains; calibrated repeated CP-sensitive counts identify one thermal log-odds coordinate",
+  "classification": "a biased thermal channel is a stochastic preparation selector over domains, but its branch counts identify only beta*epsilon*c0 and cannot identify the underlying source parameters",
+  "smallest_exact_falsifier": "two independent rescalings of beta, epsilon, and c0 leave the log-odds unchanged, giving an exact two-dimensional source-identification kernel",
+  "remaining_physical_instrument_gate": "derive the freeze-out temperature, CP scale, bias, domain independence, and detector confusion matrix on one common history; one observed domain is not a calibrated probability measurement",
+  "checks": {
+    "probabilities_are_normalized": true,
+    "log_odds_equal_twice_thermal_bias": true,
+    "zero_bias_gives_equal_branch_probability": true,
+    "response_jacobian_has_rank_one": true,
+    "first_scaling_direction_is_in_kernel": true,
+    "second_scaling_direction_is_in_kernel": true,
+    "kernel_directions_are_independent": true,
+    "positive_bias_favors_positive_branch": true
+  },
+  "passed": true
+}

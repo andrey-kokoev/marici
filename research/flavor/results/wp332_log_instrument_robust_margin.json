@@ -1,0 +1,70 @@
+{
+  "work_package": "WP332",
+  "admitted_state_domain": "strictly positive beta, epsilon, c0 with frozen positive gap and gain, using local logarithmic source and readout coordinates",
+  "log_source_coordinates": [
+    "log beta",
+    "log epsilon",
+    "log c0"
+  ],
+  "log_readout_coordinates": [
+    "log(-log A) minus log gap",
+    "log C minus log gain",
+    "log L minus log 2"
+  ],
+  "response_jacobian": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "gram_matrix": [
+    [
+      2,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2
+    ]
+  ],
+  "gram_eigenvalues": [
+    "2 - sqrt(3)",
+    "1",
+    "sqrt(3) + 2"
+  ],
+  "gram_determinant": "1",
+  "smallest_singular_value": "sqrt(2 - sqrt(3))",
+  "robustness_rule": "any additive response-Jacobian perturbation with spectral norm strictly below sqrt(2-sqrt(3)) preserves full rank",
+  "contextual_partition": "inside the positive log domain the calibrated local response has a uniform singleton fiber; the epsilon=0 boundary is outside this chart",
+  "classification": "a uniformly conditioned calibrated identification instrument on the positive domain; still neither a source selector nor evidence that the required physical channels exist",
+  "smallest_exact_falsifier": "an uncertainty bound reaching the smallest-singular-value margin no longer certifies rank; epsilon=0 separately makes log L undefined",
+  "remaining_physical_instrument_gate": "translate laboratory and freeze-out errors into a justified spectral-norm bound below the exact margin, while treating zero or sign-indefinite bias in a separate nonlogarithmic chart",
+  "checks": {
+    "log_response_has_full_rank": true,
+    "log_response_determinant_has_unit_magnitude": true,
+    "gram_determinant_is_one": true,
+    "gram_spectrum_is_exact": true,
+    "smallest_gram_eigenvalue_is_positive": true,
+    "smallest_singular_value_is_exact": true,
+    "zero_bias_boundary_is_excluded_from_log_domain": true
+  },
+  "passed": true
+}

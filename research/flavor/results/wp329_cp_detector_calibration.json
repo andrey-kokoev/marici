@@ -1,0 +1,49 @@
+{
+  "work_package": "WP329",
+  "admitted_state_domain": "true CP-positive probability p and a binary detector with false-positive alpha and false-negative delta",
+  "faithful_quotient_coordinate": "p after detector inversion when the independently calibrated contrast 1-alpha-delta is nonzero",
+  "candidate_probe_family": "raw domain counts plus separate known-negative and known-positive calibration preparations",
+  "source_authorization": "conditional only; physical known-domain preparations and their common-frame interface have not been established",
+  "raw_observed_probability": "alpha - p*(alpha + delta - 1)",
+  "raw_response_jacobian": [
+    [
+      "-alpha - delta + 1",
+      "1 - p",
+      "-p"
+    ]
+  ],
+  "calibrated_response_jacobian": [
+    [
+      "-alpha - delta + 1",
+      "1 - p",
+      "-p"
+    ],
+    [
+      "0",
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "-1"
+    ]
+  ],
+  "calibrated_determinant": "alpha + delta - 1",
+  "inverse_probability": "p",
+  "contextual_partition": "raw counts identify one equivalence class in (p,alpha,delta); two calibration ports refine it to singleton parameters away from zero contrast",
+  "classification": "the calibrated detector is a faithful physical readout of the preparation probability, not a selector of that probability or an identifier of beta, epsilon, and c0",
+  "smallest_exact_falsifier": "alpha+delta=1 makes detector contrast zero, the determinant vanish, and the observed frequency independent of p",
+  "reference_groupoid": "known-negative and known-positive preparations add two reference ports and define a new calibrated detector experiment; they do not reveal an absolute label in the raw-count experiment",
+  "remaining_physical_instrument_gate": "realize pure or traceably bounded CP calibration preparations, measure alpha and delta with uncertainties and drift control, and keep the contrast margin nonzero on the same domain history",
+  "checks": {
+    "raw_branch_frequency_has_rank_one": true,
+    "raw_readout_has_two_parameter_kernel": true,
+    "calibrated_determinant_equals_negative_contrast": true,
+    "calibrated_response_is_generically_full_rank": true,
+    "exact_inverse_recovers_true_probability": true,
+    "zero_contrast_is_exact_detector_kernel": true,
+    "zero_contrast_makes_observation_independent_of_source_probability": true
+  },
+  "passed": true
+}

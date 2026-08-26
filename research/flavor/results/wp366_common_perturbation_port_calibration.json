@@ -1,0 +1,40 @@
+{
+  "work_package": "WP366",
+  "admitted_state_domain": "one controlled perturbation epsilon with nonzero local responses p=dx/depsilon and q=dy/depsilon, and independently calibrated nonzero detector gains gx and gy",
+  "faithful_quotient_coordinate": "the gain- and unit-invariant response ratio s_det=p/q for the relational two-port experiment; full physical16 remains projected to x=J^2",
+  "source_authorized_probe_family": "common-perturbation slopes at both ports plus independent detector-gain calibration",
+  "contextual_partition": "without gain calibration packets sharing (gx/gy)*(p/q) collide; with calibration the classes are equality of p/q, provided q is resolvably nonzero",
+  "classification": "candidate physical instrument for relational scale identification and Ward falsification; neither a numerical selector nor a rank-two source identifier",
+  "response_jacobian": "Matrix([[g_x*p], [g_y*q]])",
+  "response_rank": 1,
+  "raw_ratio": "g_x*p/(g_y*q)",
+  "calibrated_ratio": "p/q",
+  "ward_residual": "alpha*q - p",
+  "hostile_pair": {
+    "packet_a": {
+      "p_over_q": 1,
+      "gx_over_gy": 2,
+      "raw_ratio": 2,
+      "calibrated_ratio": 1
+    },
+    "packet_b": {
+      "p_over_q": 2,
+      "gx_over_gy": 1,
+      "raw_ratio": 2,
+      "calibrated_ratio": 2
+    }
+  },
+  "smallest_exact_falsifier": "distinct physical response ratios 1 and 2 give the same raw detector ratio 2 when gains are uncalibrated",
+  "remaining_physical_instrument_gate": "derive one source operation with nonzero causal responses in both J^2 and Q/M2, independently calibrate gains, freeze threshold and scheme, and bound uncertainty away from q=0",
+  "checks": {
+    "calibrated_ratio_recovers_physical_response_ratio": true,
+    "calibrated_ratio_is_detector_unit_invariant": true,
+    "response_jacobian_has_rank_one": true,
+    "raw_hostile_pair_collides": true,
+    "gain_calibration_separates_hostile_pair": true,
+    "ward_residual_vanishes_exactly_at_alpha_equal_p_over_q": true,
+    "deliberate_wrong_ward_scale_is_detected": true,
+    "uncalibrated_ratio_retains_gain_kernel": true
+  },
+  "passed": true
+}

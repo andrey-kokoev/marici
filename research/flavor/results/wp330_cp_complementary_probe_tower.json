@@ -1,0 +1,50 @@
+{
+  "work_package": "WP330",
+  "admitted_state_domain": "positive source parameters beta, epsilon, c0 for the WP328 thermal CP-domain channel",
+  "faithful_quotient_coordinate": "the full source triple (beta,epsilon,c0), conditional on three common-frame readouts",
+  "candidate_probe_family": [
+    "calibrated CP branch log-odds",
+    "independent inverse-temperature readout",
+    "independent CP-scale readout"
+  ],
+  "source_authorization": "only the log-odds channel is algebraically connected to WP328; physical thermometer and CP-scale constructors on the same freeze-out history remain unproved",
+  "rank_sequence": {
+    "log_odds_only": 1,
+    "log_odds_plus_temperature": 2,
+    "log_odds_plus_cp_scale": 2,
+    "complete_tower": 3
+  },
+  "complete_response_jacobian": [
+    [
+      "2*c0*epsilon",
+      "2*beta*c0",
+      "2*beta*epsilon"
+    ],
+    [
+      "1",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "1"
+    ]
+  ],
+  "complete_determinant": "-2*beta*c0",
+  "bias_inverse": "epsilon=log_odds/(2*beta*c0)",
+  "contextual_partition": "each single complementary probe reduces the source fiber from dimension two to one; both complements make it singleton on the positive domain",
+  "classification": "formal source identification is complete with two complementary probes, but no new selector is created and physical joint executability is not established",
+  "smallest_exact_falsifier": "omitting either the thermometer or CP-scale readout leaves a rank-two response and a one-dimensional source kernel",
+  "remaining_physical_instrument_gate": "derive and calibrate threshold-local measurements of beta and c0 with common support, time, normalization, and uncertainty bounds; otherwise the full-rank matrix combines objects from different frames",
+  "checks": {
+    "branch_log_odds_alone_has_rank_one": true,
+    "adding_only_thermometer_has_rank_two": true,
+    "adding_only_cp_scale_has_rank_two": true,
+    "complete_tower_has_rank_three": true,
+    "complete_determinant_is_nonzero_on_domain": true,
+    "bias_is_exactly_reconstructed": true,
+    "each_single_complement_leaves_a_kernel": true
+  },
+  "passed": true
+}
