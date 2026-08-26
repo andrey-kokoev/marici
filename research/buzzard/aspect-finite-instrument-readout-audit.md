@@ -417,3 +417,11 @@ cuts preserves the total. A second-sample unit fixture gives local records
 sewn totals agree. Thus finite refinement coherence does not identify local
 allocations; moving-seam invariance would require an additional transport or
 comparison interface.
+
+That smallest comparison interface is now formalized. `mergeLeadingRecord`
+coarsens a refined record by adding its first two adjacent contributions.
+Lean proves that splitting a leading cut and then applying this map recovers
+the unsplit local record exactly. The map is not injective: `[0, 1]` and
+`[1, 0]` have the same coarse image. Thus refinement supplies a commuting
+coarsening cell but no inverse reconstruction and no equality between the
+fine and coarse presentations.
