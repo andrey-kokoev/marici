@@ -7090,3 +7090,101 @@ architecture needs an independently selected magnitude sector whose full
 stationarity survives this backreaction. Its joint criticism measures the
 \(1:4:9\) root-vector spectrum and the \(H\)-referenced interference sign in
 the same prepared run.
+
+## Coupled-stationarity fiber: WP620
+
+- `flavor-coupled-stationarity-fiber.md`
+- `checkers/wp620_coupled_stationarity_fiber.py`
+- `results/wp620_coupled_stationarity_fiber.json`
+
+WP620 adds the smallest bounded completion
+\(V(z)=-\lambda z+\kappa z^2\) for
+\(z=QR=36s(1-r^2)\). The target is stationary only at the exact free ratio
+\(\kappa/\lambda=25/1152\), which rewrites the action as a square centered on
+the target coordinate \(z_0=576/25\). On the full real domain it has four
+minima: the target permutation pair \((1,\pm3/5)\) and a hostile outer pair
+\((-1,\pm\sqrt{41}/5)\). The cubic-zero boundary \(|r|=1\) separates them, so
+a source-authorized inner support component can remove the outer pair, but
+that support is not supplied by the two-adjoint vacuum. The exact hostile
+ratio \(1/32\) moves the inner minimum to \(\sqrt5/3\). The branch is a
+conditional selector, not a hard-to-vary explanation.
+
+## Positive Gaussian center migration: WP621
+
+- `flavor-positive-gaussian-center-migration.md`
+- `checkers/wp621_positive_gaussian_center_migration.py`
+- `results/wp621_positive_gaussian_center_migration.json`
+
+WP621 closes stable finite positive Gaussian mediation as the origin of
+WP620's bounded square. Eliminating a positive-mass mediator tower gives
+\(-\frac12(gz-J)^T(M^2)^{-1}(gz-J)\), so its induced quadratic coefficient is
+nonpositive. Multiplicity increases this negative Gram curvature rather than
+reversing it. The stationary coordinate is the weighted source ratio
+\(z_*=g^T(M^2)^{-1}J/[g^T(M^2)^{-1}g]\); zero offsets give zero, and
+target-proportional offsets merely insert \(576/25\). Replication leaves the
+center unchanged, while \(J_a\mapsto J_a+\delta g_a\) moves it by exactly
+\(\delta\). A stable positive contact, loop, constrained auxiliary, or
+non-Gaussian source is required.
+
+## Quartic mediator scale transport: WP622
+
+- `flavor-quartic-mediator-scale-transport.md`
+- `checkers/wp622_quartic_mediator_scale_transport.py`
+- `results/wp622_quartic_mediator_scale_transport.json`
+
+WP622 constructs the smallest stable non-Gaussian reopening,
+\(V=K(z-\phi)^2/2+\lambda(\phi^2-v^2)^2/4\). Its two nonzero stationary
+points are strict minima, while the origin is a saddle, so quartic mediation
+repairs WP621's curvature obstruction and selects a proper relational
+subfamily. It does not calculate the observed center: (r=3/5) requires the
+free vacuum scale (v=576/25), whereas the equally stable hostile value
+\(v=24\) selects (r=\sqrt3/3\). Moreover (z=QR) uses the WP618 (H)
+reference, so the operation descends only in the new stabilizer-groupoid
+experiment, not on the original full weak-basis quotient. It is a conditional
+selector and relational rigidifier, not a source-derived numerical selector.
+
+## Root-of-unity selector no-go: WP623
+
+- `flavor-root-of-unity-selector-no-go.md`
+- `checkers/wp623_root_of_unity_selector_no_go.py`
+- `results/wp623_root_of_unity_selector_no_go.json`
+
+WP623 tests the smallest constructor that could forbid nearby vacuum values:
+one compact phase with integer harmonics and fixed readout (r=\cos\theta).
+At every minimum, (2r=\zeta+\zeta^{-1}) is an algebraic integer for a root
+of unity \(\zeta\). If (r) is rational, this forces
+\(r\in\{-1,-1/2,0,1/2,1\}\). The observed (3/5) is therefore excluded for
+every harmonic, with nearest exact residual (1/10). An affine readout can
+fake the target only by inserting (3/5) into its transfer coefficient. The
+single-clock branch is a genuine discrete selector in the new
+(H)-referenced stabilizer-groupoid experiment, but it selects the wrong
+set and has no authority on the original full weak-basis quotient.
+
+## Five-clock fiber without selection: WP624
+
+- `flavor-five-clock-fiber-no-selection.md`
+- `checkers/wp624_five_clock_fiber_no_selection.py`
+- `results/wp624_five_clock_fiber_no_selection.json`
+
+WP624 proves that five identical equal-weight clocks are the minimal
+multi-clock representation of \(r=3/5\): integrality of
+\(\sum_i x_i=6N/5\) forces five to divide \(N\). At \(N=5\), however, the
+target has 70 labelled realizations and five permutation-inequivalent
+occupancy classes. In particular, \((-2,2,2,2,2)\) and \((1,1,1,1,2)\) are
+physically distinct clock packets with the same mean. A symmetric square
+centered on total six would select the mean only by importing the target
+integer. Five-clock topology therefore repairs representability but supplies
+neither target selection nor source identification.
+
+## Clock second-moment rigidifier: WP625
+
+- flavor-clock-second-moment-rigidifier.md
+- checkers/wp625_clock_second_moment_rigidifier.py
+- results/wp625_clock_second_moment_rigidifier.json
+
+WP625 adds \(Q=\sum_i x_i^2\). At \(S=6\), the five WP624 orbits have
+distinct values \(Q=8,10,12,14,20\), so \((S,Q)\) is faithful and positive
+\(Q\) conditionally rigidifies the balanced orbit. Unconstrained positive
+\(Q\), however, selects the all-zero state with \(S=0\). The second moment
+repairs identification and occupancy rigidification, not source selection of
+total charge six.

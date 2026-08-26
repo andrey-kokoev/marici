@@ -1,0 +1,34 @@
+{
+  "work_package": "WP623",
+  "status": "PASS",
+  "checks": {
+    "target_double_cosine_is_rational": true,
+    "target_double_cosine_is_not_integer": true,
+    "root_of_unity_rational_values_are_exhausted": true,
+    "target_is_excluded_from_single_clock_spectrum": true,
+    "all_allowed_values_have_exact_clock_witnesses": true,
+    "nearest_allowed_positive_value_is_one_half": true,
+    "nearest_exact_residual_is_one_tenth": true,
+    "integer_harmonic_does_not_change_algebraic_integer_gate": true,
+    "fitted_affine_readout_can_fake_target": true,
+    "fitted_evasion_contains_target_coefficient": true
+  },
+  "admitted_state_domain": "one compact phase theta with integer-harmonic potential and the fixed relational readout r=cos(theta)",
+  "constructor": "U_n(theta)=Lambda^4(1-cos(n theta)); minima have theta=2 pi k/n",
+  "exact_theorem": "if theta/pi and cos(theta) are rational, then cos(theta) is one of -1,-1/2,0,1/2,1",
+  "target_obstruction": "r=3/5 gives 2r=6/5, a rational noninteger, so it cannot equal zeta+zeta^-1 for a root of unity zeta",
+  "contextual_partition": [
+    "r=-1",
+    "r=-1/2",
+    "r=0",
+    "r=1/2",
+    "r=1"
+  ],
+  "classification": "source-derived discrete selector on the H-referenced relational family, but it excludes rather than selects the observed point",
+  "smallest_exact_falsifier": "the nearest allowed positive value is r=1/2, leaving exact residual 1/10 from r=3/5",
+  "deliberate_failure": "an affine readout r=(3/5) cos(theta) reaches the target at theta=0 only by inserting 3/5 into the instrument map",
+  "descent": "the compact clock can descend in its own source groupoid, but its flavor readout uses the H reference and therefore defines a new relational experiment over the stabilizer groupoid",
+  "physical_probe": "measure clock periodicity, harmonic number, winding or domain-wall sectors, and the calibrated map from clock phase to the WP618 root-vector mass ratio in one source lineage",
+  "instrument_gate": "no admitted apparatus currently establishes that the flavor lens is the fixed cosine readout of a compact source clock",
+  "remaining_source_gate": "a multi-clock or independently derived nonlinear map may evade the theorem, but must be frozen before comparison with r=3/5"
+}
