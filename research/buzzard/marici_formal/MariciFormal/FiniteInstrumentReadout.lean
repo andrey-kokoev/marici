@@ -1822,26 +1822,14 @@ def seamOnlyUnitSource : ℕ → ℚ
 
 /-- Tail-only observation may vanish after a cut even though the retained seam
 prefix carries nonzero energy. -/
-theorem vanishingTail_does_not_erase_seamEnergy (horizon : ℕ) :
+theorem vanishingTail_does_not_erase_seamEnergy :
     finitePrefixEnergy seamOnlyUnitSource 1 = 1 ∧
-      finitePrefixEnergy (shiftedEnergySource seamOnlyUnitSource 1) horizon = 0 ∧
+      finitePrefixEnergy (shiftedEnergySource seamOnlyUnitSource 1) 2 = 0 ∧
       finitePrefixEnergy seamOnlyUnitSource 1 +
           finitePrefixEnergy
-            (shiftedEnergySource seamOnlyUnitSource 1) horizon = 1 := by
-  constructor
-  · norm_num [finitePrefixEnergy, seamOnlyUnitSource]
-  constructor
-  · apply Finset.sum_eq_zero
-    intro k hk
-    simp [shiftedEnergySource, seamOnlyUnitSource]
-  · rw [show finitePrefixEnergy seamOnlyUnitSource 1 = 1 by
-      norm_num [finitePrefixEnergy, seamOnlyUnitSource]]
-    rw [show finitePrefixEnergy
-          (shiftedEnergySource seamOnlyUnitSource 1) horizon = 0 by
-      apply Finset.sum_eq_zero
-      intro k hk
-      simp [shiftedEnergySource, seamOnlyUnitSource]]
-    norm_num
+            (shiftedEnergySource seamOnlyUnitSource 1) 2 = 1 := by
+  norm_num [finitePrefixEnergy, shiftedEnergySource, seamOnlyUnitSource,
+    Finset.sum_range_succ]
 
 end FiniteTailSeamCutEnergy
 

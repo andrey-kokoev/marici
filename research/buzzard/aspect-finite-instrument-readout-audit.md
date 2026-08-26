@@ -310,6 +310,15 @@ increment exactly. Dividing the diagonal derivative one by the Schur value
 does not equal that increment, certifying the checker’s deliberate
 diagonal-only failure inside Lean.
 
+Grothendieck's boundary-bearing cut and Aspect's retained-plus-tail energy law
+share a finite discrete core. For rational sample streams, Lean proves exact
+prefix-energy splitting at an arbitrary cut and exact three-piece energy
+splitting under two staged cuts. A seam-only unit source has prefix energy one
+while its translated two-sample tail has energy zero. Vanishing of the visible
+tail therefore does not erase energy retained by the seam component. This is
+labeled a finite-cut theorem; it does not establish Sobolev trace continuity,
+closed image, or infinite-cutoff completion.
+
 ## Missing convention-fixed inputs
 
 A common structure named `Instrument` remains withheld. The current packets
@@ -343,8 +352,8 @@ file and `lake build MariciFormal`, while continuing to prohibit the Marici
 site build. The active operator prohibition still forbids Git inspection. The
 new file contains no `sorry`, `admit`, or active conjecture assumption.
 
-The verified snapshot is 128 theorem declarations and 115 definitions across
-1789 lines. The module is imported by
+The verified snapshot is 131 theorem declarations and 118 definitions across
+1836 lines. The module is imported by
 `MariciFormal.lean`, and its sole direct import is
 `MariciFormal.FiniteObservation`. The exact commands were run from
 `research/buzzard/marici_formal`:
@@ -368,3 +377,43 @@ Neither command ran or authorized the Marici site build. Narrow verification
 authority was requested at graph event
 `ev-000000004981-4d6c2356-6844-4822-913a-423d67512b5f` and was subsequently
 granted directly by the operator.
+
+The latest targeted elaboration took approximately 140 seconds despite a
+small final finite-cut proof, compared with the earlier roughly 20--30 second
+runs. This performance discontinuity is preserved as a module-scalability
+warning. Further substantive optics increments should use a bounded successor
+Lean module once targeted-build authority for that new file is explicit.
+
+## Successor module boundary
+
+The operator subsequently authorized continuation. New finite sewing work now
+lives in `MariciFormal/FiniteCompletionSewing.lean`, which imports the stable
+finite-instrument module. Existing declarations were not moved. The successor
+defines energy over an ordered finite list of adjacent cut lengths and proves
+that it equals the energy of the single prefix whose length is their sum. Its
+hostile fixture proves that a zero translated tail does not determine the sewn
+whole when a nonzero seam-bearing prefix remains.
+
+This increment generalizes the common finite discrete law independently used
+by Grothendieck's boundary-bearing cuts and Aspect's retained-plus-tail energy
+accounting. It does not promote that law to an infinite cover, a completed
+space, a continuous trace, or effective analytic descent.
+
+Verification from `research/buzzard/marici_formal` succeeded with:
+
+```powershell
+lake env lean MariciFormal/FiniteCompletionSewing.lean
+lake build MariciFormal
+```
+
+The targeted command exited zero without output. The project build completed
+successfully with 8791 jobs. No Marici site build or Git command was run.
+
+The successor also distinguishes the ordered local segment record from its
+summed sewn total. Lean proves that summing `segmentEnergyRecord` recovers
+`segmentedPrefixEnergy`, and that splitting one leading cut into two adjacent
+cuts preserves the total. A second-sample unit fixture gives local records
+`[0, 1]` and `[1, 0]` for cuts `[1, 2]` and `[2, 1]`, respectively, while the
+sewn totals agree. Thus finite refinement coherence does not identify local
+allocations; moving-seam invariance would require an additional transport or
+comparison interface.
