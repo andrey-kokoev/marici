@@ -1,0 +1,50 @@
+{
+  "work_package": "WP572",
+  "classification": "exact executable-in-principle LO D4 signed-measure derivative with a domination-gated likelihood-score representation",
+  "weight_polynomial": "a_im**2 + 2*a_im*b_im*c + a_re**2 + 2*a_re*b_re*c + b_im**2*c**2 + b_re**2*c**2",
+  "exact_derivative": "2*a_im*b_im + 2*a_re*b_re + 2*b_im**2*c + 2*b_re**2*c",
+  "symmetric_derivative": "2*a_im*b_im + 2*a_re*b_re + 2*b_im**2*c + 2*b_re**2*c",
+  "repository_census": {
+    "revision": "788431390ded97d4b44c25a0013b184053b4aaad",
+    "tracked_files": 152,
+    "reweight_cards": 0,
+    "event_files": 0,
+    "hhh_validation_files": 0,
+    "release_tags": 0,
+    "d4_lha_block": "BSMINPUTS",
+    "d4_lha_code": 997
+  },
+  "prospective_reweight_card": [
+    "launch --rwgt_name=d4_minus",
+    "  set BSMINPUTS 997 0.5",
+    "launch --rwgt_name=d4_plus",
+    "  set BSMINPUTS 997 1.5"
+  ],
+  "smallest_exact_falsifier": {
+    "amplitude": "1 - c",
+    "central_parameter": "1",
+    "central_weight": "0",
+    "minus_weight": "h**2",
+    "plus_weight": "h**2",
+    "first_derivative": "0",
+    "second_derivative": "2",
+    "failure": "central ratio is undefined while support birth occurs only at second order"
+  },
+  "contextual_partition": "the signed derivative is defined on the declared carrier; its likelihood-score representation requires domination by a frozen proposal",
+  "weak_basis_descent": "passes after a declared invariant portal-to-generator coupling map",
+  "remaining_gate": "portal-complete local measure jet, frozen dominating source mixture, shower-detector channel, exposure or null completion, covariance, and robust resolution",
+  "checks": {
+    "event_weight_is_quadratic_in_d4": true,
+    "symmetric_three_weight_formula_is_exact": true,
+    "hostile_central_weight_vanishes": true,
+    "hostile_neighbor_weights_are_nonzero_polynomials": true,
+    "hostile_reweight_ratio_is_undefined": true,
+    "hostile_first_order_signed_response_vanishes": true,
+    "hostile_support_birth_is_second_order": true,
+    "repository_has_no_frozen_reweight_card": true,
+    "repository_has_no_event_sample": true,
+    "repository_has_no_hhh_validation_packet": true,
+    "minimal_card_has_two_symmetric_hypotheses": true
+  },
+  "passed": true
+}
