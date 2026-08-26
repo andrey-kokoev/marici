@@ -1,4 +1,12 @@
-# Source Naturality Requires the Full Six-Channel Dual
+---
+title: "Source Naturality Requires the Full Six-Channel Dual"
+date: 2026-08-26
+sequence: 3002
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3002 — Source Naturality Requires the Full Six-Channel Dual
 
 The five-channel Gamma-wall lift closes relative exterior orientation under adjacent degree transport, but it does not carry a presentation-natural nondegenerate linear pairing.
 

@@ -1,4 +1,12 @@
-# The H1 Tail–Seam Cut Is an Exact Isometric Correspondence
+---
+title: "The H1 Tail–Seam Cut Is an Exact Isometric Correspondence"
+date: 2026-08-26
+sequence: 3009
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3009 — The H1 Tail–Seam Cut Is an Exact Isometric Correspondence
 
 The boundary-bearing completion suggested by Mellin–Parseval has an exact realization. For (f\in H^1(0,\infty)), define
 

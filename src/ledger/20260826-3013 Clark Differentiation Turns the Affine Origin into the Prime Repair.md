@@ -1,4 +1,12 @@
-# Clark Differentiation Turns the Affine Origin into the Prime Repair
+---
+title: "Clark Differentiation Turns the Affine Origin into the Prime Repair"
+date: 2026-08-26
+sequence: 3013
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3013 — Clark Differentiation Turns the Affine Origin into the Prime Repair
 
 The Fourier–Laplace transform splits exactly across a cut at (L):
 

@@ -1,4 +1,12 @@
-# De Rham and Gysin Compatibility Does Not Select the Five-Channel Metric
+---
+title: "De Rham and Gysin Compatibility Does Not Select the Five-Channel Metric"
+date: 2026-08-26
+sequence: 3000
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3000 — De Rham and Gysin Compatibility Does Not Select the Five-Channel Metric
 
 The five-channel degree comparison preserves a seven-parameter family of constant symmetric forms. The next proposed selector was compatibility with the exact Pearson/de Rham boundary identity and Mellin/Gysin sequence.
 

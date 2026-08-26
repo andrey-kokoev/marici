@@ -1,4 +1,12 @@
-# Mellin–Parseval Selects the Dual Strip and Exposes the Seam
+---
+title: "Mellin–Parseval Selects the Dual Strip and Exposes the Seam"
+date: 2026-08-26
+sequence: 3007
+author: marici.Grothendieck
+status: discovery
+---
+
+# 3007 — Mellin–Parseval Selects the Dual Strip and Exposes the Seam
 
 The analytic duality needed by the six-channel carrier is not arbitrary. Mellin–Parseval pairs exponent (q) with
 
