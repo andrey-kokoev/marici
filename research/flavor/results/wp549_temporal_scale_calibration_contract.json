@@ -1,0 +1,178 @@
+{
+  "work_package": "WP549",
+  "domain": "A bounded temporal contract for the still-propositional WP548 P_scale interface, with three accepted physics trials per successful calibration.",
+  "states": [
+    "unlinked",
+    "valid_3",
+    "valid_2",
+    "valid_1",
+    "expired"
+  ],
+  "events": [
+    "calibration_success",
+    "calibration_null",
+    "fitted_row",
+    "wait",
+    "physics_trial"
+  ],
+  "transition_table": {
+    "unlinked": {
+      "calibration_success": {
+        "next_state": "valid_3",
+        "observation": "reference_readback"
+      },
+      "calibration_null": {
+        "next_state": "unlinked",
+        "observation": "no_reference_readback"
+      },
+      "fitted_row": {
+        "next_state": "unlinked",
+        "observation": "compiler_reject"
+      },
+      "wait": {
+        "next_state": "unlinked",
+        "observation": "clock_advance"
+      },
+      "physics_trial": {
+        "next_state": "unlinked",
+        "observation": "invalid_readout"
+      }
+    },
+    "valid_3": {
+      "calibration_success": {
+        "next_state": "valid_3",
+        "observation": "reference_readback"
+      },
+      "calibration_null": {
+        "next_state": "valid_3",
+        "observation": "no_reference_readback"
+      },
+      "fitted_row": {
+        "next_state": "valid_3",
+        "observation": "compiler_reject"
+      },
+      "wait": {
+        "next_state": "valid_2",
+        "observation": "clock_advance"
+      },
+      "physics_trial": {
+        "next_state": "valid_2",
+        "observation": "accepted_readout"
+      }
+    },
+    "valid_2": {
+      "calibration_success": {
+        "next_state": "valid_3",
+        "observation": "reference_readback"
+      },
+      "calibration_null": {
+        "next_state": "valid_2",
+        "observation": "no_reference_readback"
+      },
+      "fitted_row": {
+        "next_state": "valid_2",
+        "observation": "compiler_reject"
+      },
+      "wait": {
+        "next_state": "valid_1",
+        "observation": "clock_advance"
+      },
+      "physics_trial": {
+        "next_state": "valid_1",
+        "observation": "accepted_readout"
+      }
+    },
+    "valid_1": {
+      "calibration_success": {
+        "next_state": "valid_3",
+        "observation": "reference_readback"
+      },
+      "calibration_null": {
+        "next_state": "valid_1",
+        "observation": "no_reference_readback"
+      },
+      "fitted_row": {
+        "next_state": "valid_1",
+        "observation": "compiler_reject"
+      },
+      "wait": {
+        "next_state": "expired",
+        "observation": "clock_advance"
+      },
+      "physics_trial": {
+        "next_state": "expired",
+        "observation": "accepted_readout"
+      }
+    },
+    "expired": {
+      "calibration_success": {
+        "next_state": "valid_3",
+        "observation": "reference_readback"
+      },
+      "calibration_null": {
+        "next_state": "expired",
+        "observation": "no_reference_readback"
+      },
+      "fitted_row": {
+        "next_state": "expired",
+        "observation": "compiler_reject"
+      },
+      "wait": {
+        "next_state": "expired",
+        "observation": "clock_advance"
+      },
+      "physics_trial": {
+        "next_state": "expired",
+        "observation": "invalid_readout"
+      }
+    }
+  },
+  "support_contract": {
+    "accepted_language": "Every accepted_readout has a preceding calibration_success whose validity budget has not expired.",
+    "forbidden_histories": [
+      "physics_trial accepted before calibration_success",
+      "physics_trial accepted after validity expiry",
+      "calibration_null followed by accepted physics_trial",
+      "fitted_row followed by accepted physics_trial"
+    ],
+    "null_outcome": "calibration_null is an observed completed trial and leaves the interface unestablished."
+  },
+  "state_establishing_event": {
+    "event": "calibration_success",
+    "reveals": "the named transfer chain produced a reference readback",
+    "establishes": "the shared flavor/comb frame for three declared physics trials",
+    "consumes": "one validity unit per physics trial or wait step"
+  },
+  "rank_by_state": {
+    "unlinked_or_expired": 2,
+    "valid": 3,
+    "deletion_replay_kernel": [
+      "1",
+      "1",
+      "0"
+    ]
+  },
+  "theorem": "A P_scale row has detector authority only as the post-state of a successful calibration event. The finite automaton admits physics readout during a three-step validity window, rejects null, fitted, pre-calibration and expired histories, and restores the exact (1,1,0) scale kernel when the calibration event is deleted.",
+  "classification": "Exact temporal interface acceptance theorem and deletion replay. It does not realize P_scale or select the flavor source.",
+  "selector": false,
+  "instrument": "Temporal contract specified; physical transfer chain, readback distribution, disturbance model, and covariance remain to be realized.",
+  "smallest_exact_falsifier": "Delete calibration_success from a history containing an accepted physics readout. If the compiler still retains rank three or accepts the readout, it has converted a fitted row into authority.",
+  "remaining_gate": "Implement the named P_scale apparatus and replace the three-step illustrative validity budget with independently calibrated drift, disturbance, cost, and covariance dynamics.",
+  "checks": {
+    "dependency_passed": true,
+    "state_space_is_finite_and_typed": true,
+    "successful_calibration_establishes_valid_state": true,
+    "successful_calibration_reveals_and_establishes": true,
+    "three_trials_are_accepted_with_budget_three": true,
+    "fourth_trial_after_budget_is_rejected": true,
+    "expiry_forbids_late_readout": true,
+    "null_calibration_does_not_establish_interface": true,
+    "fitted_row_is_compiler_rejected": true,
+    "deletion_replay_invalidates_dependent_readouts": true,
+    "inactive_contract_has_rank_two": true,
+    "inactive_contract_restores_scale_kernel": true,
+    "valid_contract_has_rank_three": true,
+    "valid_contract_has_zero_kernel": true
+  },
+  "passed": true
+}

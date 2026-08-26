@@ -1,0 +1,105 @@
+{
+  "work_package": "WP552",
+  "domain": "The six WP535 pole kernels, each with four bare bilocal operator channels, composed with one common invertible operator-mixing and subtraction map.",
+  "factorization": {
+    "source_residues": "Six dimensionless WP534 signed resolvent coefficients r_i.",
+    "bare_estimators": "Twenty-four complex common-ensemble bilocal estimators h_bare.",
+    "renormalization": "h_scheme=(I_6 tensor Z_scheme) h_bare.",
+    "ward_contraction": "A_i=w_i^scheme h_i^scheme.",
+    "experimental_scalar": "M_12,new=sum_i r_i A_i."
+  },
+  "operator_map": {
+    "single_pole_matrix": [
+      [
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "2",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "3",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "5"
+      ]
+    ],
+    "single_pole_determinant": "29",
+    "six_pole_rank": 24
+  },
+  "scheme_covariance": {
+    "basis_change": [
+      [
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "3",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "5",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "7"
+      ]
+    ],
+    "estimator_rule": "h_new=S h_old",
+    "coefficient_rule": "w_new=w_old S^-1",
+    "residue_rule": "r_i is unchanged",
+    "all_six_amplitudes_invariant": true,
+    "scalar_invariant": true
+  },
+  "covariance": {
+    "rule": "C_scheme=(I_6 tensor Z) C_bare (I_6 tensor Z)^T",
+    "witness_rank": 24,
+    "single_pole_leading_principal_minors": [
+      "2",
+      "6",
+      "42",
+      "841"
+    ],
+    "authority": "The identity bare covariance is an exact structural witness only, not lattice data."
+  },
+  "deletion_replay": "Deleting Z, its contact subtraction, or its covariance invalidates all six renormalized amplitudes and the scalar experimental composition. It leaves the source residues and Omega scale map unchanged.",
+  "classification": "Exact source-estimator-scheme factorization and parallelization theorem; neither selector nor executed instrument calibration.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "Requires a nonperturbatively determined four-channel mixing and subtraction matrix in a declared continuum scheme, shared across the six common-ensemble kernels with full covariance.",
+  "smallest_exact_falsifier": "Apply h_new=S h_old but retain w_old. The exact checker finds A_new != A_old, violating scheme invariance.",
+  "remaining_gate": "Compute Z and coincident-point subtraction nonperturbatively on the WP542 ensembles, match to a declared continuum scheme, propagate its joint covariance, and execute the six bilocal kernels. This identifies amplitudes but supplies no source selector.",
+  "checks": {
+    "dependencies_passed": true,
+    "operator_map_is_invertible": true,
+    "common_six_pole_operator_map_has_rank_twenty_four": true,
+    "ward_map_has_rank_six": true,
+    "renormalized_ward_map_retains_rank_six": true,
+    "parallel_scheme_transport_preserves_all_amplitudes": true,
+    "source_residues_need_no_scheme_transform": true,
+    "unparallelized_scheme_change_is_detectably_wrong": true,
+    "covariance_transform_is_positive_definite": true,
+    "wp551_types_residues_as_dimensionless": true
+  },
+  "passed": true
+}

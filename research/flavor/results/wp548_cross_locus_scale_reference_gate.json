@@ -1,0 +1,92 @@
+{
+  "work_package": "WP548",
+  "domain": "Composition of WP544's flavor/QCD scale coordinate with Aspect's independently referenced comb coordinate, without presupposing a cross-locus calibration map.",
+  "coordinate_order": [
+    "physical flavor log scale",
+    "flavor detector log unit",
+    "comb log unit"
+  ],
+  "separate_loci_jacobian": [
+    [
+      "1",
+      "-1",
+      "0"
+    ],
+    [
+      "2",
+      "-2",
+      "0"
+    ],
+    [
+      "3",
+      "-3",
+      "0"
+    ],
+    [
+      "5",
+      "-5",
+      "0"
+    ],
+    [
+      "7",
+      "-7",
+      "0"
+    ],
+    [
+      "11",
+      "-11",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "1"
+    ]
+  ],
+  "separate_loci_rank": 2,
+  "separate_loci_kernel": [
+    "1",
+    "1",
+    "0"
+  ],
+  "required_interface_row": [
+    "0",
+    "1",
+    "-1"
+  ],
+  "joined_loci_rank": 3,
+  "interface_constructor": {
+    "type": "P_scale: comb-referenced frequency standard -> flavor/QCD detector energy unit",
+    "must_supply": [
+      "a named physical transfer chain",
+      "traceable calibration coefficients in common units",
+      "uncertainty and drift covariance",
+      "support and bandwidth limits",
+      "a readback proving the same unit coordinate enters the six flavor ports"
+    ],
+    "examples_requiring_separate_derivation": [
+      "clock-referenced field metrology followed by charged-beam momentum calibration",
+      "experimentally calibrated hadron mass followed by lattice-spacing scale setting"
+    ]
+  },
+  "theorem": "Aspect's reference row removes the unit kernel only after the comb and flavor instruments share one admitted unit coordinate. With distinct unit coordinates, the seven-row Jacobian has rank two and exact kernel (1,1,0), so the physical flavor scale remains unidentified. A separately derived interface row (0,1,-1) raises rank to three and removes the kernel.",
+  "classification": "Exact cross-locus interface gate. The abstract reference architecture transfers, but an experimentally calibrated flavor-scale instrument is not yet admitted.",
+  "selector": false,
+  "instrument": "Conditional. The comb reference is a physical instrument in its own locus; the flavor/QCD scale transfer requires a named calibrated interface constructor.",
+  "smallest_exact_falsifier": "Let physical flavor scale and flavor detector unit shift together while the comb unit is fixed: (1,1,0). All six flavor rows and the independent comb row remain unchanged.",
+  "remaining_gate": "Derive and execute P_scale with common-unit readback and covariance. This repairs identification only; a source-derived transverse selector equation remains independently required.",
+  "checks": {
+    "dependencies_passed": true,
+    "aspect_abstract_rank_is_two": true,
+    "wp544_unreferenced_kernel_is_one_dimensional": true,
+    "separate_loci_rank_is_two": true,
+    "separate_loci_leave_one_kernel_direction": true,
+    "original_flavor_scale_kernel_survives_comb_row": true,
+    "comb_row_calibrates_only_comb_unit": true,
+    "named_interface_raises_rank_to_three": true,
+    "named_interface_kills_scale_kernel": true,
+    "interface_row_identifies_unit_coordinates": true,
+    "source_rank_remains_one": true
+  },
+  "passed": true
+}

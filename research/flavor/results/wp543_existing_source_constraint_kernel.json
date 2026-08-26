@@ -1,0 +1,102 @@
+{
+  "work_package": "WP543",
+  "domain": "All equality authority currently admitted by WP489-WP498 that can act on the fixed-v clock coordinates, plus the strongest separately frozen g_F normalization considered by the instrument programme.",
+  "log_coordinate_order": [
+    "log a",
+    "log w",
+    "log g_F^2",
+    "log g_P^2"
+  ],
+  "authorized_equalities": {
+    "fixed_v_row": [
+      "1",
+      "2",
+      "0",
+      "0"
+    ],
+    "dual_gauge_ray_row": [
+      "0",
+      "0",
+      "-1",
+      "1"
+    ],
+    "fixed_g_F_row": [
+      "0",
+      "0",
+      "1",
+      "0"
+    ],
+    "jacobian": [
+      [
+        "1",
+        "2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "-1",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ]
+    ],
+    "rank": 3,
+    "kernel_dimension": 1
+  },
+  "selector_kernel": {
+    "t_tangent": [
+      "2",
+      "-1",
+      "0",
+      "0"
+    ],
+    "source_constraint_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "log_clock_ratio_gradient": [
+      "-1/2",
+      "0",
+      "1/2",
+      "0"
+    ],
+    "log_clock_ratio_tangent": "-1",
+    "meaning": "The unique surviving source-equality direction is exactly the fixed-v WP537 t fiber, and it changes g_F f_phys/v."
+  },
+  "rg_authority_audit": {
+    "gauge": "WP490 fixes only a coupling-ratio ray and has no finite nonzero one-loop fixed point.",
+    "yukawa": "WP491 proves the beta vector field is not typed; WP492 freezes shapes but leaves ten scalar normalizations.",
+    "quartics": "WP493-WP495 and WP498 add compulsory independent running coordinates. Support closure is not a beta-zero equation and cannot fix t.",
+    "thresholds": "WP537 exhibits two strict width-closed points along t, so open threshold inequalities do not collapse the fiber.",
+    "readout": "WP538 detects the t direction, but adding its readout gradient as a source equation would be circular projection authority."
+  },
+  "theorem": "Even after granting fixed v, the WP490 gauge ray, and an independent fixed g_F normalization, the complete currently authorized equality Jacobian has a one-dimensional kernel spanned by the WP537 t tangent. That tangent changes log(g_F f_phys/v) by minus one. Existing RG work adds coordinates and closure requirements but supplies no independent beta-zero equation that removes this kernel.",
+  "classification": "Exact negative selector-authority certificate for the current source grammar. The flavor source conditionally selects relational outputs at fixed coefficients, but no admitted equation numerically selects t or g_F f_phys/v.",
+  "smallest_exact_falsifier": "The tangent (2,-1,0,0) annihilates fixed-v, gauge-ray and fixed-g_F rows exactly, while its clock-ratio derivative is -1.",
+  "remaining_gate": "Complete the independently frozen tensor and quartic grammar, derive the full scheme-declared beta vector field and threshold maps, and exhibit a stable source-derived equation with nonzero contraction against the t tangent. A clock-ratio readout cannot supply that equation.",
+  "checks": {
+    "dependencies_passed": true,
+    "minimal_source_equalities_have_rank_two": true,
+    "strongest_existing_equalities_have_rank_three": true,
+    "strongest_existing_kernel_is_one_dimensional": true,
+    "t_tangent_preserves_every_source_equality": true,
+    "t_tangent_changes_the_clock_ratio": true,
+    "t_tangent_spans_the_strongest_kernel": true,
+    "readout_row_would_remove_t_only_by_projection_authority": true,
+    "gauge_running_has_no_finite_nonzero_fixed_point": true,
+    "yukawa_beta_vector_field_is_not_typed": true,
+    "tensor_shapes_leave_ten_free_scalar_coordinates": true,
+    "rg_closure_adds_three_radial_coordinates": true,
+    "port_alignment_adds_an_independent_coordinate": true,
+    "adjoint_gram_adds_an_independent_coordinate": true,
+    "entrance_stabilizer_has_three_missing_coordinates": true
+  },
+  "passed": true
+}
