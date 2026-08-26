@@ -12,11 +12,11 @@ def absolute_upper(value: I) -> Decimal:
     return max(abs(value.lo), abs(value.hi))
 
 
-def phi_derivatives(u: I) -> list[I]:
+def phi_derivatives(u: I, max_label: int = 10, tail: Decimal = Decimal("1e-100")) -> list[I]:
     totals = [I.point(0) for _ in range(5)]
     pi = I(PI_LO, PI_HI)
     e2u = scale(u, 2).exp()
-    for n in range(1, 11):
+    for n in range(1, max_label + 1):
         a = scale(pi * e2u, 2 * n * n)
         h = a - I.point(3)
         phi = scale(pi, 2 * n * n) * scale(u, "2.5").exp() * h * (-scale(a, "0.5")).exp()
@@ -39,8 +39,8 @@ def phi_derivatives(u: I) -> list[I]:
         totals = [total + phi * bell for total, bell in zip(totals, bells)]
     # For n>=11, a>=242*pi>760.  Even after four derivatives and u^80,
     # the geometric Gaussian tail is below this symmetric allowance.
-    tail = I(Decimal("-1e-100"), Decimal("1e-100"))
-    return [total + tail for total in totals]
+    tail_interval = I(-tail, tail)
+    return [total + tail_interval for total in totals]
 
 
 def falling(number: int, count: int) -> int:
