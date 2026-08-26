@@ -1,0 +1,26 @@
+{
+  "schema": "marici.gamma_wall_pearson_ladder.v1",
+  "checks": {
+    "source_wall_residual_zero": true,
+    "wrong_wall_residual_nonzero": true,
+    "two_atom_third_derivative_identity": true,
+    "q4_bracket_positive_from_exp4_gt_16": true,
+    "q4_cubic_response_negative": true,
+    "pearson_threshold_factorization": true,
+    "pearson_threshold_beyond_curvature_fold": true,
+    "cubic_log_response_bell_identity": true
+  },
+  "exact": {
+    "pearson_polynomial": "-(-8*j*x + 12*j + 8*x**2 - 38*x + 15)/8",
+    "wrong_wall_residual": "-(-4*j + 4*x - 5)/8",
+    "two_atom_r3": "(-1 + exp(-1))*(q*exp(2*q) - 4*q*exp(q) + q - 3*exp(2*q) + 3)*exp(q)/(exp(q) + 1)**4",
+    "two_atom_r3_at_q4": "-(-1 + E)*(-16*exp(4) + 7 + exp(8))*exp(3)/(1 + exp(4))**4",
+    "pearson_boundary_polynomial": "x**2 - 19*x/4 + 15/8",
+    "pearson_roots": [
+      "19/8 - sqrt(241)/8",
+      "sqrt(241)/8 + 19/8"
+    ],
+    "curvature_cubic_at_pearson_d": "(-137 + 49*sqrt(241))/144",
+    "cubic_log_response_residual": "0"
+  }
+}
