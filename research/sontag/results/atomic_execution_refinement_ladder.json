@@ -1,0 +1,30 @@
+{
+  "schema": "marici.sontag.atomic_execution_refinement_ladder.v1",
+  "passed": 15,
+  "total": 15,
+  "all_passed": true,
+  "checks": {
+    "one_step_cas_refines_abstract_False": true,
+    "one_step_cas_refines_abstract_True": true,
+    "two_sequential_cas_have_one_success": true,
+    "split_read_write_has_no_abstract_order": true,
+    "overlap_has_linearization_witness": true,
+    "real_time_precedence_rejects_impossible_winner": true,
+    "precommit_recovery_is_consistent": true,
+    "postcommit_recovery_is_consistent": true,
+    "nonce_only_recovery_is_inconsistent": true,
+    "response_only_recovery_is_inconsistent": true,
+    "fence_only_crash_loses_effect": true,
+    "effect_only_crash_duplicates_effect": true,
+    "atomic_fence_effect_rejects_duplicate": true,
+    "semantic_refinement_does_not_imply_installation_authority": true,
+    "installation_authority_does_not_prove_refinement": true
+  },
+  "levels": [
+    "functional transition",
+    "concurrent history",
+    "crash recovery",
+    "authority-preserving deployment"
+  ],
+  "claim_boundary": "Exact finite refinement hostiles; no concrete hardware memory-model, persistence-protocol, or deployment-authorization theorem."
+}

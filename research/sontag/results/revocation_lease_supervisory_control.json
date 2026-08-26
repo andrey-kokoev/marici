@@ -1,0 +1,31 @@
+{
+  "schema": "marici.sontag.revocation_lease_supervisory_control.v1",
+  "passed": 14,
+  "total": 14,
+  "all_passed": true,
+  "checks": {
+    "fresh_fenced_lease_executes": true,
+    "atomic_nonce_consumption_blocks_replay": true,
+    "target_epoch_fence_blocks_stale_lease": true,
+    "expiry_blocks_execution": true,
+    "kind_widening_is_rejected": true,
+    "target_widening_is_rejected": true,
+    "expiry_only_guard_is_unsafe": true,
+    "non_atomic_validation_has_toctou_counterexample": true,
+    "atomic_interleavings_preserve_stale_execution_safety": true,
+    "duplicated_local_views_violate_global_linearity": true,
+    "shared_linearizer_allows_exactly_one": true,
+    "safe_partition_sacrifices_bilateral_availability": true,
+    "bilateral_partition_availability_breaks_single_use": true,
+    "prior_locus_partition_preserves_single_use": true
+  },
+  "correspondences": {
+    "lease": "finite safety-supervisor state",
+    "revocation": "uncontrollable environment event",
+    "fencing_epoch": "authority-state observation at actuator locus",
+    "atomic_attempt": "linearized guarded transition",
+    "disconnected_single_use": "decentralized coobservability obstruction",
+    "partition": "safety/nonblocking tradeoff"
+  },
+  "claim_boundary": "Exact finite safety and impossibility witnesses; no concrete CAS, clock, crash-persistence, or liveness implementation theorem."
+}
