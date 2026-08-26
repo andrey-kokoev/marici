@@ -1,0 +1,59 @@
+{
+  "work_package": "WP459",
+  "runtime": {
+    "python": "3.12",
+    "flavio": "2.7.0",
+    "particle": "0.25.4",
+    "windows_process_context_shim": "fork request mapped to spawn; no worker is used"
+  },
+  "registered_kaon_mixing_observables": [
+    "eps_K"
+  ],
+  "matching_measurements": [
+    "PDG kaon CPV"
+  ],
+  "eps_K_measurement": {
+    "central_value": 0.0022280000000000004,
+    "standard_deviation": 1.1e-05
+  },
+  "probe": {
+    "scale_GeV": 160.0,
+    "coefficient_GeV^-2": 1e-15,
+    "real_pattern": [
+      1,
+      1,
+      2
+    ],
+    "imaginary_pattern": [
+      "I",
+      "I",
+      "2 I"
+    ]
+  },
+  "predictions": {
+    "SM": 0.0019528919765385057,
+    "real_correlated_ray": 0.0019528919765385057,
+    "imaginary_correlated_ray": 0.04733363710200577
+  },
+  "contextual_partition": "The executable eps_K likelihood collapses the real correlated source ray but separates its CP-odd counterpart.",
+  "classification": "Executable physical likelihood with a kernel containing the WP453 real source direction; neither selector nor rigidifier.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "smallest_exact_falsifier": "A nonzero change of eps_K under the declared real correlated probe.",
+  "remaining_gate": "An executable DeltaM_K likelihood with an independently frozen SM long-distance nuisance model, or another source-derived CP-even observable on the same real current direction.",
+  "checks": {
+    "wp453_dependency_passed": true,
+    "wp455_dependency_passed": true,
+    "wp458_dependency_passed": true,
+    "flavio_version_is_pinned": true,
+    "only_eps_K_is_registered_for_kaon_mixing": true,
+    "bundled_measurement_is_pdg_kaon_cpv": true,
+    "measurement_central_value_exact": true,
+    "measurement_standard_deviation_exact": true,
+    "wp453_hostile_coefficient_is_real": true,
+    "real_correlated_ray_is_in_eps_K_kernel": true,
+    "imaginary_correlated_ray_is_detected": true
+  },
+  "passed": true
+}

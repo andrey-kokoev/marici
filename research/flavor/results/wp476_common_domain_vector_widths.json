@@ -1,0 +1,99 @@
+{
+  "work_package": "WP476",
+  "domain": "WP474-WP475 kaon-conditioned endpoint, five-TeV triplet benchmark, y=kappa=lambda=rho=1, and common-clock messenger masses M_U=M_D=mu",
+  "source_parameters": {
+    "f_TeV_exact": "250*sqrt(78611234)/sqrt(-28950 + 49*sqrt(1412509))",
+    "f_TeV_numeric": 12952.456215504528,
+    "mu_TeV_exact": "250*sqrt(117916851)/(3*sqrt(-28950 + 49*sqrt(1412509)))",
+    "mu_TeV_numeric": 5287.8181072877605,
+    "g_F_exact": "sqrt(-3413692836450 + 5777925699*sqrt(1412509))/1965280850",
+    "g_F_numeric": 0.0009455695900562305,
+    "messenger_mass_TeV_numeric": 5287.8181072877605,
+    "messenger_mass_coefficient_status": "declared unit common-clock benchmark; not source-selected"
+  },
+  "vector_poles_TeV": {
+    "triplet": "5",
+    "quintet": "5*sqrt(3)"
+  },
+  "closed_nonquark_thresholds": {
+    "messenger_pair_threshold_TeV_numeric": 10575.636214575521,
+    "lightest_charged_scalar_mass_TeV_numeric": 21151.272429151042,
+    "charged_scalar_pair_threshold_TeV_numeric": 42302.544858302084,
+    "note": "The 125.20-GeV Higgs and three radial poles are SU(3)_F neutral; the first flavor-charged physical scalar has curvature 16 mu^2."
+  },
+  "independently_frozen_quark_widths": {
+    "fractional_width_exact": "3*(-28950 + 49*sqrt(1412509))/(393056170000*pi)",
+    "triplet_width_GeV_numeric": 0.00035575182249417635,
+    "quintet_width_GeV_numeric": 0.000616180231445138,
+    "support": "tree level, six massless quarks; scalar and messenger channels proved closed on this benchmark"
+  },
+  "two_source_response": {
+    "source_coordinates": [
+      "g_F",
+      "mu"
+    ],
+    "readouts": [
+      "m_1=g_F mu",
+      "C_0=1/(6 mu^2)"
+    ],
+    "ordinary_jacobian": [
+      [
+        "mu",
+        "g_F"
+      ],
+      [
+        "0",
+        "-1/(3*mu**3)"
+      ]
+    ],
+    "ordinary_determinant": "-1/(3*mu**2)",
+    "logarithmic_response": [
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        -2
+      ]
+    ],
+    "logarithmic_determinant": -2,
+    "formal_rank": 2
+  },
+  "g_F_f_over_v": {
+    "exact": "250000*sqrt(6)/12311",
+    "numeric": 49.74189226673662,
+    "authority": "conditional five-TeV pole readout, not a source-selected numerical value"
+  },
+  "contextual_partition": {
+    "source_map": "The pole-plus-current family separates every positive (g_F,mu) point.",
+    "current_instruments": "The CP-even kaon likelihood remains provisional and the Run-2 pole channel has less than one produced event even at unit acceptance.",
+    "first_nonfaithful_arrow": "finite collider production/counting support; no detector pole record exists on the admitted endpoint"
+  },
+  "classification": "Common-domain exact width closure and formally rank-two source readout; neither a selector nor a presentation rigidifier.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "smallest_exact_falsifier": "An open messenger or SU(3)_F-charged scalar pair threshold below the quintet pole, or a zero determinant for the pole-plus-current response.",
+  "remaining_instrument_gate": "A controlled CP-even kaon likelihood and an actually populated flavor-tagged pole experiment in the same source domain; Run-2 cannot supply the pole coordinate.",
+  "remaining_selector_gate": "Derive the five-TeV pole-to-electroweak-clock ratio from source dynamics instead of freezing it as a benchmark.",
+  "checks": {
+    "wp435_dependency_passed": true,
+    "wp449_dependency_passed": true,
+    "wp463_dependency_passed": true,
+    "wp474_dependency_passed": true,
+    "wp475_dependency_passed": true,
+    "common_clock_relation_exact": true,
+    "triplet_pole_is_exactly_five_TeV": true,
+    "messenger_pair_threshold_is_closed": true,
+    "charged_scalar_pair_threshold_is_closed": true,
+    "vector_widths_are_positive": true,
+    "vector_width_ratio_is_sqrt_three": true,
+    "ordinary_response_determinant_is_nonzero": true,
+    "log_response_rank_is_two": true,
+    "log_response_determinant_is_minus_two": true,
+    "ratio_depends_only_on_pole_and_electroweak_clock": true,
+    "run2_source_yield_remains_below_one": true
+  },
+  "passed": true
+}

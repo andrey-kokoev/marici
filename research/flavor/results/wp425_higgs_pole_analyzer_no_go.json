@@ -1,0 +1,27 @@
+{
+  "work_package": "WP425",
+  "title": "Higgs-pole analyzer no-go",
+  "source_operation": "external linear production source J phi",
+  "stationary_source": "s*(lambda*s**2 - mu2)",
+  "shifted_coefficients": {
+    "constant": "-s**2*(3*lambda*s**2 - 2*mu2)/4",
+    "linear": "0",
+    "quadratic": "(3*lambda*s**2 - mu2)/2",
+    "cubic": "lambda*s",
+    "quartic": "lambda/4"
+  },
+  "classification": "observed executable Higgs pole is a state-preparation and self-coupling analyzer, not a quartic-law actuator",
+  "smallest_exact_falsifier": "a fixed admitted interaction with nonzero command derivative of lambda_eff measured independently of state displacement",
+  "remaining_gate": "an observed preparable substrate implementing WP420's coefficient-level source arrow in a common Higgs readout frame",
+  "checks": {
+    "stationary_command_is_exact": true,
+    "retained_background_has_zero_linear_term": true,
+    "curvature_changes_with_prepared_background": true,
+    "cubic_response_changes_with_prepared_background": true,
+    "quartic_coefficient_is_background_independent": true,
+    "fourth_derivative_remains_fixed": true,
+    "hostile_distinct_backgrounds_have_equal_quartic": true,
+    "command_to_quartic_parameter_jacobian_is_zero": true
+  },
+  "passed": true
+}

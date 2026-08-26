@@ -1,0 +1,61 @@
+{
+  "work_package": "WP477",
+  "target": "sqrt(3)*g_F*y/sqrt(a)",
+  "minimal_scale_free_selector_coordinate": "c=a/(g_F^2*y^2)",
+  "selector_normal_form": {
+    "source_relation": "a=c*g_F^2*y^2",
+    "selected_target": "sqrt(3)/sqrt(c)",
+    "classification": "A source-fixed c would numerically select g_F*f/v without fixing the common scale."
+  },
+  "conditional_five_TeV_readout": {
+    "target_exact": "250000*sqrt(6)/12311",
+    "target_numeric": 49.74189226673662,
+    "required_c_exact": "151560721/125000000000",
+    "required_c_numeric": 0.001212485768,
+    "authority": "derived from the frozen pole and measured electroweak clock; it may test but cannot define a source law"
+  },
+  "hostile_source_pair": {
+    "coefficients": [
+      "c",
+      "4*c"
+    ],
+    "targets": [
+      "sqrt(3)/sqrt(c)",
+      "sqrt(3)/(2*sqrt(c))"
+    ],
+    "same_admitted_structure": "positive WP467 common-clock sum of squares with the same fields and symmetries"
+  },
+  "rg_descent_gate": {
+    "beta_c_over_c": "-2*beta_g/g_F - 2*beta_y/y + beta_a/a",
+    "required_condition": "beta_a/a=2*beta_g/g+2*beta_y/y on the complete coupled trajectory",
+    "current_authority": "WP465 supplies only a gauge-subsystem root and proves it is lost after messenger decoupling; beta_a and beta_y plus threshold matching are absent"
+  },
+  "authority_audit": {
+    "common_clock_geometry": "selects a ratio conditional on independent positive g_F, y, and a",
+    "messenger_grammar": "adds independent masses and Yukawa couplings but no equation fixing c",
+    "gauge_fixed_point": "does not survive the messenger threshold and does not constrain a or y",
+    "kaon_and_pole_records": "constrain or read out c after the fact; they are physical probes, not source constructors"
+  },
+  "classification": "Exact selector normal form found, but no admitted source operation fixes its coefficient; current five-TeV value remains a readout, not a selection.",
+  "selector_architecture": true,
+  "numerical_selector_admitted": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "smallest_exact_falsifier": "The positive actions with c and 4c obey the same admitted source grammar but predict targets differing by a factor of two.",
+  "remaining_gate": "Derive c independently from a complete coupled gauge-messenger-scalar action and prove beta_c=0 with threshold matching before comparing its prediction with the pole/current instruments.",
+  "checks": {
+    "wp435_dependency_passed": true,
+    "wp465_threshold_gate_failed_as_recorded": true,
+    "wp467_scale_kernel_is_repaired": true,
+    "wp467_numerical_selector_is_not_admitted": true,
+    "wp476_dependency_passed": true,
+    "normal_form_selects_scale_free_target": true,
+    "normal_form_removes_g_and_y": true,
+    "positive_hostile_pair_changes_target_by_two": true,
+    "benchmark_coefficient_is_exact": true,
+    "benchmark_coefficient_reproduces_readout": true,
+    "rg_invariance_requires_three_beta_functions": true,
+    "gauge_beta_alone_cannot_make_beta_c_zero": true
+  },
+  "passed": true
+}

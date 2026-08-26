@@ -1,0 +1,73 @@
+{
+  "work_package": "WP479",
+  "state_domain": "three WP447 adjoints with messenger ports coupling to linear combinations p_alpha_i X_i",
+  "portal_pairing": "W=sum_alpha p_alpha^dagger p_alpha on the adjoint-triplet label space",
+  "minimal_wp435_ports": {
+    "count": 2,
+    "labels": [
+      "up",
+      "down"
+    ],
+    "gram_matrix": [
+      [
+        "p1**2 + q1**2",
+        "p1*p2 + q1*q2",
+        "p1*p3 + q1*q3"
+      ],
+      [
+        "p1*p2 + q1*q2",
+        "p2**2 + q2**2",
+        "p2*p3 + q2*q3"
+      ],
+      [
+        "p1*p3 + q1*q3",
+        "p2*p3 + q2*q3",
+        "p3**2 + q3**2"
+      ]
+    ],
+    "determinant": "0",
+    "kernel_witness": [
+      "p2*q3 - p3*q2",
+      "-p1*q3 + p3*q1",
+      "p1*q2 - p2*q1"
+    ],
+    "maximum_rank": 2
+  },
+  "common_clock_requirement": {
+    "pairing": "kappa*I_3",
+    "determinant": "kappa^3",
+    "rank": 3,
+    "reason": "Only an isotropic pairing descends under the oriented adjoint-triplet symmetry used by WP447 and WP467."
+  },
+  "minimum_port_theorem": {
+    "necessary_ports": 3,
+    "sufficient_witness": "P=sqrt(kappa)*I_3",
+    "remaining_authority": "The equal-norm orthogonal three-port law and kappa must be derived from the source; algebraic span alone is not executable messenger control."
+  },
+  "contextual_partition": {
+    "two_ports": "Every source packet has at least one blind adjoint-label direction and breaks or undersamples the isotropic portal.",
+    "three_generic_ports": "Can reach rank three but need not be isotropic.",
+    "three_orthogonal_equal_ports": "Exactly reproduce the common-clock pairing conditionally."
+  },
+  "classification": "Two-port messenger completion is insufficient for descent to the isotropic common-clock selector; a third source-derived port is necessary but not alone sufficient.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "instrument": null,
+  "impact_on_existing_spectrum": "WP475-WP476 remain valid only for the independently declared isotropic portal. They are not derived from the minimal two-port WP435 messenger threshold.",
+  "smallest_exact_falsifier": "The cross product of the two port vectors is annihilated by their Gram matrix, while kappa*I_3 annihilates no nonzero vector.",
+  "remaining_gate": "Construct at least three executable messenger ports with a source symmetry enforcing an equal-norm orthogonal Gram, then redo full threshold matching and the scalar/vector spectral packet.",
+  "checks": {
+    "wp435_dependency_passed": true,
+    "wp447_dependency_passed": true,
+    "wp478_dependency_passed": true,
+    "two_port_gram_determinant_is_identically_zero": true,
+    "two_port_gram_rank_is_at_most_two": true,
+    "cross_product_is_exact_kernel_witness": true,
+    "positive_isotropic_gram_has_rank_three": true,
+    "positive_isotropic_gram_has_nonzero_determinant": true,
+    "three_canonical_ports_are_sufficient": true,
+    "spin_one_vacuum_trace_gram_is_isotropic": true
+  },
+  "passed": true
+}

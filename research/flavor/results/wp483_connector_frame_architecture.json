@@ -1,0 +1,81 @@
+{
+  "work_package": "WP483",
+  "source_action": {
+    "connector_field": "real 3x3 frame S_{alpha i}, gauge singlet, with cyclic row action and oriented-triplet right action",
+    "frame_potential": "lambda_S*||S^T S-s^2 I_3||_F^2",
+    "two_stage_vertices": [
+      "y_H*Qbar*H*A_R_alpha",
+      "y_S*Abar_L_alpha*S_alpha_i*B_R_i",
+      "y_X*Bbar_L_i*X_i*u_R",
+      "M_A*Abar_L_alpha*A_R_alpha",
+      "M_B*Bbar_L_i*B_R_i"
+    ],
+    "all_interaction_vertices_dimension": 4
+  },
+  "unit_frame_vacuum": {
+    "S": "I_3",
+    "energy": 0,
+    "hessian_spectrum": {
+      "8": 6,
+      "0": 3
+    },
+    "route_gram": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "relational_groupoid": {
+    "old_experiment": "unframed oriented adjoint triplet",
+    "new_experiment": "connector frame plus triplet, modulo the stabilizer of S and X",
+    "unit_frame_stabilizer": "diagonal cyclic row/right rotations inside C3 x SO(3)",
+    "orientation_zeros": 3,
+    "meaning": "The frame creates relative port orientation; it does not reveal an absolute orientation of the old experiment."
+  },
+  "matter_cost": {
+    "messenger_stages_per_port": 2,
+    "ports_per_sector": 3,
+    "messenger_dirac_fundamentals": 36,
+    "active_dirac_fundamentals": 42,
+    "gauge_only_b0": "-37/2",
+    "gauge_only_b1": "-493",
+    "formal_g_squared_root": "-296*pi**2/493"
+  },
+  "classification": "Renormalizable relational connector architecture that conditionally repairs isotropic portal descent; not a numerical selector and not yet a viable spectrum.",
+  "selector": false,
+  "rigidifier": true,
+  "reference_port_required": true,
+  "instrument": null,
+  "smallest_exact_falsifier": "The frame Hessian has three physical orientation zeros and the enlarged gauge-only root remains negative despite exact isotropic Gram descent.",
+  "remaining_gate": "Lift or gauge the connector orientation modes without spoiling S^T S proportional to I, derive all connector/messenger couplings on a complete fixed ray, decouple both messenger stages above the vector poles, and recompute every pole, residue, and width.",
+  "checks": {
+    "wp480_dependency_passed": true,
+    "wp482_dependency_passed": true,
+    "frame_potential_is_renormalizable_quartic": true,
+    "unit_frame_has_zero_energy": true,
+    "unit_frame_is_stationary": true,
+    "frame_hessian_has_six_positive_modes": true,
+    "frame_hessian_has_three_orientation_zeros": true,
+    "cyclic_row_action_preserves_frame_gram": true,
+    "cyclic_row_action_preserves_equal_entrance": true,
+    "vacuum_route_gram_is_isotropic": true,
+    "two_stage_repair_adds_thirty_six_messenger_fundamentals": true,
+    "active_total_is_forty_two_fundamentals": true,
+    "active_b0_is_negative_thirty_seven_halves": true,
+    "active_b1_is_negative_four_ninety_three": true,
+    "gauge_only_formal_root_is_negative": true
+  },
+  "passed": true
+}

@@ -1,0 +1,63 @@
+{
+  "work_package": "WP486",
+  "admitted_state_domain": "positive WP485 source parameters with three resolved vector pole locations and a common-domain zero-momentum flavor-current coefficient",
+  "source_coordinates": [
+    "g_F^2",
+    "g_P^2",
+    "mu^2",
+    "s^2"
+  ],
+  "normalization": "mu is the adjoint amplitude; the established physical flavor norm obeys f_phys^2=6 mu^2",
+  "probe_family": {
+    "Q": "unmixed quintet mass squared",
+    "T": "sum of the two mixed-triplet mass squares",
+    "D": "product of the two mixed-triplet mass squares",
+    "C": "zero-momentum triplet quark-current coefficient"
+  },
+  "exact_inverse": {
+    "s_squared": "2*Q*(Q - 3*T)/(C*(9*D + Q**2 - 3*Q*T))",
+    "mu_squared": "-Q*(Q - 3*T)/(9*C*D)",
+    "g_F_squared": "-3*C*D/(Q - 3*T)",
+    "g_P_squared": "3*C*D*(9*D + Q**2 - 3*Q*T)/(4*Q**2*(Q - 3*T))"
+  },
+  "acceptance": {
+    "positive_readouts": "Q>0,D>0,C>0",
+    "additional_margin": "T-Q/3-3D/Q>0",
+    "source_pullback": "4 g_P^2 mu^2>0"
+  },
+  "log_jacobian_determinant": "4*g_P_squared*mu_squared/(g_F_squared*mu_squared + 4*g_P_squared*mu_squared + 2*g_P_squared*s_squared)",
+  "residue_calibration": {
+    "w_minus_from_poles": "(Q - 3*m_plus_squared)/(3*(m_minus_squared - m_plus_squared))",
+    "w_plus_from_poles": "-(Q - 3*m_minus_squared)/(3*(m_minus_squared - m_plus_squared))",
+    "absolute_residues": "recover g_F^2 by the inverse map, then multiply the weights"
+  },
+  "physical_clock_readout": "g_F f_phys/v = sqrt(2 Q)/v because Q=3 g_F^2 mu^2 and f_phys^2=6 mu^2",
+  "six_quark_partial_widths": {
+    "Gamma_minus_over_m_minus": "-C*D*(Q - 3*m_plus_squared)/(4*pi*(Q - 3*T)*(m_minus_squared - m_plus_squared))",
+    "Gamma_plus_over_m_plus": "C*D*(Q - 3*m_minus_squared)/(4*pi*(Q - 3*T)*(m_minus_squared - m_plus_squared))",
+    "Gamma_quintet_over_m_quintet": "-3*C*D/(4*pi*(Q - 3*T))",
+    "sum_rule": "Gamma_minus/m_minus + Gamma_plus/m_plus = Gamma_quintet/m_quintet",
+    "authority": "exact tree-level partial widths to six massless quarks; not total widths"
+  },
+  "contextual_partition": "The complete pole-plus-current family is jointly faithful on the positive four-parameter WP485 domain; pole data alone are not.",
+  "classification": "Source-derived formally faithful calibration family; it identifies rather than selects and lacks a currently realized common-domain instrument.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": "specified mathematically but not physically realized: three resolved poles plus calibrated low-energy current response in one source domain",
+  "smallest_exact_falsifier": "Omitting C leaves the common rescaling (mu^2,s^2)->lambda(mu^2,s^2), (g_F^2,g_P^2)->(g_F^2,g_P^2)/lambda invisible to all three pole masses.",
+  "remaining_gate": "Produce all three pole records and the low-energy current coefficient in one experimentally calibrated source domain, and prove every nonquark threshold closed before promoting the partial widths to total widths.",
+  "checks": {
+    "wp449_dependency_passed": true,
+    "wp485_dependency_passed": true,
+    "g_F_squared_roundtrip": true,
+    "g_P_squared_roundtrip": true,
+    "mu_squared_roundtrip": true,
+    "s_squared_roundtrip": true,
+    "log_response_is_everywhere_rank_four": true,
+    "positive_domain_margin_is_exactly_four_h2_f2": true,
+    "pole_weights_sum_to_one": true,
+    "pole_weighted_mass_reconstructs_flavor_diagonal": true,
+    "partial_width_sum_rule": true
+  },
+  "passed": true
+}

@@ -1,0 +1,72 @@
+{
+  "work_package": "WP428",
+  "title": "Threshold experiment preregistration",
+  "status": "frozen_before_response_calculation",
+  "scope": "bounded three-rival non-gauge class; no open-world authority",
+  "rivals": [
+    "R_two_adjoint",
+    "R_auxiliary",
+    "R_contact"
+  ],
+  "low_energy_matching_rule": "same frozen low-energy coefficient packet before threshold unblinding",
+  "preparation": {
+    "command": "common calibrated scalar-current impulse u(t)",
+    "fluence": "one detector-control unit",
+    "normalization_channel": "inclusive control channel disjoint from selector-facing bins",
+    "authority": "conditional until a common physical portal is demonstrated"
+  },
+  "readouts": [
+    "loss_minus",
+    "loss_center",
+    "loss_plus",
+    "contact_far"
+  ],
+  "frequency_offsets_in_Gamma_c": [
+    "-2",
+    "0",
+    "2",
+    "6"
+  ],
+  "frequencies": [
+    "-2*Gamma_c + omega_c",
+    "omega_c",
+    "2*Gamma_c + omega_c",
+    "6*Gamma_c + omega_c"
+  ],
+  "detector": {
+    "kernel": "normalized Gaussian",
+    "sigma": "Gamma_c/2",
+    "scan_window": [
+      "-3*Gamma_c + omega_c",
+      "7*Gamma_c + omega_c"
+    ],
+    "contact_subtraction": "sideband coefficients frozen before unblinding"
+  },
+  "successor_acceptance": {
+    "bounded_contextual_rank": 3,
+    "robustness": "smallest singular value positive on separately declared uncertainty set",
+    "selection_authority": "requires independently sourced WP128 preparation law in addition to rank"
+  },
+  "falsifiers": [
+    "no common physical preparation portal",
+    "two rival columns identical after smearing and subtraction",
+    "rank below three",
+    "smallest singular value reaches zero under admitted uncertainty",
+    "normalization or subtraction uses selector-facing bins",
+    "a predeclared external rival reproduces all four readouts",
+    "threshold settings moved after inspecting the outcome"
+  ],
+  "checks": {
+    "exactly_three_unique_rivals_frozen": true,
+    "exactly_four_unique_readouts_frozen": true,
+    "frequency_offsets_are_predeclared_and_distinct": true,
+    "gaussian_resolution_is_positive": true,
+    "scan_window_contains_all_centers": true,
+    "control_normalization_is_disjoint_by_declaration": true,
+    "bounded_rank_target_matches_rival_count": true,
+    "physical_portal_authority_remains_conditional": true,
+    "no_response_or_rank_outcome_is_present": true,
+    "falsifier_list_is_frozen_and_nonempty": true
+  },
+  "passed": true
+}

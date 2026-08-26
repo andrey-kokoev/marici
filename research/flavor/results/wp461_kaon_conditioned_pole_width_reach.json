@@ -1,0 +1,59 @@
+{
+  "work_package": "WP461",
+  "benchmark": {
+    "m_triplet_TeV": 5,
+    "m_quintet_TeV": "5*sqrt(3)",
+    "not_source_selected": "The triplet pole mass is frozen as a reach benchmark."
+  },
+  "transport_envelope": {
+    "F_5_TeV_squared": 263200000,
+    "F_100_TeV_squared": 338330000,
+    "endpoint_ratio": "33833/26320",
+    "assumption": "F_5 <= F(m_quintet) <= F_100; no interpolation is claimed.",
+    "minimum_x_per_g_F_squared": "2256350/3"
+  },
+  "conditional_working_limits": {
+    "g_F_max": "sqrt(-1737/1965280850 + 147*sqrt(1412509)/98264042500)",
+    "g_F_max_decimal": 0.0009455695900562304,
+    "mu_min_TeV": "250*sqrt(117916851)/(3*sqrt(-28950 + 49*sqrt(1412509)))",
+    "mu_min_TeV_decimal": 5287.8181072877605,
+    "f_min_TeV": "250*sqrt(78611234)/sqrt(-28950 + 49*sqrt(1412509))",
+    "f_min_TeV_decimal": 12952.456215504528,
+    "g_F_f_over_v_benchmark": "2500*sqrt(6)/123",
+    "g_F_f_over_v_benchmark_decimal": 49.78637688583695
+  },
+  "width_and_detector": {
+    "Gamma_triplet_max_GeV": "3*(-28950 + 49*sqrt(1412509))/(78611234*pi)",
+    "Gamma_triplet_max_GeV_decimal": 0.00035575182249417635,
+    "ATLAS_fractional_dijet_resolution": "3/100",
+    "resolution_at_5_TeV_GeV": 150,
+    "resolution_to_width_ratio": "1698354645000*pi/38109427 + 2874589900*sqrt(1412509)*pi/38109427",
+    "resolution_to_width_ratio_decimal": 421642.2531537572
+  },
+  "detector_response_rank": "At most one for the proposed mass-plus-width coordinates because all allowed widths map to the zero-width template.",
+  "classification": "Conditional current constraint and negative detector-width audit; neither selector nor rigidifier.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "smallest_exact_falsifier": "The allowed intrinsic width reaches 3 percent of the pole mass or the envelope-minimum kaon response is nonpositive.",
+  "remaining_gate": "Freeze a flavor-tagged production-rate likelihood or a line-shape instrument capable of resolving the sub-MeV width at multi-TeV mass.",
+  "sources": [
+    "https://arxiv.org/abs/2009.07276",
+    "https://arxiv.org/abs/1910.08447"
+  ],
+  "checks": {
+    "wp449_dependency_passed": true,
+    "wp456_dependency_passed": true,
+    "wp457_dependency_passed": true,
+    "wp460_dependency_passed": true,
+    "atlas_endpoint_ratio_exact": true,
+    "envelope_minimum_response_positive": true,
+    "provisional_endpoint_bounds_coupling": true,
+    "conditional_scale_reconstruction_exact": true,
+    "benchmark_target_is_pole_readout": true,
+    "detector_resolution_is_150_GeV": true,
+    "intrinsic_width_is_below_resolution": true,
+    "width_resolution_gap_exceeds_five_orders": true
+  },
+  "passed": true
+}

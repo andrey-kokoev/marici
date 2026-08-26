@@ -1,0 +1,41 @@
+{
+  "work_package": "WP416",
+  "title": "Higgs quartic second-source gate",
+  "source_operators": [
+    "delta_c times H-dagger-H",
+    "delta_lambda times (H-dagger-H)^2"
+  ],
+  "fixed_reference_readouts": {
+    "curvature": "delta_c + 3*delta_lambda*v0**2 + 2*mu2",
+    "relative_tadpole": "v0*(delta_c + delta_lambda*v0**2)"
+  },
+  "response_jacobian": [
+    [
+      "1",
+      "3*v0**2"
+    ],
+    [
+      "v0",
+      "v0**3"
+    ]
+  ],
+  "response_wedge": "-2*v0**3",
+  "weighted_gram_determinant": "4*v0**6*w_H*w_J",
+  "inverse_source_reconstruction": {
+    "delta_c": "(-Delta_H*v0 + 3*Delta_J)/(2*v0)",
+    "delta_lambda": "(Delta_H*v0 - Delta_J)/(2*v0**3)"
+  },
+  "classification": "source-derived and weak-basis-independent rank-two relational response; executable quartic control and instrument remain absent",
+  "smallest_exact_falsifier": "v0 = 0, where the broken-phase reference and response wedge collapse",
+  "remaining_gate": "independently vary the physical Higgs quartic while retaining and reading the same broken-vacuum reference",
+  "checks": {
+    "quadratic_and_quartic_operators_are_center_even": true,
+    "relative_curvature_has_expected_two_source_form": true,
+    "relative_tadpole_has_expected_two_source_form": true,
+    "response_wedge_is_nonzero_in_broken_phase": true,
+    "positive_weighted_gram_is_nonzero": true,
+    "source_errors_are_exactly_reconstructible": true,
+    "recentering_removes_tadpole": true
+  },
+  "passed": true
+}

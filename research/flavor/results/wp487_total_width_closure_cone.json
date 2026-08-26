@@ -1,0 +1,61 @@
+{
+  "work_package": "WP487",
+  "domain": "WP486 calibrated pole-current domain at tree level, with six effectively massless quarks and a declared minimum nonquark matter/scalar threshold tau",
+  "tree_level_two_body_channel_classes": [
+    "quark-antiquark",
+    "vector-vector",
+    "vector-physical-scalar",
+    "physical-scalar pair",
+    "vectorlike-messenger pair"
+  ],
+  "sufficient_closure_cone": {
+    "vector_condition": "4 m_i^2 > m_j^2 for every ordered pair of distinct vector poles",
+    "nonvector_condition": "4 tau^2 > m_i^2 for every vector pole, where tau is the minimum physical scalar or vectorlike-messenger mass",
+    "interpretation": "every nonquark daughter is heavier than half every possible vector parent"
+  },
+  "exact_nonempty_witness": {
+    "g_F_squared": "1",
+    "g_P_squared": "1/68",
+    "mu_squared": "1",
+    "s_squared": "32",
+    "tau_squared": "1",
+    "mixed_minus_squared": "1 - sqrt(17)/17",
+    "quintet_squared": "3",
+    "mixed_plus_squared": "sqrt(17)/17 + 1",
+    "vector_pair_margins": {
+      "4m1^2_minus_m2^2": "1 - 4*sqrt(17)/17",
+      "4m1^2_minus_m3^2": "3 - 5*sqrt(17)/17",
+      "4m2^2_minus_m1^2": "sqrt(17)/17 + 11",
+      "4m2^2_minus_m3^2": "11 - sqrt(17)/17",
+      "4m3^2_minus_m1^2": "5*sqrt(17)/17 + 3",
+      "4m3^2_minus_m2^2": "4*sqrt(17)/17 + 1"
+    },
+    "threshold_margins": {
+      "4tau^2_minus_m1^2": "sqrt(17)/17 + 3",
+      "4tau^2_minus_m2^2": "1",
+      "4tau^2_minus_m3^2": "3 - sqrt(17)/17"
+    }
+  },
+  "total_fractional_widths_on_cone": {
+    "mixed_minus": "-C*D*(Q - 3*m_plus_squared)/(4*pi*(Q - 3*T)*(m_minus_squared - m_plus_squared))",
+    "mixed_plus": "C*D*(Q - 3*m_minus_squared)/(4*pi*(Q - 3*T)*(m_minus_squared - m_plus_squared))",
+    "quintet": "-3*C*D/(4*pi*(Q - 3*T))"
+  },
+  "classification": "Exact sufficient tree-level total-width closure theorem with nonempty source domain; no claim that the current source selects or occupies the cone.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": "threshold-resolved pole/current experiment specified by WP486 plus lower bounds on every nonquark daughter mass",
+  "smallest_exact_falsifier": "A measured or source-derived daughter mass at or below half a vector pole falsifies this coupling-independent closure certificate; it then requires a channel-specific coupling audit and does not alone prove a nonzero decay.",
+  "remaining_gate": "Derive the connector-scalar and both messenger-stage masses from the same source coefficients and prove the closure inequalities on the selected trajectory; loop-induced and off-shell corrections require a separately declared perturbative order and resolution.",
+  "checks": {
+    "wp484_dependency_passed": true,
+    "wp486_dependency_passed": true,
+    "witness_triplet_diagonal_entries_match": true,
+    "witness_mixed_poles_are_exact": true,
+    "all_vector_pair_margins_are_positive": true,
+    "all_heavy_threshold_margins_are_positive": true,
+    "closure_cone_is_strictly_nonempty": true,
+    "mixed_fractional_width_sum_rule_survives": true
+  },
+  "passed": true
+}

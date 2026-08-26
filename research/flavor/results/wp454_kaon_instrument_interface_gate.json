@@ -1,0 +1,38 @@
+{
+  "work_package": "WP454",
+  "source_operator_basis": [
+    "O_LL",
+    "O_RR",
+    "O_LR"
+  ],
+  "source_coefficient_pattern": [
+    1,
+    1,
+    2
+  ],
+  "instrument_excerpt": "PDG 2025 illustrates K mixing with the isolated operator (bar q_i gamma_mu P_L q_j)^2 and quotes Lambda/sqrt(|z_ij|) about 10^4 TeV.",
+  "instrument_projection_rank": 1,
+  "instrument_projection_kernel_dimension": 2,
+  "formal_LL_only_diagnostic": {
+    "mu_lower_bound_TeV": "5000*sqrt(3)/3",
+    "f_lower_bound_TeV": "5000*sqrt(2)",
+    "f_over_v_lower_bound": "2500000*sqrt(2)/123"
+  },
+  "source": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-ckm-matrix.pdf, Section 12.5",
+  "actual_model_bound": null,
+  "instrument": "Neutral-kaon mixing is real, but the quoted single-operator excerpt is not a calibrated response for the correlated vector-current pattern.",
+  "classification": "Instrument-class match with an operator-interface failure; the displayed bound is a diagnostic, not an admitted constraint on WP447.",
+  "smallest_exact_falsifier": "A published common-scale likelihood or response matrix for the correlated (1,1,2) pattern that yields a stable nonzero bound after RG and hadronic uncertainties.",
+  "remaining_gate": "Obtain the correlated Delta-S=2 Wilson evolution, lattice matrix-element covariance, and experimental likelihood in one operator convention, then compute the bound without projecting away RR/LR components.",
+  "checks": {
+    "wp453_dependency_passed": true,
+    "vector_current_has_correlated_chiral_pattern": true,
+    "pdg_displayed_channel_reads_only_LL": true,
+    "displayed_channel_has_two_dimensional_operator_kernel": true,
+    "source_pattern_is_not_the_isolated_LL_axis": true,
+    "formal_projected_mu_bound": true,
+    "formal_projected_f_bound": true,
+    "formal_projected_f_over_v_bound": true
+  },
+  "passed": true
+}

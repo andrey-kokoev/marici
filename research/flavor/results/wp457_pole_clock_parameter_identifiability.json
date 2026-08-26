@@ -1,0 +1,54 @@
+{
+  "work_package": "WP457",
+  "domain": "WP447 positive g_F,mu vacuum and WP449 conditional above-top, quark-only width support.",
+  "source_parameters": [
+    "g_F",
+    "mu"
+  ],
+  "formal_readouts": [
+    "m_triplet=g_F mu",
+    "Gamma_triplet/m_triplet=g_F^2/(4 pi)"
+  ],
+  "response_jacobian": [
+    [
+      "mu",
+      "g_F"
+    ],
+    [
+      "g_F/(2*pi)",
+      "0"
+    ]
+  ],
+  "jacobian_determinant": "-g_F**2/(2*pi)",
+  "inverse_reconstruction": {
+    "g_F": "g_F",
+    "mu": "mu",
+    "f": "sqrt(6)*mu",
+    "g_F_f_over_v": "sqrt(6)*g_F*mu/v"
+  },
+  "overidentifying_relations": {
+    "m_quintet_over_m_triplet": "sqrt(3)",
+    "Gamma_quintet_over_Gamma_triplet": "sqrt(3)"
+  },
+  "classification": "Rank-two formal parameter-identification readout; neither selector nor rigidifier.",
+  "numerical_selector": false,
+  "reference_port_required": false,
+  "instrument": "Requires a detector-calibrated flavor-tagged two-pole experiment; formal masses and widths alone do not establish reach.",
+  "smallest_exact_falsifier": "The positive-domain Jacobian determinant vanishes, or either square-root-three overidentifying relation fails.",
+  "remaining_gate": "Derive detector convolution and uncertainty support for a real production/decay channel and test whether its calibrated Jacobian retains rank two at reachable masses.",
+  "checks": {
+    "wp447_dependency_passed": true,
+    "wp448_dependency_passed": true,
+    "wp449_dependency_passed": true,
+    "wp456_dependency_passed": true,
+    "response_jacobian_exact": true,
+    "response_rank_two_on_positive_domain": true,
+    "gauge_coupling_reconstruction_exact": true,
+    "vacuum_scale_reconstruction_exact": true,
+    "dimensionless_product_is_pole_clock_readout": true,
+    "quintet_mass_overidentifies_representation": true,
+    "quintet_width_overidentifies_representation": true,
+    "source_scale_remains_continuous": true
+  },
+  "passed": true
+}

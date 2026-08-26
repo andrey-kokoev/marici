@@ -1,0 +1,54 @@
+{
+  "work_package": "WP408",
+  "title": "Four-thickness kaon no-refit protocol",
+  "physical_settings": {
+    "fixed": "carbon composition, kaon momentum bin, geometry, beam preparation, and detector selection",
+    "calibration_thicknesses": [
+      "0",
+      "t",
+      "2t"
+    ],
+    "withheld_thickness": "3t"
+  },
+  "quadratic_design_determinant": "2",
+  "no_refit_prediction_weights": [
+    "1",
+    "-3",
+    "3"
+  ],
+  "withheld_complex_prediction": {
+    "real": "r0 - 3*r1 + 3*r2",
+    "imaginary": "i0 - 3*i1 + 3*i2"
+  },
+  "quadratic_contrast": [
+    "1",
+    "-2",
+    "1"
+  ],
+  "example_prediction_covariance": [
+    [
+      "171/100",
+      "171/25"
+    ],
+    [
+      "171/25",
+      "76"
+    ]
+  ],
+  "withheld_mahalanobis_statistic": "5*(9*d_i**2 - 72*d_i*d_r - 18*d_i*i0 + 54*d_i*i1 - 54*d_i*i2 + 72*d_i*r0 - 216*d_i*r1 + 216*d_i*r2 + 400*d_r**2 + 72*d_r*i0 - 216*d_r*i1 + 216*d_r*i2 - 800*d_r*r0 + 2400*d_r*r1 - 2400*d_r*r2 + 9*i0**2 - 54*i0*i1 + 54*i0*i2 - 72*i0*r0 + 216*i0*r1 - 216*i0*r2 + 81*i1**2 - 162*i1*i2 + 216*i1*r0 - 648*i1*r1 + 648*i1*r2 + 81*i2**2 - 216*i2*r0 + 648*i2*r1 - 648*i2*r2 + 400*r0**2 - 2400*r0*r1 + 2400*r0*r2 + 3600*r1**2 - 7200*r1*r2 + 3600*r2**2)/2304",
+  "blinding_rule": "seal all 3t event identifiers before fitting 0,t,2t; unseal once; reject or accept without refitting",
+  "smallest_exact_falsifier": "a nonzero second divided difference rejects the affine source shift before the 3t record is opened",
+  "status": "executable protocol derived; no qualifying four-thickness dataset located or executed",
+  "checks": {
+    "three_calibration_thicknesses_identify_quadratic": true,
+    "withheld_context_not_in_calibration_set": true,
+    "no_refit_weights_are_unique": true,
+    "withheld_real_prediction_fixed": true,
+    "withheld_imag_prediction_fixed": true,
+    "quadratic_contrast_detects_x_squared": true,
+    "prediction_covariance_positive_definite": true,
+    "withheld_acceptance_statistic_nonnegative": true,
+    "zero_residual_has_zero_statistic": true
+  },
+  "passed": true
+}

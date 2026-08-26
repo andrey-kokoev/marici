@@ -1,0 +1,36 @@
+{
+  "work_package": "WP414",
+  "title": "Higgs retained-reference response-rank gate",
+  "one_knob_jacobian": [
+    "1",
+    "v0"
+  ],
+  "one_knob_weighted_gram": "v0**2*w_j + w_h",
+  "putative_two_error_jacobian": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "v0",
+      "v0"
+    ]
+  ],
+  "putative_two_error_gram_determinant": "0",
+  "source_story_kernel": [
+    [
+      "-1",
+      "1"
+    ]
+  ],
+  "classification": "two readouts calibrate one Higgs source direction; they do not identify two source errors",
+  "smallest_falsifier": "an independently derived second source column not proportional to (1,v0)",
+  "checks": {
+    "single_knob_response_rank_is_one": true,
+    "two_readouts_give_positive_one_parameter_information": true,
+    "duplicated_two_error_response_rank_is_one": true,
+    "two_error_gram_determinant_vanishes": true,
+    "exact_source_story_kernel_is_difference_direction": true
+  },
+  "passed": true
+}

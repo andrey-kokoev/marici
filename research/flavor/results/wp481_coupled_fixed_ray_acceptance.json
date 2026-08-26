@@ -1,0 +1,65 @@
+{
+  "work_package": "WP481",
+  "bounded_model": "generic leading reduced gauge-Yukawa subsystem for the triplicated messenger theory; coefficients remain to be derived from the full action",
+  "beta_functions": {
+    "beta_alpha_g": "2*alpha_g**2*(A + C*alpha_g - D*alpha_y)",
+    "beta_alpha_y": "2*alpha_y*(E*alpha_y - F*alpha_g)",
+    "positive_one_loop_gauge_loss": "A=13/2 for WP480 before convention-dependent higher-loop normalization"
+  },
+  "interacting_fixed_ray": {
+    "alpha_y_over_alpha_g": "F/E",
+    "effective_margin": "-C + D*F/E",
+    "alpha_g_star": "-A*E/(C*E - D*F)",
+    "alpha_y_star": "-A*F/(C*E - D*F)",
+    "existence_condition": "D*F/E-C>0",
+    "perturbative_condition": "A/(D*F/E-C) is positive and much smaller than one"
+  },
+  "selector_on_fixed_ray": {
+    "ray_definitions": {
+      "y_Q_squared": "16*pi^2*r_Q*alpha_g",
+      "y_Phi_squared": "16*pi^2*r_Phi*alpha_g",
+      "eta": "16*pi^2*r_eta*alpha_g"
+    },
+    "c": "3*k_Phi*r_Phi*r_Q/(16*pi**2*r_eta*y_geom**2)",
+    "g_F_f_over_v": "4*pi*sqrt(r_eta)*y_geom/(sqrt(k_Phi)*sqrt(r_Phi)*sqrt(r_Q))",
+    "scale_and_fixed_point_magnitude_cancel": true
+  },
+  "conditional_benchmark_test": {
+    "required_c": "151560721/125000000000",
+    "required_ray_ratio_ygeom2_reta_over_k_rq_rphi": "23437500000/(151560721*pi**2)",
+    "required_ray_ratio_numeric": 15.668408186163825,
+    "authority": "withheld phenomenological test only; it may not determine A,C,D,E,F or the ray ratios"
+  },
+  "predeclared_acceptance_conditions": [
+    "derive A,C,D,E,F from the complete triplicated action in one scheme",
+    "prove D*F/E-C>0 and a perturbatively small positive fixed point",
+    "derive every Yukawa and quartic ray ratio, including r_Q, r_Phi, r_eta, k_Phi, and y_geom",
+    "prove scalar stability and that the equal-port Gram is RG invariant",
+    "perform finite messenger-threshold matching and prove c descends to the pole domain",
+    "keep all messenger and charged-scalar channels above the vector poles before reusing WP476 widths",
+    "compare the resulting c with kaon, Higgs, and pole instruments only after all source coefficients are frozen"
+  ],
+  "classification": "Exact acceptance theorem for a possible coupled fixed-ray selector; no concrete flavor fixed point or numerical selector is yet admitted.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "instrument": null,
+  "smallest_exact_falsifier": "D*F/E-C is nonpositive, in which case the reduced system has no positive interacting gauge-Yukawa root despite the Yukawa port.",
+  "remaining_gate": "Compute the actual coefficients and fixed-ray ratios of the triplicated messenger action without using the target value, then run the predeclared acceptance conditions.",
+  "source": "https://arxiv.org/abs/1406.2337",
+  "checks": {
+    "wp477_dependency_passed": true,
+    "wp478_dependency_passed": true,
+    "wp480_dependency_passed": true,
+    "nonzero_yukawa_nullcline_exact": true,
+    "gauge_root_exact_on_yukawa_nullcline": true,
+    "effective_margin_sign_is_DF_minus_CE": true,
+    "positive_margin_parameterization_gives_positive_root": true,
+    "fixed_yukawa_root_is_positive_when_margin_positive": true,
+    "selector_coordinate_cancels_fixed_point_magnitude": true,
+    "selector_coordinate_on_ray_exact": true,
+    "selected_target_on_ray_exact": true,
+    "benchmark_ray_ratio_reproduces_target": true
+  },
+  "passed": true
+}

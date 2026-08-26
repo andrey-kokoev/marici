@@ -1,0 +1,35 @@
+{
+  "work_package": "WP424",
+  "title": "Causal resonance companion-signal gate",
+  "susceptibility": "A/(Delta - i gamma)",
+  "target_gain_existence_condition": "A >= 2 G gamma",
+  "detuning_roots": {
+    "plus": "(A + sqrt(A**2 - 4*G**2*gamma**2))/(2*G)",
+    "minus": "(A - sqrt(A**2 - 4*G**2*gamma**2))/(2*G)"
+  },
+  "hostile_pair": {
+    "A": "5",
+    "gamma": "1",
+    "G": "1",
+    "Delta_plus": "sqrt(21)/2 + 5/2",
+    "Delta_minus": "5/2 - sqrt(21)/2",
+    "Re_plus": "1",
+    "Re_minus": "1",
+    "Im_plus": "5/2 - sqrt(21)/2",
+    "Im_minus": "sqrt(21)/2 + 5/2",
+    "absorption_product": "-(-5 + sqrt(21))*(sqrt(21) + 5)/4"
+  },
+  "classification": "gain-only readout is nonfaithful; resonance requires a calibrated dispersion-absorption frequency scan",
+  "smallest_exact_falsifier": "A < 2 G gamma or a measured dispersion-absorption scan inconsistent with the shared pole",
+  "remaining_gate": "an admitted resonance substrate with independently fixed pole strength, linewidth, frequency command, and common-frame Higgs readout",
+  "checks": {
+    "target_gain_equation_has_discriminant_A2_minus_4G2gamma2": true,
+    "real_detuning_requires_A_at_least_2Ggamma": true,
+    "both_formula_roots_satisfy_target_response_equation": true,
+    "two_detunings_have_product_gamma_squared": true,
+    "hostile_pair_has_equal_unit_dispersive_gain": true,
+    "hostile_pair_has_unequal_absorption": true,
+    "hostile_pair_absorption_product_equals_gain_squared": true
+  },
+  "passed": true
+}

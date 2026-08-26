@@ -1,0 +1,38 @@
+{
+  "work_package": "WP420",
+  "title": "Fixed-law Higgs-quartic constructor",
+  "fixed_interaction": "-(g/Lambda) S (H-dagger-H)^2",
+  "commanded_attribute": "prepared homogeneous source state s=<S>",
+  "effective_quartic": "lambda + g*s/Lambda",
+  "command_to_quartic_transfer": "g/Lambda",
+  "two_setting_separation": "-g*(s1 - s2)/Lambda",
+  "quadratic_plus_source_state_response": [
+    [
+      "1",
+      "3*g*v0**2/Lambda"
+    ],
+    [
+      "v0",
+      "g*v0**3/Lambda"
+    ]
+  ],
+  "response_wedge": "-2*g*v0**3/Lambda",
+  "weighted_gram_determinant": "4*g**2*v0**6*w_H*w_J/Lambda**2",
+  "classification": "well-typed fixed-law constructor conditional on an observed preparable singlet substrate",
+  "smallest_exact_falsifiers": [
+    "g = 0",
+    "s2 = s1",
+    "Lambda tends to infinity"
+  ],
+  "remaining_physical_gate": "observe S and g, prepare at least two calibrated long-lived s states, and measure quartic-sensitive records without refitting",
+  "checks": {
+    "fixed_law_state_actuation_is_nonzero_conditionally": true,
+    "two_prepared_states_separate_effective_quartics": true,
+    "wp416_response_wedge_is_inherited": true,
+    "positive_weighted_gram_has_expected_form": true,
+    "zero_coupling_kills_actuation": true,
+    "identical_source_settings_kill_displacement": true,
+    "heavy_scale_decouples_actuator": true
+  },
+  "passed": true
+}

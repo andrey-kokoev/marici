@@ -1,0 +1,36 @@
+{
+  "work_package": "WP449",
+  "approximation": "Leading order, massless six-quark limit, fixed-width pole model.",
+  "frozen_support_assumptions": [
+    "m_triplet>2 m_top",
+    "all vectorlike messenger pair thresholds lie above m_quintet",
+    "all physical flavon-containing decay thresholds lie above m_quintet",
+    "no additional light SU(3)_F-charged states",
+    "g_F^2/(4 pi) is perturbative"
+  ],
+  "partial_trace_rule": "For each of up-type and down-type Dirac quarks, sum over generations gives Tr(T^2)=1/2 and over color gives N_c=3.",
+  "total_widths": {
+    "triplet": "g_F^3 mu/(4 pi)",
+    "quintet": "sqrt(3) g_F^3 mu/(4 pi)"
+  },
+  "common_width_to_mass_ratio": "g_F^2/(4 pi)",
+  "pole_residues": {
+    "triplet": "g_F^2 P_1",
+    "quintet": "g_F^2 P_3"
+  },
+  "instrument": null,
+  "classification": "Independently frozen conditional leading widths and residues; not detector-calibrated and not valid when a declared threshold opens.",
+  "smallest_exact_falsifier": "One open messenger/flavon channel in the declared mass range, m_triplet below 2m_top, or a nonperturbative width ratio.",
+  "remaining_gate": "Freeze a viable messenger-to-physical16 map and detector resolution, then replace the massless inclusive width by threshold-resolved partial widths with uncertainties.",
+  "checks": {
+    "wp448_dependency_passed": true,
+    "inclusive_quark_width_coefficient": true,
+    "triplet_width_is_exact_in_declared_approximation": true,
+    "quintet_width_is_exact_in_declared_approximation": true,
+    "common_width_to_mass_ratio": true,
+    "width_ratio_tracks_mass_ratio": true,
+    "gauge_cascade_is_kinematically_closed": true,
+    "hostile_zero_coupling_limit_closes_widths": true
+  },
+  "passed": true
+}

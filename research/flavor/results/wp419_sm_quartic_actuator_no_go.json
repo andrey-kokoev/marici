@@ -1,0 +1,67 @@
+{
+  "work_package": "WP419",
+  "title": "Standard Model quartic-actuator no-go",
+  "target_operator": "(H-dagger-H)^2",
+  "target_operator_dimension": 4,
+  "candidate_multipliers": {
+    "Higgs_doublet_H": {
+      "canonical_dimension": 1,
+      "lorentz_scalar": true,
+      "gauge_singlet": false,
+      "dynamical_standard_model_field": true,
+      "combined_operator_dimension": 5,
+      "eligible_renormalizable_actuator": false
+    },
+    "Higgs_bilinear_HdaggerH": {
+      "canonical_dimension": 2,
+      "lorentz_scalar": true,
+      "gauge_singlet": true,
+      "dynamical_standard_model_field": false,
+      "combined_operator_dimension": 6,
+      "eligible_renormalizable_actuator": false
+    },
+    "fermion_bilinear": {
+      "canonical_dimension": 3,
+      "lorentz_scalar": true,
+      "gauge_singlet": true,
+      "dynamical_standard_model_field": false,
+      "combined_operator_dimension": 7,
+      "eligible_renormalizable_actuator": false
+    },
+    "gauge_kinetic_scalar": {
+      "canonical_dimension": 4,
+      "lorentz_scalar": true,
+      "gauge_singlet": true,
+      "dynamical_standard_model_field": false,
+      "combined_operator_dimension": 8,
+      "eligible_renormalizable_actuator": false
+    },
+    "dimensionless_external_spurion": {
+      "canonical_dimension": 0,
+      "lorentz_scalar": true,
+      "gauge_singlet": true,
+      "dynamical_standard_model_field": false,
+      "combined_operator_dimension": 4,
+      "eligible_renormalizable_actuator": false
+    }
+  },
+  "first_higgs_built_evasion": "(H-dagger-H)^3",
+  "first_higgs_built_evasion_dimension": 6,
+  "classification": "no field in the renormalizable Standard Model can be an independently commanded Higgs-quartic actuator",
+  "smallest_exact_falsifier": "exhibit a dynamical dimension-zero Lorentz-scalar gauge-singlet Standard Model field with a calibrated laboratory setting",
+  "allowed_evasions": [
+    "a new dynamical singlet or modulus",
+    "an external spacetime-dependent coupling spurion with a physical preparation rule",
+    "a higher-dimensional EFT interaction with an observed controllable source"
+  ],
+  "checks": {
+    "higgs_quartic_is_dimension_four": true,
+    "renormalizable_actuator_requires_nonpositive_dimension": true,
+    "no_candidate_is_a_dynamical_dimension_zero_sm_singlet": true,
+    "elementary_higgs_is_not_a_gauge_singlet_actuator": true,
+    "lowest_higgs_built_singlet_yields_dimension_six": true,
+    "external_spurion_is_not_a_dynamical_sm_field": true,
+    "every_dynamical_or_composite_sm_multiplier_exceeds_dimension_four_or_fails_gauge_singlet": true
+  },
+  "passed": true
+}

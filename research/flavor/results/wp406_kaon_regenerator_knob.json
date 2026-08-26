@@ -1,0 +1,40 @@
+{
+  "work_package": "WP406",
+  "title": "Executable neutral-kaon regenerator knob",
+  "real_flavor_carrier": "the physical K0--anti-K0 doublet",
+  "executable_knob": "regenerator material column density n*tau at frozen momentum and composition",
+  "source_shifts": {
+    "dispersive": "n*a",
+    "absorptive": "n*b",
+    "common_source": "the complex forward-scattering difference a+i*b"
+  },
+  "exact_transfer_amplitude": "-I*(n**2*(I*qim + qre) + n*(a + I*b))*exp(-I*tau*(lambda_L/2 + lambda_S/2))*sin(tau*sqrt((lambda_L/2 - lambda_S/2)**2 + (n**2*(I*qim + qre) + n*(a + I*b))**2))/sqrt((lambda_L/2 - lambda_S/2)**2 + (n**2*(I*qim + qre) + n*(a + I*b))**2)",
+  "calibration_jacobian_at_unit_density": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "1"
+    ]
+  ],
+  "quadratic_design_determinant": "2",
+  "extra_material_rank_determinant": "a*b2 - a2*b",
+  "withheld_context": "n=3, tau=1/3 in the frozen benchmark",
+  "withheld_displacement_amplitude": "(15 - 30*I)*exp(-1/10 - 2*I/3)*sin(sqrt(1059 + 740*I)/60)/sqrt(1059 + 740*I)",
+  "classification": "real relational flavor intervention and rigidified transfer prediction; not a physical16 selector",
+  "remaining_gate": "bind published phase and attenuation records to one composition/momentum calibration and execute the reserved density without refitting",
+  "checks": {
+    "same_density_knob_moves_dispersive_part": true,
+    "same_density_knob_moves_absorptive_part": true,
+    "phase_attenuation_calibration_rank_two": true,
+    "quadratic_completion_identifiable_at_zero_one_two": true,
+    "finite_widths_present_in_transfer_law": true,
+    "zero_forward_difference_deletes_regeneration": true,
+    "finite_thickness_law_is_nonlinear": true,
+    "extra_material_is_separable_when_noncollinear": true,
+    "withheld_amplitude_is_fixed": true
+  },
+  "passed": true
+}

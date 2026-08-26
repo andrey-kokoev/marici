@@ -1,0 +1,76 @@
+{
+  "work_package": "WP485",
+  "domain": "WP484 joint SU(3)_F x SO(3)_P gauge theory at X_i=mu J_i and S=s I_3 with canonical kinetic terms; physical flavor norm f_phys^2=6 mu^2",
+  "source_parameters": [
+    "g_F",
+    "g_P",
+    "mu",
+    "s"
+  ],
+  "pole_mass_squared": {
+    "unmixed_quintet": "3*g_F**2*mu**2",
+    "mixed_triplet_minus": "g_F**2*mu**2/2 + 2*g_P**2*mu**2 + g_P**2*s**2 - sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4)/2",
+    "mixed_triplet_plus": "g_F**2*mu**2/2 + 2*g_P**2*mu**2 + g_P**2*s**2 + sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4)/2",
+    "multiplicities": {
+      "unmixed_quintet": 5,
+      "mixed_triplet_minus": 3,
+      "mixed_triplet_plus": 3
+    }
+  },
+  "triplet_mass_block": [
+    [
+      "g_F**2*mu**2",
+      "2*g_F*g_P*mu**2"
+    ],
+    [
+      "2*g_F*g_P*mu**2",
+      "g_P**2*(4*mu**2 + 2*s**2)"
+    ]
+  ],
+  "triplet_invariants": {
+    "trace": "g_F**2*mu**2 + 4*g_P**2*mu**2 + 2*g_P**2*s**2",
+    "determinant": "2*g_F**2*g_P**2*mu**2*s**2",
+    "discriminant": "g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4"
+  },
+  "quark_current_residues": {
+    "mixed_minus": "g_F^2 w_minus",
+    "mixed_plus": "g_F^2 w_plus",
+    "weight_minus": "(-g_F**2*mu**2 + 4*g_P**2*mu**2 + 2*g_P**2*s**2 + sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4))/(2*sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4))",
+    "weight_plus": "(g_F**2*mu**2 - 4*g_P**2*mu**2 - 2*g_P**2*s**2 + sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4))/(2*sqrt(g_F**4*mu**4 + 8*g_F**2*g_P**2*mu**4 - 4*g_F**2*g_P**2*mu**2*s**2 + 16*g_P**4*mu**4 + 16*g_P**4*mu**2*s**2 + 4*g_P**4*s**4))",
+    "sum_rule": "w_minus+w_plus=1",
+    "quintet": "g_F^2 P_5"
+  },
+  "zero_momentum_triplet_current_kernel": "(2*mu**2 + s**2)/(mu**2*s**2)",
+  "contextual_partition": {
+    "frozen": "fivefold quintet pole form, three-plus-three mixed multiplicities, residue sum, and zero-momentum coupling cancellation",
+    "unfrozen": "the two triplet pole locations and their individual quark-current residues depend on g_P/g_F and s/mu",
+    "hostile_pair": {
+      "A": "g_F=g_P=mu=s=1",
+      "B": "g_F=mu=s=1,g_P=2",
+      "weight_A": "5*sqrt(41)/82 + 1/2",
+      "weight_B": "23*sqrt(593)/1186 + 1/2"
+    }
+  },
+  "classification": "The enlarged source freezes the mixed pole grammar and exact sum rules, but not individual triplet residues or widths.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": null,
+  "smallest_exact_falsifier": "Changing only g_P from one to two at g_F=mu=s=1 changes the lower-pole quark-current weight while preserving the declared representation and vacuum.",
+  "remaining_gate": "Select or independently calibrate g_P/g_F and s/mu, derive all messenger and scalar thresholds, and compute every partial width before assigning numerical pole residues or widths.",
+  "checks": {
+    "wp448_dependency_passed": true,
+    "wp484_dependency_passed": true,
+    "triplet_block_is_positive": true,
+    "triplet_determinant_requires_connector_scale": true,
+    "two_mixed_triplet_poles_are_distinct": true,
+    "spectral_weights_sum_to_one": true,
+    "exact_current_spectral_decomposition": true,
+    "zero_momentum_couplings_cancel": true,
+    "quintet_pole_is_unmixed": true,
+    "full_tangent_gram_has_expected_characteristic_polynomial": true,
+    "full_characteristic_multiplicities_are_five_three_three": true,
+    "hostile_coupling_pair_changes_residue_weight": true,
+    "old_wp448_triplet_pole_is_not_preserved": true
+  },
+  "passed": true
+}

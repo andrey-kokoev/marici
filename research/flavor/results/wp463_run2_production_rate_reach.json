@@ -1,0 +1,77 @@
+{
+  "work_package": "WP463",
+  "runtime": {
+    "parton": "0.2.2",
+    "pdf_set": "NNPDF23_lo_as_0130_qed",
+    "archive_url": "https://lhapdfsets.web.cern.ch/current/NNPDF23_lo_as_0130_qed.tar.gz",
+    "archive_sha256": "60d3c1df1c31e5840f91f4217163ae30a256b9291a5adc894882e86607ef5d63",
+    "members": 101
+  },
+  "collider_domain": {
+    "sqrt_s_GeV": 13000.0,
+    "m_triplet_GeV": 5000.0,
+    "tau": 0.14792899408284024,
+    "factorization_scale_GeV": 5000.0,
+    "ordered_PDG_channels": [
+      [
+        1,
+        -3
+      ],
+      [
+        -3,
+        1
+      ],
+      [
+        3,
+        -1
+      ],
+      [
+        -1,
+        3
+      ]
+    ],
+    "integrated_luminosity_fb^-1": 139,
+    "acceptance_ceiling": 1
+  },
+  "pdf_luminosity": {
+    "central": 0.0011785691192713744,
+    "replica_mean": 0.0011747206278413616,
+    "replica_standard_deviation": 0.0007612496512059333,
+    "replica_minimum": 0.00054884345482292,
+    "replica_maximum": 0.006117350025077182
+  },
+  "unit_acceptance_rate_ceiling": {
+    "central_cross_section_fb": 1.9068571554837505e-06,
+    "maximum_replica_cross_section_fb": 9.897521050889838e-06,
+    "central_produced_events": 0.0002650531446122413,
+    "maximum_replica_produced_events": 0.0013757554260736874,
+    "optimistic_ATLAS_generic_limit_fb": 0.08,
+    "limit_to_source_rate_gap": 8082.8320130531665
+  },
+  "contextual_partition": "The mathematical rate map separates positive g_F, but all kaon-allowed points are operationally background-only in the Run-2 finite-count domain.",
+  "classification": "Negative Run-2 production-rate reach; neither selector nor rigidifier.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "instrument": "ATLAS inclusive dijet generic-rate class with official NNPDF2.3 LO source channels; source yield is far below one event before acceptance.",
+  "smallest_exact_falsifier": "Any official PDF replica raises the unit-acceptance source yield to one event or the source cross section above 0.08 fb.",
+  "remaining_gate": "A higher-energy/luminosity flavor-tagged collider with a source-specific likelihood; current Run-2 rate cannot identify g_F.",
+  "sources": [
+    "https://arxiv.org/abs/1910.08447",
+    "https://lhapdfsets.web.cern.ch/current/NNPDF23_lo_as_0130_qed.tar.gz"
+  ],
+  "checks": {
+    "wp461_dependency_passed": true,
+    "wp462_dependency_passed": true,
+    "pdf_archive_digest_verified": true,
+    "all_101_pdf_members_evaluated": true,
+    "all_source_channel_luminosities_positive": true,
+    "central_luminosity_deterministic": true,
+    "maximum_replica_luminosity_deterministic": true,
+    "maximum_replica_event_ceiling_below_one": true,
+    "maximum_replica_event_ceiling_below_two_thousandths": true,
+    "source_rate_below_optimistic_atlas_limit": true,
+    "rate_gap_exceeds_eight_thousand": true
+  },
+  "passed": true
+}

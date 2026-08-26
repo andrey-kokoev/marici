@@ -1,0 +1,47 @@
+{
+  "work_package": "WP404",
+  "title": "Probe-context versus source-knob typing",
+  "affine_source_map": {
+    "H": "M2 + c",
+    "N": "J0 + J1*c"
+  },
+  "dynamic_readout": "(J0 + J1*c)/(M2 + c - omega**2)",
+  "probe_source_jacobian": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ]
+  ],
+  "source_knob_tangent_at_benchmark": [
+    "1",
+    "1"
+  ],
+  "joint_error_jacobian_determinant": "1/(M2 + c)",
+  "dynamic_probe_derivative_at_benchmark": "2/3",
+  "classification": {
+    "omega_or_beam_energy_scan": "executable probe context, not a source intervention",
+    "luminosity_scan": "exposure change, not a source intervention",
+    "affine_c_map": "formal source intervention with no admitted apparatus binding"
+  },
+  "smallest_exact_falsifier": "A nonzero readout derivative with respect to omega coexists with an identically zero source-parameter Jacobian.",
+  "remaining_gate": "Name and independently calibrate an executable apparatus map into c that produces both H and N shifts in one source/readout frame.",
+  "checks": {
+    "probe_scan_changes_dynamic_readout": true,
+    "probe_scan_source_jacobian_zero": true,
+    "source_knob_changes_curvature": true,
+    "source_knob_changes_tadpole": true,
+    "joint_readout_error_rank_two": true,
+    "joint_readout_determinant_nonzero": true,
+    "displacement_only_error_rank_one": true,
+    "one_source_knob_has_one_dimensional_tangent": true
+  },
+  "all_checks_pass": true
+}

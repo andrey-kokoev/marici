@@ -1,0 +1,40 @@
+{
+  "work_package": "WP429",
+  "title": "Threshold preregistration completeness audit",
+  "classification": "WP428 detector ports are frozen but the rival-to-frequency-spectrum arrow is undefined, so response rank cannot yet be computed",
+  "required_spectral_fields": [
+    "contact_spectral_density",
+    "control_to_signal_normalization",
+    "pole_locations",
+    "pole_residues",
+    "pole_widths"
+  ],
+  "missing_from_wp428": [
+    "contact_spectral_density",
+    "control_to_signal_normalization",
+    "pole_locations",
+    "pole_residues",
+    "pole_widths"
+  ],
+  "missing_from_wp130": [
+    "contact_spectral_density",
+    "control_to_signal_normalization",
+    "pole_locations",
+    "pole_residues",
+    "pole_widths"
+  ],
+  "first_missing_arrow": "frozen rival constructor -> frequency-resolved source spectrum",
+  "rank_status": "undefined, not rank-deficient",
+  "smallest_exact_falsifier": "a frozen dependency locator supplying every required spectral field and its map to all four WP428 readouts",
+  "repair_contract": "freeze independently sourced pole locations, widths, residues, contact spectral density, normalization, units, common frame, and uncertainties before convolution",
+  "checks": {
+    "wp428_preregistration_itself_passed": true,
+    "wp428_froze_three_rivals_and_four_readouts": true,
+    "all_required_spectral_fields_are_missing_from_wp428": true,
+    "wp130_lacks_the_same_frequency_resolved_fields": true,
+    "wp130_is_a_three_bin_not_four_port_packet": true,
+    "no_rank_outcome_was_manufactured_in_wp428": true,
+    "response_rank_is_undefined_until_source_spectra_are_frozen": true
+  },
+  "passed": true
+}

@@ -1,0 +1,32 @@
+{
+  "work_package": "WP417",
+  "title": "Higgs quartic measurement-versus-actuation audit",
+  "observed_instrument": "ATLAS triple-Higgs six-b-jet search constraining kappa_4",
+  "executable_commands": [
+    "beam energy",
+    "integrated luminosity",
+    "event selection"
+  ],
+  "measurement_sensitivity": "2*L*(E*b1 + b0)*(E*a1 + E*b1*kappa_4 + a0 + b0*kappa_4)",
+  "command_response": [
+    "L*(2*a1 + 2*b1*kappa_4)*(E*a1 + a0 + kappa_4*(E*b1 + b0))",
+    "(E*a1 + a0 + kappa_4*(E*b1 + b0))**2"
+  ],
+  "source_actuation_jacobian": [
+    "0",
+    "0"
+  ],
+  "conditional_portal_transfer": "g_portal",
+  "classification": "quartic-sensitive measurement instrument exists; executable Standard Model quartic actuator does not",
+  "smallest_falsifier_of_closure": "the command-to-kappa_4 Jacobian is identically zero for existing accelerator settings",
+  "remaining_gate": "an observed source coupling and calibrated command x with nonzero d(kappa_4)/dx in the same physical experiment",
+  "checks": {
+    "quartic_is_measurable_in_a_quartic_sensitive_channel": true,
+    "accelerator_commands_change_expected_records": true,
+    "accelerator_commands_do_not_actuate_the_source_coefficient": true,
+    "measurement_sensitivity_does_not_imply_actuation": true,
+    "a_named_portal_would_supply_the_missing_transfer": true,
+    "portal_transfer_vanishes_when_no_new_coupling_is_admitted": true
+  },
+  "passed": true
+}

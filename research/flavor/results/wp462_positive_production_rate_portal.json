@@ -1,0 +1,47 @@
+{
+  "work_package": "WP462",
+  "domain": "WP447 fixed vacuum, WP453 hostile orientation, and WP449 quark-only pole support.",
+  "signed_DeltaF2_residues": {
+    "triplet": "-1/4",
+    "quintet": "1/4"
+  },
+  "positive_production_weights": {
+    "triplet": "1/4",
+    "quintet": "1/4"
+  },
+  "summed_ds_entrance_width_per_multiplet": "g_F**2*mass/(8*pi)",
+  "conditional_event_yield": "g_F**2*kappa_detector/4",
+  "mass_rate_jacobian": [
+    [
+      "mu",
+      "g_F"
+    ],
+    [
+      "g_F*kappa_detector/2",
+      "0"
+    ]
+  ],
+  "jacobian_determinant": "-g_F**2*kappa_detector/2",
+  "classification": "Source-derived positive production probe and conditional rank-two parameter readout; neither selector nor rigidifier.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "instrument": "A generic dijet rate class exists, but source-specific PDFs, normalization, acceptance, and likelihood are not yet attached.",
+  "smallest_exact_falsifier": "Either positive pole weight differs from 1/4 or the mass-rate Jacobian vanishes for positive detector factor and coupling.",
+  "remaining_gate": "Freeze a source-specific dsbar+sbar d parton-luminosity, acceptance, efficiency, luminosity, and background likelihood to determine kappa_detector and reach.",
+  "checks": {
+    "wp448_dependency_passed": true,
+    "wp453_dependency_passed": true,
+    "wp456_dependency_passed": true,
+    "wp461_dependency_passed": true,
+    "signed_residues_reproduce_wp456": true,
+    "triplet_production_weight_positive": true,
+    "quintet_production_weight_positive": true,
+    "production_weights_do_not_cancel": true,
+    "inclusive_entrance_width_exact": true,
+    "mass_rate_jacobian_exact": true,
+    "conditional_rate_response_rank_two": true,
+    "conditional_inverse_reconstruction_exact": true
+  },
+  "passed": true
+}
