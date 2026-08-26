@@ -1,0 +1,63 @@
+{
+  "work_package": "WP553",
+  "domain": "The six WP535 Ward-complete pole rows, WP550 Omega scale architecture, and WP552 common four-channel operator map.",
+  "scale_coordinates": [
+    "log k_quark",
+    "log k_pole"
+  ],
+  "relative_scale_jacobian": [
+    [
+      "2",
+      "-2"
+    ],
+    [
+      "2",
+      "-2"
+    ],
+    [
+      "2",
+      "-2"
+    ]
+  ],
+  "rank": 1,
+  "kernel": [
+    [
+      "1",
+      "1"
+    ]
+  ],
+  "commuting_square": {
+    "path_one": "Form m_b^2/mu_i^2, m_s^2/mu_i^2, and m_b*m_s/mu_i^2 in the shared lattice frame, then apply the operator map.",
+    "path_two": "Apply one common Omega energy scale to quark and pole masses, form the ratios, then apply the operator map.",
+    "exactly_equal": true
+  },
+  "hostile_split_scale": {
+    "k_quark": 2,
+    "k_pole": 1,
+    "vector_factor": 1,
+    "scalar_factors": [
+      4,
+      4,
+      4
+    ],
+    "outcome": "Each packet remains internally scaled, but the Ward row changes because no common-frame interface joins them."
+  },
+  "classification": "Exact common-scale interface and commuting-square theorem; identification rigidifier, neither selector nor executed calibration.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "Requires quark masses, Omega, pole kernels, and operator mixing/subtraction to be determined on a common ensemble and continuum scheme, or joined by an independently calibrated matching constructor with covariance.",
+  "smallest_exact_falsifier": "Set k_quark=2*k_pole. The vector Ward coefficient is unchanged while all three scalar coefficients multiply by four.",
+  "remaining_gate": "Execute one joint WP542 analysis containing same-ensemble quark-mass renormalization, a*m_Omega, six pole kernels, operator mixing and subtraction, continuum matching, timestamps, disturbances, and full covariance. Source selection remains independent.",
+  "checks": {
+    "dependencies_passed": true,
+    "common_scale_cancels_from_ward_rows": true,
+    "omega_and_operator_paths_commute": true,
+    "relative_scale_map_has_rank_one": true,
+    "common_scale_motion_is_kernel": true,
+    "relative_scale_motion_is_detected": true,
+    "hostile_split_preserves_vector_coefficients": true,
+    "hostile_split_multiplies_scalar_coefficients_by_four": true,
+    "hostile_split_changes_ward_rows": true
+  },
+  "passed": true
+}

@@ -1,0 +1,68 @@
+{
+  "work_package": "WP557",
+  "domain": "The generic nondegenerate sixteen-dimensional physical flavor quotient, locally composed with measured ten and a hypothetical six-coordinate pullback of the WP556 internal Gramian.",
+  "faithful_quotient_coordinate": "physical16",
+  "measured_projection": {
+    "dimension": 10,
+    "rank": 10,
+    "kernel_dimension": 6,
+    "wp52_hostile": {
+      "s12_s13_s23": [
+        "1/5",
+        "1/20",
+        "1/4"
+      ],
+      "sin_delta": "3/5",
+      "cos_delta_branches": [
+        "4/5",
+        "-4/5"
+      ],
+      "measured10_equal": true,
+      "physical16_squared_modulus_differences": {
+        "V21_abs2": "3*sqrt(10)/1250",
+        "V22_abs2": "-3*sqrt(10)/1250",
+        "V31_abs2": "-3*sqrt(10)/1250",
+        "V32_abs2": "3*sqrt(10)/1250"
+      },
+      "smallest_exact_falsifier": "one additional CKM modulus, e.g. |Vtd|^2"
+    }
+  },
+  "gramian_pullback": {
+    "required_missing_map": "phi: physical16 -> six-state WP556 realization",
+    "formula": "G_16=J_phi^T G_6 J_phi",
+    "maximum_rank": 6,
+    "minimum_local_kernel_dimension": 10,
+    "descent_status": "No source-derived phi or physical instrument is admitted."
+  },
+  "contextual_partitions": {
+    "factor_through_measured_ten": {
+      "stacked_rank": 10,
+      "kernel_dimension": 6
+    },
+    "maximally_complementary_witness": {
+      "stacked_rank": 16,
+      "kernel_dimension": 0
+    }
+  },
+  "selector_test": "Even stacked rank sixteen would separate points but would not select a proper admissible subfamily. Selection needs an independent source-derived physical law.",
+  "classification": "Internal source-geometry rigidifier with a physical16 pullback obstruction; neither selector nor standalone faithful physical probe.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "Absent. Requires a source-derived map from physical16 variations to the six internal resolvent coordinates and a measured probe whose Jacobian is complementary to measured ten.",
+  "smallest_exact_falsifier": "Any six-row pullback metric on a sixteen-dimensional domain has rank at most six and kernel dimension at least ten. The explicit factor-through witness leaves the measured-ten stacked rank at ten.",
+  "remaining_gate": "Derive phi from admitted flavor dynamics, compute its full weak-basis-invariant Jacobian on the fitted domain, attach a physical instrument and covariance, and prove stacked rank sixteen robustly. A separate transverse source law is still required for selection.",
+  "checks": {
+    "dependencies_passed": true,
+    "physical_coordinate_dimension_is_sixteen": true,
+    "measured_projection_rank_is_ten": true,
+    "six_state_pullback_rank_is_at_most_six": true,
+    "six_state_pullback_has_ten_dimensional_kernel": true,
+    "factor_through_probe_does_not_improve_measured_rank": true,
+    "factor_through_stack_retains_six_dimensional_kernel": true,
+    "complementary_probe_can_reach_rank_sixteen": true,
+    "hostile_pair_collapses_in_measured_ten": true,
+    "factor_through_probe_also_collapses_hostile": true,
+    "complementary_probe_detects_hostile": true
+  },
+  "passed": true
+}
