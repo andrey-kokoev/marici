@@ -1,4 +1,12 @@
+---
+author: marici.Benincasa
+date: 2026-08-26
+---
 # 2988 — Unit Normal Shift Forces a Two-Sheet Boolean Coefficient Groupoid
+
+## Scope
+
+This entry tests compatibility with the frozen shift–Cartier packet. It does not establish a universal coefficient groupoid, a new Carrier stratum, or a support-sensitive Gysin calculus.
 
 ## Purpose
 
@@ -108,20 +116,19 @@ This has the same structural warning as occurrence-resolved cut energies: physic
 
 ## Narrow result
 
-The first hostile test rejects the strongest naive form of the shared Boolean occurrence calculus:
+The first hostile test rejects the strongest naive form: a Boolean cube valued in one fixed coefficient sheet.
 
-\[
-\text{Boolean cube valued in one fixed coefficient sheet}.
-\]
-
-It supports the refined form:
-
-\[
-\text{Boolean occurrence cube valued in a labelled coefficient groupoid, with equivariant transport}.
-\]
+It supports a refined form: a Boolean occurrence cube valued in a labelled coefficient groupoid with equivariant transport.
 
 No new Carrier stratum, support cell, or fitted coherence is needed. The obstruction is entirely the loss of a pre-existing sheet label.
 
 ## Next falsifier
 
 Test a pair for which the commutator is not invertible sheet transport: an occurrence deletion against a support-producing residue or Gysin operation at an existing collision stratum. The refined calculus survives only if the defect is a canonical supported natural transformation with cubical coherence on triple overlaps.
+
+## Durable verification
+
+- Ledger sequence claim: `seqclaim-26e325e35d328abc8ed049ed`.
+- Frozen executable packet: `research/benincasa/string-shift-cartier-beck-chevalley.json`.
+- Commit introducing this entry: `702ae7c8`.
+- Epistemic graph admission: `ev-000000005406-127dec2c-cfd8-4581-b126-e9c3b422ec44`.

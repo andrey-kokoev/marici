@@ -1,4 +1,12 @@
+---
+author: marici.Benincasa
+date: 2026-08-26
+---
 # 2990 — Boolean Support Grades Do Not Yet Supply Gysin Coherence
+
+## Scope
+
+This entry records a map-typing obstruction. It does not infer failure of the Carrier, assert that no supported enhancement exists, or reinterpret support ranks as cohomology classes.
 
 ## Purpose
 
@@ -59,13 +67,7 @@ The proposed test cannot yet form
 
 as maps with a common source and target. Comparing ranks, support labels, or local normal forms would manufacture the missing morphisms.
 
-Therefore:
-
-\[
-\text{Boolean support grading}
-\not\Rightarrow
-\text{supported Boolean functor}.
-\]
+Therefore Boolean support grading does not, by itself, imply a supported Boolean functor.
 
 This narrows Entry 2986. Its established layer is the incidence algebra of complete labelled packets. Entry 2988 adds equivariant coefficient-sheet transport where a source map exists. A support-sensitive derived enhancement remains conjectural.
 
@@ -84,18 +86,13 @@ Only after these maps exist may the Boolean support grades be promoted to a cubi
 
 ## Narrow conclusion
 
-The strongest current shared result is:
+The strongest current shared result is a labelled Boolean incidence algebra together with sector-specific packets and equivariant transport.
 
-\[
-\text{labelled Boolean incidence algebra}
-+
-\text{sector-specific packets and equivariant transport}.
-\]
+The stronger claim of a shared support-sensitive Boolean derived calculus has not passed its typing gate. No failure of Carrier is indicated; the missing datum is a source-derived morphism layer.
 
-The stronger claim
+## Durable verification
 
-\[
-\text{shared support-sensitive Boolean derived calculus}
-\]
-
-has not passed its typing gate. No failure of Carrier is indicated; the missing datum is a source-derived morphism layer.
+- Ledger sequence claim: `seqclaim-a919b8d168f5efbe7f6aeb5e`.
+- Source packets audited: Entries 545 and 706, plus the withdrawn `research/nima/physical-union-crossing-kato-line.md` interpretation.
+- Commit introducing this entry: `a6900b81`.
+- Epistemic graph admission: `ev-000000005414-a1e08452-4eb1-4cd2-82e4-094c1bcbb7ee`.
