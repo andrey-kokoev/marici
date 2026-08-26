@@ -1,0 +1,39 @@
+{
+  "schema": "marici.sontag.deutschian_live_authority_binding_variation.v1",
+  "passed": 11,
+  "total": 11,
+  "all_passed": true,
+  "checks": {
+    "packages_are_byte_identical": true,
+    "packages_have_same_digest": true,
+    "pure_computation_is_identical": true,
+    "live_epoch_executes_once": true,
+    "revoked_epoch_rejects_without_effect": true,
+    "rejection_is_typed_stale_epoch": true,
+    "only_live_authority_varies": true,
+    "deleting_live_observation_executes_stale_copy": true,
+    "copying_never_refreshes_epoch": true,
+    "physical_capability_is_held_fixed": true,
+    "authority_is_not_physical_capability": true
+  },
+  "package_sha256": "20bb445c58f74956c1de24abd8242093c91055864cd076d466699f268e6deb8f",
+  "live_world": {
+    "pure_output": 12,
+    "effect_count": 1,
+    "status": "executed",
+    "reason": "live_epoch_match"
+  },
+  "revoked_world": {
+    "pure_output": 12,
+    "effect_count": 0,
+    "status": "rejected",
+    "reason": "stale_epoch"
+  },
+  "deleted_live_observer_hostile": {
+    "pure_output": 12,
+    "effect_count": 1,
+    "status": "executed",
+    "reason": "live_epoch_match"
+  },
+  "claim_boundary": "Hard-to-vary result for conforming evaluators with trustworthy live epoch observation; no physical impossibility claim outside that domain."
+}
