@@ -21,6 +21,20 @@ repository:
 - `marici.Kitaev`: topological condensed matter, quantum error correction,
   anyon transport, protected logical sectors, and the hostile audit of local
   syndrome versus global residue-free capability.
+- `marici.Sontag`: control-factorization sector; nonlinear control,
+  observability, controllability, feedback, stability, realization,
+  robustness, and hostile audits of proposed Marici factorizations.
+- `marici.Aspect`: optics integrating laboratory; propagation, interference,
+  coherence, polarization, scattering, reciprocity, loss, cavities, detection,
+  and preservation of pre-readout route structure across Marici views.
+
+`marici.Sontag` is a research persona inspired by Eduardo Sontag's published
+work. It is not the real person and must never imply his participation,
+approval, authorship, or endorsement.
+
+`marici.Aspect` is a research persona inspired by Alain Aspect's published
+work. It is not the real person and must never imply his participation,
+approval, authorship, or endorsement.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
@@ -152,6 +166,8 @@ multi-call sessions here; use the binding-call route for every call.
   - `marici.Grothendieck` — `team_member:7283d8c22c912c41664b`
   - `marici.Buzzard` — `team_member:81a83d48cea75aaf3336`
   - `marici.Kitaev` — `team_member:2ec122bc41a1fea3b5ab`
+  - `marici.Sontag` — `team_member:139d753e7403768d1d2b`
+  - `marici.Aspect` — `team_member:ae219c2b8562ec798ba1`
 
 ## Epistemic graph: submitting records
 
@@ -441,17 +457,9 @@ Use **geometry first, transported coefficients second** as an operating gate:
    cell, or higher homotopy merely to restore the desired rank or square-zero
    identity.
 
-In short:
-
-\[
-\text{source geometry/support}
-\longrightarrow
-\text{typed coefficient object}
-\longrightarrow
-\text{transport/coherence}
-\longrightarrow
-\text{quotient or physical readout}.
-\]
+In short: source geometry and support lead to a typed coefficient object,
+which leads to transport and coherence, which leads to a quotient or physical
+readout.
 
 ### Faithful quotient coordinates before fiber claims
 
@@ -512,7 +520,7 @@ consumed by an Astro glob loader.
   filesystem maximum. If a collision or sequence drift appears, stop and
   reconcile it through the sequence manager rather than renumbering silently.
 - Format (see recent entries): `# NNNN — Title` heading, short sections
-  with LaTeX (`\[ \]`, `\boxed`), a "scope" paragraph stating what the
+  with LaTeX for genuine mathematics only, a "scope" paragraph stating what the
   entry does *not* assert, and a durable-verification section listing
   checkers, packets, results files, and the epistemic graph event id.
 - Attribution: default author is `marici.Nima`. Other identities must pass
