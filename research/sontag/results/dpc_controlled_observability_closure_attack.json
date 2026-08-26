@@ -1,0 +1,50 @@
+{
+  "schema": "marici.sontag.dpc_controlled_observability_closure_attack.v1",
+  "passed": 17,
+  "total": 17,
+  "all_passed": true,
+  "checks": {
+    "passive_clock_fibers_are_exactly_fivefold": true,
+    "known_zero_reference_is_jointly_injective": true,
+    "known_reference_decoder_recovers_every_source": true,
+    "unknown_reference_leaves_fivefold_stabilizer": true,
+    "reset_makes_terminal_state_certain": true,
+    "reset_does_not_separate_predecessor_traces": true,
+    "observation_history_policy_cannot_leak_hidden_state": true,
+    "oracle_policy_would_leak_hidden_state": true,
+    "replacement_separates_new_b_target": true,
+    "replacement_fails_blackwell_preservation": true,
+    "one_step_instruments_are_blackwell_equivalent": true,
+    "blackwell_equivalent_instruments_have_distinct_future_traces": true,
+    "both_closures_are_idempotent": true,
+    "bare_terminal_readout_hides_closure_order_result": true,
+    "residual_capability_separates_closure_packets": true,
+    "two_state_toggle_is_not_idempotent": true,
+    "coalgebraic_trace_retains_temporal_alternation": true
+  },
+  "passive_fiber_size": [
+    5
+  ],
+  "unknown_reference_fiber_size": [
+    5
+  ],
+  "blackwell_counterpair": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "toggle_trace": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+  ],
+  "verdict": "Trace observability survives as the dynamic gate. Blackwell preservation is necessary only for the terminal experiment shadow and is insufficient for process preservation. A bare idempotent closure is neither sufficient state nor a universal model of dynamics; a provenance-bearing packet survives only relative to declared future interventions, while coalgebraic trace semantics cleanly covers autonomous alternation."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "marici.sontag.source_derived_repair_margin.v1",
+  "passed": 14,
+  "total": 14,
+  "all_passed": true,
+  "checks": {
+    "initial_margin_is_exactly_zero": true,
+    "unrepaired_faulty_growth_is_rejected": true,
+    "repair_uses_source_reference": true,
+    "repair_preserves_source": true,
+    "repair_restores_positive_margin": true,
+    "one_fault_growth_after_repair_is_admitted": true,
+    "admitted_growth_ends_at_zero_margin": true,
+    "reset_makes_visible_bits_zero": true,
+    "reset_erases_the_reference": true,
+    "weighted_audit_counts_erasure_as_defect": true,
+    "reset_has_negative_true_margin": true,
+    "reset_cannot_authorize_new_generation": true,
+    "repair_passes_original_target_replay": true,
+    "reset_cannot_even_state_target_replay": true
+  },
+  "margins": {
+    "initial": 0,
+    "repaired": 1,
+    "erased": -1,
+    "repaired_then_grown": 0
+  },
+  "verdict": "Generative command capacity may increase only when the post-command weighted defect margin remains nonnegative. Reset-based erasure is not repair: it deletes the source reference required for replay, incurs a lost-obligation defect, and cannot authorize subsequent generation."
+}
