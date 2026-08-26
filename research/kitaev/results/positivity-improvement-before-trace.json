@@ -1,0 +1,63 @@
+{
+  "schema": "marici.kitaev.positivity_improvement_before_trace.v1",
+  "status": "pass",
+  "one_dimensional_strict_overlap": "equivalent to scalar nonvanishing",
+  "real_ray_improvement": "equivalent to positive scalar multiplier",
+  "quarter_turn_hostile": {
+    "unitary": true,
+    "completely_positive": true,
+    "unital": true,
+    "trace_preserving": true,
+    "invertible": true,
+    "choi_psd_rank": 1,
+    "nonzero_state_overlap": "0",
+    "output_on_cone_boundary": true
+  },
+  "primitive_fixture": {
+    "epsilon": "1/3",
+    "interior_floor": "1/6",
+    "positive_definite_output": true,
+    "authorized_theta_constructor": false
+  },
+  "completion_hostile": {
+    "epsilon_N": "1/N",
+    "interior_margin": "1/(2N)",
+    "sample_margins": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/16",
+      "1/32"
+    ],
+    "uniform_margin": false
+  },
+  "one_dimensional_samples": [
+    {
+      "multiplier": "2",
+      "nonzero_overlap": true,
+      "positive_ray_improving": true
+    },
+    {
+      "multiplier": "1/5",
+      "nonzero_overlap": true,
+      "positive_ray_improving": true
+    },
+    {
+      "multiplier": "0",
+      "nonzero_overlap": false,
+      "positive_ray_improving": false
+    },
+    {
+      "multiplier": "-1",
+      "nonzero_overlap": true,
+      "positive_ray_improving": false
+    }
+  ],
+  "required_route": "source higher-rank correspondence -> scalar trace",
+  "checker_sha256": "699468d7d8abe8b5138d71eeaa8c5837f25606cb20dc231169705642d256fa64",
+  "scope_exclusions": [
+    "theta/Tate source correspondence",
+    "uniform completion theorem",
+    "RH"
+  ]
+}
