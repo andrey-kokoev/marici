@@ -1,6 +1,7 @@
 """Exact cross-run witness-splicing hostile for a calibrated optical decoder."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 
 
@@ -30,24 +31,39 @@ def local_validity(packet):
     }
 
 
-def joint_validity(packet):
+def joint_verdict(packet):
     keys = ["source_certificate", "port_record", "calibration", "decoder", "claim"]
     if packet.get("frame_transport"):
-        keys.append("frame_transport")
+        keys.extend(["frame_transport", "source_connection"])
     run_ids = {packet[key]["run_id"] for key in keys}
     record_epoch = packet["port_record"]["epoch"]
     decoder_epoch = packet["decoder"]["epoch"]
     transport = packet.get("frame_transport")
     same_frame = record_epoch == decoder_epoch == packet["calibration"]["epoch"]
-    coherent_transport = bool(
-        transport
-        and transport["certified"]
-        and transport["from_epoch"] == record_epoch
-        and transport["to_epoch"] == decoder_epoch == packet["calibration"]["epoch"]
-    )
     decoder_matches = packet["decoder"]["version"] == packet["calibration"]["decoder_version"]
     source_matches = packet["source_certificate"]["claimed_source"] == packet["claim"]["source"]
-    return len(run_ids) == 1 and (same_frame or coherent_transport) and decoder_matches and source_matches
+    if len(run_ids) != 1 or not decoder_matches or not source_matches:
+        return "reject"
+    if same_frame:
+        return "accept"
+    if not transport:
+        return "reject"
+    contract = packet.get("source_connection")
+    revision_binding = transport.get("revision_binding")
+    if not contract or not revision_binding:
+        return "unavailable"
+    coherent_transport = bool(
+        transport["certified"]
+        and transport["from_epoch"] == record_epoch
+        and transport["to_epoch"] == decoder_epoch == packet["calibration"]["epoch"]
+        and revision_binding["connection_id"] == contract["connection_id"]
+        and revision_binding["revision"] == contract["revision"]
+    )
+    return "accept" if coherent_transport else "reject"
+
+
+def joint_validity(packet):
+    return joint_verdict(packet) == "accept"
 
 
 def main():
@@ -71,8 +87,11 @@ def main():
         "calibration": {"run_id": "e3", "epoch": "epoch-0", "phase5": 0, "decoder_version": "decoder-e0"},
         "decoder": {"run_id": "e3", "epoch": "epoch-0", "version": "decoder-e0"},
         "claim": {"run_id": "e3", "source": 1, "authorized": True, "scope": "band-0-19"},
-        "frame_transport": {"run_id": "e3", "from_epoch": "epoch-1", "to_epoch": "epoch-0", "delta": 1, "certified": True},
+        "source_connection": {"run_id": "e3", "connection_id": "phase5-connection", "revision": "rev-7"},
+        "frame_transport": {"run_id": "e3", "from_epoch": "epoch-1", "to_epoch": "epoch-0", "delta": 1, "certified": True, "revision_binding": {"connection_id": "phase5-connection", "revision": "rev-7"}},
     }
+    deleted_revision = deepcopy(transported)
+    del deleted_revision["frame_transport"]["revision_binding"]
     spliced_local = local_validity(spliced)
     honest_local = local_validity(honest)
     checks = {
@@ -84,6 +103,10 @@ def main():
         "epochs_expose_the_frame_conflict": spliced["port_record"]["epoch"] != spliced["calibration"]["epoch"],
         "honest_packet_passes_local_and_joint_checks": all(honest_local.values()) and joint_validity(honest),
         "certified_same_run_frame_transport_is_accepted": all(local_validity(transported).values()) and joint_validity(transported),
+        "cross_run_splice_is_rejected_by_same_contract": joint_verdict(spliced) == "reject",
+        "deleting_revision_binding_makes_transport_unavailable": joint_verdict(deleted_revision) == "unavailable",
+        "deletion_does_not_fall_back_to_literal_epoch_equality": deleted_revision["port_record"]["epoch"] != deleted_revision["calibration"]["epoch"] and joint_verdict(deleted_revision) != "reject",
+        "deletion_does_not_silently_accept_transport": not joint_validity(deleted_revision),
         "transport_maps_shifted_record_to_epoch_zero_frame": effective_record(transported) == (1, 1),
         "authorization_does_not_repair_missing_joint_witness": spliced["claim"]["authorized"] and not joint_validity(spliced),
         "test_does_not_claim_a_new_marici_primitive": True,
@@ -97,6 +120,12 @@ def main():
         "spliced_joint_validity": joint_validity(spliced),
         "honest_joint_validity": joint_validity(honest),
         "transported_joint_validity": joint_validity(transported),
+        "joint_verdicts": {
+            "spliced": joint_verdict(spliced),
+            "honest_same_epoch": joint_verdict(honest),
+            "certified_transport": joint_verdict(transported),
+            "deleted_revision_binding": joint_verdict(deleted_revision),
+        },
         "spliced_claim": 1,
         "physical_source": 17,
         "typed_boundary": {
@@ -104,7 +133,7 @@ def main():
             "constructor": "one common execution plus either one frame or a certified coherent frame transport must jointly realize every witness",
             "detector": "marginal schema checks followed by run, epoch, decoder-version, and source-claim joins",
             "hostile": "valid epoch-one decoder evidence is spliced onto an epoch-zero record from another run",
-            "completion": "the finite hostile establishes a required invariant test, not novelty of a Marici primitive or a universal evidence architecture",
+            "completion": "the finite hostile establishes a required invariant test, including unavailable-on-missing-revision semantics, not novelty of a Marici primitive or a universal evidence architecture",
         },
     }
     out = Path(__file__).parents[1] / "results" / "cross_run_optical_witness_splicing.json"
