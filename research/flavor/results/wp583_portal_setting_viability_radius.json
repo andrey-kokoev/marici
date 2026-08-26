@@ -1,0 +1,52 @@
+{
+  "work_package": "WP583",
+  "status": "PASS",
+  "checks": {
+    "r_minus_is_exact": true,
+    "r_plus_is_exact": true,
+    "q_minus_is_exact": true,
+    "q_plus_is_exact": true,
+    "hostile_common_radius_is_one_sixteenth": true,
+    "interior_step_is_inside_common_radius": true,
+    "q_boundary_kills_strict_quartic_stability": true,
+    "r_lower_boundary_hits_blind_point": true,
+    "r_upper_boundary_hits_zero_sm_production": true
+  },
+  "admitted_source_domain": "0<z<1, lambda_s>0, lambda_H>0",
+  "domain_typing": {
+    "z_positive": "nonzero source sensitivity",
+    "z_below_one": "nonzero Standard Model production coupling kappa_t^2=1-z",
+    "lambda_s_positive": "strict boundedness on the declared isolated large-s ray"
+  },
+  "common_symmetric_radius": "0<h<min(z,1-z,q), q=lambda_s*z^2/lambda_H",
+  "compiled_responses": {
+    "r_minus": [
+      "-h",
+      "0"
+    ],
+    "r_plus": [
+      "h",
+      "0"
+    ],
+    "q_minus": [
+      "0",
+      "-h"
+    ],
+    "q_plus": [
+      "0",
+      "h"
+    ]
+  },
+  "rational_hostile": {
+    "base": {
+      "z": "1/4",
+      "lambda_s": "1",
+      "lambda_H": "1"
+    },
+    "radius": "1/16",
+    "interior_step": "1/32",
+    "boundary_falsifier": "h=q=1/16 sends the negative-q endpoint to lambda_s'=0"
+  },
+  "classification": "exact source-side local viability radius; neither selector nor detector instrument",
+  "remaining_gate": "a complete source potential, phenomenological reach domain, and publication-bound mixed-scalar detector transport"
+}

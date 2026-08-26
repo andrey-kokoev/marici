@@ -1,0 +1,23 @@
+{
+  "work_package": "WP586",
+  "status": "PASS",
+  "checks": {
+    "weight_is_quadratic": true,
+    "portal_tangent_contains_unfixed_completion": true,
+    "d4_only_hostile_response_is_two": true,
+    "aligned_completion_response_is_four": true,
+    "cancelling_completion_response_is_zero": true,
+    "same_d4_component_in_all_completions": true
+  },
+  "generator_grammar": "M=a+c*b+d*e with c=D4 and d one omitted correlated generator coordinate",
+  "d4_partial": "2*a*b + 2*b**2*c + 2*b*d*e",
+  "portal_tangent": "2*a*b + 2*alpha*e*(a + b*c + d*e) + 2*b**2*c + 2*b*d*e",
+  "hostile_responses": {
+    "d4_only": "2",
+    "aligned_completion": "4",
+    "cancelling_completion": "0"
+  },
+  "classification": "D4 score is an executable source partial derivative but neither a portal tangent nor an instrument",
+  "smallest_exact_falsifier": "at M=1+c+d, alpha=1 gives response 4 and alpha=-1 gives response 0 although both have dc/dq=1",
+  "remaining_gate": "derive the full portal tangent in (D3,D4,CT1,CT2,CT3,widths,branching fractions,heavy-state amplitudes) before detector transport"
+}

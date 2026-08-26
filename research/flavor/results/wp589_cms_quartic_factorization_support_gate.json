@@ -1,0 +1,29 @@
+{
+  "work_package": "WP589",
+  "status": "PASS",
+  "checks": {
+    "cms_quartic_row_annihilates_lift_kernel": true,
+    "cms_quartic_row_factors_through_known_projection": true,
+    "cms_kappa_t_one_slice_forces_z_zero": true,
+    "quartic_lambda_response_vanishes_on_cms_slice": true,
+    "combined_source_rank_on_cms_slice_is_one": true,
+    "source_sensitive_domain_has_empty_cms_overlap": true
+  },
+  "detector_factorization_gate": "passes algebraically for a pure kappa_4 row",
+  "source_support_gate": "fails because the released kappa_t=1 slice pulls back to z=0",
+  "restricted_source_jacobian": [
+    [
+      "-1",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ]
+  ],
+  "restricted_rank": 1,
+  "contextual_partition": "on the admitted CMS-source intersection, lambda_s remains invisible and q is fixed to zero",
+  "classification": "physical quartic readout on an incompatible slice; neither selector nor rigidifier",
+  "smallest_exact_falsifier": "kappa_t=1 implies z=0 and partial kappa_4/partial lambda_s=z^2/lambda_H=0",
+  "remaining_gate": "publish the factorized calibrated quartic response on a nonzero-mixing domain, or publish the complete omitted-coordinate tangent and detector transport there"
+}

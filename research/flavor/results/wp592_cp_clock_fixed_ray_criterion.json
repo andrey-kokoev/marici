@@ -1,0 +1,40 @@
+{
+  "work_package": "WP592",
+  "status": "PASS",
+  "checks": {
+    "x_fixed_ray_is_exact": true,
+    "r_fixed_ray_is_exact": true,
+    "selected_ratio_is_D_over_C": true,
+    "overall_gauge_magnitude_cancels_from_ratio": true,
+    "fixed_ray_jacobian_is_full_rank": true,
+    "fixed_ray_determinant_is_positive": true,
+    "fixed_line_hostile_leaves_r_free": true,
+    "coefficient_hostile_changes_prediction": true
+  },
+  "reduced_coordinates": "x=y^2/g^2 and r=chi/y^2",
+  "beta_system": {
+    "beta_x": "2*g2*x*(A*x - B)",
+    "beta_r": "g2*r*(-2*A*x + 2*B + C*r*x - D*x)"
+  },
+  "isolated_fixed_ray": {
+    "x_star": "B/A",
+    "r_star": "D/C",
+    "jacobian": [
+      [
+        "2*B*g2",
+        "0"
+      ],
+      [
+        "-2*A*D*g2/C",
+        "B*D*g2/A"
+      ]
+    ],
+    "determinant": "2*B**2*D*g2**2/A"
+  },
+  "hard_to_vary_content": "once A,B,C,D are derived from frozen field content and scheme, changing r_star requires changing the beta-function law",
+  "remaining_variability": "choosing C or D after inspecting flavor data merely moves the fit into beta-function coefficients",
+  "classification": "exact acceptance architecture for a hard-to-vary CP/flavor-clock ratio; not yet a realized flavor source",
+  "smallest_exact_falsifier": "C=D=0 gives a fixed line in r and destroys isolation; C=1,D=1 versus C=1,D=2 changes r_star from one to two",
+  "experiment_after_realization": "joint calibrated measurement of s^2/f^2 must equal D/(6*C) and survive threshold and detector transport",
+  "full_flavor_gate": "derive the complete anomaly-free beta system and enough isolated ray relations to constrain the remaining physical16 moduli"
+}
