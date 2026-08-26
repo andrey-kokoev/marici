@@ -1,0 +1,75 @@
+{
+  "work_package": "WP499",
+  "domain": "complete renormalizable O(2)-invariant connector potential quadratic in R=SS^T around the invertible isotropic vacuum S=s I",
+  "potential_coordinates": {
+    "quadratic": [
+      "u*a",
+      "v*(b+c)"
+    ],
+    "quartic": [
+      "lambda_1*a^2",
+      "lambda_2*a*(b+c)",
+      "lambda_3*(b+c)^2",
+      "lambda_4*(d^2+e^2)",
+      "lambda_5*((b-c)^2+4*f^2)"
+    ]
+  },
+  "isotropic_stationarity": {
+    "u": "-2*s**2*(lambda_1 + lambda_2)",
+    "v": "-s**2*(lambda_2 + 4*lambda_3)"
+  },
+  "physical_hessian": {
+    "scalar_block": [
+      [
+        "8*lambda_1*s**2",
+        "4*sqrt(2)*lambda_2*s**2"
+      ],
+      [
+        "4*sqrt(2)*lambda_2*s**2",
+        "16*lambda_3*s**2"
+      ]
+    ],
+    "scalar_eigenvalues": [
+      "4*s**2*(lambda_1 + 2*lambda_3 - sqrt(lambda_1**2 - 4*lambda_1*lambda_3 + 2*lambda_2**2 + 4*lambda_3**2))",
+      "4*s**2*(lambda_1 + 2*lambda_3 + sqrt(lambda_1**2 - 4*lambda_1*lambda_3 + 2*lambda_2**2 + 4*lambda_3**2))"
+    ],
+    "vector_doublet_mass_squared": "4*lambda_4*s**2",
+    "tensor_doublet_mass_squared": "16*lambda_5*s**2",
+    "gauge_zero_multiplicity": 3
+  },
+  "strict_local_stability_cone": [
+    "s>0",
+    "lambda_1>0",
+    "4*lambda_1*lambda_3-lambda_2^2>0",
+    "lambda_4>0",
+    "lambda_5>0"
+  ],
+  "full_so3_slice": {
+    "lambda_1": "lambda",
+    "lambda_2": "0",
+    "lambda_3": "lambda/2",
+    "lambda_4": "2*lambda",
+    "lambda_5": "lambda/2",
+    "physical_mass_squared": "8*lambda*s^2 with multiplicity six"
+  },
+  "classification": "Exact locally stable connector-spectrum completion for the symmetry-compatible five-coupling source; it supplies conditional pole coordinates but selects none of the five quartics.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": null,
+  "smallest_exact_falsifier": "The physical Hessian depends on a two-by-two scalar block and two independent doublet masses, so the old sixfold-degenerate connector pole survives only on the full-SO(3) coefficient slice that is incompatible with the frozen entrance vertex.",
+  "remaining_gate": "Derive or freeze the five connector couplings independently, include their beta functions and mixed scalar portals, diagonalize the complete scalar system, and only then recompute residues and total widths in detector units.",
+  "checks": {
+    "wp484_dependency_passed": true,
+    "wp498_dependency_passed": true,
+    "isotropic_vacuum_is_stationary_after_two_mass_relations": true,
+    "mode_basis_is_orthonormal": true,
+    "projected_hessian_has_exact_irrep_blocks": true,
+    "three_antisymmetric_modes_are_exact_zeros": true,
+    "antisymmetric_modes_do_not_mix": true,
+    "scalar_determinant_is_exact": true,
+    "vector_doublet_mass_is_exact": true,
+    "tensor_doublet_mass_is_exact": true,
+    "full_so3_slice_recovers_sixfold_wp483_mass": true
+  },
+  "passed": true
+}

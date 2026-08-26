@@ -1,0 +1,50 @@
+{
+  "work_package": "WP501",
+  "domain": "real externally distinguishable entrance preparations H with connector tree map P=H S and invertible connector vacuum S",
+  "rank_theorem": {
+    "statement": "rank(P)=rank(H) for invertible S; a faithful three-direction tree port exists exactly when rank(H)=3",
+    "minimum_external_channel_count": 3,
+    "three_channel_gram_determinant": "det(P^T P)=det(H)^2 det(S)^2",
+    "general_channel_criterion": "det(H^T H) is the sum of squares of all three-by-three row minors"
+  },
+  "hostile_cases": {
+    "one_channel_maximum_rank": 1,
+    "two_independent_channels_rank": 2,
+    "two_channel_blind_direction": [
+      "0",
+      "0",
+      "1"
+    ],
+    "shared_up_down_rank": 1
+  },
+  "minimal_sufficient_packet": {
+    "preparation_matrix": "H=I_3",
+    "vacuum_tree_map": "P=s I_3",
+    "tree_gram": "s^2 I_3",
+    "rank": 3
+  },
+  "selector_rigidifier_split": "Rank three is the faithfulness condition. Isotropy additionally requires H^T H proportional to I and is a stronger rigidifier condition; neither condition selects its common normalization.",
+  "physical_typing": "The row labels must remain distinguishable at preparation and readout. Three hidden internal copies that are coherently summed still implement one channel, not three.",
+  "classification": "Exact necessary-and-sufficient constructor theorem for repairing WP500's tree-port kernel; the theorem specifies a source capability but does not establish an existing physical realization.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": null,
+  "smallest_exact_falsifier": "Any entrance preparation matrix H with rank below three leaves a nonzero adjoint-port vector in ker(H), even when the connector frame S is invertible.",
+  "remaining_gate": "Name a physically admitted three-channel preparation whose labels survive to independently calibrated readouts, derive its gauge-invariant renormalizable vertices, and test whether detector-level response retains rank three under mixing, widths, and resolution.",
+  "checks": {
+    "wp500_dependency_passed": true,
+    "one_channel_rank_is_at_most_one": true,
+    "two_channel_rank_is_at_most_two": true,
+    "two_channel_hostile_blind_vector_is_exact": true,
+    "three_channel_gram_determinant_identity_is_exact": true,
+    "four_channel_cauchy_binet_identity_is_exact": true,
+    "shared_up_down_preparations_have_rank_one": true,
+    "shared_up_down_gram_has_rank_one": true,
+    "three_orthogonal_preparations_have_rank_three": true,
+    "three_orthogonal_preparations_give_isotropic_gram": true,
+    "three_orthogonal_gram_determinant_is_exact": true,
+    "generic_weighted_full_rank_gram_is_positive_diagonal": true,
+    "full_rank_does_not_imply_isotropy": true
+  },
+  "passed": true
+}

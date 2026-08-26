@@ -1,0 +1,59 @@
+{
+  "work_package": "WP503",
+  "domain": "neutral CP-even row-order-parameter subspace of the two entrance triplets, before charged and CP-odd electroweak completion",
+  "potential": "lambda_u (u.u-a^2)^2 + lambda_d (d.d-b^2)^2 + kappa (u.d)^2",
+  "positive_parameter_domain": [
+    "a>0",
+    "b>0",
+    "lambda_u>0",
+    "lambda_d>0",
+    "kappa>0"
+  ],
+  "vacuum": {
+    "u": [
+      "0",
+      "0",
+      "a"
+    ],
+    "d": [
+      "b",
+      "0",
+      "0"
+    ],
+    "energy": "0",
+    "relation": "u and d are nonzero and orthogonal"
+  },
+  "hessian": {
+    "rank": 3,
+    "gauge_kernel_dimension": 3,
+    "physical_mass_squared": {
+      "u_radial": "8*a**2*lambda_u",
+      "d_radial": "8*b**2*lambda_d",
+      "relative_angle": "2*kappa*(a**2 + b**2)"
+    }
+  },
+  "selector_rigidifier_split": "The positive source rigidifies the relative angle to orthogonality and the norms to the declared coefficients a and b. It does not select a, b, their ratio, or any flavor clock from deeper dynamics.",
+  "classification": "Exact stable noncollinear entrance vacuum modulo the gauged row orbit on the neutral CP-even row subspace; not yet a complete electroweak vacuum theorem.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": null,
+  "smallest_exact_falsifier": "The six-by-six Hessian has exactly three zeros, and they are exactly the three common row-rotation gauge tangents; its three physical eigenvalues are strictly positive on the declared domain.",
+  "remaining_gate": "Lift this source to the complete complex electroweak-doublet field space, include every symmetry-allowed charged and CP-odd invariant, prove that no additional physical zero or tachyon survives, and then combine its scalar mixing with the fourteen gauge poles and detector response.",
+  "checks": {
+    "wp502_dependency_passed": true,
+    "vacuum_has_zero_energy": true,
+    "vacuum_is_stationary": true,
+    "vacuum_vectors_have_declared_norms": true,
+    "vacuum_vectors_are_orthogonal": true,
+    "potential_is_sum_of_three_positive_coefficient_squares": true,
+    "hessian_rank_is_three": true,
+    "hessian_nullity_is_three": true,
+    "row_gauge_tangent_rank_is_three": true,
+    "all_row_gauge_tangents_are_hessian_zeros": true,
+    "row_gauge_tangents_span_entire_hessian_kernel": true,
+    "physical_mode_basis_is_orthonormal": true,
+    "physical_modes_are_transverse_to_gauge_orbit": true,
+    "physical_hessian_is_exact_positive_diagonal": true
+  },
+  "passed": true
+}

@@ -1,0 +1,48 @@
+{
+  "work_package": "WP494",
+  "domain": "WP484 connector S and adjoint triplet X as SO(3)_P vectors, with the WP493 radial quartic basis",
+  "exact_gauge_contraction": {
+    "component_form": "sum_a (s^T L_a x)^2=|s|^2|x|^2-(s dot x)^2",
+    "matrix_form": "Tr(G_S) Tr(G_X)-Tr(G_S G_X)",
+    "G_S": "S^T S",
+    "G_X": "G_X_ij=Tr(X_i X_j)"
+  },
+  "new_compulsory_invariant": "I_align=Tr((S^T S) G_X)",
+  "hostile_pair": {
+    "parallel": {
+      "I_rad": "1",
+      "I_align": "1",
+      "gauge_contraction": "0"
+    },
+    "orthogonal": {
+      "I_rad": "1",
+      "I_align": "0",
+      "gauge_contraction": "1"
+    },
+    "meaning": "radial data alone do not determine the port-gauge counterterm"
+  },
+  "isotropic_vacuum_values": {
+    "I_rad": "18*mu**2*s**2",
+    "I_align": "6*mu**2*s**2",
+    "I_rad_minus_I_align": "12*mu**2*s**2"
+  },
+  "classification": "WP493's radial completion remains nonradially incomplete; SO(3)_P gauge support requires an independent connector-flavon alignment quartic.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": null,
+  "smallest_exact_falsifier": "Parallel and orthogonal unit port vectors have identical radial norms but gauge contractions zero and one, respectively.",
+  "remaining_gate": "Add the alignment coupling as an independent running coordinate, enumerate the remaining SU(3)_F adjoint and cyclic-row quartic invariants, and recompute the WP489 vacuum and width cone after RG completion.",
+  "checks": {
+    "wp484_dependency_passed": true,
+    "wp493_dependency_passed": true,
+    "so3_generator_completeness_holds_in_all_components": true,
+    "gauge_contraction_reduces_to_radial_minus_alignment": true,
+    "hostile_pair_has_equal_radial_invariant": true,
+    "hostile_pair_has_distinct_alignment_invariant": true,
+    "gauge_loop_distinguishes_hostile_pair": true,
+    "isotropic_vacuum_radial_value_is_eighteen": true,
+    "isotropic_vacuum_alignment_value_is_six": true,
+    "isotropic_vacuum_gauge_combination_is_twelve": true
+  },
+  "passed": true
+}

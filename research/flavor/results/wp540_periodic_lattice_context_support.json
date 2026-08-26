@@ -1,0 +1,84 @@
+{
+  "work_package": "WP540",
+  "domain": "A one-direction periodic lattice support witness for WP539's six deterministic resolvent contexts, using WP524's standard nearest-neighbor lattice momentum.",
+  "lattice_support_witness": {
+    "site_count": 24,
+    "lattice_spacing_GeV_inverse": "1",
+    "spatial_extent_GeV_inverse": "24",
+    "mode_indices": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "lattice_momentum_squares_GeV_squared": [
+      "0",
+      "2 - sqrt(3)",
+      "1",
+      "2",
+      "3",
+      "sqrt(3) + 2"
+    ],
+    "minimum_nonzero_continuum_momentum_GeV": "pi/12",
+    "minimum_nonzero_lattice_momentum_squared_GeV_squared": "2 - sqrt(3)",
+    "scale_authority": "The a=1 GeV^-1 witness is fixed before the rank calculation and must be replaced in a physical run by ordinary QCD scale setting, independent of flavor-pole or target-ratio data."
+  },
+  "rank_certificate": {
+    "context_rank": 6,
+    "context_determinant": "1136911010446445269321189062809786024695057893296734619070775806903839111328125*sqrt(3)/1605232847745808537224460219095112517884123304922631766046805313157128374221193979161065642000384",
+    "five_context_deletion_ranks": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "four_channel_complex_rank": 24,
+    "real_estimator_dimension": 48
+  },
+  "periodic_alias_falsifier": {
+    "mode_indices": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      16
+    ],
+    "lattice_momentum_squares_GeV_squared": [
+      "0",
+      "2 - sqrt(3)",
+      "1",
+      "2",
+      "3",
+      "3"
+    ],
+    "context_rank": 5,
+    "conclusion": "Modes n and N-n can alias in qhat^2. Choosing mode 16 instead of 10 repeats the node of mode 8 and lowers rank to five."
+  },
+  "theorem": "A concrete N=24 periodic direction supports six exact distinct lattice momentum-squared contexts with rank six. With the four Ward channels the supported postprocessing map has complex rank 24. Periodic momentum labels alone are not sufficient: an exact n versus N-n alias lowers the context rank to five.",
+  "classification": "Exact kinematic-support and alias-control witness. It supplies a realizable momentum grammar for WP539 without fitting flavor data, but it is not continuum-extrapolated or detector-calibrated data.",
+  "selector": false,
+  "instrument": "The discrete momentum support is now explicit. Physical realization still requires QCD scale setting, multiple lattice spacings and volumes, the four renormalized bilocal channel measurements, threshold matching, and the common 48-real covariance.",
+  "smallest_exact_falsifier": "Replace mode 10 by its periodic alias mode 16. The last two qhat-squared values coincide at 3 and context rank falls exactly from six to five.",
+  "remaining_gate": "Preregister a scale-setting observable, lattice spacings, volumes, momentum tuples, renormalization and contact-subtraction scheme, then generate the common four-channel B_s correlator dataset and continuum covariance.",
+  "checks": {
+    "dependencies_passed": true,
+    "six_supported_modes_are_declared": true,
+    "exact_nodes_match_expected_algebraic_values": true,
+    "all_supported_nodes_are_distinct": true,
+    "all_supported_nodes_avoid_timelike_poles": true,
+    "periodic_lattice_context_matrix_has_rank_six": true,
+    "periodic_lattice_context_determinant_is_nonzero": true,
+    "every_supported_five_context_deletion_has_rank_five": true,
+    "four_channel_supported_map_has_rank_twenty_four": true,
+    "hostile_periodic_alias_repeats_a_node": true,
+    "hostile_periodic_alias_lowers_rank_to_five": true,
+    "finite_extent_has_nonzero_momentum_gap": true,
+    "lattice_momentum_gap_is_positive": true
+  },
+  "passed": true
+}

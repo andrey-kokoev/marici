@@ -1,0 +1,45 @@
+{
+  "work_package": "WP525",
+  "domain": "One pole of the WP520 flavor-current resolvent, with the WP524 nonconserved b-to-s current and a possibly complex pole mass.",
+  "ward_completion": {
+    "vector_Rxi": "J2/(-mu2 + t) - d2*(1 - xi)/((-mu2 + t)*(-mu2*xi + t))",
+    "goldstone_Rxi": "-d2/(mu2*(-mu2*xi + t))",
+    "gauge_independent_sum": "(J2 - d2/mu2)/(-mu2 + t)",
+    "exact_residual": "0",
+    "rule": "The identical pole parameter mu^2 must occur in the transverse denominator, longitudinal numerator normalization, unphysical R_xi pole, and Goldstone coupling."
+  },
+  "finite_width_attack": {
+    "naive_xi_derivative": "-d2*(m2 - mu2)/((-mu2 + t)*(-m2*xi + t)**2)",
+    "hostile_exact_value": "-5/4",
+    "consequence": "Inserting a width only into the visible vector denominator violates the Ward cancellation. A complex-mass or pole scheme derived consistently across vector and Goldstone sectors is required."
+  },
+  "residue_width_authority": {
+    "residue_rule": "Each pole's longitudinal and Goldstone term inherits the same signed b-s current residue as its transverse term, divided by the same pole mass squared where required by the Ward identity.",
+    "current_status": "WP509 freezes exact matrix-residue functionals and WP520 fixes their aligned scalar b-s combination. WP518 joins trace residues to resolved widths in one ordering, but its widths are explicit lower bounds rather than channel-complete totals.",
+    "physical_consequence": "The signed b-s residue algebra exists, but it has not been joined pole by pole to channel-complete complex masses in one gauge-consistent scheme."
+  },
+  "induced_operator_family": [
+    "left-left vector bilocal from J_mu J^mu",
+    "right-right scalar bilocal proportional to m_b^2 S_R S_R",
+    "left-left scalar bilocal proportional to m_s^2 S_L S_L",
+    "mixed scalar bilocal proportional to m_b m_s S_R S_L"
+  ],
+  "classification": "A universal gauge-independent pole completion is fixed conditionally by the Ward identity. The current source packet cannot instantiate its finite-width version because channel-complete pole widths and the existing signed b-s residue algebra are not joined in one complex-pole scheme.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "The operator family is now source-typed, but the lattice instrument awaits the complete complex pole packet and renormalized vector-plus-scalar bilocal matrix elements.",
+  "smallest_exact_falsifier": "A partial width insertion mu^2!=m^2 produces a nonzero derivative with respect to xi; the frozen hostile witness evaluates that derivative away from every pole.",
+  "remaining_gate": "Complete every pole width in a gauge-consistent pole scheme, transport the WP509/WP520 signed b-s residues into that same pole ordering, and evaluate the enlarged vector-plus-scalar B_s bilocal basis with covariance.",
+  "checks": {
+    "wp518_dependency_passed": true,
+    "wp509_dependency_passed": true,
+    "wp520_dependency_passed": true,
+    "wp524_dependency_passed": true,
+    "consistent_complex_mass_ward_sum_is_xi_independent": true,
+    "naive_partial_width_insertion_is_gauge_dependent": true,
+    "hostile_naive_width_witness_is_nonzero": true,
+    "wp518_widths_are_explicit_lower_bounds": true,
+    "wp518_does_not_supply_channel_complete_total_widths": true
+  },
+  "passed": true
+}

@@ -1,0 +1,86 @@
+{
+  "work_package": "WP489",
+  "source_action_extension": {
+    "connector_square": "lambda_S ||S^T S-b sigma^2 I_3||_F^2",
+    "singlet_lift": "kappa (sigma^2-w^2)^2",
+    "messenger_masses": [
+      "z_A sigma Abar A",
+      "z_B sigma Bbar B"
+    ],
+    "renormalizability": "all terms have canonical dimension at most four"
+  },
+  "selected_relations": {
+    "mu_squared": "y^2 w^2",
+    "f_phys_squared": "6 y^2 w^2",
+    "v_squared": "2 a w^2",
+    "s_squared": "b w^2",
+    "M_A_squared": "z_A^2 w^2",
+    "M_B_squared": "z_B^2 w^2",
+    "g_F_f_phys_over_v": "g_F y sqrt(3/a)"
+  },
+  "exact_nonempty_witness": {
+    "coefficients": "y=a=z_A=z_B=g_F^2=w^2=1, b=32, g_P^2=1/68, lambda_X=rho=eta=lambda_S=kappa=100",
+    "radial_lower_bound_hessian": [
+      [
+        "4800",
+        "0",
+        "0",
+        "-4800*sqrt(6)"
+      ],
+      [
+        "0",
+        "400",
+        "0",
+        "-400*sqrt(2)"
+      ],
+      [
+        "0",
+        "0",
+        "25600",
+        "-102400*sqrt(6)"
+      ],
+      [
+        "-4800*sqrt(6)",
+        "-400*sqrt(2)",
+        "-102400*sqrt(6)",
+        "2488000"
+      ]
+    ],
+    "hessian_scope": "norm, Higgs, connector-frame, and singlet-lift squares; the omitted representation square adds a positive-semidefinite Hessian at the zero-residual vacuum",
+    "shifted_leading_minors": [
+      "4799",
+      "1914801",
+      "49016990799",
+      "34066317801201"
+    ],
+    "minimum_nonquark_mass_squared": "1",
+    "vector_mass_squares": [
+      "1 - sqrt(17)/17",
+      "3",
+      "sqrt(17)/17 + 1"
+    ],
+    "physical_clock_ratio": "sqrt(3)"
+  },
+  "classification": "One renormalizable source can select all relational scale ratios and occupy the tree-level total-width cone; the numerical coefficient witness is existence evidence, not a derived numerical selector.",
+  "selector": "conditional relational selector for fixed source coefficients",
+  "rigidifier": "preserves the isotropic connector Gram",
+  "instrument": null,
+  "smallest_exact_falsifier": "The same symmetries admit positive changes of a, b, y, z_A, z_B, g_F, or g_P that move the clock ratio, residues, or thresholds; therefore the witness cannot be promoted to a numerical prediction without coefficient dynamics.",
+  "remaining_gate": "Derive the dimensionless coefficients on a complete coupled RG trajectory and attach the WP486 pole/current instrument; only then are the selected ratio and total widths predictions rather than conditional source outputs.",
+  "checks": {
+    "wp467_dependency_passed": true,
+    "wp487_dependency_passed": true,
+    "wp488_dependency_passed": true,
+    "radial_vacuum_is_stationary": true,
+    "radial_hessian_exceeds_unit_threshold": true,
+    "omitted_representation_square_is_positive_semidefinite": true,
+    "physical_norm_is_six_mu_squared": true,
+    "connector_ratio_is_source_fixed": true,
+    "messenger_masses_share_singlet_clock": true,
+    "minimum_nonquark_threshold_is_one": true,
+    "all_vector_pair_closure_margins_are_positive": true,
+    "all_nonquark_threshold_margins_are_positive": true,
+    "physical_clock_ratio_uses_corrected_norm": true
+  },
+  "passed": true
+}

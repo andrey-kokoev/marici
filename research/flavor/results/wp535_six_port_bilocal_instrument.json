@@ -1,0 +1,117 @@
+{
+  "work_package": "WP535",
+  "domain": "The six signed b-s complex poles of WP534 and the WP525 Ward-complete vector-plus-scalar bilocal operator family.",
+  "raw_estimator": {
+    "complex_dimension": 24,
+    "real_dimension": 48,
+    "indexing": "six pole kernels times V_LL, S_RR, S_LL and S_RL",
+    "operator_channels": [
+      "V_LL",
+      "S_RR",
+      "S_LL",
+      "S_RL"
+    ],
+    "kernel_rule": "For pole i, weight the renormalized integrated B_s correlator by the Euclidean continuation of 1/(Q^2+mu_i^2), retaining real and imaginary parts."
+  },
+  "source_generated_six_port_map": {
+    "shape": [
+      6,
+      24
+    ],
+    "rank": 6,
+    "row_supports": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        12,
+        13,
+        14,
+        15
+      ],
+      [
+        16,
+        17,
+        18,
+        19
+      ],
+      [
+        20,
+        21,
+        22,
+        23
+      ]
+    ],
+    "row_rule": "A_i=H_i,V-(m_b^2 H_i,RR+m_s^2 H_i,LL-2 m_b m_s H_i,RL)/mu_i^2"
+  },
+  "experimental_scalar_map": {
+    "rule": "M_12,new=sum_i r_i A_i; Delta M_s reads a convention-dependent real projection after Standard Model composition.",
+    "rank_on_six_pole_amplitudes": 1,
+    "kernel_dimension": 5,
+    "hostile_shift": [
+      "0.247982099567674466258920456040290732371194573046717740055082729209365949146037187076409621",
+      "0.247982099112883602986788921423801220193352695764672154913867903263169560449791789808698478",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "hostile_scalar_response": "0"
+  },
+  "covariance_contract": {
+    "required_shape": [
+      48,
+      48
+    ],
+    "required_units": "Renormalized continuum real-imaginary bilocal estimator units in one declared scheme.",
+    "required_properties": [
+      "symmetric positive semidefinite with every admitted null mode declared",
+      "operator-mixing and coincident-point subtraction covariance",
+      "cross-pole covariance from common gauge ensembles",
+      "finite-volume, continuum and heavy-quark systematic covariance",
+      "threshold-matching and current-normalization covariance"
+    ],
+    "structural_unit_covariance_port_gram_nonzero": true,
+    "authority": "The unit covariance is a rank witness only and is not calibrated lattice data."
+  },
+  "contextual_partition": "The six-port vector separates all pole-amplitude directions. The measured scalar identifies only residue-weighted equivalence classes with a five-dimensional kernel.",
+  "classification": "Executable lattice instrument contract and exact readout-rank theorem. The instrument is specified but not realized by an existing calibrated B_s dataset.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "Proposed physical realization: six complex-kernel integrated B_s correlators in four renormalized operator channels, reported as 48 real estimators with full covariance. WP523 found no existing neutral-B calculation supplying this packet.",
+  "smallest_exact_falsifier": "The nonzero hostile two-pole shift has exactly zero scalar DeltaM_s response but nonzero six-port response. Thus DeltaM_s alone cannot identify the pole decomposition.",
+  "remaining_gate": "Execute the 24 complex correlator estimators on common B_s lattice ensembles with nonperturbative renormalization, contact subtraction, continuum and finite-volume limits, heavy-quark control, threshold matching and a published 48 x 48 covariance.",
+  "checks": {
+    "wp523_dependency_passed": true,
+    "wp524_dependency_passed": true,
+    "wp525_dependency_passed": true,
+    "wp534_dependency_passed": true,
+    "six_signed_complex_poles_are_present": true,
+    "four_ward_operator_channels_are_present": true,
+    "raw_complex_estimator_dimension_is_twenty_four": true,
+    "pole_resolved_response_has_rank_six": true,
+    "each_pole_row_has_its_own_four_channel_support": true,
+    "direct_delta_ms_readout_has_rank_one": true,
+    "direct_readout_has_five_dimensional_pole_kernel": true,
+    "hostile_two_pole_shift_is_nonzero": true,
+    "hostile_two_pole_shift_collapses_in_scalar_readout": true,
+    "six_port_readout_separates_the_hostile_shift": true,
+    "unit_covariance_witness_gives_nonsingular_port_gram": true
+  },
+  "passed": true
+}

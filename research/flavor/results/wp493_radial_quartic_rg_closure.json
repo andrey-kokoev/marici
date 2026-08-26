@@ -1,0 +1,52 @@
+{
+  "work_package": "WP493",
+  "domain": "four canonical WP489 radial invariants F,H,R,sigma with all positive source coefficients",
+  "existing_mixed_quartics": {
+    "F_squared_sigma_squared": "-12*rho*y_squared",
+    "H_squared_sigma_squared": "-a*eta",
+    "R_squared_sigma_squared": "-2*b*lambda_S"
+  },
+  "one_loop_generated_support": {
+    "mechanism": "a bubble with two sigma propagators and two distinct leaf-sigma quartic vertices produces the corresponding leaf-leaf quartic counterterm",
+    "missing_invariants": [
+      "F^2 H^2",
+      "F^2 R^2",
+      "H^2 R^2"
+    ],
+    "nonzero_coefficient_products": {
+      "F_H": "12*a*eta*rho*y_squared",
+      "F_R": "24*b*lambda_S*rho*y_squared",
+      "H_R": "2*a*b*eta*lambda_S"
+    },
+    "claim_scope": "exact nonzero counterterm support; overall scheme-dependent loop prefactors are not asserted"
+  },
+  "minimal_radial_quartic_basis": [
+    "F^4",
+    "H^4",
+    "R^4",
+    "sigma^4",
+    "F^2 H^2",
+    "F^2 R^2",
+    "F^2 sigma^2",
+    "H^2 R^2",
+    "H^2 sigma^2",
+    "R^2 sigma^2"
+  ],
+  "classification": "WP489's positive sum-of-squares surface is not an RG-closed truncation; three additional radial portals are compulsory before beta-function derivation.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": null,
+  "smallest_exact_falsifier": "The F-sigma and H-sigma vertices alone generate an F^2 H^2 counterterm proportional to 12 rho eta a y^2, which is nonzero everywhere on the admitted positive domain but absent from WP489.",
+  "remaining_gate": "Promote all ten radial quartic invariants to independent running couplings, then repeat closure for nonradial tensor invariants and freeze the complete MSbar truncation before computing fixed points.",
+  "checks": {
+    "wp489_dependency_passed": true,
+    "wp492_dependency_passed": true,
+    "wp489_radial_portal_graph_is_sigma_star": true,
+    "every_missing_leaf_portal_has_two_step_support": true,
+    "all_generated_products_are_nonzero_on_positive_domain": true,
+    "three_cross_portals_are_missing": true,
+    "minimal_radial_quartic_basis_has_ten_invariants": true,
+    "completed_portal_graph_is_support_closed": true
+  },
+  "passed": true
+}

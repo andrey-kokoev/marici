@@ -1,0 +1,87 @@
+{
+  "work_package": "WP522",
+  "six_pole_denominator": {
+    "factor_coefficient": "1",
+    "factors": [
+      {
+        "factor": "15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024",
+        "degree": 3,
+        "multiplicity": 1
+      },
+      {
+        "factor": "2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000",
+        "degree": 3,
+        "multiplicity": 1
+      }
+    ],
+    "interpretation": "Two cubic mixed sectors carrying the aligned F6 and F7 currents; quintet factors cancel."
+  },
+  "rational_completion_basis": {
+    "definition": "H_k[mu]=integral (q^2)^k/D(q^2) dmu(q^2), k=0,...,5",
+    "basis_functions": [
+      "1/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+      "q_squared/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+      "q_squared**2/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+      "q_squared**3/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+      "q_squared**4/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+      "q_squared**5/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))"
+    ],
+    "wp520_numerator_coefficients_low_to_high": [
+      "2400050384732160000",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "nonzero_coefficient_degrees": [
+      0
+    ],
+    "reconstruction": "B_F[mu]=sum_k n_k H_k[mu] for every numerator N_F of degree below six.",
+    "authority": "Algebraic completion only. Arbitrary numerator interventions are not established as source operations."
+  },
+  "frozen_source_probe": {
+    "definition": "H_0[mu]=integral D(q^2)^-1 dmu(q^2)",
+    "wp520_coefficient": "2400050384732160000",
+    "sufficiency": "The frozen WP520 numerator is constant, so one direct source-shaped bilocal functional determines its response exactly."
+  },
+  "minimality_certificate": {
+    "domain": "Full six-dimensional numerator family over the frozen two-cubic denominator",
+    "evaluation_nodes_q_squared_GeV_squared": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "evaluation_determinant": "1/9889456987713341018889439402060974017754165810262147402276054848445328205798090726523269236147977696837632000000",
+    "five_probe_subfamily_ranks": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "qualification": "For the one already frozen WP520 kernel, one direct weighted bilocal readout is sufficient. Six are necessary only for joint faithfulness on the full numerator family."
+  },
+  "classification": "One exact source-shaped bilocal target suffices for the frozen WP520 kernel. A six-coordinate rational basis is algebraically complete and generically minimal, but arbitrary numerator control and executable hadronic access are not established.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "No physical implementation of the direct H_0 bilocal matrix element is admitted. The six-coordinate completion is not executable control without a source-authorized numerator family.",
+  "smallest_exact_falsifier": "The two cubic denominator factors merge or acquire multiplicity, the numerator degree reaches six, or the six rational basis functions lose rank on the admitted source family.",
+  "remaining_gate": "Compute the single direct WP520-weighted H_0 neutral-B matrix element with calibrated normalization, uncertainties, and threshold running. Require a separate source authorization before treating the six-coordinate algebraic completion as an executable probe family.",
+  "checks": {
+    "wp520_dependency_passed": true,
+    "wp521_dependency_passed": true,
+    "denominator_degree_is_six": true,
+    "denominator_is_two_simple_cubic_factors": true,
+    "numerator_degree_is_below_six": true,
+    "six_probe_reconstruction_is_exact": true,
+    "six_probe_evaluation_matrix_has_nonzero_determinant": true,
+    "every_five_probe_subfamily_has_rank_five": true,
+    "frozen_wp520_kernel_uses_a_proper_subset_or_combination": true
+  },
+  "passed": true
+}

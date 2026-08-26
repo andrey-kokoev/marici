@@ -1,0 +1,52 @@
+{
+  "work_package": "WP524",
+  "source_domain": "Frozen WP520 aligned finite-propagator B_s kernel and the WP522 direct H_0 functional.",
+  "euclidean_estimator_contract": {
+    "current": "J_mu_bs(x)=bar{s}_L(x) gamma_mu b_L(x)",
+    "kernel_momentum_space": "1/(39062744140625*x**6 + 2466509505859375*x**5 + 53308381684419375*x**4 + 473141450325043825*x**3 + 1933530504162549632*x**2 + 3562710525880860672*x + 2400050384732160000)",
+    "weighted_correlator": "Sum_{x,y} <O_Bsbar(T) J_mu_bs(x) K_a,munu(x-y) J_nu_bs(y) O_Bsbar_dagger(0)>, with the standard integrated-correlator slope extracted after declared subtractions.",
+    "lattice_momentum": "qhat^2=sum_mu 4 sin^2(a q_mu/2)/a^2",
+    "continuum_expansion": "a**2*s4*(234376464843750*x**5 + 12332547529296875*x**4 + 213233526737677500*x**3 + 1419424350975131475*x**2 + 3867061008325099264*x + 3562710525880860672)/(12*(39062744140625*x**6 + 2466509505859375*x**5 + 53308381684419375*x**4 + 473141450325043825*x**3 + 1933530504162549632*x**2 + 3562710525880860672*x + 2400050384732160000)**2) + 1/(39062744140625*x**6 + 2466509505859375*x**5 + 53308381684419375*x**4 + 473141450325043825*x**3 + 1933530504162549632*x**2 + 3562710525880860672*x + 2400050384732160000)",
+    "physical_readout": "Multiply the renormalized continuum H_0 matrix element by the frozen source coefficient n_0 and the independently declared current normalization before entering M_12^s.",
+    "authority_limit": "This estimator covers only the scalar J_mu J_mu contraction encoded by WP520. It is not the full gauge-invariant massive-vector exchange amplitude."
+  },
+  "tensor_completion_obstruction": {
+    "on_shell_current_divergence": "-S_L*m_s + S_R*m_b",
+    "hostile_witness": "5",
+    "consequence": "The longitudinal q_mu q_nu part of a massive-vector propagator does not vanish for the b-to-s left current. Goldstone and scalar-operator terms cannot be inferred from the scalar WP520 form factor alone."
+  },
+  "pole_certificate": {
+    "negative_real_roots_first_cubic": 3,
+    "negative_real_roots_second_cubic": 3,
+    "common_factor": "1",
+    "consequence": "The Euclidean kernel is nonsingular on Q^2 >= 0; its six poles lie on the timelike continuation."
+  },
+  "required_calibrations": [
+    "nonperturbative current renormalization in a declared scheme",
+    "coincident-point contact subtraction and mixing counterterms",
+    "finite-volume and continuum extrapolations",
+    "heavy-quark discretization and tuning systematics",
+    "matching across every light-mediator threshold",
+    "normalization and covariance in the DeltaM_s likelihood"
+  ],
+  "classification": "Exact scalar-kernel estimator contract plus a tensor-completion obstruction. It preserves WP522 H_0 and has a controlled continuum limit, but it is not yet a gauge-invariant physical instrument because the flavor-changing current is nonconserved.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": "The scalar lattice integrated-correlator architecture is typed. Physical-instrument authority is withheld until the full transverse, longitudinal, Goldstone, and counterterm packet is derived from the same broken flavor-gauge action and then evaluated on calibrated B_s ensembles.",
+  "smallest_exact_falsifier": "At unequal b and s masses, q_mu J_L^mu=m_b S_R-m_s S_L is not identically zero. Therefore a scalar H_0 convolution alone cannot certify the full massive-vector exchange amplitude.",
+  "remaining_gate": "Derive the gauge-parameter-independent tensor plus Goldstone bilocal kernel from the admitted flavon action, enlarge the operator basis by the induced scalar channels, and only then execute the renormalized B_s estimator and publish its covariance.",
+  "checks": {
+    "wp520_dependency_passed": true,
+    "wp522_dependency_passed": true,
+    "wp523_dependency_passed": true,
+    "frozen_kernel_matches_wp520": true,
+    "frozen_h0_coefficient_matches_wp522": true,
+    "cubics_are_coprime": true,
+    "all_six_euclidean_poles_are_timelike": true,
+    "lattice_kernel_has_exact_continuum_limit_through_a2": true,
+    "contact_substitution_is_deliberately_falsified_by_slope": true,
+    "flavor_changing_left_current_is_not_identically_conserved": true,
+    "smallest_longitudinal_hostile_witness_is_nonzero": true
+  },
+  "passed": true
+}

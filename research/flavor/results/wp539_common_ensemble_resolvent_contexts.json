@@ -1,0 +1,75 @@
+{
+  "work_package": "WP539",
+  "domain": "The WP538 exact companion pencil and WP525 four-channel Ward-complete bilocal family, evaluated on one common Euclidean correlator ensemble.",
+  "context_design": {
+    "normalized_momentum_squared_nodes": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "node_unit": "one independently calibrated Euclidean momentum-squared unit; the exact rank theorem is scale-generic away from poles and node collisions",
+    "context_matrix_rule": "column j is (z_j I_6-A)^(-1) B",
+    "context_matrix_shape": [
+      6,
+      6
+    ],
+    "context_matrix_rank": 6,
+    "context_determinant": "1136911010446445269321189062809786024695057893296734619070775806903839111328125/16740243022644003347728542169782333090122207172366053082224762700125897854423974063296741376",
+    "five_context_deletion_ranks": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ]
+  },
+  "common_ensemble_factorization": {
+    "preparation_count": 1,
+    "operator_channels": [
+      "V_LL",
+      "S_RR",
+      "S_LL",
+      "S_RL"
+    ],
+    "deterministic_kernel_count": 6,
+    "complex_estimator_count": 24,
+    "real_estimator_count": 48,
+    "joint_complex_rank": 24,
+    "rule": "Measure the four renormalized momentum-resolved bilocal channels on common gauge configurations, then apply all six fixed resolvent kernels in postprocessing. Cross-context covariance is retained because no ensemble is split."
+  },
+  "hostile_collision": {
+    "nodes": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "4"
+    ],
+    "rank": 5,
+    "conclusion": "Repeating one context lowers rank to five; distinct calibrated momentum contexts are necessary, not a cosmetic sampling choice."
+  },
+  "theorem": "Six distinct Euclidean resolvent contexts on one common four-channel correlator ensemble give an exact rank-24 complex postprocessing map, equivalent to 48 real estimators. They do not require six different source-law preparations. Every five-context deletion has rank five, and one repeated context is an exact rank-loss falsifier.",
+  "classification": "Executable deterministic analysis design conditional on acquiring the common renormalized correlator dataset. It realizes algebraic context closure as postprocessing, not as source control, and it neither selects t nor repairs an absent source selector.",
+  "instrument": "Partially typed: one common ensemble, four Ward channels, six calibrated Euclidean momentum contexts, deterministic complex kernels, and a 48-real joint covariance. No existing B_s dataset supplies the required renormalized bilocal correlators.",
+  "smallest_exact_falsifier": "Replace the final node 5 by 4. The six-context matrix rank falls exactly from six to five, and the 24-channel map loses four complex dimensions.",
+  "remaining_gate": "Choose an independently calibrated physical momentum unit and lattice volume that realize six distinct supported contexts; compute the four renormalized bilocal channels with contact subtraction, continuum and finite-volume control, threshold matching, and the full common-ensemble covariance.",
+  "checks": {
+    "dependencies_passed": true,
+    "six_declared_euclidean_nodes": true,
+    "all_context_nodes_avoid_poles": true,
+    "six_resolvent_contexts_have_rank_six": true,
+    "context_determinant_is_exactly_nonzero": true,
+    "every_five_context_deletion_has_rank_five": true,
+    "four_ward_channels_give_twenty_four_complex_outputs": true,
+    "full_ward_context_map_has_rank_twenty_four": true,
+    "real_imaginary_covariance_dimension_is_forty_eight": true,
+    "colliding_two_contexts_is_deliberately_nonfaithful": true,
+    "context_reweighting_does_not_add_a_source_parameter": true
+  },
+  "passed": true
+}

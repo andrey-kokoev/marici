@@ -1,0 +1,80 @@
+{
+  "work_package": "WP541",
+  "domain": "WP540's six lattice-momentum nodes on a fixed 24 GeV^-1 extent, refined through a=1, 1/2 and 1/3 GeV^-1 with partially twisted valence boundary conditions.",
+  "continuum_ladder": {
+    "physical_extent_GeV_inverse": "24",
+    "lattice_spacings_GeV_inverse": [
+      "1",
+      "1/2",
+      "1/3"
+    ],
+    "site_counts": [
+      24,
+      48,
+      72
+    ],
+    "fixed_lattice_momentum_squares_GeV_squared": [
+      "0",
+      "2 - sqrt(3)",
+      "1",
+      "2",
+      "3",
+      "sqrt(3) + 2"
+    ],
+    "link_angle_rule": "alpha_j(a)=2 asin(a sqrt(z_j)/2)",
+    "boundary_phase_rule": "phi_j=N alpha_j modulo 2 pi, accompanied by its Fourier-sector label",
+    "physical_momentum_rule": "p_j(a)=alpha_j(a)/a",
+    "physical_momentum_squared_continuum_series": "h**4*u**3/90 + h**2*u**2/12 + u",
+    "continuum_limit": "u",
+    "boundary_phases_unwrapped": [
+      [
+        "0",
+        "48*asin(sqrt(2 - sqrt(3))/2)",
+        "8*pi",
+        "12*pi",
+        "16*pi",
+        "48*asin(sqrt(sqrt(3) + 2)/2)"
+      ],
+      [
+        "0",
+        "96*asin(sqrt(2 - sqrt(3))/4)",
+        "96*asin(1/4)",
+        "96*asin(sqrt(2)/4)",
+        "96*asin(sqrt(3)/4)",
+        "96*asin(sqrt(sqrt(3) + 2)/4)"
+      ],
+      [
+        "0",
+        "144*asin(sqrt(2 - sqrt(3))/6)",
+        "144*asin(1/6)",
+        "144*asin(sqrt(2)/6)",
+        "144*asin(sqrt(3)/6)",
+        "144*asin(sqrt(sqrt(3) + 2)/6)"
+      ]
+    ]
+  },
+  "rank_certificate": {
+    "rank_at_every_spacing": 6,
+    "reason": "The twist rule holds qhat_j^2 fixed at the same six exact distinct nodes, so every spacing uses the same nonsingular resolvent context matrix.",
+    "zero_twist_single_sector_rank": 1
+  },
+  "changed_groupoid": "The twist holonomies and Fourier-sector labels are added reference/control ports. They define a new relational boundary-condition experiment over the stabilizer preserving those holonomies; they do not reveal an absolute phase of the original periodic experiment.",
+  "theorem": "A fixed-volume three-spacing twisted-boundary ladder preserves all six exact WP540 lattice-momentum contexts and rank six while the corresponding physical momenta approach their continuum values with an exact even-power expansion. Removing the twist/reference port in one Fourier sector collapses all contexts to zero and rank one.",
+  "classification": "Continuum-extrapolation and boundary-control contract for the instrument. It changes the experimental groupoid explicitly, does not alter source dynamics, and does not select t.",
+  "instrument": "Kinematic control is executable in principle through partially twisted valence boundary conditions. Physical authority still requires a preregistered scale-setting observable and actual renormalized four-channel B_s correlator measurements at all three spacings with joint systematics.",
+  "smallest_exact_falsifier": "Set all twists to zero while retaining one Fourier sector. All six qhat-squared nodes coincide at zero and the context rank falls from six to one.",
+  "remaining_gate": "Freeze the QCD scale-setting and renormalization scheme, generate the common bilocal data on the 24, 48 and 72-site ensembles, and fit the exact a^2 and a^4 continuum response with full cross-spacing covariance.",
+  "checks": {
+    "dependencies_passed": true,
+    "fixed_physical_extent_across_three_spacings": true,
+    "site_counts_refine_as_24_48_72": true,
+    "all_twist_arguments_are_admissible": true,
+    "every_spacing_recovers_the_same_six_lattice_nodes": true,
+    "common_context_matrix_has_rank_six": true,
+    "physical_momentum_has_correct_continuum_limit": true,
+    "leading_lattice_momentum_correction_is_exact": true,
+    "zero_twist_single_sector_is_rank_one": true,
+    "twist_port_changes_the_contextual_partition": true
+  },
+  "passed": true
+}

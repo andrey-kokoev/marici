@@ -1,0 +1,136 @@
+{
+  "work_package": "WP511",
+  "runtime": {
+    "python": "3.12",
+    "flavio": "2.7.0",
+    "particle": "0.25.4",
+    "theory_covariance_seed": 511,
+    "theory_covariance_draws": 200
+  },
+  "admitted_state_domain": "Two real correlated WET rays (CVLL,CVRR,CVLR)=x_q(1,1,2) for q=d,s at 160 GeV",
+  "source_authorized_probe_family": [
+    "real bdbd correlated vector-current ray",
+    "real bsbs correlated vector-current ray"
+  ],
+  "physical_instrument": {
+    "observables": [
+      "DeltaM_d",
+      "DeltaM_s"
+    ],
+    "measurements": {
+      "DeltaM_d": {
+        "matching_measurements": [
+          "HFAG osc summer 2015"
+        ],
+        "central_value": 3.334e-13,
+        "standard_deviation": 1.3000000000000002e-15
+      },
+      "DeltaM_s": {
+        "matching_measurements": [
+          "HFAG osc summer 2015"
+        ],
+        "central_value": 1.1688e-11,
+        "standard_deviation": 1.3999999999999999e-14
+      },
+      "DeltaM_d/DeltaM_s": {
+        "matching_measurements": [
+          "CKM ratio measurements"
+        ],
+        "central_value": 0.02852,
+        "standard_deviation": 0.00011
+      }
+    },
+    "sm_predictions": [
+      3.4550869434925627e-13,
+      1.1412975260847767e-11
+    ],
+    "experimental_covariance": [
+      [
+        1.6900000000000006e-30,
+        0.0
+      ],
+      [
+        0.0,
+        1.9599999999999997e-28
+      ]
+    ],
+    "frozen_theory_covariance": [
+      [
+        4.925363015683695e-28,
+        6.318151648033834e-27
+      ],
+      [
+        6.318151648033834e-27,
+        2.517206318156915e-25
+      ]
+    ]
+  },
+  "response": {
+    "jacobian": [
+      [
+        0.3395785847826287,
+        0.0
+      ],
+      [
+        0.0,
+        0.6761513562621264
+      ]
+    ],
+    "rank": 2,
+    "detector_gram": [
+      [
+        3.434354955810551e+26,
+        -1.7150706441192725e+25
+      ],
+      [
+        -1.715070644119273e+25,
+        2.6712925386323207e+24
+      ]
+    ],
+    "detector_gram_determinant": 6.232699454151925e+50,
+    "local_gaussian_coefficient_hat_GeV^-2": [
+      -3.5658003454508985e-14,
+      4.0675025880686445e-13
+    ],
+    "local_gaussian_coefficient_sigma_GeV^-2": [
+      6.546702907275979e-14,
+      7.423086084262641e-13
+    ],
+    "coefficient_correlation": 0.5662375917100664
+  },
+  "ratio_observable": {
+    "name": "DeltaM_d/DeltaM_s",
+    "jacobian": [
+      [
+        29753730032.829742,
+        -1793515579.9571333
+      ]
+    ],
+    "augmented_rank": 2,
+    "classification": "derived correlated readout; it does not add a third local source direction"
+  },
+  "contextual_partition": "The executable DeltaM_d and DeltaM_s family is locally faithful on the admitted two-real-coordinate WET packet; each coordinate has a distinct calibrated oscillation port.",
+  "classification": "Actual calibrated CP-even flavor-current instrument with local rank two on the declared WET packet. It constrains realized current coefficients but is neither a source selector nor a pole-residue instrument.",
+  "selector": false,
+  "rigidifier": false,
+  "reference_port_required": false,
+  "instrument_realized": true,
+  "smallest_exact_falsifier": "Either diagonal response derivative vanishes, the calibrated covariance loses positive rank, or the two source coordinates are mapped to one WET coefficient before the detector interface.",
+  "remaining_gate": "Derive the WP510 mass-basis orientation map into bdbd and bsbs coefficients from the same messenger vacuum. The contact experiment collapses the pole decomposition, so a separate on-shell instrument is still required to read individual WP509 residues and widths.",
+  "checks": {
+    "wp455_dependency_passed": true,
+    "wp459_dependency_passed": true,
+    "wp510_dependency_passed": true,
+    "flavio_version_is_pinned": true,
+    "two_cp_even_oscillation_observables_are_registered": true,
+    "delta_md_has_bundled_measurement": true,
+    "delta_ms_has_bundled_measurement": true,
+    "real_two_coordinate_response_has_rank_two": true,
+    "cross_sector_responses_vanish": true,
+    "theory_covariance_is_positive_definite": true,
+    "detector_weighted_gram_is_positive_definite": true,
+    "ratio_response_obeys_chain_rule": true,
+    "ratio_adds_no_third_local_direction": true
+  },
+  "passed": true
+}

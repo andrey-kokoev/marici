@@ -1,0 +1,120 @@
+{
+  "work_package": "WP542",
+  "domain": "WP541's three-spacing twisted context ladder, augmented by a second physical volume and applied jointly to WP539's 48 real estimators.",
+  "ensemble_design": {
+    "rows": [
+      {
+        "a_GeV_inverse": "1",
+        "L_GeV_inverse": "24",
+        "leading_finite_volume_shape": "1"
+      },
+      {
+        "a_GeV_inverse": "1/2",
+        "L_GeV_inverse": "24",
+        "leading_finite_volume_shape": "1"
+      },
+      {
+        "a_GeV_inverse": "1/3",
+        "L_GeV_inverse": "24",
+        "leading_finite_volume_shape": "1"
+      },
+      {
+        "a_GeV_inverse": "1/2",
+        "L_GeV_inverse": "30",
+        "leading_finite_volume_shape": "r"
+      },
+      {
+        "a_GeV_inverse": "1/3",
+        "L_GeV_inverse": "30",
+        "leading_finite_volume_shape": "r"
+      }
+    ],
+    "per_estimator_model": "y(a,L)=y_cont+c_2 a^2+c_4 a^4+d_L F(L)",
+    "finite_volume_ratio": "r=F(30)/F(24)=exp(-6 m_gap), supplied by an independently calibrated QCD mass gap",
+    "design_matrix": [
+      [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "1",
+        "1/4",
+        "1/16",
+        "1"
+      ],
+      [
+        "1",
+        "1/9",
+        "1/81",
+        "1"
+      ],
+      [
+        "1",
+        "1/4",
+        "1/16",
+        "r"
+      ],
+      [
+        "1",
+        "1/9",
+        "1/81",
+        "r"
+      ]
+    ],
+    "four_row_minors": [
+      "0",
+      "5*(r - 1)/54",
+      "5*(r - 1)/54",
+      "-5*(r - 1)/54",
+      "-5*(r - 1)/54"
+    ],
+    "generic_rank_condition": "rank four for the declared spacing set whenever r is not one"
+  },
+  "joint_instrument_fit": {
+    "real_estimators_per_ensemble": 48,
+    "ensemble_count": 5,
+    "real_observation_count": 240,
+    "parameters_per_estimator": 4,
+    "total_parameter_count": 192,
+    "joint_design_rank": 192,
+    "residual_dimension": 48,
+    "required_data_covariance_shape": [
+      240,
+      240
+    ],
+    "required_scale_covariance": "The external QCD scale-setting and mass-gap covariance must be propagated as nuisance covariance, not refit from flavor pole data."
+  },
+  "renormalization_contract": {
+    "common_scheme": "one nonperturbative intermediate scheme for V_LL, S_RR, S_LL and S_RL on every ensemble",
+    "common_scale": "one declared physical renormalization scale above the simulated infrared support with step scaling across lattice cutoffs",
+    "mixing": "retain the complete four-channel mixing and contact-subtraction matrix before continuum extrapolation",
+    "thresholds": "match the continuum bilocal packet across each frozen mediator threshold only after the common scheme limit"
+  },
+  "hostile_tests": {
+    "no_volume_contrast_rank": 3,
+    "two_spacing_rank": 3,
+    "conclusion": "Three spacings are necessary to separate a^2 from a^4, and a second physical volume is necessary to separate the leading finite-volume column from the continuum intercept."
+  },
+  "theorem": "Five ensembles at three lattice spacings and two physical volumes give an overdetermined exact rank-192 joint design for all 48 real estimators under a continuum plus leading finite-volume model. Removing volume contrast or reducing to two distinct spacings lowers the per-estimator rank from four to three.",
+  "classification": "Identifiable continuum-volume analysis contract, not measured calibration. Scale setting and the QCD mass gap are external instrument inputs and cannot be inferred from the flavor answer.",
+  "selector": false,
+  "instrument": "The ensemble geometry, fit model, renormalization interface and 240 x 240 data-covariance requirement are now preregistered. Gauge ensembles and bilocal measurements remain ungenerated.",
+  "smallest_exact_falsifier": "Set r=1 so both volumes have the same finite-volume column. The per-estimator design rank falls from four to three and the continuum intercept cannot be separated from finite-volume contamination.",
+  "remaining_gate": "Supply external QCD scale and mass-gap calibrations, generate the five common four-channel ensembles, perform nonperturbative mixing/contact subtraction and threshold matching, and publish the full 240 x 240 observation covariance plus scale-systematic covariance.",
+  "checks": {
+    "dependencies_passed": true,
+    "five_ensemble_rows_are_declared": true,
+    "three_distinct_lattice_spacings_are_present": true,
+    "two_distinct_physical_extents_are_present": true,
+    "generic_design_has_rank_four": true,
+    "at_least_one_symbolic_minor_is_nonzero_for_r_not_one": true,
+    "full_forty_eight_estimator_design_has_rank_192": true,
+    "five_ensemble_design_is_overdetermined": true,
+    "no_volume_contrast_loses_finite_volume_direction": true,
+    "two_spacing_hostile_design_cannot_separate_a2_and_a4": true,
+    "required_data_covariance_dimension_is_240": true
+  },
+  "passed": true
+}

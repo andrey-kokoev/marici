@@ -1,0 +1,88 @@
+{
+  "work_package": "WP538",
+  "domain": "WP520's exact six-pole b-s kernel, WP534's Ward-complete complex-width continuation, WP535's six-port contract, and the fixed-v WP537 source fiber.",
+  "system_pencil": {
+    "rule": "P(z)=z I_6-A, x=P(z)^(-1) B u, y_6=I_6 x, DeltaM channel=C x",
+    "state_dimension": 6,
+    "input_dimension": 1,
+    "six_port_output_dimension": 6,
+    "normalized_denominator": "z**6 - 1262852867*z**5/20000125 + 85293410695071*z**4/62500390625 - 18925658013001753*z**3/1562509765625 + 1933530504162549632*z**2/39062744140625 - 3562710525880860672*z/39062744140625 + 3840080615571456/62500390625",
+    "source_vector": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "scalar_output_vector": [
+      "123936768/39062744140625",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "controllability_determinant": "-1",
+    "observability_determinant": "3624106895985849296109575434180053536851019956224/3552846907645141466628715821280581327172055916552295684596174396574497222900390625",
+    "denominator_discriminant": "2724589356968886684913016882140394150284987018657639688843476406729540197190383162518654009999360000000000000000000000000000"
+  },
+  "rank_factorization": {
+    "instantaneous_source_to_state_rank": 1,
+    "six_context_source_closure_rank": 6,
+    "six_port_state_readout_rank": 6,
+    "scalar_DeltaM_output_rank": 1,
+    "scalar_DeltaM_kernel_dimension": 5,
+    "hostile_kernel_state": [
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "interpretation": "The first rank-one arrow is the instantaneous scalar source command. Six algebraic source-generated Krylov contexts restore joint state faithfulness. DeltaM then introduces a separate five-dimensional output kernel."
+  },
+  "fixed_v_source_fiber": {
+    "rule": "a=t^2, w=1/t, v^2=2, g_F f_phys/v=sqrt(3)/t",
+    "pencil_coefficient_tangent_at_t_1": [
+      "2525705734/20000125",
+      "-341173642780284/62500390625",
+      "113553948078010518/1562509765625",
+      "-15468244033300397056/39062744140625",
+      "7125421051761721344/7812548828125",
+      "-46080967386857472/62500390625"
+    ],
+    "tangent_rank": 1,
+    "ratio_derivative_at_t_1": "-sqrt(3)",
+    "formal_scalar_kernel_tangent_at_zero": "1/9682560000",
+    "t_direction_in_formal_scalar_kernel": false,
+    "physical_DeltaM_survival": "unproved until the calibrated bilocal hadronic functional is supplied",
+    "instrument_class_changed": false
+  },
+  "theorem": "The frozen Ward-complete kernel has an exact minimal degree-six source system pencil. One instantaneous source command reaches only a line, while the six source-generated Krylov contexts are jointly rank six. The six-port state readout is faithful, but scalar DeltaM compression has rank one and a five-dimensional kernel. Along WP537's fixed-v source fiber the pencil and target ratio move with one source parameter without changing the six-port instrument class. The formal zero-momentum scalar current does not kill the t direction, although survival through the uncalibrated hadronic DeltaM functional is not established.",
+  "classification": "Source dynamics supplies a one-dimensional moving family, the contextual pencil is algebraically jointly faithful, and the proposed six-port readout is separating. None of these facts numerically selects t or realizes the contexts as calibrated physical operations.",
+  "smallest_exact_falsifier": "At t=1 the normalized denominator-coefficient tangent is nonzero and rank one, while d(sqrt(3)/t)/dt=-sqrt(3); the source fiber moves both the pole pencil and target ratio inside the same six-state instrument class.",
+  "remaining_instrument_gate": "Show that six independent Krylov or equivalent resolvent contexts are executable source-derived lattice preparations with one renormalized 48-real covariance. Algebraic controllability alone is not experimental control.",
+  "remaining_selector_gate": "Derive an independent source equation that fixes t before using any clock-ratio or pole readout, then recompute the complex pencil and calibrated likelihood at that selected point.",
+  "checks": {
+    "dependencies_passed": true,
+    "pencil_has_six_states": true,
+    "real_denominator_is_squarefree": true,
+    "constant_numerator_is_coprime_to_denominator": true,
+    "companion_transfer_reconstructs_wp520": true,
+    "single_source_command_is_pointwise_rank_one": true,
+    "six_port_state_readout_has_rank_six": true,
+    "six_source_generated_contexts_are_jointly_rank_six": true,
+    "frozen_scalar_kernel_is_observable_as_degree_six": true,
+    "delta_m_compression_is_rank_one": true,
+    "delta_m_kernel_has_dimension_five": true,
+    "nonzero_six_port_state_collapses_in_delta_m": true,
+    "fixed_v_source_fiber_moves_the_pencil": true,
+    "fixed_v_source_fiber_is_one_dimensional": true,
+    "same_fiber_moves_the_target_ratio": true,
+    "formal_scalar_current_does_not_kill_t_at_zero_momentum": true,
+    "complex_width_completion_preserves_pencil_dimension": true
+  },
+  "passed": true
+}

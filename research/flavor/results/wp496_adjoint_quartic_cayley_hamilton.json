@@ -1,0 +1,40 @@
+{
+  "work_package": "WP496",
+  "domain": "parity-even quartics of three traceless 3x3 adjoints with SO(3)_P indices contracted by Kronecker deltas",
+  "polarized_identity": "4 Tr(A^2 B^2)+2 Tr(ABAB)=Tr(A^2)Tr(B^2)+2 Tr(AB)^2",
+  "basis": {
+    "I_rad": "(Tr G_X)^2",
+    "I_gram": "Tr(G_X^2)",
+    "I_comm": "sum_{i<j} ||[X_i,X_j]||_F^2"
+  },
+  "single_trace_reduction": {
+    "C=sum_ij Tr(X_i^2 X_j^2)": "(2*I_comm + 2*I_gram + I_rad)/6",
+    "D=sum_ij Tr(X_i X_j X_i X_j)": "-(4*I_comm - 2*I_gram - I_rad)/6"
+  },
+  "spin_one_vacuum": {
+    "I_rad": "36*mu**4",
+    "I_gram": "12*mu**4",
+    "I_comm": "6*mu**4",
+    "C": "12*mu**4",
+    "D": "6*mu**4"
+  },
+  "classification": "After WP495 adds I_gram, the delta-contracted parity-even pure-adjoint quartic sector is algebraically closed; no further single-trace coordinate is independent.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": null,
+  "smallest_exact_falsifier": "The polarized Cayley-Hamilton identity reduces both apparent single-trace words uniquely to I_rad, I_gram, and I_comm.",
+  "remaining_gate": "Complete the cyclic-row connector invariant census and mixed tensor portals, then form the full scalar Hessian with independent running coefficients.",
+  "checks": {
+    "wp447_dependency_passed": true,
+    "wp495_dependency_passed": true,
+    "generic_traceless_matrices_are_traceless": true,
+    "polarized_cayley_hamilton_identity_is_exact": true,
+    "C_minus_D_reconstructs_commutator_basis": true,
+    "four_C_plus_two_D_reconstructs_double_traces": true,
+    "spin_one_C_matches_reduction": true,
+    "spin_one_D_matches_reduction": true,
+    "spin_one_commutator_is_six": true,
+    "three_invariant_basis_has_full_reduction_rank": true
+  },
+  "passed": true
+}

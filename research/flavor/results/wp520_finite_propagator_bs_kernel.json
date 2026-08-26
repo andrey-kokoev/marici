@@ -1,0 +1,64 @@
+{
+  "work_package": "WP520",
+  "source_domain": "WP516 aligned propagating pole witness; spacelike current exchange before hadronic convolution",
+  "aligned_bs_kernel": {
+    "exact_witness_rational_function": "123936768/((15625*z**3 - 493300*z**2 + 2874619*z - 3873024)*(2500015625*z**3 - 78928115075*z**2 + 459939206528*z - 619683840000))",
+    "zero_momentum_value": "1/19365120000",
+    "wp513_expected_zero_momentum_value": "1/19365120000",
+    "normalized_spacelike_form_factor": "2400050384732160000/((15625*q_squared**3 + 493300*q_squared**2 + 2874619*q_squared + 3873024)*(2500015625*q_squared**3 + 78928115075*q_squared**2 + 459939206528*q_squared + 619683840000))",
+    "normalized_q_squared_slope_at_zero_GeV^-2": "-2395516267/1613760000"
+  },
+  "diagnostic_spacelike_points": [
+    {
+      "spacelike_q_GeV": 0.01,
+      "normalized_kernel": 0.9998515708225364,
+      "relative_contact_error": 0.00014842917746359994
+    },
+    {
+      "spacelike_q_GeV": 0.05,
+      "normalized_kernel": 0.9962976412986025,
+      "relative_contact_error": 0.00370235870139743
+    },
+    {
+      "spacelike_q_GeV": 0.1,
+      "normalized_kernel": 0.9852944070821046,
+      "relative_contact_error": 0.01470559291789536
+    },
+    {
+      "spacelike_q_GeV": 0.5,
+      "normalized_kernel": 0.7019380017571861,
+      "relative_contact_error": 0.2980619982428138
+    },
+    {
+      "spacelike_q_GeV": 1.0,
+      "normalized_kernel": 0.2848641038396362,
+      "relative_contact_error": 0.7151358961603639
+    },
+    {
+      "spacelike_q_GeV": 5.0,
+      "normalized_kernel": 3.8011473909518764e-05,
+      "relative_contact_error": 0.9999619885260905
+    }
+  ],
+  "form_factor_at_lightest_pole_mass_scale": 0.9997842551492403,
+  "classification": "Exact finite-propagator source kernel and a falsifier of momentum-independent contact transport at the WP516 witness. This is not yet a hadronic DeltaM_s instrument because no bound-state momentum functional is declared.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "Source-side momentum-dependent probe only. A lattice or other calibrated bilocal DeltaB=2 matrix element is required to compose it with DeltaM_s.",
+  "smallest_exact_falsifier": "The exact normalized q^2 slope at zero is nonzero, whereas a single local WET coefficient has zero momentum slope. The 0.5 GeV diagnostic already differs from contact by more than ten percent.",
+  "remaining_gate": "Declare and calibrate the bilocal neutral-B matrix-element functional for the finite propagator, including threshold running and uncertainties; then compare its DeltaM_s prediction with WP511.",
+  "checks": {
+    "wp508_dependency_passed": true,
+    "wp513_dependency_passed": true,
+    "wp516_dependency_passed": true,
+    "wp519_dependency_passed": true,
+    "aligned_bs_kernel_uses_f6_minus_f7_over_four": true,
+    "zero_momentum_kernel_recovers_wp513_shape": true,
+    "normalized_form_factor_is_one_at_zero": true,
+    "finite_momentum_slope_is_nonzero": true,
+    "contact_error_is_resolved_at_one_tenth_GeV": true,
+    "contact_error_is_order_one_at_one_GeV": true,
+    "contact_error_exceeds_one_tenth_at_half_GeV": true
+  },
+  "passed": true
+}

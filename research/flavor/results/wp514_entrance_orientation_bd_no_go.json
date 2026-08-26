@@ -1,0 +1,61 @@
+{
+  "work_package": "WP514",
+  "source_orientation": {
+    "constructor": "connector-mediated real 1-3 rotation fixed by the entrance amplitude ray (a,b)",
+    "matrix": [
+      [
+        "a/sqrt(a**2 + b**2)",
+        "0",
+        "b/sqrt(a**2 + b**2)"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "-b/sqrt(a**2 + b**2)",
+        "0",
+        "a/sqrt(a**2 + b**2)"
+      ]
+    ],
+    "sd_shape": "-b*(12*a**5*mu**2 + 4*a**5*s**2 + 12*a**3*b**2*mu**2 + 4*a**3*b**2*s**2 + 12*a**3*mu**2*s**2 - 3*a**2*b*mu**2*s**2 + 6*a*b**2*mu**2*s**2 - 3*b**3*mu**2*s**2)/(12*a**2*mu**2*s**2*(a**2 + b**2)**2)",
+    "bd_shape": "2*a**2*(3*b**2*mu**2 + b**2*s**2 + 3*mu**2*s**2)/(3*mu**2*s**2*(a**2 + b**2)**2)",
+    "bs_shape": "b*(12*a**5*mu**2 + 4*a**5*s**2 + 12*a**3*b**2*mu**2 + 4*a**3*b**2*s**2 + 12*a**3*mu**2*s**2 + 3*a**2*b*mu**2*s**2 + 6*a*b**2*mu**2*s**2 + 3*b**3*mu**2*s**2)/(12*a**2*mu**2*s**2*(a**2 + b**2)**2)"
+  },
+  "exact_floor": {
+    "matched_bd_times_v_squared": "2*a**2*(3*b**2*mu**2 + b**2*s**2 + 3*mu**2*s**2)/(3*mu**2*s**2*(a**2 + b**2))",
+    "strict_lower_chain": "|x_d| v_phys^2 > 2 a^2/(a^2+b^2) > 2/65",
+    "v_phys_GeV": "246",
+    "minimum_abs_xd_GeV^-2": "1/1966770"
+  },
+  "instrument_boundary": {
+    "boundary_delta_md_prediction": 2.4039901219021345e-07,
+    "measurement": 3.334e-13,
+    "frozen_total_sigma": 2.2231201082450977e-14,
+    "boundary_absolute_pull": 10813571.33600762,
+    "quadratic_vertex_xd_GeV^-2": -5.248392626054214e-13
+  },
+  "classification": "Exact no-go for the connector-mediated entrance-ray orientation: complete quark-only vector-pair width closure and calibrated DeltaM_d viability cannot coexist at the observed electroweak norm.",
+  "selector": false,
+  "rigidifier": true,
+  "instrument": "WP511 executable DeltaM_d likelihood",
+  "smallest_exact_falsifier": "Closure forces |x_d|>1/1966770 GeV^-2 for the entrance-defined orientation; the least-magnitude boundary predicts DeltaM_d about 2.40e-7.",
+  "remaining_gate": "The two simplest source-derived orientations are now closed. A viable nonaligned law requires additional independently declared geometry, or the programme must abandon quark-only closure and calculate open-channel widths.",
+  "checks": {
+    "wp508_dependency_passed": true,
+    "wp511_dependency_passed": true,
+    "wp513_dependency_passed": true,
+    "entrance_orientation_is_orthogonal": true,
+    "entrance_defined_bd_shape_is_exact": true,
+    "entrance_defined_bd_shape_is_strictly_positive": true,
+    "matched_bd_floor_has_positive_remainder": true,
+    "closure_implies_orientation_floor_above_two_over_sixty_five": true,
+    "electroweak_calibrated_bd_current_floor_is_exact": true,
+    "delta_md_squared_is_quadratic_on_real_ray": true,
+    "quadratic_vertex_lies_outside_closure_allowed_negative_ray": true,
+    "response_grows_beyond_closure_boundary": true,
+    "least_entrance_oriented_closure_current_is_excluded_beyond_ten_million_sigma": true
+  },
+  "passed": true
+}

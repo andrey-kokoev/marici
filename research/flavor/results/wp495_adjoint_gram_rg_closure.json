@@ -1,0 +1,65 @@
+{
+  "work_package": "WP495",
+  "domain": "three Hermitian SU(3)_F adjoints transforming as an SO(3)_P vector, with canonical generator normalization",
+  "invariants": {
+    "I_rad_X": "(Tr G_X)^2",
+    "I_gram_X": "Tr(G_X^2)",
+    "I_comm_X": "sum_{i<j} ||[X_i,X_j]||_F^2",
+    "port_gauge_support": "4 (I_rad_X-I_gram_X) in component-vector normalization"
+  },
+  "hostile_pair": {
+    "parallel": "X_1=T_3, X_2=T_3, X_3=0",
+    "orthogonal": "X_1=T_3, X_2=T_8, X_3=0",
+    "shared": {
+      "I_rad_X": "1",
+      "I_comm_X": "0"
+    },
+    "different": {
+      "parallel_I_gram_X": "1",
+      "orthogonal_I_gram_X": "1/2"
+    }
+  },
+  "spin_one_vacuum": {
+    "G_X": [
+      [
+        "2*mu**2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "2*mu**2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "2*mu**2"
+      ]
+    ],
+    "I_rad_X": "36*mu**4",
+    "I_gram_X": "12*mu**4",
+    "matrix_normalized_port_shape": "24*mu**4"
+  },
+  "new_compulsory_invariant": "Tr(G_X^2) with an independent running coefficient",
+  "classification": "The WP447 radial-plus-commutator quartic basis is not closed under SO(3)_P gauge support after port gauging.",
+  "selector": false,
+  "rigidifier": false,
+  "instrument": null,
+  "smallest_exact_falsifier": "Parallel T_3,T_3 and orthogonal T_3,T_8 configurations have identical radial invariant one and commutator invariant zero, but Gram-square invariants one and one-half.",
+  "remaining_gate": "Add Tr(G_X^2), complete the independent SU(3)_F single-trace quartic census and cyclic-row connector census, then recompute the vacuum Hessian and thresholds.",
+  "checks": {
+    "wp447_dependency_passed": true,
+    "wp494_dependency_passed": true,
+    "hostile_grams_are_distinct": true,
+    "hostile_pair_has_equal_radial_quartic": true,
+    "hostile_pair_has_zero_commutator_square": true,
+    "hostile_pair_has_distinct_gram_square": true,
+    "port_gauge_shape_distinguishes_pair": true,
+    "spin_one_vacuum_gram_is_isotropic": true,
+    "spin_one_vacuum_radial_is_thirty_six": true,
+    "spin_one_vacuum_gram_square_is_twelve": true,
+    "spin_one_port_gauge_shape_is_twenty_four": true
+  },
+  "passed": true
+}
