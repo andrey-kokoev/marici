@@ -132,7 +132,7 @@ with reflection acting by
 A scalar zero satisfies
 
 \[
-1+left(z^2-\frac14\right)K(z)=0.
+1+\left(z^2-\frac14\right)K(z)=0.
 \]
 
 This equation constrains only the even channel.  It places no direct condition
