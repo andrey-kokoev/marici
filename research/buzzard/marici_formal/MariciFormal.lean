@@ -5,6 +5,7 @@ import MariciFormal.AuditRecord
 import MariciFormal.AuthorityAudit
 import MariciFormal.FiniteObservation
 import MariciFormal.FiniteInstrumentReadout
+import MariciFormal.FiniteCompletionSewing
 import MariciFormal.CompletionKernel
 import MariciFormal.ResourceClosure
 import MariciFormal.TemporalAuthority
