@@ -1,0 +1,109 @@
+{
+  "work_package": "WP566",
+  "scope": "currently admitted flavor artifacts and validated interfaces through WP565",
+  "required_capabilities": [
+    "covariance_nuisance_uncertainty_model",
+    "detector_readout_and_calibration",
+    "invariant_physical_map",
+    "physical_preparation_and_scattering",
+    "source_four_point",
+    "uncertainty_supported_nonzero_pullback",
+    "validated_same_domain_source_interface"
+  ],
+  "route_capabilities": {
+    "atlas_hs3": [
+      "covariance_nuisance_uncertainty_model",
+      "detector_readout_and_calibration",
+      "invariant_physical_map",
+      "physical_preparation_and_scattering",
+      "source_four_point"
+    ],
+    "cms_official": [
+      "covariance_nuisance_uncertainty_model",
+      "detector_readout_and_calibration",
+      "invariant_physical_map",
+      "physical_preparation_and_scattering",
+      "source_four_point"
+    ],
+    "cms_public_code_surrogate": [
+      "invariant_physical_map",
+      "source_four_point"
+    ],
+    "cross_experiment_gram": [
+      "invariant_physical_map",
+      "source_four_point"
+    ]
+  },
+  "route_missing_capabilities": {
+    "atlas_hs3": [
+      "uncertainty_supported_nonzero_pullback",
+      "validated_same_domain_source_interface"
+    ],
+    "cms_official": [
+      "uncertainty_supported_nonzero_pullback",
+      "validated_same_domain_source_interface"
+    ],
+    "cms_public_code_surrogate": [
+      "covariance_nuisance_uncertainty_model",
+      "detector_readout_and_calibration",
+      "physical_preparation_and_scattering",
+      "uncertainty_supported_nonzero_pullback",
+      "validated_same_domain_source_interface"
+    ],
+    "cross_experiment_gram": [
+      "covariance_nuisance_uncertainty_model",
+      "detector_readout_and_calibration",
+      "physical_preparation_and_scattering",
+      "uncertainty_supported_nonzero_pullback",
+      "validated_same_domain_source_interface"
+    ]
+  },
+  "complete_routes": [],
+  "authority_edges": [
+    [
+      "atlas_calibrated_templates",
+      "atlas_likelihood"
+    ],
+    [
+      "atlas_likelihood",
+      "uncertainty_supported_measurement"
+    ],
+    [
+      "cms_official_likelihood",
+      "uncertainty_supported_measurement"
+    ],
+    [
+      "four_point_source",
+      "invariant_portal"
+    ],
+    [
+      "invariant_portal",
+      "public_generator"
+    ]
+  ],
+  "end_to_end_paths": [],
+  "classification": "no admitted composable path realizes the formal four-point derivative as an uncertainty-supported flavor measurement",
+  "contextual_partition": "the largest admitted flavor probe fixes z and retains the quartic-source fiber",
+  "weak_basis_descent": "passes before the missing source-to-calibrated-experiment interface",
+  "smallest_exact_falsifier": {
+    "z": "3/4",
+    "kappa_t": "1/2",
+    "portal_residual": "0",
+    "source_response": "9/(16*lambda_h)",
+    "cms_slice_residual": "-1/2",
+    "detector_completion_difference": "-u/2"
+  },
+  "remaining_gate": "one publication-bound portal-domain likelihood with source-to-event, detector, calibration, observed-data, nuisance-covariance, and uncertainty-resolution provenance",
+  "checks": {
+    "capability_contract_has_seven_independent_fields": true,
+    "no_admitted_route_satisfies_complete_contract": true,
+    "every_route_has_an_explicit_missing_field": true,
+    "authority_graph_nodes_are_declared": true,
+    "no_validated_end_to_end_authority_path": true,
+    "hostile_point_obeys_portal_relation": true,
+    "hostile_point_has_nonzero_source_response": true,
+    "hostile_point_is_outside_official_cms_slice": true,
+    "detector_completions_disagree_at_hostile_point": true
+  },
+  "passed": true
+}

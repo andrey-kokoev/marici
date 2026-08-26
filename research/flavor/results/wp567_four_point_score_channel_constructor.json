@@ -1,0 +1,161 @@
+{
+  "work_package": "WP567",
+  "classification": "source-derived score plus independently calibrated detector channel is a preregisterable separator constructor, not a selector",
+  "source": {
+    "baseline": [
+      [
+        "1/2"
+      ],
+      [
+        "1/2"
+      ]
+    ],
+    "score": [
+      [
+        "1"
+      ],
+      [
+        "-1"
+      ]
+    ],
+    "tangent": [
+      [
+        "1/2"
+      ],
+      [
+        "-1/2"
+      ]
+    ],
+    "fisher": "1"
+  },
+  "channels": {
+    "keep": {
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "baseline": [
+        [
+          "1/2"
+        ],
+        [
+          "1/2"
+        ]
+      ],
+      "tangent": [
+        [
+          "1/2"
+        ],
+        [
+          "-1/2"
+        ]
+      ],
+      "detector_score": [
+        [
+          "1"
+        ],
+        [
+          "-1"
+        ]
+      ],
+      "fisher": "1"
+    },
+    "noisy": {
+      "matrix": [
+        [
+          "3/4",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ]
+      ],
+      "baseline": [
+        [
+          "1/2"
+        ],
+        [
+          "1/2"
+        ]
+      ],
+      "tangent": [
+        [
+          "1/4"
+        ],
+        [
+          "-1/4"
+        ]
+      ],
+      "detector_score": [
+        [
+          "1/2"
+        ],
+        [
+          "-1/2"
+        ]
+      ],
+      "fisher": "1/4"
+    },
+    "erase": {
+      "matrix": [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "baseline": [
+        [
+          "1/2"
+        ],
+        [
+          "1/2"
+        ]
+      ],
+      "tangent": [
+        [
+          "0"
+        ],
+        [
+          "0"
+        ]
+      ],
+      "detector_score": [
+        [
+          "0"
+        ],
+        [
+          "0"
+        ]
+      ],
+      "fisher": "0"
+    }
+  },
+  "faithfulness_criterion": "K diag(p0) s is nonzero, equivalently detector directional Fisher information is positive",
+  "smallest_exact_falsifier": "keep and erase channels have identical nominal detector distributions but directional Fisher information 1 and 0",
+  "contextual_partition": "a calibrated channel separates source points only modulo the kernel of its conditional-expectation map",
+  "weak_basis_descent": "passes because the entrance score is taken along an invariant physical16 path and the exit is an event probability",
+  "remaining_gate": "an independently calibrated publication-bound portal-score detector channel with null outcomes, covariance, nuisance response, and uncertainty resolution",
+  "checks": {
+    "source_score_is_centered": true,
+    "all_detector_channels_are_column_stochastic": true,
+    "all_channels_have_same_nominal_detector_distribution": true,
+    "keep_channel_preserves_full_fisher_information": true,
+    "noisy_channel_retains_one_quarter_information": true,
+    "erase_channel_kills_source_tangent": true,
+    "erase_channel_has_zero_fisher_information": true,
+    "data_processing_holds_for_all_channels": true,
+    "positive_fisher_matches_nonzero_transported_tangent": true
+  },
+  "passed": true
+}

@@ -1,0 +1,71 @@
+{
+  "work_package": "WP561",
+  "classification": "HS3 supplies detector nuisance covariance for fixed templates, but source pullback is absent; single-Higgs plus HHH is algebraically rank restoring",
+  "release": {
+    "doi": "10.17182/hepdata.157024.v1/r1",
+    "archive_bytes": 6616140,
+    "archive_sha256": "30954c386e381f943bbbb430ecf4d263f5d9279b3e91e721ff9ce09de4314036",
+    "workspace_count": 118,
+    "inspected_workspace": "Likelihood_TRSM_X400_S275.json",
+    "inspected_workspace_sha256": "f3eacf5d38c82dbb2e86d08b7849bc525dcba993f22634682cde997bd096eb04",
+    "analysis_count": 2,
+    "distribution_count": 3,
+    "data_object_count": 4,
+    "nuisance_parameter_count": 139,
+    "physics_parameter_of_interest": "SigXsecOverSM6j",
+    "contains_lambda_s": false,
+    "contains_mixing_coordinate": false
+  },
+  "source_coordinates": [
+    "lambda_s",
+    "z = sin(theta)^2"
+  ],
+  "quartic_readout": "lambda_s*z**2/lambda_H",
+  "one_probe_jacobian": [
+    [
+      "z**2/lambda_H",
+      "2*lambda_s*z/lambda_H"
+    ]
+  ],
+  "one_probe_gram_determinant": "0",
+  "hostile_pair": [
+    [
+      "1",
+      "1/4"
+    ],
+    [
+      "16",
+      "1/16"
+    ]
+  ],
+  "joint_readouts": [
+    "1 - z",
+    "lambda_s*z**2/lambda_H"
+  ],
+  "joint_jacobian": [
+    [
+      "0",
+      "-1"
+    ],
+    [
+      "z**2/lambda_H",
+      "2*lambda_s*z/lambda_H"
+    ]
+  ],
+  "joint_jacobian_determinant": "z**2/lambda_H",
+  "remaining_gate": "portal-complete HHH templates plus a joint or proven-independent single-Higgs/HHH covariance",
+  "checks": {
+    "hs3_has_a_real_nuisance_model": true,
+    "workspace_poi_is_fixed_template_normalization": true,
+    "source_quartic_coordinate_is_absent": true,
+    "mixing_coordinate_is_absent": true,
+    "one_detector_coordinate_has_rank_one": true,
+    "one_probe_pullback_gram_is_singular": true,
+    "hostile_pair_has_equal_quartic_readout": true,
+    "hostile_pair_has_distinct_sources": true,
+    "complementary_probe_restores_rank_two": true,
+    "joint_determinant_is_nonzero_on_domain": true,
+    "zero_mixing_is_exact_rank_falsifier": true
+  },
+  "passed": true
+}

@@ -1,0 +1,53 @@
+{
+  "work_package": "WP562",
+  "classification": "detector-independent complementary probe and covariance acceptance theorem; ATLAS portal-complete curvature remains uncalibrated",
+  "cms_instrument": {
+    "record": "CMS HIG-21-018",
+    "integrated_luminosity_fb_inverse": 138,
+    "inclusive_signal_yield": "1.014 +0.055 -0.053",
+    "symmetrized_sigma": "27/500"
+  },
+  "source_coordinates": [
+    "lambda_s",
+    "z = sin(theta)^2"
+  ],
+  "readouts": [
+    "1 - z",
+    "lambda_s*z**2/lambda_H"
+  ],
+  "joint_covariance": [
+    [
+      "a**2*tau**2 + sigma_r**2",
+      "a*b*tau**2"
+    ],
+    [
+      "a*b*tau**2",
+      "b**2*tau**2 + sigma_q**2"
+    ]
+  ],
+  "covariance_determinant": "a**2*sigma_q**2*tau**2 + b**2*sigma_r**2*tau**2 + sigma_q**2*sigma_r**2",
+  "joint_jacobian": [
+    [
+      "0",
+      "-1"
+    ],
+    [
+      "z**2/lambda_H",
+      "2*lambda_s*z/lambda_H"
+    ]
+  ],
+  "joint_jacobian_determinant": "z**2/lambda_H",
+  "weighted_gram_determinant": "z**4/(lambda_H**2*(a**2*sigma_q**2*tau**2 + b**2*sigma_r**2*tau**2 + sigma_q**2*sigma_r**2))",
+  "remaining_gate": "portal-complete ATLAS HHH bin interpolation, calibrated sigma_q and shared-theory loading, then smallest-eigenvalue resolution test",
+  "checks": {
+    "cms_symmetrized_uncertainty_is_exact": true,
+    "joint_covariance_is_symmetric": true,
+    "shared_nuisance_determinant_has_no_negative_term": true,
+    "joint_response_has_rank_two": true,
+    "joint_jacobian_determinant_is_exact": true,
+    "weighted_gram_determinant_is_exact": true,
+    "zero_mixing_collapses_the_gram": true,
+    "zero_shared_theory_limit_remains_positive_form": true
+  },
+  "passed": true
+}

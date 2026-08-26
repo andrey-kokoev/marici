@@ -1,0 +1,49 @@
+{
+  "work_package": "WP560",
+  "classification": "source-to-quartic interface plus executed candidate readout, but no common mixed-scalar likelihood or covariance; not an admitted end-to-end instrument",
+  "source_vertex": "6*lambda_s*sin_theta**4",
+  "portal_readout": "1 + lambda_s*sin_theta**4/lambda_H",
+  "portal_jacobian": "sin_theta**4/lambda_H",
+  "admitted_domain": [
+    "lambda_H > 0",
+    "sin_theta != 0",
+    "kappa_3 = 1"
+  ],
+  "experimental_record": {
+    "center_of_mass_energy_TeV": 13,
+    "integrated_luminosity_fb_inverse": 126,
+    "final_state": "six bottom quarks",
+    "kappa_3_fixed": 1,
+    "kappa_4_interval_95_percent": [
+      -230,
+      240
+    ],
+    "profile_likelihood_reported": true,
+    "portal_complete_signal_model_available": false,
+    "transportable_portal_covariance_available": false
+  },
+  "interface_fields": {
+    "physical_preparation": true,
+    "quartic_sensitive_scattering": true,
+    "physical_readout": true,
+    "exposure_and_background_calibration": true,
+    "uncertainty_support": true,
+    "common_source_likelihood_domain": false,
+    "transportable_covariance": false
+  },
+  "supported_interface_field_count": 5,
+  "total_interface_field_count": 7,
+  "smallest_exact_falsifier": "sin_theta = 0",
+  "remaining_gate": "mixed-scalar signal and detector model with common-frame nuisance-profiled likelihood and covariance",
+  "checks": {
+    "source_four_point_vertex_is_derived": true,
+    "portal_jacobian_is_nonzero_on_declared_domain": true,
+    "zero_mixing_is_exact_blind_falsifier": true,
+    "published_interval_is_ordered": true,
+    "five_of_seven_interface_fields_are_supported": true,
+    "kappa_only_likelihood_does_not_cover_mixed_scalar_source": true,
+    "covariance_gate_remains_open": true,
+    "confidence_interval_is_not_relabelled_covariance": true
+  },
+  "passed": true
+}

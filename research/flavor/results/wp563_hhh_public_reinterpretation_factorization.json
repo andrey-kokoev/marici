@@ -1,0 +1,52 @@
+{
+  "work_package": "WP563",
+  "classification": "public executable detector suffix with an underdetermined source-reweight prefix and missing HS3 validation join",
+  "public_release": {
+    "simple_analysis_commit": "5a33033d788619bb1039a5b8116fdf43c46fc72a",
+    "analysis_source_blob": "c28e56eaa988327b6a3d9da791a8c55db0c4a3f5",
+    "analysis_source_files": 1,
+    "onnx_models": 6,
+    "scaling_json_files": 6,
+    "total_higp_artifacts": 13,
+    "hs3_fixed_workspaces": 118,
+    "basis_event_samples": 0,
+    "reweight_cards": 0,
+    "parameterized_hs3_workspaces": 0,
+    "validated_public_to_hs3_transfer": 0
+  },
+  "pipeline_coverage": {
+    "source_to_basis_weights": false,
+    "events_to_public_scores": true,
+    "public_scores_to_hs3_templates": false,
+    "fixed_template_likelihood": true,
+    "parameterized_source_likelihood": false
+  },
+  "hostile_fixed_template": [
+    "w01",
+    "w02"
+  ],
+  "hostile_derivatives": {
+    "completion_a": [
+      "0",
+      "0"
+    ],
+    "completion_b": [
+      "1",
+      "-1"
+    ]
+  },
+  "smallest_exact_falsifier": "w_A(x)=w0 and w_B(x)=w0+x(1,-1) agree at x=0 but have different score-bin derivatives",
+  "remaining_gate": "release the coupling basis/reweight implementation and validated public-score-to-HS3 template transfer, or publish a parameterized likelihood",
+  "checks": {
+    "public_suffix_artifact_count_is_exact": true,
+    "public_score_operator_is_executable": true,
+    "fixed_hs3_likelihood_exists": true,
+    "source_reweight_prefix_is_absent": true,
+    "public_to_hs3_validation_join_is_absent": true,
+    "parameterized_source_likelihood_is_absent": true,
+    "hostile_completions_match_released_template": true,
+    "hostile_completions_have_distinct_derivatives": true,
+    "hostile_nonzero_derivative_is_exact": true
+  },
+  "passed": true
+}
