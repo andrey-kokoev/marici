@@ -11,8 +11,7 @@ The prime-Fock connected label is a pair `(p,k)`.  Its canonical scale is
 Before spectral evaluation, define the positive atomic scale current
 
 \[
- \boxed{
- \mu_k=\frac1k\sum_p p^{-k/2}\delta_{k\log p}.}
+ \mu_k=\frac1k\sum_p p^{-k/2}\delta_{k\log p}.
 \]
 
 The oriented Tate boundary value is recovered by the odd character readout
@@ -26,9 +25,8 @@ Thus the missing boundary incidence operation is not a fitted scalar phase.
 It is the pushforward
 
 \[
- \boxed{
  I_k:(p,k)\longmapsto
- \frac1k p^{-k/2}\delta_{k\log p}}
+ \frac1k p^{-k/2}\delta_{k\log p}
 \]
 
 from the prime-Fock occupation module to atomic currents on the common scale
