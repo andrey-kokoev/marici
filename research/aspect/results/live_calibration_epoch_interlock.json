@@ -1,0 +1,37 @@
+{
+  "schema": "marici.aspect.live_calibration_epoch_interlock.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "live_shifted_record_is_one_two": true,
+    "stale_decoder_confidently_returns_seventeen": true,
+    "same_record_is_valid_for_stale_source_seventeen": true,
+    "record_alone_cannot_identify_calibration_epoch": true,
+    "live_epoch_decoder_recovers_source_one": true,
+    "epoch_interlock_rejects_before_decode": true,
+    "certified_zero_reference_recovers_phase_origin": true,
+    "refreshed_decoder_recovers_source_one": true,
+    "reference_tone_is_an_independent_source_operation": true,
+    "band_and_port_labels_remain_required": true
+  },
+  "source": 1,
+  "shifted_record": [
+    1,
+    2
+  ],
+  "stale_decoded": 17,
+  "live_decoded": 1,
+  "captured_epoch": "epoch-0",
+  "live_epoch": "epoch-1",
+  "reference_record": [
+    0,
+    1
+  ],
+  "typed_boundary": {
+    "source": "integer frequency in the certified twenty-class band plus an optional independently certified zero reference",
+    "constructor": "two labelled clocks bound to a live rate, phase, port-order, and timebase epoch",
+    "detector": "ordered residue pair with epoch token validated before CRT decoding",
+    "hostile": "the shifted record for source one is a valid stale-frame record for source seventeen",
+    "completion": "the finite interlock does not certify physical band support, clock authority, stochastic drift, or continuous-frequency decoding"
+  }
+}

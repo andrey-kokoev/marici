@@ -1,0 +1,54 @@
+{
+  "schema": "marici.aspect.finite_bandwidth_continuum_completion.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "finite_parseval_identity": true,
+    "sampling_aliases_distinct_continuum_frequencies": true,
+    "finite_band_projection_has_out_of_band_kernel": true,
+    "causal_impulse_response_respects_order": true,
+    "advanced_term_violates_causal_independence": true,
+    "finite_window_omits_exact_tail_energy": true,
+    "inverse_bound_family_exhibits_exact_cutoff_growth": true,
+    "finite_prefix_does_not_fix_infinite_time_mean": true
+  },
+  "residuals": {
+    "time_energy": "6",
+    "frequency_energy_normalized": "6",
+    "aliased_normalized_frequencies": [
+      "1/4",
+      "5/4"
+    ],
+    "out_of_band_difference": "6",
+    "advanced_present_output_difference": "1",
+    "three_sample_energy": "21/16",
+    "omitted_tail_energy": "1/48",
+    "inverse_bound_prefix": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "inverse_bound_formula": "for epsilon=1/n, ||K(epsilon)^-1||=n",
+    "infinite_means_for_equal_prefix": [
+      "0",
+      "1"
+    ]
+  },
+  "completion_contract": [
+    "function spaces and measures",
+    "Fourier/sample/window normalization",
+    "bandlimit or anti-alias filter",
+    "causal impulse response",
+    "uniform operator and tail bounds",
+    "convergence topology and error estimate",
+    "detector response and spectral noise law",
+    "environment and kernel typing",
+    "singularity and limiting-absorption disposition"
+  ],
+  "claim_boundary": "finite exact gates and counterexamples only; continuum completion remains conditional"
+}

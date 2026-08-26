@@ -1,0 +1,28 @@
+{
+  "schema": "marici.aspect.calibrated_six_port_scale_identification_instrument.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "six_unreferenced_channels_have_rank_one": true,
+    "common_scale_is_an_exact_instrument_gauge": true,
+    "hostile_pair_has_same_unreferenced_record": true,
+    "hostile_pair_has_different_physical_target": true,
+    "independent_reference_raises_readout_rank_to_two": true,
+    "reference_separates_the_hostile_pair": true,
+    "existing_source_kernel_changes_flavor_target": true,
+    "old_source_row_is_not_transverse": true,
+    "hypothetical_new_source_law_is_transverse": true,
+    "calibration_does_not_change_source_rank_or_select": true
+  },
+  "ranks": {
+    "unreferenced_readout": 1,
+    "referenced_readout": 2
+  },
+  "typed_boundary": {
+    "instrument": "six pole channels plus an independently calibrated optical frequency reference",
+    "identifies": "physical scale and instrument unit on the two-coordinate readout quotient",
+    "does_not_select": "the flavor source coordinate or a transverse source equation",
+    "hostile": "common scaling leaves every unreferenced pole channel unchanged while changing the physical target",
+    "completion": "after a source selector exists, remeasure poles, widths, and residues in the calibrated frame"
+  }
+}

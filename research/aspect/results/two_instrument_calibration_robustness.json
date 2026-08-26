@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.two_instrument_calibration_robustness.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "impedance_margin_exceeds_hostile_norm": true,
+    "shifted_static_impedance_remains_positive": true,
+    "dark_zero_moves_under_small_isotropic_calibration": true,
+    "moved_dark_zero_is_exact": true,
+    "denominator_remains_nonzero_at_moved_dark_zero": true,
+    "forbidden_leakage_above_noise_is_detectable": true,
+    "nonzero_leakage_below_noise_is_not_certified": true,
+    "allowed_reverse_extension_does_not_enter_horizontal_residual": true,
+    "exact_order_four_fixture_holds": true,
+    "small_holonomy_perturbation_breaks_exact_torsion": true
+  },
+  "margins": {
+    "static_impedance_minimum_eigenvalue": "1/5",
+    "tested_negative_shift": "-1/10",
+    "post_shift_minimum_eigenvalue": "1/10",
+    "amplitude_noise_floor": "1/1000",
+    "detectable_forbidden_coupling": "1/100",
+    "unresolved_forbidden_coupling": "1/10000"
+  },
+  "residuals": {
+    "perturbed_numerator_at_old_dark_coordinate": "87/125000",
+    "perturbed_numerator_at_new_dark_coordinate": "0",
+    "denominator_at_new_dark_coordinate": "119/20",
+    "perturbed_holonomy_fourth_power_nonzero_entries": 4
+  },
+  "typed_boundary": {
+    "robust": "denominator accretivity and above-threshold directional leakage",
+    "fragile": "exact dark-zero coordinate and exact finite-order torsion",
+    "missing": "statistical coverage, covariance, fabrication data, and physical bath calibration"
+  }
+}

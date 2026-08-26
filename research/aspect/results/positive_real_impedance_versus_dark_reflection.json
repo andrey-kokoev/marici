@@ -1,0 +1,43 @@
+{
+  "schema": "marici.aspect.positive_real_impedance_versus_dark_reflection.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "parameters": {
+    "a": "2"
+  },
+  "checks": {
+    "cayley_identity_at_exact_sample": true,
+    "strict_positive_real_impedance_at_right_half_sample": true,
+    "schur_reflection_inside_right_half_plane": true,
+    "reflection_has_off_seam_zero": true,
+    "reflection_pole_is_in_left_half_plane": true,
+    "reciprocal_sewing_holds": true,
+    "seam_reflection_is_lossless": true,
+    "rosenbrock_rank_drops_at_off_seam_zero": true,
+    "nonzero_state_input_make_selected_output_dark": true,
+    "one_state_realization_is_controllable_and_observable": true
+  },
+  "residuals": {
+    "off_seam_reflection_at_s_equal_a": {
+      "real": "0",
+      "imag": "0"
+    },
+    "rosenbrock_determinant_at_s_equal_a": "0",
+    "hostile_state_equation": "0",
+    "hostile_selected_output": "0",
+    "right_half_sample_impedance": {
+      "real": "3/2",
+      "imag": "2"
+    },
+    "right_half_sample_reflection_norm_squared": "17/41",
+    "sewing_residual": {
+      "real": "0",
+      "imag": "0"
+    }
+  },
+  "typed_disposition": {
+    "verified": "strict positive-real Z permits a zero of its Cayley reflection h",
+    "physical_boundary": "s=a is off the frequency seam and is not an on-shell power-routing observation",
+    "missing_authority": "no source operation canonically types an RH scalar as driving-point impedance"
+  }
+}

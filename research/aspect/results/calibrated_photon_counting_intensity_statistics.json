@@ -1,0 +1,70 @@
+{
+  "schema": "marici.aspect.calibrated_photon_counting_intensity.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "two_photon_efficiency_distribution_is_exact": true,
+    "lossy_count_probabilities_normalize": true,
+    "detected_mean_and_variance_match_binomial": true,
+    "independent_dark_count_convolution_normalizes": true,
+    "dark_counts_add_exact_mean_and_variance": true,
+    "threshold_detector_is_not_number_resolving": true,
+    "equal_mean_intensity_does_not_fix_statistics": true,
+    "factorial_correlation_separates_equal_means": true,
+    "intensity_is_global_phase_blind": true,
+    "integrated_counts_erase_arrival_order": true,
+    "overflow_effect_completes_truncated_counter": true
+  },
+  "calibration": {
+    "input_photon_number": 2,
+    "intensity_efficiency": "9/25",
+    "dark_probability": "1/10",
+    "temporal_bins": 2
+  },
+  "probabilities": {
+    "detected_without_dark": [
+      "256/625",
+      "288/625",
+      "81/625"
+    ],
+    "observed_with_dark": [
+      "1152/3125",
+      "1424/3125",
+      "1017/6250",
+      "81/6250"
+    ]
+  },
+  "moments": {
+    "detected_mean": "18/25",
+    "detected_variance": "288/625",
+    "observed_mean": "41/50",
+    "observed_variance": "1377/2500",
+    "equal_mean_state_variances": [
+      "0",
+      "1"
+    ],
+    "equal_mean_factorial_second": [
+      "0",
+      "1"
+    ]
+  },
+  "faithfulness_boundary": {
+    "faithful_on": "diagonal photon-number distributions within declared resolved cutoff",
+    "invisible": [
+      "number coherences",
+      "phase without coherent reference",
+      "arrival order after integration",
+      "distribution inside overflow",
+      "lost environment identity"
+    ]
+  },
+  "completion_missing": [
+    "detector instrument",
+    "dead-time state",
+    "afterpulse law",
+    "time-tag response",
+    "spectral mode response",
+    "dark point process",
+    "finite-bin point-process convergence"
+  ]
+}

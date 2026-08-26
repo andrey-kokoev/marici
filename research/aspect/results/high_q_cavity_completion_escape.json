@@ -1,0 +1,60 @@
+{
+  "schema": "marici.aspect.high_q_cavity_completion_escape.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "strength": "finite-family completion-escape theorem",
+  "checks": {
+    "every_cavity_coupler_is_exactly_passive": true,
+    "ringdown_is_causal_and_uses_only_prior_internal_state": true,
+    "every_finite_window_map_is_pointwise_injective": true,
+    "three_bin_captured_energy_strictly_decreases_with_q": true,
+    "omitted_tail_is_strictly_positive_after_first_cutoff": true,
+    "captured_plus_tail_is_unit_energy": true,
+    "infinite_time_ringdown_recovers_unit_energy": true,
+    "fixed_window_has_no_cutoff_uniform_observability_bound": true,
+    "unit_internal_state_can_escape_every_fixed_window_in_limit": true
+  },
+  "cutoffs": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "observation_horizon": 3,
+  "retained_amplitudes": [
+    "0",
+    "3/5",
+    "15/17",
+    "63/65",
+    "255/257"
+  ],
+  "leakage_amplitudes": [
+    "1",
+    "4/5",
+    "8/17",
+    "16/65",
+    "32/257"
+  ],
+  "captured_energies": [
+    "1",
+    "14896/15625",
+    "12746944/24137569",
+    "12895388416/75418890625",
+    "13194810625024/288136807515649"
+  ],
+  "omitted_tail_energies": [
+    "0",
+    "729/15625",
+    "11390625/24137569",
+    "62523502209/75418890625",
+    "274941996890625/288136807515649"
+  ],
+  "typed_boundary": {
+    "source": "unit-energy initial state in one passive cavity mode",
+    "constructor": "causal discrete ringdown with cutoff-dependent rational coupler",
+    "detector": "fixed three-bin leakage-energy record",
+    "hostile": "each finite detector is injective, but its observability constant tends to zero as Q grows",
+    "completion": "uniform graph-norm observability or horizon scaling is required before excluding escape"
+  }
+}

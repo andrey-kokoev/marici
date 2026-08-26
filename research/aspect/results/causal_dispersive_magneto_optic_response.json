@@ -1,0 +1,47 @@
+{
+  "schema": "marici.aspect.causal_dispersive_magneto_optic_response.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "parameters": {
+    "gamma": "1",
+    "Omega": "1",
+    "sample_frequencies": [
+      "0",
+      "2"
+    ]
+  },
+  "checks": {
+    "both_retarded_poles_are_strictly_lower_half_plane": true,
+    "upper_half_plane_hostile_is_rejected": true,
+    "real_field_bias_reversal_symmetry_holds": true,
+    "passive_absorptive_sign_is_positive_at_resonance": true,
+    "bias_splitting_is_nonzero": true,
+    "zero_bias_erases_circular_splitting": true,
+    "constant_rotation_hostile_fails_at_second_frequency": true,
+    "one_linear_analyzer_is_not_faithful": true
+  },
+  "residuals": {
+    "bias_splitting_at_zero": {
+      "real": "0",
+      "imag": "-1"
+    },
+    "bias_splitting_at_two": {
+      "real": "2/5",
+      "imag": "1/5"
+    },
+    "constant_rotation_second_sample_minus_calibration": {
+      "real": "2/5",
+      "imag": "6/5"
+    },
+    "real_field_symmetry": {
+      "real": "0",
+      "imag": "0"
+    }
+  },
+  "typed_boundary": {
+    "source": "phenomenological retarded two-circular-channel susceptibility",
+    "port": "one calibrated transverse Jones C^2 port",
+    "detector": "fixed analyzer row C^2->C",
+    "completion": "bath/noise ports and broadband asymptotics are not constructed"
+  }
+}

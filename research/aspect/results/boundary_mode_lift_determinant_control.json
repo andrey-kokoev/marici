@@ -1,0 +1,54 @@
+{
+  "schema": "marici.aspect.boundary_mode_lift_determinant_control.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "decoupled_lift_preserves_old_zero": true,
+    "both_triangular_orientations_preserve_old_zero": true,
+    "two_way_lift_removes_old_zero": true,
+    "two_way_lift_moves_zero_to_bc": true,
+    "declared_compensation_restores_scalar_determinant": true,
+    "uncompensated_and_compensated_lifts_are_detector_distinguishable": true,
+    "added_mode_is_not_a_prime_power_grade": true,
+    "determinant_preservation_does_not_identify_ordered_lift": true
+  },
+  "coupling": "1/2",
+  "shifted_zero": "1/4",
+  "records": {
+    "-1/2": {
+      "scalar": "-1/2",
+      "decoupled": "-1/2",
+      "triangular": "-1/2",
+      "two_way": "-3/4",
+      "compensated_two_way": "-1/2"
+    },
+    "0": {
+      "scalar": "0",
+      "decoupled": "0",
+      "triangular": "0",
+      "two_way": "-1/4",
+      "compensated_two_way": "0"
+    },
+    "1/4": {
+      "scalar": "1/4",
+      "decoupled": "1/4",
+      "triangular": "1/4",
+      "two_way": "0",
+      "compensated_two_way": "1/4"
+    },
+    "1/2": {
+      "scalar": "1/2",
+      "decoupled": "1/2",
+      "triangular": "1/2",
+      "two_way": "1/4",
+      "compensated_two_way": "1/2"
+    }
+  },
+  "typed_boundary": {
+    "source": "one scalar boundary channel plus one generic calibrated auxiliary optical mode",
+    "constructor": "decoupled, one-way, two-way, and explicitly compensated two-way block lifts",
+    "detector": "mode-resolved transfer tomography plus determinant and null scans",
+    "hostile": "two-way coupling preserves visible scalar compression but moves the full determinant zero",
+    "completion": "no arithmetic grade interpretation, source compensation law, infinite-mode determinant, or zero-confinement result"
+  }
+}

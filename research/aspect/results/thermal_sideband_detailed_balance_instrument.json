@@ -1,0 +1,41 @@
+{
+  "schema": "marici.aspect.thermal_sideband_detailed_balance_instrument.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "strength": "finite Markov detailed-balance identification theorem",
+  "checks": {
+    "physical_rates_are_positive_and_stable": true,
+    "steady_occupation_is_exactly_one": true,
+    "detailed_balance_sideband_ratio_is_one_half": true,
+    "linewidth_is_rate_difference": true,
+    "symmetrized_noise_weight_is_rate_sum": true,
+    "hostile_preserves_linewidth": true,
+    "hostile_changes_noise_and_temperature": true,
+    "linewidth_alone_is_not_faithful": true,
+    "joint_linewidth_and_noise_recover_both_rates": true,
+    "two_resolved_sidebands_recover_rate_ratio": true
+  },
+  "physical": {
+    "Gamma_down": "2",
+    "Gamma_up": "1",
+    "damping": "1",
+    "noise_sum": "3",
+    "occupation": "1",
+    "sideband_ratio": "1/2"
+  },
+  "linewidth_preserving_hostile": {
+    "Gamma_down": "3",
+    "Gamma_up": "2",
+    "damping": "1",
+    "noise_sum": "5",
+    "occupation": "2",
+    "sideband_ratio": "2/3"
+  },
+  "typed_boundary": {
+    "source": "one stable oscillator with declared upward and downward Markov transition rates",
+    "constructor": "linewidth from rate difference; sideband/noise record from individual rates",
+    "detector": "calibrated two-sideband heterodyne counter plus linewidth fit",
+    "hostile": "different positive rates preserve linewidth while changing noise and temperature",
+    "completion": "frequency-dependent non-Markov KMS spectrum and microscopic material coupling remain open"
+  }
+}

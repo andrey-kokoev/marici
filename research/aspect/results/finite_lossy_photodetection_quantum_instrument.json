@@ -1,0 +1,98 @@
+{
+  "schema": "marici.aspect.finite_lossy_photodetection_quantum_instrument.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "kraus_completeness_is_exact": true,
+    "outcome_choi_matrices_have_explicit_gram_certificates": true,
+    "one_photon_click_probability_is_nine_twenty_fifths": true,
+    "one_photon_no_click_probability_is_sixteen_twenty_fifths": true,
+    "one_photon_probabilities_normalize": true,
+    "vacuum_never_clicks": true,
+    "nonzero_click_and_loss_branches_end_in_vacuum": true,
+    "refined_outcomes_sum_to_coarse_unconditional_channel": true,
+    "opposite_phase_states_have_same_coarse_record": true,
+    "opposite_phase_states_have_same_unconditional_post_state": true,
+    "environment_refinement_separates_vacuum_from_loss_route": true
+  },
+  "probabilities": {
+    "one_photon": {
+      "click": "9/25",
+      "no_click": "16/25"
+    },
+    "vacuum": {
+      "click": "0",
+      "no_click": "1"
+    },
+    "plus_minus_click": "9/50"
+  },
+  "certificates": {
+    "kraus_completeness": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "click_choi": [
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "9/25",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "no_click_choi": [
+      [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "16/25",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "typed_boundary": {
+    "instrument": "finite CP trace-preserving sum with destructive back-action",
+    "record_kernel": "relative phase and coarse vacuum-versus-loss route",
+    "completion_missing": "multiphoton, memory, dark counts, temporal continuum, and stochastic limit"
+  }
+}

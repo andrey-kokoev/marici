@@ -1,0 +1,45 @@
+{
+  "schema": "marici.aspect.markov_oscillator_loss_noise_identity.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "strength": "source-typed Markov input-output identity",
+  "checks": {
+    "retarded_pole_is_strictly_lower_half_plane": true,
+    "all_sampled_output_commutators_are_exactly_one": true,
+    "loss_deficit_equals_internal_bath_noise_weight": true,
+    "resonant_susceptibility_is_two_fifths": true,
+    "resonant_reflection_and_noise_amplitudes_are_exact": true,
+    "omitting_noise_from_lossy_response_breaks_commutator": true,
+    "zero_internal_coupling_restores_unit_reflection": true,
+    "thermal_added_noise_is_positive": true,
+    "same_internal_coupling_controls_linewidth_and_noise": true
+  },
+  "parameters": {
+    "k_external": "1",
+    "k_internal": "4",
+    "Omega": "1",
+    "thermal_n": "3/2"
+  },
+  "loss_deficits": [
+    "16/25",
+    "16/29",
+    "16/61"
+  ],
+  "bath_noise_weights": [
+    "16/25",
+    "16/29",
+    "16/61"
+  ],
+  "thermal_added_noise": [
+    "24/25",
+    "24/29",
+    "24/61"
+  ],
+  "typed_boundary": {
+    "source": "one damped oscillator with declared external and internal Markov couplings",
+    "constructor": "solve Langevin response, then apply the input-output map",
+    "detector": "external output port; internal bath is unobserved",
+    "hostile": "retain the lossy reflection coefficient while deleting the internal noise input",
+    "completion": "non-Markov spectra, microscopic material coupling, and full equilibrium fluctuation-dissipation remain open"
+  }
+}

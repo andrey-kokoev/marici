@@ -1,0 +1,63 @@
+{
+  "schema": "marici.aspect.reciprocal_denominator_sewing_network.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "calibration_matrix_is_exactly_orthogonal": true,
+    "network_is_reciprocal": true,
+    "static_impedance_eigenvalues_are_positive": true,
+    "cayley_numerator_has_exact_right_sector_dark_zero": true,
+    "denominator_is_nonzero_at_dark_zero": true,
+    "boundary_elimination_preserves_determinants": true,
+    "schur_first_jet_equals_log_denominator_increment": true,
+    "mixed_schur_derivative_is_nonzero": true,
+    "diagonal_only_derivative_is_wrong": true,
+    "both_addition_orders_telescope": true,
+    "local_increments_remember_addition_order": true,
+    "reflected_sector_obeys_Dminus_z_equals_Dplus_minus_z": true
+  },
+  "residuals": {
+    "cayley_numerator_at_one_half": "0",
+    "denominator_at_one_half": "119/20",
+    "first_addition": {
+      "s0": "306075/221852",
+      "s1": "3111356725/3076144369",
+      "mixed": "35212356/3076144369",
+      "diagonal_only": "1",
+      "increment": "497817076/679033509",
+      "schur_jet": "497817076/679033509"
+    },
+    "full_minus_base_log_jet": "853149/554630",
+    "orders": {
+      "(1, 2)": {
+        "increments": [
+          "497817076/679033509",
+          "98569/122430"
+        ],
+        "mixed_terms": [
+          "35212356/3076144369",
+          "3600/16654561"
+        ],
+        "sum": "853149/554630",
+        "telescopes": true
+      },
+      "(2, 1)": {
+        "increments": [
+          "3076504369/3821955330",
+          "5053/6891"
+        ],
+        "mixed_terms": [
+          "360000/3076144369",
+          "244089/21104836"
+        ],
+        "sum": "853149/554630",
+        "telescopes": true
+      }
+    }
+  },
+  "typed_boundary": {
+    "verified": "finite reciprocal accretive denominator, Cayley dark zero, Schur bonding, and telescoping",
+    "elimination": "algebraic Schur reduction, not physical multiport dilation",
+    "completion_missing": "uniform cutoff bounds, nonzero limiting basepoint, theta sewing, and arithmetic current identity"
+  }
+}

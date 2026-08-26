@@ -1,0 +1,75 @@
+{
+  "schema": "marici.aspect.polarization_marker_quantum_eraser.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "visibility_distinguishability_identity": true,
+    "marginal_probabilities_normalize": true,
+    "orthogonal_marker_erases_unconditional_fringe": true,
+    "conditional_records_retain_fringe_antifringe": true,
+    "identical_marginals_do_not_identify_entanglement_locus": true,
+    "accessible_eraser_cannot_recover_environment_leakage": true,
+    "two_predeclared_phase_rows_reconstruct_reduced_class": true,
+    "one_phase_row_is_not_faithful": true,
+    "postselection_preserves_prior_marginal_counts": true,
+    "u1_orbit_preserves_intensity_but_changes_referenced_quadrature": true,
+    "eraser_basis_must_be_predeclared": true
+  },
+  "witnesses": {
+    "marker_overlap": "3/5",
+    "visibility": "3/5",
+    "distinguishability": "4/5",
+    "V_squared_plus_D_squared": "1",
+    "unconditional_orthogonal_marker_ports": [
+      "1/2",
+      "1/2"
+    ],
+    "conditional_joint_records_phi_0": {
+      "bright_plus": "1/2",
+      "dark_plus": "0",
+      "bright_minus": "0",
+      "dark_minus": "1/2"
+    },
+    "faithful_reduced_state_detector_phases": [
+      "0",
+      "pi/2"
+    ],
+    "reconstructed_coherence": [
+      "1/5",
+      "1/10"
+    ],
+    "u1_quarter_turn": {
+      "signal": [
+        "3/5",
+        "4/5"
+      ],
+      "rotated_signal": [
+        "-4/5",
+        "3/5"
+      ],
+      "common_intensity": "1",
+      "referenced_real_quadratures": [
+        "3/5",
+        "-4/5"
+      ]
+    }
+  },
+  "hostile_dispositions": {
+    "equal_marginals_identify_global_state": "rejected: accessible-marker and environment-marker purifications share flat marginals",
+    "postfit_eraser_basis": "rejected: basis selection must precede outcome inspection",
+    "postselection_as_source_authority": "rejected: conditioning partitions joint records only",
+    "phase_without_local_oscillator": "rejected: unreferenced phase origins form a U(1) torsor",
+    "environment_leakage_as_recoverable_marker": "rejected: accessible projection leaves zero total overlap when environment states are orthogonal"
+  },
+  "faithfulness_boundary": {
+    "class": "equal-population reduced route qubits rho(c)",
+    "minimal_family": "two balanced contrasts at predeclared LO phases 0 and pi/2",
+    "invisible": [
+      "global purification",
+      "entanglement locus",
+      "environment allocation",
+      "unreferenced global phase"
+    ]
+  },
+  "claim_boundary": "no retrocausality, source-authority, environment-recovery, absolute-phase, or RH claim"
+}

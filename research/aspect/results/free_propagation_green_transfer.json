@@ -1,0 +1,56 @@
+{
+  "schema": "marici.aspect.free_propagation_green_transfer.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "free_propagation_composes_additively": true,
+    "paraxial_maps_preserve_oriented_area": true,
+    "lens_propagation_order_is_detectable": true,
+    "reciprocal_green_is_exact_inverse": true,
+    "reciprocal_green_is_symmetric": true,
+    "directed_green_is_inverse_but_not_reciprocal": true,
+    "loss_dilation_preserves_total_intensity": true,
+    "single_detector_row_has_field_kernel": true,
+    "resonant_operator_has_no_full_inverse": true
+  },
+  "residuals": {
+    "lens_propagation_commutator": [
+      [
+        "2/5",
+        "0"
+      ],
+      [
+        "0",
+        "-2/5"
+      ]
+    ],
+    "reciprocal_transpose_nonzero_entries": 0,
+    "directed_transpose_residual": [
+      [
+        "0",
+        "1/2"
+      ],
+      [
+        "-1/2",
+        "0"
+      ]
+    ],
+    "retained_probability": "9/25",
+    "environment_probability": "16/25",
+    "resonant_determinant": "0"
+  },
+  "typed_maps": {
+    "paraxial": "R^2->R^2 in declared longitudinal frame",
+    "green": "source C^2->field C^2 at frozen frequency and boundary condition",
+    "detector": "field R^2->scalar R",
+    "loss_dilation": "retained+environment R^2->R^2"
+  },
+  "completion_missing": [
+    "frequency domain",
+    "radiation condition",
+    "function spaces",
+    "convergence mode",
+    "uniform resolvent bound",
+    "infinite-time limit"
+  ]
+}

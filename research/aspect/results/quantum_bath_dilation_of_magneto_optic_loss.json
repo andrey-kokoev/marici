@@ -1,0 +1,38 @@
+{
+  "schema": "marici.aspect.quantum_bath_dilation_of_magneto_optic_loss.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "plus_system_bath_block_is_exactly_unitary": true,
+    "minus_system_bath_block_is_exactly_unitary": true,
+    "plus_output_commutator_is_restored": true,
+    "minus_output_commutator_is_restored": true,
+    "bare_plus_attenuation_violates_commutator": true,
+    "bare_minus_attenuation_violates_commutator": true,
+    "circular_dichroism_is_nonzero": true,
+    "circular_phase_marker_is_nonreal": true,
+    "vacuum_bath_adds_no_counts_but_is_required_for_commutator": true
+  },
+  "channel_data": {
+    "plus": {
+      "transmission_norm": "9/25",
+      "bath_norm": "16/25"
+    },
+    "minus": {
+      "transmission_norm": "25/169",
+      "bath_norm": "144/169"
+    },
+    "circular_intensity_contrast": "896/4225",
+    "relative_phase_marker": {
+      "real": "0",
+      "imag": "-3/13"
+    }
+  },
+  "typed_boundary": {
+    "source": "one system mode and one vacuum bath mode for each circular channel",
+    "constructor": "direct sum of two exact two-port unitary dilations",
+    "detector": "system output only; bath is traced after the unitary interaction",
+    "hostile": "bare attenuation preserves mean scaling but violates the output canonical commutator",
+    "completion": "frequency-continuum bath and material-specific fluctuation-dissipation spectrum remain open"
+  }
+}

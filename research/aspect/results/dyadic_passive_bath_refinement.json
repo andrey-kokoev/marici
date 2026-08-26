@@ -1,0 +1,41 @@
+{
+  "schema": "marici.aspect.dyadic_passive_bath_refinement.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "strength": "finite-cutoff theorem plus analytic uniform-error certificate",
+  "checks": {
+    "every_midpoint_and_endpoint_sample_is_exactly_passive": true,
+    "derivative_norm_identity_is_exact": true,
+    "response_is_two_lipschitz_on_unit_interval": true,
+    "midpoint_uniform_error_bounds_strictly_decrease": true,
+    "endpoint_uniform_error_bounds_strictly_decrease": true,
+    "midpoint_bound_is_twice_as_sharp": true,
+    "both_declared_refinement_branches_converge": true,
+    "fixed_one_bin_hostile_has_no_refinement_certificate": true
+  },
+  "meshes": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "midpoint_uniform_error_bounds": [
+    "1",
+    "1/2",
+    "1/4",
+    "1/8"
+  ],
+  "endpoint_uniform_error_bounds": [
+    "2",
+    "1",
+    "1/2",
+    "1/4"
+  ],
+  "typed_boundary": {
+    "source": "declared rational passive response on the unit frequency interval",
+    "constructor": "midpoint or left-endpoint dyadic step dilation with one orthogonal bath per cell",
+    "detector": "frequency-bin resolved retained output",
+    "hostile": "a fixed one-bin approximation is passive but has no vanishing refinement bound",
+    "completion": "this converges to the declared transfer but does not derive causality, a material spectrum, or fluctuation-dissipation"
+  }
+}

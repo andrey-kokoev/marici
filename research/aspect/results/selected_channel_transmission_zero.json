@@ -1,0 +1,49 @@
+{
+  "schema": "marici.aspect.selected_channel_transmission_zero.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "selected_rosenbrock_zero_at_one": true,
+    "dark_trajectory_is_nontrivial": true,
+    "complementary_output_detects_dark_trajectory": true,
+    "complete_detector_family_is_faithful": true,
+    "selected_realization_is_controllable": true,
+    "selected_realization_is_observable": true,
+    "dc_scattering_is_lossless_and_reciprocal": true,
+    "nyquist_scattering_is_lossless_and_reciprocal": true,
+    "passive_reciprocal_selected_channel_has_zero": true,
+    "strict_positive_realness_not_implied": true,
+    "strict_minimum_phase_not_implied": true
+  },
+  "witness": {
+    "A": "0",
+    "B": "1",
+    "C_selected": "-1/2",
+    "D_selected": "1/2",
+    "C_complement": "1/2",
+    "D_complement": "1/2",
+    "transmission_zero": "1",
+    "rosenbrock_determinant_formula": "(lambda-1)/2",
+    "kernel_trajectory": {
+      "x": "1",
+      "u": "1"
+    },
+    "selected_output": "0",
+    "complementary_output": "1",
+    "full_readout_determinant": "-1/2"
+  },
+  "separation": {
+    "total_scattering": "unitary and reciprocal complete two-port family",
+    "tomography": "two output rows faithfully recover the declared (x,u) pair",
+    "selected_zero_freeness": "false at z=1 for h(z)=(z-1)/(2z)"
+  },
+  "stronger_source_native_condition_found": false,
+  "missing_for_stronger_claim": [
+    "pre-scalar collocation",
+    "strict positive-real certificate",
+    "outer factorization",
+    "bounded inverse",
+    "independent phase authority"
+  ],
+  "claim_boundary": "finite optical transmission-zero taxonomy; no RH claim"
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "marici.aspect.finite_multibin_quantum_bath_dilation.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "every_bin_has_exact_passive_norm_completion": true,
+    "independent_baths_restore_global_commutator": true,
+    "one_shared_bath_creates_forbidden_cross_bin_commutators": true,
+    "shared_bath_hostile_preserves_each_diagonal": true,
+    "vacuum_bath_adds_zero_mean_occupation": true,
+    "thermal_noise_is_positive_and_frequency_dependent": true,
+    "finite_bins_do_not_establish_continuum_limit": true
+  },
+  "bins": 3,
+  "shared_bath_off_diagonal_residuals": [
+    "48/65",
+    "12/17",
+    "48/65",
+    "180/221",
+    "12/17",
+    "180/221"
+  ],
+  "thermal_added_noise_diagonal": [
+    "0",
+    "72/169",
+    "450/289"
+  ],
+  "typed_boundary": {
+    "source": "three labelled frequency-bin system modes with three orthogonal bath modes",
+    "constructor": "diagonal frequency-preserving passive dilation",
+    "detector": "frequency-resolved system outputs after environmental trace",
+    "hostile": "one common bath preserves all scalar bin norms but creates nonzero cross-bin commutators",
+    "completion": "mesh refinement, continuum convergence, causal spectral density, and fluctuation-dissipation remain open"
+  }
+}

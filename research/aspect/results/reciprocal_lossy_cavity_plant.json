@@ -1,0 +1,127 @@
+{
+  "schema": "marici.aspect.reciprocal_lossy_cavity_plant.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "four_port_dilation_is_orthogonal": true,
+    "dark_reflection_with_nonzero_intracavity_energy": true,
+    "one_analyzer_row_has_hidden_polarization_kernel": true,
+    "two_independent_analyzer_rows_are_jointly_faithful_on_witness": true,
+    "euclidean_reciprocity_fails_after_unequal_scaling": true,
+    "energy_metric_repairs_typed_reciprocity": true
+  },
+  "frozen_plant": {
+    "dimensions": {
+      "state": "C^1",
+      "input_complete": "C^2",
+      "output_complete": "C^3",
+      "A": "C^1->C^1",
+      "B": "C^2->C^1",
+      "C": "C^1->C^3",
+      "D": "C^2->C^3"
+    },
+    "state": [
+      "x_returning"
+    ],
+    "inputs": [
+      "u_incident",
+      "w_loss_environment"
+    ],
+    "outputs": [
+      "y_reflected",
+      "y_transmitted",
+      "y_loss_environment"
+    ],
+    "A": "36/125",
+    "B_u": "48/125",
+    "B_w": "4/5",
+    "C": [
+      [
+        "4/5"
+      ],
+      [
+        "9/25"
+      ],
+      [
+        "-48/125"
+      ]
+    ],
+    "D_u": [
+      [
+        "-3/5"
+      ],
+      [
+        "12/25"
+      ],
+      [
+        "-64/125"
+      ]
+    ],
+    "component_order": [
+      "input_mirror",
+      "forward_phase",
+      "end_mirror",
+      "return_phase",
+      "loss_dilation",
+      "next_state"
+    ],
+    "energy_metric_scaled_ports": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1/4"
+      ]
+    ],
+    "parameter_domain": {
+      "mirrors": "real r_j,t_j with r_j^2+t_j^2=1",
+      "phases": "complex p,q with |p|=|q|=1",
+      "loss": "real a,ell>=0 with a^2+ell^2=1",
+      "delay": "T>0"
+    },
+    "continuum_delay_relation": "x(t+T)=a*q*r2*p*(t1*u(t)+r1*x(t))+ell*w(t)",
+    "analyzer_single": [
+      [
+        "1",
+        "0"
+      ]
+    ],
+    "analyzer_joint": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ]
+  },
+  "witnesses": {
+    "dark_reflected_amplitude": "0",
+    "forward_intracavity_amplitude": "1",
+    "euclidean_reciprocity_residual": [
+      [
+        "0",
+        "-6/5"
+      ],
+      [
+        "6/5",
+        "0"
+      ]
+    ],
+    "metric_reciprocity_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "claim_boundary": "physical plant only; no observability, stability, feedback, or controller-authority claim"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "marici.aspect.closed_loop_boundary_schur_zero.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "open_plant_is_invertible_at_closed_loop_zero": true,
+    "plant_injection_readout_and_direct_blocks_are_separate": true,
+    "schur_complement_is_exactly_q": true,
+    "full_determinant_factorizes_as_det_plant_times_schur": true,
+    "closed_network_is_singular_only_at_tested_zero": true,
+    "zero_state_is_a_boundary_feedback_state": true,
+    "direct_block_alone_does_not_locate_zero": true,
+    "loop_gain_one_is_the_boundary_failure": true,
+    "finite_localization_does_not_prove_global_small_gain": true
+  },
+  "records": {
+    "-1/2": {
+      "direct": "3/2",
+      "loop": "2",
+      "schur": "-1/2",
+      "full_determinant": "-3"
+    },
+    "0": {
+      "direct": "2",
+      "loop": "2",
+      "schur": "0",
+      "full_determinant": "0"
+    },
+    "1/2": {
+      "direct": "5/2",
+      "loop": "2",
+      "schur": "1/2",
+      "full_determinant": "3"
+    }
+  },
+  "boundary_kernel": [
+    "-1/2",
+    "-1/3",
+    "1"
+  ],
+  "typed_boundary": {
+    "source": "one calibrated boundary probe and two internal optical modes",
+    "constructor": "boundary injection, open propagation, readout, and direct return closed in that order",
+    "detector": "separate block calibration followed by full-network null detection",
+    "hostile": "open-plant or direct-block inspection misses the closed-loop zero",
+    "completion": "finite localization gives no theta incidence, reciprocal two-sector norm, or completion-stable small-gain theorem"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "marici.aspect.robust_dual_clock_jitter_observability.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "strength": "finite robust-observability theorem",
+  "checks": {
+    "twenty_class_minimum_joint_circular_distance_is_one": true,
+    "one_third_jitter_boxes_are_disjoint_for_every_band_pair": true,
+    "critical_half_jitter_closes_the_minimum_margin": true,
+    "frequency_one_five_has_positive_safe_margin": true,
+    "frequency_one_twenty_one_is_exact_source_alias": true,
+    "no_calibration_improvement_separates_exact_period_alias": true,
+    "bounded_jitter_loss_is_distinct_from_source_aliasing": true,
+    "band_prior_remains_source_domain_authority": true
+  },
+  "sample_rates": [
+    4,
+    5
+  ],
+  "band": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "minimum_joint_circular_distance": "1",
+  "safe_jitter_radius": "1/3",
+  "critical_jitter_radius": "1/2",
+  "one_five_safe_residual_margin": "1/3",
+  "one_twenty_one_distance": "0",
+  "typed_boundary": {
+    "source": "integer frequency class restricted a priori to the twenty-class band",
+    "constructor": "two coprime clocks with bounded calibrated circular record error",
+    "detector": "ordered noisy residue pair with l-infinity circular metric",
+    "hostile": "jitter boxes touch at radius one-half, while period-twenty aliases coincide even at zero jitter",
+    "completion": "stochastic jitter laws, correlated clock drift, continuous frequency, and decoder risk remain open"
+  }
+}

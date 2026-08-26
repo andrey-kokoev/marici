@@ -1,0 +1,75 @@
+{
+  "schema": "marici.aspect.calibrated_homodyne_heterodyne.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "two_homodyne_phases_reconstruct_displacement": true,
+    "one_homodyne_phase_has_kernel": true,
+    "balanced_subtraction_extracts_interference": true,
+    "gain_mismatch_leaves_strong_lo_residual": true,
+    "efficiency_dilation_preserves_vacuum_variance": true,
+    "input_referred_inefficiency_noise_is_exact": true,
+    "electronics_noise_adds_independently": true,
+    "heterodyne_has_vacuum_noise_penalty": true,
+    "temporal_overlap_scales_phase_sensitive_mean": true,
+    "no_local_oscillator_has_no_phase_sensitive_mean": true
+  },
+  "calibration": {
+    "signal_mean": [
+      "2/5",
+      "-1/5"
+    ],
+    "homodyne_phases": [
+      "0",
+      "pi/2"
+    ],
+    "local_oscillator_amplitude": "5",
+    "efficiency_amplitudes": [
+      "3/5",
+      "4/5"
+    ],
+    "electronics_variance": "1/10",
+    "temporal_mode_overlap": "3/5"
+  },
+  "residuals": {
+    "balanced_difference": "10",
+    "gain_mismatch_residual": "2",
+    "measured_optical_variance": "1/2",
+    "input_referred_variance": "25/18",
+    "inefficiency_added_variance": "8/9",
+    "total_with_electronics": "3/5",
+    "heterodyne_covariance": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "mode_mismatched_mean": "6"
+  },
+  "faithfulness_boundary": {
+    "class": "single-mode coherent displacement means with declared covariance",
+    "minimal_mean_rows": [
+      "homodyne theta=0",
+      "homodyne theta=pi/2"
+    ],
+    "invisible": [
+      "unreferenced global phase",
+      "non-Gaussian structure beyond declared moments",
+      "orthogonal temporal modes",
+      "inaccessible environment",
+      "out-of-window dynamics"
+    ]
+  },
+  "completion_missing": [
+    "detector impulse response",
+    "quantum stochastic fields",
+    "spectral noise density",
+    "causal filtering",
+    "finite-time estimator law",
+    "infinite-time convergence"
+  ]
+}
