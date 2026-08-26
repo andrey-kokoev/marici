@@ -1,0 +1,26 @@
+{
+  "checks": {
+    "observe_then_reset_trace_separates_predecessors": true,
+    "old_interferometer_separates_predecessor_phases": true,
+    "reset_endpoint_has_total_predecessor_kernel": true,
+    "reset_only_binary_risk_is_one_half": true,
+    "reset_only_does_not_blackwell_dominate_old_experiment": true,
+    "terminal_calibration_does_not_retroactively_observe_erased_phase": true,
+    "trace_preserving_binary_risk_is_zero": true,
+    "trace_preserving_upgrade_blackwell_dominates_old": true
+  },
+  "equal_prior_binary_risk": {
+    "observe_then_reset": "0/1",
+    "reset_only": "1/2"
+  },
+  "exact_arithmetic": true,
+  "schema": "marici.aspect.phase_reset_blackwell_trace_audit.v1",
+  "status": "pass",
+  "typed_boundary": {
+    "completion": "classifies reset as control and observe-then-reset as a Blackwell-preserving observational upgrade",
+    "constructor": "reset-only phase actuator versus a source-split pre-reset fringe record followed by the same reset",
+    "detector": "complete policy-indexed trace, not terminal fringe alone",
+    "hostile": "both predecessors end at the calibrated zero-phase fringe after reset",
+    "source": "coherent pulses with predecessor path phase zero or pi under one common prospective policy"
+  }
+}

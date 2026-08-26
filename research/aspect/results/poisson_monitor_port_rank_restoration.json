@@ -1,0 +1,27 @@
+{
+  "checks": {
+    "calibrated_common_mode_eigenvalue_is_one_half": true,
+    "calibrated_monitor_restores_rank_two": true,
+    "differential_mode_is_unchanged": true,
+    "free_exposure_profile_loses_common_rate": true,
+    "monitor_identifies_realized_rate_but_does_not_select_source": true,
+    "rate_plus_shape_is_identity": true,
+    "shape_only_has_rank_one": true
+  },
+  "exact_arithmetic": true,
+  "gram_determinants": {
+    "free_exposure_profiled": "0/1",
+    "precision_two_monitor_profiled": "1/2",
+    "shape_only": "0/1"
+  },
+  "profiled_eigenvalues_at_precision_two": ["1/1", "1/2"],
+  "schema": "marici.aspect.poisson_monitor_port_rank_restoration.v1",
+  "status": "pass",
+  "typed_boundary": {
+    "completion": "restores detector rank without supplying a source selector",
+    "constructor": "joint Poisson likelihood with the monitor precision retained before nuisance profiling",
+    "detector": "two selected counts plus monitor calibration record",
+    "hostile": "normalize the selected histogram or freely profile exposure and erase the common-rate direction",
+    "source": "one photon preparation feeding two selected counters and one calibrated exposure monitor"
+  }
+}

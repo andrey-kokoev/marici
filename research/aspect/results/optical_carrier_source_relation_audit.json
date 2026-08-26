@@ -1,0 +1,44 @@
+{
+  "checks": {
+    "common_preparation_and_route_decode_source_one": true,
+    "event_replay_must_retain_relation_records_not_only_values": true,
+    "missing_route_witness_is_unavailable": true,
+    "numerically_identical_wrong_preparation_is_still_rejected": true,
+    "route_binds_connection_revision_endpoints_and_preparation": true,
+    "run_plus_revision_accepts_wrong_preparation": true,
+    "wrong_preparation_can_produce_wrong_source_five": true,
+    "wrong_preparation_is_rejected": true
+  },
+  "exact_finite_protocol": true,
+  "hostile_current_verdict": {
+    "source": 5,
+    "status": "decoded"
+  },
+  "repaired_verdicts": {
+    "missing_route": {
+      "reason": "source_relation_incomplete",
+      "status": "unavailable"
+    },
+    "numerically_identical_wrong_preparation": {
+      "reason": "preparation_mismatch",
+      "status": "rejected"
+    },
+    "valid": {
+      "source": 1,
+      "status": "decoded"
+    },
+    "wrong_preparation": {
+      "reason": "preparation_mismatch",
+      "status": "rejected"
+    }
+  },
+  "schema": "marici.aspect.optical_carrier_source_relation_audit.v1",
+  "status": "pass",
+  "typed_boundary": {
+    "completion": "establishes the stronger optical source relation without prescribing a universal Carrier schema",
+    "constructor": "pilot and record joined by preparation identity plus a revision-bound connection route",
+    "detector": "three-valued decode verdict after relation validation",
+    "hostile": "same-run same-revision pilot from a different pulse preparation",
+    "source": "one pulse-level preparation identity inside a possibly multi-shot run"
+  }
+}

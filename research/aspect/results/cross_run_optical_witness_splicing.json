@@ -1,0 +1,47 @@
+{
+  "schema": "marici.aspect.cross_run_optical_witness_splicing.v1",
+  "status": "pass",
+  "exact_arithmetic": true,
+  "checks": {
+    "every_spliced_marginal_is_locally_valid": true,
+    "spliced_decoder_returns_claimed_source_one": true,
+    "physical_record_was_generated_by_source_seventeen": true,
+    "spliced_packet_has_no_common_run": true,
+    "run_ids_expose_the_splice": true,
+    "epochs_expose_the_frame_conflict": true,
+    "honest_packet_passes_local_and_joint_checks": true,
+    "certified_same_run_frame_transport_is_accepted": true,
+    "cross_run_splice_is_rejected_by_same_contract": true,
+    "deleting_revision_binding_makes_transport_unavailable": true,
+    "deletion_does_not_fall_back_to_literal_epoch_equality": true,
+    "deletion_does_not_silently_accept_transport": true,
+    "transport_maps_shifted_record_to_epoch_zero_frame": true,
+    "authorization_does_not_repair_missing_joint_witness": true,
+    "test_does_not_claim_a_new_marici_primitive": true
+  },
+  "spliced_local_validity": {
+    "source_certificate": true,
+    "port_record": true,
+    "calibration": true,
+    "decoder": true,
+    "claimant": true
+  },
+  "spliced_joint_validity": false,
+  "honest_joint_validity": true,
+  "transported_joint_validity": true,
+  "joint_verdicts": {
+    "spliced": "reject",
+    "honest_same_epoch": "accept",
+    "certified_transport": "accept",
+    "deleted_revision_binding": "unavailable"
+  },
+  "spliced_claim": 1,
+  "physical_source": 17,
+  "typed_boundary": {
+    "source": "band certificate, labelled optical record, calibration, decoder, and scoped claim",
+    "constructor": "one common execution plus either one frame or a certified coherent frame transport must jointly realize every witness",
+    "detector": "marginal schema checks followed by run, epoch, decoder-version, and source-claim joins",
+    "hostile": "valid epoch-one decoder evidence is spliced onto an epoch-zero record from another run",
+    "completion": "the finite hostile establishes a required invariant test, including unavailable-on-missing-revision semantics, not novelty of a Marici primitive or a universal evidence architecture"
+  }
+}

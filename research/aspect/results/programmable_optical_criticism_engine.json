@@ -1,0 +1,36 @@
+{
+  "checks": {
+    "baseline_rivals_are_observationally_equal": true,
+    "criticism_profile_is_budget_monotone": true,
+    "engine_classifies_test_not_source_explanation": true,
+    "first_failed_gate_is_global_multiplicity": true,
+    "full_reference_has_unit_margin_at_cost_three": true,
+    "selected_context_predicts_opposite_output_ports": true,
+    "threshold_selects_cheapest_adequate_authorized_context": true,
+    "unauthorized_oracle_is_excluded_despite_unit_margin": true,
+    "weak_reference_has_half_margin_at_cost_one": true
+  },
+  "context_table": [
+    {"authorized": true, "cost": 0, "margin": "0", "name": "baseline_projective"},
+    {"authorized": true, "cost": 1, "margin": "0", "name": "determinant_shadow"},
+    {"authorized": true, "cost": 1, "margin": "1/2", "name": "weak_controlled_reference"},
+    {"authorized": true, "cost": 3, "margin": "1", "name": "full_controlled_reference"},
+    {"authorized": false, "cost": 0, "margin": "1", "name": "hidden_route_oracle"}
+  ],
+  "criticism_profile": {"0": "0", "1": "1/2", "2": "1/2", "3": "1"},
+  "exact_arithmetic": true,
+  "first_failed_gate": "global_multiplicity",
+  "required_margin": "3/4",
+  "rivals": ["identity route", "central pi-phase route"],
+  "schema": "marici.aspect.programmable_optical_criticism_engine.v1",
+  "selected_cost": 3,
+  "selected_intervention": "full_controlled_reference",
+  "status": "pass",
+  "typed_boundary": {
+    "completion": "selects a severe bounded test but does not explain why either source route occurs",
+    "constructor": "predeclared library of projective and controlled-reference optical contexts",
+    "detector": "two-output probability law with total-variation observation metric",
+    "hostile": "baseline-equivalent routes I and minus I plus an unauthorized zero-cost oracle",
+    "source": "two rival unitary routes separated by one authorized constructor-word unit"
+  }
+}
