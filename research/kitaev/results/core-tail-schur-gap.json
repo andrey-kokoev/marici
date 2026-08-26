@@ -1,0 +1,43 @@
+{
+  "schema": "marici.kitaev.core_tail_schur_gap.v1",
+  "status": "pass",
+  "finite_safe_fixture": {
+    "A_lower": 2,
+    "C_lower": 3,
+    "cross_norm": 1,
+    "sharp_lower_bound": "5/2 - sqrt(5)/2",
+    "determinant": 5
+  },
+  "threshold_falsifier": {
+    "diagonal_blocks_positive": true,
+    "normalized_cross_norm": 1,
+    "hidden_state": [
+      1,
+      1
+    ]
+  },
+  "completion_collapse_family": [
+    {
+      "cutoff": 2,
+      "normalized_cross_norm": "1/2",
+      "least_eigenvalue": "1/2"
+    },
+    {
+      "cutoff": 3,
+      "normalized_cross_norm": "2/3",
+      "least_eigenvalue": "1/3"
+    },
+    {
+      "cutoff": 5,
+      "normalized_cross_norm": "4/5",
+      "least_eigenvalue": "1/5"
+    },
+    {
+      "cutoff": 10,
+      "normalized_cross_norm": "9/10",
+      "least_eigenvalue": "1/10"
+    }
+  ],
+  "uniform_theorem": "sup_N ||A_N^-1/2 B_N C_N^-1/2|| <= 1-delta",
+  "checker_sha256": "02320dfdfb2cb7f4c5e5baacc22ba6847934b81131a690591a6ae0421f9a4734"
+}
