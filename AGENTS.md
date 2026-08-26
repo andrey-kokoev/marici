@@ -105,6 +105,25 @@ compactions — if an idea stays in your chat, it is lost to everyone else.
 - One recipient per communication record; for broadcasts, send one record
   per recipient.
 
+## Math typesetting is only for mathematics
+
+Never use `\boxed`. Never place ordinary prose, headings, conclusions,
+labels, banners, or complete natural-language sentences inside math
+delimiters or LaTeX text commands for emphasis. Write prose as prose and use
+math typesetting only for actual notation, equations, and mathematical
+structures. This applies to chat responses, graph messages, research packets,
+ledger entries, and site content.
+
+The resident `MariciMathProseLint` observer scans changed Markdown and team
+graph messages every minute. It starts at user logon through the per-user Run
+registration and rejects duplicate watcher instances through a named mutex. A
+new or changed violation produces a source-local graph repair obligation
+addressed to the owner with exact evidence. The observer deduplicates unchanged
+findings and records resolution when a mutable source finding disappears.
+Automated detection does not authorize cross-locus edits: each owner repairs
+their own files. Chat output is not mechanically visible to the observer, so
+operator-reported chat violations still require an explicit graph obligation.
+
 ## Multiple agent sessions share this working tree
 
 Nima, Benincasa, and others run concurrently against the same checkout.
