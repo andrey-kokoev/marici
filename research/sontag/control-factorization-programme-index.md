@@ -130,3 +130,68 @@ audited in [marici-native-control-reaudit.md](marici-native-control-reaudit.md).
 This supersedes any reading of the earlier generic LTI packets as already
 constructed carrier factorizations.  Their exact control claims remain valid
 inside their stated scopes.
+
+## Milestone 6: detector-memory comparative reconstruction
+
+The first small bidirectional example is
+[detector-memory-comparative-reconstruction.md](detector-memory-comparative-reconstruction.md).
+Starting from Aspect's source-typed ready/dead photodetector, it uses the
+control neighborhood of hidden-state instruments to predict a Marici history
+object, belief state, active-probe authority gate, and recovery storage law.
+
+## Milestone 7: endogenous authority-plane conjecture
+
+The detector reconstruction motivates the bounded conjecture
+[controlled instruments with an endogenous authority plane](control-authority-plane-conjecture.md).
+It separates capability, recommendation, authorization, execution, and
+recording; treats RBAC as one possible substructure rather than the whole
+authority plane; and requires a non-optical, history-sensitive witness before
+promotion to an architectural claim.
+
+## Milestone 8: calibration authority cross-sector witness
+
+Flavor's temporal scale-calibration contract supplies the requested
+non-optical witness in
+[calibration validity is an endogenous authority-state witness](calibration-authority-cross-sector-witness.md).
+The same presented numerical interface row enables or rejects a physics trial
+according to its calibration history, while expiry and accepted trials evolve
+the validity state. This promotes the proposal to a cross-sector supported
+conjecture, not yet a universal architecture theorem.
+
+## Milestone 9: revocation leases as distributed supervisory control
+
+Buzzard's lease and fencing results together with Strominger's distributed
+consumption theorem are reconstructed in
+[revocation leases as distributed supervisory control](revocation-lease-supervisory-control-reconstruction.md).
+The packet identifies revocation as an uncontrollable event, target fencing as
+authority-state observation at the actuator, atomic consumption as a guarded
+transition, and disconnected single-use failure as a decentralized
+coobservability obstruction.
+
+## Milestone 10: obligation discharge as temporal control
+
+Marici's RDF policy effects are reconstructed in
+[obligation discharge as temporal control with evidence](obligation-discharge-temporal-control-reconstruction.md).
+Permission changes admissibility, prohibition imposes safety, and obligation
+creates a trigger-response monitor with primary discharge, typed fallback,
+evidence obligations, and violation. The packet isolates policy realizability
+as the next product-controller question.
+
+## Milestone 11: atomic execution refinement ladder
+
+Buzzard's ideal-CAS, concurrent-history, and crash-atomic results are
+reconstructed in
+[atomic execution requires a four-level refinement ladder](atomic-execution-refinement-ladder.md).
+Functional transition, concurrent linearizability, crash recovery, and
+authority-preserving deployment require distinct simulation arrows. Semantic
+refinement does not authorize installation of the concrete primitive.
+
+## Milestone 12: delegated obligation workflow control
+
+The Delegated Cognition Organization Protocol and its infrastructure-blocked
+run are reconstructed in
+[delegation creates conditional sub-obligations](delegated-obligation-workflow-control.md).
+Validated predecessor evidence activates successor obligations, terminal
+failure must block descendants, authority cannot amplify downstream, and the
+parent outcome remains pending until the final audited result. The observed
+waiting descendants after Stage-A failure are a concrete nonblocking defect.
