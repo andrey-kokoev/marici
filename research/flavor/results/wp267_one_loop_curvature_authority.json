@@ -1,0 +1,37 @@
+{
+  "work_package": "WP267",
+  "theorem_domain": "one-loop real effective-potential contribution A*m(x)^4*(log(m(x)^2/mu^2)-c) with m(x)^2=M^2+k*x",
+  "loop_curvature_exact": "amplitude*slope**2*(2*log_ratio - 2*subtraction + 3)",
+  "subtraction_packet": "c=3/2",
+  "hostile_log_packets": [
+    {
+      "log_M2_over_mu2": "1",
+      "curvature": "2*amplitude*slope**2"
+    },
+    {
+      "log_M2_over_mu2": "0",
+      "curvature": "0"
+    },
+    {
+      "log_M2_over_mu2": "-1",
+      "curvature": "-2*amplitude*slope**2"
+    }
+  ],
+  "total_curvature_with_counterterm": "amplitude*slope**2*(2*log_ratio - 2*subtraction + 3) + 2*counterterm",
+  "counterterm_matching_relation": "-amplitude*log_ratio*slope**2 + amplitude*slope**2*subtraction - 3*amplitude*slope**2/2 + target_curvature/2",
+  "classification": "a loop determinant can contribute positive curvature in a chosen matching presentation, but loop-only sign and magnitude are renormalization-relative and do not define a source-authorized numerical selector",
+  "smallest_exact_falsifier": "with c=3/2 the same loop grammar gives curvature +2*A*k^2, 0, or -2*A*k^2 at log(M^2/mu^2)=1, 0, or -1",
+  "remaining_authority_gate": "derive the renormalized x^2 coefficient and its boundary condition from a complete UV matching packet, including field content, statistics, thresholds, scheme transport, and counterterms before flavor readout",
+  "scope_limit": "does not deny that a complete UV theory can predict a renormalized coefficient; it denies authority to the isolated loop term or a scale choice",
+  "checks": {
+    "one_loop_curvature_formula_exact": true,
+    "conventional_packet_positive_at_log_plus_one": true,
+    "conventional_packet_zero_at_matching_log_zero": true,
+    "conventional_packet_negative_at_log_minus_one": true,
+    "loop_curvature_sign_not_scale_invariant": true,
+    "counterterm_enters_total_curvature_independently": true,
+    "target_curvature_fixes_counterterm_boundary": true,
+    "deliberate_loop_only_positive_selector_claim_fails": true
+  },
+  "passed": true
+}

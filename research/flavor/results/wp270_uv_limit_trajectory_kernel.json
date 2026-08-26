@@ -1,0 +1,43 @@
+{
+  "work_package": "WP270",
+  "theorem_domain": "finite-scale trajectories of dc/dt=-c+1 with common UV limit c*=1",
+  "hostile_trajectories": [
+    {
+      "amplitude": "0",
+      "trajectory": "1",
+      "uv_limit": "1",
+      "c_at_matching_scale": "1",
+      "selected_x": "1/2"
+    },
+    {
+      "amplitude": "1",
+      "trajectory": "1 + exp(-time)",
+      "uv_limit": "1",
+      "c_at_matching_scale": "2",
+      "selected_x": "1/4"
+    }
+  ],
+  "trajectory_difference": "exp(-time)",
+  "finite_resolution_witness": {
+    "delta": "1/100",
+    "time": "log(100)",
+    "difference": "1/100"
+  },
+  "contextual_partition": "the UV-limit readout identifies both trajectories, while the finite matching-scale readout separates their integration constants",
+  "classification": "the attractive fixed point selects an asymptotic boundary class but not a unique finite-scale flavor coefficient; trajectory amplitude is an exact remaining source coordinate",
+  "first_nonfaithful_arrow": "common UV fixed-point limit -> unique finite matching trajectory",
+  "smallest_exact_falsifier": "c_0(t)=1 and c_1(t)=1+exp(-t) solve the same beta function and share UV limit 1, but at t=0 select x=1/2 and x=1/4",
+  "remaining_authority_gate": "derive the RG trajectory amplitude from a renormalized boundary condition, finite threshold match, or zero-dimensional UV critical surface, then transport it to the physical matching scale",
+  "scope_limit": "a UV completion with no free trajectory directions or an independently fixed finite-scale matching condition can close this kernel",
+  "checks": {
+    "both_trajectories_solve_same_beta_function": true,
+    "both_share_same_uv_fixed_point": true,
+    "finite_matching_values_are_distinct": true,
+    "finite_selected_points_are_distinct": true,
+    "trajectory_amplitude_survives_at_finite_scale": true,
+    "trajectory_difference_vanishes_only_asymptotically": true,
+    "finite_resolution_collapses_trajectories_in_uv": true,
+    "deliberate_uv_limit_implies_ir_uniqueness_claim_fails": true
+  },
+  "passed": true
+}

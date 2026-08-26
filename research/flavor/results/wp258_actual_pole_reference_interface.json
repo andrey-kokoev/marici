@@ -1,0 +1,47 @@
+{
+  "work_package": "WP258",
+  "candidate_reference_records": [
+    43611,
+    43651
+  ],
+  "candidate_domain": "2016 CMS MSSM bbH forced-dimuon NanoAOD actual-pole samples",
+  "target_domain": "2015 CMS SUSY bbH tau-pair MiniAOD muon-tau response used by WP256",
+  "interface_requirements": [
+    "source_mass_reference",
+    "common_decay_topology",
+    "common_detector_era",
+    "common_selection",
+    "physical_branching_normalization"
+  ],
+  "candidate_interface_column": [
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "missing_fields": [
+    "common_decay_topology",
+    "common_detector_era",
+    "common_selection",
+    "physical_branching_normalization"
+  ],
+  "contextual_partition": "the records distinguish labelled MSSM dimuon mass hypotheses, but do not refine WP256 tau-response fibers in a common detector/source frame",
+  "classification": "physical mass-reference rigidifier on the dimuon MSSM domain; neither selector nor valid reference-port repair for the WP256 physical16/tau domain",
+  "first_nonfaithful_arrow": "actual-pole dimuon source record -> 2015 muon-tau detector response",
+  "smallest_exact_falsifier": "the candidate supplies one of five required interface fields; forced_mumu supplies no physical tau branching normalization",
+  "remaining_instrument_gate": "generate or identify actual-pole tau samples in the same era and reconstruction frame, with physical branching normalization and the unchanged WP251 selection",
+  "checks": {
+    "wp256_templates_exist": true,
+    "actual_pole_mass_reference_exists": true,
+    "dimuon_decay_is_forced": true,
+    "physical_branching_not_supplied": true,
+    "shape_transport_previously_rejected": true,
+    "yield_transport_previously_rejected": true,
+    "interface_is_incomplete": true,
+    "four_required_fields_missing": true,
+    "mass_label_alone_does_not_define_common_frame": true,
+    "deliberate_complete_interface_claim_fails": true
+  },
+  "passed": true
+}

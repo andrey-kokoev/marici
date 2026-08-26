@@ -1,0 +1,39 @@
+{
+  "work_package": "WP264",
+  "theorem_domain": "one real stable Gaussian mediator with positive mass squared and a linear coupling to the nonnegative commutator invariant x",
+  "uv_potential": "M^2(S-v)^2/2 - g*S*x",
+  "mediator_solution": "coupling*x/mass2 + vev",
+  "tree_effective_potential": "-coupling*x*(coupling*x + 2*mass2*vev)/(2*mass2)",
+  "effective_coefficients": {
+    "linear_x": "-coupling*vev",
+    "quadratic_x_squared": "-coupling**2/(2*mass2)"
+  },
+  "direct_repair": {
+    "added_operator": "b0*x^2",
+    "effective_quadratic_coefficient": "-coupling**2/(2*mass2) + direct_quartic",
+    "strict_stability_requirement": "b0 > coupling^2/(2*mass2)"
+  },
+  "exact_witness": {
+    "mass2": "4",
+    "coupling": "1",
+    "vev": "1",
+    "effective_potential": "-x**2/8 - x",
+    "x_curvature": "-1/4"
+  },
+  "classification": "single stable Gaussian-mediator matching generates the desired linear selector term but a destabilizing negative quadratic term; a positive stabilizer requires an independent source coefficient",
+  "smallest_exact_falsifier": "M^2=4, g=1, and v=1 give V_eff=-x-x^2/8 with curvature -1/4",
+  "remaining_authority_gate": "derive a positive direct x^2 term, nonlinear mediator sector, or radiative correction with its sign and normalization independently fixed before flavor readout",
+  "scope_limit": "tree-level theorem for one stable Gaussian mediator linearly coupled to x; it does not exclude nonlinear, multi-mediator, fermion-loop, supersymmetric, or nonperturbative matching",
+  "checks": {
+    "stable_mediator_hessian_positive": true,
+    "mediator_solution_exact": true,
+    "linear_selector_term_generated": true,
+    "generated_quadratic_term_has_wrong_sign": true,
+    "stable_nonzero_coupling_cannot_generate_positive_b": true,
+    "exact_witness_is_concave_in_x": true,
+    "direct_repair_introduces_independent_coefficient": true,
+    "positive_effective_b_requires_strict_counterterm_bound": true,
+    "deliberate_one_mediator_stabilization_claim_fails": true
+  },
+  "passed": true
+}

@@ -1,0 +1,40 @@
+{
+  "work_package": "WP268",
+  "theorem_domain": "WP267 one-loop curvature plus a running local x^2 counterterm in the c=3/2 subtraction packet",
+  "scale_coordinates": {
+    "ell": "log(mu/mu0)",
+    "L0": "log(M^2/mu0^2)"
+  },
+  "loop_curvature": "2*amplitude*slope**2*(log_mass_reference - 2*log_scale)",
+  "running_counterterm_coefficient": "2*amplitude*log_scale*slope**2 + boundary",
+  "counterterm_beta": "2*amplitude*slope**2",
+  "rg_invariant_total_curvature": "2*amplitude*log_mass_reference*slope**2 + 2*boundary",
+  "hostile_boundary_packets": [
+    {
+      "boundary_c2_mu0": "1",
+      "total_curvature": "2",
+      "selected_x": "1/2"
+    },
+    {
+      "boundary_c2_mu0": "2",
+      "total_curvature": "4",
+      "selected_x": "1/4"
+    }
+  ],
+  "classification": "RG completion restores matching-scale invariance but leaves one boundary integration constant that controls the numerical interior selector",
+  "first_nonfaithful_arrow": "RG beta function and scheme transport -> renormalized boundary value c2(mu0)",
+  "smallest_exact_falsifier": "with identical loop content and RG law, c2(mu0)=1 and 2 select x=1/2 and 1/4",
+  "remaining_authority_gate": "derive the renormalized boundary coefficient from a UV fixed point, symmetry-breaking threshold, finite matching condition, or other source law independently of flavor readout",
+  "scope_limit": "does not exclude a UV completion that fixes the boundary value; it proves that RG consistency and the one-loop beta function alone do not",
+  "checks": {
+    "counterterm_beta_cancels_loop_scale_dependence": true,
+    "total_curvature_is_rg_invariant": true,
+    "boundary_constant_survives_completion": true,
+    "first_boundary_packet_positive": true,
+    "second_boundary_packet_positive": true,
+    "hostile_boundaries_select_distinct_points": true,
+    "same_rg_transport_does_not_fix_boundary": true,
+    "deliberate_rg_uniqueness_claim_fails": true
+  },
+  "passed": true
+}

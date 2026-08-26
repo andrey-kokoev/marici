@@ -1,0 +1,44 @@
+{
+  "work_package": "WP265",
+  "theorem_domain": "any finite real Gaussian mediator vector with positive-definite Hessian K and real linear coupling -x*g^T*S",
+  "general_effective_term": "-x^2*g^T*K^-1*g/2",
+  "cholesky_sign_certificate": "g^T*K^-1*g = ||L^-1*g||^2 for K=L*L^T",
+  "three_mode_diagonal_coefficient": "-(g1**2*m2*m3 + g2**2*m1*m3 + g3**2*m1*m2)/(2*m1*m2*m3)",
+  "mixed_witness": {
+    "hessian": [
+      [
+        4,
+        1
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "coupling": [
+      1,
+      2
+    ],
+    "principal_minors": [
+      "4",
+      "11"
+    ],
+    "effective_quadratic_coefficient": "-15/22",
+    "effective_curvature": "-15/11"
+  },
+  "classification": "finite stable Gaussian mediator sectors with arbitrary mixing cannot generate the positive commutator-square stabilizer; their Schur complement is negative semidefinite",
+  "smallest_exact_falsifier": "K=[[4,1],[1,3]] and g=(1,2) give the strictly negative coefficient -15/22 despite positive principal minors 4 and 11",
+  "remaining_authority_gate": "a direct positive operator, nonlinear mediator interaction, loop/nonperturbative contribution, or constrained auxiliary field whose sign and normalization are source-derived",
+  "scope_limit": "does not cover nonlinear mediator potentials, non-Gaussian path integrals, constrained non-propagating fields, or radiative and nonperturbative matching",
+  "checks": {
+    "diagonal_sector_induced_coefficient_is_negative_sum": true,
+    "mixed_hessian_positive_definite": true,
+    "mixed_witness_induced_coefficient_negative": true,
+    "mixed_completion_of_square_exact": true,
+    "mixed_effective_curvature_negative": true,
+    "cholesky_norm_identity_exact": true,
+    "quadratic_form_strictly_positive_for_witness": true,
+    "deliberate_positive_stabilizer_claim_fails": true
+  },
+  "passed": true
+}
