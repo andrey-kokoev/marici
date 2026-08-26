@@ -160,6 +160,14 @@ handoff activates successors, terminal failure blocks descendants, and
 authority cannot amplify downstream. Explicit novation of institutional or
 legal responsibility remains outside the finite workflow theorem.
 
+The closure-transport distinction receives a hard-to-vary controlled test in
+`deutschian-live-authority-binding-variation.md`. Byte-identical packages in
+twin fresh worlds differ only in target epoch; deleting live rebinding makes
+the revoked copy execute. This isolates live relational standing from copied
+authority claims while preserving the boundary that impossibility is relative
+to a conforming evaluator.
+
+
 
 
 

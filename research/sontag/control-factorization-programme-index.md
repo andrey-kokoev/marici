@@ -195,3 +195,21 @@ Validated predecessor evidence activates successor obligations, terminal
 failure must block descendants, authority cannot amplify downstream, and the
 parent outcome remains pending until the final audited result. The observed
 waiting descendants after Stage-A failure are a concrete nonblocking defect.
+
+## Milestone 13: Deutschian live-authority variation
+
+The closure account receives a hard-to-vary test in
+[byte-identical closures do not carry live authority](deutschian-live-authority-binding-variation.md).
+Twin worlds hold code, data, schema, request identity, nonce state, and target
+capability fixed while varying only the target's live epoch. Deleting live
+rebinding makes the stale copy execute, isolating the authority observer's
+counterfactual role.
+
+## Milestone 14: attack on the simplest closed packet
+
+Aspect's dual-clock finite anti-alias theorem is reconstructed in
+[control and Marici attack on the dual-clock packet](dual-clock-packet-control-marici-attack.md).
+Control theory identifies a static joint observer and CRT left inverse;
+Marici requires separate source support, labelled ports, live calibration,
+ordered evidence, authority, and claim scope. Five deletion attacks keep the
+closed theorem exact while blocking promotion to a complete procedure.
