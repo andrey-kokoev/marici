@@ -1070,4 +1070,410 @@ theorem pointwiseInverse_does_not_imply_uniformBound :
 
 end PointwiseInverseUniformGap
 
+section FinitePrefixAsymptoticGap
+
+def SameFinitePrefix {Value : Type*}
+    (cutoff : ℕ) (first second : ℕ → Value) : Prop :=
+  ∀ n, n < cutoff → first n = second n
+
+/-- A declared infinite-time readout descends through a finite prefix only if
+prefix-identical streams always have the same readout. -/
+def FinitePrefixDetermines {Value Result : Type*}
+    (cutoff : ℕ) (readout : (ℕ → Value) → Result) : Prop :=
+  ∀ first second, SameFinitePrefix cutoff first second →
+    readout first = readout second
+
+/-- Reusable obstruction: one prefix collision separated by the asymptotic
+readout refutes descent through that finite observation window. -/
+theorem finitePrefix_does_not_determine_of_separated_collision
+    {Value Result : Type*} {cutoff : ℕ}
+    {readout : (ℕ → Value) → Result}
+    {first second : ℕ → Value}
+    (samePrefix : SameFinitePrefix cutoff first second)
+    (separated : readout first ≠ readout second) :
+    ¬ FinitePrefixDetermines cutoff readout := by
+  intro determines
+  exact separated (determines first second samePrefix)
+
+def zeroStream : ℕ → ℚ := fun _ ↦ 0
+
+def delayedOneStream (cutoff : ℕ) : ℕ → ℚ :=
+  fun n ↦ if n < cutoff then 0 else 1
+
+theorem zeroAndDelayedOne_sameFinitePrefix (cutoff : ℕ) :
+    SameFinitePrefix cutoff zeroStream (delayedOneStream cutoff) := by
+  intro n hn
+  simp [zeroStream, delayedOneStream, hn]
+
+/-- The concrete streams from Aspect's packet.  Their Cesàro means require a
+separately named mean functional and convergence theorem; this lemma records
+exactly the finite-prefix evidence available before that analytic interface. -/
+theorem finitePrefix_has_zero_then_one_hostile (cutoff : ℕ) :
+    SameFinitePrefix cutoff zeroStream (delayedOneStream cutoff) ∧
+      (∀ n, cutoff ≤ n → delayedOneStream cutoff n = 1) := by
+  refine ⟨zeroAndDelayedOne_sameFinitePrefix cutoff, ?_⟩
+  intro n hn
+  simp [delayedOneStream, Nat.not_lt.mpr hn]
+
+end FinitePrefixAsymptoticGap
+
+section PositiveImpedanceDarkReflection
+
+/-- Normalized driving-point impedance on positive real probes.  This is the
+real-axis algebraic shadow of the half-plane packet, not an analytic
+positive-real function class. -/
+noncomputable def normalizedPositiveAxisImpedance
+    (scale probe : ℝ) : ℝ := probe / scale
+
+/-- Reflection readout after the unit-reference Cayley convention. -/
+noncomputable def unitReferenceReflection
+    (scale probe : ℝ) : ℝ :=
+  let impedance := normalizedPositiveAxisImpedance scale probe
+  (impedance - 1) / (impedance + 1)
+
+theorem normalizedPositiveAxisImpedance_positive
+    {scale probe : ℝ} (scalePositive : 0 < scale)
+    (probePositive : 0 < probe) :
+    0 < normalizedPositiveAxisImpedance scale probe := by
+  exact div_pos probePositive scalePositive
+
+theorem unitReferenceReflection_eq_ratio
+    {scale probe : ℝ} (scaleNonzero : scale ≠ 0) :
+    unitReferenceReflection scale probe =
+      (probe - scale) / (probe + scale) := by
+  unfold unitReferenceReflection normalizedPositiveAxisImpedance
+  field_simp
+
+/-- At the matched positive probe, impedance equals one and the selected
+reflection row is dark. -/
+theorem matchedPositiveImpedance_has_darkReflection
+    {scale : ℝ} (scalePositive : 0 < scale) :
+    normalizedPositiveAxisImpedance scale scale = 1 ∧
+      unitReferenceReflection scale scale = 0 := by
+  have scaleNonzero := ne_of_gt scalePositive
+  constructor
+  · simp [normalizedPositiveAxisImpedance, scaleNonzero]
+  · rw [unitReferenceReflection_eq_ratio scaleNonzero]
+    simp
+
+/-- Positive impedance values do not imply a nonvanishing Cayley reflection
+readout.  Port type and constructor order remain essential. -/
+theorem positiveImpedance_does_not_force_nonzeroReflection :
+    ∀ scale : ℝ, 0 < scale →
+      (∀ probe : ℝ, 0 < probe →
+        0 < normalizedPositiveAxisImpedance scale probe) ∧
+      unitReferenceReflection scale scale = 0 := by
+  intro scale scalePositive
+  exact ⟨fun _ probePositive ↦
+    normalizedPositiveAxisImpedance_positive scalePositive probePositive,
+    (matchedPositiveImpedance_has_darkReflection scalePositive).2⟩
+
+/-- Complex right-half-plane impedance with the positive real scale fixed
+before probing. -/
+noncomputable def complexNormalizedImpedance
+    (scale : ℝ) (probe : ℂ) : ℂ :=
+  (scale⁻¹ : ℂ) * probe
+
+/-- The corresponding selected reflection coefficient in its reduced ratio
+form.  Its codomain is a wave ratio, not the impedance codomain. -/
+noncomputable def complexUnitReferenceReflection
+    (scale : ℝ) (probe : ℂ) : ℂ :=
+  (probe - scale) / (probe + scale)
+
+theorem complexNormalizedImpedance_re
+    (scale : ℝ) (probe : ℂ) :
+    (complexNormalizedImpedance scale probe).re =
+      scale⁻¹ * probe.re := by
+  simp [complexNormalizedImpedance]
+
+/-- Strict positivity of the impedance real part throughout the declared open
+right half-plane. -/
+theorem complexNormalizedImpedance_strictlyPositive
+    {scale : ℝ} (scalePositive : 0 < scale)
+    {probe : ℂ} (rightHalfPlane : 0 < probe.re) :
+    0 < (complexNormalizedImpedance scale probe).re := by
+  rw [complexNormalizedImpedance_re]
+  exact mul_pos (inv_pos.mpr scalePositive) rightHalfPlane
+
+/-- The positive real probe `scale` is the unique numerator zero of the
+reduced reflection ratio. -/
+theorem complexReflection_dark_at_matchedProbe
+    (scale : ℝ) :
+    complexUnitReferenceReflection scale scale = 0 := by
+  simp [complexUnitReferenceReflection]
+
+/-- At the opposite probe the reduced reflection denominator vanishes. -/
+theorem complexReflection_denominator_zero_at_oppositeProbe
+    (scale : ℝ) :
+    ((-(scale : ℂ)) + scale) = 0 := by
+  ring
+
+/-- Full finite hostile: strict right-half-plane impedance positivity coexists
+with a selected reflection zero inside that half-plane. -/
+theorem strictPositiveComplexImpedance_with_offSeamDarkReflection
+    {scale : ℝ} (scalePositive : 0 < scale) :
+    (∀ probe : ℂ, 0 < probe.re →
+      0 < (complexNormalizedImpedance scale probe).re) ∧
+      (0 : ℝ) < (scale : ℂ).re ∧
+      complexUnitReferenceReflection scale scale = 0 := by
+  exact ⟨fun _ hright ↦
+    complexNormalizedImpedance_strictlyPositive scalePositive hright,
+    by simpa using scalePositive,
+    complexReflection_dark_at_matchedProbe scale⟩
+
+end PositiveImpedanceDarkReflection
+
+section ScalarSchurFirstJet
+
+/-- Value of a scalar Schur complement `e - c a⁻¹ b`. -/
+def scalarSchurValue (a b c e : ℚ) : ℚ :=
+  e - c * a⁻¹ * b
+
+/-- First jet of the Schur complement when `b` and `c` are static while the
+retained scalar block `a` and boundary scalar `e` vary. -/
+def scalarSchurFirstJet
+    (a aFirst b c eFirst : ℚ) : ℚ :=
+  eFirst + c * a⁻¹ * aFirst * a⁻¹ * b
+
+/-- Determinant and first jet of the scalar-block matrix
+`[[a,b],[c,e]]`, with static off-diagonal couplings. -/
+def scalarBlockDeterminant (a b c e : ℚ) : ℚ := a * e - b * c
+
+def scalarBlockDeterminantFirstJet
+    (a aFirst e eFirst : ℚ) : ℚ :=
+  aFirst * e + a * eFirst
+
+theorem scalarBlockDeterminant_eq_retained_mul_schur
+    {a b c e : ℚ} (aNonzero : a ≠ 0) :
+    scalarBlockDeterminant a b c e =
+      a * scalarSchurValue a b c e := by
+  unfold scalarBlockDeterminant scalarSchurValue
+  field_simp
+
+/-- Exact logarithmic first-jet bonding law for one scalar boundary mode. -/
+theorem scalarSchur_logJet_increment
+    {a aFirst b c e eFirst : ℚ}
+    (aNonzero : a ≠ 0)
+    (detNonzero : scalarBlockDeterminant a b c e ≠ 0) :
+    scalarBlockDeterminantFirstJet a aFirst e eFirst /
+          scalarBlockDeterminant a b c e - aFirst / a =
+      scalarSchurFirstJet a aFirst b c eFirst /
+        scalarSchurValue a b c e := by
+  have determinantFactorization :=
+    scalarBlockDeterminant_eq_retained_mul_schur
+      (a := a) (b := b) (c := c) (e := e) aNonzero
+  have schurAsQuotient :
+      scalarSchurValue a b c e =
+        scalarBlockDeterminant a b c e / a := by
+    apply (eq_div_iff aNonzero).2
+    rw [determinantFactorization]
+    ring
+  rw [schurAsQuotient]
+  have determinantExpressionNonzero : a * e - b * c ≠ 0 := by
+    simpa [scalarBlockDeterminant] using detNonzero
+  unfold scalarBlockDeterminantFirstJet scalarBlockDeterminant
+    scalarSchurFirstJet
+  field_simp [aNonzero, determinantExpressionNonzero]
+  field_simp [determinantExpressionNonzero]
+  ring
+
+/-- Hostile to the diagonal-only derivative: the boundary scalar has zero
+first jet, but variation of the retained inverse block contributes `1/4`. -/
+theorem dropping_mixedSchurJet_is_wrong_hostile :
+    scalarSchurFirstJet 2 1 1 1 0 = 1 / 4 ∧
+      scalarSchurFirstJet 2 1 1 1 0 ≠ 0 ∧
+      (0 : ℚ) ≠ scalarSchurFirstJet 2 1 1 1 0 := by
+  norm_num [scalarSchurFirstJet]
+
+end ScalarSchurFirstJet
+
+section DeterminantJetPathCoherence
+
+/-- Value and first derivative of a determinant channel at one fixed
+basepoint. -/
+structure DeterminantFirstJet where
+  value : ℚ
+  first : ℚ
+  deriving DecidableEq
+
+def DeterminantFirstJet.logSlope (jet : DeterminantFirstJet) : ℚ :=
+  jet.first / jet.value
+
+/-- Local logarithmic increment between two retained-mode stages. -/
+def determinantJetIncrement
+    (source target : DeterminantFirstJet) : ℚ :=
+  target.logSlope - source.logSlope
+
+/-- First-jet increments telescope along every two-step mode-addition path. -/
+theorem determinantJetIncrement_telescopes
+    (base intermediate full : DeterminantFirstJet) :
+    determinantJetIncrement base intermediate +
+        determinantJetIncrement intermediate full =
+      determinantJetIncrement base full := by
+  unfold determinantJetIncrement
+  ring
+
+/-- Two constructor orders with the same base and full determinant jets have
+the same total increment, regardless of their different intermediate block. -/
+theorem determinantJet_two_orders_same_total
+    (base firstIntermediate secondIntermediate full : DeterminantFirstJet) :
+    determinantJetIncrement base firstIntermediate +
+        determinantJetIncrement firstIntermediate full =
+      determinantJetIncrement base secondIntermediate +
+        determinantJetIncrement secondIntermediate full := by
+  rw [determinantJetIncrement_telescopes,
+    determinantJetIncrement_telescopes]
+
+def sewingBaseJet : DeterminantFirstJet := ⟨1, 1⟩
+def sewingFirstOrderIntermediate : DeterminantFirstJet := ⟨1, 2⟩
+def sewingSecondOrderIntermediate : DeterminantFirstJet := ⟨1, 3⟩
+def sewingFullJet : DeterminantFirstJet := ⟨1, 5⟩
+
+/-- Concrete hostile: local increments remember constructor order, although
+both ordered sums equal the endpoint increment. -/
+theorem localSchurIncrements_orderDependent_but_totalCoherent :
+    determinantJetIncrement sewingBaseJet sewingFirstOrderIntermediate = 1 ∧
+      determinantJetIncrement sewingFirstOrderIntermediate sewingFullJet = 3 ∧
+      determinantJetIncrement sewingBaseJet sewingSecondOrderIntermediate = 2 ∧
+      determinantJetIncrement sewingSecondOrderIntermediate sewingFullJet = 2 ∧
+      determinantJetIncrement sewingBaseJet sewingFirstOrderIntermediate ≠
+        determinantJetIncrement sewingBaseJet sewingSecondOrderIntermediate ∧
+      determinantJetIncrement sewingBaseJet sewingFirstOrderIntermediate +
+          determinantJetIncrement sewingFirstOrderIntermediate sewingFullJet =
+        determinantJetIncrement sewingBaseJet sewingSecondOrderIntermediate +
+          determinantJetIncrement sewingSecondOrderIntermediate sewingFullJet := by
+  norm_num [determinantJetIncrement, DeterminantFirstJet.logSlope,
+    sewingBaseJet, sewingFirstOrderIntermediate,
+    sewingSecondOrderIntermediate, sewingFullJet]
+
+end DeterminantJetPathCoherence
+
+section ReciprocalSectorJetSewing
+
+/-- Reflection `z ↦ -z` preserves the determinant value at the basepoint and
+reverses its first derivative. -/
+def reflectDeterminantFirstJet
+    (jet : DeterminantFirstJet) : DeterminantFirstJet :=
+  ⟨jet.value, -jet.first⟩
+
+/-- Product rule for determinant first jets. -/
+def multiplyDeterminantFirstJets
+    (left right : DeterminantFirstJet) : DeterminantFirstJet :=
+  ⟨left.value * right.value,
+    left.first * right.value + left.value * right.first⟩
+
+/-- Finite reciprocal sector double `D₊(z)D₊(-z)` at first-jet level. -/
+def sewReciprocalDeterminantJet
+    (jet : DeterminantFirstJet) : DeterminantFirstJet :=
+  multiplyDeterminantFirstJets jet (reflectDeterminantFirstJet jet)
+
+theorem sewReciprocalDeterminantJet_value
+    (jet : DeterminantFirstJet) :
+    (sewReciprocalDeterminantJet jet).value = jet.value ^ 2 := by
+  simp [sewReciprocalDeterminantJet, multiplyDeterminantFirstJets,
+    reflectDeterminantFirstJet, pow_two]
+
+/-- Reciprocal sewing cancels the odd first jet exactly. -/
+theorem sewReciprocalDeterminantJet_first_zero
+    (jet : DeterminantFirstJet) :
+    (sewReciprocalDeterminantJet jet).first = 0 := by
+  simp [sewReciprocalDeterminantJet, multiplyDeterminantFirstJets,
+    reflectDeterminantFirstJet]
+  ring
+
+/-- Vanishing of the sewn odd jet does not imply that either unsown sector
+has zero first derivative. -/
+theorem sewnOddJet_zero_does_not_descend_to_sector_hostile :
+    let direct : DeterminantFirstJet := ⟨2, 3⟩
+    direct.first ≠ 0 ∧
+      (reflectDeterminantFirstJet direct).first ≠ 0 ∧
+      (sewReciprocalDeterminantJet direct).first = 0 := by
+  norm_num [reflectDeterminantFirstJet, sewReciprocalDeterminantJet,
+    multiplyDeterminantFirstJets]
+
+end ReciprocalSectorJetSewing
+
+section ThreeModeDeterminantChannels
+
+/-- Denominator determinant in the eigenbasis with source eigenvalues
+`1/2`, `1/4`, and `1/5`. -/
+def threeModePositiveDenominator (probe : ℚ) : ℚ :=
+  (probe + 3 / 2) * (probe + 5 / 4) * (probe + 6 / 5)
+
+/-- Selected Cayley numerator determinant for the same three eigenmodes. -/
+def threeModeCayleyNumerator (probe : ℚ) : ℚ :=
+  (probe - 1 / 2) * (probe - 3 / 4) * (probe - 4 / 5)
+
+/-- The denominator is strictly positive on every positive real probe. -/
+theorem threeModePositiveDenominator_positive
+    {probe : ℚ} (probePositive : 0 < probe) :
+    0 < threeModePositiveDenominator probe := by
+  unfold threeModePositiveDenominator
+  positivity
+
+/-- At the matched first eigenmode, the selected numerator is dark while the
+driving-point denominator remains strictly positive. -/
+theorem threeMode_darkNumerator_nonzeroDenominator_hostile :
+    threeModeCayleyNumerator (1 / 2) = 0 ∧
+      0 < threeModePositiveDenominator (1 / 2) ∧
+      threeModePositiveDenominator (1 / 2) ≠ 0 := by
+  norm_num [threeModeCayleyNumerator, threeModePositiveDenominator]
+
+/-- Reciprocal sector product of the positive denominator channels. -/
+def sewnThreeModeDenominator (probe : ℚ) : ℚ :=
+  threeModePositiveDenominator probe *
+    threeModePositiveDenominator (-probe)
+
+/-- The finite sewn denominator is globally even as a rational polynomial. -/
+theorem sewnThreeModeDenominator_even (probe : ℚ) :
+    sewnThreeModeDenominator (-probe) = sewnThreeModeDenominator probe := by
+  simp [sewnThreeModeDenominator, mul_comm]
+
+end ThreeModeDeterminantChannels
+
+section ZeroFreeCompletionHostile
+
+/-- Constant determinant channel at finite stage `n`. -/
+noncomputable def vanishingZeroFreeStage
+    (n : ℕ) (_probe : ℚ) : ℝ :=
+  (1 / 2 : ℝ) ^ n
+
+/-- Its explicit uniform error against the zero limit function. -/
+noncomputable def vanishingStageUniformError (n : ℕ) : ℝ :=
+  (1 / 2 : ℝ) ^ n
+
+theorem vanishingZeroFreeStage_nonzero
+    (n : ℕ) (probe : ℚ) :
+    vanishingZeroFreeStage n probe ≠ 0 := by
+  exact pow_ne_zero _ (by norm_num)
+
+theorem vanishingStageUniformError_tendsto_zero :
+    Filter.Tendsto vanishingStageUniformError Filter.atTop (nhds 0) := by
+  exact tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+
+/-- The same geometric error bounds every probe, so convergence to zero is
+uniform in the declared probe variable. -/
+theorem vanishingZeroFreeStage_uniform_error
+    (n : ℕ) (probe : ℚ) :
+    |vanishingZeroFreeStage n probe - 0| ≤
+      vanishingStageUniformError n := by
+  simp [vanishingZeroFreeStage, vanishingStageUniformError, abs_of_nonneg]
+
+/-- Even an explicit uniform limit of zero-free finite stages may be the zero
+function.  A Hurwitz-style nonvanishing conclusion needs an additional
+nonzero normalization or exclusion of the identically-zero limit. -/
+theorem finiteZeroFreeStages_can_uniformlyCollapse_to_zero :
+    (∀ n probe, vanishingZeroFreeStage n probe ≠ 0) ∧
+      Filter.Tendsto vanishingStageUniformError Filter.atTop (nhds 0) ∧
+      (∀ n probe,
+        |vanishingZeroFreeStage n probe - 0| ≤
+          vanishingStageUniformError n) ∧
+      (∃ probe : ℚ, (0 : ℚ → ℝ) probe = 0) := by
+  exact ⟨vanishingZeroFreeStage_nonzero,
+    vanishingStageUniformError_tendsto_zero,
+    vanishingZeroFreeStage_uniform_error,
+    ⟨0, rfl⟩⟩
+
+end ZeroFreeCompletionHostile
+
 end MariciFormal.FiniteInstrumentReadout
