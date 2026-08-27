@@ -1,0 +1,24 @@
+{
+  "schema": "marici.aspect.reset-qualification-acquisition.v1",
+  "format": "CSV with one row per attempted trial",
+  "required_columns": [
+    "trial_key", "qualification_epoch", "arm", "predecessor", "target",
+    "reset_setting", "reset_monitor_outcome", "target_outcome",
+    "reset_failure", "detector_assignment", "source_setting",
+    "acquisition_block", "within_block_position", "sealed_schedule_key"
+  ],
+  "arms": ["five_empty_bin_reset", "no_reset_control"],
+  "treatments": ["L1", "R2", "L2", "R1"],
+  "reset_setting_by_arm": {
+    "five_empty_bin_reset": "empty,empty,empty,empty,empty",
+    "no_reset_control": "none"
+  },
+  "minimum_attempted_trials_per_arm_predecessor_target_cell": 1000000,
+  "absolute_target_predecessor_spread_tolerance": "1/20",
+  "absolute_monitor_predecessor_spread_tolerance": "1/20",
+  "minimum_no_reset_target_predecessor_spread": "1/10",
+  "block_design": "Every acquisition block contains each of the 32 arm-predecessor-target cells exactly once. Across each 32-block rotation superblock, every cell occupies every within-block position exactly once.",
+  "retention_rule": "Every attempted trial is recorded; reset_failure is an outcome and never an exclusion key.",
+  "full_falsifier_suite": "reset-full-falsifier-suite.v1.json",
+  "scope_boundary": "Passing this raw predecessor-memory acquisition is necessary but not sufficient; all eight full-suite gates must also pass."
+}

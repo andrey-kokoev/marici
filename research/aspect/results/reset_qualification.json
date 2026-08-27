@@ -1,0 +1,23 @@
+{
+  "schema": "marici.aspect.reset-qualification-check.v1",
+  "status": "pass",
+  "positive_fixture_accepted": true,
+  "positive_gates": {
+    "all_sixteen_predecessor_target_cells_present": true,
+    "reset_target_response_is_predecessor_invariant": true,
+    "reset_monitor_is_predecessor_invariant": true,
+    "no_reset_control_detects_injected_memory": true,
+    "qualification_epoch_is_disjoint_from_science_epoch": true,
+    "all_reset_failures_remain_in_full_outcome_record": true
+  },
+  "deliberate_failures": {
+    "quiet_monitor_but_residual_target_memory_rejected": true,
+    "missing_predecessor_target_cell_rejected": true,
+    "memory_blind_negative_control_rejected": true,
+    "qualification_on_science_epoch_rejected": true,
+    "discarded_reset_failure_rejected": true
+  },
+  "cell_count": 16,
+  "trials_per_cell": 1000000,
+  "decision": "candidate reset is qualified only for the tested settings and memory sensitivity witnessed by the no-reset control"
+}

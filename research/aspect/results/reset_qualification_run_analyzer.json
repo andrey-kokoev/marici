@@ -1,0 +1,34 @@
+{
+  "schema": "marici.aspect.reset-qualification-run-analyzer-check.v1",
+  "status": "pass",
+  "positive_fixture": {
+    "accepted": true,
+    "gates": {
+      "raw_records_complete_and_trial_keys_unique": true,
+      "one_qualification_epoch": true,
+      "all_thirty_two_arm_predecessor_target_cells_present": true,
+      "every_acquisition_block_is_a_complete_32_cell_permutation": true,
+      "every_cell_is_uniformly_balanced_over_32_block_positions": true,
+      "one_sealed_schedule_key": true,
+      "minimum_attempted_counts_pass": true,
+      "five_empty_bin_sequences_are_literal": true,
+      "reset_target_response_is_predecessor_invariant": true,
+      "reset_monitor_is_predecessor_invariant": true,
+      "no_reset_control_is_memory_sensitive": true
+    },
+    "attempted_trial_count": 1024,
+    "recorded_reset_failure_count": 2,
+    "maximum_reset_target_predecessor_spread": "0",
+    "maximum_reset_monitor_predecessor_spread": "0",
+    "maximum_no_reset_target_predecessor_spread": "3/16"
+  },
+  "deliberate_failures": {
+    "missing_cell_rejected": true,
+    "duplicate_trial_key_rejected": true,
+    "four_bin_substitution_rejected": true,
+    "grouped_drift_confounder_rejected": true,
+    "fixed_within_block_position_confounder_rejected": true,
+    "surviving_target_memory_rejected": true,
+    "memory_blind_control_rejected": true
+  }
+}
