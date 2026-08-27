@@ -24,7 +24,8 @@ where
 \]
 
 Could a fifth tower, governing allowed compositions of coherence cells, select
-the candidate amplitude \(c=-1/8\)?
+the candidate amplitude \(c=1/4\), equivalently \(C_2=-1/8\) in the published
+connection convention?
 
 ## Minimal typed model
 
@@ -77,7 +78,7 @@ existed, its scalar readout would be
 
 This readout faithfully distinguishes amplitudes after the composite has been
 defined. It supplies no equation selecting one amplitude before that
-definition. For \(c=-1/8\), it would report \(-1/32\), but that value is a
+definition. For \(c=1/4\), it would report \(1/16\), but that value is a
 consequence of the candidate rather than its derivation.
 
 ## Result

@@ -5,7 +5,7 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
-candidate = -Fraction(1, 8)
+candidate = Fraction(1, 4)
 target_pairing = Fraction(1, 4)
 
 # The boundary-regular extension space is the one-dimensional rational line
@@ -25,8 +25,8 @@ checks = {
     "zero_subspace_rejects_candidate": not linear_subspaces["zero"]["contains_candidate"],
     "full_line_does_not_select_unique_nonzero": not linear_subspaces["full_line"]["unique_nonzero"],
     "target_pairing_reports_c_over_four": target_pairing == Fraction(1, 4),
-    "candidate_report_would_be_minus_one_over_32": candidate_report
-    == -Fraction(1, 32),
+    "candidate_report_would_be_one_over_16": candidate_report
+    == Fraction(1, 16),
 }
 
 if not all(checks.values()):
@@ -35,7 +35,7 @@ if not all(checks.values()):
 packet = {
     "schema": "marici.benincasa.composition_authority_linear_no_go.v1",
     "extension_line": "Ext(q0,e6)=Q*omega",
-    "candidate": "c=-1/8",
+    "candidate": "c=1/4, equivalently C2=-1/8",
     "target_pairing": "phi(e6)=1/4",
     "reported_composite": "phi o p o T o s = c/4",
     "linear_admissible_subspaces": linear_subspaces,
