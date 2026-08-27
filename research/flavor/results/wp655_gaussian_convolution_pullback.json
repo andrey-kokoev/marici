@@ -1,0 +1,21 @@
+{
+  "work_package": "WP655",
+  "status": "PASS",
+  "checks": {
+    "gaussian_transfer_is_positive": true,
+    "convolution_transfer_has_no_real_frequency_zero": true,
+    "source_ratio_log_derivative": true,
+    "mass_width_separation_jacobian_has_rank_two": true,
+    "exact_collapse_requires_equal_width_and_mass": true,
+    "coalescing_family_loses_first_order_separation": true
+  },
+  "source_templates": "Lorentzian line shapes parameterized by mass and half-width",
+  "detector_operation": "convolution with a Gaussian resolution kernel of finite sigma",
+  "fourier_transfer": "exp(-sigma^2 k^2/2), strictly positive for every finite real k",
+  "object_separation": "preserved: convolved templates coincide only when Delta=0 and delta_gamma=0",
+  "completion_stability": "fails uniformly as (Delta,delta_gamma) approaches (0,0)",
+  "operational_target_domain": "must impose a declared positive lower bound on the calibrated convolved-template Gram eigenvalue",
+  "classification": "injective detector convolution without uniform inverse; identification conditional on an operational separation domain",
+  "smallest_exact_falsifier": "a finite-sigma Gaussian transfer zero or two distinct Lorentzian parameter pairs with identical convolved templates",
+  "remaining_gate": "derive the calibrated resolution sigma, background covariance, efficiencies, and uncertainty-stable Gram lower bound from an experiment"
+}

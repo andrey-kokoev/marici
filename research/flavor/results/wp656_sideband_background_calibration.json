@@ -1,0 +1,22 @@
+{
+  "work_package": "WP656",
+  "status": "PASS",
+  "checks": {
+    "signal_region_jacobian_has_only_two_records": true,
+    "unconstrained_background_profile_has_rank_one": true,
+    "unconstrained_background_erases_common_mode": true,
+    "positive_sideband_restores_rank_two": true,
+    "sideband_profile_determinant": true,
+    "common_mode_information": true,
+    "zero_sideband_limit_recovers_rank_loss": true
+  },
+  "signal_model": "two labelled signal records plus one common additive background nuisance",
+  "uncalibrated_profile": "rank one; common source-rate mode is erased",
+  "calibration_instrument": "an independently observed background-only sideband with Fisher precision tau>0",
+  "calibrated_profile_determinant": "16 tau/(tau+2)>0",
+  "common_mode_information": "4 tau/(tau+2)",
+  "completion_stability": "fails as sideband precision tau approaches zero",
+  "classification": "detector-derived calibration channel restores local source-magnitude identifiability; it does not select source values",
+  "smallest_exact_falsifier": "tau=0, or a sideband contaminated by the same unknown source amplitudes",
+  "remaining_gate": "instantiate sideband support, transfer factors, efficiencies, covariance, and uncertainty from a declared experiment without fitting them from the target signal"
+}

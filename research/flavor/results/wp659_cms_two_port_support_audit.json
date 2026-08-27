@@ -1,0 +1,66 @@
+{
+  "work_package": "WP659",
+  "status": "PASS",
+  "checks": {
+    "coverage_rows_are_complete": true,
+    "no_candidate_binds_all_required_records": true,
+    "both_candidates_cover_each_decay_hypothesis": true,
+    "neither_candidate_performs_simultaneous_two_width_fit": true,
+    "neither_candidate_identifies_both_vertex_magnitudes": true
+  },
+  "required_gates": [
+    "standard_vertex_port",
+    "exotic_scalar_vertex_port",
+    "simultaneous_two_port_fit",
+    "free_two_width_parameterization",
+    "common_constructor_frame",
+    "background_control",
+    "two_efficiency_controls",
+    "public_joint_covariance",
+    "finite_width_response"
+  ],
+  "candidate_coverage": {
+    "CMS-B2G-23-009": {
+      "standard_vertex_port": true,
+      "exotic_scalar_vertex_port": true,
+      "simultaneous_two_port_fit": false,
+      "free_two_width_parameterization": false,
+      "common_constructor_frame": false,
+      "background_control": true,
+      "two_efficiency_controls": false,
+      "public_joint_covariance": false,
+      "finite_width_response": false
+    },
+    "CMS-B2G-22-001": {
+      "standard_vertex_port": true,
+      "exotic_scalar_vertex_port": true,
+      "simultaneous_two_port_fit": false,
+      "free_two_width_parameterization": false,
+      "common_constructor_frame": false,
+      "background_control": true,
+      "two_efficiency_controls": false,
+      "public_joint_covariance": false,
+      "finite_width_response": true
+    }
+  },
+  "missing_gates": {
+    "CMS-B2G-23-009": [
+      "simultaneous_two_port_fit",
+      "free_two_width_parameterization",
+      "common_constructor_frame",
+      "two_efficiency_controls",
+      "public_joint_covariance",
+      "finite_width_response"
+    ],
+    "CMS-B2G-22-001": [
+      "simultaneous_two_port_fit",
+      "free_two_width_parameterization",
+      "common_constructor_frame",
+      "two_efficiency_controls",
+      "public_joint_covariance"
+    ]
+  },
+  "classification": "published CMS searches constrain single production times an assumed decay branching fraction; no admitted analysis realizes WP658's simultaneous five-record instrument",
+  "smallest_exact_falsifier": "a published likelihood with both partial widths free in one constructor frame and independent background/efficiency controls plus joint covariance",
+  "remaining_gate": "a dedicated simultaneous standard-plus-exotic decay analysis or a validated reinterpretation workspace exposing the joint likelihood and detector controls"
+}
