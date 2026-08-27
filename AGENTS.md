@@ -121,6 +121,34 @@ Reject every morphism in the ideal \(\langle A,I,N,D\rangle\) unless evidence,
 typing, safety, or direct operator intent independently requires it. State the
 result at its demonstrated strength and stop.
 
+## No implicit physical time
+
+No carrier, filtration, composition, deformation, continuation, monodromy,
+nearby-cycle, orientation, history index, or variable named `t` has temporal
+meaning by default. A temporal interpretation requires a source-derived map
+
+\[
+\tau:C\longrightarrow T_{\rm phys}
+\]
+
+from the typed object under discussion to a declared physical-time object,
+together with its orientation/readout authority. Without that map, use the
+actual non-temporal type: filtration grade, composition order, deformation
+coordinate, parameter-space path, deck action, specialization, workflow step,
+or partial order.
+
+Do not use temporal vocabulary to explain a non-temporal relation. In
+particular, `before` and `after` in research claims must name either explicit
+workflow order or a typed partial order; `evolution`, `propagation`, `memory`,
+`history`, `causal`, and `arrow of time` require an independently declared
+process or physical interface. Monodromy is loop transport, nearby cycles are
+specialization, and an orientation sign is not a time direction.
+
+When a sector genuinely contains physical time, retain it as sector-specific
+input such as a boundary condition, frequency choice, time-root, or
+source-authorized readout. Never transport that interpretation into the shared
+carrier or comparison calculus merely because the formulas are compatible.
+
 ## Multiple agent sessions share this working tree
 
 Model concurrent ownership as the coproduct
