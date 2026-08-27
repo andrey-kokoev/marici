@@ -1,0 +1,43 @@
+{
+  "schema": "marici.aspect.paired-mate-sewing-interferometer.v1",
+  "architecture": "2(3+2+1)+1",
+  "source": "heralded path-correlated photon pair with independently addressable path-marker wings",
+  "local_wings": ["A", "B"],
+  "local_three": ["input", "output", "control"],
+  "local_two": ["forward_record_construction", "backward_record_conditioning"],
+  "local_one": "calibrated_totalization_over_the_complete_local_record",
+  "outer_one": "nonfactorizing_even_odd_sewing_measurement_after_both_local_mates_close",
+  "phase_cosines": ["1", "0", "-1", "0"],
+  "coherence_settings": ["1", "3/5", "0"],
+  "joint_law": {
+    "00": "(1 + gamma*c)/4",
+    "11": "(1 + gamma*c)/4",
+    "01": "(1 - gamma*c)/4",
+    "10": "(1 - gamma*c)/4"
+  },
+  "local_law": {"A0": "1/2", "B0": "1/2"},
+  "parity_law": {"even": "(1 + gamma*c)/2", "odd": "(1 - gamma*c)/2"},
+  "required_records": [
+    "pair_herald_key", "wing_A_full_outcome", "wing_B_full_outcome",
+    "wing_A_marker_record", "wing_B_marker_record", "wing_A_reset_probe",
+    "wing_B_reset_probe", "local_phase_A", "local_phase_B", "joint_phase",
+    "local_route_A", "local_route_B", "joint_analyzer_setting",
+    "calibration_epoch_A", "calibration_epoch_B", "joint_calibration_epoch"
+  ],
+  "primary_proportions": 72,
+  "minimum_effective_trials_per_primary_proportion": 750000,
+  "absolute_probability_tolerance": "1/20",
+  "familywise_error_upper_bound": "6/625",
+  "acceptance_gates": [
+    "complete_pair_record", "same_epoch_three_surface_calibration",
+    "both_local_marginals_flat", "joint_law_normalized",
+    "even_and_odd_character_blocks_observable", "parity_fibers_totalize",
+    "zero_coherence_is_globally_flat", "local_mates_close_before_sewing",
+    "joint_analyzer_is_nonfactorizing", "minimum_counts_and_error_budget"
+  ],
+  "prohibited_analyses": [
+    "coincidence_only_normalization", "discarding_single_or_no_click_events",
+    "inferring_joint_coherence_from_local_fringes", "mixing_calibration_epochs",
+    "replacing_joint_sewing_with_classical_record_comparison"
+  ]
+}
