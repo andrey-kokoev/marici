@@ -26,18 +26,29 @@ RESULT_NAME = os.environ.get(
 )
 RESULT = ROOT / "research" / "benincasa" / "results" / RESULT_NAME
 V = int(os.environ.get("MARICI_LAURENT_V", "5"))
+U_FIXED = int(os.environ.get("MARICI_LAURENT_U", "0"))
+SERIES_AXIS = os.environ.get("MARICI_LAURENT_SERIES_AXIS", "u")
+SERIES_CENTER = int(os.environ.get("MARICI_LAURENT_SERIES_CENTER", "0"))
 DEGREE = int(os.environ.get("MARICI_LAURENT_DEGREE", "16"))
 MAX_ORDER = int(os.environ.get("MARICI_LAURENT_MAX_ORDER", "3"))
 MIN_ORDER = -2
 TARGET_ORDER = int(os.environ.get("MARICI_LAURENT_TARGET_ORDER", "-2"))
 
 
-def export(u: int, master: int) -> dict:
+def export(series_offset: int, master: int) -> dict:
+    if SERIES_AXIS == "u":
+        u_value = series_offset
+        v_value = V
+    elif SERIES_AXIS == "v":
+        u_value = U_FIXED
+        v_value = SERIES_CENTER + series_offset
+    else:
+        raise ValueError(f"unsupported series axis: {SERIES_AXIS}")
     env = os.environ.copy()
     env.update(
         MARICI_EXACT_POINT_SOURCE_MODE="1",
-        MARICI_EXACT_U=str(u),
-        MARICI_EXACT_V=str(V),
+        MARICI_EXACT_U=str(u_value),
+        MARICI_EXACT_V=str(v_value),
         MARICI_EXACT_AXIS=AXIS,
         MARICI_EXACT_MASTER=str(master),
         MARICI_EXACT_RAW_RESIDUES="1",
@@ -79,8 +90,13 @@ def rational_reconstruct(value: int, modulus: int) -> Fraction:
 
 
 def main() -> None:
+    sample_offsets = (
+        list(range(DEGREE + 2))
+        if SERIES_AXIS == "u"
+        else list(range(1, DEGREE + 3))
+    )
     packets_by_master = [
-        [export(value, master) for value in range(DEGREE + 2)]
+        [export(value, master) for value in sample_offsets]
         for master in range(3)
     ]
     packets = packets_by_master[0]
@@ -106,7 +122,11 @@ def main() -> None:
                 ) % prime
 
     size = DEGREE + 1
-    vandermonde = [[pow(point, degree, prime) for degree in range(size)] for point in range(size)]
+    interpolation_points = sample_offsets[:size]
+    vandermonde = [
+        [pow(point, degree, prime) for degree in range(size)]
+        for point in interpolation_points
+    ]
     transform = inverse(vandermonde, prime)
 
     def coefficients(samples: list[int]) -> list[int]:
@@ -119,16 +139,16 @@ def main() -> None:
     ]
 
     # The held-out point certifies the chosen polynomial degree for every source coefficient.
-    held_out = DEGREE + 1
+    held_out = sample_offsets[-1]
     assert all(
         sum(coefficient * pow(held_out, degree, prime) for degree, coefficient in enumerate(coeffs)) % prime
-        == sample_values[held_out]
+        == sample_values[-1]
         for key, sample_values in values.items()
         for coeffs in [matrix_coefficients[key]]
     )
     assert all(
         sum(coefficient * pow(held_out, degree, prime) for degree, coefficient in enumerate(coeffs)) % prime
-        == sample_values[held_out]
+        == sample_values[-1]
         for master in range(3)
         for key, sample_values in rhs_values[master].items()
         for coeffs in [rhs_coefficients[master][key]]
@@ -163,11 +183,12 @@ def main() -> None:
     reduced, pivots = matrix.rref()
     reduced_dod = reduced.to_dod()
     target = order_index[TARGET_ORDER] * unknowns + 8
-    assert target in pivots
-    pivot_row = pivots.index(target)
-    row = reduced_dod.get(pivot_row, {})
     free = set(range(columns)) - set(pivots)
-    fixed = all(row.get(column, field.zero) == field.zero for column in free)
+    target_is_pivot = target in pivots
+    row = reduced_dod.get(pivots.index(target), {}) if target_is_pivot else {}
+    fixed = target_is_pivot and all(
+        row.get(column, field.zero) == field.zero for column in free
+    )
     value = int(row.get(augmented_column, field.zero)) % prime if fixed else None
     rational = rational_reconstruct(value, prime) if value is not None else None
 
@@ -196,6 +217,9 @@ def main() -> None:
         "status": "pass" if fixed else "unfixed",
         "prime": prime,
         "v": V,
+        "u_fixed": U_FIXED if SERIES_AXIS == "v" else None,
+        "series_axis": SERIES_AXIS,
+        "series_center": SERIES_CENTER,
         "source_polynomial_degree_bound": DEGREE,
         "held_out_polynomial_identity": True,
         "laurent_orders": orders,
@@ -203,7 +227,8 @@ def main() -> None:
         "unknowns": columns,
         "rank": len(pivots),
         "derivative_axis": AXIS,
-        "target": f"u^{TARGET_ORDER} e6 coordinate in {AXIS}-derivative of q0",
+        "target": f"({SERIES_AXIS}-{SERIES_CENTER})^{TARGET_ORDER} e6 coordinate in {AXIS}-derivative of q0",
+        "target_is_pivot": target_is_pivot,
         "target_fixed": fixed,
         "target_residue_mod_prime": value,
         "target_rational_reconstruction": str(rational) if rational is not None else None,
