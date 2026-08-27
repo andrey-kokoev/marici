@@ -1,4 +1,4 @@
-# Normal dynamics comes from conjugate reciprocity, not holomorphic reflection alone
+# Normal action comes from conjugate reciprocity, not holomorphic reflection alone
 
 ## Correction of scope
 
@@ -14,7 +14,7 @@ s-(1-s)=2s-1.
 \]
 
 This vanishes only at \(s=1/2\), not along the critical line.  It cannot be the
-normal action required by the dynamic coherencer.
+normal action required by the operative coherencer.
 
 ## The correct two-sector operation
 
@@ -79,7 +79,7 @@ The calculation identifies the correct normal generator, but it does not yet
 prove that the actual mixed theta/Tate residue presentation carries this dagger
 without extra boundary terms.  Integration by parts may produce endpoint,
 primitive, square, seam, or archimedean currents.  Those terms must be retained
-and shown to form the other faces of the same dynamic coherencer.
+and shown to form the other faces of the same operative coherencer.
 
 The exact source theorem required is a boundary-bearing adjoint identity of the
 form
@@ -113,4 +113,3 @@ The finite falsifiers are:
 the tangential coordinate for rational complex parameters, shows failure of
 holomorphic reflection on the critical line, and checks the centered dilation
 adjoint relation on monomial test functions including its boundary term.
-
