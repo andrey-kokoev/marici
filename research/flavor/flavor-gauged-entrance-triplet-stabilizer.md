@@ -13,7 +13,7 @@ SU(3)_F\mathbin\times SO(3)_P\mathbin\times SO(3)_E.
 The entrance vertices are ordinary dimension-four contractions,
 
 \[
-y_{Hu}\bar Q H^u_\alpha A^u_{R\alpha},
+y_{Hu}\bar Q \widetilde H^u_\alpha A^u_{R\alpha},
 \qquad
 y_{Hd}\bar Q H^d_\alpha A^d_{R\alpha}.
 \]
