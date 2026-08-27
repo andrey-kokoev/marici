@@ -1,0 +1,24 @@
+{
+  "schema": "marici.benincasa.composability_instrument_factorization.v1",
+  "fifth_tower_output": "rank-one relational residue R",
+  "instrument_constructor": "rho_I: R -> preparation/instrument ports",
+  "scalar_readout": "<detector, rho_I(residue, preparation)>",
+  "fixed_detector": "phi(e6)=1/4",
+  "preparation_examples": {
+    "zero": "0",
+    "unit": "1",
+    "candidate_coordinate": "1/4"
+  },
+  "readout_examples": {
+    "zero": "0",
+    "unit": "1/4",
+    "candidate_coordinate": "1/16"
+  },
+  "checks": {
+    "fifth_tower_returns_rank_one_residue": true,
+    "detector_is_fixed": true,
+    "different_preparations_give_different_readouts": true,
+    "candidate_coordinate_reports_one_over_sixteen": true
+  },
+  "verdict": "The fifth tower may canonically return the complete residue line. Scalar closure requires a separate instrument constructor with both preparation-side and detector-side ports. The frozen cosmology packet contains the e6 detector port but not the q0 preparation port."
+}
