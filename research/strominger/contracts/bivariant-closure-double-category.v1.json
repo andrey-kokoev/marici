@@ -1,0 +1,28 @@
+{
+  "schema": "marici.strominger.bivariant-closure-double-category.v1",
+  "objects": "typed source, representation, and instrument states",
+  "vertical_arrows": {
+    "name": "contravariant_invariance",
+    "examples": ["atlas change", "descent", "normalization factorization"],
+    "required": ["source_authority", "distinction_preservation", "typed inverse_or_mate"]
+  },
+  "horizontal_arrows": {
+    "name": "covariant_composability",
+    "examples": ["grade continuation", "readout execution", "constructor extension"],
+    "required": ["domain", "codomain", "authority", "residual_capability"]
+  },
+  "squares": {
+    "name": "mixed_comparison",
+    "boundary": ["vertical_left", "horizontal_top", "vertical_right", "horizontal_bottom"],
+    "required": ["both_composites_defined", "source_derived_comparison"],
+    "statuses": ["strict", "typed_cell", "rational_only", "missing_horizontal", "unauthorized_vertical", "domain_mismatch"]
+  },
+  "fixtures": [
+    {"id":"alternate_chart","vertical_admitted":true,"horizontal_admitted":true,"both_composites_defined":true,"comparison":"identity","expected":"strict"},
+    {"id":"factorial_magnetic_over_Q","vertical_admitted":true,"horizontal_admitted":true,"both_composites_defined":true,"comparison":"2(g+2)/(g+1) I","comparison_typed_over":"Q","expected":"typed_cell"},
+    {"id":"factorial_magnetic_over_Z","vertical_admitted":true,"horizontal_admitted":true,"both_composites_defined":true,"comparison":"2(g+2)/(g+1) I","comparison_typed_over":"Q","ambient":"Z","expected":"rational_only"},
+    {"id":"divided_power_instrument","vertical_admitted":true,"horizontal_admitted":false,"both_composites_defined":false,"expected":"missing_horizontal"},
+    {"id":"independent_ray_saturation","vertical_admitted":false,"horizontal_admitted":true,"both_composites_defined":false,"expected":"unauthorized_vertical"}
+  ],
+  "next_level": "coherence of pasted comparison squares; failure is a cube/3-cell obstruction"
+}

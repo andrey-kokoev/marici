@@ -1,0 +1,50 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "source_incidence_nerve_classifier_checks.py",
+  "passed": true,
+  "tests": {
+    "all_fixtures_classified": true,
+    "same_dimension_can_have_different_horns": true,
+    "rh_cube_retains_six_faces": true,
+    "reflection_and_completion_are_simplicial": true
+  },
+  "fixtures": [
+    {
+      "id": "magnetic_chart_comparison",
+      "signature": "parallel_source_target",
+      "dimension": 1,
+      "expected_nerve": "globular",
+      "expected_faces": 2,
+      "actual_nerve": "globular",
+      "actual_faces": 2
+    },
+    {
+      "id": "magnetic_reflection_bar",
+      "signature": "ordered_chain_with_omissions",
+      "dimension": 3,
+      "expected_nerve": "simplicial",
+      "expected_faces": 4,
+      "actual_nerve": "simplicial",
+      "actual_faces": 4
+    },
+    {
+      "id": "rh_source_composition_reciprocity",
+      "signature": "independent_binary_axes",
+      "dimension": 3,
+      "expected_nerve": "cubical",
+      "expected_faces": 6,
+      "actual_nerve": "cubical",
+      "actual_faces": 6
+    },
+    {
+      "id": "cutoff_completion_descent",
+      "signature": "ordered_chain_with_omissions",
+      "dimension": 3,
+      "expected_nerve": "simplicial",
+      "expected_faces": 4,
+      "actual_nerve": "simplicial",
+      "actual_faces": 4
+    }
+  ],
+  "verdict": "source incidence, not tower count, selects the next coherence nerve"
+}
