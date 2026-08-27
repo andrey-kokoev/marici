@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "connected_vector_fields_are_polynomial": true,
+    "cusp_jacobian_is_off_diagonal": true,
+    "cusp_variance_is_between_zero_and_one": true,
+    "cusp_control_jacobian_is_nonzero": true
+  },
+  "observed": {
+    "connected_ports": [
+      "mu=P_Y/P",
+      "nu=P_YY/P"
+    ],
+    "partial_Y_mu": "-mu**2 + nu",
+    "partial_Y_nu": "X*mu + Y - mu*nu",
+    "partial_X_mu": "(X*mu + Y - mu*nu)/2",
+    "partial_X_nu": "(X*nu + Y*mu - nu**2 + 1)/2",
+    "cusp_variance": "2*gamma(3/4)/gamma(1/4)",
+    "cusp_jacobian": [
+      [
+        "0",
+        "2*gamma(3/4)/gamma(1/4)"
+      ],
+      [
+        "-2*gamma(3/4)**2/gamma(1/4)**2 + 1/2",
+        "0"
+      ]
+    ],
+    "cusp_jacobian_determinant": "-(-2*gamma(3/4) + gamma(1/4))*(2*gamma(3/4) + gamma(1/4))*gamma(3/4)/gamma(1/4)**3",
+    "strict_variance_bound_proof": "E[u^4]=1 by integration by parts and E[u^2]^2<E[u^4] by strict Cauchy-Schwarz"
+  },
+  "passed": true,
+  "semantic_boundary": "Exact projective closure of the rank-three Pearcey module into two connected ports. Their cusp Jacobian is nonzero, so they locally reconstruct both uniform controls. Matching their normalization to the legacy Gaussian H1/H2 names remains separate."
+}
