@@ -14,7 +14,11 @@ be the character-transport orbit, and let
 \varepsilon:V\longrightarrow\mathbb C
 \]
 
-be the completed scalar readout. Thus (X=arepsilon\circ m).
+be the completed scalar readout. Thus `X` is the composite
+
+\[
+X=\varepsilon\circ m.
+\]
 
 Independently, reciprocal parity (P) and real conjugation (C) define the
 comparison map along the orbit:
@@ -96,7 +100,7 @@ labelled theta/Tate observer, including primitive, square, connected, seam,
 and archimedean boundary channels. It must show that a source-authorized null
 readout carries a canonical witness of reciprocal–real path equality.
 
-An equality checked only after applying (arepsilon) is circular. A witness
+An equality checked only after applying the scalar readout is circular. A witness
 constructed by dividing by (X) is inadmissible. A finite-cutoff witness that
 does not survive restricted-product completion is insufficient.
 
