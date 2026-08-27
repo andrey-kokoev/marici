@@ -18,11 +18,18 @@ from sympy.polys.matrices import DomainMatrix
 
 
 EXE = ROOT / "research" / "benincasa" / "marici-gm" / "target" / "release" / "marked_relative_reduction_engine.exe"
-RESULT = ROOT / "research" / "benincasa" / "results" / "marked_extension_source_laurent_lead.json"
+AXIS = os.environ.get("MARICI_LAURENT_AXIS", "u")
+RESULT_NAME = os.environ.get(
+    "MARICI_LAURENT_RESULT",
+    "marked_extension_source_laurent_lead.json" if AXIS == "u"
+    else f"marked_extension_source_laurent_{AXIS}_axis.json",
+)
+RESULT = ROOT / "research" / "benincasa" / "results" / RESULT_NAME
 V = int(os.environ.get("MARICI_LAURENT_V", "5"))
 DEGREE = int(os.environ.get("MARICI_LAURENT_DEGREE", "16"))
 MAX_ORDER = int(os.environ.get("MARICI_LAURENT_MAX_ORDER", "3"))
 MIN_ORDER = -2
+TARGET_ORDER = int(os.environ.get("MARICI_LAURENT_TARGET_ORDER", "-2"))
 
 
 def export(u: int, master: int) -> dict:
@@ -31,7 +38,7 @@ def export(u: int, master: int) -> dict:
         MARICI_EXACT_POINT_SOURCE_MODE="1",
         MARICI_EXACT_U=str(u),
         MARICI_EXACT_V=str(V),
-        MARICI_EXACT_AXIS="u",
+        MARICI_EXACT_AXIS=AXIS,
         MARICI_EXACT_MASTER=str(master),
         MARICI_EXACT_RAW_RESIDUES="1",
     )
@@ -155,7 +162,7 @@ def main() -> None:
     matrix = DomainMatrix.from_dod(dod, (len(dod), columns + 3), field)
     reduced, pivots = matrix.rref()
     reduced_dod = reduced.to_dod()
-    target = order_index[-2] * unknowns + 8
+    target = order_index[TARGET_ORDER] * unknowns + 8
     assert target in pivots
     pivot_row = pivots.index(target)
     row = reduced_dod.get(pivot_row, {})
@@ -195,7 +202,8 @@ def main() -> None:
         "equations": len(dod),
         "unknowns": columns,
         "rank": len(pivots),
-        "target": "u^-2 e6 coordinate in derivative of q0",
+        "derivative_axis": AXIS,
+        "target": f"u^{TARGET_ORDER} e6 coordinate in {AXIS}-derivative of q0",
         "target_fixed": fixed,
         "target_residue_mod_prime": value,
         "target_rational_reconstruction": str(rational) if rational is not None else None,
