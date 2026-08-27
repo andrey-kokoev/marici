@@ -1,0 +1,35 @@
+{
+  "work_package": "WP741",
+  "status": "PASS",
+  "checks": {
+    "candidate_is_traceless": true,
+    "stationarity_fixes_cubic_coefficient": true,
+    "stationarity_fixes_mass_coefficient": true,
+    "all_three_eigenvalues_obey_one_stationarity_equation": true,
+    "invariant_gradient_vanishes": true,
+    "shape_coefficient_is_exact": true,
+    "shape_coefficient_is_derived_from_full_matrix_potential": true,
+    "singlet_determinant_is_exact": true,
+    "determinant_obstruction_identity_is_exact": true,
+    "minor_obstruction_identity_is_exact": true,
+    "hostile_shape_is_positive": true,
+    "hostile_singlet_determinant_is_positive": true,
+    "hostile_leading_minor_is_negative": true,
+    "deliberate_failure_residual_is_nonzero": true
+  },
+  "source_domain": "one real symmetric-traceless 14 of SO(5) with its complete renormalizable invariant potential, including Tr(Phi^3)",
+  "candidate_family": "diag(1,1,1,t,-3-t), up to nonzero scale and SO(5) rotation",
+  "stationarity_relations": {
+    "mu": "2 lambda_2 in unit repeated-eigenvalue normalization",
+    "m_squared": "2*lambda_1*t**2 + 6*lambda_1*t + 12*lambda_1 + lambda_2*t**2 + 3*lambda_2*t + 3*lambda_2"
+  },
+  "classification": "neither selector nor stable rigidifier: every distinct 3+1+1 stationary orbit is unstable or non-isolated",
+  "exact_obstruction": "shape positivity gives lambda_2 A<0; positive singlet determinant then gives lambda_2+2 lambda_1<0; the leading singlet minor equals 6 lambda_2 A+9(lambda_2+2 lambda_1)(t+4)^2 and is therefore negative",
+  "degenerate_boundaries": "t=1 or t=-4 makes a shape mode flat; t=-3/2 merges the two singlets and makes the singlet determinant zero; lambda_2=0 also leaves shape flats",
+  "smallest_exact_falsifier": "t=2, lambda_1=0, lambda_2=-1 gives shape coefficient 6 and singlet determinant 1764, but leading singlet minor -360",
+  "deliberate_failure_residual": "-360",
+  "claim_boundary": "single renormalizable symmetric-traceless 14; multiple fields, higher operators, radiative effective potentials, or different representations are not excluded",
+  "remaining_source_gate": "a new independently required source object must change the vacuum Hessian obstruction rather than add a coefficient solely to fit the desired projector",
+  "remaining_fixed_point_gate": "not opened because the full one-14 renormalizable source has no stable projector vacuum",
+  "remaining_physical_gate": "not opened; a surviving construction must still transport its labelled projector through thresholds to calibrated physical16 channels"
+}
