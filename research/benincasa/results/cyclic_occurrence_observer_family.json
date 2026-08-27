@@ -1,0 +1,159 @@
+{
+  "schema": "marici.benincasa.cyclic_occurrence_observer_family.v1",
+  "observer_matrix": [
+    [
+      2,
+      -1,
+      -1
+    ],
+    [
+      -1,
+      2,
+      -1
+    ],
+    [
+      -1,
+      -1,
+      2
+    ]
+  ],
+  "cyclic_transport": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "domain": "A2 occurrence-residue module",
+  "codomain": "three labelled scalar observer ports with zero total",
+  "readout_packets": {
+    "[0, -1, 1]": [
+      0,
+      -3,
+      3
+    ],
+    "[1, 0, -1]": [
+      3,
+      0,
+      -3
+    ],
+    "[-1, 1, 0]": [
+      -3,
+      3,
+      0
+    ],
+    "[3, -5, 2]": [
+      9,
+      -15,
+      6
+    ]
+  },
+  "reconstructions": {
+    "[0, -1, 1]": [
+      "0",
+      "-1",
+      "1"
+    ],
+    "[1, 0, -1]": [
+      "1",
+      "0",
+      "-1"
+    ],
+    "[-1, 1, 0]": [
+      "-1",
+      "1",
+      "0"
+    ],
+    "[3, -5, 2]": [
+      "3",
+      "-5",
+      "2"
+    ]
+  },
+  "subset_census": [
+    {
+      "rows": [
+        0
+      ],
+      "size": 1,
+      "rank_on_a2": 1,
+      "faithful_on_a2": false
+    },
+    {
+      "rows": [
+        1
+      ],
+      "size": 1,
+      "rank_on_a2": 1,
+      "faithful_on_a2": false
+    },
+    {
+      "rows": [
+        2
+      ],
+      "size": 1,
+      "rank_on_a2": 1,
+      "faithful_on_a2": false
+    },
+    {
+      "rows": [
+        0,
+        1
+      ],
+      "size": 2,
+      "rank_on_a2": 2,
+      "faithful_on_a2": true
+    },
+    {
+      "rows": [
+        0,
+        2
+      ],
+      "size": 2,
+      "rank_on_a2": 2,
+      "faithful_on_a2": true
+    },
+    {
+      "rows": [
+        1,
+        2
+      ],
+      "size": 2,
+      "rank_on_a2": 2,
+      "faithful_on_a2": true
+    },
+    {
+      "rows": [
+        0,
+        1,
+        2
+      ],
+      "size": 3,
+      "rank_on_a2": 2,
+      "faithful_on_a2": true
+    }
+  ],
+  "checks": {
+    "observer_family_is_cyclic_equivariant": true,
+    "observer_family_has_rank_two": true,
+    "observer_family_kernel_is_invariant_line": true,
+    "observer_family_is_three_times_identity_on_a2": true,
+    "one_third_reconstructs_every_tested_residue": true,
+    "no_single_observer_is_faithful_on_a2": true,
+    "every_two_observer_subfamily_is_faithful_on_a2": true,
+    "full_three_observer_orbit_is_required_for_cyclic_closure": true,
+    "invariant_scalar_aggregation_annihilates_all_packets": true
+  },
+  "verdict": "The full cyclic orbit of primitive two-port observers is a canonical rank-two vector-valued readout.  It reconstructs every A2 relational residue by division by three and requires no support projector or splitting.  Any two ports are algebraically faithful, but all three are required for cyclic closure; invariant scalar aggregation remains zero.",
+  "scope": "This is a source-normalized algebraic observer family, not an outcome-bearing physical instrument or apparatus cycle."
+}

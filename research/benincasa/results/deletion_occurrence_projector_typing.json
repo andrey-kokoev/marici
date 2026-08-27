@@ -1,0 +1,262 @@
+{
+  "schema": "marici.benincasa.deletion_occurrence_projector_typing.v1",
+  "deletion_axes": [
+    {
+      "kind": "denominator",
+      "label": "q_g1"
+    },
+    {
+      "kind": "denominator",
+      "label": "q_g2"
+    },
+    {
+      "kind": "denominator",
+      "label": "q_G12"
+    }
+  ],
+  "deletion_cube_objects": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "deletion_cube_edges": [
+    {
+      "axis": "q_G12",
+      "source_mask": [
+        0,
+        0,
+        1
+      ],
+      "target_mask": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": "q_g2",
+      "source_mask": [
+        0,
+        1,
+        0
+      ],
+      "target_mask": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": "q_g2",
+      "source_mask": [
+        0,
+        1,
+        1
+      ],
+      "target_mask": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "axis": "q_G12",
+      "source_mask": [
+        0,
+        1,
+        1
+      ],
+      "target_mask": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "axis": "q_g1",
+      "source_mask": [
+        1,
+        0,
+        0
+      ],
+      "target_mask": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": "q_g1",
+      "source_mask": [
+        1,
+        0,
+        1
+      ],
+      "target_mask": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "axis": "q_G12",
+      "source_mask": [
+        1,
+        0,
+        1
+      ],
+      "target_mask": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": "q_g1",
+      "source_mask": [
+        1,
+        1,
+        0
+      ],
+      "target_mask": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "axis": "q_g2",
+      "source_mask": [
+        1,
+        1,
+        0
+      ],
+      "target_mask": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": "q_g1",
+      "source_mask": [
+        1,
+        1,
+        1
+      ],
+      "target_mask": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "axis": "q_g2",
+      "source_mask": [
+        1,
+        1,
+        1
+      ],
+      "target_mask": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "axis": "q_G12",
+      "source_mask": [
+        1,
+        1,
+        1
+      ],
+      "target_mask": [
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "occurrence_axes": [
+    {
+      "kind": "cyclic_e6_chart",
+      "label": "G12:e6"
+    },
+    {
+      "kind": "cyclic_e6_chart",
+      "label": "G23:e6"
+    },
+    {
+      "kind": "cyclic_e6_chart",
+      "label": "G31:e6"
+    }
+  ],
+  "candidate_occurrence_projector": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "source_frontiers": {
+    "entry_580": "product-pole complex closes rank cube but does not establish compatible deletion maps",
+    "entry_3375": "A2 e6 occurrence morphism exists but complete rank-twelve triangular transport is absent"
+  },
+  "checks": {
+    "both_presentations_happen_to_have_three_labels": true,
+    "typed_label_sets_are_disjoint": true,
+    "deletion_cube_has_eight_objects": true,
+    "deletion_cube_has_twelve_directed_edges": true,
+    "every_deletion_changes_the_module_mask": true,
+    "occurrence_support_is_an_endomorphism": true,
+    "no_deletion_edge_is_an_occurrence_endomorphism": true
+  },
+  "verdict": "The Boolean denominator deletion cube does not type the 3 by 3 cyclic e6 occurrence projector.  The axis counts agree, but labels, objects, and variance differ.  A source-derived connector between the deletion modules and occurrence-chart module is still required."
+}
