@@ -425,3 +425,39 @@ the unsplit local record exactly. The map is not injective: `[0, 1]` and
 `[1, 0]` have the same coarse image. Thus refinement supplies a commuting
 coarsening cell but no inverse reconstruction and no equality between the
 fine and coarse presentations.
+
+Three-piece refinement now carries its own coherence boundary. Lean proves
+that merging the first pair and then merging again agrees with merging the
+second pair and then merging, using rational addition's associativity. The
+reusable `CoherentBinarySewing` structure stores a binary sewing operation and
+its associator rather than inferring triple coherence from pairwise
+availability. Integer subtraction is the hostile model: it is a total binary
+operation, but the two three-piece parenthesizations at `(1, 1, 1)` disagree.
+This is the finite algebraic content of the folded square, not an assertion of
+analytic or completion-level descent.
+
+Finite refinement is additionally packaged as
+`RecordCoarseningCertificate`: the fine and coarse records, actual comparison
+map, record equation, and sum-preservation law are separate fields. The
+leading-cut split constructs this certificate from `mergeLeadingRecord`.
+Equal totals are derived from the certificate. The converse is rejected by a
+Boolean-labelled fixture whose two records have equal aggregate sums but are
+not compatible with the declared identity label transport. Aggregate
+agreement therefore cannot manufacture source-indexed transport data.
+
+The refinement certificates now form a typed partial composition system.
+Identity is available on every finite record. Two certificates compose only
+with an explicit equality between the first coarse record and the second fine
+record; the resulting comparison map is their function composite and still
+preserves total energy. The records `[0, 1]` and `[1, 0]` have equal sums but
+are unequal, providing the hostile intermediate that aggregate equality does
+not type. This is a partial-category boundary, not an assertion that every
+equal-total presentation admits transport.
+
+The finite partial category laws are now checked at certificate level, not
+only at the level of comparison functions. Certificate extensionality follows
+from equality of the fine endpoint, coarse endpoint, and coarsening map; the
+remaining fields are propositions. Lean then proves left identity, right
+identity, and associativity for every pair of explicitly supplied intermediate
+record equalities. This completes the finite categorical increment while
+retaining partiality at the source-indexed boundary.
