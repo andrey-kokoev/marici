@@ -1,0 +1,23 @@
+{
+  "schema": "marici.strominger.bivariant-dpc.v1",
+  "typing_rule": "defect coordinates carry witnesses, coefficient domains, and authority roots; they are not booleans",
+  "defect_signature": {
+    "I": "contravariant presentation change does not preserve the distinction",
+    "C": "covariant composition lacks a typed residual capability",
+    "M": "the contravariant-covariant comparison square is absent, untyped, or anomalous",
+    "H": "authorized comparison squares fail higher pasting coherence"
+  },
+  "repairs": {
+    "R_I": {"repairs": ["I"], "does_not_authorize": ["C", "M", "H"]},
+    "R_C": {"repairs": ["C"], "does_not_authorize": ["I", "M", "H"]},
+    "C_2": {"repairs": ["M"], "prerequisites": ["R_I", "R_C", "both composites defined"]},
+    "C_3": {"repairs": ["H"], "prerequisites": ["all boundary C_2 cells", "source-derived cube filler"]}
+  },
+  "admissible_configuration": "I=C=M=H=0 under typed dispositions",
+  "forbidden_inferences": [
+    "I=0 and C=0 implies M=0",
+    "all pairwise C_2 cells implies H=0",
+    "a rational C_2 cell supplies an integral C_2 cell",
+    "endpoint equality authorizes a fitted comparison cell"
+  ]
+}
