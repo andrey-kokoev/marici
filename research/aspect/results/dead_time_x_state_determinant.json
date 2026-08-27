@@ -1,0 +1,27 @@
+{
+  "schema": "marici.aspect.dead-time-x-state-determinant.v1",
+  "status": "pass",
+  "detector_model": "nonparalyzable channel rate r=lambda*p/(1+tau*lambda*p)",
+  "common_dead_time_correlations": {
+    "XX": "200/3121",
+    "YY": "-25/781",
+    "XY": "-3600/49919",
+    "YX": "-2800/49951"
+  },
+  "common_dead_time_determinant_residual": "-6839766847503187314023401401/7632457085775233354990807826025",
+  "common_dead_time_false_npt": false,
+  "common_dead_time_can_hide_npt": true,
+  "hostile_channel_dependent_correlations": {
+    "XX": "1021/5621",
+    "YY": "-103/703",
+    "XY": "-17119/89919",
+    "YX": "-15551/89951"
+  },
+  "hostile_false_npt_residual": "5098670543335865561308864606000591/408613527700587343358285019072483600",
+  "known_dead_time_inverse": "true_rate=r/(1-tau*r), followed by normalization",
+  "exact_correction_verified": true,
+  "rate_sweep_detects_uncorrected_nonlinearity": true,
+  "corrected_rate_invariance_verified": true,
+  "verdict": "Normalization does not remove channelwise dead time; hardware-calibrated inverse response repairs the frozen model, and a source-rate sweep falsifies unmodelled compression.",
+  "claim_boundary": "nonparalyzable independent channel model with stable source state and known dead times; no pileup, shared electronics, afterpulsing, or dead-time uncertainty"
+}
