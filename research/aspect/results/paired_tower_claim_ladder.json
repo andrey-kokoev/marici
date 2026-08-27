@@ -1,0 +1,79 @@
+{
+  "schema": "marici.aspect.paired-tower-claim-ladder.v1",
+  "status": "pass",
+  "cases": [
+    {
+      "name": "visible_bell_local",
+      "gamma": "3/5",
+      "eta": "19/20",
+      "phase_covariance": "0",
+      "relational_coherence": true,
+      "correlated_environment": false,
+      "ideal_bell_eligible": false,
+      "detector_complete_bell_nonlocality": false,
+      "strongest_admitted_claim": "relational_coherence"
+    },
+    {
+      "name": "ideal_eligible_detector_incomplete",
+      "gamma": "4/5",
+      "eta": "9/10",
+      "phase_covariance": "0",
+      "relational_coherence": true,
+      "correlated_environment": false,
+      "ideal_bell_eligible": true,
+      "detector_complete_bell_nonlocality": false,
+      "strongest_admitted_claim": "relational_coherence_with_ideal_bell_eligibility"
+    },
+    {
+      "name": "complete_bell",
+      "gamma": "4/5",
+      "eta": "19/20",
+      "phase_covariance": "0",
+      "relational_coherence": true,
+      "correlated_environment": false,
+      "ideal_bell_eligible": true,
+      "detector_complete_bell_nonlocality": true,
+      "strongest_admitted_claim": "detector_complete_bell_nonlocality"
+    },
+    {
+      "name": "correlated_environment",
+      "gamma": "1",
+      "eta": "1",
+      "phase_covariance": "1",
+      "relational_coherence": true,
+      "correlated_environment": true,
+      "ideal_bell_eligible": true,
+      "detector_complete_bell_nonlocality": false,
+      "strongest_admitted_claim": "relational_environment_channel"
+    },
+    {
+      "name": "classical_join",
+      "gamma": "1",
+      "eta": "1",
+      "phase_covariance": "0",
+      "relational_coherence": false,
+      "correlated_environment": false,
+      "ideal_bell_eligible": true,
+      "detector_complete_bell_nonlocality": false,
+      "strongest_admitted_claim": "no_relational_claim"
+    }
+  ],
+  "logical_checks": {
+    "detector_complete_bell_nonlocality_implies_relational_coherence": true,
+    "relational_coherence_does_not_imply_bell_nonlocality": true,
+    "ideal_bell_eligibility_does_not_imply_observed_violation": true,
+    "joint_fringe_does_not_exclude_correlated_environment": true
+  },
+  "claim_poset": {
+    "environment_branch": [
+      "relational_environment_channel"
+    ],
+    "coherent_constructor_branch": [
+      "relational_coherence",
+      "relational_coherence_with_ideal_bell_eligibility",
+      "detector_complete_bell_nonlocality"
+    ],
+    "incomparability": "a correlated environment channel is not ordered against source-authorized coherent sewing without an additional intervention"
+  },
+  "decision_rule": "report only the strongest claim whose source, sewing, covariance, causal, and detector gates all pass"
+}

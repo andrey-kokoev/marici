@@ -1,0 +1,39 @@
+{
+  "schema": "marici.aspect.bell-no-click-efficiency-gate.v1",
+  "status": "pass",
+  "cases": {
+    "ideal_gamma_eta_4_5": {
+      "gamma": "1",
+      "eta": "4/5",
+      "lhs_squared": "512/625",
+      "rhs_squared": "576/625",
+      "bell_violation": false
+    },
+    "ideal_gamma_eta_5_6": {
+      "gamma": "1",
+      "eta": "5/6",
+      "lhs_squared": "625/648",
+      "rhs_squared": "1225/1296",
+      "bell_violation": true
+    },
+    "gamma_4_5_eta_9_10": {
+      "gamma": "4/5",
+      "eta": "9/10",
+      "lhs_squared": "13122/15625",
+      "rhs_squared": "9801/10000",
+      "bell_violation": false
+    },
+    "gamma_4_5_eta_19_20": {
+      "gamma": "4/5",
+      "eta": "19/20",
+      "lhs_squared": "130321/125000",
+      "rhs_squared": "159201/160000",
+      "bell_violation": true
+    }
+  },
+  "observed_chsh_law": "S/2 = sqrt(2)*gamma*eta^2 + (1-eta)^2",
+  "exact_violation_gate": "2*gamma^2*eta^4 > (2*eta-eta^2)^2",
+  "equivalent_threshold": "eta > 2/(1+sqrt(2)*gamma)",
+  "outcome_rule": "each herald is retained and every no-click is assigned +1 before settings are opened",
+  "result": "gamma=4/5 requires efficiency above about 0.938; eta=9/10 fails and eta=19/20 passes"
+}

@@ -1,0 +1,164 @@
+{
+  "schema": "marici.aspect.clifford-constructor-compiler.v1",
+  "status": "pass",
+  "model": "Pauli-grade-one transverse-effect fixture",
+  "clifford_basis": [
+    "e1_X",
+    "e2_Y",
+    "e3_Z"
+  ],
+  "pairing": "grade-one Clifford scalar pairing",
+  "existing_effect_rank": 1,
+  "state_dimension": 3,
+  "behavioral_kernel_dimension": 2,
+  "effect_basis": [
+    {
+      "effect": [
+        "0",
+        "0",
+        "1"
+      ],
+      "provenance": "Z_readout"
+    }
+  ],
+  "behavioral_kernel_basis": [
+    [
+      "1",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "1",
+      "0"
+    ]
+  ],
+  "rival_differences_in_existing_kernel": {
+    "plus_vs_minus": true
+  },
+  "candidate_requirements": {
+    "source_authorized": true,
+    "executable": true,
+    "perturbation": true,
+    "calibrated": true,
+    "completion_stable": true,
+    "authority_locus": "qubit"
+  },
+  "candidates": [
+    {
+      "name": "duplicate_Z",
+      "kind": "effect",
+      "authority_locus": "qubit",
+      "gates": {
+        "source_authorized": true,
+        "executable": true,
+        "perturbation": true,
+        "calibrated": true,
+        "completion_stable": true,
+        "authority_locus_matches": true
+      },
+      "failed_gates": [],
+      "algebraically_transverse": false,
+      "distinguishes_rival": false,
+      "eligible_source_authorized_effect": false,
+      "generated_effects": [
+        {
+          "path": "duplicate_Z",
+          "effect": [
+            "0",
+            "0",
+            "2"
+          ],
+          "outside_existing_effect_span": false,
+          "responses": [
+            {
+              "rival_difference": "plus_vs_minus",
+              "pairing": "0",
+              "sign": "zero",
+              "magnitude_class": "zero"
+            }
+          ]
+        }
+      ],
+      "claim_boundary": null
+    },
+    {
+      "name": "X_analyzer",
+      "kind": "effect",
+      "authority_locus": "qubit",
+      "gates": {
+        "source_authorized": true,
+        "executable": true,
+        "perturbation": true,
+        "calibrated": true,
+        "completion_stable": true,
+        "authority_locus_matches": true
+      },
+      "failed_gates": [],
+      "algebraically_transverse": true,
+      "distinguishes_rival": true,
+      "eligible_source_authorized_effect": true,
+      "generated_effects": [
+        {
+          "path": "X_analyzer",
+          "effect": [
+            "1",
+            "0",
+            "0"
+          ],
+          "outside_existing_effect_span": true,
+          "responses": [
+            {
+              "rival_difference": "plus_vs_minus",
+              "pairing": "1",
+              "sign": "positive",
+              "magnitude_class": "unit"
+            }
+          ]
+        }
+      ],
+      "claim_boundary": null
+    },
+    {
+      "name": "wrong_locus_X_analyzer",
+      "kind": "effect",
+      "authority_locus": "remote_qubit",
+      "gates": {
+        "source_authorized": true,
+        "executable": true,
+        "perturbation": true,
+        "calibrated": true,
+        "completion_stable": true,
+        "authority_locus_matches": false
+      },
+      "failed_gates": [
+        "authority_locus_matches"
+      ],
+      "algebraically_transverse": true,
+      "distinguishes_rival": true,
+      "eligible_source_authorized_effect": false,
+      "generated_effects": [
+        {
+          "path": "wrong_locus_X_analyzer",
+          "effect": [
+            "1",
+            "0",
+            "0"
+          ],
+          "outside_existing_effect_span": true,
+          "responses": [
+            {
+              "rival_difference": "plus_vs_minus",
+              "pairing": "1",
+              "sign": "positive",
+              "magnitude_class": "unit"
+            }
+          ]
+        }
+      ],
+      "claim_boundary": null
+    }
+  ],
+  "first_algebraically_transverse_candidate": "X_analyzer",
+  "first_eligible_source_authorized_effect": "X_analyzer"
+}

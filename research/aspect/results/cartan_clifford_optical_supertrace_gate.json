@@ -1,0 +1,100 @@
+{
+  "schema": "marici.aspect.cartan-clifford-optical-supertrace-gate.v1",
+  "status": "pass",
+  "two_mode": {
+    "dQ": [
+      [
+        "a",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "Qd": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "a"
+      ]
+    ],
+    "anticommutator": [
+      [
+        "a",
+        "0"
+      ],
+      [
+        "0",
+        "a"
+      ]
+    ],
+    "signed_heterodyne_witness": "both ordered paths sum to a times the calibrated input field",
+    "intensity_only_limitation": "reports |a|^2 and loses the sign of normal displacement"
+  },
+  "unpaired_hidden_even_mode": {
+    "anticommutator": [
+      [
+        "a",
+        "0",
+        "a*c"
+      ],
+      [
+        "0",
+        "a + b*c",
+        "0"
+      ],
+      [
+        "b",
+        "0",
+        "b*c"
+      ]
+    ],
+    "equals_a_identity": false,
+    "visible_even_only_false_pass": true,
+    "visible_odd_discrepancy": "a + b*c",
+    "full_residual_witnesses": [
+      "a*c",
+      "b",
+      "b*c - a"
+    ]
+  },
+  "balanced_four_mode_completion": {
+    "anticommutator": [
+      [
+        "a",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "a",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "a",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "a"
+      ]
+    ],
+    "equals_a_identity": true
+  },
+  "general_gate": {
+    "identity": "supertrace(dQ + Qd) = 0",
+    "consequence": "for nonzero a, dQ + Qd = a I requires equal even and odd dimensions",
+    "instrument_requirement": "completion inventories and probes both parity sectors; arbitrary scalar loss ports are not admissible"
+  },
+  "claim_boundary": "exact finite graded-matrix and optical readout falsifier; no theta/Tate source derivation of Q and no continuum completion theorem"
+}

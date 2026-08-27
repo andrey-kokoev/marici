@@ -1,0 +1,99 @@
+{
+  "schema": "marici.aspect.mate-interferometer-no-click-calibration-gate.v1",
+  "status": "pass",
+  "phase_samples": [
+    "0",
+    "pi/2",
+    "pi",
+    "3pi/2"
+  ],
+  "efficiency_manifest": {
+    "plus_port": [
+      "1",
+      "3/4",
+      "1/2",
+      "3/4"
+    ],
+    "minus_port": [
+      "1/2",
+      "3/4",
+      "1",
+      "3/4"
+    ]
+  },
+  "flat_source_hostile": {
+    "true_unconditional_curve": [
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    "click_postselected_curve": [
+      "2/3",
+      "1/2",
+      "1/3",
+      "1/2"
+    ],
+    "apparent_visibility": "1/3",
+    "exactly_matches_ideal_coherent_visibility_one_third": true,
+    "herald_and_no_click_calibrated_curve": [
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    "recovered_visibility": "0",
+    "full_detected_outcomes": [
+      {
+        "click_plus": "1/2",
+        "click_minus": "1/4",
+        "no_click": "1/4"
+      },
+      {
+        "click_plus": "3/8",
+        "click_minus": "3/8",
+        "no_click": "1/4"
+      },
+      {
+        "click_plus": "1/4",
+        "click_minus": "1/2",
+        "no_click": "1/4"
+      },
+      {
+        "click_plus": "3/8",
+        "click_minus": "3/8",
+        "no_click": "1/4"
+      }
+    ]
+  },
+  "true_coherent_control": {
+    "environment_overlap": "3/5",
+    "true_curve": [
+      "4/5",
+      "1/2",
+      "1/5",
+      "1/2"
+    ],
+    "click_postselected_curve": [
+      "8/9",
+      "1/2",
+      "1/9",
+      "1/2"
+    ],
+    "biased_visibility": "7/9",
+    "calibrated_curve": [
+      "4/5",
+      "1/2",
+      "1/5",
+      "1/2"
+    ],
+    "calibrated_visibility": "3/5"
+  },
+  "tower_gate": {
+    "output": "retain herald, click-plus, click-minus, and no-click outcomes",
+    "control": "bind phase-indexed efficiencies to a live calibration epoch",
+    "mate": "totalize the full calibrated outcome law, never the click-conditioned projection alone"
+  },
+  "decisive_rule": "an unconditional fringe claim is admissible only after efficiency inversion on the full herald-normalized outcome law",
+  "claim_boundary": "exact finite single-photon loss hostile; no dark counts, multipair emission, memory, jitter, or continuum detector theorem"
+}

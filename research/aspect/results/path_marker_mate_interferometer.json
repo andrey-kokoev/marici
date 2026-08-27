@@ -1,0 +1,113 @@
+{
+  "schema": "marici.aspect.path-marker-mate-interferometer.v1",
+  "status": "pass",
+  "phase_samples": [
+    "0",
+    "pi/2",
+    "pi",
+    "3pi/2"
+  ],
+  "routes": {
+    "forward_joint_evolution": "flat local marginal with phase retained in path-marker correlations",
+    "backward_record_conditioning": "complementary conditional fibers whose weighted total is the unchanged marginal",
+    "coherent_reverse_incidence": "path-controlled marker uncomputation before detection transfers coherence into the local path marginal"
+  },
+  "cases": {
+    "ideal": {
+      "environment_overlap": "1",
+      "untouched_unconditional_signal_plus": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "late_conditioned_fringe": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "late_conditioned_antifringe": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ],
+      "conditioned_totalization_is_untouched_marginal": true,
+      "coherent_uncompute_unconditional_signal_plus": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "coherent_uncompute_visibility": "1",
+      "late_joint_unitary_changes_stored_signal_probability": false,
+      "late_unitary_record_invariance_checks": 4
+    },
+    "partial_environment_overlap": {
+      "environment_overlap": "3/5",
+      "untouched_unconditional_signal_plus": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "late_conditioned_fringe": [
+        "4/5",
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "late_conditioned_antifringe": [
+        "1/5",
+        "1/2",
+        "4/5",
+        "1/2"
+      ],
+      "conditioned_totalization_is_untouched_marginal": true,
+      "coherent_uncompute_unconditional_signal_plus": [
+        "4/5",
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "coherent_uncompute_visibility": "3/5",
+      "late_joint_unitary_changes_stored_signal_probability": false,
+      "late_unitary_record_invariance_checks": 4
+    },
+    "orthogonal_environment": {
+      "environment_overlap": "0",
+      "untouched_unconditional_signal_plus": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "late_conditioned_fringe": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "late_conditioned_antifringe": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "conditioned_totalization_is_untouched_marginal": true,
+      "coherent_uncompute_unconditional_signal_plus": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "coherent_uncompute_visibility": "0",
+      "late_joint_unitary_changes_stored_signal_probability": false,
+      "late_unitary_record_invariance_checks": 4
+    }
+  },
+  "decisive_signature": "only coherent pre-detection uncomputation changes unconditional interference",
+  "completion_gate": "inaccessible environment overlap gamma bounds both conditional and coherent recovery visibility",
+  "claim_boundary": "finite ideal two-qubit instrument with a reduced-state environment-overlap parameter; no loss, multipair, detector-memory, spacelike, or continuum laboratory theorem"
+}

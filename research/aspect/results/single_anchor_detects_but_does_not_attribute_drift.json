@@ -1,0 +1,27 @@
+{
+  "schema": "marici.aspect.single-anchor-detects-but-does-not-attribute-drift.v1",
+  "status": "pass",
+  "baseline_edges": {
+    "S-A": 0,
+    "S-B": 0,
+    "A-B": 0
+  },
+  "science_drift_edges": {
+    "S-A": 1,
+    "S-B": 1,
+    "A-B": 0
+  },
+  "anchor_a_drift_edges": {
+    "S-A": 1,
+    "S-B": 0,
+    "A-B": 3
+  },
+  "single_anchor_SA_records_identical": true,
+  "single_anchor_attribution_unique": false,
+  "science_drift_triangle_closes": true,
+  "anchor_drift_triangle_closes": true,
+  "triangle_patterns_distinct": true,
+  "triangle_attribution_unique_under_single_locus_model": true,
+  "verdict": "One perfect cross-locus edge detects the same quarter-turn mismatch whether the science frame or anchor moved. A second anchor produces distinct triangle patterns under stable-link and single-moving-locus assumptions. Loop closure certifies consistency, not causal attribution by itself.",
+  "claim_boundary": "exact quarter-turn frames, noiseless pairwise differences, stable links, and single-moving-locus attribution; no simultaneous drift, link bias, nonreciprocity, or statistical thresholds"
+}

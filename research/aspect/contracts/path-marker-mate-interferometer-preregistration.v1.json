@@ -1,0 +1,75 @@
+{
+  "schema": "marici.aspect.path-marker-mate-interferometer-preregistration.v1",
+  "version": 1,
+  "source": "heralded single-photon path qubit with polarization marker",
+  "routes": ["untouched", "late_conditioning", "coherent_uncompute"],
+  "timing_control": "coherent_uncompute_after_signal_record",
+  "phase_samples": ["0", "pi/2", "pi", "3pi/2"],
+  "phase_cosines": ["1", "0", "-1", "0"],
+  "environment_overlap_settings": ["1", "3/5", "0"],
+  "required_records": [
+    "herald_key",
+    "route",
+    "phase",
+    "environment_setting",
+    "signal_click_plus",
+    "signal_click_minus",
+    "signal_no_click",
+    "marker_record",
+    "marker_reset_probe",
+    "calibration_epoch"
+  ],
+  "randomization": {
+    "unit": "heralded trial",
+    "route_assignment": "predeclared pseudorandom schedule",
+    "phase_assignment": "predeclared pseudorandom schedule",
+    "blinding": "analysis labels sealed until raw record and calibration manifest are immutable"
+  },
+  "calibration": {
+    "same_epoch_required": true,
+    "minimum_signal_port_efficiency": "1/2",
+    "maximum_inverse_efficiency": "2",
+    "phase_reference_shared_across_routes": true,
+    "full_outcome_law_required": true
+  },
+  "primary_estimands_per_environment_phase_cell": [
+    "untouched_signal_plus",
+    "conditioned_plus_signal_plus",
+    "conditioned_minus_signal_plus",
+    "coherent_uncompute_signal_plus"
+  ],
+  "primary_proportion_count": 48,
+  "minimum_effective_trials_per_primary_proportion": 500000,
+  "absolute_probability_tolerance": "1/20",
+  "familywise_error_upper_bound": "6/625",
+  "expected_laws": {
+    "untouched_signal_plus": "1/2",
+    "conditioned_plus_signal_plus": "(1 + gamma*cosine)/2",
+    "conditioned_minus_signal_plus": "(1 - gamma*cosine)/2",
+    "coherent_uncompute_signal_plus": "(1 + gamma*cosine)/2",
+    "conditioned_totalization": "1/2",
+    "post_record_change": "0",
+    "marker_reset_probability": "1"
+  },
+  "acceptance_gates": [
+    "all_required_records_present",
+    "full_outcome_law_retained",
+    "calibration_epoch_matches",
+    "efficiency_inverse_bounded",
+    "minimum_effective_trials_met",
+    "all_primary_laws_within_tolerance",
+    "conditioned_fibers_totalize",
+    "post_record_control_is_invariant",
+    "coherent_route_resets_marker",
+    "orthogonal_environment_blocks_recovery"
+  ],
+  "prohibited_analysis": [
+    "click-only normalization",
+    "dropping the antifringe fiber",
+    "postfit phase origin",
+    "route-specific acquisition windows",
+    "self-calibration from the unknown signal",
+    "excluding failed marker resets after unblinding"
+  ],
+  "claim_boundary": "finite preregistered single-photon instrument; dark counts, multipair emission, dead time, afterpulsing, jitter, and continuum photodetection require successor contracts"
+}
