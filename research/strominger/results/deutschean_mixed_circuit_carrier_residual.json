@@ -1,0 +1,22 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "phase_component_is_euler_variation": true,
+    "parameter_minus_coordinate_variation_has_exact_residual": true,
+    "carrier_residual_is_nonzero": true,
+    "residual_is_single_prefactor_cancelled_atom": true,
+    "residual_is_mixed_amplitude_curvature": true,
+    "residual_has_nonzero_gamma_moment_at_order_t2": true
+  },
+  "observed": {
+    "primitive": "-u + exp(u) - 1",
+    "primitive_euler_variation": "2*u*(exp(u) - 1)/3 + 2*u/3 - 2*exp(u)/3 + 2/3",
+    "parameter_variation_minus_euler_dilation": "-t*u*exp(1/t)*exp(5*u/4)*exp(u/t)*exp(-exp(u)/t)",
+    "residual_atom": "-t*u*exp(5*u/4)*exp(-P/t)",
+    "source_derivative_type": "partial_b partial_c F",
+    "leading_residual_after_u_equals_t*x": "-t**2*x",
+    "leading_normalized_gamma_moment": "-q*t**2"
+  },
+  "passed": true,
+  "semantic_boundary": "Exact full-carrier comparison. The mixed H1 circuit is not the bare Euler coordinate dilation: a nonzero single-atom residual remains. The nonzero Gamma moment rules out a vanishing-endpoint total derivative. The corrected second connected port detects the same direction."
+}

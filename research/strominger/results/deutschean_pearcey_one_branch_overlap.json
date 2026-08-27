@@ -1,0 +1,24 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "partition_first_correction_is_minus_three_quarters": true,
+    "partition_second_correction_is_105_over_32": true,
+    "variance_first_correction_is_minus_three": true,
+    "log_partition_first_correction_is_minus_three_quarters": true,
+    "all_coefficients_are_exact_rationals": true
+  },
+  "observed": {
+    "overlap_parameter": "epsilon=A^(-2)",
+    "partition_factor": "675675*epsilon**4/2048 - 3465*epsilon**3/128 + 105*epsilon**2/32 - 3*epsilon/4 + 1",
+    "log_partition_factor": "306*epsilon**4 - 99*epsilon**3/4 + 3*epsilon**2 - 3*epsilon/4",
+    "variance_factor": "4896*epsilon**4 - 297*epsilon**3 + 24*epsilon**2 - 3*epsilon + 1",
+    "P_asymptotic": "sqrt(2*pi/A)*partition_factor",
+    "connected_variance_asymptotic": "A^(-1)*variance_factor",
+    "first_terms": {
+      "P": "sqrt(2*pi/A)*(1-3/(4*A^2)+105/(32*A^4)+...)",
+      "variance": "1/A-3/A^3+24/A^5+..."
+    }
+  },
+  "passed": true,
+  "semantic_boundary": "Exact formal overlap coefficients for the canonical one-branch Pearcey integral. They recover the Gaussian propagator and its quartic corrections. They do not yet include the source-specific Gamma amplitude or adjacent-grade H1/H2 normalization."
+}

@@ -1,0 +1,31 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "F_is_quadratic_caustic_factor_at_cusp": true,
+    "G_is_linear_reversion_factor_at_cusp": true,
+    "G_is_exact_reversion_jacobian_numerator": true,
+    "recurrence_reproduces_K1_pole": true,
+    "recurrence_reproduces_K2_pole": true,
+    "recurrence_predicts_K3_pole_nine": true
+  },
+  "observed": {
+    "caustic_factor_F": "4*T*alpha*exp(T) - T + 1",
+    "cusp_order_F": 2,
+    "reversion_factor_G": "2*T**2*alpha*exp(T) + 2*T*alpha*exp(T) + 2*alpha*exp(T) - 1",
+    "cusp_order_G": 1,
+    "predicted_denominator_powers": {
+      "F": "3*n-2",
+      "G": "2*n-1"
+    },
+    "predicted_numerator_zero_order": "4*n-2",
+    "predicted_pole_law": "4*n - 3",
+    "next_falsifier": {
+      "grade": 3,
+      "pole_order": 9,
+      "denominator": "F^7*G^5",
+      "numerator_zero_order": 10
+    }
+  },
+  "passed": true,
+  "semantic_boundary": "Exact valuation extraction from the source caustic and implicit-reversion factors, calibrated on the fully derived K1 and K2. It predicts pole order 4*n-3 and hence order nine for K3. This is a recurrence conjecture until a source derivation of the grade increment or an explicit K3 calculation verifies the next step; cancellation could falsify it."
+}

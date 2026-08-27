@@ -1,0 +1,27 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "stationary_equation_has_cusp_factorization": true,
+    "negative_X_has_single_real_stationary_max": true,
+    "positive_X_has_two_equal_maxima": true,
+    "positive_X_saddle_hessians_are_minus_2A": true,
+    "linear_control_biases_actions_by_2YsqrtX": true,
+    "two_branch_mean_is_tanh_weighted": true,
+    "two_branch_second_moment_is_A": true
+  },
+  "observed": {
+    "stationary_equation_at_Y_0": "-u*(-X + u**2)",
+    "one_saddle_regime": "X=-A, A->infinity",
+    "one_saddle_leading_P": "sqrt(2*pi/A)",
+    "one_saddle_leading_mean": "0",
+    "one_saddle_leading_variance": "1/A",
+    "two_saddle_regime": "X=A, A->infinity",
+    "two_saddle_leading_P": "2*sqrt(pi/A)*exp(A^2/4)",
+    "two_saddle_action_bias": "2*Y*sqrt(A)",
+    "two_saddle_leading_mean": "sqrt(A)*tanh(Y*sqrt(A))",
+    "two_saddle_leading_second_moment": "A",
+    "branch_weight_ratio": "exp(2*Y*sqrt(A))"
+  },
+  "passed": true,
+  "semantic_boundary": "Exact stationary geometry and leading Gaussian matching of the Pearcey ports. It proves one- versus two-branch reconstruction and the branch weight law. It does not yet match the full source amplitude, adjacent-grade normalization, or subleading H1/H2 coefficients."
+}

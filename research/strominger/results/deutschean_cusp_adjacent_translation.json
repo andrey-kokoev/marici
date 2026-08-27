@@ -1,0 +1,23 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "linear_control_z_covector_is_inverse_phi": true,
+    "quadratic_control_z_covector_is_nonzero": true,
+    "nominal_q_minus_quarter_response_vanishes_by_parity": true,
+    "first_translation_correction_is_variance_port": true,
+    "translation_coefficient_is_positive": true
+  },
+  "observed": {
+    "fixed_t_step": "delta_z=-z_c/q",
+    "B_z": "8*(2 + sqrt(5))/((1 + sqrt(5))**2*(sqrt(5) + 3))",
+    "A_z": "-2*(2 + sqrt(5))*exp(-1/2)*exp(-sqrt(5)/2)/(1 + sqrt(5))**2",
+    "delta_Y": "y1*q^(-1/4)",
+    "y1": "-4*3**(1/4)*(2 + sqrt(5))/((1 + sqrt(5))*(sqrt(5) + 3)**(3/4)*(sqrt(5) + 5)**(1/4))",
+    "delta_X": "x1*q^(-1/2)",
+    "x1": "4*sqrt(3)*(2 + sqrt(5))/((1 + sqrt(5))*sqrt(sqrt(5) + 3)*sqrt(sqrt(5) + 5))",
+    "relative_q_minus_one_half_translation_coefficient": "32*sqrt(3)*(2 + sqrt(5))**2*gamma(3/4)/((1 + sqrt(5))**2*(sqrt(5) + 3)**(3/2)*sqrt(sqrt(5) + 5)*gamma(1/4))",
+    "operator": "exp(delta_X*partial_X+delta_Y*partial_Y)"
+  },
+  "passed": true,
+  "semantic_boundary": "Exact leading fixed-t translation of the cusp controls. Parity removes the q^(-1/4) term and the q^(-1/2) term lies in the variance port. This is the uniform carrier translation, not yet the complete normalized qd logarithmic adjacent response."
+}

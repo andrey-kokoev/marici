@@ -1,0 +1,69 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "laplace_terms_collapse_to_expected_rational_function": true,
+    "gamma_normalized_one_loop_matches_expected": true,
+    "normalization_vanishes_at_zero_source": true,
+    "only_cubic_saddle_pole_is_required": true,
+    "leading_fixed_t_response_is_saddle_coordinate": true,
+    "leading_qd_is_inverse_tree_jacobian": true,
+    "transported_first_correction_recovers_H1": true,
+    "second_adjacent_transport_recovers_exact_H2": true,
+    "H2_stable_coefficients_equal_cubic_diagonal": true,
+    "phase_preserving_family_has_universal_unit_tail": true,
+    "explicit_q_inverse_atom_does_not_enter_H1": true,
+    "dressing_changes_only_initialization_weights": true,
+    "explicit_atom_first_appears_in_H2": true,
+    "two_port_amplitude_jacobian_is_nonzero": true,
+    "phase_normal_deformation_matches_exact_first_variation": true,
+    "phase_normal_deformation_changes_stable_tail": true,
+    "general_phase_variation_operator_recovers_quadratic_fixture": true,
+    "phase_operator_monomial_symbols_match_through_grade_12": true,
+    "phase_operator_has_formal_kernel_jet_through_response_grade_7": true,
+    "phase_kernel_indicial_roots_are_zero_one_minus_nine": true
+  },
+  "observed": {
+    "laplace_one_loop": "(T**4 - 66*T**3 + 53*T**2 - 8)/(96*(T - 1)**3)",
+    "stirling_correction": "-1/12",
+    "gamma_normalized_one_loop": "T*(T**3 - 74*T**2 + 77*T - 24)/(96*(T - 1)**3)",
+    "saddle_propagator": "(1-T)^(-1)",
+    "max_propagator_power": 3,
+    "leading_fixed_t_response": "T",
+    "leading_qd": "-1/(T - 1)",
+    "first_scaled_response_correction_V1": "-T**2*(7*T**2 - 19*T + 8)/(4*(T - 1)**2)",
+    "derived_H1": "T*(7*T**2 - 3*T - 8)/(4*(T - 1))",
+    "derived_H2": "T**2*(146*T**5 - 425*T**4 + 248*T**3 + 536*T**2 - 866*T + 391)/(48*(T - 1)**4)",
+    "H2_stable_coefficient_for_n_at_least_4": "5*n**3/48 + 5*n**2/24 + 175*n/48 - 33/8",
+    "phase_preserving_family_H1": "T**3/(1 - T) + T**2*(b + 3/2) + T*(9/2 - 2*b)",
+    "universal_tail": "T^3/(1-T)",
+    "explicit_atom_H2_response": "T**2*(-48*T**5 + 264*T**4 - 576*T**3 + 624*T**2 - 336*T + 72)/(24*(T - 1)**4)",
+    "amplitude_port_jacobian_determinant": "-T**3*(T - 2)*(2*T - 3)",
+    "phase_normal_first_variation": "-T*(2*T**4*b + T**4 + 2*T**3*b + 10*T**3 - 10*T**2*b - 9*T**2 + 2*T*b - 22*T + 4*b + 26)*exp(T)/(T - 1)",
+    "physical_phase_variation_tail_coefficients": {
+      "T^3": "17",
+      "T^4": "41/12"
+    },
+    "phase_operator_order": 4,
+    "phase_operator_triangular_symbol": {
+      "m=2_at_b=5/4": "31",
+      "m>=3": "m(m-1)(m-2)(m+8)/2"
+    },
+    "triangular_symbol_failures_through_m=12": [],
+    "phase_kernel_normalization": "a2=33,a3=-31",
+    "phase_kernel_coefficients_through_T9": {
+      "2": "33",
+      "3": "-31",
+      "4": "273/16",
+      "5": "-731/104",
+      "6": "61429/24960",
+      "7": "-223001/291200",
+      "8": "12875249/55910400",
+      "9": "-19602017/305510400"
+    },
+    "phase_kernel_residual_through_response_grade_7": "0",
+    "phase_kernel_indicial_polynomial_for_h_equals_g_prime": "rho*(rho - 1)*(rho + 9)",
+    "authorized_analytic_indicial_root": "1"
+  },
+  "passed": true,
+  "semantic_boundary": "Exact saddle expansion and first fixed-t adjacent-grade transport. It proves H1 and H2, hence the stable constant and cubic connected-source diagonals. It does not yet test the H1 phase-null jet against H2, prove higher decoration-deficit laws, or control completion."
+}

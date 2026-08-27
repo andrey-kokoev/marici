@@ -1,0 +1,32 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "contract_sha256": "B282610548FF8044A1B99DAA4E52072087AE102C840B85AFDBBB0B2EB32D2964",
+  "checks": {
+    "fixture_was_frozen_before_hostile": true,
+    "declared_rules_predict_odd_port_residual": true,
+    "semantic_variance_map_has_rank_one": true,
+    "semantic_variance_map_forgets_Y_sign": true,
+    "odd_mean_port_separates_collision": true,
+    "minimal_extension_restores_rank_two": true,
+    "no_post_hoc_rule_adjustment": true
+  },
+  "observed": {
+    "declared_pullback": [
+      "even_variance_port",
+      "odd_mean_port"
+    ],
+    "supplied": [
+      "even_variance_port"
+    ],
+    "residual": [
+      "odd_mean_port"
+    ],
+    "semantic_collision": "(X,Y) and (X,-Y) have equal nu",
+    "separating_extension": "mu(X,-Y)=-mu(X,Y)",
+    "variance_only_jacobian_rank": 1,
+    "completed_mu_nu_jacobian_determinant": "-(-2*gamma(3/4) + gamma(1/4))*(2*gamma(3/4) + gamma(1/4))*gamma(3/4)/gamma(1/4)**3",
+    "forward_hostile_verdict": "variance-only readout is not locally faithful"
+  },
+  "passed": true,
+  "semantic_boundary": "Prospective constructor test: the declared backward rule predicts the odd mean-port residual before the independently evaluated forward hostile. Exact Pearcey parity produces the collision and the previously source-derived mu port is the minimal rank-restoring extension. No rule is adjusted after the hostile result."
+}

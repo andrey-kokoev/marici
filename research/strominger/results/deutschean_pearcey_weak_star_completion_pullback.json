@@ -1,0 +1,30 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "contract_sha256": "3ADB634374722FE40B25868D219738211E35B2A5A3BC9E1F0554E3A42249D32A",
+  "checks": {
+    "fixture_frozen_before_hostile": true,
+    "declared_pullback_predicts_weak_star_residual": true,
+    "concentration_path_stationary_equation_exact": true,
+    "stationary_point_is_trapped_between_zero_and_one": true,
+    "stationary_point_converges_to_one_at_rate_at_most_inverse_A": true,
+    "curvature_diverges_on_concentration_path": true,
+    "variance_tends_to_zero": true,
+    "boundary_record_is_weak_star_dirac_state": true,
+    "ordinary_finite_control_retyping_rejected": true
+  },
+  "observed": {
+    "concentration_path": "X=-A,Y=A for A->infinity",
+    "stationary_equation": "A*u - A + u**3",
+    "stationary_bound": "0<1-u_A<1/A",
+    "local_curvature": "A + 3*u**2",
+    "moment_limit": "(mu,nu)->(1,1)",
+    "completed_state": "delta_1",
+    "residual": [
+      "weak_star_dirac_boundary_constructor"
+    ],
+    "minimal_extension": "adjoin_delta_m_as_weak_star_boundary_state",
+    "rejected_extension": "ordinary_finite_control_or_flat_scalar_base_change"
+  },
+  "passed": true,
+  "semantic_boundary": "Prospective completion residual. Boundary moment records nu=mu^2 are limits of finite Pearcey measures but have no finite-control preimage; they are Dirac states in a weak-star completion. The required constructor is explicitly weak-star and atomic, not an ordinary finite parameter or flat scalar base change."
+}

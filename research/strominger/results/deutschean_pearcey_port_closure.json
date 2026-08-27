@@ -1,0 +1,30 @@
+{
+  "artifact_sha256": "E142440CB0066D85EA32E8A5B11205DB4A5D826E7D5B0C000C7859B0EF156781",
+  "checks": {
+    "moment_recurrence_generated_through_degree_twenty": true,
+    "third_moment_encodes_first_Pearcey_PDE": true,
+    "fourth_moment_reduces_to_three_ports": true,
+    "all_generated_moments_use_only_three_ports": true,
+    "cusp_odd_port_vanishes_by_parity": true,
+    "cusp_variance_has_exact_positive_value": true
+  },
+  "observed": {
+    "uniform_integral": "P(X,Y)=integral_R exp(-u^4/4+X*u^2/2+Y*u) du",
+    "port_basis": [
+      "P",
+      "partial_Y P",
+      "partial_Y^2 P"
+    ],
+    "moment_recurrence": "M_(n+3)=X*M_(n+1)+Y*M_n+n*M_(n-1)",
+    "PDE_1": "partial_Y^3 P=X*partial_Y P+Y*P",
+    "PDE_2": "partial_X P=(1/2)*partial_Y^2 P",
+    "cusp_P": "sqrt(2)*gamma(1/4)/2",
+    "cusp_partial_Y_P": "0",
+    "cusp_partial_Y2_P": "sqrt(2)*gamma(3/4)",
+    "cusp_connected_mean": "0",
+    "cusp_connected_variance": "2*gamma(3/4)/gamma(1/4)",
+    "highest_checked_moment": 20
+  },
+  "passed": true,
+  "semantic_boundary": "Exact integration-by-parts closure of polynomial corrections on the three Pearcey ports. It proves finite moment closure and finite cusp values. It does not yet match the off-cusp Gaussian H1/H2 normalization or derive every nonpolynomial amplitude correction."
+}
