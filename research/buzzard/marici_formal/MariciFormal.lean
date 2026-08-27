@@ -6,6 +6,15 @@ import MariciFormal.AuthorityAudit
 import MariciFormal.FiniteObservation
 import MariciFormal.FiniteInstrumentReadout
 import MariciFormal.FiniteCompletionSewing
+import MariciFormal.FiniteFiberCompression
+import MariciFormal.CommonScalarModeFactor
+import MariciFormal.FiniteSamplingFactorization
+import MariciFormal.ExactFrameCoboundary
+import MariciFormal.EulerJetShear
+import MariciFormal.TwoAxisMatrixGeneration
+import MariciFormal.DiscreteControlExecution
+import MariciFormal.RosenbrockTransmissionZero
+import MariciFormal.HalfPlaneZeroConfinement
 import MariciFormal.CompletionKernel
 import MariciFormal.ResourceClosure
 import MariciFormal.TemporalAuthority
