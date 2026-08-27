@@ -82,7 +82,7 @@ seam.
 This sharpens rather than changes the established meaning of the architecture.
 Every \(+1\) is already dynamical, and the third \((3+2+1)\) packet is already
 a complete mixed presentation.  The calculation identifies the minimum normal
-action that its dynamic coherencer must induce on the mixed residue.
+action that its operative coherencer must induce on the mixed residue.
 
 The two additional incidence legs place the direct and reciprocal states in
 that mixed presentation.  The final higher cell must prove that its boundary

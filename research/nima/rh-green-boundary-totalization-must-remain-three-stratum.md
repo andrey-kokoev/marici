@@ -48,7 +48,7 @@ is the appropriate model for the primitive-prime current.
 
 ## Categorical consequence
 
-The global dynamic coherencer cannot land directly in one scalar boundary
+The global operative coherencer cannot land directly in one scalar boundary
 object.  It must first land in a stratified carrier
 
 \[
@@ -116,4 +116,3 @@ has exceeded its authority.
 `check_rh_green_three_stratum_totalization.py` verifies exact bounded partial
 sums for the three model strata, distinguishes their norm growth, and checks a
 finite rearrangement witness for conditional scalar sensitivity.
-

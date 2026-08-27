@@ -1,4 +1,4 @@
-# The mixed dynamic presentation is a dilation Green boundary triangle
+# The mixed parameterized presentation is a dilation Green boundary triangle
 
 ## Exact boundary-bearing adjoint law
 
@@ -21,7 +21,7 @@ u\overline{f(u)}g(u)-
 
 Thus centered dilation is skew-adjoint only after the oriented boundary flux is
 retained.  The boundary term is not an error to remove.  It is the mixed
-presentation on which the dynamic coherencer acts.
+presentation on which the operative coherencer acts.
 
 ## Categorical triangle
 
@@ -87,7 +87,7 @@ vanish.
 
 ## What the identity explains
 
-The normal law of the dynamic coherencer is now derived rather than inserted:
+The normal law of the operative coherencer is now derived rather than inserted:
 
 1. additive Haar measure fixes the adjoint shift by one;
 2. centering fixes the half-density offset;
@@ -124,4 +124,3 @@ normal contraction unauthorized.
 `check_rh_dilation_green_boundary_triangle.py` verifies the Green identity on
 rational monomial pairs and the Mellin normal-balance identity for exact
 rational endpoint data, including the critical-line flux cancellation.
-
