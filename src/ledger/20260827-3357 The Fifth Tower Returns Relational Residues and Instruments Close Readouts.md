@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3357 — The Fifth Tower Returns Relational Residues and Instruments Close Readouts
 
 ## Correction
@@ -113,3 +118,6 @@ its packet is
 `research/benincasa/results/composability_instrument_factorization.json`.
 
 Allocator claim: `seqclaim-a50ca533cf132f5053aebf09`.
+
+Epistemic graph event:
+`ev-000000007197-4069a190-bcfd-47e7-977d-ad41377db572`.

@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3365 — The Relational Residue Is the Top Conductor Occurrence Row
 
 ## Question
@@ -132,3 +137,6 @@ its packet is
 `research/benincasa/results/relational_residue_conductor_realization.json`.
 
 Allocator claim: `seqclaim-78ff6cb092ef51bf6695635c`.
+
+Epistemic graph event:
+`ev-000000007218-ddfa8b7e-7dd2-4944-816f-b3cf8b24aa55`.

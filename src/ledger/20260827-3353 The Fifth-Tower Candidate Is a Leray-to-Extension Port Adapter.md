@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3353 — The Fifth-Tower Candidate Is a Leray-to-Extension Port Adapter
 
 > **Type correction (Entry 3357).** The fifth tower identifies the allowed
@@ -127,3 +132,6 @@ The checker is
 is `research/benincasa/results/leray_extension_port_adapter.json`.
 
 Allocator claim: `seqclaim-ff2051a8af7f41f513f23013`.
+
+Epistemic graph event:
+`ev-000000007187-0b3b4de5-8ba0-4bf8-ac6b-60e1cac01d8f`.

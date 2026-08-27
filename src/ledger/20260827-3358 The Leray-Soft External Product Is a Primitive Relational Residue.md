@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3358 — The Leray–Soft External Product Is a Primitive Relational Residue
 
 ## Question
@@ -124,3 +129,6 @@ The checker is
 is `research/benincasa/results/bigraded_leray_soft_residue.json`.
 
 Allocator claim: `seqclaim-8931d5320cf78f2a3ed00836`.
+
+Epistemic graph event:
+`ev-000000007201-c765aa2d-baeb-41d8-8242-423e1491d3d1`.

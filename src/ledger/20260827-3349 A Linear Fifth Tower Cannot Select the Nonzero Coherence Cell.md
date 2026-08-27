@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3349 — A Linear Fifth Tower Cannot Select the Nonzero Coherence Cell
 
 > **Type correction (Entry 3357).** Scalar selection is not an obligation of
@@ -135,3 +140,7 @@ packet is
 `research/benincasa/results/composition_authority_linear_no_go.json`.
 
 Allocator claim: `seqclaim-0855b68629d9a263152f490c`.
+
+Epistemic graph events: `ev-000000007178-985514d1-4763-4ae9-a580-278ff7e59e71`
+and normalization correction
+`ev-000000007183-14b3a424-bfac-4fba-afc1-9a34488bb3e9`.
