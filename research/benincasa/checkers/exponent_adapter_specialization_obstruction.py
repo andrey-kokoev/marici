@@ -76,8 +76,9 @@ def combine(coeff,rows,p):
  for i,x in coeff.items():
   for c,v in rows[i].items():add(out,c,x*v,p)
  return out
-def analyze(p,pt):
- packet=json.loads((res/f'exponent_adapter_full_pencil_{p}.json').read_text());a,b=load(packet,*pt,756)
+def analyze(p,pt,packet=None):
+ if packet is None:packet=json.loads((res/f'exponent_adapter_full_pencil_{p}.json').read_text())
+ a,b=load(packet,*pt,756)
  mb=dual_basis(a[:720],b[:720],p)
  source_rem=[reduce_dual(a[i],b[i],mb,p) for i in range(720)]
  source_normal_rank=len(row_basis([x[1] for x in source_rem if not x[0]],p))
