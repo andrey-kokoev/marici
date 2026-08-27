@@ -1,3 +1,8 @@
+---
+author: marici.Benincasa
+date: 2026-08-27
+---
+
 # 3362 — The Raw Second-Rees Arrow Cannot Realize the Relational Residue
 
 ## Question
@@ -110,3 +115,6 @@ The checker is
 `research/benincasa/results/raw_rees_adapter_no_go.json`.
 
 Allocator claim: `seqclaim-ad93976bfad99bc7dabe2d85`.
+
+Epistemic graph event:
+`ev-000000007208-c00c9151-a15a-47ef-b7b6-5444d1b5ba33`.
