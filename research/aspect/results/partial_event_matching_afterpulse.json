@@ -1,0 +1,45 @@
+{
+  "schema": "marici.aspect.partial-event-matching-afterpulse.v1",
+  "status": "pass",
+  "equal_source_detector_counts": true,
+  "forced_complete_matching": [
+    [
+      "alpha",
+      "alpha"
+    ],
+    [
+      "beta",
+      "gamma"
+    ],
+    [
+      "gamma",
+      "gamma"
+    ]
+  ],
+  "missing_source_pilots": {
+    "beta": 1
+  },
+  "extra_detector_pilots": {
+    "gamma": 1
+  },
+  "gamma_candidates_before_reset": [
+    [
+      "2",
+      "4"
+    ],
+    [
+      "21/10",
+      "1"
+    ]
+  ],
+  "gamma_candidate_count_before_reset": 2,
+  "gamma_candidates_after_reset": [
+    [
+      "2",
+      "4"
+    ]
+  ],
+  "gamma_candidate_count_after_reset": 1,
+  "verdict": "Equal source and detector counts can conceal one missed source event plus one extra detector event. Forced complete matching fabricates beta incidence. Source pilots expose missing beta and excess gamma, but a copied gamma pilot leaves parent-versus-afterpulse provenance ambiguous. A detector-memory reset separates the frozen pair only when a source tap verifies source invariance under reset.",
+  "claim_boundary": "three exact source triggers, one missed beta record, one gamma-tagged afterpulse, perfect pilot reading, and a reset that suppresses only the afterpulse; no pilot corruption, multiple afterpulse generations, reset-induced source change, or probabilistic matching"
+}

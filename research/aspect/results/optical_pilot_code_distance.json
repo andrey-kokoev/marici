@@ -1,0 +1,33 @@
+{
+  "schema": "marici.aspect.optical-pilot-code-distance.v1",
+  "status": "pass",
+  "codebook": {
+    "alpha": "0000",
+    "beta": "1111"
+  },
+  "minimum_distance": 4,
+  "authorized_correction_radius": 1,
+  "one_flip_decode": {
+    "received": "0001",
+    "distance": 1,
+    "state": "corrected_alpha"
+  },
+  "two_flip_decode": {
+    "received": "0011",
+    "distance": 2,
+    "state": "ambiguous"
+  },
+  "three_flip_decode": {
+    "received": "0111",
+    "nearest": "beta",
+    "true_origin": "alpha",
+    "state": "false_correction_if_radius_ignored"
+  },
+  "exact_copy_records": [
+    "0000",
+    "0000"
+  ],
+  "exact_copy_multiplicity_resolved": false,
+  "verdict": "A distance-four optical pilot code corrects one symbol error, must retain a two-error tie as ambiguous, and can falsely relabel a three-error alpha record as beta if nearest-neighbor decoding is used outside its authorized radius. Exact downstream copies preserve the entire code and remain multiplicity-ambiguous. Coding repairs transport corruption, not detector-copy provenance.",
+  "claim_boundary": "two fixed binary four-symbol pilots with substitution errors and exact decoding; no erasure channel, soft likelihoods, synchronization loss, code-dependent source back-action, or larger codebook"
+}

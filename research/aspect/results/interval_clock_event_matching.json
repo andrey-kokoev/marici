@@ -1,0 +1,40 @@
+{
+  "schema": "marici.aspect.interval-clock-event-matching.v1",
+  "status": "pass",
+  "source_times": [
+    "0",
+    "1"
+  ],
+  "detector_times": [
+    "2/5",
+    "3/5"
+  ],
+  "broad_tolerance": "3/5",
+  "broad_matching_count": 2,
+  "compatible_matchings": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "compatible_conditional_records": [
+    {
+      "reset": "1/2",
+      "control": "1"
+    },
+    {
+      "reset": "1",
+      "control": "1/2"
+    }
+  ],
+  "tight_tolerance": "1/2",
+  "tight_matching_count": 1,
+  "source_pilot_matching_count": 1,
+  "downstream_unique_ids_repair_crossing": false,
+  "verdict": "Distinct timestamps do not guarantee unique event incidence when clock uncertainty makes the bipartite association graph admit multiple perfect matchings. Tightening the timing bound repairs the frozen geometry; a source-carried pilot symbol repairs incidence under the broad bound. Unique identifiers created only downstream do not establish a crossing to source events.",
+  "claim_boundary": "two events, exact rational timestamps, symmetric hard tolerance, no missed or extra events, perfect pilot symbols, and one-to-one matching; no probabilistic jitter, clock drift trajectory, pilot corruption, pileup, or unequal event counts"
+}

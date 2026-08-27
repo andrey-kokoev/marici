@@ -1,0 +1,44 @@
+{
+  "schema": "marici.aspect.optical-action-provenance-ladder.v1",
+  "status": "pass",
+  "ports": {
+    "endpoint_intensity": "direct photodetection",
+    "complex_action": "phase-locked interferometric reference plus declared probe basis",
+    "normal_orientation": "source-declared orientation or positive chamber",
+    "spinor_sheet": "spinorial coherent reference; vector action alone retains Z2",
+    "ordered_route": "authenticated internal checkpoint or trusted element log"
+  },
+  "stabilizers": {
+    "intensity_record": "phase and unprobed-action stabilizer",
+    "complex_vector_action": "trivial on the declared vector-action domain, but Z2 on spinor lift",
+    "oriented_vector_action": "Z2 spinor kernel remains",
+    "endpoint_composite_transfer": "all ordered factorizations of the same composite",
+    "authenticated_internal_route": "trivial on the declared finite route library"
+  },
+  "hostiles": {
+    "equal_intensity_different_phase": [
+      "4",
+      "2"
+    ],
+    "normal_sign_determinants": [
+      "1",
+      "-1"
+    ],
+    "opposite_spinor_reference_records": [
+      "4",
+      "0"
+    ],
+    "same_composite_distinct_routes": true,
+    "composite_chart_rank": 4,
+    "minimum_gain_family": "epsilon",
+    "duplicated_carrier_rank": 1
+  },
+  "verdicts": {
+    "existence": "pass: each separating port is explicitly defined",
+    "synthesis": "pass: phase reference, probe basis, orientation contract, spinor reference, and internal checkpoint are independently typed",
+    "execution": "pass in exact finite model; no laboratory run is claimed",
+    "fault": "pass: six required hostile collisions are retained and classified",
+    "completion": "pass only on the declared finite probe and route library; not a global device-history theorem"
+  },
+  "irreversible_leak_boundary": "Coherent erasure requires coherent access to every which-route share. A lost orthogonal share makes the reduced interference term zero; duplicated readout labels do not constitute independent fragments."
+}

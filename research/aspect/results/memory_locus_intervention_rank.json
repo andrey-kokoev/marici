@@ -1,0 +1,47 @@
+{
+  "schema": "marici.aspect.memory-locus-intervention-rank.v1",
+  "status": "pass",
+  "memory_loci": [
+    "source",
+    "detector-local",
+    "shared-electronics"
+  ],
+  "intervention_signatures": {
+    "baseline": [
+      "1",
+      "1",
+      "1"
+    ],
+    "detector_reset_or_independent_reroute": [
+      "1",
+      "0",
+      "1"
+    ],
+    "electronics_reset": [
+      "1",
+      "1",
+      "0"
+    ],
+    "joint_detector_electronics_reset": [
+      "1",
+      "0",
+      "0"
+    ]
+  },
+  "three_condition_rank_determinant": "1",
+  "frozen_observed_covariances": {
+    "baseline": "9/32",
+    "detector_reset_or_independent_reroute": "7/32",
+    "electronics_reset": "3/16",
+    "joint_detector_electronics_reset": "1/8"
+  },
+  "recovered_components": {
+    "source": "1/8",
+    "detector-local": "1/16",
+    "shared-electronics": "3/32"
+  },
+  "joint_reset_is_model_falsifier": true,
+  "hostile_joint_reset_interaction_residual": "1/32",
+  "verdict": "Detector and electronics resets give a full-rank three-locus memory design under additive action; the joint reset is an independent falsifier for reset interaction or source disturbance.",
+  "claim_boundary": "additive covariance components and ideal locus-specific resets; no reset-induced source change, cross-locus interaction, or higher memory state"
+}
