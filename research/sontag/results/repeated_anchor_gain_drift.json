@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "checks": {
+    "one_pass_design_has_rank_four": true,
+    "one_pass_has_five_unknown_coordinates": true,
+    "one_pass_setting_offsets_equal_affine_drift": true,
+    "anchored_design_has_full_rank_five": true,
+    "fifth_anchor_breaks_the_affine_alias": true,
+    "hostile_reference_anchors_force_zero_slope": true,
+    "anchored_schedule_recovers_all_setting_offsets": true,
+    "nominal_affine_drift_has_zero_recovered_offsets": true
+  },
+  "one_pass_rank": 4,
+  "anchored_rank": 5,
+  "one_pass_alias_records": [
+    "0",
+    "1",
+    "2",
+    "3"
+  ],
+  "anchored_hostile_records": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "0"
+  ],
+  "recovered_offsets": {
+    "YY": "1",
+    "XY": "2",
+    "YX": "3"
+  },
+  "classification": {
+    "defect": "one visit per setting aliases persistent setting offsets with temporal drift",
+    "repair": "repeat one reference setting around the three other settings",
+    "minimum": "five scalar records for affine drift plus three relative setting offsets"
+  }
+}
