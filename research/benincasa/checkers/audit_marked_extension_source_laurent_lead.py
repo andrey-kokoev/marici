@@ -25,14 +25,14 @@ MAX_ORDER = int(os.environ.get("MARICI_LAURENT_MAX_ORDER", "3"))
 MIN_ORDER = -2
 
 
-def export(u: int) -> dict:
+def export(u: int, master: int) -> dict:
     env = os.environ.copy()
     env.update(
         MARICI_EXACT_POINT_SOURCE_MODE="1",
         MARICI_EXACT_U=str(u),
         MARICI_EXACT_V=str(V),
         MARICI_EXACT_AXIS="u",
-        MARICI_EXACT_MASTER="0",
+        MARICI_EXACT_MASTER=str(master),
         MARICI_EXACT_RAW_RESIDUES="1",
     )
     return json.loads(subprocess.run([str(EXE)], env=env, check=True, capture_output=True, text=True).stdout)
@@ -72,7 +72,11 @@ def rational_reconstruct(value: int, modulus: int) -> Fraction:
 
 
 def main() -> None:
-    packets = [export(value) for value in range(DEGREE + 2)]
+    packets_by_master = [
+        [export(value, master) for value in range(DEGREE + 2)]
+        for master in range(3)
+    ]
+    packets = packets_by_master[0]
     prime = packets[0]["prime"]
     unknowns = packets[0]["unknowns"]
     row_labels = sorted({tuple(row["monomial"]) for packet in packets for row in packet["rows"]})
@@ -80,7 +84,7 @@ def main() -> None:
     row_index = {label: index for index, label in enumerate(row_labels)}
 
     values: dict[tuple[int, int], list[int]] = {}
-    rhs_values: dict[int, list[int]] = {}
+    rhs_values: list[dict[int, list[int]]] = [{} for _ in range(3)]
     for sample, packet in enumerate(packets):
         rows = {tuple(row["monomial"]): row for row in packet["rows"]}
         for label, index in row_index.items():
@@ -88,7 +92,11 @@ def main() -> None:
             entries = dict((int(column), int(value) % prime) for column, value in row["entries"])
             for column in range(unknowns):
                 values.setdefault((index, column), [0] * len(packets))[sample] = entries.get(column, 0)
-            rhs_values.setdefault(index, [0] * len(packets))[sample] = int(row["rhs"]) % prime
+            for master, master_packets in enumerate(packets_by_master):
+                master_rows = {tuple(item["monomial"]): item for item in master_packets[sample]["rows"]}
+                rhs_values[master].setdefault(index, [0] * len(packets))[sample] = int(
+                    master_rows.get(label, {"rhs": "0"})["rhs"]
+                ) % prime
 
     size = DEGREE + 1
     vandermonde = [[pow(point, degree, prime) for degree in range(size)] for point in range(size)]
@@ -98,7 +106,10 @@ def main() -> None:
         return [sum(transform[degree][point] * samples[point] for point in range(size)) % prime for degree in range(size)]
 
     matrix_coefficients = {key: coefficients(sample_values) for key, sample_values in values.items()}
-    rhs_coefficients = {key: coefficients(sample_values) for key, sample_values in rhs_values.items()}
+    rhs_coefficients = [
+        {key: coefficients(sample_values) for key, sample_values in master_values.items()}
+        for master_values in rhs_values
+    ]
 
     # The held-out point certifies the chosen polynomial degree for every source coefficient.
     held_out = DEGREE + 1
@@ -111,8 +122,9 @@ def main() -> None:
     assert all(
         sum(coefficient * pow(held_out, degree, prime) for degree, coefficient in enumerate(coeffs)) % prime
         == sample_values[held_out]
-        for key, sample_values in rhs_values.items()
-        for coeffs in [rhs_coefficients[key]]
+        for master in range(3)
+        for key, sample_values in rhs_values[master].items()
+        for coeffs in [rhs_coefficients[master][key]]
     )
 
     orders = list(range(MIN_ORDER, MAX_ORDER + 1))
@@ -133,13 +145,14 @@ def main() -> None:
                     value = matrix_coefficients[(source_row, source_column)][degree]
                     if value:
                         row[block + source_column] = field(value)
-            rhs = rhs_coefficients[source_row][equation_order] if equation_order >= 0 else 0
-            if rhs:
-                row[augmented_column] = field(rhs)
+            for master in range(3):
+                rhs = rhs_coefficients[master][source_row][equation_order] if equation_order >= 0 else 0
+                if rhs:
+                    row[augmented_column + master] = field(rhs)
             if row:
                 dod[len(dod)] = row
 
-    matrix = DomainMatrix.from_dod(dod, (len(dod), columns + 1), field)
+    matrix = DomainMatrix.from_dod(dod, (len(dod), columns + 3), field)
     reduced, pivots = matrix.rref()
     reduced_dod = reduced.to_dod()
     target = order_index[-2] * unknowns + 8
@@ -150,6 +163,26 @@ def main() -> None:
     fixed = all(row.get(column, field.zero) == field.zero for column in free)
     value = int(row.get(augmented_column, field.zero)) % prime if fixed else None
     rational = rational_reconstruct(value, prime) if value is not None else None
+
+    def fixed_coordinate(order: int, coordinate: int, master: int):
+        target_column = order_index[order] * unknowns + coordinate
+        if target_column not in pivots:
+            return None
+        target_row = pivots.index(target_column)
+        target_data = reduced_dod.get(target_row, {})
+        if not all(target_data.get(column, field.zero) == field.zero for column in free):
+            return None
+        residue = int(target_data.get(augmented_column + master, field.zero)) % prime
+        return str(rational_reconstruct(residue, prime))
+
+    final_double = [
+        [fixed_coordinate(-2, coordinate, master) for master in range(3)]
+        for coordinate in range(8, 12)
+    ]
+    final_simple = [
+        [fixed_coordinate(-1, coordinate, master) for master in range(3)]
+        for coordinate in range(8, 12)
+    ]
 
     output = {
         "schema": "marici.benincasa.marked_extension_source_laurent_lead.v1",
@@ -166,6 +199,10 @@ def main() -> None:
         "target_fixed": fixed,
         "target_residue_mod_prime": value,
         "target_rational_reconstruction": str(rational) if rational is not None else None,
+        "final_basis": ["e6", "e7", "e8", "e9"],
+        "source_basis": ["q0", "q1", "q2"],
+        "fixed_u_minus_2_matrix": final_double,
+        "fixed_u_minus_1_matrix": final_simple,
     }
     RESULT.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(output, indent=2))
