@@ -1,5 +1,11 @@
 # 3349 — A Linear Fifth Tower Cannot Select the Nonzero Coherence Cell
 
+> **Type correction (Entry 3357).** Scalar selection is not an obligation of
+> the fifth tower. This entry's linear no-go remains valid only as a statement
+> that linear composability returns a residue line rather than a distinguished
+> scalar. The instrument-indexed realization relation, not the fifth tower,
+> is responsible for connecting that residue to a physical readout.
+
 ## Question
 
 Entry 3345 leaves a one-parameter family of extensions

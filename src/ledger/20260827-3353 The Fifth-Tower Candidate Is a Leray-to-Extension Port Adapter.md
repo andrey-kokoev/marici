@@ -1,5 +1,11 @@
 # 3353 — The Fifth-Tower Candidate Is a Leray-to-Extension Port Adapter
 
+> **Type correction (Entry 3357).** The fifth tower identifies the allowed
+> Leray/extension composition and its rank-one relational residue. A pointed
+> map from that residue to a preparation--instrument system is a separate
+> instrument constructor. Thus the adapter described below is not itself the
+> fifth tower; it is the next realization relation connected to its output.
+
 ## Question
 
 Entry 3349 proves that an unpointed linear admissibility tower cannot select
