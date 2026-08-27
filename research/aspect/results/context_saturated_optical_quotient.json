@@ -1,0 +1,50 @@
+{
+  "schema": "marici.aspect.context-saturated-optical-quotient.v1",
+  "status": "pass",
+  "probe_domain": {
+    "initial_rank": 1,
+    "context_saturated_rank": 2
+  },
+  "cavity_records": {
+    "identity": [
+      "4/3",
+      "2/3"
+    ],
+    "hidden_sign": [
+      "4/5",
+      "2/5"
+    ],
+    "intensity_distinguishable": true
+  },
+  "coherent_global_phase": {
+    "standalone_channel_equal": true,
+    "controlled_x_expectations": [
+      "1",
+      "-1"
+    ]
+  },
+  "route_context": {
+    "bare_composites_equal": true,
+    "internal_context_outputs": [
+      "Matrix([[0, 1], [1, 0]])",
+      "Matrix([[-1, 0], [0, 1]])"
+    ],
+    "endpoint_intensity_records": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  },
+  "surprises": [
+    "A cavity can turn an unprobed sign into an intensity difference without adding a new external input probe.",
+    "A phase invisible in standalone channel action becomes observable under coherent control relative to a bypass.",
+    "Coherent control of an equal composite does not reveal factorization, but one fixed operation inserted at an internal slot can."
+  ],
+  "verdict": "Transfer equivalence is compositional only after saturating the probe domain under every admitted context and declaring whether contexts may access internal route slots.",
+  "claim_boundary": "exact lossless two-mode linear optics with a finite context library; physical cavity stability, loss, phase noise, and implementation of controlled unknown operations are not established"
+}

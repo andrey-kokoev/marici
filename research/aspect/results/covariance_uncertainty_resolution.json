@@ -1,0 +1,30 @@
+{
+  "schema": "marici.aspect.covariance-uncertainty-resolution.v1",
+  "status": "pass",
+  "nominal_correlation": "-3/4",
+  "nominal_sum_witness_score": "8",
+  "admitted_correlation_interval": [
+    "-3/4",
+    "3/4"
+  ],
+  "worst_case_sum_witness_score": "8/7",
+  "nominal_to_robust_overstatement_factor": "7",
+  "validated_negative_interval": [
+    "-4/5",
+    "-7/10"
+  ],
+  "validated_worst_sum_score": "20/3",
+  "science_drift_correlation": "3/4",
+  "orthogonal_witness_scores": {
+    "negative_correlation": {
+      "sum": "8",
+      "difference": "8/7"
+    },
+    "positive_correlation": {
+      "sum": "8/7",
+      "difference": "8"
+    }
+  },
+  "verdict": "A nominal negative correlation can overstate robust squared separation by a factor of seven when the admitted covariance interval includes the opposite sign. Independently bounding the science-epoch correlation restores a useful lower score. Correlation engineered to improve the sum witness degrades the orthogonal difference witness by the same factor, so noise shaping is question-relative rather than universally informative.",
+  "claim_boundary": "two normalized channels with unit marginals and an interval uncertainty only in their correlation; no marginal drift, covariance-estimation sampling law, non-Gaussian contamination, or more than two witness directions"
+}
