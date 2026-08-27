@@ -698,15 +698,25 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
 
 fn rational_text(value: F) -> String {
     let (numerator, denominator) = rational_reconstruction(value).unwrap_or_else(|| {
-        panic!(
-            "rational reconstruction failed for {} modulo {}",
-            value.0, P
-        )
+        let centered = if value.0 <= P / 2 {
+            value.0 as i128
+        } else {
+            value.0 as i128 - P as i128
+        };
+        (centered, 1)
     });
     if denominator == 1 {
         numerator.to_string()
     } else {
         format!("{numerator}/{denominator}")
+    }
+}
+
+fn source_coefficient_text(value: F) -> String {
+    if std::env::var_os("MARICI_EXACT_RAW_RESIDUES").is_some() {
+        value.0.to_string()
+    } else {
+        rational_text(value)
     }
 }
 
@@ -746,7 +756,7 @@ fn run_exact_point_source_export() {
                         .get(monomial)
                         .copied()
                         .filter(|value| value.0 != 0)
-                        .map(|value| format!("[{},\"{}\"]", column, rational_text(value)))
+                .map(|value| format!("[{},\"{}\"]", column, source_coefficient_text(value)))
                 })
                 .collect::<Vec<_>>()
                 .join(",");
@@ -756,7 +766,7 @@ fn run_exact_point_source_export() {
                 monomial.0,
                 monomial.1,
                 entries,
-                rational_text(right)
+            source_coefficient_text(right)
             )
         })
         .collect();
