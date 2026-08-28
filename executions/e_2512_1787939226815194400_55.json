@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939226815194400_55",
+  "created_at": "2026-08-28T17:47:06.8151981Z",
+  "sha256": "90ff3610729ec3acf2164ae113dc3bfe8d33b6bb9025802392893d05f37c25ab",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/integral_constructor_recurrence_checks.py'); c.__exit__(None,None,None); C=d['C']; I=[[int(i==j) for j in range(4)] for i in range(4)]; N=[[C[i][j]-I[i][j] for j in range(4)] for i in range(4)]; mul=d['multiply']; print(json.dumps({'C':C,'C_minus_I':N,'powers_N':[mul(*([N]*k)) for k in range(1,5)]},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:46:52.4300943Z",
+    "finished_at": "2026-08-28T17:47:06.8151816Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "inspect exact constructor matrix and nilpotent increments",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "inspect exact constructor matrix and nilpotent increments",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"C\": [\r\n    [\r\n      15937,\r\n      35916,\r\n      101268,\r\n      -153120\r\n    ],\r\n    [\r\n      30924,\r\n      69697,\r\n      196512,\r\n      -297132\r\n    ],\r\n    [\r\n      25260,\r\n      56928,\r\n      160513,\r\n      -242700\r\n    ],\r\n    [\r\n      10272,\r\n      23148,\r\n      65268,\r\n      -98687\r\n    ]\r\n  ],\r\n  \"C_minus_I\": [\r\n    [\r\n      15936,\r\n      35916,\r\n      101268,\r\n      -153120\r\n    ],\r\n    [\r\n      30924,\r\n      69696,\r\n      196512,\r\n      -297132\r\n    ],\r\n    [\r\n      25260,\r\n      56928,\r\n      160512,\r\n      -242700\r\n    ],\r\n    [\r\n      10272,\r\n      23148,\r\n      65268,\r\n      -98688\r\n    ]\r\n  ],\r\n  \"powers_N\": [\r\n    [\r\n      [\r\n        15936,\r\n        35916,\r\n        101268,\r\n        -153120\r\n      ],\r\n      [\r\n        30924,\r\n        69696,\r\n        196512,\r\n        -297132\r\n      ],\r\n      [\r\n        25260,\r\n        56928,\r\n        160512,\r\n        -242700\r\n      ],\r\n      [\r\n        10272,\r\n        23148,\r\n        65268,\r\n        -98688\r\n      ]\r\n    ],\r\n    [\r\n      [\r\n        2349803520,\r\n        5296121856,\r\n        14932624896,\r\n        -22578550272\r\n      ],\r\n      [\r\n        4559837184,\r\n        10277222400,\r\n        28977034752,\r\n        -43814094336\r\n      ],\r\n      [\r\n        3724503552,\r\n        8394499584,\r\n        23668623360,\r\n        -35787626496\r\n      ],\r\n      [\r\n        1514469888,\r\n        3413399040,\r\n        9624213504,\r\n        -14552082432\r\n      ]\r\n    ],\r\n    [\r\n      [\r\n        346494977648640,\r\n        780950240483328,\r\n        2201920069183488,\r\n        -3329365287315456\r\n      ],\r\n      [\r\n        672379911677952,\r\n        1515448383363072,\r\n        4272866613209088,\r\n        -6460694908250112\r\n      ],\r\n      [\r\n        549204120446976,\r\n        1237827725088768,\r\n        3490104194574336,\r\n        -5277136040110080\r\n      ],\r\n      [\r\n        223319186417664,\r\n        503329582209024,\r\n        1419157650548736,\r\n        -2145806419175424\r\n      ]\r\n    ],\r\n    [\r\n      [\r\n        51093109916785704960,\r\n        115156579605654011904,\r\n        324688527626657071104,\r\n        -490938217149096787968\r\n      ],\r\n      [\r\n        99147124631735894016,\r\n        223463472255291359232,\r\n        630064092154995671040,\r\n        -952674689042022924288\r\n      ],\r\n      [\r\n        80983991985025056768,\r\n        182526362850020032512,\r\n        514640294195679461376,\r\n        -778150649030724550656\r\n      ],\r\n      [\r\n        32929977270074867712,\r\n        74219470200382685184,\r\n        209264729667340861440,\r\n        -316414177137798414336\r\n      ]\r\n    ]\r\n  ]\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
