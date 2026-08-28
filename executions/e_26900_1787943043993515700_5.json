@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943043993515700_5",
+  "created_at": "2026-08-28T18:50:43.9935181Z",
+  "sha256": "d020efed5f1d00821070a2afbbeb1d403509063454f031fa521a0884f3d0685a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib; p=pathlib.Path(r'research/nima/contracts/typed-response.v1.toml'); d=tomllib.loads(p.read_text(encoding='utf-8')); assert d['schema']=='marici.typed-response-schema.v1'; print('syntax-pass',len(p.read_text(encoding='utf-8')),len(d))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:50:43.92593Z",
+    "finished_at": "2026-08-28T18:50:43.9935075Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Final pass 1 TOML syntax and root identity",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Final pass 1 TOML syntax and root identity",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "syntax-pass 11176 10\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
