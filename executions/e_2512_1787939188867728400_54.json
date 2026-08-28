@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939188867728400_54",
+  "created_at": "2026-08-28T17:46:28.8677321Z",
+  "sha256": "7f571ccd839ae50b9c0baab793d09fab2c040cdc5725a221791c5f9632e87690",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json,collections; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/plucker_character_scan.py'); c.__exit__(None,None,None); out={};\nfor q in d['SHIFTS']:\n z=collections.defaultdict(lambda:collections.Counter());\n for x in d['records']:\n  if x['shift']==q and x['strict_first_order']: z[x['grade']%(3*q)][str(x['chi'])]+=1\n out[str(q)]={str(k):dict(v) for k,v in sorted(z.items())}\nprint(json.dumps(out,indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:45:54.8354367Z",
+    "finished_at": "2026-08-28T17:46:28.8677172Z",
+    "timeout_ms": 180000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "aggregate strict character by residue modulo three times shift",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "aggregate strict character by residue modulo three times shift",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"3\": {},\r\n  \"9\": {\r\n    \"2\": {\r\n      \"0\": 10\r\n    },\r\n    \"8\": {\r\n      \"2\": 9\r\n    },\r\n    \"11\": {\r\n      \"0\": 9\r\n    },\r\n    \"20\": {\r\n      \"0\": 9\r\n    },\r\n    \"26\": {\r\n      \"1\": 9\r\n    }\r\n  },\r\n  \"27\": {\r\n    \"17\": {\r\n      \"1\": 3\r\n    },\r\n    \"44\": {\r\n      \"2\": 3\r\n    }\r\n  },\r\n  \"81\": {\r\n    \"71\": {\r\n      \"2\": 1\r\n    },\r\n    \"233\": {\r\n      \"1\": 1\r\n    }\r\n  },\r\n  \"243\": {},\r\n  \"729\": {\r\n    \"152\": {\r\n      \"2\": 1\r\n    }\r\n  }\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
