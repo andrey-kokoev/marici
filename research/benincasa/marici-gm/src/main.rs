@@ -665,6 +665,14 @@ fn main(){
         let out=format!("{{\"schema\":\"marici.gm.modular_sample.v1\",\"prime\":{},\"u\":{},\"v\":{},\"axis\":\"{}\",\"elapsed_ms\":{},\"degrees\":{:?},\"matrix\":{}}}",PRIME,uu,vv,axis,now.elapsed().as_millis(),degrees,matrix_json(&rows));
         if a.len()==6{fs::write(&a[5],&out).expect("write output");}else{println!("{}",out);}return
     }
+    if a.len()>=2&&a[1]=="elliptic-sample"{
+        if a.len()!=5&&a.len()!=6{eprintln!("usage: marici-gm elliptic-sample <u> <v> <u|v> [output.json]");std::process::exit(2)}
+        let uu=a[2].parse::<u64>().unwrap();let vv=a[3].parse::<u64>().unwrap();let axis=&a[4];
+        let(f,fp,_,_)=boundary_data(uu,vv,axis);let b=elliptic_connection(&f,&fp);
+        let period_derivative=[b[0][0].add(b[0][1]),b[1][0].add(b[1][1])];
+        let out=format!("{{\"schema\":\"marici.gm.elliptic_sample.v2\",\"prime\":{},\"u\":{},\"v\":{},\"axis\":\"{}\",\"connection_convention\":\"domega=A*omega; dp=A*p for a flat cycle\",\"connection\":{},\"connection_times_period_column_1_1\":[{},{}],\"constant_period_column_horizontal\":{}}}",PRIME,uu,vv,axis,matrix_json(&b),period_derivative[0].v,period_derivative[1].v,period_derivative[0].v==0&&period_derivative[1].v==0);
+        if a.len()==6{fs::write(&a[5],&out).expect("write output");}else{println!("{}",out);}return
+    }
     if a.len()==8&&a[1]=="grid"{
         let u0=a[2].parse::<u64>().unwrap();let nu=a[3].parse::<u64>().unwrap();let v0=a[4].parse::<u64>().unwrap();let nv=a[5].parse::<u64>().unwrap();let axis=&a[6];let now=Instant::now();
         let mut out=format!("{{\"schema\":\"marici.gm.modular_grid.v1\",\"prime\":{},\"axis\":\"{}\",\"samples\":[",PRIME,axis);let mut first=true;
@@ -677,6 +685,18 @@ fn main(){
 #[cfg(test)]
 mod tests{
     use super::*;
+    #[test] fn symmetric_elliptic_row_is_not_constant_horizontal(){
+        let p=PRIME;
+        let want=[
+            ("u",[F::new((p-1)/6,p),F::new((5*p+1)/6,p)]),
+            ("v",[F::new((p-1)/2,p),F::new((p+1)/2,p)]),
+        ];
+        for(axis,expected)in want{
+            let(f,fp,_,_)=boundary_data(3,1,axis);let b=elliptic_connection(&f,&fp);
+            let derivative=[b[0][0].add(b[0][1]),b[1][0].add(b[1][1])];
+            assert_eq!(derivative,expected);assert!(derivative.iter().any(|z|z.v!=0));
+        }
+    }
     #[cfg(not(feature="replication-prime"))]
     #[test] fn reproduces_total_slice_at_seven(){
         let(rows,degrees)=sample_rows(7,1,"u");
