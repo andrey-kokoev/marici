@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787934316677374400_15",
+  "created_at": "2026-08-28T16:25:16.6773773Z",
+  "sha256": "1cd99dd93a5cbacf35b293e7d99fe17e15d066d0d0d5e6ffd1c6b5e1c1fdab37",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp967_domain_moment_covariance_certificate.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:25:16.5910017Z",
+    "finished_at": "2026-08-28T16:25:16.6773643Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP967 exact covariance certificate",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP967 exact covariance certificate",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"checks\": {\r\n    \"chebyshev_certificate_typed\": true,\r\n    \"covariance_sum_diagonal_count_N\": true,\r\n    \"covariance_sum_off_diagonal_count_N_times_N_minus_one\": true,\r\n    \"effective_N_iid\": true,\r\n    \"effective_N_perfect_correlation\": true,\r\n    \"finite_N_formula_exact\": true,\r\n    \"half_correlation_effective_N\": true,\r\n    \"half_correlation_variance\": true,\r\n    \"iid_variance_one_over_N\": true,\r\n    \"impossibility_threshold_rho_ge_delta_eta_squared\": true,\r\n    \"no_physical_time_or_causality_assigned\": true,\r\n    \"perfect_correlation_variance_one\": true,\r\n    \"positive_rho_effective_sample_cap\": true,\r\n    \"positive_rho_variance_floor\": true,\r\n    \"selector_lane_not_reopened\": true,\r\n    \"variance_factorization_exact\": true\r\n  },\r\n  \"checks_passed\": 16,\r\n  \"checks_total\": 16,\r\n  \"classification\": \"exchangeable calibrated marginals become a finite-confidence moment instrument only after an independent common-covariance bound\",\r\n  \"exact_certificate\": {\r\n    \"chebyshev_bound\": \"((1-rho_max)/N+rho_max)/eta^2\",\r\n    \"effective_sample_cap\": \"1/rho for fixed positive rho\",\r\n    \"effective_sample_size\": \"N/(1+(N-1)*rho)\",\r\n    \"feasibility\": \"rho_max < delta*eta^2\",\r\n    \"finite_N_condition\": \"(1-rho_max)/(delta*eta^2-rho_max)\",\r\n    \"variance\": \"(1-rho)/N+rho\",\r\n    \"variance_floor\": \"rho for fixed positive rho\"\r\n  },\r\n  \"first_nonfaithful_arrow\": \"joint preparation/reset covariance\",\r\n  \"remaining_instrument_gate\": \"source-defined slot family and calibrated rho_max stable over the admitted preparation domain\",\r\n  \"smallest_exact_falsifier\": \"rho=1 preserves every one-slot marginal but fixes effective sample size to one for every N\",\r\n  \"status\": \"PASS\",\r\n  \"work_package\": \"WP967\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
