@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787933529336717300_18",
+  "created_at": "2026-08-28T16:12:09.3367205Z",
+  "sha256": "82877291781dc171f4e190a2a42dfa89681f9efad1d1ddf7868973882901a3b4",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/higher_three_adic_lift_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:11:54.5578033Z",
+    "finished_at": "2026-08-28T16:12:09.3367057Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "regression of falsified Hensel lift and cancellation predictions",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "regression of falsified Hensel lift and cancellation predictions",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.higher_three_adic_lift_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"classification\": \"content_tower_terminates_and_smith_cancellation_breaks_at_n8\",\r\n  \"predictions\": {\r\n    \"unique_content_hensel_lift\": false,\r\n    \"persistent_smith_three_adic_cancellation\": false\r\n  },\r\n  \"levels\": [\r\n    {\r\n      \"level\": 2,\r\n      \"input_residue\": 2,\r\n      \"input_modulus\": 3,\r\n      \"candidate_modulus\": 9,\r\n      \"target_v3_d1\": 3,\r\n      \"records\": [\r\n        {\r\n          \"exponent\": 2,\r\n          \"v3_d1\": 2,\r\n          \"v3_d2\": 5,\r\n          \"v3_d3\": 7,\r\n          \"v3_snake_index\": 0,\r\n          \"rank_defect\": true\r\n        },\r\n        {\r\n          \"exponent\": 5,\r\n          \"v3_d1\": 2,\r\n          \"v3_d2\": 4,\r\n          \"v3_d3\": 6,\r\n          \"v3_snake_index\": 0,\r\n          \"rank_defect\": true\r\n        },\r\n        {\r\n          \"exponent\": 8,\r\n          \"v3_d1\": 2,\r\n          \"v3_d2\": 4,\r\n          \"v3_d3\": 7,\r\n          \"v3_snake_index\": 1,\r\n          \"rank_defect\": true\r\n        }\r\n      ],\r\n      \"deeper_lifts\": [],\r\n      \"unique_deeper_lift\": false\r\n    }\r\n  ],\r\n  \"final_residue\": 2,\r\n  \"final_modulus\": 3,\r\n  \"gates\": {\r\n    \"all_three_first_lifts_were_evaluated\": true,\r\n    \"content_hensel_lift_prediction_is_falsified\": true,\r\n    \"persistent_cancellation_prediction_is_falsified\": true,\r\n    \"first_cancellation_failure_within_the_lift_fiber_is_n8\": true,\r\n    \"first_jet_content_selection_remains_valid\": true,\r\n    \"rank_defect_persists_on_every_candidate\": true\r\n  },\r\n  \"gate_count\": 6,\r\n  \"passed_gate_count\": 6,\r\n  \"interpretation\": \"The first exceptional content fiber has no deeper content lift: all three representatives retain v3(d1)=2. Higher minors nevertheless split the fiber, and n=8 is the first tested lift where one factor of 3 survives the Smith ratio. Both bold higher-order predictions are falsified.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
