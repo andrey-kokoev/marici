@@ -3,6 +3,8 @@ param(
   [ValidateRange(1, 10080)]
   [int]$OlderThanMinutes = 15,
 
+  [switch]$Summary,
+
   [switch]$Detailed,
 
   [switch]$NoPush
@@ -150,5 +152,7 @@ if ($Detailed) {
   }
 }
 
-[pscustomobject]$summary | ConvertTo-Json -Depth 6 -Compress
+if ($Summary -or $Detailed) {
+  [pscustomobject]$summary | ConvertTo-Json -Depth 6 -Compress
+}
 if ($remainingOld.Count -gt 0) { exit 2 }
