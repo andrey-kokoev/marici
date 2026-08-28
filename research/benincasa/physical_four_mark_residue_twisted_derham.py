@@ -195,7 +195,7 @@ def filtered_census(names: tuple[str, ...], gamma: int, ambient: int, cutoff: in
     }
 
 
-def parameter_derivative_data(axis: int):
+def parameter_derivative_data(axis: int, point0: tuple[int, int, int] = (2, 3, 4)):
     # The frozen coefficients have kinematic degree at most four, so the
     # five-point stencil is the exact formal derivative over PRIME.
     weights = (1, -8, 0, 8, -1)
@@ -203,7 +203,7 @@ def parameter_derivative_data(axis: int):
     k_result: Polynomial = {}
     q_result: dict[str, Polynomial] = {}
     for offset, weight in zip((-2, -1, 0, 1, 2), weights):
-        point = [2, 3, 4]
+        point = list(point0)
         point[axis] += offset
         k, q = fiber_data(*point)
         for exponent, coefficient in k.items():
