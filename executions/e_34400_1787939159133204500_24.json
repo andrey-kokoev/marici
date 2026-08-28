@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787939159133204500_24",
+  "created_at": "2026-08-28T17:45:59.1332116Z",
+  "sha256": "56ba00fd2fddee97cc70cf1260fb1189a8e20387054482e78d618bf1cf25ac65",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp971_finite_momentum_yukawa_interface_contract.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:45:59.0495109Z",
+    "finished_at": "2026-08-28T17:45:59.1331832Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP971 exact rational regression",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP971 exact rational regression",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.finite-momentum-yukawa-interface-contract.v1\",\r\n  \"work_package\": \"WP971\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"hostile_closes_at_zero\": true,\r\n    \"hostile_opens_away_from_zero\": true,\r\n    \"kinetic_rescaling_changes_raw_coupling\": true,\r\n    \"kinetic_rescaling_preserves_hatted_strength\": true,\r\n    \"current_packet_is_incomplete\": true,\r\n    \"first_failed_gate_is_kinetic\": true,\r\n    \"scc_naturality_must_remain_unadmitted\": true\r\n  },\r\n  \"contract_gates\": {\r\n    \"normalized_quadratic_kinetic_operators\": false,\r\n    \"complete_momentum_space_vertices\": false,\r\n    \"routing_and_shift_invariance\": false,\r\n    \"three_point_tensor_basis\": false,\r\n    \"subtraction_and_pole_convention\": false,\r\n    \"derivative_operator_basis\": false,\r\n    \"threshold_and_analytic_support\": false,\r\n    \"zero_momentum_recovery\": true,\r\n    \"on_shell_detector_continuation\": false\r\n  },\r\n  \"first_failed_gate\": \"normalized_quadratic_kinetic_operators\",\r\n  \"smallest_exact_falsifier\": {\r\n    \"F1\": \"kappa\",\r\n    \"F2\": \"kappa*(1+q2/M2)\",\r\n    \"agreement\": \"F1(0)=F2(0)=kappa\",\r\n    \"disagreement\": \"F2(q2)-F1(q2)=kappa*q2/M2 for q2!=0\"\r\n  },\r\n  \"kinetic_normalization_fiber\": {\r\n    \"packets\": [\r\n      \"(Z,y)=(1,1)\",\r\n      \"(Z,y)=(4,2)\"\r\n    ],\r\n    \"raw_y4\": [\r\n      1,\r\n      16\r\n    ],\r\n    \"canonical_y4_over_Z2\": [\r\n      \"1\",\r\n      \"1\"\r\n    ],\r\n    \"consequence\": \"zero-momentum canonical strength does not supply the finite-momentum kinetic Gram\"\r\n  },\r\n  \"classification\": \"finite-momentum interface closure; neither selector nor admitted instrument\",\r\n  \"scc_disposition\": \"natural_transport remains failed until the complete on-shell matching square closes\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
