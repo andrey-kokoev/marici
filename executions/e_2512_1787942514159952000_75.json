@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787942514159952000_75",
+  "created_at": "2026-08-28T18:41:54.1599553Z",
+  "sha256": "f3608ba4e16ac4ea600089c31b99a4609e4c23000f980a33298bedd0de618d5d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/gauge_shear_readout_invariance_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T18:41:39.2879768Z",
+    "finished_at": "2026-08-28T18:41:54.1599424Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact gauge shear horizontality",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact gauge shear horizontality",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.gauge_shear_readout_invariance_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"grade_range\": [\r\n    -10,\r\n    10\r\n  ],\r\n  \"shear_range\": [\r\n    -5,\r\n    5\r\n  ],\r\n  \"record_count\": 231,\r\n  \"action_typing\": {\r\n    \"source_automorphism\": \"Delta maps to U Delta U^-1\",\r\n    \"quotient_readout\": \"P Delta with P U = P\",\r\n    \"rejected_surrogate\": \"Delta maps to U Delta without transforming the source port\"\r\n  },\r\n  \"interpretation\": \"The non-scalar stabilizer is genuine gauge symmetry, not a framing defect. It fixes every derived response by conjugation and acts trivially after the relational projection. Stronger still, the selected full readout is already horizontal: the gauge shear annihilates it before quotienting.\",\r\n  \"gates\": {\r\n    \"all_derived_responses_are_exactly_conjugation_fixed\": true,\r\n    \"quotient_projection_is_fixed_by_every_gauge_shear\": true,\r\n    \"relational_readout_is_basic_under_every_sampled_shear\": true,\r\n    \"full_readout_is_already_horizontal_for_the_gauge_shear\": true\r\n  },\r\n  \"gate_count\": 4,\r\n  \"passed_gate_count\": 4\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
