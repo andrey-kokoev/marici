@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_20420_1787930074465599000_1",
+  "created_at": "2026-08-28T15:14:34.465602Z",
+  "sha256": "3dda4f455a37fc34db3442e26afe64fa036b1a1f4a4f6e782f7f3dcbf98986ff",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/additive_charge_atomicity_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T15:14:34.3954841Z",
+    "finished_at": "2026-08-28T15:14:34.4655884Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "single exact research checker",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "single exact research checker",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.additive_charge_atomicity_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"classification\": \"atomicity_is_a_unit_stratum_of_an_additive_charge_not_a_compositional_capability\",\r\n  \"bounded_family\": {\r\n    \"charges\": [\r\n      -3,\r\n      -2,\r\n      -1,\r\n      0,\r\n      1,\r\n      2,\r\n      3\r\n    ],\r\n    \"pair_count\": 49\r\n  },\r\n  \"witnesses\": {\r\n    \"atomic_to_nonatomic\": [\r\n      {\r\n        \"left_charge\": -1,\r\n        \"right_charge\": -1,\r\n        \"effective_charge\": -2,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      },\r\n      {\r\n        \"left_charge\": -1,\r\n        \"right_charge\": 1,\r\n        \"effective_charge\": 0,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      },\r\n      {\r\n        \"left_charge\": 1,\r\n        \"right_charge\": -1,\r\n        \"effective_charge\": 0,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      },\r\n      {\r\n        \"left_charge\": 1,\r\n        \"right_charge\": 1,\r\n        \"effective_charge\": 2,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      }\r\n    ],\r\n    \"nonatomic_to_atomic\": [\r\n      {\r\n        \"left_charge\": -3,\r\n        \"right_charge\": 2,\r\n        \"effective_charge\": -1,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": false,\r\n        \"right_atomic\": false,\r\n        \"composite_atomic\": true\r\n      },\r\n      {\r\n        \"left_charge\": -2,\r\n        \"right_charge\": 1,\r\n        \"effective_charge\": -1,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": false,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": true\r\n      },\r\n      {\r\n        \"left_charge\": -2,\r\n        \"right_charge\": 3,\r\n        \"effective_charge\": 1,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": false,\r\n        \"right_atomic\": false,\r\n        \"composite_atomic\": true\r\n      },\r\n      {\r\n        \"left_charge\": -1,\r\n        \"right_charge\": 0,\r\n        \"effective_charge\": -1,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": false,\r\n        \"composite_atomic\": true\r\n      }\r\n    ],\r\n    \"cancellation_to_identity\": [\r\n      {\r\n        \"left_charge\": -1,\r\n        \"right_charge\": 1,\r\n        \"effective_charge\": 0,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      },\r\n      {\r\n        \"left_charge\": 1,\r\n        \"right_charge\": -1,\r\n        \"effective_charge\": 0,\r\n        \"response_composition_exact\": true,\r\n        \"fox_cocycle_exact\": true,\r\n        \"left_atomic\": true,\r\n        \"right_atomic\": true,\r\n        \"composite_atomic\": false\r\n      }\r\n    ]\r\n  },\r\n  \"gates\": {\r\n    \"response_charge_is_additive_on_all_49_pairs\": true,\r\n    \"fox_derivative_obeys_cocycle_on_all_49_pairs\": true,\r\n    \"atomic_factors_can_produce_nonatomic_composite\": true,\r\n    \"nonatomic_factors_can_produce_atomic_composite\": true,\r\n    \"opposite_atomic_charges_cancel_to_identity\": true,\r\n    \"atomicity_equals_unit_locus_of_effective_charge\": true\r\n  },\r\n  \"gate_count\": 6,\r\n  \"passed_gate_count\": 6,\r\n  \"interpretation\": \"Both the nilpotent response family and the one-generator Fox calculus factor through an additive integer charge. Atomicity is the inverse image of the units +/-1. Since that unit locus is not closed under addition, atomic morphisms do not form a subcategory. A compiler must carry and recompute effective charge rather than compose atomic flags.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
