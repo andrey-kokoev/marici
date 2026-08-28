@@ -1,0 +1,78 @@
+{
+  "work_package": "WP844",
+  "title": "Asymmetric charge radiative threshold splitting",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "tree_packet": "D=m H_q gives D^T D=m^2 I",
+  "covariant_hostile": "Pi=epsilon Q^2 gives squared thresholds m^2+epsilon, m^2+4epsilon, m^2+9epsilon",
+  "symmetry_result": "commutant(Q) is diagonal dimension 3; common commutant(Q,H_q) is scalar",
+  "required_cancellation": "-epsilon(Q^2-(14/3)I), with squared norm (98/3)epsilon^2",
+  "classification": "negative radiative threshold-protection theorem; tree equal-singular shape is not threshold survival",
+  "claim_boundary": "epsilon Q^2 is an allowed covariant hostile, not an asserted universal physical self-energy",
+  "remaining_source_gate": "derive a nonrenormalization identity canceling every traceless charge-dependent self-energy without erasing the asymmetric portal, then finite matching and physical16 readout",
+  "tests": [
+    {
+      "name": "wp837_tree_singular_values_are_exactly_equal",
+      "passed": true,
+      "evidence": "Matrix([[mass**2, 0, 0], [0, mass**2, 0], [0, 0, mass**2]])"
+    },
+    {
+      "name": "charge_square_hostile_is_basis_covariant",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, 4, 0], [0, 0, 9]])"
+    },
+    {
+      "name": "radiative_hostile_splits_all_three_thresholds",
+      "passed": true,
+      "evidence": "Matrix([[epsilon + mass**2, 4*epsilon + mass**2, 9*epsilon + mass**2]])"
+    },
+    {
+      "name": "adjacent_squared_threshold_gaps_are_nonzero",
+      "passed": true,
+      "evidence": "(3*epsilon, 5*epsilon)"
+    },
+    {
+      "name": "shift_insensitive_centered_hostile_still_splits",
+      "passed": true,
+      "evidence": "Matrix([[epsilon, 0, 0], [0, 0, 0], [0, 0, epsilon]])"
+    },
+    {
+      "name": "simple_charge_spectrum_has_diagonal_commutant_dimension_three",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "charge_and_current_reflection_have_only_scalar_common_commutant",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "quadratic_charge_correction_preserves_degeneracy_only_if_constant",
+      "passed": true,
+      "evidence": "[{b: 0, c: 0}]"
+    },
+    {
+      "name": "traceless_self_energy_really_is_traceless",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "traceless_splitting_has_positive_exact_norm",
+      "passed": true,
+      "evidence": "98*epsilon**2/3"
+    },
+    {
+      "name": "scalar_mass_counterterm_cannot_cancel_traceless_splitting",
+      "passed": true,
+      "evidence": "Matrix([[-11*epsilon/3, 0, 0], [0, -2*epsilon/3, 0], [0, 0, 13*epsilon/3]])"
+    },
+    {
+      "name": "tree_equal_threshold_is_not_protected_by_current_source_alone",
+      "passed": true,
+      "evidence": "Matrix([[epsilon + mass**2, 0, 0], [0, 4*epsilon + mass**2, 0], [0, 0, 9*epsilon + mass**2]])"
+    }
+  ]
+}

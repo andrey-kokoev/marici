@@ -1,0 +1,78 @@
+{
+  "work_package": "WP857",
+  "title": "Oriented dark-state portal attractor",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_domain": "vacuum plus coherent even/odd two-path sectors",
+  "selected_state": "odd ray (|A>-|B>)/sqrt(2)",
+  "liouvillian_spectrum": {
+    "0": 1,
+    "-kappa": 4,
+    "-kappa/2": 4
+  },
+  "global_basin": "all density matrices on the declared three-state source",
+  "portal_from_absence": true,
+  "source_authority_hostile": "equal-gap even-parity reservoir",
+  "classification": "conditional coherent magnitude/parity selector; reservoir, RG, threshold and reference authority open",
+  "remaining_gates": [
+    "derive odd reservoir from WP854 boundary source",
+    "identify semigroup with flavor RG",
+    "intertwine dark projector through thresholds",
+    "supply WP855 coherent reference instrument"
+  ],
+  "tests": [
+    {
+      "name": "dark_projector_is_stationary",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])"
+    },
+    {
+      "name": "liouvillian_kernel_is_unique",
+      "passed": true,
+      "evidence": "[Matrix([\n[0],\n[0],\n[0],\n[0],\n[0],\n[0],\n[0],\n[0],\n[1]])]"
+    },
+    {
+      "name": "exact_liouvillian_spectrum_has_positive_gap",
+      "passed": true,
+      "evidence": "{-kappa: 4, -kappa/2: 4, 0: 1}"
+    },
+    {
+      "name": "vacuum_flow_solves_master_equation",
+      "passed": true,
+      "evidence": "Matrix([[exp(-kappa*t), 0, 0], [0, 0, 0], [0, 0, 1 - exp(-kappa*t)]])"
+    },
+    {
+      "name": "vacuum_flow_converges_to_dark_projector",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "dark_ray_has_fixed_antisymmetric_port_magnitude",
+      "passed": true,
+      "evidence": "Matrix([[sqrt(2)/2], [-sqrt(2)/2]])"
+    },
+    {
+      "name": "global_sign_is_identified_at_density_level",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "odd_dissipator_is_exchange_covariant",
+      "passed": true,
+      "evidence": "[Matrix([\n[           0, 0, 0],\n[           0, 0, 0],\n[-sqrt(kappa), 0, 0]]), Matrix([\n[0,            0, 0],\n[0,            0, 0],\n[0, -sqrt(kappa), 0]])]"
+    },
+    {
+      "name": "even_rival_has_same_liouvillian_spectrum",
+      "passed": true,
+      "evidence": "{-kappa: 4, -kappa/2: 4, 0: 1}"
+    },
+    {
+      "name": "even_rival_selects_distinct_stationary_projector",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 1, 0], [0, 0, 0]])"
+    }
+  ]
+}

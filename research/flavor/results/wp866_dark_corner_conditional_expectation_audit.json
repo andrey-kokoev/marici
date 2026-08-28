@@ -1,0 +1,80 @@
+{
+  "schema": "marici.flavor.dark-corner-conditional-expectation-audit.v1",
+  "work_package": "WP866",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "source_operation": "unital CP idempotent in Heisenberg picture, replacement channel in Schrodinger picture",
+  "selected_basin_parameter": "q=0",
+  "normalized_generator_spectrum": {
+    "-1": 8,
+    "0": 1
+  },
+  "contextual_partition": "one singleton selected ray per source-fixed z; U(1) family before reference fixing",
+  "threshold_hierarchy": {
+    "selector": "dark-line invariance",
+    "instrument": "full bright/dark reducing projector"
+  },
+  "classification": "basin selector conditional on a preselected dark corner; neither phase nor calibrated portal selector",
+  "smallest_exact_falsifier": "bright-heavy unitary with cosine 3/4 preserves selector and attenuates readout to 9/16",
+  "remaining_physical_instrument_gate": "common source derivation of dark expectation, bright complement, RG normalization, and physical16 calibration",
+  "tests": [
+    {
+      "name": "idempotence_residual_has_expected_factor",
+      "passed": true,
+      "evidence": "s*(s - 1)"
+    },
+    {
+      "name": "only_nonnegative_idempotent_parameters_are_zero_and_one",
+      "passed": true,
+      "evidence": "[0, 1]"
+    },
+    {
+      "name": "unique_stationary_idempotent_branch_forces_s_zero",
+      "passed": true,
+      "evidence": "[1, 4]"
+    },
+    {
+      "name": "replacement_channel_is_rank_one_projection",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "normalized_generator_has_one_zero_and_eight_minus_one_modes",
+      "passed": true,
+      "evidence": "{-1: 8, 0: 1}"
+    },
+    {
+      "name": "phase_is_not_selected_by_conditional_expectation",
+      "passed": true,
+      "evidence": "[Matrix([\n[        0],\n[sqrt(2)/2],\n[sqrt(2)/2]]), Matrix([\n[           0],\n[   sqrt(2)/2],\n[-sqrt(2)*I/2]])]"
+    },
+    {
+      "name": "bright_heavy_threshold_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 3/4, sqrt(7)/4], [0, 0, -sqrt(7)/4, 3/4]])"
+    },
+    {
+      "name": "dark_selector_survives_bright_only_leakage",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "complementary_readout_does_not_survive",
+      "passed": true,
+      "evidence": "9/16"
+    },
+    {
+      "name": "full_endpoint_projector_is_not_reducing",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, sqrt(7)/4], [0, 0, sqrt(7)/4, 0]])"
+    },
+    {
+      "name": "physical_rg_clock_and_detector_calibration_remain_open",
+      "passed": true,
+      "evidence": "dimensionless generator and unit source port have no admitted calibrated maps"
+    }
+  ]
+}

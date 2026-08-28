@@ -1,0 +1,73 @@
+{
+  "schema": "marici.flavor.oriented-path-green-operator-audit.v1",
+  "work_package": "WP864",
+  "summary": {
+    "passed": 9,
+    "total": 9,
+    "all_passed": true
+  },
+  "source_domain": "normalized marked length-three path with kinetic block K",
+  "conditional_source_principle": "Green inversion of the oriented discrete derivative K=I-F",
+  "forced_green_operator": "I + F + F^2",
+  "general_hostile": "K_(rho,delta)=I-rho F-delta F^2",
+  "general_inverse": "I+rho F+(rho^2+delta) F^2",
+  "smallest_falsifiers": {
+    "magnitude": "rho != 1",
+    "locality": "delta != 0",
+    "sign": "I-F and I+F are conjugate without a retained reference"
+  },
+  "classification": "conditional coefficient selector; incomplete end-to-end source constructor",
+  "remaining_gates": [
+    "derive normalized oriented derivative from one microscopic source",
+    "identify its physical RG generator with the WP859 global basin",
+    "derive the WP860 reducing threshold projector",
+    "calibrate the complementary port in physical16 units"
+  ],
+  "tests": [
+    {
+      "name": "normalized_path_has_exact_nilpotency_order_three",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, -1/2], [0, 0, 0], [0, 0, 0]])"
+    },
+    {
+      "name": "general_green_operator_is_exact",
+      "passed": true,
+      "evidence": "Matrix([[1, -sqrt(2)*I*rho/2, -delta/2 - rho**2/2], [0, 1, -sqrt(2)*I*rho/2], [0, 0, 1]])"
+    },
+    {
+      "name": "oriented_derivative_has_unique_path_algebra_inverse",
+      "passed": true,
+      "evidence": "[{u: 1, v: 1, w: 1}]"
+    },
+    {
+      "name": "green_equation_forces_complete_unit_path_sum",
+      "passed": true,
+      "evidence": "Matrix([[1, -sqrt(2)*I/2, -1/2], [0, 1, -sqrt(2)*I/2], [0, 0, 1]])"
+    },
+    {
+      "name": "direct_two_step_term_reopens_wp863_modulus",
+      "passed": true,
+      "evidence": "delta + rho**2"
+    },
+    {
+      "name": "nearest_neighbor_magnitude_remains_free_without_normalization",
+      "passed": true,
+      "evidence": "Matrix([[0, -sqrt(2)*I/2, -rho], [0, 0, -sqrt(2)*I/2], [0, 0, 0]])"
+    },
+    {
+      "name": "unreferenced_signs_are_unitarily_conjugate",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, -1, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "kinetic_is_invertible_for_all_hostile_parameters",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "threshold_and_instrument_gates_remain_separate",
+      "passed": true,
+      "evidence": "requires WP860 reducing projector and calibrated physical16 port"
+    }
+  ]
+}

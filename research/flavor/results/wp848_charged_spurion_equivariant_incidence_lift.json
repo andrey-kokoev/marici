@@ -1,0 +1,79 @@
+{
+  "work_package": "WP848",
+  "title": "Charged-spurion equivariant incidence lift",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "lifted_differential": "[[2s1,-s2,0],[3s1,0,-s3]], with weights(sj)=-j",
+  "kernel": "(s2 s3, 2 s1 s3, 3 s1 s2)",
+  "vacuum_fiber": "two projective VEV ratios; equal VEVs recover (1,2,3) but are not selected",
+  "virtual_character": "z+z^2+z^3-2",
+  "stabilizer": "trivial for simultaneous nonzero VEVs of weights -1,-2,-3",
+  "classification": "equivariance typing repair, not a source selector; vacuum alignment and character transport remain open",
+  "smallest_exact_falsifier": "VEVs (1,2,1) give kernel ray (1,1,3), not (1,2,3)",
+  "remaining_source_gate": "derive an equal-VEV spurion potential and protected pre-vacuum equivariant-index transport, then relational holonomy instrumentation",
+  "tests": [
+    {
+      "name": "lifted_incidence_has_exact_symbolic_kernel",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "unit_spurion_vacuum_recovers_wp820_incidence",
+      "passed": true,
+      "evidence": "Matrix([[2, -1, 0], [3, 0, -1]])"
+    },
+    {
+      "name": "unit_spurion_vacuum_recovers_primitive_ray",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "unequal_spurion_vacuum_changes_kernel_ray",
+      "passed": true,
+      "evidence": "Matrix([[2], [2], [6]])"
+    },
+    {
+      "name": "kernel_ray_has_two_independent_projective_vev_ratios",
+      "passed": true,
+      "evidence": "(2*s1/s2, 3*s1/s3)"
+    },
+    {
+      "name": "spurion_weights_cancel_domain_weights",
+      "passed": true,
+      "evidence": "[0, 0, 0]"
+    },
+    {
+      "name": "constant_first_row_cannot_share_one_target_weight",
+      "passed": true,
+      "evidence": "[1, 2]"
+    },
+    {
+      "name": "constant_second_row_cannot_share_one_target_weight",
+      "passed": true,
+      "evidence": "[1, 3]"
+    },
+    {
+      "name": "equivariant_complex_has_virtual_character_with_two_neutral_targets",
+      "passed": true,
+      "evidence": "z**3 + z**2 + z - 2"
+    },
+    {
+      "name": "virtual_index_is_not_wp846_positive_character",
+      "passed": true,
+      "evidence": "(z**3 + z**2 + z - 2, z**3 + z**2 + z)"
+    },
+    {
+      "name": "three_nonzero_spurion_vevs_have_trivial_common_stabilizer",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "equivariant_lift_does_not_select_equal_vev_alignment",
+      "passed": true,
+      "evidence": "(Matrix([\n[1],\n[2],\n[3]]), Matrix([\n[2],\n[2],\n[6]]))"
+    }
+  ]
+}

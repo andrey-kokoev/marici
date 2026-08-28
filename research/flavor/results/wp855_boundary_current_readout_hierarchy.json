@@ -1,0 +1,66 @@
+{
+  "work_package": "WP855",
+  "title": "Boundary-current readout hierarchy",
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "all_passed": true
+  },
+  "state_domain": [
+    "positive boundary orientation",
+    "negative boundary orientation",
+    "absent boundary source"
+  ],
+  "probe_partition": {
+    "sum_contact": "one class containing all three states",
+    "loop_product": "relative-parity classes; boundary orientations identified",
+    "difference_intensity": "presence class plus absence; orientations identified",
+    "referenced_difference_pair": "three singleton classes"
+  },
+  "first_nonfaithful_arrow": "two charged paths -> ordinary sum port",
+  "smallest_exact_falsifier": "p=(1,-1)/sqrt(2) and p=0 both give zero sum-contact response",
+  "groupoid_change": "coherent reference reduces the experiment to its phase stabilizer",
+  "instrument_gate": "source-derived pre-projection difference channel and calibrated coherent reference",
+  "tests": [
+    {
+      "name": "ordinary_sum_port_collapses_both_orientations_and_absence",
+      "passed": true,
+      "evidence": "{'plus': 0, 'minus': 0, 'absent': 0}"
+    },
+    {
+      "name": "downstream_contact_cannot_repair_sum_port_kernel",
+      "passed": true,
+      "evidence": "{'plus': 0, 'minus': 0, 'absent': 0}"
+    },
+    {
+      "name": "loop_product_separates_symmetric_from_antisymmetric",
+      "passed": true,
+      "evidence": "{'plus': -1/2, 'minus': -1/2, 'absent': 0, 'symmetric': 1/2}"
+    },
+    {
+      "name": "loop_product_erases_boundary_orientation",
+      "passed": true,
+      "evidence": "{'plus': -1/2, 'minus': -1/2, 'absent': 0, 'symmetric': 1/2}"
+    },
+    {
+      "name": "difference_amplitude_separates_three_declared_states",
+      "passed": true,
+      "evidence": "{'plus': sqrt(2), 'minus': -sqrt(2), 'absent': 0}"
+    },
+    {
+      "name": "difference_intensity_erases_orientation_but_detects_presence",
+      "passed": true,
+      "evidence": "{'plus': 2, 'minus': 2, 'absent': 0}"
+    },
+    {
+      "name": "two_referenced_difference_settings_are_jointly_faithful",
+      "passed": true,
+      "evidence": "{'plus': ((1 + sqrt(2))**2, (1 - sqrt(2))**2), 'minus': ((1 - sqrt(2))**2, (1 + sqrt(2))**2), 'absent': (1, 1)}"
+    },
+    {
+      "name": "referenced_pair_has_orientation_odd_difference",
+      "passed": true,
+      "evidence": "{'plus': ((1 + sqrt(2))**2, (1 - sqrt(2))**2), 'minus': ((1 - sqrt(2))**2, (1 + sqrt(2))**2), 'absent': (1, 1)}"
+    }
+  ]
+}

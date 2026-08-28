@@ -1,0 +1,77 @@
+{
+  "work_package": "WP858",
+  "title": "Coherent return-port dark-ray selector",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_domain": "two boundary amplitudes plus one retained coherent return-port phase",
+  "selected_ray": "d_z=(-z,1)/sqrt(2)",
+  "selector_mechanism": "kernel of normalized common-port row and negative eigenray of boundary link",
+  "groupoid_change": "independent port phases -> stabilizer of retained return-port phase",
+  "smallest_rivals": [
+    "phase-shifted common junction M_-z",
+    "Hamiltonian sign reversal -K_z",
+    "finite-temperature Gibbs completion"
+  ],
+  "classification": "conditional relational parity/magnitude selector with a reusable phase reference",
+  "remaining_gates": [
+    "derive common junction and spectral ordering microscopically",
+    "identify relaxation with flavor RG",
+    "isometric threshold transport",
+    "calibrated referenced physical16 instrument"
+  ],
+  "tests": [
+    {
+      "name": "common_return_port_has_rank_one",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "dark_ray_is_exact_common_port_kernel",
+      "passed": true,
+      "evidence": "Matrix([[0]])"
+    },
+    {
+      "name": "dark_ray_has_equal_component_magnitudes_for_unit_phase",
+      "passed": true,
+      "evidence": "Matrix([[-sqrt(2)/2], [sqrt(2)/2]])"
+    },
+    {
+      "name": "boundary_link_has_fixed_unit_spectrum",
+      "passed": true,
+      "evidence": "lambda**2 - 1"
+    },
+    {
+      "name": "dark_ray_is_negative_boundary_link_eigenray",
+      "passed": true,
+      "evidence": "Matrix([[sqrt(2)*z/2], [-sqrt(2)/2]])"
+    },
+    {
+      "name": "port_rephasing_transports_link_and_dark_ray_covariantly",
+      "passed": true,
+      "evidence": "{'link': Matrix([\n[0, -I],\n[I,  0]]), 'dark': Matrix([\n[ -sqrt(2)/2],\n[sqrt(2)*I/2]])}"
+    },
+    {
+      "name": "phase_shifted_common_port_selects_orthogonal_rival",
+      "passed": true,
+      "evidence": "Matrix([[sqrt(2)*z/2], [sqrt(2)/2]])"
+    },
+    {
+      "name": "Hamiltonian_sign_reversal_exchanges_spectral_ordering",
+      "passed": true,
+      "evidence": "Matrix([[-sqrt(2)*z/2], [sqrt(2)/2]])"
+    },
+    {
+      "name": "finite_temperature_hostile_is_mixed",
+      "passed": true,
+      "evidence": "17/25"
+    },
+    {
+      "name": "finite_temperature_hostile_reduces_port_coherence",
+      "passed": true,
+      "evidence": "3/10"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "work_package": "WP832",
+  "title": "Connected-presentation acyclic-spectrum no-go",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "exact_matrices": {
+    "base": [
+      [
+        2,
+        -1,
+        0
+      ],
+      [
+        3,
+        0,
+        -1
+      ]
+    ],
+    "split_stabilization": [
+      [
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "support_connected_completion": [
+      [
+        2,
+        -1,
+        0,
+        1
+      ],
+      [
+        3,
+        0,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        -1,
+        1
+      ]
+    ],
+    "common_smith_form": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "primitive_kernel": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "connected_support_degrees": {
+      "rows": [
+        3,
+        3,
+        4
+      ],
+      "columns": [
+        3,
+        2,
+        2,
+        3
+      ]
+    }
+  },
+  "classification": {
+    "preserved": [
+      "primitive current",
+      "oriented anomaly 36",
+      "kernel rank one",
+      "trivial cokernel",
+      "Smith type"
+    ],
+    "presentation_change": "the split acyclic summand can be represented by a support-connected matrix with no leaf row or column",
+    "not_selected": [
+      "vectorlike charge decoration",
+      "acyclic mass",
+      "spectral index",
+      "threshold coupling"
+    ],
+    "first_nonfaithful_arrow": "integral chain object up to Smith equivalence to support-connected presentation",
+    "selector_or_rigidifier": "support connectedness rigidifies a presentation; it is not a spectral-completion selector",
+    "smallest_exact_falsifier": "B direct-sum 1 versus the displayed connected 3x4 matrix, followed by the same (14,1)/(16,sqrt(7/8)) Ward-response fiber"
+  },
+  "remaining_source_gate": "an invariant physical irreducibility or spectral action must exclude or fix interacting anomaly-neutral sectors and their masses; graph support connectedness or matrix indecomposability by permutation is insufficient",
+  "tests": [
+    {
+      "name": "base_primitive_kernel_is_retained",
+      "passed": true,
+      "evidence": "[Matrix([\n[1/3],\n[2/3],\n[  1]])]"
+    },
+    {
+      "name": "connected_completion_retains_extended_primitive_kernel",
+      "passed": true,
+      "evidence": "[Matrix([\n[1/3],\n[2/3],\n[  1],\n[  0]])]"
+    },
+    {
+      "name": "connected_and_split_presentations_have_same_smith_form",
+      "passed": true,
+      "evidence": "(Matrix([\n[1, 0, 0, 0],\n[0, 1, 0, 0],\n[0, 0, 1, 0]]), Matrix([\n[1, 0, 0, 0],\n[0, 1, 0, 0],\n[0, 0, 1, 0]]))"
+    },
+    {
+      "name": "connected_completion_has_trivial_cokernel",
+      "passed": true,
+      "evidence": "[0, 3, -2, 1]"
+    },
+    {
+      "name": "split_stabilization_has_disconnected_support",
+      "passed": true,
+      "evidence": "([2, 2, 1], [2, 1, 1, 1])"
+    },
+    {
+      "name": "equivalent_presentation_has_connected_support",
+      "passed": true,
+      "evidence": "([3, 3, 4], [3, 2, 2, 3])"
+    },
+    {
+      "name": "connected_presentation_has_no_leaf_row_or_column",
+      "passed": true,
+      "evidence": "([3, 3, 4], [3, 2, 2, 3])"
+    },
+    {
+      "name": "oriented_current_anomaly_is_unchanged",
+      "passed": true,
+      "evidence": "(36, 36)"
+    },
+    {
+      "name": "acyclic_vectorlike_decoration_remains_anomaly_neutral",
+      "passed": true,
+      "evidence": "(0, 0)"
+    },
+    {
+      "name": "connected_acyclic_decoration_changes_spectral_index",
+      "passed": true,
+      "evidence": "2*r**2 + 14"
+    },
+    {
+      "name": "acyclic_mass_remains_a_continuous_spectral_parameter",
+      "passed": true,
+      "evidence": "-4*heat_time*mass*exp(-heat_time*mass**2)"
+    },
+    {
+      "name": "ward_response_fiber_survives_connected_presentation",
+      "passed": true,
+      "evidence": "(14, 14)"
+    }
+  ]
+}

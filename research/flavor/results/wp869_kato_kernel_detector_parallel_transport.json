@@ -1,0 +1,74 @@
+{
+  "schema": "marici.flavor.kato-kernel-detector-parallel-transport.v1",
+  "work_package": "WP869",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_domain": "gapped marked equivariant differential path D_t",
+  "canonical_transport": "Kato connection [dP,P]",
+  "transported_objects": [
+    "kernel projector",
+    "conditional expectation",
+    "complete detector frame"
+  ],
+  "fixed_detector_endpoint_gram": "9/16",
+  "moving_detector_endpoint_gram": "1",
+  "groupoid": "co-moving detector defines a relational experiment over the transported-frame stabilizer",
+  "classification": "canonical mathematical threshold parallelization; physical execution not yet authorized",
+  "smallest_exact_falsifier": "same endpoint kernel with fixed versus Kato-transported detector row",
+  "remaining_physical_instrument_gate": "derive detector co-transport and physical16 calibration from the same microscopic source",
+  "tests": [
+    {
+      "name": "kato_generator_is_exact_antihermitian_rotation",
+      "passed": true,
+      "evidence": "Matrix([[0, 1], [-1, 0]])"
+    },
+    {
+      "name": "transport_solves_kato_initial_value_problem",
+      "passed": true,
+      "evidence": "Matrix([[cos(t), sin(t)], [-sin(t), cos(t)]])"
+    },
+    {
+      "name": "transport_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[cos(t), sin(t)], [-sin(t), cos(t)]])"
+    },
+    {
+      "name": "kernel_projector_is_parallel_transport",
+      "passed": true,
+      "evidence": "Matrix([[cos(t)**2, -sin(2*t)/2], [-sin(2*t)/2, sin(t)**2]])"
+    },
+    {
+      "name": "complete_differential_is_intertwined",
+      "passed": true,
+      "evidence": "Matrix([[0, sin(t)**2 + cos(t)**2]])"
+    },
+    {
+      "name": "moving_detector_gram_is_identically_one",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "fixed_detector_gram_at_hostile_endpoint_is_nine_sixteenths",
+      "passed": true,
+      "evidence": "9/16"
+    },
+    {
+      "name": "conditional_expectation_transports_covariantly",
+      "passed": true,
+      "evidence": "Matrix([[cos(t)**4, -sin(2*t)*cos(t)**2/2, -sin(2*t)*cos(t)**2/2, sin(2*t)**2/4], [-sin(2*t)*cos(t)**2/2, sin(t)**2*cos(t)**2, sin(2*t)**2/4, -sin(t)**2*sin(2*t)/2], [-sin(2*t)*cos(t)**2/2, sin(2*t)**2/4, sin(t)**2*cos(t)**2, -sin(t)**2*sin(2*t)/2], [sin(2*t)**2/4, -sin(t)**2*sin(2*t)/2, -sin(t)**2*sin(2*t)/2, sin(t)**4]])"
+    },
+    {
+      "name": "projector_transport_does_not_imply_detector_transport",
+      "passed": true,
+      "evidence": "fixed and co-moving rows give 9/16 and 1 on the same endpoint kernel"
+    },
+    {
+      "name": "physical_execution_and_calibration_remain_open",
+      "passed": true,
+      "evidence": "requires source-controlled detector connection and physical16 unit map"
+    }
+  ]
+}

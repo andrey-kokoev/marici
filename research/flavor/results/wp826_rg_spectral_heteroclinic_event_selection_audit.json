@@ -1,0 +1,144 @@
+{
+  "work_package": "WP826",
+  "title": "RG-spectral heteroclinic event-selection audit",
+  "summary": {
+    "passed": 19,
+    "total": 19,
+    "all_passed": true
+  },
+  "exact_data": {
+    "trajectory": "1/(modulus*exp(-t) + 1)",
+    "half_crossing_time": "log(modulus)",
+    "crossing_scale": "modulus*reference_scale",
+    "crossing_slope": "1/4",
+    "aspect_germ": {
+      "native_arity": 9,
+      "source_germs": [
+        "oriented_bulk",
+        "rg_vector_field",
+        "spectral_function",
+        "global_endpoint_contract",
+        "reference_clock",
+        "mediator",
+        "threshold_event",
+        "physical16_map",
+        "detector"
+      ],
+      "orientation_selection": true,
+      "dimensionless_magnitude_selection": true,
+      "global_open_basin": true,
+      "trajectory_phase_selection": false,
+      "absolute_event_scale": false,
+      "threshold_criterion_authority": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "source_dynamics": "autonomous logistic RG identifies the spectral path with one global heteroclinic orbit",
+    "sign": "oriented transverse crossing is positive",
+    "dimensionless_magnitude": "symmetric spectral zero fixes u=1/2 conditionally",
+    "basin": "the entire open interval flows monotonically from 0 to 1",
+    "remaining_modulus": "autonomous time translation moves the physical crossing scale",
+    "threshold": "criterion shifts move event scale without changing orientation",
+    "readout": "a reference clock can fix the modulus relationally; physical16 descent and detector calibration are absent",
+    "verdict": "trajectory coupling closes orientation, dimensionless magnitude, and basin, but not absolute event scale"
+  },
+  "tests": [
+    {
+      "name": "heteroclinic_solves_autonomous_logistic_rg",
+      "passed": true,
+      "evidence": "modulus*exp(-t)/(modulus*exp(-t) + 1)**2"
+    },
+    {
+      "name": "heteroclinic_has_uv_ir_endpoint_limits",
+      "passed": true,
+      "evidence": "(0, 1)"
+    },
+    {
+      "name": "open_interval_is_monotone_basin",
+      "passed": true,
+      "evidence": "modulus*exp(-t)/(modulus*exp(-t) + 1)**2"
+    },
+    {
+      "name": "general_threshold_crossing_time_is_exact",
+      "passed": true,
+      "evidence": "log(criterion*modulus/(1 - criterion))"
+    },
+    {
+      "name": "symmetric_half_threshold_crosses_at_log_modulus",
+      "passed": true,
+      "evidence": "log(modulus)"
+    },
+    {
+      "name": "spectral_crossing_is_positive_and_transverse",
+      "passed": true,
+      "evidence": "1/4"
+    },
+    {
+      "name": "symmetric_spectral_event_fixes_dimensionless_portal_half",
+      "passed": true,
+      "evidence": "1/2"
+    },
+    {
+      "name": "autonomous_time_translation_moves_modulus",
+      "passed": true,
+      "evidence": "exp(shift + t)/(modulus + exp(shift + t))"
+    },
+    {
+      "name": "all_positive_moduli_obey_same_global_endpoint_regularity",
+      "passed": true,
+      "evidence": "endpoint conditions independent of modulus"
+    },
+    {
+      "name": "modulus_is_equivalent_to_one_boundary_value",
+      "passed": true,
+      "evidence": "(1 - initial_value)/initial_value"
+    },
+    {
+      "name": "physical_crossing_scale_retains_translation_modulus",
+      "passed": true,
+      "evidence": "modulus*reference_scale"
+    },
+    {
+      "name": "two_global_trajectories_have_different_threshold_scales",
+      "passed": true,
+      "evidence": "(reference_scale, 2*reference_scale)"
+    },
+    {
+      "name": "threshold_criterion_shift_moves_event_without_changing_orientation",
+      "passed": true,
+      "evidence": "log(3)"
+    },
+    {
+      "name": "shifted_threshold_crossing_remains_positive",
+      "passed": true,
+      "evidence": "3/16"
+    },
+    {
+      "name": "reference_clock_condition_sets_modulus_to_one",
+      "passed": true,
+      "evidence": "[1]"
+    },
+    {
+      "name": "uncalibrated_event_record_has_modulus_gain_pair",
+      "passed": true,
+      "evidence": "[2*reference_scale, 2*reference_scale]"
+    },
+    {
+      "name": "event_record_is_rank_one_on_modulus_gain_domain",
+      "passed": true,
+      "evidence": "rank one"
+    },
+    {
+      "name": "aspect_native_nine_object_event_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 9, 'source_germs': ['oriented_bulk', 'rg_vector_field', 'spectral_function', 'global_endpoint_contract', 'reference_clock', 'mediator', 'threshold_event', 'physical16_map', 'detector'], 'orientation_selection': True, 'dimensionless_magnitude_selection': True, 'global_open_basin': True, 'trajectory_phase_selection': False, 'absolute_event_scale': False, 'threshold_criterion_authority': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "five_event_scale_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['trajectory_phase_selection', 'absolute_event_scale', 'threshold_criterion_authority', 'physical16_descent', 'detector_calibration']"
+    }
+  ]
+}

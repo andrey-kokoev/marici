@@ -1,0 +1,81 @@
+{
+  "schema": "marici.flavor.equivariant-index-forgets-boundary-attachment.v1",
+  "work_package": "WP868",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "admitted_domain": "two odd source copies to one odd target copy",
+  "preserved_data": [
+    "domain and target characters",
+    "equivariant index chi_-",
+    "surjectivity",
+    "unit nonzero singular gap",
+    "mod-two anomaly"
+  ],
+  "forgotten_data": "embedding of kernel line into marked light and heavy copies",
+  "smallest_exact_falsifier": {
+    "D0": "(0,1)",
+    "D1": "(sqrt(7)/4,3/4)",
+    "detector_grams": [
+      "1",
+      "9/16"
+    ]
+  },
+  "first_nonfaithful_arrow": "marked equivariant complex -> representation-valued index",
+  "required_repair": "transport actual kernel projector plus named detector evaluation in one calibrated frame",
+  "classification": "equivariant rigidifier, not marked portal protector",
+  "tests": [
+    {
+      "name": "both_differentials_are_odd_equivariant",
+      "passed": true,
+      "evidence": "[Matrix([[0, 1]]), Matrix([[sqrt(7)/4, 3/4]])]"
+    },
+    {
+      "name": "both_maps_are_surjective_with_unit_gap",
+      "passed": true,
+      "evidence": "[Matrix([[1]]), Matrix([[1]])]"
+    },
+    {
+      "name": "equivariant_index_is_one_odd_character",
+      "passed": true,
+      "evidence": "2 chi_- - 1 chi_- = chi_-"
+    },
+    {
+      "name": "declared_vectors_are_exact_kernels",
+      "passed": true,
+      "evidence": "[Matrix([\n[1],\n[0]]), Matrix([\n[       3/4],\n[-sqrt(7)/4]])]"
+    },
+    {
+      "name": "kernel_projectors_are_exact",
+      "passed": true,
+      "evidence": "[Matrix([\n[1, 0],\n[0, 0]]), Matrix([\n[         9/16, -3*sqrt(7)/16],\n[-3*sqrt(7)/16,          7/16]])]"
+    },
+    {
+      "name": "kernel_embedding_changes_while_index_stays_fixed",
+      "passed": true,
+      "evidence": "Matrix([[-7/16, -3*sqrt(7)/16], [-3*sqrt(7)/16, 7/16]])"
+    },
+    {
+      "name": "detector_gram_changes_from_one_to_nine_sixteenths",
+      "passed": true,
+      "evidence": "[1, 9/16]"
+    },
+    {
+      "name": "gapped_equivariant_homotopy_connects_the_pair",
+      "passed": true,
+      "evidence": "Matrix([[sin(t)**2 + cos(t)**2]])"
+    },
+    {
+      "name": "index_and_gap_do_not_determine_boundary_attachment",
+      "passed": true,
+      "evidence": "actual kernel projector and evaluation map are required"
+    },
+    {
+      "name": "physical_detector_calibration_remains_open",
+      "passed": true,
+      "evidence": "detector Gram is source-normalized but not calibrated in physical16 units"
+    }
+  ]
+}

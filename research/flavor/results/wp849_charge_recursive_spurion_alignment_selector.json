@@ -1,0 +1,78 @@
+{
+  "work_package": "WP849",
+  "title": "Charge-recursive spurion alignment selector",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "potential": "lambda1(|s1|^2-v^2)^2 + lambda2 v^2|s2-s1^2/v|^2 + lambda3 v^2|s3-s1 s2/v|^2",
+  "zero_orbit": "v(e^{-i theta},e^{-2i theta},e^{-3i theta})",
+  "gauge_fixed_representative": "(v,v,v)",
+  "selected_kernel": "v^2(1,2,3)",
+  "coefficient_robustness": "zero orbit is identical for all lambda_i>0",
+  "classification": "conditional genuine spurion-alignment and primitive-ray selector",
+  "remaining_source_gate": "derive or uniquely authorize the recursive potential, then beta law, pre/post-vacuum character transport, threshold matching, and calibrated holonomy physical16 readout",
+  "tests": [
+    {
+      "name": "charge_two_recursion_is_gauge_covariant",
+      "passed": true,
+      "evidence": "(-2, -2)"
+    },
+    {
+      "name": "charge_three_recursion_is_gauge_covariant",
+      "passed": true,
+      "evidence": "(-3, -3)"
+    },
+    {
+      "name": "real_zero_locus_has_only_gauge_related_sign_pair",
+      "passed": true,
+      "evidence": "[{u1: -1, u2: 1, u3: -1}, {u1: 1, u2: 1, u3: 1}]"
+    },
+    {
+      "name": "negative_real_solution_is_pi_gauge_transform_of_positive_one",
+      "passed": true,
+      "evidence": "[-1, 1, -1]"
+    },
+    {
+      "name": "constraint_jacobian_is_nonsingular",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "gauge_fixed_hessian_is_exact_gram",
+      "passed": true,
+      "evidence": "Matrix([[18, -2, -2], [-2, 4, -2], [-2, -2, 2]])"
+    },
+    {
+      "name": "gauge_fixed_hessian_is_positive_definite",
+      "passed": true,
+      "evidence": "[18, 68, 32]"
+    },
+    {
+      "name": "equal_vev_orbit_recovers_primitive_kernel_ray",
+      "passed": true,
+      "evidence": "Matrix([[v**2], [2*v**2], [3*v**2]])"
+    },
+    {
+      "name": "dimensionful_vev_scale_cancels_from_projective_ratios",
+      "passed": true,
+      "evidence": "(2, 3)"
+    },
+    {
+      "name": "positive_sum_of_squares_has_zero_at_selected_orbit",
+      "passed": true,
+      "evidence": "Matrix([[0], [0], [0]])"
+    },
+    {
+      "name": "zero_locus_does_not_depend_on_positive_term_weights",
+      "passed": true,
+      "evidence": "[{u1: -1, u2: 1, u3: -1}, {u1: 1, u2: 1, u3: 1}]"
+    },
+    {
+      "name": "nonzero_weight_one_vev_leaves_trivial_u1_stabilizer",
+      "passed": true,
+      "evidence": "1"
+    }
+  ]
+}

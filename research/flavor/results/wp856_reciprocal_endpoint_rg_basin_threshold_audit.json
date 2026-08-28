@@ -1,0 +1,84 @@
+{
+  "work_package": "WP856",
+  "title": "Reciprocal endpoint RG basin and threshold audit",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "source_domain": "two marked endpoint probability algebra with reciprocal irreducible transport",
+  "fixed_point": "p*=1/2",
+  "global_basin": "entire interval [0,1] for kappa>0",
+  "conditional_portal_magnitude": "|g_n-g_m|=1/sqrt(2) if p is the canonically normalized squared coupling",
+  "threshold_family": "T_r=[[r,1-r],[1-r,r]]",
+  "smallest_threshold_hostile": "r=3/4 preserves p* but maps J to J/2",
+  "classification": "conditional nonzero global magnitude selector; physical RG/coherent lift/threshold authority open",
+  "remaining_gates": [
+    "derive endpoint flow as flavor RG",
+    "derive coherent kinetic normalization",
+    "isometric marked-port threshold matching",
+    "WP855 calibrated readout"
+  ],
+  "tests": [
+    {
+      "name": "probability_conserving_generator_has_declared_form",
+      "passed": true,
+      "evidence": "Matrix([[-a, b], [a, -b]])"
+    },
+    {
+      "name": "endpoint_exchange_covariance_forces_equal_rates",
+      "passed": true,
+      "evidence": "Matrix([[a - b, a - b], [-a + b, -a + b]])"
+    },
+    {
+      "name": "reciprocal_generator_has_unique_uniform_fixed_point",
+      "passed": true,
+      "evidence": "[Matrix([\n[1],\n[1]])]"
+    },
+    {
+      "name": "closed_form_solution_satisfies_rg_equation",
+      "passed": true,
+      "evidence": "(p0 - 1/2)*exp(-2*kappa*t) + 1/2"
+    },
+    {
+      "name": "zero_seed_is_not_a_fixed_point",
+      "passed": true,
+      "evidence": "kappa"
+    },
+    {
+      "name": "candidate_portal_magnitude_is_inverse_root_two",
+      "passed": true,
+      "evidence": "sqrt(2)/2"
+    },
+    {
+      "name": "lyapunov_derivative_is_strict_negative_square",
+      "passed": true,
+      "evidence": "-kappa*(2*p - 1)**2"
+    },
+    {
+      "name": "swap_intertwining_threshold_preserves_uniform_packet",
+      "passed": true,
+      "evidence": "Matrix([[1/2], [1/2]])"
+    },
+    {
+      "name": "threshold_scales_oriented_current_by_exact_eigenvalue",
+      "passed": true,
+      "evidence": "Matrix([[2*r - 1], [1 - 2*r]])"
+    },
+    {
+      "name": "three_quarter_hostile_preserves_fixed_point_but_halves_current",
+      "passed": true,
+      "evidence": "Matrix([[3/4, 1/4], [1/4, 3/4]])"
+    },
+    {
+      "name": "half_threshold_erases_orientation",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "only_identity_preserves_oriented_current_exactly",
+      "passed": true,
+      "evidence": "{r: 1}"
+    }
+  ]
+}

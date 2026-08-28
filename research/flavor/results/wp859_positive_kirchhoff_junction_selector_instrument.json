@@ -1,0 +1,83 @@
+{
+  "work_package": "WP859",
+  "title": "Positive Kirchhoff junction selector and instrument",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "source_principle": "reciprocal normalized Kirchhoff incidence with positive Gram and lossless two-port completion",
+  "selected_ray": "(-z,1)/sqrt(2)",
+  "portal_magnitude": "unit component magnitudes 1/sqrt(2)",
+  "global_basin": "unique zero-temperature lowering fixed point on normalized two-path density matrices",
+  "source_instrument": "common dark port plus complementary unit-bright difference port",
+  "smallest_hostiles": [
+    "weighted junction (1,2)/sqrt(5)",
+    "finite-temperature reverse jump",
+    "non-isometric threshold T_3/4"
+  ],
+  "classification": "conditional selector and executable source-level instrument",
+  "remaining_gates": [
+    "microscopic endpoint-reciprocity authority",
+    "flavor-RG identification",
+    "isometric full two-port threshold transport",
+    "calibrated physical16 detector realization"
+  ],
+  "tests": [
+    {
+      "name": "Kirchhoff_gram_is_rank_one_projector",
+      "passed": true,
+      "evidence": "Matrix([[1/2, z/2], [1/(2*z), 1/2]])"
+    },
+    {
+      "name": "reciprocity_and_normalization_force_equal_primitive_weights",
+      "passed": true,
+      "evidence": "[{a: sqrt(2)/2, b: sqrt(2)/2}]"
+    },
+    {
+      "name": "dark_ray_is_unique_zero_mode",
+      "passed": true,
+      "evidence": "[Matrix([\n[-z],\n[ 1]])]"
+    },
+    {
+      "name": "bright_ray_has_unit_positive_cost",
+      "passed": true,
+      "evidence": "Matrix([[sqrt(2)*z/2], [sqrt(2)/2]])"
+    },
+    {
+      "name": "lossless_two_port_completion_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[1, 0], [0, 1]])"
+    },
+    {
+      "name": "selected_ray_is_dark_in_common_port_and_unit_bright_in_difference_port",
+      "passed": true,
+      "evidence": "{'common': Matrix([[0]]), 'difference': Matrix([[z]])}"
+    },
+    {
+      "name": "lowering_dissipator_has_unique_dark_stationary_state",
+      "passed": true,
+      "evidence": "[Matrix([\n[ 1],\n[-1],\n[-1],\n[ 1]])]"
+    },
+    {
+      "name": "lowering_dissipator_has_exact_global_gap",
+      "passed": true,
+      "evidence": "{-kappa/2: 2, 0: 1, -kappa: 1}"
+    },
+    {
+      "name": "weighted_positive_junction_selects_different_magnitude_ray",
+      "passed": true,
+      "evidence": "Matrix([[-2*sqrt(5)/5], [sqrt(5)/5]])"
+    },
+    {
+      "name": "swap_covariant_threshold_preserves_ray_but_halves_amplitude",
+      "passed": true,
+      "evidence": "Matrix([[-sqrt(2)/4], [sqrt(2)/4]])"
+    },
+    {
+      "name": "attenuation_is_not_isometric",
+      "passed": true,
+      "evidence": "Matrix([[5/8, 3/8], [3/8, 5/8]])"
+    }
+  ]
+}

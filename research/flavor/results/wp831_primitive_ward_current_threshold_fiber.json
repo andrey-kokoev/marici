@@ -1,0 +1,94 @@
+{
+  "work_package": "WP831",
+  "title": "Primitive Ward-current threshold fiber",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "admitted_state_domain": "WP820 rank-one integer current kernel with oriented cubic inflow, positive gauge coupling, and anomaly-neutral vectorlike threshold completions",
+  "faithful_quotient_coordinate": "primitive oriented current q=(1,2,3) plus the full active spectral index and positive coupling",
+  "source_authorized_probe_family": "the unique primitive-current two-point response C=S e^2, conditional on a complete active spectrum",
+  "contextual_partition": {
+    "fixed_spectrum": "C is injective in e>0",
+    "open_threshold_completion": "C identifies products S e^2 and collapses distinct spectrum/coupling packets"
+  },
+  "classification": {
+    "channel_selection": "the primitive oriented kernel selects one linear conserved-current channel",
+    "portal_sign": "the oriented charge contrast is positive and primitive",
+    "portal_magnitude": "not selected; current normalization reads e only after the full spectral index is fixed",
+    "threshold_survival": "fails numerically: Ward-response continuity permits e_low=sqrt(S_high/S_low)e_high",
+    "rg_basin": "not supplied by current uniqueness",
+    "physical_readout": "formal current-correlator probe; calibrated momentum, production, spectral subtraction, and detector response remain absent",
+    "selector_or_rigidifier": "current-channel selector and charge rigidifier, neither a coupling-magnitude nor physical16 selector"
+  },
+  "smallest_exact_falsifier": {
+    "base_packet": {
+      "spectral_index": "14",
+      "coupling": "1"
+    },
+    "vectorlike_completed_packet": {
+      "spectral_index": "16",
+      "coupling": "sqrt(7/8)"
+    },
+    "common_current_record": "14"
+  },
+  "remaining_source_gate": "the same constructor must forbid or fix every anomaly-neutral spectral completion, derive its masses and interacting RG basin, and realize the primitive-current correlator in one calibrated physical16 instrument",
+  "tests": [
+    {
+      "name": "incidence_has_one_dimensional_current_kernel",
+      "passed": true,
+      "evidence": "[Matrix([\n[1/3],\n[2/3],\n[  1]])]"
+    },
+    {
+      "name": "primitive_current_is_exact_kernel_generator",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "oriented_inflow_fixes_current_orientation",
+      "passed": true,
+      "evidence": "36"
+    },
+    {
+      "name": "primitive_current_fixes_unit_portal_charge_contrast",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "base_ward_spectral_index_is_fourteen",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "vectorlike_pair_preserves_linear_and_cubic_anomaly",
+      "passed": true,
+      "evidence": "(0, 0)"
+    },
+    {
+      "name": "vectorlike_pair_changes_current_spectral_index",
+      "passed": true,
+      "evidence": "2*r**2 + 14"
+    },
+    {
+      "name": "ward_response_continuity_allows_coupling_rematching",
+      "passed": true,
+      "evidence": "(2*e_high**2*r**2 + 14*e_high**2, 2*e_high**2*(r**2 + 7))"
+    },
+    {
+      "name": "unit_vectorlike_threshold_changes_portal_magnitude",
+      "passed": true,
+      "evidence": "2*sqrt(14)*e_high/7"
+    },
+    {
+      "name": "fixed_spectrum_current_record_is_injective_for_positive_coupling",
+      "passed": true,
+      "evidence": "28*e"
+    },
+    {
+      "name": "open_spectrum_current_record_has_exact_source_fiber",
+      "passed": true,
+      "evidence": "(14, 14)"
+    }
+  ]
+}

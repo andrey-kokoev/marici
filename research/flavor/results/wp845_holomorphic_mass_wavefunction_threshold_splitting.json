@@ -1,0 +1,82 @@
+{
+  "work_package": "WP845",
+  "title": "Holomorphic mass wavefunction threshold splitting",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "candidate": "common gauge-invariant holomorphic mass W=m sum_i Phi_i tildePhi_i for vectorlike charges +/-1,+/-2,+/-3",
+  "wavefunction_hostile": "Z_i=tildeZ_i=exp(kappa q_i^2 t)",
+  "physical_masses": [
+    "m exp(-kappa t)",
+    "m exp(-4 kappa t)",
+    "m exp(-9 kappa t)"
+  ],
+  "required_kahler_identity": "Gamma_Y^tl=-kappa(Q^2-(14/3)I)",
+  "classification": "negative ordinary supersymmetric protection result; holomorphic equality does not protect physical thresholds",
+  "claim_boundary": "the exponential wavefunction law is an allowed charge-dependent hostile, not a complete physical loop calculation",
+  "remaining_source_gate": "derive an all-order K\u00e4hler or physical-pole identity canceling the traceless charge anomalous dimension, then finite matching and calibrated physical16 readout",
+  "tests": [
+    {
+      "name": "three_vectorlike_mass_terms_are_charge_neutral",
+      "passed": true,
+      "evidence": "[1, 2, 3]"
+    },
+    {
+      "name": "holomorphic_mass_parameter_is_common",
+      "passed": true,
+      "evidence": "mass"
+    },
+    {
+      "name": "allowed_wavefunction_hostile_is_charge_square_dependent",
+      "passed": true,
+      "evidence": "[exp(kappa*time), exp(4*kappa*time), exp(9*kappa*time)]"
+    },
+    {
+      "name": "canonical_physical_masses_have_exact_form",
+      "passed": true,
+      "evidence": "[mass*exp(-kappa*time), mass*exp(-4*kappa*time), mass*exp(-9*kappa*time)]"
+    },
+    {
+      "name": "first_physical_mass_ratio_splits",
+      "passed": true,
+      "evidence": "exp(-3*kappa*time)"
+    },
+    {
+      "name": "second_physical_mass_ratio_splits",
+      "passed": true,
+      "evidence": "exp(-5*kappa*time)"
+    },
+    {
+      "name": "physical_thresholds_are_equal_only_at_zero_running",
+      "passed": true,
+      "evidence": "(exp(-3*kappa*time), exp(-5*kappa*time))"
+    },
+    {
+      "name": "traceless_gauge_anomalous_dimension_is_exact",
+      "passed": true,
+      "evidence": "Matrix([[-11*kappa/3, 0, 0], [0, -2*kappa/3, 0], [0, 0, 13*kappa/3]])"
+    },
+    {
+      "name": "traceless_gauge_anomalous_dimension_is_nonzero",
+      "passed": true,
+      "evidence": "Matrix([[-11*kappa/3, 0, 0], [0, -2*kappa/3, 0], [0, 0, 13*kappa/3]])"
+    },
+    {
+      "name": "required_kahler_compensation_cancels_exactly",
+      "passed": true,
+      "evidence": "Matrix([[11*kappa/3, 0, 0], [0, 2*kappa/3, 0], [0, 0, -13*kappa/3]])"
+    },
+    {
+      "name": "required_compensation_matches_wp844_operator",
+      "passed": true,
+      "evidence": "Matrix([[11*kappa/3, 0, 0], [0, 2*kappa/3, 0], [0, 0, -13*kappa/3]])"
+    },
+    {
+      "name": "holomorphic_protection_does_not_imply_physical_threshold_protection",
+      "passed": true,
+      "evidence": "[mass*exp(-kappa*time), mass*exp(-4*kappa*time), mass*exp(-9*kappa*time)]"
+    }
+  ]
+}

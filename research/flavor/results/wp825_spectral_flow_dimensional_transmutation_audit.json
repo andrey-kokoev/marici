@@ -1,0 +1,134 @@
+{
+  "work_package": "WP825",
+  "title": "Spectral-flow and dimensional-transmutation audit",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "exact_data": {
+    "spectral_path": "-crossing + t",
+    "hostile_same_index_crossings": [
+      "1/4",
+      "3/4"
+    ],
+    "transmutation_scale": "mu*exp(-1/(2*beta_coefficient*gauge**2))",
+    "inverse_boundary_coupling": "sqrt(2)*sqrt(1/log(mu/target_scale))/(2*sqrt(beta_coefficient))",
+    "aspect_germ": {
+      "native_arity": 9,
+      "source_germs": [
+        "oriented_bulk",
+        "spectral_path",
+        "index_pairing",
+        "gauge_yukawa_action",
+        "renormalization_clock",
+        "mediator",
+        "threshold_map",
+        "physical16_map",
+        "detector"
+      ],
+      "orientation_selection": true,
+      "crossing_location_selection": false,
+      "boundary_coupling_selection": false,
+      "absolute_scale_selection": false,
+      "threshold_location_protection": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "spectral_flow": "selects oriented crossing count but not crossing location or eigenvalue ratio",
+    "dimensional_transmutation": "produces an RG invariant but trades boundary coupling for scale",
+    "parallelization": "index and transmutation leave an independent mass/scale ratio",
+    "threshold": "crossing location moves continuously while index is protected",
+    "readout": "location requires a calibrated path clock; physical16 descent and detector remain absent",
+    "verdict": "quantized index plus transmutation does not yet make portal magnitude unavoidable"
+  },
+  "tests": [
+    {
+      "name": "linear_path_crosses_at_its_mass_coordinate",
+      "passed": true,
+      "evidence": "[crossing]"
+    },
+    {
+      "name": "two_distinct_crossings_have_same_unit_spectral_flow",
+      "passed": true,
+      "evidence": "(1, 1)"
+    },
+    {
+      "name": "same_index_pair_has_distinct_crossing_locations",
+      "passed": true,
+      "evidence": "(1/4, 3/4)"
+    },
+    {
+      "name": "index_is_stable_under_small_crossing_displacement",
+      "passed": true,
+      "evidence": "spectral flow one throughout the open interval"
+    },
+    {
+      "name": "index_changes_only_at_endpoint_wall",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "reversing_parameter_orientation_reverses_spectral_flow",
+      "passed": true,
+      "evidence": "(1, -1)"
+    },
+    {
+      "name": "spectral_flow_orients_crossing_but_not_location",
+      "passed": true,
+      "evidence": "orientation fixed; location fiber remains"
+    },
+    {
+      "name": "transmutation_scale_is_one_loop_rg_invariant",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "every_subtraction_scale_below_mu_corresponds_to_boundary_coupling",
+      "passed": true,
+      "evidence": "target_scale"
+    },
+    {
+      "name": "distinct_transmutation_scales_are_selected_by_distinct_boundary_couplings",
+      "passed": true,
+      "evidence": "(sqrt(2)/(2*sqrt(beta_coefficient)), 1/(2*sqrt(beta_coefficient)))"
+    },
+    {
+      "name": "transmutation_formula_is_covariant_under_common_unit_rescaling",
+      "passed": true,
+      "evidence": "mu*scale*exp(-1/(2*beta_coefficient*gauge**2))"
+    },
+    {
+      "name": "spectral_flow_leaves_continuum_of_mass_to_transmutation_ratios",
+      "passed": true,
+      "evidence": "(mu*exp(-1/(2*beta_coefficient*gauge**2))/4, 3*mu*exp(-1/(2*beta_coefficient*gauge**2))/4)"
+    },
+    {
+      "name": "threshold_displacement_preserves_index_before_endpoint_collision",
+      "passed": true,
+      "evidence": "threshold moved crossing without changing index"
+    },
+    {
+      "name": "uncalibrated_crossing_clock_has_exact_source_gain_pair",
+      "passed": true,
+      "evidence": "[1/2, 1/2]"
+    },
+    {
+      "name": "crossing_record_is_rank_one_on_location_clock_domain",
+      "passed": true,
+      "evidence": "rank one"
+    },
+    {
+      "name": "aspect_native_nine_object_parallelization_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 9, 'source_germs': ['oriented_bulk', 'spectral_path', 'index_pairing', 'gauge_yukawa_action', 'renormalization_clock', 'mediator', 'threshold_map', 'physical16_map', 'detector'], 'orientation_selection': True, 'crossing_location_selection': False, 'boundary_coupling_selection': False, 'absolute_scale_selection': False, 'threshold_location_protection': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "six_scale_location_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['crossing_location_selection', 'boundary_coupling_selection', 'absolute_scale_selection', 'threshold_location_protection', 'physical16_descent', 'detector_calibration']"
+    }
+  ]
+}

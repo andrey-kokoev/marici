@@ -1,0 +1,38 @@
+{
+  "work_package": "WP881",
+  "status": "PASS",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "classification": "deferred: exact common-gain readout requires an independently calibrated absolute-rate instrument",
+  "normalized_observation_gain_rank": 0,
+  "uncalibrated_absolute_response_rank": 1,
+  "calibrated_gain_luminosity_response_rank": 2,
+  "smallest_hostiles": {
+    "normalized": "g=1 versus g=2",
+    "uncalibrated_absolute": "(g,L)=(1,4) versus (2,1)",
+    "rate_sign": "g versus -g"
+  },
+  "required_instrument": [
+    "completion-specific source production and decay channel",
+    "independent luminosity or source-current monitor",
+    "independent efficiency calibration",
+    "background-normal channel",
+    "interference reference if gain sign is claimed"
+  ],
+  "tests": {
+    "normalized_fraction_is_gain_independent": true,
+    "normalized_fraction_is_luminosity_independent": true,
+    "absolute_rate_has_nonzero_gain_derivative": true,
+    "gain_two_has_fourfold_signal": true,
+    "gain_sign_is_rate_blind": true,
+    "luminosity_gain_nuisance_symmetry": true,
+    "uncalibrated_log_jacobian_rank_one": true,
+    "calibrated_log_jacobian_rank_two": true,
+    "calibrated_log_jacobian_determinant_two": true,
+    "hostile_normalized_pair_survives": true,
+    "hostile_uncalibrated_absolute_pair_survives": true
+  }
+}

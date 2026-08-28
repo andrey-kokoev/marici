@@ -1,0 +1,100 @@
+{
+  "work_package": "WP842",
+  "title": "Charge-moment loop mismatch with diameter flow",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "base_packet": {
+    "delta": "2",
+    "s2": "14",
+    "s4": "98",
+    "moment_fixed": "1/7",
+    "diameter_fixed": "1/2",
+    "required_screening": "70"
+  },
+  "shifted_same_diameter_packet": {
+    "delta": "2",
+    "s2": "29",
+    "s4": "353",
+    "moment_fixed": "29/353",
+    "diameter_fixed": "1/2",
+    "required_screening": "295"
+  },
+  "threshold_active_packet": {
+    "delta": "1",
+    "s2": "13",
+    "s4": "97",
+    "moment_fixed": "13/97",
+    "diameter_fixed": "1",
+    "required_screening": "84"
+  },
+  "hostile_loop_grammar": "beta_x=x^2(S2-S4 x) selects S2/S4=1/7, not 1/Delta_Q=1/2",
+  "required_interaction": "a source-derived tensor contribution Y=70 is required so S4-Y=Delta_Q S2",
+  "classification": "negative charge-only microscopic derivation; exact target for a unique interaction tensor",
+  "claim_boundary": "the unit-coefficient moment beta is a structural hostile, not a claimed physical scheme",
+  "remaining_source_gate": "derive one interaction tensor with loop contraction 70 and threshold-matched contraction 84, then physical16 realization",
+  "tests": [
+    {
+      "name": "primitive_second_moment_is_fourteen",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "primitive_fourth_moment_is_ninety_eight",
+      "passed": true,
+      "evidence": "98"
+    },
+    {
+      "name": "primitive_diameter_is_two",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "charge_moment_flow_selects_one_seventh",
+      "passed": true,
+      "evidence": "1/7"
+    },
+    {
+      "name": "moment_flow_disagrees_with_diameter_flow",
+      "passed": true,
+      "evidence": "(1/7, 1/2)"
+    },
+    {
+      "name": "required_screening_is_seventy",
+      "passed": true,
+      "evidence": "70"
+    },
+    {
+      "name": "screening_seventy_restores_diameter_fixed_point",
+      "passed": true,
+      "evidence": "x**2*(14 - 28*x)"
+    },
+    {
+      "name": "unscreened_flow_rejects_diameter_fixed_point",
+      "passed": true,
+      "evidence": "-35/4"
+    },
+    {
+      "name": "same_diameter_shift_changes_both_moments",
+      "passed": true,
+      "evidence": "{'delta': 2, 's2': 29, 's4': 353, 'moment_fixed': 29/353, 'diameter_fixed': 1/2, 'required_screening': 295}"
+    },
+    {
+      "name": "same_diameter_shift_changes_required_screening",
+      "passed": true,
+      "evidence": "295"
+    },
+    {
+      "name": "threshold_active_packet_has_exact_moments",
+      "passed": true,
+      "evidence": "{'delta': 1, 's2': 13, 's4': 97, 'moment_fixed': 13/97, 'diameter_fixed': 1, 'required_screening': 84}"
+    },
+    {
+      "name": "threshold_changes_required_screening_to_eighty_four",
+      "passed": true,
+      "evidence": "84"
+    }
+  ]
+}

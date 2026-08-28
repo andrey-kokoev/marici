@@ -1,0 +1,80 @@
+{
+  "schema": "marici.flavor.ward-locked-kato-detector-gain-fiber.v1",
+  "work_package": "WP870",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_operation": "pullback of one conserved-current vertex through Kato field matching",
+  "fixed_interface": "relative detector frame and threshold attachment",
+  "residual_fiber": "one common coupling g",
+  "smallest_exact_falsifier": {
+    "g_values": [
+      1,
+      2
+    ],
+    "amplitudes": [
+      "1",
+      "2"
+    ],
+    "intensities": [
+      "1",
+      "4"
+    ]
+  },
+  "classification": "source-derived detector rigidifier and threshold intertwiner; neither magnitude nor coupling-RG selector",
+  "remaining_physical_instrument_gate": "source-selected running coupling and calibrated detector-unit realization",
+  "tests": [
+    {
+      "name": "field_matching_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[cos(t), sin(t)], [-sin(t), cos(t)]])"
+    },
+    {
+      "name": "ward_vertex_is_bare_source_pullback",
+      "passed": true,
+      "evidence": "Matrix([[g*cos(t), -g*sin(t)]])"
+    },
+    {
+      "name": "ward_locked_amplitude_is_threshold_invariant",
+      "passed": true,
+      "evidence": "g"
+    },
+    {
+      "name": "fixed_vertex_is_attenuated_at_hostile_endpoint",
+      "passed": true,
+      "evidence": "3*g/4"
+    },
+    {
+      "name": "common_gain_changes_absolute_amplitude",
+      "passed": true,
+      "evidence": "[1, 2]"
+    },
+    {
+      "name": "common_gain_changes_intensity_by_four",
+      "passed": true,
+      "evidence": "[1, 4]"
+    },
+    {
+      "name": "normalized_response_cancels_gain_without_predicting_it",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "ward_frame_law_does_not_fix_beta_function",
+      "passed": true,
+      "evidence": "[0, g**3]"
+    },
+    {
+      "name": "state_basin_and_coupling_basin_are_distinct",
+      "passed": true,
+      "evidence": "WP866 projects states; it does not select the continuous gain g"
+    },
+    {
+      "name": "physical_gain_calibration_remains_open",
+      "passed": true,
+      "evidence": "requires source-selected g and detector-unit standard"
+    }
+  ]
+}

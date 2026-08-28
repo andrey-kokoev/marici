@@ -1,0 +1,77 @@
+{
+  "work_package": "WP850",
+  "title": "Aspect germ audit of the charge-recursive selector",
+  "summary": {
+    "passed": 9,
+    "total": 9,
+    "all_passed": true
+  },
+  "germ": {
+    "complex_hessian_rank": 5,
+    "null_direction": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      3
+    ],
+    "interpretation": "the only local null direction is the U(1) orbit"
+  },
+  "full_fiber": "one U(1) orbit for the declared positive sum-of-squares potential",
+  "smallest_completion_falsifier": "epsilon v^2 |s2|^2",
+  "first_order_vacuum_displacement": [
+    "-1/2",
+    "-2",
+    "-5/2"
+  ],
+  "classification": "passes germ and full-fiber gates conditionally; fails source-completion authority",
+  "missing_constructor": "source theorem excluding or fixing all orbit-moving invariant operators",
+  "tests": [
+    {
+      "name": "full_complex_hessian_has_only_one_null_direction",
+      "passed": true,
+      "evidence": "{'rank': 5, 'nullity': 1}"
+    },
+    {
+      "name": "unique_null_direction_is_gauge_orbit_tangent",
+      "passed": true,
+      "evidence": "[Matrix([\n[  0],\n[  0],\n[  0],\n[1/3],\n[2/3],\n[  1]])]"
+    },
+    {
+      "name": "real_transverse_hessian_is_positive_definite",
+      "passed": true,
+      "evidence": "[18, 68, 32]"
+    },
+    {
+      "name": "declared_zero_fiber_is_one_gauge_orbit",
+      "passed": true,
+      "evidence": "positivity gives |u1|=1, u2=u1^2, u3=u1^3"
+    },
+    {
+      "name": "projective_kernel_is_constant_on_the_zero_orbit",
+      "passed": true,
+      "evidence": "kernel=e^{-5 i theta}(1,2,3)"
+    },
+    {
+      "name": "hostile_mass_operator_is_gauge_invariant",
+      "passed": true,
+      "evidence": "v^2 s2 conjugate(s2) has total charge zero and dimension four"
+    },
+    {
+      "name": "hostile_operator_has_nonzero_gradient_at_selected_orbit",
+      "passed": true,
+      "evidence": "Matrix([[0], [2], [0]])"
+    },
+    {
+      "name": "hostile_moves_the_vacuum_at_first_order",
+      "passed": true,
+      "evidence": "Matrix([[-1/2], [-2], [-5/2]])"
+    },
+    {
+      "name": "hostile_moves_the_projective_kernel_ray",
+      "passed": true,
+      "evidence": "Matrix([[-9/2], [-6], [-15/2]])"
+    }
+  ]
+}

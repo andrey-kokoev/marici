@@ -1,0 +1,82 @@
+{
+  "work_package": "WP851",
+  "title": "Supersymmetric recursive F-flat completion audit",
+  "summary": {
+    "passed": 9,
+    "total": 9,
+    "all_passed": true
+  },
+  "source_grammar": {
+    "spurion_charges": [
+      -1,
+      1,
+      -2,
+      -3
+    ],
+    "driver_charges": [
+      0,
+      2,
+      3
+    ],
+    "spurion_R": 0,
+    "driver_R": 2,
+    "maximum_superpotential_degree": 3
+  },
+  "completion_result": "positive Kahler completion cannot move the exact F-flat locus",
+  "coefficient_fiber": [
+    "b/a",
+    "d/c",
+    "f/e",
+    "g extra A2-channel monomial"
+  ],
+  "smallest_hostile": "turn on g*A2*S1bar*S3 while preserving all declared source grammar",
+  "classification": "F-flat completion repair, but only a conditional alignment selector",
+  "remaining_gate": "source-derived positive pairing and canonical multiplication normalization, then RG, thresholds, and calibrated physical16 readout",
+  "tests": [
+    {
+      "name": "neutral_driver_quadratic_basis_is_exhausted",
+      "passed": true,
+      "evidence": "['S1*S1bar', 'v*v']"
+    },
+    {
+      "name": "charge_two_driver_quadratic_basis_is_exhausted",
+      "passed": true,
+      "evidence": "['S1*S1', 'S1bar*S3', 'S2*v']"
+    },
+    {
+      "name": "charge_three_driver_quadratic_basis_is_exhausted",
+      "passed": true,
+      "evidence": "['S1*S2', 'S3*v']"
+    },
+    {
+      "name": "general_nonzero_branch_is_F_flat",
+      "passed": true,
+      "evidence": "{'a0': a*s1*sb - b*v**2, 'a2': c*s2*v - d*s1**2 + g*s3*sb, 'a3': e*s3*v - f*s1*s2, 'sb': a*a0*s1 + a2*g*s3, 's3': a2*g*sb + a3*e*v, 's2': a2*c*v - a3*f*s1, 's1': a*a0*sb - 2*a2*d*s1 - a3*f*s2}"
+    },
+    {
+      "name": "nonzero_branch_forces_all_drivers_to_zero",
+      "passed": true,
+      "evidence": "(0, 0, 0)"
+    },
+    {
+      "name": "unit_coefficients_recover_primitive_kernel_ray",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "single_allowed_extra_monomial_changes_kernel_ray",
+      "passed": true,
+      "evidence": "{'unit': Matrix([\n[1],\n[2],\n[3]]), 'hostile': Matrix([\n[1],\n[4],\n[6]])}"
+    },
+    {
+      "name": "coefficient_fiber_contains_relation_ratios_and_extra_monomial",
+      "passed": true,
+      "evidence": "Matrix([[1], [2*v*(a*c*e + b*f*g)/(a*d*e*s1)], [3*v**2*(a*c*e + b*f*g)/(a*d*f*s1**2)]])"
+    },
+    {
+      "name": "positive_Kahler_completion_preserves_F_flat_zero_set",
+      "passed": true,
+      "evidence": "{'premise': 'K is positive definite and invertible', 'identity': 'F^dagger K^{-1} F = ||K^{-1/2}F||^2', 'zero_iff': 'F=0', 'scope': 'exact supersymmetric F-term potential'}"
+    }
+  ]
+}

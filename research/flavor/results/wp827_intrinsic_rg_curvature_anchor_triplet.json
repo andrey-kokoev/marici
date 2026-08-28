@@ -1,0 +1,140 @@
+{
+  "work_package": "WP827",
+  "title": "Intrinsic RG curvature-anchor triplet",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "exact_data": {
+    "beta": "rate*u*(1 - u)",
+    "acceleration": "rate**2*u*(u - 1)*(2*u - 1)",
+    "anchor_values": [
+      "1/2 - sqrt(3)/6",
+      "1/2",
+      "sqrt(3)/6 + 1/2"
+    ],
+    "one_sided_time_offset": "log(sqrt(3) + 2)/rate",
+    "unit_rate_scale_ratio": "sqrt(3) + 2",
+    "unit_rate_full_ratio": "4*sqrt(3) + 7",
+    "aspect_germ": {
+      "implementation_ingredient_count": 10,
+      "native_relation_arity": 3,
+      "implementation_ingredients": [
+        "oriented_bulk",
+        "rg_vector_field",
+        "curvature_triplet",
+        "beta_normalization",
+        "spectral_portal",
+        "mediator",
+        "threshold_map",
+        "common_event_clock",
+        "physical16_map",
+        "detector"
+      ],
+      "orientation_selection": true,
+      "dimensionless_magnitude_selection": true,
+      "global_basin": true,
+      "translation_invariant_event_ratios": true,
+      "beta_normalization_authority": false,
+      "absolute_scale": false,
+      "physical16_descent": false,
+      "common_gain_instrument": false
+    }
+  },
+  "classification": {
+    "event_source": "curvature anchors are intrinsic extrema of RG acceleration, not inserted threshold levels",
+    "selector": "orientation, half-magnitude, open basin, and three-event ordering are source-generated conditionally",
+    "translation": "relative event scale ratios cancel the heteroclinic modulus and reference scale",
+    "normalization": "ratios retain beta-function rate normalization",
+    "instrument": "a common-gain three-event detector would read ratios; such an instrument and physical16 descent are absent",
+    "verdict": "intrinsic anchor triplet repairs translation fiber relationally but not beta normalization or absolute scale"
+  },
+  "tests": [
+    {
+      "name": "rg_acceleration_is_intrinsic_vector_field_derivative",
+      "passed": true,
+      "evidence": "rate**2*u*(u - 1)*(2*u - 1)"
+    },
+    {
+      "name": "internal_curvature_anchor_values_are_exact",
+      "passed": true,
+      "evidence": "[1/2 - sqrt(3)/6, sqrt(3)/6 + 1/2]"
+    },
+    {
+      "name": "anchors_are_symmetric_about_portal_half",
+      "passed": true,
+      "evidence": "(1/2 - sqrt(3)/6, sqrt(3)/6 + 1/2)"
+    },
+    {
+      "name": "jerk_vanishes_at_both_internal_anchors",
+      "passed": true,
+      "evidence": "(-rate**3*(-1/2 - sqrt(3)/6)*(1/2 - sqrt(3)/6)*(-2 + 6*(1/2 - sqrt(3)/6)**2 + sqrt(3)), -rate**3*(-1/2 + sqrt(3)/6)*(sqrt(3)/6 + 1/2)*(-2 - sqrt(3) + 6*(sqrt(3)/6 + 1/2)**2))"
+    },
+    {
+      "name": "acceleration_has_opposite_sign_at_anchor_pair",
+      "passed": true,
+      "evidence": "(-sqrt(3)*rate**2*(-1/2 - sqrt(3)/6)*(1/2 - sqrt(3)/6)/3, sqrt(3)*rate**2*(-1/2 + sqrt(3)/6)*(sqrt(3)/6 + 1/2)/3)"
+    },
+    {
+      "name": "curvature_anchors_are_equidistant_in_rg_time",
+      "passed": true,
+      "evidence": "(-log(2 - sqrt(3))/rate, log(sqrt(3) + 2)/rate)"
+    },
+    {
+      "name": "event_separations_cancel_translation_modulus",
+      "passed": true,
+      "evidence": "(-log(2 - sqrt(3))/rate, log(sqrt(3) + 2)/rate)"
+    },
+    {
+      "name": "unit_rate_anchor_ratios_equal_two_plus_sqrt_three",
+      "passed": true,
+      "evidence": "(sqrt(3) + 2, 1/(2 - sqrt(3)))"
+    },
+    {
+      "name": "unit_rate_full_anchor_ratio_is_seven_plus_four_sqrt_three",
+      "passed": true,
+      "evidence": "(sqrt(3) + 2)/(2 - sqrt(3))"
+    },
+    {
+      "name": "beta_normalization_changes_relational_scale_ratio",
+      "passed": true,
+      "evidence": "sqrt(sqrt(3) + 2)"
+    },
+    {
+      "name": "scale_ratios_are_independent_of_reference_and_translation",
+      "passed": true,
+      "evidence": "(exp((log(modulus) + log(sqrt(3) + 2))/rate)*exp(-log(modulus)/rate), exp(-(log(modulus) + log(2 - sqrt(3)))/rate)*exp(log(modulus)/rate))"
+    },
+    {
+      "name": "common_gain_cancels_from_three_event_ratios",
+      "passed": true,
+      "evidence": "(exp((log(modulus) + log(sqrt(3) + 2))/rate)*exp(-log(modulus)/rate), exp(-(log(modulus) + log(2 - sqrt(3)))/rate)*exp(log(modulus)/rate))"
+    },
+    {
+      "name": "separate_event_gains_destroy_ratio_calibration",
+      "passed": true,
+      "evidence": "gain_upper*exp((log(modulus) + log(sqrt(3) + 2))/rate)*exp(-log(modulus)/rate)/gain_portal"
+    },
+    {
+      "name": "portal_event_remains_positive_transverse_crossing",
+      "passed": true,
+      "evidence": "rate/4"
+    },
+    {
+      "name": "curvature_triplet_does_not_fix_absolute_translation_modulus",
+      "passed": true,
+      "evidence": "reference_scale*exp(log(modulus)/rate)"
+    },
+    {
+      "name": "implementation_stack_is_distinct_from_ternary_native_arity",
+      "passed": true,
+      "evidence": "{'implementation_ingredient_count': 10, 'native_relation_arity': 3, 'implementation_ingredients': ['oriented_bulk', 'rg_vector_field', 'curvature_triplet', 'beta_normalization', 'spectral_portal', 'mediator', 'threshold_map', 'common_event_clock', 'physical16_map', 'detector'], 'orientation_selection': True, 'dimensionless_magnitude_selection': True, 'global_basin': True, 'translation_invariant_event_ratios': True, 'beta_normalization_authority': False, 'absolute_scale': False, 'physical16_descent': False, 'common_gain_instrument': False}"
+    },
+    {
+      "name": "four_normalization_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['beta_normalization_authority', 'absolute_scale', 'physical16_descent', 'common_gain_instrument']"
+    }
+  ]
+}

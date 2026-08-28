@@ -1,0 +1,76 @@
+{
+  "work_package": "WP853",
+  "title": "Incidence does not authorize the path partial isometry",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_domain": "positive weighted degree-one shifts on the four-vertex charged path",
+  "faithful_coordinate": "three path singular values modulo number-preserving unitaries",
+  "authorized_probe_family": [
+    "primitive charge ray",
+    "integer incidence",
+    "cubic inflow"
+  ],
+  "contextual_partition": "one class containing the full positive three-weight fiber",
+  "first_nonfaithful_arrow": "(N,T,e0) -> (q,B,k=36)",
+  "smallest_hostile_pair": [
+    "T(1,1,1)",
+    "T(1,2,1)"
+  ],
+  "classification": "WP852 is a selector only after adding the partial-isometry source relation",
+  "remaining_gate": "derive T^*T=I-P3 microscopically or instrument T^*T in the physical16 frame",
+  "tests": [
+    {
+      "name": "path_number_spectrum_generates_wp820_charge_ray",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "wp820_incidence_annihilates_path_charge_ray",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "path_charge_ray_has_wp820_cubic_record",
+      "passed": true,
+      "evidence": "36"
+    },
+    {
+      "name": "all_positive_weighted_shifts_have_degree_one",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [a, 0, 0, 0], [0, b, 0, 0], [0, 0, c, 0]])"
+    },
+    {
+      "name": "weighted_shift_family_has_same_cyclic_support",
+      "passed": true,
+      "evidence": "a**3*b**2*c"
+    },
+    {
+      "name": "incidence_and_inflow_are_independent_of_path_weights",
+      "passed": true,
+      "evidence": "{'incidence': Matrix([\n[2, -1,  0],\n[3,  0, -1]]), 'charges': Matrix([\n[1],\n[2],\n[3]]), 'inflow': 36}"
+    },
+    {
+      "name": "hostile_pair_has_distinct_singular_value_records",
+      "passed": true,
+      "evidence": "{'canonical': {1: 3, 0: 1}, 'hostile': {1: 2, 4: 1, 0: 1}}"
+    },
+    {
+      "name": "canonical_shift_satisfies_partial_isometry_relation",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]])"
+    },
+    {
+      "name": "hostile_shift_fails_partial_isometry_relation",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0, 0], [0, 4, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]])"
+    },
+    {
+      "name": "number_preserving_unitaries_cannot_remove_weight_hostile",
+      "passed": true,
+      "evidence": "{'canonical_spectrum': [0, 1], 'hostile_spectrum': [0, 1, 4]}"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "work_package": "WP843",
+  "title": "Positive tensor threshold contraction no-go",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "theorem_domain": "finite real interaction tensors with positive Frobenius pairing and orthogonal/conditional-expectation threshold restriction",
+  "contractivity": "||PTP||_F^2 <= ||T||_F^2",
+  "required_transition": "Y_full=70 -> Y_active=84",
+  "no_go": "ordinary positive restriction cannot increase screening",
+  "minimal_repairs": {
+    "lossless_squared_amplification": "6/5",
+    "lossless_amplitude_factor": "sqrt(6/5)",
+    "new_positive_increment": "14"
+  },
+  "classification": "exact negative threshold theorem; noncontractive finite matching or threshold-generated interaction is necessary",
+  "claim_boundary": "the numerical equality of the increment 14 with Tr(Q^2) is suggestive but has no source authority",
+  "remaining_source_gate": "derive the noncontractive matching factor or generated threshold term from one microscopic action and realize its labelled physical16 response",
+  "tests": [
+    {
+      "name": "compression_loss_is_exact_sum_of_removed_squares",
+      "passed": true,
+      "evidence": "t0**2 + t1**2 + t2**2 + t3**2 + t6**2"
+    },
+    {
+      "name": "compression_loss_polynomial_has_only_positive_square_terms",
+      "passed": true,
+      "evidence": "[((2, 0, 0, 0, 0, 0, 0, 0, 0), 1), ((0, 2, 0, 0, 0, 0, 0, 0, 0), 1), ((0, 0, 2, 0, 0, 0, 0, 0, 0), 1), ((0, 0, 0, 2, 0, 0, 0, 0, 0), 1), ((0, 0, 0, 0, 0, 0, 2, 0, 0), 1)]"
+    },
+    {
+      "name": "explicit_full_tensor_realizes_screening_seventy",
+      "passed": true,
+      "evidence": "70"
+    },
+    {
+      "name": "explicit_compression_cannot_exceed_full_norm",
+      "passed": true,
+      "evidence": "(70, 65)"
+    },
+    {
+      "name": "required_active_screening_exceeds_full_screening",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "positive_orthogonal_restriction_cannot_reach_eighty_four",
+      "passed": true,
+      "evidence": "84>70>=||PTP||_F^2"
+    },
+    {
+      "name": "minimal_lossless_squared_amplification_is_six_fifths",
+      "passed": true,
+      "evidence": "6/5"
+    },
+    {
+      "name": "minimal_lossless_amplitude_factor_is_sqrt_six_fifths",
+      "passed": true,
+      "evidence": "sqrt(30)/5"
+    },
+    {
+      "name": "alternative_generated_increment_is_fourteen",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "generated_increment_matches_ward_index_numerically",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "ward_index_equality_does_not_remove_matching_choice",
+      "passed": true,
+      "evidence": "(6/5, 14)"
+    },
+    {
+      "name": "ordinary_restriction_branch_closes_negative",
+      "passed": true,
+      "evidence": "contractivity contradicts 70->84"
+    }
+  ]
+}

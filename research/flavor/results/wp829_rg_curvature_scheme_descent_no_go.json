@@ -1,0 +1,96 @@
+{
+  "work_package": "WP829",
+  "title": "RG curvature-anchor scheme-descent no-go",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_flow": {
+    "coordinate": "u",
+    "beta": "rate*u*(1 - u)",
+    "old_anchors": [
+      "1/2 - sqrt(3)/6",
+      "sqrt(3)/6 + 1/2"
+    ]
+  },
+  "admissible_reparameterization": {
+    "map": "-u**2/2 + 3*u/2",
+    "derivative": "3/2 - u",
+    "transformed_beta": "rate*u*(u - 1)*(2*u - 3)/2",
+    "same_portal_coordinate": "5/8",
+    "new_anchor_polynomial": "24*u**3 - 48*u**2 + 26*u - 3",
+    "internal_root_count": 2,
+    "external_root_count_above_one": 1
+  },
+  "classification": {
+    "preserved": [
+      "fixed endpoints",
+      "oriented orbit",
+      "RG time",
+      "endpoint critical exponents",
+      "physical portal event"
+    ],
+    "not_preserved": [
+      "coordinate acceleration extrema",
+      "reflection-paired anchor states",
+      "equal-spacing scale ratio"
+    ],
+    "first_nonfaithful_arrow": "physical RG trajectory to chosen coupling-coordinate acceleration jet",
+    "threshold_implication": "a finite matching redefinition can move the curvature anchors without changing the underlying trajectory",
+    "required_repair": "derive a physically normalized coupling observable and one source-authorized matched instrument before differentiating its record",
+    "verdict": "WP827 curvature anchors are chart rigidifiers unless the coupling coordinate and matching scheme are physically frozen"
+  },
+  "tests": [
+    {
+      "name": "scheme_map_fixes_both_endpoints",
+      "passed": true,
+      "evidence": "(0, 1)"
+    },
+    {
+      "name": "scheme_map_is_strictly_monotone_on_unit_interval",
+      "passed": true,
+      "evidence": "3/2 - u"
+    },
+    {
+      "name": "transformed_beta_is_chain_rule_pushforward",
+      "passed": true,
+      "evidence": "rate*u*(u - 1)*(2*u - 3)/2"
+    },
+    {
+      "name": "endpoint_critical_exponents_are_preserved",
+      "passed": true,
+      "evidence": "(rate, -rate)"
+    },
+    {
+      "name": "same_physical_portal_is_carried_to_new_coordinate",
+      "passed": true,
+      "evidence": "5/8"
+    },
+    {
+      "name": "new_curvature_extrema_obey_cubic_anchor_equation",
+      "passed": true,
+      "evidence": "-rate**2*(24*u**3 - 48*u**2 + 26*u - 3)/2"
+    },
+    {
+      "name": "old_curvature_anchors_are_not_new_curvature_anchors",
+      "passed": true,
+      "evidence": "(-13*sqrt(3)/3 - 48*(1/2 - sqrt(3)/6)**2 + 24*(1/2 - sqrt(3)/6)**3 + 10, -48*(sqrt(3)/6 + 1/2)**2 + 13*sqrt(3)/3 + 10 + 24*(sqrt(3)/6 + 1/2)**3)"
+    },
+    {
+      "name": "new_anchor_equation_has_exactly_two_internal_roots",
+      "passed": true,
+      "evidence": "(2, 1)"
+    },
+    {
+      "name": "new_internal_anchors_are_not_reflection_complements",
+      "passed": true,
+      "evidence": "110592"
+    },
+    {
+      "name": "unit_rate_old_equal_spacing_prediction_does_not_descend",
+      "passed": true,
+      "evidence": "sqrt(3) + 2"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "work_package": "WP830",
+  "title": "Process-relative effective-charge no-go",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "admitted_channel_model": {
+    "underlying_physical_orbit": "rate*u*(1 - u)",
+    "effective_charge_A": "u",
+    "effective_charge_B": "-u**3/2 + u**2/2 + u",
+    "common_tree_normalization": true,
+    "portal_records": [
+      "1/2",
+      "9/16"
+    ],
+    "channel_B_anchor_polynomial": "60*u**4 - 108*u**3 + 45*u**2 + 4*u - 2"
+  },
+  "contextual_partition": {
+    "each_channel": "monotone and individually faithful to the one-dimensional orbit",
+    "joint_family": "faithful but supplies no canonical scalar channel",
+    "curvature_events": "channel-relative despite common tree normalization and common critical exponents"
+  },
+  "classification": {
+    "physical_instrument": "conditional: pole, width, rate, and interference channels exist as typed source-derived probes, but their completed calibrations remain open",
+    "selector": false,
+    "rigidifier": "each chosen effective-charge channel rigidifies its own running-coordinate presentation",
+    "first_nonfaithful_arrow": "source probe family to an unnamed canonical effective charge",
+    "smallest_exact_falsifier": "A(u)=u versus B(u)=u+u^2(1-u)/2; same tree normalization and orbit, different portal value and curvature anchors",
+    "required_source_principle": "derive a unique conserved-current channel or a channel-natural invariant relation before using effective-charge geometry for selection"
+  },
+  "tests": [
+    {
+      "name": "two_effective_charges_share_tree_normalization",
+      "passed": true,
+      "evidence": "(u, -u**3/2 + u**2/2 + u)"
+    },
+    {
+      "name": "channels_differ_first_at_quadratic_order",
+      "passed": true,
+      "evidence": "-u**3/2 + u**2/2"
+    },
+    {
+      "name": "second_channel_is_monotone_on_physical_interval",
+      "passed": true,
+      "evidence": "-3*u**2/2 + u + 1"
+    },
+    {
+      "name": "both_channels_fix_endpoint_values",
+      "passed": true,
+      "evidence": "(0, 1)"
+    },
+    {
+      "name": "same_portal_has_process_relative_effective_charge",
+      "passed": true,
+      "evidence": "(1/2, 9/16)"
+    },
+    {
+      "name": "physical_critical_exponents_agree",
+      "passed": true,
+      "evidence": "(rate, -rate)"
+    },
+    {
+      "name": "second_channel_curvature_anchor_equation_is_quartic",
+      "passed": true,
+      "evidence": "-rate**2*u*(u - 1)*(36*u**2 - 30*u)/2 - rate**2*u*(12*u**3 - 15*u**2 + 2)/2 - rate**2*(u - 1)*(12*u**3 - 15*u**2 + 2)/2"
+    },
+    {
+      "name": "old_channel_anchors_are_not_second_channel_anchors",
+      "passed": true,
+      "evidence": "(-2*sqrt(3)/3 - 108*(1/2 - sqrt(3)/6)**3 + 60*(1/2 - sqrt(3)/6)**4 + 45*(1/2 - sqrt(3)/6)**2, -108*(sqrt(3)/6 + 1/2)**3 + 2*sqrt(3)/3 + 60*(sqrt(3)/6 + 1/2)**4 + 45*(sqrt(3)/6 + 1/2)**2)"
+    },
+    {
+      "name": "second_channel_has_exactly_two_internal_curvature_anchors",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "second_channel_anchors_are_not_reflection_paired",
+      "passed": true,
+      "evidence": "53084160"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "marici.flavor.charge-normalized-reciprocal-gradient-selector.v1",
+  "work_package": "WP871",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "source_coordinate": "z=Delta_Q g^2 with Delta_Q=2",
+  "source_functional": "cosh(log z)=(z+z^-1)/2",
+  "selected_coupling": "1/sqrt(2)",
+  "coupling_basin": "all g>0",
+  "exact_solution": "tanh(log(Delta_Q g^2)/2)=exp(-tau) times its initial value",
+  "assembled_conditional_chain": [
+    "odd boundary sign and normalized ray",
+    "charge-diameter reciprocal magnitude",
+    "global reciprocal-gradient coupling basin",
+    "Kato marked-projector threshold transport",
+    "Ward-locked source detector vertex"
+  ],
+  "smallest_exact_falsifier": "Delta=3 selects 1/sqrt(3) under the same reciprocal law",
+  "classification": "conditional end-to-end selector through source-level readout; microscopic RG and calibrated instrument not admitted",
+  "remaining_gates": [
+    "source theorem retaining marked Delta_Q through thresholds",
+    "physical RG interpretation of reciprocal gradient",
+    "finite-width calibrated physical16 detector"
+  ],
+  "tests": [
+    {
+      "name": "reciprocal_potential_is_even",
+      "passed": true,
+      "evidence": "cosh(y)"
+    },
+    {
+      "name": "reciprocal_potential_is_strictly_convex",
+      "passed": true,
+      "evidence": "cosh(y)"
+    },
+    {
+      "name": "gradient_flow_is_reciprocity_equivariant",
+      "passed": true,
+      "evidence": "-sinh(y)"
+    },
+    {
+      "name": "lyapunov_derivative_is_exact_negative_square",
+      "passed": true,
+      "evidence": "-sinh(y)**2"
+    },
+    {
+      "name": "positive_x_flow_is_exact",
+      "passed": true,
+      "evidence": "-delta*x**2/2 + 1/(2*delta)"
+    },
+    {
+      "name": "x_flow_is_duality_covariant",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "unique_positive_fixed_point_is_inverse_diameter",
+      "passed": true,
+      "evidence": "[1/delta]"
+    },
+    {
+      "name": "diameter_two_selects_inverse_sqrt_two",
+      "passed": true,
+      "evidence": "sqrt(2)/2"
+    },
+    {
+      "name": "tanh_half_coordinate_has_exponential_solution",
+      "passed": true,
+      "evidence": "u0*exp(-tau)"
+    },
+    {
+      "name": "diameter_hostile_moves_selected_value",
+      "passed": true,
+      "evidence": "[sqrt(2)/2, sqrt(3)/3]"
+    },
+    {
+      "name": "physical_rg_and_detector_calibration_remain_open",
+      "passed": true,
+      "evidence": "requires microscopic RG map and calibrated physical16 response"
+    }
+  ]
+}

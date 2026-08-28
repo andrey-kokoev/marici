@@ -1,0 +1,84 @@
+{
+  "work_package": "WP841",
+  "title": "Charge-diameter normalized global portal flow",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "source_invariant": "Delta_Q=lambda_max(Q)-lambda_min(Q)=2 for primitive Q=diag(1,2,3)",
+  "candidate_beta": "beta_x=kappa x^2(1-Delta_Q x), kappa>0",
+  "prediction": {
+    "x_star": "1/2",
+    "portal": "1/sqrt(2)",
+    "sign": "positive from q_3-q_2=1",
+    "basin": "entire positive x half-line",
+    "local_exponent": "-kappa/2"
+  },
+  "lyapunov_identity": "d(x-x_*)^2/dt=-2 kappa Delta_Q x^2 (x-x_*)^2",
+  "classification": "progressive invariant sign-magnitude-global-basin selector; microscopic beta authority, threshold survival, and instrument remain open",
+  "smallest_threshold_falsifier": "decouple charge 1: active diameter 2->1 and selected x 1/2->1",
+  "remaining_source_gate": "derive the diameter-normalized beta ratio from one microscopic action, prove extremal-sector threshold support or matching, and realize labelled calibrated physical16 response",
+  "tests": [
+    {
+      "name": "primitive_charge_diameter_is_two",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "diameter_is_basis_conjugation_invariant",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "diameter_is_common_shift_invariant",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "primitive_integer_normalization_blocks_nontrivial_rescaling",
+      "passed": true,
+      "evidence": "(1, 4)"
+    },
+    {
+      "name": "diameter_flow_has_selected_nonzero_fixed_point",
+      "passed": true,
+      "evidence": "1/2"
+    },
+    {
+      "name": "positive_prefactor_does_not_move_fixed_point",
+      "passed": true,
+      "evidence": "[1/2]"
+    },
+    {
+      "name": "local_stability_exponent_is_negative",
+      "passed": true,
+      "evidence": "-kappa/2"
+    },
+    {
+      "name": "global_positive_basin_has_exact_lyapunov_identity",
+      "passed": true,
+      "evidence": "-kappa*x**2*(2*x - 1)**2"
+    },
+    {
+      "name": "flow_points_toward_fixed_point_on_both_sides",
+      "passed": true,
+      "evidence": "(kappa/32, -kappa)"
+    },
+    {
+      "name": "primitive_adjacent_contrast_selects_positive_portal",
+      "passed": true,
+      "evidence": "sqrt(2)/2"
+    },
+    {
+      "name": "extremal_threshold_deletion_changes_diameter",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "threshold_hostile_moves_selected_portal_coordinate",
+      "passed": true,
+      "evidence": "(1/2, 1)"
+    }
+  ]
+}

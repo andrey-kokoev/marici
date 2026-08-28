@@ -1,0 +1,90 @@
+{
+  "schema": "marici.flavor.multiplicative-reciprocal-rg-domain-audit.v1",
+  "work_package": "WP872",
+  "summary": {
+    "passed": 13,
+    "total": 13,
+    "all_passed": true
+  },
+  "supersedes": "WP871 cosh-gradient as a Ward-compatible physical coupling beta",
+  "retained_from_wp871": "Delta=2 magnitude and global basin on x>0",
+  "repaired_source_functional": "log cosh(log(Delta x))",
+  "repaired_beta": "x(1-Delta^2 x^2)/(1+Delta^2 x^2)",
+  "selected_coupling": "1/sqrt(2)",
+  "basin": "all x>0",
+  "excluded_or_fixed_boundary": "x=0 is a fixed decoupled cusp",
+  "smallest_exact_falsifier": "x(0)=0 remains zero",
+  "classification": "Ward-compatible conditional selector on nonzero domain; not unconditional portal generator",
+  "remaining_gates": [
+    "source theorem excluding zero coupling from the physical domain",
+    "microscopic derivation as physical flavor RG",
+    "calibrated finite-width physical16 instrument"
+  ],
+  "tests": [
+    {
+      "name": "wp871_cosh_beta_has_nonzero_decoupled_limit",
+      "passed": true,
+      "evidence": "1/(2*delta)"
+    },
+    {
+      "name": "wp871_cosh_beta_is_not_multiplicative_at_zero",
+      "passed": true,
+      "evidence": "oo"
+    },
+    {
+      "name": "log_cosh_potential_is_even_and_strictly_convex",
+      "passed": true,
+      "evidence": "-sinh(y)**2/cosh(y)**2 + 1"
+    },
+    {
+      "name": "repaired_y_flow_is_negative_tanh",
+      "passed": true,
+      "evidence": "-sinh(y)/cosh(y)"
+    },
+    {
+      "name": "repaired_x_flow_has_exact_rational_form",
+      "passed": true,
+      "evidence": "-x*(delta*x - 1)*(delta*x + 1)/(delta**2*x**2 + 1)"
+    },
+    {
+      "name": "repaired_x_flow_is_multiplicative_and_analytic_at_zero",
+      "passed": true,
+      "evidence": "[0, 1]"
+    },
+    {
+      "name": "repaired_flow_is_reciprocity_covariant",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "unique_positive_fixed_point_is_inverse_diameter",
+      "passed": true,
+      "evidence": "[1/delta]"
+    },
+    {
+      "name": "normalized_linear_exponent_is_minus_one",
+      "passed": true,
+      "evidence": "-1"
+    },
+    {
+      "name": "sinh_coordinate_has_exact_exponential_solution",
+      "passed": true,
+      "evidence": "s0*exp(-tau)"
+    },
+    {
+      "name": "diameter_two_still_selects_inverse_sqrt_two",
+      "passed": true,
+      "evidence": "sqrt(2)/2"
+    },
+    {
+      "name": "zero_seed_is_fixed_and_falsifies_unconditional_inevitability",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "physical_domain_rg_and_detector_gates_remain_open",
+      "passed": true,
+      "evidence": "must exclude zero cusp, derive physical RG map, and calibrate physical16"
+    }
+  ]
+}

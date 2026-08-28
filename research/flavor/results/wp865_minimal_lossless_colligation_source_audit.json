@@ -1,0 +1,83 @@
+{
+  "schema": "marici.flavor.minimal-lossless-colligation-source-audit.v1",
+  "work_package": "WP865",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "state_domain": "absent state plus reciprocal two-endpoint portal",
+  "source_operation": "three-Kraus channel and its minimal lossless Stinespring colligation",
+  "selected_ray": "(-i,1)/sqrt(2) for the audited z=i branch",
+  "channel_spectrum": {
+    "0": 5,
+    "1": 1,
+    "1/2": 2,
+    "1/4": 1
+  },
+  "contextual_partition": "singleton dark ray for fixed z; U(1) family when z is not source-fixed",
+  "classification": "implements selector, basin, and source readout conditionally; explains none of their free source moduli",
+  "smallest_exact_falsifiers": [
+    "q=0 versus q=1/4 at fixed z=i",
+    "z=1 versus z=i at fixed q=1/4",
+    "unitary endpoint-heavy rotation with cosine 3/4"
+  ],
+  "remaining_physical_instrument_gate": "calibrated map from complementary source port to physical16 detector units",
+  "tests": [
+    {
+      "name": "kraus_family_is_trace_preserving",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "dark_ray_is_stationary",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 1/2, -I/2], [0, I/2, 1/2]])"
+    },
+    {
+      "name": "stationary_state_is_unique",
+      "passed": true,
+      "evidence": "{0: 5, 1: 1, 1/2: 2, 1/4: 1}"
+    },
+    {
+      "name": "global_basin_has_expected_nontrivial_spectrum",
+      "passed": true,
+      "evidence": "{0: 5, 1: 1, 1/2: 2, 1/4: 1}"
+    },
+    {
+      "name": "complementary_rows_are_lossless",
+      "passed": true,
+      "evidence": "Matrix([[0, sqrt(2)/2, sqrt(2)*I/2], [0, sqrt(2)*I/2, sqrt(2)/2]])"
+    },
+    {
+      "name": "selected_ray_is_bright_dark_and_complement_visible",
+      "passed": true,
+      "evidence": "[Matrix([[0]]), Matrix([[1]])]"
+    },
+    {
+      "name": "junction_phase_is_not_fixed_by_channel_spectrum",
+      "passed": true,
+      "evidence": "[Matrix([\n[         0],\n[-sqrt(2)/2],\n[ sqrt(2)/2]]), Matrix([\n[           0],\n[-sqrt(2)*I/2],\n[   sqrt(2)/2]])]"
+    },
+    {
+      "name": "basin_rate_is_not_fixed_by_lossless_minimality",
+      "passed": true,
+      "evidence": "[{0: 8, 1: 1}, {0: 5, 1: 1, 1/2: 2, 1/4: 1}]"
+    },
+    {
+      "name": "lossless_threshold_need_not_reduce_endpoint_sector",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [0, 0, 0, sqrt(7)/4], [0, 0, 0, 0], [0, sqrt(7)/4, 0, 0]])"
+    },
+    {
+      "name": "hostile_threshold_attenuates_selected_ray",
+      "passed": true,
+      "evidence": "25/32"
+    },
+    {
+      "name": "detector_calibration_is_not_constructed",
+      "passed": true,
+      "evidence": "unit source amplitude has no admitted physical16 detector-unit map"
+    }
+  ]
+}

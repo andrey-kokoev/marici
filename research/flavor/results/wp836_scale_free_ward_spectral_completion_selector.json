@@ -1,0 +1,92 @@
+{
+  "work_package": "WP836",
+  "title": "Scale-free Ward-spectral completion selector",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "all_passed": true
+  },
+  "candidate_functional": "Phi=Tr(Q^2)+lambda Tr(D^dagger D)/det(D^dagger D)^(1/n), lambda>0",
+  "theorem_domain": "finite nondegenerate real spectral completions of the primitive three-charge packet by k nonzero vectorlike pairs and ell neutral states",
+  "exact_bound": {
+    "spectral_shape": "R_n>=n by arithmetic-geometric mean on positive singular-value squares",
+    "base_score": "14+3 lambda",
+    "completion_gap": "2 sum_j r_j^2 + lambda(2k+ell)",
+    "strictness": "positive for every nonempty completion and every lambda>0"
+  },
+  "classification": {
+    "selector": "within the declared finite completion domain, Phi uniquely selects k=ell=0 and equal singular values",
+    "coefficient_robustness": "the completion ordering is independent of the numerical positive weight lambda",
+    "scale": "unselected because the spectral shape is invariant under D->mD",
+    "mixing": "unselected because inequivalent irreducible Householder mixings saturate the same bound",
+    "rg_basin": "not supplied by the static completion functional",
+    "threshold_survival": "matter multiplicity is selected in-domain, but masses, relevant deformations, and finite matching remain open",
+    "physical_instrument": "no admitted apparatus measures Phi or prepares its global minimization over source completions",
+    "selector_or_rigidifier": "genuine finite-completion and singular-shape selector; scale/mixing rigidifier only"
+  },
+  "smallest_exact_falsifier_of_full_completion": "D_a and D_b are distinct irreducible three-state minimizers, and m D_a has the same score for every m>0",
+  "claim_boundary": "Source authority for minimizing Phi is not derived. The theorem covers the declared direct charged/neutral finite completion grammar, not arbitrary interacting QFT completions.",
+  "remaining_source_gate": "derive Phi or an equivalent comparison action from the source, lift its mixing and scale fibers, derive the interacting RG basin and threshold map, and realize a calibrated physical16 readout",
+  "tests": [
+    {
+      "name": "primitive_ward_index_is_fourteen",
+      "passed": true,
+      "evidence": "14"
+    },
+    {
+      "name": "first_three_state_packet_saturates_scale_free_shape_bound",
+      "passed": true,
+      "evidence": "(Matrix([\n[1, 0, 0],\n[0, 1, 0],\n[0, 0, 1]]), 3)"
+    },
+    {
+      "name": "saturating_packet_is_operator_irreducible",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "second_inequivalent_mixing_also_saturates_shape_bound",
+      "passed": true,
+      "evidence": "(Matrix([\n[ 6/7, -2/7, -3/7],\n[-2/7,  3/7, -6/7],\n[-3/7, -6/7, -2/7]]), 3)"
+    },
+    {
+      "name": "second_saturating_packet_is_operator_irreducible",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "scale_free_shape_is_invariant_under_positive_mass_rescaling",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "completion_score_gap_has_exact_additive_form",
+      "passed": true,
+      "evidence": "2*charge_square_sum + ell*weight + 2*k*weight"
+    },
+    {
+      "name": "every_nonempty_neutral_completion_has_positive_gap",
+      "passed": true,
+      "evidence": "weight"
+    },
+    {
+      "name": "every_unit_charged_pair_has_positive_gap",
+      "passed": true,
+      "evidence": "2*weight + 2"
+    },
+    {
+      "name": "completion_order_is_robust_for_every_positive_weight",
+      "passed": true,
+      "evidence": "2*weight + 2"
+    },
+    {
+      "name": "functional_does_not_select_absolute_spectral_scale",
+      "passed": true,
+      "evidence": "(3, 3)"
+    },
+    {
+      "name": "functional_does_not_select_mixing_orientation",
+      "passed": true,
+      "evidence": "(Matrix([\n[ 1/3, -2/3, -2/3],\n[-2/3,  1/3, -2/3],\n[-2/3, -2/3,  1/3]]), Matrix([\n[ 6/7, -2/7, -3/7],\n[-2/7,  3/7, -6/7],\n[-3/7, -6/7, -2/7]]))"
+    }
+  ]
+}

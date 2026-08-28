@@ -1,0 +1,93 @@
+{
+  "work_package": "WP835",
+  "title": "Ward-spectral positive-functional scale fiber",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "candidate_functional": "F_alpha(Q,D)=Tr(Q^2)+alpha Tr(D^2)",
+  "exact_data": {
+    "base": {
+      "ward_index": 14,
+      "spectral_square": 9
+    },
+    "neutral_completion": {
+      "ward_index": 14,
+      "spectral_square": 22,
+      "inverse_spectral_square": "37/16"
+    },
+    "equal_score_scales": {
+      "base": "1",
+      "neutral_completion": "3/sqrt(22)"
+    },
+    "stabilized_stationary_scale_fourth": "37 beta/(352 alpha)"
+  },
+  "classification": {
+    "faithfulness": "at a fixed common spectral scale and fixed alpha, the functional sees the neutral completion",
+    "scale_fiber": "independent positive rescaling of D preserves irreducibility and can equalize scores",
+    "weight_fiber": "alpha is an inverse-square clock; simultaneous D and alpha rescaling leaves the score invariant",
+    "minimizer": "the quadratic spectral penalty has an unattained zero-scale infimum on irreducible positive-scale packets",
+    "selector_or_rigidifier": "a source-fixed common clock makes F a comparison functional; without it F is a scale rigidifier, not a spectrum selector",
+    "physical_instrument": "no admitted experiment measures the combined Ward and finite-Dirac score with one calibrated relative metric"
+  },
+  "smallest_exact_falsifier": "the base at scale 1 and neutral completion at scale 3/sqrt(22) have identical F_alpha for every alpha>0",
+  "remaining_source_gate": "derive the charged-neutral relative metric and absolute spectral clock from one action, prove its minimizer exists and is unique over all physical completions, then transport that minimizer through RG, thresholds, and a common instrument",
+  "tests": [
+    {
+      "name": "base_and_neutral_completion_share_ward_index",
+      "passed": true,
+      "evidence": "(14, 14)"
+    },
+    {
+      "name": "spectral_square_detects_neutral_completion_at_fixed_scale",
+      "passed": true,
+      "evidence": "(9, 22)"
+    },
+    {
+      "name": "combined_functional_is_strictly_positive_on_fixed_neutral_scale",
+      "passed": true,
+      "evidence": "22*alpha*scale**2 + 14"
+    },
+    {
+      "name": "spectral_scaling_preserves_operator_irreducibility",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "neutral_penalty_has_unattained_zero_scale_infimum",
+      "passed": true,
+      "evidence": "(14, 44*alpha*scale)"
+    },
+    {
+      "name": "base_and_neutral_completion_have_exact_equal_score_fiber",
+      "passed": true,
+      "evidence": "3*sqrt(22)/22"
+    },
+    {
+      "name": "relative_weight_and_spectral_units_have_common_rescaling_fiber",
+      "passed": true,
+      "evidence": "(Matrix([\n[    0, clock,       0,   clock],\n[clock, clock,   clock,       0],\n[    0, clock, 2*clock,   clock],\n[clock,     0,   clock, 3*clock]]), alpha/clock**2)"
+    },
+    {
+      "name": "inverse_spectral_term_creates_coefficient_controlled_scale",
+      "passed": true,
+      "evidence": "37*beta/(352*alpha)"
+    },
+    {
+      "name": "changing_positive_weight_changes_selected_spectral_scale",
+      "passed": true,
+      "evidence": "(37/352, 37/5632)"
+    },
+    {
+      "name": "external_gap_bound_selects_only_its_boundary",
+      "passed": true,
+      "evidence": "22*alpha*lower_bound**2 + 14"
+    },
+    {
+      "name": "combined_score_does_not_fix_rg_neutral_coordinate",
+      "passed": true,
+      "evidence": "{alpha, scale}"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "work_package": "WP824",
+  "title": "Finite spectral completion and scale-selection audit",
+  "summary": {
+    "passed": 19,
+    "total": 19,
+    "all_passed": true
+  },
+  "exact_data": {
+    "dirac_operator": "Matrix([[0, mass], [mass, 0]])",
+    "heat_trace": "2*exp(-mass**2*time)",
+    "normalized_spectral_action": "2*exp(-mass**2/cutoff**2)",
+    "polynomial_stationary_ratio": "-alpha/(2*beta)",
+    "aspect_germ": {
+      "native_arity": 8,
+      "source_germs": [
+        "full_complex",
+        "dirac_operator",
+        "spectral_action",
+        "cutoff_clock",
+        "oriented_inflow",
+        "mediator",
+        "physical16_map",
+        "detector"
+      ],
+      "spectral_fiber_repair": true,
+      "dirac_mass_selection": false,
+      "action_coefficient_authority": false,
+      "absolute_cutoff_authority": false,
+      "threshold_rg_parallelization": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "faithfulness": "full spectral data distinguishes masses erased by homology",
+    "selection": "the Dirac mass, multiplicity, action coefficients, and cutoff remain source inputs",
+    "stationarity": "heat action has no positive finite extremum; polynomial extrema depend on inserted coefficients",
+    "scale": "normalized spectral action fixes at most mass/cutoff and has an exact common rescaling kernel",
+    "threshold": "spectral mass records a threshold but is not parallelized with the RG fixed point",
+    "readout": "calibrated heat moments are locally faithful; clock, gain, physical16 descent, and instrument remain absent",
+    "verdict": "spectral completion repairs the fiber but does not select the portal scale"
+  },
+  "tests": [
+    {
+      "name": "acyclic_dirac_spectrum_is_signed_mass_pair",
+      "passed": true,
+      "evidence": "{-mass: 1, mass: 1}"
+    },
+    {
+      "name": "dirac_square_is_mass_squared_identity",
+      "passed": true,
+      "evidence": "Matrix([[mass**2, 0], [0, mass**2]])"
+    },
+    {
+      "name": "nonzero_boundary_sector_has_zero_homology",
+      "passed": true,
+      "evidence": "invertible two-state Dirac sector"
+    },
+    {
+      "name": "mass_sign_is_unitarily_conjugate",
+      "passed": true,
+      "evidence": "Matrix([[0, -mass], [-mass, 0]])"
+    },
+    {
+      "name": "heat_trace_detects_full_spectral_mass",
+      "passed": true,
+      "evidence": "2*exp(-mass**2*time)"
+    },
+    {
+      "name": "calibrated_heat_trace_is_strictly_mass_sensitive",
+      "passed": true,
+      "evidence": "-4*mass*time*exp(-mass**2*time)"
+    },
+    {
+      "name": "uncalibrated_heat_time_has_exact_mass_clock_pair",
+      "passed": true,
+      "evidence": "[2*exp(-1), 2*exp(-1)]"
+    },
+    {
+      "name": "normalized_spectral_action_has_common_rescaling_kernel",
+      "passed": true,
+      "evidence": "2*exp(-mass**2/cutoff**2)"
+    },
+    {
+      "name": "spectral_action_jacobian_annihilates_common_scale_direction",
+      "passed": true,
+      "evidence": "Matrix([[-4*mass*exp(-mass**2/cutoff**2)/cutoff**2, 4*mass**2*exp(-mass**2/cutoff**2)/cutoff**3]])"
+    },
+    {
+      "name": "heat_kernel_spectral_action_has_no_positive_finite_mass_stationary_point",
+      "passed": true,
+      "evidence": "-4*mass*exp(-mass**2/cutoff**2)/cutoff**2"
+    },
+    {
+      "name": "polynomial_spectral_stationarity_depends_on_action_coefficients",
+      "passed": true,
+      "evidence": "[-alpha/(2*beta)]"
+    },
+    {
+      "name": "two_admissible_coefficient_packets_select_different_mass_ratios",
+      "passed": true,
+      "evidence": "(1, 4)"
+    },
+    {
+      "name": "fixed_dimensionless_ratio_leaves_absolute_cutoff_scale_free",
+      "passed": true,
+      "evidence": "(cutoff, 2*cutoff)"
+    },
+    {
+      "name": "spectral_trace_records_but_does_not_select_acyclic_multiplicity",
+      "passed": true,
+      "evidence": "2*multiplicity*exp(-mass**2*time)"
+    },
+    {
+      "name": "formal_detector_gain_is_independent_of_spectral_mass",
+      "passed": true,
+      "evidence": "[2*exp(-1), 2*exp(-1)]"
+    },
+    {
+      "name": "two_calibrated_heat_moments_are_locally_faithful",
+      "passed": true,
+      "evidence": "-8*mass**3*exp(-2*mass**2*time)"
+    },
+    {
+      "name": "aspect_native_eight_object_spectral_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 8, 'source_germs': ['full_complex', 'dirac_operator', 'spectral_action', 'cutoff_clock', 'oriented_inflow', 'mediator', 'physical16_map', 'detector'], 'spectral_fiber_repair': True, 'dirac_mass_selection': False, 'action_coefficient_authority': False, 'absolute_cutoff_authority': False, 'threshold_rg_parallelization': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "spectral_completion_repairs_homology_mass_fiber",
+      "passed": true,
+      "evidence": "{'native_arity': 8, 'source_germs': ['full_complex', 'dirac_operator', 'spectral_action', 'cutoff_clock', 'oriented_inflow', 'mediator', 'physical16_map', 'detector'], 'spectral_fiber_repair': True, 'dirac_mass_selection': False, 'action_coefficient_authority': False, 'absolute_cutoff_authority': False, 'threshold_rg_parallelization': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "six_selection_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['dirac_mass_selection', 'action_coefficient_authority', 'absolute_cutoff_authority', 'threshold_rg_parallelization', 'physical16_descent', 'detector_calibration']"
+    }
+  ]
+}

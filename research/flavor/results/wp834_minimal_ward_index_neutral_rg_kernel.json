@@ -1,0 +1,111 @@
+{
+  "work_package": "WP834",
+  "title": "Minimal Ward-index neutral RG kernel",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  },
+  "admitted_state_domain": "oriented primitive charge packet plus charged vectorlike and neutral operator completions; neutral RG activity is represented by c=3+eta^2 in the WP821 flow",
+  "positive_pairing": "Ward current index S=Tr(Q^2)",
+  "contextual_partition": {
+    "charged_vectorlike_family": "S strictly increases by 2r^2 and minimality selects no nonzero pair",
+    "neutral_completion_family": "S, anomalies, and primitive contrast are identical; eta and the neutral spectrum remain unresolved"
+  },
+  "exact_hostile": {
+    "base": {
+      "charges": [
+        1,
+        2,
+        3
+      ],
+      "ward_index": 14,
+      "fixed_gauge_coordinate": "1/2",
+      "stability_exponents": [
+        "1/2",
+        "2"
+      ]
+    },
+    "neutral_completed": {
+      "charges": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "ward_index": 14,
+      "fixed_gauge_coordinate": "1/3",
+      "stability_exponents": [
+        "(7-sqrt(13))/9",
+        "(7+sqrt(13))/9"
+      ]
+    }
+  },
+  "classification": {
+    "selector": "minimal Ward index excludes nonzero charged vectorlike additions inside the declared family",
+    "kernel": "neutral interacting sectors have zero Ward norm while changing RG and thresholds",
+    "rigidifier": "the pairing rigidifies charged-current normalization",
+    "physical_instrument": "a calibrated current correlator can read S*x but does not observe neutral RG data by itself",
+    "first_nonfaithful_arrow": "full RG-active spectrum to the Ward-current Gram",
+    "verdict": "positive-current minimality is a partial charged-spectrum selector, not a complete portal selector"
+  },
+  "claim_boundary": "The eta-dependent beta coefficient is an exact declared hostile model, not a derived loop calculation for the displayed finite operator packet.",
+  "remaining_source_gate": "a source-derived positive functional must be faithful on neutral as well as charged RG-active sectors, with independently fixed weights, threshold matching, and a common physical16 instrument",
+  "tests": [
+    {
+      "name": "neutral_completion_preserves_linear_and_cubic_anomaly",
+      "passed": true,
+      "evidence": "(6, 36)"
+    },
+    {
+      "name": "neutral_completion_lies_in_ward_index_kernel",
+      "passed": true,
+      "evidence": "(14, 14)"
+    },
+    {
+      "name": "every_nonzero_vectorlike_charge_raises_ward_index",
+      "passed": true,
+      "evidence": "2*r**2 + 14"
+    },
+    {
+      "name": "primitive_portal_contrast_is_unchanged",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "neutral_completed_operator_packet_is_irreducible",
+      "passed": true,
+      "evidence": "[Matrix([\n[1, 0, 0, 0],\n[0, 1, 0, 0],\n[0, 0, 1, 0],\n[0, 0, 0, 1]])]"
+    },
+    {
+      "name": "neutral_state_is_mixed_and_spectral_operator_is_nondegenerate",
+      "passed": true,
+      "evidence": "(Matrix([\n[1],\n[0],\n[1]]), -8)"
+    },
+    {
+      "name": "neutral_spectral_mass_scale_is_not_seen_by_ward_index",
+      "passed": true,
+      "evidence": "(lambda - 4)*(lambda - 2)*(lambda - 1)*(lambda + 1)"
+    },
+    {
+      "name": "neutral_interaction_moves_fixed_point_inside_ward_kernel",
+      "passed": true,
+      "evidence": "(1/2, 1/3)"
+    },
+    {
+      "name": "both_fixed_points_have_two_positive_local_ir_exponents",
+      "passed": true,
+      "evidence": "([1/2, 2], [7/9 - sqrt(13)/9, sqrt(13)/9 + 7/9])"
+    },
+    {
+      "name": "neutral_threshold_switches_rg_magnitude_without_changing_pairing",
+      "passed": true,
+      "evidence": "(14, 1/2, 1/3)"
+    },
+    {
+      "name": "ward_readout_remains_a_readout_not_a_selector",
+      "passed": true,
+      "evidence": "14*x"
+    }
+  ]
+}

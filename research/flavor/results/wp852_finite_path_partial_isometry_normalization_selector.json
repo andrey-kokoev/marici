@@ -1,0 +1,75 @@
+{
+  "work_package": "WP852",
+  "title": "Finite-path partial-isometry normalization selector",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  },
+  "source_domain": "four-vertex charged Hilbert path with cyclic vacuum",
+  "faithful_quotient": "degree-one partial isometries modulo number-preserving diagonal unitaries",
+  "contextual_partition": "one orbit",
+  "selected_data": "unit descendant norms and unit graded multiplication coefficients",
+  "classification": "conditional algebraic normalization selector",
+  "smallest_falsifier": "a physical flavor realization with no source-derived path interface P_path",
+  "remaining_gates": [
+    "physical P_path interface",
+    "portal orientation and sign",
+    "portal magnitude normalization",
+    "microscopic RG basin",
+    "threshold transport",
+    "calibrated physical16 instrument"
+  ],
+  "tests": [
+    {
+      "name": "canonical_shift_has_degree_one",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0]])"
+    },
+    {
+      "name": "canonical_shift_has_initial_projection",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]])"
+    },
+    {
+      "name": "canonical_shift_has_final_projection",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])"
+    },
+    {
+      "name": "canonical_shift_is_nilpotent_at_path_boundary",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])"
+    },
+    {
+      "name": "cyclic_descendants_are_the_ordered_orthonormal_vertices",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])"
+    },
+    {
+      "name": "general_degree_one_operator_is_weighted_shift",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [w0, 0, 0, 0], [0, w1, 0, 0], [0, 0, w2, 0]])"
+    },
+    {
+      "name": "partial_isometry_fixes_all_weight_magnitudes",
+      "passed": true,
+      "evidence": "{'gram': Matrix([\n[w0**2,     0,     0, 0],\n[    0, w1**2,     0, 0],\n[    0,     0, w2**2, 0],\n[    0,     0,     0, 0]]), 'positive_solutions': [{w0: 1, w1: 1, w2: 1}]}"
+    },
+    {
+      "name": "diagonal_number_preserving_unitary_absorbs_link_phases",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0], [p0, 0, 0, 0], [0, p1, 0, 0], [0, 0, p2, 0]])"
+    },
+    {
+      "name": "extra_charge_two_channel_collapses_on_cyclic_source",
+      "passed": true,
+      "evidence": "Matrix([[0], [0], [1], [0]])"
+    },
+    {
+      "name": "path_relations_select_one_full_unitary_orbit",
+      "passed": true,
+      "evidence": "degree one plus T^*T=I-P3 fixes magnitudes; diagonal phases are gauge"
+    }
+  ]
+}

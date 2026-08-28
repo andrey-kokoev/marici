@@ -1,0 +1,92 @@
+{
+  "work_package": "WP828",
+  "title": "Aspect germ tester audit of the intrinsic RG curvature triplet",
+  "summary": {
+    "passed": 9,
+    "total": 9,
+    "all_passed": true
+  },
+  "marked_carrier_germ": {
+    "type": "oriented logistic RG trajectory with intrinsic curvature anchors",
+    "identity_token": "one source trajectory and labels lower/portal/upper",
+    "provenance_interface": "beta field -> acceleration -> jerk-zero anchors",
+    "unconsumed_comparison_port": "shared RG clock and common calibration epoch"
+  },
+  "native_target": {
+    "arity": 3,
+    "arguments": [
+      "lower curvature anchor",
+      "portal crossing",
+      "upper curvature anchor"
+    ],
+    "relation": "t_upper - 2*t_portal + t_lower = 0",
+    "binary_factorization_condition": "both gaps retain the identical portal record and common trajectory provenance"
+  },
+  "completion_maps": {
+    "translation_orbit": "three RG times -> two adjacent gaps",
+    "common_gain_orbit": "three event energies -> two adjacent ratios",
+    "forbidden_local_completion": "separate event calibration before forming ratios"
+  },
+  "realization": {
+    "map_to_ordered_detector_record": false,
+    "physical16_descent": false,
+    "threshold_survival": false,
+    "common_gain_instrument": false
+  },
+  "classification": {
+    "aspect_structure": "marked ternary carrier germ with retained same-trajectory comparison port",
+    "fiber_gate": "passes for common translation and common gain; fails for independent gains",
+    "arity_gate": "ternary; binary gaps are composable only with the same portal identity retained",
+    "authority_gate": "fails: no threshold-to-physical16 realization or calibrated instrument",
+    "selector_status": "conditional event selector inside the admitted logistic source model, not a selector on the physical16 lens family",
+    "rigidifier_status": "relational rigidifier for event ratios conditional on beta normalization",
+    "verdict": "WP827 passes Aspect's germ structure only after retyping; it does not pass physical realization authority"
+  },
+  "tests": [
+    {
+      "name": "translation_completion_is_constant_on_full_orbits",
+      "passed": true,
+      "evidence": "Matrix([[log(sqrt(3) + 2)/rate], [log(sqrt(3) + 2)/rate]])"
+    },
+    {
+      "name": "common_gain_completion_is_constant_on_full_orbits",
+      "passed": true,
+      "evidence": "Matrix([[exp(log(sqrt(3) + 2)/rate)], [exp(log(sqrt(3) + 2)/rate)]])"
+    },
+    {
+      "name": "separate_gain_completion_fails_full_fiber_gate",
+      "passed": true,
+      "evidence": "Matrix([[gain_portal*exp(log(sqrt(3) + 2)/rate)/gain_lower], [gain_upper*exp(log(sqrt(3) + 2)/rate)/gain_portal]])"
+    },
+    {
+      "name": "native_target_is_ternary_equal_spacing_relation",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "binary_factorization_requires_shared_middle_identity",
+      "passed": true,
+      "evidence": "{'left_gap': 'log(sqrt(3) + 2)/rate', 'right_gap': 'log(sqrt(3) + 2)/rate', 'required_shared_record': 'portal'}"
+    },
+    {
+      "name": "marked_carrier_has_aspect_required_fields",
+      "passed": true,
+      "evidence": "{'type': 'oriented logistic RG trajectory with intrinsic curvature anchors', 'identity_token': 'one source trajectory and labels lower/portal/upper', 'provenance_interface': 'beta field -> acceleration -> jerk-zero anchors', 'unconsumed_comparison_port': 'shared RG clock and common calibration epoch'}"
+    },
+    {
+      "name": "events_are_not_mistyped_as_primitive_germs",
+      "passed": true,
+      "evidence": "{'map_to_ordered_detector_record': False, 'physical16_descent': False, 'threshold_survival': False, 'common_gain_instrument': False}"
+    },
+    {
+      "name": "authority_gate_remains_open_after_descent",
+      "passed": true,
+      "evidence": "{'map_to_ordered_detector_record': False, 'physical16_descent': False, 'threshold_survival': False, 'common_gain_instrument': False}"
+    },
+    {
+      "name": "rate_pair_is_exact_smallest_normalization_falsifier",
+      "passed": true,
+      "evidence": "{'rate_1': 'sqrt(3) + 2', 'rate_2': 'sqrt(sqrt(3) + 2)'}"
+    }
+  ]
+}
