@@ -1,0 +1,18 @@
+{
+  "schema": "marici.aspect.apparatus-capacity-binding.v1",
+  "required_measured_inputs": [
+    {"key":"environment_tomography_effective_attempt_rate_hz","unit":"attempts/second","status":"missing"},
+    {"key":"controller_replay_effective_attempt_rate_hz","unit":"attempts/second","status":"missing"},
+    {"key":"comb_comparison_effective_attempt_rate_hz","unit":"attempts/second","status":"missing"},
+    {"key":"environment_tomography_reconfiguration_seconds_per_cell","unit":"seconds","status":"missing"},
+    {"key":"controller_replay_reconfiguration_seconds_per_cell","unit":"seconds","status":"missing"},
+    {"key":"comb_comparison_reconfiguration_seconds_per_cell","unit":"seconds","status":"missing"},
+    {"key":"available_optical_seconds","unit":"seconds","status":"missing"},
+    {"key":"coherent_environment_port_available","unit":"boolean","status":"missing"}
+  ],
+  "duration_law": "sum over optical instruments of attempted_trials/effective_attempt_rate_hz plus setting_cells*reconfiguration_seconds_per_cell",
+  "compiler": "checkers/compile_apparatus_calendar.py",
+  "example_only": "apparatus-capacity-measurement.example.json",
+  "admission": "Values must come from a calibration epoch independent of the science outcomes.",
+  "current_state": "unbound; repository search found no measured rates, reconfiguration durations, or environment-port availability record"
+}
