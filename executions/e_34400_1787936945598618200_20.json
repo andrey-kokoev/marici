@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787936945598618200_20",
+  "created_at": "2026-08-28T17:09:05.5986219Z",
+  "sha256": "e710091460a16cf5bbf320a8385ee38c26ab6f0fcf480c32f1c8d57a5f58e635",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import importlib.util,json,pathlib\np=pathlib.Path(r'C:\\Users\\andrey\\src\\marici\\research\\aspect\\scc\\scc.py')\nspec=importlib.util.spec_from_file_location('scc',p)\nm=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(m)\ncert={\n'authority_locator':'WP645 charged-cycle physical16 response rank',\n'substrate_state_type':'nondegenerate physical16 Yukawa sheet with controls (a_u,a_d)',\n'apparatus_state_type':'paired on-shell Higgs bb/cc detector record',\n'observational_rank_certificate':{'locator':'WP645 plus provisional logarithmic-width Jacobian diag(2,2)','rank':2,'kernel_pair_promoted_to_state_identity':False},\n'natural_transport_certificate':{'locator':'missing zero-momentum Yukawa to on-shell Higgs vertex matching square','source_authorized':False,'naturality_square_closed':False},\n'bounded_port_accessibility_certificate':{'locator':'not yet audited','claim':'not_claimed'},\n'one_use_joint_map':{'locator':'candidate h->bb,h->cc joint likelihood','source_authorized':False},\n'labelled_composition_or_tensor_law':{'locator':'not yet derived'},\n'reset_or_catalytic_return_map':{'locator':'not yet derived','apparatus_reset_independent':False},\n'repeated_joint_law':{'coupling_semantics':'fresh','marginal_signature':'unproved','joint_signature':'unproved','two_use_variance':0,'covariance':0,'preparation_label_side_channel':False,'controlled_intervention_admissible':False,'triple_composition_closed':False,'mixed_coherence_closed':False},\n'degradation_and_uncertainty_bounds':{'locator':'missing QCD,total-width,tagging covariance completion'},\n'quotient_descent_certificate':{'locator':'WP645 weak-basis descent only; detector descent unproved','valid':False},\n'feature_calibration':{'full_authorized_packet':False,'observer_fitted':False,'covariance_observer_fitted':False},\n'admitted_domain':'WP645 fitted sheets; provisional on-shell extension',\n'support_assumptions':['fixed electroweak normalization','open Higgs bb and cc channels'],\n'physical_instrument':'candidate paired Higgs bb/cc measurement; calibration not admitted',\n'candidate_synthesis_status':'candidate_requires_source_derivation',\n'source_derivation_status':'candidate_requires_source_derivation'\n}\nprint(json.dumps(m.validate_apparatus_certificate(cert),sort_keys=True))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici\\research\\aspect\\scc",
+    "started_at": "2026-08-28T17:09:05.4700724Z",
+    "finished_at": "2026-08-28T17:09:05.5986076Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\"certifies_apparatus_existence\": false, \"first_failed_gate\": \"natural_transport\", \"reason\": \"chartwise rank does not substitute for a closed source-authorized naturality square\", \"status\": \"fail\"}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
