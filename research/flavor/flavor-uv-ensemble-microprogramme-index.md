@@ -7188,3 +7188,5531 @@ distinct values \(Q=8,10,12,14,20\), so \((S,Q)\) is faithful and positive
 \(Q\), however, selects the all-zero state with \(S=0\). The second moment
 repairs identification and occupancy rigidification, not source selection of
 total charge six.
+
+## Source-model compatibility registry: WP626
+
+- `flavor-source-model-compatibility-registry.md`
+- `checkers/wp626_source_model_compatibility_registry.py`
+- `results/wp626_source_model_compatibility_registry.json`
+
+WP626 assembles the largest currently source-authorized relational connector
+field and interaction registry and checks its index closure exactly. The three
+messenger route types close and the ten canonical up/down tensor
+normalizations remain independent. A model export is nevertheless refused:
+exact Standard Model messenger representations, kinetic normalizations,
+threshold states, the eighteen-coordinate RG completion, and a one-scheme
+finite matching map are not jointly supplied. The smallest exact falsifier is
+omission of the connector-adjoint alignment coordinate. The construction is a
+presentation rigidifier, not a numerical selector or calibrated instrument.
+
+## Messenger Standard Model representation reconstruction: WP627
+
+- `flavor-messenger-sm-representation-reconstruction.md`
+- `checkers/wp627_messenger_sm_representation_reconstruction.py`
+- `results/wp627_messenger_sm_representation_reconstruction.json`
+
+WP627 closes WP626's conservative messenger-representation gap. WP435 assigns
+the first stage the corresponding right-handed-quark representation; the
+Standard Model singlet connector and exit flavon transport it uniquely through
+the second stage. Thus both up stages are \((3,1,2/3)\), both down stages are
+\((3,1,-1/3)\), and every vectorlike anomaly cancels. Gauge invariance also
+forces \(\widetilde H^u\) at the up entrance. Using the unconjugated doublet
+or a down-type second up stage leaves exact hypercharge residuals (1\) and
+\(-1\). This is source-derived representation completion, not selection.
+
+## Entrance kinetic-Gram obstruction: WP628
+
+- `flavor-entrance-kinetic-gram-obstruction.md`
+- `checkers/wp628_entrance_kinetic_gram_obstruction.py`
+- `results/wp628_entrance_kinetic_gram_obstruction.json`
+
+WP628 separates removable wavefunction conventions from one genuine model
+gap. The two entrance doublets have identical gauge representations, so their
+general positive kinetic term contains a two-by-two Hermitian Gram. The
+canonical packet has orthogonal up/down axes, but the equally legal positive
+Gram \(K=((2,1),(1,2))\) has determinant three and canonically normalized
+axis-overlap squared \(1/4\). Canonicalizing the kinetic term while retaining
+the old axis-aligned Yukawas silently deletes this coordinate. A source
+symmetry must distinguish the doublets, or the full kinetic/Yukawa tensor
+system must be included. This is a model-export obstruction, not a selector.
+
+## Entrance sector-parity repair: WP629
+
+- `flavor-entrance-sector-parity-repair.md`
+- `checkers/wp629_entrance_sector_parity_repair.py`
+- `results/wp629_entrance_sector_parity_repair.json`
+
+WP629 adds the smallest algebraically sufficient repair of WP628: one exact
+sector \(Z_2\). The parity equations have a unique solution once the common
+entrance, up chain, connector, and exit flavon are fixed even and \(H^d\) is
+fixed odd. It forbids the off-diagonal kinetic Gram and both wrong-sector
+entrance vertices while preserving every declared messenger route, vectorlike
+mass, and even cross-invariant needed by the noncollinear vacuum. This is a
+declared source-extension rigidifier, not a derived numerical selector. Since
+the down entrance vev breaks the parity, domain-wall history or explicit soft
+breaking becomes a new physical gate.
+
+## Sector-parity wall-lift no-go: WP630
+
+- `flavor-sector-parity-wall-lift-no-go.md`
+- `checkers/wp630_sector_parity_wall_lift_no_go.py`
+- `results/wp630_sector_parity_wall_lift_no_go.json`
+
+WP630 proves that one global \(Z_2\) cannot simultaneously provide exact
+kinetic/Yukawa protection and explicit lifting of the sign-related odd-field
+vacua. Every protecting operator is parity even and preserves the degeneracy;
+every splitting operator is parity odd and removes the exact selection rule.
+The smallest gauge-invariant soft candidate,
+\(\mu_{ud}^2\operatorname{Re}(H^{u\dagger}H^d)\), vanishes on the orthogonal
+vacuum pair but has nonzero overlap-direction gradient, so it fails to split
+the old pair while destroying its stationarity. Honest successors must type a
+cosmological domain history, gauge the parity in a changed groupoid, or add an
+odd reference and recompute the full source.
+
+## Parity-groupoid relative-reference theorem: WP631
+
+- `flavor-parity-groupoid-relative-reference.md`
+- `checkers/wp631_parity_groupoid_relative_reference.py`
+- `results/wp631_parity_groupoid_relative_reference.json`
+
+WP631 gives the categorical form of WP630. The original transitive sign
+action groupoid has one isomorphism class: its two descended Boolean probes
+are constant, while its two sign separators do not descend. Adding a second
+odd source object and quotienting by diagonal sign reversal creates two
+relative classes, jointly separated by the invariant \(I(x,r)=xr\). Forgetting
+the reference collapses them again. Thus category theory exposes one genuine
+window—a source-derived relative reference in a new diagonal stabilizer
+groupoid—while forbidding its interpretation as recovery of absolute sign.
+
+## Common-singlet relative parity reference: WP632
+
+- `flavor-common-singlet-relative-parity-reference.md`
+- `checkers/wp632_common_singlet_relative_parity_reference.py`
+- `results/wp632_common_singlet_relative_parity_reference.json`
+
+WP632 finds an existing candidate for WP631's odd reference: WP489's real
+common-source singlet \(\sigma\). With \(\sigma\) and \(H^d\) odd, the complete
+route and singlet-mass parity equations have one solution, with alternating
+left/right messenger parities. Every declared vertex survives, kinetic mixing
+and wrong-sector entrances remain forbidden, and every explicit bare messenger
+mass is odd. The construction therefore exists only on the singlet-generated
+threshold domain. The abstract relative product of the two signs descends, but
+selector authority awaits a matched amplitude that remains sensitive after
+all legal messenger rephasings.
+
+## Common-singlet relative-sign collapse: WP633
+
+- `flavor-common-singlet-relative-sign-collapse.md`
+- `checkers/wp633_common_singlet_relative_sign_collapse.py`
+- `results/wp633_common_singlet_relative_sign_collapse.json`
+
+WP633 attacks WP632 with the full legal sign-rephasing group. Its projection
+onto \((H^d,\sigma)\) contains all four sign changes. In particular, a legal
+down-sector rephasing flips \(H^d\) while holding \(\sigma\) fixed, so it moves
+between the proposed relative classes. Exact two-stage elimination gives a
+coefficient proportional to \(1/\sigma^2\); the singlet sign cancels, while
+the remaining down-Yukawa sign is removed by a right-handed quark rephasing.
+The first nonfaithful arrow is the passage from the selected diagonal subgroup
+to the full source rephasing groupoid, before `physical16` is reached.
+
+## Messenger-incidence cycle no-go: WP634
+
+- `flavor-messenger-incidence-cycle-no-go.md`
+- `checkers/wp634_messenger_incidence_cycle_no_go.py`
+- `results/wp634_messenger_incidence_cycle_no_go.json`
+
+WP634 proves that the complete WP489 interaction incidence contains no closed
+rephasing-invariant coupling cycle. The ten-by-sixteen signed incidence matrix
+has exact row rank ten, so its continuous left kernel is zero; its modulo-two
+left kernel is also zero. Thus every coupling phase and sign is removable
+before `physical16`, generalizing WP633 beyond the singlet candidate. A
+progressive successor needs a gauge-legal cycle-closing carrier; because the
+up/down messenger hypercharges differ by one, that carrier changes the field,
+threshold, anomaly, decay, and instrument census.
+
+## Charged two-edge cycle carrier: WP635
+
+- `flavor-charged-two-edge-cycle-carrier.md`
+- `checkers/wp635_charged_two_edge_cycle_carrier.py`
+- `results/wp635_charged_two_edge_cycle_carrier.json`
+
+WP635 gives the minimal gauge-legal repair of WP634. One charged scalar
+\(\chi\sim(1,1,1)\) and cross-sector couplings at both messenger stages enlarge
+the incidence to twelve rows of rank eleven, producing exactly one continuous
+and one sign cycle. A single cross-edge still has zero nullity. The surviving
+invariant is \(\mathcal I_\chi=(Y_S^uZ_A^dC_B)/(Y_S^dZ_B^uC_A)\). The charged
+field must have zero vacuum expectation value, and the invariant remains a
+free coupling ratio. This supplies internal relative-probe capacity, not a
+numerical selector or calibrated instrument.
+
+## Charged-cycle tree interference: WP636
+
+- `flavor-charged-cycle-tree-interference.md`
+- `checkers/wp636_charged_cycle_tree_interference.py`
+- `results/wp636_charged_cycle_tree_interference.json`
+
+WP636 derives the first finite-mass response carrying WP635's cycle. The
+charged transition from an up first-stage messenger to a down second-stage
+messenger has two paths, through \(B^u\) and through \(A^d\), whose exact ratio
+is \(\mathcal I_\chi\). On the unit slice their coherent rates are four for
+relative sign plus and zero for relative sign minus. The cycle is therefore a
+genuine source-generated threshold probe. Both signs remain legal, so it is
+not a selector; masses, widths, competing decays, production, resolution, and
+a common-frame likelihood remain the physical-instrument gate.
+
+## Charged-cycle threshold-support fiber: WP637
+
+- `flavor-charged-cycle-threshold-support-fiber.md`
+- `checkers/wp637_charged_cycle_threshold_support_fiber.py`
+- `results/wp637_charged_cycle_threshold_support_fiber.json`
+
+WP637 separates interference capacity from kinematic support. Two positive
+source points have the same \(\mathcal I_\chi=1\) and formal rate factor four,
+with \(M_{B^d}=m_\chi=1\). At \(M_{A^u}=3\), the threshold margin is one and
+the Källén polynomial is 45; at \(M_{A^u}=3/2\), they are \(-1/2\) and
+\(-63/16\), so the channel is closed. The cycle does not select its on-shell
+instrument domain. A successor must derive a strict threshold margin or a
+quantified off-shell response.
+
+## Charged-cycle low-energy matching: WP638
+
+- `flavor-charged-cycle-low-energy-matching.md`
+- `checkers/wp638_charged_cycle_low_energy_matching.py`
+- `results/wp638_charged_cycle_low_energy_matching.json`
+
+WP638 bypasses WP637's heavy-parent threshold fiber by integrating out the
+messenger stages. Two complete tree paths generate the same dimension-seven
+operator \(\bar Q_L\widetilde H^u\chi SXd_R\), and their exact ratio remains
+\(\mathcal I_\chi\). Unit constructive and destructive signs give matched
+coefficient squares four and zero without requiring an on-shell heavy
+messenger decay. The result is a source-derived low-energy charged portal
+probe, not a `physical16` selector. An accessible \(\chi\) pole, production,
+widths, QCD transport, detector acceptance, and a likelihood remain open.
+
+## Charged-cycle contact descent: WP639
+
+- `flavor-charged-cycle-contact-descent.md`
+- `checkers/wp639_charged_cycle_contact_descent.py`
+- `results/wp639_charged_cycle_contact_descent.json`
+
+WP639 closes WP638's inaccessible-charged-pole branch algebraically. Exact
+tree elimination of \(\chi\) gives a neutral dimension-twelve contact operator
+with coefficient magnitude \(|L_A+L_B|^2/m_\chi^2\). The unit relative signs
+remain distinguishable, with contact magnitudes four and zero. However, fixed
+\(\mathcal I_\chi=1\) at charged masses one and two gives magnitudes four and
+one, so the cycle record alone is not faithful to the contact response. This
+is source-derived contact descent, not a `physical16` selector or calibrated
+instrument; a typed light channel and detector likelihood remain required.
+
+## Charged-cycle partonic instrument: WP640
+
+- `flavor-charged-cycle-partonic-instrument.md`
+- `checkers/wp640_charged_cycle_partonic_instrument.py`
+- `results/wp640_charged_cycle_partonic_instrument.json`
+
+WP640 supplies the first executable light-particle channel after frozen vev
+insertion. The contact operator mediates massless
+\(u_L\bar d_R\to u_L\bar d_R\) at fixed helicity and color, with
+\(|\mathcal M|^2=G^2\hat s^2\) and
+\(\hat\sigma=G^2\hat s/(16\pi)\). Unit constructive, destructive, and
+mass-two contexts give normalized squared amplitudes sixteen, zero, and one.
+This is a source-level partonic probe, not a hadronic or detector-calibrated
+instrument. Its squared-only readout also retains a sign and phase kernel that
+can be removed only by a source-authorized interfering amplitude.
+
+## Charged-cycle Standard Model interference: WP641
+
+- `flavor-charged-cycle-sm-interference.md`
+- `checkers/wp641_charged_cycle_sm_interference.py`
+- `results/wp641_charged_cycle_sm_interference.json`
+
+WP641 exactly Fierz-maps the scalar contact into the chiral neutral-current
+channel, where Standard Model photon and \(Z\) exchange provide an independent
+source amplitude. For a common real normalization, the response is
+\(R(B,G)=(B+G/2)^2\), so interference is linear in the contact coefficient.
+This improves source-level sensitivity but cannot recover the phase of the
+pre-contact current: the first nonfaithful arrow is already
+\(J\mapsto|J|^2/m_\chi^2\). Detector authority still requires a named dataset,
+PDFs, electroweak amplitudes, running, tagging, response, uncertainties, and a
+likelihood.
+
+## Single-current phase no-go: WP642
+
+- `flavor-single-current-phase-no-go.md`
+- `checkers/wp642_single_current_phase_no_go.py`
+- `results/wp642_single_current_phase_no_go.json`
+
+WP642 proves that the one-current invariant ring is generated by \(|g|^2\):
+charge neutrality forces every invariant monomial \(g^m(g^*)^n\) to have
+\(m=n\). The overall current phase is therefore presentation data, while a
+second charged current would define a new relative experiment over its
+stabilizer. Separately, messenger matching loses genuine UV cycle data: the
+path pairs \((1,1)\) and \((1+i,1-i)\) both match to \(g=2\), but have cycle
+ratios \(1\) and \(-i\). A low-energy single-current instrument cannot identify
+the UV constructor or select `physical16`.
+
+## Charged-cycle physical16 surjectivity: WP643
+
+- `flavor-charged-cycle-physical16-surjectivity.md`
+- `checkers/wp643_charged_cycle_physical16_surjectivity.py`
+- `results/wp643_charged_cycle_physical16_surjectivity.json`
+
+WP643 closes the charged-cycle branch against the fitted flavor objective.
+With zero charged-scalar vev and tree-level neutral matching, four predeclared
+charged contexts attach to every sheet of the complete stored 1,210-sheet
+`physical16` ensemble. The 4,840-state product projects onto all 1,210 sheets
+with uniform fiber size four. The charged operation partitions its carrier
+fiber but selects no proper flavor family. Reopening requires a computed,
+source-derived weak-basis-invariant backreaction with independent
+normalization, ensemble survival, and a calibrated instrument.
+
+## Charged-cycle one-loop backreaction: WP644
+
+- `flavor-charged-cycle-one-loop-backreaction.md`
+- `checkers/wp644_charged_cycle_one_loop_backreaction.py`
+- `results/wp644_charged_cycle_one_loop_backreaction.json`
+
+WP644 computes the first finite neutral-Yukawa backreaction on a frozen
+one-generation, zero-momentum benchmark. The charged scalar closes the two
+cross-edges, giving a positive five-propagator kernel. At equal masses,
+\(K_5=1/(192\pi^2M^4)\), and the up/down Yukawa corrections are nonzero with
+magnitude \(1/(192\pi^2)\) on the unit slice. Thus WP643's product theorem is
+strictly tree-level. The correction is not a selector because its coupling,
+vev, and mass coordinates remain free; the next gate is a generation-tensor
+lift and `physical16` response-rank audit.
+
+## Charged-cycle physical16 response rank: WP645
+
+- `flavor-charged-cycle-physical16-response-rank.md`
+- `checkers/wp645_charged_cycle_physical16_response_rank.py`
+- `results/wp645_charged_cycle_physical16_response_rank.json`
+
+WP645 lifts the loop through the frozen messenger tensors. Identity cross
+intertwiners and identical up/down connector shapes force
+\(\delta Y_u=\kappa_uY_u\) and \(\delta Y_d=\kappa_dY_d\). Quotienting common
+right-handed phases leaves two real dilation directions. The exact
+sixteen-by-two `physical16` Jacobian has rank two on every one of the 1,210
+stored sheets: only common up/down mass scales move, while four mass ratios,
+nine CKM moduli, and signed \(J\) do not. Since `physical16` is a faithful
+embedding of the ten-dimensional quark quotient, the intrinsic codimension is
+eight; fourteen is only the ambient record-rank deficit. Free opposite
+dilations remain legal, so this is aligned backreaction and instrument
+enrichment, not selection.
+
+## Non-aligned word response ladder: WP646
+
+- `flavor-nonaligned-word-response-ladder.md`
+- `checkers/wp646_nonaligned_word_response_ladder.py`
+- `results/wp646_nonaligned_word_response_ladder.json`
+
+WP646 tests the smallest existing non-aligned word grammars against ten
+algebraically independent weak-basis invariants at an exact nondegenerate
+CP-violating witness. The intrinsic rank ladder is two for the aligned charged
+loop, nine for identity plus three linear adjoint words per sector, and ten for
+WP450's degree-two complete grammar. The linear layer has conditional
+codimension-one tangent capacity, but its coefficients are not source-derived;
+the degree-two layer restores universal fitting capacity. Neither is presently
+a selector.
+
+## Linear-word source authority: WP647
+
+- `flavor-linear-word-source-authority.md`
+- `checkers/wp647_linear_word_source_authority.py`
+- `results/wp647_linear_word_source_authority.json`
+
+WP647 applies the independently declared oriented (SO(3)) source symmetry to
+WP646's rank-nine linear window. The common fixed space of the three triplet
+generators is zero, so the original source authorizes no nonzero degree-one
+coefficient. Its unique quadratic invariant is the Casimir and collapses to a
+flavor-universal identity. Adding one oriented reference changes the groupoid
+to its (SO(2)) stabilizer; the resulting identity-plus-one-word family has
+exact response rank six at the hostile witness, not nine. The rank-nine window
+therefore remains fitting capacity, not a source-generated selector.
+
+## Triplet-quintet stabilizer obstruction: WP648
+
+- `flavor-triplet-quintet-stabilizer-obstruction.md`
+- `checkers/wp648_triplet_quintet_stabilizer_obstruction.py`
+- `results/wp648_triplet_quintet_stabilizer_obstruction.json`
+
+WP648 tests the smallest dynamical coefficient carrier suggested by WP452.
+For one real triplet and one real quintet, the renormalizable orientation
+equation generically aligns the triplet with a quintet eigenaxis. A nontrivial
+proper half-turn fixes both fields, so the stationary vacuum retains at least
+a \(\mathbb Z_2\) stabilizer. The carrier breaks and rigidifies the source
+symmetry but does not construct a faithful oriented frame or select a
+`physical16` point. A successor needs a second independently sourced
+noncollinear object and a derived relative vacuum.
+
+## Two-triplet faithful frame: WP649
+
+- `flavor-two-triplet-faithful-frame.md`
+- `checkers/wp649_two_triplet_faithful_frame.py`
+- `results/wp649_two_triplet_faithful_frame.json`
+
+WP649 supplies the minimal constructive frame repair: a positive quartic
+action forces two ordered triplets to be orthonormal. Its vacuum Hessian has
+three orbit zeros and three positive physical eigenvalues, while the ordered
+pair has trivial (SO(3)) stabilizer. The induced identity-plus-two-word
+family has exact intrinsic response rank eight at the hostile witness. This is
+a source-generated faithful frame and rigidifier, but not a numerical flavor
+selector; its sector couplings and physical matching remain to be derived.
+
+## Faithful-frame coefficient nonselection: WP650
+
+- `flavor-frame-coefficient-nonselection.md`
+- `checkers/wp650_frame_coefficient_nonselection.py`
+- `results/wp650_frame_coefficient_nonselection.json`
+
+WP650 pulls the selector question through WP649's faithful frame. The allowed
+identity-plus-two-word family has twelve real scalar controls, exact intrinsic
+response rank eight, and a four-dimensional local control kernel. The scalar
+coefficients are (SO(3)) singlets and remain unconstrained by the frame
+action. Two legal packets already differ in the weak-basis invariant
+\(\operatorname{Tr}(YY^\dagger)\). The construction is therefore a faithful
+rigidifier plus constrained carrier, not a coefficient selector or source
+identifier.
+
+## Frame-messenger factorization kernel: WP651
+
+- `flavor-frame-messenger-factorization-kernel.md`
+- `checkers/wp651_frame_messenger_factorization_kernel.py`
+- `results/wp651_frame_messenger_factorization_kernel.json`
+
+WP651 attaches WP435-type one-stage messenger chains to WP650's six complex
+frame coefficients. The exact matching map from twelve complex vertex
+couplings has rank six and a six-complex-dimensional kernel: reciprocal vertex
+rescalings preserve every low-energy coefficient. A hostile UV pair has the
+same matched coefficient but different vertex strength. Matching therefore
+makes the constrained carrier executable at low energy while selecting no
+coefficient and identifying no UV constructor. Threshold-calibrated probes are
+required to refine this quotient.
+
+## Two-width threshold instrument: WP652
+
+- `flavor-two-width-threshold-instrument.md`
+- `checkers/wp652_two_width_threshold_instrument.py`
+- `results/wp652_two_width_threshold_instrument.json`
+
+WP652 derives two labelled partial-width ports from the same messenger
+vertices as WP651. After phase-space calibration, their log-response to the
+two vertex magnitudes has rank two and positive Gram determinant
+\(16w_Lw_R\); either port alone has rank one. The ports distinguish WP651's
+hostile constructors and repair magnitude identification in the ideal
+threshold experiment. Finite widths, mixing, backgrounds, branching
+reconstruction, resolution, efficiencies, and uncertainty-stable rank remain
+the detector-calibration gate. The experiment identifies magnitudes but does
+not select their numerical values.
+
+## Two-width confusion robustness: WP653
+
+- `flavor-two-width-confusion-robustness.md`
+- `checkers/wp653_two_width_confusion_robustness.py`
+- `results/wp653_two_width_confusion_robustness.json`
+
+WP653 pushes WP652 through a symmetric detector-confusion channel. The exact
+two-port response retains rank two unless the misclassification probability is
+one half, where both reconstructed channels coincide and rank collapses to
+one. For a calibrated uncertainty interval, robust identification requires
+\(|1-2e_0|>2\delta_e\), with an explicit positive lower bound on the smallest
+singular value. This is a conditional detector theorem; no experimental
+confusion calibration is yet admitted.
+
+## Finite-width template overlap: WP654
+
+- flavor-finite-width-template-overlap.md
+- checkers/wp654_finite_width_template_overlap.py
+- results/wp654_finite_width_template_overlap.json
+
+WP654 replaces abstract channel confusion by exact equal-width Lorentzian
+templates. Their normalized overlap is
+\(4\gamma^2/(\Delta^2+4\gamma^2)\); the two-template Gram matrix retains
+rank two for every nonzero mass separation and collapses only at exact
+degeneracy. Its smallest eigenvalue gives an explicit width-relative
+conditioning gate. Detector convolution, unequal widths, backgrounds,
+efficiencies, and calibrated uncertainties remain open.
+
+## Gaussian detector-convolution pullback: WP655
+
+- flavor-gaussian-convolution-pullback.md
+- checkers/wp655_gaussian_convolution_pullback.py
+- results/wp655_gaussian_convolution_pullback.json
+
+WP655 separates the three detector gates. Finite-width Gaussian convolution
+has a nowhere-zero Fourier transfer and therefore preserves exact object
+separation: two convolved Lorentzian templates coincide only when both their
+mass and width agree. Uniform completion stability nevertheless fails as the
+mass-width pairs coalesce. A positive Gram lower bound defines an operational
+target domain, not detector calibration. Resolution, backgrounds,
+efficiencies, and uncertainty evidence remain required.
+
+## Independent sideband background calibration: WP656
+
+- flavor-sideband-background-calibration.md
+- checkers/wp656_sideband_background_calibration.py
+- results/wp656_sideband_background_calibration.json
+
+WP656 profiles a common additive background nuisance in the two-width signal
+records. Without independent calibration, the effective source information
+has rank one and loses the common-rate mode. A declared background-only
+sideband with precision \(\tau>0\) restores rank two, with determinant
+\(16\tau/(\tau+2)\); stability fails as \(\tau\to0\). The calibration is
+authorized only when sideband support and transfer factors are measured
+independently of the target signal. It repairs identification, not selection.
+
+## Independent efficiency-control calibration: WP657
+
+- flavor-efficiency-control-calibration.md
+- checkers/wp657_efficiency_control_calibration.py
+- results/wp657_efficiency_control_calibration.json
+
+WP657 profiles separate multiplicative efficiencies in the two width ports.
+Without independent controls, both magnitude directions are exactly
+confounded and the source information has rank zero. Two independently
+supported efficiency controls restore a diagonal rank-two response with
+determinant
+\(16\kappa_L\kappa_R/((1+\kappa_L)(1+\kappa_R))\). Both positive
+precisions are necessary. Their support and transfer factors must be bound
+outside the target signal.
+
+## Composed detector calibration: WP658
+
+- flavor-composed-detector-calibration.md
+- checkers/wp658_composed_detector_calibration.py
+- results/wp658_composed_detector_calibration.json
+
+WP658 composes the two signal records, two efficiency controls, and one
+background sideband in a common detector frame. The exact five-record
+Jacobian has determinant \(4q\sqrt{\kappa_L\kappa_R\tau}\), where \(q\)
+is calibrated template contrast. Joint faithfulness holds exactly when all
+four factors are nonzero; approaching any boundary destroys uniform
+stability. This completes the ideal identification architecture but still
+requires one actual experiment binding all records and covariance. It does
+not select source values.
+
+## CMS two-port experiment-support audit: WP659
+
+- flavor-cms-two-port-support-audit.md
+- checkers/wp659_cms_two_port_support_audit.py
+- results/wp659_cms_two_port_support_audit.json
+
+WP659 tests WP658 against two current CMS vectorlike-quark searches. The
+analyses establish real Standard Model Higgs and exotic neutral-scalar ports,
+control regions, and cross-section-times-branching-fraction limits. Neither
+fits both decay widths simultaneously in one constructor frame or publishes
+the two efficiency controls and joint covariance required to identify both
+WP651 vertex magnitudes. The physical-instrument branch therefore closes as an
+experiment-support gap rather than an algebraic one.
+
+## Source-generated selector branch closure: WP660
+
+- flavor-selector-branch-closure.md
+- checkers/wp660_selector_branch_closure.py
+- results/wp660_selector_branch_closure.json
+
+WP660 closes the bounded selector branch. The two-triplet action genuinely
+constructs a faithful oriented frame, its word family is a rank-eight
+constrained carrier, messenger matching is executable but nonfaithful on UV
+constructors, and an ideal calibrated detector could identify two magnitude
+directions. No admitted source operation fixes the scalar coefficients or
+selects a numerical physical16 family, and no current published analysis
+realizes the complete detector packet. The present flavor result is therefore
+rigidification plus carrier capacity, not source-generated selection.
+
+## Two-triplet RG-closure repair: WP661
+
+- flavor-two-triplet-rg-closure-repair.md
+- checkers/wp661_two_triplet_rg_closure_repair.py
+- results/wp661_two_triplet_rg_closure_repair.json
+
+WP661 corrects WP649's source typing. The mixed frame vertex generates the
+omitted \(|n|^2|m|^2\) counterterm at one loop, so the original potential was
+tree-level rather than RG closed. Adding the missing quartic shifts the exact
+orthogonal vacuum norms to \(2/3\) but retains three orbit zeros, three
+positive physical modes, and trivial stabilizer. The faithful rigidifier
+survives minimal support closure; complete beta functions and messenger
+corrections remain outstanding, and no selector follows.
+
+## Two-triplet scalar one-loop flow: WP662
+
+- flavor-two-triplet-scalar-one-loop-flow.md
+- checkers/wp662_two_triplet_scalar_one_loop_flow.py
+- results/wp662_two_triplet_scalar_one_loop_flow.json
+
+WP662 derives the complete one-loop flow within the closed scalar subsector:
+two mass parameters and four quartics. The WP661 benchmark lies in an open
+forward neighborhood with positive orthogonality coupling and increasing
+radial stability determinant. This supplies local scalar-flow stability, not
+messenger-complete RG authority; gauge, Yukawa, and messenger terms remain the
+next source gate.
+
+## Messenger-topology RG bifurcation: WP663
+
+- flavor-messenger-topology-rg-bifurcation.md
+- checkers/wp663_messenger_topology_rg_bifurcation.py
+- results/wp663_messenger_topology_rg_bifurcation.json
+
+WP663 proves that WP651's matched \(J_n,J_m\) word packet does not determine
+its scalar RG completion. Disjoint messenger chains preserve the flip-even
+support, while a shared spin-one messenger generates a quadratic cross term
+and two flip-odd quartics. A topology and symmetry-charge assignment must be
+frozen independently before messenger-complete beta functions exist. The
+ambiguity is a constructor kernel, not a selector.
+
+## Disjoint-messenger stability bound: WP664
+
+- flavor-disjoint-messenger-stability-bound.md
+- checkers/wp664_disjoint_messenger_stability_bound.py
+- results/wp664_disjoint_messenger_stability_bound.json
+
+WP664 freezes WP651's declared disjoint-chain branch. Each Dirac spin-one
+messenger preserves the scalar operator support but subtracts from the norm
+quartic flow. At the repaired benchmark the radial-margin derivative is
+\(1136-32(F_n+F_m)\), so nonerosion requires
+\(F_n+F_m\leq71/2\). The bound defines an admissible stability region; it
+does not fix the free messenger couplings or select a flavor point.
+
+## Messenger stability-cone leak: WP665
+
+- flavor-messenger-stability-cone-leak.md
+- checkers/wp665_messenger_stability_cone_leak.py
+- results/wp665_messenger_stability_cone_leak.json
+
+WP665 attacks finite-scale promotion of WP664. On the symmetric positive
+boundary of the radial-stability cone, the completed vector field satisfies
+\(dD/dt=-32F\lambda\). Every positive fixed disjoint-fermion strength points
+outward, so the full cone is not forward invariant. Benchmark nonerosion is
+only local; Yukawa running, threshold decoupling, and a smaller scale-bounded
+domain are required.
+
+## Kinetic-normalization descent: WP666
+
+- flavor-kinetic-normalization-descent.md
+- checkers/wp666_kinetic_normalization_descent.py
+- results/wp666_kinetic_normalization_descent.json
+
+WP666 restores the missing coordinate typing in WP664. Raw \(y^4\) changes
+under scalar field rescaling; the descending strength is \(y^4/Z^2\), and the
+descending radial margin includes the corresponding kinetic denominators.
+Two raw packets with \((Z,y)=(1,1)\) and \((4,2)\) are canonically identical
+but have raw fourth powers one and sixteen. The stability bound is therefore
+conditional on a source-derived kinetic Gram, not a numerical selector.
+
+## Flip-protected kinetic interface: WP667
+
+- flavor-flip-protected-kinetic-interface.md
+- checkers/wp667_flip_protected_kinetic_interface.py
+- results/wp667_flip_protected_kinetic_interface.json
+
+WP667 shows how the kinetic interface can exist. Extending the independent
+triplet flips to the disjoint messenger source forces the species kinetic Gram
+diagonal, after which a label-preserving canonical map is exact. Without those
+flips a positive mixed Gram is legal and canonicalization mixes the frame
+axes. The conditional repair fixes no canonical Yukawa and is therefore a
+rigidifier, not a selector.
+
+## Flip-charge single-pair no-go: WP668
+
+- flavor-flip-charge-single-pair-no-go.md
+- checkers/wp668_flip_charge_single_pair_no_go.py
+- results/wp668_flip_charge_single_pair_no_go.json
+
+WP668 solves the messenger parity equations. One massive vectorlike pair
+cannot also carry a Yukawa linear in an odd triplet: its mass and Yukawa charge
+conditions differ by one modulo two. The minimal protected channel uses two
+opposite-parity pairs and off-diagonal triplet vertices. Applied literally to
+WP651, the pair census rises from six to ten. Protected matching, supertraces,
+thresholds, and anomalies must therefore be recomputed.
+
+## Protected two-pair supertrace: WP669
+
+- flavor-protected-two-pair-supertrace.md
+- checkers/wp669_protected_two_pair_supertrace.py
+- results/wp669_protected_two_pair_supertrace.json
+
+WP669 recomputes the fermion loop on the equal-mass reciprocal-vertex slice of
+the protected two-pair channel. Flip-even scalar support survives, but the
+norm-quartic erosion doubles. The repaired benchmark has
+\(dD/dt=1136-64(P_n+P_m)\), giving the exact nonerosion gate
+\(P_n+P_m\leq71/4\). Unit protected WP651 multiplicities give derivative
+880. No coupling or flavor point is selected.
+
+## Protected vertex imbalance: WP670
+
+- flavor-protected-vertex-imbalance.md
+- checkers/wp670_protected_vertex_imbalance.py
+- results/wp670_protected_vertex_imbalance.json
+
+WP670 lifts the protected loop to unequal masses and independent reciprocal
+vertices. Scalar support remains flip even, but quartic erosion depends on
+\(y^4+z^4\), not only the tree-product coordinate \(yz\). Reciprocal rescaling
+preserves matching while making erosion arbitrarily large; balanced vertices
+uniquely minimize it. A balance law or two calibrated threshold widths is a
+new source/instrument requirement, not a selector consequence.
+
+## Protected threshold-port no-go: WP671
+
+- flavor-protected-threshold-port-no-go.md
+- checkers/wp671_protected_threshold_port_no_go.py
+- results/wp671_protected_threshold_port_no_go.json
+
+WP671 shows that reciprocal protected vertices do not yield two reciprocal
+on-shell decay ports: the two threshold margins sum to \(-2m_n\). The single
+ordinary unpolarized width has rank one and admits hostile vertex pairs with
+equal width but different loop erosion. Rank-two identification requires a
+source-derived polarization or angular analyzer in the one open channel, not
+a formal second directional decay.
+
+## Protected chirality analyzer: WP672
+
+- flavor-protected-chirality-analyzer.md
+- checkers/wp672_protected_chirality_analyzer.py
+- results/wp672_protected_chirality_analyzer.json
+
+WP672 constructs the ideal repair in the one open decay. Total rate
+\(W=u+v\) plus signed chirality moment \(N=\alpha(u-v)\) has determinant
+\(-2\alpha\) and reconstructs the loop erosion \(u^2+v^2\) exactly. Symmetric
+helicity confusion collapses rank only at one half. The probe is source-derived
+at amplitude level; a physical polarimeter and calibrated likelihood remain
+unproved.
+
+## Protected conditional Gram: WP673
+
+- flavor-protected-conditional-gram.md
+- checkers/wp673_protected_conditional_gram.py
+- results/wp673_protected_conditional_gram.json
+
+WP673 conditions the ideal two-port response on an independently declared
+positive detector precision. The exact Gram determinant is
+\(4\alpha^2(pq-r^2)\), and a positive uncertainty-stable lower bound follows
+from separate analyzer and metric calibrations. Zero chirality precision
+collapses the Gram to rank one. The theorem rejects covariance fitted from the
+desired answer; a named physical polarimeter remains absent.
+
+## Source-derived cascade polarimeter: WP674
+
+- flavor-source-derived-cascade-polarimeter.md
+- checkers/wp674_source_derived_cascade_polarimeter.py
+- results/wp674_source_derived_cascade_polarimeter.json
+
+WP674 finds a source-derived ideal polarimeter in the existing route:
+protected \(A\to B+n\) followed by the chiral exit \(B\to q_R+X\). An exact
+charge table preserves the flip, and a positive-mass witness opens both cascade
+stages. In the ideal limit, total rate plus the signed exit-quark angular
+moment has determinant minus two. Finite-mass transfer and an actual calibrated
+detector analysis remain absent.
+
+## Finite-mass cascade response: WP675
+
+- flavor-finite-mass-cascade-response.md
+- checkers/wp675_finite_mass_cascade_response.py
+- results/wp675_finite_mass_cascade_response.json
+
+WP675 derives the finite-mass rate and signed angular kernels on the
+positive-real, narrow-width protected slice. Their exact nonlinear Jacobian is
+nonzero throughout the open threshold domain and collapses at the exact parent
+threshold. The mass interference term does not erase rank. Complex phase,
+finite width, off-shell transport, reconstruction, and detector calibration
+remain open.
+
+## Exchange-balance UV selector: WP676
+
+- flavor-exchange-balance-uv-selector.md
+- checkers/wp676_exchange_balance_uv_selector.py
+- results/wp676_exchange_balance_uv_selector.json
+
+WP676 tests the simplest Deutschian explanation of vertex balance. Exact
+partner exchange of the internal mass block forces equal masses and reciprocal
+vertices and uniquely minimizes loop erosion at fixed product. WP681 corrects
+its authority: independently typed entrance and exit endpoints break the
+exchange, so this is an internal-block rigidifier, not a full source selector.
+
+## Contextual cascade quotient: WP677
+
+- flavor-contextual-cascade-quotient.md
+- checkers/wp677_contextual_cascade_quotient.py
+- results/wp677_contextual_cascade_quotient.json
+
+WP677 types the finite-mass cascade at endpoint, analyzer, phase-frame, and
+ordered-factorization levels. The signed analyzer removes the endpoint swap
+fiber on the real-positive interior, but complex conjugation and generic phase
+fibers survive, distinct ordered constructors can give the same composite
+record, and full algebraic rank has no uniform detector authority without an
+independent positive precision bound. Context saturation is currently only
+under the identity preparation; any enlarged source preparation family must
+be closed explicitly before cascade substitution is admitted.
+
+## Native CP-odd port no-go: WP678
+
+- flavor-native-cp-odd-port-no-go.md
+- checkers/wp678_native_cp_odd_port_no_go.py
+- results/wp678_native_cp_odd_port_no_go.json
+
+WP678 answers the Deutschian phase question negatively for the admitted
+unpolarized cascade. Three-body momentum closure makes the momentum-only
+scalar triple product identically zero, so the native record remains invariant
+under complex conjugation. An oriented spin or beam reference can supply a
+rank-restoring sine-phase port, but that is a new polarized relational
+experiment with a changed stabilizer groupoid, not recovery of an absolute
+phase from the original cascade.
+
+## Identical-beam orientation no-go: WP679
+
+- flavor-identical-beam-orientation-no-go.md
+- checkers/wp679_identical_beam_orientation_no_go.py
+- results/wp679_identical_beam_orientation_no_go.json
+
+WP679 tests the smallest collider reference. At an unpolarized identical-beam
+proton-proton source, the signed CP port is odd under beam exchange and its
+untagged expectation vanishes. Squaring erases the phase sign. A source-derived
+beam-odd event tag would make the relational product descend, but no such
+associated-production constructor or calibrated tag is currently admitted.
+
+## Associated-production beam tag: WP680
+
+- flavor-associated-production-beam-tag.md
+- checkers/wp680_associated_production_beam_tag.py
+- results/wp680_associated_production_beam_tag.json
+
+WP680 finds the missing source constructor algebraically. The admitted
+entrance Yukawa and messenger QCD color generate (qg\to AH); the sign of the
+associated-system rapidity is beam odd, so its product with the beam-oriented
+CP statistic descends under identical-beam exchange. Nonzero calibrated tag
+dilution restores generic phase rank. Finite matrix-element synthesis, PDFs,
+reconstruction, dilution, covariance, and context saturation remain separate
+physical-instrument gates.
+
+## Full-grammar exchange audit: WP681
+
+- flavor-full-grammar-exchange-audit.md
+- checkers/wp681_full_grammar_exchange_audit.py
+- results/wp681_full_grammar_exchange_audit.json
+
+WP681 corrects WP676 by testing the full route rather than its internal mass
+block. Fixed entrance and exit currents break partner exchange. On the balanced
+block, the frame fluctuation becomes diagonal in the physical pole basis, so
+the cross-pole cascade used by WP674 vanishes exactly. Exchange balance is
+therefore a conditional internal rigidifier and minimizer, not a genuine
+source selector, and it cannot be combined with the proposed analyzer route.
+
+## Balance-analyzer tradeoff: WP682
+
+- flavor-balance-analyzer-tradeoff.md
+- checkers/wp682_balance_analyzer_tradeoff.py
+- results/wp682_balance_analyzer_tradeoff.json
+
+WP682 extends the WP681 closure away from the exact locus. With mass detuning
+(\Delta=M_A-M_B), the cross-pole frame vertex is
+(y\Delta/\sqrt{\Delta^2+4m^2}). Analyzer amplitude vanishes linearly and its
+information weight quadratically as exchange balance is approached. The
+proposed selector and analyzer are structurally antagonistic; a successor
+requires a different source-derived operator that does not commute with the
+balanced mass block.
+
+## Endpoint-interference reference gate: WP683
+
+- flavor-endpoint-interference-reference-gate.md
+- checkers/wp683_endpoint_interference_reference_gate.py
+- results/wp683_endpoint_interference_reference_gate.json
+
+WP683 finds that the typed entrance and exit projectors do not commute with the
+balanced mass tensor, but the isolated cross-endpoint probability remains even
+in the mixing sign and depends only on the magnitude of complex mixing. A
+coherent amplitude into the same external channel would restore sign-sensitive
+interference. No independently normalized same-channel reference amplitude is
+currently admitted, so algebraic noncommutation is not executable phase
+control.
+
+## Exit-flavon Higgs-portal typing: WP684
+
+- flavor-exit-flavon-higgs-portal-typing.md
+- checkers/wp684_exit_flavon_higgs_portal_typing.py
+- results/wp684_exit_flavon_higgs_portal_typing.json
+
+WP684 rejects transport of the older trace-adjoint Higgs portal to the
+messenger exit field. The latter is an (SU(3)_F) adjoint and (SO(3)_P)
+vector, so no invariant linear Higgs portal exists. The lowest legal term is
+(\lambda_p(H^\dagger H)(X\cdot X)), which induces radial mixing only after a
+nonzero exit vacuum is derived. The complete mixed potential, portal
+coefficient, and common-frame vacuum are not currently admitted, leaving this
+as a typed candidate rather than a coherent reference amplitude.
+
+## Radial portal vacuum: WP685
+
+- flavor-radial-portal-vacuum.md
+- checkers/wp685_radial_portal_vacuum.py
+- results/wp685_radial_portal_vacuum.json
+
+WP685 declares the minimal radial Higgs/exit-flavon potential and proves that
+a stable nonzero mixed vacuum exists on an open source domain. The exact mixing
+entry is (2\lambda_phx). However, the same grammar permits
+(\lambda_p=0), leaving independent stable vacua and no coherent reference.
+This is an existence constructor, not a selector or a completion-safe full
+scalar model; orientation invariants, RG closure, and exclusion of the
+zero-portal stratum remain open.
+
+## Radiative exit-Higgs portal: WP686
+
+- flavor-radiative-exit-higgs-portal.md
+- checkers/wp686_radiative_exit_higgs_portal.py
+- results/wp686_radiative_exit_higgs_portal.json
+
+WP686 closes the zero-portal truncation at one loop. The ordinary quark Yukawa
+and messenger exit Yukawa share (q_R), and
+(\operatorname{Tr}[(MM^\dagger)^2]) contains
+(2y_q^2y_X^2h^2x^2) per color. The quadratic Higgs-exit portal is therefore
+a required counterterm when both Yukawas are nonzero. This is source-generated
+operator support and radiative rigidification, not numerical selection: a
+renormalized boundary value can still cancel the portal at one scale, and the
+full beta and finite threshold remain open.
+
+## Exit-portal threshold matching: WP687
+
+- flavor-exit-portal-threshold-matching.md
+- checkers/wp687_exit_portal_threshold_matching.py
+- results/wp687_exit_portal_threshold_matching.json
+
+WP687 computes the finite one-loop heavy-messenger threshold on the declared
+radial modified-minimal-subtraction slice. For
+(V\supset\lambda_ph^2x^2/2), matching at (mu=M_B) gives
+(\delta\lambda_p=N_cy_q^2y_X^2/(4\pi^2)>0). This fixes the sign and
+normalization of one source-derived threshold contribution. It does not fix
+the total portal because the independent UV boundary coupling, additional
+messengers, orientation invariants, and subsequent running remain free.
+
+## Flavor-Gram portal threshold: WP688
+
+- flavor-gram-portal-threshold.md
+- checkers/wp688_flavor_gram_portal_threshold.py
+- results/wp688_flavor_gram_portal_threshold.json
+
+WP688 lifts the threshold to the full flavor tensor. Its source factor is the
+positive pairing
+(P=\operatorname{Tr}[(Y_q^\dagger Y_q)(Y_X^\dagger Y_X)]), a weighted sum
+of squares in the quark-mass basis. With all ordinary quark Yukawas nonzero,
+the pairing is faithful on nonzero exit tensors; for the canonical exit shape
+it is the sum of the three squared Yukawas. This rigidifies positive threshold
+support without selecting the total renormalized portal. An exactly massless
+quark direction is the boundary kernel.
+
+## Affine portal comparison theorem: WP689
+
+- flavor-two-scale-portal-cancellation-no-go.md
+- checkers/wp689_two_scale_portal_cancellation_no_go.py
+- results/wp689_two_scale_portal_cancellation_no_go.json
+
+WP689 proves the affine theorem that an independent boundary can hide a
+response in only one of two distinct contexts. For (lambda_p(L)=a+bL), the
+two-context determinant is (L_2-L_1) and the exact boundary-independent floor
+is (b|L_2-L_1|/2). WP690 withdraws the original assignment of probe authority
+to distinct renormalization-scale choices: (L_1,L_2) must instead be distinct
+source-authorized physical contexts.
+
+## Renormalization scale is not a physical probe: WP690
+
+- flavor-renormalization-scale-noninstrument.md
+- checkers/wp690_renormalization_scale_noninstrument.py
+- results/wp690_renormalization_scale_noninstrument.json
+
+WP690 combines running with the explicit fixed-momentum logarithm and proves
+that (F(Q;mu)=a+b log(Q/mu_0)) is independent of (mu). Renormalization-scale
+variation therefore cannot supply complementary observations. Distinct
+physical momenta retain the affine determinant (log(Q_2/Q_1)) and remove the
+boundary parameter in their difference, but this becomes an admitted probe
+only after a finite-momentum same-channel amplitude and two calibrated
+momentum-bin measurements are constructed.
+
+## Spacelike threshold context: WP691
+
+- flavor-spacelike-threshold-context.md
+- checkers/wp691_spacelike_threshold_context.py
+- results/wp691_spacelike_threshold_context.json
+
+WP691 replaces scale variation with the smallest genuine momentum context.
+The once-subtracted equal-mass Euclidean threshold kernel is strictly
+increasing in (Q^2/M^2), so two distinct momenta give a rank-two affine
+response while the local heavy-mass limit remains rank one. This is a physical
+context mechanism, not yet the full messenger four-point amplitude or a
+calibrated exit-flavon instrument.
+
+## Visible Higgs-port mixing kernel: WP692
+
+- flavor-higgs-port-mixing-kernel.md
+- checkers/wp692_higgs_port_mixing_kernel.py
+- results/wp692_higgs_port_mixing_kernel.json
+
+WP692 propagates a momentum-dependent radial mixing response through the
+ordinary visible Higgs port. Two distinct bins are locally rank two when both
+mixings are nonzero, but the readout is even in the mixing and therefore
+retains the global pair identification ((a,b),(-a,-b)). The construction
+supplies a legal detector projection, not a calibrated instrument or selector;
+the full messenger self-energy and detector response remain open.
+
+## Hidden-port sign groupoid: WP693
+
+- flavor-hidden-port-sign-groupoid.md
+- checkers/wp693_hidden_port_sign_groupoid.py
+- results/wp693_hidden_port_sign_groupoid.json
+
+WP693 retypes the WP692 sign pair. On the reduced radial two-point domain,
+changing the mixing sign is conjugation by the hidden-port reflection that
+fixes the visible Higgs source vector. The two signs are therefore one
+visible-port operational class, not yet two inequivalent `physical16` points.
+An exit-sensitive cross port distinguishes them only by defining a richer
+relational experiment over a smaller stabilizer groupoid.
+
+## Full-source visible-port hostile pair: WP694
+
+- flavor-full-source-visible-port-hostile-pair.md
+- checkers/wp694_full_source_visible_port_hostile_pair.py
+- results/wp694_full_source_visible_port_hostile_pair.json
+
+WP694 lifts the sign audit to the complete radial source. Retuning only the
+quadratic masses constructs two stable opposite-portal branches with identical
+vacuum norms, pole polynomial, and visible Higgs two-point resolvents. Their
+mixed fourth derivatives remain opposite and invariant under radial sign
+changes. The first nonfaithful arrow is therefore the reduction from the full
+radial source to the visible two-point packet.
+
+## Visible cubic branch separator: WP695
+
+- flavor-visible-cubic-branch-separator.md
+- checkers/wp695_visible_cubic_branch_separator.py
+- results/wp695_visible_cubic_branch_separator.json
+
+WP695 repairs the WP694 hostile pair on an exact stable radial slice. Both
+portal-sign branches have spectrum ({1,5}) and equal visible overlaps, but the
+on-shell heavy-to-two-light cubic is (7 sqrt(2)/2) on the positive branch and
+zero on the negative branch. This is a source-derived visible branch separator
+and candidate instrument topology, not a selector of which branch is realized.
+
+## Cubic separator corridor: WP696
+
+- flavor-cubic-separator-corridor.md
+- checkers/wp696_cubic_separator_corridor.py
+- results/wp696_cubic_separator_corridor.json
+
+WP696 promotes the WP695 witness to the full symmetric corridor
+(3/5<p/lambda<1). Stability and on-shell kinematics hold throughout;
+the positive-portal cubic is strictly nonzero while the negative-portal cubic
+vanishes identically. This is a continuum ideal-rate separator on a declared
+slice, still awaiting asymmetric completion and detector calibration.
+
+## Asymmetric cubic lifting: WP697
+
+- flavor-asymmetric-cubic-lifting.md
+- checkers/wp697_asymmetric_cubic_lifting.py
+- results/wp697_asymmetric_cubic_lifting.json
+
+WP697 attacks the symmetry-slice zero. A quartic asymmetry leaves the two
+portal branches isospectral but lifts the negative-branch cubic linearly,
+while the positive branch has no linear correction. The completion-stable
+claim is therefore an asymmetry-suppressed rate hierarchy, not an exactly
+forbidden decay.
+
+## Finite-asymmetry cubic hierarchy: WP698
+
+- flavor-finite-asymmetry-cubic-hierarchy.md
+- checkers/wp698_finite_asymmetry_cubic_hierarchy.py
+- results/wp698_finite_asymmetry_cubic_hierarchy.json
+
+WP698 gives the exact finite-asymmetry result. In the positive mass-basis
+coordinate (t), the branch amplitude ratio is ((t-1)/(t+1)) and the ideal rate
+ratio is its square. The hierarchy is strict throughout the stable open-decay
+domain for every finite positive (t), but still identifies rather than selects.
+
+## Detector contrast budget: WP699
+
+- flavor-detector-contrast-budget.md
+- checkers/wp699_detector_contrast_budget.py
+- results/wp699_detector_contrast_budget.json
+
+WP699 shows why pointwise cubic separation is not uniformly faithful. On a
+source-authorized reciprocal support window (1/T<=t<=T), the exact contrast
+floor is (4T/(T+1)^2) and yields a finite signal-versus-uncertainty budget.
+Without finite source support, the uniform floor vanishes. Detector calibration
+and the source derivation of that support remain open.
+
+## Stability-authorized contrast floor: WP700
+
+- flavor-stability-authorized-contrast-floor.md
+- checkers/wp700_stability_authorized_contrast_floor.py
+- results/wp700_stability_authorized_contrast_floor.json
+
+WP700 derives the missing support from source stability itself. On the
+declared coupling corridor (1<lambda/p<5/3), every stable asymmetry lies in an
+exact reciprocal (t) interval and the ideal branch contrast is uniformly
+greater than three quarters. The corridor remains unselected and detector
+calibration remains open.
+
+## Coupling-corridor nonselection: WP701
+
+- flavor-coupling-corridor-nonselection.md
+- checkers/wp701_coupling_corridor_nonselection.py
+- results/wp701_coupling_corridor_nonselection.json
+
+WP701 closes the selector overreach. Stability requires only (lambda/p>1),
+not the WP700 upper bound (lambda/p<5/3); an exact stable witness at ratio two
+has closed cubic phase space. The same grammar also admits a stable zero-portal
+stratum. Stability rigidifies support conditionally but does not select either
+the instrument corridor or a portal branch.
+
+## Affine matching nonselection: WP702
+
+- flavor-affine-matching-nonselection.md
+- checkers/wp702_affine_matching_nonselection.py
+- results/wp702_affine_matching_nonselection.json
+
+WP702 proves that finite threshold and transport corrections cannot select the
+WP700 corridor while the two UV quartic boundaries remain independently free.
+The matching map is an affine bijection and reaches inside, outside, and
+zero-portal targets. Radiative support is a rigidifier; selection requires a
+new noninvertible UV boundary constructor.
+
+## Copositive boundary cancellation: WP703
+
+- flavor-copositive-boundary-cancellation.md
+- checkers/wp703_copositive_boundary_cancellation.py
+- results/wp703_copositive_boundary_cancellation.json
+
+WP703 closes the proposed positivity repair. Both radial quartic copositivity
+and the stronger mixed-vacuum Hessian condition admit negative UV portal
+boundaries. The exact stable witness with self-couplings two, positive
+threshold one, and UV portal minus one has zero low-energy portal. Stability
+therefore rigidifies the admissible domain but does not select nonzero portal
+support or the WP700 ratio corridor.
+
+## Scalar projective infrared ray: WP704
+
+- flavor-scalar-projective-ir-ray.md
+- checkers/wp704_scalar_projective_ir_ray.py
+- results/wp704_scalar_projective_ir_ray.json
+
+WP704 finds a source-derived candidate selector in the closed WP662 scalar
+flow. On the symmetric positive subspace, the ratio flow has rays one half and
+three halves; strict radial stability excludes the lower ray, and the full
+stable basin approaches three halves at the Gaussian infrared limit. At every
+finite matching scale the trajectory constant remains visible. The result is
+therefore an asymptotic tangent-cone selector and finite-scale rigidifier, not
+yet a `physical16` selector. Full gauge, Yukawa, messenger, threshold, and
+instrument completion are the decisive gates.
+
+## Projective-ray transverse saddle: WP705
+
+- flavor-projective-ray-transverse-saddle.md
+- checkers/wp705_projective_ray_transverse_saddle.py
+- results/wp705_projective_ray_transverse_saddle.json
+
+WP705 attacks the WP704 ray in the full four-quartic WP662 scalar family. The
+symmetric-ratio and triplet-asymmetry modes are infrared-attractive, but the
+independently allowed coefficient of ((n\mathbin\cdot m)^2) has projective
+exponent minus (112\rho) and is infrared-repulsive. A positive infinitesimal
+coefficient is compatible with boundedness. The ray is therefore an infrared
+saddle, and its apparent selection depends on the unselected invariant slice
+(lambda_c=0).
+
+## Correlation-forbidding symmetry tradeoff: WP706
+
+- flavor-c-forbidding-symmetry-tradeoff.md
+- checkers/wp706_c_forbidding_symmetry_tradeoff.py
+- results/wp706_c_forbidding_symmetry_tradeoff.json
+
+WP706 tests the obvious symmetry repair for WP705. Independent rotations of
+the two triplets forbid the correlation quartic, but also remove the angular
+term that rigidifies their relative frame. The norm-only Hessian has four zero
+modes against a three-dimensional diagonal orbit, leaving one physical angle
+flat. Coupling both triplets to one quark or messenger flavor space breaks the
+product symmetry back to the diagonal and permits the quartic again. A viable
+repair needs a different grading that protects the slice without destroying
+the common faithful frame.
+
+## Two-vector angular invariant no-go: WP707
+
+- flavor-two-vector-angular-invariant-no-go.md
+- checkers/wp707_two_vector_angular_invariant_no_go.py
+- results/wp707_two_vector_angular_invariant_no_go.json
+
+WP707 completes the invariant grammar behind WP706. For two real triplets with
+diagonal (SO(3)), independent flips, and field degree at most four, the only
+relative-angle invariant is ((n\mathbin\cdot m)^2). The angular stiffness at
+an orthogonal frame is exactly (2\lambda_c), so protecting
+(lambda_c=0) makes the angle physically flat. No alternative symmetry label
+on the same renormalizable field content can preserve both slice protection
+and frame rigidity. A reopening must enlarge the source grammar or find a
+full-domain attractive ray with nonzero (lambda_c).
+
+## Full scalar nonzero-correlation ray no-go: WP708
+
+- flavor-full-scalar-nonzero-c-ray-no-go.md
+- checkers/wp708_full_scalar_nonzero_c_ray_no_go.py
+- results/wp708_full_scalar_nonzero_c_ray_no_go.json
+
+WP708 closes WP707's remaining same-field ray branch for the complete WP662
+scalar one-loop flow. Exact elimination finds only two real rays with nonzero
+correlation coupling: both have self-to-cross ratios one half and correlation
+ratio one or two. Their radial stability margin is exactly zero. Thus the
+(lambda_c=0) ray is an infrared saddle, while every real
+(lambda_c\ne0) ray is radially marginal. A progressive successor must
+derive additional beta contributions from a completed source and displace a
+ray into the strict-stability interior.
+
+## Beta-displacement acceptance functional: WP709
+
+- flavor-beta-displacement-acceptance-functional.md
+- checkers/wp709_beta_displacement_acceptance_functional.py
+- results/wp709_beta_displacement_acceptance_functional.json
+
+WP709 computes the exact first-order repair condition at the regular WP708
+boundary ray. For completion corrections ((N,M,X,C)), the radial stability
+margin responds as ((N+M-X)/28); the correlation-beta correction is radially
+invisible at first order. This is a source-typing acceptance functional, not a
+selector: the correction signs remain unauthorized until derived from one
+completed gauge-Yukawa-messenger or new-field action.
+
+## Wavefunction running is radially null: WP710
+
+- flavor-wavefunction-running-radial-null.md
+- checkers/wp710_wavefunction_running_radial_null.py
+- results/wp710_wavefunction_running_radial_null.json
+
+WP710 applies the WP709 gate to the largest model-independent correction
+class. Independent triplet normalizations leave both
+(lambda_n\lambda_m/\lambda_x^2) and (lambda_c/\lambda_x) exactly invariant.
+Their anomalous-dimension contributions obey (N+M-X=0) for arbitrary unequal
+field anomalous dimensions. Wavefunction running is therefore presentation
+transport, not a stability-opening selector. Only genuine vertex corrections
+can reopen the marginal ray.
+
+## Disjoint-messenger ray displacement: WP711
+
+- flavor-disjoint-messenger-ray-displacement.md
+- checkers/wp711_disjoint_messenger_ray_displacement.py
+- results/wp711_disjoint_messenger_ray_displacement.json
+
+WP711 applies the WP709 gate to the existing source-authorized WP664 Dirac
+messenger vertex correction. Disjoint chains give (N=-8F_n), (M=-8F_m),
+and (X=0), hence radial displacement
+(-2(F_n+F_m)/7). Every nontrivial chain moves the marginal ray toward
+instability, consistently with WP665's exact cone-leak sign. A progressive
+repair now requires an independently derived mixed or bosonic vertex channel
+whose complete signed contribution outweighs this erosion.
+
+## Bosonic vertex contrast gate: WP712
+
+- flavor-bosonic-vertex-contrast-gate.md
+- checkers/wp712_bosonic_vertex_contrast_gate.py
+- results/wp712_bosonic_vertex_contrast_gate.json
+
+WP712 constructs the minimal conditional bosonic reopening. A heavy real boson
+with mass squared (M^2+g_n|n|^2+g_m|m|^2) supplies the positive Gram contrast
+(kappa(g_n-g_m)^2). Combined with WP711, the marginal ray opens only when
+(kappa(g_n-g_m)^2>8(F_n+F_m)). This is an algebraically progressive signed
+vertex mechanism, not yet a flavor selector: the boson, counterterm channel,
+thresholds, transverse basin, and calibrated readout remain to be derived from
+one frozen source.
+
+## Bosonic-portal scalar RG closure: WP713
+
+- flavor-bosonic-portal-scalar-rg-closure.md
+- checkers/wp713_bosonic_portal_scalar_rg_closure.py
+- results/wp713_bosonic_portal_scalar_rg_closure.json
+
+WP713 closes the scalar RG grammar of the WP712 extension. The Hessian
+supertrace generates exactly seven quartics and fixes the bosonic contrast
+normalization to four, so radial opening against WP711 requires
+((g_n-g_m)^2>2(F_n+F_m)). The portal and boson self-couplings run and cannot
+be treated as frozen response knobs. Full projective-ray and transverse-basin
+classification is now the next gate.
+
+## Exchange-symmetric bosonic ray no-go: WP714
+
+- flavor-exchange-symmetric-bosonic-ray-no-go.md
+- checkers/wp714_exchange_symmetric_bosonic_ray_no_go.py
+- results/wp714_exchange_symmetric_bosonic_ray_no_go.json
+
+WP714 solves the correlation-bearing exchange-symmetric sector of WP713.
+There are four real rays, all with self-to-mixed ratio one half, zero bosonic
+portal contrast, and radial margin zero. The boson self-coupling distinguishes
+some rays but does not open stability. Any progressive bosonic ray must
+therefore break triplet exchange and pass the full asymmetric basin test.
+
+## Abelian moment-map selector obstruction: WP715
+
+- flavor-abelian-moment-map-selector-obstruction.md
+- checkers/wp715_abelian_moment_map_selector_obstruction.py
+- results/wp715_abelian_moment_map_selector_obstruction.json
+
+WP715 tests the first genuinely hard-to-vary source principle. One gauged
+Abelian moment map fixes portal signs and relative magnitudes through quantized
+charges, but its quartic Gram is identically rank one: the radial margin is
+zero for every charge assignment, and no angular stiffness is generated. The
+complete explanation therefore needs a rank-at-least-two non-Abelian or
+multi-moment-map geometry rather than one charge square.
+
+## Rank-two moment-map partial repair: WP716
+
+- flavor-rank-two-moment-map-partial-repair.md
+- checkers/wp716_rank_two_moment_map_partial_repair.py
+- results/wp716_rank_two_moment_map_partial_repair.json
+
+WP716 proves that two positive moment-map directions repair the WP715 radial
+obstruction exactly: the stability margin is the weighted squared area of the
+two triplet charge vectors. A minimal integer charge packet also forces
+opposite portal signs. The repair is incomplete because common gauge-metric
+rescaling leaves the charge geometry intact while changing the absolute portal
+magnitude, norm-only maps produce no angular stiffness, and RG attraction,
+nondecoupling threshold support, and calibrated source-incidence readout remain
+unconstructed. The next source candidate must therefore unify the metric and
+generate angular structure, rather than merely add an adjustable Abelian
+factor.
+
+## Non-Abelian real-triplet moment-map no-go: WP717
+
+- flavor-nonabelian-real-triplet-moment-map-no-go.md
+- checkers/wp717_nonabelian_real_triplet_moment_map_no_go.py
+- results/wp717_nonabelian_real_triplet_moment_map_no_go.json
+
+WP717 tests the direct unified non-Abelian repair on the admitted real-triplet
+domain. The adjoint moment map is proportional to the conjugate cross product
+and vanishes identically on the real slice. Parallel and orthogonal real
+frames therefore have different faithful angular coordinates but identical
+zero moment-map readout. Complex or cotangent directions repair the algebra
+only by adding a reference port and changing the state domain. The surviving
+source class is a real-triplet tensor or F-term constraint whose coefficient,
+RG basin, threshold support, and instrument must all be derived together.
+
+## Auxiliary-square portal Gram no-go: WP718
+
+- flavor-auxiliary-square-portal-gram-no-go.md
+- checkers/wp718_auxiliary_square_portal_gram_no_go.py
+- results/wp718_auxiliary_square_portal_gram_no_go.json
+
+WP718 classifies the complete family of real triplet auxiliary channels linear
+in the portal field. Their induced portal matrix is the positive Gram
+\(K=\kappa C^TC\). Independent flips require orthogonal Clebsch columns;
+source exchange then forces equal norms and zero portal contrast. Unequal
+representation-fixed Clebsches can rigidify a ratio, but common rescaling
+changes the magnitude and the portal square supplies no angular stiffness.
+The next progressive candidate must therefore combine a representation-fixed
+unequal Clebsch packet with gauge–Yukawa normalization and a shared angular
+constraint, rather than invoke a generic F-term.
+
+## Gauge–Yukawa normalization fixed-point gate: WP719
+
+- flavor-gauge-yukawa-normalization-fixed-point-gate.md
+- checkers/wp719_gauge_yukawa_normalization_fixed_point_gate.py
+- results/wp719_gauge_yukawa_normalization_fixed_point_gate.json
+
+WP719 ties the Clebsch Gram normalization to a gauge coupling. This fixes the
+portal ratio and the contrast sign once representations are fixed, but the
+one-loop gauge trajectory retains its boundary value and selects no nonzero
+magnitude. The minimal magnitude-selector candidate is an interacting zero of
+the completed gauge–Yukawa–quartic beta system. Its matter content must fix the
+beta coefficients, its full stability matrix must supply the basin, and its
+threshold and labelled detector maps must preserve the same contrast.
+
+## Fixed-point threshold readout factorization: WP720
+
+- flavor-fixed-point-threshold-readout-factorization.md
+- checkers/wp720_fixed_point_threshold_readout_factorization.py
+- results/wp720_fixed_point_threshold_readout_factorization.json
+
+WP720 factors the proposed selector into fixed point, relevant deformation,
+threshold matching, and detector response. For affine matching
+\(p_{\mathrm{low}}=p_*+A\rho\), contrast survives arbitrary threshold motion exactly
+when \(dA=0\), unless the source uniquely fixes the visible components of
+\(\rho\). An unlabelled total detector channel then kills the contrast even
+when threshold matching preserves it; two calibrated representation-labelled
+channels retain it. The required explanation must select a complete relevant
+trajectory and its instrument, not merely a fixed point.
+
+## Safe-separatrix transmutation-scale fiber: WP721
+
+- flavor-safe-separatrix-transmutation-scale-fiber.md
+- checkers/wp721_safe_separatrix_transmutation_scale_fiber.py
+- results/wp721_safe_separatrix_transmutation_scale_fiber.json
+
+WP721 tests the established asymptotically safe gauge–Yukawa source class.
+Its interacting fixed point and one-dimensional safe critical surface fix
+projective coupling data and transverse directions, but the trajectory retains
+one translation constant, equivalently a dimensional-transmutation scale. The
+portal at a fixed experimental energy varies along this fiber. A complete
+source explanation must derive the relevant deformation amplitude from a
+physical normalization or explicitly retain one measured dimensionful input;
+detector calibration cannot be reused as source selection.
+
+## Autonomous RG translation no-go: WP722
+
+- flavor-autonomous-rg-translation-no-go.md
+- checkers/wp722_autonomous_rg_translation_no_go.py
+- results/wp722_autonomous_rg_translation_no_go.json
+
+WP722 generalizes the WP721 residual to every autonomous dimensionless RG
+system. Time translation preserves each nonconstant solution and all its
+projective relations while changing any readout with nonzero Lie derivative
+along the beta vector field. The orbit and basin can be rigidified without
+selecting their placement at a physical energy. The minimal repair is a
+source-authorized dimensionful boundary condition. No admitted flavor object
+currently provides that anchor; measured electroweak or detector scales cannot
+be promoted into source authority without a named interface constructor.
+
+## Existing common-clock anchor audit: WP723
+
+- flavor-existing-common-clock-anchor-audit.md
+- checkers/wp723_existing_common_clock_anchor_audit.py
+- results/wp723_existing_common_clock_anchor_audit.json
+
+WP723 tests WP489, the closest admitted mass-generation candidate, against the
+WP722 anchor gate. Its common singlet propagates one clock into every flavor,
+electroweak, connector, and messenger mass, but common dilation of the input
+\(w\) changes all absolute masses. Even after fixing the electroweak norm,
+WP537 and WP543 leave one exact coefficient tangent that changes the flavor
+clock ratio while preserving every admitted equality and strict threshold
+support. The common source is therefore a parallelizer and conditional
+relational selector, not a derived anchor or numerical portal selector.
+
+## Clock-locked conditional selector: WP724
+
+- flavor-clock-locked-conditional-selector.md
+- checkers/wp724_clock_locked_conditional_selector.py
+- results/wp724_clock_locked_conditional_selector.json
+
+WP724 states the maximal noncircular explanation conditional on one
+independently calibrated clock. A representation-fixed Clebsch contrast, an
+interacting gauge–Yukawa normalization, a fully attractive dimensionless
+critical surface, a source equality locking the crossover and messenger scales
+to the common singlet, and two calibrated representation-labelled channels
+would jointly fix portal sign, magnitude, mass ratios, and readout. The exact
+composition works, but no admitted matter theory, matching calculation, or
+actual experiment realizes all antecedents. This is an acceptance
+specification, not a promoted flavor theorem.
+
+## Real-triplet Abelian-charge typing no-go: WP725
+
+- flavor-real-triplet-abelian-charge-typing-no-go.md
+- checkers/wp725_real_triplet_abelian_charge_typing_no_go.py
+- results/wp725_real_triplet_abelian_charge_typing_no_go.json
+
+WP725 repairs a hidden carrier defect in WP715–WP716. The commutant of the real
+irreducible \(SO(3)\) triplet is scalar, and kinetic-metric preservation forces
+every commuting continuous Abelian generator to zero. Nonzero charge requires
+doubling the real carrier to install a complex structure, changing the state
+domain and physical groupoid. The moment-map identities remain conditional on
+that enlargement. The progressive branch must put representation asymmetry in
+charged messengers or auxiliaries and prove mediated descent back to the real
+triplet quotient.
+
+## Charged-scalar messenger descent nonselection: WP726
+
+- flavor-charged-scalar-messenger-descent-nonselection.md
+- checkers/wp726_charged_scalar_messenger_descent_nonselection.py
+- results/wp726_charged_scalar_messenger_descent_nonselection.json
+
+WP726 constructs the minimal mediated repair of WP725. Heavy charged scalars
+couple through neutral real-triplet norms, and their one-loop determinant
+descends to the original quotient. The exact mixed curvature proves portal
+support, but its finite value vanishes at the natural scalar matching scale,
+changes sign with matching presentation, and is cancellable by an allowed
+renormalized boundary coupling. Representation multiplicity fixes only an
+integer prefactor; continuous vertex products remain. Mediated charge repairs
+typing and may supply labelled ports, but it does not select the portal.
+
+## Safe flavor-portal exchange no-go: WP727
+
+- flavor-safe-flavor-portal-exchange-no-go.md
+- checkers/wp727_safe_flavor_portal_exchange_no_go.py
+- results/wp727_safe_flavor_portal_exchange_no_go.json
+
+WP727 audits a concrete anomaly-free asymptotically safe flavor-portal model
+class. Its admitted Higgs portal is proportional to
+\((H^\dagger H)\operatorname{Tr}(S^\dagger S)\), so its two-coordinate
+restriction lies entirely in the exchange-even line and has exactly zero
+ordered contrast. Adding the smallest exchange-odd operator produces contrast
+\(2\epsilon\), but only by introducing a new continuous coefficient. The
+paper's matching-scale BSM couplings are input coordinates on a viable
+critical surface, not a singleton source prediction. WP728 corrects the
+initial successor wording: an exchange-symmetric fixed point forces a unique
+odd coordinate to zero. The viable successor must explicitly orient the
+channels by non-isomorphic source representations, make fluctuations about
+the resulting nonzero fixed contrast irrelevant, and separately fix the
+relevant clock deformation.
+
+## Exchange-equivariant fixed-point orientation theorem: WP728
+
+- flavor-exchange-equivariant-fixed-point-orientation-theorem.md
+- checkers/wp728_exchange_equivariant_fixed_point_orientation.py
+- results/wp728_exchange_equivariant_fixed_point_orientation.json
+
+WP728 proves that a unique fixed point of an exchange-equivariant beta field
+has zero exchange-odd portal coordinate. Nonzero symmetric-source fixed points
+can occur only in exchange-related pairs, so they select at most a magnitude
+or orbit; distinguishing their signs requires a relational reference and a
+changed stabilizer groupoid. A unique nonzero ordered contrast instead needs
+non-isomorphic representation data that explicitly orient the two channels.
+The fluctuation about that nonzero fixed coordinate may then be irrelevant.
+An exact affine witness shows that one relevant clock direction and one
+irrelevant nonzero contrast direction are algebraically compatible, but its
+coefficients are not yet derived from an admitted anomaly-free matter model.
+
+## Vectorlike singlet–triplet additive portal source: WP729
+
+- flavor-vectorlike-singlet-triplet-additive-portal-source.md
+- checkers/wp729_vectorlike_singlet_triplet_additive_portal_source.py
+- results/wp729_vectorlike_singlet_triplet_additive_portal_source.json
+
+WP729 finds a primary-source-supported exchange-odd affine beta mechanism.
+The one-loop portal beta function of arXiv:2008.08606 contains the additive
+term (-I_\kappa\alpha_\kappa\alpha_y/3), with (I_\kappa=12) for its
+vectorlike electroweak-singlet model A and (9) for triplet model B. Equal
+positive Yukawa products therefore give a nonzero oriented source contrast.
+Representation data alone do not select it: the positive ratio
+(q_B=4q_A/3) cancels the contrast exactly. A local affine completion fixes
+contrast (q/\vartheta) with irrelevant portal fluctuations, but the paper
+does not supply the simultaneous A+B beta system. The next gate is that full
+direct-sum calculation with every allowed scalar cross-coupling.
+
+## Direct-sum portal-block acceptance theorem: WP730
+
+- flavor-direct-sum-portal-block-acceptance-theorem.md
+- checkers/wp730_direct_sum_portal_block_acceptance.py
+- results/wp730_direct_sum_portal_block_acceptance.json
+
+WP730 includes the unavoidable mixed scalar-norm channel in the linearized
+two-portal block. For stability matrix entries (a,b,c), the fixed contrast is
+([4q_A(b+c)-3q_B(a+c)]/(ab-c^2)), and the positive cancellation fiber shifts
+to (q_B/q_A=4(b+c)/[3(a+c)]). Both portal directions are predicted when the
+block is positive definite. If a relevant portal mode remains, it is harmless
+only when the contrast covector annihilates its eigenvector. Exact witnesses
+separate a relevant even mode, which changes only the portal sum, from a
+relevant odd mode, which restores a free contrast amplitude. The completed
+direct-sum calculation must therefore determine the full stability
+eigenvectors, not merely two diagonal portal exponents.
+
+## Direct-sum mixed-norm radiative closure: WP731
+
+- flavor-direct-sum-mixed-norm-radiative-closure.md
+- checkers/wp731_direct_sum_mixed_norm_radiative_closure.py
+- results/wp731_direct_sum_mixed_norm_radiative_closure.json
+
+WP731 derives the first actual off-diagonal source in WP730's portal block.
+Any symmetry admitting both Higgs portals also admits the neutral mixed norm
+quartic (R_AR_B). The exact scalar Hessian-square divergence for component
+counts (4+18+18) generates its coefficient as
+(8\delta_A\delta_B) at zero mixed coupling. A nonzero mixed coupling feeds
+back as (36\delta_Bw) and (36\delta_Aw) in the two portal equations.
+Therefore the uncoupled A+B portal surface is not radiatively closed. The
+calculation covers the radial norm sector; the next gate is enumeration and
+RG closure of all additional mixed matrix-scalar tensor quartics.
+
+## Two-matrix mixed-quartic grammar: WP732
+
+- flavor-two-matrix-mixed-quartic-grammar.md
+- checkers/wp732_two_matrix_mixed_quartic_grammar.py
+- results/wp732_two_matrix_mixed_quartic_grammar.json
+
+WP732 exposes a source-symmetry tradeoff. Independent chiral flavor groups
+permit only the mixed norm product but supply no intertwiner relating the two
+Yukawa products. A common biunitary frame with independent sector gradings
+admits four balanced mixed quartics. A matrix-unit evaluation has determinant
+minus one, proving their exact independence, while the radial identity slice
+collapses them to the ratio (9:9:3:3). Thus a common flavor structure invoked
+to remove WP729's Yukawa cancellation fiber also opens three tensor directions
+invisible to WP731's radial calculation. The programme must either derive the
+Yukawa relation while preserving independent groups or close the full
+four-coupling mixed tensor beta system.
+
+## Gauge-parallelized Yukawa contrast sign theorem: WP733
+
+- flavor-gauge-parallelized-yukawa-contrast-sign-theorem.md
+- checkers/wp733_gauge_parallelized_yukawa_contrast_sign.py
+- results/wp733_gauge_parallelized_yukawa_contrast_sign.json
+
+WP733 takes WP732's independent-flavor-group branch. The separately published
+one-loop model-A and model-B Yukawa nullclines are solved over common positive
+electroweak gauge coordinates and a common top-bottom contribution. Their
+induced additive portal contrast is a strictly positive polynomial throughout
+the domain where both displayed Yukawa solutions are positive; the WP729
+cancellation ratio is absent. Thus shared gauge dynamics can orient the sign
+without a common scalar flavor frame. The result is not yet the simultaneous
+theory: common Standard Model fields generate cross A/B anomalous dimensions,
+and the combined matter content changes the gauge beta functions. Those terms
+must be derived before magnitude or basin authority is granted.
+
+## Cross-anomalous-dimension sign falsifier: WP734
+
+- flavor-cross-anomalous-dimension-sign-falsifier.md
+- checkers/wp734_cross_anomalous_dimension_sign_falsifier.py
+- results/wp734_cross_anomalous_dimension_sign_falsifier.json
+
+WP734 attacks WP733 with the missing simultaneous-theory structure. General
+nonnegative cross coefficients (x,y) are added to the two mixed-Yukawa
+nullclines. Their additive portal contrast vanishes on an exact algebraic
+surface (F(x,y)=0). The strictly positive witness
+(x=1), (y=759/28-33\sqrt{1493}/56) lies on that surface while all four
+Yukawa fixed coordinates remain positive. Therefore positivity of the shared
+wavefunction contributions does not protect WP733's sign. The actual common
+Higgs and lepton anomalous-dimension coefficients must be calculated and shown
+to lie a strict uncertainty-stable distance from the cancellation surface.
+
+## Simultaneous singlet-triplet nullcline no-go: WP735
+
+- flavor-simultaneous-singlet-triplet-nullcline-no-go.md
+- checkers/wp735_simultaneous_singlet_triplet_nullcline_no_go.py
+- results/wp735_simultaneous_singlet_triplet_nullcline_no_go.json
+
+WP735 derives the actual shared-field cross coefficients with an executable
+PyR@TE tensor calculation and validates their normalization by reproducing the
+published diagonal coefficients. They are (x=21/4) and (y=7). The exact
+simultaneous one-loop nullcline then obeys
+(kappa_A=-6(4T+12g_1+53g_2)/103). Hence no point in the nonnegative source
+domain has all four Yukawa squared couplings strictly positive. The
+gauge-parallelized singlet-triplet direct sum therefore does not provide the
+sought selector: shared-field backreaction removes its candidate fully
+interacting source surface. A successor must derive a structural modification
+of this numerator independently before magnitude, basin, threshold, or
+instrument gates can be reopened.
+
+## Diagonal product-group Clebsch selector: WP736
+
+- flavor-diagonal-product-group-clebsch-selector.md
+- checkers/wp736_diagonal_product_group_clebsch_selector.py
+- results/wp736_diagonal_product_group_clebsch_selector.json
+
+WP736 replaces WP735's two independently fixed low-energy Yukawas by one
+parent invariant. Breaking (SU(2)_A x SU(2)_B) to its diagonal decomposes a
+bifundamental as (1+3) and fixes the Hiller-normalized squared-coupling ratio
+(alpha_kappaB/alpha_kappaA=4). With one parent flavor Yukawa, the additive
+portal contrast is strictly positive at matching. This is the first concrete
+representation theorem in the branch that selects the ordered sign without
+tuning a portal difference. The Clebsch ray is not invariant below breaking:
+(d log(alpha_kappaB/alpha_kappaA)/dt=-12 alpha_2). Moreover, putting L and H
+on different product-group sites forbids ordinary renormalizable parent SM
+Yukawas. The construction is therefore a matching-scale selector and
+rigidifier, not yet a complete numerical low-energy selector; it requires a
+source-derived link/mediator completion, fixed breaking clock, finite matching,
+and independently calibrated labelled readout.
+
+## Minimal product-parent fixed-point no-go: WP737
+
+- flavor-minimal-product-parent-fixed-point-no-go.md
+- checkers/wp737_minimal_product_parent_fixed_point_no_go.py
+- results/wp737_minimal_product_parent_fixed_point_no_go.json
+
+WP737 tests whether WP736's minimal anomaly-compatible matter assignment also
+fixes the portal magnitude. Its executable 210 gauge-Yukawa system loses
+asymptotic freedom in hypercharge and (SU(2)_A), but the unique parent Yukawa
+cannot generate either required interacting zero. After its nullcline is
+inserted, both gauge brackets are coefficientwise strictly positive; the
+reduced (SU(2)_A) bracket is at least one. A nonnegative parent flavor Yukawa
+only lowers the portal Yukawa and strengthens the obstruction. Thus the
+minimal product group is a genuine matching-scale sign selector but not a
+magnitude selector or RG-basin constructor. Any repair requires independently
+motivated additional Yukawa-active matter, not a tuned enlargement chosen to
+manufacture a zero.
+
+## Required link mediators fixed-point exhaustion: WP738
+
+- flavor-required-link-mediators-fixed-point-exhaustion.md
+- checkers/wp738_required_link_mediators_fixed_point_exhaustion.py
+- results/wp738_required_link_mediators_fixed_point_exhaustion.json
+
+WP738 adds only the vectorlike quark and lepton doublets forced by the
+link-mediated completion of Standard Model Yukawas. Their five renormalizable
+link and Higgs couplings supply additional source-authorized gauge screening.
+An exact rational audit exhausts all 64 Yukawa subsets and all four choices in
+which asymptotically free (SU(2)_B) and color are interacting or Gaussian,
+while the two IR-free factors remain active. None of the 256 branches is
+physical. The fully interacting solution already has negative color and
+(SU(2)_B) squared coordinates. Thus even the compulsory mediator completion
+does not turn WP736's matching-scale sign selector into a magnitude selector.
+Further matter is admissible only if independently required by another source
+principle, not selected by scanning for a fixed point.
+
+## SO(5) singlet-multiplicity projector obstruction: WP739
+
+- flavor-so5-singlet-multiplicity-projector-obstruction.md
+- checkers/wp739_so5_singlet_multiplicity_projector_obstruction.py
+- results/wp739_so5_singlet_multiplicity_projector_obstruction.json
+
+WP739 tests the smallest simple-group source for WP736. The (5) of (SO(5))
+restricts through (SO(4)) to the physical diagonal group as (3+1+1), not
+(3+1). Its residual commutant contains an (O(2)) rotation of the two singlets.
+A unique parent invariant therefore fixes only the complete two-singlet
+isotypic packet; it does not select which rank-one singlet is the measured
+model-A mediator. An exact commuting rotation changes a witness selected
+coupling squared continuously from one to zero. A source-derived breaking
+potential and gapped mass projector could remove the fiber, but that projector
+must be derived and transported independently before the (SO(5)) beta system
+has selector authority.
+
+## SO(5) minimal projector vacuum saddle: WP740
+
+- flavor-so5-minimal-projector-vacuum-saddle.md
+- checkers/wp740_so5_minimal_projector_vacuum_saddle.py
+- results/wp740_so5_minimal_projector_vacuum_saddle.json
+
+WP740 tests the smallest dynamical repair of WP739. One real
+symmetric-traceless (14) with a (Z2)-even renormalizable potential forces the
+only possible (3+1+1) eigenvalue pattern to be (0,0,0,v,-v), which would fix
+the singlet projectors without a mixing angle. The exact Hessian rules it out:
+stabilizing the upper (3x3) shape modes requires negative (lambda_2), while
+existence of the nonzero vacuum then makes the two-singlet Hessian determinant
+(24 lambda_2(2 lambda_1+lambda_2)) strictly negative. The opposite sign
+destabilizes the shape modes and zero leaves flats. A cubic invariant or higher
+operator may repair the saddle, but its coefficient and resulting eigenvalue
+ratios require independent source authority.
+
+## SO(5) full renormalizable projector no-go: WP741
+
+- flavor-so5-full-renormalizable-projector-no-go.md
+- checkers/wp741_so5_full_renormalizable_projector_no_go.py
+- results/wp741_so5_full_renormalizable_projector_no_go.json
+
+WP741 closes WP740's cubic loophole. For the complete renormalizable potential
+of one real symmetric-traceless (14), every distinct (3+1+1) stationary orbit
+can be written as \(\operatorname{diag}(1,1,1,t,-3-t)\). Shape stability
+requires \(\lambda_2(t-1)(t+4)<0\). Positivity of the two invariant modes
+would then force \(\lambda_2+2\lambda_1<0\), but their leading principal minor is the sum of two
+strictly negative terms. Degenerate parameter boundaries leave flat modes or
+merge the two singlets. Thus the cubic invariant supplies neither a stable
+projector rigidifier nor a selector. Any successor needs an independently
+required new source object that changes this Hessian obstruction; portal
+magnitude, basin, threshold, and calibrated-readout gates remain unopened.
+
+## Orbifold projector conditional rigidifier: WP742
+
+- flavor-orbifold-projector-conditional-rigidifier.md
+- checkers/wp742_orbifold_projector_conditional_rigidifier.py
+- results/wp742_orbifold_projector_conditional_rigidifier.json
+
+WP742 tests geometric projection as the first successor to the full one-(14)
+no-go. An (S^1/Z_2) parity with four positive vector eigenvalues removes the
+extra (SO(5)) singlet and leaves (4=3+1) under the diagonal (SO(3)), so it
+conditionally supplies the unique projector and inherits WP736's Clebsch
+ratio. It does not select its own boundary or intrinsic parity class: reversing
+the intrinsic parity retains only the complementary singlet. The effective
+magnitude still depends on the bulk coupling and compactification length, and
+residual-symmetry boundary operators shift the ordered threshold contrast by
+an independent difference. No calibrated physical16 instrument follows from
+the geometry. The construction is therefore a conditional rigidifier and
+projector selector, not the requested source selector.
+
+## Gauge-connection bulk contrast no-go: WP743
+
+- flavor-gauge-connection-bulk-contrast-no-go.md
+- checkers/wp743_gauge_connection_bulk_contrast_no_go.py
+- results/wp743_gauge_connection_bulk_contrast_no_go.json
+
+WP743 promotes the orbifold carrier to the fifth component of an (SO(5))
+gauge connection. One-form covariance now forces the opposite (A_\mu/A_5)
+parities, so the four (SO(5)/SO(4)) scalar zero modes and their common gauge
+coupling are source-derived; the ordinary scalar's intrinsic-parity fiber is
+gone. But the exact symmetric commutant of the bulk (SO(4)) vector is only
+the scalar line, forcing zero singlet–triplet contrast. At a diagonal-(SO(3))
+boundary the commutant becomes (operatorname{diag}(a,a,a,b)), so asymmetry
+first becomes legal exactly where the free coefficient (b-a) reappears.
+The gauge construction is a carrier selector and coupling parallelizer, not an
+asymmetric portal or magnitude selector; its clock, boundary completion, RG
+trajectory, thresholds, and instrument remain open.
+
+## SO(5) anomaly-quantization type no-go: WP744
+
+- flavor-so5-anomaly-quantization-type-no-go.md
+- checkers/wp744_so5_anomaly_quantization_type_no_go.py
+- results/wp744_so5_anomaly_quantization_type_no_go.json
+
+WP744 tests whether anomaly inflow can quantize WP743's free boundary
+contrast. All (10^3) symmetrized cubic tensors vanish independently in the
+vector and Clifford-spinor realizations of (SO(5)); the diagonal (SO(3))
+triplet tensor also vanishes. An (SU(3)) comparator is nonzero, so this is a
+group-theoretic obstruction rather than a checker blind spot. Independently,
+a reduced five-dimensional Chern–Simons term has the parity-odd operator type
+(A_5F\wedge F), not the CP-even scalar-quadratic portal. Ordinary local
+anomaly quantization therefore neither fixes nor rigidifies (b-a). Global
+anomalies, larger groups, and discrete or nonlocal holonomies remain separate
+successors and must pass the same operator-type gate.
+
+## Holonomy contrast dichotomy: WP745
+
+- flavor-holonomy-contrast-dichotomy.md
+- checkers/wp745_holonomy_contrast_dichotomy.py
+- results/wp745_holonomy_contrast_dichotomy.json
+
+WP745 closes the discrete-holonomy branch for the WP743 carrier. The exact Lie
+centralizer of diagonal (SO(3)) in (SO(4)) is trivial, and its group
+centralizer on the vector is only ({I_4,-I_4}); both act identically on the
+triplet and singlet and yield no contrast. The smallest distinguishing twist
+(operatorname{diag}(-I_3,1)) has determinant minus one, so it lies outside
+the admitted gauge group and defines a changed (O(4)) or defect experiment.
+That reduction still admits (operatorname{diag}(aI_3,b)), leaving the
+continuous contrast (b-a). Hence preserving holonomies do not distinguish,
+while distinguishing holonomies change the groupoid and fail to normalize the
+portal. Additional source dynamics is required before the clock, basin,
+threshold, and instrument gates can open.
+
+## SU(3) moment-map conditional selector: WP746
+
+- flavor-su3-moment-map-conditional-selector.md
+- checkers/wp746_su3_moment_map_conditional_selector.py
+- results/wp746_su3_moment_map_conditional_selector.json
+
+WP746 returns to positive moment-map geometry after the topological
+operator-type failures. One simple (SU(3)) Killing metric and fundamental
+weights can conditionally generate the correct CP-even portal:
+(g_n=g^2/3), (g_m=-g^2/6), contrast (g^2/2), and strict radial margin
+(g^4/12). This fixes relative metric, sign ratio, and stability without an
+independent portal-difference coefficient. It does not yet descend: exchanging
+the two weight embeddings reverses the ordered contrast, the fundamental is a
+complex six-real-dimensional carrier rather than the admitted real triplet,
+and common gauge rescaling changes the magnitude. An oriented anomaly-free
+mediated descent, interacting normalization with a source clock,
+nondecoupling threshold completion, and calibrated physical16 instrument
+remain required.
+
+## Nondecoupling D-term threshold fiber: WP747
+
+- flavor-nondecoupling-dterm-threshold-fiber.md
+- checkers/wp747_nondecoupling_dterm_threshold_fiber.py
+- results/wp747_nondecoupling_dterm_threshold_fiber.json
+
+WP747 tests threshold survival of the conditional WP746 moment map. Exact
+heavy-breaking-scalar elimination multiplies its positive square by
+(epsilon=m_{\mathrm{soft}}^2/(g^2M^2+m_{\mathrm{soft}}^2)). Every finite
+positive (epsilon) preserves the portal sign ratio (-2) and strict radial
+margin, but the supersymmetric limit gives (epsilon=0) and erases the portal.
+Every value in the open unit interval is realized by a continuous soft-to-vector
+mass ratio. Thus nondecoupling matching rigidifies sign and ratio but does not
+select survival or magnitude. The breaking ratio, gauge normalization, clock,
+complete threshold spectrum, and calibrated physical16 instrument remain
+source gates.
+
+## Fixed-point anomaly/nondecoupling incompatibility: WP748
+
+- flavor-fixed-point-anomaly-nondecoupling-incompatibility.md
+- checkers/wp748_fixed_point_anomaly_nondecoupling_incompatibility.py
+- results/wp748_fixed_point_anomaly_nondecoupling_incompatibility.json
+
+WP748 tests whether pure anomaly mediation can derive WP747's soft mass while
+an interacting fixed point fixes WP746's gauge magnitude. The anomaly-mediated
+maps are proportional to beta functions and their Lie derivatives, so every
+required soft term vanishes at the exact fixed point. Consequently
+(epsilon_*=0) and the additional (D)-term portal decouples. Moving off the
+fixed point restores a soft mass proportional to a critical-mode amplitude,
+RG time, and (m_{3/2}), with no automatic positive sign. The two desired
+selectors are therefore incompatible in pure anomaly mediation: exact
+fixed-point normalization kills nondecoupling, while nonzero nondecoupling
+restores the amplitude and clock fibers. Mixed mediation mechanisms remain
+possible but introduce new source data requiring independent authority.
+
+## Single-spurion correlated-Higgsing acceptance theorem: WP749
+
+- flavor-single-spurion-correlated-higgsing-acceptance.md
+- checkers/wp749_single_spurion_correlated_higgsing_acceptance.py
+- results/wp749_single_spurion_correlated_higgsing_acceptance.json
+
+WP749 isolates the exact condition under which a successor can escape WP748's
+independent-clock obstruction. If one source deformation gives
+\(M_V^2=a g_*^2v^2\) and \(m_{\mathrm{soft}}^2=b g_*^2v^2\), then the common
+clock cancels and the portal contrast is
+\(g_*^2b/(2(a+b))>0\). This conditionally preserves the selected sign and fixes
+the magnitude once \(a:b\) and \(g_*\) are source-fixed. It is not itself a
+source explanation: two positive coefficient packets at identical \(g_*,v\)
+give contrasts differing by \(g_*^2/8\), and threshold support still depends
+on \(v\). The next admissible model must derive the ordered embedding, a unique
+coefficient ray, an attractive fixed point, the finite threshold spectrum,
+and a calibrated `physical16` instrument from one anomaly-free source.
+
+## Single-spurion Wilson-coefficient dichotomy: WP750
+
+- flavor-single-spurion-wilson-coefficient-dichotomy.md
+- checkers/wp750_single_spurion_wilson_coefficient_dichotomy.py
+- results/wp750_single_spurion_wilson_coefficient_dichotomy.json
+
+WP750 tests whether WP749's common-spurion acceptance condition is already a
+source explanation. It is not. The minimal gauge-invariant Kähler basis has
+independent coefficients \(c_+\) and \(c_-\). Their difference mixes the
+nominal heavy and light link directions, so a common spurion without exchange
+symmetry is neither a selector nor a rigidifier. Exchange symmetry removes the
+mixing but leaves one unrestricted coefficient \(c\), giving
+\(\epsilon=c/(2q^2+c)\). At fixed \(q^2=1,g,v\), \(c=1\) and \(c=3\) produce
+portal contrasts differing by \(2g^2/15\). The next source principle must both
+forbid the exchange-odd operator and normalize the surviving exchange-even
+operator; common source identity alone does neither.
+
+## Extended-SUSY normalization/nondecoupling dichotomy: WP751
+
+- flavor-extended-susy-normalization-nondecoupling-dichotomy.md
+- checkers/wp751_extended_susy_normalization_nondecoupling_dichotomy.py
+- results/wp751_extended_susy_normalization_nondecoupling_dichotomy.json
+
+WP751 tests extended supersymmetry as the stronger operator principle requested
+by WP750. In a canonical \(N=2\) gauge-hypermultiplet sector, the matter
+interaction is tied to the gauge metric, but exact supersymmetry forces the
+soft mass and additional nondecoupling portal to vanish. Breaking to \(N=1\)
+restores the portal only by admitting a breaking scale and Wilson coefficient.
+Even after correlating the scale with \(g^2v^2\), the threshold factor is
+\(c/(2q^2+c)\), and the same \(2g^2/15\) hostile residual remains. Thus exact
+extended supersymmetry is a normalizer with zero portal, whereas generic
+breaking permits the portal but restores the coefficient fiber. A viable
+successor must derive and quantize the breaking constructor itself.
+
+## Radiative half-twist conditional selector: WP752
+
+- flavor-radiative-half-twist-conditional-selector.md
+- checkers/wp752_radiative_half_twist_conditional_selector.py
+- results/wp752_radiative_half_twist_conditional_selector.json
+
+WP752 finds the first progressive breaking mechanism after WP751. Two valid
+orbifold boundary involutions admit a continuous relative twist, so geometry
+alone does not quantize it. But a positive source-derived bulk spectral
+coefficient in \(V(\omega)=A\cos(2\pi\omega)\) dynamically selects the stable
+half twist with an attractive basin. With a common Kaluza–Klein clock this
+gives \(\epsilon=1/(4N^2+1)\), and the unit mode predicts the positive contrast
+\(g_*^2/10\), independent of the compactification radius. The result remains
+conditional: boundary-localized masses continuously shift the prediction,
+threshold accessibility retains the radius, and neither the complete
+anomaly-free spectrum, full twist potential, gauge fixed point, physical16
+descent, nor calibrated instrument has been derived.
+
+## Full KK-tower half-twist theorem: WP753
+
+- flavor-full-kk-tower-half-twist-theorem.md
+- checkers/wp753_full_kk_tower_half_twist_theorem.py
+- results/wp753_full_kk_tower_half_twist_theorem.json
+
+WP753 proves that WP752's half-twist selector is not a first-harmonic artifact.
+The complete massless tower
+\(\sum_{n\geq1}\cos(2\pi n\omega)/n^5\) is a positive Laplace integral of
+geometric cosine kernels strictly increasing in \(\cos(2\pi\omega)\).
+Consequently a positive spectral index \(\kappa\) gives a unique half-twist
+minimum, curvature \(3\pi^2\kappa\zeta(3)/R^4\), and endpoint gap
+\(31\kappa\zeta(5)/(16R^4)\). The unit-mode prediction
+\(\Delta=g_*^2/10\) and its attractive basin survive the full tower. The
+remaining source gate is now sharply spectral: the actual anomaly-free bulk
+content must derive \(\kappa>0\), while bulk masses, multiple twist charges,
+boundary operators, the radius threshold, and the physical instrument remain
+to be completed.
+
+## Bulk-localization spectral-index fiber: WP754
+
+- flavor-bulk-localization-spectral-index-fiber.md
+- checkers/wp754_bulk_localization_spectral_index_fiber.py
+- results/wp754_bulk_localization_spectral_index_fiber.json
+
+WP754 computes the WP753 signed index on distinct five-dimensional lifts of
+the same four-dimensional anomaly-compatible flavor grammar. Bulk gauge
+multiplets and only the bifundamental link give
+\(\kappa=2+15-4=13>0\), selecting the half twist. Moving the already required
+\(L,H,\Psi_R\) packet into the bulk gives \(\kappa=-19\), selecting zero twist;
+including the WP738 required mediators gives \(\kappa=-67\). The count uses two
+5D hypermultiplets per 4D vectorlike zero-mode pair, because opposite orbifold
+parities leave only one chiral zero mode per hypermultiplet. Thus the existing
+four-dimensional representation packet does not authorize a spectral sign.
+The next source constructor must derive bulk-versus-boundary placement through
+five-dimensional locality and anomaly inflow before the radiative selector
+has physical authority.
+
+## Anomaly-inflow localization cofiber: WP755
+
+- flavor-anomaly-inflow-localization-cofiber.md
+- checkers/wp755_anomaly_inflow_localization_cofiber.py
+- results/wp755_anomaly_inflow_localization_cofiber.json
+
+WP755 tests whether anomaly inflow supplies the missing WP754 localization
+constructor. For one cancellable anomaly channel,
+\(A_0=b_0+B/2+k\) and \(A_\pi=b_\pi+B/2-k\). Global anomaly cancellation
+fixes only \(b_0+b_\pi+B=0\); an adjustable Chern–Simons level cancels the
+remaining boundary difference. The same \(+1,-1\) four-dimensional chiral
+packet is locally consistent either with both modes in the bulk and \(k=0\),
+or split across the boundaries and \(k=-1\), while the bulk spectral count
+differs by two. Anomaly inflow therefore defines a cofiber of localization and
+inflow classes, not a selector. A higher source must fix the full
+Chern–Simons level vector before local consistency can constrain localization.
+
+## Fixed-inflow anomaly-neutral localization kernel: WP756
+
+- flavor-fixed-inflow-anomaly-neutral-localization-kernel.md
+- checkers/wp756_fixed_inflow_anomaly_neutral_localization_kernel.py
+- results/wp756_fixed_inflow_anomaly_neutral_localization_kernel.json
+
+WP756 freezes the Chern–Simons level and tests the strongest surviving form of
+the anomaly-localization proposal. A vectorlike \((+1,-1)\) pair can be moved
+between a common boundary and the bulk without changing either local anomaly
+or the fixed value \(k=0\), while the bulk realization requires two
+hypermultiplets. In the flavor witness, moving only the WP738 anomaly-neutral
+mediator pairs into the bulk changes \(\kappa\) from \(13\) to \(-35\) without
+changing the anomaly vector or inflow class. Thus fixed inflow remains blind
+on an anomaly-neutral localization kernel and cannot make the radiative portal
+selector hard to vary. The next source principle must couple independently to
+anomaly-neutral matter placement before the normalization, RG, threshold,
+`physical16`, and detector gates can acquire authority.
+
+## Domain-wall localization magnitude fiber: WP757
+
+- flavor-domain-wall-localization-magnitude-fiber.md
+- checkers/wp757_domain_wall_localization_magnitude_fiber.py
+- results/wp757_domain_wall_localization_magnitude_fiber.json
+
+WP757 tests the first source operation that is sensitive to the WP756
+anomaly-neutral kernel. A scalar kink gives opposite normalized zero-mode
+profiles with boundary-density ratio \(e^{2x}\) and exact contrast \(2x\),
+where \(x=ML>0\). It therefore conditionally selects a localization side and
+rigidifies a boundary coupling. The domain-wall index is nevertheless constant
+throughout \(x>0\): \(x=1/2\) and \(x=3/2\) have the same chirality but
+contrasts \(1\) and \(3\), and wall reversal reverses the labelled sign. The
+kink is progressive but not a numerical selector. A successor must derive a
+source-fixed orientation and a quantized or attractive value of \(ML\), then
+prove RG, finite-wall, KK-threshold, `physical16`, and instrument survival.
+
+## BPS-wall separation-modulus fiber: WP758
+
+- flavor-bps-wall-separation-modulus-fiber.md
+- checkers/wp758_bps_wall_separation_modulus_fiber.py
+- results/wp758_bps_wall_separation_modulus_fiber.json
+
+WP758 grants the strongest favorable BPS repair of WP757: supersymmetry fixes
+a unit \(\operatorname{sech}\) zero-mode exponent. The normalized
+center-to-boundary contrast is still
+\(\Delta(a)=\tanh^2(a)/2\), where \(a=kd\) is the wall–boundary separation in
+wall-width units. Two walls with the same BPS charge and local profile,
+\(a=\operatorname{arctanh}(1/2)\) and
+\(a=\operatorname{arctanh}(3/4)\), give contrasts \(1/8\) and \(9/32\).
+Therefore BPS structure normalizes the local shape but leaves a global
+translation/radion fiber. The next constructor must stabilize one labelled
+dimensionless separation in the same source action before RG, thresholds,
+`physical16`, and detector survival can be tested.
+
+## Bulk-scalar stabilization boundary-ratio fiber: WP759
+
+- flavor-bulk-scalar-stabilization-boundary-ratio-fiber.md
+- checkers/wp759_bulk_scalar_stabilization_boundary_ratio_fiber.py
+- results/wp759_bulk_scalar_stabilization_boundary_ratio_fiber.json
+
+WP759 supplies the source-derived stabilizer requested by WP758. The leading
+bulk-scalar potential has a stable minimum
+\(s_*=\log(v_0/v_\pi)/\epsilon\). Even granting a common wall/stabilizer scale,
+the composed portal contrast is
+\(\Delta(r)=(r^2-1)^2/[2(r^2+1)^2]\), with \(r=v_0/v_\pi\). Boundary packets
+\(r=2\) and \(r=3\) obey the same variational law and have stable minima but
+predict \(9/50\) and \(8/25\). The stabilizer selects a separation conditional
+on boundary data; it does not select the boundary data. A successor must derive
+their ratio and labelled ordering from a unique or quantized source vacuum
+before RG, threshold, `physical16`, and detector gates acquire authority.
+
+## Oriented quantized-tadpole singleton gate: WP760
+
+- flavor-oriented-quantized-tadpole-singleton-gate.md
+- checkers/wp760_oriented_quantized_tadpole_singleton_gate.py
+- results/wp760_oriented_quantized_tadpole_singleton_gate.json
+
+WP760 replaces WP759's continuous boundary values by positive integer charges
+with fixed total \(T\) and an oriented endpoint label. The exact asymmetric
+fiber size is \(\lfloor(T-1)/2\rfloor\). It is a singleton only for \(T=3\)
+or \(T=4\), selecting ratios \(2\) or \(3\) and portal contrasts \(9/50\) or
+\(8/25\). At \(T=5\), pairs \((3,2)\) and \((4,1)\) already give distinct
+contrasts \(25/338\) and \(225/578\). Quantization therefore supplies the
+first possible discrete selector, but only if an admitted flavor topology
+independently forces one exceptional minimal total and the labelled
+orientation. RG-stable integers do not yet prove matching, `physical16`, or
+detector survival.
+
+## Flavor integer-numerology fork: WP761
+
+- flavor-integer-numerology-fork.md
+- checkers/wp761_flavor_integer_numerology_fork.py
+- results/wp761_flavor_integer_numerology_fork.json
+
+WP761 asks whether the admitted representation/anomaly packet derives WP760's
+exceptional total. All perturbative anomaly coordinates vanish familywise,
+the weak-doublet count is Witten-even familywise, and the new pairs are
+vectorlike. These authorized probes return no positive tadpole. The
+presentation separately contains family multiplicity \(3\) and bifundamental
+dimension \(4\); reinterpreting them as \(T\) predicts different singleton
+contrasts \(9/50\) and \(8/25\), while the zero anomaly vector chooses neither.
+A five-family hostile remains anomaly-free but produces a nonsingleton fiber
+under the family-count reinterpretation. Therefore no source index map is yet
+defined. A successor must derive an integral map from compactification or
+defect topology to ordered boundary charge before the WP760 theorem has flavor
+authority.
+
+## Spin(5) parent-parity interface audit: WP896
+
+- flavor-spin5-parent-parity-interface-audit.md
+- checkers/wp896_spin5_parent_parity_interface_audit.py
+- results/wp896_spin5_parent_parity_interface_audit.json
+
+WP896 attacks the source-spin boundary. WP239's dimuon selection truth-matches
+the signal daughters to a PDG-25 mother, so WP893's CP-even adapter survives:
+the dataset's `MA` token labels the MSSM parameter point rather than the
+event-level parent used by the response. The tau pilot carries no analogous
+parent-PDG or parity field, so its finite-grid detector theorem remains valid
+but its Spin(5) transfer is parity-untyped. WP895 is tightened to require a
+declared neutral CP-even parent, daughter ancestry, width, and source-card hash
+at both direct poles.
+
+## Universal-mixing source-card factorization: WP897
+
+- flavor-spin5-universal-mixing-source-card-factorization.md
+- checkers/wp897_spin5_universal_mixing_source_card_factorization.py
+- results/wp897_spin5_universal_mixing_source_card_factorization.json
+
+WP897 derives the direct-pole source-card family from the admitted portal.
+Universal Higgs mixing multiplies every partial width, the total width, and
+bottom-associated production by \(q_i=\theta_i^2\), so the physical branching
+fractions are exactly independent of \(q_i\). The official calibration yields
+18.7241295132 and 3.31722675436 tau pairs per inverse femtobarn per unit
+\(q_i\). An unrelated MSSM spectrum is unnecessary: the two free mixing
+magnitudes remain normalization/width coordinates. The unresolved gate is
+detector-template stability over their width interval, followed by execution;
+the factorization selects no numerical value.
+
+## Width-response resolution bound: WP898
+
+- flavor-spin5-width-response-resolution-bound.md
+- checkers/wp898_spin5_width_response_resolution_bound.py
+- results/wp898_spin5_width_response_resolution_bound.json
+
+WP898 converts WP897's continuous mixing-width family into one conditional
+detector calibration. Under a centered Gaussian response convolved with a
+Breit--Wigner half-width \(\gamma\), every threshold CDF changes by at most
+\(\gamma/(\sigma\sqrt{2\pi})\). The five finite boundaries of the six-bin tau
+partition therefore obey
+\(d_{\rm TV}\leq5\gamma/(\sigma\sqrt{2\pi})\). At a diagnostic one-percent
+tolerance the two sufficient resolution floors are about 0.581 and 2.473 GeV.
+The theorem reduces the scan but does not supply Gaussian/tail calibration;
+that same-frame measurement remains the instrument gate.
+
+## Tau-resolution applicability audit: WP899
+
+- flavor-spin5-tau-resolution-applicability-audit.md
+- checkers/wp899_spin5_tau_resolution_applicability_audit.py
+- results/wp899_spin5_tau_resolution_applicability_audit.json
+
+WP899 tests whether the existing tau pilot supplies WP898's \(\sigma\). It
+does not: WP253 measures visible muon--hadronic-tau mass, including neutrino
+loss and decay kinematics, rather than an event-joined parent-mass residual.
+The pilot has none of the five required fields: true parent join, reconstructed
+parent estimator, centered residual, Gaussian covariance, or tail budget.
+Its applicability vector is \((0,0,0,0,0)\), and WP256's exact nonclosure
+supports withholding a universal kernel. WP898 remains a conditional theorem;
+the finite tau discriminator remains admitted on its original domain.
+
+## Paired-width response experiment: WP900
+
+- flavor-spin5-paired-width-response-experiment.md
+- checkers/wp900_spin5_paired_width_response_experiment.py
+- results/wp900_spin5_paired_width_response_experiment.json
+
+WP900 replaces WP898's Gaussian assumption by a direct distribution-free
+four-cell experiment: zero and maximal widths at each pole, passed through the
+same CP-even source and CMS detector chain. A two-sample multinomial bound gives
+the acceptance rule
+\(\widehat d+r(n_0,\alpha)+r(n_1,\alpha)\leq\varepsilon\), with
+\(r=\sqrt{\log(2^{k+2}/\alpha)/(2n)}\) after union over all four cells. For six bins, 95% joint coverage,
+equal cells and a diagnostic one-percent tolerance, zero observed drift still
+requires 170819 selected events per cell. This closes the finite statistical
+grammar but does not execute the four samples or select the mixing values.
+
+## Zero-drift width certificate: WP901
+
+- flavor-spin5-zero-drift-width-certificate.md
+- checkers/wp901_spin5_zero_drift_width_certificate.py
+- results/wp901_spin5_zero_drift_width_certificate.json
+
+WP901 instantiates the corrected four-cell WP900 theorem at exactly zero
+observed drift. Simultaneous 95% coverage and a diagnostic one-percent
+tolerance require exactly 170819 selected events per cell, 683276 total. The
+upper bound is 0.00999997642 and the four-cell failure bound is 0.04999798594;
+one fewer event per cell fails. Projecting the 140 GeV pilot acceptance gives
+about 6.45 million generated events per cell, explicitly only a capacity
+diagnostic. The certificate remains prospective because the four samples have
+not been generated.
+
+## Paired null-completed width test: WP902
+
+- flavor-spin5-paired-null-completed-width-test.md
+- checkers/wp902_spin5_paired_null_completed_width_test.py
+- results/wp902_spin5_paired_null_completed_width_test.json
+
+WP902 reduces WP901's independent-sample cost through a preregistered
+common-random-number coupling. Each paired trial retains one of seven outputs:
+six bins or a typed selection-failure null. Coupling gives
+\(d_{\rm TV}\leq p_{\rm discord}\); with zero discordances the exact binomial
+upper bound applies. Using the pilot acceptance only as a design floor, 95%
+two-pole coverage and one-percent conditional-shape tolerance require 27856
+pairs per pole, 55712 total; one fewer fails. Pairing must be executable,
+frozen, replayable, null-complete, and accompanied by an independently
+certified acceptance floor. Otherwise WP901 remains the fallback.
+
+## Chiral-index vectorlike kernel: WP762
+
+- flavor-chiral-index-vectorlike-kernel.md
+- checkers/wp762_chiral_index_vectorlike_kernel.py
+- results/wp762_chiral_index_vectorlike_kernel.json
+
+WP762 tests the ordinary domain-wall index as the missing integral map. The
+index \(I=n_0-n_\pi\) has the diagonal vectorlike kernel generated by
+\((1,1)\). Hence \((2,1)\) and \((3,2)\) share protected index \(I=1\) but
+predict portal contrasts \(9/50\) and \(25/338\). The minimal faithful packet
+is rank plus index: \(T=n_0+n_\pi\) and \(I\) reconstruct the ordered pair by
+\(n_0=(T+I)/2\), \(n_\pi=(T-I)/2\), subject to parity. The ordinary index is
+an orientation selector, not a magnitude selector. A successor must derive a
+source-fixed relative rank-index or endpoint-resolved K-class and its physical
+readout before RG and threshold survival can be claimed.
+
+## Endpoint rank-index two-port readout: WP763
+
+- flavor-endpoint-rank-index-two-port-readout.md
+- checkers/wp763_endpoint_rank_index_two_port_readout.py
+- results/wp763_endpoint_rank_index_two_port_readout.json
+
+WP763 solves the ordered integral readout problem conditionally. Aggregate rank
+\(T=n_0+n_\pi\) and oriented index \(I=n_0-n_\pi\) are individually rank-one
+probes, while their joint response has determinant \(-2\) and is faithful on
+the parity-compatible lattice. Same-index and same-rank hostile pairs prove
+both ports necessary. Separately labelling the endpoints changes the swap
+quotient to a stabilizer groupoid; this is a new relational experiment, not
+recovery of an absolute label. The architecture is a faithful readout and
+rigidifier, not a selector of \(T=3\) or \(T=4\). Physical authority still
+requires source-derived endpoint couplings, common calibration, threshold
+Jacobians, `physical16` descent, and detector realization.
+
+## Primitive-index positive-cost selector: WP764
+
+- flavor-primitive-index-positive-cost-selector.md
+- checkers/wp764_primitive_index_positive_cost_selector.py
+- results/wp764_primitive_index_positive_cost_selector.json
+
+WP764 derives rather than inserts WP760's exceptional \(T=3\), conditional on
+three source premises: primitive oriented index \(I=+1\), compulsory nonempty
+endpoint sectors, and strictly positive cost for each added diagonal
+vectorlike pair. Every representative is \((k+2,k+1)\); an additive positive
+energy increases by \(\mu_0+\mu_\pi\), uniquely selecting \((2,1)\), ratio
+\(2\), and portal contrast \(9/50\). A correction preserves the selection when
+its discrete step remains greater than \(-\mu_0-\mu_\pi\). This is the first
+conditional gapped preparation selector. The current flavor source has not yet
+derived the primitive index, nonempty-endpoint condition, positive complete
+spectrum, rank-to-boundary-ratio map, RG/threshold survival, or physical
+two-port instrument.
+
+## Gapped-class affine threshold fiber: WP765
+
+- flavor-gapped-class-affine-threshold-fiber.md
+- checkers/wp765_gapped_class_affine_threshold_fiber.py
+- results/wp765_gapped_class_affine_threshold_fiber.json
+
+WP765 composes WP764's gapped class selector with WP726's allowed threshold
+operator. The physical coefficient is \(\Delta_{\mathrm{IR}}=9Z/50+c\).
+Changing \(c\) leaves the prepared endpoint class untouched but changes the
+low-energy portal; \(c=-9Z/50\) cancels it exactly. A bounded correction can
+protect the positive sign, not the magnitude. The pipeline therefore contains
+a valid discrete selector followed by a nonfaithful affine threshold arrow.
+A complete source must independently fix the additive boundary and
+multiplicative matching, or supply a nonrenormalization theorem, before the
+WP763 instrument can read a predicted physical value.
+
+## Holomorphy protects the wrong operator class: WP766
+
+- flavor-holomorphy-protects-wrong-operator-class.md
+- checkers/wp766_holomorphy_protects_wrong_operator_class.py
+- results/wp766_holomorphy_protects_wrong_operator_class.json
+
+WP766 tests supersymmetric nonrenormalization as the WP765 repair. The CP-even
+real-norm portal is an R-neutral full-superspace Kähler/D-term operator; it
+contains antichiral fields and is not a holomorphic superpotential monomial.
+The standard theorem therefore does not fix its additive boundary, and
+\(c_K=-9/50\) cancels the selected value in unit matching. WP751 supplies the
+extended-supersymmetry dichotomy: exact \(N=2\) normalizes the interaction but
+sets the extra portal to zero, while the \(N=1\) breaking needed to restore it
+reopens an independent Wilson coefficient. A successor must provide a genuine
+D-term exact relation, not an untyped appeal to holomorphy.
+
+## Massive-vector current exchange scale fiber: WP767
+
+- flavor-massive-vector-current-exchange-scale-fiber.md
+- checkers/wp767_massive_vector_current_exchange_scale_fiber.py
+- results/wp767_massive_vector_current_exchange_scale_fiber.json
+
+WP767 tests the minimal D-term-specific constructor: classical elimination of
+one source-defined Higgsed vector current channel. It fixes the tree-level
+portal sign after charge orientation is declared and cancels the gauge
+coupling against the vector mass. It does not fix the numerical portal. The
+coefficient remains proportional to (1/v^2), so the hostile pair (v=1,2)
+changes its magnitude by a factor of four without changing the mechanism.
+Moreover the symmetry-allowed Kähler boundary can cancel the exchange term.
+The next source gate must fix the Higgs scale in the physical clock and supply
+a D-term Ward identity or complete matching theorem that removes the additive
+boundary, before RG and instrument claims are possible.
+
+## Separated-boundary exchange completion fiber: WP768
+
+- flavor-separated-boundary-exchange-completion-fiber.md
+- checkers/wp768_separated_boundary_exchange_completion_fiber.py
+- results/wp768_separated_boundary_exchange_completion_fiber.json
+
+WP768 uses local separation to forbid WP767's additive cross-boundary Kähler
+contact. A unique positive-mass bulk mediator then produces a finite endpoint
+Green function whose sign is stable under passive Robin completion. This is a
+real threshold improvement, but not numerical selection: endpoint-local
+self-operators are legal and continuously deform the boundary-to-boundary
+propagator. At (m=\ell=1,b=0), Neumann data give (1/\sinh1), whereas
+(a=1) gives (e^{-1}). The source must derive its complete boundary action,
+couplings, and compactification clock before the portal magnitude is fixed.
+
+## Static gauge matching versus finite readout: WP769
+
+- flavor-static-gauge-matching-finite-readout-fiber.md
+- checkers/wp769_static_gauge_matching_finite_readout_fiber.py
+- results/wp769_static_gauge_matching_finite_readout_fiber.json
+
+WP769 specializes WP768 to an unbroken boundary gauge current. Gauge symmetry
+forbids boundary Proca masses, while gauge-invariant boundary kinetic terms
+enter only as (r_i p^2). Consequently the static cross propagator is exactly
+(1/[m\sinh(m\ell)]), independent of the quadratic boundary completion. This
+is conditional static threshold survival. It is not yet a physical readout:
+at finite momentum the legal (r_i) deform the transfer function. The exact
+hostile pair at (m=\ell=p=1) distinguishes (r_0=0) from (r_0=1) despite
+identical static matching. A detector must calibrate this spectral response in
+the same frame rather than inherit authority from the zero-momentum Wilson
+coefficient.
+
+## Two-momentum boundary-response tomography: WP770
+
+- flavor-two-momentum-boundary-response-tomography.md
+- checkers/wp770_two_momentum_boundary_response_tomography.py
+- results/wp770_two_momentum_boundary_response_tomography.json
+
+WP770 turns WP769's finite-response ambiguity into a minimal instrument
+theorem. At fixed calibrated bulk mass and length, the response depends only
+on (s=r_0+r_L) and (t=r_0r_L). One momentum leaves an affine fiber; the
+two declared spacelike ports (p=1,2) have a rank-two response and reconstruct
+((s,t)) exactly. This identifies the unordered endpoint pair, which is the
+faithful coordinate for the symmetric transfer function, without claiming
+labelled endpoint ontology. The momentum and amplitude standards create a new
+relational experiment. Actual flavor-channel realization, uncertainty rank,
+source selection of (m\ell), gauge normalization, RG basin, and `physical16`
+descent remain open.
+
+## Radius-free static portal composition: WP771
+
+- flavor-radius-free-static-portal-composition.md
+- checkers/wp771_radius_free_static_portal_composition.py
+- results/wp771_radius_free_static_portal_composition.json
+
+WP771 composes the positive full-tower half-twist branch, first vector KK
+level, separated-boundary static protection, and two-momentum tomography. The
+half twist gives (epsilon=1/5), while (N=1) and (ell=\pi R) give
+(M_V\ell=\pi); both are radius-independent. The resulting contrast is still
+(g_*^2/10). The remaining source fiber is therefore the gauge normalization,
+not the compactification radius. Current packets cannot close it jointly:
+the link-only lift has positive spectral sign, the portal-bulk lift reverses
+that sign, and the compulsory-mediator gauge-Yukawa system has no physical
+fixed-point branch. The next constructor must derive positive spectral
+localization and an isolated gauge normalization in the same anomaly-complete
+five-dimensional source.
+
+## SU(4) gauge-link boundary-normalization fiber: WP772
+
+- flavor-su4-gauge-link-boundary-normalization-fiber.md
+- checkers/wp772_su4_gauge_link_boundary_normalization_fiber.py
+- results/wp772_su4_gauge_link_boundary_normalization_fiber.json
+
+WP772 supplies the first joint bulk object for two WP771 gates. Under the
+parity (operatorname{diag}(1,1,-1,-1)), the (SU(4)) adjoint splits into the
+seven-generator (SU(2)_A\times SU(2)_B\times U(1)) algebra and an
+eight-real-dimensional complex bifundamental (A_5) sector. The link is thus
+a gauge component, not a hypermultiplet, and the pure vector spectral index is
+(kappa=17>0). The complete boundary ring still defeats numerical selection:
+residual gauge symmetry permits independent kinetic terms, and even an exact
+site exchange leaves a common coefficient \(\tau\). At fixed bulk normalization,
+\(\tau=0,1\) changes the portal from \(1/10\) to \(1/20\). A further boundary
+principle must fix or forbid this common mode before an isolated RG
+normalization has physical authority.
+
+## SU(4) localization-normalization trilemma: WP773
+
+- flavor-su4-localization-normalization-trilemma.md
+- checkers/wp773_su4_localization_normalization_trilemma.py
+- results/wp773_su4_localization_normalization_trilemma.json
+
+WP773 tests whether moving the portal operands into the bulk repairs WP772's
+common boundary normalization. It does not. Orbifold fixed points admit the
+residual-gauge-invariant kinetic term regardless of matter localization.
+Boundary localization keeps the pure-vector index \(\kappa=17>0\); the bulk
+portal packet retains the modulus, costs \(32\) hypermultiplet degrees, and
+gives \(\kappa=-15\). Adding the compulsory mediators gives \(-63\). The
+positive index budget is only \(16\). A larger source needs at least sixteen
+additional vector degrees and a separate source principle fixing the common
+orbifold kinetic coefficient.
+
+## Minimal SU(6) vector budget and boundary modulus: WP774
+
+- flavor-minimal-su6-vector-budget-boundary-modulus.md
+- checkers/wp774_minimal_su6_vector_budget_boundary_modulus.py
+- results/wp774_minimal_su6_vector_budget_boundary_modulus.json
+
+WP774 computes the smallest unitary simple-group enlargement passing WP773's
+bulk portal spectral budget. For \(SU(n)\), \(\kappa=n^2-31\): \(SU(5)\) gives
+\(-6\), while \(SU(6)\) gives \(5\). The branching
+\(35=15+3+1+8+8\) contains the original \(SU(4)\) parent and supplies twenty
+extra vector degrees. This is a classification, not a selector. Bulk
+compulsory mediators lower the index to \(-43\), and the orbifold common
+kinetic coefficient remains legal and changes the portal magnitude. Anomaly,
+chirality, and boundary dynamics must independently require the enlargement
+and fix its normalization.
+
+## SU(6) anomaly-family spectral generation gate: WP775
+
+- flavor-su6-anomaly-family-spectral-generation-gate.md
+- checkers/wp775_su6_anomaly_family_spectral_generation_gate.py
+- results/wp775_su6_anomaly_family_spectral_generation_gate.json
+
+WP775 tests whether anomaly cancellation independently selects WP774's
+favorable bulk source. The minimal chiral family \(15+2\overline6\) has zero
+cubic anomaly and degree \(27\). With the \(SU(6)\) vector adjoint,
+\(\kappa(n_f)=37-27n_f\): zero and one bulk families give \(37,10\), while
+two and three give \(-17,-44\). Thus positive half-twist selection permits at
+most one complete bulk family. Anomaly cancellation derives the representation
+sum but not its localization; boundary-localizing three anomaly-free families
+preserves the spectral sign while retaining the common kinetic modulus. A
+source-derived generation-localization and inflow law is still required.
+
+## Five-dimensional domain-wall generation-rank no-go: WP776
+
+- flavor-five-dimensional-domain-wall-generation-rank-no-go.md
+- checkers/wp776_five_dimensional_domain_wall_generation_rank_no_go.py
+- results/wp776_five_dimensional_domain_wall_generation_rank_no_go.json
+
+WP776 closes the multi-kink economy proposed after WP775. A scalar chiral
+zero-mode equation is first order and has one integration constant. The exact
+profile \(M(y)=(y+1)y(y-1)\) has three sign crossings but a one-dimensional
+kernel. An \(r\)-component system has at most \(r\) independent profiles, so
+three generations require rank-three matter and retain the full \(81\)-degree
+spectral cost, giving \(\kappa=-44\). Multiple localization peaks are a
+presentation of one state, not generation multiplicity. Any escape must use a
+genuine higher-dimensional index-three operator and recompute its spectral
+measure in that new source frame.
+
+## Flux-three index and spectral degeneracy: WP777
+
+- flavor-flux-three-index-spectral-degeneracy.md
+- checkers/wp777_flux_three_index_spectral_degeneracy.py
+- results/wp777_flux_three_index_spectral_degeneracy.json
+
+WP777 opens the genuine higher-dimensional escape required by WP776. Unit
+charge and flux three give Dirac index three, while the opposite flux reverses
+chirality. This is real kernel multiplicity. It is not a spectral economy:
+every Landau level has degeneracy \(|qm|=3\), so one \(27\)-degree \(SU(6)\)
+family carries weighted tower degree \(81\). The five-dimensional signed
+count happens to return \(-44\), but its potential cannot be transported into
+the changed six-dimensional experiment. Flux quantization also permits every
+integer and selects neither magnitude three nor its orientation. A complete
+six-dimensional anomaly/tadpole packet and flux-weighted effective potential
+are now required.
+
+## Flux anomaly, tadpole, and stability gate: WP778
+
+- flavor-flux-anomaly-tadpole-stability-gate.md
+- checkers/wp778_flux_anomaly_tadpole_stability_gate.py
+- results/wp778_flux_anomaly_tadpole_stability_gate.json
+
+WP778 tests the first complete consistency arrows rather than fitting another
+flux integer. Local anomaly descent has the homogeneous form
+\(A_4(m)=mA_6\); once the parent coefficient vanishes, every integer flux has
+the same zero anomaly readout. The minimal integrated tadpole
+\(c\,m+Q_{\mathrm{loc}}=0\) selects \(m=3\) only when the independently fixed
+source charge obeys \(Q_{\mathrm{loc}}=-3c\), so an undeclared charge merely
+relocates the tuning. Internal non-Abelian flux also has a charged-vector
+lowest mode with \(M^2=-|qB|\), defeating the stable-basin gate. The smallest
+remaining window is a distinct anomaly-free \(U(1)_F\) flux source with
+quantized localized charge that compels oriented flux three, a tachyon-free
+complete spectrum, fixed normalization, and calibrated physical16 ports.
+
+## Minimal external-U(1) family-charge no-go: WP779
+
+- flavor-minimal-external-u1-family-charge-no-go.md
+- checkers/wp779_minimal_external_u1_family_charge_no_go.py
+- results/wp779_minimal_external_u1_family_charge_no_go.json
+
+For charges \((x,y,z)\) on \(15,\overline6,\overline6\), ordinary mixed
+\(SU(6)^2U(1)_F\) and gravitational anomaly cancellation force
+\((x,y,z)=(0,a,-a)\); the cubic anomaly then vanishes identically. Flux three
+therefore gives indices \((0,3a,-3a)\): no \(15\) zero modes and an
+oppositely oriented vectorlike antifundamental pair, not three complete chiral
+families. The same packet has zero linear source charge and cannot supply the
+WP778 tadpole. The next source must add \(SU(6)\)-charged matter or a
+Green--Schwarz sector and derive, rather than fit, both common-sign family
+charge and the oriented tadpole.
+
+## Added-matter external-U(1) spectral no-go: WP780
+
+- flavor-added-matter-u1-completion-spectral-no-go.md
+- checkers/wp780_added_matter_u1_completion_spectral_no_go.py
+- results/wp780_added_matter_u1_completion_spectral_no_go.json
+
+WP780 constructs rather than assumes the smallest ordinary-matter repair in
+the declared charge box. A common unit family charge is anomaly-completed by a
+\(6+\overline6\) pair of charges \((-3,-3)\) and four singlets
+\((-7,4,4,8)\). All ordinary anomalies cancel exactly. At flux three, however,
+the family, vectorlike pair, and singlets contribute weighted degrees
+\(81,108,69\), totaling \(258\) and giving the inherited diagnostic
+\(\kappa=-220\). The charge-reversed completion is equally valid and the net
+linear charge remains zero, so neither orientation nor the WP778 tadpole is
+selected. Ordinary added matter therefore accommodates the desired flux but
+destroys its favorable spectral basin. The surviving branch is a
+geometrically quantized Green--Schwarz constructor.
+
+## Green--Schwarz product and Stückelberg fiber: WP781
+
+- flavor-green-schwarz-product-stueckelberg-fiber.md
+- checkers/wp781_green_schwarz_product_stueckelberg_fiber.py
+- results/wp781_green_schwarz_product_stueckelberg_fiber.json
+
+WP781 tests the minimal Green--Schwarz effective constructor. Gauge invariance
+fixes only \(A=kc\), leaving the continuous fiber
+\((k,c)\sim(\rho k,c/\rho)\). Along this fiber the Stückelberg mass changes by
+\(\rho^2\), while low-energy exchange changes by \(\rho^{-2}\). Charge,
+axion-shift, and flux reversal preserves anomaly cancellation, mediator mass,
+and chiral index, and the flux integer is absent from the local cancellation
+equation. The construction is therefore an anomaly rigidifier, not an
+oriented-flux or physical-magnitude selector. A surviving source must be a
+concrete compactification intersection lattice whose primitive characteristic
+vector fixes \(k,c,f_a\), and \(m=3\) in one common frame and yields calibrated
+production and decay ports.
+
+## Rank-one unimodular lattice flux-three no-go: WP782
+
+- flavor-rank-one-unimodular-lattice-flux-three-no-go.md
+- checkers/wp782_rank_one_unimodular_lattice_flux_three_no_go.py
+- results/wp782_rank_one_unimodular_lattice_flux_three_no_go.json
+
+WP782 tests the smallest integral geometry capable of replacing WP781's
+effective coefficient fiber. A positive rank-one unimodular lattice has Gram
+form \([1]\), and its primitive vectors pair only to \(\pm1\). Gram form
+\([3]\) pairs primitive generators to three but has determinant three and is
+not self-dual; the unimodular form reaches three only with the nonprimitive
+vector \(3e\). The isometry \(e\mapsto-e\) preserves the lattice, and the
+continuous Hodge/kinetic metric is not fixed by the integral form. Hence the
+rank-one geometry either violates the quantum-consistency gate or writes the
+desired integer into its source data, while still leaving orientation,
+threshold normalization, and instrumentation open.
+
+## Rank-two unimodular pairing-three fiber: WP783
+
+- flavor-rank-two-unimodular-pairing-three-fiber.md
+- checkers/wp783_rank_two_unimodular_pairing_three_fiber.py
+- results/wp783_rank_two_unimodular_pairing_three_fiber.json
+
+WP783 passes to the physical signature-\((1,1)\) rank-two charge lattices. The
+even hyperbolic plane has no primitive characteristic vector. In the odd
+lattice, \(b=(1,1)\) is primitive characteristic, but the primitive vectors
+\(f_1=(2,-1)\) and \(f_2=(4,1)\) both pair to three while having invariant
+norms \(3\) and \(15\). They are therefore inequivalent under the full lattice
+isometry group. Two exact compatible positive kinetic metrics also assign the
+same flux different energies, \(5\) and \(13/4\). Rank two permits primitive pairing
+three but selects neither a unique flux orbit nor the physical threshold
+normalization.
+
+## Flux-energy metric rigidifier and orientation doublet: WP784
+
+- flavor-flux-energy-metric-rigidifier-orientation-doublet.md
+- checkers/wp784_flux_energy_metric_rigidifier_orientation_doublet.py
+- results/wp784_flux_energy_metric_rigidifier_orientation_doublet.json
+
+WP784 supplies the first progressive dynamics in the lattice branch. The
+positive quadratic flux energy reduces the primitive pairing-three fiber to
+\(f_+=(2,-1)\) and \(f_-=(1,-2)\), with invariant norms \(+3\) and \(-3\).
+Joint minimization stabilizes the compatible metric ratio at \(t=\log3\) with
+strict Hessian and dimensionless energy three. The two fluxes remain exactly
+degenerate because the energy is orientation-even. An overall scale remains
+free, and the potential is blind to the Green--Schwarz product-preserving
+tangent \((k,-c)\). Flux backreaction is therefore a genuine metric
+rigidifier and partial orbit selector, but not yet the sign, threshold, or
+physical-readout selector.
+
+## Orientation-odd bias and reference-port no-go: WP785
+
+- flavor-orientation-odd-bias-reference-port-no-go.md
+- checkers/wp785_orientation_odd_bias_reference_port_no_go.py
+- results/wp785_orientation_odd_bias_reference_port_no_go.json
+
+WP785 separates algebraic discrimination from physical selection. The two
+WP784 minimizers already have the invariant discriminator \(q=f^2=\pm3\).
+A reference-free topological factor \(\exp(i\theta q)\) changes phase but not
+probability weight, so it cannot lift the energy doublet. The smallest real
+bias \(\mu q\) splits the branches by \(6\mu\) and remains positive for
+\(|\mu|<1\), but it descends under orientation reversal only when \(\mu\) is
+itself a pseudoscalar reference. That is a new relational experiment over the
+reference stabilizer groupoid. A symmetric dynamical reference leaves paired
+equal-energy vacua, and constant \(\mu\) is blind to the Green--Schwarz
+product kernel. The missing principle must therefore derive an asymmetric
+boundary/source state, not merely permit an orientation-odd coefficient.
+
+## Mirror-completion sign-selection no-go: WP786
+
+- flavor-mirror-completion-sign-selection-no-go.md
+- checkers/wp786_mirror_completion_sign_selection_no_go.py
+- results/wp786_mirror_completion_sign_selection_no_go.json
+
+WP786 follows the proposed asymmetric state through the complete sign
+pipeline. The genuinely chiral anomaly-free packet
+\((-9,-5,-1,7,8)\) and its mirror both cancel linear and cubic anomalies and
+have the same quadratic RG weight \(220\). Mirror-equivariant beta functions
+give paired fixed points with equal critical exponents; finite thresholds
+transport both; inclusive widths identify them. A calibrated parity-labelled
+instrument can separate their signs, but readout has no authority to delete a
+source constructor. The sought principle must therefore be an independently
+non-mirror-completable boundary or incidence object that also fixes the
+continuous normalization and threshold clock.
+
+## SU(4) cubic orientation and portal fiber: WP787
+
+- flavor-su4-cubic-orientation-portal-fiber.md
+- checkers/wp787_su4_cubic_orientation_portal_fiber.py
+- results/wp787_su4_cubic_orientation_portal_fiber.json
+
+WP787 opens the first post-SO(5) parent with both a \(3+1\) fundamental and a
+nonzero cubic invariant. For
+\(T=\operatorname{diag}(1,1,1,-3)\), the minimal cubic-plus-quartic adjoint
+potential has the stable vacuum \(a_*=\kappa/(6\lambda)\). Its complete
+adjoint Hessian consists of eight positive modes, six Goldstones, and one
+positive radial mode. Thus fixed nonzero \(\kappa\) genuinely selects and
+stabilizes a carrier orientation. But the smallest portal spurion gives
+\(g_n-g_m=2\eta\kappa/(3\lambda)\): changing \(\eta\)'s sign reverses the
+portal without changing the vacuum, and a continuous \(\kappa,\eta\) scaling
+fiber survives. The parent cubic and portal vertex must therefore descend
+from one quantized source operation before RG, threshold, or instrument
+authority can be claimed.
+
+## Five-dimensional supersymmetric prepotential Coulomb-modulus no-go: WP788
+
+- flavor-5d-susy-prepotential-coulomb-modulus-no-go.md
+- checkers/wp788_5d_susy_prepotential_coulomb_modulus_no_go.py
+- results/wp788_5d_susy_prepotential_coulomb_modulus_no_go.json
+
+WP788 tests the extended-gauge parallelization suggested by WP787. On the
+\(SU(4)\) ray, the five-dimensional cubic prepotential gives kinetic metric
+\(G(a)=12r-24ka\). At the formal fixed-point face \(r=0\), positivity fixes
+the sign of \(a\) relative to the quantized level \(k\), but unbroken
+supersymmetry leaves \(a\) as a flat Coulomb modulus. Gauge-fixed fundamental
+weights remove the independent vertex \(\eta\) and give signed masses
+\((a,a,a,-3a)\), yet scalar masses are orientation-even and the absolute
+threshold remains proportional to \(\lvert a\rvert\). The exact hostile pair
+\(a=-s,-2s\) shares the level, positive cone, and \(3:1\) threshold ratio
+while its scalar contrast differs by four. A source-derived modulus-lifting
+operation is still required, without a new arbitrary soft scale.
+
+## Wilson-line angle and radius homogeneity no-go: WP789
+
+- flavor-wilson-line-angle-radius-homogeneity-no-go.md
+- checkers/wp789_wilson_line_angle_radius_homogeneity_no_go.py
+- results/wp789_wilson_line_angle_radius_homogeneity_no_go.json
+
+WP789 grants the most favorable radiative lift of WP788: an oriented periodic
+Hosotani shape that uniquely selects a Wilson angle. For every one-scale
+potential \(C F(\theta)/R^4\), however, joint stationarity forces
+\(F=F'=0\), and the entire radius row of the Hessian vanishes. The exact
+hostile pair \((\phi,R_0)\), \((\phi,2R_0)\) shares the selected angle and
+energy while halving every absolute threshold. A second \(R^{-6}\) term can
+stabilize the clock only at \(R_*^2=-3Bg/(2Af)\), transferring numerical
+authority to a signed coefficient ratio. The surviving positive architecture
+must derive both radius homogeneities from the same chiral source packet.
+
+## Curvature--flux radion and magnitude selector: WP790
+
+- flavor-curvature-flux-radion-magnitude-selector.md
+- checkers/wp790_curvature_flux_radion_magnitude_selector.py
+- results/wp790_curvature_flux_radion_magnitude_selector.json
+
+WP790 realizes WP789's two-homogeneity architecture in six-dimensional
+Einstein--Maxwell compactification. Curvature and flux give
+\(-B/R^4+An^2/R^6\), with the strict minimum
+\(R_*^2=3An^2/(2B)\). The signed threshold becomes
+\(\sigma n/R_*=\sigma\sqrt{2B/(3A)}\): its magnitude is independent of the
+flux integer and is fixed conditional on the gauge--gravity ratio. The
+potential is exactly blind to \(\sigma\), so the mirror-sign obstruction
+survives. The unlifted minimum is AdS, and a Minkowski completion requires
+\(C=B^2/(4An^2)\). The positive successor must derive orientation, \(B/A\),
+and any uplift relation from one non-mirror-completable gauge--gravity packet.
+
+## Salam--Sezgin chirality, scale, and charge fiber: WP791
+
+- flavor-salam-sezgin-chirality-scale-charge-fiber.md
+- checkers/wp791_salam_sezgin_chirality_scale_charge_fiber.py
+- results/wp791_salam_sezgin_chirality_scale_charge_fiber.json
+
+WP791 finds the first non-mirror-completable orientation selector in the
+branch. In chiral \(N=(1,0)\) gauged supergravity, the unit monopole has Chern
+number one and its BPS spinor obeys \(\sigma_3\eta=+\eta\); reversing flux
+requires the opposite chiral source. The same coupling fixes the monopole,
+sphere curvature, potential, and exact consistent Minkowski reduction, thereby
+parallelizing WP790's gauge--gravity coefficients. Two fibers survive. The
+physical KK scale \(g e^{\phi_0/2}\) varies with the retained massless scalar,
+and unit flux gives index \(q\), so three families require an independently
+derived matter charge \(q=3\). The positive successor must obtain charge three
+and dilaton lifting from the anomaly-complete chiral matter packet without
+destroying the BPS orientation or exact reduction.
+
+## Anomaly-complete monopole family and stability no-go: WP792
+
+- flavor-anomaly-complete-monopole-family-stability-no-go.md
+- checkers/wp792_anomaly_complete_monopole_family_stability_no_go.py
+- results/wp792_anomaly_complete_monopole_family_stability_no_go.json
+
+WP792 tests the canonical anomaly-free successor to WP791. In the
+\(E_7\times E_6\times U(1)_R\) model with the monopole embedded in
+\(E_6\supset SO(10)\times U(1)\), the chiral gaugino index gives
+\(N_{\mathrm{fam}}=2|n|\). The complete charged-vector fluctuation spectrum
+requires \(|N^I|\leq1\), leaving \(n=\pm1\) and exactly two families on the
+stable nonzero branch. Thus no integer flux produces three; \(n=2\) produces
+four and is unstable. The family monopole is also not the \(U(1)_R\) BPS
+embedding that selected orientation in WP791. The anomaly-complete branch
+therefore explains its stable two-family result but refutes itself as the
+single three-family constructor. The positive successor must derive odd index
+three, orientation, modulus lifting, and charged-spectrum stability from one
+source embedding before RG, thresholds, or physical16 readout are tested.
+
+## F-theory vertical-flux mirror and moduli no-go: WP793
+
+- flavor-f-theory-vertical-flux-mirror-moduli-no-go.md
+- checkers/wp793_f_theory_vertical_flux_mirror_moduli_no_go.py
+- results/wp793_f_theory_vertical_flux_mirror_moduli_no_go.json
+
+WP793 moves the odd-family problem to globally quantized \(G_4\)-flux. In the
+finite vertical-flux scan over elliptic fourfolds with base \(\mathbb P^3\),
+quantization, M/F-theory matching, and D3 tadpole capacity make three the
+minimum permitted family number. This derives more than an inserted
+charge-three field, but it does not select a unique physical point. The exact
+involution \(G_4\mapsto-G_4\) preserves shifted quantization, every homogeneous
+transversality and primitivity equation, and the quadratic tadpole, while
+reversing all matter-surface chiral indices. Horizontal-flux and vector-like
+completions also remain outside the admitted packet, and vertical flux does not
+fix all moduli, portal normalization, RG thresholds, or a physical16
+instrument. Global flux is therefore a family-magnitude rigidifier but not the
+required asymmetric portal selector.
+
+## Mirror-equivariant pipeline selector no-go: WP794
+
+- flavor-mirror-equivariant-pipeline-selector-no-go.md
+- checkers/wp794_mirror_equivariant_pipeline_selector_no_go.py
+- results/wp794_mirror_equivariant_pipeline_selector_no_go.json
+
+WP794 extracts the general theorem behind WP784--WP793. On a free two-point
+mirror orbit, an invariant selector has equal weights on both members and
+cannot have singleton support, even if an even potential fixes the portal
+magnitude. Equivariant RG preserves paired basin data; inclusive thresholds
+collapse the sign; signed instruments distinguish a prepared member but
+cannot select its source. A reference orientation creates a relational readout
+over a stabilizer groupoid, while a dynamical mirror-odd reference restores
+the paired joint states. The first nonfaithful arrow is source selection. The
+necessary successor is a non-mirror-completable boundary or irreversible
+history constructor co-generating orientation, calibration reference,
+magnitude, RG initial condition, and threshold state.
+
+## Domain-wall inflow and flavor-overlap fiber: WP795
+
+- flavor-domain-wall-inflow-overlap-fiber.md
+- checkers/wp795_domain_wall_inflow_overlap_fiber.py
+- results/wp795_domain_wall_inflow_overlap_fiber.json
+
+WP795 tests the first constructive realization of WP794's required source
+type. Ordered scalar-wall endpoints trap one chirality, and bulk
+Chern--Simons inflow supplies a quantized anomalous current that survives RG
+and massive thresholds. Yet the flavor Yukawa is the Gaussian overlap
+\(y_{ij}=\rho e^{-\mu^2(\ell_i-\ell_j)^2/2}\), with
+\(\ell_i=-M_i/(2\mu^2)\). The exact separations \(1/\mu\) and \(2/\mu\) share
+all chirality and anomaly data while giving \(\rho e^{-1/2}\) and
+\(\rho e^{-2}\); swapping their species assignment reverses \(g_n-g_m\).
+The wall is therefore a chirality selector and anomaly rigidifier, but its
+orientation history, localization geometry, portal magnitude, threshold
+clock, and physical16 perturbation instrument remain unselected.
+
+## Compact clockwork relative portal and source fiber: WP796
+
+- flavor-compact-clockwork-relative-portal-fiber.md
+- checkers/wp796_compact_clockwork_relative_portal_fiber.py
+- results/wp796_compact_clockwork_relative_portal_fiber.json
+
+WP796 discretizes WP795's localization geometry. A compact \(U(1)\) incidence
+with link charges \((1,-q)\) has a unique kernel profile
+\((1,q^{-1},\ldots,q^{-N})\) and a positive gear gap. It therefore genuinely
+selects relative couplings once the integer incidence is fixed. Compactness
+does not select the integer \(q\), chain length, orientation, or endpoint
+species assignment: \(q=2\) and \(q=3\) give different ratios, while chain
+reversal preserves the complete gear spectrum and reverses the endpoint
+contrast. The absolute gauge coupling \(g\), threshold scale \(m\), completed
+matter RG, and physical16 instrument also remain. Clockwork replaces the
+continuous overlap fiber by a discrete incidence fiber and two continuous
+normalizations, but does not yet supply the single source constructor.
+
+## Affine G2 root--coroot portal typing: WP797
+
+- flavor-affine-g2-root-coroot-portal-typing.md
+- checkers/wp797_affine_g2_root_coroot_portal_typing.py
+- results/wp797_affine_g2_root_coroot_portal_typing.json
+
+WP797 tests whether the asymmetric triple bond of \(G_2\) derives WP796's
+integer incidence. Finite \(G_2\) is full rank and supplies no zero mode. Its
+affine extension has Kac marks \((1,3,2)\), but the same Cartan datum supports
+two canonical executable quadratic packets: the root Gram form has the mark
+kernel \((1,3,2)\), while the coroot Gram form has the distinct comark kernel
+\((1,1,2)\). Both are positive semidefinite with exact gaps. Thus affine
+\(G_2\) conditionally selects a relative ray only after a root-versus-coroot
+coupling functor is declared. The bare root datum fixes neither that functor,
+the node-to-species map, kernel sign, overall coefficient, completed RG and
+threshold theory, nor a calibrated `physical16` instrument. The positive
+successor must derive all of those interfaces from one source action.
+
+## D4 triality-fold portal typing: WP798
+
+- flavor-d4-triality-fold-portal-typing.md
+- checkers/wp798_d4_triality_fold_portal_typing.py
+- results/wp798_d4_triality_fold_portal_typing.json
+
+WP798 derives the \(G_2\) triple bond upstream from the order-three triality
+of affine \(D_4^{(1)}\). The fold is the twisted affine system \(D_4^{(3)}\),
+not the untwisted \(G_2^{(1)}\) packet of WP797. Its unique source null vector
+has coordinates \((1,2,1)\) in the integral orbit-sum basis,
+\((1,2,3)\) in the orbit-average basis, and \((1,2,\sqrt3)\) after canonical
+normalization; all three are exactly the same \(D_4\) vector. Triality
+therefore makes orbit cardinality three and the long--short incidence hard to
+vary, but it does not turn the displayed coefficient three into a
+basis-independent portal observable. The remaining constructor must
+co-generate the chiral electric representation, kinetic pairing,
+node-to-species map, absolute scale, matter RG, finite thresholds, and
+calibrated physical16 response.
+
+## Monodromic G2 polarization and scale fiber: WP799
+
+- flavor-monodromic-g2-polarization-scale-fiber.md
+- checkers/wp799_monodromic_g2_polarization_scale_fiber.py
+- results/wp799_monodromic_g2_polarization_scale_fiber.json
+
+WP799 promotes WP798's fold to the physical \(N=2\) monodromic gauge
+construction. Dirac integrality and the BPS category tie electric roots to
+magnetic coroots and thus repair the bare algebraic pairing ambiguity. They do
+not select a Standard Model portal. The fixed \(G_2\) beta coefficient gives
+an asymptotically free trajectory, but dimensional transmutation replaces the
+ultraviolet coupling by a free RG-invariant \(\Lambda\); \(g_0=1/4\) and
+\(g_0=1/3\) are an exact hostile pair. Coulomb moduli independently vary BPS
+thresholds, and the Gaussian UV endpoint gives zero portal. The monodromic
+source is therefore a charge parallelizer and relative-Clebsch rigidifier,
+not a nonzero magnitude, threshold-state, or physical16 selector. The next
+candidate must be an isolated source with no marginal normalization or vacuum
+modulus, plus chiral flavor descent and a calibrated instrument.
+
+## Isolated fixture interface and deformation fiber: WP800
+
+- flavor-isolated-fixture-interface-deformation-fiber.md
+- checkers/wp800_isolated_fixture_interface_deformation_fiber.py
+- results/wp800_isolated_fixture_interface_deformation_fiber.json
+
+WP800 tests WP799's isolated-source successor using a three-punctured
+\(Z_3\)-twisted \(D_4\) fixture. The fixture has no complex-structure coupling
+modulus and can fix normalized intrinsic SCFT data. The physical portal is
+not intrinsic: coupling a dimension-two fixture operator to a dimension-two
+Standard Model bilinear introduces an external coefficient \(\kappa\), so the
+portal is \(\kappa C\). Intrinsic probes have Jacobian \((1,0)\) on
+\((C,\kappa)\) and are blind to the full interface direction. A relevant
+deformation introduces a free threshold scale proportional to \(\sqrt m\),
+and the rank-one Coulomb vacuum remains unselected. Isolation therefore
+selects intrinsic CFT data but not portal sign, magnitude, threshold state, or
+physical16 readout. The next source must contain the Standard Model operator
+and portal internally, with no marginal portal direction and with a uniquely
+selected massive vacuum and instrument.
+
+## UV fixed-point portal and relevant clock fiber: WP801
+
+- flavor-uv-fixed-point-relevant-clock-fiber.md
+- checkers/wp801_uv_fixed_point_relevant_clock_fiber.py
+- results/wp801_uv_fixed_point_relevant_clock_fiber.json
+
+WP801 tests asymptotic safety as the first principle capable of internalizing
+WP800's interface coefficient. An ultraviolet-repulsive portal direction is
+fixed by the requirement of reaching an isolated interacting fixed point, so
+the dimensionless magnitude can in principle be predicted rather than tuned.
+The same fixed point retains every ultraviolet-attractive relevant mass
+trajectory: (m=1) and (m=4) share the ultraviolet endpoint but give
+thresholds in ratio (1:2). An even fixed-point equation also retains the two
+sign branches, and detector calibration remains an independent coordinate.
+Thus asymptotic safety is progressive for dimensionless portal magnitude but
+is not yet a complete Deutschian explanation. A viable successor must combine
+an anomaly-complete chiral fixed point, an orientation-odd invariant, a unique
+massive vacuum or source-generated clock, exact threshold matching, and a
+calibrated physical16 instrument in one source construction.
+
+## Litim--Sannino fixed-point flavor audit: WP802
+
+- flavor-litim-sannino-fixed-point-flavor-audit.md
+- checkers/wp802_litim_sannino_fixed_point_flavor_audit.py
+- results/wp802_litim_sannino_fixed_point_flavor_audit.json
+
+WP802 tests WP801 against the canonical perturbative four-dimensional
+gauge--Yukawa fixed point. The exact NLO beta functions fix
+(alpha_y^*/\alpha_g^*=6/(13+2\epsilon)), and the two-coupling stability
+matrix has one relevant and one irrelevant direction. This genuinely predicts
+a dimensionless ratio on the ultraviolet critical surface. It does not predict
+the requested asymmetric portal: (alpha_y\propto y^2) erases the Yukawa
+sign, the Dirac fundamental matter is gauge-vectorlike, and the remaining
+relevant trajectory carries a free crossover scale. Mass deformations and
+detector calibration add independent fibers. The successor must instead be a
+chiral anomaly-complete fixed point with a rephasing-invariant orientation-odd
+portal, plus an internally selected massive vacuum and physical16 instrument.
+
+## Chiral safe-window integrality and incidence audit: WP803
+
+- flavor-chiral-safe-window-integrality-audit.md
+- checkers/wp803_chiral_safe_window_integrality_audit.py
+- results/wp803_chiral_safe_window_integrality_audit.json
+
+WP803 tests the strongest known perturbative chiral successor. Generalized
+Georgi--Glashow and Bars--Yankielowicz matter cancels the cubic gauge anomaly
+exactly. Nevertheless, the finite (SU(5)) mesonic safe window is the open
+interval from (51/2) to
+((1997+\sqrt{12271273})/212\approx25.9436), which contains no integer matter
+multiplicity. The analytically continued fixed point is exact, but it is not a
+finite physical field packet. In addition, the safety-generating meson Yukawa
+couples the vectorlike (F,\widetilde F) pair and omits the anomaly-essential
+chiral tensor; its squared coordinate erases sign. The successor must require
+integer matter content and direct incidence of the orientation-sensitive
+irrelevant portal on the chiral representation itself.
+
+## Direct chiral-tensor Yukawa safety no-go: WP804
+
+- flavor-chiral-tensor-yukawa-safety-no-go.md
+- checkers/wp804_chiral_tensor_yukawa_safety_no_go.py
+- results/wp804_chiral_tensor_yukawa_safety_no_go.json
+
+WP804 tests the complementary Higgs-like Yukawa
+(T^{ab}\widetilde F_aH_b), whose incidence on the anomaly-essential chiral
+tensor is nonzero. At finite (SU(5)), both sign conventions fail the
+interacting-safety inequalities exactly: the upper branch requires both
+(x>77/20) and (x<1601/1610), while the lower requires (x>101/20) and
+(x<5107/2254). The interaction can define a relative fixed-flow ray in the
+asymptotically free region but cannot select a nonzero ultraviolet portal. Its
+squared coupling is sign-blind and its single hyperedge has no invariant phase
+cycle. WP803 and WP804 are therefore complementary: the safe meson Yukawa
+misses chirality, while the chiral-tensor Yukawa misses safety. The successor
+must use a coupled chiral Yukawa cycle whose orientation-sensitive invariant
+itself generates an irrelevant fixed-point direction.
+
+## Integer coupled chiral fixed-point phase audit: WP805
+
+- flavor-integer-coupled-chiral-fixed-point-phase-audit.md
+- checkers/wp805_integer_coupled_chiral_fixed_point_phase_audit.py
+- results/wp805_integer_coupled_chiral_fixed_point_phase_audit.json
+
+WP805 combines both scalar sectors at the integer anomaly-complete packet
+((N,p)=(5,26)). The truncated beta system has an exact fully interacting
+solution, and the anomaly-essential chiral tensor participates directly. This
+is the closest source yet. However, (a_g^*=3163/2234>1) and
+(a_H^*=34182/5585>6), so the fixed point lies beyond the admitted
+perturbative control. The three Yukawa phase-charge rows also have full row
+rank, hence (ker Q^T=0): every Yukawa phase is removable even though their
+squared magnitudes mix in the beta functions. Multiple hyperedges are
+therefore necessary but not sufficient. The successor must create a genuine
+rephasing-invariant phase cycle whose interference term participates in a
+controlled irrelevant fixed-point direction.
+
+## Phase-cycle weak-basis descent and CP-pair audit: WP806
+
+- flavor-phase-cycle-weak-basis-cp-pair-audit.md
+- checkers/wp806_phase_cycle_weak_basis_cp_pair_audit.py
+- results/wp806_phase_cycle_weak_basis_cp_pair_audit.json
+
+WP806 corrects the assumption that any Yukawa incidence cycle supplies a
+physical orientation. The (2\times2) plaquette product is invariant under
+diagonal field rephasings but changes from (i) to zero under a unitary weak-
+basis transformation preserving (Y^\dagger Y). It is chart data. The first
+faithful orientation tested is the three-generation invariant
+(\operatorname{Im}\det[H_u,H_d]), which survives simultaneous weak-basis
+conjugation and reverses under CP. A CP-even source can select its magnitude
+but necessarily pairs its two signs; an exact phase potential exhibits the
+degenerate minima explicitly. The remaining source principle must therefore
+authorize a CP-odd datum on the faithful quotient, without inserting its sign
+as a free coefficient or reference port, and must still supply thresholds and
+the physical16 instrument.
+
+## Anomaly-inflow relational orientation audit: WP807
+
+- flavor-anomaly-inflow-relational-orientation-audit.md
+- checkers/wp807_anomaly_inflow_relational_orientation_audit.py
+- results/wp807_anomaly_inflow_relational_orientation_audit.json
+
+WP807 tests anomaly inflow as WP806's source-derived CP-odd datum. A quantized
+level (k) fixes the relative bias (k\eta J), and anomaly matching protects
+it under symmetry-preserving RG and gapped vectorlike thresholds. This is the
+first candidate to combine magnitude selection with threshold protection. It
+still selects only a relational sign: the joint minima
+((\eta,J)=(+1,+1)) and ((-1,-1)) are mirror partners with identical inflow
+current. Fixing the boundary normal restricts the experiment to a stabilizer
+groupoid rather than revealing an absolute flavor sign. The successor must
+derive a unique oriented defect from the same source and provide a calibrated
+physical16 current instrument.
+
+## Compact defect charge and boundary-port audit: WP808
+
+- flavor-compact-defect-charge-boundary-port-audit.md
+- checkers/wp808_compact_defect_charge_boundary_port_audit.py
+- results/wp808_compact_defect_charge_boundary_port_audit.json
+
+WP808 tests whether WP807's source can internally generate its required
+oriented defect. On a compact boundaryless transverse space, wall charges
+telescopically sum to zero, so every kink has compensating antikink charge and
+the inclusive anomaly inflow vanishes. An interval or noncompact line admits a
+single wall only after ordered endpoint or asymptotic-sector data are supplied;
+reversing those data gives the equal-energy mirror wall. Fixing one order
+therefore defines a stabilizer-groupoid relational experiment. Local current
+readout further requires a localization patch, signed detector normal,
+calibration, and a physical16 map. The theorem is a hard-to-vary explanation
+of the compact-source obstruction, not yet a positive explanation of flavor
+orientation. The successor must derive a non-mirror-completable global index
+and co-generate its magnitude, RG basin, thresholds, and calibrated readout.
+
+## Invertible-anomaly mirror-completion audit: WP809
+
+- flavor-invertible-anomaly-mirror-completion-audit.md
+- checkers/wp809_invertible_anomaly_mirror_completion_audit.py
+- results/wp809_invertible_anomaly_mirror_completion_audit.json
+
+WP809 tests WP808's strongest escape hatch: a nonzero global anomaly carried
+by an invertible bulk. For any finite anomaly class (a), cancellation uses the
+inverse bulk class (-a), while orientation reversal exchanges the consistent
+packets ((a,-a)) and ((-a,a)). If (a) is not self-inverse, the signed source
+therefore retains a mirror pair. If (a=-a), it is two-torsion and carries no
+opposite anomaly label. No invertible class is both signed and a mirror
+singleton. Anomaly matching genuinely protects the class across RG and gapped
+vectorlike thresholds, but continuous portal magnitude, RG clock, detector
+calibration, and physical16 response remain independent. The surviving
+candidate must prove a non-mirror-completable non-invertible or microscopic
+chiral source rather than selecting one inverse completion by hand.
+
+## Chiral gauge conjugation-closure audit: WP810
+
+- flavor-chiral-gauge-conjugation-closure-audit.md
+- checkers/wp810_chiral_gauge_conjugation_closure_audit.py
+- results/wp810_chiral_gauge_conjugation_closure_audit.json
+
+WP810 tests whether microscopic chiral gauge consistency excludes the mirror
+constructor left by WP809. One Standard Model generation and its fully
+conjugated generation both satisfy the complete tested local and global anomaly
+conditions and the Yukawa charge-incidence equations. Complex conjugation
+preserves quadratic group data, perturbative RG structure, mass singular
+values, and thresholds, while reversing the faithful CP-odd invariant and any
+signed portal contrast. Gauge chirality is therefore a presentation and source
+rigidifier but not an absolute selector. A signed CP instrument can distinguish
+a prepared member only after fixing its experimental orientation. The next
+candidate must derive a physical source category not closed under conjugation,
+and the same constructor must carry the portal magnitude, RG trajectory,
+threshold state, and calibrated physical16 response.
+
+## Dissipative-attractor reservoir-port audit: WP811
+
+- flavor-dissipative-attractor-reservoir-port-audit.md
+- checkers/wp811_dissipative_attractor_reservoir_port_audit.py
+- results/wp811_dissipative_attractor_reservoir_port_audit.json
+
+WP811 tests an autonomous one-way open-system operation as the first genuinely
+non-conjugation-equivariant selector. At fixed reservoir, the two-state GKLS
+population generator has a unique signed dark-state attractor, a global basin,
+a positive dissipative gap, and an executable jump-count record. Positive rate
+renormalization preserves the attractor across thresholds. The microscopic
+source still admits an inverted reservoir with the same spectrum and opposite
+attractor, so orientation has moved into a low-entropy preparation and physical
+time contract. The attractor fixes sign but not portal eigenvalue magnitude;
+the calibrated steady record has an exact magnitude--gain kernel. Dissipation
+is therefore a genuine effective selector and probe, but the source principle
+must still co-generate reservoir preparation, rate normalization, threshold
+clock, portal scale, and physical16 calibration.
+
+## KMS detailed-balance scale-fiber audit: WP812
+
+- flavor-kms-detailed-balance-scale-fiber-audit.md
+- checkers/wp812_kms_detailed_balance_scale_fiber_audit.py
+- results/wp812_kms_detailed_balance_scale_fiber_audit.json
+
+WP812 asks whether a thermal KMS law derives WP811's reservoir preparation.
+Detailed balance produces a unique Gibbs attractor with signed bias
+(tanh(beta Delta/2)) and an executable transition-count instrument. It fixes
+only a rate ratio. Reversing the Hamiltonian splitting reverses the attractor
+without violating KMS; the bias depends only on the product (beta Delta), and
+the absolute dissipative rate remains free. Positive threshold transport can
+preserve the sign and basin while changing both bias magnitude and clock. The
+steady detector record retains portal-scale and gain fibers. A geometric KMS
+source is the next concrete candidate, but it must derive temperature,
+splitting orientation, portal normalization, threshold map, and detector frame
+without inserting a horizon-orientation reference pair.
+
+## Geometric KMS horizon-parallelization audit: WP813
+
+- flavor-geometric-kms-horizon-parallelization-audit.md
+- checkers/wp813_geometric_kms_horizon_parallelization_audit.py
+- results/wp813_geometric_kms_horizon_parallelization_audit.json
+
+WP813 tests the strongest geometric completion of WP812. If one horizon fixes
+(beta=2 pi/kappa) and a chiral splitting (Delta=n kappa), then the arbitrary
+surface-gravity scale cancels: the bias is (tanh(pi n)) and the transition
+ratio is (exp(-2 pi n)). Common geometric threshold rescaling preserves this
+prediction. This is the closest magnitude architecture yet. It remains
+conditional on an unselected integer weight and horizon orientation; reversing
+the generator reverses the sign, and formation supplies a low-entropy boundary
+condition rather than an automatic local law. Asymmetric finite splitting
+corrections break the parallelization, while portal normalization and detector
+gain remain confounded. The successor must derive a unit chiral horizon index,
+formation orientation, anomaly-protected flavor coupling, and calibrated
+physical16 detector interaction in one source packet. Aspect's germ tester
+strengthens the qualification: the horizon, flavor, and detector endpoint
+germs do not determine their primitive frequency attachments. The same
+endpoints with (Delta=a n kappa) at (a=1) and (a=2) yield different targets,
+so endpoint-only completion fails the fiber gate. The selector is natively
+ternary and its physical realization is quaternary; the required comparison
+cell has no present source authority. The scale cancellation is therefore a
+conditional theorem on a marked `GeometricKMSFlavorComparisonGerm`, not yet a
+physical selector derived by horizon geometry alone.
+
+## Matsubara comparison and realization audit: WP814
+
+- flavor-matsubara-comparison-realization-audit.md
+- checkers/wp814_matsubara_comparison_realization_audit.py
+- results/wp814_matsubara_comparison_realization_audit.json
+
+WP814 constructs part of WP813's missing germ. Euclidean horizon periodicity
+canonically gives bosonic (omega_n=n kappa) and fermionic
+(omega_n=(n+1/2) kappa) attachments, so the primitive comparison coefficient
+is no longer hand-inserted. The thermal circle does not select a mode. More
+importantly, a Matsubara coefficient is not a detector transition: raw discrete
+samples have explicit analytic continuation kernels, while a unique physical
+continuation requires a complete Osterwalder--Schrader positivity and growth
+packet not present in flavor. Aspect's selector remains ternary and the
+physical record quaternary after adding a Lorentzian detector-realization germ.
+The next candidate must be a reflection-positive chiral flavor--horizon
+correlator with unique mode incidence, threshold protection, and calibrated
+physical16 coupling.
+
+## Reflection-positive reconstruction and selection audit: WP815
+
+- flavor-reflection-positive-reconstruction-selection-audit.md
+- checkers/wp815_reflection_positive_reconstruction_selection_audit.py
+- results/wp815_reflection_positive_reconstruction_selection_audit.json
+
+WP815 grants a reflection-positive one-pole flavor--horizon correlator. Its
+Euclidean reflection kernel is an exact positive rank-one Gram matrix, and its
+first two moments reconstruct residue and pole on the independently declared
+one-pole domain. This closes WP814's raw continuation kernel conditionally. It
+does not select the domain or its parameters: every positive pole and residue
+passes, the quadratic two-point function is blind to portal sign, and positive
+threshold pole shifts preserve reflection positivity while changing the
+prediction. A one-pole and a two-pole positive measure share the first two
+moments, so finite readout cannot authorize the one-pole restriction. Detector
+line position and area retain independent calibration fibers. The successor
+must derive a reflection-positive odd correlator with unique chiral pole
+incidence, protected normalization, and the same operator's calibrated
+physical16 detector coupling.
+
+## Mixed OS residue sign-pair audit: WP816
+
+- flavor-mixed-os-residue-sign-pair-audit.md
+- checkers/wp816_mixed_os_residue_sign_pair_audit.py
+- results/wp816_mixed_os_residue_sign_pair_audit.json
+
+WP816 adds the sign-sensitive mixed correlator missing from WP815. Reflection
+positivity bounds the mixed residue by (C^2<=AB). Conditional rank-one purity
+fixes the normalized magnitude (|C|/sqrt(AB)=1) but retains the exact pair
+(C=plus or minus sqrt(AB)). The two saturated residue matrices are positive,
+isospectral, and have identical diagonal readouts; a calibrated mixed channel
+separates them only after the relative operator sign port is fixed. Positive
+diagonal threshold transport preserves the normalized pair, whereas nonaligned
+mixing changes the fixed-axis cross readout. The complete calibrated
+three-channel residue family is faithful, but the cross channel alone retains
+a source--gain kernel. The successor must derive a pre-quotient odd incidence
+that selects the relative operator orientation, authorizes purity, protects
+the marked lines, and realizes the calibrated physical16 cross detector.
+
+## Three-operator Gram-loop purity selector: WP817
+
+- flavor-three-operator-gram-loop-purity-selector.md
+- checkers/wp817_three_operator_gram_loop_purity_selector.py
+- results/wp817_three_operator_gram_loop_purity_selector.json
+
+WP817 supplies the minimal odd incidence missing from WP816. For three marked
+real operators, the triangle product
+\(R_{12}R_{23}R_{31}\) survives every independent operator-sign change.
+Positivity alone admits both signs: equal-magnitude representatives of both
+classes are positive at \(r=1/4\). Conditional rank-one purity is stronger.
+Every nonzero real rank-one Gram matrix has triangle product
+\((v_1v_2v_3)^2>0\); with unit diagonal it also fixes every normalized edge
+magnitude to one. The negative equal-magnitude class is positive only through
+\(r=1/2\), where it still has rank two.
+
+Aspect's germ tester classifies the construction as natively ternary. Its
+operator germs, three primitive attachments, fiber sensitivity, and
+comparison-before-quotient order are explicit. The source-authority,
+physical16 descent, and common calibrated detector gates remain open.
+Real congruence preserves rank-one positivity and cannot create a negative
+nonzero loop, but nonaligned transport can erase an attachment. Thus WP817 is
+the first intrinsic conditional loop-sign selector in this branch, not yet a
+source-authorized physical flavor selector.
+
+## Single-mediator rank-one source audit: WP818
+
+- flavor-single-mediator-rank-one-source-audit.md
+- checkers/wp818_single_mediator_rank_one_source_audit.py
+- results/wp818_single_mediator_rank_one_source_audit.json
+
+WP818 derives rather than assumes WP817's purity condition. A unique isolated
+nondegenerate mediator coupled to three marked flavor operators has residue
+\(R=gg^T\), so its nonzero triangle product is
+\((g_1g_2g_3)^2>0\) and every squared normalized edge magnitude is one. The
+positive loop sign is therefore source-generated on the isolated-pole domain.
+
+The constructor does not select the coupling ray or absolute scale.
+Equal-norm rays \((1,2,3)\) and \((1,3,2)\) generate distinct portal matrices,
+while \((g,M)\mapsto(\lambda g,\lambda M)\) is an exact low-energy
+source-identification kernel. Multiplicative RG preserves the rank-one
+manifold but not a unique projective basin. Threshold survival requires
+spectral exclusivity: an explicit positive-definite multi-channel residue has
+negative triangle product. Aspect's native-quaternary and attachment gates
+pass, but coupling-ray authority, scale, RG basin, threshold exclusivity,
+physical16 descent, and calibrated detector gates remain open. The isolated
+mediator is thus a genuine conditional sign selector, not the complete
+asymmetric-portal principle.
+
+## Unique invariant tensor authority audit: WP819
+
+- flavor-unique-invariant-tensor-authority-audit.md
+- checkers/wp819_unique_invariant_tensor_authority_audit.py
+- results/wp819_unique_invariant_tensor_authority_audit.json
+
+WP819 tests whether representation theory can select WP818's free coupling
+ray. A transitive cyclic flavor action has a unique invariant line, but it is
+the symmetric ray \((1,1,1)\) and gives zero component contrast. A single
+transposition leaves a two-dimensional fixed space. More decisively, every
+prescribed nonzero ray \(v\) can be made the unique fixed line of
+\(H_v=2P_v-I\), and the target projector is recovered as
+\(P_v=(H_v+I)/2\). Unique-invariant-tensor language can therefore encode any
+desired answer unless the representation is derived independently.
+
+Even after normalizing the invariant tensor, an overall coefficient \(y\)
+remains. Its sign reverses the linear portal while leaving the quadratic
+residue unchanged. Equivariant RG restricts evolution to a scalar beta
+function without fixing its coefficients; equivariant thresholds preserve the
+ray while multiplying it by an arbitrary scalar. Physical16 descent and
+detector calibration remain absent. The representation is therefore a
+rigidifier, not a selector, until an independent anomaly or topological
+incidence fixes both its oriented ray and scalar normalization.
+
+## Integer incidence and anomaly-inflow selector: WP820
+
+- flavor-integer-incidence-anomaly-inflow-selector.md
+- checkers/wp820_integer_incidence_anomaly_inflow_selector.py
+- results/wp820_integer_incidence_anomaly_inflow_selector.json
+
+WP820 supplies the first conditional source that fixes the asymmetric charge
+ray, its orientation, and primitive lattice normalization. The rank-two
+integer incidence
+\(B=((2,-1,0),(3,0,-1))\) has primitive kernel
+\(\pm(1,2,3)\). On that line the cubic anomaly is \(36s^3\), so an oriented
+quantized inflow \(k=36\) selects \(s=1\) and hence the unit contrast
+\(q_3-q_2=1\). Reversing the bulk selects the mirror. This is explicitly a
+relational boundary experiment, not recovery of an absolute sign.
+
+The physical portal remains \(e(q_3-q_2)=e\), with continuous gauge coupling
+\(e\). Positive one-loop Abelian running has only the Gaussian fixed point and
+retains initial data. Wess–Zumino matching protects the total anomaly across
+thresholds but not the numerical mediator amplitude. A second integer
+incidence selects a different primitive ray, so incidence and bulk orientation
+still require independent source provenance. Physical16 descent and detector
+gain calibration remain absent. The next gate is a nonzero interacting
+gauge–Yukawa fixed point derived from this same chiral incidence.
+
+## Same-incidence gauge–Yukawa fixed-point interface: WP821
+
+- flavor-same-incidence-gauge-yukawa-fixed-point-interface.md
+- checkers/wp821_same_incidence_gauge_yukawa_fixed_point_interface.py
+- results/wp821_same_incidence_gauge_yukawa_fixed_point_interface.json
+
+WP821 constructs the conditional RG completion and then tests its source
+interface. The two-coupling flow
+\(\beta_x=2x^2(-b+cx-dy)\),
+\(\beta_y=2y(ay-fx)\) has
+\(x_*=ab/(ac-df)\), \(y_*=bf/(ac-df)\). The coefficient packet
+\((1,1,3,1,1)\) gives \((x_*,y_*)=(1/2,1/2)\) and exact positive infrared
+stability exponents \(1/2,2\). With WP820's unit oriented charge contrast this
+conditionally predicts the positive portal \(e_*=1/\sqrt2\).
+
+The WP820 incidence does not determine those coefficients. The same charge
+packet with \((1,1,1,1,1)\) has no finite fixed point, while a threshold shift
+to \((1,1,4,1,1)\) moves it to \((1/3,1/3)\). The known WP805 chiral
+fixed point lies in one complete action but is strongly coupled and
+orientation-blind. Thus a fixed point and an oriented incidence remain valid
+objects in different source frames. The successor is a finite complete-matter
+census derived from the WP820 lattice, performed before any physical16 fit.
+
+## Finite chiral matter-spectrum census: WP822
+
+- flavor-finite-chiral-matter-spectrum-census.md
+- checkers/wp822_finite_chiral_matter_spectrum_census.py
+- results/wp822_finite_chiral_matter_spectrum_census.json
+
+WP822 freezes the admitted generalized Georgi–Glashow grammar on the bounded
+integer domain \(5\le N\le12,\ 1\le p\le8N\). All 544 packets are
+anomaly-complete and nonsingular at the admitted fixed-flow elimination.
+Exactly four have positive fixed coordinates. Two, \((6,30)\) and \((8,39)\),
+keep all coordinates below one; none keeps all coordinates below \(0.1\).
+Exact characteristic-polynomial root counts give one negative and three
+positive stability exponents for each sub-unit survivor, so neither is a
+full-dimensional infrared attractor.
+
+The census is nonunique even on its permissive screen. More fundamentally, no
+constructor maps WP820's \((B,q,k)\) incidence/inflow packet to the
+\((N,p)\), representation, scalar, and Yukawa data of this grammar. Hence the
+number of source-authorized WP820 completions is zero, irrespective of the two
+algebraic survivors. The next source must be one quiver or chain complex that
+simultaneously generates charges, matter representations, multiplicities,
+hyperedges, beta coefficients, and the relevant critical-surface deformation.
+
+## Acyclic stabilization RG-descent no-go: WP823
+
+- flavor-acyclic-stabilization-rg-descent-no-go.md
+- checkers/wp823_acyclic_stabilization_rg_descent_no_go.py
+- results/wp823_acyclic_stabilization_rg_descent_no_go.json
+
+WP823 attacks the proposed unified chain-complex source by acyclic
+stabilization. The WP820 boundary \(B\) and \(B\oplus(1)\) have the same
+primitive charge kernel and trivial cokernel. A physically populated unit
+summand can carry the vectorlike pair \((r,-r)\), which changes neither linear
+nor cubic anomaly but adds \(2r^2\) to a quadratic loop index. In the WP821
+conditional flow this changes \(x_*=1/2\) to
+\(x_*'=1/(2+2r^2)\); the unit pair gives \(1/4\).
+
+Thus RG magnitude and threshold response do not descend from the full
+chain-level matter complex to charge homology. Removing contractible summands
+by a minimality convention also removes physical massive thresholds, so it is
+not a harmless physical quotient. The first nonfaithful arrow is the passage
+from full matter complex to homology/inflow. A viable unified source must be a
+spectrally complete chain-level object with source-derived masses and kinetic
+normalizations for every acyclic sector, followed by physical16 descent and a
+calibrated threshold instrument.
+
+## Finite spectral completion and scale-selection audit: WP824
+
+- flavor-finite-spectral-completion-scale-selection-audit.md
+- checkers/wp824_finite_spectral_completion_scale_selection_audit.py
+- results/wp824_finite_spectral_completion_scale_selection_audit.json
+
+WP824 enriches WP823's acyclic sector by
+\(D_m=((0,m),(m,0))\). Its calibrated heat trace
+\(2e^{-\tau m^2}\) is strictly mass-sensitive, so full spectral data repairs
+the homology mass fiber. It does not select the spectrum. The normalized heat
+action \(2e^{-m^2/\Lambda^2}\) has no positive finite mass extremum and is
+invariant under common rescaling of \(m,\Lambda\). A polynomial action selects
+\(m^2/\Lambda^2=-\alpha/(2\beta)\), moving the choice into its coefficients,
+while acyclic multiplicity also remains free.
+
+Spectral completion is therefore a faithful carrier and threshold record, not
+a portal selector. The source must still derive the Dirac operator, action
+coefficients, and common physical scale, and must parallelize that scale with
+the gauge–Yukawa fixed point. A heat record additionally requires a calibrated
+clock and detector before it can descend to physical16.
+
+## Spectral-flow and dimensional-transmutation audit: WP825
+
+- flavor-spectral-flow-dimensional-transmutation-audit.md
+- checkers/wp825_spectral_flow_dimensional_transmutation_audit.py
+- results/wp825_spectral_flow_dimensional_transmutation_audit.json
+
+WP825 tests the proposed quantized eigenvalue and common-scale repair. For
+\(H_\rho(t)=t-\rho\) on \([-1,1]\), every \(-1<\rho<1\) has spectral flow one.
+In particular \(\rho=1/4\) and \(3/4\) share the same oriented index while
+having different crossing locations. Index protection therefore fixes
+orientation and crossing count, not a numerical eigenvalue or threshold.
+
+For one-loop asymptotically free running,
+\(\Lambda=\mu\exp[-1/(2bg(\mu)^2)]\) is exactly RG invariant, but each
+\(0<\Lambda<\mu\) corresponds to a different boundary coupling. Dimensional
+transmutation trades a continuous coupling for a continuous scale. Hence
+\(m=\rho\Lambda\) retains independent crossing-location and boundary-condition
+fibers. The next source must identify the spectral path with the RG trajectory
+and derive a global condition selecting one trajectory and one physical
+crossing event, which must also supply the calibrated threshold clock and
+physical16 record.
+
+## RG-spectral heteroclinic event-selection audit: WP826
+
+- flavor-rg-spectral-heteroclinic-event-selection-audit.md
+- checkers/wp826_rg_spectral_heteroclinic_event_selection_audit.py
+- results/wp826_rg_spectral_heteroclinic_event_selection_audit.json
+
+WP826 identifies the spectral path with one autonomous RG heteroclinic,
+\(u_A(t)=1/(1+Ae^{-t})\), and uses the symmetric zero \(u=1/2\). Conditional
+on this source vector field, the crossing has positive slope \(1/4\), fixes
+dimensionless portal magnitude \(1/2\), and has the full open interval as a
+monotone basin. This closes sign, normalized magnitude, spectral orientation,
+and basin in one dynamics.
+
+Global endpoint regularity leaves the autonomous translation modulus \(A\):
+\(u_A(t+\delta)=u_{Ae^{-\delta}}(t)\). With \(\mu=\mu_0e^t\), the threshold is
+\(\mu_*=\mu_0A\). A reference condition \(u(0)=1/2\) sets \(A=1\) only by
+attaching a relational clock. Threshold-criterion shifts also move the event
+without changing orientation. Thus absolute event scale, criterion authority,
+physical16 descent, and detector calibration remain open. The successor must
+derive a second physical anchor event and its separation from the crossing.
+
+## Intrinsic RG curvature-anchor triplet: WP827
+
+- flavor-intrinsic-rg-curvature-anchor-triplet.md
+- checkers/wp827_intrinsic_rg_curvature_anchor_triplet.py
+- results/wp827_intrinsic_rg_curvature_anchor_triplet.json
+
+WP827 derives two anchor events from extrema of the acceleration of the same
+RG vector field. For \(\dot u=\kappa u(1-u)\), the anchors occur at
+\(u_\pm=(3\pm\sqrt3)/6\), symmetrically around the portal crossing \(u_0=1/2\).
+Their RG-time offsets are
+\(\kappa^{-1}\log(2+\sqrt3)\), independent of the WP826 translation modulus.
+At \(\kappa=1\), the one-sided physical scale ratio is \(2+\sqrt3\) and the
+full anchor ratio is \(7+4\sqrt3\).
+
+This is the first source-derived relative scale prediction in the branch that
+cancels both translation modulus and common reference scale. A common-gain
+three-event detector would also cancel its multiplicative calibration.
+However, the ratio retains the beta normalization \(\kappa\); separate event
+gains destroy the readout. The complete oriented matter action must therefore
+derive \(\kappa\), preserve the curvature triplet through thresholds, and
+supply one common physical16 instrument. Absolute scale still requires an
+independently calibrated relational anchor.
+
+## Aspect germ tester audit: WP828
+
+- flavor-aspect-germ-tester-audit.md
+- checkers/wp828_aspect_germ_tester_audit.py
+- results/wp828_aspect_germ_tester_audit.json
+
+WP828 corrects WP827's implementation-count/native-arity conflation. The
+curvature target is a ternary relation on the lower anchor, portal crossing,
+and upper anchor. Its marked carrier retains one trajectory identity, beta
+provenance, and a common comparison port. Full-fiber descent passes for common
+translation and common detector gain, but fails for independent gains. Binary
+gap factorization is valid only while both gaps retain the identical portal
+record. Physical realization authority still fails: threshold survival,
+`physical16` descent, ordered detector realization, and a common-calibration
+instrument remain absent.
+
+## RG curvature scheme-descent no-go: WP829
+
+- flavor-rg-curvature-scheme-descent-no-go.md
+- checkers/wp829_rg_curvature_scheme_descent_no_go.py
+- results/wp829_rg_curvature_scheme_descent_no_go.json
+
+WP829 constructs the regular monotone redefinition
+\(v=u+u(1-u)/2\). It preserves the oriented logistic orbit, endpoints, RG
+time, endpoint critical exponents, and the portal event, while moving both
+coordinate acceleration extrema and destroying their reflection pairing. The
+old anchors give nonzero values \(\pm\sqrt3/3\) in the new anchor polynomial,
+and the new polynomial and its reflection have resultant 110592. Hence the
+WP827 scale ratio does not descend under the admitted scheme and finite-
+matching fibers. The first nonfaithful arrow is physical RG trajectory to
+chosen coupling-coordinate acceleration jet. A physical running observable,
+matched through thresholds and read by one calibrated instrument, must be
+derived before curvature events acquire selector authority.
+
+## Process-relative effective-charge no-go: WP830
+
+- flavor-process-relative-effective-charge-no-go.md
+- checkers/wp830_process_relative_effective_charge_no_go.py
+- results/wp830_process_relative_effective_charge_no_go.json
+
+WP830 proves that operational normalization alone does not repair WP829. The
+two monotone physical records \(E_A(u)=u\) and
+\(E_B(u)=u+u^2(1-u)/2\) share endpoints, tree normalization, the same RG
+orbit, and endpoint critical exponents. At the same portal they read \(1/2\)
+and \(9/16\), and the second channel's curvature-anchor polynomial is a
+quartic with two internal roots not paired by reflection. Its resultant with
+the reflected polynomial is 53084160. Thus effective-charge curvature is
+process-relative. The source must derive a unique conserved-current channel
+or a relation natural across the complete physical probe family; choosing an
+observable after the fact is another rigidifier, not a selector.
+
+## Primitive Ward-current threshold fiber: WP831
+
+- flavor-primitive-ward-current-threshold-fiber.md
+- checkers/wp831_primitive_ward_current_threshold_fiber.py
+- results/wp831_primitive_ward_current_threshold_fiber.json
+
+WP831 shows that WP820's one-dimensional primitive kernel and oriented inflow
+do select a unique linear Ward-current channel, repairing WP830's channel
+ambiguity conditionally. Its base spectral index is \(q^Tq=14\), so the
+formal response \(C=14e^2\) is injective for positive \(e\) on a fixed
+spectrum. The smallest anomaly-neutral vectorlike completion changes the
+index to 16 without changing the current anomaly. Response continuity then
+allows \(e_{\rm low}=\sqrt{8/7}e_{\rm high}\), and the packets
+\((14,1)\) and \((16,\sqrt{7/8})\) share the record 14. Hence the source can
+select the current channel and charge sign while failing to select magnitude,
+RG basin, threshold value, or an executable physical16 readout.
+
+## Connected-presentation acyclic-spectrum no-go: WP832
+
+- flavor-connected-presentation-acyclic-spectrum-no-go.md
+- checkers/wp832_connected_presentation_acyclic_spectrum_no_go.py
+- results/wp832_connected_presentation_acyclic_spectrum_no_go.json
+
+WP832 refutes graph connectedness as a repair of WP831. The displayed
+support-connected \(3\times4\) integer matrix has no leaf row or column yet
+shares the Smith form, primitive kernel \((1,2,3,0)\), anomaly 36, and trivial
+cokernel of \(B\oplus(1)\). The anomaly-neutral vectorlike decoration, its
+continuous mass, spectral-index shift, and the exact Ward-response fiber all
+remain. Hence connectedness and permutation-level matrix indecomposability are
+presentation rigidifiers. A repair requires invariant physical
+irreducibility that actually excludes or fixes every anomaly-neutral sector.
+
+## Operator-irreducible vectorlike-completion no-go: WP833
+
+- flavor-operator-irreducible-vectorlike-completion-no-go.md
+- checkers/wp833_operator_irreducible_vectorlike_completion_no_go.py
+- results/wp833_operator_irreducible_vectorlike_completion_no_go.json
+
+WP833 strengthens WP832 to a basis-invariant scalar-common-commutant test. An
+irreducible three-state packet with charges \((1,2,3)\) and an irreducible
+five-state packet with added anomaly-neutral charges \((1,-1)\) both have
+anomaly 36 and primitive contrast one. The added states mix with the base, and
+the completed mixing operator is nondegenerate, yet the current index changes
+from 14 to 16. Scaling the mixing operator preserves irreducibility while
+leaving a continuous spectral scale. Thus irreducibility can reject reducing
+subspaces inside one packet but cannot select among distinct irreducible
+physical completions.
+
+## Minimal Ward-index neutral RG kernel: WP834
+
+- flavor-minimal-ward-index-neutral-rg-kernel.md
+- checkers/wp834_minimal_ward_index_neutral_rg_kernel.py
+- results/wp834_minimal_ward_index_neutral_rg_kernel.json
+
+WP834 tests the physical positive pairing \(S=\operatorname{Tr}Q^2\) as a
+comparison principle. Minimizing it excludes every nonzero charged vectorlike
+pair because the index rises by \(2r^2\). This is a genuine partial charged-
+spectrum selector. An irreducible neutral completion with charges
+\((1,2,3,0)\) retains index 14, anomalies, and primitive contrast. In the
+declared hostile flow \(c=3+\eta^2\), the neutral direction moves the fixed
+coordinate from \(1/2\) to \(1/3\) while both local stability spectra remain
+positive. The first nonfaithful arrow is full RG-active spectrum to Ward-
+current Gram. A complete selector needs a source-derived positive functional
+faithful on neutral as well as charged active sectors.
+
+## Ward-spectral positive-functional scale fiber: WP835
+
+- flavor-ward-spectral-positive-functional-scale-fiber.md
+- checkers/wp835_ward_spectral_positive_functional_scale_fiber.py
+- results/wp835_ward_spectral_positive_functional_scale_fiber.json
+
+WP835 adds \(\alpha\operatorname{Tr}D^2\) to the Ward pairing. At a frozen
+common spectral scale it detects WP834's neutral completion: the base and
+completed spectral squares are 9 and 22. Independent scaling of the completed
+operator preserves irreducibility, however, and the base at scale one has the
+same score as the completion at \(3/\sqrt{22}\) for every \(\alpha>0\). The
+quadratic penalty has an unattained zero-scale infimum. An inverse-spectral
+term selects a scale only through the new coefficient ratio
+\(\lambda^4=37\beta/(352\alpha)\). Thus positivity repairs the neutral kernel
+only after a charged-neutral metric and common clock have been independently
+derived.
+
+## Scale-free Ward-spectral completion selector: WP836
+
+- flavor-scale-free-ward-spectral-completion-selector.md
+- checkers/wp836_scale_free_ward_spectral_completion_selector.py
+- results/wp836_scale_free_ward_spectral_completion_selector.json
+
+WP836 replaces WP835's dimensionful spectral term by the scale-free shape
+\(R_n=\operatorname{Tr}(D^TD)/\det(D^TD)^{1/n}\). AM-GM gives \(R_n\geq n\).
+For the primitive base, an irreducible Householder operator saturates the
+bound and gives score \(14+3\lambda\). Adding \(k\) charged vectorlike pairs
+and \(\ell\) neutral states raises the score by at least
+\(2\sum r_j^2+\lambda(2k+\ell)>0\) for every positive \(\lambda\). Thus the
+functional genuinely and coefficient-robustly selects the minimal finite
+completion and equal singular values inside the declared grammar. It remains
+scale invariant and admits distinct irreducible mixing minimizers; source
+authority, RG basin, matching, and instrumentation are still open.
+
+## Primitive-current reflection Aspect-germ audit: WP837
+
+- flavor-primitive-current-reflection-aspect-germ-audit.md
+- checkers/wp837_primitive_current_reflection_aspect_germ_audit.py
+- results/wp837_primitive_current_reflection_aspect_germ_audit.json
+
+WP837 retains WP820's primitive current as an attachment port and constructs
+the unique normalized Householder reflection whose negative eigenspace is the
+current line. This condition removes WP836's mixing-orientation fiber and is
+equivariant under simultaneous real orthogonal transport of the current and
+spectral operator. Aspect's tester nevertheless prevents promotion: the
+minimization has the native arity of a comparison against the whole declared
+completion family; forgetting the current attachment fails the full-fiber
+gate; and neither the comparison functional nor the reflection law has source
+authority. The positive scale fiber \(mH_q\) survives exactly. The construction
+is therefore a conditional mixing rigidifier attached to the finite-
+completion selector, not yet a source-generated `physical16` selector.
+
+## Single-constructor portal unavoidability certificate: WP838
+
+- flavor-single-constructor-portal-unavoidability-certificate.md
+- checkers/wp838_single_constructor_portal_unavoidability_certificate.py
+- results/wp838_single_constructor_portal_unavoidability_certificate.json
+
+WP838 states the exact acceptance theorem for the active objective. One
+source-natural constructor must generate the oriented representation, finite
+spectral action, beta system and selected basin, finite threshold map, and
+calibrated labelled `physical16` realization. For the conditional coefficient
+packet of WP821, the primitive unit contrast predicts the positive portal
+\(1/\sqrt2\) with local stability eigenvalues \(1/2,2\). Independent exact
+hostiles show why the composition is not yet authoritative: the same
+incidence with \(c=4\) moves the fixed point to \(1/3\), inclusive threshold
+matching erases the contrast, and inclusive detection has rank one. Aspect's
+comb reference supplies a comparison frame but explicitly not source
+selection. The first missing arrow is from primitive incidence plus finite
+spectral data to a uniquely derived interacting action and beta coefficients.
+
+## Spectral-action coefficient fiber transports to the portal: WP839
+
+- flavor-spectral-action-coefficient-fiber-transports-to-portal.md
+- checkers/wp839_spectral_action_coefficient_fiber.py
+- results/wp839_spectral_action_coefficient_fiber.json
+
+WP839 attacks WP838's first missing arrow. With the primitive current and
+normalized reflection fixed, the polynomial spectral action is
+\(S=3\alpha m^2+3\beta m^4\) and selects
+\(m_*^2=-\alpha/(2\beta)\). The packets \((-2,1)\) and \((-4,1)\) have
+identical upstream current, completion, mixing, and scale-free shape, but
+select \(m_*^2=1,2\). Under the explicit hostile interface
+\(c=2+m_*^2\), they yield fixed-point coordinates \(1/2,1/3\) and portals
+\(1/\sqrt2,1/\sqrt3\). Therefore a finite spectral packet does not determine
+its interacting action: the source must also derive the spectral-action
+profile and normalization before its beta coefficients acquire selection
+authority.
+
+## Reciprocal spectral self-duality normalization fiber: WP840
+
+- flavor-reciprocal-spectral-self-duality-normalization-fiber.md
+- checkers/wp840_reciprocal_spectral_self_duality_normalization_fiber.py
+- results/wp840_reciprocal_spectral_self_duality_normalization_fiber.json
+
+WP840 tests spectral reciprocity as a coefficient-free repair of WP839. The
+action \(R(z)=z+z^{-1}\) has a unique positive self-dual minimum and, for
+\(z=m^2/L^2\), selects \(m=L\). It remains invariant under common rescaling,
+so the comparison scale is not selected. Applied to a coupling coordinate
+\(z=\eta x\), the same abstract reciprocity selects \(x_*=1/\eta\):
+\(\eta=2,3\) give portals \(1/\sqrt2,1/\sqrt3\). Reciprocity removes a
+relative coefficient only after the physical variable and its normalization
+are declared. The first nonfaithful arrow is therefore the map from the
+physical spectral or coupling coordinate to the normalized reciprocal
+coordinate.
+
+## Charge-diameter normalized global portal flow: WP841
+
+- flavor-charge-diameter-normalized-global-portal-flow.md
+- checkers/wp841_charge_diameter_normalized_global_portal_flow.py
+- results/wp841_charge_diameter_normalized_global_portal_flow.json
+
+WP841 closes WP840's dimensionless normalization fiber conditionally by using
+the primitive charge-operator diameter \(\Delta_Q=2\). This invariant survives
+weak-basis conjugation and common charge shifts; primitive integer
+normalization removes rescaling. The candidate flow
+\(\beta_x=\kappa x^2(1-\Delta_Qx)\) selects \(x_*=1/2\), hence the positive
+unit-contrast portal \(1/\sqrt2\), and an exact Lyapunov identity proves that
+the entire positive half-line is its basin. This is the first invariant
+sign--magnitude--global-basin selector from the primitive current itself. It
+remains a conjectured beta constructor: no microscopic action derives the
+diameter coefficient. Decoupling an extremal charge changes the active
+diameter from two to one and moves the selected coordinate from \(1/2\) to
+\(1\), so threshold matching and calibrated labelled readout remain open.
+
+## Charge-moment loop mismatch with diameter flow: WP842
+
+- flavor-charge-moment-loop-mismatch-with-diameter-flow.md
+- checkers/wp842_charge_moment_loop_mismatch.py
+- results/wp842_charge_moment_loop_mismatch.json
+
+WP842 tests whether the primitive charge spectrum automatically generates
+WP841's beta ratio in the smallest charge-moment loop grammar. The exact
+moments are \(S_2=14,S_4=98\), so the unscreened moment flow selects
+\(S_2/S_4=1/7\), not \(1/\Delta_Q=1/2\). A scalar/Yukawa contribution
+\(Y=70\) is required to make \(S_4-Y=\Delta_QS_2\). The same-diameter shifted
+spectrum requires 295, proving that diameter alone does not reconstruct the
+microscopic coefficients. After extremal threshold deletion the required
+contribution becomes 84. Thus the next source object must be a unique
+interaction tensor whose loop contraction and finite matching produce these
+values independently of the desired portal.
+
+## Positive tensor threshold contraction no-go: WP843
+
+- flavor-positive-tensor-threshold-contraction-no-go.md
+- checkers/wp843_positive_tensor_threshold_contraction_no_go.py
+- results/wp843_positive_tensor_threshold_contraction_no_go.json
+
+WP843 proves that WP842's required screening transition cannot come from one
+fixed positive tensor by ordinary threshold restriction. Orthogonal
+compression or a positive conditional expectation is Frobenius-contractive,
+whereas the required contribution increases from 70 to 84. Even a full tensor
+of norm squared 70 cannot restrict to norm squared 84. The smallest algebraic
+repairs are a lossless squared amplification (6/5), or a new positive
+threshold contribution 14. The latter equals the primitive Ward index only
+numerically; this is not source authority. A viable constructor must therefore
+derive a noncontractive finite matching operation or dynamically generate the
+additional interaction at threshold, then realize its labelled detector
+response.
+
+## Asymmetric-charge radiative threshold splitting: WP844
+
+- flavor-asymmetric-charge-radiative-threshold-splitting.md
+- checkers/wp844_asymmetric_charge_radiative_threshold_splitting.py
+- results/wp844_asymmetric_charge_radiative_threshold_splitting.json
+
+WP844 tests whether WP836's equal singular values protect the common
+three-state threshold. The covariant hostile
+\(\Pi=\epsilon Q^2\) splits the squared thresholds into
+\(m^2+\epsilon,m^2+4\epsilon,m^2+9\epsilon\). A shift-insensitive centered
+charge square also splits them. Since (Q) has simple spectrum, its commutant
+cannot mix the three charge lines; the common commutant of (Q,H_q) is scalar.
+Any quadratic charge correction preserving degeneracy is constant. Protecting
+the common threshold therefore requires cancellation of the full traceless
+self-energy, whose squared norm is \(98\epsilon^2/3\). No admitted source
+identity supplies that cancellation, so equal singular shape remains a tree-
+level rigidifier rather than threshold survival.
+
+## Holomorphic-mass wavefunction threshold splitting: WP845
+
+- flavor-holomorphic-mass-wavefunction-threshold-splitting.md
+- checkers/wp845_holomorphic_mass_wavefunction_threshold_splitting.py
+- results/wp845_holomorphic_mass_wavefunction_threshold_splitting.json
+
+WP845 tests supersymmetric holomorphy as the nonrenormalization identity
+missing from WP844. A common gauge-invariant superpotential mass for three
+vectorlike charge pairs can remain protected, while the allowed wavefunction
+hostile (Z_i=\widetilde Z_i=e^{\kappa q_i^2t}) gives physical masses
+proportional to (e^{-\kappa q_i^2t}). Their adjacent ratios are
+\(e^{-3\kappa t}\) and \(e^{-5\kappa t}\). Keeping the physical thresholds
+equal requires a Kähler anomalous-dimension contribution exactly canceling
+\(\kappa(Q^2-14I/3)\), the same traceless operator found in WP844.
+Holomorphic nonrenormalization therefore moves rather than closes the gate; an
+all-order Kähler or physical-pole identity is still required.
+
+## Equivariant-character threshold memory: WP846
+
+- flavor-equivariant-character-threshold-memory.md
+- checkers/wp846_equivariant_character_threshold_memory.py
+- results/wp846_equivariant_character_threshold_memory.json
+
+WP846 replaces failed common-mass protection by a representation-valued
+threshold carrier. Ordinary linear and cubic anomalies are nonfaithful on
+charge diameter: adding a vectorlike pair \(\{4,-4\}\) preserves both but
+changes the diameter from two to eight. By contrast, the full character sews
+exactly as \((z^2+z^3)+z=z+z^2+z^3\), restoring the ultraviolet support and
+diameter two after charge one decouples. Four holonomy evaluations at
+\(1,-1,i,-i\) reconstruct every coefficient on the declared support. This is
+a conditional algebraic threshold repair and a finite faithful relational
+probe. It requires an equivariant-index source theorem and an added
+background-holonomy reference experiment; ordinary anomaly matching and the
+current detector do not supply either.
+
+## Incidence kernel is not an equivariant charge index: WP847
+
+- flavor-incidence-kernel-is-not-an-equivariant-charge-index.md
+- checkers/wp847_incidence_kernel_not_equivariant_charge_index.py
+- results/wp847_incidence_kernel_not_equivariant_charge_index.json
+
+WP847 tests whether WP820 itself sources WP846's character. It does not. The
+vector \(q=(1,2,3)\) is a kernel coefficient satisfying \(Bq=0\); treating its
+entries as eigenvalues of \(Q=\operatorname{diag}(1,2,3)\) would require a
+target generator \(A\) with \(AB=BQ\). The necessary kernel condition fails
+exactly: \(BQq=(-2,-6)\). No such \(A\) exists, and the kernel line is not
+\(Q\)-stable. The current complex supplies only ordinary Euler index one, not
+the character \(z+z^2+z^3\). A new independently authorized equivariant
+complex is therefore required before representation-valued threshold memory
+or holonomy probes become source-derived.
+
+## Charged-spurion equivariant incidence lift: WP848
+
+- flavor-charged-spurion-equivariant-incidence-lift.md
+- checkers/wp848_charged_spurion_equivariant_incidence_lift.py
+- results/wp848_charged_spurion_equivariant_incidence_lift.json
+
+WP848 constructs the minimal typed repair of WP847 by promoting incidence
+entries to spurions of weights \((-1,-2,-3)\). The lifted differential is
+equivariant and has kernel
+\((s_2s_3,2s_1s_3,3s_1s_2)\). Equal VEVs recover the WP820 ray, but two
+projective VEV ratios remain; the hostile VEV packet \((1,2,1)\) produces the
+ray \((1,1,3)\). The virtual index is \(z+z^2+z^3-2\), not WP846's positive
+character, and simultaneous nonzero VEVs have trivial \(U(1)\) stabilizer.
+Thus the lift repairs equivariance typing but relocates selection to a spurion
+potential and changes the holonomy experiment's groupoid.
+
+## Charge-recursive spurion alignment selector: WP849
+
+- flavor-charge-recursive-spurion-alignment-selector.md
+- checkers/wp849_charge_recursive_spurion_alignment_selector.py
+- results/wp849_charge_recursive_spurion_alignment_selector.json
+
+WP849 closes WP848's VEV-ratio fiber conditionally. The positive
+charge-recursive potential enforces
+\(|s_1|=v,s_2=s_1^2/v,s_3=s_1s_2/v\). Its zero locus is one (U(1)) orbit
+for every positive coefficient packet; gauge fixing gives
+\((s_1,s_2,s_3)=(v,v,v)\). The gauge-fixed Hessian is positive definite, and
+the lifted kernel becomes \(v^2(1,2,3)\), so the projective ray is independent
+of the dimensionful VEV. This is a genuine coefficient-robust alignment
+selector inside the declared spurion model. The potential itself lacks
+independent source authority, and the broken-group character transport, beta
+law, thresholds, and physical instrument remain open.
+
+## Aspect germ audit of the charge-recursive selector: WP850
+
+- flavor-charge-recursive-selector-aspect-germ-audit.md
+- checkers/wp850_charge_recursive_selector_aspect_germ_audit.py
+- results/wp850_charge_recursive_selector_aspect_germ_audit.json
+
+WP850 applies Aspect's germ-versus-completion distinction to WP849. The full
+complex Hessian has rank five, with its unique null line exactly the
+infinitesimal \(U(1)\) orbit, and the declared positive potential has one full
+gauge-orbit zero fiber. Thus the chosen model passes the local-germ and
+full-fiber gates. It fails source completion: the independently allowed
+renormalizable invariant \(\epsilon v^2|s_2|^2\) moves the vacuum at first
+order by \((-1/2,-2,-5/2)\) and changes the projective kernel ray. WP849 is
+therefore a conditional selector with a nondegenerate germ, not an unavoidable
+selector until a source theorem excludes or fixes every orbit-moving invariant.
+
+## Supersymmetric recursive F-flat completion audit: WP851
+
+- flavor-supersymmetric-recursive-f-flat-completion-audit.md
+- checkers/wp851_supersymmetric_recursive_f_flat_completion_audit.py
+- results/wp851_supersymmetric_recursive_f_flat_completion_audit.json
+
+WP851 promotes the recursive alignment equations to F-term relations using
+three charged driving fields. Exact supersymmetry repairs WP850's
+nonholomorphic completion escape: for every positive invertible Kähler metric,
+the F-term potential vanishes exactly on the same F-flat locus. However, an
+exact monomial census shows that charge, \(R\)-charge, holomorphy, and
+renormalizability also admit \(A_2\overline S_1S_3\), in addition to leaving
+the three ratios \(b/a,d/c,f/e\) free. Turning on only this extra monomial
+preserves the entire declared grammar while moving the projective kernel ray. The missing
+source object is therefore a positive pairing that canonically normalizes the
+graded multiplication maps in the same frame used by thresholds and readout.
+
+## Finite-path partial-isometry normalization selector: WP852
+
+- flavor-finite-path-partial-isometry-normalization-selector.md
+- checkers/wp852_finite_path_partial_isometry_normalization_selector.py
+- results/wp852_finite_path_partial_isometry_normalization_selector.json
+
+WP852 supplies a precise candidate for WP851's missing positive pairing. On a
+four-vertex charged path, every degree-one operator is a weighted shift. The
+Toeplitz partial-isometry relation fixes all link magnitudes to one, while a
+number-preserving diagonal unitary removes their phases, so the admitted
+operator fiber is one full orbit. The cyclic descendants therefore have
+canonical unit norms and multiplication coefficients, and the apparent
+\(\overline S_1S_3\) channel collapses to the same charge-two descendant.
+This is a genuine algebraic normalization selector conditional on the path
+constructor. It does not yet establish the physical interface from that path
+to flavor operators, RG transport, thresholds, or calibrated `physical16`
+readout.
+
+## Incidence does not authorize the path partial isometry: WP853
+
+- flavor-incidence-does-not-authorize-path-partial-isometry.md
+- checkers/wp853_incidence_does_not_authorize_path_partial_isometry.py
+- results/wp853_incidence_does_not_authorize_path_partial_isometry.json
+
+WP853 tests whether WP820 supplies WP852's missing physical interface. It does
+not. Every positive weighted degree-one shift has the same number spectrum,
+primitive charge ray, incidence, and cubic inflow, while its three singular
+values remain free. The exact pair (T(1,1,1)) and (T(1,2,1)) is identical
+under all current topological flavor probes but inequivalent under
+number-preserving unitaries; only the first is a partial isometry. The first
+nonfaithful arrow is therefore from the marked path constructor to the
+incidence packet. WP852's normalization is new source data unless a microscopic
+law derives (T^*T=I-P_3) or a source-calibrated `physical16` instrument
+measures the discarded positive operator.
+
+## Oriented unitary cycle boundary-compression constructor: WP854
+
+- flavor-oriented-unitary-cycle-boundary-compression-constructor.md
+- checkers/wp854_oriented_unitary_cycle_boundary_compression_constructor.py
+- results/wp854_oriented_unitary_cycle_boundary_compression_constructor.json
+
+WP854 derives WP852's partial isometry from a more primitive relational
+operation. Removing one directed return channel from a lossless four-cycle
+gives (C=(I-P_0)U=U(I-P_3)), hence unit surviving singular values and the
+oriented boundary current (J=P_0-P_3). Reversing the cycle and port reverses
+the current. The asymmetry and dimensionless normalization are therefore
+unavoidable conditional on the oriented cycle and marked boundary, with the
+groupoid explicitly reduced to the stabilizer of its source and sink. The
+remaining physical gates are the microscopic flavor realization of this
+cycle, the calibrated map from (J) to (g_n-g_m), the RG basin, marked-port
+threshold intertwining, and `physical16` instrumentation.
+
+## Boundary-current readout hierarchy: WP855
+
+- flavor-boundary-current-readout-hierarchy.md
+- checkers/wp855_boundary_current_readout_hierarchy.py
+- results/wp855_boundary_current_readout_hierarchy.json
+
+WP855 pulls WP854 through the existing charged-cycle probes. The ordinary
+sum port maps both normalized boundary orientations and the absent source to
+zero, so the contact, partonic, and downstream Standard Model-interference
+channels cannot read the selected asymmetry. The neutral loop product retains
+relative parity but identifies the two orientations. A complementary
+difference port detects boundary magnitude, while intensity still loses sign.
+Two coherent reference settings at that port give singleton contextual
+classes on the declared orientation/absence packet. This is a new relational
+experiment over the reference-phase stabilizer; no current flavor instrument
+supplies the pre-projection difference channel or its calibrated reference.
+
+## Reciprocal endpoint RG basin and threshold audit: WP856
+
+- flavor-reciprocal-endpoint-rg-basin-threshold-audit.md
+- checkers/wp856_reciprocal_endpoint_rg_basin_threshold_audit.py
+- results/wp856_reciprocal_endpoint_rg_basin_threshold_audit.json
+
+WP856 equips WP854's two marked endpoints with the unique irreducible
+exchange-covariant probability generator. Its fixed point is (p_*=1/2), its
+basin is the whole interval, and even a zero seed flows nonzero. Conditional
+on a source-derived kinetic identification
+
+\[
+|g_n-g_m|^2=p,
+\]
+
+this selects (1/\sqrt2). The threshold audit separates stationary-weight
+survival from current survival: every swap-intertwining stochastic channel
+preserves (p_*), but (T_rJ=(2r-1)J). The exact hostile (r=3/4) halves the
+portal current without disturbing the fixed point. Physical completion now
+requires one source to derive the flavor-RG interpretation, coherent kinetic
+lift, isometric marked-port threshold map, and WP855 referenced readout.
+
+## Oriented dark-state portal attractor: WP857
+
+- flavor-oriented-dark-state-portal-attractor.md
+- checkers/wp857_oriented_dark_state_portal_attractor.py
+- results/wp857_oriented_dark_state_portal_attractor.json
+
+WP857 repairs WP856's classical-coherence gap with two Lindblad jumps pumping
+the absent and symmetric sectors into the antisymmetric ray. The Liouvillian
+has one stationary state, gap (\kappa/2), and a global basin containing the
+absent portal. It fixes coherent relative parity and amplitudes
+\((1,-1)/\sqrt2\). It does not fix global phase relative to WP855's external
+reference. More importantly, an even-parity rival reservoir has the identical
+spectrum and global-basin structure, so complete positivity, equal rates, and
+exchange covariance do not authorize the desired odd jump. A microscopic
+boundary interaction must derive that reservoir before this becomes an
+explanation rather than target encoding; RG, threshold, and instrument
+interfaces remain open.
+
+## Coherent return-port dark-ray selector: WP858
+
+- flavor-coherent-return-port-dark-ray-selector.md
+- checkers/wp858_coherent_return_port_dark_ray_selector.py
+- results/wp858_coherent_return_port_dark_ray_selector.json
+
+WP858 retains WP854's removed return edge as a coherent reference port and
+couples both boundary paths to one normalized rank-one junction. Its kernel is
+the unique ray (d_z=(-z,1)/\sqrt2); equivalently, this is the negative
+eigenray of the unit boundary-link Hamiltonian. The construction derives
+WP857's parity and magnitude covariantly and can reuse the same port for
+WP855's relative-sign readout. It is a new relational experiment, not recovery
+of an absolute phase. Phase-shifting the junction, reversing the Hamiltonian
+ordering, or using a finite-temperature bath changes the selection. Hence the
+common junction, spectral ordering, pure reservoir, RG identification,
+threshold isometry, and detector interface still require one microscopic
+source theorem.
+
+## Positive Kirchhoff junction selector and instrument: WP859
+
+- flavor-positive-kirchhoff-junction-selector-instrument.md
+- checkers/wp859_positive_kirchhoff_junction_selector_instrument.py
+- results/wp859_positive_kirchhoff_junction_selector_instrument.json
+
+WP859 replaces WP858's arbitrary Hamiltonian sign by the positive Gram of an
+unweighted coherent Kirchhoff row. The Gram is a rank-one projector with the
+normalized odd ray as its unique zero mode and the even ray at unit cost. Its
+equal weights follow exactly from endpoint reciprocity plus row normalization.
+canonical zero-temperature lowering dissipator has one stationary state and
+gap (\kappa/2). Lossless completion of the same row forces a complementary
+difference output on which the selected state has unit amplitude, thereby
+joining source selection and source-level instrumentation. A weighted
+junction selects unequal magnitudes, and WP856's non-isometric threshold can
+preserve the ray while halving its amplitude. Microscopic equality of junction
+weights, flavor-RG typing, full two-port threshold isometry, and calibrated
+`physical16` realization remain open.
+
+## Reducing-subspace threshold survival theorem: WP860
+
+- flavor-reducing-subspace-threshold-survival-theorem.md
+- checkers/wp860_reducing_subspace_threshold_survival_theorem.py
+- results/wp860_reducing_subspace_threshold_survival_theorem.json
+
+WP860 proves the exact threshold condition for WP859. In a full unitary
+light/heavy block matching, the light compression obeys
+(A^*A=I-C^*C); it is isometric exactly when the heavy-leakage block vanishes,
+equivalently when the two-port projector is reducing. State and both detector
+rows must then be transported together, preserving all relational records.
+The exact three-state hostile mixes one light port with one heavy mode at
+cosine (3/4): the ultraviolet map remains unitary while the light dark-vector
+norm becomes (25/32) and its component ratio changes. Exact threshold
+survival therefore requires a source-derived superselection projector
+commuting with the complete threshold interaction algebra, not merely anomaly
+matching or ambient unitarity.
+
+## Kirchhoff dark-word physical16 interface: WP861
+
+- flavor-kirchhoff-dark-word-physical16-interface.md
+- checkers/wp861_kirchhoff_dark_word_physical16_interface.py
+- results/wp861_kirchhoff_dark_word_physical16_interface.json
+
+WP861 maps WP859's selected dark vector into WP649's oriented spin-one frame.
+The return phase (z=i) gives the fixed chiral word
+(F_-=(J_m-iJ_n)/\sqrt2). If this word plus a complex identity offset is the
+complete Yukawa grammar in each sector, an exact nondegenerate witness has
+spectral discriminants (49,316), nonzero CP invariant (6), and rank three
+in ten independent weak-basis invariants. The construction is therefore a
+proper conditional `physical16` selector, not a unique point. If the word is
+merely added to arbitrary Yukawas, the map is an invertible translation and
+selects nothing. Source authority must derive the oriented chiral interface
+and grammar completeness; measured-ensemble compatibility and calibrated
+instrumentation remain open.
+
+## Kirchhoff dark-word ensemble falsifier: WP862
+
+- flavor-kirchhoff-dark-word-ensemble-falsifier.md
+- checkers/wp862_kirchhoff_dark_word_ensemble_falsifier.py
+- results/wp862_kirchhoff_dark_word_ensemble_falsifier.json
+
+WP862 applies the complete fitted-ensemble gate to WP861. Every single-sector
+matrix in the proposed family obeys the exact scale-free mass-shape bound
+(e_2/e_1^2\ge2/9). The WP7 central up and down values are respectively
+(1.36\times10^{-5}) and (3.53\times10^{-4}). Even a conservative envelope
+allowing every individual residual to reach the full
+(\sqrt{20.28}\)-sigma viability radius stays below (1.76\times10^{-5}) and
+(4.61\times10^{-4}). Therefore none of the 1,210 stored viable sheets lies
+in the WP861 family. The complete-grammar interface closes negative, while
+the additive interpretation remains an invertible nonselector. A successor
+must add independently derived flavor structure without reopening arbitrary
+word-coefficient fitting freedom.
+
+## Path-polynomial Aspect-germ audit: WP863
+
+- flavor-path-polynomial-aspect-germ-audit.md
+- checkers/wp863_path_polynomial_aspect_germ_audit.py
+- results/wp863_path_polynomial_aspect_germ_audit.json
+
+WP863 tests the minimal source-closed successor (Y=aI+F+F^2) against
+Aspect's marked-germ, full-fiber, native-arity, completion, and instrument
+gates. The three path occurrences are independent, the polynomial transforms
+covariantly under the full weak-basis groupoid, and its exact singular-value
+invariants are derived. The smallest completion hostile
+(Y_c=aI+F+cF^2) preserves the admitted path algebra while changing physical
+invariants at first order. Thus the current source does not fix the unit
+two-step coefficient: the construction is a candidate rigidifier, not an
+authorized selector. A source theorem fixing the complete path functional and
+a calibrated coherent three-occurrence `physical16` instrument remain open.
+
+## Oriented-path Green operator audit: WP864
+
+- flavor-oriented-path-green-operator-audit.md
+- checkers/wp864_oriented_path_green_operator_audit.py
+- results/wp864_oriented_path_green_operator_audit.json
+
+WP864 replaces the unsupported geometric sum by an exact Green equation. If
+the source kinetic operator is the normalized oriented derivative (I-F), its
+unique inverse in the path algebra is (I+F+F^2), so the WP863 two-step
+coefficient is forced rather than fitted. The hostile generalization
+(I-\rho F-\delta F^2) has inverse
+(I+\rho F+(\rho^2+\delta)F^2): locality must exclude (delta), source
+normalization must fix (|\rho|=1), and a retained reference is required to
+distinguish the conjugate signs. Green inversion is therefore a conditional
+coefficient selector, not yet the complete end-to-end source principle. RG,
+reducing-threshold, and calibrated `physical16` interfaces remain separate.
+
+## Minimal lossless colligation source audit: WP865
+
+- flavor-minimal-lossless-colligation-source-audit.md
+- checkers/wp865_minimal_lossless_colligation_source_audit.py
+- results/wp865_minimal_lossless_colligation_source_audit.json
+
+WP865 places the dark-ray selector, global attractive channel, and
+complementary bright/dark readout inside one minimal lossless Stinespring
+colligation. This proves that the three interfaces can coexist in one source
+object. It does not make their values unavoidable. The reciprocal phase (z)
+changes the selected ray without changing the channel spectrum, while the
+contraction (q) changes the basin without changing the selected ray. A full
+unitary endpoint-heavy threshold rotation also remains lossless while violating
+the reducing-subspace condition. Minimal dilation therefore packages a chosen
+portal channel; it does not derive its sign, basin rate, threshold protection,
+or detector calibration. A successor must derive the channel itself from a
+microscopic flavor law.
+
+## Dark-corner conditional expectation audit: WP866
+
+- flavor-dark-corner-conditional-expectation-audit.md
+- checkers/wp866_dark_corner_conditional_expectation_audit.py
+- results/wp866_dark_corner_conditional_expectation_audit.json
+
+WP866 strengthens WP865 by requiring the source channel to be a positive
+conditional expectation onto the selected dark corner. Within the WP865
+family, idempotence plus a unique stationary ray forces (q=0), eliminating
+the basin modulus and yielding a normalized generator with one zero and eight
+minus-one modes. The phase (z), physical RG clock, and portal-unit map remain
+free. Threshold naturality also splits: dark-line invariance preserves the
+selector, whereas the full bright/dark projector must reduce the threshold
+algebra to preserve the complementary readout. An exact bright-heavy unitary
+keeps the dark selector while attenuating the readout to (9/16). The
+conditional expectation is therefore a genuine basin selector conditional on
+the dark corner, but not yet the complete microscopic portal principle.
+
+## Multiplicity-one odd boundary protection audit: WP867
+
+- flavor-multiplicity-one-odd-boundary-protection-audit.md
+- checkers/wp867_multiplicity_one_odd_boundary_protection_audit.py
+- results/wp867_multiplicity_one_odd_boundary_protection_audit.json
+
+WP867 proves that a globally multiplicity-one odd endpoint character protects
+the normalized difference ray under every equivariant threshold operation.
+Together with WP866, this would fix relative sign, normalized magnitude, and a
+unique dimensionless basin. Ordinary anomaly matching does not derive the
+multiplicity hypothesis. Adding two heavy odd carriers preserves the mod-two
+anomaly class while allowing an equivariant dark-heavy rotation; the exact
+cosine-(3/4) hostile leaves only (9/16) of the light dark norm. The missing
+source is therefore a marked representation-valued boundary index retaining
+multiplicity and detector attachment, not an ordinary anomaly class.
+
+## Equivariant index forgets boundary attachment: WP868
+
+- flavor-equivariant-index-forgets-boundary-attachment.md
+- checkers/wp868_equivariant_index_forgets_boundary_attachment.py
+- results/wp868_equivariant_index_forgets_boundary_attachment.json
+
+WP868 proves that even a complete equivariant index and uniform spectral gap
+do not retain the detector-coupled portal copy. The gapped equivariant maps
+(D_0=(0,1)) and (D_*=(\sqrt7/4,3/4)) have identical source and target
+characters, odd index, anomaly class, rank, and nonzero singular spectrum.
+Their kernel detector Grams are (1) and (9/16). The first nonfaithful arrow
+is therefore from the marked equivariant complex to its index. Exact threshold
+survival requires transport of the actual kernel projector together with a
+named boundary evaluation map in one calibrated frame.
+
+## Kato kernel–detector parallel transport: WP869
+
+- flavor-kato-kernel-detector-parallel-transport.md
+- checkers/wp869_kato_kernel_detector_parallel_transport.py
+- results/wp869_kato_kernel_detector_parallel_transport.json
+
+WP869 equips WP868's gapped differential family with its canonical Kato
+connection. The resulting unitary transports the actual kernel projector,
+conditional expectation, and complete bright/dark detector frame. A
+co-transported detector retains unit Gram where the fixed detector sees
+\(9/16\). This is an exact mathematical threshold parallelization, but it
+defines a new relational experiment unless the microscopic source makes the
+detector coupling follow the same connection. Executable co-control and
+calibrated 'physical16' units remain open.
+
+## Ward-locked Kato detector and gain fiber: WP870
+
+- flavor-ward-locked-kato-detector-gain-fiber.md
+- checkers/wp870_ward_locked_kato_detector_gain_fiber.py
+- results/wp870_ward_locked_kato_detector_gain_fiber.json
+
+WP870 places the detector vertex in the same microscopic source action as the
+Kato-matched field. The common source pullback forces the detector row to
+co-transport, closing WP869's frame-attachment gap under an exact anomaly-free
+Ward identity. It leaves a common coupling \(g\): \(g=1\) and \(g=2\) obey the
+same Ward law and normalized geometry but give intensities \(1\) and \(4\).
+Current conservation also does not fix the beta function. The Ward mechanism
+is therefore a source-derived threshold intertwiner and detector rigidifier,
+not a magnitude or coupling-RG selector.
+
+## Charge-normalized reciprocal gradient selector: WP871
+
+- flavor-charge-normalized-reciprocal-gradient-selector.md
+- checkers/wp871_charge_normalized_reciprocal_gradient_selector.py
+- results/wp871_charge_normalized_reciprocal_gradient_selector.json
+
+WP871 replaces WP841's conjectured polynomial beta coefficients by the
+gradient of the reciprocal source functional itself. With the primitive charge
+diameter \(\Delta_Q=2\), the strictly convex action
+\(\cosh(\log(\Delta_Qg^2))\) uniquely selects \(g=1/\sqrt2\), and its exact
+gradient has the whole positive coupling line as basin. Combined with the odd
+boundary, Kato transport, and Ward-locked detector, this is the strongest
+conditional end-to-end selector yet. Source retention of the marked diameter,
+physical RG typing, and calibrated 'physical16' realization remain unproved.
+
+## Multiplicative reciprocal RG domain audit: WP872
+
+- flavor-multiplicative-reciprocal-rg-domain-audit.md
+- checkers/wp872_multiplicative_reciprocal_rg_domain_audit.py
+- results/wp872_multiplicative_reciprocal_rg_domain_audit.json
+
+WP872 corrects WP871's coupling-flow interpretation. The cosh-gradient has a
+nonzero beta function at exact decoupling and is incompatible with
+multiplicative Ward-coupling renormalization. The reciprocal
+\(\log\cosh(\log(\Delta x))\) potential repairs this: its beta function is
+\(x(1-\Delta^2x^2)/(1+\Delta^2x^2)\), remains duality covariant, selects
+\(g=1/\sqrt2\) for \(\Delta=2\), and has every \(x>0\) in its basin. The exact
+zero seed remains zero. Portal inevitability therefore requires an independent
+source theorem excluding the decoupled cusp from the admitted physical domain.
+
+## Primitive dual-pairing portal inevitability audit: WP873
+
+- flavor-primitive-dual-pairing-portal-inevitability-audit.md
+- checkers/wp873_primitive_dual_pairing_portal_inevitability_audit.py
+- results/wp873_primitive_dual_pairing_portal_inevitability_audit.json
+
+WP873 supplies the strongest sufficient abstract source principle found. A
+primitive nondegenerate pairing \(\Delta_Qgg_D=1\) excludes zero coupling;
+electric–dual self-duality then fixes \(g=g_D=1/\sqrt2\), and the WP872
+log-cosh flow preserves the pairing with a global basin. Pairing preservation
+alone does not protect the electric prediction: a reciprocal rescaling changes
+\(g\) while preserving the product. Threshold survival therefore requires
+intertwining both the pairing and duality exchange. The architecture becomes
+end-to-end when joined to the odd boundary, Kato transport, and Ward detector,
+but no admitted microscopic flavor dual port or calibrated 'physical16'
+realization currently exists.
+
+## Dual-pair source existence audit: WP874
+
+- flavor-dual-pair-source-existence-audit.md
+- checkers/wp874_dual_pair_source_existence_audit.py
+- results/wp874_dual_pair_source_existence_audit.json
+
+WP874 tests whether any admitted source realizes WP873. Strominger's joint
+electric/magnetic theorem supplies an invertible complementary readout and
+locates information loss at parity projection; it does not create a dual
+flavor coupling. Monodromic \(G_2\) supplies a genuine Dirac lattice and
+magnetic weights but retains the Gaussian endpoint, transmutation scale, and
+Coulomb fibers. The rank-one unimodular lattice fixes an integral pairing
+while leaving the positive kinetic metric free. No current source supplies the
+primitive normalized dual product or calibrated 'physical16' instrument.
+WP873 therefore remains an added-source architecture with a precise
+microscopic reopening condition.
+
+## Additive portal zero-exit source audit: WP875
+
+- flavor-additive-portal-zero-exit-source-audit.md
+- checkers/wp875_additive_portal_zero_exit_source_audit.py
+- results/wp875_additive_portal_zero_exit_source_audit.json
+
+WP875 separates the additively generated scalar portal from WP870's
+multiplicative Ward detector gain. Messenger thresholds and the WP729
+one-loop affine term can genuinely make zero portal non-invariant. The
+strongest admitted simultaneous singlet–triplet completion fails earlier:
+shared-field backreaction gives
+\(\kappa_A=-6(4T+12g_1+53g_2)/103\), so no nonnegative point with a positive
+source coordinate has all required Yukawa squares positive. Additive
+generation remains the physically legitimate zero-exit mechanism, but the
+current realization has an empty interacting source surface and cannot open
+the magnitude, basin, threshold, or instrument gates.
+
+## Source-compelled simultaneous portal repair closure: WP876
+
+- flavor-source-compelled-simultaneous-portal-repair-closure.md
+- checkers/wp876_source_compelled_simultaneous_portal_repair_closure.py
+- results/wp876_source_compelled_simultaneous_portal_repair_closure.json
+
+WP876 applies Aspect's kernel-descent typing to every adjacent object that
+could appear to repair WP735. The WP738 link mediators are the only currently
+compelled pre-quotient Lagrangian family capable of changing the beta system;
+their exhaustive 256-branch calculation has zero physical fixed points.
+WP744 anomaly inflow lands in the wrong operator type, WP854's return link has
+no microscopic flavor-field map, and WP855 is a downstream detector port.
+Consequently none supplies an authorized correction to the simultaneous
+nullcline. An explicit hostile shows how an untyped coefficient can fake the
+repair: at \((T,g_1,g_2)=(0,1,0)\), adding \(s=73\) changes
+\(\kappa_A=-72/103\) to \(1/103\). The next source must independently force
+new Yukawa-active matter and its complete interaction grammar before its
+fixed-point effect is computed.
+
+## Sequential SO(5) two-vector projector repair: WP877
+
+- flavor-sequential-so5-two-vector-projector-repair.md
+- checkers/wp877_sequential_so5_two_vector_projector_repair.py
+- results/wp877_sequential_so5_two_vector_projector_repair.json
+
+WP877 reopens a bounded simple-parent calculation without adding optional
+fixed-point matter. Realizing the declared chain
+\(SO(5)\to SO(4)\to SO(3)\) requires two ordered fundamental breaking
+directions. A positive renormalizable sum-of-squares potential has the global
+vacuum \(u=ae_5,v=be_4\), seven gauge zero modes, and exactly three positive
+physical Hessian eigenvalues
+\(2\lambda_u a^2,2\lambda_v b^2,\kappa(a^2+b^2)\). Retaining the two
+source projectors removes WP739's continuous singlet-mixing rotation, and
+source-functional mass thresholds preserve both labels. The construction is
+a stable projector selector and threshold rigidifier, not a magnitude or
+RG-basin selector: radial scales, couplings, mass gaps, and detector
+calibration remain free. It authorizes the next exact calculation—the full
+simple-parent gauge--Yukawa fixed point including both compulsory breaking
+fundamentals and complete spinor/vector matter.
+
+## Ordered singlet-plane Hodge portal normalizer: WP878
+
+- flavor-ordered-singlet-plane-hodge-portal-normalizer.md
+- checkers/wp878_ordered_singlet_plane_hodge_portal_normalizer.py
+- results/wp878_ordered_singlet_plane_hodge_portal_normalizer.json
+
+WP878 transfers Strominger's real source-Hodge theorem to WP877's ordered
+singlet plane. The two source projectors define
+\(J=e_ve_u^T-e_ue_v^T\). Projector diagonality, oddness under \(J\), primitive
+unit normalization, and the ordered-stage sign uniquely select
+\(H=P_v-P_u\), with \(H^2=P_2\) and \(JH=-HJ\). Thus the simple-parent branch
+now fixes the dimensionless portal sign and unit contrast rather than merely
+labelling two singlets. Grothendieck's moving-incidence result requires this
+packet to co-move with its source connection; Sontag's disturbance theorem
+requires two independently excited detector directions; Aspect's path audit
+denies execution authority to generic rotations that leave the prepared
+projector stabilizer. The common coefficient in \(G=gH\) remains free, so the
+full simple-parent fixed point, global basin, finite threshold matching, and
+calibrated rank-two `physical16` instrument remain the active gates.
+
+## Spin(5) anomaly-completion beta fiber: WP879
+
+- flavor-spin5-anomaly-completion-beta-fiber.md
+- checkers/wp879_spin5_anomaly_completion_beta_fiber.py
+- results/wp879_spin5_anomaly_completion_beta_fiber.json
+
+WP879 tests whether the simple parent authorizes one complete beta system.
+It does not. Per family, both the conjugate packet
+\(4_{+1/2}\oplus5_{-1}\) and the chiral packet
+\(4_{-3/2}\oplus1_0\oplus1_{+1}\oplus1_{+2}\) cancel the same mixed
+Spin(5)-hypercharge, gravitational-hypercharge, cubic-hypercharge, and
+fundamental-spinor parity obstructions of the portal packet. Their
+three-family Spin(5) fermion indices differ by three. Including the WP877
+breaking fundamentals and the spinor Higgs gives exact one-loop coefficients
+\(b_0^A=9/2\) and \(b_0^B=13/2\). Thus the admitted anomaly probe collapses
+two source spectra that the RG probe separates by \(2\). Both branches are
+asymptotically free at one loop, so anomaly cancellation neither fixes the
+common portal coupling nor supplies one ultraviolet interacting normalization.
+A parent representation, zero-mode index, or locality theorem must select the
+matter packet before a full fixed-point calculation has source authority.
+
+## Spin(5) model audit against Aspect's six-rung tester: WP880
+
+- flavor-spin5-model-aspect-six-rung-audit.md
+- checkers/wp880_spin5_model_aspect_six_rung_audit.py
+- results/wp880_spin5_model_aspect_six_rung_audit.json
+
+WP880 applies Aspect's full tester rather than only its marked-germ gate. The
+WP877--WP879 source checkers contribute 38 exact gates and detect six
+directions in a frozen twelve-direction hostile carrier. Their observation
+map has rank six and a six-dimensional kernel: common gain, moving-frame
+transport, mass scale, detector rank, selected-port transmission zeros, and
+end-to-end coherence remain unresolved. Six algebraic dual rows would close
+that declared formal kernel, but Aspect's governance gate rejects or defers
+all six until their source constructors and operational witnesses exist. No
+acquisition-authoritative flavor candidate currently has event rates, setting
+cells, detector resolution, or an executable source-excitation contract, so
+the rung-six portfolio is correctly empty. The model is therefore deferred:
+its bounded source geometry passes, while the full physical tester does not
+close. The smallest surviving hostile changes \(g=1\) to \(g=2\) without
+changing any current source observation and multiplies portal intensity by
+four.
+
+## Common-gain absolute-rate gate: WP881
+
+- flavor-common-gain-absolute-rate-gate.md
+- checkers/wp881_common_gain_absolute_rate_gate.py
+- results/wp881_common_gain_absolute_rate_gate.json
+
+WP881 attacks WP880's smallest surviving hostile. For factorized amplitudes
+\(A_i=g a_i\), every normalized flavor fraction is exactly independent of the
+common gain. An absolute count has nonzero gain response, but an unknown
+luminosity or source-current normalization supplies the exact symmetry
+\((g,\mathcal L)\mapsto(cg,\mathcal L/c^2)\). One count therefore has rank
+one on \((\log g,\log\mathcal L)\); adding an independent normalization
+monitor raises the formal response rank to two. Pure rates still identify
+only \(|g|\), not its sign. The algebraic gain row is consequently deferred
+until a completion-specific production and decay channel, luminosity,
+efficiency, background-normal, and—if sign is claimed—interference-reference
+contracts exist. More precise normalized flavor measurements cannot repair
+this kernel.
+
+## Ordered Hodge co-moving connection: WP882
+
+- flavor-ordered-hodge-comoving-connection.md
+- checkers/wp882_ordered_hodge_comoving_connection.py
+- results/wp882_ordered_hodge_comoving_connection.json
+
+WP882 attacks WP880's moving-frame kernel. A differentiable ordered-projector
+history supplies the exact connection
+\(\Omega=\dot R R^T=\dot\theta J\), obeying
+\(\dot H=[\Omega,H]\), with
+\(\dot\theta=\operatorname{tr}(JH\dot H)/4\). The inhomogeneous rule
+\(\Omega'=U\Omega U^{-1}+\dot U U^{-1}\) makes the covariant derivative
+descend under moving weak bases. Freezing \(\Omega=0\) does not descend.
+Scalar RG data retain only the constant spectrum of \(H\) and cannot recover
+the projector germ. For \(G=gH\), covariant transport leaves
+\(D_tG=\dot gH\), so the construction removes spurious chart motion but does
+not fix the beta function, common magnitude, completion, thresholds, or
+instrument. It is therefore a source-authorized rigidifier on smooth ordered
+histories, not a selector; threshold jumps still require a separately derived
+matching intertwiner.
+
+## Threshold Hodge intertwiner fiber: WP883
+
+- flavor-threshold-hodge-intertwiner-fiber.md
+- checkers/wp883_threshold_hodge_intertwiner_fiber.py
+- results/wp883_threshold_hodge_intertwiner_fiber.json
+
+WP883 crosses WP882's sharp-threshold boundary algebraically. Intertwining
+the ordered pair \((H,J)\) fixes the orthogonal matching as
+\(M=\sigma R_+R_-^T\) with \(\sigma=\pm1\); retaining only \(H\) leaves four
+sign choices. The two Hodge-compatible lifts have identical conjugation
+action, so their sign is invisible on the original projector/`physical16`
+quotient. A coherent reference path would define a new relational experiment.
+For \(G=gH\), the threshold law additionally contains the continuous jump
+\(\eta=g_+/g_-\), which the Hodge geometry does not select. Thus the ordered
+pair rigidifies adjoint matching but a completion-specific finite threshold
+action is still required to determine portal strength.
+
+## Spin(5) finite-threshold selector obstruction: WP884
+
+- flavor-spin5-finite-threshold-selector-obstruction.md
+- checkers/wp884_spin5_finite_threshold_selector_obstruction.py
+- results/wp884_spin5_finite_threshold_selector_obstruction.json
+
+WP884 tests whether choosing either WP879 anomaly-free completion fixes
+WP883's portal jump. A completion can fix a logarithmic coefficient, but the
+matching family still contains a free threshold mass and finite term:
+\(\eta_C=1+\alpha_C\log(M_C/\mu)+k_C\). The local source constraint has rank
+one on the three coordinates \((\eta,\log(M_C/\mu),k_C)\), leaving a
+two-dimensional solution fiber. The conventional choice (M_C=\mu,k_C=0)
+returns \(\eta=1\) but is not a source selection. Aspect's transverse-balance
+gate makes the categorical obstruction explicit: added detector rows may
+identify the realized jump but cannot provide the missing source equations.
+The branch therefore closes negative until one completion supplies both a
+mass action and a scheme-independent full-amplitude matching condition.
+
+## Spin(5) completion bare-massability audit: WP885
+
+- flavor-spin5-completion-bare-massability-audit.md
+- checkers/wp885_spin5_completion_bare_massability_audit.py
+- results/wp885_spin5_completion_bare_massability_audit.json
+
+WP885 audits the smallest completion-specific mass action without inventing
+new scalars. Completion A pairs (4_{-1/2}) with (4_{+1/2}) and (5_{+1})
+with (5_{-1}), admitting two independent gauge-invariant bare masses per
+family. Their values remain free, so immediate massability does not select a
+threshold. Completion B has no charged representation-matched pair with
+opposite hypercharge; its neutral singlet Majorana candidate does not repair
+the charged-sector rank. That branch requires an explicit scalar/Yukawa
+constructor. The result is a split negative: A defines thresholds with free
+scales, while B does not yet define the charged threshold spectrum. Neither
+completion supplies a numerical selector.
+
+## Declared-scalar Spin(5) Yukawa census: WP886
+
+- flavor-spin5-declared-scalar-yukawa-census.md
+- checkers/wp886_spin5_declared_scalar_yukawa_census.py
+- results/wp886_spin5_declared_scalar_yukawa_census.json
+
+WP886 recovers the complex spinor-Higgs charge from the already-declared
+portal invariant as \(\Phi=4_{-1/2}\). Using only \(\Phi,\Phi^*\) and the two
+real (5_0) breakers, the exact representation/hypercharge census finds six
+distinct-field Yukawa edges for Completion B. Every multiplet is incident, so
+the absence of charged bare masses does not imply a representation-level
+isolate. This is only a typing result: the incidence graph forgets
+Clebsch--Gordan symmetry, vacuum direction, correlated matrix entries, and
+family structure. The all-zero Yukawa assignment is the smallest hostile.
+The next gate is an explicit Spin(5) gamma-intertwiner component mass matrix
+on the declared vacuum and its symbolic generic rank.
+
+## Completion-B component mass rank: WP887
+
+- flavor-spin5-completion-b-component-mass-rank.md
+- checkers/wp887_spin5_completion_b_component_mass_rank.py
+- results/wp887_spin5_completion_b_component_mass_rank.json
+
+WP887 constructs an exact \(4\times4\) Euclidean Spin(5) Clifford system, its
+antisymmetric invariant form (C), the pseudoreal conjugate
+\(\widetilde\phi=C\phi^*\), and the full one-family \(16\times16\) mass matrix
+from WP886's six allowed couplings. At the integer witness
+\(\phi=(1,2,3,5)^T\) and Yukawas \((2,3,5,7,11,13)\), the determinant is
+the nonzero integer (468887390507036217600\), proving generic full rank on a
+nonempty Zariski-open parameter set. Completion B is therefore fully massable
+with the already-declared spinor Higgs. The result repairs threshold
+definition but not selection: Yukawas and the Higgs vacuum remain free, and
+the all-zero Yukawa locus has rank zero.
+
+## Completion-B Yukawa fiber quotient: WP888
+
+- flavor-spin5-completion-b-yukawa-fiber-quotient.md
+- checkers/wp888_spin5_completion_b_yukawa_fiber_quotient.py
+- results/wp888_spin5_completion_b_yukawa_fiber_quotient.json
+
+WP888 follows Aspect's topology gate. On the WP887 vacuum slice, the symbolic
+determinant factors as
+\(85632148167696y_1^4y_2^4y_3^2y_6^2(y_1y_5-y_2y_4)^2\). The last component
+is a coherent four-edge cancellation invisible to incidence coverage. The
+connected six-edge Yukawa graph has cycle rank one; modulo admitted unitary
+fermion rephasings, the nonzero fiber retains six magnitudes and the cycle
+phase of \(\rho=y_1y_5/(y_2y_4)\), with a one-dimensional alternating-phase
+stabilizer. Two exact full-rank witnesses differing only in \(y_3\) have
+different scale-free spectral shapes, so generic massability forces no
+universal mass ratio. Monodromy remains open pending explicit singular-vector
+continuation around \(\rho=1\).
+
+## Coherent-divisor monodromy: WP889
+
+- flavor-spin5-coherent-divisor-monodromy.md
+- checkers/wp889_spin5_coherent_divisor_monodromy.py
+- results/wp889_spin5_coherent_divisor_monodromy.json
+
+WP889 factors the Completion-B mass matrix into one \(8\times8\) bipartite
+block \(K\). Its determinant contains the coherent factor only once. At an
+exact generic point on \(y_1y_5-y_2y_4=0\), \(K\) has rank seven and a
+nonzero transverse left--right kernel pairing. The full zero sector is
+therefore locally the single Dirac cell
+\(\begin{psmallmatrix}0&ct\\ct&0\end{psmallmatrix}\). Its signed branches and
+projectors have trivial monodromy and share one comparison frame. A Takagi
+amplitude frame acquires only a common central minus sign after one loop;
+projector and quadratic mass readouts erase it. Thus the generic physical
+architecture is additive, while observing the lift requires a new coherent
+reference experiment. Higher-corank divisor intersections remain separate
+open strata.
+
+## Coordinate-divisor intersection strata: WP890
+
+- flavor-spin5-coordinate-divisor-intersection-strata.md
+- checkers/wp890_spin5_coordinate_divisor_intersection_strata.py
+- results/wp890_spin5_coordinate_divisor_intersection_strata.json
+
+WP890 classifies all sixteen intersections of the four coordinate divisors
+\(y_1,y_2,y_3,y_6=0\) on the frozen Completion-B vacuum slice. Single-port
+coranks of the \(8\times8\) block are \(2,2,1,1\). They add at every
+intersection except those containing both \(y_1=y_2=0\), which automatically
+lie on the coherent divisor and acquire one additional kernel dimension. The
+total kernel projector remains canonical, but its splitting into named branch
+frames is not canonical at corank greater than one. Static restriction and
+dynamic transport therefore become distinct arrows on a higher-rank kernel
+bundle; a branch-resolved reference cell would require new source-derived
+splitting data rather than following from the rank table.
+
+## Aspect retest after threshold repairs: WP891
+
+- flavor-spin5-aspect-retest-after-threshold-repairs.md
+- checkers/wp891_spin5_aspect_retest_after_threshold_repairs.py
+- results/wp891_spin5_aspect_retest_after_threshold_repairs.json
+
+WP891 reruns the architectural audit after WP881--WP890's 105 exact gates.
+Only the smooth moving-frame hostile becomes a new separated source direction:
+the declared twelve-coordinate source map rises from rank six to seven and
+its kernel falls from six to five. Common gain, numerical mass/threshold
+value, detector rank, transmission-zero classification, and end-to-end
+coherence remain unresolved. Both completions now have executable mass
+constructors and the source packet-zero topology is known, but neither result
+adds a numerical selector or acquisition-authoritative detector row. Aspect's
+classification therefore remains deferred and the experimental portfolio
+remains empty.
+
+## Source-calibrated acquisition contract: WP892
+
+- flavor-source-calibrated-acquisition-contract.md
+- checkers/wp892_source_calibrated_acquisition_contract.py
+- results/wp892_source_calibrated_acquisition_contract.json
+
+WP892 freezes the smallest acquisition contract capable of attacking common
+gain and packet-versus-transmission zero classification together. It requires
+two source-derived perturbation controls, an independently calibrated absolute
+monitor, signal and complementary outputs, background-normal counts,
+efficiency, mass/width resolution, raw null trials, covariance, and common
+source/detector frame provenance. The exact gate is
+\(\operatorname{rank}J_{\rm det}=2\) with positive calibrated Gram determinant
+and a positive uncertainty lower bound. Current source support admits only the
+transport capability and no acquisition capability or event cell. The
+candidate is therefore exactly specified but `not_schedulable`; the portfolio
+remains empty and no formal response row is promoted.
+
+## Spin(5) radial dimuon instrument adapter: WP893
+
+- flavor-spin5-radial-dimuon-instrument-adapter.md
+- checkers/wp893_spin5_radial_dimuon_instrument_adapter.py
+- results/wp893_spin5_radial_dimuon_instrument_adapter.json
+
+WP893 recovers the missing current-source interface from the two WP877
+breaking fields themselves. The renormalizable invariants
+\(\chi_u(u\cdot u)H^\dagger H\) and
+\(\chi_v(v\cdot v)H^\dagger H\) mix the two ordered radial modes with the
+Standard Model Higgs, with effective WP243 couplings
+\(\kappa_A=2\chi_u a\) and \(\kappa_D=2\chi_v b\). On the frozen WP243
+two-pole, small-mixing, no-exotic-decay slice, the existing checksum-pinned
+CMS templates and official absolute rate calibration give a rank-two map on
+\(((\chi_u a)^2,(\chi_v b)^2)\). This is a conditional calibrated instrument
+for the Spin(5) source, not a selector. WP245 still rejects finite-2016 power.
+WP251--WP254 already provide a higher-rate finite-grid tau instrument, but
+WP258--WP259 show that its actual-pole Spin(5) adapter lacks same-frame pole
+samples, physical branching normalization, QCD control, and uncertainties.
+
+## Spin(5) tau actual-pole transfer audit: WP894
+
+- flavor-spin5-tau-actual-pole-transfer-audit.md
+- checkers/wp894_spin5_tau_actual_pole_transfer_audit.py
+- results/wp894_spin5_tau_actual_pole_transfer_audit.json
+
+WP894 tests whether WP893's source-derived radial portal repairs the separate
+tau actual-pole branch. It supplies the frozen pole labels and physical
+Higgs-mediated branching semantics, but not six detector-transfer fields:
+actual-pole tau topology, common era/reconstruction, selection at the poles,
+QCD control, weighted completion, and correlated uncertainty transport. The
+best preregistered scale-covariant morph retains exact total-variation residual
+\(12641608/354073635\), with a nonzero first-bin witness. Therefore the
+conditional dimuon instrument and finite-grid tau discriminator coexist, but
+no Spin(5) actual-pole tau adapter or flavor selector follows.
+
+## Direct-pole Spin(5) tau acquisition contract: WP895
+
+- flavor-spin5-direct-pole-tau-acquisition-contract.md
+- checkers/wp895_spin5_direct_pole_tau_acquisition_contract.py
+- results/wp895_spin5_direct_pole_tau_acquisition_contract.json
+
+WP895 replaces unauthorized interpolation with the smallest direct acquisition
+specification. The official CMS 2015 tau family has no samples at either
+Spin(5) pole; the nearest substitutions miss by exactly 3.774002075 and
+8.712997437 GeV. The published 140 GeV record exposes the validated generator,
+GEN-SIM, pile-up HLT/RECO, and MiniAOD chain. WP895 therefore freezes two new
+self-consistent source cards and requires replay through that entire chain,
+unchanged WP251/WP253 selection, weighted QCD/background completion, and an
+uncertainty-stable rank-two Gram gate. It is executable as an acquisition
+contract but has not been executed and grants no selector or identification
+authority.
+
+## CMSSW pairing executability audit: WP903
+
+- flavor-spin5-cmssw-pairing-executability-audit.md
+- checkers/wp903_spin5_cmssw_pairing_executability_audit.py
+- results/wp903_spin5_cmssw_pairing_executability_audit.json
+
+WP903 separates same seed, restored module engine state, and semantic
+source-level coupling. CMSSW supplies engine-state replay infrastructure, but
+the current record contains no cross-width latent coupling, generator
+draw-trace certificate, full-chain paired execution, null-completed records,
+or calibrated acceptance floor. One width-dependent branch that changes later
+random-draw meaning is the smallest exact falsifier. WP902 therefore remains
+conditional, and WP901 is the executable-design fallback until a typed
+base-event coupling and replay manifest are implemented and verified.
+
+## Semantic random-field coupling: WP904
+
+- flavor-spin5-semantic-random-field-coupling.md
+- checkers/wp904_spin5_semantic_random_field_coupling.py
+- results/wp904_spin5_semantic_random_field_coupling.json
+
+WP904 replaces sequential common seeds by a counter-style random field keyed
+by seed family, pair identifier, stage, semantic address, and local index. Its
+executable hostile verifies bit-identical replay and proves that inserting a
+width-dependent branch draw cannot shift any registered downstream draw. This
+closes WP903's defect at reference-constructor level, but not in CMSSW: every
+stochastic module still needs a semantic-address adapter or immutable typed
+base event, followed by null-completed execution and acceptance calibration.
+
+## Coupling minimality correction: WP905
+
+- flavor-spin5-coupling-minimality-correction.md
+- checkers/wp905_spin5_coupling_minimality_correction.py
+- results/wp905_spin5_coupling_minimality_correction.json
+
+WP905 repairs WP903's overly strong falsifier. Any reproducible shared-seed
+joint law with the correct arm marginals is a valid coupling, even if changed
+control flow destroys semantic draw alignment. Exact enumeration of all 256
+pairs of binary maps on a four-atom seed space verifies
+(d_{\rm TV}\leq\Pr(X\ne Y)) without an alignment premise. Semantic addressing
+is sufficient for auditability and likely variance reduction, not necessary
+for validity. The remaining gates are independent marginal validation,
+manifest replay, null retention, and an achieved disagreement rate compatible
+with the planned budget.
+
+## Finite-discordance certificate: WP906
+
+- flavor-spin5-finite-discordance-certificate.md
+- checkers/wp906_spin5_finite_discordance_certificate.py
+- results/wp906_spin5_finite_discordance_certificate.json
+
+WP906 replaces WP902's brittle zero-only rule by an exact fixed-count
+binomial test for a small registered discordance count. It computes minimum
+per-pole budgets using integer arithmetic and verifies that every minimum
+passes while one fewer pair fails. Validity, replay, null retention,
+independence, and acceptance calibration remain separate gates. Outcome-driven
+budget changes are prohibited unless an anytime-valid or error-controlled
+escalation rule is frozen in advance.
+
+## Error-controlled discordance escalation: WP907
+
+- flavor-spin5-error-controlled-escalation.md
+- checkers/wp907_spin5_error_controlled_escalation.py
+- results/wp907_spin5_error_controlled_escalation.json
+
+WP907 freezes four cumulative looks with discordance caps zero through three
+and spends exact error (1/160) at each look. The union bound gives per-pole
+error at most (1/40) and two-pole error at most (1/20), without assuming
+independence between looks. Each generated look count is an exact integer-tail
+minimum. An extra look or acceptance above the registered boundary is the
+smallest protocol falsifier.
+
+## Pair-independence hostile: WP908
+
+- flavor-spin5-pair-independence-hostile.md
+- checkers/wp908_spin5_pair_independence_hostile.py
+- results/wp908_spin5_pair_independence_hostile.json
+
+WP908 proves that replay, stable addressing, and correct one-event marginals
+do not imply iid pairs. One run-level Bernoulli bit copied to every event gives
+the target discordance marginal but a rank-one covariance matrix and
+zero-discordance probability (1-p_0), far above WP907's first-look error
+allocation. A declared entropy or randomized-key acquisition contract is
+therefore required; empirical dependence diagnostics remain falsifiers, not
+proofs of independence.
+
+## Cross-sector independence transfer: WP909
+
+- flavor-spin5-cross-sector-independence-transfer.md
+- checkers/wp909_spin5_cross_sector_independence_transfer.py
+- results/wp909_spin5_cross_sector_independence_transfer.json
+
+WP909 transfers Sontag's joint-failure carrier, Strominger's higher-arity
+obstruction, Nima's mixed source corner, Aspect's hidden channel transport,
+and Benincasa's normalization gate into the paired flavor experiment. Its
+five-bit even-parity hostile matches every four-bit deletion marginal while
+remaining globally non-iid. The current finite diagnostic family can falsify
+specific dependence but cannot certify a product law; a full joint carrier
+and calibrated event-key acquisition theorem remain necessary.
+
+## Conditional product-law gate: WP910
+
+- flavor-spin5-conditional-product-law.md
+- checkers/wp910_spin5_conditional_product_law.py
+- results/wp910_spin5_conditional_product_law.json
+
+WP910 gives the minimal constructive factorization: a frozen run state,
+independent event keys, and an event-local transform imply conditional iid
+discordances. A forgotten binary run nuisance with conditional rates
+(p_0\pm p_0/2) preserves every event marginal but creates positive pair
+covariance and breaks WP907's first-look error allocation. Run labels must be
+retained and strata tested separately unless a source theorem makes the rate
+constant across the admitted nuisance domain.
+
+## Two-stratum discordance escalation: WP911
+
+- flavor-spin5-two-stratum-escalation.md
+- checkers/wp911_spin5_two_stratum_escalation.py
+- results/wp911_spin5_two_stratum_escalation.json
+
+WP911 repairs WP910 conservatively by retaining two run-state labels and
+certifying each stratum-pole cell separately. Four looks per cell each spend
+(1/320), preserving (1/40) per pole and (1/20) across two poles and two
+strata. If every retained stratum obeys the target, every declared mixture
+does too. A hidden stratum, pooled count, or uncalibrated partition falsifies
+the contract.
+
+## Event-locality tester: WP912
+
+- flavor-spin5-event-locality-tester.md
+- checkers/wp912_spin5_event_locality_tester.py
+- results/wp912_spin5_event_locality_tester.json
+
+WP912 turns event locality into a pair-ID-joined permutation, batching, and
+restart challenge. A 64-event reference transform agrees under sixteen
+schedules, while a deterministic mutable-counter hostile is replayable in one
+schedule but fails both reversal and batch restart. Passing finite challenges
+falsifies tested cross-event state; it does not prove universal locality or
+instantiate independent event-key acquisition.
+
+## Bell-randomness reference port: WP913
+
+- flavor-spin5-bell-randomness-reference-port.md
+- checkers/wp913_spin5_bell_randomness_reference_port.py
+- results/wp913_spin5_bell_randomness_reference_port.json
+
+WP913 proposes the missing source-calibrated acquisition as a new relational
+experiment: loophole-free Bell randomness expansion, quantum-proof extraction,
+and immutable allocation of disjoint 256-bit event keys. A global extracted
+string within soundness error of uniform transports to an approximately
+product event law under deterministic partition and event-local processing.
+The checker reserves (10^{-10}) of total error for the randomness port and
+recomputes the exact stratified look sizes. No fresh Bell run or CMS integration
+is claimed; the reference port explicitly changes the physical groupoid.
+
+## Bell setting-seed hostile: WP914
+
+- flavor-spin5-bell-setting-seed-hostile.md
+- checkers/wp914_spin5_bell_setting_seed_hostile.py
+- results/wp914_spin5_bell_setting_seed_hostile.json
+
+WP914 attacks WP913's upstream seed premise. With measurement-independent
+settings, exact enumeration gives the deterministic local CHSH maximum
+(3/4). If both devices' hidden state contains the future setting pair, a
+deterministic strategy wins every trial while settings remain marginally
+uniform and conditional output entropy is zero. The Bell port therefore needs
+an independently prepared, causally isolated setting source or a separately
+typed randomness-amplification/multiple-source theorem.
+
+## One-honest-source setting combiner: WP915
+
+- flavor-spin5-one-honest-source-combiner.md
+- checkers/wp915_spin5_one_honest_source_combiner.py
+- results/wp915_spin5_one_honest_source_combiner.json
+
+WP915 weakens WP914's single-source trust through a commit-then-reveal XOR
+port. XOR is exactly uniform if at least one bound contribution is uniform and
+independent of the devices and other contributions. The exact hostile has two
+marginally uniform but identical bits, whose XOR is constantly zero; an
+adaptive source can cancel in the same way. The combiner therefore supplies
+disjunctive trust, not assumption-free randomness, and explicitly adds a new
+multi-source relational groupoid.
+
+## Spin(5) response-branch disposition: WP916
+
+- flavor-spin5-response-branch-disposition.md
+- checkers/wp916_spin5_response_branch_disposition.py
+- results/wp916_spin5_response_branch_disposition.json
+
+WP916 reconnects the zero-drift programme to the flavor-selector objective.
+The chain validates conditional detector response over a free two-coordinate
+Spin(5) source family; even perfect randomization and execution provide no
+source-to-`physical16` selecting arrow. An exact four-card grid has full image
+under response admissibility, hence zero selection reduction. The branch
+closes as neither selector nor rigidifier. The successor returns upstream to
+independent derivation or falsification of an invariant source portal such as
+WP360.
+
+## Spin(5) Jarlskog-portal source-support audit: WP917
+
+- flavor-spin5-jarlskog-portal-source-support-audit.md
+- checkers/wp917_spin5_jarlskog_portal_source_support_audit.py
+- results/wp917_spin5_jarlskog_portal_source_support_audit.json
+
+WP917 returns upstream and proves that the declared Spin(5) grammar does not
+generate WP360's normalized Jarlskog portal. Present source scalars are
+J-blind, while the proposed portal has nonzero J derivative. The nearest
+weak-basis polynomial, the squared commutator determinant, scales with the
+mass discriminants and is not normalized J squared. The branch therefore
+closes negative at current source support: WP360 is a conditional appended
+selector, neither a derived selector nor a rigidifier of the declared Spin(5)
+action. The next admissible step must derive a common source-to-Yukawa
+operator and its discriminant normalization independently of fitted
+physical16 data.
+
+## Deutschian CP reference-standard trichotomy: WP918
+
+- flavor-deutschian-cp-reference-standard-trichotomy.md
+- checkers/wp918_deutschian_cp_reference_standard_trichotomy.py
+- results/wp918_deutschian_cp_reference_standard_trichotomy.json
+
+WP918 separates the kinematic and dynamical parts of normalized CP. Common
+scaling uniquely forces the squared up/down discriminant product in the
+denominator of the commutator-determinant invariant. But a common clock leaves
+spectral shape free: the exact spectra `(0,1,2)` and `(0,1/2,2)` share clock
+two while their cubic discriminants are two and three-halves. Spectral
+completion records this distinction without selecting it. Only a source-
+derived isolated attractive fixed ray for the full Yukawa spectral-shape block
+could fix the reference standard; no such Spin(5) beta system is declared.
+
+## Spin(5) spectral-shape beta definability audit: WP919
+
+- flavor-spin5-spectral-shape-beta-definability-audit.md
+- checkers/wp919_spin5_spectral_shape_beta_definability_audit.py
+- results/wp919_spin5_spectral_shape_beta_definability_audit.json
+
+WP919 proves that the WP918 stability block cannot yet be computed from the
+declared Spin(5) source. Its largest authorized flow record is the pair of
+one-loop gauge coefficients, whose Jacobian along four physical Yukawa-shape
+directions has rank zero. Two full-rank WP888 mass points have different
+normalized spectra while sharing Completion B's gauge coefficient. This is a
+definability obstruction, not evidence that an undeclared physical beta system
+has four zero modes. The next constructor must independently select a
+completion and declare the complete three-family renormalizable interaction
+grammar before coupled beta functions are derived.
+
+## Spin(5) completion rank-index selector gate: WP920
+
+- flavor-spin5-completion-rank-index-selector-gate.md
+- checkers/wp920_spin5_completion_rank_index_selector_gate.py
+- results/wp920_spin5_completion_rank_index_selector_gate.json
+
+WP920 transfers the rank-index kernel theorem to the Spin(5) completion
+fiber. Completions A and B collide on local anomaly cancellation and global
+spinor parity. Their extended representation dimension and Dynkin-index
+records separate them exactly, but separation does not select a prepared
+packet; selection reduction remains zero. Minimality, massability, or favorable
+running cannot be promoted after inspecting downstream behavior. A parent
+branching rule, endpoint-resolved rank-index class, or locality theorem must
+generate a singleton completion before its beta functions acquire authority.
+
+## Spin(7) parent branching singleton audit: WP921
+
+- flavor-spin7-parent-branching-singleton-audit.md
+- checkers/wp921_spin7_parent_branching_singleton_audit.py
+- results/wp921_spin7_parent_branching_singleton_audit.json
+
+WP921 tests the smallest natural simple parent
+`Spin(7) -> Spin(5) x Spin(2)`. Charge-pair closure of complete Spin(7)
+representations excludes the exact chiral Completion-B packet. Completion A
+has the compatible charged pattern, but its smallest fundamental carrier
+`8+21` also forces neutral `10_0+1_0`, giving dimension 29 rather than 18.
+The parent therefore narrows the completion fiber without producing a
+singleton exact image. A source-derived projection or localization index must
+remove the neutral surplus before A and its beta system acquire authority.
+
+## Spin(7) orbifold zero-mode projection fiber: WP922
+
+- flavor-spin7-orbifold-zero-mode-projection-fiber.md
+- checkers/wp922_spin7_orbifold_zero_mode_projection_fiber.py
+- results/wp922_spin7_orbifold_zero_mode_projection_fiber.json
+
+WP922 constructs the exact Completion-A zero-mode packet from two bulk matter
+spinors `8_a,8_b` and one matter adjoint `21`. Opposite spinor intrinsic
+parities retain `4_+1/2` and `4_-1/2`; negative adjoint parity retains
+`5_+1+5_-1` while removing the forced neutral `10_0+1_0`. But only two of
+eight intrinsic-parity assignments yield the target, and those two are the
+exchange orbit of the labelled spinors. The projection is therefore an exact
+conditional field-content rigidifier, not a source-derived selector. Boundary
+topology or an endpoint index must fix the parities and surviving Yukawa
+grammar independently.
+
+## Spin(7) projected Yukawa-coefficient fiber: WP923
+
+- flavor-spin7-projected-yukawa-coefficient-fiber.md
+- checkers/wp923_spin7_projected_yukawa_coefficient_fiber.py
+- results/wp923_spin7_projected_yukawa_coefficient_fiber.json
+
+WP923 enumerates the renormalizable zero-mode invariants after the exact A
+projection. The two conjugate-charge channels are separately gauge allowed,
+but the labelled parent spinors and their opposite intrinsic parities do not
+relate the coefficients. The zero-mode census has rank zero on the two
+coefficient magnitudes; `(1,1)` and `(1,2)` are the smallest hostile ratio
+pair. Bulk versus boundary locality remains undeclared. An independently
+motivated exchange-reflection symmetry would be needed to relate the channels
+before any spectral-shape beta block is source-authorized.
+
+## Spin(7) exchange-reflection Yukawa gate: WP924
+
+- flavor-spin7-exchange-reflection-yukawa-gate.md
+- checkers/wp924_spin7_exchange_reflection_yukawa_gate.py
+- results/wp924_spin7_exchange_reflection_yukawa_gate.json
+
+WP924 proves a conditional positive result. Exchanging the two parent spinors,
+reversing Spin(2) charge, and reflecting the interval acts as
+`(y_minus,y_plus) -> (conj(y_plus),conj(y_minus))`. Its fixed locus has real
+codimension two and enforces equal magnitudes, removing WP923's ratio fiber.
+The common coefficient and all family shape remain free. An endpoint-
+asymmetric counterterm immediately restores ratio two, so the exchange must be
+derived for the complete bulk, brane, regulator, and anomaly-inflow action
+before selector authority is granted.
+
+## Spin(7) exchange-fixed family-tensor fiber: WP925
+
+- flavor-spin7-exchange-fixed-family-tensor-fiber.md
+- checkers/wp925_spin7_exchange_fixed_family_tensor_fiber.py
+- results/wp925_spin7_exchange_fixed_family_tensor_fiber.json
+
+WP925 promotes the WP924 coefficient pair to complex three-family tensors.
+Exchange-conjugation reduces 36 real coordinates to the 18-real-dimensional
+fixed locus `Y_plus=conj(Y_minus)`, leaving one arbitrary complex matrix.
+The exact fixed-locus pair `diag(1,2,3)` and `diag(1,2,4)` has different
+scale-free Gram discriminants, proving that exchange selects the conjugate
+copy but not spectral shape. Exchange-even boundary traces retain the same
+freedom. Further family dynamics or an isolated tensor fixed ray is required.
+
+## Cubic equivariant Yukawa-shape no-go: WP926
+
+- flavor-cubic-equivariant-yukawa-shape-no-go.md
+- checkers/wp926_cubic_equivariant_yukawa_shape_no_go.py
+- results/wp926_cubic_equivariant_yukawa_shape_no_go.json
+
+WP926 exhausts the cubic biunitary-equivariant beta normal form for one complex
+family tensor. Common gauge and trace terms cancel from singular-value-ratio
+flow. A nonzero self-cubic coefficient forces every stationary nonzero
+spectrum to have equal singular values and zero discriminant; a zero
+coefficient leaves every shape marginal. Thus no coefficient choice produces
+an isolated nondegenerate hierarchy. Coupled up/down tensors, higher
+covariants, or source-derived boundary dynamics are now necessary rather than
+optional.
+
+## Coupled cubic two-tensor fixed-point no-go: WP927
+
+- flavor-coupled-cubic-two-tensor-fixed-point-no-go.md
+- checkers/wp927_coupled_cubic_two_tensor_fixed_point_no_go.py
+- results/wp927_coupled_cubic_two_tensor_fixed_point_no_go.json
+
+WP927 exhausts the cubic common-left up/down tensor fixed equations on the
+invertible domain. Full coefficient rank forces both Grams to be scalar;
+rank one makes them affine functions of each other and hence commuting while
+leaving a shape continuum; rank zero leaves all shapes unconstrained. No case
+isolates a nondegenerate CP-violating point. An exact rank-one pair exhibits
+different normalized discriminants at identical coefficients. The first
+possible escape must be a source-derived commutator-sensitive higher covariant,
+nonpolynomial geometry, or boundary condition.
+
+## Quintic commutator Lax-transport audit: WP928
+
+- flavor-quintic-commutator-lax-transport-audit.md
+- checkers/wp928_quintic_commutator_lax_transport_audit.py
+- results/wp928_quintic_commutator_lax_transport_audit.json
+
+WP928 tests the algebraically first commutator-sensitive tensor covariant.
+Its Gram flow is Lax and preserves each sector's full spectrum. With a common
+coefficient it is simultaneous weak-basis conjugation and descends to zero on
+physical16 despite nonzero literal matrix velocity. Unequal coefficients may
+transport relative orientation but remain isospectral; nonzero fixed-point
+coefficients force commuting Grams. The first commutator term is therefore a
+transport/rigidifier, not the missing shape selector.
+
+## Double-commutator gradient audit: WP929
+
+- flavor-double-commutator-gradient-audit.md
+- checkers/wp929_double_commutator_gradient_audit.py
+- results/wp929_double_commutator_gradient_audit.json
+
+WP929 applies the source-authority gate before auditing the Hermitian
+double-commutator candidate.  The exact gradient descends under the full
+weak-basis groupoid and strictly contracts commutator energy, so it is not
+another Lax reparameterization.  Its fixed set is nevertheless the entire
+commuting locus, and the declared Spin5 source supplies neither the term nor
+its coefficient, sign, normalization, or instrument.  It is therefore a
+conditional proper-subspace selector, not an admitted physical flavor
+selector or a distinguished-point prediction.
+
+## Double-commutator Yukawa-lift source gate: WP930
+
+- flavor-double-commutator-yukawa-lift-source-gate.md
+- checkers/wp930_double_commutator_yukawa_lift_source_gate.py
+- results/wp930_double_commutator_yukawa_lift_source_gate.json
+
+WP930 separates quotient descent from tensor-level source construction.  The
+WP929 Gram gradient has a unique Hermitian Sylvester lift on the positive
+domain, but the lift contains inverse spectral sums and the naive polynomial
+half-gradient fails.  The declared Spin5 action has no three-family Yukawa
+beta vector, while finite-threshold matching is downstream and retains a
+two-dimensional nuisance fiber.  Hence the conditional contraction has no
+current source arrow; the Spin5 double-commutator branch closes negative.
+
+## Declared flavor-selector exhaustion: WP931
+
+- flavor-declared-selector-exhaustion.md
+- checkers/wp931_declared_flavor_selector_exhaustion.py
+- results/wp931_declared_flavor_selector_exhaustion.json
+
+WP931 tests every declared selector candidate through WP930 against source
+authority, `physical16` descent, proper reduction, point isolation, and a typed
+instrument.  No candidate passes all five gates.  The only unconditional
+source discriminator acts on upstream completion labels; every proposed
+`physical16` reduction is conditional or unsupported, and all admitted
+rigidifiers and transports leave an exact physical fiber.  This is a relative
+exhaustion of the declared grammar, not a no-go theorem for unknown UV actions.
+
+## Boolean threshold-score transfer: WP932
+
+- flavor-boolean-threshold-score-transfer.md
+- checkers/wp932_boolean_threshold_score_transfer.py
+- results/wp932_boolean_threshold_score_transfer.json
+
+WP932 transfers Benincasa's Boolean score theorem to the three labelled Spin7
+bulk multiplets.  The formal eight-route zeta tower is unimodular and jointly
+faithful on labelled route coefficients, but this reconstructs rather than
+selects their values.  Current flavor threshold authority has rank one and
+leaves a seven-dimensional route kernel; independent deletion controls and an
+eight-route instrument are undeclared.  The transfer is therefore a
+conditional source-story identifier, not a `physical16` selector.
+
+## Aspect capability audit of Boolean thresholds: WP933
+
+- flavor-aspect-capability-audit-boolean-threshold.md
+- checkers/wp933_aspect_capability_audit_boolean_threshold.py
+- results/wp933_aspect_capability_audit_boolean_threshold.json
+
+WP933 applies Aspect's namespaced registry plus the domain axis.  The formal
+Boolean packet is bright, matched, native, and faithful on labelled routes.
+Spin7 deletion action and the physical threshold experiment are missing;
+domain preservation and `physical16` descent are unknown; the source ordering
+functional is independently missing.  Counterfactuals verify that authorizing
+deletion cannot create ordering and postulating ordering cannot authorize
+deletion.  The physical proposal is deferred while the formal theorem remains.
+
+## Spin7 mass-deletion realization fiber: WP934
+
+- flavor-spin7-mass-deletion-realization-fiber.md
+- checkers/wp934_spin7_mass_deletion_realization_fiber.py
+- results/wp934_spin7_mass_deletion_realization_fiber.json
+
+WP934 locates the deletion-action defect upstream of calibration.  WP922 does
+not type its bulk matter realization or mass action.  The same exact parity
+census admits three independent scalar quadratic masses but, for chiral
+five-dimensional fermions, forbids constant diagonal masses and permits at
+most one even joint bilinear between the opposite-parity spinors.  Odd kink
+masses localize rather than Boolean-delete protected zero modes.  The mass
+control rank is therefore realization-dependent, so no eight-route physical
+score tower is presently source-authorized.
+
+## Deutschian realization-index-boundary audit: WP935
+
+- flavor-deutschian-realization-index-boundary-audit.md
+- checkers/wp935_deutschian_realization_index_boundary_audit.py
+- results/wp935_deutschian_realization_index_boundary_audit.json
+
+WP935 corrects the broad source-absence statement.  WP772's pure-vector
+`SU(4)` gauge-Higgs packet is a genuine partial constructor: it realizes the
+link as a gauge component and has positive full-tower index.  It does not
+survive the complete hostile audit.  Exchange-even boundary kinetic packets
+with `tau = 0, 1` preserve that realization and index but change the exact
+contrast from `1/10` to `1/20`; admitting the required 32-degree bulk operand
+packet changes the index from `17` to `-15`.  The missing arrow is therefore a
+completion-stable boundary source law, not realization selection in general.
+
+## Boundary-kinetic symmetry no-go: WP936
+
+- flavor-boundary-kinetic-symmetry-no-go.md
+- checkers/wp936_boundary_kinetic_symmetry_no_go.py
+- results/wp936_boundary_kinetic_symmetry_no_go.json
+
+WP936 proves that WP935's missing boundary law cannot be supplied by an
+ordinary sign, orbifold-parity, or endpoint-exchange symmetry.  Boundary
+gauge-kinetic operators are quadratic, so every sign character acts
+trivially.  Endpoint exchange removes the odd coefficient but preserves the
+one-dimensional common line generated by `(1,1)`.  The exact hostile packets
+`(0,0)` and `(1,1)` obey all these symmetries while retaining WP935's distinct
+contrasts.  Symmetry rigidifies endpoint labels but does not select `tau`.
+
+## Boundary-kinetic RG selector gate: WP937
+
+- flavor-boundary-kinetic-rg-selector-gate.md
+- checkers/wp937_boundary_kinetic_rg_selector_gate.py
+- results/wp937_boundary_kinetic_rg_selector_gate.json
+
+WP937 tests the dynamical successor without inventing an undeclared physical
+beta function.  Additive running preserves the complete `tau` separation;
+finite homogeneous running is injective; and affine attraction conditionally
+selects `-b/a`.  The equally attractive flows `-tau+1` and `-tau+2` select
+different values, so stability has no numerical authority.  Because the
+declared `SU(4)` packet supplies no boundary beta coefficients or proof of
+matter-completion stability, RG remains a viable selector architecture but
+not a source-authorized flavor selector.
+
+## S1/Z2 hypermultiplet boundary-beta kernel: WP938
+
+- flavor-s1z2-hypermultiplet-boundary-beta-kernel.md
+- checkers/wp938_s1z2_hypermultiplet_boundary_beta_kernel.py
+- results/wp938_s1z2_hypermultiplet_boundary_beta_kernel.json
+
+WP938 imports the exact one-loop theorem that a five-dimensional bulk
+hypermultiplet on `S1/Z2` does not renormalize brane gauge couplings.  This
+makes the hypermultiplet completion invisible to that boundary-beta
+contribution, but zero beta preserves the hostile `tau = 0, 1` pair and hence
+selects nothing.  Meanwhile the same 32-degree completion changes the
+full-tower index from `17` to `-15`.  Spectral completion sensitivity and
+boundary-beta completion sensitivity are therefore independent.  The full
+`SU(4)` vector-plus-boundary beta system and higher-loop closure remain open.
+
+## Bulk-loop boundary-counterterm transport: WP939
+
+- flavor-bulk-loop-boundary-counterterm-transport.md
+- checkers/wp939_bulk_loop_boundary_counterterm_transport.py
+- results/wp939_bulk_loop_boundary_counterterm_transport.json
+
+WP939 imports the structural one-loop result that bulk interactions on
+`S1/Z2` generate divergent fixed-plane contributions renormalized by
+four-dimensional boundary couplings.  The renormalized inverse-kinetic
+coefficient has affine form `tau_R = tau_B + L`.  Therefore any two bare
+packets retain their exact difference.  The hostile pair `0,1` maps to
+`3/2,5/2` under the same loop correction.  Computing the complete `SU(4)`
+coefficient would improve transport but cannot select the finite bare term;
+a separate noninvertible UV boundary law remains necessary.
+
+## Boundary volume-suppression no-selector: WP940
+
+- flavor-boundary-volume-suppression-no-selector.md
+- checkers/wp940_boundary_volume_suppression_no_selector.py
+- results/wp940_boundary_volume_suppression_no_selector.json
+
+WP940 separates parametric insensitivity from selection.  For every finite
+bulk inverse coupling `C`, the response `1/(C+tau)` remains injective in
+`tau`.  At `C=100`, the hostile pair `tau=0,1` gives `1/100,1/101`, separated
+by exactly `1/10100`.  A detector may collapse that difference only relative
+to a declared resolution.  The singular `C`-infinite limit sends both
+couplings to zero and changes the physical explanandum.  Volume dominance or
+NDA smallness is therefore neither a selector nor a rigidifier.
+
+## Boundaryless geometry-instrument no-go: WP941
+
+- flavor-boundaryless-geometry-instrument-no-go.md
+- checkers/wp941_boundaryless_geometry_instrument_no_go.py
+- results/wp941_boundaryless_geometry_instrument_no_go.json
+
+WP941 tests the geometric escape.  Replacing the orbifold interval by an
+unmarked circle removes the exchange-even boundary coefficient, but also
+removes both endpoint current ports.  The exact instrument rank drops from
+two to zero.  This is a source-domain replacement, not selection of `tau=0`
+inside the interval family.  Adding two marked circle ports creates a new
+relational experiment over a smaller stabilizer groupoid and reopens the need
+to type localized operators.  A boundaryless Wilson-line selector therefore
+requires its own physical16 descent and calibrated holonomy instrument.
+
+## Completion-stable boundary-selector exhaustion: WP942
+
+- flavor-completion-stable-boundary-selector-exhaustion.md
+- checkers/wp942_completion_stable_boundary_selector_exhaustion.py
+- results/wp942_completion_stable_boundary_selector_exhaustion.json
+
+WP942 freezes six acceptance gates and audits eight declared interval and
+boundaryless routes through WP941.  No route passes all gates.  Symmetry,
+perturbative RG, beta kernels, counterterms, and volume dominance retain the
+one-dimensional bare `tau` fiber; the boundaryless circle removes its
+instrument and changes the source domain.  The strongest existing comparator
+is WP861's proper rank-three `physical16` family, which WP862 excludes from all
+1,210 fitted sheets.  The surviving research space is therefore limited to a
+completion-stable UV boundary law or a fully rederived boundaryless
+holonomy-to-Yukawa experiment.
+
+## Single-holonomy physical16 commuting no-go: WP943
+
+- flavor-single-holonomy-physical16-commuting-no-go.md
+- checkers/wp943_single_holonomy_physical16_commuting_no_go.py
+- results/wp943_single_holonomy_physical16_commuting_no_go.json
+
+WP943 attacks WP942's boundaryless route.  If both Yukawa sectors are
+functions of one normal Wilson holonomy, their Hermitian Grams belong to the
+same commutative functional calculus.  Their commutator and CP-odd cubic
+invariant vanish identically, so the selected `physical16` image is the
+experimentally wrong commuting locus.  An exact positive comparator has
+leading minors `2,5,20` and commutator cubic `-36i`.  A viable boundaryless
+source therefore requires at least two noncommuting family operators with a
+source-fixed relative orientation and a calibrated holonomy instrument.
+
+## Two-holonomy universal-algebra no-selector: WP944
+
+- flavor-two-holonomy-universal-algebra-no-selector.md
+- checkers/wp944_two_holonomy_universal_algebra_no_selector.py
+- results/wp944_two_holonomy_universal_algebra_no_selector.json
+
+WP944 tests the minimum noncommuting repair with the exact three-family Weyl
+pair.  Its nine clock-shift words span all of `M3(C)`.  The same fixed carrier
+therefore admits a commuting coefficient packet with CP cubic zero and a
+mixed packet with CP cubic `-842400i`.  Noncommutativity removes WP943's blind
+locus but, with arbitrary word coefficients, restores the full Yukawa fiber
+and selects no proper `physical16` family.  The missing arrow is now a
+source-derived proper executable word module, stable under completions and
+equipped with a calibrated holonomy-sensitive instrument.
+
+## Weyl executable-closure and conditional-expectation no-go: WP945
+
+- flavor-weyl-executable-closure-conditional-expectation-no-go.md
+- checkers/wp945_weyl_executable_closure_conditional_expectation_no_go.py
+- results/wp945_weyl_executable_closure_conditional_expectation_no_go.json
+
+WP945 asks whether the missing proper word module follows from ordinary
+closure or intrinsic symmetry averaging.  The smallest unital adjoint-closed
+algebra containing both Weyl holonomies is all of `M3(C)`, so closure remains
+nonselective.  The clock twirl has the three-dimensional diagonal image and
+kills both shift grades; the full Weyl twirl has the one-dimensional scalar
+image `Tr(X)I/3`.  These canonical expectations are source-derived proper
+projections, but they restore the commuting obstruction or erase flavor
+altogether.  A viable successor needs additional asymmetric source data that
+selects a proper noncommuting word module.
+
+## Projective Weyl subgroup-twirl exhaustion: WP946
+
+- flavor-projective-weyl-subgroup-twirl-exhaustion.md
+- checkers/wp946_projective_weyl_subgroup_twirl_exhaustion.py
+- results/wp946_projective_weyl_subgroup_twirl_exhaustion.json
+
+WP946 exhausts the six linear subgroups of the projective Weyl label plane
+`F3^2`.  The zero subgroup fixes all nine matrix dimensions and selects
+nothing.  Each of the four lines fixes a three-dimensional commutative maximal
+abelian algebra, so its two-sector image is CP-blind.  The full plane fixes
+only the scalar algebra.  No canonical unweighted subgroup twirl therefore
+has a proper noncommutative image.  Any viable channel must add asymmetric
+source data rather than choose another subgroup of the declared pair.
+
+## Weyl source-normal Bockstein rigidity no-go: WP947
+
+- flavor-weyl-source-normal-bockstein-rigidity-no-go.md
+- checkers/wp947_weyl_source_normal_bockstein_rigidity_no_go.py
+- results/wp947_weyl_source_normal_bockstein_rigidity_no_go.json
+
+WP947 applies Benincasa's source-normal strategy directly to the exact Weyl
+relations.  Their dual-number relation tangent has dimension eight.  The
+simultaneous weak-basis conjugation orbit also has dimension eight, and the
+joined span remains eight, so the physical quotient tangent is zero.  The
+primitive-root equation separately forces the commutation-phase tangent to
+zero.  The exact Weyl source is therefore infinitesimally rigid modulo weak
+basis and supplies no nontrivial flavor Bockstein.  The search must move to an
+independently declared action, boundary, threshold, defect, or completion
+coordinate outside the rigid Weyl relation object.
+
+## Canonical traceless-channel full weak-basis no-go: WP948
+
+- flavor-canonical-traceless-channel-full-weak-basis-no-go.md
+- checkers/wp948_canonical_traceless_channel_full_weak_basis_no_go.py
+- results/wp948_canonical_traceless_channel_full_weak_basis_no_go.json
+
+WP948 classifies conjugation-equivariant linear idempotents on `M3(C)`.  The
+only proper noncommutative image is the eight-dimensional traceless module.
+Its projector is not positive and fails covariance under independent right
+weak-basis transformations: an exact unitary frame flip gives descent
+residual `-2I/3`.  Thus this canonical asymmetric channel is presentation
+data, not a `physical16` selector.  A successor must act on full weak-basis
+covariants or explicitly add a relational left-right reference experiment.
+
+## Gram-pair positive exchange-channel no-go: WP949
+
+- flavor-gram-pair-positive-exchange-channel-no-go.md
+- checkers/wp949_gram_pair_positive_exchange_channel_no_go.py
+- results/wp949_gram_pair_positive_exchange_channel_no_go.json
+
+WP949 moves to the correctly typed left-handed Gram pair and classifies
+positive unital idempotent two-sector mixing channels that are equivariant
+under sector exchange.  Only identity and equal averaging survive.  Identity
+selects nothing; averaging descends under the full weak-basis groupoid but
+maps an exact positive pair with CP cubic `-36i` to equal Grams with cubic
+zero.  Moreover up/down exchange is not an admitted Standard Model source
+symmetry or executable sector swap.  The remaining channel must be
+source-derived, asymmetric, full-weak-basis covariant, and instrumented.
+
+## General positive Gram-sector mixing exhaustion: WP950
+
+- flavor-general-positive-gram-sector-mixing-exhaustion.md
+- checkers/wp950_general_positive_gram_sector_mixing_exhaustion.py
+- results/wp950_general_positive_gram_sector_mixing_exhaustion.json
+
+WP950 removes the exchange-equivariance assumption.  Every positive unital
+scalar sector mixer has a row-stochastic `2x2` matrix.  Idempotence forces
+either identity or identical rows `(c,1-c)`.  Thus every nonidentity channel
+maps both sectors to one common positive Gram and kills the CP commutator.
+The asymmetric weight remains continuous: `c=1/3` and `c=2/3` give distinct
+positive common Grams with traces 9 and 8.  Scalar sector mixing therefore
+cannot supply the selector; a successor must act on internal Gram geometry.
+
+## Isotropic internal-Gram channel exhaustion: WP951
+
+- flavor-isotropic-internal-gram-channel-exhaustion.md
+- checkers/wp951_isotropic_internal_gram_channel_exhaustion.py
+- results/wp951_isotropic_internal_gram_channel_exhaustion.json
+
+WP951 classifies trace-preserving idempotent channels acting isotropically
+inside each Gram.  Full `U(3)_Q` covariance leaves depolarizing form, and
+idempotence leaves only identity or scalar Haar averaging.  Applied
+independently to the two sectors, identity on both selects nothing, while any
+scalarized sector commutes with the other and sends the exact CP cubic `-36i`
+to zero.  A viable internal operation therefore requires a source-derived
+anisotropic relational tensor rather than the invariant identity alone.
+
+## Two-boundary-involution CP no-go: WP952
+
+- flavor-two-boundary-involutions-cp-no-go.md
+- checkers/wp952_two_boundary_involutions_cp_no_go.py
+- results/wp952_two_boundary_involutions_cp_no_go.json
+
+WP952 tests Deutsch's proposed two-decomposition mechanism with Hermitian
+boundary involutions.  Two exact source decompositions can be noncommuting and
+force a relational mixing plane.  In three dimensions, however, their pair
+reduces to a common line plus one two-dimensional principal-angle block.  The
+commutator has rank at most two and cubic trace zero, while each affine Gram
+has at most two distinct eigenvalues.  The minimum viable constructor must
+therefore add a third related decomposition or combine a simple-spectrum
+source operator with an independently fixed noncommuting partner.
+
+## Sector-character common-source authority no-go: WP953
+
+- flavor-sector-character-common-source-authority-no-go.md
+- checkers/wp953_sector_character_common_source_authority_no_go.py
+- results/wp953_sector_character_common_source_authority_no_go.json
+
+WP953 reopens the earlier WP350 three-projector branch.  Its up ray `(1,1,1)`
+is the unique trivial line of the full natural `S3` permutation module.  Its
+down ray `(1,-1,0)` is odd only under one marked transposition; the natural
+three-object permutation module contains no full-`S3` sign line, and the down
+ray's full orbit spans the standard two-dimensional representation.  Thus the
+two rays require different symmetry objects.  Standard Model scalar gauge
+charges commute with the projector permutations and cannot choose the marked
+`Z2`.  The missing source is an `S3`-to-`Z2` flag or standard-doublet order
+parameter, together with completion and instrument authority.
+
+## S3-doublet cubic flag selector: WP954
+
+- flavor-s3-doublet-cubic-flag-selector.md
+- checkers/wp954_s3_doublet_cubic_flag_selector.py
+- results/wp954_s3_doublet_cubic_flag_selector.json
+
+WP954 supplies a minimal conditional repair for WP953.  On the real standard
+doublet with fixed positive norm, the symmetric cubic `xyz` is bounded by
+`-2` and `2`.  Its minimum orbit consists of the three permutations of
+`(1,1,-2)`, each with a `Z2` transposition stabilizer.  The orthogonal line in
+the standard plane is exactly a WP350 down ray such as `(1,-1,0)`.  The action
+therefore selects the missing flag type up to simultaneous projector
+permutation, without using flavor readout.  The doublet's source existence,
+cubic sign, coupling rule, complex projector geometry, radial amplitudes,
+completion stability, and instrument remain open.
+
+## S3-flag projective sign/radial descent: WP955
+
+- flavor-s3-flag-projective-sign-radial-descent.md
+- checkers/wp955_s3_flag_projective_sign_radial_descent.py
+- results/wp955_s3_flag_projective_sign_radial_descent.json
+
+WP955 corrects the WP954 authority count.  Mapping a nonzero doublet vector to
+its axis projector and orthogonal standard-plane line removes both sign and
+radius.  The cubic minimum and maximum vector orbits are disjoint, but their
+three projective `Z2` flags coincide exactly.  Thus the cubic coefficient sign
+does not affect the WP350 projective down ray unless an additional coupling is
+odd in the order parameter.  The remaining gate is the physical doublet and
+its even projective coupling, plus general completion, descent, complex-ray,
+amplitude, and instrument authority.
+
+## Projective even down-coupling CP no-go: WP956
+
+- flavor-projective-even-down-coupling-cp-no-go.md
+- checkers/wp956_projective_even_down_coupling_cp_no_go.py
+- results/wp956_projective_even_down_coupling_cp_no_go.json
+
+WP956 executes the smallest even family-module coupling requested after
+WP955.  For the exact WP350 projectors, `B=P-Q` obeys
+`B^2=diag(1/2,1/2,0)`.  Every even function of `B` lies in the two-dimensional
+algebra spanned by identity and `B^2`, so its down spectrum is twofold
+degenerate.  The even benchmark descends under `B -> -B` but has down
+discriminant zero and CP cubic zero; the oriented odd lift retains cubic
+`-3658i/3`.  The minimum viable projective repair therefore needs a second
+independently sourced tensor, not merely an even function of the flag line.
+
+## Independent projective tensor CP sufficiency: WP957
+
+- flavor-independent-projective-tensor-cp-sufficiency.md
+- checkers/wp957_independent_projective_tensor_cp_sufficiency.py
+- results/wp957_independent_projective_tensor_cp_sufficiency.json
+
+WP957 proves that WP956 is a one-generator obstruction rather than a general
+projective-descent obstruction.  Adding the independent rank-one projector
+generated by `w=(1,2,i)` to `B^2` gives a simple down spectrum, rank-three Gram
+commutator, and nonzero CP cubic, while remaining invariant under both flag
+sign and ray rescaling.  Reusing the up-sector projector `R` splits the down
+spectrum but leaves CP zero, proving that spectral splitting alone is not
+enough.  The exact witness establishes algebraic sufficiency only: the second
+projective tensor still lacks a readout-independent source constructor and a
+physical instrument.
+
+## Second-projective-source transfer audit: WP958
+
+- flavor-second-projective-source-transfer-audit.md
+- checkers/wp958_second_projective_source_transfer_audit.py
+- results/wp958_second_projective_source_transfer_audit.json
+
+WP958 searches the existing programme for WP957's missing source tensor.  The
+nearest candidates do not transfer.  WP877 derives ordered real projectors on
+an `SO(5)` five-vector carrier, but any real three-family forms have a real
+antisymmetric commutator and identically zero CP cubic.  WP859 derives a
+complex Kirchhoff projector and complementary port on a two-path relational
+carrier, but its three-family embedding retains a common line and again has
+zero CP cubic.  Neither candidate has a named source-to-family interface.
+Coordinate compatibility therefore supplies no authority; the remaining gate
+is an explicitly covariant complex source-to-family projector constructor
+with relational independence, completion, and instrument transport.
+
+## Complex projective source arity threshold: WP959
+
+- flavor-projective-source-arity-threshold.md
+- checkers/wp959_projective_source_arity_threshold.py
+- results/wp959_projective_source_arity_threshold.json
+
+WP959 identifies the canonical interface and its minimum relational arity.
+The map from a nonzero complex triplet to its normalized rank-one projector is
+ray-invariant and weak-basis equivariant.  One ray is a transitive `U(3)`
+orbit, while two rays share an annihilated line and force zero commutator
+cubic.  Three spanning rays first admit the weak-basis-invariant Bargmann
+triple product; the exact witness has value `(1+i)/6`, whose imaginary part
+reverses under conjugation.  This is an interface theorem, not a selector: a
+readout-independent source action deriving the ordered triple or an equivalent
+irreducible tensor, completion stability, and instrument transport remain
+open.
+
+## Symmetric three-triplet overlap-source no-go: WP960
+
+- flavor-symmetric-three-triplet-overlap-source-no-go.md
+- checkers/wp960_symmetric_three_triplet_overlap_source_no_go.py
+- results/wp960_symmetric_three_triplet_overlap_source_no_go.json
+
+WP960 tests the most economical source action on WP959's triplet packet.  The
+permutation-symmetric sum of the three pairwise projector overlaps is bounded
+between zero and three.  Positive coupling selects an orthonormal frame with
+zero Bargmann invariant; negative coupling selects a collinear rank-one packet
+with Bargmann invariant one; zero coupling leaves the relational packet flat.
+All three cases are CP blind.  Thus the canonical interface plus its unique
+pair-overlap scalar does not select a CP-bearing triple.  The next candidate
+must add a readout-independent cyclic three-body invariant or an equivalent
+irreducible complex tensor, while retaining conjugate minima, completion, and
+instrument gates explicitly.
+
+## Linear Bargmann-source extrema no-go: WP961
+
+- flavor-linear-bargmann-source-extrema-no-go.md
+- checkers/wp961_linear_bargmann_source_extrema_no_go.py
+- results/wp961_linear_bargmann_source_extrema_no_go.json
+
+WP961 adds the lowest CP-even ternary source term, the real part of the
+Bargmann invariant, without fitting pairwise overlaps.  Its exact global range
+is `[-1/8,1]`.  The minimum is the real coplanar trine with span rank two; the
+maximum is the collinear rank-one triple.  Both extrema have zero Bargmann
+imaginary part, while zero coupling is flat.  The real linear ternary term is
+therefore orientation-even and selects only CP-blind boundary strata.  A
+spanning spontaneous-CP source requires nonlinear phase frustration with
+conjugate minima, or a separately authorized CP-odd source term, followed by
+completion and instrument tests.
+
+## Squared Bargmann-orientation boundary no-go: WP962
+
+- flavor-squared-bargmann-orientation-boundary-no-go.md
+- checkers/wp962_squared_bargmann_orientation_boundary_no_go.py
+- results/wp962_squared_bargmann_orientation_boundary_no_go.json
+
+WP962 tests the least adjustable nonlinear CP-even orientation source.  The
+sharp global bound is `(Im B)^2 <= 1/16`, and equality gives the conjugate pair
+`B=(1+-i)/4`.  However every maximizer has Gram determinant zero and span rank
+two.  Exact positive-definite hostile Grams with identical pairwise overlap
+magnitudes but Bargmann values `1/8` and `i/8` prove that the orientation
+magnitude is genuinely ternary and cannot be generated by conjunction of the
+WP960 pairwise probes.  The next gate is an independently normalized positive
+volume completion that preserves nonzero orientation and full span; exact
+conjugation symmetry still leaves handedness unselected.
+
+## Linear volume-orientation endpoint-switch no-go: WP963
+
+- flavor-linear-volume-orientation-endpoint-switch-no-go.md
+- checkers/wp963_linear_volume_orientation_endpoint_switch_no_go.py
+- results/wp963_linear_volume_orientation_endpoint_switch_no_go.json
+
+WP963 adds the positive Gram determinant to the squared orientation with an
+arbitrary positive relative normalization.  On the exact global envelope the
+derivative factors as `(4u-3)(lambda-u^2)`, and every interior stationary point
+is a minimum.  Below `lambda=1/16` the rank-two oriented endpoint wins; above
+it the orthogonal CP-blind frame wins; at the threshold the endpoints tie.
+Thus linear volume reward produces a first-order endpoint switch rather than a
+spanning oriented maximizer.  The source remains typed as a `3+3+1` closed
+triangle.  The next gate is an independently derived interior-enforcing
+barrier, constraint, or completion field, with conjugate handedness and
+instrument transport retained.
+
+## CP-even invariant optimization-polarity audit: WP964
+
+- flavor-cp-even-invariant-product-interior-sufficiency.md
+- checkers/wp964_cp_even_invariant_product_interior.py
+- results/wp964_cp_even_invariant_product_interior.json
+
+WP964 corrects the scope of WP963. Maximizing a co-positive affine reward is
+endpoint-selecting, but minimizing the same positive invariant is not. At
+`lambda=1/16`, `q^2+lambda D` has strict conjugate interior minima at `u=1/4`,
+with `D=3/8`, `q^2=3/256`, and value `9/256`, below the common endpoint value
+`1/16`. Thus unrestricted affine optimization is already algebraically
+sufficient; `D*q^2` is sufficient but not minimal. This is not yet a selector:
+action polarity, occurrence, and normalization require independent source
+derivation, followed by calibrated `physical16` transport.
+
+## Affine-interior source-constructor census: WP965
+
+- flavor-affine-interior-source-constructor-census.md
+- checkers/wp965_affine_interior_source_constructor_census.py
+- results/wp965_affine_interior_source_constructor_census.json
+
+WP965 tests five joint gates against the existing Gaussian Schur, conditional
+expectation, positive exchange, Abelian moment-map, and WP964 affine
+constructors. No row jointly supplies occurrence, minimization polarity,
+relative normalization, carrier descent, and the correct interior. The exact
+polarity hostile uses one carrier at `lambda=1/16`: minimization selects
+`u=1/4`, while maximization selects the two endpoints. Algebraic closure is not
+executable source control. The next object must derive the affine action and
+coefficient from one microscopic source and make an independent prediction
+before calibrated `physical16` transport.
