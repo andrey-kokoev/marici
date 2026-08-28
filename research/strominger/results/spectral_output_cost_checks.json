@@ -1,0 +1,42 @@
+{
+  "schema": "marici.strominger.spectral_output_cost_checks.v1",
+  "status": "passed",
+  "classification": "spectral_growth_forces_explicit_output_cost_but_not_total_constructor_cost",
+  "characteristic_polynomial_coefficients": [1, -147460, 294918, -147460, 1],
+  "characteristic_polynomial_factorization": "(x-1)^2*(x^2-147458*x+1)",
+  "determinant": 1,
+  "fixed_space_dimension": 1,
+  "spectral_witness": {
+    "power": 8,
+    "absolute_trace": 223535607821719275145731900006729551708164,
+    "trace_certified_integer_lower_bound": 123996,
+    "factor_certified_integer_lower_bound": 147457,
+    "factor_argument": "lambda+lambda^-1=147458 and 0<lambda^-1<1"
+  },
+  "growth_summary": [
+    {"exponent": 1, "actual_bit_length": 19, "spectral_bit_lower_bound": 16},
+    {"exponent": 2, "actual_bit_length": 36, "spectral_bit_lower_bound": 33},
+    {"exponent": 4, "actual_bit_length": 70, "spectral_bit_lower_bound": 67},
+    {"exponent": 8, "actual_bit_length": 139, "spectral_bit_lower_bound": 136},
+    {"exponent": 16, "actual_bit_length": 276, "spectral_bit_lower_bound": 273},
+    {"exponent": 32, "actual_bit_length": 551, "spectral_bit_lower_bound": 548}
+  ],
+  "unimodular_basis_fixtures": 4,
+  "compact_encoding": {
+    "state": "integer exponent n plus fixed matrix C",
+    "explicit_output_materialized": false,
+    "defeats_universal_total_storage_lower_bound": true,
+    "does_not_defeat_explicit_matrix_output_lower_bound": true
+  },
+  "gates": {
+    "characteristic_polynomial_is_monic_integral": true,
+    "reciprocal_hyperbolic_factorization_is_exact": true,
+    "exact_spectral_radius_lower_bound_exceeds_one": true,
+    "spectral_lower_bound_holds_on_tested_powers": true,
+    "authorized_integral_basis_changes_preserve_spectrum": true,
+    "compact_circuit_refutes_a_total_storage_law": true
+  },
+  "gate_count": 6,
+  "passed_gate_count": 6,
+  "interpretation": "The hyperbolic factor forces linear bit growth for every explicit conjugate matrix output, while compact exponent-plus-circuit encoding refutes a representation-independent total storage law."
+}
