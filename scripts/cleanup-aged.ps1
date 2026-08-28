@@ -3,7 +3,8 @@ param(
   [ValidateRange(1, 10080)]
   [int]$OlderThanMinutes = 15,
 
-  [switch]$Summary,
+  [Alias('Summary')]
+  [switch]$ShowSummary,
 
   [switch]$Detailed,
 
@@ -131,10 +132,10 @@ $remainingOld = @($remaining | Where-Object {
     ($_.Path -notmatch $temporaryPattern)
 })
 
-$summary = [ordered]@{
+$result = [ordered]@{
   status = if ($remainingOld.Count -eq 0) { 'ok' } else { 'incomplete' }
   cutoff = $cutoff.ToString('o')
-  committed_files = ($commits | Measure-Object Count -Sum).Sum
+  committed_files = if ($commits.Count -gt 0) { ($commits | Measure-Object Count -Sum).Sum } else { 0 }
   commits = $commits.Count
   pushed = $pushed
   tip = if ($commits.Count -gt 0) { $commits[-1].Commit } else { (Invoke-Git rev-parse HEAD | Select-Object -Last 1).Trim() }
@@ -144,7 +145,7 @@ $summary = [ordered]@{
 }
 
 if ($Detailed) {
-  $summary.details = [ordered]@{
+  $result.details = [ordered]@{
     commits = @($commits)
     protected_paths = @($protected | Sort-Object -Unique)
     temporary_paths = @($temporary | Sort-Object -Unique)
@@ -152,7 +153,7 @@ if ($Detailed) {
   }
 }
 
-if ($Summary -or $Detailed) {
-  [pscustomobject]$summary | ConvertTo-Json -Depth 6 -Compress
+if ($ShowSummary -or $Detailed) {
+  [pscustomobject]$result | ConvertTo-Json -Depth 6 -Compress
 }
 if ($remainingOld.Count -gt 0) { exit 2 }
