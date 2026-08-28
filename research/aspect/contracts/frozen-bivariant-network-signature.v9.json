@@ -1,0 +1,88 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v9",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v8.json",
+  "change_reason": "v8 was falsified because a zero-only spectral germ did not prevent off-zero spectral birth under non-normal completion",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "ambient_category": "the analytic Hilbert-complex category frozen in v8, enriched over a declared complex spectral domain",
+  "object_types": [
+    "analytic_completed_resolved_route_family",
+    "spectral_parameter_domain",
+    "shifted_operator_family",
+    "holomorphic_resolvent_sheaf",
+    "finite_section_resolvent_pro_sheaf",
+    "pseudospectral_defect_sheaf",
+    "completed_spectral_support",
+    "resolvent_comparison_cone",
+    "topological_mapping_cone",
+    "nonclosed_range_defect",
+    "homotopy_fixed_point_boundary_cofiber"
+  ],
+  "arrow_types": [
+    "spectral_domain_restriction",
+    "shifted_operator_evaluation",
+    "resolvent_section",
+    "finite_to_completed_resolvent_comparison",
+    "pseudospectral_defect_inclusion",
+    "specialization_resolvent_intertwiner",
+    "holonomy_resolvent_intertwiner",
+    "completed_sewing",
+    "finite_projection_after_completion"
+  ],
+  "cell_types": [
+    "resolvent_identity_cell",
+    "holomorphic_section_gluing",
+    "compact_exhaustion_uniform_bound",
+    "pseudospectral_retention_cell",
+    "specialization_resolvent_naturality",
+    "derived_resolvent_comparison_triangle",
+    "analytic_transport_associator"
+  ],
+  "parameterized_resolvent_route_family": {
+    "required_fields": [
+      "analytic_completion_data_of_v8",
+      "declared_open_spectral_domain",
+      "shifted_operator_family_A_minus_z",
+      "finite_section_resolvents_with_common_comparison_maps",
+      "completed_resolvent_local_sections",
+      "compact_exhaustion_of_claimed_resolvent_domain",
+      "uniform_resolvent_bounds_per_compact",
+      "epsilon_pseudospectral_defect_sets",
+      "resolvent_comparison_cones",
+      "completed_spectral_support",
+      "specialization_and_holonomy_resolvent_intertwiners"
+    ],
+    "required_laws": [
+      "resolvent_sections_are_holomorphic",
+      "resolvent_identity_holds_on_every_pair_of_local_sections",
+      "finite_section_resolvents_are_locally_uniformly_bounded_on_each_promoted_compact",
+      "finite_section_resolvents_converge_through_declared_comparison_maps",
+      "unbounded_resolvent_subsequences_define_a_retained_pseudospectral_defect",
+      "completed_spectral_support_contains_every_nonvanishing_pseudospectral_limit",
+      "resolvent_comparison_cone_must_vanish_before_finite_spectra_promote",
+      "specialization_intertwines_shifted_operators_and_resolvents_where_defined",
+      "holonomy_intertwines_the_resolvent_sheaf",
+      "topological_cone_nonclosed_range_and_zero_limit_defects_of_v8_remain_retained",
+      "strict_descent_requires_empty_spectral_defect_on_the_declared_domain",
+      "completed_sewing_precedes_finite_projection"
+    ]
+  },
+  "forbidden_promotions": [
+    "finite spectral sets promoted without locally uniform resolvent bounds",
+    "pointwise resolvent samples promoted without the resolvent identity",
+    "zero-point spectral control promoted to a parameterized spectral claim",
+    "bounded resolvents on a nonexhaustive sample promoted to local uniform boundedness",
+    "pseudospectral blowup discarded because every finite shifted operator is invertible",
+    "strong operator convergence promoted to spectral convergence without resolvent control",
+    "spectral gate used as a substitute for topological cone or nonclosed-range accounting",
+    "finite projection performed before completed sewing",
+    "packet-specific resolvent cell added during replay"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "A_N=2I+S_N at z=5/2, with resolvent growth 2^N and completed unilateral-shift spectral birth",
+    "first_unused_packet": "bounded scalar samples R(0)=R(1)=1 that violate the resolvent identity",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

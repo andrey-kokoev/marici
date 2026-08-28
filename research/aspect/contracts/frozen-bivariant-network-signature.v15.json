@@ -1,0 +1,46 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v15",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v14.json",
+  "change_reason": "the operator explicitly increased the preregistered Postnikov profile through degree twenty",
+  "cell_creation_during_replay": false,
+  "source_declared_maximum_obstruction_degree": 20,
+  "coherence_depth_policy": "degrees two through twenty are frozen before replay; degree twenty-one or higher is rejected unless a successor version preregisters it",
+  "object_types": [
+    "all_v14_objects",
+    "differential_cocycle_tower_through_degree_twenty",
+    "source_declared_postnikov_profile",
+    "higher_framed_vanishing_cycle",
+    "strictification_certificate"
+  ],
+  "required_fields": [
+    "all_v14_projective_gerbe_and_degree_five_data",
+    "normalized_cocycles_and_k_invariants_at_every_degree_two_through_twenty",
+    "coboundary_gauge_actions_at_every_degree_two_through_twenty",
+    "higher_specialization_maps_through_degree_twenty",
+    "explicit_degree_twenty_one_rejection_boundary"
+  ],
+  "required_laws": [
+    "full_normalized_cocycle_equation_checked_at_every_degree_two_through_twenty",
+    "cohomologous_representatives_are_gauge_equivalent_at_each_declared_degree",
+    "strictification_requires_trivializations_of_all_declared_obstruction_classes",
+    "higher_specialization_commutes_with_differentials_through_degree_twenty",
+    "no_degree_twenty_one_cell_or_filler_may_be_added_during_replay",
+    "all_lower_transport_completion_resolvent_cover_matrix_and_specialization_cone_defects_remain_retained"
+  ],
+  "forbidden_promotions": [
+    "higher obstruction discarded because lower degrees vanish",
+    "cocycle inferred from one representative without gauge audit",
+    "degree twenty-one hostile repaired inside v15",
+    "postnikov profile changed after replay begins",
+    "strictification declared before every degree-two-through-twenty obstruction is trivialized",
+    "missing specialization-cone cell replaced by greater cocycle depth"
+  ],
+  "out_of_sample_policy": {
+    "repair_profile": "the complete normalized Z2 monomial cocycle family at degrees two through twenty",
+    "first_unused_packet": "the normalized degree-twenty-one Z2 cocycle",
+    "next_rejection_boundary": "degree twenty-one",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

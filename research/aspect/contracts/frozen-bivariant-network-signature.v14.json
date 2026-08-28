@@ -1,0 +1,49 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v14",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v13.json",
+  "change_reason": "the operator explicitly increased the preregistered Postnikov profile through degree five",
+  "cell_creation_during_replay": false,
+  "source_declared_maximum_obstruction_degree": 5,
+  "coherence_depth_policy": "degrees two through five are frozen before replay; degree six or higher is rejected unless a successor version preregisters it",
+  "object_types": [
+    "projective_unitary_transport_stack",
+    "differential_cocycle_tower_through_degree_five",
+    "degree_four_obstruction_object",
+    "degree_five_obstruction_object",
+    "source_declared_postnikov_profile",
+    "higher_framed_vanishing_cycle",
+    "strictification_certificate"
+  ],
+  "required_fields": [
+    "all_v13_projective_and_gerbe_data",
+    "normalized_degree_four_cocycles_and_k_invariants",
+    "normalized_degree_five_cocycles_and_k_invariants",
+    "degree_four_and_five_coboundary_gauge_actions",
+    "higher_specialization_maps_through_degree_five",
+    "explicit_degree_six_rejection_boundary"
+  ],
+  "required_laws": [
+    "full_normalized_cocycle_equation_checked_at_degrees_two_three_four_and_five",
+    "cohomologous_representatives_are_gauge_equivalent_at_each_declared_degree",
+    "strictification_requires_trivializations_of_all_declared_obstruction_classes",
+    "higher_specialization_commutes_with_differentials_through_degree_five",
+    "no_degree_six_cell_or_filler_may_be_added_during_replay",
+    "all_lower_transport_completion_resolvent_cover_and_matrix_defects_remain_retained"
+  ],
+  "forbidden_promotions": [
+    "degree four or five obstruction discarded because lower degrees vanish",
+    "degree five cocycle inferred from one representative without gauge audit",
+    "degree six hostile repaired inside v14",
+    "postnikov profile changed after replay begins",
+    "strictification declared before every degree-two-through-five obstruction is trivialized"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "the v13 degree-four Z2 cocycle (-1)^(abcd), now admitted and checked",
+    "first_unused_packet": "the normalized degree-five Z2 cocycle (-1)^(abcde)",
+    "cross_sector_packet": "the strict (Z2)^6 semidirect C3 conductor transport of order 192 with multiplier +1",
+    "next_rejection_boundary": "degree six",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

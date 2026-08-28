@@ -1,0 +1,24 @@
+{
+  "schema": "marici.aspect.dual-gamma-cyclic-checker-anti-fitting.v1",
+  "status": "claim_gaps_detected_preexecution",
+  "candidate": "research/benincasa/checkers/check_rank26_dual_gamma_cyclic_atlas_closure.py",
+  "findings": {
+    "epsilon_closure_is_hard_coded": true,
+    "cycle_closure_reuses_edge_identity_failures_without_composition": true,
+    "bockstein_line_closure_is_inferred_without_extracted_line_transport": true,
+    "charts_are_generated_from_one_base_chart": true,
+    "no_explicit_three_edge_matrix_product_is_computed": true
+  },
+  "observed_check_expressions": {
+    "epsilon": "True",
+    "cycle": "edge_identity_failures == [0, 0, 0]",
+    "bockstein_line": "edge_identity_failures == [0, 0, 0] and gamma_failures == [0, 0, 0]"
+  },
+  "required_repairs": [
+    "derive and transport the epsilon coordinate on each edge, then compare after three steps",
+    "materialize all three quotient matrices and multiply them in the declared order",
+    "extract the common Bockstein line in every chart and compose its three induced scalar maps",
+    "separate source-authorized cyclic generation from a claim of independent chart construction"
+  ],
+  "disposition": "the current candidate may test edgewise cyclic covariance but cannot yet certify signed order-three closure on epsilon or the Bockstein line"
+}
