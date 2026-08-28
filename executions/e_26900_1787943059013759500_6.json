@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943059013759500_6",
+  "created_at": "2026-08-28T18:50:59.0137617Z",
+  "sha256": "946e637b95306835fe9d1eff7ab8d49e1bd83ff57c8c3a0fee4a335fcd468891",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib\nd=tomllib.loads(pathlib.Path(r'research/nima/contracts/typed-response.v1.toml').read_text())\nT,U,Y,F=d['tables'],d['unions'],d['types'],d['field_sets']\nassert set(d['root']['required'])==set(d['root']['allowed'])\nfor n,t in T.items():\n r,a=set(t.get('required',[])),set(t.get('allowed',[]))\n assert r<=a and len(r)==len(t.get('required',[])) and len(a)==len(t.get('allowed',[])),n\n fs=F.get(t.get('field_set',''),{})\n typed=set(t.get('fields',{}))|set(t.get('constants',{}))|set(fs)\n assert a<=typed,(n,'untyped',a-typed)\n assert typed<=a,(n,'typed-not-allowed',typed-a)\n for s in t.get('fields',{}).values():\n  if 'schema_ref'in s: assert s['schema_ref'] in T\n  if 'item_schema_ref'in s: assert s['item_schema_ref'] in T or s['item_schema_ref'] in U\n for k in t.get('constants',{}): assert k in r\nfor n,u in U.items():\n assert u['discriminator']=='kind' and len(u['variants'])==len(set(u['variants']))\n for v in u['variants']: assert v in T and T[v]['constants']['kind']\nfor fs in F.values():\n for typ in fs.values(): assert typ in Y\nids=[x['id'] for x in d['constraints']]\nassert len(ids)==len(set(ids))\nassert T['changed_file']['required']==['path','operation']\nassert 'communication' in T['agent']['required']\nassert Y['evidence_array']['min_items']==1\nassert 'has_attention' not in str(d) and 'has_context' not in str(d)\nprint('structure-pass',len(T),len(U),len(Y),len(ids))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:50:58.9220693Z",
+    "finished_at": "2026-08-28T18:50:59.0137521Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Final pass 2 complete type coverage, union closure, conditional consistency",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Final pass 2 complete type coverage, union closure, conditional consistency",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 11, in <module>\r\n    assert typed<=a,(n,'typed-not-allowed',typed-a)\r\n           ^^^^^^^^\r\nAssertionError: ('operator_result', 'typed-not-allowed', {'blocked_operation', 'condition', 'reason', 'incorrect', 'blocking_condition', 'corrected', 'recommended', 'consequence', 'requested_action', 'alternatives', 'mitigation', 'question', 'required_release', 'selection_basis', 'scope'})\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
