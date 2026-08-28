@@ -1,0 +1,386 @@
+schema = "marici.typed-response-schema.v1"
+target_media_type = "application/toml"
+target_schema = "marici.typed-response.v1"
+unknown_fields = "reject"
+
+[root]
+required = ["schema", "response_id", "created_at", "agent_id", "operator", "agent"]
+
+[root.fields.schema]
+type = "literal"
+value = "marici.typed-response.v1"
+
+[root.fields.response_id]
+type = "string"
+min_length = 1
+
+[root.fields.created_at]
+type = "datetime-rfc3339"
+
+[root.fields.agent_id]
+type = "string"
+pattern = "^marici\\.[A-Za-z][A-Za-z0-9]*$"
+
+[root.fields.operator]
+type = "table"
+schema_ref = "operator"
+
+[root.fields.agent]
+type = "table"
+schema_ref = "agent"
+
+[tables.operator]
+required = ["items"]
+
+[tables.operator.fields.items]
+type = "array"
+item_schema_ref = "operator_item"
+min_items = 0
+unique_by = "id"
+
+[unions.operator_item]
+discriminator = "kind"
+variants = [
+  "operator_result",
+  "operator_correction",
+  "operator_blocker",
+  "operator_decision",
+  "operator_risk",
+  "operator_authority_request",
+]
+
+[tables.operator_result]
+field_set = "operator_common"
+required = ["id", "kind", "statement", "impact", "epistemic_status", "evidence"]
+optional = ["uncertainty"]
+
+[tables.operator_result.constants]
+kind = "result"
+
+[tables.operator_correction]
+field_set = "operator_common"
+required = ["id", "kind", "incorrect", "corrected", "impact", "epistemic_status", "evidence"]
+optional = ["uncertainty"]
+
+[tables.operator_correction.constants]
+kind = "correction"
+
+[tables.operator_blocker]
+field_set = "operator_common"
+required = ["id", "kind", "blocked_operation", "blocking_condition", "required_release", "impact", "evidence"]
+
+[tables.operator_blocker.constants]
+kind = "blocker"
+
+[tables.operator_decision]
+field_set = "operator_common"
+required = ["id", "kind", "question", "alternatives", "recommended", "selection_basis", "impact", "evidence"]
+
+[tables.operator_decision.constants]
+kind = "decision"
+
+[tables.operator_risk]
+field_set = "operator_common"
+required = ["id", "kind", "condition", "consequence", "mitigation", "impact", "epistemic_status", "evidence"]
+optional = ["uncertainty"]
+
+[tables.operator_risk.constants]
+kind = "risk"
+
+[tables.operator_authority_request]
+field_set = "operator_common"
+required = ["id", "kind", "requested_action", "scope", "reason", "impact", "evidence"]
+
+[tables.operator_authority_request.constants]
+kind = "authority_request"
+
+[field_sets.operator_common]
+id = "identifier"
+impact = "nonempty_string"
+evidence = "evidence_array"
+epistemic_status = "epistemic_status"
+uncertainty = "nonempty_string"
+statement = "nonempty_string"
+incorrect = "nonempty_string"
+corrected = "nonempty_string"
+blocked_operation = "nonempty_string"
+blocking_condition = "nonempty_string"
+required_release = "nonempty_string"
+question = "nonempty_string"
+alternatives = "nonempty_string_array"
+recommended = "nonempty_string"
+selection_basis = "nonempty_string"
+condition = "nonempty_string"
+consequence = "nonempty_string"
+mitigation = "nonempty_string"
+requested_action = "nonempty_string"
+scope = "nonempty_string"
+reason = "nonempty_string"
+
+[tables.agent]
+required = ["state", "objective", "stop_condition", "constraints", "items", "communication"]
+optional = ["resume_from", "execution"]
+
+[tables.agent.fields.state]
+type = "enum"
+values = ["unstarted", "rehydrated", "worked", "closable", "completed", "blocked"]
+
+[tables.agent.fields.objective]
+type = "nonempty_string"
+
+[tables.agent.fields.stop_condition]
+type = "nonempty_string"
+
+[tables.agent.fields.constraints]
+type = "nonempty_string_array"
+
+[tables.agent.fields.resume_from]
+type = "nonempty_string"
+
+[tables.agent.fields.items]
+type = "array"
+item_schema_ref = "agent_item"
+min_items = 0
+unique_by = "id"
+
+[tables.agent.fields.execution]
+type = "table"
+schema_ref = "execution"
+
+[tables.agent.fields.communication]
+type = "table"
+schema_ref = "communication"
+
+[unions.agent_item]
+discriminator = "kind"
+variants = [
+  "agent_evidence",
+  "agent_inference",
+  "agent_residual",
+  "agent_defect",
+  "agent_hypothesis",
+  "agent_obligation",
+]
+
+[tables.agent_evidence]
+field_set = "agent_common"
+required = ["id", "kind", "statement", "source"]
+
+[tables.agent_evidence.constants]
+kind = "evidence"
+
+[tables.agent_inference]
+field_set = "agent_common"
+required = ["id", "kind", "conclusion", "premises"]
+
+[tables.agent_inference.constants]
+kind = "inference"
+
+[tables.agent_residual]
+field_set = "agent_common"
+required = ["id", "kind", "expected", "observed", "disposition"]
+optional = ["source"]
+
+[tables.agent_residual.constants]
+kind = "residual"
+
+[tables.agent_defect]
+field_set = "agent_common"
+required = ["id", "kind", "description", "disposition", "verification"]
+
+[tables.agent_defect.constants]
+kind = "defect"
+
+[tables.agent_hypothesis]
+field_set = "agent_common"
+required = ["id", "kind", "proposition", "falsifier", "source"]
+
+[tables.agent_hypothesis.constants]
+kind = "hypothesis"
+
+[tables.agent_obligation]
+field_set = "agent_common"
+required = ["id", "kind", "action", "trigger", "authority"]
+
+[tables.agent_obligation.constants]
+kind = "obligation"
+
+[field_sets.agent_common]
+id = "identifier"
+statement = "nonempty_string"
+source = "reference"
+conclusion = "nonempty_string"
+premises = "reference_array"
+expected = "nonempty_string"
+observed = "nonempty_string"
+disposition = "disposition"
+description = "nonempty_string"
+verification = "evidence_array"
+proposition = "nonempty_string"
+falsifier = "nonempty_string"
+action = "nonempty_string"
+trigger = "nonempty_string"
+authority = "reference"
+
+[tables.execution]
+required = ["tools", "changed_files", "verification", "git"]
+optional = ["active_runs"]
+
+[tables.execution.fields.tools]
+type = "reference_array"
+
+[tables.execution.fields.changed_files]
+type = "array"
+item_schema_ref = "changed_file"
+min_items = 0
+unique_by = "path"
+
+[tables.execution.fields.verification]
+type = "reference_array"
+
+[tables.execution.fields.active_runs]
+type = "reference_array"
+
+[tables.execution.fields.git]
+type = "table"
+schema_ref = "git_state"
+
+[tables.changed_file]
+required = ["path", "operation"]
+optional = ["before_sha256", "after_sha256"]
+
+[tables.changed_file.fields.path]
+type = "nonempty_string"
+
+[tables.changed_file.fields.operation]
+type = "enum"
+values = ["create", "update", "move", "delete"]
+
+[tables.changed_file.fields.before_sha256]
+type = "sha256"
+
+[tables.changed_file.fields.after_sha256]
+type = "sha256"
+
+[tables.git_state]
+required = ["commit", "push"]
+optional = ["commit_ref", "push_ref"]
+
+[tables.git_state.fields.commit]
+type = "enum"
+values = ["not_performed", "committed"]
+
+[tables.git_state.fields.push]
+type = "enum"
+values = ["not_performed", "pushed"]
+
+[tables.git_state.fields.commit_ref]
+type = "reference"
+
+[tables.git_state.fields.push_ref]
+type = "reference"
+
+[tables.communication]
+required = ["opening_sequence", "closing_sequence", "actionable_messages", "reply_events"]
+
+[tables.communication.fields.opening_sequence]
+type = "nonnegative_integer"
+
+[tables.communication.fields.closing_sequence]
+type = "nonnegative_integer"
+
+[tables.communication.fields.actionable_messages]
+type = "reference_array"
+
+[tables.communication.fields.reply_events]
+type = "reference_array"
+
+[types.identifier]
+base = "string"
+pattern = "^[A-Za-z][A-Za-z0-9._:-]*$"
+
+[types.nonempty_string]
+base = "string"
+min_length = 1
+
+[types.nonempty_string_array]
+base = "array"
+items = "nonempty_string"
+min_items = 1
+unique = true
+
+[types.reference]
+base = "string"
+pattern = "^(graph|file|execution|source|task|run|git):.+$"
+
+[types.reference_array]
+base = "array"
+items = "reference"
+min_items = 0
+unique = true
+
+[types.evidence_array]
+base = "array"
+items = "reference"
+min_items = 1
+unique = true
+
+[types.sha256]
+base = "string"
+pattern = "^[a-f0-9]{64}$"
+
+[types.epistemic_status]
+base = "enum"
+values = ["verified", "derived", "inferred", "speculative", "unknown"]
+
+[types.disposition]
+base = "enum"
+values = ["retain", "test", "repair", "reject", "defer"]
+
+[[constraints]]
+id = "operator-rendering"
+rule = "Render only the operator table unless the operator explicitly requests agent context."
+
+[[constraints]]
+id = "attention-by-cardinality"
+rule = "Operator attention exists exactly when operator.items is nonempty; no derived boolean is permitted."
+
+[[constraints]]
+id = "agent-resume-required"
+rule = "agent.resume_from is required when agent.state is unstarted, rehydrated, worked, closable, or blocked; it is forbidden when completed."
+
+[[constraints]]
+id = "uncertainty-required"
+rule = "uncertainty is required for operator result, correction, or risk items whose epistemic_status is inferred, speculative, or unknown; otherwise it is forbidden."
+
+[[constraints]]
+id = "verified-evidence"
+rule = "Verified and derived operator items require at least one evidence reference."
+
+[[constraints]]
+id = "git-reference-consistency"
+rule = "commit_ref exists exactly when git.commit is committed; push_ref exists exactly when git.push is pushed."
+
+[[constraints]]
+id = "changed-file-hash"
+rule = "before_sha256 is forbidden for create, required for update, move, and delete; after_sha256 is forbidden for delete and required otherwise."
+
+[[constraints]]
+id = "turn-order"
+rule = "communication.closing_sequence must be greater than or equal to communication.opening_sequence."
+
+[[constraints]]
+id = "semantic-redundancy-zero"
+rule = "No two fields may carry semantically equivalent payloads; derived state is omitted and computed from structure."
+
+[[constraints]]
+id = "empty-optional-tables"
+rule = "execution is omitted when no execution occurred; present optional arrays may be empty only when their table is required by another present event."
+
+[[constraints]]
+id = "blocked-state-witness"
+rule = "When agent.state is blocked, agent.items must contain a defect or obligation identifying the blocking condition and release."
+
+[[constraints]]
+id = "unknown-field-rejection"
+rule = "Fields not listed by the selected table or union variant are invalid."
