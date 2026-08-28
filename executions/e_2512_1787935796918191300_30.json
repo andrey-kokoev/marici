@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787935796918191300_30",
+  "created_at": "2026-08-28T16:49:56.918196Z",
+  "sha256": "7f18a8ce9de988bcdec2feffcb89bfad684b9b1ea52e369228c5b2fd5cd32c17",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import runpy,contextlib,io,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/higher_three_adic_lift_checks.py'); c.__exit__(None,None,None); P=d['packet']; rs=[P(n) for n in range(244)]; print(json.dumps({'maxima':{k:max((r[k],r['exponent']) for r in rs if r[k] is not None) for k in ['v3_d1','v3_d2','v3_d3','v3_snake_index']},'record_breakers':{k:[(r['exponent'],r[k]) for i,r in enumerate(rs) if r[k] is not None and r[k]>max([-1]+[q[k] for q in rs[:i] if q[k] is not None])] for k in ['v3_d1','v3_d2','v3_d3','v3_snake_index']}}))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:49:40.3910049Z",
+    "finished_at": "2026-08-28T16:49:56.9181789Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "3-adic valuation record-breaker discovery",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "3-adic valuation record-breaker discovery",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\"maxima\": {\"v3_d1\": [2, 242], \"v3_d2\": [5, 236], \"v3_d3\": [11, 152], \"v3_snake_index\": [5, 152]}, \"record_breakers\": {\"v3_d1\": [[0, 1], [2, 2]], \"v3_d2\": [[0, 2], [2, 5]], \"v3_d3\": [[0, 3], [2, 7], [17, 8], [71, 9], [152, 11]], \"v3_snake_index\": [[0, 0], [8, 1], [17, 2], [71, 3], [152, 5]]}}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
