@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787935975671451300_35",
+  "created_at": "2026-08-28T16:52:55.671455Z",
+  "sha256": "e0af7b2a7145faa51cccecf78c5484e6c494bff04f495895fe6b212ba64abee6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import runpy,contextlib,io,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/higher_three_adic_lift_checks.py'); c.__exit__(None,None,None); P=d['packet']; print(json.dumps([P(n) for n in [0,1,2,8,17,71,152,729,730,731,737,746,800,881]]))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:52:40.2466267Z",
+    "finished_at": "2026-08-28T16:52:55.6714419Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "period 729 spot hostile",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "period 729 spot hostile",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[{\"exponent\": 0, \"v3_d1\": 1, \"v3_d2\": 2, \"v3_d3\": 3, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 1, \"v3_d1\": 1, \"v3_d2\": 2, \"v3_d3\": 3, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 2, \"v3_d1\": 2, \"v3_d2\": 5, \"v3_d3\": 7, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 8, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 7, \"v3_snake_index\": 1, \"rank_defect\": true}, {\"exponent\": 17, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 8, \"v3_snake_index\": 2, \"rank_defect\": true}, {\"exponent\": 71, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 9, \"v3_snake_index\": 3, \"rank_defect\": true}, {\"exponent\": 152, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 11, \"v3_snake_index\": 5, \"rank_defect\": true}, {\"exponent\": 729, \"v3_d1\": 1, \"v3_d2\": 2, \"v3_d3\": 3, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 730, \"v3_d1\": 1, \"v3_d2\": 2, \"v3_d3\": 3, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 731, \"v3_d1\": 2, \"v3_d2\": 5, \"v3_d3\": 7, \"v3_snake_index\": 0, \"rank_defect\": true}, {\"exponent\": 737, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 7, \"v3_snake_index\": 1, \"rank_defect\": true}, {\"exponent\": 746, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 8, \"v3_snake_index\": 2, \"rank_defect\": true}, {\"exponent\": 800, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 9, \"v3_snake_index\": 3, \"rank_defect\": true}, {\"exponent\": 881, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 12, \"v3_snake_index\": 6, \"rank_defect\": true}]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
