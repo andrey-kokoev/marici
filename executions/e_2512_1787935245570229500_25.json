@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787935245570229500_25",
+  "created_at": "2026-08-28T16:40:45.5702338Z",
+  "sha256": "a6cbce0f1bfa96c7f223f3c89b9d852e4e70653b2ccb89492d837c5291f7da62",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/difference_port_authority_audit.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:40:30.9366399Z",
+    "finished_at": "2026-08-28T16:40:45.5702142Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "magnetic difference port authority audit",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "magnetic difference port authority audit",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.difference_port_authority_audit.v1\",\r\n  \"status\": \"passed\",\r\n  \"classification\": \"no_existing_magnetic_constructor_authorizes_full_difference_port\",\r\n  \"required_constructor\": {\r\n    \"input\": \"ordered pair of independently constructible grades (a,b)\",\r\n    \"output\": \"R(b)-R(a) in the valuation-difference group\",\r\n    \"required_capabilities\": [\r\n      \"binary grade-pair preparation\",\r\n      \"two Smith readouts with retained provenance\",\r\n      \"authorized subtraction in the valuation codomain\",\r\n      \"substitution-compatible transport\"\r\n    ]\r\n  },\r\n  \"constructors\": [\r\n    {\r\n      \"id\": \"free_group_grammar\",\r\n      \"prepares\": \"one decorated source word or response at a chosen grade\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": null,\r\n      \"verdict\": \"does_not_prepare_ordered_grade_pairs\"\r\n    },\r\n    {\r\n      \"id\": \"integral_state_recurrence\",\r\n      \"prepares\": \"(C^n,C^-n) for one grade\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": \"inverse within one grade\",\r\n      \"verdict\": \"inverse_pair_is_not_cross_grade_difference\"\r\n    },\r\n    {\r\n      \"id\": \"nested_commutator_readout\",\r\n      \"prepares\": \"one response matrix A_n\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": null,\r\n      \"verdict\": \"acts_gradewise\"\r\n    },\r\n    {\r\n      \"id\": \"smith_packet\",\r\n      \"prepares\": \"R(n) from one response matrix\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": null,\r\n      \"verdict\": \"nonlinear_unary_readout\"\r\n    },\r\n    {\r\n      \"id\": \"route_packet\",\r\n      \"prepares\": \"(A(n),B(n)) for reflected routes of one source\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": \"reflection routes\",\r\n      \"verdict\": \"wrong_axis\"\r\n    },\r\n    {\r\n      \"id\": \"joint_electric_magnetic_observer\",\r\n      \"prepares\": \"(E(n),M(n)) for one source\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": \"reflection parity\",\r\n      \"verdict\": \"wrong_axis_and_pre_smith\"\r\n    },\r\n    {\r\n      \"id\": \"physical_spin_puncture_readout\",\r\n      \"prepares\": \"puncture distributions and contours\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": \"puncture support\",\r\n      \"verdict\": \"different_target_type\"\r\n    },\r\n    {\r\n      \"id\": \"electric_magnetic_bridge\",\r\n      \"prepares\": \"cross-parity endomorphism\",\r\n      \"arity\": 1,\r\n      \"difference_axis\": \"reflection parity\",\r\n      \"verdict\": \"not_source_authorized_and_wrong_axis\"\r\n    }\r\n  ],\r\n  \"witness\": {\r\n    \"blind_pair\": [\r\n      0,\r\n      1\r\n    ],\r\n    \"same_packet\": [\r\n      1,\r\n      2,\r\n      3\r\n    ],\r\n    \"successor_pair\": [\r\n      1,\r\n      2\r\n    ],\r\n    \"successor_difference\": [\r\n      1,\r\n      3,\r\n      4\r\n    ]\r\n  },\r\n  \"gates\": {\r\n    \"source_grammar_has_no_binary_grade_pair_constructor\": true,\r\n    \"existing_joint_ports_use_non_grade_axes\": true,\r\n    \"smith_readout_is_declared_unary\": true,\r\n    \"blind_pair_requires_successor_difference\": true,\r\n    \"candidate_electric_magnetic_bridge_is_absent\": true\r\n  },\r\n  \"gate_count\": 5,\r\n  \"passed_gate_count\": 5,\r\n  \"interpretation\": \"The source constructs each grade and each unary Smith packet, but no existing constructor forms an ordered cross-grade packet with an authorized subtraction port. Existing joint observers compare reflection routes or parity channels and cannot authorize omega.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
