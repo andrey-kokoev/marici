@@ -1,0 +1,30 @@
+{
+  "schema": "marici.aspect.level44-noise-abstention-threshold.v1",
+  "status": "pass",
+  "certified_margin_used": 2e-06,
+  "systematic_bias_limit": 1e-06,
+  "stochastic_ci_limit": 1e-06,
+  "familywise_alpha": 0.01,
+  "bonferroni_one_sided_z": 2.7130518884727204,
+  "sample_counts_by_pre_gain_single_shot_sigma": {
+    "1e-04": 73607,
+    "1e-05": 737,
+    "1e-06": 8
+  },
+  "decision": "claim a sign only if the independently bounded systematic projection is below 1e-6 and the one-sided confidence radius is below 1e-6; otherwise abstain",
+  "gates": {
+    "budgets_sum_to_certified_margin": true,
+    "bonferroni_family_has_three_claims": true,
+    "confidence_is_99_percent_familywise": true,
+    "sample_counts_decrease_with_noise": true,
+    "systematic_bias_at_budget_leaves_positive_reserve": true
+  },
+  "hostiles": {
+    "averaging_not_allowed_to_erase_systematic_bias": true,
+    "response_below_noise_floor_forces_abstention": true,
+    "post_gain_snr_not_substituted_for_pre_gain_snr": true,
+    "measured_sigma_required_before_sample_count_is_frozen": true,
+    "failed_precision_gate_not_reported_as_negative_sign": true
+  },
+  "result": "The full-scale phase readout is valid only after a pre-gain precision gate. Stochastic noise can be averaged; coherent synthesis bias must be independently bounded below half the conservative level-44 margin."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "marici.aspect.source-lyapunov-variance-changing-port.v1",
+  "status": "pass",
+  "checks": {
+    "fourier_leaves_scalar_family": true,
+    "lyapunov_has_unique_symmetric_solution": true,
+    "selected_covariance_is_fourier_invariant": true,
+    "hostile_rescaling_residual_is_exact": true,
+    "hostile_rescaling_passes_only_at_half": true
+  },
+  "solution": {
+    "a": "1/2",
+    "b": "0",
+    "c": "1/2"
+  },
+  "hostile_residual": "Matrix([[2*r - 1, 0], [0, 2*r - 1]])",
+  "interpretation": "Fourier symmetry removes anisotropy but the source Lyapunov law selects the remaining covariance scale and changes variance E'->E."
+}

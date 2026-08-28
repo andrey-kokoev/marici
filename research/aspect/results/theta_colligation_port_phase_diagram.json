@@ -1,0 +1,27 @@
+{
+  "schema": "marici.aspect.theta-colligation-port-phase-diagram.v1",
+  "status": "pass",
+  "checks": {
+    "Q_determinant": true,
+    "Q_eigenvalues": true,
+    "rho_formula": true,
+    "boundary_solves_rho_one": true,
+    "reflection_symmetry": true,
+    "boundary_seam": true,
+    "boundary_monotone_r_positive": true,
+    "two_output_sample": true,
+    "three_output_sample": true,
+    "three_output_slack": true,
+    "extra_input_sample": true
+  },
+  "check_count": 11,
+  "formulas": {
+    "rho": "4 exp(-2*pi*y)/(1-4*r^2)",
+    "critical_y": "(log(2)-log(1-4*r^2)/2)/pi"
+  },
+  "regimes": {
+    "rho_lt_1": "three outputs; slack sqrt(1-rho)",
+    "rho_eq_1": "two-output lossless completion",
+    "rho_gt_1": "additional independent input reservoir or indefinite completion"
+  }
+}

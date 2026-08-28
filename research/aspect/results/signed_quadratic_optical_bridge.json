@@ -1,0 +1,22 @@
+{
+  "schema": "marici.aspect.signed-quadratic-optical-bridge.v1",
+  "status": "pass",
+  "identity": "(||f+Tf||^2-||f-Tf||^2)/4 = Re<f,Tf>",
+  "gain_robust_identity": "[D(Tf)-D(-Tf)]/2 = (g_plus+g_minus)(P_plus-P_minus)/2",
+  "complex_hostile_expected": "5",
+  "complex_hostile_bridge": "5",
+  "gates": {
+    "complex_hermitian_bridge_recovers_signed_form": true,
+    "phase_reversal_cancels_detector_gain_difference": true,
+    "positive_detector_gains_preserve_sign": true,
+    "negative_positive_and_null_hostiles_pass": true,
+    "all_individual_photodiode_powers_are_nonnegative": true
+  },
+  "hostiles": {
+    "single_square_law_detector_cannot_report_sign": true,
+    "source_off_subtraction_alone_cannot_define_form_zero": true,
+    "bank_difference_only_measures_added_channel_not_absolute_sign": true,
+    "fitted_electronic_offset_rejected": true
+  },
+  "result": "A phase-reversed balanced optical bridge measures the sign of the renormalized archimedean quadratic form without fitting a detector zero. This makes the 43/44 sign-flip prediction operationally identifiable."
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "marici.aspect.seam-343-uncertainty-decision.v1",
+  "status": "pass",
+  "rank_cases": {
+    "resolved_rank_two": "pass_rank_two",
+    "resolved_rank_one_hostile": "falsify_source_floor",
+    "near_threshold": "abstain"
+  },
+  "symplectic_cases": {
+    "resolved_pass": "pass",
+    "resolved_failure": "falsify",
+    "boundary_overlap": "abstain"
+  },
+  "mixed_design_rank": 4,
+  "required_preregistration": {
+    "normal_smallest_singular_value_floor": "source-derived positive number",
+    "normal_tomography_operator_error": "familywise confidence upper bound",
+    "symplectic_residual_tolerance": "source/domain-derived tolerance",
+    "mixed_coordinate_confidence_intervals": "four simultaneous signed intervals"
+  },
+  "gates": {
+    "rank_two_requires_lower_bound_above_source_floor": true,
+    "rank_one_hostile_falsifies_positive_source_floor": true,
+    "overlapping_rank_interval_abstains": true,
+    "symplectic_residual_has_pass_fail_abstain_states": true,
+    "mixed_comparison_design_has_rank_four": true
+  },
+  "hostiles": {
+    "small_nonzero_determinant_not_accepted_without_error_bound": true,
+    "positive_diagonal_not_substituted_for_rank_two": true,
+    "unresolved_called_abstention_not_pass": true,
+    "mixed_signals_without_normal_rank_pass_rejected": true,
+    "source_floor_must_precede_acquisition": true
+  },
+  "result": "The 3+4+3 tomograph now has typed pass, falsify, and abstain decisions. A measured seam is rank two only when its smallest normal singular value clears both tomography error and the preregistered source floor.",
+  "current_status": "instrument contract complete; theta source waveform and source floor not yet bound"
+}

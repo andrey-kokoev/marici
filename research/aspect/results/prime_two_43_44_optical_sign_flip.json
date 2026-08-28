@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.prime-two-43-44-optical-sign-flip.v1",
+  "status": "pass",
+  "source_prediction": {
+    "43_channel_even_energy": [
+      -6.2e-05,
+      -5.4e-05
+    ],
+    "44_channel_even_energy": [
+      2e-06,
+      3.4e-06
+    ],
+    "44_channel_odd_certified_lower_margin": 8.55e-06
+  },
+  "acquisition": {
+    "comparison": "simultaneous common-source 43-channel and 44-channel banks",
+    "required_subtraction": "interleaved source-off background per bank",
+    "mode": "fixed even near-null input, plus odd parity control",
+    "decision": "falsify unless corrected 43-even is negative, corrected 44-even is positive, and 44-odd is positive"
+  },
+  "gates": {
+    "level_43_even_prediction_is_negative": true,
+    "level_44_even_prediction_is_positive": true,
+    "level_44_odd_prediction_is_positive": true,
+    "paired_sign_flip_survives_common_positive_gain": true,
+    "adjacent_banks_differ_by_exactly_one_source_channel": true
+  },
+  "hostiles": {
+    "unsubtracted_detector_offset_rejected": true,
+    "independently_tuned_bank_gains_rejected": true,
+    "posthoc_mode_selection_rejected": true,
+    "numerical_window_not_called_an_apparatus_measurement": true,
+    "rh_not_inferred_from_filter_bank_test": true
+  },
+  "result": "The closed level-44 theorem predicts an adjacent-truncation optical sign flip: the forty-fourth source-fixed gamma channel repairs the even instability. This is a paired, gain-invariant falsifier of the completed archimedean architecture."
+}

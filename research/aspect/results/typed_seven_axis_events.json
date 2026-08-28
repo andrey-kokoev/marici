@@ -1,0 +1,94 @@
+{
+  "status": "pass",
+  "checks": {
+    "six_axis_input_passes": true,
+    "every_action_value_is_typed": true,
+    "cosmology_coefficient_is_native": true,
+    "cosmology_action_is_missing": true,
+    "native_coefficient_does_not_authorize_action": true,
+    "missing_action_does_not_infer_path_obstruction": true,
+    "selective_gate_has_three_separate_gaps": true,
+    "transmission_fixture_makes_no_action_claim": true,
+    "normalization_fixture_makes_no_action_claim": true,
+    "operational_gap_is_derived_only_from_action_axis": true
+  },
+  "axis_count": 7,
+  "action_values": [
+    "authorized",
+    "missing",
+    "unknown"
+  ],
+  "events": {
+    "rosenbrock_incidence": {
+      "scalar": "dark",
+      "packet": "bright",
+      "incidence": "aliased",
+      "history": "unknown",
+      "path": "unknown",
+      "coefficient": "unknown",
+      "action": "unknown"
+    },
+    "all_order_normalization": {
+      "scalar": "flat_normalized",
+      "packet": "bright",
+      "incidence": "unknown",
+      "history": "nontrivial",
+      "path": "unknown",
+      "coefficient": "unknown",
+      "action": "unknown"
+    },
+    "selective_gate_path": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "disconnected",
+      "coefficient": "requires_extension",
+      "action": "missing"
+    },
+    "cosmology_coefficient_without_selector": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "unknown",
+      "coefficient": "native",
+      "action": "missing"
+    }
+  },
+  "derived": {
+    "rosenbrock_incidence": {
+      "selected_transmission_zero": true,
+      "incidence_alias": true,
+      "normalization_erasure": false,
+      "path_obstruction": false,
+      "coefficient_extension_gap": false,
+      "operational_action_gap": false
+    },
+    "all_order_normalization": {
+      "selected_transmission_zero": false,
+      "incidence_alias": false,
+      "normalization_erasure": true,
+      "path_obstruction": false,
+      "coefficient_extension_gap": false,
+      "operational_action_gap": false
+    },
+    "selective_gate_path": {
+      "selected_transmission_zero": false,
+      "incidence_alias": false,
+      "normalization_erasure": false,
+      "path_obstruction": true,
+      "coefficient_extension_gap": true,
+      "operational_action_gap": true
+    },
+    "cosmology_coefficient_without_selector": {
+      "selected_transmission_zero": false,
+      "incidence_alias": false,
+      "normalization_erasure": false,
+      "path_obstruction": false,
+      "coefficient_extension_gap": false,
+      "operational_action_gap": true
+    }
+  },
+  "rule": "coefficient_does_not_authorize_action"
+}

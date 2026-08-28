@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.lagrangian-seam-343-tomograph.v1",
+  "status": "pass",
+  "state_coordinates": [
+    "bulk_q",
+    "bulk_p",
+    "seam_q",
+    "seam_p"
+  ],
+  "quadratic_blocks": {
+    "bulk": 3,
+    "mixed": 4,
+    "seam": 3
+  },
+  "power_settings": 16,
+  "settings_rule": "four direct basis powers plus plus/minus interference for each of six unordered pairs",
+  "bare_graph_control_rank": 3,
+  "extended_control_count": 10,
+  "gates": {
+    "sixteen_power_settings_reconstruct_full_symmetric_form": true,
+    "quadratic_split_is_three_four_three": true,
+    "fourier_tate_map_is_symplectic": true,
+    "reciprocal_graph_is_lagrangian": true,
+    "ten_controls_collapse_to_three_on_bare_graph": true,
+    "full_seam_extension_restores_ten_quadratic_coordinates": true
+  },
+  "hostiles": {
+    "two_reciprocal_bulk_modes_not_counted_as_independent": true,
+    "mixed_four_without_normal_state_rejected": true,
+    "rank_one_seam_extension_rejected_by_normal_block_tomography": true,
+    "intensity_only_cross_terms_rejected": true,
+    "sp4_not_claimed_before_source_domain_extension": true
+  },
+  "result": "At finite cutoff, a four-quadrature phase-sensitive tomograph distinguishes the Lagrangian bulk graph from a rank-two seam extension and reconstructs 3+4+3 controls. In completion the augmentation port is dual-valued, so this Euclidean realization is not promoted.",
+  "next_physical_gate": "Implement the two seam ports as continuous covectors and derive a source dual--dual pairing before promoting the three pure-seam quadratic controls."
+}

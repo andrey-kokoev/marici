@@ -1,0 +1,148 @@
+{
+  "status": "pass",
+  "checks": {
+    "seven_axis_core_input_passes": true,
+    "dual_pair_input_passes": true,
+    "external_infinity_checks_all_pass": true,
+    "every_event_validates_against_registry": true,
+    "registry_is_extensible_beyond_seven_keys": true,
+    "flavor_product_dark_packet_bright": true,
+    "flavor_exchange_is_broken": true,
+    "emulator_action_does_not_authorize_physical_source": true,
+    "infinity_readout_is_independently_constructible": true,
+    "infinity_selector_path_and_action_fail_separately": true,
+    "path_counterfactual_preserves_missing_action": true,
+    "action_counterfactual_preserves_disconnected_path": true
+  },
+  "core_profile": [
+    "scalar",
+    "packet",
+    "incidence",
+    "history",
+    "path",
+    "coefficient",
+    "action"
+  ],
+  "registered_capabilities": {
+    "scalar": [
+      "bright",
+      "dark",
+      "flat_normalized",
+      "unknown"
+    ],
+    "packet": [
+      "bright",
+      "unknown",
+      "zero"
+    ],
+    "incidence": [
+      "aliased",
+      "matched",
+      "unknown"
+    ],
+    "history": [
+      "nontrivial",
+      "trivial",
+      "unknown"
+    ],
+    "path": [
+      "admissible",
+      "disconnected",
+      "unknown"
+    ],
+    "coefficient": [
+      "native",
+      "requires_extension",
+      "unknown"
+    ],
+    "action": [
+      "authorized",
+      "missing",
+      "unknown"
+    ],
+    "duality_exchange": [
+      "broken",
+      "intertwined",
+      "unknown"
+    ],
+    "action:optical_emulator": [
+      "authorized",
+      "missing",
+      "unknown"
+    ],
+    "action:physical_dual_source": [
+      "authorized",
+      "missing",
+      "unknown"
+    ]
+  },
+  "events": {
+    "rosenbrock_incidence": {
+      "scalar": "dark",
+      "packet": "bright",
+      "incidence": "aliased",
+      "history": "unknown",
+      "path": "unknown",
+      "coefficient": "unknown",
+      "action": "unknown"
+    },
+    "all_order_normalization": {
+      "scalar": "flat_normalized",
+      "packet": "bright",
+      "incidence": "unknown",
+      "history": "nontrivial",
+      "path": "unknown",
+      "coefficient": "unknown",
+      "action": "unknown"
+    },
+    "selective_gate_path": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "disconnected",
+      "coefficient": "requires_extension",
+      "action": "missing"
+    },
+    "cosmology_coefficient_without_selector": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "unknown",
+      "coefficient": "native",
+      "action": "missing"
+    },
+    "infinity_physical_readout_external": {
+      "scalar": "bright",
+      "packet": "bright",
+      "incidence": "matched",
+      "history": "trivial",
+      "path": "admissible",
+      "coefficient": "native",
+      "action": "authorized"
+    },
+    "infinity_selective_control_external": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "disconnected",
+      "coefficient": "native",
+      "action": "missing"
+    },
+    "primitive_product_hostile": {
+      "scalar": "dark",
+      "packet": "bright",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "unknown",
+      "coefficient": "native",
+      "action": "unknown",
+      "duality_exchange": "broken",
+      "action:optical_emulator": "authorized",
+      "action:physical_dual_source": "missing"
+    }
+  },
+  "rule": "capabilities_are_namespaced_and_unknown_preserving"
+}

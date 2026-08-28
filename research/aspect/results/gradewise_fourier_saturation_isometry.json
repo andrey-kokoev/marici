@@ -1,0 +1,32 @@
+{
+  "schema": "marici.aspect.gradewise-fourier-saturation-isometry.v1",
+  "status": "pass",
+  "definition": "q_sat(x)=sum_(j=0)^3 q(J^j x)",
+  "identity": "q_sat(Jx)=q_sat(x) because J^4=I",
+  "grades_checked": [
+    "quadratic primitive/square",
+    "absolute-summable connected tail",
+    "graph seminorm"
+  ],
+  "sewing_bound_in_every_saturated_grade": 1,
+  "gates": {
+    "sewing_has_order_four": true,
+    "quadratic_grade_is_exactly_isometric_after_saturation": true,
+    "absolute_summable_grade_is_exactly_isometric_after_saturation": true,
+    "graph_grade_is_exactly_isometric_after_saturation": true,
+    "isometry_constant_is_one": true
+  },
+  "hostiles": {
+    "grades_not_merged_by_common_isometry_constant": true,
+    "l1_tail_not_replaced_by_quadratic_surrogate": true,
+    "finite_euler_poisson_action_not_inferred": true,
+    "continuity_of_unsaturated_boundary_map_not_assumed": true,
+    "common_green_domain_still_required": true
+  },
+  "result": "Fourier saturation makes sewing exactly isometric, with bound one, separately in every declared seminorm. This closes the uniform sewing-bound obligation without comparing or merging regularity grades.",
+  "remaining_completion_obligations": [
+    "continuity of each unsaturated source boundary map before saturation",
+    "per-grade cutoff compatibility",
+    "common graph domain for the dual Green identity"
+  ]
+}

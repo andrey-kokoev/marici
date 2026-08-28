@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.sealed-controller-replay-run-analyzer-check.v2",
+  "status": "pass",
+  "positive_fixture": {
+    "accepted": true,
+    "gates": {
+      "raw_records_complete_and_unique": true,
+      "one_epoch_and_schedule": true,
+      "all_80_legal_cells_present": true,
+      "every_block_is_complete_80_cell_permutation": true,
+      "every_cell_uniform_over_block_position": true,
+      "minimum_attempted_counts_pass": true,
+      "transcripts_commands_and_digests_are_deterministic": true,
+      "actual_predecessor_absent_from_controller_inputs": true,
+      "live_controller_output_is_predecessor_invariant": true,
+      "sealed_replay_output_is_predecessor_invariant": true
+    },
+    "attempted_trial_count": 6400,
+    "live_predecessor_spread": "0",
+    "replay_predecessor_spread": "0",
+    "saturated_parameter_count": 80,
+    "cell_count_lower_bound": 80,
+    "recorded_reset_failures": 80
+  },
+  "deliberate_failures": {
+    "replay_adaptation_rejected": true,
+    "actual_predecessor_sidechannel_rejected": true,
+    "mutable_transcript_rejected": true,
+    "missing_cell_rejected": true,
+    "illegal_live_counterfactual_bound_cell_rejected": true,
+    "grouped_acquisition_rejected": true
+  },
+  "contract_attempted_trials": 80000000,
+  "removed_redundant_live_cells": 48,
+  "trial_reduction_fraction": "3/8"
+}
