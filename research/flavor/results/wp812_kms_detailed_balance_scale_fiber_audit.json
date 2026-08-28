@@ -1,0 +1,117 @@
+{
+  "work_package": "WP812",
+  "title": "KMS detailed-balance scale-fiber audit",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "exact_data": {
+    "generator": "Matrix([[-gamma, gamma*q], [gamma, -gamma*q]])",
+    "stationary_state": [
+      "q/(q + 1)",
+      "1/(q + 1)"
+    ],
+    "bias": "(1 - q)/(q + 1)",
+    "kms_bias": "tanh(x/2)",
+    "gap": "gamma*(q + 1)",
+    "hostile_beta_delta_products": [
+      "2",
+      "2"
+    ]
+  },
+  "tests": [
+    {
+      "name": "generator_conserves_probability",
+      "passed": true,
+      "evidence": "Matrix([[0, 0]])"
+    },
+    {
+      "name": "gibbs_population_is_stationary",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "stationary_kernel_is_unique_for_positive_rates",
+      "passed": true,
+      "evidence": "[Matrix([\n[q],\n[1]])]"
+    },
+    {
+      "name": "detailed_balance_gap_is_positive",
+      "passed": true,
+      "evidence": "{-gamma*(q + 1): 1, 0: 1}"
+    },
+    {
+      "name": "stationary_bias_is_rate_ratio_function",
+      "passed": true,
+      "evidence": "(1 - q)/(q + 1)"
+    },
+    {
+      "name": "kms_bias_equals_thermal_tanh",
+      "passed": true,
+      "evidence": "tanh(x/2)"
+    },
+    {
+      "name": "infinite_temperature_has_no_orientation_bias",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "zero_temperature_selects_lower_energy_sector",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "energy_reversal_flips_thermal_bias",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "temperature_and_splitting_have_exact_hostile_pair",
+      "passed": true,
+      "evidence": "[2, 2]"
+    },
+    {
+      "name": "detailed_balance_readout_has_temperature_splitting_kernel",
+      "passed": true,
+      "evidence": "rank=1, nullity=1"
+    },
+    {
+      "name": "absolute_relaxation_rate_is_not_fixed_by_kms_ratio",
+      "passed": true,
+      "evidence": "same stationary kernel, doubled gap"
+    },
+    {
+      "name": "generic_threshold_splitting_change_alters_selected_magnitude",
+      "passed": true,
+      "evidence": "-tanh(beta*delta/2) + tanh(beta*delta)"
+    },
+    {
+      "name": "portal_scale_and_detector_gain_remain_confounded",
+      "passed": true,
+      "evidence": "[2*tanh(beta*delta/2), 2*tanh(beta*delta/2)]"
+    },
+    {
+      "name": "single_thermal_record_is_nonfaithful_on_four_source_coordinates",
+      "passed": true,
+      "evidence": "rank=1, nullity=3"
+    },
+    {
+      "name": "thermal_source_retains_mirror_hamiltonian_pair",
+      "passed": true,
+      "evidence": "{'delta_positive': 1, 'delta_negative': -1}"
+    },
+    {
+      "name": "deliberate_failure_exhibits_unselected_energy_orientation",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "selector": "unique Gibbs attractor conditional on signed Hamiltonian splitting and temperature",
+    "sign": "set by the sign of the energy splitting; mirror Hamiltonian reverses it",
+    "magnitude": "depends only on beta times delta and an independent portal scale",
+    "rg_and_threshold": "positive rates retain a basin, but splitting changes alter the predicted bias",
+    "instrument": "transition counts identify rate data, not beta, delta, portal scale, and gain separately"
+  }
+}

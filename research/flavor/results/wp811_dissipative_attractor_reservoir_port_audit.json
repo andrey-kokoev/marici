@@ -1,0 +1,121 @@
+{
+  "work_package": "WP811",
+  "title": "Dissipative-attractor reservoir-port audit",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "exact_data": {
+    "forward_generator": "Matrix([[-gamma, 0], [gamma, 0]])",
+    "forward_target": [
+      0,
+      1
+    ],
+    "reverse_target": [
+      1,
+      0
+    ],
+    "forward_gap": "gamma",
+    "jump_probability": "r - r*exp(-gamma*tau)",
+    "hostile_detector_records": [
+      "2",
+      "2"
+    ]
+  },
+  "tests": [
+    {
+      "name": "forward_generator_conserves_probability",
+      "passed": true,
+      "evidence": "Matrix([[0, 0]])"
+    },
+    {
+      "name": "forward_generator_has_unique_target_stationary_state",
+      "passed": true,
+      "evidence": "[Matrix([\n[0],\n[1]])]"
+    },
+    {
+      "name": "forward_spectral_gap_is_positive",
+      "passed": true,
+      "evidence": "{-gamma: 1, 0: 1}"
+    },
+    {
+      "name": "trajectory_solves_forward_master_equation",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "all_initial_probabilities_share_the_same_attractor",
+      "passed": true,
+      "evidence": "Matrix([[0], [1]])"
+    },
+    {
+      "name": "reverse_generator_conserves_probability",
+      "passed": true,
+      "evidence": "Matrix([[0, 0]])"
+    },
+    {
+      "name": "reverse_reservoir_selects_the_mirror_target",
+      "passed": true,
+      "evidence": "[Matrix([\n[1],\n[0]])]"
+    },
+    {
+      "name": "forward_and_reverse_have_identical_spectra",
+      "passed": true,
+      "evidence": "({-gamma: 1, 0: 1}, {-gamma: 1, 0: 1})"
+    },
+    {
+      "name": "jump_count_is_an_executable_finite_time_readout",
+      "passed": true,
+      "evidence": "r - r*exp(-gamma*tau)"
+    },
+    {
+      "name": "steady_dark_state_has_zero_further_jump_rate",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "positive_rate_threshold_change_preserves_selected_target",
+      "passed": true,
+      "evidence": "[Matrix([\n[0],\n[1]])]"
+    },
+    {
+      "name": "threshold_change_does_not_preserve_relaxation_clock",
+      "passed": true,
+      "evidence": "{-2*gamma: 1, 0: 1}"
+    },
+    {
+      "name": "dissipative_attractor_selects_signed_observable",
+      "passed": true,
+      "evidence": "(g0, -g0)"
+    },
+    {
+      "name": "magnitude_and_detector_gain_have_an_exact_hostile_pair",
+      "passed": true,
+      "evidence": "[2, 2]"
+    },
+    {
+      "name": "single_detector_record_cannot_separate_source_magnitude_and_gain",
+      "passed": true,
+      "evidence": "rank=1, nullity=1"
+    },
+    {
+      "name": "microscopic_reservoir_grammar_retains_orientation_pair",
+      "passed": true,
+      "evidence": "{'relaxing_reservoir': '+', 'inverted_reservoir': '-'}"
+    },
+    {
+      "name": "deliberate_failure_exhibits_reservoir_preparation_fiber",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "effective_operation": "genuine selector with a unique global attractor",
+    "rg_basin": "all probability states for every positive jump rate",
+    "threshold": "target survives positive rate renormalization but the physical clock changes",
+    "microscopic_source": "relaxing and inverted reservoirs select opposite targets",
+    "magnitude": "signed eigenvalue normalization remains free",
+    "instrument": "jump counting is executable; calibrated steady readout retains a source-gain kernel"
+  }
+}

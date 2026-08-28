@@ -1,0 +1,137 @@
+{
+  "work_package": "WP813",
+  "title": "Geometric KMS horizon-parallelization audit",
+  "summary": {
+    "passed": 22,
+    "total": 22,
+    "all_passed": true
+  },
+  "exact_data": {
+    "inverse_temperature": "2*pi/kappa",
+    "splitting": "kappa*n",
+    "thermal_product": "2*pi*n",
+    "bias": "tanh(pi*n)",
+    "transition_ratio": "exp(-2*pi*n)",
+    "unit_weight_bias": "tanh(pi)"
+  },
+  "tests": [
+    {
+      "name": "horizon_temperature_and_splitting_cancel_surface_gravity",
+      "passed": true,
+      "evidence": "2*pi*n"
+    },
+    {
+      "name": "quantized_horizon_bias_is_scale_independent",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "unit_weight_has_fixed_nonzero_bias",
+      "passed": true,
+      "evidence": "tanh(pi)"
+    },
+    {
+      "name": "horizon_transition_ratio_is_geometric",
+      "passed": true,
+      "evidence": "exp(-2*pi*n)"
+    },
+    {
+      "name": "geometric_kms_population_is_stationary",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "geometric_kms_gap_is_positive_conditional_on_rate",
+      "passed": true,
+      "evidence": "{'determinant': 0, 'nonzero_eigenvalue': -gamma - gamma*exp(-2*pi*n)}"
+    },
+    {
+      "name": "common_geometric_threshold_rescaling_preserves_bias",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "asymmetric_threshold_shift_breaks_parallelization",
+      "passed": true,
+      "evidence": "2*pi*shift/kappa"
+    },
+    {
+      "name": "horizon_generator_reversal_flips_signed_bias",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "geometric_source_retains_future_past_orientation_pair",
+      "passed": true,
+      "evidence": "{'future_oriented': 1, 'past_oriented': -1}"
+    },
+    {
+      "name": "absolute_coupling_rate_is_not_fixed_by_kms_geometry",
+      "passed": true,
+      "evidence": "same stationary state, doubled physical gap"
+    },
+    {
+      "name": "geometry_without_representation_data_does_not_select_weight",
+      "passed": true,
+      "evidence": "[tanh(pi), tanh(2*pi)]"
+    },
+    {
+      "name": "portal_scale_and_gain_have_exact_horizon_hostile_pair",
+      "passed": true,
+      "evidence": "[2*tanh(pi), 2*tanh(pi)]"
+    },
+    {
+      "name": "single_horizon_record_is_nonfaithful_on_scale_and_calibration",
+      "passed": true,
+      "evidence": "rank=1, nullity=2"
+    },
+    {
+      "name": "transition_ratio_erases_surface_gravity_and_absolute_rate",
+      "passed": true,
+      "evidence": "rank=0, nullity=2"
+    },
+    {
+      "name": "aspect_fiber_gate_rejects_endpoint_only_quotient",
+      "passed": true,
+      "evidence": "[tanh(pi*n), tanh(2*pi*n)]"
+    },
+    {
+      "name": "aspect_primitive_comparison_attachment_is_target_relevant",
+      "passed": true,
+      "evidence": "2*pi*n"
+    },
+    {
+      "name": "aspect_native_arity_gate_requires_ternary_selector_germ",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "aspect_physical_readout_requires_detector_realization_germ",
+      "passed": true,
+      "evidence": "4"
+    },
+    {
+      "name": "aspect_authority_gate_identifies_missing_comparison_constructor",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "aspect_marked_germ_retains_all_target_relevant_ports",
+      "passed": true,
+      "evidence": "['detector_gain', 'detector_time_root', 'frequency_attachment', 'horizon_orientation', 'representation_weight', 'state_choice', 'surface_gravity']"
+    },
+    {
+      "name": "deliberate_failure_exhibits_horizon_orientation_port",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "scale_parallelization": "successful only on a marked horizon-flavor comparison germ",
+    "sign": "relative to horizon-generator orientation; future/past pair remains",
+    "magnitude": "thermal bias fixed conditional on integer weight, but portal normalization remains free",
+    "rg_and_threshold": "common geometric scaling survives; asymmetric splitting corrections do not",
+    "instrument": "transition ratio is executable, but physical16 map and detector gain are absent",
+    "aspect_germ_tester": "endpoint-only structure fails fiber, native-arity, and authority gates"
+  }
+}

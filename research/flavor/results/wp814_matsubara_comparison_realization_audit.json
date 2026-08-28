@@ -1,0 +1,111 @@
+{
+  "work_package": "WP814",
+  "title": "Matsubara comparison and realization audit",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "exact_data": {
+    "bosonic_frequency": "kappa*n",
+    "fermionic_frequency": "kappa*(n + 1/2)",
+    "bosonic_null_germ": "sinh(beta*z/2)",
+    "bosonic_real_residual": "sinh(pi)",
+    "fermionic_null_germ": "cosh(beta*z/2)",
+    "fermionic_real_residual": "cosh(pi)"
+  },
+  "tests": [
+    {
+      "name": "bosonic_matsubara_attachment_equals_integer_horizon_frequency",
+      "passed": true,
+      "evidence": "kappa*n"
+    },
+    {
+      "name": "fermionic_matsubara_attachment_equals_half_integer_horizon_frequency",
+      "passed": true,
+      "evidence": "kappa*(n + 1/2)"
+    },
+    {
+      "name": "bosonic_thermal_product_is_scale_independent",
+      "passed": true,
+      "evidence": "2*pi*n"
+    },
+    {
+      "name": "fermionic_thermal_product_is_scale_independent",
+      "passed": true,
+      "evidence": "pi*(2*n + 1)"
+    },
+    {
+      "name": "euclidean_periodicity_does_not_select_a_bosonic_mode",
+      "passed": true,
+      "evidence": "[0, tanh(pi), tanh(2*pi)]"
+    },
+    {
+      "name": "spin_structure_does_not_select_a_unique_fermionic_mode",
+      "passed": true,
+      "evidence": "[tanh(pi/2), tanh(3*pi/2)]"
+    },
+    {
+      "name": "analytic_germ_vanishes_on_tested_bosonic_matsubara_tower",
+      "passed": true,
+      "evidence": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "same_germ_is_nonzero_at_real_horizon_frequency",
+      "passed": true,
+      "evidence": "sinh(pi)"
+    },
+    {
+      "name": "analytic_germ_vanishes_on_tested_fermionic_matsubara_tower",
+      "passed": true,
+      "evidence": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "fermionic_null_germ_is_nonzero_at_real_horizon_frequency",
+      "passed": true,
+      "evidence": "cosh(pi)"
+    },
+    {
+      "name": "raw_matsubara_sampling_has_an_explicit_continuation_kernel",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "osterwalder_schrader_reconstruction_packet_is_not_yet_admitted",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "aspect_euclidean_comparison_is_natively_ternary",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "aspect_detector_realization_is_natively_quaternary",
+      "passed": true,
+      "evidence": "4"
+    },
+    {
+      "name": "thermal_circle_authorizes_only_euclidean_frequency_attachment",
+      "passed": true,
+      "evidence": "{'euclidean': True, 'lorentzian_detector': False}"
+    },
+    {
+      "name": "matsubara_attachment_does_not_remove_portal_gain_kernel",
+      "passed": true,
+      "evidence": "[2*tanh(pi), 2*tanh(pi)]"
+    },
+    {
+      "name": "deliberate_failure_exhibits_nonzero_real_continuation_residual",
+      "passed": true,
+      "evidence": "sinh(pi)"
+    }
+  ],
+  "classification": {
+    "comparison": "Euclidean thermal circle canonically supplies integer or half-integer frequency attachment",
+    "selection": "mode label and horizon orientation remain unselected",
+    "realization": "raw Matsubara samples do not define a Lorentzian detector transition without OS/growth authority",
+    "instrument": "no executable physical16 detector attachment or gain calibration",
+    "aspect_germ": "Euclidean selector is ternary; physical realization adds a fourth germ"
+  }
+}

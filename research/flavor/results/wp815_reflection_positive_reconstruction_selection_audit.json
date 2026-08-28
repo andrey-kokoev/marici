@@ -1,0 +1,122 @@
+{
+  "work_package": "WP815",
+  "title": "Reflection-positive reconstruction and selection audit",
+  "summary": {
+    "passed": 18,
+    "total": 18,
+    "all_passed": true
+  },
+  "exact_data": {
+    "correlator": "amplitude*exp(-delta*t)",
+    "reflection_gram_rank": 1,
+    "moments": [
+      "amplitude",
+      "amplitude*delta",
+      "amplitude*delta**2",
+      "amplitude*delta**3",
+      "amplitude*delta**4"
+    ],
+    "reconstructed_amplitude": "amplitude",
+    "reconstructed_delta": "delta",
+    "finite_probe_residual": "1/4"
+  },
+  "tests": [
+    {
+      "name": "reflection_kernel_is_positive_rank_one_gram",
+      "passed": true,
+      "evidence": "rank=1"
+    },
+    {
+      "name": "reflection_gram_principal_minors_are_nonnegative",
+      "passed": true,
+      "evidence": "[amplitude, 0, 0]"
+    },
+    {
+      "name": "one_pole_correlator_is_completely_monotone_to_tested_order",
+      "passed": true,
+      "evidence": "[amplitude*exp(-delta*t), amplitude*delta*exp(-delta*t), amplitude*delta**2*exp(-delta*t), amplitude*delta**3*exp(-delta*t), amplitude*delta**4*exp(-delta*t)]"
+    },
+    {
+      "name": "one_pole_residue_reconstructs_exactly",
+      "passed": true,
+      "evidence": "amplitude"
+    },
+    {
+      "name": "one_pole_location_reconstructs_exactly",
+      "passed": true,
+      "evidence": "delta"
+    },
+    {
+      "name": "reconstructed_one_pole_regenerates_complete_correlator",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "finite_two_moment_probe_has_positive_spectral_hostile_pair",
+      "passed": true,
+      "evidence": "{'point': [1, 1], 'pair': [1, 1]}"
+    },
+    {
+      "name": "next_moment_separates_positive_spectral_hostile_pair",
+      "passed": true,
+      "evidence": "{'point': 1, 'pair': 5/4}"
+    },
+    {
+      "name": "reflection_positivity_does_not_select_pole_location",
+      "passed": true,
+      "evidence": "[amplitude*exp(-t), amplitude*exp(-2*t)]"
+    },
+    {
+      "name": "reflection_positivity_does_not_select_residue",
+      "passed": true,
+      "evidence": "[exp(-delta*t), 2*exp(-delta*t)]"
+    },
+    {
+      "name": "reflection_positive_two_point_function_is_portal_sign_blind",
+      "passed": true,
+      "evidence": "[amplitude*exp(-delta*t), amplitude*exp(-delta*t)]"
+    },
+    {
+      "name": "os_positivity_allows_multiple_horizon_attachments",
+      "passed": true,
+      "evidence": "[amplitude*exp(-kappa*t), amplitude*exp(-2*kappa*t)]"
+    },
+    {
+      "name": "positive_threshold_shift_preserves_positivity_but_moves_pole",
+      "passed": true,
+      "evidence": "amplitude*(delta + threshold_shift)*exp(-t*(delta + threshold_shift))"
+    },
+    {
+      "name": "uncalibrated_line_position_and_area_have_two_dimensional_kernel",
+      "passed": true,
+      "evidence": "rank=2, nullity=2"
+    },
+    {
+      "name": "detector_energy_and_area_have_exact_calibration_hostile_pair",
+      "passed": true,
+      "evidence": "[Matrix([\n[2],\n[2]]), Matrix([\n[2],\n[2]])]"
+    },
+    {
+      "name": "aspect_correlator_target_is_ternary_before_realization",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "aspect_calibrated_record_remains_quaternary",
+      "passed": true,
+      "evidence": "4"
+    },
+    {
+      "name": "deliberate_failure_exhibits_finite_probe_residual",
+      "passed": true,
+      "evidence": "1/4"
+    }
+  ],
+  "classification": {
+    "reconstruction": "faithful on the declared positive one-pole domain",
+    "selection": "reflection positivity fixes neither pole, residue, nor portal sign",
+    "finite_probe": "two moments do not separate positive one-pole and two-pole measures",
+    "threshold": "positivity survives pole shifts, so it does not protect the numerical prediction",
+    "instrument": "line position and area require independent energy and gain calibration"
+  }
+}

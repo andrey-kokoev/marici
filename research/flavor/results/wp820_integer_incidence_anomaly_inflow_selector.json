@@ -1,0 +1,173 @@
+{
+  "work_package": "WP820",
+  "title": "Integer incidence and anomaly-inflow selector",
+  "summary": {
+    "passed": 22,
+    "total": 22,
+    "all_passed": true
+  },
+  "exact_data": {
+    "incidence": "Matrix([[2, -1, 0], [3, 0, -1]])",
+    "primitive_kernel_pair": [
+      [
+        -1,
+        -2,
+        -3
+      ],
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "cubic_anomaly": "36*scale**3",
+    "selected_charges": [
+      1,
+      2,
+      3
+    ],
+    "selected_charge_contrast": 1,
+    "aspect_germ": {
+      "native_arity": 7,
+      "source_germs": [
+        "oriented_bulk",
+        "incidence",
+        "mediator",
+        "O1",
+        "O2",
+        "O3",
+        "detector"
+      ],
+      "incidence_authority": false,
+      "oriented_inflow_authority": false,
+      "primitive_charge_selection": true,
+      "gauge_normalization_authority": false,
+      "nonzero_rg_basin": false,
+      "threshold_amplitude_protection": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "conditional_source_principle": "rank-two integer incidence plus oriented quantized cubic inflow",
+    "sign_and_charge_scale": "inflow 36 selects the positive primitive charge vector (1,2,3)",
+    "portal_magnitude": "the physical linear portal still equals the continuous gauge coupling",
+    "rg": "positive one-loop Abelian flow has no nonzero fixed point and retains initial data",
+    "threshold": "anomaly matching survives through a Wess-Zumino term but does not freeze amplitudes",
+    "readout": "physical16 descent is absent and detector gain remains confounded with gauge coupling",
+    "authority": "incidence and oriented inflow must be derived independently; reversing the bulk gives the mirror",
+    "verdict": "conditional topological charge selector, not a complete asymmetric-portal selector"
+  },
+  "tests": [
+    {
+      "name": "integer_incidence_has_rank_two",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "integer_incidence_kernel_is_one_dimensional",
+      "passed": true,
+      "evidence": "[Matrix([\n[1/3],\n[2/3],\n[  1]])]"
+    },
+    {
+      "name": "primitive_charge_vector_spans_kernel",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "charge_vector_is_primitive",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "bounded_primitive_kernel_has_only_orientation_pair",
+      "passed": true,
+      "evidence": "[(-1, -2, -3), (1, 2, 3)]"
+    },
+    {
+      "name": "cubic_anomaly_on_kernel_is_36_scale_cubed",
+      "passed": true,
+      "evidence": "36*scale**3"
+    },
+    {
+      "name": "oriented_inflow_36_selects_positive_unit_scale",
+      "passed": true,
+      "evidence": "[1]"
+    },
+    {
+      "name": "reversed_inflow_selects_mirror_orientation",
+      "passed": true,
+      "evidence": "[-1]"
+    },
+    {
+      "name": "selected_integer_contrast_is_positive_unit",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "physical_linear_portal_retains_gauge_coupling",
+      "passed": true,
+      "evidence": "gauge"
+    },
+    {
+      "name": "same_selected_charge_packet_allows_distinct_portal_magnitudes",
+      "passed": true,
+      "evidence": "(1/5, 2/5)"
+    },
+    {
+      "name": "abelian_one_loop_solution_satisfies_beta_equation",
+      "passed": true,
+      "evidence": "beta_coefficient*initial**3/(-2*beta_coefficient*initial**2*time + 1)**(3/2)"
+    },
+    {
+      "name": "positive_one_loop_coefficient_has_only_gaussian_fixed_point",
+      "passed": true,
+      "evidence": "[0]"
+    },
+    {
+      "name": "finite_scale_rg_retains_initial_coupling_fiber",
+      "passed": true,
+      "evidence": "initial/sqrt(-2*beta_coefficient*initial**2*time + 1) - 2*initial/sqrt(-8*beta_coefficient*initial**2*time + 1)"
+    },
+    {
+      "name": "wess_zumino_matching_preserves_total_anomaly",
+      "passed": true,
+      "evidence": "inflow"
+    },
+    {
+      "name": "anomaly_matching_allows_continuous_threshold_partition",
+      "passed": true,
+      "evidence": "inflow - light_anomaly"
+    },
+    {
+      "name": "uncalibrated_detector_has_exact_gauge_gain_pair",
+      "passed": true,
+      "evidence": "[2/5, 2/5]"
+    },
+    {
+      "name": "detector_record_has_rank_one_on_gauge_gain_domain",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "different_integer_incidence_selects_different_primitive_ray",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "aspect_native_seven_object_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 7, 'source_germs': ['oriented_bulk', 'incidence', 'mediator', 'O1', 'O2', 'O3', 'detector'], 'incidence_authority': False, 'oriented_inflow_authority': False, 'primitive_charge_selection': True, 'gauge_normalization_authority': False, 'nonzero_rg_basin': False, 'threshold_amplitude_protection': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "conditional_charge_selector_gate_passes",
+      "passed": true,
+      "evidence": "{'native_arity': 7, 'source_germs': ['oriented_bulk', 'incidence', 'mediator', 'O1', 'O2', 'O3', 'detector'], 'incidence_authority': False, 'oriented_inflow_authority': False, 'primitive_charge_selection': True, 'gauge_normalization_authority': False, 'nonzero_rg_basin': False, 'threshold_amplitude_protection': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "seven_source_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['incidence_authority', 'oriented_inflow_authority', 'gauge_normalization_authority', 'nonzero_rg_basin', 'threshold_amplitude_protection', 'physical16_descent', 'detector_calibration']"
+    }
+  ]
+}

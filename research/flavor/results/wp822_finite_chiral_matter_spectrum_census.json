@@ -1,0 +1,225 @@
+{
+  "work_package": "WP822",
+  "title": "Finite chiral matter-spectrum census",
+  "domain": {
+    "N_min": 5,
+    "N_max": 12,
+    "p_min": 1,
+    "p_max_rule": "8N",
+    "packet_count": 544
+  },
+  "summary": {
+    "passed": 20,
+    "total": 20,
+    "all_passed": true
+  },
+  "census": {
+    "nonsingular_fixed_packets": 544,
+    "positive_fixed_packets": 4,
+    "all_coordinates_below_one": 2,
+    "all_coordinates_below_one_tenth": 0,
+    "positive_samples": [
+      {
+        "N": 5,
+        "p": 26,
+        "coordinates": [
+          "3163/2234",
+          "34182/5585",
+          "729/1117",
+          "1746/5585"
+        ],
+        "max_coordinate": "34182/5585"
+      },
+      {
+        "N": 6,
+        "p": 30,
+        "coordinates": [
+          "2327/71385",
+          "32438/214155",
+          "7987/513972",
+          "3353/513972"
+        ],
+        "max_coordinate": "32438/214155"
+      },
+      {
+        "N": 8,
+        "p": 39,
+        "coordinates": [
+          "55708/1156895",
+          "55836/231379",
+          "54081/2313790",
+          "18549/2313790"
+        ],
+        "max_coordinate": "55836/231379"
+      },
+      {
+        "N": 11,
+        "p": 52,
+        "coordinates": [
+          "84667/278330",
+          "223443/139165",
+          "8379/55666",
+          "90/2141"
+        ],
+        "max_coordinate": "223443/139165"
+      }
+    ],
+    "unit_control_samples": [
+      {
+        "N": 6,
+        "p": 30,
+        "coordinates": [
+          "2327/71385",
+          "32438/214155",
+          "7987/513972",
+          "3353/513972"
+        ],
+        "max_coordinate": "32438/214155"
+      },
+      {
+        "N": 8,
+        "p": 39,
+        "coordinates": [
+          "55708/1156895",
+          "55836/231379",
+          "54081/2313790",
+          "18549/2313790"
+        ],
+        "max_coordinate": "55836/231379"
+      }
+    ],
+    "tenth_control_samples": [],
+    "unit_control_stability": [
+      {
+        "N": 6,
+        "p": 30,
+        "characteristic_polynomial": "lambda**4 - 112473155983*lambda**3/30574909350 + 3111154840420459*lambda**2/873035961579900 - 387226779230843153147*lambda/673074058867716544200 - 2351982457783228361/673074058867716544200",
+        "negative_exponents": 1,
+        "positive_exponents": 3
+      },
+      {
+        "N": 8,
+        "p": 39,
+        "characteristic_polynomial": "lambda**4 - 74706274109417*lambda**3/8030436246150 + 2528935005648702609*lambda**2/123871620546529390 - 4120771166624154170458341*lambda/716532292260885593220250 - 12674809890503975417742/358266146130442796610125",
+        "negative_exponents": 1,
+        "positive_exponents": 3
+      }
+    ]
+  },
+  "classification": {
+    "grammar": "generalized Georgi-Glashow action with both scalar sectors and three Yukawas",
+    "anomaly": "all integer packets in the frozen domain cancel the GG gauge anomaly",
+    "control": "classified exactly at the admitted two-loop/one-loop truncation",
+    "common_source": "no admitted constructor maps WP820 incidence/inflow to the GG (N,p) spectrum",
+    "authorized_candidates": 0,
+    "remaining_gates": [
+      "global basin",
+      "threshold completion",
+      "physical16 descent",
+      "detector calibration"
+    ],
+    "verdict": "finite census cannot supply selector authority across an undefined source interface"
+  },
+  "tests": [
+    {
+      "name": "census_domain_is_frozen_to_eight_ranks",
+      "passed": true,
+      "evidence": "[5, 6, 7, 8, 9, 10, 11, 12]"
+    },
+    {
+      "name": "each_rank_has_exactly_eight_N_multiplicities",
+      "passed": true,
+      "evidence": "{5: 40, 6: 48, 7: 56, 8: 64, 9: 72, 10: 80, 11: 88, 12: 96}"
+    },
+    {
+      "name": "all_census_packets_are_integer_matter_spectra",
+      "passed": true,
+      "evidence": "544"
+    },
+    {
+      "name": "every_GG_packet_is_gauge_anomaly_complete",
+      "passed": true,
+      "evidence": "{0}"
+    },
+    {
+      "name": "wp805_packet_is_in_census",
+      "passed": true,
+      "evidence": "(5, 26)"
+    },
+    {
+      "name": "census_reproduces_wp805_exact_fixed_point",
+      "passed": true,
+      "evidence": "[3163/2234, 34182/5585, 729/1117, 1746/5585]"
+    },
+    {
+      "name": "census_classifies_wp805_as_positive_but_uncontrolled",
+      "passed": true,
+      "evidence": "{'N': 5, 'p': 26, 'ratios': [68364/15815, 1458/3163, 3492/15815], 'coordinates': [3163/2234, 34182/5585, 729/1117, 1746/5585], 'positive': True, 'controlled_unit': False, 'controlled_tenth': False}"
+    },
+    {
+      "name": "positive_classification_is_exact",
+      "passed": true,
+      "evidence": "4"
+    },
+    {
+      "name": "unit_control_classification_is_exact",
+      "passed": true,
+      "evidence": "2"
+    },
+    {
+      "name": "tenth_control_classification_is_exact",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "both_unit_control_packets_have_one_negative_and_three_positive_exponents",
+      "passed": true,
+      "evidence": "[{'N': 6, 'p': 30, 'polynomial': lambda**4 - 112473155983*lambda**3/30574909350 + 3111154840420459*lambda**2/873035961579900 - 387226779230843153147*lambda/673074058867716544200 - 2351982457783228361/673074058867716544200, 'negative_roots': 1, 'positive_roots': 3}, {'N': 8, 'p': 39, 'polynomial': lambda**4 - 74706274109417*lambda**3/8030436246150 + 2528935005648702609*lambda**2/123871620546529390 - 4120771166624154170458341*lambda/716532292260885593220250 - 12674809890503975417742/358266146130442796610125, 'negative_roots': 1, 'positive_roots': 3}]"
+    },
+    {
+      "name": "unit_control_packets_are_not_full_dimensional_ir_attractors",
+      "passed": true,
+      "evidence": "[(6, 30, 1), (8, 39, 1)]"
+    },
+    {
+      "name": "unit_control_packet_is_not_unique",
+      "passed": true,
+      "evidence": "[(6, 30), (8, 39)]"
+    },
+    {
+      "name": "wp820_charge_packet_is_internally_consistent",
+      "passed": true,
+      "evidence": "Matrix([[0], [0]])"
+    },
+    {
+      "name": "no_admitted_wp820_to_GG_spectrum_constructor_exists",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "authorized_controlled_candidate_count_is_zero",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "threshold_completion_remains_absent",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "global_basin_remains_absent",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "physical16_descent_remains_absent",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "detector_calibration_remains_absent",
+      "passed": true,
+      "evidence": "False"
+    }
+  ]
+}

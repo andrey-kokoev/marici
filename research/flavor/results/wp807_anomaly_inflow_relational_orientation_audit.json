@@ -1,0 +1,105 @@
+{
+  "work_package": "WP807",
+  "title": "Anomaly-inflow relational orientation audit",
+  "level": 3,
+  "energies": {
+    "eta=-1,J=-1": -3,
+    "eta=-1,J=1": 3,
+    "eta=1,J=-1": 3,
+    "eta=1,J=1": -3
+  },
+  "joint_minima": [
+    [
+      -1,
+      -1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "summary": {
+    "passed": 14,
+    "total": 14,
+    "all_passed": true
+  },
+  "tests": [
+    {
+      "name": "inflow_level_is_integer_quantized",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "fixed_boundary_orientation_selects_positive_physical_sign",
+      "passed": true,
+      "evidence": "{-1: 3, 1: -3}"
+    },
+    {
+      "name": "reversed_boundary_orientation_selects_negative_physical_sign",
+      "passed": true,
+      "evidence": "{-1: -3, 1: 3}"
+    },
+    {
+      "name": "joint_source_retains_mirror_pair",
+      "passed": true,
+      "evidence": "[(-1, -1), (1, 1)]"
+    },
+    {
+      "name": "relational_readout_is_unique_on_both_minima",
+      "passed": true,
+      "evidence": "{1}"
+    },
+    {
+      "name": "absolute_physical_sign_is_not_unique",
+      "passed": true,
+      "evidence": "{1, -1}"
+    },
+    {
+      "name": "mirror_exchanges_selected_joint_states",
+      "passed": true,
+      "evidence": "{(-1, -1): (1, 1), (1, 1): (-1, -1)}"
+    },
+    {
+      "name": "reference_port_restricts_to_stabilizer_groupoid",
+      "passed": true,
+      "evidence": "[(1, 1)]"
+    },
+    {
+      "name": "anomaly_matching_preserves_level",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "vectorlike_threshold_pair_cannot_change_level",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "zero_anomaly_channel_has_no_orientation_bias",
+      "passed": true,
+      "evidence": "{0}"
+    },
+    {
+      "name": "inflow_current_collapses_absolute_mirror_pair",
+      "passed": true,
+      "evidence": "{(-1, -1): 3, (1, 1): 3}"
+    },
+    {
+      "name": "topological_probe_has_mass_and_calibration_kernel",
+      "passed": true,
+      "evidence": "rank=0, nullity=2"
+    },
+    {
+      "name": "deliberate_failure_exhibits_absolute_sign_ambiguity",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "magnitude": "integer-quantized relative bias",
+    "rg_and_threshold": "protected by anomaly matching for gapped symmetry-preserving transport",
+    "sign": "selected only relative to boundary orientation",
+    "reference_port": "restricts to a stabilizer groupoid and creates a new relational experiment",
+    "physical16": "no calibrated flavor detector map"
+  }
+}

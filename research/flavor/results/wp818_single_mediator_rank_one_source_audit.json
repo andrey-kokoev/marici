@@ -1,0 +1,168 @@
+{
+  "work_package": "WP818",
+  "title": "Single-mediator rank-one source audit",
+  "summary": {
+    "passed": 24,
+    "total": 24,
+    "all_passed": true
+  },
+  "exact_data": {
+    "residue": "Matrix([[g1**2, g1*g2, g1*g3], [g1*g2, g2**2, g2*g3], [g1*g3, g2*g3, g3**2]])",
+    "wilson_matrix": "Matrix([[g1**2/mass**2, g1*g2/mass**2, g1*g3/mass**2], [g1*g2/mass**2, g2**2/mass**2, g2*g3/mass**2], [g1*g3/mass**2, g2*g3/mass**2, g3**2/mass**2]])",
+    "triangle_product": "g1**2*g2**2*g3**2",
+    "hostile_multi_mediator_triangle": "-1/64",
+    "aspect_germ": {
+      "native_arity": 4,
+      "source_germs": [
+        "mediator_X",
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "primitive_attachments": [
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "single_pole_isolation": true,
+      "rank_one_purity_authority": true,
+      "coupling_direction_authority": false,
+      "absolute_scale_authority": false,
+      "rg_basin_authority": false,
+      "threshold_exclusivity": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "source_principle": "one isolated nondegenerate mediator pole derives rank-one purity",
+    "sign": "the nonzero triangle sign is forced positive",
+    "magnitude": "normalized edge magnitudes are fixed; coupling direction and absolute scale are free",
+    "rg_basin": "rank-one manifold is invariant under multiplicative running; no unique ray is selected",
+    "threshold": "single-channel factorization survives diagonal matching; additional channels can restore negative loops",
+    "readout": "formal cross-channel family exists; physical16 descent and gain calibration remain absent",
+    "verdict": "genuine source derivation of the conditional WP817 selector, but not a complete asymmetric-portal principle"
+  },
+  "tests": [
+    {
+      "name": "single_mediator_residue_is_outer_product",
+      "passed": true,
+      "evidence": "Matrix([[g1**2, g1*g2, g1*g3], [g1*g2, g2**2, g2*g3], [g1*g3, g2*g3, g3**2]])"
+    },
+    {
+      "name": "single_mediator_residue_has_rank_one",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "single_mediator_wilson_matrix_has_rank_one",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "single_mediator_triangle_is_positive_square",
+      "passed": true,
+      "evidence": "g1**2*g2**2*g3**2"
+    },
+    {
+      "name": "wilson_triangle_has_fixed_positive_sign",
+      "passed": true,
+      "evidence": "g1**2*g2**2*g3**2/mass**6"
+    },
+    {
+      "name": "single_mediator_fixes_squared_normalized_edges",
+      "passed": true,
+      "evidence": "[1, 1, 1]"
+    },
+    {
+      "name": "equal_norm_coupling_directions_give_distinct_portals",
+      "passed": true,
+      "evidence": "{'norm': 14, 'A': Matrix([\n[1, 2, 3],\n[2, 4, 6],\n[3, 6, 9]]), 'B': Matrix([\n[1, 3, 2],\n[3, 9, 6],\n[2, 6, 4]])}"
+    },
+    {
+      "name": "single_mediator_does_not_select_coupling_direction",
+      "passed": true,
+      "evidence": "(2, 3)"
+    },
+    {
+      "name": "coupling_mass_scaling_is_exact_source_identification_kernel",
+      "passed": true,
+      "evidence": "Matrix([[g1**2/mass**2, g1*g2/mass**2, g1*g3/mass**2], [g1*g2/mass**2, g2**2/mass**2, g2*g3/mass**2], [g1*g3/mass**2, g2*g3/mass**2, g3**2/mass**2]])"
+    },
+    {
+      "name": "absolute_low_energy_magnitude_remains_continuously_tunable",
+      "passed": true,
+      "evidence": "Matrix([[g1**2*scale**2/mass**2, g1*g2*scale**2/mass**2, g1*g3*scale**2/mass**2], [g1*g2*scale**2/mass**2, g2**2*scale**2/mass**2, g2*g3*scale**2/mass**2], [g1*g3*scale**2/mass**2, g2*g3*scale**2/mass**2, g3**2*scale**2/mass**2]])"
+    },
+    {
+      "name": "multiplicative_rg_preserves_rank_one_manifold",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "multiplicative_rg_preserves_positive_nonzero_loop",
+      "passed": true,
+      "evidence": "g1**2*g2**2*g3**2*exp(2*gamma1*time)*exp(2*gamma2*time)*exp(2*gamma3*time)"
+    },
+    {
+      "name": "generic_anomalous_dimensions_do_not_select_unique_ray",
+      "passed": true,
+      "evidence": "g1*exp(time*(gamma1 - gamma2))/g2"
+    },
+    {
+      "name": "continuum_of_initial_rays_survives_equal_anomalous_dimensions",
+      "passed": true,
+      "evidence": "g1/g2"
+    },
+    {
+      "name": "diagonal_threshold_matching_preserves_rank_one",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "diagonal_threshold_matching_preserves_positive_loop",
+      "passed": true,
+      "evidence": "g1**2*g2**2*g3**2*z1**2*z2**2*z3**2"
+    },
+    {
+      "name": "positive_multi_mediator_threshold_can_have_negative_loop",
+      "passed": true,
+      "evidence": "{'eigenvalues': {1/2: 1, 5/4: 2}, 'triangle': -1/64}"
+    },
+    {
+      "name": "negative_loop_hostile_requires_more_than_one_rank_one_channel",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "uncalibrated_three_channel_record_has_three_dimensional_kernel",
+      "passed": true,
+      "evidence": "{'rank': 3, 'nullity': 3}"
+    },
+    {
+      "name": "aspect_native_quaternary_source_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 4, 'source_germs': ['mediator_X', 'O1', 'O2', 'O3'], 'primitive_attachments': ['g1', 'g2', 'g3'], 'single_pole_isolation': True, 'rank_one_purity_authority': True, 'coupling_direction_authority': False, 'absolute_scale_authority': False, 'rg_basin_authority': False, 'threshold_exclusivity': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "aspect_three_source_attachments_are_explicit",
+      "passed": true,
+      "evidence": "{'native_arity': 4, 'source_germs': ['mediator_X', 'O1', 'O2', 'O3'], 'primitive_attachments': ['g1', 'g2', 'g3'], 'single_pole_isolation': True, 'rank_one_purity_authority': True, 'coupling_direction_authority': False, 'absolute_scale_authority': False, 'rg_basin_authority': False, 'threshold_exclusivity': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "single_isolated_pole_supplies_purity_authority",
+      "passed": true,
+      "evidence": "{'native_arity': 4, 'source_germs': ['mediator_X', 'O1', 'O2', 'O3'], 'primitive_attachments': ['g1', 'g2', 'g3'], 'single_pole_isolation': True, 'rank_one_purity_authority': True, 'coupling_direction_authority': False, 'absolute_scale_authority': False, 'rg_basin_authority': False, 'threshold_exclusivity': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "six_full_objective_gates_remain_open",
+      "passed": true,
+      "evidence": "['coupling_direction_authority', 'absolute_scale_authority', 'rg_basin_authority', 'threshold_exclusivity', 'physical16_descent', 'detector_calibration']"
+    },
+    {
+      "name": "deliberate_failure_quantifies_multi_mediator_rank_obstruction",
+      "passed": true,
+      "evidence": "2"
+    }
+  ]
+}

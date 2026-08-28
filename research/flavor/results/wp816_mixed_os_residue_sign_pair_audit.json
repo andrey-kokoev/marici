@@ -1,0 +1,124 @@
+{
+  "work_package": "WP816",
+  "title": "Mixed OS residue sign-pair audit",
+  "summary": {
+    "passed": 18,
+    "total": 18,
+    "all_passed": true
+  },
+  "exact_data": {
+    "residue": "Matrix([[A, C], [C, B]])",
+    "positivity_determinant": "A*B - C**2",
+    "purity_branches": [
+      "-sqrt(A)*sqrt(B)",
+      "sqrt(A)*sqrt(B)"
+    ],
+    "normalized_sign_pair": [
+      "1",
+      "-1"
+    ],
+    "threshold_transported_pair": [
+      "1",
+      "-1"
+    ]
+  },
+  "tests": [
+    {
+      "name": "mixed_residue_positivity_bound_is_gram_determinant",
+      "passed": true,
+      "evidence": "A*B - C**2"
+    },
+    {
+      "name": "positive_rank_one_saturation_has_two_exact_sign_branches",
+      "passed": true,
+      "evidence": "with C declared positive; signed extension is plus/minus sqrt(A B)"
+    },
+    {
+      "name": "signed_purity_equation_retains_mirror_pair",
+      "passed": true,
+      "evidence": "[-sqrt(A)*sqrt(B), sqrt(A)*sqrt(B)]"
+    },
+    {
+      "name": "positive_and_negative_saturated_residues_are_both_psd",
+      "passed": true,
+      "evidence": "{'plus_eigenvalues': {2: 1, 0: 1}, 'minus_eigenvalues': {2: 1, 0: 1}}"
+    },
+    {
+      "name": "saturated_sign_pair_has_identical_spectrum",
+      "passed": true,
+      "evidence": "{2: 1, 0: 1}"
+    },
+    {
+      "name": "saturated_sign_pair_has_identical_diagonal_readouts",
+      "passed": true,
+      "evidence": "{'plus': [1, 1], 'minus': [1, 1]}"
+    },
+    {
+      "name": "mixed_correlator_separates_saturated_sign_pair",
+      "passed": true,
+      "evidence": "(1, -1)"
+    },
+    {
+      "name": "operator_sign_port_conjugates_the_two_residues",
+      "passed": true,
+      "evidence": "Matrix([[1, -1], [-1, 1]])"
+    },
+    {
+      "name": "full_mixed_euclidean_kernels_are_reflection_positive",
+      "passed": true,
+      "evidence": "(1, 1)"
+    },
+    {
+      "name": "purity_fixes_normalized_magnitude_but_not_sign",
+      "passed": true,
+      "evidence": "(1, -1)"
+    },
+    {
+      "name": "positive_diagonal_threshold_transport_preserves_normalized_sign_pair",
+      "passed": true,
+      "evidence": "(1, -1)"
+    },
+    {
+      "name": "nonaligned_threshold_mixing_changes_fixed_axis_cross_readout",
+      "passed": true,
+      "evidence": "Matrix([[2, 0], [0, 0]])"
+    },
+    {
+      "name": "calibrated_diagonal_and_mixed_probe_family_is_faithful",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "uncalibrated_mixed_probe_has_exact_source_gain_hostile_pair",
+      "passed": true,
+      "evidence": "[2, 2]"
+    },
+    {
+      "name": "mixed_probe_without_gain_calibration_is_rank_one",
+      "passed": true,
+      "evidence": "rank=1, nullity=1"
+    },
+    {
+      "name": "rank_one_purity_condition_is_not_source_authorized",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "relative_operator_sign_port_is_not_source_authorized",
+      "passed": true,
+      "evidence": "False"
+    },
+    {
+      "name": "deliberate_failure_exhibits_purity_sign_ambiguity",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "reflection_positivity": "bounds mixed residue magnitude and admits both signs",
+    "purity": "rank-one saturation fixes normalized magnitude but retains a mirror pair",
+    "sign_readout": "mixed correlator separates the pair after an operator sign port is fixed",
+    "threshold": "positive diagonal transport preserves normalized pair; nonaligned mixing changes fixed-axis readout",
+    "instrument": "complete calibrated three-channel family is faithful; uncalibrated cross channel is not"
+  }
+}

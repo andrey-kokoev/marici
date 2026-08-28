@@ -1,0 +1,171 @@
+{
+  "work_package": "WP819",
+  "title": "Unique invariant tensor authority audit",
+  "summary": {
+    "passed": 24,
+    "total": 24,
+    "all_passed": true
+  },
+  "exact_data": {
+    "cyclic_projector": "Matrix([[1/3, 1/3, 1/3], [1/3, 1/3, 1/3], [1/3, 1/3, 1/3]])",
+    "asymmetric_target": [
+      1,
+      2,
+      3
+    ],
+    "target_reflection": "Matrix([[-6/7, 2/7, 3/7], [2/7, -3/7, 6/7], [3/7, 6/7, 2/7]])",
+    "target_projector_recovered_from_representation": "Matrix([[1/14, 1/7, 3/14], [1/7, 2/7, 3/7], [3/14, 3/7, 9/14]])",
+    "linear_contrast": "sqrt(14)*y/14",
+    "aspect_germ": {
+      "native_arity": 5,
+      "source_germs": [
+        "representation",
+        "mediator",
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "unique_fixed_line": true,
+      "independent_representation_authority": false,
+      "orientation_authority": false,
+      "overall_coupling_authority": false,
+      "rg_coefficients_authority": false,
+      "threshold_scalar_authority": false,
+      "physical16_descent": false,
+      "detector_calibration": false
+    }
+  },
+  "classification": {
+    "transitive_symmetry": "unique invariant ray exists but is symmetric and has zero portal contrast",
+    "partial_symmetry": "admits a multidimensional invariant family",
+    "asymmetric_fixed_line": "can be manufactured for any chosen ray, so it needs independent source authority",
+    "sign": "the invariant line does not orient itself; quadratic residue is sign blind",
+    "magnitude": "tensor normalization leaves an arbitrary interaction coefficient",
+    "rg": "equivariance reduces flow to one scalar beta function but does not derive its coefficients",
+    "threshold": "equivariant matching preserves direction while rescaling magnitude arbitrarily",
+    "readout": "physical16 descent is absent and an uncalibrated linear channel has a source-gain kernel",
+    "verdict": "unique invariant tensor is a rigidifier unless the representation and scalar dynamics are independently derived"
+  },
+  "tests": [
+    {
+      "name": "cyclic_permutation_is_order_three",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "transitive_cyclic_fixed_space_is_one_dimensional",
+      "passed": true,
+      "evidence": "[Matrix([\n[1],\n[1],\n[1]])]"
+    },
+    {
+      "name": "cyclic_group_average_is_rank_one_projector",
+      "passed": true,
+      "evidence": "Matrix([[1/3, 1/3, 1/3], [1/3, 1/3, 1/3], [1/3, 1/3, 1/3]])"
+    },
+    {
+      "name": "transitive_cyclic_invariant_ray_is_symmetric",
+      "passed": true,
+      "evidence": "Matrix([[1], [1], [1]])"
+    },
+    {
+      "name": "transitive_invariant_ray_has_zero_component_contrast",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "single_swap_fixed_space_is_two_dimensional",
+      "passed": true,
+      "evidence": "[Matrix([\n[1],\n[1],\n[0]]), Matrix([\n[0],\n[0],\n[1]])]"
+    },
+    {
+      "name": "partial_marking_does_not_select_unique_ray",
+      "passed": true,
+      "evidence": "fixed dimension=2"
+    },
+    {
+      "name": "prescribed_ray_reflection_is_an_involution",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "prescribed_ray_is_fixed_by_constructed_reflection",
+      "passed": true,
+      "evidence": "Matrix([[1], [2], [3]])"
+    },
+    {
+      "name": "constructed_reflection_has_unique_fixed_ray",
+      "passed": true,
+      "evidence": "[Matrix([\n[1/3],\n[2/3],\n[  1]])]"
+    },
+    {
+      "name": "constructed_unique_fixed_ray_is_asymmetric",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "any_nonzero_prescribed_ray_can_be_made_a_z2_fixed_line",
+      "passed": true,
+      "evidence": "Matrix([[2*a*b**2/(a**2 + b**2 + c**2) + 2*a*c**2/(a**2 + b**2 + c**2) + a*(2*a**2/(a**2 + b**2 + c**2) - 1)], [2*a**2*b/(a**2 + b**2 + c**2) + 2*b*c**2/(a**2 + b**2 + c**2) + b*(2*b**2/(a**2 + b**2 + c**2) - 1)], [2*a**2*c/(a**2 + b**2 + c**2) + 2*b**2*c/(a**2 + b**2 + c**2) + c*(2*c**2/(a**2 + b**2 + c**2) - 1)]])"
+    },
+    {
+      "name": "reverse_engineered_symmetry_contains_target_projector_explicitly",
+      "passed": true,
+      "evidence": "Matrix([[1/14, 1/7, 3/14], [1/7, 2/7, 3/7], [3/14, 3/7, 9/14]])"
+    },
+    {
+      "name": "normalized_invariant_tensor_leaves_overall_coupling_free",
+      "passed": true,
+      "evidence": "sqrt(14)*y/14"
+    },
+    {
+      "name": "overall_sign_pair_flips_linear_asymmetric_portal",
+      "passed": true,
+      "evidence": "(sqrt(14)*y/14, -sqrt(14)*y/14)"
+    },
+    {
+      "name": "quadratic_residue_is_blind_to_overall_sign",
+      "passed": true,
+      "evidence": "Matrix([[y**2/14, y**2/7, 3*y**2/14], [y**2/7, 2*y**2/7, 3*y**2/7], [3*y**2/14, 3*y**2/7, 9*y**2/14]])"
+    },
+    {
+      "name": "symmetry_allows_arbitrary_scalar_equivariant_beta_function",
+      "passed": true,
+      "evidence": "alpha*y + beta*y**3"
+    },
+    {
+      "name": "nonzero_fixed_point_magnitude_depends_on_unfixed_rg_coefficients",
+      "passed": true,
+      "evidence": "[-alpha/beta]"
+    },
+    {
+      "name": "equivariant_threshold_preserves_invariant_ray",
+      "passed": true,
+      "evidence": "Matrix([[z], [2*z], [3*z]])"
+    },
+    {
+      "name": "equivariant_threshold_leaves_continuous_magnitude_factor",
+      "passed": true,
+      "evidence": "sqrt(14)*y*z/14"
+    },
+    {
+      "name": "uncalibrated_linear_readout_has_exact_source_gain_pair",
+      "passed": true,
+      "evidence": "[sqrt(14)/7, sqrt(14)/7]"
+    },
+    {
+      "name": "linear_readout_has_rank_one_on_source_gain_domain",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "aspect_native_five_object_germ_is_retained",
+      "passed": true,
+      "evidence": "{'native_arity': 5, 'source_germs': ['representation', 'mediator', 'O1', 'O2', 'O3'], 'unique_fixed_line': True, 'independent_representation_authority': False, 'orientation_authority': False, 'overall_coupling_authority': False, 'rg_coefficients_authority': False, 'threshold_scalar_authority': False, 'physical16_descent': False, 'detector_calibration': False}"
+    },
+    {
+      "name": "seven_authority_and_realization_gates_remain_open",
+      "passed": true,
+      "evidence": "['independent_representation_authority', 'orientation_authority', 'overall_coupling_authority', 'rg_coefficients_authority', 'threshold_scalar_authority', 'physical16_descent', 'detector_calibration']"
+    }
+  ]
+}

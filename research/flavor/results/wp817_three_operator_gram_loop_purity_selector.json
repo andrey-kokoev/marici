@@ -1,0 +1,167 @@
+{
+  "work_package": "WP817",
+  "title": "Three-operator Gram-loop purity selector",
+  "summary": {
+    "passed": 24,
+    "total": 24,
+    "all_passed": true
+  },
+  "exact_data": {
+    "positive_loop_eigenvalues": {
+      "2*r + 1": 1,
+      "1 - r": 2
+    },
+    "negative_loop_eigenvalues": {
+      "1 - 2*r": 1,
+      "r + 1": 2
+    },
+    "rank_one_triangle_product": "v1**2*v2**2*v3**2",
+    "aspect_germ": {
+      "native_arity": 3,
+      "operator_germs": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "primitive_attachments": [
+        "C12",
+        "C23",
+        "C31"
+      ],
+      "comparison_before_local_quotient": true,
+      "purity_authority": false,
+      "physical16_descent": false,
+      "common_detector_calibration": false
+    }
+  },
+  "classification": {
+    "algebra": "rank-one positive Gram purity selects the positive triangle class and unit normalized magnitude",
+    "quotient": "triangle sign survives independent sign changes of all three marked operators",
+    "source": "purity and the three marked flavor incidences are not yet source-authorized",
+    "threshold": "real congruence preserves rank-one positivity and cannot create a negative loop, but can erase an attachment",
+    "instrument": "three calibrated cross channels preserve sign; gain calibration and physical16 descent remain open",
+    "aspect_germ_tester": "native ternary topology and primitive attachments pass; authority, descent, and instrument gates fail"
+  },
+  "tests": [
+    {
+      "name": "positive_loop_spectrum_is_exact",
+      "passed": true,
+      "evidence": "{2*r + 1: 1, 1 - r: 2}"
+    },
+    {
+      "name": "negative_loop_spectrum_is_exact",
+      "passed": true,
+      "evidence": "{1 - 2*r: 1, r + 1: 2}"
+    },
+    {
+      "name": "positive_loop_is_psd_through_unit_magnitude",
+      "passed": true,
+      "evidence": "{3: 1, 0: 2}"
+    },
+    {
+      "name": "negative_loop_is_psd_only_through_half_magnitude",
+      "passed": true,
+      "evidence": "({3/2: 2, 0: 1}, {-1/2: 1, 7/4: 2})"
+    },
+    {
+      "name": "positivity_alone_admits_both_loop_signs",
+      "passed": true,
+      "evidence": "(1/64, -1/64)"
+    },
+    {
+      "name": "positive_loop_reaches_rank_one_at_unit_magnitude",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "negative_loop_never_reaches_rank_one_on_its_psd_interval",
+      "passed": true,
+      "evidence": "rank 3 for 0<=r<1/2 and rank 2 at r=1/2"
+    },
+    {
+      "name": "rank_one_purity_selects_positive_loop_and_unit_normalized_edges",
+      "passed": true,
+      "evidence": "Matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1]])"
+    },
+    {
+      "name": "triangle_product_survives_all_independent_operator_sign_flips",
+      "passed": true,
+      "evidence": "[1, 1, 1, 1]"
+    },
+    {
+      "name": "individual_edges_do_not_survive_operator_sign_flips",
+      "passed": true,
+      "evidence": "[1, -1, -1, 1]"
+    },
+    {
+      "name": "every_real_rank_one_gram_has_positive_nonzero_triangle_product",
+      "passed": true,
+      "evidence": "v1**2*v2**2*v3**2"
+    },
+    {
+      "name": "positive_diagonal_thresholds_preserve_normalized_triangle",
+      "passed": true,
+      "evidence": "[1, 1, 1]"
+    },
+    {
+      "name": "invertible_nonaligned_congruence_preserves_positive_pure_triangle_when_nonzero",
+      "passed": true,
+      "evidence": "{'rank': 1, 'normalized': [1, 1, 1]}"
+    },
+    {
+      "name": "nonaligned_mixing_can_erase_a_primitive_attachment",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0], [0, 1, 1], [0, 1, 1]])"
+    },
+    {
+      "name": "calibrated_three_cross_channel_record_is_locally_faithful",
+      "passed": true,
+      "evidence": "3"
+    },
+    {
+      "name": "positive_calibrated_gains_preserve_loop_sign",
+      "passed": true,
+      "evidence": "c12*c23*c31*g12*g23*g31"
+    },
+    {
+      "name": "uncalibrated_gains_leave_absolute_magnitude_kernel",
+      "passed": true,
+      "evidence": "response rank 3 on six source-plus-gain coordinates"
+    },
+    {
+      "name": "aspect_native_arity_gate_passes",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "aspect_primitive_attachment_gate_passes",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "aspect_comparison_precedes_operator_sign_quotient",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "aspect_source_authority_gate_remains_open",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "aspect_physical16_descent_gate_remains_open",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "aspect_instrument_gate_remains_open",
+      "passed": true,
+      "evidence": "{'native_arity': 3, 'operator_germs': ['O1', 'O2', 'O3'], 'primitive_attachments': ['C12', 'C23', 'C31'], 'comparison_before_local_quotient': True, 'purity_authority': False, 'physical16_descent': False, 'common_detector_calibration': False}"
+    },
+    {
+      "name": "deliberate_failure_is_smallest_negative_loop_purity_obstruction",
+      "passed": true,
+      "evidence": "1"
+    }
+  ]
+}

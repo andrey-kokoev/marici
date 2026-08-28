@@ -1,0 +1,130 @@
+{
+  "work_package": "WP806",
+  "title": "Phase-cycle weak-basis descent and CP-pair audit",
+  "plaquette_charge_matrix": [
+    [
+      1,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    [
+      1,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    [
+      0,
+      1,
+      -1,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0,
+      -1,
+      -1
+    ]
+  ],
+  "plaquette_loop": [
+    1,
+    -1,
+    -1,
+    1
+  ],
+  "jarlskog_type_invariant": "4*sqrt(3)/3",
+  "summary": {
+    "passed": 15,
+    "total": 15,
+    "all_passed": true
+  },
+  "tests": [
+    {
+      "name": "plaquette_charge_matrix_has_one_left_kernel",
+      "passed": true,
+      "evidence": "rank=3, left-nullity=1"
+    },
+    {
+      "name": "plaquette_loop_is_rephasing_invariant",
+      "passed": true,
+      "evidence": "Matrix([[0, 0, 0, 0, 0]])"
+    },
+    {
+      "name": "literal_plaquette_is_nonzero_imaginary",
+      "passed": true,
+      "evidence": "I"
+    },
+    {
+      "name": "weak_basis_rotation_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[1, 0], [0, 1]])"
+    },
+    {
+      "name": "weak_basis_rotation_preserves_gram_matrix",
+      "passed": true,
+      "evidence": "Matrix([[0, 0], [0, 0]])"
+    },
+    {
+      "name": "plaquette_fails_full_weak_basis_descent",
+      "passed": true,
+      "evidence": "before=I, after=0"
+    },
+    {
+      "name": "three_generation_mixing_matrix_is_unitary",
+      "passed": true,
+      "evidence": "Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])"
+    },
+    {
+      "name": "jarlskog_type_invariant_is_nonzero",
+      "passed": true,
+      "evidence": "4*sqrt(3)/3"
+    },
+    {
+      "name": "jarlskog_type_invariant_descends_under_weak_basis",
+      "passed": true,
+      "evidence": "4*sqrt(3)/3"
+    },
+    {
+      "name": "cp_conjugation_reverses_physical_orientation",
+      "passed": true,
+      "evidence": "-4*sqrt(3)/3"
+    },
+    {
+      "name": "cp_even_potential_has_nontrivial_stationary_magnitude",
+      "passed": true,
+      "evidence": "1/4"
+    },
+    {
+      "name": "paired_nontrivial_stationary_points_are_minima",
+      "passed": true,
+      "evidence": "15/4"
+    },
+    {
+      "name": "cp_even_source_leaves_equal_sign_pair",
+      "passed": true,
+      "evidence": "-9/8"
+    },
+    {
+      "name": "cp_odd_coefficient_is_required_to_lift_pair",
+      "passed": true,
+      "evidence": "-sqrt(15)*kappa/2"
+    },
+    {
+      "name": "physical_orientation_probe_does_not_select_threshold_or_calibration",
+      "passed": true,
+      "evidence": "rank=0, nullity=2"
+    }
+  ],
+  "classification": {
+    "plaquette_phase": "rephasing invariant but not weak-basis invariant",
+    "jarlskog_orientation": "faithful physical quotient coordinate",
+    "cp_even_selector": "selects magnitude but pairs signs",
+    "cp_odd_selector": "requires a new source coefficient",
+    "threshold_and_readout": "unselected"
+  }
+}

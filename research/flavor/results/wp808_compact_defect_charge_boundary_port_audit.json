@@ -1,0 +1,105 @@
+{
+  "work_package": "WP808",
+  "title": "Compact defect charge and boundary-port audit",
+  "summary": {
+    "passed": 15,
+    "total": 15,
+    "all_passed": true
+  },
+  "exact_data": {
+    "periodic_total_charge": "0",
+    "compact_local_charges": [
+      "1",
+      "-1"
+    ],
+    "inclusive_inflow_current": "0",
+    "ordered_endpoint_sectors": {
+      "forward": "1",
+      "reverse": "-1"
+    }
+  },
+  "tests": [
+    {
+      "name": "periodic_link_charge_telescopes",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "kink_has_unit_charge",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "antikink_has_opposite_unit_charge",
+      "passed": true,
+      "evidence": "-1"
+    },
+    {
+      "name": "compact_kink_antikink_packet_has_zero_charge",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "ordered_interval_endpoints_select_positive_charge",
+      "passed": true,
+      "evidence": "1"
+    },
+    {
+      "name": "reversed_interval_endpoints_select_negative_charge",
+      "passed": true,
+      "evidence": "-1"
+    },
+    {
+      "name": "mirror_symmetric_action_gives_equal_wall_density",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "endpoint_reversal_preserves_wall_energy",
+      "passed": true,
+      "evidence": "identical densities"
+    },
+    {
+      "name": "compact_inflow_cancels_inclusively",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "local_inflow_currents_are_opposite",
+      "passed": true,
+      "evidence": "[k, -k]"
+    },
+    {
+      "name": "unoriented_endpoint_groupoid_retains_two_sectors",
+      "passed": true,
+      "evidence": "{'forward': 1, 'reverse': -1}"
+    },
+    {
+      "name": "ordered_boundary_port_restricts_to_single_stabilizer_sector",
+      "passed": true,
+      "evidence": "{'forward': 1}"
+    },
+    {
+      "name": "gapped_vectorlike_completion_preserves_zero_net_index",
+      "passed": true,
+      "evidence": "0"
+    },
+    {
+      "name": "inclusive_probe_has_localization_and_calibration_kernel",
+      "passed": true,
+      "evidence": "rank=0, nullity=2"
+    },
+    {
+      "name": "deliberate_failure_exhibits_single_wall_compensation_obstruction",
+      "passed": true,
+      "evidence": "1"
+    }
+  ],
+  "classification": {
+    "closed_compact_source": "cannot select a lone oriented wall; total defect charge vanishes",
+    "interval_or_noncompact_source": "selects only after ordered boundary or asymptotic sector data",
+    "inflow": "local relative sign survives but inclusive current cancels",
+    "groupoid": "fixing endpoint order defines a stabilizer-groupoid relational experiment",
+    "physical16": "localization and detector calibration remain independent inputs"
+  }
+}
