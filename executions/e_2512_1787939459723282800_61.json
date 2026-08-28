@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939459723282800_61",
+  "created_at": "2026-08-28T17:50:59.7232865Z",
+  "sha256": "006d02172eb070e445caae6dc9fe13230620940df84604f72b17b076af377bc2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/higher_three_adic_lift_checks.py'); c.__exit__(None,None,None); C=d['C']; Ci=d['Ci']; fp=d['fast_power']; I=d['I4'];\ndef v(x):\n z=0\n while x and x%3==0:z+=1;x//=3\n return z\ndef depth(A): return min(v(abs(x)) for row in A for x in row if x)\ndef rank3(A):\n m=[[x%3 for x in row] for row in A];r=0\n for j in range(4):\n  p=next((i for i in range(r,4) if m[i][j]),None)\n  if p is None:continue\n  m[r],m[p]=m[p],m[r]; inv=pow(m[r][j],-1,3);m[r]=[(x*inv)%3 for x in m[r]]\n  for i in range(4):\n   if i!=r and m[i][j]:q=m[i][j];m[i]=[(x-q*y)%3 for x,y in zip(m[i],m[r])]\n  r+=1\n return r\nout=[]\nfor r in range(0,7):\n q=3**r; D=[[b-a for a,b in zip(x,y)] for x,y in zip(I,fp(C,Ci,q))]; u=depth(D); J=[[(x//3**u)%3 for x in row] for row in D]; out.append({'r':r,'q':q,'depth':u,'rank_mod3':rank3(J),'jet':J})\nprint(json.dumps(out,indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:50:44.6362224Z",
+    "finished_at": "2026-08-28T17:50:59.7232473Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "rank and constancy of normalized source shift jets",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "rank and constancy of normalized source shift jets",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[\r\n  {\r\n    \"r\": 0,\r\n    \"q\": 1,\r\n    \"depth\": 1,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 1,\r\n    \"q\": 3,\r\n    \"depth\": 2,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 2,\r\n    \"q\": 9,\r\n    \"depth\": 3,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 3,\r\n    \"q\": 27,\r\n    \"depth\": 4,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 4,\r\n    \"q\": 81,\r\n    \"depth\": 5,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 5,\r\n    \"q\": 243,\r\n    \"depth\": 6,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  },\r\n  {\r\n    \"r\": 6,\r\n    \"q\": 729,\r\n    \"depth\": 7,\r\n    \"rank_mod3\": 3,\r\n    \"jet\": [\r\n      [\r\n        2,\r\n        2,\r\n        0,\r\n        2\r\n      ],\r\n      [\r\n        0,\r\n        0,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        2,\r\n        1,\r\n        2,\r\n        1\r\n      ],\r\n      [\r\n        1,\r\n        0,\r\n        0,\r\n        2\r\n      ]\r\n    ]\r\n  }\r\n]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
