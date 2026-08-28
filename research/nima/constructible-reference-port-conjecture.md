@@ -38,14 +38,8 @@ H_1=\ker\partial_1/\operatorname{im}\partial_2.
 \]
 
 An edge-supported operation can do so only if its residue-free chain is not a
-face boundary. Exact enumeration for \(L=2,3,4\) proves:
-
-\[
-\boxed{
-\text{every residue-free operation of weight }<L
-\text{ is a local repair},
-}
-\]
+face boundary. Exact enumeration for \(L=2,3,4\) proves that every residue-free
+operation of weight less than \(L\) is a local repair,
 
 while the first nontrivial logical cycles occur at weight exactly \(L\). There
 are \(2L\) minimum straight representatives.
@@ -110,4 +104,3 @@ Then test the same criterion on:
 - `research/nima/checkers/check_constructible_reference_port.py`
 - dependency-free invocation:
   `python research/nima/checkers/check_constructible_reference_port.py`
-

@@ -1,0 +1,37 @@
+{
+  "schema": "marici.rh-nonlinear-forcing-determinant.v1",
+  "flow_determinant_residual": "0",
+  "flow_determinant": "exp(2*ell)*exp(pi*y0)*exp(-pi*y0*exp(2*ell))",
+  "coupled_trace": "-2*pi*y + 1",
+  "extended_current_trace": "-2*pi*y + 1",
+  "forcing_gain_trace_residual": "0",
+  "feedback_trace": "-1",
+  "feedback_characteristic_residual": "0",
+  "unit_feedback_divisor_effect": "-gain*(spectral + 1/2)",
+  "lorentz_supply_residual": "0",
+  "transfer_schur_residual": "0",
+  "bordered_determinant_residual": "0",
+  "port_scale_residual": "0",
+  "reciprocal_transfer_residual": "0",
+  "bordered_characteristic_determinant": "-(-4*direct*spectral**2 - 4*direct*spectral + 4*direct*z**2 - direct - 4*force**2*spectral - 2*force**2)/4",
+  "positive_defect_determinant": "-(2*r - 1)*(2*r + 1)",
+  "positive_defect_rank_generic": 2,
+  "scalar_output_gram_rank_generic": 1,
+  "minimal_direct_norm_squared": "-force**2/((2*r - 1)*(2*r + 1))",
+  "positive_conservative_port_classification": {
+    "one_output": "rank_obstruction",
+    "two_outputs": "possible_only_when_force_squared_equals_1_minus_4r_squared",
+    "three_outputs": "possible_with_output_slack_when_force_squared_is_less_than_1_minus_4r_squared",
+    "extra_input_or_indefinite_completion": "required_when_force_squared_exceeds_1_minus_4r_squared"
+  },
+  "verdict": "source_open_loop_is_fixed_but_scalar_conservative_termination_is_rank_obstructed",
+  "unresolved": [
+    "source_direct_boundary_channel",
+    "source_typing_of_positive_defect_outputs",
+    "source_typing_of_slack_or_additional_input_reservoir",
+    "composition_of_local_source_colligations",
+    "completion_domain_of_transfer_colligation",
+    "identification_with_characteristic_determinant_line",
+    "source_varying_forcing_extension"
+  ]
+}
