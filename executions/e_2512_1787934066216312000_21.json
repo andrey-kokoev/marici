@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787934066216312000_21",
+  "created_at": "2026-08-28T16:21:06.2163152Z",
+  "sha256": "d864d7d193d4f306f7f55110831d43c4fde2436ddc866d5880f1793eedc5a597",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/valuation_packet_congruence_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:20:51.7351374Z",
+    "finished_at": "2026-08-28T16:21:06.2163007Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "bounded valuation packet congruence falsifier",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "bounded valuation packet congruence falsifier",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.valuation_packet_congruence_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"classification\": \"complete_valuation_packet_is_not_a_constructor_congruence\",\r\n  \"range\": [\r\n    -40,\r\n    40\r\n  ],\r\n  \"distinct_packet_count\": 6,\r\n  \"repeated_packet_fiber_count\": 5,\r\n  \"split_fiber_count\": 1,\r\n  \"smallest_witness\": {\r\n    \"left\": 0,\r\n    \"right\": 1,\r\n    \"same_packet\": [\r\n      1,\r\n      2,\r\n      3\r\n    ],\r\n    \"directions_that_split\": [\r\n      \"+1\",\r\n      \"-1\"\r\n    ],\r\n    \"left_successor\": [\r\n      1,\r\n      2,\r\n      3\r\n    ],\r\n    \"right_successor\": [\r\n      2,\r\n      5,\r\n      7\r\n    ],\r\n    \"left_predecessor\": [\r\n      2,\r\n      4,\r\n      7\r\n    ],\r\n    \"right_predecessor\": [\r\n      1,\r\n      2,\r\n      3\r\n    ]\r\n  },\r\n  \"split_fiber_summaries\": [\r\n    {\r\n      \"packet\": [\r\n        1,\r\n        2,\r\n        3\r\n      ],\r\n      \"grades\": [\r\n        -39,\r\n        -38,\r\n        -36,\r\n        -35,\r\n        -33,\r\n        -32,\r\n        -30,\r\n        -29,\r\n        -27,\r\n        -26,\r\n        -24,\r\n        -23,\r\n        -21,\r\n        -20,\r\n        -18,\r\n        -17,\r\n        -15,\r\n        -14,\r\n        -12,\r\n        -11,\r\n        -9,\r\n        -8,\r\n        -6,\r\n        -5,\r\n        -3,\r\n        -2,\r\n        0,\r\n        1,\r\n        3,\r\n        4,\r\n        6,\r\n        7,\r\n        9,\r\n        10,\r\n        12,\r\n        13,\r\n        15,\r\n        16,\r\n        18,\r\n        19,\r\n        21,\r\n        22,\r\n        24,\r\n        25,\r\n        27,\r\n        28,\r\n        30,\r\n        31,\r\n        33,\r\n        34,\r\n        36,\r\n        37,\r\n        39,\r\n        40\r\n      ],\r\n      \"successor_class_count\": 6,\r\n      \"predecessor_class_count\": 6\r\n    }\r\n  ],\r\n  \"gates\": {\r\n    \"bounded_range_contains_repeated_complete_packets\": true,\r\n    \"complete_packet_congruence_is_falsified\": true,\r\n    \"a_smallest_split_witness_is_reported\": true,\r\n    \"both_authorized_generator_directions_are_tested\": true,\r\n    \"scalar_defect_is_strictly_coarser_than_the_packet\": true\r\n  },\r\n  \"gate_count\": 5,\r\n  \"passed_gate_count\": 5,\r\n  \"interpretation\": \"Equality of the full minor-valuation packet is not preserved by the authorized decoration generators in the tested range. A higher comparison cell must retain constructor-relative information beyond the local 2+1 packet.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
