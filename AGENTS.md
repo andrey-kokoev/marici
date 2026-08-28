@@ -183,6 +183,59 @@ old modification time do not construct \(\chi_{a\to b}\). Consequently:
   governs even when a broader policy suggests a closeout commit: report the
   coherent uncommitted state and wait for confirmation.
 
+## Provided MCP tools are mandatory
+
+All agents must use the provided MCP tools for every operation those tools can
+perform. This includes reads, writes, patches, moves, searches, Git inspection
+and mutation, task lifecycle operations, graph access, site operations, and
+external-service access.
+
+Model tool selection as a typed partial category. Let
+\(\mathcal C_{\mathrm{MCP}}\) contain the admitted MCP actions and let
+\(\mathcal C_{\mathrm{fallback}}\) contain shell commands, direct CLI tools,
+raw filesystem access, SDK calls, direct network calls, and ad hoc scripts.
+There is no automatic crossing
+
+\[
+\mathcal C_{\mathrm{MCP}}
+\longrightarrow
+\mathcal C_{\mathrm{fallback}}.
+\]
+
+A crossing exists only when the operator explicitly authorizes the specific
+fallback action. General task authority, urgency, convenience, familiarity,
+an MCP error, an unavailable connection, a missing capability, or an agent's
+belief that another route is equivalent does not construct that crossing.
+
+Operationally:
+
+- Use the most specific provided MCP surface capable of the action.
+- Every process execution must go through the provided structured-command MCP
+  surface. This includes Python checkers and scripts, Node programs, test
+  runners, formatters, compilers, build tools, package-manager commands, and
+  one-off executable utilities.
+- Inspect the structured-command policy or guidance when the admitted command
+  shape is uncertain. Use `structured_command_execute` for bounded synchronous
+  work, or `structured_command_start` followed by
+  `structured_command_execution_show` for longer work.
+- Never invoke a checker or executable through a shell, terminal tool,
+  `exec_command`, direct process API, or package/SDK subprocess wrapper when
+  structured-command MCP is available. A structured-command refusal does not
+  authorize another execution route.
+- Do not bypass an MCP tool with a shell, CLI, SDK, raw file operation, direct
+  network request, or ad hoc script.
+- If the MCP call fails, inspect its typed error and use its MCP-provided
+  recovery, retry, restart, or capability-request path. Failure does not
+  authorize fallback.
+- If no provided MCP capability can perform a required action, stop that
+  action and request explicit operator authorization before using any
+  fallback.
+- Operator fallback authorization is narrow: it applies only to the named
+  action, target, and scope. It is not durable permission for later turns,
+  neighboring actions, other tools, or other agents.
+- Record the authorization and the reason for fallback in the resulting
+  execution evidence or handoff.
+
 ## Epistemic graph: access mechanics that work
 
 The graph is an MCP surface reached through mcp-loader. The loader process
