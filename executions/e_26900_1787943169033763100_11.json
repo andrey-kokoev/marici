@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943169033763100_11",
+  "created_at": "2026-08-28T18:52:49.0337661Z",
+  "sha256": "710933c2e6d842f68f02b59d9746636ebcf37a033e069d30279967e8c44db096",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib,json,re\nd=tomllib.loads(pathlib.Path(r'research/nima/contracts/typed-response.v1.toml').read_text())\nT,U,Y,F=d['tables'],d['unions'],d['types'],d['field_sets']\nassert all('allowed' not in t for t in T.values()) and 'allowed' not in d['root']\nids=[c['id'] for c in d['constraints']]; rules=[re.sub(r'\\\\s+',' ',c['rule'].strip().lower()) for c in d['constraints']]\nassert len(ids)==len(set(ids)) and len(rules)==len(set(rules))\nassert 'has_attention' not in str(d) and 'has_context' not in str(d)\nsigs={}\nfor n,t in T.items():\n sig=json.dumps({k:t.get(k) for k in ('field_set','required','optional','constants','fields')},sort_keys=True)\n assert sig not in sigs,(n,'duplicate-table-schema',sigs.get(sig)); sigs[sig]=n\ntype_sigs={}\nfor n,t in Y.items():\n sig=json.dumps(t,sort_keys=True)\n assert sig not in type_sigs,(n,'duplicate-type',type_sigs.get(sig)); type_sigs[sig]=n\nreferenced={'operator','agent'}; changed=True\nwhile changed:\n changed=False\n for n in list(referenced):\n  t=T[n]\n  for s in t.get('fields',{}).values():\n   ref=s.get('schema_ref')\n   if ref and ref not in referenced: referenced.add(ref); changed=True\n   ir=s.get('item_schema_ref')\n   if ir in T and ir not in referenced: referenced.add(ir); changed=True\n   if ir in U:\n    for v in U[ir]['variants']:\n     if v not in referenced: referenced.add(v); changed=True\nassert set(T)==referenced,('unreachable-tables',set(T)-referenced)\nfor fsn,fs in F.items():\n users=[t for t in T.values() if t.get('field_set')==fsn]\n used=set().union(*(set(t.get('required',[]))|set(t.get('optional',[])) for t in users))\n constants=set().union(*(set(t.get('constants',{})) for t in users))\n assert set(fs)==used-constants,(fsn,'unused-or-missing-field-types',set(fs)^(used-constants))\nprint('redundancy-pass',len(referenced),len(sigs),len(type_sigs),len(rules))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:52:48.9530255Z",
+    "finished_at": "2026-08-28T18:52:49.0337547Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Triple check 3: semantic redundancy proxies, schema reachability, unused definitions",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Triple check 3: semantic redundancy proxies, schema reachability, unused definitions",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "redundancy-pass 18 18 9 12\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
