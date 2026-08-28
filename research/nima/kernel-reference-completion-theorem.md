@@ -9,7 +9,7 @@ L:V\to W
 \]
 
 be an observation, syndrome, projection, or implementable-tail map, and
-let (K=\ker L) be its invisible mode space.  Add a reference channel
+let \(K=\ker L\) be its invisible mode space. Add a reference channel
 
 \[
 R:V\to U.
@@ -21,13 +21,8 @@ The completed observation
 (L,R):V\to W\oplus U
 \]
 
-is faithful exactly when
-
-\[
-\boxed{K\cap\ker R=0,}
-\]
-
-equivalently, when (R|_K) is injective.
+is faithful exactly when \(K\cap\ker R=0\), equivalently when \(R|_K\) is
+injective.
 
 For finite-dimensional spaces,
 
@@ -46,7 +41,7 @@ If the proposed reference is computed solely from the old observation,
 R=T L,
 \]
 
-then (K\subseteq\ker R).  Therefore
+then \(K\subseteq\ker R\). Therefore
 
 \[
 \ker(L,R)=K,
@@ -156,4 +151,3 @@ This theorem proves the minimal information and coherence requirements
 for faithful completion.  It does not construct the global relative
 determinant, prove positivity of its generator, or identify physical
 controller faults without an authorized interface map.
-
