@@ -66,3 +66,58 @@ Manifests may declare `depends_on`, `consumes`, `provides`, `missing_constructor
 `doctor` reports the exact interpreter, platform, missing paths, manifest errors, and declared dependency versions. `capsule` emits a reproducibility fingerprint containing the model fingerprint and each checker hash. `dashboard --markdown` is suitable for human workboards. `graph-packet` emits a dry-run, dependency-closed proposal shape with no publication authority; an owner must review and submit it through the governed graph surface.
 
 Discovery rejects owner/locus mismatches, unknown dependencies, and dependency cycles. `plan` computes topological execution layers: models within one layer may run in parallel, while downstream layers wait for their declared dependencies. Fast coordinator tests live in `test_scc.py`.
+
+## Contextual irreducibility gate
+
+A model may freeze a `lower_theory` containing composition, tensoring,
+authorized ancillas, discard, conditioning, tester identities, and explicit
+completeness statuses for its context and hostile languages. Checker output may
+then supply `contextual_irreducibility`. An irreducible result requires
+lower-equivalent inputs with unequal records after the candidate interaction.
+Reducibility requires a descent certificate. Ancillas must be authorized,
+hostile-independent, and uniformly available. An inconclusive result is refused
+when both frozen languages are declared complete.
+
+## Physical apparatus certificates
+
+A manifest may attach an `apparatus_certificate` for a separately
+source-authorized physical instrument. SCC validates the supplied authority,
+state types, one-use joint map, labelled composition law, reset, repeated-use
+law, uncertainty bounds, quotient descent, calibration, domain, and support
+assumptions. It never synthesizes an apparatus or treats a passing packet as
+evidence that the apparatus exists.
+
+Repeated-use packets must declare `fresh` or `shared` coupling semantics,
+including joint signatures, covariance, and two-use variance. This distinguishes
+WP970's fresh variance `1/2` from shared variance `1` even when their
+one-use marginals agree. Triple composition and mixed coherence must close;
+preparation-label side channels and observer-fitted couplings or covariance are
+rejected. Validation returns `pass`, `fail`, or `inconclusive` with the
+first failed gate. Candidate construction remains `candidate_requires_source_derivation`.
+
+The certificate keeps three claims independent: observational rank, natural
+transport between presentations, and accessibility through the stated physical
+port. Equal observations define only an observer kernel pair, not source-state
+identity. Equal chartwise ranks do not replace a closed naturality square. A
+fixed-radius port claim additionally needs a uniform depth/range bound and a
+non-correctable backward-support witness; otherwise the certificate must declare
+growing support or decline the bounded-port claim.
+
+An optional `conjugate_readout_certificate` describes the optical analogue of
+a carrier readout and its generator-weighted mate on the same preparation. It
+requires a source-authorized joint rank-two response. Its admitted conclusion
+is deliberately exact: `transversality_only`. It cannot claim to locate the
+zero or parameter whose transverse crossing it detects.
+
+The conjugate packet also preregisters a controlled-successor experiment. A
+source-derived joint first jet and uncertainty threshold must exist before the
+response is observed. The hostile set includes independent detector channels
+and common-mode drift. A reported pass is invalid unless both nulls are rejected;
+an observer-fitted response law is rejected at the calibration gate.
+
+The watched optical candidate freezes its decision rule in
+`contracts/optical-conjugate-uncertainty-threshold.v1.json`. It whitens the
+complete three-residual packet using independent calibration covariance and
+uses a fixed maximum absolute score cutoff of `5.0`. Candidate survival also
+requires both preregistered null models to exceed that cutoff. Calibration
+failure, missing packets, or a surviving null produces `inconclusive`.
