@@ -61,14 +61,12 @@ q_2\mapsto+g_2.
 Both base connections are therefore
 
 \[
-\boxed{
 A_{3,\mu}=
 \begin{pmatrix}
 \alpha_\mu&0&0\\
 \beta_{1,\mu}&\gamma_{1,\mu}&0\\
 \beta_{2,\mu}&0&\gamma_{2,\mu}
 \end{pmatrix}.
-}
 \]
 
 All ten characteristic-zero coefficient functions are exported in the durable packet.  They are obtained from the two wall reductions, not from the finite-field reconstruction table of Entry 853.
@@ -92,10 +90,8 @@ and both extension identities
 Hence
 
 \[
-\boxed{
 \partial_uA_{3,v}-\partial_vA_{3,u}
 +[A_{3,u},A_{3,v}]=0.
-}
 \]
 
 ## Consequence
