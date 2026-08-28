@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787945542068289800_86",
+  "created_at": "2026-08-28T19:32:22.0682928Z",
+  "sha256": "5795458befc6a60bb1aa3c0145c1e51750af02778a0719cff94c1f51032908fb",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/parity_port_executability_boundary_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T19:32:21.9961283Z",
+    "finished_at": "2026-08-28T19:32:22.0682792Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Magnetic parity-port executability boundary",
+      "expected_cost": "unknown",
+      "source": "caller_declared"
+    },
+    "test_scope": "Magnetic parity-port executability boundary",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.parity_port_executability_boundary_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"gates\": {\r\n    \"projectors_are_complementary\": true,\r\n    \"joint_readout_reconstructs_source\": true,\r\n    \"source_authorizes_invariant_ports\": true,\r\n    \"projection_does_not_authorize_execution\": true,\r\n    \"joint_invertibility_does_not_authorize_joint_acquisition\": true,\r\n    \"observation_does_not_authorize_actuation\": true,\r\n    \"missing_constructor_is_explicit\": true\r\n  },\r\n  \"gate_count\": 7,\r\n  \"passed_gate_count\": 7,\r\n  \"classification\": {\r\n    \"invariant_closure\": \"proved\",\r\n    \"algebraic_joint_observability\": \"proved\",\r\n    \"executable_observation\": \"not_authorized\",\r\n    \"state_actuation\": \"not_constructed\"\r\n  },\r\n  \"smallest_missing_constructor\": {\r\n    \"kind\": \"source_authorized parity-port instrument\",\r\n    \"input\": \"one prepared transported parity-helicity packet\",\r\n    \"output\": \"typed electric, magnetic, or joint observation record\",\r\n    \"required_coherence\": \"the two records refer to the same prepared packet without branch decoherence\",\r\n    \"authority_root\": null\r\n  },\r\n  \"verdict\": \"The completed source supplies complementary algebraic parity ports, but no source-authorized instrument couples to either port or acquires both coherently. Executable observation and state actuation remain distinct absent constructors.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
