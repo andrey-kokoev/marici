@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787943080821271100_77",
+  "created_at": "2026-08-28T18:51:20.8212742Z",
+  "sha256": "5860bd851379eb34e973b4c6126b95e98d3ce754ef1e34ab8e25b38ba1d9d233",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/flag_scalar_route_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T18:51:05.9684811Z",
+    "finished_at": "2026-08-28T18:51:20.8212628Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact flag scalar route decomposition",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact flag scalar route decomposition",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\strominger\\checkers\\flag_scalar_route_checks.py\", line 146, in <module>\r\n    print(json.dumps(payload, indent=2))\r\n          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\__init__.py\", line 242, in dumps\r\n    **kw).encode(obj)\r\n          ~~~~~~^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\encoder.py\", line 202, in encode\r\n    chunks = self.iterencode(o, _one_shot=True)\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\encoder.py\", line 263, in iterencode\r\n    return _iterencode(o, 0)\r\nValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\r\nwhen serializing dict item 'determinant_scalar'\r\nwhen serializing dict item 'left'\r\nwhen serializing list item 0\r\nwhen serializing dict item 'contacts'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
