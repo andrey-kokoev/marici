@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787944255816052300_29",
+  "created_at": "2026-08-28T19:10:55.8160551Z",
+  "sha256": "2d863b590f11799287eb6b24a7a33aaf02f91508e44880bdcce675c669357843",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "check",
+      "interaction-net-pro-context-calibration-candidate"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T19:10:55.4213715Z",
+    "finished_at": "2026-08-28T19:10:55.8160394Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "SCC watched quotient barcode candidate",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "SCC watched quotient barcode candidate",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.check.v1\",\r\n  \"models\": [\r\n    {\r\n      \"id\": \"interaction-net-pro-context-calibration-candidate\",\r\n      \"status\": \"checks_failed\",\r\n      \"passed\": false,\r\n      \"outcomes\": [\r\n        {\r\n          \"id\": \"interaction-net-cross-level-calibration\",\r\n          \"status\": \"passed\",\r\n          \"returncode\": 0,\r\n          \"result\": {\r\n            \"passed\": true,\r\n            \"conclusion\": \"checker_validated_candidate_awaiting_independent_calibrated_packet\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"interaction-net-uniform-noise-law\",\r\n          \"status\": \"passed\",\r\n          \"returncode\": 0,\r\n          \"result\": {\r\n            \"passed\": true,\r\n            \"conclusion\": \"conditional_uniform_law_checker_passes_but_finite_data_cannot_certify_all_levels\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"interaction-net-morphism-faithfulness\",\r\n          \"status\": \"passed\",\r\n          \"returncode\": 0,\r\n          \"result\": {\r\n            \"passed\": true,\r\n            \"conclusion\": \"faithful_on_thin_cubical_quotient_free_path_fails_exact_quotient_unknown\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"interaction-net-exact-quotient-descent\",\r\n          \"status\": \"passed\",\r\n          \"returncode\": 0,\r\n          \"result\": {\r\n            \"passed\": true,\r\n            \"conclusion\": \"exact_finite_linear_quotient_found_naive_pro_context_nondescent\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"interaction-net-quotient-persistence-span\",\r\n          \"status\": \"failed\",\r\n          \"returncode\": 1,\r\n          \"result\": {\r\n            \"adapter\": \"exit-code-only\"\r\n          },\r\n          \"stdout\": \"\",\r\n          \"stderr\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\aspect\\\\checkers\\\\check_interaction_net_quotient_persistence_span.py\\\", line 74, in <module>\\n    main()\\n    ~~~~^^\\n  File \\\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\aspect\\\\checkers\\\\check_interaction_net_quotient_persistence_span.py\\\", line 22, in main\\n    target_dimension = depth4[\\\"global_quotient_rank\\\"] if packet[\\\"target_depth\\\"] == 4 else None\\n                                                         ~~~~~~^^^^^^^^^^^^^^^^\\nKeyError: 'target_depth'\\n\"\r\n        }\r\n      ],\r\n      \"scientific_delta\": [\r\n        {\r\n          \"check\": \"interaction-net-quotient-persistence-span\",\r\n          \"before\": {\r\n            \"passed\": true,\r\n            \"conclusion\": \"pro_instrument_replaced_by_quotient_persistence_span\"\r\n          },\r\n          \"after\": {\r\n            \"adapter\": \"exit-code-only\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"passed\": false\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
