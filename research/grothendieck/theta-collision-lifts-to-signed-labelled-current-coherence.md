@@ -50,7 +50,7 @@ Integration by parts defines the source-native signed measure
 
 \[
 d\mu_{n,L}(t)
-=-\phi_n'(t)\,dt+phi_n(L)\delta_L(dt).
+=-\phi_n'(t)\,dt+\phi_n(L)\delta_L(dt).
 \]
 
 Its total mass is \(\phi_n(0)\), and
@@ -67,7 +67,7 @@ appears only after codiagonal summation:
 
 \[
 \sum_{n\ge1}d\mu_{n,L}
-=-Phi'(t)\,dt+Phi(L)\delta_L(dt)
+=-\Phi'(t)\,dt+\Phi(L)\delta_L(dt)
 =d\mu_L(t)>0.
 \]
 
