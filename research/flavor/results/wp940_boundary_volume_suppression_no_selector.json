@@ -1,0 +1,31 @@
+{
+  "work_package": "WP940",
+  "status": "PASS",
+  "checks_passed": 12,
+  "checks_total": 12,
+  "checks": {
+    "response_tau_zero": true,
+    "response_tau_one": true,
+    "exact_separation": true,
+    "finite_bulk_separates": true,
+    "finite_map_injective": true,
+    "sensitivity_nonzero_tau_zero": true,
+    "sensitivity_nonzero_tau_one": true,
+    "suppression_not_selection": true,
+    "zero_coupling_limit_not_observed_normalization": true,
+    "finite_resolution_is_instrument_relative": true,
+    "nda_matching_not_declared": true,
+    "physical16_instrument_open": true
+  },
+  "exact_witness": {
+    "bulk_inverse_coupling": "100",
+    "tau_pair": ["0", "1"],
+    "response_pair": ["1/100", "1/101"],
+    "separation": "1/10100"
+  },
+  "classification": "approximate readout contraction, neither selector nor rigidifier",
+  "contextual_partition": "exactly separated at finite C; collapse only relative to a declared detector resolution",
+  "singular_limit": "C to infinity sends both couplings to zero and changes the explanandum",
+  "smallest_exact_falsifier": "C=100 with tau=0 and tau=1 gives 1/100 and 1/101",
+  "remaining_gate": "UV law fixing finite tau with nonzero coupling, completion stability, and calibrated physical16 response"
+}
