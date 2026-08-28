@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787947134474776900_69",
+  "created_at": "2026-08-28T19:58:54.4747801Z",
+  "sha256": "b5fe3b03953e97eb4d5b1efd8b8fc307e5f3cb57cf800d895de133d243c0064d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\ndef eig2(a,b,d): return ((a+d-math.sqrt((a-d)**2+4*b*b))/2,(a+d+math.sqrt((a-d)**2+4*b*b))/2)\nbest=(99,None)\nfor k in range(1,1000000):\n d=math.pi*k/1000000;c=math.cos(d/2);s=math.sin(d/2);lo,hi=eig2(4,2*c,2*c*c); vals=[lo,hi,2,2*s*s]; q=math.sqrt(max(vals)/min(vals))\n if q<best[0]:best=(q,d,vals)\nprint(best)"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T19:58:53.4505827Z",
+    "finished_at": "2026-08-28T19:58:54.4747572Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "two-pole constrained frame branch",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "two-pole constrained frame branch",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2.8710005402861927, 1.1437187966879392, [0.5857861171568932, 4.828426483806313, 2, 0.5857873990367949])\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
