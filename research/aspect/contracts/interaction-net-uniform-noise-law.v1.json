@@ -1,0 +1,39 @@
+{
+  "schema": "marici.aspect.interaction-net-uniform-noise-law.v1",
+  "status": "candidate_requires_source_derivation_and_physical_execution",
+  "tower": "Entry-4013 preregistered pro-context tower",
+  "normalized_error": "calibrated record error after common-gain inversion",
+  "law": {
+    "per_level_covariance": "Sigma_R = sigma_ind_R^2 I + sigma_common_R^2 11^T plus declared sorter term",
+    "restriction_pushforward": "J_R Sigma_Rplus1 J_R transpose",
+    "jacobian": "common gain ratio times clipping activity projector",
+    "uniform_requirements": [
+      "sup_R sigma_ind_R is finite",
+      "sup_R sigma_common_R is finite",
+      "sup_R sorter-noise proxy is finite",
+      "sup_R common low/high gain ratio is finite",
+      "paired-route cross covariance is retained"
+    ],
+    "empirical_finite_prefix_can_establish_uniformity": false,
+    "source_derived_all_level_envelope_required": true
+  },
+  "decision": {
+    "packet": "complete value and first-jet residual with paired-route covariance",
+    "statistic": "full-covariance Mahalanobis residual",
+    "per_square_threshold": 20.515,
+    "per_square_alpha": 0.001,
+    "infinite_family_claim": "requires a preregistered alpha-spending schedule or simultaneous source-derived bound"
+  },
+  "hostiles": [
+    "variance grows after every tested finite prefix",
+    "gain ratios become unbounded",
+    "cross covariance discarded",
+    "raw rather than calibrated variance compared",
+    "threshold refit after observing the failing level",
+    "finite-prefix survival promoted to all-level certification"
+  ],
+  "authority": {
+    "synthetic_family": "checker validation only",
+    "uniform_physical_law_certified": false
+  }
+}

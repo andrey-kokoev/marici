@@ -1,0 +1,38 @@
+{
+  "schema": "marici.aspect.optical-logical-commutator-benchmark.v1",
+  "source_packets": [
+    "research/kitaev/toric-code-source-syndrome-logical-algebra.md",
+    "research/kitaev/controlled-loop-order-interferometer.md",
+    "research/kitaev/echo-calibrated-logical-commutator-interferometer.md"
+  ],
+  "encoding": {
+    "target": "dual-rail optical qubit",
+    "control": "path qubit",
+    "X": "calibrated rail swap",
+    "Z": "calibrated pi relative phase",
+    "inverse_operations": "actual optical inverses, not separately fitted copies"
+  },
+  "protocol": {
+    "reference_branch": "identity with matched passive delay",
+    "signal_branch": "Z X Z^-1 X^-1",
+    "readout": "control X and Y quadratures",
+    "odd_intersection_prediction": {"X": -1, "Y": 0, "magnitude": 1},
+    "even_intersection_control": {"X": 1, "Y": 0, "magnitude": 1},
+    "target_state_independent": true
+  },
+  "preregistered_hostiles": [
+    "inverse gate is not the calibrated inverse",
+    "unmatched branch phase",
+    "which-branch leakage",
+    "target-state dependence",
+    "nonzero Y quadrature",
+    "coherence magnitude below threshold",
+    "odd/even control does not flip X"
+  ],
+  "claim_boundary": {
+    "validates_balanced_word_optical_hardware": true,
+    "instantiates_interaction_net_O_or_K": false,
+    "physical_execution_completed": false
+  },
+  "verdict": "fully_compiled_optical_benchmark_awaiting_execution"
+}
