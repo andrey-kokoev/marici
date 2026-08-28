@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939826584724800_65",
+  "created_at": "2026-08-28T17:57:06.5847277Z",
+  "sha256": "b215d3ca75f2723024cb4c5bcfd66ecb81172d1a1be1cbaed9b55453ff07a2ef",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/period_729_layer_localization.py'); c.__exit__(None,None,None); L=d['layers']; cache={};\ndef M(n):\n cache.setdefault(n,L(n)['full']); return cache[n]\ndef D(n,r):\n a=M(n);b=M(n+3**r);return tuple((y-x)//(3**(r+1))%3 for ar,br in zip(a,b) for x,y in zip(ar,br))\nout=[]\nfor n in range(51):\n ds=[D(n,r) for r in (2,3,4,5,6)];out.append({'n':n,'independent':len(set(ds))==1,'derivative':ds[0]})\nprint(json.dumps({'all_independent':all(x['independent'] for x in out),'distinct_derivatives':len(set(x['derivative'] for x in out)),'period3':all(out[n]['derivative']==out[n+3]['derivative'] for n in range(48)),'period9':all(out[n]['derivative']==out[n+9]['derivative'] for n in range(42)),'records':out[:12]},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:56:49.1276025Z",
+    "finished_at": "2026-08-28T17:57:06.5847157Z",
+    "timeout_ms": 180000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "normalized nonlinear readout derivative independence and periodicity",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "normalized nonlinear readout derivative independence and periodicity",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"all_independent\": true,\r\n  \"distinct_derivatives\": 1,\r\n  \"period3\": true,\r\n  \"period9\": true,\r\n  \"records\": [\r\n    {\r\n      \"n\": 0,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 1,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 2,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 3,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 4,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 5,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 6,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 7,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 8,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 9,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 10,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    },\r\n    {\r\n      \"n\": 11,\r\n      \"independent\": true,\r\n      \"derivative\": [\r\n        1,\r\n        1,\r\n        2,\r\n        0,\r\n        1,\r\n        1,\r\n        0,\r\n        0,\r\n        2,\r\n        1,\r\n        0,\r\n        0\r\n      ]\r\n    }\r\n  ]\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
