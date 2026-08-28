@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787947081724752200_68",
+  "created_at": "2026-08-28T19:58:01.7247556Z",
+  "sha256": "fb607c4f5acdcc27b43d8c08f8bcbf03526eaa9dcdcfe4cb8b6c8cc16ee4b95b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\ndef gram(A):\n return [[sum(r[i]*r[j] for r in A) for j in range(4)] for i in range(4)]\ndef eig(a):\n a=[r[:] for r in a]\n for _ in range(80):\n  p,q=max(((i,j) for i in range(4) for j in range(i+1,4)),key=lambda z:abs(a[z[0]][z[1]]))\n  if abs(a[p][q])<1e-13: break\n  ph=.5*math.atan2(2*a[p][q],a[q][q]-a[p][p]); c=math.cos(ph); s=math.sin(ph)\n  for k in range(4):\n   if k not in (p,q):\n    x,y=a[p][k],a[q][k]; a[p][k]=a[k][p]=c*x-s*y; a[q][k]=a[k][q]=s*x+c*y\n  x,y,z=a[p][p],a[q][q],a[p][q]; a[p][p]=c*c*x-2*s*c*z+s*s*y; a[q][q]=s*s*x+2*s*c*z+c*c*y; a[p][q]=a[q][p]=0\n return sorted(a[i][i] for i in range(4))\ndef cond(A):\n e=eig(gram(A)); return math.sqrt(e[-1]/e[0]) if e[0]>1e-10 else 1e99\nbest=(1e99,None)\nN=720\nfor ia in range(N):\n a=2*math.pi*ia/N\n for ib in range(N):\n  b=2*math.pi*ib/N\n  A=[[1,1,0,0],[1,0,1,0],[1,0,math.cos(a),math.sin(a)],[1,0,math.cos(b),math.sin(b)]]\n  c=cond(A)\n  if c<best[0]:best=(c,('one',a,b,eig(gram(A))))\nfor k in range(1,20000):\n d=2*math.pi*k/20000\n A=[[1,1,0,0],[1,-1,0,0],[1,0,1,0],[1,0,math.cos(d),math.sin(d)]]\n c=cond(A)\n if c<best[0]:best=(c,('two',d,eig(gram(A))))\nprint(best)"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T19:57:35.023284Z",
+    "finished_at": "2026-08-28T19:58:01.7247416Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "dependency-free constrained optical frame search",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "dependency-free constrained optical frame search",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2.4842086727071306, ('one', 2.0943951023931953, 4.1887902047863905, [0.6972243622680054, 1.4999999999999998, 1.5000000000000002, 4.302775637731995]))\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
