@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943119725230700_8",
+  "created_at": "2026-08-28T18:51:59.7252337Z",
+  "sha256": "1413b6194446869aa31df31ebb8554bf9dbeda76f59c9d0871274026e4071ffc",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib; p=pathlib.Path(r'research/nima/contracts/typed-response.v1.toml'); d=tomllib.loads(p.read_text(encoding='utf-8')); assert d['schema']=='marici.typed-response-schema.v1'; print('syntax-pass',len(p.read_text(encoding='utf-8')),len(d))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:51:59.6534303Z",
+    "finished_at": "2026-08-28T18:51:59.7252198Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Triple check 1: final TOML syntax and identity",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Triple check 1: final TOML syntax and identity",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "syntax-pass 9904 10\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
