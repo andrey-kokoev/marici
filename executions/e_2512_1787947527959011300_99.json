@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787947527959011300_99",
+  "created_at": "2026-08-28T20:05:27.9590143Z",
+  "sha256": "21cda22e6071dbb316918b611d7369f6e4feef49769e2bca8d2643256f839eb1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_two_level_interference_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:05:27.8806522Z",
+    "finished_at": "2026-08-28T20:05:27.9590013Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Dependency-free exact E1/E2 Clifford ideal visibility",
+      "expected_cost": "unknown",
+      "source": "caller_declared"
+    },
+    "test_scope": "Dependency-free exact E1/E2 Clifford ideal visibility",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.checker_results.v1\",\r\n  \"checker\": \"magnetic_two_level_interference_checks.py\",\r\n  \"author\": \"marici.Strominger\",\r\n  \"dependency_posture\": \"Python standard library exact Laurent-rational arithmetic\",\r\n  \"scope\": {\r\n    \"strength\": \"exact full-fold mechanism distinction\",\r\n    \"grade\": 2,\r\n    \"classes\": [\r\n      \"E1\",\r\n      \"E2\"\r\n    ]\r\n  },\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"E1.nonzero\",\r\n      \"statement\": \"E1 has two nonzero sheet outputs\",\r\n      \"status\": \"pass\",\r\n      \"detail\": {\r\n        \"left_numerator_terms\": 12,\r\n        \"right_numerator_terms\": 12\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"E1.magnetic\",\r\n      \"statement\": \"E1 is magnetic-zero by equal-sheet coherence\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A=B\"\r\n    },\r\n    {\r\n      \"id\": \"E1.electric\",\r\n      \"statement\": \"E1 remains visible to the complementary sum\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A+B=2A!=0\"\r\n    },\r\n    {\r\n      \"id\": \"E2.nonzero\",\r\n      \"statement\": \"E2 has two nonzero sheet outputs\",\r\n      \"status\": \"pass\",\r\n      \"detail\": {\r\n        \"left_numerator_terms\": 14,\r\n        \"right_numerator_terms\": 14\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"E2.magnetic\",\r\n      \"statement\": \"E2 is magnetic-zero by equal-sheet coherence\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A=B\"\r\n    },\r\n    {\r\n      \"id\": \"E2.electric\",\r\n      \"statement\": \"E2 remains visible to the complementary sum\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A+B=2A!=0\"\r\n    },\r\n    {\r\n      \"id\": \"E1.closed\",\r\n      \"statement\": \"the first exceptional sheet has the closed formula\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"40(z+zb)/(1+z*zb)^3\"\r\n    }\r\n  ],\r\n  \"n_pass\": 7,\r\n  \"n_fail\": 0,\r\n  \"verdict\": \"E1 and E2 have A=B nonzero. They are pure electric-ideal states: magnetic projection vanishes while the complementary electric readout equals 2A and remains nonzero.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
