@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_21560_1787935569027920600_32",
+  "created_at": "2026-08-28T16:46:09.0279254Z",
+  "sha256": "2b8d36f20ffd2e8c903261a4800671d9809b9676d0894dbca449f24ce46099bd",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json,pathlib\nfor n in ['rank26_physical_source_covariant_jet_census_k3_p32009.json','rank26_physical_g31_source_covariant_jet_census_k3_p32009.json']:\n d=json.loads((pathlib.Path('research/nima/results')/n).read_text()); print(n, sorted(d.keys())); print('basis?',[(k,type(v).__name__,len(v) if isinstance(v,list) else '') for k,v in d.items() if 'basis' in k or 'label' in k or 'free' in k])"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T16:46:08.9518957Z",
+    "finished_at": "2026-08-28T16:46:09.0279076Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "rank26_physical_source_covariant_jet_census_k3_p32009.json ['annihilator_dimension', 'annihilator_reduced_dual_basis', 'first_full_order', 'full_cyclicity_reached', 'gamma', 'k_pole_depth', 'max_jet_order', 'orders', 'passed', 'prime', 'quotient_dimension', 'raw_before_reduction', 'schema', 'twist']\r\nbasis? [('annihilator_reduced_dual_basis', 'list', 7)]\r\nrank26_physical_g31_source_covariant_jet_census_k3_p32009.json ['annihilator_dimension', 'annihilator_reduced_dual_basis', 'chart', 'first_full_order', 'full_cyclicity_reached', 'gamma', 'k_pole_depth', 'max_jet_order', 'orders', 'passed', 'prime', 'quotient_dimension', 'raw_before_reduction', 'schema', 'twist']\r\nbasis? [('annihilator_reduced_dual_basis', 'list', 7)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
