@@ -1,0 +1,44 @@
+{
+  "schema": "marici.rank26-conductor-jet-residue-constructor.v1",
+  "physical_local_power": "R^(-1-2*k+2*epsilon)",
+  "constructor": "J_k(f)=coefficient of R^(2*k) in f = f^(2*k)(0)/(2*k)!",
+  "supported_k_depths": [
+    0,
+    1,
+    2
+  ],
+  "jet_rows": [
+    {
+      "k_pole": 0,
+      "normal_pole_order": 1,
+      "required_jet_order": 0,
+      "residue": "3",
+      "jet_coefficient": "3",
+      "matches": true
+    },
+    {
+      "k_pole": 1,
+      "normal_pole_order": 3,
+      "required_jet_order": 2,
+      "residue": "5",
+      "jet_coefficient": "5",
+      "matches": true
+    },
+    {
+      "k_pole": 2,
+      "normal_pole_order": 5,
+      "required_jet_order": 4,
+      "residue": "-11",
+      "jet_coefficient": "-11",
+      "matches": true
+    }
+  ],
+  "exact_derivative_residue": "0",
+  "checks": {
+    "k0_uses_value": true,
+    "k1_uses_second_jet": true,
+    "k2_uses_fourth_jet": true,
+    "formal_residue_annihilates_exact_normal_derivatives": true
+  },
+  "passed": true
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "marici.rank26-two-conductor-collision-universality.v1",
+  "packets": [
+    {
+      "name": "G12:g1",
+      "h0": "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))",
+      "limit": [
+        [
+          "(2*x*z + y**2 + 2*y*z + 2*z**2)/(2*x*y**2*(x + z)**2*(y + 2*z)**2*(x - y - z))",
+          "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))"
+        ],
+        [
+          "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))",
+          "0"
+        ]
+      ],
+      "determinant": "-1/(4*x**2*y**2*(x + z)**2*(y + 2*z)**2*(x - y - z)**2)",
+      "matches_universal_value_derivative_form": true,
+      "determinant_is_minus_h0_squared": true,
+      "generic_rank_two": true
+    },
+    {
+      "name": "G12:g2",
+      "h0": "1/(2*x*y*(x + 2*z)*(y + z)*(x - y + z))",
+      "limit": [
+        [
+          "(x**2 + 2*x*z + 2*y*z + 2*z**2)/(2*x**2*y*(x + 2*z)**2*(y + z)**2*(x - y + z))",
+          "1/(2*x*y*(x + 2*z)*(y + z)*(x - y + z))"
+        ],
+        [
+          "1/(2*x*y*(x + 2*z)*(y + z)*(x - y + z))",
+          "0"
+        ]
+      ],
+      "determinant": "-1/(4*x**2*y**2*(x + 2*z)**2*(y + z)**2*(x - y + z)**2)",
+      "matches_universal_value_derivative_form": true,
+      "determinant_is_minus_h0_squared": true,
+      "generic_rank_two": true
+    }
+  ],
+  "checks": {
+    "both_match_universal_value_derivative_form": true,
+    "both_determinants_are_minus_h0_squared": true,
+    "both_are_generically_rank_two": true,
+    "the_two_source_formulas_are_independent": true
+  },
+  "passed": true,
+  "conclusion": "Both independently defined active G12 conductors specialize to the same rank-two value/derivative form. Together with cyclic covariance, all six labelled ports inherit the same nonreduced collision type."
+}

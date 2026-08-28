@@ -1,0 +1,32 @@
+{
+  "schema": "marici.rank26-active-wall-endpoint-sewing.v1",
+  "common_corner": {
+    "a": "x+z",
+    "b": "y+z",
+    "walls": [
+      "g1",
+      "g2"
+    ]
+  },
+  "physical_sqrtK_at_corner": "(-x + y + z)*(x - y + z)*(x + y + z)",
+  "oriented_residues": {
+    "g1": "-2*z/((x - y - z)**2*(x - y + z)**2*(x + y + z)*(x + y + 3*z))",
+    "g2": "2*z/((x - y - z)**2*(x - y + z)**2*(x + y + z)*(x + y + 3*z))",
+    "sum": "0"
+  },
+  "sample_2_3_4": {
+    "g1": "-8/34425",
+    "g2": "8/34425"
+  },
+  "checks": {
+    "corner_K_nonzero_in_strict_triangle": true,
+    "g1_endpoint_residue_nonzero": true,
+    "g2_endpoint_residue_nonzero": true,
+    "oriented_endpoint_residues_cancel": true,
+    "sample_g1_residue": true,
+    "sample_g2_residue": true
+  },
+  "passed": true,
+  "conclusion": "K is nonzero at the shared endpoint, so dimensional continuation of K does not regulate its marked-wall pole. The two source-oriented endpoint residues cancel exactly only in the sewn two-wall packet.",
+  "scope": "This proves common-endpoint sewing and blocks independent full wall finite parts. It does not cancel the two isolated conductor residues or complete the two-dimensional physical readout."
+}

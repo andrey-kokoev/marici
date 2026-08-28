@@ -1,0 +1,102 @@
+{
+  "schema": "marici.rank26-literal-residue-chain-wall-segments.v1",
+  "assumptions": [
+    "x>0",
+    "y>0",
+    "z>0",
+    "x<y+z",
+    "y<x+z",
+    "z<x+y"
+  ],
+  "tetrahedron_faces": [
+    [
+      "a",
+      "b",
+      "z"
+    ],
+    [
+      "b",
+      "E",
+      "x"
+    ],
+    [
+      "E",
+      "a",
+      "y"
+    ],
+    [
+      "x",
+      "y",
+      "z"
+    ]
+  ],
+  "active_wall_segments": {
+    "g1": {
+      "fixed": "b=y+z",
+      "parameter": "a",
+      "interval": [
+        "x+z",
+        "y+2*z"
+      ],
+      "residue_orientation": "-da",
+      "R_sign_at_lower": "positive",
+      "R_sign_at_upper": "negative",
+      "sheet_sequence": [
+        "D_plus",
+        "D_minus"
+      ],
+      "switch_count": 1,
+      "sample_switch": "3*sqrt(46)/2"
+    },
+    "g2": {
+      "fixed": "a=x+z",
+      "parameter": "b",
+      "interval": [
+        "y+z",
+        "x+2*z"
+      ],
+      "residue_orientation": "+db",
+      "R_sign_at_lower": "negative",
+      "R_sign_at_upper": "positive",
+      "sheet_sequence": [
+        "D_minus",
+        "D_plus"
+      ],
+      "switch_count": 1,
+      "sample_switch": "sqrt(94)"
+    }
+  },
+  "walls_with_no_literal_real_incidence": [
+    "g3",
+    "g23",
+    "g31"
+  ],
+  "endpoint_factors": {
+    "R1_at_x_plus_z": "-(x - y - z)*(x - y + z)*(x + y + z)",
+    "R1_at_y_plus_2z": "(y + z)*(x - y - z)*(x + y - z)",
+    "R2_at_y_plus_z": "(x - y - z)*(x - y + z)*(x + y + z)",
+    "R2_at_x_plus_2z": "(x + z)*(x - y + z)*(x + y - z)"
+  },
+  "triangle_signs": {
+    "x+y-z": "positive",
+    "x+z-y": "positive",
+    "y+z-x": "positive",
+    "E": "positive"
+  },
+  "checks": {
+    "R1_at_x_plus_z_factorization": true,
+    "R1_at_y_plus_2z_factorization": true,
+    "R2_at_y_plus_z_factorization": true,
+    "R2_at_x_plus_2z_factorization": true,
+    "cayley_menger_matrix_matches_K": true,
+    "g1_interval_nonempty_from_x_lt_y_plus_z": true,
+    "g2_interval_nonempty_from_y_lt_x_plus_z": true,
+    "R1_strictly_decreases_for_positive_a": true,
+    "R2_strictly_increases_for_positive_b": true,
+    "g3_has_no_positive_solution": true,
+    "g23_excluded_by_x_lt_y_plus_z": true,
+    "g31_excluded_by_y_lt_x_plus_z": true
+  },
+  "passed": true,
+  "scope": "This selects literal real CM-chain incidence after the q_G12 residue. It does not assign winding to nonincident complex pole walls under further analytic continuation."
+}

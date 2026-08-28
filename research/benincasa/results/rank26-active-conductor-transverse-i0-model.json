@@ -1,0 +1,41 @@
+{
+  "schema": "marici.rank26-active-conductor-transverse-i0-model.v1",
+  "wall_coordinates": {
+    "g1": "q1=b-y-z",
+    "g2": "q2=a-x-z"
+  },
+  "local_models": {
+    "g1": "K=R1^2+q1*S1+O(q1^2)",
+    "g2": "K=R2^2+q2*S2+O(q2^2)"
+  },
+  "transverse_coefficients": {
+    "S1": "2*(y + z)*(-a**2*x**2 - a**2*y**2 + a**2*z**2 + x**4 + 2*x**3*y + 2*x**3*z - x**2*y**2 + 2*x**2*y*z - 2*x*y**3 - 2*x*y**2*z - 2*x*y*z**2 - 2*x*z**3 + 2*y**4 + 2*y**3*z - y**2*z**2 - 2*y*z**3 - z**4)",
+    "S2": "2*(x + z)*(-b**2*x**2 - b**2*y**2 + b**2*z**2 + 2*x**4 - 2*x**3*y + 2*x**3*z - x**2*y**2 - 2*x**2*y*z - x**2*z**2 + 2*x*y**3 + 2*x*y**2*z - 2*x*y*z**2 - 2*x*z**3 + y**4 + 2*y**3*z - 2*y*z**3 - z**4)"
+  },
+  "conductor_remainders": {
+    "S1_mod_R1": "2*(y + z)*(x - y - z)*(x - y + z)*(x + y - z)*(x + y + z)**2/x",
+    "S2_mod_R2": "2*(x + z)*(x - y - z)*(x - y + z)*(x + y - z)*(x + y + z)**2/y"
+  },
+  "transversality_resultants": {
+    "g1": "4*(y + z)**2*(x - y - z)**2*(x - y + z)**2*(x + y - z)**2*(x + y + z)**4",
+    "g2": "4*(x + z)**2*(x - y - z)**2*(x - y + z)**2*(x + y - z)**2*(x + y + z)**4"
+  },
+  "strict_triangle_sign": "Both conductor remainders are negative because x-y-z<0 and every other displayed factor is positive.",
+  "source_boundary_value": "For q_i -> q_i-i0, K -> r_i^2-i0*S_i = r_i^2+i0*|S_i| at either selected conductor.",
+  "sample_2_3_4": {
+    "S1": "-8505",
+    "S2": "-4860"
+  },
+  "checks": {
+    "g1_wall_square": true,
+    "g2_wall_square": true,
+    "g1_conductor_remainder": true,
+    "g2_conductor_remainder": true,
+    "g1_transversality_resultant_nonzero": true,
+    "g2_transversality_resultant_nonzero": true,
+    "g1_sample_transverse_negative": true,
+    "g2_sample_transverse_negative": true
+  },
+  "passed": true,
+  "scope": "This derives the local bypass and transversality. It does not assign a standalone finite-part wall period or split the unsplit physical relative cocycle."
+}

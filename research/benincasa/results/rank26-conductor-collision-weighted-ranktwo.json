@@ -1,0 +1,27 @@
+{
+  "schema": "marici.rank26-conductor-collision-weighted-ranktwo.v1",
+  "raw_sheet_matrix": "Matrix([[1/(2*r*x*(-r + y)*(-r + x + z)*(r + y + 2*z)*(x - y - z)), 1/(2*x*(-r + y)*(-r + x + z)*(r + y + 2*z)*(x - y - z))], [-1/(2*r*x*(r + y)*(-r + y + 2*z)*(r + x + z)*(x - y - z)), 1/(2*x*(r + y)*(-r + y + 2*z)*(r + x + z)*(x - y - z))]])",
+  "collision_lattice_transform": "Matrix([[1/2, 1/2], [r/2, -r/2]])",
+  "weighted_limit": [
+    [
+      "(2*x*z + y**2 + 2*y*z + 2*z**2)/(2*x*y**2*(x + z)**2*(y + 2*z)**2*(x - y - z))",
+      "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))"
+    ],
+    [
+      "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))",
+      "0"
+    ]
+  ],
+  "expected_limit": "[[h'(0),h(0)],[h(0),0]]",
+  "h0": "1/(2*x*y*(x + z)*(y + 2*z)*(x - y - z))",
+  "determinant": "-1/(4*x**2*y**2*(x + z)**2*(y + 2*z)**2*(x - y - z)**2)",
+  "checks": {
+    "raw_sheet_matrix_has_simple_collision_poles": true,
+    "weighted_limit_exists_entrywise": true,
+    "weighted_limit_matches_value_derivative_matrix": true,
+    "collision_determinant_is_minus_h0_squared": true,
+    "generic_collision_rank_is_two": true
+  },
+  "passed": true,
+  "conclusion": "The singular projector basis has a source-forced weighted limit of rank two. At C1=0 the target becomes the full value/derivative dual of the nonreduced root algebra, not a rank-one determinant or aggregate line."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "marici.rank26-conductor-root-cover-deck-splitting.v1",
+  "root_cover": "r^2=C1/x",
+  "branch_polynomial": "x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3",
+  "sheet_coefficients": {
+    "plus": "-(-r + x - z)/(2*r*x*(-r + y)*(-r + x + z)*(r + y + 2*z)*(x - y - z))",
+    "minus": "(r + x - z)/(2*r*x*(r + y)*(-r + y + 2*z)*(r + x + z)*(x - y - z))"
+  },
+  "deck_components": {
+    "even": "-z*(x + y + z)/(x*(-r + y)*(r + y)*(-r + x + z)*(-r + y + 2*z)*(r + x + z)*(r + y + 2*z))",
+    "odd": "-(r**4 - r**2*x**2 - r**2*y**2 - 2*r**2*y*z - 3*r**2*z**2 + x**2*y**2 + 2*x**2*y*z - y**2*z**2 - 2*y*z**3)/(2*r*x*(-r + y)*(r + y)*(-r + x + z)*(-r + y + 2*z)*(r + x + z)*(r + y + 2*z)*(x - y - z))"
+  },
+  "sample_2_3_4": {
+    "even": "-0.0001612496850592089",
+    "odd": "6.686710029700550e-5"
+  },
+  "checks": {
+    "root_cover_equation_nontrivial_at_sample": true,
+    "deck_exchanges_sheet_coefficients": true,
+    "even_component_is_deck_invariant": true,
+    "odd_component_is_deck_anti_invariant": true,
+    "positive_sheet_reconstructs_from_even_and_odd": true,
+    "even_component_is_generically_nonzero": true,
+    "odd_component_is_generically_nonzero": true,
+    "both_components_nonzero_at_asymmetric_sample": true
+  },
+  "passed": true,
+  "conclusion": "The positive-root conductor port has nonzero deck-even and deck-odd parts. Only the even aggregate descends to the base; the source port requires the labelled root-cover projector local system."
+}

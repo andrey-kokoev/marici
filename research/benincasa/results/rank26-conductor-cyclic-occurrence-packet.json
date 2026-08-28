@@ -1,0 +1,64 @@
+{
+  "schema": "marici.rank26-conductor-cyclic-occurrence-packet.v1",
+  "cyclic_action": "(X1,X2,X3;y12,y23,y31)->(X2,X3,X1;y23,y31,y12)",
+  "chart_orientations": {
+    "G12": "dy23 wedge dy31",
+    "G23": "dy31 wedge dy12",
+    "G31": "dy12 wedge dy23"
+  },
+  "port_labels": {
+    "G12": [
+      "g1",
+      "g2"
+    ],
+    "G23": [
+      "g2",
+      "g3"
+    ],
+    "G31": [
+      "g3",
+      "g1"
+    ]
+  },
+  "orbit_structure": [
+    [
+      "G12:g1",
+      "G23:g2",
+      "G31:g3"
+    ],
+    [
+      "G12:g2",
+      "G23:g3",
+      "G31:g1"
+    ]
+  ],
+  "generic_seed_formulas": {
+    "left": "sqrt(x)*(-x**(3/2) + sqrt(x)*z + sqrt(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3))/(2*(sqrt(x)*y - sqrt(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3))*(x - y - z)*(x**(3/2) + sqrt(x)*z - sqrt(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3))*(sqrt(x)*y + 2*sqrt(x)*z + sqrt(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3))*sqrt(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3))",
+    "right": "sqrt(y)*(-y**(3/2) + sqrt(y)*z + sqrt(-x**3 + x**2*y - x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + 2*y*z**2 + z**3))/(2*(x*sqrt(y) - sqrt(-x**3 + x**2*y - x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + 2*y*z**2 + z**3))*(x - y + z)*(y**(3/2) + sqrt(y)*z - sqrt(-x**3 + x**2*y - x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + 2*y*z**2 + z**3))*(x*sqrt(y) + 2*sqrt(y)*z + sqrt(-x**3 + x**2*y - x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + 2*y*z**2 + z**3))*sqrt(-x**3 + x**2*y - x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + 2*y*z**2 + z**3))"
+  },
+  "sample_2_3_4": {
+    "G12": {
+      "g1": "-9.438258476220337e-5",
+      "g2": "0.0001500200784075627"
+    },
+    "G23": {
+      "g2": "-0.002187337818692950",
+      "g3": "0.003364418923934326"
+    },
+    "G31": {
+      "g3": "-0.001573308701680138",
+      "g1": "0.0006194428458439044"
+    }
+  },
+  "checks": {
+    "cyclic_orientation_sign_positive": true,
+    "left_orbit_closes_order_three": true,
+    "right_orbit_closes_order_three": true,
+    "triangle_volume_factor_cyclic": true,
+    "all_six_sample_ports_nonzero": true,
+    "two_free_three_element_port_orbits": true
+  },
+  "passed": true,
+  "conclusion": "The normalized grade-zero conductor ports form two labelled free C3 orbits with positive residue-chart orientation transport. The common triangle-volume normalization is cyclic invariant.",
+  "scope": "This proves occurrence covariance, not Gauss-Manin horizontality or physical summation over the six ports."
+}

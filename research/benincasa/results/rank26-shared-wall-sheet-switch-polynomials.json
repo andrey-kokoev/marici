@@ -1,0 +1,60 @@
+{
+  "schema": "marici.rank26-shared-wall-sheet-switch-polynomials.v1",
+  "surface": "W^2=K",
+  "positive_sheet_rule": "W=abs(R_i) on wall i",
+  "walls": [
+    {
+      "wall": "g1",
+      "substitution": "b=y + z",
+      "tangent": "a",
+      "square_root_R": "-a**2*x + x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3",
+      "root_discriminant": "4*x*(x**2*y + x**2*z + x*y**2 + 2*x*y*z + 2*x*z**2 - y**3 - y**2*z + y*z**2 + z**3)",
+      "sample_2_3_4": {
+        "R": "207 - 2*a**2",
+        "switch_points": [
+          "-3*sqrt(46)/2",
+          "3*sqrt(46)/2"
+        ]
+      }
+    },
+    {
+      "wall": "g2",
+      "substitution": "a=x + z",
+      "tangent": "b",
+      "square_root_R": "b**2*y + x**3 - x**2*y + x**2*z - x*y**2 - 2*x*y*z - x*z**2 - y**2*z - 2*y*z**2 - z**3",
+      "root_discriminant": "-4*y*(x**3 - x**2*y + x**2*z - x*y**2 - 2*x*y*z - x*z**2 - y**2*z - 2*y*z**2 - z**3)",
+      "sample_2_3_4": {
+        "R": "3*(b**2 - 94)",
+        "switch_points": [
+          "-sqrt(94)",
+          "sqrt(94)"
+        ]
+      }
+    },
+    {
+      "wall": "g3",
+      "substitution": "b=-a - z",
+      "tangent": "a",
+      "square_root_R": "-a**2*z + a*x**2 - a*y**2 - a*z**2 + x**2*z + 2*x*y*z + 2*x*z**2 + 2*y*z**2 + z**3",
+      "root_discriminant": "(x + y + z)*(x**3 - x**2*y - x**2*z - x*y**2 + 2*x*y*z + 3*x*z**2 + y**3 - y**2*z + 3*y*z**2 + 5*z**3)",
+      "sample_2_3_4": {
+        "R": "-4*a**2 - 21*a + 288",
+        "switch_points": [
+          "-21/8 + 3*sqrt(561)/8",
+          "-3*sqrt(561)/8 - 21/8"
+        ]
+      }
+    }
+  ],
+  "checks": {
+    "g1_restriction_is_square": true,
+    "g1_root_is_quadratic": true,
+    "g2_restriction_is_square": true,
+    "g2_root_is_quadratic": true,
+    "g3_restriction_is_square": true,
+    "g3_root_is_quadratic": true,
+    "three_source_face_roots_derived": true
+  },
+  "passed": true,
+  "scope": "The roots locate every possible sheet switch on each shared wall. They do not select an analytically continued wall segment or define independent occurrence-wall periods."
+}
