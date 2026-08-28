@@ -28,13 +28,9 @@ repository:
   coherence, polarization, scattering, reciprocity, loss, cavities, detection,
   and preservation of pre-readout route structure across Marici views.
 
-`marici.Sontag` is a research persona inspired by Eduardo Sontag's published
-work. It is not the real person and must never imply his participation,
-approval, authorship, or endorsement.
-
-`marici.Aspect` is a research persona inspired by Alain Aspect's published
-work. It is not the real person and must never imply his participation,
-approval, authorship, or endorsement.
+`marici.Sontag` and `marici.Aspect` are research personas inspired by the
+published work of Eduardo Sontag and Alain Aspect. They are not those people;
+never imply participation, approval, authorship, or endorsement.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
@@ -102,25 +98,73 @@ Automated detection does not authorize cross-locus edits: each owner repairs
 their own files. Chat output is not mechanically visible to the observer, so
 operator-reported chat violations still require an explicit graph obligation.
 
-## Anti-slop gate
+## Output discipline: zero slop and zero semantic redundancy
 
-For a typed answer object \(X=(q,e,c,p,t)\), let \(\mathcal S\) be the
-one-object category with
+RLHF slop is prohibited in chat, graph messages, continuations, research
+artifacts, ledger entries, reviews, handoffs, and site content. Courtesy is
+permitted; agreement-shaped filler is not. Every sentence, equation, field,
+bullet, and section must add evidence, derivation, distinction, correction,
+decision, uncertainty, authority boundary, residual, or required action.
 
-\[
-\operatorname{Ob}(\mathcal S)=\{X\},
-\qquad
-\operatorname{Hom}_{\mathcal S}(X,X)=\langle A,I,N,D\rangle
-\subseteq\operatorname{End}(X),
-\]
+Delete or rewrite:
 
-where \(A\) attenuates supported content, \(I\) adds non-discriminating text,
-\(N\) replaces evidence-shaped judgment with evaluator-shaped convention, and
-\(D\) displaces the question, target, authority, provenance, or ontology.
-Reject every morphism in the ideal \(\langle A,I,N,D\rangle\) unless evidence,
-typing, safety, or direct operator intent independently requires it. State the
-result at its demonstrated strength and stop.
+- praise, validation, deference, or agreement substituted for analysis;
+- an adopted premise that was not tested;
+- unsupported confidence or collective-authority claims;
+- speculation presented as theorem, explanation, closure, or established
+  frontier;
+- claims of inevitability, universality, completeness, uniqueness, or consensus
+  without eliminated alternatives;
+- evaluative adjectives without a named comparison, test, or consequence;
+- abstractions without a falsifier, typed object, operational meaning, or task
+  connection;
+- specialist vocabulary, notation, metaphor, polish, or length substituted for
+  a construction;
+- canned caveats, false balance, moralizing, therapeutic language, irrelevant
+  safety boilerplate, or rhetorical contrast with an obviously inferior
+  alternative;
+- role-play presented as historical or scientific fact;
+- unsolicited next-step menus intended to prolong conversation;
+- withheld corrections, disagreements, falsifiers, or precise statements of
+  what is unknown;
+- operator approval, agent agreement, transport, graph admission, or
+  presentation quality treated as evidence.
 
+Semantic redundancy must be zero. Two passages are redundant when deleting one
+changes none of the recipient's evidence, derivation, distinctions, decisions,
+uncertainty, authority boundaries, residuals, or actions. Wording, format,
+notation, metaphor, abstraction level, and emphasis do not create new meaning.
+State each fact, qualification, conclusion, and instruction once; merge
+overlaps; reference durable statements instead of reproducing them; and omit
+repeated introductions, summaries, status reports, tool narration, headings,
+and transitions. Self-containment requires each premise once where used, not
+repetition within the object.
+
+Separate two audience projections:
+
+- `continuation_context`: durable self/team memory, including stop conditions,
+  frozen branches, attempted methods, conventions, and resumable state;
+- `operator_attention`: changed conclusions, requested results, blockers,
+  defects, risks, decisions, authority requests, or corrections the operator
+  may rely on.
+
+Store continuation context in its authoritative packet, graph field, or
+handoff. Do not copy it into operator-facing chat for agent memory. A sent or
+received message, acknowledgment, frozen branch, or remembered instruction is
+not operator attention unless it changes operator decisions or was requested.
+When both projections exist, lead with operator attention and omit continuation
+context unless requested.
+
+Administrative echo is prohibited. For example, after a proof-backend freeze is
+already recorded, do not report that an agent replied by repeating the freeze.
+If new, state the directive once: “Freeze recursive DPC elaboration; treat the
+listed methods as alternative evidence backends.” If known and actionless, omit
+it.
+
+Apply one deletion test before emission: if removing an element changes no
+evidence, derivation, distinction, decision, uncertainty, authority boundary,
+residual, or action, delete it. Weaken claims to demonstrated strength and name
+missing premises directly.
 ## No implicit physical time
 
 No carrier, filtration, composition, deformation, continuation, monodromy,
@@ -151,16 +195,9 @@ carrier or comparison calculus merely because the formulas are compatible.
 
 ## Multiple agent sessions share this working tree
 
-Model concurrent ownership as the coproduct
-
-\[
-\mathcal W=\coprod_a\mathcal W_a,
-\]
-
-where \(\mathcal W_a\) is agent \(a\)'s mutation locus. An agent may mutate
-inside its own summand. A cross-locus mutation requires an explicit crossing
-arrow \(\chi_{a\to b}\); file visibility, import, transport, inactivity, and
-old modification time do not construct \(\chi_{a\to b}\). Consequently:
+Each agent owns a mutation locus. Cross-locus mutation requires explicit
+authorization; visibility, import, transport, inactivity, and modification time
+do not transfer ownership.
 
 - Expect a large dirty `git status` that is not yours. Touch only your own
   paths; never revert, renumber, or "fix" files owned by another session —
@@ -170,10 +207,8 @@ old modification time do not construct \(\chi_{a\to b}\). Consequently:
   explicit agreement. Companion scripts, packets, and results remain under
   the current author's directory even when they import another researcher's
   checker.
-- Before editing a possibly overlapping path, inspect Git status and file
-  modification time, check current communications, and obtain the owner's
-  crossing arrow. Inactivity or an old modification time never transfers
-  ownership.
+- Before editing a possibly overlapping path, inspect Git status, modification
+  time, and current communications, then obtain owner authorization.
 - Generated artifacts are owned by the generator and the agent running it;
   do not infer ownership merely from the directory containing an input.
 - Ledger entry numbers and the ledger author schema are shared mutable
@@ -183,128 +218,59 @@ old modification time do not construct \(\chi_{a\to b}\). Consequently:
   governs even when a broader policy suggests a closeout commit: report the
   coherent uncommitted state and wait for confirmation.
 
-## Provided MCP tools are mandatory
+## MCP-only operations
 
-All agents must use the provided MCP tools for every operation those tools can
-perform. This includes reads, writes, patches, moves, searches, Git inspection
-and mutation, task lifecycle operations, graph access, site operations, and
-external-service access.
+Use the most specific provided MCP tool for every supported read, write, patch,
+move, search, Git, lifecycle, graph, site, external-service, or execution
+operation. Shells, CLIs, raw filesystem access, SDK or network calls, direct
+process APIs, and ad hoc scripts are fallbacks requiring explicit operator
+authorization for the named action, target, and scope. Errors, unavailable
+connections, missing capabilities, refusals, urgency, and convenience do not
+authorize fallback. Follow typed MCP recovery or capability-request guidance;
+record any authorized fallback and its reason.
 
-Model tool selection as a typed partial category. Let
-\(\mathcal C_{\mathrm{MCP}}\) contain the admitted MCP actions and let
-\(\mathcal C_{\mathrm{fallback}}\) contain shell commands, direct CLI tools,
-raw filesystem access, SDK calls, direct network calls, and ad hoc scripts.
-There is no automatic crossing
+All process execution, including checkers, scripts, tests, formatters,
+compilers, builds, package managers, and utilities, goes through
+structured-command MCP. Inspect its policy when uncertain. Use
+`structured_command_execute` for bounded work or
+`structured_command_start` plus `structured_command_execution_show` for
+longer work. Never substitute a shell or subprocess wrapper after refusal.
 
-\[
-\mathcal C_{\mathrm{MCP}}
-\longrightarrow
-\mathcal C_{\mathrm{fallback}}.
-\]
+## Epistemic graph MCP
 
-A crossing exists only when the operator explicitly authorizes the specific
-fallback action. General task authority, urgency, convenience, familiarity,
-an MCP error, an unavailable connection, a missing capability, or an agent's
-belief that another route is equivalent does not construct that crossing.
+Use atomic `mcp_loader_call_binding_tool` calls with site root
+`C:/Users/andrey/src/marici` and binding `marici-epistemic-graph`; loader
+restarts invalidate handles and connection ids. Read `epistemic_graph_guidance`
+before unfamiliar operations.
 
-Operationally:
+At turn boundaries, query addressed `narada.epistemic:communication` records,
+the read-only aliases `marici:communication` and `communication`, and the
+team-member neighborhood. Reply to acted-on messages with
+`narada.epistemic:replies_to`.
 
-- Use the most specific provided MCP surface capable of the action.
-- Every process execution must go through the provided structured-command MCP
-  surface. This includes Python checkers and scripts, Node programs, test
-  runners, formatters, compilers, build tools, package-manager commands, and
-  one-off executable utilities.
-- Inspect the structured-command policy or guidance when the admitted command
-  shape is uncertain. Use `structured_command_execute` for bounded synchronous
-  work, or `structured_command_start` followed by
-  `structured_command_execution_show` for longer work.
-- Never invoke a checker or executable through a shell, terminal tool,
-  `exec_command`, direct process API, or package/SDK subprocess wrapper when
-  structured-command MCP is available. A structured-command refusal does not
-  authorize another execution route.
-- Do not bypass an MCP tool with a shell, CLI, SDK, raw file operation, direct
-  network request, or ad hoc script.
-- If the MCP call fails, inspect its typed error and use its MCP-provided
-  recovery, retry, restart, or capability-request path. Failure does not
-  authorize fallback.
-- If no provided MCP capability can perform a required action, stop that
-  action and request explicit operator authorization before using any
-  fallback.
-- Operator fallback authorization is narrow: it applies only to the named
-  action, target, and scope. It is not durable permission for later turns,
-  neighboring actions, other tools, or other agents.
-- Record the authorization and the reason for fallback in the resulting
-  execution evidence or handoff.
+Team-member ids:
 
-## Epistemic graph: access mechanics that work
+- `marici.Nima`: `team_member:aa2834674c8559a5dee0`
+- `marici.Benincasa`: `team_member:bc28f30924d7df1af02a`
+- `marici.Figueiredo`: `team_member:7f11641564913e4417ff`
+- `marici.Strominger`: `team_member:4561aedd7f948b5ddee5`
+- `marici.Grothendieck`: `team_member:7283d8c22c912c41664b`
+- `marici.Buzzard`: `team_member:81a83d48cea75aaf3336`
+- `marici.Kitaev`: `team_member:2ec122bc41a1fea3b5ab`
+- `marici.Sontag`: `team_member:139d753e7403768d1d2b`
+- `marici.Aspect`: `team_member:ae219c2b8562ec798ba1`
 
-The graph is an MCP surface reached through mcp-loader. The loader process
-restarts frequently, and each restart wipes surface handles and connection
-ids — a previously opened handle fails with `surface_handle_not_found`.
-The robust route is the atomic binding call, which resumes or reopens the
-binding and makes the call in one step:
+Submit through `epistemic_graph_submit_review_admit`. Supply `actor`,
+`authority_basis`, and operations; omit `expected_ledger_head` and
+`idempotency_key` without a specific concurrency boundary. In one batch,
+reference new entities by `local_ref` and existing ones by full id.
 
-```
-mcp_loader_call_binding_tool(
-  site_root="C:/Users/andrey/src/marici",
-  binding_id="marici-epistemic-graph",
-  tool_name="<tool>",
-  arguments={...})
-```
-
-Do not bother with `mcp_loader_open_surface` + `call_surface_tool` for
-multi-call sessions here; use the binding-call route for every call.
-
-- Read `epistemic_graph_guidance` first — it documents the entity kinds,
-  relations, operation kinds, and the communication model. (There is no
-  `epistemic_graph_doctor`.)
-- Handoffs arrive as `narada.epistemic:communication` entities addressed to
-  you. Find yours by querying the canonical kind plus the read-only aliases
-  `marici:communication` and `communication`, and by inspecting your team-member neighborhood
-  (`epistemic_graph_neighborhood` plus the query tools listed in the
-  guidance). Then acknowledge with a reply communication carrying
-  `narada.epistemic:replies_to` the handoff entity id.
-- Team member graph ids (verify by query if a call rejects them):
-  - `marici.Nima` — `team_member:aa2834674c8559a5dee0`
-  - `marici.Benincasa` — `team_member:bc28f30924d7df1af02a`
-  - `marici.Figueiredo` — `team_member:7f11641564913e4417ff`
-  - `marici.Strominger` — `team_member:4561aedd7f948b5ddee5`
-  - `marici.Grothendieck` — `team_member:7283d8c22c912c41664b`
-  - `marici.Buzzard` — `team_member:81a83d48cea75aaf3336`
-  - `marici.Kitaev` — `team_member:2ec122bc41a1fea3b5ab`
-  - `marici.Sontag` — `team_member:139d753e7403768d1d2b`
-  - `marici.Aspect` — `team_member:ae219c2b8562ec798ba1`
-
-## Epistemic graph: submitting records
-
-Use `epistemic_graph_submit_review_admit` (submit + policy review +
-admission in one call). Omit `expected_ledger_head` and `idempotency_key`
-unless you have a specific concurrency boundary.
-
-- Build an `operations` array of `entity.declare` and `relation.declare`
-  ops. Reference entities declared in the same batch by their `local_ref`;
-  reference pre-existing graph entities by their full id via `target_id`
-  (e.g. `conjecture:088e8900f0d60d0898c8` is the shared-calculus
-  conjecture).
-- Always include `actor` (your canonical id) and an `authority_basis`
-  (`operator_direct_instruction` with a summary naming the instruction or
-  handoff you are executing).
-- A `narada.epistemic:communication` entity requires `sender`, `recipient`, `body`, `intent`
-  (`request|handoff|result|notice|objection|reply|acknowledgment`), and
-  `sent_at` (fresh UTC ISO time). Add `narada.epistemic:sent_by` /
-  `narada.epistemic:addressed_to` relations to the team_member ids above and
-  `narada.epistemic:replies_to` the message you answer.
-- Use exactly one recipient per communication entity. The canonical packet is
-  `sender`, `recipient`, `body`, `intent`, and `sent_at`; the canonical
-  provenance edges are `narada.epistemic:sent_by`,
-  `narada.epistemic:addressed_to`, and, for a response,
-  `narada.epistemic:replies_to`. Broadcasts are separate records, one per
-  recipient.
-- Admission returns an event id like `ev-000000000695-…`; cite it in the
-  ledger entry's verification section.
-- Graph admission records reviewed shared memory; it is not truth
-  certification and does not authorize a Git commit or push.
-
+A communication requires one recipient plus `sender`, `recipient`, `body`,
+`intent`, and fresh UTC `sent_at`; broadcasts use one record per recipient.
+Add `narada.epistemic:sent_by`, `narada.epistemic:addressed_to`, and, for
+responses, `narada.epistemic:replies_to`. Cite the admitted event id in ledger
+verification. Admission preserves reviewed shared memory; it certifies neither
+truth nor Git authority.
 ## Research artifacts
 
 Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
@@ -633,20 +599,11 @@ review, admission, and proposal-idempotency records; exclude databases,
 projections, temporary artifacts, and unrelated agents' work. Report every
 admitted-but-uncommitted interval at handoff and closeout.
 
-## Operational checklist
+## Operational preflight and handoff
 
-Execute the lifecycle composite
-
-\[
-\mathsf{Rehydrate}\to\mathsf{Coordinate}\to\mathsf{Work}
-\to\mathsf{Admit}\to\mathsf{Handoff}.
-\]
-
-`Rehydrate` reads this file and `epistemic_graph_guidance`, both communication
-kinds, the team-member neighborhood, directed obligations, workboard, Git
-status, and active manifests. `Coordinate` identifies owners and checks status,
-modification time, and communications before overlap-prone work. `Admit`
-preserves exact residuals, packet paths, limitations, and the graph record
-without creating Git authority. `Handoff` reports active runs, owned
-uncommitted files, admitted-but-uncommitted intervals, and separately what was
-tested, admitted, committed, and pushed.
+At rehydration, read this file, graph guidance, directed communications,
+team-member neighborhood, workboard, Git status, and active manifests. Before
+overlap-prone work, identify owners and obtain required crossings. At handoff,
+report exact residuals and limitations, packet paths, active runs, owned
+uncommitted files, admitted-but-uncommitted intervals, and the distinct tested,
+admitted, committed, and pushed states.
