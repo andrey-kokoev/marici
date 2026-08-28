@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787942996900368200_4",
+  "created_at": "2026-08-28T18:49:56.9003718Z",
+  "sha256": "54c98ad67707bbf3eaa1ecabc751c155a829c02af9aa6a5547516f41b6eb3d5f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib\np=pathlib.Path(r'research/nima/contracts/typed-response.v1.toml')\nd=tomllib.loads(p.read_text(encoding='utf-8'))\ntables=d['tables']; unions=d['unions']; types=d['types']\nassert set(d['root']['required'])==set(d['root']['allowed'])\nfor name,t in tables.items():\n    req=set(t.get('required',[])); allowed=set(t.get('allowed',[]))\n    assert req<=allowed,(name,'required-not-allowed',req-allowed)\n    assert len(t.get('required',[]))==len(req),(name,'duplicate-required')\n    assert len(t.get('allowed',[]))==len(allowed),(name,'duplicate-allowed')\n    for f,s in t.get('fields',{}).items():\n        assert f in allowed,(name,f,'field-not-allowed')\n        if 'schema_ref' in s: assert s['schema_ref'] in tables,(name,f,'missing-table-ref')\n        if 'item_schema_ref' in s: assert s['item_schema_ref'] in unions or s['item_schema_ref'] in tables,(name,f,'missing-item-ref')\n    for f in t.get('constants',{}):\n        assert f in req and f in allowed,(name,f,'constant-not-required')\nfor name,u in unions.items():\n    assert u['discriminator']=='kind'\n    assert len(u['variants'])==len(set(u['variants']))\n    for v in u['variants']:\n        assert v in tables,(name,v,'missing-variant')\n        assert tables[v].get('constants',{}).get('kind'),(name,v,'missing-kind-constant')\nfor name,fs in d['field_sets'].items():\n    for field,typ in fs.items(): assert typ in types,(name,field,typ,'missing-type')\nids=[c['id'] for c in d['constraints']]\nassert len(ids)==len(set(ids))\nassert 'has_attention' not in p.read_text() and 'has_context' not in p.read_text()\nassert {'operator','agent'}<=set(d['root']['required'])\nprint('structure-pass',len(tables),len(unions),len(types),len(ids))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:49:56.823976Z",
+    "finished_at": "2026-08-28T18:49:56.900359Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Pass 2 structural references, union closure, requiredness, and derived-field exclusion",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Pass 2 structural references, union closure, requiredness, and derived-field exclusion",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "structure-pass 18 2 8 11\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
