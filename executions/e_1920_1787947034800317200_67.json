@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787947034800317200_67",
+  "created_at": "2026-08-28T19:57:14.8003199Z",
+  "sha256": "517bffac6fd3b88f5433b2d45a2d14958e912e8edf0be25e7e589774177ecdf2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import numpy as np, math\nbest=(1e9,None)\n# k=1: fix north, scan three equator angles modulo rotation fixing first 0\nfor a in np.linspace(0,2*math.pi,361):\n for b in np.linspace(0,2*math.pi,361):\n  A=np.array([[1,1,0,0],[1,0,1,0],[1,0,math.cos(a),math.sin(a)],[1,0,math.cos(b),math.sin(b)]],float)\n  if abs(np.linalg.det(A))<1e-9: continue\n  c=np.linalg.cond(A)\n  if c<best[0]: best=(c,('one_pole',a,b,np.linalg.eigvalsh(A.T@A).tolist()))\n# k=2 opposite poles, scan equator separation\nfor d in np.linspace(0,2*math.pi,20001):\n A=np.array([[1,1,0,0],[1,-1,0,0],[1,0,1,0],[1,0,math.cos(d),math.sin(d)]],float)\n if abs(np.linalg.det(A))<1e-9: continue\n c=np.linalg.cond(A)\n if c<best[0]: best=(c,('two_poles',d,np.linalg.eigvalsh(A.T@A).tolist()))\nprint(best)"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T19:57:14.7084075Z",
+    "finished_at": "2026-08-28T19:57:14.8003067Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "constrained optical frame search",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "constrained optical frame search",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import numpy as np, math\r\nModuleNotFoundError: No module named 'numpy'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
