@@ -1,0 +1,71 @@
+{
+  "schema": "marici.infinity_seven_axis_event.v1",
+  "compiler": "adaptation of marici.aspect.typed_seven_axis_events",
+  "events": {
+    "physical_infinity_readout": {
+      "scalar": "bright",
+      "packet": "bright",
+      "incidence": "matched",
+      "history": "trivial",
+      "path": "admissible",
+      "coefficient": "native",
+      "action": "authorized"
+    },
+    "selective_sheet_control": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "disconnected",
+      "coefficient": "native",
+      "action": "missing"
+    }
+  },
+  "derived": {
+    "physical_readout_is_source_constructible": true,
+    "selector_has_path_obstruction": true,
+    "selector_has_operational_action_gap": true,
+    "selector_is_source_constructible": false
+  },
+  "independence_witnesses": {
+    "same_path_with_authorized_action": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "disconnected",
+      "coefficient": "native",
+      "action": "authorized"
+    },
+    "same_missing_action_with_admissible_path": {
+      "scalar": "unknown",
+      "packet": "unknown",
+      "incidence": "unknown",
+      "history": "unknown",
+      "path": "admissible",
+      "coefficient": "native",
+      "action": "missing"
+    }
+  },
+  "checks": {
+    "aspect_updated_tester_passes": true,
+    "six_axis_cosmology_adapter_passes": true,
+    "physical_history_is_trivial": true,
+    "physical_readout_action_is_authorized": true,
+    "physical_readout_is_source_constructible": true,
+    "selector_native_coefficient_is_retained": true,
+    "selector_path_is_independently_disconnected": true,
+    "action_is_independently_missing": true,
+    "coefficient_does_not_authorize_action": true,
+    "path_does_not_determine_action": true,
+    "action_does_not_determine_path": true,
+    "selector_unknowns_are_preserved": true,
+    "readout_values_do_not_leak_into_selector": true,
+    "selector_is_not_source_constructible": true
+  },
+  "passed": 14,
+  "total": 14,
+  "rule": "coefficient_path_and_action_are_independent_typed_axes",
+  "conclusion": "The physical infinity readout and selective sheet controller are distinct events. The first is bright, flat, and source-constructible; the second has unknown output, disconnected path, native coefficient character, and missing action. No readout property is transported to the unimplemented selector.",
+  "quartic_consequence": "The updated tester preserves the closure: no Q activation is authorized."
+}

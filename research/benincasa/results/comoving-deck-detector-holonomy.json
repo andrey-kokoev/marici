@@ -1,0 +1,24 @@
+{
+  "schema": "marici.comoving_deck_detector_holonomy.v1",
+  "selector_deformation": "U(theta)=diag(1,exp(i*theta)), 0<=theta<=pi",
+  "moving_detector": "X(theta)=U(theta) X U(theta)^dagger=cos(theta)X+sin(theta)Y",
+  "strict_covariance": "X(theta)U(theta)=U(theta)X",
+  "endpoint": "X(pi)=-X(0), hence projectively closed but not closed as an oriented integral detector",
+  "projective_winding": 1,
+  "oriented_lift_holonomy": -1,
+  "checks": {
+    "selector_endpoint_is_Z": true,
+    "moving_detector_is_conjugated_source_detector": true,
+    "strict_covariance_holds": true,
+    "moving_detector_is_involutive": true,
+    "moving_detector_is_hermitian": true,
+    "oriented_detector_returns_with_minus_sign": true,
+    "projective_detector_closes": true,
+    "projective_loop_has_odd_lift_parity": true,
+    "parity_matches_integral_extension_order": true
+  },
+  "passed": 9,
+  "total": 9,
+  "conclusion": "Co-moving transport removes the local deck-unlocking defect but transfers the obstruction into an odd projective detector loop with sign holonomy on the oriented integral lift.",
+  "scope": "explicit minimal selector deformation on the two-sheet branch-gap port; no source authorization for the moving detector is inferred"
+}

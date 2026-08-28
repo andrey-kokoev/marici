@@ -1,0 +1,273 @@
+{
+  "schema": "marici.rank26-five-wall-corner-residue-packet.v1",
+  "ambient_orientation": "da wedge db",
+  "poincare_convention": "dq_i wedge Res_i(Omega) = Omega",
+  "wall_order": [
+    "g1",
+    "g2",
+    "g3",
+    "g23",
+    "g31"
+  ],
+  "walls": [
+    {
+      "label": "g1",
+      "equation": "b - y - z",
+      "gradient_da_db": [
+        "0",
+        "1"
+      ],
+      "residue_one_form": "-1*da",
+      "orientation_check": "1"
+    },
+    {
+      "label": "g2",
+      "equation": "a - x - z",
+      "gradient_da_db": [
+        "1",
+        "0"
+      ],
+      "residue_one_form": "1*db",
+      "orientation_check": "1"
+    },
+    {
+      "label": "g3",
+      "equation": "a + b + z",
+      "gradient_da_db": [
+        "1",
+        "1"
+      ],
+      "residue_one_form": "1*db",
+      "orientation_check": "1"
+    },
+    {
+      "label": "g23",
+      "equation": "b - x",
+      "gradient_da_db": [
+        "0",
+        "1"
+      ],
+      "residue_one_form": "-1*da",
+      "orientation_check": "1"
+    },
+    {
+      "label": "g31",
+      "equation": "a - y",
+      "gradient_da_db": [
+        "1",
+        "0"
+      ],
+      "residue_one_form": "1*db",
+      "orientation_check": "1"
+    }
+  ],
+  "parallel_pairs": [
+    [
+      "g1",
+      "g23"
+    ],
+    [
+      "g2",
+      "g31"
+    ]
+  ],
+  "corners": [
+    {
+      "ordered_pair": [
+        "g1",
+        "g2"
+      ],
+      "point": {
+        "a": "x + z",
+        "b": "y + z"
+      },
+      "jacobian": "-1",
+      "iterated_residue_left_then_right": "-1",
+      "iterated_residue_right_then_left": "1"
+    },
+    {
+      "ordered_pair": [
+        "g1",
+        "g3"
+      ],
+      "point": {
+        "a": "-y - 2*z",
+        "b": "y + z"
+      },
+      "jacobian": "-1",
+      "iterated_residue_left_then_right": "-1",
+      "iterated_residue_right_then_left": "1"
+    },
+    {
+      "ordered_pair": [
+        "g1",
+        "g31"
+      ],
+      "point": {
+        "a": "y",
+        "b": "y + z"
+      },
+      "jacobian": "-1",
+      "iterated_residue_left_then_right": "-1",
+      "iterated_residue_right_then_left": "1"
+    },
+    {
+      "ordered_pair": [
+        "g2",
+        "g3"
+      ],
+      "point": {
+        "a": "x + z",
+        "b": "-x - 2*z"
+      },
+      "jacobian": "1",
+      "iterated_residue_left_then_right": "1",
+      "iterated_residue_right_then_left": "-1"
+    },
+    {
+      "ordered_pair": [
+        "g2",
+        "g23"
+      ],
+      "point": {
+        "a": "x + z",
+        "b": "x"
+      },
+      "jacobian": "1",
+      "iterated_residue_left_then_right": "1",
+      "iterated_residue_right_then_left": "-1"
+    },
+    {
+      "ordered_pair": [
+        "g3",
+        "g23"
+      ],
+      "point": {
+        "a": "-x - z",
+        "b": "x"
+      },
+      "jacobian": "1",
+      "iterated_residue_left_then_right": "1",
+      "iterated_residue_right_then_left": "-1"
+    },
+    {
+      "ordered_pair": [
+        "g3",
+        "g31"
+      ],
+      "point": {
+        "a": "y",
+        "b": "-y - z"
+      },
+      "jacobian": "-1",
+      "iterated_residue_left_then_right": "-1",
+      "iterated_residue_right_then_left": "1"
+    },
+    {
+      "ordered_pair": [
+        "g23",
+        "g31"
+      ],
+      "point": {
+        "a": "y",
+        "b": "x"
+      },
+      "jacobian": "-1",
+      "iterated_residue_left_then_right": "-1",
+      "iterated_residue_right_then_left": "1"
+    }
+  ],
+  "cech_incidence": [
+    {
+      "corner": [
+        "g1",
+        "g2"
+      ],
+      "wall_coefficients": {
+        "g1": -1,
+        "g2": 1
+      }
+    },
+    {
+      "corner": [
+        "g1",
+        "g3"
+      ],
+      "wall_coefficients": {
+        "g1": -1,
+        "g3": 1
+      }
+    },
+    {
+      "corner": [
+        "g1",
+        "g31"
+      ],
+      "wall_coefficients": {
+        "g1": -1,
+        "g31": 1
+      }
+    },
+    {
+      "corner": [
+        "g2",
+        "g3"
+      ],
+      "wall_coefficients": {
+        "g2": -1,
+        "g3": 1
+      }
+    },
+    {
+      "corner": [
+        "g2",
+        "g23"
+      ],
+      "wall_coefficients": {
+        "g2": -1,
+        "g23": 1
+      }
+    },
+    {
+      "corner": [
+        "g3",
+        "g23"
+      ],
+      "wall_coefficients": {
+        "g3": -1,
+        "g23": 1
+      }
+    },
+    {
+      "corner": [
+        "g3",
+        "g31"
+      ],
+      "wall_coefficients": {
+        "g3": -1,
+        "g31": 1
+      }
+    },
+    {
+      "corner": [
+        "g23",
+        "g31"
+      ],
+      "wall_coefficients": {
+        "g23": -1,
+        "g31": 1
+      }
+    }
+  ],
+  "checks": {
+    "five_wall_maps_present": true,
+    "every_wall_orientation_reconstructs_da_wedge_db": true,
+    "two_parallel_pairs": true,
+    "parallel_pairs_are_source_expected": true,
+    "eight_corner_maps_present": true,
+    "all_corner_jacobians_are_units": true,
+    "iterated_residues_are_antisymmetric": true
+  },
+  "passed": true,
+  "scope": "These are source-normalized local residue and orientation maps. They do not determine which wall or corner periods are selected by the physical relative cycle."
+}

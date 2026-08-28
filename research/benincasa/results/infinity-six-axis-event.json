@@ -1,0 +1,35 @@
+{
+  "schema": "marici.infinity_six_axis_event.v1",
+  "compiler": "adaptation of marici.aspect.typed_six_axis_optical_event_compiler",
+  "event": {
+    "scalar": "bright",
+    "packet": "bright",
+    "incidence": "matched",
+    "history": "unknown",
+    "path": "disconnected",
+    "coefficient": "native"
+  },
+  "derived": {
+    "physical_readout_exists": true,
+    "typed_pairing_descends": true,
+    "endpoint_without_symmetric_path": true,
+    "source_constructible_selector": false,
+    "history_authorized": false
+  },
+  "checks": {
+    "physical_scalar_is_nonzero": true,
+    "both_packet_arms_are_nonzero": true,
+    "incidence_pairing_is_primitive": true,
+    "coefficient_line_is_native": true,
+    "fixed_source_path_is_disconnected": true,
+    "moving_history_is_candidate_not_source_authority": true,
+    "unknown_history_is_preserved": true,
+    "selector_is_not_source_constructible": true,
+    "no_scalar_zero_is_inferred": true
+  },
+  "passed": 9,
+  "total": 9,
+  "rule": "unknown_is_not_false_and_native_coefficient_does_not_authorize_path",
+  "conclusion": "The infinity readout is bright, incidence-matched, and has a native coefficient line, but the selective controller is not source-constructible because its fixed-source path is disconnected and its co-moving history remains unauthorized.",
+  "quartic_consequence": "No Q activation follows from the existing readout packet or coefficient character."
+}
