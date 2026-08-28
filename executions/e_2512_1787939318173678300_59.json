@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939318173678300_59",
+  "created_at": "2026-08-28T17:48:38.173681Z",
+  "sha256": "54e009e4dda0acc84162d0994d0e70b5a018b98a76685ba65e2ffd38da83215d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json,math; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/integral_constructor_recurrence_checks.py'); c.__exit__(None,None,None); C=d['C']; mul=d['multiply']; n=4; I=[[int(i==j) for j in range(n)] for i in range(n)]; add=lambda A,B:[[A[i][j]+B[i][j] for j in range(n)] for i in range(n)]; sc=lambda k,A:[[k*x for x in row] for row in A]; N=add(C,sc(-1,I)); Q=add(add(mul(C,C),sc(-147458,C)),I); NQ=mul(N,Q); print(json.dumps({'T':147458,'T_minus_2':147456,'T_minus_2_over_9':147456//9,'Q':Q,'NQ':NQ,'NQ_zero':all(x==0 for row in NQ for x in row),'N2_zero':all(x==0 for row in mul(N,N) for x in row),'Q_zero':all(x==0 for row in Q for x in row)},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:48:22.9996361Z",
+    "finished_at": "2026-08-28T17:48:38.1736694Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "verify exact cubic constructor recurrence and spectral gluing scale",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "verify exact cubic constructor recurrence and spectral gluing scale",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"T\": 147458,\r\n  \"T_minus_2\": 147456,\r\n  \"T_minus_2_over_9\": 16384,\r\n  \"Q\": [\r\n    [\r\n      -202752,\r\n      92160,\r\n      50688,\r\n      -87552\r\n    ],\r\n    [\r\n      -92160,\r\n      -18432,\r\n      161280,\r\n      -198144\r\n    ],\r\n    [\r\n      -235008,\r\n      124416,\r\n      18432,\r\n      -55296\r\n    ],\r\n    [\r\n      -198144,\r\n      87552,\r\n      55296,\r\n      -92160\r\n    ]\r\n  ],\r\n  \"NQ\": [\r\n    [\r\n      -55296,\r\n      55296,\r\n      -55296,\r\n      55296\r\n    ],\r\n    [\r\n      -55296,\r\n      55296,\r\n      -55296,\r\n      55296\r\n    ],\r\n    [\r\n      -55296,\r\n      55296,\r\n      -55296,\r\n      55296\r\n    ],\r\n    [\r\n      -55296,\r\n      55296,\r\n      -55296,\r\n      55296\r\n    ]\r\n  ],\r\n  \"NQ_zero\": false,\r\n  \"N2_zero\": false,\r\n  \"Q_zero\": false\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
