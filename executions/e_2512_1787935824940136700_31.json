@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787935824940136700_31",
+  "created_at": "2026-08-28T16:50:24.9401409Z",
+  "sha256": "d06bf3f791caa341c2227d72e36f38c83e428cd865e10400c24a412c59702f9a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import runpy,contextlib,io,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/higher_three_adic_lift_checks.py'); c.__exit__(None,None,None); P=d['packet']; ns=[152+j*243 for j in range(3)]; print(json.dumps([P(n) for n in ns]))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:50:09.9570943Z",
+    "finished_at": "2026-08-28T16:50:24.9401218Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "next terminal Smith Hensel lift",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "next terminal Smith Hensel lift",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[{\"exponent\": 152, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 11, \"v3_snake_index\": 5, \"rank_defect\": true}, {\"exponent\": 395, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 10, \"v3_snake_index\": 4, \"rank_defect\": true}, {\"exponent\": 638, \"v3_d1\": 2, \"v3_d2\": 4, \"v3_d3\": 10, \"v3_snake_index\": 4, \"rank_defect\": true}]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
