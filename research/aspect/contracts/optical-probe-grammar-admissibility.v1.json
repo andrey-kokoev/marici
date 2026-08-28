@@ -1,0 +1,39 @@
+{
+  "schema": "marici.aspect.optical-probe-grammar-admissibility.v1",
+  "source_packets": [
+    "research/aspect/minimal-two-path-interferometer.md",
+    "research/aspect/local-stokes-pauli-probe-provenance.md",
+    "research/aspect/optical-logical-commutator-benchmark.md"
+  ],
+  "frozen_post_splitter_grammar": {
+    "splitter": "fixed balanced",
+    "phase": "calibrated arbitrary relative phase",
+    "reachable_bloch_vectors": "(cos(phi),sin(phi),0)",
+    "maximum_syndrome_rank": 3,
+    "missing_coordinate": "Z relative rail phase"
+  },
+  "first_missing_constructor": "calibrated bypass or preparation selector to one common target interface",
+  "selector_extended_grammar": {
+    "reachable_set": "two rail poles union full equator",
+    "optimal_frame": "one pole plus equatorial phases 0, 2pi/3, 4pi/3",
+    "gram_eigenvalues": [
+      "(5-sqrt(13))/2",
+      "3/2",
+      "3/2",
+      "(5+sqrt(13))/2"
+    ],
+    "condition_number": 2.4842086727071306
+  },
+  "next_constructor": "calibrated variable-ratio splitter",
+  "variable_splitter_optimum": {
+    "frame": "regular Bloch tetrahedron",
+    "condition_number": 1.7320508075688772
+  },
+  "frozen_finite_falsifier_epsilon": 0.01,
+  "claim_boundary": {
+    "selector_present": false,
+    "variable_splitter_present": false,
+    "physical_execution_completed": false,
+    "interaction_net_promotion": false
+  }
+}
