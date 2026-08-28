@@ -1,0 +1,35 @@
+{
+  "schema": "marici.flavor.source-scale-dimensionless-fiber.v1",
+  "work_package": "WP981",
+  "status": "PASS",
+  "checks": {
+    "normalization_cancels_for_low_packet": true,
+    "normalization_cancels_for_high_packet": true,
+    "normalized_masses_are_shared": true,
+    "low_packet_is_exactly_16384": true,
+    "high_packet_is_exactly_40000": true,
+    "normalized_packets_straddle_crossing": true,
+    "single_scale_does_not_select_dimensionless_ray": true
+  },
+  "domain": "positive source scale and positive WP977 normalized masses",
+  "dimensionless_coordinate": "rho_hat=N^8*(k/q)=gamma^2*a^4/(b*c^5)",
+  "shared_data": {
+    "gamma": "8",
+    "N": "7/3",
+    "b": "1",
+    "c": "1"
+  },
+  "hostile_packets": [
+    {
+      "a": "4",
+      "rho_hat": "16384"
+    },
+    {
+      "a": "5",
+      "rho_hat": "40000"
+    }
+  ],
+  "crossing": "24696",
+  "classification": "source scale repairs units but is not a dimensionless coefficient selector",
+  "remaining_gate": "derive a source relation that constrains gamma^2*a^4/(b*c^5) before flavor readout and survives coupled-vacuum and instrument tests"
+}
