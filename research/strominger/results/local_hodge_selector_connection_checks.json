@@ -1,0 +1,31 @@
+{
+  "schema": "marici.strominger.local-hodge-selector-connection.v1",
+  "status": "passed",
+  "passed": 7,
+  "total": 7,
+  "checks": {
+    "hodge_rotation_commutes_with_generator": true,
+    "rotation_derivative_is_da_times_JR": true,
+    "local_selector_chain_rule_has_universal_current": true,
+    "constant_selector_has_zero_current": true,
+    "nonconstant_selector_hostile_current_is_nonzero": true,
+    "connection_shift_cancels_selector_current": true,
+    "wrong_connection_sign_fails": true
+  },
+  "selector_current": [
+    "da*(-c*x2 - s*x1)",
+    "da*(c*x1 - s*x2)"
+  ],
+  "hostile_witness_current": [
+    "-10",
+    "6"
+  ],
+  "repair": {
+    "constructor": "Hodge U(1) connection A",
+    "covariant_derivative": "D_A = d + A J",
+    "local_rotation": "C maps to R_alpha C",
+    "connection_law": "A maps to A - d alpha",
+    "authority_boundary": "the algebra determines the required type and law but does not construct a gravitational source for A"
+  },
+  "checker_sha256": "80acc46e18ed973bc348d21492080dee3d7849460f12225de5f2b560f0ce800a"
+}

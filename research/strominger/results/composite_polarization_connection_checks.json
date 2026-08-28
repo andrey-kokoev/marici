@@ -1,0 +1,30 @@
+{
+  "schema": "marici.strominger.composite-polarization-connection.v1",
+  "status": "passed",
+  "passed": 8,
+  "total": 8,
+  "checks": {
+    "composite_connection_has_required_local_formula": true,
+    "composite_connection_transforms_as_A_minus_dalpha": true,
+    "polar_connection_is_minus_phase_derivative": true,
+    "covariant_derivative_erases_phase_variation": true,
+    "unit_winding_has_nonzero_holonomy": true,
+    "connection_denominator_vanishes_at_field_zero": true,
+    "zero_field_has_no_defined_phase_connection": true,
+    "wrong_sign_fails_required_gauge_law": true
+  },
+  "connection": "(dx*y - dy*x)/(x**2 + y**2)",
+  "transformed_connection": "(-da*x**2 - da*y**2 + dx*y - dy*x)/(x**2 + y**2)",
+  "polar_covariant_derivative": [
+    "dr*cos(theta)",
+    "dr*sin(theta)"
+  ],
+  "unit_winding_holonomy": "-2*pi",
+  "disposition": {
+    "local_result": "the field constructs the required connection on its nonzero locus",
+    "geometric_cost": "the covariant derivative removes polarization phase variation",
+    "global_obstruction": "zeros make the connection singular and winding gives nontrivial holonomy",
+    "authority_result": "the composite connection is a gauge quotient of the existing state, not an independent active control"
+  },
+  "checker_sha256": "8334959d9e0e2c01ea79fc9beaaa3682a25d3dbc9c0ccb163ba8489cf0295b18"
+}

@@ -23,7 +23,7 @@ M=A-B.
 For both exceptional source classes `E_1` and `E_2`, exact calculation gives
 
 \[
-\boxed{A=B\ne0.}
+A=B\ne0.
 \]
 
 For `E_1=1-\bar z^{-2}`, explicitly,
@@ -44,12 +44,10 @@ E(E_i)=A+B=2A\ne0.
 Thus the causal and observational mechanisms occupy different levels:
 
 \[
-\boxed{
 \begin{array}{c|c}
 \text{source-rank birth}&\text{loss of the local transverse carrier}\\
 \text{magnetic invisibility}&\text{nonzero equal-sheet coherence}
 \end{array}
-}
 \]
 
 In exact-sequence language, the exceptional source class is not in the kernel

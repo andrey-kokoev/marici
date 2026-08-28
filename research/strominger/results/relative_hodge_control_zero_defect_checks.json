@@ -1,0 +1,51 @@
+{
+  "schema": "marici.strominger.relative-hodge-control-zero-defect.v1",
+  "status": "passed",
+  "passed": 8,
+  "total": 8,
+  "checks": {
+    "relative_connection_is_gauge_invariant": true,
+    "covariant_derivative_splits_into_radial_gauge_plus_relative_control": true,
+    "relative_control_is_the_only_remaining_angular_coupling": true,
+    "composite_holonomy_is_minus_two_pi_times_winding": true,
+    "regular_zero_connection_forces_opposite_relative_holonomy": true,
+    "total_holonomy_cancels_for_A_zero_fixture": true,
+    "curvature_factorization_is_additive": true,
+    "wrong_sum_relative_field_is_not_gauge_invariant": true
+  },
+  "factorization": {
+    "connection": "A = A_C + B",
+    "gauge_part": "A_C maps to A_C - d alpha",
+    "control_part": "B is gauge invariant",
+    "curvature": "F_A = F_A_C + dB"
+  },
+  "winding_fixtures": [
+    {
+      "n": "1",
+      "Ac": "-1",
+      "Ac_holonomy": "-2*pi",
+      "B": "1",
+      "B_holonomy": "2*pi"
+    },
+    {
+      "n": "2",
+      "Ac": "-2",
+      "Ac_holonomy": "-4*pi",
+      "B": "2",
+      "B_holonomy": "4*pi"
+    },
+    {
+      "n": "3",
+      "Ac": "-3",
+      "Ac_holonomy": "-6*pi",
+      "B": "3",
+      "B_holonomy": "6*pi"
+    }
+  ],
+  "disposition": {
+    "capability_location": "B contains every connection degree not forced by the field phase",
+    "zero_defect_law": "if A extends regularly across a winding zero, B must carry the opposite quantized puncture holonomy",
+    "remaining_source_gate": "derive an independent gauge-invariant B and its defect attachment from gravitational source data"
+  },
+  "checker_sha256": "948af279f2d9fc6a23ce4951a622cb9cb9b5f816c081fa5b9e7b8d82addede24"
+}
