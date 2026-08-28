@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787947342237053600_96",
+  "created_at": "2026-08-28T20:02:22.2370579Z",
+  "sha256": "6b440a7143cc2310eb40b0df281dfad786736fcf280f1d1f79867cd86ed52567",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_split_clifford_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:02:22.1554346Z",
+    "finished_at": "2026-08-28T20:02:22.2370415Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Exact split-Clifford magnetic kernel taxonomy",
+      "expected_cost": "unknown",
+      "source": "caller_declared"
+    },
+    "test_scope": "Exact split-Clifford magnetic kernel taxonomy",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_split_clifford_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"gates\": {\r\n    \"split_clifford_generator_squares_to_one\": true,\r\n    \"primitive_idempotents\": true,\r\n    \"orthogonal_zero_divisors\": true,\r\n    \"resolution_of_identity\": true,\r\n    \"sheet_encoding_yields_sum_and_difference\": true,\r\n    \"source_involutions_commute\": true,\r\n    \"source_involutions_are_not_clifford_anticommuting_generators\": true,\r\n    \"klein_four_has_four_primitive_sectors\": true,\r\n    \"physical_q_has_two_rank_two_ideals\": true,\r\n    \"fixed_orbit_structurally_lacks_magnetic_ideal\": true,\r\n    \"free_orbit_has_magnetic_ideal_but_collision_can_avoid_it\": true,\r\n    \"clifford_splitting_does_not_authorize_joint_instrument\": true\r\n  },\r\n  \"gate_count\": 12,\r\n  \"passed_gate_count\": 12,\r\n  \"algebra\": {\r\n    \"parity\": \"Cl_1_0 = R[epsilon]/(epsilon^2-1) = R direct_sum R\",\r\n    \"full_commuting_source_symmetry\": \"Cl_1_0 tensor Cl_1_0 = R[Z2 x Z2] = R^4\",\r\n    \"warning\": \"P and sigma commute, so they are not the two anticommuting generators of Cl_2_0\"\r\n  },\r\n  \"kernel_taxonomy\": {\r\n    \"tower\": \"selected Clifford ideal is absent on a fixed orbit\",\r\n    \"collision_circuit\": \"selected ideal exists, but the transported combination lands in its complementary annihilator ideal\",\r\n    \"transport_loss\": \"excluded by the injective transport theorem\"\r\n  },\r\n  \"operational_boundary\": \"Idempotent completeness proves algebraic reconstruction only; it supplies neither preparation copying nor a joint executable refinement.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
