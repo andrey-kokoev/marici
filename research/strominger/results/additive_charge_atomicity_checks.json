@@ -1,0 +1,34 @@
+{
+  "schema": "marici.strominger.additive_charge_atomicity_checks.v1",
+  "status": "passed",
+  "classification": "atomicity_is_a_unit_stratum_of_an_additive_charge_not_a_compositional_capability",
+  "bounded_family": {
+    "charges": [-3, -2, -1, 0, 1, 2, 3],
+    "pair_count": 49
+  },
+  "witnesses": {
+    "atomic_to_nonatomic": [
+      {"left_charge": 1, "right_charge": 1, "effective_charge": 2},
+      {"left_charge": 1, "right_charge": -1, "effective_charge": 0}
+    ],
+    "nonatomic_to_atomic": [
+      {"left_charge": -3, "right_charge": 2, "effective_charge": -1},
+      {"left_charge": -2, "right_charge": 3, "effective_charge": 1}
+    ],
+    "cancellation_to_identity": [
+      {"left_charge": -1, "right_charge": 1, "effective_charge": 0},
+      {"left_charge": 1, "right_charge": -1, "effective_charge": 0}
+    ]
+  },
+  "gates": {
+    "response_charge_is_additive_on_all_49_pairs": true,
+    "fox_derivative_obeys_cocycle_on_all_49_pairs": true,
+    "atomic_factors_can_produce_nonatomic_composite": true,
+    "nonatomic_factors_can_produce_atomic_composite": true,
+    "opposite_atomic_charges_cancel_to_identity": true,
+    "atomicity_equals_unit_locus_of_effective_charge": true
+  },
+  "gate_count": 6,
+  "passed_gate_count": 6,
+  "interpretation": "Both the nilpotent response family and the one-generator Fox calculus factor through an additive integer charge. Atomicity is the inverse image of the units +/-1. Since that unit locus is not closed under addition, atomic morphisms do not form a subcategory. A compiler must carry and recompute effective charge rather than compose atomic flags."
+}

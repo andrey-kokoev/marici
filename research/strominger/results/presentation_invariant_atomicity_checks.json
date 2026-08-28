@@ -1,0 +1,38 @@
+{
+  "schema": "marici.strominger.presentation_invariant_atomicity_checks.v1",
+  "status": "passed",
+  "classification": "basis_invariant_but_not_composition_closed",
+  "bounded_family": {
+    "response_parameters": [-3, -2, -1, 1, 2, 3],
+    "unimodular_presentations": 6,
+    "left_right_content_tests": 216,
+    "endpoint_transport_tests": 6
+  },
+  "composition_hostile": {
+    "a": 2,
+    "factor_count": 2,
+    "factors_primitive": true,
+    "composite_content": 2,
+    "factorization_exact": true
+  },
+  "fox_records": [
+    {"exponent": -3, "support_length": 3, "group_ring_unit": false},
+    {"exponent": -2, "support_length": 2, "group_ring_unit": false},
+    {"exponent": -1, "support_length": 1, "group_ring_unit": true},
+    {"exponent": 1, "support_length": 1, "group_ring_unit": true},
+    {"exponent": 2, "support_length": 2, "group_ring_unit": false},
+    {"exponent": 3, "support_length": 3, "group_ring_unit": false}
+  ],
+  "gates": {
+    "nilpotent_generator": true,
+    "content_ideal_survives_all_tested_unimodular_presentations": true,
+    "elementary_response_factorization_is_exact": true,
+    "primitive_factors_do_not_make_composite_primitive": true,
+    "fox_unit_condition_detects_only_single_letters": true,
+    "fox_augmentation_ideal_survives_tested_nielsen_shadows": true,
+    "anti_invariant_line_transports_equivariantly": true
+  },
+  "gate_count": 7,
+  "passed_gate_count": 7,
+  "interpretation": "Atomicity is carried by unimodular ideals and equivariant eigendata, not by coordinates. It is preserved by authorized presentation changes but not by constructor composition: E(2)=E(1)E(1) has primitive factors and nonprimitive effective content. Factor-level authority therefore cannot be laundered into composite atomicity."
+}
