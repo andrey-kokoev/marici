@@ -1,0 +1,122 @@
+{
+  "schema": "marici.scc.models.v1",
+  "models": [
+    {
+      "id": "rank26-specialization-cone",
+      "owner": "marici.Benincasa",
+      "classification": "admitted_finite_field_model",
+      "stratum": "rank-26 conductor quotient at the checked generic source point",
+      "inputs": [
+        "research/benincasa/checkers/check_rank26_conductor_specialization_cone_homology.py",
+        "research/benincasa/results/rank26-conductor-specialization-cone-homology.json",
+        "research/benincasa/results/rank26-conductor-specialization-cone-homology-p31957.json",
+        "research/benincasa/results/rank26-dual-gamma-cyclic-atlas-closure.json",
+        "research/benincasa/results/rank26-dual-gamma-cyclic-atlas-closure-p32003.json"
+      ],
+      "checks": [
+        "mapping-cone-admission",
+        "cyclic-closure-admission"
+      ],
+      "depends_on": [],
+      "consumes": [
+        "source-normalized gamma-Bockstein line"
+      ],
+      "provides": [
+        "explicit mapping-cone boundary",
+        "rank-23 cone kernel"
+      ],
+      "missing_constructors": [],
+      "next_falsifier": "delegated to dependent model rank26-bockstein-horizontality"
+    },
+    {
+      "id": "rank26-bockstein-horizontality",
+      "owner": "marici.Benincasa",
+      "classification": "generic_rank_three_first_jet_with_gram_conormal_defect_factorization",
+      "stratum": "audited generic point (2,3,4) plus audited Gram-wall point (3,4,5), both kinematic directions and primes 32009 and 32003; no neighborhood claim",
+      "inputs": [
+        "research/benincasa/checkers/check_rank26_bockstein_projective_variation.py",
+        "research/benincasa/results/rank26-conductor-gamma-bockstein-at-1-3-4.json",
+        "research/benincasa/results/rank26-conductor-gamma-bockstein-at-3-3-4.json",
+        "research/benincasa/checkers/check_rank26_gamma_kinematic_mixed_generator.py",
+        "research/benincasa/checkers/check_rank26_bidual_quotient_horizontality.py",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-x.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-y.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-p32003-x.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-p32003-y.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-x-at-3-4-5.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-y-at-3-4-5.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-p32003-x-at-3-4-5.json",
+        "research/benincasa/results/rank26-bidual-quotient-horizontality-p32003-y-at-3-4-5.json",
+        "research/benincasa/checkers/check_rank26_gram_wall_lift_stratum.py",
+        "research/benincasa/results/rank26-gram-wall-lift-stratum.json",
+        "research/benincasa/results/four-site-qg-gram-nearby-cycle.json",
+        "research/benincasa/overlap-normal-specialization-gate-certificate.json"
+      ],
+      "checks": [
+        "rank-stratum",
+        "mixed-line-hostile",
+        {
+          "id": "bidual-horizontality-falsification",
+          "path": "research/aspect/checkers/check_bidual_quotient_horizontality_falsification.py",
+          "requires": []
+        },
+        {
+          "id": "joint-first-saturation",
+          "path": "research/aspect/checkers/check_joint_bockstein_first_saturation.py",
+          "requires": []
+        },
+        {
+          "id": "gram-wall-specialization-gate",
+          "path": "research/aspect/checkers/check_gram_wall_specialization_gate.py",
+          "requires": []
+        },
+        {
+          "id": "gram-wall-gysin-variance-hostile",
+          "path": "research/aspect/checkers/check_gram_wall_gysin_variance_hostile.py",
+          "requires": []
+        },
+        {
+          "id": "gram-normal-target-scale-torsor",
+          "path": "research/aspect/checkers/check_gram_normal_target_scale_torsor.py",
+          "requires": []
+        },
+        {
+          "id": "gram-wall-differentiated-cone-gate",
+          "path": "research/aspect/checkers/check_gram_wall_differentiated_cone_gate.py",
+          "requires": []
+        },
+        {
+          "id": "differentiated-cone-export-contract",
+          "path": "research/aspect/checkers/check_differentiated_cone_export_contract.py",
+          "requires": []
+        },
+        {
+          "id": "differentiated-cone-packet",
+          "path": "research/aspect/checkers/check_differentiated_cone_packet.py",
+          "requires": []
+        }
+      ],
+      "depends_on": [
+        "rank26-specialization-cone"
+      ],
+      "consumes": [
+        "constant-rank stratum certificate",
+        "mixed-bidual quotient"
+      ],
+      "provides": [
+        "rank-jump obstruction",
+        "flat-cell nonhorizontality hostile",
+        "mixed-bidual nonhorizontality witness",
+        "rank-three first saturation",
+        "all first-order Gram-wall defects factor through the conormal",
+        "relative target scale is a multiplicative torsor",
+        "normalized candidate is the Gram-normal derivative of the mapping cone"
+      ],
+      "missing_constructors": [
+        "thirteen separated wall-block, normal/tangent jet, and frame-transport exports for the normalized specialization cone",
+        "global Fitting-locus stratification"
+      ],
+      "next_falsifier": "export the thirteen preregistered differentiated-cone fields and test the chain equation without post-hoc basis alignment"
+    }
+  ]
+}
