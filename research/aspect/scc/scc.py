@@ -14,6 +14,129 @@ def usage():
     print("SCC — Stratified Coherence Compiler")
     print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
 
+APPARATUS_REQUIRED=(
+    "authority_locator","substrate_state_type","apparatus_state_type",
+    "observational_rank_certificate","natural_transport_certificate",
+    "bounded_port_accessibility_certificate",
+    "one_use_joint_map","labelled_composition_or_tensor_law",
+    "reset_or_catalytic_return_map","repeated_joint_law",
+    "degradation_and_uncertainty_bounds","quotient_descent_certificate",
+    "feature_calibration","admitted_domain","support_assumptions",
+    "physical_instrument","candidate_synthesis_status",
+)
+
+def validate_apparatus_certificate(cert):
+    """Validate apparatus evidence without asserting that the apparatus exists."""
+    transport_pending=False
+    successor_threshold_pending=False
+    successor_prediction_pending=False
+    def result(status,gate,reason=None):
+        out={"status":status,"first_failed_gate":gate,"certifies_apparatus_existence":False}
+        if reason: out["reason"]=reason
+        return out
+    if not isinstance(cert,dict): return result("fail","certificate_shape","apparatus_certificate must be an object")
+    for key in APPARATUS_REQUIRED:
+        if key not in cert: return result("fail","required_fields","missing apparatus_certificate."+key)
+    for key in ("authority_locator","substrate_state_type","apparatus_state_type","physical_instrument"):
+        if not isinstance(cert.get(key),str) or not cert[key].strip():
+            return result("fail","authority" if key=="authority_locator" else "state_and_instrument_typing",key+" must be a non-empty string")
+    if cert.get("candidate_synthesis_status")!="candidate_requires_source_derivation":
+        return result("fail","authority","candidate_synthesis_status must remain candidate_requires_source_derivation")
+    rank=cert.get("observational_rank_certificate")
+    if not isinstance(rank,dict) or not rank.get("locator") or not isinstance(rank.get("rank"),int) or rank["rank"]<1:
+        return result("fail","observational_rank","observational rank needs a locator and positive integer rank")
+    if rank.get("kernel_pair_promoted_to_state_identity") is not False:
+        return result("fail","kernel_pair","equal readout must not be promoted to source-state identity")
+    transport=cert.get("natural_transport_certificate")
+    if not isinstance(transport,dict) or not transport.get("locator"):
+        return result("fail","natural_transport","natural transport needs a source-authorized locator")
+    if transport.get("chart_transition_class")!="common_gain_on_complete_packet":
+        return result("fail","natural_transport","admitted detector charts must use one common gain on the complete packet")
+    if transport.get("derivative_transport_included") is not True:
+        return result("fail","natural_transport_first_jet","the chart first jet must include derivative transport")
+    if transport.get("independent_channel_gains_are_hostile") is not True:
+        return result("fail","natural_transport","independent channel gains must remain a hostile, not a gauge")
+    if transport.get("source_authorized") is not True or transport.get("naturality_square_closed") is not True:
+        if cert.get("source_derivation_status")=="candidate_requires_source_derivation":
+            transport_pending=True
+        else:
+            return result("fail","natural_transport","chartwise rank does not substitute for a closed source-authorized naturality square")
+    access=cert.get("bounded_port_accessibility_certificate")
+    if not isinstance(access,dict) or not access.get("locator"):
+        return result("fail","bounded_port_accessibility","bounded-port accessibility needs a locator")
+    if access.get("claim") not in ("fixed_radius","support_grows","not_claimed"):
+        return result("fail","bounded_port_accessibility","declare fixed_radius, support_grows, or not_claimed")
+    if access.get("claim")=="fixed_radius" and (access.get("uniform_depth_range_bound") is not True or access.get("backward_support_correctable") is not False):
+        return result("fail","bounded_port_accessibility","a fixed-radius claim needs a uniform depth/range bound and a non-correctable backward support witness")
+    conjugate=cert.get("conjugate_readout_certificate")
+    if conjugate is not None:
+        if not isinstance(conjugate,dict) or not all(conjugate.get(k) for k in ("locator","carrier_readout","generator_weighted_mate","joint_response_matrix")):
+            return result("fail","conjugate_readout","conjugate readout needs carrier, generator-weighted mate, joint matrix, and locator")
+        if conjugate.get("same_prepared_carrier") is not True or conjugate.get("source_authorized") is not True:
+            return result("fail","conjugate_readout","both readouts must act on the same prepared carrier under source authority")
+        if conjugate.get("joint_rank") != 2 or conjugate.get("determinant_nonzero_on_admitted_domain") is not True:
+            return result("fail","conjugate_readout_rank","the admitted joint response must have certified rank two")
+        if conjugate.get("certified_inference") != "transversality_only" or conjugate.get("locates_zero") is not False:
+            return result("fail","inference_scope","rank-two conjugate readout certifies transversality, not zero location")
+        successor=conjugate.get("controlled_successor_test")
+        if not isinstance(successor,dict) or not all(successor.get(k) for k in ("locator","perturbation_generator","predicted_joint_first_jet","uncertainty_threshold_locator")):
+            return result("fail","controlled_successor","conjugate readout needs a controlled perturbation, predicted joint first jet, and threshold locator")
+        if successor.get("threshold_preregistered") is not True:
+            if successor.get("outcome")!="not_run" or cert.get("source_derivation_status")!="candidate_requires_source_derivation":
+                return result("fail","preregistration","the uncertainty threshold must be preregistered before an outcome")
+            successor_threshold_pending=True
+        if successor.get("source_derived_prediction") is not True:
+            if successor.get("outcome")!="not_run" or cert.get("source_derivation_status")!="candidate_requires_source_derivation":
+                return result("fail","successor_source_derivation","a test cannot report an outcome before its prediction is source-derived")
+            successor_prediction_pending=True
+        if successor.get("observer_fitted") is not False:
+            return result("fail","observer_fitting","the successor prediction cannot be fitted from the observed response")
+        nulls=successor.get("null_models")
+        if not isinstance(nulls,list) or not {"independent_detector_channels","common_mode_drift"}.issubset(set(nulls)):
+            return result("fail","successor_nulls","test both independent-channel and common-mode-drift nulls")
+        if successor.get("outcome") not in ("not_run","pass","fail","inconclusive"):
+            return result("fail","controlled_successor","outcome must be not_run, pass, fail, or inconclusive")
+        if successor.get("outcome")=="pass" and successor.get("all_preregistered_nulls_rejected") is not True:
+            return result("fail","successor_nulls","pass requires rejection of every preregistered null")
+    one=cert.get("one_use_joint_map")
+    if not isinstance(one,dict) or one.get("source_authorized") is not True or not one.get("locator"):
+        return result("fail","one_use_joint_map","one-use map needs a locator and source_authorized=true")
+    law=cert.get("labelled_composition_or_tensor_law")
+    if not isinstance(law,dict) or not law.get("locator"): return result("fail","composition_law","composition/tensor law needs a locator")
+    reset=cert.get("reset_or_catalytic_return_map")
+    if not isinstance(reset,dict) or reset.get("apparatus_reset_independent") is not True or not reset.get("locator"):
+        return result("fail","reset","reset/return map needs a locator and apparatus_reset_independent=true")
+    repeated=cert.get("repeated_joint_law")
+    if not isinstance(repeated,dict) or repeated.get("coupling_semantics") not in ("fresh","shared"):
+        return result("fail","repeated_joint_law","declare fresh or shared coupling semantics")
+    for key in ("marginal_signature","joint_signature","two_use_variance","covariance"):
+        if key not in repeated: return result("fail","repeated_joint_law","repeated joint law missing "+key)
+    if repeated.get("preparation_label_side_channel") is not False: return result("fail","side_channel","preparation_label_side_channel must be false")
+    if repeated.get("controlled_intervention_admissible") is not True: return result("fail","controlled_intervention","controlled intervention must be admitted")
+    if repeated.get("triple_composition_closed") is not True or repeated.get("mixed_coherence_closed") is not True:
+        return result("fail","higher_coherence","triple composition and mixed coherence must close")
+    bounds=cert.get("degradation_and_uncertainty_bounds")
+    if not isinstance(bounds,dict) or not bounds.get("locator"): return result("fail","degradation_and_uncertainty","bounds need a locator")
+    descent=cert.get("quotient_descent_certificate")
+    if not isinstance(descent,dict) or descent.get("valid") is not True or not descent.get("locator"):
+        return result("fail","quotient_descent","quotient descent needs valid=true and a locator")
+    calibration=cert.get("feature_calibration")
+    if not isinstance(calibration,dict) or calibration.get("full_authorized_packet") is not True:
+        return result("fail","feature_calibration","calibration must cover the full authorized packet")
+    if calibration.get("observer_fitted") is not False or calibration.get("covariance_observer_fitted") is not False:
+        return result("fail","observer_fitting","observer-fitted coupling or covariance is forbidden")
+    if not isinstance(cert.get("support_assumptions"),list) or not cert["support_assumptions"]:
+        return result("fail","domain_and_support","support_assumptions must be non-empty")
+    if transport_pending:
+        return result("inconclusive","natural_transport","candidate awaits a source-authorized closed naturality square")
+    if successor_threshold_pending:
+        return result("inconclusive","successor_threshold","controlled successor awaits a preregistered numerical uncertainty threshold")
+    if successor_prediction_pending:
+        return result("inconclusive","successor_source_derivation","controlled successor awaits a source-derived joint first jet")
+    if cert.get("source_derivation_status")!="source_derived":
+        return result("inconclusive","source_derivation","candidate_requires_source_derivation")
+    return result("pass",None)
+
 def validate_model(m):
     if "_load_error" in m: return ["invalid JSON: "+m["_load_error"]]
     errors=[]
@@ -36,6 +159,49 @@ def validate_model(m):
     for key in ("depends_on","consumes","provides","missing_constructors"):
         if key in m and (not isinstance(m[key],list) or not all(isinstance(x,str) for x in m[key])): errors.append(key+" must be an array of strings")
     if "next_falsifier" in m and not isinstance(m["next_falsifier"],str): errors.append("next_falsifier must be a string")
+    lower=m.get("lower_theory")
+    if lower is not None:
+        if not isinstance(lower,dict): errors.append("lower_theory must be an object")
+        else:
+            required={"composition","tensor","authorized_ancilla","discard","conditioning"}
+            operations=lower.get("operations")
+            if not isinstance(operations,list) or not all(isinstance(x,str) for x in operations):
+                errors.append("lower_theory.operations must be an array of strings")
+            elif not required.issubset(set(operations)):
+                errors.append("lower_theory.operations must include composition, tensor, authorized_ancilla, discard, and conditioning")
+            for key in ("freeze_id","fingerprint"):
+                if not isinstance(lower.get(key),str) or not lower[key]: errors.append("lower_theory."+key+" must be a non-empty string")
+            testers=lower.get("tester_ids")
+            if not isinstance(testers,list) or not testers or not all(isinstance(x,str) and x for x in testers):
+                errors.append("lower_theory.tester_ids must be a non-empty array of strings")
+            for key in ("context_language_completeness","hostile_language_completeness"):
+                if lower.get(key) not in ("complete","incomplete"): errors.append("lower_theory."+key+" must be complete or incomplete")
+    if "apparatus_certificate" in m:
+        apparatus=validate_apparatus_certificate(m["apparatus_certificate"])
+        if apparatus["status"]=="fail":
+            errors.append("apparatus_certificate."+apparatus["first_failed_gate"]+": "+apparatus["reason"])
+    return errors
+
+def validate_irreducibility_result(packet,m):
+    gate=packet.get("contextual_irreducibility")
+    if gate is None:return []
+    errors=[]; disposition=gate.get("disposition")
+    if "lower_theory" not in m: errors.append("contextual_irreducibility result requires manifest lower_theory")
+    if disposition not in ("irreducible_witnessed","reducible_descends","inconclusive_language_incomplete"):
+        errors.append("unsupported contextual_irreducibility disposition");return errors
+    for ancilla in gate.get("ancillas",[]):
+        if not isinstance(ancilla,dict) or not all(ancilla.get(k) is True for k in ("authority","hostile_independent","uniformly_available")):
+            errors.append("contextual irreducibility uses answer-encoding ancilla")
+    if disposition=="irreducible_witnessed":
+        witness=gate.get("witness")
+        if not isinstance(witness,dict) or witness.get("lower_equivalent") is not True or witness.get("Cx_record")==witness.get("Cy_record"):
+            errors.append("irreducible_witnessed requires lower-equivalent inputs with unequal contextual records")
+    elif disposition=="reducible_descends" and not gate.get("descent_certificate"):
+        errors.append("reducible_descends requires a descent_certificate")
+    elif disposition=="inconclusive_language_incomplete" and isinstance(m.get("lower_theory"),dict):
+        lower=m["lower_theory"]
+        if lower.get("context_language_completeness")=="complete" and lower.get("hostile_language_completeness")=="complete":
+            errors.append("inconclusive disposition forbidden when hostile and context languages are complete")
     return errors
 
 def discover():
@@ -114,6 +280,7 @@ def run_checks(checks,verbose=False):
         try:
             packet=json.loads(done.stdout)
             out["result"]={"passed":packet.get("passed"),"classification":packet.get("classification",packet.get("status")),"admitted_scope":packet.get("admitted_scope"),"residuals":packet.get("residuals",[]),"missing_constructors":packet.get("missing_constructors",[]),"next_falsifier":packet.get("next_falsifier",packet.get("next_gate")),"conclusion":packet.get("conclusion",packet.get("verdict"))}
+            if packet.get("contextual_irreducibility") is not None: out["result"]["contextual_irreducibility"]=packet["contextual_irreducibility"]
             out["result"]={k:v for k,v in out["result"].items() if v not in (None,[],"")}
         except json.JSONDecodeError: out["result"]={"adapter":"exit-code-only"}
         if verbose or done.returncode: out["stdout"]=done.stdout[-4000:]; out["stderr"]=done.stderr[-4000:]
@@ -125,6 +292,13 @@ def check_model(m,verbose=False):
     digest,missing=fingerprint(m)
     if missing:return {"id":m["id"],"status":"missing_input","missing":missing,"passed":False}
     outcomes,passed=run_checks(checks_for(m),verbose)
+    gate_errors=[]
+    for outcome in outcomes:
+        gate=outcome.get("result",{}).get("contextual_irreducibility")
+        if gate is not None: gate_errors.extend(validate_irreducibility_result({"contextual_irreducibility":gate},m))
+    if gate_errors:
+        passed=False
+        outcomes.append({"id":"contextual-irreducibility-gate","status":"failed","returncode":1,"result":{"residuals":gate_errors}})
     digest,post_missing=fingerprint(m)
     if post_missing:
         return {"id":m["id"],"status":"missing_input_after_check","missing":post_missing,"passed":False,"outcomes":outcomes}
@@ -256,9 +430,13 @@ def main(argv):
         if argv[1]=="all":report={"schema":"marici.scc.validation.v1","valid_models":sorted(models),"errors":errors,"passed":not errors}
         else:
             p=Path(argv[1]).resolve()
-            try:raw=json.loads(p.read_text(encoding="utf-8")); found=validate_model(raw.get("model",raw))
+            apparatus=None
+            try:
+                raw=json.loads(p.read_text(encoding="utf-8")); manifest=raw.get("model",raw); found=validate_model(manifest)
+                if "apparatus_certificate" in manifest: apparatus=validate_apparatus_certificate(manifest["apparatus_certificate"])
             except (OSError,json.JSONDecodeError) as e:found=[str(e)]
             report={"schema":"marici.scc.validation.v1","manifest":str(p),"errors":found,"passed":not found}
+            if apparatus is not None: report["apparatus_validation"]=apparatus
         print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
     if len(argv)==2 and argv[0] in ("status","check","explain"):
         selected=list(models.values()) if argv[1]=="all" else [models.get(argv[1])]

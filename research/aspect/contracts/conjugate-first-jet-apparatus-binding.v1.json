@@ -1,0 +1,33 @@
+{
+  "schema": "marici.aspect.conjugate-first-jet-apparatus-binding.v1",
+  "status": "unbound",
+  "authority_boundary": "Every value must come from an operator-authorized apparatus inventory or an independent calibration packet, never from science outcomes.",
+  "bindings": {
+    "physical_source_locator": null,
+    "comb_locator": null,
+    "local_oscillator_locator": null,
+    "pulse_shaper_locator": null,
+    "identity_mask_locator": null,
+    "signed_frequency_mask_locator": null,
+    "splitter_locator": null,
+    "detector_1_locator": null,
+    "detector_2_locator": null,
+    "effective_attempt_rate_hz": null,
+    "reconfiguration_seconds_per_cell": null,
+    "bound_shear_d_hz": null,
+    "detector_bandwidth_hz": null,
+    "mode_overlap": null,
+    "gain_covariance_packet_locator": null,
+    "available_apparatus_seconds": null
+  },
+  "admission": {
+    "all_locators_nonempty": false,
+    "all_numeric_values_positive": false,
+    "mode_overlap_in_open_unit_interval": false,
+    "gain_packet_independent_of_science": false,
+    "apparatus_time_sufficient_for_28_cells": false
+  },
+  "duration_law": "2800000/effective_attempt_rate_hz + 28*reconfiguration_seconds_per_cell <= available_apparatus_seconds",
+  "on_bind": "Set status to bound only after every admission flag is independently evidenced. Binding authorizes scheduling, not a scientific result.",
+  "current_conclusion": "physical execution remains unavailable"
+}
