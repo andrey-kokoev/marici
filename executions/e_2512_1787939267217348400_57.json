@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787939267217348400_57",
+  "created_at": "2026-08-28T17:47:47.2173511Z",
+  "sha256": "9a0546ab6da94039e61af20e1a7c806c435adff826dedf4a8f29e2643b07c678",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy,json; s=io.StringIO(); c=contextlib.redirect_stdout(s); c.__enter__(); d=runpy.run_path('research/strominger/checkers/integral_constructor_recurrence_checks.py'); c.__exit__(None,None,None); A=d['C']; n=4; I=[[int(i==j) for j in range(n)] for i in range(n)]; B=I; cs=[];\nfor k in range(1,n+1):\n AB=[[sum(A[i][z]*B[z][j] for z in range(n)) for j in range(n)] for i in range(n)]; ck=-sum(AB[i][i] for i in range(n))//k; cs.append(ck); B=[[AB[i][j]+ck*I[i][j] for j in range(n)] for i in range(n)]\nprint(json.dumps({'charpoly_coefficients':[1]+cs,'charpoly_is_lambda_minus_one_power4':cs==[-4,6,-4,1],'final_residual':B},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T17:47:32.9082358Z",
+    "finished_at": "2026-08-28T17:47:47.2173374Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact characteristic polynomial of fixed constructor",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact characteristic polynomial of fixed constructor",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"charpoly_coefficients\": [\r\n    1,\r\n    -147460,\r\n    294918,\r\n    -147460,\r\n    1\r\n  ],\r\n  \"charpoly_is_lambda_minus_one_power4\": false,\r\n  \"final_residual\": [\r\n    [\r\n      0,\r\n      0,\r\n      0,\r\n      0\r\n    ],\r\n    [\r\n      0,\r\n      0,\r\n      0,\r\n      0\r\n    ],\r\n    [\r\n      0,\r\n      0,\r\n      0,\r\n      0\r\n    ],\r\n    [\r\n      0,\r\n      0,\r\n      0,\r\n      0\r\n    ]\r\n  ]\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
