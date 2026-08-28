@@ -21,9 +21,7 @@ Let
 with labelled basis `e_n`. For `t>0` define
 
 \[
-\boxed{
 G(t)=\sum_{n\ge1}e^{-\pi n^2t}e_n.
-}
 \]
 
 This is an honest Hilbert vector for every positive `t`. Its squared norm is
@@ -69,19 +67,15 @@ This is integrable exactly when
 or
 
 \[
-\boxed{
 \operatorname{Re}s>\frac12.
-}
 \]
 
 Componentwise Mellin transformation gives
 
 \[
-\boxed{
 \mathcal K(s)
 =\pi^{-s/2}\Gamma(s/2)
 \sum_{n\ge1}n^{-s}e_n.
-}
 \]
 
 Thus the labelled theta--Dirichlet state exists as one Hilbert vector
@@ -114,11 +108,9 @@ whenever interpreted in the normalized incomplete tensor sector. Its norm is
 Consequently the normalized Euler product state is exactly
 
 \[
-\boxed{
 \Psi_s
 =\frac1{\sqrt{\zeta(2\operatorname{Re}s)}}
 \sum_{n\ge1}n^{-s}e_n.
-}
 \]
 
 The prime-exponent tensor criterion and the theta heat-Mellin criterion are
@@ -147,16 +139,9 @@ defined only when the Hilbert vector happens additionally to lie in
 
 Therefore the theta construction gives the same exact corridor:
 
-\[
-\boxed{
-\begin{array}{ll}
-\operatorname{Re}s>1/2
-&\text{labelled Mellin Carrier exists},\\
-\operatorname{Re}s>1
-&\text{unlabelled scalar sum is directly defined}.
-\end{array}
-}
-\]
+The labelled Mellin Carrier exists for
+(\operatorname{Re}s>1/2), while the unlabelled scalar sum is directly
+defined only for (\operatorname{Re}s>1).
 
 The scalar loses meaning after the labelled half-plane Carrier has already
 become a valid Hilbert object.
@@ -199,12 +184,8 @@ from theta heat geometry.
 The equality of the resulting states is supplied by unique factorization and
 the Mellin transform. Hence
 
-\[
-\boxed{
-\text{the critical seam is where one fixed labelled theta/Euler Carrier
-ceases to be Hilbert-integrable.}
-}
-\]
+Thus the critical seam is where one fixed labelled theta/Euler Carrier ceases
+to be Hilbert-integrable.
 
 This conclusion does not use zero locations.
 
@@ -213,13 +194,13 @@ This conclusion does not use zero locations.
 The scalar modular tail formula already constructs a completed functional
 
 \[
-\Lambda_{\rm comp}(s)
+\Lambda_{\operatorname{comp}}(s)
 \]
 
 on a source-derived tail presentation such that
 
 \[
-\Lambda_{\rm comp}(s)\mathcal K(s)=\xi(s)
+\Lambda_{\operatorname{comp}}(s)\mathcal K(s)=\xi(s)
 \]
 
 but does not make its nonvanishing manifest while `K(s)` remains in its
@@ -268,11 +249,9 @@ because the finite numerator remains bounded while
 `zeta(2 Re(s))` diverges.  Density and the uniform unit norm then give
 
 \[
-\boxed{
 \widehat k_s\rightharpoonup0
 \qquad
 \left(\operatorname{Re}s\downarrow\frac12\right).
-}
 \]
 
 There is no strong limit because every state has norm one.  Mass escapes to
@@ -302,11 +281,9 @@ On the real radial slice, the normalized label probabilities are
 Their Shannon entropy is exactly
 
 \[
-\boxed{
 \mathsf H(\sigma)
 =\log\zeta(2\sigma)
 -2\sigma\frac{\zeta'(2\sigma)}{\zeta(2\sigma)}.
-}
 \]
 
 Writing `epsilon=2sigma-1` and using the pole of zeta at one gives
@@ -328,14 +305,8 @@ The inverse participation ratio gives the same delocalization:
 Hence the effective number of occupied integer labels diverges at least on
 the scale `epsilon^(-2)`.
 
-This is a literal entropy gain at the critical seam:
-
-\[
-\boxed{
-\text{finite-label meaning vanishes because the integral Carrier
-delocalizes over infinitely many labels.}
-}
-\]
+This is a literal entropy gain at the critical seam: finite-label meaning
+vanishes because the integral Carrier delocalizes over infinitely many labels.
 
 It does not by itself locate zeros of the completed scalar observer.  It
 explains why the boundary can support phase defects while every finite
@@ -347,11 +318,9 @@ Weak convergence of a bounded sequence implies strong convergence after any
 compact operator.  Hence for every compact `A` on `ell^2(N)`,
 
 \[
-\boxed{
 \|A\widehat k_s\|\longrightarrow0
 \qquad
 \left(\operatorname{Re}s\downarrow\frac12\right).
-}
 \]
 
 Finite-rank label measurements are a special case.  Therefore no fixed
@@ -364,11 +333,6 @@ The all-ones Euler observer has exactly this type.  Endpoint and gamma
 completion must regularize it without converting it into a compact
 observation that would vanish automatically.
 
-This supplies a durable methodological consequence:
-
-\[
-\boxed{
-\text{finite scouting can test interior formulas but cannot discover the
-boundary observer by convergence of finite detectors alone.}
-}
-\]
+This supplies a durable methodological consequence: finite scouting can test
+interior formulas but cannot discover the boundary observer by convergence of
+finite detectors alone.

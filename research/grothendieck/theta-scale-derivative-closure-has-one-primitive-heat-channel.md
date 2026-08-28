@@ -54,10 +54,9 @@ Iterating downward expresses every `H_(k+2)` uniquely in
 Therefore
 
 \[
- \boxed{
  D\,\operatorname{span}\{H_1,M_0,\ldots,M_k\}
  \subseteq
- \operatorname{span}\{H_1,M_0,\ldots,M_{k+1}\}.}
+ \operatorname{span}\{H_1,M_0,\ldots,M_{k+1}\}.
 \]
 
 No new primitive channel appears at higher order.  For example,
@@ -84,14 +83,8 @@ moment is recovered recursively from the corresponding `M_k`.
 
 So the closure is minimal in the typed sense:
 
-\[
- \boxed{
- \text{scalar completed jet}
- =
- \text{oriented seam-moment tower}
- +
- \text{one primitive heat channel}.}
-\]
+In ordinary language, the scalar completed jet equals the oriented seam-moment
+tower together with one primitive heat channel.
 
 ## Cross-programme meaning
 
