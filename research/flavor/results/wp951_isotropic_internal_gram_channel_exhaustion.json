@@ -1,0 +1,35 @@
+{
+  "checks": {
+    "both_scalar_kill_cp": true,
+    "idempotent_parameters_zero_one": true,
+    "identity_channel_exact": true,
+    "identity_pair_nonselective": true,
+    "identity_pair_retains_cp": true,
+    "input_cp_nonzero": true,
+    "physical_randomization_instrument_absent": true,
+    "scalar_channel_exact": true,
+    "scalar_channel_idempotent": true,
+    "scalar_channel_positive_on_hostile": true,
+    "scalar_channel_trace_preserving": true,
+    "scalar_down_kills_cp": true,
+    "scalar_up_kills_cp": true,
+    "up_scalarization_erases_hierarchy": true
+  },
+  "checks_passed": 14,
+  "checks_total": 14,
+  "classification": "sector-local isotropic idempotents are identity or scalarization; they select nothing or erase mixing",
+  "hostile_pair": {
+    "input_cp_cubic": "-36*I",
+    "sectorwise_channels": {
+      "(0,0)": {"cp_cubic": "0", "down_is_scalar": true, "down_trace": "10", "up_is_scalar": true, "up_trace": "7"},
+      "(0,1)": {"cp_cubic": "0", "down_is_scalar": false, "down_trace": "10", "up_is_scalar": true, "up_trace": "7"},
+      "(1,0)": {"cp_cubic": "0", "down_is_scalar": true, "down_trace": "10", "up_is_scalar": false, "up_trace": "7"},
+      "(1,1)": {"cp_cubic": "-36*I", "down_is_scalar": false, "down_trace": "10", "up_is_scalar": false, "up_trace": "7"}
+    }
+  },
+  "idempotent_parameters": [0, 1],
+  "remaining_gate": "source-derived anisotropic internal Gram operation with completion stability and calibrated instrument",
+  "smallest_exact_falsifier": "the three channels with at least one scalarized Gram send CP cubic -36*i to 0",
+  "status": "PASS",
+  "work_package": "WP951"
+}
