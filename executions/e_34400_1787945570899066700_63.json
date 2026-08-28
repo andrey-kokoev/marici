@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787945570899066700_63",
+  "created_at": "2026-08-28T19:32:50.8990699Z",
+  "sha256": "10225b2101fd35a4d43e18176d88d42e1a53194450ee375971b8501a09d4d3d1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp981_source_scale_dimensionless_fiber.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T19:32:50.8222611Z",
+    "finished_at": "2026-08-28T19:32:50.8990574Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP981 source-scale normalization no-go",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP981 source-scale normalization no-go",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.source-scale-dimensionless-fiber.v1\",\r\n  \"work_package\": \"WP981\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"normalization_cancels_for_low_packet\": true,\r\n    \"normalization_cancels_for_high_packet\": true,\r\n    \"normalized_masses_are_shared\": true,\r\n    \"low_packet_is_exactly_16384\": true,\r\n    \"high_packet_is_exactly_40000\": true,\r\n    \"normalized_packets_straddle_crossing\": true,\r\n    \"single_scale_does_not_select_dimensionless_ray\": true\r\n  },\r\n  \"domain\": \"positive source scale and positive WP977 normalized masses\",\r\n  \"dimensionless_coordinate\": \"rho_hat=N^8*(k/q)=gamma^2*a^4/(b*c^5)\",\r\n  \"shared_data\": {\r\n    \"gamma\": \"8\",\r\n    \"N\": \"7/3\",\r\n    \"b\": \"1\",\r\n    \"c\": \"1\"\r\n  },\r\n  \"hostile_packets\": [\r\n    {\r\n      \"a\": \"4\",\r\n      \"rho_hat\": \"16384\"\r\n    },\r\n    {\r\n      \"a\": \"5\",\r\n      \"rho_hat\": \"40000\"\r\n    }\r\n  ],\r\n  \"crossing\": \"24696\",\r\n  \"classification\": \"source scale repairs units but is not a dimensionless coefficient selector\",\r\n  \"remaining_gate\": \"derive a source relation that constrains gamma^2*a^4/(b*c^5) before flavor readout and survives coupled-vacuum and instrument tests\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
