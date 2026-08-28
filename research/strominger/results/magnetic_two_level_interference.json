@@ -2,6 +2,7 @@
   "schema": "marici.checker_results.v1",
   "checker": "magnetic_two_level_interference_checks.py",
   "author": "marici.Strominger",
+  "dependency_posture": "Python standard library exact Laurent-rational arithmetic",
   "scope": {
     "strength": "exact full-fold mechanism distinction",
     "grade": 2,
@@ -13,37 +14,43 @@
   "checks": [
     {
       "id": "E1.nonzero",
-      "statement": "E1 has two nonzero physical sheet outputs",
+      "statement": "E1 has two nonzero sheet outputs",
       "status": "pass",
-      "detail": "A!=0 and B!=0"
+      "detail": {
+        "left_numerator_terms": 12,
+        "right_numerator_terms": 12
+      }
     },
     {
       "id": "E1.magnetic",
       "statement": "E1 is magnetic-zero by equal-sheet coherence",
       "status": "pass",
-      "detail": "A-B=0"
+      "detail": "A=B"
     },
     {
       "id": "E1.electric",
-      "statement": "E1 remains visible to the complementary sum readout",
+      "statement": "E1 remains visible to the complementary sum",
       "status": "pass",
       "detail": "A+B=2A!=0"
     },
     {
       "id": "E2.nonzero",
-      "statement": "E2 has two nonzero physical sheet outputs",
+      "statement": "E2 has two nonzero sheet outputs",
       "status": "pass",
-      "detail": "A!=0 and B!=0"
+      "detail": {
+        "left_numerator_terms": 14,
+        "right_numerator_terms": 14
+      }
     },
     {
       "id": "E2.magnetic",
       "statement": "E2 is magnetic-zero by equal-sheet coherence",
       "status": "pass",
-      "detail": "A-B=0"
+      "detail": "A=B"
     },
     {
       "id": "E2.electric",
-      "statement": "E2 remains visible to the complementary sum readout",
+      "statement": "E2 remains visible to the complementary sum",
       "status": "pass",
       "detail": "A+B=2A!=0"
     },
@@ -51,10 +58,10 @@
       "id": "E1.closed",
       "statement": "the first exceptional sheet has the closed formula",
       "status": "pass",
-      "detail": "(40*z + 40*zb)/(z*zb + 1)**3"
+      "detail": "40(z+zb)/(1+z*zb)^3"
     }
   ],
   "n_pass": 7,
   "n_fail": 0,
-  "verdict": "Residual observation-carrier loss explains why the source matrix acquires E1 and E2 circuits, but neither class loses its full physical sheet packet. Both have A=B nonzero, so M=A-B vanishes by lawful equal-sheet coherence while the complementary electric readout A+B=2A remains nonzero. Local birth mechanism and final readout mechanism are distinct levels."
+  "verdict": "E1 and E2 have A=B nonzero. They are pure electric-ideal states: magnetic projection vanishes while the complementary electric readout equals 2A and remains nonzero."
 }

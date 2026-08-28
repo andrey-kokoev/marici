@@ -1,0 +1,35 @@
+{
+  "schema": "marici.strominger.magnetic_split_clifford_checks.v1",
+  "status": "passed",
+  "gates": {
+    "split_clifford_generator_squares_to_one": true,
+    "primitive_idempotents": true,
+    "orthogonal_zero_divisors": true,
+    "resolution_of_identity": true,
+    "sheet_encoding_yields_sum_and_difference": true,
+    "source_involutions_commute": true,
+    "source_involutions_are_not_clifford_anticommuting_generators": true,
+    "klein_four_has_four_primitive_sectors": true,
+    "physical_q_has_two_rank_two_ideals": true,
+    "fixed_orbit_structurally_lacks_magnetic_ideal": true,
+    "free_orbit_has_magnetic_ideal_but_collision_can_avoid_it": true,
+    "electric_port_detects_the_magnetic_kernel_line": true,
+    "magnetic_port_detects_the_electric_kernel_line": true,
+    "characteristic_zero_makes_complementary_detection_invertible": true,
+    "clifford_splitting_does_not_authorize_joint_instrument": true
+  },
+  "gate_count": 15,
+  "passed_gate_count": 15,
+  "algebra": {
+    "parity": "Cl_1_0 = R[epsilon]/(epsilon^2-1) = R direct_sum R",
+    "full_commuting_source_symmetry": "Cl_1_0 tensor Cl_1_0 = R[Z2 x Z2] = R^4",
+    "warning": "P and sigma commute, so they are not the two anticommuting generators of Cl_2_0"
+  },
+  "kernel_taxonomy": {
+    "tower": "selected Clifford ideal is absent on a fixed orbit",
+    "collision_circuit": "selected ideal exists, but the transported combination lands in its complementary annihilator ideal",
+    "transport_loss": "excluded by the injective transport theorem"
+  },
+  "universal_kernel_detection_theorem": "Assuming injective one-sheet transport A and characteristic not two, E restricts injectively to ker(M), and M restricts injectively to ker(E).",
+  "operational_boundary": "A complementary port suffices to separate states already known to lie in the opposite kernel. Full arbitrary-state reconstruction still requires a provenance-correct jointly executable refinement."
+}
