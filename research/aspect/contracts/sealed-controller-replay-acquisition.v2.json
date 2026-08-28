@@ -1,0 +1,16 @@
+{
+  "schema": "marici.aspect.sealed-controller-replay-acquisition.v2",
+  "format": "CSV with one row per attempted live or replay trial",
+  "required_columns": ["trial_key", "acquisition_epoch", "arm", "transcript_bound_predecessor", "actual_predecessor", "target", "controller_transcript_key", "sealed_payload_digest", "controller_input_manifest", "correction_command", "target_outcome", "reset_monitor_outcome", "reset_failure", "acquisition_block", "within_block_position", "sealed_schedule_key"],
+  "arms": ["live_controller", "sealed_replay"],
+  "treatments": ["L1", "R2", "L2", "R1"],
+  "cell_count": 80,
+  "minimum_attempted_trials_per_cell": 1000000,
+  "absolute_replay_predecessor_spread_tolerance": "1/20",
+  "allowed_controller_inputs": "transcript_bound_predecessor,target,calibration_epoch; actual_predecessor is prohibited",
+  "cell_design": "Sealed replay crosses all 4 bound predecessors, 4 actual predecessors, and 4 targets (64 cells). Live control crosses 4 actual predecessors and 4 targets with bound predecessor equal to actual predecessor (16 cells).",
+  "block_design": "Every acquisition block contains all 80 legal cells exactly once; positions rotate uniformly over 80 blocks.",
+  "saturated_minimality": "Arbitrary predecessor dependence requires four actual-predecessor means in each of 16 replay bound-target strata (64), while live control requires one mean in each of 16 actual-target strata; the disjoint record types give a lower bound of 80 cells, attained here.",
+  "retention_rule": "Every attempt and reset failure is retained; live adaptation cannot rewrite a sealed replay transcript.",
+  "claim_boundary": "Passing records reject predecessor-conditioned adaptation within the declared controller input manifest; undeclared physical side channels remain an apparatus-security question."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "marici.aspect.directional-response-certificate.v1",
+  "status": "pass",
+  "systematic_budget": 1e-06,
+  "certificate": "for ||f||=1, coherent tomography bound ||(T_hat-T)f||<=epsilon implies |Re<f,(T_hat-T)f>|<=epsilon",
+  "example_residual_norm": "1/2000000",
+  "example_form_error": "7*sqrt(2)/20000000",
+  "gates": {
+    "test_mode_is_normalized": true,
+    "cauchy_schwarz_directional_bound_holds": true,
+    "example_residual_passes_one_micro_budget": true,
+    "orthogonal_error_is_seen_by_vector_tomography": true,
+    "orthogonal_error_is_missed_by_scalar_projection": true
+  },
+  "hostiles": {
+    "forty_four_independent_operator_norm_certificates_not_required": true,
+    "scalar_quadratic_readout_not_accepted_as_transfer_certificate": true,
+    "tomography_mode_must_be_frozen_before_sign_acquisition": true,
+    "residual_measured_after_unsigned_gain_rejected": true,
+    "unresolved_residual_forces_abstention": true
+  },
+  "result": "One end-to-end coherent response-vector certificate on the preregistered mode discharges the full level-44 synthesis-bias budget. Componentwise worst-case accumulation is unnecessary.",
+  "acquisition_order": [
+    "freeze source-derived mode f and ideal response Tf",
+    "tomograph unamplified realized response T_hat f",
+    "accept transfer only if the confidence upper bound on the vector residual is below 1e-6",
+    "then perform unsigned norm balancing and phase-sign acquisition"
+  ]
+}

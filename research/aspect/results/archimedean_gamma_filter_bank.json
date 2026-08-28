@@ -1,0 +1,29 @@
+{
+  "schema": "marici.aspect.archimedean-gamma-filter-bank.v1",
+  "status": "pass",
+  "channel_count": 44,
+  "rate_rule": "a_n=2n+1/2, n=0,...,43",
+  "channel_transfer": "2/a_n - 2a_n/(a_n^2+tau^2) = 2tau^2/(a_n(a_n^2+tau^2))",
+  "tail_samples": {
+    "1/10": "6.390634992726795e-7",
+    "1": "6.390213181064592e-5",
+    "3": "0.0005748126540977155",
+    "10": "0.006348395695399352",
+    "100": "0.4040387405982695"
+  },
+  "gates": {
+    "all_44_filters_match_source_gamma_channels": true,
+    "all_channels_annihilate_dc": true,
+    "all_channels_detect_nonzero_hostile_frequency": true,
+    "sampled_omitted_tail_is_strictly_positive": true,
+    "channel_rates_are_source_fixed_half_integers": true
+  },
+  "hostiles": {
+    "single_heat_degree_port_rejected": true,
+    "arbitrary_fitted_filter_rates_rejected": true,
+    "raw_44_channel_shooting_rejected_as_ill_conditioned": true,
+    "filter_bank_not_promoted_to_continuum_positivity_proof": true
+  },
+  "result": "The archimedean countercurrent is physically compilable as a 44-channel complementary-Lorentzian energy bank with source-fixed half-integer rates. It is an energy gate over the five linear boundary currents, not a sixth linear current.",
+  "remaining_certificate": "Directed interval propagation and a zero-count certificate for the 44-channel even/odd boundary-value determinant on lambda<=0."
+}

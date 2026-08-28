@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.flat-comb-completion-escape.v1",
+  "status": "pass",
+  "overlap_formula": "<Omega_N/sqrt(N),Omega_M/sqrt(M)>=sqrt(N/M) for N<=M under zero-padding",
+  "distance_formula": "||omega_N-omega_M||^2=2-2sqrt(N/M)",
+  "quarter_scale_distance_squared": {
+    "2": "1",
+    "4": "1",
+    "8": "1",
+    "16": "1",
+    "32": "1"
+  },
+  "primitive_delta_half_norm_squared_lower_bounds": {
+    "2": "3/2",
+    "4": "5/2",
+    "8": "9/2",
+    "16": "17/2",
+    "32": "33/2"
+  },
+  "gates": {
+    "flat_comb_is_not_cauchy_in_square_grade": true,
+    "flat_comb_primitive_half_norm_diverges": true,
+    "control_pulse_is_cutoff_compatible": true,
+    "finite_rank_two_gram_does_not_imply_compatible_state_frame": true,
+    "augmentation_must_be_retyped_as_dual_current_or_graph_coordinate": true
+  },
+  "hostiles": {
+    "uniform_finite_gram_floor_not_promoted_to_completion_rank": true,
+    "zero_padding_not_treated_as_fourier_intertwiner": true,
+    "augmentation_covector_not_riesz_identified_with_state": true,
+    "finite_dft_swap_not_promoted_to_global_state_swap": true
+  },
+  "result": "The normalized augmentation comb has a uniform rank floor at each finite cutoff but escapes the state completion: it is non-Cauchy in the square grade and divergent in positive primitive grades. The augmentation anchor belongs in the continuous dual or a graph extension, not as a second test-state normal vector.",
+  "apparatus_falsifier": "Measure cross-cutoff comb overlap. The source prediction sqrt(N/M), especially 1/2 for M=4N, directly exposes failure of state compatibility.",
+  "next_constructor": "Build the seam normal as a state--covector graph or rigged correspondence pairing the compatible control state e0 with the augmentation current in the dual."
+}

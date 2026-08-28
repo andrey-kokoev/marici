@@ -1,0 +1,57 @@
+{
+  "schema": "marici.aspect.apparatus-calendar-compiler-check.v1",
+  "status": "pass",
+  "example_is_not_physical_authority": true,
+  "positive_example": {
+    "accepted": true,
+    "gates": {
+      "recognized_binding_schema": true,
+      "one_nonempty_calibration_epoch": true,
+      "binding_frozen_before_science_outcomes": true,
+      "coherent_environment_port_available": true,
+      "available_optical_seconds_positive": true,
+      "environment_port_tomography_rate_positive": true,
+      "environment_port_tomography_setup_positive": true,
+      "sealed_controller_replay_rate_positive": true,
+      "sealed_controller_replay_setup_positive": true,
+      "comb_referenced_flavor_comparison_rate_positive": true,
+      "comb_referenced_flavor_comparison_setup_positive": true
+    },
+    "ordered_optical_schedule": [
+      "comb_referenced_flavor_comparison",
+      "environment_port_tomography"
+    ],
+    "duration_seconds": {
+      "environment_port_tomography": "5200",
+      "sealed_controller_replay": "4800",
+      "comb_referenced_flavor_comparison": "2080"
+    },
+    "available_optical_seconds": "10000",
+    "feasible_subsets_exhausted": 8,
+    "selected_optical_instruments": [
+      "comb_referenced_flavor_comparison",
+      "environment_port_tomography"
+    ],
+    "unscheduled_optical_instruments": [
+      "sealed_controller_replay"
+    ],
+    "selected_optical_seconds": "7280",
+    "priority_laws": {
+      "environment_before_controller": "2*D_controller >= D_environment",
+      "environment_before_comb": "2*D_comb >= D_environment",
+      "controller_before_comb": "D_controller <= D_comb"
+    },
+    "arithmetic_parallel_member": "mixed_prime_incidence: 400 exact cases on a separate resource axis"
+  },
+  "deliberate_failures": {
+    "unfrozen_binding_rejected": true,
+    "missing_environment_port_rejected": true,
+    "zero_rate_rejected": true,
+    "negative_setup_rejected": true,
+    "missing_epoch_rejected": true,
+    "zero_available_time_rejected": true,
+    "malformed_rate_rejected": true
+  },
+  "real_apparatus_calendar_compiled": false,
+  "missing_real_binding_contract": "contracts/apparatus-capacity-binding.v1.json"
+}

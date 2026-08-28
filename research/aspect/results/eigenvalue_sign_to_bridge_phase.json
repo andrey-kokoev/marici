@@ -1,0 +1,24 @@
+{
+  "schema": "marici.aspect.eigenvalue-sign-to-bridge-phase.v1",
+  "status": "pass",
+  "exact_identity": "alpha=||f||/||Tf|| implies contrast=Re<f,Tf>/(||f||||Tf||); for Tf=lambda f this equals sign(lambda)",
+  "approximate_mode_contrast": "lambda/sqrt(lambda^2+||r||^2) for residual orthogonal to f",
+  "level_43_contrast": "-1",
+  "level_44_contrast": "1",
+  "gates": {
+    "balanced_exact_eigenmode_contrast_is_sign": true,
+    "level_43_scale_maps_to_pi_phase": true,
+    "level_44_scale_maps_to_zero_phase": true,
+    "approximate_mode_contrast_formula": true,
+    "residual_cannot_flip_sign": true
+  },
+  "hostiles": {
+    "balancing_gain_uses_unsigned_norm_only": true,
+    "unbalanced_ppm_intensity_requirement_rejected": true,
+    "zero_response_requires_abstention_not_infinite_gain": true,
+    "preamplifier_noise_must_be_measured_not_assumed_away": true,
+    "posthoc_phase_relabeling_rejected": true
+  },
+  "result": "Unsigned response-norm balancing converts the tiny 43/44 eigenvalue sign into a full-scale optical phase contrast. The experimental burden is response-arm dynamic range and noise, not parts-per-million differencing.",
+  "next_measurement": "Calibrate response-arm noise and require a preregistered lower bound on ||Tf|| above that noise before applying the balancing gain."
+}

@@ -71,6 +71,17 @@ def main():
     assert generated_run.returncode == 0, generated_run.stderr
     generated = json.loads((ROOT / "results" / "falsifier_compiler_generated_interventions.json").read_text())
     assert generated["all_generated_interventions_operational"]
+    raw_generated = {}
+    for key, script, result_name in (
+        ("environment_port_tomography", "check_environment_port_tomography_run_analyzer.py", "environment_port_tomography_run_analyzer.json"),
+        ("sealed_controller_replay", "check_sealed_controller_replay_run_analyzer_v2.py", "sealed_controller_replay_run_analyzer_v2.json"),
+    ):
+        completed = subprocess.run([sys.executable, str(ROOT / "checkers" / script)],
+                                   check=False, capture_output=True, text=True)
+        assert completed.returncode == 0, completed.stderr
+        raw_result = json.loads((ROOT / "results" / result_name).read_text())
+        raw_generated[key] = raw_result["status"] == "pass"
+    assert all(raw_generated.values())
     prereg = json.loads(PREREG.read_text(encoding="utf-8"))
     integration = (REQUIRED_GATES | GENERATED_GATES) <= set(prereg["acceptance_gates"])
     assert integration
@@ -80,6 +91,7 @@ def main():
         "all_eight_falsifiers_executed": len(executions) == 8,
         "all_eight_repair_gates_integrated_into_associator_preregistration": integration,
         "all_eight_generated_interventions_operational_and_integrated": integration,
+        "raw_generated_intervention_analyzers": raw_generated,
         "physical_reset_qualified": False,
         "physical_boundary": "no apparatus record was supplied; exact completion here is the requested falsifier architecture, not empirical reset certification",
     }

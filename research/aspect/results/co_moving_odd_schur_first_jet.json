@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "checks": {
+    "schur_complement_reduces_to_odd_reservoir_pairing": true,
+    "return_and_transport_terms_cancel": true,
+    "complete_schur_first_jet_is_negative_endpoint_current": true,
+    "complete_jet_equals_direct_schur_derivative": true,
+    "frozen_return_erases_endpoint_current": true,
+    "return_row_has_deck_odd_covariance": true
+  },
+  "schur_complement": "e + f*(1 - exp(-L*(z + 1/2)))/(z + 1/2) - f*(exp(L*(z - 1/2)) - 1)/(z - 1/2)",
+  "complete_first_jet": "f*(1 - exp(2*L*z))*exp(-L*(z + 1/2))",
+  "endpoint_current": "2*f*exp(-L/2)*sinh(L*z)",
+  "jet_terms": {
+    "return_derivative": "f*(1 - exp(2*L*z))*exp(-L*(z + 1/2))",
+    "retained_transport": "f*(exp(2*L*z) - 1)*exp(-L*(z + 1/2))",
+    "outgoing_derivative": "f*(1 - exp(2*L*z))*exp(-L*(2*z + 1)/2)"
+  },
+  "frozen_return_jet": "0"
+}

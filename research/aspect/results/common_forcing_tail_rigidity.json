@@ -1,0 +1,15 @@
+{
+  "schema": "marici.aspect.common-forcing-tail-rigidity.v1",
+  "status": "pass",
+  "checks": {
+    "defect_obeys_homogeneous_equation": true,
+    "homogeneous_solution_is_exponential": true,
+    "theta_tail_is_superexponential": true,
+    "nonzero_defect_forces_unbounded_multiplier": true,
+    "zero_defect_selects_identity_multiplier": true
+  },
+  "residual_gate": "H' T + (1-H) f = 0",
+  "homogeneous_defect": "Y=(H-1)T=c exp(-a x)",
+  "endpoint_multiplier_defect": "c*exp(-a*x + pi*exp(2*x))",
+  "interpretation": "Same-forcing preservation leaves only an exponential homogeneous defect, and theta endpoint admissibility removes it."
+}

@@ -1,0 +1,43 @@
+{
+  "accepted": true,
+  "gates": {
+    "recognized_binding_schema": true,
+    "one_nonempty_calibration_epoch": true,
+    "binding_frozen_before_science_outcomes": true,
+    "coherent_environment_port_available": true,
+    "available_optical_seconds_positive": true,
+    "environment_port_tomography_rate_positive": true,
+    "environment_port_tomography_setup_positive": true,
+    "sealed_controller_replay_rate_positive": true,
+    "sealed_controller_replay_setup_positive": true,
+    "comb_referenced_flavor_comparison_rate_positive": true,
+    "comb_referenced_flavor_comparison_setup_positive": true
+  },
+  "ordered_optical_schedule": [
+    "comb_referenced_flavor_comparison",
+    "environment_port_tomography"
+  ],
+  "duration_seconds": {
+    "environment_port_tomography": "5200",
+    "sealed_controller_replay": "7680",
+    "comb_referenced_flavor_comparison": "2080"
+  },
+  "available_optical_seconds": "10000",
+  "feasible_subsets_exhausted": 8,
+  "selected_optical_instruments": [
+    "comb_referenced_flavor_comparison",
+    "environment_port_tomography"
+  ],
+  "unscheduled_optical_instruments": [
+    "sealed_controller_replay"
+  ],
+  "selected_optical_seconds": "7280",
+  "priority_laws": {
+    "environment_before_controller": "2*D_controller >= D_environment",
+    "environment_before_comb": "2*D_comb >= D_environment",
+    "controller_before_comb": "D_controller <= D_comb"
+  },
+  "arithmetic_parallel_member": "mixed_prime_incidence: 400 exact cases on a separate resource axis",
+  "schema": "marici.aspect.apparatus-calendar.v1",
+  "binding": "research\\aspect\\contracts\\apparatus-capacity-measurement.example.json"
+}

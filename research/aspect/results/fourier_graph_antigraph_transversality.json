@@ -1,0 +1,59 @@
+{
+  "schema": "marici.aspect.fourier-graph-antigraph-transversality.v1",
+  "status": "pass",
+  "bulk_embedding": "x maps to (x,Fx)",
+  "normal_embedding": "y maps to (y,-Fy)",
+  "source_anchors": [
+    "Omega/sqrt(N)",
+    "e_0"
+  ],
+  "normal_gram_eigenvalues": "2(1 plus/minus 1/sqrt(N))",
+  "uniform_normal_floor_for_N_ge_2": "2 - sqrt(2)",
+  "cutoff_checks": {
+    "2": {
+      "fourier_unitary": true,
+      "graph_antigraph_orthogonal": true,
+      "normal_gram_exact": true,
+      "combined_rank": 4
+    },
+    "3": {
+      "fourier_unitary": true,
+      "graph_antigraph_orthogonal": true,
+      "normal_gram_exact": true,
+      "combined_rank": 5
+    },
+    "4": {
+      "fourier_unitary": true,
+      "graph_antigraph_orthogonal": true,
+      "normal_gram_exact": true,
+      "combined_rank": 6
+    },
+    "5": {
+      "fourier_unitary": true,
+      "graph_antigraph_orthogonal": true,
+      "normal_gram_exact": true,
+      "combined_rank": 7
+    },
+    "8": {
+      "fourier_unitary": true,
+      "graph_antigraph_orthogonal": true,
+      "normal_gram_exact": true,
+      "combined_rank": 10
+    }
+  },
+  "gates": {
+    "all_tested_fourier_maps_are_unitary": true,
+    "normal_antigraph_is_orthogonal_to_entire_bulk_graph": true,
+    "normal_gram_matches_source_formula": true,
+    "two_normal_directions_extend_bulk_rank_by_two": true,
+    "uniform_normal_floor_is_positive": true
+  },
+  "hostiles": {
+    "same_sign_graph_copy_rejected_as_normal": true,
+    "anchor_independence_not_used_without_doubled_embedding": true,
+    "finite_transversality_not_promoted_to_completion_continuity": true,
+    "nonunitary_transport_requires_separate_oblique_normal": true
+  },
+  "result": "At every finite cutoff, the augmentation--control anchors form an exact two-dimensional Fourier anti-graph normal. The normalized augmentation anchor is nevertheless non-Cauchy under cutoff growth, so this finite frame does not extend as two state vectors.",
+  "remaining_gate": "Construct a rigged graph/anti-graph correspondence with the augmentation direction in the continuous dual and the control direction in the state grade."
+}

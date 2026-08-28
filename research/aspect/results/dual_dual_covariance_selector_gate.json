@@ -1,0 +1,29 @@
+{
+  "schema": "marici.aspect.dual-dual-covariance-selector-gate.v1",
+  "status": "pass",
+  "general_symmetric_covariance": "G=[[a,b],[b,c]]",
+  "fourier_invariant_family": "G=scale*I, scale>0",
+  "dual_quadratic": "scale*(lambda_0^2+lambda_1^2)",
+  "gates": {
+    "fourier_invariance_forces_isotropy": true,
+    "positive_invariant_covariance_family_exists": true,
+    "dual_dual_quadratic_has_three_finite_coordinates_before_invariance": true,
+    "invariance_leaves_one_scale_parameter": true,
+    "selected_covariance_defines_positive_dual_quadratic": true
+  },
+  "hostiles": {
+    "fourier_symmetry_not_claimed_to_fix_scale": true,
+    "finite_identity_covariance_not_promoted_to_dual_to_test_smoothing": true,
+    "gaussian_heat_parameter_not_fitted_from_seam_data": true,
+    "sp4_not_promoted_before_covariance_normalization_and_continuity": true,
+    "positive_covariance_not_called_zero_confinement": true
+  },
+  "result": "Fourier covariance removes anisotropy and cross-mixing from the two-port dual--dual pairing but leaves one positive scale. A source-normalized smoothing covariance can restore the terminal three seam quadratics; symmetry alone cannot select it.",
+  "required_source_data": [
+    "a continuous smoothing map G:E'->E",
+    "Fourier covariance F G F'=G",
+    "a normalization fixing its remaining positive scale",
+    "compatibility with the adelic restricted product"
+  ],
+  "apparatus_role": "tomograph the dual-response covariance and test isotropy; measure the scale only after source theory predicts it, otherwise report an unselected one-parameter family"
+}
