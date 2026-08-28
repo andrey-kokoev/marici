@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787942238541691200_71",
+  "created_at": "2026-08-28T18:37:18.5416946Z",
+  "sha256": "bb830e3cb07518494bcef48dde59818ea6e87fcbd278f26c4c74cf51b15ea4e6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "K=[[2,-1,1,-1],[1,0,1,-1],[1,-1,2,-1],[1,-1,1,0]]; mm=lambda A,B:[[sum(A[i][k]*B[k][j] for k in range(4)) for j in range(4)] for i in range(4)]; tr=lambda A:sum(A[i][i] for i in range(4)); P=K; ps=[]\nfor n in range(1,5):\n ps.append(tr(P));P=mm(P,K)\ne=[]\nfor k in range(1,5): e.append((sum(((-1)**(i-1))*e[k-i-1]*ps[i-1] if k-i-1>=0 else 0 for i in range(1,k)) + ((-1)**(k-1))*ps[k-1])//k)\nprint(ps,e)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T18:37:18.4803916Z",
+    "finished_at": "2026-08-28T18:37:18.5416821Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "centralizer characteristic polynomial",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "centralizer characteristic polynomial",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[4, 4, 4, 4] [4, 6, 4, 1]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
