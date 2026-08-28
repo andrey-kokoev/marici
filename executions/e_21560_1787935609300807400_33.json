@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_21560_1787935609300807400_33",
+  "created_at": "2026-08-28T16:46:49.3008106Z",
+  "sha256": "7437859d7b6634ee7150f7fc0d990577194d92c2a55e46d303df20e7e3c65e13",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import sys,contextlib,io\nsys.path.insert(0,'research/benincasa/checkers')\nwith contextlib.redirect_stdout(io.StringIO()): import check_rank26_anti_invariant_infinity_map as m\nfor k in ['low_exponents','free_low','low_pivots','coordinates','src']: print(k, hasattr(m,k), type(getattr(m,k,None)).__name__)\nprint('low',m.low_exponents)\nprint('free',getattr(m,'free_low',None))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T16:46:24.3437419Z",
+    "finished_at": "2026-08-28T16:46:49.3007965Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "low_exponents True list\r\nfree_low False NoneType\r\nlow_pivots False NoneType\r\ncoordinates True dict\r\nsrc True module\r\nlow [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 0), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (6, 0), (6, 1), (7, 0)]\r\nfree None\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
