@@ -3,7 +3,7 @@
   "artifact_role": "site_capability_surface_registry_not_mcp_client_config",
   "site_id": "marici",
   "generated_by": "mcp-registrar",
-  "generated_at": "2026-08-28T03:06:41.4511545Z",
+  "generated_at": "2026-08-28T15:05:44.8976371Z",
   "generation_policy": {
     "source": ".ai/mcp + registrar surface catalog",
     "mode": "enabled_surface_tool_authority",
@@ -14581,6 +14581,690 @@
       "evidence": {
         "source": "site_mcp_fabric",
         "path": ".ai/mcp/narada-marici-scheduler-mcp.json",
+        "projection_kind": "site_fabric"
+      }
+    },
+    {
+      "surface_id": "narada-marici-structured-command.local",
+      "surface_projection": {
+        "surface_id": "structured-command",
+        "projection_id": "default",
+        "injection_scope": "local_site",
+        "runtime_requirements": [],
+        "exposed_tools": [
+          "structured_command_guidance",
+          "structured_command_execution_policy_inspect",
+          "structured_command_output_show",
+          "structured_command_execute",
+          "structured_command_start",
+          "structured_command_execution_show",
+          "structured_command_powershell_parse_check",
+          "structured_command_input_create",
+          "structured_command_elevated_window_execute"
+        ],
+        "execution": {
+          "adapter": "stdio",
+          "tenancy": "session_isolated",
+          "replacement": "manual"
+        },
+        "descriptor_digest": "046e21bd789dae70b3b18e6aa0d6175db2dd011a40a6dba28eddd70b0b68858b",
+        "tool_contract_digest": "b202228727483deb62f84235a2f795112e5eb663e9a0ca8216a4d0c8d55ebf31",
+        "surface_descriptor": {
+          "schema_version": "2.0",
+          "source": "native",
+          "surface_id": "structured-command",
+          "surface_version": "0.1.0",
+          "package": "@narada-core/structured-command-mcp",
+          "guidance_tool": "structured_command_guidance",
+          "tools": [
+            {
+              "name": "structured_command_guidance",
+              "description": "Show model-facing operating guidance for structured-command MCP workflows.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "workflow": {
+                    "type": "string",
+                    "description": "Optional workflow name or area to focus guidance on."
+                  },
+                  "tool": {
+                    "type": "string",
+                    "description": "Optional tool name for tool-specific guidance."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_guidance",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_guidance"
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "never"
+              }
+            },
+            {
+              "name": "structured_command_execution_policy_inspect",
+              "description": "Inspect the policy governing structured command execution.",
+              "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_execution_policy_inspect",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_execution_policy_inspect"
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "never"
+              }
+            },
+            {
+              "name": "structured_command_output_show",
+              "description": "Read a materialized structured-command MCP output ref with offset/limit paging.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "Materialized output ref, e.g. mcp_output:<id>. Alias: output_ref."
+                  },
+                  "output_ref": {
+                    "type": "string",
+                    "description": "Alias for ref."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Character offset into the materialized JSON output."
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "default": 20000,
+                    "minimum": 1,
+                    "maximum": 20000,
+                    "description": "Maximum output characters to return; the transport hard-caps this value."
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_output_show",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_output_show"
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "never"
+              }
+            },
+            {
+              "name": "structured_command_execute",
+              "description": "Execute a structured argv command under allowed-root and command policy. Synchronous execution is capped at 240000ms; use structured_command_start for longer work.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "input_ref": {
+                    "type": "string",
+                    "description": "Structured command input ref from structured_command_input_create."
+                  },
+                  "execution_ref": {
+                    "type": "string",
+                    "description": "Prior execution ref returned by structured_command_execute; use to read later stdout/stderr pages without re-running."
+                  },
+                  "command": {
+                    "type": "string",
+                    "description": "Executable name or absolute executable path admitted by policy."
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Argument vector. No shell parsing is performed."
+                  },
+                  "working_directory": {
+                    "type": "string",
+                    "description": "Working directory under an allowed root."
+                  },
+                  "timeout_ms": {
+                    "type": "integer",
+                    "description": "Timeout in milliseconds."
+                  },
+                  "wait_for_completion": {
+                    "type": "boolean",
+                    "description": "Defaults true. Set false only with test_scope \"known_slow\" to return an execution_ref immediately and poll it for completion."
+                  },
+                  "test_scope": {
+                    "type": "string",
+                    "enum": [
+                      "focused",
+                      "broad",
+                      "known_slow",
+                      "unknown"
+                    ],
+                    "description": "Optional caller-declared verification scope/cost posture for test commands."
+                  },
+                  "expected_cost": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high",
+                      "unknown"
+                    ],
+                    "description": "Optional caller-declared expected cost for this command."
+                  },
+                  "stdout_offset": {
+                    "type": "integer",
+                    "description": "Character offset for stdout page. Defaults 0."
+                  },
+                  "stderr_offset": {
+                    "type": "integer",
+                    "description": "Character offset for stderr page. Defaults 0."
+                  },
+                  "stdout_limit": {
+                    "type": "integer",
+                    "description": "Stdout page size. Default 1000, max 20000."
+                  },
+                  "stderr_limit": {
+                    "type": "integer",
+                    "description": "Stderr page size. Default 1000, max 20000."
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_execute",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_execute"
+              },
+              "effect": {
+                "class": "command",
+                "idempotency": "non_idempotent",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "structured_command_start",
+              "description": "Start a durable asynchronous structured argv command and return an execution_ref immediately. Completion survives MCP surface process restart.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "input_ref": {
+                    "type": "string",
+                    "description": "Structured command input ref from structured_command_input_create."
+                  },
+                  "command": {
+                    "type": "string",
+                    "description": "Executable name or absolute executable path admitted by policy."
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Argument vector. No shell parsing is performed."
+                  },
+                  "working_directory": {
+                    "type": "string",
+                    "description": "Working directory under an allowed root."
+                  },
+                  "timeout_ms": {
+                    "type": "integer",
+                    "description": "Timeout in milliseconds, bounded by surface policy."
+                  },
+                  "test_scope": {
+                    "type": "string",
+                    "enum": [
+                      "focused",
+                      "broad",
+                      "known_slow",
+                      "unknown"
+                    ]
+                  },
+                  "expected_cost": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high",
+                      "unknown"
+                    ]
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_start",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_start"
+              },
+              "effect": {
+                "class": "command",
+                "idempotency": "non_idempotent",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "structured_command_execution_show",
+              "description": "Read one durable structured command execution by execution_ref without rerunning it.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "execution_ref": {
+                    "type": "string",
+                    "description": "Execution ref returned by structured_command_start or structured_command_execute."
+                  },
+                  "stdout_offset": {
+                    "type": "integer",
+                    "description": "Character offset for stdout page. Defaults 0."
+                  },
+                  "stderr_offset": {
+                    "type": "integer",
+                    "description": "Character offset for stderr page. Defaults 0."
+                  },
+                  "stdout_limit": {
+                    "type": "integer",
+                    "description": "Stdout page size. Default 1000, max 20000."
+                  },
+                  "stderr_limit": {
+                    "type": "integer",
+                    "description": "Stderr page size. Default 1000, max 20000."
+                  }
+                },
+                "required": [
+                  "execution_ref"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_execution_show",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_execution_show"
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "never"
+              }
+            },
+            {
+              "name": "structured_command_powershell_parse_check",
+              "description": "Parse-check one allowed-root PowerShell script without admitting arbitrary pwsh command execution.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "PowerShell script path under an allowed root."
+                  },
+                  "working_directory": {
+                    "type": "string",
+                    "description": "Optional working directory under an allowed root. Defaults to the script directory."
+                  },
+                  "timeout_ms": {
+                    "type": "integer",
+                    "description": "Timeout in milliseconds."
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_powershell_parse_check",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_powershell_parse_check"
+              },
+              "effect": {
+                "class": "read",
+                "idempotency": "replayable",
+                "confirmation": "never"
+              }
+            },
+            {
+              "name": "structured_command_input_create",
+              "description": "Create a scoped structured command input ref.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "input_id": {
+                    "type": "string",
+                    "description": "Optional caller-chosen id, max 80 chars."
+                  },
+                  "command": {
+                    "type": "string"
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "working_directory": {
+                    "type": "string"
+                  },
+                  "timeout_ms": {
+                    "type": "integer"
+                  },
+                  "wait_for_completion": {
+                    "type": "boolean",
+                    "description": "Defaults true. Set false only with test_scope \"known_slow\" to return an execution_ref immediately."
+                  },
+                  "test_scope": {
+                    "type": "string",
+                    "enum": [
+                      "focused",
+                      "broad",
+                      "known_slow",
+                      "unknown"
+                    ]
+                  },
+                  "expected_cost": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high",
+                      "unknown"
+                    ]
+                  }
+                },
+                "required": [
+                  "command"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_input_create",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_input_create"
+              },
+              "effect": {
+                "class": "command",
+                "idempotency": "non_idempotent",
+                "confirmation": "policy"
+              }
+            },
+            {
+              "name": "structured_command_elevated_window_execute",
+              "description": "On Windows, launch a policy-approved command in a visible elevated UAC window. Output is not captured from the elevated process.",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "command": {
+                    "type": "string",
+                    "description": "Executable name or absolute executable path admitted by policy."
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Argument vector for the elevated process."
+                  },
+                  "working_directory": {
+                    "type": "string",
+                    "description": "Working directory under an allowed root."
+                  },
+                  "confirm_elevation": {
+                    "type": "boolean",
+                    "description": "Must be true to show a UAC/elevated execution prompt."
+                  },
+                  "wait": {
+                    "type": "boolean",
+                    "description": "When true, the broker waits for the elevated process to exit. Defaults false."
+                  },
+                  "dry_run": {
+                    "type": "boolean",
+                    "description": "When true, return the planned broker command without invoking UAC."
+                  }
+                },
+                "required": [
+                  "command",
+                  "working_directory"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "annotations": {
+                "title": "structured_command_elevated_window_execute",
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+                "canonicalName": "structured_command_elevated_window_execute"
+              },
+              "effect": {
+                "class": "command",
+                "idempotency": "non_idempotent",
+                "confirmation": "policy"
+              }
+            }
+          ],
+          "projections": [
+            {
+              "id": "default",
+              "transport": {
+                "kind": "stdio",
+                "command": "node",
+                "args": [
+                  "{mcp_surfaces_root}/structured-command-mcp/dist/src/main.js",
+                  "--allowed-root",
+                  "{workspace_root}",
+                  "--allow-command",
+                  "node",
+                  "--allow-command",
+                  "pnpm",
+                  "--allow-command",
+                  "npm"
+                ],
+                "env": []
+              },
+              "injection_scope": "local_site",
+              "default_injection": "disabled",
+              "runtime_requirements": [],
+              "authority_requirements": [
+                "scope.local_site"
+              ],
+              "lifecycle": {
+                "mode": "replayable",
+                "reason": "Each command call is independently admitted; the stdio process has no replay-sensitive session state."
+              }
+            }
+          ],
+          "metadata": {
+            "lifecycle_readback": {
+              "authority": "mcp-loader",
+              "availability": "loader-managed",
+              "discovery": {
+                "tool_name": "mcp_loader_connection_inventory",
+                "arguments": {},
+                "select": {
+                  "field": "surface_id",
+                  "equals": "structured-command",
+                  "result_field": "connection_id"
+                }
+              },
+              "status": {
+                "tool_name": "mcp_loader_surface_status",
+                "arguments": {
+                  "connection_id": "{connection_id}"
+                },
+                "connection_id_from": "discovery.selected.connection_id"
+              }
+            }
+          }
+        },
+        "lifecycle": {
+          "mode": "replayable",
+          "reason": "Each command call is independently admitted; the stdio process has no replay-sensitive session state."
+        }
+      },
+      "surface_type": "mcp_surface",
+      "display_name": "narada-marici-structured-command",
+      "server_name": "narada-marici-structured-command",
+      "runtime_binding": {
+        "runtime_kind": "rust-stdio",
+        "proxy_implementation": "native",
+        "entrypoint": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-runtime-proxy/dist/native/versions/7a4398c2d0e8d81c0dc4a1f8be0d77903bad022a8f32eaec89ffe6f45c789bef/narada-mcp-runtime.exe",
+        "owner_site_id": "marici",
+        "transport": {
+          "type": "stdio",
+          "command": "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-runtime-proxy/dist/native/versions/7a4398c2d0e8d81c0dc4a1f8be0d77903bad022a8f32eaec89ffe6f45c789bef/narada-mcp-runtime.exe",
+          "args": [
+            "proxy",
+            "--surface-id",
+            "structured-command",
+            "--child-command",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-runtime-proxy/dist/native/versions/7a4398c2d0e8d81c0dc4a1f8be0d77903bad022a8f32eaec89ffe6f45c789bef/narada-mcp-runtime.exe",
+            "--artifact-manifest",
+            "C:/Users/andrey/src/mcp-surfaces/.ai/runtime/workspace-artifact-manifest.json",
+            "--runtime-contract-version",
+            "8",
+            "--entrypoint",
+            "C:/Users/andrey/src/mcp-surfaces/packages/shared/mcp-runtime-proxy/dist/native/versions/7a4398c2d0e8d81c0dc4a1f8be0d77903bad022a8f32eaec89ffe6f45c789bef/narada-mcp-runtime.exe",
+            "--child-invocation-kind",
+            "native_applet",
+            "--child-applet",
+            "structured-command",
+            "--",
+            "--allowed-root",
+            "C:\\Users\\andrey\\src\\marici",
+            "--allow-command",
+            "node",
+            "--allow-command",
+            "pnpm",
+            "--allow-command",
+            "npm"
+          ]
+        }
+      },
+      "authority_boundary": {
+        "posture": "registrar_generated_runtime_surface_registry",
+        "grants_tool_authority": true,
+        "granted_tool_authority_kind": "declared_enabled_mcp_surface_tools",
+        "source": "site_mcp_fabric_and_registrar_catalog"
+      },
+      "client_config": {
+        "generated_path": ".ai/mcp/narada-marici-structured-command-mcp.json",
+        "generated_file": "narada-marici-structured-command-mcp.json"
+      },
+      "tool_contract": {
+        "exposed_tools": [
+          "structured_command_guidance",
+          "structured_command_execution_policy_inspect",
+          "structured_command_output_show",
+          "structured_command_execute",
+          "structured_command_start",
+          "structured_command_execution_show",
+          "structured_command_powershell_parse_check",
+          "structured_command_input_create",
+          "structured_command_elevated_window_execute"
+        ],
+        "semantic_operations": [],
+        "deprecated_aliases": {},
+        "read_only_tools": [
+          "structured_command_guidance",
+          "structured_command_execution_policy_inspect",
+          "structured_command_output_show",
+          "structured_command_execution_show",
+          "structured_command_powershell_parse_check"
+        ],
+        "mutating_tools": [
+          "structured_command_execute",
+          "structured_command_start",
+          "structured_command_input_create",
+          "structured_command_elevated_window_execute"
+        ],
+        "refused_tools": []
+      },
+      "registered_live_tools": [
+        "structured_command_guidance",
+        "structured_command_execution_policy_inspect",
+        "structured_command_output_show",
+        "structured_command_execute",
+        "structured_command_start",
+        "structured_command_execution_show",
+        "structured_command_powershell_parse_check",
+        "structured_command_input_create",
+        "structured_command_elevated_window_execute"
+      ],
+      "catalog_surface_id": "structured-command",
+      "evidence": {
+        "source": "site_mcp_fabric",
+        "path": ".ai/mcp/narada-marici-structured-command-mcp.json",
         "projection_kind": "site_fabric"
       }
     },
