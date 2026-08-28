@@ -1,0 +1,82 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v12",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v11.json",
+  "change_reason": "v11 was falsified because determinant-line transport erased the internal non-Abelian holonomy of a degenerate eigenspace",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "normalized_joint_spectral_cover",
+    "rank_r_degenerate_eigenvector_bundle",
+    "unitary_frame_bundle",
+    "u_r_connection",
+    "matrix_holonomy_path_groupoid_representation",
+    "nonabelian_curvature",
+    "wilson_transport_record",
+    "determinant_line_quotient",
+    "riesz_projector_quotient",
+    "matrix_framed_vanishing_cycle"
+  ],
+  "arrow_types": [
+    "unitary_frame_transition",
+    "path_ordered_parallel_transport",
+    "matrix_holonomy_evaluation",
+    "horizontal_matrix_specialization",
+    "determinant_forgetful_quotient",
+    "projector_forgetful_quotient",
+    "aggregate_resolvent_quotient"
+  ],
+  "cell_types": [
+    "u_r_cech_cocycle",
+    "matrix_connection_gauge_transformation",
+    "path_groupoid_composition",
+    "matrix_holonomy_relation_cell",
+    "nonabelian_curvature_transport",
+    "horizontal_matrix_specialization_cell",
+    "full_bundle_before_abelian_quotients"
+  ],
+  "nonabelian_framed_spectral_family": {
+    "required_fields": [
+      "phase_framed_cover_data_of_v11",
+      "rank_and_multiplicity_strata",
+      "chartwise_orthonormal_rank_r_frames",
+      "u_r_transition_functions",
+      "triple_overlap_matrix_cocycles",
+      "u_r_connection_one_forms",
+      "matrix_curvature_forms",
+      "path_groupoid_generators_and_relations",
+      "ordered_matrix_holonomies",
+      "matrix_framed_vanishing_cycles",
+      "horizontal_matrix_specialization_maps",
+      "determinant_projector_and_aggregate_quotient_maps"
+    ],
+    "required_laws": [
+      "rank_r_frame_outer_product_recovers_the_riesz_projector",
+      "u_r_transition_functions_satisfy_the_cech_cocycle_law",
+      "connection_transforms_by_g_inverse_A_g_plus_g_inverse_dg",
+      "curvature_transforms_by_conjugation",
+      "ordered_transport_is_a_functor_from_the_path_groupoid",
+      "all_path_groupoid_and_braid_relations_hold_as_matrix_equalities",
+      "individual_loop_spectra_traces_and_determinants_do_not_replace_joint_matrix_transport",
+      "horizontal_specialization_obeys_dJ_plus_A_target_J_minus_J_A_source_equals_zero",
+      "determinant_line_is_derived_only_after_full_matrix_transport",
+      "projector_and_aggregate_quotients_follow_full_bundle_descent",
+      "all_completion_resolvent_branch_and_phase_defects_of_v11_remain_retained"
+    ]
+  },
+  "forbidden_promotions": [
+    "determinant holonomy promoted to full degenerate-mode transport",
+    "wilson traces promoted to a matrix holonomy representation",
+    "individual loop conjugacy classes promoted to their ordered joint representation",
+    "commuting determinant images promoted to commuting matrix holonomies",
+    "rank-one phase repair applied unchanged to a higher-rank collision",
+    "determinant or projector quotient taken before full matrix descent",
+    "packet-specific matrix cell added during replay"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "rank-two bundle with loop holonomies iX and iZ and commutator -I",
+    "first_unused_packet": "two SU(2) holonomy pairs with matching individual spectra traces and determinants but different joint commutators",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

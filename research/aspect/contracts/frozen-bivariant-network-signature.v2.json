@@ -1,0 +1,69 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v2",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v1.json",
+  "change_reason": "v1 was falsified by non-scalar Fibonacci fusion-route mixing",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "source_incidence",
+    "interface",
+    "response",
+    "context",
+    "labelled_factorization_route_space"
+  ],
+  "arrow_types": [
+    "restriction",
+    "extension",
+    "contextual_exposure"
+  ],
+  "cell_types": [
+    "gram_pairing",
+    "scalar_braided_exchange",
+    "scalar_relative_lift",
+    "augmentation",
+    "matrix_route_associator"
+  ],
+  "matrix_route_associator": {
+    "cell_depth": 2,
+    "required_fields": [
+      "domain_bracketing",
+      "codomain_bracketing",
+      "domain_route_labels",
+      "codomain_route_labels",
+      "matrix"
+    ],
+    "required_laws": [
+      "dimension_match",
+      "dagger_unitarity",
+      "pentagon_on_every_admissible_quadruple",
+      "gauge_covariance_under_independent_route_basis_changes",
+      "naturality_under_declared_restriction_and_extension",
+      "hexagon_when_braided_exchange_is_present",
+      "contextual_exposure_is_declared_separately"
+    ],
+    "gauge_law": "F maps to U_codomain F U_domain^*",
+    "typing_law": "a Gram pairing cannot be retyped as a route associator",
+    "rank_policy": "one-by-one scalar associators are included as a special case; route multiplicity may be greater than one"
+  },
+  "packet_admission_requires": [
+    "complete_fusion_or_route-composition_table on the declared packet",
+    "all F matrices needed by every tested pentagon",
+    "all R data needed by every tested hexagon when braiding is claimed",
+    "exact or preregistered uncertainty-aware law checks",
+    "declared contextual exposure map"
+  ],
+  "forbidden_promotions": [
+    "local unitarity promoted to full packet admission",
+    "one pentagon promoted to universal pentagon coherence",
+    "packet-specific associator subtype added during replay",
+    "undeclared cell above maximum depth",
+    "pairing matrix reused as associator without route typing"
+  ],
+  "out_of_sample_policy": {
+    "design_packet": "Fibonacci local route-mixing witness",
+    "first_unused_packet": "Ising sigma-sigma-sigma to sigma local associator",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

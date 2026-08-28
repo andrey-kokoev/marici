@@ -1,0 +1,87 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v3",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v2.json",
+  "change_reason": "v2 was falsified because raw unitarity was not invariant under nonorthonormal route-frame changes",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "source_incidence",
+    "interface",
+    "response",
+    "context",
+    "labelled_metric_route_space"
+  ],
+  "arrow_types": [
+    "restriction",
+    "extension",
+    "contextual_exposure",
+    "invertible_route_frame_change"
+  ],
+  "cell_types": [
+    "gram_pairing",
+    "scalar_braided_exchange",
+    "scalar_relative_lift",
+    "augmentation",
+    "metric_matrix_route_associator"
+  ],
+  "labelled_metric_route_space": {
+    "required_fields": [
+      "route_labels",
+      "gram_matrix",
+      "signature"
+    ],
+    "laws": [
+      "gram_is_nondegenerate_hermitian",
+      "declared_signature_matches_gram",
+      "singular_gram_requires_a_separate_stratum"
+    ]
+  },
+  "metric_matrix_route_associator": {
+    "cell_depth": 2,
+    "required_fields": [
+      "domain_bracketing",
+      "codomain_bracketing",
+      "domain_metric_route_space",
+      "codomain_metric_route_space",
+      "matrix"
+    ],
+    "required_laws": [
+      "dimension_and_signature_match",
+      "metric_dagger_isometry_F_star_G_codomain_F_equals_G_domain",
+      "pentagon_on_every_admissible_quadruple_with_transport_metrics",
+      "GL_covariance_under_independent_invertible_route_frame_changes",
+      "naturality_under_declared_restriction_and_extension",
+      "hexagon_when_braided_exchange_is_present",
+      "contextual_exposure_is_declared_separately"
+    ],
+    "metric_dagger": "F_sharp = G_domain^-1 F^* G_codomain",
+    "frame_law": {
+      "matrix": "F maps to S_codomain^-1 F S_domain",
+      "domain_metric": "G_domain maps to S_domain^* G_domain S_domain",
+      "codomain_metric": "G_codomain maps to S_codomain^* G_codomain S_codomain"
+    },
+    "typing_law": "pairing, associator, and primitive lift remain distinct cell types even when represented by equal arrays"
+  },
+  "packet_admission_requires": [
+    "complete fusion or route-composition table",
+    "all route metrics and signatures",
+    "all associators needed by every tested metric pentagon",
+    "all exchange data needed by every tested metric hexagon",
+    "exact or preregistered uncertainty-aware law checks",
+    "declared contextual exposure map"
+  ],
+  "forbidden_promotions": [
+    "raw coordinate unitarity used without route metrics",
+    "singular metric silently inverted",
+    "local metric isometry promoted to full packet admission",
+    "packet-specific cell type added during replay",
+    "associator used to alter an independently defined filling or homotopy quotient"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "Ising associator in a positive nonorthonormal frame",
+    "first_unused_packet": "two-dimensional signature-(1,1) Lorentz route isometry in independent GL frames",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

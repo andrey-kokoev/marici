@@ -1,0 +1,80 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v10",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v9.json",
+  "change_reason": "v9 was falsified because a single-valued aggregate resolvent did not retain eigenchannel permutation around an external-parameter branch point",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "external_control_parameter_base",
+    "joint_parameter_spectral_incidence_space",
+    "normalized_spectral_cover",
+    "branch_and_ramification_strata",
+    "riesz_projector_local_system",
+    "deck_transport_groupoid",
+    "mode_permutation_representation",
+    "aggregate_resolvent_quotient",
+    "pseudospectral_defect_sheaf",
+    "vanishing_cycle_transport_object"
+  ],
+  "arrow_types": [
+    "spectral_cover_normalization",
+    "sheet_projection",
+    "deck_transport",
+    "riesz_projector_transport",
+    "labelled_specialization",
+    "labelled_completed_sewing",
+    "aggregate_forgetful_quotient"
+  ],
+  "cell_types": [
+    "projector_resolution_of_identity",
+    "deck_projector_equivariance",
+    "branch_specialization_naturality",
+    "labelled_resolvent_reconstruction",
+    "aggregate_after_labelled_descent",
+    "analytic_transport_associator"
+  ],
+  "normalized_joint_spectral_family": {
+    "required_fields": [
+      "parameterized_resolvent_data_of_v9",
+      "external_control_parameter_base",
+      "joint_incidence_equation_det_A_of_t_minus_z",
+      "normalization_of_joint_spectral_cover",
+      "branch_and_ramification_stratification",
+      "sheetwise_eigenvalue_functions",
+      "sheetwise_riesz_projectors",
+      "deck_transport_groupoid_and_relations",
+      "mode_permutation_representation",
+      "labelled_specialization_maps",
+      "aggregate_resolvent_quotient_map"
+    ],
+    "required_laws": [
+      "sheetwise_projectors_are_idempotent_pairwise_disjoint_and_resolve_identity",
+      "deck_transport_permutes_eigenvalues_and_projectors_equivariantly",
+      "deck_groupoid_relations_hold_exactly",
+      "total_resolvent_reconstructs_from_sheetwise_projectors",
+      "labelled_specialization_intertwines_deck_and_projector_transport",
+      "vanishing_cycles_retain_colliding_sheet_data_at_branch_strata",
+      "aggregate_resolvent_is_taken_only_after_labelled_descent_checks",
+      "pseudospectral_and_completion_defects_of_v9_remain_retained",
+      "invariance_under_cover_chart_and_sheet_relabelling",
+      "completed_sewing_precedes_aggregate_quotient_and_finite_projection"
+    ]
+  },
+  "forbidden_promotions": [
+    "single-valued aggregate resolvent promoted to trivial mode monodromy",
+    "local eigenvalue labels promoted through a branch loop without deck transport",
+    "double-cover repair hardcoded as the only branching topology",
+    "aggregate specialization accepted before labelled projector specialization",
+    "colliding projectors discarded at a ramification stratum",
+    "sheet permutation treated as a mere presentation change when channels are observed",
+    "finite projection performed before completed labelled sewing",
+    "packet-specific cover cell added during replay"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "A(t)=[[0,1],[t,0]] with square-root cover and transposition of two Riesz projectors",
+    "first_unused_packet": "three-sheet companion family with lambda^3=t and cyclic deck permutation",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}
