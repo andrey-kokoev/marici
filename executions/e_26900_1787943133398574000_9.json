@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943133398574000_9",
+  "created_at": "2026-08-28T18:52:13.3985769Z",
+  "sha256": "4dced5eb12077cf42882b00a19aca8026489e70d81aa402f3012aa8131d8ba81",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib\nd=tomllib.loads(pathlib.Path(r'research/nima/contracts/typed-response.v1.toml').read_text())\nT,U,Y,F=d['tables'],d['unions'],d['types'],d['field_sets']\nroot=d['root']; assert len(root['required'])==len(set(root['required']))\nfor n,t in T.items():\n r,o=set(t.get('required',[])),set(t.get('optional',[])); assert not r&o,(n,'required-optional-overlap')\n assert len(r)==len(t.get('required',[])) and len(o)==len(t.get('optional',[])),n\n accepted=r|o; fs=F.get(t.get('field_set',''),{})\n typed=set(t.get('fields',{}))|set(t.get('constants',{}))|set(fs)\n assert accepted<=typed,(n,'untyped',accepted-typed)\n for s in t.get('fields',{}).values():\n  if 'schema_ref'in s: assert s['schema_ref'] in T\n  if 'item_schema_ref'in s: assert s['item_schema_ref'] in T or s['item_schema_ref'] in U\n for k in t.get('constants',{}): assert k in r\nfor n,u in U.items():\n assert u['discriminator']=='kind' and len(u['variants'])==len(set(u['variants']))\n for v in u['variants']: assert v in T and T[v]['constants']['kind']\nfor fs in F.values():\n for typ in fs.values(): assert typ in Y\nassert 'communication' in T['agent']['required']\nassert T['changed_file']['required']==['path','operation']\nassert Y['evidence_array']['min_items']==1\nprint('structure-pass',len(T),len(U),len(Y),len(d['constraints']))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:52:13.3225298Z",
+    "finished_at": "2026-08-28T18:52:13.3985659Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Triple check 2: type coverage, union closure, requiredness, condition compatibility",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Triple check 2: type coverage, union closure, requiredness, condition compatibility",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "structure-pass 18 2 9 12\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
