@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_26900_1787943074803256000_7",
+  "created_at": "2026-08-28T18:51:14.8032583Z",
+  "sha256": "fd968952e15c68339f4e335320b87317187581bf2e104e74fd693899efc513b0",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib,tomllib\nd=tomllib.loads(pathlib.Path(r'research/nima/contracts/typed-response.v1.toml').read_text())\nT,U,Y,F=d['tables'],d['unions'],d['types'],d['field_sets']\nassert set(d['root']['required'])==set(d['root']['allowed'])\nfor n,t in T.items():\n r,a=set(t.get('required',[])),set(t.get('allowed',[]))\n assert r<=a and len(r)==len(t.get('required',[])) and len(a)==len(t.get('allowed',[])),n\n fs=F.get(t.get('field_set',''),{})\n typed=set(t.get('fields',{}))|set(t.get('constants',{}))|set(fs)\n assert a<=typed,(n,'untyped',a-typed)\n for s in t.get('fields',{}).values():\n  if 'schema_ref'in s: assert s['schema_ref'] in T\n  if 'item_schema_ref'in s: assert s['item_schema_ref'] in T or s['item_schema_ref'] in U\n for k in t.get('constants',{}): assert k in r\nfor n,u in U.items():\n assert u['discriminator']=='kind' and len(u['variants'])==len(set(u['variants']))\n for v in u['variants']: assert v in T and T[v]['constants']['kind']\nfor fs in F.values():\n for typ in fs.values(): assert typ in Y\nids=[x['id'] for x in d['constraints']]\nassert len(ids)==len(set(ids))\nassert T['changed_file']['required']==['path','operation']\nassert 'communication' in T['agent']['required']\nassert Y['evidence_array']['min_items']==1\nassert 'has_attention' not in str(d) and 'has_context' not in str(d)\nprint('structure-pass',len(T),len(U),len(Y),len(ids))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T18:51:14.7229476Z",
+    "finished_at": "2026-08-28T18:51:14.8032469Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Final pass 2 complete type coverage, union closure, conditional consistency",
+      "expected_cost": "under 1 second",
+      "source": "caller_declared"
+    },
+    "test_scope": "Final pass 2 complete type coverage, union closure, conditional consistency",
+    "expected_cost": "under 1 second",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "structure-pass 18 2 9 12\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
