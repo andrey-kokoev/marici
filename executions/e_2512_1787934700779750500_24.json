@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787934700779750500_24",
+  "created_at": "2026-08-28T16:31:40.7797537Z",
+  "sha256": "866e5840eaf25fa805aa474f114e0291306fe93ad16909c4fa998c117c92ab88",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/variance_reconciliation_checks.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T16:31:26.3213083Z",
+    "finished_at": "2026-08-28T16:31:40.7797364Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact partial lax variance reconciliation",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact partial lax variance reconciliation",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.variance_reconciliation_checks.v1\",\r\n  \"status\": \"passed\",\r\n  \"witness_pair\": [\r\n    0,\r\n    1\r\n  ],\r\n  \"base_packet\": [\r\n    1,\r\n    2,\r\n    3\r\n  ],\r\n  \"exact_cells\": {\r\n    \"-1\": {\r\n      \"left_image\": [\r\n        2,\r\n        4,\r\n        7\r\n      ],\r\n      \"right_image\": [\r\n        1,\r\n        2,\r\n        3\r\n      ],\r\n      \"commutes\": false,\r\n      \"residual\": [\r\n        -1,\r\n        -2,\r\n        -4\r\n      ]\r\n    },\r\n    \"1\": {\r\n      \"left_image\": [\r\n        1,\r\n        2,\r\n        3\r\n      ],\r\n      \"right_image\": [\r\n        2,\r\n        5,\r\n        7\r\n      ],\r\n      \"commutes\": false,\r\n      \"residual\": [\r\n        1,\r\n        3,\r\n        4\r\n      ]\r\n    }\r\n  },\r\n  \"partial_cell\": {\r\n    \"domain\": \"pairs with equal valuation packet\",\r\n    \"constructor_closed\": false,\r\n    \"classification\": \"ill_typed_under_substitution\"\r\n  },\r\n  \"lax_cell\": {\r\n    \"residual_definition\": \"omega(a,b)=R(b)-R(a) on all grade pairs\",\r\n    \"pair_cocycle_failure_count\": 0,\r\n    \"triple_substitution_failure_count\": 0,\r\n    \"classification\": \"algebraically_coherent_but_requires_full_difference_port\",\r\n    \"authority_status\": \"not_established_by_valuation_readout\"\r\n  },\r\n  \"gates\": {\r\n    \"base_observations_alias\": true,\r\n    \"exact_reconciliation_fails_in_both_directions\": true,\r\n    \"blind_fiber_partial_domain_is_not_constructor_closed\": true,\r\n    \"global_lax_residual_satisfies_pair_composition\": true,\r\n    \"global_lax_residual_satisfies_triple_substitution\": true\r\n  },\r\n  \"gate_count\": 5,\r\n  \"passed_gate_count\": 5,\r\n  \"interpretation\": \"Exact reconciliation fails. Restricting the cell to observationally blind pairs is not closed under source substitution. Extending the residual to every grade pair yields a coherent coboundary cell, but adds a full difference port whose source authority is not established.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
