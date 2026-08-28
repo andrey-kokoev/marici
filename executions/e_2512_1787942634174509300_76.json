@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787942634174509300_76",
+  "created_at": "2026-08-28T18:43:54.1745119Z",
+  "sha256": "52072ef0736068bc8dcd97bfea81d47618d2fa7c76e2a5ff4de4b19b8454c7a6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import contextlib,io,runpy;from pathlib import Path\nwith contextlib.redirect_stdout(io.StringIO()): s=runpy.run_path('research/strominger/checkers/integral_constructor_recurrence_checks.py')\none=[[1],[1],[1],[1]];w=[[1,-1,1,-1]]\ndef mm(a,b):return [[sum(a[i][k]*b[k][j] for k in range(len(b))) for j in range(len(b[0]))] for i in range(len(a))]\nfor name in ('C','Ci','X','Xi','Z','Zi','Yneg','Yneg_i'):\n M=s[name];print(name,mm(M,one)==one,mm(w,M)==w)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T18:43:39.9396467Z",
+    "finished_at": "2026-08-28T18:43:54.1744889Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "atomic gauge line and covector invariance",
+      "expected_cost": "small",
+      "source": "caller_declared"
+    },
+    "test_scope": "atomic gauge line and covector invariance",
+    "expected_cost": "small",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "C True True\r\nCi True True\r\nX True True\r\nXi True True\r\nZ True True\r\nZi True True\r\nYneg True True\r\nYneg_i True True\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
