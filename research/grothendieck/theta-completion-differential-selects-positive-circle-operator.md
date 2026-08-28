@@ -51,8 +51,7 @@ Set `t=e^(2u)`.  The standard Riemann Fourier kernel on the completed chart
 Equivalently,
 
 \[
- \boxed{
- \Phi(u)=\operatorname{Tr}B_t,}
+ \Phi(u)=\operatorname{Tr}B_t.
 \]
 
 where
@@ -86,7 +85,7 @@ On the completed chart, `t>=1`.  Therefore
 Every other factor in `B_t` is positive and commutes with `A`, so
 
 \[
- \boxed{B_t>0\quad(t\ge1),}
+ B_t>0\qquad(t\ge1).
 \]
 
 and consequently `Phi(u)>0` for `u>=0`.  The coercivity reserve of the
@@ -106,19 +105,9 @@ Without any one of them, the simple inequality need not hold.
 The scalar kernel is not an arbitrary diagonal chosen to avoid the
 Gaussian-integer enlargement of packet 106.  It is the trace of the operator
 obtained by applying the completion differential to the circle heat family.
-Thus the source-derived direction is
-
-\[
- \text{adelic vacuum}
- \to
- \text{integral circle Laplacian}
- \to
- \text{endpoint differential}
- \to
- B_t
- \to
- \operatorname{Tr}B_t=\Phi(u).
-\]
+The source-derived order is: adelic vacuum, integral circle Laplacian,
+endpoint differential, \(B_t\), and finally
+\(\operatorname{Tr}B_t=\Phi(u)\).
 
 The Epstein coherence matrix remains a valid uncompressed seam object, but
 the completed Riemann readout is the trace of this particular differential
