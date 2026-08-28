@@ -1,0 +1,39 @@
+{
+  "schema": "marici.aspect.differentiated-cone-packet-check.v1",
+  "contract": {
+    "packet": "research/benincasa/results/rank26-gram-wall-differentiated-cone.json",
+    "field": "prime",
+    "matrix_convention": "row-by-column; d_D F = F d_C",
+    "required_matrix_fields": [
+      "d_C_at_wall",
+      "F_at_wall",
+      "d_D_at_wall",
+      "d_C_normal_jet",
+      "F_normal_jet",
+      "d_D_normal_jet",
+      "d_C_tangent_jet",
+      "F_tangent_jet",
+      "d_D_tangent_jet"
+    ],
+    "required_transport_fields": [
+      "retained_pivot_transport",
+      "denominator_occurrence_permutation",
+      "residue_jacobian_unit",
+      "inversion_transition"
+    ],
+    "equations": {
+      "wall": "d_D_at_wall F_at_wall = F_at_wall d_C_at_wall",
+      "normal": "d_D_normal_jet F + d_D F_normal_jet = F_normal_jet d_C + F d_C_normal_jet",
+      "tangent": "same differentiated equation, with tangent jets, has zero residual"
+    },
+    "forbidden_repairs": [
+      "post-hoc basis alignment",
+      "independent rescaling of obstruction and mixed target lines",
+      "dropping retained-pivot or inversion transport"
+    ]
+  },
+  "packet_present": false,
+  "passed": true,
+  "classification": "preregistered_awaiting_source_export",
+  "next_falsifier": "place the source-derived thirteen-field packet at the frozen path; this checker will execute without changing conventions"
+}

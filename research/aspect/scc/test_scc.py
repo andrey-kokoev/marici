@@ -35,6 +35,23 @@ class SCCTests(unittest.TestCase):
     def test_workspace_escape_is_rejected(self):
         with self.assertRaises(ValueError):SCC.workspace_path("../outside")
 
+    def test_constructor_synthesis_is_bounded_and_attaches_hostile(self):
+        model={"id":"x","missing_constructors":["source-derived relative normalization between target lines"],"next_falsifier":"test simultaneous frame rescaling"}
+        report=SCC.synthesize(model)
+        self.assertEqual(report["status"],"candidate_menu_not_truth_certificate")
+        self.assertEqual(report["candidates"][0]["rule"],"relative-normalization")
+        self.assertIn("discriminating_hostile",report["candidates"][0])
+
+    def test_higher_cocycle_gets_next_degree_constructor(self):
+        report=SCC.synthesize({"id":"x","missing_constructors":["first source-derived degree above the frozen cocycle profile"]})
+        self.assertEqual(report["candidates"][0]["rule"],"higher-coherence-extension")
+        self.assertIn("proper face",report["candidates"][0]["discriminating_hostile"])
+
+    def test_constructor_synthesis_refuses_vocabulary_free_guess(self):
+        report=SCC.synthesize({"id":"x","missing_constructors":["unknown thing"]})
+        self.assertEqual(report["status"],"no_rule_match")
+        self.assertEqual(report["candidates"],[])
+
     def test_sibling_check_is_not_a_python_requirement(self):
         model={"id":"x","owner":"marici.Aspect","classification":"candidate","stratum":"point","inputs":[],"checks":[{"id":"first","path":"first.py","requires":[]},{"id":"second","path":"second.py","requires":["first"]}]}
         errors=SCC.validate_model(model)

@@ -1,0 +1,69 @@
+{
+  "schema": "marici.aspect.differentiated-cone-export-contract.v1",
+  "available_evidence": {
+    "generic_assembled_cone_d_minus_two": true,
+    "generic_assembled_cone_d_minus_one": true,
+    "generic_explicit_B_primitive": true,
+    "wall_base_relation_vectors": true,
+    "wall_obstructed_relation_vectors": true,
+    "wall_obstruction_classes": true,
+    "wall_mixed_vectors": true
+  },
+  "required_exports": {
+    "wall_chain_blocks": [
+      "d_C_at_wall",
+      "F_at_wall",
+      "d_D_at_wall"
+    ],
+    "gram_normal_jets": [
+      "d_C_normal_jet",
+      "F_normal_jet",
+      "d_D_normal_jet"
+    ],
+    "gram_tangent_jets": [
+      "d_C_tangent_jet",
+      "F_tangent_jet",
+      "d_D_tangent_jet"
+    ],
+    "frame_transport": [
+      "retained_pivot_transport",
+      "denominator_occurrence_permutation",
+      "residue_jacobian_unit",
+      "inversion_transition"
+    ]
+  },
+  "missing_exports": {
+    "wall_chain_blocks": [
+      "d_C_at_wall",
+      "F_at_wall",
+      "d_D_at_wall"
+    ],
+    "gram_normal_jets": [
+      "d_C_normal_jet",
+      "F_normal_jet",
+      "d_D_normal_jet"
+    ],
+    "gram_tangent_jets": [
+      "d_C_tangent_jet",
+      "F_tangent_jet",
+      "d_D_tangent_jet"
+    ],
+    "frame_transport": [
+      "retained_pivot_transport",
+      "denominator_occurrence_permutation",
+      "residue_jacobian_unit",
+      "inversion_transition"
+    ]
+  },
+  "checks": {
+    "all_current_partial_evidence_is_present": true,
+    "separated_wall_blocks_are_not_exported": true,
+    "normal_jets_are_not_exported": true,
+    "tangent_zero_cannot_be_checked_at_block_level": true,
+    "full_frame_transport_is_not_exported": true
+  },
+  "passed": true,
+  "classification": "differentiated_cone_not_instantiable_from_current_exports",
+  "consequence": "The assembled generic cone and wall relation summaries do not determine the separated differentiated square. Reconstructing it would require unexported gauge and frame choices.",
+  "next_falsifier": "export the thirteen named block, jet, and frame-transport fields from one source-normalized reducer and evaluate the differentiated chain equation without post-hoc basis alignment"
+}

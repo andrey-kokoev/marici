@@ -30,6 +30,7 @@ python research/aspect/scc/scc.py run core
 python research/aspect/scc/scc.py validate all
 python research/aspect/scc/scc.py check <model-id>
 python research/aspect/scc/scc.py explain <model-id>
+python research/aspect/scc/scc.py constructors <model-id>
 python research/aspect/scc/scc.py impact <model-id>
 python research/aspect/scc/scc.py transfers <model-id>
 python research/aspect/scc/scc.py freeze <model-id>
@@ -55,6 +56,8 @@ SCC fingerprints authoritative inputs, the manifest, and checker sources. Per-mo
 Normal runs capture checker output and print a concise structured summary. Add `--verbose` to include bounded stdout and stderr. `explain` reports the scientific classification and stratum separately from checker health.
 
 `import` finds a checker and nearby result packets, then emits a draft manifest without writing by default. `--write` creates the draft in the contributor's own locus and never overwrites an existing manifest. Classification, stratum, capabilities, and the next falsifier remain explicitly unresolved for owner review.
+
+`constructors` performs bounded backward synthesis from explicit obstruction vocabulary. It emits ranked candidate constructors, a discriminating hostile for each, and the forbidden observer-side substitute. Its output is always a candidate menu, never a truth certificate; vocabulary-free failures produce no guess.
 
 Manifests may declare `depends_on`, `consumes`, `provides`, `missing_constructors`, and `next_falsifier`. `impact` computes the downstream recheck order. `transfers` proposes only multi-token or exact capability matches. Rechecks normalize JSON checker results into a common scientific envelope and report changes from the previous checkpoint as `scientific_delta`.
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 import hashlib, importlib.metadata, importlib.util, json, platform, re, subprocess, sys
 from pathlib import Path
+from constructor_synthesizer import synthesize
 
 HERE=Path(__file__).resolve().parent; ROOT=HERE.parents[2]
 STATE_DIR=ROOT/".ai"/"tmp"/"scc-state"
@@ -11,7 +12,7 @@ CENTRAL_CHECKS={x["id"]:x for x in REGISTRY["checks"]}
 
 def usage():
     print("SCC — Stratified Coherence Compiler")
-    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
+    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
 
 def validate_model(m):
     if "_load_error" in m: return ["invalid JSON: "+m["_load_error"]]
@@ -268,6 +269,10 @@ def main(argv):
             print(json.dumps({"schema":"marici.scc.explain.v1","models":reports},indent=2));return 0
         reports=[check_model(m,verbose) for m in selected]; passed=all(r["passed"] for r in reports)
         print(json.dumps({"schema":"marici.scc.check.v1","models":reports,"passed":passed},indent=2));return 0 if passed else 1
+    if len(argv)==2 and argv[0]=="constructors":
+        target=models.get(argv[1])
+        if not target:print("unknown SCC model: "+argv[1],file=sys.stderr);return 2
+        print(json.dumps(synthesize(target),indent=2));return 0
     if len(argv)==2 and argv[0]=="impact":
         if argv[1] not in models:print("unknown SCC model: "+argv[1],file=sys.stderr);return 2
         reverse={mid:[] for mid in models}

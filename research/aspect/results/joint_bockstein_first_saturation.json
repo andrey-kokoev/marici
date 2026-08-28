@@ -1,0 +1,40 @@
+{
+  "schema": "marici.aspect.joint-bockstein-first-saturation.v1",
+  "reports": [
+    {
+      "prime": 32009,
+      "packets_pass": true,
+      "ranks": {
+        "common_line": 1,
+        "line_plus_x": 2,
+        "line_plus_y": 2,
+        "joint": 3
+      },
+      "axis_basis_invariant": true
+    },
+    {
+      "prime": 32003,
+      "packets_pass": true,
+      "ranks": {
+        "common_line": 1,
+        "line_plus_x": 2,
+        "line_plus_y": 2,
+        "joint": 3
+      },
+      "axis_basis_invariant": true
+    }
+  ],
+  "checks": {
+    "both_primes_replayed": true,
+    "all_source_packets_pass": true,
+    "x_and_y_share_one_bockstein_line": true,
+    "each_direction_adds_one_rank": true,
+    "directions_are_independent_modulo_the_line": true,
+    "joint_rank_is_source_axis_basis_invariant": true
+  },
+  "passed": true,
+  "classification": "rank_three_first_saturation",
+  "admitted_scope": "the audited point (2,3,4), primes 32009 and 32003, and invertible changes of the two-dimensional source-axis basis",
+  "consequence": "The common Bockstein line has two independent first directional images. Its first saturation is rank three, not rank two, so no one-direction connection surrogate captures the local two-parameter deformation.",
+  "next_falsifier": "construct the mixed x-y second jet and test whether it closes inside the rank-three first saturation"
+}
