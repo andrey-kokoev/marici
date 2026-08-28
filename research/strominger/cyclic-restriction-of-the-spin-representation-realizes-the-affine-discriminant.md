@@ -1,5 +1,7 @@
 # Cyclic restriction of the spin representation realizes the affine discriminant
 
+> Typing correction: cyclic restriction realizes a regular character grading whose label set has the same cyclic type as the affine cokernel. It does not define an additive map from harmonic state vectors to residue classes, nor does it attach affine lattice pairs to physical states. See `cyclic-restriction-is-a-grading-not-a-state-to-residue-attachment.md`.
+
 ## Independently quantized physical lattice
 
 An oriented axis on the celestial sphere selects its rotation stabilizer

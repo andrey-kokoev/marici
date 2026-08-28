@@ -1,5 +1,7 @@
 # The affine seven is the spin-two instance of the four-s-minus-one representation dimension
 
+> Scope correction: (mathcal H_{2s-1}) is selected as the ladder cokernel endpoint only on the diagonal (r=s). At spin two the matching cokernel belongs to ladder grade two; the grade-three ladder cokernel has dimension nine. Thus the representation-dimension explanation is diagonal, not uniform across grade.
+
 ## General-spin coordinate extension
 
 For a spin-\(s\) source, the covariant fold replacing the spin-two coefficient
