@@ -1,0 +1,36 @@
+{
+  "work_package": "WP903",
+  "audited_premise": "WP902 common-random-number coupling across two widths",
+  "capabilities": {
+    "module_engine_state_replay": "available",
+    "cross_width_source_latent_coupling": "absent",
+    "generator_draw_trace_equivalence": "absent",
+    "shower_pileup_detector_end_to_end_replay": "unverified",
+    "stable_full_chain_pair_identifier": "absent",
+    "null_completed_output": "design_only",
+    "independent_seed_families": "absent",
+    "calibrated_two_pole_acceptance_floor": "absent",
+    "local_cmssw_runtime": "absent"
+  },
+  "pairing_executable_on_current_evidence": false,
+  "classification": "replay infrastructure exists, but cross-width semantic coupling is not instantiated",
+  "smallest_exact_falsifier": "replay failure or a paired arm whose shared-seed execution has the wrong declared marginal",
+  "required_constructor": "source-level typed base-event or latent-uniform coupling plus full-chain replay manifest and null-completed pair records",
+  "remaining_physical_instrument_gate": "execute and replay-verify the coupled generator-to-reconstruction chain, then independently calibrate the two-pole acceptance floor",
+  "fallback": "WP901 independent four-cell zero-drift certificate",
+  "selector_status": "neither selector nor rigidifier; prospective detector-response validation instrument",
+  "checks": {
+    "wp902_checker_passes_conditionally": true,
+    "seed_is_not_engine_state": true,
+    "engine_state_is_not_semantic_latent_alignment": true,
+    "cms_module_replay_mechanism_exists": true,
+    "cross_width_source_coupling_not_instantiated": true,
+    "changed_draw_trace_is_only_efficiency_falsifier": true,
+    "null_schema_is_not_generated_evidence": true,
+    "pilot_acceptance_has_no_calibration_authority": true,
+    "full_chain_pairing_is_not_executable_here": true,
+    "wp901_fallback_retained": true,
+    "no_selector_claim": true
+  },
+  "passed": true
+}

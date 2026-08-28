@@ -1,0 +1,47 @@
+{
+  "work_package": "WP907",
+  "discordance_target": "389/2937600",
+  "look_failure_probability": "1/160",
+  "per_pole_familywise_failure_bound": "1/40",
+  "two_pole_familywise_failure_bound": "1/20",
+  "looks": [
+    {
+      "look": 0,
+      "pairs_per_pole": 38324,
+      "accept_if_discordances_at_most": 0
+    },
+    {
+      "look": 1,
+      "pairs_per_pole": 54191,
+      "accept_if_discordances_at_most": 1
+    },
+    {
+      "look": 2,
+      "pairs_per_pole": 67935,
+      "accept_if_discordances_at_most": 2
+    },
+    {
+      "look": 3,
+      "pairs_per_pole": 80649,
+      "accept_if_discordances_at_most": 3
+    }
+  ],
+  "stopping_rule": "at each frozen look stop and certify iff cumulative discordances do not exceed that look's boundary; otherwise continue, and fail closed after look 3",
+  "smallest_exact_falsifier": "one unregistered extra look or one acceptance above its frozen discordance boundary",
+  "remaining_physical_instrument_gate": "execute the frozen paired chain with marginal validation, replay evidence, null retention, pair-independence audit, and calibrated acceptance floor",
+  "classification": "error-controlled stopping instrument; neither selector nor rigidifier",
+  "checks": {
+    "wp906_passes": true,
+    "four_looks_frozen": true,
+    "every_look_minimum_passes": true,
+    "one_fewer_pair_fails_each_look": true,
+    "look_counts_strictly_increase": true,
+    "per_pole_union_bound_is_one_over_40": true,
+    "two_pole_union_bound_is_one_over_20": true,
+    "look_dependence_does_not_break_union_bound": true,
+    "no_unregistered_optional_look": true,
+    "instrument_gates_retained": true,
+    "no_selector_or_rigidifier_claim": true
+  },
+  "passed": true
+}

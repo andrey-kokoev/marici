@@ -1,0 +1,35 @@
+{
+  "work_package": "WP906",
+  "discordance_target": "389/2937600",
+  "per_pole_failure_probability": "1/40",
+  "minimum_pairs_per_pole_by_maximum_observed_discordances": {
+    "0": 27856,
+    "1": 42073,
+    "2": 54556,
+    "3": 66205
+  },
+  "minimum_total_pairs_two_poles_if_same_cap": {
+    "0": 55712,
+    "1": 84146,
+    "2": 109112,
+    "3": 132410
+  },
+  "decision_rule": "accept only if exact Binomial(n,p0) lower tail through observed K is at most 1/40",
+  "smallest_exact_falsifier": "for each allowed count K, one fewer pair makes the exact integer tail exceed 1/40",
+  "remaining_physical_instrument_gate": "freeze a fixed-count or error-controlled escalation design, execute both poles, validate marginals and replay, and calibrate the acceptance floor",
+  "classification": "finite-discordance response certificate; neither selector nor rigidifier",
+  "checks": {
+    "wp905_passes": true,
+    "zero_count_reproduces_wp902": true,
+    "every_minimum_passes": true,
+    "one_fewer_always_fails": true,
+    "budgets_strictly_increase": true,
+    "integer_arithmetic_only": true,
+    "per_pole_alpha_is_one_over_40": true,
+    "fixed_count_not_optional_stopping": true,
+    "pilot_acceptance_floor_not_promoted": true,
+    "marginal_replay_null_independence_gates_retained": true,
+    "no_selector_or_rigidifier_claim": true
+  },
+  "passed": true
+}

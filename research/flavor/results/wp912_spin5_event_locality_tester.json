@@ -1,0 +1,41 @@
+{
+  "work_package": "WP912",
+  "events": 64,
+  "orderings": [
+    "forward",
+    "reverse",
+    "rotate_17",
+    "even_then_odd"
+  ],
+  "batch_sizes": [
+    1,
+    7,
+    16,
+    64
+  ],
+  "local_schedule_records_compared": 16,
+  "local_reference_null_count": 4,
+  "stateful_events_changed_by_reverse_order": 55,
+  "stateful_events_changed_by_batch_restart": 51,
+  "smallest_exact_falsifier": "two pair-ID-keyed event records change when their processing order is swapped",
+  "largest_current_probe_family": "pair-ID-joined permutation, batching, restart, retry, and null-retention challenges within each frozen run stratum",
+  "remaining_physical_instrument_gate": "run these challenges through the actual generator-to-reconstruction adapter and separately instantiate independent event-key acquisition",
+  "classification": "executable event-locality falsifier; neither selector nor rigidifier",
+  "checks": {
+    "wp911_passes": true,
+    "sixty_four_event_keys": true,
+    "four_orderings": true,
+    "four_batch_sizes": true,
+    "sixteen_local_schedules_agree": true,
+    "local_records_keep_all_pair_ids": true,
+    "local_records_retain_nulls": true,
+    "stateful_fixed_schedule_is_replayable": true,
+    "stateful_hostile_fails_permutation": true,
+    "stateful_hostile_fails_batch_restart": true,
+    "comparison_joins_by_pair_id": true,
+    "finite_pass_is_not_universal_proof": true,
+    "independent_key_acquisition_not_claimed": true,
+    "no_selector_or_rigidifier_claim": true
+  },
+  "passed": true
+}
