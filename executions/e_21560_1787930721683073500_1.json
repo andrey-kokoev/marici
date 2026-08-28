@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_21560_1787930721683073500_1",
+  "created_at": "2026-08-28T15:25:21.6830774Z",
+  "sha256": "28af309d656d07cfca32cadecf1b61a0de76a8e2c13162522c147c9364b84eea",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/benincasa/checkers/check_infinity_leray_inversion_transport.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T15:25:21.6001086Z",
+    "finished_at": "2026-08-28T15:25:21.6830622Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Exact dependency-free source-inversion transport audit",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "Exact dependency-free source-inversion transport audit",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.infinity_leray_inversion_transport.v1\",\r\n  \"source_inversion\": \"(x,y;a,b) -> (y,x;b,a)\",\r\n  \"master_transport\": \"e7 fixed; e8 and e9 exchanged\",\r\n  \"elliptic_basis_transport\": \"diag(1,y^2/x^2)\",\r\n  \"period_covector_transport\": \"(1,1) -> (1,x^2/y^2)\",\r\n  \"symbolic_transport_identity\": \"M(y,x) P = diag(1,y^2/x^2) M(x,y)\",\r\n  \"symbolic_dual_identity\": \"(1,x^2/y^2) diag(1,y^2/x^2) = (1,1)\",\r\n  \"samples\": [\r\n    {\r\n      \"x_squared\": \"9\",\r\n      \"y_squared\": \"16\",\r\n      \"E_squared\": \"144\",\r\n      \"basis_transport\": [\r\n        [\r\n          \"1\",\r\n          \"0\"\r\n        ],\r\n        [\r\n          \"0\",\r\n          \"16/9\"\r\n        ]\r\n      ],\r\n      \"source_leray_covector\": [\r\n        \"1\",\r\n        \"7/2\",\r\n        \"63/2\"\r\n      ],\r\n      \"transported_target_period_covector\": [\r\n        \"1\",\r\n        \"9/16\"\r\n      ],\r\n      \"transported_target_leray_covector\": [\r\n        \"1\",\r\n        \"7/2\",\r\n        \"63/2\"\r\n      ],\r\n      \"copied_constant_target_leray_covector\": [\r\n        \"1\",\r\n        \"-56\",\r\n        \"-7/2\"\r\n      ],\r\n      \"gysin_square_commutes\": true,\r\n      \"contragredient_covector_transport_holds\": true,\r\n      \"constant_coordinate_copy_fails\": true\r\n    },\r\n    {\r\n      \"x_squared\": \"25\",\r\n      \"y_squared\": \"144\",\r\n      \"E_squared\": \"289\",\r\n      \"basis_transport\": [\r\n        [\r\n          \"1\",\r\n          \"0\"\r\n        ],\r\n        [\r\n          \"0\",\r\n          \"144/25\"\r\n        ]\r\n      ],\r\n      \"source_leray_covector\": [\r\n        \"1\",\r\n        \"119/2\",\r\n        \"34391/288\"\r\n      ],\r\n      \"transported_target_period_covector\": [\r\n        \"1\",\r\n        \"25/144\"\r\n      ],\r\n      \"transported_target_leray_covector\": [\r\n        \"1\",\r\n        \"119/2\",\r\n        \"34391/288\"\r\n      ],\r\n      \"copied_constant_target_leray_covector\": [\r\n        \"1\",\r\n        \"-34391/50\",\r\n        \"-119/2\"\r\n      ],\r\n      \"gysin_square_commutes\": true,\r\n      \"contragredient_covector_transport_holds\": true,\r\n      \"constant_coordinate_copy_fails\": true\r\n    }\r\n  ],\r\n  \"checks\": {\r\n    \"gysin_square_commutes_at_both_exact_samples\": true,\r\n    \"source_leray_covector_transports_contragrediently\": true,\r\n    \"constant_coordinate_copy_is_falsified_at_both_samples\": true,\r\n    \"samples_are_nonsymmetric\": true\r\n  },\r\n  \"passed\": true,\r\n  \"conclusion\": \"The source-normalized infinity Leray covector is a transported dual section, not a chartwise constant coordinate row.  The explicit Gysin quotient is occurrence-natural after contragredient period transport; copying (1,1) into the inverted chart is nonnatural.\",\r\n  \"scope\": \"This proves occurrence covariance of the explicit final-four Gysin readout.  It does not yet extend the covector to the full rank-26 marked-relative module or construct the physical rank-26 period.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
