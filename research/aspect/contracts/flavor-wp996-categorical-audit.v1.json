@@ -1,0 +1,25 @@
+{
+  "id":"flavor-wp996-categorical-audit",
+  "objects":[{"id":"control_family"},{"id":"budget_square"},{"id":"optimal_targets"},{"id":"robustness_margin"},{"id":"physical_controller"}],
+  "arrows":[
+    {"id":"freeze_budget","source":"control_family","target":"budget_square","map_token":"freeze_B"},
+    {"id":"optimize_targets","source":"budget_square","target":"optimal_targets","map_token":"optimize"},
+    {"id":"direct_freeze","source":"control_family","target":"optimal_targets","map_token":"freeze_B"},
+    {"id":"direct_optimize","source":"optimal_targets","target":"optimal_targets","map_token":"optimize"},
+    {"id":"evaluate_margin","source":"optimal_targets","target":"robustness_margin","map_token":"B_over_5489"}
+  ],
+  "cells":[{"id":"budget_optimization_naturality","kind":"scale_naturality_square","routes":[["freeze_budget","optimize_targets"],["direct_freeze","direct_optimize"]],"threshold":"exact_zero"}],
+  "fibers":[{
+    "id":"conditional-optimum-profile-fiber","profile":["compatible","faithful","faithful","uniform"],
+    "comparison_slots":["named_constructor_actions","observers","viewing_forms","authority","completion_topology","instrument_backaction"],
+    "pairs":[{"left":"budget_B","right":"budget_2B","same_profile":true,"invertible":false,"slot_results":{"named_constructor_actions":true,"observers":true,"viewing_forms":true,"authority":false,"completion_topology":true,"instrument_backaction":false}}]
+  }],
+  "obstructions":[{"id":"budget_optimization_naturality","type":"noncommuting_cell"},{"id":"physical_promotion","type":"missing_source_authority"}],
+  "impact_edges":[{"from":"budget_optimization_naturality","to":"conditional_optimum"},{"from":"conditional_optimum","to":"physical_promotion"}],
+  "higher_coherence":[{"id":"closed_loop_joint_horn","degree":2,"state":"unsupported"},{"id":"feedback_actuation_horn","degree":3,"state":"unsupported"},{"id":"completion_uniformity","degree":4,"state":"unsupported"}],
+  "promotions":[{"id":"formal_optimum_to_physical_controller","requires_cells":["budget_optimization_naturality"],"requires_equivalences":[["budget_B","budget_2B"]],"evidence":[{"id":"source_control_norm","locator":"","status":"unsupported"},{"id":"source_bound_B","locator":"","status":"unsupported"},{"id":"closed_loop_dual_error","locator":"","status":"unsupported"}]}],
+  "claims":[{"id":"physical_selected_controller","requires":["source_control_norm","source_bound_B","closed_loop_dual_error"]},{"id":"conditional_chebyshev_optimum","requires":["exact_scale_law","dual_upper_bound"]}],
+  "available_witnesses":["exact_scale_law","dual_upper_bound"],
+  "experiments":[{"id":"source_derived_actuator_cost_ball","separates":["source_control_norm","source_bound_B"],"preregistered_threshold":"strict positive bounded support"},{"id":"closed_loop_dual_packet","separates":["closed_loop_dual_error"],"preregistered_threshold":"error support strictly below B/5489"}],
+  "functors":[{"id":"formal_control_to_optical_control","source_objects":["budget","target","margin"],"source_arrows":["optimize","observe"],"object_map":{"budget":"actuator_support","target":"prepared_setting","margin":"whitened_residual"},"arrow_map":{"optimize":"control_program","observe":"acquisition_packet"},"preserves":{"identity":true,"composition":true,"declared_cells":false,"authority":false}}]
+}

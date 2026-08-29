@@ -4,6 +4,16 @@ from __future__ import annotations
 import hashlib, importlib.metadata, importlib.util, json, platform, re, subprocess, sys
 from pathlib import Path
 from constructor_synthesizer import synthesize
+from categorical_compiler import compile_diagram, inverse_design
+from formula_synthesizer import synthesize_bridges
+from observer_set_compiler import compile_observer_set
+from globular_tower_compiler import compile_globular_tower
+from beurling_rigging_compiler import compile_beurling_rigging, audit_beurling_source_gate
+from projective_rigging_compiler import compile_projective_rigging
+from interaction_net_algebra import compile_net_algebra
+from universal_net_certifier import compile_universal_core
+from rh_net_state_compiler import compile_rh_net_state
+from rh_net_visualizer import write_rh_net_viewer
 
 HERE=Path(__file__).resolve().parent; ROOT=HERE.parents[2]
 STATE_DIR=ROOT/".ai"/"tmp"/"scc-state"
@@ -12,7 +22,7 @@ CENTRAL_CHECKS={x["id"]:x for x in REGISTRY["checks"]}
 
 def usage():
     print("SCC — Stratified Coherence Compiler")
-    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
+    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | categorical <diagram> | formulas <contract> | observer-set <contract> | globular-tower <contract> | beurling-rigging <contract> | beurling-source <contract> | projective-rigging <contract> | net-algebra <contract> | universal-core <contract> | rh-state <contract> | inverse <diagram> <claim> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
 
 APPARATUS_REQUIRED=(
     "authority_locator","substrate_state_type","apparatus_state_type",
@@ -426,6 +436,55 @@ def main(argv):
                 relation["target_ref"]="model-"+dep
                 ops.append(relation)
         print(json.dumps({"schema":"marici.scc.graph-packet.v1","authority":"none_dry_run_only","actor":"OWNER_REVIEW_REQUIRED","authority_basis":{"kind":"owner_review_required"},"operations":ops},indent=2));return 0
+    if len(argv)==2 and argv[0]=="categorical":
+        try:d=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_diagram(d)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile categorical diagram: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==3 and argv[0]=="inverse":
+        try:d=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=inverse_design(d,argv[2])
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot invert categorical diagram: "+str(e),file=sys.stderr);return 2
+        print(json.dumps({"schema":"marici.scc.inverse-design.v1",**report},indent=2));return 0 if report["status"]!="unknown_claim" else 1
+    if len(argv)==2 and argv[0]=="formulas":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=synthesize_bridges(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot synthesize bridge formulas: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0
+    if len(argv)==2 and argv[0]=="observer-set":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_observer_set(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile observer set: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="globular-tower":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_globular_tower(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile globular tower: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="beurling-rigging":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_beurling_rigging(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile Beurling rigging: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="beurling-source":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=audit_beurling_source_gate(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot audit Beurling source gate: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="projective-rigging":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_projective_rigging(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile projective rigging: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="net-algebra":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_net_algebra(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile interaction-net algebra: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="universal-core":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_universal_core(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot certify universal interaction-net core: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="rh-state":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_rh_net_state(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile RH interaction-net state: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv) in (2,3) and argv[0]=="rh-view":
+        try:
+            source=workspace_path(argv[1]);output=workspace_path(argv[2]) if len(argv)==3 else ROOT/"research/aspect/results/rh_net_viewer.html";report=write_rh_net_viewer(source,output)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot render RH net: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0
     if len(argv)==2 and argv[0]=="validate":
         if argv[1]=="all":report={"schema":"marici.scc.validation.v1","valid_models":sorted(models),"errors":errors,"passed":not errors}
         else:

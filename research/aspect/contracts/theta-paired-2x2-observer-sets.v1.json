@@ -1,0 +1,19 @@
+{
+  "id":"theta-paired-2x2-observer-sets",
+  "base_dimension":2,
+  "base_transport":[[0,-1],[1,0]],
+  "members":[
+    {"id":"J1_positive","tower":"positive","arity":1,"domain":"A_positive","matrix":[[1,0],[0,1]],"transported_matrix":[[0,-1],[1,0]]},
+    {"id":"J2_positive","tower":"positive","arity":2,"domain":"Sym2(A_positive)","matrix":[[1,2,3]],"transported_matrix":[[3,-2,1]]},
+    {"id":"J1_negative","tower":"negative","arity":1,"domain":"A_negative","matrix":[[0,-1],[1,0]],"transported_matrix":[[-1,0],[0,-1]]},
+    {"id":"J2_negative","tower":"negative","arity":2,"domain":"Sym2(A_negative)","matrix":[[3,-2,1]],"transported_matrix":[[1,2,3]]}
+  ],
+  "intertower_comparisons":[
+    {"id":"fourier_arity_1","source_member":"J1_positive","target_member":"J1_negative"},
+    {"id":"fourier_arity_2","source_member":"J2_positive","target_member":"J2_negative"}
+  ],
+  "polarization":[{"id":"positive_square","gramian":[[1,1],[1,3]],"x":[1,2],"y":[-2,1]},{"id":"negative_square","gramian":[[3,-1],[-1,1]],"x":[1,2],"y":[-2,1]}],
+  "pushout_completion":[{"id":"paired_boundary_pushout","finite_cutoffs":[{"cutoff":1,"singular_values":["1"]},{"cutoff":2,"singular_values":["1","1/2"]},{"cutoff":4,"singular_values":["1","1/2","1/3","1/4"]},{"cutoff":8,"singular_values":["1","1/2","1/3","1/4","1/5","1/6","1/7","1/8"]}],"declared_uniform_lower_bound":"0","completion_closed_range":false}],
+  "realization_comparisons":[{"id":"paired-tower-A7-pushout","invertible":false,"slots":{"named_constructor_actions":true,"observers":true,"viewing_forms":true,"authority":true,"completion_topology":false,"instrument_backaction":true}}],
+  "higher_coherence":[{"degree":2,"state":"verified","witness":"paired polarization"},{"degree":3,"state":"verified","witness":"finite transition triangle"},{"degree":4,"state":"unsupported"},{"degree":5,"state":"unsupported"}]
+}

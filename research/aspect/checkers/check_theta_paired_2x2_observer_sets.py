@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+import json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/"research/aspect/scc"))
+from observer_set_compiler import compile_observer_set
+c=json.loads((ROOT/"research/aspect/contracts/theta-paired-2x2-observer-sets.v1.json").read_text(encoding="utf-8"));r=compile_observer_set(c);p=r["pushout_completion"][0]
+checks={"paired_set_compiles":r["passed"],"two_observers_each":all(len([m for m in r["members"] if m["tower"]==t])==2 for t in ("positive","negative")),"arity_profile_1_2_each":all(sorted(m["arity"] for m in r["members"] if m["tower"]==t)==[1,2] for t in ("positive","negative")),"fourier_is_intertower":all(x["different_towers"] and x["passed"] for x in r["intertower_comparisons"]),"both_polarizations_pass":all(x["passed"] for x in r["polarization"]),"finite_pushouts_exact":p["finite_exact"],"completion_pushout_fails":not p["completion_exact"] and p["first_failed_gate"]=="completion_closed_range","finite_margin_decays":[x["minimum_singular_value"] for x in p["finite_cutoffs"]]==["1","1/2","1/4","1/8"],"a7_fails_only_at_completion":r["realization_comparisons"][0]["first_failed_slot"]=="completion_topology"}
+out={"schema":"marici.aspect.theta-paired-2x2-observer-sets-check.v1","checks":checks,"compilation":r,"passed":all(checks.values()),"disposition":"paired finite observer towers and intertower Fourier transport pass; A7 pushout exactness fails at completion closed range"};(ROOT/"research/aspect/results/theta_paired_2x2_observer_sets.json").write_text(json.dumps(out,indent=2)+"\n",encoding="utf-8");print(json.dumps({"schema":out["schema"],"checks":checks,"disposition":out["disposition"],"passed":out["passed"]},indent=2));raise SystemExit(0 if out["passed"] else 1)

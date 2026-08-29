@@ -1,0 +1,21 @@
+{
+  "id":"flavor-wp1037-formula-synthesis",
+  "stages":[
+    {
+      "id":"authorized_local_command","authority":"source_authorized","observer_fitted":false,
+      "unknowns":["delta_k","delta_C","B_local"],"parameters":[],
+      "equations":[{"coefficients":{"delta_k":1},"rhs":0},{"coefficients":{"delta_C":1},"rhs":0},{"coefficients":{"B_local":1},"rhs":0}],
+      "outputs":["delta_k","delta_C","B_local"]
+    },
+    {
+      "id":"common_substrate","authority":"source_authorized","observer_fitted":false,
+      "unknowns":["preparation_arrow","support_bound","cost_bound"],"parameters":[],"equations":[],
+      "outputs":["preparation_arrow","support_bound","cost_bound"]
+    },
+    {
+      "id":"closed_loop","authority":"source_authorized","observer_fitted":false,
+      "unknowns":["dual_error_bound"],"parameters":[],"equations":[],"outputs":["dual_error_bound"]
+    }
+  ],
+  "required_source_outputs":["authorized_local_command.delta_k","authorized_local_command.delta_C","authorized_local_command.B_local","common_substrate.preparation_arrow","common_substrate.support_bound","common_substrate.cost_bound","closed_loop.dual_error_bound"]
+}

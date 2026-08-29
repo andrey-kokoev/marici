@@ -1,0 +1,70 @@
+{
+  "schema": "marici.aspect.realization-fiber-coherence.v1",
+  "base_tower": {
+    "rungs": ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7"],
+    "adjacent_reconcilers": ["C1_0", "C1_1", "C1_2", "C1_3", "C1_4", "C1_5", "C1_6"],
+    "A7": "realization_fiber_coherence",
+    "C1_6": "law_to_realization_fiber_comparison",
+    "interval_cell_count": 36,
+    "left_right_face_map_count": 56,
+    "theta_tate_overlay_count": 36
+  },
+  "classifier_relation": {
+    "scc_profile_count": 405,
+    "meaning": "certification-strength classifier",
+    "not_equivalence": "equal SCC profiles do not imply constructor equivalence"
+  },
+  "realization_fiber": {
+    "fiber": "realizations sharing one SCC profile",
+    "comparison_slots": [
+      "named_constructor_actions",
+      "observers",
+      "viewing_forms",
+      "authority",
+      "completion_topology",
+      "instrument_backaction"
+    ],
+    "verified_morphism_laws": [
+      "T A_c = A_d T for every named constructor",
+      "O_d T = R O_c",
+      "T_star W_d T = W_c",
+      "authority contexts are related by a declared map",
+      "completion topology is preserved",
+      "conditional instrument transitions commute"
+    ],
+    "groupoid_gate": "only invertible comparisons satisfying every slot and authority law enter the realization-intertwiner groupoid",
+    "higher_coherence_slots": [
+      {"degree": 2, "status": "unsupported_formal_only"},
+      {"degree": 3, "status": "unsupported_formal_only"},
+      {"degree": 4, "status": "unsupported_formal_only"},
+      {"degree": 5, "status": "unsupported_formal_only"}
+    ]
+  },
+  "same_profile_hostile": {
+    "carrier": "R2",
+    "observer": "identity",
+    "viewing_gramian": "identity",
+    "left_action": [[-1, 0], [0, -1]],
+    "right_action": [[1, 0], [0, -1]],
+    "shared_profile": ["compatible", "faithful", "faithful", "uniform"],
+    "left_character": -2,
+    "right_character": 0,
+    "conclusion": "no invertible named-action intertwiner exists"
+  },
+  "first_failure_protocol": {
+    "ordered_gates": [
+      "tower_counts",
+      "classifier_separation",
+      "comparison_slot_completeness",
+      "named_action_intertwiner",
+      "observer_intertwiner",
+      "viewing_form_isometry",
+      "authority_compatibility",
+      "completion_compatibility",
+      "instrument_backaction_compatibility",
+      "higher_coherence_support"
+    ],
+    "deletion_witness": "remove named_constructor_actions and first failure is comparison_slot_completeness",
+    "mutation_witness": "replace equal-profile non-equivalence by equivalence and first failure is classifier_separation"
+  }
+}

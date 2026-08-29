@@ -41,6 +41,16 @@ python research/aspect/scc/scc.py doctor
 python research/aspect/scc/scc.py plan
 python research/aspect/scc/scc.py capsule <model-id>
 python research/aspect/scc/scc.py graph-packet <model-id>
+python research/aspect/scc/scc.py categorical research/owner/contracts/diagram.json
+python research/aspect/scc/scc.py formulas research/owner/contracts/formula-system.json
+python research/aspect/scc/scc.py observer-set research/owner/contracts/observer-set.json
+python research/aspect/scc/scc.py globular-tower research/owner/contracts/globular-tower.json
+python research/aspect/scc/scc.py beurling-rigging research/owner/contracts/beurling-rigging.json
+python research/aspect/scc/scc.py projective-rigging research/owner/contracts/projective-rigging.json
+python research/aspect/scc/scc.py net-algebra research/owner/contracts/interaction-net-algebra.json
+python research/aspect/scc/scc.py universal-core research/owner/contracts/universal-interaction-net-core.json
+python research/aspect/scc/scc.py rh-state research/owner/contracts/rh-interaction-net-state.json
+python research/aspect/scc/scc.py inverse research/owner/contracts/diagram.json <claim-id>
 python research/aspect/scc/scc.py status all
 python research/aspect/scc/scc.py watch
 ```
@@ -66,6 +76,43 @@ Manifests may declare `depends_on`, `consumes`, `provides`, `missing_constructor
 `doctor` reports the exact interpreter, platform, missing paths, manifest errors, and declared dependency versions. `capsule` emits a reproducibility fingerprint containing the model fingerprint and each checker hash. `dashboard --markdown` is suitable for human workboards. `graph-packet` emits a dry-run, dependency-closed proposal shape with no publication authority; an owner must review and submit it through the governed graph surface.
 
 Discovery rejects owner/locus mismatches, unknown dependencies, and dependency cycles. `plan` computes topological execution layers: models within one layer may run in parallel, while downstream layers wait for their declared dependencies. Fast coordinator tests live in `test_scc.py`.
+
+## Categorical diagram compiler
+
+`categorical` compiles a finite typed diagram into executable route residuals,
+realization-fiber comparisons, typed obstruction cones, generated deletion and
+profile-collapse hostiles, proof-carrying promotions, higher-coherence states,
+and structure-preserving cross-sector functors. Equal SCC profiles never imply
+realization equivalence. Higher cells are explicitly verified, falsified, or
+unsupported; unsupported cells are never promoted.
+
+`inverse` starts from a declared claim, returns its missing witnesses, and ranks
+preregistered experiments by how many missing branches they separate. The
+compiler assigns no causal or temporal semantics to arrows and certifies only
+the finite diagram supplied by its owner.
+
+`formulas` solves declared affine bridge systems over exact rational numbers.
+It emits formulas only when the source equations have sufficient rank, marks
+assumption-relative formulas as non-source-derived, reports free unknowns, and
+rejects observer-fitted systems. Deleting an equation must expose the affected
+output as underdetermined. An empty source fiber produces no invented formula.
+
+`observer-set` treats a graded or grouped observer family as one SCC object.
+Members declare arity domains, exact matrices, transported realizations,
+polarization fixtures, joint-faithfulness scope, A7 realization comparisons,
+and higher-coherence states. The compiler induces one- and two-copy transport,
+tests complete family laws, and never promotes unsupported higher cells.
+
+`globular-tower` compiles recursively boxed observers of observers. Every
+higher cell must have constructed parallel lower boundaries. The ordered gates
+cover exact source-incidence rank monotonicity, distinct kernel, cokernel,
+topological, and authority residuals, typed child seeds, source-authorized
+promotion, termination, strictness, supported finite defect, acyclicity, local
+critical-pair joins, and global coherence across completion, authority,
+coefficient, and parent-child lenses. Filling schema slots does not substitute
+for these runtime witnesses. Source-authorized precomposition may form a stacked
+Level-0 family such as `J`, `J A`, and `J A^2`; its joint rank is computed
+separately from higher-observer postcomposition, which remains rank-monotone.
 
 ## Contextual irreducibility gate
 

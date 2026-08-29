@@ -1,0 +1,105 @@
+{
+  "schema": "marici.aspect.category-lattice.v1",
+  "name": "constructor-observer completion lattice",
+  "base": {
+    "objects": "typed assembly contexts",
+    "morphisms": "source-authorized context maps",
+    "composition": "typed map composition",
+    "identity": "unchanged context",
+    "no_time_semantics": true
+  },
+  "assembly_scale": ["local", "packet", "finite_system", "pro_system", "completion"],
+  "gate_axes": {
+    "carrier": ["absent", "split", "compatible"],
+    "action": ["absent", "typed", "faithful"],
+    "observation": ["absent", "natural", "faithful"],
+    "estimate": ["absent", "bounded", "uniform"]
+  },
+  "cell_order": "coordinatewise",
+  "meet": "coordinatewise minimum",
+  "join": "coordinatewise maximum only when witnesses share one source-authorized context; otherwise undefined",
+  "horizontal_arrows": {
+    "assembly": "add or compose source-labelled constructors",
+    "restriction": "map a richer context to a declared coarser context",
+    "specialization": "change coefficient realization through a declared source map"
+  },
+  "vertical_arrows": {
+    "promotion": "supply the witness required for the next gate value",
+    "forgetting": "discard structure while recording the induced quotient"
+  },
+  "observer": {
+    "type": "affine natural transformation",
+    "law": "O_Y transported to X equals O_X plus transported increment Delta_O_XY",
+    "increment_coordinates": ["primitive_fluctuation", "square_compensator"],
+    "cocycle": "Delta_O_XZ equals Delta_O_XY plus transported Delta_O_YZ",
+    "faithfulness": "joint kernel on the admitted reachable increment module is zero",
+    "completion": "the least singular value on that module has a preregistered positive lower bound"
+  },
+  "coherence_cells": [
+    "identity",
+    "composition_square",
+    "restriction_naturality_square",
+    "specialization_naturality_square",
+    "affine_cocycle_triangle",
+    "associator_pentagon",
+    "mixed_action_observation_square",
+    "completion_limit_cone"
+  ],
+  "obstruction_labels": [
+    "missing_carrier",
+    "action_kernel",
+    "observer_kernel",
+    "reference_holonomy",
+    "affine_cocycle_residual",
+    "associator_residual",
+    "nonuniform_margin",
+    "missing_source_authority"
+  ],
+  "propagation": {
+    "downward": "failure at a cell blocks every claim depending on that cell",
+    "upward": "finite success does not promote through pro_system or completion without a uniform witness",
+    "sideways": "success on one axis does not imply success on another",
+    "scalarization": "permitted only after typed coherence and kernel checks"
+  },
+  "active_theta_placement": {
+    "carrier": "correspondence_carrier_present",
+    "action": "incomplete_missing_noncentral_off_diagonal_linking_generator",
+    "observation": "blocked_until_action_splitting",
+    "estimate": "blocked_until_observation_is_live",
+    "first_live_falsifier": "construct a source-derived noncentral off-diagonal linking generator and test full action rank",
+    "deferred_observation_falsifier": "equal scalar totals with opposite primitive currents"
+  },
+  "scc_coverage": {
+    "classifier_cell_count": 405,
+    "classifier_cell_count_is_not_tower_interval_count": true,
+    "realization_fiber_binding": "research/aspect/contracts/realization-fiber-coherence.v1.json",
+    "present": [
+      "typed packets and strata",
+      "ports and observer quotients",
+      "static and dynamic coherence separation",
+      "source and capability authority",
+      "rank and kernel witnesses",
+      "restriction and cross-level calibration",
+      "first-jet transport",
+      "pro-context towers",
+      "completion margins",
+      "associator pentagons",
+      "hostiles, freezes, dependency impact and recheck"
+    ],
+    "new_in_v1": [
+      "four-axis product lattice",
+      "partial join requiring a shared source context",
+      "affine observer as a natural transformation",
+      "explicit mixed action-observation cell",
+      "uniform obstruction propagation across assembly scales"
+    ],
+    "still_requires_domain_packets": [
+      "source-derived noncentral off-diagonal linking generator",
+      "source-derived correspondence maps",
+      "exact observer increment maps",
+      "reference transport",
+      "reachable increment module",
+      "preregistered completion margin"
+    ]
+  }
+}

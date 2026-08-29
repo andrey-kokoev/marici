@@ -1,0 +1,17 @@
+{
+  "$schema":"../scc/model-manifest.schema.json",
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"flavor-wp996-categorical-audit",
+    "owner":"marici.Aspect",
+    "classification":"categorical_audit_of_conditional_flavor_optimum",
+    "stratum":"WP996 formal control family with B>0; physical realization fiber retained separately",
+    "inputs":["research/aspect/contracts/flavor-wp996-categorical-audit.v1.json","research/aspect/contracts/flavor-wp996-formula-synthesis.v1.json","research/flavor/results/wp996_bounded_control_chebyshev_optimum.json"],
+    "checks":[{"id":"flavor-wp996-categorical-audit","path":"research/aspect/checkers/check_flavor_wp996_categorical_audit.py","requires":[]},{"id":"flavor-wp996-formula-synthesis","path":"research/aspect/checkers/check_flavor_wp996_formula_synthesis.py","requires":[]}],
+    "depends_on":["wp996-bounded-control-chebyshev-optimum"],
+    "consumes":["exact Chebyshev-optimal targets","joint optimal formal radius B/5489","convex dual upper-bound certificate"],
+    "provides":["scale-fiber non-equivalence witness","physical-promotion obstruction","ranked source-level Flavor falsifiers","exact conditional bridge formulas and missing source-formula rank witness"],
+    "missing_constructors":["source-derived physical control norm","source-derived bound B","calibrated closed-loop error in dual invariant units"],
+    "next_falsifier":"derive an actuator cost/support ball independently of the desired Flavor margin; then acquire a same-frame closed-loop dual-error packet and test strict support below B/5489"
+  }
+}
