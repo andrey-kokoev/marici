@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950015350532700_92",
+  "created_at": "2026-08-28T20:46:55.3505367Z",
+  "sha256": "90260bcb87ae5f26f69d826b67e7847c35029305a45e84c511e910383f8fa0d6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp993_universal_adaptive_control_section.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:46:55.2691578Z",
+    "finished_at": "2026-08-28T20:46:55.3505195Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP993 exact adaptive section",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP993 exact adaptive section",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.wp993-universal-adaptive-control-section.v1\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"universal_affine_section_exact\": true,\r\n    \"control_targets_are_state_independent_after_feedback\": true,\r\n    \"requires_qk_record_before_control\": true,\r\n    \"does_not_supply_measurement_instrument\": true,\r\n    \"does_not_supply_actuator_authority\": true\r\n  },\r\n  \"section\": {\r\n    \"commuting\": [\r\n      \"u=-q-1\",\r\n      \"v=-k\"\r\n    ],\r\n    \"rank_two\": [\r\n      \"u=1-q\",\r\n      \"v=-k\"\r\n    ],\r\n    \"full_rank\": [\r\n      \"u=-q\",\r\n      \"v=1-k\"\r\n    ]\r\n  },\r\n  \"target_effective_controls\": {\r\n    \"commuting\": [\r\n      \"Q=-1\",\r\n      \"R=0\"\r\n    ],\r\n    \"rank_two\": [\r\n      \"Q=1\",\r\n      \"R=0\"\r\n    ],\r\n    \"full_rank\": [\r\n      \"Q=0\",\r\n      \"R=1\"\r\n    ]\r\n  },\r\n  \"classification\": \"formal universal feedback section; neither source selector nor physical instrument\",\r\n  \"smallest_exact_falsifier\": \"two physical16-equivalent preparations yield different calibrated q,k records or the commanded invariant shifts fail to realize Q=q+u and R=k+v\",\r\n  \"remaining_gate\": \"one source-authorized closed-loop apparatus composing q,k measurement, reset-safe feedback, independent u,v actuation, and labelled relative-energy verification\",\r\n  \"sample_witnesses\": {\r\n    \"1/7:11/13:commuting\": {\r\n      \"u\": \"-8/7\",\r\n      \"v\": \"-11/13\",\r\n      \"winner\": 0,\r\n      \"unique\": true\r\n    },\r\n    \"1/7:11/13:rank_two\": {\r\n      \"u\": \"6/7\",\r\n      \"v\": \"-11/13\",\r\n      \"winner\": 1,\r\n      \"unique\": true\r\n    },\r\n    \"1/7:11/13:full_rank\": {\r\n      \"u\": \"-1/7\",\r\n      \"v\": \"2/13\",\r\n      \"winner\": 2,\r\n      \"unique\": true\r\n    },\r\n    \"3:5:commuting\": {\r\n      \"u\": \"-4\",\r\n      \"v\": \"-5\",\r\n      \"winner\": 0,\r\n      \"unique\": true\r\n    },\r\n    \"3:5:rank_two\": {\r\n      \"u\": \"-2\",\r\n      \"v\": \"-5\",\r\n      \"winner\": 1,\r\n      \"unique\": true\r\n    },\r\n    \"3:5:full_rank\": {\r\n      \"u\": \"-3\",\r\n      \"v\": \"-4\",\r\n      \"winner\": 2,\r\n      \"unique\": true\r\n    },\r\n    \"101:10007:commuting\": {\r\n      \"u\": \"-102\",\r\n      \"v\": \"-10007\",\r\n      \"winner\": 0,\r\n      \"unique\": true\r\n    },\r\n    \"101:10007:rank_two\": {\r\n      \"u\": \"-100\",\r\n      \"v\": \"-10007\",\r\n      \"winner\": 1,\r\n      \"unique\": true\r\n    },\r\n    \"101:10007:full_rank\": {\r\n      \"u\": \"-101\",\r\n      \"v\": \"-10006\",\r\n      \"winner\": 2,\r\n      \"unique\": true\r\n    }\r\n  }\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
