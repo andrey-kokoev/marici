@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787959665447911500_208",
+  "created_at": "2026-08-28T23:27:45.4479143Z",
+  "sha256": "75eecdd74c46850462e58976669b8df8a4fefa297dedd23abdd0250f751fea1a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,b):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;s=-1 if b=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+s*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if b=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef build(g,q,N):\n E=[];R=[];P=[];B=[];D={}\n for a in range(N+1):\n  for b in '-+':\n   v=c(g,q,a,b);r={}\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:\n     sub(v,E[i],z)\n     for j,x in R[i].items():r[j]=r.get(j,F())-z*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p);B.append((a,b))\n   else:D[(a,b)]={j:-x for j,x in r.items()}\n return B,D\nfor g,q in [(6,3),(6,8),(6,13)]:\n B,D=build(g,q,80);print('case',g,q)\n for N in [20,40,60,80]:\n  for rho in [1.25,1.5,2.0]:\n   rows=[0.0]*len(B);cols=[]\n   for (a,b),r in D.items():\n    if b!='+' or a>N:continue\n    z=0.\n    for j,x in r.items():\n     y=float(abs(x))*rho**(B[j][0]-a);z+=y;rows[j]+=y\n    cols.append(z)\n   print(N,rho,f'C={max(cols):.3g}',f'R={max(rows):.3g}')\n"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:27:44.9931482Z",
+    "finished_at": "2026-08-28T23:27:45.4479021Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "two-sided weighted Schur audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "two-sided weighted Schur audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "case 6 3\r\n20 1.25 C=33.7 R=46.6\r\n20 1.5 C=11.2 R=9.53\r\n20 2.0 C=3.24 R=1.7\r\n40 1.25 C=33.7 R=87.5\r\n40 1.5 C=11.2 R=10.2\r\n40 2.0 C=3.24 R=1.7\r\n60 1.25 C=33.7 R=94.1\r\n60 1.5 C=11.2 R=10.2\r\n60 2.0 C=3.24 R=1.7\r\n80 1.25 C=33.7 R=94.5\r\n80 1.5 C=11.2 R=10.2\r\n80 2.0 C=3.24 R=1.7\r\ncase 6 8\r\n20 1.25 C=1.43e+04 R=2.72e+04\r\n20 1.5 C=2.07e+03 R=3.98e+03\r\n20 2.0 C=158 R=215\r\n40 1.25 C=1.43e+04 R=2.74e+04\r\n40 1.5 C=2.07e+03 R=3.99e+03\r\n40 2.0 C=158 R=215\r\n60 1.25 C=1.43e+04 R=2.74e+04\r\n60 1.5 C=2.07e+03 R=3.99e+03\r\n60 2.0 C=158 R=215\r\n80 1.25 C=1.43e+04 R=2.74e+04\r\n80 1.5 C=2.07e+03 R=3.99e+03\r\n80 2.0 C=158 R=215\r\ncase 6 13\r\n20 1.25 C=2.39e+04 R=1.53e+04\r\n20 1.5 C=2.44e+03 R=2.04e+03\r\n20 2.0 C=192 R=101\r\n40 1.25 C=2.39e+04 R=2.15e+04\r\n40 1.5 C=2.44e+03 R=2.58e+03\r\n40 2.0 C=192 R=114\r\n60 1.25 C=2.39e+04 R=2.15e+04\r\n60 1.5 C=2.44e+03 R=2.58e+03\r\n60 2.0 C=192 R=114\r\n80 1.25 C=2.39e+04 R=2.15e+04\r\n80 1.5 C=2.44e+03 R=2.58e+03\r\n80 2.0 C=192 R=114\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
