@@ -1,0 +1,44 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787975852281861400_209",
+  "created_at": "2026-08-29T03:57:32.2818655Z",
+  "sha256": "a135f56cf5093d3d8ae8b437c7bed92078fc530a14488aaa88778f12730010b4",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/scc/scc.py",
+      "categorical",
+      "research/aspect/contracts/scc-categorical-category-lattice.v1.json"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T03:57:32.0456217Z",
+    "finished_at": "2026-08-29T03:57:32.2818518Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "SCC categorical CLI acceptance",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "SCC categorical CLI acceptance",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.categorical-compilation.v1\",\r\n  \"diagram\": \"category-lattice-categorical-runtime\",\r\n  \"errors\": [],\r\n  \"cells\": [\r\n    {\r\n      \"id\": \"mixed_action_observer\",\r\n      \"kind\": \"naturality_square\",\r\n      \"routes\": [\r\n        {\r\n          \"arrows\": [\r\n            \"ca\",\r\n            \"ao\"\r\n          ],\r\n          \"composite\": [\r\n            \"ca\",\r\n            \"ao\"\r\n          ]\r\n        },\r\n        {\r\n          \"arrows\": [\r\n            \"co\",\r\n            \"id_o\"\r\n          ],\r\n          \"composite\": [\r\n            \"ca\",\r\n            \"ao\"\r\n          ]\r\n        }\r\n      ],\r\n      \"residuals\": [\r\n        {\r\n          \"left\": [\r\n            \"ca\",\r\n            \"ao\"\r\n          ],\r\n          \"right\": [\r\n            \"ca\",\r\n            \"ao\"\r\n          ],\r\n          \"zero\": true\r\n        }\r\n      ],\r\n      \"passed\": true,\r\n      \"threshold\": \"exact_zero\"\r\n    }\r\n  ],\r\n  \"fibers\": [\r\n    {\r\n      \"id\": \"strongest-profile-fiber\",\r\n      \"profile\": [\r\n        \"compatible\",\r\n        \"faithful\",\r\n        \"faithful\",\r\n        \"uniform\"\r\n      ],\r\n      \"comparisons\": [\r\n        {\r\n          \"left\": \"minus_identity\",\r\n          \"right\": \"split_involution\",\r\n          \"same_profile\": true,\r\n          \"slot_complete\": true,\r\n          \"verified_equivalent\": false,\r\n          \"first_failed_slot\": \"named_constructor_actions\"\r\n        }\r\n      ],\r\n      \"groupoid_arrows\": []\r\n    }\r\n  ],\r\n  \"obstruction_cones\": {},\r\n  \"hostiles\": [\r\n    {\r\n      \"id\": \"delete_mixed_action_observer\",\r\n      \"mutation\": \"delete_cell\",\r\n      \"target\": \"mixed_action_observer\",\r\n      \"expected_first_failure\": \"mixed_action_observer\"\r\n    },\r\n    {\r\n      \"id\": \"collapse_minus_identity_split_involution\",\r\n      \"mutation\": \"promote_same_profile_to_equivalence\",\r\n      \"target\": \"strongest-profile-fiber\",\r\n      \"expected_first_failure\": \"realization_fiber_equivalence\"\r\n    }\r\n  ],\r\n  \"higher_coherence\": [\r\n    {\r\n      \"id\": \"fiber_degree_2\",\r\n      \"degree\": 2,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    },\r\n    {\r\n      \"id\": \"fiber_degree_3\",\r\n      \"degree\": 3,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    },\r\n    {\r\n      \"id\": \"fiber_degree_4\",\r\n      \"degree\": 4,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    },\r\n    {\r\n      \"id\": \"fiber_degree_5\",\r\n      \"degree\": 5,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    }\r\n  ],\r\n  \"promotions\": [\r\n    {\r\n      \"id\": \"finite_to_completion\",\r\n      \"admitted\": true,\r\n      \"missing_cells\": [],\r\n      \"missing_equivalences\": [],\r\n      \"missing_evidence\": []\r\n    }\r\n  ],\r\n  \"functors\": [\r\n    {\r\n      \"id\": \"theta_to_optics_blindness\",\r\n      \"total_on_declared_source\": true,\r\n      \"structure_preserving\": true,\r\n      \"transfer_admitted\": true\r\n    }\r\n  ],\r\n  \"inverse_design\": {\r\n    \"physical_claim\": {\r\n      \"claim\": \"physical_claim\",\r\n      \"status\": \"missing_witnesses\",\r\n      \"missing\": [\r\n        \"observer_increment\",\r\n        \"source_linking_generator\",\r\n        \"uniform_margin\"\r\n      ],\r\n      \"ranked_experiments\": [\r\n        {\r\n          \"id\": \"controlled_conjugate_readout\",\r\n          \"separates\": [\r\n            \"observer_increment\",\r\n            \"uniform_margin\"\r\n          ],\r\n          \"gain\": 2,\r\n          \"preregistered_threshold\": \"research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json\"\r\n        },\r\n        {\r\n          \"id\": \"source_action_rank\",\r\n          \"separates\": [\r\n            \"source_linking_generator\"\r\n          ],\r\n          \"gain\": 1,\r\n          \"preregistered_threshold\": \"exact_nonzero_rank\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"passed\": true\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
