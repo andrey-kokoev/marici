@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787953269825202500_119",
+  "created_at": "2026-08-28T21:41:09.8252058Z",
+  "sha256": "a4412d54c2764741ae97c1b5beb394b580552d4c78b5e9465deba07df435979d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import random,math\nrandom.seed(1007); r=44376/275; best=(-1,None)\ndef mm(A,B): return [[sum(A[i][k]*B[k][j] for k in range(3)) for j in range(3)] for i in range(3)]\ndef sub(A,B): return [[A[i][j]-B[i][j] for j in range(3)] for i in range(3)]\ndef det(A): return A[0][0]*(A[1][1]*A[2][2]-A[1][2]*A[2][1])-A[0][1]*(A[1][0]*A[2][2]-A[1][2]*A[2][0])+A[0][2]*(A[1][0]*A[2][1]-A[1][1]*A[2][0])\ndef hmat():\n d=[random.gauss(0,1) for _ in range(3)]; m=sum(d)/3; d=[x-m for x in d]; A=[[0j]*3 for _ in range(3)]\n for i in range(3): A[i][i]=d[i]\n for i,j in [(0,1),(0,2),(1,2)]:\n  z=random.gauss(0,1)+1j*random.gauss(0,1); A[i][j]=z; A[j][i]=z.conjugate()\n n=math.sqrt(sum(abs(z)**2 for row in A for z in row)); return [[z/n for z in row] for row in A]\nfor _ in range(100000):\n X=hmat();Y=hmat();C=sub(mm(X,Y),mm(Y,X));K=sum(abs(z)**2 for row in C for z in row);P=abs(det(C))**2;S=K+r*P\n if S>best[0]: best=(S,(K,P,X,Y))\nprint(best[0],best[1][0],best[1][1])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:41:07.3640192Z",
+    "finished_at": "2026-08-28T21:41:09.8251918Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "2.4735941321295503 1.041158712910212 0.008876864527792457\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
