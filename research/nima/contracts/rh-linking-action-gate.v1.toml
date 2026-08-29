@@ -1,0 +1,46 @@
+schema = "marici.rh-linking-action-gate.v1"
+owner = "marici.Nima"
+profile_axis = "action"
+current_state = "typed"
+target_state = "faithful"
+
+[objects]
+positive_sector_algebra = "A_plus"
+negative_sector_algebra = "A_minus"
+forward_passage = "M"
+backward_passage = "N"
+
+[gates]
+grading_noncentral = true
+two_sided_source_authority = true
+morita_compatibility = true
+finite_fullness = true
+uniform_fullness = true
+
+[[hostiles]]
+id = "diagonal_only"
+expected = "absent"
+
+[[hostiles]]
+id = "partial_two_sided_link"
+expected = "typed_not_faithful"
+
+[[hostiles]]
+id = "one_way_link"
+expected = "typed_not_two_sided"
+
+[[hostiles]]
+id = "equal_scalar_trace"
+expected = "scalar_shadow_does_not_determine_fullness"
+
+[[witnesses]]
+id = "proper_positive_image_ideal"
+kind = "missing_labelled_idempotent"
+
+[[witnesses]]
+id = "proper_negative_image_ideal"
+kind = "missing_labelled_idempotent"
+
+[[witnesses]]
+id = "collapsing_completion_margin"
+kind = "quantitative_fullness_failure"

@@ -1,0 +1,23 @@
+schema = "marici.theta-finite-synthesis-naturality.v1"
+owner = "marici.Nima"
+verdict = "finite_naturality_exact_completion_open"
+
+[source]
+forcing_real = true
+forcing_even = true
+positive_tail = "Phi(t+p)"
+positive_seam = "1_[0,p](t) Phi(p-t)"
+negative_tail = "Phi(x-p)"
+negative_seam = "1_[-p,0](x) Phi(x+p)"
+
+[transport]
+carrier = "conjugate_reflection"
+coefficient = "conjugation"
+label_length = "preserved"
+arithmetic_type = "preserved"
+
+[result]
+finite_tail_residual = 0
+finite_seam_residual = 0
+finite_packet_naturality = true
+completion_naturality = "unproved"

@@ -1,0 +1,29 @@
+schema = "marici.theta.lifted_picard_augmentation.v1"
+status = "active"
+
+[transition]
+packet = ["primitive", "square", "connected", "archimedean"]
+composition = "componentwise_addition"
+
+[augmentation]
+kind = "lifted_picard_functor"
+scalar_transition = "exp(source_authorized_coherence(packet))"
+retain_logarithmic_lift = true
+retain_winding_grade = true
+
+[completion]
+requires_trivialization_control = true
+requires_inverse_control = true
+scope = "compact_loops_in_open_sectors"
+
+[[falsifier]]
+id = "exponential_alias"
+witness = "logarithmic lifts 0 and 2pii have equal scalar transition"
+
+[[falsifier]]
+id = "typed_cancellation"
+witness = "(a,0,0,-a) and zero have equal total but different provenance"
+
+[[falsifier]]
+id = "inverse_escape"
+witness = "t_N nonzero, t_N tends to zero, inverse diverges"
