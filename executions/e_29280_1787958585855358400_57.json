@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787958585855358400_57",
+  "created_at": "2026-08-28T23:09:45.8553619Z",
+  "sha256": "93af0a71ff7a889abeb7f65954727987901af8124d3bed7dbd6a5c43810d4dbc",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; I=s.I; t=s.symbols('t',real=True); z=s.Rational(4,5)+I*s.Rational(3,5); Y0=s.diag(1,2,t); a=s.Matrix([1,1,1]); b=s.Matrix([[1,1,1]]); Hu=s.diag(1,4,9); c=Y0*b.T; Q=a*c.T-c*a.T; Y=Y0+z*a*b; H=s.simplify(Y*Y.H); D=s.factor((Hu*H-H*Hu).det()/I); print([s.factor(Q[0,1]),s.factor(Q[1,2]),s.factor(Q[2,0])]); print(s.factor(D)); print(s.solve(D,t))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:09:45.1152438Z",
+    "finished_at": "2026-08-28T23:09:45.8553475Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1022 one-parameter exact cancellation solve",
+      "expected_cost": "one symbolic cubic factorization",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1022 one-parameter exact cancellation solve",
+    "expected_cost": "one symbolic cubic factorization",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[1, t - 2, 1 - t]\r\n144*(t - 2)*(t - 1)\r\n[1, 2]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
