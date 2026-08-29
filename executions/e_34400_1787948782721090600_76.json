@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787948782721090600_76",
+  "created_at": "2026-08-28T20:26:22.7210938Z",
+  "sha256": "177642dccdab2ee01e9118892c91a9ce9657545ff13eb371351ed58b11979c7b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp992_three_state_control_region_no_go.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:26:22.6386247Z",
+    "finished_at": "2026-08-28T20:26:22.7210818Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "wp992 exact control-region checker",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "wp992 exact control-region checker",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.wp992-three-state-control-region-no-go.v1\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"commuting_region_witness\": true,\r\n    \"rank_two_region_witness\": true,\r\n    \"full_rank_region_witness\": true,\r\n    \"all_three_regions_nonempty\": true,\r\n    \"finite_schedule_hostile_q_exists\": true,\r\n    \"hostile_q_blocks_commuting_preparation\": true\r\n  },\r\n  \"preparation_regions\": {\r\n    \"commuting\": [\r\n      \"Q<0\",\r\n      \"R<-3087 Q\"\r\n    ],\r\n    \"rank_two\": [\r\n      \"Q>0\",\r\n      \"R<24696 Q\"\r\n    ],\r\n    \"full_rank\": [\r\n      \"R>-3087 Q\",\r\n      \"R>24696 Q\"\r\n    ]\r\n  },\r\n  \"illustrative_finite_schedule\": [\r\n    [\r\n      -7,\r\n      2\r\n    ],\r\n    [\r\n      3,\r\n      -5\r\n    ],\r\n    [\r\n      11,\r\n      13\r\n    ]\r\n  ],\r\n  \"hostile_q\": 8,\r\n  \"uniform_finite_schedule_exists_on_positive_quadrant\": false,\r\n  \"classification\": \"uniform preparation no-go; neither selector nor rigidifier\",\r\n  \"smallest_exact_falsifier\": \"an independently derived finite q upper bound plus an admitted robust negative control\",\r\n  \"remaining_gate\": \"bounded source support or an independently calibrated adaptive controller, plus physical authorization of the invariant control knobs\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
