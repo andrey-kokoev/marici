@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787960948753224300_211",
+  "created_at": "2026-08-28T23:49:08.7532278Z",
+  "sha256": "c8166394457ac2146891460ee42617964cd56e425996911bd4ee368ed6cb1a89",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef col(g,q,a,s):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef cap(g,q,N=20):\n E=[];P=[];plus=[]\n for a in range(N+1):\n  for s in '-+':\n   v=col(g,q,a,s)\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:sub(v,E[i],z)\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});P.append(p)\n    if s=='+':plus.append(a)\n return plus\ntot=hit=0;fail=[];examples=[]\nfor g in range(2,11):\n for q in range(1,16):\n  P=cap(g,q);a=q-g+3\n  if 1<=a<=20:\n   tot+=1\n   if a not in P:hit+=1\n   else:fail.append((g,q,a,P))\n   if len(examples)<12 and a not in P:examples.append((g,q,a,[x for x in range(max(P)+1) if x not in P]))\nprint('positive predicted degeneracies',hit,'/',tot,'fail',len(fail))\nprint('fails',fail[:8])\nprint('examples g,q,a*,holes',examples)\nprint('a*=0 cases',[(g,q,0 in cap(g,q)) for g in range(2,11) for q in range(1,16) if q-g+3==0])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:49:07.8223059Z",
+    "finished_at": "2026-08-28T23:49:08.7532158Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Euler plus-cap degeneracy classification audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "Euler plus-cap degeneracy classification audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "positive predicted degeneracies 72 / 107 fail 35\r\nfails [(2, 1, 2, [0, 1, 2, 3, 4]), (2, 2, 3, [0, 1, 2, 3, 4, 5]), (2, 3, 4, [0, 1, 2, 3, 4, 5, 6]), (3, 1, 1, [0, 1, 2, 3, 4, 5]), (3, 2, 2, [0, 1, 2, 3, 4, 5, 6]), (3, 3, 3, [0, 1, 2, 3, 4, 5, 6, 7]), (3, 4, 4, [0, 1, 2, 3, 4, 5, 6, 7]), (4, 2, 1, [0, 1, 2, 3, 4, 5, 6, 7])]\r\nexamples g,q,a*,holes [(2, 4, 5, [5]), (2, 5, 6, [5, 6]), (2, 6, 7, [6, 7]), (2, 7, 8, [7, 8]), (2, 8, 9, [8, 9]), (2, 9, 10, [9, 10]), (2, 10, 11, [10, 11]), (2, 11, 12, [11, 12]), (2, 12, 13, [12, 13]), (2, 13, 14, [13, 14]), (2, 14, 15, [14, 15]), (2, 15, 16, [15, 16])]\r\na*=0 cases [(4, 1, True), (5, 2, True), (6, 3, True), (7, 4, True), (8, 5, True), (9, 6, True), (10, 7, True)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
