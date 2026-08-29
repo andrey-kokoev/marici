@@ -1,0 +1,124 @@
+{
+  "schema": "marici.resource_sensitive_partial_properad.v1",
+  "verdicts": [
+    "fillable",
+    "unfillable",
+    "ambiguous_fillers",
+    "unstable_filler"
+  ],
+  "filler_gates": [
+    "signature_match",
+    "source_authority",
+    "face_realization",
+    "same_preparation",
+    "no_hidden_copy",
+    "resource_conservation",
+    "orientation_selection",
+    "completion_stability"
+  ],
+  "fixtures": [
+    {
+      "id": "optical_pairwise_without_cycle",
+      "faces_present": true,
+      "candidate_present": false,
+      "expected": "unfillable"
+    },
+    {
+      "id": "optical_authorized_triple_cycle",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": true,
+      "no_hidden_copy": true,
+      "resource_conservation": true,
+      "orientation_required": true,
+      "orientation_selection": true,
+      "completion_stability": true,
+      "expected": "fillable"
+    },
+    {
+      "id": "sheet_separate_character_ports",
+      "faces_present": true,
+      "candidate_present": false,
+      "expected": "unfillable"
+    },
+    {
+      "id": "sheet_joint_amplitude_transport",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": true,
+      "no_hidden_copy": true,
+      "resource_conservation": true,
+      "orientation_required": false,
+      "orientation_selection": true,
+      "completion_stability": true,
+      "expected": "fillable"
+    },
+    {
+      "id": "consumable_product_smuggles_copy",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": false,
+      "no_hidden_copy": false,
+      "resource_conservation": false,
+      "orientation_required": false,
+      "orientation_selection": true,
+      "completion_stability": true,
+      "expected": "unfillable"
+    },
+    {
+      "id": "mirror_fillers_without_cycle_orientation",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": true,
+      "no_hidden_copy": true,
+      "resource_conservation": true,
+      "orientation_required": true,
+      "orientation_selection": false,
+      "completion_stability": true,
+      "expected": "ambiguous_fillers"
+    },
+    {
+      "id": "finite_filler_collapses_at_completion",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": true,
+      "no_hidden_copy": true,
+      "resource_conservation": true,
+      "orientation_required": false,
+      "orientation_selection": true,
+      "completion_stability": false,
+      "expected": "unstable_filler"
+    },
+    {
+      "id": "authorized_opaque_bundle_multicategory_encoding",
+      "faces_present": true,
+      "candidate_present": true,
+      "signature_match": true,
+      "source_authority": true,
+      "face_realization": true,
+      "same_preparation": true,
+      "no_hidden_copy": true,
+      "resource_conservation": true,
+      "orientation_required": false,
+      "orientation_selection": true,
+      "completion_stability": true,
+      "encoding": "single_opaque_joint_packet_output_with_authorized_projections",
+      "expected": "fillable"
+    }
+  ]
+}
