@@ -203,6 +203,560 @@ and its physical constructor implementation.
   instrument certificate and exact rare-route obstruction. IID samples obey
   `N >= 2 eta^-2 log(4/delta)`, while no finite `N` is uniformly faithful as
   an admitted route weight tends to zero.
+- `flavor-domain-moment-perfect-correlation-obstruction.md`: WP966 supplies
+  the exact non-IID hostile left open by WP98. Every sampling slot can have the
+  correct symmetric broken marginal while sharing one latent sign. Then
+  `m1_hat=Z`, `m2_hat=1`, and reconstructed total-variation error is
+  `1/2` with probability one for every sample count. The first nonfaithful
+  arrow is joint preparation/reset, not the moment algebra or selector.
+- `flavor-domain-moment-covariance-certificate.md`: WP967 quantifies the
+  repair. For exchangeable calibrated sign slots with pair covariance `rho`,
+  `Var(m1_hat)=(1-rho)/N+rho` and
+  `N_eff=N/(1+(N-1)rho)`. A positive common mode creates an irreducible
+  variance floor and caps effective sample size. Finite-confidence authority
+  therefore requires a source-defined slot family and calibrated `rho_max`,
+  not an observer-side IID declaration.
+- `flavor-domain-moment-vector-covariance.md`: WP968 lifts that scalar result to
+  the actual two-feature route instrument. For arbitrary joint preparation,
+  the exact feature-mean covariance is the block sum of all contextual
+  covariances; a matrix bound gives the finite-confidence certificate. A
+  two-slot shared-route packet has correct marginals but total-variation error
+  `2/3` for every outcome, so sign-only calibration cannot authorize the
+  support moment.
+- `flavor-preparation-context-covariance-transport.md`: WP969 proves that a
+  covariance certificate at one preparation context does not transport from
+  calibrated marginals alone. An exact product-to-shared mixture preserves
+  every one-slot law while doubling the largest feature-mean covariance. A
+  source-derived context metric and operator-norm modulus are the missing
+  stability arrow; with them the WP968 bound transports with explicit margin
+  inflation.
+- `flavor-preparation-grammar-source-closure.md`: WP970 audits every declared
+  flavor preparation candidate against the repeated-use source gate and closes
+  the branch negative. FDM-2's one-use kernel does not determine whether two
+  uses receive fresh or shared orientation coins; both implementations have
+  identical marginals while their empirical-mean variances are `1/2` and `1`.
+  The SM RG, FDM-1/2, matrix OU, WP273, and WP76 rows all miss at least one of
+  physical source, reset, joint-law, descent, and full-feature calibration.
+- `flavor-finite-momentum-yukawa-interface-contract.md`: WP971 turns SCC's
+  natural-transport failure into a nine-gate completion contract. The exact
+  pair `F1(q2)=kappa` and `F2(q2)=kappa*(1+q2/M2)` shares all admitted
+  zero-momentum data while differing on shell, so WP644/WP645 cannot yet be
+  transported to paired Higgs-width records. A refinement proves that overall
+  field normalization cancels from `F(q2)/F(0)`; the surviving first
+  obstruction is source-fixed canonical pole data. The pole packets
+  `M2=1` and `M2=2` agree at zero momentum but give normalized values
+  `1/2` and `2/3` at `q2=1`. The existing gauge symmetry scalarizes
+  kinetic shape on single irreducible factors but leaves the three-dimensional
+  symmetric Gram of the identical entrance pair. WP629's added sector parity
+  reduces that Gram to two free diagonal coefficients; it rigidifies mixing
+  without selecting either pole. WP489 does put the Higgs and messenger poles
+  on one source clock, yielding the descending on-shell argument
+  `m_h2/M_A2=4*a*eta/z_A2`. The clock cancels, but the positive coefficient
+  map has full positive image: `z_A=1,2` gives arguments `4,1` and
+  normalized one-pole readouts `1/5,1/2`. A cross-sector audit finds genuine
+  selection templates in reciprocal self-sewing and anomaly cancellation,
+  plus conditional minimum-cost and counterfactual-naturality templates.
+  Flavor currently supplies none of their load-bearing source premises, so no
+  selector conclusion transfers. The closest internal precedent is WP820's
+  genuine primitive-charge selector, but WP823's unit acyclic stabilization
+  preserves its charge homology and inflow while moving the conditional RG
+  coordinate from `1/2` to `1/4`. Pole-coefficient selection must therefore
+  originate in a complete chain-level spectral matter object, not anomaly
+  data alone. The later WP824/WP836/WP839 chain tests that candidate directly:
+  full Dirac spectrum repairs the homology mass kernel, and the scale-free
+  functional conditionally selects minimal completion and equal singular
+  shape, but it is blind to common mass. The action packets
+  `(alpha,beta)=(-2,1),(-4,1)` preserve the same primitive current,
+  reflection, completion, and score `R3=3` while selecting
+  `m_*^2=1,2`; WP839's hostile transport gives fixed coordinates
+  `1/2,1/3`. The first missing arrow is therefore the source derivation of
+  spectral-action profile and normalization, before beta data and canonical
+  pole ratios. WP840--WP875 then test a coefficient-free reciprocal escape.
+  With primitive diameter two, WP872 selects `x=1/2` on `x>0`, but
+  multiplicative compatibility keeps `x=0` fixed. WP873's primitive dual
+  pairing would exclude zero and select `g=1/sqrt(2)`; WP874 finds no
+  admitted flavor dual source, so this is an added-source architecture.
+  WP875's native additive alternative is legal but its completed simultaneous
+  source has `kappa_A=-6*(4T+12g1+53g2)/103<0` on every positive coordinate
+  axis, leaving the required interacting surface empty. Thus the programme
+  has a conditional magnitude selector, but still no admitted zero-exit
+  selector of the canonical pole ratios.
+  WP877--WP893 then construct the strongest native simple-parent successor.
+  WP878 selects the normalized Hodge-odd operator, but WP879's two
+  anomaly-equivalent completions have `b0=9/2,13/2`. Completion B is
+  generically massable, yet WP888 gives two full-rank points with distinct
+  scale-free spectral invariants `63449/368082` and `1603/9680`;
+  WP884 leaves a two-dimensional finite-threshold fiber. WP893 nevertheless
+  derives a conditional calibrated rank-two dimuon instrument from the two
+  compelled radial modes on a frozen two-pole slice. This is an identifier,
+  not a selector, and finite 2016 exposure remains underpowered. The branch
+  proves directly that physical instrumentation and source selection are
+  independent gates. WP916 then shows response validation has full image on
+  the exact four-card source grid and hence zero selection reduction. WP917's
+  (Q,J)=(1,0),(1,2) hostile agrees on the declared J-blind source grammar
+  but splits the proposed normalized CP portal. Finally WP931 exhausts every
+  declared candidate through WP930 against source authority, physical16
+  descent, proper reduction, point isolation, and instrument typing; no row
+  passes all five. This is the bounded negative answer for the declared
+  Spin(5)/conditional Spin(7) grammar, with reopening restricted to a genuinely
+  new independently declared three-family source action or geometry.
+  WP932--WP950 audit the declared reopening candidates without changing that
+  verdict. The Boolean zeta tower is formally faithful on eight labelled
+  routes but current threshold authority has rank one and selection reduction
+  zero. One holonomy forces the CP cubic to zero against an exact `-36i`
+  comparator; two Weyl holonomies span all of `M3(C)` and admit CP cubics
+  zero and `-842400i` over the same carrier. Positive idempotent Gram-sector
+  mixing is identity or CP-erasing equalization, with the unselected weights
+  `c=1/3,2/3` giving traces nine and eight. The surviving target is a
+  source-derived proper noncommuting family module with fixed coefficients,
+  completion stability, and an independently typed instrument.
+  A cross-sector search finds Kitaev's finite D(S3) endpoint algebra as the
+  closest exact architecture: dimensions `6 -> 24 -> 36 < 256`, with one
+  transposition and one three-cycle flux port minimally generating the proper
+  noncommutative block algebra. Those ports are not native Hamiltonian terms,
+  and the enlarged compiled source Lie algebra reaches 34 rather than 36
+  while its physical control/record interface remains open. Nima's one-way
+  wall incidence gives a five-dimensional parabolic and conditional dual
+  incidence closes eight-dimensional sl3, but the reverse arrow and source
+  coefficients remain untyped. Strominger's finite Weyl lift is an
+  unauthorized quantization extension, and Nima's twisted-exchange selector
+  was superseded by the complete mixed-quartic hostile. The transfer target
+  is therefore a native typed generator census whose closure stays proper and
+  whose coefficient law is source-derived.
+  This points to WP125/WP646 as the closest internal seed rather than requiring
+  another algebra search. WP125's degree-eight commutator invariant is
+  weak-basis invariant, reference-free, and selects a noncommuting slice
+  interior, but `x*=1/2+a/(8q)` exposes the free coefficient ratio. WP646's
+  rank ladder `2 -> 9 -> 10` shows that identity-plus-linear words form the
+  narrow proper codimension-one module, while degree-two words restore
+  universal fitting. The next theorem must derive the coefficient relation
+  natively and prove radial, ensemble, threshold, and instrument closure.
+  WP127--WP129 correct the implication that only a module seed exists. WP128's
+  two-adjoint renormalizable source matches
+  `q=lambda*alpha^2*beta^2`, derives the negative commutator term, and is
+  coercive for `rho>lambda/2`; the benchmark gives `q=25` and stability
+  margin `1/2`. Flavor therefore possesses a source-derived proper
+  noncommuting module architecture. It does not select the numerical
+  coefficient ray or prove the full coupled vacuum. WP129's common low-energy
+  probes have rank one on three rival constructors, leaving source-kernel
+  dimension two; formal rank-three threshold separation is a new relational
+  experiment without an admitted instrument. WP436--WP442 then close the
+  two-adjoint vacuum selector reading: the source-free noncommuting branch has
+  gauge rank seven, while its authorized charged-instability completion ends
+  at a commuting rank-six vacuum. WP443 adds a fundamental and achieves stable
+  rank-eight breaking, but its first vacuum algebra is reducible. WP447 repairs
+  this with an irreducible spin-one embedding and full M3(C) carrier capacity.
+  WP451 nevertheless shows that its native SO(3) source symmetry selects only
+  the identity. The remaining constructor is a dynamical SO(3)-breaking
+  coefficient field in the WP452 1+3+5 decomposition, with its own
+  independently selected vacuum.
+- flavor-coefficient-object-minimality.md: WP972 proves that one shared
+  dynamical coefficient object cannot generate physical flavor: every pair
+  Yu=f_u(C), Yd=f_d(C) commutes, so its CP-odd commutator cubic vanishes
+  independently of polynomial degree or the potential selecting C. An exact
+  two-object Hermitian control has nonzero commutator determinant and cubic.
+  Thus at least two noncommuting coefficient objects are necessary, while
+  their source-selected relative vacuum and physical instrument remain open.
+- flavor-maximal-commutator-cp-obstruction.md: WP973 tests the smallest
+  coefficient-free two-object interaction. At fixed Frobenius radii, saturating
+  the sharp Hermitian commutator bound concentrates the vacuum on an embedded
+  two-level block. The exact equality witness has nonzero commutator norm but
+  zero determinant and cubic. Hence the negative commutator square selects
+  noncommutativity and rigidifies a presentation, but cannot select
+  three-family CP violation.
+- flavor-trace-word-cp-degree-gate.md: WP974 exhausts binary trace necklaces.
+  Every word through degree five is cyclically reversal-equivalent and hence
+  real on Hermitian fields. Reversal-asymmetric words first occur at degree
+  six. An exact CP-conjugate pair agrees on every lower word while a degree-six
+  probe has opposite nonzero imaginary parts. Therefore a renormalizable
+  two-field trace potential can break CP only in an orientation-degenerate
+  fiber; it cannot select the CP sign.
+- flavor-cp-orientation-reference-port.md: WP975 transfers WP785 to the
+  degree-six flavor invariant. A dynamical pseudoscalar port with energy
+  proportional to minus the reference/flavor sign product selects relative
+  alignment but leaves two simultaneous-CP minima. Forgetting the port retains
+  both flavor signs. Fixing the port selects one sign only in a new relational
+  experiment over the reference stabilizer groupoid.
+- flavor-full-rank-commutator-discriminator.md: WP976 identifies the first
+  direct CP-even full-rank discriminator
+  \(|\det[X,Y]|^2/\|[X,Y]\|_F^6\). It vanishes on the WP973 rank-two
+  maximizer and equals exactly 9/1372 on the WP972 full-rank control. The
+  numerator has field degree twelve, so this is a legal conditional
+  CP-magnitude selector outside the renormalizable grammar, not yet a
+  source-authorized operator or instrument.
+- flavor-determinant-mediator-chain.md: WP977 gives a renormalizable
+  constructor for the WP976 degree-twelve operator. A Hermitian adjoint tracks
+  the commutator through a cubic vertex; a CP-odd scalar couples to its
+  determinant through a quartic vertex. Two-stage elimination generates the
+  negative determinant square. The auxiliary quartic is coercive for
+  lambda>|gamma|/16; the exact benchmark has margin 1/2 and determinant
+  coefficient 32. Full coupled-vacuum and instrument authority remain open.
+- flavor-determinant-commutator-competition.md: WP978 attacks the WP977
+  benchmark on a fixed-radius hostile pair. The WP973 rank-two state has
+  scores (K,P)=(2,0); the WP972 full-rank control has
+  (K,P)=(2/9,2/27783). Full rank wins only for k/q>24696, whereas WP977
+  supplies k/q=64. The benchmark therefore still favors the two-level vacuum.
+  This falsifies the chosen coefficient ray, not the mediator grammar.
+- flavor-determinant-mediator-ray-fiber.md: WP979 proves that WP977 stability
+  does not select its induced coefficient ray. Two packets with the same field
+  grammar and coercivity margin 1/2 give k/q=64 and 32768, on opposite sides
+  of WP978's crossing 24696. The mediator chain is therefore an operator
+  constructor with a continuous parameter fiber, not a numerical selector.
+- flavor-determinant-mediator-rescaling-orbit.md: WP980 strengthens WP979 to
+  an exact orbit theorem. Positive rescaling of the auxiliary scalar mass
+  preserves every declared grammar and coercivity condition while acting
+  simply transitively on the full positive k/q ray. Hence the admitted grammar
+  contains no coefficient-ray selector; a new source relation must break this
+  rescaling orbit and survive elimination and global-vacuum checks.
+- flavor-source-scale-dimensionless-fiber.md: WP981 tests the source-scale
+  transfer hostilely. The normalized coefficient
+  rho_hat=N^8(k/q)=gamma^2 a^4/(b c^5) is independent of N. Even with
+  b=c=1, the exact packets a=4 and a=5 give 16384 and 40000 across the
+  WP978 crossing. A source scale repairs units but does not select the
+  dimensionless coefficient combination.
+- flavor-one-coupling-balance-gate.md: WP982 derives the exact acceptance
+  condition for a monomial one-coupling completion. The continuous coupling
+  fiber disappears only when E=2s+4p-q-5r=0; even then the dimensionless
+  prefactor remains to be source-fixed. The natural same-coupling mass pattern
+  has E=-8 and crosses the WP978 boundary between g=1 and g=2.
+- flavor-balanced-fourth-order-coupling-gate.md: WP983 specializes the natural
+  mass pattern and proves that balance uniquely requires gamma proportional to
+  g^4. This removes the common-coupling fiber but leaves the normalized
+  prefactor. Unit coefficients predict 1, the WP977 coefficient predicts 64,
+  and unit A,B,C with integer Gamma require Gamma at least 158 to cross 24696.
+- flavor-uv-lift-jet-faithfulness.md: WP984 applies the two-lift hostile.
+  Distinct UV lifts can agree on the balanced coefficient and its first
+  threshold jet while differing at second order. More generally, every fixed
+  finite jet order is blind to a lift beginning one order later. Finite
+  threshold tomography therefore requires an independently bounded source
+  grammar and calibrated source-generated instruments.
+- flavor-bounded-rational-lift-tomography.md: WP985 freezes polynomial degree
+  bounds and proves jets through K=2dGamma+4dA+dB+5dC determine the complete
+  rational coefficient response. They do not identify its UV factorization:
+  two distinct polynomial lifts give the identical response
+  (1+epsilon)^4 at every order. Complementary source channels are required.
+- flavor-complementary-lift-channel-rank.md: WP986 proves that the scalar
+  coefficient response has a three-dimensional source-tangent kernel, so
+  exactly three additional independent channels are minimally required. The
+  formal vertex and two pole-mass rows give determinant -4 and Gram determinant
+  16. They separate constructors algebraically but lack a calibrated physical
+  instrument and do not select a preferred constructor.
+- flavor-complementary-instrument-composition-gate.md: WP987 audits the
+  physical composability of those four formal rows. WP560's quartic interface
+  and WP534's Ward-complete poles are source-mismatched candidates, and no row
+  presently completes all seven acquisition gates. Thus formal rank four
+  composes to admitted end-to-end rank zero.
+- flavor-complementary-channel-source-identity-gate.md: WP988 locates the
+  obstruction upstream of detector composition. WP560 measures an s^4
+  self-quartic rather than the WP977 s det A mixed vertex, while WP534's gauge
+  poles are not the WP977 scalar and adjoint mediator poles. The exact
+  source-identity incidence matrix is zero. Correctly typed records for the
+  three WP977 terms must be constructed before a joint likelihood is meaningful.
+- flavor-kinetic-normalization-quotient.md: WP989 corrects the target itself.
+  WP977 declares no kinetic normalization for its scalar and adjoint mediators.
+  Their two field-normalization generators form a two-dimensional presentation
+  orbit in the four labelled coefficients. The determinant response descends,
+  but WP986's three coordinate rows do not. The faithful quotient has dimension
+  two, and one additional invariant row, represented by A^2/C, is minimally
+  sufficient. Thus three complementary channels over-resolve chart data.
+- flavor-two-response-physical-quotient-closure.md: WP990 observes that the
+  missing invariant is already source-generated: A^2/C=2q in the WP977
+  elimination. The pair (q,k/q) has kernel exactly equal to the two-dimensional
+  kinetic-normalization orbit and is therefore jointly faithful on the
+  corrected physical quotient. Its positive image is the full quadrant, so it
+  separates without selecting or rigidifying. A calibrated rank-two
+  source-to-record instrument remains absent.
+- flavor-three-configuration-relative-energy-probe.md: WP991 constructs the
+  smallest formal instrument for those two quotient coordinates. Two WP978
+  energies fail because the additive energy origin leaves only one relative
+  record. Adding the internal commuting configuration gives two relative
+  responses with determinant 4/27783 and exact reconstruction of q and k.
+  This avoids an external reference port but requires a new relational
+  three-preparation experiment; no preparation, reset, or energy instrument is
+  currently admitted.
+- flavor-three-state-control-region-no-go.md: WP992 derives the exact
+  preparation cones for additive invariant controls. All three witness states
+  can be selected when q,k are known, but no finite preregistered schedule
+  prepares them uniformly over WP990's unbounded positive quadrant: a hostile
+  sufficiently large q keeps every effective Q positive and removes the
+  commuting baseline. Reopening requires independently bounded source support
+  or a calibrated adaptive controller, as well as physical control authority.
+  SCC model `wp992-three-state-control-region-no-go` now watches this frontier:
+  its exact checker passes, while constructor synthesis retains source-authorized
+  invariant actuators, typed preparation/reset/readout, and a uniform calibrated
+  response-Gram lower bound as independent missing gates.
+- flavor-universal-adaptive-control-section.md: WP993 gives an exact global
+  affine feedback section. After a faithful record of q,k, the commands
+  (u,v)=(-q-1,-k), (1-q,-k), and (-q,1-k) place the effective controls at
+  fixed interior points selecting the commuting, rank-two, and full-rank
+  labels respectively. Thus perfect feedback removes WP992's unbounded-support
+  obstruction. It does not provide the measurement, reset-safe feedback,
+  invariant actuators, or common-frame verification, so it remains neither a
+  source selector nor a physical instrument. SCC watches these missing arrows.
+- flavor-adaptive-control-robustness-radius.md: WP994 computes the exact
+  symmetric invariant-error radii of the WP993 feedback targets. The commuting,
+  rank-two, and full-rank radii are 3087/3088, 24696/24697, and 1/24697,
+  respectively, so the full-rank target fixes the joint margin. Its hostile
+  error corner reaches the strict region boundary exactly. A physical claim
+  requires an independently calibrated complete-loop error bound strictly
+  below 1/24697, including covariance and common-frame verification.
+- flavor-robustness-normalization-no-go.md: WP995 corrects the interpretation
+  of WP994's number. Scaling the three target points by L scales the joint
+  radius to L/24697, so 1/24697 is conditional on the arbitrary unit target,
+  not an intrinsic apparatus tolerance. A physical robustness threshold needs
+  a source-derived actuator normalization, range, or cost that fixes L before
+  calibration is compared with the margin.
+- flavor-bounded-control-chebyshev-optimum.md: WP996 conditions on the formal
+  square |Q|,|R|<=B and solves the exact target-placement problem. The optimal
+  targets are (-B,-B), (B,-B), and (-7B/49401,B); their joint radius is
+  B/5489. A convex combination of the full-rank margins supplies the matching
+  global upper bound. This improves WP994's ray target by 24697/5489 but
+  remains algebraic because the control square has no source-derived scale.
+- flavor-actuator-metric-authority-gate.md: WP997 transfers the authorized
+  control-distance theorem into flavor. A source actuator map (A) and command
+  cost (G_U) must precede any physical robustness norm. The WP277 rank-one
+  hostile actuator has the exact blind covector ((0,1)), while (A=I_2)
+  supplies only a formal completion witness. No existing packet derives the
+  required calibrated rank-two actuator-metric pair.
+- flavor-zero-drift-bracket-closure.md: WP998 closes WP277's ordered-control
+  caveat under the frozen zero-drift condition. Every feedback-modulated
+  one-port field has form `f(Q,R) partial_Q`; all iterated brackets retain zero
+  `R` component, so the exact accessibility classes are the leaves
+  `R=constant`. Ordered words cannot synthesize the missing actuator.
+- flavor-rg-control-lift-underdetermination.md: WP999 rejects the declared RG
+  field as an automatically available transverse drift. RG acts on
+  `physical16`, whereas `(Q,R)` parameterizes an energy functional; without a
+  source-derived common-substrate lift their bracket is undefined. Two exact
+  lifts with the same physical RG projection give bracket ranks one and two.
+- flavor-source-parameter-submersion-operation-gap.md: WP1000 finds the first
+  positive two-direction result. The WP977 mediator masses map to `(q,k)` with
+  constant logarithmic Jacobian `[[-1,0],[-6,-1]]` and determinant one, and
+  the positive map is globally invertible. This is a family of distinct source
+  theories, not a repeatable operation on one substrate; actuator authority,
+  cost, threshold calibration, reset, and instrument remain absent.
+- flavor-two-background-mediator-actuator.md: WP1001 internalizes WP1000's two
+  source directions with the minimal renormalizable singlet-background
+  extension. Its exact response determinant is
+  `kappa_A*kappa_s/(m_A^2*m_s^2)` and passes independent deletion tests. This
+  is a weak-basis-descending candidate actuator, not a selector; physical
+  status remains withheld pending stability, reset, finite-width calibration,
+  detector likelihood, uncertainty, and source-cost gates.
+- flavor-harmonic-carrier-control-metric.md: WP1002 equips the two candidate
+  background ports with strictly convex harmonic source potentials. Zero
+  current gives a unique static reset, and the action induces the coefficient
+  metric `J^(-T) G J^(-1)`. At the unit packet this is
+  `[[37,-6],[-6,1]]`, not the observer-side identity. The model is now
+  source-priced locally but remains experimentally uncalibrated and does not
+  select its baseline mediator masses.
+- flavor-positive-mediator-reachability-cone.md: WP1003 applies the global
+  positivity gate missed by the local rank calculation. The WP977 source image
+  is exactly `Q>0,R>0`; it reaches the rank-two and full-rank WP992 regions but
+  never the commuting region, which requires `Q<0`. Hence WP1001-WP1002 are a
+  source-priced two-port actuator but not a complete WP991 three-preparation
+  instrument.
+- flavor-positive-cone-reference-replacement-gate.md: WP1004 proves the exact
+  two-gate criterion for avoiding a signed coefficient: a third score point
+  must be affinely independent and strictly exposed by a positive `(Q,R)`
+  normal. A rational synthetic witness shows the geometry is possible, while
+  a collinear midpoint fails exactly. No source-realizable third flavor
+  configuration is yet certified.
+- flavor-positive-cone-third-configuration.md: WP1005 constructs an actual
+  Hermitian coefficient-field orbit with scores
+  `K=162/323`, `P=58564/969^3`. Together with the WP978 endpoints it is
+  affinely independent and uniquely exposed at positive ratio `R/Q=25000`;
+  the endpoints are exposed at `1` and `100000`. This repairs the finite-set
+  positive-cone geometry, but full-domain stability and source preparation of
+  the witness orbit remain unproved.
+- flavor-third-configuration-global-dominance-falsifier.md: WP1006 performs
+  the withheld global hostile test. In the same Hermitian family, replacing
+  the closing-edge weight `1/22` by `1` gives scores `K=1,P=1/108`, strictly
+  larger than both WP1005 scores. The candidate is therefore never exposed for
+  positive coefficients. WP1005 remains a finite-set capacity witness only;
+  the actual branch again has at most two certified preparation labels.
+- flavor-one-parameter-score-envelope.md: WP1007 replaces finite-set fitting
+  by an exact continuous-family optimization. For the Hermitian family with
+  closing-edge weight `t`, the score curve is
+  `P=(2K-1)(2-K)^2/108`. At `t=6/5`, the orbit is the unique global maximizer
+  of `K+(44376/275)P` over the complete family. Full-Hermitian transverse
+  exposure and source restriction to this family remain open.
+- flavor-full-quotient-local-score-maximum.md: WP1008 opens every local
+  Hermitian direction modulo simultaneous weak-basis conjugation, scale, and
+  diagonal rephasing. The exact reduced Hessian at the WP1007 witness is
+  negative definite, and the physical triangle-phase and commuting-diagonal
+  blocks also have strictly negative curvature. The witness is therefore a
+  strict local maximum on the generic Hermitian-pair quotient. Global
+  uniqueness, source authority for the coefficient ratio, and a calibrated
+  instrument remain open.
+- flavor-global-hermitian-score-hull.md: WP1009 closes the global mathematical
+  gate. An exact Weyl-chamber boundary bound and complete KKT elimination show
+  that the WP1007 witness is the unique global maximizing Hermitian orbit
+  modulo simultaneous permutations, weak-basis conjugation, and scales. The
+  exposing ratio remains analyst-chosen, its physical16 image is unproved,
+  and no calibrated instrument implements the score.
+- flavor-global-selector-source-ratio-no-go.md: WP1010 applies the existing
+  mediator rescaling obstruction to the now-exact WP1009 ratio. The admitted
+  positive mass action c -> h c preserves renormalizability, positivity,
+  coercivity, and descent while acting transitively as rho -> rho/h. Thus the
+  present source architecture supplies a conditional global selector family
+  but does not select the numerical ratio 44376/275.
+- flavor-selected-orbit-spectral-physical16-no-go.md: WP1011 tests the
+  smallest physical16 arrow. Every positive nondegenerate separate spectral
+  map preserves the selected orbit's CKM projectors and exact
+  J-squared=5625/636056. Its absolute J is above 10^-3, while every one of the
+  1,210 stored fitted sheets is below 10^-3. The selected coefficient orbit
+  therefore has no viable image in this map class; a source-derived mixed
+  covariant portal is now required.
+- flavor-mixed-portal-j-capacity.md: WP1012 tests the minimal linear mixed
+  covariant portal. Its exact J-squared response is
+  87890625/[636056(86s^2+25)^3], so the nonnegative branch reaches every
+  stored fitted J magnitude exactly once. This repairs one-coordinate
+  capacity but does not select s, establish a full physical16 image, or supply
+  a source law or instrument; it is neither selector nor rigidifier.
+- flavor-mixed-portal-ckm-no-go.md: WP1013 closes that minimal portal at
+  the measured mixing block. The permutation-invariant overlap moment
+  S2=sum|Vij|^4 exceeds 281/100 at every portal point with fitted-scale J,
+  while every unitary completion of the frozen three CKM moduli stays below
+  281/100. J matching therefore does not yield even a physical10 mixing image.
+- flavor-mixed-word-universal-compiler.md: WP1014 proves the finite mixed
+  word algebra is already universal. Nine Hermitian words have exact rank nine
+  and determinant -27936/625; a quadratic polynomial in Y independently
+  interpolates any down spectrum. The resulting target-dependent compiler
+  reaches every positive nondegenerate Gram pair but selects none. Further
+  unconstrained word enlargement cannot supply source authority.
+- flavor-shared-entrance-commuting-selector-no-go.md: WP1015 maps the
+  executable WP500 rank-one tree port into the compiler. Collinear up/down
+  linear-word vectors make both Gram matrices quadratic polynomials in one
+  Hermitian word, so they commute and select J=0. This is a genuine
+  source-derived proper selector and shared-frame rigidifier, but none of the
+  1,210 fitted sheets survives. A second labelled entrance is the smallest
+  exact resource that can leave the commuting locus.
+- flavor-two-entrance-cp-even-no-go.md: WP1016 tests the existing
+  WP503/WP505 two-entrance source. Noncollinearity permits a nonzero rank-two
+  commutator and hence mixing, but the retained real CP-even Gram pair has an
+  odd-dimensional antisymmetric commutator with zero determinant. It still
+  selects J=0 and misses all 1,210 sheets. The next missing resource is a
+  source-derived complex CP-odd invariant, not merely another real entrance.
+- flavor-fdm2-cp-odd-entrance-bridge.md: WP1017 finds that the required
+  complex entrance already exists conditionally in the proposed FDM-2 source.
+  Its exact response is
+  1920*i*r^3*y*(x^2+y^2), giving opposite nonzero determinants
+  +/-1152*i*r^3 on the CP-conjugate vacua and zero on the deleted real slice.
+  This is a descending qualitative CP selector, but it selects neither the
+  threshold ratio nor the CP-even physical16 packet; the physical mediator
+  preparation and collider-calibrated threshold instrument remain open.
+- flavor-fdm2-portal-alignment-no-go.md: WP1018 supplies the missing hostile
+  coefficient test. A CP-broken singlet with a=e1, b=e1^T and diagonal Y0
+  gives a nondegenerate diagonal down Gram and exactly J=0. At the WP90
+  witness, the fixed-portal Y0 response has rank eight, while freeing one
+  already-admitted portal component restores rank nine with exact minor
+  663552/25. FDM-2 therefore selects a scalar vacuum but transmits physical CP
+  only conditionally; its full coefficient grammar imposes no local physical
+  selector relation.
+- flavor-fdm2-cp-transmission-discriminant.md: WP1019 derives the exact
+  physical transmission gate. With c=Y0*b^T and
+  q_ij=a_i*c_j-c_i*a_j, det[Hu,Hd]=2*i*Delta_u*T, where T is the signed cubic
+  off-diagonal Gram product. T partitions the portal family into two physical
+  CP signs and a blind hypersurface. The Jarlskog instrument separates this
+  partition but does not select it; a source-derived positive margin away
+  from T=0 is the next required arrow.
+- flavor-scale-free-cp-margin-no-go.md: WP1020 proves that qualitative portal
+  symmetry cannot supply the missing positive margin. Along the WP90
+  rescaling ray, every field, charge, CP, support, and rank-one datum is fixed
+  while det[Hu,Hd]=1152*i*lambda^3 and normalized J squared vanishes as
+  lambda^6. Removing the exact blind locus is therefore insufficient:
+  an independently derived nonconic normalization or quantized magnitude is
+  a logically new source resource.
+- flavor-normalized-pairing-cp-no-go.md: WP1021 attacks the simplest
+  nonconic repair. Unit portal norms and exact orthogonality still admit
+  a=e1, b=e2^T, whose complex rank-one portal connects only one mixing edge.
+  Both spectra are nondegenerate, the commutator has rank two, and J=0.
+  Normalization fixes scale but not three-generation cyclic incidence; the
+  next candidate must derive an oriented cyclic margin rather than norms or a
+  pairwise angle.
+- flavor-cyclic-incidence-cancellation-no-go.md: WP1022 closes the next
+  repair. With fixed WP90 portal norms and all three bivector and Gram-cycle
+  edges nonzero, the single exact deformation Y0[0,1]=-10/381 makes the cubic
+  transmission invariant T vanish while both spectra remain nondegenerate.
+  Cyclic support is therefore a rigidifier, not a selector; a source law must
+  constrain the weak-basis-invariant oriented volume itself.
+- flavor-maximal-cp-selector-no-go.md: WP1023 tests the cleanest
+  coefficient-free invariant law. Global maximization of J squared descends
+  to the full quotient and selects the exact value 1/108, with equality at
+  s12 squared=s23 squared=1/2, s13 squared=1/3 and maximal phase. It is a
+  genuine mathematical selector with an existing readout, but zero of 1,210
+  fitted sheets survives and no declared source action realizes the
+  extremization.
+- flavor-minimal-landau-small-cp-no-go.md: WP1024 audits the smallest
+  CP-even invariant action in x=108*J squared. Primitive coefficient-free
+  quadratic and linear choices select only x in {0,1/2,1}, while every fitted
+  sheet lies strictly between zero and 27/250000. A general interior
+  stationary point requires alpha/beta=-2*x_fit, so the action reproduces
+  small CP only after receiving the unexplained small source ratio.
+- flavor-threshold-cube-inverse-readout.md: WP1025 identifies a viable
+  hierarchy amplifier. The exact normalized WP90 response J squared(r) is
+  strictly increasing on 0<r<=1/4 by a Sturm certificate, and every one of
+  the 1,210 fitted J magnitudes has a unique exact rationally bracketed inverse
+  on that branch. This reconstructs a moderate threshold ratio but does not
+  select it: the measured readout cannot authorize the upstream source value.
+- flavor-threshold-reciprocal-duality-no-go.md: WP1026 closes the simplest
+  parameter-free symmetry proposal for that upstream value. Canonical
+  reciprocal duality selects r=1 outside the EFT branch; applying it to q=4r
+  hides a normalization kappa=1/4 and predicts a J squared strictly above all
+  1,210 fitted sheets. The duality is therefore neither a viable selector nor
+  a repair of the inverse-readout boundary.
+- flavor-source-ratio-threshold-interface-inventory.md: WP1027 inventories six
+  independently derived source-ratio presentations in five exact value
+  classes. None has a declared covariant interface into r=f/M, and none hits
+  the WP1025 interval under identity. A free rescaling maps every candidate
+  there, proving that numerical alignment would add normalization authority
+  rather than transfer an existing selector.
+- flavor-integer-mass-norm-window.md: WP1028 supplies a common-source interface
+  family M squared=N*f squared with positive integer multiplicity N. The
+  WP1025 interval contains exactly the member N=17; N=16 and N=18 miss on
+  opposite sides. This removes a continuous normalization but remains only a
+  conditional selector until the source independently derives seventeen equal
+  orthogonal mass contributions and an instrument can verify that constructor.
+- flavor-source-seventeen-type-audit.md: WP1029 finds six independently exact
+  seventeens in the existing source programme but zero typed messenger-mass
+  interfaces. The closest, WP507's rank-17 gauge Gram, is not equal-norm: its
+  charged and neutral electroweak eigenvalues differ by positive
+  gy squared*v squared/4. Rank therefore cannot be substituted for the trace
+  law required by WP1028.
+- flavor-schur-pole-versus-gram-norm.md: WP1030 further closes the proposed
+  rank-17 tight-frame repair. For seventeen degenerate mediators, exact Schur
+  matching uses the inverse pole block and gives 1/m for normalized aligned
+  ports or 17/m for unnormalized ports, never 1/(sqrt(17)*m). WP1028 survives
+  only as a single-pole mass-squared law with seventeen positive contributions.
+- flavor-minimal-single-pole-seventeen-no-go.md: WP1031 tests that surviving
+  single-pole route. An O(N) radial curvature is 2*lambda*f squared and does
+  not depend on N. A spectator coupled to N equal condensates has
+  m squared=N*g*f squared, but retains the free portal normalization g; at
+  N=17, g=1 fits while the equally legal g=2 does not.
+- flavor-protected-single-pole-normalization-no-go.md: WP1032 transfers the
+  WP715 moment-map and WP718 auxiliary-Gram obstructions to the surviving pole.
+  Quantized charges or fixed Clebsches lock relative coefficients, but every
+  fixed representation class retains a continuous gauge or Yukawa
+  normalization. At N=17, h=1 fits and the same protected constructor with
+  h=2 fails, so protection rigidifies without selecting the absolute ratio.
+- flavor-existing-fixed-point-topological-interface-audit.md: WP1033 audits
+  WP738, WP744, WP802, and WP805 against the missing pole interface. No
+  candidate simultaneously has a controlled source-fixed magnitude, a typed
+  CP-even single-pole map, threshold survival, and a physical16 instrument.
+  The closest controlled fixed value is WP802 alpha_y*=15/1367, but mapping it
+  to h=1 would require an unauthorized normalization.
+- flavor-litim-sannino-pole-interface-no-go.md: WP1034 grants that missing map
+  maximally by setting h=y squared. Exact epsilon=1/20 integrality forces
+  (N_C,N_F)=(20k,111k), so h=12*pi squared/(1367k). The k=1 maximum is already
+  below the fitted compatible interval; every larger integer packet is worse.
+- flavor-primitive-integer-clebsch-gap.md: WP1035 allows an integer coefficient
+  C on the primitive WP802 packet. Exact rational bounds on pi prove C=11 is
+  below the compatible h interval and C=12 is above it. Monotonicity therefore
+  leaves no compatible positive integer multiplicity.
+- flavor-nonprimitive-integer-lift-capacity.md: WP1036 finds the first
+  nonprimitive capacity point: k=2 and C=23 give h=138*pi squared/1367 inside
+  the fitted interval, while C=22 and C=24 lie outside. This is unique on the
+  k=2 slice but remains a coincidence until one source representation derives
+  both integers and the typed pole operator.
 - `flavor-domain-detector-confusion-kernel.md`: WP99 factors the first detector
   kernel exactly. A CP-covariant three-outcome channel is faithful iff
   `(1-l-2e)(1-b-l) != 0`; its two singular surfaces erase orientation and

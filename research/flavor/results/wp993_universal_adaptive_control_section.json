@@ -1,0 +1,99 @@
+{
+  "schema": "marici.flavor.wp993-universal-adaptive-control-section.v1",
+  "status": "PASS",
+  "checks": {
+    "universal_affine_section_exact": true,
+    "deliberate_frozen_control_failure_nonzero": true,
+    "control_targets_are_state_independent_after_feedback": true,
+    "requires_qk_record_before_control": true,
+    "does_not_supply_measurement_instrument": true,
+    "does_not_supply_actuator_authority": true
+  },
+  "section": {
+    "commuting": [
+      "u=-q-1",
+      "v=-k"
+    ],
+    "rank_two": [
+      "u=1-q",
+      "v=-k"
+    ],
+    "full_rank": [
+      "u=-q",
+      "v=1-k"
+    ]
+  },
+  "target_effective_controls": {
+    "commuting": [
+      "Q=-1",
+      "R=0"
+    ],
+    "rank_two": [
+      "Q=1",
+      "R=0"
+    ],
+    "full_rank": [
+      "Q=0",
+      "R=1"
+    ]
+  },
+  "classification": "formal universal feedback section; neither source selector nor physical instrument",
+  "smallest_exact_falsifier": "two physical16-equivalent preparations yield different calibrated q,k records or the commanded invariant shifts fail to realize Q=q+u and R=k+v",
+  "remaining_gate": "one source-authorized closed-loop apparatus composing q,k measurement, reset-safe feedback, independent u,v actuation, and labelled relative-energy verification",
+  "sample_witnesses": {
+    "1/7:11/13:commuting": {
+      "u": "-8/7",
+      "v": "-11/13",
+      "winner": 0,
+      "unique": true
+    },
+    "1/7:11/13:rank_two": {
+      "u": "6/7",
+      "v": "-11/13",
+      "winner": 1,
+      "unique": true
+    },
+    "1/7:11/13:full_rank": {
+      "u": "-1/7",
+      "v": "2/13",
+      "winner": 2,
+      "unique": true
+    },
+    "3:5:commuting": {
+      "u": "-4",
+      "v": "-5",
+      "winner": 0,
+      "unique": true
+    },
+    "3:5:rank_two": {
+      "u": "-2",
+      "v": "-5",
+      "winner": 1,
+      "unique": true
+    },
+    "3:5:full_rank": {
+      "u": "-3",
+      "v": "-4",
+      "winner": 2,
+      "unique": true
+    },
+    "101:10007:commuting": {
+      "u": "-102",
+      "v": "-10007",
+      "winner": 0,
+      "unique": true
+    },
+    "101:10007:rank_two": {
+      "u": "-100",
+      "v": "-10007",
+      "winner": 1,
+      "unique": true
+    },
+    "101:10007:full_rank": {
+      "u": "-101",
+      "v": "-10006",
+      "winner": 2,
+      "unique": true
+    }
+  }
+}
