@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787950302689693300_109",
+  "created_at": "2026-08-28T20:51:42.6896963Z",
+  "sha256": "6b656fe07da28a97fe5faa471a067c5f0661fba1b8fe66edde4f256d62bdfc30",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_portal_criterion_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T20:51:42.6126611Z",
+    "finished_at": "2026-08-28T20:51:42.6896847Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact portal criterion gates",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact portal criterion gates",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_portal_criterion.v1\",\r\n  \"status\": \"passed\",\r\n  \"gate_count\": 10,\r\n  \"passed_gate_count\": 10,\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"FLAT.source_injective\",\r\n      \"statement\": \"multiplication by t is injective on the bounded polynomial packet\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"rank=8, columns=8\"\r\n    },\r\n    {\r\n      \"id\": \"FLAT.free_lift\",\r\n      \"statement\": \"a finite free scalar extension preserves injectivity\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"lifted rank=24\"\r\n    },\r\n    {\r\n      \"id\": \"PORTAL.nonflat_kernel\",\r\n      \"statement\": \"restriction to the defect t=0 creates a one-dimensional kernel\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"P=R/(t), P tensor F=0\"\r\n    },\r\n    {\r\n      \"id\": \"PORTAL.tor_boundary\",\r\n      \"statement\": \"the new defect kernel is the image of the Tor boundary\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"Tor_1^R(R/(t),R/(t)) is isomorphic to R/(t)\"\r\n    },\r\n    {\r\n      \"id\": \"PORTAL.support\",\r\n      \"statement\": \"the portal kernel vanishes away from the declared defect locus\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"after inverting t, multiplication by t is an isomorphism\"\r\n    },\r\n    {\r\n      \"id\": \"MAGNETIC.minor_nonzero\",\r\n      \"statement\": \"the rational magnetic full-path witness minor is nonzero\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"-48775302133841920000/729\"\r\n    },\r\n    {\r\n      \"id\": \"MAGNETIC.spurion.1.1.1\",\r\n      \"statement\": \"an invertible diagonal charged spurion preserves the rank witness\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"-48775302133841920000/729\"\r\n    },\r\n    {\r\n      \"id\": \"MAGNETIC.spurion.2.-3.5\",\r\n      \"statement\": \"an invertible diagonal charged spurion preserves the rank witness\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"487753021338419200000/243\"\r\n    },\r\n    {\r\n      \"id\": \"MAGNETIC.spurion.-1.7.11\",\r\n      \"statement\": \"an invertible diagonal charged spurion preserves the rank witness\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"3755698264305827840000/729\"\r\n    },\r\n    {\r\n      \"id\": \"MAGNETIC.route_deletion\",\r\n      \"statement\": \"a zero spurion kills the minor only by deleting a source route\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"boundary of the spurion torsor, not interference\"\r\n    }\r\n  ],\r\n  \"classification\": {\r\n    \"transparent_lift\": \"kernel-preserving under faithful flatness\",\r\n    \"defect_portal\": \"kernel may be born as a Tor boundary on non-flat support\",\r\n    \"operator_changing_portal\": \"outside base-change theorem; requires independent source authority\"\r\n  },\r\n  \"verdict\": \"The unchanged injective magnetic operator cannot acquire a kernel under faithfully flat extension. A genuine defect portal can create a supported kernel through Tor. Any portal acting away from such support must instead change the operator, target quotient, or tail correspondence.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
