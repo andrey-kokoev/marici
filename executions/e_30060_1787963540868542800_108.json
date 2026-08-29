@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_30060_1787963540868542800_108",
+  "created_at": "2026-08-29T00:32:20.8685457Z",
+  "sha256": "d30f98aa0f1212fe9291738a48648910ae754ae9329996edd31398f736c2dbf1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from pathlib import Path\np=Path('research/benincasa/checkers/census_interaction_net_two_adic_layers.cjs')\nls=p.read_text().splitlines()\nfor i,s in enumerate(ls,1):\n    if any(k in s for k in ['residualRows','residualRows','residual_row_count','layers.push','valuation']):\n        print(f'{i}:{s}')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici/.worktrees/benincasa-integral-barcode",
+    "started_at": "2026-08-29T00:32:20.802874Z",
+    "finished_at": "2026-08-29T00:32:20.8685362Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "bounded terminal-elimination code inspection",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "bounded terminal-elimination code inspection",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "129:for (let valuation = 0; valuation < depth; valuation++) {\r\n134:  layers.push({\r\n135:    valuation,\r\n139:    residual_row_count: result.nextRows.length,\r\n141:    pivot_columns: summaryOnly || valuation === 0 ? undefined : pivotColumns,\r\n158:  interpretation: \"Layer rank at valuation k counts Smith invariants whose exact two-adic valuation is k, provided the computed depth reaches the characteristic-zero rank.\",\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
