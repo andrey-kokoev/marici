@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787964452728169000_245",
+  "created_at": "2026-08-29T00:47:32.728172Z",
+  "sha256": "7c07db1f66c98550e7f14035c772cefd0d0b62cc5fda50d8568654d083b9acb5",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;from fractions import Fraction as F;d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));\nfor g in (6,7,8,10):\n x=next(z for z in d['rows'] if z['beta']==4 and z['g']==g);c=x['target_normalized_coefficients'];a=[F(c.get(f'{4+r},plus','0/1')) for r in range(g+1)];print(g,a);print('ratios',[None if a[r]==0 else a[r+1]/a[r] for r in range(g)])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:47:32.6577276Z",
+    "finished_at": "2026-08-29T00:47:32.7281607Z",
+    "timeout_ms": 20000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "inspect hypergeometric ratio candidates",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "inspect hypergeometric ratio candidates",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "6 [Fraction(-227, 70), Fraction(264, 35), Fraction(-15, 7), Fraction(50, 7), Fraction(15, 4), Fraction(0, 1), Fraction(1, 1)]\r\nratios [Fraction(-528, 227), Fraction(-25, 88), Fraction(-10, 3), Fraction(21, 40), Fraction(0, 1), None]\r\n7 [Fraction(199, 24), Fraction(-301, 24), Fraction(469, 24), Fraction(35, 24), Fraction(805, 72), Fraction(133, 18), Fraction(0, 1), Fraction(1, 1)]\r\nratios [Fraction(-301, 199), Fraction(-67, 43), Fraction(5, 67), Fraction(23, 3), Fraction(76, 115), Fraction(0, 1), None]\r\n8 [Fraction(-6197, 315), Fraction(2440, 63), Fraction(-1756, 63), Fraction(2560, 63), Fraction(110, 9), Fraction(728, 45), Fraction(12, 1), Fraction(0, 1), Fraction(1, 1)]\r\nratios [Fraction(-12200, 6197), Fraction(-439, 610), Fraction(-640, 439), Fraction(77, 256), Fraction(364, 275), Fraction(135, 182), Fraction(0, 1), None]\r\n10 [Fraction(-4777, 33), Fraction(26860, 99), Fraction(-26420, 99), Fraction(24880, 99), Fraction(-8015, 198), Fraction(12208, 99), Fraction(2450, 33), Fraction(320, 11), Fraction(145, 6), Fraction(0, 1), Fraction(1, 1)]\r\nratios [Fraction(-1580, 843), Fraction(-1321, 1343), Fraction(-1244, 1321), Fraction(-1603, 9952), Fraction(-3488, 1145), Fraction(525, 872), Fraction(96, 245), Fraction(319, 384), Fraction(0, 1), None]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
