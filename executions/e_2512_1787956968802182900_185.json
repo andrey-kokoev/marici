@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956968802182900_185",
+  "created_at": "2026-08-28T22:42:48.8021857Z",
+  "sha256": "40b26f0dd9e6b1d2e8195ba6ac02fac249390f05511306a1d8142058e2679151",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef solve(cols,b):\n rows=sorted({r for c in cols+[b] for r in c});w=[[Fraction(c.get(r,0)) for c in cols]+[Fraction(b.get(r,0))] for r in rows];p=[];u=0\n for j in range(len(cols)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(len(w)):\n   if i!=u and w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cols)+1)]\n  p.append(j);u+=1\n x=[Fraction() for _ in cols]\n for i,j in enumerate(p):x[j]=w[i][-1]\n return x\ndef run(g,q,b,a,N=25):\n c=1-g;M=[canonical_column(g,d,m,b) for d in range(N+1) for m in(c-q-2-d,c+q+2-d)];K=[current_defect(g,d,q,b) for d in range(N+1)];x=solve(M+K[:b],K[a]);depths=sorted({j//2 for j,v in enumerate(x[:len(M)]) if v});return depths,[(i,v) for i,v in enumerate(x[len(M):]) if v]\nfor z in [(6,3,4,6),(6,8,4,6),(6,13,4,10),(3,10,4,7),(5,10,2,7)]:print(z,run(*z))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:42:48.5644968Z",
+    "finished_at": "2026-08-28T22:42:48.8021743Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "descent stencil discovery",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "descent stencil discovery",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3, 4, 6) ([4, 5, 6, 7, 8, 9], [])\r\n(6, 8, 4, 6) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [])\r\n(6, 13, 4, 10) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [(0, Fraction(355, 882)), (1, Fraction(1, 1))])\r\n(3, 10, 4, 7) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13], [(0, Fraction(299, 420)), (1, Fraction(13, 14))])\r\n(5, 10, 2, 7) ([0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13], [(0, Fraction(-4, 3)), (1, Fraction(-5, 1))])\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
