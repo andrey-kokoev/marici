@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953211065842200_10",
+  "created_at": "2026-08-28T21:40:11.0658455Z",
+  "sha256": "1f01dda96b79245bd7c653352b1c509c903f4217c3e5295f851faa29debc4a94",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\na,t=s.symbols('a t', positive=True, real=True); X=s.diag(-1,0,1); Y=s.Matrix([[0,a,-s.I*t],[a,0,1],[s.I*t,1,0]]); C=X*Y-Y*X; nx=s.trace(X.H*X); ny=s.trace(Y.H*Y); K=s.factor(s.trace(C.H*C)/(nx*ny)); P=s.factor(C.det()*s.conjugate(C.det())/(nx*ny)**3); S=K+s.Rational(44376,275)*P; p={a:1,t:s.Rational(6,5)}; H=s.simplify(s.hessian(S,(a,t)).subs(p)); print(H); print('det=',s.factor(H.det())); print('trace=',s.factor(s.trace(H))); print('eigs=',H.eigenvals())"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:40:10.4474132Z",
+    "finished_at": "2026-08-28T21:40:11.0658317Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "Matrix([[-3273750/874577, 1296000/874577], [1296000/874577, -2160000/874577]])\r\ndet= 2916000000/413674921\r\ntrace= -5433750/874577\r\neigs= {-2716875/874577 - 10125*sqrt(19409)/874577: 1, -2716875/874577 + 10125*sqrt(19409)/874577: 1}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
