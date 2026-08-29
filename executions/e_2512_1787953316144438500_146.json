@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787953316144438500_146",
+  "created_at": "2026-08-28T21:41:56.1444419Z",
+  "sha256": "9696a9706944c4505392094355af37e84e5c623bfc815ec672426d0e5458d1f4",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "exec(open(r'research/strominger/checkers/magnetic_current_port_sewing_checks.py').read().split('checks = []')[0])\ndef rc(C):return rank([[c.get(r,0)for c in C]for r in sorted({r for c in C for r in c})])\nbad=[]\nfor g in range(2,13):\n for q in range(1,13):\n  D=q+4-min(2,max(0,(q-g+2)//2))+(1 if (g,q)==(2,5) else 0)\n  for k in range(0,13):\n   M=component(g,k,q+2);K=[current_defect(g,a,q)for a in range(0,2*k+1,2)];got=rc(M+K)-rc(M);want=min(k+1,D)\n   if got!=want:bad.append((g,q,k,got,want,D))\nprint('cases',11*12*13,'bad',len(bad),'first',bad[:10])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:41:46.9399964Z",
+    "finished_at": "2026-08-28T21:41:56.1444304Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "corrected quotient law falsifier",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "corrected quotient law falsifier",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "cases 1716 bad 0 first []\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
