@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787953740875504100_121",
+  "created_at": "2026-08-28T21:49:00.875507Z",
+  "sha256": "ddaba23fd057c245639b9f130294cab75cfeb2d0066e9e15ca671bfc0ab21643",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import random\nrandom.seed(10);r=44376/275;best=(-1,None)\nfor _ in range(2000000):\n aa=[random.expovariate(1) for i in range(3)];sa=sum(aa);A=[3*x/sa for x in aa]\n if A[0]*A[1]*A[2]>.5:continue\n uu=[random.expovariate(1) for i in range(3)];su=sum(uu);u=[.5*x/su for x in uu]\n S=2*sum(A[i]*u[i] for i in range(3))+4*r*A[0]*A[1]*A[2]*u[0]*u[1]*u[2]\n if S>best[0]:best=(S,A+u)\nprint(best)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:48:57.2451991Z",
+    "finished_at": "2026-08-28T21:49:00.8754934Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2.9063907725613634, [2.926806860024263, 0.0012815522614083729, 0.07191158771432853, 0.49650226663618263, 0.003149208751635837, 0.0003485246121815358])\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
