@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787959696805163300_64",
+  "created_at": "2026-08-28T23:28:16.805169Z",
+  "sha256": "a7fd25d8afb741014925e1be55fa5d4db2f103a19e6e97d4be446500e58366b9",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; r=s.symbols('r'); P=12878670000*r**8+16583280000*r**7+10789212400*r**6+4331604000*r**5+1454241747*r**4+398819200*r**3+90718200*r**2+10800000*r+1687500; j2=400*r**6/(3*P); print(s.factor(j2.subs(r,s.Rational(1,4)))); print(float(s.sqrt(j2.subs(r,s.Rational(1,4)))))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:28:16.2101119Z",
+    "finished_at": "2026-08-28T23:28:16.8051376Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1025 quarter-threshold endpoint",
+      "expected_cost": "one rational evaluation",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1025 quarter-threshold endpoint",
+    "expected_cost": "one rational evaluation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "400/369161163681\r\n3.291713226355711e-05\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
