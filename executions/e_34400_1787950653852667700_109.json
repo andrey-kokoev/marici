@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950653852667700_109",
+  "created_at": "2026-08-28T20:57:33.8526708Z",
+  "sha256": "e302e85cb9031ff8388c01e5e093338646282199b7577fdf5f5ec7d3c34907dd",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp996_bounded_control_chebyshev_optimum.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:57:33.7748061Z",
+    "finished_at": "2026-08-28T20:57:33.8526553Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP996 exact Chebyshev optimization",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP996 exact Chebyshev optimization",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.wp996-bounded-control-chebyshev-optimum.v1\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"weights_positive_and_sum_one\": true,\r\n    \"weighted_full_rank_bound_cancels_Q\": true,\r\n    \"weighted_full_rank_bound_is_R_over_5489\": true,\r\n    \"commuting_optimum_is_B\": true,\r\n    \"rank_two_optimum_is_B\": true,\r\n    \"full_rank_optimum_is_B_over_5489\": true,\r\n    \"deliberate_unit_ray_target_is_suboptimal\": true\r\n  },\r\n  \"optimal_targets\": {\r\n    \"commuting\": [\r\n      \"-B\",\r\n      \"-B\"\r\n    ],\r\n    \"rank_two\": [\r\n      \"B\",\r\n      \"-B\"\r\n    ],\r\n    \"full_rank\": [\r\n      \"-7B/49401\",\r\n      \"B\"\r\n    ]\r\n  },\r\n  \"per_label_optimal_radii\": {\r\n    \"commuting\": \"B\",\r\n    \"rank_two\": \"B\",\r\n    \"full_rank\": \"B/5489\"\r\n  },\r\n  \"joint_optimal_radius\": \"B/5489\",\r\n  \"old_unit_ray_radius\": \"1/24697\",\r\n  \"improvement_factor_over_wp994_ray\": \"24697/5489\",\r\n  \"sample_rows\": {\r\n    \"1\": {\r\n      \"commuting\": {\r\n        \"target\": [\r\n          \"-1\",\r\n          \"-1\"\r\n        ],\r\n        \"margins\": [\r\n          \"1\",\r\n          \"1\"\r\n        ],\r\n        \"radius\": \"1\"\r\n      },\r\n      \"rank_two\": {\r\n        \"target\": [\r\n          \"1\",\r\n          \"-1\"\r\n        ],\r\n        \"margins\": [\r\n          \"1\",\r\n          \"1\"\r\n        ],\r\n        \"radius\": \"1\"\r\n      },\r\n      \"full_rank\": {\r\n        \"target\": [\r\n          \"-7/49401\",\r\n          \"1\"\r\n        ],\r\n        \"margins\": [\r\n          \"1/5489\",\r\n          \"1/5489\"\r\n        ],\r\n        \"radius\": \"1/5489\"\r\n      }\r\n    },\r\n    \"7\": {\r\n      \"commuting\": {\r\n        \"target\": [\r\n          \"-7\",\r\n          \"-7\"\r\n        ],\r\n        \"margins\": [\r\n          \"7\",\r\n          \"7\"\r\n        ],\r\n        \"radius\": \"7\"\r\n      },\r\n      \"rank_two\": {\r\n        \"target\": [\r\n          \"7\",\r\n          \"-7\"\r\n        ],\r\n        \"margins\": [\r\n          \"7\",\r\n          \"7\"\r\n        ],\r\n        \"radius\": \"7\"\r\n      },\r\n      \"full_rank\": {\r\n        \"target\": [\r\n          \"-49/49401\",\r\n          \"7\"\r\n        ],\r\n        \"margins\": [\r\n          \"7/5489\",\r\n          \"7/5489\"\r\n        ],\r\n        \"radius\": \"7/5489\"\r\n      }\r\n    },\r\n    \"101\": {\r\n      \"commuting\": {\r\n        \"target\": [\r\n          \"-101\",\r\n          \"-101\"\r\n        ],\r\n        \"margins\": [\r\n          \"101\",\r\n          \"101\"\r\n        ],\r\n        \"radius\": \"101\"\r\n      },\r\n      \"rank_two\": {\r\n        \"target\": [\r\n          \"101\",\r\n          \"-101\"\r\n        ],\r\n        \"margins\": [\r\n          \"101\",\r\n          \"101\"\r\n        ],\r\n        \"radius\": \"101\"\r\n      },\r\n      \"full_rank\": {\r\n        \"target\": [\r\n          \"-707/49401\",\r\n          \"101\"\r\n        ],\r\n        \"margins\": [\r\n          \"101/5489\",\r\n          \"101/5489\"\r\n        ],\r\n        \"radius\": \"101/5489\"\r\n      }\r\n    }\r\n  },\r\n  \"classification\": \"conditional Chebyshev-optimal formal controller under an assumed l-infinity control budget\",\r\n  \"smallest_exact_falsifier\": \"the WP994 full-rank ray target (0,B) is suboptimal by the exact factor 9/2\",\r\n  \"remaining_gate\": \"a source-derived physical control norm and bound B, with calibrated closed-loop error in the dual invariant units\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
