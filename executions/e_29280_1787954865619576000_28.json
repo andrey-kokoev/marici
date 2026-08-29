@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787954865619576000_28",
+  "created_at": "2026-08-28T22:07:45.6195794Z",
+  "sha256": "419191297e0b00ae8467e799c8345bc55cc94db0198a0b257fc401db7588ed20",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nx=s.symbols('s',real=True);X=s.diag(-1,0,1);t=s.Rational(6,5);Y=s.Matrix([[0,1,-s.I*t],[1,0,1],[s.I*t,1,0]]);Hu=X+x*Y;Hd=Y;lam=s.symbols('lam');Du2=s.factor(s.discriminant(Hu.charpoly(lam).as_expr(),lam));Dd2=s.factor(s.discriminant(Y.charpoly(lam).as_expr(),lam));C=Hu*Hd-Hd*Hu;J2=s.factor(C.det()*s.conjugate(C.det())/(4*Du2*Dd2));print('Du2=',Du2);print('J2=',J2);print('d=',s.factor(s.diff(J2,x)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:07:44.9849172Z",
+    "finished_at": "2026-08-28T22:07:45.619553Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "Du2= 4*(86*s**2 + 25)**3/15625\r\nJ2= 87890625/(636056*(86*s**2 + 25)**3)\r\nd= -263671875*s/(3698*(86*s**2 + 25)**4)\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
