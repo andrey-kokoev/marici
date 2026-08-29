@@ -1,0 +1,14 @@
+{
+  "$schema":"../scc/model-manifest.schema.json",
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"epr-compton-local-flatness-nonfactorization","owner":"marici.Aspect","classification":"candidate_requires_physical_execution","stratum":"locally flat Compton analyzers with globally nonfactorizable correlations",
+    "inputs":["research/aspect/epr-compton-local-flatness-nonfactorization.md","research/aspect/contracts/epr-compton-local-flatness-nonfactorization.v1.json","research/aspect/compton-constructor-flatness-experiment.md","research/aspect/aspect-full-optical-wishlist.md"],
+    "checks":[{"id":"epr-compton-local-flatness-nonfactorization","path":"research/aspect/checkers/check_epr_compton_local_flatness_nonfactorization.py","requires":[]},{"id":"compton-constructor-flatness-experiment","path":"research/aspect/checkers/check_compton_constructor_flatness_experiment.py","requires":[]},{"id":"aspect-full-optical-wishlist","path":"research/aspect/checkers/check_aspect_full_optical_wishlist.py","requires":[]}],
+    "depends_on":["compton-constructor-flatness-experiment","constructor-flatness-conjecture"],
+    "consumes":["entangled high-energy photon pair","independently randomized analyzer settings","complete no-click-preserving local Compton records"],
+    "provides":["simultaneous local-flatness and Bell-nonfactorization test","complete deterministic local-polytope fixture","no-signalling and loophole ledger"],
+    "missing_constructors":["physical entangled high-energy source","spacelike randomized settings","joint photon-electron-target acquisition with adequate efficiency"],
+    "next_falsifier":"observe CHSH above 2 with locally flat complete wing records and no remote-setting marginal dependence"
+  }
+}
