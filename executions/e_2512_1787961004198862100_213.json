@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787961004198862100_213",
+  "created_at": "2026-08-28T23:50:04.198866Z",
+  "sha256": "5c45e9749f14e539764ba0ec62f1dca217c76a52b5d39f34235f4ef9cf49b9a0",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef b(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,s):\n h={-a-g+j:F(factorial(g))*b(-a,g-j)*b(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef holes(g,q,N=20):\n E=[];P=[];plus=[]\n for a in range(N+1):\n  for s in '-+':\n   v=c(g,q,a,s)\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:sub(v,E[i],z)\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});P.append(p)\n    if s=='+':plus.append(a)\n return set(range(max(plus)+1))-set(plus)\nbad=[]\nfor g in range(2,11):\n for q in range(g+2,16):\n  a=q-g+3;pred={a} if q==g+2 else {a-1,a}\n  h=holes(g,q)\n  if h!=pred:bad.append((g,q,sorted(h),sorted(pred)))\nprint('exact high-separation hole law',sum(max(0,15-(g+2)+1) for g in range(2,11))-len(bad),'passes; failures',len(bad))\nprint(bad[:20])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:50:03.7949641Z",
+    "finished_at": "2026-08-28T23:50:04.1988514Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "full plus-cap hole law audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "full plus-cap hole law audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "exact high-separation hole law 45 passes; failures 27\r\n[(3, 6, [6], [5, 6]), (4, 7, [6], [5, 6]), (4, 8, [7], [6, 7]), (5, 8, [6], [5, 6]), (5, 9, [7], [6, 7]), (5, 10, [8], [7, 8]), (6, 9, [6], [5, 6]), (6, 10, [7], [6, 7]), (6, 11, [8], [7, 8]), (6, 12, [9], [8, 9]), (7, 10, [6], [5, 6]), (7, 11, [7], [6, 7]), (7, 12, [8], [7, 8]), (7, 13, [9], [8, 9]), (7, 14, [10], [9, 10]), (8, 11, [6], [5, 6]), (8, 12, [7], [6, 7]), (8, 13, [8], [7, 8]), (8, 14, [9], [8, 9]), (8, 15, [10], [9, 10])]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
