@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787952809062967000_137",
+  "created_at": "2026-08-28T21:33:29.0629714Z",
+  "sha256": "ceec51c9bcfff656617d9278dc923a9e8f5c3709dbce4c0529d4016a9b6e32e2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nfrom fractions import Fraction as F\ndef rising(v,n): return math.prod(v+i for i in range(n))\ndef cv(g,a): return [math.comb(g,j)*(-1)**(g-j)*rising(a,g-j)*rising(4-a,j) for j in range(g+1)]\ndef pv(g,a,m):\n c=cv(g,a); return [m*c[0]]+[(m+j)*c[j]+(m+j-1-g)*c[j-1] for j in range(1,g+1)]+[m*c[g]]\ndef col(g,a,m):\n d=1-g-a-m;s=-a-g if d>0 else -a-g+abs(d);sg=1 if d>0 else -1\n return {s+j:sg*x for j,x in enumerate(pv(g,a,m)) if x}\ndef comp(g,k,q):\n c=1-g;return [col(g,a,m) for a in range(0,2*k+1,2) for m in(c-q-a,c+q-a)]\ndef defect(g,a,q):\n c=cv(g,a);J=[c[0]]+[c[j]+c[j-1] for j in range(1,g+1)]+[c[g]];o={}\n for s,z in((-a-g,-2),(-a-g+q+2,2)):\n  for j,x in enumerate(J):o[s+j]=o.get(s+j,0)+z*x\n return {r:x for r,x in o.items() if x}\ndef rank(M):\n A=[[F(x) for x in z] for z in M];m=len(A);n=len(A[0])if m else 0;r=0\n for c in range(n):\n  p=next((i for i in range(r,m)if A[i][c]),None)\n  if p is None:continue\n  A[r],A[p]=A[p],A[r];z=A[r][c];A[r]=[x/z for x in A[r]]\n  for i in range(r+1,m):\n   if A[i][c]:\n    z=A[i][c];A[i]=[A[i][j]-z*A[r][j] for j in range(n)]\n  r+=1\n return r\ndef shortest(g,k,q,a=0):\n C=comp(g,k,q+2);b=defect(g,a,q);rows=sorted(set(b)|{r for c in C for r in c})\n for L in range(1,len(rows)+1):\n  for s in range(len(rows)-L+1):\n   I=rows[s:s+L];B=[[c.get(r,0)for r in I]for c in C];bi=[b.get(r,0)for r in I]\n   if rank(B)<rank(B+[bi]):return (L,I[0],I[-1])\nfor g in range(2,7):\n for q in range(1,6):\n  z=[shortest(g,k,q)for k in range(2,9)]\n  print((g,q),z,'stable',len(set(z))==1)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:33:28.7998667Z",
+    "finished_at": "2026-08-28T21:33:29.0629568Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "minimal local cokernel interval exploration",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "minimal local cokernel interval exploration",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2, 1) [(2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4)] stable True\r\n(2, 2) [(2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5)] stable True\r\n(2, 3) [(2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6)] stable True\r\n(2, 4) [(2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7)] stable True\r\n(2, 5) [(2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8)] stable True\r\n(3, 1) [(2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4)] stable True\r\n(3, 2) [(2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5)] stable True\r\n(3, 3) [(2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6)] stable True\r\n(3, 4) [(2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7)] stable True\r\n(3, 5) [(2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8)] stable True\r\n(4, 1) [(1, 4, 4), (1, 4, 4), (1, 4, 4), (1, 4, 4), (1, 4, 4), (1, 4, 4), (1, 4, 4)] stable True\r\n(4, 2) [(2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5)] stable True\r\n(4, 3) [(2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6)] stable True\r\n(4, 4) [(2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7)] stable True\r\n(4, 5) [(2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8)] stable True\r\n(5, 1) [(2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4)] stable True\r\n(5, 2) [(1, 5, 5), (1, 5, 5), (1, 5, 5), (1, 5, 5), (1, 5, 5), (1, 5, 5), (1, 5, 5)] stable True\r\n(5, 3) [(2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6), (2, 5, 6)] stable True\r\n(5, 4) [(2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7)] stable True\r\n(5, 5) [(2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8)] stable True\r\n(6, 1) [(2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4), (2, 3, 4)] stable True\r\n(6, 2) [(2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5), (2, 4, 5)] stable True\r\n(6, 3) [(1, 6, 6), (1, 6, 6), (1, 6, 6), (1, 6, 6), (1, 6, 6), (1, 6, 6), (1, 6, 6)] stable True\r\n(6, 4) [(2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7), (2, 6, 7)] stable True\r\n(6, 5) [(2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8), (2, 7, 8)] stable True\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
