@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787952506803910700_131",
+  "created_at": "2026-08-28T21:28:26.8039134Z",
+  "sha256": "262cb34a62981c94dad6d6334562cb5d11d3106ee492feb1f0c72cf6148d3481",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nfrom fractions import Fraction as F\ndef rising(v,n): return math.prod(v+i for i in range(n))\ndef cvec(g,a): return [math.comb(g,j)*(-1)**(g-j)*rising(a,g-j)*rising(4-a,j) for j in range(g+1)]\ndef pvec(g,a,m):\n c=cvec(g,a); return [m*c[0]]+[(m+j)*c[j]+(m+j-1-g)*c[j-1] for j in range(1,g+1)]+[m*c[g]]\ndef col(g,a,m):\n d=1-g-(a+m); s=-a-g if d>0 else -a-g+abs(d); sg=1 if d>0 else -1\n return {s+j:sg*x for j,x in enumerate(pvec(g,a,m)) if x}\ndef comp(g,k,q):\n cen=1-g; return [col(g,a,m) for a in range(0,2*k+1,2) for m in (cen-q-a,cen+q-a)]\ndef defect(g,a,q):\n c=cvec(g,a); J=[c[0]]+[c[j]+c[j-1] for j in range(1,g+1)]+[c[g]]; out={}\n for s,sg in [(-a-g,-2),(-a-g+q+2,2)]:\n  for j,x in enumerate(J): out[s+j]=out.get(s+j,0)+sg*x\n return {r:x for r,x in out.items() if x}\ndef rank(M):\n A=[[F(x) for x in row] for row in M]; m=len(A); n=len(A[0]) if m else 0; r=0\n for c in range(n):\n  p=next((i for i in range(r,m) if A[i][c]),None)\n  if p is None: continue\n  A[r],A[p]=A[p],A[r]; z=A[r][c]; A[r]=[x/z for x in A[r]]\n  for i in range(r+1,m):\n   if A[i][c]:\n    z=A[i][c]; A[i]=[A[i][j]-z*A[r][j] for j in range(c,n)]\n  r+=1\n  if r==m: break\n return r\ndef member(cols,v):\n rows=sorted(set(v)|{r for c in cols for r in c}); A=[[c.get(r,0) for c in cols] for r in rows]; b=[v.get(r,0) for r in rows]\n return rank(A)==rank([row+[b[i]] for i,row in enumerate(A)])\nres=[]\nfor g in range(2,9):\n for q in range(1,9):\n  for a in range(0,9,2):\n   flags=[member(comp(g,K,q+2),defect(g,a,q)) for K in range(max(2,a//2),13)]\n   res.append((g,q,a,flags))\nprint('cases',len(res),'ever_in',sum(any(x[3]) for x in res),'never_in',sum(not any(x[3]) for x in res))\nprint('first_ever',next((x for x in res if any(x[3])),None))\nprint('first_never',next((x for x in res if not any(x[3])),None))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:28:26.7180566Z",
+    "finished_at": "2026-08-28T21:28:26.8039007Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "independent-cutoff exact span exploration",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "independent-cutoff exact span exploration",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 36, in <module>\r\n    flags=[member(comp(g,K,q+2),defect(g,a,q)) for K in range(max(2,a//2),13)]\r\n           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"<string>\", line 31, in member\r\n    return rank(A)==rank([row+[b[i]] for i,row in enumerate(A)])\r\n           ~~~~^^^\r\n  File \"<string>\", line 25, in rank\r\n    z=A[i][c]; A[i]=[A[i][j]-z*A[r][j] for j in range(c,n)]\r\n                     ~~~~^^^\r\nIndexError: list index out of range\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
