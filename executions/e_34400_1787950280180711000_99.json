@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950280180711000_99",
+  "created_at": "2026-08-28T20:51:20.1807143Z",
+  "sha256": "5a2ff736b4f6032e7dca8d887404757a4a8f002f03ca4925c92893d5691e9700",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/flavor/checkers/wp994_adaptive_control_robustness_radius.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:51:20.0985056Z",
+    "finished_at": "2026-08-28T20:51:20.1806995Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP994 exact robustness radius",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP994 exact robustness radius",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.flavor.wp994-adaptive-control-robustness-radius.v1\",\r\n  \"status\": \"PASS\",\r\n  \"checks\": {\r\n    \"all_half_radius_error_boxes_are_admitted\": true,\r\n    \"all_declared_boundary_hostiles_fail_strict_selection\": true,\r\n    \"full_rank_is_unique_bottleneck\": true,\r\n    \"joint_uniform_radius\": true\r\n  },\r\n  \"linfinity_radii\": {\r\n    \"commuting\": \"3087/3088\",\r\n    \"rank_two\": \"24696/24697\",\r\n    \"full_rank\": \"1/24697\"\r\n  },\r\n  \"joint_radius\": \"1/24697\",\r\n  \"bottleneck\": \"full_rank\",\r\n  \"boundary_hostiles\": {\r\n    \"commuting\": [\r\n      \"3087/3088\",\r\n      \"3087/3088\"\r\n    ],\r\n    \"rank_two\": [\r\n      \"-24696/24697\",\r\n      \"24696/24697\"\r\n    ],\r\n    \"full_rank\": [\r\n      \"1/24697\",\r\n      \"-1/24697\"\r\n    ]\r\n  },\r\n  \"classification\": \"formal robust feedback margin; neither source selector nor calibrated apparatus\",\r\n  \"smallest_exact_falsifier\": \"the full-rank error corner dQ=1/24697, dR=-1/24697 reaches the rank-two/full-rank boundary exactly\",\r\n  \"remaining_gate\": \"independently calibrated joint error bound strictly below 1/24697 in invariant control units, including measurement, feedback, actuation, and common-mode covariance\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
