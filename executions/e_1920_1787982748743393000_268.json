@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787982748743393000_268",
+  "created_at": "2026-08-29T05:52:28.7433974Z",
+  "sha256": "bd0cfc0d6723ae6e027422ccf64dc76dff6b5006c5fa49fe85e2b2e7468d0369",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_theta_beurling_source_gate.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:52:28.5600289Z",
+    "finished_at": "2026-08-29T05:52:28.7433775Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "polynomial control reclassification",
+      "expected_cost": "bounded",
+      "source": "caller_declared"
+    },
+    "test_scope": "polynomial control reclassification",
+    "expected_cost": "bounded",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.theta-beurling-source-gate-check.v1\",\r\n  \"audit\": {\r\n    \"passed\": false,\r\n    \"first_failed_gate\": \"topology_branch\",\r\n    \"reason\": \"polynomial Beurling packet is a hostile/control branch, not the active theta topology\",\r\n    \"evidence\": {\r\n      \"authority\": \"hostile_control_only\"\r\n    }\r\n  },\r\n  \"checks\": {\r\n    \"blocked_at_topology_branch\": true,\r\n    \"polynomial_not_promoted\": true,\r\n    \"control_authority_explicit\": true\r\n  },\r\n  \"passed\": true,\r\n  \"next_constructor\": \"use the source-selected projective exponential branch\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
