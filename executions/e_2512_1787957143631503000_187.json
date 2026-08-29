@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787957143631503000_187",
+  "created_at": "2026-08-28T22:45:43.6315071Z",
+  "sha256": "968dd34adcda6a5f105c06be710755de94f417aab146b3749ea007966954a9b2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef ct(y,shift,g):\n z=0\n for e,v in y.items():\n  k=-shift-e\n  if k>=0:z+=v*((-1)**k)*math.comb(g+k,k)\n return z\ndef obs(g,q,y):return (ct(y,1-(q+2),g),ct(y,1,g))\nfor g,q,b in [(6,3,4),(6,8,4),(6,13,4),(3,10,4)]:\n N=12;c=1-g;M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];K=[current_defect(g,a,q,b) for a in range(N+1)];print((g,q,b),'Mnonzero',sum(obs(g,q,y)!=(0,0) for y in M),'Kobs',[(a,obs(g,q,K[a])) for a in range(6)])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:45:43.5477038Z",
+    "finished_at": "2026-08-28T22:45:43.6314915Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "naive two constant-mode port falsifier",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "naive two constant-mode port falsifier",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3, 4) Mnonzero 24 Kobs [(0, (-15240960, 0)), (1, (100656000, -4337280)), (2, (-320932800, 26282880)), (3, (784987200, -93847680)), (4, (-1648684800, 257402880)), (5, (3123489600, -598207680))]\r\n(6, 8, 4) Mnonzero 24 Kobs [(0, (242161920, 0)), (1, (-702630720, -4324320)), (2, (1529953920, 25945920)), (3, (-2871443520, -90810720)), (4, (4899121920, 242161920)), (5, (-7809721920, -544561920))]\r\n(6, 13, 4) Mnonzero 24 Kobs [(0, (-1406522880, 0)), (1, (2989638720, -4324320)), (2, (-5490270720, 25945920)), (3, (9231174720, -90810720)), (4, (-14606766720, 242161920)), (5, (22091771520, -544864320))]\r\n(3, 10, 4) Mnonzero 24 Kobs [(0, (18720, 0)), (1, (-23760, -672)), (2, (28800, 2016)), (3, (-33840, -4032)), (4, (38880, 6720)), (5, (-43920, -10080))]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
