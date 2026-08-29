@@ -1,0 +1,44 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787977004993672400_224",
+  "created_at": "2026-08-29T04:16:44.9936764Z",
+  "sha256": "2e0a7ee2a1d7e1a42869cab1466170f0c8d84db5799e0c5909b49d18c04a5f6e",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/scc/scc.py",
+      "formulas",
+      "research/aspect/contracts/flavor-wp1037-formula-synthesis.v1.json"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T04:16:44.7560652Z",
+    "finished_at": "2026-08-29T04:16:44.9936603Z",
+    "timeout_ms": 60000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1037 SCC formulas CLI",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1037 SCC formulas CLI",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.formula-synthesis.v1\",\r\n  \"contract\": \"flavor-wp1037-formula-synthesis\",\r\n  \"stages\": [\r\n    {\r\n      \"id\": \"authorized_local_command\",\r\n      \"status\": \"derived\",\r\n      \"first_failed_gate\": null,\r\n      \"rank\": 3,\r\n      \"unknown_count\": 3,\r\n      \"formulas\": {\r\n        \"delta_k\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {},\r\n          \"source_derived\": true\r\n        },\r\n        \"delta_C\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {},\r\n          \"source_derived\": true\r\n        },\r\n        \"B_local\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {},\r\n          \"source_derived\": true\r\n        }\r\n      },\r\n      \"underdetermined\": [],\r\n      \"free_unknowns\": []\r\n    },\r\n    {\r\n      \"id\": \"common_substrate\",\r\n      \"status\": \"underdetermined\",\r\n      \"first_failed_gate\": \"formula_rank\",\r\n      \"rank\": 0,\r\n      \"unknown_count\": 3,\r\n      \"formulas\": {},\r\n      \"underdetermined\": [\r\n        \"preparation_arrow\",\r\n        \"support_bound\",\r\n        \"cost_bound\"\r\n      ],\r\n      \"free_unknowns\": [\r\n        \"preparation_arrow\",\r\n        \"support_bound\",\r\n        \"cost_bound\"\r\n      ]\r\n    },\r\n    {\r\n      \"id\": \"closed_loop\",\r\n      \"status\": \"underdetermined\",\r\n      \"first_failed_gate\": \"formula_rank\",\r\n      \"rank\": 0,\r\n      \"unknown_count\": 1,\r\n      \"formulas\": {},\r\n      \"underdetermined\": [\r\n        \"dual_error_bound\"\r\n      ],\r\n      \"free_unknowns\": [\r\n        \"dual_error_bound\"\r\n      ]\r\n    }\r\n  ],\r\n  \"derived_formulas\": {\r\n    \"authorized_local_command.delta_k\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {},\r\n      \"source_derived\": true\r\n    },\r\n    \"authorized_local_command.delta_C\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {},\r\n      \"source_derived\": true\r\n    },\r\n    \"authorized_local_command.B_local\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {},\r\n      \"source_derived\": true\r\n    }\r\n  },\r\n  \"required_source_outputs\": [\r\n    \"authorized_local_command.delta_k\",\r\n    \"authorized_local_command.delta_C\",\r\n    \"authorized_local_command.B_local\",\r\n    \"common_substrate.preparation_arrow\",\r\n    \"common_substrate.support_bound\",\r\n    \"common_substrate.cost_bound\",\r\n    \"closed_loop.dual_error_bound\"\r\n  ],\r\n  \"missing_source_formulas\": [\r\n    \"common_substrate.preparation_arrow\",\r\n    \"common_substrate.support_bound\",\r\n    \"common_substrate.cost_bound\",\r\n    \"closed_loop.dual_error_bound\"\r\n  ],\r\n  \"bridge_status\": \"underdetermined\",\r\n  \"certifies_physical_realization\": false\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
