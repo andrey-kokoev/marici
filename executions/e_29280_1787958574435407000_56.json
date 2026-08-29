@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787958574435407000_56",
+  "created_at": "2026-08-28T23:09:34.435411Z",
+  "sha256": "eb823b9d21f243ea54c2dcc211360653121f1297f3055f18c5bc3740e5b19dbf",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "timed_out",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s,itertools; I=s.I; z=s.Rational(4,5)+I*s.Rational(3,5); Y0=s.diag(1,2,4); Hu=s.diag(1,4,9); vals=[-2,-1,1,2]; found=None\nfor av in itertools.product(vals,repeat=3):\n for bv in itertools.product(vals,repeat=3):\n  a=s.Matrix(av); b=s.Matrix([bv]); c=Y0*b.T; Q=a*c.T-c*a.T; qs=[Q[0,1],Q[1,2],Q[2,0]]\n  if 0 in qs: continue\n  Y=Y0+z*a*b; H=s.simplify(Y*Y.H); det=s.factor((Hu*H-H*Hu).det())\n  if det==0 and s.discriminant(H.charpoly().as_expr(),H.charpoly().gen)!=0:\n   found=(av,bv,qs,H); break\n if found: break\nprint(found[0:3] if found else None); print(found[3] if found else '')"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:07:32.9506176Z",
+    "finished_at": "2026-08-28T23:09:34.4353959Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1022 exact cyclic-support cancellation search",
+      "expected_cost": "bounded 4096 rational portals",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1022 exact cyclic-support cancellation search",
+    "expected_cost": "bounded 4096 rational portals",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": true,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
