@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953863056519700_19",
+  "created_at": "2026-08-28T21:51:03.056523Z",
+  "sha256": "28bc72a72ddab19fcc4f7f16ea0f3891e6209e514e28674ebf6c97050a7a10a6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz,u,v=s.symbols('z u v');w=s.Rational(1,2)-u-v;n=2*(z*z-z+1);A=(z+1)**2/n;B=(2*z-1)**2/n;C=(z-2)**2/n;r=s.Rational(44376,275);F=2*(A*u+B*v+C*w)+4*r*A*B*C*u*v*w;eq=[s.factor(s.together(s.diff(F,q)).as_numer_denom()[0].subs(z,0)) for q in (u,v,z)];print(eq);print(s.solve(eq,(u,v),dict=True))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:51:02.3372517Z",
+    "finished_at": "2026-08-28T21:51:03.0565094Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[-3*(59168*u*v + 29584*v**2 - 14792*v + 275), -3*(29584*u**2 + 59168*u*v - 14792*u + 275), 1650*(u - v)]\r\n[{u: 11/516, v: 11/516}, {u: 25/172, v: 25/172}]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
