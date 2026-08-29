@@ -1,0 +1,45 @@
+{
+  "schema": "marici.kitaev.finite-observer-blind-replay.v1",
+  "claim_boundary": "Primitive packets and target predicates only. Expected minimum probe counts and known witnesses are intentionally absent.",
+  "benchmarks": [
+    {
+      "id": "toric_phase_free_pauli_quotient",
+      "mode": "toric_gf2",
+      "lattice_size": 3,
+      "target": "separate_phase_free_paulis_mod_stabilizers"
+    },
+    {
+      "id": "ds3_flux_resolved_endpoint_algebra",
+      "mode": "finite_group_flux_algebra",
+      "permutation_degree": 3,
+      "target": "full_crossed_product_algebra"
+    },
+    {
+      "id": "boolean_deletion_route_reconstruction",
+      "mode": "boolean_zeta",
+      "label_count": 5,
+      "target": "reconstruct_every_labelled_route"
+    },
+    {
+      "id": "classical_replica_single_flip",
+      "mode": "repetition_fault",
+      "maximum_copies": 5,
+      "fault_weight": 1,
+      "targets": ["detect", "correct"]
+    },
+    {
+      "id": "crossed_polarizer_visibility",
+      "mode": "sequential_rational_instrument",
+      "source_vector": ["1", "0"],
+      "terminal_effect": ["0", "1"],
+      "candidate_projectors": {
+        "horizontal": [["1", "0"], ["0", "0"]],
+        "vertical": [["0", "0"], ["0", "1"]],
+        "diagonal_plus": [["1/2", "1/2"], ["1/2", "1/2"]],
+        "diagonal_minus": [["1/2", "-1/2"], ["-1/2", "1/2"]]
+      },
+      "maximum_insertions": 2,
+      "target": "nonzero_terminal_intensity"
+    }
+  ]
+}
