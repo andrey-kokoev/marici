@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787959399486583900_207",
+  "created_at": "2026-08-28T23:23:19.4865873Z",
+  "sha256": "49d5b8ba1fbe02466b40ee0f58e2fd77c4b76fd7da0d35af835cc1dfc82fce30",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,b):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;s=-1 if b=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+s*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if b=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef run(g,q,N):\n E=[];R=[];P=[];B=[];dep={}\n for a in range(N+1):\n  for b in '-+':\n   v=c(g,q,a,b);r={}\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:\n     sub(v,E[i],z)\n     for j,x in R[i].items():r[j]=r.get(j,F())-z*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p);B.append((a,b))\n   else:dep[(a,b)]={j:-x for j,x in r.items()}\n ix={lab:i for i,lab in enumerate(B)}\n for a in [30,50,70]:\n  r=dep[(a,'+')];print((g,q,a),[str(r.get(ix.get((a-d,'-'),-1),F())) for d in range(6)])\nfor z in [(6,3),(6,8),(6,13)]:run(*z,70)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:23:19.1602813Z",
+    "finished_at": "2026-08-28T23:23:19.4865754Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "near-diagonal quotient coefficient audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "near-diagonal quotient coefficient audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3, 30) ['0', '0', '0', '0', '0', '-92752/39585']\r\n(6, 3, 50) ['0', '0', '0', '0', '0', '-175695/105938']\r\n(6, 3, 70) ['0', '0', '0', '0', '0', '-5369588/3746171']\r\n(6, 8, 30) ['0', '0', '0', '0', '0', '0']\r\n(6, 8, 50) ['0', '0', '0', '0', '0', '0']\r\n(6, 8, 70) ['0', '0', '0', '0', '0', '0']\r\n(6, 13, 30) ['0', '0', '0', '0', '0', '0']\r\n(6, 13, 50) ['0', '0', '0', '0', '0', '0']\r\n(6, 13, 70) ['0', '0', '0', '0', '0', '0']\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
