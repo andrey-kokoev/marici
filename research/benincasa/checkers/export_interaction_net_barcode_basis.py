@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 BEN=ROOT/"research"/"benincasa"; NCHK=ROOT/"research"/"nima"/"checkers"
 sys.path[:0]=[str(BEN),str(BEN/"checkers"),str(NCHK)]
-P=32009
+P=int(sys.argv[1]) if len(sys.argv)>1 and sys.argv[1].isdigit() else 32009
 os.environ.update({"MARICI_FIELD_PRIME":str(P),"MARICI_RESIDUE_CHART":"G12",
  "MARICI_K_DEPTH":"3","MARICI_MAX_JET_ORDER":"0","MARICI_TWIST":"physical"})
 with contextlib.redirect_stdout(io.StringIO()):
@@ -219,7 +219,7 @@ checkpoint={
  "adapted":adapted,"emergence_rows":emergence_rows,"dual3":dual3,"dual4":dual4,
  "transition":transition,"first":first,"second":second,"survive":survive,
 }
-checkpoint_path=BEN/"results"/"interaction-net-barcode-basis-stage1-p32009.pkl"
+checkpoint_path=BEN/"results"/f"interaction-net-barcode-basis-stage1-p{P}.pkl"
 with checkpoint_path.open("wb") as fh: pickle.dump(checkpoint,fh,pickle.HIGHEST_PROTOCOL)
 if "--stage1" in sys.argv:
     print(json.dumps({"stage":"G12-complete","checkpoint":str(checkpoint_path.relative_to(ROOT)),
@@ -324,7 +324,7 @@ packet={
  },
  "checks":checks,"passed":passed,
 }
-out=BEN/"results"/"interaction-net-barcode-basis-export-p32009.json"
+out=BEN/"results"/f"interaction-net-barcode-basis-export-p{P}.json"
 out.write_text(json.dumps(packet,separators=(",",":"))+"\n",encoding="utf-8")
 summary={"passed":passed,"output":str(out.relative_to(ROOT)),"bytes":out.stat().st_size,"checks":checks}
 print(json.dumps(summary,indent=2),flush=True)
