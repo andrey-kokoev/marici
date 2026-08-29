@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787964516843885400_248",
+  "created_at": "2026-08-29T00:48:36.8438883Z",
+  "sha256": "a4b7f659a9c235a076a96465788ef7a557850ff85c02edf96cb5512deffff466",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;from fractions import Fraction as F;exec(open(r'research/strominger/checkers/magnetic_second_euler_recurrence_checks.py').read().split('source_path =')[0]);d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));\ndef ok(a,k,z):\n m=[]\n for r in range(len(a)-k):m.append([a[r+j]*(r**p) for j in range(k+1) for p in range(z+1)])\n return rank(m)<(k+1)*(z+1)\nfor pair in ((2,1),(2,2),(2,3),(3,1),(3,2)):\n print(pair,{g:sum(ok([F(x['target_normalized_coefficients'].get(f\"{x['beta']+r},plus\",'0/1')) for r in range(g+1)],*pair) for x in d['rows'] if x['g']==g) for g in range(2,21)})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:48:36.0351303Z",
+    "finished_at": "2026-08-29T00:48:36.8438768Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "fixed bidegree Ore recurrence probes",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "fixed bidegree Ore recurrence probes",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2, 1) {2: 7, 3: 7, 4: 7, 5: 7, 6: 7, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0}\r\n(2, 2) {2: 7, 3: 7, 4: 7, 5: 7, 6: 7, 7: 7, 8: 7, 9: 7, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0}\r\n(2, 3) {2: 7, 3: 7, 4: 7, 5: 7, 6: 7, 7: 7, 8: 7, 9: 7, 10: 7, 11: 7, 12: 7, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0}\r\n(3, 1) {2: 7, 3: 7, 4: 7, 5: 7, 6: 7, 7: 7, 8: 7, 9: 7, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0}\r\n(3, 2) {2: 7, 3: 7, 4: 7, 5: 7, 6: 7, 7: 7, 8: 7, 9: 7, 10: 7, 11: 7, 12: 7, 13: 7, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
