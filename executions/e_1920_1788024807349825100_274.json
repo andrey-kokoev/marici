@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1788024807349825100_274",
+  "created_at": "2026-08-29T17:33:27.349828Z",
+  "sha256": "2750ffcb27fa964df83d48a220412ff6e01ee4b69ac586fbfe822bfa359c0f79",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_gamma_43_44_interaction_net.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T17:33:27.1550321Z",
+    "finished_at": "2026-08-29T17:33:27.3498149Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "43/44 labelled interaction-net no-go and recovery",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "43/44 labelled interaction-net no-go and recovery",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.gamma-43-44-interaction-net.v1\",\r\n  \"status\": \"pass\",\r\n  \"rewrite_rule\": \"ENERGY(e43) joined to CHANNEL(delta44) reduces to ENERGY(e43+delta44)\",\r\n  \"same_unlabelled_net_models\": {\r\n    \"flip\": {\r\n      \"e43\": \"-2\",\r\n      \"e44\": \"1\"\r\n    },\r\n    \"no_flip\": {\r\n      \"e43\": \"-4\",\r\n      \"e44\": \"-1\"\r\n    }\r\n  },\r\n  \"source_terminal_labels\": {\r\n    \"e43\": [\r\n      -6.2e-05,\r\n      -5.4e-05\r\n    ],\r\n    \"e44\": [\r\n      2e-06,\r\n      3.4e-06\r\n    ],\r\n    \"implied_delta_interval\": [\r\n      5.6e-05,\r\n      6.54e-05\r\n    ]\r\n  },\r\n  \"checks\": {\r\n    \"same_positive_channel_allows_opposite_terminal_verdicts\": true,\r\n    \"topology_and_channel_positivity_do_not_derive_sign_flip\": true,\r\n    \"source_terminal_43_is_certifiably_negative\": true,\r\n    \"source_terminal_44_is_certifiably_positive\": true,\r\n    \"source_implied_added_contribution_is_positive\": true\r\n  },\r\n  \"hostiles\": {\r\n    \"positive_local_channel_not_promoted_to_global_repair\": true,\r\n    \"channel_count_parity_not_used_as_sign_law\": true,\r\n    \"independent_interval_difference_not_used_as_joint_correlation\": true\r\n  },\r\n  \"explanation\": \"Interaction topology explains where the repair can enter, but the source-derived terminal quadratic evaluator determines whether it crosses zero.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
