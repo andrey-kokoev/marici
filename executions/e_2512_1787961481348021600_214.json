@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787961481348021600_214",
+  "created_at": "2026-08-28T23:58:01.348025Z",
+  "sha256": "0e098d7e86a7264c127e0aa6ce4dd2e908570cc8ae1b2304c0615dd48206d152",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(B,g,q,a,s):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-B,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef plus(B,g,q,N=30):\n E=[];P=[];r=set()\n for a in range(N+1):\n  for s in '-+':\n   v=c(B,g,q,a,s)\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:sub(v,E[i],z)\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});P.append(p)\n    if s=='+':r.add(a)\n return r\nchecks=bad=[]\nbad=[];n=0\nfor B in range(2,9):\n for g in range(2,11):\n  t1=g+B-2;t2=2*g+B-3\n  for q,mode in [(t1-1,'repair'),(t1,'one'),(t2-1,'pre2'),(t2,'two')]:\n   if q<1:continue\n   P=plus(B,g,q);a=q-g+3;n+=1\n   ok={'repair':a in P,'one':a not in P,'pre2':a not in P and a-1 in P,'two':a not in P and a-1 not in P}[mode]\n   if not ok:bad.append((B,g,q,mode,a,sorted(set(range(max(P)+1))-P)))\nprint('threshold gates',n-len(bad),'/',n,'fail',len(bad));print(bad[:20])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:57:59.2183353Z",
+    "finished_at": "2026-08-28T23:58:01.3480123Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "beta-deformed Euler cap threshold audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "beta-deformed Euler cap threshold audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "threshold gates 252 / 252 fail 0\r\n[]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
