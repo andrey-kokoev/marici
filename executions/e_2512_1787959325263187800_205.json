@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787959325263187800_205",
+  "created_at": "2026-08-28T23:22:05.2631914Z",
+  "sha256": "bfc8a35013a344019db83431e5fb8a1dd59e86c26f683f635dcafa77ebe718a8",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,b):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;s=-1 if b=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+s*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x}\n return o if b=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef relations(g,q,N):\n E=[];R=[];P=[];B=[];dep={}\n for a in range(N+1):\n  for b in '-+':\n   v=c(g,q,a,b);r={}\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:\n     sub(v,E[i],z)\n     for j,x in R[i].items():r[j]=r.get(j,F())-z*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p);B.append((a,b))\n   else:dep[(a,b)]={j:-x for j,x in r.items()}\n return B,dep\nfor g,q in [(6,3),(6,8),(6,13)]:\n B,D=relations(g,q,42);print('case',g,q)\n for a in [18,24,30,36,42]:\n  r=D[(a,'+')]\n  vals=[]\n  for rho in [1.1,1.25,1.5,2.0]:\n   vals.append(sum(float(abs(x))*rho**(B[j][0]-a) for j,x in r.items()))\n  top=sorted(((abs(x),B[j]) for j,x in r.items()),reverse=True)[:2]\n  print(a,'geo',*[f'{x:.3g}' for x in vals],'top',[(str(x),lab) for x,lab in top])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:22:05.0941063Z",
+    "finished_at": "2026-08-28T23:22:05.2631762Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "weighted deep-plus quotient audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "weighted deep-plus quotient audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "case 6 3\r\n18 geo 52.9 12.2 2 0.239 top [('1187019/17680', (4, '-')), ('385/17', (6, '+'))]\r\n24 geo 105 11.2 0.937 0.125 top [('3561057/14212', (4, '-')), ('27300/323', (6, '+'))]\r\n30 geo 165 8.35 0.517 0.0907 top [('12265863/17290', (4, '-')), ('13640/57', (6, '+'))]\r\n36 geo 219 5.42 0.363 0.0743 top [('43919703/26180', (4, '-')), ('9620/17', (6, '+'))]\r\n42 geo 257 3.26 0.298 0.0646 top [('1173961791/335920', (4, '-')), ('380765/323', (6, '+'))]\r\ncase 6 8\r\n18 geo 6.16e+03 922 69.3 1.65 top [('2771703/272', (4, '+')), ('531531/68', (1, '-'))]\r\n24 geo 322 24.6 0.965 0.0225 top [('31872555/29716', (4, '+')), ('8738145/14858', (1, '-'))]\r\n30 geo 501 17.4 0.326 0.00959 top [('18578703/6118', (4, '+')), ('5093517/3059', (1, '-'))]\r\n36 geo 666 10.9 0.152 0.00614 top [('78618969/10948', (4, '+')), ('21554091/5474', (1, '-'))]\r\n42 geo 782 6.11 0.0959 0.00453 top [('77311377/5168', (4, '+')), ('21195603/2584', (1, '-'))]\r\ncase 6 13\r\n18 geo 6.01e+04 1.11e+04 1.54e+03 166 top [('112176', (1, '-')), ('17992345/544', (0, '-'))]\r\n24 geo 2.26e+03 192 8.23 0.127 top [('271143/46', (1, '-')), ('6999275/3128', (0, '-'))]\r\n30 geo 164 8.09 0.2 0.00155 top [('6727589/18676', (0, '-')), ('7936093/23345', (1, '-'))]\r\n36 geo 202 4.47 0.0659 0.0006 top [('540909993/634984', (0, '-')), ('37533873/46690', (1, '-'))]\r\n42 geo 234 2.48 0.0328 0.000353 top [('27995451/15776', (0, '-')), ('1942611/1160', (1, '-'))]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
