@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958229313904300_197",
+  "created_at": "2026-08-28T23:03:49.3139089Z",
+  "sha256": "74b6199a97fa3d6e41d11dcd798da430a875b1d84ffc4894536f767445f211f2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];o=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  o.append(j);u+=1\n return o\ndef coords(cols,t):\n rows=sorted({r for c in cols+[t] for r in c});sel=[];old=0\n for r in rows:\n  cand=sel+[r];z=rank([{x:c.get(x,0) for x in cand if c.get(x,0)} for c in cols])\n  if z>old:sel.append(r);old=z\n  if old==len(cols):break\n A=[[Fraction(c.get(r,0)) for c in cols]+[Fraction(t.get(r,0))] for r in sel];n=len(cols)\n for j in range(n):\n  z=next(i for i in range(j,n) if A[i][j]);A[j],A[z]=A[z],A[j];v=A[j][j];A[j]=[e/v for e in A[j]]\n  for i in range(n):\n   if i!=j and A[i][j]:v=A[i][j];A[i]=[A[i][k]-v*A[j][k] for k in range(n+1)]\n return [A[i][-1] for i in range(n)]\ndef test(g,q,N):\n c=1-g;cs=[canonical_column(g,a,m,4) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];B=piv(cs);P=[j for j in B if j%2];O=[j for j in range(1,len(cs),2) if j not in B]\n for e in O:\n  for b in sorted(P,key=lambda j:(abs(j-e),j)):\n   C=[j for j in B if j!=b]+[e]\n   if rank([cs[j] for j in C])==len(B):\n    x=coords([cs[j] for j in C],cs[b]);return (b//2,e//2,max(abs(v) for v in x))\n return None\nbad=[]\nfor g in range(2,11):\n for q in range(1,16):\n  a=test(g,q,15);b=test(g,q,20)\n  if a!=b:bad.append((g,q,a,b))\nprint(\"cases\",135,\"bad\",len(bad),\"first\",bad[:5])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:03:31.7679118Z",
+    "finished_at": "2026-08-28T23:03:49.3138899Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "neighbor plus-cap chart cutoff stability atlas",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "neighbor plus-cap chart cutoff stability atlas",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "cases 135 bad 0 first []\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
