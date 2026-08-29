@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958162056565000_195",
+  "created_at": "2026-08-28T23:02:42.0565685Z",
+  "sha256": "a6c053bbaa65087c20d7746adb60621706daeef8c9623d96ecc243ce06551446",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];o=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  o.append(j);u+=1\n return o\ndef solve_basis(cols,targets):\n rows=sorted({r for c in cols+targets for r in c});T=[[c.get(r,0) for c in cols] for r in rows];rr=piv([dict(enumerate(row)) for row in zip(*T)]);sel=rr[:len(cols)];A=[[Fraction(T[i][j]) for j in range(len(cols))] for i in sel];B=[[Fraction(t.get(rows[i],0)) for t in targets] for i in sel];n=len(A);m=len(targets);W=[A[i]+B[i] for i in range(n)]\n for j in range(n):\n  z=next(i for i in range(j,n) if W[i][j]);W[j],W[z]=W[z],W[j];v=W[j][j];W[j]=[e/v for e in W[j]]\n  for i in range(n):\n   if i!=j and W[i][j]:v=W[i][j];W[i]=[W[i][k]-v*W[j][k] for k in range(n+m)]\n return [r[n:] for r in W]\ndef test(g,q,N):\n c=1-g;cs=[canonical_column(g,a,m,4) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];B=piv(cs);P=[j for j in B if j%2];O=[j for j in range(1,len(cs),2) if j not in B];ex=None\n for e in O:\n  for b in sorted(P,key=lambda j:(abs(j-e),j)):\n   C=[j for j in B if j!=b]+[e]\n   if rank([cs[j] for j in C])==len(B):ex=(b,e,C);break\n  if ex:break\n if not ex:return None\n b,e,C=ex;X=solve_basis([cs[j] for j in C],[cs[j] for j in B]);mx=max(abs(v) for row in X for v in row);return (b//2,e//2,float(mx))\nfor z in [(6,3),(6,8),(6,13),(3,10)]:print(z,[(N,test(*z,N)) for N in (9,12,15,18,21)])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:02:41.9580972Z",
+    "finished_at": "2026-08-28T23:02:42.0565487Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "neighboring plus-cap Hall chart uniformity",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "neighboring plus-cap Hall chart uniformity",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 28, in <module>\r\n    for z in [(6,3),(6,8),(6,13),(3,10)]:print(z,[(N,test(*z,N)) for N in (9,12,15,18,21)])\r\n                                                     ~~~~^^^^^^\r\n  File \"<string>\", line 27, in test\r\n    b,e,C=ex;X=solve_basis([cs[j] for j in C],[cs[j] for j in B]);mx=max(abs(v) for row in X for v in row);return (b//2,e//2,float(mx))\r\n               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"<string>\", line 15, in solve_basis\r\n    z=next(i for i in range(j,n) if W[i][j]);W[j],W[z]=W[z],W[j];v=W[j][j];W[j]=[e/v for e in W[j]]\r\nStopIteration\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
