@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956318167750700_177",
+  "created_at": "2026-08-28T22:31:58.167753Z",
+  "sha256": "18ea69d30c481f6d1bec26bc869e0c771a254bbc2432febf84df1171a53ee708",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\nbad=[];cases=0\nfor b in range(2,9):\n for g in range(4,11):\n  for q in range(min(b-1,g-3),g-2):\n   N=15;cen=1-g;M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(cen-q-2-a,cen+q+2-a)];K=[current_defect(g,a,q,b) for a in range(N+1)];r=rank(M);cases+=1\n   t=[rank(M+K[:b])==r+2,all(rank(M+[K[a]])==r+1 for a in range(b)),all(rank(M+[K[a]])==r for a in range(b,N+1))]\n   if not all(t):bad.append((b,g,q,t))\nprint(\"cases\",cases,\"bad\",len(bad),\"first\",bad[:5])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:31:48.4294602Z",
+    "finished_at": "2026-08-28T22:31:58.1677382Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "corrected low wedge finite source window theorem",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "corrected low wedge finite source window theorem",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "cases 105 bad 2 first [(7, 10, 7, [False, True, False]), (8, 10, 7, [False, True, False])]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
