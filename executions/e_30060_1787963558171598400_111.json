@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_30060_1787963558171598400_111",
+  "created_at": "2026-08-29T00:32:38.1716022Z",
+  "sha256": "0e5d680015f61b9651aa0c8b712bb4f41a9b9d831903093852677663349b8074",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from pathlib import Path\nls=Path('research/benincasa/checkers/census_interaction_net_two_adic_layers.cjs').read_text().splitlines()\nfor i in range(50,min(95,len(ls)+1)): print(f'{i}:{ls[i-1]}')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici/.worktrees/benincasa-integral-barcode",
+    "started_at": "2026-08-29T00:32:38.1007906Z",
+    "finished_at": "2026-08-29T00:32:38.1715774Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "bounded elimination implementation inspection",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "bounded elimination implementation inspection",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "50:\r\n51:function localLayer(rows, modulus) {\r\n52:  const pivots = new Map();\r\n53:  for (const source of rows) {\r\n54:    const row = cloneRow(source);\r\n55:    reduceAgainstPivots(row, pivots, modulus);\r\n56:    const pivot = leadingOdd(row);\r\n57:    if (pivot === Infinity) continue;\r\n58:    const scale = inverseOdd(row.get(pivot), modulus);\r\n59:    for (const [column, value] of row) {\r\n60:      const normalized = (value * scale) % modulus;\r\n61:      if (normalized) row.set(column, normalized);\r\n62:      else row.delete(column);\r\n63:    }\r\n64:    pivots.set(pivot, row);\r\n65:  }\r\n66:\r\n67:  const nextRows = [];\r\n68:  let oddResidualRows = 0;\r\n69:  for (const source of rows) {\r\n70:    const row = cloneRow(source);\r\n71:    reduceAgainstPivots(row, pivots, modulus);\r\n72:    const divided = new Map();\r\n73:    let hasOdd = false;\r\n74:    for (const [column, value] of row) {\r\n75:      if (value & 1) {\r\n76:        hasOdd = true;\r\n77:        break;\r\n78:      }\r\n79:      const next = value / 2;\r\n80:      if (next) divided.set(column, next);\r\n81:    }\r\n82:    if (hasOdd) {\r\n83:      oddResidualRows++;\r\n84:      continue;\r\n85:    }\r\n86:    if (divided.size) nextRows.push(divided);\r\n87:  }\r\n88:  if (oddResidualRows) {\r\n89:    throw new Error(`layer modulo ${modulus} left ${oddResidualRows} odd residual rows`);\r\n90:  }\r\n91:  return {pivots, nextRows};\r\n92:}\r\n93:\r\n94:const arguments_ = process.argv.slice(2);\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
