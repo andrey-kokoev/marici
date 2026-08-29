@@ -1,0 +1,50 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_intercomponent_current_defect_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact symbolic-form finite-difference identity with bounded replay",
+    "audit": "2<=g<=20, even 0<=a<=20, 1<=q<=21"
+  },
+  "checks": [
+    {
+      "id": "DEFECT.universal",
+      "statement": "both branch defects equal the signed universal current",
+      "status": "pass",
+      "detail": "2<=g<=20; even 0<=a<=20; 1<=q<=21; failures=[]"
+    },
+    {
+      "id": "DEFECT.q_independent",
+      "statement": "the current depends on g and a but not q",
+      "status": "pass",
+      "detail": "closed formula contains no q"
+    },
+    {
+      "id": "DEFECT.nontrivial",
+      "statement": "the obstruction is not identically zero",
+      "status": "pass",
+      "detail": "nonzero packets=209"
+    },
+    {
+      "id": "SUPPORT.alignment",
+      "statement": "minus support is fixed and plus support shifts by two",
+      "status": "pass",
+      "detail": "failures=[]"
+    },
+    {
+      "id": "FALSIFIER.strict",
+      "statement": "the canonical branch lift is not a strict chain map",
+      "status": "pass",
+      "detail": "{'witness': [6, 4, 5], 'residual': [120960, 120960, 0, 0, 0, 0, 0, 0]}"
+    },
+    {
+      "id": "REPAIR.current_port",
+      "statement": "retaining the signed current cancels the exact defect",
+      "status": "pass",
+      "detail": "one typed current packet suffices branchwise"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "The branch-split source lattice has a canonical q-to-q+2 lift. It is not a chain map for M_g: its exact defect is the q-independent signed current J_(g,a). Retaining branch identity and this current is the minimal typed augmentation visible from the path formula."
+}

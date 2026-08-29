@@ -1,0 +1,39 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_current_port_cokernel_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "symbolic support proof with large exact replay",
+    "theorem_domain": "all integers g>=2, q>=1, arbitrary finite cutoff",
+    "finite_replay": "g<=50, q<=50, selected k<=20; detection g<=500, q<=100"
+  },
+  "checks": [
+    {
+      "id": "COKERNEL.annihilates",
+      "statement": "the two-row functional kills every target column",
+      "status": "pass",
+      "detail": "2<=g<=50; 1<=q<=50; k in 0,1,2,5,10,20; failures=[]"
+    },
+    {
+      "id": "COKERNEL.detects",
+      "statement": "the functional detects the zero-depth current exactly",
+      "status": "pass",
+      "detail": "value=-2*g*rf(4,g); failures=[]"
+    },
+    {
+      "id": "COKERNEL.cutoff_free",
+      "statement": "the functional contains no cutoff parameter",
+      "status": "pass",
+      "detail": "support rows q+2 and q+3"
+    },
+    {
+      "id": "FALSIFIER.coefficient",
+      "statement": "a one-unit mutation leaves a nonzero residual",
+      "status": "pass",
+      "detail": "{'witness': [6, 5], 'residual': 483840}"
+    }
+  ],
+  "n_pass": 4,
+  "n_fail": 0,
+  "verdict": "The cutoff-independent functional (q+3-g)e*_(q+2) - (q+3)e*_(q+3) annihilates every ordinary component-(q+2) column and evaluates to -2*g*rf(4,g) on the a=0 raising current. The current port is therefore an intrinsic cokernel coordinate for every finite cutoff."
+}

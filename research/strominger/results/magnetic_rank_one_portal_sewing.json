@@ -1,0 +1,114 @@
+{
+  "schema": "marici.strominger.magnetic_rank_one_portal_sewing.v1",
+  "status": "passed",
+  "gate_count": 11,
+  "passed_gate_count": 11,
+  "primitive_core_null_vector": [
+    147407,
+    -131220,
+    38556
+  ],
+  "full_obstruction": {
+    "row_labels": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "values": [
+      "0",
+      "0",
+      "0",
+      "-17656934400",
+      "1799280000",
+      "-350259840",
+      "59270400",
+      "-2016000",
+      "-2620800"
+    ],
+    "support_size": 6
+  },
+  "selector": {
+    "dimension": 2,
+    "coordinate_gauges": [
+      0,
+      1,
+      2
+    ],
+    "law": "K=-w tensor phi with phi(v)=1"
+  },
+  "checks": [
+    {
+      "id": "CORE.rank",
+      "statement": "the continued odd collision core has rank two",
+      "status": "pass",
+      "detail": "[[Fraction(-1008000, 1), Fraction(-165095840, 729), Fraction(27747200, 9)], [0, Fraction(227718400, 729), Fraction(9568000, 9)], [Fraction(-645120, 1), 0, Fraction(22197760, 9)]]"
+    },
+    {
+      "id": "CORE.null",
+      "statement": "the primitive residual direction spans the core kernel",
+      "status": "pass",
+      "detail": "(147407, -131220, 38556)"
+    },
+    {
+      "id": "FULL.rank",
+      "statement": "the full path map is injective on the three candidates",
+      "status": "pass",
+      "detail": "rows=9"
+    },
+    {
+      "id": "FULL.obstruction",
+      "statement": "the residual core direction has nonzero full-path image",
+      "status": "pass",
+      "detail": "support=6"
+    },
+    {
+      "id": "SEWING.gauges",
+      "statement": "every nonzero residual coordinate defines a rank-one sewing gauge",
+      "status": "pass",
+      "detail": "[0, 1, 2]"
+    },
+    {
+      "id": "SEWING.activates",
+      "statement": "each rank-one gauge makes the residual direction a full kernel",
+      "status": "pass",
+      "detail": "gauges=3"
+    },
+    {
+      "id": "SEWING.rank_one",
+      "statement": "every nonzero correction matrix has rank one",
+      "status": "pass",
+      "detail": "K=-w tensor phi"
+    },
+    {
+      "id": "SEWING.minimum",
+      "statement": "rank zero cannot cancel a nonzero obstruction",
+      "status": "pass",
+      "detail": "Kv=-w requires K nonzero, hence rank at least one"
+    },
+    {
+      "id": "SELECTOR.affine_plane",
+      "statement": "rank-one sewing choices form an affine plane over covectors annihilating v",
+      "status": "pass",
+      "detail": "phi(v)=1; translation space Ann(v) has dimension two"
+    },
+    {
+      "id": "SELECTOR.noncanonical",
+      "statement": "the residual null direction does not choose one sewing gauge",
+      "status": "pass",
+      "detail": "coordinate gauges=[0, 1, 2]"
+    },
+    {
+      "id": "SELECTOR.protected_difference",
+      "statement": "distinct sewing gauges are distinguishable on a protected successor direction",
+      "status": "pass",
+      "detail": "[(0, 1, 0), (0, 2, 0), (1, 2, 1)]"
+    }
+  ],
+  "verdict": "A rank-one off-diagonal correction is algebraically necessary and sufficient to promote the continued core null direction to a full magnetic kernel. Such corrections form a two-dimensional affine selector torsor. The desired kernel fixes only K(v), not K on complementary source directions; choosing a portal therefore still requires an independent source constructor."
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "marici.strominger.magnetic_route_wronskian.v1",
+  "status": "passed",
+  "gate_count": 10,
+  "passed_gate_count": 10,
+  "records": [
+    {
+      "d": "17/3",
+      "A": "-113228379953561600000/729",
+      "B": "113228379953561600000/729",
+      "A_prime": "4345536960593920000/81",
+      "B_prime": "29622977025474560000/81",
+      "scalar": "0",
+      "scalar_prime": "11322837995356160000/27",
+      "difference": "-226456759907123200000/729",
+      "wronskian": "-1282066602690811039857252499456000000000/19683",
+      "P_prime": "-240"
+    },
+    {
+      "d": "37/3",
+      "A": "-1258515798177677312000000/729",
+      "B": "1258515798177677312000000/729",
+      "A_prime": "-1881095122408570880000",
+      "B_prime": "43598049458301829120000/27",
+      "scalar": "0",
+      "scalar_prime": "-7191518846729584640000/27",
+      "difference": "-2517031596355354624000000/729",
+      "wronskian": "9050640081501692641302395309711687680000000000/19683",
+      "P_prime": "240"
+    }
+  ],
+  "checks": [
+    {
+      "id": "ROOT.exact",
+      "statement": "both grade-six points are exact roots of the residual obstruction",
+      "status": "pass",
+      "detail": "(Fraction(17, 3), Fraction(37, 3))"
+    },
+    {
+      "id": "ROUTE.live",
+      "statement": "both routes remain nonzero at both scalar-dark points",
+      "status": "pass",
+      "detail": "[(Fraction(-113228379953561600000, 729), Fraction(113228379953561600000, 729)), (Fraction(-1258515798177677312000000, 729), Fraction(1258515798177677312000000, 729))]"
+    },
+    {
+      "id": "ROUTE.antidiagonal",
+      "statement": "the scalar-dark packet is nonzero anti-diagonal interference",
+      "status": "pass",
+      "detail": "[(Fraction(-113228379953561600000, 729), Fraction(113228379953561600000, 729)), (Fraction(-1258515798177677312000000, 729), Fraction(1258515798177677312000000, 729))]"
+    },
+    {
+      "id": "CROSS.simple",
+      "statement": "the scalar augmentation crosses transversely at both roots",
+      "status": "pass",
+      "detail": "[Fraction(11322837995356160000, 27), Fraction(-7191518846729584640000, 27)]"
+    },
+    {
+      "id": "CROSS.opposite",
+      "statement": "the two rational fibers have opposite scalar crossing orientation",
+      "status": "pass",
+      "detail": "[Fraction(11322837995356160000, 27), Fraction(-7191518846729584640000, 27)]"
+    },
+    {
+      "id": "WRONSKIAN.nonzero",
+      "statement": "the route Wronskian is nonzero at both crossings",
+      "status": "pass",
+      "detail": "[Fraction(-1282066602690811039857252499456000000000, 19683), Fraction(9050640081501692641302395309711687680000000000, 19683)]"
+    },
+    {
+      "id": "WRONSKIAN.identity",
+      "statement": "on the anti-diagonal, the Wronskian equals A times the scalar derivative",
+      "status": "pass",
+      "detail": "A*B'-B*A'=A*(A'+B') when B=-A"
+    },
+    {
+      "id": "CHARACTER.visible",
+      "statement": "the complementary difference character is nonzero at each crossing",
+      "status": "pass",
+      "detail": "[Fraction(-226456759907123200000, 729), Fraction(-2517031596355354624000000, 729)]"
+    },
+    {
+      "id": "LOSS.separate",
+      "statement": "the integral grade-two exception has zero routes rather than a Wronskian crossing",
+      "status": "pass",
+      "detail": "A=B=0 at (g,d)=(2,5)"
+    },
+    {
+      "id": "P.orientation",
+      "statement": "the residual polynomial also has simple oppositely oriented roots",
+      "status": "pass",
+      "detail": "[Fraction(-240, 1), Fraction(240, 1)]"
+    }
+  ],
+  "verdict": "The two grade-six rational scalar zeros are simple nonzero-interference crossings with nonvanishing route Wronskian and opposite orientations. The complementary difference character detects both. This is an invariant of the analytically continued local route packet, not yet a source-authorized fractional magnetic state or full-kernel claim."
+}

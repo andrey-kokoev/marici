@@ -1,0 +1,88 @@
+{
+  "schema": "marici.strominger.magnetic_charged_spurion_lift.v1",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "FULL.minor",
+      "statement": "the full fractional matrix has a nonzero maximal minor",
+      "status": "pass",
+      "detail": "{'row_indices': (0, 1, 3), 'rows': ['0', '1', '3'], 'determinant': Fraction(-48775302133841920000, 729)}"
+    },
+    {
+      "id": "FULL.rank",
+      "statement": "the three full source columns are independent",
+      "status": "pass",
+      "detail": "rank is three"
+    },
+    {
+      "id": "CHARGE.compensation",
+      "statement": "minimal sector spurions make every column neutral",
+      "status": "pass",
+      "detail": "source (2,1,1) plus spurion (1,2,2)"
+    },
+    {
+      "id": "CHARGE.common_twist",
+      "statement": "no common twist can align unequal source charges",
+      "status": "pass",
+      "detail": "[2, 1, 1]"
+    },
+    {
+      "id": "SPURION.minor_law",
+      "statement": "the witness minor becomes det*s0*s1*s2",
+      "status": "pass",
+      "detail": "-48775302133841920000/729*s0*s1*s2"
+    },
+    {
+      "id": "SPURION.generic_rank",
+      "statement": "all invertible spurion fibers preserve full column rank",
+      "status": "pass",
+      "detail": "nonzero diagonal base change"
+    },
+    {
+      "id": "SPURION.zero_boundary",
+      "statement": "rank can fall only on a zero-spurion boundary that deletes a source route",
+      "status": "pass",
+      "detail": "s0*s1*s2=0"
+    },
+    {
+      "id": "RESIDUAL.tuning",
+      "statement": "the local residual cancels on the ratio sL=sR",
+      "status": "pass",
+      "detail": "one projective condition"
+    },
+    {
+      "id": "RESIDUAL.not_kernel",
+      "statement": "local spurion tuning does not annihilate the full source matrix",
+      "status": "pass",
+      "detail": "the maximal minor remains nonzero"
+    },
+    {
+      "id": "SELECTOR.torsor",
+      "statement": "charged trivializations introduce two projective ratios",
+      "status": "pass",
+      "detail": "(G_m)^3 / G_m"
+    },
+    {
+      "id": "SELECTOR.residual",
+      "statement": "residual cancellation still leaves one free ratio",
+      "status": "pass",
+      "detail": "typing repair does not select a unique background"
+    }
+  ],
+  "gate_count": 11,
+  "passed_gate_count": 11,
+  "witness_minor": {
+    "row_indices": [
+      0,
+      1,
+      3
+    ],
+    "rows": [
+      "0",
+      "1",
+      "3"
+    ],
+    "determinant": "-48775302133841920000/729"
+  },
+  "verdict": "Sector-specific charged spurions repair deck typing but cannot create the missing full kernel. On every invertible spurion fiber they only rescale independent columns. Zero spurions create route deletion, not destructive interference. A genuine activation requires a non-diagonal charged correspondence that changes the transport or its target quotient."
+}

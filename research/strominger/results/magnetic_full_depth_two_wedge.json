@@ -1,0 +1,44 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_full_depth_two_wedge_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "bounded exact rational-rank conjecture",
+    "audit": "2<=g<=12, 1<=q<=20, consecutive cutoff N=30"
+  },
+  "checks": [
+    {
+      "id": "WEDGE.formula",
+      "statement": "all full-depth widths obey the two-wedge formula",
+      "status": "pass",
+      "detail": "cases=220; failures=[]"
+    },
+    {
+      "id": "WEDGE.high",
+      "statement": "the high boundary q=2g+1 has width two",
+      "status": "pass",
+      "detail": "2<=g<=9"
+    },
+    {
+      "id": "WEDGE.high_outside",
+      "statement": "the adjacent point q=2g has width one outside the low wedge",
+      "status": "pass",
+      "detail": "sharp high boundary"
+    },
+    {
+      "id": "WEDGE.low",
+      "statement": "every admitted low-wedge point has width two",
+      "status": "pass",
+      "detail": "sharp reflected collision band"
+    },
+    {
+      "id": "WEDGE.middle",
+      "statement": "a nonempty middle width-one band separates the wedges",
+      "status": "pass",
+      "detail": "g-2<=q<=2g"
+    }
+  ],
+  "n_pass": 5,
+  "n_fail": 0,
+  "verdict": "The consecutive-depth current cokernel has width two exactly on a high separation wedge and a low collision wedge in the bounded audit; the intervening band has one intrinsic current class."
+}

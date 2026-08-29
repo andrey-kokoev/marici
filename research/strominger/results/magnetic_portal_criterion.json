@@ -1,0 +1,74 @@
+{
+  "schema": "marici.strominger.magnetic_portal_criterion.v1",
+  "status": "passed",
+  "gate_count": 10,
+  "passed_gate_count": 10,
+  "checks": [
+    {
+      "id": "FLAT.source_injective",
+      "statement": "multiplication by t is injective on the bounded polynomial packet",
+      "status": "pass",
+      "detail": "rank=8, columns=8"
+    },
+    {
+      "id": "FLAT.free_lift",
+      "statement": "a finite free scalar extension preserves injectivity",
+      "status": "pass",
+      "detail": "lifted rank=24"
+    },
+    {
+      "id": "PORTAL.nonflat_kernel",
+      "statement": "restriction to the defect t=0 creates a one-dimensional kernel",
+      "status": "pass",
+      "detail": "P=R/(t), P tensor F=0"
+    },
+    {
+      "id": "PORTAL.tor_boundary",
+      "statement": "the new defect kernel is the image of the Tor boundary",
+      "status": "pass",
+      "detail": "Tor_1^R(R/(t),R/(t)) is isomorphic to R/(t)"
+    },
+    {
+      "id": "PORTAL.support",
+      "statement": "the portal kernel vanishes away from the declared defect locus",
+      "status": "pass",
+      "detail": "after inverting t, multiplication by t is an isomorphism"
+    },
+    {
+      "id": "MAGNETIC.minor_nonzero",
+      "statement": "the rational magnetic full-path witness minor is nonzero",
+      "status": "pass",
+      "detail": "-48775302133841920000/729"
+    },
+    {
+      "id": "MAGNETIC.spurion.1.1.1",
+      "statement": "an invertible diagonal charged spurion preserves the rank witness",
+      "status": "pass",
+      "detail": "-48775302133841920000/729"
+    },
+    {
+      "id": "MAGNETIC.spurion.2.-3.5",
+      "statement": "an invertible diagonal charged spurion preserves the rank witness",
+      "status": "pass",
+      "detail": "487753021338419200000/243"
+    },
+    {
+      "id": "MAGNETIC.spurion.-1.7.11",
+      "statement": "an invertible diagonal charged spurion preserves the rank witness",
+      "status": "pass",
+      "detail": "3755698264305827840000/729"
+    },
+    {
+      "id": "MAGNETIC.route_deletion",
+      "statement": "a zero spurion kills the minor only by deleting a source route",
+      "status": "pass",
+      "detail": "boundary of the spurion torsor, not interference"
+    }
+  ],
+  "classification": {
+    "transparent_lift": "kernel-preserving under faithful flatness",
+    "defect_portal": "kernel may be born as a Tor boundary on non-flat support",
+    "operator_changing_portal": "outside base-change theorem; requires independent source authority"
+  },
+  "verdict": "The unchanged injective magnetic operator cannot acquire a kernel under faithfully flat extension. A genuine defect portal can create a supported kernel through Tor. Any portal acting away from such support must instead change the operator, target quotient, or tail correspondence."
+}

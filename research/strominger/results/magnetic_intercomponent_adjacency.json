@@ -1,0 +1,53 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_intercomponent_adjacency_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "exact type audit with bounded replay",
+    "definitions": {
+      "d": "q-g",
+      "cutoff_transfer": "k->k+1 at fixed q"
+    }
+  },
+  "checks": [
+    {
+      "id": "TYPE.cutoff",
+      "statement": "cutoff extension preserves q and d",
+      "status": "pass",
+      "detail": "2<=g<=20; g<q<=g+31; 1<=k<=10"
+    },
+    {
+      "id": "TYPE.component",
+      "statement": "d-to-d+2 at fixed grade is exactly q-to-q+2",
+      "status": "pass",
+      "detail": "d=q-g"
+    },
+    {
+      "id": "TYPE.inequivalent",
+      "statement": "cutoff transfer and excess adjacency have different codomains",
+      "status": "pass",
+      "detail": "one changes k; the other changes q and d"
+    },
+    {
+      "id": "CROSSING.labels",
+      "statement": "both reported crossings are adjacent excess-label pairs",
+      "status": "pass",
+      "detail": "[{'left_d': 5, 'right_d': 7, 'incidence': 1}, {'left_d': 11, 'right_d': 13, 'incidence': -1}]"
+    },
+    {
+      "id": "AUTHORITY.no_transport",
+      "statement": "the known fixed-q transfer cannot authorize either crossing edge",
+      "status": "pass",
+      "detail": "fixed-q transfer preserves d"
+    },
+    {
+      "id": "FALSIFIER.laundering",
+      "statement": "a cutoff constructor fails the claimed inter-component codomain",
+      "status": "pass",
+      "detail": "{'source': {'g': 6, 'q': 11, 'd': 5, 'k': 3}, 'actual': {'g': 6, 'q': 11, 'd': 5, 'k': 4}, 'claimed': {'g': 6, 'q': 13, 'd': 7, 'k': 3}}"
+    }
+  ],
+  "n_pass": 6,
+  "n_fail": 0,
+  "verdict": "The discrete sign incidences are exact on ordered excess labels, but they are not morphism-level crossing charges under the known magnetic transfer. Moving d by two changes component q; the proved cutoff constructor changes k at fixed q. A source-derived inter-component correspondence is a genuinely missing constructor."
+}

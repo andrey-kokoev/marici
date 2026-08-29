@@ -1,0 +1,44 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_current_parity_decimation_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "bounded exact hostile depth-lattice comparison",
+    "audit": "2<=g<=10, 1<=q<=10, consecutive depth<=20, parity depth<=24/25"
+  },
+  "checks": [
+    {
+      "id": "FULL.width",
+      "statement": "the consecutive-depth current quotient has width one or two",
+      "status": "pass",
+      "detail": "cases=90; widths=[1, 2]"
+    },
+    {
+      "id": "DECIMATION.increases",
+      "statement": "even-depth deletion strictly enlarges the quotient in tested cases",
+      "status": "pass",
+      "detail": "strict_cases=90; first=[(2, 1, 1, 5, 5)]"
+    },
+    {
+      "id": "COSET.odd",
+      "statement": "the complementary odd coset also carries a multi-current quotient",
+      "status": "pass",
+      "detail": "max_odd=13"
+    },
+    {
+      "id": "INTRINSIC.survives",
+      "statement": "at least one current class survives the full-depth enlargement",
+      "status": "pass",
+      "detail": "native beta=4"
+    },
+    {
+      "id": "FALSIFIER.support_only",
+      "statement": "same support formula but different depth grammar changes width",
+      "status": "pass",
+      "detail": "(2, 1, 1, 5, 5)"
+    }
+  ],
+  "n_pass": 5,
+  "n_fail": 0,
+  "verdict": "The native multi-current tower is a parity-decimation phenomenon. Restoring consecutive depths collapses its tested quotient to width one or two, while either parity coset alone retains multiple alias classes. An explicit nearest-neighbor chain relation remains to prove."
+}

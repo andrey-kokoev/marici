@@ -1,0 +1,69 @@
+{
+  "schema": "marici.strominger.magnetic_tail_lift_portal.v1",
+  "status": "passed",
+  "gate_count": 10,
+  "passed_gate_count": 10,
+  "checks": [
+    {
+      "id": "TAIL.full_rank",
+      "statement": "every audited forcing equation has a unique selected tail solution",
+      "status": "pass",
+      "detail": "345 exact collision blocks"
+    },
+    {
+      "id": "TAIL.boundary_zero",
+      "statement": "the reconstructed tail boundary jet C*A^-1*B vanishes identically",
+      "status": "pass",
+      "detail": "[]"
+    },
+    {
+      "id": "TAIL.nontrivial",
+      "statement": "vanishing is not explained by zero forcing or zero boundary matrices",
+      "status": "pass",
+      "detail": "blocks with B and C both nonzero=285"
+    },
+    {
+      "id": "TAIL.support",
+      "statement": "reconstruction and boundary-visible tail supports are disjoint",
+      "status": "pass",
+      "detail": "[]"
+    },
+    {
+      "id": "TAIL.schur",
+      "statement": "the effective boundary map equals the raw collision block",
+      "status": "pass",
+      "detail": "E-C*A^-1*B=E"
+    },
+    {
+      "id": "FRACTIONAL.sectors",
+      "statement": "the minimal fractional grammar is a three-sector affine direct sum",
+      "status": "pass",
+      "detail": "((Fraction(0, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(1, 3)), (Fraction(2, 3), Fraction(0, 1)))"
+    },
+    {
+      "id": "FRACTIONAL.block_injective",
+      "statement": "each sector-preserving model block is injective",
+      "status": "pass",
+      "detail": "(1, 6, 1)"
+    },
+    {
+      "id": "FRACTIONAL.direct_sum",
+      "statement": "their block-diagonal direct sum has no cross-sector kernel",
+      "status": "pass",
+      "detail": "determinant product=6"
+    },
+    {
+      "id": "CHARGE.isomorphism",
+      "statement": "charge alignment changes typing but not block rank",
+      "status": "pass",
+      "detail": "(0, 1, 1)"
+    },
+    {
+      "id": "PORTAL.missing_sewing",
+      "statement": "the known lift grammar contains none of the required relational sewing fields",
+      "status": "pass",
+      "detail": "['adjacent_tor_grades', 'charged_relation_line', 'cross_sector_forcing_incidence', 'endpoint_anchor', 'protected_readout_descent']"
+    }
+  ],
+  "verdict": "The known magnetic tail is uniquely reconstructed from forcing data but has identically zero boundary correction. Sectorwise fractional continuation therefore cannot create the portal relation. The missing constructor is source-authorized off-diagonal cross-sector tail sewing with an endpoint anchor, charged relation line, full Tor packet, and readout-descent gate."
+}

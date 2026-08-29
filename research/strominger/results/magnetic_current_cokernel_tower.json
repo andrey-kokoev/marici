@@ -1,0 +1,32 @@
+{
+  "schema": "marici.checker_results.v1",
+  "checker": "magnetic_current_cokernel_tower_checks.py",
+  "author": "marici.Strominger",
+  "scope": {
+    "strength": "bounded exact rational rank conjecture",
+    "audit": "2<=g<=12, 1<=q<=12, 0<=k<=12"
+  },
+  "checks": [
+    {
+      "id": "TOWER.formula",
+      "statement": "all quotient dimensions obey the finite-width law",
+      "status": "pass",
+      "detail": "observations=1716; failures=[]"
+    },
+    {
+      "id": "FALSIFIER.exception",
+      "statement": "omitting the grade-two correction fails first at the known target circuit",
+      "status": "pass",
+      "detail": "{'source': [2, 5], 'target_q': 7, 'actual': 8, 'wrong_prediction': 7}"
+    },
+    {
+      "id": "TOWER.saturates",
+      "statement": "the conjectured width is finite for every fixed g and q",
+      "status": "pass",
+      "detail": "D_(g,q)<=q+5"
+    }
+  ],
+  "n_pass": 3,
+  "n_fail": 0,
+  "verdict": "The a-indexed current classes grow one per pole depth until a finite width D_(g,q), with a unique extra direction when (g,q)=(2,5) targets the known grade-two Q=7 exceptional circuit. An unbounded triangular proof remains open."
+}

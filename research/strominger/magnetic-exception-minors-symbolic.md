@@ -13,7 +13,7 @@ The `q=1` exception comes from the reflected `a=0` pair.  On semantic rows
 Its determinant is
 
 \[
-\boxed{-g(g-2)(4^{\overline g})^2.}
+-g(g-2)(4^{\overline g})^2.
 \]
 
 For every `g>=3` this block has rank two.  At `g=2`, the second row vanishes
@@ -29,17 +29,15 @@ on columns `(a,s)=(0,-q),(4,+q),(6,+q)`.  The fixed rows `0,1,2` give a
 three-by-three minor whose determinant simplifies to
 
 \[
-\boxed{
 -4g(g-2)(g+5)
 6^{\overline{g-1}}(4^{\overline g})^2.
-}
 \]
 
 Again it is nonzero at every `g>=3`.  At grade two, `q=g+5=7`, the minor loses
 one rank and its primitive kernel vector is
 
 \[
-\boxed{(1,-3,2).}
+(1,-3,2).
 \]
 
 The common mechanism is the factor `g-2`.  The `a=4` plus column acquires an

@@ -1,0 +1,88 @@
+{
+  "schema": "marici.strominger.magnetic_minimal_sector_extension.v1",
+  "status": "passed",
+  "gate_count": 11,
+  "passed_gate_count": 11,
+  "checks": [
+    {
+      "id": "LATTICE.labels",
+      "statement": "the rational candidates have the expected exponent labels",
+      "status": "pass",
+      "detail": "[(Fraction(0, 1), Fraction(-50, 3)), (Fraction(14, 3), Fraction(2, 1)), (Fraction(20, 3), Fraction(0, 1))]"
+    },
+    {
+      "id": "LATTICE.sectors",
+      "statement": "the candidates occupy two new affine sectors besides the original lattice",
+      "status": "pass",
+      "detail": "((Fraction(0, 1), Fraction(1, 3)), (Fraction(2, 3), Fraction(0, 1)), (Fraction(2, 3), Fraction(0, 1)))"
+    },
+    {
+      "id": "LATTICE.minimum",
+      "statement": "exactly two additional affine cosets are required for these candidates",
+      "status": "pass",
+      "detail": "[(Fraction(0, 1), Fraction(1, 3)), (Fraction(2, 3), Fraction(0, 1))]"
+    },
+    {
+      "id": "CHARGE.split",
+      "statement": "the candidates are not initially deck-homogeneous",
+      "status": "pass",
+      "detail": "(2, 1, 1)"
+    },
+    {
+      "id": "CHARGE.adapter",
+      "statement": "one charge-2 adapter aligns all three candidates",
+      "status": "pass",
+      "detail": "(1, 1, 1)"
+    },
+    {
+      "id": "TRANSPORT.full_rank",
+      "statement": "the minimally saturated source packet still maps with rank three",
+      "status": "pass",
+      "detail": "{'row_indices': (0, 1, 3), 'rows': [Fraction(0, 1), Fraction(1, 1), Fraction(3, 1)], 'determinant': Fraction(-48775302133841920000, 729)}"
+    },
+    {
+      "id": "TRANSPORT.adapter_rank",
+      "statement": "an invertible charged adapter preserves the nonzero rank witness",
+      "status": "pass",
+      "detail": "-48775302133841920000/729"
+    },
+    {
+      "id": "EXACT.direct_sum",
+      "statement": "adjoining independent injective sectors preserves injectivity",
+      "status": "pass",
+      "detail": "rank=9, columns=9"
+    },
+    {
+      "id": "EXACT.flat_extension",
+      "statement": "free scalar replication preserves rank-to-column equality",
+      "status": "pass",
+      "detail": "fivefold free extension"
+    },
+    {
+      "id": "EXACT.isomorphism",
+      "statement": "invertible relabellings cannot change kernel dimension",
+      "status": "pass",
+      "detail": "row and column isomorphisms preserve rank"
+    },
+    {
+      "id": "PORTAL.relation_required",
+      "statement": "the exact extension grammar contains no relation-producing constructor",
+      "status": "pass",
+      "detail": "['nonfaithful_target_quotient', 'nonflat_defect_restriction', 'noninvertible_readout_pairing', 'off_diagonal_tail_differential']"
+    }
+  ],
+  "witness_minor": {
+    "row_indices": [
+      0,
+      1,
+      3
+    ],
+    "rows": [
+      "0",
+      "1",
+      "3"
+    ],
+    "determinant": "-48775302133841920000/729"
+  },
+  "verdict": "Minimal exponent-lattice saturation plus an invertible charged adapter does not activate the rational magnetic state. Exact faithful extensions add states but not relations. A portal must supply a non-flat restriction, nonfaithful quotient, off-diagonal tail differential, or noninvertible readout."
+}

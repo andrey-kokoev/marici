@@ -118,7 +118,7 @@ lifts.
 Away from the exceptional fiber, expansion along `R_2` gives
 
 \[
-\boxed{\det C_{g,d}=C_L(g,d)L_{g,d}+C_R(g,d)R_{g,d},}
+\det C_{g,d}=C_L(g,d)L_{g,d}+C_R(g,d)R_{g,d},
 \]
 
 where
@@ -160,7 +160,7 @@ Plucker relation.  Its coordinates are
 Dividing by the gcd gives
 
 \[
-\boxed{(1,-3,2).}
+(1,-3,2).
 \]
 
 Thus
@@ -189,10 +189,8 @@ survives and resolves the three states.
 Equivalently:
 
 \[
-\boxed{
 \text{the coefficients }(1,-3,2)\text{ are primitive Plucker coordinates of
 the failed boundary reconstruction.}
-}
 \]
 
 The checker reconstructs the columns from the lattice path law, verifies the

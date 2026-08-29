@@ -3,57 +3,51 @@
   "checker": "magnetic_route_packet_checks.py",
   "author": "marici.Strominger",
   "scope": {
-    "strength": "exact local residual route-packet witnesses",
+    "strength": "dependency-free exact route, cover, and descent witnesses",
     "exclusion": "does not construct a fractional full magnetic kernel"
   },
   "checks": [
     {
       "id": "EXACT.loss",
-      "statement": "route loss lies in ker(T)",
+      "statement": "route loss maps to the zero packet",
       "status": "pass",
-      "detail": "source maps to the zero route packet"
+      "detail": "ker(T)"
     },
     {
       "id": "EXACT.interference",
-      "statement": "interference is nonzero transport into ker(sigma)",
+      "statement": "interference is a nonzero anti-diagonal packet",
       "status": "pass",
-      "detail": "source maps to the nonzero anti-diagonal packet"
+      "detail": "im(T) intersects ker([1 1])"
     },
     {
       "id": "EXACT.visible",
-      "statement": "a route packet outside ker(sigma) remains observable",
+      "statement": "a non-antidiagonal packet remains visible",
       "status": "pass",
-      "detail": "nonzero packet and nonzero composed readout"
+      "detail": "(1,0)"
     },
     {
       "id": "MAGNETIC.loss",
-      "statement": "the integral exceptional fiber loses both carriers",
+      "statement": "the integral exceptional fiber loses both routes",
       "status": "pass",
       "detail": "(g,d)=(2,5)"
     },
     {
       "id": "MAGNETIC.routes_live",
-      "statement": "the rational obstruction point has two live routes",
+      "statement": "the rational obstruction has two live routes",
       "status": "pass",
       "detail": "L=227718400/729; R=9568000/9"
     },
     {
       "id": "MAGNETIC.interference",
-      "statement": "the two nonzero route amplitudes cancel exactly",
+      "statement": "the nonzero route amplitudes cancel exactly",
       "status": "pass",
       "detail": "A=-113228379953561600000/729; B=113228379953561600000/729"
     },
     {
       "id": "ARITHMETIC.factor",
-      "statement": "the first higher-grade interference fiber factors over Q",
+      "statement": "P(6,d)=4(3d-17)(3d-37)",
       "status": "pass",
-      "detail": "4*(3*d - 37)*(3*d - 17)"
-    },
-    {
-      "id": "ARITHMETIC.off_lattice",
-      "statement": "both grade-six balance points miss integer depth",
-      "status": "pass",
-      "detail": "roots=17/3,37/3"
+      "detail": "quadratic identity certified at three points"
     },
     {
       "id": "COVER.no_three_kernel",
@@ -63,108 +57,102 @@
     },
     {
       "id": "COVER.exponents",
-      "statement": "the cubic spin-two pullback has integral Laurent exponents",
+      "statement": "the cubic spin-two pullback has integral exponents",
       "status": "pass",
-      "detail": "[(4, -50), (-10, 6), (-16, 0)]"
+      "detail": "[(4, Fraction(-50, 1)), (Fraction(-10, 1), 6), (Fraction(-16, 1), 0)]"
     },
     {
       "id": "COVER.connection",
-      "statement": "the cubic pullback changes the connection and is ramified",
+      "statement": "the cubic pullback is ramified and changes the connection",
       "status": "pass",
-      "detail": "-6*w**2*wb**3/(w**3*wb**3 + 1) + 2/w"
+      "detail": "C_ww=9w^4 C_zz; d log gamma/dw=2/w-6w^2 wb^3/(1+w^3 wb^3)"
     },
     {
       "id": "COVER.deck_split",
-      "statement": "the three proposed sources split across deck characters",
+      "statement": "the coefficient characters are (0,2,2)",
       "status": "pass",
       "detail": "[0, 2, 2]"
     },
     {
       "id": "COVER.no_descent",
-      "statement": "none belongs to the descended spin-two character sector",
+      "statement": "none lies in the descended coefficient character",
       "status": "pass",
-      "detail": "essential pullback image has character 1 mod 3"
+      "detail": "pullback image has character 1"
     },
     {
       "id": "COVER.no_coherent_sum",
-      "statement": "the proposed three-term circuit is not deck-homogeneous",
+      "statement": "the proposed circuit is not deck-homogeneous",
       "status": "pass",
-      "detail": "a descended linear relation cannot mix characters 0 and 2"
+      "detail": "[0, 2, 2]"
     },
     {
       "id": "CHARGE.tensor",
-      "statement": "the intrinsic spin-two deck charges are (2,1,1)",
+      "statement": "the intrinsic spin-two charges are (2,1,1)",
       "status": "pass",
       "detail": "[2, 1, 1]"
     },
     {
       "id": "CHARGE.derivatives",
-      "statement": "both covariant derivative constructors preserve deck charge",
+      "statement": "covariant derivatives preserve total deck charge",
       "status": "pass",
-      "detail": "exponent loss is exactly balanced by the added tensor index"
+      "detail": "90 exact degree-one samples"
     },
     {
       "id": "CHARGE.reflection",
       "statement": "reflection reverses deck charge",
       "status": "pass",
-      "detail": "paired route sectors are conjugate, not silently identified"
+      "detail": "conjugate sectors are paired, not identified"
     },
     {
       "id": "CHARGE.adapter",
-      "statement": "the minimal character-changing repair must carry nonzero charge",
+      "statement": "aligning charges requires a nontrivial charged adapter",
       "status": "pass",
-      "detail": "charge-2 adapter, e.g. w^2, aligns the sectors but breaks descent"
+      "detail": "a charge-2 adapter changes the grammar"
     },
     {
       "id": "TYPE.moving_columns",
-      "statement": "analytic continuation moves columns between depth cosets",
+      "statement": "analytic continuation moves depth cosets",
       "status": "pass",
-      "detail": "[0, 2/3, 2/3]"
+      "detail": "[0, Fraction(2, 3), Fraction(2, 3)]"
     },
     {
       "id": "TYPE.cover_cosets",
-      "statement": "the cubic candidates occupy two cover-depth congruence classes",
+      "statement": "cover depths occupy two congruence classes",
       "status": "pass",
-      "detail": "depths=[-4, 10, 16]; mod6=[2, 4, 4]"
+      "detail": "([-4, Fraction(10, 1), Fraction(16, 1)], [2, Fraction(4, 1), Fraction(4, 1)])"
     },
     {
       "id": "TYPE.essential_image",
-      "statement": "no candidate satisfies both essential-image congruences",
+      "statement": "no candidate satisfies both pullback congruences",
       "status": "pass",
-      "detail": "required (A mod6,r mod3)=(2,0); actual=[(2, 1), (4, 0), (4, 0)]"
+      "detail": "[(2, Fraction(1, 1)), (Fraction(4, 1), 0), (Fraction(4, 1), 0)]"
     },
     {
       "id": "COVER.all_degrees",
-      "statement": "no cyclic cover clearing thirds aligns the reflected branches",
+      "statement": "no thirds-clearing cyclic cover aligns the branches",
       "status": "pass",
-      "detail": "N=3,6,...,60; failures=[]"
+      "detail": "N=3,6,...,60"
     },
     {
       "id": "COVER.criterion",
-      "statement": "the reflected deck-charge difference is exactly 2*N*q",
+      "statement": "branch alignment requires 2q integral",
       "status": "pass",
-      "detail": "alignment modulo N requires 2q integral"
-    },
-    {
-      "id": "COVER.thirds",
-      "statement": "both rational interference components violate the cover criterion",
-      "status": "pass",
-      "detail": "q=35/3,55/3; neither has integral 2q"
+      "detail": "q=35/3,55/3"
     },
     {
       "id": "COVER.rational_class",
-      "statement": "the rational residual zeros are exactly the three known points",
+      "statement": "the rational residual zeros are exactly three points",
       "status": "pass",
-      "detail": "[(2, 5), (6, 17/3), (6, 37/3)]"
+      "detail": "[(2, Fraction(5, 1)), (6, Fraction(17, 3)), (6, Fraction(37, 3))]"
     },
     {
       "id": "COVER.descent_class",
-      "statement": "only the original route-loss zero passes cyclic descent typing",
+      "statement": "only route loss passes cyclic descent typing",
       "status": "pass",
-      "detail": "[(2, 5)]"
+      "detail": "[(2, Fraction(5, 1))]"
     }
   ],
-  "n_pass": 26,
+  "n_pass": 24,
   "n_fail": 0,
-  "verdict": "The intermediate local route packet separates loss from interference. The analytically continued residual coordinate cancels at grade-six rational depths, but this does not lift to a three-column full kernel. On the cubic cover the candidate spin-two Laurent components have deck characters (0,2,2), whereas descended base tensors have character 1; the proposed circuit is not deck-homogeneous. Thus representability on the cover does not supply a descended constructible state."
+  "verdict": "The cubic cover clears denominators but does not activate either interference fiber: the full columns remain independent and the candidate sources are not deck-homogeneous. No finite cyclic cover alone repairs the branch-charge mismatch."
 }
