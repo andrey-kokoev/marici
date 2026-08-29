@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787959674433226700_62",
+  "created_at": "2026-08-28T23:27:54.4332308Z",
+  "sha256": "86ca44f68886e2fdfc974a1627a23526405153bf527439014fdcdf6ec360849d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; I=s.I; r=s.symbols('r',positive=True,real=True); z=s.Rational(4,5)+I*s.Rational(3,5); Y0=s.diag(1,2,4); a=s.Matrix([1,2,3]); b=s.Matrix([[2,1,1]]); Hu=s.diag(1,4,9); Y=Y0+r*z*a*b; H=s.simplify(Y*Y.H); C=Hu*H-H*Hu; du=s.discriminant(Hu.charpoly().as_expr(),Hu.charpoly().gen); dd=s.factor(s.discriminant(H.charpoly().as_expr(),H.charpoly().gen)); j2=s.factor(-C.det()**2/(4*du*dd)); print('dd=',dd); print('j2=',j2); print('dj=',s.factor(s.diff(j2,r)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:27:53.558013Z",
+    "finished_at": "2026-08-28T23:27:54.4332148Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1025 exact threshold J response derivation",
+      "expected_cost": "one symbolic discriminant and derivative",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1025 exact threshold J response derivation",
+    "expected_cost": "one symbolic discriminant and derivative",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "dd= 108*(12878670000*r**8 + 16583280000*r**7 + 10789212400*r**6 + 4331604000*r**5 + 1454241747*r**4 + 398819200*r**3 + 90718200*r**2 + 10800000*r + 1687500)/625\r\nj2= 400*r**6/(3*(12878670000*r**8 + 16583280000*r**7 + 10789212400*r**6 + 4331604000*r**5 + 1454241747*r**4 + 398819200*r**3 + 90718200*r**2 + 10800000*r + 1687500))\r\ndj= -800*r**5*(4292890000*r**8 + 2763880000*r**7 - 721934000*r**5 - 484747249*r**4 - 199409600*r**3 - 60478800*r**2 - 9000000*r - 1687500)/(12878670000*r**8 + 16583280000*r**7 + 10789212400*r**6 + 4331604000*r**5 + 1454241747*r**4 + 398819200*r**3 + 90718200*r**2 + 10800000*r + 1687500)**2\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
