@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953843701873200_17",
+  "created_at": "2026-08-28T21:50:43.7018774Z",
+  "sha256": "2174c08a6ac0f4ff5ac722f8aac75cc7bdbf9efb410400bbb616dcb0e757f681",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz,u,v=s.symbols('z u v');w=s.Rational(1,2)-u-v;n=2*(z*z-z+1);A=(z+1)**2/n;B=(2*z-1)**2/n;C=(z-2)**2/n;r=s.Rational(44376,275);F=2*(A*u+B*v+C*w)+4*r*A*B*C*u*v*w; eq=[s.primitive(s.Poly(s.together(s.diff(F,q)).as_numer_denom()[0],u,v,z))[1].as_expr() for q in (u,v,z)];print('degrees',[s.Poly(e,u,v,z).total_degree() for e in eq]);G=s.groebner(eq,u,v,z,order='lex');print('len',len(G.polys));print('last=',s.factor(G.polys[-1].as_expr()))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:50:42.7850183Z",
+    "finished_at": "2026-08-28T21:50:43.7018614Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "degrees [8, 8, 8]\r\nlen 6\r\nlast= z*(z - 1)*(z**2 - z + 1)**2*(37009*z**12 - 222054*z**11 + 377805*z**10 + 146470*z**9 - 513261*z**8 - 1268370*z**7 + 2921811*z**6 - 1268370*z**5 - 513261*z**4 + 146470*z**3 + 377805*z**2 - 222054*z + 37009)\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
