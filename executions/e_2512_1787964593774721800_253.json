@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787964593774721800_253",
+  "created_at": "2026-08-29T00:49:53.7747245Z",
+  "sha256": "f8dbf44032731d6b02de7a85db604ecf13e562d12ea4a91b7d6fc9fa90608257",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;from fractions import Fraction as F;d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));\ndef seq(b,g):\n x=next(z for z in d['rows'] if z['beta']==b and z['g']==g);c=x['target_normalized_coefficients'];return [F(c.get(f'{b+r},plus','0/1')) for r in range(g+1)]\nprint({g:sorted(set(sum(v!=0 for v in [seq(b,g+1)[j]-(seq(b,g)[j-1] if j else 0) for j in range(g+2)]) for b in range(2,9))) for g in range(2,20)})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:49:53.6306509Z",
+    "finished_at": "2026-08-29T00:49:53.7747131Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "grade-shift residual support census",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "grade-shift residual support census",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{2: [1, 2], 3: [3], 4: [4], 5: [5], 6: [6], 7: [7], 8: [8], 9: [9], 10: [10], 11: [11], 12: [12], 13: [13], 14: [14], 15: [15], 16: [16], 17: [17], 18: [18], 19: [19]}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
