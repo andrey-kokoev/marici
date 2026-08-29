@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787964571824833700_250",
+  "created_at": "2026-08-29T00:49:31.8248365Z",
+  "sha256": "1f5e53b14f1377e1880c04d5a5d5480b5e95ad7a09b0a4a07523b6f1035582e8",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;from fractions import Fraction as F;d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));\ndef seq(b,g):\n x=next(z for z in d['rows'] if z['beta']==b and z['g']==g);c=x['target_normalized_coefficients'];return [F(c.get(f'{b+r},plus','0/1')) for r in range(g+1)]\nfor b in (2,4,8):\n print('beta',b)\n for g in range(2,20):\n a=seq(b,g);z=seq(b,g+1);r=[z[j]-(a[j-1] if j else 0) for j in range(g+2)];print(g,sum(v!=0 for v in r),r[-5:])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:49:31.7374791Z",
+    "finished_at": "2026-08-29T00:49:31.8248236Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "grade-changing convolution residual support",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "grade-changing convolution residual support",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "  File \"<string>\", line 7\r\n    a=seq(b,g);z=seq(b,g+1);r=[z[j]-(a[j-1] if j else 0) for j in range(g+2)];print(g,sum(v!=0 for v in r),r[-5:])\r\n    ^\r\nIndentationError: expected an indented block after 'for' statement on line 6\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
