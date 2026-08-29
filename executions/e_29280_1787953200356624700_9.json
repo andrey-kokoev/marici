@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953200356624700_9",
+  "created_at": "2026-08-28T21:40:00.3566284Z",
+  "sha256": "c66f46a27cde069aaf28cea6475b308d3f981e69bd08208f0719459508f83f91",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\na,t=s.symbols('a t', positive=True, real=True); I=s.I\nX=s.diag(-1,0,1); Y=s.Matrix([[0,a,-I*t],[a,0,1],[I*t,1,0]]); C=X*Y-Y*X; nx=s.trace(X.H*X); ny=s.trace(Y.H*Y); K=s.factor(s.trace(C.H*C)/(nx*ny)); P=s.factor(C.det()*s.conjugate(C.det())/(nx*ny)**3); r=s.Rational(44376,275); S=s.factor(K+r*P)\np={a:s.Integer(1),t:s.Rational(6,5)}\nprint('K=',K); print('P=',P); print('dSa=',s.factor(s.diff(S,a).subs(p))); print('dSt=',s.factor(s.diff(S,t).subs(p))); print('S=',s.factor(S.subs(p)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:39:59.5735873Z",
+    "finished_at": "2026-08-28T21:40:00.3565925Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "K= (a**2 + 4*t**2 + 1)/(2*(a**2 + t**2 + 1))\r\nP= a**2*t**2/(4*(a**2 + t**2 + 1)**3)\r\ndSa= 0\r\ndSt= 0\r\nS= 2417/946\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
