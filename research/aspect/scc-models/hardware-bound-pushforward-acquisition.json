@@ -1,0 +1,6 @@
+{
+  "$schema":"../scc/model-manifest.schema.json","schema":"marici.scc.model-manifest.v1",
+  "model":{"id":"hardware-bound-pushforward-acquisition","owner":"marici.Aspect","classification":"synthetic_reference_requires_physical_packet","stratum":"digest-bound acquisition identity and compiler provenance before Bell admission",
+  "inputs":["research/aspect/hardware-bound-pushforward-acquisition.md","research/aspect/contracts/hardware-bound-pushforward-acquisition.v1.json","research/aspect/fixtures/hardware-bound-pushforward-synthetic-packet.v1.json"],
+  "checks":[{"id":"hardware-bound-pushforward-acquisition","path":"research/aspect/checkers/check_hardware_bound_pushforward_acquisition.py","requires":[]},{"id":"commuting-square-pushforward-auditor","path":"research/aspect/checkers/check_commuting_square_pushforward_auditor.py","requires":[]}],
+  "depends_on":["commuting-square-pushforward-auditor"],"consumes":["immutable raw event packet","compiler bytes","provenance declaration"],"provides":["digest-bound admission receipt","stable event-view identity","Bell-analysis gate"],"missing_constructors":["physical_raw packet","hardware acquisition service binding","spacelike certificate"],"next_falsifier":"alter any raw event, compiler byte, provenance source, or event identity and require receipt invalidation"}}

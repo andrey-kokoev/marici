@@ -1,0 +1,14 @@
+{
+  "schema":"marici.aspect.optical-bench-acquisition.v1",
+  "protocols":{
+    "metric":{"states":4,"records":["self_overlap","pairwise_hom"],"tolerance":0.01},
+    "orientation":{"triple":[0,1,2],"records":["projector_loop_x","projector_loop_y","cyclic_shift_x","cyclic_shift_y"],"tolerance":0.02},
+    "bell":{"settings_a":2,"settings_b":2,"outcomes":[-1,0,1],"retain_no_click":true,"setting_health_required":true,"confidence_alpha":0.01},
+    "network":{"independent_source_flags":2,"records":["I","J","source_covariance"],"bilocal_ceiling":1.0},
+    "context":{"contexts":5,"compatibility_order_randomized":true,"kcbs_ceiling":2.0}
+  },
+  "trial_fields":["trial_id","protocol","source_id","setting_a","setting_b","context","outcome_a","outcome_b","no_click_a","no_click_b","time_tag","setting_source_health","coincidence_window_id","compiler_id","phase_fixture","reset_id"],
+  "promotion_fields":["raw_record","calibration_authority","uncertainty_rule","hostile_outcomes","claim_boundary"],
+  "hostiles":["mirror_same_sign","compiler_bias","fair_sampling","predictable_settings","coincidence_window_scan","memory_autocorrelation","source_correlation","context_order_effect","reset_leakage","finite_field_lift_ambiguity"]
+}
+

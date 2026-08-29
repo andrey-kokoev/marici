@@ -1,0 +1,24 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "local-completion-global-obstruction-ladder",
+    "owner": "marici.Aspect",
+    "classification": "candidate_requires_physical_execution",
+    "stratum": "monotone local constructor completion versus invariant global factorization obstruction",
+    "inputs": [
+      "research/aspect/local-completion-global-obstruction-ladder.md",
+      "research/aspect/contracts/local-completion-global-obstruction-ladder.v1.json",
+      "research/aspect/epr-compton-local-flatness-nonfactorization.md"
+    ],
+    "checks": [
+      {"id": "local-completion-global-obstruction-ladder", "path": "research/aspect/checkers/check_local_completion_global_obstruction_ladder.py", "requires": []},
+      {"id": "epr-compton-local-flatness-nonfactorization", "path": "research/aspect/checkers/check_epr_compton_local_flatness_nonfactorization.py", "requires": []}
+    ],
+    "depends_on": ["epr-compton-local-flatness-nonfactorization", "constructor-flatness-conjecture"],
+    "consumes": ["inclusive EPR-Compton packets", "nested constructor-field sets", "fixed CHSH witness"],
+    "provides": ["rung-localized missing-route falsifier", "local-completion invariance test", "global obstruction witness-distance lower bound"],
+    "missing_constructors": ["physical rung-by-rung acquisition", "spacelike settings", "route-complete efficiency calibration"],
+    "next_falsifier": "find the first completion rung at which the inclusive conservative CHSH lower bound falls to 2 or below"
+  }
+}

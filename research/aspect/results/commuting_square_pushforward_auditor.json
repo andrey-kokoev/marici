@@ -1,0 +1,54 @@
+{
+  "schema": "marici.aspect.commuting-square-pushforward-auditor-result.v1",
+  "passed": true,
+  "checks": {
+    "honest_square_exact": true,
+    "drop_localized": true,
+    "duplication_localized": true,
+    "outcome_mutation_localized": true,
+    "honest_labels_not_remote": true,
+    "remote_label_caught": true,
+    "bell_is_last_gate": true,
+    "exact_same_ledger_threshold": true,
+    "claim_boundary_preserved": true
+  },
+  "honest": {
+    "passed": true,
+    "total_expected": 1800,
+    "total_actual": 1800,
+    "cell_differences": {},
+    "mismatch_cells": 0
+  },
+  "hostiles": {
+    "drop_event": {
+      "passed": false,
+      "total_expected": 1800,
+      "total_actual": 1799,
+      "cell_differences": {
+        "(0, 0, -1, -1)": -1
+      },
+      "mismatch_cells": 1
+    },
+    "duplicate_event": {
+      "passed": false,
+      "total_expected": 1800,
+      "total_actual": 1820,
+      "cell_differences": {
+        "(0, 0, -1, -1)": 20
+      },
+      "mismatch_cells": 1
+    },
+    "mutate_outcome": {
+      "passed": false,
+      "total_expected": 1800,
+      "total_actual": 1800,
+      "cell_differences": {
+        "(0, 0, -1, 0)": -20,
+        "(0, 0, 1, 0)": 20
+      },
+      "mismatch_cells": 2
+    }
+  },
+  "verdict": "same_ledger_pushforward_auditor_accepts_refinement_and_localizes_mutations",
+  "physical_status": "not_run"
+}

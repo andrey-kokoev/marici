@@ -1,0 +1,17 @@
+{
+  "schema":"marici.aspect.comparison-loop-interferometer.v1",
+  "route_edges":["source_class","characteristic_zero_lift","primitive_normalization","optical_compiler","calibrated_measurement","source_reconstruction"],
+  "edge_certificate_fields":["source_authority","domain","codomain","normalization","uncertainty_rule","environment_record","reset_record"],
+  "probe_frame":{"kind":"tetrahedral_qubit","size":4,"oriented_triple":[0,1,2]},
+  "classification_order":["source_dependent","conjugation","nonunitary_leakage","identity","scalar_phase","general_unitary"],
+  "tolerances":{"matrix":1e-10,"unitarity":1e-10,"source_dependence":1e-10,"orientation":1e-10},
+  "promotion":{
+    "complex_observable":["identity"],
+    "projective_observable":["identity","scalar_phase"],
+    "oriented_observable":["identity"],
+    "reject":["conjugation","nonunitary_leakage","source_dependent","general_unitary"]
+  },
+  "acquisition_fields":["probe_id","route_id","compiler_id","control_x","control_y","bypass_transmission","environment_port","phase_fixture","reset_id","source_reconstruction"],
+  "claim_boundary":{"physical_execution":false,"route_independent_optical_observable":false,"interaction_net_lift_authorized":false}
+}
+
