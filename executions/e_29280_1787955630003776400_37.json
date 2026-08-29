@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787955630003776400_37",
+  "created_at": "2026-08-28T22:20:30.0037799Z",
+  "sha256": "d4a49de3b823d4cba36864ebb3b272630ee3d33bb2a360b01ecc1457aae98a07",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as S\nq=S.Rational;c=S.symbols('c', real=True)\nVus=q(22517,100000);Vub=q(3763,1000000);Vcb=q(4189,100000)\ns13=Vub;c13=S.sqrt(1-s13**2);s12=Vus/c13;c12=S.sqrt(1-s12**2);s23=Vcb/c13;c23=S.sqrt(1-s23**2)\n# squared moduli directly, phase-dependent four lower-left block entries\nW00=c12**2*c13**2;W01=s12**2*c13**2;W02=s13**2\nW12=s23**2*c13**2;W22=c23**2*c13**2\nW10=s12**2*c23**2+c12**2*s23**2*s13**2+2*s12*c12*c23*s23*s13*c\nW11=c12**2*c23**2+s12**2*s23**2*s13**2-2*s12*c12*c23*s23*s13*c\nW20=s12**2*s23**2+c12**2*c23**2*s13**2-2*s12*c12*s23*c23*s13*c\nW21=c12**2*s23**2+s12**2*c23**2*s13**2+2*s12*c12*s23*c23*s13*c\nF=S.collect(S.factor(sum(z*z for z in [W00,W01,W02,W10,W11,W12,W20,W21,W22])),c)\np=S.Poly(F,c)\nprint(\"degree\",p.degree())\nfor i,a in enumerate(p.all_coeffs()): print(i,str(a)[:600])\nupper=S.simplify(p.nth(0)+abs(p.nth(1))+p.nth(2))\nprint(\"upperN\",S.N(upper,20))\nprint(\"upper<281/100\",S.simplify(upper<q(281,100)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:20:29.2891385Z",
+    "finished_at": "2026-08-28T22:20:30.0037658Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "exact CKM permutation-invariant universal bound derivation",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "exact CKM permutation-invariant universal bound derivation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "degree 2\r\n0 89693205011650414401229599856991118712152491/4695451542670224265814031766683776183512760568750000\r\n1 -2626642400775812375742546656776959538464065251*sqrt(961949154765803343538661243101176781858249089721)/20815766397218037936791847988437793933204855010172379158922500000000000000\r\n2 5786346749610284178912962524287952830923861950627934920055747885762161/2065998678774898676958173977340861520745614650250000000000000000000000\r\nupperN 2.8008742401697090387\r\nupper<281/100 True\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
