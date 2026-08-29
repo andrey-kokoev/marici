@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950095018782800_98",
+  "created_at": "2026-08-28T20:48:15.0187868Z",
+  "sha256": "82645b78bc1b4ca5d3780af3b17735c17990ddfa22eb450de47c5e84262e98c6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "constructors",
+      "wp993-universal-adaptive-control-section"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:48:14.8961606Z",
+    "finished_at": "2026-08-28T20:48:15.0187737Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP993 repaired checker and SCC",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP993 repaired checker and SCC",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.constructor-synthesis.v1\",\r\n  \"model\": \"wp993-universal-adaptive-control-section\",\r\n  \"source_obligations\": [\r\n    \"calibrated nondestructive or reset-compatible q k measurement\",\r\n    \"source-authorized independent invariant actuators u and v\",\r\n    \"typed feedback composition with latency disturbance and covariance\",\r\n    \"labelled relative-energy verification in the same physical frame\",\r\n    \"exhibit two equivalent preparations with inconsistent calibrated q,k records or one commanded control pair whose physical response violates Q=q+u and R=k+v outside preregistered uncertainty\"\r\n  ],\r\n  \"candidates\": [\r\n    {\r\n      \"rule\": \"joint-source-operation\",\r\n      \"score\": 1,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"labelled relative-energy verification in the same physical frame\",\r\n          \"matched_terms\": [\r\n            \"labelled\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"nonlinear joint source operation before marginalization or sewing\",\r\n      \"discriminating_hostile\": \"hold every marginal fixed while varying only cross-label coupling; reject any scalar additive surrogate\",\r\n      \"forbidden_substitute\": \"repairing missing source coupling by increasing observer rank\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    }\r\n  ],\r\n  \"candidate_count\": 1,\r\n  \"status\": \"candidate_menu_not_truth_certificate\",\r\n  \"next\": \"derive the highest-ranked constructor from source data, freeze its receiver, then run the attached hostile\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
