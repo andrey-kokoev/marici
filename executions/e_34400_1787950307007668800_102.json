@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950307007668800_102",
+  "created_at": "2026-08-28T20:51:47.0076727Z",
+  "sha256": "8c3eaf9e1fe6354e5c966127b09bb8bd9ab25a4663486667e881b35c7755ac6d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "constructors",
+      "wp994-adaptive-control-robustness-radius"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:51:46.8828198Z",
+    "finished_at": "2026-08-28T20:51:47.0076559Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP994 SCC",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP994 SCC",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.constructor-synthesis.v1\",\r\n  \"model\": \"wp994-adaptive-control-robustness-radius\",\r\n  \"source_obligations\": [\r\n    \"independently calibrated joint error metric in invariant control units\",\r\n    \"closed-loop covariance composition across measurement feedback and actuation\",\r\n    \"source-authorized apparatus whose worst-case error is strictly below 1/24697\",\r\n    \"same-frame labelled relative-energy verification\",\r\n    \"calibrate the complete closed-loop error packet and test whether its worst-case invariant-coordinate support crosses the full-rank hostile corner dQ=1/24697 dR=-1/24697\"\r\n  ],\r\n  \"candidates\": [\r\n    {\r\n      \"rule\": \"joint-source-operation\",\r\n      \"score\": 2,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"independently calibrated joint error metric in invariant control units\",\r\n          \"matched_terms\": [\r\n            \"joint\"\r\n          ]\r\n        },\r\n        {\r\n          \"text\": \"same-frame labelled relative-energy verification\",\r\n          \"matched_terms\": [\r\n            \"labelled\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"nonlinear joint source operation before marginalization or sewing\",\r\n      \"discriminating_hostile\": \"hold every marginal fixed while varying only cross-label coupling; reject any scalar additive surrogate\",\r\n      \"forbidden_substitute\": \"repairing missing source coupling by increasing observer rank\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    },\r\n    {\r\n      \"rule\": \"rank-stratification\",\r\n      \"score\": 1,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"calibrate the complete closed-loop error packet and test whether its worst-case invariant-coordinate support crosses the full-rank hostile corner dQ=1/24697 dR=-1/24697\",\r\n          \"matched_terms\": [\r\n            \"rank\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"source-derived Fitting atlas with constant-rank transition certificates\",\r\n      \"discriminating_hostile\": \"cross the nearest rank-jump boundary while preserving the declared local packet and reject any transported bundle claim\",\r\n      \"forbidden_substitute\": \"forming a connection across fibers of changing type\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    }\r\n  ],\r\n  \"candidate_count\": 2,\r\n  \"status\": \"candidate_menu_not_truth_certificate\",\r\n  \"next\": \"derive the highest-ranked constructor from source data, freeze its receiver, then run the attached hostile\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
