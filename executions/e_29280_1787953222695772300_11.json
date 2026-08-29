@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953222695772300_11",
+  "created_at": "2026-08-28T21:40:22.6957763Z",
+  "sha256": "9786abbbd3367608a261bf534eda1550883fd6bdbbbec2bc80366562102b56f2",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz=s.symbols('z', real=True); t=s.Rational(6,5); X=s.diag(-1,z,1-z); Y=s.Matrix([[0,1,-s.I*t],[1,0,1],[s.I*t,1,0]]); C=X*Y-Y*X; nx=s.trace(X.H*X); ny=s.trace(Y.H*Y); K=s.factor(s.trace(C.H*C)/(nx*ny)); P=s.factor(C.det()*s.conjugate(C.det())/(nx*ny)**3); S=s.factor(K+s.Rational(44376,275)*P); print('d=',s.factor(s.diff(S,z).subs(z,0))); print('d2=',s.factor(s.diff(S,z,2).subs(z,0))); print('S=',s.factor(S.subs(z,0))); print('Sz=',s.factor(S))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:40:22.0357323Z",
+    "finished_at": "2026-08-28T21:40:22.6957609Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "d= 0\r\nd2= -9294/473\r\nS= 2417/946\r\nSz= (4471*z**6 - 13776*z**5 + 9690*z**4 + 3338*z**3 + 10416*z**2 - 14502*z + 4834)/(1892*(z**2 - z + 1)**3)\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
