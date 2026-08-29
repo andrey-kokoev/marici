@@ -1,0 +1,171 @@
+{
+  "schema": "marici.aspect.flavor-wp996-formula-synthesis-check.v1",
+  "checks": {
+    "conditional_formulas_derived": true,
+    "radius_formula_exact": true,
+    "full_rank_target_exact": true,
+    "assumption_not_source_derivation": true,
+    "physical_scale_underdetermined": true,
+    "closed_loop_underdetermined": true,
+    "physical_bridge_not_certified": true,
+    "equation_deletion_first_failure": true,
+    "observer_fitting_rejected": true
+  },
+  "synthesis": {
+    "schema": "marici.scc.formula-synthesis.v1",
+    "contract": "flavor-wp996-formula-synthesis",
+    "stages": [
+      {
+        "id": "conditional_optimum",
+        "status": "derived",
+        "first_failed_gate": null,
+        "rank": 7,
+        "unknown_count": 7,
+        "formulas": {
+          "Q_comm": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "-1"
+            },
+            "source_derived": false
+          },
+          "R_comm": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "-1"
+            },
+            "source_derived": false
+          },
+          "Q_rank": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "1"
+            },
+            "source_derived": false
+          },
+          "R_rank": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "-1"
+            },
+            "source_derived": false
+          },
+          "Q_full": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "-7/49401"
+            },
+            "source_derived": false
+          },
+          "R_full": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "1"
+            },
+            "source_derived": false
+          },
+          "radius": {
+            "constant": "0",
+            "parameter_coefficients": {
+              "B": "1/5489"
+            },
+            "source_derived": false
+          }
+        },
+        "underdetermined": [],
+        "free_unknowns": []
+      },
+      {
+        "id": "physical_scale",
+        "status": "underdetermined",
+        "first_failed_gate": "formula_rank",
+        "rank": 0,
+        "unknown_count": 1,
+        "formulas": {},
+        "underdetermined": [
+          "B"
+        ],
+        "free_unknowns": [
+          "B"
+        ]
+      },
+      {
+        "id": "closed_loop",
+        "status": "underdetermined",
+        "first_failed_gate": "formula_rank",
+        "rank": 0,
+        "unknown_count": 1,
+        "formulas": {},
+        "underdetermined": [
+          "dual_error_bound"
+        ],
+        "free_unknowns": [
+          "dual_error_bound"
+        ]
+      }
+    ],
+    "derived_formulas": {
+      "conditional_optimum.Q_comm": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "-1"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.R_comm": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "-1"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.Q_rank": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "1"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.R_rank": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "-1"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.Q_full": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "-7/49401"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.R_full": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "1"
+        },
+        "source_derived": false
+      },
+      "conditional_optimum.radius": {
+        "constant": "0",
+        "parameter_coefficients": {
+          "B": "1/5489"
+        },
+        "source_derived": false
+      }
+    },
+    "required_source_outputs": [
+      "physical_scale.B",
+      "closed_loop.dual_error_bound"
+    ],
+    "missing_source_formulas": [
+      "physical_scale.B",
+      "closed_loop.dual_error_bound"
+    ],
+    "bridge_status": "underdetermined",
+    "certifies_physical_realization": false
+  },
+  "passed": true,
+  "disposition": "conditional formulas derived exactly; physical bridge formulas underdetermined"
+}

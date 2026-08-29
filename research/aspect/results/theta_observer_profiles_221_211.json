@@ -1,0 +1,82 @@
+{
+  "schema": "marici.aspect.theta-observer-profiles-221-211-check.v1",
+  "checks": {
+    "base_2x2_compiles": true,
+    "profiles_counted": true,
+    "221_retains_arity_coverage": true,
+    "221_finite_rank_extra_does_not_repair_completion": true,
+    "221_margin_still_decays": true,
+    "211_loses_square_intertower_coverage": true,
+    "determinant_scalar_does_not_substitute_for_missing_J2": true
+  },
+  "audits": [
+    {
+      "id": "2-2-1",
+      "observer_counts": [
+        2,
+        2,
+        1
+      ],
+      "intertower_arity_coverage": true,
+      "finite_augmented_margins": [
+        {
+          "cutoff": 2,
+          "minimum_singular_value_squared": "1/4",
+          "minimum_singular_value": "1/2"
+        },
+        {
+          "cutoff": 4,
+          "minimum_singular_value_squared": "1/16",
+          "minimum_singular_value": "1/4"
+        },
+        {
+          "cutoff": 8,
+          "minimum_singular_value_squared": "1/64",
+          "minimum_singular_value": "1/8"
+        },
+        {
+          "cutoff": 16,
+          "minimum_singular_value_squared": "1/256",
+          "minimum_singular_value": "1/16"
+        }
+      ],
+      "completion_closed_range": false,
+      "first_failed_gate": "completion_closed_range"
+    },
+    {
+      "id": "2-1-1",
+      "observer_counts": [
+        2,
+        1,
+        1
+      ],
+      "intertower_arity_coverage": false,
+      "finite_augmented_margins": [
+        {
+          "cutoff": 2,
+          "minimum_singular_value_squared": "1/4",
+          "minimum_singular_value": "1/2"
+        },
+        {
+          "cutoff": 4,
+          "minimum_singular_value_squared": "1/16",
+          "minimum_singular_value": "1/4"
+        },
+        {
+          "cutoff": 8,
+          "minimum_singular_value_squared": "1/64",
+          "minimum_singular_value": "1/8"
+        },
+        {
+          "cutoff": 16,
+          "minimum_singular_value_squared": "1/256",
+          "minimum_singular_value": "1/16"
+        }
+      ],
+      "completion_closed_range": false,
+      "first_failed_gate": "intertower_arity_coverage"
+    }
+  ],
+  "passed": true,
+  "disposition": "2-2-1 preserves finite arity coherence but cannot repair nonclosed completion with one finite-rank observer; 2-1-1 fails earlier by losing negative-tower arity-2 coverage"
+}

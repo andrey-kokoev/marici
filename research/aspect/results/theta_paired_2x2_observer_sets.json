@@ -1,0 +1,286 @@
+{
+  "schema": "marici.aspect.theta-paired-2x2-observer-sets-check.v1",
+  "checks": {
+    "paired_set_compiles": true,
+    "two_observers_each": true,
+    "arity_profile_1_2_each": true,
+    "fourier_is_intertower": true,
+    "both_polarizations_pass": true,
+    "finite_pushouts_exact": true,
+    "completion_pushout_fails": true,
+    "finite_margin_decays": true,
+    "a7_fails_only_at_completion": true
+  },
+  "compilation": {
+    "schema": "marici.scc.observer-set-compilation.v1",
+    "observer_set": "theta-paired-2x2-observer-sets",
+    "errors": [],
+    "members": [
+      {
+        "id": "J1_positive",
+        "tower": "positive",
+        "arity": 1,
+        "domain": "A_positive",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 2,
+        "domain_dimension": 2
+      },
+      {
+        "id": "J2_positive",
+        "tower": "positive",
+        "arity": 2,
+        "domain": "Sym2(A_positive)",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            3,
+            -2,
+            1
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 1,
+        "domain_dimension": 3
+      },
+      {
+        "id": "J1_negative",
+        "tower": "negative",
+        "arity": 1,
+        "domain": "A_negative",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 2,
+        "domain_dimension": 2
+      },
+      {
+        "id": "J2_negative",
+        "tower": "negative",
+        "arity": 2,
+        "domain": "Sym2(A_negative)",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 1,
+        "domain_dimension": 3
+      }
+    ],
+    "joint_faithfulness_by_arity": {
+      "1": {
+        "joint_rank": 2,
+        "domain_dimension": 2,
+        "joint_kernel_dimension": 0,
+        "faithful": true
+      },
+      "2": {
+        "joint_rank": 2,
+        "domain_dimension": 3,
+        "joint_kernel_dimension": 1,
+        "faithful": false
+      }
+    },
+    "joint_faithfulness_by_tower_and_arity": {
+      "negative": {
+        "1": {
+          "joint_rank": 2,
+          "domain_dimension": 2,
+          "joint_kernel_dimension": 0,
+          "faithful": true
+        },
+        "2": {
+          "joint_rank": 1,
+          "domain_dimension": 3,
+          "joint_kernel_dimension": 2,
+          "faithful": false
+        }
+      },
+      "positive": {
+        "1": {
+          "joint_rank": 2,
+          "domain_dimension": 2,
+          "joint_kernel_dimension": 0,
+          "faithful": true
+        },
+        "2": {
+          "joint_rank": 1,
+          "domain_dimension": 3,
+          "joint_kernel_dimension": 2,
+          "faithful": false
+        }
+      }
+    },
+    "polarization": [
+      {
+        "id": "positive_square",
+        "mixed": "2",
+        "twice_bilinear": "2",
+        "passed": true
+      },
+      {
+        "id": "negative_square",
+        "mixed": "-2",
+        "twice_bilinear": "-2",
+        "passed": true
+      }
+    ],
+    "intertower_comparisons": [
+      {
+        "id": "fourier_arity_1",
+        "arity": 1,
+        "different_towers": true,
+        "passed": true
+      },
+      {
+        "id": "fourier_arity_2",
+        "arity": 2,
+        "different_towers": true,
+        "passed": true
+      }
+    ],
+    "pushout_completion": [
+      {
+        "id": "paired_boundary_pushout",
+        "finite_exact": true,
+        "finite_cutoffs": [
+          {
+            "cutoff": 1,
+            "minimum_singular_value": "1",
+            "invertible": true
+          },
+          {
+            "cutoff": 2,
+            "minimum_singular_value": "1/2",
+            "invertible": true
+          },
+          {
+            "cutoff": 4,
+            "minimum_singular_value": "1/4",
+            "invertible": true
+          },
+          {
+            "cutoff": 8,
+            "minimum_singular_value": "1/8",
+            "invertible": true
+          }
+        ],
+        "declared_uniform_lower_bound": "0",
+        "completion_exact": false,
+        "first_failed_gate": "completion_closed_range"
+      }
+    ],
+    "realization_comparisons": [
+      {
+        "id": "paired-tower-A7-pushout",
+        "slot_complete": true,
+        "verified_equivalent": false,
+        "first_failed_slot": "completion_topology"
+      }
+    ],
+    "higher_coherence": [
+      {
+        "degree": 2,
+        "state": "verified",
+        "admitted": true
+      },
+      {
+        "degree": 3,
+        "state": "verified",
+        "admitted": true
+      },
+      {
+        "degree": 4,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "degree": 5,
+        "state": "unsupported",
+        "admitted": false
+      }
+    ],
+    "passed": true,
+    "claim": "finite observer-set coherence passes independently of any failed completion gate"
+  },
+  "passed": true,
+  "disposition": "paired finite observer towers and intertower Fourier transport pass; A7 pushout exactness fails at completion closed range"
+}

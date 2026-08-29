@@ -1,0 +1,119 @@
+{
+  "schema": "marici.aspect.scc-typed-beurling-rigging-check.v1",
+  "positive": {
+    "schema": "marici.scc.beurling-rigging-compilation.v1",
+    "rigging": "theta-finite-typed-beurling-candidate",
+    "passed": true,
+    "first_failed_gate": null,
+    "weight_exponent": 2,
+    "derived_minimal_exponent": 2,
+    "products": [
+      {
+        "id": "p+p",
+        "degree_additive": true,
+        "weight_submultiplicative": true
+      },
+      {
+        "id": "p+q",
+        "degree_additive": true,
+        "weight_submultiplicative": true
+      },
+      {
+        "id": "2p+p",
+        "degree_additive": true,
+        "weight_submultiplicative": true
+      }
+    ],
+    "adams": [
+      {
+        "id": "psi2",
+        "bound": 4,
+        "max_ratio": "9/4"
+      }
+    ],
+    "boundary_rows": [
+      {
+        "id": "seam",
+        "growth_degree": 0,
+        "dual_continuous": true,
+        "hilbert_bounded": false
+      },
+      {
+        "id": "endpoint",
+        "growth_degree": 1,
+        "dual_continuous": true,
+        "hilbert_bounded": false
+      },
+      {
+        "id": "archimedean",
+        "growth_degree": 2,
+        "dual_continuous": true,
+        "hilbert_bounded": false
+      }
+    ],
+    "rungs": [
+      "typed_test_algebra",
+      "fourier_bohr_hilbert_module",
+      "boundary_dual"
+    ],
+    "claim": "finite carrier-class coherence only; source-specific coefficient laws remain separate"
+  },
+  "hostiles": [
+    {
+      "id": "non_submultiplicative_weight",
+      "expected": "bounded_convolution",
+      "actual": "bounded_convolution",
+      "passed": true
+    },
+    {
+      "id": "scalar_fiber_collapse",
+      "expected": "type_fibers",
+      "actual": "type_fibers",
+      "passed": true
+    },
+    {
+      "id": "incoherent_adams",
+      "expected": "adams_coherence",
+      "actual": "adams_coherence",
+      "passed": true
+    },
+    {
+      "id": "boundary_outgrows_weight",
+      "expected": "boundary_growth",
+      "actual": "boundary_growth",
+      "passed": true
+    },
+    {
+      "id": "seam_promoted_to_hilbert_port",
+      "expected": "hilbert_port",
+      "actual": "hilbert_port",
+      "passed": true
+    },
+    {
+      "id": "nonminimal_weight",
+      "expected": "minimal_weight",
+      "actual": "minimal_weight",
+      "passed": true
+    },
+    {
+      "id": "green_promoted_to_hilbert",
+      "expected": "doubled_green_continuity",
+      "actual": "doubled_green_continuity",
+      "passed": true
+    },
+    {
+      "id": "missing_dual_action",
+      "expected": "three_rung_coherence",
+      "actual": "three_rung_coherence",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "source_specific_open": [
+    "actual coefficient growth",
+    "source-derived minimal s",
+    "full type fibers",
+    "all Adams maps",
+    "doubled-Green source law"
+  ]
+}

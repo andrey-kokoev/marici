@@ -1,0 +1,42 @@
+{
+  "schema": "marici.aspect.gamma-43-44-interaction-net.v1",
+  "status": "pass",
+  "rewrite_rule": "ENERGY(e43) joined to CHANNEL(delta44) reduces to ENERGY(e43+delta44)",
+  "same_unlabelled_net_models": {
+    "flip": {
+      "e43": "-2",
+      "e44": "1"
+    },
+    "no_flip": {
+      "e43": "-4",
+      "e44": "-1"
+    }
+  },
+  "source_terminal_labels": {
+    "e43": [
+      -6.2e-05,
+      -5.4e-05
+    ],
+    "e44": [
+      2e-06,
+      3.4e-06
+    ],
+    "implied_delta_interval": [
+      5.6e-05,
+      6.54e-05
+    ]
+  },
+  "checks": {
+    "same_positive_channel_allows_opposite_terminal_verdicts": true,
+    "topology_and_channel_positivity_do_not_derive_sign_flip": true,
+    "source_terminal_43_is_certifiably_negative": true,
+    "source_terminal_44_is_certifiably_positive": true,
+    "source_implied_added_contribution_is_positive": true
+  },
+  "hostiles": {
+    "positive_local_channel_not_promoted_to_global_repair": true,
+    "channel_count_parity_not_used_as_sign_law": true,
+    "independent_interval_difference_not_used_as_joint_correlation": true
+  },
+  "explanation": "Interaction topology explains where the repair can enter, but the source-derived terminal quadratic evaluator determines whether it crosses zero."
+}

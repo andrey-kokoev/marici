@@ -1,0 +1,305 @@
+{
+  "schema": "marici.aspect.scc-interaction-net-domain-algebra-check.v1",
+  "passed": true,
+  "checks": {
+    "compiler_passes": true,
+    "structural_variants_share_complete_class": true,
+    "typed_motifs_are_separated": true,
+    "coarse_shadow_is_not_faithful": true,
+    "coarse_collision_contains_phase_and_dilation": true,
+    "combined_declared_family_is_faithful": true,
+    "claim_boundary_is_finite": true
+  },
+  "report": {
+    "schema": "marici.scc.interaction-net-domain-algebra.v1",
+    "passed": true,
+    "first_failed_gate": null,
+    "normal_forms": {
+      "open_path_a": {
+        "op": "seq",
+        "boundary": "polarization",
+        "items": [
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "0"
+          },
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "45"
+          },
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "90"
+          }
+        ]
+      },
+      "open_path_b": {
+        "op": "seq",
+        "boundary": "polarization",
+        "items": [
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "0"
+          },
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "45"
+          },
+          {
+            "op": "atom",
+            "kind": "polarizer",
+            "type": "polarization",
+            "label": "90"
+          }
+        ]
+      },
+      "schur_loop": {
+        "op": "loop",
+        "interface": "determinant_line",
+        "entry": {
+          "op": "atom",
+          "kind": "incidence",
+          "type": "operator",
+          "label": "B"
+        },
+        "body": {
+          "op": "atom",
+          "kind": "resolver",
+          "type": "operator",
+          "label": "A^-1"
+        },
+        "exit": {
+          "op": "atom",
+          "kind": "incidence",
+          "type": "operator",
+          "label": "C"
+        }
+      },
+      "gamma_extension": {
+        "op": "extend",
+        "interface": "quadratic_boundary",
+        "base": {
+          "op": "atom",
+          "kind": "bank",
+          "type": "energy",
+          "label": "43"
+        },
+        "cell": {
+          "op": "atom",
+          "kind": "gamma_channel",
+          "type": "energy",
+          "label": "44"
+        },
+        "evaluator": {
+          "op": "atom",
+          "kind": "terminal_evaluator",
+          "type": "quadratic",
+          "label": "Q"
+        }
+      },
+      "bell_cover": {
+        "op": "cover",
+        "interface": "context_family",
+        "contexts": [
+          {
+            "op": "atom",
+            "kind": "bell_context",
+            "type": "probability",
+            "label": "00"
+          },
+          {
+            "op": "atom",
+            "kind": "bell_context",
+            "type": "probability",
+            "label": "01"
+          },
+          {
+            "op": "atom",
+            "kind": "bell_context",
+            "type": "probability",
+            "label": "10"
+          },
+          {
+            "op": "atom",
+            "kind": "bell_context",
+            "type": "probability",
+            "label": "11"
+          }
+        ],
+        "global_glue": false
+      },
+      "phase_loop": {
+        "op": "parallel",
+        "interface": "coherent_control",
+        "branches": [
+          {
+            "op": "atom",
+            "kind": "implementation",
+            "type": "channel",
+            "label": "identity"
+          },
+          {
+            "op": "atom",
+            "kind": "implementation",
+            "type": "channel",
+            "label": "phase"
+          }
+        ],
+        "comparison": "reverse_join"
+      },
+      "dilation_loop": {
+        "op": "parallel",
+        "interface": "coherent_control",
+        "branches": [
+          {
+            "op": "atom",
+            "kind": "implementation",
+            "type": "channel",
+            "label": "dilation"
+          },
+          {
+            "op": "atom",
+            "kind": "implementation",
+            "type": "channel",
+            "label": "identity"
+          }
+        ],
+        "comparison": "reverse_join"
+      }
+    },
+    "fingerprints": {
+      "open_path_a": "650fca2dc535aecd9dcf2ecfb0d9d65087d6d15c251d5bb43f352c5d11228c76",
+      "open_path_b": "650fca2dc535aecd9dcf2ecfb0d9d65087d6d15c251d5bb43f352c5d11228c76",
+      "schur_loop": "73fc8f486ffc0fcc2ba88cb0dc04ec4143c50c912165c0bc814c51b88814503f",
+      "gamma_extension": "e7653344b2166482fff265f870f9144849f2f5e0bbb6b8da1fc52d1a9a486cf5",
+      "bell_cover": "f2e4876f8dc13d8e468337efdc4a61905ac1cf2d904badaa53b272524499482b",
+      "phase_loop": "6104e0fa0a332826c879ddbc1887677ae9c354ad81073de75b752613b5f7a9c5",
+      "dilation_loop": "4900a09b5be80ae9fb8069aec69c415bf8a8d07f65c55fd0ec7a0267fe060262"
+    },
+    "representation_collisions": {
+      "coarse_optics": [
+        [
+          "open_path_a",
+          "open_path_b"
+        ],
+        [
+          "bell_cover",
+          "gamma_extension",
+          "schur_loop"
+        ],
+        [
+          "dilation_loop",
+          "phase_loop"
+        ]
+      ],
+      "determinant": [
+        [
+          "bell_cover",
+          "dilation_loop",
+          "gamma_extension",
+          "open_path_a",
+          "open_path_b",
+          "phase_loop"
+        ]
+      ],
+      "quadratic": [
+        [
+          "bell_cover",
+          "dilation_loop",
+          "open_path_a",
+          "open_path_b",
+          "phase_loop",
+          "schur_loop"
+        ]
+      ],
+      "context": [
+        [
+          "dilation_loop",
+          "gamma_extension",
+          "open_path_a",
+          "open_path_b",
+          "phase_loop",
+          "schur_loop"
+        ]
+      ],
+      "coherent_loop": [
+        [
+          "bell_cover",
+          "gamma_extension",
+          "open_path_a",
+          "open_path_b",
+          "schur_loop"
+        ]
+      ]
+    },
+    "faithfulness": {
+      "scope": "declared_finite_fixture_only",
+      "family": [
+        "coarse_optics",
+        "determinant",
+        "quadratic",
+        "context",
+        "coherent_loop"
+      ],
+      "faithful": true
+    },
+    "rewrite_certificate": {
+      "termination": [
+        "identity deletion decreases node count",
+        "sequence flattening decreases nesting",
+        "parallel sorting decreases inversion order"
+      ],
+      "critical_pairs": [
+        {
+          "id": "seq-id-assoc",
+          "left": "delete identity then flatten",
+          "right": "flatten then delete identity",
+          "join": "open_path_b"
+        },
+        {
+          "id": "parallel-symmetry",
+          "left": "input order",
+          "right": "canonical branch sort",
+          "join": "lexicographic normal form"
+        }
+      ],
+      "confluent_on_declared_pairs": true
+    },
+    "claim_boundary": "finite canonicalization and fixture separation do not prove universal confluence or universal representation faithfulness"
+  },
+  "coarse_only_hostile": {
+    "passed": false,
+    "first_failed_gate": "finite_family_faithfulness",
+    "collisions": [
+      [
+        [
+          "schur_loop"
+        ],
+        [
+          "gamma_extension"
+        ],
+        [
+          "bell_cover"
+        ]
+      ],
+      [
+        [
+          "phase_loop"
+        ],
+        [
+          "dilation_loop"
+        ]
+      ]
+    ]
+  }
+}

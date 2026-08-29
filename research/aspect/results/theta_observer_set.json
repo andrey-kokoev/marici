@@ -1,0 +1,171 @@
+{
+  "schema": "marici.aspect.theta-observer-set-check.v1",
+  "checks": {
+    "set_compiles": true,
+    "two_members": true,
+    "arity_domains_distinct": true,
+    "arity_transport_natural": true,
+    "polarization_retained": true,
+    "one_copy_joint_faithful": true,
+    "two_copy_not_falsely_faithful": true,
+    "a7_comparison_blocked": true,
+    "unsupported_higher_not_promoted": true
+  },
+  "compilation": {
+    "schema": "marici.scc.observer-set-compilation.v1",
+    "observer_set": "theta-primitive-square-observer-set",
+    "errors": [],
+    "members": [
+      {
+        "id": "J1",
+        "tower": "default",
+        "arity": 1,
+        "domain": "A",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 2,
+        "domain_dimension": 2
+      },
+      {
+        "id": "J2_tilde",
+        "tower": "default",
+        "arity": 2,
+        "domain": "Sym^2(A)",
+        "shape_ok": true,
+        "induced_transport": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "transported_observer": [
+          [
+            3,
+            -2,
+            1
+          ]
+        ],
+        "transport_natural": true,
+        "rank": 1,
+        "domain_dimension": 3
+      }
+    ],
+    "joint_faithfulness_by_arity": {
+      "1": {
+        "joint_rank": 2,
+        "domain_dimension": 2,
+        "joint_kernel_dimension": 0,
+        "faithful": true
+      },
+      "2": {
+        "joint_rank": 1,
+        "domain_dimension": 3,
+        "joint_kernel_dimension": 2,
+        "faithful": false
+      }
+    },
+    "joint_faithfulness_by_tower_and_arity": {
+      "default": {
+        "1": {
+          "joint_rank": 2,
+          "domain_dimension": 2,
+          "joint_kernel_dimension": 0,
+          "faithful": true
+        },
+        "2": {
+          "joint_rank": 1,
+          "domain_dimension": 3,
+          "joint_kernel_dimension": 2,
+          "faithful": false
+        }
+      }
+    },
+    "polarization": [
+      {
+        "id": "basis_pair",
+        "mixed": "2",
+        "twice_bilinear": "2",
+        "passed": true
+      },
+      {
+        "id": "mixed_pair",
+        "mixed": "2",
+        "twice_bilinear": "2",
+        "passed": true
+      },
+      {
+        "id": "generic_pair",
+        "mixed": "8",
+        "twice_bilinear": "8",
+        "passed": true
+      }
+    ],
+    "intertower_comparisons": [],
+    "pushout_completion": [],
+    "realization_comparisons": [
+      {
+        "id": "poisson-to-completed-euler",
+        "slot_complete": true,
+        "verified_equivalent": false,
+        "first_failed_slot": "named_constructor_actions"
+      }
+    ],
+    "higher_coherence": [
+      {
+        "degree": 2,
+        "state": "verified",
+        "admitted": true
+      },
+      {
+        "degree": 3,
+        "state": "verified",
+        "admitted": true
+      },
+      {
+        "degree": 4,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "degree": 5,
+        "state": "unsupported",
+        "admitted": false
+      }
+    ],
+    "passed": true,
+    "claim": "finite observer-set coherence passes independently of any failed completion gate"
+  },
+  "passed": true,
+  "disposition": "observer set is first-class; finite arity transport passes; completed Fourier realization comparison remains blocked"
+}

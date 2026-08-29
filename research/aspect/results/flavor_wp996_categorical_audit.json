@@ -1,0 +1,200 @@
+{
+  "schema": "marici.aspect.flavor-wp996-categorical-audit.v1",
+  "source_model": "wp996-bounded-control-chebyshev-optimum",
+  "checks": {
+    "source_wp996_passes": true,
+    "exact_joint_radius": true,
+    "exact_improvement": true,
+    "sample_scale_homogeneity": true,
+    "categorical_cell_passes": true,
+    "scale_fiber_not_collapsed": true,
+    "formal_claim_admitted": true,
+    "physical_claim_blocked": true,
+    "promotion_blocked": true,
+    "joint_horns_unsupported": true,
+    "optical_transfer_refused": true,
+    "highest_gain_falsifier": true
+  },
+  "categorical_compilation": {
+    "schema": "marici.scc.categorical-compilation.v1",
+    "diagram": "flavor-wp996-categorical-audit",
+    "errors": [],
+    "cells": [
+      {
+        "id": "budget_optimization_naturality",
+        "kind": "scale_naturality_square",
+        "routes": [
+          {
+            "arrows": [
+              "freeze_budget",
+              "optimize_targets"
+            ],
+            "composite": [
+              "freeze_B",
+              "optimize"
+            ]
+          },
+          {
+            "arrows": [
+              "direct_freeze",
+              "direct_optimize"
+            ],
+            "composite": [
+              "freeze_B",
+              "optimize"
+            ]
+          }
+        ],
+        "residuals": [
+          {
+            "left": [
+              "freeze_B",
+              "optimize"
+            ],
+            "right": [
+              "freeze_B",
+              "optimize"
+            ],
+            "zero": true
+          }
+        ],
+        "passed": true,
+        "threshold": "exact_zero"
+      }
+    ],
+    "fibers": [
+      {
+        "id": "conditional-optimum-profile-fiber",
+        "profile": [
+          "compatible",
+          "faithful",
+          "faithful",
+          "uniform"
+        ],
+        "comparisons": [
+          {
+            "left": "budget_B",
+            "right": "budget_2B",
+            "same_profile": true,
+            "slot_complete": true,
+            "verified_equivalent": false,
+            "first_failed_slot": "authority"
+          }
+        ],
+        "groupoid_arrows": []
+      }
+    ],
+    "obstruction_cones": {},
+    "hostiles": [
+      {
+        "id": "delete_budget_optimization_naturality",
+        "mutation": "delete_cell",
+        "target": "budget_optimization_naturality",
+        "expected_first_failure": "budget_optimization_naturality"
+      },
+      {
+        "id": "collapse_budget_B_budget_2B",
+        "mutation": "promote_same_profile_to_equivalence",
+        "target": "conditional-optimum-profile-fiber",
+        "expected_first_failure": "realization_fiber_equivalence"
+      }
+    ],
+    "higher_coherence": [
+      {
+        "id": "closed_loop_joint_horn",
+        "degree": 2,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "id": "feedback_actuation_horn",
+        "degree": 3,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "id": "completion_uniformity",
+        "degree": 4,
+        "state": "unsupported",
+        "admitted": false
+      }
+    ],
+    "promotions": [
+      {
+        "id": "formal_optimum_to_physical_controller",
+        "admitted": false,
+        "missing_cells": [],
+        "missing_equivalences": [
+          [
+            "budget_B",
+            "budget_2B"
+          ]
+        ],
+        "missing_evidence": [
+          {
+            "id": "source_control_norm",
+            "locator": "",
+            "status": "unsupported"
+          },
+          {
+            "id": "source_bound_B",
+            "locator": "",
+            "status": "unsupported"
+          },
+          {
+            "id": "closed_loop_dual_error",
+            "locator": "",
+            "status": "unsupported"
+          }
+        ]
+      }
+    ],
+    "functors": [
+      {
+        "id": "formal_control_to_optical_control",
+        "total_on_declared_source": true,
+        "structure_preserving": false,
+        "transfer_admitted": false
+      }
+    ],
+    "inverse_design": {
+      "physical_selected_controller": {
+        "claim": "physical_selected_controller",
+        "status": "missing_witnesses",
+        "missing": [
+          "closed_loop_dual_error",
+          "source_bound_B",
+          "source_control_norm"
+        ],
+        "ranked_experiments": [
+          {
+            "id": "source_derived_actuator_cost_ball",
+            "separates": [
+              "source_bound_B",
+              "source_control_norm"
+            ],
+            "gain": 2,
+            "preregistered_threshold": "strict positive bounded support"
+          },
+          {
+            "id": "closed_loop_dual_packet",
+            "separates": [
+              "closed_loop_dual_error"
+            ],
+            "gain": 1,
+            "preregistered_threshold": "error support strictly below B/5489"
+          }
+        ]
+      },
+      "conditional_chebyshev_optimum": {
+        "claim": "conditional_chebyshev_optimum",
+        "status": "admitted",
+        "missing": [],
+        "ranked_experiments": []
+      }
+    },
+    "passed": true
+  },
+  "passed": true,
+  "disposition": "conditional formal optimum survives; physical promotion fails at source norm/bound and closed-loop dual-error witnesses"
+}

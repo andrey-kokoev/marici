@@ -1,0 +1,27 @@
+{
+  "schema": "marici.aspect.coarse-equal-constructor-loop-interaction-net.v1",
+  "status": "pass",
+  "coarse_reduction": "FORGET(implementation residue) after either path reduces to the same channel",
+  "loop_reduction": "REVERSE(path_0) joined to path_1 reduces to the coherent overlap",
+  "coarse_state": "Matrix([[2/3, 1/5], [1/5, 1/3]])",
+  "loop_observables": {
+    "identity": "1",
+    "phase_refinement": "exp(I*pi/3)",
+    "equivalent_dilation": "4*(-1)**(1/3)/5",
+    "dephased": "0"
+  },
+  "checks": {
+    "identity_and_phase_paths_have_equal_coarse_shadow": true,
+    "equivalent_dilation_has_equal_coarse_shadow": true,
+    "phase_loop_distinguishes_coarse_equal_paths": true,
+    "dilation_visibility_is_four_fifths": true,
+    "dephasing_erases_only_loop_observable": true
+  },
+  "hostiles": {
+    "equal_pushforward_not_promoted_to_instrument_equality": true,
+    "global_phase_not_called_observable_without_coherent_path_control": true,
+    "reduced_visibility_not_called_changed_bell_packet": true,
+    "fixture_not_called_physical_execution": true
+  },
+  "explanation": "Coarse equality is equality after an erasing rewrite. A coherent comparison loop retains the implementation residue and can distinguish the paths."
+}

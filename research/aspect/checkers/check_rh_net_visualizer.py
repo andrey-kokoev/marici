@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import json,sys,tempfile
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/"research/aspect/scc"))
+from rh_net_visualizer import write_rh_net_viewer
+c=ROOT/"research/aspect/contracts/theta-rh-interaction-net-state.v1.json"
+with tempfile.TemporaryDirectory() as d:
+ o=Path(d)/"v.html";r=write_rh_net_viewer(c,o);t=o.read_text(encoding="utf-8")
+ checks={"three_css3d":r["renderer"]=="three-css3d+d3-force-3d" and "CSS3DRenderer" in t and "OrbitControls" in t,"isotropic_physics":"forceY" not in t and 'force("rank"' not in t and "maxDepth" not in t,"isotropic_seed":all(x in t for x in ("Math.cos(i*2.399)*480","Math.sin(i*1.713)*480","Math.sin(i*2.399)*480")),"weighted_force_3d":all(x in t for x in ("d3-force-3d","forceSimulation(layoutNodes,3)","d.strong?210:285","forceCollide(145)")),"deterministic_settlement":"randomSource(random)" in t and "simulation.tick()" in t,"live_elastic_edges":all(x in t for x in ('on("tick",syncPhysics)','style.width=v.length()+"px"',"alphaTarget(.22)")),"camera_plane_drag":all(x in t for x in ("function beginDrag","setPointerCapture","applyQuaternion(camera.quaternion)","p.fx=next.x","p.fz=next.z")),"orbit_drag_exclusion":"orbit.enabled=false" in t and "orbit.enabled=true" in t,"billboard_cards":"o.quaternion.copy(camera.quaternion)" in t,"true_3d_links":"setFromUnitVectors" in t,"explicit_dom_bindings":all('document.querySelector("#'+x+'")' in t for x in ("payload","status","filters","detail","toggle","reset","gate","control")),"nodes":all(x["id"] in t for x in json.loads(c.read_text())["constructors"]),"simulation":all(x in t for x in ("function frontier()","Construct selected","First failed gate")),"control":"uniform_composite_path_bound" in t,"filters":all('data-v="'+x+'"' in t for x in ("source","frontier","coherence","domain","analysis","identification"))}
+ checks["fixed_read_and_interact_guide"]=all(x in t for x in ('id="guide"',"How to read this graph","How to interact with this graph","pointer-events:none"))
+ checks["clickable_typed_wires"]=all(x in t for x in ("function describeWire","el.onclick","TYPED WIRE","principal output → auxiliary input",'el.style.cursor="pointer"'))
+ checks["camera_facing_wire_handles"]=all(x in t for x in ('className="wire-handle"',"hit.onclick=select","l.hit.quaternion.copy(camera.quaternion)","l.hit.position.copy(mid)"))
+ checks["metallic_elastic_tubes"]=all(x in t for x in ("WebGLRenderer","CylinderGeometry(6,6,1,18)","metalness:.92","roughness:.2","l.tube.scale.set(1,length,1)","glRenderer.render(scene,camera)"))
+ checks["geometric_wire_raycast"]=all(x in t for x in ("new THREE.Raycaster","CylinderGeometry(20,20,1,10)","intersectObjects(links.map(l=>l.pickTube)","picked.object.userData.selectWire()","moved>6","l.pickTube.scale.set(1,length,1)"))
+ checks["background_clears_selection"]=all(x in t for x in ("function clearSelection()","else clearSelection()",'pick=null;detail.textContent="Select a cell or typed wire."',".emissiveIntensity=.14",'e.onclick=()=>{clearSelection()'))
+ checks["wire_selection_stays_tubular"]=all(x in t for x in (".link{height:3px;background:transparent;opacity:0!important","tube.material.emissiveIntensity=1.1","metalness:.92"))
+ checks["selected_tube_glow_shell"]=all(x in t for x in ("CylinderGeometry(13,13,1,18)","blending:THREE.AdditiveBlending","glow.material.opacity=.48","l.glow.material.opacity=0","l.glow.scale.set(1,length,1)"))
+ checks["wire_marker_camera_depth_bias"]=all(x in t for x in ("z-index:10000",'l.hit.position.copy(l.tube.position).lerp(camera.position,.035)',"l.hit.quaternion.copy(camera.quaternion)"))
+ checks["tube_canvas_foreground_layer"]=all(x in t for x in ('z-index:2;pointer-events:none','renderer.domElement.style.zIndex="1"'))
+ checks["opaque_cards_with_depth_masks"]=all(x in t for x in ("background:#0b1a22;","new THREE.PlaneGeometry(240,112)","colorWrite:false,depthWrite:true,depthTest:true","cardMasks.get(n.id).position.set(n.x,n.y,n.z)","for(const m of cardMasks.values())m.quaternion.copy(camera.quaternion)"))
+ checks["tube_endpoints_behind_card_planes"]=all(x in t for x in ("function behindCard(p)","sub(camera.position).normalize().multiplyScalar(24)","a=behindCard(positions.get(w.source_agent))","a=behindCard(objects.get(l.a).position)","orbit.update();syncPhysics()","l.tube.scale.set(1,length,1)"))
+ print(json.dumps({"passed":all(checks.values()),"checks":checks},indent=2));raise SystemExit(0 if all(checks.values()) else 1)

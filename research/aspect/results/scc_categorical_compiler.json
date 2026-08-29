@@ -1,0 +1,175 @@
+{
+  "schema": "marici.aspect.scc-categorical-compiler-check.v1",
+  "checks": {
+    "baseline_compiles": true,
+    "cell_compiled": true,
+    "same_profile_not_equivalent": true,
+    "hostiles_synthesized": true,
+    "unsupported_not_promoted": true,
+    "proof_promotion_admitted": true,
+    "inverse_design_ranked": true,
+    "functor_admitted": true,
+    "first_cell_failure_propagates": true
+  },
+  "compilation": {
+    "schema": "marici.scc.categorical-compilation.v1",
+    "diagram": "category-lattice-categorical-runtime",
+    "errors": [],
+    "cells": [
+      {
+        "id": "mixed_action_observer",
+        "kind": "naturality_square",
+        "routes": [
+          {
+            "arrows": [
+              "ca",
+              "ao"
+            ],
+            "composite": [
+              "ca",
+              "ao"
+            ]
+          },
+          {
+            "arrows": [
+              "co",
+              "id_o"
+            ],
+            "composite": [
+              "ca",
+              "ao"
+            ]
+          }
+        ],
+        "residuals": [
+          {
+            "left": [
+              "ca",
+              "ao"
+            ],
+            "right": [
+              "ca",
+              "ao"
+            ],
+            "zero": true
+          }
+        ],
+        "passed": true,
+        "threshold": "exact_zero"
+      }
+    ],
+    "fibers": [
+      {
+        "id": "strongest-profile-fiber",
+        "profile": [
+          "compatible",
+          "faithful",
+          "faithful",
+          "uniform"
+        ],
+        "comparisons": [
+          {
+            "left": "minus_identity",
+            "right": "split_involution",
+            "same_profile": true,
+            "slot_complete": true,
+            "verified_equivalent": false,
+            "first_failed_slot": "named_constructor_actions"
+          }
+        ],
+        "groupoid_arrows": []
+      }
+    ],
+    "obstruction_cones": {},
+    "hostiles": [
+      {
+        "id": "delete_mixed_action_observer",
+        "mutation": "delete_cell",
+        "target": "mixed_action_observer",
+        "expected_first_failure": "mixed_action_observer"
+      },
+      {
+        "id": "collapse_minus_identity_split_involution",
+        "mutation": "promote_same_profile_to_equivalence",
+        "target": "strongest-profile-fiber",
+        "expected_first_failure": "realization_fiber_equivalence"
+      }
+    ],
+    "higher_coherence": [
+      {
+        "id": "fiber_degree_2",
+        "degree": 2,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "id": "fiber_degree_3",
+        "degree": 3,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "id": "fiber_degree_4",
+        "degree": 4,
+        "state": "unsupported",
+        "admitted": false
+      },
+      {
+        "id": "fiber_degree_5",
+        "degree": 5,
+        "state": "unsupported",
+        "admitted": false
+      }
+    ],
+    "promotions": [
+      {
+        "id": "finite_to_completion",
+        "admitted": true,
+        "missing_cells": [],
+        "missing_equivalences": [],
+        "missing_evidence": []
+      }
+    ],
+    "functors": [
+      {
+        "id": "theta_to_optics_blindness",
+        "total_on_declared_source": true,
+        "structure_preserving": true,
+        "transfer_admitted": true
+      }
+    ],
+    "inverse_design": {
+      "physical_claim": {
+        "claim": "physical_claim",
+        "status": "missing_witnesses",
+        "missing": [
+          "observer_increment",
+          "source_linking_generator",
+          "uniform_margin"
+        ],
+        "ranked_experiments": [
+          {
+            "id": "controlled_conjugate_readout",
+            "separates": [
+              "observer_increment",
+              "uniform_margin"
+            ],
+            "gain": 2,
+            "preregistered_threshold": "research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json"
+          },
+          {
+            "id": "source_action_rank",
+            "separates": [
+              "source_linking_generator"
+            ],
+            "gain": 1,
+            "preregistered_threshold": "exact_nonzero_rank"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  "passed": true,
+  "claim": "finite declared-diagram compilation only"
+}

@@ -1,0 +1,19 @@
+{
+  "id":"flavor-wp996-formula-synthesis",
+  "stages":[
+    {
+      "id":"conditional_optimum","authority":"explicit_assumption","observer_fitted":false,
+      "unknowns":["Q_comm","R_comm","Q_rank","R_rank","Q_full","R_full","radius"],"parameters":["B"],
+      "equations":[
+        {"coefficients":{"Q_comm":1,"B":1},"rhs":0},{"coefficients":{"R_comm":1,"B":1},"rhs":0},
+        {"coefficients":{"Q_rank":1,"B":-1},"rhs":0},{"coefficients":{"R_rank":1,"B":1},"rhs":0},
+        {"coefficients":{"Q_full":49401,"B":7},"rhs":0},{"coefficients":{"R_full":1,"B":-1},"rhs":0},
+        {"coefficients":{"radius":5489,"B":-1},"rhs":0}
+      ],
+      "outputs":["Q_comm","R_comm","Q_rank","R_rank","Q_full","R_full","radius"]
+    },
+    {"id":"physical_scale","authority":"source_authorized","observer_fitted":false,"unknowns":["B"],"parameters":[],"equations":[],"outputs":["B"]},
+    {"id":"closed_loop","authority":"source_authorized","observer_fitted":false,"unknowns":["dual_error_bound"],"parameters":["B"],"equations":[],"outputs":["dual_error_bound"]}
+  ],
+  "required_source_outputs":["physical_scale.B","closed_loop.dual_error_bound"]
+}

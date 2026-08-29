@@ -1,0 +1,125 @@
+{
+  "schema": "marici.aspect.flavor-wp1037-formula-synthesis-check.v1",
+  "checks": {
+    "wp1037_source_passes": true,
+    "authorized_rank_zero": true,
+    "unit_neighborhood_singleton": true,
+    "zero_command_formula_derived": true,
+    "local_radius_formula_is_zero": true,
+    "wp996_positive_budget_impossible_locally": true,
+    "continuous_relaxation_rejected_by_source": true,
+    "common_substrate_formula_underdetermined": true,
+    "closed_loop_formula_underdetermined": true,
+    "overall_bridge_not_derived": true
+  },
+  "synthesis": {
+    "schema": "marici.scc.formula-synthesis.v1",
+    "contract": "flavor-wp1037-formula-synthesis",
+    "stages": [
+      {
+        "id": "authorized_local_command",
+        "status": "derived",
+        "first_failed_gate": null,
+        "rank": 3,
+        "unknown_count": 3,
+        "formulas": {
+          "delta_k": {
+            "constant": "0",
+            "parameter_coefficients": {},
+            "source_derived": true
+          },
+          "delta_C": {
+            "constant": "0",
+            "parameter_coefficients": {},
+            "source_derived": true
+          },
+          "B_local": {
+            "constant": "0",
+            "parameter_coefficients": {},
+            "source_derived": true
+          }
+        },
+        "underdetermined": [],
+        "free_unknowns": []
+      },
+      {
+        "id": "common_substrate",
+        "status": "underdetermined",
+        "first_failed_gate": "formula_rank",
+        "rank": 0,
+        "unknown_count": 3,
+        "formulas": {},
+        "underdetermined": [
+          "preparation_arrow",
+          "support_bound",
+          "cost_bound"
+        ],
+        "free_unknowns": [
+          "preparation_arrow",
+          "support_bound",
+          "cost_bound"
+        ]
+      },
+      {
+        "id": "closed_loop",
+        "status": "underdetermined",
+        "first_failed_gate": "formula_rank",
+        "rank": 0,
+        "unknown_count": 1,
+        "formulas": {},
+        "underdetermined": [
+          "dual_error_bound"
+        ],
+        "free_unknowns": [
+          "dual_error_bound"
+        ]
+      }
+    ],
+    "derived_formulas": {
+      "authorized_local_command.delta_k": {
+        "constant": "0",
+        "parameter_coefficients": {},
+        "source_derived": true
+      },
+      "authorized_local_command.delta_C": {
+        "constant": "0",
+        "parameter_coefficients": {},
+        "source_derived": true
+      },
+      "authorized_local_command.B_local": {
+        "constant": "0",
+        "parameter_coefficients": {},
+        "source_derived": true
+      }
+    },
+    "required_source_outputs": [
+      "authorized_local_command.delta_k",
+      "authorized_local_command.delta_C",
+      "authorized_local_command.B_local",
+      "common_substrate.preparation_arrow",
+      "common_substrate.support_bound",
+      "common_substrate.cost_bound",
+      "closed_loop.dual_error_bound"
+    ],
+    "missing_source_formulas": [
+      "common_substrate.preparation_arrow",
+      "common_substrate.support_bound",
+      "common_substrate.cost_bound",
+      "closed_loop.dual_error_bound"
+    ],
+    "bridge_status": "underdetermined",
+    "certifies_physical_realization": false
+  },
+  "derived_local_support": {
+    "reachable_displacements": [
+      [
+        0,
+        0
+      ]
+    ],
+    "cost_law": "cost(0,0)=0; cost(delta)=infinity for every other local displacement",
+    "scalar_radius": "B_local=0"
+  },
+  "missing_formula_type": "common-substrate discrete preparation arrows plus source-derived support/cost, followed by closed-loop error",
+  "passed": true
+}
