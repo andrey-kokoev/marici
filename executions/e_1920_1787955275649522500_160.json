@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787955275649522500_160",
+  "created_at": "2026-08-28T22:14:35.6495262Z",
+  "sha256": "88029077b8e0338eb18bcec61e94535eaac98449d17e9ae642b8e4e467492f78",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "check",
+      "commuting-square-pushforward-auditor"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T22:14:35.4498081Z",
+    "finished_at": "2026-08-28T22:14:35.6495096Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "repaired commuting-square auditor and SCC integration",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "repaired commuting-square auditor and SCC integration",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.check.v1\",\r\n  \"models\": [\r\n    {\r\n      \"id\": \"commuting-square-pushforward-auditor\",\r\n      \"status\": \"checks_failed\",\r\n      \"passed\": false,\r\n      \"outcomes\": [\r\n        {\r\n          \"id\": \"commuting-square-pushforward-auditor\",\r\n          \"status\": \"failed\",\r\n          \"returncode\": 1,\r\n          \"result\": {\r\n            \"adapter\": \"exit-code-only\"\r\n          },\r\n          \"stdout\": \"\",\r\n          \"stderr\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\aspect\\\\checkers\\\\check_commuting_square_pushforward_auditor.py\\\", line 55, in <module>\\n    if __name__==\\\"__main__\\\":main()\\n                            ~~~~^^\\n  File \\\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\aspect\\\\checkers\\\\check_commuting_square_pushforward_auditor.py\\\", line 53, in main\\n    out={\\\"schema\\\":\\\"marici.aspect.commuting-square-pushforward-auditor-result.v1\\\",\\\"passed\\\":all(checks.values()),\\\"checks\\\":checks,\\\"honest\\\":good,\\\"hostiles\\\":hostile,\\\"verdict\\\":\\\"same_ledger_pushforward_auditor_accepts_refinement_and_localizes_mutations\\\",\\\"physical_status\\\":\\\"not_run\\\"}\\n                                                                                              ^^^^^^\\nNameError: name 'checks' is not defined\\n\"\r\n        }\r\n      ],\r\n      \"scientific_delta\": [\r\n        {\r\n          \"check\": \"commuting-square-pushforward-auditor\",\r\n          \"before\": null,\r\n          \"after\": {\r\n            \"adapter\": \"exit-code-only\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"passed\": false\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
