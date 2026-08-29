@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787954839735955700_167",
+  "created_at": "2026-08-28T22:07:19.7359587Z",
+  "sha256": "a410c5698896e08ece2be34f43dddd9c6ad72ebd1ba8c5032ca9b22852967c61",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\"\ns=open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0]\nexec(s)\nbad=[]; n=0\nfor beta in range(2,9):\n for g in range(2,11):\n  for q in range(1,16):\n   n+=1; w=quotient_width(g,q,30,beta); pred=2 if (q>=2*g+beta-3 or (g>=4 and min(beta-1,g-3)<=q<=g-3)) else 1\n   if w!=pred: bad.append((beta,g,q,w,pred))\nprint({\"cases\":n,\"bad\":len(bad),\"first\":bad[:10]})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:05:31.9515931Z",
+    "finished_at": "2026-08-28T22:07:19.7359457Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact rational beta wedge census",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact rational beta wedge census",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{'cases': 945, 'bad': 945, 'first': [(2, 2, 1, 4, 1), (2, 2, 2, 4, 1), (2, 2, 3, 6, 2), (2, 2, 4, 6, 2), (2, 2, 5, 7, 2), (2, 2, 6, 8, 2), (2, 2, 7, 9, 2), (2, 2, 8, 10, 2), (2, 2, 9, 11, 2), (2, 2, 10, 12, 2)]}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
