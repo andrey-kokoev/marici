@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787949662182043500_88",
+  "created_at": "2026-08-28T20:41:02.1820466Z",
+  "sha256": "c4c925527cc2087338e02d483eef3b933d286cad493aa4be318f9ace737d4456",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "constructors",
+      "wp992-three-state-control-region-no-go"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:41:02.0585495Z",
+    "finished_at": "2026-08-28T20:41:02.182034Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "SCC WP992 registration",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "SCC WP992 registration",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.constructor-synthesis.v1\",\r\n  \"model\": \"wp992-three-state-control-region-no-go\",\r\n  \"source_obligations\": [\r\n    \"source-authorized physical actuators for independent invariant controls u and v\",\r\n    \"independently bounded source support or a calibrated adaptive controller\",\r\n    \"typed preparation reset and labelled relative-energy readout in one common frame\",\r\n    \"uniform positive response-Gram lower bound with calibrated uncertainty\",\r\n    \"supply one source-derived apparatus certificate whose fixed or adaptive control law prepares all three labels over its declared support, descends through the additive-energy quotient, and retains a strictly positive worst-case response singular value under calibrated uncertainty\"\r\n  ],\r\n  \"candidates\": [\r\n    {\r\n      \"rule\": \"joint-source-operation\",\r\n      \"score\": 1,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"typed preparation reset and labelled relative-energy readout in one common frame\",\r\n          \"matched_terms\": [\r\n            \"labelled\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"nonlinear joint source operation before marginalization or sewing\",\r\n      \"discriminating_hostile\": \"hold every marginal fixed while varying only cross-label coupling; reject any scalar additive surrogate\",\r\n      \"forbidden_substitute\": \"repairing missing source coupling by increasing observer rank\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    },\r\n    {\r\n      \"rule\": \"reduction-order\",\r\n      \"score\": 1,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"supply one source-derived apparatus certificate whose fixed or adaptive control law prepares all three labels over its declared support, descends through the additive-energy quotient, and retains a strictly positive worst-case response singular value under calibrated uncertainty\",\r\n          \"matched_terms\": [\r\n            \"quotient\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"compare complete ambient exact structures before applying the nonfaithful reduction or serialization functor\",\r\n      \"discriminating_hostile\": \"verify ambient mutual containment and generator naturality, then vary quotient frames; classify mismatches appearing only after reduction as serialization artifacts\",\r\n      \"forbidden_substitute\": \"promoting quotient-coordinate mismatch to source noncovariance\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    }\r\n  ],\r\n  \"candidate_count\": 2,\r\n  \"status\": \"candidate_menu_not_truth_certificate\",\r\n  \"next\": \"derive the highest-ranked constructor from source data, freeze its receiver, then run the attached hostile\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
