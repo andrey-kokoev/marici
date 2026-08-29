@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787980737398587000_236",
+  "created_at": "2026-08-29T05:18:57.3985906Z",
+  "sha256": "b83b92f1d9652a1c5c13184e8a61aae987df11730053fba9ebaa8acdb2d513d3",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_theta_observer_profiles_221_211.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:18:57.2095171Z",
+    "finished_at": "2026-08-29T05:18:57.3985778Z",
+    "timeout_ms": 60000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "theta observer profiles 2-2-1 and 2-1-1",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "theta observer profiles 2-2-1 and 2-1-1",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.theta-observer-profiles-221-211-check.v1\",\r\n  \"checks\": {\r\n    \"base_2x2_compiles\": true,\r\n    \"profiles_counted\": true,\r\n    \"221_retains_arity_coverage\": true,\r\n    \"221_finite_rank_extra_does_not_repair_completion\": true,\r\n    \"221_margin_still_decays\": true,\r\n    \"211_loses_square_intertower_coverage\": true,\r\n    \"determinant_scalar_does_not_substitute_for_missing_J2\": true\r\n  },\r\n  \"audits\": [\r\n    {\r\n      \"id\": \"2-2-1\",\r\n      \"observer_counts\": [\r\n        2,\r\n        2,\r\n        1\r\n      ],\r\n      \"intertower_arity_coverage\": true,\r\n      \"finite_augmented_margins\": [\r\n        {\r\n          \"cutoff\": 2,\r\n          \"minimum_singular_value_squared\": \"1/4\",\r\n          \"minimum_singular_value\": \"1/2\"\r\n        },\r\n        {\r\n          \"cutoff\": 4,\r\n          \"minimum_singular_value_squared\": \"1/16\",\r\n          \"minimum_singular_value\": \"1/4\"\r\n        },\r\n        {\r\n          \"cutoff\": 8,\r\n          \"minimum_singular_value_squared\": \"1/64\",\r\n          \"minimum_singular_value\": \"1/8\"\r\n        },\r\n        {\r\n          \"cutoff\": 16,\r\n          \"minimum_singular_value_squared\": \"1/256\",\r\n          \"minimum_singular_value\": \"1/16\"\r\n        }\r\n      ],\r\n      \"completion_closed_range\": false,\r\n      \"first_failed_gate\": \"completion_closed_range\"\r\n    },\r\n    {\r\n      \"id\": \"2-1-1\",\r\n      \"observer_counts\": [\r\n        2,\r\n        1,\r\n        1\r\n      ],\r\n      \"intertower_arity_coverage\": false,\r\n      \"finite_augmented_margins\": [\r\n        {\r\n          \"cutoff\": 2,\r\n          \"minimum_singular_value_squared\": \"1/4\",\r\n          \"minimum_singular_value\": \"1/2\"\r\n        },\r\n        {\r\n          \"cutoff\": 4,\r\n          \"minimum_singular_value_squared\": \"1/16\",\r\n          \"minimum_singular_value\": \"1/4\"\r\n        },\r\n        {\r\n          \"cutoff\": 8,\r\n          \"minimum_singular_value_squared\": \"1/64\",\r\n          \"minimum_singular_value\": \"1/8\"\r\n        },\r\n        {\r\n          \"cutoff\": 16,\r\n          \"minimum_singular_value_squared\": \"1/256\",\r\n          \"minimum_singular_value\": \"1/16\"\r\n        }\r\n      ],\r\n      \"completion_closed_range\": false,\r\n      \"first_failed_gate\": \"intertower_arity_coverage\"\r\n    }\r\n  ],\r\n  \"disposition\": \"2-2-1 preserves finite arity coherence but cannot repair nonclosed completion with one finite-rank observer; 2-1-1 fails earlier by losing negative-tower arity-2 coverage\",\r\n  \"passed\": true\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
