@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787954219398378900_161",
+  "created_at": "2026-08-28T21:56:59.3983833Z",
+  "sha256": "77f8dd1d9ddc77ba0dce3dc7c07ea552e48bf5d5c27020f078d753616b13d76e",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nexec(open(r'research/strominger/checkers/magnetic_beta_deformation_checks.py').read().split('checks = []')[0])\ndef tagged(g,N,q):\n c=1-g;return[(a,s,canonical_column(g,a,m,4))for a in range(N+1)for s,m in(('-',c-q-a),('+',c+q-a))]\ndef solve(C,b):\n rows=sorted(set(b)|{r for c in C for r in c});A=[[F(c.get(r,0))for c in C]+[F(b.get(r,0))]for r in rows];m=len(A);n=len(C);piv=[];z=0\n for j in range(n):\n  p=next((i for i in range(z,m)if A[i][j]),None)\n  if p is None:continue\n  A[z],A[p]=A[p],A[z];v=A[z][j];A[z]=[x/v for x in A[z]]\n  for i in range(m):\n   if i!=z and A[i][j]:\n    v=A[i][j];A[i]=[A[i][h]-v*A[z][h]for h in range(n+1)]\n  piv.append(j);z+=1\n for i in range(z,m):\n  if all(A[i][j]==0 for j in range(n))and A[i][n]:return None\n x=[F(0)]*n\n for i,j in enumerate(piv):x[j]=A[i][n]\n return x\ndef R(g,q,a,N):\n T=tagged(g,N,q+2);x=solve([z[2]for z in T]+[current_defect(g,a,q,4)],current_defect(g,a+1,q,4));return None if x is None else x[-1]\nfor case in [(6,1,0),(6,1,1),(6,1,2),(3,1,0),(8,2,0)]:\n print(case,[(N,R(*case,N))for N in range(max(4,case[2]+2),16)])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:56:59.0493934Z",
+    "finished_at": "2026-08-28T21:56:59.3983661Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "recurrence coefficient cutoff-stability audit",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "recurrence coefficient cutoff-stability audit",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 1, 0) [(4, None), (5, None), (6, Fraction(1081, 1764)), (7, Fraction(1081, 1764)), (8, Fraction(1081, 1764)), (9, Fraction(1081, 1764)), (10, Fraction(1081, 1764)), (11, Fraction(1081, 1764)), (12, Fraction(1081, 1764)), (13, Fraction(1081, 1764)), (14, Fraction(1081, 1764)), (15, Fraction(1081, 1764))]\r\n(6, 1, 1) [(4, None), (5, None), (6, Fraction(342, 1081)), (7, Fraction(342, 1081)), (8, Fraction(342, 1081)), (9, Fraction(342, 1081)), (10, Fraction(342, 1081)), (11, Fraction(342, 1081)), (12, Fraction(342, 1081)), (13, Fraction(342, 1081)), (14, Fraction(342, 1081)), (15, Fraction(342, 1081))]\r\n(6, 1, 2) [(4, None), (5, None), (6, Fraction(5, 38)), (7, Fraction(5, 38)), (8, Fraction(5, 38)), (9, Fraction(5, 38)), (10, Fraction(5, 38)), (11, Fraction(5, 38)), (12, Fraction(5, 38)), (13, Fraction(5, 38)), (14, Fraction(5, 38)), (15, Fraction(5, 38))]\r\n(3, 1, 0) [(4, None), (5, Fraction(-1, 6)), (6, Fraction(-1, 6)), (7, Fraction(-1, 6)), (8, Fraction(-1, 6)), (9, Fraction(-1, 6)), (10, Fraction(-1, 6)), (11, Fraction(-1, 6)), (12, Fraction(-1, 6)), (13, Fraction(-1, 6)), (14, Fraction(-1, 6)), (15, Fraction(-1, 6))]\r\n(8, 2, 0) [(4, None), (5, None), (6, None), (7, None), (8, Fraction(881, 1800)), (9, Fraction(881, 1800)), (10, Fraction(881, 1800)), (11, Fraction(881, 1800)), (12, Fraction(881, 1800)), (13, Fraction(881, 1800)), (14, Fraction(881, 1800)), (15, Fraction(881, 1800))]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
