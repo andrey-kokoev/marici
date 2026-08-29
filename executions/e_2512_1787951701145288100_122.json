@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787951701145288100_122",
+  "created_at": "2026-08-28T21:15:01.1452919Z",
+  "sha256": "45fc8757c61434a2d5031fc4cfcbeeb25d5fb5d3811dc90b2dcdbb3bbf1f6835",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_route_wronskian_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T21:15:01.0639772Z",
+    "finished_at": "2026-08-28T21:15:01.1452775Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "magnetic route Wronskian crossing",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "magnetic route Wronskian crossing",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_route_wronskian.v1\",\r\n  \"status\": \"passed\",\r\n  \"gate_count\": 10,\r\n  \"passed_gate_count\": 10,\r\n  \"records\": [\r\n    {\r\n      \"d\": \"17/3\",\r\n      \"A\": \"-113228379953561600000/729\",\r\n      \"B\": \"113228379953561600000/729\",\r\n      \"A_prime\": \"4345536960593920000/81\",\r\n      \"B_prime\": \"29622977025474560000/81\",\r\n      \"scalar\": \"0\",\r\n      \"scalar_prime\": \"11322837995356160000/27\",\r\n      \"difference\": \"-226456759907123200000/729\",\r\n      \"wronskian\": \"-1282066602690811039857252499456000000000/19683\",\r\n      \"P_prime\": \"-240\"\r\n    },\r\n    {\r\n      \"d\": \"37/3\",\r\n      \"A\": \"-1258515798177677312000000/729\",\r\n      \"B\": \"1258515798177677312000000/729\",\r\n      \"A_prime\": \"-1881095122408570880000\",\r\n      \"B_prime\": \"43598049458301829120000/27\",\r\n      \"scalar\": \"0\",\r\n      \"scalar_prime\": \"-7191518846729584640000/27\",\r\n      \"difference\": \"-2517031596355354624000000/729\",\r\n      \"wronskian\": \"9050640081501692641302395309711687680000000000/19683\",\r\n      \"P_prime\": \"240\"\r\n    }\r\n  ],\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"ROOT.exact\",\r\n      \"statement\": \"both grade-six points are exact roots of the residual obstruction\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(Fraction(17, 3), Fraction(37, 3))\"\r\n    },\r\n    {\r\n      \"id\": \"ROUTE.live\",\r\n      \"statement\": \"both routes remain nonzero at both scalar-dark points\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(Fraction(-113228379953561600000, 729), Fraction(113228379953561600000, 729)), (Fraction(-1258515798177677312000000, 729), Fraction(1258515798177677312000000, 729))]\"\r\n    },\r\n    {\r\n      \"id\": \"ROUTE.antidiagonal\",\r\n      \"statement\": \"the scalar-dark packet is nonzero anti-diagonal interference\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(Fraction(-113228379953561600000, 729), Fraction(113228379953561600000, 729)), (Fraction(-1258515798177677312000000, 729), Fraction(1258515798177677312000000, 729))]\"\r\n    },\r\n    {\r\n      \"id\": \"CROSS.simple\",\r\n      \"statement\": \"the scalar augmentation crosses transversely at both roots\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(11322837995356160000, 27), Fraction(-7191518846729584640000, 27)]\"\r\n    },\r\n    {\r\n      \"id\": \"CROSS.opposite\",\r\n      \"statement\": \"the two rational fibers have opposite scalar crossing orientation\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(11322837995356160000, 27), Fraction(-7191518846729584640000, 27)]\"\r\n    },\r\n    {\r\n      \"id\": \"WRONSKIAN.nonzero\",\r\n      \"statement\": \"the route Wronskian is nonzero at both crossings\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(-1282066602690811039857252499456000000000, 19683), Fraction(9050640081501692641302395309711687680000000000, 19683)]\"\r\n    },\r\n    {\r\n      \"id\": \"WRONSKIAN.identity\",\r\n      \"statement\": \"on the anti-diagonal, the Wronskian equals A times the scalar derivative\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A*B'-B*A'=A*(A'+B') when B=-A\"\r\n    },\r\n    {\r\n      \"id\": \"CHARACTER.visible\",\r\n      \"statement\": \"the complementary difference character is nonzero at each crossing\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(-226456759907123200000, 729), Fraction(-2517031596355354624000000, 729)]\"\r\n    },\r\n    {\r\n      \"id\": \"LOSS.separate\",\r\n      \"statement\": \"the integral grade-two exception has zero routes rather than a Wronskian crossing\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"A=B=0 at (g,d)=(2,5)\"\r\n    },\r\n    {\r\n      \"id\": \"P.orientation\",\r\n      \"statement\": \"the residual polynomial also has simple oppositely oriented roots\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(-240, 1), Fraction(240, 1)]\"\r\n    }\r\n  ],\r\n  \"verdict\": \"The two grade-six rational scalar zeros are simple nonzero-interference crossings with nonvanishing route Wronskian and opposite orientations. The complementary difference character detects both. This is an invariant of the analytically continued local route packet, not yet a source-authorized fractional magnetic state or full-kernel claim.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
