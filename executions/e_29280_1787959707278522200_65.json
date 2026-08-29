@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787959707278522200_65",
+  "created_at": "2026-08-28T23:28:27.2785264Z",
+  "sha256": "a4733f5815e66dba31be165c600dea2e1d8d775c0805191b324ceeb7392e201b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import json,pathlib,sympy as s; d=json.loads(pathlib.Path('research/flavor/results/wp20_valley_audit.json').read_text()); js=[abs(s.Rational(str(x['J']))) for x in d['records']]; print(min(js),max(js),float(min(js)),float(max(js))); print(sum(j*j < s.Rational(400,369161163681) for j in js))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:28:26.6303941Z",
+    "finished_at": "2026-08-28T23:28:27.2785104Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1025 fitted J range",
+      "expected_cost": "1210 rational comparisons",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1025 fitted J range",
+    "expected_cost": "1210 rational comparisons",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "15706644109666057/500000000000000000000 3212292203718607/100000000000000000000 3.1413288219332114e-05 3.212292203718607e-05\r\n",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import json,pathlib,sympy as s; d=json.loads(pathlib.Path('research/flavor/results/wp20_valley_audit.json').read_text()); js=[abs(s.Rational(str(x['J']))) for x in d['records']]; print(min(js),max(js),float(min(js)),float(max(js))); print(sum(j*j < s.Rational(400,369161163681) for j in js))\r\n                                                                                                                                                                                                                                                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Local\\uv\\cache\\archive-v0\\ZiwGRgJbYm2ditTi\\Lib\\site-packages\\sympy\\logic\\boolalg.py\", line 249, in _noop\r\n    raise TypeError('BooleanAtom not allowed in this context.')\r\nTypeError: BooleanAtom not allowed in this context.\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
