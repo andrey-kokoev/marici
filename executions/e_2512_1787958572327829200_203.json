@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958572327829200_203",
+  "created_at": "2026-08-28T23:09:32.3278326Z",
+  "sha256": "6da154170f677c127255729a48d26a254b8403118eddf7e935d6ae1b28a5cf24",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef col(g,q,a,b):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;s=-1 if b=='-' else 1;o={}\n for e,c in h.items():\n  v=e+1+s*Q;o[e]=o.get(e,F())+c*v;o[e+1]=o.get(e+1,F())+c*(v-g)\n return o if b=='-' else {e+Q:-c for e,c in o.items()}\ndef sub(v,w,c):\n for e,x in w.items():\n  v[e]=v.get(e,F())-c*x\n  if not v[e]:del v[e]\ndef run(g,q,N):\n E=[];R=[];P=[];dep={}\n for a in range(N+1):\n  for b in '-+':\n   v=col(g,q,a,b);r={}\n   for i,p in enumerate(P):\n    c=v.get(p,F())\n    if c:\n     sub(v,E[i],c)\n     for j,x in R[i].items():r[j]=r.get(j,F())-c*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p)\n   else:dep[(a,b)]={j:-x for j,x in r.items()}\n for a in [18,24,30,36,42]:\n  r=dep[(a,'+')];print((g,q,a),len(r),str(max(map(abs,r.values()))),str(sum(map(abs,r.values()))))\nfor z in [(6,3),(6,8),(6,13)]:run(*z,42)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:09:32.2352994Z",
+    "finished_at": "2026-08-28T23:09:32.3278191Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact deep plus projection growth",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact deep plus projection growth",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 31, in <module>\r\n    for z in [(6,3),(6,8),(6,13)]:run(*z,42)\r\n                                  ~~~^^^^^^^\r\n  File \"<string>\", line 27, in run\r\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p)\r\n                                ~^~\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\fractions.py\", line 699, in forward\r\n    return monomorphic_operator(a, b)\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\fractions.py\", line 847, in _div\r\n    raise ZeroDivisionError('Fraction(%s, 0)' % db)\r\nZeroDivisionError: Fraction(1, 0)\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
