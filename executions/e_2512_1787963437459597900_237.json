@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787963437459597900_237",
+  "created_at": "2026-08-29T00:30:37.4596014Z",
+  "sha256": "071f2c5d6160f08668e69d00442dde3038cb6b6c5ad35f6be7d4d16c8d693515",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));print({g:sorted(set(len(r['target_normalized_coefficients']) for r in d['rows'] if r['g']==g)) for g in range(2,11)})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:30:37.3832853Z",
+    "finished_at": "2026-08-29T00:30:37.4595901Z",
+    "timeout_ms": 20000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "second-threshold primitive support growth",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "second-threshold primitive support growth",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{2: [3], 3: [4], 4: [4, 5], 5: [5, 6], 6: [7], 7: [7, 8], 8: [9], 9: [10], 10: [11]}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
