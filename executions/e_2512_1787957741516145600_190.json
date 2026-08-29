@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787957741516145600_190",
+  "created_at": "2026-08-28T22:55:41.5161493Z",
+  "sha256": "d5af465ee8be3ca63b98a16d22479f51fef583ca1babe4e31218e46e3bc04007",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];out=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  out.append(j);u+=1\n return out\nfor g,q in [(2,1),(3,5),(4,1),(6,3),(6,8),(6,13),(8,5)]:\n N=20;c=1-g;cs=[canonical_column(g,a,m,4) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];P=set(piv(cs));omit=[(j//2,'-' if j%2==0 else '+') for j in range(len(cs)) if j not in P];print((g,q),'rank',len(P),'omit',omit)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:55:41.4061428Z",
+    "finished_at": "2026-08-28T22:55:41.5161341Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "consecutive-depth semantic pivot discovery",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "consecutive-depth semantic pivot discovery",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(2, 1) rank 26 omit [(5, '+'), (6, '+'), (7, '+'), (8, '+'), (9, '+'), (10, '+'), (11, '+'), (12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(3, 5) rank 29 omit [(5, '+'), (9, '+'), (10, '+'), (11, '+'), (12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(4, 1) rank 27 omit [(6, '+'), (7, '+'), (8, '+'), (9, '+'), (10, '+'), (11, '+'), (12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(6, 3) rank 31 omit [(10, '+'), (11, '+'), (12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(6, 8) rank 32 omit [(5, '+'), (12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(6, 13) rank 36 omit [(9, '+'), (10, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n(8, 5) rank 33 omit [(12, '+'), (13, '+'), (14, '+'), (15, '+'), (16, '+'), (17, '+'), (18, '+'), (19, '+'), (20, '+')]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
