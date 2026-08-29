@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787959948220674500_210",
+  "created_at": "2026-08-28T23:32:28.2206786Z",
+  "sha256": "8715d0b1ef154759247997359c3308a5525e7e56447ef256884b8013041852b1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial,log\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef col(g,a,s,q=3):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef run(g,N=120):\n E=[];R=[];P=[];B=[];D={}\n for a in range(N+1):\n  for s in '-+':\n   v=col(g,a,s);r={}\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:\n     sub(v,E[i],z)\n     for j,x in R[i].items():r[j]=r.get(j,F())-z*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p);B.append((a,s))\n   else:D[(a,s)]={j:-x for j,x in r.items()}\n vals=[]\n for K in [80,120]:\n  rows=[F()]*len(B);cs=[]\n  for (a,s),r in D.items():\n   if s!='+' or a>K:continue\n   cs.append(sum(map(abs,r.values())))\n   for j,x in r.items():rows[j]+=abs(x)\n  vals.append((float(max(cs)),float(max(rows))))\n ec=log(vals[1][0]/vals[0][0])/log(1.5);er=log(vals[1][1]/vals[0][1])/log(1.5)\n print(g,*(f'{x:.3g}' for v in vals for x in v),f'deg={ec:.3f},{er:.3f}')\nfor g in range(3,9):run(g)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:32:26.6180655Z",
+    "finished_at": "2026-08-28T23:32:28.2206639Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unweighted growth-degree audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "unweighted growth-degree audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "3 467 4.07e+03 1.04e+03 1.35e+04 deg=1.986,2.960\r\n4 3.7e+03 2.83e+04 1.23e+04 1.4e+05 deg=2.969,3.938\r\n5 2.18e+04 1.46e+05 1.08e+05 1.06e+06 deg=3.940,4.900\r\n6 1.9e+05 1.12e+06 1.38e+06 1.2e+07 deg=4.900,5.851\r\n7 1.54e+06 8.08e+06 1.65e+07 1.27e+08 deg=5.851,6.793\r\n8 1.16e+07 5.54e+07 1.83e+08 1.27e+09 deg=6.793,7.726\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
