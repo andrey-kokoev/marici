@@ -1,0 +1,9 @@
+export const towerStages=[
+ {label:"combinatorics",constructor:"incidence"},{label:"scalar coherence",constructor:"additive comparison"},{label:"constructor coherence",constructor:"ordered realization"},{label:"closure coherence",constructor:"completion witness"},{label:"network coherence",constructor:"contextual transport"},{label:"parameter coherence",constructor:"family naturality"},{label:"composition law",constructor:"admitted composition rule"},
+]
+export const reconcilerDepths=[{label:"local objects",members:4},{label:"pair reconcilers",members:3},{label:"triple coherencers",members:2},{label:"joint coherencer",members:1}]
+const kind=s=>s<2?"source":s<4?"comparison":s<6?"closure":"law"
+export const cells=towerStages.flatMap((stage,s)=>reconcilerDepths.flatMap((depth,d)=>Array.from({length:depth.members},(_,slot)=>({id:`s${s}d${d}n${slot}`,stage:s,depth:d,slot,label:`${stage.label} · ${depth.label} ${slot+1}`,kind:s===6&&d===3?"frontier":kind(s),status:s===6&&d===3?"frontier":s>=5?"conjectured":"witnessed",authority:s>=5?"research conjecture":"programme synthesis",constructor:stage.constructor}))))
+export const links=[]
+for(const c of cells){if(c.stage<towerStages.length-1)links.push({from:c.id,to:`s${c.stage+1}d${c.depth}n${c.slot}`,kind:"tower"});if(c.depth<reconcilerDepths.length-1&&c.slot<reconcilerDepths[c.depth+1].members)links.push({from:c.id,to:`s${c.stage}d${c.depth+1}n${c.slot}`,kind:"pyramid"})}
+export function validateAtlas(){const errors=[],ids=new Set(cells.map(c=>c.id));if(ids.size!==cells.length)errors.push("duplicate cell id");links.forEach(l=>{if(!ids.has(l.from)||!ids.has(l.to))errors.push(`dangling link ${l.from} -> ${l.to}`)});reconcilerDepths.forEach((d,di)=>towerStages.forEach((_,si)=>{if(cells.filter(c=>c.stage===si&&c.depth===di).length!==d.members)errors.push(`bad multiplicity s${si}d${di}`)}));return{status:errors.length?"invalid":"valid",errors}}
