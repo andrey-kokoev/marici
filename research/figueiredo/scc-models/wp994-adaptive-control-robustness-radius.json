@@ -1,0 +1,42 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "wp994-adaptive-control-robustness-radius",
+    "owner": "marici.Figueiredo",
+    "classification": "positive_uniform_formal_margin_missing_calibrated_closed_loop_apparatus",
+    "stratum": "WP993 fixed effective-control targets with total invariant-coordinate error bounded in a symmetric l-infinity box",
+    "inputs": [
+      "research/flavor/flavor-universal-adaptive-control-section.md",
+      "research/flavor/results/wp993_universal_adaptive_control_section.json",
+      "research/flavor/flavor-adaptive-control-robustness-radius.md",
+      "research/flavor/checkers/wp994_adaptive_control_robustness_radius.py",
+      "research/flavor/results/wp994_adaptive_control_robustness_radius.json"
+    ],
+    "checks": [
+      {
+        "id": "wp994_adaptive_control_robustness_radius",
+        "path": "research/flavor/checkers/wp994_adaptive_control_robustness_radius.py",
+        "requires": []
+      }
+    ],
+    "depends_on": ["wp993-universal-adaptive-control-section"],
+    "consumes": [
+      "universal affine feedback section",
+      "strict three-state control regions",
+      "invariant-coordinate error composition"
+    ],
+    "provides": [
+      "exact per-label l-infinity robustness radii",
+      "joint uniform radius 1/24697",
+      "full-rank boundary hostile"
+    ],
+    "missing_constructors": [
+      "independently calibrated joint error metric in invariant control units",
+      "closed-loop covariance composition across measurement feedback and actuation",
+      "source-authorized apparatus whose worst-case error is strictly below 1/24697",
+      "same-frame labelled relative-energy verification"
+    ],
+    "next_falsifier": "calibrate the complete closed-loop error packet and test whether its worst-case invariant-coordinate support crosses the full-rank hostile corner dQ=1/24697 dR=-1/24697"
+  }
+}
