@@ -1,0 +1,30 @@
+schema = "marici.theta.off_seam_detector_classifier.v1"
+status = "active"
+
+[candidates.metric]
+verdict = "insufficient_without_source_orientation_law"
+
+[candidates.dual_pairing]
+verdict = "gauge_invariant_readout_but_nonvanishing_is_unproved"
+
+[candidates.connection]
+verdict = "period_is_divisor_reformulation_without_source_law"
+
+[candidates.global_index]
+verdict = "loses_reciprocal_support"
+
+[candidates.supported_complex]
+verdict = "survives"
+requires = ["source_differential", "source_support", "sector_contractions", "completion_stability"]
+
+[[falsifier]]
+id = "metric_zero"
+witness = "standard metric with section sigma(z)=z"
+
+[[falsifier]]
+id = "index_cancellation"
+witness = "right index +1 and left index -1"
+
+[[falsifier]]
+id = "manufactured_complex"
+witness = "differential defined from completed scalar section"
