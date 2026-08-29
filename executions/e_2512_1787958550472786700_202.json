@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958550472786700_202",
+  "created_at": "2026-08-28T23:09:10.4727913Z",
+  "sha256": "38c3fffea8ce8795ee883e62a4f99d63cc289d1acd18e956d30e40cf47a8167e",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k): r*=F(n-i,i+1)\n return r\ndef H(g,a,b=4): return {-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-b,j)*((-1)**j) for j in range(g+1)}\ndef op(h,g,Q,sgn):\n o={}\n for e,c in h.items():\n  v=e+1+sgn*Q;o[e]=o.get(e,F(0))+c*v;o[e+1]=o.get(e+1,F(0))+c*(v-g)\n return {e:c for e,c in o.items() if c}\ndef col(g,q,a,br):\n Q=q+2;v=op(H(g,a),g,Q,-1 if br=='-' else 1)\n return v if br=='-' else {e+Q:-c for e,c in v.items()}\ndef sub(v,w,c):\n for e,x in w.items():\n  v[e]=v.get(e,F(0))-c*x\n  if not v[e]: del v[e]\ndef audit(g,q,N,targets):\n labels=[(a,b) for a in range(N+1) for b in '-+']; piv=[]; E=[]; reps=[]\n dep={}\n for lab in labels:\n  v=col(g,q,*lab); rep={}\n  for i,p in enumerate(piv):\n   c=v.get(p,F(0))\n   if c:\n    sub(v,E[i],c)\n    for j,x in reps[i].items(): rep[j]=rep.get(j,F(0))-c*x\n  if v:\n   p=min(v);z=v[p];v={e:x/z for e,x in v.items()};rep={j:x/z for j,x in rep.items()};idx=len(piv);rep[idx]=rep.get(idx,F(0))+F(1,z);piv.append(p);E.append(v);reps.append(rep)\n  else: dep[lab]={j:-x for j,x in rep.items()}\n bas=[lab for lab in labels if lab not in dep]\n cap=[a for a,b in bas if b=='+'];out=[]\n for a in targets:\n  rr=dep.get((a,'+'),{});mx=max(map(abs,rr.values()),default=F(1));out.append((a,str(mx),len(rr)))\n return cap,out\nfor g,q in [(6,3),(6,8),(6,13)]:\n cap,out=audit(g,q,25,[12,15,18,21,24]);print((g,q),'cap',cap,'deep',out)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:09:10.3551825Z",
+    "finished_at": "2026-08-28T23:09:10.4727742Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact deep plus projection audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact deep plus projection audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3) cap [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] deep [(12, '5421/110', 18), (15, '1187019/40040', 21), (18, '1187019/17680', 24), (21, '9100479/67184', 27), (24, '3561057/14212', 30)]\r\n(6, 8) cap [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11] deep [(12, '12285/2', 14), (15, '4942125/56', 17), (18, '2771703/272', 20), (21, '2996565/5168', 23), (24, '31872555/29716', 26)]\r\n(6, 13) cap [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16] deep [(12, '1', 0), (15, '1', 0), (18, '112176', 15), (21, '2576235/8', 18), (24, '271143/46', 21)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
