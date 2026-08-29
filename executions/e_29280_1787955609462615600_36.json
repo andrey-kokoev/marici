@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787955609462615600_36",
+  "created_at": "2026-08-28T22:20:09.4626188Z",
+  "sha256": "632d67582ba6414eeff53bda57fb9708fcfeb4638954e95854ca00535f1e06e6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as S\nx=S.symbols('x')\nF=(164102448*x**2+51772000*x+4698125)/(7396*(86*x+25)**2)\nfor k in [1,2,3,4]:\n print(k,S.factor(F.subs(x,k)),float(F.subs(x,k)))\nprint(S.factor(S.together(S.diff(F,x))))\nJ2=lambda x:S.Rational(87890625,636056)/(86*x+25)**3\nprint(\"J2x4\",S.factor(J2(4)),float(J2(4)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:20:08.8738847Z",
+    "finished_at": "2026-08-28T22:20:09.4626067Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "small exact rational threshold derivation",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "small exact rational threshold derivation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "1 73524191/30375372 2.420519854044915\r\n2 764651917/287031364 2.664001265729274\r\n3 1636936157/592338244 2.763515902579473\r\n4 315269477/111894084 2.8175705607456423\r\n25*(872728*x + 113075)/(43*(86*x + 25)**3)\r\nJ2x4 9765625/3550846861656 2.750224208611922e-06\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
