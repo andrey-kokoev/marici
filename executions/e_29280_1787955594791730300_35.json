@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787955594791730300_35",
+  "created_at": "2026-08-28T22:19:54.7917332Z",
+  "sha256": "a8a54809498169d61a7a3b63f7c13ba4194dd13fc5abecead117e8a5996ec152",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as S\nq=S.Rational\nVus=q(22517,100000);Vub=q(3763,1000000);Vcb=q(4189,100000);J=q(3178755879727874,10**20)\ns13=Vub;c13=S.sqrt(1-s13**2);s12=Vus/c13;c12=S.sqrt(1-s12**2);s23=Vcb/c13;c23=S.sqrt(1-s23**2)\nsin=J/(s12*s23*s13*c12*c23*c13**2)\nfor sg in [-1,1]:\n cos=sg*S.sqrt(1-sin**2)\n e=cos+S.I*sin\n V=S.Matrix([[c12*c13,s12*c13,s13/S.conjugate(e)],[-s12*c23-c12*s23*s13*e,c12*c23-s12*s23*s13*e,s23*c13],[s12*s23-c12*c23*s13*e,-c12*s23-s12*c23*s13*e,c23*c13]])\n z=S.simplify(sum(S.expand_complex(x*S.conjugate(x))**2 for x in V))\n print(sg,S.N(z,20))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:19:54.0361086Z",
+    "finished_at": "2026-08-28T22:19:54.7917206Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "small exact-algebraic CKM permutation-invariant evaluation",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "small exact-algebraic CKM permutation-invariant evaluation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "-1 2.8007989705186091908\r\n1 2.8007019550329736727\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
