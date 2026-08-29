@@ -757,6 +757,10 @@ and its physical constructor implementation.
   the fitted interval, while C=22 and C=24 lie outside. This is unique on the
   k=2 slice but remains a coincidence until one source representation derives
   both integers and the typed pole operator.
+- flavor-discrete-source-actuator-type-no-go.md: WP1037 applies Aspect's SCC
+  gates to WP1036. The integers k and C label distinct source theories, so the
+  local actuator rank is zero; relaxing them to real control coordinates exits
+  the admitted domain. WP996 optimization therefore cannot select (2,23).
 - `flavor-domain-detector-confusion-kernel.md`: WP99 factors the first detector
   kernel exactly. A CP-covariant three-outcome channel is faithful iff
   `(1-l-2e)(1-b-l) != 0`; its two singular surfaces erase orientation and
