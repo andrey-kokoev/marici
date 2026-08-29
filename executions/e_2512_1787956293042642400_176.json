@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956293042642400_176",
+  "created_at": "2026-08-28T22:31:33.042646Z",
+  "sha256": "bfb3370f9bd20a15973d820e70790c4b0536a513b016e12b7fad95152c1c7ed5",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\nbad=[];cases=0\nfor b in range(2,9):\n for g in range(4,11):\n  for q in range(min(b-1,g-3),g-2):\n   N=15;cen=1-g;M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(cen-q-2-a,cen+q+2-a)];K=[current_defect(g,a,q,b) for a in range(N+1)];r=rank(M);cases+=1\n   tests=[rank(M+K[:2])==r+2,all(rank(M+[K[1],K[a]])==r+1 for a in range(1,min(b,N+1))),all(rank(M+[K[a]])==r for a in range(b,N+1))]\n   if not all(tests):bad.append((b,g,q,tests,[rank(M+[K[a]])-r for a in range(N+1)]))\nprint(\"cases\",cases,\"bad\",len(bad),\"first\",bad[:3])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:31:20.9993887Z",
+    "finished_at": "2026-08-28T22:31:33.0426333Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "low wedge source atom localization",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "low wedge source atom localization",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "cases 105 bad 37 first [(3, 6, 2, [True, False, True], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), (3, 7, 2, [True, False, True], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), (3, 7, 3, [True, False, True], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
