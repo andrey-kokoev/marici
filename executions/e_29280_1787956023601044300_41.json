@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787956023601044300_41",
+  "created_at": "2026-08-28T22:27:03.6010479Z",
+  "sha256": "68e24583bc9963af599bdf339783072eb8ce8aa140ca490ad288568bf995d3e8",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as S\nq=S.Rational; I=S.I\nX=S.diag(-1,0,1);Y=S.Matrix([[0,1,-q(6,5)*I],[1,0,1],[q(6,5)*I,1,0]])\nW=[S.eye(3),X,Y,X**2,Y**2,X*Y+Y*X,I*(X*Y-Y*X),X*Y*X,Y*X*Y]\n# hermitian vector 9 real coords diag plus Re/Im upper\ndef v(M):\n return S.Matrix([M[0,0],M[1,1],M[2,2],S.re(M[0,1]),S.im(M[0,1]),S.re(M[0,2]),S.im(M[0,2]),S.re(M[1,2]),S.im(M[1,2])])\nB=S.Matrix.hstack(*[v(w) for w in W])\nprint(\"det\",S.factor(B.det()))\nprint(\"rank\",B.rank())\nprint(\"commutant rank\")\n# solve [Z,X]=[Z,Y]=0 generic complex maybe use 9 hermitian coords\na=S.symbols('a0:9', real=True);Z=sum((a[k]*W[k] for k in range(9)),S.zeros(3))\neq=list(Z*X-X*Z)+list(Z*Y-Y*Z)\nM,b=S.linear_eq_to_matrix(eq,a)\nprint(M.rank(),9-M.rank())"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:27:02.9729267Z",
+    "finished_at": "2026-08-28T22:27:03.6010352Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "exact 9-dimensional Hermitian word-span test",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "exact 9-dimensional Hermitian word-span test",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "det -27936/625\r\nrank 9\r\ncommutant rank\r\n8 1\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
