@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787982514755245900_263",
+  "created_at": "2026-08-29T05:48:34.7552494Z",
+  "sha256": "373eeb7489d50654b9d47910a9d677cae8610b8cfd258620bd7d5a00e08ca34f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_theta_beurling_source_gate.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:48:34.571629Z",
+    "finished_at": "2026-08-29T05:48:34.7552349Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "theta source derivation gate",
+      "expected_cost": "bounded",
+      "source": "caller_declared"
+    },
+    "test_scope": "theta source derivation gate",
+    "expected_cost": "bounded",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.theta-beurling-source-gate-check.v1\",\r\n  \"audit\": {\r\n    \"passed\": false,\r\n    \"first_failed_gate\": \"coefficient_law\",\r\n    \"reason\": \"source coefficient law remains open\",\r\n    \"evidence\": {\r\n      \"coefficient\": \"endpoint\",\r\n      \"status\": \"open\"\r\n    }\r\n  },\r\n  \"checks\": {\r\n    \"blocked_at_first_missing_coefficient\": true,\r\n    \"candidate_not_promoted\": true,\r\n    \"later_gates_preserved\": true\r\n  },\r\n  \"passed\": true,\r\n  \"next_constructor\": \"derive the endpoint coefficient formula and exact growth degree before selecting s\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
