@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_30060_1787963299734756600_97",
+  "created_at": "2026-08-29T00:28:19.7347616Z",
+  "sha256": "839c024d1cd78b92c0cdd6aebad1a8788e0f97840292aeff552434b23ced99ce",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from pathlib import Path\np=Path('research/benincasa/checkers/census_interaction_net_two_adic_layers.cjs')\nfor i,s in enumerate(p.read_text().splitlines(),1):\n    if 'DEPTH' in s or 'process.argv' in s or '--summary' in s: print(f'{i}:{s}')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici/.worktrees/benincasa-integral-barcode",
+    "started_at": "2026-08-29T00:28:19.6583501Z",
+    "finished_at": "2026-08-29T00:28:19.7347379Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "bounded CLI inspection",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "bounded CLI inspection",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "94:const arguments_ = process.argv.slice(2);\r\n95:const summaryOnly = arguments_.includes(\"--summary\");\r\n96:const positional = arguments_.filter(argument => argument !== \"--summary\");\r\n98:  throw new Error(\"usage: node census_interaction_net_two_adic_layers.cjs MATRIX [DEPTH] [--summary]\");\r\n104:  throw new Error(\"DEPTH must be an integer from 1 through 26; larger depths require BigInt arithmetic\");\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
