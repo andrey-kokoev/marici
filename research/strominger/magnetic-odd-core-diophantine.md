@@ -74,17 +74,15 @@ d=\frac{37}{3},
 so neither is integral.  Hence
 
 \[
-\boxed{
 P(g,d)=0,quad g\ge2,quad d\in\mathbb Z
 \Longleftrightarrow
 (g,d)=(2,5).
-}
 \]
 
 Since `q=g+d`, the unique admissible odd-core zero is
 
 \[
-\boxed{(g,q)=(2,7).}
+(g,q)=(2,7).
 \]
 
 This closes the final Diophantine gap in the arbitrary-grade initialization

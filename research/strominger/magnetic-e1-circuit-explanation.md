@@ -10,7 +10,7 @@ at grade two.  Away from grade two, their observation matrix has two rows.
 The second row is carried by the plus source with coefficient
 
 \[
-\boxed{(g-2)4^{\overline g}.}
+(g-2)4^{\overline g}.
 \]
 
 It vanishes uniquely at `g=2`.  At that grade both source columns collapse to
@@ -23,7 +23,7 @@ R_1(0,-2)=R_1(0,0)=-40.
 The unique primitive difference invisible to this observation is therefore
 
 \[
-\boxed{(1,-1),}
+(1,-1),
 \]
 
 which lifts to

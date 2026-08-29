@@ -91,7 +91,6 @@ combination is invisible to which port.
 The mechanisms are now exhaustive:
 
 \[
-\boxed{
 \begin{array}{c|c|c}
 \text{orbit type}&\text{representation}&\text{kernel mechanism}\\
 \hline
@@ -100,7 +99,6 @@ q>0\text{ free}&\mathbf1\oplus\mathrm{sgn}&
 \text{paired parity circuits at }(2,1),(2,7)\\
 \text{transport}&\text{faithful}&\text{no kernel}
 \end{array}
-}
 \]
 
 Because the parity projectors are complementary and `T` is injective,

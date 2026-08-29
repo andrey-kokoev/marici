@@ -32,15 +32,12 @@ Combining this with the magnetic classification gives exactly two electric
 kernel classes:
 
 \[
-\boxed{\widetilde E_1=1+\bar z^{-2},}
+\widetilde E_1=1+\bar z^{-2}.
 \]
 
 \[
-\boxed{
-\widetilde E_2=ar z^{-8}+3z^{-4}\bar z^2-2z^{-6}.
-}
+\widetilde E_2=\bar z^{-8}+3z^{-4}\bar z^2-2z^{-6}.
 \]
-
 Both occur only at grade two, with the second requiring pole depth six.
 
 The center component behaves differently.  At `q=0`, reflection fixes every

@@ -84,10 +84,8 @@ anti-diagonal packet, but the discrete configuration protocol cannot encode
 the required tuning.  Integrality acts as an error-detecting constraint:
 
 \[
-\boxed{
 \text{continuous system permits interference; discrete admissibility rejects
 its balance ratio.}
-}
 \]
 
 For a multi-sector augmentation such as the cosmological star, the analogous
@@ -189,11 +187,9 @@ charge-2 source against the charge-1 sources.
 This supplies a source-derived type checker for the cover:
 
 \[
-\boxed{
 \text{integer Laurent representation on the cover}
 \not\Rightarrow
 \text{deck-equivariant descent data}.
-}
 \]
 
 Activating the local interference packet would require breaking or twisting
@@ -293,7 +289,7 @@ a+m=1-g+q.
 Their charge difference is therefore
 
 \[
-\boxed{\Delta\chi_N=2Nq\pmod N.}
+\Delta\chi_N=2Nq\pmod N.
 \]
 
 After `N` clears the denominator of `q`, the branches align only if
@@ -316,10 +312,8 @@ difference.
 Thus the obstruction is not peculiar to choosing a cubic cover:
 
 \[
-\boxed{
 \text{no finite cyclic cover alone activates either rational interference
 pattern.}
-}
 \]
 
 Only a sector-specific charged adapter, a defect absorbing the charge
@@ -344,10 +338,8 @@ two grade-six points have `q=35/3,55/3`, so neither satisfies `2q in Z`.
 Therefore:
 
 \[
-\boxed{
 \text{No rational destructive-interference zero of the odd residual block
 is compatible with descent through any finite cyclic cover.}
-}
 \]
 
 This is stronger than integer-lattice protection.  Clearing denominators by

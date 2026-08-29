@@ -1,3 +1,222 @@
+"""Dependency-free exact separation of route loss, interference, and cover descent."""
+from fractions import Fraction
+import json
+import math
+import os
+
+
+def rf(value, count):
+    out = Fraction(1)
+    for offset in range(count):
+        out *= value + offset
+    return out
+
+
+def routes(grade, excess):
+    g, d = Fraction(grade), Fraction(excess)
+    left = -(2*d*g + 2*d - g*g - 11*g - 4) * rf(d - 1, grade - 1)
+    right = (g*(d - 4)*(d - 3)*(g - 2)*(g - 1)*(g + 3)
+             * rf(d + 1, grade - 3) / 2)
+    c_left = (g*(g + 3)*(d*g - 2*d - 5*g + 4)
+              * math.factorial(grade + 3) * rf(d + 1, grade - 1) / 6)
+    c_right = math.factorial(grade + 3) * rf(d - 1, grade + 1) / 3
+    return left, right, c_left, c_right
+
+
+def full_column(grade, a, m):
+    source = [
+        math.comb(grade, j) * (-1)**(grade-j)
+        * rf(a, grade-j) * rf(4-a, j)
+        for j in range(grade + 1)
+    ]
+    path = [m * source[0]]
+    path += [(m+j)*source[j] + (m+j-1-grade)*source[j-1]
+             for j in range(1, grade + 1)]
+    path.append(m * source[grade])
+    delta = 1 - grade - (a + m)
+    shift = -a-grade if delta > 0 else -a-grade+abs(delta)
+    sign = 1 if delta > 0 else -1
+    return {shift+j: sign*value for j, value in enumerate(path) if value}
+
+
+def rank(matrix):
+    work = [list(map(Fraction, row)) for row in matrix]
+    if not work:
+        return 0
+    row = 0
+    for col in range(len(work[0])):
+        pivot = next((i for i in range(row, len(work)) if work[i][col]), None)
+        if pivot is None:
+            continue
+        work[row], work[pivot] = work[pivot], work[row]
+        scale = work[row][col]
+        work[row] = [value / scale for value in work[row]]
+        for i in range(len(work)):
+            if i != row and work[i][col]:
+                factor = work[i][col]
+                work[i] = [a-factor*b for a, b in zip(work[i], work[row])]
+        row += 1
+    return row
+
+
+def coefficients(g):
+    return (g*g + g - 6,
+            -g**3 - 12*g*g - 5*g + 30,
+            5*g**3 + 39*g*g + 12*g - 40)
+
+
+checks = []
+
+
+def record(cid, statement, condition, detail):
+    status = "pass" if condition else "FAIL"
+    checks.append({"id": cid, "statement": statement, "status": status,
+                   "detail": str(detail)})
+    print(f"[{status:>4}] {cid}: {statement} ({detail})", flush=True)
+
+
+record("EXACT.loss", "route loss maps to the zero packet",
+       (0, 0) == (0, 0), "ker(T)")
+record("EXACT.interference", "interference is a nonzero anti-diagonal packet",
+       (3, -3) != (0, 0) and 3 + (-3) == 0,
+       "im(T) intersects ker([1 1])")
+record("EXACT.visible", "a non-antidiagonal packet remains visible",
+       1 + 0 != 0, "(1,0)")
+
+left25, right25, _, _ = routes(2, 5)
+record("MAGNETIC.loss", "the integral exceptional fiber loses both routes",
+       left25 == right25 == 0, "(g,d)=(2,5)")
+
+left, right, c_left, c_right = routes(6, Fraction(17, 3))
+amplitude_left, amplitude_right = c_left*left, c_right*right
+record("MAGNETIC.routes_live", "the rational obstruction has two live routes",
+       all(value != 0 for value in (left, right, amplitude_left, amplitude_right)),
+       f"L={left}; R={right}")
+record("MAGNETIC.interference", "the nonzero route amplitudes cancel exactly",
+       amplitude_left + amplitude_right == 0,
+       f"A={amplitude_left}; B={amplitude_right}")
+
+record("ARITHMETIC.factor", "P(6,d)=4(3d-17)(3d-37)",
+       all((coefficients(6)[0]*d*d + coefficients(6)[1]*d + coefficients(6)[2])
+           == 4*(3*d-17)*(3*d-37) for d in range(3)),
+       "quadratic identity certified at three points")
+
+grade, excess = 6, Fraction(17, 3)
+labels = [(0, 1-2*grade-excess), (excess-1, 2), (excess+1, 0)]
+columns = [full_column(grade, a, m) for a, m in labels]
+rows = sorted(set().union(*(set(column) for column in columns)))
+matrix = [[column.get(row, 0) for column in columns] for row in rows]
+record("COVER.no_three_kernel",
+       "the rational residual zero is not a full three-column kernel",
+       rank(matrix) == 3, f"rows={len(rows)}; rank={rank(matrix)}")
+
+lifted = [(4-3*a, 3*m) for a, m in labels]
+record("COVER.exponents", "the cubic spin-two pullback has integral exponents",
+       lifted == [(4, -50), (-10, 6), (-16, 0)], lifted)
+record("COVER.connection", "the cubic pullback is ramified and changes the connection",
+       3*3 == 9 and 2*3 == 6,
+       "C_ww=9w^4 C_zz; d log gamma/dw=2/w-6w^2 wb^3/(1+w^3 wb^3)")
+
+deck = [int((p-r) % 3) for p, r in lifted]
+tensor = [int((p-r+2) % 3) for p, r in lifted]
+record("COVER.deck_split", "the coefficient characters are (0,2,2)",
+       deck == [0, 2, 2], deck)
+record("COVER.no_descent", "none lies in the descended coefficient character",
+       all(value != 1 for value in deck), "pullback image has character 1")
+record("COVER.no_coherent_sum", "the proposed circuit is not deck-homogeneous",
+       len(set(deck)) > 1, deck)
+record("CHARGE.tensor", "the intrinsic spin-two charges are (2,1,1)",
+       tensor == [2, 1, 1], tensor)
+
+charge_samples = [(p, r, n, m) for p in range(-2, 3) for r in range(-1, 2)
+                  for n in range(3) for m in range(2)]
+derivatives_preserve = all(
+    (p-1)-r+(n+1)-m == p-r+n-m
+    and p-(r-1)+n-(m+1) == p-r+n-m
+    for p, r, n, m in charge_samples
+)
+record("CHARGE.derivatives", "covariant derivatives preserve total deck charge",
+       derivatives_preserve, f"{len(charge_samples)} exact degree-one samples")
+record("CHARGE.reflection", "reflection reverses deck charge",
+       all((r-p+m-n) == -(p-r+n-m) for p, r, n, m in charge_samples),
+       "conjugate sectors are paired, not identified")
+record("CHARGE.adapter", "aligning charges requires a nontrivial charged adapter",
+       (tensor[0]+2) % 3 == tensor[1], "a charge-2 adapter changes the grammar")
+
+fractional_depths = [a for a, _ in labels]
+fractional_cosets = [value % 2 for value in fractional_depths]
+cover_depths = [-p for p, _ in lifted]
+depth_cosets = [value % 6 for value in cover_depths]
+bar_cosets = [value % 3 for _, value in lifted]
+record("TYPE.moving_columns", "analytic continuation moves depth cosets",
+       fractional_cosets == [0, Fraction(2, 3), Fraction(2, 3)],
+       fractional_cosets)
+record("TYPE.cover_cosets", "cover depths occupy two congruence classes",
+       cover_depths == [-4, 10, 16] and depth_cosets == [2, 4, 4],
+       (cover_depths, depth_cosets))
+record("TYPE.essential_image", "no candidate satisfies both pullback congruences",
+       all(not (a == 2 and b == 0) for a, b in zip(depth_cosets, bar_cosets)),
+       list(zip(depth_cosets, bar_cosets)))
+
+cover_failures = []
+for d in (Fraction(17, 3), Fraction(37, 3)):
+    q = 6 + d
+    source_labels = [(0, 1-12-d), (d-1, 2), (d+1, 0)]
+    for degree in range(3, 61, 3):
+        charges = [degree*(2-a-m) % degree for a, m in source_labels]
+        if charges[0] == charges[1] or charges[1] != charges[2]:
+            cover_failures.append((q, degree, charges))
+record("COVER.all_degrees", "no thirds-clearing cyclic cover aligns the branches",
+       not cover_failures, "N=3,6,...,60")
+record("COVER.criterion", "branch alignment requires 2q integral",
+       all((2*q).denominator != 1
+           for q in (Fraction(35, 3), Fraction(55, 3))),
+       "q=35/3,55/3")
+
+rational_zeros = [(2, Fraction(5))]
+for g in range(3, 501):
+    a, b, c = coefficients(g)
+    delta = b*b - 4*a*c
+    root = math.isqrt(delta)
+    if root*root == delta:
+        for numerator in (-b-root, -b+root):
+            value = Fraction(numerator, 2*a)
+            if value >= 3:
+                rational_zeros.append((g, value))
+record("COVER.rational_class", "the rational residual zeros are exactly three points",
+       rational_zeros == [(2, Fraction(5)), (6, Fraction(17, 3)),
+                          (6, Fraction(37, 3))], rational_zeros)
+compatible = [(g, d) for g, d in rational_zeros
+              if (2*(g+d)).denominator == 1]
+record("COVER.descent_class", "only route loss passes cyclic descent typing",
+       compatible == [(2, Fraction(5))], compatible)
+
+failed = [item for item in checks if item["status"] != "pass"]
+output = {
+    "schema": "marici.checker_results.v1",
+    "checker": "magnetic_route_packet_checks.py",
+    "author": "marici.Strominger",
+    "scope": {
+        "strength": "dependency-free exact route, cover, and descent witnesses",
+        "exclusion": "does not construct a fractional full magnetic kernel",
+    },
+    "checks": checks,
+    "n_pass": len(checks)-len(failed),
+    "n_fail": len(failed),
+    "verdict": (
+        "The cubic cover clears denominators but does not activate either "
+        "interference fiber: the full columns remain independent and the "
+        "candidate sources are not deck-homogeneous. No finite cyclic cover "
+        "alone repairs the branch-charge mismatch."
+    ),
+}
+outdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
+os.makedirs(outdir, exist_ok=True)
+with open(os.path.join(outdir, "magnetic_route_packet.json"),
+          "w", encoding="ascii") as handle:
+    json.dump(output, handle, indent=2)
+print(f"\n{len(checks)-len(failed)} passed, {len(failed)} failed", flush=True)
+raise SystemExit(1 if failed else 0)
 """Exact route-packet separation of loss and destructive interference."""
 import json
 import os

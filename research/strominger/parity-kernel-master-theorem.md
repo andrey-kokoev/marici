@@ -58,7 +58,6 @@ consecutive `A_k`, and restriction cannot create a linear dependence.
 The complete mechanism theorem is:
 
 \[
-\boxed{
 \begin{array}{c|c}
 \text{object}&\text{result}\\
 \hline
@@ -68,7 +67,6 @@ The complete mechanism theorem is:
 \text{electric projection}&\text{two even circuits}\\
 \text{joint }(E,M)\text{ observer}&\text{injective}
 \end{array}
-}
 \]
 
 The arbitrary-set checker exhausts all 32 subsets of `{0,2,4,6,8}`, six
