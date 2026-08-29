@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787957770283972800_191",
+  "created_at": "2026-08-28T22:56:10.2839769Z",
+  "sha256": "6a7c8a4c880a2789faf60da21c633ddfac37a5410e262154d61f85752a39721f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];out=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  out.append(j);u+=1\n return set(out)\ndef pp(g,q,N):\n c=1-g;cs=[canonical_column(g,a,m,4) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];P=piv(cs);return {a for a in range(N+1) if 2*a+1 in P},[a for a in range(N+1) if 2*a not in P]\nbadminus=[];badstable=[];mx=[]\nfor g in range(2,11):\n for q in range(1,16):\n  p15,m15=pp(g,q,15);p20,m20=pp(g,q,20)\n  if m20:badminus.append((g,q,m20))\n  if p15!=p20 & set(range(16)):badstable.append((g,q,p15,p20))\n  mx.append((g,q,max(p20) if p20 else -1,len(p20)))\nprint(\"cases\",len(mx),\"minus_bad\",len(badminus),\"stable_bad\",len(badstable),\"first\",badminus[:1],badstable[:1]);print(\"sample\",mx[:15])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:56:08.9248026Z",
+    "finished_at": "2026-08-28T22:56:10.2839641Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "consecutive-depth semantic basis stability",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "consecutive-depth semantic basis stability",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "cases 135 minus_bad 0 stable_bad 0 first [] []\r\nsample [(2, 1, 4, 5), (2, 2, 5, 6), (2, 3, 6, 7), (2, 4, 7, 7), (2, 5, 8, 7), (2, 6, 9, 8), (2, 7, 10, 9), (2, 8, 11, 10), (2, 9, 12, 11), (2, 10, 13, 12), (2, 11, 14, 13), (2, 12, 15, 14), (2, 13, 16, 15), (2, 14, 17, 16), (2, 15, 18, 17)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
