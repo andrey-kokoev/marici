@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958416717386500_199",
+  "created_at": "2026-08-28T23:06:56.7173894Z",
+  "sha256": "486e4b407f72807b39ebde1d89bc199aa5b94d525850a1de4fedf43fde8ba0ae",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];o=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  o.append(j);u+=1\n return o\ndef coords(cols,t):\n rows=sorted({r for c in cols+[t] for r in c});sel=[];old=0\n for r in rows:\n  cand=sel+[r];z=rank([{x:c.get(x,0) for x in cand if c.get(x,0)} for c in cols])\n  if z>old:sel.append(r);old=z\n  if old==len(cols):break\n W=[[Fraction(c.get(r,0)) for c in cols]+[Fraction(t.get(r,0))] for r in sel];n=len(cols)\n for j in range(n):\n  z=next(i for i in range(j,n) if W[i][j]);W[j],W[z]=W[z],W[j];v=W[j][j];W[j]=[e/v for e in W[j]]\n  for i in range(n):\n   if i!=j and W[i][j]:v=W[i][j];W[i]=[W[i][k]-v*W[j][k] for k in range(n+1)]\n return [W[i][-1] for i in range(n)]\ndef rel(g,q,a):\n N=a;c=1-g;cs=[canonical_column(g,d,m,4) for d in range(N+1) for m in(c-q-2-d,c+q+2-d)];B=piv(cs);e=2*a+1\n if e in B:return None\n x=coords([cs[j] for j in B],cs[e]);return float(max(map(abs,x))),sum(v!=0 for v in x)\nfor z in [(6,3),(6,8),(6,13)]:print(z,[(a,rel(*z,a)) for a in range(10,26)])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:06:54.4278003Z",
+    "finished_at": "2026-08-28T23:06:56.7173763Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "deep plus relation projection growth",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "deep plus relation projection growth",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3) [(10, (35.75, 8)), (11, (42.9, 8)), (12, (49.28181818181818, 9)), (13, (20.346969696969698, 11)), (14, (23.975874125874125, 12)), (15, (29.64582917082917, 13)), (16, (39.527772227772225, 14)), (17, (51.88020104895105, 15)), (18, (67.13908371040723, 15)), (19, (85.78882918552036, 17)), (20, (108.36483686592045, 18)), (21, (135.45604608240058, 19)), (22, (167.7074856258293, 20)), (23, (205.82282326806322, 21)), (24, (250.56691528285955, 22)), (25, (302.76835596678865, 23))]\r\n(6, 8) [(10, None), (11, None), (12, (6142.5, 10)), (13, (29908.125, 11)), (14, (67736.25, 12)), (15, (88252.23214285714, 13)), (16, (71519.35714285714, 14)), (17, (35123.34375, 15)), (18, (10190.08455882353, 16)), (19, (839.3363970588235, 17)), (20, (463.8645510835913, 18)), (21, (579.8306888544892, 19)), (22, (717.8856147722247, 20)), (23, (881.0414363113666, 21)), (24, (1072.5721833355767, 22)), (25, (1296.0247215304887, 23))]\r\n(6, 13) [(10, (15.321428571428571, 6)), (11, None), (12, None), (13, None), (14, None), (15, None), (16, None), (17, (20349.0, 14)), (18, (112176.0, 15)), (19, (274117.75, 16)), (20, (380188.5, 17)), (21, (322029.375, 18)), (22, (165764.9642857143, 19)), (23, (48107.08928571428, 20)), (24, (5894.413043478261, 21)), (25, (218.60795454545453, 22))]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
