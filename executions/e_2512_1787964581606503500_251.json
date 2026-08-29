@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787964581606503500_251",
+  "created_at": "2026-08-29T00:49:41.6065061Z",
+  "sha256": "efb9475a7fa9dd0544477de50c95178bbab6ba4a0fd6a6a4e04fd958068c0180",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json\nfrom fractions import Fraction as F\nd=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'))\ndef seq(b,g):\n x=next(z for z in d['rows'] if z['beta']==b and z['g']==g);c=x['target_normalized_coefficients'];return [F(c.get(f'{b+r},plus','0/1')) for r in range(g+1)]\nfor b in (2,4,8):\n print('beta',b)\n for g in range(2,20):\n  a=seq(b,g);z=seq(b,g+1);rr=[z[j]-(a[j-1] if j else 0) for j in range(g+2)];print(g,sum(v!=0 for v in rr),rr[-5:])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:49:41.5354784Z",
+    "finished_at": "2026-08-29T00:49:41.6064915Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "grade-changing convolution residual support",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "grade-changing convolution residual support",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "beta 2\r\n2 2 [Fraction(2, 1), Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)]\r\n3 3 [Fraction(-4, 1), Fraction(2, 1), Fraction(3, 2), Fraction(0, 1), Fraction(0, 1)]\r\n4 4 [Fraction(-7, 2), Fraction(9, 4), Fraction(5, 2), Fraction(0, 1), Fraction(0, 1)]\r\n5 5 [Fraction(-3, 5), Fraction(51, 20), Fraction(7, 2), Fraction(0, 1), Fraction(0, 1)]\r\n6 6 [Fraction(173, 30), Fraction(43, 15), Fraction(9, 2), Fraction(0, 1), Fraction(0, 1)]\r\n7 7 [Fraction(349, 21), Fraction(67, 21), Fraction(11, 2), Fraction(0, 1), Fraction(0, 1)]\r\n8 8 [Fraction(923, 28), Fraction(197, 56), Fraction(13, 2), Fraction(0, 1), Fraction(0, 1)]\r\n9 9 [Fraction(2009, 36), Fraction(277, 72), Fraction(15, 2), Fraction(0, 1), Fraction(0, 1)]\r\n10 10 [Fraction(7753, 90), Fraction(188, 45), Fraction(17, 2), Fraction(0, 1), Fraction(0, 1)]\r\n11 11 [Fraction(6874, 55), Fraction(248, 55), Fraction(19, 2), Fraction(0, 1), Fraction(0, 1)]\r\n12 12 [Fraction(3813, 22), Fraction(213, 44), Fraction(21, 2), Fraction(0, 1), Fraction(0, 1)]\r\n13 13 [Fraction(3018, 13), Fraction(269, 52), Fraction(23, 2), Fraction(0, 1), Fraction(0, 1)]\r\n14 14 [Fraction(55053, 182), Fraction(501, 91), Fraction(25, 2), Fraction(0, 1), Fraction(0, 1)]\r\n15 15 [Fraction(40459, 105), Fraction(613, 105), Fraction(27, 2), Fraction(0, 1), Fraction(0, 1)]\r\n16 16 [Fraction(57799, 120), Fraction(1481, 240), Fraction(29, 2), Fraction(0, 1), Fraction(0, 1)]\r\n17 17 [Fraction(80579, 136), Fraction(1769, 272), Fraction(31, 2), Fraction(0, 1), Fraction(0, 1)]\r\n18 18 [Fraction(219961, 306), Fraction(1046, 153), Fraction(33, 2), Fraction(0, 1), Fraction(0, 1)]\r\n19 19 [Fraction(147344, 171), Fraction(1226, 171), Fraction(35, 2), Fraction(0, 1), Fraction(0, 1)]\r\nbeta 4\r\n2 1 [Fraction(11, 20), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)]\r\n3 3 [Fraction(-13, 15), Fraction(79, 60), Fraction(5, 6), Fraction(0, 1), Fraction(0, 1)]\r\n4 4 [Fraction(-73, 60), Fraction(229, 105), Fraction(73, 42), Fraction(0, 1), Fraction(0, 1)]\r\n5 5 [Fraction(-5, 84), Fraction(65, 21), Fraction(75, 28), Fraction(0, 1), Fraction(0, 1)]\r\n6 6 [Fraction(605, 168), Fraction(2035, 504), Fraction(131, 36), Fraction(0, 1), Fraction(0, 1)]\r\n7 7 [Fraction(775, 72), Fraction(1799, 360), Fraction(83, 18), Fraction(0, 1), Fraction(0, 1)]\r\n8 8 [Fraction(4037, 180), Fraction(2954, 495), Fraction(123, 22), Fraction(0, 1), Fraction(0, 1)]\r\n9 9 [Fraction(26131, 660), Fraction(382, 55), Fraction(217, 33), Fraction(0, 1), Fraction(0, 1)]\r\n10 10 [Fraction(4175, 66), Fraction(4535, 572), Fraction(295, 39), Fraction(0, 1), Fraction(0, 1)]\r\n11 11 [Fraction(2455, 26), Fraction(3245, 364), Fraction(1557, 182), Fraction(0, 1), Fraction(0, 1)]\r\n12 12 [Fraction(146425, 1092), Fraction(13519, 1365), Fraction(401, 42), Fraction(0, 1), Fraction(0, 1)]\r\n13 13 [Fraction(76967, 420), Fraction(1144, 105), Fraction(253, 24), Fraction(0, 1), Fraction(0, 1)]\r\n14 14 [Fraction(58301, 240), Fraction(48503, 4080), Fraction(1569, 136), Fraction(0, 1), Fraction(0, 1)]\r\n15 15 [Fraction(256295, 816), Fraction(1855, 144), Fraction(3835, 306), Fraction(0, 1), Fraction(0, 1)]\r\n16 16 [Fraction(243425, 612), Fraction(40340, 2907), Fraction(4627, 342), Fraction(0, 1), Fraction(0, 1)]\r\n17 17 [Fraction(338525, 684), Fraction(12716, 855), Fraction(276, 19), Fraction(0, 1), Fraction(0, 1)]\r\n18 18 [Fraction(172877, 285), Fraction(42211, 2660), Fraction(326, 21), Fraction(0, 1), Fraction(0, 1)]\r\n19 19 [Fraction(77044, 105), Fraction(25973, 1540), Fraction(7633, 462), Fraction(0, 1), Fraction(0, 1)]\r\nbeta 8\r\n2 2 [Fraction(-1, 24), Fraction(-1, 4), Fraction(0, 1), Fraction(0, 1)]\r\n3 3 [Fraction(-2, 9), Fraction(35, 72), Fraction(3, 10), Fraction(0, 1), Fraction(0, 1)]\r\n4 4 [Fraction(-7, 36), Fraction(136, 99), Fraction(107, 110), Fraction(0, 1), Fraction(0, 1)]\r\n5 5 [Fraction(419, 660), Fraction(28, 11), Fraction(19, 11), Fraction(0, 1), Fraction(0, 1)]\r\n6 6 [Fraction(25253, 8580), Fraction(6757, 1716), Fraction(33, 13), Fraction(0, 1), Fraction(0, 1)]\r\n7 7 [Fraction(90065, 12012), Fraction(6007, 1092), Fraction(617, 182), Fraction(0, 1), Fraction(0, 1)]\r\n8 8 [Fraction(5507, 364), Fraction(655, 91), Fraction(299, 70), Fraction(0, 1), Fraction(0, 1)]\r\n9 9 [Fraction(1389, 52), Fraction(9, 1), Fraction(207, 40), Fraction(0, 1), Fraction(0, 1)]\r\n10 10 [Fraction(29343, 680), Fraction(2961, 272), Fraction(829, 136), Fraction(0, 1), Fraction(0, 1)]\r\n11 11 [Fraction(44457, 680), Fraction(10477, 816), Fraction(239, 34), Fraction(0, 1), Fraction(0, 1)]\r\n12 12 [Fraction(1096945, 11628), Fraction(43162, 2907), Fraction(303, 38), Fraction(0, 1), Fraction(0, 1)]\r\n13 13 [Fraction(1523093, 11628), Fraction(2890, 171), Fraction(848, 95), Fraction(0, 1), Fraction(0, 1)]\r\n14 14 [Fraction(281359, 1596), Fraction(10103, 532), Fraction(346, 35), Fraction(0, 1), Fraction(0, 1)]\r\n15 15 [Fraction(1845181, 7980), Fraction(19507, 924), Fraction(1671, 154), Fraction(0, 1), Fraction(0, 1)]\r\n16 16 [Fraction(4504979, 15180), Fraction(17653, 759), Fraction(5981, 506), Fraction(0, 1), Fraction(0, 1)]\r\n17 17 [Fraction(378395, 1012), Fraction(6433, 253), Fraction(1177, 92), Fraction(0, 1), Fraction(0, 1)]\r\n18 18 [Fraction(1172969, 2530), Fraction(5081, 184), Fraction(1377, 100), Fraction(0, 1), Fraction(0, 1)]\r\n19 19 [Fraction(1695053, 2990), Fraction(3101, 104), Fraction(9587, 650), Fraction(0, 1), Fraction(0, 1)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
