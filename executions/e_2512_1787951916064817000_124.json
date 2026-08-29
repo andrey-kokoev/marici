@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787951916064817000_124",
+  "created_at": "2026-08-28T21:18:36.06482Z",
+  "sha256": "ea7e89ac062f972449dd82b9abd07e32bf9e4644570686d84bb92d45f5d4fc0d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_discrete_crossing_incidence_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T21:18:35.988344Z",
+    "finished_at": "2026-08-28T21:18:36.064807Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "discrete magnetic crossing incidence",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "discrete magnetic crossing incidence",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_discrete_crossing_incidence.v1\",\r\n  \"status\": \"passed\",\r\n  \"gate_count\": 10,\r\n  \"passed_gate_count\": 10,\r\n  \"edges\": [\r\n    {\r\n      \"low\": 5,\r\n      \"high\": 7,\r\n      \"scalar_signs\": [\r\n        -1,\r\n        1\r\n      ],\r\n      \"incidence\": \"1\",\r\n      \"low_scalar\": \"-116807107608576000\",\r\n      \"high_scalar\": \"2402889070804992000\"\r\n    },\r\n    {\r\n      \"low\": 11,\r\n      \"high\": 13,\r\n      \"scalar_signs\": [\r\n        1,\r\n        -1\r\n      ],\r\n      \"incidence\": \"-1\",\r\n      \"low_scalar\": \"105282139657863168000\",\r\n      \"high_scalar\": \"-309772449377943552000\"\r\n    }\r\n  ],\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"LATTICE.adjacent\",\r\n      \"statement\": \"the relevant brackets are adjacent odd-depth lattice edges\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[{'low': 5, 'high': 7, 'signs': (-1, 1), 'incidence': Fraction(1, 1)}, {'low': 11, 'high': 13, 'signs': (1, -1), 'incidence': Fraction(-1, 1)}]\"\r\n    },\r\n    {\r\n      \"id\": \"LATTICE.complete_bounded\",\r\n      \"statement\": \"these are the only scalar sign-changing odd edges through depth 31\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[{'low': 5, 'high': 7, 'signs': (-1, 1), 'incidence': Fraction(1, 1)}, {'low': 11, 'high': 13, 'signs': (1, -1), 'incidence': Fraction(-1, 1)}]\"\r\n    },\r\n    {\r\n      \"id\": \"CROSS.incidence\",\r\n      \"statement\": \"the two discrete crossing incidences are +1 and -1\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[Fraction(1, 1), Fraction(-1, 1)]\"\r\n    },\r\n    {\r\n      \"id\": \"CROSS.route_live\",\r\n      \"statement\": \"both route coordinates are nonzero at every endpoint of either edge\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(5, Fraction(-143354177519616000, 1), Fraction(26547069911040000, 1)), (7, Fraction(150180566925312000, 1), Fraction(2252708503879680000, 1)), (11, Fraction(-355327221345288192000, 1), Fraction(460609361003151360000, 1)), (13, Fraction(-3477899772561457152000, 1), Fraction(3168127323183513600000, 1))]\"\r\n    },\r\n    {\r\n      \"id\": \"CROSS.character\",\r\n      \"statement\": \"the complementary difference character remains nonzero on all four endpoints\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(5, Fraction(-169901247430656000, 1)), (7, Fraction(-2102527936954368000, 1)), (11, Fraction(-815936582348439552000, 1)), (13, Fraction(-6646027095744970752000, 1))]\"\r\n    },\r\n    {\r\n      \"id\": \"ROOT.bracket\",\r\n      \"statement\": \"each rational analytic root lies in the corresponding open lattice edge\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(Fraction(17, 3), Fraction(37, 3))\"\r\n    },\r\n    {\r\n      \"id\": \"ROOT.unique\",\r\n      \"statement\": \"the quadratic obstruction has exactly the two displayed roots\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"P(6,d)=4(3d-17)(3d-37)\"\r\n    },\r\n    {\r\n      \"id\": \"ORIENTATION.match\",\r\n      \"statement\": \"discrete incidence agrees with the analytic scalar-crossing orientation\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"sign(S(high))-sign(S(low)) over two\"\r\n    },\r\n    {\r\n      \"id\": \"LOSS.vertex\",\r\n      \"statement\": \"the integral exception is a zero packet at a lattice vertex\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(g,d)=(2,5)\"\r\n    },\r\n    {\r\n      \"id\": \"LOSS.not_incidence\",\r\n      \"statement\": \"route loss cannot be assigned a nonzero interference-edge incidence\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"both scalar and complementary characters vanish\"\r\n    }\r\n  ],\r\n  \"verdict\": \"The two rational grade-six interference roots have a fully discrete shadow: they lie in the adjacent admitted odd-depth edges 5->7 and 11->13, whose scalar sign incidences are +1 and -1. No continuous depth state is needed to record the oriented wall crossing. The grade-two exception remains a zero packet at a vertex, not an edge incidence.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
