@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787953211959245100_140",
+  "created_at": "2026-08-28T21:40:11.959248Z",
+  "sha256": "46572b2d548793b5e9cb04ed2beb5133118a91f8dc551bfe9e1965b6532dc8aa",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nfrom fractions import Fraction as F\ndef rising(v,n):return math.prod(v+i for i in range(n))\ndef cv(g,a):return[math.comb(g,j)*(-1)**(g-j)*rising(a,g-j)*rising(4-a,j)for j in range(g+1)]\ndef pv(g,a,m):\n c=cv(g,a);return[m*c[0]]+[(m+j)*c[j]+(m+j-1-g)*c[j-1]for j in range(1,g+1)]+[m*c[g]]\ndef col(g,a,m):\n d=1-g-a-m;s=-a-g if d>0 else -a-g+abs(d);z=1 if d>0 else -1\n return{s+j:z*x for j,x in enumerate(pv(g,a,m))if x}\ndef comp(g,k,q):\n c=1-g;return[col(g,a,m)for a in range(0,2*k+1,2)for m in(c-q-a,c+q-a)]\ndef defect(g,a,q):\n c=cv(g,a);J=[c[0]]+[c[j]+c[j-1]for j in range(1,g+1)]+[c[g]];o={}\n for s,z in((-a-g,-2),(-a-g+q+2,2)):\n  for j,x in enumerate(J):o[s+j]=o.get(s+j,0)+z*x\n return{r:x for r,x in o.items()if x}\ndef rankcols(C):\n rows=sorted({r for c in C for r in c});A=[[F(c.get(r,0))for c in C]for r in rows];m=len(A);n=len(C);z=0\n for j in range(n):\n  p=next((i for i in range(z,m)if A[i][j]),None)\n  if p is None:continue\n  A[z],A[p]=A[p],A[z];v=A[z][j];A[z]=[x/v for x in A[z]]\n  for i in range(z+1,m):\n   if A[i][j]:\n    v=A[i][j];A[i]=[A[i][h]-v*A[z][h]for h in range(n)]\n  z+=1\n return z\nfor g in range(2,9):\n print('g',g)\n for q in range(1,7):\n  vals=[]\n  for k in range(0,7):\n   M=comp(g,k,q+2);K=[defect(g,a,q)for a in range(0,2*k+1,2)]\n   vals.append(rankcols(M+K)-rankcols(M))\n  print(' q',q,vals)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:40:11.5446345Z",
+    "finished_at": "2026-08-28T21:40:11.9592361Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact current quotient dimension exploration",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact current quotient dimension exploration",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "g 2\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 5, 5]\r\n q 3 [1, 2, 3, 4, 5, 6, 6]\r\n q 4 [1, 2, 3, 4, 5, 6, 6]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 3\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 6]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 4\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 7]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 5\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 7]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 6\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 7]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 7\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 7]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\ng 8\r\n q 1 [1, 2, 3, 4, 5, 5, 5]\r\n q 2 [1, 2, 3, 4, 5, 6, 6]\r\n q 3 [1, 2, 3, 4, 5, 6, 7]\r\n q 4 [1, 2, 3, 4, 5, 6, 7]\r\n q 5 [1, 2, 3, 4, 5, 6, 7]\r\n q 6 [1, 2, 3, 4, 5, 6, 7]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
