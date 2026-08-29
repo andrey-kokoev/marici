@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787955090396665100_170",
+  "created_at": "2026-08-28T22:11:30.3966683Z",
+  "sha256": "bb30c9a52e972efe07a5a93489566a612ed393953191e2bbb0a592783234a53a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef qw(g,q,N,b):\n o=[canonical_column(g,a,m,b) for a in range(N+1) for m in (1-g-(q+2)-a,1-g+(q+2)-a)];c=[current_defect(g,a,q,b) for a in range(N+1)];return rank(o+c)-rank(o)\nfor b in (0,1):\n print(\"beta\",b)\n for g in range(2,11):print(g,[q for q in range(1,16) if qw(g,q,20,b)==2],max(qw(g,q,20,b) for q in range(1,16)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:11:26.6242161Z",
+    "finished_at": "2026-08-28T22:11:30.3966557Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "degenerate beta zero one boundary audit",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "degenerate beta zero one boundary audit",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "beta 0\r\n2 [] 1\r\n3 [] 1\r\n4 [] 1\r\n5 [] 1\r\n6 [] 1\r\n7 [] 1\r\n8 [] 1\r\n9 [] 1\r\n10 [] 0\r\nbeta 1\r\n2 [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] 2\r\n3 [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] 2\r\n4 [6, 7, 8, 9, 10, 11, 12, 13, 14, 15] 2\r\n5 [8, 9, 10, 11, 12, 13, 14, 15] 2\r\n6 [10, 11, 12, 13, 14, 15] 2\r\n7 [12, 13, 14, 15] 2\r\n8 [14, 15] 2\r\n9 [] 1\r\n10 [] 1\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
