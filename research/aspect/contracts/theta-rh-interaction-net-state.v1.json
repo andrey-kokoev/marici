@@ -65,6 +65,120 @@
       "authority_class": "source_derived"
     },
     {
+      "id": "prime_diagonal_schur_operator",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["projective_exponential_source"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "hilbert_schmidt_ideal_membership",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["prime_diagonal_schur_operator"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "s2_s1_ideal_split",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["hilbert_schmidt_ideal_membership"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "det2_higher_prime_power_packet",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["s2_s1_ideal_split"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "finite_det_det2_trace_comparison",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["det2_higher_prime_power_packet"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "zero_free_diagonal_carrier",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["prime_diagonal_schur_operator", "det2_higher_prime_power_packet"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "passive_wiring_modes",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": ["prime_diagonal_schur_operator"],
+      "authority_class": "algebraic_derived_nonrealization"
+    },
+    {
+      "id": "allowed_seam_defect_locus",
+      "status": "constructed",
+      "source_locator": "research/kitaev/rh-scc-interaction-net-audit-3.md",
+      "depends_on": [],
+      "authority_class": "algebraic_derived_nonrealization",
+      "locus": "critical_seam",
+      "off_locus_requirement": "compact_uniform_positive_separation"
+    },
+    {
+      "id": "valuation_fock_passive_dilation",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["prime_diagonal_schur_operator", "fourier_bohr_discrete_port"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "primitive_wall_trace_completion",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["finite_det_det2_trace_comparison", "arithmetic_analytic_incidence"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "reciprocal_adjoint_port_orientation",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["valuation_fock_passive_dilation"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "archimedean_endpoint_operator_lift",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["valuation_fock_passive_dilation"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "passive_network_assembly",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["valuation_fock_passive_dilation", "passive_wiring_modes"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "det2_anomaly_identification",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["passive_network_assembly", "det2_higher_prime_power_packet"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "source_cayley_boundary_relation",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["primitive_wall_trace_completion", "reciprocal_adjoint_port_orientation", "archimedean_endpoint_operator_lift", "det2_anomaly_identification"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "completed_boundary_pencil",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["source_cayley_boundary_relation", "relative_determinant_line_coherence"],
+      "authority_class": "formal_slot"
+    },
+    {
       "id": "type_fiber_adams_composition",
       "status": "open",
       "source_locator": null,
@@ -141,21 +255,10 @@
       "authority_class": "formal_slot"
     },
     {
-      "id": "critical_line_exclusion",
-      "status": "open",
-      "source_locator": null,
-      "depends_on": [
-        "spectral_identification"
-      ],
-      "authority_class": "formal_slot"
-    },
-    {
       "id": "riemann_hypothesis_terminal",
       "status": "open",
       "source_locator": null,
-      "depends_on": [
-        "critical_line_exclusion"
-      ],
+      "depends_on": ["off_seam_kernel_exclusion"],
       "authority_class": "formal_slot"
     },
     {
@@ -253,21 +356,24 @@
       "completion_evidence": null
     },
     {
-      "id": "completion_stable_five_margin_coercivity",
+      "id": "relative_off_seam_five_margin_coercivity",
       "status": "open",
       "source_locator": null,
-      "depends_on": [
-        "relative_determinant_line_coherence"
-      ],
+      "depends_on": ["completed_boundary_pencil", "allowed_seam_defect_locus"],
       "authority_class": "formal_slot"
     },
     {
-      "id": "spectral_identification",
+      "id": "xi_boundary_pencil_spectral_identification",
       "status": "open",
       "source_locator": null,
-      "depends_on": [
-        "completion_stable_five_margin_coercivity"
-      ],
+      "depends_on": ["completed_boundary_pencil", "relative_determinant_line_coherence"],
+      "authority_class": "formal_slot"
+    },
+    {
+      "id": "off_seam_kernel_exclusion",
+      "status": "open",
+      "source_locator": null,
+      "depends_on": ["relative_off_seam_five_margin_coercivity", "xi_boundary_pencil_spectral_identification"],
       "authority_class": "formal_slot"
     }
   ],
@@ -331,6 +437,25 @@
       "composition": "geometric seam cocycle",
       "cocycle_residuals": null
     }
+  ],
+  "passive_wiring_contract": {
+    "unconditional_modes": ["typed_direct_sum"],
+    "conditional_modes": ["cascade", "redheffer_feedback"],
+    "forbidden_modes": ["ordinary_scalar_sum"],
+    "conditional_evidence": ["source_authorized_ports", "feedback_well_posedness", "det2_anomaly_accounting"],
+    "observer_order": ["passive_network", "operator_schur_transfer", "regularized_determinant", "scalar_trace_expansion"]
+  },
+  "hostile_fixtures": [
+    {"id": "scalar_sum_breaks_schur_contractivity", "must_reject": "ordinary_scalar_sum"},
+    {"id": "det2_dropped_primitive_trace", "must_reject": "full_euler_determinant_without_primitive_trace"},
+    {"id": "arbitrary_primitive_continuation_imports_divisor", "must_reject": "unauthorized_holomorphic_continuation"},
+    {"id": "cascade_drops_det2_anomaly", "must_reject": "unaccounted_multiplicative_anomaly"},
+    {"id": "reciprocal_orientation_without_source_map", "must_reject": "contractive_orientation_without_adjoint_port_authority"},
+    {"id": "global_margin_excludes_seam_zeros", "must_reject": "global_positive_margin"},
+    {"id": "coercivity_promoted_to_identification", "must_reject": "witness_type_collapse"},
+    {"id": "identification_promoted_to_coercivity", "must_reject": "witness_type_collapse"},
+    {"id": "generic_cocycle_claims_xi_divisor", "must_reject": "divisor_authority_without_identification"},
+    {"id": "strict_diagonal_carrier_claims_zeros", "must_reject": "zero_divisor_from_unchanged_strict_contraction"}
   ],
   "terminal_constructor": "riemann_hypothesis_terminal"
 }
