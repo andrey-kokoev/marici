@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1788025092650414700_275",
+  "created_at": "2026-08-29T17:38:12.6504176Z",
+  "sha256": "b5e50d3b3b5fbf40b2b6f724db55e650ee3933c3ac2a51d13b9a74500df5cab6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_bell_global_gluing_interaction_net.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T17:38:11.9592449Z",
+    "finished_at": "2026-08-29T17:38:12.6504055Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Bell interaction-net global-gluing obstruction",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "Bell interaction-net global-gluing obstruction",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\checkers\\check_bell_global_gluing_interaction_net.py\", line 50, in <module>\r\n    RESULT.write_text(json.dumps(out,indent=2)+\"\\n\",encoding=\"utf-8\")\r\n                      ~~~~~~~~~~^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\__init__.py\", line 242, in dumps\r\n    **kw).encode(obj)\r\n          ~~~~~~^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\encoder.py\", line 202, in encode\r\n    chunks = self.iterencode(o, _one_shot=True)\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\encoder.py\", line 263, in iterencode\r\n    return _iterencode(o, 0)\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\json\\encoder.py\", line 182, in default\r\n    raise TypeError(f'Object of type {o.__class__.__name__} '\r\n                    f'is not JSON serializable')\r\nTypeError: Object of type BooleanTrue is not JSON serializable\r\nwhen serializing dict item 'quantum_value_refutes_global_counterfactual_gluing'\r\nwhen serializing dict item 'checks'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
