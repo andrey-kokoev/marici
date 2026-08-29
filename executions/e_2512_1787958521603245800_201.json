@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958521603245800_201",
+  "created_at": "2026-08-28T23:08:41.6032499Z",
+  "sha256": "b000d2bfa24d478f64808388942570f8f241df1cfcdd533e6563a467915002a8",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import sympy as s\nfrom math import factorial\n\ndef H(g,a,b=4): return {(-a-g+j):s.Integer(factorial(g))*s.binomial(-a,g-j)*s.binomial(a-b,j)*(-1)**j for j in range(g+1)}\ndef op(h,g,Q,sgn):\n # A_sgn=(1+x)(D+1+sgn*Q)-gx\n o={}\n for e,c in h.items():\n  v=e+1+sgn*Q\n  o[e]=o.get(e,0)+c*v\n  o[e+1]=o.get(e+1,0)+c*(v-g)\n return {e:s.expand(c) for e,c in o.items() if c}\ndef col(g,q,a,br):\n Q=q+2; h=H(g,a)\n if br=='-': return op(h,g,Q,-1)\n return {e+Q:-c for e,c in op(h,g,Q,1).items()}\ndef audit(g,q,N,targets):\n labels=[(a,b) for a in range(N+1) for b in '-+']; cs=[col(g,q,*x) for x in labels]; rows=sorted(set().union(*[set(c) for c in cs])); M=s.Matrix([[c.get(e,0) for c in cs] for e in rows]); piv=[]; B=s.zeros(len(rows),0); r=0\n for j in range(M.cols):\n  T=B.row_join(M[:,j]); nr=T.rank()\n  if nr>r: piv.append(j);B=T;r=nr\n out=[]\n for a in targets:\n  j=labels.index((a,'+')); sol=s.linsolve((B,M[:,j])); v=list(next(iter(sol))); mx=max(abs(x) for x in v); nz=sum(x!=0 for x in v); out.append((a,str(mx),nz))\n cap=[labels[j][0] for j in piv if labels[j][1]=='+']\n return cap,out\nfor g,q in [(6,3),(6,8),(6,13)]:\n cap,out=audit(g,q,25,[12,15,18,21,24]); print((g,q),'cap',cap,'deep',out)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:08:41.0491932Z",
+    "finished_at": "2026-08-28T23:08:41.6032335Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "moderate exact rational linear algebra",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "moderate exact rational linear algebra",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import sympy as s\r\nModuleNotFoundError: No module named 'sympy'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
