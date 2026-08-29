@@ -1,0 +1,44 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787976613592683800_219",
+  "created_at": "2026-08-29T04:10:13.5926875Z",
+  "sha256": "69050b1c4cf1470d5491aae3a7f80cec1bd42c8ce63a76c17e92b14bf81d2280",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/scc/scc.py",
+      "formulas",
+      "research/aspect/contracts/flavor-wp996-formula-synthesis.v1.json"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T04:10:13.3660887Z",
+    "finished_at": "2026-08-29T04:10:13.5926736Z",
+    "timeout_ms": 60000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "SCC formula synthesis CLI acceptance",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "SCC formula synthesis CLI acceptance",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.formula-synthesis.v1\",\r\n  \"contract\": \"flavor-wp996-formula-synthesis\",\r\n  \"stages\": [\r\n    {\r\n      \"id\": \"conditional_optimum\",\r\n      \"status\": \"derived\",\r\n      \"first_failed_gate\": null,\r\n      \"rank\": 7,\r\n      \"unknown_count\": 7,\r\n      \"formulas\": {\r\n        \"Q_comm\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"-1\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"R_comm\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"-1\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"Q_rank\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"1\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"R_rank\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"-1\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"Q_full\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"-7/49401\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"R_full\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"1\"\r\n          },\r\n          \"source_derived\": false\r\n        },\r\n        \"radius\": {\r\n          \"constant\": \"0\",\r\n          \"parameter_coefficients\": {\r\n            \"B\": \"1/5489\"\r\n          },\r\n          \"source_derived\": false\r\n        }\r\n      },\r\n      \"underdetermined\": [],\r\n      \"free_unknowns\": []\r\n    },\r\n    {\r\n      \"id\": \"physical_scale\",\r\n      \"status\": \"underdetermined\",\r\n      \"first_failed_gate\": \"formula_rank\",\r\n      \"rank\": 0,\r\n      \"unknown_count\": 1,\r\n      \"formulas\": {},\r\n      \"underdetermined\": [\r\n        \"B\"\r\n      ],\r\n      \"free_unknowns\": [\r\n        \"B\"\r\n      ]\r\n    },\r\n    {\r\n      \"id\": \"closed_loop\",\r\n      \"status\": \"underdetermined\",\r\n      \"first_failed_gate\": \"formula_rank\",\r\n      \"rank\": 0,\r\n      \"unknown_count\": 1,\r\n      \"formulas\": {},\r\n      \"underdetermined\": [\r\n        \"dual_error_bound\"\r\n      ],\r\n      \"free_unknowns\": [\r\n        \"dual_error_bound\"\r\n      ]\r\n    }\r\n  ],\r\n  \"derived_formulas\": {\r\n    \"conditional_optimum.Q_comm\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"-1\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.R_comm\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"-1\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.Q_rank\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"1\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.R_rank\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"-1\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.Q_full\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"-7/49401\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.R_full\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"1\"\r\n      },\r\n      \"source_derived\": false\r\n    },\r\n    \"conditional_optimum.radius\": {\r\n      \"constant\": \"0\",\r\n      \"parameter_coefficients\": {\r\n        \"B\": \"1/5489\"\r\n      },\r\n      \"source_derived\": false\r\n    }\r\n  },\r\n  \"required_source_outputs\": [\r\n    \"physical_scale.B\",\r\n    \"closed_loop.dual_error_bound\"\r\n  ],\r\n  \"missing_source_formulas\": [\r\n    \"physical_scale.B\",\r\n    \"closed_loop.dual_error_bound\"\r\n  ],\r\n  \"bridge_status\": \"underdetermined\",\r\n  \"certifies_physical_realization\": false\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
