@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953885347429300_21",
+  "created_at": "2026-08-28T21:51:25.3474331Z",
+  "sha256": "a46edbcbb5288b8260526f1f9f5b2a48853bce5dc7242e434fd3f01c1a19bb85",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz=s.symbols('z');n=2*(z*z-z+1);A=(z+1)**2/n;B=(2*z-1)**2/n;C=(z-2)**2/n\nfor q in [C-A,C-B,2-C]:print(s.factor(q))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:51:24.7103131Z",
+    "finished_at": "2026-08-28T21:51:25.3474007Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "-3*(2*z - 1)/(2*(z**2 - z + 1))\r\n-3*(z - 1)*(z + 1)/(2*(z**2 - z + 1))\r\n3*z**2/(2*(z**2 - z + 1))\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
