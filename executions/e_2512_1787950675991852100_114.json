@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787950675991852100_114",
+  "created_at": "2026-08-28T20:57:55.9918554Z",
+  "sha256": "9d2e327ec547aa3f0012219dd74eb776e2563b8788fd3dcdebc2bf6833d34fab",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_minimal_sector_extension_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T20:57:55.9163421Z",
+    "finished_at": "2026-08-28T20:57:55.9918412Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "minimal magnetic sector extension no-go",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "minimal magnetic sector extension no-go",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_minimal_sector_extension.v1\",\r\n  \"status\": \"passed\",\r\n  \"gate_count\": 11,\r\n  \"passed_gate_count\": 11,\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"LATTICE.labels\",\r\n      \"statement\": \"the rational candidates have the expected exponent labels\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(Fraction(0, 1), Fraction(-50, 3)), (Fraction(14, 3), Fraction(2, 1)), (Fraction(20, 3), Fraction(0, 1))]\"\r\n    },\r\n    {\r\n      \"id\": \"LATTICE.sectors\",\r\n      \"statement\": \"the candidates occupy two new affine sectors besides the original lattice\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"((Fraction(0, 1), Fraction(1, 3)), (Fraction(2, 3), Fraction(0, 1)), (Fraction(2, 3), Fraction(0, 1)))\"\r\n    },\r\n    {\r\n      \"id\": \"LATTICE.minimum\",\r\n      \"statement\": \"exactly two additional affine cosets are required for these candidates\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(Fraction(0, 1), Fraction(1, 3)), (Fraction(2, 3), Fraction(0, 1))]\"\r\n    },\r\n    {\r\n      \"id\": \"CHARGE.split\",\r\n      \"statement\": \"the candidates are not initially deck-homogeneous\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(2, 1, 1)\"\r\n    },\r\n    {\r\n      \"id\": \"CHARGE.adapter\",\r\n      \"statement\": \"one charge-2 adapter aligns all three candidates\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(1, 1, 1)\"\r\n    },\r\n    {\r\n      \"id\": \"TRANSPORT.full_rank\",\r\n      \"statement\": \"the minimally saturated source packet still maps with rank three\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"{'row_indices': (0, 1, 3), 'rows': [Fraction(0, 1), Fraction(1, 1), Fraction(3, 1)], 'determinant': Fraction(-48775302133841920000, 729)}\"\r\n    },\r\n    {\r\n      \"id\": \"TRANSPORT.adapter_rank\",\r\n      \"statement\": \"an invertible charged adapter preserves the nonzero rank witness\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"-48775302133841920000/729\"\r\n    },\r\n    {\r\n      \"id\": \"EXACT.direct_sum\",\r\n      \"statement\": \"adjoining independent injective sectors preserves injectivity\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"rank=9, columns=9\"\r\n    },\r\n    {\r\n      \"id\": \"EXACT.flat_extension\",\r\n      \"statement\": \"free scalar replication preserves rank-to-column equality\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"fivefold free extension\"\r\n    },\r\n    {\r\n      \"id\": \"EXACT.isomorphism\",\r\n      \"statement\": \"invertible relabellings cannot change kernel dimension\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"row and column isomorphisms preserve rank\"\r\n    },\r\n    {\r\n      \"id\": \"PORTAL.relation_required\",\r\n      \"statement\": \"the exact extension grammar contains no relation-producing constructor\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"['nonfaithful_target_quotient', 'nonflat_defect_restriction', 'noninvertible_readout_pairing', 'off_diagonal_tail_differential']\"\r\n    }\r\n  ],\r\n  \"witness_minor\": {\r\n    \"row_indices\": [\r\n      0,\r\n      1,\r\n      3\r\n    ],\r\n    \"rows\": [\r\n      \"0\",\r\n      \"1\",\r\n      \"3\"\r\n    ],\r\n    \"determinant\": \"-48775302133841920000/729\"\r\n  },\r\n  \"verdict\": \"Minimal exponent-lattice saturation plus an invertible charged adapter does not activate the rational magnetic state. Exact faithful extensions add states but not relations. A portal must supply a non-flat restriction, nonfaithful quotient, off-diagonal tail differential, or noninvertible readout.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
