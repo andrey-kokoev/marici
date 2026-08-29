@@ -1,0 +1,97 @@
+schema = "marici.observer-atlas.v1"
+
+[atlas]
+base = "coherence-lattice.toml"
+sample_unit = "instrument_in_declared_context"
+profile_order = ["carrier", "action", "observation", "estimate"]
+profile_values = ["absent", "intermediate", "strong"]
+unknown_is_not_zero = true
+
+[viewing_strength]
+behavioral_map = "B_P(x) = (O alpha x) over every admitted observation O and authorized constructor word alpha"
+gramian = "W_P = B_P* B_P"
+ordered_spectrum = "lambda_1 >= ... >= lambda_n >= 0"
+operational_quotient = "X / ker(W_P)"
+faithfulness = "lambda_n > 0"
+completion_stability = "inf_N lambda_min(W_P,N) > 0"
+joint_rule = "sum transported Gramians only inside one source-authorized common frame"
+sequential_rule = "close observations under constructor words before forming the Gramian"
+undefined_join_rule = "an unauthorized or untyped common frame makes joint strength undefined, not zero"
+
+[coefficient_realizations]
+hilbert_linear = "ordered eigenvalue spectrum of W_P"
+integral_linear = "rank plus Smith invariant factors"
+finite_labelled = "ordered observer-fiber sizes or separation partition"
+noncommutative = "blockwise Gramian spectra plus commutant dimensions"
+
+[[sample]]
+id = "toric_local_syndrome_on_primal_logical_sector"
+sector = "kitaev"
+scale = "finite_system"
+context = "H_1 primal logical Z quotient on a marked finite torus"
+profile = [2, 1, 1, 1]
+strength_representation = "hilbert_linear"
+spectrum_status = "exact_after_declared_binary_orthonormalization"
+spectrum = [0, 0]
+visible_rank = 0
+kernel_dimension = 2
+domain_statement = "local syndrome identifies no primal logical direction"
+evidence_ref = "research/kitaev/toric-code-selection-readout-decoding.md"
+
+[[sample]]
+id = "toric_syndrome_plus_two_primal_loop_probes"
+sector = "kitaev"
+scale = "finite_system"
+context = "H_1 primal logical Z quotient with a marked logical basis"
+profile = [2, 1, 2, 1]
+strength_representation = "hilbert_linear"
+spectrum_status = "exact_after_declared_binary_orthonormalization"
+spectrum = [1, 1]
+visible_rank = 2
+kernel_dimension = 0
+domain_statement = "two independent loop probes separate the two primal logical coordinates modulo local repairs"
+evidence_ref = "research/kitaev/toric-code-selection-readout-decoding.md"
+
+[[sample]]
+id = "ds3_central_readout_on_ambient_hermitian_space"
+sector = "kitaev"
+scale = "finite_system"
+context = "ambient Hermitian operators on the 16-dimensional direct sum of D(S_3) simple sectors"
+profile = [2, 1, 1, 1]
+strength_representation = "noncommutative"
+spectrum_status = "rank_only"
+positive_direction_count = 8
+kernel_dimension = 248
+domain_statement = "central readout recovers sector weights and forgets inter-sector coherences and within-block traceless directions"
+evidence_ref = "research/kitaev/milestone-s3-central-readout-algebra.md"
+
+[[sample]]
+id = "ds3_two_flux_ports_on_endpoint_block_algebra"
+sector = "kitaev"
+scale = "finite_system"
+context = "36-dimensional D(S_3) endpoint block algebra"
+profile = [2, 1, 2, 1]
+strength_representation = "noncommutative"
+spectrum_status = "rank_only_physical_instrument_open"
+positive_direction_count = 36
+kernel_dimension = 0
+domain_statement = "one transposition and one three-cycle port generate the full endpoint block algebra; executable physical control is not certified"
+evidence_refs = [
+  "research/kitaev/milestone-s3-central-readout-algebra.md",
+  "research/kitaev/milestone-s3-endpoint-control-span.md",
+]
+
+[[promotion]]
+id = "toric_add_logical_loops"
+from = "toric_local_syndrome_on_primal_logical_sector"
+to = "toric_syndrome_plus_two_primal_loop_probes"
+changed_axis = "observation"
+kernel_change = "2 -> 0"
+strength_change = "(0,0) -> (1,1)"
+
+[[promotion]]
+id = "ds3_resolve_noncentral_flux"
+from = "ds3_central_readout_on_ambient_hermitian_space"
+to = "ds3_two_flux_ports_on_endpoint_block_algebra"
+changed_axis = "observation"
+typing_note = "the target module is restricted from ambient Hermitian space to the endpoint block algebra before comparing ranks"
