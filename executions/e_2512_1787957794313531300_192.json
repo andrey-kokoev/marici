@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787957794313531300_192",
+  "created_at": "2026-08-28T22:56:34.3135344Z",
+  "sha256": "99b1e0baca40679fa67b3258143b49c3f2525f3d9a460a03331b0d6f789bde8e",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];o=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  o.append(j);u+=1\n return set(o)\nfor g in range(2,11):\n vals=[]\n for q in range(1,16):\n  c=1-g;cs=[canonical_column(g,a,m,4) for a in range(21) for m in(c-q-2-a,c+q+2-a)];P=piv(cs);ps=[a for a in range(21) if 2*a+1 in P];vals.append((q,max(ps)-q,len(ps),[a for a in range(max(ps)+1) if a not in ps]))\n print(\"g\",g,vals)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:56:33.4637766Z",
+    "finished_at": "2026-08-28T22:56:34.3135195Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "plus boundary packet formula discovery",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "plus boundary packet formula discovery",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "g 2 [(1, 3, 5, []), (2, 3, 6, []), (3, 3, 7, []), (4, 3, 7, [5]), (5, 3, 7, [5, 6]), (6, 3, 8, [6, 7]), (7, 3, 9, [7, 8]), (8, 3, 10, [8, 9]), (9, 3, 11, [9, 10]), (10, 3, 12, [10, 11]), (11, 3, 13, [11, 12]), (12, 3, 14, [12, 13]), (13, 3, 15, [13, 14]), (14, 3, 16, [14, 15]), (15, 3, 17, [15, 16])]\r\ng 3 [(1, 4, 6, []), (2, 4, 7, []), (3, 4, 8, []), (4, 3, 8, []), (5, 3, 8, [5]), (6, 3, 9, [6]), (7, 3, 9, [6, 7]), (8, 3, 10, [7, 8]), (9, 3, 11, [8, 9]), (10, 3, 12, [9, 10]), (11, 3, 13, [10, 11]), (12, 3, 14, [11, 12]), (13, 3, 15, [12, 13]), (14, 3, 16, [13, 14]), (15, 3, 17, [14, 15])]\r\ng 4 [(1, 4, 6, []), (2, 5, 8, []), (3, 5, 9, []), (4, 4, 9, []), (5, 3, 9, []), (6, 3, 9, [5]), (7, 3, 10, [6]), (8, 3, 11, [7]), (9, 3, 11, [7, 8]), (10, 3, 12, [8, 9]), (11, 3, 13, [9, 10]), (12, 3, 14, [10, 11]), (13, 3, 15, [11, 12]), (14, 3, 16, [12, 13]), (15, 3, 17, [13, 14])]\r\ng 5 [(1, 5, 7, []), (2, 5, 8, []), (3, 6, 10, []), (4, 5, 10, []), (5, 4, 10, []), (6, 3, 10, []), (7, 3, 10, [5]), (8, 3, 11, [6]), (9, 3, 12, [7]), (10, 3, 13, [8]), (11, 3, 13, [8, 9]), (12, 3, 14, [9, 10]), (13, 3, 15, [10, 11]), (14, 3, 16, [11, 12]), (15, 3, 17, [12, 13])]\r\ng 6 [(1, 5, 7, []), (2, 6, 9, []), (3, 6, 10, []), (4, 6, 11, []), (5, 5, 11, []), (6, 4, 11, []), (7, 3, 11, []), (8, 3, 11, [5]), (9, 3, 12, [6]), (10, 3, 13, [7]), (11, 3, 14, [8]), (12, 3, 15, [9]), (13, 3, 15, [9, 10]), (14, 3, 16, [10, 11]), (15, 3, 17, [11, 12])]\r\ng 7 [(1, 5, 7, []), (2, 6, 9, []), (3, 6, 10, []), (4, 6, 11, []), (5, 6, 12, []), (6, 5, 12, []), (7, 4, 12, []), (8, 3, 12, []), (9, 3, 12, [5]), (10, 3, 13, [6]), (11, 3, 14, [7]), (12, 3, 15, [8]), (13, 3, 16, [9]), (14, 3, 17, [10]), (15, 3, 17, [10, 11])]\r\ng 8 [(1, 5, 7, []), (2, 6, 9, []), (3, 6, 10, []), (4, 6, 11, []), (5, 6, 12, []), (6, 6, 13, []), (7, 5, 13, []), (8, 4, 13, []), (9, 3, 13, []), (10, 3, 13, [5]), (11, 3, 14, [6]), (12, 3, 15, [7]), (13, 3, 16, [8]), (14, 3, 17, [9]), (15, 3, 18, [10])]\r\ng 9 [(1, 5, 7, []), (2, 6, 9, []), (3, 6, 10, []), (4, 6, 11, []), (5, 6, 12, []), (6, 6, 13, []), (7, 6, 14, []), (8, 5, 14, []), (9, 4, 14, []), (10, 3, 14, []), (11, 3, 14, [5]), (12, 3, 15, [6]), (13, 3, 16, [7]), (14, 3, 17, [8]), (15, 3, 18, [9])]\r\ng 10 [(1, 5, 7, []), (2, 6, 9, []), (3, 6, 10, []), (4, 6, 11, []), (5, 6, 12, []), (6, 6, 13, []), (7, 6, 14, []), (8, 6, 15, []), (9, 5, 15, []), (10, 4, 15, []), (11, 3, 15, []), (12, 3, 15, [5]), (13, 3, 16, [6]), (14, 3, 17, [7]), (15, 3, 18, [8])]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
