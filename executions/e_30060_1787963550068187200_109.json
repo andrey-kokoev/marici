@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_30060_1787963550068187200_109",
+  "created_at": "2026-08-29T00:32:30.0681899Z",
+  "sha256": "83a7e630150402e60a02e5639f6a2e595e58251e3408b72332c8e40e7deddd0a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from pathlib import Path\nls=Path('research/benincasa/checkers/census_interaction_net_two_adic_layers.cjs').read_text().splitlines()\nfor i in range(1,166): print(f'{i}:{ls[i-1]}')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici/.worktrees/benincasa-integral-barcode",
+    "started_at": "2026-08-29T00:32:29.9825676Z",
+    "finished_at": "2026-08-29T00:32:30.068179Z",
+    "timeout_ms": 10000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "bounded checker source inspection",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "bounded checker source inspection",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "1:#!/usr/bin/env node\r\n2:\"use strict\";\r\n3:\r\n4:const fs = require(\"fs\");\r\n5:const crypto = require(\"crypto\");\r\n6:\r\n7:function modBigInt(text, modulus) {\r\n8:  const m = BigInt(modulus);\r\n9:  let value = BigInt(text) % m;\r\n10:  if (value < 0n) value += m;\r\n11:  return Number(value);\r\n12:}\r\n13:\r\n14:function inverseOdd(value, modulus) {\r\n15:  let a = value, b = modulus, x0 = 1, x1 = 0;\r\n16:  while (b !== 0) {\r\n17:    const q = Math.floor(a / b);\r\n18:    [a, b] = [b, a - q * b];\r\n19:    [x0, x1] = [x1, x0 - q * x1];\r\n20:  }\r\n21:  if (a !== 1) throw new Error(`nonunit pivot ${value} modulo ${modulus}`);\r\n22:  return ((x0 % modulus) + modulus) % modulus;\r\n23:}\r\n24:\r\n25:function leadingOdd(row) {\r\n26:  let pivot = Infinity;\r\n27:  for (const [column, value] of row) {\r\n28:    if ((value & 1) && column < pivot) pivot = column;\r\n29:  }\r\n30:  return pivot;\r\n31:}\r\n32:\r\n33:function cloneRow(row) {\r\n34:  return new Map(row);\r\n35:}\r\n36:\r\n37:function reduceAgainstPivots(row, pivots, modulus) {\r\n38:  for (const [pivot, basis] of pivots) {\r\n39:    const factor = row.get(pivot) || 0;\r\n40:    if (!factor) continue;\r\n41:    for (const [column, value] of basis) {\r\n42:      let reduced = (row.get(column) || 0) - factor * value;\r\n43:      reduced %= modulus;\r\n44:      if (reduced < 0) reduced += modulus;\r\n45:      if (reduced) row.set(column, reduced);\r\n46:      else row.delete(column);\r\n47:    }\r\n48:  }\r\n49:}\r\n50:\r\n51:function localLayer(rows, modulus) {\r\n52:  const pivots = new Map();\r\n53:  for (const source of rows) {\r\n54:    const row = cloneRow(source);\r\n55:    reduceAgainstPivots(row, pivots, modulus);\r\n56:    const pivot = leadingOdd(row);\r\n57:    if (pivot === Infinity) continue;\r\n58:    const scale = inverseOdd(row.get(pivot), modulus);\r\n59:    for (const [column, value] of row) {\r\n60:      const normalized = (value * scale) % modulus;\r\n61:      if (normalized) row.set(column, normalized);\r\n62:      else row.delete(column);\r\n63:    }\r\n64:    pivots.set(pivot, row);\r\n65:  }\r\n66:\r\n67:  const nextRows = [];\r\n68:  let oddResidualRows = 0;\r\n69:  for (const source of rows) {\r\n70:    const row = cloneRow(source);\r\n71:    reduceAgainstPivots(row, pivots, modulus);\r\n72:    const divided = new Map();\r\n73:    let hasOdd = false;\r\n74:    for (const [column, value] of row) {\r\n75:      if (value & 1) {\r\n76:        hasOdd = true;\r\n77:        break;\r\n78:      }\r\n79:      const next = value / 2;\r\n80:      if (next) divided.set(column, next);\r\n81:    }\r\n82:    if (hasOdd) {\r\n83:      oddResidualRows++;\r\n84:      continue;\r\n85:    }\r\n86:    if (divided.size) nextRows.push(divided);\r\n87:  }\r\n88:  if (oddResidualRows) {\r\n89:    throw new Error(`layer modulo ${modulus} left ${oddResidualRows} odd residual rows`);\r\n90:  }\r\n91:  return {pivots, nextRows};\r\n92:}\r\n93:\r\n94:const arguments_ = process.argv.slice(2);\r\n95:const summaryOnly = arguments_.includes(\"--summary\");\r\n96:const positional = arguments_.filter(argument => argument !== \"--summary\");\r\n97:if (positional.length < 1 || positional.length > 2) {\r\n98:  throw new Error(\"usage: node census_interaction_net_two_adic_layers.cjs MATRIX [DEPTH] [--summary]\");\r\n99:}\r\n100:\r\n101:const matrixPath = positional[0];\r\n102:const depth = positional[1] ? Number(positional[1]) : 6;\r\n103:if (!Number.isInteger(depth) || depth < 1 || depth > 26) {\r\n104:  throw new Error(\"DEPTH must be an integer from 1 through 26; larger depths require BigInt arithmetic\");\r\n105:}\r\n106:const modulus = 2 ** depth;\r\n107:const data = fs.readFileSync(matrixPath, \"utf8\");\r\n108:const lines = data.split(/\\r?\\n/);\r\n109:const header = JSON.parse(lines[0]);\r\n110:let rows = [];\r\n111:for (let lineIndex = 1; lineIndex < lines.length; lineIndex++) {\r\n112:  const line = lines[lineIndex];\r\n113:  if (!line) continue;\r\n114:  const row = new Map();\r\n115:  for (const entry of line.split(\",\")) {\r\n116:    const split = entry.indexOf(\":\");\r\n117:    const column = Number(entry.slice(0, split));\r\n118:    const value = modBigInt(entry.slice(split + 1), modulus);\r\n119:    if (value) row.set(column, value);\r\n120:  }\r\n121:  rows.push(row);\r\n122:}\r\n123:\r\n124:const started = Date.now();\r\n125:const layers = [];\r\n126:let currentModulus = modulus;\r\n127:let cumulativeRank = 0;\r\n128:\r\n129:for (let valuation = 0; valuation < depth; valuation++) {\r\n130:  const layerStarted = Date.now();\r\n131:  const result = localLayer(rows, currentModulus);\r\n132:  const pivotColumns = [...result.pivots.keys()].sort((a, b) => a - b);\r\n133:  cumulativeRank += result.pivots.size;\r\n134:  layers.push({\r\n135:    valuation,\r\n136:    modulus: currentModulus,\r\n137:    rank: result.pivots.size,\r\n138:    cumulative_rank: cumulativeRank,\r\n139:    residual_row_count: result.nextRows.length,\r\n140:    pivot_sha256: crypto.createHash(\"sha256\").update(JSON.stringify(pivotColumns)).digest(\"hex\"),\r\n141:    pivot_columns: summaryOnly || valuation === 0 ? undefined : pivotColumns,\r\n142:    milliseconds: Date.now() - layerStarted\r\n143:  });\r\n144:  rows = result.nextRows;\r\n145:  currentModulus /= 2;\r\n146:  if (!rows.length) break;\r\n147:}\r\n148:\r\n149:process.stdout.write(JSON.stringify({\r\n150:  schema: \"marici.two-adic-layer-census.v1\",\r\n151:  matrix: matrixPath,\r\n152:  header,\r\n153:  depth,\r\n154:  initial_modulus: modulus,\r\n155:  layers,\r\n156:  cumulative_detected_rank: cumulativeRank,\r\n157:  unresolved_quotient_dimension_after_depth: header.columns - cumulativeRank,\r\n158:  interpretation: \"Layer rank at valuation k counts Smith invariants whose exact two-adic valuation is k, provided the computed depth reaches the characteristic-zero rank.\",\r\n159:  milliseconds: Date.now() - started\r\n160:}, null, 2) + \"\\n\");\r\n",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 3, in <module>\r\n    for i in range(1,166): print(f'{i}:{ls[i-1]}')\r\n                                        ~~^^^^^\r\nIndexError: list index out of range\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
