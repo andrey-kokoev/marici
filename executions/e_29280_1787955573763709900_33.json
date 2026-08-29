@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787955573763709900_33",
+  "created_at": "2026-08-28T22:19:33.7637133Z",
+  "sha256": "1f950f658990cda68176df825835fd12ef4eec4d9b46f1dc4c5f1c925e68a5e6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as S\nq=S.Rational; s=S.symbols('s', positive=True); I=S.I\nX=S.diag(-1,0,1); Y=S.Matrix([[0,1,-q(6,5)*I],[1,0,1],[q(6,5)*I,1,0]])\nA=X+s*Y; ra=S.sqrt(86*s*s+25)/5; ry=S.sqrt(86)/5\ndef ps(M,r):\n return [S.eye(3)-M*M/r**2,(M*M/r**2-M/r)/2,(M*M/r**2+M/r)/2]\nP=ps(A,ra);Q=ps(Y,ry)\nW=S.Matrix(3,3,lambda i,j:S.simplify(S.trace(P[i]*Q[j])))\nS2=S.factor(sum(x*x for x in W))\nprint(\"S2=\"+str(S2))\nprint(\"W00=\"+str(S.factor(W[0,0])))\nprint(\"lim=\"+str(S.limit(S2,s,S.oo)))\nfor sv in [1,5,10,20]:\n print(sv,float(S2.subs(s,sv)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:19:32.318083Z",
+    "finished_at": "2026-08-28T22:19:33.7636994Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "small exact spectral-projector invariant derivation",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "small exact spectral-projector invariant derivation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "S2=(164102448*s**4 + 51772000*s**2 + 4698125)/(7396*(86*s**2 + 25)**2)\r\nW00=2*(1849*s**2 + 225)/(43*(86*s**2 + 25))\r\nlim=3\r\n1 2.420519854044915\r\n5 2.968558113382838\r\n10 2.992052227348832\r\n20 2.998007528158788\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
