@@ -16,7 +16,7 @@ Let `f(q)` be the completed one-sided theta forcing and define
 where the integral converges. Then
 
 \[
- \boxed{(\partial_q+s)G_s(q)+f(q)=0.}
+ (\partial_q+s)G_s(q)+f(q)=0.
 \]
 
 Moreover,
@@ -52,7 +52,7 @@ suppressed. Adjoin the constant channel and put
 Then
 
 \[
- \boxed{\mathcal D_s\Psi_s=0.}
+ \mathcal D_s\Psi_s=0.
 \]
 
 This operator is derived from the source-tail flow. It is not manufactured by

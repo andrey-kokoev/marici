@@ -35,8 +35,7 @@ For real `Phi`, the tail operator is the symmetric Hankel operator
 Fubini gives the seam adjoint
 
 \[
- \boxed{
- (H^*y)(p)=\int_0^p\Phi(p-t)y(t)\,dt.}
+ (H^*y)(p)=\int_0^p\Phi(p-t)y(t)\,dt.
 \]
 
 Thus `H^*` is the forward Volterra convolution complementary to the
@@ -60,18 +59,16 @@ for every packet `c`. Equivalently,
 Therefore
 
 \[
- \boxed{
  \operatorname{Dom}(\Gamma_0^*)
- =\{y:H^*y\in\operatorname{Ran}G\}.}
+ =\{y:H^*y\in\operatorname{Ran}G\}.
 \]
 
 The standard closability criterion now becomes the concrete source theorem
 
 \[
- \boxed{
  \Gamma_0\text{ is closable}
  \quad\Longleftrightarrow\quad
- \{y:H^*y\in\operatorname{Ran}G\}\text{ is dense}.}
+ \{y:H^*y\in\operatorname{Ran}G\}\text{ is dense}.
 \]
 
 This is the precise next gate.
@@ -143,9 +140,8 @@ and their inclusions approximate the graph topology faithfully.
 The RH programme has reached a concrete analytic range problem:
 
 \[
- \boxed{
  \text{Is the preimage }(H^*)^{-1}(\operatorname{Ran}G)
- \text{ dense for the completed theta source }\Phi?}
+ \text{ dense for the completed theta source }\Phi?
 \]
 
 No existing source theorem in the programme answers it. Solving it requires
