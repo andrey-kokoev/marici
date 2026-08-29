@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787954978472411100_30",
+  "created_at": "2026-08-28T22:09:38.4724147Z",
+  "sha256": "db3d5e41b62eb852c9a40f0bdaff356bf657527c1213e96044f420fbbc035cdd",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nq=s.Rational\nz=s.symbols('z', real=True)\nI=s.I\nX=s.diag(-1,0,1)\nY=s.Matrix([[0,1,-q(6,5)*I],[1,0,1],[q(6,5)*I,1,0]])\nA=X+z*Y\ndef disc2(M):\n cp=M.charpoly()\n return s.factor(s.discriminant(cp.as_expr(),cp.gen))\nDu=disc2(A); Dd=disc2(Y)\ncomm=X*Y-Y*X\nJ2=s.factor(-s.det(comm)**2/(4*Du*Dd))\nprint(\"Du2=\"+str(Du))\nprint(\"Dd2=\"+str(Dd))\nprint(\"J2=\"+str(J2))\nprint(\"dJ2_num=\"+str(s.factor(s.together(s.diff(J2,z)).as_numer_denom()[0])))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:09:37.8796131Z",
+    "finished_at": "2026-08-28T22:09:38.4724018Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "small exact symbolic corrected discriminant derivation",
+      "source": "caller_declared"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "small exact symbolic corrected discriminant derivation",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "Du2=4*(86*z**2 + 25)**3/15625\r\nDd2=2544224/15625\r\nJ2=87890625/(636056*(86*z**2 + 25)**3)\r\ndJ2_num=-263671875*z\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
