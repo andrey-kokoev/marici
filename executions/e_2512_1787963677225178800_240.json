@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787963677225178800_240",
+  "created_at": "2026-08-29T00:34:37.2251814Z",
+  "sha256": "8e336dae05f5d507094e0772596ef44d065c1515195035eafc01261d295fe31b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json;from fractions import Fraction as F;d=json.load(open(r'research/strominger/results/magnetic_second_euler_convolution.json'));\nfor b in (2,3,4):\n print('beta',b)\n for x in d['rows']:\n  if x['beta']==b:\n   g=x['g'];c=x['target_normalized_coefficients'];a=[F(c.get(f'{b+r},plus','0/1')) for r in range(g-1)]+[F(0),F(1)];print(g,'p1',sum(a),'pm1',sum(v*((-1)**r) for r,v in enumerate(a)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-29T00:34:37.1478521Z",
+    "finished_at": "2026-08-29T00:34:37.22517Z",
+    "timeout_ms": 20000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact low-degree factor probes",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact low-degree factor probes",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "beta 2\r\n2 p1 -1 pm1 -1\r\n3 p1 3/2 pm1 5/2\r\n4 p1 1 pm1 -7\r\n5 p1 13 pm1 21\r\n6 p1 28/5 pm1 -66\r\n7 p1 167/2 pm1 429/2\r\n8 p1 -253/7 pm1 -715\r\n9 p1 1209/2 pm1 2431\r\n10 p1 -970 pm1 -8398\r\nbeta 3\r\n2 p1 -2/3 pm1 -2/3\r\n3 p1 1/2 pm1 3/2\r\n4 p1 8/5 pm1 -56/15\r\n5 p1 47/6 pm1 10\r\n6 p1 494/35 pm1 -198/7\r\n7 p1 2731/60 pm1 1001/12\r\n8 p1 4048/63 pm1 -2288/9\r\n9 p1 2357/10 pm1 3978/5\r\n10 p1 139772/693 pm1 -83980/33\r\nbeta 4\r\n2 p1 -1/2 pm1 -1/2\r\n3 p1 1/20 pm1 21/20\r\n4 p1 4/3 pm1 -12/5\r\n5 p1 493/84 pm1 165/28\r\n6 p1 281/20 pm1 -429/28\r\n7 p1 2615/72 pm1 1001/24\r\n8 p1 7688/105 pm1 -1768/15\r\n9 p1 9737/55 pm1 37791/110\r\n10 p1 967/3 pm1 -11305/11\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
