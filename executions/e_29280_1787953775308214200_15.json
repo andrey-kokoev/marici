@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953775308214200_15",
+  "created_at": "2026-08-28T21:49:35.3082185Z",
+  "sha256": "ae27880b1c9d8f406b47ad4459a176e538ce370bede14574b6846314561a0113",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz,u,v=s.symbols('z u v', real=True);w=s.Rational(1,2)-u-v;n=2*(z*z-z+1);A=(z+1)**2/n;B=(2*z-1)**2/n;C=(z-2)**2/n;r=s.Rational(44376,275);F=s.factor(2*(A*u+B*v+C*w)+4*r*A*B*C*u*v*w)\nfor q in (u,v,z): print(q,s.factor(s.together(s.diff(F,q))))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:49:34.5318863Z",
+    "finished_at": "2026-08-28T21:49:35.3082012Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "u -3*(2*z - 1)*(29584*u*v*z**5 - 73960*u*v*z**4 - 59168*u*v*z**3 + 162712*u*v*z**2 + 59168*u*v*z - 59168*u*v + 14792*v**2*z**5 - 36980*v**2*z**4 - 29584*v**2*z**3 + 81356*v**2*z**2 + 29584*v**2*z - 29584*v**2 - 7396*v*z**5 + 18490*v*z**4 + 14792*v*z**3 - 40678*v*z**2 - 14792*v*z + 14792*v - 275*z**4 + 550*z**3 - 825*z**2 + 550*z - 275)/(275*(z**2 - z + 1)**3)\r\nv -3*(z + 1)*(29584*u**2*z**5 - 118336*u**2*z**4 + 96148*u**2*z**3 + 96148*u**2*z**2 - 118336*u**2*z + 29584*u**2 + 59168*u*v*z**5 - 236672*u*v*z**4 + 192296*u*v*z**3 + 192296*u*v*z**2 - 236672*u*v*z + 59168*u*v - 14792*u*z**5 + 59168*u*z**4 - 48074*u*z**3 - 48074*u*z**2 + 59168*u*z - 14792*u - 275*z**5 + 825*z**4 - 1375*z**3 + 1375*z**2 - 825*z + 275)/(275*(z**2 - z + 1)**3)\r\nz -3*(798768*u**2*v*z**5 - 1996920*u**2*v*z**4 + 1996920*u**2*v*z**2 - 798768*u**2*v*z + 798768*u*v**2*z**5 - 1996920*u*v**2*z**4 + 1996920*u*v**2*z**2 - 798768*u*v**2*z - 399384*u*v*z**5 + 998460*u*v*z**4 - 998460*u*v*z**2 + 399384*u*v*z + 1100*u*z**6 - 3300*u*z**5 + 4950*u*z**4 - 4400*u*z**3 + 1650*u*z**2 - 550*u + 550*v*z**6 - 3300*v*z**5 + 6600*v*z**4 - 8800*v*z**3 + 6600*v*z**2 - 3300*v*z + 550*v - 275*z**6 + 1100*z**5 - 1925*z**4 + 2200*z**3 - 1375*z**2 + 550*z)/(550*(z**2 - z + 1)**4)\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
