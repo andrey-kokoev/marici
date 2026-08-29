@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787958251131579500_198",
+  "created_at": "2026-08-28T23:04:11.1315828Z",
+  "sha256": "39553577912fc1918c2ca52604c1477cf54ea3a442d36be469aab7d7e8a27995",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef piv(cs):\n rows=sorted({r for c in cs for r in c});w=[[Fraction(c.get(r,0)) for c in cs] for r in rows];o=[];u=0\n for j in range(len(cs)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(u+1,len(w)):\n   if w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cs))]\n  o.append(j);u+=1\n return o\ndef coords(cols,t):\n rows=sorted({r for c in cols+[t] for r in c});sel=[];old=0\n for r in rows:\n  cand=sel+[r];z=rank([{x:c.get(x,0) for x in cand if c.get(x,0)} for c in cols])\n  if z>old:sel.append(r);old=z\n  if old==len(cols):break\n W=[[Fraction(c.get(r,0)) for c in cols]+[Fraction(t.get(r,0))] for r in sel];n=len(cols)\n for j in range(n):\n  z=next(i for i in range(j,n) if W[i][j]);W[j],W[z]=W[z],W[j];v=W[j][j];W[j]=[e/v for e in W[j]]\n  for i in range(n):\n   if i!=j and W[i][j]:v=W[i][j];W[i]=[W[i][k]-v*W[j][k] for k in range(n+1)]\n return [W[i][-1] for i in range(n)]\ndef test(g,q,N=20):\n c=1-g;cs=[canonical_column(g,a,m,4) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];B=piv(cs);P=[j for j in B if j%2];O=[j for j in range(1,len(cs),2) if j not in B]\n for e in O:\n  for b in sorted(P,key=lambda j:(abs(j-e),j)):\n   C=[j for j in B if j!=b]+[e]\n   if rank([cs[j] for j in C])==len(B):return b//2,e//2,max(map(abs,coords([cs[j] for j in C],cs[b]))),max(map(abs,coords([cs[j] for j in B],cs[e])))\nfor z in [(6,3),(6,8),(6,13),(3,10)]:print(z,test(*z))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:04:10.558561Z",
+    "finished_at": "2026-08-28T23:04:11.1315697Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "two-sided neighboring chart transition norm",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "two-sided neighboring chart transition norm",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3) (9, 10, Fraction(1287, 64), Fraction(143, 4))\r\n(6, 8) (4, 5, Fraction(5, 9), Fraction(9, 4))\r\n(6, 13) (8, 9, Fraction(32, 21), Fraction(20, 7))\r\n(3, 10) (8, 9, Fraction(8, 3), Fraction(3, 4))\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
