@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787959687810554600_63",
+  "created_at": "2026-08-28T23:28:07.8105582Z",
+  "sha256": "7cc148c1d0acb0bb2eec0f6e6e7d783a419be6682bd6abafaf477e5695ed8ef5",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; r=s.symbols('r'); P=12878670000*r**8+16583280000*r**7+10789212400*r**6+4331604000*r**5+1454241747*r**4+398819200*r**3+90718200*r**2+10800000*r+1687500; j2=400*r**6/(3*P); B=4292890000*r**8+2763880000*r**7-721934000*r**5-484747249*r**4-199409600*r**3-60478800*r**2-9000000*r-1687500; print(s.factor(j2.subs(r,s.Rational(1,10)))); print(float(s.sqrt(j2.subs(r,s.Rational(1,10))))); print(s.polys.polytools.count_roots(B,0,s.Rational(1,10))); print(s.nroots(B))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:28:07.2186225Z",
+    "finished_at": "2026-08-28T23:28:07.8105431Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1025 perturbative branch monotonicity probe",
+      "expected_cost": "one Sturm count and polynomial roots",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1025 perturbative branch monotonicity probe",
+    "expected_cost": "one Sturm count and polynomial roots",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "2/64122266127\r\n5.584837829075147e-06\r\n0\r\n[-0.498736521669478, 0.640675428997642, -0.344693052517283 - 0.276632308740159*I, -0.344693052517283 + 0.276632308740159*I, -0.0290321527756203 - 0.237973028793152*I, -0.0290321527756203 + 0.237973028793152*I, -0.0191579242398824 - 0.330471372435333*I, -0.0191579242398824 + 0.330471372435333*I]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
