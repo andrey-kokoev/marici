@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787959692452695700_209",
+  "created_at": "2026-08-28T23:28:12.4526992Z",
+  "sha256": "ff11e567f3757cd9ed0399ad497acac639f38fa6f0b3dcb6aeee261e0333558f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef b(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,s):\n h={-a-g+j:F(factorial(g))*b(-a,g-j)*b(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef build(N):\n E=[];R=[];P=[];B=[];D={}\n for a in range(N+1):\n  for s in '-+':\n   v=c(6,3,a,s);r={}\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:\n     sub(v,E[i],z)\n     for j,x in R[i].items():r[j]=r.get(j,F())-z*x\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});r={j:x/z for j,x in r.items()};r[len(P)]=F(1,z);R.append(r);P.append(p);B.append((a,s))\n   else:D[(a,s)]={j:-x for j,x in r.items()}\n return B,D\nB,D=build(120)\nfor N in [20,40,60,80,100,120]:\n for rho in [1.,1.05,1.1]:\n  rows=[0.]*len(B);cols=[]\n  for (a,s),r in D.items():\n   if s!='+' or a>N:continue\n   z=0.\n   for j,x in r.items():\n    y=float(abs(x))*rho**(B[j][0]-a);z+=y;rows[j]+=y\n   cols.append(z)\n  print(N,rho,f'{max(cols):.4g}',f'{max(rows):.4g}')"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:28:12.0837642Z",
+    "finished_at": "2026-08-28T23:28:12.4526856Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "critical depth-radius boundary audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "critical depth-radius boundary audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "20 1.0 267.7 535.8\r\n20 1.05 132.1 297.9\r\n20 1.1 80.12 174.9\r\n40 1.0 6681 2.085e+04\r\n40 1.05 1228 4940\r\n40 1.1 246.6 1377\r\n60 1.0 4.688e+04 2.107e+05\r\n60 1.05 3245 2.254e+04\r\n60 1.1 276.4 3329\r\n80 1.0 1.898e+05 1.115e+06\r\n80 1.05 4952 5.539e+04\r\n80 1.1 276.4 4825\r\n100 1.0 5.655e+05 4.103e+06\r\n100 1.05 5559 9.726e+04\r\n100 1.1 276.4 5595\r\n120 1.0 1.384e+06 1.196e+07\r\n120 1.05 5559 1.394e+05\r\n120 1.1 276.4 5904\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
