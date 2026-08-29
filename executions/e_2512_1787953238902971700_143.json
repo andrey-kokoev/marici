@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787953238902971700_143",
+  "created_at": "2026-08-28T21:40:38.902975Z",
+  "sha256": "2cfac82a7d077365efb11490c81ae41936d032da4b8ff46b67e8ca70b5b826f1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "exec(open(r'research/strominger/checkers/magnetic_current_port_sewing_checks.py').read().split('checks = []')[0])\ndef rc(C): return rank([[c.get(r,0) for c in C] for r in sorted({r for c in C for r in c})])\nfor g in range(2,13):\n vals=[]\n for q in range(1,13):\n  k=16;M=component(g,k,q+2);K=[current_defect(g,a,q)for a in range(0,2*k+1,2)];vals.append(rc(M+K)-rc(M))\n print(g,vals)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:40:35.1239426Z",
+    "finished_at": "2026-08-28T21:40:38.9029609Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "stable quotient dimension table",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "stable quotient dimension table",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "2 [5, 5, 6, 6, 8, 8, 9, 10, 11, 12, 13, 14]\r\n3 [5, 6, 6, 7, 7, 8, 9, 10, 11, 12, 13, 14]\r\n4 [5, 6, 7, 7, 8, 8, 9, 10, 11, 12, 13, 14]\r\n5 [5, 6, 7, 8, 8, 9, 9, 10, 11, 12, 13, 14]\r\n6 [5, 6, 7, 8, 9, 9, 10, 10, 11, 12, 13, 14]\r\n7 [5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 13, 14]\r\n8 [5, 6, 7, 8, 9, 10, 11, 11, 12, 12, 13, 14]\r\n9 [5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14]\r\n10 [5, 6, 7, 8, 9, 10, 11, 12, 13, 13, 14, 14]\r\n11 [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 15]\r\n12 [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 15]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
