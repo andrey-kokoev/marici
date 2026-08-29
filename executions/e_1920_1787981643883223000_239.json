@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787981643883223000_239",
+  "created_at": "2026-08-29T05:34:03.8832267Z",
+  "sha256": "2a68f2f678fc1941612f3a3d3bf0fa7f10bb23db5e3cac44243aae246e5bcfca",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_scc_globular_observer_tower.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:34:03.5220041Z",
+    "finished_at": "2026-08-29T05:34:03.8832101Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "globular hostile checker",
+      "expected_cost": "bounded",
+      "source": "caller_declared"
+    },
+    "test_scope": "globular hostile checker",
+    "expected_cost": "bounded",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\checkers\\check_scc_globular_observer_tower.py\", line 10, in <module>\r\n    hostiles=[run(\"missing_boundary\",lambda c:c[\"cells\"][-1].update(target_boundary=\"absent\"),\"globular_boundary\"),run(\"nonparallel_boundary\",lambda c:c[\"cells\"][5].update(parallel_signature=\"other\"),\"globular_parallelism\"),run(\"theta_rank_1_of_6\",lambda c:c[\"source_incidence\"].update(matrix=[[1,1,1,1,1,1]]),\"finite_source_incidence_realization\"),run(\"conflate_kernel_cokernel\",lambda c:c[\"residuals\"][1][\"seed_map\"].update(kind=\"inclusion\"),\"typed_residual\"),run(\"unboxed_child\",lambda c:c[\"child_towers\"][0].update(boxed=False),\"boxed_child_tower\"),run(\"unauthorized_promotion\",lambda c:c[\"promotions\"][0][\"certificates\"].update(source_authorized=False),\"promotion_authority\"),run(\"unchanged_reentry\",lambda c:c[\"termination\"][0].update(after=2),\"termination\"),run(\"diag_1_over_n_nonclosed\",lambda c:c[\"completion\"][\"strictness\"].update(closed_complemented_range=False,continuous_generalized_inverse=False),\"completion_strictness\"),run(\"unilateral_shift_cokernel\",lambda c:c[\"completion\"][\"supported_finite_defect\"].update(fourier_character=\"\"),\"supported_finite_defect\"),run(\"no_contracting_homotopy\",lambda c:c[\"completion\"][\"acyclicity\"].update(source_authorized=False,contracting_homotopy=\"\"),\"acyclicity\"),run(\"unjoined_critical_pair\",lambda c:c[\"critical_pairs\"][0].update(join_witness=\"\"),\"rewrite_confluence\"),run(\"missing_coefficient_lens\",lambda c:c.update(global_coherence=[x for x in c[\"global_coherence\"] if x[\"lens\"]!=\"coefficients\"]),\"global_coherence\")]\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\checkers\\check_scc_globular_observer_tower.py\", line 8, in run\r\n    fixture=copy.deepcopy(base);mutate(fixture);report=compile_globular_tower(fixture)\r\n                                                       ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\scc\\globular_tower_compiler.py\", line 126, in compile_globular_tower\r\n    for name,result in ((\"boxed_child_tower\",ch),(\"promotion_authority\",promotions(c,ch)),(\"termination\",termination(c,ch)),(\"completion\",completion(c)),(\"rewrite_confluence\",confluence(c)),(\"global_coherence\",global_coherence(c))):\r\n                                                                        ~~~~~~~~~~^^^^^^\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\scc\\globular_tower_compiler.py\", line 81, in promotions\r\n    if p.get(\"child\") not in ch[\"ids\"]:return fail(\"promotion_authority\",\"promotion names absent child\",promotion=p.get(\"id\"))\r\n                             ~~^^^^^^^\r\nKeyError: 'ids'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
