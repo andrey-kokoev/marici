@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787960974275749300_212",
+  "created_at": "2026-08-28T23:49:34.2757531Z",
+  "sha256": "2e9b67cdcc801ed146108c2925e24ad861867c3f924ff6d228544dc74f808b40",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as F\nfrom math import factorial\ndef bn(n,k):\n r=F(1)\n for i in range(k):r*=F(n-i,i+1)\n return r\ndef c(g,q,a,s):\n h={-a-g+j:F(factorial(g))*bn(-a,g-j)*bn(a-4,j)*(-1)**j for j in range(g+1)};Q=q+2;z=-1 if s=='-' else 1;o={}\n for e,x in h.items():\n  v=e+1+z*Q;o[e]=o.get(e,F())+x*v;o[e+1]=o.get(e+1,F())+x*(v-g)\n o={e:x for e,x in o.items() if x};return o if s=='-' else {e+Q:-x for e,x in o.items()}\ndef sub(v,w,z):\n for e,x in w.items():\n  v[e]=v.get(e,F())-z*x\n  if not v[e]:del v[e]\ndef hole(g,q,N=20):\n E=[];P=[];plus=[]\n for a in range(N+1):\n  for s in '-+':\n   v=c(g,q,a,s)\n   for i,p in enumerate(P):\n    z=v.get(p,F())\n    if z:sub(v,E[i],z)\n   if v:\n    p=min(v);z=v[p];E.append({e:x/z for e,x in v.items()});P.append(p)\n    if s=='+':plus.append(a)\n a=q-g+3\n return a, a not in plus\nfor g in range(2,11):\n h=[];f=[]\n for q in range(1,16):\n  a,z=hole(g,q)\n  if a>=1:(h if z else f).append(q)\n print(g,'hole q',h,'retained q',f)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:49:33.3864424Z",
+    "finished_at": "2026-08-28T23:49:34.2757403Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "Euler cap-hole support-separation audit",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "Euler cap-hole support-separation audit",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "2 hole q [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] retained q [1, 2, 3]\r\n3 hole q [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] retained q [1, 2, 3, 4]\r\n4 hole q [6, 7, 8, 9, 10, 11, 12, 13, 14, 15] retained q [2, 3, 4, 5]\r\n5 hole q [7, 8, 9, 10, 11, 12, 13, 14, 15] retained q [3, 4, 5, 6]\r\n6 hole q [8, 9, 10, 11, 12, 13, 14, 15] retained q [4, 5, 6, 7]\r\n7 hole q [9, 10, 11, 12, 13, 14, 15] retained q [5, 6, 7, 8]\r\n8 hole q [10, 11, 12, 13, 14, 15] retained q [6, 7, 8, 9]\r\n9 hole q [11, 12, 13, 14, 15] retained q [7, 8, 9, 10]\r\n10 hole q [12, 13, 14, 15] retained q [8, 9, 10, 11]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
