@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956044791727000_172",
+  "created_at": "2026-08-28T22:27:24.7917302Z",
+  "sha256": "a373a1cdd5f9d667580565acf5c1d47c4ddd9f8f6c935b468503397954cdfe0a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import sympy as s\np=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef coords(g,q,b,N=10):\n cen=1-g;o=[canonical_column(g,a,m,b) for a in range(N+1) for m in(cen-(q+2)-a,cen+(q+2)-a)];ks=[current_defect(g,a,q,b) for a in range(N+1)];rows=sorted({r for c in o+ks for r in c});cols=o+ks[:2];A=s.Matrix([[c.get(r,0) for c in cols] for r in rows]);out=[]\n for i,k in enumerate(ks):\n  sol=s.linsolve((A,s.Matrix([k.get(r,0) for r in rows])));v=next(iter(sol));out.append((i,s.simplify(v[-2]),s.simplify(v[-1])))\n return out\nfor z in [(3,10,4),(6,3,4),(5,10,2)]:print(z,coords(*z))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:27:24.7001858Z",
+    "finished_at": "2026-08-28T22:27:24.7917183Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "quotient current coordinate discovery",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "quotient current coordinate discovery",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import sympy as s\r\nModuleNotFoundError: No module named 'sympy'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
