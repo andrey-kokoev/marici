@@ -1,0 +1,42 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787982552344907300_266",
+  "created_at": "2026-08-29T05:49:12.3449111Z",
+  "sha256": "0f2c9c62c6200c7a247d239a9cf833577a3458e2a48c8d28a1ec33627ec8a5aa",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/checkers/check_theta_beurling_source_gate.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:49:12.1598182Z",
+    "finished_at": "2026-08-29T05:49:12.344898Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "honest source gate",
+      "expected_cost": "bounded",
+      "source": "caller_declared"
+    },
+    "test_scope": "honest source gate",
+    "expected_cost": "bounded",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.theta-beurling-source-gate-check.v1\",\r\n  \"audit\": {\r\n    \"passed\": false,\r\n    \"first_failed_gate\": \"coefficient_law\",\r\n    \"reason\": \"source coefficient law remains open\",\r\n    \"evidence\": {\r\n      \"coefficient\": \"square\",\r\n      \"status\": \"open\"\r\n    }\r\n  },\r\n  \"checks\": {\r\n    \"blocked_at_first_missing_coefficient\": true,\r\n    \"candidate_not_promoted\": true,\r\n    \"arity_not_promoted_to_growth_law\": true,\r\n    \"later_gates_preserved\": true\r\n  },\r\n  \"passed\": true,\r\n  \"next_constructor\": \"derive the square-current coefficient formula and exact growth degree; arity two alone is insufficient\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
