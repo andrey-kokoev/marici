@@ -28,10 +28,10 @@ The research state is therefore a grid, not a single chain.
 |---|---|---|---|---|
 | One prime | minimal Sz.-Nagy dilation space | local unitary dilation | fixed vector functional | exact return amplitudes |
 | Finite cutoff | finite product/direct packet | commuting labelled additions | product functional and determinant connection | exact finite coherence |
-| Infinite arithmetic | arithmetic and Haar GNS sectors are disjoint | missing noncentral correspondence | no fixed adelic functional yet | Kakutani and tensor implementability fail |
+| Infinite arithmetic | arithmetic and Haar GNS sectors are disjoint | product-system correspondence exists; noncentral linking action is missing | no fixed adelic functional yet | Kakutani and tensor implementability fail |
 | Completed reciprocal system | two valuation sectors plus archimedean reservoir are typed | reciprocal comparison is local only | completed wave-trace functional missing | closability and weighted scale energy missing |
 
-The first failed cell in the admitted partial order is the infinite-arithmetic action cell.
+The first failed cell in the admitted partial order remains the infinite-arithmetic action cell. The product system supplies its cross-sector correspondence carrier, not yet its noncentral action.
 
 ## Why the next cell is action, not observation
 
@@ -51,7 +51,7 @@ Let \(\mathcal A\) be the source algebra, with disjoint GNS representations
 (\pi_{0},\mathcal H_{0}).
 \]
 
-The next constructor must be a source-derived correspondence or closed relation \(\mathcal E\) joining these sectors. It must not identify them. Its finite restrictions must recover the local Poisson/Haar comparison and its square-grade anomaly.
+The product-system constructor supplies a source-derived correspondence \(\mathcal E\) joining these sectors without identifying them. The remaining action constructor must place \(\mathcal E\) in its linking algebra and derive an off-diagonal generator that is noncentral relative to the sector projections.
 
 The minimum contract is:
 
@@ -61,7 +61,8 @@ The minimum contract is:
 4. a typed square-current cocycle measuring representation change;
 5. reciprocal transport to the opposite valuation cone;
 6. a declared domain for the later trace functional;
-7. a finite falsifier for any claimed bounded intertwiner.
+7. an off-diagonal linking generator that does not commute with the sector grading;
+8. a finite falsifier for any claimed bounded endpoint intertwiner.
 
 Because the GNS sectors are disjoint, an ordinary nonzero bounded intertwiner is already excluded. The constructor must genuinely be a correspondence, unbounded relation, or relative modular object.
 
@@ -80,11 +81,12 @@ Moving upward in assembly scale without moving laterally through comparison, obs
 
 The next research order is fixed:
 
-1. construct or falsify the global cross-GNS correspondence;
-2. construct the fixed adelic functional on that correspondence;
-3. verify adjoint doubling and the extended archimedean kernel;
-4. prove closability and weighted scale-energy estimates;
-5. only then compare the resulting real-support wave trace with the completed determinant section.
+1. retain the constructed global cross-GNS product-system correspondence;
+2. construct or falsify its noncentral linking action;
+3. construct the affine adelic observer on that action;
+4. verify adjoint doubling and the extended archimedean kernel;
+5. prove closability and weighted scale-energy estimates;
+6. only then compare the resulting real-support wave trace with the completed determinant section.
 
 The first decisive outcome should be one of:
 

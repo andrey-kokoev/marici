@@ -39,15 +39,17 @@ This is the finite Hellinger affinity. The local logarithmic deficits add, and t
 
 Kakutani disjointness is therefore not a failure of finite composition. It is failure of the terminal endpoint arrow in the chosen vacuum representation.
 
-## Correct global action object
+## Correct global correspondence object
 
-The surviving object is the directed family
+The surviving comparison object is the directed family
 
 \[
 \{J_{X,Y}:X\subset Y\}
 \]
 
 with its exact tensor-composition cells. This is a product system or pro-correspondence of finite representation changes. It joins the sectors pathwise without identifying their disjoint endpoints by one bounded intertwiner.
+
+Kitaev's carrier/action distinction prevents promoting this comparison transport directly to a complete action cell. The half-density maps are diagonal multiplication data in the commutative presentation. The action cell additionally requires the linking algebra of the correspondence and a source-derived off-diagonal generator that fails to commute with the sector grading.
 
 The infinite action cell should therefore be typed as a diagram-level constructor:
 
@@ -78,9 +80,9 @@ The centered primitive coordinate has divergent quadratic variation of order \(\
 
 This explains why the two grades must remain coupled before completion.
 
-## Move to the observation cell
+## Complete the action cell before observation
 
-Once action is represented by the product system, the next lattice cell is not a single trace on one Hilbert space. A compatible scalar state on cylinder observables already exists, but it erases the accumulated logarithmic current. The required wave observer is an affine family \(O_X\) with typed increments satisfying
+Once a noncentral linking action is derived on the product system, the next lattice cell is not a single trace on one Hilbert space. A compatible scalar state on cylinder observables already exists, but it erases the accumulated logarithmic current. The required wave observer is an affine family \(O_X\) with typed increments satisfying
 
 \[
 O_Y=O_X+\Delta O_{X,Y},
@@ -108,7 +110,8 @@ Reject a proposed action if:
 The infinite carrier and action cells can coexist without a common endpoint representation:
 
 - carrier splitting is Kakutani disjointness;
-- action is the finite-correspondence product system;
-- the missing next cell is a natural distributional observer on that system.
+- the product system supplies the cross-sector correspondence carrier;
+- the missing action subcell is its noncentral linking generator;
+- the later observation cell is a natural affine observer on that action.
 
 This advances the lattice rather than repairing the impossible tensor-product endpoint.
