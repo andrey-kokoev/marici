@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787952759699344200_134",
+  "created_at": "2026-08-28T21:32:39.6993482Z",
+  "sha256": "3b3afefcdd0fa74f0248ff9eae96e4d499086e1b5c75d9efe75158f08260ee25",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nfrom fractions import Fraction as F\nfrom functools import reduce\ndef rising(v,n): return math.prod(v+i for i in range(n))\ndef cvec(g,a): return [math.comb(g,j)*(-1)**(g-j)*rising(a,g-j)*rising(4-a,j) for j in range(g+1)]\ndef pvec(g,a,m):\n c=cvec(g,a); return [m*c[0]]+[(m+j)*c[j]+(m+j-1-g)*c[j-1] for j in range(1,g+1)]+[m*c[g]]\ndef col(g,a,m):\n d=1-g-(a+m); s=-a-g if d>0 else -a-g+abs(d); sg=1 if d>0 else -1\n return {s+j:sg*x for j,x in enumerate(pvec(g,a,m)) if x}\ndef comp(g,k,q):\n cen=1-g; return [col(g,a,m) for a in range(0,2*k+1,2) for m in (cen-q-a,cen+q-a)]\ndef defect(g,a,q):\n c=cvec(g,a); J=[c[0]]+[c[j]+c[j-1] for j in range(1,g+1)]+[c[g]]; out={}\n for s,sg in [(-a-g,-2),(-a-g+q+2,2)]:\n  for j,x in enumerate(J): out[s+j]=out.get(s+j,0)+sg*x\n return {r:x for r,x in out.items() if x}\ndef solve(M,y):\n A=[[F(x) for x in row]+[F(v)] for row,v in zip(M,y)]; m=len(A); n=len(A[0])-1; piv=[]; r=0\n for c in range(n):\n  p=next((i for i in range(r,m) if A[i][c]),None)\n  if p is None: continue\n  A[r],A[p]=A[p],A[r]; z=A[r][c]; A[r]=[x/z for x in A[r]]\n  for i in range(m):\n   if i!=r and A[i][c]:\n    z=A[i][c]; A[i]=[A[i][j]-z*A[r][j] for j in range(n+1)]\n  piv.append(c); r+=1\n for i in range(r,m):\n  if all(A[i][j]==0 for j in range(n)) and A[i][n]: return None\n x=[F(0) for _ in range(n)]\n for i,c in enumerate(piv): x[c]=A[i][n]\n return x\ndef cert(g,k,q,a):\n cols=comp(g,k,q+2); b=defect(g,a,q); rows=sorted(set(b)|{r for c in cols for r in c})\n M=[[c.get(r,0) for r in rows] for c in cols]+[[b.get(r,0) for r in rows]]\n lam=solve(M,[0]*len(cols)+[1])\n den=math.lcm(*[x.denominator for x in lam]); ints=[int(x*den) for x in lam]; gg=reduce(math.gcd,[abs(x) for x in ints if x] or [1]); ints=[x//gg for x in ints]\n return [(r,x) for r,x in zip(rows,ints) if x]\nfor k in range(2,9):\n z=cert(2,k,1,0); print('k',k,'support',len(z),'range',(z[0][0],z[-1][0]),'vec',z[:12],('...' if len(z)>12 else ''))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:32:39.6219734Z",
+    "finished_at": "2026-08-28T21:32:39.6993345Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "exact left-cokernel certificate exploration",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "exact left-cokernel certificate exploration",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "k 2 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 3 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 4 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 5 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 6 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 7 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\nk 8 support 2 range (3, 4) vec [(3, -1), (4, 2)] \r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
