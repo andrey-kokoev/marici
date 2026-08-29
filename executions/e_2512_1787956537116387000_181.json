@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956537116387000_181",
+  "created_at": "2026-08-28T22:35:37.1163907Z",
+  "sha256": "065d623e0fcb7711b7b161aacbfd343150c09b6e247b8513d404f6e94659caf9",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "timed_out",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\nbad=[];cases=0\nfor b in range(2,9):\n for g in range(2,11):\n  for q in range(1,16):\n   N=30;c=1-g;M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];K=[current_defect(g,a,q,b) for a in range(N+1)];r=rank(M);cases+=1;high=q>=2*g+b-3;stop=(q-2 if high else b)\n   t=[rank(M+K)-r==rank(M+K[:b])-r,all((rank(M+[K[a]])>r)==(a<stop) for a in range(b,N+1)),all(rank(M+[K[a]])==r for a in range(max(b,stop),N+1))]\n   if not all(t):bad.append((b,g,q,high,stop,t,[a for a in range(b,N+1) if rank(M+[K[a]])>r][:20]))\nprint(\"cases\",cases,\"bad\",len(bad),\"first\",bad[:3])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:33:35.4383948Z",
+    "finished_at": "2026-08-28T22:35:37.1163761Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "global finite boundary support law",
+      "expected_cost": "high",
+      "source": "caller_declared"
+    },
+    "test_scope": "global finite boundary support law",
+    "expected_cost": "high",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": true,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
