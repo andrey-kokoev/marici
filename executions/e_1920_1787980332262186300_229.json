@@ -1,0 +1,44 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787980332262186300_229",
+  "created_at": "2026-08-29T05:12:12.2621898Z",
+  "sha256": "03a70ada93cff8f4910c163965aad0636ba7cf497e2b4e61b3b72590e2851045",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "research/aspect/scc/scc.py",
+      "observer-set",
+      "research/aspect/contracts/theta-primitive-square-observer-set.v1.json"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-29T05:12:12.0270291Z",
+    "finished_at": "2026-08-29T05:12:12.2621753Z",
+    "timeout_ms": 60000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "SCC observer-set CLI acceptance",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "SCC observer-set CLI acceptance",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.observer-set-compilation.v1\",\r\n  \"observer_set\": \"theta-primitive-square-observer-set\",\r\n  \"errors\": [],\r\n  \"members\": [\r\n    {\r\n      \"id\": \"J1\",\r\n      \"arity\": 1,\r\n      \"domain\": \"A\",\r\n      \"shape_ok\": true,\r\n      \"induced_transport\": [\r\n        [\r\n          0,\r\n          -1\r\n        ],\r\n        [\r\n          1,\r\n          0\r\n        ]\r\n      ],\r\n      \"transported_observer\": [\r\n        [\r\n          0,\r\n          -1\r\n        ],\r\n        [\r\n          1,\r\n          0\r\n        ]\r\n      ],\r\n      \"transport_natural\": true,\r\n      \"rank\": 2,\r\n      \"domain_dimension\": 2\r\n    },\r\n    {\r\n      \"id\": \"J2_tilde\",\r\n      \"arity\": 2,\r\n      \"domain\": \"Sym^2(A)\",\r\n      \"shape_ok\": true,\r\n      \"induced_transport\": [\r\n        [\r\n          0,\r\n          0,\r\n          1\r\n        ],\r\n        [\r\n          0,\r\n          -1,\r\n          0\r\n        ],\r\n        [\r\n          1,\r\n          0,\r\n          0\r\n        ]\r\n      ],\r\n      \"transported_observer\": [\r\n        [\r\n          3,\r\n          -2,\r\n          1\r\n        ]\r\n      ],\r\n      \"transport_natural\": true,\r\n      \"rank\": 1,\r\n      \"domain_dimension\": 3\r\n    }\r\n  ],\r\n  \"joint_faithfulness_by_arity\": {\r\n    \"1\": {\r\n      \"joint_rank\": 2,\r\n      \"domain_dimension\": 2,\r\n      \"joint_kernel_dimension\": 0,\r\n      \"faithful\": true\r\n    },\r\n    \"2\": {\r\n      \"joint_rank\": 1,\r\n      \"domain_dimension\": 3,\r\n      \"joint_kernel_dimension\": 2,\r\n      \"faithful\": false\r\n    }\r\n  },\r\n  \"polarization\": [\r\n    {\r\n      \"id\": \"basis_pair\",\r\n      \"mixed\": \"2\",\r\n      \"twice_bilinear\": \"2\",\r\n      \"passed\": true\r\n    },\r\n    {\r\n      \"id\": \"mixed_pair\",\r\n      \"mixed\": \"2\",\r\n      \"twice_bilinear\": \"2\",\r\n      \"passed\": true\r\n    },\r\n    {\r\n      \"id\": \"generic_pair\",\r\n      \"mixed\": \"8\",\r\n      \"twice_bilinear\": \"8\",\r\n      \"passed\": true\r\n    }\r\n  ],\r\n  \"realization_comparisons\": [\r\n    {\r\n      \"id\": \"poisson-to-completed-euler\",\r\n      \"slot_complete\": true,\r\n      \"verified_equivalent\": false,\r\n      \"first_failed_slot\": \"instrument_backaction\"\r\n    }\r\n  ],\r\n  \"higher_coherence\": [\r\n    {\r\n      \"degree\": 2,\r\n      \"state\": \"verified\",\r\n      \"admitted\": true\r\n    },\r\n    {\r\n      \"degree\": 3,\r\n      \"state\": \"verified\",\r\n      \"admitted\": true\r\n    },\r\n    {\r\n      \"degree\": 4,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    },\r\n    {\r\n      \"degree\": 5,\r\n      \"state\": \"unsupported\",\r\n      \"admitted\": false\r\n    }\r\n  ],\r\n  \"passed\": true,\r\n  \"claim\": \"finite declared observer-set coherence only\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
