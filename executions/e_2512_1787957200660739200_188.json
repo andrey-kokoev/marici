@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787957200660739200_188",
+  "created_at": "2026-08-28T22:46:40.6607429Z",
+  "sha256": "9638acb7221d4c16ddcb7bc661f746c1dfcdd395c2f22f313867e1e1e75db907",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef cut(cols,rs):return [{r:c[r] for r in rs if r in c} for c in cols]\ndef find(g,q,b,N=16):\n c=1-g;M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];K=[current_defect(g,a,q,b) for a in range(b)];rows=sorted({r for z in M+K for r in z});ans=[]\n for ki,k in enumerate(K):\n  hit=None\n  for w in range(1,min(16,len(rows))+1):\n   for i in range(len(rows)-w+1):\n    rs=rows[i:i+w];mc=cut(M,rs);kc=cut([k],rs)\n    if rank(mc+kc)>rank(mc):hit=(w,rs[0],rs[-1]);break\n   if hit:break\n  ans.append(hit)\n return ans\nfor z in [(6,3,4),(6,8,4),(6,13,4),(3,10,4)]:print(z,find(*z))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:46:39.917052Z",
+    "finished_at": "2026-08-28T22:46:40.6607288Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "minimal sewn cocircuit interval discovery",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "minimal sewn cocircuit interval discovery",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(6, 3, 4) [(1, 6, 6), (8, -3, 4), (8, -3, 4), (8, -3, 4)]\r\n(6, 8, 4) [(5, 7, 11), (5, 7, 11), (5, 7, 11), (5, 7, 11)]\r\n(6, 13, 4) [(5, 12, 16), (4, 6, 9), (4, 6, 9), (4, 6, 9)]\r\n(3, 10, 4) [(5, 9, 13), (5, 9, 13), (5, 9, 13), (5, 9, 13)]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
