@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/"research/as
 from rh_net_state_compiler import compile_rh_net_state
 CP=ROOT/"research/aspect/contracts/theta-rh-interaction-net-state.v1.json";RP=ROOT/"research/aspect/results/theta_rh_interaction_net_state.json"
 base=json.loads(CP.read_text(encoding="utf-8"));report=compile_rh_net_state(base)
-expected={"type_fiber_adams_composition","endpoint_operator_attachment","archimedean_determinant_operator_lift"}
+expected={"type_fiber_adams_composition","endpoint_operator_attachment","archimedean_determinant_operator_lift","valuation_fock_passive_dilation","primitive_wall_trace_completion"}
 def hostile(name,mutate,gate):
  c=copy.deepcopy(base);mutate(c);r=compile_rh_net_state(c);return {"id":name,"expected":gate,"actual":r.get("first_failed_gate"),"passed":r.get("first_failed_gate")==gate}
 hostiles=[
@@ -22,11 +22,21 @@ hostiles=[
  hostile("authorize_domain_from_pairs",lambda c:next(x for x in c["constructors"] if x["id"]=="common_nine_operation_graph_domain").update(depends_on=["overlap_adams_endpoint","overlap_adams_archimedean","overlap_endpoint_archimedean","tail_seam_hilbert_schmidt_coupling"]),"higher_coherence_topology"),
  hostile("claim_rh",lambda c:c.update(claim="rh_proved"),"claim_boundary"),
  hostile("promote_determinant_lens_from_scalar",lambda c:next(x for x in c["lenses"] if x["kind"]=="determinant").update(status="constructed"),"lens_typing"),
- hostile("missing_source_locator",lambda c:next(x for x in c["constructors"] if x["id"]=="weighted_adams_cocycle").update(source_locator=None),"source_authority"),
+ hostile("missing_source_locator",lambda c:next(x for x in c["constructors"] if x["id"]=="weighted_adams_cocycle").update(source_locator=None),"construction_authority"),
+ hostile("scalar_sum_of_schur_transfers",lambda c:c["passive_wiring_contract"].update(forbidden_modes=[]),"passive_wiring_typing"),
+ hostile("drop_primitive_trace_from_det2_comparison",lambda c:next(x for x in c["constructors"] if x["id"]=="finite_det_det2_trace_comparison").update(depends_on=[]),"refined_rh_topology"),
+ hostile("arbitrary_primitive_continuation",lambda c:next(x for x in c["constructors"] if x["id"]=="primitive_wall_trace_completion").update(status="constructed",source_locator="arbitrary-continuation",authority_class="algebraic_derived_nonrealization"),"source_realization_boundary"),
+ hostile("cascade_ignores_det2_anomaly",lambda c:next(x for x in c["constructors"] if x["id"]=="det2_anomaly_identification").update(depends_on=["passive_network_assembly"]),"refined_rh_topology"),
+ hostile("reciprocal_orientation_without_source_map",lambda c:next(x for x in c["constructors"] if x["id"]=="reciprocal_adjoint_port_orientation").update(status="constructed",source_locator="contractive-choice",authority_class="algebraic_derived_nonrealization"),"source_realization_boundary"),
+ hostile("global_margin_excludes_seam",lambda c:next(x for x in c["constructors"] if x["id"]=="allowed_seam_defect_locus").update(off_locus_requirement="global_positive_separation"),"relative_defect_locus"),
+ hostile("coercivity_promoted_to_identification",lambda c:next(x for x in c["constructors"] if x["id"]=="xi_boundary_pencil_spectral_identification").update(depends_on=["relative_off_seam_five_margin_coercivity"]),"refined_rh_topology"),
+ hostile("identification_promoted_to_coercivity",lambda c:next(x for x in c["constructors"] if x["id"]=="relative_off_seam_five_margin_coercivity").update(depends_on=["xi_boundary_pencil_spectral_identification"]),"refined_rh_topology"),
+ hostile("generic_cocycle_claims_xi_divisor",lambda c:next(x for x in c["constructors"] if x["id"]=="xi_boundary_pencil_spectral_identification").update(status="constructed",source_locator="generic-cocycle",authority_class="algebraic_derived_nonrealization"),"source_realization_boundary"),
+ hostile("strict_diagonal_carrier_claims_zeros",lambda c:next(x for x in c["constructors"] if x["id"]=="completed_boundary_pencil").update(depends_on=["zero_free_diagonal_carrier"]),"refined_rh_topology"),
 ]
 checks={
  "partial_net_compiles":report.get("passed") is True,
- "frontier_is_exact_three_cell_antichain":set(report.get("frontier_antichain",[]))==expected,
+ "frontier_is_exact_five_cell_antichain":set(report.get("frontier_antichain",[]))==expected,
  "pairwise_overlap_layer_declared":{x["id"] for x in base["constructors"] if x["id"].startswith("overlap_")}=={"overlap_adams_endpoint","overlap_adams_archimedean","overlap_endpoint_archimedean"},
  "associator_requires_all_pairwise_overlaps":next(x for x in base["constructors"] if x["id"]=="typed_three_way_associator")["depends_on"]==["overlap_adams_endpoint","overlap_adams_archimedean","overlap_endpoint_archimedean"],
  "pentagon_requires_associator":next(x for x in base["constructors"] if x["id"]=="four_input_pentagon_cocycle_coherence")["depends_on"]==["typed_three_way_associator"],
@@ -43,7 +53,9 @@ checks={
  "source_inhabitants_distinct_from_formal_slots":set(report.get("domain_algebra",{}).get("source_derived_inhabitants",[])).isdisjoint(report.get("domain_algebra",{}).get("formal_constructor_slots",[])),
  "agents_have_one_principal_output":len(report.get("interaction_net",{}).get("agents",[]))==len(base["constructors"]) and all(a["principal"]["role"]=="principal" and a["principal"]["direction"]=="out" for a in report["interaction_net"]["agents"]),
  "dependencies_are_typed_auxiliary_wires":len(report["interaction_net"]["wires"])==sum(len(n["depends_on"]) for n in base["constructors"]) and all(w["wire_type"] and ".out" in w["source_port"] and ".in." in w["target_port"] for w in report["interaction_net"]["wires"]),
- "five_margins_and_spectral_identification_declared":{"completion_stable_five_margin_coercivity","spectral_identification"}<=set(report.get("downstream_open",[])),
+ "coercivity_and_xi_identification_are_siblings":next(x for x in base["constructors"] if x["id"]=="off_seam_kernel_exclusion")["depends_on"]==["relative_off_seam_five_margin_coercivity","xi_boundary_pencil_spectral_identification"],
+ "algebraic_cells_are_not_source_inhabitants":set(report.get("domain_algebra",{}).get("algebraic_nonrealization_cells",[])).isdisjoint(report.get("domain_algebra",{}).get("source_derived_inhabitants",[])),
+ "ten_audit3_hostile_contracts_declared":len(report.get("hostile_fixtures",[]))==10,
  "universal_core_correctly_unavailable":report.get("domain_algebra",{}).get("universal_core_eligible") is False,
  "all_three_lenses_remain_open":set(report.get("lenses",{}).values())=={"open"},
  "rh_terminal_open":report.get("terminal",{}).get("rh_proved") is False,

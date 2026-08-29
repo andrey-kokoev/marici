@@ -28,9 +28,43 @@ COMPOSITE_CONTROL={
  "controls":["forward_composite_norm","inverse_composite_norm"],
  "generator_only_bound_admissible":False,
  "isometric_unitary_norm":1}
+REFINED_RH_TOPOLOGY={
+ "prime_diagonal_schur_operator":["projective_exponential_source"],
+ "hilbert_schmidt_ideal_membership":["prime_diagonal_schur_operator"],
+ "s2_s1_ideal_split":["hilbert_schmidt_ideal_membership"],
+ "det2_higher_prime_power_packet":["s2_s1_ideal_split"],
+ "finite_det_det2_trace_comparison":["det2_higher_prime_power_packet"],
+ "zero_free_diagonal_carrier":["prime_diagonal_schur_operator","det2_higher_prime_power_packet"],
+ "passive_wiring_modes":["prime_diagonal_schur_operator"],
+ "valuation_fock_passive_dilation":["prime_diagonal_schur_operator","fourier_bohr_discrete_port"],
+ "primitive_wall_trace_completion":["finite_det_det2_trace_comparison","arithmetic_analytic_incidence"],
+ "reciprocal_adjoint_port_orientation":["valuation_fock_passive_dilation"],
+ "archimedean_endpoint_operator_lift":["valuation_fock_passive_dilation"],
+ "passive_network_assembly":["valuation_fock_passive_dilation","passive_wiring_modes"],
+ "det2_anomaly_identification":["passive_network_assembly","det2_higher_prime_power_packet"],
+ "source_cayley_boundary_relation":["primitive_wall_trace_completion","reciprocal_adjoint_port_orientation","archimedean_endpoint_operator_lift","det2_anomaly_identification"],
+ "completed_boundary_pencil":["source_cayley_boundary_relation","relative_determinant_line_coherence"],
+ "relative_off_seam_five_margin_coercivity":["completed_boundary_pencil","allowed_seam_defect_locus"],
+ "xi_boundary_pencil_spectral_identification":["completed_boundary_pencil","relative_determinant_line_coherence"],
+ "off_seam_kernel_exclusion":["relative_off_seam_five_margin_coercivity","xi_boundary_pencil_spectral_identification"],
+ "riemann_hypothesis_terminal":["off_seam_kernel_exclusion"]}
+HOSTILE_IDS=[
+ "scalar_sum_breaks_schur_contractivity","det2_dropped_primitive_trace",
+ "arbitrary_primitive_continuation_imports_divisor","cascade_drops_det2_anomaly",
+ "reciprocal_orientation_without_source_map","global_margin_excludes_seam_zeros",
+ "coercivity_promoted_to_identification","identification_promoted_to_coercivity",
+ "generic_cocycle_claims_xi_divisor","strict_diagonal_carrier_claims_zeros"]
+SOURCE_REALIZATION_OPEN={
+ "valuation_fock_passive_dilation","primitive_wall_trace_completion",
+ "reciprocal_adjoint_port_orientation","archimedean_endpoint_operator_lift",
+ "passive_network_assembly","det2_anomaly_identification",
+ "source_cayley_boundary_relation","completed_boundary_pencil",
+ "relative_off_seam_five_margin_coercivity",
+ "xi_boundary_pencil_spectral_identification","off_seam_kernel_exclusion",
+ "riemann_hypothesis_terminal"}
 def fail(gate,reason,**evidence):return {"passed":False,"first_failed_gate":gate,"reason":reason,"evidence":evidence}
 def output_type(cell):
-    rules=(("overlap_","pairwise_comparison"),("associator","associator"),("unitor","unitor"),("pentagon","pentagon_witness"),("triangle","triangle_witness"),("completion_stable_frontier","completed_coherence"),("nine_operation","operation_domain"),("naturality","naturality_witness"),("sewing","sewing_witness"),("fourier_transport","completed_transport"),("determinant_line","determinant_line_witness"),("five_margin","coercivity_margin_packet"),("spectral_identification","spectral_identification"),("critical_line","critical_line_exclusion"),("riemann_hypothesis","proposition"),("type_fiber_adams","adams_cell"),("endpoint_operator","endpoint_cell"),("archimedean_determinant","archimedean_cell"))
+    rules=(("prime_diagonal","schur_operator"),("ideal_split","operator_ideal_filtration"),("ideal_membership","operator_ideal_witness"),("det2_higher","regularized_determinant_packet"),("det_det2_trace","determinant_comparison"),("zero_free_diagonal","zero_free_carrier_witness"),("passive_wiring","wiring_mode_sum_type"),("passive_dilation","passive_colligation"),("primitive_wall","primitive_trace_completion"),("adjoint_port","oriented_reciprocal_port"),("archimedean_endpoint","archimedean_operator_port"),("passive_network","passive_network"),("det2_anomaly","determinant_anomaly"),("cayley_boundary","boundary_relation"),("boundary_pencil","completed_boundary_pencil"),("allowed_seam","defect_locus"),("off_seam_five","relative_coercivity_witness"),("xi_boundary","xi_identification_witness"),("off_seam_kernel","kernel_exclusion_witness"),("overlap_","pairwise_comparison"),("associator","associator"),("unitor","unitor"),("pentagon","pentagon_witness"),("triangle","triangle_witness"),("completion_stable_frontier","completed_coherence"),("nine_operation","operation_domain"),("naturality","naturality_witness"),("sewing","sewing_witness"),("fourier_transport","completed_transport"),("determinant_line","determinant_line_witness"),("five_margin","coercivity_margin_packet"),("spectral_identification","spectral_identification"),("critical_line","critical_line_exclusion"),("riemann_hypothesis","proposition"),("type_fiber_adams","adams_cell"),("endpoint_operator","endpoint_cell"),("archimedean_determinant","archimedean_cell"))
     return next((kind for token,kind in rules if token in cell),"source_inhabitant")
 def interaction_net(nodes):
     agents=[];wires=[]
@@ -49,6 +83,17 @@ def compile_rh_net_state(c):
     for cell,deps in HIGHER_COHERENCE.items():
         if cell not in by:return fail("higher_coherence_topology","required higher-coherence cell is absent",constructor=cell)
         if by[cell].get("depends_on")!=deps:return fail("higher_coherence_topology","higher-coherence dependency was omitted or shortcut",constructor=cell,expected=deps,actual=by[cell].get("depends_on"))
+    for cell,deps in REFINED_RH_TOPOLOGY.items():
+        if cell not in by:return fail("refined_rh_topology","required audit-3 cell is absent",constructor=cell)
+        if by[cell].get("depends_on")!=deps:return fail("refined_rh_topology","audit-3 dependency was omitted or shortcut",constructor=cell,expected=deps,actual=by[cell].get("depends_on"))
+    locus=by.get("allowed_seam_defect_locus",{})
+    if locus.get("locus")!="critical_seam" or locus.get("off_locus_requirement")!="compact_uniform_positive_separation":return fail("relative_defect_locus","coercivity must be relative to the allowed critical seam")
+    wiring=c.get("passive_wiring_contract",{})
+    if wiring.get("unconditional_modes")!=["typed_direct_sum"] or "ordinary_scalar_sum" not in wiring.get("forbidden_modes",[]):return fail("passive_wiring_typing","only typed direct sum is unconditionally passive; scalar sum must be forbidden")
+    hostiles=c.get("hostile_fixtures",[])
+    if [x.get("id") for x in hostiles]!=HOSTILE_IDS or any(not x.get("must_reject") for x in hostiles):return fail("audit3_hostile_fixture_basis","all ten ordered hostile fixtures are required")
+    promoted=sorted(x for x in SOURCE_REALIZATION_OPEN if by.get(x,{}).get("status")!="open" or by.get(x,{}).get("authority_class")!="formal_slot")
+    if promoted:return fail("source_realization_boundary","algebraic formulas cannot construct source-realization cells",constructors=promoted)
     if c.get("completion_evidence_requirements")!=COMPLETION_EVIDENCE:return fail("completion_evidence_schema","completion stability must require continuity, inverse control, uniform bounds, and commuting diagrams")
     if c.get("completion_control_contract")!=COMPOSITE_CONTROL:return fail("composite_path_control","uniform control must cover forward and inverse composites over every canonical path, cutoff, and constructor depth")
     conditional={x.get("structure"):x for x in c.get("conditional_coherences",[])}
@@ -58,7 +103,7 @@ def compile_rh_net_state(c):
     for n in nodes:
         if n.get("status") not in ("constructed","open"):return fail("constructor_status","invalid status",constructor=n.get("id"))
         if n.get("status")=="constructed":
-            if n.get("authority_class")!="source_derived" or not n.get("source_locator"):return fail("source_authority","constructed cell lacks a source-derived inhabitant",constructor=n.get("id"))
+            if n.get("authority_class") not in ("source_derived","algebraic_derived_nonrealization") or not n.get("source_locator"):return fail("construction_authority","constructed cell lacks typed derivation authority",constructor=n.get("id"))
             if n.get("id")=="completion_stable_frontier_coherence":
                 evidence=n.get("completion_evidence") or {}
                 missing=[x for x in COMPLETION_EVIDENCE if evidence.get(x) is None]
@@ -81,16 +126,19 @@ def compile_rh_net_state(c):
     if terminal not in by:return fail("terminal","terminal constructor is absent")
     if by[terminal]["status"]!="open":return fail("rh_overpromotion","terminal RH constructor cannot currently be constructed")
     constructed=sorted(n["id"] for n in nodes if n["status"]=="constructed")
+    source_constructed=sorted(n["id"] for n in nodes if n["status"]=="constructed" and n["authority_class"]=="source_derived")
+    algebraic_nonrealizations=sorted(n["id"] for n in nodes if n["status"]=="constructed" and n["authority_class"]=="algebraic_derived_nonrealization")
     formal_slots=sorted(n["id"] for n in nodes if n["status"]=="open")
     return {
       "schema":"marici.scc.rh-interaction-net-state.v1","passed":True,"first_failed_gate":None,
-      "domain_algebra":{"source_derived_inhabitants":constructed,"formal_constructor_slots":formal_slots,"open_holes":sorted(open_ids),"closed_schema":False,"universal_core_eligible":False},
+      "domain_algebra":{"source_derived_inhabitants":source_constructed,"algebraic_nonrealization_cells":algebraic_nonrealizations,"formal_constructor_slots":formal_slots,"open_holes":sorted(open_ids),"closed_schema":False,"universal_core_eligible":False},
       "frontier_antichain":frontier,"downstream_open":downstream,
       "higher_coherence_witness_chain":list(HIGHER_COHERENCE),
       "completion_evidence_requirements":COMPLETION_EVIDENCE,
       "completion_control_contract":COMPOSITE_CONTROL,
       "conditional_coherences":c.get("conditional_coherences",[]),
       "interaction_net":interaction_net(nodes),
+      "passive_wiring_contract":wiring,"hostile_fixtures":hostiles,
       "lenses":{x["kind"]:x["status"] for x in c.get("lenses",[])},
       "terminal":{"id":terminal,"status":"open","rh_proved":False},
       "next_parallel_constructors":frontier,
