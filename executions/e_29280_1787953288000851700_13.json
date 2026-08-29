@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787953288000851700_13",
+  "created_at": "2026-08-28T21:41:28.0008553Z",
+  "sha256": "bc8dd5e583e24a340f1ad829ad72562e6b38cb2d5a9d8dcf3247f6c072b0ef49",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s\nz,a,t=s.symbols('z a t', real=True); X=s.diag(-1,z,1-z); Y=s.Matrix([[0,a,-s.I*t],[a,0,1],[s.I*t,1,0]]); C=X*Y-Y*X; nx=s.trace(X.H*X); ny=s.trace(Y.H*Y); K=s.factor(s.trace(C.H*C)/(nx*ny)); P=s.factor(C.det()*s.conjugate(C.det())/(nx*ny)**3); S=s.factor(K+s.Rational(44376,275)*P); p={z:0,a:1,t:s.Rational(6,5)}; g=[s.factor(s.diff(S,v).subs(p)) for v in (z,a,t)]; H=s.simplify(s.hessian(S,(z,a,t)).subs(p)); print('g=',g); print('H=',H); print('leading=',[s.factor(H[:i,:i].det()) for i in range(1,4)]); print('det=',s.factor(H.det()))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:41:27.0537713Z",
+    "finished_at": "2026-08-28T21:41:28.0008413Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "g= [0, 0, 0]\r\nH= Matrix([[-9294/473, 75/86, 0], [75/86, -3273750/874577, 1296000/874577], [0, 1296000/874577, -2160000/874577]])\r\nleading= [-9294/473, 120446454375/1654699684, -14458500000/105823817]\r\ndet= -14458500000/105823817\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
