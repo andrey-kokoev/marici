@@ -1,0 +1,40 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787950454565007300_108",
+  "created_at": "2026-08-28T20:54:14.5650106Z",
+  "sha256": "c2e823686742019ed8d97344276f8322a9cb0334b78ab87aee64a15c4d505608",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/scc/scc.py",
+      "constructors",
+      "wp995-robustness-normalization-no-go"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T20:54:14.4422849Z",
+    "finished_at": "2026-08-28T20:54:14.5649976Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP995 SCC",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP995 SCC",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.scc.constructor-synthesis.v1\",\r\n  \"model\": \"wp995-robustness-normalization-no-go\",\r\n  \"source_obligations\": [\r\n    \"source-derived actuator normalization fixing L\",\r\n    \"admissible control range or energy cost\",\r\n    \"calibrated invariant-coordinate error metric tied to that normalization\",\r\n    \"derive an apparatus-level control cost or support law independently of the desired margin and compute the resulting bounded admissible target scale\"\r\n  ],\r\n  \"candidates\": [\r\n    {\r\n      \"rule\": \"relative-normalization\",\r\n      \"score\": 3,\r\n      \"triggering_obligations\": [\r\n        {\r\n          \"text\": \"source-derived actuator normalization fixing L\",\r\n          \"matched_terms\": [\r\n            \"normalization\"\r\n          ]\r\n        },\r\n        {\r\n          \"text\": \"calibrated invariant-coordinate error metric tied to that normalization\",\r\n          \"matched_terms\": [\r\n            \"normalization\"\r\n          ]\r\n        },\r\n        {\r\n          \"text\": \"derive an apparatus-level control cost or support law independently of the desired margin and compute the resulting bounded admissible target scale\",\r\n          \"matched_terms\": [\r\n            \"scale\"\r\n          ]\r\n        }\r\n      ],\r\n      \"candidate_constructor\": \"source-derived comparison or pairing between independently framed target lines\",\r\n      \"discriminating_hostile\": \"apply independent nonzero target-frame rescalings; accept only a comparison invariant under the simultaneous source-derived transport\",\r\n      \"forbidden_substitute\": \"observer calibration presented as source selection\",\r\n      \"epistemic_status\": \"candidate_requires_source_derivation\"\r\n    }\r\n  ],\r\n  \"candidate_count\": 1,\r\n  \"status\": \"candidate_menu_not_truth_certificate\",\r\n  \"next\": \"derive the highest-ranked constructor from source data, freeze its receiver, then run the attached hostile\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
