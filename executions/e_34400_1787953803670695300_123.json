@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_34400_1787953803670695300_123",
+  "created_at": "2026-08-28T21:50:03.6706997Z",
+  "sha256": "6bc87e7c159c285d8462859925181978c57b03f180eecc82a7487494231a69c1",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import random,math\nrandom.seed(12); worst=(-9,None)\ndef mm(A,B): return [[sum(A[i][k]*B[k][j] for k in range(3)) for j in range(3)] for i in range(3)]\ndef sub(A,B): return [[A[i][j]-B[i][j] for j in range(3)] for i in range(3)]\ndef det(A): return A[0][0]*(A[1][1]*A[2][2]-A[1][2]*A[2][1])-A[0][1]*(A[1][0]*A[2][2]-A[1][2]*A[2][0])+A[0][2]*(A[1][0]*A[2][1]-A[1][1]*A[2][0])\ndef hmat():\n d=[random.gauss(0,1) for _ in range(3)];m=sum(d)/3;d=[x-m for x in d];A=[[0j]*3 for _ in range(3)]\n for i in range(3):A[i][i]=d[i]\n for i,j in ((0,1),(0,2),(1,2)):\n  z=random.gauss(0,1)+1j*random.gauss(0,1);A[i][j]=z;A[j][i]=z.conjugate()\n n=math.sqrt(sum(abs(z)**2 for row in A for z in row));return [[z/n for z in row] for row in A]\nfor _ in range(500000):\n X=hmat();Y=hmat();C=sub(mm(X,Y),mm(Y,X));K=sum(abs(z)**2 for row in C for z in row);P=abs(det(C))**2\n if .5<=K<=2:\n  pc=(2*K-1)*(2-K)**2/108;gap=P-pc\n  if gap>worst[0]:worst=(gap,(K,P,pc))\nprint(worst)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T21:49:50.866766Z",
+    "finished_at": "2026-08-28T21:50:03.670684Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(0.0022587154904030785, (0.5003517322818747, 0.002273364129864902, 1.4648639461823514e-05))\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
