@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956082519019300_174",
+  "created_at": "2026-08-28T22:28:02.5190232Z",
+  "sha256": "3a1e39d72496d0eeb01ea1cee1f018c56f6de6a4d79e717c0f60c2b6a101f19f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0])\ndef solve(cols,b):\n rows=sorted({r for c in cols+[b] for r in c});w=[[Fraction(c.get(r,0)) for c in cols]+[Fraction(b.get(r,0))] for r in rows];p=[];u=0\n for j in range(len(cols)):\n  z=next((i for i in range(u,len(w)) if w[i][j]),None)\n  if z is None:continue\n  w[u],w[z]=w[z],w[u];v=w[u][j];w[u]=[e/v for e in w[u]]\n  for i in range(len(w)):\n   if i!=u and w[i][j]:v=w[i][j];w[i]=[w[i][k]-v*w[u][k] for k in range(len(cols)+1)]\n  p.append(j);u+=1\n x=[Fraction() for _ in cols]\n for i,j in enumerate(p):x[j]=w[i][-1]\n return x[-2:]\ndef run(g,q,b,N):\n cen=1-g;o=[canonical_column(g,a,m,b) for a in range(N+1) for m in(cen-q-2-a,cen+q+2-a)];ks=[current_defect(g,a,q,b) for a in range(N+1)];return [solve(o+ks[:2],ks[a]) for a in range(min(8,N+1))]\nfor z in [(3,10,4),(6,3,4)]:\n for N in (10,15,20):print(z,N,run(*z,N))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:28:01.918797Z",
+    "finished_at": "2026-08-28T22:28:02.5190079Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "cutoff compatibility of quotient coordinates",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "cutoff compatibility of quotient coordinates",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "(3, 10, 4) 10 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(15, 4), Fraction(9, 2)], [Fraction(135, 28), Fraction(99, 14)], [Fraction(115, 42), Fraction(25, 7)], [Fraction(-23, 28), Fraction(-15, 14)], [Fraction(-23, 70), Fraction(-3, 7)], [Fraction(299, 420), Fraction(13, 14)]]\r\n(3, 10, 4) 15 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(15, 4), Fraction(9, 2)], [Fraction(135, 28), Fraction(99, 14)], [Fraction(115, 42), Fraction(25, 7)], [Fraction(-23, 28), Fraction(-15, 14)], [Fraction(-23, 70), Fraction(-3, 7)], [Fraction(299, 420), Fraction(13, 14)]]\r\n(3, 10, 4) 20 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(15, 4), Fraction(9, 2)], [Fraction(135, 28), Fraction(99, 14)], [Fraction(115, 42), Fraction(25, 7)], [Fraction(-23, 28), Fraction(-15, 14)], [Fraction(-23, 70), Fraction(-3, 7)], [Fraction(299, 420), Fraction(13, 14)]]\r\n(6, 3, 4) 10 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(0, 1), Fraction(220, 579)], [Fraction(0, 1), Fraction(11, 193)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)]]\r\n(6, 3, 4) 15 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(0, 1), Fraction(220, 579)], [Fraction(0, 1), Fraction(11, 193)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)]]\r\n(6, 3, 4) 20 [[Fraction(1, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(1, 1)], [Fraction(0, 1), Fraction(220, 579)], [Fraction(0, 1), Fraction(11, 193)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)], [Fraction(0, 1), Fraction(0, 1)]]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
