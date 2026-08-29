@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787957358027958900_48",
+  "created_at": "2026-08-28T22:49:18.0279623Z",
+  "sha256": "b48586efd99ea3cc3e0ff6c28e6e185ad23e45568e6d3235bae40879e01d3f05",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; I=s.I; q=s.symbols('q0:9', real=True); t=s.symbols('t', real=True); R=s.Matrix(3,3,q); z=s.Rational(4,5)+I*s.Rational(3,5); a=s.Matrix([t,2,3]); b=s.Matrix([[2,1,1]]); Y=R+z*a*b; H=s.expand(Y*Y.H); outs=[H[i,i] for i in range(3)]+[s.re(H[i,j]) for i,j in [(0,1),(0,2),(1,2)]]+[s.im(H[i,j]) for i,j in [(0,1),(0,2),(1,2)]]; J=s.Matrix(outs).jacobian(list(q)+[t]); sub={q[0]:1,q[4]:2,q[8]:4,t:1,**{q[i]:0 for i in [1,2,3,5,6,7]}}; A=J.subs(sub); print(A.rank()); print([s.factor(A[:,cols].det()) for cols in [list(range(9)),list(range(8))+[9]]])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:49:17.3591489Z",
+    "finished_at": "2026-08-28T22:49:18.0279471Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1018 augmented portal Jacobian",
+      "expected_cost": "two 9x9 exact minors",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1018 augmented portal Jacobian",
+    "expected_cost": "two 9x9 exact minors",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "9\r\n[0, 0]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
