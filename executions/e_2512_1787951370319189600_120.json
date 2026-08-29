@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787951370319189600_120",
+  "created_at": "2026-08-28T21:09:30.3191931Z",
+  "sha256": "1c3d10e975aa0866796b8cc9a5c124dd272d2c1931cc20395b79cc3932a5fa9d",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/strominger/checkers/magnetic_rank_one_portal_sewing_checks.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T21:09:30.2369377Z",
+    "finished_at": "2026-08-28T21:09:30.3191788Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "rank-one portal sewing torsor",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "rank-one portal sewing torsor",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.strominger.magnetic_rank_one_portal_sewing.v1\",\r\n  \"status\": \"passed\",\r\n  \"gate_count\": 11,\r\n  \"passed_gate_count\": 11,\r\n  \"primitive_core_null_vector\": [\r\n    147407,\r\n    -131220,\r\n    38556\r\n  ],\r\n  \"full_obstruction\": {\r\n    \"row_labels\": [\r\n      \"0\",\r\n      \"1\",\r\n      \"2\",\r\n      \"3\",\r\n      \"4\",\r\n      \"5\",\r\n      \"6\",\r\n      \"7\",\r\n      \"8\"\r\n    ],\r\n    \"values\": [\r\n      \"0\",\r\n      \"0\",\r\n      \"0\",\r\n      \"-17656934400\",\r\n      \"1799280000\",\r\n      \"-350259840\",\r\n      \"59270400\",\r\n      \"-2016000\",\r\n      \"-2620800\"\r\n    ],\r\n    \"support_size\": 6\r\n  },\r\n  \"selector\": {\r\n    \"dimension\": 2,\r\n    \"coordinate_gauges\": [\r\n      0,\r\n      1,\r\n      2\r\n    ],\r\n    \"law\": \"K=-w tensor phi with phi(v)=1\"\r\n  },\r\n  \"checks\": [\r\n    {\r\n      \"id\": \"CORE.rank\",\r\n      \"statement\": \"the continued odd collision core has rank two\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[[Fraction(-1008000, 1), Fraction(-165095840, 729), Fraction(27747200, 9)], [0, Fraction(227718400, 729), Fraction(9568000, 9)], [Fraction(-645120, 1), 0, Fraction(22197760, 9)]]\"\r\n    },\r\n    {\r\n      \"id\": \"CORE.null\",\r\n      \"statement\": \"the primitive residual direction spans the core kernel\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"(147407, -131220, 38556)\"\r\n    },\r\n    {\r\n      \"id\": \"FULL.rank\",\r\n      \"statement\": \"the full path map is injective on the three candidates\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"rows=9\"\r\n    },\r\n    {\r\n      \"id\": \"FULL.obstruction\",\r\n      \"statement\": \"the residual core direction has nonzero full-path image\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"support=6\"\r\n    },\r\n    {\r\n      \"id\": \"SEWING.gauges\",\r\n      \"statement\": \"every nonzero residual coordinate defines a rank-one sewing gauge\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[0, 1, 2]\"\r\n    },\r\n    {\r\n      \"id\": \"SEWING.activates\",\r\n      \"statement\": \"each rank-one gauge makes the residual direction a full kernel\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"gauges=3\"\r\n    },\r\n    {\r\n      \"id\": \"SEWING.rank_one\",\r\n      \"statement\": \"every nonzero correction matrix has rank one\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"K=-w tensor phi\"\r\n    },\r\n    {\r\n      \"id\": \"SEWING.minimum\",\r\n      \"statement\": \"rank zero cannot cancel a nonzero obstruction\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"Kv=-w requires K nonzero, hence rank at least one\"\r\n    },\r\n    {\r\n      \"id\": \"SELECTOR.affine_plane\",\r\n      \"statement\": \"rank-one sewing choices form an affine plane over covectors annihilating v\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"phi(v)=1; translation space Ann(v) has dimension two\"\r\n    },\r\n    {\r\n      \"id\": \"SELECTOR.noncanonical\",\r\n      \"statement\": \"the residual null direction does not choose one sewing gauge\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"coordinate gauges=[0, 1, 2]\"\r\n    },\r\n    {\r\n      \"id\": \"SELECTOR.protected_difference\",\r\n      \"statement\": \"distinct sewing gauges are distinguishable on a protected successor direction\",\r\n      \"status\": \"pass\",\r\n      \"detail\": \"[(0, 1, 0), (0, 2, 0), (1, 2, 1)]\"\r\n    }\r\n  ],\r\n  \"verdict\": \"A rank-one off-diagonal correction is algebraically necessary and sufficient to promote the continued core null direction to a full magnetic kernel. Such corrections form a two-dimensional affine selector torsor. The desired kernel fixes only K(v), not K on complementary source directions; choosing a portal therefore still requires an independent source constructor.\"\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
