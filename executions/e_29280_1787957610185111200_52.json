@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787957610185111200_52",
+  "created_at": "2026-08-28T22:53:30.1851148Z",
+  "sha256": "c90b1f7101a073e248ee7be749dad738ed81abbf2bdcc74834f07220e449385b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; I=s.I; u1,u2,u3=s.symbols('u1 u2 u3',real=True); a,b,c,d,e,f=s.symbols('a b c d e f',real=True); h12=a+I*b; h23=c+I*d; h31=e+I*f; H=s.Matrix([[0,h12,s.conjugate(h31)],[s.conjugate(h12),0,h23],[h31,s.conjugate(h23),0]]); U=s.diag(u1,u2,u3); D=(u1-u2)*(u2-u3)*(u3-u1); T=s.im(h12*h23*h31); print(s.factor((U*H-H*U).det()/(I*D*T)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:53:29.5189995Z",
+    "finished_at": "2026-08-28T22:53:30.1850984Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1019 commutator orientation resolution",
+      "expected_cost": "one symbolic factor",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1019 commutator orientation resolution",
+    "expected_cost": "one symbolic factor",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "2\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
