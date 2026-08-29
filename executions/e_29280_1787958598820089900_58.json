@@ -1,0 +1,43 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29280_1787958598820089900_58",
+  "created_at": "2026-08-28T23:09:58.8200937Z",
+  "sha256": "cfe68f49dadb567c15d99c6d9b9fcbaf02c2e9b2816dc2777b648c11680206e6",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import sympy as s; I=s.I; t=s.symbols('t',real=True); z=s.Rational(4,5)+I*s.Rational(3,5); Hu=s.diag(1,4,9); a=s.Matrix([1,2,3]); b=s.Matrix([[2,1,1]]); base=s.diag(1,2,4)\nfor k in range(9):\n R=base.copy(); R[k//3,k%3]+=t; c=R*b.T; Q=a*c.T-c*a.T; Y=R+z*a*b; H=s.simplify(Y*Y.H); D=s.factor((Hu*H-H*Hu).det()/I); roots=s.solve(D,t)\n print(k,s.factor(D),roots,[s.factor(Q[0,1]),s.factor(Q[1,2]),s.factor(Q[2,0])])"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T23:09:56.9703437Z",
+    "finished_at": "2026-08-28T23:09:58.8200779Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "WP1022 one-entry cancellation scan",
+      "expected_cost": "nine univariate exact factorizations",
+      "source": "caller_declared"
+    },
+    "test_scope": "WP1022 one-entry cancellation scan",
+    "expected_cost": "nine univariate exact factorizations",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "0 1152*(2*t + 1)*(3*t + 1) [-1/2, -1/3] [-2*(2*t + 1), 2, 2*(3*t + 1)]\r\n1 576*(t + 1)*(381*t + 10)/5 [-1, -10/381] [-2*(t + 1), 2, 3*t + 2]\r\n2 -576*(3*t + 2)*(147*t - 5)/5 [-2/3, 5/147] [-2*(t + 1), 2, 3*t + 2]\r\n3 -576*(t - 1)*(153*t + 10)/5 [-10/153, 1] [2*(t - 1), -2*(3*t - 1), 2]\r\n4 288*(t - 2)*(3*t - 2) [2/3, 2] [t - 2, 2 - 3*t, 2]\r\n5 288*(3*t - 2)*(97*t - 10)/5 [10/97, 2/3] [t - 2, 2 - 3*t, 2]\r\n6 1152*(t - 1)*(28*t - 5)/5 [5/28, 1] [-2, 2*(2*t + 1), -2*(t - 1)]\r\n7 -576*(t + 1)*(51*t - 10)/5 [-1, 10/51] [-2, 2*(t + 1), 2 - t]\r\n8 -576*(t - 2)*(t + 1) [-1, 2] [-2, 2*(t + 1), 2 - t]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
