@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1787951201079059800_110",
+  "created_at": "2026-08-28T21:06:41.0790634Z",
+  "sha256": "3add3e68267786c67c64fcc6bd436e26dbd5e0e27a545b6ba1d480e2a824601a",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "failed",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/checkers/check_connected_route_coherent_control.py"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-28T21:06:40.9660807Z",
+    "finished_at": "2026-08-28T21:06:41.0790487Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "connected-route",
+      "expected_cost": "low",
+      "source": "caller_declared"
+    },
+    "test_scope": "connected-route",
+    "expected_cost": "low",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\checkers\\check_connected_route_coherent_control.py\", line 37, in <module>\r\n    if __name__==\"__main__\": main()\r\n                             ~~~~^^\r\n  File \"C:\\Users\\andrey\\src\\marici\\research\\aspect\\checkers\\check_connected_route_coherent_control.py\", line 23, in main\r\n    s=json.loads(SOURCE.read_text(encoding=\"utf-8\")); c=json.loads(CONTRACT.read_text(encoding=\"utf-8\"))\r\n                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\pathlib\\__init__.py\", line 787, in read_text\r\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\r\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\andrey\\AppData\\Roaming\\uv\\python\\cpython-3.14-windows-x86_64-none\\Lib\\pathlib\\__init__.py\", line 771, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\research\\\\benincasa\\\\results\\\\interaction-net-barcode-lift-hostile-p32009.json'\r\n",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
