@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_2512_1787956393190436000_180",
+  "created_at": "2026-08-28T22:33:13.1904398Z",
+  "sha256": "706b71aeb023303788619f173e765c6ae7e44f878be134c497de4ca67ead4865",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "p=r\"C:\\\\Users\\\\andrey\\\\src\\\\marici\\\\research\\\\strominger\\\\checkers\\\\magnetic_beta_deformation_checks.py\";exec(open(p,encoding=\"utf-8\").read().split(\"checks = []\")[0]);b=4;g=6;N=30;c=1-g\nfor q in range(1,17):\n M=[canonical_column(g,a,m,b) for a in range(N+1) for m in(c-q-2-a,c+q+2-a)];K=[current_defect(g,a,q,b) for a in range(N+1)];r=rank(M);print(q,rank(M+K)-r,rank(M+K[:b])-r,rank(M+K[b:])-r,sum(rank(M+[K[a]])>r for a in range(b,N+1)))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-28T22:33:08.7052306Z",
+    "finished_at": "2026-08-28T22:33:13.1904271Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "source window tail rank phase table",
+      "expected_cost": "moderate",
+      "source": "caller_declared"
+    },
+    "test_scope": "source window tail rank phase table",
+    "expected_cost": "moderate",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "1 1 1 0 0\r\n2 1 1 0 0\r\n3 2 2 0 0\r\n4 1 1 0 0\r\n5 1 1 0 0\r\n6 1 1 0 0\r\n7 1 1 0 0\r\n8 1 1 0 0\r\n9 1 1 0 0\r\n10 1 1 0 0\r\n11 1 1 0 0\r\n12 1 1 0 0\r\n13 2 2 1 7\r\n14 2 2 1 8\r\n15 2 2 1 9\r\n16 2 2 1 10\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
