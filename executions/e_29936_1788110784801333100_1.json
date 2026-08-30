@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29936_1788110784801333100_1",
+  "created_at": "2026-08-30T17:26:24.8013364Z",
+  "sha256": "a0585b2b27c21681f1b32ae2fe180ed2881bfbe2b67edb2a7c1e7b9b30e42269",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "from pathlib import Path\nterms=('right flag','backward coherence','forward coherence','conservation')\nfor p in Path('research/aspect').rglob('*'):\n if p.is_file() and p.suffix in {'.md','.json','.py','.toml'}:\n  try: lines=p.read_text(encoding='utf-8').splitlines()\n  except: continue\n  for i,s in enumerate(lines,1):\n   if any(t in s.lower() for t in terms): print(f'{p}:{i}:{s[:300]}')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-30T17:26:24.5065603Z",
+    "finished_at": "2026-08-30T17:26:24.8013244Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "research\\aspect\\commuting-square-pushforward-auditor.md:25:2. Check event conservation: no loss, duplication, or mutation of parent identifiers.\r\nresearch\\aspect\\current-constructors-do-not-determine-ontology.md:43:theory whose state distinctions, transformation laws, conservation rules, and\r\nresearch\\aspect\\directional-double-triangle-moving-fiber-interferometer.md:112:ports before asserting power conservation.\r\nresearch\\aspect\\free-propagation-green-transfer.md:90:- Dropping the environment while claiming retained intensity conservation is\r\nresearch\\aspect\\markov-oscillator-loss-noise-identity.md:58:## Frame, conservation, and detector boundary\r\nresearch\\aspect\\multifrequency-kms-coherence-instrument.md:55:## Conservation and detector boundary\r\nresearch\\aspect\\partial-event-matching-afterpulse.md:10:beta and silently fabricates a beta response. Count conservation and complete\r\nresearch\\aspect\\positive-real-impedance-versus-dark-reflection.md:85:Boundary magnitude one certifies conservation for the declared scalar\r\nresearch\\aspect\\radial-mass-collision-splits-a-positive-one-atom-source-off-seam.md:76:precise failure mode that a theta-specific radial conservation law must\r\nresearch\\aspect\\reciprocal-denominator-sewing-network.md:120:optical power conservation.  A physical passive realization may require\r\nresearch\\aspect\\thermal-sideband-detailed-balance-instrument.md:66:## Conservation and completion\r\nresearch\\aspect\\checkers\\check_dark_fringe_vs_scalar_transfer_zero.py:54:        \"complementary_port_conservation\": True,\r\nresearch\\aspect\\checkers\\check_dark_fringe_vs_scalar_transfer_zero.py:61:        \"verdict\": \"A dark fringe is a zero inside an admitted multiport conservation and dephasing experiment; a scalar transfer zero has no path-interference meaning without additional port structure, and an off-axis analytic zero need not be a physical null.\",\r\nresearch\\aspect\\contracts\\commuting-square-pushforward-auditor.v1.json:7:    \"event_conservation\": true,\r\nresearch\\aspect\\contracts\\commuting-square-pushforward-auditor.v1.json:13:  \"admission_order\": [\"identity\", \"event_conservation\", \"cell_pushforward\", \"locality_of_labels\", \"bell_witness\"],\r\nresearch\\aspect\\results\\dark_fringe_vs_scalar_transfer_zero.json:10:  \"complementary_port_conservation\": true,\r\nresearch\\aspect\\results\\dark_fringe_vs_scalar_transfer_zero.json:17:  \"verdict\": \"A dark fringe is a zero inside an admitted multiport conservation and dephasing experiment; a scalar transfer zero has no path-interference meaning without additional port structure, and an off-axis analytic zero need not be a physical null.\",\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
