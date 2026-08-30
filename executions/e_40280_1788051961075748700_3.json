@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_40280_1788051961075748700_3",
+  "created_at": "2026-08-30T01:06:01.0757527Z",
+  "sha256": "0c19582d380d3f506c14f5157511c049bc6b3f7cc56153fafccff3a1393ec47f",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "node",
+    "args": [
+      "-e",
+      "const {chromium}=require('@playwright/test');(async()=>{const b=await chromium.launch({headless:true});const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push('PAGE '+e.message));p.on('console',m=>{if(m.type()==='error')errors.push('CONSOLE '+m.text())});const r=await p.goto('http://127.0.0.1:8765/experiments/typed-reconciler-cube/',{waitUntil:'networkidle'});await p.waitForTimeout(1000);console.log(JSON.stringify({status:r&&r.status(),title:await p.title(),validation:await p.locator('#validation').textContent(),boxes:await p.locator('.lattice-box').count(),errors},null,2));await b.close()})().catch(e=>{console.error(e.stack);process.exit(1)})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-30T01:05:57.6756551Z",
+    "finished_at": "2026-08-30T01:06:01.0757367Z",
+    "timeout_ms": 30000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "headless Chromium smoke test for typed reconciler page",
+      "expected_cost": "medium",
+      "source": "caller_declared"
+    },
+    "test_scope": "headless Chromium smoke test for typed reconciler page",
+    "expected_cost": "medium",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\n  \"status\": 200,\n  \"title\": \"Typed reconciler cube · Marici\",\n  \"validation\": \"valid TOML · 36 cells · 8,7,6,5,4,3,2\",\n  \"boxes\": 36,\n  \"errors\": []\n}\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
