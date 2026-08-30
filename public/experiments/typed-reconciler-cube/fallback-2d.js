@@ -1,4 +1,4 @@
-import { CELL_KINDS, typedCube } from "./scene-data.js?v=3"
+import { CELL_KINDS, typedCube } from "./scene-data.js"
 
 const host = document.querySelector("#scene")
 const detail = document.querySelector("#detail")

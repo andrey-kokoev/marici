@@ -582,6 +582,10 @@ consumed by an Astro glob loader.
   catches duplicate numbers. If the build fails on someone else's
   duplicate, note it in your graph report and leave their file alone.
 
+## Git branch policy
+
+No creation of git branches is allowed. Use `~\wt` for worktree creation.
+
 ## Graph durability and Git checkpoints
 
 Durability lives in the product

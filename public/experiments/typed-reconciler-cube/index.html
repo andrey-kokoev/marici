@@ -12,17 +12,17 @@
     h1 { margin:0; font-size:clamp(20px,3vw,34px); font-weight:650; } p { margin:5px 0 0; color:#9db0b9; }
     #validation { color:#77d9a8; font:12px ui-monospace,monospace; }
     main { min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 310px; }
-    #scene { min-height:600px; position:relative; overflow:hidden; background:#071117; } .css3d-root{position:absolute!important;inset:0;}
+    #scene { min-height:600px; position:relative; overflow:hidden; background:#071117; } .webgl-root{position:absolute!important;inset:0}
     aside { border-left:1px solid #20333d; padding:18px; background:#0a161d; display:flex; flex-direction:column; gap:18px; }
     .axes { display:grid; gap:8px; font-size:13px; }.axis { display:grid; grid-template-columns:18px 1fr; gap:8px; align-items:center; }
     .swatch { width:12px; height:12px; border-radius:3px; }.x{background:#63b3ff}.y{background:#f3b35d}.z{background:#b68cff}
-    .controls { display:flex; flex-wrap:wrap; gap:7px; } button { border:1px solid #36505c; background:#10232d; color:#d7e5ea; padding:7px 9px; border-radius:7px; cursor:pointer; }
+    .controls { display:flex; flex-wrap:wrap; gap:7px; } button { border:1px solid #36505c; background:#10232d; color:#d7e5ea; padding:7px 9px; border-radius:7px; cursor:pointer; }.layer-toggle{display:flex;align-items:center;gap:5px;border:1px solid #36505c;background:#10232d;color:#d7e5ea;padding:6px 8px;border-radius:7px;font:12px ui-monospace;cursor:pointer}.layer-toggle input{accent-color:#70b7cf}
     button.active { background:#244653; border-color:#70b7cf; }
     .projection-grid { display:grid; gap:8px; } figure { margin:0; } figure canvas { width:100%; height:112px; border-radius:7px; background:#08141b; } figcaption { margin-top:3px; color:#78909a; font-size:11px; }
     #detail { border:1px solid #29414c; border-radius:9px; padding:13px; display:grid; gap:7px; font:12px ui-monospace,monospace; color:#abc0c9; }
     #detail strong { color:#fff; font:600 16px Inter,system-ui,sans-serif; } .note { font-size:12px; line-height:1.5; color:#8fa4ad; margin-top:auto; }
     .guide{stroke:#18303a;stroke-width:1}.axis-title{fill:#8fa4ad;font:12px ui-monospace;text-anchor:middle}.axis-title.vertical{writing-mode:vertical-rl}.stage-label{fill:#bcd0d8;font:11px ui-monospace;text-anchor:middle}.depth-label{fill:#91a8b2;font:11px ui-monospace;text-anchor:end}.small-box{cursor:pointer;transition:opacity .18s,filter .18s}.small-box:hover,.small-box:focus,.small-box.selected{filter:drop-shadow(0 0 6px #fff);outline:none}.small-box.frontier{filter:drop-shadow(0 0 5px #e96b78)}.small-box.muted,.link.muted{opacity:.08}.box-top{fill:#fff;opacity:.24}.box-side{fill:#000;opacity:.25}.link{fill:none;stroke-width:1.2;opacity:.34}.link.tower{stroke:#63b3ff}.link.pyramid{stroke:#f3b35d}
-    .lattice-box{width:180px;height:72px;padding:9px;border:2px solid var(--cell-color);border-radius:5px;background:#0b1a22f2;color:#eaf4f7;display:grid;place-content:center;gap:4px;text-align:center;box-shadow:0 5px 12px #0008;transition:opacity .2s,transform .2s}.lattice-box.diamond{width:282px;height:148px;place-content:stretch;text-align:left}.lattice-box small,.lattice-box code{font:10px ui-monospace;color:#9db0b9}.lattice-box .sector-label{font:9px ui-monospace;color:#6f8994}.lattice-box code{display:block;white-space:nowrap}.equations{display:grid;border-top:1px solid #36505c;padding-top:5px;gap:3px}.lattice-box em{font:10px ui-monospace;color:#edf7fa;font-style:normal;white-space:nowrap}.lattice-box em i{color:var(--cell-color);font-style:normal;display:inline-block;width:54px}.lattice-box.required{border-style:dashed;opacity:.82}.lattice-box.partial{background:#211b0ff2}.lattice-box:hover,.lattice-box.selected{transform:scale(1.05);box-shadow:0 0 16px var(--cell-color)}.lattice-box.muted{opacity:.07}.lattice-link{height:3px;opacity:.62;transform-origin:center}.lattice-link.L{background:#63b3ff}.lattice-link.R{background:#f3b35d}#detail hr{width:100%;border:0;border-top:1px solid #29414c}.formula{color:#d5e5ea}
+    .solid-face{box-sizing:border-box;border:2px solid var(--cell-color);background:#0b1a22;backface-visibility:visible;pointer-events:none;box-shadow:inset 0 0 22px #0008}.solid-face.back,.solid-face.left,.solid-face.right,.solid-face.top,.solid-face.bottom{background:#10242e}.box-label{width:246px;min-height:88px;padding:10px 12px;border:2px solid var(--cell-color);border-radius:6px;background:#08141bf5;color:#eaf4f7;display:grid;gap:5px;text-align:center;box-shadow:0 5px 14px #000b;cursor:pointer}.box-label b{font:600 14px ui-monospace}.box-label small{font:11px ui-monospace;color:#b5c9d1}.box-label em{font:10px ui-monospace;color:var(--cell-color);font-style:normal}.box-label.required{border-style:dashed}.box-label.partial{background:#211b0ff5}.box-label:hover,.box-label.selected{box-shadow:0 0 18px var(--cell-color);transform:scale(1.04)}.center-edge{height:6px;border-radius:3px;transform-origin:center;opacity:.72;pointer-events:none}.center-edge.L{background:#63b3ff}.center-edge.R{background:#f3b35d}.center-edge.Z{background:#b68cff;height:8px}#detail hr{width:100%;border:0;border-top:1px solid #29414c}.formula{color:#d5e5ea}
     @media(max-width:800px){ main{grid-template-columns:1fr;grid-template-rows:58vh auto} #scene{min-height:0} aside{border-left:0;border-top:1px solid #20333d} header{align-items:start;flex-direction:column} }
   </style>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
@@ -32,12 +32,12 @@
   <main>
     <div id="scene" aria-label="Interactive typed coherence cube"></div>
     <aside>
-      <section class="axes" aria-label="Coordinate semantics"><div class="axis"><i class="swatch x"></i><span><strong>vertical</strong> · tower ascent</span></div><div class="axis"><i class="swatch y"></i><span><strong>rightward</strong> · higher reconciliation</span></div></section>
-      <section><p>Trace structure</p><div class="controls"><button class="active" data-view="all">all</button><button data-view="tower">tower only</button><button data-view="pyramid">pyramid only</button></div></section>
+      <section class="axes" aria-label="Coordinate semantics"><div class="axis"><i class="swatch x"></i><span><strong>within layer</strong> · objects, transports, or coherencers</span></div><div class="axis"><i class="swatch y"></i><span><strong>depth</strong> · categorical coherence level</span></div></section>
+      <section><p>Categorical layers</p><div class="controls"></div></section>
       <div id="detail" aria-live="polite"></div>
-      <p class="note">Every column-2-or-higher box visibly contains both instantiated boundary routes and the complete additive, phase, and ordered equations. Edge colors only distinguish the two face maps.</p>
+      <p class="note">Each depth is a complete triangular reconciler lattice. Layer orders descend from 8 to 1. Purple edges connect a cell center to the coherencer it lifts from the preceding layer. Dashed cells are typed obligations, not admitted witnesses.</p>
     </aside>
   </main>
-  <script type="module" src="./app.js?v=12"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
