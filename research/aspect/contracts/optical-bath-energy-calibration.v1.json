@@ -1,0 +1,17 @@
+{
+  "schema": "marici.aspect.optical-bath-energy-calibration.v1",
+  "claim_boundary": "calibrates_optical_analogue_temperature_not_material_kelvin",
+  "constants": {"boltzmann_j_per_k": 1.380649e-23},
+  "preregistered_thresholds": {
+    "reference_scale_relative_error_max": 0.02,
+    "fdt_flatness_cv_max": 0.05,
+    "gain_invariance_relative_error_max": 1e-9,
+    "minimum_frequency_bins": 8
+  },
+  "fixtures": [
+    {"id": "equilibrium_candidate", "energy_scale_j": 4.141947e-21, "reference_scale_j": 4.141947e-21, "gain": 7.0, "bath_temperature_k": 300.0, "gamma": 2.0, "color": 0.0, "expect_admit": true},
+    {"id": "gain_changed_candidate", "energy_scale_j": 4.141947e-21, "reference_scale_j": 4.141947e-21, "gain": 19.0, "bath_temperature_k": 300.0, "gamma": 2.0, "color": 0.0, "expect_admit": true},
+    {"id": "colored_bath_hostile", "energy_scale_j": 4.141947e-21, "reference_scale_j": 4.141947e-21, "gain": 7.0, "bath_temperature_k": 300.0, "gamma": 2.0, "color": 0.35, "expect_admit": false},
+    {"id": "scale_alias_hostile", "energy_scale_j": 4.141947e-21, "reference_scale_j": 5.176e-21, "gain": 7.0, "bath_temperature_k": 300.0, "gamma": 2.0, "color": 0.0, "expect_admit": false}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "marici.aspect.coherent-control-route-compiler.v1",
+  "clock_hz": 1000,
+  "control_coordinates": [0.10, 0.25, 0.40, 0.55, 0.70, 0.85],
+  "maximum_calibration_age_ticks": 80,
+  "maximum_channel_skew_ticks": 40,
+  "routes": {
+    "gap": {"source": "laser-A", "actuator": "mesh-pair-port", "observer": "heterodyne-1"},
+    "stiffness": {"source": "laser-A", "actuator": "phase-twist-eom", "observer": "homodyne-1"},
+    "screening": {"source": "laser-A", "actuator": "loop-flux-eom", "observer": "balanced-homodyne"},
+    "relaxation": {"source": "pulse-A", "actuator": "mesh-pair-port", "observer": "fast-detector"}
+  },
+  "fixtures": [
+    {"id": "valid_route", "fault": null, "expect_admit": true},
+    {"id": "resource_collision_hostile", "fault": "resource_collision", "expect_admit": false},
+    {"id": "stale_calibration_hostile", "fault": "stale_calibration", "expect_admit": false},
+    {"id": "unbound_port_hostile", "fault": "unbound_port", "expect_admit": false},
+    {"id": "trigger_skew_hostile", "fault": "trigger_skew", "expect_admit": false}
+  ]
+}

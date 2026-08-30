@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "synchronized-optical-material-acquisition",
+    "owner": "marici.Aspect",
+    "classification": "acquisition_packet_contract_hardware_unrun",
+    "stratum": "synchronized provenance and covariance-bearing multi-observer packet",
+    "inputs": ["research/aspect/synchronized-optical-material-acquisition.md", "research/aspect/contracts/synchronized-optical-material-acquisition.v1.json"],
+    "checks": [{"id": "synchronized-optical-material-acquisition", "path": "research/aspect/checkers/check_synchronized_optical_material_acquisition.py", "requires": []}],
+    "depends_on": ["optical-material-hamiltonian-equivalence"],
+    "consumes": ["raw channel samples", "covariance", "run identity", "sample identity", "calibration identity"],
+    "provides": ["admissible synchronized acquisition packet"],
+    "missing_constructors": ["connected hardware route compiler", "material dataset adapter", "full covariance acquisition"],
+    "next_falsifier": "acquire all four channels in one declared run and reject the packet on any provenance or covariance failure"
+  }
+}

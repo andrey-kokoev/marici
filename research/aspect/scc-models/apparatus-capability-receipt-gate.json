@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "apparatus-capability-receipt-gate",
+    "owner": "marici.Aspect",
+    "classification": "execution_protocol_surrogate_live_hardware_unrun",
+    "stratum": "capability attestation and plan-receipt correspondence",
+    "inputs": ["research/aspect/apparatus-capability-receipt-gate.md", "research/aspect/contracts/apparatus-capability-receipt-gate.v1.json"],
+    "checks": [{"id": "apparatus-capability-receipt-gate", "path": "research/aspect/checkers/check_apparatus_capability_receipt_gate.py", "requires": []}],
+    "depends_on": ["coherent-control-route-compiler"],
+    "consumes": ["compiled route plan", "capability inventory", "firmware readback", "execution receipts"],
+    "provides": ["attested plan-receipt correspondence"],
+    "missing_constructors": ["live apparatus MCP adapter", "hardware-backed device identity", "non-exportable signing keys"],
+    "next_falsifier": "execute one authorized dry-run route against live capability readback and reject any receipt mismatch"
+  }
+}

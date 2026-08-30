@@ -1,0 +1,23 @@
+{
+  "schema": "marici.aspect.optical-pair-stiffness-flux-cell.v1",
+  "claim_boundary": "dimensionless_optical_analogue_not_material_superconductivity",
+  "nodes": 12,
+  "dynamics": {"equation": "tdgl_ring_with_peierls_phase", "dt": 0.01, "settling_steps": 6000, "measurement_steps": 1500, "seed": 731},
+  "ports": {
+    "pair": ["complex_field", "conjugate_field"],
+    "stiffness": ["boundary_twist", "restoring_current"],
+    "flux": ["synthetic_loop_flux", "circulating_current"],
+    "transport": ["winding_preparation", "drive_removed_readout"],
+    "environment": ["calibrated_complex_noise", "loss_monitor"]
+  },
+  "preregistered_thresholds": {"pair_amplitude_min": 0.55, "phase_stiffness_min": 0.20, "screening_response_min": 0.10, "persistent_winding_min": 0.75},
+  "joint_admission": ["pair_amplitude", "phase_stiffness", "opposing_flux_response", "persistent_winding"],
+  "fixtures": [
+    {"id": "coherent_candidate", "alpha": 1.0, "beta": 1.0, "coupling": 1.0, "noise": 0.01, "flux": 0.35, "expect_joint": true},
+    {"id": "pseudogap_hostile", "alpha": 1.0, "beta": 1.0, "coupling": 0.04, "noise": 0.11, "flux": 0.35, "expect_joint": false},
+    {"id": "normal_hostile", "alpha": -0.35, "beta": 1.0, "coupling": 1.0, "noise": 0.02, "flux": 0.35, "expect_joint": false},
+    {"id": "moderate_noise_candidate", "alpha": 1.0, "beta": 1.0, "coupling": 0.35, "noise": 0.24, "flux": 0.35, "expect_joint": true},
+    {"id": "strong_noise_hostile", "alpha": 1.0, "beta": 1.0, "coupling": 0.15, "noise": 0.50, "flux": 0.35, "expect_joint": false}
+  ],
+  "temperature_authority": {"effective_noise_is_dimensionless": true, "kelvin_mapping": null, "room_temperature_claim_authorized": false, "required_constructor": "independent_energy_scale_and_bath_spectral_calibration"}
+}
