@@ -1,0 +1,57 @@
+{
+  "schema": "marici.rank26-canonical-source-derivative.v1",
+  "status": "pass",
+  "source_coefficient": "(q_g23+q_g31) K_CM^5 / product_i q_i",
+  "canonical_derivative_rule": "d_j log(source coefficient) = d_j N/N + 5 d_j K/K - sum_i d_j q_i/q_i",
+  "derivative_packets": {
+    "x": {
+      "numerator_derivative": "-1",
+      "K_derivative_nonzero_terms": 29,
+      "marked_denominator_derivatives": {
+        "g2": "-1",
+        "g23": "-1"
+      },
+      "logarithmic_derivative_formula": "d_xN/N + 5 d_xK/K - sum_i d_xq_i/q_i"
+    },
+    "y": {
+      "numerator_derivative": "-1",
+      "K_derivative_nonzero_terms": 29,
+      "marked_denominator_derivatives": {
+        "g1": "-1",
+        "g31": "-1"
+      },
+      "logarithmic_derivative_formula": "d_yN/N + 5 d_yK/K - sum_i d_yq_i/q_i"
+    },
+    "z": {
+      "numerator_derivative": "0",
+      "K_derivative_nonzero_terms": 32,
+      "marked_denominator_derivatives": {
+        "g1": "-1",
+        "g2": "-1",
+        "g3": "1"
+      },
+      "logarithmic_derivative_formula": "d_zN/N + 5 d_zK/K - sum_i d_zq_i/q_i"
+    }
+  },
+  "coefficient_weight": 26,
+  "source_form_weight": 28,
+  "derivative_form_weight": 27,
+  "checks": {
+    "numerator_degree_1": true,
+    "K_degree_6": true,
+    "all_five_q_degree_1": true,
+    "dx_K_has_degree_5": true,
+    "dx_numerator_has_degree_0": true,
+    "dx_q_have_degree_0": true,
+    "dy_K_has_degree_5": true,
+    "dy_numerator_has_degree_0": true,
+    "dy_q_have_degree_0": true,
+    "dz_K_has_degree_5": true,
+    "dz_numerator_has_degree_0": true,
+    "dz_q_have_degree_0": true,
+    "source_form_weight_28": true,
+    "canonical_derivative_form_weight_27": true
+  },
+  "interpretation": "The canonical dual-number coefficient is fixed term-by-term by differentiating the frozen numerator, Cayley-Menger factor, and all five labelled marked poles. It has source form weight 27 in every external direction.",
+  "remaining_gate": "Insert these coefficient derivatives into the finite de Rham presentation and verify the quotient-level differentiated Euler relation in all three directions."
+}

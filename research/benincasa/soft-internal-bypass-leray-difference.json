@@ -1,0 +1,77 @@
+{
+  "schema": "marici.soft-internal-bypass-leray-difference.v1",
+  "status": "pass",
+  "full_residue": "Res_[x=1] omega = ((kappa+xi)^2+2*(1+kappa*xi))/(64*p^4*(xi+1)*(kappa+xi)^3)",
+  "leading_collision_term": "Res omega ~ (1+kappa)/(32*p^4*(xi+kappa)^3)",
+  "relative_cycle_identity": "Gamma_above-Gamma_below=tau_[x=1]",
+  "bypass_difference": "I_above-I_below=2*pi*i*Res_[x=1] omega, with source orientation",
+  "interpretation": "the internal obstruction predicts a nonzero supported route packet; the source i-epsilon prescription selects one affine lift rather than erasing the difference",
+  "classification": {
+    "carrier_support": "existing marked incidence x=1",
+    "coefficient": "double-pole Leray residue",
+    "physical_selection": "negative-imaginary source boundary value",
+    "new_carrier_datum": "none"
+  },
+  "samples": [
+    {
+      "kappa": "-1/2",
+      "xi": "9/14",
+      "p": "1",
+      "delta": "1/7",
+      "residue": "6615/1472",
+      "derivative_formula": "6615/1472",
+      "equal": true
+    },
+    {
+      "kappa": "0",
+      "xi": "2/5",
+      "p": "2",
+      "delta": "2/5",
+      "residue": "675/28672",
+      "derivative_formula": "675/28672",
+      "equal": true
+    },
+    {
+      "kappa": "1/3",
+      "xi": "-1/2",
+      "p": "3",
+      "delta": "-1/6",
+      "residue": "-61/432",
+      "derivative_formula": "-61/432",
+      "equal": true
+    },
+    {
+      "kappa": "3/5",
+      "xi": "-22/45",
+      "p": "2",
+      "delta": "1/9",
+      "residue": "233847/117760",
+      "derivative_formula": "233847/117760",
+      "equal": true
+    }
+  ],
+  "leading_samples": [
+    {
+      "kappa": "-1/2",
+      "p": "1",
+      "cubic_coefficient": "1/64"
+    },
+    {
+      "kappa": "0",
+      "p": "2",
+      "cubic_coefficient": "1/512"
+    },
+    {
+      "kappa": "2/3",
+      "p": "3",
+      "cubic_coefficient": "5/7776"
+    }
+  ],
+  "checks": {
+    "double_pole_residue_formula_matches_derivative": true,
+    "residue_is_generically_nonzero": true,
+    "leading_cubic_coefficient_is_nonzero_on_open_kappa": true,
+    "bypass_difference_is_leray_tube": true,
+    "opposite_bypasses_have_canonical_difference": true
+  }
+}

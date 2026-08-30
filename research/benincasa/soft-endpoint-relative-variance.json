@@ -1,0 +1,60 @@
+{
+  "schema": "marici.soft-endpoint-relative-variance.v1",
+  "status": "pass",
+  "marked_source_factor": "(a+p)/(2p*(a-p)^2*(a+3p)*(xi+1))",
+  "endpoint_types": {
+    "xi=-1": {
+      "Cayley_Menger_branch_collision": true,
+      "q_g1_divided_wall": "xi+1=0",
+      "source_normal_order": -1,
+      "typed_object": "marked logarithmic residue followed by Cayley-Menger vanishing-cycle specialization"
+    },
+    "xi=+1": {
+      "Cayley_Menger_branch_collision": true,
+      "q_g1_divided_wall": "xi+1=2 (unit)",
+      "source_normal_order": 0,
+      "typed_object": "unmarked Cayley-Menger vanishing-cycle specialization"
+    }
+  },
+  "generic_collision_audit": [
+    {
+      "kappa": "-3/4",
+      "A_minus_minus_p2_over_p2": "7",
+      "A_plus_minus_p2_over_p2": "1",
+      "generic_marked_a_equals_p_collision": false
+    },
+    {
+      "kappa": "-1/2",
+      "A_minus_minus_p2_over_p2": "6",
+      "A_plus_minus_p2_over_p2": "2",
+      "generic_marked_a_equals_p_collision": false
+    },
+    {
+      "kappa": "0",
+      "A_minus_minus_p2_over_p2": "4",
+      "A_plus_minus_p2_over_p2": "4",
+      "generic_marked_a_equals_p_collision": false
+    },
+    {
+      "kappa": "1/2",
+      "A_minus_minus_p2_over_p2": "2",
+      "A_plus_minus_p2_over_p2": "6",
+      "generic_marked_a_equals_p_collision": false
+    },
+    {
+      "kappa": "3/4",
+      "A_minus_minus_p2_over_p2": "1",
+      "A_plus_minus_p2_over_p2": "7",
+      "generic_marked_a_equals_p_collision": false
+    }
+  ],
+  "consequence": "the two endpoint occurrences do not form one ordinary rank-two covector; they are different columns of a marked-relative cone",
+  "required_next_object": "a relative de Rham/Gysin cone combining Res_{q_g1} phi_CM at xi=-1 with phi_CM at xi=+1, including the degree shift and comparison map",
+  "checks": {
+    "negative_endpoint_has_marked_log_pole": true,
+    "positive_endpoint_has_no_marked_log_pole": true,
+    "endpoint_variances_differ": true,
+    "no_generic_a_equals_p_collision_on_open_kappa_interval": true,
+    "deeper_collisions_are_only_kappa_endpoints": true
+  }
+}

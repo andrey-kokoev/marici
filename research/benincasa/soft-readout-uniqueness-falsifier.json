@@ -1,0 +1,56 @@
+{
+  "schema": "marici.soft-readout-uniqueness-falsifier.v1",
+  "status": "pass",
+  "hostile_family": "P_c(t)=P(t)+c(t-2)",
+  "four_gate_result": "chart descent, moving-cycle typing, source-normal regulator invariance, and Leray monodromy do not determine a unique readout",
+  "finite_part_shift": "FP(P_c)=FP(P)-2c",
+  "missing_acceptance_condition": "source horizontality dP=I(t)dt",
+  "uniqueness_with_horizontality": "d(P+h)=I dt forces dh=0; P(2)=0 then forces h=0",
+  "samples": [
+    {
+      "c": "-2",
+      "h_at_t2": "0",
+      "h_at_t0": "4",
+      "derivative": "-2",
+      "nontrivial": true
+    },
+    {
+      "c": "-1/3",
+      "h_at_t2": "0",
+      "h_at_t0": "2/3",
+      "derivative": "-1/3",
+      "nontrivial": true
+    },
+    {
+      "c": "1",
+      "h_at_t2": "0",
+      "h_at_t0": "-2",
+      "derivative": "1",
+      "nontrivial": true
+    },
+    {
+      "c": "5/2",
+      "h_at_t2": "0",
+      "h_at_t0": "-5",
+      "derivative": "5/2",
+      "nontrivial": true
+    }
+  ],
+  "checks": {
+    "prior_four_gate_packet_passes": true,
+    "correction_is_single_valued": true,
+    "correction_preserves_pointing_at_two": true,
+    "correction_preserves_log_monodromy": true,
+    "correction_is_regular_at_soft_endpoint": true,
+    "correction_transports_in_invariant_t_coordinate": true,
+    "four_gates_leave_nonzero_family": true,
+    "horizontal_equation_detects_family": true,
+    "horizontality_plus_pointing_kills_family": true
+  },
+  "classification": {
+    "four_gate_uniqueness": "falsified",
+    "horizontal_pointed_uniqueness": "survives",
+    "new_carrier_datum": "none",
+    "required_object": "the source Gauss-Manin connection, already present"
+  }
+}

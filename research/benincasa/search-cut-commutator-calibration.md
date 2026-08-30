@@ -104,8 +104,8 @@ WALL: 0.176348s
 ## Narrow verdict
 
 [
-oxed{
-	ext{explicit HVM fork-tree materialization is rejected as the Marici
+\boxed{
+\text{explicit HVM fork-tree materialization is rejected as the Marici
 formula-search kernel on this host.}
 }
 ]

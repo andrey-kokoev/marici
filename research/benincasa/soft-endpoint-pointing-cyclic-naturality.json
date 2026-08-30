@@ -1,0 +1,77 @@
+{
+  "schema": "marici.soft-endpoint-pointing-cyclic-naturality.v1",
+  "status": "pass",
+  "cyclic_action": "(X_i,q_gi,t_i)->(X_{i+1},q_g,i+1,t_i+1)",
+  "charts": [
+    {
+      "soft_normal": "X1",
+      "marked_wall": "q_g1",
+      "normalized_coordinate": "t1=q_g1/X1",
+      "marked_endpoint": 0,
+      "pointing_endpoint": 2,
+      "physical_occurrence_covector": [
+        1,
+        0
+      ]
+    },
+    {
+      "soft_normal": "X2",
+      "marked_wall": "q_g2",
+      "normalized_coordinate": "t2=q_g2/X2",
+      "marked_endpoint": 0,
+      "pointing_endpoint": 2,
+      "physical_occurrence_covector": [
+        1,
+        0
+      ]
+    },
+    {
+      "soft_normal": "X3",
+      "marked_wall": "q_g3",
+      "normalized_coordinate": "t3=q_g3/X3",
+      "marked_endpoint": 0,
+      "pointing_endpoint": 2,
+      "physical_occurrence_covector": [
+        1,
+        0
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "source": 1,
+      "target": 2,
+      "coordinate_transport": "t1->t2",
+      "transition_unit": 1,
+      "pointing_endpoint_preserved": true,
+      "positive_chamber_preserved": true
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "coordinate_transport": "t2->t3",
+      "transition_unit": 1,
+      "pointing_endpoint_preserved": true,
+      "positive_chamber_preserved": true
+    },
+    {
+      "source": 3,
+      "target": 1,
+      "coordinate_transport": "t3->t1",
+      "transition_unit": 1,
+      "pointing_endpoint_preserved": true,
+      "positive_chamber_preserved": true
+    }
+  ],
+  "three_step_orientation_sign": 1,
+  "conclusion": "the basepoint F_i(2)=0 and positive-occurrence physical covector descend around the source C3 occurrence atlas",
+  "scope": "cyclic occurrence naturality only; noncyclic residue-chart transitions, full a-cycle compatibility, regulator invariance, and Leray pairing remain open",
+  "checks": {
+    "three_labelled_soft_charts_present": true,
+    "normalized_coordinates_transport_without_units": true,
+    "pointing_endpoint_two_is_preserved": true,
+    "physical_positive_occurrence_is_preserved": true,
+    "three_step_transport_returns_to_source": true,
+    "cyclic_source_orientation_is_positive": true
+  }
+}

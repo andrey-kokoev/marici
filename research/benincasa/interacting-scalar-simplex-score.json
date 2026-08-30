@@ -1,0 +1,57 @@
+{
+  "schema": "marici.benincasa.interacting_scalar_simplex_score.v1",
+  "source": "arXiv:2408.16386 eq. (4.15)",
+  "source_route_order": [
+    "G12|g23",
+    "G12|g31",
+    "G23|g31",
+    "G23|g12",
+    "G31|g12",
+    "G31|g23"
+  ],
+  "external_score_variables": ["X1", "X2", "X3"],
+  "generic_exact_witness": {
+    "X": [2, 3, 5],
+    "y12_y23_y31": [7, 11, 13],
+    "prime": 1000000007
+  },
+  "score_ranks": {
+    "order_zero": 1,
+    "through_first_order": 4,
+    "through_second_order": 6
+  },
+  "blind_dimensions": {
+    "scalar_augmentation": 5,
+    "through_first_order": 2,
+    "through_second_order": 0
+  },
+  "edge_coincidence": {
+    "example": "y12=y23",
+    "external_score_rank": 5,
+    "kernel": "(G12|g31)-(G23|g31)",
+    "normal_edge_score": "partial_y12-partial_y23",
+    "augmented_rank": 6,
+    "typing": "internal fiber coincidence, not an external singular-support divisor"
+  },
+  "marked_residue_observer": {
+    "ports": 6,
+    "incidence_matrix": "I6 up to oriented residue units",
+    "rank": 6,
+    "physical_accessibility": "not inferred"
+  },
+  "external_projector_gate": {
+    "fiber_samples": 3,
+    "external_jet_order": 2,
+    "coefficient_rank": 10,
+    "augmented_route_selector_ranks": [11, 11, 11, 11, 11, 11],
+    "common_external_projectors": 0,
+    "conclusion": "pointwise score separation does not descend to a loop-variable-independent external projector"
+  },
+  "classification": "generic labelled scalar integrand packet is contextually faithful through second external-energy score",
+  "scope": "integrand-level six-simplex route packet; no integrated Gauss-Manin or physical-cycle faithfulness inferred",
+  "checkers": [
+    "research/benincasa/checkers/interacting_scalar_simplex_score.rs",
+    "research/benincasa/checkers/interacting_scalar_iterated_residue_ports.rs",
+    "research/benincasa/checkers/interacting_scalar_external_projector_gate.rs"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "marici.soft-endpoint-log-primitive-torsor.v1",
+  "status": "pass",
+  "local_coordinate": "t=xi+1",
+  "primitive_normal_form": "F=R*log(t)+holomorphic",
+  "residue": "R=(a+p)/(2*p*(a-p)^2*(a+3*p)*sqrt(K_exc(a,kappa,-1)))",
+  "monodromy": "F -> F+2*pi*i*R",
+  "scale_change": "log(t/mu) -> log(t/mu)-log(mu_prime/mu)",
+  "generic_samples": [
+    {
+      "a": "2",
+      "kappa": "1/2",
+      "p": "1",
+      "K_minus": "1",
+      "rational_residue_prefactor": "3/10",
+      "generic_residue_nonzero": true
+    },
+    {
+      "a": "3",
+      "kappa": "-1/3",
+      "p": "2",
+      "K_minus": "2401/9",
+      "rational_residue_prefactor": "5/36",
+      "generic_residue_nonzero": true
+    },
+    {
+      "a": "5/2",
+      "kappa": "2/3",
+      "p": "3",
+      "K_minus": "3481/16",
+      "rational_residue_prefactor": "22/69",
+      "generic_residue_nonzero": true
+    }
+  ],
+  "classification": "the residue line and translation law are canonical, while primitive values form an affine torsor with no source-selected origin",
+  "physical_consequence": "the i-epsilon side can select a branch orientation but does not by itself fix the additive finite part or subtraction scale",
+  "checks": {
+    "generic_log_residue_is_nonzero": true,
+    "one_loop_adds_two_pi_i_times_residue": true,
+    "branch_change_preserves_residue_but_changes_primitive": true,
+    "subtraction_scale_changes_finite_part": true,
+    "frozen_source_has_no_declared_affine_origin": true
+  }
+}

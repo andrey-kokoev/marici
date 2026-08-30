@@ -1,0 +1,42 @@
+{
+  "schema": "marici.soft-endpoint-full-a-cycle-compatibility.v1",
+  "status": "pass",
+  "fiber_roots": "A_\u00b1/p^2=5+4*kappa*xi\u00b14*sqrt((1-kappa^2)*(1-xi^2))",
+  "hostile_slice": "kappa=0",
+  "exact_cycle_packets": [
+    {
+      "xi": "0",
+      "t": "1",
+      "A_low_over_p2": "1",
+      "A_high_over_p2": "9",
+      "squared_width": "8",
+      "fiber_collapsed": false
+    },
+    {
+      "xi": "3/5",
+      "t": "8/5",
+      "A_low_over_p2": "9/5",
+      "A_high_over_p2": "41/5",
+      "squared_width": "32/5",
+      "fiber_collapsed": false
+    },
+    {
+      "xi": "1",
+      "t": "2",
+      "A_low_over_p2": "5",
+      "A_high_over_p2": "5",
+      "squared_width": "0",
+      "fiber_collapsed": true
+    }
+  ],
+  "pointwise_pointing_verdict": "mistyped before fiber pushforward",
+  "reason": "the physical a-cycle moves with t and collapses at t=2, so F(a,2)=0 cannot normalize a primitive for generic fixed a",
+  "corrected_constructor": "first form the Gauss-Manin pushforward I(t)=integral_{Gamma_a(t)} Omega; only then point its logarithmic primitive by the base endpoint t=2",
+  "checks": {
+    "interior_a_cycle_has_positive_width": true,
+    "pointing_endpoint_a_cycle_collapses": true,
+    "fiber_domain_varies_with_t": true,
+    "bulk_chain_is_not_a_product": true,
+    "generic_fixed_a_has_no_t_equals_two_fiber_point": true
+  }
+}

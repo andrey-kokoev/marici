@@ -1,0 +1,26 @@
+{
+  "schema": "marici.soft-endpoint-regulator-invariance.v1",
+  "status": "pass",
+  "source_coordinate": "t=q_g1/X1 with dq_g1 fixed by the source denominator normalization",
+  "finite_part": "FP_t(P)=lim_{t->0}[P(t)-L log(t/2)]",
+  "coordinate_change": "phi(t)=c t+O(t^2), phi(0)=0, phi(2)=2",
+  "transformation_law": "FP_phi(P)=FP_t(P)-L log(c)",
+  "admissible_source_regulators": "analytic continuations of the fixed q_g1 boundary-value germ; equivalently c=1 at first normal order",
+  "result": "the finite part is invariant under source-admissible first-normal-preserving regulator deformations",
+  "hostile_control": "endpoint preservation alone is insufficient: c!=1 shifts the finite part by -L log(c)",
+  "classification": {
+    "source_admissible": "invariant",
+    "arbitrary_endpoint_preserving_reparametrization": "not invariant",
+    "missing_datum": "none after the source normal coordinate is retained"
+  },
+  "checks": {
+    "source_coordinate_is_fixed": true,
+    "source_jacobian_is_one": true,
+    "source_regulator_tube_is_convex": true,
+    "pointed_finite_part_is_available": true,
+    "tangent_to_identity_has_c_one": true,
+    "tangent_to_identity_shift_vanishes": true,
+    "arbitrary_endpoint_preserving_change_can_have_c_not_one": true,
+    "arbitrary_change_shift_is_L_log_c": true
+  }
+}

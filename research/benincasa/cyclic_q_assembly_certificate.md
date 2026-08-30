@@ -138,7 +138,7 @@ operatorname{Var}_{mathcal Q_{12}}I_{{1}}^{(3,1)}
 ]
 Thus
 [
-oxed{
+\boxed{
 T_{mathcal Q_{12}}^{m phys}=1,qquad
 N_{mathcal Q_{12}}^{m phys}=0,qquad
 operatorname{Var}_{mathcal Q_{12}}(Gamma_{m phys})=0

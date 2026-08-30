@@ -1,0 +1,60 @@
+{
+  "schema": "marici.benincasa.spectral_gaussian_source_to_observer_complex.v1",
+  "scope": "homogeneous three-site contact packet with frozen covariant massless spectral Gaussian source A_g=sqrt(-Delta_g)",
+  "objects": {
+    "occurrence_packet": "P=Q<(12),(23),(31)>",
+    "contact_route_packet": "ker(epsilon_ct)=Q<p12,p23,p31>",
+    "direct_score_ports": ["scalar", "quadrupole_plus", "quadrupole_cross"],
+    "tensor_ports": ["scalar", "TT_plus(q)", "TT_cross(q)"],
+    "elliptic_coefficients": "V_ell rank 2",
+    "marked_relative_coefficients": "M_mark rank 12"
+  },
+  "maps": {
+    "direct_score": [[1,2,0],[1,-1,-1],[1,-1,1]],
+    "direct_score_determinant": -6,
+    "full_contact_observer": "R_ct=-8 diag(C12,C23,C31) T(q)",
+    "full_contact_determinant": "(-8)^3 C12 C23 C31 det(T)",
+    "finite_q_spectral_weight": "w_i=1/(2+|p_i+q|), up to positive occurrence normalization",
+    "finite_q_tensor_determinant": "Gram(q,p1,p2) times positive residual times polarization-frame units",
+    "gauss_manin_comparison": "1_V tensor direct_score"
+  },
+  "covariance": {
+    "ward": "q->0 gives the traceless metric-shear response",
+    "gauge": "q_i h_ij=0 removes longitudinal terms",
+    "cyclic": "simultaneous cyclic permutation of occurrences and hard momenta",
+    "gauss_manin": "direct_score is constant and horizontal"
+  },
+  "rank_loss": {
+    "source_degeneracy": [],
+    "transport_support": ["existing Gram wall q dot (p1 cross p2)=0"],
+    "gauge_reduction": ["TT projection becomes one-dimensional on the Gram wall"],
+    "instrument_projection": ["one-polarization detector kernel"],
+    "new_carrier_support": []
+  },
+  "supported_cones": {
+    "one_polarization": "rank-one kernel, killed by complementary tensor polarization",
+    "Gram_wall_tensor_only": "Smith diag(1,1,c), costalk Q[[c]]/(c)",
+    "Gram_wall_completed": "acyclic after direct Gaussian score",
+    "component_soft_completed": "acyclic because normalized direct score remains a unit"
+  },
+  "specialization": {
+    "normalized_soft_score": "S=xi^2-1/2 with xi=sqrt(k) Phi",
+    "metric_shear_log_slope": "k partial_k log A(k)=1",
+    "nearby_result": "direct score matrix remains constant and invertible"
+  },
+  "coefficient_compatibility": {
+    "elliptic_rank2_tensor_determinant": 36,
+    "marked_relative_rank12_tensor_determinant": 2176782336,
+    "internal_occurrence_to_wall_identification": "not typed and not used"
+  },
+  "detector_connection": {
+    "convention": "nabla=d-A",
+    "generic": "A_D=dT T^{-1}",
+    "Gram_local": "diag(0,0,dc/c) plus regular terms",
+    "Gram_residue": [0,0,1],
+    "Gram_monodromy": "identity",
+    "Gauss_Manin_target": "A_V tensor I plus I tensor A_D"
+  },
+  "classification": "existing occurrence Carrier plus shared support/derived calculus plus source-specific Gaussian, tensor, elliptic, and marked-relative coefficient lenses",
+  "hard_falsifier_found": false
+}

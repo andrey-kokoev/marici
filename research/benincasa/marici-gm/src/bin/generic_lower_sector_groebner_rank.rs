@@ -293,6 +293,101 @@ fn standard_monomial_count(basis: &[Polynomial]) -> usize {
     standard_monomials(basis).len()
 }
 
+fn matrix_rank(mut rows: Vec<Vec<i64>>) -> usize {
+    if rows.is_empty() {
+        return 0;
+    }
+    let column_count = rows[0].len();
+    let mut pivot_row = 0;
+    for column in 0..column_count {
+        let Some(found) = (pivot_row..rows.len()).find(|row| rows[*row][column] != 0) else {
+            continue;
+        };
+        rows.swap(pivot_row, found);
+        let scale = inverse(rows[pivot_row][column]);
+        for value in &mut rows[pivot_row] {
+            *value = multiply_mod(*value, scale);
+        }
+        for row in 0..rows.len() {
+            if row == pivot_row || rows[row][column] == 0 {
+                continue;
+            }
+            let coefficient = rows[row][column];
+            for entry in column..column_count {
+                rows[row][entry] = add_mod(
+                    rows[row][entry],
+                    -multiply_mod(coefficient, rows[pivot_row][entry]),
+                );
+            }
+        }
+        pivot_row += 1;
+        if pivot_row == rows.len() {
+            break;
+        }
+    }
+    pivot_row
+}
+
+fn matrix_nullspace(mut rows: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
+    if rows.is_empty() {
+        return Vec::new();
+    }
+    let column_count = rows[0].len();
+    let mut pivot_row = 0;
+    let mut pivot_columns = Vec::new();
+    for column in 0..column_count {
+        let Some(found) = (pivot_row..rows.len()).find(|row| rows[*row][column] != 0) else {
+            continue;
+        };
+        rows.swap(pivot_row, found);
+        let scale = inverse(rows[pivot_row][column]);
+        for value in &mut rows[pivot_row] {
+            *value = multiply_mod(*value, scale);
+        }
+        for row in 0..rows.len() {
+            if row == pivot_row || rows[row][column] == 0 {
+                continue;
+            }
+            let coefficient = rows[row][column];
+            for entry in column..column_count {
+                rows[row][entry] = add_mod(
+                    rows[row][entry],
+                    -multiply_mod(coefficient, rows[pivot_row][entry]),
+                );
+            }
+        }
+        pivot_columns.push(column);
+        pivot_row += 1;
+        if pivot_row == rows.len() {
+            break;
+        }
+    }
+    let pivot_set: BTreeSet<_> = pivot_columns.iter().copied().collect();
+    let free_columns: Vec<_> = (0..column_count)
+        .filter(|column| !pivot_set.contains(column))
+        .collect();
+    free_columns
+        .into_iter()
+        .map(|free| {
+            let mut vector = vec![0_i64; column_count];
+            vector[free] = 1;
+            for (row, pivot) in pivot_columns.iter().enumerate() {
+                vector[*pivot] = (-rows[row][free]).rem_euclid(prime());
+            }
+            vector
+        })
+        .collect()
+}
+
+fn signed_residue(value: i64) -> i64 {
+    let reduced = value.rem_euclid(prime());
+    if reduced > prime() / 2 {
+        reduced - prime()
+    } else {
+        reduced
+    }
+}
+
 fn sum(polynomials: &[Polynomial]) -> Polynomial {
     polynomials
         .iter()
@@ -354,6 +449,176 @@ fn deletion_closed_rank(k: &Polynomial, selected: &[Factor]) -> (usize, usize, u
     let elapsed = started.elapsed().as_millis();
     let rank = standard_monomial_count(&basis);
     (rank, basis.len(), elapsed)
+}
+
+fn normal_tower_class_rank(
+    k: &Polynomial,
+    selected: &[Factor],
+    labelled_coefficients: &[(&'static str, Polynomial)],
+) -> (usize, usize, Vec<&'static str>, Vec<Vec<i64>>, u128) {
+    let mut factors = vec![Factor {
+        name: "K",
+        polynomial: k.clone(),
+        exponent: 5,
+    }];
+    factors.extend_from_slice(selected);
+    let divisor = product(
+        &factors
+            .iter()
+            .map(|factor| factor.polynomial.clone())
+            .collect::<Vec<_>>(),
+    );
+    let mut equations = Vec::new();
+    for variable in 0..3 {
+        let mut terms = Vec::new();
+        for (index, factor) in factors.iter().enumerate() {
+            let complement = product(
+                &factors
+                    .iter()
+                    .enumerate()
+                    .filter(|(other, _)| *other != index)
+                    .map(|(_, other)| other.polynomial.clone())
+                    .collect::<Vec<_>>(),
+            );
+            terms.push(
+                complement
+                    .multiply(&factor.polynomial.derivative(variable))
+                    .scale(factor.exponent),
+            );
+        }
+        equations.push(sum(&terms));
+    }
+    equations.push(
+        Polynomial::variable(3)
+            .multiply(&divisor)
+            .subtract(&Polynomial::constant(1)),
+    );
+    let started = Instant::now();
+    let basis = groebner_basis(equations);
+    let monomials: Vec<_> = standard_monomials(&basis).into_iter().collect();
+    let index: BTreeMap<_, _> = monomials
+        .iter()
+        .enumerate()
+        .map(|(position, monomial)| (*monomial, position))
+        .collect();
+
+    // In the localized quotient z*(K*marks)=1, hence K^{-1}=z*marks.
+    let mark_product = product(
+        &selected
+            .iter()
+            .map(|factor| factor.polynomial.clone())
+            .collect::<Vec<_>>(),
+    );
+    let inverse_k = Polynomial::variable(3).multiply(&mark_product);
+    let mut rows = vec![vec![0_i64; labelled_coefficients.len()]; monomials.len()];
+    for (column, (_, coefficient)) in labelled_coefficients.iter().enumerate() {
+        let reduced = normal_form(coefficient.multiply(&inverse_k), &basis);
+        for (monomial, value) in reduced.0 {
+            rows[*index.get(&monomial).expect("standard remainder monomial")][column] = value;
+        }
+    }
+    let class_rank = matrix_rank(rows.clone());
+    let kernel = matrix_nullspace(rows)
+        .into_iter()
+        .map(|vector| vector.into_iter().map(signed_residue).collect())
+        .collect();
+    (
+        monomials.len(),
+        class_rank,
+        labelled_coefficients.iter().map(|(name, _)| *name).collect(),
+        kernel,
+        started.elapsed().as_millis(),
+    )
+}
+
+fn restricted_normal_tower_class_rank(
+    k: &Polynomial,
+    wall: &Polynomial,
+    selected: &[Factor],
+    labelled_coefficients: &[(&'static str, Polynomial)],
+) -> (usize, usize, Vec<Vec<i64>>, u128) {
+    let mut factors = vec![Factor {
+        name: "K",
+        polynomial: k.clone(),
+        exponent: 5,
+    }];
+    factors.extend_from_slice(selected);
+    let divisor = product(
+        &factors
+            .iter()
+            .map(|factor| factor.polynomial.clone())
+            .collect::<Vec<_>>(),
+    );
+    let mut equations = vec![wall.clone()];
+    for direction in [[0_i64, 1, 0], [0_i64, 0, 1]] {
+        let mut terms = Vec::new();
+        for (index, factor) in factors.iter().enumerate() {
+            let complement = product(
+                &factors
+                    .iter()
+                    .enumerate()
+                    .filter(|(other, _)| *other != index)
+                    .map(|(_, other)| other.polynomial.clone())
+                    .collect::<Vec<_>>(),
+            );
+            terms.push(
+                complement
+                    .multiply(&directional_derivative(&factor.polynomial, direction))
+                    .scale(factor.exponent),
+            );
+        }
+        equations.push(sum(&terms));
+    }
+    equations.push(
+        Polynomial::variable(3)
+            .multiply(&divisor)
+            .subtract(&Polynomial::constant(1)),
+    );
+    let wall_basis = vec![wall.monic()];
+    let mut eliminated = vec![wall.monic()];
+    eliminated.extend(
+        equations
+            .into_iter()
+            .skip(1)
+            .map(|equation| normal_form(equation, &wall_basis)),
+    );
+    let started = Instant::now();
+    let basis = groebner_basis(eliminated);
+    let monomials: Vec<_> = standard_monomials(&basis).into_iter().collect();
+    let index: BTreeMap<_, _> = monomials
+        .iter()
+        .enumerate()
+        .map(|(position, monomial)| (*monomial, position))
+        .collect();
+    let mark_product = product(
+        &selected
+            .iter()
+            .map(|factor| factor.polynomial.clone())
+            .collect::<Vec<_>>(),
+    );
+    let inverse_k = normal_form(
+        Polynomial::variable(3).multiply(&mark_product),
+        &wall_basis,
+    );
+    let mut rows = vec![vec![0_i64; labelled_coefficients.len()]; monomials.len()];
+    for (column, (_, coefficient)) in labelled_coefficients.iter().enumerate() {
+        let restricted = normal_form(coefficient.clone(), &wall_basis);
+        let reduced = normal_form(restricted.multiply(&inverse_k), &basis);
+        for (monomial, value) in reduced.0 {
+            rows[*index.get(&monomial).expect("standard remainder monomial")][column] = value;
+        }
+    }
+    let class_rank = matrix_rank(rows.clone());
+    let kernel = matrix_nullspace(rows)
+        .into_iter()
+        .map(|vector| vector.into_iter().map(signed_residue).collect())
+        .collect();
+    (
+        monomials.len(),
+        class_rank,
+        kernel,
+        started.elapsed().as_millis(),
+    )
 }
 
 fn directional_derivative(polynomial: &Polynomial, direction: [i64; 3]) -> Polynomial {
@@ -478,10 +743,94 @@ fn main() {
         },
         Factor {
             name: "q_g23",
-            polynomial: sum(&[c, b, Polynomial::constant(x2 + x3)]),
+            polynomial: sum(&[c.clone(), b, Polynomial::constant(x2 + x3)]),
             exponent: 29,
         },
     ];
+    if matches!(
+        std::env::var("NORMAL_TOWER").ok().as_deref(),
+        Some("1") | Some("restricted")
+    ) {
+        let linear_1 = sum(&[
+            a2.power(2),
+            a2.multiply(&b2).scale(-1),
+            a2.scale(2 * p1s - p2s - p3s),
+            c2.multiply(&a2).scale(-1),
+            b2.scale(-p2s),
+            c2.multiply(&b2),
+            c2.scale(-p3s),
+            Polynomial::constant(p2s * p3s),
+        ]);
+        let linear_2 = sum(&[
+            b2.power(2),
+            a2.multiply(&b2).scale(-1),
+            b2.scale(2 * p2s - p1s - p3s),
+            c2.multiply(&b2).scale(-1),
+            a2.scale(-p1s),
+            c2.multiply(&a2),
+            c2.scale(-p3s),
+            Polynomial::constant(p1s * p3s),
+        ]);
+        let linear_3 = sum(&[
+            c2.power(2),
+            a2.multiply(&b2),
+            a2.scale(-p1s),
+            c2.multiply(&a2).scale(-1),
+            b2.scale(-p2s),
+            c2.multiply(&b2).scale(-1),
+            c2.scale(-p1s - p2s + 2 * p3s),
+            Polynomial::constant(p1s * p2s),
+        ]);
+        let labelled_coefficients = vec![
+            ("nu1", linear_1),
+            ("nu2", linear_2),
+            ("nu3", linear_3),
+            ("nu1^2", a2.clone()),
+            ("nu2^2", b2.clone()),
+            ("nu3^2", c2.clone()),
+            (
+                "nu1*nu2",
+                sum(&[Polynomial::constant(p3s), a2.scale(-1), b2.scale(-1)]),
+            ),
+            (
+                "nu1*nu3",
+                sum(&[Polynomial::constant(p2s), a2.scale(-1), c2.scale(-1)]),
+            ),
+            (
+                "nu2*nu3",
+                sum(&[Polynomial::constant(p1s), b2.scale(-1), c2.scale(-1)]),
+            ),
+            ("nu1*nu2*nu3", Polynomial::constant(1)),
+        ];
+        let mode = std::env::var("NORMAL_TOWER").expect("normal tower mode");
+        let labels = labelled_coefficients
+            .iter()
+            .map(|(name, _)| *name)
+            .collect::<Vec<_>>();
+        let (cohomology_rank, class_rank, kernel, elapsed_ms) = if mode == "restricted" {
+            let q_g12 = sum(&[
+                c.clone(),
+                Polynomial::constant(x1 + x2 + x3),
+            ]);
+            restricted_normal_tower_class_rank(
+                &k,
+                &q_g12,
+                &denominators,
+                &labelled_coefficients,
+            )
+        } else {
+            let (rank, class_rank, _, kernel, elapsed_ms) =
+                normal_tower_class_rank(&k, &denominators, &labelled_coefficients);
+            (rank, class_rank, kernel, elapsed_ms)
+        };
+        println!(
+            "prime={} point={point} normal_tower_mode={mode} cohomology_rank={cohomology_rank} labelled_class_rank={class_rank} label_count={} elapsed_ms={elapsed_ms}",
+            prime(), labels.len()
+        );
+        println!("NORMAL_TOWER_LABELS={labels:?}");
+        println!("NORMAL_TOWER_KERNEL={kernel:?}");
+        return;
+    }
     if std::env::var("TANGENTIAL_WALL").ok().as_deref() == Some("q_g1") {
         // q_g23 restricts to the nonzero constant X2+X3-X1 on q_g1, hence it
         // contributes no tangential logarithmic derivative.

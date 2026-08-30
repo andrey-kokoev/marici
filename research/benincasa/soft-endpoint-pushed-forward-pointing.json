@@ -1,0 +1,30 @@
+{
+  "schema": "marici.soft-endpoint-pushed-forward-pointing.v1",
+  "status": "pass",
+  "constructor_order": [
+    "Gauss-Manin pushforward along Gamma_a(t)",
+    "obtain base one-form I(t) dt",
+    "point P(t)=integral_2^t I(s) ds",
+    "take finite part at t=0 after subtracting L log(t/2)"
+  ],
+  "endpoint_asymptotics": {
+    "t=0": "I(t)=L/t+O(1), with L the q_g1-residue vanishing period",
+    "t=2": "I(t) is finite and coefficient-valued on the collapsed positive CM cycle"
+  },
+  "pointed_pushforward": "P(t)=integral from 2 to t of I(s) ds, so P(2)=0",
+  "finite_part": "lim_{t->0}[P(t)-L*log(t/2)]",
+  "compatibility_result": "the pointing is compatible with the full moving a-cycle only after Gauss-Manin pushforward; no fixed-a primitive is used",
+  "remaining_gates": [
+    "regulator invariance of the finite part",
+    "identification with the logarithmic residue/Leray-tube pairing"
+  ],
+  "checks": {
+    "moving_fiber_audit_passes": true,
+    "fiber_collapses_at_pointing_endpoint": true,
+    "complete_source_weights_match": true,
+    "stokes_ports_share_total_degree": true,
+    "negative_pushforward_has_log_residue": true,
+    "positive_pushforward_is_regular_and_finite": true,
+    "basepoint_integral_vanishes_at_t_two": true
+  }
+}

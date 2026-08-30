@@ -1,0 +1,88 @@
+{
+  "classification": {
+    "elliptic_coefficient_nearby_cycle": "rank one",
+    "new_carrier_support": false,
+    "physical_Leray_activation_generic_nonsoft": false,
+    "weighted_score_recovery": "faithful"
+  },
+  "complete_interaction_tower": {
+    "faithful_quotient_rank": 7,
+    "maximum_normal_degree": 3,
+    "maximum_required_physical_angle_order": 6,
+    "raw_label_count": 10,
+    "reason": "w=theta^2 and the cubic normal tower can contain w^3",
+    "source_relation_rank": 3,
+    "weighted_pullback_rank": 10
+  },
+  "leray_pairing": {
+    "first_possible_collision": "existing soft-Gram support P3=0, cyclically relabelled in the other infinity charts",
+    "generic_nonsoft_value": 0,
+    "reason": "the physical infinity boundary current at t=1 is disjoint from every Gram node"
+  },
+  "physical_infinity_support": {
+    "F_at_t_equals_1": "P3**2",
+    "distance_ratio": "t=a/b",
+    "large_loop_limit": "t=1"
+  },
+  "schema": "marici.benincasa.gram-leray-weighted-score.v1",
+  "scope_warning": "The vanishing follows from support disjointness for the source UV boundary current. Soft-Gram intersections remain governed by the existing resolved soft complex; global UV-renormalized finite parts are not recomputed.",
+  "status": "passed",
+  "wall_checks": [
+    {
+      "collision_condition": "P3=0",
+      "elliptic_wall_polynomial": "(P2*t**2 - P2 + P3*t**2)**2",
+      "generic_nonsoft_support_disjoint": true,
+      "node_polynomial": "P2*t**2 - P2 + P3*t**2",
+      "node_polynomial_at_t_equals_1": "P3",
+      "wall": "f1"
+    },
+    {
+      "collision_condition": "P3=0",
+      "elliptic_wall_polynomial": "(P1*t**2 - P1 - P3)**2",
+      "generic_nonsoft_support_disjoint": true,
+      "node_polynomial": "P1*t**2 - P1 - P3",
+      "node_polynomial_at_t_equals_1": "-P3",
+      "wall": "f2"
+    },
+    {
+      "collision_condition": "P3=0",
+      "elliptic_wall_polynomial": "(P1*t**2 + P2)**2",
+      "generic_nonsoft_support_disjoint": true,
+      "node_polynomial": "P1*t**2 + P2",
+      "node_polynomial_at_t_equals_1": "P1 + P2",
+      "wall": "f3"
+    }
+  ],
+  "weighted_physical_chart": {
+    "coordinates": [
+      "u=delta(P1^2)",
+      "v=delta(P2^2)",
+      "w=theta^2"
+    ],
+    "determinant": "-P1*P2",
+    "generic_rank": 3,
+    "interpretation": "two first-grade tangent directions plus one second-Rees physical angle direction recover all three magnitude normals",
+    "jacobian_at_f3": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "(P1 + P2)/P1",
+        "(P1 + P2)/P2",
+        "-P1*P2"
+      ]
+    ],
+    "normal_coordinates": [
+      "nu1",
+      "nu2",
+      "nu3"
+    ]
+  }
+}

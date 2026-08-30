@@ -1,0 +1,145 @@
+{
+  "schema": "marici.soft-internal-route-finite-part.v1",
+  "status": "pass",
+  "residue_partial_fraction": "64*p^4*R = -B/(delta+a)+B/delta-2/(a*delta^2)+2*(1+kappa)/delta^3, a=1-kappa, B=(3-kappa)/(1-kappa)^2",
+  "primitive": "F_R=1/(64*p^4)*[B*log(delta/(delta+a))+2/(a*delta)-(1+kappa)/delta^2]",
+  "pointed_route_difference": "Delta P_route=2*pi*i*(F_R(delta)-F_R(1+kappa))",
+  "soft_log_coefficient_before_2pi_i": "-B/(64*p^4)",
+  "soft_finite_part_before_2pi_i": "1/(64*p^4)*[B*log(-(1-kappa)/(1+kappa))-4/(1-kappa)^2]",
+  "source_branch_requirement": "the negative-imaginary boundary value fixes the branch of log(-(1-kappa)/(1+kappa))",
+  "interpretation": "the opposite bypass changes both the soft logarithmic coefficient and the pointed finite part by an exact source-supported term",
+  "samples": [
+    {
+      "kappa": "-3/4",
+      "partial_coefficients": {
+        "A_at_delta_plus_a": "-60/49",
+        "B_at_delta": "60/49",
+        "C_at_delta_squared": "-8/7",
+        "D_at_delta_cubed": "1/2"
+      },
+      "reconstructed_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "-3/2",
+        "0": "7/8"
+      },
+      "expected_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "-3/2",
+        "0": "7/8"
+      },
+      "decomposition_matches": true,
+      "log_coefficient_B": "60/49",
+      "finite_rational_term": "-64/49",
+      "log_argument_without_source_branch": "-7/4/1/4"
+    },
+    {
+      "kappa": "-1/2",
+      "partial_coefficients": {
+        "A_at_delta_plus_a": "-14/9",
+        "B_at_delta": "14/9",
+        "C_at_delta_squared": "-4/3",
+        "D_at_delta_cubed": "1"
+      },
+      "reconstructed_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "-1",
+        "0": "3/2"
+      },
+      "expected_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "-1",
+        "0": "3/2"
+      },
+      "decomposition_matches": true,
+      "log_coefficient_B": "14/9",
+      "finite_rational_term": "-16/9",
+      "log_argument_without_source_branch": "-3/2/1/2"
+    },
+    {
+      "kappa": "0",
+      "partial_coefficients": {
+        "A_at_delta_plus_a": "-3",
+        "B_at_delta": "3",
+        "C_at_delta_squared": "-2",
+        "D_at_delta_cubed": "2"
+      },
+      "reconstructed_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "0",
+        "0": "2"
+      },
+      "expected_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "0",
+        "0": "2"
+      },
+      "decomposition_matches": true,
+      "log_coefficient_B": "3",
+      "finite_rational_term": "-4",
+      "log_argument_without_source_branch": "-1/1"
+    },
+    {
+      "kappa": "1/3",
+      "partial_coefficients": {
+        "A_at_delta_plus_a": "-6",
+        "B_at_delta": "6",
+        "C_at_delta_squared": "-3",
+        "D_at_delta_cubed": "8/3"
+      },
+      "reconstructed_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "2/3",
+        "0": "16/9"
+      },
+      "expected_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "2/3",
+        "0": "16/9"
+      },
+      "decomposition_matches": true,
+      "log_coefficient_B": "6",
+      "finite_rational_term": "-9",
+      "log_argument_without_source_branch": "-2/3/4/3"
+    },
+    {
+      "kappa": "3/4",
+      "partial_coefficients": {
+        "A_at_delta_plus_a": "-36",
+        "B_at_delta": "36",
+        "C_at_delta_squared": "-8",
+        "D_at_delta_cubed": "7/2"
+      },
+      "reconstructed_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "3/2",
+        "0": "7/8"
+      },
+      "expected_numerator": {
+        "3": "0",
+        "2": "1",
+        "1": "3/2",
+        "0": "7/8"
+      },
+      "decomposition_matches": true,
+      "log_coefficient_B": "36",
+      "finite_rational_term": "-64",
+      "log_argument_without_source_branch": "-1/4/7/4"
+    }
+  ],
+  "checks": {
+    "partial_fraction_decomposition_is_exact": true,
+    "basepoint_is_t_two": true,
+    "soft_endpoint_is_t_zero": true,
+    "finite_rational_term_is_derived": true,
+    "source_branch_is_still_required_for_logarithm": true
+  }
+}

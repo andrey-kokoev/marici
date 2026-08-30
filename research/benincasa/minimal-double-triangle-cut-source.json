@@ -1,0 +1,81 @@
+{
+  "schema": "marici.minimal-double-triangle-cut-source.v1",
+  "status": "pass",
+  "graph": {
+    "vertices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        4
+      ]
+    ],
+    "left_triangle": [
+      1,
+      2,
+      3
+    ],
+    "right_triangle": [
+      4,
+      5,
+      6
+    ],
+    "bridge_cut": [
+      3,
+      4
+    ],
+    "loop_rank": 2
+  },
+  "resolved_interface_occurrences": [
+    "y_34,+",
+    "y_34,-"
+  ],
+  "partial_energies": {
+    "left": "X1+X2+X3+y_34,+",
+    "right": "X4+X5+X6+y_34,-",
+    "physical_diagonal": "y_34,+=y_34,-=y_34"
+  },
+  "source_acquisition_target": "complete canonical/OFPT integrand, labelled denominator terms, i-epsilon contour, and bridge-Cut factorization for the six-site seven-edge double-triangle graph",
+  "not_yet_claimed": "no coefficient-torsor sewing map follows from this graph census alone",
+  "checks": {
+    "graph_is_connected": true,
+    "bridge_deletion_has_two_components": true,
+    "left_component_is_triangle": true,
+    "right_component_is_triangle": true,
+    "total_loop_rank_is_two": true,
+    "each_cut_component_has_loop_rank_one": true,
+    "bridge_is_unique_cut_interface": true,
+    "six_vertices_are_minimal_for_two_vertex_disjoint_triangles": true,
+    "seven_edges_are_minimal_after_connecting_them": true
+  }
+}

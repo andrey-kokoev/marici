@@ -1,0 +1,52 @@
+{
+  "schema": "marici.soft-endpoint-chain-pointed-torsor.v1",
+  "status": "pass",
+  "source_coordinate": "t=q_g1/X1=xi+1",
+  "oriented_chain": "t in [0,2]",
+  "pointing_condition": "F(2)=0",
+  "local_density_model": "f(t)=R/t+sum_n h_n*t^n",
+  "pointed_primitive": "F(t)=R*log(t/2)+sum_n h_n*(t^(n+1)-2^(n+1))/(n+1)",
+  "renormalized_endpoint_value": "FP_0 F=-sum_n h_n*2^(n+1)/(n+1) after subtracting R*log(t/2)",
+  "exact_model_packets": [
+    {
+      "regular_coefficients": [
+        "1",
+        "2",
+        "-1"
+      ],
+      "chain_pointed_finite_part": "-10/3",
+      "basepoint_condition": "F(2)=0",
+      "finite": true
+    },
+    {
+      "regular_coefficients": [
+        "3/2",
+        "-4/3",
+        "5/7",
+        "2"
+      ],
+      "chain_pointed_finite_part": "-215/21",
+      "basepoint_condition": "F(2)=0",
+      "finite": true
+    },
+    {
+      "regular_coefficients": [
+        "-2",
+        "0",
+        "9/5"
+      ],
+      "chain_pointed_finite_part": "-4/5",
+      "basepoint_condition": "F(2)=0",
+      "finite": true
+    }
+  ],
+  "conclusion": "the complete source-normalized chain canonically points the local log torsor within this chart; the pointing is unavailable to the isolated endpoint germ",
+  "unproved_gate": "naturality of the pointed finite part under all source-derived occurrence/chart transitions and compatibility with the full a-dependent relative cycle",
+  "checks": {
+    "source_coordinate_is_t_equals_qg1_over_X1": true,
+    "opposite_endpoint_has_t_equal_two": true,
+    "basepoint_removes_additive_constant": true,
+    "pointed_hadamard_finite_parts_exist": true,
+    "pointing_uses_full_chain_not_local_germ": true
+  }
+}

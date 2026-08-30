@@ -1,0 +1,48 @@
+{
+  "schema": "marici.soft-endpoint-stokes-cospan.v1",
+  "status": "pass",
+  "bulk_chain": "Gamma_xi=[-1,1]",
+  "boundary_map": {
+    "ordered_ports": [
+      "xi=+1 unmarked CM boundary",
+      "xi=-1 q_g1 residue-CM corner"
+    ],
+    "column": [
+      1,
+      -1
+    ]
+  },
+  "relative_totalization": {
+    "raw_degrees": {
+      "positive_unmarked": 0,
+      "negative_residue": 1
+    },
+    "cone_shifts": {
+      "positive_unmarked": 0,
+      "negative_residue": -1
+    },
+    "total_degrees": {
+      "positive_unmarked": 0,
+      "negative_residue": 0
+    }
+  },
+  "physical_occurrence_covectors": {
+    "positive_unmarked": [
+      1,
+      0
+    ],
+    "negative_residue": [
+      1,
+      0
+    ]
+  },
+  "architecture": "one bulk object maps to a direct sum of two endpoint ports; there is no source boundary map from one endpoint port to the other",
+  "consequence": "Stokes supplies the common parent and orientation, not a scalar identification of the marked and unmarked coefficient lines",
+  "checks": {
+    "source_boundary_orientation_is_plus_minus": true,
+    "residue_cone_shift_aligns_total_degrees": true,
+    "boundary_of_boundary_is_zero": true,
+    "both_ports_retain_separate_labels": true,
+    "physical_chain_selects_positive_a_occurrence_at_each_port": true
+  }
+}
