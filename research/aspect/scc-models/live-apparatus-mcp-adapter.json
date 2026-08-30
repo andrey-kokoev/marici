@@ -7,7 +7,10 @@
     "classification": "adapter_contract_surface_absent",
     "stratum": "authority-preserving apparatus capability dry-run dispatch receipt interface",
     "inputs": ["research/aspect/live-apparatus-mcp-adapter.md", "research/aspect/contracts/live-apparatus-mcp-adapter.v1.json"],
-    "checks": [{"id": "live-apparatus-mcp-adapter", "path": "research/aspect/checkers/check_live_apparatus_mcp_adapter_contract.py", "requires": []}],
+    "checks": [
+      {"id": "live-apparatus-mcp-adapter", "path": "research/aspect/checkers/check_live_apparatus_mcp_adapter_contract.py", "requires": []},
+      {"id": "reference-optical-apparatus-mcp", "path": "research/aspect/checkers/check_reference_optical_apparatus_mcp.py", "requires": []}
+    ],
     "depends_on": ["apparatus-capability-receipt-gate"],
     "consumes": ["route plan", "operator authority", "live capability readback"],
     "provides": ["governed live apparatus boundary"],

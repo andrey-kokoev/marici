@@ -19,3 +19,10 @@ bound into execution, and every receipt carries a unique replay nonce.
 
 The conformance checker validates the interface and its negative fixtures. It
 does not start apparatus software or execute hardware.
+
+## Reference surface
+
+The reference optical apparatus MCP implements the four-tool shape in
+simulation-only mode. Capability inspection and route dry-run work against the
+declared fixture inventory. Dispatch is structurally refused and receipt
+readback reports no live execution.
