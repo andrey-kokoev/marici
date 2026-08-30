@@ -1,0 +1,82 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_dfad678b-ba50-4a7e-b0b0-97b2f3b3fb15",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving the source quotient Xi boundary and record the graded-residue polarization theorem."
+  },
+  "idempotency_key": "auto-proposal-3af4162c1f09b3394fd39a0a",
+  "expected_ledger_head": "34443b05bf617e1232d1109b450f0b60a82ceecf74ddcde7b80656b9a78ae94e",
+  "created_at": "2026-08-21T00:58:35.98705Z",
+  "content_fingerprint": "3af4162c1f09b3394fd39a0adca59fc93528b1ca2d876d98783d0227b15454eb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Graded residue jet polarization packet",
+      "version": "1",
+      "locator": "research/grothendieck/graded-residue-jet-polarization.md",
+      "entity_id": "source:21a7453f5f98826fcc81"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1407 — Degree Reversal Polarizes the Xi Jet Boundary",
+      "status": "active-conditional-boundary",
+      "sector": "riemann",
+      "entry_number": 1407,
+      "sequence_claim_id": "seqclaim-17a47868dc921385d10f4852",
+      "summary": "On the associated graded of each Xi local algebra, residue duality pairs complementary jet degrees. Canonical degree reversal and Weil normalization give the positive Gram matrix mI. The resulting entire-quotient boundary has the exact Xi determinant and is self-adjoint iff RH.",
+      "entity_id": "mariciledger_entry:3d507cd590d2b37bd955"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Degree reversal gives a positive Weil-compatible polarization of the graded Xi jet quotient",
+      "statement": "For Xi=u_lambda t^m+..., the graded residue form is u_lambda^-1 delta_(i+j,m-1). The canonical reversal C e_j=u_lambda e_(m-1-j) makes h=m R(.,C.) have Gram matrix mI, agreeing with the Weil weight on the value line. Completing the graded entire-function quotient yields a compact-resolvent diagonal operator with Xi determinant, self-adjoint exactly under RH.",
+      "scope": "Conditional CCM entire-quotient boundary; does not prove RH, density of the original compactly supported Mellin test family in all jets, or a physical chain pushforward.",
+      "entity_id": "claim:c14efeeea348e929b3d3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Double-zero graded-residue polarization test",
+      "description": "For residue matrix R=[[0,u^-1],[u^-1,0]] and degree reversal C=[[0,u],[u,0]], verify 2RC=2I and compare with a nonreal spectral value.",
+      "entity_id": "test:7cc2c16932952ef90545"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:c14efeeea348e929b3d3",
+      "target_id": "source:21a7453f5f98826fcc81",
+      "relation_id": "rel:derived_from-b8c58961664d7e2b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:3d507cd590d2b37bd955",
+      "target_id": "claim:c14efeeea348e929b3d3",
+      "relation_id": "rel:maricidocuments-efea5ebf92cfae9f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:7cc2c16932952ef90545",
+      "target_id": "claim:c14efeeea348e929b3d3",
+      "relation_id": "rel:tests-4cd67721e6468e08"
+    }
+  ],
+  "digest": "83d4adf25f9d661be5eef47afaade7381c9702c9eae23ecbc159fdcec98e00b6"
+}

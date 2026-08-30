@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_09be69fe-ce02-4e6c-b863-e9eac24b2a6d",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the replicated modular pair-torsor residual."
+  },
+  "idempotency_key": "auto-proposal-42a49f5be1b809d77b40ca98",
+  "expected_ledger_head": "f7e1eb76f661a7e084a1b23091e36ed1262c6c47fc74405297a9ec826219a331",
+  "created_at": "2026-08-21T00:18:55.4939806Z",
+  "content_fingerprint": "42a49f5be1b809d77b40ca981d10da150cd5492cbeeb47ea82506828071cb005",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1384 — Pairwise Infinity Section Changes Leave a Rank-246 Ternary Residual",
+      "status": "supported",
+      "path": "src/ledger/20260820-1384 Pairwise Infinity Section Changes Leave a Rank-246 Ternary Residual.md",
+      "ledger_number": 1384,
+      "allocator_claim": "seqclaim-5bd5c59b19ffebfe46b91705",
+      "entity_id": "mariciledger_entry:016c5d0277ee73d4cc17"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Pairwise section-change spaces leave a replicated rank-246 modular residual",
+      "status": "supported",
+      "body": "At z=7 and z=13 over F_1019, T12,T13,T23 have dimensions 152,152,219 and direct-sum rank 523 inside the 769-dimensional affine kernel, leaving quotient dimension 246. No physical or characteristic-zero interpretation is claimed.",
+      "entity_id": "mariciclaim:0246ae6f630ec6914275"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Common-matrix pair-nullspace sum-rank replication",
+      "status": "passed",
+      "body": "Nullspace bases derived from one labelled matrix give identical vectors (152,152,219;523;246) at both maximal-rank base values.",
+      "entity_id": "maricitest:c400e62b17e631282ce2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:016c5d0277ee73d4cc17",
+      "target_id": "mariciclaim:0246ae6f630ec6914275",
+      "relation_id": "rel:maricirecords-8f027b02b1e9ae7b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:016c5d0277ee73d4cc17",
+      "target_id": "maricitest:c400e62b17e631282ce2",
+      "relation_id": "rel:maricirecords-af6ef9109bc9b38c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:0246ae6f630ec6914275",
+      "target_id": "maricitest:c400e62b17e631282ce2",
+      "relation_id": "rel:maricisupported_by-a88e60f063251535"
+    }
+  ],
+  "digest": "adfa606fc8dd17b84a9ab929a6a82f5b0336b9153c1a5ff9aa2c24039a634863"
+}

@@ -1,0 +1,73 @@
+schema = "marici.scc.hodge-realization.v1"
+status = "open"
+certifies_hodge_conjecture = false
+
+[context]
+base_field = "complex"
+variety_class = "smooth_projective"
+codimension = "p"
+
+[constructor]
+object = "CH^p(X)_Q"
+representatives = "codimension-p algebraic cycles"
+equivalence = "rational equivalence"
+
+[observer]
+carrier = "H^(2p)(X,Q)"
+type_sector = "H^(p,p)(X)"
+admissible_sector = "H^(2p)(X,Q) intersection H^(p,p)(X)"
+
+[realization]
+arrow = "cycle_class"
+source = "CH^p(X)_Q"
+target = "Hdg^p(X)"
+required_property = "surjective"
+fiber_question = "for every h in Hdg^p(X), is cycle_class^-1(h) inhabited?"
+
+[[coherence_cell]]
+id = "pullback_naturality"
+law = "cl(f^* Z) = f^* cl(Z)"
+
+[[coherence_cell]]
+id = "pushforward_naturality"
+law = "cl(f_* Z) = f_* cl(Z)"
+
+[[coherence_cell]]
+id = "product_naturality"
+law = "cl(Z.W) = cl(Z) cup cl(W)"
+
+[[fixture]]
+id = "lefschetz_1_1"
+codimension = 1
+coefficients = "integral"
+status = "closed"
+bridge = "divisor -> line bundle -> first Chern class"
+
+[[fixture]]
+id = "integral_hodge_hostile"
+coefficients = "integral"
+status = "false_in_general"
+falsifies = "observer-compatible implies constructor-realizable"
+
+[[prohibition]]
+id = "no_projection_authority"
+rule = "Hodge type and rationality do not authorize an algebraic-cycle preimage"
+
+[[prohibition]]
+id = "no_injectivity_promotion"
+rule = "surjectivity does not imply a canonical inverse or constructor uniqueness"
+
+[[prohibition]]
+id = "no_lefschetz_smearing"
+rule = "the codimension-one line-bundle bridge does not authorize higher-codimension fillers"
+
+[audit]
+first_failure_order = [
+  "source_typing",
+  "degree_and_codimension",
+  "rational_coefficients",
+  "hodge_type",
+  "cycle_source_authority",
+  "cycle_class_equality",
+  "declared_naturality",
+]

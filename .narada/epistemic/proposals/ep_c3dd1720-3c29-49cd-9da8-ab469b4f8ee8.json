@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c3dd1720-3c29-49cd-9da8-ab469b4f8ee8",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1324-maximal-readout-space-v1",
+  "expected_ledger_head": "30eb51b91380391f1b4777aed7415d30f6cce0e3dd671a6656c1b8eff004f5ff",
+  "created_at": "2026-08-20T22:38:43.0512901Z",
+  "content_fingerprint": "913f7a50dad7abea3f8b8c087333603d393ac798bdd76204315bc3d3a3e86d7c",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Defect annihilation defines a maximal cocycle-level readout space",
+      "statement": "A^n(S)=Z^n(H) intersect ker(Omega_(n+1)^*) is the unique maximal target-cocycle subspace pulled by S to source cocycles. Without Omega=0 it need not descend to target cohomology classes.",
+      "entity_id": "claim:f836dd3851afd687b56e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "An exact target cocycle can acquire a nonzero source class",
+      "procedure": "Use target Z^2 --[1 0]--> Z, exact cocycle ell=[1 0], source Z->0, and S(1)=(1,1).",
+      "outcome": "ell represents zero target cohomology but S^*ell=1 is a nonzero source class.",
+      "falsifier": "This falsifies treating the maximal admissible cocycle space as a cohomological pullback without stronger chain compatibility.",
+      "entity_id": "test:16583581b643d0fc9277"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Maximal defect-annihilating readout space",
+      "version": "v1",
+      "locator": "research/grothendieck/maximal-defect-annihilating-readout-space.md",
+      "entity_id": "source:55528d298d6378bbdd83"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1324 — Defect Annihilation Defines a Maximal Cocycle-Level Readout Space",
+      "version": "1324",
+      "locator": "src/ledger/20260820-1324 Defect Annihilation Defines a Maximal Cocycle-Level Readout Space.md",
+      "entity_id": "source:0e45f8980e16c3888580"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:16583581b643d0fc9277",
+      "target_id": "claim:f836dd3851afd687b56e",
+      "relation_id": "rel:tests-1e05788cd36edc5b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:f836dd3851afd687b56e",
+      "target_id": "source:55528d298d6378bbdd83",
+      "relation_id": "rel:derived_from-ed765601f30e69a5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:0e45f8980e16c3888580",
+      "target_id": "claim:f836dd3851afd687b56e",
+      "relation_id": "rel:reports-355824583b3452c7"
+    }
+  ],
+  "digest": "f8721f10fc8aa3e9c3fc12d785eee8c592d1e9e1cd7d763c9ce1bcc702f03c60"
+}

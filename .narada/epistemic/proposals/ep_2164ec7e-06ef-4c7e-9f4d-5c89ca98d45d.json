@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2164ec7e-06ef-4c7e-9f4d-5c89ca98d45d",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-perfect-pairing-forces-betti-pushforward-1312",
+  "expected_ledger_head": "800f8e217dcfac28d37eba70c8c8b6c653559f5cb54500961cdfcc4106fe94f9",
+  "created_at": "2026-08-20T22:26:18.6021439Z",
+  "content_fingerprint": "a53afb54fc32eec2698dbd2d50ba0aa06c95370b52e48586203c4b898790114f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Perfect pairing uniquely forces the Betti pushforward",
+      "body": "With perfect coefficient-Betti pairings, compatibility <q*c,Gamma>=<c,sp_q Gamma> uniquely makes sp_q the adjoint transpose of q*. On deck-labelled bases it forces Gamma_g->Gamma_q(g) with coefficient one; strict composition follows automatically.",
+      "entity_id": "claim:0372b797a8cdff03732b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C4->C2->1 forced-adjoint control",
+      "body": "Exact matrices force the basis-chain quotient map, verify strict composition, and recover pull-push norms two and four. All assertions pass. Boundary compatibility on physical relative complexes remains unproved.",
+      "entity_id": "test:c60dd7879688c915b69a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Perfect-pairing Betti-pushforward uniqueness proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/perfect-pairing-forces-betti-pushforward.md",
+      "entity_id": "source:f8cdbde47596438a95fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact forced-adjoint Betti matrix checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/perfect_pairing_forces_betti_pushforward.py",
+      "entity_id": "source:4742608e158b387294cc"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1312 — Perfect Pairing Forces the Betti Pushforward Uniquely",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1312 Perfect Pairing Forces the Betti Pushforward Uniquely.md",
+      "entity_id": "source:5aed1623c487a66dbf63"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c60dd7879688c915b69a",
+      "target_id": "claim:0372b797a8cdff03732b",
+      "relation_id": "rel:tests-61e7cbd29f2ee380"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:0372b797a8cdff03732b",
+      "target_id": "source:f8cdbde47596438a95fe",
+      "relation_id": "rel:derived_from-6114920533b2596b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:4742608e158b387294cc",
+      "target_id": "test:c60dd7879688c915b69a",
+      "relation_id": "rel:promotes_to_evidence-0b2f14ae9a05498d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:5aed1623c487a66dbf63",
+      "target_id": "claim:0372b797a8cdff03732b",
+      "relation_id": "rel:promotes_to_evidence-d08b8371310b0370"
+    }
+  ],
+  "digest": "1fd1d8e0a01ee112b25b92f10914ca78acdce99ff1648c290c39bbd5f78cf544"
+}

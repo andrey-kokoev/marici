@@ -1,0 +1,64 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1372,
+  "event_id": "ev-000000001372-f589b52f-39c9-442f-9242-36f3bec76b2a",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "435ad55f2dda1a42d3a18e3af5941064dd347fe6c95bb895d1df70b7f595ad12",
+  "proposal_id": "ep_068e1b93-2355-4aad-a9d1-75313f4e1572",
+  "proposal_digest": "eff12bab0dd1a327aa96c158a2e8c45128c9544e224d30e479af6528fec1ead4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1349 — Cubic Kummer Primitives Produce a Canonical Modular Infinity Coset",
+      "status": "supported",
+      "path": "src/ledger/20260820-1349 Cubic Kummer Primitives Produce a Canonical Modular Infinity Coset.md",
+      "entity_id": "mariciledger_entry:29852b836af26a481e45"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Cubic Kummer primitives yield a nonzero gauge-invariant radial boundary coset at maximal observed modular rank",
+      "status": "supported",
+      "body": "All nine fibers across three primes are affine-consistent. At maximal observed rank 1152, the stacked radial-boundary matrix has full rank 1921; its restriction to the 769-dimensional affine kernel has rank 769, and the inhomogeneous boundary-kernel system is inconsistent. Characteristic-zero reconstruction remains pending.",
+      "entity_id": "mariciclaim:49b9ff96d3e6bcb9cd32"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Degree-three multi-prime rank scan and maximal-rank boundary test",
+      "status": "passed",
+      "entity_id": "maricitest:5f9168282b2d13ddabbb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:29852b836af26a481e45",
+      "target_id": "mariciclaim:49b9ff96d3e6bcb9cd32",
+      "relation_id": "rel:maricirecords-7f3613e5239d8cd3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:49b9ff96d3e6bcb9cd32",
+      "target_id": "maricitest:5f9168282b2d13ddabbb",
+      "relation_id": "rel:maricisupported_by-ac4bded176222eab"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Admit the cubic Kummer modular infinity-coset theorem candidate with explicit exact-certification gate."
+  },
+  "idempotency_key": "auto-admission-395655a182f26b200e4dbc33",
+  "occurred_at": "2026-08-20T23:15:31.8547564Z",
+  "certifies_truth": false,
+  "event_hash": "cfe4beb42c87afd08b5a698e891399193437538438a4365f54d8595b9b198874"
+}

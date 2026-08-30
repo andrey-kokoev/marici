@@ -606,7 +606,7 @@ fn fixed_signature(sol: &Sol) -> (u16, Vec<usize>) {
         .filter_map(|(i, fixed)| fixed.then_some(i)).collect();
     (mask, coordinates)
 }
-fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
+fn source_presentation(g: &Geometry, master: usize, degree: u8) -> (Vec<Poly>, Poly) {
     let cs = classes(g);
     let mut cols: Vec<Poly> = cs.iter().map(|q| common(g, q)).collect();
     for (sa, sb) in [(1, 1), (1, 0), (0, 1), (0, 0)] {
@@ -616,6 +616,11 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         }
     }
     let rhs = target(g, &cs[master]);
+    (cols, rhs)
+}
+
+fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
+    let (cols, rhs) = source_presentation(g, master, degree);
     let mut mons = BTreeSet::new();
     for q in &cols {
         mons.extend(q.0.keys().copied())
@@ -689,6 +694,84 @@ fn solve(g: &Geometry, master: usize, degree: u8) -> Sol {
         consistent,
         witness: x,
     }
+}
+
+fn rational_text(value: F) -> String {
+    let (numerator, denominator) = rational_reconstruction(value).unwrap_or_else(|| {
+        let centered = if value.0 <= P / 2 {
+            value.0 as i128
+        } else {
+            value.0 as i128 - P as i128
+        };
+        (centered, 1)
+    });
+    if denominator == 1 {
+        numerator.to_string()
+    } else {
+        format!("{numerator}/{denominator}")
+    }
+}
+
+fn source_coefficient_text(value: F) -> String {
+    if std::env::var_os("MARICI_EXACT_RAW_RESIDUES").is_some() {
+        value.0.to_string()
+    } else {
+        rational_text(value)
+    }
+}
+
+fn run_exact_point_source_export() {
+    let u: u64 = std::env::var("MARICI_EXACT_U")
+        .ok()
+        .and_then(|x| x.parse().ok())
+        .unwrap_or(7);
+    let v: u64 = std::env::var("MARICI_EXACT_V")
+        .ok()
+        .and_then(|x| x.parse().ok())
+        .unwrap_or(11);
+    let axis = std::env::var("MARICI_EXACT_AXIS")
+        .ok()
+        .and_then(|x| x.chars().next())
+        .unwrap_or('u');
+    let master: usize = std::env::var("MARICI_EXACT_MASTER")
+        .ok()
+        .and_then(|x| x.parse().ok())
+        .unwrap_or(0);
+    let g = geometry(u, v, axis);
+    let (columns, rhs) = source_presentation(&g, master, 8);
+    let mut monomials = BTreeSet::new();
+    for column in &columns {
+        monomials.extend(column.0.keys().copied());
+    }
+    monomials.extend(rhs.0.keys().copied());
+    let rows: Vec<String> = monomials
+        .iter()
+        .map(|monomial| {
+            let entries = columns
+                .iter()
+                .enumerate()
+                .filter_map(|(column, polynomial)| {
+                    polynomial
+                        .0
+                        .get(monomial)
+                        .copied()
+                        .filter(|value| value.0 != 0)
+                .map(|value| format!("[{},\"{}\"]", column, source_coefficient_text(value)))
+                })
+                .collect::<Vec<_>>()
+                .join(",");
+            let right = rhs.0.get(monomial).copied().unwrap_or(F::z());
+            format!(
+                "{{\"monomial\":[{},{}],\"entries\":[{}],\"rhs\":\"{}\"}}",
+                monomial.0,
+                monomial.1,
+                entries,
+            source_coefficient_text(right)
+            )
+        })
+        .collect();
+    println!("{{\"schema\":\"marici.benincasa.marked_relative_exact_point_source.v1\",\"prime\":{},\"u\":{},\"v\":{},\"axis\":\"{}\",\"master\":{},\"primitive_degree\":8,\"unknowns\":{},\"rows\":[{}]}}",
+        P, u, v, axis, master, columns.len(), rows.join(","));
 }
 
 fn run_primal_witness(samples: &[(u64, u64)]) {
@@ -1384,6 +1467,10 @@ fn polynomial_column_rank(columns: &[Poly]) -> usize {
 }
 
 fn main() {
+    if std::env::var_os("MARICI_EXACT_POINT_SOURCE_MODE").is_some() {
+        run_exact_point_source_export();
+        return;
+    }
     let reconstruction_mode = std::env::var_os("MARICI_RECONSTRUCTION_MODE").is_some();
     let master_count = if reconstruction_mode { 3 } else { 12 };
     let samples: Vec<(u64, u64)> = std::env::var("MARICI_UV_SAMPLES")

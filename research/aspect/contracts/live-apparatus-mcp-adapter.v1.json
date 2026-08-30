@@ -1,0 +1,25 @@
+{
+  "schema": "marici.aspect.live-apparatus-mcp-adapter.v1",
+  "surface_id": "optical-apparatus",
+  "required_tools": {
+    "apparatus_capability_read": {"read_only": true, "required_outputs": ["device_id", "firmware", "capabilities", "attestation"]},
+    "apparatus_route_dry_run": {"read_only": true, "required_inputs": ["route_plan", "expected_inventory_digest"], "required_outputs": ["admitted", "resolved_routes", "inventory_digest"]},
+    "apparatus_route_dispatch": {"read_only": false, "required_inputs": ["dry_run_ref", "operator_authority_ref", "route_plan_digest"], "required_outputs": ["execution_ref"]},
+    "apparatus_receipts_read": {"read_only": true, "required_inputs": ["execution_ref"], "required_outputs": ["device_receipts", "completion_state"]}
+  },
+  "safety_invariants": [
+    "dispatch_requires_prior_matching_dry_run",
+    "dispatch_requires_operator_authority",
+    "no_wildcard_device_targets",
+    "receipts_are_device_signed",
+    "capability_digest_is_bound_to_execution",
+    "replay_nonce_is_unique"
+  ],
+  "fixtures": [
+    {"id": "conformant_candidate", "fault": null, "expect_admit": true},
+    {"id": "missing_readback_hostile", "fault": "missing_readback", "expect_admit": false},
+    {"id": "unscoped_dispatch_hostile", "fault": "unscoped_dispatch", "expect_admit": false},
+    {"id": "unsigned_receipt_hostile", "fault": "unsigned_receipt", "expect_admit": false},
+    {"id": "missing_authority_hostile", "fault": "missing_authority", "expect_admit": false}
+  ]
+}

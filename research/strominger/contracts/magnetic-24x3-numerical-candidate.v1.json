@@ -1,0 +1,503 @@
+{
+  "schema": "marici.strominger.magnetic-24x3-numerical-candidate.v1",
+  "status": "floating_point_construction_evidence_only",
+  "backend": "numpy 2.5.2 and scipy 1.18.1, float64",
+  "seed": 2721,
+  "objective": "determinant repulsion followed by inverse-power singular-value floor optimization",
+  "physical_realization_dpc": {
+    "schema": "marici.dpc.magnetic_port_realization.v1",
+    "state": "mathematically_completed_operationally_unclosed",
+    "pipeline": ["magnetic_low_block","harmonic_observation","algebraic_redundancy_encoder","coefficient_realization","instrument_execution","fault_typed_decoder"],
+    "constructors": [
+      {"id":"magnetic_low_block","input":"smooth coexact hard-flux low block","output":"H_2,M direct_sum H_3,M direct_sum H_4,M","authority_kind":"source_constructor","status":"authorized"},
+      {"id":"harmonic_observation","input":"H_2,M direct_sum H_3,M direct_sum H_4,M","output":"R^21 labelled normalized harmonic coefficients","authority_kind":"observation","status":"authorized"},
+      {"id":"algebraic_redundancy_encoder","input":"R^21","output":"R^24","authority_kind":"mathematical_constructor","status":"authorized"},
+      {"id":"coefficient_realization","input":"exact algebraic expression DAG","output":"implemented 24-by-21 coefficient matrix","authority_kind":"realization","status":"missing"},
+      {"id":"instrument_execution","input":"implemented coefficient matrix and magnetic signal","output":"24 physical records","authority_kind":"execution","status":"missing"},
+      {"id":"fault_typed_decoder","input":"fault-labelled surviving records","output":"reconstructed low-block coefficients","authority_kind":"decoder","status":"conditional_on_fault_grammar"}
+    ],
+    "fault_grammar": [
+      {"kind":"known_erasure","mathematical_action":"row deletion","location_known":true},
+      {"kind":"unknown_additive_error","mathematical_action":"syndrome-line localization","location_known":false},
+      {"kind":"known_erasure_plus_unknown_error","mathematical_action":"quotient syndrome localization","location_known":"partial"},
+      {"kind":"coefficient_drift","mathematical_action":"operator perturbation of encoder","location_known":"not_applicable"},
+      {"kind":"correlated_port_loss","mathematical_action":"fault-hypergraph row deletion","location_known":true},
+      {"kind":"harmonic_label_confusion","mathematical_action":"permutation or alias channel","location_known":false}
+    ],
+    "local_detector_architecture_declared": false,
+    "detector_support_combinatorics": {
+      "support_graph_left_vertices": "21 labelled harmonic coordinates",
+      "support_graph_right_vertices": "24 detector ports",
+      "three_erasure_robust_hall_condition": "for every nonempty harmonic subset T, |N(T)| >= |T|+3",
+      "minimum_degree_per_harmonic_coordinate": 4,
+      "minimum_total_mode_port_incidences": 84,
+      "lower_bound_on_maximum_port_support_width": 4,
+      "support_width_at_most_three_possible": false,
+      "proof_kind": "support-only necessary condition, not coefficient sufficiency",
+      "claims_robust_hall_support_constructs_full_spark_coefficients": false,
+      "width_four_exact_fixture": {
+        "column_support_law": "coordinate c couples to ports c,c+1,c+2,c+3",
+        "column_coefficients": [[55,15,98,71],[78,49,61,81],[39,9,76,72],[93,27,66,34],[84,86,16,87],[18,28,29,69],[3,78,42,17],[66,12,76,93],[43,26,81,24],[97,86,5,43],[7,30,26,19],[33,79,76,19],[11,64,13,92],[24,11,42,95],[24,55,91,95],[4,82,82,64],[52,60,78,5],[100,60,85,88],[75,26,37,49],[95,97,20,75],[71,6,57,100]],
+        "total_incidences": 84,
+        "maximum_port_support_width": 4,
+        "modular_certificate_prime": 1000000007,
+        "minimum_nonzero_determinant_residue": 75098,
+        "minimum_residue_deletion_witness_zero_based": [2,7,11],
+        "all_2024_retained_determinants_nonzero_over_integers": true,
+        "parseval": false,
+        "uniform_stability_certified": false,
+        "claims_width_four_support_alone_guarantees_full_spark": false,
+        "column_normalized_full_condition_float64": 38.540389499680614,
+        "column_normalized_worst_three_deletion_condition_float64": 7785448.629888088,
+        "column_normalized_worst_deletion_zero_based": [13,20,21],
+        "interval_parseval_obstruction": "columns c and c+3 have one nonzero overlap, so full-spark support forbids orthogonality",
+        "principal_whitening_nonzero_count_at_1e_minus_10": 504,
+        "principal_whitening_total_entry_count": 504,
+        "claims_all_width_four_support_graphs_forbid_parseval": false
+      },
+      "width_four_tree_core_fixture": {
+        "support_law": "column c couples to common ports 0,1 and path-edge ports c+2,c+3",
+        "column_coefficients": [[55,15,98,71],[78,49,61,81],[39,9,76,72],[93,27,66,34],[84,86,16,87],[18,28,29,69],[3,78,42,17],[66,12,76,93],[43,26,81,24],[97,86,5,43],[7,30,26,19],[33,79,76,19],[11,64,13,92],[24,11,42,95],[24,55,91,95],[4,82,82,64],[52,60,78,5],[100,60,85,88],[75,26,37,49],[95,97,20,75],[71,6,57,100]],
+        "total_incidences": 84,
+        "single_overlap_column_pairs": 0,
+        "modular_certificate_prime": 1000000007,
+        "minimum_nonzero_determinant_residue": 136538,
+        "minimum_residue_deletion_witness_zero_based": [5,18,20],
+        "all_2024_retained_determinants_nonzero_over_integers": true,
+        "column_normalized_full_condition_float64": 195.8955478990183,
+        "column_normalized_worst_three_deletion_condition_float64": 213132.61090786647,
+        "column_normalized_worst_deletion_zero_based": [4,16,23],
+        "parseval_obstruction": "three matching-edge columns restrict to three nonzero pairwise-orthogonal vectors on a two-port common core",
+        "matching_column_witness_zero_based": [0,2,4],
+        "parseval": false,
+        "uniform_stability_certified": false,
+        "claims_no_single_overlaps_imply_parseval_realizability": false
+      }
+    },
+    "operational_metric_constructor": {
+      "signal_norm_symbol": "G",
+      "port_noise_covariance_symbol": "Sigma",
+      "fault_weight_symbol": "pi(S)",
+      "detector_coupling_cost_symbol": "C(E)",
+      "decoder_class_symbol": "D",
+      "locality_geometry_symbol": "L",
+      "generalized_information_matrix": "G^(-1/2)*E_R^T*Sigma_R^(-1)*E_R*G^(-1/2)",
+      "generalized_stability_floor": "minimum eigenvalue of generalized information matrix",
+      "euclidean_harmonic_norm_source_authorized_as_physical_energy": false,
+      "isotropic_independent_port_noise_source_authorized": false,
+      "uniform_three_deletion_risk_source_authorized": false,
+      "detector_coupling_cost_source_authorized": false,
+      "decoder_resource_model_source_authorized": false,
+      "spatial_locality_geometry_source_authorized": false,
+      "ordinary_condition_number_authorized_for_cross_architecture_physical_ranking": false,
+      "decoder_preconditioning_removes_measurement_noise_amplification": false,
+      "metric_must_precede_encoder_selection": true,
+      "common_metric_required_across_compared_architectures": true,
+      "candidate_fitted_metric_G_equals_EtE_prohibited": true,
+      "coordinate_covariance_law": "E'=E*S^(-1), G'=S^(-T)*G*S^(-1), generalized information spectrum unchanged",
+      "claims_metric_is_currently_predeclared": false,
+      "source_metric_audit": {
+        "normalized_angular_L2_coefficient_metric_authorized": true,
+        "normalized_angular_L2_metric_kind": "mathematical benchmark",
+        "news_energy_formula": "sum_i |c_i|^2 integral |f_i'(u)|^2 du",
+        "news_energy_metric_kind": "positive_semidefinite history seminorm",
+        "stationary_low_block_news_energy": 0,
+        "stationary_low_block_null_dimension": 21,
+        "common_temporal_profile_source_authorized": false,
+        "positive_profile_weight_floor_source_authorized": false,
+        "boundary_soft_norm_source_authorized": false,
+        "news_energy_supplies_invertible_static_coefficient_metric": false
+      }
+    },
+    "static_distinction_authority": {
+      "object": "magnetic l=2,3,4 shear coefficient block",
+      "dimension": 21,
+      "declared_phase_space": "weak finite-news-energy radiative phase space with smooth angular shear",
+      "complete_local_shear_tests_separate_points": true,
+      "low_harmonic_coefficient_ports_separate_points": true,
+      "exact_form_gauge_quotient_removes_nonzero_coexact_magnetic_modes": false,
+      "conservation_l0_l1_restrictions_remove_l2_l3_l4_modes": false,
+      "antipodal_matching_map_invertible": true,
+      "grade_three_readout_blind_dimension": 21,
+      "grade_three_blindness_implies_all_observables_blind": false,
+      "zero_news_energy_implies_pure_gauge": false,
+      "no_magnetic_endpoint_policy_source_authorized_as_universal": false,
+      "no_magnetic_endpoint_policy_excludes_static_endpoint_modes": true,
+      "returning_low_mode_histories_survive_zero_endpoint_policy": true,
+      "time_resolved_shear_or_news_ports_detect_returning_histories": true,
+      "verdict": "kinematically and observationally distinct before optional endpoint quotient; not distinguished by grade-three readout or news energy alone"
+    },
+    "interface_selection_authority": {
+      "grade_three_object": "paired magnetic fourth-order incidence port",
+      "grade_three_mathematical_constructor_authorized": true,
+      "grade_three_continuity_and_fredholm_typing_authorized": true,
+      "grade_three_physically_privileged_interface_authorized": false,
+      "observer_class_declared": false,
+      "accessible_field_region_declared": false,
+      "available_derivative_grade_declared": false,
+      "angular_integration_capability_declared": false,
+      "endpoint_versus_history_access_declared": false,
+      "direct_low_coefficient_ports_authorized": true,
+      "complete_local_shear_tests_authorized": true,
+      "lower_grade_ports_may_detect_low_modes": true,
+      "comparative_cost_of_direct_ports_declared": false,
+      "reason_grade_three_is_unavoidable_declared": false,
+      "low_mode_bypass_mathematically_authorized": true,
+      "redundant_bypass_instrument_execution_authorized": false,
+      "current_24_port_role": "conditional fault-tolerant bypass design, not source-forced physical interface",
+      "claims_24_port_repair_is_physically_necessary": false
+    },
+    "programme_disposition": {
+      "intrinsic_results_retained": ["completed magnetic low block has dimension 21","grade-three readout kernel on low block has dimension 21","direct low-harmonic ports restore faithfulness","static low modes are contextually distinguishable before optional endpoint quotient"],
+      "conditional_engineering_results_retained": ["exact algebraic 24-port encoder exists","three-erasure and mixed decoding invariants are classified","sharp unconstrained coefficient-failure radius is certified","sparse width-four exact-recovery fixtures exist"],
+      "physical_claims_not_authorized": ["grade three is an unavoidable observer interface","24 ports are physically necessary or optimal","uniform deletion triples are a source-derived fault model","Euclidean conditioning is the physical objective","the optimized encoder is instrument-executable"],
+      "encoder_optimization_lane_status": "conditionally_closed_pending_new_authority",
+      "resume_requires": ["interface_selection_authority","source_fault_grammar","operational_metric_authority"],
+      "new_numerical_improvement_alone_reopens_lane": false,
+      "conditional_closure_invalidates_intrinsic_kernel_theorem": false,
+      "conditional_closure_invalidates_mathematical_encoder_theorems": false
+    },
+    "physical_fault_grammar_source_authorized": false,
+    "physical_noise_model_source_authorized": false,
+    "hostile_fixtures": [
+      {"id":"formula_to_realization","input_claim":"an exact coefficient expression DAG is already an implemented coefficient matrix","expected_code":"coefficient_realization_laundering","admitted":false},
+      {"id":"existence_to_execution","input_claim":"exact algebraic encoder exists, therefore ports execute","expected_code":"algebraic_encoder_execution_laundering","admitted":false},
+      {"id":"bound_without_measurement","input_claim":"realization error is at most 0.0001 without calibration record","expected_code":"realization_bound_without_calibration","admitted":false},
+      {"id":"erasure_to_unknown_error","input_claim":"known-row deletion theorem decodes an unknown corrupt location","expected_code":"fault_semantics_mismatch","admitted":false},
+      {"id":"independent_to_correlated","input_claim":"three arbitrary independent erasures authorize a correlated physical loss model","expected_code":"undeclared_fault_hyperedge","admitted":false},
+      {"id":"radius_to_noise","input_claim":"sharp coefficient failure radius is a physical noise tolerance","expected_code":"physical_noise_authority_laundering","admitted":false},
+      {"id":"dense_formula_to_local_detector","input_claim":"a dense algebraic encoder formula supplies a local detector architecture","expected_code":"detector_locality_laundering","admitted":false},
+      {"id":"three_local_modes_per_port","input_claim":"24 ports each coupled to at most three harmonic modes can tolerate every three-port erasure","expected_code":"detector_support_incidence_deficit","admitted":false}
+      ,{"id":"euclidean_norm_to_energy","input_claim":"normalized harmonic Euclidean norm is the physical signal-energy norm","expected_code":"signal_norm_authority_laundering","admitted":false}
+      ,{"id":"iid_noise_assumption","input_claim":"port noise is independent and isotropic without a covariance constructor","expected_code":"noise_covariance_authority_laundering","admitted":false}
+      ,{"id":"uniform_triple_risk","input_claim":"all three-port deletion sets have equal physical relevance","expected_code":"fault_weight_authority_laundering","admitted":false}
+      ,{"id":"preconditioning_erases_noise","input_claim":"digital inverse-Gram preconditioning removes analog measurement-noise amplification","expected_code":"decoder_preconditioning_noise_laundering","admitted":false}
+      ,{"id":"posthoc_metric_whitening","input_claim":"choose G=E^T E after seeing each candidate and compare both as tight","expected_code":"candidate_fitted_metric_laundering","admitted":false}
+      ,{"id":"finite_energy_to_static_norm","input_claim":"finite Bondi news energy supplies a positive-definite norm on stationary low-mode coefficients","expected_code":"history_seminorm_to_static_norm_laundering","admitted":false}
+      ,{"id":"grade_three_to_all_observables","input_claim":"grade-three blindness makes the low block observationally null for every authorized port","expected_code":"single_readout_kernel_to_observational_null_laundering","admitted":false}
+      ,{"id":"zero_energy_to_gauge","input_claim":"zero news energy makes stationary magnetic low modes pure gauge","expected_code":"energy_kernel_to_gauge_laundering","admitted":false}
+      ,{"id":"endpoint_to_history_exclusion","input_claim":"zero magnetic endpoints exclude returning magnetic low-mode histories","expected_code":"endpoint_policy_to_history_exclusion_laundering","admitted":false}
+      ,{"id":"matching_to_alias","input_claim":"antipodal matching identifies distinct low-mode coefficients through a noninvertible sum","expected_code":"invertible_matching_to_alias_laundering","admitted":false}
+      ,{"id":"kernel_requires_repair","input_claim":"a kernel in one selected readout proves every observer requires a bypass","expected_code":"selected_interface_kernel_to_universal_repair_laundering","admitted":false}
+      ,{"id":"minimal21_to_optimal24","input_claim":"21 ports are rank-minimal, therefore 24 redundant ports are physically optimal","expected_code":"rank_minimality_to_physical_optimality_laundering","admitted":false}
+      ,{"id":"derived_grade_to_privilege","input_claim":"the derived fourth-order incidence map is the physically privileged observer interface","expected_code":"mathematical_constructor_to_interface_privilege_laundering","admitted":false}
+      ,{"id":"bypass_to_execution","input_claim":"authorized direct low coefficients make the redundant 24-port bypass executable","expected_code":"bypass_observation_to_instrument_execution_laundering","admitted":false}
+    ],
+    "completion_requires": ["coefficient_realization_authority","instrument_execution_authority","calibration_witness","source_fault_grammar","detector_support_architecture","operational_metric_authority","interface_selection_authority"],
+    "completion_requirement_deletion_witnesses": {
+      "coefficient_realization_authority":"formula_to_realization",
+      "instrument_execution_authority":"existence_to_execution",
+      "calibration_witness":"bound_without_measurement",
+      "source_fault_grammar":"erasure_to_unknown_error",
+      "detector_support_architecture":"dense_formula_to_local_detector",
+      "operational_metric_authority":"euclidean_norm_to_energy",
+      "interface_selection_authority":"derived_grade_to_privilege"
+    },
+    "minimality_scope": "relative to the declared physical-realization DPC constructor grammar",
+    "claims_absolute_minimality": false,
+    "claims_current_pipeline_is_physical_capability": false
+  },
+  "optimization_trace": {
+    "initial_condition_upper_bracket": 272.99622781482896,
+    "extended_stage_condition_upper_brackets": [263.3230595054472,265.61515698856795,260.63561791062455],
+    "stiefel_global_acceptance_condition_upper_bracket": 243.50185507079428,
+    "stiefel_near_active_triples": [[0,2,23],[2,7,23],[0,3,23],[3,5,19],[5,6,19],[0,13,20],[8,11,18],[2,8,20]],
+    "stiefel_eighth_to_first_floor_ratio": 1.003708222926863,
+    "refined_stiefel_condition_upper_bracket": 243.1082229842166,
+    "refined_stiefel_near_active_triples": [[0,3,23],[0,2,23],[2,7,23],[5,6,19],[3,5,19],[0,13,20]],
+    "refined_third_to_first_floor_ratio": 1.0000004575023183,
+    "expanded_sixteen_constraint_condition_upper_bracket": 238.40834228941753,
+    "expanded_near_active_triple_count": 17,
+    "expanded_seventeenth_to_first_floor_ratio": 1.0000063595169448,
+    "surrogate_is_monotone_for_true_floor": false,
+    "five_near_active_triples_at_final_stage": [[0,2,23],[0,3,23],[8,11,18],[12,13,18],[3,5,19]],
+    "fifth_to_first_floor_ratio": 1.0887770887615387
+  },
+  "matrix": [
+    [0.3667789671141868,-0.20893341030208126,-0.024451461341716507],
+    [0.12895853379010708,0.1375102490041133,0.2397891990544584],
+    [-0.3519837614491606,0.05685375260629175,0.15225569054220836],
+    [-0.20072057841962965,0.34787531628488677,-0.13136408462404528],
+    [0.20762182329891793,0.10166598960667178,-0.2644821675542094],
+    [0.03471171641333891,0.008333147336448136,-0.3247626147014502],
+    [0.10522271008486207,-0.17213048234301484,-0.2962501365967133],
+    [0.033767461937920726,-0.2555471284691326,0.25576831161494384],
+    [0.12595727083126565,0.3222337573467412,-0.10785662825703708],
+    [0.20022764281753513,0.06568237374479112,0.21650820617486924],
+    [0.16260048750323763,-0.004506314783850885,0.2613859599317312],
+    [-0.0773667440923887,-0.3476885763689452,-0.07242792199711807],
+    [-0.07020213762434087,-0.11420889015049565,-0.2806385315557567],
+    [-0.031192202642452274,0.34237837348538297,-0.1818266507454984],
+    [-0.305861599504306,-0.1337808696090533,0.04303544058069973],
+    [0.16729988524226236,0.180706484147272,0.18469860302590843],
+    [-0.04801878246917173,0.35299273634962314,0.15966948949433743],
+    [-0.2948037967566699,-0.0679404178591073,-0.10250244700703492],
+    [-0.048352169777202234,-0.3335387951047289,-0.12850126276632728],
+    [-0.0017695829708858286,0.07612756004364865,-0.31683590241928744],
+    [-0.3070621013766098,-0.0851882863526563,0.1598984654262],
+    [-0.07094491515745618,-0.1383283273356767,0.3004428718897592],
+    [0.28495508881495246,0.03170888714793806,0.13980006741371329],
+    [0.3744852206499089,-0.15592882146014458,-0.06873008853822536]
+  ],
+  "expected": {
+    "shape": [24,3],
+    "triple_count": 2024,
+    "worst_rows_zero_based": [8,11,18],
+    "minimum_singular_value": 0.004194484095636396,
+    "worst_condition_number": 238.40834228941753,
+    "minimum_absolute_minor": 0.0004052758603590086,
+    "parseval_defect_max": 1e-12,
+    "minimum_shape_factor": 0.04275141197556735,
+    "minimum_shape_factor_rows_zero_based": [0,13,20],
+    "shape_factor_maximum": 0.8901238372330602,
+    "determinant_lower_bound_minimum_slack_ratio": 1.0001209240026292,
+    "determinant_lower_bound": "sigma_min(T)>=2*abs(det(T))/frobenius_norm(T)^2",
+    "determinant_cube_upper_bound": "sigma_min(T)<=abs(det(T))^(1/3)"
+  },
+  "authority": {
+    "optimality_proved": false,
+    "stored_decimal_matrix_is_exact_parseval": false,
+    "exact_algebraic_polar_frame_constructed": true,
+    "physical_observation_ports_authorized": false,
+    "numerical_upper_bracket_only": true
+  },
+  "exact_polar_certificate": {
+    "stored_decimal_matrix_interpreted_over": "Q",
+    "exact_constructor": "Q=B*(B^T*B)^(-1/2)",
+    "gram_operator_defect_upper_bound": "1/100000000000000",
+    "triple_floor_lower_bound": "2*abs(det(T))/frobenius_norm(T)^2",
+    "certified_exact_parseval_sigma_floor": "1/673",
+    "certified_exact_worst_condition_upper_bound": 673,
+    "sharp_sylvester_test_threshold": "1/261+1/100000000000000",
+    "sharp_sylvester_tested_triple_count": 2024,
+    "sharp_sylvester_minimum_leading_principal_minors_decimal": [0.09192226219962857,0.000298941483403695,3.8176983086274797e-10],
+    "sharp_certified_exact_parseval_sigma_floor": "1/261",
+    "sharp_certified_exact_worst_condition_upper_bound": 261,
+    "tight_certified_exact_condition_upper_bound": "238.4083423",
+    "tight_test_threshold": "1/238.4083423+1/100000000000000",
+    "tight_active_triple_zero_based": [8,11,18],
+    "tighter_hostile_certificate_request": "238.4083422894",
+    "claims_failed_certificate_disproves_bound": false,
+    "generalized_pencil_law": "B_T^T*B_T-tau^2*B^T*B positive definite iff sigma_min(B_T*(B^T*B)^(-1/2))>tau",
+    "generalized_pencil_certified_condition_upper_bound": "238.4083422895",
+    "generalized_pencil_certified_condition_lower_bound": "238.4083422894",
+    "generalized_pencil_active_triple_zero_based": [8,11,18],
+    "generalized_pencil_is_invariant_polar_test": true,
+    "claims_float64_condition_is_rigorous": false,
+    "claims_polar_factor_has_rational_entries": false,
+    "physical_observation_ports_authorized": false
+  },
+  "clarke_stationarity_audit": {
+    "near_active_triples_zero_based": [[8,11,18],[7,12,18],[6,11,18],[3,5,19],[0,3,23],[0,4,7],[7,8,9],[5,6,19],[3,13,20],[0,2,23],[2,8,20],[0,13,20],[10,14,19],[10,13,15],[2,7,23],[6,12,23]],
+    "closest_convex_gradient_weights": [0.04630769598511799,0.004565102933667966,0.047369994870567145,0.04487020711770799,0.23442859690573004,0.018434363372639293,0.01032247371119325,0.04551662081153491,0.06123973386230311,0.262396527226816,0.03577034314986314,0.08080401391878374,0.005299138465189152,0.002375830225981713,0.08827994688654771,0.012019410556356915],
+    "closest_convex_gradient_residual_norm": 0.03682639832323198,
+    "minimum_common_gradient_pairing": 0.0013561797027156525,
+    "origin_in_near_active_gradient_convex_hull": false,
+    "common_ascent_polar_step": 3.480700588428406e-7,
+    "escaped_minimum_singular_value": 0.004194496683532499,
+    "escaped_condition_number": 238.4076268139579,
+    "escaped_floor_triple_zero_based": [11,16,20],
+    "frozen_frame_globally_optimal": false,
+    "claims_escape_frame_globally_optimal": false,
+    "claims_escape_frame_is_exactified": false,
+    "stiefel_ambient_coordinate_dimension": 72,
+    "stiefel_normal_dimension": 6,
+    "stiefel_tangent_dimension": 66,
+    "caratheodory_maximum_stationarity_support": 67,
+    "claims_caratheodory_requires_67_active_gradients": false
+    ,"orientation_erasure_hostile": {
+      "shared_support_multiset": [[0,1,2],[0,1,2]],
+      "cancelling_oriented_tensors": [[1,0],[-1,0]],
+      "aligned_oriented_tensors": [[1,0],[1,0]],
+      "expected_cancelling_convex_hull_distance": 0,
+      "expected_aligned_convex_hull_distance": 1,
+      "incidence_only_stationarity_classifier_authorized": false,
+      "fixture_is_claimed_realized_by_current_frame": false
+    }
+    ,"singular_gradient_typing": {
+      "simple_value_tensor": "u*v^T",
+      "simple_svd_gauge": "(u,v)~(-u,-v)",
+      "simple_tensor_gauge_invariant": true,
+      "multiplicity_r_subdifferential": "{U*H*V^T: H positive_semidefinite, trace(H)=1}",
+      "repeated_value_has_canonical_rank_one_selector": false,
+      "selector_requires_source_authority": true,
+      "claims_current_active_minima_are_repeated": false
+    }
+  }
+  ,"naimark_projector_typing": {
+    "canonical_robust_design_object": "P=I_24-Q*Q^T",
+    "expected_projector_rank": 21,
+    "analysis_atlas_law": "A^T*A=I_21 and A*A^T=P",
+    "analysis_atlas_gauge": "A~A*O for O in O(21)",
+    "projector_determines_analysis_coordinates_canonically": false,
+    "source_comparison_to_low_harmonic_basis_authorized": false,
+    "physical_port_realization_authorized": false,
+    "claims_numerical_optimization_supplies_executable_ports": false
+    ,"fault_profile_gate": {
+      "duality_law": "kappa_s=max_{|S|=s} 1/sigma_min(Q_S) for 1<=s<=3",
+      "kappa_1_interval": ["3.3098598106","3.3098598107"],
+      "kappa_1_witness_zero_based": [9],
+      "kappa_2_interval": ["26.7230985167","26.7230985168"],
+      "kappa_2_witness_zero_based": [17,22],
+      "kappa_3_interval": ["238.4083422894","238.4083422895"],
+      "kappa_3_witness_zero_based": [8,11,18],
+      "all_components_exact_rationally_certified": true,
+      "claims_one_support_controls_all_cardinalities": false
+      ,"maximum_dimensionally_correctable_erasure_count": 3
+      ,"first_dimensionally_singular_erasure_count": 4
+      ,"retained_row_count_at_first_singular_erasure": 20
+      ,"signal_dimension": 21
+      ,"kappa_s_for_s_at_least_4": "infinity"
+      ,"distance_four_interpretation": "three erasures may be corrected; four erasures force rank loss"
+      ,"fault_semantics": {
+        "conditioning_profile_assumes_known_erasure_locations": true,
+        "distance_four_decoding_inequality": "2e+s<4",
+        "correctable_unknown_error_count": 1,
+        "correctable_mixed_pair": {"unknown_errors":1,"known_erasures":1},
+        "conditioning_profile_locates_unknown_errors": false,
+        "algebraic_error_decoder_supplies_continuous_stability_bound": false
+        ,"syndrome_line_gate": {
+          "one_error_syndrome_line": "span(q_i) in RP^2",
+          "minimum_projective_angle_pair_zero_based": [0,23],
+          "minimum_projective_angle_degrees_float64": 9.428076880380774,
+          "inverse_sine_condition_interval": ["6.10465590","6.10465591"],
+          "all_syndrome_lines_distinct": true,
+          "claims_line_separation_equals_erasure_condition": false,
+          "physical_syndrome_noise_model_source_authorized": false
+          ,"mixed_error_erasure_quotient_gate": {
+            "known_erasure_nuisance_quotient": "R^3/span(q_j)",
+            "worst_known_erasure_zero_based": 7,
+            "worst_candidate_error_pair_zero_based": [2,23],
+            "minimum_quotient_projective_angle_degrees_float64": 0.892115814048453,
+            "inverse_sine_condition_interval": ["64.22719311","64.22719312"],
+            "all_quotient_syndrome_lines_distinct": true,
+            "claims_exact_mixed_decodability_implies_stable_localization": false,
+            "sommerfeld_local_normal_form": {
+              "normalized_gram_identity": "sin^2(theta_ab|j)=det(K_[j,a,b])*K_jj/(det(K_[j,a])*det(K_[j,b]))",
+              "critical_raw_volume_rank_one_based": 41,
+              "raw_volume_triple_count": 2024,
+              "critical_raw_determinant_decimal": 0.0008733894898665105,
+              "critical_projector_gram_determinant_decimal": 7.628092010092841e-7,
+              "critical_pair_gram_determinants_decimal": [0.01966279959712186,0.02110221931483934],
+              "mechanism": "conditional three-way volume is small relative to both surviving pair areas",
+              "claims_mechanism_is_source_forced": false,
+              "ambient_deformation_audit": {
+                "tangent_log_separation_gradient_norm": 476.7597839551228,
+                "normal_component_ratio": 0.005931781200596016,
+                "pairing_with_global_floor_ascent": 16.547577157733535,
+                "cone_correction_coefficient": 9572.3151847712,
+                "polar_retraction_step": 1e-7,
+                "escaped_mixed_condition": 64.22706410492697,
+                "escaped_worst_triple_condition": 238.40813403167968,
+                "source_admissible_deformation_family_authorized": false,
+                "claims_finite_step_is_global_pareto_theorem": false,
+                "projector_tangent_audit": {
+                  "vertical_gauge_norm": 1.888849136554248e-11,
+                  "horizontal_norm": 0.9999999999999999,
+                  "projector_derivative_frobenius_norm": 1.414213562373095,
+                  "escape_changes_invariant_projector": true
+                },
+                "missing_port_encoder_constructor": {
+                  "current_generation_authority": "unconstrained numerical frame optimization",
+                  "magnetic_low_block_declared": true,
+                  "magnetic_low_block": "H_2,M direct_sum H_3,M direct_sum H_4,M isomorphic to R^21",
+                  "normalized_harmonic_coordinate_basis_source_authorized": true,
+                  "finite_linear_aggregation_source_authorized": true,
+                  "abstract_rank_21_projector_declared": true,
+                  "encoder_isometry_R21_to_image_P_declared": true,
+                  "encoder_formula": "E=P[:,J]*(P[J,J])^(-1/2), J=[0,...,20]",
+                  "projector_formula": "P=I-B*(B^T*B)^(-1)*B^T",
+                  "projector_entries_exact_rational": true,
+                  "encoder_entries_exact_real_algebraic": true,
+                  "omitted_chart_rows_zero_based": [21,22,23],
+                  "chart_minimum_eigenvalue_float64": 0.027639632740355028,
+                  "mathematical_encoder_constructed": true,
+                  "exact_24_port_coefficient_packet_declared": true,
+                  "exact_coefficient_packet": {
+                    "representation": "algebraic_expression_dag",
+                    "input_matrix_pointer": "/matrix",
+                    "input_scalar_type": "rational decimal literals",
+                    "chart_indices_zero_based": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+                    "nodes": [
+                      {"id":"G","op":"matmul","args":["transpose(B)","B"],"shape":[3,3]},
+                      {"id":"K","op":"matmul","args":["B","inverse(G)","transpose(B)"],"shape":[24,24]},
+                      {"id":"P","op":"subtract","args":["identity(24)","K"],"shape":[24,24]},
+                      {"id":"C","op":"column_select","args":["P","J"],"shape":[24,21]},
+                      {"id":"H","op":"principal_submatrix","args":["P","J"],"shape":[21,21]},
+                      {"id":"R","op":"principal_positive_definite_inverse_square_root","args":["H"],"shape":[21,21]},
+                      {"id":"E","op":"matmul","args":["C","R"],"shape":[24,21]}
+                    ],
+                    "output_node": "E",
+                    "defining_equations": ["E^T*E=I_21","E*E^T=P","R*H*R=I_21","R positive_definite"],
+                    "expanded_scalar_list_required": false,
+                    "exact_chart_witness": "det(B_rows_[21,22,23]) != 0"
+                  },
+                  "realization_acceptance_specification": {
+                    "error_norm": "operator_norm",
+                    "maximum_error": "0.0001",
+                    "nominal_worst_condition_upper_endpoint": "238.4083422895",
+                    "weyl_retained_singular_floor_lower_bound": "1/238.4083422895-0.0001",
+                    "realized_worst_condition_upper_bound": "244.2310134",
+                    "all_three_deletion_patterns_remain_injective": true,
+                    "instrument_measured_against_specification": false,
+                    "claims_mathematical_tolerance_is_physical_noise_model": false
+                  },
+                  "sharp_unconstrained_realization_radius": {
+                    "failure_set": "union over three-port deletion sets of retained encoder rank-defect varieties",
+                    "distance_norm": "operator_norm on the full 24-by-21 coefficient matrix",
+                    "radius_interval": ["1/238.4083422895","1/238.4083422894"],
+                    "radius_decimal_interval": ["0.0041944840956349457","0.0041944840956367052"],
+                    "worst_deletion_set_zero_based": [8,11,18],
+                    "lower_bound_mechanism": "Weyl singular-value perturbation bound",
+                    "upper_bound_witness": "rank-one negative smallest-singular-dyad supported on retained rows",
+                    "hostile_perturbed_retained_rank": 20,
+                    "acceptance_tolerance_fraction_of_radius_upper_bound": "0.02384083422895",
+                    "perturbation_required_to_preserve_parseval": false,
+                    "claims_radius_is_physical_noise_tolerance": false
+                  },
+                  "instrument_execution_authorized": false,
+                  "coefficient_realization_authorized": false,
+                  "required_fields": ["coefficient_realization_authority","instrument_execution_authority"],
+                  "optimizer_seed_is_source_parameter": false,
+                  "admissibility_verdict": "abstract projector deformation is defined; executable magnetic port realization is unauthorized until an encoder constructor is supplied"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ,"leverage_gate": {
+      "expected_mean_leverage": 0.875,
+      "expected_minimum_leverage": 0.8212221453804469,
+      "expected_maximum_leverage": 0.9087189134899234,
+      "expected_maximum_equal_leverage_deviation": 0.05377785461955309,
+      "equal_leverage_port_stratum_satisfied": false,
+      "physical_equal_normalization_required_source_authorized": false,
+      "claims_diagonal_rescaling_preserves_parseval_and_deletion_objective": false
+      ,"ambient_grassmann_dimension": 63
+      ,"fixed_diagonal_independent_constraint_count_on_regular_stratum": 23
+      ,"equal_diagonal_regular_stratum_dimension": 40
+      ,"dimension_formula": "3*(24-3)-(24-1)=40"
+      ,"claims_every_equal_diagonal_point_is_regular": false
+      ,"single_erasure_minimax_condition": "sqrt(8)"
+      ,"single_erasure_minimax_condition_decimal": 2.8284271247461903
+      ,"current_worst_single_erasure_condition": 3.3098598106906176
+      ,"current_worst_single_erasure_row_zero_based": 9
+      ,"current_to_optimal_single_erasure_condition_ratio": 1.170212158458079
+      ,"equal_leverage_iff_single_erasure_minimax_equality": true
+      ,"claims_single_erasure_optimum_implies_three_erasure_optimum": false
+      ,"pareto_hostile": {
+        "complement_constructor": "eight_stacked_copies_of_I_3_divided_by_sqrt_8",
+        "shape": [24,3],
+        "parseval": true,
+        "equal_row_norm_squared": "1/8",
+        "worst_single_erasure_condition": "sqrt(8)",
+        "singular_three_row_witness_zero_based": [0,3,6],
+        "witness_rank": 1,
+        "worst_three_erasure_condition": "infinity",
+        "current_design_and_hostile_fixture_pareto_incomparable": true
+      }
+    }
+  }
+}

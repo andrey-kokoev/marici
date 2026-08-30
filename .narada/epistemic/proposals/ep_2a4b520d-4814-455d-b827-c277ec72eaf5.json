@@ -1,0 +1,62 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_2a4b520d-4814-455d-b827-c277ec72eaf5",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the completed five-site affine IBP boundary audit in the Marici epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-f3edde4dc398a32b33e6bc43",
+  "expected_ledger_head": "318994dbd02029b1ba2007b81cdd4c694a1b02d4e5b66d2af0886b8843d31b2a",
+  "created_at": "2026-08-20T22:31:00.3631883Z",
+  "content_fingerprint": "f3edde4dc398a32b33e6bc432860298ff401a124531914f8bc6bd0b5054a63c4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1315 — Affine Five-Site IBP Closure Begins Only After Forgetting the Infinity Boundary",
+      "status": "established",
+      "path": "src/ledger/20260820-1315 Affine Five-Site IBP Closure Begins Only After Forgetting the Infinity Boundary.md",
+      "entity_id": "mariciledger_entry:0ddf90af3f6e9bb1bf69"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Five-site bounded affine IBP closes at degree four only after forgetting infinity-relative data",
+      "status": "established",
+      "body": "Across F_1009 and F_1013 at z=7,11, degrees 0–3 are inconsistent; degree 4 is affine-consistent but already scalar-free. Coordinate-relative closure first occurs at degree 5 and is likewise scalar-free. Nonconstant period scaling forces the primitive to carry unresolved projective-boundary data.",
+      "entity_id": "mariciclaim:f8b0de5be1afee82d5ae"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Independent-coordinate finite-field five-site IBP census",
+      "status": "passed",
+      "body": "Complete 180-term, five-Kummer-sheet evaluator; two primes, two z fibers, three deck sheets, degrees 0 through 8. The defective affine-line sampler was replaced before admission.",
+      "entity_id": "maricitest:578a9854840fd24078de"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:0ddf90af3f6e9bb1bf69",
+      "target_id": "mariciclaim:f8b0de5be1afee82d5ae",
+      "relation_id": "rel:maricirecords-df0317941b793696"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:f8b0de5be1afee82d5ae",
+      "target_id": "maricitest:578a9854840fd24078de",
+      "relation_id": "rel:maricisupported_by-99da2db75374e8a9"
+    }
+  ],
+  "digest": "1de7edcbbe1e955d67a437b0294382d3774da48cad36ac6644b141ef8393b872"
+}

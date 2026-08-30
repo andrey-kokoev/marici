@@ -1,0 +1,41 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "wp995-robustness-normalization-no-go",
+    "owner": "marici.Figueiredo",
+    "classification": "robustness_margin_is_relative_to_unfrozen_control_normalization",
+    "stratum": "positive target scale L multiplying the three WP993 effective-control target rays, with invariant errors measured in the same formal coordinate units",
+    "inputs": [
+      "research/flavor/flavor-adaptive-control-robustness-radius.md",
+      "research/flavor/results/wp994_adaptive_control_robustness_radius.json",
+      "research/flavor/flavor-robustness-normalization-no-go.md",
+      "research/flavor/checkers/wp995_robustness_normalization_no_go.py",
+      "research/flavor/results/wp995_robustness_normalization_no_go.json"
+    ],
+    "checks": [
+      {
+        "id": "wp995_robustness_normalization_no_go",
+        "path": "research/flavor/checkers/wp995_robustness_normalization_no_go.py",
+        "requires": []
+      }
+    ],
+    "depends_on": ["wp994-adaptive-control-robustness-radius"],
+    "consumes": [
+      "exact unit-target robustness radii",
+      "target-ray scaling",
+      "source-normalization authority gate"
+    ],
+    "provides": [
+      "exact joint-radius law L/24697",
+      "unit-target normalization hostile",
+      "no intrinsic finite robustness threshold without an actuator scale"
+    ],
+    "missing_constructors": [
+      "source-derived actuator normalization fixing L",
+      "admissible control range or energy cost",
+      "calibrated invariant-coordinate error metric tied to that normalization"
+    ],
+    "next_falsifier": "derive an apparatus-level control cost or support law independently of the desired margin and compute the resulting bounded admissible target scale"
+  }
+}

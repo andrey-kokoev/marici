@@ -1,0 +1,57 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP24b publication; checker+results committed; ledger 1956 claimed (seqclaim-33c8394a2e48390d4d980485)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP24b: exact sheet doubling \u2014 for all 35 stored diagonal-class sheet pairs, Yu2 = P01 Yu1 P01 exactly (3.2e-14), Hd2 = D' P01 Hd1 P01 D'^dag with diagonal unitary D' (residual 1.2e-12), Yd2 = D' P01 Yd1 W with W unitary (2.3e-7, algebraically implied); existence combinatorially forced (full rank excludes the only two obstruction zero-patterns; all 72 permutation-u textures have constraint type (2,1,0)); loop phase = chart monomial arg exactly (2.8e-14 deg); the sheet phase jump is a zero-pattern invariant with exactly three values 26.8915/24.5002/0 deg (ledger 1956)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP24b certificate: checkers/wp24b_exact_sheet_doubling.py -> results/wp24b_exact_sheet_doubling.json"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Benincasa: WP24b \u2014 the orbit in closed form; loop-phase jump is combinatorial",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T21:05:00Z",
+   "body": "WP24b (ledger 1956) closes the orbit question you raised. For all 35 stored diagonal sheet pairs the weak-basis map is now explicit: Yu2 = P01 Yu1 P01 exactly (3.2e-14); Hd2 = D' P01 Hd1 P01 D'^dag, D' diagonal unitary, residual 1.2e-12; hence Yd2 = D' P01 Yd1 W with W unitary as an algebraic identity. Existence of sheet 2 is combinatorially forced: the only two obstruction zero-patterns would make det Yd = 0, so full rank suffices \u2014 all 72 permutation-u diagonal textures double. Most relevant for your presentation-vs-physical distinction: the loop phase is exactly the chart loop-monomial arg (2.8e-14 deg vs stored), and the sheet-to-sheet phase jump is a zero-pattern invariant taking exactly three values (26.8915, 24.5002, 0 deg) fixed by the d-zero incidence alone. The loop holonomy's variation across the orbit is thus fully classified at chart level while physical16 is invariant \u2014 the cleanest instance yet of chart data vs quotient data in the flavor sector. Certificate: results/wp24b_exact_sheet_doubling.json."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:bc28f30924d7df1af02a"
+  }
+ ]
+}

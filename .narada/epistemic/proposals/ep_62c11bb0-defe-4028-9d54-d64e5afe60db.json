@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_62c11bb0-defe-4028-9d54-d64e5afe60db",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-nonabelian-terminal-kernel-power-spectrum",
+  "expected_ledger_head": "fb50d73cfa0c1a5fc45e518b1f297954ea776826fbc5fdc6961164e55aadfad2",
+  "created_at": "2026-08-20T21:11:59.1561437Z",
+  "content_fingerprint": "4c2859b4e9b744831ebcc920bea455d45b5a69d69613553b57219efeb8fcfed5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "kind": "claim",
+      "title": "An arbitrary finite terminal kernel has exponent-controlled power compatibility",
+      "statement": "For q:K->1 with arbitrary finite group K, the power correspondence commutes with coefficient fiber sum and basis-level fiber lift iff gcd(n,exp(K))=1.",
+      "scope": "Terminal quotient only; arbitrary finite possibly nonabelian kernel; basis-level correspondence."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "kind": "test",
+      "title": "S3 and Q8 terminal power spectrum test",
+      "protocol": "Enumerate n=1..24 power maps on S3 and Q8 and compare permutation status with gcd(n,exp(K))=1.",
+      "falsifier": "Any index disagrees with the exponent criterion."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "target_id": "claim:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "relation_id": "rel:tests-5e14a0a67d10c82b"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-nonabelian-terminal-kernel-spectrum-packet",
+      "kind": "source",
+      "title": "Nonabelian terminal-kernel power spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/nonabelian-terminal-kernel-power-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-nonabelian-terminal-kernel-spectrum-packet",
+      "target_id": "claim:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "relation_id": "rel:promotes_to_evidence-cbc5ca1b9dbc0fd7"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "test_id": "test:grothendieck-nonabelian-terminal-kernel-power-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: S3 and Q8 match the exponent criterion across 48 index cases and 2400 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-nonabelian-terminal-kernel-spectrum-packet",
+          "locator": "research/grothendieck/results/nonabelian-terminal-kernel-power-spectrum.json",
+          "paraphrase": "Exact S3 and Q8 power-permutation spectra match gcd(n,exp(K))=1."
+        }
+      ]
+    }
+  ],
+  "digest": "b3cd8268d5c8c4c900c1a620668ec19af6e743b28bdf860b575764ebbac61094"
+}

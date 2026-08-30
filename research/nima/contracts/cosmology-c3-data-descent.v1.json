@@ -1,0 +1,27 @@
+{
+  "schema": "marici.data-descent-packet.v1",
+  "contexts": [
+    {"id": "G12", "site": "cosmology_occurrence_groupoid", "stratum_depth": 0},
+    {"id": "G23", "site": "cosmology_occurrence_groupoid", "stratum_depth": 0},
+    {"id": "G31", "site": "cosmology_occurrence_groupoid", "stratum_depth": 0}
+  ],
+  "local_objects": [
+    {"id": "Q12", "context": "G12", "coefficient_type": "F32003", "rank": 26, "grades": ["occurrence", "k_depth_3", "gamma_-1_2"]},
+    {"id": "Q23", "context": "G23", "coefficient_type": "F32003", "rank": 26, "grades": ["occurrence", "k_depth_3", "gamma_-1_2"]},
+    {"id": "Q31", "context": "G31", "coefficient_type": "F32003", "rank": 26, "grades": ["occurrence", "k_depth_3", "gamma_-1_2"]}
+  ],
+  "arrows": [
+    {"id": "T12_23", "kind": "groupoid_arrow", "source": "Q12", "target": "Q23", "invertible": true, "authority_evidence": "cyclic source relabelling"},
+    {"id": "T23_31", "kind": "groupoid_arrow", "source": "Q23", "target": "Q31", "invertible": true, "authority_evidence": "cyclic source relabelling"},
+    {"id": "T31_12", "kind": "groupoid_arrow", "source": "Q31", "target": "Q12", "invertible": true, "authority_evidence": "cyclic source relabelling"}
+  ],
+  "coherence_cells": [
+    {
+      "id": "C3_cycle",
+      "paths": [["T12_23", "T23_31", "T31_12"]],
+      "law": "identity_cycle",
+      "identity_defect": 0,
+      "evidence": "research/nima/results/rank26_cyclic_chart_order_three_closure_p32003.json"
+    }
+  ]
+}

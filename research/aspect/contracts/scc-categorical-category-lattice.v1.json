@@ -1,0 +1,32 @@
+{
+  "id": "category-lattice-categorical-runtime",
+  "objects": [
+    {"id":"carrier"},{"id":"action"},{"id":"observation"},{"id":"completion"}
+  ],
+  "arrows": [
+    {"id":"ca","source":"carrier","target":"action","map_token":"ca"},
+    {"id":"ao","source":"action","target":"observation","map_token":"ao"},
+    {"id":"co","source":"carrier","target":"observation","map_token":"ca"},
+    {"id":"id_o","source":"observation","target":"observation","map_token":"ao"},
+    {"id":"oc","source":"observation","target":"completion","map_token":"oc"}
+  ],
+  "cells": [
+    {"id":"mixed_action_observer","kind":"naturality_square","routes":[["ca","ao"],["co","id_o"]],"threshold":"exact_zero"}
+  ],
+  "fibers": [{
+    "id":"strongest-profile-fiber","profile":["compatible","faithful","faithful","uniform"],
+    "comparison_slots":["named_constructor_actions","observers","viewing_forms","authority","completion_topology","instrument_backaction"],
+    "pairs":[{"left":"minus_identity","right":"split_involution","same_profile":true,"invertible":false,"slot_results":{"named_constructor_actions":false,"observers":true,"viewing_forms":true,"authority":true,"completion_topology":true,"instrument_backaction":true}}]
+  }],
+  "obstructions":[{"id":"mixed_action_observer","type":"noncommuting_cell"},{"id":"realization_fiber_equivalence","type":"missing_intertwiner"}],
+  "impact_edges":[{"from":"mixed_action_observer","to":"observer_faithfulness"},{"from":"observer_faithfulness","to":"completion_margin"},{"from":"completion_margin","to":"physical_claim"}],
+  "higher_coherence":[{"id":"fiber_degree_2","degree":2,"state":"unsupported"},{"id":"fiber_degree_3","degree":3,"state":"unsupported"},{"id":"fiber_degree_4","degree":4,"state":"unsupported"},{"id":"fiber_degree_5","degree":5,"state":"unsupported"}],
+  "promotions":[{"id":"finite_to_completion","requires_cells":["mixed_action_observer"],"requires_equivalences":[],"evidence":[{"locator":"research/aspect/results/category_lattice.json","status":"verified"}]}],
+  "claims":[{"id":"physical_claim","requires":["source_linking_generator","observer_increment","uniform_margin"]}],
+  "available_witnesses":[],
+  "experiments":[
+    {"id":"controlled_conjugate_readout","separates":["observer_increment","uniform_margin"],"preregistered_threshold":"research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json"},
+    {"id":"source_action_rank","separates":["source_linking_generator"],"preregistered_threshold":"exact_nonzero_rank"}
+  ],
+  "functors":[{"id":"theta_to_optics_blindness","source_objects":["source","observer"],"source_arrows":["blindness_map"],"object_map":{"source":"optical_preparation","observer":"detector_packet"},"arrow_map":{"blindness_map":"instrument_kernel"},"preserves":{"identity":true,"composition":true,"declared_cells":true,"authority":true}}]
+}

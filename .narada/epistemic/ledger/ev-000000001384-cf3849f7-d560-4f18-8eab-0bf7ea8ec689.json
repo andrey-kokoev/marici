@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1384,
+  "event_id": "ev-000000001384-cf3849f7-d560-4f18-8eab-0bf7ea8ec689",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c8ac667967eec1b4d063b4cea68d9bb65f3e2e248dc6e0d6ab3f1d7a15123a82",
+  "proposal_id": "ep_ee35fce9-9352-477b-8756-7030f264968c",
+  "proposal_digest": "e51eacc6eac789a80f4856bfb0909cb717b5f2fa104ddf8174d7451798aac611",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Intrinsic primes generate a formal determinant Euler product",
+      "statement": "In the completed multiplicative monoid algebra of the conditional initial semiring, each intrinsic prime p has rank-one identity-inertia determinant L_p=(1-[p])^(-1)=sum_r[p^r). Unique factorization gives the coefficientwise identity product_p L_p=sum_(a nonzero)[a]. The analytic character [a] maps to a^(-s) for Re(s)>1 and recovers the classical zeta Euler product, but the character, continuation, completion, and zero spectrum are not Carrier-derived.",
+      "scope": "Conditional pointed-pi_0 formal Euler theorem; no full-Carrier lift, physical authorization, analytic continuation, or spectral zeros.",
+      "entity_id": "claim:d80704f804fb323a5630"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Coefficientwise unique-factorization Euler test",
+      "procedure": "For each nonzero semiring element a, compute the coefficient of [a] in the product over intrinsic primes of sum_r[p^r]. Compare it with the coefficient in sum_a[a].",
+      "expected_result": "Existence and uniqueness of prime factorization make every coefficient exactly one. Any zero or multiplicity greater than one falsifies the theorem.",
+      "entity_id": "test:4aa745db372570e3d119"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Intrinsic formal Euler-product packet",
+      "version": "1",
+      "locator": "research/grothendieck/intrinsic-formal-euler-product.md",
+      "entity_id": "source:99dbbf0003cf2d7eee11"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1360 — Intrinsic Primes Generate a Formal Euler Product",
+      "version": "1",
+      "locator": "src/ledger/20260820-1360 Intrinsic Primes Generate a Formal Euler Product.md",
+      "entity_id": "source:2a973ff3387baf2707ad"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:4aa745db372570e3d119",
+      "target_id": "claim:d80704f804fb323a5630",
+      "relation_id": "rel:tests-1b90a3bee01b8100"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:d80704f804fb323a5630",
+      "target_id": "source:99dbbf0003cf2d7eee11",
+      "relation_id": "rel:derived_from-adbc60d30554e626"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:2a973ff3387baf2707ad",
+      "target_id": "claim:d80704f804fb323a5630",
+      "relation_id": "rel:reports-7aad793a7d51462e"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Construct Euler factors from derived determinants or traces only after intrinsic primes and Frobenius operations have been audited."
+  },
+  "idempotency_key": "auto-admission-f44dc42bc9367f030a3efbc5",
+  "occurred_at": "2026-08-20T23:33:09.8857506Z",
+  "certifies_truth": false,
+  "event_hash": "9673b45be5259fdc45305f5038fc5bd77bef19f9cabbfb88974342b690614779"
+}

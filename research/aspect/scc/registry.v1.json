@@ -1,0 +1,50 @@
+{
+  "schema": "marici.scc.registry.v1",
+  "checks": [
+    {
+      "id": "rank-stratum",
+      "stage": "stratum",
+      "path": "research/aspect/checkers/check_bockstein_stencil_rank_stratum.py"
+    },
+    {
+      "id": "mixed-line-hostile",
+      "stage": "dynamic_coherence",
+      "path": "research/aspect/checkers/check_flat_mixed_cell_nonhorizontal_line_hostile.py"
+    },
+    {
+      "id": "cone-scope",
+      "stage": "ports",
+      "path": "research/aspect/checkers/check_specialization_cone_checker_scope.py",
+      "status": "historical_rejection_superseded_by_mapping_cone_admission"
+    },
+    {
+      "id": "cone-nonboundary-hostile",
+      "stage": "hostiles",
+      "path": "research/aspect/checkers/check_specialization_cone_nonboundary_hostile.py",
+      "requires": ["sympy"]
+    },
+    {
+      "id": "mapping-cone-admission",
+      "stage": "admission",
+      "path": "research/aspect/checkers/check_specialization_mapping_cone_admission.py"
+    },
+    {
+      "id": "cyclic-closure-admission",
+      "stage": "static_coherence",
+      "path": "research/aspect/checkers/check_dual_gamma_cyclic_closure_admission.py"
+    },
+    {
+      "id": "bivariant-network-v15",
+      "stage": "admission",
+      "path": "research/aspect/checkers/check_frozen_bivariant_signature_v15.py"
+    }
+  ],
+  "groups": {
+    "core": [
+      "rank-stratum",
+      "mixed-line-hostile",
+      "mapping-cone-admission",
+      "cyclic-closure-admission"
+    ]
+  }
+}

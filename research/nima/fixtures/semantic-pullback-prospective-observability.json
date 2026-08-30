@@ -1,0 +1,36 @@
+{
+  "schema": "marici.semantic_pullback_preregistration.v1",
+  "status": "frozen_before_checker",
+  "constructor": {
+    "state_field": "Q",
+    "state_dimension": 4,
+    "transport": [
+      [1, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 1, 1],
+      [0, 0, 0, 1]
+    ],
+    "observer": [[1, 0, 0, 0]],
+    "admitted_record_times": [0, 1, 2],
+    "candidate_extension_time": 3
+  },
+  "target_claim": "the admitted finite record is faithful on the four-state source",
+  "semantic_rule": "pull the scalar effect backward by the exact transpose transport and span the resulting covectors",
+  "prediction": {
+    "admitted_observability_rank": 3,
+    "residual_state_basis": [[0, 0, 0, 1]],
+    "minimal_added_record_count": 1,
+    "candidate_extension_closes": true
+  },
+  "falsifier": {
+    "state": [0, 0, 0, 1],
+    "required_behavior": "zero records at times 0, 1, and 2, followed by a nonzero record at time 3"
+  },
+  "failure_conditions": [
+    "the admitted rank is not 3",
+    "the residual is not exactly the fourth basis direction",
+    "more or fewer than one added scalar record is required",
+    "the time-3 record fails to separate the preregistered hostile state"
+  ],
+  "claim_boundary": "Finite rational linear constructor only; no claim that arbitrary Marici pullbacks are linear observability problems."
+}

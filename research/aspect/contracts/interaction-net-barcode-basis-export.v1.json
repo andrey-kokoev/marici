@@ -1,0 +1,44 @@
+{
+  "schema": "marici.aspect.interaction-net-barcode-basis-export.v1",
+  "status": "awaiting_source_export",
+  "expected_locator": "research/benincasa/results/interaction-net-barcode-basis-export-p32009.json",
+  "field_prime": 32009,
+  "required_blocks": {
+    "source_label_order_depth3": 4800,
+    "source_label_order_depth4": 9120,
+    "adapted_depth3_quotient_basis": {
+      "total_rows": 53,
+      "first_death_rows": 20,
+      "second_death_rows": 6,
+      "through_depth6_rows": 27
+    },
+    "depth4_emergence_complement_rows": 1353,
+    "transition_matrices": ["depth3_to4", "depth3_to5", "depth3_to6"],
+    "dual_pairing_matrices": ["depth3_adapted_duals", "depth4_emergence_duals"],
+    "chart_transports": ["G12_to_G31_depth3", "G12_to_G31_depth4"]
+  },
+  "encoding": {
+    "matrix": "sparse rows",
+    "row": {"indices": "strictly increasing integer array", "values": "same-length nonzero residues"},
+    "coefficient_domain": "integers reduced modulo field_prime",
+    "labels": "exact source ordered-column labels, not positional hashes alone"
+  },
+  "required_identities": [
+    "rank T34 = 33 and nullity T34 = 20",
+    "rank T35 = rank T36 = 27 and nullity 26",
+    "kernel T34 is contained in kernel T35",
+    "adapted first-death rows span kernel T34",
+    "first plus second-death rows span kernel T35",
+    "through-depth6 rows complement kernel T36",
+    "depth4 emergence rows complement image T34",
+    "dual pairing is identity on every declared block",
+    "G12 and G31 chart transports preserve all block flags"
+  ],
+  "optical_compilation": {
+    "finite_field_rows_are_physical_amplitudes": false,
+    "required_lift": "independently chosen complex or integer coefficient lift with normalization",
+    "network": "unitary dilation of normalized analysis rows",
+    "readout": "balanced homodyne for signed or complex rows; intensity only for nonnegative rows",
+    "leakage_test": "off-block response below preregistered full-covariance threshold"
+  }
+}

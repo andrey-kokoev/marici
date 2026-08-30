@@ -1,0 +1,20 @@
+{
+  "schema": "marici.aspect.comb-referenced-flavor-comparison.v1",
+  "purpose": "identify the ternary frequency-comparison cell inside a quaternary physical record",
+  "record_components": ["horizon_setting", "flavor_setting", "detector_endpoint", "comb_reference"],
+  "comparison_inputs": {
+    "geometry_factor_a": [1, 2],
+    "frequency_index_n": [1, 2],
+    "sideband_direction": ["up", "down"],
+    "exact_comb_ratio_q": "2"
+  },
+  "cell_count": 8,
+  "minimum_attempted_trials_per_cell": 1000000,
+  "required_records": [
+    "trial_key", "acquisition_epoch", "a", "n", "sideband_direction",
+    "comb_to_horizon_ratio", "flavor_channel", "detector_endpoint",
+    "count", "no_click_flag", "sealed_schedule_key"
+  ],
+  "identification_law": "For q=2 and n=1, the normalized comparison is (q^a-1)/(q^a+1): 1/3 at a=1 and 3/5 at a=2.",
+  "source_boundary": "The comb identifies which comparison cell occurred. It does not derive or select the source value of a, n, or the flavor scale."
+}

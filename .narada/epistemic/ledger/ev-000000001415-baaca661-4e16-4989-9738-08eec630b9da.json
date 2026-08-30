@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1415,
+  "event_id": "ev-000000001415-baaca661-4e16-4989-9738-08eec630b9da",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "4728a5622137d4ed9198630b017b3685df95a3d4fcf364b98101f4f4e47de278",
+  "proposal_id": "ep_b1f7d753-65d2-4228-b5a2-142e619068db",
+  "proposal_digest": "c5ade08de5b0ca7ad67b2b13ac89992dce4500f2b79f3af92a8c2a3ba2495154",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Energy-dependent boundary linearity gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/energy-dependent-boundary-linearity-gate.md",
+      "entity_id": "source:49a06bdbb4876e188e13"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1381 — An Energy-Dependent Xi Boundary Is Not Yet an Operator",
+      "version": "1",
+      "locator": "src/ledger/20260820-1381 An Energy-Dependent Xi Boundary Is Not Yet an Operator.md",
+      "entity_id": "source:a101972858a397abe04e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "An energy-dependent xi boundary is not a self-adjoint operator without positive linearization",
+      "statement": "An endpoint map depending on the candidate eigenvalue defines a nonlinear pencil, not a fixed self-adjoint domain. A self-adjoint auxiliary linearization requires a source-derived Nevanlinna Weyl function. Any fixed self-adjoint discrete operator whose determinant equals the critical-line normalization of xi would force all xi zeros real and hence prove RH; constructing it diagonally from zeros is circular.",
+      "scope": "Typing and necessity theorem; neither proves RH nor excludes a source-derived positive Weyl-function realization.",
+      "entity_id": "claim:6184247b87b9e6053df7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Fixed-domain and Nevanlinna linearization gate",
+      "description": "Distinguish eigenvalue-dependent boundary pencils from fixed extensions and require conjugation symmetry, upper-half-plane positivity, compact resolvent, and exact determinant normalization.",
+      "entity_id": "test:8951248e566a6e30e274"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:6184247b87b9e6053df7",
+      "target_id": "source:49a06bdbb4876e188e13",
+      "relation_id": "rel:derived_from-b78497eba9496cf3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:6184247b87b9e6053df7",
+      "target_id": "source:a101972858a397abe04e",
+      "relation_id": "rel:derived_from-352c9d33a958449b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:8951248e566a6e30e274",
+      "target_id": "claim:6184247b87b9e6053df7",
+      "relation_id": "rel:tests-2794af873a8170b5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:8951248e566a6e30e274",
+      "target_id": "source:49a06bdbb4876e188e13",
+      "relation_id": "rel:derived_from-b5d58828ebf39309"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying a noncircular Mellin boundary with discrete xi spectrum and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-30f8670c6a54d24d6e85c019",
+  "occurred_at": "2026-08-21T00:12:40.7392798Z",
+  "certifies_truth": false,
+  "event_hash": "fdf2a70347b4efa5870b16d802e9d8fa796ace64f56700d851935e5864084d59"
+}

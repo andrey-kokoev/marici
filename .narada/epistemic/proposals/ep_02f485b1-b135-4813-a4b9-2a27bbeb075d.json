@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_02f485b1-b135-4813-a4b9-2a27bbeb075d",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1339-source-norm-quasi-idempotent-v1",
+  "expected_ledger_head": "41f929d9eeac8337211a3c40b274c449044e7dbb844472e193ebf84ebe035b2d",
+  "created_at": "2026-08-20T22:59:05.7884461Z",
+  "content_fingerprint": "86f7fe657318a9290409c44b5eb209b7b15b4d8b3ae0e662c3430edf643fd606",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The source-side Mackey norm is a degree-idempotent",
+      "statement": "From ST=dI, N=TS satisfies N^2=dN. After inverting d it is a projector onto im T along ker S; at primes dividing d it becomes square-zero and may remain nonzero.",
+      "entity_id": "claim:a56a7a29f3184513ad3b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "One-bit mod-two norm is nonzero square-zero",
+      "procedure": "Take S=[1 1], T=[1;1], d=2 and reduce N=TS modulo two.",
+      "outcome": "N=[[1,1],[1,1]] is nonzero, N^2=0, and image equals kernel.",
+      "falsifier": "This falsifies treating the integral norm identity as an unlocalized chain splitting.",
+      "entity_id": "test:78a9fe1b4ff9cff5b05f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Source-side norm quasi-idempotent",
+      "version": "v1",
+      "locator": "research/grothendieck/source-norm-quasi-idempotent.md",
+      "entity_id": "source:bd9bba6e6afa3fd1532e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1339 — The Source-Side Mackey Norm Is a Degree-Idempotent",
+      "version": "1339",
+      "locator": "src/ledger/20260820-1339 The Source-Side Mackey Norm Is a Degree-Idempotent.md",
+      "entity_id": "source:db8ac07ce3ba0d31e0c9"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:78a9fe1b4ff9cff5b05f",
+      "target_id": "claim:a56a7a29f3184513ad3b",
+      "relation_id": "rel:tests-8d83fdcc1f23a9cc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:a56a7a29f3184513ad3b",
+      "target_id": "source:bd9bba6e6afa3fd1532e",
+      "relation_id": "rel:derived_from-9ecc023d255162e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:db8ac07ce3ba0d31e0c9",
+      "target_id": "claim:a56a7a29f3184513ad3b",
+      "relation_id": "rel:reports-85628eb15900ed4d"
+    }
+  ],
+  "digest": "80b597e396cd7e002f81d2fa2a8eaa93dbb7476d310777616229c8135a627a76"
+}

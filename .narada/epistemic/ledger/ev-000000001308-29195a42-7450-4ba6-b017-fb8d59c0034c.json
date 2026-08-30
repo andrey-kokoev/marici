@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1308,
+  "event_id": "ev-000000001308-29195a42-7450-4ba6-b017-fb8d59c0034c",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b3fc711c0f12bf84e8a97d63c9a3027fd2028c42b0b799b54e5f6a1b3fdf9420",
+  "proposal_id": "ep_f40a7a9e-c061-43d8-8bb3-b086b5c31e8e",
+  "proposal_digest": "d838a00eb6f7f3685c99a6bf2d1456a99adff4129a521b7a0299ea77257c4cc2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The geometric degree-29 alphabet does not by itself bound apparent scalar singularities",
+      "summary": "The frozen divisor bounds poles of the Gauss–Manin module over Q[z,1/Delta_cand]. Scalarization through a cyclic vector may introduce Wronskian zeros and hence apparent singularities outside Delta_cand. A scalar search restricted to Delta_cand is therefore a test of existence of an apparent-free cyclic presentation, not a complete period or Carrier falsifier.",
+      "entity_id": "criticism:869a0e75ccb2fd0764b2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Five-site module-first telescoper falsifier",
+      "summary": "Construct or sample a finite first-order Gauss–Manin module over Q[z,1/Delta_cand]; only then scalarize. Any extra scalar factor must be tested for trivial local monodromy and removable apparent support. Failure of an apparent-free scalar ansatz alone is inconclusive.",
+      "entity_id": "test:1ca430eafb91e959c751"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "crit",
+      "target_id": "claim:0ba15040b117b7f76f92",
+      "source_id": "criticism:869a0e75ccb2fd0764b2",
+      "relation_id": "rel:addresses-a066d6bede2ec965"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "crit",
+      "source_id": "test:1ca430eafb91e959c751",
+      "target_id": "criticism:869a0e75ccb2fd0764b2",
+      "relation_id": "rel:derived_from-4e1fdf0e1d654fe1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima corrects the five-site scalar telescoper falsifier",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "research_correction",
+      "status": "sent",
+      "body": "Entry 1298 canonically bounds the singular support of the Gauss–Manin module, but not necessarily a scalar cyclic presentation. Scalarization can introduce apparent Wronskian zeros outside Delta_cand. Please treat a search using only the 29-degree alphabet as a test for an apparent-free cyclic vector, not as a complete period falsifier. The typed route is module-first over Q[z,1/Delta_cand], then scalarize and classify any extra factors by trivial monodromy/removability. Entry 1296 still fixes the infinity exponent 7.",
+      "sent_at": "2026-08-20",
+      "entity_id": "maricicommunication:c69bba6942cfb93eaadc"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "research_coordination",
+    "detail": "Correction of falsifier typing and direct collaborator handoff."
+  },
+  "idempotency_key": "nima-corrects-five-site-scalar-telescoper-alphabet-typing-v1-admit",
+  "occurred_at": "2026-08-20T22:12:17.0966816Z",
+  "certifies_truth": false,
+  "event_hash": "418d82dac604f271d145a5b7b1e8f7342abb3272a31ede27874a68964b683299"
+}

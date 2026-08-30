@@ -1,0 +1,69 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_3ebe8ff8-c0a6-495f-a958-6dee055b65df",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "cross_sector_theorem",
+    "summary": "Generalize physical descent from surjections to arbitrary source comparisons and quantify ambient extension ambiguity."
+  },
+  "idempotency_key": "nima-supported-readout-factorization-v1",
+  "expected_ledger_head": "6f603490dc931fe1134f22b0c5ab24f97334f8676062eb92b61ac02fe07cdb16",
+  "created_at": "2026-08-20T20:28:06.5214122Z",
+  "content_fingerprint": "cf47ddf854a450c7add367ab0e7062d2cb2afbfd306d3bdcb29d5ec322650912",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Supported Readout Factorization and Extension Ambiguity",
+      "version": "1",
+      "locator": "research/nima/supported-readout-factorization.md",
+      "entity_id": "source:873686af1d446a9cbed7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Arbitrary-map supported readout factorization audit",
+      "method": "Exhaust every matrix and functional over F2 through dimension 3 and F3 through dimension 2; count extensions and verify agreement on the image.",
+      "entity_id": "test:980df25ad85d296cbb5b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Kernel annihilation canonically determines a readout on the source image but not on an ambient target",
+      "summary": "Extensions to the whole target form an affine family of dimension dim W-rank q; only the supported image functional is canonical.",
+      "entity_id": "claim:359a1728b2a902f1e76e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "src",
+      "source_id": "test:980df25ad85d296cbb5b",
+      "target_id": "source:873686af1d446a9cbed7",
+      "relation_id": "rel:derived_from-94577ac37ef1e76e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:980df25ad85d296cbb5b",
+      "target_id": "claim:359a1728b2a902f1e76e",
+      "relation_id": "rel:tests-4e3713f6e7338a79"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:359a1728b2a902f1e76e",
+      "target_id": "source:873686af1d446a9cbed7",
+      "relation_id": "rel:derived_from-50c2226f7d0de662"
+    }
+  ],
+  "digest": "efd7e74606a88a979aee170bc66d4f7979e375f6dea970f99b0126d9ec22aa87"
+}

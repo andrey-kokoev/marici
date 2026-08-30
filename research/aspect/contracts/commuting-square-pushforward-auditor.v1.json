@@ -1,0 +1,16 @@
+{
+  "schema": "marici.aspect.commuting-square-pushforward-auditor.v1",
+  "mode": "same_immutable_event_ledger",
+  "parent_key": ["setting_a", "setting_b", "outcome_a", "outcome_b"],
+  "refinement_fields": ["photon_bin_a", "photon_bin_b", "electron_bin_a", "electron_bin_b", "target_class_a", "target_class_b", "frame_a", "frame_b", "reset_id"],
+  "exact_requirements": {
+    "event_conservation": true,
+    "cell_pushforward_tolerance": 0,
+    "setting_map_fixed": true,
+    "outcome_map_fixed": true,
+    "no_click_inclusive": true
+  },
+  "admission_order": ["identity", "event_conservation", "cell_pushforward", "locality_of_labels", "bell_witness"],
+  "hostiles": ["drop_event", "duplicate_event", "mutate_outcome", "remote_dependent_local_label"],
+  "claim_boundary": {"physical_event_ledger_acquired": false, "hardware_compiler_bound": false}
+}

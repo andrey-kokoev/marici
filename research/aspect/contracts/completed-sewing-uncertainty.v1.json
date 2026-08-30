@@ -1,0 +1,13 @@
+{
+  "schema": "marici.aspect.completed-sewing-uncertainty.v1",
+  "familywise_failure_probability": "1/100",
+  "real_quadrature_component_count": 144,
+  "minimum_trials_per_setting": 1000000,
+  "required_calibration_input": "independent upper bound sigma_squared on every normalized quadrature-mean single-trial variance",
+  "entrywise_radius": "epsilon=sqrt(2*sigma_squared*log(2*m/alpha)/n)",
+  "matrix_frobenius_radius": "e=sqrt(72)*epsilon for each reconstructed complex 6x6 map",
+  "unitarity_residual_threshold": "2*e+e^2 under the source-unitary null",
+  "composition_residual_threshold": "2*e+e^2 under mutually inverse source-unitary forward/reverse null",
+  "decision_rule": "Reject when either Frobenius residual exceeds its frozen threshold; retain an inconclusive guard band for independently bounded systematic bias.",
+  "physical_status": "formula preregistered; numerical threshold unavailable until sigma_squared and systematic bias are measured before science outcomes"
+}

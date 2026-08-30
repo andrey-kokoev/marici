@@ -1,0 +1,55 @@
+{
+  "model": "Pauli-grade-one transverse-effect fixture",
+  "state_basis": ["e1_X", "e2_Y", "e3_Z"],
+  "pairing": "grade-one Clifford scalar pairing",
+  "effects": [
+    {"name": "Z_readout", "vector": ["0", "0", "1"], "source_authorized": true, "admitted": true}
+  ],
+  "constructors": [],
+  "rival_differences": [
+    {"name": "plus_vs_minus", "vector": ["1", "0", "0"]}
+  ],
+  "candidate_requirements": {
+    "source_authorized": true,
+    "executable": true,
+    "perturbation": true,
+    "calibrated": true,
+    "completion_stable": true,
+    "authority_locus": "qubit"
+  },
+  "candidates": [
+    {
+      "name": "duplicate_Z",
+      "kind": "effect",
+      "vector": ["0", "0", "2"],
+      "source_authorized": true,
+      "executable": true,
+      "perturbation": true,
+      "calibrated": true,
+      "completion_stable": true,
+      "authority_locus": "qubit"
+    },
+    {
+      "name": "X_analyzer",
+      "kind": "effect",
+      "vector": ["1", "0", "0"],
+      "source_authorized": true,
+      "executable": true,
+      "perturbation": true,
+      "calibrated": true,
+      "completion_stable": true,
+      "authority_locus": "qubit"
+    },
+    {
+      "name": "wrong_locus_X_analyzer",
+      "kind": "effect",
+      "vector": ["1", "0", "0"],
+      "source_authorized": true,
+      "executable": true,
+      "perturbation": true,
+      "calibrated": true,
+      "completion_stable": true,
+      "authority_locus": "remote_qubit"
+    }
+  ]
+}

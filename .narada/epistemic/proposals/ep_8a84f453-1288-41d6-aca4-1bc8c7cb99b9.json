@@ -1,0 +1,96 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_8a84f453-1288-41d6-aca4-1bc8c7cb99b9",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "grothendieck-surjective-preimage-resonance-lcm-1299",
+  "expected_ledger_head": "b816cbab5aabdc42ef148d486fdc649d209764182d669a106e1c68a2679412bf",
+  "created_at": "2026-08-20T22:05:18.998039Z",
+  "content_fingerprint": "a4bdf12343430187f0ce3db310b50745a1f98b9c5dbc96095c91529d0e3def61",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Surjective kernel preimage adds exactly the map-kernel resonance surcharge",
+      "body": "For phi:G->H surjective, N=ker phi, K normal H, and P=phi^-1(K), one has R_G(P)=lcm(R_G(N),R_H(K)) and U_G(P)=U_G(N)∩U_H(K). The kernel of A_P->A_N×A_K is derivation-valued in Z(N), so it adds no prime beyond N.",
+      "entity_id": "claim:8e3f204381d6027979b0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Mixed-prime and nonsplit controls for preimage resonance",
+      "body": "(S3×C5)->S3 over A3 gives labels 5,6,30; Q8->C2×C2 over C2 gives 2,2,2. In both cases the preimage spectrum equals the intersection through index 60.",
+      "entity_id": "test:aff8e5d03c815b0eb298"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Surjective preimage resonance-lcm proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/surjective-preimage-resonance-lcm.md",
+      "entity_id": "source:6efaa144eec720504be2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Preimage resonance spectrum controls",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/surjective_preimage_resonance_lcm.py",
+      "entity_id": "source:b4bab736536fd3de85ba"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1299 — Selector Pullback Adds Exactly the Map-Kernel Resonance Surcharge",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1299 Selector Pullback Adds Exactly the Map-Kernel Resonance Surcharge.md",
+      "entity_id": "source:176f0c966fdf3fca805a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:aff8e5d03c815b0eb298",
+      "target_id": "claim:8e3f204381d6027979b0",
+      "relation_id": "rel:tests-250dee1242a6b7cf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:8e3f204381d6027979b0",
+      "target_id": "source:6efaa144eec720504be2",
+      "relation_id": "rel:derived_from-f5f3ead3906710c8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:b4bab736536fd3de85ba",
+      "target_id": "test:aff8e5d03c815b0eb298",
+      "relation_id": "rel:promotes_to_evidence-cc4a812f6fa59fde"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:176f0c966fdf3fca805a",
+      "target_id": "claim:8e3f204381d6027979b0",
+      "relation_id": "rel:promotes_to_evidence-43a6878066bed05d"
+    }
+  ],
+  "digest": "3bcb6e4f76b3b9ab9647954f4d183a69a0782596a83fd68d8082856ba3d6797a"
+}

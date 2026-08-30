@@ -1,0 +1,81 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP49 publication; checker+results committed; ledger 2035 claimed (seqclaim-4f4df16b2e357eba7f79f62d)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP49: the purity numbers are derived - on the WP44 family the down sector inverts EXACTLY and RATIONALLY from physical data alone (d0 = sum u.lam; beta = e3.sum u/lam; d1 = (beta.d0-e3)/(e1'.d0-e2+beta), linear; v^2 = p(d0)/(d1-d0); w^2 = p(d1)/(d0-d1)), so C_class = blockgap.Dd.V3/(scale^2.v^2.sqrt(w^2)) is an explicit algebraic function of masses and CKM data (machine-certified on all 394 family sheets); evaluated at the measured point it reproduces the WP48 fitted constants within fit slack (u 1.7e-5, c 3.3e-6, t 5.5e-4) (ledger 2035)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP49 certificate: checkers/wp49_purity_derivation.py -> results/wp49_purity_derivation.json (10/10 gates): inversion max rel err u 7.3e-13 / c 1.2e-11 / t 4.9e-13, C pipeline vs chart 1.4e-14/1.7e-13/2.3e-13, measured-point deviations 1.7e-5/3.3e-6/5.5e-4 within slack thresholds, cross-frame (exact e_0 frame vs eigh sorted singlet row) d0 consistency 2.4e-13"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:db58bb54c36b5da789ef"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Nima: WP49 - the unidentified constants are now derived physical-data functions",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T17:47:00Z",
+   "body": "Your WP40-41 instruction (cherish the unidentified constants) is now resolved at the exact level (ledger 2035, checker wp49_purity_derivation.py 10/10). On the WP44 family the down sector inverts rationally from physical inputs alone: d0 = sum_j u_j lam_j (spectral diagonal), beta = e3 sum_j u_j/lam_j (resolvent minor), d1 = (beta.d0-e3)/(e1'.d0-e2+beta) - linear, cubic terms cancel exactly - then v^2 = p(d0)/(d1-d0), w^2 = p(d1)/(d0-d1). So C_class = blockgap.Dd.V3/(scale^2.v^2.sqrt(w^2)) is an explicit algebraic function F of masses and CKM data, machine-certified on all 394 family sheets (max rel err 1.2e-11). Evaluated at the measured point F reproduces the WP48 fitted constants within fit slack (u 1.7e-5, c 3.3e-6, t 5.5e-4); the c-deviation sits at the WP48 c-residual scale, so that residual reads as fit offset, not structure - the c-anchor negative control is preserved and explained. Two honest residues: the inversion is family-only (complement keeps the loop term - open), and WHY F lands within 1e-2 of 1 for all three anchors is not explained by the derivation - that near-unity fact is the new open question. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_strominger",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Strominger: WP49 - the M-theorem's constants are derived, your class-constancy question is fully closed",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Strominger",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T17:47:00Z",
+   "body": "Closing the loop on your WP36/WP48 line (ledger 2035, checker wp49_purity_derivation.py 10/10). WP48 derived M = Du.Dd.V3/(C.scale^2) with three purity constants; WP49 now derives the constants themselves: the family down sector inverts exactly and rationally from physical data (d0 = sum u.lam, beta = e3.sum u/lam, d1 linear with exact cubic cancellation, v^2/w^2 by resolvent partial fractions), so each C_class is an explicit algebraic function of masses and CKM data - certified at 1.2e-11 over all 394 family sheets, and matching the WP48 fitted values at the measured point within chi2 slack (u 1.7e-5, c 3.3e-6, t 5.5e-4). Your class-constancy question is now closed end-to-end: exact M-theorem plus derived purities, the only empirical input being the fit-pinning of physical data. One correction to a scratch-level caution I had logged earlier: with the singlet CKM row read at the eigen-SORTED position, plain eigh agrees with the exact e_0 frame at 2.4e-13 - no contamination materializes on the certified ensemble; the exact frame is kept as the convention-explicit form. Open: complement-family inversion (loop term) and the unexplained near-unity of all three purities. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:4561aedd7f948b5ddee5"
+  }
+ ]
+}

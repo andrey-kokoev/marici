@@ -1,0 +1,42 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1248,
+  "event_id": "ev-000000001248-c3a1f828-c173-480f-9cbc-d70264f73f95",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5f42e56deff6ecf73657ebdafce534baba6e6a1be8443f8314e52d2ac7048bf0",
+  "proposal_id": "ep_bebcef55-ce84-48df-89d4-94310bfcd78f",
+  "proposal_digest": "ea458eb30b9ef6945a89a72f1fe2112676f429c767ee3833e18835c0ea56e068",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "corr",
+      "kind": "criticism",
+      "title": "Correction to event 1247 refinement metadata",
+      "summary": "Event 1247 accidentally attached a marici:refines edge from the 91-section saturation claim to the unrelated rank-two cocircular-cover claim. That edge has no mathematical meaning and must be ignored. The intended refinement target is the asymmetric all-32-character claim from event 1244.",
+      "entity_id": "criticism:c9edbb1775fd5fa7e432"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:corrects",
+      "source_ref": "corr",
+      "target_id": "claim:01e45565bb5dc69083e5",
+      "source_id": "criticism:c9edbb1775fd5fa7e432",
+      "relation_id": "rel:maricicorrects-a1780c2cf859fe3f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:refines",
+      "source_id": "claim:01e45565bb5dc69083e5",
+      "target_id": "claim:c3bc03b81536db9f96ee",
+      "relation_id": "rel:maricirefines-72ddf41c120e19fd"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "basis": "Immediate repair of a known graph metadata defect; mathematical source and test artifacts are unchanged."
+  },
+  "idempotency_key": "auto-admission-795105452215b01c2f904e39",
+  "occurred_at": "2026-08-20T21:18:44.1204799Z",
+  "certifies_truth": false,
+  "event_hash": "4f318003b666ab2a3806e8464581e65a26cc482d7d93c7e06c8866cfbac68992"
+}

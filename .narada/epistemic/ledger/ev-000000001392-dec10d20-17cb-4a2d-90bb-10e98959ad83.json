@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1392,
+  "event_id": "ev-000000001392-dec10d20-17cb-4a2d-90bb-10e98959ad83",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "e6c077826ff443b70d44e30b4bdc4757e1522add6abca3af6bda466165110012",
+  "proposal_id": "ep_c58dd8f5-a1b2-4f87-8054-521c0e8a1c5b",
+  "proposal_digest": "333a6f99dcb35a9685e5773657262eb1f18d131eda28b1089c64c5dbfde14de5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Zeta zeros are poles of the continued intrinsic prime-power trace",
+      "statement": "For Re(s)>1, T_P(s)=sum_(p,k)(log p)p^(-ks)=-zeta'(s)/zeta(s) is the logarithmic trace of the intrinsic-prime Fredholm determinant. Theta completion gives xi'/xi equal to explicit archimedean terms minus T_P. Hadamard factorization expresses xi'/xi as a sum of simple zero poles, so the meromorphically continued prime trace has poles at zeta zeros with negative multiplicity residues. This is a resonance interpretation, not a self-adjoint eigenvalue theorem.",
+      "scope": "Conditional on intrinsic pi_0 primes and explicit archimedean theta/complex-analysis input; no Riemann hypothesis or Hilbert-Polya operator.",
+      "entity_id": "claim:68de5ca53b97722903c5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Logarithmic-trace pole matching test",
+      "procedure": "Differentiate the completed xi definition, substitute the prime-power series for -zeta'/zeta in Re(s)>1, continue through theta completion, and compare with the order-one Hadamard logarithmic derivative.",
+      "expected_result": "Every xi zero of multiplicity m gives residue m in xi'/xi and residue -m in the continued prime trace after archimedean separation. Any unmatched pole or residue falsifies the bridge.",
+      "entity_id": "test:dd6da8eda605dbb2dae4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Prime-trace zero-resonance bridge packet",
+      "version": "1",
+      "locator": "research/grothendieck/prime-trace-zero-resonance-bridge.md",
+      "entity_id": "source:525a2cda8a5c32014b33"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1366 — Zeta Zeros Are Resonances of the Continued Prime Trace",
+      "version": "1",
+      "locator": "src/ledger/20260820-1366 Zeta Zeros Are Resonances of the Continued Prime Trace.md",
+      "entity_id": "source:c021e9b0a5d2847e8906"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:dd6da8eda605dbb2dae4",
+      "target_id": "claim:68de5ca53b97722903c5",
+      "relation_id": "rel:tests-154e4dde07e6eba2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:68de5ca53b97722903c5",
+      "target_id": "source:525a2cda8a5c32014b33",
+      "relation_id": "rel:derived_from-8b493ce6fc5a6938"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:c021e9b0a5d2847e8906",
+      "target_id": "claim:68de5ca53b97722903c5",
+      "relation_id": "rel:reports-b328110241c36295"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "After deriving the global Euler operator and analytic completion, determine in what verified sense the global construction contains zeta zeros."
+  },
+  "idempotency_key": "auto-admission-5c2035fd7f5aa5438022a867",
+  "occurred_at": "2026-08-20T23:39:37.6623152Z",
+  "certifies_truth": false,
+  "event_hash": "55bf97ea247767306293cb5969603741dcd0a9b28bdea0370efa376bcfc13430"
+}

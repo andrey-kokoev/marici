@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "optical-material-hamiltonian-equivalence",
+    "owner": "marici.Aspect",
+    "classification": "deterministic_joint-transport_surrogate_requires_hardware_and_material_data",
+    "stratum": "shared parameter transport across independent observable packets",
+    "inputs": ["research/aspect/optical-material-hamiltonian-equivalence.md", "research/aspect/contracts/optical-material-hamiltonian-equivalence.v1.json"],
+    "checks": [{"id": "optical-material-hamiltonian-equivalence", "path": "research/aspect/checkers/check_optical_material_hamiltonian_equivalence.py", "requires": []}],
+    "depends_on": ["optical-pair-stiffness-flux-cell", "optical-bath-energy-calibration"],
+    "consumes": ["gap curve", "stiffness curve", "screening curve", "relaxation spectrum"],
+    "provides": ["shared transport estimate", "joint residual", "transport coherence"],
+    "missing_constructors": ["hardware acquisition packet", "material data packet", "uncertainty-weighted joint likelihood", "source-derived observable completeness"],
+    "next_falsifier": "fit real optical and material packets with one preregistered transport and reject if independent channel maps disagree"
+  }
+}

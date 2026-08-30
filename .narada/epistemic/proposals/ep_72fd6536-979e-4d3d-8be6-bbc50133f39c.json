@@ -1,0 +1,106 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_72fd6536-979e-4d3d-8be6-bbc50133f39c",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue the Xi boundary audit, repair known defects, and add own research to the ledger with claimed sequence numbers."
+  },
+  "idempotency_key": "auto-proposal-7d5157df7e47b05f8c26958b",
+  "expected_ledger_head": "c9e3437afb9a2b455af0d71994340475faa09ab1c9390e55f39e57c53ca2b61a",
+  "created_at": "2026-08-21T00:49:34.0711162Z",
+  "content_fingerprint": "7d5157df7e47b05f8c26958b898231aaa8f2d9bcf28773b7a53e3a0d6c4db753",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Xi Weyl multiplicity repair packet",
+      "version": "1",
+      "locator": "research/grothendieck/xi-weyl-multiplicity-repair.md",
+      "entity_id": "source:5a1e3f093e1ae9e234ee"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1401 — Xi Multiplicities Require More Than the Scalar Weyl Model",
+      "status": "active-supported-correction",
+      "sector": "riemann",
+      "entry_number": 1401,
+      "sequence_claim_id": "seqclaim-240242b4940547529851d1fb",
+      "summary": "Atomic mass in a scalar Herglotz model is not eigenspace multiplicity. Residue-sized semisimple amplification repairs the conditional Xi determinant, while the literal principal-ideal quotient has a non-self-adjoint Jordan part at multiple zeros.",
+      "entity_id": "mariciledger_entry:27385dba0d9ef2e27b46"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Residue amplification, not scalar atomic mass, supplies Xi zero multiplicity",
+      "statement": "Under RH, the scalar minimal Herglotz realization of -Xi'/Xi has one dimension per distinct zero. To obtain the Xi determinant, one must amplify the eigenspace at lambda to dimension m_lambda=-Res_lambda(-Xi'/Xi). The amplified operator is self-adjoint with compact resolvent and the correct determinant, canonically up to unitary equivalence. At a multiple zero the literal principal-ideal entire-function quotient instead has a nilpotent Jordan part and cannot be self-adjoint in a positive metric.",
+      "scope": "Correction of the conditional determinant model; does not prove RH, simplicity, or source-boundary realization.",
+      "entity_id": "claim:0572715e99ef86677295"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "criticism",
+      "kind": "criticism",
+      "title": "Ledger 1382 conflated scalar Herglotz mass with eigenspace dimension",
+      "statement": "The scalar measure m delta_lambda produces a one-dimensional L2 atom, not an m-dimensional eigenspace. Thus the unamplified determinant does not reproduce a multiple zero.",
+      "entity_id": "criticism:d10d0395bde3d1f8b816"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Double-zero multiplicity hostile test",
+      "description": "For F(z)=(z-lambda)^2 compare the one-dimensional atom of mass two, the non-self-adjoint local Jordan quotient, and the semisimple multiplicity-two amplification.",
+      "entity_id": "test:d6f54a69e30d0e69f5ef"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:0572715e99ef86677295",
+      "target_id": "source:5a1e3f093e1ae9e234ee",
+      "relation_id": "rel:derived_from-561f3aa3c8188a29"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:27385dba0d9ef2e27b46",
+      "target_id": "claim:0572715e99ef86677295",
+      "relation_id": "rel:maricidocuments-87c8cfdb22ea521d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d6f54a69e30d0e69f5ef",
+      "target_id": "claim:0572715e99ef86677295",
+      "relation_id": "rel:tests-228fd11d2eb5026e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "criticism",
+      "target_id": "claim:50149848a4c97a3fe411",
+      "source_id": "criticism:d10d0395bde3d1f8b816",
+      "relation_id": "rel:criticizes-45caad3c3c1078b7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_ref": "claim",
+      "target_id": "claim:50149848a4c97a3fe411",
+      "source_id": "claim:0572715e99ef86677295",
+      "relation_id": "rel:supersedes-04c3632a93c2beed"
+    }
+  ],
+  "digest": "74584bcfe8b363e5cea265b8f8ebf62d85044831335b826afa5f15adcb1e8b0f"
+}

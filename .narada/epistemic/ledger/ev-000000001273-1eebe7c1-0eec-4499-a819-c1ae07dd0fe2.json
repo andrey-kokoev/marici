@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1273,
+  "event_id": "ev-000000001273-1eebe7c1-0eec-4499-a819-c1ae07dd0fe2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "ed9f6f92cfaad01e837257910f4e11c514a461eb4b992394b7ac1e197a77caff",
+  "proposal_id": "ep_f1e0187e-e530-435f-a8c9-6c5728b29a6d",
+  "proposal_digest": "eca28a5489b36b1dcbbf1852577ae3c5ff84e1de5692c07ce5f72ac851dda1b2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-selector-stabilizer-maximal-quotient",
+      "kind": "claim",
+      "title": "A frozen selector descends exactly through kernels inside its translation stabilizer",
+      "statement": "For c:G->R and normal K, c descends through G->G/K iff K is contained in Stab_R(c). Thus the stabilizer classifies coefficient-admissible quotient kernels before power compatibility or Betti-chain admission.",
+      "scope": "Coefficient-side descent only; no relative-chain pushforward."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-selector-stabilizer-maximal-quotient",
+      "target_id": "claim:grothendieck-five-site-unit-sieve-physical-activation-gate",
+      "relation_id": "rel:derived_from-eb11295bdf8971d0"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-selector-stabilizer-maximal-quotient",
+      "kind": "test",
+      "title": "Five-site selector stabilizer and quotient descent census",
+      "protocol": "Compute translation stabilizers for five selectors on (C2)^5 and compare direct fiber constancy to kernel inclusion over all 32 coordinate branch masks.",
+      "falsifier": "Any selector descends through a kernel not contained in its stabilizer, or fails through a contained kernel."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-selector-stabilizer-maximal-quotient",
+      "target_id": "claim:grothendieck-selector-stabilizer-maximal-quotient",
+      "relation_id": "rel:tests-efd7535060b68cff"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-selector-stabilizer-maximal-quotient",
+      "kind": "source",
+      "title": "Selector stabilizer and maximal coefficient quotient research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/selector-stabilizer-maximal-quotient.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-selector-stabilizer-maximal-quotient",
+      "target_id": "claim:grothendieck-selector-stabilizer-maximal-quotient",
+      "relation_id": "rel:promotes_to_evidence-f97fff6f2ba12c74"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-selector-stabilizer-maximal-quotient",
+      "test_id": "test:grothendieck-selector-stabilizer-maximal-quotient",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: five selectors and all coordinate branch kernels agree with the stabilizer criterion across 38880 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-selector-stabilizer-maximal-quotient",
+          "locator": "research/grothendieck/results/selector-stabilizer-maximal-quotient.json",
+          "paraphrase": "Exact selector census confirms stabilizer inclusion is equivalent to descent."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "paired physical-readout gate"
+  },
+  "idempotency_key": "auto-admission-db88d96befd1c7a5c5a7443b",
+  "occurred_at": "2026-08-20T21:35:43.0527048Z",
+  "certifies_truth": false,
+  "event_hash": "be328c3e355eb509eed1a4c6c2156f6699d8582e4e2b73ba3cfc3626e65af74d"
+}

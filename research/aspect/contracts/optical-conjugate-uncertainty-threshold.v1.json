@@ -1,0 +1,38 @@
+{
+  "schema": "marici.aspect.optical-conjugate-uncertainty-threshold.v1",
+  "status": "preregistered_not_executed",
+  "prediction_residual": [
+    "K12",
+    "K21",
+    "K22-L*K11-M11"
+  ],
+  "calibration": {
+    "minimum_independent_packets": 1000,
+    "covariance_estimator": "empirical_covariance_on_complete_three_residual_packet",
+    "ridge_rule": "add 1e-9 times trace(covariance)/3 to each diagonal entry",
+    "common_gain_transport": "include g_prime_times_M before residual construction",
+    "reuse_in_test_packet": false
+  },
+  "score": {
+    "definition": "max_abs(cholesky_whitened_residual)",
+    "cutoff": 5.0,
+    "comparison": "less_than_or_equal",
+    "noise_assumption": "centered nonsingular Gaussian calibration residual after declared whitening"
+  },
+  "decision": {
+    "candidate_survives": "candidate score <= 5 and both preregistered null scores > 5",
+    "candidate_falsified": "candidate score > 5",
+    "inconclusive": "calibration assumption fails, covariance is singular after fixed ridge, any packet is missing, or a null score <= 5",
+    "null_models": [
+      "independent_detector_channels",
+      "common_mode_drift"
+    ]
+  },
+  "anti_fitting": {
+    "freeze_before_intervention": true,
+    "fit_from_candidate_response": false,
+    "fit_from_null_response": false,
+    "change_cutoff_after_unblinding": false
+  },
+  "claim_scope": "tests the conjugate first-jet architecture; does not locate a zero or certify apparatus existence"
+}

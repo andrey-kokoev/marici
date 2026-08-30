@@ -1,0 +1,30 @@
+schema = "marici.theta.atomic_incidence_factorization.v1"
+status = "active"
+
+[scale]
+map = "(p,k) -> k log p"
+source = "labelled_prime_fock_word"
+
+[cyclic]
+normalization = "1/k"
+recurrence = "(k+1) a_(k+1) = k u a_k"
+
+[seam]
+primitive_amplitude = "p^(-1/2)"
+grade_amplitude = "p^(-k/2)"
+
+[incidence]
+coefficient = "p^(-k/2)/k"
+target = "typed_atomic_scale_current"
+
+[[falsifier]]
+id = "polarization_only"
+condition = "correct support and reversal with arbitrary coefficients"
+
+[[falsifier]]
+id = "independent_square"
+condition = "2 a_2 != a_1^2"
+
+[[falsifier]]
+id = "early_scalar_augmentation"
+condition = "typed current spaces erased before archimedean completion"

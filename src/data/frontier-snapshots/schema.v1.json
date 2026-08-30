@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marici.example/schemas/frontier-progress-snapshot.v1.json",
+  "title": "Reviewed Frontier progress snapshot",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "review_status",
+    "authority_pipeline",
+    "source_graph",
+    "stages",
+    "sectors",
+    "review_records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "marici.frontier-progress-snapshot.v1"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "review_status": {
+      "enum": [
+        "pending_scientific_review",
+        "reviewed",
+        "rejected"
+      ]
+    },
+    "authority_pipeline": {
+      "const": [
+        "epistemic_graph",
+        "reviewed_frontier_snapshot",
+        "versioned_ui"
+      ]
+    },
+    "prepared_by": {
+      "const": "marketing"
+    },
+    "source_graph": {
+      "type": "object",
+      "required": [
+        "ledger_head",
+        "observed_at"
+      ],
+      "properties": {
+        "ledger_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "observed_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "introduction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selector_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "carrier",
+              "lens_family",
+              "source_selector",
+              "selected_point",
+              "physical_readout"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sectors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "lens_family_object",
+          "cells"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lens_family_object": {
+            "type": "string"
+          },
+          "cells": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "review_records": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}
+

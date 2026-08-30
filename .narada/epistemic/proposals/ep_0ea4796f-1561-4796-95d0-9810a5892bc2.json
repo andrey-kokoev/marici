@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0ea4796f-1561-4796-95d0-9810a5892bc2",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1323-selected-cocycle-descent-v1",
+  "expected_ledger_head": "cb05c95076a0d5c83b2377e373c1a2c893a8426923b360ce3ca142e6929d49b0",
+  "created_at": "2026-08-20T22:37:25.8410423Z",
+  "content_fingerprint": "9e1cb93ebd858c4bf1e4f02199d1e0d03cbaf6e52ae0e9a5b0ea72d594f14060",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "A selected cocycle can descend without a Betti homology map",
+      "statement": "For a target n-cocycle ell and graded map S, ell S_n defines a functional on source H_n iff ell Omega_(n+1)=0. This is strictly weaker than Omega=0 and weaker than S inducing H_n(G)->H_n(H).",
+      "entity_id": "claim:ac4b3ac12641705add44"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Selected readout survives a noncycle Betti image",
+      "procedure": "Map the source Z cycle generator to (1,1) in target Z^2 --[1 0]--> Z and pair with ell=[0 1].",
+      "outcome": "The Betti image is not a cycle, so no target homology map exists, while ell gives the nonzero well-defined source-homology readout 1.",
+      "falsifier": "This falsifies the inference that every descended selected readout requires a full Betti homology map.",
+      "entity_id": "test:f591befe5ab80979b9ea"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Selected-cocycle annihilation and readout descent",
+      "version": "v1",
+      "locator": "research/grothendieck/selected-cocycle-annihilation-readout-descent.md",
+      "entity_id": "source:bfdbebd38725e3bafb7a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1323 — A Selected Cocycle Can Descend Without a Betti Homology Map",
+      "version": "1323",
+      "locator": "src/ledger/20260820-1323 A Selected Cocycle Can Descend Without a Betti Homology Map.md",
+      "entity_id": "source:4c7b2eda97353a612ff8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:f591befe5ab80979b9ea",
+      "target_id": "claim:ac4b3ac12641705add44",
+      "relation_id": "rel:tests-01cd2d1b4a536684"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:ac4b3ac12641705add44",
+      "target_id": "source:bfdbebd38725e3bafb7a",
+      "relation_id": "rel:derived_from-d72392b4dc00e424"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:4c7b2eda97353a612ff8",
+      "target_id": "claim:ac4b3ac12641705add44",
+      "relation_id": "rel:reports-b38de4f61950ca2b"
+    }
+  ],
+  "digest": "38338b694460f60329d6489c830ea1aa9fb6fe948271229937802c56268d410a"
+}

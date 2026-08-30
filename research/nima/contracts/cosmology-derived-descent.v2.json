@@ -1,0 +1,59 @@
+{
+  "schema": "marici.data-descent-packet.v2",
+  "contexts": [
+    {"id": "generic", "site": "cosmology", "stratum_depth": 0},
+    {"id": "triangle_wall", "site": "cosmology", "stratum_depth": 1}
+  ],
+  "local_objects": [
+    {"id": "Q_generic", "context": "generic", "coefficient_type": "F32003", "rank": 26, "grades": ["marked_relative"]},
+    {"id": "Q_wall", "context": "triangle_wall", "coefficient_type": "F32003", "rank": 19, "grades": ["marked_relative", "wall"]},
+    {"id": "S_wall", "context": "triangle_wall", "coefficient_type": "F32003", "rank": 7, "grades": ["supported", "annihilator"]}
+  ],
+  "arrows": [
+    {
+      "id": "wall_specialization",
+      "kind": "specialization",
+      "source": "Q_generic",
+      "target": "Q_wall"
+    },
+    {
+      "id": "wall_supported_correspondence",
+      "kind": "correspondence",
+      "source": "Q_generic",
+      "target": "S_wall",
+      "kernel_or_span": "triangle_wall_incidence_span",
+      "variance": "contravariant_left_covariant_right",
+      "left_leg": "pullback_to_incidence",
+      "right_leg": "supported_pushforward",
+      "pushforward_required": true,
+      "right_proper_or_supported": true
+    }
+  ],
+  "complexes": [
+    {"id": "C_wall", "context": "generic", "degrees": [-1, 0], "differential": "labelled_wall_total_complex"}
+  ],
+  "derived_objects": [
+    {"id": "Tor1_wall", "kind": "Tor", "source_complex": "C_wall", "context": "triangle_wall", "degree": -1, "rank": 7},
+    {"id": "Cone_wall", "kind": "Cone", "source_complex": "C_wall", "context": "triangle_wall"}
+  ],
+  "base_changes": [
+    {
+      "id": "derived_triangle_specialization",
+      "source_complex": "C_wall",
+      "target_context": "triangle_wall",
+      "flat": false,
+      "derived": true,
+      "tor_objects": ["Tor1_wall"],
+      "comparison_evidence": "rank-19 specialization plus rank-seven annihilator packet"
+    }
+  ],
+  "evidence_replays": [
+    {
+      "id": "three_chart_descent_replay",
+      "checker": "research/nima/checkers/check_physical_three_chart_equivariant_descent.py",
+      "artifact": "research/nima/results/physical_three_chart_equivariant_descent.json",
+      "sha256": "31445b08490c73558f778a7f217f13b88c27cbd771c9abcb93274695642dbbe7",
+      "expected": {"passed": true, "diagonal_invariant_rank": 21}
+    }
+  ]
+}

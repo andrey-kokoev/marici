@@ -1,0 +1,86 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1192,
+  "event_id": "ev-000000001192-aa44a598-e7b6-4ef8-813d-300936cebdf2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "bcd1bea311d255aa454f5f87d3cda1eb045e959acf2d8f92696e5f494a8845bc",
+  "proposal_id": "ep_627c93ce-4ae1-4554-8dd4-706bfa63677b",
+  "proposal_digest": "78faa04100816e2c1253f57dddfb3941ba99bbe4ad05550f2b678c913e9f9f2f",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-adams-mackey-kernel-exponent-gate",
+      "kind": "source",
+      "title": "Adams-Mackey kernel-exponent gate",
+      "version": "v1",
+      "locator": "research/grothendieck/adams-mackey-kernel-exponent-gate.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-adams-mackey-kernel-exponent-gate",
+      "kind": "test",
+      "title": "Exact cyclic Adams-Mackey compatibility census",
+      "method": "Exhaust cyclic quotients C_N->C_M with M|N, N<=12, and indices n<=12, checking coefficient fiber-sum and Betti fiber-lift squares on complete bases.",
+      "locator": "research/grothendieck/checkers/adams_mackey_kernel_exponent_gate.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-adams-mackey-kernel-exponent-gate",
+      "kind": "claim",
+      "title": "Adams operations commute with finite Mackey legs exactly prime to the kernel exponent",
+      "body": "For a finite abelian surjection q:G->H with kernel K, q_![n]^*=[n]^*q_! and psi_G^n q^!=q^!psi_H^n hold iff multiplication by n on K is bijective, equivalently gcd(n,exp K)=1. Every nontrivial five-site branch kernel has exponent two, so exactly odd Adams indices survive.",
+      "status": "verified_algebraic_correspondence"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-adams-mackey-kernel-exponent-gate-v1",
+      "test_id": "test:grothendieck-adams-mackey-kernel-exponent-gate",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 13080 coefficient values, 13080 Betti values, 420 quotient-index cases; 303 compatible and 117 incompatible exactly by gcd(n,exp K)",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-adams-mackey-kernel-exponent-gate",
+          "locator": "research/grothendieck/results/adams-mackey-kernel-exponent-gate.json",
+          "paraphrase": "Complete cyclic basis census verifies the kernel-exponent criterion and five-site odd-index corollary."
+        }
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-adams-mackey-kernel-exponent-gate",
+      "target_id": "source:grothendieck-adams-mackey-kernel-exponent-gate",
+      "relation_id": "rel:derived_from-f3f4839432620224"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-adams-mackey-kernel-exponent-gate",
+      "target_id": "claim:grothendieck-adams-mackey-kernel-exponent-gate",
+      "relation_id": "rel:tests-0b542fe1cc1a24d5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-adams-mackey-kernel-exponent-gate",
+      "target_id": "claim:grothendieck-five-site-integral-adams-gate",
+      "relation_id": "rel:depends_on-65c4d0bc336f7023"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-adams-mackey-kernel-exponent-gate",
+      "target_id": "claim:grothendieck-paired-deck-mackey-norm",
+      "relation_id": "rel:depends_on-314a3d8a1831051e"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Back to research; choose attack direction and charge"
+  },
+  "idempotency_key": "auto-admission-db2c971cc89952d1968722e1",
+  "occurred_at": "2026-08-20T20:41:02.1869445Z",
+  "certifies_truth": false,
+  "event_hash": "c1b00acaac9d9626d538e29ddafb60f2554f89bd6c539501f321a2ce2063883d"
+}

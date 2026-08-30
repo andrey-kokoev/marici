@@ -1,0 +1,68 @@
+{
+  "schema": "marici.aspect.conjugate-first-jet-acquisition.v1",
+  "status": "acquisition_ready_apparatus_unbound",
+  "instrument_reuse": [
+    "research/aspect/calibrated-homodyne-heterodyne-detection.md",
+    "research/aspect/mixed-grade-two-axis-lockin-interferometer.md"
+  ],
+  "optical_path": {
+    "source": "comb-referenced phase-stable pulse with calibrated spectral offset L",
+    "preparations": ["symmetric spectral packet", "antisymmetric spectral packet"],
+    "same_carrier_split": "one prepared pulse enters a calibrated 50:50 splitter",
+    "readout_arm_1": "identity spectral mask followed by balanced heterodyne",
+    "readout_arm_2": "signed frequency-offset mask Q followed by balanced heterodyne",
+    "phase_reference": "one common comb-derived local oscillator distributed to both receivers",
+    "controlled_intervention": "signed programmable spectral shear"
+  },
+  "setting_cells": {
+    "science": {
+      "preparation_labels": ["symmetric", "antisymmetric"],
+      "shear_multipliers": [-2, -1, 0, 1, 2],
+      "shear_scales": [1.0, 0.5],
+      "cells": 20,
+      "minimum_attempted_trials_per_cell": 100000
+    },
+    "null_controls": [
+      {"id": "independent_detector_channels", "cells": 4, "minimum_attempted_trials_per_cell": 100000, "construction": "feed the two readout arms from independently prepared pulses with matched one-arm marginals"},
+      {"id": "common_mode_drift", "cells": 4, "minimum_attempted_trials_per_cell": 100000, "construction": "zero-shear packets spanning the identical labelled block positions"}
+    ],
+    "calibration": {
+      "independent_complete_packets": 1000,
+      "reuse_in_science": false
+    }
+  },
+  "total_setting_cells": 28,
+  "minimum_attempted_optical_trials": 2800000,
+  "derivative_estimator": {
+    "primary": "five_point_centered",
+    "formula": "[-M(L+2d)+8M(L+d)-8M(L-d)+M(L-2d)]/(12d)",
+    "refinement": "repeat with d/2",
+    "truncation_budget": "absolute difference between d and d/2 estimates enters the degradation covariance",
+    "acceptance_gate": "refinement difference must be at most one whitened calibration unit; otherwise inconclusive"
+  },
+  "raw_record_required_fields": [
+    "run_id", "block_id", "attempt_id", "packet_role", "null_model",
+    "preparation_label", "nominal_L", "shear_multiplier", "shear_scale", "bound_shear_d",
+    "pulse_source_id", "splitter_calibration_id", "spectral_mask_id",
+    "local_oscillator_id", "local_oscillator_phase",
+    "detector_1_raw_i", "detector_1_raw_q",
+    "detector_2_raw_i", "detector_2_raw_q",
+    "detector_gain_packet_id", "mode_overlap_packet_id",
+    "click_state", "exclusion_reason"
+  ],
+  "retention": {
+    "retain_no_click": true,
+    "retain_saturation": true,
+    "retain_excluded_rows": true,
+    "permit_posthoc_label_changes": false,
+    "permit_posthoc_gain_split": false
+  },
+  "binding_required": [
+    "physical source locator", "comb and local-oscillator locator",
+    "pulse-shaper and spectral-mask locator", "detector locator",
+    "measured shot rate", "bound shear d", "detector bandwidth",
+    "mode overlap", "gain covariance", "available apparatus seconds"
+  ],
+  "analysis_contract": "research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json",
+  "claim_scope": "acquisition design only; no physical run, apparatus availability, or result is asserted"
+}

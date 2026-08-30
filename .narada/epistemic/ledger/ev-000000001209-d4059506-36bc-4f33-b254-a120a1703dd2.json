@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1209,
+  "event_id": "ev-000000001209-d4059506-36bc-4f33-b254-a120a1703dd2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6dfacd218f129a72f8df278e642aef42c205d6d2587dce5f76dce89ef6ac5bd3",
+  "proposal_id": "ep_58ca5cb9-959a-4d77-aa58-3e5dc59eb248",
+  "proposal_digest": "9f3ec9cabedddb26aae3689f09947607dfa7f8133642bfed54d0a401a9daede3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-modular-cyclic-monodromy-adams-spectrum",
+      "kind": "claim",
+      "title": "The cyclic-monodromy Adams spectrum needs no semisimplicity hypothesis",
+      "statement": "For G=F_p^r semidirect C_m with arbitrary faithful finite cyclic action, power operations commute with all coefficient fiber sums and basis-level fiber lifts iff gcd(n,p*m)=1, even when p divides m.",
+      "scope": "Elementary-abelian kernel, faithful cyclic quotient action, algebraic correspondence only."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "supersedes",
+      "source_id": "claim:grothendieck-modular-cyclic-monodromy-adams-spectrum",
+      "target_id": "claim:grothendieck-coprime-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:supersedes-05f352d15f40e73b"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-modular-cyclic-monodromy-spectrum",
+      "kind": "test",
+      "title": "Nonsemisimple cyclic-monodromy spectrum test",
+      "protocol": "Exhaust fibers for n=1..24 in unipotent F2^2 semidirect C2 and F3^2 semidirect C3; compare global compatibility to gcd(n,p*m)=1.",
+      "falsifier": "Any modular family/index disagrees with the gcd classification."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-modular-cyclic-monodromy-spectrum",
+      "target_id": "claim:grothendieck-modular-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:tests-0c0481e223db8d1d"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-modular-cyclic-monodromy-spectrum-packet",
+      "kind": "source",
+      "title": "Modular cyclic-monodromy Adams spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/modular-cyclic-monodromy-adams-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-modular-cyclic-monodromy-spectrum-packet",
+      "target_id": "claim:grothendieck-modular-cyclic-monodromy-adams-spectrum",
+      "relation_id": "rel:promotes_to_evidence-8f5b367783ca3052"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-modular-cyclic-monodromy-spectrum",
+      "test_id": "test:grothendieck-modular-cyclic-monodromy-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: both nonsemisimple families agree with gcd(n,p*m)=1 across 48 index cases and 19032 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-modular-cyclic-monodromy-spectrum-packet",
+          "locator": "research/grothendieck/results/modular-cyclic-monodromy-adams-spectrum.json",
+          "paraphrase": "Exact unipotent-action survivor spectra match the strengthened theorem."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "nonabelian Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-3fed92dfe2f826d7d17661ac",
+  "occurred_at": "2026-08-20T20:54:49.0655812Z",
+  "certifies_truth": false,
+  "event_hash": "7f8a2a3cd41a99ac9163fcb6325b16262dc882e224ec9e033473702ddb1e0f62"
+}

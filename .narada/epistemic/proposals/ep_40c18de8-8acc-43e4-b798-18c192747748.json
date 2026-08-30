@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_40c18de8-8acc-43e4-b798-18c192747748",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1334-integral-adjoint-lattice-v1",
+  "expected_ledger_head": "97b35f3a427cdf52fd367b802c6448345cdd8252c93558863a36c334ec87fbfb",
+  "created_at": "2026-08-20T22:54:22.3360561Z",
+  "content_fingerprint": "a0bbd4149eb3892f437d2888062f6c9d1559ac9b362038e9e4f69233073e8d76",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Rational nondegeneracy does not guarantee an integral Betti adjoint",
+      "statement": "Integral adjunction is P_H S=Q^T P_G. It exists iff the right-hand columns lie in the integral column lattice of P_H. A zero radical gives uniqueness, but a torsion cokernel can still prevent existence.",
+      "entity_id": "claim:e4ba0b81335f9eec15fd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Rank-one pairing lattice excludes an integral adjoint",
+      "procedure": "Take P_H=[2], P_G=[1], Q=[1].",
+      "outcome": "Adjunction uniquely forces S=[1/2] over Q, with no integral solution.",
+      "falsifier": "A failed Smith-factor divisibility condition excludes every integral Betti adjoint before the boundary test.",
+      "entity_id": "test:89e7a712d0e6256c191d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Integral adjoint pairing-lattice obstruction",
+      "version": "v1",
+      "locator": "research/grothendieck/integral-adjoint-pairing-lattice-obstruction.md",
+      "entity_id": "source:ac3c1e1b10e3fb8d1877"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1334 — Rational Nondegeneracy Does Not Guarantee an Integral Betti Adjoint",
+      "version": "1334",
+      "locator": "src/ledger/20260820-1334 Rational Nondegeneracy Does Not Guarantee an Integral Betti Adjoint.md",
+      "entity_id": "source:6f387b11afe5df9011d3"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:89e7a712d0e6256c191d",
+      "target_id": "claim:e4ba0b81335f9eec15fd",
+      "relation_id": "rel:tests-2104a6dc35ca5005"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:e4ba0b81335f9eec15fd",
+      "target_id": "source:ac3c1e1b10e3fb8d1877",
+      "relation_id": "rel:derived_from-9a50773180a98c08"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:6f387b11afe5df9011d3",
+      "target_id": "claim:e4ba0b81335f9eec15fd",
+      "relation_id": "rel:reports-e415621426d0dffc"
+    }
+  ],
+  "digest": "905586d01bf4fe20af4ebee0ea4d3a17c22246b058d1eddbf7c2ef56d0ab3c79"
+}

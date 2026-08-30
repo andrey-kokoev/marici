@@ -1,0 +1,37 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "completed-circle-one-defect-flow",
+    "owner": "marici.Grothendieck",
+    "classification": "static_seam_coherence_passes_dynamic_variation_law_unselected",
+    "stratum": "integer winding labels n>=1 on completed chart t>=1",
+    "inputs": [
+      "research/grothendieck/the-completed-circle-flow-has-exactly-one-short-range-monotonicity-defect.md",
+      "research/grothendieck/theta-completion-differential-selects-positive-circle-operator.md"
+    ],
+    "checks": [
+      {
+        "id": "completed-circle-scc-structure",
+        "path": "research/grothendieck/checkers/check_completed_circle_scc_structure.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "integer winding labels",
+      "positive completed circle operator",
+      "modular-even seam germ"
+    ],
+    "provides": [
+      "constant-rank labelled flow stratum",
+      "unique lowest-mode monotonicity defect",
+      "distributed higher-winding seam repair",
+      "static first-germ coherence"
+    ],
+    "missing_constructors": [
+      "source-derived higher-jet variation-diminishing law beyond modular-even first-jet closure"
+    ],
+    "next_falsifier": "preserve modular evenness, positivity, and the full declared finite seam jet while breaking the first proposed off-seam variation minor"
+  }
+}

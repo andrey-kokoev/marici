@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1336,
+  "event_id": "ev-000000001336-cb346703-ee89-4367-8154-a6ac7ef5e471",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2fa13f6d752ad7f834d00ff54623fd58ba84c5ab24acae72544128c09398765e",
+  "proposal_id": "ep_89ad5746-7523-42ce-984b-ff0d227a0820",
+  "proposal_digest": "fbdbd5f1d2be57be5f1f250e6ed71dc00242baf42b6cd5a8c3b1df80371c069e",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The norm detects invariant boundary defects away from degree torsion",
+      "statement": "If quotient pushforward S and fiber trace T satisfy ST=d id and multiplication by d is injective on the target, then S is injective on im T. Thus a defect with image in im T cannot be hidden by the quotient.",
+      "entity_id": "claim:31c1caf2e1bafc345b22"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Degree-prime collapse hides an invariant boundary defect",
+      "procedure": "For C2->1 over F2, take T(1)=(1,1) and S(x,y)=x+y.",
+      "outcome": "ST=0 and the nonzero invariant trace vector lies in ker S.",
+      "falsifier": "This falsifies norm-based defect detection at primes dividing the fiber degree.",
+      "entity_id": "test:ad5705e39229f1afc2be"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Norm detection of invariant boundary defects",
+      "version": "v1",
+      "locator": "research/grothendieck/norm-detection-of-invariant-boundary-defects.md",
+      "entity_id": "source:53cef7993c23be8bdcbf"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1321 — The Norm Detects Invariant Boundary Defects Away from Degree Torsion",
+      "version": "1321",
+      "locator": "src/ledger/20260820-1321 The Norm Detects Invariant Boundary Defects Away from Degree Torsion.md",
+      "entity_id": "source:ace95ce0614a0829b951"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:ad5705e39229f1afc2be",
+      "target_id": "claim:31c1caf2e1bafc345b22",
+      "relation_id": "rel:tests-3248279df9069568"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:31c1caf2e1bafc345b22",
+      "target_id": "source:53cef7993c23be8bdcbf",
+      "relation_id": "rel:derived_from-22b991b8d7b508c1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:ace95ce0614a0829b951",
+      "target_id": "claim:31c1caf2e1bafc345b22",
+      "relation_id": "rel:reports-11afdf2b8bb610fd"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-54031676b6e5c9a979c49f02",
+  "occurred_at": "2026-08-20T22:35:06.4404373Z",
+  "certifies_truth": false,
+  "event_hash": "b21d4b20c150cd237c66ececa64250fe4e2c1682b217274905c3e8e1baa65c38"
+}

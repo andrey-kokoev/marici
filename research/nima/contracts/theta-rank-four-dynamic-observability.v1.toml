@@ -1,0 +1,30 @@
+schema = "marici.theta.rank_four_dynamic_observability.v1"
+status = "active"
+
+[static]
+even_arithmetic_rank = 3
+odd_seam_rank = 1
+total_rank = 4
+kernel = "odd_prime_difference_plane"
+
+[dynamics]
+generator = "prime_scale_action"
+observations = ["J", "J A", "J A^2"]
+odd_krylov_structure = "vandermonde"
+finite_observability_rank = 6
+
+[task_distinction]
+static_boundary_isomorphism = false
+dynamic_state_observability = true
+
+[[falsifier]]
+id = "kernel_invariant"
+condition = "prime-scale action preserves static hidden plane"
+
+[[falsifier]]
+id = "finite_to_uniform"
+condition = "finite Vandermonde rank promoted to completed lower bound"
+
+[[falsifier]]
+id = "higher_observer_confusion"
+condition = "Krylov rows typed as coherence cells rather than action-derived observations"

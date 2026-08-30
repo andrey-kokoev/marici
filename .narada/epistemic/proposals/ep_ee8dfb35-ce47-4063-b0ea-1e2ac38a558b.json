@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_ee8dfb35-ce47-4063-b0ea-1e2ac38a558b",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "grothendieck-radical-resonance-unit-sieve",
+  "expected_ledger_head": "9ad9854b875304344d618ba7559bdab180a940eb7dd71fcdc3c3271985726407",
+  "created_at": "2026-08-20T21:30:52.5801321Z",
+  "content_fingerprint": "831e4354b19fbc394350156d138082f8c5fa1a80d991639372daceab339644bc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-radical-resonance-unit-sieve",
+      "kind": "claim",
+      "title": "Power-Mackey compatibility is the unit sieve of a square-free resonance modulus",
+      "statement": "For q:G->H, with R_q=rad(exp ker(q)*exp A_q), compatible indices are exactly gcd(n,R_q)=1; they form the unit residues modulo R_q, are multiplicatively closed, periodic, and have density phi(R_q)/R_q.",
+      "scope": "Finite algebraic correspondence indicator only; no Euler product, Carrier primes, geometric Frobenius, or physical selection."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-radical-resonance-unit-sieve",
+      "target_id": "claim:grothendieck-arbitrary-finite-surjection-conjugation-spectrum",
+      "relation_id": "rel:derived_from-b862c067144802db"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-radical-resonance-unit-sieve",
+      "kind": "test",
+      "title": "Radical resonance periodicity and multiplicativity test",
+      "protocol": "Check periodicity through 120, multiplicativity for 30x30 pairs, and exact period density for radical moduli 2,3,6,10,30.",
+      "falsifier": "Any compatibility indicator fails to factor through units modulo the radical."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-radical-resonance-unit-sieve",
+      "target_id": "claim:grothendieck-radical-resonance-unit-sieve",
+      "relation_id": "rel:tests-659031b8ba6094e7"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-radical-resonance-unit-sieve",
+      "kind": "source",
+      "title": "Radical resonance unit sieve research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/radical-resonance-unit-sieve.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-radical-resonance-unit-sieve",
+      "target_id": "claim:grothendieck-radical-resonance-unit-sieve",
+      "relation_id": "rel:promotes_to_evidence-dbd914211682a445"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-radical-resonance-unit-sieve",
+      "test_id": "test:grothendieck-radical-resonance-unit-sieve",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: five radical families satisfy periodicity, multiplicativity, and phi(R)/R density across 5049 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-radical-resonance-unit-sieve",
+          "locator": "research/grothendieck/results/radical-resonance-unit-sieve.json",
+          "paraphrase": "Exact congruence checks verify the unit-sieve corollary."
+        }
+      ]
+    }
+  ],
+  "digest": "b8e0b5a170feb98d6d68ab1389308f42b6db0acbfdaaa65efaca1342efdbca1a"
+}

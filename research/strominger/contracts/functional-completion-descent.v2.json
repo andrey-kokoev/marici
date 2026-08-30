@@ -1,0 +1,138 @@
+{
+  "schema": "marici.data-descent-packet.v2+strominger.functional-completion.v1",
+  "contexts": [
+    {"id": "finite_atomic_source", "site": "radiative_sphere", "stratum_depth": 0},
+    {"id": "weakstar_radon_source", "site": "radiative_sphere", "stratum_depth": 1},
+    {"id": "completed_shear", "site": "radiative_sphere", "stratum_depth": 1},
+    {"id": "grade_three_target", "site": "radiative_sphere", "stratum_depth": 1},
+    {"id": "local_scalar_chart", "site": "projected_chart", "stratum_depth": 0}
+  ],
+  "local_objects": [
+    {"id": "FiniteAtomicFlux", "context": "finite_atomic_source", "coefficient_type": "R", "rank": "countable_LF", "grades": ["finite_point"]},
+    {"id": "RadonFluxWeakStar", "context": "weakstar_radon_source", "coefficient_type": "R", "rank": "infinite", "grades": ["weak_star"]},
+    {"id": "HardFluxLow", "context": "weakstar_radon_source", "coefficient_type": "R", "rank": 21, "grades": ["l=2,3,4", "magnetic"]},
+    {"id": "ShearCompleted", "context": "completed_shear", "coefficient_type": "R", "rank": "infinite", "grades": ["spin_2", "Sobolev_Hs"]},
+    {"id": "GradeThreeOutput", "context": "grade_three_target", "coefficient_type": "R", "rank": "infinite", "grades": ["spin_4", "Sobolev_Hs-4"]},
+    {"id": "LowKernel", "context": "completed_shear", "coefficient_type": "R", "rank": 21, "grades": ["ordinary_kernel", "l=2,3,4", "magnetic"]},
+    {"id": "CharacteristicChart", "context": "local_scalar_chart", "coefficient_type": "R", "rank": 4, "grades": ["ridge_families"]}
+  ],
+  "arrows": [
+    {
+      "id": "hard_flux_to_shear",
+      "kind": "correspondence",
+      "source": "HardFluxLow",
+      "target": "ShearCompleted",
+      "kernel_or_span": "linear_Bondi_constraint_incidence",
+      "variance": "contravariant_left_covariant_right",
+      "left_leg": "pullback_flux_to_constraint_incidence",
+      "right_leg": "solve_and_push_to_spin_shear",
+      "pushforward_required": true,
+      "right_proper_or_supported": true,
+      "support_declaration": "smooth compact-u profiles with full spherical support allowed",
+      "properness_declaration": "u-support is compact for pulses; endpoint transitions use finite-news-energy boundary control"
+    }
+  ],
+  "complexes": [
+    {"id": "A3_completed_complex", "context": "completed_shear", "degrees": [0, 1], "differential": "paired_global_grade_three_spin_operator"}
+  ],
+  "derived_objects": [
+    {"id": "Kernel_A3_completed", "kind": "Kernel", "source_complex": "A3_completed_complex", "context": "completed_shear", "degree": 0, "rank": 21}
+  ],
+  "topological_completions": [
+    {
+      "id": "finite_atomic_to_weakstar_radon",
+      "constructor_kind": "topological_completion",
+      "source": "FiniteAtomicFlux",
+      "target": "RadonFluxWeakStar",
+      "topology": "weak_star_sigma_M_C0",
+      "dense_image_evidence": "finite atomic measures are weak-star dense in finite Radon measures",
+      "source_authority": "continuum hard-flux source category admits finite Radon densities",
+      "comparison_evidence": "total-variation closure remains countably atomic and therefore differs from weak-star closure",
+      "ordinary_flat_base_change": false
+    }
+  ],
+  "geometric_loci": [
+    {"id": "projected_characteristic_locus", "ambient": "local_scalar_cotangent_chart", "equation": "p^4-q^4=0", "status": "projected_symbol_locus"}
+  ],
+  "localized_global_states": [
+    {
+      "id": "localized_characteristic_state_space",
+      "characteristic_locus": "projected_characteristic_locus",
+      "space": "compact_support_or_planar_L2",
+      "rank": 0,
+      "no_go_evidence": "Paley-Wiener excludes compact support; measure-zero Fourier support excludes nonzero planar L2; cutoff creates source"
+    }
+  ],
+  "physical_kernel_classes": [
+    {
+      "id": "completed_magnetic_low_kernel",
+      "derived_object": "Kernel_A3_completed",
+      "completion": "finite_atomic_to_weakstar_radon",
+      "homological_degree": 0,
+      "tor_grade": null,
+      "rank": 21,
+      "harmonic_support": [2, 3, 4],
+      "origin": "global_spectral_zero",
+      "classification": "ordinary_kernel_after_completion_not_Tor_not_completion_defect"
+    }
+  ],
+  "observation_fibers": [
+    {
+      "id": "low_harmonic_repair_ports",
+      "kind": "finite_linear_observation_fiber",
+      "source_kernel": "completed_magnetic_low_kernel",
+      "coefficient_type": "R",
+      "joint_rank": 21,
+      "execution": "finite_exact_harmonic_coefficient_projection",
+      "source_derived_port_authority": "pre-readout low-harmonic coefficient access from the shear field",
+      "authority_basis": "source-side harmonic projection, independently defined before kernel inspection",
+      "ports": [
+        {"id": "P_2_-2", "l": 2, "m": -2, "coordinate": 0},
+        {"id": "P_2_-1", "l": 2, "m": -1, "coordinate": 1},
+        {"id": "P_2_0", "l": 2, "m": 0, "coordinate": 2},
+        {"id": "P_2_1", "l": 2, "m": 1, "coordinate": 3},
+        {"id": "P_2_2", "l": 2, "m": 2, "coordinate": 4},
+        {"id": "P_3_-3", "l": 3, "m": -3, "coordinate": 5},
+        {"id": "P_3_-2", "l": 3, "m": -2, "coordinate": 6},
+        {"id": "P_3_-1", "l": 3, "m": -1, "coordinate": 7},
+        {"id": "P_3_0", "l": 3, "m": 0, "coordinate": 8},
+        {"id": "P_3_1", "l": 3, "m": 1, "coordinate": 9},
+        {"id": "P_3_2", "l": 3, "m": 2, "coordinate": 10},
+        {"id": "P_3_3", "l": 3, "m": 3, "coordinate": 11},
+        {"id": "P_4_-4", "l": 4, "m": -4, "coordinate": 12},
+        {"id": "P_4_-3", "l": 4, "m": -3, "coordinate": 13},
+        {"id": "P_4_-2", "l": 4, "m": -2, "coordinate": 14},
+        {"id": "P_4_-1", "l": 4, "m": -1, "coordinate": 15},
+        {"id": "P_4_0", "l": 4, "m": 0, "coordinate": 16},
+        {"id": "P_4_1", "l": 4, "m": 1, "coordinate": 17},
+        {"id": "P_4_2", "l": 4, "m": 2, "coordinate": 18},
+        {"id": "P_4_3", "l": 4, "m": 3, "coordinate": 19},
+        {"id": "P_4_4", "l": 4, "m": 4, "coordinate": 20}
+      ]
+    }
+  ],
+  "typed_coincidences": [
+    {
+      "id": "cosmology_rank_21_historical_plateau_correction",
+      "left_object": "completed_magnetic_low_kernel",
+      "left_rank": 21,
+      "right_object": "cosmology_marked_relative_geometric_closure",
+      "right_rank": 26,
+      "historical_right_presentation": "cutoff_five_rank_21_plateau",
+      "same_rank": false,
+      "comparison_map": null,
+      "identified": false,
+      "disposition": "superseded_cutoff_plateau_not_current_coincidence",
+      "evidence": "research/nima/physical-marked-rank26-geometric-closure.md proves rank 21 was a cutoff-five plateau and rank 26 is geometric and stabilized"
+    }
+  ],
+  "evidence_replays": [
+    {
+      "id": "functional_completion_master_replay",
+      "checker": "research/strominger/checkers/functional_completion_extension_master_checks.py",
+      "artifact": "research/strominger/results/functional_completion_extension_master.json",
+      "sha256": "6ec5501becfa43354ea2061034758b32cb1c2539b9d8f395d15adc8a0e3364d0",
+      "expected": {"passed": 16, "total": 16, "constituent_gates": 91}
+    }
+  ]
+}

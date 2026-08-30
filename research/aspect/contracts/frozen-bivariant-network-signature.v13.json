@@ -1,0 +1,80 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v13",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v12.json",
+  "change_reason": "v12 rejected lawful projective transport because it had no carrier for central multiplier cocycles",
+  "cell_creation_during_replay": false,
+  "coherence_depth_policy": "finite source-declared Postnikov profile per admitted packet; no universal fixed depth and no replay extension",
+  "object_types": [
+    "projective_unitary_transport_stack",
+    "pu_r_bundle",
+    "local_u_r_lift_torsor",
+    "central_extension_object",
+    "differential_cocycle_tower",
+    "bundle_gerbe_with_connection",
+    "source_declared_postnikov_profile",
+    "higher_obstruction_class",
+    "strict_lift_trivialization",
+    "higher_framed_vanishing_cycle"
+  ],
+  "arrow_types": [
+    "projective_parallel_transport",
+    "local_unitary_lift",
+    "coboundary_gauge_change",
+    "higher_cocycle_transgression",
+    "gerbe_parallel_transport",
+    "higher_horizontal_specialization",
+    "strict_lift_forgetful_map"
+  ],
+  "cell_families": [
+    "degree_n_normalized_cocycle",
+    "degree_n_coboundary_gauge",
+    "postnikov_k_invariant",
+    "higher_specialization_naturality",
+    "source_obstruction_without_adaptive_filler"
+  ],
+  "higher_projective_transport_family": {
+    "required_fields": [
+      "full_matrix_transport_data_of_v12",
+      "projective_transport_object",
+      "local_unitary_lifts",
+      "multiplier_two_cocycles",
+      "coboundary_gauge_actions",
+      "source_declared_maximum_obstruction_degree",
+      "source_declared_postnikov_k_invariants",
+      "normalized_cocycles_at_every_declared_degree",
+      "higher_connection_and_transgression_data",
+      "higher_framed_vanishing_cycles",
+      "higher_horizontal_specialization_maps"
+    ],
+    "required_laws": [
+      "projective_composition_holds_with_the_declared_multiplier",
+      "every_degree_n_multiplier_satisfies_its_normalized_cocycle_equation",
+      "changes_of_local_lift_act_by_declared_coboundaries",
+      "cohomologous_cocycles_define_equivalent_transport_presentations",
+      "an_honest_u_r_lift_exists_only_when_the_degree_two_obstruction_is_trivialized",
+      "higher_obstruction_classes_are_retained_not_forced_to_vanish",
+      "postnikov_k_invariants_are_fixed_before_hostile_replay",
+      "no_cell_or_filler_may_be_added_during_replay",
+      "higher_specialization_commutes_with_differential_and_transgression",
+      "strict_descent_requires_source_declared_obstructions_to_be_trivialized_or_retained",
+      "all_lower_resolvent_completion_cover_phase_and_matrix_defects_remain_retained"
+    ]
+  },
+  "forbidden_promotions": [
+    "projective transport rejected solely because no honest unitary lift exists",
+    "central multiplier discarded as an unobservable phase",
+    "nontrivial cocycle silently replaced by a strict representation",
+    "higher filler invented after a hostile obstruction is observed",
+    "unbounded coherence tower admitted without a source-declared locally finite profile",
+    "cohomology class inferred from one chosen cocycle representative",
+    "strict lift chosen before obstruction trivialization"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "projective Z2 x Z2 Pauli transport with multiplier (-1)^(bc)",
+    "first_unused_packet": "nontrivial normalized degree-three Z2 cocycle (-1)^(abcd after degree indexing), checked as a source-declared next Postnikov class",
+    "anti_vacuity_packet": "a hostile requesting a new filler after replay begins must be rejected rather than repaired adaptively",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

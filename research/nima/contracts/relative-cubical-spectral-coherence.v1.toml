@@ -1,0 +1,113 @@
+schema = "marici.relative-cubical-spectral-coherence.v1"
+owner = "marici.Nima"
+status = "candidate"
+theory = "relative_normalized_nonabelian_cubical"
+bulk_pair = ["B_minus", "B_plus"]
+crossing_wall = "W"
+
+[normalization]
+identity_edge_matrix = "I"
+degenerate_cell_residual = "I"
+reverse_edge_law = "g(reverse(e)) = inverse(g(e))"
+reject_nonunit_degeneracy = true
+
+[gauge]
+vertex_action = "g_e -> u_target * g_e * inverse(u_source)"
+residual_action = "Omega_at_v -> u_v * Omega_at_v * inverse(u_v)"
+identity_judgment = "conjugacy_invariant"
+centrality_judgment = "conjugacy_invariant"
+require_gauge_duplicate_fixture = true
+require_equal_verdict_under_gauge = true
+
+[face]
+require_oriented_boundary = true
+require_cyclic_start_edge = true
+product_order = "declared_boundary_order"
+require_exact_matrix_product = true
+determinant_is_shadow_only = true
+
+[cube]
+require_common_base_vertex = true
+require_base_path_per_face = true
+transport_rule = "Omega_f_at_base = inverse(h_f) * Omega_f * h_f"
+require_declared_shelling = true
+require_second_admissible_shelling = true
+shelling_agreement_gate = "only_after_lower_residuals_are_identity_or_central"
+shelling_disagreement_disposition = "first_unresolved_lower_coherence"
+forbid_promotion_to_degree_four = true
+
+[wall]
+clutching_type = "natural_transformation_between_restricted_boundary_representations"
+require_vertex_clutching_matrices = true
+require_edge_naturality = true
+require_face_naturality = true
+require_crossing_determinant_factor = true
+crossing_factor_type = "relative_transgression"
+
+[degree_four]
+admit_only_after_lower_gates = true
+identity_result = "coherent"
+central_nonidentity_result = "relative_gerbe_anomaly"
+noncentral_result = "incoherent"
+
+[result_packet]
+required = [
+  "verdict",
+  "first_failed_degree",
+  "exact_ordered_residual_matrix",
+  "center_test",
+  "base_vertex",
+  "base_paths",
+  "shelling",
+  "alternate_shelling",
+  "wall_factor",
+  "scalar_determinant_shadow"
+]
+separate_matrix_and_scalar_shadow = true
+
+[[fixtures]]
+id = "flat_identity"
+kind = "positive"
+expected_verdict = "coherent"
+
+[[fixtures]]
+id = "gl2_commutator"
+kind = "hostile"
+matrices = ["A=[[1,1],[0,1]]", "B=[[1,0],[1,1]]", "A_inverse", "B_inverse"]
+scalar_determinant_shadow = "1"
+exact_ordered_residual = "A*B*A_inverse*B_inverse"
+expected_verdict = "incoherent"
+expected_first_failed_degree = 3
+
+[[fixtures]]
+id = "gl2_commutator_gauge_duplicate"
+kind = "gauge_duplicate"
+source_fixture = "gl2_commutator"
+gauge = "noncentral_vertex_basis_change"
+expected_same_verdict = true
+expected_residual_relation = "conjugate"
+
+[[fixtures]]
+id = "shelling_agrees_after_flat_faces"
+kind = "positive"
+lower_gate = "face_residuals_identity"
+expected_shelling_agreement = true
+
+[[fixtures]]
+id = "shelling_disagrees_before_centrality"
+kind = "hostile"
+lower_gate = "unresolved_noncentral_face_residual"
+expected_verdict = "first_unresolved_lower_coherence"
+forbid_degree_four_anomaly = true
+
+[[fixtures]]
+id = "wall_naturality_failure"
+kind = "hostile"
+expected_verdict = "incoherent"
+expected_first_failed_degree = 2
+
+[acceptance]
+never_accept_det_one_as_matrix_closure = true
+never_scalarize_before_centrality = true
+never_hide_base_path_conjugation = true
+never_promote_lower_failure = true

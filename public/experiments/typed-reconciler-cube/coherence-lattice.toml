@@ -1,0 +1,408 @@
+schema = "marici.coherence-lattice.v2"
+
+[lattice]
+id = "tower-reconciler-flag"
+title = "Tower and reconciler flag"
+formation = "contiguous_interval"
+orientation = "bottom_to_top"
+object_count = 8
+max_witnessed_column = 1
+
+[constructor]
+name = "typed_overlap_reconciler"
+arity = 2
+partial = true
+input_rule = "C(p-1,i), C(p-1,i+1)"
+shared_face = "C(p-2,i+1)"
+output_rule = "C(p,i)"
+preserves_inputs = true
+requires_shared_face_agreement = true
+
+[operational_semantics]
+classification = "constructor_observer_behavior"
+domain_identity = "verified_constructor_equivalence"
+domain_components_are_derived = true
+scalar_equality_is_insufficient = true
+completion_is_part_of_domain_identity = true
+observer_atlas = "observer-atlas.toml"
+
+[scc_classifier]
+scales = [
+  "local",
+  "packet",
+  "finite_system",
+  "pro_system",
+  "completion",
+]
+carrier = ["absent", "split", "compatible"]
+action = ["absent", "typed", "faithful"]
+observation = ["absent", "natural", "faithful"]
+estimate = ["absent", "bounded", "uniform"]
+profile_count = 405
+assignment_rule = "record only occupied profiles; do not enumerate the classifier product"
+
+[[realization_index]]
+id = "theta_tate"
+over = "theta_tate_cell.id"
+status = "schema_only"
+structural_authority = "rung, reconciler, edge_type, and boundary_word tables"
+secondary_overlay = "theta_tate_cell"
+required_slots = [
+  "state_object_ref",
+  "constructor_family_refs",
+  "observation_family_refs",
+  "completion_ref",
+]
+rule = "the secondary overlay may label a realization but may not supply structural authority"
+
+[[transport_index]]
+id = "canonical_faces"
+realization_index = "theta_tate"
+over = "edge_type"
+status = "uninstantiated"
+required_slots = [
+  "constructor_transport_ref",
+  "observation_transport_ref",
+]
+rule = "a realization transport must lift one declared L or R face map"
+
+[[comparison_type]]
+id = "constructor_equivalence"
+required_slots = [
+  "state_map_ref",
+  "constructor_intertwiner_ref",
+  "observer_intertwiner_ref",
+  "inverse_ref",
+]
+rule = "verified comparisons generate operational-domain components"
+
+[[comparison_type]]
+id = "scalar_equivalence"
+required_slots = ["scalar_map_ref"]
+rule = "diagnostic only; never generates operational-domain components"
+
+[[domain_wall_type]]
+id = "observability"
+witness = "behavioral joint kernel changes"
+
+[[domain_wall_type]]
+id = "controllability"
+witness = "authorized constructor orbits change"
+
+[[domain_wall_type]]
+id = "authority"
+witness = "no source-authorized common comparison context exists"
+
+[[domain_wall_type]]
+id = "holonomy"
+witness = "a typed boundary word has nonidentity constructor residue"
+
+[[domain_wall_type]]
+id = "completion"
+witness = "finite separation exists but its uniform lower margin collapses"
+
+[[derivation_rule]]
+id = "operational_domain_components"
+vertices = "instantiated realizations"
+edges = "verified constructor_equivalence comparisons"
+output = "connected components after inversion of verified equivalences"
+
+[[derivation_rule]]
+id = "first_domain_wall"
+order = "declared dependency order, then scale order, then cell index"
+output = "the first typed failed witness on a path between realization components"
+
+[[edge_type]]
+id = "L"
+label = "left face"
+source = "C(p,i)"
+target = "C(p-1,i)"
+orientation = "outward"
+
+[[edge_type]]
+id = "R"
+label = "right face"
+source = "C(p,i)"
+target = "C(p-1,i+1)"
+orientation = "outward"
+
+[[boundary_word]]
+id = "shared_face_diamond"
+minimum_column = 2
+route_a = "L > R"
+route_b = "R > L"
+common_target = "C(p-2,i+1)"
+
+[[coefficient_lens]]
+id = "additive"
+formula = "R∘L − L∘R"
+flat_identity = "0"
+
+[[coefficient_lens]]
+id = "phase"
+formula = "det(R∘L) / det(L∘R)"
+flat_identity = "1"
+
+[[coefficient_lens]]
+id = "ordered"
+formula = "(R∘L) ∘ (L∘R)⁻¹"
+flat_identity = "I"
+
+[[rung]]
+index = 0
+id = "A0"
+label = "combinatorics"
+
+[[rung]]
+index = 1
+id = "A1"
+label = "scalar coherence"
+
+[[rung]]
+index = 2
+id = "A2"
+label = "constructor coherence"
+
+[[rung]]
+index = 3
+id = "A3"
+label = "closure coherence"
+
+[[rung]]
+index = 4
+id = "A4"
+label = "network semantics"
+
+[[rung]]
+index = 5
+id = "A5"
+label = "parameter-dependent law"
+
+[[rung]]
+index = 6
+id = "A6"
+label = "law of compositions"
+
+[[rung]]
+index = 7
+id = "A7"
+label = "realization-fiber coherence"
+
+[[reconciler]]
+id = "C1_0"
+label = "finite-to-scalar readout"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_1"
+label = "scalar-to-constructor lift"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_2"
+label = "constructor-to-closure extension"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_3"
+label = "closure-to-network transport"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_4"
+label = "network-to-parameter naturality"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_5"
+label = "parameter-to-composition admissibility"
+authority = "partial programme synthesis"
+
+[[reconciler]]
+id = "C1_6"
+label = "law-to-realization fiber comparison"
+authority = "partial programme synthesis"
+
+[[law]]
+id = "typed_ports"
+statement = "Interactions are admitted only when source, target, and shared-face types agree."
+
+[[law]]
+id = "constructor_confluence"
+statement = "Competing reduction orders require a constructor-level witness, not scalar equality alone."
+
+[[law]]
+id = "twisted_associator"
+statement = "For x star y = omega(x,y)xy, strict confluence is the two-cocycle law for omega."
+
+[[law]]
+id = "same_profile_fiber"
+statement = "Equal SCC profiles identify certification strength, not constructor equivalence; operational domains are components of the verified realization-intertwiner groupoid."
+
+[[law]]
+id = "fiber_intertwiner"
+statement = "A realization-fiber comparison must intertwine named constructors, observations, viewing strength, authority, completion, and instrument backaction."
+
+[[falsifier]]
+id = "scalar_only_apex"
+condition = "Competing apex constructors differ although their scalar projections agree."
+
+[[falsifier]]
+id = "untyped_adjacency"
+condition = "A reconciler is formed without equality on the declared shared face."
+
+[[falsifier]]
+id = "same_profile_inequivalent_realizations"
+condition = "Two systems occupy one SCC profile but their named constructor representations admit no invertible intertwiner."
+
+[[theta_tate_cell]]
+id = "C0_0"
+label = "finite Euler / prime-power incidence"
+authority = "established vocabulary"
+[[theta_tate_cell]]
+id = "C0_1"
+label = "Mellin–Fourier scalar space"
+authority = "established vocabulary"
+[[theta_tate_cell]]
+id = "C0_2"
+label = "Fock–Tate operator realization"
+authority = "programme synthesis"
+[[theta_tate_cell]]
+id = "C0_3"
+label = "Schwartz–Bruhat rigged completion"
+authority = "programme synthesis"
+[[theta_tate_cell]]
+id = "C0_4"
+label = "reciprocal tail–seam network"
+authority = "programme synthesis"
+[[theta_tate_cell]]
+id = "C0_5"
+label = "holomorphic Mellin s-family"
+authority = "established vocabulary"
+[[theta_tate_cell]]
+id = "C0_6"
+label = "global Tate sewing law"
+authority = "programme target"
+[[theta_tate_cell]]
+id = "C0_7"
+label = "theta/Tate realization moduli"
+authority = "programme synthesis"
+
+[[theta_tate_cell]]
+id = "C1_0"
+label = "Mellin–Fourier transform"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_1"
+label = "Fock–Tate operator lift"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_2"
+label = "Schwartz restriction / rigged trace"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_3"
+label = "Clark tail–seam correspondence"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_4"
+label = "Fourier–Tate sewing in s"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_5"
+label = "gamma-normalized functional equation"
+authority = "partial"
+[[theta_tate_cell]]
+id = "C1_6"
+label = "functional-law realization comparison"
+authority = "required"
+
+[[theta_tate_cell]]
+id = "C2_0"
+label = "Fourier–Mellin incidence coherence"
+authority = "required"
+[[theta_tate_cell]]
+id = "C2_1"
+label = "Fock–Tate lift coherence"
+authority = "required"
+[[theta_tate_cell]]
+id = "C2_2"
+label = "rigged trace / Clark boundary coherence"
+authority = "required"
+[[theta_tate_cell]]
+id = "C2_3"
+label = "reciprocal Fourier–Tate sewing"
+authority = "required"
+[[theta_tate_cell]]
+id = "C2_4"
+label = "Mellin covariance / functional equation"
+authority = "required"
+[[theta_tate_cell]]
+id = "C2_5"
+label = "functional-law / realization-fiber coherence"
+authority = "required"
+
+[[theta_tate_cell]]
+id = "C3_0"
+label = "Euler–Fock–Tate completion coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C3_1"
+label = "Mellin–Tate–Clark boundary coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C3_2"
+label = "Fock–Clark reciprocal sewing coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C3_3"
+label = "completed Tate functional-equation coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C3_4"
+label = "completed-law realization descent"
+authority = "provisional"
+
+[[theta_tate_cell]]
+id = "C4_0"
+label = "finite-source to tail–seam Green coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C4_1"
+label = "scalar/Fock reciprocal-family coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C4_2"
+label = "operator completion to global Tate law"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C4_3"
+label = "operator-law realization moduli coherence"
+authority = "provisional"
+
+[[theta_tate_cell]]
+id = "C5_0"
+label = "source-to-parameter Fourier–Tate coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C5_1"
+label = "scalar-to-global Tate sewing coherence"
+authority = "provisional"
+[[theta_tate_cell]]
+id = "C5_2"
+label = "source-to-realization comparison coherence"
+authority = "provisional"
+
+[[theta_tate_cell]]
+id = "C6_0"
+label = "global theta/Tate source–boundary coherencer"
+authority = "programme conjecture"
+[[theta_tate_cell]]
+id = "C6_1"
+label = "global-law realization-fiber coherencer"
+authority = "programme conjecture"
+
+[[theta_tate_cell]]
+id = "C7_0"
+label = "theta/Tate operational-domain moduli"
+authority = "programme conjecture"

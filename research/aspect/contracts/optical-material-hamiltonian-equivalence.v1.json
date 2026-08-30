@@ -1,0 +1,17 @@
+{
+  "schema": "marici.aspect.optical-material-hamiltonian-equivalence.v1",
+  "claim_boundary": "tests_shared_observable_transport_not_material_superconductivity",
+  "reduced_coordinates": [0.10, 0.25, 0.40, 0.55, 0.70, 0.85],
+  "scale_search": {"minimum": 0.80, "maximum": 1.20, "step": 0.01},
+  "preregistered_thresholds": {
+    "independent_fit_rmse_max": 0.000001,
+    "shared_fit_rmse_max": 0.015,
+    "transport_spread_max": 0.02
+  },
+  "channels": ["gap", "stiffness", "screening", "relaxation"],
+  "fixtures": [
+    {"id": "shared_transport_candidate", "channel_scales": {"gap": 1.00, "stiffness": 1.00, "screening": 1.00, "relaxation": 1.00}, "expect_admit": true},
+    {"id": "independent_fit_hostile", "channel_scales": {"gap": 0.88, "stiffness": 1.12, "screening": 0.94, "relaxation": 1.08}, "expect_admit": false},
+    {"id": "single_channel_drift_hostile", "channel_scales": {"gap": 1.00, "stiffness": 1.00, "screening": 1.00, "relaxation": 1.10}, "expect_admit": false}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "marici.aspect.synchronized-optical-material-acquisition.v1",
+  "required_channels": ["gap", "stiffness", "screening", "relaxation"],
+  "required_points_per_channel": 6,
+  "uncertainty": {
+    "sigma_min": 0.001,
+    "sigma_max": 0.10,
+    "require_covariance_diagonal": true,
+    "require_calibration_id": true
+  },
+  "fixtures": [
+    {"id": "synchronized_candidate", "run_ids": ["run-17"], "sample_ids": ["sample-A"], "calibration_ids": ["cal-9"], "sigma": 0.02, "include_covariance": true, "expect_admit": true},
+    {"id": "mixed_run_hostile", "run_ids": ["run-17", "run-18"], "sample_ids": ["sample-A"], "calibration_ids": ["cal-9"], "sigma": 0.02, "include_covariance": true, "expect_admit": false},
+    {"id": "mixed_sample_hostile", "run_ids": ["run-17"], "sample_ids": ["sample-A", "sample-B"], "calibration_ids": ["cal-9"], "sigma": 0.02, "include_covariance": true, "expect_admit": false},
+    {"id": "missing_covariance_hostile", "run_ids": ["run-17"], "sample_ids": ["sample-A"], "calibration_ids": ["cal-9"], "sigma": 0.02, "include_covariance": false, "expect_admit": false},
+    {"id": "uncertainty_inflation_hostile", "run_ids": ["run-17"], "sample_ids": ["sample-A"], "calibration_ids": ["cal-9"], "sigma": 0.50, "include_covariance": true, "expect_admit": false},
+    {"id": "mixed_calibration_hostile", "run_ids": ["run-17"], "sample_ids": ["sample-A"], "calibration_ids": ["cal-9", "cal-10"], "sigma": 0.02, "include_covariance": true, "expect_admit": false}
+  ]
+}

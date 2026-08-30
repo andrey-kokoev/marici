@@ -1,0 +1,17 @@
+{
+  "id":"theta-primitive-square-observer-set",
+  "base_dimension":2,
+  "base_transport":[[0,-1],[1,0]],
+  "members":[
+    {"id":"J1","arity":1,"domain":"A","matrix":[[1,0],[0,1]],"transported_matrix":[[0,-1],[1,0]]},
+    {"id":"J2_tilde","arity":2,"domain":"Sym^2(A)","matrix":[[1,2,3]],"transported_matrix":[[3,-2,1]]}
+  ],
+  "operations":["restriction_to_arity","polarization","diagonalization","cyclic_composition","fourier_transport","determinant_reconstruction"],
+  "polarization":[
+    {"id":"basis_pair","gramian":[[1,1],[1,3]],"x":[1,0],"y":[0,1]},
+    {"id":"mixed_pair","gramian":[[1,1],[1,3]],"x":[1,2],"y":[-2,1]},
+    {"id":"generic_pair","gramian":[[1,1],[1,3]],"x":[3,-1],"y":[2,4]}
+  ],
+  "realization_comparisons":[{"id":"poisson-to-completed-euler","invertible":false,"slots":{"named_constructor_actions":false,"observers":true,"viewing_forms":true,"authority":false,"completion_topology":false,"instrument_backaction":false}}],
+  "higher_coherence":[{"degree":2,"state":"verified","witness":"three polarization fixtures"},{"degree":3,"state":"verified","witness":"transition triangle fixture"},{"degree":4,"state":"unsupported"},{"degree":5,"state":"unsupported"}]
+}

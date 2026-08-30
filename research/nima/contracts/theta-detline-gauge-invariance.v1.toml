@@ -1,0 +1,25 @@
+schema = "marici.theta.detline_gauge_invariance.v1"
+status = "active"
+
+[prohibition]
+criterion = "coordinate bounds on a freely trivialized determinant line"
+reason = "not invariant under frame rescaling"
+
+[admissible_detectors]
+types = ["source_metric", "source_dual_pairing", "normalized_connection", "fredholm_index"]
+
+[seam]
+metric = "unitary_direct_limit"
+off_seam_extension = "unconstructed"
+
+[[falsifier]]
+id = "frame_rescaling"
+witness = "same section has coordinates 1, N, and 1/N"
+
+[[falsifier]]
+id = "raw_euler_convergence"
+witness = "ordinary Euler products do not converge throughout 1/2 < Re(s) <= 1"
+
+[[falsifier]]
+id = "reciprocal_positive_metric"
+witness = "exchange pairing is indefinite"

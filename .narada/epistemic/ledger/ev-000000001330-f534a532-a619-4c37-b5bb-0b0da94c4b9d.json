@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1330,
+  "event_id": "ev-000000001330-f534a532-a619-4c37-b5bb-0b0da94c4b9d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "9ee57d9cd9398f52e5d9cd2ee3741d0f66779372b854dae3c705118afad95d36",
+  "proposal_id": "ep_ff97d2d0-7046-4fc4-a364-39afd86a3f77",
+  "proposal_digest": "cf57a04fdbc52964e224d868032f8ee13a2935285d00d379b03db2dfa7e261f7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Betti boundary defects obey a Leibniz law",
+      "statement": "For composable pairing-forced maps S_q and S_r, Omega_(rq)=Omega_r S_q+S_r Omega_q. Chain-map stages compose, but a zero composite defect need not imply zero stage defects because cancellation can occur.",
+      "entity_id": "claim:e7c75f11d7c6460fee53"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Rank-one cancellation falsifies stage inference from a composite",
+      "procedure": "Use two-term rank-one complexes with D_G=0, D_H=1, D_J=0 and identity S_q,S_r in both degrees.",
+      "outcome": "Omega_q=1, Omega_r=-1, and Omega_(rq)=0.",
+      "falsifier": "This falsifies the inference that a passing terminal quotient certifies every constituent specialization.",
+      "entity_id": "test:143d49f73d0c79ba18bb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Betti boundary-defect composition law",
+      "version": "v1",
+      "locator": "research/grothendieck/betti-boundary-defect-composition-law.md",
+      "entity_id": "source:db377de648e9ed0f47fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1317 — Betti Boundary Defects Obey a Leibniz Law",
+      "version": "1317",
+      "locator": "src/ledger/20260820-1317 Betti Boundary Defects Obey a Leibniz Law.md",
+      "entity_id": "source:a361f0d25b5f4736e252"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:143d49f73d0c79ba18bb",
+      "target_id": "claim:e7c75f11d7c6460fee53",
+      "relation_id": "rel:tests-36b6fc2207b07457"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:e7c75f11d7c6460fee53",
+      "target_id": "source:db377de648e9ed0f47fe",
+      "relation_id": "rel:derived_from-35f7690082465689"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:a361f0d25b5f4736e252",
+      "target_id": "claim:e7c75f11d7c6460fee53",
+      "relation_id": "rel:reports-2f0fefe02ac92f82"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "auto-admission-11ed10372393ff2236c12a8d",
+  "occurred_at": "2026-08-20T22:32:16.8845547Z",
+  "certifies_truth": false,
+  "event_hash": "47b59daaf6ee1c3b05b7072b1cde91dd43c3071a934052d02c757d2d6e61cde7"
+}

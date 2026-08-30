@@ -1,0 +1,273 @@
+{
+  "schema": "marici.data-descent-packet.v2",
+  "resource_theories": [
+    {
+      "id": "d_s3_frozen_stabilizer_theory",
+      "admission": "admitted",
+      "resources": [
+        {
+          "id": "five_rail_distance_three_codes",
+          "admitted": true,
+          "authority_evidence": "research/kitaev/results/s3-five-rail-code-freeze.json"
+        },
+        {
+          "id": "verified_clifford_choi_teleportation",
+          "admitted": true,
+          "authority_evidence": "research/kitaev/results/s3-clifford-choi-verification.json"
+        },
+        {
+          "id": "verified_shor_recovery",
+          "admitted": true,
+          "authority_evidence": "research/kitaev/results/s3-five-rail-shor-recovery.json"
+        },
+        {
+          "id": "encoded_binary_record_frame",
+          "admitted": true,
+          "authority_evidence": "research/kitaev/results/s3-record-phase-magic-obstruction.json"
+        }
+      ]
+    },
+    {
+      "id": "d_s3_future_magic_envelope",
+      "admission": "proposed",
+      "extends": "d_s3_frozen_stabilizer_theory",
+      "resources": [
+        {
+          "id": "verified_magic_source",
+          "admitted": false
+        },
+        {
+          "id": "code_switching_surface",
+          "admitted": false
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "distance_three_stabilizer_subcompiler_frozen",
+      "subject": "distance_three_stabilizer_subcompiler",
+      "resource_theory": "d_s3_frozen_stabilizer_theory",
+      "uses_resources": [
+        "five_rail_distance_three_codes",
+        "verified_clifford_choi_teleportation",
+        "verified_shor_recovery",
+        "encoded_binary_record_frame"
+      ],
+      "defined_data": {
+        "encoded_rail_acquisition_core": 50,
+        "macro_contacts_per_controlled_power": 26,
+        "macro_recovery_layers_per_controlled_power": 26,
+        "malignant_single_faults": 0,
+        "single_faults_replayed": 78
+      },
+      "status": {
+        "kind": "Executable",
+        "cost": {
+          "physical_gate_count": {
+            "kind": "unknown",
+            "reason": "the executable stabilizer modules have bounded schedules but no single flattened microscopic gate census"
+          },
+          "depth": {
+            "kind": "unknown",
+            "reason": "parallel cat and Choi scheduling remains a hardware-layout choice"
+          },
+          "magic_ancilla_count": {
+            "kind": "known",
+            "value": 0
+          }
+        },
+        "certificate": [
+          {
+            "id": "stabilizer_subcompiler_replay",
+            "scope": "distance_three_stabilizer_subcompiler",
+            "replay_id": "d_s3_full_replay",
+            "evidence": "nine bounded component checkers and the consolidated frontier audit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete_compiler_frozen",
+      "subject": "complete_d_s3_compiler",
+      "resource_theory": "d_s3_frozen_stabilizer_theory",
+      "uses_resources": [
+        "five_rail_distance_three_codes",
+        "verified_clifford_choi_teleportation",
+        "verified_shor_recovery",
+        "encoded_binary_record_frame"
+      ],
+      "defined_data": {
+        "encoded_rail_acquisition_core": 50,
+        "is_complete_compiler_cost": false,
+        "malignant_fault_pair_count": 220
+      },
+      "status": {
+        "kind": "Obstructed",
+        "cost": {
+          "physical_gate_count": {
+            "kind": "undefined",
+            "reason": "no complete executable circuit exists in the frozen resource theory"
+          },
+          "depth": {
+            "kind": "undefined",
+            "reason": "no complete executable circuit exists in the frozen resource theory"
+          },
+          "magic_ancilla_count": {
+            "kind": "undefined",
+            "reason": "the required magic constructor is absent rather than free"
+          }
+        },
+        "missing_resource": [
+          "verified_magic_source",
+          "code_switching_surface"
+        ],
+        "witness": [
+          {
+            "id": "hybrid_controlled_inversion",
+            "kind": "hybrid_non_clifford_controlled_inversion",
+            "evidence": "research/kitaev/results/s3-controlled-inversion-magic-obstruction.json"
+          },
+          {
+            "id": "controlled_record_phases",
+            "kind": "controlled_T_and_controlled_S_type_resources",
+            "evidence": "research/kitaev/results/s3-record-phase-magic-obstruction.json"
+          },
+          {
+            "id": "transporter_normalizer_failure",
+            "kind": "non_clifford_transporter",
+            "evidence": "research/kitaev/results/s3-transporter-and-label-lookup.json"
+          },
+          {
+            "id": "sector_predicate_lookup",
+            "kind": "coherent_sector_predicate_lookup",
+            "evidence": "research/kitaev/results/s3-transporter-and-label-lookup.json"
+          },
+          {
+            "id": "source_absence",
+            "kind": "absent_verified_magic_source_or_code_switching_surface",
+            "evidence": "research/kitaev/results/s3-executable-ft-frontier-audit.json"
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete_compiler_future_magic",
+      "subject": "complete_d_s3_compiler",
+      "resource_theory": "d_s3_future_magic_envelope",
+      "uses_resources": [
+        "five_rail_distance_three_codes",
+        "verified_clifford_choi_teleportation",
+        "verified_shor_recovery"
+      ],
+      "defined_data": {
+        "encoded_rail_acquisition_core": 50,
+        "is_complete_compiler_cost": false
+      },
+      "status": {
+        "kind": "Conditional",
+        "cost": {
+          "physical_gate_count": {
+            "kind": "undefined",
+            "reason": "the extension has no executable circuit until a required constructor is admitted"
+          },
+          "depth": {
+            "kind": "undefined",
+            "reason": "the extension has no executable circuit until a required constructor is admitted"
+          },
+          "magic_ancilla_count": {
+            "kind": "undefined",
+            "reason": "the extension has no admitted magic factory census"
+          }
+        },
+        "required_resource": [
+          "verified_magic_source",
+          "code_switching_surface"
+        ],
+        "required_resource_mode": "one_of",
+        "preserved_contract": {
+          "id": "one_fault_output_contract",
+          "preserved": true,
+          "evidence": "future constructor must preserve maximum one residual rail error per encoded block"
+        }
+      }
+    }
+  ],
+  "capability_status_transitions": [
+    {
+      "id": "source_authorized_magic_lift",
+      "kind": "extension",
+      "source_capability": "complete_compiler_frozen",
+      "target_capability": "complete_compiler_future_magic",
+      "preserves_prior": true,
+      "evidence": "the proposed extension adds a constructor obligation without rewriting the frozen obstruction"
+    },
+    {
+      "id": "forget_magic_resource",
+      "kind": "restriction",
+      "source_capability": "complete_compiler_future_magic",
+      "target_capability": "complete_compiler_frozen",
+      "evidence": "restriction to the frozen stabilizer theory restores the obstruction"
+    }
+  ],
+  "capability_fibers": [
+    {
+      "id": "encoded_rotation_frame_A",
+      "resource_theory": "d_s3_frozen_stabilizer_theory",
+      "capability_ref": "distance_three_stabilizer_subcompiler_frozen",
+      "states": ["0", "1", "2"],
+      "diagnostics": [],
+      "identity": "I",
+      "operations": [
+        {"id": "I", "action_table": {"0": "0", "1": "1", "2": "2"}},
+        {"id": "N", "action_table": {"0": "0", "1": "2", "2": "1"}}
+      ],
+      "composition": [
+        {"left": "I", "right": "I", "result": "I"},
+        {"left": "I", "right": "N", "result": "N"},
+        {"left": "N", "right": "I", "result": "N"},
+        {"left": "N", "right": "N", "result": "I"}
+      ],
+      "policies": []
+    },
+    {
+      "id": "encoded_rotation_frame_B",
+      "resource_theory": "d_s3_frozen_stabilizer_theory",
+      "capability_ref": "distance_three_stabilizer_subcompiler_frozen",
+      "states": ["0", "1", "2"],
+      "diagnostics": [],
+      "identity": "I_prime",
+      "operations": [
+        {"id": "I_prime", "action_table": {"0": "0", "1": "1", "2": "2"}},
+        {"id": "N_prime", "action_table": {"0": "0", "1": "2", "2": "1"}}
+      ],
+      "composition": [
+        {"left": "I_prime", "right": "I_prime", "result": "I_prime"},
+        {"left": "I_prime", "right": "N_prime", "result": "N_prime"},
+        {"left": "N_prime", "right": "I_prime", "result": "N_prime"},
+        {"left": "N_prime", "right": "N_prime", "result": "I_prime"}
+      ],
+      "policies": []
+    }
+  ],
+  "capability_transitions": [
+    {
+      "id": "encoded_rotation_frame_change",
+      "source_fiber": "encoded_rotation_frame_A",
+      "target_fiber": "encoded_rotation_frame_B",
+      "operation_map": {"I": "I_prime", "N": "N_prime"},
+      "evidence": "research/kitaev/results/s3-five-rail-code-freeze.json"
+    }
+  ],
+  "evidence_replays": [
+    {
+      "id": "d_s3_full_replay",
+      "checker": "research/kitaev/checkers/check_s3_executable_ft_frontier_audit.py",
+      "artifact": "research/kitaev/results/s3-executable-ft-frontier-audit.json",
+      "sha256": "c7b6d8636e56c97b27349f7878692ebfa68311726236d87f609c3e418b312b34",
+      "expected": {
+        "final_disposition": "OBSTRUCTED_WITHIN_FROZEN_INTERFACES"
+      }
+    }
+  ]
+}

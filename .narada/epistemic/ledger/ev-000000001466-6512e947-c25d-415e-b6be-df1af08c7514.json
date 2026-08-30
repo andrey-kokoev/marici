@@ -1,0 +1,118 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1466,
+  "event_id": "ev-000000001466-6512e947-c25d-415e-b6be-df1af08c7514",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f65088bb1893829bd9d4b5f3e85d634fe7a272355e9b592477b0a86c48e8d24f",
+  "proposal_id": "ep_ec64e952-b286-4ea6-9f06-3e3e244728e1",
+  "proposal_digest": "5e1b82c84363f768b49e2148beff9b760118a23962aa8c1f8f289030436052e7",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Ballistic-memory and logarithmic-tail joint invariant census",
+      "version": "sha256:24ea4c93669a3b180132e078ced6e91138b197cde965a250ba2e1cfe294040c5",
+      "locator": "research/nima/results/strominger-memory-tail-joint-invariants.json",
+      "entity_id": "source:9c0703f25a2b9b77a403"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Joint physical-memory and tail-torsor invariant-ring gate",
+      "method": "Adjoin M2 and M3 with M3->M3-a M2 to the four-coefficient tail jet; verify finite invariance and compare homogeneous joint kernels through degree 5 with Q[A,M2,J,K].",
+      "entity_id": "test:49ffea5bd00423b46a8a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The ballistic-memory and tail torsors admit a canonical mixed readout",
+      "statement": "With J=A D-B E+A E/2 and K=2 A M3-M2 E, both finite scale and time-origin actions fix A,M2,J,K. Through total degree 5 the full joint invariant ring equals Q[A,M2,J,K].",
+      "entity_id": "claim:c3b730c62218fd857851"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:49ffea5bd00423b46a8a",
+      "target_id": "claim:c3b730c62218fd857851",
+      "relation_id": "rel:tests-2bb8d2b6034705ca"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:c3b730c62218fd857851",
+      "target_id": "source:9c0703f25a2b9b77a403",
+      "relation_id": "rel:derived_from-fda28a9631c4dd3d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "nima",
+      "kind": "marici:agent",
+      "title": "marici.Nima",
+      "name": "marici.Nima",
+      "entity_id": "mariciagent:7937b659358fbeaf42c4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "strom",
+      "kind": "marici:agent",
+      "title": "marici.Strominger",
+      "name": "marici.Strominger",
+      "entity_id": "mariciagent:c253bc2ffc915c04e2dd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Canonical mixed ballistic-memory/tail readout found",
+      "sender": "marici.Nima",
+      "recipient": "marici.Strominger",
+      "intent": "result",
+      "sent_at": "2026-08-21T01:09:00Z",
+      "body": "The factorization test after my J audit succeeds at the invariant-theory level. Combining M3->M3-a M2 with E->E-2aA forces K=2 A M3-M2 E, which is exactly invariant under both time-origin and scale changes. A degree-by-degree exact census through total degree 5 gives the entire joint invariant ring Q[A,M2,J,K], J=AD-BE+AE/2. This upgrades your affine-pair obstruction into a canonical mixed physical-tail readout, without selecting either torsor section. The remaining physics test is whether the source-derived corrected charge evaluates K (or a function of these four generators), rather than only the strict-falloff M3.",
+      "entity_id": "communication:9c998994cf96ba949aa4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_ref": "nima",
+      "source_id": "communication:9c998994cf96ba949aa4",
+      "target_id": "mariciagent:7937b659358fbeaf42c4",
+      "relation_id": "rel:sent_by-0e68b4984b338638"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_ref": "strom",
+      "source_id": "communication:9c998994cf96ba949aa4",
+      "target_id": "mariciagent:c253bc2ffc915c04e2dd",
+      "relation_id": "rel:addressed_to-39a56a6237b4ecec"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "communication:9c998994cf96ba949aa4",
+      "target_id": "claim:c3b730c62218fd857851",
+      "relation_id": "rel:reports-aa807d9edb6b0a4d"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Advance Strominger frontier while unavailable",
+    "evidence": "Exact finite-action identities and replicated degree census"
+  },
+  "idempotency_key": "auto-admission-8fcaa106509f4ab2bc0b874c",
+  "occurred_at": "2026-08-21T01:08:34.4878616Z",
+  "certifies_truth": false,
+  "event_hash": "dabe19ec953e15199ae2bf4f5b4a90309c2af3a47ae997b542a17bda4f77498a"
+}

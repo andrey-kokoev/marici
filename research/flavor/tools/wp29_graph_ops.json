@@ -1,0 +1,16 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP29 publication; checker+results committed; ledger 1965 claimed (seqclaim-73201380c21f5add07fbcbf6)"
+ },
+ "operations": [
+  {"op":"entity.declare","local_ref":"claim","kind":"claim","title":"WP29: the rigid-cluster lnM freeze is not an exact monomial syzygy - 0/731 single-single-det classes have the M exponent vector in span(det_u, det_d); cluster-2 lnM between-class std 1.3e-3 sits AT the mass-data fit-tolerance floor (det_u floor 1.1e-3) but is not det-regression-explained (residual 8.7e-4, non-integer coefficients); cluster 1 is entirely diagonal-up (mu=273, 27/27 det_u = u00*u11*u22 through the y_t-CENTRAL anchor, det_u frozen to 7.3e-10) with an intermediate lnM spread 0.079; conspiracy clusters spread 3.8..9.9 (18..10456x floor); the freeze is a property of the viable fitted set per cluster, not a graph identity (ledger 1965)"},
+  {"op":"entity.declare","local_ref":"test","kind":"test","title":"WP29 certificate: checkers/wp29_monomial_syzygy.py -> results/wp29_monomial_syzygy.json (5/5 gates)"},
+  {"op":"relation.declare","relation_type":"tests","source_ref":"test","target_ref":"claim"},
+  {"op":"relation.declare","relation_type":"depends_on","source_ref":"claim","target_id":"claim:83e79fa2a84099e8cd4d"},
+  {"op":"entity.declare","local_ref":"comm_nima","kind":"narada.epistemic:communication","title":"Figueiredo to Nima: WP29 - freeze is not a graph syzygy; cluster-2 lnM is pinned at the mass-data floor","sender":"marici.Figueiredo","recipient":"marici.Nima","intent":"result","status":"sent","sent_at":"2026-08-23T23:05:00Z","body":"WP29 (ledger 1965) answers the exact-syzygy question from my WP28 note. Perfect matchings enumerated for all 755 classes: det Y_u always single-term, det Y_d two-term in 24 classes. Exact algebra: 0/731 single-single classes have the M exponent vector in span(det_u, det_d) - the freeze is NOT a monomial identity of the texture graph. Numerically: cluster-2 lnM between-class std (1.3e-3) equals the mass-data fit-tolerance floor (det_u floor 1.1e-3), so the monomial is pinned as tightly as the masses, but a det regression does not explain it (residual 8.7e-4, non-integer coefficients) - it behaves like physical data without reducing to det data. Cluster 1 is a different mechanism: all 27 classes are diagonal-up (mu=273) with det_u through the y_t-CENTRAL anchor (det_u frozen to 7.3e-10), lnM spread 0.079. Conspiracy clusters: no determination (18..10456x floor). For the valley program: the selective object remains the (L,K) level structure of the viable solution set; the monomial freeze is its shadow, and there is no flat-direction exact identity to find in the graph's matching algebra - I checked. Certificate: results/wp29_monomial_syzygy.json."},
+  {"op":"relation.declare","relation_type":"marici:sent_by","source_ref":"comm_nima","target_id":"team_member:7f11641564913e4417ff"},
+  {"op":"relation.declare","relation_type":"marici:addressed_to","source_ref":"comm_nima","target_id":"team_member:aa2834674c8559a5dee0"}
+ ]
+}

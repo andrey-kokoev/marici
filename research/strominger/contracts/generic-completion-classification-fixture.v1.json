@@ -1,0 +1,57 @@
+{
+  "schema": "marici.data-descent-packet.v2+generic-completion-interface.v1",
+  "contexts": [
+    {"id": "generic_context", "site": "neutral_fixture", "stratum_depth": 0}
+  ],
+  "local_objects": [],
+  "complexes": [
+    {"id": "completion_derived_complex", "context": "generic_context", "degrees": [-1, 0], "differential": "declared_completion_comparison_complex"}
+  ],
+  "derived_objects": [
+    {"id": "Tor1_completion", "kind": "Tor", "source_complex": "completion_derived_complex", "context": "generic_context", "degree": -1, "rank": 1}
+  ],
+  "completion_spaces": [
+    {"id": "X", "space": "dense source core", "category": "separated_topological_vector_space"},
+    {"id": "X_hat", "space": "completed source", "category": "complete_topological_vector_space"},
+    {"id": "Y", "space": "source target", "category": "separated_topological_vector_space"},
+    {"id": "Y_hat", "space": "completed target", "category": "complete_topological_vector_space"}
+  ],
+  "completion_operators": [
+    {"id": "A", "domain": "X", "operator_domain": "X", "codomain": "Y", "kind": "continuous_linear"},
+    {"id": "A_hat", "domain": "X_hat", "operator_domain": "X_hat", "codomain": "Y_hat", "kind": "continuous_linear"}
+  ],
+  "completion_interfaces": [
+    {
+      "id": "neutral_completion",
+      "constructor_kind": "topology_bearing_completion",
+      "source_space": "X",
+      "completed_space": "X_hat",
+      "source_target_space": "Y",
+      "completed_target_space": "Y_hat",
+      "target_embedding": {"map": "i_Y", "injective": true, "evidence": "declared target embedding"},
+      "topology": {"kind": "declared_Hausdorff_topology", "separation": "Hausdorff"},
+      "dense_embedding": {"map": "i_X", "injective": true, "dense": true, "evidence": "declared density proof"},
+      "completion_map": {"map": "c_X", "universal_property_evidence": "declared completion universal property"},
+      "source_operator": "A",
+      "extended_operator": "A_hat",
+      "extension_well_defined": {"mechanism": "bounded_unique_continuous_extension", "unique": true, "proof_evidence": "declared bounded extension theorem"},
+      "operator_extension_square": {"commutes": true, "evidence": "declared square computation"},
+      "manufactured_from_completion_only": false
+    }
+  ],
+  "kernel_comparisons": [
+    {
+      "id": "three_way_kernel_partition",
+      "completion": "neutral_completion",
+      "source_kernel_dimension": 2,
+      "completed_kernel_dimension": 5,
+      "comparison_square": {"map": "ker_i_X", "map_rank": 2, "injective": true, "commutes": true, "evidence": "restriction of the operator square"},
+      "class_groups": [
+        {"id": "old", "classification": "descends", "dimension": 2},
+        {"id": "new_ordinary", "classification": "completion_only", "dimension": 2, "tor_object": null, "graph_limit_evidence": "two independent graph-limit representatives"},
+        {"id": "new_derived", "classification": "derived_completion_obstruction", "dimension": 1, "tor_object": "Tor1_completion", "derived_evidence": "nonflat comparison complex has Tor1 rank one"}
+      ],
+      "completion_defect_dimension": 1
+    }
+  ]
+}

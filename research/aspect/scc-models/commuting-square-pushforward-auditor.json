@@ -1,0 +1,20 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "commuting-square-pushforward-auditor",
+    "owner": "marici.Aspect",
+    "classification": "acquisition_auditor_fixture_requires_hardware_binding",
+    "stratum": "exact same-ledger pushforward admission before obstruction comparison",
+    "inputs": ["research/aspect/commuting-square-pushforward-auditor.md", "research/aspect/contracts/commuting-square-pushforward-auditor.v1.json", "research/aspect/refinement-monotonicity-and-cycle-obstruction.md"],
+    "checks": [
+      {"id": "commuting-square-pushforward-auditor", "path": "research/aspect/checkers/check_commuting_square_pushforward_auditor.py", "requires": []},
+      {"id": "refinement-monotonicity-cycle-obstruction", "path": "research/aspect/checkers/check_refinement_monotonicity_cycle_obstruction.py", "requires": []}
+    ],
+    "depends_on": ["refinement-monotonicity-cycle-obstruction"],
+    "consumes": ["immutable parent packet", "refined packet", "forgetful compiler", "locality declaration for added labels"],
+    "provides": ["exact pushforward verdict", "cell-localized discrepancy ledger", "Bell-witness admission gate"],
+    "missing_constructors": ["hardware event-ledger binding", "compiler-version hash binding", "physical packet"],
+    "next_falsifier": "supply a physical refined packet whose exact forgetful pushforward disagrees with its immutable parent packet"
+  }
+}

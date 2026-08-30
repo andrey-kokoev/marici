@@ -1,0 +1,28 @@
+schema = "marici.scc.globular_observer_tower.v1"
+status = "active"
+
+[cell]
+required_fields = ["coherence_level", "domain", "codomain", "arity", "source_boundary", "target_boundary"]
+
+[globular_law]
+rule = "an n-cell requires constructed parallel (n-1)-boundaries"
+
+[residual]
+types = ["kernel", "cokernel"]
+child_seed_required = true
+parent_promotion_required = true
+
+[termination]
+accepted = ["zero_residual", "explicit_contraction", "closed_object_equivalence", "well_founded_decrease"]
+
+[[falsifier]]
+id = "higher_repairs_lower"
+condition = "higher observer credited with increasing source incidence rank"
+
+[[falsifier]]
+id = "untyped_reentry"
+condition = "child tower spawned without seed and promotion maps"
+
+[[falsifier]]
+id = "nonterminating_reentry"
+condition = "no well-founded decrease or contraction witness"

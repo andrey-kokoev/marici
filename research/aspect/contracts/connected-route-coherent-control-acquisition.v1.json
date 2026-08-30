@@ -1,0 +1,14 @@
+{
+  "schema":"marici.aspect.connected-route-coherent-control-acquisition.v1",
+  "source_packet":"research/benincasa/results/interaction-net-barcode-lift-hostile-p32009.json",
+  "routes":[
+    {"id":"balanced","lift":"balanced_lift","compiler":"householder_unitary","reset_id":"reset-balanced-v1"},
+    {"id":"shifted","lift":"shifted_lift","compiler":"householder_unitary","reset_id":"reset-shifted-v1"}
+  ],
+  "control":{"preparation":"plus","observables":["X","Y"],"complex_fringe":"X+iY"},
+  "required_record_fields":["trial_group","probe_id","source_row_index","route_a","route_b","compiler_a","compiler_b","control_x","control_y","bypass_a","bypass_b","environment_a","environment_b","phase_fixture","reset_a","reset_b","status"],
+  "acceptance":{"unitarity_tolerance":1e-10,"norm_tolerance":1e-10,"fringe_tolerance":1e-10},
+  "status_values":["synthetic_reference","physical_raw"],
+  "claim_boundary":{"hardware_connected":false,"detector_counts_acquired":false,"physical_holonomy_classified":false}
+}
+

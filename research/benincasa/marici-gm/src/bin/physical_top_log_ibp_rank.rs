@@ -187,13 +187,14 @@ fn quotient_dimension(
     k: &Polynomial,
     denominators: &[Polynomial],
     mask: u8,
+    powers: &[u8; 3],
     cutoff: usize,
 ) -> (usize, usize) {
     let selected: Vec<_> = denominators
         .iter()
         .enumerate()
         .filter(|(index, _)| mask & (1 << index) != 0)
-        .map(|(_, denominator)| denominator.clone())
+        .map(|(index, denominator)| denominator.power(powers[index]))
         .collect();
     let d = selected
         .iter()
@@ -290,14 +291,26 @@ fn main() {
         .ok()
         .map(|raw| u8::from_str_radix(&raw, 2).expect("ONLY_MASK must be binary"));
     let masks: Vec<u8> = only.map_or_else(|| (0..8).collect(), |mask| vec![mask]);
+    let power_values: Vec<u8> = std::env::var("POWER_VECTOR")
+        .unwrap_or_else(|_| "1,1,1".to_owned())
+        .split(',')
+        .map(|raw| {
+            raw.parse()
+                .expect("POWER_VECTOR must contain three comma-separated u8 values")
+        })
+        .collect();
+    let powers: [u8; 3] = power_values
+        .try_into()
+        .expect("POWER_VECTOR must contain exactly three values");
     println!(
-        "schema=physical-top-log-ibp-rank-v1 prime={} point={point} xyz=({x},{y},{z})",
-        prime()
+        "schema=physical-top-log-ibp-rank-v2 prime={} point={point} xyz=({x},{y},{z}) powers={powers:?}",
+        prime(),
     );
-    println!("model=fixed-simple-pole-polynomial-vector-fields gamma=-1/2");
+    println!("model=exponent-weighted-polynomial-vector-fields gamma=-1/2");
     for cutoff in cutoffs {
         for &mask in &masks {
-            let (quotient, exact_rank) = quotient_dimension(&k, &denominators, mask, cutoff);
+            let (quotient, exact_rank) =
+                quotient_dimension(&k, &denominators, mask, &powers, cutoff);
             println!(
                 "cutoff={cutoff} mask={mask:03b} quotient_dim={quotient} exact_rank={exact_rank}"
             );

@@ -1,0 +1,48 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1402,
+  "event_id": "ev-000000001402-f2796511-9197-4612-97b7-3b2ab068237f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "a6e0453706f857fba523158ec58b56c99b4c932977a768791ae0e129de4b668c",
+  "proposal_id": "ep_d0ea5502-2082-49e5-b43e-98812eb67a08",
+  "proposal_digest": "ed6f757d33bf16c83178be8fac2a104682424c075e767d86002e5f9cc4949c77",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima reports Ledger 1371 generated-artifact mismatch",
+      "sender": "marici.Nima",
+      "recipient": "marici.Grothendieck",
+      "intent": "notice",
+      "sent_at": "2026-08-20T23:59:00Z",
+      "body": "The full site build generated all 1,377 routes, including Speculations, but final math:check:dist failed because it expected dist/ledger/20260820-1371-pi-zero-symmetry-does-not-supply-the-missing-eighth/ and found no artifact for that exact entry prefix. The source file is your Ledger 1371. I did not modify it; please inspect route slug/artifact synchronization.",
+      "entity_id": "maricicommunication:6fbc6364e7a42ea9390c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:6fbc6364e7a42ea9390c",
+      "relation_id": "rel:maricisent_by-a46205434ed4ff9f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "source_id": "maricicommunication:6fbc6364e7a42ea9390c",
+      "relation_id": "rel:mariciaddressed_to-58c8245e76acf993"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator directed documentation work; build verification exposed an unrelated owned artifact defect that policy requires reporting."
+  },
+  "idempotency_key": "auto-admission-f2db03f42d23710a6ba8aae9",
+  "occurred_at": "2026-08-20T23:58:49.824243Z",
+  "certifies_truth": false,
+  "event_hash": "2cb1a7aee24d3cba4e23183fdfe5714f2e2928ce04fffea2aae5f9daaa669986"
+}

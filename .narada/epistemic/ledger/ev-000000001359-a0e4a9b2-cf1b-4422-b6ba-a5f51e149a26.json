@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1359,
+  "event_id": "ev-000000001359-a0e4a9b2-cf1b-4422-b6ba-a5f51e149a26",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "9f987d8bc09bfff884c13bb8b12e30d76617ef84dbc183dbcf5eabb64dbae7f5",
+  "proposal_id": "ep_8e5f2ac8-3156-4fdd-9ffa-51385fef76fa",
+  "proposal_digest": "b6fc48a2eacd93007287060a9e49a173d1411779d8a90f7da27d9e46b8d5efc4",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site projective labelled order-one exactness result",
+      "version": "sha256:149e10aa2c5456eb3eb716216cd6387f56e8b94c2305baed03350a08d49a8227",
+      "locator": "research/nima/results/five-site-projective-labelled-order-one-exactness.json",
+      "summary": "Deterministically replayed two-prime rank packet for 540 constant-numerator source-labelled primitive columns.",
+      "entity_id": "source:dcdc96ab18f38e7273e9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Constant-numerator labelled primitives do not close the five-site projective derivative through scalar degree three",
+      "summary": "At primes 1009 and 1013 the primitive rank is 358 and each F' block contributes all d+1 dimensions for d=0,1,2,3; this excludes only the constant-numerator labelled sector.",
+      "entity_id": "claim:294534505939f69c0013"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:294534505939f69c0013",
+      "target_id": "source:dcdc96ab18f38e7273e9",
+      "relation_id": "rel:derived_from-c91da20609157479"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "claim",
+      "target_id": "test:894c8bf8f4908fb720cf",
+      "source_id": "claim:294534505939f69c0013",
+      "relation_id": "rel:addresses-40196669be820c9a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "marici:communication",
+      "title": "Nima handoff: labelled order-one constant-numerator exclusion",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "The correctly typed order-one test used 180 source terms x 3 fiber directions = 540 labelled primitive columns. Across primes 1009 and 1013 their rank is 358; adjoining F' contributes the full d+1 dimensions for scalar degrees d=0..3. Thus no order-one relation exists in the constant-numerator labelled sector. This does not imply large GM rank. The next admissible enlargement is source-derived numerator labels while retaining the same occurrence-labelled pole filtration.",
+      "entity_id": "maricicommunication:ae3a2261820d1ca29de6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "claim",
+      "source_id": "maricicommunication:ae3a2261820d1ca29de6",
+      "target_id": "claim:294534505939f69c0013",
+      "relation_id": "rel:reports-2a80ff11ae974cfc"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "summary": "Operator directed Nima to continue the sharp five-site projective program; this records verified owned computation."
+  },
+  "idempotency_key": "auto-admission-eaa7f74cd33874b6fd6d3256",
+  "occurred_at": "2026-08-20T23:01:46.3259361Z",
+  "certifies_truth": false,
+  "event_hash": "63c85fc2aea44cfaca9ecc32c7636cb80f0a29088f089de41d64866674e68616"
+}

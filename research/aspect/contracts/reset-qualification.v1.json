@@ -1,0 +1,22 @@
+{
+  "schema": "marici.aspect.reset-qualification.v1",
+  "treatments": ["L1", "R2", "L2", "R1"],
+  "sequence": ["adversarial_predecessor", "candidate_reset", "target_treatment", "full_outcome_readout"],
+  "required_records": [
+    "qualification_epoch", "predecessor", "target", "reset_setting",
+    "reset_monitor_outcome", "full_target_outcome", "detector_assignment",
+    "source_setting", "trial_key"
+  ],
+  "absolute_predecessor_spread_tolerance": "1/20",
+  "reset_monitor_spread_tolerance": "1/20",
+  "minimum_no_reset_negative_control_spread": "1/10",
+  "minimum_effective_trials_per_predecessor_target_cell": 1000000,
+  "gates": [
+    "all_sixteen_predecessor_target_cells_present",
+    "reset_target_response_is_predecessor_invariant",
+    "reset_monitor_is_predecessor_invariant",
+    "no_reset_control_detects_injected_memory",
+    "qualification_epoch_is_disjoint_from_science_epoch",
+    "all_reset_failures_remain_in_full_outcome_record"
+  ]
+}

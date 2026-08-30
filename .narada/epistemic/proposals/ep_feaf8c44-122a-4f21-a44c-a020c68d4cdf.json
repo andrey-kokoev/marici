@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_feaf8c44-122a-4f21-a44c-a020c68d4cdf",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the global xi boundary closure and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1397-euler-span-totality-v1",
+  "expected_ledger_head": "1e2c3f04e1086f8572100e0b432a13016321b89040675f71990f9b2eef47c374",
+  "created_at": "2026-08-21T00:37:56.7954531Z",
+  "content_fingerprint": "9dcc8e375ff0608917a992f464b685128001d8b52aac352e71ef06f0972d9e11",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Euler Cauchy span totality packet",
+      "version": "1",
+      "locator": "research/grothendieck/euler-cauchy-span-totality.md",
+      "entity_id": "source:9f461234de81d318ff2e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1397 — Euler-Domain Mellin Modes Are Conditionally Total",
+      "version": "1",
+      "locator": "src/ledger/20260820-1397 Euler-Domain Mellin Modes Are Conditionally Total.md",
+      "entity_id": "source:f05136f6c7b49e010b15"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Euler-domain Mellin Cauchy modes are total after Pick positivity",
+      "statement": "If the Xi Pick kernel is positive, its RKHS kernel vectors from the open domain Im(z)>1/2 are total: orthogonality forces an analytic function to vanish on an open set and hence identically. Thus the Euler-domain Weil isometry extends uniquely and onto the full Pick space; density and continuation are not independent gates after RH positivity.",
+      "scope": "Conditional totality and uniqueness theorem assuming Pick positivity/RH; physical relative-chain realization remains unavailable.",
+      "entity_id": "claim:e70fe0cfda19d0100d96"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Euler Cauchy span analytic-totality test",
+      "description": "Use the reproducing property and identity theorem to compute the orthogonal complement of kernel vectors over the Euler subdomain.",
+      "entity_id": "test:67476223b5fab424db70"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:e70fe0cfda19d0100d96",
+      "target_id": "source:9f461234de81d318ff2e",
+      "relation_id": "rel:derived_from-b35b2e7ed9721939"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:e70fe0cfda19d0100d96",
+      "target_id": "source:f05136f6c7b49e010b15",
+      "relation_id": "rel:derived_from-2eb622b48b108850"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:67476223b5fab424db70",
+      "target_id": "claim:e70fe0cfda19d0100d96",
+      "relation_id": "rel:tests-1e578f23ab51208d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:67476223b5fab424db70",
+      "target_id": "source:9f461234de81d318ff2e",
+      "relation_id": "rel:derived_from-cfec437cbb2b5b4d"
+    }
+  ],
+  "digest": "15c694c654ee7ca135079ef0211d3cd88989e8e87440dac02674fbc7f86f674c"
+}

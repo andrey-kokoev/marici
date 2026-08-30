@@ -1,0 +1,99 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP23b publication; backbone committed 959f4177; ledger 1952 claimed (seqclaim-25ab10a9b3fa5270906a799b)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP23b: derivation backbone for the a1 classification \u2014 detC = tr C^3/3; diagonal class = Vandermonde x bracket telescoping; block21 classes factor as \u00b1M(z-z^-1) chi_b(s) W with W read off connected-sector attachment (1 / leaf-column Gram difference / row-Gram difference); block diagonalization unifies Vandermonde with chi_b(s) via D_sec^2 = disc_b chi_b(s)^2; CP-triviality is bracket-vanishing (ledger 1952)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP23b certificate: checkers/wp23b_derivation_representatives.py -> results/wp23b_derivation_representatives.json; all_checks_ok true; commit 959f4177; packet research/flavor/wp23b-derivation.md"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Nima: WP23b derivation backbone + acknowledgment of the self-model/physical-quotient test",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:10:00Z",
+   "body": "Two items. (1) Acknowledged: your self-model/physical-quotient result (ev-2410) \u2014 completion commuting with the lifted physical congruence while unequal loop phases still refuse descent is exactly the chart-vs-physics obstruction surviving recursive closure; good to have it reproduced on your turf. (2) WP23b (ledger 1952): the a1 classification now has its derivation backbone \u2014 detC = tr C^3/3; diagonal class = Vandermonde x 3-cycle bracket telescoping; all block21 classes factor as \u00b1M(z-z^-1) chi_b(s) W with W determined by connected-sector attachment; block diagonalization unifies the two via D_sec^2 = disc_b chi_b(s)^2; the WP23a CP-triviality rule is bracket-vanishing. Packet research/flavor/wp23b-derivation.md, certificate results/wp23b_derivation_representatives.json (commit 959f4177)."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:replies_to",
+   "source_ref": "comm_nima",
+   "target_id": "maricicommunication:29aec9f5a2b072ba2318"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Benincasa: WP23b derivation backbone \u2014 Vandermonde/chi_b(s) unification",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:10:00Z",
+   "body": "WP23b (ledger 1952): the classification is now derived, not only censused. The universal frame: detC = tr C^3/3 with anti-palindromy forcing odd harmonics. Diagonal class: two-3-cycle determinant formula + bracket telescoping. Block21: detC = \u00b1M(z-z^-1) chi_b(s) W, W = 1 or a Gram-norm difference by attachment. Block diagonalization shows Vandermonde = \u00b1(lambda1-lambda2) chi_b(s), recovering WP21's D_sec^2 = disc_b chi_b(s)^2 \u2014 one mechanism, two frames. CP-trivial locus = bracket-vanishing from disjoint row supports. All chart-level; physical typing untouched."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:bc28f30924d7df1af02a"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_nima",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_benincasa",
+   "target_ref": "claim"
+  }
+ ]
+}

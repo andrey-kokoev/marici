@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1379,
+  "event_id": "ev-000000001379-1fd25553-ddf5-49a0-9211-5a13e59e30fb",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "2dbaec81059608dff918b58d23c7679ee6731ca511302bcf208386a7702d0fb1",
+  "proposal_id": "ep_4474569f-ac09-4149-b228-5b906ff36552",
+  "proposal_digest": "b9d4094ffd43bcd9bb9119349eee02a0acaa84cdbbf284f675dd309cbd9f1aa2",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Initiality forces Frobenius rigidity on conditional pi_0",
+      "statement": "The conditional pointed pi_0 is the initial commutative semiring, so its only unital semiring endomorphism is identity. The additive classifiers f_n compose as f_m f_n=f_mn but are unital only at n=1. Identity satisfies Frobenius congruences for every intrinsic prime but is prime-independent; any nontrivial Frobenius spectrum requires a larger source-derived object.",
+      "scope": "Conditional pi_0 categorical rigidity; no full-Carrier lift, Witt object, Euler factor, or physical operation.",
+      "entity_id": "claim:75f6178d1406befec7e8"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Unitality hostile test for additive power classifiers",
+      "procedure": "Evaluate every additive classifier f_n at the distinguished multiplicative unit U. Since f_n(U)=nU, enforce unitality f_n(U)=U.",
+      "expected_result": "Only n=1 survives. Any nonidentity unital semiring endomorphism of the initial object falsifies the rigidity theorem.",
+      "entity_id": "test:d1e4ca907fd37ad558c9"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Initial-semiring Frobenius-rigidity packet",
+      "version": "1",
+      "locator": "research/grothendieck/initial-semiring-frobenius-rigidity.md",
+      "entity_id": "source:38c4b8a2d3e35fa48abd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1355 — Initiality Forces Frobenius Rigidity",
+      "version": "1",
+      "locator": "src/ledger/20260820-1355 Initiality Forces Frobenius Rigidity.md",
+      "entity_id": "source:f9392baf3079499c43dc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d1e4ca907fd37ad558c9",
+      "target_id": "claim:75f6178d1406befec7e8",
+      "relation_id": "rel:tests-27d03a7c7bec79dd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:75f6178d1406befec7e8",
+      "target_id": "source:38c4b8a2d3e35fa48abd",
+      "relation_id": "rel:derived_from-9c81459a7684d045"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:f9392baf3079499c43dc",
+      "target_id": "claim:75f6178d1406befec7e8",
+      "relation_id": "rel:reports-640a8e3d6d7ce2f6"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Derive canonical Frobenius candidates on the intrinsic-prime object and test their composition and typing."
+  },
+  "idempotency_key": "auto-admission-b55f82212d14c7b369702e21",
+  "occurred_at": "2026-08-20T23:27:39.0665844Z",
+  "certifies_truth": false,
+  "event_hash": "b224481f69624992d424bf0a47122c049cc553464cce84870f6b9df8e82b62a6"
+}

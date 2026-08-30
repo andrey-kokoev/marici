@@ -1,0 +1,23 @@
+{
+  "schema": "marici.aspect.interaction-net-kernel-pilot.v1",
+  "scope": "SCC local constructor and rewrite kernel only",
+  "excluded_from_rewriting": ["authority transitions", "source derivation", "completion", "higher-coherence certification"],
+  "agent_signature": [
+    {"type":"Seed","principal":"out","ordered_auxiliary_ports":["chart"],"resource":"one source root"},
+    {"type":"Occurrence","principal":"toggle","ordered_auxiliary_ports":["carrier","label"],"resource":"one of five Boolean occurrences"},
+    {"type":"Fiber","principal":"successor","ordered_auxiliary_ports":["carrier","depth","u","v"],"resource":"0<=u<=k and 0<=v<=2k"},
+    {"type":"Duplicate","principal":"copy","ordered_auxiliary_ports":["input","left","right"],"resource":"explicit duplicator"},
+    {"type":"Delete","principal":"erase","ordered_auxiliary_ports":["input"],"resource":"explicit deleter"}
+  ],
+  "rules": [
+    {"id":"occurrence_insert","active_pair":["Occurrence(i)","Empty(i)"],"replacement":["Filled(i)"],"external_interface_before":["carrier","label(i)"],"external_interface_after":["carrier","label(i)"],"authority_root":"claim:marici-4013-source-hilbert-factorization","support_delta":{"occurrence_support":1,"fiber_depth":0},"resource_equation":"Empty(i)+Occurrence(i)=Filled(i)","fault_modality_grade":{"fault":0,"modality":"source_generated"},"coherence_class":"boolean_occurrence_commuting"},
+    {"id":"fiber_successor","active_pair":["Fiber(k,u,v)","Successor"],"replacement":["Fiber(k+1,u_prime,v_prime)"],"external_interface_before":["carrier","depth"],"external_interface_after":["carrier","depth"],"authority_root":"claim:marici-4013-source-hilbert-factorization","support_delta":{"occurrence_support":0,"fiber_depth":1},"resource_equation":"rank(k)=(k+1)(2k+1); rank(k+1)=(k+2)(2k+3)","fault_modality_grade":{"fault":0,"modality":"source_generated"},"coherence_class":"unbounded_fiber_successor"},
+    {"id":"explicit_duplicate","active_pair":["Duplicate(A)","Value(A)"],"replacement":["Value_left(A)","Value_right(A)"],"external_interface_before":["input","left","right"],"external_interface_after":["input","left","right"],"authority_root":"scc:local-resource-kernel","support_delta":{"copies":1},"resource_equation":"one input plus one duplicator yields two named outputs","fault_modality_grade":{"fault":0,"modality":"structural_explicit"},"coherence_class":"comonoid_candidate_not_assumed_coherent"},
+    {"id":"explicit_delete","active_pair":["Delete(A)","Value(A)"],"replacement":["Erased(A)"],"external_interface_before":["input"],"external_interface_after":["input"],"authority_root":"scc:local-resource-kernel","support_delta":{"deleted":1},"resource_equation":"one value plus one deleter yields one typed erasure witness","fault_modality_grade":{"fault":0,"modality":"structural_explicit"},"coherence_class":"counit_candidate_not_assumed_coherent"}
+  ],
+  "entry_4013": {"hilbert_series":"3(1+t)^5(1+3s)/(1-s)^3","fiber_rank":"(k+1)(2k+1)","depth_four_fiber_coefficient":45,"depth_four_cumulative_total_rank":9120,"charts":["G12","G31"],"prequotient_only":true},
+  "grade_outputs": {"generated_reachability":"computed","exact_relation_image_rank":"unknown_source_relation_module_not_supplied","quotient_rank":"unknown_until_exact_relation_image_rank"},
+  "critical_pair_classes": ["occurrence_i_with_occurrence_j","occurrence_i_with_fiber_successor","duplicate_with_delete","duplicate_with_constructor","delete_with_constructor"],
+  "semantic_gate": {"candidate_context_basis":["identity","five_occurrence_ports","fiber_successor_port","explicit_duplicate_port","explicit_delete_port"],"basis_source_generated":true,"basis_physically_realizable":"not_yet_certified","restricted_enriched_nerve_faithful":"not_yet_certified","full_yoneda_nonexecutable_probes_rejected":true},
+  "verdict":"useful_but_incomplete_presentation"
+}

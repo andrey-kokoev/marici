@@ -1,0 +1,66 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1113,
+  "event_id": "ev-000000001113-89c8a1cd-f28c-4361-ba35-8b14cac2858f",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "9bbaf3a4d197f38e1c30913a3e92d416ccca323e0e7dfe458f86111e75684fe0",
+  "proposal_id": "ep_43c7cbd4-bfa6-4eb0-954b-8447de8d6b48",
+  "proposal_digest": "8e7f6671a0c338a9d77f66be2cd0ff7aa98c765ca174c9d3627e8ce537bdf774",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Readout arithmetic naturality obstruction",
+      "version": "2026-08-20",
+      "locator": "research/nima/readout-arithmetic-naturality-obstruction.md",
+      "entity_id": "source:99758305ef4bfc32d028"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Formal n-fold substrate maps do not define a common selection-compatible physical arithmetic action",
+      "summary": "Memory scaling gives q2→n²q2 and q3→n³q3. Cosmological n-fold deck addition respects the difference quotient but for every even n pulls delta_0 back to the constant-one function, changing 992 of 1024 label pairs.",
+      "status": "exact-bounded-obstruction",
+      "entity_id": "claim:5aae40ba6dc3bc64836b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Two-sector arithmetic naturality audit",
+      "locator": "research/nima/check_readout_arithmetic_naturality.py",
+      "result_locator": "research/nima/results/readout-arithmetic-naturality.json",
+      "outcome": "passed: obstruction reproduced for every even n through 12",
+      "entity_id": "test:861f3fe584778fedb1b0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:5aae40ba6dc3bc64836b",
+      "target_id": "source:99758305ef4bfc32d028",
+      "relation_id": "rel:derived_from-801de9ee22b6316b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:861f3fe584778fedb1b0",
+      "target_id": "claim:5aae40ba6dc3bc64836b",
+      "relation_id": "rel:tests-a05713ea142482a2"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_directed_hostile_test",
+    "summary": "Testing whether the conditional arithmetic operations are natural on the two established sectorwise readout squares."
+  },
+  "idempotency_key": "auto-admission-f46c3fa49ddb5e4f20fb4b49",
+  "occurred_at": "2026-08-20T19:45:09.2876226Z",
+  "certifies_truth": false,
+  "event_hash": "c3b5bc2c292139515b841242c7253c2265e1b5047b4687b005e432fef8f91d38"
+}

@@ -1,0 +1,1053 @@
+{
+  "schema": "marici.authority-grant-composition-hostiles.v1",
+  "base_contract": "research/strominger/contracts/authority-grant-composition.v1.json",
+  "fixtures": [
+    {
+      "id": "faithfulness_plus_support_to_observer",
+      "description": "Algebraic faithfulness and physical support are laundered into observer authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AB", "field": "authority_kind", "value": "algebraic_faithfulness"},
+        {"collection": "authority_grants", "id": "g_BC", "field": "authority_kind", "value": "support"},
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "observer"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "two_readouts_to_selector",
+      "description": "Two valid readout grants are laundered into selector authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "selector"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "completion_ports_to_constructor",
+      "description": "A completed readout and executable observation ports are laundered into constructor authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AB", "field": "source_authority_evidence", "value": "topology-bearing completion"},
+        {"collection": "authority_grants", "id": "g_BC", "field": "source_authority_evidence", "value": "executable observation ports"},
+        {"collection": "authority_grants", "id": "g_AC", "field": "authority_kind", "value": "constructor"}
+      ],
+      "expected_code": "authority_kind_laundering"
+    },
+    {
+      "id": "pairwise_valid_triple_incoherent",
+      "description": "Every pairwise composition remains valid, but the triple associator has nonzero defect.",
+      "mutations": [
+        {"collection": "associativity_cells", "id": "assoc_ABCD", "field": "coherence_defect", "value": 1}
+      ],
+      "expected_code": "triple_authority_coherence_failure"
+    },
+    {
+      "id": "evidence_preserving_base_change_loses_authority",
+      "description": "Chart evidence survives base change while source authority does not.",
+      "mutations": [
+        {"collection": "transformations", "id": "chart_transport", "field": "preserves_authority", "value": false}
+      ],
+      "expected_code": "base_change_preserves_evidence_not_authority"
+    },
+    {
+      "id": "factorization_dependent_composite",
+      "description": "Both local factorizations exist, but their result grants live on different evidence domains.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AD_right", "field": "evidence_domain", "value": "D_transport_B"}
+      ],
+      "expected_code": "factorization_dependent_composite"
+    },
+    {
+      "id": "representation_change_without_coherence",
+      "description": "Changing B to Bprime preserves the boundary process signature but supplies no source-derived coherence cell.",
+      "mutations": [
+        {"collection": "representation_change_tests", "id": "replace_B_by_Bprime", "field": "coherence_cell_id", "value": null}
+      ],
+      "expected_code": "missing_source_derived_representation_coherence"
+    },
+    {
+      "id": "representation_change_strengthens_authority",
+      "description": "The alternative presentation silently promotes a readout process to selector authority.",
+      "mutations": [
+        {"collection": "authority_grants", "id": "g_AC_via_Bprime", "field": "authority_kind", "value": "selector"}
+      ],
+      "expected_code": "representation_change_strengthens_authority"
+    },
+    {
+      "id": "remove_B_without_direct_source_grant",
+      "description": "Removing B destroys the composite because no independently authorized direct A-to-C grant remains.",
+      "mutations": [
+        {"collection": "representation_change_tests", "id": "remove_B_direct_source_route", "field": "direct_grant", "value": null}
+      ],
+      "expected_code": "representation_removal_destroys_composite"
+    },
+    {
+      "id": "pairwise_cells_nontrivial_atlas_holonomy",
+      "description": "Every presentation change is locally valid, but direct and two-step re-encoding disagree around the atlas triangle.",
+      "mutations": [
+        {"collection": "presentation_atlas_coherence", "id": "atlas_B_Bprime_Bdoubleprime", "field": "holonomy_defect", "value": 1}
+      ],
+      "expected_code": "presentation_atlas_holonomy_failure"
+    },
+    {
+      "id": "noninvertible_presentation_cell",
+      "description": "A one-way adapter is mislabeled as an equivalence of explanatory presentations.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "invertible", "value": false}
+      ],
+      "expected_code": "invalid_presentation_coherence_cell"
+    },
+    {
+      "id": "flat_atlas_but_noneffective_descent",
+      "description": "All overlap cells are flat, but the local grants do not reconstruct a global authority grant.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "effective", "value": false}
+      ],
+      "expected_code": "flat_but_noneffective_authority_descent"
+    },
+    {
+      "id": "effective_descent_with_hidden_ambiguity",
+      "description": "A global grant is reconstructed but a nonzero ambiguity kernel makes it nonunique.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "ambiguity_kernel_rank", "value": 1}
+      ],
+      "expected_code": "nonunique_global_authority_descent"
+    },
+    {
+      "id": "refinement_changes_reconstruction",
+      "description": "The coarse and refined presentation atlases reconstruct inequivalent global grants.",
+      "mutations": [
+        {"collection": "presentation_refinement_coherence", "id": "refine_B_atlas_by_Bprime", "field": "reconstruction_defect", "value": 1}
+      ],
+      "expected_code": "presentation_refinement_coherence_failure"
+    },
+    {
+      "id": "deletion_survival_without_source_reconstruction",
+      "description": "The process is claimed to survive deletion of Bprime without a surviving source-derived reconstruction.",
+      "mutations": [
+        {"collection": "presentation_deletion_tests", "id": "delete_redundant_Bprime", "field": "source_derived_reconstruction", "value": null}
+      ],
+      "expected_code": "unsupported_presentation_deletion_survival"
+    },
+    {
+      "id": "unauthorized_global_stabilizer",
+      "description": "A hidden automorphism preserves every local readout but is not authorized by the source grammar.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC", "field": "stabilizer", "value": ["identity", "gauge_flip"]}
+      ],
+      "expected_code": "unauthorized_descent_stabilizer"
+    },
+    {
+      "id": "authorized_gauge_but_incomplete_quotient",
+      "description": "The stabilizer is source-authorized, but quotienting leaves a nonzero ambiguity kernel.",
+      "mutations": [
+        {"collection": "authority_descent_objects", "id": "descent_process_AC_stacky", "field": "quotient_ambiguity_rank", "value": 1}
+      ],
+      "expected_code": "nonunique_global_authority_descent"
+    },
+    {
+      "id": "target_fitted_coherence_witness",
+      "description": "The presentation equivalence is chosen only after inspecting the desired target readout.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "derived_before_target", "value": false}
+      ],
+      "expected_code": "target_fitted_coherence"
+    },
+    {
+      "id": "cached_witness_not_recomputable",
+      "description": "A stored coherence certificate survives, but the declared source can no longer regenerate it.",
+      "mutations": [
+        {"collection": "presentation_coherence_cells", "id": "cell_B_Bprime", "field": "counterfactual_recomputable", "value": false}
+      ],
+      "expected_code": "cached_not_explanatory_coherence"
+    },
+    {
+      "id": "readout_to_source_provenance_cycle",
+      "description": "The terminal readout is allowed to regenerate the source constructor, producing circular explanatory provenance.",
+      "mutations": [
+        {"collection": "source_provenance.edges", "id": "prov_e_global_readout", "field": "target", "value": "prov_source"}
+      ],
+      "expected_code": "cyclic_explanatory_provenance"
+    },
+    {
+      "id": "source_perturbation_leaves_coherence_inert",
+      "description": "The alleged source is perturbed but the coherence witness is merely replayed unchanged.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "intervene_on_source_constructor", "field": "observed_affected_nodes", "value": ["prov_source", "prov_local", "prov_global", "prov_readout"]}
+      ],
+      "expected_code": "source_perturbation_fails_to_regenerate_witnesses"
+    },
+    {
+      "id": "target_intervention_rewrites_coherence",
+      "description": "Changing the desired readout retroactively changes an upstream coherence witness.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "intervene_on_target_readout", "field": "observed_affected_nodes", "value": ["prov_coherence", "prov_readout"]}
+      ],
+      "expected_code": "target_intervention_changes_upstream_authority"
+    },
+    {
+      "id": "cached_output_retains_authority_after_source_deletion",
+      "description": "A cached result is incorrectly treated as retaining authority after its constructor is deleted.",
+      "mutations": [
+        {"collection": "source_intervention_tests", "id": "delete_source_constructor", "field": "authority_survives", "value": true}
+      ],
+      "expected_code": "authority_survives_deleted_constructor"
+    },
+    {
+      "id": "interventions_leave_rival_mechanism_kernel",
+      "description": "Two valid probes leave one inequivalent candidate mechanism unresolved.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "intervention_ports", "value": ["source_probe_1", "source_probe_2"]},
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "observation_matrix", "value": [[1, 0, 1], [0, 1, 1]]}
+      ],
+      "expected_code": "intervention_family_not_jointly_faithful"
+    },
+    {
+      "id": "target_fitted_discriminator_ports",
+      "description": "The intervention ports separate candidates only because they were chosen after seeing the desired mechanism.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "source_derived_ports", "value": null}
+      ],
+      "expected_code": "target_fitted_intervention_family"
+    },
+    {
+      "id": "finite_audit_claims_universal_explanation",
+      "description": "A full-rank finite candidate audit is silently extrapolated to all possible mechanisms.",
+      "mutations": [
+        {"collection": "mechanism_identification_audits", "id": "finite_three_mechanism_identification", "field": "no_universal_extrapolation", "value": false}
+      ],
+      "expected_code": "unbounded_explanatory_extrapolation"
+    },
+    {
+      "id": "new_rival_but_old_authority_retained",
+      "description": "An unresolved new candidate is admitted while the old identification authority is silently retained.",
+      "mutations": [
+        {"collection": "rival_extension_audits", "id": "new_rival_opens_identification_challenge", "field": "identification_authority_retained", "value": true}
+      ],
+      "expected_code": "authority_retained_with_unresolved_rival"
+    },
+    {
+      "id": "rival_repair_uses_target_fitted_probe",
+      "description": "The new rival is separated by a discriminator designed from its desired output rather than the source grammar.",
+      "mutations": [
+        {"collection": "rival_extension_audits", "id": "new_source_probe_revalidates_extended_family", "field": "new_discriminator_source_derived", "value": null}
+      ],
+      "expected_code": "target_fitted_rival_discriminator"
+    },
+    {
+      "id": "finite_rival_protocol_claims_closed_world",
+      "description": "A repaired finite family is declared immune to every future ungenerated rival.",
+      "mutations": [
+        {"collection": "rival_extension_audits", "id": "new_source_probe_revalidates_extended_family", "field": "claims_closed_under_all_future_rivals", "value": true}
+      ],
+      "expected_code": "closed_world_explanation_claim"
+    },
+    {
+      "id": "arbitrary_column_opens_rival_challenge",
+      "description": "A new response column opens a challenge without any admitted constructor-level rival packet.",
+      "mutations": [
+        {"collection": "rival_extension_audits", "id": "new_rival_opens_identification_challenge", "field": "new_rival_admission", "value": null}
+      ],
+      "expected_code": "rival_challenge_without_admission_authority"
+    },
+    {
+      "id": "rival_reverse_engineered_from_incumbent_fit",
+      "description": "Delta is admitted although its constructor was fitted from the incumbent target responses.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "independent_of_incumbent_fit", "value": false}
+      ],
+      "expected_code": "target_fitted_rival_admission"
+    },
+    {
+      "id": "gauge_copy_admitted_as_new_rival",
+      "description": "An authorized gauge copy is mislabeled as a physically distinct rival mechanism.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "non_gauge_witness", "value": null}
+      ],
+      "expected_code": "gauge_duplicate_misclassified_as_rival"
+    },
+    {
+      "id": "port_incomplete_rival_admitted",
+      "description": "A proposed mechanism is admitted despite lacking predictions on every already-declared intervention port.",
+      "mutations": [
+        {"collection": "rival_admissions", "id": "admit_mechanism_delta", "field": "predicts_all_existing_ports", "value": false}
+      ],
+      "expected_code": "port_incomplete_rival_admission"
+    },
+    {
+      "id": "incumbent_is_sole_rival_reviewer",
+      "description": "The incumbent mechanism controls the only admission vote on its own rival.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewers", "value": ["incumbent_mechanism_team"]},
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewer_authority_roots", "value": ["incumbent_source_root"]}
+      ],
+      "expected_code": "incumbent_or_proposer_controls_rival_admission"
+    },
+    {
+      "id": "proposer_identity_changes_decision",
+      "description": "The identical content-addressed rival packet receives a different decision under a different proposer name.",
+      "mutations": [
+        {"collection": "proposer_identity_invariance_audits", "id": "same_delta_packet_two_pseudonyms", "field": "decision_right", "value": "rejected"}
+      ],
+      "expected_code": "proposer_identity_bias"
+    },
+    {
+      "id": "review_criteria_fitted_after_response",
+      "description": "Admission criteria are selected only after reviewers inspect the rival response column.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "criteria_committed_before_response", "value": false}
+      ],
+      "expected_code": "target_fitted_rival_review"
+    },
+    {
+      "id": "rival_review_has_no_independent_appeal",
+      "description": "The initial reviewers are also the entire appeal panel.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "appeal_reviewers", "value": ["independent_reviewer_A"]}
+      ],
+      "expected_code": "missing_independent_rival_appeal"
+    },
+    {
+      "id": "reviewers_share_one_authority_root",
+      "description": "Two nominal reviewers derive authority from the same source and are falsely counted as independent.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "reviewer_authority_roots", "value": ["source_methods_board_A", "source_methods_board_A"]}
+      ],
+      "expected_code": "nonindependent_rival_review_authority"
+    },
+    {
+      "id": "admission_review_upgrades_operative_authority",
+      "description": "A merits review silently promotes a constructor claim to executor authority.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "authority_kind_after", "value": "executor"}
+      ],
+      "expected_code": "rival_review_authority_laundering"
+    },
+    {
+      "id": "review_root_has_no_external_charter",
+      "description": "A reviewer root is presented without an issuing source charter.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "issuing_charter", "value": null}
+      ],
+      "expected_code": "uncertified_review_authority_root"
+    },
+    {
+      "id": "review_root_self_authorizes",
+      "description": "A review authority root cites itself as its own charter and provenance.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "issuing_charter", "value": "source_methods_board_A"}
+      ],
+      "expected_code": "self_authorized_review_root"
+    },
+    {
+      "id": "review_roots_share_hidden_controller",
+      "description": "Distinct merits roots descend from one controlling ancestor.",
+      "mutations": [
+        {"collection": "review_root_independence_audits", "id": "merits_roots_A_B_independent", "field": "shared_controlling_ancestors", "value": ["incumbent_funding_board"]}
+      ],
+      "expected_code": "review_roots_share_controlling_authority"
+    },
+    {
+      "id": "review_charter_claims_truth_selection",
+      "description": "A procedural review charter expands into authority to select the true mechanism.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A", "field": "may_select_mechanism_truth", "value": true}
+      ],
+      "expected_code": "unbounded_review_authority_root"
+    },
+    {
+      "id": "appeal_uses_uncertified_root",
+      "description": "The appeal panel is named but its authority root has no certification.",
+      "mutations": [
+        {"collection": "rival_admission_reviews", "id": "review_mechanism_delta", "field": "appeal_authority_roots", "value": ["missing_appeal_root"]}
+      ],
+      "expected_code": "uncertified_review_authority_root"
+    },
+    {
+      "id": "revocation_erases_review_history",
+      "description": "Revoking a root deletes the fact that its earlier valid review occurred.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "historical_decision_preserved", "value": false}
+      ],
+      "expected_code": "revocation_erases_historical_review"
+    },
+    {
+      "id": "cached_decision_survives_as_live_authority",
+      "description": "A cached admission retains prospective standing after its review root is revoked and before replay.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "prospective_authority_before_replay", "value": true}
+      ],
+      "expected_code": "revoked_root_leaves_cached_authority_live"
+    },
+    {
+      "id": "review_replay_substitutes_new_packet",
+      "description": "Temporal replay silently changes the content-addressed evidence packet.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "replay_packet_sha256", "value": "different_packet"}
+      ],
+      "expected_code": "review_replay_changes_evidence_packet"
+    },
+    {
+      "id": "review_replay_uses_revoked_root",
+      "description": "Replay at time 30 reuses a root revoked at time 25.",
+      "mutations": [
+        {"collection": "review_authority_root_certifications", "id": "source_methods_board_A_successor", "field": "revoked_at", "value": 25}
+      ],
+      "expected_code": "review_replay_uses_inactive_root"
+    },
+    {
+      "id": "standing_restored_without_replay",
+      "description": "Prospective authority is restored without completing a new review.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "replay_completed", "value": false}
+      ],
+      "expected_code": "invalid_temporal_authority_restoration"
+    },
+    {
+      "id": "root_revocation_is_backdated",
+      "description": "The revocation is placed before the original review, invalidating its claimed authorization interval.",
+      "mutations": [
+        {"collection": "temporal_review_authority_audits", "id": "revoke_merits_root_then_replay", "field": "revoked_at", "value": 5}
+      ],
+      "expected_code": "backdated_review_root_revocation"
+    },
+    {
+      "id": "successor_replay_paths_disagree",
+      "description": "Two independently valid successor atlases return different dispositions while standing is declared restored.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "paths", "value": [{"id":"replay_path_AB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_A_successor","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"},{"id":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_C","source_methods_board_D"],"replayed_at":30,"completed":true,"decision":"rejected"}]}
+      ],
+      "expected_code": "unresolved_governance_holonomy"
+    },
+    {
+      "id": "temporal_paths_share_review_root",
+      "description": "Two nominal replay paths share a controlling merits root and are falsely treated as independent.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "paths", "value": [{"id":"replay_path_AB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_A_successor","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"},{"id":"replay_path_CB","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","roots":["source_methods_board_C","source_methods_board_B"],"replayed_at":30,"completed":true,"decision":"admitted"}]}
+      ],
+      "expected_code": "temporal_replay_paths_not_independently_rooted"
+    },
+    {
+      "id": "temporal_path_comparison_is_fitted",
+      "description": "The rule for comparing successor replay paths is chosen after their dispositions are known.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "comparison_committed_before_replay", "value": false}
+      ],
+      "expected_code": "target_fitted_temporal_path_comparison"
+    },
+    {
+      "id": "higher_appeal_cell_selects_truth",
+      "description": "The higher appeal cell claims authority to overwrite disagreement and select mechanism truth.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "higher_appeal_cell", "value": {"authority_root":"source_appeal_panel","role":"select_mechanism_truth","may_override_disagreement":true}}
+      ],
+      "expected_code": "temporal_higher_cell_launders_truth_authority"
+    },
+    {
+      "id": "flat_replay_atlas_withholds_standing",
+      "description": "All valid replay paths agree but the contract arbitrarily withholds restored prospective standing.",
+      "mutations": [
+        {"collection": "temporal_replay_atlas_audits", "id": "two_successor_atlases_same_packet", "field": "prospective_authority_restored", "value": false}
+      ],
+      "expected_code": "flat_temporal_atlas_withholds_authority"
+    },
+    {
+      "id": "pairwise_agreement_but_triangular_holonomy",
+      "description": "All three replay dispositions agree, but direct and two-step comparison cells have nonzero cocycle defect.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "cocycle_defect", "value": 1}
+      ],
+      "expected_code": "temporal_governance_cocycle_failure"
+    },
+    {
+      "id": "temporal_comparison_cell_noninvertible",
+      "description": "A one-way procedural comparison is used as an atlas equivalence.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "comparison_cells", "value": [{"id":"cell_AB_CD","source_path":"replay_path_AB","target_path":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":false,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_CD_EF","source_path":"replay_path_CD","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_AB_EF","source_path":"replay_path_AB","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0}]}
+      ],
+      "expected_code": "invalid_temporal_comparison_cell"
+    },
+    {
+      "id": "temporal_comparison_cell_promotes_truth_authority",
+      "description": "A comparison cell silently changes from procedural review to truth selection.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "comparison_cells", "value": [{"id":"cell_AB_CD","source_path":"replay_path_AB","target_path":"replay_path_CD","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"truth_selector","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":true,"naturality_defect":0},{"id":"cell_CD_EF","source_path":"replay_path_CD","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0},{"id":"cell_AB_EF","source_path":"replay_path_AB","target_path":"replay_path_EF","packet_sha256":"6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15","authority_kind":"procedural_review","invertible":true,"source_derived":true,"committed_before_replay":true,"may_select_truth":false,"naturality_defect":0}]}
+      ],
+      "expected_code": "temporal_comparison_cell_launders_authority"
+    },
+    {
+      "id": "temporal_triangle_missing_direct_cell",
+      "description": "Only the two-step comparison exists, so the claimed triangular coherence cannot be tested.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "direct_cell", "value": "missing_direct_cell"}
+      ],
+      "expected_code": "incomplete_temporal_governance_cocycle"
+    },
+    {
+      "id": "standing_restored_across_triangular_defect",
+      "description": "Global standing is retained despite a nonzero temporal governance cocycle.",
+      "mutations": [
+        {"collection": "temporal_governance_cocycle_audits", "id": "triangle_AB_CD_EF", "field": "cocycle_defect", "value": 2}
+      ],
+      "expected_code": "standing_restored_across_temporal_cocycle_defect"
+    },
+    {
+      "id": "certificate_claims_absolute_minimality",
+      "description": "A grammar-relative deletion basis is promoted to an absolute proof that no smaller alternative certificate exists.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "claims_absolute_minimality", "value": true}
+      ],
+      "expected_code": "unbounded_authority_certificate_minimality"
+    },
+    {
+      "id": "certificate_digest_confers_authority",
+      "description": "Possession of the certificate hash is treated as authority without replaying its typed dependencies.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "digest_confers_authority", "value": true}
+      ],
+      "expected_code": "authority_by_certificate_digest"
+    },
+    {
+      "id": "certificate_has_no_replay_checker",
+      "description": "The compressed proof object cannot deterministically reconstruct its terminal claim.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "deterministic_replay_checker", "value": null}
+      ],
+      "expected_code": "nonreplayable_authority_stack_certificate"
+    },
+    {
+      "id": "certificate_dependency_graph_cycles",
+      "description": "The terminal claim is allowed to generate one of its own premises.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "dependency_edges", "value": [{"id":"cycle1","source":"gen_admission","target":"current_challenge_standing"},{"id":"cycle2","source":"current_challenge_standing","target":"gen_admission"}]}
+      ],
+      "expected_code": "cyclic_authority_certificate_dependencies"
+    },
+    {
+      "id": "certificate_minimality_witnesses_missing",
+      "description": "The certificate calls its generator basis minimal without deletion witnesses.",
+      "mutations": [
+        {"collection": "finite_authority_stack_certificates", "id": "current_delta_challenge_standing_certificate", "field": "minimality_witnesses", "value": []}
+      ],
+      "expected_code": "incomplete_authority_certificate_minimality_witness"
+    },
+    {
+      "id": "capability_executes_after_lease",
+      "description": "A previously validated capability executes after its atomic lease has expired.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "execution_time", "value": 33}
+      ],
+      "expected_code": "authority_capability_execution_outside_lease"
+    },
+    {
+      "id": "capability_uses_stale_revocation_snapshot",
+      "description": "A root revocation epoch changes between validation and execution.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "execution_revocation_epochs", "value": {"source_methods_board_A_successor":1,"source_methods_board_B":0,"source_methods_board_C":0,"source_methods_board_D":0,"source_methods_board_E":0,"source_methods_board_F":0,"source_appeal_panel":0}}
+      ],
+      "expected_code": "stale_authority_capability_snapshot"
+    },
+    {
+      "id": "capability_scope_expands_to_selector",
+      "description": "Challenge standing is reused to select the winning mechanism.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "operation", "value": "select_true_mechanism"}
+      ],
+      "expected_code": "authority_capability_scope_amplification"
+    },
+    {
+      "id": "capability_execution_is_nonatomic",
+      "description": "Execution checks roots before use but does not bind the revocation epoch atomically.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "atomic_revocation_check", "value": false}
+      ],
+      "expected_code": "non_atomic_authority_capability_execution"
+    },
+    {
+      "id": "capability_nonce_can_be_reused",
+      "description": "The same capability nonce is permitted to execute the operation twice.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "second_use_permitted", "value": true}
+      ],
+      "expected_code": "authority_capability_reuse_permitted"
+    },
+    {
+      "id": "capability_lease_upgrades_authority_kind",
+      "description": "The lease silently promotes challenge standing into selector authority.",
+      "mutations": [
+        {"collection": "authority_capability_execution_audits", "id": "execute_delta_challenge_once", "field": "authority_kind_after", "value": "selector"}
+      ],
+      "expected_code": "capability_lease_authority_laundering"
+    },
+    {
+      "id": "partitioned_sites_claim_exactly_one",
+      "description": "Two symmetric sites with no pre-execution communication each claim their local rule guarantees exactly one global success.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "local_protocol_guarantees_exactly_one", "value": true}
+      ],
+      "expected_code": "false_distributed_single_use_guarantee"
+    },
+    {
+      "id": "delayed_messages_retroactively_restore_linearity",
+      "description": "Coherence messages arriving after both commits are claimed to undo one completed execution.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "delayed_coherence_messages_restore_safety", "value": true}
+      ],
+      "expected_code": "post_execution_coherence_cannot_restore_linearity"
+    },
+    {
+      "id": "local_nonce_logs_called_global",
+      "description": "Two duplicated local nonce stores are treated as one globally linear consumption record.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "local_nonce_logs_are_global", "value": true}
+      ],
+      "expected_code": "local_nonce_state_misclassified_as_global_linearity"
+    },
+    {
+      "id": "linearizer_has_no_source_authority",
+      "description": "An atomic register orders executions but has no grant to decide this capability's consumption.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"unowned register","source_authorized":false,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"site token","partitioned_before_distribution":true,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":false}]}
+      ],
+      "expected_code": "missing_shared_linearization_authority"
+    },
+    {
+      "id": "site_partition_occurs_after_distribution",
+      "description": "Both sites first receive the unrestricted token and site scope is assigned only after they may execute.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"atomic register","source_authorized":true,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"late site token","partitioned_before_distribution":false,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":false}]}
+      ],
+      "expected_code": "late_or_non_linear_site_partition"
+    },
+    {
+      "id": "bounded_multiplicity_called_single_use",
+      "description": "Allowing both sites to execute is presented as preserving the original linear resource type.",
+      "mutations": [
+        {"collection": "distributed_capability_consumption_audits", "id": "two_site_partitioned_single_use_no_go", "field": "repairs", "value": [{"kind":"shared_linearization","resource":"atomic register","source_authorized":true,"atomic_compare_and_set":true,"state_cardinality":2,"global_outcome":[1,0],"preserves_single_use":true,"capability_kind_before":"challenge_standing","capability_kind_after":"challenge_standing"},{"kind":"site_partition","resource":"site token","partitioned_before_distribution":true,"site_token_count":1,"authorized_site":"site_A","unauthorized_site_outcome":0,"semantic_change":"eligible_locus_restricted"},{"kind":"bounded_multiplicity","resource":"two use","resource_kind_after":"bounded_multiplicity","bound":2,"allowed_global_outcome":[1,1],"still_claims_single_use":true}]}
+      ],
+      "expected_code": "bounded_multiplicity_mislabeled_single_use"
+    },
+    {
+      "id": "distributed_linearizer_claims_all_three",
+      "description": "One design claims global single-use safety, availability at both sites, and partition tolerance simultaneously.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "claims_all_three", "value": true}
+      ],
+      "expected_code": "impossible_distributed_linearity_trinity"
+    },
+    {
+      "id": "safe_linearizer_serves_both_partition_sides",
+      "description": "Both disconnected components consume the supposedly single-use capability.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":1,"minority_fails_closed":false,"minority_local_fallback":true,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "safe_linearizer_serves_both_partition_sides"
+    },
+    {
+      "id": "minority_uses_local_authority_fallback",
+      "description": "The minority component replaces missing global consumption authority with its own local grant.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":false,"minority_local_fallback":true,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "minority_locus_launders_local_authority"
+    },
+    {
+      "id": "distributed_fencing_epoch_not_monotone",
+      "description": "A new winner receives a fencing epoch no greater than the stale winner's epoch.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":true,"minority_local_fallback":false,"old_fencing_epoch":7,"new_fencing_epoch":7,"stale_epoch_execution_permitted":false}}
+      ],
+      "expected_code": "nonmonotone_distributed_fencing_epoch"
+    },
+    {
+      "id": "stale_partition_grant_executes",
+      "description": "An old quorum winner executes after a newer fencing epoch has been issued.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "safe_partition_run", "value": {"quorum_site":"site_A","minority_site":"site_B","quorum_outcome":1,"minority_outcome":0,"minority_fails_closed":true,"minority_local_fallback":false,"old_fencing_epoch":7,"new_fencing_epoch":8,"stale_epoch_execution_permitted":true}}
+      ],
+      "expected_code": "stale_partition_grant_executes"
+    },
+    {
+      "id": "eventual_recovery_called_partition_availability",
+      "description": "A site blocked throughout the partition is called available because it may execute after communication recovers.",
+      "mutations": [
+        {"collection": "distributed_linearity_trilemma_audits", "id": "single_use_safety_availability_partition_trilemma", "field": "eventual_recovery_counted_as_partition_availability", "value": true}
+      ],
+      "expected_code": "eventual_recovery_laundered_as_immediate_availability"
+    },
+    {
+      "id": "linearizer_uses_disjoint_quorums",
+      "description": "Two authorized winning quorums have no shared replica capable of blocking a conflicting certificate.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "authorized_quorums", "value": [["r1"], ["r2", "r3"]]}
+      ],
+      "expected_code": "linearization_quorum_intersection_failure"
+    },
+    {
+      "id": "intersection_replica_can_equivocate",
+      "description": "The shared replica has no durable append-only vote cell and can authorize both values.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":false,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation"
+    },
+    {
+      "id": "replica_vote_memory_is_volatile",
+      "description": "A restart erases the prior vote, allowing the intersection replica to sign a conflict in the same epoch.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":false,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "missing_durable_replica_non_equivocation"
+    },
+    {
+      "id": "signatures_claim_to_prevent_double_signing",
+      "description": "Authentication is incorrectly treated as a constructor that prevents an authorized signer from signing twice.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "replicas", "value": [{"id":"r1","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false},{"id":"r2","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":true},{"id":"r3","source_authorized_vote_role":true,"durable_append_only_vote_cell":true,"survives_restart":true,"monotone_epoch":true,"signatures_alone_prevent_equivocation":false}]}
+      ],
+      "expected_code": "signature_authentication_misclassified_as_non_equivocation"
+    },
+    {
+      "id": "durable_cell_hidden_as_mathematical_consequence",
+      "description": "The physical storage constructor is claimed to follow from quorum intersection alone.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "implementation_boundary", "value": {"durable_cell_status":"derived_theorem","requires_storage_authority":false,"claims_derived_from_quorum_math":true,"smallest_physical_resource":"none"}}
+      ],
+      "expected_code": "hidden_physical_linearization_oracle"
+    },
+    {
+      "id": "safety_proof_claims_unconditional_liveness",
+      "description": "Quorum intersection safety is extrapolated to progress under arbitrary failures and partitions.",
+      "mutations": [
+        {"collection": "linearization_constructor_networks", "id": "three_replica_majority_linearizer", "field": "claims_unconditional_liveness", "value": true}
+      ],
+      "expected_code": "unbounded_linearization_liveness_claim"
+    },
+    {
+      "id": "crash_quorum_proof_transported_to_byzantine",
+      "description": "The n=3, q=2 crash proof is reused unchanged when the intersection replica may equivocate.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "byzantine_n3_q2_f1_no_go", "field": "claimed_safe", "value": true}
+      ],
+      "expected_code": "incorrect_fault_parametric_safety_classification"
+    },
+    {
+      "id": "byzantine_quorum_intersection_miscalculated",
+      "description": "The minimum intersection for n=4, q=3 is incorrectly reported as one.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "byzantine_n4_q3_f1", "field": "minimum_intersection", "value": 1}
+      ],
+      "expected_code": "incorrect_minimum_quorum_intersection"
+    },
+    {
+      "id": "crash_fault_model_allows_equivocation",
+      "description": "A crash-recovery model silently permits a replica to double-vote while retaining the crash-only safety claim.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "crash_recovery_n3_q2_f1", "field": "faulty_replicas_may_equivocate", "value": true}
+      ],
+      "expected_code": "incorrect_fault_parametric_safety_classification"
+    },
+    {
+      "id": "fault_model_has_no_source_authority",
+      "description": "The checker assumes a one-fault bound without any authority for that environmental claim.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "byzantine_n4_q3_f1", "field": "source_authorized_fault_model", "value": null}
+      ],
+      "expected_code": "unauthorized_or_unenforced_fault_model"
+    },
+    {
+      "id": "fault_model_change_declared_transport",
+      "description": "Changing from crash to Byzantine faults is treated as evidence transport rather than a new proof obligation.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "byzantine_n4_q3_f1", "field": "claims_fault_model_transport_without_reproof", "value": true}
+      ],
+      "expected_code": "fault_model_authority_transport"
+    },
+    {
+      "id": "crash_row_uses_byzantine_threshold",
+      "description": "The crash/recovery row is incorrectly typed with the Byzantine overlap condition I_min > f.",
+      "mutations": [
+        {"collection": "fault_parametric_quorum_audits", "id": "crash_recovery_n3_q2_f1", "field": "safety_condition", "value": "minimum_intersection>fault_bound"}
+      ],
+      "expected_code": "fault_model_safety_condition_mismatch"
+    },
+    {
+      "id": "correlated_n4_q3_claimed_safe",
+      "description": "A 3-of-4 design is declared safe although one common cause covers the entire two-replica overlap.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "claimed_safe", "value": true}
+      ],
+      "expected_code": "incorrect_fault_hypergraph_safety_classification"
+    },
+    {
+      "id": "shared_authority_root_omitted_from_fault_catalog",
+      "description": "Replicas r1 and r2 share admin_A, but their two-replica root fiber is omitted from admissible faults.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "admissible_fault_sets", "value": [["r1"], ["r2"], ["r3"], ["r4"]]}
+      ],
+      "expected_code": "common_cause_fault_set_omitted"
+    },
+    {
+      "id": "distinct_replica_ids_imply_independence",
+      "description": "Four process identifiers are treated as four independently compromisable authority roots without provenance.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "infers_independence_from_distinct_replica_ids", "value": true}
+      ],
+      "expected_code": "replica_identity_laundered_as_failure_independence"
+    },
+    {
+      "id": "common_cause_model_has_no_source_authority",
+      "description": "The admissible fault hypergraph is asserted without evidence about shared administrative constructors.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "diversified_n4_q3_safe", "field": "source_authorized_common_cause_model", "value": null}
+      ],
+      "expected_code": "unauthorized_or_unbounded_common_cause_model"
+    },
+    {
+      "id": "unsafe_hypergraph_lacks_witness",
+      "description": "A correlated design is marked unsafe without exhibiting quorums whose overlap is swallowed by an admissible fault set.",
+      "mutations": [
+        {"collection": "fault_hypergraph_quorum_audits", "id": "correlated_n4_q3_unsafe", "field": "violation_witness", "value": {}}
+      ],
+      "expected_code": "missing_fault_hypergraph_violation_witness"
+    },
+    {
+      "id": "discovered_edge_does_not_suspend_safety",
+      "description": "A newly evidenced common cause swallows a quorum overlap while the old safety authority remains live.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "old_safety_authority_retained", "value": true}
+      ],
+      "expected_code": "safety_authority_retained_after_common_cause_discovery"
+    },
+    {
+      "id": "common_cause_probe_is_target_fitted",
+      "description": "The shared-build probe is selected only after inspecting the desired correlated response.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "probe_committed_before_response", "value": false}
+      ],
+      "expected_code": "target_fitted_common_cause_probe"
+    },
+    {
+      "id": "response_support_does_not_match_fault_edge",
+      "description": "The admitted fault edge includes r3 even though the intervention moved only r1 and r2.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "derived_fault_set", "value": ["r1", "r2", "r3"]}
+      ],
+      "expected_code": "common_cause_response_support_mismatch"
+    },
+    {
+      "id": "discovered_edge_omitted_from_extended_family",
+      "description": "The response-derived common cause is observed but not admitted into the enlarged fault family.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "extended_fault_sets", "value": [["r1"], ["r2"], ["r3"], ["r4"]]}
+      ],
+      "expected_code": "discovered_common_cause_not_admitted"
+    },
+    {
+      "id": "repair_drops_known_common_cause",
+      "description": "Revalidation points to a safe-looking topology whose fault catalog omits the newly discovered build-pipeline edge.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "repair_fault_audit", "value": "diversified_n4_q3_safe"}
+      ],
+      "expected_code": "repair_drops_discovered_common_cause"
+    },
+    {
+      "id": "finite_probes_claim_universal_independence",
+      "description": "A finite administrator/build intervention family is claimed to exclude every possible physical common cause.",
+      "mutations": [
+        {"collection": "common_cause_discovery_audits", "id": "discover_shared_build_pipeline_edge", "field": "claims_universal_independence", "value": true}
+      ],
+      "expected_code": "closed_world_common_cause_claim"
+    },
+    {
+      "id": "probe_grammar_has_no_source_authority",
+      "description": "A finite probe list is called exhaustive without an authority root for its constructor classes.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "authority_root", "value": null}
+      ],
+      "expected_code": "probe_grammar_lacks_source_authority"
+    },
+    {
+      "id": "probe_grammar_omits_constructor_class",
+      "description": "The build-pipeline probe is executed but absent from the declared constructor coverage map.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "authorized_probes", "value": {"administrator_credential": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential"]}}
+      ],
+      "expected_code": "probe_grammar_constructor_coverage_gap"
+    },
+    {
+      "id": "grammar_refinement_keeps_stale_negative_certificate",
+      "description": "A newly admitted constructor class is tested while the predecessor's negative authority is silently retained.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "predecessor_negative_certificate_expired", "value": false}
+      ],
+      "expected_code": "probe_grammar_refinement_retains_stale_negative_authority"
+    },
+    {
+      "id": "grammar_refinement_drops_learned_fault",
+      "description": "Refining the probe language forgets the previously observed shared-build fault edge.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "discovered_faults_preserved_under_refinement", "value": []}
+      ],
+      "expected_code": "probe_grammar_refinement_drops_positive_discovery"
+    },
+    {
+      "id": "relative_probe_coverage_claimed_universal",
+      "description": "Exhaustion of two constructor classes is laundered into completeness over all possible common causes.",
+      "mutations": [
+        {"collection": "probe_grammar_authority_audits", "id": "common_cause_probe_grammar_v2", "field": "claims_constructor_universality", "value": true}
+      ],
+      "expected_code": "probe_grammar_launders_relative_coverage"
+    },
+    {
+      "id": "probe_root_self_certifies_totality",
+      "description": "The deployment manifest's signer is treated as proof that the manifest contains every possible constructor.",
+      "mutations": [
+        {"collection": "probe_grammar_boundary_audits", "id": "deployment_manifest_boundary_v2", "field": "totality_authority", "value": true}
+      ],
+      "expected_code": "probe_grammar_root_self_certifies_totality"
+    },
+    {
+      "id": "manifest_boundary_erases_unknown_frontier",
+      "description": "A finite manifest declares the constructor complement empty without a source-derived closure theorem.",
+      "mutations": [
+        {"collection": "probe_grammar_boundary_audits", "id": "deployment_manifest_boundary_v2", "field": "frontier_emptiness_claimed", "value": true}
+      ],
+      "expected_code": "probe_grammar_erases_open_frontier"
+    },
+    {
+      "id": "manifest_negative_claim_exceeds_scope",
+      "description": "A negative result over manifest constructors is promoted to all physical constructors.",
+      "mutations": [
+        {"collection": "probe_grammar_boundary_audits", "id": "deployment_manifest_boundary_v2", "field": "negative_claim_scope", "value": "all physical constructors"}
+      ],
+      "expected_code": "probe_grammar_negative_scope_exceeds_manifest"
+    },
+    {
+      "id": "open_frontier_has_no_challenge_port",
+      "description": "Unknown constructor classes are acknowledged but no typed operation can refine the grammar when evidence arrives.",
+      "mutations": [
+        {"collection": "probe_grammar_boundary_audits", "id": "deployment_manifest_boundary_v2", "field": "challenge_port_live", "value": false}
+      ],
+      "expected_code": "probe_grammar_boundary_has_no_refinement_port"
+    },
+    {
+      "id": "stale_manifest_epoch_capability_executes",
+      "description": "A capability derived at manifest epoch 12 executes against epoch 13 without revalidation.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "execution_epoch", "value": 13}
+      ],
+      "expected_code": "stale_probe_grammar_capability_epoch"
+    },
+    {
+      "id": "manifest_epoch_check_is_not_atomic",
+      "description": "The manifest epoch is checked before execution with a race window for deployment drift.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "atomic_manifest_epoch_check", "value": false}
+      ],
+      "expected_code": "non_atomic_manifest_epoch_check"
+    },
+    {
+      "id": "manifest_drift_keeps_old_negative_authority",
+      "description": "A new firmware constructor appears but the old negative certificate remains live.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "drift_scenario", "value": {"new_manifest_epoch": 13, "new_constructor_class": "firmware_substrate", "old_negative_certificate_live": true, "old_capability_execution_permitted": false, "grammar_replay_required": true, "positive_discoveries_retained": [["r1", "r2"]]}}
+      ],
+      "expected_code": "manifest_drift_preserves_stale_authority"
+    },
+    {
+      "id": "manifest_drift_drops_old_positive_fault",
+      "description": "A deployment update forgets the already witnessed shared-build common cause.",
+      "mutations": [
+        {"collection": "probe_grammar_epoch_audits", "id": "manifest_v2_epoch_binding", "field": "drift_scenario", "value": {"new_manifest_epoch": 13, "new_constructor_class": "firmware_substrate", "old_negative_certificate_live": false, "old_capability_execution_permitted": false, "grammar_replay_required": true, "positive_discoveries_retained": []}}
+      ],
+      "expected_code": "manifest_drift_drops_positive_discovery"
+    },
+    {
+      "id": "local_manifest_checks_claim_global_consistency",
+      "description": "Two sites atomically validate different digests at the same epoch and nevertheless claim one global manifest.",
+      "mutations": [
+        {"collection": "distributed_manifest_epoch_audits", "id": "two_site_manifest_fork_and_repair", "field": "local_checks_imply_global_consistency", "value": true}
+      ],
+      "expected_code": "local_manifest_atomicity_laundered_as_global_consistency"
+    },
+    {
+      "id": "manifest_certificate_binds_epoch_not_digest",
+      "description": "The quorum agrees on an epoch number while remaining free to certify two different manifests in that epoch.",
+      "mutations": [
+        {"collection": "distributed_manifest_epoch_audits", "id": "two_site_manifest_fork_and_repair", "field": "repair", "value": {"linearization_network": "three_replica_majority_linearizer", "certificate_value_fields": ["epoch"], "certificate_epoch": 12, "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "certificate_quorum": ["r1", "r2"], "conflicting_certificate_quorum": ["r2", "r3"], "intersection_witness": ["r2"], "durable_non_equivocation": true, "conflicting_same_epoch_digest_certificate_constructible": false, "source_authorized_configuration_role": true}}
+      ],
+      "expected_code": "manifest_certificate_does_not_bind_digest"
+    },
+    {
+      "id": "manifest_linearizer_has_no_configuration_role",
+      "description": "A consumption quorum is reused for configuration selection without a source grant for that operation.",
+      "mutations": [
+        {"collection": "distributed_manifest_epoch_audits", "id": "two_site_manifest_fork_and_repair", "field": "repair", "value": {"linearization_network": "three_replica_majority_linearizer", "certificate_value_fields": ["epoch", "manifest_sha256"], "certificate_epoch": 12, "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "certificate_quorum": ["r1", "r2"], "conflicting_certificate_quorum": ["r2", "r3"], "intersection_witness": ["r2"], "durable_non_equivocation": true, "conflicting_same_epoch_digest_certificate_constructible": false, "source_authorized_configuration_role": false}}
+      ],
+      "expected_code": "manifest_linearizer_lacks_configuration_authority"
+    },
+    {
+      "id": "manifest_digest_fork_survives_quorum",
+      "description": "The quorum layer is called a repair although it can certify conflicting digests at one epoch.",
+      "mutations": [
+        {"collection": "distributed_manifest_epoch_audits", "id": "two_site_manifest_fork_and_repair", "field": "repair", "value": {"linearization_network": "three_replica_majority_linearizer", "certificate_value_fields": ["epoch", "manifest_sha256"], "certificate_epoch": 12, "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "certificate_quorum": ["r1", "r2"], "conflicting_certificate_quorum": ["r2", "r3"], "intersection_witness": ["r2"], "durable_non_equivocation": false, "conflicting_same_epoch_digest_certificate_constructible": true, "source_authorized_configuration_role": true}}
+      ],
+      "expected_code": "manifest_digest_fork_survives_linearization"
+    },
+    {
+      "id": "new_configuration_self_activates",
+      "description": "The proposed successor quorum grants itself authority before the old configuration authorizes the crossing.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "new_only_may_self_activate", "value": true}
+      ],
+      "expected_code": "reconfiguration_authority_laundering"
+    },
+    {
+      "id": "reconfiguration_certificate_omits_old_digest",
+      "description": "A transition certificate is replayable from a different predecessor because it does not bind the old digest.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "transition_value_fields", "value": ["old_epoch", "new_epoch", "new_digest", "new_members"]}
+      ],
+      "expected_code": "reconfiguration_certificate_underbinds_transition"
+    },
+    {
+      "id": "reconfiguration_bridge_can_equivocate",
+      "description": "The shared transition replica can endorse incompatible successors at the same boundary.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "bridge_durable_non_equivocation", "value": false}
+      ],
+      "expected_code": "reconfiguration_bridge_not_non_equivocating"
+    },
+    {
+      "id": "single_bridge_witness_claimed_byzantine_safe",
+      "description": "The one-replica crash-safe bridge is relabelled Byzantine-safe for f=1.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "fault_kind", "value": "byzantine"},
+        {"collection": "configuration_reconfiguration_audits", "id": "joint_transition_epoch_12_to_13", "field": "bridge_members_may_equivocate", "value": true}
+      ],
+      "expected_code": "incorrect_reconfiguration_fault_threshold"
+    },
+    {
+      "id": "byzantine_bridge_threshold_weakened",
+      "description": "A two-seat bridge is claimed safe against two Byzantine bridge faults.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "fault_bound", "value": 2}
+      ],
+      "expected_code": "incorrect_reconfiguration_fault_threshold"
+    },
+    {
+      "id": "bridge_replicas_share_hidden_authority_root",
+      "description": "Both Byzantine bridge seats share one administrator, but the resulting two-seat fault edge is omitted.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "bridge_authority_roots", "value": {"r2": "admin_B", "r3": "admin_B"}}
+      ],
+      "expected_code": "reconfiguration_common_cause_omitted"
+    },
+    {
+      "id": "correlated_bridge_fault_claimed_safe",
+      "description": "The entire bridge is an admitted common-cause fault set while the transition remains classified safe.",
+      "mutations": [
+        {"collection": "configuration_reconfiguration_audits", "id": "byzantine_joint_transition_epoch_13_to_14", "field": "admissible_bridge_fault_sets", "value": [["r2"], ["r3"], ["r2", "r3"]]}
+      ],
+      "expected_code": "incorrect_reconfiguration_hypergraph_safety"
+    }
+  ]
+}

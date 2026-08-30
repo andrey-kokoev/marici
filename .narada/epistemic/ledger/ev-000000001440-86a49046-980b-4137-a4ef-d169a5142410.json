@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1440,
+  "event_id": "ev-000000001440-86a49046-980b-4137-a4ef-d169a5142410",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "5b2abcc170ba22196c26b10aced54349f2899b1e7eaa7bada42f18ca4b6c8091",
+  "proposal_id": "ep_ed76a624-c416-412d-9a68-572e821f1709",
+  "proposal_digest": "dc5e429f46759f764897562b2342d5cccd9efa524f37cb09a3ddd26087a7e021",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Weil Cauchy Euler-domain map packet",
+      "version": "1",
+      "locator": "research/grothendieck/weil-cauchy-euler-domain-map.md",
+      "entity_id": "source:d0877c6c433d44235447"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1396 — Mellin Half-Line Modes Generate the Xi Cauchy Boundary",
+      "version": "1",
+      "locator": "src/ledger/20260820-1396 Mellin Half-Line Modes Generate the Xi Cauchy Boundary.md",
+      "entity_id": "source:0bd75846d7eeebc6ad30"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Mellin half-line modes generate the Xi Cauchy boundary in the Euler domain",
+      "statement": "For Im(z)>1/2, the one-sided logarithmic mode i exp(izu)1_(u>=0) has transform 1/(gamma-z) and lies in the absolutely convergent Euler–Weil domain. Its extended Weil pairing equals the Xi Pick kernel, giving an exact indefinite isometry from source Mellin boundary modes to the Cauchy kernel span without zero-list input.",
+      "scope": "Exact Euler-domain indefinite comparison; positivity, full upper-half-plane closure, closability, and physical coefficient-Betti realization remain open.",
+      "entity_id": "claim:de6dcfe62ec84d59fca7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "One-sided Mellin Cauchy transform and Weil pairing test",
+      "description": "Fourier-transform the decaying half-line exponential, verify Euler convergence, and compare its Weil Gram form with the divided logarithmic derivative kernel.",
+      "entity_id": "test:74466f319ed6ce9a756f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:de6dcfe62ec84d59fca7",
+      "target_id": "source:d0877c6c433d44235447",
+      "relation_id": "rel:derived_from-43d8e853b3d32928"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:de6dcfe62ec84d59fca7",
+      "target_id": "source:0bd75846d7eeebc6ad30",
+      "relation_id": "rel:derived_from-edfcd1a8b70a4c91"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:74466f319ed6ce9a756f",
+      "target_id": "claim:de6dcfe62ec84d59fca7",
+      "relation_id": "rel:tests-8f821ce060ba7b78"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:74466f319ed6ce9a756f",
+      "target_id": "source:d0877c6c433d44235447",
+      "relation_id": "rel:derived_from-95049040660e96d2"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the global xi boundary domain map and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-3f10df619f71450f99b3d8be",
+  "occurred_at": "2026-08-21T00:36:47.8123017Z",
+  "certifies_truth": false,
+  "event_hash": "1e2c3f04e1086f8572100e0b432a13016321b89040675f71990f9b2eef47c374"
+}

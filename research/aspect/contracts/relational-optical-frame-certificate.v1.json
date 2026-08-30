@@ -1,0 +1,37 @@
+{
+  "schema": "marici.aspect.relational-optical-frame-certificate.v1",
+  "identity": "K_ij = 2 |<psi_i|psi_j>|^2 for pure qubit syndrome rows",
+  "tetrahedral_fidelities": {
+    "diagonal": 1,
+    "off_diagonal": 0.3333333333333333
+  },
+  "selector_fidelities": {
+    "diagonal": 1,
+    "pole_equator": 0.5,
+    "equator_equator": 0.25
+  },
+  "variable_splitter_settings": [
+    {"bloch_xyz_signs": [1, 1, 1], "transmission": "(1+1/sqrt(3))/2", "phase": "pi/4"},
+    {"bloch_xyz_signs": [1, -1, -1], "transmission": "(1-1/sqrt(3))/2", "phase": "-pi/4"},
+    {"bloch_xyz_signs": [-1, 1, -1], "transmission": "(1-1/sqrt(3))/2", "phase": "3pi/4"},
+    {"bloch_xyz_signs": [-1, -1, 1], "transmission": "(1+1/sqrt(3))/2", "phase": "-3pi/4"}
+  ],
+  "selector_requirements": [
+    "common typed target port",
+    "stable rail and mode labels",
+    "setting-dependent loss recorded",
+    "pairwise overlap matrix certified"
+  ],
+  "overlap_instrument_requirements": [
+    "diagonal self-overlap purity records",
+    "independent photon indistinguishability certificate",
+    "predeclared overlap uncertainty"
+  ],
+  "claim_boundary": {
+    "selector_present": false,
+    "variable_splitter_present": false,
+    "overlap_instrument_executed": false,
+    "physical_data_present": false,
+    "interaction_net_promotion": false
+  }
+}

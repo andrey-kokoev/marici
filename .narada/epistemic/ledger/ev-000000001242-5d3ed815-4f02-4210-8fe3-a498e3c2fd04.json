@@ -1,0 +1,94 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1242,
+  "event_id": "ev-000000001242-5d3ed815-4f02-4210-8fe3-a498e3c2fd04",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6bdbc593f6177d6d7d0d5b983234f4807de6ae7ac88862a14c600f8f750cab56",
+  "proposal_id": "ep_6135965c-4b65-4266-89db-419b425287b2",
+  "proposal_digest": "8987bdd9a0cb5efe8dd7cc212b8869cb62872b00d9b97e0cfe92c337613c2dd1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-general-nonabelian-product-exponent-sufficiency",
+      "kind": "claim",
+      "title": "The product-exponent condition is sufficient for arbitrary finite kernel monodromy",
+      "statement": "For any finite M-action on any finite K, gcd(n,exp(K)*exp(M))=1 implies every fiber power map in K semidirect M -> M is bijective and hence both Mackey squares commute.",
+      "scope": "Sufficient direction only for arbitrary nonabelian K; basis-level correspondence."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-quaternion-monodromy-spectrum",
+      "kind": "claim",
+      "title": "Quaternion C3 monodromy has the full product-exponent spectrum",
+      "statement": "For Q8 semidirect C3 -> C3 with cyclic permutation of i,j,k, global fiber compatibility holds iff gcd(n,12)=1.",
+      "scope": "Exact finite control; does not prove the arbitrary-kernel converse."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-quaternion-monodromy-spectrum",
+      "target_id": "claim:grothendieck-general-nonabelian-product-exponent-sufficiency",
+      "relation_id": "rel:derived_from-849f34b1e6a56df5"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-quaternion-monodromy-spectrum",
+      "kind": "test",
+      "title": "Q8 semidirect C3 twisted-fiber spectrum test",
+      "protocol": "Exhaust all three fibers and n=1..24; compare compatibility to gcd(n,12)=1 and record failed fibers.",
+      "falsifier": "Any index disagrees with the units-modulo-12 spectrum."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-quaternion-monodromy-spectrum",
+      "target_id": "claim:grothendieck-quaternion-monodromy-spectrum",
+      "relation_id": "rel:tests-add84a14f92da4b5"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-quaternion-monodromy-spectrum-packet",
+      "kind": "source",
+      "title": "Quaternion-monodromy twisted power spectrum research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/quaternion-monodromy-twisted-power-spectrum.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-quaternion-monodromy-spectrum-packet",
+      "target_id": "claim:grothendieck-general-nonabelian-product-exponent-sufficiency",
+      "relation_id": "rel:promotes_to_evidence-b391e25ea4bc58cb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-quaternion-monodromy-spectrum-packet",
+      "target_id": "claim:grothendieck-quaternion-monodromy-spectrum",
+      "relation_id": "rel:promotes_to_evidence-f681cc793c618072"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-quaternion-monodromy-spectrum",
+      "test_id": "test:grothendieck-quaternion-monodromy-spectrum",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: survivors are exactly units modulo 12; odd multiples of 3 fail only nonidentity fibers; 13824 exact checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-quaternion-monodromy-spectrum-packet",
+          "locator": "research/grothendieck/results/quaternion-monodromy-twisted-power-spectrum.json",
+          "paraphrase": "Exact fiber failure pattern isolates kernel prime two and monodromy prime three."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "power-Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-317c68256a75ddc38abf6eea",
+  "occurred_at": "2026-08-20T21:15:21.423636Z",
+  "certifies_truth": false,
+  "event_hash": "b9a706a78e345aeb0ce96771b74996d860f36aa0c5498631aab0d1fdf81401a8"
+}

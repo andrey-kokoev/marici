@@ -1,0 +1,130 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "conjugate-readout-optical-candidate",
+    "owner": "marici.Aspect",
+    "classification": "candidate_requires_source_derivation",
+    "stratum": "same-carrier conjugate optical readout",
+    "inputs": [
+      "research/aspect/scc-models/conjugate-readout-optical-candidate.json",
+      "research/aspect/optical-conjugate-first-jet-identity.md",
+      "research/aspect/optical-first-jet-naturality-square.md",
+      "research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json",
+      "research/aspect/contracts/conjugate-first-jet-acquisition.v1.json",
+      "research/aspect/contracts/conjugate-first-jet-apparatus-binding.v1.json"
+    ],
+    "checks": [
+      {
+        "id": "conjugate-readout-optical-candidate",
+        "path": "research/aspect/checkers/check_conjugate_readout_optical_candidate.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "calibrated complete three-residual covariance packet"
+    ],
+    "provides": [
+      "same-carrier rank-two readout contract",
+      "transversality-only inference gate",
+      "controlled-successor falsifier",
+      "raw acquisition contract"
+    ],
+    "missing_constructors": [
+      "physical apparatus execution packet"
+    ],
+    "next_falsifier": "execute the preregistered spectral-shear successor test and reject both independent-channel and common-mode-drift nulls",
+    "apparatus_certificate": {
+      "authority_locator": "marici:grothendieck-entry-4003-transfer",
+      "substrate_state_type": "prepared optical spectral carrier",
+      "apparatus_state_type": "phase-stable conjugate homodyne state",
+      "observational_rank_certificate": {
+        "locator": "marici:entry-4003-response-matrix",
+        "rank": 2,
+        "kernel_pair_promoted_to_state_identity": false
+      },
+      "natural_transport_certificate": {
+        "locator": "research/aspect/optical-first-jet-naturality-square.md",
+        "source_authorized": true,
+        "naturality_square_closed": true,
+        "chart_transition_class": "common_gain_on_complete_packet",
+        "derivative_transport_included": true,
+        "independent_channel_gains_are_hostile": true
+      },
+      "bounded_port_accessibility_certificate": {
+        "locator": "candidate:bench-scale-support",
+        "claim": "not_claimed"
+      },
+      "conjugate_readout_certificate": {
+        "locator": "marici:entry-4003-optical-transfer",
+        "carrier_readout": "calibrated spectral quadrature",
+        "generator_weighted_mate": "spectral-shear-weighted quadrature",
+        "joint_response_matrix": "source-derived 2x2 first-jet response",
+        "same_prepared_carrier": true,
+        "source_authorized": true,
+        "joint_rank": 2,
+        "determinant_nonzero_on_admitted_domain": true,
+        "certified_inference": "transversality_only",
+        "locates_zero": false,
+        "controlled_successor_test": {
+          "locator": "candidate:controlled-spectral-shear",
+          "perturbation_generator": "calibrated spectral shear",
+          "predicted_joint_first_jet": "K12=0; K21=0; K22-L*K11-M11=0",
+          "uncertainty_threshold_locator": "research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json",
+          "source_derived_prediction": true,
+          "threshold_preregistered": true,
+          "observer_fitted": false,
+          "null_models": [
+            "independent_detector_channels",
+            "common_mode_drift"
+          ],
+          "outcome": "not_run"
+        }
+      },
+      "one_use_joint_map": {
+        "locator": "candidate:one-use-optical-joint-map",
+        "source_authorized": true
+      },
+      "labelled_composition_or_tensor_law": {
+        "locator": "candidate:labelled-optical-composition"
+      },
+      "reset_or_catalytic_return_map": {
+        "locator": "candidate:phase-reference-reset",
+        "apparatus_reset_independent": true
+      },
+      "repeated_joint_law": {
+        "coupling_semantics": "fresh",
+        "marginal_signature": "same calibrated one-use marginals",
+        "joint_signature": "fresh independent preparations",
+        "two_use_variance": "source-derived pending",
+        "covariance": "source-derived pending",
+        "preparation_label_side_channel": false,
+        "controlled_intervention_admissible": true,
+        "triple_composition_closed": true,
+        "mixed_coherence_closed": true
+      },
+      "degradation_and_uncertainty_bounds": {
+        "locator": "research/aspect/contracts/optical-conjugate-uncertainty-threshold.v1.json"
+      },
+      "quotient_descent_certificate": {
+        "locator": "candidate:optical-gauge-descent",
+        "valid": true
+      },
+      "feature_calibration": {
+        "full_authorized_packet": true,
+        "observer_fitted": false,
+        "covariance_observer_fitted": false
+      },
+      "admitted_domain": "phase-stable calibrated bench preparation",
+      "support_assumptions": [
+        "common phase reference is independently calibrated",
+        "controlled spectral shear is available before readout",
+        "no preparation-label side channel"
+      ],
+      "physical_instrument": "candidate:dual-quadrature spectral interferometer",
+      "candidate_synthesis_status": "candidate_requires_source_derivation",
+      "source_derivation_status": "candidate_requires_source_derivation"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema":"marici.aspect.comparison-loop-hardware-binding.v1",
+  "error_budget":{
+    "rotation_systematic":0.01,
+    "terminal_phase":0.003,
+    "differential_loss":0.003,
+    "statistical_quadrature":0.02,
+    "total_fringe":0.036
+  },
+  "derivation":{"total_rotations":108,"per_rotation_angle_bound":"rotation_systematic/total_rotations","product_bound":"sum of component angle errors","two_route_fringe_bound":"route_A_operator_error + route_B_operator_error"},
+  "classification":{"minimum_observed_fringe_spread":0.20,"minimum_required_after_two_sided_error":0.072},
+  "calibration_fields":["hardware_id","mesh_id","rotation_index","control_channel","mode_a","mode_b","target_angle","measured_angle","angle_standard_error","insertion_loss","timestamp","calibration_authority"],
+  "phase_fields":["hardware_id","mode","target_phase","measured_phase","phase_standard_error","calibration_authority"],
+  "binding_status":["template","synthetic_calibration","physical_calibration"],
+  "claim_boundary":{"hardware_identity_bound":false,"physical_calibration_loaded":false,"physical_trials_run":false}
+}
+

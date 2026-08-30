@@ -1,0 +1,27 @@
+{
+  "schema": "marici.aspect.falsifier-compiler.v1",
+  "rung_1": "physical reset and three-wing process",
+  "rung_2": "twenty-six-gate reset and associator tester",
+  "rung_3": "fiber-pair falsifier compiler auditing the rung-two observation map",
+  "current_gate_count": 26,
+  "primitive_mutations": [
+    "target_blindness", "coherent_dephasing", "reset_native_ternary_phase",
+    "higher_history_rank", "order_noncommutativity", "extra_recovery_mode",
+    "context_specific_transport", "schedule_synchronous_resonance"
+  ],
+  "holdout_contract": "falsifier-compiler-holdouts.v1.json",
+  "holdout_sha256": "4324da4056f0539442cf8aeed1436fb0e595d366a6dc56c01427aa882e7f0e89",
+  "metamorphic_transforms": [
+    "eight cyclic mutation relabelings", "mutation-order reversal",
+    "matched gate relabeling", "zero-mutation positive control"
+  ],
+  "required_outputs": [
+    "declared_mutation_dimension", "detected_mutation_dimension",
+    "diagnostically_reconstructed_dimension", "unresolved_kernel_dimension",
+    "primitive_pair_kill_count", "holdout_discovery_rate",
+    "metamorphic_violations", "smallest_surviving_hostile_pair",
+    "proposed_new_interventions", "post_repair_unresolved_kernel_dimension"
+  ],
+  "acceptance": "Independent exact analyzers agree; every declared mutation and all pairwise primitive compositions are killed and diagnostically separated; metamorphic violations are zero; synthesized interventions close the declared unresolved kernel; the open-world boundary remains explicit.",
+  "next_rung": "ontology-falsifier.v1.json"
+}

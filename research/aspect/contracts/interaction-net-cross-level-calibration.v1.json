@@ -1,0 +1,48 @@
+{
+  "schema": "marici.aspect.interaction-net-cross-level-calibration.v1",
+  "status": "candidate_requires_physical_execution",
+  "source": "Entry-4013 preregistered pro-context tower",
+  "levels": [0, 1, 2, 3, 4, 5],
+  "coordinates": ["chart", "occurrence_mask", "k", "u", "v"],
+  "caps_at_level_R": {"k": "R", "u": "R", "v": "2R"},
+  "calibration": {
+    "model": "raw_j = common_gain_R * calibrated_j + offset_R_j",
+    "complete_packet_common_gain": true,
+    "independent_channel_gains": false,
+    "gain_and_offset_source": "independent preregistered standards",
+    "test_packet_excluded_from_fit": true,
+    "transfer": "invert high-level calibration, saturate to lower caps, apply lower-level calibration",
+    "first_jet": "common low/high gain ratio times clipping activity projector on each open stratum",
+    "saturation_boundaries": "tested by declared one-sided stratum; no derivative is asserted across a kink",
+    "direct_and_transferred_routes_independent": true
+  },
+  "acceptance": {
+    "residual": "direct_low_raw - transfer(high_raw)",
+    "statistic": "residual transpose times preregistered covariance inverse times residual",
+    "threshold": 20.515,
+    "degrees_of_freedom": 5,
+    "familywise_alpha": 0.001,
+    "threshold_source": "frozen chi-square gate; no observer refit"
+  },
+  "required_packet": [
+    "independent calibration-standard records",
+    "paired direct-low and high-level raw records",
+    "full paired-route covariance",
+    "apparatus identities and level labels",
+    "preregistered exclusions"
+  ],
+  "hostiles": [
+    "independent gain drift after standards",
+    "independent offset drift after standards",
+    "wrong v clipping law",
+    "diagonal-only covariance",
+    "test-packet calibration refit",
+    "level chosen after target observation",
+    "value transfer retained but derivative transport omitted"
+  ],
+  "authority": {
+    "synthetic_fixture": "checker validation only",
+    "physical_square_closed": false,
+    "apparatus_existence_certified": false
+  }
+}

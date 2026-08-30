@@ -1,0 +1,77 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_0ebe1d0a-fc00-41bd-b372-50046965508d",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Choose attack direction and charge at will",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "grothendieck-five-site-mod2-frobenius-collapse-v1",
+  "expected_ledger_head": "8a0d2f1c375139a61311e940eaf8061fe4512d800061cc5963711c42cbc6be64",
+  "created_at": "2026-08-20T20:23:43.1945935Z",
+  "content_fingerprint": "a8cbfb6d9c793ee9db6f89be2a9f3ffc4d73a1a1eab6c89ca5a66959e0193d84",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-mod2-frobenius-collapse",
+      "kind": "source",
+      "title": "Five-site mod-two Frobenius collapse",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-mod2-frobenius-collapse.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-mod2-frobenius-collapse",
+      "kind": "test",
+      "title": "Exact hostile absolute-Frobenius collapse test",
+      "method": "Check all basis squares, all cross-term cancellations, and all nonempty branch norms in the square-zero presentation of F2[(C2)^5].",
+      "locator": "research/grothendieck/checkers/five_site_mod2_frobenius_collapse.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-mod2-frobenius-collapse",
+      "kind": "claim",
+      "title": "Absolute Frobenius collapses the five-site mod-two deck algebra to its constant line",
+      "body": "In F2[(C2)^5]=F2[epsilon_1,...,epsilon_5]/(epsilon_i^2), x->x^2 equals augmentation followed by constant inclusion. Its image dimension is 1 and kernel dimension 31; every nonempty branch norm is killed. Thus the conditional V(2) algebra gives nilpotent degeneration but no nontrivial Frobenius spectrum, point count, or Euler factor.",
+      "status": "verified_hostile_arithmetic_obstruction"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-mod2-frobenius-collapse-v1",
+      "test_id": "test:grothendieck-five-site-mod2-frobenius-collapse",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 32 basis-square checks, 496 cross-term cancellation checks, and 31 branch-norm Frobenius checks; rank 1, kernel dimension 31",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-mod2-frobenius-collapse",
+          "locator": "research/grothendieck/results/five-site-mod2-frobenius-collapse.json",
+          "paraphrase": "Exact square-zero algebra computation proves total Frobenius collapse of positive augmentation degree."
+        }
+      ]
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-five-site-mod2-frobenius-collapse",
+      "target_id": "source:grothendieck-five-site-mod2-frobenius-collapse",
+      "relation_id": "rel:derived_from-ff6bbddebfc3f2a0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-mod2-frobenius-collapse",
+      "target_id": "claim:grothendieck-five-site-mod2-frobenius-collapse",
+      "relation_id": "rel:tests-3244f37181e5840a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-five-site-mod2-frobenius-collapse",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "relation_id": "rel:depends_on-ce136c39b02b68f2"
+    }
+  ],
+  "digest": "76af212bc8362ed03f7769254e802fd6a47402b5d4edbfb399c9412168a1fa97"
+}

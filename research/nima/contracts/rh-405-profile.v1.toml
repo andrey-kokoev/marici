@@ -1,0 +1,75 @@
+schema = "marici.rh-405-profile.v1"
+base_classifier = "public/experiments/typed-reconciler-cube/coherence-lattice.toml"
+observer_atlas = "public/experiments/typed-reconciler-cube/observer-atlas.toml"
+
+[topology]
+kind = "alexandrov_coordinate_order"
+base = "compact subsets of the two open half-planes"
+physical_time = false
+open_sets = "upward-closed capability sets at fixed scale"
+failure_sets = "downward-closed first-failed-gate strata"
+
+[apex]
+scale = "completion"
+carrier = "compatible"
+action = "faithful"
+observation = "faithful"
+estimate = "uniform"
+
+[stable_section]
+sectors = ["Re(s) > 1/2", "Re(s) < 1/2"]
+domain = "every compact subset"
+restriction_compatible = true
+cutoff_uniform = true
+reciprocal_transport_required = true
+archimedean_channel_typed = true
+seam_channel_typed = true
+
+[source_bridge]
+determinant_or_wave_trace_required = true
+zero_to_state_or_pole_to_spectrum_required = true
+xi_identity_up_to_source_fixed_nonvanishing_factor = true
+zero_location_inspection_forbidden = true
+
+[coherence]
+lattice = "28-cell reconciler lattice"
+required_fillers = true
+profile_does_not_supply_fillers = true
+scalar_equality_is_insufficient = true
+
+[[failure_stratum]]
+id = "carrier_wall"
+completion_profile_count = 54
+condition = "carrier != compatible"
+
+[[failure_stratum]]
+id = "action_wall"
+completion_profile_count = 18
+condition = "carrier == compatible and action != faithful"
+
+[[failure_stratum]]
+id = "observation_wall"
+completion_profile_count = 6
+condition = "carrier == compatible and action == faithful and observation != faithful"
+
+[[failure_stratum]]
+id = "estimate_wall"
+completion_profile_count = 2
+condition = "carrier == compatible and action == faithful and observation == faithful and estimate != uniform"
+
+[[failure_stratum]]
+id = "apex"
+completion_profile_count = 1
+condition = "all capability axes top"
+
+[current_theta_tate_profile]
+scale = "pro_system"
+carrier = "compatible"
+action = "typed"
+observation = "absent"
+estimate = "absent"
+first_live_gate = "noncentral linking action"
+
+[claim]
+forward = "source bridge + required 28-cell fillers + stable apex section implies RH"
+reverse = "not asserted"

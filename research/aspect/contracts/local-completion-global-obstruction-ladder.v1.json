@@ -1,0 +1,26 @@
+{
+  "schema": "marici.aspect.local-completion-global-obstruction-ladder.v1",
+  "settings_degrees": {"A": [0, 45], "B": [22.5, -22.5]},
+  "outcomes": [-1, 0, 1],
+  "trials_per_setting_pair": 100000,
+  "correlation_tolerance": 0.02,
+  "chsh_local_ceiling": 2.0,
+  "rungs": [
+    {"id": 0, "name": "inclusive_outcome", "adds": ["wing", "setting", "outcome", "no_click"]},
+    {"id": 1, "name": "setting_constructor", "adds": ["setting_source_health"]},
+    {"id": 2, "name": "photon_constructor", "adds": ["scattered_photon_energy", "scattered_photon_direction"]},
+    {"id": 3, "name": "electron_constructor", "adds": ["electron_recoil"]},
+    {"id": 4, "name": "target_constructor", "adds": ["target_excitation"]},
+    {"id": 5, "name": "frame_constructor", "adds": ["analyzer_frame", "coincidence_class"]},
+    {"id": 6, "name": "memory_constructor", "adds": ["reset_id"]}
+  ],
+  "falsifiers": [
+    "inclusive_chsh_lower_at_or_below_2_after_rung",
+    "remote_setting_changes_local_marginal",
+    "local_energy_or_momentum_residual_exceeds_threshold",
+    "completion_changes_event_selection",
+    "setting_predictability_or_cross_wing_memory",
+    "frame_transport_changes_chsh_sign_convention"
+  ],
+  "claim_boundary": {"physical_counts_acquired": false, "spacelike_choices_certified": false, "physical_violation_observed": false}
+}

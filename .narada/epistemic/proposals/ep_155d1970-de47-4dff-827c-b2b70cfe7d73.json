@@ -1,0 +1,205 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_155d1970-de47-4dff-827c-b2b70cfe7d73",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "operator_instruction": "Advance Caroline and Strominger frontiers while they are unavailable",
+    "ownership": "New Nima audit and checker; collaborator artifacts preserved"
+  },
+  "idempotency_key": "nima-advance-figueiredo-strominger-20260821-v1",
+  "expected_ledger_head": "9082ed0359d473914b44e4c5eed3e946f603e4842c07429166589ec138e236a0",
+  "created_at": "2026-08-21T01:02:33.3408867Z",
+  "content_fingerprint": "1ff4379b07371022a1220da0c310895ec3fdcfb4176f76524b8be4cc8bb64608",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "nima",
+      "kind": "marici:agent",
+      "title": "marici.Nima",
+      "name": "marici.Nima",
+      "entity_id": "mariciagent:7937b659358fbeaf42c4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "fig",
+      "kind": "marici:agent",
+      "title": "marici.Figueiredo",
+      "name": "marici.Figueiredo",
+      "entity_id": "mariciagent:f91e56c0c2ff7ae06291"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "strom",
+      "kind": "marici:agent",
+      "title": "marici.Strominger",
+      "name": "marici.Strominger",
+      "entity_id": "mariciagent:c253bc2ffc915c04e2dd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_src",
+      "kind": "source",
+      "title": "WP9 leading-order loop-phase atlas result",
+      "version": "sha256:059f3854b743913b879d2b3466fcdf75574717a44853ba975bcb0236744e7df2",
+      "locator": "research/flavor/results/wp9_lo_atlas.json",
+      "entity_id": "source:c432b67b650cd4142208"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_test",
+      "kind": "test",
+      "title": "WP9 loop-phase atlas internal certificate",
+      "method": "Audit all 61 fiber charts for quartic winding, first-harmonic purity, hierarchy-flow behavior, cross-chart curve identity, and one symbolic epsilon-series validation.",
+      "entity_id": "test:7266d20222243cf6e73c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_claim",
+      "kind": "claim",
+      "title": "The unmatched 0.818 flavor cores are shared nonlinear chart curves, not new leading-order invariant phases",
+      "statement": "Across the WP8 fiber every chart has the unit winding pattern with two nonzero opposite windings, but the 0.817882 and 0.819271 cores are nonperturbative relative to the hierarchy flow. Their positive-branch phase-parametrized physical curves agree across six and four support orbits respectively to 1.2e-9 and 7.0e-10. Thus the cores are genuine discrete chart branches shared across presentations, not additional invariant phase generators.",
+      "entity_id": "claim:66eb0e4a29dc3acafc18"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "flavor_test",
+      "target_ref": "flavor_claim",
+      "source_id": "test:7266d20222243cf6e73c",
+      "target_id": "claim:66eb0e4a29dc3acafc18",
+      "relation_id": "rel:tests-c3616dbbd94c5f47"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "flavor_claim",
+      "target_ref": "flavor_src",
+      "source_id": "claim:66eb0e4a29dc3acafc18",
+      "target_id": "source:c432b67b650cd4142208",
+      "relation_id": "rel:derived_from-e8f6c185313d788a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "flavor_comm",
+      "kind": "communication",
+      "title": "Nima handoff on Caroline's WP9 atlas",
+      "sender": "marici.Nima",
+      "recipient": "marici.Figueiredo",
+      "intent": "result",
+      "sent_at": "2026-08-21T01:05:00Z",
+      "body": "I audited your completed-but-unadmitted WP9 atlas while you were out. It cleanly closes WP8's unmatched-core question at the present level: the 0.817882/0.819271 cores are nonperturbative chart branches, yet their full phase-parametrized physical curves agree across multiple support orbits to ~1e-9. Every chart still has the same unit winding architecture and first-harmonic determinant support. I am preserving your artifact and authorship; the important typed failure is T6 (not every hierarchy flow converges), so we should not call these new LO invariant phases. Suggested next WP10: classify the discrete branch-cover/monodromy of the chart-to-physics map, rather than fit more angle formulas.",
+      "entity_id": "communication:672ed3fa38c58e177293"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "flavor_comm",
+      "target_ref": "nima",
+      "source_id": "communication:672ed3fa38c58e177293",
+      "target_id": "mariciagent:7937b659358fbeaf42c4",
+      "relation_id": "rel:sent_by-6c650d92e29d307e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "flavor_comm",
+      "target_ref": "fig",
+      "source_id": "communication:672ed3fa38c58e177293",
+      "target_id": "mariciagent:f91e56c0c2ff7ae06291",
+      "relation_id": "rel:addressed_to-a2106f50c2bccabc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "flavor_comm",
+      "target_ref": "flavor_claim",
+      "source_id": "communication:672ed3fa38c58e177293",
+      "target_id": "claim:66eb0e4a29dc3acafc18",
+      "relation_id": "rel:reports-fd3743a3522190a7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "tail_src",
+      "kind": "source",
+      "title": "Exact tail-jet invariant checker and result",
+      "version": "v1",
+      "locator": "research/nima/results/strominger-tail-jet-invariants.json",
+      "entity_id": "source:7dc2f90e1bf7bc978436"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "tail_test",
+      "kind": "test",
+      "title": "Joint scale and retarded-time tail-jet invariant-ring census",
+      "method": "Verify finite and infinitesimal invariance, then compute joint homogeneous kernels through total degree 8 and compare with Q[A,J].",
+      "entity_id": "test:1251ff055582d9747ea1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "tail_claim",
+      "kind": "claim",
+      "title": "The radiative logarithmic tail torsors retain a canonical mixed polynomial readout",
+      "statement": "For Strominger's minimal tail jet (A,B,E,D), the joint scale and time-origin actions leave A and J=A D-B E+(A E)/2 invariant. Through total polynomial degree 8 the entire joint invariant space equals Q[A,J] degree by degree. Thus loss of a canonical scalar finite part does not erase all readout data.",
+      "entity_id": "claim:9fb5176ba93e03ac5e82"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "tail_test",
+      "target_ref": "tail_claim",
+      "source_id": "test:1251ff055582d9747ea1",
+      "target_id": "claim:9fb5176ba93e03ac5e82",
+      "relation_id": "rel:tests-6decdf00b8359956"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "tail_claim",
+      "target_ref": "tail_src",
+      "source_id": "claim:9fb5176ba93e03ac5e82",
+      "target_id": "source:7dc2f90e1bf7bc978436",
+      "relation_id": "rel:derived_from-ab669942bff88f4f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "tail_comm",
+      "kind": "communication",
+      "title": "Nima continuation of Strominger's tail-torsor frontier",
+      "sender": "marici.Nima",
+      "recipient": "marici.Strominger",
+      "intent": "result",
+      "sent_at": "2026-08-21T01:05:00Z",
+      "body": "I advanced your filtered-affine tail result while you were out. The two commuting ambiguities do retain canonical polynomial data: A and J=A D-B E+(A E)/2 are exactly invariant under both finite actions, and an exact homogeneous kernel census through degree 8 finds precisely Q[A,J]. This does not choose a finite-part scale or time origin; it instead identifies the quotient readout that survives both. Checker/result live under research/nima. Next sharp test: determine whether the physical ballistic-memory/charge comparison factors through J, or whether J is only asymptotic tail data.",
+      "entity_id": "communication:eb37a2339e7206ec43ab"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "tail_comm",
+      "target_ref": "nima",
+      "source_id": "communication:eb37a2339e7206ec43ab",
+      "target_id": "mariciagent:7937b659358fbeaf42c4",
+      "relation_id": "rel:sent_by-8803ef8607889d4c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "tail_comm",
+      "target_ref": "strom",
+      "source_id": "communication:eb37a2339e7206ec43ab",
+      "target_id": "mariciagent:c253bc2ffc915c04e2dd",
+      "relation_id": "rel:addressed_to-400fc78b16b49025"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "tail_comm",
+      "target_ref": "tail_claim",
+      "source_id": "communication:eb37a2339e7206ec43ab",
+      "target_id": "claim:9fb5176ba93e03ac5e82",
+      "relation_id": "rel:reports-a3e58eb666b4e7db"
+    }
+  ],
+  "digest": "0d448ae2de4d1fbacafc851a22c516bcafe9714882868bcd2e2af70a53ff2c32"
+}

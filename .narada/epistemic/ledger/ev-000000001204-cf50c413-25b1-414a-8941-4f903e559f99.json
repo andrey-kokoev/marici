@@ -1,0 +1,79 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1204,
+  "event_id": "ev-000000001204-cf50c413-25b1-414a-8941-4f903e559f99",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "976b248de7a50f34275deecabd3a6666baf11053f2ec03b9f9d055f1b10e5a6d",
+  "proposal_id": "ep_09d86781-2a31-4e64-8681-ce0236101cb7",
+  "proposal_digest": "2fd625525e0b7f8c9e6f804e6a337a69c1f3033dca52d58c25a2185096586f37",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-semidirect-linear-norm-adams-gate",
+      "kind": "claim",
+      "title": "Semidirect Mackey compatibility is governed by geometric-sum linear norms, not parity",
+      "statement": "For K semidirect <A> with elementary-abelian K, the n-th power map on quotient fiber h has linear part S_{h,n}=sum_{i=0}^{n-1} A^{ih}; Mackey compatibility on that fiber holds exactly when S_{h,n} is invertible.",
+      "scope": "Finite split extensions and algebraic coefficient-function/group-basis correspondences; no physical chain transfer."
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-a4-c3-odd-index-hostile",
+      "kind": "test",
+      "title": "Odd-index hostile A4 to C3 twisted-norm test",
+      "protocol": "Enumerate every fiber for indices 1 through 9 in A4=(C2)^2 semidirect C3 and direct-product control, comparing fiber bijectivity with linear-norm rank.",
+      "falsifier": "A4->C3 passes on a nonidentity fiber at n=3, the direct product fails, or enumeration disagrees with norm rank."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-a4-c3-odd-index-hostile",
+      "target_id": "claim:grothendieck-semidirect-linear-norm-adams-gate",
+      "relation_id": "rel:tests-f1399f0f42e39eba"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-semidirect-linear-norm-adams-gate",
+      "target_id": "claim:grothendieck-nonabelian-twisted-norm-mackey-gate",
+      "relation_id": "rel:derived_from-a2d0176c67cc6648"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-semidirect-linear-norm-packet",
+      "kind": "source",
+      "title": "Semidirect linear-norm Adams gate research packet",
+      "version": "v1",
+      "locator": "research/grothendieck/semidirect-linear-norm-adams-gate.md"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_id": "source:grothendieck-semidirect-linear-norm-packet",
+      "target_id": "claim:grothendieck-semidirect-linear-norm-adams-gate",
+      "relation_id": "rel:promotes_to_evidence-ffff59850af509fa"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-a4-c3-odd-index-hostile",
+      "test_id": "test:grothendieck-a4-c3-odd-index-hostile",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: A4->C3 has rank-zero norm and fails at n=3; direct-product control has rank two and passes; 2592 exact checks over 54 fiber/index cases",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-semidirect-linear-norm-packet",
+          "locator": "research/grothendieck/results/semidirect-linear-norm-adams-gate.json",
+          "paraphrase": "Exact exhaustive result agrees with the geometric-sum rank criterion."
+        }
+      ]
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "operator_directive": "Continue independent research and add it to the ledger",
+    "research_lane": "nonabelian Mackey correspondence"
+  },
+  "idempotency_key": "auto-admission-d80cdd4cd019a3db24a59b3b",
+  "occurred_at": "2026-08-20T20:49:55.9612688Z",
+  "certifies_truth": false,
+  "event_hash": "6a104e3728624c3d17434fbadb3d4d33f42eac26d72c50ddbd4755a805cd20ea"
+}

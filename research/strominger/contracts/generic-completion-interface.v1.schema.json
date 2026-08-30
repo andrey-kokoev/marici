@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marici.generic-completion-interface.v1",
+  "title": "Sector-neutral topology-bearing completion and observation interface",
+  "type": "object",
+  "required": [
+    "completion_spaces",
+    "completion_operators",
+    "completion_interfaces",
+    "kernel_comparisons"
+  ],
+  "properties": {
+    "completion_spaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "space", "category"]
+      }
+    },
+    "completion_operators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "domain", "operator_domain", "codomain", "kind"]
+      }
+    },
+    "completion_interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "constructor_kind",
+          "source_space",
+          "completed_space",
+          "source_target_space",
+          "completed_target_space",
+          "target_embedding",
+          "topology",
+          "dense_embedding",
+          "completion_map",
+          "source_operator",
+          "extended_operator",
+          "extension_well_defined",
+          "operator_extension_square"
+        ],
+        "properties": {
+          "constructor_kind": {"const": "topology_bearing_completion"},
+          "extension_well_defined": {
+            "type": "object",
+            "required": ["mechanism", "unique", "proof_evidence"]
+          },
+          "operator_extension_square": {
+            "type": "object",
+            "required": ["commutes", "evidence"]
+          }
+        }
+      }
+    },
+    "kernel_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "completion",
+          "source_kernel_dimension",
+          "completed_kernel_dimension",
+          "comparison_square",
+          "class_groups",
+          "completion_defect_dimension"
+        ],
+        "properties": {
+          "class_groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "classification", "dimension"],
+              "properties": {
+                "classification": {
+                  "enum": [
+                    "descends",
+                    "completion_only",
+                    "derived_completion_obstruction"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "finite_linear_observation_fibers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kernel_comparison",
+          "kernel_dimension",
+          "ports",
+          "observation_matrix",
+          "declared_rank",
+          "faithful",
+          "deletion_certificate"
+        ]
+      }
+    },
+    "spectral_compressions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "operator",
+          "finite_rank",
+          "strongly_converges_to_identity",
+          "compact_resolvent_evidence",
+          "rh_bearing_kernel_claim"
+        ]
+      }
+    }
+  }
+}

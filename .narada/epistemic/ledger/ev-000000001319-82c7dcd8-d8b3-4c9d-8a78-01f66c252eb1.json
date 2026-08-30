@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1319,
+  "event_id": "ev-000000001319-82c7dcd8-d8b3-4c9d-8a78-01f66c252eb1",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "179bdb014d6028cf37ed9303c546529d9372c966ac31746fb2ccecc298eed340",
+  "proposal_id": "ep_bee5ed0a-43f7-41fc-b6af-491bb2566752",
+  "proposal_digest": "9618a38e76140ce7f657c8b16290bba749d7f8b112b210869ddfd51e3b3690a5",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Split sections form a derivation torsor with no canonical point",
+      "body": "For abelian K,H, sections of K×H->H are indexed by Hom(H,K), and base-preserving shears act by translation. The action is simply transitive, so if Hom(H,K) is nontrivial no section is fixed by all shears. This lift ambiguity adds no new resonance prime but blocks canonicality.",
+      "entity_id": "claim:59742530361137a27b18"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Prime cyclic section-torsor controls",
+      "body": "For Cp×Cp->Cp at p=2,3,5, exact enumeration gives p homomorphic sections, p shears, full section orbits, and zero common fixed sections. All assertions pass.",
+      "entity_id": "test:c9eadf0e1dab35666238"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Section-torsor shear-obstruction proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/section-torsor-shear-obstruction.md",
+      "entity_id": "source:60f2a5e86a664e2e34c5"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact prime cyclic section-torsor checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/section_torsor_shear_obstruction.py",
+      "entity_id": "source:fb24c407336a92a8c83a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1309 — Split Sections Form a Derivation Torsor with No Canonical Point",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1309 Split Sections Form a Derivation Torsor with No Canonical Point.md",
+      "entity_id": "source:98dc6487084264ba2159"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c9eadf0e1dab35666238",
+      "target_id": "claim:59742530361137a27b18",
+      "relation_id": "rel:tests-94511ee3955bbc91"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:59742530361137a27b18",
+      "target_id": "source:60f2a5e86a664e2e34c5",
+      "relation_id": "rel:derived_from-46a59796dcdc149e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:fb24c407336a92a8c83a",
+      "target_id": "test:c9eadf0e1dab35666238",
+      "relation_id": "rel:promotes_to_evidence-15725afd0bb9d748"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:98dc6487084264ba2159",
+      "target_id": "claim:59742530361137a27b18",
+      "relation_id": "rel:promotes_to_evidence-09f9ff2feb3409e4"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-ce0acbbe397f2ed8bea4c27c",
+  "occurred_at": "2026-08-20T22:23:01.8125176Z",
+  "certifies_truth": false,
+  "event_hash": "e9c3bbb227c159da5397c1eb274cdf28eb5f537f3a117ab9fcfc961a87193d4e"
+}

@@ -1,0 +1,25 @@
+schema = "marici.theta.source_pushout_closed_range.v1"
+status = "active"
+
+[finite_carrier]
+construction = "(B_an direct_sum B_arith) / image(b_an,-b_arith)"
+universal_property = "source_pushout"
+
+[completion]
+required_cell = "completion_of_pushout -> pushout_of_completions"
+required_property = "isomorphism_in_typed_topological_category"
+analytic_gate = "closed_range_of_completed_source_relation"
+
+[[falsifier]]
+id = "diagonal_nonclosed_range"
+operator = "diag(1,1/2,1/3,...)"
+finite_status = "every compression invertible"
+completed_status = "injective dense nonclosed range"
+
+[[falsifier]]
+id = "arbitrary_ambient_space"
+condition = "common carrier chosen without source pushout universal property"
+
+[[falsifier]]
+id = "scalar_projection"
+condition = "comparison tested only after determinant readout"

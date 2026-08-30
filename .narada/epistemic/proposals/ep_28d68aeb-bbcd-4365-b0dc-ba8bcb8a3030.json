@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_28d68aeb-bbcd-4365-b0dc-ba8bcb8a3030",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-positive Weyl boundary and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1383-theta-pick-gate-v1",
+  "expected_ledger_head": "cb24d7a74f74b8fddb9666814fd0716fdcb7799c62a008c92c33079d1ac96c30",
+  "created_at": "2026-08-21T00:17:32.8253022Z",
+  "content_fingerprint": "f90925cfbae32045ce299cd4e23a4e27a90ffdd79df43ab0938d0ea9eac98d48",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Theta Pick-kernel positivity gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/theta-pick-kernel-positivity-gate.md",
+      "entity_id": "source:810f9a2a940b12c7bd78"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1383 — The First Theta Weyl Obstruction Couples Two Heights",
+      "version": "1",
+      "locator": "src/ledger/20260820-1383 The First Theta Weyl Obstruction Couples Two Heights.md",
+      "entity_id": "source:f561101a00eb618bb90f"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The first nonautomatic theta Weyl obstruction is a two-height Pick determinant",
+      "statement": "Positive theta density makes every one-point Pick test for M_Xi=-Xi'/Xi on the positive imaginary axis automatic. At two heights y1,y2 the first coupled condition is a1 a2/(y1 y2)-(a1+a2)^2/(y1+y2)^2 >=0, where a=B'/B and B is the theta cosh transform. It is source-only and any negative pair falsifies the Nevanlinna boundary; all finite Pick matrices are equivalent to the full RH positivity gate.",
+      "scope": "Exact positivity hierarchy and finite falsifier; no global two-height or full Pick positivity proof.",
+      "entity_id": "claim:bfc6e78844aa96f7b258"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Two-height theta Pick determinant hostile test",
+      "description": "Form the 2x2 Pick matrix at distinct imaginary heights from positive theta moments and evaluate its determinant without zero data.",
+      "entity_id": "test:9b782d5e511d631c1865"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:bfc6e78844aa96f7b258",
+      "target_id": "source:810f9a2a940b12c7bd78",
+      "relation_id": "rel:derived_from-804f96411a59a1fd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:bfc6e78844aa96f7b258",
+      "target_id": "source:f561101a00eb618bb90f",
+      "relation_id": "rel:derived_from-2e9ac2912619bfea"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:9b782d5e511d631c1865",
+      "target_id": "claim:bfc6e78844aa96f7b258",
+      "relation_id": "rel:tests-c2d6d1e491d871dc"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:9b782d5e511d631c1865",
+      "target_id": "source:810f9a2a940b12c7bd78",
+      "relation_id": "rel:derived_from-99835c8bc3e6d415"
+    }
+  ],
+  "digest": "ddafc581569b7b9ebee3b95ba5ec36c2363eb33a1f1068957ed8bce4005c1a67"
+}

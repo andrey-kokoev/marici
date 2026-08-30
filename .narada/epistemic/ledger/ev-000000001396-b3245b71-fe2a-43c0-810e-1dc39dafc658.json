@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1396,
+  "event_id": "ev-000000001396-b3245b71-fe2a-43c0-810e-1dc39dafc658",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "1b9cf189fed93d7cf90e2452ad4187eb77a859f29b7e352d50be7c955509306a",
+  "proposal_id": "ep_d1102fce-66b0-4ac8-821a-cd271b8d5dff",
+  "proposal_digest": "1d89042113f5694144cdaf91ed9dc1c6e92bdea08f064bdec99c24cf1600c577",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Dual-cutoff dilation has the correct leading zeta-zero density but is not Carrier-derived",
+      "statement": "For H=xp with x>=ell_x, p>=ell_p, xp<=E, the exact phase area is E log(E/(ell_x ell_p))-E+ell_x ell_p. With ell_x ell_p=2*pi*hbar, Weyl counting matches the E log E and -E terms of Riemann-von Mangoldt, but gives constant 1 rather than 7/8 and no fluctuations. Marici's paired coefficient-Betti system does not yet derive a Heisenberg pair, positive dual coordinates, Planck cell, dual cutoffs, or their self-adjoint boundary operator.",
+      "scope": "Necessary-shape semiclassical theorem and Carrier typing audit; no quantized xi determinant or spectral realization.",
+      "entity_id": "claim:285040ff5174dae76480"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Dual-cutoff phase-volume hostile test",
+      "procedure": "Integrate the positive-quadrant region x>=ell_x, p>=ell_p, xp<=E, divide by 2*pi*hbar, impose ell_x ell_p=2*pi*hbar, and compare every smooth Riemann-von Mangoldt term.",
+      "expected_result": "The E log E and -E coefficients agree, the constant differs by 1/8, and no fluctuating term appears. Any leading-coefficient mismatch falsifies the candidate shape.",
+      "entity_id": "test:71c71217aa731d24a652"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "source",
+      "kind": "source",
+      "title": "Dual-cutoff xp Weyl-gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/dual-cutoff-xp-weyl-gate.md",
+      "entity_id": "source:3151ebf2d0649219162d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1368 — Dual-Cutoff Dilation Has the Right Leading Zero Density",
+      "version": "1",
+      "locator": "src/ledger/20260820-1368 Dual-Cutoff Dilation Has the Right Leading Zero Density.md",
+      "entity_id": "source:16ad92c0fa1496dc2a04"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:71c71217aa731d24a652",
+      "target_id": "claim:285040ff5174dae76480",
+      "relation_id": "rel:tests-41aae4d191c6f360"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "source",
+      "source_id": "claim:285040ff5174dae76480",
+      "target_id": "source:3151ebf2d0649219162d",
+      "relation_id": "rel:derived_from-03f109037a019c45"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:16ad92c0fa1496dc2a04",
+      "target_id": "claim:285040ff5174dae76480",
+      "relation_id": "rel:reports-dc18917e0c171344"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "After falsifying the direct half-line boundary, derive the smallest noncircular dilation phase space with the required zeta-zero spectral density."
+  },
+  "idempotency_key": "auto-admission-faa040bd6fe5342fa65880e5",
+  "occurred_at": "2026-08-20T23:53:21.2449877Z",
+  "certifies_truth": false,
+  "event_hash": "f3cd91e63f9851f9619bde7b121267c90c454fba285153ed101877ae9f4ea211"
+}

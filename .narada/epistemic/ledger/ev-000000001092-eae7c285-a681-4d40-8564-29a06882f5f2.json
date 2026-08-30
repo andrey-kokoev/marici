@@ -1,0 +1,83 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1092,
+  "event_id": "ev-000000001092-eae7c285-a681-4d40-8564-29a06882f5f2",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "703e8cccd46be4fae9566f1603357d1fc49821249040135617d621aba202ecda",
+  "proposal_id": "ep_5a11c422-8ad8-422c-bc28-75c137f56e2c",
+  "proposal_digest": "ca767827f719ca916f5d8d64e6d54e85c5011734ce722098be5ac41619ab5bd9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "repair",
+      "kind": "criticism",
+      "title": "The first D3 memory packet used an abstract reflection instead of the declared sampled-direction swap",
+      "summary": "The original reflection matrix obeyed D3 relations and preserved the commutator-detection conclusion, but it was not the restriction of the stated three-direction permutation. The source-typed matrix is [[1,0],[1,-1]]; both checkers and results were regenerated.",
+      "entity_id": "criticism:6f3d49830059a0f7c20c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Radiative-memory D3 invariant scalarization",
+      "version": "2026-08-20-corrected",
+      "locator": "research/nima/radiative-memory-d3-invariant-scalarization.md",
+      "entity_id": "source:2b3bb4555ba53388793d"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The invariant scalar algebra of the D3 radiative-memory plane is polynomial in degrees two and three",
+      "summary": "For the standard memory-difference plane, Q[a,b]^D3=Q[a^2-ab+b^2, ab(a-b)]. Scalarization retains nonabelian orbit information and is not group abelianization.",
+      "status": "exact-representation-theorem",
+      "entity_id": "claim:b77befa911fc5bc94b8a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Corrected exact D3 memory action and invariant-orbit audit",
+      "locator": "research/nima/check_radiative_memory_d3_invariants.py",
+      "result_locator": "research/nima/results/radiative-memory-d3-invariants.json",
+      "outcome": "passed: 7500 invariance checks and 169 bounded orbits separated",
+      "entity_id": "test:df204dddfd373baefe9d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "repair",
+      "target_ref": "test",
+      "source_id": "criticism:6f3d49830059a0f7c20c",
+      "target_id": "test:df204dddfd373baefe9d",
+      "relation_id": "rel:criticizes-5bf2c0d9893efa0f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:b77befa911fc5bc94b8a",
+      "target_id": "source:2b3bb4555ba53388793d",
+      "relation_id": "rel:derived_from-d3bb8fd9ae21ea9c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:df204dddfd373baefe9d",
+      "target_id": "claim:b77befa911fc5bc94b8a",
+      "relation_id": "rel:tests-6e0b72d58efe2886"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "defect_repair_and_operator_directed_research",
+    "summary": "Repairing a discovered source-typing defect and recording the verified refinement."
+  },
+  "idempotency_key": "auto-admission-1a9fdc60068abfdc03ac4dd7",
+  "occurred_at": "2026-08-20T19:28:28.4239314Z",
+  "certifies_truth": false,
+  "event_hash": "8a77215f750fa1ef6bf565befb6a5d6280b6f00f54875c79b461675fcd5e10f2"
+}

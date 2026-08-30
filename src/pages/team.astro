@@ -1,0 +1,126 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { teamMembers, teamRegistryAuthority } from '../data/team'
+---
+<SiteLayout
+  title="Research team | Marici"
+  description="Canonical Marici research identities, responsibilities, programme interfaces, and epistemic-graph records."
+>
+  <section class="section-shell" aria-labelledby="team-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Research identities</p>
+        <h1 id="team-title">One programme, distinct responsibilities.</h1>
+      </div>
+      <p>
+        Marici uses qualified research identities so that claims retain an accountable owner while
+        cross-sector work remains part of one shared programme. Roles state responsibility and
+        interface; they do not make one researcher’s results authoritative in another’s domain.
+      </p>
+    </header>
+
+    <aside class="registry-note" aria-label="Registry authority">
+      <p><strong>Registry authority</strong></p>
+      <p>
+        Human policy: <code>{teamRegistryAuthority.humanPolicy}</code>. Durable identities:
+        <code>{teamRegistryAuthority.graphSurface}</code> entities of kind
+        <code>{teamRegistryAuthority.graphKind}</code>. Programme pages refine roles but do not
+        silently replace the canonical identity registry.
+      </p>
+    </aside>
+
+    <ul class="team-grid" aria-label="Marici team members">
+      {teamMembers.map((member) => (
+        <li class="team-card">
+          <header>
+            <div>
+              <p class="team-role">{member.role}</p>
+              <h2>{member.identity}</h2>
+            </div>
+            <a href={`/graph/?entity=${encodeURIComponent(member.graphId)}`}>Graph record</a>
+          </header>
+          <p>{member.contribution}</p>
+          <dl>
+            <div>
+              <dt>Team interface</dt>
+              <dd>{member.interface}</dd>
+            </div>
+            <div>
+              <dt>Workspace</dt>
+              <dd><code>{member.workspace}</code></dd>
+            </div>
+            {member.programme && (
+              <div>
+                <dt>Programme locator</dt>
+                <dd><code>{member.programme}</code></dd>
+              </div>
+            )}
+          </dl>
+          {member.personaBoundary && <p class="persona-boundary">{member.personaBoundary}</p>}
+        </li>
+      ))}
+    </ul>
+
+    <article class="role-boundary">
+      <p class="eyebrow">Interpretation boundary</p>
+      <h2>Roles organize inquiry; they do not certify conclusions.</h2>
+      <p>
+        Ledger entries and admitted graph records preserve authorship and argumentative provenance.
+        Mathematical or physical authority still comes from the stated source, exact verification,
+        review boundary, and—where applicable—an independently established Carrier operation.
+      </p>
+    </article>
+  </section>
+</SiteLayout>
+
+<style>
+  .registry-note,
+  .role-boundary {
+    margin-block: 28px;
+    padding: 22px 24px;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: rgb(9 22 28 / 72%);
+  }
+
+  .registry-note p { margin: 0; }
+  .registry-note p + p { margin-top: 8px; color: var(--muted); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .team-card {
+    padding: 25px;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: linear-gradient(150deg, rgb(15 32 39 / 88%), rgb(9 22 28 / 90%));
+  }
+
+  .team-card header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .team-card h2 { margin: 3px 0 0; }
+  .team-card > p { color: var(--muted); }
+  .team-role { margin: 0; color: var(--accent); font: 650 .7rem Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; }
+  .team-card header a { white-space: nowrap; font-size: .84rem; }
+
+  .team-card dl { margin: 22px 0 0; }
+  .team-card dl div + div { margin-top: 14px; }
+  .team-card dt { color: var(--dim); font: 650 .68rem Consolas, monospace; text-transform: uppercase; letter-spacing: .07em; }
+  .team-card dd { margin: 4px 0 0; color: var(--muted); }
+  .persona-boundary { padding-top: 16px; border-top: 1px solid var(--line-soft); font-size: .9rem; }
+  .role-boundary h2 { margin-block: 8px; }
+
+  @media (max-width: 860px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .team-card header { flex-direction: column; gap: 8px; } }
+</style>

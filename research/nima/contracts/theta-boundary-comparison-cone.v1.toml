@@ -1,0 +1,25 @@
+schema = "marici.theta.boundary_comparison_cone.v1"
+status = "active"
+
+[analytic_leg]
+components = ["doubled_tail_differential", "independent_seam", "endpoint_complex", "archimedean_reservoir"]
+
+[arithmetic_leg]
+components = ["positive_cyclic_tower", "negative_cyclic_tower", "primitive_incidence", "square_incidence", "connected_tail"]
+
+[comparison]
+construction = "Cone(B_analytic - B_arithmetic)[-1]"
+common_carrier = "required_source_authorized"
+support = ["seam", "right", "left", "endpoint"]
+
+[[falsifier]]
+id = "direct_sum"
+condition = "analytic and arithmetic determinants multiplied without boundary comparison"
+
+[[falsifier]]
+id = "scalar_only"
+condition = "comparison occurs after scalar projection"
+
+[[falsifier]]
+id = "support_erasure"
+condition = "reciprocal open-sector defects cancel before localization"

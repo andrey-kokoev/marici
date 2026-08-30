@@ -1,0 +1,38 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "finite-seam-jet-nonselection",
+    "owner": "marici.Grothendieck",
+    "classification": "every_finite_static_germ_leaves_dynamic_flow_unselected",
+    "stratum": "finite seam-jet orders m>=0 with positive even Schwartz perturbations",
+    "inputs": [
+      "research/grothendieck/no-finite-seam-jet-selects-the-global-completed-flow.md",
+      "research/grothendieck/results/completed_circle_scc_structure.json"
+    ],
+    "checks": [
+      {
+        "id": "finite-seam-jet-nonselection",
+        "path": "research/grothendieck/checkers/check_finite_seam_jet_nonselection.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "completed-circle-one-defect-flow"
+    ],
+    "consumes": [
+      "static modular seam germ",
+      "positive even completed kernel",
+      "finite jet declaration"
+    ],
+    "provides": [
+      "all-finite-order germ nonselection theorem",
+      "positive even Schwartz hostile family",
+      "dynamic-coherence obstruction"
+    ],
+    "missing_constructors": [
+      "source-derived closure of the entire theta jet tower"
+    ],
+    "next_falsifier": "preserve a proposed all-order theta recurrence while changing the first off-seam variation minor"
+  }
+}

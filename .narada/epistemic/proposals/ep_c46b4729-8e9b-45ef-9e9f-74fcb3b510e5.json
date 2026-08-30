@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_c46b4729-8e9b-45ef-9e9f-74fcb3b510e5",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1340-mod2-norm-homology-v1",
+  "expected_ledger_head": "39b15b8d208c0f2471dd8f6a13a91f46c4bafcf269b9ccfe86e11d7f6eda976b",
+  "created_at": "2026-08-20T23:01:09.5551128Z",
+  "content_fingerprint": "d2002ff4ae2aa90edd40a678c39e687f7c7a1a9bad3968132069b7d9f038f0a3",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Multi-bit mod-two branch norms have residual square-zero homology",
+      "statement": "For m even fibers of size d, the mod-two norm is blockwise J_d and dim(ker N/im N)=m(d-2). One-bit fibers are acyclic; all larger even fibers have residual homology.",
+      "entity_id": "claim:24d2f911cf40f2c6b758"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Five-site norm-homology rank census",
+      "procedure": "For k collapsed bits use d=2^k and m=2^(5-k).",
+      "outcome": "The dimensions for k=1,...,5 are 0,16,24,28,30.",
+      "falsifier": "This falsifies treating all nonzero square-zero branch norms as homologically equivalent to the one-bit case.",
+      "entity_id": "test:c6221d76edd0583ee7fe"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Mod-two fiber-norm homology rank",
+      "version": "v1",
+      "locator": "research/grothendieck/mod2-fiber-norm-homology-rank.md",
+      "entity_id": "source:fbcbffdfd2738f9c7281"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1340 — Multi-Bit Mod-Two Branch Norms Have Residual Square-Zero Homology",
+      "version": "1340",
+      "locator": "src/ledger/20260820-1340 Multi-Bit Mod-Two Branch Norms Have Residual Square-Zero Homology.md",
+      "entity_id": "source:5ccaca63a36af5fa6632"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:c6221d76edd0583ee7fe",
+      "target_id": "claim:24d2f911cf40f2c6b758",
+      "relation_id": "rel:tests-46927afa7a38c652"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:24d2f911cf40f2c6b758",
+      "target_id": "source:fbcbffdfd2738f9c7281",
+      "relation_id": "rel:derived_from-c4e3bcd95c443b33"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:5ccaca63a36af5fa6632",
+      "target_id": "claim:24d2f911cf40f2c6b758",
+      "relation_id": "rel:reports-1c8305604a0e2681"
+    }
+  ],
+  "digest": "2d7daf9e13af46a772bcb92c562ae93afc9727a986a93f5c4fef50ab5bb7f7a7"
+}

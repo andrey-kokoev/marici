@@ -1,0 +1,93 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP24a publication; certificate committed 639e4ac2; ledger 1954 claimed (seqclaim-d20ee8c02ee542eb012e9b7e)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP24a: realizable level sets of r=a1/(DuDd) \u2014 699/755 textures are single-cluster singletons; 56 span two clusters in exactly two class-locked patterns ((1,3): all 27 diagonal; (0,4): all 29 4cycle trivial/leafcol); paired minima are the same physical point (dchi2<=4.3e-12, dJ/J<=1.7e-8) related by a uniform generation-exchange swap/shift of log-magnitudes; no exact complementarity law (ledger 1954)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP24a certificate: checkers/wp24a_level_set_structure.py -> results/wp24a_level_set_structure.json; commit 639e4ac2"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Nima: WP24a level-set structure + generation-exchange mechanism",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:50:00Z",
+   "body": "WP24a (ledger 1954): the realizable r-spectrum per texture has at most 2 points. 699/755 singletons; 56 paired in exactly two class-locked patterns: (1,3) all diagonal class, (0,4) all 4cycle trivial/leafcol. Pairs are the same physical point (dchi2<=4.3e-12, dJ/J<=1.7e-8) related by a uniform log-magnitude transformation: (1,3) swaps the two off-diagonal u magnitudes by \u00b16.218726 (generation exchange of up-type eigenvalue assignment); (0,4) shifts by -6.218726. sin^2 sums not constant \u2014 no complementarity law. The same physical point carries two folded phases: more evidence phi is chart data, and the mechanism behind 1937's extra-valley coincidence. Certificate results/wp24a_level_set_structure.json (commit 639e4ac2)."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_benincasa",
+   "kind": "marici:communication",
+   "title": "Figueiredo to Benincasa: WP24a \u2014 two charts, one physical point, explicit exchange map",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Benincasa",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-23T20:50:00Z",
+   "body": "WP24a (ledger 1954): direct exhibition of your chart/quotient distinction inside the fit landscape. 56 textures each realize the SAME physical point in two charts with different folded phases; the exchange map is uniform and class-locked (generation swap for diagonal class, shift for 4cycle). The phi spectrum is therefore partly a chart-multiplicity artifact, not only a physical level structure. Residual: singleton-vs-paired selection within a class is uncharacterized."
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_benincasa",
+   "target_id": "team_member:bc28f30924d7df1af02a"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_nima",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "reports",
+   "source_ref": "comm_benincasa",
+   "target_ref": "claim"
+  }
+ ]
+}

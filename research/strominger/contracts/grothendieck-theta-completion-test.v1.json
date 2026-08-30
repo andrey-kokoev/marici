@@ -1,0 +1,58 @@
+{
+  "schema": "marici.data-descent-packet.v2+generic-completion-interface.v1",
+  "contexts": [],
+  "local_objects": [],
+  "completion_spaces": [
+    {"id": "theta_core", "space": "C_c^infinity(R) in the Phi-weighted norm", "category": "pre_Hilbert"},
+    {"id": "H_Phi", "space": "L2(R,Z^-1 Phi du)", "category": "Hilbert"}
+  ],
+  "completion_operators": [
+    {"id": "A_Phi_core", "domain": "theta_core", "operator_domain": "theta_core", "codomain": "H_Phi", "kind": "symmetric_source_diffusion_core"},
+    {"id": "A_Phi", "domain": "H_Phi", "operator_domain": "Dom(A_Phi)_Friedrichs", "dense_domain_evidence": "the closed Dirichlet-form domain is dense in H_Phi", "closed": true, "codomain": "H_Phi", "kind": "nonnegative_self_adjoint_Friedrichs_generator"}
+  ],
+  "completion_interfaces": [
+    {
+      "id": "theta_Hilbert_completion",
+      "constructor_kind": "topology_bearing_completion",
+      "source_space": "theta_core",
+      "completed_space": "H_Phi",
+      "source_target_space": "H_Phi",
+      "completed_target_space": "H_Phi",
+      "target_embedding": {"map": "identity_H_Phi", "injective": true, "evidence": "source core operator already takes values in H_Phi"},
+      "topology": {"kind": "Phi_weighted_L2_norm", "separation": "Hausdorff", "duality": "Hilbert_self_dual"},
+      "dense_embedding": {"map": "i_Phi", "injective": true, "dense": true, "evidence": "C_c^infinity is dense in weighted L2 for positive locally finite Phi du"},
+      "completion_map": {"map": "c_Phi", "universal_property_evidence": "Hilbert completion of the weighted pre-Hilbert core"},
+      "source_operator": "A_Phi_core",
+      "extended_operator": "A_Phi",
+      "extension_well_defined": {"mechanism": "closed_form_friedrichs_extension", "unique": true, "proof_evidence": "the nonnegative closable Dirichlet form closes and has a unique Friedrichs generator"},
+      "operator_extension_square": {"commutes": true, "evidence": "the Friedrichs generator agrees with -Phi^-1(Phi f')' on the core domain"},
+      "manufactured_from_completion_only": false
+    }
+  ],
+  "kernel_comparisons": [
+    {
+      "id": "theta_ground_kernel_comparison",
+      "completion": "theta_Hilbert_completion",
+      "source_kernel_dimension": 0,
+      "completed_kernel_dimension": 1,
+      "comparison_square": {"map": "ker_i_Phi", "map_rank": 0, "injective": true, "commutes": true, "evidence": "restriction of the Friedrichs extension square"},
+      "class_groups": [
+        {"id": "constant_Omega", "classification": "completion_only", "dimension": 1, "tor_object": null, "graph_limit_evidence": "cutoff constants converge to Omega=1 in H_Phi while their closed-form energies tend to zero"}
+      ],
+      "completion_defect_dimension": 0
+    }
+  ],
+  "spectral_compressions": [
+    {
+      "id": "E_N",
+      "operator": "A_Phi",
+      "finite_rank": true,
+      "complete_eigenspaces_at_degeneracy": true,
+      "strongly_converges_to_identity": true,
+      "compact_resolvent_evidence": "the unitarily conjugate Schrodinger potential tends to positive infinity",
+      "preserves_ground_mode": true,
+      "rh_bearing_kernel_claim": false,
+      "scope": "source diffusion compression only; no Fredholm comparison or RH-bearing kernel"
+    }
+  ]
+}

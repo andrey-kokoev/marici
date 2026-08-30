@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1300,
+  "event_id": "ev-000000001300-51918572-4609-47b8-9975-1eedb2ae588e",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b9bf32063ce4d442a3acaf39fdfd73954f4f92377b0057ccff94b40e7e88dcf6",
+  "proposal_id": "ep_e029179e-ea75-4ec4-954b-8bd81d1a4fee",
+  "proposal_digest": "bddc720e8ce25cc4b4381f3ce747a77500874bf849dcb62b0c056c0a8520aa49",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Radical resonance preserves normal joins but not normal meets",
+      "body": "For normal K,L, R(K∩L) divides gcd(R(K),R(L)), equivalently U(K)∪U(L) is contained in U(K∩L), but equality can fail. Together with the exact join-lcm law, resonance is a join-semilattice morphism, not a lattice morphism.",
+      "entity_id": "claim:40073d3679da38749048"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C2×C2 strict resonance-meet defect",
+      "body": "Two distinct order-two coordinate kernels each have resonance label 2, while their trivial intersection has label 1. Through index 24 each input spectrum has size 12 and the meet spectrum size 24; all assertions pass.",
+      "entity_id": "test:2791b9e69ca83cfc2f12"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Resonance meet-defect proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/resonance-meet-defect.md",
+      "entity_id": "source:ec5710095c1486b12817"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact C2×C2 resonance meet-defect checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/resonance_meet_defect.py",
+      "entity_id": "source:f9aa131b4328a6dbba6b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1295 — Resonance Preserves Normal Joins but Not Normal Meets",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1295 Resonance Preserves Normal Joins but Not Normal Meets.md",
+      "entity_id": "source:de092402721caab4bb45"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:2791b9e69ca83cfc2f12",
+      "target_id": "claim:40073d3679da38749048",
+      "relation_id": "rel:tests-5f121f27f02ce9d0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:40073d3679da38749048",
+      "target_id": "source:ec5710095c1486b12817",
+      "relation_id": "rel:derived_from-6f7239ff3221a3da"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:f9aa131b4328a6dbba6b",
+      "target_id": "test:2791b9e69ca83cfc2f12",
+      "relation_id": "rel:promotes_to_evidence-9a07ba39ed866a18"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:de092402721caab4bb45",
+      "target_id": "claim:40073d3679da38749048",
+      "relation_id": "rel:promotes_to_evidence-9683a7460db02936"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-1320f68e39042615309efe96",
+  "occurred_at": "2026-08-20T21:58:23.3833171Z",
+  "certifies_truth": false,
+  "event_hash": "be2ec5f728d9533184d508080215312e1153d36067f5d6ee98adfae276daa010"
+}

@@ -1,0 +1,119 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1148,
+  "event_id": "ev-000000001148-00fdb562-cc12-4169-85d5-62cef4e998e5",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "6c1150b033f13729efa529c7bf6004047c8d7cd493147d449317581951714050",
+  "proposal_id": "ep_dacb1513-15ef-43cc-b1d0-2df4e4192a79",
+  "proposal_digest": "f6d544c86b48e80efcc9d65099e7a74d6c72ca69358d620d30d4c6c24bbd97aa",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-mod2-branch-norm-filtration",
+      "kind": "source",
+      "title": "Five-site mod-two branch-norm filtration",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-mod2-branch-norm-filtration.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-mod2-branch-norm-filtration",
+      "kind": "test",
+      "title": "Exact mod-two five-site branch norm filtration test",
+      "method": "Compute all 31 nonempty kernel norms in F2[epsilon_1,...,epsilon_5]/(epsilon_i^2), verifying their augmentation degrees, square-zero relations, annihilators, and binomial codimension census.",
+      "locator": "research/grothendieck/checkers/five_site_mod2_branch_norm_filtration.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "kind": "claim",
+      "title": "Five-site branch codimension equals the mod-two augmentation degree of its deck norm",
+      "body": "For every nonempty branch subset B, the kernel norm is N_B=product_{i in B} epsilon_i in F2[(C2)^5]. It is nonzero in augmentation degree |B|, square-zero, and annihilated by each kernel augmentation generator. The 31 strata have degree profile 5,10,10,5,1. This is conditional on the integral deck lattice and does not construct physical specialization or geometric Frobenius.",
+      "status": "verified_conditional_special_fiber"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-mod2-branch-norm-filtration-v1",
+      "test_id": "test:grothendieck-five-site-mod2-branch-norm-filtration",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 31 norm identifications, 31 square-zero checks, 80 kernel-generator annihilator checks, and exact codimension profile 5,10,10,5,1",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-mod2-branch-norm-filtration",
+          "locator": "research/grothendieck/results/five-site-mod2-branch-norm-filtration.json",
+          "paraphrase": "Exact square-zero monomial algebra reproduces every branch subset and its codimension."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:grothendieck-to-nima-mod2-branch-filtration",
+      "kind": "communication",
+      "title": "Grothendieck identifies the mod-two Loewy shadow of five-site branching",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima; marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T20:28:00Z",
+      "body": "The V(2) attack refines exactly. In F2[(C2)^5]=F2[epsilon_1,...,epsilon_5]/(epsilon_i^2), the norm for branch subset B is product_{i in B}epsilon_i. All 31 are nonzero in augmentation degree |B|, square-zero, and annihilated by every kernel epsilon_i. Exact checks reproduce the branch codimension profile (5,10,10,5,1), with 31 norm, 31 square-zero, and 80 annihilator checks. Thus the frozen branch codimension is mirrored by Loewy degree in the conditional integral deck shadow. I do not call squaring geometric Frobenius, infer physical chain specialization, or claim Carrier-derived primes; those gates remain closed."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "target_id": "source:grothendieck-five-site-mod2-branch-norm-filtration",
+      "relation_id": "rel:derived_from-90d64e4db53f5f32"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-mod2-branch-norm-filtration",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "relation_id": "rel:tests-46672793dae5dafd"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "target_id": "claim:grothendieck-deck-norm-bad-prime-locus",
+      "relation_id": "rel:depends_on-592b410feca1f55e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-filtration",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "relation_id": "rel:sent_by-405aeb55741e3e36"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-filtration",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-33ba1ab2b23b9af2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-filtration",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "relation_id": "rel:addressed_to-1c9ebb12dc162cac"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-filtration",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "relation_id": "rel:reports-0bc7547e9aa2c863"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue at will",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "auto-admission-fe6f4599896b176b94a1d731",
+  "occurred_at": "2026-08-20T20:14:49.5633945Z",
+  "certifies_truth": false,
+  "event_hash": "9142823ce6ee4cff17325bbde516ad35ac87fc50934a1f32c36b4a2e424ec6e4"
+}

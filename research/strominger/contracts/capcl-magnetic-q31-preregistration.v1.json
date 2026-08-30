@@ -1,0 +1,49 @@
+{
+  "schema": "marici.strominger.capcl-preregistration.v1",
+  "prediction_id": "capcl-magnetic-q31-rank-002",
+  "status": "preregistered_unverified",
+  "calculus_snapshot": {
+    "contract": "research/strominger/contracts/dependency-aware-partial-repairs.v1.json",
+    "sha256": "9820bd1ff24462f4e16b87938f2ef9feda8186d4b1cf16d1a2a8dc58948f7151",
+    "compiler": "research/strominger/partial_repair_compiler.py",
+    "compiler_sha256": "0cc4130516bf65530f49b550ec2152f2d7ef6d1d5d424599e04e00ae9d0ef6d3"
+  },
+  "source_snapshots": [
+    {
+      "path": "research/strominger/checkers/magnetic_endpoint_hall_checks.py",
+      "sha256": "e31e8cb14f21dd4209a675fcf7f5b23396f089a248b72641f25b8c0ee8b6d491"
+    },
+    {
+      "path": "research/strominger/results/magnetic_endpoint_hall.json",
+      "sha256": "d26d4281bbae4c81d8c0fd7b8e0423531699a1ad806610a591cc77427019baae"
+    }
+  ],
+  "eligibility": {
+    "operator_and_component_constructor_defined": true,
+    "proper_support_subproblem_admitted": "Hall_matching_complete_at_q31_for_g2_to20_k10_within_frozen_q1_to60_Hall_range",
+    "exact_rank_outcome_excluded_from_source_snapshot": "frozen_exact_rank_range_ends_at_q30",
+    "target_previously_computed": false
+  },
+  "target": {
+    "q": 31,
+    "g_range_inclusive": [2, 20],
+    "k": 10,
+    "column_count": 22,
+    "matrix_kind": "full_reflected_component_matrix_not_preferred_minor"
+  },
+  "prediction": {
+    "obstruction_coordinate": "observation",
+    "predicted_obstruction": "none",
+    "claim": "every q31 full reflected component matrix in the declared range has column rank 22",
+    "internal_cancellation_with_complete_Hall_matching": false,
+    "chart_minor_zeros_do_not_count_as_falsifiers": true,
+    "does_not_claim_unbounded_q_or_g": true
+  },
+  "falsifier": "the lexicographically first g in 2..20 whose full q31 component matrix at k10 has rank below 22",
+  "resolution_protocol": {
+    "freeze_calculus_during_test": true,
+    "use_full_integer_matrix_rank": true,
+    "report_first_counterexample": true,
+    "allowed_outcomes": ["confirmed_in_declared_range", "falsified", "ill_typed_target"]
+  }
+}

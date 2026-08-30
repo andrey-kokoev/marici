@@ -1,0 +1,638 @@
+{
+  "schema": "marici.dpc-core-normalizer.v1",
+  "rewrite_rules": ["typed_identity", "transport_fusion", "scope_attenuation", "support_union", "partition_flattening", "coherence_inverse", "epoch_fence"],
+  "legacy_projection_audit": {
+    "source": "contracts/authority-grant-composition.v1.json",
+    "permit_defaulting": false,
+    "required_core_fields": ["nominal_identity", "scope", "modality", "resource", "physical_support_roots", "epoch"]
+  },
+  "native_capabilities": [
+    {
+      "id": "native_manifest_challenge_use",
+      "nominal_identity": "cap:manifest-challenge:e:use1",
+      "authority_kind": "executor",
+      "scope": ["submit_manifest_challenge"],
+      "modality": "linear",
+      "resource": {"challenge_uses": 1},
+      "physical_support_roots": ["challenge_ledger", "configuration_quorum"],
+      "epoch": {"parameter": "e", "offset": 0},
+      "bound_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "executable_output": "challenge_receipt",
+      "operations": [{"kind":"epoch_fence","minimum_epoch":{"parameter":"e","offset":0}}],
+      "source_constructor_evidence": "one source-issued challenge use bound to arbitrary active epoch e and the configuration quorum"
+    }
+  ],
+  "epoch_successor_events": [
+    {
+      "id": "advance_e_0_to_e_1",
+      "predecessor_epoch": {"parameter":"e","offset":0},
+      "successor_epoch": {"parameter":"e","offset":1},
+      "predecessor_state_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "successor_state_sha256": "9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478",
+      "configuration_authority_roots": ["config_root_A","config_root_B"],
+      "joint_configuration_certificate": "joint-config-transition-e0-e1",
+      "certificate_nonce": "nonce:advance:e0:e1:1",
+      "certificate_quorum": ["config_root_A","config_root_B"],
+      "authorized_signers": {
+        "config_root_A": {"durable_non_equivocation":true,"independence_root":"admin_A"},
+        "config_root_B": {"durable_non_equivocation":true,"independence_root":"admin_B"}
+      },
+      "admissible_signer_fault_sets": [["config_root_A"],["config_root_B"]],
+      "durable_non_equivocation": true,
+      "competing_successor_constructible": false,
+      "physical_state_correspondence": {
+        "executor_id":"manifest_executor_1",
+        "measured_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478",
+        "verifier_authority_root":"executor_attestation_root",
+        "verifier_independence_root":"admin_C",
+        "certificate_nonce":"nonce:advance:e0:e1:1",
+        "attested_epoch":{"parameter":"e","offset":1},
+        "monotone_boot_counter":41,
+        "accepted_counter_floor":41,
+        "signature_verified":true,
+        "measurement_constructor":"measured boot binds executor state to successor digest",
+        "trusted_physical_base": {
+          "hardware_root_id":"tpm:manifest-executor-1",
+          "measured_ports":["boot_state","manifest_state","configuration_state"],
+          "required_ports":["boot_state","manifest_state","configuration_state"],
+          "anti_rollback_storage":true,
+          "bounded_threat_model":"one non-cloned hardware root with intact measured boot and monotone counter storage",
+          "claims_absolute_unclonability":false,
+          "claims_universal_port_coverage":false,
+          "challenge_interface":"admit newly discovered execution port or hardware common cause"
+        },
+        "verified_before_epoch_acceptance":true
+      }
+    }
+  ],
+  "native_execution_traces": [
+    {
+      "id":"execute_native_manifest_challenge_once",
+      "capability_id":"native_manifest_challenge_use",
+      "nominal_identity":"cap:manifest-challenge:e:use1",
+      "epoch":{"parameter":"e","offset":0},
+      "issuance":{"source_authorized":true,"issuer_root":"challenge_issuer","resource_amount":1},
+      "consumption":{"nonce":"nonce:challenge:e:use1","atomic_compare_and_set":true,"prior_state":"unspent","post_state":"spent","nonce_durably_recorded":true},
+      "execution":{"executor_id":"manifest_executor_1","attested_epoch":{"parameter":"e","offset":0},"attested_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","effect_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","effect_committed_atomically_with_fence":true},
+      "receipt":{"nonce":"nonce:challenge:e:use1","effect_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","receiver":"manifest_challenge_ledger","receiver_signature_verified":true},
+      "history":{"append_only":true,"entries":[{"kind":"issued"},{"kind":"consumed"},{"kind":"effect_committed"},{"kind":"receipt_recorded"}],"execution_fact_retained":true,"compensation_erases_history":false}
+    }
+  ],
+  "trusted_base_cocircuit_audits": [
+    {"id":"tcb_anti_rollback","target":"successor:advance_e_0_to_e_1","assumption":"anti_rollback_storage","primitive_failure_class":"rollback","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_port_coverage","target":"successor:advance_e_0_to_e_1","assumption":"measured_ports_cover_required_ports","primitive_failure_class":"hidden_port","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_hardware_nonclone_boundary","target":"successor:advance_e_0_to_e_1","assumption":"bounded_noncloned_hardware_root","primitive_failure_class":"clone","singleton_deletion_error":"epoch_successor_attestation_tcb_unbounded"},
+    {"id":"tcb_signer_independence","target":"successor:advance_e_0_to_e_1","assumption":"independent_configuration_signer_roots","primitive_failure_class":"signer_fork","singleton_deletion_error":"epoch_successor_signer_fault_model_unsafe"},
+    {"id":"tcb_attestation_freshness","target":"successor:advance_e_0_to_e_1","assumption":"transition_nonce_binding","primitive_failure_class":"attestation_replay","singleton_deletion_error":"epoch_successor_attestation_stale_or_correlated"}
+  ],
+  "resource_ssa_programs": [
+    {
+      "id":"native_challenge_resource_flow",
+      "nodes":[
+        {"id":"n0","kind":"issue","output":"r0","amount":2,"source_authorized":true},
+        {"id":"n1","kind":"partition","input":"r0","outputs":{"rA":1,"rB":1}},
+        {"id":"n2","kind":"reserve","input":"rA","output":"holdA"},
+        {"id":"n3","kind":"consume","input":"holdA","effect_output":"effectA","resource_region":"A"},
+        {"id":"n4","kind":"reserve","input":"rB","output":"holdB"},
+        {"id":"n5","kind":"release","input":"holdB","output":"rB_released","release_authority":"abort-certificate-B"},
+        {"id":"n6","kind":"consume","input":"rB_released","effect_output":"effectB","resource_region":"B"},
+        {"id":"n7","kind":"compensate","input":"effectA","settlement_output":"settledA","compensation_authority":"compensate-effect-A","restores_original_capability":false}
+      ],
+      "concurrency_pairs":[{"left":"n3","right":"n6","linearization_witness":null}],
+      "expected_terminal_states":{"effectB":"effect","settledA":"settled"}
+    }
+  ],
+  "forgetful_projection_audits": [
+    {
+      "id":"native_challenge_to_legacy_evidence",
+      "native_capability":"native_manifest_challenge_use",
+      "projection_constructor":"forget_resource_temporal_execution_structure",
+      "legacy_fields":["target_operation","authority_kind","source_authority_evidence"],
+      "alternate_core_preimage":{
+        "nominal_identity":"cap:manifest-challenge:f:bounded2",
+        "authority_kind":"executor",
+        "scope":["submit_manifest_challenge"],
+        "modality":"bounded_2",
+        "resource":{"challenge_uses":2},
+        "physical_support_roots":["alternate_challenge_ledger","configuration_quorum"],
+        "epoch":{"parameter":"f","offset":0},
+        "source_constructor_evidence":"one source-issued challenge use bound to arbitrary active epoch e and the configuration quorum"
+      },
+      "claims_canonical_reverse_lift":false,
+      "reverse_lift_constructor":null
+    }
+  ],
+  "epoch_successor_chain_audits": [
+    {
+      "id":"finite_symbolic_successor_chain",
+      "parameter":"e",
+      "base_epoch":{"parameter":"e","offset":0},
+      "base_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "base_support":["bootstrap_root"],
+      "steps":[
+        {"id":"s01","predecessor":{"parameter":"e","offset":0},"successor":{"parameter":"e","offset":1},"predecessor_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","successor_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","support_added":["config_transition_1"],"competing_successor_constructible":false,"physical_state_correspondence":true},
+        {"id":"s12","predecessor":{"parameter":"e","offset":1},"successor":{"parameter":"e","offset":2},"predecessor_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","successor_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","support_added":["config_transition_2"],"competing_successor_constructible":false,"physical_state_correspondence":true},
+        {"id":"s23","predecessor":{"parameter":"e","offset":2},"successor":{"parameter":"e","offset":3},"predecessor_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","successor_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support_added":["config_transition_3"],"competing_successor_constructible":false,"physical_state_correspondence":true}
+      ],
+      "expected_terminal_epoch":{"parameter":"e","offset":3},
+      "expected_accumulated_support":["bootstrap_root","config_transition_1","config_transition_2","config_transition_3"],
+      "theorem_scope":"arbitrary finite nonempty step lists satisfying the induction invariant"
+    }
+  ],
+  "native_reconfiguration_constructors": [
+    {
+      "id":"joint_reconfigure_e0_e1",
+      "constructor_id":"dpc.joint_reconfiguration.v1",
+      "source_authority_root":"configuration_transition_charter",
+      "input_signatures":[
+        {"role":"old_configuration","authority_kind":"configuration","epoch":{"parameter":"e","offset":0},"state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"support":["old_config_root"]},
+        {"role":"new_configuration","authority_kind":"configuration_proposal","epoch":{"parameter":"e","offset":1},"state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"quorum":["r2","r3","r4"],"support":["new_config_root"]},
+        {"role":"successor_state","authority_kind":"physical_correspondence","successor_event":"advance_e_0_to_e_1","support":["executor_attestation_root"]}
+      ],
+      "old_quorum_endorsement":["r1","r2","r3"],
+      "new_quorum_endorsement":["r2","r3","r4"],
+      "bridge_witness":["r2","r3"],
+      "bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},
+      "admissible_bridge_fault_sets":[["r2"],["r3"]],
+      "joint_consensus_required":true,
+      "old_only_may_activate_successor":false,
+      "new_only_may_self_activate":false,
+      "resource_law":"configuration authority is replaced, not duplicated",
+      "output_signature":{"authority_kind":"configuration","epoch":{"parameter":"e","offset":1},"state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"support":["configuration_transition_charter","executor_attestation_root","new_config_root","old_config_root"]}
+    }
+  ],
+  "configuration_path_audits": [
+    {
+      "id":"varying_membership_configuration_path",
+      "theorem_scope":"arbitrary finite nonempty composable paths satisfying the partial-composite invariant; path orientation makes no temporal claim",
+      "admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
+      "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+      "edges":[
+        {
+          "id":"rho_01","source_authority_root":"charter_rho_01","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+          "target_configuration":{"vertex_id":"C1","state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"quorum":["r2","r3","r4"],"support":["presentation_C1"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","target_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","support":["correspondence_rho_01"]},
+          "source_quorum_endorsement":["r1","r2","r3"],"target_quorum_endorsement":["r2","r3","r4"],"bridge_witness":["r2","r3"],"bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},"admissible_bridge_fault_sets":[["r2"],["r3"]],
+          "input_authority_resource":"cfg_auth_C0","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C1","state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"quorum":["r2","r3","r4"],"authority_resource":"cfg_auth_C1","support":["bootstrap_root","charter_rho_01","correspondence_rho_01","presentation_C1"]}
+        },
+        {
+          "id":"rho_12","source_authority_root":"charter_rho_12","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"C1","state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","members":["r2","r3","r4"],"quorum":["r2","r3","r4"],"authority_resource":"cfg_auth_C1","support":["bootstrap_root","charter_rho_01","correspondence_rho_01","presentation_C1"]},
+          "target_configuration":{"vertex_id":"C2","state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","members":["r3","r4","r5"],"quorum":["r3","r4","r5"],"support":["presentation_C2"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478","target_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","support":["correspondence_rho_12"]},
+          "source_quorum_endorsement":["r2","r3","r4"],"target_quorum_endorsement":["r3","r4","r5"],"bridge_witness":["r3","r4"],"bridge_authority_roots":{"r3":"admin_C","r4":"admin_D"},"admissible_bridge_fault_sets":[["r3"],["r4"]],
+          "input_authority_resource":"cfg_auth_C1","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C2","state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","members":["r3","r4","r5"],"quorum":["r3","r4","r5"],"authority_resource":"cfg_auth_C2","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","correspondence_rho_12","presentation_C1","presentation_C2"]}
+        },
+        {
+          "id":"rho_23","source_authority_root":"charter_rho_23","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"C2","state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","members":["r3","r4","r5"],"quorum":["r3","r4","r5"],"authority_resource":"cfg_auth_C2","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","correspondence_rho_12","presentation_C1","presentation_C2"]},
+          "target_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"support":["presentation_C3"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"17c9586b6a74f347b93af4670efc0503869f8eb37a978f0a75379f481d8ad5d6","target_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support":["correspondence_rho_23"]},
+          "source_quorum_endorsement":["r3","r4","r5"],"target_quorum_endorsement":["r4","r5","r6"],"bridge_witness":["r4","r5"],"bridge_authority_roots":{"r4":"admin_D","r5":"admin_E"},"admissible_bridge_fault_sets":[["r4"],["r5"]],
+          "input_authority_resource":"cfg_auth_C2","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+        }
+      ],
+      "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+    },
+    {
+      "id":"third_configuration_path","theorem_scope":"third composable presentation of the same typed boundary","admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
+      "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+      "edges":[
+        {"id":"tau_0Y","source_authority_root":"charter_rho_01","joint_authorization_required":true,
+         "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+         "target_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"support":["correspondence_rho_01","presentation_C1"]},
+         "state_correspondence":{"source_derived":true,"source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","target_state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","support":["charter_rho_12","presentation_C2"]},
+         "source_quorum_endorsement":["r1","r2","r3"],"target_quorum_endorsement":["r2","r3","r4","r5"],"bridge_witness":["r2","r3"],"bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},"admissible_bridge_fault_sets":[["r2"],["r3"]],
+         "input_authority_resource":"cfg_auth_C0","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CY","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]}},
+        {"id":"tau_Y3","source_authority_root":"charter_rho_23","joint_authorization_required":true,
+         "source_configuration":{"vertex_id":"CY","state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CY","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+         "target_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"support":["presentation_C3"]},
+         "state_correspondence":{"source_derived":true,"source_state_sha256":"c84f144c7b992d9f0041175a57e216a707a10b47b7748ea624fa214217727dc1","target_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support":["correspondence_rho_12","correspondence_rho_23"]},
+         "source_quorum_endorsement":["r2","r3","r4","r5"],"target_quorum_endorsement":["r4","r5","r6"],"bridge_witness":["r4","r5"],"bridge_authority_roots":{"r4":"admin_D","r5":"admin_E"},"admissible_bridge_fault_sets":[["r4"],["r5"]],
+         "input_authority_resource":"cfg_auth_CY","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}}
+      ],
+      "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+    },
+    {
+      "id":"alternate_configuration_path",
+      "theorem_scope":"alternate composable presentation of the same typed boundary",
+      "admissible_authority_root_fault_sets":[["admin_B"],["admin_C"],["admin_D"],["admin_E"],["admin_B","admin_D"],["admin_B","admin_E"]],
+      "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+      "edges":[
+        {
+          "id":"sigma_0X","source_authority_root":"charter_rho_01","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"C0","state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","members":["r1","r2","r3"],"quorum":["r1","r2","r3"],"authority_resource":"cfg_auth_C0","support":["bootstrap_root"]},
+          "target_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"support":["charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","target_state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","support":[]},
+          "source_quorum_endorsement":["r1","r2","r3"],"target_quorum_endorsement":["r2","r3","r4","r5"],"bridge_witness":["r2","r3"],"bridge_authority_roots":{"r2":"admin_B","r3":"admin_C"},"admissible_bridge_fault_sets":[["r2"],["r3"]],
+          "input_authority_resource":"cfg_auth_C0","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CX","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]}
+        },
+        {
+          "id":"sigma_X3","source_authority_root":"charter_rho_23","joint_authorization_required":true,
+          "source_configuration":{"vertex_id":"CX","state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","members":["r2","r3","r4","r5"],"quorum":["r2","r3","r4","r5"],"authority_resource":"cfg_auth_CX","support":["bootstrap_root","charter_rho_01","charter_rho_12","correspondence_rho_01","presentation_C1","presentation_C2"]},
+          "target_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"support":["presentation_C3"]},
+          "state_correspondence":{"source_derived":true,"source_state_sha256":"b7187c91f379de8f9d9be086f54f9dbf42ec6f8f99f94489e9a9743b00185009","target_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","support":["correspondence_rho_12","correspondence_rho_23"]},
+          "source_quorum_endorsement":["r2","r3","r4","r5"],"target_quorum_endorsement":["r4","r5","r6"],"bridge_witness":["r4","r5"],"bridge_authority_roots":{"r4":"admin_D","r5":"admin_E"},"admissible_bridge_fault_sets":[["r4"],["r5"]],
+          "input_authority_resource":"cfg_auth_CX","source_authority_also_output":false,"output_authority_count":1,"output_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+        }
+      ],
+      "expected_endpoint_configuration":{"vertex_id":"C3","state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","members":["r4","r5","r6"],"quorum":["r4","r5","r6"],"authority_resource":"cfg_auth_C3","support":["bootstrap_root","charter_rho_01","charter_rho_12","charter_rho_23","correspondence_rho_01","correspondence_rho_12","correspondence_rho_23","presentation_C1","presentation_C2","presentation_C3"]}
+    }
+  ],
+  "configuration_category_audits":[
+    {"id":"configuration_path_category","path_id":"varying_membership_configuration_path","identity_vertices":["C0","C1","C2","C3"],"identity_preserves_full_signature":true,"identity_replaces_authority":false,"associativity_edge_ids":["rho_01","rho_12","rho_23"]}
+  ],
+  "configuration_constructor_rewrites":[
+    {"id":"rewrite_rho_sigma","source_path_id":"varying_membership_configuration_path","target_path_id":"alternate_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"},
+    {"id":"rewrite_sigma_tau","source_path_id":"alternate_configuration_path","target_path_id":"third_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"},
+    {"id":"rewrite_rho_tau","source_path_id":"varying_membership_configuration_path","target_path_id":"third_configuration_path","source_authority_root":"factorization_charter","admissible_transformation":"factorization_substitution"}
+  ],
+  "required_configuration_critical_pairs":["varying_membership_configuration_path"],
+  "configuration_contextual_rewrite_theorems":[
+    {
+      "id":"context_closed_configuration_rewrites",
+      "alphabet":["varying_membership_configuration_path","alternate_configuration_path","third_configuration_path"],
+      "rank":{"varying_membership_configuration_path":2,"alternate_configuration_path":1,"third_configuration_path":0},
+      "rewrite_ids":["rewrite_rho_sigma","rewrite_sigma_tau","rewrite_rho_tau"],
+      "context_closure":true,
+      "context_grammar":"finite_typed_product_context",
+      "composition_kind":"independent_hole_substitution",
+      "sequential_composition_claimed":false,
+      "hole_type":{"source_vertex":"C0","source_state_sha256":"4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115","endpoint_vertex":"C3","endpoint_state_sha256":"b5976c0f6e9c1999e10230895d77f8bd0e312690659c5a153b97ea1ae0efa175","input_authority_parameter":"alpha_in[i]","output_authority_parameter":"alpha_out[i]","resource_instances_pairwise_disjoint":true,"shared_authority_claimed":false},
+      "support_lift":"tagged_pair(i,support)",
+      "authority_root_lift":"tagged_pair(i,root)",
+      "fault_hypergraph_composition":"disjoint_coproduct",
+      "cross_hole_correlations_authorized":false,
+      "preserved_semantic_fields":["source_boundary","endpoint_boundary","support_union","fault_hypergraph","input_authority","output_authority","resource_freshness"],
+      "critical_pair_schemas":["same_position_branch","disjoint_positions_commute"],
+      "theorem_scope":"arbitrary finite products of independently typed factorization holes"
+    }
+  ],
+  "configuration_context_symmetry_theorems":[
+    {
+      "id":"finite_hole_permutation_equivariance",
+      "context_theorem_id":"context_closed_configuration_rewrites",
+      "symmetry":"finite_bijections_of_hole_indices",
+      "resource_action":"alpha_rename_by_index_bijection",
+      "support_action":"tagged_pair(pi(i),support)",
+      "authority_root_action":"tagged_pair(pi(i),root)",
+      "rewrite_action":"position_independent",
+      "normal_form_action":"pointwise_normalization_then_permutation",
+      "cross_hole_fault_action":"none_without_explicit_constructor",
+      "theorem_scope":"all finite bijections of every finite typed hole set"
+    }
+  ],
+  "configuration_correlated_context_theorems":[
+    {
+      "id":"authorized_fault_correlation_context",
+      "base_context_theorem_id":"context_closed_configuration_rewrites",
+      "constructor_id":"dpc.cross_hole_fault_correlation.v1",
+      "source_authority_root":"correlation_charter",
+      "authorized_effect":"fault_hypergraph_extension_only",
+      "support_identification":false,
+      "resource_identification":false,
+      "hole_indices":["h0","h1","h2"],
+      "correlation_hyperedges":[[["h0","admin_C"],["h1","admin_C"]]],
+      "symmetry":"automorphisms_of_typed_fault_hypergraph",
+      "expected_automorphisms":[["h0","h1","h2"],["h1","h0","h2"]],
+      "normalization_action":"pointwise_rewrites_preserve_indexed_correlation_labels",
+      "theorem_scope":"all finite typed fault hypergraphs constructed by the admitted correlation constructor"
+    }
+  ],
+  "configuration_correlation_cocircuit_theorems":[
+    {
+      "id":"fault_correlation_cocircuit_classification",
+      "correlated_context_theorem_id":"authorized_fault_correlation_context",
+      "classification":"indexed_local_bridge_root_sets",
+      "safety_law":"safe_iff_no_hyperedge_contains_a_primitive_cocircuit",
+      "minimality_law":"deleting_any_one_root_restores_a_bridge_survivor",
+      "symmetry_action":"automorphism_orbits_of_cocircuits",
+      "expected_cocircuit_count":9,
+      "expected_orbit_count":6,
+      "theorem_scope":"all hyperedges over every finite typed hole set admitted by the correlation constructor"
+    }
+  ],
+  "configuration_correlation_composition_theorems":[
+    {
+      "id":"typed_correlation_composition",
+      "cocircuit_theorem_id":"fault_correlation_cocircuit_classification",
+      "family_union_semantics":"preserve_distinct_hyperedges",
+      "synchronous_fusion_semantics":"union_loci_into_one_hyperedge",
+      "fusion_constructor_id":"dpc.synchronous_fault_fusion.v1",
+      "fusion_source_authority_root":"simultaneity_charter",
+      "family_union_authorizes_fusion":false,
+      "seam_law":"fusion_safe_iff_no_primitive_cocircuit_is_split_across_inputs",
+      "fixtures":[
+        {
+          "id":"safe_fusion_fixture",
+          "kind":"safe_fusion",
+          "left_hyperedge":[["h0","admin_B"],["h1","admin_B"]],
+          "right_hyperedge":[["h0","admin_D"],["h2","admin_D"]],
+          "expected":{"fused_safe":true,"split_cocircuit_count":0}
+        },
+        {
+          "id":"unsafe_split_cocircuit_fixture",
+          "kind":"unsafe_split_cocircuit_fusion",
+          "left_hyperedge":[["h0","admin_B"],["h1","admin_B"]],
+          "right_hyperedge":[["h0","admin_C"],["h2","admin_C"]],
+          "expected":{"fused_safe":false,"split_cocircuit_count":1}
+        }
+      ],
+      "theorem_scope":"all pairs of typed correlation hyperedges over a common finite hole set"
+    }
+  ],
+  "configuration_finite_fusion_theorems":[
+    {
+      "id":"finite_fusion_cocircuit_witness_bound",
+      "cocircuit_theorem_id":"fault_correlation_cocircuit_classification",
+      "witness_bound_source":"maximum_primitive_cocircuit_cardinality",
+      "expected_witness_bound":2,
+      "finite_subfamily_law":"unsafe_fusion_has_an_unsafe_subfusion_of_size_at_most_witness_bound",
+      "pairwise_completeness_claimed":true,
+      "bound_sharp_on_fixture":true,
+      "fixtures":[
+        {
+          "id":"three_input_pair_witness",
+          "input_hyperedges":[
+            [["h0","admin_B"],["h1","admin_B"]],
+            [["h0","admin_C"],["h2","admin_C"]],
+            [["h1","admin_E"],["h2","admin_B"]]
+          ],
+          "expected":{"globally_safe":false,"minimum_unsafe_arity":2}
+        }
+      ],
+      "theorem_scope":"all finite families of typed correlation hyperedges over a common finite hole set"
+    }
+  ],
+  "configuration_correlation_repair_theorems":[
+    {
+      "id":"minimal_correlation_repair_transversals",
+      "cocircuit_theorem_id":"fault_correlation_cocircuit_classification",
+      "repair_classification":"inclusion_minimal_transversals_of_blocking_cocircuits",
+      "repair_constructor_id":"dpc.fault_locus_repair.v1",
+      "repair_source_authority_root":"repair_charter",
+      "diagnosis_authorizes_repair":false,
+      "repair_effect":"remove_failed_loci_from_synchronous_hyperedge",
+      "fixtures":[
+        {
+          "id":"overlapping_cocircuit_repairs",
+          "unsafe_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h0","admin_D"],["h1","admin_C"]],
+          "expected":{"minimal_repair_count":2,"minimal_repair_sizes":[1,2]}
+        },
+        {
+          "id":"three_independent_bridge_repairs",
+          "unsafe_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h1","admin_B"],["h1","admin_C"],["h2","admin_B"],["h2","admin_C"]],
+          "expected":{"minimal_repair_count":8,"minimal_repair_sizes":[3,3,3,3,3,3,3,3]}
+        }
+      ],
+      "theorem_scope":"every unsafe typed synchronous correlation hyperedge"
+    }
+  ],
+  "configuration_repair_selection_theorems":[
+    {
+      "id":"authorized_repair_valuation_and_selection",
+      "repair_theorem_id":"minimal_correlation_repair_transversals",
+      "repair_fixture_id":"overlapping_cocircuit_repairs",
+      "valuation_constructor_id":"dpc.repair_locus_valuation.v1",
+      "valuation_kind":"strictly_positive_additive_locus_cost",
+      "selector_constructor_id":"dpc.minimum_cost_repair_selector.v1",
+      "selector_source_authority_root":"repair_selection_charter",
+      "safety_authorizes_selection":false,
+      "selection_authorizes_execution":false,
+      "selection_law":"argmin_total_cost_over_primitive_repairs",
+      "no_canonical_selector_from_safety":true,
+      "valuation_profiles":[
+        {
+          "id":"outer_loci_cheaper",
+          "source_authority_root":"outer_repair_cost_schedule",
+          "weights":[
+            {"locus":["h0","admin_B"],"cost":1},
+            {"locus":["h0","admin_C"],"cost":3},
+            {"locus":["h0","admin_D"],"cost":1}
+          ],
+          "expected_selected_repair":[["h0","admin_B"],["h0","admin_D"]]
+        },
+        {
+          "id":"shared_locus_cheaper",
+          "source_authority_root":"shared_repair_cost_schedule",
+          "weights":[
+            {"locus":["h0","admin_B"],"cost":3},
+            {"locus":["h0","admin_C"],"cost":1},
+            {"locus":["h0","admin_D"],"cost":3}
+          ],
+          "expected_selected_repair":[["h0","admin_C"]]
+        }
+      ],
+      "theorem_scope":"finite primitive repair families with source-authorized strictly positive locus valuations"
+    }
+  ],
+  "configuration_repair_execution_theorems":[
+    {
+      "id":"bound_linear_repair_execution",
+      "selection_theorem_id":"authorized_repair_valuation_and_selection",
+      "certificate_binding_fields":["unsafe_hyperedge","primitive_repair_family","valuation_profile","selected_repair"],
+      "binding_kind":"content_addressed_exact_configuration",
+      "executor_constructor_id":"dpc.bound_repair_executor.v1",
+      "executor_source_authority_root":"repair_execution_charter",
+      "capability_modality":"linear",
+      "capability_uses":1,
+      "selection_record_is_nonexecuting":true,
+      "execution_semantics":"atomic_compare_bound_configuration_apply_and_consume",
+      "postcondition":"recompute_cocircuit_safety",
+      "execution_requests":[
+        {
+          "id":"execute_outer_loci_repair",
+          "valuation_profile_id":"outer_loci_cheaper",
+          "observed_hyperedge":[["h0","admin_B"],["h0","admin_C"],["h0","admin_D"],["h1","admin_C"]],
+          "requested_repair":[["h0","admin_B"],["h0","admin_D"]],
+          "uses_before":1,
+          "uses_after":0,
+          "expected_admitted":true
+        }
+      ],
+      "theorem_scope":"all source-bound selected repairs with separately issued linear execution capabilities"
+    }
+  ],
+  "configuration_repair_execution_decomposition_theorems":[
+    {
+      "id":"multi_locus_repair_atomicity_obstruction",
+      "selection_theorem_id":"authorized_repair_valuation_and_selection",
+      "valuation_profile_id":"outer_loci_cheaper",
+      "decomposition_law":"proper_subrepairs_are_not_endpoint_capabilities_without_intermediate_state_authority",
+      "atomic_capability_partition_authorized":false,
+      "authorized_options":["joint_atomic_execution","staged_execution_with_intermediate_state_authority"],
+      "expected":{"proper_subrepair_count":2,"all_proper_subrepairs_endpoint_unsafe":true,"joint_repair_safe":true},
+      "theorem_scope":"all multi-locus primitive repairs selected from an unsafe typed correlation hyperedge"
+    }
+  ],
+  "configuration_staged_repair_path_theorems":[
+    {
+      "id":"two_locus_staged_repair_diamond",
+      "selection_theorem_id":"authorized_repair_valuation_and_selection",
+      "valuation_profile_id":"outer_loci_cheaper",
+      "staged_constructor_id":"dpc.staged_repair_execution.v1",
+      "intermediate_state_authority_root":"staged_repair_charter",
+      "intermediate_authority_kind":"unsafe_repair_in_progress",
+      "intermediate_inherits_endpoint_safety":false,
+      "residual_certificate_binding_fields":["source_configuration","applied_subrepair","remaining_subrepair","target_configuration"],
+      "residual_capability_modality":"linear",
+      "coherence_cell_source":"commuting_set_difference_identity",
+      "primitive_or_fitted_coherence_cell":false,
+      "factorization_paths":[
+        {"id":"remove_B_then_D","order":[["h0","admin_B"],["h0","admin_D"]]},
+        {"id":"remove_D_then_B","order":[["h0","admin_D"],["h0","admin_B"]]}
+      ],
+      "expected":{"path_count":2,"distinct_intermediates":true,"common_safe_endpoint":true},
+      "theorem_scope":"both factorizations of every selected two-locus primitive repair"
+    }
+  ],
+  "configuration_finite_staged_coherence_theorems":[
+    {
+      "id":"finite_staged_repair_coxeter_coherence",
+      "repair_theorem_id":"minimal_correlation_repair_transversals",
+      "repair_fixture_id":"three_independent_bridge_repairs",
+      "selected_primitive_repair":[["h0","admin_B"],["h1","admin_B"],["h2","admin_B"]],
+      "path_generators":"adjacent_transpositions_of_repair_loci",
+      "coherence_relations":["involution","far_commutation","braid"],
+      "coherence_completion":"coxeter_presentation_of_finite_symmetric_group",
+      "primitive_or_fitted_higher_cells":false,
+      "intermediate_authority_kind":"unsafe_repair_in_progress",
+      "expected":{"repair_size":3,"path_count":6,"all_proper_prefixes_unsafe":true,"common_safe_endpoint":true},
+      "theorem_scope":"all finite selected repairs with constructor-authorized intermediate states"
+    }
+  ],
+  "configuration_path_coherence_audits":[
+    {"id":"rho_sigma_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
+    {"id":"sigma_tau_endpoint_coherence","left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
+    {"id":"rho_tau_endpoint_coherence","left_path_id":"varying_membership_configuration_path","right_path_id":"third_configuration_path"}
+  ],
+  "required_configuration_path_comparisons":[
+    {"left_path_id":"varying_membership_configuration_path","right_path_id":"alternate_configuration_path"},
+    {"left_path_id":"alternate_configuration_path","right_path_id":"third_configuration_path"},
+    {"left_path_id":"varying_membership_configuration_path","right_path_id":"third_configuration_path"}
+  ],
+  "configuration_coherence_triangle_audits":[
+    {"id":"rho_sigma_tau_triangle","paths":["varying_membership_configuration_path","alternate_configuration_path","third_configuration_path"]}
+  ],
+  "active_rewrite_footprints": {
+    "partition_flattening": ["resource"],
+    "scope_attenuation": ["scope"],
+    "support_union": ["support"],
+    "transport_fusion": ["transport_chain"],
+    "coherence_inverse": ["coherence_chain"],
+    "typed_identity": ["authority_kind", "scope", "modality", "support", "resource"],
+    "epoch_fence": ["epoch", "status", "executable_output"]
+  },
+  "critical_pair_coverage": {
+    "partition_flattening|typed_identity": "identity_then_partition_joins",
+    "scope_attenuation|typed_identity": "identity_then_attenuate_joins"
+    ,"support_union|typed_identity": "identity_then_support_union_joins"
+  },
+  "normalization_cases": [
+    {
+      "id": "symbolic_successor_epoch_fences_predecessor",
+      "expected": {"status":"rejected_stale_epoch","executable_output":"REJECT:stale_epoch"},
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["ledger"],"resource":{"uses":1},"epoch":{"parameter":"e","offset":0},"status":"active","executable_output":"effect","operations":[{"kind":"epoch_fence","minimum_epoch":{"parameter":"e","offset":1}}]}
+    },
+    {
+      "id": "unrelated_epoch_families_are_incomparable",
+      "expected": {},
+      "expected_error": "incomparable_epoch_parameters",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["ledger"],"resource":{"uses":1},"epoch":{"parameter":"e","offset":0},"status":"active","executable_output":"effect","operations":[{"kind":"epoch_fence","minimum_epoch":{"parameter":"f","offset":0}}]}
+    },
+    {
+      "id": "full_signature_coherence_roundtrip_eliminates",
+      "expected": {"operations": []},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_A"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":true,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":true}]}
+    },
+    {
+      "id": "signature_changing_roundtrip_rejected",
+      "expected": {},
+      "expected_error": "coherence_inverse_changes_authority_signature",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["source_A"],"resource":{"uses":1},"executable_output":"effect","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":true,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":false}]}
+    },
+    {
+      "id": "noninvertible_presentation_cell_rejected",
+      "expected": {},
+      "expected_error": "coherence_inverse_not_invertible",
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_A"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"coherence","cell":"phi","inverse_of":"phi_inv","invertible":false,"preserves_full_signature":true},{"kind":"coherence","cell":"phi_inv","inverse_of":"phi","invertible":true,"preserves_full_signature":true}]}
+    },
+    {
+      "id": "authority_preserving_transport_chain_fuses",
+      "expected": {"operations":[{"kind":"transport","source":"chart_A","target":"chart_C","preserves_authority":true,"normal_form_cell":"cell_AC"}]},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["source_chart"],"resource":{"queries":1},"executable_output":"value","operations":[{"kind":"transport","source":"chart_A","target":"chart_B","preserves_authority":true},{"kind":"transport","source":"chart_B","target":"chart_C","preserves_authority":true,"fusion_cell":"cell_AC"}]}
+    },
+    {
+      "id": "evidence_transport_without_authority_is_rejected",
+      "expected": {},
+      "expected_error": "transport_fusion_loses_authority",
+      "input": {"authority_kind":"executor","scope":["act"],"modality":"linear","support":["source_A"],"resource":{"uses":1},"executable_output":"effect","operations":[{"kind":"transport","source":"logical","target":"encoded","preserves_authority":true},{"kind":"transport","source":"encoded","target":"physical","preserves_authority":false,"fusion_cell":"unsupported_cell"}]}
+    },
+    {
+      "id": "support_union_preserves_distinct_roots_and_removes_duplicates",
+      "expected": {"support": ["root_A", "root_B"]},
+      "input": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"support_union","support":["root_B","root_A","root_B"]}]}
+    },
+    {
+      "id": "conservative_partition",
+      "expected": {"resource": {"site_A": 2, "site_B": 3}, "status": "active"},
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"status":"active","executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}}]}
+    },
+    {
+      "id": "inflating_partition_rejected",
+      "expected": {},
+      "expected_error": "resource_partition_inflation",
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"status":"active","executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":3,"site_B":3}}]}
+    },
+    {
+      "id": "stale_epoch_becomes_auditable_rejection",
+      "expected": {"status":"rejected_stale_epoch","executable_output":"REJECT:stale_epoch"},
+      "input": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"credits":1},"epoch":7,"status":"active","executable_output":"receipt","operations":[{"kind":"epoch_fence","minimum_epoch":8}]}
+    }
+  ],
+  "critical_pairs": [
+    {
+      "id": "identity_then_support_union_joins",
+      "coherence_cell": "typed_identity_support_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"identity","signature":{"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1}}},{"kind":"support_union","support":["root_B","root_A"]}]},
+      "right": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A"],"resource":{"queries":1},"executable_output":"bit","operations":[{"kind":"support_union","support":["root_B","root_A"]},{"kind":"identity","signature":{"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["root_A","root_B"],"resource":{"queries":1}}}]}
+    },
+    {
+      "id": "identity_then_partition_joins",
+      "coherence_cell": "typed_identity_resource_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"executable_output":"partitioned","operations":[{"kind":"identity","signature":{"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5}}},{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}}]},
+      "right": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"global":5},"executable_output":"partitioned","operations":[{"kind":"partition","source":"global","children":{"site_A":2,"site_B":3}},{"kind":"identity","signature":{"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"site_A":2,"site_B":3}}}]}
+    },
+    {
+      "id": "identity_then_attenuate_joins",
+      "coherence_cell": "typed_identity_naturality",
+      "expected_joined": true,
+      "left": {"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1},"executable_output":"read_once","operations":[{"kind":"identity","signature":{"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1}}}]},
+      "right": {"authority_kind":"executor","scope":["read"],"modality":"linear","support":["root_A"],"resource":{"credits":1},"executable_output":"read_once","operations":[]}
+    },
+    {
+      "id": "equal_output_unequal_support_rejected",
+      "coherence_cell": "presentation_cell",
+      "expected_joined": false,
+      "left": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["clock_A"],"resource":{"queries":1},"executable_output":"bit","operations":[]},
+      "right": {"authority_kind":"readout","scope":["observe"],"modality":"unrestricted","support":["clock_B"],"resource":{"queries":1},"executable_output":"bit","operations":[]}
+    },
+    {
+      "id": "equal_output_modality_laundering_rejected",
+      "coherence_cell": "presentation_cell",
+      "expected_joined": false,
+      "left": {"authority_kind":"executor","scope":["spend"],"modality":"linear","support":["ledger"],"resource":{"credits":1},"executable_output":"receipt","operations":[]},
+      "right": {"authority_kind":"executor","scope":["spend"],"modality":"unrestricted","support":["ledger"],"resource":{"credits":1},"executable_output":"receipt","operations":[]}
+    },
+    {
+      "id": "matching_signature_missing_selector_cell_rejected",
+      "coherence_cell": null,
+      "expected_joined": false,
+      "left": {"authority_kind":"selector","scope":["choose"],"modality":"affine","support":["board_A"],"resource":{"choices":1},"executable_output":"A","operations":[]},
+      "right": {"authority_kind":"selector","scope":["choose"],"modality":"affine","support":["board_A"],"resource":{"choices":1},"executable_output":"A","operations":[]}
+    }
+  ]
+}

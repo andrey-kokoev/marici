@@ -1,0 +1,40 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "bivariant-network-v15",
+    "owner": "marici.Aspect",
+    "classification": "frozen_signature_survives_but_lower_profile_does_not_select_degree21_top_cell",
+    "stratum": "frozen v15 packet and declared coefficient topology",
+    "inputs": [
+      "research/aspect/contracts/frozen-bivariant-network-signature.v15.json",
+      "research/aspect/results/degree21_top_cell_hostile.json"
+    ],
+    "checks": [
+      {
+        "id": "bivariant-network-v15",
+        "path": "research/aspect/checkers/check_frozen_bivariant_signature_v15.py",
+        "requires": []
+      },
+      {
+        "id": "degree21-top-cell-hostile",
+        "path": "research/aspect/checkers/check_degree21_top_cell_hostile.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "typed packet and observer quotient"
+    ],
+    "provides": [
+      "rank-change stratum hostile",
+      "typed quotient coherence",
+      "higher-cell anti-vacuity gate",
+      "exhaustive degree-21 top-cell nonselection witness"
+    ],
+    "missing_constructors": [
+      "source-derived degree-21 k-invariant or class-selection law"
+    ],
+    "next_falsifier": "derive the degree-21 k-invariant from a source operation independent of lower-face data and test it against the trivial/nontrivial cocycle pair"
+  }
+}

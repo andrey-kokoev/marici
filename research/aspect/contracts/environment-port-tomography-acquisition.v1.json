@@ -1,0 +1,31 @@
+{
+  "schema": "marici.aspect.environment-port-tomography-acquisition.v1",
+  "format": "CSV with one row per attempted joint system-environment detection trial",
+  "required_columns": [
+    "trial_key", "acquisition_epoch", "mode", "input_probe",
+    "system_basis", "environment_basis", "system_outcome",
+    "environment_outcome", "environment_port_manifest", "phase_reference_key",
+    "detector_assignment", "acquisition_block", "within_block_position",
+    "sealed_schedule_key", "no_click_flag"
+  ],
+  "input_probes": ["H", "V", "D", "R"],
+  "bases": ["X", "Y", "Z"],
+  "science_cells": "all 4 input probes by 3 system bases by 3 environment bases",
+  "positive_control_cells": [
+    "identical_marker:D:X:X", "identical_marker:D:Z:Z",
+    "orthogonal_marker:D:X:X", "orthogonal_marker:D:Z:Z"
+  ],
+  "cell_count": 40,
+  "minimum_attempted_trials_per_cell": 1000000,
+  "absolute_control_tolerance": "1/20",
+  "minimum_environment_separation": "1/2",
+  "block_design": "Every acquisition block contains all 40 cells exactly once; across each 40-block rotation superblock every cell occupies every position exactly once.",
+  "retention_rule": "Every attempted trial and every no-click result is retained.",
+  "physical_requirements": [
+    "coherent access to the declared environment output port",
+    "phase-referenced X and Y analysis on system and environment",
+    "Z analysis and crossed detector assignment",
+    "independently injectable identical-marker and orthogonal-marker controls"
+  ],
+  "claim_boundary": "Passing records certify informational completeness and environment-leakage sensitivity for the declared two-qubit port model; they do not certify an uncontrolled bath or inaccessible environment."
+}

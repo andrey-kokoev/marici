@@ -1,0 +1,80 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_4d8fd056-037c-4b37-919c-26241a8b0fbd",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-ledger-1327-chain-homotopy-rigidity-v1",
+  "expected_ledger_head": "a40734e5f7ccd412e1d84b3b49196b0a67c6607c24acbe3687c011abfd6eb007",
+  "created_at": "2026-08-20T22:40:53.3039069Z",
+  "content_fingerprint": "b2f20c06c16cd39947c0518605a3df859de24b960526934883a6d8ddcfcc0fcb",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The boundary defect is invariant under chain-homotopy changes",
+      "statement": "For S'=S+D_H K+K D_G, one has D_H S'-S'D_G=Omega. A nonzero defect cannot be repaired within the chain-homotopy class, and cocycle pairings on source cycles remain unchanged.",
+      "entity_id": "claim:0533425bfb72bd91de21"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Chain-homotopy correction cancellation",
+      "procedure": "Expand D_H(S+D_HK+KD_G)-(S+D_HK+KD_G)D_G and use D_H^2=D_G^2=0.",
+      "outcome": "All K terms cancel exactly and the original Omega remains.",
+      "falsifier": "Any proposed endpoint or overlap homotopy that claims to remove Omega while retaining the same chain-homotopy class contradicts this identity.",
+      "entity_id": "test:9beb6a74ae457ebbe19e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "note",
+      "kind": "source",
+      "title": "Boundary-defect chain-homotopy rigidity",
+      "version": "v1",
+      "locator": "research/grothendieck/boundary-defect-chain-homotopy-rigidity.md",
+      "entity_id": "source:4d147d11fee5d2255eb1"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1327 — The Boundary Defect Is Invariant Under Chain-Homotopy Changes",
+      "version": "1327",
+      "locator": "src/ledger/20260820-1327 The Boundary Defect Is Invariant Under Chain-Homotopy Changes.md",
+      "entity_id": "source:9bfec6af9e3b827b20e4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:9beb6a74ae457ebbe19e",
+      "target_id": "claim:0533425bfb72bd91de21",
+      "relation_id": "rel:tests-4f697dbcb91d3721"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "note",
+      "source_id": "claim:0533425bfb72bd91de21",
+      "target_id": "source:4d147d11fee5d2255eb1",
+      "relation_id": "rel:derived_from-bfa68deea6bfc303"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:9bfec6af9e3b827b20e4",
+      "target_id": "claim:0533425bfb72bd91de21",
+      "relation_id": "rel:reports-fe639bdd7c918743"
+    }
+  ],
+  "digest": "0eba2ecd6c4d5dd58f33b6fdfd7920bdd3666c5a9509d19bb8d01653d0fb6017"
+}

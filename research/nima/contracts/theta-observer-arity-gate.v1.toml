@@ -1,0 +1,31 @@
+schema = "marici.theta.observer_arity_gate.v1"
+status = "active"
+
+[primitive]
+domain = "A"
+law = "linear"
+
+[square]
+domain = "Sym^2(A)"
+law = "symmetric_bilinear_then_diagonal"
+
+[naturality]
+one_copy = "J1 F = F1 J1"
+two_copy = "J2 Sym2(F) = F2 J2"
+target = "relative_determinant_line"
+
+[[falsifier]]
+id = "linear_square"
+condition = "nonzero quadratic coordinate claimed additive on A"
+
+[[falsifier]]
+id = "missing_polarization"
+condition = "mixed cyclic term omitted"
+
+[[falsifier]]
+id = "wrong_transport_arity"
+condition = "F used where Sym2(F) is required"
+
+[[falsifier]]
+id = "scalar_trivialization"
+condition = "naturality appears only after choosing a cutoff-dependent line origin"

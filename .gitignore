@@ -16,10 +16,25 @@ target/
 .narada/tmp/
 .narada/.ai/epistemic-graph/projection.sqlite
 .narada/.ai/epistemic-graph/locks/
+.narada/epistemic/ledger/
+.narada/epistemic/proposals/
+.narada/epistemic/sequences/
+
+# Local agent diagnostic output packets.
+.ai-*.txt
 
 # Research cache/replay scratch results.
 research/**/*.tmp.json
 research/**/.tmp_sympy/
+research/**/_scratch_*.py
+research/flavor/tools/*_inbox*.json
+research/flavor/tools/q_*.json
+
+# Locally downloaded collider event stores; retain their provenance records.
+research/flavor/data/**/*.root
+
+# ROOT/ACLiC dictionaries generated in the repository root.
+/AutoDict_*
 
 # Agent-local calculation packets and process bookkeeping.
 *.tmp
@@ -33,4 +48,5 @@ target-*/
 
 # Repository-local scratch roots.
 temp/
+/.worktrees/
 %SystemDrive%/

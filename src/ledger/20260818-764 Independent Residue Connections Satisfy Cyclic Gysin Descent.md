@@ -43,7 +43,7 @@ K_1\mapsto z^5K_1.
 Since \(da\wedge db\) has degree two, the raw master weights are
 
 \[
-\boxed{(-2,-1,1,1)}
+(-2,-1,1,1)
 \]
 
 for the double-pole class and the three simple-pole classes
@@ -89,9 +89,7 @@ S=\operatorname{diag}(z^{-2},z^{-1},z,z),
 the independently reduced connections satisfy
 
 \[
-\boxed{
 A_i=dS\,S^{-1}+S\rho^*A_{i+1}S^{-1}
-}
 \]
 
 for all three edges

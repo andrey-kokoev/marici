@@ -1,0 +1,68 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_289bf122-f4d1-481b-b1c0-915a56871ba4",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "defect_repair",
+    "summary": "Repair the over-coarse interpretation of the finite-deck transfer by restoring coefficient/Betti variance typing."
+  },
+  "idempotency_key": "nima-deck-readout-variance-correction-v1",
+  "expected_ledger_head": "04471f06fa38d348455f5a11e03b066f4b23ddf3a1872b00232a2c6b15395ef9",
+  "created_at": "2026-08-20T20:01:55.7074842Z",
+  "content_fingerprint": "f418b1c6ae3f6ebf85c8ca932e4c719a407f7e82da3deb3a2c80de5b21afdbf1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Deck Readout Variance Correction",
+      "version": "1",
+      "locator": "research/nima/deck-readout-variance-correction.md",
+      "entity_id": "source:e4e8ca7ad6ab516ab131"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Physical deck readout is a paired mixed-variance correspondence",
+      "summary": "For q:G->H, coefficient pullback q^* and Betti pushforward q_* satisfy evaluation adjunction. Fiber-sum on coefficient functions is algebraically valid but is not by itself the source-typed physical comparison.",
+      "entity_id": "claim:922c1bf9faa770b320fa"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "Covariant fiber-sum alone does not repair the typed cosmological physical readout",
+      "summary": "The earlier repair acts on coefficient functions only; Entry 1225 pairs contravariant coefficients with covariant Betti cycles.",
+      "entity_id": "criticism:7d7558b2d8c3e51101c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:922c1bf9faa770b320fa",
+      "target_id": "source:e4e8ca7ad6ab516ab131",
+      "relation_id": "rel:derived_from-9e435d58047cbc83"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "src",
+      "source_id": "criticism:7d7558b2d8c3e51101c6",
+      "target_id": "source:e4e8ca7ad6ab516ab131",
+      "relation_id": "rel:derived_from-0aa5662b2a8fef58"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "claim:b8a732397867674ba641",
+      "source_id": "criticism:7d7558b2d8c3e51101c6",
+      "relation_id": "rel:criticizes-f623d96e7d1a6b2e"
+    }
+  ],
+  "digest": "0eee469b031094e70ae4d593acaf31d7b558fd73f92af9b6d2a337b5f1af59df"
+}

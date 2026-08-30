@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1286,
+  "event_id": "ev-000000001286-292b9462-ef55-45b3-b279-eb949516bd14",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "7caad5207052ef9024674dc326c243c37cbb1a32e8ef858f04dff79d273cc71d",
+  "proposal_id": "ep_2ef42964-b642-42c8-ac41-c71c2eec2af6",
+  "proposal_digest": "b82230eed6009010152078842bb22ece955fb1130a0698dacfecb9e2b4dd03a8",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Paired-selector refinement and simultaneous coarse-spectrum preservation are distinct",
+      "body": "For selectors c,d, the paired selector has terminal kernel K_(c,d)=K_c intersection K_d and spectrum U(K_c intersection K_d). Requiring compatibility with both original coarse quotients instead gives U(K_c) intersection U(K_d), the unit system modulo lcm of their resonance radicals; these can differ strictly.",
+      "entity_id": "claim:c5b8b1808e4fb26dbf31"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C6 exact separator for paired refinement versus simultaneous coarse compatibility",
+      "body": "Order-2 and order-3 coset selectors on C6 pair to a selector with trivial kernel, allowing all indices on the refined quotient. Preserving both original quotients permits only indices prime to 6. Exact enumeration through 24 passes.",
+      "entity_id": "test:1553e61843a88e52cf38"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Paired-selector refinement versus simultaneous spectrum proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/paired-selector-refinement-versus-simultaneous-spectrum.md",
+      "entity_id": "source:b8920426ed2892ddd399"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact C6 paired-selector spectrum separator",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/paired_selector_refinement_spectrum.py",
+      "entity_id": "source:54741db60d276336c2cb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1288 — Paired Selectors Refine Quotients but Do Not Preserve Both Coarse Spectra",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1288 Paired Selectors Refine Quotients but Do Not Preserve Both Coarse Spectra.md",
+      "entity_id": "source:fa1e0b2c3c7af2901e29"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:1553e61843a88e52cf38",
+      "target_id": "claim:c5b8b1808e4fb26dbf31",
+      "relation_id": "rel:tests-e192b5b03550a03f"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:c5b8b1808e4fb26dbf31",
+      "target_id": "source:b8920426ed2892ddd399",
+      "relation_id": "rel:derived_from-73899228eebdd7f5"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:54741db60d276336c2cb",
+      "target_id": "test:1553e61843a88e52cf38",
+      "relation_id": "rel:promotes_to_evidence-423bf6fdde039109"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:fa1e0b2c3c7af2901e29",
+      "target_id": "claim:c5b8b1808e4fb26dbf31",
+      "relation_id": "rel:promotes_to_evidence-f6ff24f47ccd5294"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-33f67fbc68be07e825f38753",
+  "occurred_at": "2026-08-20T21:44:31.863646Z",
+  "certifies_truth": false,
+  "event_hash": "1881b1ec49e3763857312bd2d5efd8c6746e110662900a11258e9798e846c6f3"
+}

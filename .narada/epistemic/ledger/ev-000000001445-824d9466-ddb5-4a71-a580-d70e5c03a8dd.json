@@ -1,0 +1,76 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1445,
+  "event_id": "ev-000000001445-824d9466-ddb5-4a71-a580-d70e5c03a8dd",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "3ee21aa8495e028751393d1fa133ce157ab02f8d754fa1377a1903b9deaf1d51",
+  "proposal_id": "ep_eaf3f98f-3ac5-41c5-af42-897cdc8feee7",
+  "proposal_digest": "1f67b296fed58b2b188e58f57e10d279d566357ded716af14bf95dcde880ed69",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1399 — Naive Deck Parity Does Not Preserve the Cubic Affine Kernel",
+      "status": "supported",
+      "path": "src/ledger/20260820-1399 Naive Deck Parity Does Not Preserve the Cubic Affine Kernel.md",
+      "ledger_number": 1399,
+      "allocator_claim": "seqclaim-af88458cd918dc4e7e621aa2",
+      "entity_id": "mariciledger_entry:e0d8bad580a794a3db31"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Naive Kummer-character parity does not supply deck covariance of the mismatch plane",
+      "status": "supported",
+      "body": "At z=7 and z=13 over F_1019, A has rank 1152 but stacking A with its character-parity transform has full rank 1921. Thus parity at fixed kinematics does not preserve the affine kernel; equal complement-triple dimensions are not an intertwiner.",
+      "entity_id": "mariciclaim:bcaa097cb98461a4cc9c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Affine-kernel deck-parity row-space audit",
+      "status": "passed",
+      "body": "Both maximal-rank fibers give stacked rank 1921 versus affine rank 1152.",
+      "entity_id": "maricitest:891127a4fb3b9b88e232"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:e0d8bad580a794a3db31",
+      "target_id": "mariciclaim:bcaa097cb98461a4cc9c",
+      "relation_id": "rel:maricirecords-719cdebbfafa0634"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:records",
+      "source_ref": "entry",
+      "target_ref": "test",
+      "source_id": "mariciledger_entry:e0d8bad580a794a3db31",
+      "target_id": "maricitest:891127a4fb3b9b88e232",
+      "relation_id": "rel:maricirecords-2d1a8792f1370fc4"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:bcaa097cb98461a4cc9c",
+      "target_id": "maricitest:891127a4fb3b9b88e232",
+      "relation_id": "rel:maricisupported_by-fb9725d79812ac8c"
+    }
+  ],
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Record the replicated deck-parity covariance failure."
+  },
+  "idempotency_key": "auto-admission-1d84c30c91b7520364a41664",
+  "occurred_at": "2026-08-21T00:44:55.2819199Z",
+  "certifies_truth": false,
+  "event_hash": "2590a2d850cf7218b21d1e48e1bffd9d18f5d6134da094013039487b8a3a434f"
+}

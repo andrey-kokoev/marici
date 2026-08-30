@@ -1,0 +1,212 @@
+# Positive analytic cokernels are easy; self-adjoint descent is RH-strength
+
+Author: marici.Grothendieck
+
+## 1. Scaling graph norms still forget evaluations
+
+On the semilocal spectral side the scaling generator is multiplication by the
+real coordinate \(t\). Its finite graph norms have the form
+
+\[
+ \|f\|_k^2=\int_{\mathbb R}(1+|t|^{2k})|f(t)|^2\,d\mu(t).
+\]
+
+These are weighted \(L^2\) norms. Their vectors remain equivalence classes
+modulo null sets, so point evaluation is not well defined, much less
+continuous. Multiplication by any analytic function nonzero almost
+everywhere still has dense range.
+
+Thus no finite graph norm of the scaling multiplier creates the analytic
+boundary required by the zero cokernel. Analyticity requires additional
+control, such as exponential-domain norms, a Bargmann transform, or a
+source-derived reproducing kernel.
+
+## 2. A positive analytic quotient is not enough
+
+Let \(\mathcal H\) be any Hilbert space of entire reciprocal-even functions
+with continuous point evaluations. Let
+
+\[
+ \mathcal I_\xi
+ =\overline{\xi\mathcal P},
+ \qquad
+ \mathcal P=\mathbb C[w],
+ \qquad
+ w=s(s-1),
+\]
+
+and define the positive Hilbert cokernel
+
+\[
+ \mathcal K_\xi=\mathcal H\ominus\mathcal I_\xi.
+\]
+
+This construction can be made whenever the indicated multipliers lie in
+\(\mathcal H\). It is positive by Hilbert-space geometry regardless of where
+the zeros of \(\xi\) lie. Therefore
+
+\[
+\boxed{
+\text{positive analytic cokernel}
+\not\Rightarrow\mathrm{RH}.}
+\]
+
+The missing theorem cannot merely construct a Bargmann, Fock, Hardy, or
+de Branges ambient norm and observe that an orthogonal quotient is positive.
+
+## 3. Zero kernels are adjoint eigenvectors
+
+Let \(k_\rho\) be the reproducing kernel at a zero \(\rho\) of \(\xi\). Since
+
+\[
+ \langle \xi p,k_\rho\rangle
+ =(\xi p)(\rho)=0,
+\]
+
+we have \(k_\rho\in\mathcal K_\xi\).
+
+Suppose multiplication by \(w\) has a densely defined compression
+
+\[
+ S=P_{\mathcal K_\xi}M_w|_{\mathcal K_\xi}.
+\]
+
+For every admissible \(f\),
+
+\[
+ \langle Sf,k_\rho\rangle
+ =(wf)(\rho)
+ =w_\rho f(\rho).
+\]
+
+Hence
+
+\[
+\boxed{
+ S^*k_\rho=\overline{w_\rho}\,k_\rho.}
+\]
+
+This identity uses only reproducing-kernel evaluation and the source-derived
+quotient coordinate.
+
+## 4. Deficiency modes and the orientation theorem
+
+The identity above places \(k_\rho\) in the adjoint relation. Symmetry of
+\(S\) alone does **not** force \(w_\rho\) to be real: a closed symmetric
+operator can have nonreal eigenvalues of its adjoint, and these are precisely
+deficiency modes.
+
+If the descended operator is self-adjoint, however, its adjoint has no
+nonreal eigenvalues. Therefore
+
+\[
+ w_\rho=\rho(\rho-1)\in\mathbb R.
+\]
+
+For a nontrivial zero \(\rho=\sigma+i\gamma\),
+
+\[
+ \operatorname{Im}w_\rho=\gamma(2\sigma-1).
+\]
+
+Since nontrivial real zeros are independently absent and \(\gamma\ne0\), real
+\(w_\rho\) forces
+
+\[
+ \sigma=\tfrac12.
+\]
+
+Thus source-derived self-adjointness of the compressed quotient coordinate
+implies RH. A nonreal quotient coordinate is naturally typed as an unresolved
+boundary deficiency:
+
+\[
+\boxed{
+\text{off-critical zero}
+\longleftrightarrow
+\text{nonreal adjoint deficiency mode}.}
+\]
+
+The stronger lower bound for
+
+\[
+ B=-S
+\]
+
+then gives
+
+\[
+ Bk_\rho=(\gamma^2+\tfrac14)k_\rho,
+ \qquad B\ge\tfrac14.
+\]
+
+The floor is geometrically natural, but self-adjointness is the first
+load-bearing condition.
+
+## 5. Why arbitrary RKHS choices do not explain RH
+
+Given any discrete divisor, one can manufacture positive interpolation spaces
+whose quotient remembers it. Such a construction is compatible with
+off-critical zeros: the compressed multiplier is simply nonself-adjoint.
+
+Therefore the norm must do more than make evaluation bounded. It must be
+derived from the adelic source in a way that first proves the Green symmetry
+
+\[
+ \langle Sf,g\rangle-\langle f,Sg\rangle=0
+\]
+
+after the rational-boundary image is quotiented, and then proves that the
+resulting symmetric relation has no residual deficiency space.
+
+If the boundary form on the right is merely rewritten as the Xi Pick or Weil
+kernel, the construction is RH-equivalent but not explanatory. The desired
+gain is an independent cancellation law making this boundary form vanish.
+
+## 6. Revised Deutsch--Popperian conjecture
+
+**Source-self-adjoint analytic cokernel conjecture.** The completed theta/adelic
+source supplies an analytic boundary Hilbert space \(\mathcal H_{\mathrm{src}}\)
+such that:
+
+1. the Euler image ideal is closed and has the expected CCM zero cokernel;
+2. multiplication by \(w=s(s-1)\) preserves the correct maximal relation;
+3. rational-boundary sewing cancels its Green boundary form; and
+4. the descended operator \(B=-M_w\) is self-adjoint and bounded below by
+   \(1/4\).
+
+The conjecture is falsified by one source-admissible pair with nonzero Green
+boundary form, by an extra cokernel mode not generated by zero evaluation, or
+by failure of the domain to be invariant under \(w\).
+
+## 7. Next calculation
+
+The existing one-sided Cauchy modes
+
+\[
+ g_z(u)=ie^{izu}\mathbf1_{u\ge0}
+\]
+
+already produce the Xi Pick preshape through the explicit formula. Compute
+the Green commutator of multiplication by \(w\) on their finite span before
+asserting positivity. Separate it into:
+
+\[
+ \text{archimedean endpoint}
+ +\text{prime-power boundary}
+ +\text{rational sewing term}.
+\]
+
+The first question is whether the sum vanishes by an algebraic product
+formula or remains exactly the indefinite Weil form. If symmetry holds, the
+second and sharper question is whether modular sewing supplies a maximal
+boundary condition eliminating both deficiency spaces. This is a
+self-adjointness audit, not a positivity census.
+
+## 8. Scope
+
+The weighted-graph-norm obstruction, RKHS quotient construction, and
+adjoint-eigenvector/deficiency interpretation are exact. The self-adjointness
+implication is conditional on the stated domain typing and the standard
+absence of nontrivial real zeros. No source-derived symmetric norm,
+self-adjoint compression, lower bound, or RH proof is claimed.

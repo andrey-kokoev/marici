@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import copy,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/"research/aspect/scc"))
+from beurling_rigging_compiler import compile_beurling_rigging
+cpath=ROOT/"research/aspect/contracts/scc-typed-beurling-rigging.v1.json";rpath=ROOT/"research/aspect/results/scc_typed_beurling_rigging.json";base=json.loads(cpath.read_text(encoding="utf-8"))
+def run(name,mutate,expected):
+    c=copy.deepcopy(base);mutate(c);r=compile_beurling_rigging(c);return {"id":name,"expected":expected,"actual":r.get("first_failed_gate"),"passed":r.get("first_failed_gate")==expected}
+hostiles=[run("non_submultiplicative_weight",lambda c:c["monoid_elements"][-1].update(degree=9),"bounded_convolution"),run("scalar_fiber_collapse",lambda c:c["type_fibers"].update(channels=["primitive"],scalar_collapse_forbidden=False),"type_fibers"),run("incoherent_adams",lambda c:c["adams_maps"][0].update(fiberwise_coherent=False),"adams_coherence"),run("boundary_outgrows_weight",lambda c:c["boundary_rows"][-1].update(growth_degree=3),"boundary_growth"),run("seam_promoted_to_hilbert_port",lambda c:c["boundary_rows"][0].update(claimed_hilbert_bounded=True),"hilbert_port"),run("nonminimal_weight",lambda c:c.update(weight_exponent=3),"minimal_weight"),run("green_promoted_to_hilbert",lambda c:c["doubled_green"].update(claimed_hilbert_bounded=True),"doubled_green_continuity"),run("missing_dual_action",lambda c:c["common_operations"][0].update(dual_pairing_action=""),"three_rung_coherence")]
+positive=compile_beurling_rigging(base);out={"schema":"marici.aspect.scc-typed-beurling-rigging-check.v1","positive":positive,"hostiles":hostiles,"passed":positive["passed"] and all(x["passed"] for x in hostiles),"source_specific_open":["actual coefficient growth","source-derived minimal s","full type fibers","all Adams maps","doubled-Green source law"]};rpath.write_text(json.dumps(out,indent=2)+"\n",encoding="utf-8");print(json.dumps(out,indent=2));raise SystemExit(0 if out["passed"] else 1)

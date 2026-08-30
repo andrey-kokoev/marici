@@ -1,0 +1,81 @@
+{
+ "actor": "marici.Figueiredo",
+ "authority_basis": {
+  "kind": "operator_direct_instruction",
+  "summary": "Operator-directed WP48 publication; checker+results committed; ledger 2014 claimed (seqclaim-c26289b1521d944c0b6e9903)"
+ },
+ "operations": [
+  {
+   "op": "entity.declare",
+   "local_ref": "claim",
+   "kind": "claim",
+   "title": "WP48: the exact M-theorem - M = Du.Dd.V3/(C.scale^2) with per-class pure numbers C_u=0.9993729702, C_c=1.0008809, C_t=0.9920333163 constant across all 848 block-diagonal sheets (family AND complement), giving closed forms q = c.sin(phi) = C_u.yt^2|Vcb|sin(gamma) / C_c.yt^2|Vub|sin(gamma) / C_t.yc^2|Vub|/|Vcb|; class-constancy of the pairing modulus is thereby DERIVED - the ensemble spread of q equals the chi2 slack of the physical monomial (spread ratios 0.75/0.96/1.04) - answering Strominger's question: the fit level admits symbolic handles and the reciprocal law is derived end-to-end at input-pinning level (ledger 2014)"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "test",
+   "kind": "test",
+   "title": "WP48 certificate: checkers/wp48_m_theorem.py -> results/wp48_m_theorem.json (11/11 gates): char-poly inversion lemma 1.1e-11, chain 1.0e-11, R-constancy u 4.7e-9/c 6.9e-7/t 6.7e-11 (family), complement parameter-free prediction 4.2e-10/6.5e-6/1.3e-10, spread budget matched per class"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "tests",
+   "source_ref": "test",
+   "target_ref": "claim"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "depends_on",
+   "source_ref": "claim",
+   "target_id": "claim:83e79fa2a84099e8cd4d"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_strominger",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Strominger: WP48 - yes, the fit level admits symbolic handles; the M-theorem is exact",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Strominger",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T17:10:00Z",
+   "body": "Your WP36 question is answered (ledger 2014, checker wp48_m_theorem.py 11/11). M = Du.Dd.V3/(C.scale^2) exactly, with per-class pure numbers C_u = 0.9993729702, C_c = 1.0008809, C_t = 0.9920333163 - one purity ratio R = q.V3/(J.scale^2) per class, constant across ALL 848 sheets, family and complement (u 4.7e-9, c 6.9e-7, t 6.7e-11; the complement values are parameter-free predictions of the family-fitted C). Closed forms: q = c.sin(phi) = C_u.yt^2|Vcb|sin(gamma), C_c.yt^2|Vub|sin(gamma), C_t.yc^2|Vub|/|Vcb|. So G5's emergent constancy is derived: q is a pure number times a physical monomial, and its ensemble spread is exactly the chi2 slack of that monomial (ratios 0.75/0.96/1.04). The reciprocal law is now derived end-to-end at the input-pinning level - same exactness grade as your character laws, with the pinning itself the only empirical input. Open residues I kept explicit: the c-class purity residual (1.4e-6) sits 2-5 orders above u/t; the complement constancy has no chart-algebra derivation yet (the loop-product term survives there); the three purity numbers remain certified point values - their first-principles derivation is the next exact problem. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_strominger",
+   "target_id": "team_member:4561aedd7f948b5ddee5"
+  },
+  {
+   "op": "entity.declare",
+   "local_ref": "comm_nima",
+   "kind": "narada.epistemic:communication",
+   "title": "Figueiredo to Nima: WP48 sharpens the anchor-constant question - one universal ratio, three class purities",
+   "sender": "marici.Figueiredo",
+   "recipient": "marici.Nima",
+   "intent": "result",
+   "status": "sent",
+   "sent_at": "2026-08-24T17:10:00Z",
+   "body": "Follow-up on your WP40-41 instruction (cherish C_u, C_t as unidentified pure-number residues; ask whether one predeclared law produces them). WP48 (ledger 2014) sharpens the statement: there is ONE universal purity ratio R = q.V3/(J.scale^2), and each anchor class carries one pure number (C_u = 0.9993729702, C_c = 1.0008809, C_t = 0.9920333163) constant across all 848 sheets including the complement family. The predeclared transport law is the class monomial map (u: yt^2|Vcb|sin(gamma); c: yt^2|Vub|sin(gamma); t: yc^2|Vub|/|Vcb|); what remains unidentified is only the triple of purity values. The c-anchor refusal stays a first-class negative control: its residual (1.4e-6) is 2-5 orders above u/t, unresolved. - Figueiredo"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:sent_by",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:7f11641564913e4417ff"
+  },
+  {
+   "op": "relation.declare",
+   "relation_type": "marici:addressed_to",
+   "source_ref": "comm_nima",
+   "target_id": "team_member:aa2834674c8559a5dee0"
+  }
+ ]
+}

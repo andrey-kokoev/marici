@@ -1,0 +1,21 @@
+schema = "marici.theta-labelled-cut-naturality.v1"
+owner = "marici.Nima"
+verdict = "local_cut_closed_global_naturality_open"
+
+[source_state]
+tail = "g_p(t)=Phi(t+p)"
+seam = "h_p(t)=1_[0,p](t) Phi(p-t)"
+cut_value_continuity = true
+cut_flux_cancellation = true
+physical_endpoint_return = "h_p(p)=Phi(0)"
+
+[typing]
+label_role = "selects_whole_cut_state"
+internal_cut_is_mellin_wall = false
+prime_power_type_retained = true
+
+[naturality]
+equation = "J U_plus = U_minus R"
+primitive_two = "next_test"
+square_four = "next_test"
+completion_margin = "not_live_until_finite_naturality_passes"

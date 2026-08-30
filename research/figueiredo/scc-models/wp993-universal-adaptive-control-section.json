@@ -1,0 +1,43 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "wp993-universal-adaptive-control-section",
+    "owner": "marici.Figueiredo",
+    "classification": "formal_universal_feedback_section_missing_closed_loop_apparatus",
+    "stratum": "positive corrected two-dimensional invariant quotient (q,k), three labelled configurations, and additive controls (u,v) acting by Q=q+u and R=k+v",
+    "inputs": [
+      "research/flavor/flavor-three-state-control-region-no-go.md",
+      "research/flavor/results/wp992_three_state_control_region_no_go.json",
+      "research/flavor/flavor-universal-adaptive-control-section.md",
+      "research/flavor/checkers/wp993_universal_adaptive_control_section.py",
+      "research/flavor/results/wp993_universal_adaptive_control_section.json"
+    ],
+    "checks": [
+      {
+        "id": "wp993_universal_adaptive_control_section",
+        "path": "research/flavor/checkers/wp993_universal_adaptive_control_section.py",
+        "requires": []
+      }
+    ],
+    "depends_on": ["wp992-three-state-control-region-no-go"],
+    "consumes": [
+      "exact three-state control regions",
+      "faithful corrected quotient record",
+      "additive-energy quotient descent",
+      "source-constructor authority gates"
+    ],
+    "provides": [
+      "universal affine feedback section on the full positive quotient",
+      "exact removal of the finite-schedule support obstruction under perfect feedback",
+      "factorization of the remaining obstruction into measurement feedback actuation and verification"
+    ],
+    "missing_constructors": [
+      "calibrated nondestructive or reset-compatible q k measurement",
+      "source-authorized independent invariant actuators u and v",
+      "typed feedback composition with latency disturbance and covariance",
+      "labelled relative-energy verification in the same physical frame"
+    ],
+    "next_falsifier": "exhibit two equivalent preparations with inconsistent calibrated q,k records or one commanded control pair whose physical response violates Q=q+u and R=k+v outside preregistered uncertainty"
+  }
+}

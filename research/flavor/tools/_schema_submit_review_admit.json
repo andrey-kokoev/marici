@@ -1,0 +1,406 @@
+{
+ "type": "object",
+ "properties": {
+  "actor": {
+   "type": "string",
+   "minLength": 1,
+   "maxLength": 8192
+  },
+  "authority_basis": {
+   "type": "object",
+   "description": "Why this actor may propose the contribution.",
+   "minProperties": 1,
+   "maxProperties": 256
+  },
+  "idempotency_key": {
+   "type": "string",
+   "minLength": 1,
+   "description": "Optional override; omitted values use deterministic content-hash idempotency.",
+   "maxLength": 8192
+  },
+  "expected_ledger_head": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Optional explicit CAS boundary; omitted means the current head. Use null only for an empty graph."
+  },
+  "operations": {
+   "type": "array",
+   "minItems": 1,
+   "maxItems": 200,
+   "items": {
+    "oneOf": [
+     {
+      "title": "Declare entity",
+      "type": "object",
+      "properties": {
+       "op": {
+        "const": "entity.declare"
+       },
+       "entity_id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Optional override; omit for deterministic identity from kind, title, version, and locator.",
+        "maxLength": 8192
+       },
+       "local_ref": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Optional proposal-local name for relation source_ref/target_ref.",
+        "maxLength": 8192
+       },
+       "kind": {
+        "type": "string",
+        "description": "Core entity kind (problem, conjecture, claim, criticism, test, source) or a namespaced extension kind such as cintamani:experiment.",
+        "maxLength": 8192
+       },
+       "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "locator": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       }
+      },
+      "required": [
+       "op",
+       "kind",
+       "title"
+      ],
+      "allOf": [
+       {
+        "if": {
+         "properties": {
+          "kind": {
+           "const": "source"
+          }
+         },
+         "required": [
+          "kind"
+         ]
+        },
+        "then": {
+         "required": [
+          "version",
+          "locator"
+         ]
+        }
+       }
+      ],
+      "additionalProperties": true,
+      "maxProperties": 256
+     },
+     {
+      "title": "Declare relation",
+      "type": "object",
+      "properties": {
+       "op": {
+        "const": "relation.declare"
+       },
+       "relation_id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Optional override. Omit to derive a deterministic id from relation_type, source_id, and target_id.",
+        "maxLength": 8192
+       },
+       "relation_type": {
+        "oneOf": [
+         {
+          "type": "string",
+          "enum": [
+           "addresses",
+           "criticizes",
+           "tests",
+           "depends_on",
+           "derived_from",
+           "transforms",
+           "supersedes",
+           "sent_by",
+           "addressed_to",
+           "replies_to",
+           "requests",
+           "reports",
+           "acknowledges",
+           "promotes_to_evidence"
+          ]
+         },
+         {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*$",
+          "maxLength": 8192
+         }
+        ],
+        "description": "Use a listed core relation, or namespace an extension such as marici:refines."
+       },
+       "source_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "target_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "source_ref": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "target_ref": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       }
+      },
+      "required": [
+       "op",
+       "relation_type"
+      ],
+      "allOf": [
+       {
+        "anyOf": [
+         {
+          "required": [
+           "source_id"
+          ]
+         },
+         {
+          "required": [
+           "source_ref"
+          ]
+         }
+        ]
+       },
+       {
+        "anyOf": [
+         {
+          "required": [
+           "target_id"
+          ]
+         },
+         {
+          "required": [
+           "target_ref"
+          ]
+         }
+        ]
+       }
+      ],
+      "additionalProperties": true,
+      "maxProperties": 256
+     },
+     {
+      "title": "Record assessment",
+      "type": "object",
+      "properties": {
+       "op": {
+        "const": "assessment.record"
+       },
+       "assessment_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "subject_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "judgment": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "actor": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "reason": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "evidence": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "object",
+         "properties": {
+          "source_id": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          },
+          "locator": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          },
+          "paraphrase": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          }
+         },
+         "required": [
+          "source_id",
+          "locator",
+          "paraphrase"
+         ],
+         "additionalProperties": false,
+         "maxProperties": 256
+        },
+        "maxItems": 500
+       }
+      },
+      "required": [
+       "op",
+       "assessment_id",
+       "subject_id",
+       "judgment",
+       "actor",
+       "reason",
+       "evidence"
+      ],
+      "additionalProperties": true,
+      "maxProperties": 256
+     },
+     {
+      "title": "Record test outcome",
+      "type": "object",
+      "properties": {
+       "op": {
+        "const": "test_outcome.record"
+       },
+       "outcome_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "test_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "actor": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "outcome": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "evidence": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "object",
+         "properties": {
+          "source_id": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          },
+          "locator": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          },
+          "paraphrase": {
+           "type": "string",
+           "minLength": 1,
+           "maxLength": 8192
+          }
+         },
+         "required": [
+          "source_id",
+          "locator",
+          "paraphrase"
+         ],
+         "additionalProperties": false,
+         "maxProperties": 256
+        },
+        "maxItems": 500
+       }
+      },
+      "required": [
+       "op",
+       "outcome_id",
+       "test_id",
+       "actor",
+       "outcome",
+       "evidence"
+      ],
+      "additionalProperties": true,
+      "maxProperties": 256
+     },
+     {
+      "title": "Record bounded search sweep",
+      "type": "object",
+      "properties": {
+       "op": {
+        "const": "sweep.record"
+       },
+       "sweep_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "interval_start": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "interval_end": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "method": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       },
+       "result": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+       }
+      },
+      "required": [
+       "op",
+       "sweep_id",
+       "interval_start",
+       "interval_end",
+       "method",
+       "result"
+      ],
+      "additionalProperties": true,
+      "maxProperties": 256
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "actor",
+  "authority_basis",
+  "operations"
+ ],
+ "additionalProperties": false,
+ "maxProperties": 256,
+ "title": "epistemic_graph_submit_review_admit.input"
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d3b51c37-9da0-4623-a02f-6475c49bc4f3",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-cc320f717746a54e924db108",
+  "expected_ledger_head": "81baa8c8dd11d298445f7e87abe67a1afe0db2b82ad76d37bfa6e38f36f1a01d",
+  "created_at": "2026-08-20T21:49:15.0795864Z",
+  "content_fingerprint": "cc320f717746a54e924db10854932c440b1cddfef47100de3a40e964029fc4f1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1291 — The Five-Site Character Filtration Is the Shadow of an Exact Homogeneous Grading",
+      "status": "active",
+      "ledger_number": 1291,
+      "path": "src/ledger/20260820-1291 The Five-Site Character Filtration Is the Shadow of an Exact Homogeneous Grading.md",
+      "entity_id": "mariciledger_entry:df6c89353157336236ca"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "Five-site Kummer coefficient degree plus deck-character weight equals sixteen",
+      "status": "supported",
+      "body": "After restoring the external scale rho, every monomial of C_S is homogeneous of degree 16-|S| in (t,u,rho), and all 32 characters remain nonzero.",
+      "entity_id": "mariciclaim:e5dc76b5a4ef1675ae87"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact homogenized 32-character quotient reduction",
+      "status": "passed",
+      "body": "All 43296 reduced monomials pass exact homogeneous-degree and parity audits; degree ranges are exactly 16,15,14,13,12,11 by character weight.",
+      "entity_id": "maricitest:7f033c072a8c02b8c6b4"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports exact homogeneous five-site character grading",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1291 strengthens 1286: restoring a single external scale rho makes every Kummer coefficient C_S exactly homogeneous with deg(C_S)+|S|=16. All 32 characters and 43296 terms survive. This is presently a numerator grading; the next test is whether the 26-wall localized differential respects the corresponding graded shifts.",
+      "entity_id": "maricicommunication:35494e3e00b23d17df7c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:df6c89353157336236ca",
+      "target_id": "mariciclaim:e5dc76b5a4ef1675ae87",
+      "relation_id": "rel:maricidocuments-2642445d34087deb"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:e5dc76b5a4ef1675ae87",
+      "target_id": "maricitest:7f033c072a8c02b8c6b4",
+      "relation_id": "rel:maricisupported_by-ec313f5db5db7ff7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:35494e3e00b23d17df7c",
+      "relation_id": "rel:maricisent_by-647a4ecff2a03566"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:35494e3e00b23d17df7c",
+      "relation_id": "rel:mariciaddressed_to-2e09eb06682debcd"
+    }
+  ],
+  "digest": "c94fc73c1def2961fdb989a1ff9b5beb566c3c144ca4221f7d72509abfc93734"
+}

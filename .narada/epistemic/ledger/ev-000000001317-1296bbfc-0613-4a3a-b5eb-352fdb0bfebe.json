@@ -1,0 +1,99 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1317,
+  "event_id": "ev-000000001317-1296bbfc-0613-4a3a-b5eb-352fdb0bfebe",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "b8bd4505f43755104911a2916d546150d395908e5174f445b3907fe7488a003b",
+  "proposal_id": "ep_5f03088e-c824-4b29-aa64-34f5989baf6d",
+  "proposal_digest": "cd8bb25120174a473f1622cd976807f618d4c909ad3e9ae44128a63adac04877",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Even a split quotient need not admit a natural selection-preserving section transfer",
+      "body": "A section transfer is natural under source automorphisms over H only if its section is fixed by Aut_H(G). Such an invariant section need not exist even when group-homomorphic sections exist; therefore abstract splitting does not canonically supply the transfer.",
+      "entity_id": "claim:60f6e26ad2eba35bcb9a"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "C2×C2->C2 no-natural-section hostile control",
+      "body": "There are exactly two identity-preserving group-homomorphic sections. The base-preserving shear (a,b)->(a,a+b) swaps them, so the automorphism-natural section count is zero. All assertions pass.",
+      "entity_id": "test:25c031a9f3b1ba1c795b"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "No-natural-section transfer proof packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/no-natural-section-transfer.md",
+      "entity_id": "source:9e546ce7d8e51ad45b24"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "checker",
+      "kind": "source",
+      "title": "Exact split-quotient section-naturality checker",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/checkers/no_natural_section_transfer.py",
+      "entity_id": "source:156c9cb8b00a5f18c3bb"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1308 — Even a Split Quotient Need Not Have a Natural Selection-Preserving Transfer",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1308 Even a Split Quotient Need Not Have a Natural Selection-Preserving Transfer.md",
+      "entity_id": "source:43965ac42949b4af6016"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:25c031a9f3b1ba1c795b",
+      "target_id": "claim:60f6e26ad2eba35bcb9a",
+      "relation_id": "rel:tests-f822319cacc76847"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:60f6e26ad2eba35bcb9a",
+      "target_id": "source:9e546ce7d8e51ad45b24",
+      "relation_id": "rel:derived_from-fda5f18d0c70fce8"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "checker",
+      "target_ref": "test",
+      "source_id": "source:156c9cb8b00a5f18c3bb",
+      "target_id": "test:25c031a9f3b1ba1c795b",
+      "relation_id": "rel:promotes_to_evidence-38957f30633a7312"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:43965ac42949b4af6016",
+      "target_id": "claim:60f6e26ad2eba35bcb9a",
+      "relation_id": "rel:promotes_to_evidence-a547dc006b955feb"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed research lane."
+  },
+  "idempotency_key": "auto-admission-9f9ae49c360499bbb0cf96cd",
+  "occurred_at": "2026-08-20T22:21:04.8687712Z",
+  "certifies_truth": false,
+  "event_hash": "c362e3a76ee271ad1fb0019edf72a4145a4dced8e4c2aaf678028a0472a6ef95"
+}

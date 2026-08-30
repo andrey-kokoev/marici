@@ -13,6 +13,7 @@
     "graph:test:e2e": "playwright test tests/graph.spec.mjs",
     "graph:test:live": "playwright test tests/graph.spec.mjs --config playwright.live.config.mjs",
     "frontier:check": "node scripts/check-frontier-atlas.mjs",
+    "oddballs:check": "node scripts/check-oddball-observatory.mjs",
     "bootstrap": "node scripts/assemble-narada-source.mjs && pnpm install",
     "build:ui": "pnpm --filter @narada-core/ui build",
     "dev": "pnpm run build:ui && astro dev",
@@ -21,6 +22,7 @@
     "check": "pnpm run math:check && pnpm run build:ui && astro check",
     "build": "pnpm run math:check && pnpm run build:ui && astro build && pnpm run math:check:dist",
     "preview": "astro preview",
+    "cleanup:aged": "pwsh -NoLogo -NoProfile -File scripts/cleanup-aged.ps1",
     "ship": "pnpm run build && wrangler deploy"
   },
   "dependencies": {

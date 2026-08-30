@@ -1,0 +1,970 @@
+{
+  "schema": "marici.authority-grant-composition.v1",
+  "evidence_domains": [
+    {"id": "D_common", "kind": "finite_common_domain", "atoms": ["e0", "e1"], "authority_boundary": "readout only"},
+    {"id": "D_transport_A", "kind": "chart_A", "atoms": ["a0", "a1"], "authority_boundary": "readout only"},
+    {"id": "D_transport_B", "kind": "chart_B", "atoms": ["b0", "b1"], "authority_boundary": "readout only"},
+    {"id": "D_theta_positive", "kind": "folded_half_line_chart", "atoms": ["trace", "labels", "halfline"], "authority_boundary": "positive-chart readout"},
+    {"id": "D_theta_doubled", "kind": "reciprocal_doubled_chart", "atoms": ["trace", "labels", "halfline", "reflection", "seam_current"], "authority_boundary": "doubled readout, not observer or RH authority"},
+    {"id": "D_kitaev_couplers", "kind": "postulated_nonlinear_coupler_model", "atoms": ["H2", "H3", "Hex", "calibrated_angles"], "authority_boundary": "conditional logical execution"},
+    {"id": "D_kitaev_rails", "kind": "frozen_five_rail_support", "atoms": ["rail_support", "distance_three_spread"], "authority_boundary": "support evidence only"}
+  ],
+  "transformations": [
+    {"id": "chart_transport", "source_domain": "D_transport_A", "target_domain": "D_transport_B", "atom_map": {"a0": "b0", "a1": "b1"}, "variance": "covariant", "preserves_evidence": true, "preserves_authority": true, "evidence": "source-derived chart equivalence"},
+    {"id": "rail_base_change", "source_domain": "D_kitaev_couplers", "target_domain": "D_kitaev_rails", "atom_map": {}, "variance": "covariant", "preserves_evidence": true, "preserves_authority": false, "evidence": "formal rail support survives while encoded intertwining fails"}
+  ],
+  "authority_grants": [
+    {"id": "id_A", "source_object": "A", "target_operation": "identity", "target_object": "A", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "identity_cell", "source_authority_evidence": "identity preserves admitted readout", "status": "identity", "identity": true},
+    {"id": "id_B", "source_object": "B", "target_operation": "identity", "target_object": "B", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "identity_cell", "source_authority_evidence": "identity preserves admitted readout", "status": "identity", "identity": true},
+    {"id": "g_AB", "source_object": "A", "target_operation": "read_AB", "target_object": "B", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout AB", "status": "admitted"},
+    {"id": "g_BC", "source_object": "B", "target_operation": "read_BC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout BC", "status": "admitted"},
+    {"id": "g_CD", "source_object": "C", "target_operation": "read_CD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "common_domain_cell", "source_authority_evidence": "independent source readout CD", "status": "admitted"},
+    {"id": "g_AC", "source_object": "A", "target_operation": "read_AC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "composite readout AB then BC", "status": "admitted"},
+    {"id": "g_BD", "source_object": "B", "target_operation": "read_BD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "composite readout BC then CD", "status": "admitted"},
+    {"id": "g_AD_left", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "left-associated triple readout", "status": "admitted"},
+    {"id": "g_AD_right", "source_object": "A", "target_operation": "read_AD", "target_object": "D", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "triple_cell", "source_authority_evidence": "right-associated triple readout", "status": "admitted"},
+    {"id": "g_ABprime", "source_object": "A", "target_operation": "encode_ABprime", "target_object": "Bprime", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "independent source encoding through alternative presentation", "status": "admitted"},
+    {"id": "g_BprimeC", "source_object": "Bprime", "target_operation": "decode_BprimeC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "independent source decoding from alternative presentation", "status": "admitted"},
+    {"id": "g_AC_via_Bprime", "source_object": "A", "target_operation": "read_AC_via_Bprime", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "B_to_Bprime_cell", "source_authority_evidence": "alternative composite related by a source-derived presentation equivalence", "status": "admitted"},
+    {"id": "g_AC_direct", "source_object": "A", "target_operation": "read_AC", "target_object": "C", "authority_kind": "readout", "evidence_domain": "D_common", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "pair_cell", "source_authority_evidence": "direct source grant independent of the B presentation", "status": "admitted"},
+    {"id": "t_AB", "source_object": "TA", "target_operation": "chart_read", "target_object": "TB", "authority_kind": "readout", "evidence_domain": "D_transport_A", "variance": "covariant", "admissible_transformations": ["chart_transport"], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-A readout", "status": "admitted"},
+    {"id": "t_BC", "source_object": "TB", "target_operation": "chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_cell", "source_authority_evidence": "chart-B readout", "status": "admitted"},
+    {"id": "t_AC", "source_object": "TA", "target_operation": "transported_chart_read", "target_object": "TC", "authority_kind": "readout", "evidence_domain": "D_transport_B", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "chart_transport_cell", "source_authority_evidence": "authority-preserving chart transport", "status": "admitted"},
+    {"id": "theta_labels_Splus", "source_object": "theta_positive_labels", "target_operation": "halfline_overlap", "target_object": "Splus", "authority_kind": "readout", "evidence_domain": "D_theta_positive", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "halfline_trace_cell", "source_authority_evidence": "Hilbert-Schmidt synthesis and trace-class overlap", "status": "admitted"},
+    {"id": "theta_Splus_double", "source_object": "Splus", "target_operation": "reciprocal_doubling", "target_object": "Sdouble", "authority_kind": "readout", "evidence_domain": "D_theta_doubled", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "moving_endpoint_seam_current", "source_authority_evidence": "reflection exchanges folded charts and endpoint derivative supplies seam current", "status": "admitted"},
+    {"id": "theta_labels_double", "source_object": "theta_positive_labels", "target_operation": "doubled_trace_readout", "target_object": "Sdouble", "authority_kind": "readout", "evidence_domain": "D_theta_doubled", "variance": "covariant", "admissible_transformations": [], "required_coherence_witness": "moving_endpoint_seam_current", "source_authority_evidence": "completed doubled carrier with seam correction", "status": "admitted"},
+    {"id": "kitaev_couplers_logical", "source_object": "postulated_nonlinear_couplers", "target_operation": "exact_logical_gate_synthesis", "target_object": "logical_D_S3_gates", "authority_kind": "executor", "evidence_domain": "D_kitaev_couplers", "variance": "covariant", "admissible_transformations": ["rail_base_change"], "required_coherence_witness": "pulse_exponential_identity", "source_authority_evidence": "conditional synthesis after couplers and calibrations are admitted", "status": "admitted"}
+  ],
+  "compositions": [
+    {"id": "c_idA_AB", "left": "id_A", "right": "g_AB", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
+    {"id": "c_AB_idB", "left": "g_AB", "right": "id_B", "result": "g_AB", "mode": "domain_intersection", "coherence_witness": "identity_cell"},
+    {"id": "c_AB_BC", "left": "g_AB", "right": "g_BC", "result": "g_AC", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
+    {"id": "c_ABprime_BprimeC", "left": "g_ABprime", "right": "g_BprimeC", "result": "g_AC_via_Bprime", "mode": "domain_intersection", "coherence_witness": "B_to_Bprime_cell"},
+    {"id": "c_BC_CD", "left": "g_BC", "right": "g_CD", "result": "g_BD", "mode": "domain_intersection", "coherence_witness": "pair_cell"},
+    {"id": "c_AC_CD", "left": "g_AC", "right": "g_CD", "result": "g_AD_left", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
+    {"id": "c_AB_BD", "left": "g_AB", "right": "g_BD", "result": "g_AD_right", "mode": "domain_intersection", "coherence_witness": "triple_cell"},
+    {"id": "c_transport", "left": "t_AB", "right": "t_BC", "result": "t_AC", "mode": "transport", "transformation": "chart_transport", "coherence_witness": "chart_transport_cell"},
+    {"id": "c_theta", "left": "theta_labels_Splus", "right": "theta_Splus_double", "result": "theta_labels_double", "mode": "authority_extension", "coherence_witness": "moving_endpoint_seam_current", "extension_authority": "reciprocal completion of the positive theta source", "new_atom_evidence": "reflection and partial_c K_d seam-current formula"}
+  ],
+  "identity_laws": [
+    {"id": "left_identity_AB", "composition": "c_idA_AB", "grant": "g_AB"},
+    {"id": "right_identity_AB", "composition": "c_AB_idB", "grant": "g_AB"}
+  ],
+  "associativity_cells": [
+    {"id": "assoc_ABCD", "left_factorization": "c_AC_CD", "right_factorization": "c_AB_BD", "variance": "covariant", "triple_coherence_witness": "source-derived common-domain associator", "coherence_defect": 0}
+  ],
+  "source_provenance": {
+    "id": "authority_explanation_provenance",
+    "nodes": [
+      {"id": "prov_source", "role": "source_constructor", "stage": 0, "evidence": "declared constructor grammar before target selection"},
+      {"id": "prov_local", "role": "local_mechanism", "stage": 1, "evidence": "source-generated local encode/decode maps"},
+      {"id": "prov_coherence", "role": "coherence_witness", "stage": 2, "evidence": "source comparison of presentation routes"},
+      {"id": "prov_global", "role": "global_authority", "stage": 3, "evidence": "effective descent reconstruction"},
+      {"id": "prov_readout", "role": "readout", "stage": 4, "evidence": "terminal evaluation after authority reconstruction"}
+    ],
+    "edges": [
+      {"id": "prov_e_source_local", "source": "prov_source", "target": "prov_local", "source_derived": true},
+      {"id": "prov_e_local_coherence", "source": "prov_local", "target": "prov_coherence", "source_derived": true},
+      {"id": "prov_e_coherence_global", "source": "prov_coherence", "target": "prov_global", "source_derived": true},
+      {"id": "prov_e_global_readout", "source": "prov_global", "target": "prov_readout", "source_derived": true}
+    ]
+  },
+  "source_intervention_tests": [
+    {
+      "id": "intervene_on_source_constructor",
+      "kind": "source_perturbation",
+      "observed_affected_nodes": ["prov_source", "prov_local", "prov_coherence", "prov_global", "prov_readout"],
+      "required_downstream_response": ["prov_local", "prov_coherence", "prov_global"],
+      "fresh_recomputation": true
+    },
+    {
+      "id": "intervene_on_target_readout",
+      "kind": "target_perturbation",
+      "observed_affected_nodes": ["prov_readout"],
+      "fresh_recomputation": false
+    },
+    {
+      "id": "delete_source_constructor",
+      "kind": "source_deletion",
+      "observed_affected_nodes": ["prov_source", "prov_local", "prov_coherence", "prov_global"],
+      "cached_output_may_survive": true,
+      "authority_survives": false
+    }
+  ],
+  "mechanism_identification_audits": [
+    {
+      "id": "finite_three_mechanism_identification",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3"],
+      "observation_matrix": [[1, 0, 1], [0, 1, 1], [1, 1, 0]],
+      "source_authorized_gauge_dimension": 0,
+      "source_derived_ports": "ports fixed by constructor grammar before observing the target",
+      "bounded_claim_scope": "the declared finite family of three candidate mechanisms and three exact probes",
+      "no_universal_extrapolation": true
+    },
+    {
+      "id": "finite_stacky_mechanism_identification",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "gauge_copy"],
+      "intervention_ports": ["source_probe_1", "source_probe_2"],
+      "observation_matrix": [[1, 0, 1], [0, 1, 1]],
+      "source_authorized_gauge_dimension": 1,
+      "source_derived_ports": "two source-fixed probes identify the quotient mechanism class",
+      "bounded_claim_scope": "the declared finite candidate family modulo its one-dimensional source gauge",
+      "no_universal_extrapolation": true
+    }
+  ],
+  "rival_admissions": [
+    {
+      "id": "admit_mechanism_delta",
+      "mechanism_id": "mechanism_delta",
+      "proposer_source": "independent extended constructor packet",
+      "constructor_grammar": "finite source law generating delta without using incumbent fitted coefficients",
+      "admissible_domain": "the same finite intervention domain as the incumbent mechanisms",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": true,
+      "non_gauge_witness": "delta differs from every authorized gauge orbit on a declared source invariant",
+      "falsifiable_difference": "delta predicts a distinct response under source_probe_delta",
+      "admitted_before_response_selection": true,
+      "status": "admitted"
+    },
+    {
+      "id": "reject_gauge_copy_as_rival",
+      "mechanism_id": "mechanism_alpha_gauge_copy",
+      "proposer_source": "authorized gauge action on mechanism_alpha",
+      "constructor_grammar": "source_gauge applied to alpha",
+      "admissible_domain": "incumbent finite intervention domain",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": true,
+      "non_gauge_witness": null,
+      "falsifiable_difference": "none outside the authorized gauge orbit",
+      "admitted_before_response_selection": true,
+      "status": "rejected"
+    },
+    {
+      "id": "pending_port_incomplete_speculation",
+      "mechanism_id": "mechanism_epsilon",
+      "proposer_source": "partial speculative constructor",
+      "constructor_grammar": "incomplete source sketch",
+      "admissible_domain": "proper subset of the incumbent intervention domain",
+      "independent_of_incumbent_fit": true,
+      "predicts_all_existing_ports": false,
+      "non_gauge_witness": "provisional invariant difference",
+      "falsifiable_difference": "not yet total on existing ports",
+      "admitted_before_response_selection": true,
+      "status": "pending"
+    }
+  ],
+  "review_authority_root_certifications": [
+    {
+      "id": "source_methods_board_A",
+      "holder": "independent_reviewer_A",
+      "issuing_charter": "cross_sector_methods_charter_A",
+      "provenance_chain": ["cross_sector_methods_charter_A", "independent_reviewer_A"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_B",
+      "holder": "independent_reviewer_B",
+      "issuing_charter": "cross_sector_methods_charter_B",
+      "provenance_chain": ["cross_sector_methods_charter_B", "independent_reviewer_B"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
+    },
+    {
+      "id": "source_appeal_panel",
+      "holder": "independent_appeal_panel",
+      "issuing_charter": "cross_sector_appeal_charter",
+      "provenance_chain": ["cross_sector_appeal_charter", "independent_appeal_panel"],
+      "jurisdiction": "rival_admission_appeal",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 0,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_A_successor",
+      "holder": "independent_reviewer_A_successor",
+      "issuing_charter": "cross_sector_methods_charter_A_successor",
+      "provenance_chain": ["cross_sector_methods_charter_A_successor", "independent_reviewer_A_successor"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_C",
+      "holder": "independent_reviewer_C",
+      "issuing_charter": "cross_sector_methods_charter_C",
+      "provenance_chain": ["cross_sector_methods_charter_C", "independent_reviewer_C"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_D",
+      "holder": "independent_reviewer_D",
+      "issuing_charter": "cross_sector_methods_charter_D",
+      "provenance_chain": ["cross_sector_methods_charter_D", "independent_reviewer_D"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_E",
+      "holder": "independent_reviewer_E",
+      "issuing_charter": "cross_sector_methods_charter_E",
+      "provenance_chain": ["cross_sector_methods_charter_E", "independent_reviewer_E"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    },
+    {
+      "id": "source_methods_board_F",
+      "holder": "independent_reviewer_F",
+      "issuing_charter": "cross_sector_methods_charter_F",
+      "provenance_chain": ["cross_sector_methods_charter_F", "independent_reviewer_F"],
+      "jurisdiction": "rival_admission_merits",
+      "authority_kind": "procedural_review",
+      "operative_authority_ceiling": "challenge_standing",
+      "may_select_mechanism_truth": false,
+      "revocable": true,
+      "valid_from": 21,
+      "revoked_at": null
+    }
+  ],
+  "review_root_independence_audits": [
+    {
+      "id": "merits_roots_A_B_independent",
+      "roots": ["source_methods_board_A", "source_methods_board_B"],
+      "shared_controlling_ancestors": [],
+      "source_derived_comparison": "charter provenance comparison fixed before rival submission",
+      "coherence_defect": 0
+    }
+  ],
+  "rival_admission_reviews": [
+    {
+      "id": "review_mechanism_delta",
+      "admission_id": "admit_mechanism_delta",
+      "proposer": "delta_source_team",
+      "incumbent": "incumbent_mechanism_team",
+      "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
+      "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
+      "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
+      "criteria_committed_before_response": true,
+      "immutable_evidence_packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+      "decision": "admitted",
+      "authority_kind_before": "constructor",
+      "authority_kind_after": "constructor",
+      "grants_only_challenge_standing": true,
+      "appeal_available": true,
+      "reviewed_at": 10
+    },
+    {
+      "id": "review_gauge_copy",
+      "admission_id": "reject_gauge_copy_as_rival",
+      "proposer": "gauge_copy_proposer",
+      "incumbent": "incumbent_mechanism_team",
+      "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
+      "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
+      "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
+      "criteria_committed_before_response": true,
+      "immutable_evidence_packet_sha256": "1e88ea5f530cdef15c47179e91567e34189b86435e6085cd50b01e59de299962",
+      "decision": "rejected",
+      "authority_kind_before": "constructor",
+      "authority_kind_after": "constructor",
+      "grants_only_challenge_standing": true,
+      "appeal_available": true,
+      "reviewed_at": 10
+    },
+    {
+      "id": "review_incomplete_speculation",
+      "admission_id": "pending_port_incomplete_speculation",
+      "proposer": "epsilon_source_team",
+      "incumbent": "incumbent_mechanism_team",
+      "reviewers": ["independent_reviewer_A", "independent_reviewer_B"],
+      "reviewer_authority_roots": ["source_methods_board_A", "source_methods_board_B"],
+      "appeal_reviewers": ["independent_appeal_panel"],
+      "appeal_authority_roots": ["source_appeal_panel"],
+      "criteria_committed_before_response": true,
+      "immutable_evidence_packet_sha256": "9adb9b76e38b3e4f48fb9ecbf450231714c9841d5a53aa6be4b809936c68693e",
+      "decision": "pending",
+      "authority_kind_before": "constructor",
+      "authority_kind_after": "constructor",
+      "grants_only_challenge_standing": true,
+      "appeal_available": true,
+      "reviewed_at": 10
+    }
+  ],
+  "proposer_identity_invariance_audits": [
+    {
+      "id": "same_delta_packet_two_pseudonyms",
+      "packet_sha256_left": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+      "packet_sha256_right": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+      "proposer_left": "pseudonym_X",
+      "proposer_right": "pseudonym_Y",
+      "decision_left": "admitted",
+      "decision_right": "admitted",
+      "identity_blinded_during_merits_review": true
+    }
+  ],
+  "temporal_review_authority_audits": [
+    {
+      "id": "revoke_merits_root_then_replay",
+      "original_review": "review_mechanism_delta",
+      "revoked_root": "source_methods_board_A",
+      "revoked_at": 20,
+      "historical_decision_preserved": true,
+      "prospective_authority_before_replay": false,
+      "replay_required": true,
+      "replay_packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+      "replay_roots": ["source_methods_board_A_successor", "source_methods_board_B"],
+      "replayed_at": 30,
+      "replay_completed": true,
+      "prospective_authority_after_replay": true
+    }
+  ],
+  "temporal_replay_atlas_audits": [
+    {
+      "id": "two_successor_atlases_same_packet",
+      "original_review": "review_mechanism_delta",
+      "paths": [
+        {
+          "id": "replay_path_AB",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_A_successor", "source_methods_board_B"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
+        },
+        {
+          "id": "replay_path_CD",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_C", "source_methods_board_D"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
+        },
+        {
+          "id": "replay_path_EF",
+          "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15",
+          "roots": ["source_methods_board_E", "source_methods_board_F"],
+          "replayed_at": 30,
+          "completed": true,
+          "decision": "admitted"
+        }
+      ],
+      "comparison_committed_before_replay": true,
+      "source_derived_path_comparison": "same packet, same precommitted merits predicate, disjoint certified roots",
+      "disposition_defect": 0,
+      "prospective_authority_restored": true,
+      "higher_appeal_cell": {
+        "authority_root": "source_appeal_panel",
+        "role": "compare_procedure_not_truth",
+        "may_override_disagreement": false
+      }
+    }
+  ],
+  "temporal_governance_cocycle_audits": [
+    {
+      "id": "triangle_AB_CD_EF",
+      "atlas_id": "two_successor_atlases_same_packet",
+      "comparison_cells": [
+        {"id": "cell_AB_CD", "source_path": "replay_path_AB", "target_path": "replay_path_CD", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0},
+        {"id": "cell_CD_EF", "source_path": "replay_path_CD", "target_path": "replay_path_EF", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0},
+        {"id": "cell_AB_EF", "source_path": "replay_path_AB", "target_path": "replay_path_EF", "packet_sha256": "6f875503686fd0f3a13e2a83acb611bbf564239192c0d5a6629d4ab4af25cc15", "authority_kind": "procedural_review", "invertible": true, "source_derived": true, "committed_before_replay": true, "may_select_truth": false, "naturality_defect": 0}
+      ],
+      "direct_cell": "cell_AB_EF",
+      "composite_path": ["cell_AB_CD", "cell_CD_EF"],
+      "cocycle_defect": 0,
+      "global_standing_restored": true
+    }
+  ],
+  "rival_extension_audits": [
+    {
+      "id": "new_rival_opens_identification_challenge",
+      "extends_audit": "finite_three_mechanism_identification",
+      "new_rival_admission": "admit_mechanism_delta",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3"],
+      "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1]],
+      "source_authorized_gauge_dimension": 0,
+      "status": "challenge_open",
+      "identification_authority_retained": false,
+      "claims_closed_under_all_future_rivals": false
+    },
+    {
+      "id": "new_source_probe_revalidates_extended_family",
+      "extends_audit": "new_rival_opens_identification_challenge",
+      "new_rival_admission": "admit_mechanism_delta",
+      "candidate_mechanisms": ["mechanism_alpha", "mechanism_beta", "mechanism_gamma", "mechanism_delta"],
+      "intervention_ports": ["source_probe_1", "source_probe_2", "source_probe_3", "source_probe_delta"],
+      "observation_matrix": [[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 0, 1], [0, 0, 0, 1]],
+      "source_authorized_gauge_dimension": 0,
+      "new_discriminator_source_derived": "probe_delta follows from the extended constructor grammar before fitting delta's output",
+      "status": "revalidated",
+      "identification_authority_retained": true,
+      "claims_closed_under_all_future_rivals": false
+    }
+  ],
+  "presentation_coherence_cells": [
+    {"id": "cell_B_Bprime", "source_presentation": "B", "target_presentation": "Bprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "independent source encode/decode equivalence"},
+    {"id": "cell_Bprime_Bdoubleprime", "source_presentation": "Bprime", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "second independent source presentation equivalence"},
+    {"id": "cell_B_Bdoubleprime", "source_presentation": "B", "target_presentation": "Bdoubleprime", "authority_kind": "readout", "variance": "covariant", "source_derived": true, "invertible": true, "preserves_authority_kind": true, "naturality_defect": 0, "provenance_node": "prov_coherence", "derived_before_target": true, "target_independent": true, "counterfactual_recomputable": true, "evidence": "direct source presentation equivalence"}
+  ],
+  "presentation_atlas_coherence": [
+    {"id": "atlas_B_Bprime_Bdoubleprime", "paths": [["cell_B_Bdoubleprime"], ["cell_B_Bprime", "cell_Bprime_Bdoubleprime"]], "source_derived_comparison": "source comparison of direct and two-step re-encodings", "holonomy_defect": 0}
+  ],
+  "authority_descent_objects": [
+    {
+      "id": "descent_process_AC",
+      "atlas_id": "atlas_B_Bprime_Bdoubleprime",
+      "local_grants": ["g_AC", "g_AC_via_Bprime"],
+      "global_grant": "g_AC_direct",
+      "source_derived_gluing": "joint source encode/decode reconstruction",
+      "effective": true,
+      "reconstruction_defect": 0,
+      "ambiguity_kernel_rank": 0,
+      "stabilizer": ["identity"],
+      "source_authorized_stabilizer": ["identity"]
+    },
+    {
+      "id": "descent_process_AC_stacky",
+      "atlas_id": "atlas_B_Bprime_Bdoubleprime",
+      "local_grants": ["g_AC", "g_AC_via_Bprime"],
+      "global_grant": "g_AC_direct",
+      "source_derived_gluing": "joint source reconstruction modulo authorized gauge",
+      "effective": true,
+      "reconstruction_defect": 0,
+      "ambiguity_kernel_rank": 1,
+      "stabilizer": ["identity", "source_gauge"],
+      "source_authorized_stabilizer": ["identity", "source_gauge"],
+      "stabilizer_quotient_declared": true,
+      "quotient_ambiguity_rank": 0
+    }
+  ],
+  "presentation_refinement_coherence": [
+    {
+      "id": "refine_B_atlas_by_Bprime",
+      "coarse_global_grant": "g_AC_direct",
+      "refined_descent_object": "descent_process_AC",
+      "source_derived_refinement": "source encode/decode refinement comparison",
+      "authority_kind_before": "readout",
+      "authority_kind_after": "readout",
+      "reconstruction_defect": 0
+    }
+  ],
+  "presentation_deletion_tests": [
+    {
+      "id": "delete_redundant_Bprime",
+      "removed_presentation": "Bprime",
+      "authority_kind_before": "readout",
+      "expected_process_survives": true,
+      "surviving_global_grant": "g_AC_direct",
+      "source_derived_reconstruction": "direct A-to-C source grant"
+    },
+    {
+      "id": "delete_source_gluing_mechanism",
+      "removed_presentation": "source_encode_decode_authority",
+      "authority_kind_before": "readout",
+      "expected_process_survives": false,
+      "surviving_global_grant": null,
+      "source_derived_reconstruction": null
+    }
+  ],
+  "finite_authority_stack_certificates": [
+    {
+      "id": "current_delta_challenge_standing_certificate",
+      "subject": "mechanism_delta",
+      "claim": "current prospective challenge standing at time 30",
+      "as_of": 30,
+      "allowed_operations": ["open_bounded_identification_challenge"],
+      "target_scope": "finite_three_mechanism_identification",
+      "bounded_constructor_grammar": "DPC authority composition v1 typed bundles",
+      "claims_absolute_minimality": false,
+      "digest_confers_authority": false,
+      "deterministic_replay_checker": "research/strominger/checkers/authority_grant_composition_checks.py",
+      "replay_checker_sha256": "aee8373f918eb2a54d1a9f608e7758cb71f4fa0332165e3cfcdfb1ecd097095d",
+      "generators": [
+        {"id": "gen_admission", "object_ref": "admit_mechanism_delta", "role": "constructor-complete rival admission"},
+        {"id": "gen_original_review", "object_ref": "review_mechanism_delta", "role": "historical content-addressed disposition"},
+        {"id": "gen_root_A", "object_ref": "source_methods_board_A_successor", "role": "live merits root A"},
+        {"id": "gen_root_B", "object_ref": "source_methods_board_B", "role": "live merits root B"},
+        {"id": "gen_root_C", "object_ref": "source_methods_board_C", "role": "live merits root C"},
+        {"id": "gen_root_D", "object_ref": "source_methods_board_D", "role": "live merits root D"},
+        {"id": "gen_root_E", "object_ref": "source_methods_board_E", "role": "live merits root E"},
+        {"id": "gen_root_F", "object_ref": "source_methods_board_F", "role": "live merits root F"},
+        {"id": "gen_appeal_root", "object_ref": "source_appeal_panel", "role": "procedural higher-cell root"},
+        {"id": "gen_replay_atlas", "object_ref": "two_successor_atlases_same_packet", "role": "three-path flat replay atlas"},
+        {"id": "gen_cocycle", "object_ref": "triangle_AB_CD_EF", "role": "zero-defect comparison cocycle"}
+      ],
+      "dependency_nodes": [
+        {"id": "gen_admission", "kind": "generator"}, {"id": "gen_original_review", "kind": "generator"},
+        {"id": "gen_root_A", "kind": "generator"}, {"id": "gen_root_B", "kind": "generator"},
+        {"id": "gen_root_C", "kind": "generator"}, {"id": "gen_root_D", "kind": "generator"},
+        {"id": "gen_root_E", "kind": "generator"}, {"id": "gen_root_F", "kind": "generator"},
+        {"id": "gen_appeal_root", "kind": "generator"}, {"id": "gen_replay_atlas", "kind": "generator"},
+        {"id": "gen_cocycle", "kind": "generator"},
+        {"id": "typed_candidate", "kind": "derived"}, {"id": "live_local_replays", "kind": "derived"},
+        {"id": "flat_disposition_atlas", "kind": "derived"}, {"id": "flat_comparison_cocycle", "kind": "derived"},
+        {"id": "current_challenge_standing", "kind": "terminal_claim"}
+      ],
+      "dependency_edges": [
+        {"id":"e1","source":"gen_admission","target":"typed_candidate"}, {"id":"e2","source":"gen_original_review","target":"typed_candidate"},
+        {"id":"e3","source":"gen_root_A","target":"live_local_replays"}, {"id":"e4","source":"gen_root_B","target":"live_local_replays"},
+        {"id":"e5","source":"gen_root_C","target":"live_local_replays"}, {"id":"e6","source":"gen_root_D","target":"live_local_replays"},
+        {"id":"e7","source":"gen_root_E","target":"live_local_replays"}, {"id":"e8","source":"gen_root_F","target":"live_local_replays"},
+        {"id":"e9","source":"gen_replay_atlas","target":"flat_disposition_atlas"}, {"id":"e10","source":"live_local_replays","target":"flat_disposition_atlas"},
+        {"id":"e11","source":"gen_cocycle","target":"flat_comparison_cocycle"}, {"id":"e12","source":"gen_appeal_root","target":"flat_comparison_cocycle"},
+        {"id":"e13","source":"typed_candidate","target":"current_challenge_standing"}, {"id":"e14","source":"flat_disposition_atlas","target":"current_challenge_standing"},
+        {"id":"e15","source":"flat_comparison_cocycle","target":"current_challenge_standing"}
+      ],
+      "terminal_claim_node": "current_challenge_standing",
+      "minimality_witnesses": [
+        {"generator_id":"gen_admission","deletion_breaks_terminal_claim":true,"expected_failure_code":"rival_challenge_without_admission_authority"},
+        {"generator_id":"gen_original_review","deletion_breaks_terminal_claim":true,"expected_failure_code":"untyped_temporal_review_audit"},
+        {"generator_id":"gen_root_A","deletion_breaks_terminal_claim":true,"expected_failure_code":"review_replay_uses_inactive_root"},
+        {"generator_id":"gen_root_B","deletion_breaks_terminal_claim":true,"expected_failure_code":"uncertified_review_authority_root"},
+        {"generator_id":"gen_root_C","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_D","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_E","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_root_F","deletion_breaks_terminal_claim":true,"expected_failure_code":"temporal_atlas_uses_inactive_root"},
+        {"generator_id":"gen_appeal_root","deletion_breaks_terminal_claim":true,"expected_failure_code":"uncertified_temporal_higher_cell"},
+        {"generator_id":"gen_replay_atlas","deletion_breaks_terminal_claim":true,"expected_failure_code":"incomplete_temporal_governance_cocycle"},
+        {"generator_id":"gen_cocycle","deletion_breaks_terminal_claim":true,"expected_failure_code":"unknown_authority_certificate_generator"}
+      ]
+    }
+  ],
+  "authority_capability_execution_audits": [
+    {
+      "id": "execute_delta_challenge_once",
+      "certificate_id": "current_delta_challenge_standing_certificate",
+      "validation_time": 30,
+      "execution_time": 31,
+      "lease_expires": 32,
+      "atomic_revocation_check": true,
+      "root_revocation_epoch_snapshot": {
+        "source_methods_board_A_successor": 0,
+        "source_methods_board_B": 0,
+        "source_methods_board_C": 0,
+        "source_methods_board_D": 0,
+        "source_methods_board_E": 0,
+        "source_methods_board_F": 0,
+        "source_appeal_panel": 0
+      },
+      "execution_revocation_epochs": {
+        "source_methods_board_A_successor": 0,
+        "source_methods_board_B": 0,
+        "source_methods_board_C": 0,
+        "source_methods_board_D": 0,
+        "source_methods_board_E": 0,
+        "source_methods_board_F": 0,
+        "source_appeal_panel": 0
+      },
+      "operation": "open_bounded_identification_challenge",
+      "target_scope": "finite_three_mechanism_identification",
+      "authority_kind_before": "challenge_standing",
+      "authority_kind_after": "challenge_standing",
+      "single_use": true,
+      "nonce": "delta-challenge-epoch-0-use-1",
+      "nonce_consumed": true,
+      "second_use_permitted": false
+    }
+  ],
+  "distributed_capability_consumption_audits": [
+    {
+      "id": "two_site_partitioned_single_use_no_go",
+      "certificate_id": "current_delta_challenge_standing_certificate",
+      "sites": ["site_A", "site_B"],
+      "identical_initial_local_views": true,
+      "same_deterministic_local_rule": true,
+      "communication_before_execution": false,
+      "symmetric_deterministic_outcomes": [[0, 0], [1, 1]],
+      "requested_invariant": "exactly_one_success",
+      "local_protocol_guarantees_exactly_one": false,
+      "delayed_coherence_messages_restore_safety": false,
+      "local_nonce_logs_are_global": false,
+      "indistinguishability_witness": "before communication, swapping site labels preserves each local history and therefore preserves equal decisions",
+      "repairs": [
+        {
+          "kind": "shared_linearization",
+          "resource": "one source-authorized atomic test-and-set register",
+          "source_authorized": true,
+          "atomic_compare_and_set": true,
+          "state_cardinality": 2,
+          "global_outcome": [1, 0],
+          "preserves_single_use": true,
+          "capability_kind_before": "challenge_standing",
+          "capability_kind_after": "challenge_standing"
+        },
+        {
+          "kind": "site_partition",
+          "resource": "one site-A-scoped linear token",
+          "partitioned_before_distribution": true,
+          "site_token_count": 1,
+          "authorized_site": "site_A",
+          "unauthorized_site_outcome": 0,
+          "semantic_change": "eligible_locus_restricted"
+        },
+        {
+          "kind": "bounded_multiplicity",
+          "resource": "two-use distributed counter capability",
+          "resource_kind_after": "bounded_multiplicity",
+          "bound": 2,
+          "allowed_global_outcome": [1, 1],
+          "still_claims_single_use": false
+        }
+      ],
+      "minimal_single_use_repair": "shared_linearization"
+    }
+  ],
+  "distributed_linearity_trilemma_audits": [
+    {
+      "id": "single_use_safety_availability_partition_trilemma",
+      "sites": ["site_A", "site_B"],
+      "properties": ["single_use_safety", "availability_at_both_sites", "partition_tolerance"],
+      "maximal_designs": [
+        {"id": "connected_consensus", "single_use_safety": true, "availability_at_both_sites": true, "partition_tolerance": false},
+        {"id": "safe_partitioned_linearizer", "single_use_safety": true, "availability_at_both_sites": false, "partition_tolerance": true},
+        {"id": "available_partitioned_execution", "single_use_safety": false, "availability_at_both_sites": true, "partition_tolerance": true}
+      ],
+      "claims_all_three": false,
+      "safe_partition_run": {
+        "quorum_site": "site_A",
+        "minority_site": "site_B",
+        "quorum_outcome": 1,
+        "minority_outcome": 0,
+        "minority_fails_closed": true,
+        "minority_local_fallback": false,
+        "old_fencing_epoch": 7,
+        "new_fencing_epoch": 8,
+        "stale_epoch_execution_permitted": false,
+        "authority_interpretation": "only the quorum component receives the fresh source-authorized consumption grant"
+      },
+      "eventual_recovery_counted_as_partition_availability": false,
+      "theorem_scope": "two authority loci, one globally single-use capability, arbitrary communication partition"
+    }
+  ],
+  "linearization_constructor_networks": [
+    {
+      "id": "three_replica_majority_linearizer",
+      "replicas": [
+        {"id": "r1", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false},
+        {"id": "r2", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false},
+        {"id": "r3", "source_authorized_vote_role": true, "durable_append_only_vote_cell": true, "survives_restart": true, "monotone_epoch": true, "signatures_alone_prevent_equivocation": false}
+      ],
+      "authorized_quorums": [["r1", "r2"], ["r2", "r3"], ["r1", "r3"]],
+      "conflict_exclusion_proof": {
+        "epoch": 8,
+        "same_epoch": true,
+        "conflicting_values": ["consume_at_site_A", "consume_at_site_B"],
+        "first_quorum": ["r1", "r2"],
+        "second_quorum": ["r2", "r3"],
+        "intersection_witness": ["r2"],
+        "witness_prior_vote": "consume_at_site_A",
+        "witness_rejects_second_vote": true,
+        "second_certificate_constructible": false
+      },
+      "implementation_boundary": {
+        "durable_cell_status": "explicit_constructor_assumption",
+        "requires_storage_authority": true,
+        "claims_derived_from_quorum_math": false,
+        "smallest_physical_resource": "one monotone durable vote cell per authorized replica"
+      },
+      "claims_unconditional_liveness": false,
+      "theorem": "pairwise quorum intersection plus durable per-epoch non-equivocation implies uniqueness of a winning consumption certificate"
+    }
+  ],
+  "fault_parametric_quorum_audits": [
+    {
+      "id": "crash_recovery_n3_q2_f1",
+      "fault_kind": "crash_recovery",
+      "replica_count": 3,
+      "quorum_size": 2,
+      "fault_bound": 1,
+      "minimum_intersection": 1,
+      "safety_condition": "minimum_intersection>=1",
+      "faulty_replicas_may_equivocate": false,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "crash-recovery with durable vote cells",
+      "claimed_safe": true,
+      "claims_fault_model_transport_without_reproof": false
+    },
+    {
+      "id": "byzantine_n3_q2_f1_no_go",
+      "fault_kind": "byzantine",
+      "replica_count": 3,
+      "quorum_size": 2,
+      "fault_bound": 1,
+      "minimum_intersection": 1,
+      "safety_condition": "minimum_intersection>fault_bound",
+      "faulty_replicas_may_equivocate": true,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "at most one Byzantine replica",
+      "claimed_safe": false,
+      "conflict_witness": {
+        "first_quorum": ["r1", "r2"],
+        "second_quorum": ["r2", "r3"],
+        "faulty_replicas": ["r2"],
+        "both_certificates_constructible": true
+      },
+      "claims_fault_model_transport_without_reproof": false
+    },
+    {
+      "id": "byzantine_n4_q3_f1",
+      "fault_kind": "byzantine",
+      "replica_count": 4,
+      "quorum_size": 3,
+      "fault_bound": 1,
+      "minimum_intersection": 2,
+      "safety_condition": "minimum_intersection>fault_bound",
+      "faulty_replicas_may_equivocate": true,
+      "honest_replicas_non_equivocate": true,
+      "source_authorized_fault_model": "at most one Byzantine replica and honest durable vote cells",
+      "claimed_safe": true,
+      "claims_fault_model_transport_without_reproof": false
+    }
+  ],
+  "fault_hypergraph_quorum_audits": [
+    {
+      "id": "correlated_n4_q3_unsafe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_A", "r3": "admin_C", "r4": "admin_D"},
+      "authorized_quorums": [["r1","r2","r3"], ["r1","r2","r4"], ["r1","r3","r4"], ["r2","r3","r4"]],
+      "admissible_fault_sets": [["r1","r2"], ["r3"], ["r4"]],
+      "claimed_safe": false,
+      "violation_witness": {"first_quorum": ["r1","r2","r3"], "second_quorum": ["r1","r2","r4"], "fault_set": ["r1","r2"], "honest_overlap": []},
+      "source_authorized_common_cause_model": "administrator compromise controls every replica in its declared authority-root fiber",
+      "bounded_model_scope": "declared administrative common causes only",
+      "infers_independence_from_distinct_replica_ids": false
+    },
+    {
+      "id": "diversified_n4_q3_safe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_B", "r3": "admin_C", "r4": "admin_D"},
+      "authorized_quorums": [["r1","r2","r3"], ["r1","r2","r4"], ["r1","r3","r4"], ["r2","r3","r4"]],
+      "admissible_fault_sets": [["r1"], ["r2"], ["r3"], ["r4"]],
+      "claimed_safe": true,
+      "source_authorized_common_cause_model": "four separately governed administrative roots",
+      "bounded_model_scope": "single declared administrative-root compromise",
+      "infers_independence_from_distinct_replica_ids": false
+    },
+    {
+      "id": "correlated_n5_q4_safe",
+      "replicas": ["r1", "r2", "r3", "r4", "r5"],
+      "replica_authority_roots": {"r1": "admin_A", "r2": "admin_A", "r3": "admin_C", "r4": "admin_C", "r5": "admin_E"},
+      "authorized_quorums": [["r1","r2","r3","r4"], ["r1","r2","r3","r5"], ["r1","r2","r4","r5"], ["r1","r3","r4","r5"], ["r2","r3","r4","r5"]],
+      "admissible_fault_sets": [["r1","r2"], ["r3","r4"], ["r5"]],
+      "claimed_safe": true,
+      "source_authorized_common_cause_model": "one declared administrative-root compromise at a time",
+      "bounded_model_scope": "single root-fiber common cause",
+      "infers_independence_from_distinct_replica_ids": false
+    }
+  ],
+  "common_cause_discovery_audits": [
+    {
+      "id": "discover_shared_build_pipeline_edge",
+      "baseline_fault_audit": "diversified_n4_q3_safe",
+      "repair_fault_audit": "correlated_n5_q4_safe",
+      "replicas": ["r1", "r2", "r3", "r4"],
+      "intervention_probes": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential", "shared_build_pipeline"],
+      "intervention_response_matrix": [[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1], [1,1,0,0]],
+      "new_probe": "shared_build_pipeline",
+      "new_probe_source_derived": "build provenance identified one compiler/signing pipeline feeding r1 and r2",
+      "probe_committed_before_response": true,
+      "derived_fault_set": ["r1", "r2"],
+      "extended_fault_sets": [["r1"], ["r2"], ["r3"], ["r4"], ["r1", "r2"]],
+      "old_safety_authority_retained": false,
+      "status": "challenge_open",
+      "repair_status": "revalidated",
+      "bounded_tested_constructor_grammar": "declared administrator and build-pipeline interventions",
+      "claims_universal_independence": false
+    }
+  ],
+  "probe_grammar_authority_audits": [
+    {
+      "id": "common_cause_probe_grammar_v2",
+      "discovery_audit": "discover_shared_build_pipeline_edge",
+      "authority_root": "declared deployment provenance and administrator ownership graph",
+      "grammar_version": 2,
+      "predecessor_version": 1,
+      "constructor_classes": ["administrator_credential", "build_pipeline"],
+      "authorized_probes": {
+        "administrator_credential": ["admin_A_credential", "admin_B_credential", "admin_C_credential", "admin_D_credential"],
+        "build_pipeline": ["shared_build_pipeline"]
+      },
+      "coverage_claim": "complete only for the two declared constructor classes",
+      "coverage_kind": "relative_exhaustion",
+      "new_constructor_classes": ["build_pipeline"],
+      "predecessor_negative_certificate_expired": true,
+      "discovered_faults_preserved_under_refinement": [["r1", "r2"]],
+      "replay_required_after_refinement": true,
+      "replay_status": "passed",
+      "claims_constructor_universality": false
+    }
+  ],
+  "probe_grammar_boundary_audits": [
+    {
+      "id": "deployment_manifest_boundary_v2",
+      "probe_grammar_audit": "common_cause_probe_grammar_v2",
+      "accountable_declarer": "deployment_owner",
+      "signed_manifest": "deployment-manifest-v2",
+      "manifest_constructor_classes": ["administrator_credential", "build_pipeline"],
+      "declaration_authority": "attests which constructors are represented in deployment-manifest-v2",
+      "totality_authority": false,
+      "self_certifying_root": false,
+      "open_frontier": ["physical_supply_chain", "firmware_substrate", "network_control_plane"],
+      "challenge_port": "admit_source_derived_constructor_refinement",
+      "challenge_port_live": true,
+      "negative_claim_scope": "manifest_constructor_classes only",
+      "frontier_emptiness_claimed": false
+    }
+  ],
+  "probe_grammar_epoch_audits": [
+    {
+      "id": "manifest_v2_epoch_binding",
+      "boundary_audit": "deployment_manifest_boundary_v2",
+      "manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+      "audit_epoch": 12,
+      "capability_epoch": 12,
+      "execution_epoch": 12,
+      "lease_expires_epoch": 12,
+      "atomic_manifest_epoch_check": true,
+      "negative_certificate_live": true,
+      "drift_scenario": {
+        "new_manifest_epoch": 13,
+        "new_constructor_class": "firmware_substrate",
+        "old_negative_certificate_live": false,
+        "old_capability_execution_permitted": false,
+        "grammar_replay_required": true,
+        "positive_discoveries_retained": [["r1", "r2"]]
+      }
+    }
+  ],
+  "distributed_manifest_epoch_audits": [
+    {
+      "id": "two_site_manifest_fork_and_repair",
+      "probe_grammar_epoch_audit": "manifest_v2_epoch_binding",
+      "local_views": [
+        {"site": "site_A", "epoch": 12, "manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115", "local_atomic_check": true},
+        {"site": "site_B", "epoch": 12, "manifest_sha256": "9f97df16c51d471e002f5ff7b43b24c35eeba81e7115693775f44217b8ff3478", "local_atomic_check": true}
+      ],
+      "identical_epoch_numbers_imply_identical_manifest": false,
+      "local_checks_imply_global_consistency": false,
+      "fork_is_constructible_before_communication": true,
+      "repair": {
+        "linearization_network": "three_replica_majority_linearizer",
+        "certificate_value_fields": ["epoch", "manifest_sha256"],
+        "certificate_epoch": 12,
+        "certificate_manifest_sha256": "4db11f7fdf32d39c86bd008eff81059c03693b2fe88ec41dcbac6bf200f79115",
+        "certificate_quorum": ["r1", "r2"],
+        "conflicting_certificate_quorum": ["r2", "r3"],
+        "intersection_witness": ["r2"],
+        "durable_non_equivocation": true,
+        "conflicting_same_epoch_digest_certificate_constructible": false,
+        "source_authorized_configuration_role": true
+      }
+    }
+  ],
+  "configuration_reconfiguration_audits": [
+    {
+      "id": "joint_transition_epoch_12_to_13",
+      "old_configuration": {"epoch": 12, "members": ["r1", "r2", "r3"], "quorum": ["r1", "r2"]},
+      "new_configuration": {"epoch": 13, "members": ["r2", "r3", "r4"], "quorum": ["r2", "r4"]},
+      "transition_value_fields": ["old_epoch", "old_digest", "new_epoch", "new_digest", "new_members"],
+      "old_quorum_endorsement": ["r1", "r2"],
+      "new_quorum_endorsement": ["r2", "r4"],
+      "joint_consensus_required": true,
+      "old_only_may_activate_successor": false,
+      "new_only_may_self_activate": false,
+      "bridge_witness": ["r2"],
+      "bridge_durable_non_equivocation": true,
+      "fault_kind": "crash_recovery",
+      "fault_bound": 1,
+      "bridge_authority_roots": {"r2": "admin_B"},
+      "admissible_bridge_fault_sets": [],
+      "source_authorized_bridge_fault_model": "crash-recovery durable non-equivocation",
+      "bridge_members_may_equivocate": false,
+      "claimed_safe": true,
+      "conflicting_transition_constructible": false,
+      "bootstrap_authority": "epoch-12 configuration certificate",
+      "claims_authority_by_membership_transport": false
+    },
+    {
+      "id": "byzantine_joint_transition_epoch_13_to_14",
+      "old_configuration": {"epoch": 13, "members": ["r1", "r2", "r3", "r4"], "quorum": ["r1", "r2", "r3"]},
+      "new_configuration": {"epoch": 14, "members": ["r2", "r3", "r4", "r5"], "quorum": ["r2", "r3", "r5"]},
+      "transition_value_fields": ["old_epoch", "old_digest", "new_epoch", "new_digest", "new_members"],
+      "old_quorum_endorsement": ["r1", "r2", "r3"], "new_quorum_endorsement": ["r2", "r3", "r5"],
+      "joint_consensus_required": true, "old_only_may_activate_successor": false, "new_only_may_self_activate": false,
+      "bridge_witness": ["r2", "r3"], "bridge_durable_non_equivocation": true,
+      "fault_kind": "byzantine", "fault_bound": 1, "bridge_members_may_equivocate": true, "claimed_safe": true,
+      "bridge_authority_roots": {"r2": "admin_B", "r3": "admin_C"},
+      "admissible_bridge_fault_sets": [["r2"], ["r3"]],
+      "source_authorized_bridge_fault_model": "one independently rooted Byzantine bridge failure",
+      "conflicting_transition_constructible": false,
+      "bootstrap_authority": "epoch-13 configuration certificate", "claims_authority_by_membership_transport": false
+    }
+  ],
+  "application_cases": [
+    {"id": "grothendieck_folded_theta", "classification": "coherence_cell_required", "composition": "c_theta", "explicit_coherence_cell": "moving-endpoint seam current plus reciprocal reflection", "authority_result": "readout only"},
+    {"id": "kitaev_logical_to_five_rail", "classification": "no_composable_authority_map", "composition": null, "valid_local_grant": "kitaev_couplers_logical", "compatible_evidence": "rail support and distance-three spread", "obstruction_evidence": "couplers are target spectral logarithms without native derivation and raw five-rail intertwining has nonzero leakage"}
+  ],
+  "representation_change_tests": [
+    {
+      "id": "remove_B_direct_source_route",
+      "baseline_composition": "c_AB_BC",
+      "direct_grant": "g_AC_direct",
+      "intermediate_before": "B",
+      "intermediate_after": null,
+      "verdict": "process_explained_strictly",
+      "interpretation": "the direct source grant has exactly the same full authority signature"
+    },
+    {
+      "id": "replace_B_by_Bprime",
+      "baseline_composition": "c_AB_BC",
+      "alternative_composition": "c_ABprime_BprimeC",
+      "intermediate_before": "B",
+      "intermediate_after": "Bprime",
+      "verdict": "process_explained_coherently",
+      "coherence_cell_id": "cell_B_Bprime"
+    },
+    {
+      "id": "kitaev_remove_logical_presentation",
+      "baseline_grant": "kitaev_couplers_logical",
+      "intermediate_before": "logical_D_S3_gates",
+      "intermediate_after": null,
+      "verdict": "presentation_only",
+      "interpretation": "no native source-derived direct five-rail executor grant exists"
+    }
+  ]
+}

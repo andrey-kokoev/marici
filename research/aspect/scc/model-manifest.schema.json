@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marici.scc.model-manifest.schema.json",
+  "title": "SCC model manifest",
+  "type": "object",
+  "required": ["schema", "model"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema": {"const": "marici.scc.model-manifest.v1"},
+    "model": {
+      "type": "object",
+      "required": ["id", "owner", "classification", "stratum", "inputs", "checks"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"},
+        "owner": {"type": "string", "pattern": "^marici\\.[A-Za-z][A-Za-z0-9_.-]*$"},
+        "classification": {"type": "string", "minLength": 1},
+        "stratum": {"type": "string", "minLength": 1},
+        "depends_on": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "consumes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "provides": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "missing_constructors": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "next_falsifier": {"type": "string"},
+        "lower_theory": {
+          "type": "object",
+          "required": ["freeze_id", "fingerprint", "operations", "tester_ids", "context_language_completeness", "hostile_language_completeness"],
+          "properties": {
+            "freeze_id": {"type": "string", "minLength": 1},
+            "fingerprint": {"type": "string", "minLength": 1},
+            "operations": {
+              "type": "array",
+              "items": {"enum": ["composition", "tensor", "authorized_ancilla", "discard", "conditioning"]},
+              "minItems": 5,
+              "uniqueItems": true
+            },
+            "tester_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+            "context_language_completeness": {"enum": ["complete", "incomplete"]},
+            "hostile_language_completeness": {"enum": ["complete", "incomplete"]}
+          },
+          "additionalProperties": false
+        },
+        "apparatus_certificate": {
+          "type": "object",
+          "required": [
+            "authority_locator", "substrate_state_type", "apparatus_state_type",
+            "observational_rank_certificate", "natural_transport_certificate",
+            "bounded_port_accessibility_certificate",
+            "one_use_joint_map", "labelled_composition_or_tensor_law",
+            "reset_or_catalytic_return_map", "repeated_joint_law",
+            "degradation_and_uncertainty_bounds", "quotient_descent_certificate",
+            "feature_calibration", "admitted_domain", "support_assumptions",
+            "physical_instrument", "candidate_synthesis_status"
+          ],
+          "properties": {
+            "authority_locator": {"type": "string", "minLength": 1},
+            "substrate_state_type": {"type": "string", "minLength": 1},
+            "apparatus_state_type": {"type": "string", "minLength": 1},
+            "observational_rank_certificate": {"type": "object", "required": ["locator", "rank", "kernel_pair_promoted_to_state_identity"], "properties": {"locator": {"type": "string", "minLength": 1}, "rank": {"type": "integer", "minimum": 1}, "kernel_pair_promoted_to_state_identity": {"const": false}}, "additionalProperties": true},
+            "natural_transport_certificate": {"type": "object", "required": ["locator", "source_authorized", "naturality_square_closed", "chart_transition_class", "derivative_transport_included", "independent_channel_gains_are_hostile"], "properties": {"locator": {"type": "string", "minLength": 1}, "source_authorized": {"type": "boolean"}, "naturality_square_closed": {"type": "boolean"}, "chart_transition_class": {"const": "common_gain_on_complete_packet"}, "derivative_transport_included": {"const": true}, "independent_channel_gains_are_hostile": {"const": true}}, "additionalProperties": true},
+            "bounded_port_accessibility_certificate": {"type": "object", "required": ["locator", "claim"], "properties": {"locator": {"type": "string", "minLength": 1}, "claim": {"enum": ["fixed_radius", "support_grows", "not_claimed"]}, "uniform_depth_range_bound": {"type": "boolean"}, "backward_support_correctable": {"type": "boolean"}}, "additionalProperties": true},
+            "conjugate_readout_certificate": {
+              "type": "object",
+              "required": ["locator", "carrier_readout", "generator_weighted_mate", "joint_response_matrix", "same_prepared_carrier", "source_authorized", "joint_rank", "determinant_nonzero_on_admitted_domain", "certified_inference", "locates_zero", "controlled_successor_test"],
+              "properties": {
+                "locator": {"type": "string", "minLength": 1}, "carrier_readout": {"type": "string", "minLength": 1},
+                "generator_weighted_mate": {"type": "string", "minLength": 1}, "joint_response_matrix": {"type": "string", "minLength": 1},
+                "same_prepared_carrier": {"const": true}, "source_authorized": {"const": true}, "joint_rank": {"const": 2},
+                "determinant_nonzero_on_admitted_domain": {"const": true}, "certified_inference": {"const": "transversality_only"}, "locates_zero": {"const": false},
+                "controlled_successor_test": {
+                  "type": "object",
+                  "required": ["locator", "perturbation_generator", "predicted_joint_first_jet", "uncertainty_threshold_locator", "source_derived_prediction", "threshold_preregistered", "observer_fitted", "null_models", "outcome"],
+                  "properties": {
+                    "locator": {"type": "string", "minLength": 1}, "perturbation_generator": {"type": "string", "minLength": 1},
+                    "predicted_joint_first_jet": {"type": "string", "minLength": 1}, "uncertainty_threshold_locator": {"type": "string", "minLength": 1},
+                    "source_derived_prediction": {"type": "boolean"}, "threshold_preregistered": {"type": "boolean"}, "observer_fitted": {"const": false},
+                    "null_models": {"type": "array", "items": {"enum": ["independent_detector_channels", "common_mode_drift"]}, "minItems": 2, "uniqueItems": true},
+                    "outcome": {"enum": ["not_run", "pass", "fail", "inconclusive"]}, "all_preregistered_nulls_rejected": {"type": "boolean"}
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            },
+            "one_use_joint_map": {"type": "object", "required": ["locator", "source_authorized"], "properties": {"locator": {"type": "string", "minLength": 1}, "source_authorized": {"const": true}}, "additionalProperties": true},
+            "labelled_composition_or_tensor_law": {"type": "object", "required": ["locator"], "properties": {"locator": {"type": "string", "minLength": 1}}, "additionalProperties": true},
+            "reset_or_catalytic_return_map": {"type": "object", "required": ["locator", "apparatus_reset_independent"], "properties": {"locator": {"type": "string", "minLength": 1}, "apparatus_reset_independent": {"const": true}}, "additionalProperties": true},
+            "repeated_joint_law": {
+              "type": "object",
+              "required": ["coupling_semantics", "marginal_signature", "joint_signature", "two_use_variance", "covariance", "preparation_label_side_channel", "controlled_intervention_admissible", "triple_composition_closed", "mixed_coherence_closed"],
+              "properties": {
+                "coupling_semantics": {"enum": ["fresh", "shared"]},
+                "marginal_signature": {}, "joint_signature": {}, "two_use_variance": {}, "covariance": {},
+                "preparation_label_side_channel": {"const": false},
+                "controlled_intervention_admissible": {"const": true},
+                "triple_composition_closed": {"const": true},
+                "mixed_coherence_closed": {"const": true}
+              },
+              "additionalProperties": true
+            },
+            "degradation_and_uncertainty_bounds": {"type": "object", "required": ["locator"], "properties": {"locator": {"type": "string", "minLength": 1}}, "additionalProperties": true},
+            "quotient_descent_certificate": {"type": "object", "required": ["locator", "valid"], "properties": {"locator": {"type": "string", "minLength": 1}, "valid": {"const": true}}, "additionalProperties": true},
+            "feature_calibration": {"type": "object", "required": ["full_authorized_packet", "observer_fitted", "covariance_observer_fitted"], "properties": {"full_authorized_packet": {"const": true}, "observer_fitted": {"const": false}, "covariance_observer_fitted": {"const": false}}, "additionalProperties": true},
+            "admitted_domain": {},
+            "support_assumptions": {"type": "array", "minItems": 1},
+            "physical_instrument": {"type": "string", "minLength": 1},
+            "candidate_synthesis_status": {"const": "candidate_requires_source_derivation"},
+            "source_derivation_status": {"enum": ["source_derived", "candidate_requires_source_derivation"]}
+          },
+          "additionalProperties": false
+        },
+        "inputs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {"type": "string", "minLength": 1},
+              {
+                "type": "object",
+                "required": ["id", "path"],
+                "properties": {
+                  "id": {"type": "string", "minLength": 1},
+                  "path": {"type": "string", "minLength": 1},
+                  "requires": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

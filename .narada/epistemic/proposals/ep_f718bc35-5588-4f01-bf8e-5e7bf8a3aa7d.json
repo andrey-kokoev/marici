@@ -1,0 +1,78 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_f718bc35-5588-4f01-bf8e-5e7bf8a3aa7d",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "instruction": "Add own research to the ledger and continue the directed coefficient-Betti/Mackey lane."
+  },
+  "idempotency_key": "grothendieck-paired-mackey-five-certificate-stack-1311",
+  "expected_ledger_head": "33a7e6a23760bc1bbad208e6c4c219bc35ba4f8f6437058fb8e5af89e0cc255a",
+  "created_at": "2026-08-20T22:24:50.3526306Z",
+  "content_fingerprint": "2dcdcf59be7af29938b313397da31c9d0d6826e16c2d3c6a3a5aad5d744e2db9",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "A paired physical Mackey object requires five independent certificates",
+      "body": "The required certificates are selector descent, power-Mackey compatibility, covariant transfer normalization, automorphism/composition naturality, and physical Betti realization. The first four are algebraically classified and do not imply one another; the five-site relative-chain certificate remains unavailable.",
+      "entity_id": "claim:6601b52d0bbf3197effd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "falsifier",
+      "kind": "test",
+      "title": "Canonical five-site chain-transfer falsifier for the certificate separation",
+      "body": "Falsify the present separation by constructing a canonical source-derived five-site relative-chain pushforward with boundary covariance, orientation/multiplicity normalization, strict composition, and exact coefficient-Betti pairing without the identified lift data. No such map is currently present.",
+      "entity_id": "test:5e8596a272060a2edcee"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Paired Mackey five-certificate synthesis packet",
+      "version": "2026-08-20",
+      "locator": "research/grothendieck/paired-mackey-five-certificate-stack.md",
+      "entity_id": "source:2bc6322dfe8afabf37a3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1311 — A Physical Mackey Object Requires Five Independent Certificates",
+      "version": "2026-08-20",
+      "locator": "src/ledger/20260820-1311 A Physical Mackey Object Requires Five Independent Certificates.md",
+      "entity_id": "source:c0d69d740843e219856b"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "falsifier",
+      "target_ref": "claim",
+      "source_id": "test:5e8596a272060a2edcee",
+      "target_id": "claim:6601b52d0bbf3197effd",
+      "relation_id": "rel:tests-09b13b78cc760e95"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:6601b52d0bbf3197effd",
+      "target_id": "source:2bc6322dfe8afabf37a3",
+      "relation_id": "rel:derived_from-0b43fc7a16479cff"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "promotes_to_evidence",
+      "source_ref": "ledger",
+      "target_ref": "claim",
+      "source_id": "source:c0d69d740843e219856b",
+      "target_id": "claim:6601b52d0bbf3197effd",
+      "relation_id": "rel:promotes_to_evidence-f31513daab9ea0b0"
+    }
+  ],
+  "digest": "6aae5967bdab95db08efabb8c64d7dfe519d881cada02ce7ef5357f2762c08a8"
+}

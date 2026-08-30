@@ -1,0 +1,14 @@
+{
+  "$schema":"../scc/model-manifest.schema.json",
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"constructor-flatness-conjecture","owner":"marici.Aspect","classification":"open_conjecture_awaiting_decisive_source_complete_test","stratum":"Deutsch explanation of representation-independent observables",
+    "inputs":["research/aspect/constructor-flatness-conjecture.md","research/aspect/contracts/constructor-flatness-conjecture.v1.json","research/aspect/results/comparison_loop_interferometer.json","research/aspect/results/comparison_loop_optimal_probes.json","research/aspect/results/interaction_net_integral_complex_lift_gate.json"],
+    "checks":[{"id":"constructor-flatness-conjecture","path":"research/aspect/checkers/check_constructor_flatness_conjecture.py","requires":[]},{"id":"comparison-loop-interferometer","path":"research/aspect/checkers/check_comparison_loop_interferometer.py","requires":[]},{"id":"interaction-net-integral-complex-lift-gate","path":"research/aspect/checkers/check_interaction_net_integral_complex_lift_gate.py","requires":[]}],
+    "depends_on":["comparison-loop-interferometer"],
+    "consumes":["independently certified source completeness","complete target probe grammar","comparison-loop acquisition"],
+    "provides":["noncircular constructor-flatness verdict","decisive refutation condition","Deutsch explanatory question"],
+    "missing_constructors":["source-derived saturated integral interaction complex","physical comparison-loop acquisition"],
+    "next_falsifier":"after source completeness passes independently, measure nonidentity holonomy above the frozen uncertainty"
+  }
+}

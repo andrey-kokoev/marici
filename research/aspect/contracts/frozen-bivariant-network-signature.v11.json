@@ -1,0 +1,81 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v11",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v10.json",
+  "change_reason": "v10 was falsified because global projectors and trivial deck permutation did not retain eigenframe phase winding or Berry holonomy",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "normalized_joint_spectral_cover",
+    "riesz_projector_local_system",
+    "phase_framed_eigenline_bundle",
+    "higher_rank_determinant_line_bundle",
+    "unitary_frame_transition_cocycle",
+    "berry_connection",
+    "holonomy_character",
+    "characteristic_class_record",
+    "phase_framed_vanishing_cycle",
+    "aggregate_projector_quotient"
+  ],
+  "arrow_types": [
+    "local_eigenframe_to_projector",
+    "unitary_frame_transition",
+    "connection_parallel_transport",
+    "deck_lift_to_framed_bundle",
+    "horizontal_labelled_specialization",
+    "phase_forgetful_projector_quotient"
+  ],
+  "cell_types": [
+    "frame_transition_cocycle_cell",
+    "projector_gauge_invariance",
+    "connection_gauge_transformation",
+    "curvature_characteristic_class_cell",
+    "deck_connection_equivariance",
+    "horizontal_specialization_cell",
+    "framed_before_projector_descent"
+  ],
+  "phase_framed_joint_spectral_family": {
+    "required_fields": [
+      "normalized_cover_and_resolvent_data_of_v10",
+      "chartwise_normalized_eigenframes_or_determinant_frames",
+      "unitary_transition_functions_on_overlaps",
+      "triple_overlap_cocycle_witnesses",
+      "connection_one_forms_per_chart",
+      "connection_gauge_transformation_witnesses",
+      "curvature_forms_and_characteristic_classes",
+      "loop_holonomy_characters",
+      "deck_lifts_to_framed_bundles",
+      "phase_framed_vanishing_cycles",
+      "horizontal_labelled_specialization_maps"
+    ],
+    "required_laws": [
+      "frame_outer_product_recovers_the_riesz_projector",
+      "unitary_transition_functions_satisfy_the_cech_cocycle_law",
+      "connection_forms_transform_by_the_transition_gauge_law",
+      "curvature_represents_the_declared_characteristic_class",
+      "loop_holonomy_matches_connection_periods",
+      "flat_zero_chern_lines_still_retain_holonomy_characters",
+      "deck_transport_lifts_equivariantly_to_framed_lines",
+      "labelled_specialization_obeys_dJ_plus_A_target_J_minus_J_A_source_equals_zero",
+      "colliding_phase_frames_survive_in_framed_vanishing_cycles",
+      "projector_and_aggregate_quotients_are_taken_only_after_framed_descent",
+      "all_analytic_completion_and_pseudospectral_defects_of_v10_remain_retained"
+    ]
+  },
+  "forbidden_promotions": [
+    "global projector promoted to a globally trivial eigenframe",
+    "trivial deck permutation promoted to zero Berry holonomy",
+    "zero first Chern class promoted to trivial flat holonomy",
+    "phase transition discarded before referenced interference readout",
+    "labelled specialization accepted without the horizontal connection identity",
+    "projector quotient taken before phase-framed descent",
+    "packet-specific phase cell added during replay"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "spin-half positive eigenline over S2 with equatorial transition q^(-1) and nonzero Chern winding",
+    "first_unused_packet": "flat line over S1 with zero Chern class and half-turn holonomy -1",
+    "cross_sector_packet": "conductor root r^2=C1/x with odd-line residue 1/2 and monodromy -1",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

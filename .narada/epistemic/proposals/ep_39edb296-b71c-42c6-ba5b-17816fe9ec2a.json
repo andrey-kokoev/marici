@@ -1,0 +1,73 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_39edb296-b71c-42c6-ba5b-17816fe9ec2a",
+  "status": "submitted",
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "detail": "Operator directed continuation; exact labelled-pole identity replicated over two primes."
+  },
+  "idempotency_key": "nima-five-site-labelled-pole-filtration-v1",
+  "expected_ledger_head": "5d205b18ad819a1acac64a07c50ce3b787ab28167558fb7c8e6ece762e60b295",
+  "created_at": "2026-08-20T22:39:16.86846Z",
+  "content_fingerprint": "60d1b685cf550d691f94df928132162368fcaa2dd5925ee5a88f123548a6a5d1",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site projective labelled-pole filtration packet",
+      "version": "v1",
+      "locator": "research/nima/results/five-site-projective-labelled-pole-filtration.json",
+      "entity_id": "source:f5f88b9afdf6c220aede"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "The five-site projective derivative tower has a canonical termwise labelled-pole filtration",
+      "summary": "Each of 180 canonical terms has ten distinct denominator occurrences. Through order six, its Bell-polynomial jet equals the complete-homogeneous multiset expansion in the ten logarithmic pole ratios over two primes. This preserves source labels without clearing all 26 norms into a dense denominator power.",
+      "entity_id": "claim:5c62b8cd3701e38c91d7"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Labelled primitive quotient of the five-site projective derivative filtration",
+      "summary": "Construct primitive columns indexed by the same occurrence-labelled pole multisets, retain source-term relations, and compute the exact-form quotient before inferring scalar Gauss-Manin rank.",
+      "entity_id": "test:894c8bf8f4908fb720cf"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "src",
+      "source_id": "claim:5c62b8cd3701e38c91d7",
+      "target_id": "source:f5f88b9afdf6c220aede",
+      "relation_id": "rel:derived_from-6c4911db85f6175e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:894c8bf8f4908fb720cf",
+      "target_id": "claim:5c62b8cd3701e38c91d7",
+      "relation_id": "rel:tests-c577cb01d642afd2"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Nima derives the source-labelled projective derivative filtration",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "The corrected sparse filtration is now exact. Each of the 180 source terms has ten distinct denominator occurrences, and its r-th normalized derivative is (-1)^r r! h_r(a_i/q_i) in those ten labelled ratios. This agrees with the independent Bell recurrence for all 180 terms, orders 0..6, over primes 1009 and 1013. Raw occurrence columns are 180, 1800, 9900, 39600, 128700, 360360, 900900. Next we must build labelled primitive columns and quotient by exact/source-term relations; dense D^(r+1) clearing is retired.",
+      "sent_at": "2026-08-20",
+      "entity_id": "maricicommunication:597077f57b2d1b34c986"
+    }
+  ],
+  "digest": "fdde4fd07bdf62fd1007233bc2b4754eed2e6ba1b93d4943543d9d4e4b730437"
+}

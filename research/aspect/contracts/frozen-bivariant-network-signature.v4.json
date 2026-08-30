@@ -1,0 +1,90 @@
+{
+  "schema": "marici.aspect.frozen-bivariant-network-signature.v4",
+  "status": "candidate_frozen",
+  "predecessor": "frozen-bivariant-network-signature.v3.json",
+  "change_reason": "v3 was falsified by a rank-changing Gram family that required singular-stratum attachment data",
+  "cell_creation_during_replay": false,
+  "maximum_declared_cell_depth": 2,
+  "object_types": [
+    "source_incidence",
+    "interface",
+    "response",
+    "context",
+    "stratified_metric_route_family",
+    "radical_quotient_route_space",
+    "normal_jet_graded_route_space"
+  ],
+  "arrow_types": [
+    "restriction",
+    "extension",
+    "contextual_exposure",
+    "invertible_route_frame_change",
+    "specialization_to_singular_stratum",
+    "nearby_to_quotient_projection",
+    "completion_before_projection"
+  ],
+  "cell_types": [
+    "gram_pairing",
+    "scalar_braided_exchange",
+    "scalar_relative_lift",
+    "augmentation",
+    "stratified_metric_route_associator",
+    "radical_quotient_gluing",
+    "graded_normal_crossing_form"
+  ],
+  "stratified_metric_route_family": {
+    "required_fields": [
+      "base_strata",
+      "frontier_relations",
+      "ambient_route_labels",
+      "gram_family",
+      "constant_rank_and_signature_on_each_stratum"
+    ],
+    "singular_stratum_required_fields": [
+      "radical_basis",
+      "quotient_basis",
+      "quotient_gram",
+      "normal_parameter_or_normal_cone",
+      "determinant_vanishing_order",
+      "radical_jet_filtration",
+      "graded_crossing_forms"
+    ]
+  },
+  "radical_jet_filtration": {
+    "meaning": "groups radical directions by their first nonzero normal Gram jet",
+    "required_laws": [
+      "finite_exhaustive_filtration_on_admitted_packet",
+      "each_graded_crossing_form_is_nondegenerate",
+      "determinant_order_equals_weighted_sum_of_graded_dimensions",
+      "covariance_under_frames_invertible_on_the_singular_stratum"
+    ]
+  },
+  "stratified_metric_route_associator": {
+    "required_laws": [
+      "metric_isometry_on_every_nondegenerate_stratum",
+      "radical_maps_to_radical_on_singular_strata",
+      "quotient_associator_is_metric_isometry",
+      "associator_preserves_radical_jet_filtration",
+      "associator_intertwines_every_graded_crossing_form",
+      "pentagon_on_strata_and_after_specialization",
+      "hexagon_on_strata_and_after_specialization_when_braided",
+      "contextual_exposure_commutes_with_specialization",
+      "completed_sewing_precedes_finite_projection"
+    ]
+  },
+  "forbidden_promotions": [
+    "singular Gram matrix inverted",
+    "singular stratum deleted from a declared family",
+    "radical discarded after quotient",
+    "first normal jet assumed sufficient without checking higher-order filtration",
+    "noncanonical radical splitting promoted to source data",
+    "finite projection performed before completed sewing",
+    "packet-specific stratum cell added during replay"
+  ],
+  "out_of_sample_policy": {
+    "repair_packet": "G(t)=diag(1,t)",
+    "first_unused_packet": "G(t)=diag(t,t^2) with two radical jet grades",
+    "local_gate_can_validate_schema": true,
+    "local_gate_cannot_validate_global_admission": true
+  }
+}

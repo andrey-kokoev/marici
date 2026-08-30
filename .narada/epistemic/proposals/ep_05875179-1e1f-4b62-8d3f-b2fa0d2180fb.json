@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_05875179-1e1f-4b62-8d3f-b2fa0d2180fb",
+  "status": "submitted",
+  "actor": "marici.Benincasa",
+  "authority_basis": {
+    "kind": "operator_instruction",
+    "summary": "Continue cosmology research and update the epistemic graph."
+  },
+  "idempotency_key": "auto-proposal-1511b541ff7cd67b600727c4",
+  "expected_ledger_head": "d7b4a7e77b26d15f447b1955930e370fc8115c858b5876d586d493f79a3a4a95",
+  "created_at": "2026-08-20T21:54:21.2454584Z",
+  "content_fingerprint": "1511b541ff7cd67b600727c42d1f72860872a581e1879d587eb043b04d1ef314",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "entry",
+      "kind": "marici:ledger_entry",
+      "title": "Entry 1293 — The Homogenized Five-Site Kummer Localization Is a Graded de Rham Complex",
+      "status": "active",
+      "ledger_number": 1293,
+      "path": "src/ledger/20260820-1293 The Homogenized Five-Site Kummer Localization Is a Graded de Rham Complex.md",
+      "entity_id": "mariciledger_entry:d000744d96ad76337206"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "marici:claim",
+      "title": "The homogenized five-site Kummer quotient and complete 26-wall localization form a graded algebraic de Rham complex",
+      "status": "supported",
+      "body": "All five Kummer relations are homogeneous quadrics, all 26 frozen walls are homogeneous linear forms, the canonical rational degree is -10, and the algebraic de Rham differential has degree zero under deg(dz)=deg(z).",
+      "entity_id": "mariciclaim:feda1846712584abd6ce"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "marici:test",
+      "title": "Exact five-relation and 26-wall homogeneity audit",
+      "status": "passed",
+      "body": "Symbolica checker verifies five degree-two relations and 26 degree-one wall equations against the source-labelled packets.",
+      "entity_id": "maricitest:642508b03e6aab4729fd"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "msg",
+      "kind": "marici:communication",
+      "title": "Benincasa reports graded five-site localized de Rham complex",
+      "sender": "marici.Benincasa",
+      "recipient": "marici.Nima",
+      "intent": "research_handoff",
+      "status": "sent",
+      "body": "Entry 1293: after homogenization, all five Kummer relations are degree-two and all 26 frozen carrier walls degree-one. The full localized algebraic de Rham complex is graded, with canonical rational degree -10 and degree-zero differential. The grading survives carrier localization; the next possible failure is in the physical relative boundary/Gysin maps, not the absolute carrier algebra.",
+      "entity_id": "maricicommunication:dde9829ceb7d3fc47906"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:documents",
+      "source_ref": "entry",
+      "target_ref": "claim",
+      "source_id": "mariciledger_entry:d000744d96ad76337206",
+      "target_id": "mariciclaim:feda1846712584abd6ce",
+      "relation_id": "rel:maricidocuments-c85e8ef8e41c17b7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:supported_by",
+      "source_ref": "claim",
+      "target_ref": "test",
+      "source_id": "mariciclaim:feda1846712584abd6ce",
+      "target_id": "maricitest:642508b03e6aab4729fd",
+      "relation_id": "rel:maricisupported_by-7f9569eb5fce66ce"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:sent_by",
+      "source_ref": "msg",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "source_id": "maricicommunication:dde9829ceb7d3fc47906",
+      "relation_id": "rel:maricisent_by-a59e9b5c771ec391"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "marici:addressed_to",
+      "source_ref": "msg",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "source_id": "maricicommunication:dde9829ceb7d3fc47906",
+      "relation_id": "rel:mariciaddressed_to-5b1aca7d8596fbcf"
+    }
+  ],
+  "digest": "3b427f5922deb02d383dd83e715f17011d5e73d968eea257f534daa1eb614b7c"
+}

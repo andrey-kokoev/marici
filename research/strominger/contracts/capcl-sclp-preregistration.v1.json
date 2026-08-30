@@ -1,0 +1,51 @@
+{
+  "schema": "marici.strominger.capcl-preregistration.v1",
+  "prediction_id": "capcl-sclp-primitive-completion-001",
+  "status": "preregistered_unverified",
+  "calculus_snapshot": {
+    "contract": "research/strominger/contracts/dependency-aware-partial-repairs.v1.json",
+    "sha256_before_preregistration": "9820bd1ff24462f4e16b87938f2ef9feda8186d4b1cf16d1a2a8dc58948f7151",
+    "compiler": "research/strominger/partial_repair_compiler.py",
+    "compiler_sha256_before_preregistration": "0cc4130516bf65530f49b550ec2152f2d7ef6d1d5d424599e04e00ae9d0ef6d3",
+    "obstruction_coordinates": ["descent", "higher_coherence", "selector", "observation", "execution"]
+  },
+  "source_snapshots": [
+    {
+      "path": "research/grothendieck/mellin-analytic-prime-rigging-separates-the-primitive-and-square-ports.md",
+      "sha256": "b62e715559a2f3b9a0128942d3e110efac7d2fa49a3c5e640751600a98ded3d2"
+    },
+    {
+      "path": "research/grothendieck/bilateral-valuation-shift-lifts-the-odd-euler-current-before-scalarization.md",
+      "sha256": "a5ecdcf5a88879fb75d01ae9c81d0421b90e06697fc3deeee5d6df93abc7bb70"
+    }
+  ],
+  "target": {
+    "operations": ["S", "C", "L", "P"],
+    "untested_constructor_pair": ["L", "P"],
+    "future_outcome_artifact": null
+  },
+  "prediction": {
+    "first_obstruction_coordinate": "descent",
+    "claim": "every completed order containing both L and P is rejected at the first completion-sensitive L/P adjacency until the primitive current has a source-derived equicontinuous extension over the constructor-generated pro-Gram completion",
+    "L_then_P_failure": "P_is_not_defined_on_the_completed_L_domain",
+    "P_then_L_failure": "L_completion_has_no_uniform_primitive_current_extension",
+    "required_witnesses": [
+      "exact_paired_sheet_relative_moment_identity_before_prime_aggregation",
+      "primitive_augmentation_boundary_forms_continuous_on_common_rigged_domain",
+      "cutoff_inclusions_equicontinuous_for_primitive_current",
+      "extension_natural_under_restriction"
+    ],
+    "downstream_coordinates_not_yet_reached": ["higher_coherence", "selector", "observation", "execution"]
+  },
+  "falsifiers": [
+    "a source-derived bounded or equicontinuous P extension on the declared L completion already exists",
+    "an admitted completed order containing L and P exists without the four required witnesses",
+    "the first failure is independently computed in a coordinate other than descent while the descent witnesses all hold"
+  ],
+  "resolution_protocol": {
+    "freeze_calculus_during_test": true,
+    "compare_before_schema_revision": true,
+    "allowed_outcomes": ["confirmed", "falsified", "ill_typed_target"],
+    "schema_change_before_outcome_invalidates_prediction_test": true
+  }
+}

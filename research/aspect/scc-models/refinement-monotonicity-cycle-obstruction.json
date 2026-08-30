@@ -1,0 +1,20 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "refinement-monotonicity-cycle-obstruction",
+    "owner": "marici.Aspect",
+    "classification": "finite_theorem_fixture_requires_physical_pushforward_execution",
+    "stratum": "naturality of global factorization obstruction under local record refinement",
+    "inputs": ["research/aspect/refinement-monotonicity-and-cycle-obstruction.md", "research/aspect/contracts/refinement-monotonicity-cycle-obstruction.v1.json", "research/aspect/local-completion-global-obstruction-ladder.md"],
+    "checks": [
+      {"id": "refinement-monotonicity-cycle-obstruction", "path": "research/aspect/checkers/check_refinement_monotonicity_cycle_obstruction.py", "requires": []},
+      {"id": "local-completion-global-obstruction-ladder", "path": "research/aspect/checkers/check_local_completion_global_obstruction_ladder.py", "requires": []}
+    ],
+    "depends_on": ["local-completion-global-obstruction-ladder"],
+    "consumes": ["coarse inclusive Bell packet", "local stochastic label kernels", "forgetful pushforward maps"],
+    "provides": ["finite refinement-monotonicity certificate", "CHSH cycle naturality check", "selection-versus-refinement discriminator"],
+    "missing_constructors": ["physical rung pushforward packets", "general measure-theoretic formalization"],
+    "next_falsifier": "find a locally factorizable honest refinement whose inclusive local pushforward equals the registered nonlocal coarse packet"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "optical-pair-stiffness-flux-cell",
+    "owner": "marici.Aspect",
+    "classification": "deterministic_dimensionless_surrogate_requires_hardware_binding",
+    "stratum": "joint pairing phase-stiffness gauge-screening and persistent-transport observer",
+    "inputs": ["research/aspect/optical-pair-stiffness-flux-cell.md", "research/aspect/contracts/optical-pair-stiffness-flux-cell.v1.json"],
+    "checks": [{"id": "optical-pair-stiffness-flux-cell", "path": "research/aspect/checkers/check_optical_pair_stiffness_flux_cell.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["complex optical field", "programmable coupling", "synthetic flux", "calibrated noise"],
+    "provides": ["pair amplitude", "phase stiffness", "opposing flux response", "persistent winding", "joint admission"],
+    "missing_constructors": ["hardware route compiler", "bath spectral calibration", "independent kelvin energy scale"],
+    "next_falsifier": "run the same preregistered sweep on the coherent-control interferometer and reject if pair amplitude survives without stiffness or winding"
+  }
+}

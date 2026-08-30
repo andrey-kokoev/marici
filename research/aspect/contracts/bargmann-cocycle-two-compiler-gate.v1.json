@@ -1,0 +1,37 @@
+{
+  "schema": "marici.aspect.bargmann-cocycle-two-compiler-gate.v1",
+  "source_packets": [
+    "research/aspect/triad-phase-associator-falsifier.md",
+    "research/aspect/three-wing-associator-preregistration.md",
+    "research/kitaev/a-four-copy-cyclic-shift-measures-the-associator-loop-exactly.md"
+  ],
+  "compiler_one": {
+    "name": "one-copy ordered projector loop",
+    "word": "Tr(P_i P_j P_k)",
+    "requirements": [
+      "phase-referenced signal and reference branches",
+      "ordered rank-one filters",
+      "environment and rejection ports retained",
+      "matched branch attenuation"
+    ]
+  },
+  "compiler_two": {
+    "name": "three-copy controlled cyclic shift",
+    "word": "Tr(V_3(P_i tensor P_j tensor P_k))",
+    "minimum_whole_copy_transpositions": 2,
+    "requirements": [
+      "three indistinguishable accepted preparations",
+      "coherent controlled V_3",
+      "control X and Y readout",
+      "forward and reverse cycle fixtures"
+    ]
+  },
+  "cross_compiler_gate": "both complex records agree and reversal conjugates",
+  "pairwise_hostile": "product of three fidelities equals |B|^2 and loses orientation",
+  "claim_boundary": {
+    "projector_loop_executed": false,
+    "controlled_cycle_executed": false,
+    "physical_data_present": false,
+    "interaction_net_promotion": false
+  }
+}

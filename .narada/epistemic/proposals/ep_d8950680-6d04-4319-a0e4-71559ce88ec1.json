@@ -1,0 +1,88 @@
+{
+  "schema": "narada.epistemic.proposal.v1",
+  "proposal_id": "ep_d8950680-6d04-4319-a0e4-71559ce88ec1",
+  "status": "submitted",
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying a noncircular Mellin boundary with discrete xi spectrum and add the research to the ledger."
+  },
+  "idempotency_key": "grothendieck-ledger-1377-theta-convolution-no-go-v1",
+  "expected_ledger_head": "b74ce895eac7d31644da92cac485d024c1902093443039ea4476ffa09c658cbf",
+  "created_at": "2026-08-21T00:08:09.5862138Z",
+  "content_fingerprint": "d47bc0a2dd3f9be93ede66c7423f026474b59b6445bf1e1be1de844b77b6f30b",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Theta-Mellin convolution spectral no-go packet",
+      "version": "1",
+      "locator": "research/grothendieck/theta-mellin-convolution-spectrum-no-go.md",
+      "entity_id": "source:43bcb14f3296080592a0"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1377 — Theta Completion Has No Discrete Zero Spectrum",
+      "version": "1",
+      "locator": "src/ledger/20260820-1377 Theta Completion Has No Discrete Zero Spectrum.md",
+      "entity_id": "source:9adb96e9c6889e6e9cd3"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Theta completion is a multiplier, not a discrete zero operator",
+      "statement": "The exact theta/Poisson kernel whose Fourier transform is Xi defines a bounded self-adjoint convolution operator unitarily equivalent to multiplication by Xi(t). Since the real zeros of nonzero entire Xi have measure zero, the L2 kernel is trivial; zero is continuous rather than point spectrum. The operator is noncompact and translation-compatible spectral quotients cannot promote measure-zero generalized Mellin waves to discrete eigenvectors.",
+      "scope": "Falsifies direct translation-invariant theta convolution and its translation-compatible reducing quotients; does not exclude non-translation-invariant boundaries or canonical systems.",
+      "entity_id": "claim:3318bec1ec749126acab"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Theta multiplier nullspace and compactness hostile test",
+      "description": "Fourier-diagonalize the theta convolution, compute its L2 nullspace from the zero-level set, and test compactness on a positive-measure multiplier band.",
+      "entity_id": "test:d41b7bb205905153875d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:3318bec1ec749126acab",
+      "target_id": "source:43bcb14f3296080592a0",
+      "relation_id": "rel:derived_from-0971b40097458a7d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:3318bec1ec749126acab",
+      "target_id": "source:9adb96e9c6889e6e9cd3",
+      "relation_id": "rel:derived_from-7f24474e0a647689"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:d41b7bb205905153875d",
+      "target_id": "claim:3318bec1ec749126acab",
+      "relation_id": "rel:tests-5097840cbed539b1"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:d41b7bb205905153875d",
+      "target_id": "source:43bcb14f3296080592a0",
+      "relation_id": "rel:derived_from-ed856b8ddfe615db"
+    }
+  ],
+  "digest": "377d3fd46fff5740741db06acd04bf97b1cd36df81b2ebca494b85e98f7aedc1"
+}

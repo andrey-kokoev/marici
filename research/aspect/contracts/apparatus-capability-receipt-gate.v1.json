@@ -1,0 +1,19 @@
+{
+  "schema": "marici.aspect.apparatus-capability-receipt-gate.v1",
+  "signature_mode": "fixture_hmac_sha256_not_hardware_identity",
+  "fixture_hmac_key": "SCC-FIXTURE-ONLY-NOT-A-DEVICE-SECRET",
+  "required_firmware": {
+    "laser-A": "1.4.2", "pulse-A": "2.1.0", "mesh-pair-port": "3.2.1",
+    "phase-twist-eom": "1.9.0", "loop-flux-eom": "1.9.0",
+    "heterodyne-1": "4.0.3", "homodyne-1": "4.0.3",
+    "balanced-homodyne": "4.0.3", "fast-detector": "2.8.4"
+  },
+  "fixtures": [
+    {"id": "attested_candidate", "fault": null, "expect_admit": true},
+    {"id": "device_substitution_hostile", "fault": "device_substitution", "expect_admit": false},
+    {"id": "receipt_replay_hostile", "fault": "receipt_replay", "expect_admit": false},
+    {"id": "receipt_omission_hostile", "fault": "receipt_omission", "expect_admit": false},
+    {"id": "firmware_drift_hostile", "fault": "firmware_drift", "expect_admit": false},
+    {"id": "signature_tamper_hostile", "fault": "signature_tamper", "expect_admit": false}
+  ]
+}

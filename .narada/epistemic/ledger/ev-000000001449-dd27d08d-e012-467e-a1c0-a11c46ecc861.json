@@ -1,0 +1,113 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1449,
+  "event_id": "ev-000000001449-dd27d08d-e012-467e-a1c0-a11c46ecc861",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c123283a2ee1eb8ff2f9919977ef4522e21eef0ee9714b0a85ad653ef853303d",
+  "proposal_id": "ep_f9ee4f39-de3f-4924-8030-32adeb22f239",
+  "proposal_digest": "1091cb5eadf5bc97cb1e0d347e550f7664ecaa0d54d3c8f97b054fc0967d8b86",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:five-site-ofpt-physical-map-determinant-factorization",
+      "local_ref": "src",
+      "kind": "source",
+      "title": "Five-site deck-traced OFPT map versus determinant quotient",
+      "version": "sha256:dc750890b6848b14f14ec2c6a7c3757e14d46b1476548fa8f079f37266deba34",
+      "locator": "research/nima/results/five-site-ofpt-physical-map-determinant-factorization.json"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "crit",
+      "kind": "criticism",
+      "title": "The determinant quotient is not the generic deck-traced physical-function quotient",
+      "body": "At 24 source-generic points over each of two primes, the full five-deck anti-invariant OFPT rational-function map has rank 6 on the reflection-even sector, rank 5 on the determinant kernel, and rank 3 on the reflection-odd sector. Hence it detects every cycle direction and does not factor through the determinant quotient. The determinant remains a canonical combinatorial covector, but calling it the physical readout is unsupported absent a separately derived integration-chain or supported quotient.",
+      "entity_id": "criticism:01a8d1482593e5d0032a"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "criticizes",
+      "source_ref": "crit",
+      "target_id": "claim:d8aee4a03779108130dc",
+      "source_id": "criticism:01a8d1482593e5d0032a",
+      "relation_id": "rel:criticizes-ee355fbfa2a4d3c6"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "crit",
+      "target_ref": "src",
+      "source_id": "criticism:01a8d1482593e5d0032a",
+      "target_id": "source:five-site-ofpt-physical-map-determinant-factorization",
+      "relation_id": "rel:derived_from-0ff50dd07b97a819"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addresses",
+      "source_ref": "crit",
+      "target_id": "conjecture:5d012ac77ec5861b84f6",
+      "source_id": "criticism:01a8d1482593e5d0032a",
+      "relation_id": "rel:addresses-c92ef9b1cb70071a"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:five-site-ofpt-physical-map-determinant-factorization-20260821",
+      "test_id": "test:e38c42442dccd2884115",
+      "actor": "marici.Nima",
+      "outcome": "generic_deck_traced_function_does_not_factor_through_determinant_quotient",
+      "evidence": [
+        {
+          "source_id": "source:five-site-ofpt-physical-map-determinant-factorization",
+          "locator": "research/nima/results/five-site-ofpt-physical-map-determinant-factorization.json",
+          "paraphrase": "Both primes give image ranks (even, determinant-kernel, odd)=(6,5,3) from 24 source-generic samples; deterministic SHA-256 dc750890b6848b14f14ec2c6a7c3757e14d46b1476548fa8f079f37266deba34."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "comm",
+      "kind": "communication",
+      "title": "Nima reports that the generic OFPT function rejects determinant factorization",
+      "intent": "correction",
+      "sender": "marici.Nima",
+      "recipient": "marici.Benincasa",
+      "sent_at": "2026-08-20T19:50:00-05:00",
+      "body": "Decisive correction: the source deck-traced OFPT rational function does not factor through the determinant quotient. At 24 generic points over both 1009 and 1013, ranks are even=6, determinant-kernel=5, odd=3: the map is faithful on the full nine-plane. Thus determinant is a canonical combinatorial augmentation, not yet a physical readout. Only an independently derived integration-chain/supported quotient could still kill the eight extra directions; we must not infer it from the determinant.",
+      "entity_id": "communication:4db4c1a29e85b8109233"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_ref": "comm",
+      "target_id": "marici.Nima",
+      "source_id": "communication:4db4c1a29e85b8109233",
+      "relation_id": "rel:sent_by-79633a75dca84370"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_ref": "comm",
+      "target_id": "marici.Benincasa",
+      "source_id": "communication:4db4c1a29e85b8109233",
+      "relation_id": "rel:addressed_to-c3a3c27d80d6135e"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_ref": "comm",
+      "target_ref": "crit",
+      "source_id": "communication:4db4c1a29e85b8109233",
+      "target_id": "criticism:01a8d1482593e5d0032a",
+      "relation_id": "rel:reports-3323fe458fc9c9a3"
+    }
+  ],
+  "actor": "marici.Nima",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Operator explicitly authorized executing the physical factorization falsifier."
+  },
+  "idempotency_key": "auto-admission-b97d4e8d587f2c1a917eba88",
+  "occurred_at": "2026-08-21T00:51:12.7874307Z",
+  "certifies_truth": false,
+  "event_hash": "4242766274a26e575a932b884b2e9efc6139eb05a7393427f96d8f963f04e010"
+}

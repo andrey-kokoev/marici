@@ -3,7 +3,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 ---
 <SiteLayout
   title="Carrier for system architects | Marici"
-  description="A system-architecture sketch of Marici's carrier, labelled occurrences, operating strata, and coherence rules."
+  description="A system-architecture sketch of Marici's carrier, labelled occurrences, mixed-variance sector adapters, and coherence rules."
 >
   <article class="section-shell" aria-labelledby="article-title">
     <header class="article-header">
@@ -18,6 +18,108 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 
     <div class="article-body">
       <p><a href="/guides/carrier-and-algebra/">← Return to the general explainer</a></p>
+
+      <h2>The shortest useful model</h2>
+      <pre><code>{`Marici ≈
+    derived relational store
+  + typed sector database view
+  + coherent transport runtime
+  + physical UI view`}</code></pre>
+      <p>
+        The store contains identities, labelled occurrences, typed relations, strata, and
+        provenance. A sector view selects the relevant coefficient objects and legal operations.
+        Transport preserves or explicitly corrects that view across gluing, specialization,
+        continuation, and chart changes. The physical UI view supplies effects, support,
+        normalization, and the final observable record.
+      </p>
+      <p>
+        This is not a literal database ontology. In particular, stored decomposition is not
+        operational distinguishability. Two rows or summands count as distinct physical outcomes
+        only when a source-derived effect can distinguish them. Entropy measures unresolved
+        multiplicity in the rendered physical view—not table size.
+      </p>
+
+      <h2>Datomic: identity, immutable value, and history</h2>
+      <p>
+        Datomic is a closer analogy than a mutable SQL database because it separates enduring
+        identity from immutable database values and retains transaction provenance. A rough
+        correspondence is:
+      </p>
+      <pre><code>Datomic entity identity  ↔ labelled physical identity
+immutable database value ↔ one coherent sector/context view
+transaction history      ↔ provenance of admitted transformations
+query                     ↔ sector lens or physical readout</code></pre>
+      <p>
+        But the final line cannot be pushed too far. A Datomic database value is an ordinary
+        commutative collection of facts: its datoms can in principle participate in one global
+        query. Marici’s exact scattering and flavor controls instead contain internally
+        commutative outcome views whose projectors do not commute across contexts. Two valid views
+        need not possess one physical join that preserves both as simultaneous facts.
+      </p>
+      <p>
+        The bounded analogy is therefore <strong>Datomic-like immutable identity and
+        provenance, generalized by noncommuting contextual materializations</strong>. A quantum
+        context is not merely an <code>as-of</code> database time, and Gauss–Manin or Gysin
+        transport is not ordinary transaction history.
+      </p>
+
+      <h2>Not just readout: a read/write interaction surface</h2>
+      <p>
+        A UI contains queries and commands. The physical analogue does too. Read-only effects
+        return records; preparations, channels, detector choices, and postselection are authorized
+        writes that change what later interactions can observe. The proper object is an instrument:
+        one operation emits an outcome and produces a conditional next state.
+      </p>
+      <pre><code>current state
+    → capability-authorized interaction
+    → (public event record, conditional next state)</code></pre>
+      <p>
+        Public UI, developer tools, and server internals should also remain distinct. A stronger
+        apparatus can expose diagnostic data or a side channel that is absent from the ordinary
+        public contract. Such data can be observable without being a stable semantic property of
+        the underlying object.
+      </p>
+      <p>
+        The distinction is mathematically consequential, not cosmetic. Formal instrument
+        completions show that a direct coarse interaction and a fine diagnostic measurement
+        followed by forgetting can report the same coarse probability while producing different
+        backaction: the diagnostic path can erase coherence preserved by the coarse path.
+        Inspecting the “network tab” may change the system. Current scattering and flavor sources
+        do not yet select these update maps, so the physical instrument layer remains conjectural.
+      </p>
+
+      <h2>A normal response can carry a negative result</h2>
+      <p>
+        A useful distinction appears in real request/response systems. A network or authorization
+        failure can prevent an operation from running at all. But a legal request can also run
+        successfully and return a structured negative domain result through the ordinary response
+        envelope: an error discriminator, messages, provenance, and perhaps authorized follow-up
+        actions. The UI may paint that result red; the transport did not fail.
+      </p>
+      <pre><code>{`transport rejected / operation not admitted
+    !=
+admitted operation -> Success<Value> | Obstruction<Residue>`}</code></pre>
+      <p>
+        This pattern occurs explicitly in Sonar's generic-controller RPC: HTTP failure and a
+        response body with <code>result: "error"</code> are separate branches, while the same typed
+        response may carry messages and requested frontend actions. Its controlled-action records
+        decide which entity, action, and fields are admissible before evaluation.
+      </p>
+      <p>
+        Marici repeatedly exhibits the mathematical version. Two legal composites can differ by
+        a curvature or coherence cell; a localization comparison can return a supported
+        obstruction; a labelled source relation can survive as a seam cell without being an
+        ordinary period; and an augmentation can collapse many labelled histories to one scalar
+        without identifying those histories. These are not malformed operations. Their residuals
+        are first-class outputs of well-typed attempts.
+      </p>
+      <p>
+        The recurrence suggests a bounded design principle: preserve a legal negative result on
+        the normal typed channel until an explicit quotient, augmentation, or physical readout
+        says what becomes observable. Do not confuse it with an unauthorized call, and do not turn
+        every exception or log message into geometry. The residual must retain a declared source,
+        target, provenance, and composition rule.
+      </p>
 
       <h2>Architecture, not workload</h2>
       <p>
@@ -99,17 +201,183 @@ glue → restrict`}</code></pre>
       </p>
 
       <h2>Several sectors, one architectural substrate</h2>
-      <pre><code>{`struct Sector<C, P, R> {
+      <pre><code>{`struct Sector<Coeff, Response, Record> {
     carrier: Carrier,
     calculus: CarrierAlgebra,
-    coefficients: C,
-    physical_selection: P,
-    readout: R,
+    coefficients: Coeff,
+    response: Response,
+    pairing: Pairing<Coeff, Response, Record>,
 }`}</code></pre>
       <p>
         Different sectors may share the topology and operation types while transporting different
-        coefficient objects and using different physical selections. The research question is
-        whether that architectural reuse survives hostile calculations in physics.
+        pairs of physical objects. One side may be a coefficient system, detector, or differential
+        form; the other may be an integration cycle, memory field, or response object. The
+        observable is produced by their typed pairing, not necessarily by either object alone.
+      </p>
+
+      <h2>The readout behaves like a bidirectional adapter</h2>
+      <p>
+        A useful software analogy is a request/response boundary whose two sides have opposite
+        variance. If an architecture map <code>q: G → H</code> forgets detail, coefficient data
+        may be pulled back from <code>H</code> to <code>G</code>, while response or cycle data is
+        pushed forward from <code>G</code> to <code>H</code>. A valid pairing obeys an adjunction:
+      </p>
+      <pre><code>{`pair_G(pull_back(q, coefficient), response)
+    ==
+pair_H(coefficient, push_forward(q, response))`}</code></pre>
+      <p>
+        This is stricter than saying that every sector has a “lens” followed by a readout. The two
+        sides form one typed interaction contract. Transporting only one side can change the
+        observable even when both individual transformations look legal.
+      </p>
+
+      <h2>Capability is not authority</h2>
+      <p>
+        The generic calculus may know how a pushforward should behave algebraically. That does not
+        authorize every sector to use it. A physical pushforward also needs a source-defined map,
+        orientation, boundary behavior, support rule, and normalization. In architecture terms:
+        implementing an adapter interface does not grant a service permission to call it.
+      </p>
+      <p>
+        Current exact controls exhibit the paired pattern in three different settings: a
+        cosmological coefficient system paired with a chamber cycle, a string differential form
+        paired with an oriented integration chamber, and a gravitational-memory field paired with
+        its supertranslation detector. Their payload types differ; the shared candidate is the
+        variance-sensitive interaction and coherence calculus.
+      </p>
+
+      <h2>A worked proof-of-concept</h2>
+      <p>
+        The five-site infinity calculation now realizes the layers separately in one exact,
+        source-normalized case:
+      </p>
+      <pre><code>{`carrier:
+    blow_up(two_normals: (1 / total_energy, 1 / loop_radius))
+
+coefficient:
+    deepest_exceptional_grade
+    + odd_character_under_global_sheet_flip
+
+response:
+    positive_euclidean_chamber
+
+record:
+    pair(coefficient, response)
+    == exact_mixed_tate_period_C5`}</code></pre>
+      <p>
+        The same exceptional divisor also carries shallower, even coefficient grades. They are not
+        additional carrier components and cannot be identified with the odd physical coefficient.
+        The chamber supplies the physical evaluation; it is not recoverable by choosing an
+        algebraic basis for the coefficient line.
+      </p>
+      <p>
+        Specialization retypes symmetry. Only identity and global sheet complement preserve one
+        exceptional grade, but the other 30 sheet changes are not lost: they act as exact
+        correspondences between differently shifted fractional lattices. The response lattices
+        shift in the opposite direction, so coefficient poles cancel response zeros and the paired
+        record is unchanged. In architecture terms, entering a mode can turn an in-place adapter
+        into a typed migration between interface versions while preserving end-to-end behavior.
+      </p>
+      <p>
+        This proof-of-concept is deliberately narrow: it is established for the coalesced-focus
+        five-cycle current. The generic asymmetric family and the shallower coefficient objects
+        remain open.
+      </p>
+
+      <h2>A second proof-of-concept: the adapter alone is not the readout</h2>
+      <p>
+        A mass-insertion corner now gives a smaller exact example in which every layer can be
+        inspected. Two existing total-energy boundaries meet in the carrier. Their supported
+        coefficient object has two channels, exchanged by a sign/deck involution:
+      </p>
+      <pre><code>carrier:
+    intersection(total_energy_left, total_energy_right)
+
+coefficient lens:
+    channels A = (y1 + y2)^2, B = (y1 - y2)^2
+    deck action swaps A and B
+
+scalar adapter:
+    s = A + B, p = A * B
+    first two records reconstruct the unordered pair
+
+response:
+    two small-pole cycles exchanged by the same deck action
+
+physical record:
+    invariant cycle trace survives
+    anti-invariant cycle trace is annihilated</code></pre>
+      <p>
+        This example separates three mechanisms that can look identical from a final scalar.
+        The map from the two-channel lens to <code>(s, p)</code> is a smooth finite quotient: it
+        forgets channel ordering but no continuous data. The physical equal-mass source reaches
+        that quotient tangentially, because its first visible normal coordinate is
+        <code>(y1 - y2)^2</code>. Source ramification and readout information loss therefore occur
+        in different arrows.
+      </p>
+      <p>
+        The coefficient connection is flat and explicitly pure gauge, so it has no nontrivial
+        local monodromy of its own. The response object is different: looping around the invariant
+        mass-difference coordinate exchanges its two small-pole cycles. Their source residues are
+        equal, so the pairing keeps the invariant trace, kills the anti-trace, and limits to the
+        central physical pole when the cycles collide.
+      </p>
+      <p>
+        In architecture language, a stateless adapter can be completely trivializable while the
+        end-to-end protocol still has meaningful failover or replica permutation state. The
+        observable belongs to the adapter-plus-response contract. Inspecting the adapter alone
+        cannot recover which response trace is authorized.
+      </p>
+
+      <h2>A third proof-of-concept: structure permits, coefficients realize, readout activates</h2>
+      <p>
+        Exact one-loop photon scattering now provides a case where the architecture produces a
+        quantitative physical threshold rather than only a type distinction. The Carrier and Ward
+        constraints construct a rank-two photon coefficient fiber, but they do not select the QED
+        ray inside it. QED supplies that sector-specific coefficient object; a frozen Bell protocol
+        supplies the physical readout.
+      </p>
+      <pre><code>{`carrier/calculus:
+    four-photon crossing + Ward fiber + helicity transport
+
+coefficient object:
+    exact massive-electron one-loop helicity amplitude
+    (Phi1, Phi2, Phi5)
+
+physical readout:
+    maximally-entangled input
+    + fixed CHSH analyzers
+    + normalized outgoing-helicity pairing
+
+record:
+    abs(Bell(s, theta))
+
+derived transverse threshold:
+    s / m_e^2 = 0.4201576087546...
+    sqrt(s) / m_e = 0.6481956562...`}</code></pre>
+      <p>
+        The threshold is neither stored in the Carrier nor fitted into the readout. Two consecutive
+        EFT jets predict it, and the full massive one-loop amplitude confirms it below the
+        electron-pair threshold. Independent precision runs reproduce the root. A refined angular
+        census places the last sampled nonviolating direction at the transverse point; a continuum
+        angular certificate remains open.
+      </p>
+      <p>
+        This separates four layers cleanly: the Carrier supplies structural possibility, the
+        coefficient object realizes one sector, the readout states what is physically interrogated,
+        and their pairing produces the observable record. Asking the Carrier alone to predict the
+        QED coefficient ray would confuse permission with realization. Asking the coefficient object
+        alone for a Bell threshold would omit the measurement contract that makes the threshold
+        meaningful.
+      </p>
+
+      <h2>The revised architecture question</h2>
+      <p>
+        The research question is now whether the carrier supplies a stable topology of supported
+        interactions, while each sector supplies an authorized pair of endpoint objects and the
+        physical contract that evaluates them. A failure of a particular payload or detector does
+        not refute the shared architecture. A required interaction that cannot be typed by the
+        frozen carrier and calculus would.
       </p>
     </div>
   </article>

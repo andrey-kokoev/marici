@@ -1,0 +1,41 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "wp996-bounded-control-chebyshev-optimum",
+    "owner": "marici.Figueiredo",
+    "classification": "conditional_chebyshev_optimum_under_assumed_control_budget",
+    "stratum": "formal effective-control square |Q|,|R|<=B with B>0 and symmetric invariant-coordinate l-infinity error",
+    "inputs": [
+      "research/flavor/flavor-robustness-normalization-no-go.md",
+      "research/flavor/results/wp995_robustness_normalization_no_go.json",
+      "research/flavor/flavor-bounded-control-chebyshev-optimum.md",
+      "research/flavor/checkers/wp996_bounded_control_chebyshev_optimum.py",
+      "research/flavor/results/wp996_bounded_control_chebyshev_optimum.json"
+    ],
+    "checks": [
+      {
+        "id": "wp996_bounded_control_chebyshev_optimum",
+        "path": "research/flavor/checkers/wp996_bounded_control_chebyshev_optimum.py",
+        "requires": []
+      }
+    ],
+    "depends_on": ["wp995-robustness-normalization-no-go"],
+    "consumes": [
+      "target-scale normalization obstruction",
+      "assumed l-infinity control budget",
+      "strict preparation-region inequalities"
+    ],
+    "provides": [
+      "exact Chebyshev-optimal targets",
+      "joint optimal formal radius B/5489",
+      "convex dual upper-bound certificate"
+    ],
+    "missing_constructors": [
+      "source-derived physical control norm",
+      "source-derived bound B",
+      "calibrated closed-loop error in the dual invariant units"
+    ],
+    "next_falsifier": "replace the assumed square by one independently derived actuator support or cost ball and test whether the optimized three-label margin remains positive"
+  }
+}

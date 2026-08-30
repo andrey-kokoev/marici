@@ -1,0 +1,91 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1428,
+  "event_id": "ev-000000001428-f3b09460-f814-4333-882b-2a697681d6af",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "c5abe55447a412153d7f8a7cf70ccf71c9fbc6cd4933a982c7667f36a998dd83",
+  "proposal_id": "ep_52af903c-2345-419e-93e1-bed90f7c2bab",
+  "proposal_digest": "5ff79743f08bd6630b1a19378d124e07fd1afa462f11634083c9d770e8a27f07",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "local_ref": "packet",
+      "kind": "source",
+      "title": "Euler–gamma Stieltjes sign gate packet",
+      "version": "1",
+      "locator": "research/grothendieck/euler-gamma-stieltjes-sign-gate.md",
+      "entity_id": "source:1ef084f5eabc2ce86825"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "ledger",
+      "kind": "source",
+      "title": "Ledger 1388 — Prime and Gamma Traces Are Not Separately Positive Weyl Measures",
+      "version": "1",
+      "locator": "src/ledger/20260820-1388 Prime and Gamma Traces Are Not Separately Positive Weyl Measures.md",
+      "entity_id": "source:b151f40d3d350eec697e"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "claim",
+      "kind": "claim",
+      "title": "Prime and gamma traces do not separately define positive xi Weyl measures",
+      "statement": "For x=y^2 with y>1/2, R_Xi is exactly the completed logarithmic derivative divided by 2y and decomposes into pole, digamma, and a negative von-Mangoldt prime-power trace. Individual pole and zeta singularities cancel only after completion. Hence the desired positive Stieltjes measure is not a termwise positive pushforward of primes or gamma modes; positivity can emerge only from the globally continued completed combination.",
+      "scope": "Exact Euler-half-plane decomposition and no-go for termwise positive prime pushforward; does not falsify the completed Stieltjes property.",
+      "entity_id": "claim:ec3e6eaa529943b8d01c"
+    },
+    {
+      "op": "entity.declare",
+      "local_ref": "test",
+      "kind": "test",
+      "title": "Euler–gamma Weyl-measure sign and pole-cancellation test",
+      "description": "Differentiate the completed Euler product in Re(s)>1, track the von Mangoldt sign, and audit the cancelling pole singularities before Stieltjes continuation.",
+      "entity_id": "test:cdebec110b981c649e55"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "packet",
+      "source_id": "claim:ec3e6eaa529943b8d01c",
+      "target_id": "source:1ef084f5eabc2ce86825",
+      "relation_id": "rel:derived_from-cbb0d958179626ae"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "claim",
+      "target_ref": "ledger",
+      "source_id": "claim:ec3e6eaa529943b8d01c",
+      "target_id": "source:b151f40d3d350eec697e",
+      "relation_id": "rel:derived_from-01d402b8fe80055d"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_ref": "test",
+      "target_ref": "claim",
+      "source_id": "test:cdebec110b981c649e55",
+      "target_id": "claim:ec3e6eaa529943b8d01c",
+      "relation_id": "rel:tests-e5da162b375483d0"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_ref": "test",
+      "target_ref": "packet",
+      "source_id": "test:cdebec110b981c649e55",
+      "target_id": "source:1ef084f5eabc2ce86825",
+      "relation_id": "rel:derived_from-2fb570122d1aa805"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_direct_instruction",
+    "summary": "Continue deriving or falsifying the source-positive Weyl boundary and add the research to the ledger."
+  },
+  "idempotency_key": "auto-admission-62b93f96d61398300c355947",
+  "occurred_at": "2026-08-21T00:25:06.6207471Z",
+  "certifies_truth": false,
+  "event_hash": "52b46ea7422a1ab8c04314c173b3f76ec428621d021d9a8c998a58e479d40b61"
+}

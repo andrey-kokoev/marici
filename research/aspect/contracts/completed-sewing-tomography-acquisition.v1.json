@@ -1,0 +1,12 @@
+{
+  "schema": "marici.aspect.completed-sewing-tomography-acquisition.v1",
+  "format": "CSV with one row per direction-input-output complex transfer estimate",
+  "directions": ["forward", "reverse"],
+  "ports": ["primitive", "prime_square", "seam", "endpoint", "connected_tail", "archimedean"],
+  "setting_count": 12,
+  "complex_transfer_cell_count": 72,
+  "minimum_trials_per_setting": 1000000,
+  "required_columns": ["acquisition_epoch", "direction", "input_port", "output_port", "amplitude_re", "amplitude_im", "common_lo_key", "source_map_digest", "source_metric_key", "environment_manifest", "source_derived_before_outcomes", "calibration_status", "trial_count", "setting_key"],
+  "acceptance": "All 72 cells are unique and present; one common LO, metric, epoch, and environment manifest are frozen; both maps are independently source-derived; J_forward is unitary and J_reverse*J_forward is identity in the declared basis.",
+  "physical_boundary": "The exact analyzer accepts rational complex estimates. A physical run additionally needs independently preregistered uncertainty regions and residual thresholds."
+}

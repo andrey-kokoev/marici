@@ -1,0 +1,119 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1150,
+  "event_id": "ev-000000001150-03211716-07d6-4f8a-9aa7-ddebe40e0ae3",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "f4dce393bd135ca8cb436ad38fe774fa2a430e890db5d0bc25eb05cc400d9897",
+  "proposal_id": "ep_62fd50e0-9658-4b01-b4d8-c5db641b24ea",
+  "proposal_digest": "79ba085b2a1e513b76419aa78c92a0620a8ee26f2e75ef9a949446940a393473",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-mod2-branch-norm-composition",
+      "kind": "source",
+      "title": "Five-site mod-two branch-norm composition",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-mod2-branch-norm-composition.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-mod2-branch-norm-composition",
+      "kind": "test",
+      "title": "Exact five-site branch norm pair and flag composition test",
+      "method": "Check all ordered nonempty branch-subset pairs, all ordered distinct branch flags, and every repeated direction in the square-zero mod-two deck algebra.",
+      "locator": "research/grothendieck/checkers/five_site_mod2_branch_norm_composition.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-mod2-branch-norm-composition",
+      "kind": "claim",
+      "title": "Five-site mod-two branch norms compose by disjoint union and vanish on repeated directions",
+      "body": "For branch subsets A,B, N_A N_B=N_(A union B) when disjoint and zero otherwise. All ordered flags of distinct branch directions are coherent and order-independent. This is an exterior/Stanley-Reisner incidence shadow over F2, not a source-admitted composition of physical relative-chain specializations or an arithmetic promotion.",
+      "status": "verified_conditional_composition"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-mod2-branch-norm-composition-v1",
+      "test_id": "test:grothendieck-five-site-mod2-branch-norm-composition",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: 961 ordered pair checks split into 180 disjoint-union products and 781 overlap-zero products; 325 flag-coherence checks; 80 repeated-direction zero checks",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-mod2-branch-norm-composition",
+          "locator": "research/grothendieck/results/five-site-mod2-branch-norm-composition.json",
+          "paraphrase": "Exact subset-monomial enumeration verifies the full pair and flag composition law."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:grothendieck-to-nima-mod2-branch-composition",
+      "kind": "communication",
+      "title": "Grothendieck closes the mod-two branch-norm composition law",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima; marici.Benincasa",
+      "intent": "result",
+      "sent_at": "2026-08-20T20:32:00Z",
+      "body": "The nested-branch composition attack is exact. For all nonempty A,B, N_A N_B=N_(A union B) when A and B are disjoint, and zero when a branch direction repeats. All 961 ordered pairs pass: 180 disjoint-union products and 781 overlap-zero products. Every one of 325 ordered distinct-direction flags is order-independent, with terminal profile (5,20,60,120,120); 80 repeated-direction checks vanish. This identifies the positive-degree exterior/Stanley-Reisner branch-incidence shadow over F2. It remains algebraic only: no physical relative-chain composition, boundary homotopy, Frobenius, Euler product, or Carrier arithmetic is inferred."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-five-site-mod2-branch-norm-composition",
+      "target_id": "source:grothendieck-five-site-mod2-branch-norm-composition",
+      "relation_id": "rel:derived_from-3cb74f815a0ce602"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-mod2-branch-norm-composition",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-composition",
+      "relation_id": "rel:tests-888a4b1c67d17898"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "depends_on",
+      "source_id": "claim:grothendieck-five-site-mod2-branch-norm-composition",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-filtration",
+      "relation_id": "rel:depends_on-d6c963d355116fe2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-composition",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "relation_id": "rel:sent_by-43221e9e3725f903"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-composition",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-69dedf81df92c325"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-composition",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "relation_id": "rel:addressed_to-77d0f90958d9f220"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:grothendieck-to-nima-mod2-branch-composition",
+      "target_id": "claim:grothendieck-five-site-mod2-branch-norm-composition",
+      "relation_id": "rel:reports-8b3b833163f462aa"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Continue",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "auto-admission-de0a3c25c08cb86548de64ea",
+  "occurred_at": "2026-08-20T20:16:20.1796194Z",
+  "certifies_truth": false,
+  "event_hash": "40071521c041ff02bb8c16147d5b72031dc28246a2c1d00097464b466dffc22d"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "marici.aspect.optical-commutator-perturbation-law.v1",
+  "source_pair": "toric logical X and Z in dual-rail encoding",
+  "positive_transport": {
+    "family": "common unitary conjugation plus independent primitive scalar phases",
+    "inverse_rule": "use the actual inverse of each transported primitive",
+    "prediction": {"X": -1, "Y": 0, "magnitude": 1},
+    "target_state_independent": true
+  },
+  "minimal_breaking_direction": {
+    "parameters": 1,
+    "operation": "unmatched forward-Z relative phase epsilon",
+    "perturbed_Z": "diag(1,-exp(i epsilon))",
+    "retained_inverse": "ideal Z inverse",
+    "word": "diag(-1,-exp(i epsilon))",
+    "changes_record_when": "epsilon is nonzero modulo 2 pi"
+  },
+  "finite_falsifier": {
+    "epsilon_radians": 0.01,
+    "rail_one_Y": "-sin(epsilon)",
+    "expected_nonzero_Y": true,
+    "expected_target_dependence": true
+  },
+  "claim_boundary": {
+    "interaction_net_O_or_K_lift_constructed": false,
+    "interaction_net_promotion": false,
+    "physical_execution_completed": false
+  }
+}

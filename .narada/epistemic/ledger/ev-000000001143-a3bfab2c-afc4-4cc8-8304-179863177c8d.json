@@ -1,0 +1,112 @@
+{
+  "schema": "narada.epistemic.event.v1",
+  "sequence": 1143,
+  "event_id": "ev-000000001143-a3bfab2c-afc4-4cc8-8304-179863177c8d",
+  "event_kind": "proposal_admitted",
+  "previous_hash": "db66528176e2a0fded49aace6edc0b2cf50be3c0436db0dd6c93b65c5d08ab6f",
+  "proposal_id": "ep_9ae5842a-fb9e-4738-bfcf-5ebc7bc4163b",
+  "proposal_digest": "6e6c2cafdec9710dbe0dc044aecfc687e39101c6987cf0a513e4d133843eefdc",
+  "operations": [
+    {
+      "op": "entity.declare",
+      "entity_id": "source:grothendieck-five-site-branch-chain-lift-gate",
+      "kind": "source",
+      "title": "Five-site branch-chain lift gate",
+      "version": "v1",
+      "locator": "research/grothendieck/five-site-branch-chain-lift-gate.md"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "test:grothendieck-five-site-branch-chain-lift-gate",
+      "kind": "test",
+      "title": "Codimension-one Kummer branch chain-lift underdetermination test",
+      "method": "Read the frozen 32-to-16 branch census and compare distinct positive integral linear lifts compatible with sheet-label coalescence and selected positive-chain normalization.",
+      "locator": "research/grothendieck/checkers/five_site_branch_chain_lift_gate.py"
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "claim:grothendieck-five-site-branch-chain-lift-underdetermined",
+      "kind": "claim",
+      "title": "Five-site codimension-one sheet coalescence does not determine the physical relative-chain pushforward",
+      "body": "Entry 1224's bit-mask quotient proves 32-to-16 label coalescence and generic deck orientation preservation, but no boundary-compatible specialization or multiplicity. Positive integral lifts with negative-sheet multiplicities 1 and 2 both satisfy the recorded label, positivity, and selected positive-chain normalization; only multiplicity one satisfies full coefficient-Betti adjunction, which is itself not source-admitted.",
+      "status": "verified_source_relative_obstruction"
+    },
+    {
+      "op": "test_outcome.record",
+      "outcome_id": "outcome:grothendieck-five-site-branch-chain-lift-gate-v1",
+      "test_id": "test:grothendieck-five-site-branch-chain-lift-gate",
+      "actor": "marici.Grothendieck",
+      "outcome": "pass: frozen branch census is 32-to-16; two distinct positive integral lifts satisfy recorded evidence; adjunction defects are respectively 0 and 1",
+      "evidence": [
+        {
+          "source_id": "source:grothendieck-five-site-branch-chain-lift-gate",
+          "locator": "research/grothendieck/results/five-site-branch-chain-lift-gate.json",
+          "paraphrase": "Exact audit exhibits nonunique positive chain lifts and isolates the extra adjunction assumption."
+        }
+      ]
+    },
+    {
+      "op": "entity.declare",
+      "entity_id": "communication:grothendieck-branch-chain-gate-result",
+      "kind": "communication",
+      "title": "Grothendieck isolates the missing five-site branch-chain multiplicity",
+      "sender": "marici.Grothendieck",
+      "recipient": "marici.Nima; marici.Benincasa",
+      "intent": "result_and_source_request",
+      "sent_at": "2026-08-20T20:20:00Z",
+      "body": "I attacked the codimension-one branch C2->1 as the first possible physical lift. The frozen checker implements branch restriction only as bit masking and counts 32->16 sheet classes. It supplies no relative-pair map, boundary operator, or specialization multiplicity. After fixing Gamma_+->Gamma and retaining positive orientation, Gamma_->Gamma and Gamma_->2Gamma are both compatible with the recorded label quotient and selected normalization; only the first satisfies full coefficient-Betti adjunction. Therefore multiplicity one is algebraically canonical after assuming adjunction, but is not physically derivable from Entry 1224 without circularity. The precise requested source datum is a boundary-compatible specialization of relative pairs with local degree/intersection multiplicity and endpoint/regulator normalization."
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "derived_from",
+      "source_id": "claim:grothendieck-five-site-branch-chain-lift-underdetermined",
+      "target_id": "source:grothendieck-five-site-branch-chain-lift-gate",
+      "relation_id": "rel:derived_from-228147ad8e4395b7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "tests",
+      "source_id": "test:grothendieck-five-site-branch-chain-lift-gate",
+      "target_id": "claim:grothendieck-five-site-branch-chain-lift-underdetermined",
+      "relation_id": "rel:tests-b45d27fe1abd4a8c"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "sent_by",
+      "source_id": "communication:grothendieck-branch-chain-gate-result",
+      "target_id": "team_member:7283d8c22c912c41664b",
+      "relation_id": "rel:sent_by-fff594dd66536bfa"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-branch-chain-gate-result",
+      "target_id": "team_member:aa2834674c8559a5dee0",
+      "relation_id": "rel:addressed_to-e50879f07bf1ffe2"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "addressed_to",
+      "source_id": "communication:grothendieck-branch-chain-gate-result",
+      "target_id": "team_member:bc28f30924d7df1af02a",
+      "relation_id": "rel:addressed_to-5e2553f01657fdb7"
+    },
+    {
+      "op": "relation.declare",
+      "relation_type": "reports",
+      "source_id": "communication:grothendieck-branch-chain-gate-result",
+      "target_id": "claim:grothendieck-five-site-branch-chain-lift-underdetermined",
+      "relation_id": "rel:reports-a7198e379ccfae5b"
+    }
+  ],
+  "actor": "marici.Grothendieck",
+  "authority_basis": {
+    "kind": "operator_directed_research",
+    "instruction": "Choose attack direction and charge at will",
+    "identity": "team_member:7283d8c22c912c41664b"
+  },
+  "idempotency_key": "auto-admission-a125975f18e965887a808d52",
+  "occurred_at": "2026-08-20T20:11:01.7095497Z",
+  "certifies_truth": false,
+  "event_hash": "805be962dba1fa8e65d0575d521a57e6b2e4592ad6b17d2bd58b1d716d9e178f"
+}
