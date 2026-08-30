@@ -1,0 +1,38 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_1920_1788053918095846300_373",
+  "created_at": "2026-08-30T01:38:38.0958501Z",
+  "sha256": "6d20f712d98fae1b5300187d141b936d29ddb0ac4b4fe8ed2bf51733e8e7942b",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "research/aspect/checkers/check_optical_pair_stiffness_flux_cell.py"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "started_at": "2026-08-30T01:38:36.7391849Z",
+    "finished_at": "2026-08-30T01:38:38.095837Z",
+    "timeout_ms": 60000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "{\r\n  \"schema\": \"marici.aspect.optical-pair-stiffness-flux-check.v1\",\r\n  \"passed\": true,\r\n  \"checks\": {\r\n    \"joint_candidate_passes\": true,\r\n    \"pseudogap_has_pairs_but_fails_joint\": true,\r\n    \"normal_state_fails_pair_gate\": true,\r\n    \"moderate_noise_survival_is_preserved\": true,\r\n    \"strong_noise_fails_joint\": true,\r\n    \"all_four_witnesses_required\": true,\r\n    \"kelvin_mapping_absent\": true,\r\n    \"result_does_not_claim_material_superconductivity\": true,\r\n    \"single_signature_contract_rejected\": true\r\n  },\r\n  \"result\": {\r\n    \"schema\": \"marici.aspect.optical-pair-stiffness-flux-result.v1\",\r\n    \"claim_boundary\": \"dimensionless_optical_analogue_not_material_superconductivity\",\r\n    \"fixtures\": [\r\n      {\r\n        \"id\": \"coherent_candidate\",\r\n        \"metrics\": {\r\n          \"pair_amplitude\": 0.9996736085899434,\r\n          \"phase_stiffness\": 0.9989039008990348,\r\n          \"circulating_current\": -0.029143268968695978,\r\n          \"persistent_winding\": 1.0,\r\n          \"screening_response\": 0.9991977932124336\r\n        },\r\n        \"gates\": {\r\n          \"pair_amplitude\": true,\r\n          \"phase_stiffness\": true,\r\n          \"opposing_flux_response\": true,\r\n          \"persistent_winding\": true\r\n        },\r\n        \"joint_admitted\": true,\r\n        \"expected_joint\": true,\r\n        \"expectation_met\": true\r\n      },\r\n      {\r\n        \"id\": \"pseudogap_hostile\",\r\n        \"metrics\": {\r\n          \"pair_amplitude\": 0.9949606653619054,\r\n          \"phase_stiffness\": 0.03771633788627764,\r\n          \"circulating_current\": -0.0010498434916471917,\r\n          \"persistent_winding\": 1.0,\r\n          \"screening_response\": 0.03599463399933229\r\n        },\r\n        \"gates\": {\r\n          \"pair_amplitude\": true,\r\n          \"phase_stiffness\": false,\r\n          \"opposing_flux_response\": false,\r\n          \"persistent_winding\": true\r\n        },\r\n        \"joint_admitted\": false,\r\n        \"expected_joint\": false,\r\n        \"expectation_met\": true\r\n      },\r\n      {\r\n        \"id\": \"normal_hostile\",\r\n        \"metrics\": {\r\n          \"pair_amplitude\": 0.013907834673404354,\r\n          \"phase_stiffness\": 0.00010330784862246706,\r\n          \"circulating_current\": -1.502824335628595e-07,\r\n          \"persistent_winding\": 0.45600000000000007,\r\n          \"screening_response\": 5.1525405792980405e-06\r\n        },\r\n        \"gates\": {\r\n          \"pair_amplitude\": false,\r\n          \"phase_stiffness\": false,\r\n          \"opposing_flux_response\": false,\r\n          \"persistent_winding\": false\r\n        },\r\n        \"joint_admitted\": false,\r\n        \"expected_joint\": false,\r\n        \"expectation_met\": true\r\n      },\r\n      {\r\n        \"id\": \"moderate_noise_candidate\",\r\n        \"metrics\": {\r\n          \"pair_amplitude\": 0.987406882055135,\r\n          \"phase_stiffness\": 0.32971186416057024,\r\n          \"circulating_current\": -0.009280328994864683,\r\n          \"persistent_winding\": 0.9873333333333333,\r\n          \"screening_response\": 0.3181827083953606\r\n        },\r\n        \"gates\": {\r\n          \"pair_amplitude\": true,\r\n          \"phase_stiffness\": true,\r\n          \"opposing_flux_response\": true,\r\n          \"persistent_winding\": true\r\n        },\r\n        \"joint_admitted\": true,\r\n        \"expected_joint\": true,\r\n        \"expectation_met\": true\r\n      },\r\n      {\r\n        \"id\": \"strong_noise_hostile\",\r\n        \"metrics\": {\r\n          \"pair_amplitude\": 0.9124746470971077,\r\n          \"phase_stiffness\": 0.061090625560088756,\r\n          \"circulating_current\": 0.008619737739262499,\r\n          \"persistent_winding\": 0.32600000000000007,\r\n          \"screening_response\": -0.29553386534614284\r\n        },\r\n        \"gates\": {\r\n          \"pair_amplitude\": true,\r\n          \"phase_stiffness\": false,\r\n          \"opposing_flux_response\": false,\r\n          \"persistent_winding\": false\r\n        },\r\n        \"joint_admitted\": false,\r\n        \"expected_joint\": false,\r\n        \"expectation_met\": true\r\n      }\r\n    ],\r\n    \"all_expectations_met\": true,\r\n    \"room_temperature_claim\": false,\r\n    \"missing_kelvin_constructor\": \"independent_energy_scale_and_bath_spectral_calibration\"\r\n  }\r\n}\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
