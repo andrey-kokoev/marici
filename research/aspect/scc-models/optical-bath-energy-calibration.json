@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "optical-bath-energy-calibration",
+    "owner": "marici.Aspect",
+    "classification": "deterministic_calibration_surrogate_requires_hardware_binding",
+    "stratum": "function-valued bath spectrum and independent energy-scale observer",
+    "inputs": ["research/aspect/optical-bath-energy-calibration.md", "research/aspect/contracts/optical-bath-energy-calibration.v1.json"],
+    "checks": [{"id": "optical-bath-energy-calibration", "path": "research/aspect/checkers/check_optical_bath_energy_calibration.py", "requires": []}],
+    "depends_on": ["optical-pair-stiffness-flux-cell"],
+    "consumes": ["noise power spectrum", "dissipative susceptibility", "spectroscopic energy reference"],
+    "provides": ["gain-invariant effective bath temperature", "FDT flatness", "energy-scale agreement"],
+    "missing_constructors": ["hardware route compiler", "traceable spectroscopic reference binding", "material Hamiltonian equivalence"],
+    "next_falsifier": "reject the optical Kelvin mapping if the inferred temperature varies across frequency or changes under detector gain"
+  }
+}

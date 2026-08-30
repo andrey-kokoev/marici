@@ -1,0 +1,17 @@
+{
+  "$schema": "../scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "coherent-control-route-compiler",
+    "owner": "marici.Aspect",
+    "classification": "deterministic_hardware_route_plan_no_dispatch",
+    "stratum": "typed clocked source-actuator-observer route compilation",
+    "inputs": ["research/aspect/coherent-control-route-compiler.md", "research/aspect/contracts/coherent-control-route-compiler.v1.json"],
+    "checks": [{"id": "coherent-control-route-compiler", "path": "research/aspect/checkers/check_coherent_control_route_compiler.py", "requires": []}],
+    "depends_on": ["synchronized-optical-material-acquisition"],
+    "consumes": ["control coordinates", "hardware inventory", "calibration window", "clock"],
+    "provides": ["typed route plan", "trigger schedule", "expected acquisition records"],
+    "missing_constructors": ["authorized apparatus adapter", "device capability readback", "signed execution receipts"],
+    "next_falsifier": "bind the plan to the live apparatus inventory and reject any route whose capability readback differs from its declared port type"
+  }
+}

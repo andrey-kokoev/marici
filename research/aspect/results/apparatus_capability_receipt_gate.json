@@ -1,0 +1,389 @@
+{
+  "schema": "marici.aspect.apparatus-capability-receipt-gate-check.v1",
+  "passed": true,
+  "checks": {
+    "attested_candidate_admitted": true,
+    "device_substitution_rejected": true,
+    "receipt_replay_rejected": true,
+    "receipt_omission_rejected": true,
+    "firmware_drift_rejected": true,
+    "signature_tamper_rejected": true,
+    "all_24_receipts_required": true,
+    "fixture_signature_not_hardware_authority": true,
+    "live_execution_not_fabricated": true
+  },
+  "result": {
+    "schema": "marici.aspect.apparatus-capability-receipt-gate-result.v1",
+    "fixtures": [
+      {
+        "id": "attested_candidate",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 24,
+        "gates": {
+          "capability_attested": true,
+          "signatures_valid": true,
+          "receipts_unique": true,
+          "receipt_set_complete": true,
+          "plan_receipt_correspondence": true
+        },
+        "admitted": true,
+        "expected_admit": true,
+        "expectation_met": true
+      },
+      {
+        "id": "device_substitution_hostile",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 24,
+        "gates": {
+          "capability_attested": true,
+          "signatures_valid": false,
+          "receipts_unique": true,
+          "receipt_set_complete": true,
+          "plan_receipt_correspondence": false
+        },
+        "admitted": false,
+        "expected_admit": false,
+        "expectation_met": true
+      },
+      {
+        "id": "receipt_replay_hostile",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 24,
+        "gates": {
+          "capability_attested": true,
+          "signatures_valid": true,
+          "receipts_unique": false,
+          "receipt_set_complete": true,
+          "plan_receipt_correspondence": false
+        },
+        "admitted": false,
+        "expected_admit": false,
+        "expectation_met": true
+      },
+      {
+        "id": "receipt_omission_hostile",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 23,
+        "gates": {
+          "capability_attested": true,
+          "signatures_valid": true,
+          "receipts_unique": true,
+          "receipt_set_complete": false,
+          "plan_receipt_correspondence": false
+        },
+        "admitted": false,
+        "expected_admit": false,
+        "expectation_met": true
+      },
+      {
+        "id": "firmware_drift_hostile",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.2",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 24,
+        "gates": {
+          "capability_attested": false,
+          "signatures_valid": true,
+          "receipts_unique": true,
+          "receipt_set_complete": true,
+          "plan_receipt_correspondence": true
+        },
+        "admitted": false,
+        "expected_admit": false,
+        "expectation_met": true
+      },
+      {
+        "id": "signature_tamper_hostile",
+        "inventory": {
+          "laser-A": {
+            "device_id": "laser-A",
+            "firmware": "1.4.2",
+            "capability_attested": true
+          },
+          "pulse-A": {
+            "device_id": "pulse-A",
+            "firmware": "2.1.0",
+            "capability_attested": true
+          },
+          "mesh-pair-port": {
+            "device_id": "mesh-pair-port",
+            "firmware": "3.2.1",
+            "capability_attested": true
+          },
+          "phase-twist-eom": {
+            "device_id": "phase-twist-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "loop-flux-eom": {
+            "device_id": "loop-flux-eom",
+            "firmware": "1.9.0",
+            "capability_attested": true
+          },
+          "heterodyne-1": {
+            "device_id": "heterodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "homodyne-1": {
+            "device_id": "homodyne-1",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "balanced-homodyne": {
+            "device_id": "balanced-homodyne",
+            "firmware": "4.0.3",
+            "capability_attested": true
+          },
+          "fast-detector": {
+            "device_id": "fast-detector",
+            "firmware": "2.8.4",
+            "capability_attested": true
+          }
+        },
+        "receipt_count": 24,
+        "gates": {
+          "capability_attested": true,
+          "signatures_valid": false,
+          "receipts_unique": true,
+          "receipt_set_complete": true,
+          "plan_receipt_correspondence": false
+        },
+        "admitted": false,
+        "expected_admit": false,
+        "expectation_met": true
+      }
+    ],
+    "all_expectations_met": true,
+    "live_hardware_executed": false,
+    "signature_authority": "fixture_only"
+  }
+}

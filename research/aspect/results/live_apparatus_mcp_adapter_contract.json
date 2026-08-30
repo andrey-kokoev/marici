@@ -1,0 +1,75 @@
+{
+  "schema": "marici.aspect.live-apparatus-mcp-adapter-contract-check.v1",
+  "passed": true,
+  "checks": {
+    "conformant_candidate_admitted": true,
+    "missing_readback_rejected": true,
+    "unscoped_dispatch_rejected": true,
+    "unsigned_receipt_rejected": true,
+    "missing_authority_rejected": true,
+    "site_surface_present": false
+  },
+  "adapter_status": "specified_not_bound",
+  "fixtures": [
+    {
+      "id": "conformant_candidate",
+      "gates": {
+        "tool_basis_complete": true,
+        "mutability_typed": true,
+        "safety_basis_complete": true,
+        "dispatch_separated_from_readback": true
+      },
+      "admitted": true,
+      "expected_admit": true,
+      "expectation_met": true
+    },
+    {
+      "id": "missing_readback_hostile",
+      "gates": {
+        "tool_basis_complete": false,
+        "mutability_typed": true,
+        "safety_basis_complete": true,
+        "dispatch_separated_from_readback": false
+      },
+      "admitted": false,
+      "expected_admit": false,
+      "expectation_met": true
+    },
+    {
+      "id": "unscoped_dispatch_hostile",
+      "gates": {
+        "tool_basis_complete": true,
+        "mutability_typed": true,
+        "safety_basis_complete": false,
+        "dispatch_separated_from_readback": true
+      },
+      "admitted": false,
+      "expected_admit": false,
+      "expectation_met": true
+    },
+    {
+      "id": "unsigned_receipt_hostile",
+      "gates": {
+        "tool_basis_complete": true,
+        "mutability_typed": true,
+        "safety_basis_complete": false,
+        "dispatch_separated_from_readback": true
+      },
+      "admitted": false,
+      "expected_admit": false,
+      "expectation_met": true
+    },
+    {
+      "id": "missing_authority_hostile",
+      "gates": {
+        "tool_basis_complete": true,
+        "mutability_typed": true,
+        "safety_basis_complete": false,
+        "dispatch_separated_from_readback": true
+      },
+      "admitted": false,
+      "expected_admit": false,
+      "expectation_met": true
+    }
+  ]
+}

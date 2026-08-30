@@ -1,0 +1,119 @@
+{
+  "schema": "marici.aspect.optical-pair-stiffness-flux-check.v1",
+  "passed": true,
+  "checks": {
+    "joint_candidate_passes": true,
+    "pseudogap_has_pairs_but_fails_joint": true,
+    "normal_state_fails_pair_gate": true,
+    "moderate_noise_survival_is_preserved": true,
+    "strong_noise_fails_joint": true,
+    "all_four_witnesses_required": true,
+    "kelvin_mapping_absent": true,
+    "result_does_not_claim_material_superconductivity": true,
+    "single_signature_contract_rejected": true
+  },
+  "result": {
+    "schema": "marici.aspect.optical-pair-stiffness-flux-result.v1",
+    "claim_boundary": "dimensionless_optical_analogue_not_material_superconductivity",
+    "fixtures": [
+      {
+        "id": "coherent_candidate",
+        "metrics": {
+          "pair_amplitude": 0.9996736085899434,
+          "phase_stiffness": 0.9989039008990348,
+          "circulating_current": -0.029143268968695978,
+          "persistent_winding": 1.0,
+          "screening_response": 0.9991977932124336
+        },
+        "gates": {
+          "pair_amplitude": true,
+          "phase_stiffness": true,
+          "opposing_flux_response": true,
+          "persistent_winding": true
+        },
+        "joint_admitted": true,
+        "expected_joint": true,
+        "expectation_met": true
+      },
+      {
+        "id": "pseudogap_hostile",
+        "metrics": {
+          "pair_amplitude": 0.9949606653619054,
+          "phase_stiffness": 0.03771633788627764,
+          "circulating_current": -0.0010498434916471917,
+          "persistent_winding": 1.0,
+          "screening_response": 0.03599463399933229
+        },
+        "gates": {
+          "pair_amplitude": true,
+          "phase_stiffness": false,
+          "opposing_flux_response": false,
+          "persistent_winding": true
+        },
+        "joint_admitted": false,
+        "expected_joint": false,
+        "expectation_met": true
+      },
+      {
+        "id": "normal_hostile",
+        "metrics": {
+          "pair_amplitude": 0.013907834673404354,
+          "phase_stiffness": 0.00010330784862246706,
+          "circulating_current": -1.502824335628595e-07,
+          "persistent_winding": 0.45600000000000007,
+          "screening_response": 5.1525405792980405e-06
+        },
+        "gates": {
+          "pair_amplitude": false,
+          "phase_stiffness": false,
+          "opposing_flux_response": false,
+          "persistent_winding": false
+        },
+        "joint_admitted": false,
+        "expected_joint": false,
+        "expectation_met": true
+      },
+      {
+        "id": "moderate_noise_candidate",
+        "metrics": {
+          "pair_amplitude": 0.987406882055135,
+          "phase_stiffness": 0.32971186416057024,
+          "circulating_current": -0.009280328994864683,
+          "persistent_winding": 0.9873333333333333,
+          "screening_response": 0.3181827083953606
+        },
+        "gates": {
+          "pair_amplitude": true,
+          "phase_stiffness": true,
+          "opposing_flux_response": true,
+          "persistent_winding": true
+        },
+        "joint_admitted": true,
+        "expected_joint": true,
+        "expectation_met": true
+      },
+      {
+        "id": "strong_noise_hostile",
+        "metrics": {
+          "pair_amplitude": 0.9124746470971077,
+          "phase_stiffness": 0.061090625560088756,
+          "circulating_current": 0.008619737739262499,
+          "persistent_winding": 0.32600000000000007,
+          "screening_response": -0.29553386534614284
+        },
+        "gates": {
+          "pair_amplitude": true,
+          "phase_stiffness": false,
+          "opposing_flux_response": false,
+          "persistent_winding": false
+        },
+        "joint_admitted": false,
+        "expected_joint": false,
+        "expectation_met": true
+      }
+    ],
+    "all_expectations_met": true,
+    "room_temperature_claim": false,
+    "missing_kelvin_constructor": "independent_energy_scale_and_bath_spectral_calibration"
+  }
+}
