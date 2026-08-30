@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_29732_1788112007970206100_2",
+  "created_at": "2026-08-30T17:46:47.9702094Z",
+  "sha256": "25715a6efc11d713e7bc68753c243ab4920eff786f23b54dcd9cd91edafb4d7c",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import tomllib,pathlib; p=pathlib.Path('public/experiments/typed-reconciler-cube/coherence-lattice.toml'); d=tomllib.loads(p.read_text(encoding='utf-8')); laws=d['transport_law']; assert len(laws)==7; assert all(x['id']==f'C1_{i}' and x['source']==f'C0_{i}' and x['target']==f'C0_{i+1}' for i,x in enumerate(laws)); print('valid TOML; 7 transport laws; boundaries consistent')"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-30T17:46:47.8945567Z",
+    "finished_at": "2026-08-30T17:46:47.9701974Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "valid TOML; 7 transport laws; boundaries consistent\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
