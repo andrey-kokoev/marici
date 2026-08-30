@@ -1,0 +1,39 @@
+{
+  "schema": "narada.structured_command.execution.v0",
+  "ref": "structured_command_execution:e_33232_1788109873729062500_1",
+  "created_at": "2026-08-30T17:11:13.7290655Z",
+  "sha256": "d9b03386b0ce9e1f5b96178e81c645ae7bf4f06d539d1ebed34990f02ac6e577",
+  "result": {
+    "schema": "narada.structured_command.execution_result.v0",
+    "status": "ok",
+    "executed": true,
+    "command": "python",
+    "args": [
+      "-c",
+      "import json,subprocess,sys; p=subprocess.run([sys.executable,'research/aspect/scc/scc.py','models'],capture_output=True,text=True,check=True); d=json.loads(p.stdout); print(json.dumps([m for m in d['models'] if 'rh' in m['id'].lower() or 'riemann' in m['id'].lower()],indent=2))"
+    ],
+    "working_directory": "C:/Users/andrey/src/marici",
+    "started_at": "2026-08-30T17:11:13.4015917Z",
+    "finished_at": "2026-08-30T17:11:13.7290549Z",
+    "timeout_ms": 120000,
+    "execution_posture": {
+      "schema": "narada.structured_command.execution_posture.v0",
+      "test_scope": "unknown",
+      "expected_cost": "unknown",
+      "source": "derived"
+    },
+    "test_scope": "unknown",
+    "expected_cost": "unknown",
+    "execution_mode": "synchronous",
+    "wait_for_completion": true,
+    "pending": false,
+    "exit_code": 0,
+    "stdout": "[]\r\n",
+    "stderr": "",
+    "stdout_truncated": false,
+    "stderr_truncated": false,
+    "timed_out": false,
+    "cancelled": false,
+    "input_ref": null
+  }
+}
