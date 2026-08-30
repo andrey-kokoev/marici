@@ -18,6 +18,53 @@ The historical germ tester is SCC's local-packet and hostile-testing core. Exist
 
 The namespace is `marici.scc`. This avoids confusing SCC with the standard graph-theoretic abbreviation for strongly connected component.
 
+## Start here
+
+From the repository root, first inspect the installation and the live model
+registry:
+
+```text
+python research/aspect/scc/scc.py doctor
+python research/aspect/scc/scc.py models
+python research/aspect/scc/scc.py dashboard --markdown
+```
+
+To add a model without editing Aspect's registry:
+
+```text
+python research/aspect/scc/scc.py init marici.YourName your-model-id
+python research/aspect/scc/scc.py validate all
+python research/aspect/scc/scc.py check your-model-id
+python research/aspect/scc/scc.py explain your-model-id
+```
+
+`init` creates an owner-local manifest under
+`research/<owner>/scc-models/`. Replace its unresolved fields, point it at
+authoritative inputs and deterministic checkers, then validate before relying
+on any result. Use `freeze` before a prospective hostile and `challenge`
+afterward so the interpretation cannot be changed after observing the outcome.
+
+## Capability map
+
+| Question | SCC surface | Primary implementation |
+| --- | --- | --- |
+| What models are watched, stale, blocked, or downstream? | `models`, `status`, `dashboard`, `impact`, `plan`, `watch` | `scc.py` |
+| What constructor could remove a typed obstruction? | `constructors`, `transfers` | `constructor_synthesizer.py` |
+| Do routes and higher cells cohere? | `categorical`, `inverse` | `categorical_compiler.py` |
+| Can source equations determine a bridge formula? | `formulas` | `formula_synthesizer.py` |
+| Does a family of observers become jointly faithful? | `observer-set` | `observer_set_compiler.py` |
+| Do observers of observers form a valid higher tower? | `globular-tower` | `globular_tower_compiler.py` |
+| Do interaction-net reductions terminate, join, and preserve observables? | `net-algebra`, `universal-core` | `interaction_net_algebra.py`, `universal_net_certifier.py` |
+| Does an analytic or RH realization carry the required rigging/state data? | `beurling-rigging`, `projective-rigging`, `rh-state` | the corresponding `*_compiler.py` modules |
+| Is a physical apparatus claim source-authorized and uncertainty-complete? | watched-model apparatus certificate | `model-manifest.schema.json` |
+
+Canonical contributor inputs are owner-local manifests and contracts. Generated
+results belong under the owner's `results/` directory; preregistrations belong
+under `scc-freezes/`. The reusable schemas and templates are
+`model-manifest.schema.json`, `model-manifest.template.json`, and
+`contract.v1.json`. Fast coordinator regression coverage is in
+`test_scc.py`.
+
 ## Usage
 
 ```text

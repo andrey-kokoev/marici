@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Fast structural tests for the SCC coordinator."""
 from __future__ import annotations
+import contextlib
 import importlib.util
+import io
 from pathlib import Path
 import unittest
 
@@ -38,6 +40,13 @@ def apparatus_certificate(**overrides):
     cert.update(overrides);return cert
 
 class SCCTests(unittest.TestCase):
+    def test_help_is_a_successful_discovery_surface(self):
+        output=io.StringIO()
+        with contextlib.redirect_stdout(output):
+            self.assertEqual(SCC.main(["--help"]),0)
+        self.assertIn("Stratified Coherence Compiler",output.getvalue())
+        self.assertIn("observer-set",output.getvalue())
+
     def test_real_registry_is_valid(self):
         models,errors=SCC.discover()
         self.assertFalse(errors)

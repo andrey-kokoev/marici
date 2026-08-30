@@ -21,7 +21,7 @@ REGISTRY=json.loads((HERE/"registry.v1.json").read_text(encoding="utf-8"))
 CENTRAL_CHECKS={x["id"]:x for x in REGISTRY["checks"]}
 
 def usage():
-    print("SCC — Stratified Coherence Compiler")
+    print("SCC - Stratified Coherence Compiler")
     print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | categorical <diagram> | formulas <contract> | observer-set <contract> | globular-tower <contract> | beurling-rigging <contract> | beurling-source <contract> | projective-rigging <contract> | net-algebra <contract> | universal-core <contract> | rh-state <contract> | inverse <diagram> <claim> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
 
 APPARATUS_REQUIRED=(
@@ -362,6 +362,9 @@ def environment_capsule(m):
     return {"schema":"marici.scc.environment-capsule.v1","model":m["id"],"model_fingerprint":digest,"missing_inputs":missing,"python":{"executable":sys.executable,"version":platform.python_version(),"implementation":platform.python_implementation()},"platform":platform.platform(),"dependencies":[dependency_record(d) for d in deps],"checker_sha256":checker_hashes}
 
 def main(argv):
+    if not argv or argv in (["-h"], ["--help"], ["help"]):
+        usage()
+        return 0
     verbose="--verbose" in argv; write="--write" in argv; markdown="--markdown" in argv; argv=[x for x in argv if x not in ("--verbose","--write","--markdown")]; models,errors=discover()
     if not argv or argv==["help"]:usage();return 0
     if len(argv)==3 and argv[0]=="init":

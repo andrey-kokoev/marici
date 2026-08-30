@@ -183,6 +183,28 @@ The ledger currently keeps three frontiers separate:
 - **Frost:** construct, or obstruct, a canonical cyclic/BV lift of the pure-Einstein
   primitive-symmetric retract and the scalar-to-surface lift of \(\mathsf J\).
 
+## SCC — Stratified Coherence Compiler
+
+SCC is Marici's shared compiler for turning proposed explanations into typed
+obligations, executable hostile tests, bounded admissions, and explicit missing
+constructors. Start with
+[`research/aspect/scc/README.md`](research/aspect/scc/README.md). It includes
+the five-minute workflow, command reference, watched-model manifest format,
+capability map, and links to the categorical, observer-set, globular,
+interaction-net, rigging, apparatus, and RH machinery.
+
+The shortest orientation commands are:
+
+```text
+python research/aspect/scc/scc.py doctor
+python research/aspect/scc/scc.py models
+python research/aspect/scc/scc.py dashboard --markdown
+python research/aspect/scc/scc.py init marici.YourName your-model-id
+```
+
+SCC is a scope-and-obstruction instrument, not a truth oracle. A passing result
+certifies only the declared packet, stratum, witnesses, and hostile language.
+
 ## Commands
 
 ```text
