@@ -1,0 +1,74 @@
+{
+  "schema": "marici.soft-pushforward-internal-marked-collision.v1",
+  "status": "pass",
+  "dimensionless_kernel": "x^4-(8*kappa*xi+10)x^2+16*kappa^2+40*kappa*xi+16*xi^2+9",
+  "branch_roots": "alpha_pm=5+4*kappa*xi +/- 4*sqrt((1-kappa^2)*(1-xi^2))",
+  "factorization": "k=(x^2-alpha_minus)*(x^2-alpha_plus)",
+  "complete_positive_period": "I(xi)=1/(2*p^4*(xi+1))*integral_[sqrt(alpha_minus),sqrt(alpha_plus)] (x+1) dx/((x-1)^2*(x+3)*sqrt(k))",
+  "marked_partial_fraction": "(x+1)/((x-1)^2*(x+3))=1/(8*(x-1))+1/(2*(x-1)^2)-1/(8*(x+3))",
+  "elliptic_discriminant_support": "(1-xi^2)*(16*xi^2+40*kappa*xi+16*kappa^2+9)=0 at fixed generic kappa",
+  "relative_period_singular_support": [
+    "xi=-1 (source marked wall and elliptic degeneration)",
+    "xi=+1 (elliptic degeneration)",
+    "xi=-kappa (physical a=p marked collision)",
+    "xi=+kappa (deck a=-3p marked collision)",
+    "16*xi^2+40*kappa*xi+16*kappa^2+9=0 (quartic branch-root collision)"
+  ],
+  "identities": {
+    "K_at_a_equals_p": "16*(kappa+xi)^2",
+    "K_at_a_equals_minus_3p": "16*(kappa-xi)^2"
+  },
+  "physical_positive_collision": "xi=-kappa, equivalently t=1-kappa",
+  "deck_partner_collision": "xi=+kappa at a=-3p, equivalently t=1+kappa",
+  "newton_balance": "u=x-1 has weight 2 relative to delta=xi+kappa",
+  "local_pushforward_order": "delta^-3 before any source-prescribed contour subtraction",
+  "consequence": "the complete pushed-forward one-form is not defined on the unpunctured base interval; the path from t=2 to t=0 crosses an existing marked collision and requires the full i-epsilon continuation",
+  "classification": {
+    "support": "existing marked divisor a=p meeting the Cayley-Menger branch",
+    "new_carrier_datum": "none",
+    "endpoint_only_primitive": "insufficient"
+  },
+  "samples": [
+    {
+      "kappa": "-3/4",
+      "positive_collision_xi": "3/4",
+      "positive_collision_t": "7/4",
+      "lies_strictly_between_soft_endpoints": true
+    },
+    {
+      "kappa": "-1/2",
+      "positive_collision_xi": "1/2",
+      "positive_collision_t": "3/2",
+      "lies_strictly_between_soft_endpoints": true
+    },
+    {
+      "kappa": "0",
+      "positive_collision_xi": "0",
+      "positive_collision_t": "1",
+      "lies_strictly_between_soft_endpoints": true
+    },
+    {
+      "kappa": "1/2",
+      "positive_collision_xi": "-1/2",
+      "positive_collision_t": "1/2",
+      "lies_strictly_between_soft_endpoints": true
+    },
+    {
+      "kappa": "3/4",
+      "positive_collision_xi": "-3/4",
+      "positive_collision_t": "1/4",
+      "lies_strictly_between_soft_endpoints": true
+    }
+  ],
+  "checks": {
+    "branch_root_sum_matches_quadratic_coefficient": true,
+    "branch_root_product_matches_constant_coefficient": true,
+    "plus_marked_collision_identity": true,
+    "minus_marked_collision_identity": true,
+    "positive_collision_is_internal_for_open_kappa": true,
+    "positive_collision_is_transverse_in_fiber": true,
+    "marked_rational_partial_fraction_is_exact": true,
+    "newton_fiber_weight_is_two": true,
+    "complete_density_has_cubic_base_scaling": true
+  }
+}

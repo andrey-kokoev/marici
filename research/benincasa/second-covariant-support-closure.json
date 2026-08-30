@@ -1,0 +1,37 @@
+{
+  "schema": "marici.benincasa.second-covariant-support-closure.v1",
+  "status": "passed",
+  "checks": {
+    "velocities_lie_in_frozen_localization": true,
+    "first_scores_lie_in_frozen_localization": true,
+    "localization_closed_under_all_second_response_operations": true,
+    "diagonal_second_responses_have_no_new_divisor": true,
+    "mixed_second_responses_have_no_new_divisor": true,
+    "commutator_order_defect_is_exact": true
+  },
+  "localization": "R[(product marked walls * product gradient pivots)^-1]",
+  "first_order_support": {
+    "marked_walls": [
+      "q_g1",
+      "q_g2",
+      "q_g3",
+      "q_g23"
+    ],
+    "pivot_divisors": [
+      "partial_aK",
+      "partial_bK",
+      "partial_cK"
+    ]
+  },
+  "closure_operations": {
+    "base_derivative": "raises valuations only on existing factors",
+    "fiber_derivative": "raises valuations only on existing factors",
+    "addition": "uses the union of operand supports",
+    "multiplication": "uses the union of operand supports",
+    "Lie_action": "fiber derivative followed by multiplication by V_j"
+  },
+  "second_response": "S_ij=(partial_nu_j+V_j)S_i+S_i*S_j",
+  "conclusion": "all six symmetric second responses use only frozen marked/pivot support",
+  "does_not_compute": "twisted-de-Rham class, exact numerator, or rank after period pushforward",
+  "new_carrier_support": false
+}

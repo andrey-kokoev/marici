@@ -1,0 +1,45 @@
+{
+  "classification": "soft tensor port recovered by an existing scalar score/Ward endpoint map",
+  "new_carrier_support": false,
+  "physical_plus_port": {
+    "conformal_scalar_F_equals_k": "-kappa*kx**2/(2*k)",
+    "generic_response": "-Fp*kappa*kx**2/(2*k)",
+    "loss_support": "hard momentum parallel to the soft tensor direction (existing collinear Gram support)",
+    "rank": 1,
+    "score_source": "first radial momentum score of the scalar two-point function"
+  },
+  "primary_input": "Baumann et al. equation (4.30), with equal scalar couplings",
+  "schema": "marici.benincasa.soft-tensor-ward-score-recovery.v1",
+  "scope_warning": "This is the universal leading soft Ward grade. Subleading soft orders and loop-specific renormalized two-point coefficients require their own source normalization.",
+  "soft_tensor": {
+    "TT_depends_on": "F'(k) only",
+    "formula": [
+      [
+        "kappa*(F0*k - Fp*kx**2)/k",
+        "-Fp*kappa*kx*ky/k",
+        "-Fp*kappa*kx*kz/k"
+      ],
+      [
+        "-Fp*kappa*kx*ky/k",
+        "kappa*(F0*k - Fp*ky**2)/k",
+        "-Fp*kappa*ky*kz/k"
+      ],
+      [
+        "-Fp*kappa*kx*kz/k",
+        "-Fp*kappa*ky*kz/k",
+        "kappa*(F0*k - Fp*kz**2)/k"
+      ]
+    ],
+    "isotropic_F_term_after_TT": "zero"
+  },
+  "status": "passed",
+  "ward_target": {
+    "apparent_1_over_q_lift": "removable because the target starts at order q",
+    "first_soft_grade": [
+      "kappa*(F0*k*nx - Fp*kx**2*nx - Fp*kx*ky*ny - Fp*kx*kz*nz)/k",
+      "kappa*(F0*k*ny - Fp*kx*ky*nx - Fp*ky**2*ny - Fp*ky*kz*nz)/k",
+      "kappa*(F0*k*nz - Fp*kx*kz*nx - Fp*ky*kz*ny - Fp*kz**2*nz)/k"
+    ],
+    "zeroth_soft_grade": "zero"
+  }
+}

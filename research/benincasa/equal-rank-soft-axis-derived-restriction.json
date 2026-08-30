@@ -1,0 +1,35 @@
+{
+  "schema": "marici.equal-rank-soft-axis-derived-restriction.v1",
+  "status": "pass",
+  "ambient_ring": "F[x,y,z]",
+  "soft_axis": "Z=V(x,y)",
+  "generic_axis_ring": "F[z,z^-1]",
+  "derived_model": "[O_Z -- L|Z --> O_Z]",
+  "restrictions": {
+    "vertex": {
+      "support": "x+y+3z",
+      "restriction_to_Z": "3z",
+      "generic_Z_localized_differential": "unit",
+      "generic_Z_H0_rank": 0,
+      "generic_Z_Tor1_rank": 0,
+      "origin_H0_rank": 1,
+      "origin_Tor1_rank": 0
+    },
+    "complementary": {
+      "support": "x+y",
+      "restriction_to_Z": "0",
+      "generic_Z_localized_differential": "zero",
+      "generic_Z_H0_rank": 1,
+      "generic_Z_Tor1_rank": 1,
+      "origin_H0_rank": 1,
+      "origin_Tor1_rank": 1
+    }
+  },
+  "comparison": "vertex restriction is generically empty/acyclic; complementary restriction carries H0 plus a rank-one excess Tor1/Gysin line",
+  "checks": {
+    "vertex_complex_is_acyclic_on_generic_soft_axis": true,
+    "complementary_complex_has_excess_Tor_line": true,
+    "ordinary_origin_intersection_does_not_fake_vertex_excess": true,
+    "contained_axis_retains_origin_excess": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "marici.soft-endpoint-full-marked-occurrence-packet.v1",
+  "status": "pass",
+  "collision_parameter": "r^2=5-4*kappa",
+  "ordered_occurrences": [
+    "a=+p*r",
+    "a=-p*r"
+  ],
+  "residue_coefficients_without_pi_i": [
+    "(r+1)/(2*p^3*(r-1)^2*(r+3))",
+    "(1-r)/(2*p^3*(r+1)^2*(3-r))"
+  ],
+  "marked_period_entries_without_pi_i": [
+    "(r+1)/(2*p^4*r*(r-1)^2*(r+3))",
+    "(r-1)/(2*p^4*r*(r+1)^2*(3-r))"
+  ],
+  "deck_transport": "r -> -r exchanges the two entries",
+  "character_components_without_pi_i": {
+    "symmetric": "marked_plus+marked_minus (generically nonzero)",
+    "antisymmetric": "marked_plus-marked_minus (generically nonzero)"
+  },
+  "exact_samples": [
+    {
+      "r": "2",
+      "p": "1",
+      "plus": "3/20",
+      "minus": "1/36",
+      "plus_after_deck_equals_minus": true,
+      "minus_after_deck_equals_plus": true,
+      "symmetric_nonzero": true,
+      "antisymmetric_nonzero": true
+    },
+    {
+      "r": "1/2",
+      "p": "3",
+      "plus": "4/189",
+      "minus": "-4/3645",
+      "plus_after_deck_equals_minus": true,
+      "minus_after_deck_equals_plus": true,
+      "symmetric_nonzero": true,
+      "antisymmetric_nonzero": true
+    },
+    {
+      "r": "4",
+      "p": "2",
+      "plus": "5/8064",
+      "minus": "-3/3200",
+      "plus_after_deck_equals_minus": true,
+      "minus_after_deck_equals_plus": true,
+      "symmetric_nonzero": true,
+      "antisymmetric_nonzero": true
+    },
+    {
+      "r": "-2",
+      "p": "5",
+      "plus": "1/22500",
+      "minus": "3/12500",
+      "plus_after_deck_equals_minus": true,
+      "minus_after_deck_equals_plus": true,
+      "symmetric_nonzero": true,
+      "antisymmetric_nonzero": true
+    }
+  ],
+  "conclusion": "the full marked packet is deck-covariant and generically occupies both the invariant and anti-invariant occurrence characters",
+  "next_gate": "derive the physical-chain covector before selecting either character or comparing with the unmarked positive-endpoint packet",
+  "checks": {
+    "plus_residue_formula": true,
+    "minus_residue_formula": true,
+    "deck_sends_plus_entry_to_minus_entry": true,
+    "deck_sends_minus_entry_to_plus_entry": true,
+    "packet_has_symmetric_component": true,
+    "packet_has_antisymmetric_component": true
+  }
+}

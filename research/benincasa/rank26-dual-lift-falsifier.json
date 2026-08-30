@@ -1,0 +1,37 @@
+{
+  "schema": "marici.rank26-dual-lift-falsifier.v1",
+  "status": "pass",
+  "base_source_weight": 28,
+  "differentiated_weight": 27,
+  "lifts": {
+    "canonical": {
+      "dual_source": "S + epsilon H_can",
+      "first_order_coordinates": {
+        "H_can": 1,
+        "S": 0
+      },
+      "euler_defect": {
+        "S": 0
+      }
+    },
+    "alternative": {
+      "dual_source": "S + epsilon (H_can + S)",
+      "first_order_coordinates": {
+        "H_can": 1,
+        "S": 1
+      },
+      "euler_defect": {
+        "S": 1
+      }
+    }
+  },
+  "checks": {
+    "same_zeroth_order_source": true,
+    "distinct_first_order_lifts": true,
+    "canonical_lift_satisfies_weight_27": true,
+    "alternative_lift_has_nonzero_defect": true,
+    "defect_is_exactly_the_frozen_source": true
+  },
+  "conclusion": "The degree-28 scalar Euler identity does not authorize a unique dual-number source lift. The differentiated degree-27 identity rejects the alternative lift by the nonzero defect S.",
+  "next_falsifier": "Derive H_can from the unspecialized source coefficients and reduction relations, rather than defining it by weight, and verify the complete quotient identity in all three parameter directions."
+}

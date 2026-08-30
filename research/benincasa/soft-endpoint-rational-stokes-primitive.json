@@ -1,0 +1,84 @@
+{
+  "schema": "marici.soft-endpoint-rational-stokes-primitive.v1",
+  "status": "pass",
+  "source_xi_density_type": "C(a,kappa,p)*dxi/((xi+1)*sqrt(K_exc))",
+  "generic_unit_samples": [
+    {
+      "a": "2",
+      "kappa": "1/2",
+      "p": "1",
+      "K_at_xi_minus_one": "1",
+      "K_is_unit": true
+    },
+    {
+      "a": "3",
+      "kappa": "-1/3",
+      "p": "2",
+      "K_at_xi_minus_one": "2401/9",
+      "K_is_unit": true
+    },
+    {
+      "a": "5/2",
+      "kappa": "2/3",
+      "p": "3",
+      "K_at_xi_minus_one": "3481/16",
+      "K_is_unit": true
+    }
+  ],
+  "rational_primitive_order_audit": [
+    {
+      "primitive_pole_order": 0,
+      "leading_left_pole_order": 0,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 1,
+      "leading_left_pole_order": 2,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 2,
+      "leading_left_pole_order": 3,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 3,
+      "leading_left_pole_order": 4,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 4,
+      "leading_left_pole_order": 5,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 5,
+      "leading_left_pole_order": 6,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 6,
+      "leading_left_pole_order": 7,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 7,
+      "leading_left_pole_order": 8,
+      "matches_simple_source_pole": false
+    },
+    {
+      "primitive_pole_order": 8,
+      "leading_left_pole_order": 9,
+      "matches_simple_source_pole": false
+    }
+  ],
+  "conclusion": "the frozen bulk density is not the xi-derivative of a rational coefficient divided by sqrt(K_exc); its logarithmic residue obstructs an endpoint-only rational Stokes observable",
+  "surviving_possibility": "a logarithmic or twisted primitive requires additional branch and relative-cycle data and is not a scalar endpoint cocycle declared by the frozen source",
+  "checks": {
+    "generic_kernel_is_unit_at_marked_endpoint": true,
+    "source_density_has_simple_qg1_pole": true,
+    "regular_rational_primitive_gives_regular_derivative": true,
+    "polar_rational_primitive_gives_order_at_least_two": true,
+    "no_rational_local_order_matches_source": true
+  }
+}

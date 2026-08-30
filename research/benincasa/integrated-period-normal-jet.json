@@ -1,0 +1,48 @@
+{
+  "schema": "marici.benincasa.integrated-period-normal-jet.v1",
+  "status": "supported_numerically_not_certified",
+  "method": {
+    "cycle": "R^3 in source loop-vector coordinates",
+    "automatic_differentiation": "complete multivariate jet through total normal degree 3",
+    "quadrature": "three-center spherical Gauss-Legendre with nu-independent inverse-distance-four partition of unity",
+    "centers": ["v2=0", "v3=(P2,0,0)", "v4=triangle vertex"],
+    "radial_compactification": "r=t/(1-t)",
+    "rank_test": "column-normalized Gaussian elimination at relative tolerance 1e-8"
+  },
+  "contexts": [
+    [3,4,5], [4,5,6], [4,6,7], [5,7,8], [5,8,9],
+    [6,7,10], [6,9,11], [7,8,12], [7,10,13], [8,11,14]
+  ],
+  "labels": [
+    "nu1", "nu2", "nu3", "nu1^2", "nu2^2", "nu3^2",
+    "nu1*nu2", "nu1*nu3", "nu2*nu3", "nu1*nu2*nu3"
+  ],
+  "runs": [
+    {"order": 28, "column_normalized_rank": 10, "minimum_scaled_pivot": 0.00042706502218661156},
+    {
+      "order": 36,
+      "column_normalized_rank": 10,
+      "minimum_scaled_pivot": 0.00012126891922380351,
+      "max_absolute_change_from_previous": [
+        1.9650195172277174e-6, 9.688372367105784e-7, 6.467691622809389e-7,
+        3.6057344778863375e-7, 6.630876784142966e-8, 4.711046863703676e-8,
+        2.7403906289319695e-8, 1.822436467956179e-8, 1.4007818683339996e-8,
+        1.2683089293080878e-8, 6.9401536474785035e-9
+      ]
+    },
+    {
+      "order": 48,
+      "column_normalized_rank": 10,
+      "minimum_scaled_pivot": 0.00008091088361969397,
+      "max_absolute_change_from_previous": [
+        4.944745832652364e-7, 2.157085777364405e-7, 1.2164644399973758e-7,
+        1.2344573357362526e-7, 1.7722509401154034e-8, 3.293556413582849e-8,
+        2.7085958270752614e-8, 1.3676992517419335e-8, 2.0147520167788368e-8,
+        6.5718661552766815e-9, 5.5438214690510846e-9
+      ]
+    }
+  ],
+  "supported_conclusion": "Across the declared external-energy family, the integrated period jet numerically separates all ten labelled normal channels; integration does not exhibit the collapse seen under ordinary homogeneous pullback.",
+  "qualification": "This is not an interval or exact certificate. The source-relation quotient and source authority of the complete context family must be typed before claiming physical rank-seven reconstruction.",
+  "new_carrier_support": false
+}

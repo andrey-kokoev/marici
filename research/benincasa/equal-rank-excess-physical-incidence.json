@@ -1,0 +1,28 @@
+{
+  "schema": "marici.equal-rank-excess-physical-incidence.v1",
+  "status": "pass",
+  "physical_constraints": [
+    "x,y,z >= 0",
+    "z <= x+y",
+    "x <= y+z",
+    "y <= x+z"
+  ],
+  "excess_support": "x=y=0 with generic axis coordinate z nonzero",
+  "symbolic_certificate": "x=y=0 and 0<=z<=x+y imply z=0",
+  "bounded_triangle_points_checked": 369,
+  "generic_axis_violations": 0,
+  "generic_axis_z_lower_bound": 1,
+  "triangle_z_upper_bound_at_x_eq_y_eq_0": 0,
+  "classification": {
+    "generic_soft_axis_excess": "valid algebraic coefficient/Gysin object but zero literal physical incidence",
+    "physical_closure": "all-soft origin only",
+    "all_soft_activation": "not selected by current source data; requires the already identified projectivized-normal current covector",
+    "new_carrier_support": "none"
+  },
+  "checks": {
+    "finite_triangle_census_has_no_generic_soft_axis_point": true,
+    "symbolic_triangle_implication": true,
+    "generic_excess_support_is_disjoint_from_literal_physical_locus": true,
+    "only_all_soft_specialization_remains": true
+  }
+}

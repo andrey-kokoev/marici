@@ -1,0 +1,71 @@
+{
+  "helicity_ports": {
+    "V_minus": "(bx - I*by)**2/(4*eta**2)",
+    "V_plus": "(bx + I*by)**2/(4*eta**2)",
+    "port_rank": 2,
+    "real_quadrupole_coordinates": [
+      "bx**2 - by**2",
+      "2*bx*by"
+    ],
+    "transfer_determinant": "-2*I",
+    "transfer_matrix": [
+      [
+        "1",
+        "I"
+      ],
+      [
+        "1",
+        "-I"
+      ]
+    ]
+  },
+  "new_carrier_support": false,
+  "primary_source": {
+    "TT_projector": "page 106, equation (E.5)",
+    "paper": "Baumann, Duaso Pueyo, Joyce, Lee, Pimentel, arXiv:2005.04234v3",
+    "scalar_action": "page 32, equation following (4.34): conformally coupled scalar bulk action",
+    "stress_tensor_Ward_identity": "page 32, equations (4.30)-(4.35)",
+    "transversality": "page 107, equation (E.10)",
+    "vertex": "page 58, equation (6.22)",
+    "vertex_formula": "V_gamma_phi_phi^{ij}=beta_u^i beta_u^j/(2 eta^2)"
+  },
+  "rank_loss": {
+    "classification": "existing Gram/collinear support",
+    "quadrupole_map_jacobian_determinant": "4*(bx**2 + by**2)",
+    "support": "bx^2+by^2=0; on the real physical locus beta is parallel to q"
+  },
+  "schema": "marici.benincasa.finite-q-tensor-vertex-ports.v1",
+  "scope_warning": "This resolves the local finite-q tensor-vertex and two-helicity provenance gate. It does not prove that multiplying the scalar rank-60 master system by this numerator produces the complete gravitational one-loop marked-relative connection. The eta^-2 weight and Ward contact completion must be transported explicitly.",
+  "source_typing": {
+    "beta_u": "difference of the two scalar momenta at the vertex",
+    "scope": "transverse-traceless local vertex; full loop insertion still to be constructed",
+    "transfer_momentum": "finite and nonzero"
+  },
+  "status": "passed",
+  "tt_projection": {
+    "projected_matrix": [
+      [
+        "bx**2/2 - by**2/2",
+        "bx*by",
+        "0"
+      ],
+      [
+        "bx*by",
+        "-bx**2/2 + by**2/2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "traceless": true,
+    "transverse": true
+  },
+  "ward_packet": {
+    "difference_of_scalar_inverse_kinematics": "k2x**2 + k2y**2 + k2z**2 - k4x**2 - k4y**2 - k4z**2",
+    "interpretation": "the unprojected longitudinal contraction is an endpoint difference; the physical TT projector annihilates it",
+    "q_dot_beta": "k2x**2 + k2y**2 + k2z**2 - k4x**2 - k4y**2 - k4z**2"
+  }
+}

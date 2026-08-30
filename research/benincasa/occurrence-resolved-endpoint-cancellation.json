@@ -1,0 +1,30 @@
+{
+  "schema": "marici.occurrence-resolved-endpoint-cancellation.v1",
+  "status": "pass",
+  "physical_chain": "Gamma_xi=[-1,1] with boundary [1]-[-1]",
+  "coarse_face": "xi^2-1=(xi+1)(xi-1)",
+  "occurrences": {
+    "negative_occurrence": {
+      "equation": "xi+1",
+      "zero": -1
+    },
+    "positive_occurrence": {
+      "equation": "xi-1",
+      "zero": 1
+    }
+  },
+  "resolved_boundary_route_packet": [
+    -1,
+    1
+  ],
+  "coarse_aggregation_map": "sigma(r_minus,r_plus)=r_minus+r_plus",
+  "coarse_readout": 0,
+  "mechanism": "nonzero occurrence routes cancel only after the coarse sum; this is interference/forgetful aggregation, not absence of support",
+  "checks": {
+    "coarse_face_meets_both_endpoints": true,
+    "both_resolved_routes_are_nonzero": true,
+    "resolved_route_packet_has_opposite_orientations": true,
+    "coarse_unweighted_aggregation_cancels": true,
+    "cancellation_is_not_route_loss": true
+  }
+}

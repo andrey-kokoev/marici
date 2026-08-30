@@ -1,0 +1,63 @@
+{
+  "schema": "marici.soft-marked-affine-monodromy.v1",
+  "status": "pass",
+  "basis": [
+    "P_aff",
+    "tau_1",
+    "tau_-3"
+  ],
+  "monodromy_without_2pi_i": {
+    "xi=-kappa": "I + (3-kappa)/(64*p^4*(1-kappa)^2) N_1",
+    "xi=+kappa": "I + 1/(64*p^4*(1+kappa)) N_-3",
+    "xi=-1": "I - (3-kappa)/(64*p^4*(1-kappa)^2) N_1 - 1/(64*p^4*(1+kappa)) N_-3"
+  },
+  "global_relation": "M_-1 M_+kappa M_-kappa = I",
+  "compact_elliptic_action": "identity",
+  "normalization_split": {
+    "cohomology_class": "determined by the residue/monodromy packet and invariant under constant affine shifts",
+    "pointed_finite_value": "requires the source basepoint t=2 and changes if that basepoint is replaced"
+  },
+  "conclusion": "the physical soft observable contains an invariant Kummer monodromy class plus a source-fixed pointed torsor coordinate",
+  "samples": [
+    {
+      "kappa": "-1/2",
+      "p": "1",
+      "a1_without_2pi_i": "7/288",
+      "a3_without_2pi_i": "1/32",
+      "global_product_is_identity": true,
+      "marked_monodromies_are_nontrivial": true
+    },
+    {
+      "kappa": "0",
+      "p": "2",
+      "a1_without_2pi_i": "3/1024",
+      "a3_without_2pi_i": "1/1024",
+      "global_product_is_identity": true,
+      "marked_monodromies_are_nontrivial": true
+    },
+    {
+      "kappa": "1/3",
+      "p": "3",
+      "a1_without_2pi_i": "1/864",
+      "a3_without_2pi_i": "1/6912",
+      "global_product_is_identity": true,
+      "marked_monodromies_are_nontrivial": true
+    },
+    {
+      "kappa": "3/5",
+      "p": "2",
+      "a1_without_2pi_i": "15/1024",
+      "a3_without_2pi_i": "5/8192",
+      "global_product_is_identity": true,
+      "marked_monodromies_are_nontrivial": true
+    }
+  ],
+  "checks": {
+    "marked_loop_monodromies_are_nontrivial": true,
+    "global_puncture_relation_holds": true,
+    "monodromies_commute": true,
+    "compact_elliptic_quotient_monodromy_is_identity": true,
+    "constant_pointed_gauge_does_not_change_translation_monodromy": true,
+    "pointed_finite_value_requires_source_basepoint": true
+  }
+}
