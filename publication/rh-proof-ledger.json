@@ -1,0 +1,266 @@
+{
+  "schema": "marici.rh-proof-ledger.v1",
+  "release_policy": {
+    "external_submission_requires_operator_authority": true,
+    "release_requires_all_gates_closed": true,
+    "internal_draft_only_while_open_gates_exist": true,
+    "forbidden_public_claim_while_open": [
+      "proof of the Riemann hypothesis",
+      "RH is proved"
+    ]
+  },
+  "package_shape": {
+    "main": "papers/rh-main/main.tex",
+    "companion": "papers/rh-foundations/main.tex"
+  },
+  "theorem_claims": [
+    {"id": "M1", "manuscript": "main", "claim": "minimal closed derivative chain", "dependencies": ["F1", "F2", "F3"], "scope": "proved_local"},
+    {"id": "M2", "manuscript": "main", "claim": "positive real boundary polarization", "dependencies": ["F4", "F5", "F6"], "scope": "proved_local"},
+    {"id": "M3", "manuscript": "main", "claim": "completed Adams edge", "dependencies": ["G1"], "scope": "conditional"},
+    {"id": "M4", "manuscript": "main", "claim": "constructor coherence", "dependencies": ["G2"], "scope": "conditional"},
+    {"id": "M5", "manuscript": "main", "claim": "five-margin Green coercivity", "dependencies": ["G3"], "scope": "conditional"},
+    {"id": "M6", "manuscript": "main", "claim": "bidirectional spectral identification", "dependencies": ["G4"], "scope": "conditional"},
+    {"id": "M7", "manuscript": "main", "claim": "conditional RH deduction", "dependencies": ["G1", "G2", "G3", "G4"], "scope": "conditional"},
+    {"id": "C1", "manuscript": "companion", "claim": "distinct Mellin and Laguerre carriers", "dependencies": ["F1", "F2", "F3"], "scope": "proved_local"},
+    {"id": "C2", "manuscript": "companion", "claim": "boundary carrier and Green concomitant", "dependencies": ["F4", "F5", "F6"], "scope": "proved_local"},
+    {"id": "C3", "manuscript": "companion", "claim": "causal-history auxiliary block", "dependencies": ["G1.1"], "scope": "open_gate"},
+    {"id": "C4", "manuscript": "companion", "claim": "endpoint lifts and prime assembly", "dependencies": ["G1.2", "G1.3", "G1.4"], "scope": "open_gate"},
+    {"id": "C5", "manuscript": "companion", "claim": "categorical coherence", "dependencies": ["G2"], "scope": "open_gate"},
+    {"id": "C6", "manuscript": "companion", "claim": "global Green system", "dependencies": ["G3"], "scope": "open_gate"},
+    {"id": "C7", "manuscript": "companion", "claim": "spectral comparison", "dependencies": ["G4"], "scope": "open_gate"}
+  ],
+  "gates": [
+    {
+      "id": "G1",
+      "title": "Completed first Adams edge",
+      "status": "open",
+      "owner": "marici.Nima",
+      "dependencies": [
+        "G1.1",
+        "G1.2",
+        "G1.3",
+        "G1.4"
+      ]
+    },
+    {
+      "id": "G1.1",
+      "title": "Source-derived causal history, uniform lower bounds for I +/- iH, and incidence compression to tau",
+      "status": "open",
+      "owner": "marici.Nima"
+    },
+    {
+      "id": "G1.2",
+      "title": "Endpoint lifts, radical descent, closability, and cutoff naturality",
+      "status": "open",
+      "owner": "marici.Nima"
+    },
+    {
+      "id": "G1.3",
+      "title": "Typed coefficient polarization and endpoint-loading bound",
+      "status": "open",
+      "owner": "marici.Nima"
+    },
+    {
+      "id": "G1.4",
+      "title": "Prime diagonality or completed off-diagonal bound",
+      "status": "open",
+      "owner": "marici.Grothendieck"
+    },
+    {
+      "id": "G2",
+      "title": "Finite and completed constructor coherence",
+      "status": "open",
+      "owner": "marici.Grothendieck"
+    },
+    {
+      "id": "G3",
+      "title": "Five uniform global Green margins",
+      "status": "open",
+      "owner": "marici.Kitaev",
+      "margins": [
+        "delta_P",
+        "delta_A",
+        "delta_glue",
+        "delta_diag",
+        "delta_mix"
+      ]
+    },
+    {
+      "id": "G4",
+      "title": "Bidirectional spectral identification with completed Xi zeros",
+      "status": "open",
+      "owner": "marici.Grothendieck"
+    },
+    {
+      "id": "G5",
+      "title": "Independent mathematical verification",
+      "status": "open",
+      "owner": "marici.Buzzard",
+      "requirements": [
+        "internal full audit",
+        "external analytic-number-theory review",
+        "external operator-categorical review"
+      ]
+    },
+    {
+      "id": "G6",
+      "title": "Reproducible arXiv package audit",
+      "status": "open",
+      "owner": "marici.Aspect"
+    },
+    {
+      "id": "G7",
+      "title": "Authorship, license, metadata, and explicit operator publication authority",
+      "status": "open",
+      "owner": "operator"
+    }
+  ],
+  "established_results": [
+    {
+      "id": "F1",
+      "title": "Distinct even and odd Laguerre completion channels",
+      "status": "proved_local",
+      "evidence": "research/nima/laguerre-coordinates-expose-two-distinct-skew-jacobi-completion-channels.md",
+      "evidence_sha256": "d98f8ef2538f962d53e949d87801ae7168d03a384227a37a702a1e61a74422d4"
+    },
+    {
+      "id": "F2",
+      "title": "Source-weighted bidiagonal derivative bridge",
+      "status": "proved_local",
+      "evidence": "research/nima/the-derivative-bridge-is-a-source-weighted-bidiagonal-map-between-the-two-laguerre-carriers.md",
+      "evidence_sha256": "b3ec7424819647168fa90c0b1b9d6fa023f2699407da46c43dde54cbddb4b13a"
+    },
+    {
+      "id": "F3",
+      "title": "Minimal closed Mellin derivative square",
+      "status": "proved_local",
+      "evidence": "research/nima/mellin-half-density-coordinates-give-a-canonical-minimal-closure-of-the-derivative-square.md",
+      "evidence_sha256": "d50c1e1f54108e2623aeba52eb41e02578bf0d4f4036862d736d7f3f6f8e17af"
+    },
+    {
+      "id": "F4",
+      "title": "Two-step wall module and Krein Green form",
+      "status": "proved_local",
+      "evidence": "research/nima/the-source-green-concomitant-gives-the-wall-module-a-canonical-krein-signature.md",
+      "evidence_sha256": "93c7d0b5455b52da8985bca011148172406122de358273b5a21e73d36bfef142"
+    },
+    {
+      "id": "F5",
+      "title": "Rigid orientation-reversing reciprocal sewing",
+      "status": "proved_local",
+      "evidence": "research/nima/reciprocal-logarithmic-reflection-reverses-the-derivative-chain-orientation.md",
+      "evidence_sha256": "cb0eeae38f2b2194ddff03a72badeab5a57df698b1f17409bf8846e863e4a6e9"
+    },
+    {
+      "id": "F6",
+      "title": "Positive real wall polarization -JM=I",
+      "status": "proved_local",
+      "evidence": "research/nima/oriented-reciprocal-sewing-polarizes-the-real-wall-krein-form-to-the-identity-metric.md",
+      "evidence_sha256": "c177667640ee3ea0d3bad02b53f08dd3d91a6422719cb3df635c622be9deee8c"
+    },
+    {
+      "id": "F7",
+      "title": "Projective exponential labelled theta-history incidence is cutoff-natural and prime/grade diagonal",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-projective-exponential-kothe-sum-completes-the-labelled-theta-history-incidence.md",
+      "evidence_sha256": "12c00d52da547318b88a03b6686af0eaeff8632839edc6902318c78e949f9416",
+      "scope_limit": "Does not yet prove prime diagonality of the closed mixed Green/Stokes form or of later sewing maps."
+    },
+    {
+      "id": "F8",
+      "title": "Theta completion annihilates the constant wall and maps the first positive label into three nonzero Jordan grades",
+      "status": "proved_local",
+      "evidence": "research/nima/the-first-theta-label-completion-packet-has-three-explicit-jordan-grades-and-zero-wall-image.md",
+      "evidence_sha256": "501ddfa9196d279a3d63d8832dbbef7aec1ad7a7b91f178448401fb838cfb42f",
+      "consequence": "A direct scalar shifted-history square is unauthorized; the wall must return through the relative boundary class."
+    },
+    {
+      "id": "F9",
+      "title": "Wronskian-Lagrange boundary map supplies the normalized relative connecting morphism for the killed wall",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-wronskian-lagrange-boundary-map-is-the-relative-connecting-morphism-for-the-killed-wall.md",
+      "evidence_sha256": "e55472fab04def994f045374064d534e4262318c9bd3dfcb6ff83c93d7fc52e6",
+      "scope_limit": "The Gaussian adjacent-window cell is not yet attached to the precursor domain with the same boundary relation and Green polarization."
+    },
+    {
+      "id": "F10",
+      "title": "Jacobi heat Green identity closes the reciprocal-even completion channel after zero-mode reduction",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-jacobi-heat-green-identity-closes-the-even-completion-channel-after-zero-mode-reduction.md",
+      "evidence_sha256": "be31ecccae6b37fdb46916b4e58c723f1585e019d64b4578e1c9c080decf562d",
+      "scope_limit": "Does not include the reciprocal-odd oriented-front channel or the assembled Adams mixed form."
+    },
+    {
+      "id": "F11",
+      "title": "Scale-odd completed-theta current is the exact derivative-comb pairing with the fifth-order Jacobi front jet",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-scale-odd-completed-theta-current-is-an-exact-derivative-comb-pairing-with-a-fifth-order-front-jet.md",
+      "evidence_sha256": "c27f720b0a6c4d2e6f2ef59b23fee3351fc9c053513705c1a689d3c65ae259b5",
+      "scope_limit": "Upper boundedness on the source orbit is supplied by F13; joint seam faithfulness and complete Green assembly remain open."
+    },
+    {
+      "id": "F12",
+      "title": "Odd Jacobi contraction is prime diagonal and cutoff natural in the source half-density metric",
+      "status": "proved_constructor",
+      "evidence": "research/nima/prime-idempotents-commute-with-the-odd-jacobi-contraction-but-raw-prime-frame-coercivity-is-false.md",
+      "evidence_sha256": "46279466cfc20cf5c39fecb18e90dcbf9378395e3e60f0139a69ac8f74e2650e",
+      "scope_limit": "Raw-prime lower coercivity is false; complete relative Green-radical descent and mixed-form assembly remain open."
+    },
+    {
+      "id": "F13",
+      "title": "Jacobi source orbit supplies a uniform positive heat sub-time on every compact positive-scale region",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-jacobi-source-orbit-supplies-its-own-uniform-positive-heat-sub-time.md",
+      "evidence_sha256": "12aa886a10a13c587b1f9d22bfe55f2cae1d3159774d139f04e7a5e8c968eff2",
+      "scope_limit": "Closes odd upper boundedness only; reciprocal symmetry forces scalar odd vanishing at the seam."
+    },
+    {
+      "id": "F14",
+      "title": "Reciprocal seam normal current is strictly negative and faithful on the source normal line",
+      "status": "proved_local",
+      "evidence": "research/nima/the-reciprocal-seam-normal-current-is-strictly-negative.md",
+      "evidence_sha256": "b2db4378e8d1be7844a8c2b502e3b6cc05eaa13c12481bb1f9531380f06f31c"
+    },
+    {
+      "id": "F15",
+      "title": "Wronskian and seam-normal ports are exactly calibrated on the completed-theta odd line",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-wronskian-and-seam-normal-ports-are-exactly-calibrated-on-the-completed-theta-odd-line.md",
+      "evidence_sha256": "cefbdd74102c5b2fd52643abf9359341907ce39bc6baa182271b7df91dcbdf56",
+      "scope_limit": "Calibration is proved on the one-dimensional completed-theta odd line, not on an assumed full odd sector."
+    },
+    {
+      "id": "F16",
+      "title": "Euler-to-theta incidence is an explicit superexponential prime-power sampling series",
+      "status": "proved_constructor",
+      "evidence": "research/nima/the-euler-to-theta-incidence-coefficient-is-an-explicit-superexponential-prime-power-sampling-series.md",
+      "evidence_sha256": "97e147c1b0363dc62be256a21617fc15f030effb02aa6b3b590c8be46656c2b9"
+    },
+    {
+      "id": "F17",
+      "title": "Every prime-power Euler-to-theta incidence term has the same strict sign",
+      "status": "proved_constructor",
+      "evidence": "research/nima/every-prime-power-euler-to-theta-incidence-has-the-same-strict-sign.md",
+      "evidence_sha256": "66a77301bf9102c260a5abf2ff72dc43b14ed9b60b94b78673fba326505c5927",
+      "scope_limit": "Raw incidence magnitudes vanish with prime; uniformity requires the source sampling pullback metric."
+    },
+    {
+      "id": "F18",
+      "title": "Theta-sampling pullback metric is canonical but not uniformly equivalent to the intrinsic Euler half-density topology",
+      "status": "proved_obstruction",
+      "evidence": "research/nima/the-theta-sampling-pullback-metric-is-canonical-but-not-equivalent-to-the-euler-half-density-topology.md",
+      "evidence_sha256": "e2ef8d1bb89c487b2a89f3f1c3bcbd01266959c31bb9ac8399055bf36ef82c9d",
+      "consequence": "Uniform odd faithfulness is false on the intrinsic Euler completion and exact only after a non-equivalent pullback completion; the mixed-edge domain must be source-authorized."
+    }
+  ],
+  "withdrawn_claims": [
+    {
+      "id": "W1",
+      "claim": "Even and odd analytic completion sectors share one numerical J3 matrix",
+      "status": "withdrawn",
+      "replacement": "F1",
+      "evidence": "research/nima/correction-the-odd-analytic-completion-does-not-share-the-even-front-matrix.md",
+      "evidence_sha256": "6326b369e6fe5e242bcd245a6afbdb889155fe418a77758982152da174e127e4"
+    }
+  ]
+}
