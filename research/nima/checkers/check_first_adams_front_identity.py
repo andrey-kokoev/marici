@@ -33,9 +33,9 @@ payload = {
         "omit_even_front_rejected": omit_even_front != target,
         "reverse_orientation_rejected": reverse_orientation != target,
     },
-    "source_constructor_fourier_multiplier_constructed": False,
-    "source_to_target_identity_proved": False,
-    "verdict": "target-side four-front identity is exact; source-side constructor extraction remains open",
+    "source_constructor_checked_by_this_target_audit": False,
+    "external_source_identity_evidence": "the-base-plus-curvature-green-square-closes-exactly-on-every-theta-label.md",
+    "verdict": "target-side four-front identity is exact; source construction is outside this checker's scope",
 }
 canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
 payload["sha256"] = hashlib.sha256(canonical).hexdigest()

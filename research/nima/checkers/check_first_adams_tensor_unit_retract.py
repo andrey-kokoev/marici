@@ -70,8 +70,9 @@ payload = {
     "records": retract_records,
     "label_independent_operator_intertwining": True,
     "label_mixing_hostile_rejected": all(hostile_rejected),
-    "actual_shifted_history_block_diagonality_proved": False,
-    "verdict": "the counit is exact; source covariance of the completed shifted-history block remains open",
+    "actual_shifted_history_block_diagonality_checked_by_this_finite_audit": False,
+    "external_covariance_evidence": "translation-covariance-makes-every-theta-label-shifted-history-block-unitarily-equivalent.md",
+    "verdict": "the counit is exact; this checker does not duplicate the separate full-line covariance proof",
 }
 canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
 payload["sha256"] = hashlib.sha256(canonical).hexdigest()

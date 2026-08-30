@@ -29,24 +29,28 @@ Thus these stages are no longer open:
 3. recovery of one source copy by a canonical labelled counit;
 4. ordered primitive reconstruction on that copy.
 
-The remaining local theorem is the source covariance of the reciprocal shifted-history Green block on the tensor-unit fiber:
+A still later packet proves covariance of the reciprocal shifted-history Green block on every theta-label fiber:
 
 \[
-D_{p,\pm}^{(1)}
+D_{n,\pm}
 =
-\mathcal M_1D_{p,\pm}^{\mathrm{St}}\mathcal M_1^{-1}.
+V_{\log n}D_{1,\pm}V_{\log n}^{-1},
 \]
 
-This identity must be proved for the actual completed operators and domains. Abstract diagonality or a finite proxy does not prove it. It must also survive the declared radical quotient and retain separate theta and valuation-prime labels.
+because \(\mathcal M_n=V_{\log n}\mathcal M_1\) and the completed full-line history is translation convolution. Thus tensor-unit metric covariance is also closed on the declared full-line carrier. This statement must not be transferred silently to a finite half-line or moving-window compression, where literal translation invariance can fail.
 
 ## Disposition
 
-Gate G1 remains open. Its earliest local residual is no longer source extraction of the four-front packet; it is unit-fiber shifted-history covariance plus radical-compatible completion. The exact tensor-unit checker verifies the categorical retract and rejects label mixing, but records the operator covariance as unproved.
+Gate G1 remains open, but its local frontier is not source extraction, the tensor-unit counit, or theta-label covariance. Under the authoritative publication ledger, the earliest unresolved subgate remains the complete G1.1 package: source authorization of the causal-history auxiliary block, uniform shifted-history lower bounds in that source typing, and incidence compression to \(\tau\). Later subgates still require endpoint/radical descent, typed loading, and completed prime assembly.
+
+The exact tensor-unit checker verifies only the categorical retract and rejects label mixing. It deliberately does not claim to verify the infinite-dimensional convolution theorem.
 
 Evidence:
 
 - `research/nima/the-base-plus-curvature-green-square-closes-exactly-on-every-theta-label.md`
 - `research/nima/the-theta-tensor-unit-projection-is-a-canonical-retract-of-the-diagonal-mellin-orbit.md`
 - `research/nima/the-theta-tensor-unit-retract-closes-the-first-adams-green-metric-comparison.md`
+- `research/nima/translation-covariance-makes-every-theta-label-shifted-history-block-unitarily-equivalent.md`
+- `publication/rh-proof-ledger.json`
 - `research/nima/checkers/check_first_adams_tensor_unit_retract.py`
 - `research/nima/results/first-adams-tensor-unit-retract.json`
