@@ -6,11 +6,11 @@
   "created_by_site_id": "marici",
   "visibility_scope": "site",
   "task_root_scope": "site_root",
-  "status": "running",
+  "status": "failed",
   "objective": "Derive the smallest non-circular chain-level definition of the normalization-sheet source S_sh^{norm,reg} and the endpoint/Q mapping fiber required by ledger entry 153. Work read-only in the current Marici repository. Use entries 93,113,115,133,141-146,153 and decisive Rust certificates. Distinguish actual complexes from notation and associated-grade shadows. Prefer a primal bivariant trace formulation against E_{partial,Q}^{BM,Cech} if the supported Verdier dual is not constructed. Return: explicit objects, rings, degrees, differentials, D3/f3 actions, endpoint connector equations, support/filtration conditions, ordinary-forgetting ablation, and a finite parity computation if well typed. If impossible, identify the first missing geometric arrow and formulate the smallest next executable experiment. Do not edit repository files and do not use desired residues/K_alt/qSigma/parity as input.",
   "request_fingerprint": "5c95a631960ce37264ebb7399940225cfe151d77edd07c877e9eadf493f97573",
   "created_at": "2026-08-15T17:16:22.0714182Z",
-  "updated_at": "2026-08-15T17:27:59.2555108Z",
+  "updated_at": "2026-08-31T18:53:35.1150084Z",
   "cancelled_at": null,
   "idempotency_key": "marici-nima-endpoint-q-source-gate-v1",
   "constraints": {
@@ -45,21 +45,33 @@
   "acceptance": {},
   "result": {
     "schema": "narada.delegated_task.handoff.v1",
-    "acceptance_verdict": "passed",
+    "acceptance_verdict": "failed",
     "step_states": {
       "primary": {
         "step_id": "primary",
         "kind": "worker",
-        "status": "running",
-        "attempts": 1,
+        "status": "failed",
+        "attempts": 2,
         "run_ids": [
-          "run-0c1a50f7ee1c4d64baf557ecf11a7305"
+          "run-0c1a50f7ee1c4d64baf557ecf11a7305",
+          "run-daea0bec9b924b07917b44a0efc4a6e7"
         ],
-        "current_run_id": "run-0c1a50f7ee1c4d64baf557ecf11a7305",
-        "started_at": "2026-08-15T17:16:22.1022678Z",
+        "current_run_id": "run-daea0bec9b924b07917b44a0efc4a6e7",
+        "started_at": "2026-08-31T18:45:04.1910504Z",
         "finished_at": null,
         "error": null,
-        "summary": null
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
       }
     },
     "worker_refs": [
@@ -67,14 +79,122 @@
         "step_id": "primary",
         "step_kind": "worker",
         "run_id": "run-0c1a50f7ee1c4d64baf557ecf11a7305",
-        "status": "running"
+        "status": "failed",
+        "finished_at": "2026-08-31T18:45:03.9632146Z",
+        "duration_ms": 1200043,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=1200000"
+      },
+      {
+        "step_id": "primary",
+        "step_kind": "worker",
+        "run_id": "run-daea0bec9b924b07917b44a0efc4a6e7",
+        "status": "failed",
+        "finished_at": "2026-08-31T18:53:35.1143222Z",
+        "duration_ms": 300034,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300032"
       }
     ],
     "residual_risks": [],
     "observed_incoherencies": [],
     "verification": [],
     "changed_files": [],
-    "acceptance_checks": []
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "primary",
+        "run_id": "run-0c1a50f7ee1c4d64baf557ecf11a7305",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "worker_runtime_timed_out:max_run_ms=1200000"
+      },
+      {
+        "step_id": "primary",
+        "run_id": "run-daea0bec9b924b07917b44a0efc4a6e7",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300032"
+      }
+    ],
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "failed"
   },
-  "summary": null
+  "summary": "objective_result: failed. No substantive objective result was reported.",
+  "external_dependencies": {
+    "status": "resolved"
+  },
+  "started_at": "2026-08-31T18:45:04.1910422Z",
+  "started_at_ms": 1788201904191,
+  "finished_at": "2026-08-31T18:53:35.1150072Z",
+  "finished_at_ms": 1788202415115,
+  "duration_ms": 510924
 }

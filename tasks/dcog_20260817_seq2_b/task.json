@@ -6,7 +6,7 @@
   "created_by_site_id": "marici",
   "visibility_scope": "site",
   "task_root_scope": "site_root",
-  "status": "accepted_for_execution",
+  "status": "failed",
   "objective": "Stage B (reduce), read only. Consume only the explicitly imported validated Stage-A output. Return JSON with fields compatible_map, untouchable_components, minimal_reduction, residual_complex, unconditional_homology, conditional_homology, construction_status, coefficient_assumption. Determine the strongest support- and degree-compatible map, what cannot be touched, the minimal quotient/restriction, residual matrix/complex, and homology under explicit assumptions. Distinguish a compatible map from a constructed map. Do not infer nonzero means invertible. No prose outside JSON.",
   "request_fingerprint": "be09a02e978cdb7d05ade1aabe1af871aec766a880df811791977ffdae8d57e1",
   "validated_request_ref": null,
@@ -14,10 +14,10 @@
   "created_at_ms": 1786999344347,
   "started_at": null,
   "started_at_ms": null,
-  "finished_at": null,
-  "finished_at_ms": null,
-  "duration_ms": null,
-  "updated_at": "2026-08-17T20:42:24.3495401Z",
+  "finished_at": "2026-08-31T18:43:57.8693592Z",
+  "finished_at_ms": 1788201837869,
+  "duration_ms": 1202493522,
+  "updated_at": "2026-08-31T18:43:57.8693614Z",
   "cancelled_at": null,
   "idempotency_key": "dcog-20260817-seq2-b-v1",
   "constraints": {
@@ -66,30 +66,32 @@
   ],
   "import_worker_refs": [],
   "external_dependencies": {
-    "status": "waiting",
+    "status": "blocked",
     "resolved_at": null,
-    "waiting_for": [
+    "blocked_by": [
       "dcog_20260817_seq2_a"
-    ],
-    "blocked_by": []
+    ]
   },
   "result": {
     "schema": "narada.delegated_task.handoff.v1",
     "output_contract_verdict": "pending",
-    "objective_verdict": "pending",
-    "acceptance_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
     "step_states": {
       "implement": {
         "step_id": "implement",
         "kind": "worker",
-        "status": "pending",
+        "status": "blocked",
         "attempts": 0,
         "run_ids": [],
         "current_run_id": null,
         "started_at": null,
-        "finished_at": null,
+        "finished_at": "2026-08-31T18:43:57.8690397Z",
         "error": null,
-        "summary": null
+        "summary": null,
+        "blocked_by_external_tasks": [
+          "dcog_20260817_seq2_a"
+        ]
       }
     },
     "worker_refs": [],

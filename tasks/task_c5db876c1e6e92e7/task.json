@@ -6,7 +6,7 @@
   "created_by_site_id": "marici",
   "visibility_scope": "site",
   "task_root_scope": "site_root",
-  "status": "running",
+  "status": "failed",
   "objective": "Read-only audit of research/benincasa/check_generic_five_pole_base_change_rank.py. Determine whether the asserted generic restricted rank 26, generic five-pole rank 60, and homogeneous rank drop 25 are mathematically established as dimensions of a derived Gauss-Manin direct-image/base-change cone, or only as a combinatorial divisor-complement/restriction census. Check every rank increment and identify the strongest warranted conclusion. Do not edit files.",
   "request_fingerprint": "231edcdb0498dd81bd1399fd640ecbdda334967006e94e999339201afbf8584a",
   "validated_request_ref": "vr_7e0ece51138cd345868ee9f966f63bbd",
@@ -14,10 +14,10 @@
   "created_at_ms": 1787070307347,
   "started_at": "2026-08-18T16:25:07.3817562Z",
   "started_at_ms": 1787070307381,
-  "finished_at": null,
-  "finished_at_ms": null,
-  "duration_ms": null,
-  "updated_at": "2026-08-18T16:27:07.3873691Z",
+  "finished_at": "2026-08-31T18:40:57.217179Z",
+  "finished_at_ms": 1788201657217,
+  "duration_ms": 1131349836,
+  "updated_at": "2026-08-31T18:40:57.21718Z",
   "cancelled_at": null,
   "idempotency_key": "nima-audit-generic-five-pole-rank-drop-20260818-v1",
   "constraints": {
@@ -97,13 +97,13 @@
   "result": {
     "schema": "narada.delegated_task.handoff.v1",
     "output_contract_verdict": "pending",
-    "objective_verdict": "pending",
-    "acceptance_verdict": "pending",
+    "objective_verdict": "failed",
+    "acceptance_verdict": "failed",
     "step_states": {
       "research": {
         "step_id": "research",
         "kind": "research",
-        "status": "running",
+        "status": "failed",
         "attempts": 1,
         "run_ids": [
           "run-4ffba49e0e7a4ce98fd480293af3c702"
@@ -112,7 +112,18 @@
         "started_at": "2026-08-18T16:25:07.3817664Z",
         "finished_at": null,
         "error": null,
-        "summary": null
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
       },
       "synthesize": {
         "step_id": "synthesize",
@@ -144,10 +155,38 @@
         "step_id": "research",
         "step_kind": "research",
         "run_id": "run-4ffba49e0e7a4ce98fd480293af3c702",
-        "status": "running"
+        "status": "failed",
+        "finished_at": "2026-08-31T18:40:57.2164406Z",
+        "duration_ms": 300049,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300047"
       }
     ],
-    "worker_outputs": [],
+    "worker_outputs": [
+      {
+        "step_id": "research",
+        "run_id": "run-4ffba49e0e7a4ce98fd480293af3c702",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300047"
+      }
+    ],
     "imported_task_outputs": [],
     "prior_step_outputs_ref": null,
     "residual_risks": [],
@@ -196,11 +235,11 @@
       },
       {
         "kind": "objective_outcome",
-        "verdict": "pending",
-        "signal": null,
-        "status": "pending"
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
       }
     ]
   },
-  "summary": null
+  "summary": "objective_result: failed. No substantive objective result was reported."
 }

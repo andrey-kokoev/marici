@@ -6,11 +6,11 @@
   "created_by_site_id": "marici",
   "visibility_scope": "site",
   "task_root_scope": "site_root",
-  "status": "running",
+  "status": "failed",
   "objective": "Read-only diagnostic DAG for feedback task #2517: determine the smallest validated epistemic-envelope change across Marici ledger projections and the mcp-surfaces epistemic-graph authority. No file mutations, commits, pushes, or external changes.",
   "request_fingerprint": "be0c3255a5502c95b8f8e161c05903ad0af91f1a70cff9def1dc97d89b688ada",
   "created_at": "2026-08-15T15:44:14.1330189Z",
-  "updated_at": "2026-08-15T15:44:14.1774369Z",
+  "updated_at": "2026-08-31T18:53:25.1627542Z",
   "cancelled_at": null,
   "idempotency_key": "feedback-dag-marici-2517-v1",
   "constraints": {
@@ -58,47 +58,95 @@
   "acceptance": {},
   "result": {
     "schema": "narada.delegated_task.handoff.v1",
-    "acceptance_verdict": "passed",
+    "acceptance_verdict": "failed",
     "step_states": {
       "ledger-contract": {
         "step_id": "ledger-contract",
         "kind": "research",
-        "status": "running",
+        "status": "completed",
         "attempts": 1,
         "run_ids": [
           "run-0b3d11a2811641bca7170861f5b190f7"
         ],
         "current_run_id": "run-0b3d11a2811641bca7170861f5b190f7",
         "started_at": "2026-08-15T15:44:14.1603705Z",
-        "finished_at": null,
+        "finished_at": "2026-08-31T18:46:20.1840579Z",
         "error": null,
-        "summary": null
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "ledger_head=<exact admitted head>, source={6 fields}, result={7 fields}",
+          "diagnostics_text": "I’ll trace the lifecycle doc, then locate the ledger extraction, author-validation, and source-identity code/tests. I’ll only read files and report concrete evidence plus a minimal envelope proposal.The broad search shows the likely implementation center is `src/lib/ledger.ts`; the initial repository-wide match set is noisy because task/event artifacts contain copied provenance. I’m narrowing the evidence to source, docs, scripts, and tests, with line numbers.The implementation confirms three separate paths: Astro schema validation, runtime ledger metadata extraction, and graph projection. I’m checking their real frontmatter population now, especially casing/unknown author fields and whether locator-derived provenance is an identity or only a display link.The key discrepancy is now concrete: eight files use valid YAML `authors` frontmatter, while three newer entries put `Author: ...` in the prose body. Both extractors ignore those body lines, and the allowed author enum would reject those names if they were promoted to metadata. I’m doing one final read-only consistency check on identity/provenance and confirming no files changed.Read-only audit complete. No files were edited.\n\n### Bounded evidence\n\n- The lifecycle defines one canonical result packet—`claim`, `status`, `assumptions`, `evidence_refs`, `factorization_test`, `counterevidence`, and `next_experiment`—while the ledger expands it and the graph records only a sparse DAG delta. [research-lifecycle.md:71](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:71>), [research-lifecycle.md:101](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:101>), [research-lifecycle.md:132](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:132>)\n\n- Ledger metadata accepts only `marici.Nima` and `marici.Benincasa`; `.passthrough()` permits unknown metadata keys. [content.config.ts:5](<C:/Users/andrey/src/marici/src/content.config.ts:5>)\n\n- Runtime author precedence is:\n  1. `authors`\n  2. title heuristic for “cosmo",
+          "structured_output": {
+            "ledger_head": "<exact admitted head>",
+            "source": {
+              "entity_id": "<stable graph source identity>",
+              "kind": "source",
+              "title": "<ledger H1>",
+              "version": "YYYY-MM-DD",
+              "locator": "src/ledger/<filename>.md",
+              "authors": [
+                "<validated author id>"
+              ]
+            },
+            "result": {
+              "claim": "...",
+              "status": "proved|falsified|conditional|inconclusive",
+              "assumptions": [],
+              "evidence_refs": [],
+              "factorization_test": {},
+              "counterevidence": [],
+              "next_experiment": "..."
+            }
+          },
+          "truncated": false
+        }
       },
       "graph-contract": {
         "step_id": "graph-contract",
         "kind": "research",
-        "status": "running",
+        "status": "completed",
         "attempts": 1,
         "run_ids": [
           "run-d82d206201b84e748dba3c684fa8e7ad"
         ],
         "current_run_id": "run-d82d206201b84e748dba3c684fa8e7ad",
         "started_at": "2026-08-15T15:44:14.1771433Z",
-        "finished_at": null,
+        "finished_at": "2026-08-31T18:46:20.1904612Z",
         "error": null,
-        "summary": null
+        "summary": null,
+        "worker_status": "completed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": "I’ll trace the projection, then follow its public inspector and admission boundary to identify what is already derivable from Markdown versus what would be genuinely additive. I’ll keep this read-only and report the evidence with file links.The public contract is already explicit: the generated graph allowlists identity, status/summary, safe ledger provenance, and relation endpoints; the page only renders those fields and keeps proposal/event/payload/private locator data off the public surface. I’m checking the admitted snapshot and local friction notes now to separate safe, non-duplicative additions from fields that would merely re-expose Markdown.The key boundary is now clear: the snapshot contains rich, free-form result-packet fields, but the public exporter intentionally drops them. The only genuinely additive semantic data I found is durable graph lifecycle data—assessment judgments and recorded test outcomes—provided the upstream export exposes them without their reasons/evidence prose. I’m checking the exact admission metadata and ownership split before summarizing.Conclusion: keep the public graph sparse. Do not expose more Markdown-shaped reasoning fields.\n\nSafe additions:\n\n- `latest_assessment`: graph-native `judgment` plus stable ID/timestamp, excluding `reason` and evidence prose.\n- `latest_test_outcome`: graph-native outcome plus stable ID/timestamp, excluding protocol/evidence prose.\n- Top-level `truth_certified: false` or equivalent admission disclaimer; the admission surface explicitly says it does not certify truth.\n- Derived relation metrics such as degree/type counts are safe, though the inspector already computes relation counts.\n\nThe admission events already contain assessment judgments and test outcomes ([event 18](</C:/Users/andrey/src/marici/.narada/epistemic/ledger/ev-000000000018-f8b85833-5ac5-406a-bce5-7e6245b5f811.json:154>)), but the Marici projector currently reads only entity identity, `status`, `summary`, provenance, and relation endpoints ([projector](</C:/Users/andrey/src/marici/scripts/project-public-epistemic-graph.mjs:68>)). Exporting those lifecycle records therefore requires an upstream `mcp-surfaces` read-model change; the public UI and allowlist are Marici-owned.\n\nDo not add raw `scope`, `assumptions`, `counterevidence`, `evidence_refs`, `factorization_test`, `next_experiment`, protocols, or falsification conditions. They are result-packet/Markdown reasoning, and several are already represented structurally by graph relations. Likewise keep proposal IDs, event payloads, locators, actors, authority, reasons, and evidence arrays private, as documented in the public contract ([README](</C:/Users/andrey/src/marici/README.md:32>), [lifecycle policy](</C:/Users/andrey/src/marici/docs/research-lifecycle.md:137>)).\n\nNo files were edited.",
+          "truncated": false
+        }
       },
       "synthesis": {
         "step_id": "synthesis",
         "kind": "research",
-        "status": "pending",
-        "attempts": 0,
-        "run_ids": [],
-        "current_run_id": null,
-        "started_at": null,
+        "status": "failed",
+        "attempts": 1,
+        "run_ids": [
+          "run-8d45a3cc3a4b43cb9208bef98d796596"
+        ],
+        "current_run_id": "run-8d45a3cc3a4b43cb9208bef98d796596",
+        "started_at": "2026-08-31T18:46:20.2194807Z",
         "finished_at": null,
         "error": null,
-        "summary": null
+        "summary": null,
+        "worker_status": "failed",
+        "worker_output_contract": "passed",
+        "worker_output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        }
       }
     },
     "worker_refs": [
@@ -106,20 +154,183 @@
         "step_id": "ledger-contract",
         "step_kind": "research",
         "run_id": "run-0b3d11a2811641bca7170861f5b190f7",
-        "status": "running"
+        "status": "completed",
+        "finished_at": "2026-08-31T18:46:20.1840133Z",
+        "duration_ms": 524857,
+        "output": {
+          "summary_text": "ledger_head=<exact admitted head>, source={6 fields}, result={7 fields}",
+          "diagnostics_text": "I’ll trace the lifecycle doc, then locate the ledger extraction, author-validation, and source-identity code/tests. I’ll only read files and report concrete evidence plus a minimal envelope proposal.The broad search shows the likely implementation center is `src/lib/ledger.ts`; the initial repository-wide match set is noisy because task/event artifacts contain copied provenance. I’m narrowing the evidence to source, docs, scripts, and tests, with line numbers.The implementation confirms three separate paths: Astro schema validation, runtime ledger metadata extraction, and graph projection. I’m checking their real frontmatter population now, especially casing/unknown author fields and whether locator-derived provenance is an identity or only a display link.The key discrepancy is now concrete: eight files use valid YAML `authors` frontmatter, while three newer entries put `Author: ...` in the prose body. Both extractors ignore those body lines, and the allowed author enum would reject those names if they were promoted to metadata. I’m doing one final read-only consistency check on identity/provenance and confirming no files changed.Read-only audit complete. No files were edited.\n\n### Bounded evidence\n\n- The lifecycle defines one canonical result packet—`claim`, `status`, `assumptions`, `evidence_refs`, `factorization_test`, `counterevidence`, and `next_experiment`—while the ledger expands it and the graph records only a sparse DAG delta. [research-lifecycle.md:71](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:71>), [research-lifecycle.md:101](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:101>), [research-lifecycle.md:132](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:132>)\n\n- Ledger metadata accepts only `marici.Nima` and `marici.Benincasa`; `.passthrough()` permits unknown metadata keys. [content.config.ts:5](<C:/Users/andrey/src/marici/src/content.config.ts:5>)\n\n- Runtime author precedence is:\n  1. `authors`\n  2. title heuristic for “cosmo",
+          "structured_output": {
+            "ledger_head": "<exact admitted head>",
+            "source": {
+              "entity_id": "<stable graph source identity>",
+              "kind": "source",
+              "title": "<ledger H1>",
+              "version": "YYYY-MM-DD",
+              "locator": "src/ledger/<filename>.md",
+              "authors": [
+                "<validated author id>"
+              ]
+            },
+            "result": {
+              "claim": "...",
+              "status": "proved|falsified|conditional|inconclusive",
+              "assumptions": [],
+              "evidence_refs": [],
+              "factorization_test": {},
+              "counterevidence": [],
+              "next_experiment": "..."
+            }
+          },
+          "truncated": false
+        }
       },
       {
         "step_id": "graph-contract",
         "step_kind": "research",
         "run_id": "run-d82d206201b84e748dba3c684fa8e7ad",
-        "status": "running"
+        "status": "completed",
+        "finished_at": "2026-08-31T18:46:20.1904283Z",
+        "duration_ms": 542186,
+        "output": {
+          "summary_text": "I’ll trace the projection, then follow its public inspector and admission boundary to identify what is already derivable from Markdown versus what would be genuinely additive. I’ll keep this read-only and report the evidence with file links.The public contract is already explicit: the generated graph allowlists identity, status/summary, safe ledger provenance, and relation endpoints; the page only renders those fields and keeps proposal/event/payload/private locator data off the public surface. I’m checking the admitted snapshot and local friction notes now to separate safe, non-duplicative additions from fields that would merely re-expose Markdown.The key boundary is now clear: the snapshot contains rich, free-form result-packet fields, but the public exporter intentionally drops them. The only genuinely additive semantic data I found is durable graph lifecycle data—assessment judgments and recorded test outcomes—provided the upstream export exposes them without their reasons/evidence prose. I’m checking the exact admission metadata and ownership split before summarizing.Conclusion: keep the public graph sparse. Do not expose more Markdown-shaped reasoning fields.\n\nSafe additions:\n\n- `latest_assessment`: graph-native `judgment` plus stable ID/timestamp, excluding `reason` and evidence prose.\n- `latest_test_outcome`: graph-native outcome plus stable ID/timestamp, excluding protocol/evidence prose.\n- Top-level `truth_certified: false` or equivalent admission disclaimer; the admission surface explicitly says it does not certify truth.\n- Derived relation metrics such as degree/type counts are safe, though the inspector already computes relation counts.\n\nThe admission events already contain assessment judgments and test outcomes ([event 18](</C:/Users/andrey/src/marici/.narada/epistemic/ledger/ev-000000000018-f8b85833-5ac5-406a-bce5-7e6245b5f811.json:154>)), but the Marici projector currently reads only entity identity, `status`, `summary`, provenance, and relation endpoints ([projector](</C:/Users/andrey/src/marici/scripts/project-public-epistemic-graph.mjs:68>)). Exporting those lifecycle records therefore requires an upstream `mcp-surfaces` read-model change; the public UI and allowlist are Marici-owned.\n\nDo not add raw `scope`, `assumptions`, `counterevidence`, `evidence_refs`, `factorization_test`, `next_experiment`, protocols, or falsification conditions. They are result-packet/Markdown reasoning, and several are already represented structurally by graph relations. Likewise keep proposal IDs, event payloads, locators, actors, authority, reasons, and evidence arrays private, as documented in the public contract ([README](</C:/Users/andrey/src/marici/README.md:32>), [lifecycle policy](</C:/Users/andrey/src/marici/docs/research-lifecycle.md:137>)).\n\nNo files were edited.",
+          "truncated": false
+        }
+      },
+      {
+        "step_id": "synthesis",
+        "step_kind": "research",
+        "run_id": "run-8d45a3cc3a4b43cb9208bef98d796596",
+        "status": "failed",
+        "finished_at": "2026-08-31T18:53:25.1621304Z",
+        "duration_ms": 300046,
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300044"
       }
     ],
     "residual_risks": [],
     "observed_incoherencies": [],
     "verification": [],
     "changed_files": [],
-    "acceptance_checks": []
+    "acceptance_checks": [
+      {
+        "kind": "objective_present",
+        "status": "passed"
+      },
+      {
+        "kind": "site_provenance",
+        "owner_site_id": "marici",
+        "owner_site_root": "C:\\Users\\andrey\\src\\marici",
+        "status": "passed"
+      },
+      {
+        "kind": "requested_fields",
+        "requested": [],
+        "returned": [
+          "ledger_head",
+          "source",
+          "result"
+        ],
+        "missing": [],
+        "status": "not_applicable"
+      },
+      {
+        "kind": "no_write",
+        "authority": "read",
+        "changed_files": 0,
+        "changes_made": false,
+        "status": "passed"
+      },
+      {
+        "kind": "output_contract",
+        "verdict": "not_applicable",
+        "status": "not_applicable"
+      },
+      {
+        "kind": "objective_outcome",
+        "verdict": "failed",
+        "signal": "missing_terminal_result",
+        "status": "failed"
+      }
+    ],
+    "worker_outputs": [
+      {
+        "step_id": "ledger-contract",
+        "run_id": "run-0b3d11a2811641bca7170861f5b190f7",
+        "status": "completed",
+        "output": {
+          "summary_text": "ledger_head=<exact admitted head>, source={6 fields}, result={7 fields}",
+          "diagnostics_text": "I’ll trace the lifecycle doc, then locate the ledger extraction, author-validation, and source-identity code/tests. I’ll only read files and report concrete evidence plus a minimal envelope proposal.The broad search shows the likely implementation center is `src/lib/ledger.ts`; the initial repository-wide match set is noisy because task/event artifacts contain copied provenance. I’m narrowing the evidence to source, docs, scripts, and tests, with line numbers.The implementation confirms three separate paths: Astro schema validation, runtime ledger metadata extraction, and graph projection. I’m checking their real frontmatter population now, especially casing/unknown author fields and whether locator-derived provenance is an identity or only a display link.The key discrepancy is now concrete: eight files use valid YAML `authors` frontmatter, while three newer entries put `Author: ...` in the prose body. Both extractors ignore those body lines, and the allowed author enum would reject those names if they were promoted to metadata. I’m doing one final read-only consistency check on identity/provenance and confirming no files changed.Read-only audit complete. No files were edited.\n\n### Bounded evidence\n\n- The lifecycle defines one canonical result packet—`claim`, `status`, `assumptions`, `evidence_refs`, `factorization_test`, `counterevidence`, and `next_experiment`—while the ledger expands it and the graph records only a sparse DAG delta. [research-lifecycle.md:71](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:71>), [research-lifecycle.md:101](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:101>), [research-lifecycle.md:132](<C:/Users/andrey/src/marici/docs/research-lifecycle.md:132>)\n\n- Ledger metadata accepts only `marici.Nima` and `marici.Benincasa`; `.passthrough()` permits unknown metadata keys. [content.config.ts:5](<C:/Users/andrey/src/marici/src/content.config.ts:5>)\n\n- Runtime author precedence is:\n  1. `authors`\n  2. title heuristic for “cosmo",
+          "structured_output": {
+            "ledger_head": "<exact admitted head>",
+            "source": {
+              "entity_id": "<stable graph source identity>",
+              "kind": "source",
+              "title": "<ledger H1>",
+              "version": "YYYY-MM-DD",
+              "locator": "src/ledger/<filename>.md",
+              "authors": [
+                "<validated author id>"
+              ]
+            },
+            "result": {
+              "claim": "...",
+              "status": "proved|falsified|conditional|inconclusive",
+              "assumptions": [],
+              "evidence_refs": [],
+              "factorization_test": {},
+              "counterevidence": [],
+              "next_experiment": "..."
+            }
+          },
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "graph-contract",
+        "run_id": "run-d82d206201b84e748dba3c684fa8e7ad",
+        "status": "completed",
+        "output": {
+          "summary_text": "I’ll trace the projection, then follow its public inspector and admission boundary to identify what is already derivable from Markdown versus what would be genuinely additive. I’ll keep this read-only and report the evidence with file links.The public contract is already explicit: the generated graph allowlists identity, status/summary, safe ledger provenance, and relation endpoints; the page only renders those fields and keeps proposal/event/payload/private locator data off the public surface. I’m checking the admitted snapshot and local friction notes now to separate safe, non-duplicative additions from fields that would merely re-expose Markdown.The key boundary is now clear: the snapshot contains rich, free-form result-packet fields, but the public exporter intentionally drops them. The only genuinely additive semantic data I found is durable graph lifecycle data—assessment judgments and recorded test outcomes—provided the upstream export exposes them without their reasons/evidence prose. I’m checking the exact admission metadata and ownership split before summarizing.Conclusion: keep the public graph sparse. Do not expose more Markdown-shaped reasoning fields.\n\nSafe additions:\n\n- `latest_assessment`: graph-native `judgment` plus stable ID/timestamp, excluding `reason` and evidence prose.\n- `latest_test_outcome`: graph-native outcome plus stable ID/timestamp, excluding protocol/evidence prose.\n- Top-level `truth_certified: false` or equivalent admission disclaimer; the admission surface explicitly says it does not certify truth.\n- Derived relation metrics such as degree/type counts are safe, though the inspector already computes relation counts.\n\nThe admission events already contain assessment judgments and test outcomes ([event 18](</C:/Users/andrey/src/marici/.narada/epistemic/ledger/ev-000000000018-f8b85833-5ac5-406a-bce5-7e6245b5f811.json:154>)), but the Marici projector currently reads only entity identity, `status`, `summary`, provenance, and relation endpoints ([projector](</C:/Users/andrey/src/marici/scripts/project-public-epistemic-graph.mjs:68>)). Exporting those lifecycle records therefore requires an upstream `mcp-surfaces` read-model change; the public UI and allowlist are Marici-owned.\n\nDo not add raw `scope`, `assumptions`, `counterevidence`, `evidence_refs`, `factorization_test`, `next_experiment`, protocols, or falsification conditions. They are result-packet/Markdown reasoning, and several are already represented structurally by graph relations. Likewise keep proposal IDs, event payloads, locators, actors, authority, reasons, and evidence arrays private, as documented in the public contract ([README](</C:/Users/andrey/src/marici/README.md:32>), [lifecycle policy](</C:/Users/andrey/src/marici/docs/research-lifecycle.md:137>)).\n\nNo files were edited.",
+          "truncated": false
+        },
+        "error": null
+      },
+      {
+        "step_id": "synthesis",
+        "run_id": "run-8d45a3cc3a4b43cb9208bef98d796596",
+        "status": "failed",
+        "output": {
+          "summary_text": null,
+          "worker_runtime_incomplete": true,
+          "structured_output_error": {
+            "code": "worker_runtime_incomplete_output",
+            "message": "terminal worker event was not observed"
+          },
+          "truncated": false
+        },
+        "error": "provider_queue_timed_out:queue_timeout_ms=300000:elapsed_ms=300044"
+      }
+    ],
+    "output_contract_verdict": "not_applicable",
+    "objective_verdict": "failed"
   },
-  "summary": null
+  "summary": "objective_result: failed. No substantive objective result was reported.",
+  "external_dependencies": {
+    "status": "resolved"
+  },
+  "started_at": "2026-08-31T18:46:20.2194756Z",
+  "started_at_ms": 1788201980219,
+  "finished_at": "2026-08-31T18:53:25.1627533Z",
+  "finished_at_ms": 1788202405162,
+  "duration_ms": 424943
 }
