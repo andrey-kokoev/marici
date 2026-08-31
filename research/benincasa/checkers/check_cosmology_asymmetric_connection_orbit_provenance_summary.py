@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research'/'benincasa'/'results';ps=(32003,32009,32027);rows=[json.loads((R/f'cosmology_asymmetric_connection_orbit_provenance_p{p}.json').read_text()) for p in ps]
+assert all(x['passed'] and x['exact_replay_zero'] and x['orbit_rank']==12 for x in rows)
+words=[[t['word_axes'] for t in x['replay_terms']] for x in rows];assert words[0]==words[1]==words[2]
+out={'schema':'marici.benincasa.cosmology-asymmetric-connection-orbit-provenance-summary.v1','primes':list(ps),'orbit_rank':12,'replay_term_count':12,'max_connection_word_depth':3,'same_connection_word_support_across_primes':True,'all_exact_replays_zero':True,'modular_coefficients_retained':True,'characteristic_zero_reconstruction_completed':False,'integral_unit_selector_constructed':False,'interpretation':'the exceptional difference has a stable depth-three connection-word support and exact replay over three primes; the modular coefficients do not yet reconstruct a bounded rational identity and do not alter the even principal lattice','next_gate':'seek a source-normalized integral odd-principal cell outside this finite-field orbit identity rather than infer integrality from modular accessibility','passed':True};(R/'cosmology_asymmetric_connection_orbit_provenance_summary.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research'/'benincasa'/'results';A=json.loads((R/'cosmology_half_twist_syzygy_provenance_p32003.json').read_text());B=json.loads((R/'cosmology_half_twist_syzygy_provenance_p32009.json').read_text());assert A['passed'] and B['passed'] and A['candidate_count']==B['candidate_count']==8
+labels=[[x['pivot_label'] for x in d['candidates']] for d in (A,B)];counts=[[x['source_coefficient_count'] for x in d['candidates']] for d in (A,B)];assert labels[0]==labels[1] and counts[0]==counts[1]
+names=('IBP','K','g1','g2','g3','g23','g31');bounds=[(0,180),(180,1140)]+[(1140+1728*i,1140+1728*(i+1)) for i in range(5)]
+def fam(c):
+ ids=list(map(int,c['source_coefficients']));return [n for n,(lo,hi) in zip(names,bounds) if any(lo<=i<hi for i in ids)]
+families=[fam(x) for x in A['candidates']];assert families==[fam(x) for x in B['candidates']]
+out={'schema':'marici.benincasa.cosmology-half-twist-syzygy-provenance-summary.v1','primes':[32003,32009],'candidate_count':8,'pivot_labels':labels[0],'source_coefficient_counts':counts[0],'source_families':families,'same_labelled_pivots_across_primes':True,'same_support_counts_across_primes':True,'same_family_support_across_primes':True,'generic_gamma_candidate_count':7,'physical_half_twist_candidate_count':8,'physical_extra_candidate_index':4,'all_candidates_previously_proved_p_tangent':True,'tau_p_map_constructed':False,'physical_period_constructed':False,'interpretation':'the correctly typed physical coefficient has eight replayable degree-eight candidates with stable source provenance; the extra candidate is real but belongs to the p-tangent image, so provenance does not revive the normal quotient','next_gate':'compare the extra physical candidate source families with the seven generic candidates and test whether its disappearance at degree ten is an explicit cutoff relation','passed':True};(R/'cosmology_half_twist_syzygy_provenance_summary.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

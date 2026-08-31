@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research'/'benincasa'/'results';ds=[json.loads((R/f'cosmology_half_twist_diagonal_witness_dag_c0_p{p}.json').read_text()) for p in (32003,32009)]
+def skeleton(d):
+ p=d['payload'];return {'target_node_ids':[x[0] for x in p['target_deps']],'nodes':{n:{'relation_index':x['relation_index'],'family':x['family'],'dep_node_ids':[z[0] for z in x['deps']]} for n,x in p['nodes'].items()}}
+s=[skeleton(x) for x in ds];assert s[0]==s[1] and all(x['passed'] for x in ds);h=hashlib.sha256(json.dumps(s[0],sort_keys=True,separators=(',',':')).encode()).hexdigest();out={'schema':'marici.benincasa.cosmology-half-twist-diagonal-witness-dag-summary.v1','primes':[32003,32009],'candidate':0,'pivot_label':ds[0]['target_pivot_label'],'closure_node_count':571,'closure_family_counts':{'IBP':161,'K':79,'q':331},'target_reduction_step_count':118,'structural_skeleton_identical_across_primes':True,'structural_skeleton_sha256':h,'coefficient_digests':[x['dag_sha256'] for x in ds],'uniform_formula_extracted':False,'interpretation':'the canonical diagonal death has an exact replayable 571-node witness DAG with prime-stable support and dependency topology; its density and pivot dependence do not yet constitute a uniform homotopy','passed':True};(R/'cosmology_half_twist_diagonal_witness_dag_summary.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

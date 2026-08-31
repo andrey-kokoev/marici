@@ -20,11 +20,9 @@ Twice the physical \(K^{-1/2}\) second coefficient is
 Unlike a reverse map from total energy, the cyclic trace
 
 \[
-\boxed{
 \mathsf A_{\rm cyc}^{(2)}
 =
-\mathsf A_1^{(2)}+\mathsf A_2^{(2)}+\mathsf A_3^{(2)}
-}
+\mathsf A_1^{(2)}+\mathsf A_2^{(2)}+\mathsf A_3^{(2)}.
 \]
 
 is defined directly from the three labelled source occurrences. No
@@ -47,14 +45,8 @@ at every run and adds no fifth class.
 
 ## Interpretation
 
-\[
-\boxed{
-\text{The unique quadratic line is a canonical cyclic transverse-curvature
-port of the CM coefficient system.}
-}
-\]
-
-It is not selected by scalar total energy. Entries 2558, 2578, and 2585
+The unique quadratic line is a canonical cyclic transverse-curvature port of
+the CM coefficient system. It is not selected by scalar total energy. Entries 2558, 2578, and 2585
 remain in force. The new result replaces a mistyped scalar interpretation
 with a source-derived occurrence trace.
 

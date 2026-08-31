@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+import collections,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research'/'benincasa'/'results';d=json.loads((R/'cosmology_boundary_correction_witness_profiles.json').read_text());assert d['passed'] and d['record_count']==48;summary={}
+for kp in (0,1):
+ g=[x for x in d['profiles'] if x['k_pole']==kp];profiles=set((x['raw_support'],x['closure_nodes'],x['T_nodes'],x['K_nodes'],x['target_steps']) for x in g);assert len(g)==24 and len(profiles)==1;mult=sorted(collections.Counter(x['skeleton_sha256'] for x in g).values());assert mult==[4,4,7,9];summary[f'k{kp}']={'record_count':24,'profile':dict(zip(('raw_support','closure_nodes','T_nodes','K_nodes','target_steps'),next(iter(profiles)))),'raw_skeleton_class_count':4,'class_multiplicities':mult}
+out={'schema':'marici.benincasa.cosmology-boundary-correction-witness-profiles-summary.v1','field':32003,'transition':'A12_to_A14','summary':summary,'profile_determined_by_K_pole':True,'raw_skeletons_split_into_four_classes_per_pole':True,'source_descriptor_normalization_tested':False,'interpretation':'all 48 exact correction cells have one support/provenance-size profile per K pole; each pole still splits into four raw pivot-skeleton classes with multiplicities 4,4,7,9, so a descriptor-normalized coefficient comparison remains necessary','passed':True};(R/'cosmology_boundary_correction_witness_profiles_summary.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

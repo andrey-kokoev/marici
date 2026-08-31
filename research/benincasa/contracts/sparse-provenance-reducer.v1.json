@@ -1,0 +1,55 @@
+{
+  "schema": "marici.benincasa.sparse-provenance-reducer-contract.v1",
+  "owner": "marici.Benincasa",
+  "implementation_locus": "research/aspect/",
+  "decision": "Aspect-owned replacement authorized; existing sparse_modular_rank_stream.rs remains unchanged",
+  "input": {
+    "relation_source": "check_rank26_total_energy_triple_relation_module.raw_relations",
+    "row_order": "generator enumeration order is the stable source_id",
+    "prime": "declared prime field",
+    "point": [3, 6, -3],
+    "normal_offsets": [-3, -2, -1, 0, 1, 2, 3],
+    "normal_directions": {
+      "nx": [1, 0, 0],
+      "ny": [0, 1, 0],
+      "p_tangent": [1, -1, 0]
+    },
+    "required_digest": "sha256 over prime, ambient degree, ordered column labels, point, offsets, directions, and ordered sparse rows"
+  },
+  "reduction": {
+    "pair": "every module row operation is applied to a sparse provenance row over source_ids",
+    "dependency_replay": "every zero module row must replay to the zero row from its emitted provenance",
+    "rees_selector": [
+      "candidate nonzero modulo the special relation image",
+      "t*candidate zero modulo the dual Rees relation image",
+      "t^2*candidate zero modulo the triple Rees relation image"
+    ],
+    "hostile": "one deliberately corrupted provenance coefficient must replay to a nonzero residual"
+  },
+  "bounded_output": {
+    "format": "JSON",
+    "candidate_cap": 256,
+    "required_fields": [
+      "input_sha256",
+      "prime",
+      "ambient_degree",
+      "source_id_coefficients",
+      "labelled_generator_coordinates",
+      "special_nontrivial_residual",
+      "dual_t_annihilation_residual",
+      "triple_t2_annihilation_residual",
+      "dependency_replay_residual",
+      "normal_image_coordinates",
+      "p_tangent_image_coordinates"
+    ],
+    "overflow": "write full sparse vectors to a content-digested result sidecar and emit only digest, counts, extrema, and bounded preview"
+  },
+  "acceptance": [
+    "all replay residuals are zero",
+    "deliberate-failure residual is nonzero",
+    "candidate count agrees with the Rees length-one census",
+    "normal and tangent image-span comparisons are reproduced over two primes",
+    "no gamma-normal or total-energy class is transported into the p-normal source domain"
+  ],
+  "authority_boundary": "The protocol authorizes an Aspect-owned executable and read-only consumption of Benincasa relation generators. It does not authorize mutation of Benincasa source files or promote any candidate to tau_p or a physical period."
+}
