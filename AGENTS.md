@@ -220,6 +220,13 @@ do not transfer ownership.
 
 ## MCP-only operations
 
+For opening and closing turn checks, resolve the active Site and call its
+admitted lifecycle binding. In this repository use site root
+`C:/Users/andrey/src/marici` and binding `marici-task-lifecycle` through
+`mcp-loader`. A response scoped as `carrier_user` is an additional user-carrier
+check only and does not satisfy Marici rehydration or closeout. Reject lifecycle
+scope mismatches rather than treating an empty wrong-Site poll as evidence.
+
 Use the most specific provided MCP tool for every supported read, write, patch,
 move, search, Git, lifecycle, graph, site, external-service, or execution
 operation. Shells, CLIs, raw filesystem access, SDK or network calls, direct
@@ -240,8 +247,11 @@ longer work. Never substitute a shell or subprocess wrapper after refusal.
 
 Use atomic `mcp_loader_call_binding_tool` calls with site root
 `C:/Users/andrey/src/marici` and binding `marici-epistemic-graph`; loader
-restarts invalidate handles and connection ids. Read `epistemic_graph_guidance`
-before unfamiliar operations.
+restarts invalidate handles and connection ids. Issue-tree traversal uses this
+binding's `epistemic_graph_issue_tree_resume` and
+`epistemic_graph_issue_tree_transition` tools. There is no
+`marici-issue-tree` binding, and `marici-task-lifecycle` does not expose graph
+operations. Read `epistemic_graph_guidance` before unfamiliar operations.
 
 At turn boundaries, query addressed `narada.epistemic:communication` records,
 the read-only aliases `marici:communication` and `communication`, and the
