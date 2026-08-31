@@ -761,6 +761,261 @@ and its physical constructor implementation.
   gates to WP1036. The integers k and C label distinct source theories, so the
   local actuator rank is zero; relaxing them to real control coordinates exits
   the admitted domain. WP996 optimization therefore cannot select (2,23).
+- flavor-common-substrate-integer-preparation-fiber.md: WP1038 tests the bare
+  common-substrate repair left by WP1037. On the same finite k=2 neighborhood,
+  the same positive-gapped quadratic preparation grammar can select C=23 or
+  C=22 depending on the untranslated energy center; a middle-of-three rule
+  selects only a relative slot. The missing datum is the source-derived
+  integer origin and unique preparation order, not the common state space.
+- flavor-integer-coefficient-pole-typing-fiber.md: WP1039 separates integer
+  coefficient selection from threshold-ready pole typing. Twenty-three
+  unit-residue contributions with one common pole and with a 22+1 split pole
+  share k=2, C=23, and the same zero-momentum h, but their normalized
+  q squared=1 responses differ by 3/230. The same source must therefore derive
+  residues, degeneracy, pole masses, and finite-momentum matching; C=23 alone
+  is only a zero-momentum rigidifier.
+- flavor-degenerate-pole-clock-fiber.md: WP1040 grants exact exchange-enforced
+  degeneracy and fixed zero-momentum coefficient. The degenerate packets
+  M squared=1 and M squared=2 share k=2, C=23, h, exchange symmetry, and pole
+  type, but their normalized q squared=1 responses are 1/2 and 2/3. Degeneracy
+  therefore rigidifies threshold type without selecting the physical mass
+  clock.
+- flavor-momentum-port-calibration-fiber.md: WP1041 proves finite threshold
+  response is faithful only to the dimensionless ratio p squared/M squared on
+  the degenerate one-pole domain. The packets (M squared,p squared)=(1,1) and
+  (2,2) share the normalized response 1/2 and all zero-momentum source data;
+  fixing p squared=1 separates M squared=1 from M squared=2 by 1/6, but that
+  is calibrated readout, not a source law for the ratio.
+- flavor-ratio-to-physical16-gain-fiber.md: WP1042 grants all WP1038--WP1041
+  repairs, including a selected ratio p squared/M squared=1 and threshold
+  shape 1/2. Multiplying the `physical16` portal row by interface gains g=1
+  and g=2 preserves every granted source and threshold datum while changing
+  the row from 1/2 to 1; normalized one-port fractions collide. The remaining
+  gate is a source-detector gain law or interference-calibrated instrument.
+- flavor-interaction-net-state.md: WP1043 constructs the Interaction Net for
+  the current integer-pole Flavor branch. After WP1096 integration the verified
+  contract has sixty constructed nodes, five open nodes, four rejection
+  rewrite rules, and fifty-eight hostile fixtures. Its terminal physical selector
+  remains open behind four slots: common integer substrate with preparation
+  law, typed pole spectrum and mass clock, calibrated momentum and ratio law,
+  and `physical16` gain or interference law.
+- flavor-coherent-rate-interference-gain-gate.md: WP1044 digs into the most
+  productive WP1042 direction. In a factorized one-amplitude model, background,
+  absolute signal, and phase-flipped coherent-difference rows have rank three
+  on (B, luminosity, g), with exact reconstruction
+  g=4(S-B)/D and luminosity=D squared/(16(S-B)). Pure rates retain the
+  luminosity-gain hostile; uncalibrated visibility adds a fourth coordinate and
+  reopens the fiber. This is a minimal conditional acquisition target, not a
+  source or experiment instantiation.
+- flavor-visibility-reference-calibration-gate.md: WP1045 closes WP1044's
+  visibility caveat conditionally. Adding one independent reference-only
+  visibility row raises the local rank from three to four on (B, luminosity,
+  g, visibility), with reconstruction g=4 visibility (S-B)/D and luminosity=
+  D squared/(16 visibility squared (S-B)). Repeating the flavor contrast is
+  rank three and fails as a reference. The physical16 process and reference
+  independence remain uninstantiated.
+- flavor-common-frame-visibility-transport-gate.md: WP1046 separates reference
+  visibility from Flavor-arm visibility. Rows B, S, D, and V_ref have rank four
+  on (B, luminosity, g, nu_f, nu_r); adding the common-frame constraint
+  nu_f=nu_r raises rank to five. The exact packets (0,4,1,1/2,1) and
+  (0,1,2,1,1) collide on B=0, S=4, D=8, V_ref=1 unless that transport law is
+  granted.
+- flavor-visibility-epoch-anchor-gate.md: WP1047 makes the common-frame law
+  live. With drift d transporting reference visibility into the Flavor arm,
+  rows B, S, D, and V_ref have rank four on (B, luminosity, g, nu_r, d); an
+  epoch or external-drift anchor d=1 raises rank to five. The stale packet
+  (0,4,1,1,1/2) and live packet (0,1,2,1,1) collide on B=0, S=4, D=8, V_ref=1;
+  decoding stale data as d=1 returns the wrong gain g=2 instead of g=1.
+- flavor-coherent-final-state-support-gate.md: WP1048 reaches the physical16
+  process support gate. Adding a cofinality coordinate c to the interference
+  row D=4 nu d c luminosity g leaves WP1044--WP1047 rows rank five on six
+  coordinates. The partial-overlap packet (0,4,1,1,1,1/2) and full-overlap
+  packet (0,1,2,1,1,1) collide on all prior rows; assuming c=1 decodes the
+  wrong gain g=2 instead of the actual g=1. A shared final-state cell or
+  independent overlap monitor is now the instrument frontier.
+- flavor-overlap-monitor-null-accounting-gate.md: WP1049 sharpens the overlap
+  monitor alternative. If the monitor record is H=eta c, then WP1044--WP1048
+  rows plus H have rank six on (B, luminosity, g, nu, d, c, eta); adding a
+  null-loss or efficiency row for eta raises rank to seven. Partial support
+  with perfect monitoring and full support with eta=1/2 collide at H=1/2, so
+  monitor loss cannot be decoded as cofinality.
+- flavor-shared-final-state-cell-gate.md: WP1050 separates monitor overlap from
+  physical cofinality. With monitor law M=eta c and science row D=4 nu d c
+  sigma luminosity g, WP1044--WP1049 rows have rank seven on eight coordinates;
+  a same-cell certificate sigma raises rank to eight. Equal records M=1/4 and
+  eta=1/2 can come from a same-cell packet or a split-cell proxy, but the
+  proxy has D=0 and cannot support gain reconstruction.
+- flavor-physical16-shared-cell-event-space.md: WP1051 constructs a minimal
+  typed event cell. Rows S=B+alpha luminosity g squared,
+  D=4 nu d c sigma luminosity g, M=eta c beta, and N=eta beta give rank eight
+  before cell support and rank ten after detector/monitor supports alpha,beta.
+  A leaked monitor cell can preserve detector rows while changing (M,N), so
+  same-cell certificates require typed detector and monitor supports.
+- flavor-common-source-cell-support-provenance.md: WP1052 realizes those
+  supports with six atoms carrying detector, monitor, cross, detected, and
+  null provenance. The shared cell derives alpha=1, beta=1, c=1/2, eta=1/2,
+  sigma=1 and WP1051 rows S=4, D=8, M=1/4, N=1/2. A split-cell proxy can
+  declare the same records, but atom derivation gives cross=0 and D=0.
+- flavor-typed-pole-atom-provenance.md: WP1053 applies the same provenance
+  discipline to the pole branch. Twenty-three two-port unit-residue atoms with
+  M squared=1 derive k=2, C=23, h=138 pi squared/1367, degeneracy, and
+  response 1/2. Scalar declarations of that spectrum are rejected by split
+  atoms giving 59/115 and by degenerate M squared=2 atoms giving 2/3.
+- flavor-irreducible-spin11-pole-cell.md: WP1054 gives an explicit
+  representation certificate for the pole cell. The spin-11 sl2 module has
+  dimension 23, connected integer weight chain, and Casimir 264; invariant
+  mass or residue operators are scalar. The 22+1 clock fails the irreducible
+  commutator and still gives response 59/115.
+- flavor-principal-su12-top-cell.md: WP1055 gives the spin cell a conditional
+  parent. Under principal sl2, the SU(12) adjoint has top component V_11 of
+  dimension 23; identifying the two nilpotent directions as ports gives k=2
+  and h=138 pi squared/1367. SU(13) contains V_11 only as a lower component,
+  so a top-cell law remains required.
+- flavor-su6-localized-quartet-pole-cell.md: WP1056 uses the existing
+  anomaly-free SU(6) family 15+2bar6. Its branches have total degree 27;
+  localizing one quartet leaves C=23 bulk atoms and two doublet ports k=2,
+  with kappa=14 and h=138 pi squared/1367. Boundary both doublets also leaves
+  C=23 but k=0, so joint port retention is required.
+- flavor-localized-quartet-inflow-gate.md: WP1057 computes the linear-U(1)
+  anomaly-inflow cofiber for WP1056. One boundary quartet has level k_CS=2,
+  while boundary both doublets has k_CS=-4; both are integral, so unfixed
+  inflow distinguishes but does not select the localization law.
+- flavor-localized-su6-clock-alignment-gate.md: WP1058 proves that the WP1056
+  bulk cell 6+8+1+4+2+2 is reducible, with six invariant mass blocks and five
+  after bar6 exchange. A parent-alignment or projection law is still required
+  for the common clock.
+- flavor-parent-hypermultiplet-clock-fiber.md: WP1059 uses parent-level SU(6)
+  invariance to reduce the clock obstruction to two parent blocks, m15 and
+  mbar6. Exactly one inter-parent clock gap remains.
+- flavor-common-twist-parent-clock-gate.md: WP1060 applies WP753's massless
+  common-twist tower to the two parent blocks. The 15 and bar6 clocks are
+  equal at each level, but the common twist, masslessness, absolute radius,
+  and momentum ratio remain open.
+- flavor-radius-stabilized-common-clock-cofiber.md: WP1061 composes WP790's
+  radius law with WP1060's clock. The result is M^2=(B/A)/(6n^2), so the
+  unit clock requires B/A=6n^2; neither quantity is selected.
+- flavor-same-frame-kk-momentum-ratio-cofiber.md: WP1062 puts WP771's vector
+  KK ports in the WP1060 clock frame. The source ratios are p_N^2/M^2=4N^2;
+  the N=1 response is 1/5, so a ratio-one soft-scale physical16 channel
+  remains open.
+- flavor-soft-scale-two-port-instrument-lock.md: WP1063 conditionally locks
+  WP770's instrument mass standard to the common pole clock. The two-port
+  ratios are 1 and 4 with responses 1/2 and 1/5; actual physical16 channel
+  realization remains open.
+- flavor-vector-ratio-event-cell-gain-cofiber.md: WP1064 inserts the
+  source-derived ratio-4 shape L=1/5 into WP1052's atom cell. The rows are
+  S=1/5,D=2/5,M=1/4,N=1/2, and typed reconstruction returns (L,g)=(1/5,1).
+- flavor-pole-event-atom-interface-gate.md: WP1065 proves that WP1052's event
+  cell is not a relabeling of the 23 pole atoms. The support equations require
+  46/3 detector atoms, six equal groups are impossible, and the six localized
+  SU(6) branches have no valid role bijection.
+- flavor-localized-quartet-nonabelian-inflow-gate.md: WP1066 computes the
+  SU(4) cubic anomaly channel. One boundary quartet requires k_CS=1/2, while
+  the port-destroying doublet-pair cell has k_CS=0, so integral SU(4) CS
+  quantization rejects the quartet unless a shifted class is derived.
+- flavor-localized-quartet-anomaly-vector-gate.md: WP1067 completes the five
+  globally vanishing perturbative anomaly channels. The one-quartet vector is
+  (1/2,1/4,0,2,2); the port-destroying doublet-pair vector is integral.
+  Nonzero SU4/SU2 gauge-gravity channels remain open.
+- flavor-parent-green-schwarz-completion-gate.md: WP1068 shows that the SU(6)
+  family has gauge-gravity index 3, so one parent Green-Schwarz coefficient -3
+  cancels both subgroup indices globally. The local split and shifted CS
+  vector remain open.
+- flavor-local-green-schwarz-split-cofiber.md: WP1069 tests the symmetric
+  local split g0=gpi=-3/2 and obtains the seven-channel one-quartet vector
+  (1/2,1/4,0,2,2,-1/4,0). Alternate splits change the gauge-gravity levels,
+  so the endpoint law remains open.
+- flavor-shifted-chern-simons-coset-gate.md: WP1070 converts the conditional
+  one-quartet vector into the exact shifted-lattice residue
+  (1/2,1/4,0,0,0,3/4,0), with common denominator 4. Reflected orientation and
+  hostile cells lie in different cosets.
+- flavor-shifted-flux-cs-interface-no-go.md: WP1071 shows that WP793's scalar
+  shifted G4 class cannot directly source the seven-channel coset: the
+  interval embedding, gauge projector, endpoint action, and orientation law
+  are absent.
+- flavor-unit-clock-flux-sector-degeneracy-gate.md: WP1072 shows that the
+  unit-clock orbit B/A=6n^2 fixes R*=1/2, M^2=1, and vector ratios 4,16 for
+  every n. The signed flux threshold is 2 sigma n, so sector preparation
+  remains open.
+- flavor-chirality-flux-sector-interface-no-go.md: WP1073 rejects using the
+  existing three-family lower bound to select the 6D magnetic flux sector.
+  A common compactification, flux-index map, orientation correlation, and
+  shared normalization are absent.
+- flavor-soft-channel-degeneracy-gate.md: WP1074 shows that all six localized
+  SU(6) branches share ratio one and response 1/2 under the common clock.
+  The vector port has ratio 4 and response 1/5; the missing law is the
+  source-to-physical16 coupling matrix, not another ratio channel.
+- flavor-soft-channel-reweighting-rank-gate.md: WP1075 shows that identity,
+  permutation, and common-gain diagonal reweighting cannot map the branch
+  distribution to the six event weights. Rank-one uniform mixing with gain
+  3/2 is target-compatible but still requires source dynamics.
+- flavor-symmetric-production-law-cofiber.md: WP1076 shows that parent-blind
+  propagation and localized doublet exchange do not derive the required
+  mixing. Branch democracy is target-compatible but lacks an all-branch
+  symmetry or common production-kernel certificate.
+- flavor-four-state-acquisition-calibration-gate.md: WP1077 incorporates the
+  directed Aspect reply at event 10544. Dark, monitor, reference, and
+  phase-toggled rows give rank-five calibration of background, luminosity,
+  gain, visibility, and momentum scale, but not source production dynamics.
+- flavor-aspect-pattern-acquisition-composition-gate.md: WP1078 composes the
+  cited Aspect scale-reference, affine-monitor, phase-detection, and
+  robustness packets. The instrument contract is exact, but source selection
+  remains outside detector rank.
+- flavor-nima-candidate-source-law-audit-gate.md: WP1079 audits the five
+  Nima-owned candidates named in event 10628. They sharpen the authority
+  obstruction but supply no flux preparation, production mixing, or gain.
+- flavor-su6-bipartite-cubic-carrier-gate.md: WP1080 branches the SU(6)
+  family under SU(3)xSU(3)xU(1). The 15 contains a rank-three (3,3)
+  pairing/cross-block and both SU(3) factors supply alternating cubic
+  carriers; temporal coherence, detector ports, and physical16 descent remain
+  open.
+- flavor-bipartite-krylov-history-composition-gate.md: WP1081 shows that
+  depth-retained Krylov history gives positive cyclicity but not signed
+  production. Source evolution, seed, retained history, and a weight-minus-3
+  volume reference remain missing.
+- flavor-strominger-determinant-line-reference-audit-gate.md: WP1082 audits
+  the existing Strominger orientation-line packet. It supplies the obstruction
+  but not a source coorientation or the WP1081 reference rho.
+- flavor-su3-natural-endomorphism-krylov-no-go.md: WP1083 integrates Nima
+  event 10655. Schur's lemma closes the current-source Krylov route: an
+  SU(3)-breaking flag, cyclic ray, and history dilation remain required.
+- flavor-localized-quartet-flag-refinement-no-go.md: WP1084 aligns localized
+  SU(4)xSU(2) with SU(3)xSU(3). It yields an unbroken A triplet and only a
+  B-side 2+1 flag, not a simple-spectrum Krylov evolution.
+- flavor-flux-wilson-doublet-flag-gate.md: WP1085 shows that a source-fixed
+  generic Wilson line would refine 2+1 to 1+1+1, while the admitted flux
+  integer selects no phase, eigenbasis, or ordering.
+- flavor-wilson-flag-cyclic-ray-gate.md: WP1086 proves that a Wilson 1+1+1
+  flag supplies simple spectrum but not a cyclic ray; coherent amplitudes,
+  relative phases, and history remain separate source constructors.
+- flavor-wilson-history-dilation-gate.md: WP1087 constructs a conditional
+  three-grade isometric history bundle for a source-fixed unitary Wilson
+  evolution, while physical registers, ports, ray, and rho remain unsourced.
+- flavor-history-bundle-volume-reference-gate.md: WP1088 shows that the
+  history determinant has phase weight +3 while the canonical volume form has
+  weight 0; the bundle supplies no weight-(-3) reference rho.
+- flavor-oriented-adjoint-doublet-breaking-no-go.md: WP1089 integrates Nima
+  event 10687: a second-stage doublet split requires an oriented adjoint ray
+  in su(2)_B, absent from the current source.
+- flavor-reciprocal-determinant-rho-no-go.md: WP1090 shows that 1/D has the
+  required phase weight only on the cyclic domain and is a tautological
+  meromorphic inverse, not an independent rho.
+- flavor-source-natural-negative-weight-scalar-no-go.md: WP1091 shows that no
+  source-natural scalar of A,x supplies an independent weight-(-3) rho in the
+  admitted authority class.
+- flavor-conditional-wilson-production-kernel-no-go.md: WP1092 shows that an
+  internal conditional B-line flag supplies zero branch-to-physical16 coupling
+  rows and is not a production kernel.
+- flavor-history-dilation-gain-no-go.md: WP1093 shows that conditional history
+  dilation is an isometry with three normalized slots, not six event weights or
+  gain 3/2.
+- flavor-coset-absolute-boundary-action-fiber.md: WP1094 shows that the WP1070
+  anomaly coset does not select an absolute boundary Chern-Simons lift.
+- flavor-wilson-integer-lift-clock-no-go.md: WP1095 shows that a Wilson phase
+  fixes its exponent modulo one and cannot select n or sigma.
+- flavor-normalization-packet-authority-audit-gate.md: WP1096 audits three
+  Benincasa normalization packets and finds repair ports but no selector
+  authority.
 - `flavor-domain-detector-confusion-kernel.md`: WP99 factors the first detector
   kernel exactly. A CP-covariant three-outcome channel is faithful iff
   `(1-l-2e)(1-b-l) != 0`; its two singular surfaces erase orientation and

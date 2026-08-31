@@ -1,0 +1,1855 @@
+{
+  "schema": "marici.flavor.interaction-net-state-contract.v1",
+  "claim": "current_flavor_integer_pole_branch_not_physical_selector",
+  "model_generation": "wp1036_integer_capacity_through_wp1042_gain_fiber",
+  "boundary": "Interaction Net projection of the current Flavor branch; not evidence for a physical selector and not a fit-derived source law.",
+  "interfaces": {
+    "source_label_lattice": {
+      "ports": [
+        "k",
+        "C"
+      ],
+      "domain": "positive integer theory-label lattice",
+      "quotient": "none declared",
+      "authority": "arithmetic capacity only until a common substrate/preparation law is derived"
+    },
+    "zero_momentum_pole": {
+      "ports": [
+        "h",
+        "C",
+        "R0"
+      ],
+      "domain": "zero-momentum scalar coefficient",
+      "quotient": "collapses pole spectra with equal total coefficient",
+      "authority": "rigidifier only"
+    },
+    "threshold_response": {
+      "ports": [
+        "M2",
+        "p2",
+        "R(p2)/R0"
+      ],
+      "domain": "degenerate positive one-pole response after WP1039 split-spectrum exclusion is granted",
+      "quotient": "depends on p2/M2",
+      "authority": "faithful to ratio only with calibrated port"
+    },
+    "physical16_portal": {
+      "ports": [
+        "threshold_shape",
+        "gain",
+        "physical16_row"
+      ],
+      "domain": "one-row multiplicative interface",
+      "quotient": "normalized one-port fractions collapse common gain",
+      "authority": "open until source-detector gain law or interference monitor is derived"
+    }
+  },
+  "nodes": [
+    {
+      "id": "wp1036_nonprimitive_integer_capacity",
+      "kind": "capacity_witness",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-nonprimitive-integer-lift-capacity.md",
+      "ports_in": [
+        "wp802_fixed_point_family",
+        "fitted_h_interval"
+      ],
+      "ports_out": [
+        "k=2",
+        "C=23",
+        "h=138*pi^2/1367"
+      ],
+      "authority_class": "arithmetic_capacity",
+      "depends_on": []
+    },
+    {
+      "id": "wp1037_object_not_command",
+      "kind": "authority_reduction",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-discrete-source-actuator-type-no-go.md",
+      "ports_in": [
+        "k",
+        "C"
+      ],
+      "ports_out": [
+        "local_actuator_rank_zero"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1036_nonprimitive_integer_capacity"
+      ]
+    },
+    {
+      "id": "wp1038_common_substrate_preparation_fiber",
+      "kind": "common_substrate_test",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-common-substrate-integer-preparation-fiber.md",
+      "ports_in": [
+        "finite_k=2_neighborhood",
+        "positive_gapped_preparation"
+      ],
+      "ports_out": [
+        "integer_origin_open",
+        "preparation_order_open"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1037_object_not_command"
+      ]
+    },
+    {
+      "id": "wp1039_integer_coefficient_pole_typing_fiber",
+      "kind": "pole_spectrum_test",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-integer-coefficient-pole-typing-fiber.md",
+      "ports_in": [
+        "C=23",
+        "zero_momentum_h"
+      ],
+      "ports_out": [
+        "split_spectrum_fiber"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1036_nonprimitive_integer_capacity"
+      ]
+    },
+    {
+      "id": "wp1040_degenerate_pole_clock_fiber",
+      "kind": "mass_clock_test",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-degenerate-pole-clock-fiber.md",
+      "ports_in": [
+        "degenerate_pole_type",
+        "fixed_R0"
+      ],
+      "ports_out": [
+        "mass_clock_open"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1039_integer_coefficient_pole_typing_fiber"
+      ]
+    },
+    {
+      "id": "wp1041_momentum_port_calibration_fiber",
+      "kind": "threshold_port_test",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-momentum-port-calibration-fiber.md",
+      "ports_in": [
+        "degenerate_response",
+        "finite_momentum_readout"
+      ],
+      "ports_out": [
+        "ratio_p2_over_M2",
+        "momentum_standard_open"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1040_degenerate_pole_clock_fiber"
+      ]
+    },
+    {
+      "id": "wp1042_physical16_gain_fiber",
+      "kind": "physical16_interface_test",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-ratio-to-physical16-gain-fiber.md",
+      "ports_in": [
+        "selected_threshold_shape",
+        "physical16_portal_row"
+      ],
+      "ports_out": [
+        "gain_fiber_open"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1041_momentum_port_calibration_fiber"
+      ]
+    },
+    {
+      "id": "wp1044_coherent_rate_interference_gain_gate",
+      "kind": "conditional_instrument_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-coherent-rate-interference-gain-gate.md",
+      "ports_in": [
+        "background_row",
+        "absolute_signal_row",
+        "phase_flipped_coherent_difference",
+        "calibrated_visibility"
+      ],
+      "ports_out": [
+        "local_signed_gain_reconstruction",
+        "visibility_calibration_open",
+        "physical16_process_open"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1042_physical16_gain_fiber"
+      ]
+    },
+    {
+      "id": "wp1045_visibility_reference_calibration_gate",
+      "kind": "conditional_calibration_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-visibility-reference-calibration-gate.md",
+      "ports_in": [
+        "background_row",
+        "absolute_signal_row",
+        "phase_flipped_coherent_difference",
+        "visibility_reference_row"
+      ],
+      "ports_out": [
+        "local_gain_visibility_reconstruction",
+        "reference_independence_open",
+        "physical16_process_open"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1044_coherent_rate_interference_gain_gate"
+      ]
+    },
+    {
+      "id": "wp1046_common_frame_visibility_transport_gate",
+      "kind": "conditional_transport_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-common-frame-visibility-transport-gate.md",
+      "ports_in": [
+        "flavor_visibility",
+        "reference_visibility",
+        "common_frame_constraint"
+      ],
+      "ports_out": [
+        "visibility_transport_obligation",
+        "local_gain_reconstruction_when_granted"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1045_visibility_reference_calibration_gate"
+      ]
+    },
+    {
+      "id": "wp1047_visibility_epoch_anchor_gate",
+      "kind": "conditional_epoch_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-visibility-epoch-anchor-gate.md",
+      "ports_in": [
+        "reference_visibility",
+        "drift_coordinate",
+        "live_epoch_anchor"
+      ],
+      "ports_out": [
+        "stale_frame_rejection",
+        "anchored_gain_reconstruction"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1046_common_frame_visibility_transport_gate"
+      ]
+    },
+    {
+      "id": "wp1048_coherent_final_state_support_gate",
+      "kind": "conditional_support_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-coherent-final-state-support-gate.md",
+      "ports_in": [
+        "flavor_amplitude",
+        "reference_amplitude",
+        "coherent_final_state_overlap"
+      ],
+      "ports_out": [
+        "cofinality_obligation",
+        "gain_reconstruction_when_overlap_retained"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1047_visibility_epoch_anchor_gate"
+      ]
+    },
+    {
+      "id": "wp1049_overlap_monitor_null_accounting_gate",
+      "kind": "conditional_null_accounting_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-overlap-monitor-null-accounting-gate.md",
+      "ports_in": [
+        "coherent_overlap_monitor",
+        "monitor_efficiency",
+        "null_loss_record"
+      ],
+      "ports_out": [
+        "overlap_efficiency_separation",
+        "null_complete_cofinality_obligation"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1048_coherent_final_state_support_gate"
+      ]
+    },
+    {
+      "id": "wp1050_shared_final_state_cell_gate",
+      "kind": "conditional_shared_cell_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-shared-final-state-cell-gate.md",
+      "ports_in": [
+        "null_complete_overlap_monitor",
+        "same_cell_certificate",
+        "science_interference_row"
+      ],
+      "ports_out": [
+        "split_cell_rejection",
+        "physical16_shared_cell_obligation"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1049_overlap_monitor_null_accounting_gate"
+      ]
+    },
+    {
+      "id": "wp1051_physical16_shared_cell_event_space",
+      "kind": "conditional_event_cell_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-physical16-shared-cell-event-space.md",
+      "ports_in": [
+        "detector_cell_support",
+        "monitor_cell_support",
+        "typed_cross_null_outcomes"
+      ],
+      "ports_out": [
+        "mis_celled_monitor_rejection",
+        "typed_cell_reconstruction"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1050_shared_final_state_cell_gate"
+      ]
+    },
+    {
+      "id": "wp1052_common_source_cell_support_provenance",
+      "kind": "conditional_common_source_support_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-common-source-cell-support-provenance.md",
+      "ports_in": [
+        "typed_detector_monitor_cross_null_atoms",
+        "exact_branch_weights"
+      ],
+      "ports_out": [
+        "derived_detector_support",
+        "derived_monitor_support",
+        "cross_atom_provenance"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1051_physical16_shared_cell_event_space"
+      ]
+    },
+    {
+      "id": "wp1053_typed_pole_atom_provenance",
+      "kind": "conditional_pole_atom_provenance_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-typed-pole-atom-provenance.md",
+      "ports_in": [
+        "typed_pole_atoms",
+        "residue_labels",
+        "mass_labels",
+        "source_ports"
+      ],
+      "ports_out": [
+        "derived_k2_C23",
+        "derived_degenerate_clock",
+        "derived_threshold_response"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1039_integer_coefficient_pole_typing_fiber",
+        "wp1040_degenerate_pole_clock_fiber"
+      ]
+    },
+    {
+      "id": "wp1054_irreducible_spin11_pole_cell",
+      "kind": "conditional_irreducible_multiplet_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-irreducible-spin11-pole-cell.md",
+      "ports_in": [
+        "spin11_weight_basis",
+        "integral_sl2_action",
+        "external_two_port_arity"
+      ],
+      "ports_out": [
+        "representation_derived_C23",
+        "schur_scalar_residues",
+        "common_pole_clock"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1053_typed_pole_atom_provenance"
+      ]
+    },
+    {
+      "id": "wp1055_principal_su12_top_cell",
+      "kind": "conditional_parent_top_cell_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-principal-su12-top-cell.md",
+      "ports_in": [
+        "su12_parent_law",
+        "principal_sl2_decomposition",
+        "top_cell_projection"
+      ],
+      "ports_out": [
+        "derived_spin11",
+        "derived_C23",
+        "conditional_EF_two_port_arity"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1054_irreducible_spin11_pole_cell"
+      ]
+    },
+    {
+      "id": "wp1056_su6_localized_quartet_pole_cell",
+      "kind": "conditional_anomaly_localization_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-su6-localized-quartet-pole-cell.md",
+      "ports_in": [
+        "minimal_su6_anomaly_family",
+        "subgroup_branching",
+        "one_quartet_boundary_law"
+      ],
+      "ports_out": [
+        "derived_C23",
+        "derived_doublet_two_ports",
+        "positive_bulk_spectral_index"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1053_typed_pole_atom_provenance"
+      ]
+    },
+    {
+      "id": "wp1057_localized_quartet_inflow_gate",
+      "kind": "conditional_anomaly_inflow_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-localized-quartet-inflow-gate.md",
+      "ports_in": [
+        "localized_quartet_cell",
+        "dimension_weighted_u1_branch_charges",
+        "fixed_point_inflow_equations"
+      ],
+      "ports_out": [
+        "quartet_inflow_level_2",
+        "doublet_pair_inflow_level_minus_4",
+        "fixed_chern_simons_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1056_su6_localized_quartet_pole_cell"
+      ]
+    },
+    {
+      "id": "wp1058_localized_su6_clock_alignment_gate",
+      "kind": "common_clock_alignment_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-localized-su6-clock-alignment-gate.md",
+      "ports_in": [
+        "localized_su6_bulk_cell",
+        "residual_group_branch_blocks",
+        "bar6_exchange_symmetry"
+      ],
+      "ports_out": [
+        "five_exchange_even_mass_blocks",
+        "no_common_clock_from_localization",
+        "projection_or_parent_alignment_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1054_irreducible_spin11_pole_cell",
+        "wp1056_su6_localized_quartet_pole_cell"
+      ]
+    },
+    {
+      "id": "wp1059_parent_hypermultiplet_clock_fiber",
+      "kind": "parent_clock_alignment_fiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-parent-hypermultiplet-clock-fiber.md",
+      "ports_in": [
+        "su6_parent_hypermultiplets",
+        "localized_quartet_cell",
+        "bar6_exchange_symmetry"
+      ],
+      "ports_out": [
+        "two_parent_clock_blocks",
+        "one_inter_parent_clock_gap",
+        "common_compactification_clock_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1056_su6_localized_quartet_pole_cell",
+        "wp1058_localized_su6_clock_alignment_gate"
+      ]
+    },
+    {
+      "id": "wp1060_common_twist_parent_clock_gate",
+      "kind": "conditional_common_twist_clock_constructor",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-common-twist-parent-clock-gate.md",
+      "ports_in": [
+        "massless_common_twist_tower",
+        "two_parent_clock_blocks",
+        "half_twist_level"
+      ],
+      "ports_out": [
+        "closed_inter_parent_clock_ratio",
+        "unfixed_absolute_radius",
+        "same_frame_momentum_ratio_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1059_parent_hypermultiplet_clock_fiber"
+      ]
+    },
+    {
+      "id": "wp1061_radius_stabilized_common_clock_cofiber",
+      "kind": "radius_clock_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-radius-stabilized-common-clock-cofiber.md",
+      "ports_in": [
+        "common_twist_parent_clock",
+        "curvature_flux_radius_law",
+        "flux_sector_and_gauge_gravity_ratio"
+      ],
+      "ports_out": [
+        "absolute_clock_condition_B_over_A_equals_6n2",
+        "unselected_flux_sector",
+        "same_frame_momentum_ratio_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1060_common_twist_parent_clock_gate"
+      ]
+    },
+    {
+      "id": "wp1062_same_frame_kk_momentum_ratio_cofiber",
+      "kind": "same_frame_momentum_ratio_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-same-frame-kk-momentum-ratio-cofiber.md",
+      "ports_in": [
+        "common_twist_clock",
+        "vector_kk_levels",
+        "radius_cancellation"
+      ],
+      "ports_out": [
+        "vector_ratio_4N2",
+        "missing_soft_scale_momentum_channel",
+        "response_gap_3_over_10"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1061_radius_stabilized_common_clock_cofiber"
+      ]
+    },
+    {
+      "id": "wp1063_soft_scale_two_port_instrument_lock",
+      "kind": "conditional_two_port_instrument_lock",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-soft-scale-two-port-instrument-lock.md",
+      "ports_in": [
+        "wp770_two_momentum_standards",
+        "common_pole_clock",
+        "same_frame_vector_ratio"
+      ],
+      "ports_out": [
+        "ratio_one_soft_response",
+        "ratio_four_vector_check",
+        "physical16_channel_realization_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1062_same_frame_kk_momentum_ratio_cofiber"
+      ]
+    },
+    {
+      "id": "wp1064_vector_ratio_event_cell_gain_cofiber",
+      "kind": "vector_ratio_event_cell_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-vector-ratio-event-cell-gain-cofiber.md",
+      "ports_in": [
+        "common_source_atom_cell",
+        "same_frame_vector_ratio_4",
+        "typed_event_cell_rows"
+      ],
+      "ports_out": [
+        "vector_shape_1_over_5",
+        "typed_gain_reconstruction",
+        "unit_ratio_row_hostile"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1052_common_source_cell_support_provenance",
+        "wp1062_same_frame_kk_momentum_ratio_cofiber"
+      ]
+    },
+    {
+      "id": "wp1065_pole_event_atom_interface_gate",
+      "kind": "pole_event_atom_interface_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-pole-event-atom-interface-gate.md",
+      "ports_in": [
+        "twenty_three_pole_atoms",
+        "six_event_atom_cell",
+        "localized_su6_branch_dimensions"
+      ],
+      "ports_out": [
+        "diophantine_relabeling_obstruction",
+        "unequal_event_weight_requirement",
+        "channel_reweighting_map_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1052_common_source_cell_support_provenance",
+        "wp1053_typed_pole_atom_provenance",
+        "wp1056_su6_localized_quartet_pole_cell"
+      ]
+    },
+    {
+      "id": "wp1066_localized_quartet_nonabelian_inflow_gate",
+      "kind": "nonabelian_inflow_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-localized-quartet-nonabelian-inflow-gate.md",
+      "ports_in": [
+        "localized_quartet_cell",
+        "su4_cubic_anomaly_coefficients",
+        "fixed_point_inflow_equations"
+      ],
+      "ports_out": [
+        "half_integral_su4_chern_simons_requirement",
+        "integral_lattice_hostile",
+        "shifted_quantization_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1057_localized_quartet_inflow_gate"
+      ]
+    },
+    {
+      "id": "wp1067_localized_quartet_anomaly_vector_gate",
+      "kind": "complete_anomaly_vector_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-localized-quartet-anomaly-vector-gate.md",
+      "ports_in": [
+        "localized_quartet_cell",
+        "five_vanishing_anomaly_channels",
+        "fixed_point_inflow_equations"
+      ],
+      "ports_out": [
+        "shifted_chern_simons_vector",
+        "integral_doublet_pair_hostile",
+        "gauge_gravity_completion_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1066_localized_quartet_nonabelian_inflow_gate"
+      ]
+    },
+    {
+      "id": "wp1068_parent_green_schwarz_completion_gate",
+      "kind": "parent_green_schwarz_completion_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-parent-green-schwarz-completion-gate.md",
+      "ports_in": [
+        "su6_family_dynkin_indices",
+        "subgroup_gauge_gravity_indices",
+        "parent_green_schwarz_coefficient"
+      ],
+      "ports_out": [
+        "global_gauge_gravity_completion",
+        "local_split_gate",
+        "shifted_cs_vector_still_open"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1067_localized_quartet_anomaly_vector_gate"
+      ]
+    },
+    {
+      "id": "wp1069_local_green_schwarz_split_cofiber",
+      "kind": "local_green_schwarz_split_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-local-green-schwarz-split-cofiber.md",
+      "ports_in": [
+        "parent_green_schwarz_coefficient",
+        "symmetric_endpoint_split_law",
+        "seven_anomaly_channels"
+      ],
+      "ports_out": [
+        "seven_channel_shifted_vector",
+        "green_schwarz_split_fiber",
+        "multicomponent_shifted_lattice_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1068_parent_green_schwarz_completion_gate"
+      ]
+    },
+    {
+      "id": "wp1070_shifted_chern_simons_coset_gate",
+      "kind": "shifted_chern_simons_coset_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-shifted-chern-simons-coset-gate.md",
+      "ports_in": [
+        "seven_channel_shifted_vector",
+        "integral_chern_simons_lattice",
+        "endpoint_orientation"
+      ],
+      "ports_out": [
+        "required_shifted_coset",
+        "common_denominator_four",
+        "coset_orientation_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1069_local_green_schwarz_split_cofiber"
+      ]
+    },
+    {
+      "id": "wp1071_shifted_flux_cs_interface_no_go",
+      "kind": "shifted_flux_cs_interface_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-shifted-flux-cs-interface-no-go.md",
+      "ports_in": [
+        "required_shifted_coset",
+        "wp793_shifted_G4_class",
+        "five_required_interface_components"
+      ],
+      "ports_out": [
+        "direct_shifted_flux_source_rejected",
+        "uv_boundary_action_required",
+        "orientation_map_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1070_shifted_chern_simons_coset_gate"
+      ]
+    },
+    {
+      "id": "wp1072_unit_clock_flux_sector_degeneracy_gate",
+      "kind": "unit_clock_flux_sector_degeneracy_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-unit-clock-flux-sector-degeneracy-gate.md",
+      "ports_in": [
+        "radius_stabilized_common_clock",
+        "same_frame_vector_ratios",
+        "signed_flux_threshold"
+      ],
+      "ports_out": [
+        "unit_clock_orbit",
+        "flux_sector_degeneracy",
+        "flux_preparation_law_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1061_radius_stabilized_common_clock_cofiber",
+        "wp1062_same_frame_kk_momentum_ratio_cofiber"
+      ]
+    },
+    {
+      "id": "wp1073_chirality_flux_sector_interface_no_go",
+      "kind": "chirality_flux_sector_interface_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-chirality-flux-sector-interface-no-go.md",
+      "ports_in": [
+        "unit_clock_orbit",
+        "wp793_three_family_lower_bound",
+        "five_required_interface_components"
+      ],
+      "ports_out": [
+        "flux_sector_identification_rejected",
+        "common_compactification_required",
+        "flux_preparation_law_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1072_unit_clock_flux_sector_degeneracy_gate"
+      ]
+    },
+    {
+      "id": "wp1074_soft_channel_degeneracy_gate",
+      "kind": "soft_channel_degeneracy_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-soft-channel-degeneracy-gate.md",
+      "ports_in": [
+        "localized_su6_branch_cell",
+        "common_twist_clock",
+        "two_port_instrument_lock",
+        "vector_ratio_event_cell"
+      ],
+      "ports_out": [
+        "sixfold_soft_channel_degeneracy",
+        "vector_soft_separation",
+        "physical16_coupling_matrix_gate"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1060_common_twist_parent_clock_gate",
+        "wp1063_soft_scale_two_port_instrument_lock",
+        "wp1064_vector_ratio_event_cell_gain_cofiber",
+        "wp1065_pole_event_atom_interface_gate"
+      ]
+    },
+    {
+      "id": "wp1075_soft_channel_reweighting_rank_gate",
+      "kind": "soft_channel_reweighting_rank_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-soft-channel-reweighting-rank-gate.md",
+      "ports_in": [
+        "sixfold_soft_channel_degeneracy",
+        "wp1052_event_role_weights",
+        "dimension_weighted_source_distribution"
+      ],
+      "ports_out": [
+        "rank_one_mixing_solution",
+        "required_gain_three_halves",
+        "source_coupling_dynamics_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1074_soft_channel_degeneracy_gate",
+        "wp1065_pole_event_atom_interface_gate"
+      ]
+    },
+    {
+      "id": "wp1076_symmetric_production_law_cofiber",
+      "kind": "symmetric_production_law_cofiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-symmetric-production-law-cofiber.md",
+      "ports_in": [
+        "localized_su6_branch_cell",
+        "parent_hypermultiplet_symmetry",
+        "rank_one_mixing_solution"
+      ],
+      "ports_out": [
+        "symmetric_production_law_rejected",
+        "production_kernel_required",
+        "source_gain_certificate_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1075_soft_channel_reweighting_rank_gate",
+        "wp1059_parent_hypermultiplet_clock_fiber",
+        "wp1056_su6_localized_quartet_pole_cell"
+      ]
+    },
+    {
+      "id": "wp1077_four_state_acquisition_calibration_gate",
+      "kind": "four_state_acquisition_calibration_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-four-state-acquisition-calibration-gate.md",
+      "ports_in": [
+        "aspect_event_10544_reply",
+        "dark_monitor_reference_phase_rows",
+        "same_frame_momentum_row"
+      ],
+      "ports_out": [
+        "five_hostile_direction_calibration",
+        "absolute_rate_interference_shape_classification",
+        "production_kernel_still_open"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1044_coherent_rate_interference_gain_gate",
+        "wp1045_visibility_reference_calibration_gate",
+        "wp1046_common_frame_visibility_transport_gate",
+        "wp1047_visibility_epoch_anchor_gate",
+        "wp1076_symmetric_production_law_cofiber"
+      ]
+    },
+    {
+      "id": "wp1078_aspect_pattern_acquisition_composition_gate",
+      "kind": "aspect_pattern_acquisition_composition_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-aspect-pattern-acquisition-composition-gate.md",
+      "ports_in": [
+        "five_hostile_direction_calibration",
+        "six_port_scale_reference",
+        "affine_monitor_calibration",
+        "two_phase_rows",
+        "predeclared_noise_floor"
+      ],
+      "ports_out": [
+        "composed_instrument_contract",
+        "authority_boundary_to_source_kernel",
+        "production_kernel_still_open"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1077_four_state_acquisition_calibration_gate"
+      ]
+    },
+    {
+      "id": "wp1079_nima_candidate_source_law_audit_gate",
+      "kind": "external_candidate_source_law_audit_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-nima-candidate-source-law-audit-gate.md",
+      "ports_in": [
+        "nima_event_10628_reply",
+        "five_candidate_authority_packets",
+        "four_open_selector_slots"
+      ],
+      "ports_out": [
+        "nima_candidates_do_not_fill_slots",
+        "microscopic_mediator_grammar_required",
+        "deferred_nima_answer_pending"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1076_symmetric_production_law_cofiber",
+        "wp1078_aspect_pattern_acquisition_composition_gate"
+      ]
+    },
+    {
+      "id": "wp1080_su6_bipartite_cubic_carrier_gate",
+      "kind": "su6_bipartite_cubic_carrier_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-su6-bipartite-cubic-carrier-gate.md",
+      "ports_in": [
+        "su6_anomaly_family",
+        "su3a_su3b_branching",
+        "nima_microscopic_search_signature"
+      ],
+      "ports_out": [
+        "bipartite_pairing",
+        "two_alternating_cubic_carriers",
+        "temporal_production_descent_gate"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1056_su6_localized_quartet_pole_cell",
+        "wp1079_nima_candidate_source_law_audit_gate"
+      ]
+    },
+    {
+      "id": "wp1081_bipartite_krylov_history_composition_gate",
+      "kind": "bipartite_krylov_history_composition_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-bipartite-krylov-history-composition-gate.md",
+      "ports_in": [
+        "bipartite_pairing",
+        "two_alternating_cubic_carriers",
+        "krylov_history_contract",
+        "projective_ray_gate"
+      ],
+      "ports_out": [
+        "four_missing_temporal_constructors",
+        "volume_reference_required",
+        "positive_cyclicity_only"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1080_su6_bipartite_cubic_carrier_gate"
+      ]
+    },
+    {
+      "id": "wp1082_strominger_determinant_line_reference_audit_gate",
+      "kind": "strominger_determinant_line_reference_audit_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-strominger-determinant-line-reference-audit-gate.md",
+      "ports_in": [
+        "determinant_orientation_line",
+        "krylov_volume_reference_required"
+      ],
+      "ports_out": [
+        "orientation_line_not_rho",
+        "rho_still_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1081_bipartite_krylov_history_composition_gate"
+      ]
+    },
+    {
+      "id": "wp1083_su3_natural_endomorphism_krylov_no_go",
+      "kind": "su3_natural_endomorphism_krylov_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-su3-natural-endomorphism-krylov-no-go.md",
+      "ports_in": [
+        "bipartite_pairing",
+        "two_alternating_cubic_carriers",
+        "krylov_constructor_request",
+        "nima_event_10655"
+      ],
+      "ports_out": [
+        "su3_breaking_preparation_required",
+        "current_source_krylov_route_closed"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1080_su6_bipartite_cubic_carrier_gate",
+        "wp1081_bipartite_krylov_history_composition_gate"
+      ]
+    },
+    {
+      "id": "wp1084_localized_quartet_flag_refinement_no_go",
+      "kind": "localized_quartet_flag_refinement_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-localized-quartet-flag-refinement-no-go.md",
+      "ports_in": [
+        "localized_quartet_pole_cell",
+        "su3a_su3b_branching",
+        "su3_breaking_preparation_required"
+      ],
+      "ports_out": [
+        "two_plus_one_flag_only",
+        "second_stage_doublet_breaking_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1056_su6_localized_quartet_pole_cell",
+        "wp1080_su6_bipartite_cubic_carrier_gate",
+        "wp1083_su3_natural_endomorphism_krylov_no_go"
+      ]
+    },
+    {
+      "id": "wp1085_flux_wilson_doublet_flag_gate",
+      "kind": "flux_wilson_doublet_flag_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-flux-wilson-doublet-flag-gate.md",
+      "ports_in": [
+        "flux_integer_sector",
+        "two_plus_one_flag_only",
+        "second_stage_doublet_breaking_required"
+      ],
+      "ports_out": [
+        "conditional_one_plus_one_plus_one_wilson_flag",
+        "wilson_boundary_condition_required"
+      ],
+      "authority_class": "conditional_gate",
+      "depends_on": [
+        "wp1072_unit_clock_flux_sector_degeneracy_gate",
+        "wp1084_localized_quartet_flag_refinement_no_go"
+      ]
+    },
+    {
+      "id": "wp1086_wilson_flag_cyclic_ray_gate",
+      "kind": "wilson_flag_cyclic_ray_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-wilson-flag-cyclic-ray-gate.md",
+      "ports_in": [
+        "conditional_one_plus_one_plus_one_wilson_flag",
+        "krylov_constructor_request"
+      ],
+      "ports_out": [
+        "coherent_ray_preparation_required",
+        "history_dilation_still_required"
+      ],
+      "authority_class": "conditional_gate",
+      "depends_on": [
+        "wp1081_bipartite_krylov_history_composition_gate",
+        "wp1085_flux_wilson_doublet_flag_gate"
+      ]
+    },
+    {
+      "id": "wp1087_wilson_history_dilation_gate",
+      "kind": "wilson_history_dilation_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-wilson-history-dilation-gate.md",
+      "ports_in": [
+        "conditional_one_plus_one_plus_one_wilson_flag",
+        "coherent_ray_preparation_required",
+        "history_dilation_still_required"
+      ],
+      "ports_out": [
+        "conditional_three_grade_isometry",
+        "physical_history_instrument_required"
+      ],
+      "authority_class": "conditional_gate",
+      "depends_on": [
+        "wp1081_bipartite_krylov_history_composition_gate",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1086_wilson_flag_cyclic_ray_gate"
+      ]
+    },
+    {
+      "id": "wp1088_history_bundle_volume_reference_gate",
+      "kind": "history_bundle_volume_reference_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-history-bundle-volume-reference-gate.md",
+      "ports_in": [
+        "conditional_three_grade_isometry",
+        "weight_minus_three_reference_required"
+      ],
+      "ports_out": [
+        "determinant_amplitude_without_rho",
+        "source_coorientation_reference_required"
+      ],
+      "authority_class": "conditional_gate",
+      "depends_on": [
+        "wp1081_bipartite_krylov_history_composition_gate",
+        "wp1082_strominger_determinant_line_reference_audit_gate",
+        "wp1087_wilson_history_dilation_gate"
+      ]
+    },
+    {
+      "id": "wp1089_oriented_adjoint_doublet_breaking_no_go",
+      "kind": "oriented_adjoint_doublet_breaking_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-oriented-adjoint-doublet-breaking-no-go.md",
+      "ports_in": [
+        "two_plus_one_flag_only",
+        "conditional_one_plus_one_plus_one_wilson_flag",
+        "nima_event_10687"
+      ],
+      "ports_out": [
+        "oriented_adjoint_ray_required",
+        "current_second_stage_breaking_closed"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1084_localized_quartet_flag_refinement_no_go",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1086_wilson_flag_cyclic_ray_gate",
+        "wp1087_wilson_history_dilation_gate"
+      ]
+    },
+    {
+      "id": "wp1090_reciprocal_determinant_rho_no_go",
+      "kind": "reciprocal_determinant_rho_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-reciprocal-determinant-rho-no-go.md",
+      "ports_in": [
+        "determinant_phase_weight_plus_three",
+        "reciprocal_determinant_candidate"
+      ],
+      "ports_out": [
+        "independent_weight_minus_three_rho_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1088_history_bundle_volume_reference_gate"
+      ]
+    },
+    {
+      "id": "wp1091_source_natural_negative_weight_scalar_no_go",
+      "kind": "source_natural_negative_weight_scalar_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-source-natural-negative-weight-scalar-no-go.md",
+      "ports_in": [
+        "conditional_wilson_operator_and_ray",
+        "determinant_phase_weight_plus_three"
+      ],
+      "ports_out": [
+        "independent_source_line_bundle_section_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1088_history_bundle_volume_reference_gate",
+        "wp1090_reciprocal_determinant_rho_no_go"
+      ]
+    },
+    {
+      "id": "wp1092_conditional_wilson_production_kernel_no_go",
+      "kind": "conditional_wilson_production_kernel_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-conditional-wilson-production-kernel-no-go.md",
+      "ports_in": [
+        "six_soft_branch_degeneracy",
+        "conditional_B_line_flag"
+      ],
+      "ports_out": [
+        "branch_to_physical16_coupling_matrix_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1074_soft_channel_degeneracy_gate",
+        "wp1076_symmetric_production_law_cofiber",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1089_oriented_adjoint_doublet_breaking_no_go"
+      ]
+    },
+    {
+      "id": "wp1093_history_dilation_gain_no_go",
+      "kind": "history_dilation_gain_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-history-dilation-gain-no-go.md",
+      "ports_in": [
+        "conditional_history_dilation",
+        "six_soft_branch_degeneracy"
+      ],
+      "ports_out": [
+        "production_kernel_and_gain_law_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1074_soft_channel_degeneracy_gate",
+        "wp1076_symmetric_production_law_cofiber",
+        "wp1087_wilson_history_dilation_gate",
+        "wp1092_conditional_wilson_production_kernel_no_go"
+      ]
+    },
+    {
+      "id": "wp1094_coset_absolute_boundary_action_fiber",
+      "kind": "coset_absolute_boundary_action_fiber",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-coset-absolute-boundary-action-fiber.md",
+      "ports_in": [
+        "required_shifted_chern_simons_coset"
+      ],
+      "ports_out": [
+        "absolute_boundary_lift_and_counterterm_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1070_shifted_chern_simons_coset_gate",
+        "wp1071_shifted_flux_cs_interface_no_go"
+      ]
+    },
+    {
+      "id": "wp1095_wilson_integer_lift_clock_no_go",
+      "kind": "wilson_integer_lift_clock_no_go",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-wilson-integer-lift-clock-no-go.md",
+      "ports_in": [
+        "conditional_wilson_phase",
+        "mass_clock_unit_orbit"
+      ],
+      "ports_out": [
+        "integer_flux_lift_and_sigma_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1040_degenerate_pole_clock_fiber",
+        "wp1072_unit_clock_flux_sector_degeneracy_gate",
+        "wp1085_flux_wilson_doublet_flag_gate"
+      ]
+    },
+    {
+      "id": "wp1096_normalization_packet_authority_audit_gate",
+      "kind": "normalization_packet_authority_audit_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-normalization-packet-authority-audit-gate.md",
+      "ports_in": [
+        "admitted_normalization_packets",
+        "selector_authority_requirements"
+      ],
+      "ports_out": [
+        "normalized_dual_cycle_or_integral_lattice_required"
+      ],
+      "authority_class": "conditional_gate",
+      "depends_on": [
+        "wp1094_coset_absolute_boundary_action_fiber",
+        "wp1095_wilson_integer_lift_clock_no_go"
+      ]
+    },
+    {
+      "id": "common_integer_substrate_with_preparation_law",
+      "kind": "source_constructor_slot",
+      "status": "open",
+      "ports_in": [
+        "integer_label_lattice",
+        "parent_top_cell_law",
+        "anomaly_localization_cell",
+        "fixed_chern_simons_gate",
+        "shifted_quantization_gate",
+        "shifted_chern_simons_vector",
+        "local_split_gate",
+        "seven_channel_shifted_vector",
+        "required_shifted_coset",
+        "uv_boundary_action_required",
+        "microscopic_mediator_grammar_required",
+        "bipartite_pairing",
+        "su3_breaking_preparation_required",
+        "second_stage_doublet_breaking_required",
+        "wilson_boundary_condition_required",
+        "oriented_adjoint_ray_required",
+        "independent_weight_minus_three_rho_required",
+        "independent_source_line_bundle_section_required",
+        "branch_to_physical16_coupling_matrix_required",
+        "production_kernel_and_gain_law_required",
+        "absolute_boundary_lift_and_counterterm_required",
+        "integer_flux_lift_and_sigma_required",
+        "normalized_dual_cycle_or_integral_lattice_required"
+      ],
+      "ports_out": [
+        "k=2",
+        "C=23",
+        "preparation_cost"
+      ],
+      "authority_class": "formal_slot",
+      "depends_on": [
+        "wp1038_common_substrate_preparation_fiber",
+        "wp1055_principal_su12_top_cell",
+        "wp1056_su6_localized_quartet_pole_cell",
+        "wp1057_localized_quartet_inflow_gate",
+        "wp1066_localized_quartet_nonabelian_inflow_gate",
+        "wp1067_localized_quartet_anomaly_vector_gate",
+        "wp1068_parent_green_schwarz_completion_gate",
+        "wp1069_local_green_schwarz_split_cofiber",
+        "wp1070_shifted_chern_simons_coset_gate",
+        "wp1071_shifted_flux_cs_interface_no_go",
+        "wp1079_nima_candidate_source_law_audit_gate",
+        "wp1080_su6_bipartite_cubic_carrier_gate",
+        "wp1083_su3_natural_endomorphism_krylov_no_go",
+        "wp1084_localized_quartet_flag_refinement_no_go",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1089_oriented_adjoint_doublet_breaking_no_go",
+        "wp1090_reciprocal_determinant_rho_no_go",
+        "wp1091_source_natural_negative_weight_scalar_no_go",
+        "wp1092_conditional_wilson_production_kernel_no_go",
+        "wp1093_history_dilation_gain_no_go",
+        "wp1094_coset_absolute_boundary_action_fiber",
+        "wp1095_wilson_integer_lift_clock_no_go",
+        "wp1096_normalization_packet_authority_audit_gate"
+      ]
+    },
+    {
+      "id": "typed_pole_spectrum_and_mass_clock",
+      "kind": "source_constructor_slot",
+      "status": "open",
+      "ports_in": [
+        "C=23",
+        "pole_operator",
+        "pole_atom_provenance",
+        "irreducible_multiplet_certificate",
+        "parent_top_cell_law",
+        "anomaly_localization_cell",
+        "fixed_chern_simons_gate",
+        "projection_or_parent_alignment_gate",
+        "common_compactification_clock_gate",
+        "unfixed_absolute_radius",
+        "absolute_clock_condition_B_over_A_equals_6n2",
+        "shifted_quantization_gate",
+        "flux_sector_degeneracy",
+        "common_compactification_required",
+        "microscopic_mediator_grammar_required",
+        "integer_flux_lift_and_sigma_required",
+        "normalized_dual_cycle_or_integral_lattice_required"
+      ],
+      "ports_out": [
+        "degenerate_residues",
+        "M2",
+        "threshold_matching"
+      ],
+      "authority_class": "formal_slot",
+      "depends_on": [
+        "wp1055_principal_su12_top_cell",
+        "wp1056_su6_localized_quartet_pole_cell",
+        "wp1057_localized_quartet_inflow_gate",
+        "wp1058_localized_su6_clock_alignment_gate",
+        "wp1059_parent_hypermultiplet_clock_fiber",
+        "wp1060_common_twist_parent_clock_gate",
+        "wp1061_radius_stabilized_common_clock_cofiber",
+        "wp1066_localized_quartet_nonabelian_inflow_gate",
+        "wp1072_unit_clock_flux_sector_degeneracy_gate",
+        "wp1073_chirality_flux_sector_interface_no_go",
+        "wp1079_nima_candidate_source_law_audit_gate",
+        "wp1095_wilson_integer_lift_clock_no_go",
+        "wp1096_normalization_packet_authority_audit_gate"
+      ]
+    },
+    {
+      "id": "calibrated_momentum_and_ratio_law",
+      "kind": "instrument_source_slot",
+      "status": "open",
+      "ports_in": [
+        "M2",
+        "physical_momentum_port",
+        "same_frame_momentum_ratio_gate",
+        "absolute_clock_condition_B_over_A_equals_6n2",
+        "missing_soft_scale_momentum_channel",
+        "physical16_channel_realization_gate",
+        "vector_shape_1_over_5",
+        "physical16_coupling_matrix_gate",
+        "source_coupling_dynamics_gate",
+        "production_kernel_required",
+        "five_hostile_direction_calibration",
+        "microscopic_mediator_grammar_required",
+        "bipartite_pairing",
+        "four_missing_temporal_constructors",
+        "rho_still_required",
+        "su3_breaking_preparation_required",
+        "second_stage_doublet_breaking_required",
+        "wilson_boundary_condition_required",
+        "coherent_ray_preparation_required",
+        "history_dilation_still_required",
+        "physical_history_instrument_required",
+        "oriented_adjoint_ray_required",
+        "independent_weight_minus_three_rho_required",
+        "independent_source_line_bundle_section_required",
+        "branch_to_physical16_coupling_matrix_required",
+        "production_kernel_and_gain_law_required",
+        "absolute_boundary_lift_and_counterterm_required",
+        "integer_flux_lift_and_sigma_required",
+        "normalized_dual_cycle_or_integral_lattice_required"
+      ],
+      "ports_out": [
+        "p2/M2"
+      ],
+      "authority_class": "formal_slot",
+      "depends_on": [
+        "wp1041_momentum_port_calibration_fiber",
+        "typed_pole_spectrum_and_mass_clock",
+        "wp1060_common_twist_parent_clock_gate",
+        "wp1061_radius_stabilized_common_clock_cofiber",
+        "wp1062_same_frame_kk_momentum_ratio_cofiber",
+        "wp1063_soft_scale_two_port_instrument_lock",
+        "wp1064_vector_ratio_event_cell_gain_cofiber",
+        "wp1074_soft_channel_degeneracy_gate",
+        "wp1075_soft_channel_reweighting_rank_gate",
+        "wp1076_symmetric_production_law_cofiber",
+        "wp1077_four_state_acquisition_calibration_gate",
+        "wp1079_nima_candidate_source_law_audit_gate",
+        "wp1080_su6_bipartite_cubic_carrier_gate",
+        "wp1081_bipartite_krylov_history_composition_gate",
+        "wp1082_strominger_determinant_line_reference_audit_gate",
+        "wp1083_su3_natural_endomorphism_krylov_no_go",
+        "wp1084_localized_quartet_flag_refinement_no_go",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1086_wilson_flag_cyclic_ray_gate",
+        "wp1087_wilson_history_dilation_gate",
+        "wp1089_oriented_adjoint_doublet_breaking_no_go",
+        "wp1090_reciprocal_determinant_rho_no_go",
+        "wp1091_source_natural_negative_weight_scalar_no_go",
+        "wp1092_conditional_wilson_production_kernel_no_go",
+        "wp1093_history_dilation_gain_no_go",
+        "wp1094_coset_absolute_boundary_action_fiber",
+        "wp1095_wilson_integer_lift_clock_no_go",
+        "wp1096_normalization_packet_authority_audit_gate"
+      ]
+    },
+    {
+      "id": "physical16_gain_or_interference_law",
+      "kind": "instrument_source_slot",
+      "status": "open",
+      "ports_in": [
+        "signed_gain_reconstruction",
+        "common_source_cell_support_provenance",
+        "source_detector_vertex",
+        "physical16_channel_realization_gate",
+        "vector_shape_1_over_5",
+        "channel_reweighting_map_gate",
+        "physical16_coupling_matrix_gate",
+        "source_coupling_dynamics_gate",
+        "production_kernel_required",
+        "five_hostile_direction_calibration",
+        "composed_instrument_contract",
+        "microscopic_mediator_grammar_required",
+        "bipartite_pairing",
+        "four_missing_temporal_constructors",
+        "rho_still_required",
+        "su3_breaking_preparation_required",
+        "second_stage_doublet_breaking_required",
+        "wilson_boundary_condition_required",
+        "coherent_ray_preparation_required",
+        "history_dilation_still_required",
+        "physical_history_instrument_required",
+        "source_coorientation_reference_required",
+        "oriented_adjoint_ray_required",
+        "independent_weight_minus_three_rho_required",
+        "independent_source_line_bundle_section_required",
+        "branch_to_physical16_coupling_matrix_required",
+        "production_kernel_and_gain_law_required",
+        "absolute_boundary_lift_and_counterterm_required",
+        "normalized_dual_cycle_or_integral_lattice_required"
+      ],
+      "ports_out": [
+        "absolute_or_signed_physical16_row"
+      ],
+      "authority_class": "formal_slot",
+      "depends_on": [
+        "wp1052_common_source_cell_support_provenance",
+        "calibrated_momentum_and_ratio_law",
+        "wp1063_soft_scale_two_port_instrument_lock",
+        "wp1064_vector_ratio_event_cell_gain_cofiber",
+        "wp1065_pole_event_atom_interface_gate",
+        "wp1074_soft_channel_degeneracy_gate",
+        "wp1075_soft_channel_reweighting_rank_gate",
+        "wp1076_symmetric_production_law_cofiber",
+        "wp1077_four_state_acquisition_calibration_gate",
+        "wp1078_aspect_pattern_acquisition_composition_gate",
+        "wp1079_nima_candidate_source_law_audit_gate",
+        "wp1080_su6_bipartite_cubic_carrier_gate",
+        "wp1081_bipartite_krylov_history_composition_gate",
+        "wp1082_strominger_determinant_line_reference_audit_gate",
+        "wp1083_su3_natural_endomorphism_krylov_no_go",
+        "wp1084_localized_quartet_flag_refinement_no_go",
+        "wp1085_flux_wilson_doublet_flag_gate",
+        "wp1086_wilson_flag_cyclic_ray_gate",
+        "wp1087_wilson_history_dilation_gate",
+        "wp1088_history_bundle_volume_reference_gate",
+        "wp1089_oriented_adjoint_doublet_breaking_no_go",
+        "wp1090_reciprocal_determinant_rho_no_go",
+        "wp1091_source_natural_negative_weight_scalar_no_go",
+        "wp1092_conditional_wilson_production_kernel_no_go",
+        "wp1093_history_dilation_gain_no_go",
+        "wp1094_coset_absolute_boundary_action_fiber",
+        "wp1096_normalization_packet_authority_audit_gate"
+      ]
+    },
+    {
+      "id": "flavor_physical_selector_terminal",
+      "kind": "terminal_selector_claim",
+      "status": "open",
+      "ports_in": [
+        "integer_preparation",
+        "typed_threshold",
+        "calibrated_ratio",
+        "physical16_gain"
+      ],
+      "ports_out": [
+        "selected_physical16_point_or_proper_family"
+      ],
+      "authority_class": "blocked_claim",
+      "depends_on": [
+        "common_integer_substrate_with_preparation_law",
+        "typed_pole_spectrum_and_mass_clock",
+        "calibrated_momentum_and_ratio_law",
+        "physical16_gain_or_interference_law"
+      ]
+    }
+  ],
+  "rewrite_rules": [
+    {
+      "id": "no_real_relaxation_of_integer_labels",
+      "active_pair": [
+        "integer_label",
+        "local_actuator"
+      ],
+      "preserves_interface": [
+        "k",
+        "C"
+      ],
+      "rejects": "continuous command vectors such as (1/2,0)",
+      "witness_node": "wp1037_object_not_command"
+    },
+    {
+      "id": "zero_momentum_forgets_pole_spectrum",
+      "active_pair": [
+        "C_sum",
+        "pole_decomposition"
+      ],
+      "preserves_interface": [
+        "C",
+        "h"
+      ],
+      "rejects": "promotion of C=23 to a single-pole spectrum",
+      "witness_node": "wp1039_integer_coefficient_pole_typing_fiber"
+    },
+    {
+      "id": "finite_response_forgets_common_scale",
+      "active_pair": [
+        "M2",
+        "p2"
+      ],
+      "preserves_interface": [
+        "p2/M2"
+      ],
+      "rejects": "absolute mass extraction without a momentum standard",
+      "witness_node": "wp1041_momentum_port_calibration_fiber"
+    },
+    {
+      "id": "normalized_fraction_forgets_gain",
+      "active_pair": [
+        "threshold_shape",
+        "gain"
+      ],
+      "preserves_interface": [
+        "normalized_fraction"
+      ],
+      "rejects": "promotion of shape to absolute physical16 row",
+      "witness_node": "wp1042_physical16_gain_fiber"
+    }
+  ],
+  "semantic_invariants": {
+    "capacity_does_not_imply_selection": true,
+    "object_label_does_not_imply_command": true,
+    "common_substrate_does_not_imply_preparation_order": true,
+    "zero_momentum_coefficient_does_not_imply_pole_spectrum": true,
+    "finite_response_does_not_imply_absolute_clock": true,
+    "threshold_shape_does_not_imply_physical16_gain": true,
+    "readout_does_not_create_source_authority": true,
+    "conditional_instrument_does_not_imply_source_instantiation": true,
+    "visibility_reference_must_be_independent_of_portal": true,
+    "reference_row_does_not_imply_common_frame_transport": true,
+    "common_frame_transport_must_be_live_anchored": true,
+    "calibrated_reference_does_not_imply_coherent_final_state": true,
+    "overlap_monitor_requires_null_accounting": true,
+    "null_complete_monitor_does_not_imply_same_cell": true,
+    "same_cell_certificate_requires_typed_detector_and_monitor_support": true,
+    "cell_support_must_have_common_source_atom_provenance": true,
+    "pole_spectrum_and_clock_require_atom_provenance": true,
+    "pole_degeneracy_requires_irreducible_multiplet_certificate": true,
+    "spin_cell_requires_parent_and_top_cell_law": true,
+    "integer_labels_require_joint_bulk_degree_and_port_retention": true,
+    "localization_law_must_include_fixed_inflow_level": true,
+    "localized_branch_cell_requires_common_mass_alignment": true,
+    "parent_invariance_reduces_clock_gap_to_inter_parent": true,
+    "common_twist_closes_inter_parent_but_not_absolute_scale": true,
+    "radius_stabilization_requires_flux_sector_and_gauge_gravity_ratio": true,
+    "same_frame_vector_kk_port_is_not_unit_ratio_port": true,
+    "instrument_mass_lock_is_not_source_channel": true,
+    "vector_ratio_event_cell_distinct_from_unit_ratio": true,
+    "event_atoms_require_channel_reweighting_not_relabeling": true,
+    "nonabelian_inflow_can_constrain_linear_u1_cofiber": true,
+    "shifted_cs_law_must_be_multicomponent_vector": true,
+    "global_GS_completion_not_local_shifted_cs": true,
+    "local_GS_split_required_for_full_anomaly_vector": true,
+    "shifted_quantization_requires_exact_coset_and_orientation": true,
+    "shifted_G4_class_not_seven_channel_CS_coset": true,
+    "unit_clock_orbit_needs_flux_sensitive_preparation": true,
+    "family_count_not_magnetic_flux_label_without_map": true,
+    "common_clock_soft_response_not_channel_selection": true,
+    "event_weights_require_source_derived_mixing_or_nonuniform_gains": true,
+    "localized_branch_degeneracy_not_production_symmetry": true,
+    "calibrated_acquisition_not_source_production_kernel": true,
+    "instrument_calibration_rank_not_source_rank": true,
+    "authority_calculus_packets_not_source_dynamics": true,
+    "su3_bipartite_carrier_signature_not_full_mediator": true,
+    "bipartite_carrier_plus_krylov_history_not_signed_without_volume_reference": true,
+    "orientation_line_not_volume_reference": true,
+    "su3_symmetric_source_requires_breaking_preparation_for_krylov": true,
+    "localized_quartet_two_plus_one_flag_not_simple_spectrum": true,
+    "flux_integer_not_wilson_phase_or_ordering": true,
+    "three_line_flag_not_cyclic_ray": true,
+    "isometric_history_bundle_not_physical_instrument": true,
+    "history_bundle_not_weight_minus_three_reference": true,
+    "oriented_adjoint_ray_not_derived_from_current_source": true,
+    "reciprocal_determinant_not_independent_rho": true,
+    "source_natural_scalar_not_negative_weight_rho": true,
+    "internal_wilson_flag_not_production_kernel": true,
+    "history_dilation_not_gain_law": true,
+    "anomaly_coset_not_absolute_boundary_action": true,
+    "wilson_phase_not_integer_clock_lift": true,
+    "normalization_ports_not_selector_authority": true
+  },
+  "hostile_fixtures": [
+    {
+      "id": "C23_vs_C22_same_preparation_grammar",
+      "must_reject": "common_substrate_as_selector"
+    },
+    {
+      "id": "degenerate_vs_22_plus_1_split",
+      "must_reject": "C_sum_as_pole_typing"
+    },
+    {
+      "id": "M2_1_vs_M2_2_degenerate",
+      "must_reject": "degeneracy_as_mass_clock"
+    },
+    {
+      "id": "M2_p2_common_rescaling",
+      "must_reject": "finite_response_as_absolute_mass"
+    },
+    {
+      "id": "gain_1_vs_gain_2",
+      "must_reject": "threshold_shape_as_physical16_normalization"
+    },
+    {
+      "id": "visibility_gain_confounder",
+      "must_reject": "coherent_difference_without_visibility_calibration_as_gain_measurement"
+    },
+    {
+      "id": "repeated_flavor_contrast_as_visibility_reference",
+      "must_reject": "duplicated_interference_row_as_independent_visibility_calibration"
+    },
+    {
+      "id": "reference_visibility_not_flavor_visibility",
+      "must_reject": "reference_only_visibility_row_as_common_frame_calibration"
+    },
+    {
+      "id": "stale_visibility_epoch_confident_wrong_gain",
+      "must_reject": "stale_common_frame_transport_as_live_gain_calibration"
+    },
+    {
+      "id": "partial_final_state_overlap_as_gain",
+      "must_reject": "assuming_c=1_without_physical16_cofinality_or_overlap_monitor"
+    },
+    {
+      "id": "overlap_monitor_loss_as_partial_cofinality",
+      "must_reject": "H_eta_c_decoded_as_c_without_null_loss_record"
+    },
+    {
+      "id": "split_cell_overlap_monitor_as_shared_cell",
+      "must_reject": "M_eta_c_monitor_without_sigma_same_cell_certificate"
+    },
+    {
+      "id": "mis_celled_monitor_support_as_overlap",
+      "must_reject": "same_detector_rows_without_typed_alpha_beta_cell_support"
+    },
+    {
+      "id": "declared_overlap_without_cross_atom_provenance",
+      "must_reject": "scalar_c_sigma_declaration_when_no_atom_has_detector_and_monitor_provenance"
+    },
+    {
+      "id": "declared_pole_spectrum_without_atom_provenance",
+      "must_reject": "scalar_k_C_degeneracy_M2_declaration_when_atoms_derive_split_spectrum_or_wrong_clock"
+    },
+    {
+      "id": "reducible_22_plus_1_clock_as_irreducible_spin11_cell",
+      "must_reject": "mass_operator_that_fails_to_commute_with_spin11_E_F_action"
+    },
+    {
+      "id": "lower_adjoint_component_as_top_cell",
+      "must_reject": "SU13_or_larger_parent_where_V11_is_present_but_not_the_selected_top_principal_cell"
+    },
+    {
+      "id": "boundary_doublet_pair_preserves_C23_but_destroys_k2",
+      "must_reject": "localization_subset_with_removed_dimension_four_but_no_retained_doublet_ports"
+    },
+    {
+      "id": "unfixed_linear_u1_inflow_promoted_to_quartet_selector",
+      "must_reject": "linear_inflow_without_an_independently_fixed_chern_simons_level_presented_as_a_localization_law"
+    },
+    {
+      "id": "localized_reducible_cell_declared_common_clock",
+      "must_reject": "localized_SU6_branch_cell_with_independent_mass_blocks_presented_as_M2_equal_1_without_alignment"
+    },
+    {
+      "id": "exchange_even_parent_masses_declared_common_clock",
+      "must_reject": "two_parent_clock_blocks_with_only_bar6_exchange_imposed_presented_as_a_common_mass"
+    },
+    {
+      "id": "common_twist_clock_promoted_to_absolute_mass_scale",
+      "must_reject": "conditional_common_twist_equality_presented_as_a_derived_absolute_M2_or_radius"
+    },
+    {
+      "id": "stabilized_radius_declared_unit_clock_without_joint_quantization",
+      "must_reject": "curvature_flux_radius_without_derived_flux_sector_and_B_over_A_presented_as_M2_equal_1"
+    },
+    {
+      "id": "first_vector_kk_port_misidentified_as_unit_ratio_port",
+      "must_reject": "N1_vector_KK_port_with_ratio_4_presented_as_p2_equal_M2_soft_scale_port"
+    },
+    {
+      "id": "instrument_mass_lock_promoted_to_physical16_source_channel",
+      "must_reject": "WP770_reference_momentum_standard_identified_with_common_clock_presented_as_derived_production_or_decay_channel"
+    },
+    {
+      "id": "vector_ratio_event_cell_decoded_with_unit_ratio_shape",
+      "must_reject": "source_derived_ratio4_event_cell_presented_as_WP1042_ratio1_threshold_shape"
+    },
+    {
+      "id": "six_bulk_branches_identified_with_six_equal_event_atoms",
+      "must_reject": "count_matched_six_SU6_branches_presented_as_WP1052_six_event_atoms_without_channel_reweighting"
+    },
+    {
+      "id": "integral_su4_chern_simons_quartet_promotion",
+      "must_reject": "one_quartet_localization_promoted_on_integral_SU4_CS_lattice_despite_required_half_integral_level"
+    },
+    {
+      "id": "single_shifted_su4_level_treated_as_complete_anomaly_vector",
+      "must_reject": "half_integral_SU4_cubic_level_presented_as_sufficient_without_mixed_U1_and_gravitational_U1_levels"
+    },
+    {
+      "id": "parent_green_schwarz_completion_promoted_to_shifted_cs_vector",
+      "must_reject": "global_SU6_GS_coefficient_presented_as_the_local_multicomponent_shifted_Chern_Simons_law"
+    },
+    {
+      "id": "symmetric_GS_split_promoted_to_source_law",
+      "must_reject": "symmetric_endpoint_distribution_of_parent_GS_term_presented_as_derived_localization_law"
+    },
+    {
+      "id": "generic_half_integer_shift_promotion",
+      "must_reject": "generic_half_integer_CS_lattice_presented_as_sufficient_without_matching_the_exact_seven_component_coset_and_orientation"
+    },
+    {
+      "id": "generic_shifted_G4_quantization_promoted_to_CS_coset",
+      "must_reject": "WP793_shifted_four_form_class_presented_as_the_exact_seven_channel_CS_coset_without_embedding_projector_endpoint_action_and_orientation"
+    },
+    {
+      "id": "radius_stabilization_promoted_to_flux_sector_selection",
+      "must_reject": "unit_radius_and_clock_data_used_to_select_flux_sector_despite_identical_values_on_entire_B_over_A_equals_6n2_orbit"
+    },
+    {
+      "id": "three_family_minimum_promoted_to_magnetic_flux_sector",
+      "must_reject": "WP793_three_family_lower_bound_used_to_set_WP1072_flux_label_without_common_compactification_index_map_orientation_and_normalization"
+    },
+    {
+      "id": "soft_ratio_one_branch_promoted_to_physical16_channel",
+      "must_reject": "quartet_doublet_or_largest_soft_branch_selected_from_common_clock_ratio_without_source_to_physical16_coupling_matrix"
+    },
+    {
+      "id": "rank_one_uniform_mixing_promoted_from_target_rows",
+      "must_reject": "target_compatible_uniform_mixing_and_gain_3_over_2_declared_physical_without_source_production_decay_dynamics"
+    },
+    {
+      "id": "branch_democracy_promoted_from_sixfold_soft_degeneracy",
+      "must_reject": "equal_weight_per_localized_branch_and_gain_3_over_2_declared_source_derived_without_all_branch_symmetry_or_common_production_kernel"
+    },
+    {
+      "id": "reference_calibrated_acquisition_promoted_to_source_channel",
+      "must_reject": "four_state_gain_visibility_momentum_calibration_declared_to_derive_source_production_decay_kernel_or_event_mixing"
+    },
+    {
+      "id": "instrument_rank_closure_promoted_to_source_selection",
+      "must_reject": "scale_monitor_phase_or_robustness_rank_closure_declared_to_select_the_flavor_source_coordinate_or_production_kernel"
+    },
+    {
+      "id": "nima_authority_packets_promoted_to_production_kernel",
+      "must_reject": "scaling_quotient_probe_nerve_or_authority_calculus_packet_declared_to_supply_flux_preparation_production_mixing_or_gain"
+    },
+    {
+      "id": "epsilon3_bifundamental_promoted_to_full_production_kernel",
+      "must_reject": "SU3_bifundamental_and_epsilon_carriers_declared_to_supply_temporal_coherence_detector_ports_or_physical16_production_without_dynamics"
+    },
+    {
+      "id": "krylov_history_promoted_to_signed_production_without_volume_reference",
+      "must_reject": "depth_typed_Krylov_determinant_declared_physical_signed_production_without_source_evolution_seed_history_and_weight_minus3_reference"
+    },
+    {
+      "id": "determinant_orientation_line_mistaken_for_rho",
+      "must_reject": "Strominger_determinant_orientation_line_declared_to_supply_the_Krylov_weight_minus3_reference_without_source_coorientation_transformation_law_scope_and_comparison_node"
+    },
+    {
+      "id": "su3_invariant_pairing_declared_to_select_simple_spectrum_or_ray",
+      "must_reject": "bifundamental_or_epsilon3_data_declared_to_derive_nonscalar_A_cyclic_ray_or_history_without_SU3_breaking_preparation"
+    },
+    {
+      "id": "localized_two_plus_one_flag_promoted_to_simple_spectrum",
+      "must_reject": "localized_quartet_2plus1_flag_declared_to_supply_simple_spectrum_ordered_three_line_flag_or_cyclic_ray"
+    },
+    {
+      "id": "flux_integer_promoted_to_ordered_wilson_line",
+      "must_reject": "B_over_A_6n2_declared_to_select_Wilson_phase_eigenbasis_ordered_111_flag_cyclic_ray_or_history"
+    },
+    {
+      "id": "three_line_flag_promoted_to_cyclic_ray",
+      "must_reject": "wilson_111_flag_declared_to_select_cyclic_ray_coherent_amplitudes_relative_phases_or_history"
+    },
+    {
+      "id": "isometric_history_bundle_promoted_to_physical_instrument",
+      "must_reject": "conditional_three_grade_bundle_declared_to_supply_physical_grade_register_typed_readout_ports_cyclic_ray_or_rho"
+    },
+    {
+      "id": "history_bundle_promoted_to_volume_reference",
+      "must_reject": "history_determinant_canonical_unit_volume_or_bundle_declared_to_supply_weight_minus_three_rho"
+    },
+    {
+      "id": "unoriented_or_fitted_adjoint_direction_promoted_to_ordered_flag",
+      "must_reject": "adjoint_direction_n_sign_seed_or_history_fitted_from_target_or_declared_without_source_orientation"
+    },
+    {
+      "id": "reciprocal_determinant_promoted_to_independent_rho",
+      "must_reject": "reciprocal_D_or_tautological_inverse_treated_as_global_source_authorized_weight_minus_three_section"
+    },
+    {
+      "id": "negative_weight_scalar_declared_from_A_and_x",
+      "must_reject": "negative_degree_regular_polynomial_or_D_power_ratio_promoted_to_independent_source_authorized_rho"
+    },
+    {
+      "id": "internal_wilson_flag_promoted_to_production_kernel",
+      "must_reject": "B_line_phases_labels_or_quartet_preservation_treated_as_branch_to_physical16_couplings"
+    },
+    {
+      "id": "history_dilation_promoted_to_event_gain_law",
+      "must_reject": "three_history_slots_equal_weights_or_isometry_treated_as_six_event_weights_or_gain_three_halves"
+    },
+    {
+      "id": "anomaly_coset_promoted_to_absolute_boundary_action",
+      "must_reject": "mod_integral_chern_simons_residue_treated_as_unique_classical_action_or_normalization"
+    },
+    {
+      "id": "wilson_phase_promoted_to_integer_clock_lift",
+      "must_reject": "phase_modulo_one_or_quadratic_clock_value_treated_as_selection_of_integer_n_or_sigma"
+    },
+    {
+      "id": "normalization_packet_promoted_to_selector_authority",
+      "must_reject": "flat_section_rank_ports_or_contact_provenance_treated_as_integer_lift_orientation_rho_production_or_gain"
+    }
+  ],
+  "terminal_node": "flavor_physical_selector_terminal"
+}
