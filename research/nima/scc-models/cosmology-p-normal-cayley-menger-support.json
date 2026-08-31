@@ -1,0 +1,46 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-p-normal-cayley-menger-support",
+    "owner": "marici.Nima",
+    "classification": "generic_p_normal_corner_is_K_CM_invertible_E_CM_zero_subcomplex",
+    "stratum": "generic triple marked-wall incidence p=0 localized away from the Cayley-Menger discriminant",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_p_normal_cayley_menger_support.py",
+      "research/nima/results/cosmology_p_normal_cayley_menger_support.json",
+      "research/nima/results/cosmology_triple_incidence_boundary_corner_transport.json",
+      "research/nima/results/cosmology_triple_incidence_physical_coefficient.json",
+      "research/benincasa/cayley-menger-contour-family-gate.json",
+      "research/benincasa/cayley-menger-weighted-physical-pullback.json",
+      "research/nima/cosmology-p-normal-cayley-menger-support.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_p_normal_cayley_menger_support",
+        "path": "research/nima/checkers/check_cosmology_p_normal_cayley_menger_support.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-triple-incidence-boundary-corner-transport"
+    ],
+    "consumes": [
+      "generic_Cayley_Menger_nonvanishing_at_p_corner",
+      "source_Cayley_Menger_boundary_equation",
+      "all_soft_weighted_chart_typing"
+    ],
+    "provides": [
+      "K_CM_invertible_local_stratum",
+      "canonical_zero_Cayley_Menger_endpoint_subcomplex",
+      "E_CM_differential_stability",
+      "all_soft_Rees_to_p_corner_stratum_mismatch_gate"
+    ],
+    "missing_constructors": [
+      "source-derived marked-wall Cech bulk-face differential",
+      "generic circuit relation subcomplex with differential-stability witness",
+      "relative lift H_p satisfying dH_p=p*Xi_p"
+    ],
+    "next_falsifier": "Materialize the three marked-wall Cech/bulk-face differential and stable generic circuit quotient on the K_CM-invertible p-normal stratum."
+  }
+}

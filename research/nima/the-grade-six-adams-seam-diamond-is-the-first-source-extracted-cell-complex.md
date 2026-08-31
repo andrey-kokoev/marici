@@ -194,30 +194,35 @@ Therefore
 
 The ordered geometric-coefficient holonomy is exactly the identity.
 
-## The typed lift is still open
+## The typed lift is supplied by source grade reindexing
 
-A full edge would be
+A full edge is
 \[
 \Psi_{r;p,k}
 =
 M_{\rho_r(p,k)}
 \otimes T_{r;k}
-\otimes A_{r;p,k}.
+\otimes S_r,
 \]
 
-The corresponding square requires
+where the source map is
+
 \[
-A_{3;p,2}A_{2;p,1}
-=
-A_{2;p,3}A_{3;p,1}.
+S_re_{p,k}=e_{p,rk}.
 \]
 
-No current source record constructs these maps. Hence the full typed square is not an admitted 2-cell. The source-derived result is precisely:
+The successor packet
+`source-grade-reindexing-fills-the-typed-grade-six-adams-diamond.md` proves
+that \(S_r\) is continuous on the projective exponential completion and
+intertwines the weighted analytic incidence. It satisfies
 
-- the geometric-coefficient boundary word is filled;
-- the type-fiber boundary word remains open.
+\[
+S_3S_2=S_2S_3=S_6.
+\]
 
-This is the first exact location where a spurious logical cycle survives in the full constructor schema.
+Thus the geometric, coefficient, and type-fibre boundary words are all filled.
+The former spurious logical cycle does not survive on the retained labelled
+source.
 
 ## Primitive, square, and connected vertex typing
 

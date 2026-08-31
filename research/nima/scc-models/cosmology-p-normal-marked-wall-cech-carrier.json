@@ -1,0 +1,50 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-p-normal-marked-wall-cech-carrier",
+    "owner": "marici.Nima",
+    "classification": "minimal_marked_wall_Cech_carrier_exact_at_p0_no_surviving_p_normal_class",
+    "stratum": "generic K_CM-invertible triple marked-wall incidence with special triple term supported on p=0",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_p_normal_marked_wall_cech_carrier.py",
+      "research/nima/results/cosmology_p_normal_marked_wall_cech_carrier.json",
+      "research/nima/results/cosmology_source_principal_wall_cell.json",
+      "research/nima/results/cosmology_triple_incidence_logarithmic_identity.json",
+      "research/nima/results/cosmology_augmented_wall_first_jet_packet.json",
+      "research/nima/results/cosmology_p_normal_cayley_menger_support.json",
+      "research/benincasa/physical-wall-first-gauss-manin-cech.json",
+      "research/nima/cosmology-p-normal-marked-wall-cech-carrier.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_p_normal_marked_wall_cech_carrier",
+        "path": "research/nima/checkers/check_cosmology_p_normal_marked_wall_cech_carrier.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-p-normal-cayley-menger-support",
+      "cosmology-triple-incidence-nearby-line"
+    ],
+    "consumes": [
+      "source_ordered_three_wall_Cech_sewing",
+      "first_derivative_pairwise_Cech_closure",
+      "canonical_zero_E_CM",
+      "oriented_logarithmic_circuit"
+    ],
+    "provides": [
+      "explicit_minimal_marked_wall_Cech_differential",
+      "d_squared_zero_certificate",
+      "stable_sewing_subcomplex_J_sew",
+      "two_prime_special_exactness_certificate",
+      "minimal_Cech_p_normal_Bockstein_no_go"
+    ],
+    "missing_constructors": [
+      "source-derived bulk-face augmentation beyond the minimal Cech nerve",
+      "degree-one relative lift H_p satisfying dH_p=p*Xi_p",
+      "surviving Xi_p class and source-normalized mu2-odd test chain"
+    ],
+    "next_falsifier": "Construct a source-derived bulk/face augmentation adding a typed H_p, then rerun d^2, quotient stability, and Xi_p survival over F_101 and F_103."
+  }
+}

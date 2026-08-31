@@ -41,7 +41,7 @@ Expanding labels gives
 \[
 \mathcal W_c(S,D)
 =
-\sum_{n,m}c_n\overline{c_m}\,ho_{nm}(S,D).
+\sum_{n,m}c_n\overline{c_m}\,\rho_{nm}(S,D).
 \]
 
 Thus (c\mapsto\mathcal W_c) is quadratic.
@@ -198,7 +198,7 @@ kernel alone. It is the joint pair-jet kernel
 \mathcal F_{\Sigma,\Delta}
 =
 \bigcap_{j,k\geq0}
-\ker\!\left(arepsilon^{(2)}
+\ker\!\left(\varepsilon^{(2)}
 L_{\Sigma}^jL_{\Delta}^k\right).
 \]
 

@@ -1,0 +1,48 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-augmented-wall-first-jet-packet",
+    "owner": "marici.Nima",
+    "classification": "dynamic_wall_connection_frontier__first_jet_typed_but_global_triple_cech_term_missing",
+    "stratum": "physical rank-20 marked-relative cosmology residue near the three shared walls, with source-derived principal incidence parameter p=x+y+3*z and pairwise Cech-closed first derivatives",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_augmented_wall_first_jet_packet.py",
+      "research/nima/checkers/check_cosmology_source_principal_wall_cell.py",
+      "research/nima/results/cosmology_augmented_wall_first_jet_packet.json",
+      "research/nima/results/cosmology_source_principal_wall_cell.json",
+      "research/benincasa/physical_bulk_wall_connection_residue.py",
+      "research/benincasa/physical_g12_shared_wall_cech_cocycle.py",
+      "research/benincasa/physical-wall-first-gauss-manin-cech.json"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_augmented_wall_first_jet_packet",
+        "path": "research/nima/checkers/check_cosmology_augmented_wall_first_jet_packet.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-marked-relative-terminal-rank-bound"
+    ],
+    "consumes": [
+      "rank20_marked_relative_target",
+      "three_Cech_sewn_wall_maps",
+      "moving_wall_first_jet",
+      "source_principal_incidence_parameter"
+    ],
+    "provides": [
+      "exact_wall_normal_sequence_2_3_1",
+      "base_to_principal_first_jet_dx_plus_dy_plus_3dz",
+      "pairwise_first_derivative_Cech_closure",
+      "homogeneous_three_wall_lift_obstruction"
+    ],
+    "missing_constructors": [
+      "triple_Cech_nearby_cycle_term_on_p_equals_0",
+      "principal_chain_level_homotopy",
+      "global_augmented_residue_connection",
+      "rank_of_connection_stable_family_on_M20"
+    ],
+    "next_falsifier": "Construct the triple-Cech nearby-cycle term on the source incidence divisor p=x+y+3*z=0 and use it to close, or refute, the global augmented residue connection before testing the rank of the connection-stable family on M20."
+  }
+}

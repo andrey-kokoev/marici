@@ -1,0 +1,43 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-triple-incidence-scaled-monodromy",
+    "owner": "marici.Nima",
+    "classification": "local_punctured_family_trivial_local_picard_lefschetz_variation_zero",
+    "stratum": "local monodromy of the source-authorized triple-incidence boundary-corner germ",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_triple_incidence_scaled_monodromy.py",
+      "research/nima/results/cosmology_triple_incidence_scaled_monodromy.json",
+      "research/nima/results/cosmology_triple_incidence_boundary_corner_transport.json",
+      "research/nima/results/cosmology_triple_incidence_physical_coefficient.json",
+      "research/nima/cosmology-triple-incidence-scaled-monodromy.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_triple_incidence_scaled_monodromy",
+        "path": "research/nima/checkers/check_cosmology_triple_incidence_scaled_monodromy.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-triple-incidence-boundary-corner-transport"
+    ],
+    "consumes": [
+      "triple_incidence_relative_boundary_corner_normal_form",
+      "source_authorized_local_boundary_germ_certificate",
+      "sheet_odd_triple_incidence_coefficient"
+    ],
+    "provides": [
+      "punctured_triple_incidence_scaling_trivialization",
+      "local_picard_lefschetz_variation_rank_zero",
+      "local_p_i0_does_not_generate_mu2_odd_thimble"
+    ],
+    "missing_constructors": [
+      "independently_sourced_global_contour_with_remote_singularity_coupling",
+      "new_coefficient_or_physical_chain_object",
+      "continued_physical_period_covector"
+    ],
+    "next_falsifier": "Only a source-authorized global contour involving remote singularities, or a new coefficient/chain object, can reopen physical activation; the local p-loop route is closed by identity monodromy."
+  }
+}

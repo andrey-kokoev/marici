@@ -1,0 +1,56 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-triple-incidence-nearby-line",
+    "owner": "marici.Nima",
+    "classification": "universal_logarithmic_nearby_line_constructed__literal_positive_physical_activation_not_inferred",
+    "stratum": "triple shared-wall incidence p=x+y+3*z=0 inside the physical cosmology marked-relative localization boundary",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_triple_incidence_logarithmic_identity.py",
+      "research/nima/checkers/check_cosmology_triple_incidence_physical_coefficient.py",
+      "research/nima/checkers/check_cosmology_triple_incidence_positive_chamber_gate.py",
+      "research/nima/results/cosmology_triple_incidence_logarithmic_identity.json",
+      "research/nima/results/cosmology_triple_incidence_physical_coefficient.json",
+      "research/nima/results/cosmology_triple_incidence_positive_chamber_gate.json",
+      "research/nima/cosmology-triple-incidence-logarithmic-nearby-line.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_triple_incidence_logarithmic_identity",
+        "path": "research/nima/checkers/check_cosmology_triple_incidence_logarithmic_identity.py",
+        "requires": []
+      },
+      {
+        "id": "check_cosmology_triple_incidence_physical_coefficient",
+        "path": "research/nima/checkers/check_cosmology_triple_incidence_physical_coefficient.py",
+        "requires": []
+      },
+      {
+        "id": "check_cosmology_triple_incidence_positive_chamber_gate",
+        "path": "research/nima/checkers/check_cosmology_triple_incidence_positive_chamber_gate.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-augmented-wall-first-jet-packet"
+    ],
+    "consumes": [
+      "source_principal_incidence_parameter_p",
+      "three_wall_Cech_circuit",
+      "literal_physical_coefficient_restriction"
+    ],
+    "provides": [
+      "universal_logarithmic_nearby_line",
+      "rank_one_vanishing_quotient_at_triple_incidence",
+      "odd_deck_character_of_restricted_physical_coefficient",
+      "positive_chamber_nonactivation_gate"
+    ],
+    "missing_constructors": [
+      "physical_twisted_coefficient_pairing",
+      "chain_level_activation_map_from_universal_nearby_line_to_physical_readout",
+      "analytic_continuation_authority_for_positive_chamber"
+    ],
+    "next_falsifier": "Construct a source-authorized physical twisted coefficient pairing on the universal logarithmic nearby line, or prove that the positive-energy chamber and odd deck character prevent literal physical activation."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-filtered-readout-falsifier-v2",
+    "owner": "marici.Nima",
+    "classification": "superseded_as_literal_physical_target__abstract_protocol_currently_inconclusive",
+    "stratum": "closed generic cosmology sequential readout protocol with filtration dimensions 12 -> 9 -> T7, retaining the later warning that the literal physical residue does not descend to T7",
+    "inputs": [
+      "research/nima/contracts/cosmology-filtered-readout-falsifier.v2.json",
+      "research/nima/checkers/check_cosmology_filtered_readout_protocol.py",
+      "research/nima/results/cosmology-filtered-readout-protocol-check.json",
+      "research/nima/cosmology-filtered-readout-falsifier.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_filtered_readout_protocol",
+        "path": "research/nima/checkers/check_cosmology_filtered_readout_protocol.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "source_exact_sequence_M12_to_M9",
+      "generic_de_rham_and_integral_primitivity_M9_to_T7"
+    ],
+    "provides": [
+      "filtration_aware_cosmology_readout_protocol_check",
+      "terminal_T7_readout_absence_gate"
+    ],
+    "missing_constructors": [
+      "terminal_integral_T7_basis",
+      "source_derived_nearby_cycle_on_T7",
+      "source_derived_physical_pairing_on_T7"
+    ],
+    "next_falsifier": "Either construct typed coherent terminal maps on a frozen integral T7 basis and test stacked rank seven, or maintain the replacement rank-20 marked-relative target with retained wall maps."
+  }
+}

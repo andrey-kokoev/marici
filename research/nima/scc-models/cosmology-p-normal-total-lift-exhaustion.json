@@ -1,0 +1,24 @@
+{
+  "$schema":"../../aspect/scc/model-manifest.schema.json",
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"cosmology-p-normal-total-lift-exhaustion",
+    "owner":"marici.Nima",
+    "classification":"current_source_total_lift_exhausted_universal_missing_cell_classified_not_sourced",
+    "stratum":"minimal logarithmic Cech-de-Rham total complex over the generic p-normal neighborhood",
+    "inputs":[
+      "research/nima/checkers/check_cosmology_p_normal_total_lift_exhaustion.py",
+      "research/nima/results/cosmology_p_normal_total_lift_exhaustion.json",
+      "research/nima/results/cosmology_p_normal_relative_residue_cocycle.json",
+      "research/voevodsky/results/cosmology_total_lift_blocker.json",
+      "research/voevodsky/results/cosmology_universal_total_lift_cell.json",
+      "research/nima/cosmology-p-normal-total-lift-exhaustion.md"
+    ],
+    "checks":[{"id":"check_cosmology_p_normal_total_lift_exhaustion","path":"research/nima/checkers/check_cosmology_p_normal_total_lift_exhaustion.py","requires":[]}],
+    "depends_on":["cosmology-p-normal-relative-residue-cocycle"],
+    "consumes":["relative_residue_cocycle","minimal_total_lift_rank_obstruction","universal_missing_cell_classifier"],
+    "provides":["current_source_total_lift_exhaustion","universal_tau_p_signature","new_source_data_requirement"],
+    "missing_constructors":["source-derived unit map from a resolved Rees, Cech-de-Rham cone, or Cayley-Menger face generator to tau_p"],
+    "next_falsifier":"Supply a source-derived generator mapping with unit coefficient to tau_p and rerun the full total differential; do not adjoin tau_p abstractly."
+  }
+}

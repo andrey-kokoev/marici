@@ -1,5 +1,13 @@
 # The theta Mellin--Poisson functional is the source trivialization of the three-stratum determinant line
 
+> **Terminology and divisor correction.** The successor packet
+> `the-xi-mellin-functional-is-a-divisor-bearing-dual-section-not-a-trivialization.md`
+> shows that a functional whose scalar coordinate is \(\xi(s)\) cannot be an
+> everywhere-invertible trivialization on a region containing Xi zeros. Read
+> \(\tau\) below as the divisor-bearing theta Mellin dual section. The
+> Euler-domain and Poisson identities establish scalar provenance, not a unit
+> comparison to a kernel-bearing determinant complex.
+
 ## Euler-domain identity
 
 For \(\operatorname{Re}s>1\), the prime-loop return

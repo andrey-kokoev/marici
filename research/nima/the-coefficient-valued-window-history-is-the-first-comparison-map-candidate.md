@@ -1,165 +1,89 @@
 # The coefficient-valued window history is the first comparison-map candidate
 
+## Question
+
+Where should arithmetic window incidence land before analytic multiplication?
+
+## Claim boundary
+
+It should first land in the coefficient-valued cell feature space. This gives an exact finite labelled comparison map, but not yet its Green metric or completion theorem.
+
 ## Carrier order
 
-The source already distinguishes two histories:
+The source distinguishes the coefficient-valued history
 
-[
-mathfrak h_p:tlongmapsto[W_t]inmathcal F_{mathrm{cell}},
-]
+\[
+\mathfrak h_p:t\longmapsto[W_t]\in\mathcal F_{\rm cell}
+\]
 
-and its analytic multiplication representation
+from its multiplication representation
 
-[
-operatorname{Mult}([W_t])=M_{W_t}.
-]
+\[
+\operatorname{Mult}([W_t])=M_{W_t}.
+\]
 
-The comparison from arithmetic incidence should be constructed in
-(mathcal F_{mathrm{cell}}) before applying (operatorname{Mult}). This
-preserves the one-dimensional wall direction and avoids representing it
-prematurely as the infinite-rank identity.
+Constructing incidence in \(\mathcal F_{\rm cell}\) preserves the one-dimensional wall direction instead of prematurely representing it by an infinite-rank identity.
 
 ## Finite candidate
 
-Let (e_{p,1}) and (e_{p,2}) be the labelled primitive and square
-valuation/Fock atoms. Define the unweighted finite feature candidate
+For labelled primitive and square atoms, define
 
-[
-J_p^{mathrm{cell}}e_{p,1}=[W_{log p}],
-qquad
-J_p^{mathrm{cell}}e_{p,2}=[W_{2log p}].
-]
+\[
+J_p^{\rm cell}e_{p,1}=[W_{\log p}],
+\qquad
+J_p^{\rm cell}e_{p,2}=[W_{2\log p}].
+\]
 
-Then the oriented Adams boundary is
+Then
 
-[
-J_p^{mathrm{cell}}(e_{p,2}-e_{p,1})
-=
-[W_{2log p}-W_{log p}].
-]
+\[
+J_p^{\rm cell}(e_{p,2}-e_{p,1})
+=[W_{2\log p}-W_{\log p}],
+\]
 
-Applying the analytic representation gives exactly
+and
 
-[
-operatorname{Mult}
-J_p^{mathrm{cell}}(e_{p,2}-e_{p,1})
-=
-D_p.
-]
+\[
+\operatorname{Mult}J_p^{\rm cell}(e_{p,2}-e_{p,1})=D_p.
+\]
 
-Thus the candidate has the correct finite location, grade, orientation, and
-raw propagator without embedding an arithmetic delta directly into (L^2).
+Thus the map has the correct prime label, grade orientation, adjacent-window defect, and wall typing.
 
 ## Arithmetic weights remain external
 
-The source coefficients attach to the incidence atoms:
+The source coefficients act on the labelled atoms:
 
-[
-e_{p,1}longmapsto p^{-1/2-sigma-it}e_{p,1},
-]
+\[
+e_{p,1}\longmapsto p^{-1/2-\sigma-it}e_{p,1},
+\qquad
+e_{p,2}\longmapsto\frac12p^{-1-2it}e_{p,2}.
+\]
 
-[
-e_{p,2}longmapstorac12p^{-1-2it}e_{p,2}.
-]
+They are not rescalings of \([W_t]\). Keeping weights separate preserves Adams naturality and permits an independent Euler half-density audit.
 
-They should not be absorbed into a rescaling of ([W_t]). Keeping coefficient
-weight and cell feature separate preserves Adams naturality and allows the
-Euler half-density to be audited independently.
+## Exact scope
 
-## What this candidate solves
+At finite cutoff the candidate supplies prime diagonality and the correct oriented endpoint difference. It does not supply a Green lift. That requires a polarized cell-feature form \(g_p^{\rm cell}\) whose represented image equals the analytic relative Green boundary form with the frozen adjoint orientation.
 
-At finite cutoff it supplies:
+The required representation square includes
 
-1. a direct prime-labelled map;
-2. grade (1	o2) boundary orientation;
-3. the exact adjacent-window difference;
-4. wall typing before analytic representation;
-5. automatic compatibility with the multiplication history.
+\[
+\operatorname{Mult}(\partial_t\mathfrak h_p)
+=\partial_t\operatorname{Mult}(\mathfrak h_p)
+\]
 
-It also makes prime diagonality formal before completion because each
-(J_p^{mathrm{cell}}) lands in its labelled cell fiber.
+on a common Green core. Endpoint representation alone is formal; derivative compatibility depends on the Green topology.
 
-## What remains missing
+## Hostile
 
-A vector-space assignment is not yet a Green lift. The source must still
-provide a cell-feature form
+Choose a feature metric making \([W_{\log p}]\) and \([W_{2\log p}]\) orthogonal while retaining their correct multiplication representations. The feature assignment and scalar window identity pass, but the mixed Green block vanishes. Hence the feature form, not the vector-space assignment alone, carries the remaining content.
 
-[
-g_p^{mathrm{cell}}
-]
+## Disposition
 
-such that its represented image agrees with the analytic relative Green
-boundary form. The required identity is
+The first finite comparison map is explicit:
 
-[
-g_p^{mathrm{cell}}
-left(
-J_p^{mathrm{cell}}e_{p,1},
-J_p^{mathrm{cell}}e_{p,2}
-ight)
-=
-b_p(e_{p,1},e_{p,2})
-]
+\[
+e_{p,k}\longmapsto[W_{k\log p}],\qquad k=1,2.
+\]
 
-with the correct adjoint orientation.
-
-Without (g_p^{mathrm{cell}}), the norms of the candidate lifts, their
-radicals, and the mixed coefficient cannot be calculated.
-
-## Representation-intertwining theorem
-
-The decisive square is
-
-[
-operatorname{Mult}
-left(
-partial_tmathfrak h_p
-ight)
-=
-partial_t
-operatorname{Mult}
-left(
-mathfrak h_p
-ight)
-]
-
-on a common analytic core, together with
-
-[
-operatorname{Mult}
-left(
-mathfrak h_p(2L)-mathfrak h_p(L)
-ight)
-=
-M_{W_{2L}-W_L}.
-]
-
-The second equality is finite and formal. The first must be checked in the
-topology used by the Green form.
-
-## Minimal hostile
-
-Choose a feature-space inner product that makes the two endpoint vectors
-orthogonal, although their multiplication representations have the desired
-difference. The finite comparison map and scalar window identity both pass,
-but the pulled-back mixed Green block vanishes. This proves that the feature
-form, not the feature assignment alone, carries the remaining content.
-
-## Refined frontier
-
-The first comparison-map candidate is now explicit:
-
-[
-e_{p,k}longmapsto[W_{klog p}],
-qquad k=1,2.
-]
-
-The next source theorem is narrower:
-
-> Construct the polarized cell-feature Green form for which this
-> coefficient-valued window history is a cutoff-natural, radical-compatible,
-> oriented lift, and prove that multiplication represents its Green boundary
-> identity.
-
-If successful, the arithmetic--analytic comparison arrow is no longer
-missing; only its completion bounds remain.
+The remaining theorem is to construct the polarized cell-feature Green form making this map cutoff-natural, radical-compatible, oriented, and correctly represented by multiplication. No RH conclusion is authorized.

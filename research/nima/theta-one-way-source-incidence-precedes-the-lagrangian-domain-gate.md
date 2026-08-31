@@ -1,5 +1,12 @@
 # One-way theta source incidence precedes the Lagrangian-domain gate
 
+> **Status update.** The successor packet
+> `the-retained-history-metric-now-constructs-the-adjoint-incidence-but-not-its-xi-characteristic.md`
+> constructs the reverse metric incidence on the retained history/seam
+> carrier. The triangular no-go below remains correct for the original
+> one-way system. The paired system now exists, but its characteristic divisor
+> has not been identified with Xi.
+
 ## Status
 
 Exact bulk-adjointness obstruction. The source-derived tail system cannot be

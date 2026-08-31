@@ -1,0 +1,46 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-p-normal-log-denominator-no-go",
+    "owner": "marici.Nima",
+    "classification": "unaugmented_logarithmic_and_Laurent_p_normal_primitives_obstructed_by_double_residue",
+    "stratum": "generic punctured-bidisc pair intersection with p and K_CM invertible",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_p_normal_log_denominator_no_go.py",
+      "research/nima/results/cosmology_p_normal_log_denominator_no_go.json",
+      "research/voevodsky/results/cosmology_log_denominator_primitive_gate.json",
+      "research/voevodsky/results/cosmology_log_denominator_residue_obstruction.json",
+      "research/nima/results/cosmology_triple_incidence_logarithmic_identity.json",
+      "research/nima/results/cosmology_p_normal_marked_wall_cech_carrier.json",
+      "research/nima/cosmology-p-normal-log-denominator-no-go.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_p_normal_log_denominator_no_go",
+        "path": "research/nima/checkers/check_cosmology_p_normal_log_denominator_no_go.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-p-normal-marked-wall-cech-carrier"
+    ],
+    "consumes": [
+      "minimal_Cech_p_normal_Bockstein_no_go",
+      "log_denominator_bounded_rank_obstruction",
+      "punctured_bidisc_double_residue_obstruction"
+    ],
+    "provides": [
+      "ordinary_logarithmic_primitive_no_go",
+      "unbounded_Laurent_primitive_no_go",
+      "deeper_ordinary_pole_route_closed",
+      "relative_face_residue_enlargement_requirement"
+    ],
+    "missing_constructors": [
+      "source-derived relative bulk-face mapping cone with compensating face residue",
+      "resolved exceptional generator changing the target complex",
+      "surviving Xi_p class and source-normalized mu2-odd test chain"
+    ],
+    "next_falsifier": "Construct a source-derived relative bulk/face or exceptional mapping cone with a compensating face residue, then rerun d^2 and Xi_p survival."
+  }
+}

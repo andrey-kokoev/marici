@@ -45,7 +45,7 @@ g_n
 h_n
 +
 \left(
-\int g-int h_n
+\int g-\int h_n
 \right)\psi.
 \]
 
@@ -64,7 +64,7 @@ g_n\to g
 in \(L^2(w\,du)\), while
 
 \[
-\int g_n=int g
+\int g_n=\int g
 \]
 
 exactly.
@@ -74,7 +74,7 @@ Define
 \[
 f_n(u)
 =
-a+int_{-\infty}^{u}g_n(v)\,dv.
+a+\int_{-\infty}^{u}g_n(v)\,dv.
 \]
 
 Then \(f_n\) is a smooth core history with exactly the same two endpoint traces as \(f\), and

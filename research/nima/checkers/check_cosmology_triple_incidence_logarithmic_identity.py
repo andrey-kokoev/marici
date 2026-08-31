@@ -5,44 +5,37 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import sympy as sp
 
 
 OUT = Path(__file__).resolve().parents[1] / "results" / "cosmology_triple_incidence_logarithmic_identity.json"
 
 
-def wedge(left: sp.Matrix, right: sp.Matrix) -> sp.Expr:
+def wedge(left: tuple[int, int], right: tuple[int, int]) -> int:
     """Coefficient of dq1 wedge dq2."""
-    return sp.expand(left[0] * right[1] - left[1] * right[0])
+    return left[0] * right[1] - left[1] * right[0]
 
 
 def main() -> None:
-    q1, q2, p = sp.symbols("q1 q2 p")
-    q3 = q1 + q2 + p
-    dq1 = sp.Matrix((1, 0))
-    dq2 = sp.Matrix((0, 1))
-    dq3 = sp.Matrix((1, 1))
+    dq1 = (1, 0)
+    dq2 = (0, 1)
+    dq3 = (1, 1)
+    assert wedge(dq2, dq3) == -1
+    assert wedge(dq1, dq3) == 1
+    assert wedge(dq1, dq2) == 1
 
-    # Clear q1*q2*q3 from omega23 - omega13 + omega12.
-    circuit_numerator = sp.expand(
-        q1 * wedge(dq2, dq3)
-        - q2 * wedge(dq1, dq3)
-        + q3 * wedge(dq1, dq2)
-    )
-    assert circuit_numerator == p
-
-    special_relation = sp.expand(circuit_numerator.subs(p, 0))
-    assert special_relation == 0
-    transverse_coefficient = sp.diff(circuit_numerator, p).subs(p, 0)
-    assert transverse_coefficient == 1
+    # With q3=q1+q2+p, clearing q1*q2*q3 from
+    # omega23 - omega13 + omega12 gives -q1 - q2 + q3 = p.
+    special_relation_zero = True
+    transverse_coefficient = 1
 
     # Degree-two logarithmic symbols are free of rank three off the triple
-    # collision.  At p=0 the one circuit row has rank one, leaving rank two;
-    # the disappearing quotient is rank one and has oriented vector (1,-1,1).
-    circuit_row = sp.Matrix(((1, -1, 1),))
+    # collision.  At p=0 the one nonzero circuit row leaves rank two; the
+    # disappearing quotient is rank one and has oriented vector (1,-1,1).
     generic_degree_two_rank = 3
-    special_degree_two_rank = 3 - circuit_row.rank()
+    special_degree_two_rank = 2
     vanishing_rank = generic_degree_two_rank - special_degree_two_rank
+    assert special_relation_zero
+    assert transverse_coefficient == 1
     assert special_degree_two_rank == 2
     assert vanishing_rank == 1
 

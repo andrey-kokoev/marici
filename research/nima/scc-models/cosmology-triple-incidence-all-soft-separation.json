@@ -1,0 +1,45 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-triple-incidence-all-soft-separation",
+    "owner": "marici.Nima",
+    "classification": "all_soft_z3_character_separated_from_mu2_odd_triple_incidence_nearby_line",
+    "stratum": "comparison of the all-soft boundary specialization with the triple-incidence logarithmic nearby line at p=x+y+3*z=0",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_triple_incidence_all_soft_separation.py",
+      "research/nima/results/cosmology_triple_incidence_all_soft_separation.json",
+      "research/nima/results/cosmology_triple_incidence_activation_obstruction.json",
+      "research/nima/results/all-soft-flat-z3-character.json",
+      "research/nima/results/all-soft-relative-differential-character.json",
+      "research/nima/results/half-twist-torsion-coupling-rank-no-go.json",
+      "research/nima/cosmology-triple-incidence-all-soft-separation.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_triple_incidence_all_soft_separation",
+        "path": "research/nima/checkers/check_cosmology_triple_incidence_all_soft_separation.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-triple-incidence-activation-obstruction"
+    ],
+    "consumes": [
+      "literal_generic_positive_period_nonactivation",
+      "all_soft_flat_z3_relative_character",
+      "three_torsion_rank_defect_no_go"
+    ],
+    "provides": [
+      "all_soft_specialization_separated_from_generic_positive_chamber",
+      "no_current_source_map_z3_to_mu2_odd_nearby_line",
+      "all_soft_character_not_physical_activation_of_triple_incidence_line"
+    ],
+    "missing_constructors": [
+      "source_map_from_all_soft_relative_character_to_mu2_odd_nearby_coefficient",
+      "Cayley_Menger_relative_chain_coupling_for_all_soft_character",
+      "physical_twisted_pairing_for_triple_incidence_line"
+    ],
+    "next_falsifier": "Either derive a source map from the all-soft Z/3 relative character to the mu2-odd nearby coefficient and then construct a physical twisted pairing, or keep the all-soft torsion readout disjoint from the triple-incidence nearby line."
+  }
+}

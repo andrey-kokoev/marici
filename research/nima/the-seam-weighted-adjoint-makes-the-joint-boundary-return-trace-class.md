@@ -117,11 +117,23 @@ Resolved under the explicit residual-tail hypothesis:
 - trace-class boundary-mediated Schur return;
 - ordinary Fredholm determinant for the relative comparison on the seam.
 
-Withheld:
+The successor packet
+`the-exact-theta-cut-columns-close-the-seam-trace-class-return-hypothesis.md`
+verifies the residual-tail hypothesis. The primitive loaded columns give the
+exact Hilbert--Schmidt budget
 
-- verification of the residual-tail hypothesis for the exact theta source;
-- off-seam boundedness;
-- reciprocal projective-infinity and archimedean ports;
+\[
+\|\Phi\|_2^2\sum_p\frac1{p\log p}<\infty,
+\]
+
+while square columns are stronger and connected columns are nuclear. Hence the
+centered relative return is unconditionally trace class on the declared exact
+theta-cut carrier.
+
+Still withheld:
+
+- reciprocal determinant-chart gluing off the centered seam;
+- projective-infinity and archimedean ports;
 - the zero-state-to-phase-current bridge.
 
 The smallest falsifier is a proposed raw transpose return. At finite cutoff it

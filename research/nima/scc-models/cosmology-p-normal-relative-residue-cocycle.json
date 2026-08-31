@@ -1,0 +1,47 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "cosmology-p-normal-relative-residue-cocycle",
+    "owner": "marici.Nima",
+    "classification": "relative_pair_face_residue_cocycle_constructed_total_chain_lift_missing",
+    "stratum": "ordered three-wall residue complex on the generic K_CM-invertible p-normal neighborhood",
+    "inputs": [
+      "research/nima/checkers/check_cosmology_p_normal_relative_residue_cocycle.py",
+      "research/nima/results/cosmology_p_normal_relative_residue_cocycle.json",
+      "research/voevodsky/results/cosmology_pair_face_residue_vector.json",
+      "research/voevodsky/results/cosmology_ordered_pair_wall_cech_residue_cone.json",
+      "research/voevodsky/results/cosmology_relative_residue_cocycle.json",
+      "research/nima/results/cosmology_p_normal_log_denominator_no_go.json",
+      "research/nima/results/cosmology_p_normal_marked_wall_cech_carrier.json",
+      "research/nima/cosmology-p-normal-relative-residue-cocycle.md"
+    ],
+    "checks": [
+      {
+        "id": "check_cosmology_p_normal_relative_residue_cocycle",
+        "path": "research/nima/checkers/check_cosmology_p_normal_relative_residue_cocycle.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [
+      "cosmology-p-normal-log-denominator-no-go"
+    ],
+    "consumes": [
+      "ordered_pair_face_residue_vector",
+      "opposite_ordered_Cech_face_boundary",
+      "ordinary_logarithmic_primitive_no_go"
+    ],
+    "provides": [
+      "source_ordered_relative_residue_cocycle",
+      "residue_level_d_squared_zero",
+      "two_prime_residue_level_nonboundary_witness",
+      "exact_total_chain_lift_frontier"
+    ],
+    "missing_constructors": [
+      "source-derived chain map into the logarithmic Cech-de-Rham total complex",
+      "resolved Rees chain-level lift",
+      "p-normal Bockstein and surviving physical mu2-odd pairing"
+    ],
+    "next_falsifier": "Lift (Xi_log,-sigma123) into the full logarithmic Cech-de-Rham total differential and test closure and nonboundary without a circuit quotient."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "marici.nima.g4-radial-interface-candidate.v1",
+  "status": "test_fixture_only",
+  "claim_boundary": "This fixture exercises interface conformance only; it is not an authoritative G4 declaration and proves no radial identification, Green nondegeneracy, Xi cancellation, or RH statement.",
+  "radial_carrier": {
+    "mode": "common_history_full_state",
+    "retains": ["rho_plus", "rho_minus", "endpoint_plus", "endpoint_minus", "wronskian_plus", "wronskian_minus"],
+    "labels": ["prime", "grade", "shell", "ordered_pair", "theta_label"],
+    "polarized": true
+  },
+  "radial_source_map": {
+    "symbol": "U",
+    "domain": "projective_oriented_edge_source",
+    "codomain": "common_history_full_state",
+    "kernel": "interval_cycle_space_Z1",
+    "cutoff_natural": true
+  },
+  "radial_feature_map": {
+    "coordinates": ["-rho_plus_0", "E_plus", "W_plus", "+rho_minus_0", "E_minus", "W_minus"],
+    "transform_family": "entire_laplace_jet_family",
+    "faithfulness_scope": "declared_source_quotient"
+  },
+  "radial_codiagonal": {
+    "formula": "E_plus + E_minus - (W_plus + W_minus)/2",
+    "endpoint_coefficients": [1, 1],
+    "wronskian_coefficients": [-0.5, -0.5]
+  },
+  "radial_recovery": {
+    "mode": "full_state_retained",
+    "identity_on_range": true,
+    "continuous": true,
+    "topology": "projective_history_graph"
+  },
+  "cycle_policy": {
+    "mode": "quotient_by_Z1",
+    "cycle_space": "interval_cycle_space_Z1",
+    "chosen_independently_of_source_coefficients": true,
+    "reciprocal_equivariant": true,
+    "cutoff_natural": true
+  },
+  "green_form": {
+    "symbol": "G_rad",
+    "variance": "hermitian",
+    "feature_stage": "post_cycle_pre_return",
+    "metric": "declared_full_polarized_metric",
+    "matrix_rank_witness": "required_external_witness"
+  },
+  "green_radical": {
+    "definition": "form_radical_on_declared_feature_range",
+    "quotient_map": "q_G",
+    "equals_cycle_space": true,
+    "range_nondegeneracy_witness": "required_external_witness"
+  },
+  "return_map": {
+    "symbol": "R_rad",
+    "placement": ["after_cycle_quotient", "after_endpoint_wronskian_balance", "before_label_codiagonalization"],
+    "prime_diagonality_stage": "before_label_codiagonalization"
+  },
+  "laws": {
+    "source_typing": "declared",
+    "reciprocal_covariance": ["U", "radial_codiagonal", "cycle_policy", "return_map"],
+    "kernel_sequence": "0 -> ker(U) -> ker(DU) -> ran(U) intersect N_bal -> 0",
+    "state_recovery": "declared",
+    "green_range_nondegeneracy": "external_witness_required",
+    "quotient_projection_compatibility": ["prime", "grade", "shell", "ordered_pair"],
+    "projective_continuity": "declared"
+  }
+}

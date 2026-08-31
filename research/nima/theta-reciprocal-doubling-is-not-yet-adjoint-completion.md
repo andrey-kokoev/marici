@@ -1,5 +1,13 @@
 # Reciprocal theta doubling is not yet adjoint completion
 
+> **Status update.** The successor packet
+> `the-retained-history-metric-now-constructs-the-adjoint-incidence-but-not-its-xi-characteristic.md`
+> uses the retained half-density history and seam metrics to construct the
+> bounded reverse incidence \(B^\dagger\). The obstruction below remains valid
+> against obtaining it from reciprocal doubling alone. The current open gate
+> is Xi-divisor compatibility of the paired pencil, not existence of the
+> metric adjoint.
+
 ## Status
 
 Exact typing and block-matrix obstruction. Two reciprocal forward-forced tail
