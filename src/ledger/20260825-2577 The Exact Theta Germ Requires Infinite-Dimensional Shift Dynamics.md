@@ -17,13 +17,13 @@ The correct source dynamics is the right-shift semigroup
 (S_tf)(u)=f(u+t),
 \]
 
-with endpoint observation. For (g_q(u)=\Phi(u+q)\),
+with endpoint observation. For \(g_q(u)=\Phi(u+q)\),
 
 \[
 \operatorname{ev}_0S_tg_q=\Phi(t+q).
 \]
 
-Point evaluation is unbounded on bare (L^2\), but the integrated observation
+Point evaluation is unbounded on bare \(L^2\), but the integrated observation
 map is the identity:
 
 \[
@@ -32,7 +32,7 @@ map is the identity:
 
 Thus infinite-horizon observability is exact, while any finite horizon has an
 ambient tail-hidden subspace. A finite discrete shift model has full-horizon
-Gramian (I_N\) and rank equal to the horizon under truncation.
+Gramian \(I_N\) and rank equal to the horizon under truncation.
 
 ## Scope
 

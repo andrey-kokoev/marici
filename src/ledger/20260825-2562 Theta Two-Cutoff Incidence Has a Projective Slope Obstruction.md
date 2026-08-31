@@ -10,7 +10,7 @@ Let the tail and seam composites into the cutoff anomaly line be
 A_X=\iota_X^GG_X,qquad B_X=\iota_X^HH_X.
 \]
 
-For coefficient bonding (V_{X,Y}\) and anomaly-line bonding (U_{X,Y}\),
+For coefficient bonding \(V_{X,Y}\) and anomaly-line bonding \(U_{X,Y}\),
 directed compatibility requires two independent coherence cells:
 
 \[
@@ -19,14 +19,14 @@ B_YV_{X,Y}=U_{X,Y}B_X.
 \]
 
 In the smallest one-dimensional system, writing the four rows as
-(a_X,b_X,a_Y,b_Y\), all frame choices eliminate to the invariant residual
+\(a_X,b_X,a_Y,b_Y\), all frame choices eliminate to the invariant residual
 
 \[
 \Delta_{X,Y}=a_Yb_X-b_Ya_X.
 \]
 
 For nonzero tail rows, the two-cutoff system is coherent exactly when
-(\Delta_{X,Y}=0\): the projective tail--seam slope must be preserved. Fitting
+\(\Delta_{X,Y}=0\): the projective tail--seam slope must be preserved. Fitting
 the tail cell alone leaves a seam residual proportional to \(\Delta\).
 
 The primitive Tate transition therefore requires line-valued/projective
@@ -45,7 +45,7 @@ the joint kernel. Finite closedness does not imply either property.
 ## Scope
 
 This is an exact finite algebraic theorem and source-typing boundary. The
-actual theta maps (V_{X,Y},\iota^G,\iota^H\) remain undefined, so the theta
+actual theta maps \(V_{X,Y},\iota^G,\iota^H\) remain undefined, so the theta
 residual is reported as undefined rather than fitted to zero.
 
 ## Durable verification

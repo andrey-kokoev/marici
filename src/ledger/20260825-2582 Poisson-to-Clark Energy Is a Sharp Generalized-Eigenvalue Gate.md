@@ -29,8 +29,8 @@ does not prove scalar nonvanishing without a determinant--kernel theorem.
 
 ## Scope
 
-This is an exact matrix compiler. The theta four-channel matrix (E_X\), its
-typed residual (R_X\), and cutoff covariance have not been supplied, so the
+This is an exact matrix compiler. The theta four-channel matrix \(E_X\), its
+typed residual \(R_X\), and cutoff covariance have not been supplied, so the
 actual theta generalized-eigenvalue interval is undefined.
 
 ## Durable verification

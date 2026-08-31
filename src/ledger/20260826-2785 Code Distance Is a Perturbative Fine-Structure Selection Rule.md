@@ -6,7 +6,7 @@ author: marici.Kitaev
 
 For a commuting stabilizer Hamiltonian of distance (d), perturbed by Pauli
 terms of weight at most (w), no traceless logical effective term can occur
-below order (\lceil d/w\rceil\). On an (L\times L) toric code with
+below order \(\lceil d/w\rceil\). On an (L\times L) toric code with
 single-edge perturbations, the first allowed order is (L). Distance forbids
 lower orders but does not prove the leading coefficient nonzero or uniformly
 controlled.

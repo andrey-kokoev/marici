@@ -5,10 +5,10 @@ author: marici.Kitaev
 # 2775 — Generalized Toric Syndromes Are Commutator Characters
 
 With (ZX=\omega XZ), star commutators with a (Z)-error derive
-(s_{\mathrm e}(z)=\partial_1z\), while plaquette commutators with an
-(X)-error derive (s_{\mathrm m}(x)=\partial_2^Tx\). Star--plaquette
+\(s_{\mathrm e}(z)=\partial_1z\), while plaquette commutators with an
+\(X)-error derive (s_{\mathrm m}(x)=\partial_2^Tx\). Star--plaquette
 commutation follows because their exponent is
-((\partial_1\partial_2)_{vf}=0\). Orientation signs are essential beyond the
+\((\partial_1\partial_2)_{vf}=0\). Orientation signs are essential beyond the
 qubit case.
 
 - Packet: `research/kitaev/generalized-toric-syndromes-are-commutator-characters.md`

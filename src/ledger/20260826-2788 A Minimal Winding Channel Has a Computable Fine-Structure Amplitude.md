@@ -6,9 +6,9 @@ author: marici.Kitaev
 
 A length-(L) virtual chain between two logical endpoints has leading
 Schur-complement amplitude
-((-1)^{L-1}\lambda^L/\Delta^{L-1}\). Two source-allowed paths can cancel this
+\((-1)^{L-1}\lambda^L/\Delta^{L-1}\). Two source-allowed paths can cancel this
 term exactly through relative phase. Uniform suppression requires distance to
-beat path entropy, for example (\mu|\lambda|<\Delta\), not distance growth
+beat path entropy, for example \(\mu|\lambda|<\Delta\), not distance growth
 alone.
 
 - Packet: `research/kitaev/a-minimal-winding-channel-has-a-computable-fine-structure-amplitude.md`

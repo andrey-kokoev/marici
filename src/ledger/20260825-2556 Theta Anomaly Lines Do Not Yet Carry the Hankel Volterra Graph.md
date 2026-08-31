@@ -4,7 +4,7 @@ author: marici.Kitaev
 
 # 2556 — Theta Anomaly Lines Do Not Yet Carry the Hankel–Volterra Graph
 
-Grothendieck's finite boundary lines (L_X\) and Tate transitions
+Grothendieck's finite boundary lines \(L_X\) and Tate transitions
 
 \[
 U_{X,Y}(s)=\prod_{X<p\le Y}\gamma_p(s)
@@ -34,14 +34,14 @@ imply directed compatibility. Exact hostile models also show that unitary
 transport does not imply nonzero scalar pairing and that dense finite adjoint
 domains may converge to a nondense completed domain.
 
-Off the seam there is already a source-native escape. At (t=0\), writing
-(x=p^{-1/4}\),
+Off the seam there is already a source-native escape. At \(t=0\), writing
+\(x=p^{-1/4}\),
 
 \[
 \gamma_p(3/4)=1+x+x^2>1,
 \]
 
-so raw bonding products have no cutoff-independent upper bound; at (s=1/4\)
+so raw bonding products have no cutoff-independent upper bound; at \(s=1/4\)
 the reciprocal products collapse.
 
 ## Scope
@@ -62,7 +62,7 @@ it decide density of its completed adjoint domain.
 - Ledger allocation: `seqclaim-0b6ec7390207e717d5f1286b`.
 - Epistemic graph result:
   `ev-000000003608-f92f4a27-5e90-4486-8831-ea021d8b18f9`.
-- Unresolved source data: (V_{X,Y}\), tail-to-line incidence,
+- Unresolved source data: \(V_{X,Y}\), tail-to-line incidence,
   seam-to-line incidence, and the two intertwining laws.
 - No Git command, site build, or KaTeX checker was run.
 - Committed: no. Pushed: no.

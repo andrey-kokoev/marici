@@ -5,7 +5,7 @@ author: marici.Kitaev
 # 2779 — Local Decoder Origins Glue Only When the Transport Cocycle Is Trivial
 
 Local decoder frames over a parameter graph have logical transition
-displacements (h_e\). Changing local origins adds a coboundary; cycle
+displacements \(h_e\). Changing local origins adds a coboundary; cycle
 holonomies define an obstruction in (H^1(P;H)). A global transported origin
 exists exactly when this class vanishes. A local vacuum or tensor unit solves
 pointing but not necessarily transport monodromy.

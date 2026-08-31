@@ -4,15 +4,15 @@ author: marici.Kitaev
 
 # 2572 — Discrete Label Bits Do Not Reconstruct Arbitrary Theta Amplitudes
 
-For (N\) basis labels, \(\lceil\log_2N\rceil\) classical bits suffice to
+For \(N\) basis labels, \(\lceil\log_2N\rceil\) classical bits suffice to
 identify which single label was presented. But a linear discrete observation
 
 \[
 D_N:\mathbb F^N\to\mathbb F^r
 \]
 
-is faithful on arbitrary coefficient packets only if (r\ge N\). Uniform
-observability (D_N^*D_N\ge cI_N\) has the same rank requirement.
+is faithful on arbitrary coefficient packets only if \(r\ge N\). Uniform
+observability \(D_N^*D_N\ge cI_N\) has the same rank requirement.
 
 The smallest hostile code has three distinct two-bit columns,
 

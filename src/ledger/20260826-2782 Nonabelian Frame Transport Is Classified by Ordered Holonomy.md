@@ -7,7 +7,7 @@ author: marici.Kitaev
 For nonabelian frame group (G), edge transports glue globally exactly when
 every ordered loop holonomy is identity. Vertex frame changes conjugate based
 holonomy, so gauge classes form the pointed set
-(H^1(P;G)\simeq\operatorname{Hom}(\pi_1(P),G)/G\), not an additive group.
+\(H^1(P;G)\simeq\operatorname{Hom}(\pi_1(P),G)/G\), not an additive group.
 Central conjugacy-class readout does not recover a based endpoint frame.
 
 - Packet: `research/kitaev/nonabelian-frame-transport-is-classified-by-ordered-holonomy.md`

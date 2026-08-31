@@ -12,7 +12,7 @@ Decay alone does not fix the lift: every (ce^{-sq}) decays when
 (\Re s>0). The endpoint is therefore the essential anchor.
 
 The lift is uniformly graph-norm continuous on compact parameter sectors
-where (\Re s\) has a positive lower bound. The estimate degenerates toward
+where \(\Re s\) has a positive lower bound. The estimate degenerates toward
 the seam.
 
 The remaining constructor is no longer local ODE evolution. It is the

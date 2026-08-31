@@ -5,10 +5,10 @@ author: marici.Kitaev
 # 2754 — Minimal Phase Ports Are Cycle Holonomies
 
 Complex edge phases modulo channel rephasing are classified by
-(H^1(G;U(1))\simeq U(1)^{\beta_1}\). A spanning forest removes all gauge
+\(H^1(G;U(1))\simeq U(1)^{\beta_1}\). A spanning forest removes all gauge
 phases; one holonomy per independent cycle is necessary and sufficient to
 recover the coupling packet up to channel frame. On a source-derived real
-locus this reduces to (C_2^{\beta_1}\).
+locus this reduces to \(C_2^{\beta_1}\).
 
 - Packet: `research/kitaev/phase-ports-are-cycle-holonomies.md`
 - Checker: `research/kitaev/checkers/check_phase_cycle_holonomy.py`

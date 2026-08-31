@@ -4,7 +4,7 @@ author: marici.Kitaev
 
 # 2580 — Clark Energy Is Equivalent to the Theta Shift Graph Norm
 
-For the shift generator (D=\partial_t\) on (H^1(0,\infty)\), the source
+For the shift generator \(D=\partial_t\) on \(H^1(0,\infty)\), the source
 first-order energy is
 
 \[
@@ -17,7 +17,7 @@ The endpoint trace satisfies
 |f(0)|^2\le\|f\|_2^2+\|f'\|_2^2.
 \]
 
-Hence, for (a>0\),
+Hence, for \(a>0\),
 
 \[
 \min(1,a^2)\|f\|_D^2
@@ -25,13 +25,13 @@ Hence, for (a>0\),
 \le(\max(1,a^2)+a)\|f\|_D^2.
 \]
 
-At (a=1/2\), the constants are (1/4\) and (3/2\). Thus the source Clark
+At \(a=1/2\), the constants are \(1/4\) and \(3/2\). Thus the source Clark
 channel controls the complete rigged shift graph, not only endpoint
-evaluation. Ordinary (L^2\) germ observation remains insufficient to control
+evaluation. Ordinary \(L^2\) germ observation remains insufficient to control
 high-frequency graph norm.
 
 The unresolved RH comparison is now specifically between the four-channel
-global Poisson/Green form and (B_a\), uniformly on compact subsets of an open
+global Poisson/Green form and \(B_a\), uniformly on compact subsets of an open
 half-sector. Scalar detector transversality remains separate.
 
 ## Scope
@@ -50,7 +50,7 @@ physical detector.
   test was replaced by exact principal-minor checks without changing an
   inequality or matrix.
 - Final checker: exit code `0`; all fourteen principal minors are nonnegative,
-  and the (L^2\)-only graph ratio is (n^2+1\).
+  and the \(L^2\)-only graph ratio is \(n^2+1\).
 - Checker SHA-256:
   `4b69b52f4ceb180b0548a7347f03b413331219cc13300be4d53c9da1468c5062`.
 - Ledger allocation: `seqclaim-7dbd53ac5e3500061c953186`.

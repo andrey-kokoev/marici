@@ -21,7 +21,7 @@ B_{\rho,\varepsilon}(s)
 \varepsilon^{(s-1)/2},
 \]
 
-while the unit residue of (M_\rho\) at zero produces the universal constant
+while the unit residue of \(M_\rho\) at zero produces the universal constant
 term \(\zeta(s)\). Therefore
 
 \[

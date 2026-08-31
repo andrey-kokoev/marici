@@ -16,7 +16,7 @@ Assume canonical labelled inclusion satisfies
 \tau_YV_{X,Y}=\tau_X,
 \]
 
-the row is nonzero, and the anomaly-line transition (U_{X,Y}\) is invertible.
+the row is nonzero, and the anomaly-line transition \(U_{X,Y}\) is invertible.
 Then the remaining arithmetic coherence equation reduces exactly to
 
 \[
@@ -26,10 +26,10 @@ Then the remaining arithmetic coherence equation reduces exactly to
 Every initial nonzero incidence therefore extends uniquely through all later
 cutoffs, and path independence follows from the Tate cocycle. Before choosing
 the initial reference, coherent incidence families form a
-\(\mathbb C^\times\)-torsor, or a (U(1)\)-torsor after unit-norm framing on
+\(\mathbb C^\times\)-torsor, or a \(U(1)\)-torsor after unit-norm framing on
 the critical seam.
 
-Because every nonzero (\lambda_X\) is an isomorphism of lines,
+Because every nonzero \(\lambda_X\) is an isomorphism of lines,
 
 \[
 \ker(\lambda_X\tau_X)=\ker\tau_X.

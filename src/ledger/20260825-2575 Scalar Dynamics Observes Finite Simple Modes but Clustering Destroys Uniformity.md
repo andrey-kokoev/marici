@@ -4,8 +4,8 @@ author: marici.Kitaev
 
 # 2575 — Scalar Dynamics Observes Finite Simple Modes but Clustering Destroys Uniformity
 
-For diagonal finite dynamics (A=\operatorname{diag}(\lambda_1,\ldots,
-\lambda_N)\) and scalar output (J=(j_1,\ldots,j_N)\), the derivative
+For diagonal finite dynamics \(A=\operatorname{diag}(\lambda_1,\ldots,
+\lambda_N)\) and scalar output \(J=(j_1,\ldots,j_N)\), the derivative
 observability matrix factors as a Vandermonde matrix times
 \(\operatorname{diag}(j_j)\). Hence
 
@@ -20,7 +20,7 @@ independent rows to separate its eigenspace; the minimum simultaneous output
 rank is the maximum geometric multiplicity.
 
 Finite observability remains nonuniform under spectral clustering. For modes
-(0,\delta,2\delta\), the determinant is
+\(0,\delta,2\delta\), the determinant is
 
 \[
 2\delta^3j_1j_2j_3,

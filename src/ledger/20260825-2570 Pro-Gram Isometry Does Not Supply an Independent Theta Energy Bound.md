@@ -4,21 +4,21 @@ author: marici.Kitaev
 
 # 2570 — Pro-Gram Isometry Does Not Supply an Independent Theta Energy Bound
 
-For a finite authorized constructor family (F\), define
+For a finite authorized constructor family \(F\), define
 
 \[
 \mathcal O_Fc=(GCc)_{C\in F},
 \qquad q_F(c)=\|\mathcal O_Fc\|.
 \]
 
-The completion of (E/\ker\mathcal O_F\) in (q_F\) is canonically isometric
+The completion of \(E/\ker\mathcal O_F\) in \(q_F\) is canonically isometric
 to the closed observation range. Hence \(\mathcal O_F\) has lower bound one in
 the topology it defines. This is a universal completion property, not an
 independently derived Green/Poisson coercivity theorem.
 
-If every feature atom (q\mapsto GC e_q\) is norm-continuous, then any labels
-(q_m,r_m\) with \(|q_m-r_m|\to0\) yield raw-normalized adjacent differences
-whose (q_F\)-norm tends to zero. Therefore no fixed finite family of smooth
+If every feature atom \(q\mapsto GC e_q\) is norm-continuous, then any labels
+\(q_m,r_m\) with \(|q_m-r_m|\to0\) yield raw-normalized adjacent differences
+whose \(q_F\)-norm tends to zero. Therefore no fixed finite family of smooth
 analytic features is uniformly observable relative to raw labelled
 \(\ell^2\).
 
@@ -40,7 +40,7 @@ in the logarithmic label or that a discrete port is physically operative.
 - Result: `research/kitaev/results/theta-pro-gram-coercivity-gap.json`
 - SymPy preflight: `1.14.0`.
 - Exact checker: exit code `0`; aggregate Gram matrix
-  \(\begin{psmallmatrix}17&2\\2&13\end{psmallmatrix}\), isometry residual zero,
+  \(\begin{smallmatrix}17&2\\2&13\end{smallmatrix}\), isometry residual zero,
   and three continuous-feature adjacent limits zero.
 - Checker SHA-256:
   `e5f2a1e6262b1ea9efcd637b7dbe2dc5fdb7661d234ddafb7444f9de4a538884`.

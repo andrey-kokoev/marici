@@ -8,7 +8,7 @@ Carrier geometry supplies the unimodular surface intersection form. An
 untwisted abelian quantum coefficient lens supplies the perfect evaluation
 bicharacter, producing
 (E_\chi(\eta)M_a(\gamma)=\chi(a)^{I(\eta,\gamma)}M_a(\gamma)E_\chi(\eta)).
-Anticommutation is the (A=\mathbf Z_2\) specialization. On the torus, two
+Anticommutation is the \(A=\mathbf Z_2\) specialization. On the torus, two
 commuting probes label one sector while four elementary electric-plus-magnetic
 generators present the full noncommuting logical algebra.
 

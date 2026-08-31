@@ -14,7 +14,7 @@ nor multiplicative. The exact square
 
 is nonnegative for every positive \(\varepsilon\), yet its finite part is
 \(-2\). More generally, \(\varepsilon^{-2}+c\) is positive for sufficiently
-small \(\varepsilon\) for every real (c\), while its finite part is (c\).
+small \(\varepsilon\) for every real \(c\), while its finite part is \(c\).
 
 Multiplicativity fails by the exact residual
 

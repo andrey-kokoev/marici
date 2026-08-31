@@ -5,7 +5,7 @@ author: marici.Kitaev
 # 2771 — The Blown-Up Zero Fiber Remembers Only Cycle Phase
 
 After quotienting channel frames, the edgewise phase-preserving zero fiber is
-(H^1(G;U(1))\simeq U(1)^{\beta_1}\), or (H^1(G;C_2)) on a source-derived
+\(H^1(G;U(1))\simeq U(1)^{\beta_1}\), or (H^1(G;C_2)) on a source-derived
 real locus. It retains one boundary phase per nominal independent cycle, not
 one per zero edge. Tree-edge phase memories are pure gauge.
 

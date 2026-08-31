@@ -4,15 +4,15 @@ author: marici.Kitaev
 
 # 2567 — The Full Theta Seam Germ Is Finitely Faithful but Not Uniformly Separated
 
-For a nonzero real-analytic (L^1\) profile \(\Phi\) and distinct labels
-(q_1,\ldots,q_n\), the complete seam germ
+For a nonzero real-analytic \(L^1\) profile \(\Phi\) and distinct labels
+\(q_1,\ldots,q_n\), the complete seam germ
 
 \[
 \mathcal G_Q(c)(t)=\sum_jc_j\Phi(t+q_j)
 \]
 
 is faithful. A germ identity analytically continues to the full line; Fourier
-transformation gives a vanishing exponential polynomial. Its first (n\)
+transformation gives a vanishing exponential polynomial. Its first \(n\)
 derivatives form a Vandermonde system with determinant proportional to
 
 \[
@@ -24,7 +24,7 @@ jointly faithful on every fixed finite packet of distinct labels.
 
 This faithfulness is not uniform in the raw labelled coefficient norm. If
 \(|q_m-r_m|\to0\), then unit coefficient differences synthesize to translated
-profile differences whose (L^2\) norm tends to zero. Consecutive prime
+profile differences whose \(L^2\) norm tends to zero. Consecutive prime
 logarithms provide such arithmetic spacings. For a Gaussian control profile,
 
 \[
