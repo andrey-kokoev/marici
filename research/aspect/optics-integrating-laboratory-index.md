@@ -17,6 +17,12 @@ projection.
 
 ## Apparatus inventory
 
+The canonical machine-readable instrument subset is maintained in
+`contracts/instrument-registry.v1.json` and explained in
+`instrument-registry.md`. This portfolio index is broader: inclusion here does
+not by itself supply an SCC profile, nine-factor matrix, or physical execution
+artifact.
+
 - coherent and single-photon sources;
 - free propagation and Green transfer;
 - beam splitters and ordered path networks;

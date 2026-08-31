@@ -1,0 +1,91 @@
+{
+  "schema": "marici.scc.rh-interaction-net-state-contract.v2",
+  "claim": "current_g4_rh_programme_not_rh_proof",
+  "model_generation": "corrected_G4_three_port_evans_green",
+  "versioning": {
+    "predecessor": "theta-rh-interaction-net-state.v1",
+    "relation": "refines_without_rewriting",
+    "preserved_cells": ["three_port_source_separation", "theta_koszul_divisor_complex", "determinant_ideal_separation"],
+    "retyped_cells": ["seam_limiting_absorption_domain -> exact domain and open response cells"],
+    "nontransportable_conclusions": ["v1 topology pass", "v1 frontier", "any RH implication"]
+  },
+  "interface_descriptors": {
+    "g4_common": {
+      "coefficient_object": "complex Hilbert and graph-norm source objects",
+      "completion": "declared source graph completions only",
+      "topology": "source graph norm and Hilbert target norm",
+      "quotient": "no undeclared quotient",
+      "authority": "source-derived comparison maps only"
+    }
+  },
+  "evidence_objects": {
+    "corrected_g4_audit": {
+      "source_locator": "research/nima/current-rh-model-versus-scc-audit-after-the-three-port-and-evans-corrections.md",
+      "checker": "research/aspect/checkers/check_theta_rh_g4_interaction_net_state.py",
+      "source_digest": "9ef3e86442ee145080b296f15597735a9ba7b303aa027adcdcc02135b88bfe74",
+      "assumptions": ["frozen corrected-G4 source audit"],
+      "assessment_regime": "source-typed contract extraction",
+      "proof_strength": "source-typed morphism"
+    },
+    "exact_evans_five_port_rigging": {
+      "source_locator": "research/nima/rh-rigging-frontier-after-exact-evans-domain-and-five-port-summability.md",
+      "checker": "research/aspect/checkers/check_theta_rh_g4_interaction_net_state.py",
+      "source_digest": "c2469b1c78da3d4a7bae43c5fd39170475836fce28d7c15abe4facd3576697de",
+      "assumptions": ["unchanged exact Evans constructor", "declared five-port model"],
+      "assessment_regime": "exact Evans-domain and five-port summability readback",
+      "proof_strength": "source-typed morphism"
+    }
+  },
+  "constructors": [
+    {"id":"three_port_source_separation","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":[],"authority_class":"source_derived"},
+    {"id":"theta_koszul_divisor_complex","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"bare_euler_det3_with_two_anomaly_lines","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"relative_reciprocal_det2_return","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["bare_euler_det3_with_two_anomaly_lines"],"authority_class":"source_derived"},
+    {"id":"centered_trace_class_seam_return","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["relative_reciprocal_det2_return"],"authority_class":"source_derived"},
+    {"id":"centered_incidence_range_closure_typing","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"zero_free_arithmetic_complement","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"two_sided_evans_matching_lift","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["theta_koszul_divisor_complex","centered_trace_class_seam_return"],"authority_class":"source_derived"},
+    {"id":"conservative_green_complex","status":"constructed","witness_ref":"corrected_g4_audit","interface_ref":"g4_common","depends_on":["centered_trace_class_seam_return","three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"exact_evans_history_domain","status":"constructed","witness_ref":"exact_evans_five_port_rigging","interface_ref":"g4_common","depends_on":["conservative_green_complex"],"authority_class":"source_derived"},
+    {"id":"three_port_block_domain_membership","status":"constructed","witness_ref":"exact_evans_five_port_rigging","interface_ref":"g4_common","depends_on":["exact_evans_history_domain","three_port_source_separation"],"authority_class":"source_derived"},
+    {"id":"five_port_arithmetic_summability","status":"constructed","witness_ref":"exact_evans_five_port_rigging","interface_ref":"g4_common","depends_on":["exact_evans_history_domain","centered_incidence_range_closure_typing"],"authority_class":"source_derived"},
+    {"id":"maximal_isotropic_evans_domain","status":"constructed","witness_ref":"exact_evans_five_port_rigging","interface_ref":"g4_common","depends_on":["two_sided_evans_matching_lift","exact_evans_history_domain"],"authority_class":"source_derived"},
+    {"id":"prime_shell_adjoint_residual_family","status":"open","interface_ref":"g4_common","depends_on":["five_port_arithmetic_summability","conservative_green_complex"],"authority_class":"formal_slot"},
+    {"id":"global_fourier_poisson_response_intertwining","status":"open","interface_ref":"g4_common","depends_on":["three_port_block_domain_membership","five_port_arithmetic_summability","maximal_isotropic_evans_domain"],"authority_class":"formal_slot"},
+    {"id":"evans_to_conservative_green_chain_map","status":"open","interface_ref":"g4_common","depends_on":["theta_koszul_divisor_complex","two_sided_evans_matching_lift","conservative_green_complex","prime_shell_adjoint_residual_family","global_fourier_poisson_response_intertwining"],"authority_class":"formal_slot"},
+    {"id":"holomorphic_mapping_cone_complement","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map","zero_free_arithmetic_complement"],"authority_class":"formal_slot"},
+    {"id":"local_module_length_preservation","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map"],"authority_class":"formal_slot"},
+    {"id":"critical_seam_green_confinement","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map","centered_incidence_range_closure_typing","local_module_length_preservation"],"authority_class":"formal_slot"},
+    {"id":"riemann_hypothesis_terminal","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map","critical_seam_green_confinement"],"authority_class":"formal_slot"}
+  ],
+  "semantic_invariants": {
+    "pass_does_not_imply_proved": true,
+    "simulation_does_not_imply_physical_realization": true,
+    "readout_does_not_imply_faithfulness": true,
+    "local_confluence_does_not_imply_global_coherence": true,
+    "source_formula_does_not_imply_source_realization": true
+  },
+  "negative_knowledge_gates": {
+    "finite_moment_subtraction_closes_primitive_pv_lane": false,
+    "scalar_seam_data_separates_reciprocal_off_seam_pairs": false,
+    "range_closure_equals_exact_range": false,
+    "local_coercivity_implies_global_confinement": false
+  },
+  "determinant_ideal_contract": {"bare_euler":"det3","relative_reciprocal_return":"det2","centered_seam_return":"trace_class_fredholm"},
+  "three_port_contract": {"carrier":["history","theta","arithmetic"],"theta_generator":0,"primitive_theta_arithmetic_dynamic_arrow":false,"gram_compression_is_dynamics":false},
+  "centered_incidence_contract": {"kernel":"zero","forcing_vector_membership":"range_closure_not_exact_range","exact_lift_authorized":false},
+  "rh_bearing_residual": {"identity":"B_Sigma^dagger u_z = 0","jet_family":"B_Sigma^dagger partial_z^j u(.;z_0) = 0 for 0 <= j < multiplicity(z_0)","locus":"Xi_divisor","prime_shell_family_complete":false},
+  "hostile_fixtures": [
+    {"id":"bare_euler_det3_replaced_by_relative_det2","must_reject":"determinant_ideal_variance"},
+    {"id":"relative_det2_double_counted_as_bare_euler","must_reject":"determinant_double_counting"},
+    {"id":"theta_koszul_claimed_as_independent_green_realization","must_reject":"divisor_to_spectral_realization_collapse"},
+    {"id":"same_sign_passive_feedback_claims_seam_zero","must_reject":"arithmetic_dressed_zero_from_same_sign_complement"},
+    {"id":"range_closure_promoted_to_exact_range","must_reject":"unauthorized_exact_forcing_lift"},
+    {"id":"gram_compression_promoted_to_primitive_dynamics","must_reject":"readout_to_source_dynamics_collapse"},
+    {"id":"scalar_evans_mismatch_claims_vector_adjoint_cancellation","must_reject":"scalar_to_vector_residual_collapse"},
+    {"id":"adjoint_cancellation_without_all_prime_shell_residuals","must_reject":"incomplete_prime_shell_family"},
+    {"id":"seam_scalar_substitutes_for_maximal_isotropic_state","must_reject":"state_to_scalar_collapse"},
+    {"id":"pointwise_kernel_inclusion_substitutes_for_module_length","must_reject":"multiplicity_gate_omission"}
+  ],
+  "terminal_constructor": "riemann_hypothesis_terminal"
+}

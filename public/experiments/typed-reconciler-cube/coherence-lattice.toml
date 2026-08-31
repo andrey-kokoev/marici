@@ -27,6 +27,8 @@ completion_is_part_of_domain_identity = true
 observer_atlas = "observer-atlas.toml"
 
 [scc_classifier]
+canonical_name = "SCC Instrument Profile Lattice"
+profile_semantics = "instrument-capability classification, not source type and not instrument identity"
 scales = [
   "local",
   "packet",
@@ -40,6 +42,16 @@ observation = ["absent", "natural", "faithful"]
 estimate = ["absent", "bounded", "uniform"]
 profile_count = 405
 assignment_rule = "record only occupied profiles; do not enumerate the classifier product"
+
+[source_type_registry]
+status = "candidate_rh_registry"
+contract = "research/aspect/contracts/source-type-factorization.v1.json"
+packet = "research/aspect/source-type-factorization.md"
+source_type_count = 8
+bridge_count = 4
+factor_count = 9
+relation_to_pyramid = "a coherence pyramid lies over a fully specified source-typed realization packet"
+relation_to_classifier = "the SCC Instrument Profile Lattice is a many-to-one capability projection and does not classify source identity"
 
 [[realization_index]]
 id = "theta_tate"
@@ -557,7 +569,7 @@ statement = "For x star y = omega(x,y)xy, strict confluence is the two-cocycle l
 
 [[law]]
 id = "same_profile_fiber"
-statement = "Equal SCC profiles identify certification strength, not constructor equivalence; operational domains are components of the verified realization-intertwiner groupoid."
+statement = "Equal SCC instrument profiles identify capability and certification strength, not source type, instrument identity, or constructor equivalence; operational domains are components of the verified realization-intertwiner groupoid."
 
 [[law]]
 id = "fiber_intertwiner"
@@ -573,7 +585,7 @@ condition = "A reconciler is formed without equality on the declared shared face
 
 [[falsifier]]
 id = "same_profile_inequivalent_realizations"
-condition = "Two systems occupy one SCC profile but their named constructor representations admit no invertible intertwiner."
+condition = "Two systems occupy one SCC instrument profile but their named constructor representations admit no invertible intertwiner."
 
 [[theta_tate_cell]]
 id = "C0_0"

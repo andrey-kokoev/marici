@@ -6,6 +6,24 @@ import re
 
 RULES = [
     {
+        "id": "rh-prime-shell-adjoint-jet-family",
+        "terms": {"prime", "shell", "adjoint", "residual", "family", "jet"},
+        "required_terms": {"prime", "shell", "adjoint"},
+        "exclusive": True,
+        "constructor": "source-normalized five-port adjoint cancellation for every prime shell and every parameter-root jet below Xi multiplicity",
+        "hostile": "isolate the eventually sign-definite ordinary component and require the declared wall, reciprocal, derivative, and ordered-linking compensators to cancel it shellwise for each jet",
+        "forbids": "promoting arithmetic summability, scalar Evans matching, or the zeroth jet to the complete adjoint kernel family",
+    },
+    {
+        "id": "rh-global-fourier-poisson-intertwining",
+        "terms": {"global", "fourier", "poisson", "response", "intertwining", "sewing"},
+        "required_terms": {"global", "fourier", "poisson", "intertwining"},
+        "exclusive": True,
+        "constructor": "global Fourier-Poisson response intertwiner into the declared maximal-isotropic sewing relation",
+        "hostile": "preserve every local Evans-domain and five-port summability estimate while perturbing one global response phase; reject sewing unless the full response relation remains invariant",
+        "forbids": "substituting local graph-domain membership or arithmetic summability for the global response theorem",
+    },
+    {
         "id": "block-elimination-first-jet",
         "terms": {"determinant", "block", "retained", "incidence", "cutoff", "extension", "trace"},
         "constructor": "exact complement first jet of the eliminated/retained block decomposition, including retained-state transport and both incidence directions",
@@ -85,7 +103,8 @@ def synthesize(model):
         score = 0
         for blocker in blockers:
             overlap = tokens(blocker) & rule["terms"]
-            if overlap:
+            required = rule.get("required_terms", set())
+            if overlap and required <= tokens(blocker):
                 hits.append({"text": blocker, "matched_terms": sorted(overlap)})
                 score += len(overlap)
         if hits:
@@ -97,7 +116,12 @@ def synthesize(model):
                 "discriminating_hostile": rule["hostile"],
                 "forbidden_substitute": rule["forbids"],
                 "epistemic_status": "candidate_requires_source_derivation",
+                "exclusive": rule.get("exclusive", False),
             })
+    if any(x["exclusive"] for x in candidates):
+        candidates = [x for x in candidates if x["exclusive"]]
+    for candidate in candidates:
+        candidate.pop("exclusive", None)
     candidates.sort(key=lambda x: (-x["score"], x["rule"]))
     return {
         "schema": "marici.scc.constructor-synthesis.v1",

@@ -1,0 +1,339 @@
+{
+  "schema": "marici.aspect.source-type-factorization.v1",
+  "registry_status": "candidate_canonical_identifiers",
+  "claim_boundary": {
+    "project_wide_source_type_census_complete": false,
+    "rh_source_types_constructed": false,
+    "cross_source_bridges_constructed": false,
+    "riemann_hypothesis_proved": false
+  },
+  "factor_order": [
+    "geometry_support",
+    "coefficients",
+    "constructor_grammar",
+    "transport_composition",
+    "quotient",
+    "completion",
+    "probe_grammar",
+    "readout",
+    "authority"
+  ],
+  "dependency_order": [
+    ["geometry_support", "coefficients"],
+    ["coefficients", "constructor_grammar"],
+    ["constructor_grammar", "transport_composition"],
+    ["transport_composition", "quotient"],
+    ["quotient", "completion"],
+    ["completion", "probe_grammar"],
+    ["probe_grammar", "readout"],
+    ["readout", "authority"]
+  ],
+  "equality_rule": "source types are equal only when all nine factor identifiers and their source-authorized dependency maps agree",
+  "profile_projection_rule": "the SCC Instrument Profile Lattice forgets source identity; equal instrument profiles do not imply equal source types",
+  "object_kinds": ["primitive_source", "derived_source", "bridge", "bridge_source", "analytic_target", "derived_readout"],
+  "source_types": [
+    {
+      "id": "rh.prime-incidence.v1",
+      "object_kind": "primitive_source",
+      "status": "partially_constructed",
+      "factors": {
+        "geometry_support": "labelled-prime incidence and prime-power grading",
+        "coefficients": "arithmetic half-density coefficients",
+        "constructor_grammar": "prime atom and graded incidence constructors",
+        "transport_composition": "typed direct sum over labelled prime channels",
+        "quotient": "prime labels retained; no scalar Euler quotient",
+        "completion": "finite cutoffs with declared pro-system maps",
+        "probe_grammar": "source-fixed prime and mixed-prime incidence probes",
+        "readout": "ordered prime-channel packet",
+        "authority": "arithmetic source packet required"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.prime-schur-operator.v1",
+      "object_kind": "derived_source",
+      "status": "algebraic_formula_constructed_source_realization_open",
+      "factors": {
+        "geometry_support": "prime-labelled Hilbert basis",
+        "coefficients": "Hilbert-Schmidt operator ideal in the right open sector",
+        "constructor_grammar": "diagonal Schur operator atoms and passive colligation target",
+        "transport_composition": "direct sum; cascade and feedback require separate witnesses",
+        "quotient": "operator identity before scalarization",
+        "completion": "Hilbert-Schmidt completion",
+        "probe_grammar": "source-fixed basis and passive-network port probes",
+        "readout": "operator Schur transfer",
+        "authority": "formula known; passive dilation source authority open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.primitive-trace-history.v1",
+      "object_kind": "primitive_source",
+      "status": "open",
+      "factors": {
+        "geometry_support": "source-fixed bilateral trace bundle and causal-history auxiliary block",
+        "coefficients": "primitive grade-one trace channel",
+        "constructor_grammar": "wall trace and history incidence",
+        "transport_composition": "cutoff-compatible additive transport",
+        "quotient": "history labels retained",
+        "completion": "primitive wall trace completion",
+        "probe_grammar": "source-fixed wall and history probes",
+        "readout": "primitive trace component",
+        "authority": "source incidence and completion open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.regularized-determinant-line.v1",
+      "object_kind": "derived_source",
+      "status": "partially_constructed",
+      "factors": {
+        "geometry_support": "determinant line over the operator parameter base",
+        "coefficients": "regularized determinant section",
+        "constructor_grammar": "det2 and relative determinant-line sewing",
+        "transport_composition": "direct-sum factorization; product anomaly retained",
+        "quotient": "nonzero scalar frames only after anomaly descent",
+        "completion": "operator-ideal determinant completion",
+        "probe_grammar": "determinant section and anomaly comparison probes",
+        "readout": "det2 section plus primitive trace comparison",
+        "authority": "finite comparison formula constructed; global sewing open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.endpoint-reciprocal-boundary.v1",
+      "object_kind": "primitive_source",
+      "status": "open",
+      "factors": {
+        "geometry_support": "endpoint and reciprocal boundary ports",
+        "coefficients": "boundary-relation coefficient object",
+        "constructor_grammar": "endpoint attachment and reciprocal adjoint orientation",
+        "transport_composition": "source-authorized boundary sewing",
+        "quotient": "boundary gauge preserving orientation",
+        "completion": "completed reciprocal endpoint relation",
+        "probe_grammar": "oriented endpoint and reciprocal probes",
+        "readout": "boundary relation",
+        "authority": "orientation and operator attachment open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.archimedean-operator-completion.v1",
+      "object_kind": "primitive_source",
+      "status": "open",
+      "factors": {
+        "geometry_support": "archimedean boundary component",
+        "coefficients": "archimedean operator and determinant correction",
+        "constructor_grammar": "archimedean endpoint lift",
+        "transport_composition": "composition with finite-prime and endpoint ports",
+        "quotient": "normalization frame retained",
+        "completion": "archimedean operator completion",
+        "probe_grammar": "source-fixed archimedean normalization probes",
+        "readout": "archimedean correction packet",
+        "authority": "operator lift and normalization authority open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.completed-boundary-pencil.v1",
+      "object_kind": "bridge_source",
+      "status": "open_bridge_source_candidate",
+      "factors": {
+        "geometry_support": "sewn boundary space with allowed seam defect locus",
+        "coefficients": "completed boundary-relation operator pencil",
+        "constructor_grammar": "Theta-minus-M sewing and kernel formation",
+        "transport_composition": "cross-source sewing with associator and anomaly witnesses",
+        "quotient": "boundary gauge preserving the seam locus",
+        "completion": "completed source Cayley boundary relation",
+        "probe_grammar": "off-seam compact-set separation and transversality probes",
+        "readout": "kernel, separation margin, and determinant section",
+        "authority": "all input bridges and zero-capable sewing open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    },
+    {
+      "id": "rh.xi-spectral-target.v1",
+      "object_kind": "analytic_target",
+      "status": "analytic_target_known_identification_open",
+      "factors": {
+        "geometry_support": "complex spectral parameter with declared seam",
+        "coefficients": "completed xi-function line",
+        "constructor_grammar": "zero-divisor and spectral-identification target",
+        "transport_composition": "analytic continuation and nonzero-factor comparison",
+        "quotient": "multiplication by declared nonvanishing factor",
+        "completion": "entire-function completion",
+        "probe_grammar": "zero-set and off-seam kernel comparison probes",
+        "readout": "xi zero divisor",
+        "authority": "analytic target known; boundary-pencil identification open"
+      },
+      "source_locators": ["research/kitaev/rh-scc-interaction-net-audit-3.md"]
+    }
+  ],
+  "bridges": [
+    {
+      "id": "rh.bridge.prime-incidence-to-schur.v1",
+      "inputs": ["rh.prime-incidence.v1"],
+      "output": "rh.prime-schur-operator.v1",
+      "status": "open",
+      "required_witnesses": ["valuation_fock_passive_dilation", "label_preservation", "passivity"]
+    },
+    {
+      "id": "rh.bridge.schur-trace-to-determinant.v1",
+      "inputs": ["rh.prime-schur-operator.v1", "rh.primitive-trace-history.v1"],
+      "output": "rh.regularized-determinant-line.v1",
+      "status": "partial",
+      "required_witnesses": ["finite_det_det2_trace_comparison", "primitive_wall_trace_completion", "det2_anomaly_identification"]
+    },
+    {
+      "id": "rh.bridge.zero-capable-boundary-sewing.v1",
+      "inputs": ["rh.regularized-determinant-line.v1", "rh.endpoint-reciprocal-boundary.v1", "rh.archimedean-operator-completion.v1"],
+      "output": "rh.completed-boundary-pencil.v1",
+      "status": "open",
+      "required_witnesses": ["pairwise_overlap_cells", "typed_three_way_associator", "source_cayley_boundary_relation", "allowed_seam_defect_locus"]
+    },
+    {
+      "id": "rh.bridge.boundary-pencil-to-xi.v1",
+      "inputs": ["rh.completed-boundary-pencil.v1", "rh.xi-spectral-target.v1"],
+      "output": "rh.xi-spectral-target.v1",
+      "status": "open",
+      "required_witnesses": ["xi_boundary_pencil_spectral_identification", "nonzero_factor", "off_seam_kernel_exclusion"]
+    }
+  ],
+  "validation_cases": [
+    {
+      "id": "case.reciprocal-lossy-cavity.v1",
+      "object_kind": "primitive_source",
+      "assessment_scope": "one-mode exact stroboscopic sampled plant",
+      "source_locator": "research/aspect/reciprocal-lossy-cavity-plant.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "partial",
+        "completion": "open",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "constructed"
+      },
+      "first_open_gate": "continuum completion"
+    },
+    {
+      "id": "case.flavor-q-physical16-portal.v1",
+      "object_kind": "bridge",
+      "assessment_scope": "nondegenerate local physical16 chart with canonical source displacement",
+      "source_locator": "research/flavor/flavor-canonical-source-to-physical16-portal.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "partial",
+        "transport_composition": "partial",
+        "quotient": "constructed",
+        "completion": "open",
+        "probe_grammar": "partial",
+        "readout": "partial",
+        "authority": "open"
+      },
+      "first_open_gate": "source derivation of the portal coefficient and common-frame experiment"
+    },
+    {
+      "id": "case.d-s3-finite-plaquette.v1",
+      "object_kind": "primitive_source",
+      "assessment_scope": "one oriented square plaquette and base vertex",
+      "source_locator": "research/kitaev/s3-local-hamiltonian-source-model.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "first_open_gate": "physical authority for non-native element-resolved pulses"
+    },
+    {
+      "id": "case.punctured-radiative-source.v1",
+      "object_kind": "primitive_source",
+      "assessment_scope": "finite labelled puncture support and strict LF union over finite jet order",
+      "source_locator": "research/strominger/completed-physical-source-category.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "constructed",
+        "probe_grammar": "constructed",
+        "readout": "partial",
+        "authority": "constructed"
+      },
+      "first_open_gate": "faithfulness of the realization map on collision strata"
+    },
+    {
+      "id": "case.magneto-optic-loss-channel.v1",
+      "object_kind": "bridge_source",
+      "assessment_scope": "two circular polarization channels in one finite frequency bin with one vacuum bath mode per channel",
+      "source_locator": "research/aspect/quantum-bath-dilation-of-magneto-optic-loss.md",
+      "companion_locator": "research/aspect/causal-dispersive-magneto-optic-response.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "first_open_gate": "broadband continuum bath fixed by a material-specific causal response and fluctuation-dissipation law"
+    },
+    {
+      "id": "case.three-site-cosmological-correlator-amplitude.v1",
+      "object_kind": "derived_source",
+      "assessment_scope": "three-edge triangle and its eight edge-deletion summands",
+      "source_locator": "research/benincasa/three-site-correlator-cube-coefficient-typing.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "partial",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "constructed"
+      },
+      "first_open_gate": "source-derived coefficient-level arrow between adjacent deletion grades satisfying Gauss-Manin horizontality"
+    },
+    {
+      "id": "case.cosmological-quartic-real-crossing.v1",
+      "object_kind": "derived_readout",
+      "assessment_scope": "positive-energy chamber of the homogeneous three-site loop with unequal positive X1 and X2",
+      "source_locator": "research/benincasa/cosmology-q-positive-energy-threshold.md",
+      "companion_locator": "research/benincasa/cosmology-q-two-channel-response-typing.md",
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "constructed"
+      },
+      "first_open_gate": "construct a source-derived port adapter before assigning the quartic any physical support or threshold meaning"
+    }
+  ],
+  "hostile_fixtures": [
+    "same SCC instrument profile but different completion",
+    "same carrier and constructors but different probe grammar",
+    "same scalar readout but different transport composition",
+    "bridge admitted with one missing factor-compatibility witness",
+    "target-adaptive probe introduced after target observation"
+  ]
+}

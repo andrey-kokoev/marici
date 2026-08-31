@@ -136,7 +136,9 @@ for (let layer = 0; layer < n; layer++) {
 
 const expectedTotal = Array.from({ length: n }, (_, layer) => layerCellCount(layerOrder(layer))).reduce((a, b) => a + b, 0)
 if (cells.length !== expectedTotal || expectedTotal !== 120) throw new Error("pyramid cell count mismatch")
-status.textContent = `valid TOML · 8 triangular layers · 120 standard cells · 36,28,21,15,10,6,3,1`
+if (model.scc_classifier.canonical_name !== "SCC Instrument Profile Lattice" || model.scc_classifier.profile_count !== 405) throw new Error("SCC instrument profile classifier mismatch")
+if (model.source_type_registry.source_type_count !== 8 || model.source_type_registry.bridge_count !== 4 || model.source_type_registry.factor_count !== 9) throw new Error("source-type registry summary mismatch")
+status.textContent = `valid TOML · 120 cells · SCC Instrument Profiles 405 · candidate RH source types 8 · bridges 4`
 
 function routesFor(cell) {
   if (cell.layer === 0 && cell.coherenceCell) return {
@@ -181,12 +183,12 @@ function describe(cell) {
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0x071117)
 const camera = new THREE.PerspectiveCamera(43, 1, 50, 12000)
-const initialCameraPosition = new THREE.Vector3(2800, -800, 4200)
-const initialOrbitTarget = new THREE.Vector3(800, 0, 1000)
+const initialCameraPosition = new THREE.Vector3(3000, -2200, 3600)
+const initialOrbitTarget = new THREE.Vector3(0, 0, 0)
 camera.position.copy(initialCameraPosition)
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" })
 renderer.domElement.className = "webgl-root"
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.outputColorSpace = THREE.SRGBColorSpace
 host.replaceChildren(renderer.domElement)
 const orbit = new OrbitControls(camera, renderer.domElement)
@@ -195,21 +197,26 @@ orbit.target.copy(initialOrbitTarget)
 orbit.minDistance = 1200
 orbit.maxDistance = 10000
 
-const dimensions = { width: 270, height: 112, depth: 82 }
-const spacing = { column: 360, row: 165, layer: 390 }
+const dimensions = { width: 150, height: 150, depth: 150 }
+const edgeLength = 320
+const basis = {
+  layer: new THREE.Vector3(1, 0, 0).multiplyScalar(edgeLength),
+  column: new THREE.Vector3(1 / 2, Math.sqrt(3) / 2, 0).multiplyScalar(edgeLength),
+  index: new THREE.Vector3(1 / 2, 1 / (2 * Math.sqrt(3)), Math.sqrt(2 / 3)).multiplyScalar(edgeLength),
+}
+const latticeCenter = basis.layer.clone().add(basis.column).add(basis.index).multiplyScalar((n - 1) / 4)
 const colors = ["#63b3ff", "#f3b35d", "#50d890", "#b68cff", "#e96b78", "#d68cff", "#8cd9d0", "#ffffff"]
 const centers = new Map()
 const components = new Map()
 const edgeDefinitions = []
-const labels = []
+const nodeMeshes = []
 const enabledLayers = new Set(Array.from({ length: n }, (_, i) => i))
 
 function positionFor(cell) {
-  const order = cell.order
-  const x = cell.column * spacing.column - (order - 1) * spacing.column / 2
-  const y = (cell.index + cell.column / 2 - (order - 1) / 2) * spacing.row
-  const z = cell.layer * spacing.layer
-  return new THREE.Vector3(x, y, z)
+  return basis.layer.clone().multiplyScalar(cell.layer)
+    .addScaledVector(basis.column, cell.column)
+    .addScaledVector(basis.index, cell.index)
+    .sub(latticeCenter)
 }
 
 function wrapCanvasText(context, content, maxWidth, maxLines = 2) {
@@ -230,10 +237,10 @@ function wrapCanvasText(context, content, maxWidth, maxLines = 2) {
   return lines
 }
 
-function makeLabelSprite(cell) {
+function makeLabelMaterial(cell) {
   const canvas = document.createElement("canvas")
-  canvas.width = 384
-  canvas.height = 144
+  canvas.width = 256
+  canvas.height = 256
   const context = canvas.getContext("2d")
   context.fillStyle = "#08141b"
   context.fillRect(0, 0, canvas.width, canvas.height)
@@ -243,44 +250,36 @@ function makeLabelSprite(cell) {
   context.textAlign = "center"
   context.textBaseline = "middle"
   context.fillStyle = "#eaf4f7"
-  context.font = "600 25px ui-monospace, monospace"
-  context.fillText(cell.id, canvas.width / 2, 29)
-  context.font = "18px ui-monospace, monospace"
+  context.font = "600 22px ui-monospace, monospace"
+  context.fillText(cell.id, canvas.width / 2, 38)
+  context.font = "15px ui-monospace, monospace"
   context.fillStyle = "#b5c9d1"
-  wrapCanvasText(context, cell.label, canvas.width - 34).forEach((line, i) => context.fillText(line, canvas.width / 2, 67 + i * 22))
-  context.font = "16px ui-monospace, monospace"
+  wrapCanvasText(context, cell.label, canvas.width - 28, 3).forEach((line, i) => context.fillText(line, canvas.width / 2, 92 + i * 25))
+  context.font = "15px ui-monospace, monospace"
   context.fillStyle = colors[cell.layer]
-  context.fillText(`L${cell.layer} · C${cell.column}`, canvas.width / 2, 126)
+  context.fillText(`L${cell.layer} · C${cell.column}`, canvas.width / 2, 218)
   const texture = new THREE.CanvasTexture(canvas)
   texture.colorSpace = THREE.SRGBColorSpace
   texture.minFilter = THREE.LinearFilter
   texture.magFilter = THREE.LinearFilter
-  const material = new THREE.SpriteMaterial({ map: texture, transparent: false, depthTest: true, depthWrite: false })
-  const sprite = new THREE.Sprite(material)
-  sprite.scale.set(246, 92, 1)
-  return sprite
+  texture.anisotropy = renderer.capabilities.getMaxAnisotropy()
+  return new THREE.MeshBasicMaterial({ map: texture })
 }
 
 const boxGeometry = new THREE.BoxGeometry(dimensions.width, dimensions.height, dimensions.depth)
-const boxMaterial = new THREE.MeshBasicMaterial({ vertexColors: true })
-const boxInstances = new THREE.InstancedMesh(boxGeometry, boxMaterial, cells.length)
-boxInstances.instanceMatrix.setUsage(THREE.DynamicDrawUsage)
-scene.add(boxInstances)
-const matrix = new THREE.Matrix4()
-const scaleVisible = new THREE.Vector3(1, 1, 1)
-const scaleHidden = new THREE.Vector3(0, 0, 0)
+const sideMaterials = colors.map(color => new THREE.MeshBasicMaterial({ color }))
 
-for (let instance = 0; instance < cells.length; instance++) {
-  const cell = cells[instance]
+for (const cell of cells) {
   const center = positionFor(cell)
   centers.set(cell.id, center)
-  boxInstances.setColorAt(instance, new THREE.Color(colors[cell.layer]))
-  const sprite = makeLabelSprite(cell)
-  scene.add(sprite)
-  labels.push({ sprite, center, cell })
-  components.set(cell.id, { cell, instance, sprite })
+  const side = sideMaterials[cell.layer]
+  const mesh = new THREE.Mesh(boxGeometry, [side, side, side, side, makeLabelMaterial(cell), side])
+  mesh.position.copy(center)
+  mesh.userData.cell = cell
+  scene.add(mesh)
+  nodeMeshes.push(mesh)
+  components.set(cell.id, { cell, mesh })
 }
-boxInstances.instanceColor.needsUpdate = true
 
 function addCenterEdge(from, to, kind) {
   if (!centers.has(from) || !centers.has(to)) throw new Error(`edge endpoint missing: ${from} → ${to}`)
@@ -291,6 +290,10 @@ for (const cell of cells) {
   if (cell.rightFace) addCenterEdge(cell.id, cell.rightFace, "R")
   if (cell.lowerSource) addCenterEdge(cell.id, cell.lowerSource, "Z")
 }
+const measuredEdgeLengths = edgeDefinitions.map(edge => centers.get(edge.from).distanceTo(centers.get(edge.to)))
+const edgeResidual = Math.max(...measuredEdgeLengths) - Math.min(...measuredEdgeLengths)
+if (edgeResidual > 1e-9) throw new Error(`nonuniform lattice edge residual: ${edgeResidual}`)
+status.textContent += ` · equilateral edge ${edgeLength}`
 
 let edgeMesh = null
 const edgeColor = { L: new THREE.Color("#63b3ff"), R: new THREE.Color("#f3b35d"), Z: new THREE.Color("#b68cff") }
@@ -318,19 +321,14 @@ function rebuildEdges() {
   scene.add(edgeMesh)
 }
 
-function updateInstances() {
-  for (const { cell, instance } of components.values()) {
-    const scale = enabledLayers.has(cell.layer) ? scaleVisible : scaleHidden
-    matrix.compose(centers.get(cell.id), camera.quaternion, scale)
-    boxInstances.setMatrixAt(instance, matrix)
-  }
-  boxInstances.instanceMatrix.needsUpdate = true
+function updateNodes() {
+  for (const { mesh } of components.values()) mesh.quaternion.copy(camera.quaternion)
 }
 
 controlsHost.replaceChildren()
 function applyLayerVisibility() {
-  for (const { cell, sprite } of components.values()) sprite.visible = enabledLayers.has(cell.layer)
-  updateInstances()
+  for (const { cell, mesh } of components.values()) mesh.visible = enabledLayers.has(cell.layer)
+  updateNodes()
   rebuildEdges()
   const master = controlsHost.querySelector('input[data-all-layers]')
   if (master) {
@@ -367,17 +365,13 @@ for (let layer = 0; layer < n; layer++) {
   })
   controlsHost.append(layerToggle(`L${layer}`, input))
 }
-const resetView = document.createElement("button")
-resetView.type = "button"
-resetView.className = "reset-view"
-resetView.textContent = "reset view"
+const resetView = document.querySelector("#reset-view")
 resetView.addEventListener("click", () => {
   camera.position.copy(initialCameraPosition)
   camera.up.set(0, 1, 0)
   orbit.target.copy(initialOrbitTarget)
   orbit.update()
 })
-controlsHost.append(resetView)
 applyLayerVisibility()
 describe(cells.at(-1))
 
@@ -390,11 +384,8 @@ renderer.domElement.addEventListener("pointerup", event => {
   const rect = renderer.domElement.getBoundingClientRect()
   pointer.set((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1)
   raycaster.setFromCamera(pointer, camera)
-  const hit = raycaster.intersectObject(boxInstances, false)[0]
-  if (hit?.instanceId !== undefined) {
-    const cell = cells[hit.instanceId]
-    if (enabledLayers.has(cell.layer)) describe(cell)
-  }
+  const hit = raycaster.intersectObjects(nodeMeshes, false)[0]
+  if (hit) describe(hit.object.userData.cell)
 })
 
 function resize() {
@@ -402,20 +393,17 @@ function resize() {
   const height = Math.max(1, host.clientHeight)
   renderer.setSize(width, height, false)
   camera.aspect = width / height
+  const horizontalViewShift = Math.min(140, width * 0.12)
+  camera.setViewOffset(width, height, horizontalViewShift, 0, width, height)
   camera.updateProjectionMatrix()
 }
 new ResizeObserver(resize).observe(host)
 resize()
 
-const outward = new THREE.Vector3()
 function animate() {
   requestAnimationFrame(animate)
   orbit.update()
-  updateInstances()
-  for (const { sprite, center } of labels) {
-    outward.subVectors(camera.position, center).normalize()
-    sprite.position.copy(center).addScaledVector(outward, dimensions.depth / 2 + 14)
-  }
+  updateNodes()
   renderer.render(scene, camera)
 }
 animate()

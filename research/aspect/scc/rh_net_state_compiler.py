@@ -76,7 +76,114 @@ def interaction_net(nodes):
             auxiliaries.append(port);wires.append({"id":dep+"->"+n["id"],"source_port":dep+".out","target_port":port["id"],"wire_type":port["type"],"source_agent":dep,"target_agent":n["id"]})
         agents.append({"id":n["id"],"principal":principal,"auxiliaries":auxiliaries})
     return {"typing_authority":"compiler_derived_visualization_schema","agents":agents,"wires":wires}
+G4_TOPOLOGY={
+ "three_port_source_separation":[],
+ "theta_koszul_divisor_complex":["three_port_source_separation"],
+ "bare_euler_det3_with_two_anomaly_lines":["three_port_source_separation"],
+ "relative_reciprocal_det2_return":["bare_euler_det3_with_two_anomaly_lines"],
+ "centered_trace_class_seam_return":["relative_reciprocal_det2_return"],
+ "centered_incidence_range_closure_typing":["three_port_source_separation"],
+ "zero_free_arithmetic_complement":["three_port_source_separation"],
+ "two_sided_evans_matching_lift":["theta_koszul_divisor_complex","centered_trace_class_seam_return"],
+ "conservative_green_complex":["centered_trace_class_seam_return","three_port_source_separation"],
+ "exact_evans_history_domain":["conservative_green_complex"],
+ "three_port_block_domain_membership":["exact_evans_history_domain","three_port_source_separation"],
+ "five_port_arithmetic_summability":["exact_evans_history_domain","centered_incidence_range_closure_typing"],
+ "maximal_isotropic_evans_domain":["two_sided_evans_matching_lift","exact_evans_history_domain"],
+ "prime_shell_adjoint_residual_family":["five_port_arithmetic_summability","conservative_green_complex"],
+ "global_fourier_poisson_response_intertwining":["three_port_block_domain_membership","five_port_arithmetic_summability","maximal_isotropic_evans_domain"],
+ "evans_to_conservative_green_chain_map":["theta_koszul_divisor_complex","two_sided_evans_matching_lift","conservative_green_complex","prime_shell_adjoint_residual_family","global_fourier_poisson_response_intertwining"],
+ "holomorphic_mapping_cone_complement":["evans_to_conservative_green_chain_map","zero_free_arithmetic_complement"],
+ "local_module_length_preservation":["evans_to_conservative_green_chain_map"],
+ "critical_seam_green_confinement":["evans_to_conservative_green_chain_map","centered_incidence_range_closure_typing","local_module_length_preservation"],
+ "riemann_hypothesis_terminal":["evans_to_conservative_green_chain_map","critical_seam_green_confinement"]}
+G4_HOSTILE_IDS=[
+ "bare_euler_det3_replaced_by_relative_det2",
+ "relative_det2_double_counted_as_bare_euler",
+ "theta_koszul_claimed_as_independent_green_realization",
+ "same_sign_passive_feedback_claims_seam_zero",
+ "range_closure_promoted_to_exact_range",
+ "gram_compression_promoted_to_primitive_dynamics",
+ "scalar_evans_mismatch_claims_vector_adjoint_cancellation",
+ "adjoint_cancellation_without_all_prime_shell_residuals",
+ "seam_scalar_substitutes_for_maximal_isotropic_state",
+ "pointwise_kernel_inclusion_substitutes_for_module_length"]
+G4_OPEN={
+ "prime_shell_adjoint_residual_family","global_fourier_poisson_response_intertwining",
+ "evans_to_conservative_green_chain_map",
+ "holomorphic_mapping_cone_complement","local_module_length_preservation",
+ "critical_seam_green_confinement","riemann_hypothesis_terminal"}
+G4_SEMANTIC_INVARIANTS={
+ "pass_does_not_imply_proved":True,
+ "simulation_does_not_imply_physical_realization":True,
+ "readout_does_not_imply_faithfulness":True,
+ "local_confluence_does_not_imply_global_coherence":True,
+ "source_formula_does_not_imply_source_realization":True}
+G4_NEGATIVE_GATES={
+ "finite_moment_subtraction_closes_primitive_pv_lane":False,
+ "scalar_seam_data_separates_reciprocal_off_seam_pairs":False,
+ "range_closure_equals_exact_range":False,
+ "local_coercivity_implies_global_confinement":False}
+G4_INTERFACE_FIELDS=("coefficient_object","completion","topology","quotient","authority")
+def _g4_cut_sets(by, terminal):
+    """Return the unresolved frontier and singleton minimal blockers for an AND dependency net."""
+    memo={}
+    def frontier(cell):
+        if cell in memo:return memo[cell]
+        node=by[cell]
+        if node["status"]=="open" and all(by[d]["status"]=="constructed" for d in node.get("depends_on",[])):
+            memo[cell]={cell};return memo[cell]
+        out=set()
+        for dep in node.get("depends_on",[]):
+            if by[dep]["status"]=="open":out.update(frontier(dep))
+        memo[cell]=out;return out
+    roots=sorted(frontier(terminal))
+    return {"completion_frontier":roots,"minimal_blocking_sets":[[x] for x in roots],"dependency_semantics":"all listed dependencies are conjunctive"}
+def compile_g4_rh_net_state(c):
+    if c.get("claim")!="current_g4_rh_programme_not_rh_proof":return fail("claim_boundary","G4 RH state model must not claim RH")
+    versioning=c.get("versioning",{})
+    if versioning.get("predecessor")!="theta-rh-interaction-net-state.v1" or versioning.get("relation")!="refines_without_rewriting" or not versioning.get("nontransportable_conclusions"):
+        return fail("version_migration","v2 must refine frozen v1 and declare nontransportable conclusions")
+    nodes=c.get("constructors",[]);by={n.get("id"):n for n in nodes}
+    if len(by)!=len(nodes) or None in by:return fail("constructor_identity","constructor ids must be unique")
+    interface=c.get("interface_descriptors",{}).get("g4_common")
+    if not isinstance(interface,dict) or any(not interface.get(x) for x in G4_INTERFACE_FIELDS):return fail("interface_descriptor","shared G4 interface is incomplete")
+    for cell,deps in G4_TOPOLOGY.items():
+        if cell not in by:return fail("g4_topology","required corrected-G4 cell is absent",constructor=cell)
+        n=by[cell]
+        if n.get("depends_on")!=deps:return fail("g4_topology","corrected-G4 dependency was omitted or shortcut",constructor=cell,expected=deps,actual=n.get("depends_on"))
+        if n.get("interface_ref")!="g4_common":return fail("interface_pullback","constructor is outside the admitted shared interface",constructor=cell)
+        if n.get("interface_overrides"):return fail("interface_pullback","interface override requires a separately authorized comparison map",constructor=cell)
+    for n in nodes:
+        expected_open=n.get("id") in G4_OPEN
+        if expected_open and (n.get("status")!="open" or n.get("authority_class")!="formal_slot"):return fail("g4_premature_promotion","RH-bearing G4 cell must remain open",constructor=n.get("id"))
+        if not expected_open and n.get("id") in G4_TOPOLOGY:
+            witness=(c.get("evidence_objects",{}).get(n.get("witness_ref")) if n.get("witness_ref") else n.get("witness")) or {}
+            required=("source_locator","checker","source_digest","assumptions","assessment_regime","proof_strength")
+            if n.get("status")!="constructed" or n.get("authority_class")!="source_derived" or any(not witness.get(x) for x in required):
+                return fail("g4_construction_authority","constructed G4 cell lacks witness-bearing source authority",constructor=n.get("id"),required=required)
+        for dep in n.get("depends_on",[]):
+            if dep not in by:return fail("dependency_closure","unknown dependency",constructor=n.get("id"),dependency=dep)
+            if n.get("status")=="constructed" and by[dep].get("status")!="constructed":return fail("premature_promotion","constructed cell depends on an open cell",constructor=n.get("id"),dependency=dep)
+    if c.get("semantic_invariants")!=G4_SEMANTIC_INVARIANTS:return fail("semantic_invariants","universal SCC nonpromotion invariants changed")
+    if c.get("negative_knowledge_gates")!=G4_NEGATIVE_GATES:return fail("negative_knowledge","known no-go results must remain executable false gates")
+    range_contract=c.get("centered_incidence_contract",{})
+    if range_contract!={"kernel":"zero","forcing_vector_membership":"range_closure_not_exact_range","exact_lift_authorized":False}:return fail("range_closure_typing","closure membership must not be promoted to an exact forcing lift")
+    ports=c.get("three_port_contract",{})
+    if ports!={"carrier":["history","theta","arithmetic"],"theta_generator":0,"primitive_theta_arithmetic_dynamic_arrow":False,"gram_compression_is_dynamics":False}:return fail("three_port_typing","theta, arithmetic, and history ports must remain separated")
+    determinant=c.get("determinant_ideal_contract",{})
+    if determinant!={"bare_euler":"det3","relative_reciprocal_return":"det2","centered_seam_return":"trace_class_fredholm"}:return fail("determinant_ideal_typing","det3, det2, and trace-class returns must remain distinct")
+    residual=c.get("rh_bearing_residual",{})
+    if residual.get("identity")!="B_Sigma^dagger u_z = 0" or residual.get("locus")!="Xi_divisor" or residual.get("prime_shell_family_complete") is not False:return fail("rh_bearing_residual","the unresolved Xi-divisor vector residual must remain explicit")
+    hostiles=c.get("hostile_fixtures",[])
+    if [x.get("id") for x in hostiles]!=G4_HOSTILE_IDS or any(not x.get("must_reject") for x in hostiles):return fail("g4_hostile_fixture_basis","all ten ordered corrected-G4 hostiles are required")
+    terminal=c.get("terminal_constructor")
+    if terminal!="riemann_hypothesis_terminal" or by.get(terminal,{}).get("status")!="open":return fail("rh_overpromotion","RH terminal must remain open")
+    open_ids={n["id"] for n in nodes if n["status"]=="open"}
+    cut_sets=_g4_cut_sets(by,terminal);frontier=cut_sets["completion_frontier"]
+    return {"schema":"marici.scc.rh-interaction-net-state.v2","passed":True,"proved":False,"physical_realization":False,"first_failed_gate":None,"model_generation":"corrected_G4","versioning":versioning,"interface_pullback":{"descriptor":"g4_common","fields":list(G4_INTERFACE_FIELDS),"all_edges_checked":True},"semantic_invariants":G4_SEMANTIC_INVARIANTS,"negative_knowledge_gates":G4_NEGATIVE_GATES,"terminal_cut_sets":cut_sets,"frontier_antichain":frontier,"downstream_open":sorted(open_ids-set(frontier)),"interaction_net":interaction_net(nodes),"determinant_ideal_contract":determinant,"three_port_contract":ports,"centered_incidence_contract":range_contract,"rh_bearing_residual":residual,"hostile_fixtures":hostiles,"terminal":{"id":terminal,"status":"open","rh_proved":False},"explanation":"The corrected G4 topology is typed conservatively. RH remains blocked by the prime-shell adjoint residual family, seam-state/domain gates, and the Evans-to-conservative-Green chain map."}
 def compile_rh_net_state(c):
+    if c.get("schema")=="marici.scc.rh-interaction-net-state-contract.v2":return compile_g4_rh_net_state(c)
     if c.get("claim")!="current_rh_programme_not_rh_proof":return fail("claim_boundary","RH state model must not claim RH")
     nodes=c.get("constructors",[]);by={n.get("id"):n for n in nodes}
     if len(by)!=len(nodes) or None in by:return fail("constructor_identity","constructor ids must be unique")
@@ -144,3 +251,4 @@ def compile_rh_net_state(c):
       "next_parallel_constructors":frontier,
       "explanation":"The programme has a typed partial net with source-authorized arithmetic-to-analytic crossings and transport, but no closed reduction class reaching the RH terminal evaluator."
     }
+

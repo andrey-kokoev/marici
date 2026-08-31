@@ -1,0 +1,1452 @@
+{
+  "schema": "marici.aspect.instrument-registry.v1",
+  "scope": "named Aspect instrument packets plus the indexed 49-packet optics laboratory portfolio",
+  "claim_boundary": "registry records modeled contracts and executable simulations; simulation receipts certify only the declared mathematical fixtures",
+  "status_vocabularies": {
+    "model_status": [
+      "exact_finite_model",
+      "bounded_audit",
+      "conditional_design"
+    ],
+    "profile_status": [
+      "unassigned",
+      "proposed",
+      "assigned",
+      "checked"
+    ],
+    "factor_residual": [
+      "scale_limited",
+      "truncation_limited",
+      "access_nonfaithful",
+      "calibration_conditional",
+      "simulation_only",
+      "constructor_authority_open",
+      "readout_hidden_state"
+    ],
+    "simulation_status": [
+      "not_executed",
+      "passed",
+      "failed"
+    ]
+  },
+  "profile_dimensions": {
+    "scale": [
+      "local",
+      "packet",
+      "finite_system",
+      "pro_system",
+      "completion"
+    ],
+    "carrier": [
+      "absent",
+      "split",
+      "compatible"
+    ],
+    "action": [
+      "absent",
+      "typed",
+      "faithful"
+    ],
+    "observation": [
+      "absent",
+      "natural",
+      "faithful"
+    ],
+    "estimate": [
+      "absent",
+      "bounded",
+      "uniform"
+    ]
+  },
+  "profile_assignment_rule": "a proposed profile is evaluated only on its assessment regime; checked requires a separate classifier checker and does not follow from factor-matrix completeness",
+  "portfolio_index": {
+    "path": "research/aspect/optics-integrating-laboratory-index.md",
+    "indexed_packet_count": 49,
+    "execution_scope": "simulation_only"
+  },
+  "families": [
+    {
+      "id": "polarization-sequential",
+      "label": "sequential polarization and Bell instruments",
+      "capability": "conditional continuation, disturbance, joint-context comparison, and no-signalling separation"
+    },
+    {
+      "id": "interferometric-route",
+      "label": "route and phase interferometers",
+      "capability": "coherent path transport, closure, erasure, and dark-port discrimination"
+    },
+    {
+      "id": "cavity-control",
+      "label": "cavity, feedback, and transfer instruments",
+      "capability": "storage, delay, feedback, transfer zeros, and controller interfaces"
+    },
+    {
+      "id": "detection-tomography",
+      "label": "detection and tomography instruments",
+      "capability": "counting, quadrature, determinant, scale, loss, and detector-memory reconstruction"
+    },
+    {
+      "id": "bath-thermal",
+      "label": "bath, thermal, and multifrequency instruments",
+      "capability": "unitary dilation, noise completion, detailed balance, and KMS coherence"
+    },
+    {
+      "id": "timing-acquisition",
+      "label": "timing, calibration, and acquisition instruments",
+      "capability": "anti-aliasing, event association, calibration epochs, and raw-record binding"
+    },
+    {
+      "id": "cross-sector-compiler",
+      "label": "cross-sector optical compilers",
+      "capability": "source-bound realization, criticism, and comparison of non-optical constructor packets"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "instrument.three-polarizer-zxz.v1",
+      "label": "three-polarizer sequential Z-X-Z instrument",
+      "family": "polarization-sequential",
+      "packet": "research/aspect/bell-sequential-polarization-instrument.md",
+      "object_kind": "derived_source",
+      "interaction_net_topology": "open_continuation_path",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "exact finite sequential continuation with compatible state transport; the Z/X record is not faithful on arbitrary polarization states",
+      "assessment_regime": {
+        "scale": "three sequential projective polarization settings",
+        "truncation": "single polarization qubit",
+        "access": "setting and outcome records with conditional continuation retained in the model",
+        "calibration": "ideal common Z/X analyzer frame",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_bell_sequential_polarization_instrument.py",
+        "result": "research/aspect/results/bell_sequential_polarization_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "constructed",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "Z-Z repeat probability one and Z-X-Z return probability one half",
+      "first_open_gate": "bind calibrated physical polarizers, setting log, detector records, and execution artifact",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/bell_sequential_polarization_instrument.json"
+    },
+    {
+      "id": "instrument.bell-sequential-chsh.v1",
+      "label": "Bell plus sequential polarization instrument",
+      "family": "polarization-sequential",
+      "packet": "research/aspect/bell-sequential-polarization-instrument.md",
+      "object_kind": "bridge_source",
+      "interaction_net_topology": "context_cover_without_global_gluing",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the exact local instruments and context records are compatible within each context, while Bell violation forbids one globally glued counterfactual carrier",
+      "assessment_regime": {
+        "scale": "two polarization bases for local sequences and four CHSH contexts",
+        "truncation": "two-qubit polarization singlet with projective Lueders instruments",
+        "access": "local transitions, joint coincidences, singles, settings, trial identifiers, and clock metadata",
+        "calibration": "ideal common polarization frames and exact context alignment",
+        "binding": "mathematical model without spacelike apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_combined_bell_instrument.py",
+        "result": "research/aspect/results/combined_bell_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "local transitions, four-context coincidences, and remote-setting-indexed singles",
+      "first_open_gate": "one acquisition contract binding all three record products",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/combined_bell_instrument.json"
+    },
+    {
+      "id": "instrument.x-state-determinant.v1",
+      "label": "X-state determinant instrument",
+      "family": "detection-tomography",
+      "packet": "research/aspect/x-state-determinant-instrument.md",
+      "object_kind": "derived_readout",
+      "interaction_net_topology": "multi-setting_terminal_evaluator",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "five settings faithfully recover the labelled X-state NPT decision coordinates with a finite one-sided uncertainty certificate",
+      "assessment_regime": {
+        "scale": "five-setting labelled two-qubit X-state decision",
+        "truncation": "finite-dimensional X-state family with exact expectation values",
+        "access": "joint Z populations and XX, YY, XY, YX correlations",
+        "calibration": "one exact common analyzer phase frame",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_x_state_determinant_instrument.py",
+        "result": "research/aspect/results/x_state_determinant_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "constructed",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "calibrated determinant witness",
+      "first_open_gate": "hardware-bound common phase and detector calibration",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/x_state_determinant_instrument.json"
+    },
+    {
+      "id": "instrument.amplitude-damping-crossing.v1",
+      "label": "amplitude-damping crossing instrument",
+      "family": "detection-tomography",
+      "packet": "research/aspect/amplitude-damping-crossing-instrument.md",
+      "object_kind": "derived_readout",
+      "interaction_net_topology": "parameter_bracketing_path",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "the calibrated determinant bounds distinguish the two sides of the source-predicted crossing on the declared finite bracket, with explicit inconclusive behavior near the resolution limit",
+      "assessment_regime": {
+        "scale": "finite three-point damping bracket",
+        "truncation": "two labelled amplitude-damped X-state families",
+        "access": "population and coherence-quadrature estimates",
+        "calibration": "declared bounded population and quadrature radii",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_amplitude_damping_crossing_instrument.py",
+        "result": "research/aspect/results/amplitude_damping_crossing_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "partial",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "constructor_grammar": [
+          "constructor_authority_open"
+        ],
+        "completion": [
+          "scale_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "one-sided determinant bounds bracketing a source-predicted crossing",
+      "first_open_gate": "independent damping-strength and phase-frame calibration",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/amplitude_damping_crossing_instrument.json"
+    },
+    {
+      "id": "instrument.finite-lossy-photodetection.v1",
+      "label": "finite lossy photodetection quantum instrument",
+      "family": "detection-tomography",
+      "packet": "research/aspect/finite-lossy-photodetection-quantum-instrument.md",
+      "object_kind": "derived_source",
+      "interaction_net_topology": "loss_dilation_then_record",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the finite Kraus instrument is exact and compatible, while click/no-click observation retains a phase kernel",
+      "assessment_regime": {
+        "scale": "one instantaneous detection step",
+        "truncation": "vacuum and one-photon Fock sector",
+        "access": "coarse click/no-click record with refined environment labels retained in the model",
+        "calibration": "exact rational efficiency amplitudes 3/5 and 4/5",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/finite_lossy_photodetection_quantum_instrument.py",
+        "result": "research/aspect/results/finite_lossy_photodetection_quantum_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "constructed"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ]
+      },
+      "readout": "click and no-click records with conditional continuation",
+      "first_open_gate": "physical detector efficiency and loss-port binding",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/finite_lossy_photodetection_quantum_instrument.json"
+    },
+    {
+      "id": "instrument.dead-time-photodetection.v1",
+      "label": "finite dead-time photodetection memory instrument",
+      "family": "detection-tomography",
+      "packet": "research/aspect/finite-dead-time-photodetection-memory-instrument.md",
+      "object_kind": "derived_source",
+      "interaction_net_topology": "memory_state_continuation",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the exact finite memory instrument transports ready/dead state compatibly, but public click records are nonfaithful on the latent detector state",
+      "assessment_regime": {
+        "scale": "finite sequence of discrete detection bins",
+        "truncation": "vacuum/one-photon optical sector and two detector-memory states",
+        "access": "public click/no-click sequence with detector memory latent but retained in the model",
+        "calibration": "exact rational efficiency and recovery amplitudes",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/finite_dead_time_photodetection_memory_instrument.py",
+        "result": "research/aspect/results/finite_dead_time_photodetection_memory_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "partial",
+        "authority": "constructed"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "readout": [
+          "readout_hidden_state"
+        ]
+      },
+      "readout": "record sequence conditioned on detector memory state",
+      "first_open_gate": "bind dead-time and recovery kernel from raw detector records",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/finite_dead_time_photodetection_memory_instrument.json"
+    },
+    {
+      "id": "instrument.calibrated-six-port-scale.v1",
+      "label": "calibrated six-port scale-identification instrument",
+      "family": "detection-tomography",
+      "packet": "research/aspect/calibrated-six-port-scale-identification-instrument.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "six_port_comparison_mesh",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the external reference raises the finite readout Jacobian to full rank for physical scale and instrument unit, without claiming source selection",
+      "assessment_regime": {
+        "scale": "six pole channels plus one independent frequency reference",
+        "truncation": "finite log-coordinate scale/unit Jacobian",
+        "access": "calibrated pole, width, residue, and reference records",
+        "calibration": "common comb or atomic-clock frequency and local-oscillator phase frame",
+        "binding": "apparatus design without execution and without a transverse source-selection law"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/calibrated_six_port_scale_identification_instrument.py",
+        "result": "research/aspect/results/calibrated_six_port_scale_identification_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "constructor_authority_open"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "relative port-scale identification",
+      "first_open_gate": "common calibration-frame acquisition",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/calibrated_six_port_scale_identification_instrument.json"
+    },
+    {
+      "id": "instrument.global-unit-dark-port-correlation.v1",
+      "label": "global-unit dark-port correlation instrument",
+      "family": "interferometric-route",
+      "packet": "research/aspect/global-unit-dark-port-correlation-instrument.md",
+      "object_kind": "derived_readout",
+      "interaction_net_topology": "global_closure_with_dark_terminal",
+      "model_status": "bounded_audit",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "packet",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "separate arm and dark-port records distinguish local loss, imbalance, and coherent cancellation, while the completed source map joining the arms remains absent",
+      "assessment_regime": {
+        "scale": "finite ordered place packet in a coherent two-arm interferometer",
+        "truncation": "nonzero scalar local ratios and two global arm amplitudes",
+        "access": "both arm amplitudes before recombination plus complex dark-port field",
+        "calibration": "balanced combiner, reciprocal phase frame, and calibrated arm imbalance",
+        "binding": "conditional optical design without a source-derived completed-theta arm map"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_global_unit_dark_port.py",
+        "result": "research/aspect/results/global_unit_dark_port.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "partial",
+        "transport_composition": "partial",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "open"
+      },
+      "factor_residuals": {
+        "constructor_grammar": [
+          "constructor_authority_open"
+        ],
+        "transport_composition": [
+          "constructor_authority_open"
+        ],
+        "quotient": [
+          "calibration_conditional"
+        ],
+        "completion": [
+          "scale_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "dark terminal correlated with retained global route structure",
+      "first_open_gate": "hardware-bound route and phase reference",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/global_unit_dark_port.json"
+    },
+    {
+      "id": "instrument.magneto-optic-loss-dilation.v1",
+      "label": "magneto-optic loss dilation instrument",
+      "family": "bath-thermal",
+      "packet": "research/aspect/quantum-bath-dilation-of-magneto-optic-loss.md",
+      "object_kind": "bridge_source",
+      "interaction_net_topology": "two_channel_system_bath_dilation",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the exact one-bin system-bath dilation preserves the carrier and magneto-optic markers, but retained system observations do not recover the bath or broadband response",
+      "assessment_regime": {
+        "scale": "two circular channels in one finite frequency bin",
+        "truncation": "one system mode and one vacuum bath mode per channel",
+        "access": "retained system outputs with bath ports retained in the model",
+        "calibration": "fixed circular labels, phase convention, and exact transmission/loss amplitudes",
+        "binding": "phenomenological mathematical model without material-specific apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/quantum_bath_dilation_of_magneto_optic_loss.py",
+        "result": "research/aspect/results/quantum_bath_dilation_of_magneto_optic_loss.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "quotient": [
+          "calibration_conditional"
+        ],
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "scale_limited",
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "circular dichroic and birefringent markers after bath dilation",
+      "first_open_gate": "material-specific broadband fluctuation-dissipation completion",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/quantum_bath_dilation_of_magneto_optic_loss.json"
+    },
+    {
+      "id": "instrument.thermal-sideband-balance.v1",
+      "label": "thermal sideband detailed-balance instrument",
+      "family": "bath-thermal",
+      "packet": "research/aspect/thermal-sideband-detailed-balance-instrument.md",
+      "object_kind": "derived_readout",
+      "interaction_net_topology": "paired_sideband_evaluator",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "joint linewidth and resolved sideband data recover both constant Markov rates exactly on the declared two-rate source family",
+      "assessment_regime": {
+        "scale": "one stable Markov oscillator with two resolved sidebands",
+        "truncation": "two constant upward/downward transition rates",
+        "access": "coherent linewidth probe plus calibrated upper and lower sideband records",
+        "calibration": "fixed gain, bandwidth, frequency frame, and sideband ordering",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/thermal_sideband_detailed_balance_instrument.py",
+        "result": "research/aspect/results/thermal_sideband_detailed_balance_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "sideband detailed-balance ratio",
+      "first_open_gate": "calibrated thermal bath and sideband gain binding",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/thermal_sideband_detailed_balance_instrument.json"
+    },
+    {
+      "id": "instrument.multifrequency-kms.v1",
+      "label": "multifrequency KMS coherence instrument",
+      "family": "bath-thermal",
+      "packet": "research/aspect/multifrequency-kms-coherence-instrument.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "multifrequency_coherence_mesh",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "packet",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the exact three-bin ratio packet tests global coherence, but passing records do not prove that the transitions physically share one bath",
+      "assessment_regime": {
+        "scale": "three integer-labelled oscillator frequencies",
+        "truncation": "finite ratio packet constrained by one common thermal parameter",
+        "access": "upward and downward sideband records in every frequency bin",
+        "calibration": "common frequency units, sideband ordering, gain, bandwidth, and reference clock",
+        "binding": "mathematical model without apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/multifrequency_kms_coherence_instrument.py",
+        "result": "research/aspect/results/multifrequency_kms_coherence_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "cross-frequency KMS compatibility",
+      "first_open_gate": "common bath and frequency-frame acquisition",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/multifrequency_kms_coherence_instrument.json"
+    },
+    {
+      "id": "instrument.dual-clock-coprime-antialias.v1",
+      "label": "dual-clock coprime anti-alias instrument",
+      "family": "timing-acquisition",
+      "packet": "research/aspect/dual-clock-coprime-antialias-instrument.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "two_clock_comparison",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the ordered coprime residue pair is exactly injective on the declared twenty-class frequency band and the period-twenty hostile fixes the regime boundary",
+      "assessment_regime": {
+        "scale": "integer frequencies in the declared band from zero through nineteen",
+        "truncation": "two sampling clocks with rates four and five",
+        "access": "ordered residue pair modulo four and modulo five",
+        "calibration": "fixed phase origins, timebase transfer, ordering, and residue conventions",
+        "binding": "mathematical sampling model without physical clock execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/dual_clock_coprime_antialias_instrument.py",
+        "result": "research/aspect/results/dual_clock_coprime_antialias_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "alias-class separation by coprime clocks",
+      "first_open_gate": "bound clock jitter and event-association records",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/dual_clock_coprime_antialias_instrument.json"
+    },
+    {
+      "id": "instrument.two-frontier-build-audit.v1",
+      "label": "two-frontier optical instrument build audit",
+      "family": "cross-sector-compiler",
+      "packet": "research/aspect/two-frontier-optical-instrument-build-audit.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "two_frontier_comparison",
+      "model_status": "bounded_audit",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "packet",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "two exact finite optical emulators retain separate carriers and authority boundaries; passing one does not complete or identify the other",
+      "assessment_regime": {
+        "scale": "two finite optical frontier emulators",
+        "truncation": "source-fixed finite matrices for denominator sewing and directional moving-fiber comparison",
+        "access": "phase-calibrated coherent ports and separate frontier result records",
+        "calibration": "exact finite common optical frames within each instrument",
+        "binding": "mathematical build audit without sector-source realization or apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/two_frontier_optical_instrument_build_audit.py",
+        "result": "research/aspect/results/two_frontier_optical_instrument_build_audit.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "separated frontier comparison obligations",
+      "first_open_gate": "bind both source-authorized frontier packets to one apparatus",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/two_frontier_optical_instrument_build_audit.json"
+    },
+    {
+      "id": "instrument.archimedean-tate-area.v1",
+      "label": "archimedean infinitesimal Tate-area instrument",
+      "family": "cross-sector-compiler",
+      "packet": "research/aspect/archimedean-infinitesimal-tate-area-instrument.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "infinitesimal_area_comparison_cell",
+      "model_status": "conditional_design",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "local",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "the two coherent ports resolve the local infinitesimal area relative to finite-place references, while reciprocal global sewing remains a separate carrier obligation",
+      "assessment_regime": {
+        "scale": "one real-place Gaussian mode with symmetric infinitesimal dilation steps",
+        "truncation": "Fourier-fixed Gaussian test source and one Mellin parameter",
+        "access": "on-axis evaluation and coherent Mellin-weighted integral ports",
+        "calibration": "finite-place unit-minor references and phase-preserving coherent detection",
+        "binding": "conditional optical design without global reciprocal sewing or apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_archimedean_infinitesimal_tate_area.py",
+        "result": "research/aspect/results/archimedean_infinitesimal_tate_area.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "partial",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "transport_composition": [
+          "constructor_authority_open"
+        ],
+        "quotient": [
+          "calibration_conditional"
+        ],
+        "completion": [
+          "scale_limited",
+          "constructor_authority_open"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "infinitesimal archimedean comparison area",
+      "first_open_gate": "source-authorized archimedean operator lift",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/archimedean_infinitesimal_tate_area.json"
+    },
+    {
+      "id": "instrument.321-spin-two-output.v1",
+      "label": "3-2-1 optical output instrument",
+      "family": "cross-sector-compiler",
+      "packet": "research/aspect/a-degree-four-spin-two-output-forces-a-321-optical-instrument.md",
+      "object_kind": "bridge_source",
+      "interaction_net_topology": "graded_321_output_tree",
+      "model_status": "conditional_design",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "bounded"
+      },
+      "profile_rationale": "the patched chart, quadrature, and loop architecture is typed and finitely testable, but the physical spin-two response and global source authority remain conditional",
+      "assessment_regime": {
+        "scale": "degree-four spin-two bundle over two celestial-sphere charts",
+        "truncation": "generic transverse section with four simple zeros",
+        "access": "three puncture-period loops, two phase quadratures, and one source-ray monitor",
+        "calibration": "chart-local oscillators with recorded overlap phases and independent direct-ray calibration",
+        "binding": "conditional apparatus architecture without prepared physical spin-two response"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_degree_four_321_output_instrument.py",
+        "result": "research/aspect/results/degree_four_321_output_instrument.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "partial",
+        "transport_composition": "partial",
+        "quotient": "partial",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "partial",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "constructor_grammar": [
+          "constructor_authority_open"
+        ],
+        "transport_composition": [
+          "constructor_authority_open"
+        ],
+        "quotient": [
+          "constructor_authority_open",
+          "calibration_conditional"
+        ],
+        "completion": [
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "simulation_only"
+        ],
+        "readout": [
+          "simulation_only"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "graded three-two-one optical output multiplicities",
+      "first_open_gate": "source-derived spin-two output realization",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/degree_four_321_output_instrument.json"
+    },
+    {
+      "id": "instrument.minimal-two-path-interferometer.v1",
+      "label": "minimal two-path interferometer",
+      "family": "interferometric-route",
+      "packet": "research/aspect/minimal-two-path-interferometer.md",
+      "object_kind": "primitive_source",
+      "interaction_net_topology": "coherent_route_recombination",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "ordered route transport and loss dilation are exact, while terminal bright/dark projection is nonfaithful on the pre-readout route state",
+      "assessment_regime": {
+        "scale": "finite-dimensional monochromatic two-route interferometer",
+        "truncation": "one normalized input mode, two routes, two detector ports, and one loss port",
+        "access": "bright/dark detector records with route and environment state retained in the model",
+        "calibration": "ideal Hadamard splitters and fixed relative phase reference",
+        "binding": "mathematical apparatus model without physical execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/minimal_two_path_interferometer.py",
+        "result": "research/aspect/results/minimal_two_path_interferometer.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "bright and dark detector amplitudes with explicit loss probability",
+      "first_open_gate": "bind physical splitters, phase reference, loss port, and detector instrument",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/minimal_two_path_interferometer.json"
+    },
+    {
+      "id": "instrument.polarization-marker-quantum-eraser.v1",
+      "label": "polarization marker and quantum eraser",
+      "family": "interferometric-route",
+      "packet": "research/aspect/polarization-marker-quantum-eraser.md",
+      "object_kind": "bridge_source",
+      "interaction_net_topology": "conditional_marker_eraser_branching",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "conditional eraser branches and reduced-route reconstruction are exact, but accessible marker records are nonfaithful on global purifications and inaccessible environment allocation",
+      "assessment_regime": {
+        "scale": "finite route-polarization-marker-environment tensor fixture",
+        "truncation": "two routes, finite marker bases, and equal-population reduced route qubits",
+        "access": "route detectors, accessible polarization analyzer, and declared inaccessible environment",
+        "calibration": "predeclared eraser basis and nonzero local-oscillator phase reference",
+        "binding": "mathematical model without time-tagged apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/polarization_marker_quantum_eraser.py",
+        "result": "research/aspect/results/polarization_marker_quantum_eraser.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "marginal fringes plus predeclared conditional fringe and antifringe records",
+      "first_open_gate": "bind temporal modes, detector instrument, environment accessibility, and prospective analyzer settings",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/polarization_marker_quantum_eraser.json"
+    },
+    {
+      "id": "instrument.reciprocal-lossy-cavity.v1",
+      "label": "reciprocal lossy cavity plant",
+      "family": "cavity-control",
+      "packet": "research/aspect/reciprocal-lossy-cavity-plant.md",
+      "object_kind": "primitive_source",
+      "interaction_net_topology": "ordered_feedback_loop_with_loss_dilation",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the exact sampled feedback plant preserves ordered storage and loss ports, while detector projections do not establish full state observability",
+      "assessment_regime": {
+        "scale": "one-mode exact stroboscopic cavity plant",
+        "truncation": "two mirrors, one round-trip state, one source input, and explicit exterior/loss ports",
+        "access": "reflected, transmitted, and environment outputs with internal state retained in the model",
+        "calibration": "common energy metric, rational mirror/loss amplitudes, and fixed propagation phases",
+        "binding": "mathematical plant without physical cavity or controller execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/reciprocal_lossy_cavity_plant.py",
+        "result": "research/aspect/results/reciprocal_lossy_cavity_plant.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "ordered reflected, transmitted, retained-state, and environment responses",
+      "first_open_gate": "construct the continuum delay-history completion and bind a physical cavity",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/reciprocal_lossy_cavity_plant.json"
+    },
+    {
+      "id": "instrument.free-propagation-green-transfer.v1",
+      "label": "free propagation and Green transfer",
+      "family": "interferometric-route",
+      "packet": "research/aspect/free-propagation-green-transfer.md",
+      "object_kind": "primitive_source",
+      "interaction_net_topology": "ordered_propagation_and_green_inversion",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "finite propagation, Green inversion, reciprocity, and loss dilation are exact, while one detector row remains nonfaithful on the field carrier",
+      "assessment_regime": {
+        "scale": "finite paraxial and two-port Green-transfer fixtures",
+        "truncation": "two ray coordinates, two field coordinates, and one finite frequency",
+        "access": "declared detector rows with environment and full field retained in the model",
+        "calibration": "fixed longitudinal frame, units, lens signs, boundary condition, and common energy metric",
+        "binding": "mathematical model without continuum or apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/free_propagation_green_transfer.py",
+        "result": "research/aspect/results/free_propagation_green_transfer.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "ray transfer, Green field response, reciprocity residual, and loss-port balance",
+      "first_open_gate": "supply function spaces, causal boundary conditions, and uniform resolvent completion",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/free_propagation_green_transfer.json"
+    },
+    {
+      "id": "instrument.selected-channel-transmission-zero.v1",
+      "label": "selected-channel transmission-zero instrument",
+      "family": "cavity-control",
+      "packet": "research/aspect/selected-channel-transmission-zero.md",
+      "object_kind": "derived_readout",
+      "interaction_net_topology": "selected_dark_channel_with_complementary_tomography",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the selected zero is nonfaithful alone, but the predeclared complementary row makes the complete finite detector map invertible on the declared state/input carrier",
+      "assessment_regime": {
+        "scale": "two-route one-sample discrete-time scattering system",
+        "truncation": "one scalar state, one input, and selected/complementary detector rows",
+        "access": "both detector channels and the finite Rosenbrock realization",
+        "calibration": "common energy-normalized reciprocal frame and phase fixed before zero testing",
+        "binding": "mathematical model without continuum scattering execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/selected_channel_transmission_zero.py",
+        "result": "research/aspect/results/selected_channel_transmission_zero.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "constructor_authority_open"
+        ]
+      },
+      "readout": "selected dark scalar plus complementary state-tomography channel",
+      "first_open_gate": "derive a source-native strict zero-exclusion law before any zero-free promotion",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/selected_channel_transmission_zero.json"
+    },
+    {
+      "id": "instrument.nonreciprocal-polarization-scattering.v1",
+      "label": "nonreciprocal polarization scattering",
+      "family": "interferometric-route",
+      "packet": "research/aspect/nonreciprocal-polarization-scattering.md",
+      "object_kind": "primitive_source",
+      "interaction_net_topology": "forward_reverse_jones_scattering_with_loss_dilation",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "forward/reverse transport and environment completion are exact, while one analyzer row is nonfaithful and omitted spatial, temporal, and bath factors remain outside the readout",
+      "assessment_regime": {
+        "scale": "finite two-port Jones scattering apparatus",
+        "truncation": "two polarization components per spatial port with finite environment dilation",
+        "access": "forward/reverse scattering outputs and declared analyzer rows",
+        "calibration": "one laboratory Jones basis, common energy normalization, and transported reverse-port frame",
+        "binding": "mathematical model without dispersive material execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/nonreciprocal_polarization_scattering.py",
+        "result": "research/aspect/results/nonreciprocal_polarization_scattering.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "lossless/reciprocal residuals, round-trip Jones response, and environment-completed loss balance",
+      "first_open_gate": "add causal dispersion, quantum noise, and a material-specific response",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/nonreciprocal_polarization_scattering.json"
+    },
+    {
+      "id": "instrument.calibrated-homodyne-heterodyne.v1",
+      "label": "calibrated homodyne and heterodyne detection",
+      "family": "detection-tomography",
+      "packet": "research/aspect/calibrated-homodyne-heterodyne-detection.md",
+      "object_kind": "derived_source",
+      "interaction_net_topology": "phase_referenced_balanced_detection",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "two calibrated quadrature rows are jointly faithful on the declared coherent-displacement class with exact finite noise penalties",
+      "assessment_regime": {
+        "scale": "single-mode finite covariance model",
+        "truncation": "coherent displacement and declared second moments",
+        "access": "balanced homodyne phases and simultaneous heterodyne channels",
+        "calibration": "nonzero mode-matched local oscillator, gains, efficiency, window, and electronics covariance",
+        "binding": "mathematical detector model without execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/calibrated_homodyne_heterodyne_detection.py",
+        "result": "research/aspect/results/calibrated_homodyne_heterodyne_detection.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "constructed",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "phase-referenced quadrature means and calibrated covariance penalties",
+      "first_open_gate": "construct continuum photodetection and bind detector calibration",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/calibrated_homodyne_heterodyne_detection.json"
+    },
+    {
+      "id": "instrument.calibrated-photon-counting.v1",
+      "label": "calibrated photon counting and intensity statistics",
+      "family": "detection-tomography",
+      "packet": "research/aspect/calibrated-photon-counting-intensity-statistics.md",
+      "object_kind": "derived_source",
+      "interaction_net_topology": "loss_darkcount_then_count_record",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "compatible",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "finite count laws are exact, while number records erase phase coherence and integrated counts erase arrival order",
+      "assessment_regime": {
+        "scale": "one declared optical mode with finite count statistics",
+        "truncation": "finite photon-number class with overflow typing",
+        "access": "number-resolved or threshold records after efficiency and dark-count channels",
+        "calibration": "fixed mode, efficiency, dark probability, and integration gate",
+        "binding": "mathematical detector model without execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/calibrated_photon_counting_intensity_statistics.py",
+        "result": "research/aspect/results/calibrated_photon_counting_intensity_statistics.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "constructed",
+        "quotient": "constructed",
+        "completion": "partial",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "partial"
+      },
+      "factor_residuals": {
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ],
+        "authority": [
+          "simulation_only",
+          "calibration_conditional"
+        ]
+      },
+      "readout": "number, threshold, moment, and finite dark-count statistics",
+      "first_open_gate": "construct the detector-memory point-process completion",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/calibrated_photon_counting_intensity_statistics.json"
+    },
+    {
+      "id": "instrument.finite-bandwidth-completion-audit.v1",
+      "label": "finite-bandwidth and continuum completion audit",
+      "family": "timing-acquisition",
+      "packet": "research/aspect/finite-bandwidth-continuum-completion.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "finite_to_continuum_completion_gate",
+      "model_status": "exact_finite_model",
+      "profile_status": "checked",
+      "scc_instrument_profile": {
+        "scale": "packet",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "natural",
+        "estimate": "uniform"
+      },
+      "profile_rationale": "the finite counterexamples and completion obligations are exact, but no common continuum carrier or cutoff-independent completion is supplied",
+      "assessment_regime": {
+        "scale": "packet of finite sampling, bandwidth, causality, tail, and stability tests",
+        "truncation": "finite arrays, finite windows, and finite operator witnesses",
+        "access": "sampled records and declared retained detector bins",
+        "calibration": "fixed Fourier, sampling, window, and normalization conventions",
+        "binding": "completion audit without a continuum apparatus"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/finite_bandwidth_continuum_completion.py",
+        "result": "research/aspect/results/finite_bandwidth_continuum_completion.json"
+      },
+      "factor_status": {
+        "geometry_support": "constructed",
+        "coefficients": "constructed",
+        "constructor_grammar": "constructed",
+        "transport_composition": "partial",
+        "quotient": "constructed",
+        "completion": "open",
+        "probe_grammar": "partial",
+        "readout": "constructed",
+        "authority": "constructed"
+      },
+      "factor_residuals": {
+        "transport_composition": [
+          "scale_limited"
+        ],
+        "completion": [
+          "scale_limited",
+          "truncation_limited"
+        ],
+        "probe_grammar": [
+          "access_nonfaithful"
+        ]
+      },
+      "readout": "exact finite hostiles against unsupported continuum promotion",
+      "first_open_gate": "supply all nine declared continuum-completion witnesses",
+      "simulation_status": "passed",
+      "simulation_receipt": "research/aspect/results/finite_bandwidth_continuum_completion.json"
+    }
+  ]
+}

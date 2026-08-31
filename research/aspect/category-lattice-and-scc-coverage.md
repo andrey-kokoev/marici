@@ -45,21 +45,24 @@ completion margin.
 ## Realization-fiber rung
 
 Kitaev's eighth rung is now a separate layer above the classifier. The 405
-cells above count SCC strength profiles. The eight-rung contiguous-interval
+cells form the SCC Instrument Profile Lattice: possible instrument-capability
+and certification-strength profiles, not source types or instrument identities.
+The eight-rung contiguous-interval
 tower instead has 36 interval cells, 56 left/right face maps, and 36
 theta/Tate overlays. These counts are not interchangeable.
 
-The fiber over one SCC profile contains its concrete realizations. A verified
+The fiber over one SCC instrument profile contains its concrete realizations. A verified
 fiber morphism must compare named constructor actions, observers, viewing
 forms, authority, completion topology, and instrument backaction. Only an
 invertible comparison satisfying every slot enters the realization-intertwiner
-groupoid. Equal SCC profiles alone never establish equivalence.
+groupoid. Equal SCC instrument profiles alone never establish source-type
+identity, instrument identity, or equivalence.
 
 The exact hostile uses two real two-dimensional realizations with identical
 observer and Gramian. Their named actions are minus the identity and the
 diagonal matrix with entries 1 and -1. Their characters differ, and the
 intertwiner equations force the first row of every candidate comparison to
-zero, so its rank is at most one. Thus the shared strongest SCC profile does
+zero, so its rank is at most one. Thus the shared strongest SCC instrument profile does
 not collapse the realization fiber.
 
 SCC now checks this obstruction and preregisters two first-failure probes:

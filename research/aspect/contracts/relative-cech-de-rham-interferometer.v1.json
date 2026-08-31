@@ -1,0 +1,29 @@
+{
+  "schema": "marici.aspect.relative-cech-de-rham-interferometer.v1",
+  "id": "relative-cech-de-rham-interferometer-v1",
+  "scope": "simulation-only structural classifier; not a cosmological contour, period, or physical realization",
+  "source_basis": ["Xi_log", "minus_sigma_123"],
+  "target_relative_cocycle": [1, 1],
+  "residue_map": [[1, -1], [-1, 1], [1, -1]],
+  "readouts": {
+    "scalar_dark_port": [[1, -1]],
+    "complementary_phase_sensitive": [[1, -1], [1, 1]]
+  },
+  "regimes": [
+    {"id": "residue_cancellation_without_total_lift", "incoming_columns": [], "expected": "closed_nonboundary"},
+    {"id": "sourced_exceptional_total_lift", "incoming_columns": [[1, 1]], "expected": "lifted_if_source_authorized"},
+    {"id": "tautological_circuit_quotient", "incoming_columns": [], "force_target_zero": true, "expected": "reject"},
+    {"id": "incoherent_intensity_postselection", "incoming_columns": [[1, -1]], "coherent": false, "expected": "reject"}
+  ],
+  "source_authority_gate": {
+    "required_constructor": "chain map from a source-derived resolved/Rees exceptional generator or Cayley-Menger face cone into the logarithmic Cech-de Rham total complex",
+    "required_image": [1, 1],
+    "currently_constructed": false
+  },
+  "nonpromotion": [
+    "passed simulation does not construct the exceptional generator",
+    "residue cancellation does not imply total lift",
+    "total lift does not imply global contour",
+    "global contour is required before any physical-period covector"
+  ]
+}

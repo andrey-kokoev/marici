@@ -38,7 +38,7 @@ first, checks = first_failure(c)
 deleted = copy.deepcopy(c)
 deleted["realization_fiber"]["comparison_slots"].remove("named_constructor_actions")
 mutated = copy.deepcopy(c)
-mutated["classifier_relation"]["not_equivalence"] = "equal SCC profiles imply constructor equivalence"
+mutated["classifier_relation"]["not_equivalence"] = "equal SCC instrument profiles imply source-type identity and constructor equivalence"
 mutated["same_profile_hostile"]["conclusion"] = "equivalent"
 
 # For T=[[a,b],[c,d]], T(-I)=diag(1,-1)T forces a=b=0, hence rank(T)<=1.

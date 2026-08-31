@@ -1,0 +1,36 @@
+{
+  "schema": "marici.aspect.sparse-provenance-reducer.v1",
+  "id": "sparse-provenance-reducer-v1",
+  "field": "prime field supplied in stream header",
+  "input_record": {
+    "kind": "special|dual|triple",
+    "source_row_id": "stable unsigned integer",
+    "module_entries": "sorted sparse pairs (column,value)",
+    "source_label_digest": "digest of labelled source relation"
+  },
+  "paired_reduction_invariants": [
+    "pivot subtraction acts identically on module and provenance rows",
+    "pivot normalization acts identically on module and provenance rows",
+    "every emitted witness replays against source rows",
+    "every replay residual is persisted",
+    "pivot order and input digest are persisted"
+  ],
+  "length_one_selector": {
+    "special_nontrivial": "generator residual modulo special span is nonzero",
+    "dual_t_annihilated": "shifted t-generator residual modulo dual span is zero",
+    "triple_coherent": "shifted t^2-generator residual modulo triple span is zero"
+  },
+  "candidate_output": [
+    "labelled generator coordinates",
+    "special residual",
+    "dual annihilation provenance",
+    "dual annihilation residual",
+    "triple coherence provenance",
+    "triple coherence residual",
+    "source label digests",
+    "stream input digest"
+  ],
+  "cross_prime_gate": "compare labelled supports and replay certificates, not only dimensions",
+  "bounded_output": "emit only certified length-one candidates and failed residual summaries",
+  "production_rank26_implemented": false
+}

@@ -129,7 +129,9 @@ Discovery rejects owner/locus mismatches, unknown dependencies, and dependency c
 `categorical` compiles a finite typed diagram into executable route residuals,
 realization-fiber comparisons, typed obstruction cones, generated deletion and
 profile-collapse hostiles, proof-carrying promotions, higher-coherence states,
-and structure-preserving cross-sector functors. Equal SCC profiles never imply
+and structure-preserving cross-sector functors. SCC profiles are instrument-capability
+profiles in the 405-element SCC Instrument Profile Lattice; they are not source
+types or instrument identities. Equal SCC instrument profiles never imply
 realization equivalence. Higher cells are explicitly verified, falsified, or
 unsupported; unsupported cells are never promoted.
 
