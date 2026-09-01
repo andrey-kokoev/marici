@@ -34,8 +34,12 @@ never imply participation, approval, authorship, or endorsement.
 
 Use the canonical qualified identity—not a display-name alias—in task
 handoffs, ledger attribution, research packets, and epistemic-graph
-communication records. The prior `marici.Caroline` graph identity is retained
-only as immutable history and is superseded by `marici.Figueiredo`.
+communication records. A carrier may self-claim a canonical identity for
+attribution. The epistemic ledger records the proposal actor as a claimed
+identity with `authority_granted: false`; this is not mechanical admission,
+authentication, endorsement, or evidence. Tool-specific authority remains
+independent. The prior `marici.Caroline` graph identity is retained only as
+immutable history and is superseded by `marici.Figueiredo`.
 
 Let \(\mathcal C_{\rm comm}\) be the category of substantive team requests,
 handoffs, results, objections, replies, and acknowledgments, represented by
@@ -275,12 +279,19 @@ Submit through `epistemic_graph_submit_review_admit`. Supply `actor`,
 `idempotency_key` without a specific concurrency boundary. In one batch,
 reference new entities by `local_ref` and existing ones by full id.
 
-A communication requires one recipient plus `sender`, `recipient`, `body`,
-`intent`, and fresh UTC `sent_at`; broadcasts use one record per recipient.
-Add `narada.epistemic:sent_by`, `narada.epistemic:addressed_to`, and, for
-responses, `narada.epistemic:replies_to`. Cite the admitted event id in ledger
+A communication requires one recipient plus `title`, `sender`, `recipient`,
+`body`, `intent`, and fresh UTC `sent_at`; broadcasts use one record per
+recipient.
+For self-claimed attribution, set the proposal `actor` and communication
+`sender` to the same canonical qualified identity. The engine adds a queryable
+`sender_identity_state` with `status: self_claimed`, missing authentication,
+and `authority_granted: false`; the ledger event independently records the
+proposal actor as claimed. Do not add prose disclaimers as a substitute for
+that structure. Add `narada.epistemic:sent_by`,
+`narada.epistemic:addressed_to`, and, for responses,
+`narada.epistemic:replies_to`. Cite the admitted event id in ledger
 verification. Admission preserves reviewed shared memory; it certifies neither
-truth nor Git authority.
+truth, sender authentication, nor Git authority.
 ## Research artifacts
 
 Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
