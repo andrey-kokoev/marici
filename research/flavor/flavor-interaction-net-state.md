@@ -4,7 +4,7 @@
 
 This packet constructs the current Flavor Interaction Net for the integer-pole
 branch. It is an executable projection of the objects, ports, reductions, and
-hostiles from WP1036--WP1194. It is not a physical selector.
+hostiles from WP1036--WP1195. It is not a physical selector.
 
 Contract: `research/flavor/contracts/flavor-interaction-net-state.v1.json`
 
@@ -298,7 +298,8 @@ The constructed part is a negative and rigidifier chain.
   WP1192 constructs a relative curvature anchor but shows it is not
   scheme-independent. WP1193 shows physical effective charges remain
   process-relative. WP1194 constructs a conditional primitive Ward-current
-  invariant with a threshold-completion fiber.
+  invariant with a threshold-completion fiber. WP1195 constructs a
+  conditional finite Ward-spectral completion selector.
 - WP1058 shows that WP1056's localized bulk cell is reducible:
   \(6+8+1+4+2+2\) has six invariant mass blocks, five after \(\overline6\)
   exchange. It therefore cannot supply the common clock without a parent
@@ -510,7 +511,8 @@ The checker verifies four open constructor slots.
    leaves a spectral-flow clock law open. WP1190 leaves a spectral-path RG
    event open. WP1191 leaves an RG event anchor open. WP1192 leaves a
    physical running observable open. WP1193 leaves a probe-natural invariant
-   open. WP1194 leaves Ward spectral completion open.
+   open. WP1194 leaves Ward spectral completion open. WP1195 leaves a Ward
+   scale/mixing anchor open.
 4. `physical16_gain_or_interference_law`: a source-to-Yukawa or
    source-to-detector gain law, or an instantiated coherent interference
    monitor. WP1044-WP1052 supply the algebraic gain, visibility, common-frame
@@ -532,7 +534,7 @@ remains open.
 
 ## Hostile fixtures
 
-The net retains one hundred fifty-six fixtures as non-invertibility tests:
+The net retains one hundred fifty-seven fixtures as non-invertibility tests:
 
 - \(C=23\) versus \(C=22\) under the same preparation grammar;
 - degenerate versus \(22+1\) split poles at fixed zero-momentum coefficient;
@@ -782,9 +784,10 @@ The net retains one hundred fifty-six fixtures as non-invertibility tests:
 - heteroclinic endpoint regularity treated as absolute event scale;
 - a coupling-coordinate curvature ratio treated as a scheme-independent physical anchor;
 - a process-relative effective charge treated as the canonical running observable;
-- a primitive Ward current treated as probe-natural across threshold completion.
+- a primitive Ward current treated as probe-natural across threshold completion;
+- an in-domain variational minimum treated as a source-derived physical completion.
 
-Any proposed successor must reject all one hundred fifty-six promotions while filling the four
+Any proposed successor must reject all one hundred fifty-seven promotions while filling the four
 open slots from one source packet.
 
 ## Traversal conformance checklist
@@ -809,7 +812,7 @@ Every future leaf transition must execute and report this sequence:
 
 The conformance checker replays WP1177--WP1186 and WP1043, checks the required
 DPC fields and locators, and rejects boxed notation. Its current result is
-`results/flavor_dpc_conformance_audit.json` for WP1177--WP1194.
+`results/flavor_dpc_conformance_audit.json` for WP1177--WP1195.
 
 ## Disposition
 

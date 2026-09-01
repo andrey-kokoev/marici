@@ -793,9 +793,9 @@ and its physical constructor implementation.
   the row from 1/2 to 1; normalized one-port fractions collide. The remaining
   gate is a source-detector gain law or interference-calibrated instrument.
 - flavor-interaction-net-state.md: WP1043 constructs the Interaction Net for
-  the current integer-pole Flavor branch. After WP1194 integration the verified
-  contract has one hundred fifty-eight constructed nodes, five open nodes, four rejection
-  rewrite rules, and one hundred fifty-six hostile fixtures. Its terminal physical selector
+  the current integer-pole Flavor branch. After WP1195 integration the verified
+  contract has one hundred fifty-nine constructed nodes, five open nodes, four rejection
+  rewrite rules, and one hundred fifty-seven hostile fixtures. Its terminal physical selector
   remains open behind four slots: common integer substrate with preparation
   law, typed pole spectrum and mass clock, calibrated momentum and ratio law,
   and `physical16` gain or interference law.
@@ -1211,6 +1211,8 @@ and its physical constructor implementation.
   charges remain process-relative.
 - flavor-probe-natural-ward-current-gate.md: WP1194 constructs a conditional
   primitive Ward-current invariant with a threshold fiber.
+- flavor-ward-spectral-completion-gate.md: WP1195 constructs a finite
+  completion selector with open scale and mixing fibers.
 - flavor-interaction-net-state.md: the traversal conformance checklist now
   requires Git inspection, checker replay, graph admission, changed-file
   reporting, and closeout audit. The machine audit is
