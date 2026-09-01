@@ -8,7 +8,7 @@ REPO=ROOT.parents[1]
 CONTRACT=ROOT/"contracts"/"flavor-interaction-net-state.v1.json"
 INDEX=ROOT/"flavor-programme-index.md"
 NET_MD=ROOT/"flavor-interaction-net-state.md"
-WORK_PACKAGES=list(range(1177,1194))
+WORK_PACKAGES=list(range(1177,1195))
 REQUIRED_TOP_LEVEL={
     "schema","status","question","dpc","classification","remaining_gate",
     "hostile_gate","claim_boundary","disposition"
@@ -63,10 +63,10 @@ net_replay=subprocess.run(
     cwd=REPO,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
     timeout=120,check=True
 )
-assert "WP1043 PASS: 157 5" in net_replay.stdout
+assert "WP1043 PASS: 158 5" in net_replay.stdout
 constructed=sum(1 for node in net["nodes"] if node.get("status")=="constructed")
-assert constructed==157
-assert len(net["hostile_fixtures"])==155
+assert constructed==158
+assert len(net["hostile_fixtures"])==156
 assert "\\boxed" not in net_text
 output={
     "schema":"marici.flavor.dpc-conformance-audit.v1",

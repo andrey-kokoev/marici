@@ -3319,6 +3319,22 @@
       ]
     },
     {
+      "id": "wp1194_probe_natural_ward_current_gate",
+      "kind": "probe_natural_ward_current_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-probe-natural-ward-current-gate.md",
+      "ports_in": [
+        "probe_natural_invariant_required"
+      ],
+      "ports_out": [
+        "ward_spectral_completion_required"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1193_physical_running_observable_gate"
+      ]
+    },
+    {
       "id": "physical16_gain_or_interference_law",
       "kind": "instrument_source_slot",
       "status": "open",
@@ -3450,7 +3466,8 @@
         "spectral_path_rg_event_required",
         "rg_event_anchor_required",
         "physical_running_observable_required",
-        "probe_natural_invariant_required"
+        "probe_natural_invariant_required",
+        "ward_spectral_completion_required"
       ],
       "ports_out": [
         "absolute_or_signed_physical16_row"
@@ -3577,7 +3594,8 @@
         "wp1190_spectral_flow_clock_no_go",
         "wp1191_spectral_path_rg_event_gate",
         "wp1192_rg_event_anchor_gate",
-        "wp1193_physical_running_observable_gate"
+        "wp1193_physical_running_observable_gate",
+        "wp1194_probe_natural_ward_current_gate"
       ]
     },
     {
@@ -3812,7 +3830,8 @@
     "spectral_index_not_threshold_clock": true,
     "global_rg_regularity_not_event_scale": true,
     "coordinate_curvature_not_physical_anchor": true,
-    "operational_normalization_not_canonical_channel": true
+    "operational_normalization_not_canonical_channel": true,
+    "ward_current_not_threshold_natural": true
   },
   "hostile_fixtures": [
     {
@@ -4434,6 +4453,10 @@
     {
       "id": "operational_normalization_promoted_to_canonical_channel",
       "must_reject": "process_relative_effective_charge_treated_as_canonical_running_observable"
+    },
+    {
+      "id": "ward_current_promoted_to_threshold_natural",
+      "must_reject": "primitive_ward_current_treated_as_probe_natural_across_threshold_completion"
     }
   ],
   "terminal_node": "flavor_physical_selector_terminal"
