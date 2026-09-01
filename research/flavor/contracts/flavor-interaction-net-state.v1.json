@@ -3207,6 +3207,22 @@
       ]
     },
     {
+      "id": "wp1187_threshold_source_candidate_gate",
+      "kind": "threshold_source_candidate_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-threshold-source-candidate-gate.md",
+      "ports_in": [
+        "threshold_source_candidate_required"
+      ],
+      "ports_out": [
+        "incidence_spectrum_constructor_required"
+      ],
+      "authority_class": "negative_gate",
+      "depends_on": [
+        "wp1186_threshold_boundary_authority_no_go"
+      ]
+    },
+    {
       "id": "physical16_gain_or_interference_law",
       "kind": "instrument_source_slot",
       "status": "open",
@@ -3331,7 +3347,8 @@
         "dimensionful_threshold_anchor_required",
         "threshold_boundary_packet_required",
         "threshold_boundary_authority_required",
-        "threshold_source_candidate_required"
+        "threshold_source_candidate_required",
+        "incidence_spectrum_constructor_required"
       ],
       "ports_out": [
         "absolute_or_signed_physical16_row"
@@ -3451,7 +3468,8 @@
         "wp1183_threshold_basis_scale_no_go",
         "wp1184_dimensionful_threshold_anchor_no_go",
         "wp1185_threshold_boundary_packet_contract",
-        "wp1186_threshold_boundary_authority_no_go"
+        "wp1186_threshold_boundary_authority_no_go",
+        "wp1187_threshold_source_candidate_gate"
       ]
     },
     {
@@ -3679,7 +3697,8 @@
     "kappa_not_absolute_threshold_scale": true,
     "conditional_rg_scale_not_threshold_anchor": true,
     "coherent_rg_run_not_threshold_packet": true,
-    "boundary_declaration_not_boundary_authority": true
+    "boundary_declaration_not_boundary_authority": true,
+    "fixed_point_coordinates_not_threshold_authority": true
   },
   "hostile_fixtures": [
     {
@@ -4273,6 +4292,10 @@
     {
       "id": "boundary_declaration_promoted_to_boundary_authority",
       "must_reject": "declared_conditional_boundary_treated_as_source_selected_threshold_authority"
+    },
+    {
+      "id": "fixed_point_coordinates_promoted_to_threshold_authority",
+      "must_reject": "subunit_fixed_point_coordinates_treated_as_source_selected_threshold_boundary"
     }
   ],
   "terminal_node": "flavor_physical_selector_terminal"
