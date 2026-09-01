@@ -51,8 +51,9 @@ Check whether the student's latest work preserves this six-field logical structu
 5. strongest falsification attempt with its exact residual;
 6. disposition with surviving scope.
 If the packet is structurally adequate, return action=ignore. If a concrete correction is needed,
-return action=advise or action=notify and identify the missing or defective field. Keep the message
-bounded and actionable. Return only one JSON object conforming to coach-advice@1.`;
+return action=advise or action=notify and identify the missing or defective field. For a direct
+operator question, put the bounded answer in message while preserving the same schema. Keep the
+message bounded and actionable. Return only one JSON object conforming to coach-advice@1.`;
 
 const DPC_COACH = {
 	id: "dpc" as const,
@@ -203,6 +204,10 @@ function compactMessage(message: unknown): JsonObject | null {
 	return result;
 }
 
+function currentBoundary(ctx: ExtensionContext): string {
+	return ctx.sessionManager.getLeafId() ?? "manual";
+}
+
 function boundaryPacket(ctx: ExtensionContext, focus: string): { text: string; leafId: string } {
 	const branch = ctx.sessionManager.getBranch();
 	const entries = branch.slice(-MAX_BOUNDARY_ENTRIES).map((entry) => {
@@ -210,7 +215,7 @@ function boundaryPacket(ctx: ExtensionContext, focus: string): { text: string; l
 		const compact = compactMessage(entry.message);
 		return compact ? { id: entry.id, message: compact } : null;
 	}).filter((entry): entry is { id: string; message: JsonObject } => entry !== null);
-	const leafId = ctx.sessionManager.getLeafId() ?? "";
+	const leafId = currentBoundary(ctx);
 	const packet = {
 		schema: "coach-boundary.v1",
 		sessionId: ctx.sessionManager.getSessionId(),
@@ -228,9 +233,9 @@ function latestAssistant(ctx: ExtensionContext): { text: string; boundary: strin
 	for (const entry of [...ctx.sessionManager.getBranch()].reverse()) {
 		if (!isObject(entry)) continue;
 		const text = assistantText(entry.message);
-		if (text) return { text, boundary: typeof entry.id === "string" ? entry.id : ctx.sessionManager.getLeafId() ?? "" };
+		if (text) return { text, boundary: typeof entry.id === "string" ? entry.id : currentBoundary(ctx) };
 	}
-	return { text: "", boundary: ctx.sessionManager.getLeafId() ?? "" };
+	return { text: "", boundary: currentBoundary(ctx) };
 }
 
 function schemaInstruction(schema: SchemaDefinition): string {
@@ -282,10 +287,15 @@ export default function (pi: ExtensionAPI) {
 		});
 	}
 
-	async function runCoach(ctx: ExtensionContext, boundary: string): Promise<void> {
-		if (disposed || !state.activeCoach || reviewInFlight || !ctx.model) return;
+	async function runCoach(ctx: ExtensionContext, boundary: string, request: { directQuestion?: string } = {}): Promise<void> {
+		const directQuestion = request.directQuestion?.trim();
+		const direct = Boolean(directQuestion);
+		if (disposed || (!state.activeCoach && !direct) || reviewInFlight || !ctx.model) {
+			if (direct && !ctx.model) ctx.ui.notify("Coach cannot respond because no model is selected.", "warning");
+			return;
+		}
 		const coach = DPC_COACH;
-		const focus = state.coachFocus || "Assess the latest bounded work without changing its objective.";
+		const focus = (directQuestion ?? state.coachFocus) || "Assess the latest bounded work without changing its objective.";
 		const packet = boundaryPacket(ctx, focus);
 		if (packet.leafId !== boundary) return;
 		reviewInFlight = true;
@@ -296,11 +306,11 @@ export default function (pi: ExtensionAPI) {
 			ctx.model,
 			{
 				systemPrompt: coach.systemPrompt,
-				messages: [{ role: "user", content: `FOCUS:\n${focus}\n\nBOUNDARY_PACKET:\n${packet.text}`, timestamp: Date.now() }],
+				messages: [{ role: "user", content: `FOCUS:\n${focus}${directQuestion ? `\n\nDIRECT_OPERATOR_QUESTION:\n${directQuestion}` : ""}\n\nBOUNDARY_PACKET:\n${packet.text}`, timestamp: Date.now() }],
 			},
 			{ signal: controller.signal, cacheRetention: "none", sessionId: randomUUID() },
 			);
-			if (disposed || controller.signal.aborted || ctx.sessionManager.getLeafId() !== boundary || state.activeCoach !== coach.id) return;
+			if (disposed || controller.signal.aborted || currentBoundary(ctx) !== boundary || (!direct && state.activeCoach !== coach.id)) return;
 			const text = response.content.filter((part) => part.type === "text").map((part) => part.text).join("\n");
 			let advice: unknown;
 			try {
@@ -321,6 +331,13 @@ export default function (pi: ExtensionAPI) {
 			}
 			const action = advice.action;
 			const message = advice.message as string;
+			if (direct) {
+				const evidence = (advice.evidence as string[]).join("; ");
+				const missing = (advice.missing_fields as string[]).join(", ");
+				const rendered = `${message}${evidence ? `\n\nEvidence: ${evidence}` : ""}${missing ? `\nMissing fields: ${missing}` : ""}`;
+				ctx.ui.notify(`DPC coach: ${rendered}`, advice.severity === "info" ? "info" : "warning");
+				return;
+			}
 			const adviceHash = hashText(`${action}\n${message}`);
 			if (action === "ignore") {
 				state.consecutiveCoachAdvice = 0;
@@ -427,11 +444,21 @@ export default function (pi: ExtensionAPI) {
 	pi.registerCommand("coach", {
 		description: "Enable a bounded coach at settled agent boundaries",
 		getArgumentCompletions: (prefix) => {
-			const values = ["dpc", "status", "stop"];
+			const values = ["dpc", "ask", "status", "stop"];
 			return values.filter((value) => value.startsWith(prefix.trim())).map((value) => ({ value, label: value }));
 		},
 		handler: async (args, ctx) => {
 			const input = args.trim();
+			const askMatch = input.match(/^ask(?:\s+(dpc))?\s+([\s\S]+)$/i);
+			if (askMatch) {
+				const coachId = askMatch[1]?.toLowerCase() ?? state.activeCoach;
+				if (coachId !== "dpc") {
+					ctx.ui.notify("Select a coach first: /coach dpc, or use /coach ask dpc <question>.", "warning");
+					return;
+				}
+				await runCoach(ctx, currentBoundary(ctx), { directQuestion: askMatch[2].trim() });
+				return;
+			}
 			if (input === "stop") {
 				state.activeCoach = "";
 				state.coachFocus = "";
@@ -447,7 +474,7 @@ export default function (pi: ExtensionAPI) {
 			}
 			const match = input.match(/^(dpc)(?:\s+([\s\S]+))?$/i);
 			if (!match) {
-				ctx.ui.notify("Usage: /coach dpc [focus] | /coach status | /coach stop", "warning");
+				ctx.ui.notify("Usage: /coach dpc [focus] | /coach ask [dpc] <question> | /coach status | /coach stop", "warning");
 				return;
 			}
 			state.activeCoach = "dpc";
