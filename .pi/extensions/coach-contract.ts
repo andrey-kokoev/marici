@@ -53,7 +53,8 @@ Check whether the student's latest work preserves this six-field logical structu
 If the packet is structurally adequate, return action=ignore. If a concrete correction is needed,
 return action=advise or action=notify and identify the missing or defective field. For a direct
 operator question, put the bounded answer in message while preserving the same schema. Keep the
-message bounded and actionable. Return only one JSON object conforming to coach-advice@1.`;
+message bounded and actionable. Set source_boundary to the packet leafId when possible; the host
+binds the actual reviewed boundary. Return only one JSON object conforming to coach-advice@1.`;
 
 const DPC_COACH = {
 	id: "dpc" as const,
@@ -325,10 +326,12 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 			const errors = validateJson(advice, adviceSchema.schema);
-			if (errors.length || !isObject(advice) || advice.source_boundary !== boundary) {
-				ctx.ui.notify(`DPC coach advice rejected: ${(errors.length ? errors : ["source_boundary does not match the reviewed boundary"]).slice(0, 3).join("; ")}`, "warning");
+			if (errors.length || !isObject(advice)) {
+				ctx.ui.notify(`DPC coach advice rejected: ${errors.slice(0, 3).join("; ") || "response is not an object"}`, "warning");
 				return;
 			}
+			const reportedSourceBoundary = advice.source_boundary as string;
+			const boundaryMismatch = reportedSourceBoundary !== boundary;
 			const action = advice.action;
 			const message = advice.message as string;
 			if (direct) {
@@ -364,7 +367,7 @@ export default function (pi: ExtensionAPI) {
 					customType: "coach-advice",
 					content: `DPC coach advice for boundary ${boundary}: ${message}\nEvidence: ${(advice.evidence as string[]).join("; ")}\nMissing fields: ${(advice.missing_fields as string[]).join(", ")}`,
 					display: true,
-					details: { coachId: coach.id, sourceBoundary: boundary, severity: advice.severity },
+					details: { coachId: coach.id, sourceBoundary: boundary, reportedSourceBoundary, boundaryMismatch, severity: advice.severity },
 				},
 				{ deliverAs: "followUp", triggerTurn: true },
 			);
