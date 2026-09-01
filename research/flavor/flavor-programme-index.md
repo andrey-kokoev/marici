@@ -793,9 +793,9 @@ and its physical constructor implementation.
   the row from 1/2 to 1; normalized one-port fractions collide. The remaining
   gate is a source-detector gain law or interference-calibrated instrument.
 - flavor-interaction-net-state.md: WP1043 constructs the Interaction Net for
-  the current integer-pole Flavor branch. After WP1190 integration the verified
-  contract has one hundred fifty-four constructed nodes, five open nodes, four rejection
-  rewrite rules, and one hundred fifty-two hostile fixtures. Its terminal physical selector
+  the current integer-pole Flavor branch. After WP1191 integration the verified
+  contract has one hundred fifty-five constructed nodes, five open nodes, four rejection
+  rewrite rules, and one hundred fifty-three hostile fixtures. Its terminal physical selector
   remains open behind four slots: common integer substrate with preparation
   law, typed pole spectrum and mass clock, calibrated momentum and ratio law,
   and `physical16` gain or interference law.
@@ -1203,6 +1203,8 @@ and its physical constructor implementation.
   chain-level spectral carrier without source selection.
 - flavor-spectral-flow-clock-no-go.md: WP1190 shows spectral flow and
   transmutation leave a two-dimensional clock fiber.
+- flavor-spectral-path-rg-event-gate.md: WP1191 constructs a conditional RG
+  spectral event with one phase modulus.
 - flavor-interaction-net-state.md: the traversal conformance checklist now
   requires Git inspection, checker replay, graph admission, changed-file
   reporting, and closeout audit. The machine audit is

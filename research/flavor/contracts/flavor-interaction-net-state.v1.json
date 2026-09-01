@@ -3271,6 +3271,22 @@
       ]
     },
     {
+      "id": "wp1191_spectral_path_rg_event_gate",
+      "kind": "spectral_path_rg_event_gate",
+      "status": "constructed",
+      "locator": "research/flavor/flavor-spectral-path-rg-event-gate.md",
+      "ports_in": [
+        "spectral_path_rg_event_required"
+      ],
+      "ports_out": [
+        "rg_event_anchor_required"
+      ],
+      "authority_class": "conditional_instrument",
+      "depends_on": [
+        "wp1190_spectral_flow_clock_no_go"
+      ]
+    },
+    {
       "id": "physical16_gain_or_interference_law",
       "kind": "instrument_source_slot",
       "status": "open",
@@ -3399,7 +3415,8 @@
         "incidence_spectrum_constructor_required",
         "chain_level_matter_authority_required",
         "spectral_flow_clock_law_required",
-        "spectral_path_rg_event_required"
+        "spectral_path_rg_event_required",
+        "rg_event_anchor_required"
       ],
       "ports_out": [
         "absolute_or_signed_physical16_row"
@@ -3523,7 +3540,8 @@
         "wp1187_threshold_source_candidate_gate",
         "wp1188_incidence_spectrum_constructor_no_go",
         "wp1189_chain_level_matter_authority_gate",
-        "wp1190_spectral_flow_clock_no_go"
+        "wp1190_spectral_flow_clock_no_go",
+        "wp1191_spectral_path_rg_event_gate"
       ]
     },
     {
@@ -3755,7 +3773,8 @@
     "fixed_point_coordinates_not_threshold_authority": true,
     "charge_homology_not_matter_spectrum": true,
     "spectral_faithfulness_not_source_selection": true,
-    "spectral_index_not_threshold_clock": true
+    "spectral_index_not_threshold_clock": true,
+    "global_rg_regularity_not_event_scale": true
   },
   "hostile_fixtures": [
     {
@@ -4365,6 +4384,10 @@
     {
       "id": "spectral_index_promoted_to_threshold_clock",
       "must_reject": "spectral_flow_orientation_treated_as_numerical_threshold_clock"
+    },
+    {
+      "id": "global_rg_regularity_promoted_to_event_scale",
+      "must_reject": "heteroclinic_endpoint_regularity_treated_as_absolute_event_scale"
     }
   ],
   "terminal_node": "flavor_physical_selector_terminal"

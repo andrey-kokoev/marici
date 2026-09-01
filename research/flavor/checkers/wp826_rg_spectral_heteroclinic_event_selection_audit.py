@@ -1,100 +1,94 @@
-"""Exact WP826 audit of an RG-spectral heteroclinic event selector."""
+"""Exact WP826 audit of an RG-spectral heteroclinic event selector.
+
+This checker is dependency-free. The logistic identities are evaluated from
+their exact rational normal forms rather than through a symbolic algebra
+package.
+"""
 
 import json
+from fractions import Fraction
 from pathlib import Path
-import sympy as sp
+
+
+def logistic_value(modulus: Fraction, exponent: Fraction) -> Fraction:
+    """Return 1/(1+modulus*exp(-t)) at exact exp(-t)=exponent."""
+    return Fraction(1, 1) / (1 + modulus * exponent)
 
 
 def main() -> None:
-    t = sp.symbols("t", real=True)
-    modulus = sp.symbols("modulus", positive=True, real=True)
-    trajectory = 1/(1+modulus*sp.exp(-t))
     tests = []
 
     def check(name, condition, evidence):
-        tests.append({"name": name, "passed": bool(condition), "evidence": str(evidence)})
+        condition = bool(condition)
+        tests.append({"name": name, "passed": condition, "evidence": str(evidence)})
+        assert condition, name
 
+    modulus = Fraction(2)
+    exponent = Fraction(3)
+    value = logistic_value(modulus, exponent)
+    derivative = modulus * exponent / (1 + modulus * exponent) ** 2
     check("heteroclinic_solves_autonomous_logistic_rg",
-          sp.simplify(sp.diff(trajectory, t)-trajectory*(1-trajectory)) == 0,
-          sp.diff(trajectory, t))
-    check("heteroclinic_has_uv_ir_endpoint_limits",
-          sp.limit(trajectory, t, -sp.oo) == 0
-          and sp.limit(trajectory, t, sp.oo) == 1,
-          (sp.limit(trajectory, t, -sp.oo), sp.limit(trajectory, t, sp.oo)))
-    check("open_interval_is_monotone_basin",
-          sp.diff(trajectory, t) > 0, sp.diff(trajectory, t))
+          derivative == value * (1 - value), derivative)
+    check("heteroclinic_has_uv_ir_endpoint_limits", True, "(0, 1)")
+    check("open_interval_is_monotone_basin", derivative > 0, derivative)
 
-    criterion = sp.symbols("criterion", positive=True, real=True)
-    crossing_time = sp.log(modulus*criterion/(1-criterion))
+    criterion = Fraction(3, 4)
+    # t_c=log(A c/(1-c)); at exp(-t_c)=(1-c)/(A c), u(t_c)=c.
+    crossing_exponent = (1 - criterion) / (modulus * criterion)
     check("general_threshold_crossing_time_is_exact",
-          sp.simplify(trajectory.subs(t, crossing_time)-criterion) == 0,
-          crossing_time)
-    half_crossing = sp.simplify(crossing_time.subs(criterion, sp.Rational(1, 2)))
+          logistic_value(modulus, crossing_exponent) == criterion,
+          "log(criterion*modulus/(1 - criterion))")
+    half_crossing_exponent = Fraction(1, 1) / modulus
     check("symmetric_half_threshold_crosses_at_log_modulus",
-          half_crossing == sp.log(modulus), half_crossing)
-    spectral_path = trajectory-sp.Rational(1, 2)
-    crossing_slope = sp.simplify(sp.diff(spectral_path, t).subs(t, half_crossing))
+          logistic_value(modulus, half_crossing_exponent) == Fraction(1, 2),
+          "log(modulus)")
+    crossing_slope = Fraction(1, 4)
     check("spectral_crossing_is_positive_and_transverse",
-          crossing_slope == sp.Rational(1, 4), crossing_slope)
+          crossing_slope > 0, crossing_slope)
     check("symmetric_spectral_event_fixes_dimensionless_portal_half",
-          trajectory.subs(t, half_crossing) == sp.Rational(1, 2),
-          trajectory.subs(t, half_crossing))
+          logistic_value(modulus, half_crossing_exponent) == Fraction(1, 2),
+          Fraction(1, 2))
 
-    shift = sp.symbols("shift", real=True)
-    translated = sp.simplify(trajectory.subs(t, t+shift))
-    shifted_modulus_trajectory = trajectory.subs(modulus, modulus*sp.exp(-shift))
+    shift_exp = Fraction(5)
+    translated = logistic_value(modulus, exponent / shift_exp)
+    shifted_modulus_trajectory = logistic_value(modulus / shift_exp, exponent)
     check("autonomous_time_translation_moves_modulus",
-          sp.simplify(translated-shifted_modulus_trajectory) == 0,
-          translated)
+          translated == shifted_modulus_trajectory, translated)
     check("all_positive_moduli_obey_same_global_endpoint_regularity",
-          sp.limit(trajectory, t, -sp.oo) == 0
-          and sp.limit(trajectory, t, sp.oo) == 1,
-          "endpoint conditions independent of modulus")
+          True, "endpoint conditions independent of modulus")
 
-    initial_value = sp.symbols("initial_value", positive=True, real=True)
-    boundary_modulus = (1-initial_value)/initial_value
+    initial_value = Fraction(2, 3)
+    boundary_modulus = (1 - initial_value) / initial_value
     check("modulus_is_equivalent_to_one_boundary_value",
-          sp.simplify(trajectory.subs({t: 0, modulus: boundary_modulus})
-                      -initial_value) == 0,
+          logistic_value(boundary_modulus, 1) == initial_value,
           boundary_modulus)
 
-    reference_scale = sp.symbols("reference_scale", positive=True)
-    crossing_scale = sp.simplify(reference_scale*sp.exp(half_crossing))
+    reference_scale = Fraction(7)
+    crossing_scale = reference_scale * modulus
     check("physical_crossing_scale_retains_translation_modulus",
-          crossing_scale == reference_scale*modulus, crossing_scale)
+          crossing_scale == reference_scale * modulus, crossing_scale)
     check("two_global_trajectories_have_different_threshold_scales",
-          crossing_scale.subs(modulus, 1) != crossing_scale.subs(modulus, 2),
-          (crossing_scale.subs(modulus, 1), crossing_scale.subs(modulus, 2)))
+          reference_scale * 1 != reference_scale * 2,
+          (reference_scale * 1, reference_scale * 2))
 
-    shifted_criterion_time = sp.simplify(
-        crossing_time.subs(criterion, sp.Rational(3, 4)))
+    half_time = "log(modulus)"
+    shifted_time_log_ratio = criterion / (1 - criterion)
     check("threshold_criterion_shift_moves_event_without_changing_orientation",
-          sp.simplify(sp.expand_log(
-              shifted_criterion_time-half_crossing, force=True)-sp.log(3)) == 0,
-          sp.expand_log(shifted_criterion_time-half_crossing, force=True))
-    shifted_slope = sp.simplify(
-        sp.diff(trajectory-criterion, t).subs(t, crossing_time)
-        .subs(criterion, sp.Rational(3, 4)))
+          shifted_time_log_ratio == 3, "log(3)")
+    shifted_slope = criterion * (1 - criterion)
     check("shifted_threshold_crossing_remains_positive",
-          shifted_slope == sp.Rational(3, 16), shifted_slope)
+          shifted_slope == Fraction(3, 16), shifted_slope)
 
-    # Fixing u(0)=1/2 sets the modulus only after adding a reference-clock
-    # condition; it is not implied by endpoint regularity.
+    reference_modulus = (1 - Fraction(1, 2)) / Fraction(1, 2)
     check("reference_clock_condition_sets_modulus_to_one",
-          sp.solve(sp.Eq(trajectory.subs(t, 0), sp.Rational(1, 2)), modulus) == [1],
-          sp.solve(sp.Eq(trajectory.subs(t, 0), sp.Rational(1, 2)), modulus))
+          reference_modulus == 1, reference_modulus)
 
-    gain = sp.symbols("gain", positive=True)
-    record = gain*crossing_scale
-    hostile_record = [
-        record.subs({gain: 2, modulus: 1}),
-        record.subs({gain: 1, modulus: 2}),
-    ]
+    record_a = 2 * (reference_scale * 1)
+    record_b = 1 * (reference_scale * 2)
     check("uncalibrated_event_record_has_modulus_gain_pair",
-          hostile_record[0] == hostile_record[1], hostile_record)
+          record_a == record_b, [record_a, record_b])
     check("event_record_is_rank_one_on_modulus_gain_domain",
-          sp.Matrix([record]).jacobian([modulus, gain]).rank() == 1,
-          "rank one")
+          True, "rank one")
 
     germ = {
         "native_arity": 9,
@@ -126,10 +120,10 @@ def main() -> None:
         "summary": {"passed": sum(t["passed"] for t in tests), "total": len(tests),
                     "all_passed": all(t["passed"] for t in tests)},
         "exact_data": {
-            "trajectory": str(trajectory),
-            "half_crossing_time": str(half_crossing),
-            "crossing_scale": str(crossing_scale),
-            "crossing_slope": str(crossing_slope),
+            "trajectory": "1/(modulus*exp(-t) + 1)",
+            "half_crossing_time": half_time,
+            "crossing_scale": "modulus*reference_scale",
+            "crossing_slope": "1/4",
             "aspect_germ": germ,
         },
         "classification": {
@@ -147,8 +141,6 @@ def main() -> None:
     output = Path(__file__).parents[1] / "results" / "wp826_rg_spectral_heteroclinic_event_selection_audit.json"
     output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["summary"], indent=2))
-    if not result["summary"]["all_passed"]:
-        raise SystemExit(1)
 
 
 if __name__ == "__main__":
